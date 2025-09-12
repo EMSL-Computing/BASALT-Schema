@@ -1,0 +1,33 @@
+{
+  "template": "https://github.com/linkml/linkml-project-cookiecutter",
+  "commit": "494e28e5496acc76558c07c95dea62d2db05081c",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "analysis-api-schema",
+      "__project_slug": "analysis_api_schema",
+      "github_org": "MONet",
+      "__source_path": "src/analysis_api_schema/schema/analysis_api_schema.yaml",
+      "project_description": "linkML transition for analysis-api schemae",
+      "full_name": "Maia Kapur",
+      "email": "maia.kapur@pnnl.gov",
+      "__author": "Maia Kapur <maia.kapur@pnnl.gov>",
+      "license": "MIT",
+      "main_schema_class": "sample",
+      "create_python_classes": "Yes",
+      "use_schemasheets": "No",
+      "google_sheet_id": "1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ",
+      "google_sheet_tabs": "personinfo enums",
+      "__google_sheet_module": "personinfo_enums",
+      "github_token_for_pypi_deployment": "PYPI_PASSWORD",
+      "_copy_without_render": [
+        "justfile",
+        "src/docs/js/*",
+        "src/docs/javascript/*"
+      ],
+      "_template": "https://github.com/linkml/linkml-project-cookiecutter",
+      "_commit": "494e28e5496acc76558c07c95dea62d2db05081c"
+    }
+  },
+  "directory": null
+}
