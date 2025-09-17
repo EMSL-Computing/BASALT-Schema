@@ -1,0 +1,643 @@
+---
+id: https://w3id.org/MONet/analysis-api-schema/enums
+name: analysis-api-schema-enums
+title: MONet Analysis API - Enumerations
+description: |-
+  Enumerated values used throughout the MONet Analysis API schema
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+default_prefix: analysis_api_schema
+
+imports:
+  - linkml:types
+
+enums:
+  SampleBaseType:
+    description: Base types for sample entities
+    permissible_values:
+      sample:
+        description: A physical sample
+      processed_sample:
+        description: A sample that has undergone processing
+
+  SampleType:
+    description: Types of samples that can be collected
+    permissible_values:
+      soil:
+        description: Soil sample
+        aliases: ["soil_sample"]
+      aerosol:
+        description: Aerosol sample
+        aliases: ["aerosol_sample"]
+
+  SoilType:
+    description: Specific types of soil samples
+    permissible_values:
+      soil_core:
+        description: Soil core sample
+      surface_layer:
+        description: Surface layer soil sample
+
+  AerosolType:
+    description: Types of aerosol samples
+    permissible_values:
+      sea_salt:
+        description: Sea salt aerosol
+      dust:
+        description: Dust aerosol
+      volcanic_ash:
+        description: Volcanic ash aerosol
+
+  ProcessedSampleType:
+    description: Types of processed samples
+    permissible_values:
+      analyte:
+        description: Analyte sample
+      coreSection:
+        description: Core section sample
+      replicate:
+        description: Replicate sample
+
+  CoreSectionEnum:
+    description: Sections of a core sample
+    permissible_values:
+      TOP:
+        description: Top section of core
+      BTM:
+        description: Bottom section of core  
+      MID:
+        description: Middle section of core
+
+  SamplingActivityType:
+    description: Types of sampling activities
+    permissible_values:
+      soil:
+        description: Soil sampling activity
+      water:
+        description: Water sampling activity
+      air:
+        description: Air sampling activity
+      plant:
+        description: Plant sampling activity
+      none:
+        description: No specific activity type
+        aliases: ["None"]
+
+  NeonDomainEnum:
+    description: NEON ecological domains
+    permissible_values:
+      northeast:
+        description: Northeast domain
+      mid_atlantic:
+        description: Mid-Atlantic domain
+      southeast:
+        description: Southeast domain
+      atlantic_neotropical:
+        description: Atlantic Neotropical domain
+      great_lakes:
+        description: Great Lakes domain
+      prairie_peninsula:
+        description: Prairie Peninsula domain
+      appalachians_and_cumberland_plateau:
+        description: Appalachians and Cumberland Plateau domain
+      ozarks_complex:
+        description: Ozarks Complex domain
+      northern_plains:
+        description: Northern Plains domain
+      central_plains:
+        description: Central Plains domain
+      southern_plains:
+        description: Southern Plains domain
+      desert_southwest:
+        description: Desert Southwest domain
+      northern_rockies:
+        description: Northern Rockies domain
+      southern_rockies_and_colorado_plateau:
+        description: Southern Rockies and Colorado Plateau domain
+      great_basin:
+        description: Great Basin domain
+      sierra_nevada:
+        description: Sierra Nevada domain
+      pacific_northwest:
+        description: Pacific Northwest domain
+      pacific_southwest:
+        description: Pacific Southwest domain
+      tundra:
+        description: Tundra domain
+      taiga:
+        description: Taiga domain
+      pacific_tropical:
+        description: Pacific Tropical domain
+
+  GrowthFacilityEnum:
+    description: Types of growth facilities
+    permissible_values:
+      field:
+        description: Field conditions
+      commercially_purchased:
+        description: Commercially purchased
+      experimental_garden:
+        description: Experimental garden
+      field_incubation:
+        description: Field incubation
+      greenhouse:
+        description: Greenhouse
+      growth_chamber:
+        description: Growth chamber
+      lab_incubation:
+        description: Laboratory incubation
+      open_top_chamber:
+        description: Open top chamber
+      other:
+        description: Other growth facility type
+
+  LandUseEnum:
+    description: Land use classifications
+    permissible_values:
+      badlands:
+        description: Badlands
+      cities:
+        description: Urban/city areas
+      conifers:
+        description: Coniferous forests (e.g. pine, spruce, fir, cypress)
+      crop_trees:
+        description: Crop trees (nuts, fruit, christmas trees, nursery trees)
+      farmstead:
+        description: Farmstead
+      gravel:
+        description: Gravel areas
+      hardwoods:
+        description: Hardwood forests (e.g. oak, hickory, elm, aspen)
+      hayland:
+        description: Hayland
+      horticultural_plants:
+        description: Horticultural plants (e.g. tulips)
+      industrial_areas:
+        description: Industrial areas
+      intermixed:
+        description: Intermixed hardwood and conifers
+      marshlands:
+        description: Marshlands (grass, sedges, rushes)
+      meadows:
+        description: Meadows (grasses, alfalfa, fescue, bromegrass, timothy)
+      mines_quarries:
+        description: Mines and quarries
+      mudflats:
+        description: Mudflats
+      oil_waste:
+        description: Oil waste areas
+      pastureland:
+        description: Pastureland (grasslands used for livestock grazing)
+      permanent_snow_or_ice:
+        description: Permanent snow or ice
+      rainforest:
+        description: Rainforest (evergreen forest receiving >406 cm annual rainfall)
+      rangeland:
+        description: Rangeland
+      roads_railroads:
+        description: Roads and railroads
+      rock:
+        description: Rock surfaces
+      row_crops:
+        description: Row crops
+      saline_seeps:
+        description: Saline seeps
+      salt_flats:
+        description: Salt flats
+      sand:
+        description: Sand areas
+      shrub_crops:
+        description: Shrub crops (blueberries, nursery ornamentals, filberts)
+      shrub_land:
+        description: Shrub land (e.g. mesquite, sage-brush, creosote bush, shrub oak, eucalyptus)
+      small_grains:
+        description: Small grains
+      successional_shrub_land:
+        description: Successional shrub land (tree saplings, hazels, sumacs, chokecherry, shrub dogwoods, blackberries)
+      swamp:
+        description: Swamp (permanent or semi-permanent water body dominated by woody plants)
+      tropical:
+        description: Tropical vegetation (e.g. mangrove, palms)
+      tundra:
+        description: Tundra (mosses, lichens)
+      vegetable_crops:
+        description: Vegetable crops
+      vine_crops:
+        description: Vine crops (grapes)
+
+  TillageEnum:
+    description: Tillage methods
+    permissible_values:
+      chisel:
+        description: Chisel tillage
+        aliases: ["Chisel"]
+      cutting_disc:
+        description: Cutting disc tillage
+        aliases: ["Cutting_Disc"]
+      disc_plough:
+        description: Disc plough tillage
+        aliases: ["Disc_Plough"]
+      drill:
+        description: Drill tillage
+        aliases: ["Drill"]
+      mouldboard:
+        description: Mouldboard tillage
+        aliases: ["Mouldboard"]
+      ridge_till:
+        description: Ridge till
+        aliases: ["Ridge_Till"]
+      strip_tillage:
+        description: Strip tillage
+        aliases: ["Streip_Tillage"]
+      tined:
+        description: Tined tillage
+        aliases: ["Tined"]
+      zonal_tillage:
+        description: Zonal tillage
+        aliases: ["Zonal_Tillage"]
+
+  ProfilePositionEnum:
+    description: Soil profile positions
+    permissible_values:
+      backslope:
+        description: Backslope position
+        aliases: ["Backslope"]
+      footslope:
+        description: Footslope position
+        aliases: ["Footslope"]
+      shoulder:
+        description: Shoulder position
+        aliases: ["Shoulder"]
+      summit:
+        description: Summit position
+        aliases: ["Summit"]
+      toeslope:
+        description: Toeslope position
+        aliases: ["Toeslope"]
+
+  WindDirectionEnum:
+    description: Wind direction classifications
+    permissible_values:
+      north:
+        description: North wind direction
+      north_east:
+        description: Northeast wind direction
+        aliases: ["north east"]
+      east:
+        description: East wind direction
+      south_east:
+        description: Southeast wind direction
+        aliases: ["south east"]
+      south:
+        description: South wind direction
+      south_west:
+        description: Southwest wind direction
+        aliases: ["south west"]
+      west:
+        description: West wind direction
+      north_west:
+        description: Northwest wind direction
+        aliases: ["north west"]
+
+  DrainageClassEnum:
+    description: Soil drainage classifications
+    permissible_values:
+      excessively_drained:
+        description: Excessively drained soil
+        aliases: ["Excessively_Drained"]
+      moderately_well:
+        description: Moderately well drained soil
+        aliases: ["Moderately_Well"]
+      poorly:
+        description: Poorly drained soil
+        aliases: ["Poorly"]
+      somewhat_poorly:
+        description: Somewhat poorly drained soil
+        aliases: ["Somewhat_Poorly"]
+      very_poorly:
+        description: Very poorly drained soil
+        aliases: ["Very_Poorly"]
+      well:
+        description: Well drained soil
+        aliases: ["Well"]
+
+  SoilHorizonEnum:
+    description: Soil horizon classifications
+    permissible_values:
+      a_horizon:
+        description: A Horizon - topsoil
+        aliases: ["A_Horizon"]
+      b_horizon:
+        description: B Horizon - subsoil
+        aliases: ["B_Horizon"]
+      c_horizon:
+        description: C Horizon - parent material
+        aliases: ["C_Horizon"]
+      e_horizon:
+        description: E Horizon - eluviated layer
+        aliases: ["E_Horizon"]
+      o_horizon:
+        description: O Horizon - organic layer
+        aliases: ["O_Horizon"]
+      permafrost:
+        description: Permafrost layer
+        aliases: ["Permafrost"]
+      r_layer:
+        description: R Layer - bedrock
+        aliases: ["R_Layer"]
+
+  FaoClassEnum:
+    description: FAO soil classification system
+    permissible_values:
+      acrisols:
+        description: Acrisols
+        aliases: ["Acrisols"]
+      alisols:
+        description: Alisols
+        aliases: ["Alisols"]
+      andosols:
+        description: Andosols
+        aliases: ["Andosols"]
+      anthrosols:
+        description: Anthrosols
+        aliases: ["Anthrosols"]
+      arenosols:
+        description: Arenosols
+        aliases: ["Arenosols"]
+      calcisols:
+        description: Calcisols
+        aliases: ["Calcisols"]
+      cambisols:
+        description: Cambisols
+        aliases: ["Cambisols"]
+      chernozems:
+        description: Chernozems
+        aliases: ["Chernozems"]
+      cryosols:
+        description: Cryosols
+        aliases: ["Cryosols"]
+      durisols:
+        description: Durisols
+        aliases: ["Durisols"]
+      ferralsols:
+        description: Ferralsols
+        aliases: ["Ferrasols"]
+      fluvisols:
+        description: Fluvisols
+        aliases: ["Fluvisols"]
+      gleysols:
+        description: Gleysols
+        aliases: ["Gleysols"]
+      gypsisols:
+        description: Gypsisols
+        aliases: ["Gypsisols"]
+      histosols:
+        description: Histosols
+        aliases: ["Histosols"]
+      kastanozems:
+        description: Kastanozems
+        aliases: ["Kastanozems"]
+      leptosols:
+        description: Leptosols
+        aliases: ["Leptosols"]
+      lixisols:
+        description: Lixisols
+        aliases: ["Lixisols"]
+      luvisols:
+        description: Luvisols
+        aliases: ["Luvisols"]
+      nitisols:
+        description: Nitisols
+        aliases: ["Nitosols"]
+      phaeozems:
+        description: Phaeozems
+        aliases: ["Phaeozems"]
+      planosols:
+        description: Planosols
+        aliases: ["Planosols"]
+      plinthosols:
+        description: Plinthosols
+        aliases: ["Plinthosols"]
+      podzols:
+        description: Podzols
+        aliases: ["Podzols"]
+      solonchaks:
+        description: Solonchaks
+        aliases: ["Solonchaks"]
+      solonetz:
+        description: Solonetz
+        aliases: ["Solonetz"]
+      stagnosols:
+        description: Stagnosols
+        aliases: ["Stagnosols"]
+      technosols:
+        description: Technosols
+        aliases: ["Technosols"]
+      umbrisols:
+        description: Umbrisols
+        aliases: ["Umbrisols"]
+      vertisols:
+        description: Vertisols
+        aliases: ["Vertisols"]
+
+  SedimentTypeEnum:
+    description: Types of sediment
+    permissible_values:
+      biogenous:
+        description: Biogenous sediment
+      cosmogenous:
+        description: Cosmogenous sediment
+      hydrogenous:
+        description: Hydrogenous sediment
+      lithogenous:
+        description: Lithogenous sediment
+
+  SampleStoreTemp:
+    description: Sample storage temperature conditions
+    permissible_values:
+      fresh4:
+        description: Fresh storage at 4°C
+        aliases: ["4 C"]
+      freshroom:
+        description: Fresh storage at room temperature
+        aliases: ["room temperature"]
+      frozen20:
+        description: Frozen storage at -20°C
+        aliases: ["-20 C"]
+      frozen80:
+        description: Frozen storage at -80°C
+        aliases: ["-80 C"]
+      other:
+        description: Other storage temperature
+
+  StorageCondtEnum:
+    description: Sample storage conditions
+    permissible_values:
+      fresh:
+        description: Fresh sample
+      frozen:
+        description: Frozen sample
+      lyophilized:
+        description: Lyophilized (freeze-dried) sample
+      other:
+        description: Other storage condition
+
+  OxygenStatusEnum:
+    description: Oxygen status of samples
+    permissible_values:
+      aerobic:
+        description: Aerobic conditions
+      anaerobic:
+        description: Anaerobic conditions
+      anoxic:
+        description: Anoxic conditions
+      facultative:
+        description: Facultative conditions
+      microaerophilic:
+        description: Microaerophilic conditions
+      microanaerobe:
+        description: Microanaerobe conditions
+      oblifate_aerobe:
+        description: Obligate aerobe conditions
+        aliases: ["obligate_aerobe"]
+      obligate_anaerobe:
+        description: Obligate anaerobe conditions
+
+  SampBioticEnum:
+    description: Sample biotic relationships
+    permissible_values:
+      free_living:
+        description: Free-living organism
+      parasite:
+        description: Parasitic organism
+      commensal:
+        description: Commensal organism
+      symbiont:
+        description: Symbiotic organism
+
+  # DNA/RNA related enums from sample.py
+  SingleCellLysisAppr:
+    description: Single cell lysis approaches
+    permissible_values:
+      chemical:
+        description: Chemical lysis
+      enzymatic:
+        description: Enzymatic lysis
+      physical:
+        description: Physical lysis
+      combination:
+        description: Combination of approaches
+
+  DnaContTypeEnum:
+    description: DNA container types
+    permissible_values:
+      plate:
+        description: Plate container
+      tube:
+        description: Tube container
+
+  DnaDnaseEnum:
+    description: DNA DNase treatment status
+    permissible_values:
+      no:
+        description: No DNase treatment
+      yes:
+        description: DNase treatment applied
+
+  DnaSampleFormatEnum:
+    description: DNA sample format types
+    permissible_values:
+      tris_hcl:
+        description: 10 mM Tris-HCl buffer
+        aliases: ["Tris_HCl", "10 mM Tris-HCl"]
+      dna_stable:
+        description: DNAStable solution
+        aliases: ["DNAStable"]
+      ethanol:
+        description: Ethanol preservation
+        aliases: ["Ethanol"]
+      low_edta_te:
+        description: Low EDTA TE buffer
+        aliases: ["Low_EDTA_TE", "Low EDTA TE"]
+      mda_reaction_buffer:
+        description: MDA reaction buffer
+        aliases: ["MDA_reaction_buffer", "MDA reaction buffer"]
+      pbs:
+        description: Phosphate buffered saline
+        aliases: ["PBS"]
+      pellet:
+        description: Pellet form
+        aliases: ["Pellet"]
+      rna_stable:
+        description: RNAStable solution
+        aliases: ["RNAStable"]
+      te:
+        description: TE buffer
+        aliases: ["TE"]
+      water:
+        description: Water suspension
+        aliases: ["Water"]
+
+  LibLayoutEnum:
+    description: Library layout lighting conditions
+    permissible_values:
+      natural_light:
+        description: Natural light conditions
+        aliases: ["natural light"]
+      electric_light:
+        description: Electric light conditions
+        aliases: ["electric light"]
+      desk_lamp:
+        description: Desk lamp lighting
+        aliases: ["desk lamp"]
+      fluorescent_lights:
+        description: Fluorescent lighting
+        aliases: ["flourescent_lights", "flourescent lights"]
+      none:
+        description: No specific lighting
+
+  RnaContTypeEnum:
+    description: RNA container types
+    permissible_values:
+      plate:
+        description: Plate container
+      tube:
+        description: Tube container
+
+  RnaSampleFormatEnum:
+    description: RNA sample format types
+    permissible_values:
+      tris_hcl:
+        description: 10 mM Tris-HCl buffer
+        aliases: ["Tris_HCl", "10 mM Tris-HCl"]
+      dna_stable:
+        description: DNAStable solution
+        aliases: ["DNAStable"]
+      ethanol:
+        description: Ethanol preservation
+        aliases: ["Ethanol"]
+      low_edta_te:
+        description: Low EDTA TE buffer
+        aliases: ["Low_EDTA_TE", "Low EDTA TE"]
+      mda_reaction_buffer:
+        description: MDA reaction buffer
+        aliases: ["MDA_reaction_buffer", "MDA reaction buffer"]
+      pbs:
+        description: Phosphate buffered saline
+        aliases: ["PBS"]
+      pellet:
+        description: Pellet form
+        aliases: ["Pellet"]
+      rna_stable:
+        description: RNAStable solution
+        aliases: ["RNAStable"]
+      te:
+        description: TE buffer
+        aliases: ["TE"]
+      water:
+        description: Water suspension
+        aliases: ["Water"]
