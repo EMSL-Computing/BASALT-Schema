@@ -1,0 +1,102 @@
+---
+# Example of a complete database structure with samples and site metadata
+samples:
+  - id: "https://example.org/samples/SAMPLE_001"
+    name: "Agricultural soil sample"
+    description: "Surface soil from corn field"
+    sample_name: "CORN_FIELD_001"
+    proposal_id: 12345
+    sampling_set: "Midwest_Agricultural_2024"
+    sample_base_type: "sample"
+    sampling_activity_id: "https://example.org/activities/ACT_001"
+    sample_type: "soil"
+    soil_type: "surface_layer"
+    guid_source: "Laboratory generated"
+    
+  - id: "https://example.org/samples/SAMPLE_002"
+    name: "Forest soil sample"
+    description: "Organic layer from coniferous forest"
+    sample_name: "FOREST_ORG_002"
+    proposal_id: 12345
+    sampling_set: "Forest_Survey_2024"
+    sample_base_type: "sample"
+    sampling_activity_id: "https://example.org/activities/ACT_002"
+    sample_type: "soil"
+    soil_type: "surface_layer"
+    guid_source: "Field team generated"
+
+processed_samples:
+  - id: "https://example.org/processed_samples/REP_001_A"
+    name: "Replicate A of corn field sample"
+    description: "First replicate for elemental analysis"
+    sample_name: "CORN_FIELD_001_REP_A"
+    proposal_id: 12345
+    sampling_set: "Midwest_Agricultural_2024"
+    sample_base_type: "processed_sample"
+    processed_sample_type: "replicate"
+    rep: 1
+    
+  - id: "https://example.org/processed_samples/CORE_001_MID"
+    name: "Middle section of forest core"
+    description: "Middle 10cm section from forest soil core"
+    sample_name: "FOREST_CORE_001_MID"
+    proposal_id: 12345
+    sampling_set: "Forest_Deep_Core_2024"
+    sample_base_type: "processed_sample"
+    processed_sample_type: "coreSection"
+    core_section: "MID"
+
+site_metadata_collection:
+  - id: "https://example.org/site_metadata/SITE_001"
+    name: "Midwest agricultural site metadata"
+    description: "Climate data for corn field site"
+    cache_key: "a1b2c3d4e5f6789012345abcdef67890"
+    latitude: 41.8781
+    longitude: -87.6298
+    provider: "NASA_POWER"
+    enriched_at: "2024-09-17T14:22:00Z"
+    created_at: "2024-09-17T14:22:00Z"
+    nasa_climate_data:
+      nasa_mean_annual_temp_c:
+        numeric_value: 10.2
+        unit_code: "Cel"
+        unit_name: "degree Celsius"
+      nasa_mean_annual_precip_mm:
+        numeric_value: 850.5
+        unit_code: "mm"
+        unit_name: "millimeter"
+      nasa_max_annual_temp_c:
+        numeric_value: 16.1
+        unit_code: "Cel"
+        unit_name: "degree Celsius"
+      nasa_min_annual_temp_c:
+        numeric_value: 4.3
+        unit_code: "Cel"
+        unit_name: "degree Celsius"
+      
+  - id: "https://example.org/site_metadata/SITE_002"
+    name: "Pacific Northwest forest site metadata"
+    description: "Climate data for coniferous forest site"
+    cache_key: "f6e5d4c3b2a1098765432abcdef12345"
+    latitude: 47.6062
+    longitude: -122.3321
+    provider: "NASA_POWER"
+    enriched_at: "2024-09-17T14:25:00Z"
+    created_at: "2024-09-17T14:25:00Z"
+    nasa_climate_data:
+      nasa_mean_annual_temp_c:
+        numeric_value: 11.8
+        unit_code: "Cel"
+        unit_name: "degree Celsius"
+      nasa_mean_annual_precip_mm:
+        numeric_value: 1450.2
+        unit_code: "mm"
+        unit_name: "millimeter"
+      nasa_max_annual_temp_c:
+        numeric_value: 17.5
+        unit_code: "Cel"
+        unit_name: "degree Celsius"
+      nasa_min_annual_temp_c:
+        numeric_value: 6.1
+        unit_code: "Cel"
+        unit_name: "degree Celsius"
