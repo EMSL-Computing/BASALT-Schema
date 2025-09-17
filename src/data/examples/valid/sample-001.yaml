@@ -1,6 +1,13 @@
-# Example for a valid data object
 ---
-id: "001"
-name: foo bar
-primary_email: foo.bar@example.com
-age_in_years: 33
+# Example of a basic soil sample with metadata
+id: "https://example.org/samples/SAMPLE_001"
+name: "Soil sample from agricultural field"
+description: "Surface soil sample collected from agricultural field in Pacific Northwest"
+sample_name: "PNW_AG_001"
+proposal_id: 12345
+sampling_set: "PNW_Agricultural_Survey_2024"
+sample_base_type: "sample"
+sampling_activity_id: "https://example.org/activities/ACT_001"
+sample_type: "soil"
+soil_type: "surface_layer"
+guid_source: "Laboratory generated"
