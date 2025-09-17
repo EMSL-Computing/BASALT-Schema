@@ -1,0 +1,60 @@
+---
+# Example of site metadata with NASA climate enrichment
+id: "https://example.org/site_metadata/SITE_001"
+name: "Pacific Northwest Agricultural Site"
+description: "Site metadata for agricultural field with NASA climate data"
+cache_key: "2e4f8a1b3c9d7e6f5a4b8c2d1e9f3a5b"
+latitude: 45.1234
+longitude: -122.5678
+provider: "NASA_POWER"
+enriched_at: "2024-09-17T10:30:00Z"
+created_at: "2024-09-17T10:30:00Z"
+nasa_climate_data:
+  nasa_mean_annual_temp_c:
+    numeric_value: 12.5
+    unit_code: "Cel"
+    unit_name: "degree Celsius"
+  nasa_mean_annual_precip_mm:
+    numeric_value: 1200.0
+    unit_code: "mm" 
+    unit_name: "millimeter"
+  nasa_max_annual_temp_c:
+    numeric_value: 18.2
+    unit_code: "Cel"
+    unit_name: "degree Celsius"
+  nasa_min_annual_temp_c:
+    numeric_value: 6.8
+    unit_code: "Cel"
+    unit_name: "degree Celsius"
+  nasa_mean_wind_speed_ms:
+    numeric_value: 3.2
+    unit_code: "m/s"
+    unit_name: "meter per second"
+  nasa_mean_relative_humidity_pct:
+    numeric_value: 75.5
+    unit_code: "%"
+    unit_name: "percent"
+  nasa_frost_days_per_year:
+    numeric_value: 45.0
+    unit_code: "d"
+    unit_name: "day"
+  nasa_mean_dew_point_c:
+    numeric_value: 8.1
+    unit_code: "Cel"
+    unit_name: "degree Celsius"
+  nasa_mean_vapor_pressure_kpa:
+    numeric_value: 1.07
+    unit_code: "kPa"
+    unit_name: "kilopascal"
+  nasa_mean_surface_pressure_kpa:
+    numeric_value: 101.2
+    unit_code: "kPa"
+    unit_name: "kilopascal"
+  nasa_mean_shortwave_radiation_wm2:
+    numeric_value: 185.4
+    unit_code: "W/m2"
+    unit_name: "watt per square meter"
+  nasa_mean_longwave_radiation_wm2:
+    numeric_value: 295.8
+    unit_code: "W/m2"
+    unit_name: "watt per square meter"
