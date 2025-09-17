@@ -1,0 +1,11 @@
+---
+# Example of a processed sample with core section data
+id: "https://example.org/processed_samples/CORE_001_TOP"
+name: "Top section of soil core sample"
+description: "Top 10cm section from soil core sample"
+sample_name: "CORE_001_TOP_SECTION"
+proposal_id: 12345
+sampling_set: "Deep_Core_Survey_2024"
+sample_base_type: "processed_sample"
+processed_sample_type: "coreSection"
+core_section: "TOP"
