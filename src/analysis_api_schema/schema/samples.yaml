@@ -1,0 +1,333 @@
+---
+id: https://w3id.org/MONet/analysis-api-schema/samples
+name: analysis-api-schema-samples
+title: MONet Analysis API - Sample Schema
+description: |-
+  Core sample management schema for MONet soil analysis including samples, processed samples, and related entities
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+  uuid: https://w3id.org/uuid/
+default_prefix: analysis_api_schema
+default_range: string
+
+imports:
+  - linkml:types
+  - enums
+
+classes:
+  NamedThing:
+    description: A generic grouping for any identifiable entity
+    slots:
+      - id
+      - name
+      - description
+    class_uri: schema:Thing
+
+  SampleBase:
+    is_a: NamedThing
+    description: Base class for all sample entities in the MONet system
+    slots:
+      - sample_name
+      - proposal_id
+      - sampling_set
+      - sample_base_type
+    slot_usage:
+      id:
+        description: Unique UUID identifier for the sample
+        identifier: true
+        range: uriorcurie
+      sample_name:
+        description: The human readable name for the sample
+        required: false
+      proposal_id:
+        description: The 5 digit project ID assigned to an EMSL user proposal/project
+        required: false
+      sampling_set:
+        description: The name of the sample set if the sample is a part of a set of samples processed together
+        required: false
+      sample_base_type:
+        description: The base type of the sample entity
+        range: SampleBaseType
+        required: true
+
+  Sample:
+    is_a: SampleBase
+    description: A physical sample collected from the environment
+    slots:
+      - sampling_activity_id
+      - sample_type
+      - guid_source
+      - other_guid_source
+    slot_usage:
+      sample_base_type:
+        equals_string: "sample"
+      sampling_activity_id:
+        description: Reference to the sampling activity that collected this sample
+        range: uriorcurie
+        required: true
+      sample_type:
+        description: The type of sample (soil, aerosol, etc.)
+        range: SampleType
+        required: false
+      guid_source:
+        description: Indicate the source of the GUID that you have provided for your samples
+        required: false
+      other_guid_source:
+        description: Please specify if other GUID source
+        required: false
+
+  SoilSample:
+    is_a: Sample
+    description: A soil sample with specific soil-related properties
+    slots:
+      - soil_type
+    slot_usage:
+      sample_type:
+        equals_string: "soil"
+      soil_type:
+        description: The specific type of soil sample
+        range: SoilType
+        required: true
+
+  AerosolSample:
+    is_a: Sample
+    description: An aerosol sample with specific aerosol-related properties
+    slots:
+      - aerosol_type
+    slot_usage:
+      sample_type:
+        equals_string: "aerosol"
+      aerosol_type:
+        description: The type or method of aerosol collection
+        range: AerosolType
+        required: true
+
+  ProcessedSample:
+    is_a: SampleBase
+    description: A sample that has undergone processing or analysis
+    slots:
+      - processed_sample_type
+    slot_usage:
+      sample_base_type:
+        equals_string: "processed_sample"
+      processed_sample_type:
+        description: The type of processed sample
+        range: ProcessedSampleType
+        required: true
+
+  CoreSection:
+    is_a: ProcessedSample
+    description: A section of a core sample (TOP, MID, BTM)
+    slots:
+      - core_section
+    slot_usage:
+      processed_sample_type:
+        equals_string: "coreSection"
+      core_section:
+        description: The section of the core (e.g. TOP, MID, BTM)
+        range: CoreSectionEnum
+        required: true
+
+  Replicate:
+    is_a: ProcessedSample
+    description: A replicate or aliquot of a sample
+    slots:
+      - rep
+    slot_usage:
+      processed_sample_type:
+        equals_string: "replicate"
+      rep:
+        description: The replicate (or aliquot) number
+        range: integer
+        required: true
+
+  # Additional sample-related enums specific to samples
+  DNAData:
+    description: DNA-related data for molecular samples
+    slots:
+      - single_cell_lysis_approach
+      - dna_container_type
+      - dna_dnase_treatment
+      - dna_sample_format
+    slot_usage:
+      single_cell_lysis_approach:
+        description: Single cell lysis approach used
+        range: SingleCellLysisAppr
+        required: false
+      dna_container_type:
+        description: Type of container used for DNA storage
+        range: DnaContTypeEnum
+        required: false
+      dna_dnase_treatment:
+        description: Whether DNase treatment was applied
+        range: DnaDnaseEnum
+        required: false
+      dna_sample_format:
+        description: Format/buffer of the DNA sample
+        range: DnaSampleFormatEnum
+        required: false
+
+  RNAData:
+    description: RNA-related data for molecular samples
+    slots:
+      - rna_container_type
+      - rna_sample_format
+      - dnase_rna_treatment
+    slot_usage:
+      rna_container_type:
+        description: Type of container used for RNA storage
+        range: RnaContTypeEnum
+        required: false
+      rna_sample_format:
+        description: Format/buffer of the RNA sample
+        range: RnaSampleFormatEnum
+        required: false
+      dnase_rna_treatment:
+        description: Whether DNase treatment was applied to RNA
+        range: DnaseRnaEnum
+        required: false
+
+  LibraryData:
+    description: Library preparation data for sequencing samples
+    slots:
+      - lib_layout
+    slot_usage:
+      lib_layout:
+        description: Library layout or lighting conditions during preparation
+        range: LibLayoutEnum
+        required: false
+
+slots:
+  # Core identifiers and names
+  id:
+    identifier: true
+    slot_uri: schema:identifier
+    range: uriorcurie
+    description: A unique identifier for a thing
+
+  name:
+    slot_uri: schema:name
+    description: A human-readable name for a thing
+
+  description:
+    slot_uri: schema:description
+    description: A human-readable description for a thing
+
+  # SampleBase slots
+  sample_name:
+    description: The human readable name for the sample
+    range: string
+    required: false
+
+  proposal_id:
+    description: The 5 digit project ID assigned to an EMSL user proposal/project
+    range: integer
+    required: false
+
+  sampling_set:
+    description: The name of the sample set if the sample is a part of a set of samples processed together
+    range: string
+    required: false
+
+  sample_base_type:
+    description: The base type of the sample entity
+    range: SampleBaseType
+    required: true
+
+  # Sample slots
+  sampling_activity_id:
+    description: Reference to the sampling activity that collected this sample
+    range: uriorcurie
+    required: false
+
+  sample_type:
+    description: The type of sample
+    range: SampleType
+    required: false
+
+  guid_source:
+    description: Indicate the source of the GUID provided for samples
+    range: string
+    required: false
+
+  other_guid_source:
+    description: Please specify if other GUID source
+    range: string
+    required: false
+
+  # Soil sample slots
+  soil_type:
+    description: The specific type of soil sample
+    range: SoilType
+    required: false
+
+  # Aerosol sample slots
+  aerosol_type:
+    description: The type or method of aerosol collection
+    range: AerosolType
+    required: false
+
+  # Processed sample slots
+  processed_sample_type:
+    description: The type of processed sample
+    range: ProcessedSampleType
+    required: false
+
+  # Core section slots
+  core_section:
+    description: The section of the core
+    range: CoreSectionEnum
+    required: false
+
+  # Replicate slots
+  rep:
+    description: The replicate or aliquot number
+    range: integer
+    required: false
+
+  # DNA-related slots
+  single_cell_lysis_approach:
+    description: Single cell lysis approach used
+    range: SingleCellLysisAppr
+    required: false
+
+  dna_container_type:
+    description: Type of container used for DNA storage
+    range: DnaContTypeEnum
+    required: false
+
+  dna_dnase_treatment:
+    description: Whether DNase treatment was applied
+    range: DnaDnaseEnum
+    required: false
+
+  dna_sample_format:
+    description: Format/buffer of the DNA sample
+    range: DnaSampleFormatEnum
+    required: false
+
+  # RNA-related slots  
+  rna_container_type:
+    description: Type of container used for RNA storage
+    range: RnaContTypeEnum
+    required: false
+
+  rna_sample_format:
+    description: Format/buffer of the RNA sample
+    range: RnaSampleFormatEnum
+    required: false
+
+  dnase_rna_treatment:
+    description: Whether DNase treatment was applied to RNA
+    range: DnaseRnaEnum
+    required: false
+
+  # Library-related slots
+  lib_layout:
+    description: Library layout or lighting conditions during preparation
+    range: LibLayoutEnum
+    required: false
