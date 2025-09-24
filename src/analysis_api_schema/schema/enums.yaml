@@ -641,3 +641,11 @@ enums:
       water:
         description: Water suspension
         aliases: ["Water"]
+
+  DnaseRnaEnum:
+    description: DNase RNA treatment options
+    permissible_values:
+      yes:
+        description: DNase treatment was applied
+      no:
+        description: DNase treatment was not applied
