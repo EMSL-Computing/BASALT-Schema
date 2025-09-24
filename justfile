@@ -119,6 +119,11 @@ _gen-project: _ensure_pymodel_dir _compile_sheets
       poetry run gen-typescript {{gen_ts_args}} {{source_schema_path}} > {{dest}}/typescript/{{schema_name}}.ts || true ; \
     fi
 
+# Generate SQL DDL from schema
+gen-sql:
+    mkdir -p {{dest}}/sqlschema
+    poetry run python -c "from linkml.generators.sqltablegen import SQLTableGenerator; gen = SQLTableGenerator('{{source_schema_path}}'); print(gen.serialize())" > {{dest}}/sqlschema/{{schema_name}}_ddl.sql
+
 # Run all tests
 test: _test-schema _test-python _test-examples
 
