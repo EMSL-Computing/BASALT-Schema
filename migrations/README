@@ -1,0 +1,99 @@
+# Steps for SQLA Generation
+
+Install and activate the project
+
+```bash
+poetry install
+poetry env activate
+```
+
+```bash
+# delete the old revision test
+rm versions/revision_test.py
+
+gen-sqla src/analysis_api_schema/schema/analysis_api_schema.yaml > migrations/schema.py
+
+# On windows, Powershell will save as UTF-16LE 🤮 you can run this, or open and re-save with UTF-8
+Get-Content -Path "migrations/schema.py" | Set-Content -Path "migrations/schema.py" -Encoding UTF8
+
+# generate the migration
+alembic revision --autogenerate --rev-id="revision" -m "test"
+```
+
+# LinkML Dumping
+
+```bash
+schemauto.exe import-sql postgresql+psycopg2://developer:developer@localhost:5432/emsl1000soils > schema.yml
+```
+
+> NOTE! Many features of the Postgres DB _like UUID's_ are not captured by schemauto yet. **Don't rely on schemauto alone!**
+
+
+
+Generic single-database configuration.
+
+# Migration Commands
+
+```
+Usage: flask db [OPTIONS] COMMAND [ARGS]...
+
+  Perform database migrations.
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  branches   Show current branch points
+  current    Display the current revision for each database.
+  downgrade  Revert to a previous version
+  edit       Edit a revision file
+  heads      Show current available heads in the script directory
+  history    List changeset scripts in chronological order.
+  init       Creates a new migration repository.
+  merge      Merge two revisions together, creating a new revision file
+  migrate    Autogenerate a new revision file (Alias for 'revision...
+  revision   Create a new revision file.
+  show       Show the revision denoted by the given symbol.
+  stamp      'stamp' the revision table with the given revision; don't...
+  upgrade    Upgrade to a later version
+```
+
+
+
+```bash
+flask db migrate -m "Migration Message"
+
+flask db upgrade
+
+flask db downgrade
+```
+
+Look for `INFO  [alembic.env] No changes in schema detected.` in case no changes are detected.
+No migration file will be generated.
+
+# pip changes
+
+```bash
+pip install psycopg2-binary
+pip install --upgrade alembic
+pip install ruff
+
+pip install -e .
+```
+
+---
+
+kubectl get services -n analysis-api-dev
+
+kubectl apply -f k8s/flask-db-migration-job.yaml
+kubectl get jobs -n analysis-api-dev
+kubectl logs job/flask-db-migration -n analysis-api-dev
+
+kubectl delete job flask-db-migration -n analysis-api-dev
+
+
+
+kubectl exec -it deployment/web -n analysis-api-dev -- flask db history --verbose
+
+get pods -n analysis-api-dev
+kubectl port-forward web-postgresql-0 -n analysis-api-dev 5432:5435
