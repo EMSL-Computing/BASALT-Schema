@@ -13,11 +13,11 @@ cd migrations
 # delete the old revision test
 rm versions/revision_test.py
 
-gen-sqla ../src/analysis_api_schema/schema/analysis_api_schema.yaml > schema.py
+# gen-sqla ../src/analysis_api_schema/schema/analysis_api_schema.yaml > schema.py
 python sqlalchemygen.py ../src/analysis_api_schema/schema/analysis_api_schema.yaml > schema.py
 
 # On windows, Powershell will save as UTF-16LE 🤮 you can run this, or open and re-save with UTF-8
-Get-Content -Path "schema.py" | Set-Content -Path "schema.py" -Encoding UTF8
+python fix_encoding.py schema.py
 
 # generate the migration
 alembic revision --autogenerate --rev-id="revision" -m "test"

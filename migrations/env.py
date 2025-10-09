@@ -26,13 +26,37 @@ target_metadata = metadata
 # ... etc.
 
 
+def include_object(object, name, type_, reflected, compare_to):
+    """
+    Filter function to exclude certain objects from autogenerate.
+    Return False to exclude the object from migrations.
+    """
+    # Ignore any changes to study.participant_name column
+    if (type_ == "column" and
+        hasattr(object, 'table') and
+        object.table.name == 'study' and
+        name == 'participant_name'):
+        return False
+    
+    return True
+
+
 def compare_type(context, inspected_column, metadata_column, inspected_type, metadata_type):
     """
     Custom type comparison function to ignore certain type changes.
     Return False to ignore the difference, True to include it in migrations.
     
-    Right now only triggers for VARCHAR->Text
+    Right now triggers for
+    - VARCHAR->Text
+    - study.participant_name which is `ARRAY(VARCHAR)`
+    
     """
+    # Ignore specific migration for study.participant_name column
+    if (inspected_column.table.name == 'study' and
+        inspected_column.name == 'participant_name'):
+        print('working...')
+        return False
+    
     if (isinstance(inspected_type, VARCHAR) and isinstance(metadata_type, Text)) or \
        (isinstance(inspected_type, Text) and isinstance(metadata_type, VARCHAR)):
         return False
@@ -59,6 +83,7 @@ def run_migrations_offline() -> None:
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
         compare_type=compare_type,
+        include_object=include_object,
     )
 
     with context.begin_transaction():
@@ -84,6 +109,7 @@ def run_migrations_online() -> None:
             connection=connection,
             target_metadata=target_metadata,
             compare_type=compare_type,
+            include_object=include_object,
         )
 
         with context.begin_transaction():

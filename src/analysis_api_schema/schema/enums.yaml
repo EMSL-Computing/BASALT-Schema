@@ -17,7 +17,7 @@ imports:
 
 enums:
 
-  project_status:
+  projectstatus:
     permissible_values:
       STARTED:
       COMPLETED:

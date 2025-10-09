@@ -1,4 +1,4 @@
-
+﻿
 from sqlalchemy import Column, Index, Table, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.sqltypes import *
@@ -19,7 +19,7 @@ class Study(Base):
     participant_name = Column(Text())
     principal_investigator = Column(Text())
     collaborating_institution = Column(Text())
-    project_status = Column(Text(), nullable=False )
+    project_status = Column(Enum('STARTED', 'COMPLETED', 'CLOSED', 'EXTENDED', 'ACCEPTED', 'WITHDRAWN', name='projectstatus'))
     project_start = Column(DateTime())
     project_end = Column(DateTime())
     proposal_title = Column(Text())
@@ -90,10 +90,10 @@ class SamplingActivity(Base):
 
     id = Column(UUID(), primary_key=True, nullable=False )
     study_id = Column(UUID(), ForeignKey('study.id'), nullable=False )
-    type = Column(Enum('soil', 'water', 'air', 'plant', 'none', name='samplingactivitytype'))
-    sample_name = Column(Text())
+    type = Column(Enum('soil', 'water', 'air', 'plant', 'none', name='samplingactivitytype'), nullable=False )
+    sample_name = Column(Text(), nullable=False )
     lims_barcode = Column(Text())
-    alt_id = Column(UUID())
+    alt_id = Column(UUID(), ForeignKey('quantityValue.id'))
     elev_id = Column(UUID(), ForeignKey('quantityValue.id'))
     lat_lon_id = Column(UUID(), ForeignKey('geolocationValue.id'))
     growth_facil = Column(Enum('field', 'commercially_purchased', 'experimental_garden', 'field_incubation', 'greenhouse', 'growth_chamber', 'lab_incubation', 'open_top_chamber', 'other', name='growthfacilityenum'))
@@ -204,7 +204,7 @@ class SoilSample(Base):
     """
     __tablename__ = 'soil_sample'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
+    id = Column(UUID(), ForeignKey('sample.id'), primary_key=True, nullable=False )
     soil_type = Column(Enum('soil_core', 'surface_layer', name='soiltype'), nullable=False )
     
 
@@ -222,7 +222,7 @@ class AerosolSample(Base):
     """
     __tablename__ = 'aerosol_sample'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
+    id = Column(UUID(), ForeignKey('sample.id'), primary_key=True, nullable=False )
     aerosol_type = Column(Enum('sea_salt', 'dust', 'volcanic_ash', name='aerosoltype'), nullable=False )
     
 

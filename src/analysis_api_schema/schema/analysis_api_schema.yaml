@@ -33,12 +33,13 @@ classes:
       id:
         identifier: true
         range: uuid
-      participant_name:
-        required: true
+      participant_name: # TODO not quite correct
+        range: string
+        array: {}
       principal_investigator:
       collaborating_institution:
       project_status:
-        # range: projectstatus
+        range: projectstatus
       project_start:
         # range: date
         range: datetime
@@ -94,10 +95,12 @@ classes:
         required: true
       type:
         range: samplingactivitytype
+        required: true
       sample_name: # 60881_1_C2
+        required: true
       lims_barcode:
       alt_id:
-        range: uuid
+        range: quantityValue
       elev_id:
         range: quantityValue
       lat_lon_id:
@@ -205,7 +208,7 @@ classes:
     description: A soil sample with specific soil-related properties
     attributes:
       id:
-        range: uuid # TODO
+        range: sample
         identifier: true
       soil_type:
         description: The specific type of soil sample
@@ -216,7 +219,7 @@ classes:
     description: An aerosol sample with specific aerosol-related properties
     attributes:
       id:
-        range: uuid # TODO
+        range: sample
         identifier: true
       aerosol_type:
         description: The type or method of aerosol collection
