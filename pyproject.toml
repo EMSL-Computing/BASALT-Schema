@@ -17,12 +17,12 @@ requires-python = ">=3.9,<4.0"
 dynamic = ["version"]
 
 dependencies = [
-  "linkml-runtime (>=1.9.5,<2.0.0)",
   "schema-automator (==0.5.4rc1)",
   "quantulum3[classifier] (>=0.9.2,<0.10.0)",
   "psycopg2-binary (>=2.9.10,<3.0.0)",
   "alembic (>=1.16.5,<2.0.0)",
   "flask (>=3.1.2,<4.0.0)",
+  "linkml (==1.9.2)",
 ]
 
 [tool.poetry]
