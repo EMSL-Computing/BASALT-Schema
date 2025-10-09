@@ -13,7 +13,8 @@ cd migrations
 # delete the old revision test
 rm versions/revision_test.py
 
-gen-sqla src/analysis_api_schema/schema/analysis_api_schema.yaml > migrations/schema.py
+gen-sqla ../src/analysis_api_schema/schema/analysis_api_schema.yaml > schema.py
+python sqlalchemygen.py ../src/analysis_api_schema/schema/analysis_api_schema.yaml > schema.py
 
 # On windows, Powershell will save as UTF-16LE 🤮 you can run this, or open and re-save with UTF-8
 Get-Content -Path "migrations/schema.py" | Set-Content -Path "migrations/schema.py" -Encoding UTF8

@@ -23,9 +23,9 @@ default_prefix: analysis_api_schema
 default_range: string
 
 # IMPORTANT UUID's DONT EXIST
-types:
-  uuid:
-    base: string
+# types:
+#   uuid:
+#     base: string
 
 imports:
   - linkml:types
