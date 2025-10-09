@@ -16,6 +16,16 @@ imports:
   - linkml:types
 
 enums:
+
+  project_status:
+    permissible_values:
+      STARTED:
+      COMPLETED:
+      CLOSED:
+      EXTENDED:
+      ACCEPTED:
+      WITHDRAWN:
+
   samplebasetype:
     description: Base types for sample entities
     permissible_values:

@@ -22,11 +22,6 @@ prefixes:
 default_prefix: analysis_api_schema
 default_range: string
 
-# IMPORTANT UUID's DONT EXIST
-# types:
-#   uuid:
-#     base: string
-
 imports:
   - linkml:types
   - enums
@@ -39,6 +34,7 @@ classes:
         identifier: true
         range: uuid
       participant_name:
+        required: true
       principal_investigator:
       collaborating_institution:
       project_status:
@@ -53,6 +49,7 @@ classes:
       proposal_abstract:
       project_id:
         # range: project_id # like 60880
+        required: true
 
   quantityValue:
     description: A quantity value with numeric value and optional unit
@@ -68,9 +65,9 @@ classes:
         description: The numeric value of the quantity
         range: double
       has_minimum_numeric_value:
-        range: decimal
+        range: numeric
       has_maximum_numeric_value:
-        range: decimal
+        range: numeric
       has_raw_value:
 
   geolocationValue:
@@ -81,9 +78,9 @@ classes:
       description:
       has_raw_value:
       latitude:
-        range: decimal
+        range: numeric
       longitude:
-        range: decimal
+        range: numeric
       type:
       was_generated_by:
 
@@ -94,6 +91,7 @@ classes:
         range: uuid
       study_id:
         range: study
+        required: true
       type:
         range: samplingactivitytype
       sample_name: # 60881_1_C2

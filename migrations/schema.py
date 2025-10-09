@@ -19,12 +19,12 @@ class Study(Base):
     participant_name = Column(Text())
     principal_investigator = Column(Text())
     collaborating_institution = Column(Text())
-    project_status = Column(Text())
+    project_status = Column(Text(), nullable=False )
     project_start = Column(DateTime())
     project_end = Column(DateTime())
     proposal_title = Column(Text())
     proposal_abstract = Column(Text())
-    project_id = Column(Text())
+    project_id = Column(Text(), nullable=False )
     
 
     def __repr__(self):
@@ -46,8 +46,8 @@ class QuantityValue(Base):
     has_value_unit = Column(Text())
     has_unit = Column(Text())
     has_numeric_value = Column(Float())
-    has_minimum_numeric_value = Column(Integer())
-    has_maximum_numeric_value = Column(Integer())
+    has_minimum_numeric_value = Column(Numeric())
+    has_maximum_numeric_value = Column(Numeric())
     has_raw_value = Column(Text())
     
 
@@ -68,8 +68,8 @@ class GeolocationValue(Base):
     id = Column(UUID(), primary_key=True, nullable=False )
     description = Column(Text())
     has_raw_value = Column(Text())
-    latitude = Column(Integer())
-    longitude = Column(Integer())
+    latitude = Column(Numeric())
+    longitude = Column(Numeric())
     type = Column(Text())
     was_generated_by = Column(Text())
     
@@ -89,7 +89,7 @@ class SamplingActivity(Base):
     __tablename__ = 'samplingActivity'
 
     id = Column(UUID(), primary_key=True, nullable=False )
-    study_id = Column(UUID(), ForeignKey('study.id'))
+    study_id = Column(UUID(), ForeignKey('study.id'), nullable=False )
     type = Column(Enum('soil', 'water', 'air', 'plant', 'none', name='samplingactivitytype'))
     sample_name = Column(Text())
     lims_barcode = Column(Text())

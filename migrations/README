@@ -17,7 +17,7 @@ gen-sqla ../src/analysis_api_schema/schema/analysis_api_schema.yaml > schema.py
 python sqlalchemygen.py ../src/analysis_api_schema/schema/analysis_api_schema.yaml > schema.py
 
 # On windows, Powershell will save as UTF-16LE 🤮 you can run this, or open and re-save with UTF-8
-Get-Content -Path "migrations/schema.py" | Set-Content -Path "migrations/schema.py" -Encoding UTF8
+Get-Content -Path "schema.py" | Set-Content -Path "schema.py" -Encoding UTF8
 
 # generate the migration
 alembic revision --autogenerate --rev-id="revision" -m "test"

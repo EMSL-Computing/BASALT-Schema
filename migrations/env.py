@@ -2,6 +2,7 @@ from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
+from sqlalchemy import VARCHAR, Text
 
 from alembic import context
 
@@ -25,6 +26,20 @@ target_metadata = metadata
 # ... etc.
 
 
+def compare_type(context, inspected_column, metadata_column, inspected_type, metadata_type):
+    """
+    Custom type comparison function to ignore certain type changes.
+    Return False to ignore the difference, True to include it in migrations.
+    
+    Right now only triggers for VARCHAR->Text
+    """
+    if (isinstance(inspected_type, VARCHAR) and isinstance(metadata_type, Text)) or \
+       (isinstance(inspected_type, Text) and isinstance(metadata_type, VARCHAR)):
+        return False
+    
+    return None
+
+
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode.
 
@@ -43,6 +58,7 @@ def run_migrations_offline() -> None:
         target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
+        compare_type=compare_type,
     )
 
     with context.begin_transaction():
@@ -65,8 +81,9 @@ def run_migrations_online() -> None:
     
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, 
-            target_metadata=target_metadata
+            connection=connection,
+            target_metadata=target_metadata,
+            compare_type=compare_type,
         )
 
         with context.begin_transaction():
