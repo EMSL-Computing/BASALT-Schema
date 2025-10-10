@@ -16,7 +16,17 @@ imports:
   - linkml:types
 
 enums:
-  SampleBaseType:
+
+  projectstatus:
+    permissible_values:
+      STARTED:
+      COMPLETED:
+      CLOSED:
+      EXTENDED:
+      ACCEPTED:
+      WITHDRAWN:
+
+  samplebasetype:
     description: Base types for sample entities
     permissible_values:
       sample:
@@ -24,7 +34,7 @@ enums:
       processed_sample:
         description: A sample that has undergone processing
 
-  SampleType:
+  sampletype:
     description: Types of samples that can be collected
     permissible_values:
       soil:
@@ -34,7 +44,7 @@ enums:
         description: Aerosol sample
         aliases: ["aerosol_sample"]
 
-  SoilType:
+  soiltype:
     description: Specific types of soil samples
     permissible_values:
       soil_core:
@@ -42,7 +52,7 @@ enums:
       surface_layer:
         description: Surface layer soil sample
 
-  AerosolType:
+  aerosoltype:
     description: Types of aerosol samples
     permissible_values:
       sea_salt:
@@ -52,7 +62,7 @@ enums:
       volcanic_ash:
         description: Volcanic ash aerosol
 
-  ProcessedSampleType:
+  processedsampletype:
     description: Types of processed samples
     permissible_values:
       analyte:
@@ -62,7 +72,7 @@ enums:
       replicate:
         description: Replicate sample
 
-  CoreSectionEnum:
+  coresectionenum:
     description: Sections of a core sample
     permissible_values:
       TOP:
@@ -72,7 +82,7 @@ enums:
       MID:
         description: Middle section of core
 
-  SamplingActivityType:
+  samplingactivitytype:
     description: Types of sampling activities
     permissible_values:
       soil:
@@ -87,7 +97,7 @@ enums:
         description: No specific activity type
         aliases: ["None"]
 
-  NeonDomainEnum:
+  neondomainenum:
     description: NEON ecological domains
     permissible_values:
       northeast:
@@ -133,7 +143,7 @@ enums:
       pacific_tropical:
         description: Pacific Tropical domain
 
-  GrowthFacilityEnum:
+  growthfacilityenum:
     description: Types of growth facilities
     permissible_values:
       field:
@@ -155,7 +165,7 @@ enums:
       other:
         description: Other growth facility type
 
-  LandUseEnum:
+  landuseenum:
     description: Land use classifications
     permissible_values:
       badlands:
@@ -229,7 +239,7 @@ enums:
       vine_crops:
         description: Vine crops (grapes)
 
-  TillageEnum:
+  tillageenum:
     description: Tillage methods
     permissible_values:
       chisel:
@@ -260,7 +270,7 @@ enums:
         description: Zonal tillage
         aliases: ["Zonal_Tillage"]
 
-  ProfilePositionEnum:
+  profilepositionenum:
     description: Soil profile positions
     permissible_values:
       backslope:
@@ -279,7 +289,7 @@ enums:
         description: Toeslope position
         aliases: ["Toeslope"]
 
-  WindDirectionEnum:
+  winddirectionenum:
     description: Wind direction classifications
     permissible_values:
       north:
@@ -303,7 +313,7 @@ enums:
         description: Northwest wind direction
         aliases: ["north west"]
 
-  DrainageClassEnum:
+  drainageclassenum:
     description: Soil drainage classifications
     permissible_values:
       excessively_drained:
@@ -325,7 +335,7 @@ enums:
         description: Well drained soil
         aliases: ["Well"]
 
-  SoilHorizonEnum:
+  soilhorizonenum:
     description: Soil horizon classifications
     permissible_values:
       a_horizon:
@@ -350,7 +360,7 @@ enums:
         description: R Layer - bedrock
         aliases: ["R_Layer"]
 
-  FaoClassEnum:
+  faoclassenum:
     description: FAO soil classification system
     permissible_values:
       acrisols:
@@ -444,7 +454,7 @@ enums:
         description: Vertisols
         aliases: ["Vertisols"]
 
-  SedimentTypeEnum:
+  sedimenttypeenum:
     description: Types of sediment
     permissible_values:
       biogenous:
@@ -456,7 +466,7 @@ enums:
       lithogenous:
         description: Lithogenous sediment
 
-  SampleStoreTemp:
+  samplestoretemp:
     description: Sample storage temperature conditions
     permissible_values:
       fresh4:
@@ -474,7 +484,7 @@ enums:
       other:
         description: Other storage temperature
 
-  StorageCondtEnum:
+  storagecondtenum:
     description: Sample storage conditions
     permissible_values:
       fresh:
@@ -486,7 +496,7 @@ enums:
       other:
         description: Other storage condition
 
-  OxygenStatusEnum:
+  oxygenstatusenum:
     description: Oxygen status of samples
     permissible_values:
       aerobic:
@@ -507,7 +517,7 @@ enums:
       obligate_anaerobe:
         description: Obligate anaerobe conditions
 
-  SampBioticEnum:
+  sampbioticenum:
     description: Sample biotic relationships
     permissible_values:
       free_living:
@@ -518,134 +528,3 @@ enums:
         description: Commensal organism
       symbiont:
         description: Symbiotic organism
-
-  # DNA/RNA related enums from sample.py
-  SingleCellLysisAppr:
-    description: Single cell lysis approaches
-    permissible_values:
-      chemical:
-        description: Chemical lysis
-      enzymatic:
-        description: Enzymatic lysis
-      physical:
-        description: Physical lysis
-      combination:
-        description: Combination of approaches
-
-  DnaContTypeEnum:
-    description: DNA container types
-    permissible_values:
-      plate:
-        description: Plate container
-      tube:
-        description: Tube container
-
-  DnaDnaseEnum:
-    description: DNA DNase treatment status
-    permissible_values:
-      no:
-        description: No DNase treatment
-      yes:
-        description: DNase treatment applied
-
-  DnaSampleFormatEnum:
-    description: DNA sample format types
-    permissible_values:
-      tris_hcl:
-        description: 10 mM Tris-HCl buffer
-        aliases: ["Tris_HCl", "10 mM Tris-HCl"]
-      dna_stable:
-        description: DNAStable solution
-        aliases: ["DNAStable"]
-      ethanol:
-        description: Ethanol preservation
-        aliases: ["Ethanol"]
-      low_edta_te:
-        description: Low EDTA TE buffer
-        aliases: ["Low_EDTA_TE", "Low EDTA TE"]
-      mda_reaction_buffer:
-        description: MDA reaction buffer
-        aliases: ["MDA_reaction_buffer", "MDA reaction buffer"]
-      pbs:
-        description: Phosphate buffered saline
-        aliases: ["PBS"]
-      pellet:
-        description: Pellet form
-        aliases: ["Pellet"]
-      rna_stable:
-        description: RNAStable solution
-        aliases: ["RNAStable"]
-      te:
-        description: TE buffer
-        aliases: ["TE"]
-      water:
-        description: Water suspension
-        aliases: ["Water"]
-
-  LibLayoutEnum:
-    description: Library layout lighting conditions
-    permissible_values:
-      natural_light:
-        description: Natural light conditions
-        aliases: ["natural light"]
-      electric_light:
-        description: Electric light conditions
-        aliases: ["electric light"]
-      desk_lamp:
-        description: Desk lamp lighting
-        aliases: ["desk lamp"]
-      fluorescent_lights:
-        description: Fluorescent lighting
-        aliases: ["flourescent_lights", "flourescent lights"]
-      none:
-        description: No specific lighting
-
-  RnaContTypeEnum:
-    description: RNA container types
-    permissible_values:
-      plate:
-        description: Plate container
-      tube:
-        description: Tube container
-
-  RnaSampleFormatEnum:
-    description: RNA sample format types
-    permissible_values:
-      tris_hcl:
-        description: 10 mM Tris-HCl buffer
-        aliases: ["Tris_HCl", "10 mM Tris-HCl"]
-      dna_stable:
-        description: DNAStable solution
-        aliases: ["DNAStable"]
-      ethanol:
-        description: Ethanol preservation
-        aliases: ["Ethanol"]
-      low_edta_te:
-        description: Low EDTA TE buffer
-        aliases: ["Low_EDTA_TE", "Low EDTA TE"]
-      mda_reaction_buffer:
-        description: MDA reaction buffer
-        aliases: ["MDA_reaction_buffer", "MDA reaction buffer"]
-      pbs:
-        description: Phosphate buffered saline
-        aliases: ["PBS"]
-      pellet:
-        description: Pellet form
-        aliases: ["Pellet"]
-      rna_stable:
-        description: RNAStable solution
-        aliases: ["RNAStable"]
-      te:
-        description: TE buffer
-        aliases: ["TE"]
-      water:
-        description: Water suspension
-        aliases: ["Water"]
-
-  DnaseRnaEnum:
-    description: DNase RNA treatment options
-    permissible_values:
-      yes:
-        description: DNase treatment was applied
-      no:
-        description: DNase treatment was not applied

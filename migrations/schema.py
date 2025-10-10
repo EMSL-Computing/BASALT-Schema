@@ -1,4 +1,4 @@
-
+﻿
 from sqlalchemy import Column, Index, Table, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.sqltypes import *
@@ -9,107 +9,26 @@ Base = declarative_base()
 metadata = Base.metadata
 
 
-class Database(Base):
+class Study(Base):
     """
-    Root container for all MONet analysis data including samples, processed samples, and site metadata
+    
     """
-    __tablename__ = 'Database'
+    __tablename__ = 'study'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    
-    
-    # One-To-Many: OneToAnyMapping(source_class='Database', source_slot='samples', mapping_type=None, target_class='Sample', target_slot='Database_id', join_class=None, uses_join_table=None, multivalued=False)
-    samples = relationship( "Sample", foreign_keys="[Sample.Database_id]")
-    
-    
-    # One-To-Many: OneToAnyMapping(source_class='Database', source_slot='processed_samples', mapping_type=None, target_class='ProcessedSample', target_slot='Database_id', join_class=None, uses_join_table=None, multivalued=False)
-    processed_samples = relationship( "ProcessedSample", foreign_keys="[ProcessedSample.Database_id]")
-    
-    
-    # One-To-Many: OneToAnyMapping(source_class='Database', source_slot='site_metadata_collection', mapping_type=None, target_class='SiteMetadata', target_slot='Database_id', join_class=None, uses_join_table=None, multivalued=False)
-    site_metadata_collection = relationship( "SiteMetadata", foreign_keys="[SiteMetadata.Database_id]")
+    id = Column(UUID(), primary_key=True, nullable=False )
+    participant_name = Column(Text())
+    principal_investigator = Column(Text())
+    collaborating_institution = Column(Text())
+    project_status = Column(Enum('STARTED', 'COMPLETED', 'CLOSED', 'EXTENDED', 'ACCEPTED', 'WITHDRAWN', name='projectstatus'))
+    project_start = Column(DateTime())
+    project_end = Column(DateTime())
+    proposal_title = Column(Text())
+    proposal_abstract = Column(Text())
+    project_id = Column(Text(), nullable=False )
     
 
     def __repr__(self):
-        return f"Database(id={self.id},)"
-
-
-
-    
-
-
-class NamedThing(Base):
-    """
-    A generic grouping for any identifiable entity
-    """
-    __tablename__ = 'NamedThing'
-
-    id = Column(Text(), primary_key=True, nullable=False )
-    name = Column(Text())
-    description = Column(Text())
-    
-
-    def __repr__(self):
-        return f"NamedThing(id={self.id},name={self.name},description={self.description},)"
-
-
-
-    
-
-
-class DNAData(Base):
-    """
-    DNA-related data for molecular samples
-    """
-    __tablename__ = 'DNAData'
-
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    single_cell_lysis_approach = Column(Enum('chemical', 'enzymatic', 'physical', 'combination', name='SingleCellLysisAppr'))
-    dna_container_type = Column(Enum('plate', 'tube', name='DnaContTypeEnum'))
-    dna_dnase_treatment = Column(Enum('False', 'True', name='DnaDnaseEnum'))
-    dna_sample_format = Column(Enum('tris_hcl', 'dna_stable', 'ethanol', 'low_edta_te', 'mda_reaction_buffer', 'pbs', 'pellet', 'rna_stable', 'te', 'water', name='DnaSampleFormatEnum'))
-    
-
-    def __repr__(self):
-        return f"DNAData(id={self.id},single_cell_lysis_approach={self.single_cell_lysis_approach},dna_container_type={self.dna_container_type},dna_dnase_treatment={self.dna_dnase_treatment},dna_sample_format={self.dna_sample_format},)"
-
-
-
-    
-
-
-class RNAData(Base):
-    """
-    RNA-related data for molecular samples
-    """
-    __tablename__ = 'RNAData'
-
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    rna_container_type = Column(Enum('plate', 'tube', name='RnaContTypeEnum'))
-    rna_sample_format = Column(Enum('tris_hcl', 'dna_stable', 'ethanol', 'low_edta_te', 'mda_reaction_buffer', 'pbs', 'pellet', 'rna_stable', 'te', 'water', name='RnaSampleFormatEnum'))
-    dnase_rna_treatment = Column(Enum('True', 'False', name='DnaseRnaEnum'))
-    
-
-    def __repr__(self):
-        return f"RNAData(id={self.id},rna_container_type={self.rna_container_type},rna_sample_format={self.rna_sample_format},dnase_rna_treatment={self.dnase_rna_treatment},)"
-
-
-
-    
-
-
-class LibraryData(Base):
-    """
-    Library preparation data for sequencing samples
-    """
-    __tablename__ = 'LibraryData'
-
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    lib_layout = Column(Enum('natural_light', 'electric_light', 'desk_lamp', 'fluorescent_lights', 'none', name='LibLayoutEnum'))
-    
-
-    def __repr__(self):
-        return f"LibraryData(id={self.id},lib_layout={self.lib_layout},)"
+        return f"study(id={self.id},participant_name={self.participant_name},principal_investigator={self.principal_investigator},collaborating_institution={self.collaborating_institution},project_status={self.project_status},project_start={self.project_start},project_end={self.project_end},proposal_title={self.proposal_title},proposal_abstract={self.proposal_abstract},project_id={self.project_id},)"
 
 
 
@@ -120,374 +39,252 @@ class QuantityValue(Base):
     """
     A quantity value with numeric value and optional unit
     """
-    __tablename__ = 'QuantityValue'
+    __tablename__ = 'quantityValue'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    numeric_value = Column(Float(), nullable=False )
-    unit_code = Column(Text())
-    unit_name = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    description = Column(Text())
+    has_value_unit = Column(Text())
+    has_unit = Column(Text())
+    has_numeric_value = Column(Float())
+    has_minimum_numeric_value = Column(Numeric())
+    has_maximum_numeric_value = Column(Numeric())
+    has_raw_value = Column(Text())
     
 
     def __repr__(self):
-        return f"QuantityValue(id={self.id},numeric_value={self.numeric_value},unit_code={self.unit_code},unit_name={self.unit_name},)"
+        return f"quantityValue(id={self.id},description={self.description},has_value_unit={self.has_value_unit},has_unit={self.has_unit},has_numeric_value={self.has_numeric_value},has_minimum_numeric_value={self.has_minimum_numeric_value},has_maximum_numeric_value={self.has_maximum_numeric_value},has_raw_value={self.has_raw_value},)"
 
 
 
     
 
 
-class NASAClimateData(Base):
+class GeolocationValue(Base):
     """
-    Climate data from NASA POWER service
+    
     """
-    __tablename__ = 'NASAClimateData'
+    __tablename__ = 'geolocationValue'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    nasa_mean_annual_temp_c_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    nasa_mean_annual_temp_c = relationship("QuantityValue", uselist=False, foreign_keys=[nasa_mean_annual_temp_c_id])
-    nasa_mean_annual_precip_mm_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    nasa_mean_annual_precip_mm = relationship("QuantityValue", uselist=False, foreign_keys=[nasa_mean_annual_precip_mm_id])
-    nasa_max_annual_temp_c_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    nasa_max_annual_temp_c = relationship("QuantityValue", uselist=False, foreign_keys=[nasa_max_annual_temp_c_id])
-    nasa_min_annual_temp_c_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    nasa_min_annual_temp_c = relationship("QuantityValue", uselist=False, foreign_keys=[nasa_min_annual_temp_c_id])
-    nasa_mean_wind_speed_ms_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    nasa_mean_wind_speed_ms = relationship("QuantityValue", uselist=False, foreign_keys=[nasa_mean_wind_speed_ms_id])
-    nasa_mean_relative_humidity_pct_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    nasa_mean_relative_humidity_pct = relationship("QuantityValue", uselist=False, foreign_keys=[nasa_mean_relative_humidity_pct_id])
-    nasa_frost_days_per_year_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    nasa_frost_days_per_year = relationship("QuantityValue", uselist=False, foreign_keys=[nasa_frost_days_per_year_id])
-    nasa_mean_dew_point_c_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    nasa_mean_dew_point_c = relationship("QuantityValue", uselist=False, foreign_keys=[nasa_mean_dew_point_c_id])
-    nasa_mean_vapor_pressure_kpa_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    nasa_mean_vapor_pressure_kpa = relationship("QuantityValue", uselist=False, foreign_keys=[nasa_mean_vapor_pressure_kpa_id])
-    nasa_mean_surface_pressure_kpa_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    nasa_mean_surface_pressure_kpa = relationship("QuantityValue", uselist=False, foreign_keys=[nasa_mean_surface_pressure_kpa_id])
-    nasa_mean_shortwave_radiation_wm2_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    nasa_mean_shortwave_radiation_wm2 = relationship("QuantityValue", uselist=False, foreign_keys=[nasa_mean_shortwave_radiation_wm2_id])
-    nasa_mean_longwave_radiation_wm2_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    nasa_mean_longwave_radiation_wm2 = relationship("QuantityValue", uselist=False, foreign_keys=[nasa_mean_longwave_radiation_wm2_id])
+    id = Column(UUID(), primary_key=True, nullable=False )
+    description = Column(Text())
+    has_raw_value = Column(Text())
+    latitude = Column(Numeric())
+    longitude = Column(Numeric())
+    type = Column(Text())
+    was_generated_by = Column(Text())
     
 
     def __repr__(self):
-        return f"NASAClimateData(id={self.id},nasa_mean_annual_temp_c_id={self.nasa_mean_annual_temp_c_id},nasa_mean_annual_precip_mm_id={self.nasa_mean_annual_precip_mm_id},nasa_max_annual_temp_c_id={self.nasa_max_annual_temp_c_id},nasa_min_annual_temp_c_id={self.nasa_min_annual_temp_c_id},nasa_mean_wind_speed_ms_id={self.nasa_mean_wind_speed_ms_id},nasa_mean_relative_humidity_pct_id={self.nasa_mean_relative_humidity_pct_id},nasa_frost_days_per_year_id={self.nasa_frost_days_per_year_id},nasa_mean_dew_point_c_id={self.nasa_mean_dew_point_c_id},nasa_mean_vapor_pressure_kpa_id={self.nasa_mean_vapor_pressure_kpa_id},nasa_mean_surface_pressure_kpa_id={self.nasa_mean_surface_pressure_kpa_id},nasa_mean_shortwave_radiation_wm2_id={self.nasa_mean_shortwave_radiation_wm2_id},nasa_mean_longwave_radiation_wm2_id={self.nasa_mean_longwave_radiation_wm2_id},)"
+        return f"geolocationValue(id={self.id},description={self.description},has_raw_value={self.has_raw_value},latitude={self.latitude},longitude={self.longitude},type={self.type},was_generated_by={self.was_generated_by},)"
 
 
 
     
 
 
-class WorldClimData(Base):
+class SamplingActivity(Base):
     """
-    Climate data from WorldClim service (placeholder for future implementation)
+    
     """
-    __tablename__ = 'WorldClimData'
+    __tablename__ = 'samplingActivity'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    worldclim_bio1_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    worldclim_bio1 = relationship("QuantityValue", uselist=False, foreign_keys=[worldclim_bio1_id])
-    worldclim_bio12_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    worldclim_bio12 = relationship("QuantityValue", uselist=False, foreign_keys=[worldclim_bio12_id])
+    id = Column(UUID(), primary_key=True, nullable=False )
+    study_id = Column(UUID(), ForeignKey('study.id'), nullable=False )
+    type = Column(Enum('soil', 'water', 'air', 'plant', 'none', name='samplingactivitytype'), nullable=False )
+    sample_name = Column(Text(), nullable=False )
+    lims_barcode = Column(Text())
+    alt_id = Column(UUID(), ForeignKey('quantityValue.id'))
+    elev_id = Column(UUID(), ForeignKey('quantityValue.id'))
+    lat_lon_id = Column(UUID(), ForeignKey('geolocationValue.id'))
+    growth_facil = Column(Enum('field', 'commercially_purchased', 'experimental_garden', 'field_incubation', 'greenhouse', 'growth_chamber', 'lab_incubation', 'open_top_chamber', 'other', name='growthfacilityenum'))
+    other_growth_facil = Column(Text())
+    other_storage_condt = Column(Text())
+    oxygen_relationship = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'oblifate_aerobe', 'obligate_anaerobe', name='oxygenstatusenum'))
+    sample_store_temp = Column(Enum('fresh4', 'freshroom', 'frozen20', 'frozen80', 'other', name='samplestoretemp'))
+    samp_biotic_relationship = Column(Enum('free_living', 'parasite', 'commensal', 'symbiont', name='sampbioticenum'))
+    storage_condt = Column(Enum('fresh', 'frozen', 'lyophilized', 'other', name='storagecondtenum'))
+    air_temp_regm = Column(Text())
+    chem_administration = Column(Text())
+    collection_date = Column(DateTime())
+    collection_time = Column(DateTime())
+    env_broad_scale_other = Column(Text())
+    env_local_scale_other = Column(Text())
+    env_medium_other = Column(Text())
+    experimental_factor = Column(Text())
+    experimental_factor_other = Column(Text())
+    extraction_method = Column(Text())
+    extreme_event = Column(DateTime())
+    gaseous_environment = Column(Text())
+    geo_loc_name = Column(Text())
+    humidity_regm = Column(Text())
+    isotope_exposure = Column(Text())
+    light_regm = Column(Text())
+    link_addit_analys = Column(Text())
+    method_development = Column(Text())
+    microbial_biomass_c_meth = Column(Text())
+    microbial_biomass_meth = Column(Text())
+    microbial_biomass_n_meth = Column(Text())
+    misc_param = Column(Text())
+    neon_plot_id = Column(Text())
+    non_microb_biomass_method = Column(Text())
+    other_sample_store_temp = Column(Text())
+    other_treatment = Column(Text())
+    ph = Column(Float())
+    ph_meth = Column(Text())
+    salinity = Column(Float())
+    salinity_method = Column(Text())
+    sample_collected = Column(Text())
+    sample_collection_dev = Column(Text())
+    sample_collection_method = Column(Text())
+    sample_end_time = Column(DateTime())
+    sample_processing = Column(Text())
+    sample_start_time = Column(DateTime())
+    season_environment = Column(Text())
+    shipped_sample_size = Column(Text())
+    sieving = Column(Text())
+    start_date_inc = Column(DateTime())
+    tot_nitro_cont_meth = Column(Text())
+    tot_org_c_meth = Column(Text())
+    watering_regm = Column(Text())
     
 
     def __repr__(self):
-        return f"WorldClimData(id={self.id},worldclim_bio1_id={self.worldclim_bio1_id},worldclim_bio12_id={self.worldclim_bio12_id},)"
+        return f"samplingActivity(id={self.id},study_id={self.study_id},type={self.type},sample_name={self.sample_name},lims_barcode={self.lims_barcode},alt_id={self.alt_id},elev_id={self.elev_id},lat_lon_id={self.lat_lon_id},growth_facil={self.growth_facil},other_growth_facil={self.other_growth_facil},other_storage_condt={self.other_storage_condt},oxygen_relationship={self.oxygen_relationship},sample_store_temp={self.sample_store_temp},samp_biotic_relationship={self.samp_biotic_relationship},storage_condt={self.storage_condt},air_temp_regm={self.air_temp_regm},chem_administration={self.chem_administration},collection_date={self.collection_date},collection_time={self.collection_time},env_broad_scale_other={self.env_broad_scale_other},env_local_scale_other={self.env_local_scale_other},env_medium_other={self.env_medium_other},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},extreme_event={self.extreme_event},gaseous_environment={self.gaseous_environment},geo_loc_name={self.geo_loc_name},humidity_regm={self.humidity_regm},isotope_exposure={self.isotope_exposure},light_regm={self.light_regm},link_addit_analys={self.link_addit_analys},method_development={self.method_development},microbial_biomass_c_meth={self.microbial_biomass_c_meth},microbial_biomass_meth={self.microbial_biomass_meth},microbial_biomass_n_meth={self.microbial_biomass_n_meth},misc_param={self.misc_param},neon_plot_id={self.neon_plot_id},non_microb_biomass_method={self.non_microb_biomass_method},other_sample_store_temp={self.other_sample_store_temp},other_treatment={self.other_treatment},ph={self.ph},ph_meth={self.ph_meth},salinity={self.salinity},salinity_method={self.salinity_method},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},sample_end_time={self.sample_end_time},sample_processing={self.sample_processing},sample_start_time={self.sample_start_time},season_environment={self.season_environment},shipped_sample_size={self.shipped_sample_size},sieving={self.sieving},start_date_inc={self.start_date_inc},tot_nitro_cont_meth={self.tot_nitro_cont_meth},tot_org_c_meth={self.tot_org_c_meth},watering_regm={self.watering_regm},)"
 
 
 
     
 
 
-class ElevationData(Base):
+class SampleBase(Base):
     """
-    Elevation data from various providers
+    
     """
-    __tablename__ = 'ElevationData'
+    __tablename__ = 'sampleBase'
 
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    elevation_source = Column(Text())
-    elevation_m_id = Column(Integer(), ForeignKey('QuantityValue.id'))
-    elevation_m = relationship("QuantityValue", uselist=False, foreign_keys=[elevation_m_id])
-    
-
-    def __repr__(self):
-        return f"ElevationData(id={self.id},elevation_source={self.elevation_source},elevation_m_id={self.elevation_m_id},)"
-
-
-
-    
-
-
-class SiteMetadataCollection(Base):
-    """
-    A collection of site metadata records
-    """
-    __tablename__ = 'SiteMetadataCollection'
-
-    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
-    
-    
-    # One-To-Many: OneToAnyMapping(source_class='SiteMetadataCollection', source_slot='site_metadata_entries', mapping_type=None, target_class='SiteMetadata', target_slot='SiteMetadataCollection_id', join_class=None, uses_join_table=None, multivalued=False)
-    site_metadata_entries = relationship( "SiteMetadata", foreign_keys="[SiteMetadata.SiteMetadataCollection_id]")
-    
-
-    def __repr__(self):
-        return f"SiteMetadataCollection(id={self.id},)"
-
-
-
-    
-
-
-class SampleBase(NamedThing):
-    """
-    Base class for all sample entities in the MONet system
-    """
-    __tablename__ = 'SampleBase'
-
+    id = Column(UUID(), primary_key=True, nullable=False )
     sample_name = Column(Text())
     proposal_id = Column(Integer())
     sampling_set = Column(Text())
-    sample_base_type = Column(Enum('sample', 'processed_sample', name='SampleBaseType'), nullable=False )
-    id = Column(Text(), primary_key=True, nullable=False )
-    name = Column(Text())
-    description = Column(Text())
+    sample_base_type = Column(Enum('sample', 'processed_sample', name='samplebasetype'), nullable=False )
     
 
     def __repr__(self):
-        return f"SampleBase(sample_name={self.sample_name},proposal_id={self.proposal_id},sampling_set={self.sampling_set},sample_base_type={self.sample_base_type},id={self.id},name={self.name},description={self.description},)"
+        return f"sampleBase(id={self.id},sample_name={self.sample_name},proposal_id={self.proposal_id},sampling_set={self.sampling_set},sample_base_type={self.sample_base_type},)"
 
 
 
     
-    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
-    __mapper_args__ = {
-        'concrete': True
-    }
-    
 
 
-class SiteMetadata(NamedThing):
-    """
-    Site-level metadata record for a given provider (e.g., NASA POWER)
-    """
-    __tablename__ = 'SiteMetadata'
-
-    cache_key = Column(Text(), nullable=False )
-    latitude = Column(Float(), nullable=False )
-    longitude = Column(Float(), nullable=False )
-    provider = Column(Text(), nullable=False )
-    enriched_at = Column(DateTime(), nullable=False )
-    created_at = Column(DateTime(), nullable=False )
-    updated_at = Column(DateTime())
-    id = Column(Text(), primary_key=True, nullable=False )
-    name = Column(Text())
-    description = Column(Text())
-    Database_id = Column(Integer(), ForeignKey('Database.id'))
-    SiteMetadataCollection_id = Column(Integer(), ForeignKey('SiteMetadataCollection.id'))
-    nasa_climate_data_id = Column(Integer(), ForeignKey('NASAClimateData.id'))
-    nasa_climate_data = relationship("NASAClimateData", uselist=False, foreign_keys=[nasa_climate_data_id])
-    
-
-    def __repr__(self):
-        return f"SiteMetadata(cache_key={self.cache_key},latitude={self.latitude},longitude={self.longitude},provider={self.provider},enriched_at={self.enriched_at},created_at={self.created_at},updated_at={self.updated_at},id={self.id},name={self.name},description={self.description},Database_id={self.Database_id},SiteMetadataCollection_id={self.SiteMetadataCollection_id},nasa_climate_data_id={self.nasa_climate_data_id},)"
-
-
-
-    
-    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
-    __mapper_args__ = {
-        'concrete': True
-    }
-    
-
-
-class Sample(SampleBase):
+class Sample(Base):
     """
     A physical sample collected from the environment
     """
-    __tablename__ = 'Sample'
+    __tablename__ = 'sample'
 
-    sampling_activity_id = Column(Text(), nullable=False )
-    sample_type = Column(Enum('soil', 'aerosol', name='SampleType'))
+    id = Column(UUID(), ForeignKey('sampleBase.id'), primary_key=True, nullable=False )
+    sampling_activity_id = Column(UUID(), ForeignKey('samplingActivity.id'), nullable=False )
+    type = Column(Enum('soil', 'aerosol', name='sampletype'))
     guid_source = Column(Text())
     other_guid_source = Column(Text())
-    sample_name = Column(Text())
-    proposal_id = Column(Integer())
-    sampling_set = Column(Text())
-    sample_base_type = Column(Enum('sample', 'processed_sample', name='SampleBaseType'), nullable=False )
-    id = Column(Text(), primary_key=True, nullable=False )
-    name = Column(Text())
-    description = Column(Text())
-    Database_id = Column(Integer(), ForeignKey('Database.id'))
     
 
     def __repr__(self):
-        return f"Sample(sampling_activity_id={self.sampling_activity_id},sample_type={self.sample_type},guid_source={self.guid_source},other_guid_source={self.other_guid_source},sample_name={self.sample_name},proposal_id={self.proposal_id},sampling_set={self.sampling_set},sample_base_type={self.sample_base_type},id={self.id},name={self.name},description={self.description},Database_id={self.Database_id},)"
+        return f"sample(id={self.id},sampling_activity_id={self.sampling_activity_id},type={self.type},guid_source={self.guid_source},other_guid_source={self.other_guid_source},)"
 
 
 
     
-    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
-    __mapper_args__ = {
-        'concrete': True
-    }
-    
 
 
-class ProcessedSample(SampleBase):
-    """
-    A sample that has undergone processing or analysis
-    """
-    __tablename__ = 'ProcessedSample'
-
-    processed_sample_type = Column(Enum('analyte', 'coreSection', 'replicate', name='ProcessedSampleType'), nullable=False )
-    sample_name = Column(Text())
-    proposal_id = Column(Integer())
-    sampling_set = Column(Text())
-    sample_base_type = Column(Enum('sample', 'processed_sample', name='SampleBaseType'), nullable=False )
-    id = Column(Text(), primary_key=True, nullable=False )
-    name = Column(Text())
-    description = Column(Text())
-    Database_id = Column(Integer(), ForeignKey('Database.id'))
-    
-
-    def __repr__(self):
-        return f"ProcessedSample(processed_sample_type={self.processed_sample_type},sample_name={self.sample_name},proposal_id={self.proposal_id},sampling_set={self.sampling_set},sample_base_type={self.sample_base_type},id={self.id},name={self.name},description={self.description},Database_id={self.Database_id},)"
-
-
-
-    
-    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
-    __mapper_args__ = {
-        'concrete': True
-    }
-    
-
-
-class SoilSample(Sample):
+class SoilSample(Base):
     """
     A soil sample with specific soil-related properties
     """
-    __tablename__ = 'SoilSample'
+    __tablename__ = 'soil_sample'
 
-    soil_type = Column(Enum('soil_core', 'surface_layer', name='SoilType'), nullable=False )
-    sampling_activity_id = Column(Text(), nullable=False )
-    sample_type = Column(Enum('soil', 'aerosol', name='SampleType'))
-    guid_source = Column(Text())
-    other_guid_source = Column(Text())
-    sample_name = Column(Text())
-    proposal_id = Column(Integer())
-    sampling_set = Column(Text())
-    sample_base_type = Column(Enum('sample', 'processed_sample', name='SampleBaseType'), nullable=False )
-    id = Column(Text(), primary_key=True, nullable=False )
-    name = Column(Text())
-    description = Column(Text())
+    id = Column(UUID(), ForeignKey('sample.id'), primary_key=True, nullable=False )
+    soil_type = Column(Enum('soil_core', 'surface_layer', name='soiltype'), nullable=False )
     
 
     def __repr__(self):
-        return f"SoilSample(soil_type={self.soil_type},sampling_activity_id={self.sampling_activity_id},sample_type={self.sample_type},guid_source={self.guid_source},other_guid_source={self.other_guid_source},sample_name={self.sample_name},proposal_id={self.proposal_id},sampling_set={self.sampling_set},sample_base_type={self.sample_base_type},id={self.id},name={self.name},description={self.description},)"
+        return f"soil_sample(id={self.id},soil_type={self.soil_type},)"
 
 
 
     
-    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
-    __mapper_args__ = {
-        'concrete': True
-    }
-    
 
 
-class AerosolSample(Sample):
+class AerosolSample(Base):
     """
     An aerosol sample with specific aerosol-related properties
     """
-    __tablename__ = 'AerosolSample'
+    __tablename__ = 'aerosol_sample'
 
-    aerosol_type = Column(Enum('sea_salt', 'dust', 'volcanic_ash', name='AerosolType'), nullable=False )
-    sampling_activity_id = Column(Text(), nullable=False )
-    sample_type = Column(Enum('soil', 'aerosol', name='SampleType'))
-    guid_source = Column(Text())
-    other_guid_source = Column(Text())
-    sample_name = Column(Text())
-    proposal_id = Column(Integer())
-    sampling_set = Column(Text())
-    sample_base_type = Column(Enum('sample', 'processed_sample', name='SampleBaseType'), nullable=False )
-    id = Column(Text(), primary_key=True, nullable=False )
-    name = Column(Text())
-    description = Column(Text())
+    id = Column(UUID(), ForeignKey('sample.id'), primary_key=True, nullable=False )
+    aerosol_type = Column(Enum('sea_salt', 'dust', 'volcanic_ash', name='aerosoltype'), nullable=False )
     
 
     def __repr__(self):
-        return f"AerosolSample(aerosol_type={self.aerosol_type},sampling_activity_id={self.sampling_activity_id},sample_type={self.sample_type},guid_source={self.guid_source},other_guid_source={self.other_guid_source},sample_name={self.sample_name},proposal_id={self.proposal_id},sampling_set={self.sampling_set},sample_base_type={self.sample_base_type},id={self.id},name={self.name},description={self.description},)"
+        return f"aerosol_sample(id={self.id},aerosol_type={self.aerosol_type},)"
 
 
 
     
-    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
-    __mapper_args__ = {
-        'concrete': True
-    }
+
+
+class ProcessedSample(Base):
+    """
+    A sample that has undergone processing or analysis
+    """
+    __tablename__ = 'processedSample'
+
+    id = Column(UUID(), ForeignKey('sampleBase.id'), primary_key=True, nullable=False )
+    processed_sample_type = Column(Enum('analyte', 'coreSection', 'replicate', name='processedsampletype'), nullable=False )
+    
+
+    def __repr__(self):
+        return f"processedSample(id={self.id},processed_sample_type={self.processed_sample_type},)"
+
+
+
     
 
 
-class CoreSection(ProcessedSample):
+class CoreSection(Base):
     """
     A section of a core sample (TOP, MID, BTM)
     """
-    __tablename__ = 'CoreSection'
+    __tablename__ = 'coreSection'
 
-    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'), nullable=False )
-    processed_sample_type = Column(Enum('analyte', 'coreSection', 'replicate', name='ProcessedSampleType'), nullable=False )
-    sample_name = Column(Text())
-    proposal_id = Column(Integer())
-    sampling_set = Column(Text())
-    sample_base_type = Column(Enum('sample', 'processed_sample', name='SampleBaseType'), nullable=False )
-    id = Column(Text(), primary_key=True, nullable=False )
-    name = Column(Text())
-    description = Column(Text())
+    id = Column(UUID(), ForeignKey('processedSample.id'), primary_key=True, nullable=False )
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='coresectionenum'), nullable=False )
     
 
     def __repr__(self):
-        return f"CoreSection(core_section={self.core_section},processed_sample_type={self.processed_sample_type},sample_name={self.sample_name},proposal_id={self.proposal_id},sampling_set={self.sampling_set},sample_base_type={self.sample_base_type},id={self.id},name={self.name},description={self.description},)"
+        return f"coreSection(id={self.id},core_section={self.core_section},)"
 
 
 
     
-    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
-    __mapper_args__ = {
-        'concrete': True
-    }
-    
 
 
-class Replicate(ProcessedSample):
+class Replicate(Base):
     """
     A replicate or aliquot of a sample
     """
-    __tablename__ = 'Replicate'
+    __tablename__ = 'replicate'
 
+    id = Column(UUID(), ForeignKey('processedSample.id'), primary_key=True, nullable=False )
     rep = Column(Integer(), nullable=False )
-    processed_sample_type = Column(Enum('analyte', 'coreSection', 'replicate', name='ProcessedSampleType'), nullable=False )
-    sample_name = Column(Text())
-    proposal_id = Column(Integer())
-    sampling_set = Column(Text())
-    sample_base_type = Column(Enum('sample', 'processed_sample', name='SampleBaseType'), nullable=False )
-    id = Column(Text(), primary_key=True, nullable=False )
-    name = Column(Text())
-    description = Column(Text())
     
 
     def __repr__(self):
-        return f"Replicate(rep={self.rep},processed_sample_type={self.processed_sample_type},sample_name={self.sample_name},proposal_id={self.proposal_id},sampling_set={self.sampling_set},sample_base_type={self.sample_base_type},id={self.id},name={self.name},description={self.description},)"
+        return f"replicate(id={self.id},rep={self.rep},)"
 
 
 
-    
-    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
-    __mapper_args__ = {
-        'concrete': True
-    }
     
 
 

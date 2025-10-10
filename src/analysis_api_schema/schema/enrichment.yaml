@@ -20,25 +20,6 @@ imports:
   - samples
 
 classes:
-  QuantityValue:
-    description: A quantity value with numeric value and optional unit
-    slots:
-      - numeric_value
-      - unit_code
-      - unit_name
-    slot_usage:
-      numeric_value:
-        description: The numeric value of the quantity
-        range: float
-        required: true
-      unit_code:
-        description: The unit code (e.g., 'Cel' for Celsius, 'mm' for millimeters)
-        range: string
-        required: false
-      unit_name:
-        description: The human-readable unit name
-        range: string
-        required: false
 
   SiteMetadata:
     is_a: NamedThing
