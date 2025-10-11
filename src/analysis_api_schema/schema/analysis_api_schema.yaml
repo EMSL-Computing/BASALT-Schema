@@ -13,62 +13,248 @@ see_also:
 
 prefixes:
   analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
-  linkml: https://w3id.org/linkml/
-  schema: http://schema.org/
-  qudt: http://qudt.org/schema/qudt/
-  unit: http://qudt.org/vocab/unit/
-  uuid: https://w3id.org/uuid/
+  # linkml: https://w3id.org/linkml/
+  # schema: http://schema.org/
+  # qudt: http://qudt.org/schema/qudt/
+  # unit: http://qudt.org/vocab/unit/
+  # uuid: https://w3id.org/uuid/
+
 default_prefix: analysis_api_schema
 default_range: string
 
 imports:
   - linkml:types
   - enums
-  - samples  
-  - enrichment
+  # - enrichment # todo have not reviewed fully
 
 classes:
-  # Root container for the MONet Analysis API schema
-  Database:
-    tree_root: true
-    description: Root container for all MONet analysis data including samples, processed samples, and site metadata
-    slots:
-      - samples
-      - processed_samples
-      - site_metadata_collection
-    slot_usage:
-      samples:
-        description: Collection of all samples
-        range: Sample
-        multivalued: true
-        inlined_as_list: true
-      processed_samples:
-        description: Collection of processed samples
-        range: ProcessedSample
-        multivalued: true
-        inlined_as_list: true
-      site_metadata_collection:
-        description: Collection of site metadata records
-        range: SiteMetadata
-        multivalued: true
-        inlined_as_list: true
+  study:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      participant_name: # TODO not quite correct
+        range: string
+        array: {}
+      principal_investigator:
+      collaborating_institution:
+      project_status:
+        range: projectstatus
+      project_start:
+        # range: date
+        range: datetime
+      project_end:
+        # range: date
+        range: datetime
+      proposal_title:
+      proposal_abstract:
+      project_id:
+        # range: project_id # like 60880
+        required: true
 
-slots:
-  # Root-level collection slots
-  samples:
-    description: Collection of all samples in the database
-    range: Sample
-    multivalued: true
-    required: false
+  quantityValue:
+    description: A quantity value with numeric value and optional unit
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      description:
+      has_value_unit:
+      has_unit:
+        description: The human-readable unit name
+      has_numeric_value:
+        description: The numeric value of the quantity
+        range: double
+      has_minimum_numeric_value:
+        range: numeric
+      has_maximum_numeric_value:
+        range: numeric
+      has_raw_value:
 
-  processed_samples:
-    description: Collection of all processed samples in the database
-    range: ProcessedSample
-    multivalued: true
-    required: false
+  geolocationValue:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      description:
+      has_raw_value:
+      latitude:
+        range: numeric
+      longitude:
+        range: numeric
+      type:
+      was_generated_by:
 
-  site_metadata_collection:
-    description: Collection of site metadata records in the database
-    range: SiteMetadata
-    multivalued: true
-    required: false
+  samplingActivity:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      study_id:
+        range: study
+        required: true
+      type:
+        range: samplingactivitytype
+        required: true
+      sample_name: # 60881_1_C2
+        required: true
+      lims_barcode:
+      alt_id:
+        range: quantityValue
+      elev_id:
+        range: quantityValue
+      lat_lon_id:
+        range: geolocationValue
+      growth_facil:
+        range: growthfacilityenum
+      other_growth_facil:
+      other_storage_condt:
+      oxygen_relationship:
+        range: oxygenstatusenum
+      sample_store_temp:
+        range: samplestoretemp
+      samp_biotic_relationship:
+        range: sampbioticenum
+      storage_condt:
+        range: storagecondtenum
+      air_temp_regm:
+      chem_administration:
+      collection_date:
+        range: datetime
+      collection_time:
+        range: datetime
+      env_broad_scale_other:
+      env_local_scale_other:
+      env_medium_other:
+      experimental_factor:
+      experimental_factor_other:
+      extraction_method:
+      extreme_event:
+        range: datetime
+      gaseous_environment:
+      geo_loc_name:
+      humidity_regm:
+      isotope_exposure:
+      light_regm:
+      link_addit_analys:
+      method_development:
+      microbial_biomass_c_meth:
+      microbial_biomass_meth:
+      microbial_biomass_n_meth:
+      misc_param:
+      neon_plot_id:
+      non_microb_biomass_method:
+      other_sample_store_temp:
+      other_treatment:
+      ph:
+        range: double
+      ph_meth:
+      salinity:
+        range: double
+      salinity_method:
+      sample_collected:
+      sample_collection_dev:
+      sample_collection_method:
+      sample_end_time:
+        range: datetime
+      sample_processing:
+      sample_start_time:
+        range: datetime
+      season_environment:
+      shipped_sample_size:
+      sieving:
+      start_date_inc:
+        range: datetime
+      tot_nitro_cont_meth:
+      tot_org_c_meth:
+      watering_regm:
+
+  sampleBase:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      sample_name: # "60881_1_TOP_1"
+        description: The human readable name for the sample
+      proposal_id:
+        description: The 5 digit project ID assigned to an EMSL user proposal/project
+        range: integer
+      sampling_set: # "1"
+      sample_base_type:
+        description: The name of the sample set if the sample is a part of a set of samples processed together
+        range: samplebasetype
+        required: true
+
+  sample:
+    description: A physical sample collected from the environment
+    attributes:
+      id:
+        identifier: true
+        range: sampleBase
+      sampling_activity_id:
+        description: Reference to the sampling activity that collected this sample
+        range: samplingActivity
+        required: true
+      type:
+        description: The type of sample (soil, aerosol, etc.)
+        range: sampletype
+        required: false
+      guid_source:
+        description: Indicate the source of the GUID that you have provided for your samples
+      other_guid_source:
+        description: Please specify if other GUID source
+  
+  soil_sample:
+    description: A soil sample with specific soil-related properties
+    attributes:
+      id:
+        range: sample
+        identifier: true
+      soil_type:
+        description: The specific type of soil sample
+        range: soiltype
+        required: true
+
+  aerosol_sample:
+    description: An aerosol sample with specific aerosol-related properties
+    attributes:
+      id:
+        range: sample
+        identifier: true
+      aerosol_type:
+        description: The type or method of aerosol collection
+        range: aerosoltype
+        required: true
+
+  processedSample:
+    description: A sample that has undergone processing or analysis
+    attributes:
+      id:
+        identifier: true
+        range: sampleBase
+      processed_sample_type:
+        description: The type of processed sample
+        range: processedsampletype
+        required: true
+
+  coreSection:
+    description: A section of a core sample (TOP, MID, BTM)
+    attributes:
+      id:
+        identifier: true
+        range: processedSample
+      core_section:
+        description: The section of the core (e.g. TOP, MID, BTM)
+        range: coresectionenum
+        required: true
+
+  replicate:
+    description: A replicate or aliquot of a sample
+    attributes:
+      id:
+        identifier: true
+        range: processedSample
+      rep:
+        description: The replicate (or aliquot) number
+        range: integer
+        required: true
