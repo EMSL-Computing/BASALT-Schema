@@ -58,6 +58,22 @@ def should_ignore_column_migration(table_name, column_name, inspected_type, meta
     return False
 
 
+def include_object(object, name, type_, reflected, compare_to):
+    """
+    Function to determine whether to include an object in the migration.
+    Return False to exclude the object from migrations.
+    
+    This function prevents accidental index drops and other unwanted operations.
+    """
+    # Prevent index drops
+    if type_ == "index" and reflected and not compare_to:
+        print(f"Preventing drop of index: {name}")
+        return False
+    
+    # Allow all other operations
+    return True
+
+
 def compare_type(context, inspected_column, metadata_column, inspected_type, metadata_type):
     """
     Custom type comparison function to ignore certain type changes.
@@ -108,6 +124,7 @@ def run_migrations_offline() -> None:
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
         compare_type=compare_type,
+        include_object=include_object,
     )
 
     with context.begin_transaction():
@@ -133,6 +150,7 @@ def run_migrations_online() -> None:
             connection=connection,
             target_metadata=target_metadata,
             compare_type=compare_type,
+            include_object=include_object,
         )
 
         with context.begin_transaction():

@@ -493,6 +493,7 @@ classes:
         range: containertypeenum
       container_size_id:
         range: quantityValue
+
   custodian:
     attributes:
       id:
