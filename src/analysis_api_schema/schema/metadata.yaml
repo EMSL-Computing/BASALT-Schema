@@ -1,0 +1,203 @@
+id: https://w3id.org/MONet/analysis-api-schema/enums
+name: analysis-api-schema-enums
+title: MONet Analysis API - Enumerations
+description: |-
+  Enumerated values used throughout the MONet Analysis API schema
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+default_prefix: analysis_api_schema
+
+imports:
+  - linkml:types
+
+classes:
+
+  soil:
+    attributes:
+      id:
+        identifier: true
+        range: samplingActivity
+      annual_precpt_id:
+        range: quantityValue
+      annual_temp_id:
+        range: quantityValue
+      bulk_elect_conductivity_id:
+        range: quantityValue
+      density_id:
+        range: quantityValue
+      depth_id:
+        range: quantityValue
+      particle_class_id:
+        range: quantityValue
+      porosity_id:
+        range: quantityValue
+      pressure_id:
+        range: quantityValue
+      season_precpt_id:
+        range: quantityValue
+      season_temp_id:
+        range: quantityValue
+      size_frac_low_id:
+        range: quantityValue
+      size_frac_up_id:
+        range: quantityValue
+      slope_aspect_id:
+        range: quantityValue
+      slope_gradient_id:
+        range: quantityValue
+      soil_temperature_id:
+        range: quantityValue
+      soil_texture_id:
+        range: quantityValue
+      temp_id:
+        range: quantityValue
+      water_content_id:
+        range: quantityValue
+      wind_speed_id:
+        range: quantityValue
+      cur_land_use:
+        range: landuseenum
+      drainage_class:
+        range: drainageclassenum
+      fao_class:
+        range: faoclassenum
+      neon_domain:
+        range: neondomainenum
+      profile_position:
+        range: profilepositionenum
+      sediment_type:
+        range: sedimenttypeenum
+      soil_horizon:
+        range: soilhorizonenum
+      tillage:
+        range: tillageenum
+      wind_direction:
+        range: winddirectionenum
+      agrochem_addition:
+        range: string
+      al_sat:
+        range: double
+      al_sat_meth:
+        range: string
+      biotic_regm:
+        range: string
+      climate_environment:
+        range: string
+      core_collector:
+        range: string
+      crop_rotation:
+        range: boolean
+      crop_rotation_schedule:
+        range: string
+      cur_vegetation:
+        range: string
+      cur_vegetation_meth:
+        range: string
+      filter_method:
+        range: string
+      fire:
+        range: datetime
+      flooding:
+        range: datetime
+      heavy_metals:
+        range: string
+      heavy_metals_meth:
+        range: string
+      horizon_meth:
+        range: string
+      infiltration_1:
+        range: time
+      infiltration_2:
+        range: time
+      infiltration_notes:
+        range: string
+      link_class_info:
+        range: string
+      link_climate_info:
+        range: string
+      local_class:
+        range: string
+      local_class_meth:
+        range: string
+      perturbation:
+        range: string
+      previous_land_use:
+        range: string
+      previous_land_use_meth:
+        range: string
+      site_definition:
+        range: string
+      soil_type:
+        range: string
+      soil_type_meth:
+        range: string
+      texture_meth:
+        range: string
+      water_content_meth:
+        range: string
+      weather:
+        range: string
+
+  siteMetadata:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      nasa_mean_annual_temp_c_id:
+        range: quantityValue
+      nasa_mean_annual_precip_mm_id:
+        range: quantityValue
+      nasa_max_annual_temp_c_id:
+        range: quantityValue
+      nasa_min_annual_temp_c_id:
+        range: quantityValue
+      nasa_mean_wind_speed_ms_id:
+        range: quantityValue
+      nasa_mean_relative_humidity_pct_id:
+        range: quantityValue
+      nasa_frost_days_per_year_id:
+        range: quantityValue
+      nasa_mean_dew_point_c_id:
+        range: quantityValue
+      nasa_mean_vapor_pressure_kpa_id:
+        range: quantityValue
+      nasa_mean_surface_pressure_kpa_id:
+        range: quantityValue
+      nasa_mean_shortwave_radiation_wm2_id:
+        range: quantityValue
+      nasa_mean_longwave_radiation_wm2_id:
+        range: quantityValue
+      created_at:
+        range: timestamp_tz
+        required: true
+      updated_at:
+        range: timestamp_tz
+        required: true
+      cache_key:
+        range: string
+        required: true
+      latitude:
+        range: double # TODO these should likely not be double - prefer numeric
+        required: true
+      longitude:
+        range: double # TODO these should likely not be double - prefer numeric
+        required: true
+      provider:
+        range: string
+        required: true
+      enriched_at:
+        range: timestamp_tz
+        required: true
+
+  sampling_activity_site_metadata_link:
+    attributes:
+      sampling_activity_id:
+        range: samplingActivity
+        required: true
+      site_metadata_id:
+        range: siteMetadata
+        required: true

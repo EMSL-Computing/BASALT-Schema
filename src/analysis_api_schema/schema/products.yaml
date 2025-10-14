@@ -1,0 +1,363 @@
+id: https://w3id.org/MONet/analysis-api-schema/enums
+name: analysis-api-schema-enums
+title: MONet Analysis API - Enumerations
+description: |-
+  Enumerated values used throughout the MONet Analysis API schema
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+default_prefix: analysis_api_schema
+
+imports:
+  - linkml:types
+  - enums
+  - analysis_api_schema
+
+slots:
+  id:
+    identifier: true
+    range: processedData
+  measure_type:
+    range: productmeasuretype
+  rep:
+    range: numeric
+  aq:
+    range: numeric
+
+classes:
+
+  BulkDensityProduct:
+    slots:
+      - id
+      - measure_type
+    attributes:
+      bulk_density_id:
+        range: quantityValue
+      flag:
+        range: processeddataflag
+
+  ElementalAnalysisProduct:
+    slots:
+      - id
+      - measure_type
+    attributes:
+      id:
+        identifier: true
+        range: processedData
+      total_carbon_id:
+        range: quantityValue
+      total_nitrogen_id:
+        range: quantityValue
+      total_kjeldahl_nitrogen_id:
+        range: quantityValue
+      total_sulfur_id:
+        range: quantityValue
+      flag_total_carbon:
+        range: processeddataflag
+      flag_total_nitrogen:
+        range: processeddataflag
+      flag_tkn:
+        range: processeddataflag
+      flag_total_sulfur:
+        range: processeddataflag
+
+  EnzymeProduct:
+    slots:
+      - id
+      - measure_type
+    attributes:
+      beta_glucosidase_ug_pnp_per_g_per_h_id:
+        range: quantityValue
+      flag:
+        range: processeddataflag
+
+  FTICRProduct:
+    slots:
+      - id
+      - measure_type
+      - rep
+      - aq
+    attributes:
+      h_c_average:
+        range: double
+      o_c_average:
+        range: double
+      c_average:
+        range: double
+      percent_mz_assigned_id:
+        range: quantityValue
+      rms_id:
+        range: quantityValue
+      dbe_average:
+        range: double
+      low_mass_accuracy_flag:
+        range: boolean # TODO should be processeddataflag
+      low_mz_assignment_flag:
+        range: boolean # TODO should be processeddataflag
+
+  GWCMoistureProduct:
+    slots:
+      - id
+      - measure_type
+    attributes:
+      gwc_percent_id:
+        range: quantityValue
+      flag:
+        range: processeddataflag
+        
+  IonsAnalysisProduct:
+    slots:
+      - id
+      - measure_type
+    attributes:
+      sulfate_id:
+        range: quantityValue
+      boron_id:
+        range: quantityValue
+      zinc_id:
+        range: quantityValue
+      manganate_id:
+        range: quantityValue
+      copper_id:
+        range: quantityValue
+      iron_id:
+        range: quantityValue
+      calcium_id:
+        range: quantityValue
+      magnesium_id:
+        range: quantityValue
+      sodium_id:
+        range: quantityValue
+      potassium_id:
+        range: quantityValue
+      total_bases_id:
+        range: quantityValue
+      cation_exchange_capacity_id:
+        range: quantityValue
+      flag_sulfate:
+        range: processeddataflag
+      flag_boron:
+        range: processeddataflag
+      flag_zinc:
+        range: processeddataflag
+      flag_manganate:
+        range: processeddataflag
+      flag_copper:
+        range: processeddataflag
+      flag_iron:
+        range: processeddataflag
+      flag_calcium:
+        range: processeddataflag
+      flag_magnesium:
+        range: processeddataflag
+      flag_sodium:
+        range: processeddataflag
+      flag_potassium:
+        range: processeddataflag
+      flag_total_bases:
+        range: processeddataflag
+      flag_cec:
+        range: processeddataflag
+
+  MAOMProduct:
+    slots:
+      - id
+      - measure_type
+      - rep
+    attributes:
+      total_organic_carbon_id:
+        range: quantityValue
+      total_organic_carbon_avg:
+        range: double
+      total_nitrogen_id:
+        range: quantityValue
+      total_nitrogen_avg:
+        range: double
+      flag_toc:
+        range: processeddataflag
+      flag_tn:
+        range: processeddataflag
+      flag_toc_avg:
+        range: processeddataflag
+      flag_tn_avg:
+        range: processeddataflag
+
+  MetaGenomicsProduct:
+    slots:
+      - id
+    attributes:
+      input_to_step:
+        range: metagenomicssteps
+      output_to_step:
+        range: metagenomicssteps
+        required: true
+
+  MicrobialBiomassProduct:
+    slots:
+      - id
+      - measure_type
+      - rep
+    attributes:
+      mbc_id:
+        range: quantityValue
+      mbc_avg:
+        range: double
+      mbn_id:
+        range: quantityValue
+      mbn_avg:
+        range: double
+      flag_mbc:
+        range: processeddataflag
+      flag_mbn:
+        range: processeddataflag
+      flag_mbc_avg:
+        range: processeddataflag
+      flag_mbn_avg:
+        range: processeddataflag
+
+  NitrogenAnalysisProduct:
+    slots:
+      - id
+      - measure_type
+      - rep
+    attributes:
+      no3_n_id:
+        range: quantityValue
+      no3_n_avg:
+        range: double
+      nh4_n_id:
+        range: quantityValue
+      nh4_n_avg:
+        range: double
+      flag_no3n:
+        range: processeddataflag
+      flag_nh4n:
+        range: processeddataflag
+      flag_no3n_avg:
+        range: processeddataflag
+      flag_nh4n_avg:
+        range: processeddataflag
+
+  PhosphorusAnalysisProduct:
+    slots:
+      - id
+      - measure_type
+      - rep
+    attributes:
+      extraction_method:
+        range: string
+      phosphorus_id:
+        range: quantityValue
+      phosphorus_avg:
+        range: double
+      flag:
+        range: processeddataflag
+      flag_avg:
+        range: processeddataflag
+
+  RespirationProduct:
+    slots:
+      - id
+      - measure_type
+    attributes:
+      respiration_rate_per_day_id:
+        range: quantityValue
+      flag:
+        range: processeddataflag
+
+  TextureProduct:
+    slots:
+      - id
+      - measure_type
+    attributes:
+      sand_pct_id:
+        range: quantityValue
+      silt_pct_id:
+        range: quantityValue
+      clay_pct_id:
+        range: quantityValue
+      flag:
+        range: processeddataflag
+
+  TomographyProduct:
+    slots:
+      - id
+      - measure_type
+    attributes:
+      roi_volume_voxel:
+        range: double
+      voxel_size:
+        range: double
+      connected_pores:
+        range: double
+      pore_diameter_min:
+        range: double
+      pore_diameter_max:
+        range: double
+      pore_diameter_mean:
+        range: double
+      pore_diameter_median:
+        range: double
+      pore_diameter_variance:
+        range: double
+      pore_volume_mean:
+        range: double
+      total_pore_volume:
+        range: double
+      permeability_x:
+        range: double
+      flow_rate_x:
+        range: double
+      tortuosity_x:
+        range: double
+      permeability_y:
+        range: double
+      flow_rate_y:
+        range: double
+      tortuosity_y:
+        range: double
+      permeability_z:
+        range: double
+      flow_rate_z:
+        range: double
+      tortuosity_z:
+        range: double
+      flag_xct:
+        # range: processeddataflag
+        range: string
+
+  WEOMProduct:
+    slots:
+      - id
+      - measure_type
+      - rep
+    attributes:
+      total_organic_carbon_id:
+        range: quantityValue
+      total_organic_carbon_avg:
+        range: double
+      total_nitrogen_id:
+        range: quantityValue
+      total_nitrogen_avg:
+        range: double
+      flag_toc:
+        range: processeddataflag
+      flag_tn:
+        range: processeddataflag
+      flag_toc_avg:
+        range: processeddataflag
+      flag_tn_avg:
+        range: processeddataflag
+
+  pHProduct:
+    slots:
+      - id
+      - measure_type
+    attributes:
+      ph:
+        range: double
+      flag:
+        range: processeddataflag

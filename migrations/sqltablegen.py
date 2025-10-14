@@ -20,6 +20,8 @@ from linkml._version import __version__
 from linkml.transformers.relmodel_transformer import ForeignKeyPolicy, RelationalModelTransformer
 from linkml.utils.generator import Generator, shared_arguments
 
+from sqlalchemy.dialects import postgresql
+
 logger = logging.getLogger(__name__)
 
 
@@ -50,6 +52,9 @@ METAMODEL_TYPE_TO_BASE = {
     "UUID": "UUID",
     "Numeric": "Numeric",
     "numeric": "Numeric",
+    
+    
+    "timestamp_tz": "timestamp_tz",
 }
 
 RANGEMAP = {
@@ -70,6 +75,8 @@ RANGEMAP = {
     
     "UUID": UUID(),
     "Numeric": Numeric(),
+    
+    "timestamp_tz": postgresql.TIMESTAMP(timezone=True),
     
 }
 

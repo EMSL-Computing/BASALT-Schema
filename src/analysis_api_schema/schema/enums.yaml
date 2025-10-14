@@ -528,3 +528,213 @@ enums:
         description: Commensal organism
       symbiont:
         description: Symbiotic organism
+
+  productmeasuretype:
+    permissible_values:
+      Single:
+      Replicate:
+      Average:
+    
+  processeddataflag:
+    permissible_values:
+      Below_Detection:
+      Below_Reporting_Limit:
+      High_Background:
+      Out_of_Range:
+      Outlier:
+      Data_not_available:
+      Failed_QC:
+      Insufficient_Material:
+
+  ionizationenum:
+    permissible_values:
+      ESI:
+      EI:
+      CI:
+      MALDI:
+
+  metagenomicssteps:
+    permissible_values:
+      ReadQcAnalysis:
+      MetagenomeAssembly:
+      ReadBasedTaxonomyAnalysis:
+      MetagenomeAnnotation:
+      MagsAnalys:
+
+  alternateidentifiertype:
+    permissible_values:
+      instrument_alt_id:
+
+  routemethod:
+    permissible_values:
+      analysis_activity:
+      lcms_metabolomics_method:
+      fticr_acquisition_method:
+      gravimetric_water_content_method:
+      ph_method:
+      hydraulic_properties_method:
+      microbial_biomass_method:
+      xray_computed_tomography_method:
+      REGEN:
+      KUO:
+      respiration_method:
+      texture_method:
+      enzyme_activity_method:
+      elemental_analysis_method:
+      toc_tn_method:
+      bulk_density_method:
+      metagenomics_method:
+
+  samplerole:
+    permissible_values:
+      input_sample:
+      output_sample:
+
+  methodname:
+    permissible_values:
+      MAOM:
+      WOEM:
+
+  executionresourcetype:
+    permissible_values:
+      RZR:
+      Tahoma:
+      local:
+      other:
+
+  binquality:
+    permissible_values:
+      HQ:
+      MQ:
+      LQ:
+
+  containertypeenum:
+    permissible_values:
+      screw_top_conical:
+
+
+  annotationdatabasetype:
+    permissible_values:
+      PFAM:
+      COG:
+      KEGG:
+
+  vendorenum:
+    permissible_values:
+      waters:
+      agilent:
+      bruker:
+      thermo_fisher:
+      perkin_elmer:
+      scientific_industries:
+      illumina:
+      nikon:
+      fia_lab:
+      shimadzu:
+      regen_ag_lab:
+      kuo:
+
+  modelenum:
+    permissible_values:
+      exploris_240:
+      exploris_480:
+      ltq_orbitrap_velos:
+      orbitrap_fusion_lumos:
+      orbitrap_eclipse_tribid:
+      orbitrap_q_exactive:
+      solarix_7T:
+      solarix_12T:
+      solarix_15T:
+      agilent_8890A:
+      agilent_7980A:
+      vortex_genie_2:
+      novaseq:
+      scimax:
+      ed_400_with_rs_422:
+      mettler_toledo_30029066:
+      mettler_toledo_30266628:
+      ums_hyprop2_020210:
+      fialyzer_1000:
+      fialyzer_1001:
+      fialyzer_1002:
+      orbitrap_q_exactive_plus:
+      toc_5000A:
+      toc_lcsh:
+      sr_1:
+      xth320:
+
+
+  filetype:
+    permissible_values:
+      FT_ICR_MS_Analysis_Results:
+      GC_MS_Metabolomics_Results:
+      Metaproteomics_Workflow_Statistics:
+      Protein_Report:
+      Peptide_Report:
+      Unfiltered_Metaproteomics_Results:
+      Read_Count_and_RPKM:
+      QC_non_rRNA_R2:
+      QC_non_rRNA_R1:
+      Metagenome_Bins:
+      CheckM_Statistics:
+      GOTTCHA2_Krona_Plot:
+      Kraken2_Krona_Plot:
+      Centrifuge_Krona_Plot:
+      Kraken2_Classification_Report:
+      Kraken2_Taxonomic_Classification:
+      Centrifuge_Classification_Report:
+      Centrifuge_Taxonomic_Classification:
+      Structural_Annotation_GFF:
+      Functional_Annotation_GFF:
+      Annotation_Amino_Acid_FASTA:
+      Annotation_Enzyme_Commission:
+      Annotation_KEGG_Orthology:
+      Assembly_Coverage_BAM:
+      Assembly_AGP:
+      Assembly_Scaffolds:
+      Assembly_Contigs:
+      Assembly_Coverage_Stats:
+      Filtered_Sequencing_Reads:
+      QC_Statistics:
+      TIGRFam_Annotation_GFF:
+      Clusters_of_Orthologous_Groups_COG_Annotation_GFF:
+      CATH_FunFams_Functional_Families_Annotation_GFF:
+      SUPERFam_Annotation_GFF:
+      SMART_Annotation_GFF:
+      Pfam_Annotation_GFF:
+      Direct_Infusion_FT_ICR_MS_Raw_Data:
+    
+
+  instrumentaltidprovider:
+    permissible_values:
+      nexus:
+      dms:
+
+
+  devicetypeenum:
+    permissible_values:
+      orbital_shaker:
+      thermomixer:
+
+
+  product:
+    permissible_values:
+      processedData:
+      FTICRProduct:
+      TomographyProduct:
+      MicrobialBiomassProduct:
+      NitrogenAnalysisProduct:
+      PhosphorusAnalysisProduct:
+      pHProduct:
+      ElementalAnalysisProduct:
+      IonsAnalysisProduct:
+      RespirationProduct:
+      EnzymeProduct:
+      TextureProduct:
+      WEOMProduct:
+      HydraulicPropertiesProduct:
+      GWCMoistureProduct:
+      MAOMProduct:
+      BulkDensityProduct:
+      MetaGenomicsProduct:
+

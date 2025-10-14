@@ -1,0 +1,65 @@
+id: https://w3id.org/MONet/analysis-api-schema/enums
+name: analysis-api-schema-enums
+title: MONet Analysis API - Enumerations
+description: |-
+  Enumerated values used throughout the MONet Analysis API schema
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+default_prefix: analysis_api_schema
+
+imports:
+  - linkml:types
+  - analysis_api_schema
+
+classes:
+
+  magBin:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      workflow_id:
+        range: workflowExecutionActivity
+      bin_name:
+        range: string
+        required: true
+      bin_quality:
+        range: binquality
+      completeness:
+        range: numeric
+      contamination:
+        range: numeric
+      gene_count:
+        range: integer
+      gtdbtk_class:
+        range: string
+      gtdbtk_domain:
+        range: string
+      gtdbtk_family:
+        range: string
+      gtdbtk_genus:
+        range: string
+      gtdbtk_order:
+        range: string
+      gtdbtk_phylum:
+        range: string
+      gtdbtk_species:
+        range: string
+      members_id:
+        range: string # TODO array
+      num_16s:
+        range: integer
+      num_23s:
+        range: integer
+      num_5s:
+        range: integer
+      num_trna:
+        range: integer
+      number_of_contig:
+        range: integer
+      total_bases:
+        range: integer
