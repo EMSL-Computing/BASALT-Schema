@@ -11,7 +11,7 @@ from linkml_runtime.linkml_model import Annotation, ClassDefinition, ClassDefini
 from linkml_runtime.utils.compile_python import compile_python
 from linkml_runtime.utils.formatutils import camelcase, underscore
 from linkml_runtime.utils.schemaview import SchemaView
-from sqlalchemy import Enum
+from sqlalchemy import Enum, UniqueConstraint
 
 from linkml._version import __version__
 from linkml.generators.pydanticgen import PydanticGenerator
@@ -72,12 +72,23 @@ class SQLAlchemyGenerator(Generator):
         tr_result = sqltr.transform(**kwargs)
         tr_schema = tr_result.schema
         for c in tr_schema.classes.values():
+            
             for a in c.attributes.values():
                 sql_range = tgen.get_sql_range(a, tr_schema)
                 sql_type = sql_range.__repr__()
                 ann = Annotation("sql_type", sql_type)
                 a.annotations[ann.tag] = ann
                 # a.sql_type = sql_type
+            # convert unique_keys into a uniqueness constraint for the table
+            for uc in c.unique_keys.values():
+                sql_names = [sn for sn in uc.unique_key_slots]
+                # sql_names = [sql_name(sn) if sn in c.attributes else None for sn in uc.unique_key_slots]
+                # if any(sn is None for sn in sql_names):
+                #     continue
+                sql_uc = UniqueConstraint(*sql_names)
+                
+                
+            
         if template == TemplateEnum.IMPERATIVE:
             template_str = sqlalchemy_imperative_template_str
         elif template == TemplateEnum.DECLARATIVE:

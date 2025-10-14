@@ -17,6 +17,8 @@ slots:
   id:
     identifier: true
     range: uuid
+  email:
+    range: string
 
 
 classes:
@@ -91,6 +93,8 @@ classes:
         range: string
 
   personValue:
+    slots:
+      - email
     attributes:
       id:
         identifier: true
@@ -103,14 +107,19 @@ classes:
         required: true
       middle_initial:
         range: string
-      email:
-        range: string
+      # email:
+      #   range: string
       orcid:
         range: string
       profile_image_url:
         range: string
       websites:
         range: string # TODO ARRAY
+    unique_keys:
+      personValue_email_key:
+        unique_key_slots:
+          - email
+
   
   quantityValue:
     slots:

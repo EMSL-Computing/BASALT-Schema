@@ -773,18 +773,18 @@ class PersonValue(Base):
     """
     __tablename__ = 'personValue'
 
+    email = Column(Text())
     id = Column(UUID(), primary_key=True, nullable=False )
     first_name = Column(Text(), nullable=False )
     last_name = Column(Text(), nullable=False )
     middle_initial = Column(Text())
-    email = Column(Text())
     orcid = Column(Text())
     profile_image_url = Column(Text())
     websites = Column(Text())
     
 
     def __repr__(self):
-        return f"personValue(id={self.id},first_name={self.first_name},last_name={self.last_name},middle_initial={self.middle_initial},email={self.email},orcid={self.orcid},profile_image_url={self.profile_image_url},websites={self.websites},)"
+        return f"personValue(email={self.email},id={self.id},first_name={self.first_name},last_name={self.last_name},middle_initial={self.middle_initial},orcid={self.orcid},profile_image_url={self.profile_image_url},websites={self.websites},)"
 
 
 

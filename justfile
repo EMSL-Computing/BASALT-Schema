@@ -11,3 +11,7 @@ create-revision:
     python sqlalchemygen.py ../src/analysis_api_schema/schema/analysis_api_schema.yaml > schema.py
     python fix_encoding.py schema.py
     alembic revision --autogenerate --rev-id="revision" -m "test"
+
+gen-tables:
+    python sqltablegen.py ../src/analysis_api_schema/schema/analysis_api_schema.yaml > schema.sql
+    python fix_encoding.py schema.sql
