@@ -42,6 +42,7 @@ classes:
       participant_name: # TODO not quite correct
         range: string
         array: {}
+        required: true
       principal_investigator:
       collaborating_institution:
       project_status:
@@ -499,6 +500,7 @@ classes:
         range: uuid
       person_id:
         range: personValue
+
   instrument_alt_id:
     attributes:
       id:

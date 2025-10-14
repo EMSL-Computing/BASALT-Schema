@@ -16,7 +16,7 @@ class Study(Base):
     __tablename__ = 'study'
 
     id = Column(UUID(), primary_key=True, nullable=False )
-    participant_name = Column(Text())
+    participant_name = Column(Text(), nullable=False )
     principal_investigator = Column(Text())
     collaborating_institution = Column(Text())
     project_status = Column(Enum('STARTED', 'COMPLETED', 'CLOSED', 'EXTENDED', 'ACCEPTED', 'WITHDRAWN', name='projectstatus'))
@@ -1057,12 +1057,12 @@ class BulkDensityMethod(Base):
     """
     __tablename__ = 'BulkDensityMethod'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     analytic = Column(Text(), nullable=False )
+    id = Column(UUID(), ForeignKey('analysisActivity.id'), primary_key=True, nullable=False )
     
 
     def __repr__(self):
-        return f"BulkDensityMethod(id={self.id},analytic={self.analytic},)"
+        return f"BulkDensityMethod(analytic={self.analytic},id={self.id},)"
 
 
 
@@ -1075,7 +1075,7 @@ class ElementalAnalysisMethod(Base):
     """
     __tablename__ = 'ElementalAnalysisMethod'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
+    id = Column(UUID(), ForeignKey('analysisActivity.id'), primary_key=True, nullable=False )
     
 
     def __repr__(self):
@@ -1092,9 +1092,9 @@ class EnzymeActivityMethod(Base):
     """
     __tablename__ = 'EnzymeActivityMethod'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     analytic = Column(Text(), nullable=False )
     location = Column(Text(), nullable=False )
+    id = Column(UUID(), ForeignKey('analysisActivity.id'), primary_key=True, nullable=False )
     incubation_temp_c = Column(Float())
     incubation_time = Column(Text())
     wavelength = Column(Float())
@@ -1102,7 +1102,7 @@ class EnzymeActivityMethod(Base):
     
 
     def __repr__(self):
-        return f"EnzymeActivityMethod(id={self.id},analytic={self.analytic},location={self.location},incubation_temp_c={self.incubation_temp_c},incubation_time={self.incubation_time},wavelength={self.wavelength},method={self.method},)"
+        return f"EnzymeActivityMethod(analytic={self.analytic},location={self.location},id={self.id},incubation_temp_c={self.incubation_temp_c},incubation_time={self.incubation_time},wavelength={self.wavelength},method={self.method},)"
 
 
 
@@ -1115,19 +1115,19 @@ class FTICRAcquisitionMethod(Base):
     """
     __tablename__ = 'FTICR_AcquisitionMethod'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     analytic = Column(Text(), nullable=False )
     location = Column(Text(), nullable=False )
+    id = Column(UUID(), ForeignKey('analysisActivity.id'), primary_key=True, nullable=False )
     injection = Column(Text(), nullable=False )
     ionization = Column(Enum('ESI', 'EI', 'CI', 'MALDI', name='ionizationenum'), nullable=False )
     polarity = Column(Text(), nullable=False )
     iat = Column(Float())
     fid = Column(Float())
-    mass_range = Column(Float(), nullable=False )
+    mass_range = Column(Float())
     
 
     def __repr__(self):
-        return f"FTICR_AcquisitionMethod(id={self.id},analytic={self.analytic},location={self.location},injection={self.injection},ionization={self.ionization},polarity={self.polarity},iat={self.iat},fid={self.fid},mass_range={self.mass_range},)"
+        return f"FTICR_AcquisitionMethod(analytic={self.analytic},location={self.location},id={self.id},injection={self.injection},ionization={self.ionization},polarity={self.polarity},iat={self.iat},fid={self.fid},mass_range={self.mass_range},)"
 
 
 
@@ -1140,13 +1140,13 @@ class GravimetricWaterContentMethod(Base):
     """
     __tablename__ = 'GravimetricWaterContentMethod'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     analytic = Column(Text(), nullable=False )
     location = Column(Text(), nullable=False )
+    id = Column(UUID(), ForeignKey('analysisActivity.id'), primary_key=True, nullable=False )
     
 
     def __repr__(self):
-        return f"GravimetricWaterContentMethod(id={self.id},analytic={self.analytic},location={self.location},)"
+        return f"GravimetricWaterContentMethod(analytic={self.analytic},location={self.location},id={self.id},)"
 
 
 
@@ -1159,14 +1159,14 @@ class HydraulicPropertiesMethod(Base):
     """
     __tablename__ = 'HydraulicPropertiesMethod'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     analytic = Column(Text(), nullable=False )
     location = Column(Text(), nullable=False )
+    id = Column(UUID(), ForeignKey('analysisActivity.id'), primary_key=True, nullable=False )
     fitting_model = Column(Text(), nullable=False )
     
 
     def __repr__(self):
-        return f"HydraulicPropertiesMethod(id={self.id},analytic={self.analytic},location={self.location},fitting_model={self.fitting_model},)"
+        return f"HydraulicPropertiesMethod(analytic={self.analytic},location={self.location},id={self.id},fitting_model={self.fitting_model},)"
 
 
 
@@ -1179,16 +1179,16 @@ class KuoMethod(Base):
     """
     __tablename__ = 'KuoMethod'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     analytic = Column(Text(), nullable=False )
     location = Column(Text(), nullable=False )
     method = Column(Text(), nullable=False )
+    id = Column(UUID(), ForeignKey('analysisActivity.id'), primary_key=True, nullable=False )
     detection_limit = Column(Text(), nullable=False )
     wavelength = Column(Text())
     
 
     def __repr__(self):
-        return f"KuoMethod(id={self.id},analytic={self.analytic},location={self.location},method={self.method},detection_limit={self.detection_limit},wavelength={self.wavelength},)"
+        return f"KuoMethod(analytic={self.analytic},location={self.location},method={self.method},id={self.id},detection_limit={self.detection_limit},wavelength={self.wavelength},)"
 
 
 
@@ -1201,9 +1201,9 @@ class LCMSMetabolomicsMethod(Base):
     """
     __tablename__ = 'LCMS_MetabolomicsMethod'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     analytic = Column(Text(), nullable=False )
     location = Column(Text(), nullable=False )
+    id = Column(UUID(), ForeignKey('analysisActivity.id'), primary_key=True, nullable=False )
     injection = Column(Text(), nullable=False )
     polarity = Column(Text(), nullable=False )
     column = Column(Text(), nullable=False )
@@ -1218,7 +1218,7 @@ class LCMSMetabolomicsMethod(Base):
     
 
     def __repr__(self):
-        return f"LCMS_MetabolomicsMethod(id={self.id},analytic={self.analytic},location={self.location},injection={self.injection},polarity={self.polarity},column={self.column},mode={self.mode},method_duration={self.method_duration},runtime={self.runtime},resolution={self.resolution},scan_range={self.scan_range},dd_ms2_resolution={self.dd_ms2_resolution},loop_count={self.loop_count},isolation_window={self.isolation_window},)"
+        return f"LCMS_MetabolomicsMethod(analytic={self.analytic},location={self.location},id={self.id},injection={self.injection},polarity={self.polarity},column={self.column},mode={self.mode},method_duration={self.method_duration},runtime={self.runtime},resolution={self.resolution},scan_range={self.scan_range},dd_ms2_resolution={self.dd_ms2_resolution},loop_count={self.loop_count},isolation_window={self.isolation_window},)"
 
 
 
@@ -1231,9 +1231,9 @@ class MicrobialBiomassMethod(Base):
     """
     __tablename__ = 'MicrobialBiomassMethod'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     analytic = Column(Text(), nullable=False )
     location = Column(Text(), nullable=False )
+    id = Column(UUID(), ForeignKey('analysisActivity.id'), primary_key=True, nullable=False )
     detector = Column(Text(), nullable=False )
     mode = Column(Text())
     injection_volume = Column(Text(), nullable=False )
@@ -1243,7 +1243,7 @@ class MicrobialBiomassMethod(Base):
     
 
     def __repr__(self):
-        return f"MicrobialBiomassMethod(id={self.id},analytic={self.analytic},location={self.location},detector={self.detector},mode={self.mode},injection_volume={self.injection_volume},sample_volume={self.sample_volume},number_of_injections={self.number_of_injections},check_standard_spacing={self.check_standard_spacing},)"
+        return f"MicrobialBiomassMethod(analytic={self.analytic},location={self.location},id={self.id},detector={self.detector},mode={self.mode},injection_volume={self.injection_volume},sample_volume={self.sample_volume},number_of_injections={self.number_of_injections},check_standard_spacing={self.check_standard_spacing},)"
 
 
 
@@ -1256,14 +1256,14 @@ class PHMethod(Base):
     """
     __tablename__ = 'PH_Method'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     analytic = Column(Text(), nullable=False )
     location = Column(Text(), nullable=False )
+    id = Column(UUID(), ForeignKey('analysisActivity.id'), primary_key=True, nullable=False )
     calibration = Column(Text(), nullable=False )
     
 
     def __repr__(self):
-        return f"PH_Method(id={self.id},analytic={self.analytic},location={self.location},calibration={self.calibration},)"
+        return f"PH_Method(analytic={self.analytic},location={self.location},id={self.id},calibration={self.calibration},)"
 
 
 
@@ -1276,8 +1276,8 @@ class RespirationMethod(Base):
     """
     __tablename__ = 'RespirationMethod'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     analytic = Column(Text(), nullable=False )
+    id = Column(UUID(), ForeignKey('analysisActivity.id'), primary_key=True, nullable=False )
     respiration_analysis_type = Column(Text(), nullable=False )
     sample_volume_id = Column(UUID(), ForeignKey('quantityValue.id'))
     scale_id = Column(UUID(), ForeignKey('quantityValue.id'))
@@ -1287,7 +1287,7 @@ class RespirationMethod(Base):
     
 
     def __repr__(self):
-        return f"RespirationMethod(id={self.id},analytic={self.analytic},respiration_analysis_type={self.respiration_analysis_type},sample_volume_id={self.sample_volume_id},scale_id={self.scale_id},duration_id={self.duration_id},sampling_time_id={self.sampling_time_id},bottle_vol_id={self.bottle_vol_id},)"
+        return f"RespirationMethod(analytic={self.analytic},id={self.id},respiration_analysis_type={self.respiration_analysis_type},sample_volume_id={self.sample_volume_id},scale_id={self.scale_id},duration_id={self.duration_id},sampling_time_id={self.sampling_time_id},bottle_vol_id={self.bottle_vol_id},)"
 
 
 
@@ -1300,9 +1300,9 @@ class TOCTNMethod(Base):
     """
     __tablename__ = 'TOC_TN_Method'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     analytic = Column(Text(), nullable=False )
     location = Column(Text(), nullable=False )
+    id = Column(UUID(), ForeignKey('analysisActivity.id'), primary_key=True, nullable=False )
     column = Column(Text())
     mode = Column(Text())
     detector = Column(Text(), nullable=False )
@@ -1313,7 +1313,7 @@ class TOCTNMethod(Base):
     
 
     def __repr__(self):
-        return f"TOC_TN_Method(id={self.id},analytic={self.analytic},location={self.location},column={self.column},mode={self.mode},detector={self.detector},injection_volume={self.injection_volume},sample_volume={self.sample_volume},number_of_injections={self.number_of_injections},check_standard_spacing={self.check_standard_spacing},)"
+        return f"TOC_TN_Method(analytic={self.analytic},location={self.location},id={self.id},column={self.column},mode={self.mode},detector={self.detector},injection_volume={self.injection_volume},sample_volume={self.sample_volume},number_of_injections={self.number_of_injections},check_standard_spacing={self.check_standard_spacing},)"
 
 
 
@@ -1326,14 +1326,14 @@ class TextureMethod(Base):
     """
     __tablename__ = 'TextureMethod'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     analytic = Column(Text(), nullable=False )
     location = Column(Text(), nullable=False )
     method = Column(Text(), nullable=False )
+    id = Column(UUID(), ForeignKey('analysisActivity.id'), primary_key=True, nullable=False )
     
 
     def __repr__(self):
-        return f"TextureMethod(id={self.id},analytic={self.analytic},location={self.location},method={self.method},)"
+        return f"TextureMethod(analytic={self.analytic},location={self.location},method={self.method},id={self.id},)"
 
 
 
@@ -1346,9 +1346,9 @@ class XrayComputedTomographyMethod(Base):
     """
     __tablename__ = 'XrayComputedTomographyMethod'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     analytic = Column(Text(), nullable=False )
     location = Column(Text(), nullable=False )
+    id = Column(UUID(), ForeignKey('analysisActivity.id'), primary_key=True, nullable=False )
     x_ray_power = Column(Text(), nullable=False )
     cu_filter = Column(Text(), nullable=False )
     total_projections_collected = Column(Float(), nullable=False )
@@ -1359,7 +1359,7 @@ class XrayComputedTomographyMethod(Base):
     
 
     def __repr__(self):
-        return f"XrayComputedTomographyMethod(id={self.id},analytic={self.analytic},location={self.location},x_ray_power={self.x_ray_power},cu_filter={self.cu_filter},total_projections_collected={self.total_projections_collected},rotation={self.rotation},frames_recording_per_projection={self.frames_recording_per_projection},exposure_time_per_frame={self.exposure_time_per_frame},image_voxel_size_is={self.image_voxel_size_is},)"
+        return f"XrayComputedTomographyMethod(analytic={self.analytic},location={self.location},id={self.id},x_ray_power={self.x_ray_power},cu_filter={self.cu_filter},total_projections_collected={self.total_projections_collected},rotation={self.rotation},frames_recording_per_projection={self.frames_recording_per_projection},exposure_time_per_frame={self.exposure_time_per_frame},image_voxel_size_is={self.image_voxel_size_is},)"
 
 
 
@@ -1372,14 +1372,14 @@ class BulkDensityProduct(Base):
     """
     __tablename__ = 'BulkDensityProduct'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='productmeasuretype'))
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     bulk_density_id = Column(UUID(), ForeignKey('quantityValue.id'))
     flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='processeddataflag'))
     
 
     def __repr__(self):
-        return f"BulkDensityProduct(id={self.id},measure_type={self.measure_type},bulk_density_id={self.bulk_density_id},flag={self.flag},)"
+        return f"BulkDensityProduct(measure_type={self.measure_type},id={self.id},bulk_density_id={self.bulk_density_id},flag={self.flag},)"
 
 
 
@@ -1392,8 +1392,8 @@ class ElementalAnalysisProduct(Base):
     """
     __tablename__ = 'ElementalAnalysisProduct'
 
-    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='productmeasuretype'))
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     total_carbon_id = Column(UUID(), ForeignKey('quantityValue.id'))
     total_nitrogen_id = Column(UUID(), ForeignKey('quantityValue.id'))
     total_kjeldahl_nitrogen_id = Column(UUID(), ForeignKey('quantityValue.id'))
@@ -1405,7 +1405,7 @@ class ElementalAnalysisProduct(Base):
     
 
     def __repr__(self):
-        return f"ElementalAnalysisProduct(id={self.id},measure_type={self.measure_type},total_carbon_id={self.total_carbon_id},total_nitrogen_id={self.total_nitrogen_id},total_kjeldahl_nitrogen_id={self.total_kjeldahl_nitrogen_id},total_sulfur_id={self.total_sulfur_id},flag_total_carbon={self.flag_total_carbon},flag_total_nitrogen={self.flag_total_nitrogen},flag_tkn={self.flag_tkn},flag_total_sulfur={self.flag_total_sulfur},)"
+        return f"ElementalAnalysisProduct(measure_type={self.measure_type},id={self.id},total_carbon_id={self.total_carbon_id},total_nitrogen_id={self.total_nitrogen_id},total_kjeldahl_nitrogen_id={self.total_kjeldahl_nitrogen_id},total_sulfur_id={self.total_sulfur_id},flag_total_carbon={self.flag_total_carbon},flag_total_nitrogen={self.flag_total_nitrogen},flag_tkn={self.flag_tkn},flag_total_sulfur={self.flag_total_sulfur},)"
 
 
 
@@ -1418,14 +1418,14 @@ class EnzymeProduct(Base):
     """
     __tablename__ = 'EnzymeProduct'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='productmeasuretype'))
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     beta_glucosidase_ug_pnp_per_g_per_h_id = Column(UUID(), ForeignKey('quantityValue.id'))
     flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='processeddataflag'))
     
 
     def __repr__(self):
-        return f"EnzymeProduct(id={self.id},measure_type={self.measure_type},beta_glucosidase_ug_pnp_per_g_per_h_id={self.beta_glucosidase_ug_pnp_per_g_per_h_id},flag={self.flag},)"
+        return f"EnzymeProduct(measure_type={self.measure_type},id={self.id},beta_glucosidase_ug_pnp_per_g_per_h_id={self.beta_glucosidase_ug_pnp_per_g_per_h_id},flag={self.flag},)"
 
 
 
@@ -1438,7 +1438,7 @@ class FTICRProduct(Base):
     """
     __tablename__ = 'FTICRProduct'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='productmeasuretype'))
     rep = Column(Numeric())
     aq = Column(Numeric())
@@ -1466,14 +1466,14 @@ class GWCMoistureProduct(Base):
     """
     __tablename__ = 'GWCMoistureProduct'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='productmeasuretype'))
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     gwc_percent_id = Column(UUID(), ForeignKey('quantityValue.id'))
     flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='processeddataflag'))
     
 
     def __repr__(self):
-        return f"GWCMoistureProduct(id={self.id},measure_type={self.measure_type},gwc_percent_id={self.gwc_percent_id},flag={self.flag},)"
+        return f"GWCMoistureProduct(measure_type={self.measure_type},id={self.id},gwc_percent_id={self.gwc_percent_id},flag={self.flag},)"
 
 
 
@@ -1486,8 +1486,8 @@ class IonsAnalysisProduct(Base):
     """
     __tablename__ = 'IonsAnalysisProduct'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='productmeasuretype'))
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     sulfate_id = Column(UUID(), ForeignKey('quantityValue.id'))
     boron_id = Column(UUID(), ForeignKey('quantityValue.id'))
     zinc_id = Column(UUID(), ForeignKey('quantityValue.id'))
@@ -1515,7 +1515,7 @@ class IonsAnalysisProduct(Base):
     
 
     def __repr__(self):
-        return f"IonsAnalysisProduct(id={self.id},measure_type={self.measure_type},sulfate_id={self.sulfate_id},boron_id={self.boron_id},zinc_id={self.zinc_id},manganate_id={self.manganate_id},copper_id={self.copper_id},iron_id={self.iron_id},calcium_id={self.calcium_id},magnesium_id={self.magnesium_id},sodium_id={self.sodium_id},potassium_id={self.potassium_id},total_bases_id={self.total_bases_id},cation_exchange_capacity_id={self.cation_exchange_capacity_id},flag_sulfate={self.flag_sulfate},flag_boron={self.flag_boron},flag_zinc={self.flag_zinc},flag_manganate={self.flag_manganate},flag_copper={self.flag_copper},flag_iron={self.flag_iron},flag_calcium={self.flag_calcium},flag_magnesium={self.flag_magnesium},flag_sodium={self.flag_sodium},flag_potassium={self.flag_potassium},flag_total_bases={self.flag_total_bases},flag_cec={self.flag_cec},)"
+        return f"IonsAnalysisProduct(measure_type={self.measure_type},id={self.id},sulfate_id={self.sulfate_id},boron_id={self.boron_id},zinc_id={self.zinc_id},manganate_id={self.manganate_id},copper_id={self.copper_id},iron_id={self.iron_id},calcium_id={self.calcium_id},magnesium_id={self.magnesium_id},sodium_id={self.sodium_id},potassium_id={self.potassium_id},total_bases_id={self.total_bases_id},cation_exchange_capacity_id={self.cation_exchange_capacity_id},flag_sulfate={self.flag_sulfate},flag_boron={self.flag_boron},flag_zinc={self.flag_zinc},flag_manganate={self.flag_manganate},flag_copper={self.flag_copper},flag_iron={self.flag_iron},flag_calcium={self.flag_calcium},flag_magnesium={self.flag_magnesium},flag_sodium={self.flag_sodium},flag_potassium={self.flag_potassium},flag_total_bases={self.flag_total_bases},flag_cec={self.flag_cec},)"
 
 
 
@@ -1528,9 +1528,9 @@ class MAOMProduct(Base):
     """
     __tablename__ = 'MAOMProduct'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='productmeasuretype'))
     rep = Column(Numeric())
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     total_organic_carbon_id = Column(UUID(), ForeignKey('quantityValue.id'))
     total_organic_carbon_avg = Column(Float())
     total_nitrogen_id = Column(UUID(), ForeignKey('quantityValue.id'))
@@ -1542,7 +1542,7 @@ class MAOMProduct(Base):
     
 
     def __repr__(self):
-        return f"MAOMProduct(id={self.id},measure_type={self.measure_type},rep={self.rep},total_organic_carbon_id={self.total_organic_carbon_id},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_id={self.total_nitrogen_id},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},)"
+        return f"MAOMProduct(measure_type={self.measure_type},rep={self.rep},id={self.id},total_organic_carbon_id={self.total_organic_carbon_id},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_id={self.total_nitrogen_id},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},)"
 
 
 
@@ -1555,7 +1555,7 @@ class MetaGenomicsProduct(Base):
     """
     __tablename__ = 'MetaGenomicsProduct'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     input_to_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalys', name='metagenomicssteps'))
     output_to_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalys', name='metagenomicssteps'), nullable=False )
     
@@ -1574,9 +1574,9 @@ class MicrobialBiomassProduct(Base):
     """
     __tablename__ = 'MicrobialBiomassProduct'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='productmeasuretype'))
     rep = Column(Numeric())
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     mbc_id = Column(UUID(), ForeignKey('quantityValue.id'))
     mbc_avg = Column(Float())
     mbn_id = Column(UUID(), ForeignKey('quantityValue.id'))
@@ -1588,7 +1588,7 @@ class MicrobialBiomassProduct(Base):
     
 
     def __repr__(self):
-        return f"MicrobialBiomassProduct(id={self.id},measure_type={self.measure_type},rep={self.rep},mbc_id={self.mbc_id},mbc_avg={self.mbc_avg},mbn_id={self.mbn_id},mbn_avg={self.mbn_avg},flag_mbc={self.flag_mbc},flag_mbn={self.flag_mbn},flag_mbc_avg={self.flag_mbc_avg},flag_mbn_avg={self.flag_mbn_avg},)"
+        return f"MicrobialBiomassProduct(measure_type={self.measure_type},rep={self.rep},id={self.id},mbc_id={self.mbc_id},mbc_avg={self.mbc_avg},mbn_id={self.mbn_id},mbn_avg={self.mbn_avg},flag_mbc={self.flag_mbc},flag_mbn={self.flag_mbn},flag_mbc_avg={self.flag_mbc_avg},flag_mbn_avg={self.flag_mbn_avg},)"
 
 
 
@@ -1601,9 +1601,9 @@ class NitrogenAnalysisProduct(Base):
     """
     __tablename__ = 'NitrogenAnalysisProduct'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='productmeasuretype'))
     rep = Column(Numeric())
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     no3_n_id = Column(UUID(), ForeignKey('quantityValue.id'))
     no3_n_avg = Column(Float())
     nh4_n_id = Column(UUID(), ForeignKey('quantityValue.id'))
@@ -1615,7 +1615,7 @@ class NitrogenAnalysisProduct(Base):
     
 
     def __repr__(self):
-        return f"NitrogenAnalysisProduct(id={self.id},measure_type={self.measure_type},rep={self.rep},no3_n_id={self.no3_n_id},no3_n_avg={self.no3_n_avg},nh4_n_id={self.nh4_n_id},nh4_n_avg={self.nh4_n_avg},flag_no3n={self.flag_no3n},flag_nh4n={self.flag_nh4n},flag_no3n_avg={self.flag_no3n_avg},flag_nh4n_avg={self.flag_nh4n_avg},)"
+        return f"NitrogenAnalysisProduct(measure_type={self.measure_type},rep={self.rep},id={self.id},no3_n_id={self.no3_n_id},no3_n_avg={self.no3_n_avg},nh4_n_id={self.nh4_n_id},nh4_n_avg={self.nh4_n_avg},flag_no3n={self.flag_no3n},flag_nh4n={self.flag_nh4n},flag_no3n_avg={self.flag_no3n_avg},flag_nh4n_avg={self.flag_nh4n_avg},)"
 
 
 
@@ -1628,9 +1628,9 @@ class PhosphorusAnalysisProduct(Base):
     """
     __tablename__ = 'PhosphorusAnalysisProduct'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='productmeasuretype'))
     rep = Column(Numeric())
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     extraction_method = Column(Text())
     phosphorus_id = Column(UUID(), ForeignKey('quantityValue.id'))
     phosphorus_avg = Column(Float())
@@ -1639,7 +1639,7 @@ class PhosphorusAnalysisProduct(Base):
     
 
     def __repr__(self):
-        return f"PhosphorusAnalysisProduct(id={self.id},measure_type={self.measure_type},rep={self.rep},extraction_method={self.extraction_method},phosphorus_id={self.phosphorus_id},phosphorus_avg={self.phosphorus_avg},flag={self.flag},flag_avg={self.flag_avg},)"
+        return f"PhosphorusAnalysisProduct(measure_type={self.measure_type},rep={self.rep},id={self.id},extraction_method={self.extraction_method},phosphorus_id={self.phosphorus_id},phosphorus_avg={self.phosphorus_avg},flag={self.flag},flag_avg={self.flag_avg},)"
 
 
 
@@ -1652,14 +1652,14 @@ class RespirationProduct(Base):
     """
     __tablename__ = 'RespirationProduct'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='productmeasuretype'))
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     respiration_rate_per_day_id = Column(UUID(), ForeignKey('quantityValue.id'))
     flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='processeddataflag'))
     
 
     def __repr__(self):
-        return f"RespirationProduct(id={self.id},measure_type={self.measure_type},respiration_rate_per_day_id={self.respiration_rate_per_day_id},flag={self.flag},)"
+        return f"RespirationProduct(measure_type={self.measure_type},id={self.id},respiration_rate_per_day_id={self.respiration_rate_per_day_id},flag={self.flag},)"
 
 
 
@@ -1672,8 +1672,8 @@ class TextureProduct(Base):
     """
     __tablename__ = 'TextureProduct'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='productmeasuretype'))
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     sand_pct_id = Column(UUID(), ForeignKey('quantityValue.id'))
     silt_pct_id = Column(UUID(), ForeignKey('quantityValue.id'))
     clay_pct_id = Column(UUID(), ForeignKey('quantityValue.id'))
@@ -1681,7 +1681,7 @@ class TextureProduct(Base):
     
 
     def __repr__(self):
-        return f"TextureProduct(id={self.id},measure_type={self.measure_type},sand_pct_id={self.sand_pct_id},silt_pct_id={self.silt_pct_id},clay_pct_id={self.clay_pct_id},flag={self.flag},)"
+        return f"TextureProduct(measure_type={self.measure_type},id={self.id},sand_pct_id={self.sand_pct_id},silt_pct_id={self.silt_pct_id},clay_pct_id={self.clay_pct_id},flag={self.flag},)"
 
 
 
@@ -1694,8 +1694,8 @@ class TomographyProduct(Base):
     """
     __tablename__ = 'TomographyProduct'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='productmeasuretype'))
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     roi_volume_voxel = Column(Float())
     voxel_size = Column(Float())
     connected_pores = Column(Float())
@@ -1719,7 +1719,7 @@ class TomographyProduct(Base):
     
 
     def __repr__(self):
-        return f"TomographyProduct(id={self.id},measure_type={self.measure_type},roi_volume_voxel={self.roi_volume_voxel},voxel_size={self.voxel_size},connected_pores={self.connected_pores},pore_diameter_min={self.pore_diameter_min},pore_diameter_max={self.pore_diameter_max},pore_diameter_mean={self.pore_diameter_mean},pore_diameter_median={self.pore_diameter_median},pore_diameter_variance={self.pore_diameter_variance},pore_volume_mean={self.pore_volume_mean},total_pore_volume={self.total_pore_volume},permeability_x={self.permeability_x},flow_rate_x={self.flow_rate_x},tortuosity_x={self.tortuosity_x},permeability_y={self.permeability_y},flow_rate_y={self.flow_rate_y},tortuosity_y={self.tortuosity_y},permeability_z={self.permeability_z},flow_rate_z={self.flow_rate_z},tortuosity_z={self.tortuosity_z},flag_xct={self.flag_xct},)"
+        return f"TomographyProduct(measure_type={self.measure_type},id={self.id},roi_volume_voxel={self.roi_volume_voxel},voxel_size={self.voxel_size},connected_pores={self.connected_pores},pore_diameter_min={self.pore_diameter_min},pore_diameter_max={self.pore_diameter_max},pore_diameter_mean={self.pore_diameter_mean},pore_diameter_median={self.pore_diameter_median},pore_diameter_variance={self.pore_diameter_variance},pore_volume_mean={self.pore_volume_mean},total_pore_volume={self.total_pore_volume},permeability_x={self.permeability_x},flow_rate_x={self.flow_rate_x},tortuosity_x={self.tortuosity_x},permeability_y={self.permeability_y},flow_rate_y={self.flow_rate_y},tortuosity_y={self.tortuosity_y},permeability_z={self.permeability_z},flow_rate_z={self.flow_rate_z},tortuosity_z={self.tortuosity_z},flag_xct={self.flag_xct},)"
 
 
 
@@ -1732,9 +1732,9 @@ class WEOMProduct(Base):
     """
     __tablename__ = 'WEOMProduct'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='productmeasuretype'))
     rep = Column(Numeric())
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     total_organic_carbon_id = Column(UUID(), ForeignKey('quantityValue.id'))
     total_organic_carbon_avg = Column(Float())
     total_nitrogen_id = Column(UUID(), ForeignKey('quantityValue.id'))
@@ -1746,7 +1746,7 @@ class WEOMProduct(Base):
     
 
     def __repr__(self):
-        return f"WEOMProduct(id={self.id},measure_type={self.measure_type},rep={self.rep},total_organic_carbon_id={self.total_organic_carbon_id},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_id={self.total_nitrogen_id},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},)"
+        return f"WEOMProduct(measure_type={self.measure_type},rep={self.rep},id={self.id},total_organic_carbon_id={self.total_organic_carbon_id},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_id={self.total_nitrogen_id},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},)"
 
 
 
@@ -1759,14 +1759,14 @@ class PHProduct(Base):
     """
     __tablename__ = 'pHProduct'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='productmeasuretype'))
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     ph = Column(Float())
     flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='processeddataflag'))
     
 
     def __repr__(self):
-        return f"pHProduct(id={self.id},measure_type={self.measure_type},ph={self.ph},flag={self.flag},)"
+        return f"pHProduct(measure_type={self.measure_type},id={self.id},ph={self.ph},flag={self.flag},)"
 
 
 

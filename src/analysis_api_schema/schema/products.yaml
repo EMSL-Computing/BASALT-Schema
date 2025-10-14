@@ -17,9 +17,6 @@ imports:
   - analysis_api_schema
 
 slots:
-  id:
-    identifier: true
-    range: processedData
   measure_type:
     range: productmeasuretype
   rep:
@@ -31,9 +28,11 @@ classes:
 
   BulkDensityProduct:
     slots:
-      - id
       - measure_type
     attributes:
+      id:
+        identifier: true
+        range: processedData
       bulk_density_id:
         range: quantityValue
       flag:
@@ -41,7 +40,6 @@ classes:
 
   ElementalAnalysisProduct:
     slots:
-      - id
       - measure_type
     attributes:
       id:
@@ -66,9 +64,11 @@ classes:
 
   EnzymeProduct:
     slots:
-      - id
       - measure_type
     attributes:
+      id:
+        identifier: true
+        range: processedData
       beta_glucosidase_ug_pnp_per_g_per_h_id:
         range: quantityValue
       flag:
@@ -81,6 +81,9 @@ classes:
       - rep
       - aq
     attributes:
+      id:
+        identifier: true
+        range: processedData
       h_c_average:
         range: double
       o_c_average:
@@ -100,9 +103,11 @@ classes:
 
   GWCMoistureProduct:
     slots:
-      - id
       - measure_type
     attributes:
+      id:
+        identifier: true
+        range: processedData
       gwc_percent_id:
         range: quantityValue
       flag:
@@ -110,9 +115,11 @@ classes:
         
   IonsAnalysisProduct:
     slots:
-      - id
       - measure_type
     attributes:
+      id:
+        identifier: true
+        range: processedData
       sulfate_id:
         range: quantityValue
       boron_id:
@@ -164,10 +171,12 @@ classes:
 
   MAOMProduct:
     slots:
-      - id
       - measure_type
       - rep
     attributes:
+      id:
+        identifier: true
+        range: processedData
       total_organic_carbon_id:
         range: quantityValue
       total_organic_carbon_avg:
@@ -187,8 +196,10 @@ classes:
 
   MetaGenomicsProduct:
     slots:
-      - id
     attributes:
+      id:
+        identifier: true
+        range: processedData
       input_to_step:
         range: metagenomicssteps
       output_to_step:
@@ -197,10 +208,12 @@ classes:
 
   MicrobialBiomassProduct:
     slots:
-      - id
       - measure_type
       - rep
     attributes:
+      id:
+        identifier: true
+        range: processedData
       mbc_id:
         range: quantityValue
       mbc_avg:
@@ -220,10 +233,12 @@ classes:
 
   NitrogenAnalysisProduct:
     slots:
-      - id
       - measure_type
       - rep
     attributes:
+      id:
+        identifier: true
+        range: processedData
       no3_n_id:
         range: quantityValue
       no3_n_avg:
@@ -243,10 +258,12 @@ classes:
 
   PhosphorusAnalysisProduct:
     slots:
-      - id
       - measure_type
       - rep
     attributes:
+      id:
+        identifier: true
+        range: processedData
       extraction_method:
         range: string
       phosphorus_id:
@@ -260,9 +277,11 @@ classes:
 
   RespirationProduct:
     slots:
-      - id
       - measure_type
     attributes:
+      id:
+        identifier: true
+        range: processedData
       respiration_rate_per_day_id:
         range: quantityValue
       flag:
@@ -270,9 +289,11 @@ classes:
 
   TextureProduct:
     slots:
-      - id
       - measure_type
     attributes:
+      id:
+        identifier: true
+        range: processedData
       sand_pct_id:
         range: quantityValue
       silt_pct_id:
@@ -284,9 +305,11 @@ classes:
 
   TomographyProduct:
     slots:
-      - id
       - measure_type
     attributes:
+      id:
+        identifier: true
+        range: processedData
       roi_volume_voxel:
         range: double
       voxel_size:
@@ -331,10 +354,12 @@ classes:
 
   WEOMProduct:
     slots:
-      - id
       - measure_type
       - rep
     attributes:
+      id:
+        identifier: true
+        range: processedData
       total_organic_carbon_id:
         range: quantityValue
       total_organic_carbon_avg:
@@ -354,9 +379,11 @@ classes:
 
   pHProduct:
     slots:
-      - id
       - measure_type
     attributes:
+      id:
+        identifier: true
+        range: processedData
       ph:
         range: double
       flag:

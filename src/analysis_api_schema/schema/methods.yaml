@@ -15,9 +15,6 @@ imports:
   - linkml:types
 
 slots:
-  id:
-    identifier: true
-    range: analysisActivity
   analytic:
     range: string
     required: true
@@ -34,19 +31,27 @@ classes:
 
   BulkDensityMethod:
     slots:
-      - id
       - analytic
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
 
   ElementalAnalysisMethod:
-    slots:
-      - id
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+      
 
   EnzymeActivityMethod:
     slots:
-      - id
       - analytic
       - location
     attributes:
+      id:
+        identifier: true
+        range: analysisActivity
       incubation_temp_c:
         range: double
       incubation_time:
@@ -59,10 +64,12 @@ classes:
 
   FTICR_AcquisitionMethod:
     slots:
-      - id
       - analytic
       - location
     attributes:
+      id:
+        identifier: true
+        range: analysisActivity
       injection:
         range: string
         required: true
@@ -78,31 +85,38 @@ classes:
         range: double
       mass_range:
         range: double # another array of double...
-        required: true
         
   GravimetricWaterContentMethod:
     slots:
-      - id
-      - analytic
-      - location
-
-  HydraulicPropertiesMethod:
-    slots:
-      - id
       - analytic
       - location
     attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+
+
+  HydraulicPropertiesMethod:
+    slots:
+      - analytic
+      - location
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
       fitting_model:
         range: string
         required: true
   
   KuoMethod:
     slots:
-      - id
       - analytic
       - location
       - method
     attributes:
+      id:
+        identifier: true
+        range: analysisActivity
       detection_limit:
         range: string
         required: true
@@ -111,10 +125,12 @@ classes:
   
   LCMS_MetabolomicsMethod:
     slots:
-      - id
       - analytic
       - location
     attributes:
+      id:
+        identifier: true
+        range: analysisActivity
       injection:
         range: string
         required: true
@@ -151,10 +167,12 @@ classes:
   
   MicrobialBiomassMethod:
     slots:
-      - id
       - analytic
       - location
     attributes:
+      id:
+        identifier: true
+        range: analysisActivity
       detector:
         range: string
         required: true
@@ -175,19 +193,23 @@ classes:
   
   PH_Method:
     slots:
-      - id
       - analytic
       - location
     attributes:
+      id:
+        identifier: true
+        range: analysisActivity
       calibration:
         range: string
         required: true
   
   RespirationMethod:
     slots:
-      - id
       - analytic
     attributes:
+      id:
+        identifier: true
+        range: analysisActivity
       respiration_analysis_type:
         range: string
         required: true
@@ -204,10 +226,12 @@ classes:
   
   TOC_TN_Method:
     slots:
-      - id
       - analytic
       - location
     attributes:
+      id:
+        identifier: true
+        range: analysisActivity
       column:
         range: string
       mode:
@@ -228,18 +252,23 @@ classes:
         range: string
   
   TextureMethod:
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
     slots:
-      - id
       - analytic
       - location
       - method
   
   XrayComputedTomographyMethod:
     slots:
-      - id
       - analytic
       - location
     attributes:
+      id:
+        identifier: true
+        range: analysisActivity
       x_ray_power:
         range: string
         required: true
