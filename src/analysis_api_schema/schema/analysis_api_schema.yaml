@@ -562,6 +562,13 @@ classes:
         required: true
       version:
         range: string
+    unique_keys:
+      unique_sample_process_step:
+        unique_key_slots:
+          - sample_base_id
+          - processing_id
+          - step_number
+          - role
 
   instrumentCustodian:
     attributes:
