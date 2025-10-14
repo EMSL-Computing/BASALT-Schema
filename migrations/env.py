@@ -63,12 +63,30 @@ def include_object(object, name, type_, reflected, compare_to):
     Function to determine whether to include an object in the migration.
     Return False to exclude the object from migrations.
     
-    This function prevents accidental index drops and other unwanted operations.
+    This function prevents accidental index drops and specific column additions.
     """
     # Prevent index drops
     if type_ == "index" and reflected and not compare_to:
         print(f"Preventing drop of index: {name}")
         return False
+    
+    # Prevent specific column additions by table.column name
+    if type_ == "column" and not reflected:
+        # This is a column addition - get table name from object
+        table_name = object.table.name if hasattr(object, 'table') else 'unknown'
+        column_name = name
+        
+        # List of specific columns to ignore (table.column format)
+        columns_to_ignore = [
+            'instrumentCustodian.id',
+            'sampling_activity_site_metadata_link.id',
+            'workflowExecutionFunctionalAnnotation.id'
+        ]
+        
+        full_column_name = f"{table_name}.{column_name}"
+        if full_column_name in columns_to_ignore:
+            print(f"Preventing addition of column: {full_column_name}")
+            return False
     
     # Allow all other operations
     return True
