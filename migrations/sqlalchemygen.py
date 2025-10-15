@@ -11,7 +11,7 @@ from linkml_runtime.linkml_model import Annotation, ClassDefinition, ClassDefini
 from linkml_runtime.utils.compile_python import compile_python
 from linkml_runtime.utils.formatutils import camelcase, underscore
 from linkml_runtime.utils.schemaview import SchemaView
-from sqlalchemy import Enum
+from sqlalchemy import Enum, UniqueConstraint
 
 from linkml._version import __version__
 from linkml.generators.pydanticgen import PydanticGenerator
@@ -23,6 +23,139 @@ from linkml.transformers.relmodel_transformer import ForeignKeyPolicy, Relationa
 from linkml.utils.generator import Generator, shared_arguments
 
 logger = logging.getLogger(__name__)
+
+# Custom template strings with UniqueConstraint support
+sqlalchemy_declarative_template_str_with_uc = """
+from sqlalchemy import Column, Index, Table, ForeignKey, UniqueConstraint
+from sqlalchemy.orm import relationship
+from sqlalchemy.sql.sqltypes import *
+from sqlalchemy.orm import declarative_base
+from sqlalchemy.ext.associationproxy import association_proxy
+
+Base = declarative_base()
+metadata = Base.metadata
+
+{% for c in classes %}
+class {{classname(c.name)}}({% if c.is_a %}{{ classname(c.is_a) }}{% else %}Base{% endif %}):
+    \"\"\"
+    {% if c.description %}{{c.description}}{% else %}{{c.alias}}{% endif %}
+    \"\"\"
+    __tablename__ = '{{c.name}}'
+
+    {% for s in c.attributes.values() -%}
+    {{s.alias}} = Column({{s.annotations['sql_type'].value}}
+           {%- if 'foreign_key' in s.annotations -%}, ForeignKey('{{ s.annotations['foreign_key'].value }}') {%- endif -%}
+           {%- if 'primary_key' in s.annotations -%}, primary_key=True {%- endif -%}
+           {%- if 'autoincrement' in s.annotations -%}, autoincrement=True {% endif -%}
+           {%- if "required" in s.annotations -%}, nullable=False {% endif -%}
+           )
+    {% if 'foreign_key' in s.annotations and 'original_slot' in s.annotations -%}
+    {{s.annotations['original_slot'].value}} = relationship("{{classname(s.range)}}", uselist=False, foreign_keys=[{{s.alias}}])
+    {% endif -%}
+    {% endfor %}
+
+    {%- for mapping in backrefs[c.name] %}
+    {% if mapping.mapping_type == "ManyToMany" %}
+    # ManyToMany
+    {{mapping.source_slot}} = relationship( "{{ classname(mapping.target_class) }}", secondary="{{ mapping.join_class }}")
+    {% elif mapping.mapping_type == "MultivaluedScalar" %}
+    {{mapping.source_slot}}_rel = relationship( "{{ classname(mapping.join_class) }}" )
+    {{mapping.source_slot}} = association_proxy("{{mapping.source_slot}}_rel", "{{mapping.target_slot}}",
+                                  creator=lambda x_: {{ classname(mapping.join_class) }}({{mapping.target_slot}}=x_))
+    {% else %}
+    # One-To-Many: {{mapping}}
+    {{mapping.source_slot}} = relationship( "{{ classname(mapping.target_class) }}", foreign_keys="[{{ mapping.target_class }}.{{mapping.target_slot}}]")
+    {% endif -%}
+    {%- endfor %}
+
+    {% if unique_constraints[c.name] %}
+    # Unique constraints
+    __table_args__ = (
+        {%- for uc_slots in unique_constraints[c.name] %}
+        UniqueConstraint({% for slot in uc_slots %}'{{slot}}'{% if not loop.last %}, {% endif %}{% endfor %}),
+        {%- endfor %}
+    )
+    {% endif %}
+
+    def __repr__(self):
+        return f"{{c.name}}(
+        {%- for s in c.attributes.values() -%}
+        {{s.alias}}={self.{{s.alias}}},
+        {%- endfor %})"
+
+
+
+    {% if c.is_a or c.mixins %}
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    {% endif %}
+
+{% endfor %}
+"""
+
+sqlalchemy_imperative_template_str_with_uc = """
+from dataclasses import dataclass
+from dataclasses import field
+from typing import List
+
+from sqlalchemy import Column
+from sqlalchemy import ForeignKey
+from sqlalchemy import Integer
+from sqlalchemy import MetaData
+from sqlalchemy import String
+from sqlalchemy import Table
+from sqlalchemy import Text
+from sqlalchemy import Integer
+from sqlalchemy import UniqueConstraint
+from sqlalchemy.orm import registry
+from sqlalchemy.orm import relationship
+
+mapper_registry = registry()
+metadata = MetaData()
+
+{% if not no_model_import %}
+from {{model_path}} import *
+{% endif %}
+
+{% for c in classes %}
+tbl_{{classname(c.name)}} = Table('{{c.name}}', metadata,
+    {%- for s in c.attributes.values() %}
+    Column('{{s.name}}',
+          Text,
+          {% if 'foreign_key' in s.annotations -%}
+            ForeignKey('{{ s.annotations['foreign_key'].value }}'),
+          {% endif -%}
+          {% if 'primary_key' in s.annotations -%}
+            primary_key=True
+          {%- endif -%}
+          ),
+    {%- endfor %}
+    {% if unique_constraints[c.name] -%}
+    {%- for uc_slots in unique_constraints[c.name] %}
+    UniqueConstraint({% for slot in uc_slots %}'{{slot}}'{% if not loop.last %}, {% endif %}{% endfor %}),
+    {%- endfor %}
+    {%- endif %}
+)
+{% endfor -%}
+
+# -- Mappings --
+
+{% for c in classes if not is_join_table(c) %}
+mapper_registry.map_imperatively({{classname(c.name)}}, tbl_{{classname(c.name)}}, properties = {
+  ## NOTE: mapping omitted for now, see https://stackoverflow.com/questions/11746922/sqlalchemy-object-has-no-attribute-sa-adapter
+  {% for mapping in backrefs[c.name] %}
+  {% if mapping.uses_join_table %}
+  {% else %}
+  #'{{mapping.source_slot}}': relationship( {{ mapping.target_class }}, backref='{{c.name}}' ),
+  {% endif %}
+  #'{mapping.source_slot}': relationship()
+  ## {{ mapping }}
+  {% endfor %}
+})
+{% endfor %}
+"""
 
 
 class TemplateEnum(Enum):
@@ -72,16 +205,25 @@ class SQLAlchemyGenerator(Generator):
         tr_result = sqltr.transform(**kwargs)
         tr_schema = tr_result.schema
         for c in tr_schema.classes.values():
+            
             for a in c.attributes.values():
                 sql_range = tgen.get_sql_range(a, tr_schema)
                 sql_type = sql_range.__repr__()
                 ann = Annotation("sql_type", sql_type)
                 a.annotations[ann.tag] = ann
                 # a.sql_type = sql_type
+            # convert unique_keys into a uniqueness constraint for the table
+            for uc in c.unique_keys.values():
+                sql_names = [sn for sn in uc.unique_key_slots]
+                # sql_names = [sql_name(sn) if sn in c.attributes else None for sn in uc.unique_key_slots]
+                # if any(sn is None for sn in sql_names):
+                #     continue
+                sql_uc = UniqueConstraint(*sql_names)
+            
         if template == TemplateEnum.IMPERATIVE:
-            template_str = sqlalchemy_imperative_template_str
+            template_str = sqlalchemy_imperative_template_str_with_uc
         elif template == TemplateEnum.DECLARATIVE:
-            template_str = sqlalchemy_declarative_template_str
+            template_str = sqlalchemy_declarative_template_str_with_uc
         else:
             raise Exception(f"Unknown template type: {template}")
         template_obj = Template(template_str)
@@ -89,6 +231,15 @@ class SQLAlchemyGenerator(Generator):
             model_path = self.schema.name
         logger.info(f"Package for dataclasses ==  {model_path}")
         backrefs = defaultdict(list)
+        unique_constraints = defaultdict(list)
+        
+        # Collect unique constraints for each class
+        for c in tr_schema.classes.values():
+            for uc in c.unique_keys.values():
+                sql_names = [sn for sn in uc.unique_key_slots]
+                if sql_names:  # Only add if we have valid slot names
+                    unique_constraints[c.name].append(sql_names)
+        
         for m in tr_result.mappings:
             backrefs[m.source_class].append(m)
         # for c in tr_schema.classes.values():
@@ -111,6 +262,7 @@ class SQLAlchemyGenerator(Generator):
             model_path=model_path,
             mappings=tr_result.mappings,
             backrefs=backrefs,
+            unique_constraints=unique_constraints,
             classname=camelcase,
             no_model_import=no_model_import,
             is_join_table=lambda c: any(tag for tag in c.annotations.keys() if tag == "linkml:derived_from"),

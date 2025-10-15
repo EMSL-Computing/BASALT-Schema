@@ -25,6 +25,12 @@ default_range: string
 imports:
   - linkml:types
   - enums
+  - value_tables
+  - metagenomics
+  - metadata
+  - methods
+  - products
+  - administration
   # - enrichment # todo have not reviewed fully
 
 classes:
@@ -36,6 +42,7 @@ classes:
       participant_name: # TODO not quite correct
         range: string
         array: {}
+        required: true
       principal_investigator:
       collaborating_institution:
       project_status:
@@ -52,38 +59,7 @@ classes:
         # range: project_id # like 60880
         required: true
 
-  quantityValue:
-    description: A quantity value with numeric value and optional unit
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      description:
-      has_value_unit:
-      has_unit:
-        description: The human-readable unit name
-      has_numeric_value:
-        description: The numeric value of the quantity
-        range: double
-      has_minimum_numeric_value:
-        range: numeric
-      has_maximum_numeric_value:
-        range: numeric
-      has_raw_value:
 
-  geolocationValue:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      description:
-      has_raw_value:
-      latitude:
-        range: numeric
-      longitude:
-        range: numeric
-      type:
-      was_generated_by:
 
   samplingActivity:
     attributes:
@@ -258,3 +234,361 @@ classes:
         description: The replicate (or aliquot) number
         range: integer
         required: true
+
+  processedData:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      type:
+        range: product
+        required: true
+      name:
+        range: string
+        required: true
+      proposal_id:
+        range: numeric # TODO NO
+      sampling_set:
+        range: numeric # TODO WHY
+      core_section:
+        range: string
+      sample_name:
+        range: string
+      s3_base_url:
+        range: string
+      s3_bucket:
+        range: string
+      s3_key:
+        range: string
+        required: true
+      filesize:
+        range: integer
+      md5checksum:
+        range: string
+      workflow_id:
+        range: workflowExecutionActivity
+      lims_barcode:
+        range: string
+      version:
+        range: string
+
+
+  analysisActivity:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      type:
+        range: routemethod
+      analyte_id:
+        range: processedSample
+      name:
+        range: string
+      acquisition_time:
+        range: datetime
+        required: true
+      instrument_id:
+        range: instrument
+      protocol_url:
+        range: string
+      instrument_operator_id:
+        range: personValue
+      version:
+        range: string
+
+  instrumentData:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      analysis_activity_id:
+        range: analysisActivity
+      description:
+        range: string
+        required: true
+      alternative_identifiers:
+        range: string # TODO ARRAY
+      compression_type:
+        range: string
+      file_size_bytes:
+        range: integer
+      md5_checksum:
+        range: string
+      name:
+        range: string
+        required: true
+      type:
+        range: string
+      url:
+        range: string
+      was_generated_by:
+        range: string
+      file_type:
+        range: filetype
+      version:
+        range: string
+
+  workflowExecutionActivity:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      raw_data_id:
+        range: instrumentData
+        required: true
+      description:
+        range: string
+      ended_at_time:
+        range: datetime
+      git_url:
+        range: string
+        required: true
+      name:
+        range: string
+      started_at_time:
+        range: datetime
+        required: true
+      type:
+        range: string
+        required: true
+      used_id:
+        range: softwareControlledTermValue
+      execution_resource:
+        range: executionresourcetype
+      workflow_steps:
+        range: string # TODO JSONB
+      version:
+        range: string
+
+  alternativeIdentifier:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      alternate_id:
+        range: string
+        required: true
+      alternate_identifier_type:
+        range: alternateidentifiertype
+        required: true
+
+
+  ecoregion:
+    attributes:
+      domain_id:
+        identifier: true
+        range: integer
+      domain_name:
+        range: string
+        required: true
+
+  functionalAnnotationIdentifier:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      functional_identifier:
+        range: string
+        required: true
+      database:
+        range: annotationdatabasetype
+        required: true
+
+
+  instrument:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      name:
+        range: string
+        required: true
+      alternative_names:
+        range: string # TODO ARRAY
+      vendor:
+        range: vendorenum
+      model:
+        range: modelenum
+      instrument_parameters:
+        range: string # TODO JSON
+
+  metaboliteQuantification:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      description:
+        range: string
+      alternative_identifiers:
+        range: string
+      highest_similarity_score:
+        range: integer
+      metabolite_quantified:
+        range: string
+
+  ontologyClass:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      description:
+        range: string
+      alternative_identifiers:
+        range: string
+      name:
+        range: string
+
+  peptideQuantification:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      description:
+        range: string
+      all_proteins:
+        range: string
+      best_protein:
+        range: string
+      min_q_value:
+        range: numeric
+      peptide_sequence:
+        range: string
+      peptide_spectral_count:
+        range: integer
+      peptide_sum_masic_abundance:
+        range: numeric
+
+
+
+
+
+
+  zipDownload:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      time:
+        range: datetime
+        required: true
+      user:
+        range: string
+        required: true
+      files:
+        range: integer
+        required: true
+      packages:
+        range: string
+
+  containerType:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      description:
+        range: string
+      was_generated_by:
+        range: string
+      container_type:
+        range: containertypeenum
+      container_size_id:
+        range: quantityValue
+
+  custodian:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      person_id:
+        range: personValue
+
+  instrument_alt_id:
+    attributes:
+      id:
+        identifier: true
+        range: alternativeIdentifier
+      instrument_alt_id_provider:
+        range: instrumentaltidprovider
+      instrument_id:
+        range: instrument
+        required: true
+
+  labDevice:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      description:
+        range: string
+      device_type:
+        range: devicetypeenum
+      activity_time_id:
+        range: quantityValue
+      activity_speed_id:
+        range: quantityValue
+
+  sampleProcessing:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      analysis_type:
+        range: routemethod
+      method_name:
+        range: methodname
+      processing_steps:
+        range: string # TODO JSONB
+        required: true
+      url:
+        range: string
+      version:
+        range: string
+
+  processingSampleLink:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      sample_base_id:
+        range: sampleBase
+        required: true
+      processing_id:
+        range: sampleProcessing
+        required: true
+      step_number:
+        range: integer
+        required: true
+      role:
+        range: samplerole
+        required: true
+      version:
+        range: string
+    unique_keys:
+      unique_sample_process_step:
+        unique_key_slots:
+          - sample_base_id
+          - processing_id
+          - step_number
+          - role
+
+  instrumentCustodian:
+    attributes:
+      instrument_id:
+        range: instrument
+        required: true
+      custodian_id:
+        range: custodian
+        required: true
+
+
+  workflowExecutionFunctionalAnnotation:
+    attributes:
+      workflow_id:
+        range: workflowExecutionActivity
+        required: true
+      functional_annotation_id:
+        range: functionalAnnotationIdentifier
+        required: true
+      count:
+        range: numeric
+

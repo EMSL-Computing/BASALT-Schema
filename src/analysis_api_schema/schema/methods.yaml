@@ -1,0 +1,292 @@
+id: https://w3id.org/MONet/analysis-api-schema/enums
+name: analysis-api-schema-enums
+title: MONet Analysis API - Enumerations
+description: |-
+  Enumerated values used throughout the MONet Analysis API schema
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+default_prefix: analysis_api_schema
+
+imports:
+  - linkml:types
+
+slots:
+  analytic:
+    range: string
+    required: true
+  method:
+    range: string
+    required: true
+  location:
+    range: string
+    required: true
+
+
+
+classes:
+
+  BulkDensityMethod:
+    slots:
+      - analytic
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+
+  ElementalAnalysisMethod:
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+      
+
+  EnzymeActivityMethod:
+    slots:
+      - analytic
+      - location
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+      incubation_temp_c:
+        range: double
+      incubation_time:
+        range: string
+      wavelength:
+        range: double
+      method:
+        range: string
+        required: true
+
+  FTICR_AcquisitionMethod:
+    slots:
+      - analytic
+      - location
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+      injection:
+        range: string
+        required: true
+      ionization:
+        range: ionizationenum
+        required: true
+      polarity:
+        range: string
+        required: true
+      iat:
+        range: double
+      fid:
+        range: double
+      mass_range:
+        range: double # another array of double...
+        
+  GravimetricWaterContentMethod:
+    slots:
+      - analytic
+      - location
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+
+
+  HydraulicPropertiesMethod:
+    slots:
+      - analytic
+      - location
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+      fitting_model:
+        range: string
+        required: true
+  
+  KuoMethod:
+    slots:
+      - analytic
+      - location
+      - method
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+      detection_limit:
+        range: string
+        required: true
+      wavelength:
+        range: string
+  
+  LCMS_MetabolomicsMethod:
+    slots:
+      - analytic
+      - location
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+      injection:
+        range: string
+        required: true
+      polarity:
+        range: string
+        required: true
+      column:
+        range: string
+        required: true
+      mode:
+        range: string
+        required: true
+      method_duration:
+        range: string
+        required: true
+      runtime:
+        range: string
+        required: true
+      resolution:
+        range: double
+        required: true
+      scan_range:
+        range: string
+        required: true
+      dd_ms2_resolution:
+        range: double
+        required: true
+      loop_count:
+        range: string
+        required: true
+      isolation_window:
+        range: string
+        required: true
+  
+  MicrobialBiomassMethod:
+    slots:
+      - analytic
+      - location
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+      detector:
+        range: string
+        required: true
+      mode:
+        range: string
+      injection_volume:
+        range: string
+        required: true
+      sample_volume:
+        range: string
+        required: true
+      number_of_injections:
+        range: double
+        required: true
+      check_standard_spacing:
+        range: string
+        required: true
+  
+  PH_Method:
+    slots:
+      - analytic
+      - location
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+      calibration:
+        range: string
+        required: true
+  
+  RespirationMethod:
+    slots:
+      - analytic
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+      respiration_analysis_type:
+        range: string
+        required: true
+      sample_volume_id:
+        range: quantityValue
+      scale_id:
+        range: quantityValue
+      duration_id:
+        range: quantityValue
+      sampling_time_id:
+        range: quantityValue
+      bottle_vol_id:
+        range: quantityValue
+  
+  TOC_TN_Method:
+    slots:
+      - analytic
+      - location
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+      column:
+        range: string
+      mode:
+        range: string
+      detector:
+        range: string
+        required: true
+      injection_volume:
+        range: string
+        required: true
+      sample_volume:
+        range: string
+        required: true
+      number_of_injections:
+        range: double
+        required: true
+      check_standard_spacing:
+        range: string
+  
+  TextureMethod:
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+    slots:
+      - analytic
+      - location
+      - method
+  
+  XrayComputedTomographyMethod:
+    slots:
+      - analytic
+      - location
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+      x_ray_power:
+        range: string
+        required: true
+      cu_filter:
+        range: string
+        required: true
+      total_projections_collected:
+        range: double
+        required: true
+      rotation:
+        range: string
+        required: true
+      frames_recording_per_projection:
+        range: double
+        required: true
+      exposure_time_per_frame:
+        range: string
+        required: true
+      image_voxel_size_is:
+        range: string
+        required: true

@@ -1,0 +1,197 @@
+id: https://w3id.org/MONet/analysis-api-schema/value_tables.yaml
+# name: analysis-api-schema-value_tables
+title: MONet Analysis API - Enumerations
+description: value tables
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+default_prefix: analysis_api_schema
+
+imports:
+  - linkml:types
+
+slots:
+  id:
+    identifier: true
+    range: uuid
+  email:
+    range: string
+
+
+classes:
+  timestampValue:
+    slots:
+      - id
+    attributes:
+      # id:
+      #   identifier: true
+      #   range: string
+      description:
+        range: string
+      has_raw_value:
+        range: string
+      type:
+        range: string
+      was_generated_by:
+        range: string
+
+  textValue:
+    slots:
+      - id
+    attributes:
+      # id:
+      #   identifier: true
+      #   range: string
+      description:
+        range: string
+      language:
+        range: string
+      has_raw_value:
+        range: string
+      type:
+        range: string
+      was_generated_by:
+        range: string
+
+  softwareControlledTermValue:
+    slots:
+      - id
+    attributes:
+      # id:
+      #   identifier: true
+      #   range: string
+      description:
+        range: string
+      name:
+        range: string
+      version:
+        range: string
+      has_raw_value:
+        range: string
+      was_generated_by:
+        range: string
+      type:
+        range: string
+
+  controlledTermValue:
+    slots:
+      - id
+    attributes:
+      # id:
+      #   identifier: true
+      #   range: string
+      description:
+        range: string
+      has_raw_value:
+        range: string
+      was_generated_by:
+        range: string
+      type:
+        range: string
+
+  personValue:
+    slots:
+      - email
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      first_name:
+        range: string
+        required: true
+      last_name:
+        range: string
+        required: true
+      middle_initial:
+        range: string
+      # email:
+      #   range: string
+      orcid:
+        range: string
+      profile_image_url:
+        range: string
+      websites:
+        range: string # TODO ARRAY
+    unique_keys:
+      personValue_email_key:
+        unique_key_slots:
+          - email
+
+  
+  quantityValue:
+    slots:
+      - id
+    description: A quantity value with numeric value and optional unit
+    attributes:
+      # id:
+      #   identifier: true
+      #   range: uuid
+      description:
+      has_value_unit:
+      has_unit:
+        description: The human-readable unit name
+      has_numeric_value:
+        description: The numeric value of the quantity
+        range: double
+      has_minimum_numeric_value:
+        range: numeric
+      has_maximum_numeric_value:
+        range: numeric
+      has_raw_value:
+
+  geolocationValue:
+    slots:
+      - id
+    attributes:
+      # id:
+      #   identifier: true
+      #   range: uuid
+      description:
+      has_raw_value:
+      latitude:
+        range: numeric
+      longitude:
+        range: numeric
+      type:
+      was_generated_by:
+
+  conditioningValue:
+    slots:
+      - id
+    attributes:
+      # id:
+      #   identifier: true
+      #   range: string
+      source_material:
+        range: string
+      type:
+        range: string
+      instrument:
+        range: string
+      gas:
+        range: string
+      pressure:
+        range: string
+      has_raw_value:
+        range: string
+
+  latLongValue:
+    slots:
+      - id
+    attributes:
+      # id:
+      #   identifier: true
+      #   range: string
+      description:
+        range: string
+      has_raw_value:
+        range: string
+      latitude:
+        range: double # should probably be numeric
+        required: true
+      longitude:
+        range: double # should probably be numeric
+        required: true

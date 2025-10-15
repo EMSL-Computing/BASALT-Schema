@@ -3,6 +3,7 @@ from logging.config import fileConfig
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from sqlalchemy import VARCHAR, Text
+from sqlalchemy.dialects import postgresql
 
 from alembic import context
 
@@ -26,18 +27,68 @@ target_metadata = metadata
 # ... etc.
 
 
+def should_ignore_column_migration(table_name, column_name, inspected_type, metadata_type):
+    """
+    Function to determine if a column migration should be ignored based on
+    table name, column name, and PostgreSQL types (JSON, ARRAY, JSONB).
+    
+    Args:
+        table_name (str): Name of the table
+        column_name (str): Name of the column
+        inspected_type: The type found in the database
+        metadata_type: The type defined in the metadata
+    
+    Returns:
+        bool: True if migration should be ignored, False otherwise
+    """
+    # Check if either type is a PostgreSQL JSON, ARRAY, or JSONB type
+    postgresql_types_to_ignore = (
+        postgresql.JSON,
+        postgresql.JSONB,
+        postgresql.ARRAY
+    )
+    
+    # Check if inspected_type or metadata_type is one of the types we want to ignore
+    if (isinstance(inspected_type, postgresql_types_to_ignore) or
+        isinstance(metadata_type, postgresql_types_to_ignore)):
+        print(f"Ignoring migration for {table_name}.{column_name} - PostgreSQL type detected: "
+              f"inspected={type(inspected_type).__name__}, metadata={type(metadata_type).__name__}")
+        return True
+    
+    return False
+
+
 def include_object(object, name, type_, reflected, compare_to):
     """
-    Filter function to exclude certain objects from autogenerate.
+    Function to determine whether to include an object in the migration.
     Return False to exclude the object from migrations.
+    
+    This function prevents accidental index drops and specific column additions.
     """
-    # Ignore any changes to study.participant_name column
-    if (type_ == "column" and
-        hasattr(object, 'table') and
-        object.table.name == 'study' and
-        name == 'participant_name'):
+    # Prevent index drops
+    if type_ == "index" and reflected and not compare_to:
+        print(f"Preventing drop of index: {name}")
         return False
     
+    # Prevent specific column additions by table.column name
+    if type_ == "column" and not reflected:
+        # This is a column addition - get table name from object
+        table_name = object.table.name if hasattr(object, 'table') else 'unknown'
+        column_name = name
+        
+        # List of specific columns to ignore (table.column format)
+        columns_to_ignore = [
+            'instrumentCustodian.id',
+            'sampling_activity_site_metadata_link.id',
+            'workflowExecutionFunctionalAnnotation.id'
+        ]
+        
+        full_column_name = f"{table_name}.{column_name}"
+        if full_column_name in columns_to_ignore:
+            print(f"Preventing addition of column: {full_column_name}")
+            return False
+    
+    # Allow all other operations
     return True
 
 
@@ -46,17 +97,25 @@ def compare_type(context, inspected_column, metadata_column, inspected_type, met
     Custom type comparison function to ignore certain type changes.
     Return False to ignore the difference, True to include it in migrations.
     
-    Right now triggers for
+    Right now triggers for:
     - VARCHAR->Text
     - study.participant_name which is `ARRAY(VARCHAR)`
+    - All columns with JSON, ARRAY, or JSONB PostgreSQL types
     
     """
+    table_name = inspected_column.table.name
+    column_name = inspected_column.name
+    
+    # Check if we should ignore this column migration based on PostgreSQL types
+    if should_ignore_column_migration(table_name, column_name, inspected_type, metadata_type):
+        return False
+    
     # Ignore specific migration for study.participant_name column
-    if (inspected_column.table.name == 'study' and
-        inspected_column.name == 'participant_name'):
+    if (table_name == 'study' and column_name == 'participant_name'):
         print('working...')
         return False
     
+    # Ignore VARCHAR <-> Text conversions
     if (isinstance(inspected_type, VARCHAR) and isinstance(metadata_type, Text)) or \
        (isinstance(inspected_type, Text) and isinstance(metadata_type, VARCHAR)):
         return False
