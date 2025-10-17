@@ -4,7 +4,7 @@ We are extending the existing MONet analysis-api data model to accommodate two n
 
 ## Campaign Data Integration
 ### Overview
-Four one-year campaigns with shared analytical protocols. Campaigns use a dimensional table approach (not enums) for flexibility and manual data control.
+Four one-year campaigns with shared analytical protocols. Campaigns use a dimensional table approach (not enums) for flexibility and manual data control (Conrad's suggestion).
 
 #### Key Thoughts
 
@@ -17,6 +17,7 @@ Four one-year campaigns with shared analytical protocols. Campaigns use a dimens
 2. CMMs - univariate metal concentrations (subset of campaigns)
 3. LCMS metabolomics - metabolite profiles (subset of campaigns)
 4. Ecoplates - time series data from 96-well plates with unique media in each well (2 of 4 campaigns)
+
 #### Database Changes
 - New Campaign dimension table with fields: campaign_id, campaign_name, campaign_year, display_name, description, start_date, end_date, protocols_used, status
 - Foreign key campaign_id added to Sample and ProcessedData tables
@@ -65,13 +66,7 @@ Automated lab system with workflow chaining capabilities. Samples can be transfo
 5. `amp2/enums.yaml` - Workflow types (both instrument and process), execution statuses, sample states
 6. `amp2.yaml `- Master schema importing all AMP2 components
 
-#### Key Capabilities Enabled
-- Complete provenance: Trace any data product back to original sample collection
-- Workflow optimization: Compare protocols and success rates
-- Quality control: Flag issues and trace downstream impacts
-- Reproducibility: Track exact conditions and parameters for any result
-
-## Technical Implementation Notes
+## Tech Notes
 - Use existing analysis-api-schema workspace with LinkML code generation
 - Maintain current Flask/SQLAlchemy/PostgreSQL stack
 - Heavy data files stored in MinIO with URL references
