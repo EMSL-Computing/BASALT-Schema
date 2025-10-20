@@ -25,11 +25,11 @@ Four one-year campaigns with shared analytical protocols. Campaigns use a dimens
 - Heavy raw data (like ecoplate time series) stored as URLs pointing to MinIO
     
 #### LinkML Schema Files Needed
-1. `campaigns/campaign_dimension.yaml` - Campaign dimension table
-2. `protocols/xrf_protocol.yaml` - XRF data structures and metadata
-3. `protocols/cmms_protocol.yaml` - CMMS data structures and metadata
-4. `protocols/lcms_protocol.yaml` - LCMS data structures and metadata
-5. `protocols/ecoplate_protocol.yaml` - Ecoplate data structures and metadata
+1. `campaigns/campaign_dimension.yaml` - Campaign dimension table, see overview of campaign names and leads [here](../docs/files/Campaign_Leads_Cheatsheet.pdf)
+2. `protocols/xrf_protocol.yaml` - XRF data structures and metadata **CONTACTS**: Kaizad's team has provided some [templated materials](../docs/files/XRF_XRD_template.xlsx) but more processing TBD.
+3. `protocols/cmms_protocol.yaml` - CMMS data structures and metadata **CONTACTS**: Odeta Qafoku & Amir Ahkami POST CMM workshops scheduled for early Nov.
+4. `protocols/lcms_protocol.yaml` - LCMS data structures and metadata. **CONTACTS**: Che Clendinen; Conrad has some examples; ideally look for alignment with JGI.
+5. `protocols/ecoplate_protocol.yaml` - Ecoplate data structures and metadata **CONTACTS**: Emily Graham and Amir Ahkami will be using these
 6. `Updated processed_data.yaml` - Import all protocol schemas
 
     
@@ -64,8 +64,7 @@ Automated lab system with workflow chaining capabilities. Samples can be transfo
 3. `amp2/sample_extensions.yaml` - AMP2-specific sample attributes and transformations
 4. `amp2/processing_data.yaml `- AMP2-specific processed data types with workflow links
 5. `amp2/enums.yaml` - Workflow types (both instrument and process), execution statuses, sample states
-6. `amp2.yaml `- Master schema importing all AMP2 components
-
+6. `amp2.yaml `- Master schema importing all AMP2 compon
 ## Tech Notes
 - Use existing analysis-api-schema workspace with LinkML code generation
 - Maintain current Flask/SQLAlchemy/PostgreSQL stack
