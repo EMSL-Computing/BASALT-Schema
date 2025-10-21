@@ -11,6 +11,7 @@ Four one-year campaigns with shared analytical protocols. Campaigns use a dimens
 - Campaign as Dimension Table: Use a proper fact/dimension table (Campaign) that gets populated manually, avoiding enum constraints
 - Protocol-Based Organization: Organize data types by analytical protocol (not campaign year) since protocols are shared across campaigns
 - Existing Schema Extension: Leverage existing processed_data table with JSON flexibility and data_type field for protocol distinction
+- Ensure that sample preparation is documented for each protocol. Ideally, this information should be added to the SampleProcessing table, as it has been overlooked for some time. *Montana* & all to consider how this can integrate with campaign-specific
 
 #### Identified Protocols
 1. XRF - mineral oxide concentrations (all campaigns)
