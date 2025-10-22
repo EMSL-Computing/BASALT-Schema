@@ -171,6 +171,23 @@ classes:
         range: quantityValue
       nasa_mean_longwave_radiation_wm2_id:
         range: quantityValue
+      # EPA Ecoregion fields
+      epa_ecoregion_l1:
+        range: string
+        description: EPA Level 1 Ecoregion name
+      epa_ecoregion_l2: 
+        range: string
+        description: EPA Level 2 Ecoregion name
+      epa_ecoregion_l3:
+        range: string
+        description: EPA Level 3 Ecoregion name
+      epa_ecoregion_l4:
+        range: string
+        description: EPA Level 4 Ecoregion name
+      # NEON Domain field
+      neon_domain:
+        range: string
+        description: NEON Ecological Domain name
       created_at:
         range: timestamp_tz
         required: true
