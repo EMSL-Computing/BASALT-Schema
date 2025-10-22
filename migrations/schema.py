@@ -1105,6 +1105,11 @@ class SiteMetadata(Base):
     nasa_mean_surface_pressure_kpa_id = Column(UUID(), ForeignKey('quantityValue.id'))
     nasa_mean_shortwave_radiation_wm2_id = Column(UUID(), ForeignKey('quantityValue.id'))
     nasa_mean_longwave_radiation_wm2_id = Column(UUID(), ForeignKey('quantityValue.id'))
+    epa_ecoregion_l1 = Column(Text())
+    epa_ecoregion_l2 = Column(Text())
+    epa_ecoregion_l3 = Column(Text())
+    epa_ecoregion_l4 = Column(Text())
+    neon_domain = Column(Text())
     created_at = Column(TIMESTAMP(timezone=True), nullable=False )
     updated_at = Column(TIMESTAMP(timezone=True), nullable=False )
     cache_key = Column(Text(), nullable=False )
@@ -1117,7 +1122,7 @@ class SiteMetadata(Base):
     
 
     def __repr__(self):
-        return f"siteMetadata(id={self.id},nasa_mean_annual_temp_c_id={self.nasa_mean_annual_temp_c_id},nasa_mean_annual_precip_mm_id={self.nasa_mean_annual_precip_mm_id},nasa_max_annual_temp_c_id={self.nasa_max_annual_temp_c_id},nasa_min_annual_temp_c_id={self.nasa_min_annual_temp_c_id},nasa_mean_wind_speed_ms_id={self.nasa_mean_wind_speed_ms_id},nasa_mean_relative_humidity_pct_id={self.nasa_mean_relative_humidity_pct_id},nasa_frost_days_per_year_id={self.nasa_frost_days_per_year_id},nasa_mean_dew_point_c_id={self.nasa_mean_dew_point_c_id},nasa_mean_vapor_pressure_kpa_id={self.nasa_mean_vapor_pressure_kpa_id},nasa_mean_surface_pressure_kpa_id={self.nasa_mean_surface_pressure_kpa_id},nasa_mean_shortwave_radiation_wm2_id={self.nasa_mean_shortwave_radiation_wm2_id},nasa_mean_longwave_radiation_wm2_id={self.nasa_mean_longwave_radiation_wm2_id},created_at={self.created_at},updated_at={self.updated_at},cache_key={self.cache_key},latitude={self.latitude},longitude={self.longitude},provider={self.provider},enriched_at={self.enriched_at},)"
+        return f"siteMetadata(id={self.id},nasa_mean_annual_temp_c_id={self.nasa_mean_annual_temp_c_id},nasa_mean_annual_precip_mm_id={self.nasa_mean_annual_precip_mm_id},nasa_max_annual_temp_c_id={self.nasa_max_annual_temp_c_id},nasa_min_annual_temp_c_id={self.nasa_min_annual_temp_c_id},nasa_mean_wind_speed_ms_id={self.nasa_mean_wind_speed_ms_id},nasa_mean_relative_humidity_pct_id={self.nasa_mean_relative_humidity_pct_id},nasa_frost_days_per_year_id={self.nasa_frost_days_per_year_id},nasa_mean_dew_point_c_id={self.nasa_mean_dew_point_c_id},nasa_mean_vapor_pressure_kpa_id={self.nasa_mean_vapor_pressure_kpa_id},nasa_mean_surface_pressure_kpa_id={self.nasa_mean_surface_pressure_kpa_id},nasa_mean_shortwave_radiation_wm2_id={self.nasa_mean_shortwave_radiation_wm2_id},nasa_mean_longwave_radiation_wm2_id={self.nasa_mean_longwave_radiation_wm2_id},epa_ecoregion_l1={self.epa_ecoregion_l1},epa_ecoregion_l2={self.epa_ecoregion_l2},epa_ecoregion_l3={self.epa_ecoregion_l3},epa_ecoregion_l4={self.epa_ecoregion_l4},neon_domain={self.neon_domain},created_at={self.created_at},updated_at={self.updated_at},cache_key={self.cache_key},latitude={self.latitude},longitude={self.longitude},provider={self.provider},enriched_at={self.enriched_at},)"
 
 
 
