@@ -242,31 +242,31 @@ enums:
   tillageenum:
     description: Tillage methods
     permissible_values:
-      chisel:
+      Chisel:
         description: Chisel tillage
         aliases: ["Chisel"]
-      cutting_disc:
+      Cutting_Disc:
         description: Cutting disc tillage
         aliases: ["Cutting_Disc"]
-      disc_plough:
+      Disc_Plough:
         description: Disc plough tillage
         aliases: ["Disc_Plough"]
-      drill:
+      Drill:
         description: Drill tillage
         aliases: ["Drill"]
-      mouldboard:
+      Mouldboard:
         description: Mouldboard tillage
         aliases: ["Mouldboard"]
-      ridge_till:
+      Ridge_Till:
         description: Ridge till
         aliases: ["Ridge_Till"]
-      strip_tillage:
+      Streip_Tillage:
         description: Strip tillage
         aliases: ["Streip_Tillage"]
-      tined:
+      Tined:
         description: Tined tillage
         aliases: ["Tined"]
-      zonal_tillage:
+      Zonal_Tillage:
         description: Zonal tillage
         aliases: ["Zonal_Tillage"]
 
@@ -316,22 +316,22 @@ enums:
   drainageclassenum:
     description: Soil drainage classifications
     permissible_values:
-      excessively_drained:
+      Excessively_Drained:
         description: Excessively drained soil
         aliases: ["Excessively_Drained"]
-      moderately_well:
+      Moderately_Well:
         description: Moderately well drained soil
         aliases: ["Moderately_Well"]
-      poorly:
+      Poorly:
         description: Poorly drained soil
         aliases: ["Poorly"]
-      somewhat_poorly:
+      Somewhat_Poorly:
         description: Somewhat poorly drained soil
         aliases: ["Somewhat_Poorly"]
-      very_poorly:
+      Very_Poorly:
         description: Very poorly drained soil
         aliases: ["Very_Poorly"]
-      well:
+      Well:
         description: Well drained soil
         aliases: ["Well"]
 
@@ -363,94 +363,94 @@ enums:
   faoclassenum:
     description: FAO soil classification system
     permissible_values:
-      acrisols:
+      Acrisols:
         description: Acrisols
         aliases: ["Acrisols"]
-      alisols:
+      Alisols:
         description: Alisols
         aliases: ["Alisols"]
-      andosols:
+      Andosols:
         description: Andosols
         aliases: ["Andosols"]
-      anthrosols:
+      Anthrosols:
         description: Anthrosols
         aliases: ["Anthrosols"]
-      arenosols:
+      Arenosols:
         description: Arenosols
         aliases: ["Arenosols"]
-      calcisols:
+      Calcisols:
         description: Calcisols
         aliases: ["Calcisols"]
-      cambisols:
+      Cambisols:  
         description: Cambisols
         aliases: ["Cambisols"]
-      chernozems:
+      Chernozems:
         description: Chernozems
         aliases: ["Chernozems"]
-      cryosols:
+      Cryosols:
         description: Cryosols
         aliases: ["Cryosols"]
-      durisols:
+      Durisols:
         description: Durisols
         aliases: ["Durisols"]
-      ferralsols:
+      Ferrasols:
         description: Ferralsols
         aliases: ["Ferrasols"]
-      fluvisols:
+      Fluvisols:
         description: Fluvisols
         aliases: ["Fluvisols"]
-      gleysols:
+      Gleysols:
         description: Gleysols
         aliases: ["Gleysols"]
-      gypsisols:
+      Gypsisols:
         description: Gypsisols
         aliases: ["Gypsisols"]
-      histosols:
+      Histosols:
         description: Histosols
         aliases: ["Histosols"]
-      kastanozems:
+      Kastanozems:
         description: Kastanozems
         aliases: ["Kastanozems"]
-      leptosols:
+      Leptosols:
         description: Leptosols
         aliases: ["Leptosols"]
-      lixisols:
+      Lixisols:
         description: Lixisols
         aliases: ["Lixisols"]
-      luvisols:
+      Luvisols:
         description: Luvisols
         aliases: ["Luvisols"]
-      nitisols:
+      Nitosols:
         description: Nitisols
         aliases: ["Nitosols"]
-      phaeozems:
+      Phaeozems:
         description: Phaeozems
         aliases: ["Phaeozems"]
-      planosols:
+      Planosols:
         description: Planosols
         aliases: ["Planosols"]
-      plinthosols:
+      Plinthosols:
         description: Plinthosols
         aliases: ["Plinthosols"]
-      podzols:
+      Podzols:
         description: Podzols
         aliases: ["Podzols"]
-      solonchaks:
+      Solonchaks:
         description: Solonchaks
         aliases: ["Solonchaks"]
-      solonetz:
+      Solonetz:
         description: Solonetz
         aliases: ["Solonetz"]
-      stagnosols:
+      Stagnosols:
         description: Stagnosols
         aliases: ["Stagnosols"]
-      technosols:
+      Technosols:
         description: Technosols
         aliases: ["Technosols"]
-      umbrisols:
+      Umbrisols:
         description: Umbrisols
         aliases: ["Umbrisols"]
-      vertisols:
+      Vertisols:
         description: Vertisols
         aliases: ["Vertisols"]
 

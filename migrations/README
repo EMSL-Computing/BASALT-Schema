@@ -26,6 +26,14 @@ cd ..
 
 # DB Render
 
+```bash
+cd src/analysis_api_schema/schema/
+linkml generate dbml -s analysis_api_schema.yaml -o test.dbml
+
+dbml-renderer -i test.dbml -o pg.svg
+```
+
+```bash
 npm install -g dbdocs
 npm install -g @softwaretechnik/dbml-renderer
 
@@ -33,7 +41,7 @@ dbdocs db2dbml postgres postgresql://developer:developer@localhost:5432/emsl1000
 dbml-renderer -i pg.dbml -o pg.svg
 
 gen-sqltables src/analysis_api_schema/schema/analysis_api_schema.yaml > prog.sql
-
+```
 
 # LinkML Dumping
 
