@@ -17,6 +17,7 @@ rm versions/revision_test.py
 python sqlalchemygen.py ../src/analysis_api_schema/schema/analysis_api_schema.yaml > schema.py
 
 # On windows, Powershell will save as UTF-16LE 🤮 you can run this, or open and re-save with UTF-8
+# or use control in lower-right of VS Code
 python fix_encoding.py schema.py
 
 # generate the migration
