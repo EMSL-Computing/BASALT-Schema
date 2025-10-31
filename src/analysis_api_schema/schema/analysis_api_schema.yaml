@@ -34,11 +34,38 @@ imports:
   # - enrichment # todo have not reviewed fully
 
 classes:
+  campaign:
+    description: |-
+      A research campaign that encompasses one or more studies.
+      Campaigns are organizational units, typically lasting a single fiscal year beginning in FY26, that group related studies together.
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+        description: Unique identifier for the campaign
+      campaign_name:
+        range: string
+        required: true
+        description: Short name or code for the campaign
+      campaign_year:
+        range: integer
+        description: Primary year associated with the campaign
+      display_name:
+        range: string
+        description: Human-readable display name for the campaign
+      description:
+        range: string
+        description: Detailed description of the campaign objectives and scope
+
   study:
     attributes:
       id:
         identifier: true
         range: uuid
+      campaign_id:
+        range: campaign
+        #required: true
+        description: Reference to the campaign this study belongs to
       participant_name: # TODO not quite correct
         range: string
         array: {}

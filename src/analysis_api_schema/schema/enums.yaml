@@ -715,8 +715,7 @@ enums:
     permissible_values:
       orbital_shaker:
       thermomixer:
-
-
+ 
   product:
     permissible_values:
       processedData:

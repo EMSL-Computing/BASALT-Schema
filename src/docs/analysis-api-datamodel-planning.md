@@ -13,11 +13,15 @@ Four one-year campaigns with shared analytical protocols. Campaigns use a dimens
 - Existing Schema Extension: Leverage existing processed_data table with JSON flexibility and data_type field for protocol distinction
 - Ensure that sample preparation is documented for each protocol. Ideally, this information should be added to the SampleProcessing table, as it has been overlooked for some time. *Montana* & all to consider how this can integrate with campaign-specific
 
-#### Identified Protocols
-1. XRF - mineral oxide concentrations (all campaigns)
-2. CMMs - univariate metal concentrations (subset of campaigns)
-3. LCMS metabolomics - metabolite profiles (subset of campaigns)
-4. Ecoplates - time series data from 96-well plates with unique media in each well (2 of 4 campaigns)
+#### Identified Protocols, *not* in order of prority
+
+1. XRF & XRD - mineral oxide concentrations (all campaigns); simple measurements of concentrations from external vendor. **Crucially**, these are not campaign specific and are to be added to the baseline set of MONet data types moving forward.
+2. CMMs - univariate metal concentrations (subset of campaigns) via a sequential extraction. One sample to be passed thru the ICP 3+ times with various fractionating chemicals and the same set of target CMMs measured at each extraction; output similar to WEOM/MAOM.
+3. LCMS metabolomics - metabolite profiles (subset of campaigns); this is a unique protocol and will separately include LESA methods for Terraforms (Rosey Chu and Aivett Bilbao will be generating the LESA-MS).
+4. Ecoplates - time series data from 96-well plates with 3 reps each of 32 unique media in each well.  Soils PacWest will use these as-is. CMM-Rhizo will run each soil-depth combo against three plates with zero, low, or high nickel concentration, so we need to represent the distinct ecoplate media setup for these campaigns. The treatment/consideration of the time series nature of the raw data is TBD.
+5. Terraforms - CMM-Rhizo (subtap, field micromodels) and lab microdels (CMM-Unconventional). Treatment/handling of time series nature TBDs.
+6. Nickel Solubilization Assay (CMM-Rhizo only). Petri dish with nickel-spiked media; measure diameter of consumption. Will only happen for samples determined as nickel-resistant from ecoplate step (#4), meaning not all sample-depth combinations will have results from this protocol.
+
 
 #### Database Changes
 - New Campaign dimension table with fields (can modify): campaign_id, campaign_name, campaign_year, display_name, description, start_date, end_date, protocols_used, status
@@ -26,8 +30,8 @@ Four one-year campaigns with shared analytical protocols. Campaigns use a dimens
 - Heavy raw data (like ecoplate time series) stored as URLs pointing to MinIO
     
 #### LinkML Schema Files Needed
-1. `campaigns/campaign_dimension.yaml` - Campaign dimension table, see overview of campaign names and leads [here](../docs/files/Campaign_Leads_Cheatsheet.pdf)
-2. `protocols/xrf_protocol.yaml` - XRF data structures and metadata **CONTACTS**: Kaizad's team has provided some [templated materials](../docs/files/XRF_XRD_template.xlsx) but more processing TBD.
+1. `campaigns/campaign_dimension.yaml` - Campaign dimension table, see overview of campaign names and leads [here](../docs/files/Campaign_Leads_Cheatsheet.pdf) -[X] addressed via [MR!7](https://gitlab.pnnl.gov/MoNET/analysis-api-schema/-/merge_requests/7)
+2. `protocols/xrf_xrd_protocol.yaml` - XRF & XRD data structures and metadata **CONTACTS**: Kaizad's team has provided some [templated materials](../docs/files/XRF_XRD_template.xlsx) but more processing TBD. Consider subclassing XRAY approaches for these.
 3. `protocols/cmms_protocol.yaml` - CMMS data structures and metadata **CONTACTS**: Odeta Qafoku & Amir Ahkami POST CMM workshops scheduled for early Nov.
 4. `protocols/lcms_protocol.yaml` - LCMS data structures and metadata. **CONTACTS**: Che Clendinen; Conrad has some examples; ideally look for alignment with JGI.
 5. `protocols/ecoplate_protocol.yaml` - Ecoplate data structures and metadata **CONTACTS**: Emily Graham and Amir Ahkami will be using these

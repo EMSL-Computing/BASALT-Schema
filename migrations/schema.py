@@ -9,6 +9,30 @@ Base = declarative_base()
 metadata = Base.metadata
 
 
+class Campaign(Base):
+    """
+    A research campaign that encompasses one or more studies.
+Campaigns are organizational units, typically lasting a single fiscal year beginning in FY26, that group related studies together.
+    """
+    __tablename__ = 'campaign'
+
+    id = Column(UUID(), primary_key=True, nullable=False )
+    campaign_name = Column(Enum('Soils PacWest', 'SOILS-AI', 'Unconventional Critical', 'Rhizo Critical', 'AMP2 First Science', name='campaignnameenum'), nullable=False )
+    campaign_year = Column(Integer())
+    display_name = Column(Text())
+    description = Column(Text())
+    
+
+    
+
+    def __repr__(self):
+        return f"campaign(id={self.id},campaign_name={self.campaign_name},campaign_year={self.campaign_year},display_name={self.display_name},description={self.description},)"
+
+
+
+    
+
+
 class Study(Base):
     """
     
@@ -16,6 +40,7 @@ class Study(Base):
     __tablename__ = 'study'
 
     id = Column(UUID(), primary_key=True, nullable=False )
+    campaign_id = Column(UUID(), ForeignKey('campaign.id'))
     participant_name = Column(Text(), nullable=False )
     principal_investigator = Column(Text())
     collaborating_institution = Column(Text())
@@ -30,7 +55,7 @@ class Study(Base):
     
 
     def __repr__(self):
-        return f"study(id={self.id},participant_name={self.participant_name},principal_investigator={self.principal_investigator},collaborating_institution={self.collaborating_institution},project_status={self.project_status},project_start={self.project_start},project_end={self.project_end},proposal_title={self.proposal_title},proposal_abstract={self.proposal_abstract},project_id={self.project_id},)"
+        return f"study(id={self.id},campaign_id={self.campaign_id},participant_name={self.participant_name},principal_investigator={self.principal_investigator},collaborating_institution={self.collaborating_institution},project_status={self.project_status},project_start={self.project_start},project_end={self.project_end},proposal_title={self.proposal_title},proposal_abstract={self.proposal_abstract},project_id={self.project_id},)"
 
 
 
