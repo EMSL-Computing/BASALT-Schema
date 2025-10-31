@@ -159,7 +159,7 @@ class Sample(Base):
     
 
 
-class SoilSample(Base):
+class Soil_sample(Base):
     """
     A soil sample with specific soil-related properties
     """
@@ -179,7 +179,7 @@ class SoilSample(Base):
     
 
 
-class AerosolSample(Base):
+class Aerosol_sample(Base):
     """
     An aerosol sample with specific aerosol-related properties
     """
@@ -603,7 +603,7 @@ class Custodian(Base):
     
 
 
-class InstrumentAltId(Base):
+class Instrument_alt_id(Base):
     """
     
     """
@@ -677,8 +677,7 @@ class ProcessingSampleLink(Base):
     """
     __tablename__ = 'processingSampleLink'
 
-    id = Column(UUID(), primary_key=True, nullable=False )
-    sample_base_id = Column(UUID(), ForeignKey('sampleBase.id'), nullable=False )
+    sample_base_id = Column(UUID(), ForeignKey('sampleBase.id'), primary_key=True, nullable=False )
     processing_id = Column(UUID(), ForeignKey('sampleProcessing.id'), nullable=False )
     step_number = Column(Integer(), nullable=False )
     role = Column(Enum('input_sample', 'output_sample', name='samplerole'), nullable=False )
@@ -693,7 +692,7 @@ class ProcessingSampleLink(Base):
     
 
     def __repr__(self):
-        return f"processingSampleLink(id={self.id},sample_base_id={self.sample_base_id},processing_id={self.processing_id},step_number={self.step_number},role={self.role},version={self.version},)"
+        return f"processingSampleLink(sample_base_id={self.sample_base_id},processing_id={self.processing_id},step_number={self.step_number},role={self.role},version={self.version},)"
 
 
 
@@ -1129,7 +1128,7 @@ class SiteMetadata(Base):
     
 
 
-class SamplingActivitySiteMetadataLink(Base):
+class Sampling_activity_site_metadata_link(Base):
     """
     
     """
@@ -1214,7 +1213,7 @@ class EnzymeActivityMethod(Base):
     
 
 
-class FTICRAcquisitionMethod(Base):
+class FTICR_AcquisitionMethod(Base):
     """
     
     """
@@ -1308,7 +1307,7 @@ class KuoMethod(Base):
     
 
 
-class LCMSMetabolomicsMethod(Base):
+class LCMS_MetabolomicsMethod(Base):
     """
     
     """
@@ -1367,7 +1366,7 @@ class MicrobialBiomassMethod(Base):
     
 
 
-class PHMethod(Base):
+class PH_Method(Base):
     """
     
     """
@@ -1415,7 +1414,7 @@ class RespirationMethod(Base):
     
 
 
-class TOCTNMethod(Base):
+class TOC_TN_Method(Base):
     """
     
     """
