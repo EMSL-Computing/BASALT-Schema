@@ -24,6 +24,13 @@ from linkml.utils.generator import Generator, shared_arguments
 
 logger = logging.getLogger(__name__)
 
+def monet_case(txt: str) -> str:
+    def _up(s: str):
+        return s[0].upper() + (s[1:] if len(s) > 1 else "")
+
+    return _up(txt)
+
+
 # Custom template strings with UniqueConstraint support
 sqlalchemy_declarative_template_str_with_uc = """
 from sqlalchemy import Column, Index, Table, ForeignKey, UniqueConstraint
@@ -263,7 +270,7 @@ class SQLAlchemyGenerator(Generator):
             mappings=tr_result.mappings,
             backrefs=backrefs,
             unique_constraints=unique_constraints,
-            classname=camelcase,
+            classname=monet_case,
             no_model_import=no_model_import,
             is_join_table=lambda c: any(tag for tag in c.annotations.keys() if tag == "linkml:derived_from"),
             classes=rel_schema_classes_ordered,

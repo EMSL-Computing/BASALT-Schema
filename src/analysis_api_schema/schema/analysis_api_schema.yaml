@@ -573,19 +573,23 @@ classes:
 
   processingSampleLink:
     attributes:
-      id:
-        identifier: true
-        range: uuid
+      # id:
+      #   identifier: true
+      #   range: uuid
       sample_base_id:
+        identifier: true
         range: sampleBase
         required: true
       processing_id:
+        identifier: true
         range: sampleProcessing
         required: true
       step_number:
+        identifier: true
         range: integer
         required: true
       role:
+        identifier: true
         range: samplerole
         required: true
       version:
