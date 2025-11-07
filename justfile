@@ -1,35 +1,28 @@
 set shell := ["powershell", "-Command"]
 
-# Define a justfile with the specified commands
-default := "create-revision"
+# Lists `just` recipes
+default:
+    just --list
 
+# TODO move out of migration folder
 set working-directory := "migrations"
 
+# Generate SQL Alchemy `schema.py` and `enums.py`
 gen:
     python sqlalchemygen.py ../src/analysis_api_schema/schema/analysis_api_schema.yaml > schema.py
     python fix_encoding.py schema.py
- 
-    # gen-python ../src/analysis_api_schema/schema/enums.yaml > enums.py
     gen-pydantic ../src/analysis_api_schema/schema/enums.yaml > enums.py
     python fix_encoding.py enums.py
 
+# Generate DBML based SVG of the schema.
+[working-directory: '../src/analysis_api_schema/schema/']
+render:
+    @echo "Broken - expect failure"
+    linkml generate dbml -s analysis_api_schema.yaml -o pg.dbml
+    dbml-renderer -i pg.dbml -o pg.svg
 
-# Recipe: create-revision
-create-revision:
-    if (Test-Path versions/revision_test.py) { Remove-Item versions/revision_test.py -Force }
-    python sqlalchemygen.py ../src/analysis_api_schema/schema/analysis_api_schema.yaml > schema.py
-    python fix_encoding.py schema.py
-    alembic revision --autogenerate --rev-id="revision" -m "test"
-
-gen-tables:
-    python sqltablegen.py ../src/analysis_api_schema/schema/analysis_api_schema.yaml > schema.sql
-    python fix_encoding.py schema.sql
-
+# TODO: more work to be done with pydantic - especially for building data verification and constraints
+# Will need to adapt UUID's as well - oof
 gen-pydantic:
+    @echo "Broken - expect failure"
     gen-pydantic ../src/analysis_api_schema/schema/analysis_api_schema.yaml > pyd_model.py
-
-test:
-    python sqltablegen.py ../src/analysis_api_schema/schema/test.yml > test.sql
-    python fix_encoding.py test.sql
-    gen-pydantic ../src/analysis_api_schema/schema/test.yml > test.py
-    python fix_encoding.py test.py

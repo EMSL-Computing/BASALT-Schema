@@ -1,210 +1,40 @@
-# Steps for SQLA Generation
+# Getting Started
 
-Install and activate the project
+This project uses LinkML and [just](https://github.com/casey/just). To get started you can run the following:
+
 
 ```bash
+# install the project
 poetry install
-poetry env activate
+
+# Linux / Mac
+source .venv/bin/activate
+
+# Windows
+.venv/Scripts/activate
 ```
+
+# Generating SQLAlchemy from LinkML
+
+SQL Alchemy projects require the Schema and Enums to be generated seperately in most cases.
+This project will generate both files using just:
+
+
 
 ```bash
-cd migrations
-
-# delete the old revision test
-rm versions/revision_test.py
-
-# gen-sqla ../src/analysis_api_schema/schema/analysis_api_schema.yaml > schema.py
-python sqlalchemygen.py ../src/analysis_api_schema/schema/analysis_api_schema.yaml > schema.py
-
-# On windows, Powershell will save as UTF-16LE 🤮 you can run this, or open and re-save with UTF-8
-# or use control in lower-right of VS Code
-python fix_encoding.py schema.py
-
-# generate the migration
-alembic revision --autogenerate --rev-id="revision" -m "test"
-cd ..
+just gen
 ```
 
-# DB Render
+This will produce two files in `migrations/`
 
-```bash
-cd src/analysis_api_schema/schema/
-linkml generate dbml -s analysis_api_schema.yaml -o test.dbml
+- `migrations/schema.py`
+- `migrations/enums.py`
 
-dbml-renderer -i test.dbml -o pg.svg
-```
+# Producing SVG Renders
 
 ```bash
 npm install -g dbdocs
 npm install -g @softwaretechnik/dbml-renderer
 
-dbdocs db2dbml postgres postgresql://developer:developer@localhost:5432/emsl1000soils -o pg.dbml
-dbml-renderer -i pg.dbml -o pg.svg
-
-gen-sqltables src/analysis_api_schema/schema/analysis_api_schema.yaml > prog.sql
+just render
 ```
-
-# LinkML Dumping
-
-```bash
-schemauto.exe import-sql postgresql+psycopg2://developer:developer@localhost:5432/emsl1000soils > schema.yml
-# On windows, Powershell will save as UTF-16LE 🤮 you can run this, or open and re-save with UTF-8
-Get-Content -Path "schema.yml" | Set-Content -Path "schema.yml" -Encoding UTF8
-```
-
-> NOTE! Many features of the Postgres DB _like UUID's_ are not captured by schemauto yet. **Don't rely on schemauto alone!**
-
-# Conrad's Development Process (So Far)
-
-Grab some espresso and lightly aged pop music and dive in!
-
-For LinkML I hav eno experience - so my main aim is to start trying to break it (productively)
-
-Start with something like this:
-
-```yml
-# headers ommitted ...
-
-imports:
-  - linkml:types
-
-classes:
-  # metadata is actually first in the hierarchy !
-  samplingActivity:
-  sampleBase:
-  coreSection:
-  replicate:
-  sample:
-  soil_sample:
-  processedSample:
-```
-
-This actually is valid YAML and therefor valid LinkML, run the SQL generator to verify
-
-```bash
-gen-sqltables ./src/analysis_api_schema/schema/monet.yml
-```
-
-My main dev loop is now to make a change, Ctrl+~ UP ENT Ctrl+~ over and over to see the impact on classes, slots, and inheritence.
-
-For instance, what's the actual impact of `is_a` ?
-
-```yaml
-classes:
-  sampleBase:
-  sample:
-    is_a: sampleBase
-```
-
-produces
-
-```sql
-CREATE TABLE "sampleBase" (
-        id INTEGER NOT NULL,
-        PRIMARY KEY (id)
-);
-CREATE TABLE sample (
-        id INTEGER NOT NULL,
-        PRIMARY KEY (id)
-);
-```
-
-doesn't seem to do anything - however adding a slot reveals the behavior
-
-```yml
-classes:
-  sampleBase:
-    slots:
-      - example
-  sample:
-    is_a: sampleBase
-slots:
-  example:
-    required: true
-```
-
-```sql
-CREATE TABLE "sampleBase" (
-        id INTEGER NOT NULL,
-        example TEXT NOT NULL,
-        PRIMARY KEY (id)
-);
-CREATE TABLE sample (
-        id INTEGER NOT NULL,
-        example TEXT NOT NULL,
-        PRIMARY KEY (id)
-);
-```
-
-Notice that there are no foriegn keys, instead we've simplied copied the structure from sampleBase to sample.
-This will be more useful for things like the product tables.
-
-
-
-Generic single-database configuration.
-
-# Migration Commands
-
-```
-Usage: flask db [OPTIONS] COMMAND [ARGS]...
-
-  Perform database migrations.
-
-Options:
-  --help  Show this message and exit.
-
-Commands:
-  branches   Show current branch points
-  current    Display the current revision for each database.
-  downgrade  Revert to a previous version
-  edit       Edit a revision file
-  heads      Show current available heads in the script directory
-  history    List changeset scripts in chronological order.
-  init       Creates a new migration repository.
-  merge      Merge two revisions together, creating a new revision file
-  migrate    Autogenerate a new revision file (Alias for 'revision...
-  revision   Create a new revision file.
-  show       Show the revision denoted by the given symbol.
-  stamp      'stamp' the revision table with the given revision; don't...
-  upgrade    Upgrade to a later version
-```
-
-
-
-```bash
-flask db migrate -m "Migration Message"
-
-flask db upgrade
-
-flask db downgrade
-```
-
-Look for `INFO  [alembic.env] No changes in schema detected.` in case no changes are detected.
-No migration file will be generated.
-
-# pip changes
-
-```bash
-pip install psycopg2-binary
-pip install --upgrade alembic
-pip install ruff
-
-pip install -e .
-```
-
----
-
-kubectl get services -n analysis-api-dev
-
-kubectl apply -f k8s/flask-db-migration-job.yaml
-kubectl get jobs -n analysis-api-dev
-kubectl logs job/flask-db-migration -n analysis-api-dev
-
-kubectl delete job flask-db-migration -n analysis-api-dev
-
-
-
-kubectl exec -it deployment/web -n analysis-api-dev -- flask db history --verbose
-
-get pods -n analysis-api-dev
-kubectl port-forward web-postgresql-0 -n analysis-api-dev 5432:5435
