@@ -559,7 +559,9 @@ enums:
       MetagenomeAssembly:
       ReadBasedTaxonomyAnalysis:
       MetagenomeAnnotation:
-      MagsAnalys:
+      MagsAnalysis:
+      FunctionalAnnotation:
+      GenePhylogeny:
 
   alternateidentifiertype:
     permissible_values:

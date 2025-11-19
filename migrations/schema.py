@@ -17,7 +17,7 @@ Campaigns are organizational units, typically lasting a single fiscal year begin
     __tablename__ = 'campaign'
 
     id = Column(UUID(), primary_key=True, nullable=False )
-    campaign_name = Column(Enum('Soils PacWest', 'SOILS-AI', 'Unconventional Critical', 'Rhizo Critical', 'AMP2 First Science', name='campaignnameenum'), nullable=False )
+    campaign_name = Column(Text(), nullable=False )
     campaign_year = Column(Integer())
     display_name = Column(Text())
     description = Column(Text())
@@ -702,7 +702,8 @@ class ProcessingSampleLink(Base):
     """
     __tablename__ = 'processingSampleLink'
 
-    sample_base_id = Column(UUID(), ForeignKey('sampleBase.id'), primary_key=True, nullable=False )
+    id = Column(UUID(), primary_key=True, nullable=False )
+    sample_base_id = Column(UUID(), ForeignKey('sampleBase.id'), nullable=False )
     processing_id = Column(UUID(), ForeignKey('sampleProcessing.id'), nullable=False )
     step_number = Column(Integer(), nullable=False )
     role = Column(Enum('input_sample', 'output_sample', name='samplerole'), nullable=False )
@@ -717,7 +718,7 @@ class ProcessingSampleLink(Base):
     
 
     def __repr__(self):
-        return f"processingSampleLink(sample_base_id={self.sample_base_id},processing_id={self.processing_id},step_number={self.step_number},role={self.role},version={self.version},)"
+        return f"processingSampleLink(id={self.id},sample_base_id={self.sample_base_id},processing_id={self.processing_id},step_number={self.step_number},role={self.role},version={self.version},)"
 
 
 
@@ -1025,6 +1026,74 @@ class MagBin(Base):
 
     def __repr__(self):
         return f"magBin(id={self.id},workflow_id={self.workflow_id},bin_name={self.bin_name},bin_quality={self.bin_quality},completeness={self.completeness},contamination={self.contamination},gene_count={self.gene_count},gtdbtk_class={self.gtdbtk_class},gtdbtk_domain={self.gtdbtk_domain},gtdbtk_family={self.gtdbtk_family},gtdbtk_genus={self.gtdbtk_genus},gtdbtk_order={self.gtdbtk_order},gtdbtk_phylum={self.gtdbtk_phylum},gtdbtk_species={self.gtdbtk_species},members_id={self.members_id},num_16s={self.num_16s},num_23s={self.num_23s},num_5s={self.num_5s},num_trna={self.num_trna},number_of_contig={self.number_of_contig},total_bases={self.total_bases},)"
+
+
+
+    
+
+
+class Metagenomics_BinningProduct(Base):
+    """
+    Top-level archive (zip/tar) for binning results stored in MinIO
+    """
+    __tablename__ = 'Metagenomics_BinningProduct'
+
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
+    workflow_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalysis', 'FunctionalAnnotation', 'GenePhylogeny', name='metagenomicssteps'))
+    sample_id = Column(UUID(), ForeignKey('sample.id'))
+    file_size = Column(Integer())
+    
+
+    
+
+    def __repr__(self):
+        return f"Metagenomics_BinningProduct(id={self.id},workflow_step={self.workflow_step},sample_id={self.sample_id},file_size={self.file_size},)"
+
+
+
+    
+
+
+class Metagenomics_AnnotationProduct(Base):
+    """
+    Top-level archive for annotation outputs (points to MinIO)
+    """
+    __tablename__ = 'Metagenomics_AnnotationProduct'
+
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
+    workflow_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalysis', 'FunctionalAnnotation', 'GenePhylogeny', name='metagenomicssteps'))
+    sample_id = Column(UUID(), ForeignKey('sample.id'))
+    file_size = Column(Integer())
+    annotation_database = Column(Enum('PFAM', 'COG', 'KEGG', name='annotationdatabasetype'))
+    
+
+    
+
+    def __repr__(self):
+        return f"Metagenomics_AnnotationProduct(id={self.id},workflow_step={self.workflow_step},sample_id={self.sample_id},file_size={self.file_size},annotation_database={self.annotation_database},)"
+
+
+
+    
+
+
+class Metagenomics_GenePhylogenyProduct(Base):
+    """
+    Top-level archive for gene phylogeny outputs (points to MinIO)
+    """
+    __tablename__ = 'Metagenomics_GenePhylogenyProduct'
+
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
+    workflow_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalysis', 'FunctionalAnnotation', 'GenePhylogeny', name='metagenomicssteps'))
+    sample_id = Column(UUID(), ForeignKey('sample.id'))
+    file_size = Column(Integer())
+    gene_family = Column(Text())
+    
+
+    
+
+    def __repr__(self):
+        return f"Metagenomics_GenePhylogenyProduct(id={self.id},workflow_step={self.workflow_step},sample_id={self.sample_id},file_size={self.file_size},gene_family={self.gene_family},)"
 
 
 
@@ -1721,8 +1790,8 @@ class MetaGenomicsProduct(Base):
     __tablename__ = 'MetaGenomicsProduct'
 
     id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
-    input_to_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalys', name='metagenomicssteps'))
-    output_to_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalys', name='metagenomicssteps'), nullable=False )
+    input_to_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalysis', 'FunctionalAnnotation', 'GenePhylogeny', name='metagenomicssteps'))
+    output_to_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalysis', 'FunctionalAnnotation', 'GenePhylogeny', name='metagenomicssteps'), nullable=False )
     
 
     
