@@ -941,7 +941,9 @@ class Metagenomicssteps(str, Enum):
     MetagenomeAssembly = "MetagenomeAssembly"
     ReadBasedTaxonomyAnalysis = "ReadBasedTaxonomyAnalysis"
     MetagenomeAnnotation = "MetagenomeAnnotation"
-    MagsAnalys = "MagsAnalys"
+    MagsAnalysis = "MagsAnalysis"
+    FunctionalAnnotation = "FunctionalAnnotation"
+    GenePhylogeny = "GenePhylogeny"
 
 
 class Alternateidentifiertype(str, Enum):

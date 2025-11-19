@@ -573,9 +573,9 @@ classes:
 
   processingSampleLink:
     attributes:
-      # id:
-      #   identifier: true
-      #   range: uuid
+      id:
+        identifier: true
+        range: uuid
       sample_base_id:
         identifier: true
         range: sampleBase

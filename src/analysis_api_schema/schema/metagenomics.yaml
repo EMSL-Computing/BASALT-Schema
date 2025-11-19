@@ -1,14 +1,15 @@
-id: https://w3id.org/MONet/analysis-api-schema/enums
-name: analysis-api-schema-enums
-title: MONet Analysis API - Enumerations
-description: |-
-  Enumerated values used throughout the MONet Analysis API schema
+id: https://w3id.org/MONet/analysis-api-schema/metagenomics
+name: metagenomics
+title: Metagenomics additions for MONet Analysis API
+description: |
+  Lightweight LinkML fragment for metagenomics products. This file defines
+  minimal product classes that point to top-level zips/tars stored in MinIO.
+  The detailed per-bin modeling (magBin) can be removed later but has relationship with workflowExecutionActivity
 license: MIT
 
 prefixes:
   analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
   linkml: https://w3id.org/linkml/
-  schema: http://schema.org/
 default_prefix: analysis_api_schema
 
 imports:
@@ -63,3 +64,52 @@ classes:
         range: integer
       total_bases:
         range: integer
+
+  # Top-level product for binning results (one zip/tar per project/sample)
+  Metagenomics_BinningProduct:
+    description: "Top-level archive (zip/tar) for binning results stored in MinIO"
+    attributes:
+      id:
+        identifier: true
+        range: processedData
+        description: "Identifier referencing the canonical ProcessedData / MetaGenomicsProduct row (contains S3 pointer)"
+      workflow_step:
+        range: metagenomicssteps
+        description: "Optional: enumerated workflow step that produced the product (e.g., MagsAnalysis)"
+      sample_id:
+        range: sample
+        description: "Link back to the originating sample (nullable)"
+
+  # Top-level product for functional annotation results (zip/tar)
+  Metagenomics_AnnotationProduct:
+    description: "Top-level archive for annotation outputs (points to MinIO)"
+    attributes:
+      id:
+        identifier: true
+        range: processedData
+        description: "Identifier referencing the canonical ProcessedData / MetaGenomicsProduct row (contains S3 pointer)"
+      workflow_step:
+        range: metagenomicssteps
+      sample_id:
+        range: sample
+      annotation_database:
+        range: annotationdatabasetype
+        description: "Optional: primary annotation database used" 
+
+
+  # Top-level product for gene-based phylogeny outputs (zip/tar)
+  Metagenomics_GenePhylogenyProduct:
+    description: "Top-level archive for gene phylogeny outputs (points to MinIO)"
+    attributes:
+      id:
+        identifier: true
+        range: processedData
+        description: "Identifier referencing the canonical ProcessedData / MetaGenomicsProduct row (contains S3 pointer)"
+      workflow_step:
+        range: metagenomicssteps
+      sample_id:
+        range: sample
+      gene_family:
+        range: string
+        description: "Optional gene family or marker used for the phylogeny" 
+
