@@ -274,9 +274,9 @@ classes:
         range: string
         required: true
       proposal_id:
-        range: numeric # TODO NO
+        range: string
       sampling_set:
-        range: numeric # TODO WHY
+        range: integer
       core_section:
         range: string
       sample_name:

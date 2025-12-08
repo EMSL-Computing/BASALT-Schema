@@ -104,11 +104,11 @@ class Sampletype(str, Enum):
     """
     Types of samples that can be collected
     """
-    soil = "soil"
+    soil_sample = "soil_sample"
     """
     Soil sample
     """
-    aerosol = "aerosol"
+    aerosol_sample = "aerosol_sample"
     """
     Aerosol sample
     """

@@ -169,7 +169,7 @@ class Sample(Base):
 
     id = Column(UUID(), ForeignKey('sampleBase.id'), primary_key=True, nullable=False )
     sampling_activity_id = Column(UUID(), ForeignKey('samplingActivity.id'), nullable=False )
-    type = Column(Enum('soil', 'aerosol', name='sampletype'))
+    type = Column(Enum('soil_sample', 'aerosol_sample', name='sampletype'))
     guid_source = Column(Text())
     other_guid_source = Column(Text())
     
@@ -293,8 +293,8 @@ class ProcessedData(Base):
     id = Column(UUID(), primary_key=True, nullable=False )
     type = Column(Enum('processedData', 'FTICRProduct', 'TomographyProduct', 'MicrobialBiomassProduct', 'NitrogenAnalysisProduct', 'PhosphorusAnalysisProduct', 'pHProduct', 'ElementalAnalysisProduct', 'IonsAnalysisProduct', 'RespirationProduct', 'EnzymeProduct', 'TextureProduct', 'WEOMProduct', 'HydraulicPropertiesProduct', 'GWCMoistureProduct', 'MAOMProduct', 'BulkDensityProduct', 'MetaGenomicsProduct', name='product'), nullable=False )
     name = Column(Text(), nullable=False )
-    proposal_id = Column(Numeric())
-    sampling_set = Column(Numeric())
+    proposal_id = Column(Text())
+    sampling_set = Column(Integer())
     core_section = Column(Text())
     sample_name = Column(Text())
     s3_base_url = Column(Text())
@@ -1041,13 +1041,12 @@ class Metagenomics_BinningProduct(Base):
     id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     workflow_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalysis', 'FunctionalAnnotation', 'GenePhylogeny', name='metagenomicssteps'))
     sample_id = Column(UUID(), ForeignKey('sample.id'))
-    file_size = Column(Integer())
     
 
     
 
     def __repr__(self):
-        return f"Metagenomics_BinningProduct(id={self.id},workflow_step={self.workflow_step},sample_id={self.sample_id},file_size={self.file_size},)"
+        return f"Metagenomics_BinningProduct(id={self.id},workflow_step={self.workflow_step},sample_id={self.sample_id},)"
 
 
 
@@ -1063,14 +1062,13 @@ class Metagenomics_AnnotationProduct(Base):
     id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     workflow_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalysis', 'FunctionalAnnotation', 'GenePhylogeny', name='metagenomicssteps'))
     sample_id = Column(UUID(), ForeignKey('sample.id'))
-    file_size = Column(Integer())
     annotation_database = Column(Enum('PFAM', 'COG', 'KEGG', name='annotationdatabasetype'))
     
 
     
 
     def __repr__(self):
-        return f"Metagenomics_AnnotationProduct(id={self.id},workflow_step={self.workflow_step},sample_id={self.sample_id},file_size={self.file_size},annotation_database={self.annotation_database},)"
+        return f"Metagenomics_AnnotationProduct(id={self.id},workflow_step={self.workflow_step},sample_id={self.sample_id},annotation_database={self.annotation_database},)"
 
 
 
@@ -1086,14 +1084,13 @@ class Metagenomics_GenePhylogenyProduct(Base):
     id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     workflow_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalysis', 'FunctionalAnnotation', 'GenePhylogeny', name='metagenomicssteps'))
     sample_id = Column(UUID(), ForeignKey('sample.id'))
-    file_size = Column(Integer())
     gene_family = Column(Text())
     
 
     
 
     def __repr__(self):
-        return f"Metagenomics_GenePhylogenyProduct(id={self.id},workflow_step={self.workflow_step},sample_id={self.sample_id},file_size={self.file_size},gene_family={self.gene_family},)"
+        return f"Metagenomics_GenePhylogenyProduct(id={self.id},workflow_step={self.workflow_step},sample_id={self.sample_id},gene_family={self.gene_family},)"
 
 
 
