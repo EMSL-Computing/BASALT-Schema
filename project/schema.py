@@ -9,135 +9,6 @@ Base = declarative_base()
 metadata = Base.metadata
 
 
-class Campaign(Base):
-    """
-    A research campaign that encompasses one or more studies.
-Campaigns are organizational units, typically lasting a single fiscal year beginning in FY26, that group related studies together.
-    """
-    __tablename__ = 'campaign'
-
-    id = Column(UUID(), primary_key=True, nullable=False )
-    campaign_name = Column(Text(), nullable=False )
-    campaign_year = Column(Integer())
-    display_name = Column(Text())
-    description = Column(Text())
-    
-
-    
-
-    def __repr__(self):
-        return f"campaign(id={self.id},campaign_name={self.campaign_name},campaign_year={self.campaign_year},display_name={self.display_name},description={self.description},)"
-
-
-
-    
-
-
-class Study(Base):
-    """
-    
-    """
-    __tablename__ = 'study'
-
-    id = Column(UUID(), primary_key=True, nullable=False )
-    campaign_id = Column(UUID(), ForeignKey('campaign.id'))
-    participant_name = Column(Text(), nullable=False )
-    principal_investigator = Column(Text())
-    collaborating_institution = Column(Text())
-    project_status = Column(Enum('STARTED', 'COMPLETED', 'CLOSED', 'EXTENDED', 'ACCEPTED', 'WITHDRAWN', name='projectstatus'))
-    project_start = Column(DateTime())
-    project_end = Column(DateTime())
-    proposal_title = Column(Text())
-    proposal_abstract = Column(Text())
-    project_id = Column(Text(), nullable=False )
-    
-
-    
-
-    def __repr__(self):
-        return f"study(id={self.id},campaign_id={self.campaign_id},participant_name={self.participant_name},principal_investigator={self.principal_investigator},collaborating_institution={self.collaborating_institution},project_status={self.project_status},project_start={self.project_start},project_end={self.project_end},proposal_title={self.proposal_title},proposal_abstract={self.proposal_abstract},project_id={self.project_id},)"
-
-
-
-    
-
-
-class SamplingActivity(Base):
-    """
-    
-    """
-    __tablename__ = 'samplingActivity'
-
-    id = Column(UUID(), primary_key=True, nullable=False )
-    study_id = Column(UUID(), ForeignKey('study.id'), nullable=False )
-    type = Column(Enum('soil', 'water', 'air', 'plant', 'none', name='samplingactivitytype'), nullable=False )
-    sample_name = Column(Text(), nullable=False )
-    lims_barcode = Column(Text())
-    alt_id = Column(UUID(), ForeignKey('quantityValue.id'))
-    elev_id = Column(UUID(), ForeignKey('quantityValue.id'))
-    lat_lon_id = Column(UUID(), ForeignKey('geolocationValue.id'))
-    growth_facil = Column(Enum('field', 'commercially_purchased', 'experimental_garden', 'field_incubation', 'greenhouse', 'growth_chamber', 'lab_incubation', 'open_top_chamber', 'other', name='growthfacilityenum'))
-    other_growth_facil = Column(Text())
-    other_storage_condt = Column(Text())
-    oxygen_relationship = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'oblifate_aerobe', 'obligate_anaerobe', name='oxygenstatusenum'))
-    sample_store_temp = Column(Enum('fresh4', 'freshroom', 'frozen20', 'frozen80', 'other', name='samplestoretemp'))
-    samp_biotic_relationship = Column(Enum('free_living', 'parasite', 'commensal', 'symbiont', name='sampbioticenum'))
-    storage_condt = Column(Enum('fresh', 'frozen', 'lyophilized', 'other', name='storagecondtenum'))
-    air_temp_regm = Column(Text())
-    chem_administration = Column(Text())
-    collection_date = Column(DateTime())
-    collection_time = Column(DateTime())
-    env_broad_scale_other = Column(Text())
-    env_local_scale_other = Column(Text())
-    env_medium_other = Column(Text())
-    experimental_factor = Column(Text())
-    experimental_factor_other = Column(Text())
-    extraction_method = Column(Text())
-    extreme_event = Column(DateTime())
-    gaseous_environment = Column(Text())
-    geo_loc_name = Column(Text())
-    humidity_regm = Column(Text())
-    isotope_exposure = Column(Text())
-    light_regm = Column(Text())
-    link_addit_analys = Column(Text())
-    method_development = Column(Text())
-    microbial_biomass_c_meth = Column(Text())
-    microbial_biomass_meth = Column(Text())
-    microbial_biomass_n_meth = Column(Text())
-    misc_param = Column(Text())
-    neon_plot_id = Column(Text())
-    non_microb_biomass_method = Column(Text())
-    other_sample_store_temp = Column(Text())
-    other_treatment = Column(Text())
-    ph = Column(Float())
-    ph_meth = Column(Text())
-    salinity = Column(Float())
-    salinity_method = Column(Text())
-    sample_collected = Column(Text())
-    sample_collection_dev = Column(Text())
-    sample_collection_method = Column(Text())
-    sample_end_time = Column(DateTime())
-    sample_processing = Column(Text())
-    sample_start_time = Column(DateTime())
-    season_environment = Column(Text())
-    shipped_sample_size = Column(Text())
-    sieving = Column(Text())
-    start_date_inc = Column(DateTime())
-    tot_nitro_cont_meth = Column(Text())
-    tot_org_c_meth = Column(Text())
-    watering_regm = Column(Text())
-    
-
-    
-
-    def __repr__(self):
-        return f"samplingActivity(id={self.id},study_id={self.study_id},type={self.type},sample_name={self.sample_name},lims_barcode={self.lims_barcode},alt_id={self.alt_id},elev_id={self.elev_id},lat_lon_id={self.lat_lon_id},growth_facil={self.growth_facil},other_growth_facil={self.other_growth_facil},other_storage_condt={self.other_storage_condt},oxygen_relationship={self.oxygen_relationship},sample_store_temp={self.sample_store_temp},samp_biotic_relationship={self.samp_biotic_relationship},storage_condt={self.storage_condt},air_temp_regm={self.air_temp_regm},chem_administration={self.chem_administration},collection_date={self.collection_date},collection_time={self.collection_time},env_broad_scale_other={self.env_broad_scale_other},env_local_scale_other={self.env_local_scale_other},env_medium_other={self.env_medium_other},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},extreme_event={self.extreme_event},gaseous_environment={self.gaseous_environment},geo_loc_name={self.geo_loc_name},humidity_regm={self.humidity_regm},isotope_exposure={self.isotope_exposure},light_regm={self.light_regm},link_addit_analys={self.link_addit_analys},method_development={self.method_development},microbial_biomass_c_meth={self.microbial_biomass_c_meth},microbial_biomass_meth={self.microbial_biomass_meth},microbial_biomass_n_meth={self.microbial_biomass_n_meth},misc_param={self.misc_param},neon_plot_id={self.neon_plot_id},non_microb_biomass_method={self.non_microb_biomass_method},other_sample_store_temp={self.other_sample_store_temp},other_treatment={self.other_treatment},ph={self.ph},ph_meth={self.ph_meth},salinity={self.salinity},salinity_method={self.salinity_method},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},sample_end_time={self.sample_end_time},sample_processing={self.sample_processing},sample_start_time={self.sample_start_time},season_environment={self.season_environment},shipped_sample_size={self.shipped_sample_size},sieving={self.sieving},start_date_inc={self.start_date_inc},tot_nitro_cont_meth={self.tot_nitro_cont_meth},tot_org_c_meth={self.tot_org_c_meth},watering_regm={self.watering_regm},)"
-
-
-
-    
-
-
 class SampleBase(Base):
     """
     
@@ -556,29 +427,6 @@ class PeptideQuantification(Base):
 
     def __repr__(self):
         return f"peptideQuantification(id={self.id},description={self.description},all_proteins={self.all_proteins},best_protein={self.best_protein},min_q_value={self.min_q_value},peptide_sequence={self.peptide_sequence},peptide_spectral_count={self.peptide_spectral_count},peptide_sum_masic_abundance={self.peptide_sum_masic_abundance},)"
-
-
-
-    
-
-
-class ZipDownload(Base):
-    """
-    
-    """
-    __tablename__ = 'zipDownload'
-
-    id = Column(UUID(), primary_key=True, nullable=False )
-    time = Column(DateTime(), nullable=False )
-    user = Column(Text(), nullable=False )
-    files = Column(Integer(), nullable=False )
-    packages = Column(Text())
-    
-
-    
-
-    def __repr__(self):
-        return f"zipDownload(id={self.id},time={self.time},user={self.user},files={self.files},packages={self.packages},)"
 
 
 
@@ -1091,6 +939,82 @@ class Metagenomics_GenePhylogenyProduct(Base):
 
     def __repr__(self):
         return f"Metagenomics_GenePhylogenyProduct(id={self.id},workflow_step={self.workflow_step},sample_id={self.sample_id},gene_family={self.gene_family},)"
+
+
+
+    
+
+
+class SamplingActivity(Base):
+    """
+    
+    """
+    __tablename__ = 'samplingActivity'
+
+    id = Column(UUID(), primary_key=True, nullable=False )
+    study_id = Column(UUID(), ForeignKey('study.id'), nullable=False )
+    type = Column(Enum('soil', 'water', 'air', 'plant', 'none', name='samplingactivitytype'), nullable=False )
+    sample_name = Column(Text(), nullable=False )
+    lims_barcode = Column(Text())
+    alt_id = Column(UUID(), ForeignKey('quantityValue.id'))
+    elev_id = Column(UUID(), ForeignKey('quantityValue.id'))
+    lat_lon_id = Column(UUID(), ForeignKey('geolocationValue.id'))
+    growth_facil = Column(Enum('field', 'commercially_purchased', 'experimental_garden', 'field_incubation', 'greenhouse', 'growth_chamber', 'lab_incubation', 'open_top_chamber', 'other', name='growthfacilityenum'))
+    other_growth_facil = Column(Text())
+    other_storage_condt = Column(Text())
+    oxygen_relationship = Column(Enum('aerobic', 'anaerobic', 'anoxic', 'facultative', 'microaerophilic', 'microanaerobe', 'oblifate_aerobe', 'obligate_anaerobe', name='oxygenstatusenum'))
+    sample_store_temp = Column(Enum('fresh4', 'freshroom', 'frozen20', 'frozen80', 'other', name='samplestoretemp'))
+    samp_biotic_relationship = Column(Enum('free_living', 'parasite', 'commensal', 'symbiont', name='sampbioticenum'))
+    storage_condt = Column(Enum('fresh', 'frozen', 'lyophilized', 'other', name='storagecondtenum'))
+    air_temp_regm = Column(Text())
+    chem_administration = Column(Text())
+    collection_date = Column(DateTime())
+    collection_time = Column(DateTime())
+    env_broad_scale_other = Column(Text())
+    env_local_scale_other = Column(Text())
+    env_medium_other = Column(Text())
+    experimental_factor = Column(Text())
+    experimental_factor_other = Column(Text())
+    extraction_method = Column(Text())
+    extreme_event = Column(DateTime())
+    gaseous_environment = Column(Text())
+    geo_loc_name = Column(Text())
+    humidity_regm = Column(Text())
+    isotope_exposure = Column(Text())
+    light_regm = Column(Text())
+    link_addit_analys = Column(Text())
+    method_development = Column(Text())
+    microbial_biomass_c_meth = Column(Text())
+    microbial_biomass_meth = Column(Text())
+    microbial_biomass_n_meth = Column(Text())
+    misc_param = Column(Text())
+    neon_plot_id = Column(Text())
+    non_microb_biomass_method = Column(Text())
+    other_sample_store_temp = Column(Text())
+    other_treatment = Column(Text())
+    ph = Column(Float())
+    ph_meth = Column(Text())
+    salinity = Column(Float())
+    salinity_method = Column(Text())
+    sample_collected = Column(Text())
+    sample_collection_dev = Column(Text())
+    sample_collection_method = Column(Text())
+    sample_end_time = Column(DateTime())
+    sample_processing = Column(Text())
+    sample_start_time = Column(DateTime())
+    season_environment = Column(Text())
+    shipped_sample_size = Column(Text())
+    sieving = Column(Text())
+    start_date_inc = Column(DateTime())
+    tot_nitro_cont_meth = Column(Text())
+    tot_org_c_meth = Column(Text())
+    watering_regm = Column(Text())
+    
+
+    
+
+    def __repr__(self):
+        return f"samplingActivity(id={self.id},study_id={self.study_id},type={self.type},sample_name={self.sample_name},lims_barcode={self.lims_barcode},alt_id={self.alt_id},elev_id={self.elev_id},lat_lon_id={self.lat_lon_id},growth_facil={self.growth_facil},other_growth_facil={self.other_growth_facil},other_storage_condt={self.other_storage_condt},oxygen_relationship={self.oxygen_relationship},sample_store_temp={self.sample_store_temp},samp_biotic_relationship={self.samp_biotic_relationship},storage_condt={self.storage_condt},air_temp_regm={self.air_temp_regm},chem_administration={self.chem_administration},collection_date={self.collection_date},collection_time={self.collection_time},env_broad_scale_other={self.env_broad_scale_other},env_local_scale_other={self.env_local_scale_other},env_medium_other={self.env_medium_other},experimental_factor={self.experimental_factor},experimental_factor_other={self.experimental_factor_other},extraction_method={self.extraction_method},extreme_event={self.extreme_event},gaseous_environment={self.gaseous_environment},geo_loc_name={self.geo_loc_name},humidity_regm={self.humidity_regm},isotope_exposure={self.isotope_exposure},light_regm={self.light_regm},link_addit_analys={self.link_addit_analys},method_development={self.method_development},microbial_biomass_c_meth={self.microbial_biomass_c_meth},microbial_biomass_meth={self.microbial_biomass_meth},microbial_biomass_n_meth={self.microbial_biomass_n_meth},misc_param={self.misc_param},neon_plot_id={self.neon_plot_id},non_microb_biomass_method={self.non_microb_biomass_method},other_sample_store_temp={self.other_sample_store_temp},other_treatment={self.other_treatment},ph={self.ph},ph_meth={self.ph_meth},salinity={self.salinity},salinity_method={self.salinity_method},sample_collected={self.sample_collected},sample_collection_dev={self.sample_collection_dev},sample_collection_method={self.sample_collection_method},sample_end_time={self.sample_end_time},sample_processing={self.sample_processing},sample_start_time={self.sample_start_time},season_environment={self.season_environment},shipped_sample_size={self.shipped_sample_size},sieving={self.sieving},start_date_inc={self.start_date_inc},tot_nitro_cont_meth={self.tot_nitro_cont_meth},tot_org_c_meth={self.tot_org_c_meth},watering_regm={self.watering_regm},)"
 
 
 
@@ -2036,6 +1960,82 @@ class Changelog(Base):
 
     def __repr__(self):
         return f"changelog(version={self.version},changelog={self.changelog},)"
+
+
+
+    
+
+
+class Campaign(Base):
+    """
+    A research campaign that encompasses one or more studies.
+Campaigns are organizational units, typically lasting a single fiscal year beginning in FY26, that group related studies together.
+    """
+    __tablename__ = 'campaign'
+
+    id = Column(UUID(), primary_key=True, nullable=False )
+    campaign_name = Column(Text(), nullable=False )
+    campaign_year = Column(Integer())
+    display_name = Column(Text())
+    description = Column(Text())
+    
+
+    
+
+    def __repr__(self):
+        return f"campaign(id={self.id},campaign_name={self.campaign_name},campaign_year={self.campaign_year},display_name={self.display_name},description={self.description},)"
+
+
+
+    
+
+
+class Study(Base):
+    """
+    
+    """
+    __tablename__ = 'study'
+
+    id = Column(UUID(), primary_key=True, nullable=False )
+    campaign_id = Column(UUID(), ForeignKey('campaign.id'))
+    participant_name = Column(Text(), nullable=False )
+    principal_investigator = Column(Text())
+    collaborating_institution = Column(Text())
+    project_status = Column(Enum('STARTED', 'COMPLETED', 'CLOSED', 'EXTENDED', 'ACCEPTED', 'WITHDRAWN', name='projectstatus'))
+    project_start = Column(DateTime())
+    project_end = Column(DateTime())
+    proposal_title = Column(Text())
+    proposal_abstract = Column(Text())
+    project_id = Column(Text(), nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"study(id={self.id},campaign_id={self.campaign_id},participant_name={self.participant_name},principal_investigator={self.principal_investigator},collaborating_institution={self.collaborating_institution},project_status={self.project_status},project_start={self.project_start},project_end={self.project_end},proposal_title={self.proposal_title},proposal_abstract={self.proposal_abstract},project_id={self.project_id},)"
+
+
+
+    
+
+
+class ZipDownload(Base):
+    """
+    
+    """
+    __tablename__ = 'zipDownload'
+
+    id = Column(UUID(), primary_key=True, nullable=False )
+    time = Column(DateTime(), nullable=False )
+    user = Column(Text(), nullable=False )
+    files = Column(Integer(), nullable=False )
+    packages = Column(Text())
+    
+
+    
+
+    def __repr__(self):
+        return f"zipDownload(id={self.id},time={self.time},user={self.user},files={self.files},packages={self.packages},)"
 
 
 

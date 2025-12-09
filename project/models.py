@@ -90,24 +90,18 @@ linkml_meta = LinkMLMeta({'default_prefix': 'analysis_api_schema',
                  'metadata',
                  'methods',
                  'products',
-                 'administration'],
+                 'administration',
+                 'campaign',
+                 'study',
+                 'zip_download'],
      'license': 'MIT',
      'name': 'analysis-api-schema',
      'prefixes': {'analysis_api_schema': {'prefix_prefix': 'analysis_api_schema',
                                           'prefix_reference': 'https://w3id.org/MONet/analysis-api-schema/'}},
      'see_also': ['https://MONet.github.io/analysis-api-schema',
                   'https://github.com/pnnl/analysis-api'],
-     'source_file': '../src/analysis_api_schema/schema/analysis_api_schema.yaml',
+     'source_file': './src/analysis_api_schema/schema/analysis_api_schema.yaml',
      'title': 'MONet Analysis API Schema'} )
-
-class Projectstatus(str, Enum):
-    STARTED = "STARTED"
-    COMPLETED = "COMPLETED"
-    CLOSED = "CLOSED"
-    EXTENDED = "EXTENDED"
-    ACCEPTED = "ACCEPTED"
-    WITHDRAWN = "WITHDRAWN"
-
 
 class Samplebasetype(str, Enum):
     """
@@ -173,416 +167,6 @@ class Coresectionenum(str, Enum):
     BTM = "BTM"
     # Middle section of core
     MID = "MID"
-
-
-class Samplingactivitytype(str, Enum):
-    """
-    Types of sampling activities
-    """
-    # Soil sampling activity
-    soil = "soil"
-    # Water sampling activity
-    water = "water"
-    # Air sampling activity
-    air = "air"
-    # Plant sampling activity
-    plant = "plant"
-    # No specific activity type
-    none = "none"
-
-
-class Neondomainenum(str, Enum):
-    """
-    NEON ecological domains
-    """
-    # Northeast domain
-    northeast = "northeast"
-    # Mid-Atlantic domain
-    mid_atlantic = "mid_atlantic"
-    # Southeast domain
-    southeast = "southeast"
-    # Atlantic Neotropical domain
-    atlantic_neotropical = "atlantic_neotropical"
-    # Great Lakes domain
-    great_lakes = "great_lakes"
-    # Prairie Peninsula domain
-    prairie_peninsula = "prairie_peninsula"
-    # Appalachians and Cumberland Plateau domain
-    appalachians_and_cumberland_plateau = "appalachians_and_cumberland_plateau"
-    # Ozarks Complex domain
-    ozarks_complex = "ozarks_complex"
-    # Northern Plains domain
-    northern_plains = "northern_plains"
-    # Central Plains domain
-    central_plains = "central_plains"
-    # Southern Plains domain
-    southern_plains = "southern_plains"
-    # Desert Southwest domain
-    desert_southwest = "desert_southwest"
-    # Northern Rockies domain
-    northern_rockies = "northern_rockies"
-    # Southern Rockies and Colorado Plateau domain
-    southern_rockies_and_colorado_plateau = "southern_rockies_and_colorado_plateau"
-    # Great Basin domain
-    great_basin = "great_basin"
-    # Sierra Nevada domain
-    sierra_nevada = "sierra_nevada"
-    # Pacific Northwest domain
-    pacific_northwest = "pacific_northwest"
-    # Pacific Southwest domain
-    pacific_southwest = "pacific_southwest"
-    # Tundra domain
-    tundra = "tundra"
-    # Taiga domain
-    taiga = "taiga"
-    # Pacific Tropical domain
-    pacific_tropical = "pacific_tropical"
-
-
-class Growthfacilityenum(str, Enum):
-    """
-    Types of growth facilities
-    """
-    # Field conditions
-    field = "field"
-    # Commercially purchased
-    commercially_purchased = "commercially_purchased"
-    # Experimental garden
-    experimental_garden = "experimental_garden"
-    # Field incubation
-    field_incubation = "field_incubation"
-    # Greenhouse
-    greenhouse = "greenhouse"
-    # Growth chamber
-    growth_chamber = "growth_chamber"
-    # Laboratory incubation
-    lab_incubation = "lab_incubation"
-    # Open top chamber
-    open_top_chamber = "open_top_chamber"
-    # Other growth facility type
-    other = "other"
-
-
-class Landuseenum(str, Enum):
-    """
-    Land use classifications
-    """
-    # Badlands
-    badlands = "badlands"
-    # Urban/city areas
-    cities = "cities"
-    # Coniferous forests (e.g. pine, spruce, fir, cypress)
-    conifers = "conifers"
-    # Crop trees (nuts, fruit, christmas trees, nursery trees)
-    crop_trees = "crop_trees"
-    # Farmstead
-    farmstead = "farmstead"
-    # Gravel areas
-    gravel = "gravel"
-    # Hardwood forests (e.g. oak, hickory, elm, aspen)
-    hardwoods = "hardwoods"
-    # Hayland
-    hayland = "hayland"
-    # Horticultural plants (e.g. tulips)
-    horticultural_plants = "horticultural_plants"
-    # Industrial areas
-    industrial_areas = "industrial_areas"
-    # Intermixed hardwood and conifers
-    intermixed = "intermixed"
-    # Marshlands (grass, sedges, rushes)
-    marshlands = "marshlands"
-    # Meadows (grasses, alfalfa, fescue, bromegrass, timothy)
-    meadows = "meadows"
-    # Mines and quarries
-    mines_quarries = "mines_quarries"
-    # Mudflats
-    mudflats = "mudflats"
-    # Oil waste areas
-    oil_waste = "oil_waste"
-    # Pastureland (grasslands used for livestock grazing)
-    pastureland = "pastureland"
-    # Permanent snow or ice
-    permanent_snow_or_ice = "permanent_snow_or_ice"
-    # Rainforest (evergreen forest receiving >406 cm annual rainfall)
-    rainforest = "rainforest"
-    # Rangeland
-    rangeland = "rangeland"
-    # Roads and railroads
-    roads_railroads = "roads_railroads"
-    # Rock surfaces
-    rock = "rock"
-    # Row crops
-    row_crops = "row_crops"
-    # Saline seeps
-    saline_seeps = "saline_seeps"
-    # Salt flats
-    salt_flats = "salt_flats"
-    # Sand areas
-    sand = "sand"
-    # Shrub crops (blueberries, nursery ornamentals, filberts)
-    shrub_crops = "shrub_crops"
-    # Shrub land (e.g. mesquite, sage-brush, creosote bush, shrub oak, eucalyptus)
-    shrub_land = "shrub_land"
-    # Small grains
-    small_grains = "small_grains"
-    # Successional shrub land (tree saplings, hazels, sumacs, chokecherry, shrub dogwoods, blackberries)
-    successional_shrub_land = "successional_shrub_land"
-    # Swamp (permanent or semi-permanent water body dominated by woody plants)
-    swamp = "swamp"
-    # Tropical vegetation (e.g. mangrove, palms)
-    tropical = "tropical"
-    # Tundra (mosses, lichens)
-    tundra = "tundra"
-    # Vegetable crops
-    vegetable_crops = "vegetable_crops"
-    # Vine crops (grapes)
-    vine_crops = "vine_crops"
-
-
-class Tillageenum(str, Enum):
-    """
-    Tillage methods
-    """
-    # Chisel tillage
-    Chisel = "Chisel"
-    # Cutting disc tillage
-    Cutting_Disc = "Cutting_Disc"
-    # Disc plough tillage
-    Disc_Plough = "Disc_Plough"
-    # Drill tillage
-    Drill = "Drill"
-    # Mouldboard tillage
-    Mouldboard = "Mouldboard"
-    # Ridge till
-    Ridge_Till = "Ridge_Till"
-    # Strip tillage
-    Streip_Tillage = "Streip_Tillage"
-    # Tined tillage
-    Tined = "Tined"
-    # Zonal tillage
-    Zonal_Tillage = "Zonal_Tillage"
-
-
-class Profilepositionenum(str, Enum):
-    """
-    Soil profile positions
-    """
-    # Backslope position
-    backslope = "backslope"
-    # Footslope position
-    footslope = "footslope"
-    # Shoulder position
-    shoulder = "shoulder"
-    # Summit position
-    summit = "summit"
-    # Toeslope position
-    toeslope = "toeslope"
-
-
-class Winddirectionenum(str, Enum):
-    """
-    Wind direction classifications
-    """
-    # North wind direction
-    north = "north"
-    # Northeast wind direction
-    north_east = "north_east"
-    # East wind direction
-    east = "east"
-    # Southeast wind direction
-    south_east = "south_east"
-    # South wind direction
-    south = "south"
-    # Southwest wind direction
-    south_west = "south_west"
-    # West wind direction
-    west = "west"
-    # Northwest wind direction
-    north_west = "north_west"
-
-
-class Drainageclassenum(str, Enum):
-    """
-    Soil drainage classifications
-    """
-    # Excessively drained soil
-    Excessively_Drained = "Excessively_Drained"
-    # Moderately well drained soil
-    Moderately_Well = "Moderately_Well"
-    # Poorly drained soil
-    Poorly = "Poorly"
-    # Somewhat poorly drained soil
-    Somewhat_Poorly = "Somewhat_Poorly"
-    # Very poorly drained soil
-    Very_Poorly = "Very_Poorly"
-    # Well drained soil
-    Well = "Well"
-
-
-class Soilhorizonenum(str, Enum):
-    """
-    Soil horizon classifications
-    """
-    # A Horizon - topsoil
-    a_horizon = "a_horizon"
-    # B Horizon - subsoil
-    b_horizon = "b_horizon"
-    # C Horizon - parent material
-    c_horizon = "c_horizon"
-    # E Horizon - eluviated layer
-    e_horizon = "e_horizon"
-    # O Horizon - organic layer
-    o_horizon = "o_horizon"
-    # Permafrost layer
-    permafrost = "permafrost"
-    # R Layer - bedrock
-    r_layer = "r_layer"
-
-
-class Faoclassenum(str, Enum):
-    """
-    FAO soil classification system
-    """
-    # Acrisols
-    Acrisols = "Acrisols"
-    # Alisols
-    Alisols = "Alisols"
-    # Andosols
-    Andosols = "Andosols"
-    # Anthrosols
-    Anthrosols = "Anthrosols"
-    # Arenosols
-    Arenosols = "Arenosols"
-    # Calcisols
-    Calcisols = "Calcisols"
-    # Cambisols
-    Cambisols = "Cambisols"
-    # Chernozems
-    Chernozems = "Chernozems"
-    # Cryosols
-    Cryosols = "Cryosols"
-    # Durisols
-    Durisols = "Durisols"
-    # Ferralsols
-    Ferrasols = "Ferrasols"
-    # Fluvisols
-    Fluvisols = "Fluvisols"
-    # Gleysols
-    Gleysols = "Gleysols"
-    # Gypsisols
-    Gypsisols = "Gypsisols"
-    # Histosols
-    Histosols = "Histosols"
-    # Kastanozems
-    Kastanozems = "Kastanozems"
-    # Leptosols
-    Leptosols = "Leptosols"
-    # Lixisols
-    Lixisols = "Lixisols"
-    # Luvisols
-    Luvisols = "Luvisols"
-    # Nitisols
-    Nitosols = "Nitosols"
-    # Phaeozems
-    Phaeozems = "Phaeozems"
-    # Planosols
-    Planosols = "Planosols"
-    # Plinthosols
-    Plinthosols = "Plinthosols"
-    # Podzols
-    Podzols = "Podzols"
-    # Solonchaks
-    Solonchaks = "Solonchaks"
-    # Solonetz
-    Solonetz = "Solonetz"
-    # Stagnosols
-    Stagnosols = "Stagnosols"
-    # Technosols
-    Technosols = "Technosols"
-    # Umbrisols
-    Umbrisols = "Umbrisols"
-    # Vertisols
-    Vertisols = "Vertisols"
-
-
-class Sedimenttypeenum(str, Enum):
-    """
-    Types of sediment
-    """
-    # Biogenous sediment
-    biogenous = "biogenous"
-    # Cosmogenous sediment
-    cosmogenous = "cosmogenous"
-    # Hydrogenous sediment
-    hydrogenous = "hydrogenous"
-    # Lithogenous sediment
-    lithogenous = "lithogenous"
-
-
-class Samplestoretemp(str, Enum):
-    """
-    Sample storage temperature conditions
-    """
-    # Fresh storage at 4░C
-    fresh4 = "fresh4"
-    # Fresh storage at room temperature
-    freshroom = "freshroom"
-    # Frozen storage at -20░C
-    frozen20 = "frozen20"
-    # Frozen storage at -80░C
-    frozen80 = "frozen80"
-    # Other storage temperature
-    other = "other"
-
-
-class Storagecondtenum(str, Enum):
-    """
-    Sample storage conditions
-    """
-    # Fresh sample
-    fresh = "fresh"
-    # Frozen sample
-    frozen = "frozen"
-    # Lyophilized (freeze-dried) sample
-    lyophilized = "lyophilized"
-    # Other storage condition
-    other = "other"
-
-
-class Oxygenstatusenum(str, Enum):
-    """
-    Oxygen status of samples
-    """
-    # Aerobic conditions
-    aerobic = "aerobic"
-    # Anaerobic conditions
-    anaerobic = "anaerobic"
-    # Anoxic conditions
-    anoxic = "anoxic"
-    # Facultative conditions
-    facultative = "facultative"
-    # Microaerophilic conditions
-    microaerophilic = "microaerophilic"
-    # Microanaerobe conditions
-    microanaerobe = "microanaerobe"
-    # Obligate aerobe conditions
-    oblifate_aerobe = "oblifate_aerobe"
-    # Obligate anaerobe conditions
-    obligate_anaerobe = "obligate_anaerobe"
-
-
-class Sampbioticenum(str, Enum):
-    """
-    Sample biotic relationships
-    """
-    # Free-living organism
-    free_living = "free_living"
-    # Parasitic organism
-    parasite = "parasite"
-    # Commensal organism
-    commensal = "commensal"
-    # Symbiotic organism
-    symbiont = "symbiont"
 
 
 class Productmeasuretype(str, Enum):
@@ -791,6 +375,425 @@ class Product(str, Enum):
     MetaGenomicsProduct = "MetaGenomicsProduct"
 
 
+class Samplingactivitytype(str, Enum):
+    """
+    Types of sampling activities
+    """
+    # Soil sampling activity
+    soil = "soil"
+    # Water sampling activity
+    water = "water"
+    # Air sampling activity
+    air = "air"
+    # Plant sampling activity
+    plant = "plant"
+    # No specific activity type
+    none = "none"
+
+
+class Growthfacilityenum(str, Enum):
+    """
+    Types of growth facilities
+    """
+    # Field conditions
+    field = "field"
+    # Commercially purchased
+    commercially_purchased = "commercially_purchased"
+    # Experimental garden
+    experimental_garden = "experimental_garden"
+    # Field incubation
+    field_incubation = "field_incubation"
+    # Greenhouse
+    greenhouse = "greenhouse"
+    # Growth chamber
+    growth_chamber = "growth_chamber"
+    # Laboratory incubation
+    lab_incubation = "lab_incubation"
+    # Open top chamber
+    open_top_chamber = "open_top_chamber"
+    # Other growth facility type
+    other = "other"
+
+
+class Oxygenstatusenum(str, Enum):
+    """
+    Oxygen status of samples
+    """
+    # Aerobic conditions
+    aerobic = "aerobic"
+    # Anaerobic conditions
+    anaerobic = "anaerobic"
+    # Anoxic conditions
+    anoxic = "anoxic"
+    # Facultative conditions
+    facultative = "facultative"
+    # Microaerophilic conditions
+    microaerophilic = "microaerophilic"
+    # Microanaerobe conditions
+    microanaerobe = "microanaerobe"
+    # Obligate aerobe conditions
+    oblifate_aerobe = "oblifate_aerobe"
+    # Obligate anaerobe conditions
+    obligate_anaerobe = "obligate_anaerobe"
+
+
+class Samplestoretemp(str, Enum):
+    """
+    Sample storage temperature conditions
+    """
+    # Fresh storage at 4░C
+    fresh4 = "fresh4"
+    # Fresh storage at room temperature
+    freshroom = "freshroom"
+    # Frozen storage at -20░C
+    frozen20 = "frozen20"
+    # Frozen storage at -80░C
+    frozen80 = "frozen80"
+    # Other storage temperature
+    other = "other"
+
+
+class Sampbioticenum(str, Enum):
+    """
+    Sample biotic relationships
+    """
+    # Free-living organism
+    free_living = "free_living"
+    # Parasitic organism
+    parasite = "parasite"
+    # Commensal organism
+    commensal = "commensal"
+    # Symbiotic organism
+    symbiont = "symbiont"
+
+
+class Storagecondtenum(str, Enum):
+    """
+    Sample storage conditions
+    """
+    # Fresh sample
+    fresh = "fresh"
+    # Frozen sample
+    frozen = "frozen"
+    # Lyophilized (freeze-dried) sample
+    lyophilized = "lyophilized"
+    # Other storage condition
+    other = "other"
+
+
+class Landuseenum(str, Enum):
+    """
+    Land use classifications
+    """
+    # Badlands
+    badlands = "badlands"
+    # Urban/city areas
+    cities = "cities"
+    # Coniferous forests (e.g. pine, spruce, fir, cypress)
+    conifers = "conifers"
+    # Crop trees (nuts, fruit, christmas trees, nursery trees)
+    crop_trees = "crop_trees"
+    # Farmstead
+    farmstead = "farmstead"
+    # Gravel areas
+    gravel = "gravel"
+    # Hardwood forests (e.g. oak, hickory, elm, aspen)
+    hardwoods = "hardwoods"
+    # Hayland
+    hayland = "hayland"
+    # Horticultural plants (e.g. tulips)
+    horticultural_plants = "horticultural_plants"
+    # Industrial areas
+    industrial_areas = "industrial_areas"
+    # Intermixed hardwood and conifers
+    intermixed = "intermixed"
+    # Marshlands (grass, sedges, rushes)
+    marshlands = "marshlands"
+    # Meadows (grasses, alfalfa, fescue, bromegrass, timothy)
+    meadows = "meadows"
+    # Mines and quarries
+    mines_quarries = "mines_quarries"
+    # Mudflats
+    mudflats = "mudflats"
+    # Oil waste areas
+    oil_waste = "oil_waste"
+    # Pastureland (grasslands used for livestock grazing)
+    pastureland = "pastureland"
+    # Permanent snow or ice
+    permanent_snow_or_ice = "permanent_snow_or_ice"
+    # Rainforest (evergreen forest receiving >406 cm annual rainfall)
+    rainforest = "rainforest"
+    # Rangeland
+    rangeland = "rangeland"
+    # Roads and railroads
+    roads_railroads = "roads_railroads"
+    # Rock surfaces
+    rock = "rock"
+    # Row crops
+    row_crops = "row_crops"
+    # Saline seeps
+    saline_seeps = "saline_seeps"
+    # Salt flats
+    salt_flats = "salt_flats"
+    # Sand areas
+    sand = "sand"
+    # Shrub crops (blueberries, nursery ornamentals, filberts)
+    shrub_crops = "shrub_crops"
+    # Shrub land (e.g. mesquite, sage-brush, creosote bush, shrub oak, eucalyptus)
+    shrub_land = "shrub_land"
+    # Small grains
+    small_grains = "small_grains"
+    # Successional shrub land (tree saplings, hazels, sumacs, chokecherry, shrub dogwoods, blackberries)
+    successional_shrub_land = "successional_shrub_land"
+    # Swamp (permanent or semi-permanent water body dominated by woody plants)
+    swamp = "swamp"
+    # Tropical vegetation (e.g. mangrove, palms)
+    tropical = "tropical"
+    # Tundra (mosses, lichens)
+    tundra = "tundra"
+    # Vegetable crops
+    vegetable_crops = "vegetable_crops"
+    # Vine crops (grapes)
+    vine_crops = "vine_crops"
+
+
+class Drainageclassenum(str, Enum):
+    """
+    Soil drainage classifications
+    """
+    # Excessively drained soil
+    Excessively_Drained = "Excessively_Drained"
+    # Moderately well drained soil
+    Moderately_Well = "Moderately_Well"
+    # Poorly drained soil
+    Poorly = "Poorly"
+    # Somewhat poorly drained soil
+    Somewhat_Poorly = "Somewhat_Poorly"
+    # Very poorly drained soil
+    Very_Poorly = "Very_Poorly"
+    # Well drained soil
+    Well = "Well"
+
+
+class Faoclassenum(str, Enum):
+    """
+    FAO soil classification system
+    """
+    # Acrisols
+    Acrisols = "Acrisols"
+    # Alisols
+    Alisols = "Alisols"
+    # Andosols
+    Andosols = "Andosols"
+    # Anthrosols
+    Anthrosols = "Anthrosols"
+    # Arenosols
+    Arenosols = "Arenosols"
+    # Calcisols
+    Calcisols = "Calcisols"
+    # Cambisols
+    Cambisols = "Cambisols"
+    # Chernozems
+    Chernozems = "Chernozems"
+    # Cryosols
+    Cryosols = "Cryosols"
+    # Durisols
+    Durisols = "Durisols"
+    # Ferralsols
+    Ferrasols = "Ferrasols"
+    # Fluvisols
+    Fluvisols = "Fluvisols"
+    # Gleysols
+    Gleysols = "Gleysols"
+    # Gypsisols
+    Gypsisols = "Gypsisols"
+    # Histosols
+    Histosols = "Histosols"
+    # Kastanozems
+    Kastanozems = "Kastanozems"
+    # Leptosols
+    Leptosols = "Leptosols"
+    # Lixisols
+    Lixisols = "Lixisols"
+    # Luvisols
+    Luvisols = "Luvisols"
+    # Nitisols
+    Nitosols = "Nitosols"
+    # Phaeozems
+    Phaeozems = "Phaeozems"
+    # Planosols
+    Planosols = "Planosols"
+    # Plinthosols
+    Plinthosols = "Plinthosols"
+    # Podzols
+    Podzols = "Podzols"
+    # Solonchaks
+    Solonchaks = "Solonchaks"
+    # Solonetz
+    Solonetz = "Solonetz"
+    # Stagnosols
+    Stagnosols = "Stagnosols"
+    # Technosols
+    Technosols = "Technosols"
+    # Umbrisols
+    Umbrisols = "Umbrisols"
+    # Vertisols
+    Vertisols = "Vertisols"
+
+
+class Neondomainenum(str, Enum):
+    """
+    NEON ecological domains
+    """
+    # Northeast domain
+    northeast = "northeast"
+    # Mid-Atlantic domain
+    mid_atlantic = "mid_atlantic"
+    # Southeast domain
+    southeast = "southeast"
+    # Atlantic Neotropical domain
+    atlantic_neotropical = "atlantic_neotropical"
+    # Great Lakes domain
+    great_lakes = "great_lakes"
+    # Prairie Peninsula domain
+    prairie_peninsula = "prairie_peninsula"
+    # Appalachians and Cumberland Plateau domain
+    appalachians_and_cumberland_plateau = "appalachians_and_cumberland_plateau"
+    # Ozarks Complex domain
+    ozarks_complex = "ozarks_complex"
+    # Northern Plains domain
+    northern_plains = "northern_plains"
+    # Central Plains domain
+    central_plains = "central_plains"
+    # Southern Plains domain
+    southern_plains = "southern_plains"
+    # Desert Southwest domain
+    desert_southwest = "desert_southwest"
+    # Northern Rockies domain
+    northern_rockies = "northern_rockies"
+    # Southern Rockies and Colorado Plateau domain
+    southern_rockies_and_colorado_plateau = "southern_rockies_and_colorado_plateau"
+    # Great Basin domain
+    great_basin = "great_basin"
+    # Sierra Nevada domain
+    sierra_nevada = "sierra_nevada"
+    # Pacific Northwest domain
+    pacific_northwest = "pacific_northwest"
+    # Pacific Southwest domain
+    pacific_southwest = "pacific_southwest"
+    # Tundra domain
+    tundra = "tundra"
+    # Taiga domain
+    taiga = "taiga"
+    # Pacific Tropical domain
+    pacific_tropical = "pacific_tropical"
+
+
+class Profilepositionenum(str, Enum):
+    """
+    Soil profile positions
+    """
+    # Backslope position
+    backslope = "backslope"
+    # Footslope position
+    footslope = "footslope"
+    # Shoulder position
+    shoulder = "shoulder"
+    # Summit position
+    summit = "summit"
+    # Toeslope position
+    toeslope = "toeslope"
+
+
+class Sedimenttypeenum(str, Enum):
+    """
+    Types of sediment
+    """
+    # Biogenous sediment
+    biogenous = "biogenous"
+    # Cosmogenous sediment
+    cosmogenous = "cosmogenous"
+    # Hydrogenous sediment
+    hydrogenous = "hydrogenous"
+    # Lithogenous sediment
+    lithogenous = "lithogenous"
+
+
+class Soilhorizonenum(str, Enum):
+    """
+    Soil horizon classifications
+    """
+    # A Horizon - topsoil
+    a_horizon = "a_horizon"
+    # B Horizon - subsoil
+    b_horizon = "b_horizon"
+    # C Horizon - parent material
+    c_horizon = "c_horizon"
+    # E Horizon - eluviated layer
+    e_horizon = "e_horizon"
+    # O Horizon - organic layer
+    o_horizon = "o_horizon"
+    # Permafrost layer
+    permafrost = "permafrost"
+    # R Layer - bedrock
+    r_layer = "r_layer"
+
+
+class Tillageenum(str, Enum):
+    """
+    Tillage methods
+    """
+    # Chisel tillage
+    Chisel = "Chisel"
+    # Cutting disc tillage
+    Cutting_Disc = "Cutting_Disc"
+    # Disc plough tillage
+    Disc_Plough = "Disc_Plough"
+    # Drill tillage
+    Drill = "Drill"
+    # Mouldboard tillage
+    Mouldboard = "Mouldboard"
+    # Ridge till
+    Ridge_Till = "Ridge_Till"
+    # Strip tillage
+    Streip_Tillage = "Streip_Tillage"
+    # Tined tillage
+    Tined = "Tined"
+    # Zonal tillage
+    Zonal_Tillage = "Zonal_Tillage"
+
+
+class Winddirectionenum(str, Enum):
+    """
+    Wind direction classifications
+    """
+    # North wind direction
+    north = "north"
+    # Northeast wind direction
+    north_east = "north_east"
+    # East wind direction
+    east = "east"
+    # Southeast wind direction
+    south_east = "south_east"
+    # South wind direction
+    south = "south"
+    # Southwest wind direction
+    south_west = "south_west"
+    # West wind direction
+    west = "west"
+    # Northwest wind direction
+    north_west = "north_west"
+
+
+class Projectstatus(str, Enum):
+    STARTED = "STARTED"
+    COMPLETED = "COMPLETED"
+    CLOSED = "CLOSED"
+    EXTENDED = "EXTENDED"
+    ACCEPTED = "ACCEPTED"
+    WITHDRAWN = "WITHDRAWN"
+
+
 
 class TimestampValue(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/value_tables.yaml'})
@@ -809,6 +812,7 @@ class TimestampValue(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -825,9 +829,6 @@ class TimestampValue(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -845,7 +846,6 @@ class TimestampValue(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -867,7 +867,10 @@ class TimestampValue(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -876,14 +879,14 @@ class TimestampValue(ConfiguredBaseModel):
                        'quantityValue',
                        'geolocationValue',
                        'latLongValue',
-                       'campaign',
                        'instrumentData',
                        'workflowExecutionActivity',
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
                        'containerType',
-                       'labDevice']} })
+                       'labDevice',
+                       'campaign']} })
     has_raw_value: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'has_raw_value',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -933,6 +936,7 @@ class TextValue(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -949,9 +953,6 @@ class TextValue(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -969,7 +970,6 @@ class TextValue(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -991,7 +991,10 @@ class TextValue(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -1000,14 +1003,14 @@ class TextValue(ConfiguredBaseModel):
                        'quantityValue',
                        'geolocationValue',
                        'latLongValue',
-                       'campaign',
                        'instrumentData',
                        'workflowExecutionActivity',
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
                        'containerType',
-                       'labDevice']} })
+                       'labDevice',
+                       'campaign']} })
     language: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'language', 'domain_of': ['textValue']} })
     has_raw_value: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'has_raw_value',
          'domain_of': ['timestampValue',
@@ -1058,6 +1061,7 @@ class SoftwareControlledTermValue(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -1074,9 +1078,6 @@ class SoftwareControlledTermValue(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -1094,7 +1095,6 @@ class SoftwareControlledTermValue(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -1116,7 +1116,10 @@ class SoftwareControlledTermValue(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -1125,14 +1128,14 @@ class SoftwareControlledTermValue(ConfiguredBaseModel):
                        'quantityValue',
                        'geolocationValue',
                        'latLongValue',
-                       'campaign',
                        'instrumentData',
                        'workflowExecutionActivity',
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
                        'containerType',
-                       'labDevice']} })
+                       'labDevice',
+                       'campaign']} })
     name: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'name',
          'domain_of': ['softwareControlledTermValue',
                        'processedData',
@@ -1199,6 +1202,7 @@ class ControlledTermValue(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -1215,9 +1219,6 @@ class ControlledTermValue(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -1235,7 +1236,6 @@ class ControlledTermValue(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -1257,7 +1257,10 @@ class ControlledTermValue(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -1266,14 +1269,14 @@ class ControlledTermValue(ConfiguredBaseModel):
                        'quantityValue',
                        'geolocationValue',
                        'latLongValue',
-                       'campaign',
                        'instrumentData',
                        'workflowExecutionActivity',
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
                        'containerType',
-                       'labDevice']} })
+                       'labDevice',
+                       'campaign']} })
     has_raw_value: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'has_raw_value',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -1326,6 +1329,7 @@ class PersonValue(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -1342,9 +1346,6 @@ class PersonValue(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -1362,7 +1363,6 @@ class PersonValue(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -1384,7 +1384,10 @@ class PersonValue(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     first_name: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'first_name', 'domain_of': ['personValue']} })
     last_name: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'last_name', 'domain_of': ['personValue']} })
     middle_initial: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'middle_initial', 'domain_of': ['personValue']} })
@@ -1413,6 +1416,7 @@ class QuantityValue(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -1429,9 +1433,6 @@ class QuantityValue(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -1449,7 +1450,6 @@ class QuantityValue(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -1471,7 +1471,10 @@ class QuantityValue(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -1480,14 +1483,14 @@ class QuantityValue(ConfiguredBaseModel):
                        'quantityValue',
                        'geolocationValue',
                        'latLongValue',
-                       'campaign',
                        'instrumentData',
                        'workflowExecutionActivity',
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
                        'containerType',
-                       'labDevice']} })
+                       'labDevice',
+                       'campaign']} })
     has_value_unit: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'has_value_unit', 'domain_of': ['quantityValue']} })
     has_unit: Optional[str] = Field(default=None, description="""The human-readable unit name""", json_schema_extra = { "linkml_meta": {'alias': 'has_unit', 'domain_of': ['quantityValue']} })
     has_numeric_value: Optional[float] = Field(default=None, description="""The numeric value of the quantity""", json_schema_extra = { "linkml_meta": {'alias': 'has_numeric_value', 'domain_of': ['quantityValue']} })
@@ -1521,6 +1524,7 @@ class GeolocationValue(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -1537,9 +1541,6 @@ class GeolocationValue(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -1557,7 +1558,6 @@ class GeolocationValue(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -1579,7 +1579,10 @@ class GeolocationValue(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -1588,14 +1591,14 @@ class GeolocationValue(ConfiguredBaseModel):
                        'quantityValue',
                        'geolocationValue',
                        'latLongValue',
-                       'campaign',
                        'instrumentData',
                        'workflowExecutionActivity',
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
                        'containerType',
-                       'labDevice']} })
+                       'labDevice',
+                       'campaign']} })
     has_raw_value: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'has_raw_value',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -1649,6 +1652,7 @@ class ConditioningValue(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -1665,9 +1669,6 @@ class ConditioningValue(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -1685,7 +1686,6 @@ class ConditioningValue(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -1707,7 +1707,10 @@ class ConditioningValue(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     source_material: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'source_material', 'domain_of': ['conditioningValue']} })
     type: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'type',
          'domain_of': ['timestampValue',
@@ -1753,6 +1756,7 @@ class LatLongValue(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -1769,9 +1773,6 @@ class LatLongValue(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -1789,7 +1790,6 @@ class LatLongValue(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -1811,7 +1811,10 @@ class LatLongValue(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -1820,14 +1823,14 @@ class LatLongValue(ConfiguredBaseModel):
                        'quantityValue',
                        'geolocationValue',
                        'latLongValue',
-                       'campaign',
                        'instrumentData',
                        'workflowExecutionActivity',
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
                        'containerType',
-                       'labDevice']} })
+                       'labDevice',
+                       'campaign']} })
     has_raw_value: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'has_raw_value',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -1860,6 +1863,7 @@ class MagBin(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -1876,9 +1880,6 @@ class MagBin(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -1896,7 +1897,6 @@ class MagBin(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -1918,7 +1918,10 @@ class MagBin(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     workflow_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'workflow_id',
          'domain_of': ['magBin',
                        'processedData',
@@ -1964,6 +1967,7 @@ class MetagenomicsBinningProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -1980,9 +1984,6 @@ class MetagenomicsBinningProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -2000,7 +2001,6 @@ class MetagenomicsBinningProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -2022,7 +2022,10 @@ class MetagenomicsBinningProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     workflow_step: Optional[Metagenomicssteps] = Field(default=None, description="""Optional: enumerated workflow step that produced the product (e.g., MagsAnalysis)""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_step',
          'domain_of': ['Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
@@ -2053,6 +2056,7 @@ class MetagenomicsAnnotationProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -2069,9 +2073,6 @@ class MetagenomicsAnnotationProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -2089,7 +2090,6 @@ class MetagenomicsAnnotationProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -2111,7 +2111,10 @@ class MetagenomicsAnnotationProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     workflow_step: Optional[Metagenomicssteps] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'workflow_step',
          'domain_of': ['Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
@@ -2144,6 +2147,7 @@ class MetagenomicsGenePhylogenyProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -2160,9 +2164,6 @@ class MetagenomicsGenePhylogenyProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -2180,7 +2181,6 @@ class MetagenomicsGenePhylogenyProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -2202,7 +2202,10 @@ class MetagenomicsGenePhylogenyProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     workflow_step: Optional[Metagenomicssteps] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'workflow_step',
          'domain_of': ['Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
@@ -2212,6 +2215,155 @@ class MetagenomicsGenePhylogenyProduct(ConfiguredBaseModel):
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct']} })
     gene_family: Optional[str] = Field(default=None, description="""Optional gene family or marker used for the phylogeny""", json_schema_extra = { "linkml_meta": {'alias': 'gene_family', 'domain_of': ['Metagenomics_GenePhylogenyProduct']} })
+
+
+class SamplingActivity(ConfiguredBaseModel):
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/enums'})
+
+    id: UUID = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['timestampValue',
+                       'textValue',
+                       'softwareControlledTermValue',
+                       'controlledTermValue',
+                       'personValue',
+                       'quantityValue',
+                       'geolocationValue',
+                       'conditioningValue',
+                       'latLongValue',
+                       'magBin',
+                       'Metagenomics_BinningProduct',
+                       'Metagenomics_AnnotationProduct',
+                       'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
+                       'soil',
+                       'siteMetadata',
+                       'BulkDensityMethod',
+                       'ElementalAnalysisMethod',
+                       'EnzymeActivityMethod',
+                       'FTICR_AcquisitionMethod',
+                       'GravimetricWaterContentMethod',
+                       'HydraulicPropertiesMethod',
+                       'KuoMethod',
+                       'LCMS_MetabolomicsMethod',
+                       'MicrobialBiomassMethod',
+                       'PH_Method',
+                       'RespirationMethod',
+                       'TOC_TN_Method',
+                       'TextureMethod',
+                       'XrayComputedTomographyMethod',
+                       'sampleBase',
+                       'sample',
+                       'soil_sample',
+                       'aerosol_sample',
+                       'processedSample',
+                       'coreSection',
+                       'replicate',
+                       'processedData',
+                       'analysisActivity',
+                       'instrumentData',
+                       'workflowExecutionActivity',
+                       'alternativeIdentifier',
+                       'functionalAnnotationIdentifier',
+                       'instrument',
+                       'metaboliteQuantification',
+                       'ontologyClass',
+                       'peptideQuantification',
+                       'containerType',
+                       'custodian',
+                       'instrument_alt_id',
+                       'labDevice',
+                       'sampleProcessing',
+                       'processingSampleLink',
+                       'BulkDensityProduct',
+                       'ElementalAnalysisProduct',
+                       'EnzymeProduct',
+                       'FTICRProduct',
+                       'GWCMoistureProduct',
+                       'IonsAnalysisProduct',
+                       'MAOMProduct',
+                       'MetaGenomicsProduct',
+                       'MicrobialBiomassProduct',
+                       'NitrogenAnalysisProduct',
+                       'PhosphorusAnalysisProduct',
+                       'RespirationProduct',
+                       'TextureProduct',
+                       'TomographyProduct',
+                       'WEOMProduct',
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
+    study_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'study_id', 'domain_of': ['samplingActivity']} })
+    type: Samplingactivitytype = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'domain_of': ['timestampValue',
+                       'textValue',
+                       'softwareControlledTermValue',
+                       'controlledTermValue',
+                       'geolocationValue',
+                       'conditioningValue',
+                       'samplingActivity',
+                       'sample',
+                       'processedData',
+                       'analysisActivity',
+                       'instrumentData',
+                       'workflowExecutionActivity']} })
+    sample_name: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'sample_name',
+         'domain_of': ['samplingActivity', 'sampleBase', 'processedData']} })
+    lims_barcode: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'lims_barcode', 'domain_of': ['samplingActivity', 'processedData']} })
+    alt_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'alt_id', 'domain_of': ['samplingActivity']} })
+    elev_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'elev_id', 'domain_of': ['samplingActivity']} })
+    lat_lon_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'lat_lon_id', 'domain_of': ['samplingActivity']} })
+    growth_facil: Optional[Growthfacilityenum] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'growth_facil', 'domain_of': ['samplingActivity']} })
+    other_growth_facil: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'other_growth_facil', 'domain_of': ['samplingActivity']} })
+    other_storage_condt: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'other_storage_condt', 'domain_of': ['samplingActivity']} })
+    oxygen_relationship: Optional[Oxygenstatusenum] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'oxygen_relationship', 'domain_of': ['samplingActivity']} })
+    sample_store_temp: Optional[Samplestoretemp] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_store_temp', 'domain_of': ['samplingActivity']} })
+    samp_biotic_relationship: Optional[Sampbioticenum] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'samp_biotic_relationship', 'domain_of': ['samplingActivity']} })
+    storage_condt: Optional[Storagecondtenum] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'storage_condt', 'domain_of': ['samplingActivity']} })
+    air_temp_regm: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'air_temp_regm', 'domain_of': ['samplingActivity']} })
+    chem_administration: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'chem_administration', 'domain_of': ['samplingActivity']} })
+    collection_date: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'collection_date', 'domain_of': ['samplingActivity']} })
+    collection_time: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'collection_time', 'domain_of': ['samplingActivity']} })
+    env_broad_scale_other: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'env_broad_scale_other', 'domain_of': ['samplingActivity']} })
+    env_local_scale_other: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'env_local_scale_other', 'domain_of': ['samplingActivity']} })
+    env_medium_other: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'env_medium_other', 'domain_of': ['samplingActivity']} })
+    experimental_factor: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'experimental_factor', 'domain_of': ['samplingActivity']} })
+    experimental_factor_other: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'experimental_factor_other', 'domain_of': ['samplingActivity']} })
+    extraction_method: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'extraction_method',
+         'domain_of': ['samplingActivity', 'PhosphorusAnalysisProduct']} })
+    extreme_event: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'extreme_event', 'domain_of': ['samplingActivity']} })
+    gaseous_environment: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'gaseous_environment', 'domain_of': ['samplingActivity']} })
+    geo_loc_name: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'geo_loc_name', 'domain_of': ['samplingActivity']} })
+    humidity_regm: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'humidity_regm', 'domain_of': ['samplingActivity']} })
+    isotope_exposure: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'isotope_exposure', 'domain_of': ['samplingActivity']} })
+    light_regm: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'light_regm', 'domain_of': ['samplingActivity']} })
+    link_addit_analys: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'link_addit_analys', 'domain_of': ['samplingActivity']} })
+    method_development: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'method_development', 'domain_of': ['samplingActivity']} })
+    microbial_biomass_c_meth: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'microbial_biomass_c_meth', 'domain_of': ['samplingActivity']} })
+    microbial_biomass_meth: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'microbial_biomass_meth', 'domain_of': ['samplingActivity']} })
+    microbial_biomass_n_meth: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'microbial_biomass_n_meth', 'domain_of': ['samplingActivity']} })
+    misc_param: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'misc_param', 'domain_of': ['samplingActivity']} })
+    neon_plot_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'neon_plot_id', 'domain_of': ['samplingActivity']} })
+    non_microb_biomass_method: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'non_microb_biomass_method', 'domain_of': ['samplingActivity']} })
+    other_sample_store_temp: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'other_sample_store_temp', 'domain_of': ['samplingActivity']} })
+    other_treatment: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'other_treatment', 'domain_of': ['samplingActivity']} })
+    ph: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'ph', 'domain_of': ['samplingActivity', 'pHProduct']} })
+    ph_meth: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'ph_meth', 'domain_of': ['samplingActivity']} })
+    salinity: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'salinity', 'domain_of': ['samplingActivity']} })
+    salinity_method: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'salinity_method', 'domain_of': ['samplingActivity']} })
+    sample_collected: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_collected', 'domain_of': ['samplingActivity']} })
+    sample_collection_dev: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_collection_dev', 'domain_of': ['samplingActivity']} })
+    sample_collection_method: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_collection_method', 'domain_of': ['samplingActivity']} })
+    sample_end_time: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_end_time', 'domain_of': ['samplingActivity']} })
+    sample_processing: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_processing', 'domain_of': ['samplingActivity']} })
+    sample_start_time: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_start_time', 'domain_of': ['samplingActivity']} })
+    season_environment: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'season_environment', 'domain_of': ['samplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'shipped_sample_size', 'domain_of': ['samplingActivity']} })
+    sieving: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sieving', 'domain_of': ['samplingActivity']} })
+    start_date_inc: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'start_date_inc', 'domain_of': ['samplingActivity']} })
+    tot_nitro_cont_meth: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'tot_nitro_cont_meth', 'domain_of': ['samplingActivity']} })
+    tot_org_c_meth: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'tot_org_c_meth', 'domain_of': ['samplingActivity']} })
+    watering_regm: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'watering_regm', 'domain_of': ['samplingActivity']} })
 
 
 class Soil(ConfiguredBaseModel):
@@ -2231,6 +2383,7 @@ class Soil(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -2247,9 +2400,6 @@ class Soil(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -2267,7 +2417,6 @@ class Soil(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -2289,7 +2438,10 @@ class Soil(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     annual_precpt_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'annual_precpt_id', 'domain_of': ['soil']} })
     annual_temp_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'annual_temp_id', 'domain_of': ['soil']} })
     bulk_elect_conductivity_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'bulk_elect_conductivity_id', 'domain_of': ['soil']} })
@@ -2369,6 +2521,7 @@ class SiteMetadata(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -2385,9 +2538,6 @@ class SiteMetadata(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -2405,7 +2555,6 @@ class SiteMetadata(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -2427,7 +2576,10 @@ class SiteMetadata(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     nasa_mean_annual_temp_c_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_annual_temp_c_id', 'domain_of': ['siteMetadata']} })
     nasa_mean_annual_precip_mm_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_annual_precip_mm_id', 'domain_of': ['siteMetadata']} })
     nasa_max_annual_temp_c_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_max_annual_temp_c_id', 'domain_of': ['siteMetadata']} })
@@ -2496,6 +2648,7 @@ class BulkDensityMethod(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -2512,9 +2665,6 @@ class BulkDensityMethod(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -2532,7 +2682,6 @@ class BulkDensityMethod(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -2554,7 +2703,10 @@ class BulkDensityMethod(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
 
 
 class ElementalAnalysisMethod(ConfiguredBaseModel):
@@ -2574,6 +2726,7 @@ class ElementalAnalysisMethod(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -2590,9 +2743,6 @@ class ElementalAnalysisMethod(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -2610,7 +2760,6 @@ class ElementalAnalysisMethod(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -2632,7 +2781,10 @@ class ElementalAnalysisMethod(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
 
 
 class EnzymeActivityMethod(ConfiguredBaseModel):
@@ -2678,6 +2830,7 @@ class EnzymeActivityMethod(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -2694,9 +2847,6 @@ class EnzymeActivityMethod(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -2714,7 +2864,6 @@ class EnzymeActivityMethod(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -2736,7 +2885,10 @@ class EnzymeActivityMethod(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     incubation_temp_c: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'incubation_temp_c', 'domain_of': ['EnzymeActivityMethod']} })
     incubation_time: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'incubation_time', 'domain_of': ['EnzymeActivityMethod']} })
     wavelength: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'wavelength', 'domain_of': ['EnzymeActivityMethod', 'KuoMethod']} })
@@ -2787,6 +2939,7 @@ class FTICRAcquisitionMethod(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -2803,9 +2956,6 @@ class FTICRAcquisitionMethod(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -2823,7 +2973,6 @@ class FTICRAcquisitionMethod(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -2845,7 +2994,10 @@ class FTICRAcquisitionMethod(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     injection: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'injection',
          'domain_of': ['FTICR_AcquisitionMethod', 'LCMS_MetabolomicsMethod']} })
     ionization: Ionizationenum = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'ionization', 'domain_of': ['FTICR_AcquisitionMethod']} })
@@ -2899,6 +3051,7 @@ class GravimetricWaterContentMethod(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -2915,9 +3068,6 @@ class GravimetricWaterContentMethod(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -2935,7 +3085,6 @@ class GravimetricWaterContentMethod(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -2957,7 +3106,10 @@ class GravimetricWaterContentMethod(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
 
 
 class HydraulicPropertiesMethod(ConfiguredBaseModel):
@@ -3003,6 +3155,7 @@ class HydraulicPropertiesMethod(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -3019,9 +3172,6 @@ class HydraulicPropertiesMethod(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -3039,7 +3189,6 @@ class HydraulicPropertiesMethod(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -3061,7 +3210,10 @@ class HydraulicPropertiesMethod(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     fitting_model: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'fitting_model', 'domain_of': ['HydraulicPropertiesMethod']} })
 
 
@@ -3110,6 +3262,7 @@ class KuoMethod(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -3126,9 +3279,6 @@ class KuoMethod(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -3146,7 +3296,6 @@ class KuoMethod(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -3168,7 +3317,10 @@ class KuoMethod(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     detection_limit: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'detection_limit', 'domain_of': ['KuoMethod']} })
     wavelength: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'wavelength', 'domain_of': ['EnzymeActivityMethod', 'KuoMethod']} })
 
@@ -3216,6 +3368,7 @@ class LCMSMetabolomicsMethod(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -3232,9 +3385,6 @@ class LCMSMetabolomicsMethod(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -3252,7 +3402,6 @@ class LCMSMetabolomicsMethod(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -3274,7 +3423,10 @@ class LCMSMetabolomicsMethod(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     injection: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'injection',
          'domain_of': ['FTICR_AcquisitionMethod', 'LCMS_MetabolomicsMethod']} })
     polarity: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'polarity',
@@ -3336,6 +3488,7 @@ class MicrobialBiomassMethod(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -3352,9 +3505,6 @@ class MicrobialBiomassMethod(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -3372,7 +3522,6 @@ class MicrobialBiomassMethod(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -3394,7 +3543,10 @@ class MicrobialBiomassMethod(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     detector: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'detector', 'domain_of': ['MicrobialBiomassMethod', 'TOC_TN_Method']} })
     mode: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'mode',
          'domain_of': ['LCMS_MetabolomicsMethod',
@@ -3453,6 +3605,7 @@ class PHMethod(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -3469,9 +3622,6 @@ class PHMethod(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -3489,7 +3639,6 @@ class PHMethod(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -3511,7 +3660,10 @@ class PHMethod(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     calibration: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'calibration', 'domain_of': ['PH_Method']} })
 
 
@@ -3546,6 +3698,7 @@ class RespirationMethod(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -3562,9 +3715,6 @@ class RespirationMethod(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -3582,7 +3732,6 @@ class RespirationMethod(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -3604,7 +3753,10 @@ class RespirationMethod(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     respiration_analysis_type: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'respiration_analysis_type', 'domain_of': ['RespirationMethod']} })
     sample_volume_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_volume_id', 'domain_of': ['RespirationMethod']} })
     scale_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'scale_id', 'domain_of': ['RespirationMethod']} })
@@ -3656,6 +3808,7 @@ class TOCTNMethod(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -3672,9 +3825,6 @@ class TOCTNMethod(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -3692,7 +3842,6 @@ class TOCTNMethod(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -3714,7 +3863,10 @@ class TOCTNMethod(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     column: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'column', 'domain_of': ['LCMS_MetabolomicsMethod', 'TOC_TN_Method']} })
     mode: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'mode',
          'domain_of': ['LCMS_MetabolomicsMethod',
@@ -3776,6 +3928,7 @@ class TextureMethod(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -3792,9 +3945,6 @@ class TextureMethod(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -3812,7 +3962,6 @@ class TextureMethod(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -3834,7 +3983,10 @@ class TextureMethod(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
 
 
 class XrayComputedTomographyMethod(ConfiguredBaseModel):
@@ -3880,6 +4032,7 @@ class XrayComputedTomographyMethod(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -3896,9 +4049,6 @@ class XrayComputedTomographyMethod(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -3916,7 +4066,6 @@ class XrayComputedTomographyMethod(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -3938,7 +4087,10 @@ class XrayComputedTomographyMethod(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     x_ray_power: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'x_ray_power', 'domain_of': ['XrayComputedTomographyMethod']} })
     cu_filter: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'cu_filter', 'domain_of': ['XrayComputedTomographyMethod']} })
     total_projections_collected: float = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'total_projections_collected',
@@ -3949,344 +4101,6 @@ class XrayComputedTomographyMethod(ConfiguredBaseModel):
     exposure_time_per_frame: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'exposure_time_per_frame',
          'domain_of': ['XrayComputedTomographyMethod']} })
     image_voxel_size_is: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'image_voxel_size_is', 'domain_of': ['XrayComputedTomographyMethod']} })
-
-
-class Campaign(ConfiguredBaseModel):
-    """
-    A research campaign that encompasses one or more studies.
-    Campaigns are organizational units, typically lasting a single fiscal year beginning in FY26, that group related studies together.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema'})
-
-    id: UUID = Field(default=..., description="""Unique identifier for the campaign""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['timestampValue',
-                       'textValue',
-                       'softwareControlledTermValue',
-                       'controlledTermValue',
-                       'personValue',
-                       'quantityValue',
-                       'geolocationValue',
-                       'conditioningValue',
-                       'latLongValue',
-                       'magBin',
-                       'Metagenomics_BinningProduct',
-                       'Metagenomics_AnnotationProduct',
-                       'Metagenomics_GenePhylogenyProduct',
-                       'soil',
-                       'siteMetadata',
-                       'BulkDensityMethod',
-                       'ElementalAnalysisMethod',
-                       'EnzymeActivityMethod',
-                       'FTICR_AcquisitionMethod',
-                       'GravimetricWaterContentMethod',
-                       'HydraulicPropertiesMethod',
-                       'KuoMethod',
-                       'LCMS_MetabolomicsMethod',
-                       'MicrobialBiomassMethod',
-                       'PH_Method',
-                       'RespirationMethod',
-                       'TOC_TN_Method',
-                       'TextureMethod',
-                       'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
-                       'sampleBase',
-                       'sample',
-                       'soil_sample',
-                       'aerosol_sample',
-                       'processedSample',
-                       'coreSection',
-                       'replicate',
-                       'processedData',
-                       'analysisActivity',
-                       'instrumentData',
-                       'workflowExecutionActivity',
-                       'alternativeIdentifier',
-                       'functionalAnnotationIdentifier',
-                       'instrument',
-                       'metaboliteQuantification',
-                       'ontologyClass',
-                       'peptideQuantification',
-                       'zipDownload',
-                       'containerType',
-                       'custodian',
-                       'instrument_alt_id',
-                       'labDevice',
-                       'sampleProcessing',
-                       'processingSampleLink',
-                       'BulkDensityProduct',
-                       'ElementalAnalysisProduct',
-                       'EnzymeProduct',
-                       'FTICRProduct',
-                       'GWCMoistureProduct',
-                       'IonsAnalysisProduct',
-                       'MAOMProduct',
-                       'MetaGenomicsProduct',
-                       'MicrobialBiomassProduct',
-                       'NitrogenAnalysisProduct',
-                       'PhosphorusAnalysisProduct',
-                       'RespirationProduct',
-                       'TextureProduct',
-                       'TomographyProduct',
-                       'WEOMProduct',
-                       'pHProduct']} })
-    campaign_name: str = Field(default=..., description="""Short name or code for the campaign""", json_schema_extra = { "linkml_meta": {'alias': 'campaign_name', 'domain_of': ['campaign']} })
-    campaign_year: Optional[int] = Field(default=None, description="""Primary year associated with the campaign""", json_schema_extra = { "linkml_meta": {'alias': 'campaign_year', 'domain_of': ['campaign']} })
-    display_name: Optional[str] = Field(default=None, description="""Human-readable display name for the campaign""", json_schema_extra = { "linkml_meta": {'alias': 'display_name', 'domain_of': ['campaign']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the campaign objectives and scope""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['timestampValue',
-                       'textValue',
-                       'softwareControlledTermValue',
-                       'controlledTermValue',
-                       'quantityValue',
-                       'geolocationValue',
-                       'latLongValue',
-                       'campaign',
-                       'instrumentData',
-                       'workflowExecutionActivity',
-                       'metaboliteQuantification',
-                       'ontologyClass',
-                       'peptideQuantification',
-                       'containerType',
-                       'labDevice']} })
-
-
-class Study(ConfiguredBaseModel):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema'})
-
-    id: UUID = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['timestampValue',
-                       'textValue',
-                       'softwareControlledTermValue',
-                       'controlledTermValue',
-                       'personValue',
-                       'quantityValue',
-                       'geolocationValue',
-                       'conditioningValue',
-                       'latLongValue',
-                       'magBin',
-                       'Metagenomics_BinningProduct',
-                       'Metagenomics_AnnotationProduct',
-                       'Metagenomics_GenePhylogenyProduct',
-                       'soil',
-                       'siteMetadata',
-                       'BulkDensityMethod',
-                       'ElementalAnalysisMethod',
-                       'EnzymeActivityMethod',
-                       'FTICR_AcquisitionMethod',
-                       'GravimetricWaterContentMethod',
-                       'HydraulicPropertiesMethod',
-                       'KuoMethod',
-                       'LCMS_MetabolomicsMethod',
-                       'MicrobialBiomassMethod',
-                       'PH_Method',
-                       'RespirationMethod',
-                       'TOC_TN_Method',
-                       'TextureMethod',
-                       'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
-                       'sampleBase',
-                       'sample',
-                       'soil_sample',
-                       'aerosol_sample',
-                       'processedSample',
-                       'coreSection',
-                       'replicate',
-                       'processedData',
-                       'analysisActivity',
-                       'instrumentData',
-                       'workflowExecutionActivity',
-                       'alternativeIdentifier',
-                       'functionalAnnotationIdentifier',
-                       'instrument',
-                       'metaboliteQuantification',
-                       'ontologyClass',
-                       'peptideQuantification',
-                       'zipDownload',
-                       'containerType',
-                       'custodian',
-                       'instrument_alt_id',
-                       'labDevice',
-                       'sampleProcessing',
-                       'processingSampleLink',
-                       'BulkDensityProduct',
-                       'ElementalAnalysisProduct',
-                       'EnzymeProduct',
-                       'FTICRProduct',
-                       'GWCMoistureProduct',
-                       'IonsAnalysisProduct',
-                       'MAOMProduct',
-                       'MetaGenomicsProduct',
-                       'MicrobialBiomassProduct',
-                       'NitrogenAnalysisProduct',
-                       'PhosphorusAnalysisProduct',
-                       'RespirationProduct',
-                       'TextureProduct',
-                       'TomographyProduct',
-                       'WEOMProduct',
-                       'pHProduct']} })
-    campaign_id: Optional[str] = Field(default=None, description="""Reference to the campaign this study belongs to""", json_schema_extra = { "linkml_meta": {'alias': 'campaign_id', 'domain_of': ['study']} })
-    participant_name: AnyShapeArray[str] = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'participant_name', 'domain_of': ['study']} })
-    principal_investigator: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'principal_investigator', 'domain_of': ['study']} })
-    collaborating_institution: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'collaborating_institution', 'domain_of': ['study']} })
-    project_status: Optional[Projectstatus] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'project_status', 'domain_of': ['study']} })
-    project_start: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'project_start', 'domain_of': ['study']} })
-    project_end: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'project_end', 'domain_of': ['study']} })
-    proposal_title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'proposal_title', 'domain_of': ['study']} })
-    proposal_abstract: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'proposal_abstract', 'domain_of': ['study']} })
-    project_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'project_id', 'domain_of': ['study']} })
-
-
-class SamplingActivity(ConfiguredBaseModel):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema'})
-
-    id: UUID = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['timestampValue',
-                       'textValue',
-                       'softwareControlledTermValue',
-                       'controlledTermValue',
-                       'personValue',
-                       'quantityValue',
-                       'geolocationValue',
-                       'conditioningValue',
-                       'latLongValue',
-                       'magBin',
-                       'Metagenomics_BinningProduct',
-                       'Metagenomics_AnnotationProduct',
-                       'Metagenomics_GenePhylogenyProduct',
-                       'soil',
-                       'siteMetadata',
-                       'BulkDensityMethod',
-                       'ElementalAnalysisMethod',
-                       'EnzymeActivityMethod',
-                       'FTICR_AcquisitionMethod',
-                       'GravimetricWaterContentMethod',
-                       'HydraulicPropertiesMethod',
-                       'KuoMethod',
-                       'LCMS_MetabolomicsMethod',
-                       'MicrobialBiomassMethod',
-                       'PH_Method',
-                       'RespirationMethod',
-                       'TOC_TN_Method',
-                       'TextureMethod',
-                       'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
-                       'sampleBase',
-                       'sample',
-                       'soil_sample',
-                       'aerosol_sample',
-                       'processedSample',
-                       'coreSection',
-                       'replicate',
-                       'processedData',
-                       'analysisActivity',
-                       'instrumentData',
-                       'workflowExecutionActivity',
-                       'alternativeIdentifier',
-                       'functionalAnnotationIdentifier',
-                       'instrument',
-                       'metaboliteQuantification',
-                       'ontologyClass',
-                       'peptideQuantification',
-                       'zipDownload',
-                       'containerType',
-                       'custodian',
-                       'instrument_alt_id',
-                       'labDevice',
-                       'sampleProcessing',
-                       'processingSampleLink',
-                       'BulkDensityProduct',
-                       'ElementalAnalysisProduct',
-                       'EnzymeProduct',
-                       'FTICRProduct',
-                       'GWCMoistureProduct',
-                       'IonsAnalysisProduct',
-                       'MAOMProduct',
-                       'MetaGenomicsProduct',
-                       'MicrobialBiomassProduct',
-                       'NitrogenAnalysisProduct',
-                       'PhosphorusAnalysisProduct',
-                       'RespirationProduct',
-                       'TextureProduct',
-                       'TomographyProduct',
-                       'WEOMProduct',
-                       'pHProduct']} })
-    study_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'study_id', 'domain_of': ['samplingActivity']} })
-    type: Samplingactivitytype = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['timestampValue',
-                       'textValue',
-                       'softwareControlledTermValue',
-                       'controlledTermValue',
-                       'geolocationValue',
-                       'conditioningValue',
-                       'samplingActivity',
-                       'sample',
-                       'processedData',
-                       'analysisActivity',
-                       'instrumentData',
-                       'workflowExecutionActivity']} })
-    sample_name: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'sample_name',
-         'domain_of': ['samplingActivity', 'sampleBase', 'processedData']} })
-    lims_barcode: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'lims_barcode', 'domain_of': ['samplingActivity', 'processedData']} })
-    alt_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'alt_id', 'domain_of': ['samplingActivity']} })
-    elev_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'elev_id', 'domain_of': ['samplingActivity']} })
-    lat_lon_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'lat_lon_id', 'domain_of': ['samplingActivity']} })
-    growth_facil: Optional[Growthfacilityenum] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'growth_facil', 'domain_of': ['samplingActivity']} })
-    other_growth_facil: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'other_growth_facil', 'domain_of': ['samplingActivity']} })
-    other_storage_condt: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'other_storage_condt', 'domain_of': ['samplingActivity']} })
-    oxygen_relationship: Optional[Oxygenstatusenum] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'oxygen_relationship', 'domain_of': ['samplingActivity']} })
-    sample_store_temp: Optional[Samplestoretemp] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_store_temp', 'domain_of': ['samplingActivity']} })
-    samp_biotic_relationship: Optional[Sampbioticenum] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'samp_biotic_relationship', 'domain_of': ['samplingActivity']} })
-    storage_condt: Optional[Storagecondtenum] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'storage_condt', 'domain_of': ['samplingActivity']} })
-    air_temp_regm: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'air_temp_regm', 'domain_of': ['samplingActivity']} })
-    chem_administration: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'chem_administration', 'domain_of': ['samplingActivity']} })
-    collection_date: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'collection_date', 'domain_of': ['samplingActivity']} })
-    collection_time: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'collection_time', 'domain_of': ['samplingActivity']} })
-    env_broad_scale_other: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'env_broad_scale_other', 'domain_of': ['samplingActivity']} })
-    env_local_scale_other: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'env_local_scale_other', 'domain_of': ['samplingActivity']} })
-    env_medium_other: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'env_medium_other', 'domain_of': ['samplingActivity']} })
-    experimental_factor: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'experimental_factor', 'domain_of': ['samplingActivity']} })
-    experimental_factor_other: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'experimental_factor_other', 'domain_of': ['samplingActivity']} })
-    extraction_method: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'extraction_method',
-         'domain_of': ['samplingActivity', 'PhosphorusAnalysisProduct']} })
-    extreme_event: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'extreme_event', 'domain_of': ['samplingActivity']} })
-    gaseous_environment: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'gaseous_environment', 'domain_of': ['samplingActivity']} })
-    geo_loc_name: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'geo_loc_name', 'domain_of': ['samplingActivity']} })
-    humidity_regm: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'humidity_regm', 'domain_of': ['samplingActivity']} })
-    isotope_exposure: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'isotope_exposure', 'domain_of': ['samplingActivity']} })
-    light_regm: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'light_regm', 'domain_of': ['samplingActivity']} })
-    link_addit_analys: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'link_addit_analys', 'domain_of': ['samplingActivity']} })
-    method_development: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'method_development', 'domain_of': ['samplingActivity']} })
-    microbial_biomass_c_meth: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'microbial_biomass_c_meth', 'domain_of': ['samplingActivity']} })
-    microbial_biomass_meth: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'microbial_biomass_meth', 'domain_of': ['samplingActivity']} })
-    microbial_biomass_n_meth: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'microbial_biomass_n_meth', 'domain_of': ['samplingActivity']} })
-    misc_param: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'misc_param', 'domain_of': ['samplingActivity']} })
-    neon_plot_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'neon_plot_id', 'domain_of': ['samplingActivity']} })
-    non_microb_biomass_method: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'non_microb_biomass_method', 'domain_of': ['samplingActivity']} })
-    other_sample_store_temp: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'other_sample_store_temp', 'domain_of': ['samplingActivity']} })
-    other_treatment: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'other_treatment', 'domain_of': ['samplingActivity']} })
-    ph: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'ph', 'domain_of': ['samplingActivity', 'pHProduct']} })
-    ph_meth: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'ph_meth', 'domain_of': ['samplingActivity']} })
-    salinity: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'salinity', 'domain_of': ['samplingActivity']} })
-    salinity_method: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'salinity_method', 'domain_of': ['samplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_collected', 'domain_of': ['samplingActivity']} })
-    sample_collection_dev: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_collection_dev', 'domain_of': ['samplingActivity']} })
-    sample_collection_method: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_collection_method', 'domain_of': ['samplingActivity']} })
-    sample_end_time: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_end_time', 'domain_of': ['samplingActivity']} })
-    sample_processing: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_processing', 'domain_of': ['samplingActivity']} })
-    sample_start_time: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_start_time', 'domain_of': ['samplingActivity']} })
-    season_environment: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'season_environment', 'domain_of': ['samplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'shipped_sample_size', 'domain_of': ['samplingActivity']} })
-    sieving: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sieving', 'domain_of': ['samplingActivity']} })
-    start_date_inc: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'start_date_inc', 'domain_of': ['samplingActivity']} })
-    tot_nitro_cont_meth: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'tot_nitro_cont_meth', 'domain_of': ['samplingActivity']} })
-    tot_org_c_meth: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'tot_org_c_meth', 'domain_of': ['samplingActivity']} })
-    watering_regm: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'watering_regm', 'domain_of': ['samplingActivity']} })
 
 
 class SampleBase(ConfiguredBaseModel):
@@ -4306,6 +4120,7 @@ class SampleBase(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -4322,9 +4137,6 @@ class SampleBase(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -4342,7 +4154,6 @@ class SampleBase(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -4364,7 +4175,10 @@ class SampleBase(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     sample_name: Optional[str] = Field(default=None, description="""The human readable name for the sample""", json_schema_extra = { "linkml_meta": {'alias': 'sample_name',
          'domain_of': ['samplingActivity', 'sampleBase', 'processedData']} })
     proposal_id: Optional[int] = Field(default=None, description="""The 5 digit project ID assigned to an EMSL user proposal/project""", json_schema_extra = { "linkml_meta": {'alias': 'proposal_id', 'domain_of': ['sampleBase', 'processedData']} })
@@ -4392,6 +4206,7 @@ class Sample(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -4408,9 +4223,6 @@ class Sample(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -4428,7 +4240,6 @@ class Sample(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -4450,7 +4261,10 @@ class Sample(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     sampling_activity_id: str = Field(default=..., description="""Reference to the sampling activity that collected this sample""", json_schema_extra = { "linkml_meta": {'alias': 'sampling_activity_id',
          'domain_of': ['sampling_activity_site_metadata_link', 'sample']} })
     type: Optional[Sampletype] = Field(default=None, description="""The type of sample (soil, aerosol, etc.)""", json_schema_extra = { "linkml_meta": {'alias': 'type',
@@ -4490,6 +4304,7 @@ class SoilSample(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -4506,9 +4321,6 @@ class SoilSample(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -4526,7 +4338,6 @@ class SoilSample(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -4548,7 +4359,10 @@ class SoilSample(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     soil_type: Soiltype = Field(default=..., description="""The specific type of soil sample""", json_schema_extra = { "linkml_meta": {'alias': 'soil_type', 'domain_of': ['soil', 'soil_sample']} })
 
 
@@ -4572,6 +4386,7 @@ class AerosolSample(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -4588,9 +4403,6 @@ class AerosolSample(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -4608,7 +4420,6 @@ class AerosolSample(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -4630,7 +4441,10 @@ class AerosolSample(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     aerosol_type: Aerosoltype = Field(default=..., description="""The type or method of aerosol collection""", json_schema_extra = { "linkml_meta": {'alias': 'aerosol_type', 'domain_of': ['aerosol_sample']} })
 
 
@@ -4654,6 +4468,7 @@ class ProcessedSample(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -4670,9 +4485,6 @@ class ProcessedSample(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -4690,7 +4502,6 @@ class ProcessedSample(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -4712,7 +4523,10 @@ class ProcessedSample(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     processed_sample_type: Processedsampletype = Field(default=..., description="""The type of processed sample""", json_schema_extra = { "linkml_meta": {'alias': 'processed_sample_type', 'domain_of': ['processedSample']} })
 
 
@@ -4736,6 +4550,7 @@ class CoreSection(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -4752,9 +4567,6 @@ class CoreSection(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -4772,7 +4584,6 @@ class CoreSection(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -4794,7 +4605,10 @@ class CoreSection(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     core_section: Coresectionenum = Field(default=..., description="""The section of the core (e.g. TOP, MID, BTM)""", json_schema_extra = { "linkml_meta": {'alias': 'core_section', 'domain_of': ['coreSection', 'processedData']} })
 
 
@@ -4818,6 +4632,7 @@ class Replicate(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -4834,9 +4649,6 @@ class Replicate(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -4854,7 +4666,6 @@ class Replicate(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -4876,7 +4687,10 @@ class Replicate(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     rep: int = Field(default=..., description="""The replicate (or aliquot) number""", json_schema_extra = { "linkml_meta": {'alias': 'rep',
          'domain_of': ['replicate',
                        'FTICRProduct',
@@ -4904,6 +4718,7 @@ class ProcessedData(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -4920,9 +4735,6 @@ class ProcessedData(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -4940,7 +4752,6 @@ class ProcessedData(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -4962,7 +4773,10 @@ class ProcessedData(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     type: Product = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'type',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -5027,6 +4841,7 @@ class AnalysisActivity(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -5043,9 +4858,6 @@ class AnalysisActivity(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -5063,7 +4875,6 @@ class AnalysisActivity(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -5085,7 +4896,10 @@ class AnalysisActivity(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     type: Optional[Routemethod] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'type',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -5141,6 +4955,7 @@ class InstrumentData(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -5157,9 +4972,6 @@ class InstrumentData(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -5177,7 +4989,6 @@ class InstrumentData(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -5199,7 +5010,10 @@ class InstrumentData(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     analysis_activity_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'analysis_activity_id', 'domain_of': ['instrumentData']} })
     description: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['timestampValue',
@@ -5209,14 +5023,14 @@ class InstrumentData(ConfiguredBaseModel):
                        'quantityValue',
                        'geolocationValue',
                        'latLongValue',
-                       'campaign',
                        'instrumentData',
                        'workflowExecutionActivity',
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
                        'containerType',
-                       'labDevice']} })
+                       'labDevice',
+                       'campaign']} })
     alternative_identifiers: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'alternative_identifiers',
          'domain_of': ['instrumentData', 'metaboliteQuantification', 'ontologyClass']} })
     compression_type: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'compression_type', 'domain_of': ['instrumentData']} })
@@ -5281,6 +5095,7 @@ class WorkflowExecutionActivity(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -5297,9 +5112,6 @@ class WorkflowExecutionActivity(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -5317,7 +5129,6 @@ class WorkflowExecutionActivity(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -5339,7 +5150,10 @@ class WorkflowExecutionActivity(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     raw_data_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'raw_data_id', 'domain_of': ['workflowExecutionActivity']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['timestampValue',
@@ -5349,14 +5163,14 @@ class WorkflowExecutionActivity(ConfiguredBaseModel):
                        'quantityValue',
                        'geolocationValue',
                        'latLongValue',
-                       'campaign',
                        'instrumentData',
                        'workflowExecutionActivity',
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
                        'containerType',
-                       'labDevice']} })
+                       'labDevice',
+                       'campaign']} })
     ended_at_time: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'ended_at_time', 'domain_of': ['workflowExecutionActivity']} })
     git_url: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'git_url', 'domain_of': ['workflowExecutionActivity']} })
     name: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'name',
@@ -5412,6 +5226,7 @@ class AlternativeIdentifier(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -5428,9 +5243,6 @@ class AlternativeIdentifier(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -5448,7 +5260,6 @@ class AlternativeIdentifier(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -5470,7 +5281,10 @@ class AlternativeIdentifier(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     alternate_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'alternate_id', 'domain_of': ['alternativeIdentifier']} })
     alternate_identifier_type: Alternateidentifiertype = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'alternate_identifier_type', 'domain_of': ['alternativeIdentifier']} })
 
@@ -5499,6 +5313,7 @@ class FunctionalAnnotationIdentifier(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -5515,9 +5330,6 @@ class FunctionalAnnotationIdentifier(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -5535,7 +5347,6 @@ class FunctionalAnnotationIdentifier(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -5557,7 +5368,10 @@ class FunctionalAnnotationIdentifier(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     functional_identifier: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'functional_identifier',
          'domain_of': ['functionalAnnotationIdentifier']} })
     database: Annotationdatabasetype = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'database', 'domain_of': ['functionalAnnotationIdentifier']} })
@@ -5580,6 +5394,7 @@ class Instrument(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -5596,9 +5411,6 @@ class Instrument(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -5616,7 +5428,6 @@ class Instrument(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -5638,7 +5449,10 @@ class Instrument(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     name: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'name',
          'domain_of': ['softwareControlledTermValue',
                        'processedData',
@@ -5670,6 +5484,7 @@ class MetaboliteQuantification(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -5686,9 +5501,6 @@ class MetaboliteQuantification(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -5706,7 +5518,6 @@ class MetaboliteQuantification(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -5728,7 +5539,10 @@ class MetaboliteQuantification(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -5737,14 +5551,14 @@ class MetaboliteQuantification(ConfiguredBaseModel):
                        'quantityValue',
                        'geolocationValue',
                        'latLongValue',
-                       'campaign',
                        'instrumentData',
                        'workflowExecutionActivity',
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
                        'containerType',
-                       'labDevice']} })
+                       'labDevice',
+                       'campaign']} })
     alternative_identifiers: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'alternative_identifiers',
          'domain_of': ['instrumentData', 'metaboliteQuantification', 'ontologyClass']} })
     highest_similarity_score: Optional[int] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'highest_similarity_score', 'domain_of': ['metaboliteQuantification']} })
@@ -5768,6 +5582,7 @@ class OntologyClass(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -5784,9 +5599,6 @@ class OntologyClass(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -5804,7 +5616,6 @@ class OntologyClass(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -5826,7 +5637,10 @@ class OntologyClass(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -5835,14 +5649,14 @@ class OntologyClass(ConfiguredBaseModel):
                        'quantityValue',
                        'geolocationValue',
                        'latLongValue',
-                       'campaign',
                        'instrumentData',
                        'workflowExecutionActivity',
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
                        'containerType',
-                       'labDevice']} })
+                       'labDevice',
+                       'campaign']} })
     alternative_identifiers: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'alternative_identifiers',
          'domain_of': ['instrumentData', 'metaboliteQuantification', 'ontologyClass']} })
     name: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'name',
@@ -5872,6 +5686,7 @@ class PeptideQuantification(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -5888,9 +5703,6 @@ class PeptideQuantification(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -5908,7 +5720,6 @@ class PeptideQuantification(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -5930,7 +5741,10 @@ class PeptideQuantification(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -5939,102 +5753,20 @@ class PeptideQuantification(ConfiguredBaseModel):
                        'quantityValue',
                        'geolocationValue',
                        'latLongValue',
-                       'campaign',
                        'instrumentData',
                        'workflowExecutionActivity',
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
                        'containerType',
-                       'labDevice']} })
+                       'labDevice',
+                       'campaign']} })
     all_proteins: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'all_proteins', 'domain_of': ['peptideQuantification']} })
     best_protein: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'best_protein', 'domain_of': ['peptideQuantification']} })
     min_q_value: Optional[Decimal] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'min_q_value', 'domain_of': ['peptideQuantification']} })
     peptide_sequence: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'peptide_sequence', 'domain_of': ['peptideQuantification']} })
     peptide_spectral_count: Optional[int] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'peptide_spectral_count', 'domain_of': ['peptideQuantification']} })
     peptide_sum_masic_abundance: Optional[Decimal] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'peptide_sum_masic_abundance', 'domain_of': ['peptideQuantification']} })
-
-
-class ZipDownload(ConfiguredBaseModel):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema'})
-
-    id: UUID = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['timestampValue',
-                       'textValue',
-                       'softwareControlledTermValue',
-                       'controlledTermValue',
-                       'personValue',
-                       'quantityValue',
-                       'geolocationValue',
-                       'conditioningValue',
-                       'latLongValue',
-                       'magBin',
-                       'Metagenomics_BinningProduct',
-                       'Metagenomics_AnnotationProduct',
-                       'Metagenomics_GenePhylogenyProduct',
-                       'soil',
-                       'siteMetadata',
-                       'BulkDensityMethod',
-                       'ElementalAnalysisMethod',
-                       'EnzymeActivityMethod',
-                       'FTICR_AcquisitionMethod',
-                       'GravimetricWaterContentMethod',
-                       'HydraulicPropertiesMethod',
-                       'KuoMethod',
-                       'LCMS_MetabolomicsMethod',
-                       'MicrobialBiomassMethod',
-                       'PH_Method',
-                       'RespirationMethod',
-                       'TOC_TN_Method',
-                       'TextureMethod',
-                       'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
-                       'sampleBase',
-                       'sample',
-                       'soil_sample',
-                       'aerosol_sample',
-                       'processedSample',
-                       'coreSection',
-                       'replicate',
-                       'processedData',
-                       'analysisActivity',
-                       'instrumentData',
-                       'workflowExecutionActivity',
-                       'alternativeIdentifier',
-                       'functionalAnnotationIdentifier',
-                       'instrument',
-                       'metaboliteQuantification',
-                       'ontologyClass',
-                       'peptideQuantification',
-                       'zipDownload',
-                       'containerType',
-                       'custodian',
-                       'instrument_alt_id',
-                       'labDevice',
-                       'sampleProcessing',
-                       'processingSampleLink',
-                       'BulkDensityProduct',
-                       'ElementalAnalysisProduct',
-                       'EnzymeProduct',
-                       'FTICRProduct',
-                       'GWCMoistureProduct',
-                       'IonsAnalysisProduct',
-                       'MAOMProduct',
-                       'MetaGenomicsProduct',
-                       'MicrobialBiomassProduct',
-                       'NitrogenAnalysisProduct',
-                       'PhosphorusAnalysisProduct',
-                       'RespirationProduct',
-                       'TextureProduct',
-                       'TomographyProduct',
-                       'WEOMProduct',
-                       'pHProduct']} })
-    time: datetime  = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'time', 'domain_of': ['zipDownload']} })
-    user: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'user', 'domain_of': ['zipDownload']} })
-    files: int = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'files', 'domain_of': ['zipDownload']} })
-    packages: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'packages', 'domain_of': ['zipDownload']} })
 
 
 class ContainerType(ConfiguredBaseModel):
@@ -6054,6 +5786,7 @@ class ContainerType(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -6070,9 +5803,6 @@ class ContainerType(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -6090,7 +5820,6 @@ class ContainerType(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -6112,7 +5841,10 @@ class ContainerType(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -6121,14 +5853,14 @@ class ContainerType(ConfiguredBaseModel):
                        'quantityValue',
                        'geolocationValue',
                        'latLongValue',
-                       'campaign',
                        'instrumentData',
                        'workflowExecutionActivity',
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
                        'containerType',
-                       'labDevice']} })
+                       'labDevice',
+                       'campaign']} })
     was_generated_by: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -6158,6 +5890,7 @@ class Custodian(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -6174,9 +5907,6 @@ class Custodian(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -6194,7 +5924,6 @@ class Custodian(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -6216,7 +5945,10 @@ class Custodian(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     person_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'person_id', 'domain_of': ['custodian']} })
 
 
@@ -6237,6 +5969,7 @@ class InstrumentAltId(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -6253,9 +5986,6 @@ class InstrumentAltId(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -6273,7 +6003,6 @@ class InstrumentAltId(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -6295,7 +6024,10 @@ class InstrumentAltId(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     instrument_alt_id_provider: Optional[Instrumentaltidprovider] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'instrument_alt_id_provider', 'domain_of': ['instrument_alt_id']} })
     instrument_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'instrument_id',
          'domain_of': ['analysisActivity', 'instrument_alt_id', 'instrumentCustodian']} })
@@ -6318,6 +6050,7 @@ class LabDevice(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -6334,9 +6067,6 @@ class LabDevice(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -6354,7 +6084,6 @@ class LabDevice(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -6376,7 +6105,10 @@ class LabDevice(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['timestampValue',
                        'textValue',
@@ -6385,14 +6117,14 @@ class LabDevice(ConfiguredBaseModel):
                        'quantityValue',
                        'geolocationValue',
                        'latLongValue',
-                       'campaign',
                        'instrumentData',
                        'workflowExecutionActivity',
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
                        'containerType',
-                       'labDevice']} })
+                       'labDevice',
+                       'campaign']} })
     device_type: Optional[Devicetypeenum] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'device_type', 'domain_of': ['labDevice']} })
     activity_time_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'activity_time_id', 'domain_of': ['labDevice']} })
     activity_speed_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'activity_speed_id', 'domain_of': ['labDevice']} })
@@ -6415,6 +6147,7 @@ class SampleProcessing(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -6431,9 +6164,6 @@ class SampleProcessing(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -6451,7 +6181,6 @@ class SampleProcessing(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -6473,7 +6202,10 @@ class SampleProcessing(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     analysis_type: Optional[Routemethod] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'analysis_type', 'domain_of': ['sampleProcessing']} })
     method_name: Optional[Methodname] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'method_name', 'domain_of': ['sampleProcessing']} })
     processing_steps: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'processing_steps', 'domain_of': ['sampleProcessing']} })
@@ -6511,6 +6243,7 @@ class ProcessingSampleLink(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -6527,9 +6260,6 @@ class ProcessingSampleLink(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -6547,7 +6277,6 @@ class ProcessingSampleLink(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -6569,7 +6298,10 @@ class ProcessingSampleLink(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     sample_base_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'sample_base_id', 'domain_of': ['processingSampleLink']} })
     processing_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'processing_id', 'domain_of': ['processingSampleLink']} })
     step_number: int = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'step_number', 'domain_of': ['processingSampleLink']} })
@@ -6638,6 +6370,7 @@ class BulkDensityProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -6654,9 +6387,6 @@ class BulkDensityProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -6674,7 +6404,6 @@ class BulkDensityProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -6696,7 +6425,10 @@ class BulkDensityProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     bulk_density_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'bulk_density_id', 'domain_of': ['BulkDensityProduct']} })
     flag: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag',
          'domain_of': ['BulkDensityProduct',
@@ -6741,6 +6473,7 @@ class ElementalAnalysisProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -6757,9 +6490,6 @@ class ElementalAnalysisProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -6777,7 +6507,6 @@ class ElementalAnalysisProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -6799,7 +6528,10 @@ class ElementalAnalysisProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     total_carbon_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_carbon_id', 'domain_of': ['ElementalAnalysisProduct']} })
     total_nitrogen_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_nitrogen_id',
          'domain_of': ['ElementalAnalysisProduct', 'MAOMProduct', 'WEOMProduct']} })
@@ -6845,6 +6577,7 @@ class EnzymeProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -6861,9 +6594,6 @@ class EnzymeProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -6881,7 +6611,6 @@ class EnzymeProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -6903,7 +6632,10 @@ class EnzymeProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     beta_glucosidase_ug_pnp_per_g_per_h_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'beta_glucosidase_ug_pnp_per_g_per_h_id',
          'domain_of': ['EnzymeProduct']} })
     flag: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag',
@@ -6933,6 +6665,7 @@ class FTICRProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -6949,9 +6682,6 @@ class FTICRProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -6969,7 +6699,6 @@ class FTICRProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -6991,7 +6720,10 @@ class FTICRProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     measure_type: Optional[Productmeasuretype] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'measure_type',
          'domain_of': ['BulkDensityProduct',
                        'ElementalAnalysisProduct',
@@ -7060,6 +6792,7 @@ class GWCMoistureProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -7076,9 +6809,6 @@ class GWCMoistureProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -7096,7 +6826,6 @@ class GWCMoistureProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -7118,7 +6847,10 @@ class GWCMoistureProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     gwc_percent_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'gwc_percent_id', 'domain_of': ['GWCMoistureProduct']} })
     flag: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag',
          'domain_of': ['BulkDensityProduct',
@@ -7163,6 +6895,7 @@ class IonsAnalysisProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -7179,9 +6912,6 @@ class IonsAnalysisProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -7199,7 +6929,6 @@ class IonsAnalysisProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -7221,7 +6950,10 @@ class IonsAnalysisProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     sulfate_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sulfate_id', 'domain_of': ['IonsAnalysisProduct']} })
     boron_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'boron_id', 'domain_of': ['IonsAnalysisProduct']} })
     zinc_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'zinc_id', 'domain_of': ['IonsAnalysisProduct']} })
@@ -7289,6 +7021,7 @@ class MAOMProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -7305,9 +7038,6 @@ class MAOMProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -7325,7 +7055,6 @@ class MAOMProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -7347,7 +7076,10 @@ class MAOMProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     total_organic_carbon_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_organic_carbon_id',
          'domain_of': ['MAOMProduct', 'WEOMProduct']} })
     total_organic_carbon_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_organic_carbon_avg',
@@ -7378,6 +7110,7 @@ class MetaGenomicsProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -7394,9 +7127,6 @@ class MetaGenomicsProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -7414,7 +7144,6 @@ class MetaGenomicsProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -7436,7 +7165,10 @@ class MetaGenomicsProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     input_to_step: Optional[Metagenomicssteps] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'input_to_step', 'domain_of': ['MetaGenomicsProduct']} })
     output_to_step: Metagenomicssteps = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'output_to_step', 'domain_of': ['MetaGenomicsProduct']} })
 
@@ -7482,6 +7214,7 @@ class MicrobialBiomassProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -7498,9 +7231,6 @@ class MicrobialBiomassProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -7518,7 +7248,6 @@ class MicrobialBiomassProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -7540,7 +7269,10 @@ class MicrobialBiomassProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     mbc_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'mbc_id', 'domain_of': ['MicrobialBiomassProduct']} })
     mbc_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'mbc_avg', 'domain_of': ['MicrobialBiomassProduct']} })
     mbn_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'mbn_id', 'domain_of': ['MicrobialBiomassProduct']} })
@@ -7592,6 +7324,7 @@ class NitrogenAnalysisProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -7608,9 +7341,6 @@ class NitrogenAnalysisProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -7628,7 +7358,6 @@ class NitrogenAnalysisProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -7650,7 +7379,10 @@ class NitrogenAnalysisProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     no3_n_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'no3_n_id', 'domain_of': ['NitrogenAnalysisProduct']} })
     no3_n_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'no3_n_avg', 'domain_of': ['NitrogenAnalysisProduct']} })
     nh4_n_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nh4_n_id', 'domain_of': ['NitrogenAnalysisProduct']} })
@@ -7702,6 +7434,7 @@ class PhosphorusAnalysisProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -7718,9 +7451,6 @@ class PhosphorusAnalysisProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -7738,7 +7468,6 @@ class PhosphorusAnalysisProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -7760,7 +7489,10 @@ class PhosphorusAnalysisProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     extraction_method: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'extraction_method',
          'domain_of': ['samplingActivity', 'PhosphorusAnalysisProduct']} })
     phosphorus_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'phosphorus_id', 'domain_of': ['PhosphorusAnalysisProduct']} })
@@ -7809,6 +7541,7 @@ class RespirationProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -7825,9 +7558,6 @@ class RespirationProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -7845,7 +7575,6 @@ class RespirationProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -7867,7 +7596,10 @@ class RespirationProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     respiration_rate_per_day_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'respiration_rate_per_day_id', 'domain_of': ['RespirationProduct']} })
     flag: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag',
          'domain_of': ['BulkDensityProduct',
@@ -7912,6 +7644,7 @@ class TextureProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -7928,9 +7661,6 @@ class TextureProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -7948,7 +7678,6 @@ class TextureProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -7970,7 +7699,10 @@ class TextureProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     sand_pct_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sand_pct_id', 'domain_of': ['TextureProduct']} })
     silt_pct_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'silt_pct_id', 'domain_of': ['TextureProduct']} })
     clay_pct_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'clay_pct_id', 'domain_of': ['TextureProduct']} })
@@ -8017,6 +7749,7 @@ class TomographyProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -8033,9 +7766,6 @@ class TomographyProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -8053,7 +7783,6 @@ class TomographyProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -8075,7 +7804,10 @@ class TomographyProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     roi_volume_voxel: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'roi_volume_voxel', 'domain_of': ['TomographyProduct']} })
     voxel_size: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'voxel_size', 'domain_of': ['TomographyProduct']} })
     connected_pores: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'connected_pores', 'domain_of': ['TomographyProduct']} })
@@ -8139,6 +7871,7 @@ class WEOMProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -8155,9 +7888,6 @@ class WEOMProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -8175,7 +7905,6 @@ class WEOMProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -8197,7 +7926,10 @@ class WEOMProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     total_organic_carbon_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_organic_carbon_id',
          'domain_of': ['MAOMProduct', 'WEOMProduct']} })
     total_organic_carbon_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_organic_carbon_avg',
@@ -8244,6 +7976,7 @@ class PHProduct(ConfiguredBaseModel):
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
                        'soil',
                        'siteMetadata',
                        'BulkDensityMethod',
@@ -8260,9 +7993,6 @@ class PHProduct(ConfiguredBaseModel):
                        'TOC_TN_Method',
                        'TextureMethod',
                        'XrayComputedTomographyMethod',
-                       'campaign',
-                       'study',
-                       'samplingActivity',
                        'sampleBase',
                        'sample',
                        'soil_sample',
@@ -8280,7 +8010,6 @@ class PHProduct(ConfiguredBaseModel):
                        'metaboliteQuantification',
                        'ontologyClass',
                        'peptideQuantification',
-                       'zipDownload',
                        'containerType',
                        'custodian',
                        'instrument_alt_id',
@@ -8302,7 +8031,10 @@ class PHProduct(ConfiguredBaseModel):
                        'TextureProduct',
                        'TomographyProduct',
                        'WEOMProduct',
-                       'pHProduct']} })
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
     ph: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'ph', 'domain_of': ['samplingActivity', 'pHProduct']} })
     flag: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag',
          'domain_of': ['BulkDensityProduct',
@@ -8329,6 +8061,277 @@ class Changelog(ConfiguredBaseModel):
     changelog: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'changelog', 'domain_of': ['changelog']} })
 
 
+class Campaign(ConfiguredBaseModel):
+    """
+    A research campaign that encompasses one or more studies.
+    Campaigns are organizational units, typically lasting a single fiscal year beginning in FY26, that group related studies together.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/campaign'})
+
+    id: UUID = Field(default=..., description="""Unique identifier for the campaign""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['timestampValue',
+                       'textValue',
+                       'softwareControlledTermValue',
+                       'controlledTermValue',
+                       'personValue',
+                       'quantityValue',
+                       'geolocationValue',
+                       'conditioningValue',
+                       'latLongValue',
+                       'magBin',
+                       'Metagenomics_BinningProduct',
+                       'Metagenomics_AnnotationProduct',
+                       'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
+                       'soil',
+                       'siteMetadata',
+                       'BulkDensityMethod',
+                       'ElementalAnalysisMethod',
+                       'EnzymeActivityMethod',
+                       'FTICR_AcquisitionMethod',
+                       'GravimetricWaterContentMethod',
+                       'HydraulicPropertiesMethod',
+                       'KuoMethod',
+                       'LCMS_MetabolomicsMethod',
+                       'MicrobialBiomassMethod',
+                       'PH_Method',
+                       'RespirationMethod',
+                       'TOC_TN_Method',
+                       'TextureMethod',
+                       'XrayComputedTomographyMethod',
+                       'sampleBase',
+                       'sample',
+                       'soil_sample',
+                       'aerosol_sample',
+                       'processedSample',
+                       'coreSection',
+                       'replicate',
+                       'processedData',
+                       'analysisActivity',
+                       'instrumentData',
+                       'workflowExecutionActivity',
+                       'alternativeIdentifier',
+                       'functionalAnnotationIdentifier',
+                       'instrument',
+                       'metaboliteQuantification',
+                       'ontologyClass',
+                       'peptideQuantification',
+                       'containerType',
+                       'custodian',
+                       'instrument_alt_id',
+                       'labDevice',
+                       'sampleProcessing',
+                       'processingSampleLink',
+                       'BulkDensityProduct',
+                       'ElementalAnalysisProduct',
+                       'EnzymeProduct',
+                       'FTICRProduct',
+                       'GWCMoistureProduct',
+                       'IonsAnalysisProduct',
+                       'MAOMProduct',
+                       'MetaGenomicsProduct',
+                       'MicrobialBiomassProduct',
+                       'NitrogenAnalysisProduct',
+                       'PhosphorusAnalysisProduct',
+                       'RespirationProduct',
+                       'TextureProduct',
+                       'TomographyProduct',
+                       'WEOMProduct',
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
+    campaign_name: str = Field(default=..., description="""Short name or code for the campaign""", json_schema_extra = { "linkml_meta": {'alias': 'campaign_name', 'domain_of': ['campaign']} })
+    campaign_year: Optional[int] = Field(default=None, description="""Primary year associated with the campaign""", json_schema_extra = { "linkml_meta": {'alias': 'campaign_year', 'domain_of': ['campaign']} })
+    display_name: Optional[str] = Field(default=None, description="""Human-readable display name for the campaign""", json_schema_extra = { "linkml_meta": {'alias': 'display_name', 'domain_of': ['campaign']} })
+    description: Optional[str] = Field(default=None, description="""Detailed description of the campaign objectives and scope""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['timestampValue',
+                       'textValue',
+                       'softwareControlledTermValue',
+                       'controlledTermValue',
+                       'quantityValue',
+                       'geolocationValue',
+                       'latLongValue',
+                       'instrumentData',
+                       'workflowExecutionActivity',
+                       'metaboliteQuantification',
+                       'ontologyClass',
+                       'peptideQuantification',
+                       'containerType',
+                       'labDevice',
+                       'campaign']} })
+
+
+class Study(ConfiguredBaseModel):
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema'})
+
+    id: UUID = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['timestampValue',
+                       'textValue',
+                       'softwareControlledTermValue',
+                       'controlledTermValue',
+                       'personValue',
+                       'quantityValue',
+                       'geolocationValue',
+                       'conditioningValue',
+                       'latLongValue',
+                       'magBin',
+                       'Metagenomics_BinningProduct',
+                       'Metagenomics_AnnotationProduct',
+                       'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
+                       'soil',
+                       'siteMetadata',
+                       'BulkDensityMethod',
+                       'ElementalAnalysisMethod',
+                       'EnzymeActivityMethod',
+                       'FTICR_AcquisitionMethod',
+                       'GravimetricWaterContentMethod',
+                       'HydraulicPropertiesMethod',
+                       'KuoMethod',
+                       'LCMS_MetabolomicsMethod',
+                       'MicrobialBiomassMethod',
+                       'PH_Method',
+                       'RespirationMethod',
+                       'TOC_TN_Method',
+                       'TextureMethod',
+                       'XrayComputedTomographyMethod',
+                       'sampleBase',
+                       'sample',
+                       'soil_sample',
+                       'aerosol_sample',
+                       'processedSample',
+                       'coreSection',
+                       'replicate',
+                       'processedData',
+                       'analysisActivity',
+                       'instrumentData',
+                       'workflowExecutionActivity',
+                       'alternativeIdentifier',
+                       'functionalAnnotationIdentifier',
+                       'instrument',
+                       'metaboliteQuantification',
+                       'ontologyClass',
+                       'peptideQuantification',
+                       'containerType',
+                       'custodian',
+                       'instrument_alt_id',
+                       'labDevice',
+                       'sampleProcessing',
+                       'processingSampleLink',
+                       'BulkDensityProduct',
+                       'ElementalAnalysisProduct',
+                       'EnzymeProduct',
+                       'FTICRProduct',
+                       'GWCMoistureProduct',
+                       'IonsAnalysisProduct',
+                       'MAOMProduct',
+                       'MetaGenomicsProduct',
+                       'MicrobialBiomassProduct',
+                       'NitrogenAnalysisProduct',
+                       'PhosphorusAnalysisProduct',
+                       'RespirationProduct',
+                       'TextureProduct',
+                       'TomographyProduct',
+                       'WEOMProduct',
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
+    campaign_id: Optional[str] = Field(default=None, description="""Reference to the campaign this study belongs to""", json_schema_extra = { "linkml_meta": {'alias': 'campaign_id', 'domain_of': ['study']} })
+    participant_name: AnyShapeArray[str] = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'participant_name', 'domain_of': ['study']} })
+    principal_investigator: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'principal_investigator', 'domain_of': ['study']} })
+    collaborating_institution: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'collaborating_institution', 'domain_of': ['study']} })
+    project_status: Optional[Projectstatus] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'project_status', 'domain_of': ['study']} })
+    project_start: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'project_start', 'domain_of': ['study']} })
+    project_end: Optional[datetime ] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'project_end', 'domain_of': ['study']} })
+    proposal_title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'proposal_title', 'domain_of': ['study']} })
+    proposal_abstract: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'proposal_abstract', 'domain_of': ['study']} })
+    project_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'project_id', 'domain_of': ['study']} })
+
+
+class ZipDownload(ConfiguredBaseModel):
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema'})
+
+    id: UUID = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['timestampValue',
+                       'textValue',
+                       'softwareControlledTermValue',
+                       'controlledTermValue',
+                       'personValue',
+                       'quantityValue',
+                       'geolocationValue',
+                       'conditioningValue',
+                       'latLongValue',
+                       'magBin',
+                       'Metagenomics_BinningProduct',
+                       'Metagenomics_AnnotationProduct',
+                       'Metagenomics_GenePhylogenyProduct',
+                       'samplingActivity',
+                       'soil',
+                       'siteMetadata',
+                       'BulkDensityMethod',
+                       'ElementalAnalysisMethod',
+                       'EnzymeActivityMethod',
+                       'FTICR_AcquisitionMethod',
+                       'GravimetricWaterContentMethod',
+                       'HydraulicPropertiesMethod',
+                       'KuoMethod',
+                       'LCMS_MetabolomicsMethod',
+                       'MicrobialBiomassMethod',
+                       'PH_Method',
+                       'RespirationMethod',
+                       'TOC_TN_Method',
+                       'TextureMethod',
+                       'XrayComputedTomographyMethod',
+                       'sampleBase',
+                       'sample',
+                       'soil_sample',
+                       'aerosol_sample',
+                       'processedSample',
+                       'coreSection',
+                       'replicate',
+                       'processedData',
+                       'analysisActivity',
+                       'instrumentData',
+                       'workflowExecutionActivity',
+                       'alternativeIdentifier',
+                       'functionalAnnotationIdentifier',
+                       'instrument',
+                       'metaboliteQuantification',
+                       'ontologyClass',
+                       'peptideQuantification',
+                       'containerType',
+                       'custodian',
+                       'instrument_alt_id',
+                       'labDevice',
+                       'sampleProcessing',
+                       'processingSampleLink',
+                       'BulkDensityProduct',
+                       'ElementalAnalysisProduct',
+                       'EnzymeProduct',
+                       'FTICRProduct',
+                       'GWCMoistureProduct',
+                       'IonsAnalysisProduct',
+                       'MAOMProduct',
+                       'MetaGenomicsProduct',
+                       'MicrobialBiomassProduct',
+                       'NitrogenAnalysisProduct',
+                       'PhosphorusAnalysisProduct',
+                       'RespirationProduct',
+                       'TextureProduct',
+                       'TomographyProduct',
+                       'WEOMProduct',
+                       'pHProduct',
+                       'campaign',
+                       'study',
+                       'zipDownload']} })
+    time: datetime  = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'time', 'domain_of': ['zipDownload']} })
+    user: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'user', 'domain_of': ['zipDownload']} })
+    files: int = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'files', 'domain_of': ['zipDownload']} })
+    packages: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'packages', 'domain_of': ['zipDownload']} })
+
+
 # Model rebuild
 # see https://pydantic-docs.helpmanual.io/usage/models/#rebuilding-a-model
 TimestampValue.model_rebuild()
@@ -8344,6 +8347,7 @@ MagBin.model_rebuild()
 MetagenomicsBinningProduct.model_rebuild()
 MetagenomicsAnnotationProduct.model_rebuild()
 MetagenomicsGenePhylogenyProduct.model_rebuild()
+SamplingActivity.model_rebuild()
 Soil.model_rebuild()
 SiteMetadata.model_rebuild()
 SamplingActivitySiteMetadataLink.model_rebuild()
@@ -8361,9 +8365,6 @@ RespirationMethod.model_rebuild()
 TOCTNMethod.model_rebuild()
 TextureMethod.model_rebuild()
 XrayComputedTomographyMethod.model_rebuild()
-Campaign.model_rebuild()
-Study.model_rebuild()
-SamplingActivity.model_rebuild()
 SampleBase.model_rebuild()
 Sample.model_rebuild()
 SoilSample.model_rebuild()
@@ -8382,7 +8383,6 @@ Instrument.model_rebuild()
 MetaboliteQuantification.model_rebuild()
 OntologyClass.model_rebuild()
 PeptideQuantification.model_rebuild()
-ZipDownload.model_rebuild()
 ContainerType.model_rebuild()
 Custodian.model_rebuild()
 InstrumentAltId.model_rebuild()
@@ -8408,4 +8408,7 @@ TomographyProduct.model_rebuild()
 WEOMProduct.model_rebuild()
 PHProduct.model_rebuild()
 Changelog.model_rebuild()
+Campaign.model_rebuild()
+Study.model_rebuild()
+ZipDownload.model_rebuild()
 

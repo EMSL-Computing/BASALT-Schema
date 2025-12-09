@@ -4,22 +4,18 @@ set shell := ["powershell", "-Command"]
 default:
     just --list
 
-# set working-directory := "util"
+# set working-directory := "."
 
 src_schema_path := "./src/analysis_api_schema/schema/analysis_api_schema.yaml"
 dst_schema_path := "./project"
 
-
-# Generate SQL Alchemy `schema.py` and `enums.py`
-[working-directory: 'util']
 gen-schema:
-    uv run python sqlalchemygen.py {{src_schema_path}} > {{dst_schema_path}}/schema.py
-    uv run python fix_encoding.py {{dst_schema_path}}/schema.py
+    uv run python util/sqlalchemygen.py {{src_schema_path}} > {{dst_schema_path}}/schema.py
+    uv run python util/fix_encoding.py {{dst_schema_path}}/schema.py
 
-[working-directory: 'util']
 gen-models:
-    uv run python pydanticgen.py  {{src_schema_path}} > {{dst_schema_path}}/models.py
-    uv run python fix_encoding.py {{dst_schema_path}}/models.py
+    uv run python util/pydanticgen.py  {{src_schema_path}} > {{dst_schema_path}}/models.py
+    uv run python util/fix_encoding.py {{dst_schema_path}}/models.py
 
 gen-project: gen-schema gen-models
 

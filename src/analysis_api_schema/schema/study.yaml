@@ -1,0 +1,63 @@
+---
+id: https://w3id.org/MONet/analysis-api-schema
+name: analysis-api-schema
+title: MONet Analysis API Schema
+description: |-
+  LinkML-based schema for MONet soil analysis data management and metadata enrichment.
+  This schema defines the data models for samples, processed samples, site metadata,
+  and enrichment providers used in the MONet Analysis API.
+license: MIT
+see_also:
+  - https://MONet.github.io/analysis-api-schema
+  - https://github.com/pnnl/analysis-api
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+
+default_prefix: analysis_api_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+
+classes:
+
+  study:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      campaign_id:
+        range: campaign
+        #required: true
+        description: Reference to the campaign this study belongs to
+      participant_name: # TODO not quite correct
+        range: string
+        array: {}
+        required: true
+      principal_investigator:
+      collaborating_institution:
+      project_status:
+        range: projectstatus
+      project_start:
+        # range: date
+        range: datetime
+      project_end:
+        # range: date
+        range: datetime
+      proposal_title:
+      proposal_abstract:
+      project_id:
+        # range: project_id # like 60880
+        required: true
+
+enums:
+  projectstatus:
+    permissible_values:
+      STARTED:
+      COMPLETED:
+      CLOSED:
+      EXTENDED:
+      ACCEPTED:
+      WITHDRAWN:
