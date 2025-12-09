@@ -113,826 +113,476 @@ class Samplebasetype(str, Enum):
     """
     Base types for sample entities
     """
+    # A physical sample
     sample = "sample"
-    """
-    A physical sample
-    """
+    # A sample that has undergone processing
     processed_sample = "processed_sample"
-    """
-    A sample that has undergone processing
-    """
 
 
 class Sampletype(str, Enum):
     """
     Types of samples that can be collected
     """
+    # Soil sample
     soil_sample = "soil_sample"
-    """
-    Soil sample
-    """
+    # Aerosol sample
     aerosol_sample = "aerosol_sample"
-    """
-    Aerosol sample
-    """
 
 
 class Soiltype(str, Enum):
     """
     Specific types of soil samples
     """
+    # Soil core sample
     soil_core = "soil_core"
-    """
-    Soil core sample
-    """
+    # Surface layer soil sample
     surface_layer = "surface_layer"
-    """
-    Surface layer soil sample
-    """
 
 
 class Aerosoltype(str, Enum):
     """
     Types of aerosol samples
     """
+    # Sea salt aerosol
     sea_salt = "sea_salt"
-    """
-    Sea salt aerosol
-    """
+    # Dust aerosol
     dust = "dust"
-    """
-    Dust aerosol
-    """
+    # Volcanic ash aerosol
     volcanic_ash = "volcanic_ash"
-    """
-    Volcanic ash aerosol
-    """
 
 
 class Processedsampletype(str, Enum):
     """
     Types of processed samples
     """
+    # Analyte sample
     analyte = "analyte"
-    """
-    Analyte sample
-    """
+    # Core section sample
     coreSection = "coreSection"
-    """
-    Core section sample
-    """
+    # Replicate sample
     replicate = "replicate"
-    """
-    Replicate sample
-    """
 
 
 class Coresectionenum(str, Enum):
     """
     Sections of a core sample
     """
+    # Top section of core
     TOP = "TOP"
-    """
-    Top section of core
-    """
+    # Bottom section of core
     BTM = "BTM"
-    """
-    Bottom section of core
-    """
+    # Middle section of core
     MID = "MID"
-    """
-    Middle section of core
-    """
 
 
 class Samplingactivitytype(str, Enum):
     """
     Types of sampling activities
     """
+    # Soil sampling activity
     soil = "soil"
-    """
-    Soil sampling activity
-    """
+    # Water sampling activity
     water = "water"
-    """
-    Water sampling activity
-    """
+    # Air sampling activity
     air = "air"
-    """
-    Air sampling activity
-    """
+    # Plant sampling activity
     plant = "plant"
-    """
-    Plant sampling activity
-    """
+    # No specific activity type
     none = "none"
-    """
-    No specific activity type
-    """
 
 
 class Neondomainenum(str, Enum):
     """
     NEON ecological domains
     """
+    # Northeast domain
     northeast = "northeast"
-    """
-    Northeast domain
-    """
+    # Mid-Atlantic domain
     mid_atlantic = "mid_atlantic"
-    """
-    Mid-Atlantic domain
-    """
+    # Southeast domain
     southeast = "southeast"
-    """
-    Southeast domain
-    """
+    # Atlantic Neotropical domain
     atlantic_neotropical = "atlantic_neotropical"
-    """
-    Atlantic Neotropical domain
-    """
+    # Great Lakes domain
     great_lakes = "great_lakes"
-    """
-    Great Lakes domain
-    """
+    # Prairie Peninsula domain
     prairie_peninsula = "prairie_peninsula"
-    """
-    Prairie Peninsula domain
-    """
+    # Appalachians and Cumberland Plateau domain
     appalachians_and_cumberland_plateau = "appalachians_and_cumberland_plateau"
-    """
-    Appalachians and Cumberland Plateau domain
-    """
+    # Ozarks Complex domain
     ozarks_complex = "ozarks_complex"
-    """
-    Ozarks Complex domain
-    """
+    # Northern Plains domain
     northern_plains = "northern_plains"
-    """
-    Northern Plains domain
-    """
+    # Central Plains domain
     central_plains = "central_plains"
-    """
-    Central Plains domain
-    """
+    # Southern Plains domain
     southern_plains = "southern_plains"
-    """
-    Southern Plains domain
-    """
+    # Desert Southwest domain
     desert_southwest = "desert_southwest"
-    """
-    Desert Southwest domain
-    """
+    # Northern Rockies domain
     northern_rockies = "northern_rockies"
-    """
-    Northern Rockies domain
-    """
+    # Southern Rockies and Colorado Plateau domain
     southern_rockies_and_colorado_plateau = "southern_rockies_and_colorado_plateau"
-    """
-    Southern Rockies and Colorado Plateau domain
-    """
+    # Great Basin domain
     great_basin = "great_basin"
-    """
-    Great Basin domain
-    """
+    # Sierra Nevada domain
     sierra_nevada = "sierra_nevada"
-    """
-    Sierra Nevada domain
-    """
+    # Pacific Northwest domain
     pacific_northwest = "pacific_northwest"
-    """
-    Pacific Northwest domain
-    """
+    # Pacific Southwest domain
     pacific_southwest = "pacific_southwest"
-    """
-    Pacific Southwest domain
-    """
+    # Tundra domain
     tundra = "tundra"
-    """
-    Tundra domain
-    """
+    # Taiga domain
     taiga = "taiga"
-    """
-    Taiga domain
-    """
+    # Pacific Tropical domain
     pacific_tropical = "pacific_tropical"
-    """
-    Pacific Tropical domain
-    """
 
 
 class Growthfacilityenum(str, Enum):
     """
     Types of growth facilities
     """
+    # Field conditions
     field = "field"
-    """
-    Field conditions
-    """
+    # Commercially purchased
     commercially_purchased = "commercially_purchased"
-    """
-    Commercially purchased
-    """
+    # Experimental garden
     experimental_garden = "experimental_garden"
-    """
-    Experimental garden
-    """
+    # Field incubation
     field_incubation = "field_incubation"
-    """
-    Field incubation
-    """
+    # Greenhouse
     greenhouse = "greenhouse"
-    """
-    Greenhouse
-    """
+    # Growth chamber
     growth_chamber = "growth_chamber"
-    """
-    Growth chamber
-    """
+    # Laboratory incubation
     lab_incubation = "lab_incubation"
-    """
-    Laboratory incubation
-    """
+    # Open top chamber
     open_top_chamber = "open_top_chamber"
-    """
-    Open top chamber
-    """
+    # Other growth facility type
     other = "other"
-    """
-    Other growth facility type
-    """
 
 
 class Landuseenum(str, Enum):
     """
     Land use classifications
     """
+    # Badlands
     badlands = "badlands"
-    """
-    Badlands
-    """
+    # Urban/city areas
     cities = "cities"
-    """
-    Urban/city areas
-    """
+    # Coniferous forests (e.g. pine, spruce, fir, cypress)
     conifers = "conifers"
-    """
-    Coniferous forests (e.g. pine, spruce, fir, cypress)
-    """
+    # Crop trees (nuts, fruit, christmas trees, nursery trees)
     crop_trees = "crop_trees"
-    """
-    Crop trees (nuts, fruit, christmas trees, nursery trees)
-    """
+    # Farmstead
     farmstead = "farmstead"
-    """
-    Farmstead
-    """
+    # Gravel areas
     gravel = "gravel"
-    """
-    Gravel areas
-    """
+    # Hardwood forests (e.g. oak, hickory, elm, aspen)
     hardwoods = "hardwoods"
-    """
-    Hardwood forests (e.g. oak, hickory, elm, aspen)
-    """
+    # Hayland
     hayland = "hayland"
-    """
-    Hayland
-    """
+    # Horticultural plants (e.g. tulips)
     horticultural_plants = "horticultural_plants"
-    """
-    Horticultural plants (e.g. tulips)
-    """
+    # Industrial areas
     industrial_areas = "industrial_areas"
-    """
-    Industrial areas
-    """
+    # Intermixed hardwood and conifers
     intermixed = "intermixed"
-    """
-    Intermixed hardwood and conifers
-    """
+    # Marshlands (grass, sedges, rushes)
     marshlands = "marshlands"
-    """
-    Marshlands (grass, sedges, rushes)
-    """
+    # Meadows (grasses, alfalfa, fescue, bromegrass, timothy)
     meadows = "meadows"
-    """
-    Meadows (grasses, alfalfa, fescue, bromegrass, timothy)
-    """
+    # Mines and quarries
     mines_quarries = "mines_quarries"
-    """
-    Mines and quarries
-    """
+    # Mudflats
     mudflats = "mudflats"
-    """
-    Mudflats
-    """
+    # Oil waste areas
     oil_waste = "oil_waste"
-    """
-    Oil waste areas
-    """
+    # Pastureland (grasslands used for livestock grazing)
     pastureland = "pastureland"
-    """
-    Pastureland (grasslands used for livestock grazing)
-    """
+    # Permanent snow or ice
     permanent_snow_or_ice = "permanent_snow_or_ice"
-    """
-    Permanent snow or ice
-    """
+    # Rainforest (evergreen forest receiving >406 cm annual rainfall)
     rainforest = "rainforest"
-    """
-    Rainforest (evergreen forest receiving >406 cm annual rainfall)
-    """
+    # Rangeland
     rangeland = "rangeland"
-    """
-    Rangeland
-    """
+    # Roads and railroads
     roads_railroads = "roads_railroads"
-    """
-    Roads and railroads
-    """
+    # Rock surfaces
     rock = "rock"
-    """
-    Rock surfaces
-    """
+    # Row crops
     row_crops = "row_crops"
-    """
-    Row crops
-    """
+    # Saline seeps
     saline_seeps = "saline_seeps"
-    """
-    Saline seeps
-    """
+    # Salt flats
     salt_flats = "salt_flats"
-    """
-    Salt flats
-    """
+    # Sand areas
     sand = "sand"
-    """
-    Sand areas
-    """
+    # Shrub crops (blueberries, nursery ornamentals, filberts)
     shrub_crops = "shrub_crops"
-    """
-    Shrub crops (blueberries, nursery ornamentals, filberts)
-    """
+    # Shrub land (e.g. mesquite, sage-brush, creosote bush, shrub oak, eucalyptus)
     shrub_land = "shrub_land"
-    """
-    Shrub land (e.g. mesquite, sage-brush, creosote bush, shrub oak, eucalyptus)
-    """
+    # Small grains
     small_grains = "small_grains"
-    """
-    Small grains
-    """
+    # Successional shrub land (tree saplings, hazels, sumacs, chokecherry, shrub dogwoods, blackberries)
     successional_shrub_land = "successional_shrub_land"
-    """
-    Successional shrub land (tree saplings, hazels, sumacs, chokecherry, shrub dogwoods, blackberries)
-    """
+    # Swamp (permanent or semi-permanent water body dominated by woody plants)
     swamp = "swamp"
-    """
-    Swamp (permanent or semi-permanent water body dominated by woody plants)
-    """
+    # Tropical vegetation (e.g. mangrove, palms)
     tropical = "tropical"
-    """
-    Tropical vegetation (e.g. mangrove, palms)
-    """
+    # Tundra (mosses, lichens)
     tundra = "tundra"
-    """
-    Tundra (mosses, lichens)
-    """
+    # Vegetable crops
     vegetable_crops = "vegetable_crops"
-    """
-    Vegetable crops
-    """
+    # Vine crops (grapes)
     vine_crops = "vine_crops"
-    """
-    Vine crops (grapes)
-    """
 
 
 class Tillageenum(str, Enum):
     """
     Tillage methods
     """
+    # Chisel tillage
     Chisel = "Chisel"
-    """
-    Chisel tillage
-    """
+    # Cutting disc tillage
     Cutting_Disc = "Cutting_Disc"
-    """
-    Cutting disc tillage
-    """
+    # Disc plough tillage
     Disc_Plough = "Disc_Plough"
-    """
-    Disc plough tillage
-    """
+    # Drill tillage
     Drill = "Drill"
-    """
-    Drill tillage
-    """
+    # Mouldboard tillage
     Mouldboard = "Mouldboard"
-    """
-    Mouldboard tillage
-    """
+    # Ridge till
     Ridge_Till = "Ridge_Till"
-    """
-    Ridge till
-    """
+    # Strip tillage
     Streip_Tillage = "Streip_Tillage"
-    """
-    Strip tillage
-    """
+    # Tined tillage
     Tined = "Tined"
-    """
-    Tined tillage
-    """
+    # Zonal tillage
     Zonal_Tillage = "Zonal_Tillage"
-    """
-    Zonal tillage
-    """
 
 
 class Profilepositionenum(str, Enum):
     """
     Soil profile positions
     """
+    # Backslope position
     backslope = "backslope"
-    """
-    Backslope position
-    """
+    # Footslope position
     footslope = "footslope"
-    """
-    Footslope position
-    """
+    # Shoulder position
     shoulder = "shoulder"
-    """
-    Shoulder position
-    """
+    # Summit position
     summit = "summit"
-    """
-    Summit position
-    """
+    # Toeslope position
     toeslope = "toeslope"
-    """
-    Toeslope position
-    """
 
 
 class Winddirectionenum(str, Enum):
     """
     Wind direction classifications
     """
+    # North wind direction
     north = "north"
-    """
-    North wind direction
-    """
+    # Northeast wind direction
     north_east = "north_east"
-    """
-    Northeast wind direction
-    """
+    # East wind direction
     east = "east"
-    """
-    East wind direction
-    """
+    # Southeast wind direction
     south_east = "south_east"
-    """
-    Southeast wind direction
-    """
+    # South wind direction
     south = "south"
-    """
-    South wind direction
-    """
+    # Southwest wind direction
     south_west = "south_west"
-    """
-    Southwest wind direction
-    """
+    # West wind direction
     west = "west"
-    """
-    West wind direction
-    """
+    # Northwest wind direction
     north_west = "north_west"
-    """
-    Northwest wind direction
-    """
 
 
 class Drainageclassenum(str, Enum):
     """
     Soil drainage classifications
     """
+    # Excessively drained soil
     Excessively_Drained = "Excessively_Drained"
-    """
-    Excessively drained soil
-    """
+    # Moderately well drained soil
     Moderately_Well = "Moderately_Well"
-    """
-    Moderately well drained soil
-    """
+    # Poorly drained soil
     Poorly = "Poorly"
-    """
-    Poorly drained soil
-    """
+    # Somewhat poorly drained soil
     Somewhat_Poorly = "Somewhat_Poorly"
-    """
-    Somewhat poorly drained soil
-    """
+    # Very poorly drained soil
     Very_Poorly = "Very_Poorly"
-    """
-    Very poorly drained soil
-    """
+    # Well drained soil
     Well = "Well"
-    """
-    Well drained soil
-    """
 
 
 class Soilhorizonenum(str, Enum):
     """
     Soil horizon classifications
     """
+    # A Horizon - topsoil
     a_horizon = "a_horizon"
-    """
-    A Horizon - topsoil
-    """
+    # B Horizon - subsoil
     b_horizon = "b_horizon"
-    """
-    B Horizon - subsoil
-    """
+    # C Horizon - parent material
     c_horizon = "c_horizon"
-    """
-    C Horizon - parent material
-    """
+    # E Horizon - eluviated layer
     e_horizon = "e_horizon"
-    """
-    E Horizon - eluviated layer
-    """
+    # O Horizon - organic layer
     o_horizon = "o_horizon"
-    """
-    O Horizon - organic layer
-    """
+    # Permafrost layer
     permafrost = "permafrost"
-    """
-    Permafrost layer
-    """
+    # R Layer - bedrock
     r_layer = "r_layer"
-    """
-    R Layer - bedrock
-    """
 
 
 class Faoclassenum(str, Enum):
     """
     FAO soil classification system
     """
+    # Acrisols
     Acrisols = "Acrisols"
-    """
-    Acrisols
-    """
+    # Alisols
     Alisols = "Alisols"
-    """
-    Alisols
-    """
+    # Andosols
     Andosols = "Andosols"
-    """
-    Andosols
-    """
+    # Anthrosols
     Anthrosols = "Anthrosols"
-    """
-    Anthrosols
-    """
+    # Arenosols
     Arenosols = "Arenosols"
-    """
-    Arenosols
-    """
+    # Calcisols
     Calcisols = "Calcisols"
-    """
-    Calcisols
-    """
+    # Cambisols
     Cambisols = "Cambisols"
-    """
-    Cambisols
-    """
+    # Chernozems
     Chernozems = "Chernozems"
-    """
-    Chernozems
-    """
+    # Cryosols
     Cryosols = "Cryosols"
-    """
-    Cryosols
-    """
+    # Durisols
     Durisols = "Durisols"
-    """
-    Durisols
-    """
+    # Ferralsols
     Ferrasols = "Ferrasols"
-    """
-    Ferralsols
-    """
+    # Fluvisols
     Fluvisols = "Fluvisols"
-    """
-    Fluvisols
-    """
+    # Gleysols
     Gleysols = "Gleysols"
-    """
-    Gleysols
-    """
+    # Gypsisols
     Gypsisols = "Gypsisols"
-    """
-    Gypsisols
-    """
+    # Histosols
     Histosols = "Histosols"
-    """
-    Histosols
-    """
+    # Kastanozems
     Kastanozems = "Kastanozems"
-    """
-    Kastanozems
-    """
+    # Leptosols
     Leptosols = "Leptosols"
-    """
-    Leptosols
-    """
+    # Lixisols
     Lixisols = "Lixisols"
-    """
-    Lixisols
-    """
+    # Luvisols
     Luvisols = "Luvisols"
-    """
-    Luvisols
-    """
+    # Nitisols
     Nitosols = "Nitosols"
-    """
-    Nitisols
-    """
+    # Phaeozems
     Phaeozems = "Phaeozems"
-    """
-    Phaeozems
-    """
+    # Planosols
     Planosols = "Planosols"
-    """
-    Planosols
-    """
+    # Plinthosols
     Plinthosols = "Plinthosols"
-    """
-    Plinthosols
-    """
+    # Podzols
     Podzols = "Podzols"
-    """
-    Podzols
-    """
+    # Solonchaks
     Solonchaks = "Solonchaks"
-    """
-    Solonchaks
-    """
+    # Solonetz
     Solonetz = "Solonetz"
-    """
-    Solonetz
-    """
+    # Stagnosols
     Stagnosols = "Stagnosols"
-    """
-    Stagnosols
-    """
+    # Technosols
     Technosols = "Technosols"
-    """
-    Technosols
-    """
+    # Umbrisols
     Umbrisols = "Umbrisols"
-    """
-    Umbrisols
-    """
+    # Vertisols
     Vertisols = "Vertisols"
-    """
-    Vertisols
-    """
 
 
 class Sedimenttypeenum(str, Enum):
     """
     Types of sediment
     """
+    # Biogenous sediment
     biogenous = "biogenous"
-    """
-    Biogenous sediment
-    """
+    # Cosmogenous sediment
     cosmogenous = "cosmogenous"
-    """
-    Cosmogenous sediment
-    """
+    # Hydrogenous sediment
     hydrogenous = "hydrogenous"
-    """
-    Hydrogenous sediment
-    """
+    # Lithogenous sediment
     lithogenous = "lithogenous"
-    """
-    Lithogenous sediment
-    """
 
 
 class Samplestoretemp(str, Enum):
     """
     Sample storage temperature conditions
     """
+    # Fresh storage at 4░C
     fresh4 = "fresh4"
-    """
-    Fresh storage at 4░C
-    """
+    # Fresh storage at room temperature
     freshroom = "freshroom"
-    """
-    Fresh storage at room temperature
-    """
+    # Frozen storage at -20░C
     frozen20 = "frozen20"
-    """
-    Frozen storage at -20░C
-    """
+    # Frozen storage at -80░C
     frozen80 = "frozen80"
-    """
-    Frozen storage at -80░C
-    """
+    # Other storage temperature
     other = "other"
-    """
-    Other storage temperature
-    """
 
 
 class Storagecondtenum(str, Enum):
     """
     Sample storage conditions
     """
+    # Fresh sample
     fresh = "fresh"
-    """
-    Fresh sample
-    """
+    # Frozen sample
     frozen = "frozen"
-    """
-    Frozen sample
-    """
+    # Lyophilized (freeze-dried) sample
     lyophilized = "lyophilized"
-    """
-    Lyophilized (freeze-dried) sample
-    """
+    # Other storage condition
     other = "other"
-    """
-    Other storage condition
-    """
 
 
 class Oxygenstatusenum(str, Enum):
     """
     Oxygen status of samples
     """
+    # Aerobic conditions
     aerobic = "aerobic"
-    """
-    Aerobic conditions
-    """
+    # Anaerobic conditions
     anaerobic = "anaerobic"
-    """
-    Anaerobic conditions
-    """
+    # Anoxic conditions
     anoxic = "anoxic"
-    """
-    Anoxic conditions
-    """
+    # Facultative conditions
     facultative = "facultative"
-    """
-    Facultative conditions
-    """
+    # Microaerophilic conditions
     microaerophilic = "microaerophilic"
-    """
-    Microaerophilic conditions
-    """
+    # Microanaerobe conditions
     microanaerobe = "microanaerobe"
-    """
-    Microanaerobe conditions
-    """
+    # Obligate aerobe conditions
     oblifate_aerobe = "oblifate_aerobe"
-    """
-    Obligate aerobe conditions
-    """
+    # Obligate anaerobe conditions
     obligate_anaerobe = "obligate_anaerobe"
-    """
-    Obligate anaerobe conditions
-    """
 
 
 class Sampbioticenum(str, Enum):
     """
     Sample biotic relationships
     """
+    # Free-living organism
     free_living = "free_living"
-    """
-    Free-living organism
-    """
+    # Parasitic organism
     parasite = "parasite"
-    """
-    Parasitic organism
-    """
+    # Commensal organism
     commensal = "commensal"
-    """
-    Commensal organism
-    """
+    # Symbiotic organism
     symbiont = "symbiont"
-    """
-    Symbiotic organism
-    """
 
 
 class Productmeasuretype(str, Enum):
