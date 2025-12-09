@@ -37,12 +37,10 @@ enums:
   sampletype:
     description: Types of samples that can be collected
     permissible_values:
-      soil:
+      soil_sample:
         description: Soil sample
-        aliases: ["soil_sample"]
-      aerosol:
+      aerosol_sample:
         description: Aerosol sample
-        aliases: ["aerosol_sample"]
 
   soiltype:
     description: Specific types of soil samples
