@@ -21,8 +21,6 @@ render:
     linkml generate dbml -s analysis_api_schema.yaml -o pg.dbml
     dbml-renderer -i pg.dbml -o pg.svg
 
-# TODO: more work to be done with pydantic - especially for building data verification and constraints
-# Will need to adapt UUID's as well - oof
 gen-pydantic:
-    @echo "Broken - expect failure"
-    gen-pydantic ../src/analysis_api_schema/schema/analysis_api_schema.yaml > pyd_model.py
+    python pydanticgen.py  ../src/analysis_api_schema/schema/analysis_api_schema.yaml > models.py
+    python fix_encoding.py models.py
