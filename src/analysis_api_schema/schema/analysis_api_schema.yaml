@@ -31,146 +31,13 @@ imports:
   - methods
   - products
   - administration
+  - campaign
+  - study
+  - zip_download
   # - enrichment # todo have not reviewed fully
 
 classes:
-  campaign:
-    description: |-
-      A research campaign that encompasses one or more studies.
-      Campaigns are organizational units, typically lasting a single fiscal year beginning in FY26, that group related studies together.
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-        description: Unique identifier for the campaign
-      campaign_name:
-        range: string
-        required: true
-        description: Short name or code for the campaign
-      campaign_year:
-        range: integer
-        description: Primary year associated with the campaign
-      display_name:
-        range: string
-        description: Human-readable display name for the campaign
-      description:
-        range: string
-        description: Detailed description of the campaign objectives and scope
 
-  study:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      campaign_id:
-        range: campaign
-        #required: true
-        description: Reference to the campaign this study belongs to
-      participant_name: # TODO not quite correct
-        range: string
-        array: {}
-        required: true
-      principal_investigator:
-      collaborating_institution:
-      project_status:
-        range: projectstatus
-      project_start:
-        # range: date
-        range: datetime
-      project_end:
-        # range: date
-        range: datetime
-      proposal_title:
-      proposal_abstract:
-      project_id:
-        # range: project_id # like 60880
-        required: true
-
-
-
-  samplingActivity:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      study_id:
-        range: study
-        required: true
-      type:
-        range: samplingactivitytype
-        required: true
-      sample_name: # 60881_1_C2
-        required: true
-      lims_barcode:
-      alt_id:
-        range: quantityValue
-      elev_id:
-        range: quantityValue
-      lat_lon_id:
-        range: geolocationValue
-      growth_facil:
-        range: growthfacilityenum
-      other_growth_facil:
-      other_storage_condt:
-      oxygen_relationship:
-        range: oxygenstatusenum
-      sample_store_temp:
-        range: samplestoretemp
-      samp_biotic_relationship:
-        range: sampbioticenum
-      storage_condt:
-        range: storagecondtenum
-      air_temp_regm:
-      chem_administration:
-      collection_date:
-        range: datetime
-      collection_time:
-        range: datetime
-      env_broad_scale_other:
-      env_local_scale_other:
-      env_medium_other:
-      experimental_factor:
-      experimental_factor_other:
-      extraction_method:
-      extreme_event:
-        range: datetime
-      gaseous_environment:
-      geo_loc_name:
-      humidity_regm:
-      isotope_exposure:
-      light_regm:
-      link_addit_analys:
-      method_development:
-      microbial_biomass_c_meth:
-      microbial_biomass_meth:
-      microbial_biomass_n_meth:
-      misc_param:
-      neon_plot_id:
-      non_microb_biomass_method:
-      other_sample_store_temp:
-      other_treatment:
-      ph:
-        range: double
-      ph_meth:
-      salinity:
-        range: double
-      salinity_method:
-      sample_collected:
-      sample_collection_dev:
-      sample_collection_method:
-      sample_end_time:
-        range: datetime
-      sample_processing:
-      sample_start_time:
-        range: datetime
-      season_environment:
-      shipped_sample_size:
-      sieving:
-      start_date_inc:
-        range: datetime
-      tot_nitro_cont_meth:
-      tot_org_c_meth:
-      watering_regm:
 
   sampleBase:
     attributes:
@@ -484,28 +351,6 @@ classes:
         range: integer
       peptide_sum_masic_abundance:
         range: numeric
-
-
-
-
-
-
-  zipDownload:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      time:
-        range: datetime
-        required: true
-      user:
-        range: string
-        required: true
-      files:
-        range: integer
-        required: true
-      packages:
-        range: string
 
   containerType:
     attributes:

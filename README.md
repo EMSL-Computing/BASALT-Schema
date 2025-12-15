@@ -1,10 +1,6 @@
 # analysis-api-schema
 
-linkML transition for analysis-api schemae
-
-## Website
-
-[https://MONet.github.io/analysis-api-schema](https://MONet.github.io/analysis-api-schema)
+LinkML for the EMSL Science Cental MONet Analysis API schemas
 
 ## Repository Structure
 
@@ -13,24 +9,20 @@ linkML transition for analysis-api schemae
 * [src/](src/) - source files (edit these)
   * [analysis_api_schema](src/analysis_api_schema)
     * [schema](src/analysis_api_schema/schema) -- LinkML schema
-      (edit this)
     * [datamodel](src/analysis_api_schema/datamodel) -- generated
-      Python datamodel
 * [tests/](tests/) - Python tests
+* [util/](util/) - Adhoc LinkML replacement code
 
 ## Developer Documentation
 
 Windows and Powershell users:
 
 ```bash
-poetry install
-.venv/Scripts/activate
+uv sync
 
-just gen
-just gen-pydantic
+just gen-project
 ```
 
 ## Credits
 
-This project was made with
-[linkml-project-cookiecutter](https://github.com/linkml/linkml-project-cookiecutter).
+This project was made with `LinkML`

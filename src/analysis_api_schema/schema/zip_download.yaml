@@ -1,3 +1,4 @@
+---
 id: https://w3id.org/MONet/analysis-api-schema
 name: analysis-api-schema
 title: MONet Analysis API Schema
@@ -20,11 +21,20 @@ imports:
   - linkml:types
 
 classes:
-  changelog:
+
+  zipDownload:
     attributes:
-      version:
+      id:
         identifier: true
-        range: string
-      changelog:
+        range: uuid
+      time:
+        range: datetime
+        required: true
+      user:
         range: string
         required: true
+      files:
+        range: integer
+        required: true
+      packages:
+        range: string
