@@ -15,8 +15,11 @@ LinkML for the EMSL Science Cental MONet Analysis API schemas
 
 ## Developer Documentation
 
+Windows and Powershell users:
+
 ```bash
-just --list
+uv sync
+
 just gen-project
 ```
 
