@@ -16,55 +16,21 @@ imports:
   - linkml:types
   - analysis_api_schema
 
+# Reusable attributes for metagenomics product provenance
+# Note: Using top-level 'attributes' rather than 'slots' aligns with LinkML 1.2+ conventions
+# and the schema's migration effort to standardize on attributes terminology
+attributes:
+  provider_name:
+    range: controlledTermValue
+    description: "Provider class (e.g., JGI, SeqCenter) using ontology terms where possible"
+  raw_fasta_url:
+    range: string
+    description: "URL of raw FASTA file, if available from provider"
+  additional_information:
+    range: string
+    description: "Additional information pertaining to these data, including SP Project ID and Taxon OID"
+
 classes:
-
-  magBin:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      workflow_id:
-        range: workflowExecutionActivity
-      bin_name:
-        range: string
-        required: true
-      bin_quality:
-        range: binquality
-      completeness:
-        range: numeric
-      contamination:
-        range: numeric
-      gene_count:
-        range: integer
-      gtdbtk_class:
-        range: string
-      gtdbtk_domain:
-        range: string
-      gtdbtk_family:
-        range: string
-      gtdbtk_genus:
-        range: string
-      gtdbtk_order:
-        range: string
-      gtdbtk_phylum:
-        range: string
-      gtdbtk_species:
-        range: string
-      members_id:
-        range: string # TODO array
-      num_16s:
-        range: integer
-      num_23s:
-        range: integer
-      num_5s:
-        range: integer
-      num_trna:
-        range: integer
-      number_of_contig:
-        range: integer
-      total_bases:
-        range: integer
-
   # Top-level product for binning results (one zip/tar per project/sample)
   Metagenomics_BinningProduct:
     description: "Top-level archive (zip/tar) for binning results stored in MinIO"
@@ -79,6 +45,10 @@ classes:
       sample_id:
         range: sample
         description: "Link back to the originating sample (nullable)"
+      provider_name:  # Inherited from top-level attributes
+      raw_fasta_url:  # Inherited from top-level attributes
+      additional_information:  # Inherited from top-level attributes
+
 
   # Top-level product for functional annotation results (zip/tar)
   Metagenomics_AnnotationProduct:
@@ -94,7 +64,10 @@ classes:
         range: sample
       annotation_database:
         range: annotationdatabasetype
-        description: "Optional: primary annotation database used" 
+        description: "Optional: primary annotation database used"
+      provider_name:  # Inherited from top-level attributes
+      raw_fasta_url:  # Inherited from top-level attributes
+      additional_information:  # Inherited from top-level attributes 
 
 
   # Top-level product for gene-based phylogeny outputs (zip/tar)
@@ -111,5 +84,8 @@ classes:
         range: sample
       gene_family:
         range: string
-        description: "Optional gene family or marker used for the phylogeny" 
+        description: "Optional gene family or marker used for the phylogeny"
+      provider_name:  # Inherited from top-level attributes
+      raw_fasta_url:  # Inherited from top-level attributes
+      additional_information:  # Inherited from top-level attributes 
 
