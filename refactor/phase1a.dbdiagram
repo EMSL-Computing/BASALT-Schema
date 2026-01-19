@@ -1,0 +1,336 @@
+{
+  "version": "1.0.0",
+  "darkMode": true,
+  "gridEnabling": false,
+  "detailLevel": "All",
+  "tablePositions": [
+    {
+      "name": "Activity",
+      "schemaName": "public",
+      "x": 76.2231532864916,
+      "y": 916.1652569431905
+    },
+    {
+      "name": "Entity",
+      "schemaName": "public",
+      "x": 92.7699513317279,
+      "y": 639.3764467132496
+    },
+    {
+      "name": "WasDerivedBy",
+      "schemaName": "public",
+      "x": 72.54511626232573,
+      "y": 508.74593248422127
+    },
+    {
+      "name": "Used",
+      "schemaName": "public",
+      "x": -158.0702718771214,
+      "y": 759.6519356295065
+    },
+    {
+      "name": "WasGeneratedBy",
+      "schemaName": "public",
+      "x": 128.27809364879374,
+      "y": 752.9323423595137
+    },
+    {
+      "name": "WasInformedBy",
+      "schemaName": "public",
+      "x": 80.61923327204437,
+      "y": 1104.507072488414
+    },
+    {
+      "name": "Attribute",
+      "schemaName": "public",
+      "x": 688.9298613835467,
+      "y": 499.95284517121036
+    },
+    {
+      "name": "TypedAttributeValue",
+      "schemaName": "public",
+      "x": 416.6640128192772,
+      "y": 499.95284517121036
+    },
+    {
+      "name": "ProductPH",
+      "schemaName": "public",
+      "x": 503.1854105722715,
+      "y": 872.3846260471121
+    },
+    {
+      "name": "Sample",
+      "schemaName": "public",
+      "x": 503.1854105722715,
+      "y": 1014.384626047113
+    },
+    {
+      "name": "ProcessedSample",
+      "schemaName": "public",
+      "x": 503.1854105722715,
+      "y": 1124.3846260471123
+    },
+    {
+      "name": "InstrumentData",
+      "schemaName": "public",
+      "x": 503.1854105722715,
+      "y": 1234.3846260471123
+    },
+    {
+      "name": "ProcessedData",
+      "schemaName": "public",
+      "x": 503.1854105722715,
+      "y": 1344.3846260471123
+    },
+    {
+      "name": "ActivityProtocol",
+      "schemaName": "public",
+      "x": 503.6011820566465,
+      "y": 719.3461436512941
+    }
+  ],
+  "tableGroupCollapseStates": [],
+  "stickyNoteLayouts": [],
+  "referencePaths": [
+    {
+      "firstFieldNames": [
+        "entity_id"
+      ],
+      "firstTableName": "ProductPH",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "entity_id"
+      ],
+      "secondTableName": "Entity",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "entity_id"
+      ],
+      "firstTableName": "Sample",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "entity_id"
+      ],
+      "secondTableName": "Entity",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "entity_id"
+      ],
+      "firstTableName": "ProcessedSample",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "entity_id"
+      ],
+      "secondTableName": "Entity",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "entity_id"
+      ],
+      "firstTableName": "InstrumentData",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "entity_id"
+      ],
+      "secondTableName": "Entity",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "entity_id"
+      ],
+      "firstTableName": "ProcessedData",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "entity_id"
+      ],
+      "secondTableName": "Entity",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "entity_id"
+      ],
+      "firstTableName": "ActivityProtocol",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "entity_id"
+      ],
+      "secondTableName": "Entity",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "entity_id"
+      ],
+      "firstTableName": "TypedAttributeValue",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "entity_id"
+      ],
+      "secondTableName": "Entity",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "attribute_id"
+      ],
+      "firstTableName": "TypedAttributeValue",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "attribute_id"
+      ],
+      "secondTableName": "Attribute",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "entity_id"
+      ],
+      "firstTableName": "WasGeneratedBy",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "entity_id"
+      ],
+      "secondTableName": "Entity",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "activity_id"
+      ],
+      "firstTableName": "WasGeneratedBy",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "activity_id"
+      ],
+      "secondTableName": "Activity",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "entity_id"
+      ],
+      "firstTableName": "Used",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "entity_id"
+      ],
+      "secondTableName": "Entity",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "activity_id"
+      ],
+      "firstTableName": "Used",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "activity_id"
+      ],
+      "secondTableName": "Activity",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "entity_a_id"
+      ],
+      "firstTableName": "WasDerivedBy",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "entity_id"
+      ],
+      "secondTableName": "Entity",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "entity_b_id"
+      ],
+      "firstTableName": "WasDerivedBy",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "entity_id"
+      ],
+      "secondTableName": "Entity",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "activity_a_id"
+      ],
+      "firstTableName": "WasInformedBy",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "activity_id"
+      ],
+      "secondTableName": "Activity",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "activity_b_id"
+      ],
+      "firstTableName": "WasInformedBy",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "activity_id"
+      ],
+      "secondTableName": "Activity",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    }
+  ]
+}

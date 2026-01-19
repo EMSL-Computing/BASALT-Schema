@@ -1,0 +1,119 @@
+{
+  "version": "1.0.0",
+  "darkMode": true,
+  "gridEnabling": false,
+  "detailLevel": "All",
+  "tablePositions": [
+    {
+      "name": "Activity",
+      "schemaName": "public",
+      "x": 81.43060388349886,
+      "y": 961.296577694057
+    },
+    {
+      "name": "Entity",
+      "schemaName": "public",
+      "x": 92.7699513317279,
+      "y": 639.3764467132496
+    },
+    {
+      "name": "WasDerivedBy",
+      "schemaName": "public",
+      "x": 72.54511626232573,
+      "y": 508.74593248422127
+    },
+    {
+      "name": "Used",
+      "schemaName": "public",
+      "x": -158.0702718771214,
+      "y": 759.6519356295065
+    },
+    {
+      "name": "WasGeneratedBy",
+      "schemaName": "public",
+      "x": 128.27809364879374,
+      "y": 752.9323423595137
+    },
+    {
+      "name": "WasInformedBy",
+      "schemaName": "public",
+      "x": 102.31404479957666,
+      "y": 1276.353255347482
+    },
+    {
+      "name": "Attribute",
+      "schemaName": "public",
+      "x": 688.9298613835467,
+      "y": 499.95284517121036
+    },
+    {
+      "name": "TypedAttributeValue",
+      "schemaName": "public",
+      "x": 416.6640128192772,
+      "y": 499.95284517121036
+    },
+    {
+      "name": "ProductPH",
+      "schemaName": "public",
+      "x": 701.0685332585467,
+      "y": 796.0085447764153
+    },
+    {
+      "name": "Sample",
+      "schemaName": "public",
+      "x": 701.0685332585467,
+      "y": 938.0085447764154
+    },
+    {
+      "name": "ProcessedSample",
+      "schemaName": "public",
+      "x": 701.0685332585467,
+      "y": 1048.008544776415
+    },
+    {
+      "name": "InstrumentData",
+      "schemaName": "public",
+      "x": 701.0685332585467,
+      "y": 1158.008544776415
+    },
+    {
+      "name": "ProcessedData",
+      "schemaName": "public",
+      "x": 701.0685332585467,
+      "y": 1268.008544776415
+    },
+    {
+      "name": "SamplingActivity",
+      "schemaName": "public",
+      "x": -377.65201791002795,
+      "y": 929.6436838361423
+    },
+    {
+      "name": "SampleProcessing",
+      "schemaName": "public",
+      "x": -386.52506478502795,
+      "y": 1032.5881109026495
+    },
+    {
+      "name": "AnalysisActivity",
+      "schemaName": "public",
+      "x": -376.19938119127795,
+      "y": 1124.949178568918
+    },
+    {
+      "name": "WorkflowExecutionActivity",
+      "schemaName": "public",
+      "x": -445.9391272850281,
+      "y": 1229.657498868799
+    },
+    {
+      "name": "ZipDownloadActivity",
+      "schemaName": "public",
+      "x": -402.98551400377784,
+      "y": 1339.657498868799
+    }
+  ],
+  "tableGroupCollapseStates": [],
+  "stickyNoteLayouts": [],
+  "referencePaths": []
+}
