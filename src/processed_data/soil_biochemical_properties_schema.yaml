@@ -16,6 +16,7 @@
 # - Column names are changed in zip_download_blueprint.py
 # - New analytical methods/columns are added
 # - Unit definitions or descriptions are updated in the canonical schema
+# - the ion units meq_per_100g are currently out of step with the source of truth but this should be reconciled soon.
 ##
 # NOTES:
 # - L1 data includes a "Replicate" column; L2 data does not
