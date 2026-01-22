@@ -199,7 +199,8 @@ Product Table (ionAnalysisProduct, absorbanceProduct, metabolomicsFeatureTable, 
 
 ## Migration Strategy
 
-### Phase 1 (Current)
+### Phase 0 to 1 (Current)
+- get permission to control things :)
 - New data types → Entity + Activity + PROV-O + EAV from day one
 - Existing data types → Continue using legacy tables (parallel systems)
 
