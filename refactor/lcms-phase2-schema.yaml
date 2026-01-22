@@ -1,0 +1,817 @@
+---
+# LC-MS Metabolomics Integration Example - Phase 2 Architecture
+# Demonstrates protocol-as-entity pattern with NMDC bidirectional mapping
+# This is a minimal extract showing LC-MS-relevant tables
+
+id: https://w3id.org/MONet/lcms-phase2-example
+name: lcms-phase2-example
+description: |-
+  Minimal Phase 2 schema showing LC-MS metabolomics integration.
+  Demonstrates Entity-Activity-PROV-O provenance with protocol entities
+  (MassSpecProtocol, ChromatographyProtocol) and typed product tables.
+  
+  Key Design: Protocols are reusable entities, not activity extensions.
+  Activities reference protocols via Used relationships with semantic roles.
+  
+  NMDC Compatibility: Direct mappings to MassSpectrometry, 
+  MassSpectrometryConfiguration, ChromatographyConfiguration,
+  MetabolomicsAnalysis, MetaboliteIdentification.
+
+prefixes:
+  lcms_example: https://w3id.org/MONet/lcms-phase2-example/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: lcms_example
+default_range: string
+
+imports:
+  - linkml:types
+
+classes:
+
+  # ============================================================================
+  # PHASE 2 CORE TABLES (Universal Semantic Layer)
+  # ============================================================================
+
+  Entity:
+    description: |-
+      Universal semantic layer - all "things" get an entity_id.
+      Samples, products, protocols, instruments, activities are all entities.
+      Enables consistent provenance tracking and metadata attachment.
+    attributes:
+      entity_id:
+        identifier: true
+        range: uuid
+        required: true
+      entity_type:
+        description: Sample, DataProduct, Activity, Protocol, Instrument, etc.
+        range: string
+
+  Activity:
+    description: |-
+      Unified base for all timestamped actions (sampling, processing, analysis).
+      No activity subtype tables needed for LC-MS - protocols are separate entities.
+      
+      Activity types map to NMDC:
+      - lcms_acquisition → MassSpectrometry
+      - lcms_feature_extraction → MetabolomicsAnalysis (part 1)
+      - lcms_compound_identification → MetabolomicsAnalysis (part 2)
+      - lcms_workflow_execution → MetabolomicsAnalysis (full)
+    attributes:
+      activity_id:
+        identifier: true
+        range: uuid
+        required: true
+      activity_type:
+        description: Type of activity (lcms_acquisition, lcms_feature_extraction, etc.)
+        range: string
+        required: true
+      name:
+        description: Human-readable activity name
+        range: string
+      started_at_time:
+        range: datetime
+        required: true
+      ended_at_time:
+        range: datetime
+      was_associated_with:
+        description: Instrument or operator entity_id
+        range: uuid
+      entity_id:
+        description: Links to Entity for EAV metadata attachment
+        range: uuid
+
+  Protocol:
+    description: |-
+      Base protocol table for reusable method definitions.
+      Protocols are entities themselves (nouns, not activities).
+      Extended by typed protocol tables (MassSpecProtocol, ChromatographyProtocol).
+    attributes:
+      protocol_id:
+        identifier: true
+        range: uuid
+        required: true
+      name:
+        range: string
+        required: true
+      description:
+        range: string
+      protocol_type:
+        description: mass_spectrometry_configuration, chromatography_configuration, calibration
+        range: string
+        required: true
+      version:
+        range: string
+      entity_id:
+        description: Links to Entity for metadata
+        range: uuid
+
+  # ============================================================================
+  # PROV-O RELATIONSHIPS (M:N)
+  # ============================================================================
+
+  Used:
+    description: |-
+      M:N relationship tracking which entities an activity consumed as inputs.
+      Role qualifies the relationship semantics.
+      
+      Examples:
+      - Activity --[Used(role=input_sample)]--> Sample
+      - Activity --[Used(role=mass_spectrometry_configuration)]--> MassSpecProtocol
+      - Activity --[Used(role=chromatography_configuration)]--> ChromatographyProtocol
+    attributes:
+      activity_id:
+        identifier: true
+        range: uuid
+        required: true
+      entity_id:
+        identifier: true
+        range: uuid
+        required: true
+      role:
+        description: Semantic role (input_sample, mass_spectrometry_configuration, etc.)
+        range: string
+      usage_time:
+        range: datetime
+
+  WasGeneratedBy:
+    description: |-
+      M:N relationship tracking which entities an activity produced as outputs.
+      
+      Examples:
+      - mzML File Entity --[WasGeneratedBy]--> Acquisition Activity
+      - Feature Table Entity --[WasGeneratedBy]--> Feature Extraction Activity
+      - MetaboliteIdentification Entity --[WasGeneratedBy]--> Annotation Activity
+    attributes:
+      entity_id:
+        identifier: true
+        range: uuid
+        required: true
+      activity_id:
+        identifier: true
+        range: uuid
+        required: true
+      generation_time:
+        range: datetime
+
+  # ============================================================================
+  # EAV PATTERN (Flexible Metadata)
+  # ============================================================================
+
+  Attribute:
+    description: |-
+      Dictionary of attribute keys for the EAV pattern.
+      Examples: 'spray_voltage_kv', 'capillary_temp_celsius', 'gnps_task_id'
+    attributes:
+      attribute_id:
+        identifier: true
+        range: uuid
+        required: true
+      key:
+        description: The attribute name/key
+        range: string
+        required: true
+      description:
+        range: string
+      expected_type:
+        description: numeric, string, boolean, timestamp
+        range: string
+
+  TypedAttributeValue:
+    description: |-
+      EAV storage for flexible, evolving metadata with typed value columns.
+      Exactly one value column must be populated per row.
+      
+      Used for:
+      - Run-specific instrument settings (spray voltage, AGC target)
+      - Workflow parameters (software versions, git URLs)
+      - Experimental notes and QC annotations
+    attributes:
+      entity_id:
+        identifier: true
+        range: uuid
+        required: true
+      attribute_id:
+        identifier: true
+        range: uuid
+        required: true
+      value_numeric:
+        range: float
+      value_string:
+        range: string
+      value_boolean:
+        range: boolean
+      value_timestamp:
+        range: datetime
+
+  # ============================================================================
+  # SAMPLE TABLE
+  # ============================================================================
+
+  Sample:
+    description: |-
+      Physical sample collected from environment.
+      1:1 with Entity via entity_id foreign key.
+    attributes:
+      entity_id:
+        identifier: true
+        range: uuid
+        required: true
+      sample_name:
+        range: string
+        required: true
+      proposal_id:
+        range: integer
+      collection_date:
+        range: date
+      site:
+        range: string
+
+  # ============================================================================
+  # LC-MS PROTOCOL TABLES (Reusable Configurations)
+  # ============================================================================
+
+  Instrument:
+    description: |-
+      Physical instrument metadata. Maps to NMDC Instrument.
+      Instruments are persistent entities, not activities.
+      Activities reference via was_associated_with or Used(role=instrument_used).
+    attributes:
+      entity_id:
+        identifier: true
+        range: uuid
+        required: true
+      name:
+        description: Human-readable name (e.g., "EMSL QExactive Plus #3")
+        range: string
+        required: true
+        examples:
+          - value: "EMSL QExactive Plus #3"
+      manufacturer:
+        range: string
+        examples:
+          - value: "Thermo Fisher Scientific"
+      model:
+        range: string
+        examples:
+          - value: "Q Exactive Plus Hybrid Quadrupole-Orbitrap"
+      serial_number:
+        description: Instrument instance specifier
+        range: string
+      institution:
+        range: string
+        examples:
+          - value: "PNNL-EMSL"
+
+  MassSpecProtocol:
+    description: |-
+      MS instrument configuration. Maps to NMDC MassSpectrometryConfiguration.
+      Reusable protocol entity - many acquisitions reference same config.
+      Core parameters in typed attributes for queryability.
+      Linked to activities via Used(role=mass_spectrometry_configuration).
+    attributes:
+      entity_id:
+        identifier: true
+        range: uuid
+        required: true
+      protocol_id:
+        range: uuid
+        required: true
+      mass_spectrometry_acquisition_strategy:
+        description: Acquisition strategy
+        range: string
+        required: true
+        examples:
+          - value: "data_dependent_acquisition"
+          - value: "full_scan_only"
+          - value: "data_independent_acquisition"
+      ionization_source:
+        description: Ionization technique
+        range: string
+        required: true
+        examples:
+          - value: "electrospray_ionization"
+          - value: "electron_ionization"
+          - value: "atmospheric_pressure_chemical_ionization"
+      polarity_mode:
+        description: Polarity mode
+        range: string
+        required: true
+        examples:
+          - value: "positive"
+          - value: "negative"
+          - value: "switching"
+      mass_analyzers:
+        description: List of mass analyzer types
+        range: string
+        multivalued: true
+        examples:
+          - value: "Orbitrap"
+          - value: "ion_trap"
+          - value: "quadrupole"
+          - value: "time_of_flight"
+      resolution_categories:
+        description: Resolution categories
+        range: string
+        multivalued: true
+        examples:
+          - value: "high"
+          - value: "low"
+      mass_spectrum_collection_modes:
+        description: Spectrum collection modes
+        range: string
+        multivalued: true
+        examples:
+          - value: "full_profile"
+          - value: "centroid"
+          - value: "reduced_profile"
+      instrument_entity_id:
+        description: FK to Instrument entity
+        range: uuid
+      mass_range_min:
+        range: float
+      mass_range_max:
+        range: float
+      fragmentation_modes:
+        description: Fragmentation techniques
+        range: string
+        multivalued: true
+        examples:
+          - value: "HCD"
+          - value: "CID"
+          - value: "ETD"
+
+  ChromatographyProtocol:
+    description: |-
+      LC separation method. Maps to NMDC ChromatographyConfiguration.
+      Reusable protocol entity - many acquisitions reference same LC method.
+      Linked to activities via Used(role=chromatography_configuration).
+      Gradient details stored in MobilePhaseSegment table (NO JSONB for LinkML).
+    attributes:
+      entity_id:
+        identifier: true
+        range: uuid
+        required: true
+      protocol_id:
+        range: uuid
+        required: true
+      chromatographic_category:
+        description: Chromatography type
+        range: string
+        required: true
+        examples:
+          - value: "liquid_chromatography"
+          - value: "gas_chromatography"
+      stationary_phase:
+        description: Column chemistry
+        range: string
+        examples:
+          - value: "C18"
+          - value: "HILIC"
+          - value: "C8"
+          - value: "phenyl_hexyl"
+      column_manufacturer:
+        range: string
+      column_dimensions:
+        description: Column specifications
+        range: string
+        examples:
+          - value: "150mm x 2.1mm, 1.7μm particle size"
+      total_run_time_min:
+        range: float
+      flow_rate_ul_min:
+        range: float
+      column_temp_celsius:
+        range: float
+      injection_volume_ul:
+        range: float
+
+  MobilePhaseSegment:
+    description: |-
+      Gradient program segments. Maps to NMDC MobilePhaseSegment array.
+      Separate table instead of JSONB for LinkML compatibility.
+      Multiple rows per segment for multi-component mobile phases.
+      
+      Example: Segment 1 (Mobile Phase A) has 2 rows:
+      - Row 1: water 99%
+      - Row 2: formic_acid 1%
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+        required: true
+      chromatography_protocol_entity_id:
+        description: FK to ChromatographyProtocol
+        range: uuid
+        required: true
+      segment_order:
+        description: Sequence number (1, 2, 3...) for gradient steps
+        range: integer
+        required: true
+      duration_min:
+        description: Segment duration in minutes
+        range: float
+      substance_name:
+        description: Substance in mobile phase
+        range: string
+        required: true
+        examples:
+          - value: "water"
+          - value: "acetonitrile"
+          - value: "formic_acid"
+          - value: "ammonium_acetate"
+      concentration_value:
+        description: Concentration amount
+        range: float
+        required: true
+        examples:
+          - value: 0.1
+          - value: 60.0
+          - value: 99.0
+      concentration_unit:
+        description: Unit for concentration
+        range: string
+        required: true
+        examples:
+          - value: "%"
+          - value: "mmol/L"
+          - value: "mM"
+
+  CalibrationProtocol:
+    description: |-
+      Calibration metadata. Maps to NMDC CalibrationInformation.
+      Links to calibration data file stored as DataObject entity.
+      Activities reference via Used(role=calibration_reference).
+    attributes:
+      entity_id:
+        identifier: true
+        range: uuid
+        required: true
+      protocol_id:
+        range: uuid
+        required: true
+      calibration_target:
+        description: What is being calibrated
+        range: string
+        required: true
+        examples:
+          - value: "mass_charge_ratio"
+          - value: "retention_index"
+      calibration_standard:
+        description: Reference standard used
+        range: string
+        examples:
+          - value: "fames"
+          - value: "tune_mix"
+          - value: "internal_standards"
+          - value: "calibration_curve"
+      internal_calibration:
+        description: Whether calibration is internal (true) or external (false)
+        range: boolean
+      calibration_data_entity_id:
+        description: FK to Entity - calibration file
+        range: uuid
+
+  # ============================================================================
+  # LC-MS PRODUCT TABLES (Typed Results)
+  # ============================================================================
+
+  LCMSRawDataProduct:
+    description: |-
+      Raw spectral files. Maps to NMDC DataObject (raw files).
+      Each file is an entity with typed summary statistics.
+      Full data stored in S3; typed attributes enable filtering without file access.
+      Generated by lcms_acquisition activity.
+    attributes:
+      entity_id:
+        identifier: true
+        range: uuid
+        required: true
+      file_format:
+        description: File format
+        range: string
+        required: true
+        examples:
+          - value: "mzML"
+          - value: "ThermoRaw"
+          - value: "AgilentD"
+          - value: "BrukerD"
+          - value: "WatersRaw"
+      file_size_bytes:
+        range: integer
+      md5_checksum:
+        range: string
+      s3_key:
+        description: Storage location
+        range: string
+      scan_count:
+        description: Total number of scans
+        range: integer
+      ms1_scan_count:
+        description: Number of MS1 scans
+        range: integer
+      ms2_scan_count:
+        description: Number of MS2 scans
+        range: integer
+      total_ion_current:
+        range: float
+      base_peak_intensity:
+        range: float
+      acquisition_start_time:
+        range: datetime
+      acquisition_duration_sec:
+        description: Acquisition duration in seconds
+        range: float
+      qc_status:
+        description: Quality control status
+        range: string
+        examples:
+          - value: "PASS"
+          - value: "FAIL"
+          - value: "PENDING"
+          - value: "REVIEW_REQUIRED"
+      qc_notes:
+        range: string
+
+  LCMSFeatureProduct:
+    description: |-
+      Feature/peak tables. Maps to NMDC DataObject (feature table).
+      Summary statistics in typed attributes for queryability.
+      Generated by lcms_feature_extraction activity.
+      Links to raw data via activity chain (Used relationship).
+    attributes:
+      entity_id:
+        identifier: true
+        range: uuid
+        required: true
+      file_format:
+        range: string
+        examples:
+          - value: "CSV"
+          - value: "HDF5"
+          - value: "mzTab-M"
+          - value: "TSV"
+      s3_key:
+        range: string
+      file_size_bytes:
+        range: integer
+      total_features:
+        description: Total number of features detected
+        range: integer
+      features_with_ms2:
+        description: Number of features with MS2 spectra
+        range: integer
+      mz_range_min:
+        description: Minimum m/z observed
+        range: float
+      mz_range_max:
+        description: Maximum m/z observed
+        range: float
+      rt_range_min_sec:
+        description: Minimum retention time in seconds
+        range: float
+      rt_range_max_sec:
+        description: Maximum retention time in seconds
+        range: float
+      peak_picking_algorithm:
+        description: Software used for peak picking
+        range: string
+        examples:
+          - value: "CoreMS"
+          - value: "MZmine3"
+          - value: "XCMS"
+          - value: "MS-DIAL"
+      alignment_algorithm:
+        range: string
+
+  LCMSAnnotationProduct:
+    description: |-
+      Annotation summary files. Maps to NMDC DataObject (annotation table).
+      MSI level counts enable QC filtering without parsing full file.
+      Generated by lcms_compound_identification activity.
+    attributes:
+      entity_id:
+        identifier: true
+        range: uuid
+        required: true
+      file_format:
+        range: string
+        examples:
+          - value: "CSV"
+          - value: "mzTab-M"
+          - value: "HDF5"
+          - value: "TSV"
+      s3_key:
+        range: string
+      file_size_bytes:
+        range: integer
+      total_annotations:
+        description: Total number of annotations
+        range: integer
+      msi_level_1_count:
+        description: Count of MSI level 1 identifications (confirmed with authentic standard)
+        range: integer
+      msi_level_2_count:
+        description: Count of MSI level 2 identifications (putative annotation via spectral match)
+        range: integer
+      msi_level_3_count:
+        description: Count of MSI level 3 identifications (tentative via mass match)
+        range: integer
+      msi_level_4_count:
+        description: Count of MSI level 4 identifications (unknown)
+        range: integer
+      databases_searched:
+        description: List of databases queried
+        range: string
+        multivalued: true
+        examples:
+          - value: "HMDB"
+          - value: "LIPID_MAPS"
+          - value: "KEGG"
+          - value: "PubChem"
+      spectral_libraries:
+        description: List of spectral libraries used
+        range: string
+        multivalued: true
+        examples:
+          - value: "MassBank"
+          - value: "GNPS"
+          - value: "NIST"
+          - value: "mzCloud"
+
+  MetaboliteIdentification:
+    description: |-
+      Individual metabolite records. Maps to NMDC MetaboliteIdentification.
+      Each compound detection is an entity for fine-grained provenance.
+      Typed attributes enable cross-study queries: "Find all tyrosine detections".
+      Database IDs enable pathway enrichment and meta-analysis.
+    attributes:
+      entity_id:
+        identifier: true
+        range: uuid
+        required: true
+      annotation_product_entity_id:
+        description: FK to parent annotation file
+        range: uuid
+        required: true
+      feature_product_entity_id:
+        description: FK to feature table
+        range: uuid
+      feature_id:
+        description: Feature ID within feature table
+        range: string
+      mz_observed:
+        description: Observed m/z
+        range: float
+        required: true
+      rt_observed_sec:
+        description: Observed retention time in seconds
+        range: float
+      charge:
+        range: integer
+      adduct:
+        description: Adduct form
+        range: string
+        examples:
+          - value: "[M+H]+"
+          - value: "[M-H]-"
+          - value: "[M+Na]+"
+          - value: "[M+2H]2+"
+      compound_name:
+        description: Compound name
+        range: string
+      chemical_formula:
+        range: string
+      exact_mass:
+        range: float
+      inchi_key:
+        range: string
+      smiles:
+        range: string
+      kegg_id:
+        description: KEGG compound ID
+        range: string
+        examples:
+          - value: "C00082"
+      hmdb_id:
+        description: HMDB ID
+        range: string
+        examples:
+          - value: "HMDB0000158"
+      chebi_id:
+        description: ChEBI ID
+        range: string
+      pubchem_cid:
+        description: PubChem CID
+        range: string
+      lipid_maps_id:
+        description: LIPID MAPS ID
+        range: string
+      msi_identification_level:
+        description: Metabolomics Standards Initiative identification level (1-4)
+        range: integer
+        examples:
+          - value: 1
+          - value: 2
+          - value: 3
+          - value: 4
+      confidence_score:
+        description: Confidence score (0-1)
+        range: float
+      mass_error_ppm:
+        description: Mass error in ppm
+        range: float
+      spectral_match_score:
+        description: Spectral similarity score (cosine similarity if MS2 available)
+        range: float
+      peak_area:
+        description: Integrated peak area
+        range: float
+      peak_height:
+        description: Peak height at apex
+        range: float
+      gnps_task_id:
+        description: GNPS task identifier
+        range: string
+      gnps_cluster_id:
+        description: GNPS cluster identifier
+        range: string
+
+# ============================================================================
+# EXAMPLE USAGE SCENARIO
+# ============================================================================
+# 
+# 1. PROTOCOL SETUP (Reusable - done once):
+#    Entity (e_instrument) → Instrument (name="EMSL QExactive Plus #3")
+#    Entity (e_ms_protocol) → Protocol → MassSpecProtocol (
+#      acquisition_strategy="data_dependent_acquisition",
+#      ionization_source="electrospray_ionization",
+#      polarity_mode="positive",
+#      mass_analyzers=["Orbitrap"],
+#      instrument_entity_id=e_instrument
+#    )
+#    Entity (e_chrom_protocol) → Protocol → ChromatographyProtocol (
+#      chromatographic_category="liquid_chromatography",
+#      stationary_phase="C18",
+#      total_run_time_min=90
+#    )
+#    MobilePhaseSegment rows for gradient:
+#      - segment_order=1, substance_name="water", concentration_value=99, unit="%"
+#      - segment_order=1, substance_name="formic_acid", concentration_value=1, unit="%"
+#      - segment_order=2, substance_name="acetonitrile", concentration_value=99.9, unit="%"
+#      - segment_order=2, substance_name="formic_acid", concentration_value=0.1, unit="%"
+#
+# 2. SAMPLE ENTRY:
+#    Entity (e_sample_A) → Sample (sample_name="SampleA", site="Field_01")
+#
+# 3. LC-MS ACQUISITION ACTIVITY:
+#    Activity (
+#      activity_id=a_acq,
+#      activity_type="lcms_acquisition",
+#      name="SampleA_Pos_DDA_Run",
+#      was_associated_with=e_instrument,
+#      started_at_time="2026-01-22 10:00:00"
+#    )
+#    Used (activity_id=a_acq, entity_id=e_sample_A, role="input_sample")
+#    Used (activity_id=a_acq, entity_id=e_ms_protocol, role="mass_spectrometry_configuration")
+#    Used (activity_id=a_acq, entity_id=e_chrom_protocol, role="chromatography_configuration")
+#
+# 4. RAW DATA PRODUCT:
+#    Entity (e_raw_mzml) → LCMSRawDataProduct (
+#      file_format="mzML",
+#      scan_count=15234,
+#      ms1_scan_count=10890,
+#      ms2_scan_count=4344,
+#      qc_status="PASS"
+#    )
+#    WasGeneratedBy (entity_id=e_raw_mzml, activity_id=a_acq)
+#
+# 5. RUN-SPECIFIC PARAMETERS (EAV):
+#    TypedAttributeValue (entity_id=e_raw_mzml, attribute="spray_voltage_kv", value_numeric=3.5)
+#    TypedAttributeValue (entity_id=e_raw_mzml, attribute="capillary_temp_celsius", value_numeric=320)
+#
+# 6. FEATURE EXTRACTION:
+#    Activity (activity_id=a_features, activity_type="lcms_feature_extraction")
+#    Used (activity_id=a_features, entity_id=e_raw_mzml, role="raw_data_input")
+#    Entity (e_features) → LCMSFeatureProduct (total_features=1247, peak_picking_algorithm="CoreMS")
+#    WasGeneratedBy (entity_id=e_features, activity_id=a_features)
+#
+# 7. COMPOUND IDENTIFICATION:
+#    Activity (activity_id=a_annot, activity_type="lcms_compound_identification")
+#    Used (activity_id=a_annot, entity_id=e_features, role="feature_data_input")
+#    Entity (e_annot) → LCMSAnnotationProduct (total_annotations=412, msi_level_2_count=156)
+#    WasGeneratedBy (entity_id=e_annot, activity_id=a_annot)
+#
+# 8. INDIVIDUAL METABOLITES:
+#    Entity (e_tyrosine) → MetaboliteIdentification (
+#      compound_name="L-Tyrosine",
+#      kegg_id="C00082",
+#      hmdb_id="HMDB0000158",
+#      msi_identification_level=2,
+#      confidence_score=0.92,
+#      peak_area=5.2e6,
+#      annotation_product_entity_id=e_annot
+#    )
+#    WasGeneratedBy (entity_id=e_tyrosine, activity_id=a_annot)
+#
+# ============================================================================
