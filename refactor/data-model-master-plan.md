@@ -216,7 +216,7 @@ Product Table (ionAnalysisProduct, absorbanceProduct, metabolomicsFeatureTable, 
 
 ---
 
-## Reference Documents
+## Reference Documents (local to M Kapur)
 - **Design evolution**: `2025-12-30-edge-eav-schema-evolution.md`
 - **NMDC spine approach**: `2026-01-05-nmdc-spine-hybrid-design.md`
 - **PROV-O decision**: `2026-01-19-prov-o-lite-schema-design.md`
