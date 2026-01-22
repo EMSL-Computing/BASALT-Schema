@@ -10,6 +10,8 @@
 
 This document defines the target data model architecture after Phase 2 implementation. It supersedes earlier design documents (2025-12-30, 2026-01-05, 2026-01-19) and reflects current implementation decisions. The model adopts **W3C PROV-O lite** principles with Entity-Attribute-Value (EAV) flexibility for evolving data types while maintaining typed product tables for core measurements.
 
+TODO we still need to finalize if/how we want to represent campaign (including AMP2) membership, possibly within the Activity tables or separately, ideally in a manner friendly to later development of a CQRS interface.
+
 ---
 
 ## Core Architecture Changes by Phase 2
@@ -182,6 +184,16 @@ Product Table (ionAnalysisProduct, absorbanceProduct, metabolomicsFeatureTable, 
 - **Entity type**: Well entities (no dedicated table - pure entity + EAV)
 - **Activity types**: 'ecoplating', 'absorbance_reading'
 - **EAV metadata**: batch_id, well_position, carbon_source, nickel_concentration_percent, timepoint_hours
+
+### AMP2 Campaign (Automated Chained Workflows)
+- **Product tables**: Varies by workflow step - may include flow cytometry cell counts, HPLC metabolite profiles, cultivation biomass measurements, isolation purity metrics
+- **Activity types** (sequential, predictable chain): 'amp2_flow_cytometry', 'amp2_cell_isolation', 'amp2_cultivation', 'amp2_hplc_analysis', 'amp2_subculture', 'amp2_cryopreservation'
+- **Protocol references**: Core protocol URLs linked via EAV (e.g., protocol_url='https://emsl.pnnl.gov/flow-cytometry-sop') or ActivityProtocol entities for standardized methods
+- **EAV metadata**: Treatment-specific parameters (incubation_temp_celsius, cultivation_duration_hours, media_composition, substrate_concentration_mM, flow_rate_ml_min, detector_wavelength_nm)
+- **Provenance pattern**: Sample → Activity1 → SubProduct1 → Activity2 → SubProduct2 → Activity3 → FinalProduct (explicit PROV-O chains via Used/WasGeneratedBy)
+- **Key capability**: Same sub-product entity re-enters workflow multiple times (e.g., cultured cells measured at t=0, t=24h, t=48h, then subcultured → new activity → new measurements)
+- **Workflow automation**: Activities are predictable and may be automatically triggered; actual instrument/treatment data captured in EAV per execution
+- **Migration**: Zero migration - uses existing Activity table with new activity_type values; sub-products are entities tracked through explicit provenance chains
 
 ---
 
