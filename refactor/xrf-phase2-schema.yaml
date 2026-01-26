@@ -157,7 +157,8 @@ classes:
     description: |-
       Activity subtype for XRF elemental analysis.
       Stores typed experimental settings IF necessary (otherwise siimply provide URL in EAV).
-      1:1 with Activity via activity_id foreign key.
+      1:1 with Activity via activity_id foreign key. 
+      TODO revisit this with data generation.
     attributes:
       activity_id:
         identifier: true
