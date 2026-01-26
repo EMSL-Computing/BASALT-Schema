@@ -69,11 +69,11 @@ classes:
     attributes:
       entity_id:
         identifier: true
-        range: uuid
+        range: Entity
         required: true
       activity_id:
         identifier: true
-        range: uuid
+        range: Activity
         required: true
 
   WasGeneratedBy:
@@ -83,11 +83,11 @@ classes:
     attributes:
       entity_id:
         identifier: true
-        range: uuid
+        range: Entity
         required: true
       activity_id:
         identifier: true
-        range: uuid
+        range: Activity
         required: true
 
   # ============================================================================
