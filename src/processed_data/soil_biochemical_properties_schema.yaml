@@ -315,8 +315,8 @@ classes:
         range: double
         required: false
       
-      # Mineral Associated Organic Matter (MAOMProduct)
-      MAOM_TOC_mg_per_kg:
+      # Mineral Associated Organic Matter (Formerly MAOMProduct, renamed to HClExtOM)
+      HClExtOM_TOC_mg_per_kg:
         description: |-
           Mineral Associated Organic Matter - Total Organic Carbon in mg/kg.
           Source: MAOMProduct.total_organic_carbon_id from canonical schema.
@@ -327,7 +327,7 @@ classes:
         range: double
         required: false
         
-      MAOM_TN_mg_per_kg:
+      HClExtOM_TN_mg_per_kg:
         description: |-
           Mineral Associated Organic Matter - Total Nitrogen in mg/kg.
           Source: MAOMProduct.total_nitrogen_id from canonical schema.
