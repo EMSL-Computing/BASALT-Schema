@@ -86,7 +86,7 @@ ActivityProtocol:
         examples:
           - value: "https://vendor.com/xrf-protocol-v2.1"
       protocol_type:
-        description: Type of protocol
+        description: Type of protocol (mass_spectrometry_configuration, chromatography_configuration, calibration)
         range: string
         examples:
           - value: "vendor_standard"
@@ -95,6 +95,7 @@ ActivityProtocol:
       description:
         description: Brief description of the protocol
         range: string
+
 
 
   # ============================================================================
