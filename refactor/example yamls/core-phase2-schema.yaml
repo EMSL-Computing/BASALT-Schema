@@ -169,7 +169,8 @@ ActivityProtocol:
   Attribute:
     description: |-
       Dictionary of attribute keys for the EAV pattern.
-      Examples: 'nickel_concentration_percent', 'instrument_serial_number', 'analyst_notes'
+      Examples: 'nickel_concentration_percent', 'instrument_serial_number', 'analyst_notes', 
+      'spray_voltage_kv', 'capillary_temp_celsius', 'gnps_task_id'
     attributes:
       attribute_id:
         identifier: true
