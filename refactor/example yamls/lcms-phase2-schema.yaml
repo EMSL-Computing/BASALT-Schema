@@ -28,11 +28,9 @@ imports:
   - linkml:types
 
 classes:
- 
-
 
   # ============================================================================
-  # LC-MS PROTOCOL TABLES (Reusable Configurations)
+  # LC-MS PROTOCOL or ACTIVITY TABLES (Reusable Configurations)
   # ============================================================================
 
   MassSpecProtocol:
@@ -99,7 +97,7 @@ classes:
           - value: "reduced_profile"
       instrument_entity_id:
         description: FK to Instrument entity
-        range: uuid
+        range: Entity
       mass_range_min:
         range: float
       mass_range_max:
