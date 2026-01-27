@@ -46,6 +46,46 @@ classes:
         description: Optional direct URL to protocol/SOP
         range: string
 
+ActivityProtocol:
+    description: |-
+      Explicit storage for reusable procedure definitions (SOPs, workflows).
+      Protocols are entities themselves (can have metadata via EAV).
+      
+      Example here for XRF: Can store vendor protocol URL or detailed SOP.
+    attributes:
+      entity_id:
+        identifier: true
+        range: Entity
+        required: true
+      protocol_name:
+        description: Human-readable protocol name
+        range: string
+        required: true
+        examples:
+          - value: "EMSL XRF Standard Operating Procedure v2.1"
+      protocol_version:
+        description: Version identifier
+        range: string
+        examples:
+          - value: "2.1"
+          - value: "2024-03-15"
+      protocol_url:
+        description: URL to external protocol documentation
+        range: string
+        examples:
+          - value: "https://vendor.com/xrf-protocol-v2.1"
+      protocol_type:
+        description: Type of protocol
+        range: string
+        examples:
+          - value: "vendor_standard"
+          - value: "custom_sop"
+          - value: "emsl_method"
+      description:
+        description: Brief description of the protocol
+        range: string
+
+        
   # ============================================================================
   # PROV-O RELATIONSHIPS (M:N)
   # ============================================================================
