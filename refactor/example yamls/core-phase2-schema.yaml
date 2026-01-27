@@ -28,23 +28,34 @@ classes:
     description: |-
       Unified base for all timestamped actions (sampling, processing, analysis).
       Replaces legacy samplingActivity, analysisActivity, etc.
+      No activity subtype tables needed for LC-MS - protocols are separate entities.
+      
+      Activity types map to NMDC:
+      - lcms_acquisition → MassSpectrometry
+      - lcms_feature_extraction → MetabolomicsAnalysis (part 1)
+      - lcms_compound_identification → MetabolomicsAnalysis (part 2)
+      - lcms_workflow_execution → MetabolomicsAnalysis (full)
     attributes:
       activity_id:
         identifier: true
         range: uuid
         required: true
       activity_type:
-        description: The type of activity (e.g., 'xrf_analysis', 'sampling', 'ecoplating')
+        description: The type of activity (e.g., 'xrf_analysis', 'sampling', 'ecoplating', lcms_acquisition, lcms_feature_extraction, etc.)
         range: string
         required: true
-      started_at:
+      name:
+        description: Human-readable activity name
+        range: string
+      started_at_time:
         range: datetime
         required: true
-      ended_at:
+      ended_at_time:
         range: datetime
-      protocol_url:
-        description: Optional direct URL to protocol/SOP
-        range: string
+      entity_id:
+        description: Links to Entity for EAV metadata attachment
+        range: uuid
+
 
 ActivityProtocol:
     description: |-
@@ -85,7 +96,7 @@ ActivityProtocol:
         description: Brief description of the protocol
         range: string
 
-        
+
   # ============================================================================
   # PROV-O RELATIONSHIPS (M:N)
   # ============================================================================
