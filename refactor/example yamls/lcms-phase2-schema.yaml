@@ -28,240 +28,12 @@ imports:
   - linkml:types
 
 classes:
+ 
 
-  # ============================================================================
-  # PHASE 2 CORE TABLES (Universal Semantic Layer)
-  # ============================================================================
-
-  Entity:
-    description: |-
-      Universal semantic layer - all "things" get an entity_id.
-      Samples, products, protocols, instruments, activities are all entities.
-      Enables consistent provenance tracking and metadata attachment.
-    attributes:
-      entity_id:
-        identifier: true
-        range: uuid
-        required: true
-      entity_type:
-        description: Sample, DataProduct, Activity, Protocol, Instrument, etc.
-        range: string
-
-  Activity:
-    description: |-
-      Unified base for all timestamped actions (sampling, processing, analysis).
-      No activity subtype tables needed for LC-MS - protocols are separate entities.
-      
-      Activity types map to NMDC:
-      - lcms_acquisition → MassSpectrometry
-      - lcms_feature_extraction → MetabolomicsAnalysis (part 1)
-      - lcms_compound_identification → MetabolomicsAnalysis (part 2)
-      - lcms_workflow_execution → MetabolomicsAnalysis (full)
-    attributes:
-      activity_id:
-        identifier: true
-        range: uuid
-        required: true
-      activity_type:
-        description: Type of activity (lcms_acquisition, lcms_feature_extraction, etc.)
-        range: string
-        required: true
-      name:
-        description: Human-readable activity name
-        range: string
-      started_at_time:
-        range: datetime
-        required: true
-      ended_at_time:
-        range: datetime
-      was_associated_with:
-        description: Instrument or operator entity_id
-        range: uuid
-      entity_id:
-        description: Links to Entity for EAV metadata attachment
-        range: uuid
-
-  Protocol:
-    description: |-
-      Base protocol table for reusable method definitions.
-      Protocols are entities themselves (nouns, not activities).
-      Extended by typed protocol tables (MassSpecProtocol, ChromatographyProtocol).
-    attributes:
-      protocol_id:
-        identifier: true
-        range: uuid
-        required: true
-      name:
-        range: string
-        required: true
-      description:
-        range: string
-      protocol_type:
-        description: mass_spectrometry_configuration, chromatography_configuration, calibration
-        range: string
-        required: true
-      version:
-        range: string
-      entity_id:
-        description: Links to Entity for metadata
-        range: uuid
-
-  # ============================================================================
-  # PROV-O RELATIONSHIPS (M:N)
-  # ============================================================================
-
-  Used:
-    description: |-
-      M:N relationship tracking which entities an activity consumed as inputs.
-      Role qualifies the relationship semantics.
-      
-      Examples:
-      - Activity --[Used(role=input_sample)]--> Sample
-      - Activity --[Used(role=mass_spectrometry_configuration)]--> MassSpecProtocol
-      - Activity --[Used(role=chromatography_configuration)]--> ChromatographyProtocol
-    attributes:
-      activity_id:
-        identifier: true
-        range: uuid
-        required: true
-      entity_id:
-        identifier: true
-        range: uuid
-        required: true
-      role:
-        description: Semantic role (input_sample, mass_spectrometry_configuration, etc.)
-        range: string
-      usage_time:
-        range: datetime
-
-  WasGeneratedBy:
-    description: |-
-      M:N relationship tracking which entities an activity produced as outputs.
-      
-      Examples:
-      - mzML File Entity --[WasGeneratedBy]--> Acquisition Activity
-      - Feature Table Entity --[WasGeneratedBy]--> Feature Extraction Activity
-      - MetaboliteIdentification Entity --[WasGeneratedBy]--> Annotation Activity
-    attributes:
-      entity_id:
-        identifier: true
-        range: uuid
-        required: true
-      activity_id:
-        identifier: true
-        range: uuid
-        required: true
-      generation_time:
-        range: datetime
-
-  # ============================================================================
-  # EAV PATTERN (Flexible Metadata)
-  # ============================================================================
-
-  Attribute:
-    description: |-
-      Dictionary of attribute keys for the EAV pattern.
-      Examples: 'spray_voltage_kv', 'capillary_temp_celsius', 'gnps_task_id'
-    attributes:
-      attribute_id:
-        identifier: true
-        range: uuid
-        required: true
-      key:
-        description: The attribute name/key
-        range: string
-        required: true
-      description:
-        range: string
-      expected_type:
-        description: numeric, string, boolean, timestamp
-        range: string
-
-  TypedAttributeValue:
-    description: |-
-      EAV storage for flexible, evolving metadata with typed value columns.
-      Exactly one value column must be populated per row.
-      
-      Used for:
-      - Run-specific instrument settings (spray voltage, AGC target)
-      - Workflow parameters (software versions, git URLs)
-      - Experimental notes and QC annotations
-    attributes:
-      entity_id:
-        identifier: true
-        range: uuid
-        required: true
-      attribute_id:
-        identifier: true
-        range: uuid
-        required: true
-      value_numeric:
-        range: float
-      value_string:
-        range: string
-      value_boolean:
-        range: boolean
-      value_timestamp:
-        range: datetime
-
-  # ============================================================================
-  # SAMPLE TABLE
-  # ============================================================================
-
-  Sample:
-    description: |-
-      Physical sample collected from environment.
-      1:1 with Entity via entity_id foreign key.
-    attributes:
-      entity_id:
-        identifier: true
-        range: uuid
-        required: true
-      sample_name:
-        range: string
-        required: true
-      proposal_id:
-        range: integer
-      collection_date:
-        range: date
-      site:
-        range: string
 
   # ============================================================================
   # LC-MS PROTOCOL TABLES (Reusable Configurations)
   # ============================================================================
-
-  Instrument:
-    description: |-
-      Physical instrument metadata. Maps to NMDC Instrument.
-      Instruments are persistent entities, not activities.
-      Activities reference via was_associated_with or Used(role=instrument_used).
-    attributes:
-      entity_id:
-        identifier: true
-        range: uuid
-        required: true
-      name:
-        description: Human-readable name (e.g., "EMSL QExactive Plus #3")
-        range: string
-        required: true
-        examples:
-          - value: "EMSL QExactive Plus #3"
-      manufacturer:
-        range: string
-        examples:
-          - value: "Thermo Fisher Scientific"
-      model:
-        range: string
-        examples:
-          - value: "Q Exactive Plus Hybrid Quadrupole-Orbitrap"
-      serial_number:
-        description: Instrument instance specifier
-        range: string
-      institution:
-        range: string
-        examples:
-          - value: "PNNL-EMSL"
 
   MassSpecProtocol:
     description: |-
@@ -272,7 +44,7 @@ classes:
     attributes:
       entity_id:
         identifier: true
-        range: uuid
+        range: Entity
         required: true
       protocol_id:
         range: uuid
@@ -300,7 +72,7 @@ classes:
         examples:
           - value: "positive"
           - value: "negative"
-          - value: "switching"
+          - value: "switching" 
       mass_analyzers:
         description: List of mass analyzer types
         range: string
