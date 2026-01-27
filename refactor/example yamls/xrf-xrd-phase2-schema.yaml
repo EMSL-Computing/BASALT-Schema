@@ -25,29 +25,6 @@ classes:
   # XRF-SPECIFIC TABLES
   # ============================================================================
 
-  Sample:
-    description: |-
-      Physical sample collected from environment.
-      1:1 with Entity via entity_id foreign key.
-    attributes:
-      entity_id:
-        identifier: true
-        range: Entity
-        required: true
-      sample_name:
-        description: Human readable name (e.g., "60881_1_TOP_1")
-        range: string
-        required: true
-      proposal_id:
-        description: 5-digit EMSL project ID
-        range: integer
-      sampling_set:
-        description: Batch identifier if part of a sample set
-        range: string
-      core_section:
-        description: Section of core (TOP, MID, BTM)
-        range: string
-
   XRFAnalysisActivity:
     description: |-
       Activity subtype for XRF elemental analysis.
