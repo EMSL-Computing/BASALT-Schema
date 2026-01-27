@@ -11,7 +11,7 @@
 # - This schema is derived from the MONet Analysis API Schema as the source of truth https://w3id.org/MONet/analysis-api-schema
 # - and therefore column names are faithful to the canonical schema, not the zipdownloader as of last update
 #
-# TODO:
+# TODO: CONFIRM MEQ ON per_KG ion units; double check with Aramy about renaming (each slot has a "source" referencing the canonical schema)
 # This file should be updated when:
 # - Column names are changed in zip_download_blueprint.py
 # - New analytical methods/columns are added
