@@ -183,8 +183,13 @@ ActivityProtocol:
 
   TypedAttributeValue:
     description: |-
-      EAV storage for flexible, evolving metadata.
-      Values stored as strings; application handles type conversion.
+      EAV storage for flexible, evolving metadata with typed value columns.
+      Exactly one value column must be populated per row.
+      
+      Used for:
+      - Run-specific instrument settings (spray voltage, AGC target)
+      - Workflow parameters (software versions, git URLs)
+      - Experimental notes and QC annotations
     attributes:
       entity_id:
         identifier: true
