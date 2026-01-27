@@ -85,7 +85,6 @@ classes:
       Unified base for all timestamped actions (sampling, processing, analysis).
       Replaces legacy samplingActivity, analysisActivity, etc.
       No activity subtype tables needed for LC-MS - protocols are separate entities.
-      
       Activity types map to NMDC:
       - lcms_acquisition → MassSpectrometry
       - lcms_feature_extraction → MetabolomicsAnalysis (part 1)
@@ -162,9 +161,6 @@ classes:
     description: |-
         M:N relationship tracking which entities an activity consumed as inputs.
         Points FROM entity TO activity (this activity used these entities).
-        - Activity --[Used(role=input_sample)]--> Sample
-        - Activity --[Used(role=mass_spectrometry_configuration)]--> MassSpecProtocol
-        - Activity --[Used(role=chromatography_configuration)]--> ChromatographyProtocol
     attributes:
       entity_id:
         identifier: true
