@@ -42,7 +42,7 @@ classes:
     attributes:
       entity_id:
         identifier: true
-        range: uuid
+        range: Entity
         required: true
       name:
         description: Human-readable name (e.g., "EMSL QExactive Plus #3")
@@ -110,7 +110,7 @@ classes:
         range: datetime
       entity_id:
         description: Links to Entity for EAV metadata attachment
-        range: uuid
+        range: Entity
 
 
   ActivityProtocol:
@@ -205,7 +205,7 @@ classes:
     attributes:
       attribute_id:
         identifier: true
-        range: uuid
+        range: Attribute
         required: true
       key:
         description: The attribute name/key
