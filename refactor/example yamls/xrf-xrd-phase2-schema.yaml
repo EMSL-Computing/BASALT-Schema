@@ -116,7 +116,7 @@ classes:
         required: true
       instrument_id:
         description: Reference to instrument used
-        range: uuid
+        range: Entity
       instrument_name:
         description: Human-readable instrument identifier
         range: string
