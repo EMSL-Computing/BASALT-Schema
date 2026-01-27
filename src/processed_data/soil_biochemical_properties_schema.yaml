@@ -100,7 +100,6 @@ classes:
         description: |-
           Soil pH measurement (pH units).
           Source: pHProduct class from canonical schema.
-          Represents soil acidity/alkalinity on the standard pH scale (0-14).
         range: double
         required: false
       
@@ -109,7 +108,6 @@ classes:
         description: |-
           Microbial Biomass Carbon in milligrams per kilogram of soil (mg/kg).
           Source: MicrobialBiomassProduct.mbc_id from canonical schema.
-          Represents the amount of carbon contained in living soil microorganisms.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -119,7 +117,6 @@ classes:
         description: |-
           Microbial Biomass Nitrogen in milligrams per kilogram of soil (mg/kg).
           Source: MicrobialBiomassProduct.mbn_id from canonical schema.
-          Represents the amount of nitrogen contained in living soil microorganisms.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -130,7 +127,6 @@ classes:
         description: |-
           Sulfate-Sulfur (SO4-S) in milligrams per kilogram of soil (mg/kg).
           Source: IonsAnalysisProduct.sulfate_id from canonical schema.
-          Represents plant-available sulfur in sulfate form.
         range: double
         required: false
         
@@ -138,7 +134,6 @@ classes:
         description: |-
           Boron (B) in milligrams per kilogram of soil (mg/kg).
           Source: IonsAnalysisProduct.boron_id from canonical schema.
-          Essential micronutrient for plant growth.
         range: double
         required: false
         
@@ -146,7 +141,6 @@ classes:
         description: |-
           Zinc (Zn) in milligrams per kilogram of soil (mg/kg).
           Source: IonsAnalysisProduct.zinc_id from canonical schema.
-          Essential micronutrient for plant growth and enzyme function.
         range: double
         required: false
         
@@ -154,7 +148,6 @@ classes:
         description: |-
           Manganese (Mn) in milligrams per kilogram of soil (mg/kg).
           Source: IonsAnalysisProduct.manganate_id from canonical schema.
-          Essential micronutrient involved in photosynthesis and enzyme activation.
         range: double
         required: false
         
@@ -162,7 +155,6 @@ classes:
         description: |-
           Copper (Cu) in milligrams per kilogram of soil (mg/kg).
           Source: IonsAnalysisProduct.copper_id from canonical schema.
-          Essential micronutrient for plant development and disease resistance.
         range: double
         required: false
         
@@ -170,7 +162,6 @@ classes:
         description: |-
           Iron (Fe) in milligrams per kilogram of soil (mg/kg).
           Source: IonsAnalysisProduct.iron_id from canonical schema.
-          Essential nutrient for chlorophyll synthesis and enzyme systems.
         range: double
         required: false
         
@@ -178,7 +169,6 @@ classes:
         description: |-
           Calcium (Ca) in milliequivalents per 100 grams of soil (meq/100g).
           Source: IonsAnalysisProduct.calcium_id from canonical schema.
-          Major nutrient and structural component of cell walls.
         range: double
         required: false
         
@@ -186,7 +176,6 @@ classes:
         description: |-
           Magnesium (Mg) in milliequivalents per 100 grams of soil (meq/100g).
           Source: IonsAnalysisProduct.magnesium_id from canonical schema.
-          Central atom in chlorophyll molecule and enzyme activator.
         range: double
         required: false
         
@@ -194,7 +183,6 @@ classes:
         description: |-
           Sodium (Na) in milliequivalents per 100 grams of soil (meq/100g).
           Source: IonsAnalysisProduct.sodium_id from canonical schema.
-          Can affect soil structure and plant salt tolerance.
         range: double
         required: false
         
@@ -202,7 +190,6 @@ classes:
         description: |-
           Potassium (K) in milliequivalents per 100 grams of soil (meq/100g).
           Source: IonsAnalysisProduct.potassium_id from canonical schema.
-          Major nutrient essential for water regulation and enzyme activation.
         range: double
         required: false
         
@@ -210,8 +197,6 @@ classes:
         description: |-
           Cation Exchange Capacity in milliequivalents per 100 grams (meq/100g).
           Source: IonsAnalysisProduct.cation_exchange_capacity_id from canonical schema.
-          Measure of soil's ability to hold and exchange cations (positively charged ions).
-          Higher CEC indicates greater nutrient retention capacity.
         range: double
         required: false
       
@@ -220,7 +205,6 @@ classes:
         description: |-
           Total Carbon as percentage of dry soil weight (%).
           Source: ElementalAnalysisProduct.total_carbon_id from canonical schema.
-          Includes both organic and inorganic carbon fractions.
         range: double
         required: false
         
@@ -228,7 +212,6 @@ classes:
         description: |-
           Total Nitrogen as percentage of dry soil weight (%).
           Source: ElementalAnalysisProduct.total_nitrogen_id from canonical schema.
-          Includes organic nitrogen and mineral nitrogen forms.
         range: double
         required: false
         
@@ -236,7 +219,6 @@ classes:
         description: |-
           Total Sulfur as percentage of dry soil weight (%).
           Source: ElementalAnalysisProduct.total_sulfur_id from canonical schema.
-          Total sulfur content across all chemical forms.
         range: double
         required: false
       
@@ -245,7 +227,6 @@ classes:
         description: |-
           Ammonium Nitrogen (NH4-N) in milligrams per kilogram of soil (mg/kg).
           Source: NitrogenAnalysisProduct.nh4_n_id from canonical schema.
-          Plant-available nitrogen in ammonium form.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -255,7 +236,6 @@ classes:
         description: |-
           Nitrate Nitrogen (NO3-N) in milligrams per kilogram of soil (mg/kg).
           Source: NitrogenAnalysisProduct.no3_n_id from canonical schema.
-          Plant-available nitrogen in nitrate form.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -266,7 +246,6 @@ classes:
         description: |-
           Phosphate Phosphorus (PO4-P) in milligrams per kilogram of soil (mg/kg).
           Source: PhosphorusAnalysisProduct.phosphorus_id from canonical schema.
-          Plant-available phosphorus extracted by the method specified in PO4_P_extraction.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -276,8 +255,6 @@ classes:
         description: |-
           Extraction method used for phosphorus analysis.
           Source: PhosphorusAnalysisProduct.extraction_method from canonical schema.
-          Common methods: Bray P1, Mehlich-3, Olsen, etc.
-          Extraction method affects measured P values and interpretation.
         range: string
         required: false
       
@@ -298,8 +275,6 @@ classes:
         description: |-
           Water Extractable Organic Matter - Total Organic Carbon in mg/kg.
           Source: WEOMProduct.total_organic_carbon_id from canonical schema.
-          Readily soluble organic carbon that can be extracted with water.
-          Represents the most labile and bioavailable carbon fraction.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -309,7 +284,6 @@ classes:
         description: |-
           Water Extractable Organic Matter - Total Nitrogen in mg/kg.
           Source: WEOMProduct.total_nitrogen_id from canonical schema.
-          Readily soluble organic nitrogen that can be extracted with water.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -320,8 +294,6 @@ classes:
         description: |-
           Mineral Associated Organic Matter - Total Organic Carbon in mg/kg.
           Source: MAOMProduct.total_organic_carbon_id from canonical schema.
-          Organic carbon bound to soil minerals, representing stabilized carbon fraction.
-          MAOM is more resistant to decomposition than particulate organic matter.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -331,7 +303,6 @@ classes:
         description: |-
           Mineral Associated Organic Matter - Total Nitrogen in mg/kg.
           Source: MAOMProduct.total_nitrogen_id from canonical schema.
-          Organic nitrogen bound to soil minerals.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -342,8 +313,6 @@ classes:
         description: |-
           Clay content as percentage of soil by weight (%).
           Source: TextureProduct.clay_pct_id from canonical schema.
-          Particle size < 0.002 mm (< 2 micrometers).
-          Clay particles have large surface area and high cation exchange capacity.
         range: double
         required: false
         
@@ -351,8 +320,6 @@ classes:
         description: |-
           Sand content as percentage of soil by weight (%).
           Source: TextureProduct.sand_pct_id from canonical schema.
-          Particle size 0.05-2.0 mm (50-2000 micrometers).
-          Sand particles provide soil structure and drainage.
         range: double
         required: false
         
@@ -360,8 +327,6 @@ classes:
         description: |-
           Silt content as percentage of soil by weight (%).
           Source: TextureProduct.silt_pct_id from canonical schema.
-          Particle size 0.002-0.05 mm (2-50 micrometers).
-          Silt has moderate water and nutrient retention properties.
         range: double
         required: false
       
@@ -370,8 +335,6 @@ classes:
         description: |-
           Beta-Glucosidase enzyme activity in micrograms para-nitrophenol per gram per hour (μg pNP/g/h).
           Source: EnzymeProduct.beta_glucosidase_ug_pnp_per_g_per_h_id from canonical schema.
-          Enzyme involved in cellulose degradation and carbon cycling.
-          Activity level indicates microbial decomposition potential.
         range: double
         required: false
       
@@ -380,9 +343,6 @@ classes:
         description: |-
           Soil bulk density in grams per cubic centimeter (g/cm³).
           Source: BulkDensityProduct.bulk_density_id from canonical schema.
-          Mass of dry soil per unit volume, indicator of soil compaction.
-          Typical range: 1.0-1.8 g/cm³ for mineral soils.
-          Lower values indicate higher porosity and organic matter content.
         range: double
         required: false
       
