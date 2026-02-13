@@ -100,6 +100,8 @@ classes:
       tot_nitro_cont_meth:
       tot_org_c_meth:
       watering_regm:
+      site_photo_url:
+        range: string
 
   soil:
     attributes:
