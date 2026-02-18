@@ -10,7 +10,7 @@
 
 This document defines the target data model architecture after Phase 2 implementation. It supersedes earlier design documents (2025-12-30, 2026-01-05, 2026-01-19) and reflects current implementation decisions. The model adopts **W3C PROV-O lite** principles with Entity-Attribute-Value (EAV) flexibility for evolving data types while maintaining typed product tables for core measurements.
 
-TODO we still need to finalize if/how we want to represent campaign (including AMP2) membership, possibly within the Activity tables or separately, ideally in a manner friendly to later development of a CQRS interface.
+**TODO** we still need to finalize if/how we want to represent campaign (including AMP2) membership, possibly within the Activity tables or separately, ideally in a manner friendly to later development of a CQRS interface.
 
 ---
 
