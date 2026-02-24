@@ -1,0 +1,150 @@
+id: https://w3id.org/MONet/analysis-api-schema/shoehorn-ecoplate
+name: ecoplate-shoehorn
+title: Ecoplates (96-well Temporal Absorbance) — Shoehorn Integration
+description: |-
+  Shows how Biolog EcoPlate time-series data fits into the EXISTING
+  analysis-api schema with only core-shoehorn.yaml additions.
+
+  Ecoplates are 96-well plates inoculated with a soil/culture suspension.
+  Absorbance (590 nm) is read at multiple timepoints (t=0, t=24h, t=48h, t=72h).
+  Each well contains a distinct carbon source; some wells may have variable
+  nickel (or other treatment) concentrations.
+
+  Key characteristics that drive the modeling choice:
+    - Non-destructive: same plate entity measured repeatedly (not consumed)
+    - High cardinality: 96 wells × 4 timepoints = 384 discrete readings/plate
+    - Grouping: readings group by carbon source and treatment across plates
+
+  MODELING CHOICE — "Compact per-plate" (recommended for shoehorn):
+    - One processedSample per plate (not per well)
+    - One analysisActivity per plate × timepoint (4 activities/plate)
+    - Raw CSV stored in MinIO via processedData.s3_key
+    - summary_metrics JSONB on processedData carries well-level summaries
+      to allow SQL queries without file download
+
+  ALTERNATIVE — "Verbose per-well": create 96 processedSample rows (one per
+    well) via processingSampleLink. More SQL-queryable but 96× more rows.
+    Suitable if per-well metadata (carbon source, nickel %) must be indexed.
+    This is the right choice if queries like "all wells with Ni>1% across plates"
+    are frequent. Switchable later — the compact model is forward-compatible.
+
+  Data flow (compact):
+    processedSample(id=PS_plate1, type='ecoplate_plate')
+      ← sampleProcessing("ecoplating") + processingSampleLink(sample → plate)
+      → analysisActivity(type='ecoplate_absorbance_read',
+                         analyte_id=PS_plate1,
+                         acquisition_time=T0,
+                         timepoint_label='t=0',    [ADDED]
+                         sequence_order=0)          [ADDED]
+      → workflowExecutionActivity(type='ecoplate_read', parent=NULL,
+                         workflow_steps={plate_layout JSONB})
+      → processedData(s3_key='ecoplate/plate1_t0.csv',
+                      summary_metrics={well_summaries JSONB})
+
+      → analysisActivity(type='ecoplate_absorbance_read',
+                         analyte_id=PS_plate1,     ← SAME plate
+                         acquisition_time=T24h,
+                         timepoint_label='t=24h',  [ADDED]
+                         sequence_order=1)          [ADDED]
+      → workflowExecutionActivity(type='ecoplate_read',
+                         parent_workflow_id=WEA_T0, [ADDED — chains timepoints]
+                         workflow_steps={same plate layout})
+      → processedData(s3_key='ecoplate/plate1_t24.csv', ...)
+
+imports:
+  - linkml:types
+
+classes:
+
+  # ============================================================================
+  # PRODUCT TABLE
+  # ============================================================================
+
+  EcoplateAbsorbanceProduct:
+    description: |-
+      Summary record for one plate × one timepoint absorbance reading.
+      Raw data (per-well CSV) lives in MinIO; summary_metrics carries
+      the compact queryable form.
+
+      1:1 linkage: this table's id = processedData.id FK.
+
+      processedData.type          = 'ecoplate_absorbance'
+      processedData.s3_key        = 'ecoplate/{plate_id}_{timepoint}.csv'
+      processedData.summary_metrics [ADDED in core-shoehorn]:
+        {
+          "timepoint": "t=24h",
+          "wavelength_nm": 590,
+          "well_summaries": [
+            {"position": "A01", "carbon_source": "L-malic acid",
+             "nickel_pct": 0.0, "absorbance": 0.45},
+            {"position": "A02", "carbon_source": "L-malic acid",
+             "nickel_pct": 1.0, "absorbance": 0.12},
+            ...
+          ],
+          "plate_average_well_color_development": 0.31,
+          "uninoculated_mean_abs": 0.08
+        }
+
+      analysisActivity.timepoint_label [ADDED]: 't=0' | 't=24h' | 't=48h' | 't=72h'
+      analysisActivity.sequence_order  [ADDED]: 0 | 1 | 2 | 3
+    attributes:
+      id:
+        identifier: true
+        range: uuid        # FK → processedData.id
+        required: true
+      wavelength_nm:
+        description: Measurement wavelength (typically 590 nm for Biolog)
+        range: integer
+        required: true
+      plate_type:
+        description: ECO | GN2 | GP2 | etc.
+        range: string
+      plate_lot:
+        description: Manufacturer lot number for QC cross-referencing
+        range: string
+      uninoculated_mean_abs:
+        description: Mean absorbance of uninoculated control wells (baseline)
+        range: float
+      average_well_color_development:
+        description: AWCD — mean absorbance across all inoculated wells
+        range: float
+
+  # ============================================================================
+  # EXISTING SLOTS USED (no change) + WHAT CARRIES PLATE LAYOUT
+  # ============================================================================
+  # The plate layout (which carbon source is in which well, nickel concentrations)
+  # is set once at plate setup and stored in:
+  #   workflowExecutionActivity.workflow_steps JSONB (on the t=0 WEA)
+  # Subsequent timepoint WEAs reference parent_workflow_id back to t=0 WEA,
+  # so the layout is traversable without duplicating it per timepoint.
+  #
+  # sampleProcessing.processing_steps JSONB (on the 'ecoplating' activity)
+  # can also carry plate-level experimental design:
+  #   {"plate_type":"ECO","inoculum_source":"PS_soil_extract_001",
+  #    "inoculation_date":"2025-10-01","incubation_temp_c":25,
+  #    "incubation_rpm":0,"measurement_schedule":["t=0","t=24h","t=48h","t=72h"]}
+  #
+  # Well-level design (per-well carbon source, nickel %) in workflow_steps:
+  #   {"layout": {
+  #     "A01": {"carbon_source":"L-malic acid","nickel_pct":0.0},
+  #     "A02": {"carbon_source":"L-malic acid","nickel_pct":1.0},
+  #     ...
+  #   }}
+
+slots:
+
+  ecoplate_workflow_steps:
+    description: |-
+      [Documentation only — stored in workflowExecutionActivity.workflow_steps JSONB]
+      Expected keys for ecoplate_read WEA:
+        plate_id: "PLATE_001"
+        plate_type: "ECO"
+        plate_lot: "2024-11A"
+        reader_instrument: "BioTek Epoch2"
+        wavelength_nm: 590
+        timepoint: "t=24h"
+        layout:
+          A01: {carbon_source: "L-malic acid", nickel_pct: 0.0}
+          A02: {carbon_source: "L-malic acid", nickel_pct: 1.0}
+          H12: {carbon_source: null, nickel_pct: 0.0, type: "uninoculated_control"}
+    range: string
