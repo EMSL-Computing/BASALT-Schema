@@ -7,6 +7,7 @@ default:
 # set working-directory := "."
 
 src_schema_path := "./src/analysis_api_schema/schema/analysis_api_schema.yaml"
+# doc_schema_path: reserved for a future public-facing overlay schema
 dst_schema_path := "./project"
 
 gen-schema:
@@ -20,7 +21,7 @@ gen-models:
 gen-project: gen-schema gen-models
 
 gen-doc:
-    uv run gen-doc -d ../docs/ {{src_schema_path}} 
+    uv run python util/gen_doc.py {{src_schema_path}} docs/elements/
 
 serve-doc:
     uv run mkdocs serve
