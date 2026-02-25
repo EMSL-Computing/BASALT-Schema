@@ -26,7 +26,7 @@ imports:
   - linkml:types
   - enums
   - value_tables
-  - metagenomics
+  # - metagenomics
   - metadata
   - methods
   - products

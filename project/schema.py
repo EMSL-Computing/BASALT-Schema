@@ -841,45 +841,6 @@ class LatLongValue(Base):
     
 
 
-class MagBin(Base):
-    """
-    
-    """
-    __tablename__ = 'magBin'
-
-    id = Column(UUID(), primary_key=True, nullable=False )
-    workflow_id = Column(UUID(), ForeignKey('workflowExecutionActivity.id'))
-    bin_name = Column(Text(), nullable=False )
-    bin_quality = Column(Enum('HQ', 'MQ', 'LQ', name='binquality'))
-    completeness = Column(Numeric())
-    contamination = Column(Numeric())
-    gene_count = Column(Integer())
-    gtdbtk_class = Column(Text())
-    gtdbtk_domain = Column(Text())
-    gtdbtk_family = Column(Text())
-    gtdbtk_genus = Column(Text())
-    gtdbtk_order = Column(Text())
-    gtdbtk_phylum = Column(Text())
-    gtdbtk_species = Column(Text())
-    members_id = Column(Text())
-    num_16s = Column(Integer())
-    num_23s = Column(Integer())
-    num_5s = Column(Integer())
-    num_trna = Column(Integer())
-    number_of_contig = Column(Integer())
-    total_bases = Column(Integer())
-    
-
-    
-
-    def __repr__(self):
-        return f"magBin(id={self.id},workflow_id={self.workflow_id},bin_name={self.bin_name},bin_quality={self.bin_quality},completeness={self.completeness},contamination={self.contamination},gene_count={self.gene_count},gtdbtk_class={self.gtdbtk_class},gtdbtk_domain={self.gtdbtk_domain},gtdbtk_family={self.gtdbtk_family},gtdbtk_genus={self.gtdbtk_genus},gtdbtk_order={self.gtdbtk_order},gtdbtk_phylum={self.gtdbtk_phylum},gtdbtk_species={self.gtdbtk_species},members_id={self.members_id},num_16s={self.num_16s},num_23s={self.num_23s},num_5s={self.num_5s},num_trna={self.num_trna},number_of_contig={self.number_of_contig},total_bases={self.total_bases},)"
-
-
-
-    
-
-
 class Metagenomics_BinningProduct(Base):
     """
     Top-level archive (zip/tar) for binning results stored in MinIO
@@ -889,12 +850,15 @@ class Metagenomics_BinningProduct(Base):
     id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
     workflow_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalysis', 'FunctionalAnnotation', 'GenePhylogeny', name='metagenomicssteps'))
     sample_id = Column(UUID(), ForeignKey('sample.id'))
+    provider_name = Column(UUID(), ForeignKey('controlledTermValue.id'))
+    raw_fasta_url = Column(Text())
+    additional_information = Column(Text())
     
 
     
 
     def __repr__(self):
-        return f"Metagenomics_BinningProduct(id={self.id},workflow_step={self.workflow_step},sample_id={self.sample_id},)"
+        return f"Metagenomics_BinningProduct(id={self.id},workflow_step={self.workflow_step},sample_id={self.sample_id},provider_name={self.provider_name},raw_fasta_url={self.raw_fasta_url},additional_information={self.additional_information},)"
 
 
 
@@ -911,12 +875,15 @@ class Metagenomics_AnnotationProduct(Base):
     workflow_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalysis', 'FunctionalAnnotation', 'GenePhylogeny', name='metagenomicssteps'))
     sample_id = Column(UUID(), ForeignKey('sample.id'))
     annotation_database = Column(Enum('PFAM', 'COG', 'KEGG', name='annotationdatabasetype'))
+    provider_name = Column(UUID(), ForeignKey('controlledTermValue.id'))
+    raw_fasta_url = Column(Text())
+    additional_information = Column(Text())
     
 
     
 
     def __repr__(self):
-        return f"Metagenomics_AnnotationProduct(id={self.id},workflow_step={self.workflow_step},sample_id={self.sample_id},annotation_database={self.annotation_database},)"
+        return f"Metagenomics_AnnotationProduct(id={self.id},workflow_step={self.workflow_step},sample_id={self.sample_id},annotation_database={self.annotation_database},provider_name={self.provider_name},raw_fasta_url={self.raw_fasta_url},additional_information={self.additional_information},)"
 
 
 
@@ -933,12 +900,15 @@ class Metagenomics_GenePhylogenyProduct(Base):
     workflow_step = Column(Enum('ReadQcAnalysis', 'MetagenomeAssembly', 'ReadBasedTaxonomyAnalysis', 'MetagenomeAnnotation', 'MagsAnalysis', 'FunctionalAnnotation', 'GenePhylogeny', name='metagenomicssteps'))
     sample_id = Column(UUID(), ForeignKey('sample.id'))
     gene_family = Column(Text())
+    provider_name = Column(UUID(), ForeignKey('controlledTermValue.id'))
+    raw_fasta_url = Column(Text())
+    additional_information = Column(Text())
     
 
     
 
     def __repr__(self):
-        return f"Metagenomics_GenePhylogenyProduct(id={self.id},workflow_step={self.workflow_step},sample_id={self.sample_id},gene_family={self.gene_family},)"
+        return f"Metagenomics_GenePhylogenyProduct(id={self.id},workflow_step={self.workflow_step},sample_id={self.sample_id},gene_family={self.gene_family},provider_name={self.provider_name},raw_fasta_url={self.raw_fasta_url},additional_information={self.additional_information},)"
 
 
 
