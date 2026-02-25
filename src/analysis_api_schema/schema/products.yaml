@@ -127,7 +127,7 @@ classes:
         range: processedData
       alpha:
         description: >-
-          Van Genuchten shape parameter α (1/cm). Controls the inverse of the
+          Van Genuchten shape parameter alpha (1/cm). Controls the inverse of the
           air-entry suction; typically fitted by HYPROP-FIT or similar software.
         range: double
       n:
@@ -137,12 +137,12 @@ classes:
         range: double
       theta_r:
         description: >-
-          Residual volumetric water content θ_r (cm³ cm⁻³). The water content
+          Residual volumetric water content theta_r (cm3 cm). The water content
           at which liquid conductivity approaches zero.
         range: double
       theta_s:
         description: >-
-          Saturated volumetric water content θ_s (cm³ cm⁻³). Approximates
+          Saturated volumetric water content theta_s (cm3 cm e-3). Approximates
           total porosity under saturated conditions.
         range: double
       flag:
