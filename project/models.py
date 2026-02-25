@@ -798,7 +798,7 @@ class Projectstatus(str, Enum):
 class TimestampValue(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/value_tables.yaml'})
 
-    id: UUID = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+    id: Optional[str] = Field(default=None, description="""Identifier referencing the canonical ProcessedData / MetaGenomicsProduct row (contains S3 pointer)""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['timestampValue',
                        'textValue',
                        'softwareControlledTermValue',
@@ -808,7 +808,6 @@ class TimestampValue(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -922,7 +921,7 @@ class TimestampValue(ConfiguredBaseModel):
 class TextValue(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/value_tables.yaml'})
 
-    id: UUID = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+    id: Optional[str] = Field(default=None, description="""Identifier referencing the canonical ProcessedData / MetaGenomicsProduct row (contains S3 pointer)""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['timestampValue',
                        'textValue',
                        'softwareControlledTermValue',
@@ -932,7 +931,6 @@ class TextValue(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -1047,7 +1045,7 @@ class TextValue(ConfiguredBaseModel):
 class SoftwareControlledTermValue(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/value_tables.yaml'})
 
-    id: UUID = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+    id: Optional[str] = Field(default=None, description="""Identifier referencing the canonical ProcessedData / MetaGenomicsProduct row (contains S3 pointer)""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['timestampValue',
                        'textValue',
                        'softwareControlledTermValue',
@@ -1057,7 +1055,6 @@ class SoftwareControlledTermValue(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -1188,7 +1185,7 @@ class SoftwareControlledTermValue(ConfiguredBaseModel):
 class ControlledTermValue(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/value_tables.yaml'})
 
-    id: UUID = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+    id: Optional[str] = Field(default=None, description="""Identifier referencing the canonical ProcessedData / MetaGenomicsProduct row (contains S3 pointer)""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['timestampValue',
                        'textValue',
                        'softwareControlledTermValue',
@@ -1198,7 +1195,6 @@ class ControlledTermValue(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -1325,7 +1321,6 @@ class PersonValue(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -1402,7 +1397,7 @@ class QuantityValue(ConfiguredBaseModel):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/value_tables.yaml'})
 
-    id: UUID = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+    id: Optional[str] = Field(default=None, description="""Identifier referencing the canonical ProcessedData / MetaGenomicsProduct row (contains S3 pointer)""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['timestampValue',
                        'textValue',
                        'softwareControlledTermValue',
@@ -1412,7 +1407,6 @@ class QuantityValue(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -1510,7 +1504,7 @@ class QuantityValue(ConfiguredBaseModel):
 class GeolocationValue(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/value_tables.yaml'})
 
-    id: UUID = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+    id: Optional[str] = Field(default=None, description="""Identifier referencing the canonical ProcessedData / MetaGenomicsProduct row (contains S3 pointer)""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['timestampValue',
                        'textValue',
                        'softwareControlledTermValue',
@@ -1520,7 +1514,6 @@ class GeolocationValue(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -1638,7 +1631,7 @@ class GeolocationValue(ConfiguredBaseModel):
 class ConditioningValue(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/value_tables.yaml'})
 
-    id: UUID = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+    id: Optional[str] = Field(default=None, description="""Identifier referencing the canonical ProcessedData / MetaGenomicsProduct row (contains S3 pointer)""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['timestampValue',
                        'textValue',
                        'softwareControlledTermValue',
@@ -1648,7 +1641,6 @@ class ConditioningValue(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -1742,7 +1734,7 @@ class ConditioningValue(ConfiguredBaseModel):
 class LatLongValue(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/value_tables.yaml'})
 
-    id: UUID = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+    id: Optional[str] = Field(default=None, description="""Identifier referencing the canonical ProcessedData / MetaGenomicsProduct row (contains S3 pointer)""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['timestampValue',
                        'textValue',
                        'softwareControlledTermValue',
@@ -1752,7 +1744,6 @@ class LatLongValue(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -1846,112 +1837,27 @@ class LatLongValue(ConfiguredBaseModel):
          'domain_of': ['geolocationValue', 'latLongValue', 'siteMetadata']} })
 
 
-class MagBin(ConfiguredBaseModel):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/metagenomics'})
-
-    id: UUID = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['timestampValue',
-                       'textValue',
-                       'softwareControlledTermValue',
-                       'controlledTermValue',
-                       'personValue',
-                       'quantityValue',
-                       'geolocationValue',
-                       'conditioningValue',
-                       'latLongValue',
-                       'magBin',
-                       'Metagenomics_BinningProduct',
-                       'Metagenomics_AnnotationProduct',
-                       'Metagenomics_GenePhylogenyProduct',
-                       'samplingActivity',
-                       'soil',
-                       'siteMetadata',
-                       'BulkDensityMethod',
-                       'ElementalAnalysisMethod',
-                       'EnzymeActivityMethod',
-                       'FTICR_AcquisitionMethod',
-                       'GravimetricWaterContentMethod',
-                       'HydraulicPropertiesMethod',
-                       'KuoMethod',
-                       'LCMS_MetabolomicsMethod',
-                       'MicrobialBiomassMethod',
-                       'PH_Method',
-                       'RespirationMethod',
-                       'TOC_TN_Method',
-                       'TextureMethod',
-                       'XrayComputedTomographyMethod',
-                       'sampleBase',
-                       'sample',
-                       'soil_sample',
-                       'aerosol_sample',
-                       'processedSample',
-                       'coreSection',
-                       'replicate',
-                       'processedData',
-                       'analysisActivity',
-                       'instrumentData',
-                       'workflowExecutionActivity',
-                       'alternativeIdentifier',
-                       'functionalAnnotationIdentifier',
-                       'instrument',
-                       'metaboliteQuantification',
-                       'ontologyClass',
-                       'peptideQuantification',
-                       'containerType',
-                       'custodian',
-                       'instrument_alt_id',
-                       'labDevice',
-                       'sampleProcessing',
-                       'processingSampleLink',
-                       'BulkDensityProduct',
-                       'ElementalAnalysisProduct',
-                       'EnzymeProduct',
-                       'FTICRProduct',
-                       'GWCMoistureProduct',
-                       'IonsAnalysisProduct',
-                       'MAOMProduct',
-                       'MetaGenomicsProduct',
-                       'MicrobialBiomassProduct',
-                       'NitrogenAnalysisProduct',
-                       'PhosphorusAnalysisProduct',
-                       'RespirationProduct',
-                       'TextureProduct',
-                       'TomographyProduct',
-                       'WEOMProduct',
-                       'pHProduct',
-                       'campaign',
-                       'study',
-                       'zipDownload']} })
-    workflow_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'workflow_id',
-         'domain_of': ['magBin',
-                       'processedData',
-                       'workflowExecutionFunctionalAnnotation']} })
-    bin_name: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'bin_name', 'domain_of': ['magBin']} })
-    bin_quality: Optional[Binquality] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'bin_quality', 'domain_of': ['magBin']} })
-    completeness: Optional[Decimal] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'completeness', 'domain_of': ['magBin']} })
-    contamination: Optional[Decimal] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'contamination', 'domain_of': ['magBin']} })
-    gene_count: Optional[int] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'gene_count', 'domain_of': ['magBin']} })
-    gtdbtk_class: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_class', 'domain_of': ['magBin']} })
-    gtdbtk_domain: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_domain', 'domain_of': ['magBin']} })
-    gtdbtk_family: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_family', 'domain_of': ['magBin']} })
-    gtdbtk_genus: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_genus', 'domain_of': ['magBin']} })
-    gtdbtk_order: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_order', 'domain_of': ['magBin']} })
-    gtdbtk_phylum: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_phylum', 'domain_of': ['magBin']} })
-    gtdbtk_species: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_species', 'domain_of': ['magBin']} })
-    members_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'members_id', 'domain_of': ['magBin']} })
-    num_16s: Optional[int] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'num_16s', 'domain_of': ['magBin']} })
-    num_23s: Optional[int] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'num_23s', 'domain_of': ['magBin']} })
-    num_5s: Optional[int] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'num_5s', 'domain_of': ['magBin']} })
-    num_trna: Optional[int] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'num_trna', 'domain_of': ['magBin']} })
-    number_of_contig: Optional[int] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'number_of_contig', 'domain_of': ['magBin']} })
-    total_bases: Optional[int] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_bases', 'domain_of': ['magBin']} })
-
-
 class MetagenomicsBinningProduct(ConfiguredBaseModel):
     """
     Top-level archive (zip/tar) for binning results stored in MinIO
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/metagenomics'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/metagenomics',
+         'slot_usage': {'id': {'description': 'Identifier referencing the canonical '
+                                              'ProcessedData / MetaGenomicsProduct row '
+                                              '(contains S3 pointer)',
+                               'identifier': True,
+                               'name': 'id',
+                               'range': 'processedData'},
+                        'sample_id': {'description': 'Link back to the originating '
+                                                     'sample (nullable)',
+                                      'name': 'sample_id',
+                                      'range': 'sample'},
+                        'workflow_step': {'description': 'Optional: enumerated '
+                                                         'workflow step that produced '
+                                                         'the product (e.g., '
+                                                         'MagsAnalysis)',
+                                          'name': 'workflow_step',
+                                          'range': 'metagenomicssteps'}}})
 
     id: str = Field(default=..., description="""Identifier referencing the canonical ProcessedData / MetaGenomicsProduct row (contains S3 pointer)""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['timestampValue',
@@ -1963,7 +1869,6 @@ class MetagenomicsBinningProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -2034,13 +1939,39 @@ class MetagenomicsBinningProduct(ConfiguredBaseModel):
          'domain_of': ['Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct']} })
+    provider_name: Optional[ControlledTermValue] = Field(default=None, description="""Provider class (e.g., JGI, SeqCenter) using ontology terms where possible""", json_schema_extra = { "linkml_meta": {'alias': 'provider_name',
+         'domain_of': ['Metagenomics_BinningProduct',
+                       'Metagenomics_AnnotationProduct',
+                       'Metagenomics_GenePhylogenyProduct']} })
+    raw_fasta_url: Optional[str] = Field(default=None, description="""URL of raw FASTA file, if available from provider""", json_schema_extra = { "linkml_meta": {'alias': 'raw_fasta_url',
+         'domain_of': ['Metagenomics_BinningProduct',
+                       'Metagenomics_AnnotationProduct',
+                       'Metagenomics_GenePhylogenyProduct']} })
+    additional_information: Optional[str] = Field(default=None, description="""Additional information pertaining to these data, including SP Project ID and Taxon OID""", json_schema_extra = { "linkml_meta": {'alias': 'additional_information',
+         'domain_of': ['Metagenomics_BinningProduct',
+                       'Metagenomics_AnnotationProduct',
+                       'Metagenomics_GenePhylogenyProduct']} })
 
 
 class MetagenomicsAnnotationProduct(ConfiguredBaseModel):
     """
     Top-level archive for annotation outputs (points to MinIO)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/metagenomics'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/metagenomics',
+         'slot_usage': {'annotation_database': {'description': 'Optional: primary '
+                                                               'annotation database '
+                                                               'used',
+                                                'name': 'annotation_database',
+                                                'range': 'annotationdatabasetype'},
+                        'id': {'description': 'Identifier referencing the canonical '
+                                              'ProcessedData / MetaGenomicsProduct row '
+                                              '(contains S3 pointer)',
+                               'identifier': True,
+                               'name': 'id',
+                               'range': 'processedData'},
+                        'sample_id': {'name': 'sample_id', 'range': 'sample'},
+                        'workflow_step': {'name': 'workflow_step',
+                                          'range': 'metagenomicssteps'}}})
 
     id: str = Field(default=..., description="""Identifier referencing the canonical ProcessedData / MetaGenomicsProduct row (contains S3 pointer)""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['timestampValue',
@@ -2052,7 +1983,6 @@ class MetagenomicsAnnotationProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -2115,23 +2045,48 @@ class MetagenomicsAnnotationProduct(ConfiguredBaseModel):
                        'campaign',
                        'study',
                        'zipDownload']} })
-    workflow_step: Optional[Metagenomicssteps] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'workflow_step',
+    workflow_step: Optional[Metagenomicssteps] = Field(default=None, description="""Optional: enumerated workflow step that produced the product (e.g., MagsAnalysis)""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_step',
          'domain_of': ['Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct']} })
-    sample_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
+    sample_id: Optional[str] = Field(default=None, description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
          'domain_of': ['Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct']} })
     annotation_database: Optional[Annotationdatabasetype] = Field(default=None, description="""Optional: primary annotation database used""", json_schema_extra = { "linkml_meta": {'alias': 'annotation_database',
          'domain_of': ['Metagenomics_AnnotationProduct']} })
+    provider_name: Optional[ControlledTermValue] = Field(default=None, description="""Provider class (e.g., JGI, SeqCenter) using ontology terms where possible""", json_schema_extra = { "linkml_meta": {'alias': 'provider_name',
+         'domain_of': ['Metagenomics_BinningProduct',
+                       'Metagenomics_AnnotationProduct',
+                       'Metagenomics_GenePhylogenyProduct']} })
+    raw_fasta_url: Optional[str] = Field(default=None, description="""URL of raw FASTA file, if available from provider""", json_schema_extra = { "linkml_meta": {'alias': 'raw_fasta_url',
+         'domain_of': ['Metagenomics_BinningProduct',
+                       'Metagenomics_AnnotationProduct',
+                       'Metagenomics_GenePhylogenyProduct']} })
+    additional_information: Optional[str] = Field(default=None, description="""Additional information pertaining to these data, including SP Project ID and Taxon OID""", json_schema_extra = { "linkml_meta": {'alias': 'additional_information',
+         'domain_of': ['Metagenomics_BinningProduct',
+                       'Metagenomics_AnnotationProduct',
+                       'Metagenomics_GenePhylogenyProduct']} })
 
 
 class MetagenomicsGenePhylogenyProduct(ConfiguredBaseModel):
     """
     Top-level archive for gene phylogeny outputs (points to MinIO)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/metagenomics'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/metagenomics',
+         'slot_usage': {'gene_family': {'description': 'Optional gene family or marker '
+                                                       'used for the phylogeny',
+                                        'name': 'gene_family',
+                                        'range': 'string'},
+                        'id': {'description': 'Identifier referencing the canonical '
+                                              'ProcessedData / MetaGenomicsProduct row '
+                                              '(contains S3 pointer)',
+                               'identifier': True,
+                               'name': 'id',
+                               'range': 'processedData'},
+                        'sample_id': {'name': 'sample_id', 'range': 'sample'},
+                        'workflow_step': {'name': 'workflow_step',
+                                          'range': 'metagenomicssteps'}}})
 
     id: str = Field(default=..., description="""Identifier referencing the canonical ProcessedData / MetaGenomicsProduct row (contains S3 pointer)""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['timestampValue',
@@ -2143,7 +2098,6 @@ class MetagenomicsGenePhylogenyProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -2206,15 +2160,27 @@ class MetagenomicsGenePhylogenyProduct(ConfiguredBaseModel):
                        'campaign',
                        'study',
                        'zipDownload']} })
-    workflow_step: Optional[Metagenomicssteps] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'workflow_step',
+    workflow_step: Optional[Metagenomicssteps] = Field(default=None, description="""Optional: enumerated workflow step that produced the product (e.g., MagsAnalysis)""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_step',
          'domain_of': ['Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct']} })
-    sample_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
+    sample_id: Optional[str] = Field(default=None, description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
          'domain_of': ['Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct']} })
     gene_family: Optional[str] = Field(default=None, description="""Optional gene family or marker used for the phylogeny""", json_schema_extra = { "linkml_meta": {'alias': 'gene_family', 'domain_of': ['Metagenomics_GenePhylogenyProduct']} })
+    provider_name: Optional[ControlledTermValue] = Field(default=None, description="""Provider class (e.g., JGI, SeqCenter) using ontology terms where possible""", json_schema_extra = { "linkml_meta": {'alias': 'provider_name',
+         'domain_of': ['Metagenomics_BinningProduct',
+                       'Metagenomics_AnnotationProduct',
+                       'Metagenomics_GenePhylogenyProduct']} })
+    raw_fasta_url: Optional[str] = Field(default=None, description="""URL of raw FASTA file, if available from provider""", json_schema_extra = { "linkml_meta": {'alias': 'raw_fasta_url',
+         'domain_of': ['Metagenomics_BinningProduct',
+                       'Metagenomics_AnnotationProduct',
+                       'Metagenomics_GenePhylogenyProduct']} })
+    additional_information: Optional[str] = Field(default=None, description="""Additional information pertaining to these data, including SP Project ID and Taxon OID""", json_schema_extra = { "linkml_meta": {'alias': 'additional_information',
+         'domain_of': ['Metagenomics_BinningProduct',
+                       'Metagenomics_AnnotationProduct',
+                       'Metagenomics_GenePhylogenyProduct']} })
 
 
 class SamplingActivity(ConfiguredBaseModel):
@@ -2230,7 +2196,6 @@ class SamplingActivity(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -2310,9 +2275,9 @@ class SamplingActivity(ConfiguredBaseModel):
     sample_name: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'sample_name',
          'domain_of': ['samplingActivity', 'sampleBase', 'processedData']} })
     lims_barcode: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'lims_barcode', 'domain_of': ['samplingActivity', 'processedData']} })
-    alt_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'alt_id', 'domain_of': ['samplingActivity']} })
-    elev_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'elev_id', 'domain_of': ['samplingActivity']} })
-    lat_lon_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'lat_lon_id', 'domain_of': ['samplingActivity']} })
+    alt_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'alt_id', 'domain_of': ['samplingActivity']} })
+    elev_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'elev_id', 'domain_of': ['samplingActivity']} })
+    lat_lon_id: Optional[GeolocationValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'lat_lon_id', 'domain_of': ['samplingActivity']} })
     growth_facil: Optional[Growthfacilityenum] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'growth_facil', 'domain_of': ['samplingActivity']} })
     other_growth_facil: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'other_growth_facil', 'domain_of': ['samplingActivity']} })
     other_storage_condt: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'other_storage_condt', 'domain_of': ['samplingActivity']} })
@@ -2379,7 +2344,6 @@ class Soil(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -2442,25 +2406,25 @@ class Soil(ConfiguredBaseModel):
                        'campaign',
                        'study',
                        'zipDownload']} })
-    annual_precpt_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'annual_precpt_id', 'domain_of': ['soil']} })
-    annual_temp_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'annual_temp_id', 'domain_of': ['soil']} })
-    bulk_elect_conductivity_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'bulk_elect_conductivity_id', 'domain_of': ['soil']} })
-    density_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'density_id', 'domain_of': ['soil']} })
-    depth_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'depth_id', 'domain_of': ['soil']} })
-    particle_class_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'particle_class_id', 'domain_of': ['soil']} })
-    porosity_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'porosity_id', 'domain_of': ['soil']} })
-    pressure_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'pressure_id', 'domain_of': ['soil']} })
-    season_precpt_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'season_precpt_id', 'domain_of': ['soil']} })
-    season_temp_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'season_temp_id', 'domain_of': ['soil']} })
-    size_frac_low_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'size_frac_low_id', 'domain_of': ['soil']} })
-    size_frac_up_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'size_frac_up_id', 'domain_of': ['soil']} })
-    slope_aspect_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'slope_aspect_id', 'domain_of': ['soil']} })
-    slope_gradient_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'slope_gradient_id', 'domain_of': ['soil']} })
-    soil_temperature_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'soil_temperature_id', 'domain_of': ['soil']} })
-    soil_texture_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'soil_texture_id', 'domain_of': ['soil']} })
-    temp_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'temp_id', 'domain_of': ['soil']} })
-    water_content_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'water_content_id', 'domain_of': ['soil']} })
-    wind_speed_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'wind_speed_id', 'domain_of': ['soil']} })
+    annual_precpt_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'annual_precpt_id', 'domain_of': ['soil']} })
+    annual_temp_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'annual_temp_id', 'domain_of': ['soil']} })
+    bulk_elect_conductivity_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'bulk_elect_conductivity_id', 'domain_of': ['soil']} })
+    density_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'density_id', 'domain_of': ['soil']} })
+    depth_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'depth_id', 'domain_of': ['soil']} })
+    particle_class_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'particle_class_id', 'domain_of': ['soil']} })
+    porosity_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'porosity_id', 'domain_of': ['soil']} })
+    pressure_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'pressure_id', 'domain_of': ['soil']} })
+    season_precpt_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'season_precpt_id', 'domain_of': ['soil']} })
+    season_temp_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'season_temp_id', 'domain_of': ['soil']} })
+    size_frac_low_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'size_frac_low_id', 'domain_of': ['soil']} })
+    size_frac_up_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'size_frac_up_id', 'domain_of': ['soil']} })
+    slope_aspect_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'slope_aspect_id', 'domain_of': ['soil']} })
+    slope_gradient_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'slope_gradient_id', 'domain_of': ['soil']} })
+    soil_temperature_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'soil_temperature_id', 'domain_of': ['soil']} })
+    soil_texture_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'soil_texture_id', 'domain_of': ['soil']} })
+    temp_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'temp_id', 'domain_of': ['soil']} })
+    water_content_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'water_content_id', 'domain_of': ['soil']} })
+    wind_speed_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'wind_speed_id', 'domain_of': ['soil']} })
     cur_land_use: Optional[Landuseenum] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'cur_land_use', 'domain_of': ['soil']} })
     drainage_class: Optional[Drainageclassenum] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'drainage_class', 'domain_of': ['soil']} })
     fao_class: Optional[Faoclassenum] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'fao_class', 'domain_of': ['soil']} })
@@ -2517,7 +2481,6 @@ class SiteMetadata(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -2580,18 +2543,18 @@ class SiteMetadata(ConfiguredBaseModel):
                        'campaign',
                        'study',
                        'zipDownload']} })
-    nasa_mean_annual_temp_c_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_annual_temp_c_id', 'domain_of': ['siteMetadata']} })
-    nasa_mean_annual_precip_mm_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_annual_precip_mm_id', 'domain_of': ['siteMetadata']} })
-    nasa_max_annual_temp_c_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_max_annual_temp_c_id', 'domain_of': ['siteMetadata']} })
-    nasa_min_annual_temp_c_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_min_annual_temp_c_id', 'domain_of': ['siteMetadata']} })
-    nasa_mean_wind_speed_ms_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_wind_speed_ms_id', 'domain_of': ['siteMetadata']} })
-    nasa_mean_relative_humidity_pct_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_relative_humidity_pct_id', 'domain_of': ['siteMetadata']} })
-    nasa_frost_days_per_year_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_frost_days_per_year_id', 'domain_of': ['siteMetadata']} })
-    nasa_mean_dew_point_c_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_dew_point_c_id', 'domain_of': ['siteMetadata']} })
-    nasa_mean_vapor_pressure_kpa_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_vapor_pressure_kpa_id', 'domain_of': ['siteMetadata']} })
-    nasa_mean_surface_pressure_kpa_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_surface_pressure_kpa_id', 'domain_of': ['siteMetadata']} })
-    nasa_mean_shortwave_radiation_wm2_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_shortwave_radiation_wm2_id', 'domain_of': ['siteMetadata']} })
-    nasa_mean_longwave_radiation_wm2_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_longwave_radiation_wm2_id', 'domain_of': ['siteMetadata']} })
+    nasa_mean_annual_temp_c_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_annual_temp_c_id', 'domain_of': ['siteMetadata']} })
+    nasa_mean_annual_precip_mm_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_annual_precip_mm_id', 'domain_of': ['siteMetadata']} })
+    nasa_max_annual_temp_c_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_max_annual_temp_c_id', 'domain_of': ['siteMetadata']} })
+    nasa_min_annual_temp_c_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_min_annual_temp_c_id', 'domain_of': ['siteMetadata']} })
+    nasa_mean_wind_speed_ms_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_wind_speed_ms_id', 'domain_of': ['siteMetadata']} })
+    nasa_mean_relative_humidity_pct_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_relative_humidity_pct_id', 'domain_of': ['siteMetadata']} })
+    nasa_frost_days_per_year_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_frost_days_per_year_id', 'domain_of': ['siteMetadata']} })
+    nasa_mean_dew_point_c_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_dew_point_c_id', 'domain_of': ['siteMetadata']} })
+    nasa_mean_vapor_pressure_kpa_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_vapor_pressure_kpa_id', 'domain_of': ['siteMetadata']} })
+    nasa_mean_surface_pressure_kpa_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_surface_pressure_kpa_id', 'domain_of': ['siteMetadata']} })
+    nasa_mean_shortwave_radiation_wm2_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_shortwave_radiation_wm2_id', 'domain_of': ['siteMetadata']} })
+    nasa_mean_longwave_radiation_wm2_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nasa_mean_longwave_radiation_wm2_id', 'domain_of': ['siteMetadata']} })
     epa_ecoregion_l1: Optional[str] = Field(default=None, description="""EPA Level 1 Ecoregion name""", json_schema_extra = { "linkml_meta": {'alias': 'epa_ecoregion_l1', 'domain_of': ['siteMetadata']} })
     epa_ecoregion_l2: Optional[str] = Field(default=None, description="""EPA Level 2 Ecoregion name""", json_schema_extra = { "linkml_meta": {'alias': 'epa_ecoregion_l2', 'domain_of': ['siteMetadata']} })
     epa_ecoregion_l3: Optional[str] = Field(default=None, description="""EPA Level 3 Ecoregion name""", json_schema_extra = { "linkml_meta": {'alias': 'epa_ecoregion_l3', 'domain_of': ['siteMetadata']} })
@@ -2644,7 +2607,6 @@ class BulkDensityMethod(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -2722,7 +2684,6 @@ class ElementalAnalysisMethod(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -2826,7 +2787,6 @@ class EnzymeActivityMethod(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -2935,7 +2895,6 @@ class FTICRAcquisitionMethod(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -3047,7 +3006,6 @@ class GravimetricWaterContentMethod(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -3151,7 +3109,6 @@ class HydraulicPropertiesMethod(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -3258,7 +3215,6 @@ class KuoMethod(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -3364,7 +3320,6 @@ class LCMSMetabolomicsMethod(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -3484,7 +3439,6 @@ class MicrobialBiomassMethod(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -3601,7 +3555,6 @@ class PHMethod(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -3694,7 +3647,6 @@ class RespirationMethod(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -3758,11 +3710,11 @@ class RespirationMethod(ConfiguredBaseModel):
                        'study',
                        'zipDownload']} })
     respiration_analysis_type: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'respiration_analysis_type', 'domain_of': ['RespirationMethod']} })
-    sample_volume_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_volume_id', 'domain_of': ['RespirationMethod']} })
-    scale_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'scale_id', 'domain_of': ['RespirationMethod']} })
-    duration_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'duration_id', 'domain_of': ['RespirationMethod']} })
-    sampling_time_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sampling_time_id', 'domain_of': ['RespirationMethod']} })
-    bottle_vol_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'bottle_vol_id', 'domain_of': ['RespirationMethod']} })
+    sample_volume_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_volume_id', 'domain_of': ['RespirationMethod']} })
+    scale_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'scale_id', 'domain_of': ['RespirationMethod']} })
+    duration_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'duration_id', 'domain_of': ['RespirationMethod']} })
+    sampling_time_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sampling_time_id', 'domain_of': ['RespirationMethod']} })
+    bottle_vol_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'bottle_vol_id', 'domain_of': ['RespirationMethod']} })
 
 
 class TOCTNMethod(ConfiguredBaseModel):
@@ -3804,7 +3756,6 @@ class TOCTNMethod(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -3924,7 +3875,6 @@ class TextureMethod(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -4028,7 +3978,6 @@ class XrayComputedTomographyMethod(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -4116,7 +4065,6 @@ class SampleBase(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -4202,7 +4150,6 @@ class Sample(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -4300,7 +4247,6 @@ class SoilSample(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -4382,7 +4328,6 @@ class AerosolSample(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -4464,7 +4409,6 @@ class ProcessedSample(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -4546,7 +4490,6 @@ class CoreSection(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -4628,7 +4571,6 @@ class Replicate(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -4714,7 +4656,6 @@ class ProcessedData(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -4809,9 +4750,7 @@ class ProcessedData(ConfiguredBaseModel):
     filesize: Optional[int] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'filesize', 'domain_of': ['processedData']} })
     md5checksum: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'md5checksum', 'domain_of': ['processedData']} })
     workflow_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'workflow_id',
-         'domain_of': ['magBin',
-                       'processedData',
-                       'workflowExecutionFunctionalAnnotation']} })
+         'domain_of': ['processedData', 'workflowExecutionFunctionalAnnotation']} })
     lims_barcode: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'lims_barcode', 'domain_of': ['samplingActivity', 'processedData']} })
     version: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'version',
          'domain_of': ['softwareControlledTermValue',
@@ -4837,7 +4776,6 @@ class AnalysisActivity(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -4951,7 +4889,6 @@ class InstrumentData(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -5091,7 +5028,6 @@ class WorkflowExecutionActivity(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -5195,7 +5131,7 @@ class WorkflowExecutionActivity(ConfiguredBaseModel):
                        'analysisActivity',
                        'instrumentData',
                        'workflowExecutionActivity']} })
-    used_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'used_id', 'domain_of': ['workflowExecutionActivity']} })
+    used_id: Optional[SoftwareControlledTermValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'used_id', 'domain_of': ['workflowExecutionActivity']} })
     execution_resource: Optional[Executionresourcetype] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'execution_resource', 'domain_of': ['workflowExecutionActivity']} })
     workflow_steps: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'workflow_steps', 'domain_of': ['workflowExecutionActivity']} })
     version: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'version',
@@ -5222,7 +5158,6 @@ class AlternativeIdentifier(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -5309,7 +5244,6 @@ class FunctionalAnnotationIdentifier(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -5390,7 +5324,6 @@ class Instrument(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -5480,7 +5413,6 @@ class MetaboliteQuantification(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -5578,7 +5510,6 @@ class OntologyClass(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -5682,7 +5613,6 @@ class PeptideQuantification(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -5782,7 +5712,6 @@ class ContainerType(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -5870,7 +5799,7 @@ class ContainerType(ConfiguredBaseModel):
                        'instrumentData',
                        'containerType']} })
     container_type: Optional[Containertypeenum] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'container_type', 'domain_of': ['containerType']} })
-    container_size_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'container_size_id', 'domain_of': ['containerType']} })
+    container_size_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'container_size_id', 'domain_of': ['containerType']} })
 
 
 class Custodian(ConfiguredBaseModel):
@@ -5886,7 +5815,6 @@ class Custodian(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -5965,7 +5893,6 @@ class InstrumentAltId(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -6046,7 +5973,6 @@ class LabDevice(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -6126,8 +6052,8 @@ class LabDevice(ConfiguredBaseModel):
                        'labDevice',
                        'campaign']} })
     device_type: Optional[Devicetypeenum] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'device_type', 'domain_of': ['labDevice']} })
-    activity_time_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'activity_time_id', 'domain_of': ['labDevice']} })
-    activity_speed_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'activity_speed_id', 'domain_of': ['labDevice']} })
+    activity_time_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'activity_time_id', 'domain_of': ['labDevice']} })
+    activity_speed_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'activity_speed_id', 'domain_of': ['labDevice']} })
 
 
 class SampleProcessing(ConfiguredBaseModel):
@@ -6143,7 +6069,6 @@ class SampleProcessing(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -6239,7 +6164,6 @@ class ProcessingSampleLink(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -6329,9 +6253,7 @@ class WorkflowExecutionFunctionalAnnotation(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema'})
 
     workflow_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'workflow_id',
-         'domain_of': ['magBin',
-                       'processedData',
-                       'workflowExecutionFunctionalAnnotation']} })
+         'domain_of': ['processedData', 'workflowExecutionFunctionalAnnotation']} })
     functional_annotation_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'functional_annotation_id',
          'domain_of': ['workflowExecutionFunctionalAnnotation']} })
     count: Optional[Decimal] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'count', 'domain_of': ['workflowExecutionFunctionalAnnotation']} })
@@ -6366,7 +6288,6 @@ class BulkDensityProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -6429,7 +6350,7 @@ class BulkDensityProduct(ConfiguredBaseModel):
                        'campaign',
                        'study',
                        'zipDownload']} })
-    bulk_density_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'bulk_density_id', 'domain_of': ['BulkDensityProduct']} })
+    bulk_density_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'bulk_density_id', 'domain_of': ['BulkDensityProduct']} })
     flag: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag',
          'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
@@ -6469,7 +6390,6 @@ class ElementalAnalysisProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -6532,12 +6452,12 @@ class ElementalAnalysisProduct(ConfiguredBaseModel):
                        'campaign',
                        'study',
                        'zipDownload']} })
-    total_carbon_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_carbon_id', 'domain_of': ['ElementalAnalysisProduct']} })
-    total_nitrogen_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_nitrogen_id',
+    total_carbon_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_carbon_id', 'domain_of': ['ElementalAnalysisProduct']} })
+    total_nitrogen_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_nitrogen_id',
          'domain_of': ['ElementalAnalysisProduct', 'MAOMProduct', 'WEOMProduct']} })
-    total_kjeldahl_nitrogen_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_kjeldahl_nitrogen_id',
+    total_kjeldahl_nitrogen_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_kjeldahl_nitrogen_id',
          'domain_of': ['ElementalAnalysisProduct']} })
-    total_sulfur_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_sulfur_id', 'domain_of': ['ElementalAnalysisProduct']} })
+    total_sulfur_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_sulfur_id', 'domain_of': ['ElementalAnalysisProduct']} })
     flag_total_carbon: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag_total_carbon', 'domain_of': ['ElementalAnalysisProduct']} })
     flag_total_nitrogen: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag_total_nitrogen', 'domain_of': ['ElementalAnalysisProduct']} })
     flag_tkn: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag_tkn', 'domain_of': ['ElementalAnalysisProduct']} })
@@ -6573,7 +6493,6 @@ class EnzymeProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -6636,7 +6555,7 @@ class EnzymeProduct(ConfiguredBaseModel):
                        'campaign',
                        'study',
                        'zipDownload']} })
-    beta_glucosidase_ug_pnp_per_g_per_h_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'beta_glucosidase_ug_pnp_per_g_per_h_id',
+    beta_glucosidase_ug_pnp_per_g_per_h_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'beta_glucosidase_ug_pnp_per_g_per_h_id',
          'domain_of': ['EnzymeProduct']} })
     flag: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag',
          'domain_of': ['BulkDensityProduct',
@@ -6661,7 +6580,6 @@ class FTICRProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -6752,8 +6670,8 @@ class FTICRProduct(ConfiguredBaseModel):
     h_c_average: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'h_c_average', 'domain_of': ['FTICRProduct']} })
     o_c_average: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'o_c_average', 'domain_of': ['FTICRProduct']} })
     c_average: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'c_average', 'domain_of': ['FTICRProduct']} })
-    percent_mz_assigned_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'percent_mz_assigned_id', 'domain_of': ['FTICRProduct']} })
-    rms_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'rms_id', 'domain_of': ['FTICRProduct']} })
+    percent_mz_assigned_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'percent_mz_assigned_id', 'domain_of': ['FTICRProduct']} })
+    rms_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'rms_id', 'domain_of': ['FTICRProduct']} })
     dbe_average: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'dbe_average', 'domain_of': ['FTICRProduct']} })
     low_mass_accuracy_flag: Optional[bool] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'low_mass_accuracy_flag', 'domain_of': ['FTICRProduct']} })
     low_mz_assignment_flag: Optional[bool] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'low_mz_assignment_flag', 'domain_of': ['FTICRProduct']} })
@@ -6788,7 +6706,6 @@ class GWCMoistureProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -6851,7 +6768,7 @@ class GWCMoistureProduct(ConfiguredBaseModel):
                        'campaign',
                        'study',
                        'zipDownload']} })
-    gwc_percent_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'gwc_percent_id', 'domain_of': ['GWCMoistureProduct']} })
+    gwc_percent_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'gwc_percent_id', 'domain_of': ['GWCMoistureProduct']} })
     flag: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag',
          'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
@@ -6891,7 +6808,6 @@ class IonsAnalysisProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -6954,18 +6870,18 @@ class IonsAnalysisProduct(ConfiguredBaseModel):
                        'campaign',
                        'study',
                        'zipDownload']} })
-    sulfate_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sulfate_id', 'domain_of': ['IonsAnalysisProduct']} })
-    boron_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'boron_id', 'domain_of': ['IonsAnalysisProduct']} })
-    zinc_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'zinc_id', 'domain_of': ['IonsAnalysisProduct']} })
-    manganate_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'manganate_id', 'domain_of': ['IonsAnalysisProduct']} })
-    copper_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'copper_id', 'domain_of': ['IonsAnalysisProduct']} })
-    iron_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'iron_id', 'domain_of': ['IonsAnalysisProduct']} })
-    calcium_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'calcium_id', 'domain_of': ['IonsAnalysisProduct']} })
-    magnesium_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'magnesium_id', 'domain_of': ['IonsAnalysisProduct']} })
-    sodium_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sodium_id', 'domain_of': ['IonsAnalysisProduct']} })
-    potassium_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'potassium_id', 'domain_of': ['IonsAnalysisProduct']} })
-    total_bases_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_bases_id', 'domain_of': ['IonsAnalysisProduct']} })
-    cation_exchange_capacity_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'cation_exchange_capacity_id', 'domain_of': ['IonsAnalysisProduct']} })
+    sulfate_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sulfate_id', 'domain_of': ['IonsAnalysisProduct']} })
+    boron_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'boron_id', 'domain_of': ['IonsAnalysisProduct']} })
+    zinc_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'zinc_id', 'domain_of': ['IonsAnalysisProduct']} })
+    manganate_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'manganate_id', 'domain_of': ['IonsAnalysisProduct']} })
+    copper_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'copper_id', 'domain_of': ['IonsAnalysisProduct']} })
+    iron_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'iron_id', 'domain_of': ['IonsAnalysisProduct']} })
+    calcium_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'calcium_id', 'domain_of': ['IonsAnalysisProduct']} })
+    magnesium_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'magnesium_id', 'domain_of': ['IonsAnalysisProduct']} })
+    sodium_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sodium_id', 'domain_of': ['IonsAnalysisProduct']} })
+    potassium_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'potassium_id', 'domain_of': ['IonsAnalysisProduct']} })
+    total_bases_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_bases_id', 'domain_of': ['IonsAnalysisProduct']} })
+    cation_exchange_capacity_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'cation_exchange_capacity_id', 'domain_of': ['IonsAnalysisProduct']} })
     flag_sulfate: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag_sulfate', 'domain_of': ['IonsAnalysisProduct']} })
     flag_boron: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag_boron', 'domain_of': ['IonsAnalysisProduct']} })
     flag_zinc: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag_zinc', 'domain_of': ['IonsAnalysisProduct']} })
@@ -7017,7 +6933,6 @@ class MAOMProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -7080,11 +6995,11 @@ class MAOMProduct(ConfiguredBaseModel):
                        'campaign',
                        'study',
                        'zipDownload']} })
-    total_organic_carbon_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_organic_carbon_id',
+    total_organic_carbon_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_organic_carbon_id',
          'domain_of': ['MAOMProduct', 'WEOMProduct']} })
     total_organic_carbon_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_organic_carbon_avg',
          'domain_of': ['MAOMProduct', 'WEOMProduct']} })
-    total_nitrogen_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_nitrogen_id',
+    total_nitrogen_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_nitrogen_id',
          'domain_of': ['ElementalAnalysisProduct', 'MAOMProduct', 'WEOMProduct']} })
     total_nitrogen_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_nitrogen_avg', 'domain_of': ['MAOMProduct', 'WEOMProduct']} })
     flag_toc: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag_toc', 'domain_of': ['MAOMProduct', 'WEOMProduct']} })
@@ -7106,7 +7021,6 @@ class MetaGenomicsProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -7210,7 +7124,6 @@ class MicrobialBiomassProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -7273,9 +7186,9 @@ class MicrobialBiomassProduct(ConfiguredBaseModel):
                        'campaign',
                        'study',
                        'zipDownload']} })
-    mbc_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'mbc_id', 'domain_of': ['MicrobialBiomassProduct']} })
+    mbc_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'mbc_id', 'domain_of': ['MicrobialBiomassProduct']} })
     mbc_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'mbc_avg', 'domain_of': ['MicrobialBiomassProduct']} })
-    mbn_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'mbn_id', 'domain_of': ['MicrobialBiomassProduct']} })
+    mbn_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'mbn_id', 'domain_of': ['MicrobialBiomassProduct']} })
     mbn_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'mbn_avg', 'domain_of': ['MicrobialBiomassProduct']} })
     flag_mbc: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag_mbc', 'domain_of': ['MicrobialBiomassProduct']} })
     flag_mbn: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag_mbn', 'domain_of': ['MicrobialBiomassProduct']} })
@@ -7320,7 +7233,6 @@ class NitrogenAnalysisProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -7383,9 +7295,9 @@ class NitrogenAnalysisProduct(ConfiguredBaseModel):
                        'campaign',
                        'study',
                        'zipDownload']} })
-    no3_n_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'no3_n_id', 'domain_of': ['NitrogenAnalysisProduct']} })
+    no3_n_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'no3_n_id', 'domain_of': ['NitrogenAnalysisProduct']} })
     no3_n_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'no3_n_avg', 'domain_of': ['NitrogenAnalysisProduct']} })
-    nh4_n_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nh4_n_id', 'domain_of': ['NitrogenAnalysisProduct']} })
+    nh4_n_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nh4_n_id', 'domain_of': ['NitrogenAnalysisProduct']} })
     nh4_n_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'nh4_n_avg', 'domain_of': ['NitrogenAnalysisProduct']} })
     flag_no3n: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag_no3n', 'domain_of': ['NitrogenAnalysisProduct']} })
     flag_nh4n: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag_nh4n', 'domain_of': ['NitrogenAnalysisProduct']} })
@@ -7430,7 +7342,6 @@ class PhosphorusAnalysisProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -7495,7 +7406,7 @@ class PhosphorusAnalysisProduct(ConfiguredBaseModel):
                        'zipDownload']} })
     extraction_method: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'extraction_method',
          'domain_of': ['samplingActivity', 'PhosphorusAnalysisProduct']} })
-    phosphorus_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'phosphorus_id', 'domain_of': ['PhosphorusAnalysisProduct']} })
+    phosphorus_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'phosphorus_id', 'domain_of': ['PhosphorusAnalysisProduct']} })
     phosphorus_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'phosphorus_avg', 'domain_of': ['PhosphorusAnalysisProduct']} })
     flag: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag',
          'domain_of': ['BulkDensityProduct',
@@ -7537,7 +7448,6 @@ class RespirationProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -7600,7 +7510,7 @@ class RespirationProduct(ConfiguredBaseModel):
                        'campaign',
                        'study',
                        'zipDownload']} })
-    respiration_rate_per_day_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'respiration_rate_per_day_id', 'domain_of': ['RespirationProduct']} })
+    respiration_rate_per_day_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'respiration_rate_per_day_id', 'domain_of': ['RespirationProduct']} })
     flag: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag',
          'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
@@ -7640,7 +7550,6 @@ class TextureProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -7703,9 +7612,9 @@ class TextureProduct(ConfiguredBaseModel):
                        'campaign',
                        'study',
                        'zipDownload']} })
-    sand_pct_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sand_pct_id', 'domain_of': ['TextureProduct']} })
-    silt_pct_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'silt_pct_id', 'domain_of': ['TextureProduct']} })
-    clay_pct_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'clay_pct_id', 'domain_of': ['TextureProduct']} })
+    sand_pct_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sand_pct_id', 'domain_of': ['TextureProduct']} })
+    silt_pct_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'silt_pct_id', 'domain_of': ['TextureProduct']} })
+    clay_pct_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'clay_pct_id', 'domain_of': ['TextureProduct']} })
     flag: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag',
          'domain_of': ['BulkDensityProduct',
                        'EnzymeProduct',
@@ -7745,7 +7654,6 @@ class TomographyProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -7867,7 +7775,6 @@ class WEOMProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -7930,11 +7837,11 @@ class WEOMProduct(ConfiguredBaseModel):
                        'campaign',
                        'study',
                        'zipDownload']} })
-    total_organic_carbon_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_organic_carbon_id',
+    total_organic_carbon_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_organic_carbon_id',
          'domain_of': ['MAOMProduct', 'WEOMProduct']} })
     total_organic_carbon_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_organic_carbon_avg',
          'domain_of': ['MAOMProduct', 'WEOMProduct']} })
-    total_nitrogen_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_nitrogen_id',
+    total_nitrogen_id: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_nitrogen_id',
          'domain_of': ['ElementalAnalysisProduct', 'MAOMProduct', 'WEOMProduct']} })
     total_nitrogen_avg: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'total_nitrogen_avg', 'domain_of': ['MAOMProduct', 'WEOMProduct']} })
     flag_toc: Optional[Processeddataflag] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'flag_toc', 'domain_of': ['MAOMProduct', 'WEOMProduct']} })
@@ -7972,7 +7879,6 @@ class PHProduct(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -8078,7 +7984,6 @@ class Campaign(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -8175,7 +8080,6 @@ class Study(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -8263,7 +8167,6 @@ class ZipDownload(ConfiguredBaseModel):
                        'geolocationValue',
                        'conditioningValue',
                        'latLongValue',
-                       'magBin',
                        'Metagenomics_BinningProduct',
                        'Metagenomics_AnnotationProduct',
                        'Metagenomics_GenePhylogenyProduct',
@@ -8343,7 +8246,6 @@ QuantityValue.model_rebuild()
 GeolocationValue.model_rebuild()
 ConditioningValue.model_rebuild()
 LatLongValue.model_rebuild()
-MagBin.model_rebuild()
 MetagenomicsBinningProduct.model_rebuild()
 MetagenomicsAnnotationProduct.model_rebuild()
 MetagenomicsGenePhylogenyProduct.model_rebuild()
