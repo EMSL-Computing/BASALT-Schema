@@ -7,7 +7,9 @@ default:
 # set working-directory := "."
 
 src_schema_path := "./src/analysis_api_schema/schema/analysis_api_schema.yaml"
-# doc_schema_path: reserved for a future public-facing overlay schema
+# doc_gen_overlay: adds uuid/numeric type stubs for doc rendering only
+# kept alongside other doc-gen artefacts in src/doc_templates/
+doc_overlay_path := "./src/doc_templates/doc_gen_overlay.yaml"
 dst_schema_path := "./project"
 
 gen-schema:

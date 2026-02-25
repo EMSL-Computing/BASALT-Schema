@@ -9,6 +9,9 @@
 # Adding them here lets the LinkML doc generator resolve slot ranges without
 # generating any actual constraints in the operational model.
 #
+# Location: src/doc_templates/doc_gen_overlay.yaml
+# (Kept alongside the Jinja2 template overrides — all doc-gen artefacts in one place)
+#
 # Run docs with:   just gen-doc
 # Serve docs with: just serve-doc
 # =============================================================================
@@ -31,7 +34,7 @@ default_range: string
 
 imports:
   - linkml:types
-  - analysis_api_schema/schema/analysis_api_schema
+  - ../analysis_api_schema/schema/analysis_api_schema
 
 # ---------------------------------------------------------------------------
 # Type stubs — doc-gen only
