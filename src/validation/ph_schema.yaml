@@ -1,0 +1,64 @@
+---
+# =============================================================================
+# pH Analysis — Ingest Validation Schema
+# =============================================================================
+# Source class:  pHProduct (products.yaml)
+# Analysis type: "ph" (lims_processed_data_schema.yaml AnalysisTypeEnum)
+# Measure level: Single (no replicates)
+# CSV output:    pH, flag_pH (soil_biochemical_properties_schema.yaml)
+# Last Updated:  2026-02-25
+# =============================================================================
+
+id: https://w3id.org/MONet/analysis-api-schema/ph
+name: ph_schema
+title: MONet pH Analysis Ingest Schema
+description: |-
+  Ingest validation schema for pHProduct.
+  Describes the product_values payload for analysis_type = "ph".
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: ph_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+
+  ProcessedDataFlagEnum:
+    description: Mirrors processeddataflag in enums.yaml.
+    permissible_values:
+      Below_Detection:
+      Below_Reporting_Limit:
+      High_Background:
+      Out_of_Range:
+      Outlier:
+      Data_not_available:
+      Failed_QC:
+      Insufficient_Material:
+
+classes:
+
+  PHProductValues:
+    description: |-
+      pH measurement product values.
+      One record per core section. No replicates.
+    attributes:
+
+      ph:
+        description: Soil pH (pH units, 0–14).
+        range: double
+        required: false
+        # minimum_value: 0
+        # maximum_value: 14
+
+      flag:
+        description: |-
+          QC flag for the pH measurement.
+          CSV column: flag_pH
+        range: processeddataflag
+        required: false

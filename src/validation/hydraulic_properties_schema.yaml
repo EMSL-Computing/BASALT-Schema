@@ -1,0 +1,140 @@
+---
+# =============================================================================
+# HYPROP / Hydraulic Properties Schema
+# =============================================================================
+#
+# CONTEXT and Purpose:
+# - Validation schema for HydraulicPropertiesProduct — soil hydraulic parameters
+#   derived from HYPROP evaporation-experiment data using Van Genuchten Model (VGM)
+# - One row per core section; four attributes are the four VGM model parameters
+# - Covers the INGEST contract: what gets POSTed to the API and stored as a product
+# - hydraulic_properties_method already exists in routemethod (enums.yaml) — no changes needed there
+#
+# NOTE on branch status:
+# - The HydraulicPropertiesProduct class definition in the operational schema
+#   (analysis_api_schema.yaml) lives on a separate feature branch — DO NOT modify
+#   that class here. This file is a standalone validation/documentation schema only.
+#
+# Relationship to other schemas:
+# - analysis_type key: to be confirmed (likely "hyprop" or "hydraulic_properties")
+# - flag values align with processeddataflag enum in enums.yaml
+# - Proposal_ID, sampling_set, core_section are inherited from LIMSProcessedData envelope
+#   (see lims_processed_data_schema.yaml)
+#
+# Last Updated: 2026-02-25
+# =============================================================================
+
+id: https://w3id.org/MONet/analysis-api-schema/hydraulic-properties
+name: hydraulic_properties_schema
+title: MONet HYPROP / Hydraulic Properties Schema
+description: |-
+  Validation schema for HydraulicPropertiesProduct — soil hydraulic parameters
+  derived from HYPROP evaporation-experiment data.
+  
+  The four attributes are the four Van Genuchten Model (VGM) parameters.
+  
+  This file documents the ingest contract for rapid validation.
+  The operational HydraulicPropertiesProduct class lives in the main schema.
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: hydraulic_properties_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+
+  ProductMeasureTypeEnum:
+    description: |-
+      Measurement level for this product record.
+      Mirrors productmeasuretype in enums.yaml.
+    permissible_values:
+      Single:
+        description: Single measurement (no replicates)
+      Replicate:
+        description: Individual replicate measurement
+      Average:
+        description: Average across replicates
+
+  HydraulicPropertiesFlagEnum:
+    description: |-
+      QC flag for the entire VGM fit result.
+      Mirrors processeddataflag in enums.yaml.
+    permissible_values:
+      Below_Detection:
+        description: Value below detection limit
+      Below_Reporting_Limit:
+        description: Value below reporting limit
+      High_Background:
+        description: High background interference
+      Out_of_Range:
+        description: Value outside expected range
+      Outlier:
+        description: Statistical outlier
+      Data_not_available:
+        description: Data not available or missing sample
+      Failed_QC:
+        description: Failed quality control (e.g. poor VGM fit)
+      Insufficient_Material:
+        description: Insufficient sample material
+
+classes:
+
+  HydraulicPropertiesProduct:
+    description: |-
+      Soil hydraulic parameters. One record per core section; the four attributes are the four VGM model
+      parameters. Proposal_ID, sampling_set, and core_section are inherited from
+      the parent LIMSProcessedData envelope (see lims_processed_data_schema.yaml).
+    attributes:
+
+      measure_type:
+        description: |-
+          Measurement level: Single, Replicate, or Average.
+          Mirrors the measure_type slot from the operational schema.
+        range: ProductMeasureTypeEnum
+        required: false
+
+      alpha:
+        description: |-
+          Van Genuchten shape parameter alpha (units: 1/cm).
+          Controls the inverse of the air-entry suction.
+          Typically fitted by HYPROP-FIT or similar software.
+          Minimum value: 0
+        range: double
+        required: false
+
+      n:
+        description: |-
+          Van Genuchten pore-size distribution index n (dimensionless; n > 1).
+          Controls the slope of the water-retention curve.
+          Minimum value: 1 (strictly greater than 1 for physical validity)
+        range: double
+        required: false
+
+      theta_r:
+        description: |-
+          Residual volumetric water content theta_r (units: cm³ cm⁻³).
+          The water content at which liquid conductivity approaches zero.
+          Minimum value: 0; Maximum value: < theta_s
+        range: double
+        required: false
+
+      theta_s:
+        description: |-
+          Saturated volumetric water content theta_s (units: cm³ cm⁻³ × 10⁻³).
+          Approximates total porosity under saturated conditions.
+          Minimum value: 0; Maximum value: 1
+        range: double
+        required: false
+
+      flag:
+        description: |-
+          QC flag for the entire VGM fit (e.g. missing sample, failed QC, poor convergence).
+          Applied to the record as a whole rather than to individual parameters.
+        range: processeddataflag
+        required: false
