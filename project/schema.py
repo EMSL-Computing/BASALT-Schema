@@ -1527,6 +1527,31 @@ class GWCMoistureProduct(Base):
     
 
 
+class HydraulicPropertiesProduct(Base):
+    """
+    Soil hydraulic parameters derived from HYPROP evaporation-experiment data. One row per core section; the four attributes are the four VGM model parameters.  Proposal_ID, sampling_set, and core_section are inherited from the parent processedData record.
+    """
+    __tablename__ = 'HydraulicPropertiesProduct'
+
+    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='productmeasuretype'))
+    id = Column(UUID(), ForeignKey('processedData.id'), primary_key=True, nullable=False )
+    alpha = Column(Float())
+    n = Column(Float())
+    theta_r = Column(Float())
+    theta_s = Column(Float())
+    flag = Column(Enum('Below_Detection', 'Below_Reporting_Limit', 'High_Background', 'Out_of_Range', 'Outlier', 'Data_not_available', 'Failed_QC', 'Insufficient_Material', name='processeddataflag'))
+    
+
+    
+
+    def __repr__(self):
+        return f"HydraulicPropertiesProduct(measure_type={self.measure_type},id={self.id},alpha={self.alpha},n={self.n},theta_r={self.theta_r},theta_s={self.theta_s},flag={self.flag},)"
+
+
+
+    
+
+
 class IonsAnalysisProduct(Base):
     """
     
