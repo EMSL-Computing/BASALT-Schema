@@ -1,9 +1,9 @@
-id: https://w3id.org/MONet/analysis-api-schema/shoehorn-amp2
-name: amp2-shoehorn
-title: AMP2 Automated Chained Workflows — Shoehorn Integration
+id: https://w3id.org/MONet/analysis-api-schema/minimal-amp2
+name: amp2-minimal
+title: AMP2 Automated Chained Workflows — Minimal database changes 
 description: |-
   Shows how AMP2 (Automated Microbiology Pipeline 2) multi-step workflows
-  fit into the EXISTING analysis-api schema using core-shoehorn.yaml additions.
+  fit into the EXISTING analysis-api schema using core-planB.yaml additions.
 
   AMP2 context: Automated lab system that chains instrument steps
   (flow cytometry → cultivation → HPLC → isolation → proteomics).
@@ -16,7 +16,7 @@ description: |-
   base tables.
 
   Core insight: the Montana's draft introduces Entity/Activity as new classes.
-  In the shoehorn, those roles are already filled:
+  In this minimal approach, those roles are already filled:
     Phase 2's Entity       ↔  sampleBase / processedSample (physical things)
     Phase 2's Activity     ↔  sampleProcessing + analysisActivity + workflowExecutionActivity
     parent_workflow_id       ↔  Phase 2's parent_execution_id
@@ -185,7 +185,7 @@ classes:
         range: string
 
   # ============================================================================
-  # WORKFLOW CHAINING — what uses parent_workflow_id [ADDED in core-shoehorn]
+  # WORKFLOW CHAINING — what uses parent_workflow_id [ADDED in core-planB]
   # ============================================================================
   # The following table is documentation-only; it shows example DB records
   # to make the chaining concrete. Not a schema class.

@@ -1,6 +1,6 @@
-id: https://w3id.org/MONet/analysis-api-schema/shoehorn-core
-name: core-shoehorn
-title: Core Shoehorn Changes — Existing Schema Delta
+id: https://w3id.org/MONet/analysis-api-schema/minimal-core
+name: core-planB
+title: Core planB Changes — Existing Schema Delta
 description: |-
   Shows ONLY the additions/changes needed to the existing analysis-api schema
   to enable chained workflows, temporal series, campaign membership, and

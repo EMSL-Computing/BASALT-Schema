@@ -1,11 +1,11 @@
-id: https://w3id.org/MONet/analysis-api-schema/shoehorn-xrf-xrd
-name: xrf-xrd-shoehorn
-title: XRF / XRD Elemental & Mineralogical Analysis — Shoehorn Integration
+id: https://w3id.org/MONet/analysis-api-schema/minimal-xrf-xrd
+name: xrf-xrd-minimal
+title: XRF / XRD Elemental & Mineralogical Analysis — Minimal Integration
 description: |-
   Shows how XRF (elemental) and XRD (mineralogical) data fit into the
-  EXISTING analysis-api schema with only core-shoehorn.yaml additions.
+  EXISTING analysis-api schema with only core-planB.yaml additions.
 
-  These are among the simplest shoehorn cases: each is a single-step
+  These are among the simplest planB cases: each is a single-step
   analysis with no workflow chaining. One analysisActivity → one set of
   processedData records. No parent_workflow_id needed.
 
@@ -129,7 +129,7 @@ classes:
   #   {"software":"HighScore_Plus","version":"5.1","method":"Rietveld",
   #    "r_factor":0.042,"gof":1.8}
   #
-  # processedData.summary_metrics [ADDED in core-shoehorn]:
+  # processedData.summary_metrics [ADDED in core-planB]:
   #   XRF: {"Ni_mg_kg":45.3,"Pb_mg_kg":8.2,"As_mg_kg":12.1,"qc":"OK"}
   #   XRD: {"quartz_pct":42,"feldspar_pct":18,"clay_pct":31,"amorphous_pct":9}
 

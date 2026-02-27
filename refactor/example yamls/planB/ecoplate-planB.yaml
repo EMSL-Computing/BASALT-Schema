@@ -1,9 +1,9 @@
-id: https://w3id.org/MONet/analysis-api-schema/shoehorn-ecoplate
-name: ecoplate-shoehorn
-title: Ecoplates (96-well Temporal Absorbance) — Shoehorn Integration
+id: https://w3id.org/MONet/analysis-api-schema/minimal-ecoplate
+name: ecoplate-minimal
+title: Ecoplates (96-well Temporal Absorbance) — Minimal Integration
 description: |-
   Shows how Biolog EcoPlate time-series data fits into the EXISTING
-  analysis-api schema with only core-shoehorn.yaml additions.
+  analysis-api schema with only core-planB.yaml additions.
 
   Ecoplates are 96-well plates inoculated with a soil/culture suspension.
   Absorbance (590 nm) is read at multiple timepoints (t=0, t=24h, t=48h, t=72h).
@@ -15,7 +15,7 @@ description: |-
     - High cardinality: 96 wells × 4 timepoints = 384 discrete readings/plate
     - Grouping: readings group by carbon source and treatment across plates
 
-  MODELING CHOICE — "Compact per-plate" (recommended for shoehorn):
+  MODELING CHOICE — "Compact per-plate" (recommended for plan b):
     - One processedSample per plate (not per well)
     - One analysisActivity per plate × timepoint (4 activities/plate)
     - Raw CSV stored in MinIO via processedData.s3_key
@@ -70,7 +70,7 @@ classes:
 
       processedData.type          = 'ecoplate_absorbance'
       processedData.s3_key        = 'ecoplate/{plate_id}_{timepoint}.csv'
-      processedData.summary_metrics [ADDED in core-shoehorn]:
+      processedData.summary_metrics [ADDED in core-plan b]:
         {
           "timepoint": "t=24h",
           "wavelength_nm": 590,

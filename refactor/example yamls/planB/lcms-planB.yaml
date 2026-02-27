@@ -1,9 +1,9 @@
-id: https://w3id.org/MONet/analysis-api-schema/shoehorn-lcms
-name: lcms-shoehorn
-title: LC-MS Metabolomics — Shoehorn Integration
+id: https://w3id.org/MONet/analysis-api-schema/minimal-lcms
+name: lcms-minimal
+title: LC-MS Metabolomics — Minimal Integration
 description: |-
   Shows how LC-MS metabolomics data fits into the EXISTING analysis-api schema
-  with only the core-shoehorn.yaml additions. No new provenance tables needed.
+  with only the core-planB.yaml additions. No new provenance tables needed.
 
   Mapping principle:
     - One analysisActivity per acquisition (instrument run)
@@ -123,11 +123,11 @@ classes:
   # analysisActivity.analyte_id                 = processedSample(type='metabolite_extract')
   #
   # workflowExecutionActivity.type              = 'lcms_feature_extraction' | 'lcms_annotation'
-  # workflowExecutionActivity.parent_workflow_id = [ADDED in core-shoehorn] links steps
+  # workflowExecutionActivity.parent_workflow_id = [ADDED in core-planB] links steps
   # workflowExecutionActivity.workflow_steps    = JSONB with tool + params (already exists)
   #
   # processedData.workflow_id                   → workflowExecutionActivity
-  # processedData.summary_metrics               = [ADDED in core-shoehorn] compact blob
+  # processedData.summary_metrics               = [ADDED in core-planB] compact blob
   # processedData.type                          = new product enum values (extend product enum)
 
 slots:
