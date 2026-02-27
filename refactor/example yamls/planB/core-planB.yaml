@@ -67,7 +67,7 @@ classes:
           Non-null → this execution directly follows parent_workflow_id.
 
           Enables single-hop chaining queries. For full ancestor/descendant
-          traversal use the provenance_cache table (see below).
+          traversal use the sample_history_cache table (see below).
 
           DDL: ALTER TABLE "workflowExecutionActivity"
                  ADD COLUMN parent_workflow_id UUID
@@ -300,7 +300,7 @@ classes:
 
 
   # ============================================================================
-  # (NEW TABLE) provenance_cache
+  # (NEW TABLE) sample_history_cache
   # ============================================================================
   # Closure table that pre-computes all ancestor/descendant pairs in the
   # workflow chain. Avoids live recursive CTE traversal at query time.
@@ -316,14 +316,14 @@ classes:
   #   "Original sample for product Y" → WHERE descendant_id = Y AND ancestor_type = 'sample'
   # ============================================================================
 
-  provenance_cache:
+  sample_history_cache:
     description: |-
       [NEW TABLE] Pre-computed provenance closure table.
       Stores every (ancestor, descendant) pair across all chain types with depth.
       Refreshed on a schedule; not updated in real-time (acceptable for daily batches).
 
       DDL:
-        CREATE TABLE provenance_cache (
+        CREATE TABLE sample_history_cache (
           ancestor_id      UUID NOT NULL,
           descendant_id    UUID NOT NULL,
           ancestor_type    VARCHAR(64),    -- 'sample' | 'processedSample' |
@@ -334,11 +334,11 @@ classes:
           computed_at      TIMESTAMP DEFAULT now(),
           PRIMARY KEY (ancestor_id, descendant_id)
         );
-        CREATE INDEX ON provenance_cache (descendant_id);  -- reverse lookup
+        CREATE INDEX ON sample_history_cache (descendant_id);  -- reverse lookup
 
       Example query — all products from sample S1:
         SELECT pd.*
-        FROM provenance_cache pc
+        FROM sample_history_cache pc
         JOIN "processedData" pd ON pd.id = pc.descendant_id
         WHERE pc.ancestor_id = 'S1-uuid'
           AND pc.descendant_type = 'processedData';
