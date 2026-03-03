@@ -129,19 +129,19 @@ classes:
         range: integer
         required: true
 
-  processedData:
+  dataProduct:
+    description: >-
+      An abstract class representing raw or processed data 
+      that can be accessed in S3 storage.
     attributes:
       id:
         identifier: true
         range: uuid
-      type:
-        range: product
-        required: true
       name:
         range: string
         required: true
       proposal_id:
-        range: string
+        range: integer
       sampling_set:
         range: integer
       core_section:
@@ -159,13 +159,25 @@ classes:
         range: integer
       md5checksum:
         range: string
+
+  sitePhoto:
+    is_a: dataProduct
+    attributes:
+      type:
+        range: sitephototype
+
+  processedData:
+    is_a: dataProduct
+    attributes:
+      type:
+        range: product
+        required: true
       workflow_id:
         range: workflowExecutionActivity
       lims_barcode:
         range: string
       version:
         range: string
-
 
   analysisActivity:
     attributes:
