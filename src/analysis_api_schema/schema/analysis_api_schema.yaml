@@ -179,6 +179,27 @@ classes:
       version:
         range: string
 
+  instrumentData:
+    is_a: dataProduct
+    attributes:
+      analysis_activity_id:
+        range: analysisActivity
+      description:
+        range: string
+        required: true
+      alternative_identifiers:
+        range: string # TODO ARRAY
+      compression_type:
+        range: string
+      type:
+        range: string
+      was_generated_by:
+        range: string
+      file_type:
+        range: filetype
+      version:
+        range: string
+
   analysisActivity:
     attributes:
       id:
@@ -199,38 +220,6 @@ classes:
         range: string
       instrument_operator_id:
         range: personValue
-      version:
-        range: string
-
-  instrumentData:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      analysis_activity_id:
-        range: analysisActivity
-      description:
-        range: string
-        required: true
-      alternative_identifiers:
-        range: string # TODO ARRAY
-      compression_type:
-        range: string
-      file_size_bytes:
-        range: integer
-      md5_checksum:
-        range: string
-      name:
-        range: string
-        required: true
-      type:
-        range: string
-      url:
-        range: string
-      was_generated_by:
-        range: string
-      file_type:
-        range: filetype
       version:
         range: string
 
