@@ -1,0 +1,105 @@
+---
+# =============================================================================
+# Microbial Biomass — Ingest Validation Schema
+# =============================================================================
+# Source class:  MicrobialBiomassProduct (products.yaml)
+# Analysis type: "biomass" (lims_processed_data_schema.yaml AnalysisTypeEnum)
+# Measure level: Replicate-capable (rep slot in operational schema)
+# CSV output:    MBC_mg_per_kg, MBN_mg_per_kg, flag_MBC, flag_MBN
+#                (soil_biochemical_properties_schema.yaml)
+#
+# NOTE: operational schema carries separate mbc_avg / mbn_avg fields and
+#       corresponding flag_avg fields for replicate averages — included here
+#       so ingest can carry both replicate values and pre-computed averages.
+# Last Updated:  2026-02-25
+# =============================================================================
+
+id: https://w3id.org/MONet/analysis-api-schema/biomass
+name: biomass_schema
+title: MONet Microbial Biomass Ingest Schema
+description: |-
+  Ingest validation schema for MicrobialBiomassProduct.
+  Describes the product_values payload for analysis_type = "biomass".
+  
+  Covers Microbial Biomass Carbon (MBC) and Microbial Biomass Nitrogen (MBN)
+  measured by chloroform fumigation-extraction.
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: biomass_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+
+  ProcessedDataFlagEnum:
+    description: Mirrors processeddataflag in enums.yaml.
+    permissible_values:
+      Below_Detection:
+      Below_Reporting_Limit:
+      High_Background:
+      Out_of_Range:
+      Outlier:
+      Data_not_available:
+      Failed_QC:
+      Insufficient_Material:
+
+classes:
+
+  BiomassProductValues:
+    description: |-
+      Microbial biomass product values (MBC and MBN).
+      Replicate-level data when replicate field is present in CoreSectionData.
+      The operational schema also stores pre-computed replicate averages (mbc_avg, mbn_avg).
+    attributes:
+
+      mbc:
+        description: |-
+          Microbial Biomass Carbon (MBC) in mg/kg dry soil.
+          CSV column: MBC_mg_per_kg.
+          Minimum value: 0
+        range: double
+        required: false
+        # minimum_value: 0
+
+      mbn:
+        description: |-
+          Microbial Biomass Nitrogen (MBN) in mg/kg dry soil.
+          CSV column: MBN_mg_per_kg.
+          Minimum value: 0
+        range: double
+        required: false
+        # minimum_value: 0
+
+      mbc_avg:
+        description: |-
+          Pre-computed average MBC across replicates (mg/kg).
+          Stored in operational schema; useful when provider sends already-averaged data.
+        range: double
+        required: false
+
+      mbn_avg:
+        description: |-
+          Pre-computed average MBN across replicates (mg/kg).
+          Stored in operational schema; useful when provider sends already-averaged data.
+        range: double
+        required: false
+
+      flag_mbc:
+        description: |-
+          QC flag for the MBC measurement.
+          CSV column: flag_MBC.
+        range: ProcessedDataFlagEnum
+        required: false
+
+      flag_mbn:
+        description: |-
+          QC flag for the MBN measurement.
+          CSV column: flag_MBN.
+        range: ProcessedDataFlagEnum
+        required: false

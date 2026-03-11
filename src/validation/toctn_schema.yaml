@@ -1,0 +1,122 @@
+---
+# =============================================================================
+# TOC/TN Analysis — Ingest Validation Schema (WEOM and MAOM/HClExtOM)
+# =============================================================================
+# Source classes: WEOMProduct, MAOMProduct (products.yaml)
+# Analysis types: "weom_toctn", "maom_toctn" (lims_processed_data_schema.yaml)
+# Measure level:  Replicate-capable (rep slot in operational schema)
+# CSV output (WEOM):    WEOM_TOC_mg_per_kg, WEOM_TN_mg_per_kg,
+#                       flag_WEOM_TOC, flag_WEOM_TN
+# CSV output (MAOM):    HClExtOM_TOC_mg_per_kg, HClExtOM_TN_mg_per_kg,
+#                       flag_HClExtOM_TOC, flag_HClExtOM_TN
+#                       (soil_biochemical_properties_schema.yaml)
+#
+# DESIGN NOTE: WEOM and MAOM (HClExtOM) have identical schema shapes — both
+# measure TOC and TN from different extractions. A single class covers both;
+# analysis_type in the envelope discriminates which product table receives the data.
+#
+# NAMING NOTE: MAOMProduct is renamed HClExtOM in the CSV deliverable to reflect
+# the actual analytical method (HCl extraction), but the operational schema class
+# is still MAOMProduct. The analysis_type key used here is "maom_toctn".
+# Last Updated:  2026-02-25
+# =============================================================================
+
+id: https://w3id.org/MONet/analysis-api-schema/toctn
+name: toctn_schema
+title: MONet TOC/TN (WEOM and MAOM/HClExtOM) Ingest Schema
+description: |-
+  Ingest validation schema for WEOMProduct and MAOMProduct (HClExtOM).
+  The two products share an identical schema shape — both measure Total Organic
+  Carbon (TOC) and Total Nitrogen (TN) from different soil extractions:
+  
+    WEOM  (Water Extractable Organic Matter)  → analysis_type = "weom_toctn"
+    MAOM  (Mineral Associated Organic Matter, HCl extraction) → analysis_type = "maom_toctn"
+  
+  The analysis_type field in the LIMSProcessedData envelope determines which
+  product table the data is routed to. The payload shape is identical.
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: toctn_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+
+  ProcessedDataFlagEnum:
+    description: Mirrors processeddataflag in enums.yaml.
+    permissible_values:
+      Below_Detection:
+      Below_Reporting_Limit:
+      High_Background:
+      Out_of_Range:
+      Outlier:
+      Data_not_available:
+      Failed_QC:
+      Insufficient_Material:
+
+classes:
+
+  TOCTNProductValues:
+    description: |-
+      TOC/TN product values — shared schema for WEOM and MAOM (HClExtOM).
+      Replicate-level data when replicate field is present in CoreSectionData.
+      
+      For WEOM (analysis_type = "weom_toctn"):
+        CSV columns: WEOM_TOC_mg_per_kg, WEOM_TN_mg_per_kg, flag_WEOM_TOC, flag_WEOM_TN
+      For MAOM/HClExtOM (analysis_type = "maom_toctn"):
+        CSV columns: HClExtOM_TOC_mg_per_kg, HClExtOM_TN_mg_per_kg, flag_HClExtOM_TOC, flag_HClExtOM_TN
+    attributes:
+
+      toc:
+        description: |-
+          Total Organic Carbon in mg/kg dry soil.
+          For WEOM: CSV column WEOM_TOC_mg_per_kg.
+          For MAOM: CSV column HClExtOM_TOC_mg_per_kg.
+          Minimum value: 0
+        range: double
+        required: false
+        # minimum_value: 0
+
+      tn:
+        description: |-
+          Total Nitrogen in mg/kg dry soil.
+          For WEOM: CSV column WEOM_TN_mg_per_kg.
+          For MAOM: CSV column HClExtOM_TN_mg_per_kg.
+          Minimum value: 0
+        range: double
+        required: false
+        # minimum_value: 0
+
+      toc_avg:
+        description: |-
+          Pre-computed average TOC across replicates (mg/kg).
+          Stored in operational schema (total_organic_carbon_avg).
+        range: double
+        required: false
+
+      tn_avg:
+        description: |-
+          Pre-computed average TN across replicates (mg/kg).
+          Stored in operational schema (total_nitrogen_avg).
+        range: double
+        required: false
+
+      flag_toc:
+        description: |-
+          QC flag for the TOC measurement.
+          For WEOM: flag_WEOM_TOC. For MAOM: flag_HClExtOM_TOC.
+        range: ProcessedDataFlagEnum
+        required: false
+
+      flag_tn:
+        description: |-
+          QC flag for the TN measurement.
+          For WEOM: flag_WEOM_TN. For MAOM: flag_HClExtOM_TN.
+        range: ProcessedDataFlagEnum
+        required: false

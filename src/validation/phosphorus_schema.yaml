@@ -1,0 +1,82 @@
+---
+# =============================================================================
+# Phosphorus Analysis — Ingest Validation Schema
+# =============================================================================
+# Source class:  PhosphorusAnalysisProduct (products.yaml)
+# Analysis type: "p_ext" (lims_processed_data_schema.yaml AnalysisTypeEnum)
+# Measure level: Replicate-capable (rep slot in operational schema)
+# CSV output:    PO4_P_mg_per_kg, PO4_P_extraction, flag_phosphorus
+#                (soil_biochemical_properties_schema.yaml)
+#
+# NOTE: extraction_method (e.g. Olsen, Mehlich-3, Bray) affects interpretation.
+#       The operational schema also carries a flag_avg for averaged data.
+# Last Updated:  2026-02-25
+# =============================================================================
+
+id: https://w3id.org/MONet/analysis-api-schema/phosphorus
+name: phosphorus_schema
+title: MONet Phosphorus Analysis Ingest Schema
+description: |-
+  Ingest validation schema for PhosphorusAnalysisProduct.
+  Describes the product_values payload for analysis_type = "p_ext".
+  
+  Extraction method (Olsen, Mehlich-3, Bray, etc.) must accompany the value
+  because interpretation depends on method.
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: phosphorus_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+
+  ProcessedDataFlagEnum:
+    description: Mirrors processeddataflag in enums.yaml.
+    permissible_values:
+      Below_Detection:
+      Below_Reporting_Limit:
+      High_Background:
+      Out_of_Range:
+      Outlier:
+      Data_not_available:
+      Failed_QC:
+      Insufficient_Material:
+
+classes:
+
+  PhosphorusProductValues:
+    description: |-
+      Phosphorus extraction product values.
+      Replicate-level data when replicate field is present in CoreSectionData.
+    attributes:
+
+      extraction_method:
+        description: |-
+          Extraction method used (e.g. Olsen, Mehlich-3, Bray P1).
+          CSV column: PO4_P_extraction.
+          Required context for interpreting the phosphorus value.
+        range: string
+        required: false
+
+      phosphorus:
+        description: |-
+          Extractable phosphate-phosphorus (PO4-P) in mg/kg dry soil.
+          CSV column: PO4_P_mg_per_kg.
+          Minimum value: 0
+        range: double
+        required: false
+        # minimum_value: 0
+
+      flag:
+        description: |-
+          QC flag for the phosphorus measurement.
+          CSV column: flag_phosphorus.
+          Operational schema also has flag_avg for the replicate average.
+        range: ProcessedDataFlagEnum
+        required: false

@@ -1,0 +1,92 @@
+---
+# =============================================================================
+# Texture Analysis — Ingest Validation Schema
+# =============================================================================
+# Source class:  TextureProduct (products.yaml)
+# Analysis type: "texture" (lims_processed_data_schema.yaml AnalysisTypeEnum)
+# Measure level: Single (no replicates)
+# CSV output:    Sand_percent, Silt_percent, Clay_percent, flag_texture
+#                (soil_biochemical_properties_schema.yaml)
+#
+# NOTE: sand + silt + clay should sum to 100%. Validation of this constraint
+#       is handled in code, not enforced here per-field.
+# Last Updated:  2026-02-25
+# =============================================================================
+
+id: https://w3id.org/MONet/analysis-api-schema/texture
+name: texture_schema
+title: MONet Soil Texture Ingest Schema
+description: |-
+  Ingest validation schema for TextureProduct.
+  Describes the product_values payload for analysis_type = "texture".
+  
+  Sand + Silt + Clay fractions expressed as weight percent.
+  The three values should sum to ~100%; this is validated in code.
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: texture_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+
+  ProcessedDataFlagEnum:
+    description: Mirrors processeddataflag in enums.yaml.
+    permissible_values:
+      Below_Detection:
+      Below_Reporting_Limit:
+      High_Background:
+      Out_of_Range:
+      Outlier:
+      Data_not_available:
+      Failed_QC:
+      Insufficient_Material:
+
+classes:
+
+  TextureProductValues:
+    description: |-
+      Soil texture product values (particle size fractions).
+      One record per core section. No replicates.
+      Sand + Silt + Clay should sum to ~100%.
+    attributes:
+
+      sand_pct:
+        description: |-
+          Sand fraction as weight percent (%).
+          CSV column: Sand_percent.
+        range: double
+        required: false
+        # minimum_value: 0
+        # maximum_value: 100
+
+      silt_pct:
+        description: |-
+          Silt fraction as weight percent (%).
+          CSV column: Silt_percent.
+        range: double
+        required: false
+        # minimum_value: 0
+        # maximum_value: 100
+
+      clay_pct:
+        description: |-
+          Clay fraction as weight percent (%).
+          CSV column: Clay_percent.
+        range: double
+        required: false
+        # minimum_value: 0
+        # maximum_value: 100
+
+      flag:
+        description: |-
+          QC flag applied to the whole texture result (sand/silt/clay together).
+          CSV column: flag_texture.
+        range: ProcessedDataFlagEnum
+        required: false

@@ -1,0 +1,66 @@
+---
+# =============================================================================
+# Bulk Density — Ingest Validation Schema
+# =============================================================================
+# Source class:  BulkDensityProduct (products.yaml)
+# Analysis type: "bulk_density" (lims_processed_data_schema.yaml AnalysisTypeEnum)
+# Measure level: Single (no replicates)
+# CSV output:    Bulk_density_g_per_cm3, flag_density (soil_biochemical_properties_schema.yaml)
+# Last Updated:  2026-02-25
+# =============================================================================
+
+id: https://w3id.org/MONet/analysis-api-schema/bulk-density
+name: bulk_density_schema
+title: MONet Bulk Density Ingest Schema
+description: |-
+  Ingest validation schema for BulkDensityProduct.
+  Describes the product_values payload for analysis_type = "bulk_density".
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: bulk_density_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+
+  ProcessedDataFlagEnum:
+    description: Mirrors processeddataflag in enums.yaml.
+    permissible_values:
+      Below_Detection:
+      Below_Reporting_Limit:
+      High_Background:
+      Out_of_Range:
+      Outlier:
+      Data_not_available:
+      Failed_QC:
+      Insufficient_Material:
+
+classes:
+
+  BulkDensityProductValues:
+    description: |-
+      Soil bulk density product values.
+      One record per core section. No replicates.
+    attributes:
+
+      bulk_density:
+        description: |-
+          Soil bulk density (g/cm³).
+          CSV column: Bulk_density_g_per_cm3
+          Minimum value: 0
+        range: double
+        required: false
+        # minimum_value: 0
+
+      flag:
+        description: |-
+          QC flag for the bulk density measurement.
+          CSV column: flag_density
+        range: ProcessedDataFlagEnum
+        required: false

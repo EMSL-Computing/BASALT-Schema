@@ -1,0 +1,88 @@
+---
+# =============================================================================
+# Respiration Analysis Schema
+# =============================================================================
+#
+# CONTEXT and Purpose:
+# - Validation schema for soil respiration data ingested via the LIMS endpoint
+# - Describes the shape of RespirationProductValues as POSTed to the API
+# - NOT currently represented as a measurement column in Soil_BioChemical_properties.csv
+#   (only flag_respiration appears in the CSV output; the value column is TBD)
+# - This schema covers the INGEST contract — what Kaizad/LIMS sends to the API
+#
+# Status:
+# - Placeholder values/units marked with TODO — confirm with Kaizad
+# - flag permissible values to be aligned with ProcessedDataFlagEnum in processed_data.yml
+#
+# Last Updated: 2026-02-25
+# =============================================================================
+
+id: https://w3id.org/MONet/analysis-api-schema/respiration
+name: respiration_schema
+title: MONet Soil Respiration Analysis Schema
+description: |-
+  Validation schema for soil respiration analysis products.
+  Covers data ingested from LIMS into the /lims/processed/ API endpoint.
+  This schema represents the JSON contract for a single RespirationProductValues payload.
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: respiration_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+
+  RespirationFlagEnum:
+    description: Data quality flags applicable to respiration measurements
+    permissible_values:
+      Below_Detection:
+        description: Value below detection limit
+      Below_Reporting_Limit:
+        description: Value below reporting limit
+      High_Background:
+        description: High background interference
+      Out_of_Range:
+        description: Value outside expected range
+      Outlier:
+        description: Statistical outlier
+      Data_not_available:
+        description: Data not available
+      Failed_QC:
+        description: Failed quality control
+      Insufficient_Material:
+        description: Insufficient sample material
+
+classes:
+
+  RespirationProductValues:
+    description: |-
+      Soil respiration analysis product values as returned by the LIMS endpoint.
+      Represents a single measurement result for one core section.
+      
+      NOTE: Respiration does NOT appear as a value column in Soil_BioChemical_properties.csv
+      (only flag_respiration appears). Confirm with Kaizad whether a value column
+      should be added to the zip-download deliverable.
+    attributes:
+
+      respiration:
+        description: |-
+          Soil respiration rate.
+          TODO: confirm units with Kaizad — expected unit is µg CO₂-C g⁻¹ h⁻¹
+          or mg CO₂-C kg⁻¹ day⁻¹ depending on analytical method.
+          Minimum value: 0 (non-negative)
+        range: double
+        required: false
+        # TODO: unit — confirm with Kaizad
+
+      flag:
+        description: |-
+          Data quality flag for the respiration measurement.
+          Source: RespirationProduct from canonical schema (flag_respiration in CSV output).
+        range: RespirationFlagEnum
+        required: false

@@ -1,0 +1,196 @@
+---
+# =============================================================================
+# Ions Analysis — Ingest Validation Schema
+# =============================================================================
+# Source class:  IonsAnalysisProduct (products.yaml)
+# Analysis type: "ion" (lims_processed_data_schema.yaml AnalysisTypeEnum)
+# Measure level: Single (no replicates)
+# CSV output:    SO4_S_mg_per_kg, B_mg_per_kg, Zn_mg_per_kg, Mn_mg_per_kg,
+#                Cu_mg_per_kg, Fe_mg_per_kg, Ca_meq_per_100_g, Mg_meq_per_100_g,
+#                Na_meq_per_100_g, K_meq_per_100_g, CEC_meq_per_100_g
+#                + per-ion flag columns (soil_biochemical_properties_schema.yaml)
+#
+# NOTE on units: micronutrients (SO4-S, B, Zn, Mn, Cu, Fe) in mg/kg;
+#                exchangeable cations (Ca, Mg, Na, K) and CEC in meq/100g.
+#                total_bases exists in the operational schema but is not
+#                currently a CSV output column — included here for ingest completeness.
+# Last Updated:  2026-02-25
+# =============================================================================
+
+id: https://w3id.org/MONet/analysis-api-schema/ions
+name: ions_schema
+title: MONet Ions Analysis Ingest Schema
+description: |-
+  Ingest validation schema for IonsAnalysisProduct.
+  Describes the product_values payload for analysis_type = "ion".
+  
+  Covers micronutrient anions (mg/kg) and exchangeable cations + CEC (meq/100g).
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: ions_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+
+  ProcessedDataFlagEnum:
+    description: Mirrors processeddataflag in enums.yaml.
+    permissible_values:
+      Below_Detection:
+      Below_Reporting_Limit:
+      High_Background:
+      Out_of_Range:
+      Outlier:
+      Data_not_available:
+      Failed_QC:
+      Insufficient_Material:
+
+classes:
+
+  IonProductValues:
+    description: |-
+      Ion analysis product values. One record per core section. No replicates.
+      Micronutrients reported in mg/kg; exchangeable cations and CEC in meq/100g.
+    attributes:
+
+      # -----------------------------------------------------------------------
+      # Micronutrients / Anions (mg/kg)
+      # -----------------------------------------------------------------------
+
+      sulfate:
+        description: Sulfate-Sulfur (SO4-S) in mg/kg. CSV column: SO4_S_mg_per_kg.
+        range: double
+        required: false
+
+      boron:
+        description: Boron (B) in mg/kg. CSV column: B_mg_per_kg.
+        range: double
+        required: false
+
+      zinc:
+        description: Zinc (Zn) in mg/kg. CSV column: Zn_mg_per_kg.
+        range: double
+        required: false
+
+      manganate:
+        description: Manganese (Mn) in mg/kg. CSV column: Mn_mg_per_kg.
+        range: double
+        required: false
+
+      copper:
+        description: Copper (Cu) in mg/kg. CSV column: Cu_mg_per_kg.
+        range: double
+        required: false
+
+      iron:
+        description: Iron (Fe) in mg/kg. CSV column: Fe_mg_per_kg.
+        range: double
+        required: false
+
+      # -----------------------------------------------------------------------
+      # Exchangeable Cations + CEC (meq/100g)
+      # -----------------------------------------------------------------------
+
+      calcium:
+        description: Calcium (Ca) in meq/100g. CSV column: Ca_meq_per_100_g.
+        range: double
+        required: false
+
+      magnesium:
+        description: Magnesium (Mg) in meq/100g. CSV column: Mg_meq_per_100_g.
+        range: double
+        required: false
+
+      sodium:
+        description: Sodium (Na) in meq/100g. CSV column: Na_meq_per_100_g.
+        range: double
+        required: false
+
+      potassium:
+        description: Potassium (K) in meq/100g. CSV column: K_meq_per_100_g.
+        range: double
+        required: false
+
+      cation_exchange_capacity:
+        description: |-
+          Cation Exchange Capacity (CEC) in meq/100g. CSV column: CEC_meq_per_100_g.
+        range: double
+        required: false
+
+      total_bases:
+        description: |-
+          Sum of exchangeable base cations (Ca + Mg + Na + K) in meq/100g.
+          Present in operational schema (total_bases_id) but not currently a
+          CSV output column. Flag exists: flag_total_bases.
+        range: double
+        required: false
+
+      # -----------------------------------------------------------------------
+      # Per-ion QC Flags
+      # -----------------------------------------------------------------------
+
+      sulfate_flag:
+        description: QC flag for sulfate. CSV column: flag_SO4_S.
+        range: ProcessedDataFlagEnum
+        required: false
+
+      boron_flag:
+        description: QC flag for boron. CSV column: flag_B.
+        range: ProcessedDataFlagEnum
+        required: false
+
+      zinc_flag:
+        description: QC flag for zinc. CSV column: flag_Zn.
+        range: ProcessedDataFlagEnum
+        required: false
+
+      manganate_flag:
+        description: QC flag for manganese. CSV column: flag_Mn.
+        range: ProcessedDataFlagEnum
+        required: false
+
+      copper_flag:
+        description: QC flag for copper. CSV column: flag_Cu.
+        range: ProcessedDataFlagEnum
+        required: false
+
+      iron_flag:
+        description: QC flag for iron. CSV column: flag_Fe.
+        range: ProcessedDataFlagEnum
+        required: false
+
+      calcium_flag:
+        description: QC flag for calcium. CSV column: flag_Ca.
+        range: ProcessedDataFlagEnum
+        required: false
+
+      magnesium_flag:
+        description: QC flag for magnesium. CSV column: flag_Mg.
+        range: ProcessedDataFlagEnum
+        required: false
+
+      sodium_flag:
+        description: QC flag for sodium. CSV column: flag_Na.
+        range: ProcessedDataFlagEnum
+        required: false
+
+      potassium_flag:
+        description: QC flag for potassium. CSV column: flag_K.
+        range: ProcessedDataFlagEnum
+        required: false
+
+      cation_exchange_capacity_flag:
+        description: QC flag for CEC. CSV column: flag_CEC.
+        range: ProcessedDataFlagEnum
+        required: false
+
+      total_bases_flag:
+        description: QC flag for total bases sum. CSV column: flag_total_bases.
+        range: ProcessedDataFlagEnum
+        required: false

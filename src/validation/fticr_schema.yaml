@@ -1,0 +1,152 @@
+---
+# =============================================================================
+# FT-ICR MS Product Schema
+# =============================================================================
+#
+# CONTEXT and Purpose:
+# - Validation schema for FTICRProduct — summary statistics from FT-ICR mass
+#   spectrometry analysis of soil organic matter
+# - Attributes are aggregate metrics computed from the full spectral assignment
+#   (not individual peaks — those live in instrument data files)
+# - Source: FTICRProduct class in src/analysis_api_schema/schema/products.yaml
+# - NOT currently in Soil_BioChemical_properties.csv (instrument data, separate deliverable)
+# - This schema covers the API-level ingest contract for rapid validation
+#
+# NOTE on flags:
+# - low_mass_accuracy_flag and low_mz_assignment_flag are currently boolean in the
+#   operational schema (TODO: migrate to processeddataflag). Reflected here as-is.
+#
+# Relationship to broader schema:
+# - analysis_type key in LIMSProcessedData envelope: "fticr" (to be confirmed)
+# - fticr_acquisition_method exists in routemethod enum (enums.yaml) — no changes needed
+# - quantityValue fields (percent_mz_assigned, rms) carry both a numeric and a unit;
+#   flattened here to scalar + unit note for validation simplicity
+#
+# Last Updated: 2026-02-25
+# =============================================================================
+
+id: https://w3id.org/MONet/analysis-api-schema/fticr
+name: fticr_schema
+title: MONet FT-ICR MS Product Schema
+description: |-
+  Validation schema for FTICRProduct — aggregate summary statistics from
+  Fourier-Transform Ion Cyclotron Resonance Mass Spectrometry (FT-ICR MS)
+  analysis of soil organic matter.
+  
+  These are sample-level summary metrics derived from the full spectral
+  molecular formula assignment. Raw peak data lives in separate instrument files.
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: fticr_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+
+  ProductMeasureTypeEnum:
+    description: |-
+      Measurement level for this product record.
+      Mirrors productmeasuretype in enums.yaml.
+    permissible_values:
+      Single:
+        description: Single measurement (no replicates)
+      Replicate:
+        description: Individual replicate measurement
+      Average:
+        description: Average across replicates
+
+classes:
+
+  FTICRProduct:
+    description: |-
+      Aggregate summary statistics from FT-ICR MS analysis of soil organic matter.
+      One record per core section (or per replicate if replicate-level data).
+      All ratio/index values are dimensionless averages across all assigned formulae
+      in the spectrum, unless noted otherwise.
+      
+      Proposal_ID, sampling_set, and core_section are inherited from the
+      LIMSProcessedData envelope (see lims_processed_data_schema.yaml).
+    attributes:
+
+      measure_type:
+        description: |-
+          Measurement level: Single, Replicate, or Average.
+          Mirrors the measure_type slot from the operational schema.
+        range: ProductMeasureTypeEnum
+        required: false
+
+      h_c_average:
+        description: |-
+          Average H/C (hydrogen-to-carbon) atomic ratio across all assigned
+          molecular formulae in the spectrum (dimensionless).
+          Higher values indicate more aliphatic/less aromatic compounds.
+          Typical range: 0.5 – 2.5
+        range: double
+        required: false
+
+      o_c_average:
+        description: |-
+          Average O/C (oxygen-to-carbon) atomic ratio across all assigned
+          molecular formulae in the spectrum (dimensionless).
+          Higher values indicate higher oxidation state / more polar compounds.
+          Typical range: 0.0 – 1.0
+        range: double
+        required: false
+
+      c_average:
+        description: |-
+          Average carbon count across all assigned molecular formulae
+          in the spectrum (dimensionless, count).
+          Reflects the average molecular size of detected compounds.
+        range: double
+        required: false
+
+      percent_mz_assigned:
+        description: |-
+          Percentage of detected m/z peaks successfully assigned a molecular
+          formula (%). Higher values indicate better spectral coverage.
+          TODO: stored as quantityValue in operational schema — confirm unit (%)
+        range: double
+        required: false
+        # unit: percent
+
+      rms:
+        description: |-
+          Root Mean Square (RMS) mass accuracy of molecular formula assignments.
+          TODO: confirm unit with instrument team — typically ppm.
+          Lower values indicate better calibration and assignment accuracy.
+        range: double
+        required: false
+        # unit: ppm (TODO confirm)
+
+      dbe_average:
+        description: |-
+          Average Double Bond Equivalent (DBE) across all assigned molecular
+          formulae (dimensionless). DBE = 1 + C - H/2 + N/2.
+          Higher DBE indicates more rings and/or double bonds (more aromatic/condensed).
+          Typical range: 0 – 20+
+        range: double
+        required: false
+
+      low_mass_accuracy_flag:
+        description: |-
+          Boolean flag indicating the spectrum has low mass accuracy.
+          TODO: operational schema marks this for migration to processeddataflag.
+          True = mass accuracy concern exists.
+        range: boolean
+        required: false
+
+      low_mz_assignment_flag:
+        description: |-
+          Boolean flag indicating a low rate of m/z peak assignments.
+          TODO: operational schema marks this for migration to processeddataflag.
+          True = fewer formulae assigned than expected; may indicate poor sample
+          or instrument issue.
+        range: boolean
+        required: false

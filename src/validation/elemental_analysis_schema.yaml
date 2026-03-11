@@ -1,0 +1,107 @@
+---
+# =============================================================================
+# Elemental Analysis — Ingest Validation Schema
+# =============================================================================
+# Source class:  ElementalAnalysisProduct (products.yaml)
+# Analysis type: "ea" (lims_processed_data_schema.yaml AnalysisTypeEnum)
+# Measure level: Single (no replicates)
+# CSV output:    Total_C_percent, Total_N_percent, Total_S_percent
+#                + flag_total_carbon, flag_total_nitrogen, flag_tkn, flag_total_sulfur
+#                (soil_biochemical_properties_schema.yaml)
+#
+# NOTE: total_kjeldahl_nitrogen (TKN) exists in the operational schema but is
+#       not currently a CSV output column — included here for ingest completeness.
+# Last Updated:  2026-02-25
+# =============================================================================
+
+id: https://w3id.org/MONet/analysis-api-schema/elemental-analysis
+name: elemental_analysis_schema
+title: MONet Elemental Analysis Ingest Schema
+description: |-
+  Ingest validation schema for ElementalAnalysisProduct.
+  Describes the product_values payload for analysis_type = "ea".
+  
+  Reports total Carbon, Nitrogen, and Sulfur as weight percent of dry soil.
+  Total Kjeldahl Nitrogen (TKN) also captured if provided.
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: elemental_analysis_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+
+  ProcessedDataFlagEnum:
+    description: Mirrors processeddataflag in enums.yaml.
+    permissible_values:
+      Below_Detection:
+      Below_Reporting_Limit:
+      High_Background:
+      Out_of_Range:
+      Outlier:
+      Data_not_available:
+      Failed_QC:
+      Insufficient_Material:
+
+classes:
+
+  ElementalAnalysisProductValues:
+    description: |-
+      Elemental analysis product values (Total C, N, S by combustion).
+      One record per core section. No replicates.
+    attributes:
+
+      total_carbon:
+        description: |-
+          Total Carbon as weight percent of dry soil (%).
+          CSV column: Total_C_percent.
+        range: double
+        required: false
+
+      total_nitrogen:
+        description: |-
+          Total Nitrogen as weight percent of dry soil (%).
+          CSV column: Total_N_percent.
+        range: double
+        required: false
+
+      total_kjeldahl_nitrogen:
+        description: |-
+          Total Kjeldahl Nitrogen (TKN) as weight percent of dry soil (%).
+          Present in operational schema (total_kjeldahl_nitrogen_id) but not
+          currently a CSV output column. Flag: flag_tkn.
+        range: double
+        required: false
+
+      total_sulfur:
+        description: |-
+          Total Sulfur as weight percent of dry soil (%).
+          CSV column: Total_S_percent.
+        range: double
+        required: false
+
+      flag_total_carbon:
+        description: QC flag for total carbon. CSV column: flag_total_carbon.
+        range: ProcessedDataFlagEnum
+        required: false
+
+      flag_total_nitrogen:
+        description: QC flag for total nitrogen. CSV column: flag_total_nitrogen.
+        range: ProcessedDataFlagEnum
+        required: false
+
+      flag_tkn:
+        description: QC flag for TKN. CSV column: flag_tkn.
+        range: ProcessedDataFlagEnum
+        required: false
+
+      flag_total_sulfur:
+        description: QC flag for total sulfur. CSV column: flag_total_sulfur.
+        range: ProcessedDataFlagEnum
+        required: false

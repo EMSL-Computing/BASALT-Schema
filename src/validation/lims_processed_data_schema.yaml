@@ -1,0 +1,210 @@
+---
+# =============================================================================
+# LIMS Processed Data — API Envelope Schema
+# =============================================================================
+#
+# CONTEXT and Purpose:
+# - Describes the JSON envelope/contract POSTed to the /lims/processed/ endpoint
+# - This is the CONTROL class that wraps all per-analysis-type product value payloads
+# - Hides the internal dirty laundry (joined tables, WFE events, endpoints) behind
+#   a clean, human-readable contract that Kaizad/LIMS senders can validate against
+# - One schema per analysis_type exists in this folder (e.g. respiration_schema.yaml,
+#   soil_biochemical_properties_schema.yaml) — this file describes the outer envelope
+#   that references them via the product_values union
+#
+# Relationship to other schemas:
+# - product_values is a typed union — the permissible ranges are the per-analysis-type
+#   classes defined in sibling files under src/validation/
+# - analysis_type drives which product_values class is expected (see AnalysisTypeEnum)
+#
+# Last Updated: 2026-02-25
+# =============================================================================
+
+id: https://w3id.org/MONet/analysis-api-schema/lims-processed-data
+name: lims_processed_data_schema
+title: MONet LIMS Processed Data API Envelope Schema
+description: |-
+  Schema for the JSON envelope POSTed to the MONet /lims/processed/ API endpoint.
+  This control class wraps a single analytical result for one core section,
+  binding sample provenance (proposal_id, sampling_set, core_section) with
+  the analysis type and its typed product values.
+  
+  One payload = one analysis result for one core section.
+  The API routes the payload to the correct internal tables based on analysis_type.
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: lims_processed_data_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+
+  CoreSectionEnum:
+    description: Vertical position of the soil core section
+    permissible_values:
+      TOP:
+        description: Top section of core
+      MID:
+        description: Middle section of core
+      BTM:
+        description: Bottom section of core
+
+  AnalysisTypeEnum:
+    description: |-
+      Discriminator field — tells the API which product_values class to expect
+      and which internal tables/WFEs to update.
+    permissible_values:
+      ph:
+        description: pH measurement
+      bulk_density:
+        description: Bulk density measurement
+      respiration:
+        description: Soil respiration measurement
+      gwc:
+        description: Gravimetric water content
+      ion:
+        description: Ion analysis (Ca, Mg, Na, K, CEC, SO4, B, Zn, Mn, Cu, Fe)
+      ea:
+        description: Elemental analysis (Total C, N, S)
+      enzyme:
+        description: Enzyme activity (beta-glucosidase)
+      texture:
+        description: Soil texture (sand, silt, clay)
+      p_ext:
+        description: Phosphorus extraction (PO4-P)
+      n_ext:
+        description: Nitrogen extraction (NH4-N, NO3-N)
+      biomass:
+        description: Microbial biomass (MBC, MBN)
+      weom_toctn:
+        description: Water Extractable Organic Matter — TOC and TN
+      maom_toctn:
+        description: Mineral Associated Organic Matter (HClExtOM) — TOC and TN
+      hyprop:
+        description: >-
+          HYPROP hydraulic properties — Van Genuchten model parameters (alpha, n, theta_r, theta_s).
+          See src/validation/hydraulic_properties_schema.yaml.
+      fticr:
+        description: >-
+          FT-ICR MS aggregate summary statistics (H/C, O/C, DBE, %MZ assigned, RMS).
+          See src/validation/fticr_schema.yaml.
+      xct:
+        description: >-
+          X-ray computed tomography pore geometry and flow properties.
+          See src/validation/tomography_schema.yaml.
+
+classes:
+
+  CoreSectionData:
+    description: |-
+      Sample identification context for a single core section measurement.
+      Combines the human-readable sample name parts with optional ESP/LIMS identifiers.
+    attributes:
+
+      name:
+        description: |-
+          Sample name in format: {Proposal_ID}_{Sampling_Set}_{Core_Section}
+          Example: 60881_1_B
+        range: string
+        required: true
+
+      section:
+        description: Vertical section of the core (TOP, MID, BTM)
+        range: CoreSectionEnum
+        required: true
+
+      replicate:
+        description: |-
+          Replicate number (integer). Present when the analysis produces
+          replicate-level (L1) data (e.g. biomass, nitrogen, GWC, WEOM, MAOM).
+          Omit for single-measurement analyses (pH, texture, bulk density, etc.).
+        range: integer
+        required: false
+
+      esp_name:
+        description: |-
+          ESP (Environmental Sample Portal) sample name, if applicable.
+          Used to cross-reference the MONet sample with the upstream ESP record.
+        range: string
+        required: false
+
+      worksheet_uuid:
+        description: |-
+          UUID of the LIMS worksheet from which this result was exported.
+          Used for audit trail and provenance tracking.
+          Pattern: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (UUID v4)
+        range: string
+        required: false
+        # TODO: add pattern validation once linkml pattern support confirmed
+
+  LIMSProcessedData:
+    description: |-
+      Outer envelope for a single analytical result POSTed to /lims/processed/.
+      
+      The API uses analysis_type to determine:
+        1. Which product_values schema to validate against
+        2. Which WorkflowExecution (WFE) to create or update
+        3. Which database tables receive the data
+      
+      This class hides the internal database structure — senders only
+      need to know the shape described here.
+    attributes:
+
+      proposal_id:
+        description: |-
+          5-digit EMSL user proposal/project ID.
+          Identifies the project under which the sample was collected and analyzed.
+        range: string
+        required: true
+
+      sampling_set:
+        description: |-
+          Sampling set number (integer ≥ 1).
+          Groups samples collected together in the same sampling event.
+        range: integer
+        required: true
+        # minimum_value: 1
+
+      analysis_type:
+        description: |-
+          Discriminator for the analysis. Determines which product_values class
+          is expected in this payload and which API workflow is triggered.
+        range: AnalysisTypeEnum
+        required: true
+
+      core_section:
+        description: |-
+          Core section identification data (sample name, section, replicate, etc.)
+        range: CoreSectionData
+        required: true
+
+      product_values:
+        description: |-
+          Analysis-specific measurement values. The expected schema depends on
+          analysis_type — see sibling files in src/validation/ for each type.
+          
+          Permissible types (by analysis_type) → sibling schema file:
+            ph            → PHProductValues             ph_schema.yaml
+            bulk_density  → BulkDensityProductValues    bulk_density_schema.yaml
+            respiration   → RespirationProductValues    respiration_schema.yaml
+            gwc           → GWCProductValues            gwc_schema.yaml
+            ion           → IonProductValues            ions_schema.yaml
+            ea            → ElementalAnalysisProductValues  elemental_analysis_schema.yaml
+            enzyme        → EnzymeProductValues         enzyme_schema.yaml
+            texture       → TextureProductValues        texture_schema.yaml
+            p_ext         → PhosphorusProductValues     phosphorus_schema.yaml
+            n_ext         → NitrogenProductValues       nitrogen_schema.yaml
+            biomass       → BiomassProductValues        biomass_schema.yaml
+            weom_toctn    → TOCTNProductValues          toctn_schema.yaml
+            maom_toctn    → TOCTNProductValues          toctn_schema.yaml
+            hyprop        → HydraulicPropertiesProduct  hydraulic_properties_schema.yaml
+            fticr         → FTICRProduct                fticr_schema.yaml
+            xct           → TomographyProduct           tomography_schema.yaml
+        range: string   # placeholder — union types handled in code; each sibling schema covers one branch
+        required: true
