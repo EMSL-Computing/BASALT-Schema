@@ -3,15 +3,24 @@ name: core-shoehorn
 title: Core Shoehorn Changes — Existing Schema Delta
 description: |-
   Shows ONLY the additions/changes needed to the existing analysis-api schema
-  to enable chained workflows, temporal series, campaign membership, and
+  to enable chained workflows, temporal series, activity scoping, and
   cached provenance traversal — WITHOUT a full Prov-O redesign.
 
   Each class below is either:
-    (EXISTING + CHANGE) — the table already exists; we are adding columns
-    (NEW TABLE)         — a genuinely new table
+    (NEW ABSTRACT CLASS) — a new abstract base class (no direct table)
+    (EXISTING + CHANGE)  — the table already exists; we are adding slots/columns
+    (NEW CLASS)          — a genuinely new class/table
+    (REMOVED)            — previously proposed but dropped from this approach
 
-  Existing fields are shown as stubs (commented) for context only.
-  Added or changed fields are marked [ADDED] or [CHANGED] in their comments.
+  CONVENTIONS:
+    - Slots (not attributes) are used for all non-identifier fields,
+      following the pattern established in methods.yaml and products.yaml.
+    - UUID identifier fields remain as class-level attributes (identifier: true).
+    - JSONB fields are replaced with a structured key-value approach;
+      per-type schemas are TBD and will be designed before implementation.
+
+  Existing fields are shown as stub comments for context only.
+  Added or changed fields are marked [ADDED] or [CHANGED] in their descriptions.
 
   Companion data-type files (lcms, xrf-xrd, ecoplate, amp2) import this
   and only define their product tables and method-specific slots.
@@ -19,284 +28,374 @@ description: |-
 imports:
   - linkml:types
 
+# =============================================================================
+# GLOBAL SLOT DEFINITIONS
+# All new and changed slots declared here for reuse across classes.
+# Organised by primary use, with notes on cross-class reuse where applicable.
+# =============================================================================
+
+slots:
+
+  # ---------------------------------------------------------------------------
+  # dataProduct base slots
+  # These fields exist today as attributes on processedData.
+  # In the full MR they are promoted to global slots so that dataProduct and
+  # any future subclass (e.g. sitePhoto) can reference them via is_a + slots.
+  # NOTE: 'name' already appears as an inline attribute in several classes;
+  # the full MR will need to reconcile those definitions.
+  # ---------------------------------------------------------------------------
+  name:
+    description: Human-readable name for the data product
+    range: string
+    required: true
+
+  proposal_id:
+    description: 5-digit EMSL user proposal/project ID
+    range: integer
+
+  sampling_set:
+    range: integer
+
+  core_section:
+    range: string
+
+  sample_name:
+    range: string
+
+  s3_base_url:
+    range: string
+
+  s3_bucket:
+    range: string
+
+  s3_key:
+    description: MinIO/S3 object key; required for all data products
+    range: string
+    required: true
+
+  filesize:
+    range: integer
+
+  md5checksum:
+    range: string
+
+  # ---------------------------------------------------------------------------
+  # Shared utility slots reused across multiple classes
+  # These exist as inline attributes in the living schema; promoting them to
+  # global slots in the full MR allows consistent reuse.
+  # ---------------------------------------------------------------------------
+  lims_barcode:
+    description: LIMS barcode identifier; shared by samplingActivity and processedData
+    range: string
+    required: false
+
+  version:
+    description: Version string; shared by processedData, analysisActivity, workflowExecutionActivity
+    range: string
+    required: false
+
+  # ---------------------------------------------------------------------------
+  # workflowExecutionActivity additions
+  # ---------------------------------------------------------------------------
+  parent_workflow_id:
+    description: |-
+      [ADDED] Self-referential FK to the preceding workflowExecutionActivity.
+      NULL  → first (or standalone) step.
+      Non-null → this execution directly follows parent_workflow_id.
+      Enables single-hop chaining queries; full traversal via linkage_cache.
+
+      DDL: ALTER TABLE "workflowExecutionActivity"
+             ADD COLUMN parent_workflow_id UUID
+             REFERENCES "workflowExecutionActivity"(id);
+    range: uuid
+    required: false
+
+  workflow_steps:
+    description: |-
+      [CHANGED] Per-run workflow parameters. Previously carried as a raw JSONB
+      blob in the living schema (annotated TODO JSONB).
+      Direction: structured key-value pairs keyed by workflow type.
+      Schema for allowed keys is TBD — will be designed per workflow type
+      before full implementation. Interim DB storage remains JSONB.
+    range: string        # interim placeholder — will reference a typed key-value class; schema TBD
+    required: false
+
+  # ---------------------------------------------------------------------------
+  # analysisActivity additions
+  # ---------------------------------------------------------------------------
+  timepoint_label:
+    description: |-
+      [ADDED] Human-readable timepoint label for repeated-measurement series.
+      Examples: 't=0', 't=24h', 't=48h', 'pre-treatment', 'post-treatment'.
+      Optional — omit for one-off single analyses.
+
+      DDL: ALTER TABLE "analysisActivity"
+             ADD COLUMN timepoint_label VARCHAR(64);
+    range: string
+    required: false
+
+  sequence_order:
+    description: |-
+      [ADDED] Integer ordering within a temporal series for the same analyte.
+      Use when acquisition_time alone is insufficient (e.g., same-day reads
+      at different timepoints sharing a timestamp). Lower = earlier in series.
+
+      DDL: ALTER TABLE "analysisActivity"
+             ADD COLUMN sequence_order INTEGER;
+    range: integer
+    required: false
+
+  # ---------------------------------------------------------------------------
+  # processedData / dataProduct addition
+  # ---------------------------------------------------------------------------
+  summary_metrics:
+    description: |-
+      [ADDED] Lightweight per-product summary for common queries that avoid
+      full file download. Previously proposed as a raw JSONB blob.
+      Direction: structured key-value pairs; per-type schemas are TBD:
+        ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
+        xrf:       per-element concentration results + QC flag
+        lcms:      feature count, identification count, MSI-2 fraction
+      Schema will be designed per data type before full implementation.
+      Interim DB storage: JSONB column retained until formal typed class exists.
+
+      DDL: ALTER TABLE "processedData"
+             ADD COLUMN summary_metrics JSONB;   ← interim; formal key-value schema TBD
+    range: string        # interim placeholder — will reference a typed key-value class; schema TBD
+    required: false
+
+  # ---------------------------------------------------------------------------
+  # samplingActivity addition — replaces the campaign FK / dimension-table approach
+  # ---------------------------------------------------------------------------
+  emsl_activity:
+    description: |-
+      [ADDED] Nullable string linking a samplingActivity to a named EMSL
+      activity or campaign (e.g., 'AMP2', 'MONet_FY26').
+      Replaces the previously proposed campaign dimension-table FK approach.
+      Managed as a plain validated string to avoid enum-lock and FK constraint
+      complexity; consistent with how proposal_id is handled today.
+      Optionally validated at the application layer against the existing
+      campaign.yaml dimension table for UI dropdown support.
+
+      DDL: ALTER TABLE "samplingActivity"
+             ADD COLUMN emsl_activity VARCHAR(128);
+    range: string
+    required: false
+
+  # ---------------------------------------------------------------------------
+  # linkage_cache slots
+  # Specific to linkage_cache but declared here per the slots convention.
+  # In the full schema MR, consider whether ancestor_type / descendant_type
+  # should be shared with other audit or provenance tables.
+  # ---------------------------------------------------------------------------
+  ancestor_type:
+    description: |-
+      Class/table name of the ancestor node.
+      Expected values: 'sample' | 'processedSample' |
+                       'workflowExecutionActivity' | 'processedData'
+    range: string
+
+  descendant_type:
+    description: Class/table name of the descendant node (same vocabulary as ancestor_type)
+    range: string
+
+  depth:
+    description: Number of hops between ancestor and descendant (1 = direct parent)
+    range: integer
+    required: true
+
+  path:
+    description: Optional debug string representing the full chain (e.g., 'WEA1→WEA2→WEA3')
+    range: string
+
+  computed_at:
+    description: Timestamp when this linkage_cache row was last computed by the refresh job
+    range: datetime
+
+
 classes:
+
+  # ============================================================================
+  # (NEW ABSTRACT CLASS) dataProduct
+  # ============================================================================
+  # Abstract base for any data artifact accessible in S3 storage.
+  # processedData inherits via is_a: dataProduct.
+  # Future sitePhoto (and other file-based products) will also inherit here.
+  # Follows the is_a + slots pattern used in products.yaml.
+  #
+  # In the full MR this class is added to analysis_api_schema.yaml as part of
+  # the same change that refactors processedData to use is_a.
+  # ============================================================================
+
+  dataProduct:
+    abstract: true
+    description: |-
+      [NEW ABSTRACT CLASS] Base class for raw or processed data accessible
+      in S3 storage. Carries all S3-pointer and sample-linkage slots shared
+      across product types. processedData and future sitePhoto extend this
+      via is_a. No direct database table; subclasses map to tables.
+    slots:
+      - name            # required; reconcile with existing inline attribute definitions
+      - proposal_id
+      - sampling_set
+      - core_section
+      - sample_name
+      - s3_base_url
+      - s3_bucket
+      - s3_key          # required
+      - filesize
+      - md5checksum
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+        required: true
+
 
   # ============================================================================
   # (EXISTING + CHANGE) workflowExecutionActivity
   # ============================================================================
-  # The single most important structural change. The existing table handles
-  # computational workflows (metagenomics assembly, annotation, etc.) and
-  # already carries workflow_steps JSONB for flexible per-run metadata.
-  #
-  # Missing: a way to chain executions. One FK enables recursive CTE traversal.
+  # Adds self-referential parent_workflow_id slot for workflow chaining.
+  # workflow_steps moved from inline JSONB comment to defined slot (key-value,
+  # schema TBD).
+  # NOTE: Will be renamed DataProcessingActivity in the full Prov-O refactor;
+  # keeping current name here to avoid breaking changes.
   # ============================================================================
 
   workflowExecutionActivity:
     description: |-
       Computational workflow run. Produces processedData records.
-      EXISTING table; two columns added to enable chaining.
-      NOTE WE WILL RENAME THIS TO DATAPROCESSINGACTIVITY IN THE FULL REFACTOR, BUT KEEPING NAME FOR NOW TO AVOID BREAKING CHANGES.
-
-    attributes:
-
-      # --- existing fields (context only) ---
-      id:
-        identifier: true
-        range: uuid
-        required: true
-      raw_data_id:
-        description: Input instrumentData record
-        range: uuid        # FK → instrumentData
-      type:
-        range: string      # e.g. 'metagenomics_assembly', 'amp2_flow_cytometry'
-      git_url:
-        range: string
-      started_at_time:
-        range: datetime
-      ended_at_time:
-        range: datetime
-      workflow_steps:
-        description: |-
-          JSONB blob for per-run parameters. Already in schema.
-          Used as EAV-substitute — no separate attribute table needed.
-        range: string      # stored as JSONB
-
-      # --- [ADDED] self-referential chain link ---
-      parent_workflow_id:
-        description: |-
-          [ADDED] FK to the preceding workflowExecutionActivity in a chain.
-          NULL  → first (or standalone) step.
-          Non-null → this execution directly follows parent_workflow_id.
-
-          Enables single-hop chaining queries. For full ancestor/descendant
-          traversal use the linkage_cache table (see below).
-
-          DDL: ALTER TABLE "workflowExecutionActivity"
-                 ADD COLUMN parent_workflow_id UUID
-                 REFERENCES "workflowExecutionActivity"(id);
-        range: uuid        # FK → workflowExecutionActivity.id (self)
-        required: false
-
+      EXISTING class; slot additions for chaining and structured parameters.
+      NOTE: Will be renamed DataProcessingActivity in the full Prov-O refactor.
+    slots:
+      - parent_workflow_id   # [ADDED] self-referential chain link
+      - workflow_steps       # [CHANGED] key-value, schema TBD (was inline JSONB comment)
+      - version              # [PROMOTED] existing attribute → global slot
+    # --- existing fields (context only — defined in analysis_api_schema.yaml) ---
+    # id (uuid, identifier), raw_data_id → instrumentData,
+    # type (string, required; e.g. 'metagenomics_assembly', 'amp2_flow_cytometry'),
+    # git_url (string, required), started_at_time (datetime, required),
+    # ended_at_time (datetime), name (string), description (string),
+    # used_id → softwareControlledTermValue, execution_resource (executionresourcetype)
 
 
   # ============================================================================
   # (EXISTING + CHANGE) analysisActivity
   # ============================================================================
-  # Links a processedSample (analyte) to an acquisition event.
-  # Already supports multiple rows per processedSample (repeated measurements).
-  # Adds two nullable columns for explicit temporal ordering — useful for
+  # Adds two nullable slots for explicit temporal ordering — useful for
   # ecoplates (t=0, t=24h, t=48h) and AMP2 grow-curve timepoints.
+  # NOTE: Will be renamed DataGenerationActivity in the full Prov-O refactor.
   # ============================================================================
 
   analysisActivity:
     description: |-
       Acquisition event linking an instrument run to a processedSample.
-      EXISTING table; two nullable columns added for temporal series.
-      NOTE WE WILL RENAME THIS TO DATAGENERATIONACTIVITY IN THE FULL REFACTOR, BUT KEEPING NAME FOR NOW TO AVOID BREAKING CHANGES.
-    attributes:
-
-      # --- existing fields (context only) ---
-      id:
-        identifier: true
-        range: uuid
-      type:
-        range: string      # routemethod enum; extend with new method types
-      analyte_id:
-        range: uuid        # FK → processedSample
-      name:
-        range: string
-      acquisition_time:
-        range: datetime
-        required: true
-      instrument_id:
-        range: uuid        # FK → instrument
-      protocol_url:
-        range: string
-      version:
-        range: string
-
-      # --- [ADDED] temporal series metadata ---
-      timepoint_label:
-        description: |-
-          [ADDED] Human-readable timepoint label for repeated-measurement series.
-          Examples: 't=0', 't=24h', 't=48h', 'pre-treatment', 'post-treatment'.
-          Optional — omit for one-off analyses.
-
-          DDL: ALTER TABLE "analysisActivity"
-                 ADD COLUMN timepoint_label VARCHAR(64);
-        range: string
-        required: false
-
-      sequence_order:
-        description: |-
-          [ADDED] Integer ordering within a temporal series for the same analyte.
-          Use when acquisition_time alone is insufficient (e.g., same-day reads
-          at different timepoints that share a timestamp).
-          Lower = earlier in series.
-
-          DDL: ALTER TABLE "analysisActivity"
-                 ADD COLUMN sequence_order INTEGER;
-        range: integer
-        required: false
+      EXISTING class; two nullable slots added for temporal series support.
+      NOTE: Will be renamed DataGenerationActivity in the full Prov-O refactor.
+    slots:
+      - timepoint_label      # [ADDED] human-readable series label
+      - sequence_order       # [ADDED] integer ordering within series
+      - version              # [PROMOTED] existing attribute → global slot
+    # --- existing fields (context only — defined in analysis_api_schema.yaml) ---
+    # id (uuid, identifier), type → routemethod, analyte_id → processedSample,
+    # name, acquisition_time (datetime, required), instrument_id → instrument,
+    # protocol_url, instrument_operator_id → personValue
 
 
   # ============================================================================
   # (EXISTING + CHANGE) processedData
   # ============================================================================
-  # Terminal data product node. Already has s3_key (MinIO pointer) and
-  # workflow_id (FK → workflowExecutionActivity).
-  # Adds: campaign_id FK and a summary_metrics JSONB for compact queryable
-  # summaries without requiring full file download.
+  # Now inherits S3/file fields from dataProduct via is_a.
+  # Adds summary_metrics (structured key-value, schema TBD).
+  # REMOVED: campaign_id FK — activity scoping now via samplingActivity.emsl_activity.
   # ============================================================================
 
   processedData:
+    is_a: dataProduct
     description: |-
       A data product generated by a workflow execution.
-      EXISTING table; two columns added.
+      EXISTING class; now inherits S3/file slots from dataProduct (is_a).
+      CHANGE: campaign_id slot dropped (replaced by samplingActivity.emsl_activity).
+      CHANGE: summary_metrics slot added (structured key-value, schema TBD).
+    slots:
+      - summary_metrics      # [ADDED] key-value product summary, per-type schema TBD
+      - lims_barcode         # [PROMOTED] existing attribute → global slot
+      - version              # [PROMOTED] existing attribute → global slot
     attributes:
-
-      # --- existing fields (context only) ---
-      id:
-        identifier: true
-        range: uuid
+      # id inherited from dataProduct
       type:
-        range: string      # product enum; extend with new product types
-      name:
-        range: string
-      s3_key:
-        range: string
+        # NOTE: 'type' stays as an attribute because it has a class-specific range
+        # (product enum here; routemethod in analysisActivity). Cannot be a single
+        # global slot without range polymorphism support.
+        range: product
         required: true
-      s3_bucket:
-        range: string
       workflow_id:
-        range: uuid        # FK → workflowExecutionActivity
-      proposal_id:
-        range: string
-      sample_name:
-        range: string
-
-      # --- [ADDED] campaign membership ---
-      campaign_id:
-        description: |-
-          [ADDED] FK to campaign dimension table.
-          Optional — MONet core data is not campaign-scoped; AMP2 and
-          campaign-specific protocols use this to scope products to a campaign.
-
-          DDL: ALTER TABLE "processedData"
-                 ADD COLUMN campaign_id UUID REFERENCES campaign(id);
-        range: uuid        # FK → campaign.id
-        required: false
-
-      # --- [ADDED] compact queryable summary ---
-      summary_metrics:
-        description: |-
-          [ADDED] JSONB blob for lightweight per-product summaries that avoid
-          file download for common queries.
-
-          Examples by data type:
-            ecoplate:  {"well_summaries": [{"pos":"A01","t24_abs":0.45}, ...]}
-            xrf:       {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "qc":"OK"}
-            lcms:      {"total_features":4821, "identified":312, "msi2_pct":0.24}
-
-          DDL: ALTER TABLE "processedData"
-                 ADD COLUMN summary_metrics JSONB;
-        range: string      # stored as JSONB
-        required: false
+        range: workflowExecutionActivity
+    # NOTE: campaign_id slot REMOVED from processedData.
+    # Activity/campaign scoping is now handled via samplingActivity.emsl_activity.
+    # NOTE: name, proposal_id, sampling_set, core_section, sample_name, s3_base_url,
+    # s3_bucket, s3_key, filesize, md5checksum all inherited from dataProduct.
 
 
   # ============================================================================
-  # (EXISTING + CHANGE) sample
+  # (EXISTING + CHANGE) samplingActivity
   # ============================================================================
-  # Only one column added: campaign_id.
-  # Everything else about the sample hierarchy (sampleBase, processedSample,
-  # processingSampleLink) remains unchanged.
+  # Adds emsl_activity nullable slot to replace the campaign FK approach.
+  # Only the added slot is shown; all existing attributes are unchanged.
+  # See metadata.yaml for the full existing field list.
+  # ============================================================================
+
+  samplingActivity:
+    description: |-
+      Sampling event. EXISTING class; one nullable slot added for activity scoping.
+    slots:
+      - emsl_activity        # [ADDED] replaces planned campaign FK
+    # --- existing fields (context only — defined in metadata.yaml) ---
+    # id (uuid, identifier), study_id → study, type → samplingactivitytype,
+    # sample_name (required), lims_barcode, alt_id, elev_id, lat_lon_id,
+    # collection_date, collection_time, ph, salinity, … (see metadata.yaml)
+
+
+  # ============================================================================
+  # (EXISTING) sample
+  # ============================================================================
+  # CHANGE vs. v1 of this delta: campaign_id slot is DROPPED.
+  # Activity scoping moves upstream to samplingActivity.emsl_activity, which is
+  # a cleaner attachment point (samples are collected within an activity).
+  # No other changes to sample; full definition in analysis_api_schema.yaml.
   # ============================================================================
 
   sample:
     description: |-
-      Physical sample collected from the environment.
-      EXISTING table; one column added.
-    attributes:
-
-      # --- existing fields (context only) ---
-      id:
-        identifier: true
-        range: uuid
-      sampling_activity_id:
-        range: uuid        # FK → samplingActivity
-      type:
-        range: string      # sampletype enum
-
-      # --- [ADDED] campaign membership ---
-      campaign_id:
-        description: |-
-          [ADDED] FK to campaign dimension table.
-          Links a collected sample to the campaign it was gathered under.
-          Optional for samples predating campaign tracking.
-
-          DDL: ALTER TABLE sample
-                 ADD COLUMN campaign_id UUID REFERENCES campaign(id);
-        range: uuid        # FK → campaign.id
-        required: false
+      Physical sample. EXISTING class; no slot additions in this revision.
+      CHANGE vs. v1 delta: campaign_id slot previously proposed here is DROPPED.
+      All other attributes unchanged — see analysis_api_schema.yaml.
+    # No slot additions.
 
 
   # ============================================================================
-  # (NEW TABLE) campaign
+  # (REMOVED) campaign dimension table with FK constraints
   # ============================================================================
-  # Dimension table for named research campaigns.
-  # Avoids hard-coding campaign values as enums (which require code deploys).
-  # Already planned in Nov 2025 extension planning.
-  # ============================================================================
-
-  campaign:
-    description: |-
-      [NEW TABLE] Named research campaign dimension.
-      Campaigns group samples and products collected under a shared programme.
-      Managed as data (not enum) so new campaigns don't require schema changes.
-
-      DDL:
-        CREATE TABLE campaign (
-          id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-          name         VARCHAR(128) NOT NULL,
-          display_name VARCHAR(256),
-          year         INTEGER,
-          description  TEXT,
-          start_date   DATE,
-          end_date     DATE,
-          status       VARCHAR(32) DEFAULT 'active'
-        );
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-        required: true
-      name:
-        description: Short machine-readable key (e.g., 'amp2', 'monet_2024')
-        range: string
-        required: true
-      display_name:
-        description: Human-readable label for UI display
-        range: string
-      year:
-        range: integer
-      description:
-        range: string
-      start_date:
-        range: date
-      end_date:
-        range: date
-      status:
-        description: One of planned / active / completed
-        range: string
-
-
-  # ============================================================================
-  # (NEW TABLE) linkage_cache
-  # ============================================================================
-  # Closure table that pre-computes all ancestor/descendant pairs in the
-  # workflow chain. Avoids live recursive CTE traversal at query time.
+  # The standalone campaign class with FK relationships (campaign_id on
+  # processedData and sample) is NOT being implemented in this shoehorn plan.
   #
-  # Population: nightly refresh job using recursive CTE on:
+  # Rationale: a nullable emsl_activity string on samplingActivity is simpler,
+  # avoids new FK constraints, and is consistent with how proposal_id is handled.
+  #
+  # The existing campaign.yaml dimension table remains available as a UI
+  # reference / dropdown source, but carries no FK constraints in this approach.
+  #
+  # campaign: REMOVED FROM DELTA — replaced by samplingActivity.emsl_activity
+  # ============================================================================
+
+
+  # ============================================================================
+  # (NEW CLASS) linkage_cache
+  # ============================================================================
+  # Closure table pre-computing all ancestor/descendant pairs in the workflow
+  # chain. Avoids live recursive CTE traversal at query time.
+  #
+  # Population: nightly refresh job using recursive CTE across:
   #   - processingSampleLink (sample → processed sample chains)
   #   - workflowExecutionActivity.parent_workflow_id (workflow chains)
   #   - analysisActivity (processed sample → workflow link)
@@ -309,9 +408,9 @@ classes:
 
   linkage_cache:
     description: |-
-      [NEW TABLE] Pre-computed provenance closure table.
+      [NEW CLASS] Pre-computed provenance closure table.
       Stores every (ancestor, descendant) pair across all chain types with depth.
-      Refreshed on a schedule; not updated in real-time (acceptable for daily batches).
+      Refreshed on a schedule; not real-time (acceptable for daily batch cadence).
 
       DDL:
         CREATE TABLE linkage_cache (
@@ -329,10 +428,16 @@ classes:
 
       Example query — all products from sample S1:
         SELECT pd.*
-        FROM linkage_cache pc
-        JOIN "processedData" pd ON pd.id = pc.descendant_id
-        WHERE pc.ancestor_id = 'S1-uuid'
-          AND pc.descendant_type = 'processedData';
+        FROM linkage_cache lc
+        JOIN "processedData" pd ON pd.id = lc.descendant_id
+        WHERE lc.ancestor_id = 'S1-uuid'
+          AND lc.descendant_type = 'processedData';
+    slots:
+      - ancestor_type    # class/table name of ancestor node
+      - descendant_type  # class/table name of descendant node
+      - depth            # required; 1 = direct parent
+      - path             # optional debug chain string
+      - computed_at      # refresh timestamp
     attributes:
       ancestor_id:
         range: uuid
@@ -340,18 +445,6 @@ classes:
       descendant_id:
         range: uuid
         required: true
-      ancestor_type:
-        description: Table/class name of the ancestor node
-        range: string
-      descendant_type:
-        description: Table/class name of the descendant node
-        range: string
-      depth:
-        description: Number of hops between ancestor and descendant (1 = direct parent)
-        range: integer
-        required: true
-      path:
-        description: Optional debug string showing the chain (e.g., 'WEA1→WEA2→WEA3')
-        range: string
-      computed_at:
-        range: datetime
+    # NOTE: ancestor_id + descendant_id form a composite primary key in the DDL.
+    # LinkML does not natively express composite PKs; use unique_keys if needed
+    # in the full schema MR.
