@@ -35,6 +35,8 @@ classes:
     description: |-
       Computational workflow run. Produces processedData records.
       EXISTING table; two columns added to enable chaining.
+      NOTE WE WILL RENAME THIS TO DATAPROCESSINGACTIVITY IN THE FULL REFACTOR, BUT KEEPING NAME FOR NOW TO AVOID BREAKING CHANGES.
+
     attributes:
 
       # --- existing fields (context only) ---
@@ -75,18 +77,6 @@ classes:
         range: uuid        # FK → workflowExecutionActivity.id (self)
         required: false
 
-      # --- [ADDED] multi-input from data products ---
-      input_processed_data_ids:
-        description: |-
-          [ADDED] JSONB array of processedData UUIDs consumed as inputs.
-          Covers the case where a downstream workflow reads data products
-          (not just instrumentData) produced by an upstream step.
-          Stores as: ["uuid-A", "uuid-B"]
-
-          DDL: ALTER TABLE "workflowExecutionActivity"
-                 ADD COLUMN input_processed_data_ids JSONB;
-        range: string      # stored as JSONB array of UUID strings
-        required: false
 
 
   # ============================================================================
@@ -102,6 +92,7 @@ classes:
     description: |-
       Acquisition event linking an instrument run to a processedSample.
       EXISTING table; two nullable columns added for temporal series.
+      NOTE WE WILL RENAME THIS TO DATAGENERATIONACTIVITY IN THE FULL REFACTOR, BUT KEEPING NAME FOR NOW TO AVOID BREAKING CHANGES.
     attributes:
 
       # --- existing fields (context only) ---
