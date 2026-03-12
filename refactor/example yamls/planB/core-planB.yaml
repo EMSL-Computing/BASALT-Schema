@@ -253,19 +253,24 @@ classes:
 
 
   # ============================================================================
-  # (EXISTING + CHANGE) workflowExecutionActivity
+  # (EXISTING + CHANGE) workflowExecutionActivity  [NOW ABSTRACT]
   # ============================================================================
   # Adds self-referential parent_workflow_id slot for workflow chaining.
   # workflow_steps moved from inline JSONB comment to defined slot (key-value,
   # schema TBD).
+  # Now marked abstract: true per PI guidance — high-level activity classes
+  # should be abstract. Concrete per-workflow-type subclasses (e.g.
+  # MetagenomicsWorkflow, AMP2FlowCytometryWorkflow) use is_a to inherit.
   # NOTE: Will be renamed DataProcessingActivity in the full Prov-O refactor;
   # keeping current name here to avoid breaking changes.
   # ============================================================================
 
   workflowExecutionActivity:
+    abstract: true
     description: |-
       Computational workflow run. Produces processedData records.
-      EXISTING class; slot additions for chaining and structured parameters.
+      EXISTING class; now ABSTRACT. Slot additions for chaining and structured
+      parameters. Concrete per-type subclasses use is_a: workflowExecutionActivity.
       NOTE: Will be renamed DataProcessingActivity in the full Prov-O refactor.
     slots:
       - parent_workflow_id   # [ADDED] self-referential chain link
@@ -280,18 +285,26 @@ classes:
 
 
   # ============================================================================
-  # (EXISTING + CHANGE) analysisActivity
+  # (EXISTING + CHANGE) analysisActivity  [NOW ABSTRACT]
   # ============================================================================
-  # Adds two nullable slots for explicit temporal ordering — useful for
-  # ecoplates (t=0, t=24h, t=48h) and AMP2 grow-curve timepoints.
+  # Adds sequence_order slot for temporal ordering within a series.
+  # timepoint_label dropped from this base class — will be added on concrete
+  # per-project subclasses (e.g. EcoplateAnalysisActivity, AMP2AnalysisActivity)
+  # that actually need it, rather than on all analysis activities.
+  # Now marked abstract: true per PI guidance — high-level activity classes
+  # should be abstract. Concrete per-method-type subclasses use is_a to inherit.
   # NOTE: Will be renamed DataGenerationActivity in the full Prov-O refactor.
   # ============================================================================
 
   analysisActivity:
+    abstract: true
     description: |-
       Acquisition event linking an instrument run to a processedSample.
-      EXISTING class; two nullable slots added for temporal series support.
-      NOTE: dropped timepoint_label (e.g. 0h, 48h). May elect to have a timeSTAMP label here.
+      EXISTING class; now ABSTRACT. Concrete per-method-type subclasses
+      (e.g. EcoplateAnalysisActivity, AMP2AnalysisActivity) use
+      is_a: analysisActivity and add method-specific slots (including
+      timepoint_label where needed).
+      NOTE: dropped timepoint_label from base class — lives on concrete subclasses.
       NOTE: Will be renamed DataGenerationActivity in the full Prov-O refactor.
     slots:
       - sequence_order       # [ADDED] integer ordering within series
@@ -338,16 +351,22 @@ classes:
 
 
   # ============================================================================
-  # (EXISTING + CHANGE) samplingActivity
+  # (EXISTING + CHANGE) samplingActivity  [NOW ABSTRACT]
   # ============================================================================
   # Adds emsl_activity nullable slot to replace the campaign FK approach.
+  # Now marked abstract: true per PI guidance — high-level activity classes
+  # should be abstract. Concrete subclasses (e.g. soil, aerosol; see metadata.yaml
+  # where soil is_a samplingActivity) use is_a to inherit.
   # Only the added slot is shown; all existing attributes are unchanged.
   # See metadata.yaml for the full existing field list.
   # ============================================================================
 
   samplingActivity:
+    abstract: true
     description: |-
-      Sampling event. EXISTING class; one nullable slot added for activity scoping.
+      Sampling event. EXISTING class; now ABSTRACT. Concrete subclasses
+      (e.g. soil, aerosol in metadata.yaml) use is_a: samplingActivity.
+      One nullable slot added for activity scoping.
     slots:
       - emsl_activity        # [ADDED] replaces planned campaign FK
     # --- existing fields (context only — defined in metadata.yaml) ---
@@ -371,6 +390,25 @@ classes:
       CHANGE vs. v1 delta: campaign_id slot previously proposed here is DROPPED.
       All other attributes unchanged — see analysis_api_schema.yaml.
     # No slot additions.
+
+
+  # ============================================================================
+  # (EXISTING + CHANGE) sampleProcessing  [NOW ABSTRACT]
+  # ============================================================================
+  # No slot additions in this delta. Marked abstract: true per PI guidance.
+  # Concrete subclasses (one per processing protocol) use is_a: sampleProcessing
+  # and carry protocol-specific slots.
+  # Full existing definition in analysis_api_schema.yaml.
+  # ============================================================================
+
+  sampleProcessing:
+    abstract: true
+    description: |-
+      Sample processing protocol record. EXISTING class; now ABSTRACT.
+      Concrete protocol-specific subclasses use is_a: sampleProcessing.
+      No slot additions in this delta — see analysis_api_schema.yaml for
+      existing fields (analysis_type, method_name, processing_steps, url, version).
+    # No slot additions in this delta.
 
 
   # ============================================================================
