@@ -123,16 +123,16 @@ slots:
   # ---------------------------------------------------------------------------
   # analysisActivity additions
   # ---------------------------------------------------------------------------
-  timepoint_label:
-    description: |-
-      [ADDED] Human-readable timepoint label for repeated-measurement series.
-      Examples: 't=0', 't=24h', 't=48h', 'pre-treatment', 'post-treatment'.
-      Optional — omit for one-off single analyses.
+  # timepoint_label: PUT THIS ON NEEDED ACTIVITIES IN THE FULL MR (e.g. ecoplate, AMP2) RATHER THAN ALL ANALYSIS ACTIVITIES
+  #   description: |-
+  #     [ADDED] Human-readable timepoint label for repeated-measurement series.
+  #     Examples: 't=0', 't=24h', 't=48h', 'pre-treatment', 'post-treatment'.
+  #     Optional — omit for one-off single analyses.
 
-      DDL: ALTER TABLE "analysisActivity"
-             ADD COLUMN timepoint_label VARCHAR(64);
-    range: string
-    required: false
+  #     DDL: ALTER TABLE "analysisActivity"
+  #            ADD COLUMN timepoint_label VARCHAR(64);
+  #   range: string
+  #   required: false
 
   sequence_order:
     description: |-
@@ -291,9 +291,9 @@ classes:
     description: |-
       Acquisition event linking an instrument run to a processedSample.
       EXISTING class; two nullable slots added for temporal series support.
+      NOTE: dropped timepoint_label (e.g. 0h, 48h). May elect to have a timeSTAMP label here.
       NOTE: Will be renamed DataGenerationActivity in the full Prov-O refactor.
     slots:
-      - timepoint_label      # [ADDED] human-readable series label
       - sequence_order       # [ADDED] integer ordering within series
       - version              # [PROMOTED] existing attribute → global slot
     # --- existing fields (context only — defined in analysis_api_schema.yaml) ---
