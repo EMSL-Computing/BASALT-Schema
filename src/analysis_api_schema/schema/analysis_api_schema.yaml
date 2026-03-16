@@ -309,6 +309,12 @@ classes:
       version:
         range: string
 
+  sitePhoto:
+    is_a: dataProduct
+    attributes:
+      type:
+        range: sitephototype
+
   # (CHANGED MR1) analysisActivity is now ABSTRACT.
   # Concrete per-method-type subclasses (e.g. EcoplateAnalysisActivity,
   # AMP2AnalysisActivity in companion files) use is_a: analysisActivity and
