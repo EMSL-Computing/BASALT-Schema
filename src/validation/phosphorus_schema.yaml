@@ -10,7 +10,7 @@
 #
 # NOTE: extraction_method (e.g. Olsen, Mehlich-3, Bray) affects interpretation.
 #       The operational schema also carries a flag_avg for averaged data.
-# Last Updated:  2026-02-25
+# Last Updated:  2026-03-16
 # =============================================================================
 
 id: https://w3id.org/MONet/analysis-api-schema/phosphorus

@@ -8,9 +8,9 @@
 # CSV output:    Sand_percent, Silt_percent, Clay_percent, flag_texture
 #                (soil_biochemical_properties_schema.yaml)
 #
-# NOTE: sand + silt + clay should sum to 100%. Validation of this constraint
+# NOTE: Should sand + silt + clay sum to 100%? Validation of this constraint
 #       is handled in code, not enforced here per-field.
-# Last Updated:  2026-02-25
+# Last Updated:  2026-03-16
 # =============================================================================
 
 id: https://w3id.org/MONet/analysis-api-schema/texture
