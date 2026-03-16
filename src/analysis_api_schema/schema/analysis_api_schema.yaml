@@ -22,6 +22,112 @@ prefixes:
 default_prefix: analysis_api_schema
 default_range: string
 
+# =============================================================================
+# GLOBAL SLOTS
+# Non-identifier fields that are shared across multiple classes or promoted
+# from inline attributes to support the dataProduct inheritance hierarchy.
+# UUID identifier fields remain as class-level attributes (identifier: true).
+# =============================================================================
+
+slots:
+
+  # --- dataProduct base slots (promoted from processedData attributes) ---
+  name:
+    description: Human-readable name for the data product
+    range: string
+    required: true
+
+  proposal_id:
+    description: 5-digit EMSL user proposal/project ID
+    range: integer
+
+  sampling_set:
+    range: integer
+
+  core_section:
+    range: string
+
+  sample_name:
+    range: string
+
+  s3_base_url:
+    range: string
+
+  s3_bucket:
+    range: string
+
+  s3_key:
+    description: MinIO/S3 object key; required for all data products
+    range: string
+    required: true
+
+  filesize:
+    range: integer
+
+  md5checksum:
+    range: string
+
+  # --- shared utility slots promoted from processedData inline attributes ---
+  lims_barcode:
+    description: LIMS barcode identifier
+    range: string
+    required: false
+
+  version:
+    description: Version string; shared by processedData, analysisActivity, workflowExecutionActivity
+    range: string
+    required: false
+
+  # --- workflowExecutionActivity: new chain-link slot ---
+  parent_workflow_id:
+    description: |-
+      Self-referential FK to the preceding workflowExecutionActivity in a chain.
+      NULL  → first (or standalone) step.
+      Non-null → this execution directly follows parent_workflow_id.
+      Enables single-hop chaining queries; full traversal via linkage_cache.
+
+      DDL: ALTER TABLE "workflowExecutionActivity"
+             ADD COLUMN parent_workflow_id UUID
+             REFERENCES "workflowExecutionActivity"(id);
+    range: uuid
+    required: false
+
+  # --- workflowExecutionActivity: JSONB direction change ---
+  workflow_steps:
+    description: |-
+      Per-run workflow parameters. Previously annotated TODO JSONB in schema.
+      Direction: structured key-value pairs keyed by workflow type.
+      Schema for allowed keys TBD per workflow type before full implementation.
+      Interim DB storage: JSONB column retained.
+    range: string   # interim placeholder — will reference typed key-value class; schema TBD
+    required: false
+
+  # --- analysisActivity: temporal ordering ---
+  sequence_order:
+    description: |-
+      Integer ordering within a temporal series for the same analyte.
+      Lower = earlier in series. Use when acquisition_time alone is insufficient.
+
+      DDL: ALTER TABLE "analysisActivity"
+             ADD COLUMN sequence_order INTEGER;
+    range: integer
+    required: false
+
+  # --- processedData: compact queryable summary ---
+  summary_metrics:
+    description: |-
+      Lightweight per-product summary for common queries that avoid full file download.
+      Direction: structured key-value pairs; per-type schemas TBD:
+        ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
+        xrf:       per-element concentration results + QC flag
+        lcms:      feature count, identification count, MSI-2 fraction
+      Interim DB storage: JSONB column retained until formal typed class exists.
+
+      DDL: ALTER TABLE "processedData"
+             ADD COLUMN summary_metrics JSONB;   -- interim; formal key-value schema TBD
+    range: string   # interim placeholder — will reference typed key-value class; schema TBD
+    required: false
+
 imports:
   - linkml:types
   - enums
@@ -34,9 +140,40 @@ imports:
   - campaign
   - study
   - zip_download
+  # - linkage_cache   # MR2: uncomment when linkage_cache.yaml is added
   # - enrichment # todo have not reviewed fully
 
 classes:
+
+  # ---------------------------------------------------------------------------
+  # (NEW ABSTRACT CLASS) dataProduct — MR1
+  # Abstract base for any data artifact accessible in S3 storage.
+  # processedData inherits via is_a. Future sitePhoto and similar file-based
+  # products will also inherit here. No direct database table.
+  # ---------------------------------------------------------------------------
+  dataProduct:
+    abstract: true
+    description: |-
+      Abstract base class for raw or processed data accessible in S3 storage.
+      Carries S3-pointer and sample-linkage slots shared across product types.
+      processedData and future sitePhoto extend this via is_a.
+      No direct database table — subclasses map to tables.
+    slots:
+      - name
+      - proposal_id
+      - sampling_set
+      - core_section
+      - sample_name
+      - s3_base_url
+      - s3_bucket
+      - s3_key
+      - filesize
+      - md5checksum
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+        required: true
 
 
   sampleBase:
@@ -129,45 +266,40 @@ classes:
         range: integer
         required: true
 
+  # (CHANGED MR1) processedData now inherits from dataProduct via is_a.
+  # Inherited slots: name, proposal_id, sampling_set, core_section, sample_name,
+  # s3_base_url, s3_bucket, s3_key, filesize, md5checksum, id.
+  # Retained as attributes: type (class-specific product enum range), workflow_id.
+  # New slots: summary_metrics, lims_barcode, version.
   processedData:
+    is_a: dataProduct
+    description: A data product generated by a workflow execution.
+    slots:
+      - summary_metrics  # [ADDED] key-value product summary, per-type schema TBD
+      - lims_barcode     # [PROMOTED] from inline attribute
+      - version          # [PROMOTED] from inline attribute
     attributes:
-      id:
-        identifier: true
-        range: uuid
+      # id inherited from dataProduct
       type:
+        # NOTE: type stays as an attribute — class-specific range (product enum)
+        # cannot be a single global slot without range polymorphism support.
         range: product
         required: true
-      name:
-        range: string
-        required: true
-      proposal_id:
-        range: string
-      sampling_set:
-        range: integer
-      core_section:
-        range: string
-      sample_name:
-        range: string
-      s3_base_url:
-        range: string
-      s3_bucket:
-        range: string
-      s3_key:
-        range: string
-        required: true
-      filesize:
-        range: integer
-      md5checksum:
-        range: string
       workflow_id:
         range: workflowExecutionActivity
-      lims_barcode:
-        range: string
-      version:
-        range: string
 
 
+  # (CHANGED MR1) analysisActivity is now ABSTRACT.
+  # Concrete per-method-type subclasses (e.g. EcoplateAnalysisActivity,
+  # AMP2AnalysisActivity in companion files) use is_a: analysisActivity and
+  # add method-specific slots (including timepoint_label where needed).
+  # New slot: sequence_order. version promoted to global slot.
+  # NOTE: Will be renamed DataGenerationActivity in the full Prov-O refactor.
   analysisActivity:
+    abstract: true
+    slots:
+      - sequence_order   # [ADDED] integer ordering within a temporal series
+      - version          # [PROMOTED] from inline attribute
     attributes:
       id:
         identifier: true
@@ -187,8 +319,6 @@ classes:
         range: string
       instrument_operator_id:
         range: personValue
-      version:
-        range: string
 
   instrumentData:
     attributes:
@@ -222,7 +352,18 @@ classes:
       version:
         range: string
 
+  # (CHANGED MR1) workflowExecutionActivity is now ABSTRACT.
+  # Concrete per-type subclasses (e.g. MetagenomicsWorkflowExecutionActivity in
+  # metagenomics.yaml) use is_a: workflowExecutionActivity.
+  # New slot: parent_workflow_id (chain link). workflow_steps direction updated.
+  # version promoted to global slot.
+  # NOTE: Will be renamed DataProcessingActivity in the full Prov-O refactor.
   workflowExecutionActivity:
+    abstract: true
+    slots:
+      - parent_workflow_id  # [ADDED] self-referential chain link
+      - workflow_steps      # [CHANGED] key-value direction; schema TBD (was # TODO JSONB)
+      - version             # [PROMOTED] from inline attribute
     attributes:
       id:
         identifier: true
@@ -249,10 +390,6 @@ classes:
         range: softwareControlledTermValue
       execution_resource:
         range: executionresourcetype
-      workflow_steps:
-        range: string # TODO JSONB
-      version:
-        range: string
 
   alternativeIdentifier:
     attributes:
@@ -399,7 +536,11 @@ classes:
       activity_speed_id:
         range: quantityValue
 
+  # (CHANGED MR1) sampleProcessing is now ABSTRACT per PI guidance.
+  # Concrete protocol-specific subclasses use is_a: sampleProcessing.
+  # processing_steps noted TODO JSONB — direction change to key-value is deferred.
   sampleProcessing:
+    abstract: true
     attributes:
       id:
         identifier: true
@@ -409,7 +550,7 @@ classes:
       method_name:
         range: methodname
       processing_steps:
-        range: string # TODO JSONB
+        range: string # TODO JSONB — key-value direction deferred; schema TBD
         required: true
       url:
         range: string
