@@ -46,12 +46,36 @@ enums:
       Failed_QC:
       Insufficient_Material:
 
+slots:
+
+  flag_no3n:
+    description: QC flag for nitrate-N measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+  flag_nh4n:
+    description: QC flag for ammonium-N measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
 classes:
 
   NitrogenProductValues:
     description: |-
       Nitrogen extraction product values (NO3-N and NH4-N).
       Replicate-level data when replicate field is present in CoreSectionData.
+    slots:
+      - flag_no3n
+      - flag_nh4n
+    slot_usage:
+      flag_no3n:
+        description: |-
+          QC flag for the nitrate-N measurement.
+          CSV column: flag_no3_n.
+      flag_nh4n:
+        description: |-
+          QC flag for the ammonium-N measurement.
+          CSV column: flag_nh4_n.
     attributes:
 
       no3_n:
@@ -71,17 +95,3 @@ classes:
         range: double
         required: false
         # minimum_value: 0
-
-      flag_no3n:
-        description: |-
-          QC flag for the nitrate-N measurement.
-          CSV column: flag_no3_n.
-        range: ProcessedDataFlagEnum
-        required: false
-
-      flag_nh4n:
-        description: |-
-          QC flag for the ammonium-N measurement.
-          CSV column: flag_nh4_n.
-        range: ProcessedDataFlagEnum
-        required: false

@@ -48,12 +48,48 @@ enums:
       Failed_QC:
       Insufficient_Material:
 
+slots:
+
+  flag_total_carbon:
+    description: QC flag for total carbon measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+  flag_total_nitrogen:
+    description: QC flag for total nitrogen measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+  flag_tkn:
+    description: QC flag for TKN measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+  flag_total_sulfur:
+    description: QC flag for total sulfur measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
 classes:
 
   ElementalAnalysisProductValues:
     description: |-
       Elemental analysis product values (Total C, N, S by combustion).
       One record per core section. No replicates.
+    slots:
+      - flag_total_carbon
+      - flag_total_nitrogen
+      - flag_tkn
+      - flag_total_sulfur
+    slot_usage:
+      flag_total_carbon:
+        description: QC flag for total carbon. CSV column: flag_total_carbon.
+      flag_total_nitrogen:
+        description: QC flag for total nitrogen. CSV column: flag_total_nitrogen.
+      flag_tkn:
+        description: QC flag for TKN. CSV column: flag_tkn.
+      flag_total_sulfur:
+        description: QC flag for total sulfur. CSV column: flag_total_sulfur.
     attributes:
 
       total_carbon:
@@ -83,24 +119,4 @@ classes:
           Total Sulfur as weight percent of dry soil (%).
           CSV column: Total_S_percent.
         range: double
-        required: false
-
-      flag_total_carbon:
-        description: QC flag for total carbon. CSV column: flag_total_carbon.
-        range: ProcessedDataFlagEnum
-        required: false
-
-      flag_total_nitrogen:
-        description: QC flag for total nitrogen. CSV column: flag_total_nitrogen.
-        range: ProcessedDataFlagEnum
-        required: false
-
-      flag_tkn:
-        description: QC flag for TKN. CSV column: flag_tkn.
-        range: ProcessedDataFlagEnum
-        required: false
-
-      flag_total_sulfur:
-        description: QC flag for total sulfur. CSV column: flag_total_sulfur.
-        range: ProcessedDataFlagEnum
         required: false

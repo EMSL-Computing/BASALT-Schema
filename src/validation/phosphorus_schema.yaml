@@ -48,12 +48,27 @@ enums:
       Failed_QC:
       Insufficient_Material:
 
+slots:
+
+  flag:
+    description: QC flag for this measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
 classes:
 
   PhosphorusProductValues:
     description: |-
       Phosphorus extraction product values.
       Replicate-level data when replicate field is present in CoreSectionData.
+    slots:
+      - flag
+    slot_usage:
+      flag:
+        description: |-
+          QC flag for the phosphorus measurement.
+          CSV column: flag_phosphorus.
+          Operational schema also has flag_avg for the replicate average.
     attributes:
 
       extraction_method:
@@ -72,11 +87,3 @@ classes:
         range: double
         required: false
         # minimum_value: 0
-
-      flag:
-        description: |-
-          QC flag for the phosphorus measurement.
-          CSV column: flag_phosphorus.
-          Operational schema also has flag_avg for the replicate average.
-        range: ProcessedDataFlagEnum
-        required: false

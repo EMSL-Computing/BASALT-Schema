@@ -44,12 +44,26 @@ enums:
       Failed_QC:
       Insufficient_Material:
 
+slots:
+
+  flag:
+    description: QC flag for this measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
 classes:
 
   GWCProductValues:
     description: |-
       Gravimetric water content product values.
       Replicate-level data when replicate field is present in CoreSectionData.
+    slots:
+      - flag
+    slot_usage:
+      flag:
+        description: |-
+          QC flag for the GWC measurement.
+          CSV column: flag_GWC
     attributes:
 
       gwc:
@@ -61,10 +75,3 @@ classes:
         range: double
         required: false
         # minimum_value: 0 — not enforced; organic soils can exceed expected range
-
-      flag:
-        description: |-
-          QC flag for the GWC measurement.
-          CSV column: flag_GWC
-        range: ProcessedDataFlagEnum
-        required: false

@@ -48,6 +48,13 @@ enums:
       Failed_QC:
       Insufficient_Material:
 
+slots:
+
+  flag:
+    description: QC flag for this measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
 classes:
 
   TextureProductValues:
@@ -55,6 +62,13 @@ classes:
       Soil texture product values (particle size fractions).
       One record per core section. No replicates.
       Sand + Silt + Clay should sum to ~100%.
+    slots:
+      - flag
+    slot_usage:
+      flag:
+        description: |-
+          QC flag applied to the whole texture result (sand/silt/clay together).
+          CSV column: flag_texture.
     attributes:
 
       sand_pct:
@@ -83,10 +97,3 @@ classes:
         required: false
         # minimum_value: 0
         # maximum_value: 100
-
-      flag:
-        description: |-
-          QC flag applied to the whole texture result (sand/silt/clay together).
-          CSV column: flag_texture.
-        range: ProcessedDataFlagEnum
-        required: false

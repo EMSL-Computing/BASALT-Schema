@@ -51,12 +51,112 @@ enums:
       Failed_QC:
       Insufficient_Material:
 
+slots:
+
+  sulfate_flag:
+    description: QC flag for sulfate measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+  boron_flag:
+    description: QC flag for boron measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+  zinc_flag:
+    description: QC flag for zinc measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+  manganate_flag:
+    description: QC flag for manganese measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+  copper_flag:
+    description: QC flag for copper measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+  iron_flag:
+    description: QC flag for iron measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+  calcium_flag:
+    description: QC flag for calcium measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+  magnesium_flag:
+    description: QC flag for magnesium measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+  sodium_flag:
+    description: QC flag for sodium measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+  potassium_flag:
+    description: QC flag for potassium measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+  cation_exchange_capacity_flag:
+    description: QC flag for CEC measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+  total_bases_flag:
+    description: QC flag for total bases sum.
+    range: ProcessedDataFlagEnum
+    required: false
+
 classes:
 
   IonProductValues:
     description: |-
       Ion analysis product values. One record per core section. No replicates.
       Micronutrients reported in mg/kg; exchangeable cations and CEC in meq/100g.
+    slots:
+      - sulfate_flag
+      - boron_flag
+      - zinc_flag
+      - manganate_flag
+      - copper_flag
+      - iron_flag
+      - calcium_flag
+      - magnesium_flag
+      - sodium_flag
+      - potassium_flag
+      - cation_exchange_capacity_flag
+      - total_bases_flag
+    slot_usage:
+      sulfate_flag:
+        description: QC flag for sulfate. CSV column: flag_SO4_S.
+      boron_flag:
+        description: QC flag for boron. CSV column: flag_B.
+      zinc_flag:
+        description: QC flag for zinc. CSV column: flag_Zn.
+      manganate_flag:
+        description: QC flag for manganese. CSV column: flag_Mn.
+      copper_flag:
+        description: QC flag for copper. CSV column: flag_Cu.
+      iron_flag:
+        description: QC flag for iron. CSV column: flag_Fe.
+      calcium_flag:
+        description: QC flag for calcium. CSV column: flag_Ca.
+      magnesium_flag:
+        description: QC flag for magnesium. CSV column: flag_Mg.
+      sodium_flag:
+        description: QC flag for sodium. CSV column: flag_Na.
+      potassium_flag:
+        description: QC flag for potassium. CSV column: flag_K.
+      cation_exchange_capacity_flag:
+        description: QC flag for CEC. CSV column: flag_CEC.
+      total_bases_flag:
+        description: QC flag for total bases sum. CSV column: flag_total_bases.
     attributes:
 
       # -----------------------------------------------------------------------
@@ -129,68 +229,4 @@ classes:
           Present in operational schema (total_bases_id) but not currently a
           CSV output column. Flag exists: flag_total_bases.
         range: double
-        required: false
-
-      # -----------------------------------------------------------------------
-      # Per-ion QC Flags
-      # -----------------------------------------------------------------------
-
-      sulfate_flag:
-        description: QC flag for sulfate. CSV column: flag_SO4_S.
-        range: ProcessedDataFlagEnum
-        required: false
-
-      boron_flag:
-        description: QC flag for boron. CSV column: flag_B.
-        range: ProcessedDataFlagEnum
-        required: false
-
-      zinc_flag:
-        description: QC flag for zinc. CSV column: flag_Zn.
-        range: ProcessedDataFlagEnum
-        required: false
-
-      manganate_flag:
-        description: QC flag for manganese. CSV column: flag_Mn.
-        range: ProcessedDataFlagEnum
-        required: false
-
-      copper_flag:
-        description: QC flag for copper. CSV column: flag_Cu.
-        range: ProcessedDataFlagEnum
-        required: false
-
-      iron_flag:
-        description: QC flag for iron. CSV column: flag_Fe.
-        range: ProcessedDataFlagEnum
-        required: false
-
-      calcium_flag:
-        description: QC flag for calcium. CSV column: flag_Ca.
-        range: ProcessedDataFlagEnum
-        required: false
-
-      magnesium_flag:
-        description: QC flag for magnesium. CSV column: flag_Mg.
-        range: ProcessedDataFlagEnum
-        required: false
-
-      sodium_flag:
-        description: QC flag for sodium. CSV column: flag_Na.
-        range: ProcessedDataFlagEnum
-        required: false
-
-      potassium_flag:
-        description: QC flag for potassium. CSV column: flag_K.
-        range: ProcessedDataFlagEnum
-        required: false
-
-      cation_exchange_capacity_flag:
-        description: QC flag for CEC. CSV column: flag_CEC.
-        range: ProcessedDataFlagEnum
-        required: false
-
-      total_bases_flag:
-        description: QC flag for total bases sum. CSV column: flag_total_bases.
-        range: ProcessedDataFlagEnum
         required: false

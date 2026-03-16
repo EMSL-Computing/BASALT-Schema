@@ -11,7 +11,7 @@
 # NOTE: operational schema carries separate mbc_avg / mbn_avg fields and
 #       corresponding flag_avg fields for replicate averages — included here
 #       so ingest can carry both replicate values and pre-computed averages.
-# Last Updated:  2026-02-25
+# Last Updated:  2026-03-16
 # =============================================================================
 
 id: https://w3id.org/MONet/analysis-api-schema/biomass
@@ -49,6 +49,18 @@ enums:
       Failed_QC:
       Insufficient_Material:
 
+slots:
+
+  flag_mbc:
+    description: QC flag for MBC measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+  flag_mbn:
+    description: QC flag for MBN measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
 classes:
 
   BiomassProductValues:
@@ -56,6 +68,18 @@ classes:
       Microbial biomass product values (MBC and MBN).
       Replicate-level data when replicate field is present in CoreSectionData.
       The operational schema also stores pre-computed replicate averages (mbc_avg, mbn_avg).
+    slots:
+      - flag_mbc
+      - flag_mbn
+    slot_usage:
+      flag_mbc:
+        description: |-
+          QC flag for the MBC measurement.
+          CSV column: flag_MBC.
+      flag_mbn:
+        description: |-
+          QC flag for the MBN measurement.
+          CSV column: flag_MBN.
     attributes:
 
       mbc:
@@ -88,18 +112,4 @@ classes:
           Pre-computed average MBN across replicates (mg/kg).
           Stored in operational schema
         range: double
-        required: false
-
-      flag_mbc:
-        description: |-
-          QC flag for the MBC measurement.
-          CSV column: flag_MBC.
-        range: ProcessedDataFlagEnum
-        required: false
-
-      flag_mbn:
-        description: |-
-          QC flag for the MBN measurement.
-          CSV column: flag_MBN.
-        range: ProcessedDataFlagEnum
         required: false

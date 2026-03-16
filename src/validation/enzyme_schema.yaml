@@ -43,25 +43,32 @@ enums:
       Failed_QC:
       Insufficient_Material:
 
+slots:
+
+  flag:
+    description: QC flag for this measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
 classes:
 
   EnzymeProductValues:
     description: |-
       Enzyme activity product values. One record per core section.
+    slots:
+      - flag
+    slot_usage:
+      flag:
+        description: |-
+          QC flag for the enzyme activity measurement.
+          CSV column: flag_beta_glucosidase
     attributes:
 
       beta_glucosidase_ug_pnp_per_g_per_h:
         description: |-
           Beta-glucosidase activity in µg para-nitrophenol (pNP) per gram dry soil per hour.
-          Units: µg pNP g-1 h-1
+          Units: µg pNP g⁻¹ h⁻¹
           CSV column: Beta_Glucosidase_ug_pNP_per_g_per_h
         range: double
         required: false
-        # minimum_value: 0 — commented out; negative values may be possible in background-subtracted assays?
-
-      flag:
-        description: |-
-          QC flag for the enzyme activity measurement.
-          CSV column: flag_beta_glucosidase
-        range: ProcessedDataFlagEnum
-        required: false
+        # minimum_value: 0 — commented out; negative values possible in background-subtracted assays

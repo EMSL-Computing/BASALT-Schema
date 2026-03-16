@@ -60,6 +60,18 @@ enums:
       Failed_QC:
       Insufficient_Material:
 
+slots:
+
+  flag_toc:
+    description: QC flag for TOC measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+  flag_tn:
+    description: QC flag for TN measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
 classes:
 
   TOCTNProductValues:
@@ -71,6 +83,18 @@ classes:
         CSV columns: WEOM_TOC_mg_per_kg, WEOM_TN_mg_per_kg, flag_WEOM_TOC, flag_WEOM_TN
       For MAOM/HClExtOM (analysis_type = "maom_toctn"):
         CSV columns: HClExtOM_TOC_mg_per_kg, HClExtOM_TN_mg_per_kg, flag_HClExtOM_TOC, flag_HClExtOM_TN
+    slots:
+      - flag_toc
+      - flag_tn
+    slot_usage:
+      flag_toc:
+        description: |-
+          QC flag for the TOC measurement.
+          For WEOM: flag_WEOM_TOC. For MAOM: flag_HClExtOM_TOC.
+      flag_tn:
+        description: |-
+          QC flag for the TN measurement.
+          For WEOM: flag_WEOM_TN. For MAOM: flag_HClExtOM_TN.
     attributes:
 
       toc:
@@ -105,18 +129,4 @@ classes:
           Pre-computed average TN across replicates (mg/kg).
           Stored in operational schema (total_nitrogen_avg).
         range: double
-        required: false
-
-      flag_toc:
-        description: |-
-          QC flag for the TOC measurement.
-          For WEOM: flag_WEOM_TOC. For MAOM: flag_HClExtOM_TOC.
-        range: ProcessedDataFlagEnum
-        required: false
-
-      flag_tn:
-        description: |-
-          QC flag for the TN measurement.
-          For WEOM: flag_WEOM_TN. For MAOM: flag_HClExtOM_TN.
-        range: ProcessedDataFlagEnum
         required: false

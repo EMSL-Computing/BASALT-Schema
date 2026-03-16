@@ -6,7 +6,7 @@
 # Analysis type: "ph" (lims_processed_data_schema.yaml AnalysisTypeEnum)
 # Measure level: Single (no replicates)
 # CSV output:    pH, flag_pH (soil_biochemical_properties_schema.yaml)
-# Last Updated:  2026-02-25
+# Last Updated:  2026-03-16
 # =============================================================================
 
 id: https://w3id.org/MONet/analysis-api-schema/ph
@@ -41,12 +41,26 @@ enums:
       Failed_QC:
       Insufficient_Material:
 
+slots:
+
+  flag:
+    description: QC flag for this measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
 classes:
 
   PHProductValues:
     description: |-
       pH measurement product values.
       One record per core section. No replicates.
+    slots:
+      - flag
+    slot_usage:
+      flag:
+        description: |-
+          QC flag for the pH measurement.
+          CSV column: flag_pH
     attributes:
 
       ph:
@@ -55,10 +69,3 @@ classes:
         required: false
         # minimum_value: 0
         # maximum_value: 14
-
-      flag:
-        description: |-
-          QC flag for the pH measurement.
-          CSV column: flag_pH
-        range: processeddataflag
-        required: false

@@ -58,6 +58,13 @@ enums:
       Insufficient_Material:
         description: Insufficient sample material
 
+slots:
+
+  flag:
+    description: QC flag for this measurement.
+    range: RespirationFlagEnum
+    required: false
+
 classes:
 
   RespirationProductValues:
@@ -67,21 +74,21 @@ classes:
       
       NOTE: Respiration does NOT appear as a value column in Soil_BioChemical_properties.csv
       (only flag_respiration appears). 
+    slots:
+      - flag
+    slot_usage:
+      flag:
+        description: |-
+          Data quality flag for the respiration measurement.
+          Source: RespirationProduct from canonical schema (flag_respiration in CSV output).
     attributes:
 
       respiration:
         description: |-
           Soil respiration rate.
-          TODO: confirm units with Kaizad — expected unit is µg CO2-C g-1 h-1
-          or mg CO2-C kg-1 day-1 depending on analytical method.
+          TODO: confirm units with Kaizad — expected unit is µg CO₂-C g⁻¹ h⁻¹
+          or mg CO₂-C kg⁻¹ day⁻¹ depending on analytical method.
           Minimum value: 0 (non-negative)
         range: double
         required: false
         # TODO: unit — confirm with Kaizad
-
-      flag:
-        description: |-
-          Data quality flag for the respiration measurement.
-          Source: RespirationProduct from canonical schema (flag_respiration in CSV output).
-        range: RespirationFlagEnum
-        required: false

@@ -67,6 +67,13 @@ enums:
       Average:
         description: Average across replicates
 
+slots:
+
+  measure_type:
+    description: Measurement level (Single, Replicate, or Average).
+    range: ProductMeasureTypeEnum
+    required: false
+
 classes:
 
   TomographyProduct:
@@ -76,14 +83,14 @@ classes:
       
       Proposal_ID, sampling_set, and core_section are inherited from the
       LIMSProcessedData envelope (see lims_processed_data_schema.yaml).
-    attributes:
-
+    slots:
+      - measure_type
+    slot_usage:
       measure_type:
         description: |-
           Measurement level: Single, Replicate, or Average.
           Mirrors the measure_type slot from the operational schema.
-        range: ProductMeasureTypeEnum
-        required: false
+    attributes:
 
       # -----------------------------------------------------------------------
       # ROI Geometry
