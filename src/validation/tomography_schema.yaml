@@ -13,6 +13,8 @@
 # NOTE on flag:
 # - flag_xct is currently typed as string in the operational schema (commented-out
 #   processeddataflag range). Reflected here as-is with a comment.
+# - Should we rename this XCT for consistency?
+# - I also see there is already an xct.yaml file in the main repo; feel free to supercede/ignore.
 #
 # Attribute groupings for readability:
 #   ROI geometry        — roi_volume_voxel, voxel_size, connected_pores
@@ -25,7 +27,7 @@
 # - xray_computed_tomography_method exists in routemethod enum (enums.yaml)
 # - Proposal_ID, sampling_set, core_section inherited from LIMSProcessedData envelope
 #
-# Last Updated: 2026-02-25
+# Last Updated:  2026-03-16
 # =============================================================================
 
 id: https://w3id.org/MONet/analysis-api-schema/tomography
@@ -97,9 +99,9 @@ classes:
 
       voxel_size:
         description: |-
-          Physical size of a single voxel (µm).
+          Physical size of a single voxel (micrometer).
           Sets the spatial resolution of all subsequent measurements.
-          TODO: confirm unit (µm assumed).
+          TODO: confirm unit (micrometer assumed).
         range: double
         required: false
 
@@ -116,35 +118,35 @@ classes:
 
       pore_diameter_min:
         description: |-
-          Minimum pore diameter in the segmented pore network (µm).
+          Minimum pore diameter in the segmented pore network (micrometer).
           TODO: confirm unit.
         range: double
         required: false
 
       pore_diameter_max:
         description: |-
-          Maximum pore diameter in the segmented pore network (µm).
+          Maximum pore diameter in the segmented pore network (micrometer).
           TODO: confirm unit.
         range: double
         required: false
 
       pore_diameter_mean:
         description: |-
-          Mean pore diameter across all segmented pores (µm).
+          Mean pore diameter across all segmented pores (micrometer).
           TODO: confirm unit.
         range: double
         required: false
 
       pore_diameter_median:
         description: |-
-          Median pore diameter across all segmented pores (µm).
+          Median pore diameter across all segmented pores (micrometer).
           TODO: confirm unit.
         range: double
         required: false
 
       pore_diameter_variance:
         description: |-
-          Variance of pore diameter across all segmented pores (µm²).
+          Variance of pore diameter across all segmented pores (micrometer²).
           TODO: confirm unit.
         range: double
         required: false
@@ -155,15 +157,15 @@ classes:
 
       pore_volume_mean:
         description: |-
-          Mean pore body volume across all segmented pores (voxels or µm³).
+          Mean pore body volume across all segmented pores (voxels or micrometer³).
           TODO: confirm unit.
         range: double
         required: false
 
       total_pore_volume:
         description: |-
-          Total pore volume in the ROI (voxels or µm³).
-          Equivalent to porosity × ROI volume.
+          Total pore volume in the ROI (voxels or micrometer³).
+          Equivalent to porosity x ROI volume.
           TODO: confirm unit.
         range: double
         required: false
@@ -174,7 +176,7 @@ classes:
 
       permeability_x:
         description: |-
-          Computed permeability in the X direction (mD or m²).
+          Computed permeability in the X direction (mD or m^2).
           Derived from lattice-Boltzmann or similar flow simulation.
           TODO: confirm unit with instrument/simulation team.
         range: double
