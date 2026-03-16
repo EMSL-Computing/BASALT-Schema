@@ -51,7 +51,7 @@ classes:
 
       bulk_density:
         description: |-
-          Soil bulk density (g/cm³).
+          Soil bulk density (g/cm3).
           CSV column: Bulk_density_g_per_cm3
           Minimum value: 0
         range: double

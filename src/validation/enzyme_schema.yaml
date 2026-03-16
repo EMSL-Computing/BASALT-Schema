@@ -53,7 +53,7 @@ classes:
       beta_glucosidase_ug_pnp_per_g_per_h:
         description: |-
           Beta-glucosidase activity in µg para-nitrophenol (pNP) per gram dry soil per hour.
-          Units: µg pNP g⁻¹ h⁻¹
+          Units: µg pNP g-1 h-1
           CSV column: Beta_Glucosidase_ug_pNP_per_g_per_h
         range: double
         required: false
