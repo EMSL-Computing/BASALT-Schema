@@ -6,7 +6,7 @@
 # Analysis type: "gwc" (lims_processed_data_schema.yaml AnalysisTypeEnum)
 # Measure level: Replicate-capable (rep slot in operational schema)
 # CSV output:    GWC_percent, flag_GWC (soil_biochemical_properties_schema.yaml)
-# Last Updated:  2026-02-25
+# Last Updated:  2026-03-16
 # =============================================================================
 
 id: https://w3id.org/MONet/analysis-api-schema/gwc
