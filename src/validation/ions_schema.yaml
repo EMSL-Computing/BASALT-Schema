@@ -12,9 +12,9 @@
 #
 # NOTE on units: micronutrients (SO4-S, B, Zn, Mn, Cu, Fe) in mg/kg;
 #                exchangeable cations (Ca, Mg, Na, K) and CEC in meq/100g.
-#                total_bases exists in the operational schema but is not
+#                total_bases exists in the operational schema but is NOT
 #                currently a CSV output column — included here for ingest completeness.
-# Last Updated:  2026-02-25
+# Last Updated:  2026-03-16
 # =============================================================================
 
 id: https://w3id.org/MONet/analysis-api-schema/ions
