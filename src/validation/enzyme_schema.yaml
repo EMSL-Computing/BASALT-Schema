@@ -16,9 +16,7 @@ title: MONet Enzyme Activity Ingest Schema
 description: |-
   Ingest validation schema for EnzymeProduct.
   Describes the product_values payload for analysis_type = "enzyme".
-  
-  Currently covers beta-glucosidase only. Additional enzymes (e.g. leucine
-  aminopeptidase, N-acetyl-glucosaminidase) should be added here when available.
+  Currently covers beta-glucosidase only.  
 license: MIT
 
 prefixes:
@@ -59,7 +57,7 @@ classes:
           CSV column: Beta_Glucosidase_ug_pNP_per_g_per_h
         range: double
         required: false
-        # minimum_value: 0 — commented out; negative values possible in background-subtracted assays
+        # minimum_value: 0 — commented out; negative values may be possible in background-subtracted assays?
 
       flag:
         description: |-
