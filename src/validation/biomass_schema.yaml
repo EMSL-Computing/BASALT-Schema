@@ -79,14 +79,14 @@ classes:
       mbc_avg:
         description: |-
           Pre-computed average MBC across replicates (mg/kg).
-          Stored in operational schema; useful when provider sends already-averaged data.
+          Stored in operational schema
         range: double
         required: false
 
       mbn_avg:
         description: |-
           Pre-computed average MBN across replicates (mg/kg).
-          Stored in operational schema; useful when provider sends already-averaged data.
+          Stored in operational schema
         range: double
         required: false
 
