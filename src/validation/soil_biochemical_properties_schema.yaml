@@ -11,7 +11,6 @@
 # - This schema is derived from the MONet Analysis API Schema as the source of truth https://w3id.org/MONet/analysis-api-schema
 # - and therefore column names are faithful to the canonical schema, not the zipdownloader as of last update
 #
-# TODO: CONFIRM MEQ ON per_KG ion units; double check with Aramy about renaming (each slot has a "source" referencing the canonical schema)
 # This file should be updated when:
 # - Column names are changed in zip_download_blueprint.py
 # - New analytical methods/columns are added
@@ -77,14 +76,14 @@ classes:
         description: |-
           The 5-digit EMSL user proposal/project ID.
           Corresponds to the EMSL project under which the sample was collected and analyzed.
-        range: string
+        range: integer
         required: true
         
       Sampling_Set:
         description: |-
           Identifier for the sampling set or campaign number.
           Groups samples collected together as part of the same sampling event or study.
-        range: string
+        range: integer
         required: true
         
       Core_Section:
@@ -264,7 +263,7 @@ classes:
           Gravimetric Water Content as percentage (%).
           Source: GWCMoistureProduct.gwc_percent_id from canonical schema.
           Ratio of water mass to dry soil mass, expressed as percentage.
-          GWC = (wet_mass - dry_mass) / dry_mass × 100
+          GWC = (wet_mass - dry_mass) / dry_mass x 100
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -333,7 +332,7 @@ classes:
       # Enzyme Activity (EnzymeProduct)
       Beta_Glucosidase_ug_pNP_per_g_per_h:
         description: |-
-          Beta-Glucosidase enzyme activity in micrograms para-nitrophenol per gram per hour (μg pNP/g/h).
+          Beta-Glucosidase enzyme activity in micrograms para-nitrophenol per gram per hour (ug pNP/g/h).
           Source: EnzymeProduct.beta_glucosidase_ug_pnp_per_g_per_h_id from canonical schema.
         range: double
         required: false
@@ -341,14 +340,227 @@ classes:
       # Bulk Density (BulkDensityProduct)
       Bulk_density_g_per_cm3:
         description: |-
-          Soil bulk density in grams per cubic centimeter (g/cm³).
+          Soil bulk density in grams per cubic centimeter (g/cm^3).
           Source: BulkDensityProduct.bulk_density_id from canonical schema.
         range: double
         required: false
       
       # Data Quality Flags
-      # Note: Flag columns are dynamically added based on which analyses have quality concerns
-      # Flag naming pattern: flag_{measurement_name} or {MeasurementName}_flag
-      # Flag values typically indicate: outliers, detection limits, procedural issues, etc.
-      # Specific flag columns and values vary by analysis type and are documented in Column_Descriptions.xlsx
-
+      flag_B:  
+        description: |-
+          Quality flag for Boron measurement.
+          Source: IonsAnalysisProduct.flag_boron from canonical schema.
+        range: string
+        required: false
+      
+      flag_beta_glucosidase:  
+        description: |-
+          Quality flag for Beta-Glucosidase enzyme activity measurement.
+          Source: EnzymeProduct.flag_enzyme from canonical schema.
+        range: string
+        required: false
+      
+      flag_Ca:  
+        description: |-
+          Quality flag for Calcium measurement.
+          Source: IonsAnalysisProduct.flag_calcium from canonical schema.
+        range: string
+        required: false
+      
+      flag_CEC: 
+        description: |-
+          Quality flag for Cation Exchange Capacity measurement.
+          Source: IonsAnalysisProduct.flag_cec from canonical schema.
+        range: string
+        required: false
+      
+      flag_Cu:  
+        description: |-
+          Quality flag for Copper measurement.
+          Source: IonsAnalysisProduct.flag_copper from canonical schema.
+        range: string
+        required: false
+      
+      flag_density:
+        description: |-
+          Quality flag for bulk density measurement.
+          Source: BulkDensityProduct from canonical schema.
+        range: string
+        required: false
+      
+      flag_Fe:  
+        description: |-
+          Quality flag for Iron measurement.
+          Source: IonsAnalysisProduct.flag_iron from canonical schema.
+        range: string
+        required: false
+      
+      flag_GWC:
+        description: |-
+          Quality flag for Gravimetric Water Content measurement.
+          Source: GWCMoistureProduct.gwc_flag from canonical schema.
+        range: string
+        required: false
+      
+      flag_HClExtOM_TN:  # Renamed from flag_MAOM_TN to match HClExtOM naming
+        description: |-
+          Quality flag for Mineral Associated Organic Matter - Total Nitrogen measurement.
+          Source: MAOMProduct.flag_tn from canonical schema.
+          Note: MAOM renamed to HClExtOM in schema to match analytical method.
+        range: string
+        required: false
+      
+      flag_HClExtOM_TOC:  # Renamed from flag_MAOM_TOC to match HClExtOM naming
+        description: |-
+          Quality flag for Mineral Associated Organic Matter - Total Organic Carbon measurement.
+          Source: MAOMProduct.flag_toc from canonical schema.
+          Note: MAOM renamed to HClExtOM in schema to match analytical method.
+        range: string
+        required: false
+      
+      flag_K:  
+        description: |-
+          Quality flag for Potassium measurement.
+          Source: IonsAnalysisProduct.flag_potassium from canonical schema.
+        range: string
+        required: false
+      
+      flag_MBC:
+        description: |-
+          Quality flag for Microbial Biomass Carbon measurement.
+          Source: MicrobialBiomassProduct.flag_mbc from canonical schema.
+        range: string
+        required: false
+      
+      flag_MBN:
+        description: |-
+          Quality flag for Microbial Biomass Nitrogen measurement.
+          Source: MicrobialBiomassProduct.flag_mbn from canonical schema.
+        range: string
+        required: false
+      
+      flag_Mg:  
+        description: |-
+          Quality flag for Magnesium measurement.
+          Source: IonsAnalysisProduct.flag_magnesium from canonical schema.
+        range: string
+        required: false
+      
+      flag_Mn:  
+        description: |-
+          Quality flag for Manganese measurement.
+          Source: IonsAnalysisProduct.flag_manganate from canonical schema.
+        range: string
+        required: false
+      
+      flag_Na:  
+        description: |-
+          Quality flag for Sodium measurement.
+          Source: IonsAnalysisProduct.flag_sodium from canonical schema.
+        range: string
+        required: false
+      
+      flag_nh4_n: 
+        description: |-
+          Quality flag for Ammonium Nitrogen measurement.
+          Source: NitrogenAnalysisProduct.flag_nh4n from canonical schema.
+        range: string
+        required: false
+      
+      flag_no3_n: 
+        description: |-
+          Quality flag for Nitrate Nitrogen measurement.
+          Source: NitrogenAnalysisProduct.flag_no3n from canonical schema.
+        range: string
+        required: false
+      
+      flag_pH:
+        description: |-
+          Quality flag for pH measurement.
+          Source: pHProduct from canonical schema.
+        range: string
+        required: false
+      
+      flag_phosphorus:  
+        description: |-
+          Quality flag for Phosphate Phosphorus measurement.
+          Source: PhosphorusAnalysisProduct.flag_phosphorus from canonical schema.
+        range: string
+        required: false
+      
+      flag_respiration:
+        description: |-
+          Quality flag for respiration measurement.
+          Source: RespirationProduct from canonical schema.
+        range: string
+        required: false
+      
+      flag_SO4_S: 
+        description: |-
+          Quality flag for Sulfate-Sulfur measurement.
+          Source: IonsAnalysisProduct.flag_sulfate from canonical schema.
+        range: string
+        required: false
+      
+      flag_texture:
+        description: |-
+          Quality flag for texture measurement.
+          Source: TextureProduct (sand/silt/clay) from canonical schema.
+        range: string
+        required: false
+      
+      flag_tkn:
+        description: |-
+          Quality flag for elemental analysis measurement.
+          Source: ElementalAnalysisProduct from canonical schema.
+        range: string
+        required: false
+      
+      flag_total_bases:
+        description: |-
+          Quality flag for IonsAnalysisProduct measurement.
+          Source: IonsAnalysisProduct from canonical schema.
+        range: string
+        required: false
+      
+      flag_total_carbon:  
+        description: |-
+          Quality flag for Total Carbon measurement.
+          Source: ElementalAnalysisProduct.flag_total_carbon from canonical schema.
+        range: string
+        required: false
+      
+      flag_total_nitrogen:  
+        description: |-
+          Quality flag for Total Nitrogen measurement.
+          Source: ElementalAnalysisProduct.flag_total_nitrogen from canonical schema.
+        range: string
+        required: false
+      
+      flag_total_sulfur:  
+        description: |-
+          Quality flag for Total Sulfur measurement.
+          Source: ElementalAnalysisProduct.flag_total_sulfur from canonical schema.
+        range: string
+        required: false
+      
+      flag_WEOM_TN:
+        description: |-
+          Quality flag for Water Extractable Organic Matter - Total Nitrogen measurement.
+          Source: WEOMProduct.flag_tn from canonical schema.
+        range: string
+        required: false
+      
+      flag_WEOM_TOC:
+        description: |-
+          Quality flag for Water Extractable Organic Matter - Total Organic Carbon measurement.
+          Source: WEOMProduct.flag_toc from canonical schema.
+        range: string
+        required: false
+      
+      flag_Zn:  
+        description: |-
+          Quality flag for Zinc measurement.
+          Source: IonsAnalysisProduct.flag_zinc from canonical schema.
+        range: string
+        required: false
