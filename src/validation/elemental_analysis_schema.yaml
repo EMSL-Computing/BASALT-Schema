@@ -20,7 +20,6 @@ title: MONet Elemental Analysis Ingest Schema
 description: |-
   Ingest validation schema for ElementalAnalysisProduct.
   Describes the product_values payload for analysis_type = "ea".
-  
   Reports total Carbon, Nitrogen, and Sulfur as weight percent of dry soil.
   Total Kjeldahl Nitrogen (TKN) also captured if provided.
 license: MIT
