@@ -288,6 +288,32 @@ classes:
       workflow_id:
         range: workflowExecutionActivity
 
+  instrumentData:
+    is_a: dataProduct
+    attributes:
+      analysis_activity_id:
+        range: analysisActivity
+      description:
+        range: string
+        required: true
+      alternative_identifiers:
+        range: string # TODO ARRAY
+      compression_type:
+        range: string
+      type:
+        range: string
+      was_generated_by:
+        range: string
+      file_type:
+        range: filetype
+      version:
+        range: string
+
+  sitePhoto:
+    is_a: dataProduct
+    attributes:
+      type:
+        range: sitephototype
 
   # (CHANGED MR1) analysisActivity is now ABSTRACT.
   # Concrete per-method-type subclasses (e.g. EcoplateAnalysisActivity,

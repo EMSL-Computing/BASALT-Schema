@@ -286,3 +286,7 @@ enums:
       BulkDensityProduct:
       MetaGenomicsProduct:
 
+sitephototype:
+  permissible_values:
+    landscape:
+    measure:
