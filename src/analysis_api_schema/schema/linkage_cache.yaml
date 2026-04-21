@@ -1,0 +1,103 @@
+---
+id: https://w3id.org/MONet/analysis-api-schema/linkage_cache
+name: analysis-api-schema-linkage-cache
+title: MONet Analysis API — Provenance Linkage Cache
+description: |-
+  Pre-computed provenance closure table for the MONet Analysis API.
+  Stores every (ancestor, descendant) pair across all chain types with depth,
+  enabling fast provenance queries without live recursive CTE traversal.
+
+  Population: nightly refresh job using recursive CTE across:
+    - processingSampleLink (sample → processed sample chains)
+    - workflowExecutionActivity.parent_workflow_id (workflow chains)
+    - analysisActivity (processed sample → workflow link)
+    - processedData.workflow_id (workflow → product link)
+
+  This file is imported by analysis_api_schema.yaml (import added in MR2).
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+default_prefix: analysis_api_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+slots:
+
+  ancestor_type:
+    description: |-
+      Class/table name of the ancestor node.
+      Expected values: 'sample' | 'processedSample' |
+                       'workflowExecutionActivity' | 'processedData'
+    range: string
+
+  descendant_type:
+    description: Class/table name of the descendant node (same vocabulary as ancestor_type)
+    range: string
+
+  depth:
+    description: Number of hops between ancestor and descendant (1 = direct parent)
+    range: integer
+    required: true
+
+  path:
+    description: Optional debug string representing the full chain (e.g., 'WEA1→WEA2→WEA3')
+    range: string
+
+  computed_at:
+    description: Timestamp when this row was last computed by the refresh job
+    range: datetime
+
+classes:
+
+  linkage_cache:
+    description: |-
+      Pre-computed provenance closure table.
+      Stores every (ancestor, descendant) pair across all chain types with depth.
+      Refreshed on a schedule; not real-time (acceptable for daily batch cadence).
+
+      DDL:
+        CREATE TABLE linkage_cache (
+          ancestor_id      UUID NOT NULL,
+          descendant_id    UUID NOT NULL,
+          ancestor_type    VARCHAR(64),    -- 'sample' | 'processedSample' |
+                                          --  'workflowExecutionActivity' | 'processedData'
+          descendant_type  VARCHAR(64),
+          depth            INTEGER NOT NULL,  -- 1 = direct parent
+          path             TEXT,
+          computed_at      TIMESTAMP DEFAULT now(),
+          PRIMARY KEY (ancestor_id, descendant_id)
+        );
+        CREATE INDEX ON linkage_cache (descendant_id);  -- reverse lookup
+
+      Example — all products from sample S1:
+        SELECT pd.*
+        FROM linkage_cache lc
+        JOIN "processedData" pd ON pd.id = lc.descendant_id
+        WHERE lc.ancestor_id = 'S1-uuid'
+          AND lc.descendant_type = 'processedData';
+
+      NOTE: ancestor_id + descendant_id form a composite PK in the DDL.
+      LinkML does not natively express composite PKs; a unique_key is defined
+      below as the closest equivalent.
+    slots:
+      - ancestor_type    # class/table name of ancestor node
+      - descendant_type  # class/table name of descendant node
+      - depth            # required; 1 = direct parent
+      - path             # optional debug chain string
+      - computed_at      # refresh timestamp
+    attributes:
+      ancestor_id:
+        range: uuid
+        required: true
+      descendant_id:
+        range: uuid
+        required: true
+    unique_keys:
+      unique_ancestor_descendant:
+        unique_key_slots:
+          - ancestor_id
+          - descendant_id
