@@ -1,0 +1,59 @@
+---
+# =============================================================================
+# DOC-GEN OVERLAY  —  DO NOT USE FOR VALIDATION OR CODE GENERATION
+# =============================================================================
+# This file is the entry-point for `gen-doc` only.
+# It imports the operational schema unchanged and adds thin type stubs for
+# `uuid` and `numeric`, which are used pervasively in the operational schema
+# but are intentionally left undefined there (resolved at runtime by the API).
+# Adding them here lets the LinkML doc generator resolve slot ranges without
+# generating any actual constraints in the operational model.
+#
+# Location: src/doc_templates/doc_gen_overlay.yaml
+# (Kept alongside the Jinja2 template overrides — all doc-gen artefacts in one place)
+#
+# Run docs with:   just gen-doc
+# Serve docs with: just serve-doc
+# =============================================================================
+
+id: https://w3id.org/MONet/analysis-api-schema/doc-overlay
+name: analysis-api-schema-doc-overlay
+title: MONet Analysis API Schema (Doc-Gen Overlay)
+description: |-
+  Documentation-generation overlay for the MONet Analysis API Schema.
+  Imports the operational schema and resolves opaque types for rendering only.
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+  xsd: http://www.w3.org/2001/XMLSchema#
+
+default_prefix: analysis_api_schema
+default_range: string
+
+imports:
+  - linkml:types
+  - ../analysis_api_schema/schema/analysis_api_schema
+
+# ---------------------------------------------------------------------------
+# Type stubs — doc-gen only
+# These mirror the intent of the operational schema's uuid/numeric usage
+# without imposing validation constraints there.
+# ---------------------------------------------------------------------------
+types:
+  uuid:
+    description: >-
+      A universally unique identifier string (RFC 4122).
+      Presented here as a string alias so the doc generator can resolve
+      slot ranges that reference uuid throughout the schema.
+    uri: xsd:string
+    base: str
+
+  numeric:
+    description: >-
+      A generic numeric value (integer or floating-point).
+      Presented here as a double alias so the doc generator can resolve
+      slot ranges that reference numeric throughout the schema.
+    uri: xsd:double
+    base: float

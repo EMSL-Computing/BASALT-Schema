@@ -1,0 +1,97 @@
+---
+# =============================================================================
+# Nitrogen Analysis — Ingest Validation Schema
+# =============================================================================
+# Source class:  NitrogenAnalysisProduct (products.yaml)
+# Analysis type: "n_ext" (lims_processed_data_schema.yaml AnalysisTypeEnum)
+# Measure level: Replicate-capable (rep slot in operational schema)
+# CSV output:    NO3_N_mg_per_kg, NH4_N_mg_per_kg, flag_no3_n, flag_nh4_n
+#                (soil_biochemical_properties_schema.yaml)
+#
+# NOTE: operational schema carries separate flag_avg fields for replicate averages.
+# Last Updated:  2026-03-16
+# =============================================================================
+
+id: https://w3id.org/MONet/analysis-api-schema/nitrogen
+name: nitrogen_schema
+title: MONet Nitrogen Analysis Ingest Schema
+description: |-
+  Ingest validation schema for NitrogenAnalysisProduct.
+  Describes the product_values payload for analysis_type = "n_ext".
+  
+  Covers extractable nitrate-N (NO3-N) and ammonium-N (NH4-N) in mg/kg.
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: nitrogen_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+
+  ProcessedDataFlagEnum:
+    description: Mirrors processeddataflag in enums.yaml.
+    permissible_values:
+      Below_Detection:
+      Below_Reporting_Limit:
+      High_Background:
+      Out_of_Range:
+      Outlier:
+      Data_not_available:
+      Failed_QC:
+      Insufficient_Material:
+
+slots:
+
+  flag_no3n:
+    description: QC flag for nitrate-N measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+  flag_nh4n:
+    description: QC flag for ammonium-N measurement.
+    range: ProcessedDataFlagEnum
+    required: false
+
+classes:
+
+  NitrogenProductValues:
+    description: |-
+      Nitrogen extraction product values (NO3-N and NH4-N).
+      Replicate-level data when replicate field is present in CoreSectionData.
+    slots:
+      - flag_no3n
+      - flag_nh4n
+    slot_usage:
+      flag_no3n:
+        description: |-
+          QC flag for the nitrate-N measurement.
+          CSV column: flag_no3_n.
+      flag_nh4n:
+        description: |-
+          QC flag for the ammonium-N measurement.
+          CSV column: flag_nh4_n.
+    attributes:
+
+      no3_n:
+        description: |-
+          Nitrate-Nitrogen (NO3-N) in mg/kg dry soil.
+          CSV column: NO3_N_mg_per_kg.
+          Minimum value: 0
+        range: double
+        required: false
+        # minimum_value: 0
+
+      nh4_n:
+        description: |-
+          Ammonium-Nitrogen (NH4-N) in mg/kg dry soil.
+          CSV column: NH4_N_mg_per_kg.
+          Minimum value: 0
+        range: double
+        required: false
+        # minimum_value: 0

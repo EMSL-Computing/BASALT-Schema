@@ -1,0 +1,265 @@
+---
+# =============================================================================
+# X-ray Computed Tomography (XCT) Product Schema
+# =============================================================================
+#
+# CONTEXT and Purpose:
+# - Validation schema for TomographyProduct — pore geometry and flow properties
+#   derived from X-ray computed tomography (XCT / micro-CT) of intact soil cores
+# - Source: TomographyProduct class in src/analysis_api_schema/schema/products.yaml
+# - NOT currently in Soil_BioChemical_properties.csv (published in separate XCT deliverable)
+# - This schema covers the API-level ingest contract for rapid validation
+#
+# NOTE on flag:
+# - flag_xct is currently typed as string in the operational schema (commented-out
+#   processeddataflag range). Reflected here as-is with a comment.
+# - Should we rename this XCT for consistency?
+# - I also see there is already an xct.yaml file in the main repo; feel free to supercede/ignore.
+#
+# Attribute groupings for readability:
+#   ROI geometry        — roi_volume_voxel, voxel_size, connected_pores
+#   Pore diameter stats — pore_diameter_min/max/mean/median/variance
+#   Pore volume         — pore_volume_mean, total_pore_volume
+#   Flow (x/y/z axes)  — permeability, flow_rate, tortuosity per axis
+#
+# Relationship to broader schema:
+# - analysis_type key in LIMSProcessedData envelope: "xct" (to be confirmed)
+# - xray_computed_tomography_method exists in routemethod enum (enums.yaml)
+# - Proposal_ID, sampling_set, core_section inherited from LIMSProcessedData envelope
+#
+# Last Updated:  2026-03-16
+# =============================================================================
+
+id: https://w3id.org/MONet/analysis-api-schema/tomography
+name: tomography_schema
+title: MONet XCT / Tomography Product Schema
+description: |-
+  Validation schema for TomographyProduct — pore geometry statistics and
+  computed flow properties derived from X-ray computed tomography (micro-CT)
+  of intact soil cores.
+  
+  Pore metrics are computed from image segmentation of the 3D volume.
+  Flow properties (permeability, tortuosity) are computed via lattice-Boltzmann
+  or similar simulation on the segmented pore network.
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: tomography_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+
+  ProductMeasureTypeEnum:
+    description: |-
+      Measurement level for this product record.
+      Mirrors productmeasuretype in enums.yaml.
+    permissible_values:
+      Single:
+        description: Single measurement (no replicates)
+      Replicate:
+        description: Individual replicate measurement
+      Average:
+        description: Average across replicates
+
+slots:
+
+  measure_type:
+    description: Measurement level (Single, Replicate, or Average).
+    range: ProductMeasureTypeEnum
+    required: false
+
+classes:
+
+  TomographyProduct:
+    description: |-
+      Pore geometry and computed flow properties from XCT analysis of a soil core section.
+      One record per core section.
+      
+      Proposal_ID, sampling_set, and core_section are inherited from the
+      LIMSProcessedData envelope (see lims_processed_data_schema.yaml).
+    slots:
+      - measure_type
+    slot_usage:
+      measure_type:
+        description: |-
+          Measurement level: Single, Replicate, or Average.
+          Mirrors the measure_type slot from the operational schema.
+    attributes:
+
+      # -----------------------------------------------------------------------
+      # ROI Geometry
+      # -----------------------------------------------------------------------
+
+      roi_volume_voxel:
+        description: |-
+          Total volume of the region of interest (ROI) in voxels.
+          The ROI is the sub-volume of the full scan used for pore analysis.
+          TODO: confirm voxel count unit vs. physical volume unit with instrument team.
+        range: double
+        required: false
+
+      voxel_size:
+        description: |-
+          Physical size of a single voxel (micrometer).
+          Sets the spatial resolution of all subsequent measurements.
+          TODO: confirm unit (micrometer assumed).
+        range: double
+        required: false
+
+      connected_pores:
+        description: |-
+          Number of connected (percolating) pore bodies identified in the ROI.
+          Connectivity is determined by the pore network extraction algorithm.
+        range: double
+        required: false
+
+      # -----------------------------------------------------------------------
+      # Pore Diameter Statistics
+      # -----------------------------------------------------------------------
+
+      pore_diameter_min:
+        description: |-
+          Minimum pore diameter in the segmented pore network (micrometer).
+          TODO: confirm unit.
+        range: double
+        required: false
+
+      pore_diameter_max:
+        description: |-
+          Maximum pore diameter in the segmented pore network (micrometer).
+          TODO: confirm unit.
+        range: double
+        required: false
+
+      pore_diameter_mean:
+        description: |-
+          Mean pore diameter across all segmented pores (micrometer).
+          TODO: confirm unit.
+        range: double
+        required: false
+
+      pore_diameter_median:
+        description: |-
+          Median pore diameter across all segmented pores (micrometer).
+          TODO: confirm unit.
+        range: double
+        required: false
+
+      pore_diameter_variance:
+        description: |-
+          Variance of pore diameter across all segmented pores (micrometer²).
+          TODO: confirm unit.
+        range: double
+        required: false
+
+      # -----------------------------------------------------------------------
+      # Pore Volume
+      # -----------------------------------------------------------------------
+
+      pore_volume_mean:
+        description: |-
+          Mean pore body volume across all segmented pores (voxels or micrometer³).
+          TODO: confirm unit.
+        range: double
+        required: false
+
+      total_pore_volume:
+        description: |-
+          Total pore volume in the ROI (voxels or micrometer³).
+          Equivalent to porosity x ROI volume.
+          TODO: confirm unit.
+        range: double
+        required: false
+
+      # -----------------------------------------------------------------------
+      # Flow Properties — X axis
+      # -----------------------------------------------------------------------
+
+      permeability_x:
+        description: |-
+          Computed permeability in the X direction (mD or m^2).
+          Derived from lattice-Boltzmann or similar flow simulation.
+          TODO: confirm unit with instrument/simulation team.
+        range: double
+        required: false
+
+      flow_rate_x:
+        description: |-
+          Simulated flow rate in the X direction.
+          TODO: confirm unit.
+        range: double
+        required: false
+
+      tortuosity_x:
+        description: |-
+          Pore network tortuosity in the X direction (dimensionless).
+          Ratio of actual flow path length to straight-line distance.
+          Minimum value: 1.0
+        range: double
+        required: false
+
+      # -----------------------------------------------------------------------
+      # Flow Properties — Y axis
+      # -----------------------------------------------------------------------
+
+      permeability_y:
+        description: |-
+          Computed permeability in the Y direction.
+          TODO: confirm unit.
+        range: double
+        required: false
+
+      flow_rate_y:
+        description: |-
+          Simulated flow rate in the Y direction.
+          TODO: confirm unit.
+        range: double
+        required: false
+
+      tortuosity_y:
+        description: |-
+          Pore network tortuosity in the Y direction (dimensionless).
+        range: double
+        required: false
+
+      # -----------------------------------------------------------------------
+      # Flow Properties — Z axis
+      # -----------------------------------------------------------------------
+
+      permeability_z:
+        description: |-
+          Computed permeability in the Z direction (typically vertical in core).
+          TODO: confirm unit.
+        range: double
+        required: false
+
+      flow_rate_z:
+        description: |-
+          Simulated flow rate in the Z direction.
+          TODO: confirm unit.
+        range: double
+        required: false
+
+      tortuosity_z:
+        description: |-
+          Pore network tortuosity in the Z direction (dimensionless).
+        range: double
+        required: false
+
+      # -----------------------------------------------------------------------
+      # Data Quality
+      # -----------------------------------------------------------------------
+
+      flag_xct:
+        description: |-
+          Data quality flag for the XCT analysis.
+          NOTE: currently typed as string in the operational schema (flag_xct).
+          TODO: migrate to processeddataflag enum once standardized.
+        range: string
+        required: false
