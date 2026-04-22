@@ -150,7 +150,7 @@ slots:
       Maps to Montana's growth_medium (on CultureGrowth) and media_id
       (on plate setup).  Points to processedSample(type=prepared_media)
       produced by an upstream MediaPreparation activity.
-    range: processedSample
+    range: ProcessedSample
     required: false
 
   strain_ref:
@@ -1011,7 +1011,7 @@ slots:
           FK to the prepared media processedSample used in this well.
           NULL -> fall back to plate-level AMP2PlateSetupActivity.media_ref.
           Non-null -> this well uses a different media batch.
-        range: processedSample
+        range: ProcessedSample
         required: false
       media_volume_ul:
         description: Volume of media added to this well (microlitres)

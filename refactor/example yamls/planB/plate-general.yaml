@@ -77,7 +77,7 @@ slots:
       FK to processedSample(type='prepared_media').
       Used by AMP2 workflows where media is a reusable entity.
       Wells on the plate inherit media composition from this batch.
-    range: processedSample
+    range: ProcessedSample
 
   # --- Per-well metadata stored as structured inline data ---
   well_metadata:

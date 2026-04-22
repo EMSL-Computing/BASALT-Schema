@@ -238,7 +238,7 @@ classes:
     attributes:
       id:
         identifier: true
-        range: processedSample
+        range: ProcessedSample
       rep:
         description: The replicate (or aliquot) number
         range: integer
@@ -313,7 +313,7 @@ classes:
       type:
         range: routemethod
       analyte_id:
-        range: processedSample
+        range: ProcessedSample
       name:
         range: string
       acquisition_time:
