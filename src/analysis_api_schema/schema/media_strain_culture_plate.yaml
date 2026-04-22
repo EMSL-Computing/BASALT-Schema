@@ -1,0 +1,882 @@
+---
+id: https://w3id.org/MONet/analysis-api-schema/plate-general-v2
+name: plate-general-v2
+title: 96-Well Plate Workflows — V2 with Entities, Culture Activities, Montana Slots
+description: |-
+  Comprehensive schema delta for 96-well plate workflows (AMP2 + Ecoplate)
+  with upstream culture growth activities and generalised processing hierarchy.
+
+imports:
+  - linkml:types
+
+slots:
+  # Mixin slots — HasIncubationConditions
+  temperature_celsius:
+    description: Temperature in degrees Celsius
+    range: float
+
+  agitation_speed_rpm:
+    description: Agitation/shaking speed in RPM (0 for static)
+    range: integer
+
+  oxygen_status:
+    description: Oxygen status of the activity or entity (aerobic, anaerobic, etc.)
+    range: string
+
+  # ---------------------------------------------------------------------------
+  # Direct FK slots — media_ref, strain_ref
+  # ---------------------------------------------------------------------------
+  media_ref:
+    description: |-
+      FK reference to a prepared media processedSample used in this activity.
+      Maps to Montana's growth_medium (on CultureGrowth) and media_id
+      (on plate setup).  Points to processedSample(type=prepared_media)
+      produced by an upstream MediaPreparation activity.
+    range: processedSample
+    required: false
+
+  strain_ref:
+    description: FK reference to a Strain purchasedMaterial used in this activity
+    range: Strain
+    required: false
+
+  # ---------------------------------------------------------------------------
+  # purchasedMaterial base slots
+  # NOTE: The existing global slot `name` has description scoped to data products.
+  # purchasedMaterial uses its own attribute for `name` and `description` (matching the
+  # pattern used by instrument, analysisActivity, etc. in the living schema).
+  # A future unification pass should promote these to a single global slot with
+  # a generalised description.
+  # ---------------------------------------------------------------------------
+  entity_type:
+    description: Discriminator for purchasedMaterial subtype (e.g. 'media', 'strain')
+    range: string
+    required: true
+
+  # ---------------------------------------------------------------------------
+  # Media-specific slots 
+  # ---------------------------------------------------------------------------
+  media_type:
+    description: |-
+      Purpose/context of the media preparation.
+      Examples: strain_purity, stock_culture, pre_culture, rich_media.
+    range: MediaTypeEnum
+    # Montana: media_type
+
+  volume_ml:
+    description: Volume of the entity in milliliters
+    range: float
+    # Montana: volume_ml
+
+  media_recipe:
+    description: |-
+      Reference or description of recipe used to prepare media.
+      Examples: "M9 media with 1% Glucose", "rich media with 10% LB and 90% glycerol"
+    range: string
+    # Montana: media_recipe
+    todos:
+      - Consider whether this should be a controlled vocabulary or free text.
+      - Montana notes similarity to MIXS:0001108 (growth medium).
+
+  media_formulation:
+    description: Formulation method of the media (manual mix, commercial, etc.)
+    range: FormulationEnum
+    # Montana: media_formulation
+
+  commercial_media_catalog:
+    description: |-
+      Reference to commercial media catalog entry if applicable.
+      Required if media_formulation is 'commercial', otherwise null.
+    range: string
+    # Montana: commercial_media_catalog
+
+  sterilization_method:
+    description: Method used to sterilize the entity (autoclave, filter, UV, etc.)
+    range: SterilizationMethodEnum
+    required: false
+    # Montana: sterilization_method
+
+  ph_adjustment:
+    description: Whether the entity was pH-adjusted
+    range: boolean
+    required: false
+    # Montana: ph_adjustment
+
+  ph_target:
+    description: Target pH value (required if ph_adjustment is true)
+    range: float
+    required: false
+    # Montana: ph_target
+
+  exposure_sensitivity:
+    description: Sensitivity the entity has if exposed (e.g. light-sensitive, oxygen-sensitive)
+    range: string
+    multivalued: true
+    # Montana: exposure_sensitivity
+
+  media_additions:
+    description: |-
+      Additional components added to the media (antibiotics, inducers, etc.).
+      Examples: "100 ug/mL ampicillin", "1 mM IPTG"
+    range: string
+    multivalued: true
+    # Montana: media_additions
+    todos:
+      - Montana notes LIMS has a separate antibiotic_additions field.
+        Evaluate whether collapsing is acceptable for LIMS workflow generation.
+
+  storage_temperature:
+    description: Storage temperature for the entity (e.g. "4 C", "-80 C")
+    range: string
+    # Montana: storage_temperature  (she used QuantityValue range)
+    # TODO: Consider using quantityValue range for consistency with existing schema.
+
+  # ---------------------------------------------------------------------------
+  # Strain-specific slots  (Montana: amp2-metadata.yaml -> Strain class)
+  # ---------------------------------------------------------------------------
+  strain_identifier:
+    description: |-
+      External human-readable strain identifier (e.g. "KT2440_pTE314").
+      NOT the database UUID — that is the Strain.id attribute.
+    range: string
+    required: true
+    # Montana: strain_id (renamed to avoid collision with FK usage)
+
+  strain_type:
+    description: Type of strain (bacterial, fungal, etc.)
+    range: string
+    # Montana: strain_type
+
+  strain_source:
+    description: Source institution or collection (e.g. "PNNL", "ATCC")
+    range: string
+    # Montana: strain_source
+
+  strain_mutation:
+    description: Genetic modification or plasmid carried (e.g. "pTE314")
+    range: string
+    # Montana: strain_mutation
+
+  # ---------------------------------------------------------------------------
+  # CultureGrowth activity slots
+  # ---------------------------------------------------------------------------
+  incubation_time_hours:
+    description: Incubation duration in hours
+    range: float
+    # Montana: incubation_time_hours
+
+  container_type:
+    description: Physical container used for the culture (flask, tube, plate, etc.)
+    range: string
+    # Montana: container_type
+    # NOTE: existing schema has a containerType CLASS and containertypeenum.
+    # This slot is intentionally a simple string for now.  A future alignment
+    # should reconcile with the existing containerType/containertypeenum.
+
+  inspection_method:
+    description: Method used to inspect or verify purity (visual, sequencing, etc.)
+    range: string
+    # Montana: inspection_method (on StrainPurity)
+
+  target_strain:
+    description: Target strain identifier for purity checks
+    range: string
+    # Montana: target_strain
+
+  contaminant_strains:
+    description: Known or detected contaminant strains (if any)
+    range: string
+    # Montana: contaminant_strains
+
+  preparation_date:
+    description: Date the stock culture or entity was prepared
+    range: date
+    # Montana: preparation_date (on StockCulturePreparation)
+
+  treatment_type:
+    description: Type of treatment applied in experimental culture growth
+    range: string
+    # Montana: treatment_type (on ExperimentalCulture)
+
+  growth_time:
+    description: |-
+      Total growth time for the culture.
+      Required for ExperimentalCulture activities.
+    range: string
+    # Montana: growth_time (on ExperimentalCulture)
+
+  # ---------------------------------------------------------------------------
+  # MediaPreparation activity slots
+  # ---------------------------------------------------------------------------
+  creation_date:
+    description: Date the entity or preparation was created
+    range: date
+    # Montana: creation_date
+
+  # ---------------------------------------------------------------------------
+  # PlateSetupActivity common slots  (carried forward from plate-general v1)
+  # ---------------------------------------------------------------------------
+  plate_type:
+    description: Vendor and model of plate (e.g. "Greiner_96well_flat_bottom", "Biolog_EcoPlate")
+    range: string
+    required: true
+
+  plate_barcode:
+    description: Physical barcode on plate (if different from UUID)
+    range: string
+
+  setup_date:
+    description: When the plate was physically set up
+    range: datetime
+    required: true
+
+  setup_operator_id:
+    description: Person who set up the plate
+    range: personValue
+
+  setup_instrument:
+    description: Automated liquid handler (e.g. "Hamilton_STAR") or "manual"
+    range: string
+
+  sealing_method:
+    description: How the plate is sealed (e.g. "BreathEasy_membrane", "adhesive_film")
+    range: string
+
+  well_metadata:
+    description: |-
+      Structured per-well metadata array. Format varies by activity subclass:
+        AMP2:     AMP2WellMetadata instances (position, volumes, replicate_group)
+        Ecoplate: EcoplateWellMetadata instances (position, carbon_source, treatment, volumes)
+      Stored as JSONB in the database; typed via LinkML inlined classes.
+    range: WellMetadata
+    multivalued: true
+    inlined_as_list: true
+
+  # ---------------------------------------------------------------------------
+  # PlateAnalysisActivity / PlateProduct slots
+  # ---------------------------------------------------------------------------
+  wavelength_nm:
+    description: Measurement wavelength in nanometres (e.g. 590 Ecoplate, 610 AMP2 OD)
+    range: integer
+    required: true
+
+  timepoint_label:
+    description: |-
+      Human-readable timepoint label for repeated-measurement series.
+      Examples: "t=0", "t=24h", "t=48h".
+      Lives on concrete analysis/product subclasses, NOT on base analysisActivity
+      (per core-planB decision).
+    range: string
+    required: true
+
+  measurement_type:
+    description: Type of plate measurement (optical_density, fluorescence, flow_cytometry)
+    range: string
+
+  plate_average:
+    description: Mean measurement across all sample wells (excludes blanks)
+    range: float
+
+  blank_mean:
+    description: Mean measurement of uninoculated control wells
+    range: float
+
+  cv_percent:
+    description: Coefficient of variation across technical replicates
+    range: float
+
+  well_readings:
+    description: |-
+      Structured per-well measurement data array.
+      Lightweight summary for SQL queries without full file download.
+      Raw data still accessible via processedData.s3_key in MinIO.
+      Stored as JSONB in the database; typed via LinkML inlined class.
+    range: WellReading
+    multivalued: true
+    inlined_as_list: true
+
+  # ---------------------------------------------------------------------------
+  # AMP2-specific product slots
+  # ---------------------------------------------------------------------------
+  plate_reader_model:
+    description: Instrument model used for reading (e.g. "BioTek Epoch2")
+    range: string
+
+  # ---------------------------------------------------------------------------
+  # Ecoplate-specific product slots
+  # ---------------------------------------------------------------------------
+  plate_lot:
+    description: Manufacturer lot number for Biolog EcoPlate QC
+    range: string
+
+  uninoculated_mean:
+    description: Mean measurement of uninoculated control wells (baseline for Ecoplate)
+    range: float
+
+  average_well_color_development:
+    description: Average Well Color Development (AWCD) metric for Ecoplate
+    range: float
+
+classes:
+
+  HasIncubationConditions:
+    mixin: true
+    description: |-
+      Mixin for activities/setups that involve controlled incubation.
+      Used by CultureGrowth activities AND PlateSetupActivity, which share
+      temperature and agitation parameters but live in different branches
+      of the sampleProcessing is_a tree.
+    slots:
+      - temperature_celsius
+      - agitation_speed_rpm
+      - oxygen_status
+
+  # ============================================================================
+  # purchasedMaterial — abstract base
+  # ============================================================================
+  purchasedMaterial:
+    abstract: true
+    description: |-
+      [NEW ABSTRACT CLASS] Lightweight base for non-sample physical lab materials
+      that are not instruments.  Currently Strain is the only concrete subtype.
+      Activities reference Strain via the strain_ref FK slot.
+    slots:
+      - entity_type
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+        required: true
+      name:
+        description: Human-readable name for the entity
+        range: string
+        required: true
+      description:
+        description: Free-text description of the entity
+        range: string
+
+  # ============================================================================
+  # Strain — concrete purchasedMaterial
+  # ============================================================================
+  Strain:
+    is_a: purchasedMaterial
+    description: |-
+      A microbial strain entity.  Strains are reference data — they are stable
+      identities that get referenced by culture growth activities.
+
+      entity_type discriminator value: 'strain'
+
+      Montana source: amp2-metadata.yaml Strain class, amp2-complete-001.yaml strain_set
+    slots:
+      - strain_identifier
+      - strain_type
+      - strain_source
+      - strain_mutation
+    attributes:
+      id:
+        identifier: true
+        range: purchasedMaterial
+    slot_usage:
+      entity_type:
+        equals_string: strain
+    todos:
+      - Montana asks "Do we need more information about the strain? Genotype? Phenotype?"
+      - Consider adding slots for common_name, host_common_name, taxonomy_id
+        (Montana has these on Sample — evaluate if they belong on Strain too).
+
+
+  # ============================================================================
+  # labProcessingActivity — new abstract parent of sampleProcessing
+  # ============================================================================
+  labProcessingActivity:
+    abstract: true
+    description: |-
+      [NEW ABSTRACT CLASS] Higher-level abstract base for any activity that
+      transforms or creates physical lab materials.
+
+      sampleProcessing inherits from this via is_a.  This class provides the
+      common identity layer, allowing future extensions (e.g. non-sample
+      consuming activities) without forcing them into the sampleProcessing branch.
+
+      NOTE: In the live schema, sampleProcessing should gain
+        is_a: labProcessingActivity
+      and its existing id attribute can be retained or removed (inherited).
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+        required: true
+      name:
+        description: Human-readable name for the activity
+        range: string
+      description:
+        description: Free-text description of the activity
+        range: string
+
+  # ============================================================================
+  # MediaPreparation — concrete sampleProcessing (replaces MediaCreation)
+  # ============================================================================
+  MediaPreparation:
+    is_a: sampleProcessing
+    description: |-
+      Activity that prepares a batch of growth media.
+      Replaces the former labPreparationActivity + MediaCreation pattern.
+
+      Media details (recipe, formulation, sterilisation, etc.) are carried as
+      slots on this activity.  The physical media batch is represented as a
+      processedSample(type='prepared_media') linked via processingSampleLink
+      (role: output_sample).  Downstream CultureGrowth and AMP2PlateSetupActivity
+      activities reference that processedSample via the media_ref FK slot.
+
+      Lifecycle:
+        MediaPreparation activity
+          -> processingSampleLink(role=output_sample)
+          -> processedSample(type='prepared_media'); media_ref points here
+          -> CultureGrowth / AMP2PlateSetupActivity.media_ref
+
+      Montana source: amp2-metadata.yaml MediaCreation class,
+                      amp2-complete-001.yaml media_creation_activity_set
+    slots:
+      - media_type
+      - volume_ml
+      - media_recipe
+      - media_formulation
+      - commercial_media_catalog
+      - sterilization_method
+      - ph_adjustment
+      - ph_target
+      - exposure_sensitivity
+      - media_additions
+      - storage_temperature
+      - creation_date
+    attributes:
+      id:
+        identifier: true
+        range: sampleProcessing
+
+  # ============================================================================
+  # CultureGrowth — abstract sampleProcessing subclass
+  # ============================================================================
+  CultureGrowth:
+    is_a: sampleProcessing
+    abstract: true
+    mixins:
+      - HasIncubationConditions
+    description: |-
+      Abstract base for culture growth activities.  Inherits processing
+      infrastructure from sampleProcessing and gains incubation conditions
+      via mixin.  media_ref and strain_ref are declared directly (no mixins).
+
+      Input/output sample linkage: via processingSampleLink (existing mechanism).
+      Media reference: media_ref -> processedSample(type='prepared_media')
+      Strain reference: strain_ref -> Strain (purchasedMaterial)
+
+      Montana source: amp2-metadata.yaml CultureGrowth class
+    slots:
+      - media_ref
+      - strain_ref
+      - incubation_time_hours
+      - container_type
+    # Inherited from sampleProcessing (is_a labProcessingActivity):
+    #   id, analysis_type, method_name, processing_steps, url, version
+    # Inherited from HasIncubationConditions mixin:
+    #   temperature_celsius, agitation_speed_rpm, oxygen_status
+
+  # ============================================================================
+  # StrainPurity — concrete CultureGrowth
+  # ============================================================================
+  StrainPurity:
+    is_a: CultureGrowth
+    description: |-
+      Purity check of a strain culture.  Verifies that a sample contains the
+      expected strain without contamination.
+
+      Input:  sample(s) via processingSampleLink (role: input_sample)
+      Output: typically no new processedSample — pass/fail QC gate.
+      Refs:   Media (growth medium), Strain (target organism)
+
+      Montana source: amp2-metadata.yaml StrainPurity class,
+                      amp2-complete-001.yaml activity uuid:17
+    slots:
+      - inspection_method
+      - target_strain
+      - contaminant_strains
+    attributes:
+      id:
+        identifier: true
+        range: sampleProcessing
+
+  # ============================================================================
+  # StockCulturePreparation — concrete CultureGrowth
+  # ============================================================================
+  StockCulturePreparation:
+    is_a: CultureGrowth
+    description: |-
+      Preparation of a stock culture from user samples for long-term storage.
+
+      Input:  sample(s) via processingSampleLink (role: input_sample)
+      Output: processedSample(type='stock_culture') via processingSampleLink
+      Refs:   Media (growth medium), Strain
+
+      Montana source: amp2-metadata.yaml StockCulturePreparation class,
+                      amp2-complete-001.yaml activity uuid:18
+    slots:
+      - preparation_date
+    attributes:
+      id:
+        identifier: true
+        range: sampleProcessing
+
+  # ============================================================================
+  # PreCultureGrowth — concrete CultureGrowth
+  # ============================================================================
+  PreCultureGrowth:
+    is_a: CultureGrowth
+    description: |-
+      Growth of a pre-culture to establish viable inoculum before
+      experimental culture growth.
+
+      Input:  processedSample(type='stock_culture') via processingSampleLink
+      Output: processedSample(type='pre_culture') via processingSampleLink
+      Refs:   Media (growth medium), Strain
+
+      Montana source: amp2-metadata.yaml PreCultureGrowth class,
+                      amp2-complete-001.yaml activity uuid:19
+    attributes:
+      id:
+        identifier: true
+        range: sampleProcessing
+    # No additional slots beyond CultureGrowth base.
+    # Montana's schema also shows no pre-culture-only slots.
+
+  # ============================================================================
+  # ExperimentalCulture — concrete CultureGrowth
+  # ============================================================================
+  ExperimentalCulture:
+    is_a: CultureGrowth
+    description: |-
+      Growth of an experimental culture for downstream analysis.
+      This is the terminal culture step before plate setup or direct measurement.
+
+      Input:  processedSample(type='pre_culture') via processingSampleLink
+      Output: processedSample(type='experimental_culture') via processingSampleLink
+      Refs:   Media (growth medium), Strain
+
+      Montana source: amp2-metadata.yaml ExperimentalCulture class,
+                      amp2-complete-001.yaml activity uuid:22
+    slots:
+      - treatment_type
+      - growth_time
+    attributes:
+      id:
+        identifier: true
+        range: sampleProcessing
+
+
+  # ============================================================================
+  # PlateSetupActivity — abstract sampleProcessing subclass
+  # ============================================================================
+  PlateSetupActivity:
+    is_a: sampleProcessing
+    abstract: true
+    mixins:
+      - HasIncubationConditions
+    description: |-
+      Abstract base for 96-well plate setup activities.
+      Common plate-level metadata shared across AMP2 and Ecoplate workflows.
+      Subclasses differ in how they handle well-level metadata and media references.
+
+      Input:  processedSample (experimental culture, soil extract, etc.)
+              via processingSampleLink (role: input_sample)
+      Output: processedSample(type='*_plate') via processingSampleLink
+
+      v1 origin: plate-general.yaml PlateSetupActivity
+    slots:
+      - plate_type
+      - plate_barcode
+      - setup_date
+      - setup_operator_id
+      - setup_instrument
+      - sealing_method
+      - well_metadata
+    # Inherited from sampleProcessing: id, analysis_type, method_name,
+    #   processing_steps, url, version
+    # Inherited from HasIncubationConditions: temperature_celsius, agitation_speed_rpm,
+    #   oxygen_status
+
+  # ============================================================================
+  # AMP2PlateSetupActivity — concrete PlateSetupActivity
+  # ============================================================================
+  AMP2PlateSetupActivity:
+    is_a: PlateSetupActivity
+    description: |-
+      AMP2-specific plate setup.
+      media_ref points to the plate-level prepared media processedSample.
+      well_metadata stores minimal per-well data as AMP2WellMetadata instances
+      (position, volumes, replicate_group).  AMP2WellMetadata also carries a
+      per-well media_ref for plates that use different media per well.
+
+      Input:  processedSample(type='experimental_culture') via processingSampleLink
+      Output: processedSample(type='amp2_96well_plate') via processingSampleLink
+      Refs:   processedSample(type='prepared_media') via media_ref
+
+      v1 origin: plate-general.yaml AMP2PlateSetupActivity
+      v2 change: media_ref directly on class (no UsesMedia mixin);
+                 range is processedSample (not purchasedMaterial)
+    slots:
+      - media_ref
+    attributes:
+      id:
+        identifier: true
+        range: sampleProcessing
+    # well_metadata array contains AMP2WellMetadata instances
+    # AMP2WellMetadata.media_ref provides per-well override (same processedSample range)
+
+  # ============================================================================
+  # EcoplatePlateSetupActivity — concrete PlateSetupActivity
+  # ============================================================================
+  EcoplatePlateSetupActivity:
+    is_a: PlateSetupActivity
+    description: |-
+      Ecoplate-specific plate setup.
+      NO media reference — carbon source and treatment are per-well experimental
+      design captured in EcoplateWellMetadata instances.
+
+      Input:  processedSample(type='soil_extract') via processingSampleLink
+      Output: processedSample(type='ecoplate_plate') via processingSampleLink
+
+      v1 origin: plate-general.yaml EcoplatePlateSetupActivity
+    attributes:
+      id:
+        identifier: true
+        range: sampleProcessing
+    # NO UsesMedia mixin — key structural difference from AMP2
+    # well_metadata array contains EcoplateWellMetadata instances
+
+  PlateAnalysisActivity:
+    is_a: analysisActivity
+    abstract: true
+    description: |-
+      Abstract base for plate measurement activities.
+      Adds timepoint_label for repeated-measurement series (per core-planB
+      decision to put timepoint_label on concrete subclasses, not on base
+      analysisActivity).
+
+      v1 origin: plate-general.yaml PlateAnalysisActivity
+    slots:
+      - timepoint_label
+    # Inherited from analysisActivity: id, type (routemethod), analyte_id,
+    #   name, acquisition_time, instrument_id, protocol_url,
+    #   instrument_operator_id, sequence_order, version
+
+  # ============================================================================
+  # AMP2AnalysisActivity — concrete PlateAnalysisActivity
+  # ============================================================================
+  AMP2AnalysisActivity:
+    is_a: PlateAnalysisActivity
+    description: |-
+      AMP2 plate measurement (OD, fluorescence, flow cytometry).
+      analyte_id -> processedSample(type='amp2_96well_plate')
+
+      Chained via workflowExecutionActivity.parent_workflow_id to track
+      multi-timepoint series on the same plate.
+
+      v1 origin: plate-general.yaml AMP2AnalysisActivity
+    slots:
+      - measurement_type
+      - wavelength_nm
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+
+  # ============================================================================
+  # EcoplateAnalysisActivity — concrete PlateAnalysisActivity
+  # ============================================================================
+  EcoplateAnalysisActivity:
+    is_a: PlateAnalysisActivity
+    description: |-
+      Ecoplate absorbance measurement at a single timepoint.
+      analyte_id -> processedSample(type='ecoplate_plate')
+      wavelength_nm typically 590 for Biolog EcoPlates.
+
+      v1 origin: plate-general.yaml EcoplateAnalysisActivity
+    slots:
+      - wavelength_nm
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+
+
+  # ============================================================================
+  # PlateProduct — abstract base for plate data products
+  # ============================================================================
+  PlateProduct:
+    abstract: true
+    description: |-
+      Abstract base for plate measurement data products.
+      Common summary slots shared across AMP2 and Ecoplate products.
+
+      v1 origin: plate-general.yaml PlateProduct
+      v2 change: follows existing satellite-table pattern (id: range: processedData)
+                 instead of v1's is_a: dataProduct.
+    slots:
+      - wavelength_nm
+      - timepoint_label
+      - plate_average
+      - blank_mean
+      - cv_percent
+      - well_readings
+
+  # ============================================================================
+  # AMP2ODProduct — concrete PlateProduct
+  # ============================================================================
+  AMP2ODProduct:
+    is_a: PlateProduct
+    description: |-
+      AMP2 optical density measurement product.
+      One row per plate × timepoint.
+      processedData.type = 'amp2_od'
+
+      v1 origin: plate-general.yaml AMP2ODProduct
+    slots:
+      - plate_reader_model
+    attributes:
+      id:
+        identifier: true
+        range: processedData
+
+  # ============================================================================
+  # EcoplateAbsorbanceProduct — concrete PlateProduct
+  # ============================================================================
+  EcoplateAbsorbanceProduct:
+    is_a: PlateProduct
+    description: |-
+      Ecoplate absorbance measurement product.
+      One row per plate × timepoint.
+      processedData.type = 'ecoplate_absorbance'
+
+      v1 origin: plate-general.yaml EcoplateAbsorbanceProduct
+    slots:
+      - plate_lot
+      - uninoculated_mean
+      - average_well_color_development
+    attributes:
+      id:
+        identifier: true
+        range: processedData
+
+
+  # ============================================================================
+  # WellMetadata — base embedded type in PlateSetupActivity.well_metadata
+  # ============================================================================
+  WellMetadata:
+    description: |-
+      Base structure for per-well metadata in plate setup.
+      NOT a database table — embedded as JSONB in PlateSetupActivity.
+      Subclasses add type-specific fields.
+    attributes:
+      position:
+        description: Well position (e.g. "A01", "H12")
+        range: string
+        required: true
+      well_type:
+        description: Role of this well — "sample", "blank", "uninoculated_control", "standard"
+        range: string
+      replicate_group:
+        description: Identifier linking technical replicates (e.g. "rep1", "rep2")
+        range: string
+
+  # ============================================================================
+  # AMP2WellMetadata — AMP2-specific embedded type
+  # ============================================================================
+  AMP2WellMetadata:
+    is_a: WellMetadata
+    description: |-
+      AMP2-specific per-well metadata.
+      Minimal — media composition comes from the Media entity referenced via
+      the activity's media_ref slot.  Per-well data is volumes and replicate info.
+
+      Montana source: amp2-metadata.yaml WellDetails class,
+                      amp2-complete-001.yaml well layout patterns
+    attributes:
+      media_ref:
+        description: |-
+          FK to the prepared media processedSample used in this well.
+          NULL -> fall back to plate-level AMP2PlateSetupActivity.media_ref.
+          Non-null -> this well uses a different media batch.
+        range: processedSample
+        required: false
+      media_volume_ul:
+        description: Volume of media added to this well (microlitres)
+        range: float
+        required: true
+      inoculum_volume_ul:
+        description: Volume of inoculum added (0 for blanks)
+        range: float
+        required: true
+      sample_id:
+        description: |-
+          Optional FK to the specific sample in this well, if wells contain
+          different samples.  NULL if all wells use the same inoculum.
+        range: string
+        # Montana: sample_id (on WellDetails)
+      treatments:
+        description: |-
+          Per-well treatments if applicable (e.g. different mineral concentrations).
+          NULL for uniform-treatment plates.
+        range: string
+        multivalued: true
+        # Montana: treatments (on WellDetails)
+
+  # ============================================================================
+  # EcoplateWellMetadata — Ecoplate-specific embedded type
+  # ============================================================================
+  EcoplateWellMetadata:
+    is_a: WellMetadata
+    description: |-
+      Ecoplate-specific per-well metadata.
+      Rich — no media entity; carbon source and treatment are per-well
+      experimental design variables.
+
+      v1 origin: plate-general.yaml EcoplateWellMetadata
+    attributes:
+      media_volume_ul:
+        description: Volume of inoculum suspension added (microlitres)
+        range: float
+        required: true
+      carbon_source:
+        description: Carbon source in this well (e.g. "L-malic acid", "glucose")
+        range: string
+        required: true
+      treatment:
+        description: Experimental treatment (e.g. "control", "nickel_1pct")
+        range: string
+      treatment_concentration:
+        description: Treatment concentration with unit (e.g. "1.0 pct", "10 mM")
+        range: string
+
+  # ============================================================================
+  # WellReading — embedded type in PlateProduct.well_readings
+  # ============================================================================
+  WellReading:
+    description: |-
+      Per-well measurement data.
+      NOT a database table — embedded as JSONB in PlateProduct records.
+      Lightweight summary for queries; raw data in MinIO.
+
+      v1 origin: plate-general.yaml WellReading
+    attributes:
+      position:
+        description: Well position (e.g. "A01")
+        range: string
+        required: true
+      value:
+        description: Measured value (absorbance, OD, fluorescence)
+        range: float
+        required: true
+      flag:
+        description: QC flag — "ok", "blank", "outlier", "contaminated"
+        range: string
+

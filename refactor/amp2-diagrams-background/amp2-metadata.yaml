@@ -1,0 +1,1011 @@
+id: https://w3id.org/??
+name: amp2-metadata-schema
+title: AMP2 Metadata Schema
+description: |-
+  This provides the Entity and Activity metadata schema for AMP2.
+  Additionally, it will provide the relevant metadata (slots) for each class.
+  This schema should be merged into AnalysisDB schema structure in collaboration with Maia.
+
+imports:
+  - linkml:types
+
+classes:
+
+  Entity:
+    title: Entity
+    description: |-
+      An entity representing a physical or conceptual object.
+    slots:
+      - entity_id
+      - name
+      - description
+      - type
+      - other
+    todos:
+      - This is a placeholder for the Entity class. It should exist elsewhere in AnalysisDB schema
+      - other should probably be structured key value pairs instead of just a string.
+  Media:
+    title: Media
+    description: |-
+      An entity representing media used in a CultureGrowth activity.
+    is_a: Entity
+    slots:
+      - media_type
+      - volume_ml
+      - media_recipe
+      - media_formulation
+      - commercial_media_catalog
+      - sterilization_method
+      - ph_adjustment
+      - ph_target
+      - exposure_sensitivity
+      - media_additions
+      - storage_temperature
+    slot_usage:
+      sterilization_method:
+        description: Method used to sterilize the media.
+      ph_adjustment:
+        description: Details if the media was pH adjusted.
+      ph_target:
+        description: Target pH of the media, required if pH adjustment was made.
+    todos:
+      - There's some metadata that is captured explicitly by GLBRC that we don't model dirctly, it's assumed or part of other parts. Should we model it more explicitly? Carbon source and concerntration, nitrogen source and concentration, media selection dry and concentration.
+  Strain:
+    title: Strain
+    description: |-
+      An entity representing a strain.
+    is_a: Entity
+    slots:
+      - strain_id
+      - strain_type
+      - strain_source
+      - strain_mutation
+    todos:
+      - Do we need more information about the strain? Genotype? Phenotype? Source?
+      - or strain mutation ID?
+  StockCulture:
+    title: Stock Culture
+    description: |-
+      An entity representing a stock culture.
+    is_a: Entity
+    slots:
+      - storage_location
+      - creation_date
+      - volume_ml
+      - strain_id
+    todos: 
+      - Is it a sample?? Should it be is_a Sample?
+      - might not need strain_id slot if we can traverse the graph of what strain entity was the input to StockCulturePreparation activity that generated this stock culture.
+      - activity of culture storage vs just storing the entity
+  Sample:
+    title: Sample
+    description: |-
+      A physical sample
+    #attributes: I'm going to use slots, those are standard structure for LinkML
+    is_a: Entity
+    slots:
+      - part_of
+      - collection_date
+      - sample_type
+      - guid_source
+      - sample_id
+      - strain_id
+      - storage_condt
+      - filter_method
+      - common_name
+      - host_common_name
+      - host_taxa_id
+      - taxonomy_id
+      - isol_growth_condt
+      - samp_store_temp
+      - analysis_type
+      - technical_reps
+      - replicate_number
+      - source_material_id
+      - sample_link
+      - growth_facility
+      - collection_date
+      - collection_time
+      - sample_collection_dev
+      - other_treatment
+      - shipped_sample_size
+      - sample_collected
+      - sample_collection_method
+      - sample_processing
+      - start_date_inc
+      - watering_regm
+      - air_temp_regm
+      - chem_administration
+      - isotope_exposure
+      - gaseous_exposure
+      - humidity_regm
+      - light_regm 
+      - biotic_regm
+      - experimental_factor
+      - oxygen_relationship
+      - encoded_traits
+      - propagation
+      - ref_biomaterial
+      - host_spec_range
+      - subspecf_gen_lin
+      - trophic_level
+      - pathogenicity
+      - samp_biotic_relationship
+      - genetic_mod
+
+    todos:
+      - Should Entity be the highest class? Should this class have an is_a Entity relationship?
+      - Removed the collected from the environment part of the description because these samples don't necessarily come from the environment.
+      - need clarity on the 1:1 with Entity via entity_id foreign key. part. 
+      - sample_name or just name on entity?
+      - I'm not sure how we want to model multiple samples in the same plate. I just created a 'SamplePlate' class which can either be instantiated directly or used as the range for a slot. As such, in this example MR, there's no relationship. 
+      - I left off a lOT of slots (extraction_method, method development, a lot of other slots) that we need to discuss.
+  SamplePlate:
+    title: Sample Plate
+    description: |-
+      A plate containing multiple samples.
+    is_a: Entity
+    slots:
+      - plate_type
+      - plate_barcode
+      - manufacturer
+      - well_contents
+  WellDetails:
+    title: Well Details
+    description: |-
+      Details about the contents of a well in a sample plate.
+    slots:
+      - well_position
+      - sample_id
+      - media_id
+      - treatments
+  Proposal:
+    title: Proposal
+    description: |-
+      A proposal that all entities are associated with.
+    is_a: Entity
+    slots:
+      - title
+    todos:
+      - EMSL has extensive proposal metadata, but I'm not sure we need to capture all of that in AnalysisDB. We can always add more fields later if needed.
+  Instrument:
+    title: Instrument
+    description: |-
+      Physical instrument metadata.
+      Instruments are persistent entities, not activities.
+      Activities reference via was_associated_with or Used(role=instrument_used).
+    is_a: Entity
+    todos: 
+      - Add mapping to NMDC Instrument.
+      - Is this an entity?
+      - what other information is needed for instruments?
+    slots:
+      - instrument_id
+      - manufacturer
+      - model
+      - serial_number
+  ProcessedSample:
+    title: Processed Sample
+    is_a: Sample
+    description: A sample that has undergone processing or analysis.
+    comments:
+      - This class represents entities that are the output of any Activity.
+    slots:
+      - processed_sample_type
+    todos:
+      - Is a Sample vs Entity? If we say sample we should have something to split out the starting sample.
+      - processed samples don't need the part_of relationship to go back to the proposal. traversing the graph back to the original sample should be sufficient to get to the proposal.
+  AMP2Sample:
+    title: Processed Sample
+    is_a: ProcessedSample
+    description: A sample that has undergone processing or analysis.
+    comments:
+      - This class represents entities that are the output of any Activity.
+    slots:
+      - processed_sample_type
+      - strain_id
+      - taxonomy_id
+
+    todos:
+      - I don't think 'AMP2Sample' is the right class name. But nor do I think 'CultureSample' is right. So we need to evaluate how / if we subclass sample/processed sample, if any metadata lives on the entity or process, and how we manage requirements for a culture sample on AMP2 vs a soil.
+      - some of these metadata fields were pulled from how GLBRC is modeling samples on their AMP2 system. I've listed here slots that they have that I didn't include that we need to follow up on - ALE starting strain ID and passge number (ALE?), pooled library type & name (genome specific?), enzyme assay indicator & buffer (experimental / process metadata?).
+  
+
+  Activity:
+    title: Activity
+    description: |-
+      An activity representing a process or action performed on entities.
+    slots:
+      - activity_id
+      - name
+      - description
+      - type
+      - input
+      - output
+    todos:
+      - This is a placeholder for the Activity class. It should exist elsewhere in AnalysisDB schema
+  SampleReceiving:
+    title: Sample Receiving
+    description: |-
+      An activity representing the receiving of a sample.
+    is_a: Activity
+    slots:
+      - date_received
+      - condition_received
+      - storage_location
+      - confirmed_receipt
+      - storage_temperature
+    todos:
+      - This activity is modeled in LIMS, but I'm not sure there's anything here we need to capture in AnalysisDB.
+  LogPhaseEstablishment:
+    title: Log Phase Establishment
+    description: |-
+      An activity representing the establishment of log phase growth.
+    is_a: Activity
+    slots:
+      - optical_density
+      - measurement_time
+    todos:
+      - Need to re-visit this. it's a culturing activity but also a measurement activity.
+  MediaCreation:
+    title: Media Creation
+    description: |-
+      An activity representing the creation of media.
+    is_a: Activity
+    slots:
+      - media_id
+      - creation_date
+  CultureGrowth:
+    title: Culture Growth
+    description: |-
+      An activity representing the growth of a culture.
+    is_a: Activity
+    slots:
+      - growth_medium
+      - incubation_time_hours
+      - temperature_celsius
+      - agitation_speed_rpm
+      - oxygen_status
+      - container_type
+      - plate_id
+    todos:
+      - is container type more relevant for the activity or entity?
+      - how granualar should container type be? plate vs flask? 96 well plate vs 12 well plate? LIMS has if plate than include number and type of wells. Another option is to have a separate entity for container that has those details and then link to that from the activity. It depends on the granularity of information we want to store and how LIMS workflows are built. (+ plate product number, needed for catalyst)
+      - plate id needed or just use barcodes?
+  StrainPurity:
+    title: Strain Purity
+    description: |-
+      An activity representing the purity check of a strain.
+    is_a: CultureGrowth
+    slots:
+      - inspection_method
+      - target_strain
+      - contaminant_strains
+    todos:
+      - I think I recall Erin saysing she wanted contaminant strains to be possible contamination?
+  StockCulturePreparation:
+    title: Stock Culture Preparation
+    description: |-
+      An activity representing the preparation of a stock culture.
+    is_a: CultureGrowth
+    slots:
+      - preparation_date
+    alias:
+      - Rich Media Growth
+    todos:
+      - volumne of culture. about the activity or the entity? maybe both? need to clarify the important piece & what is being described in LIMS.
+  PreCultureGrowth:
+    title: Pre-Culture Growth
+    description: |-
+      An activity representing the growth of a pre-culture.
+    is_a: CultureGrowth
+    slots:
+    todos:
+      - are there any pre-culture only slots???
+  ExperimentalCulture:
+    title: Experimental Culture
+    description: |-
+      An activity representing the growth of an experimental culture.
+    is_a: CultureGrowth 
+    slots:
+      - treatment_type
+    comments:
+      - Minimal and experimental culture growth can be described here as part of an experiment.
+    todos:
+      - plasmid vs strain ID?
+      - total growth time? or broken up from multiple time points?
+    slot_usage:
+      growth_time:
+        description: Total growth time for the culture, required for experimental culture growth activities.
+  DataGeneration:
+    title: Data Generation
+    is_a: Activity
+    description: |-
+      An activity representing the generation of data from a sample.
+    slots:
+      - instrument_id
+      - data_type
+  OpticalDensityMeasurement:
+    title: Optical Density Measurement
+    description: |-
+      An activity representing the measurement of optical density (OD600).
+    is_a: DataGeneration
+    slots:
+      - optical_density_method
+      - wavelength
+      - read_times
+    todos:
+      - read times as specific time or since start? 2pm or 60 minutes
+  DataProcessing:
+    title: Data Processing
+    is_a: Activity
+    description: |-
+      An activity representing the processing of data.
+    slots:
+      - software_used
+      - processing_parameters
+    todos:
+      - how much of the processing do we need modeled in the schema vs linking out to the processing / workflow?
+
+
+slots:
+  entity_id:
+    title: entity ID
+    description: |-
+      Foreign key to Entity table.
+    identifier: true
+    required: true
+    examples:
+      - value: ENT123456
+    comments:
+      - Foreign key to Entity table.
+      - Each Sample has a 1:1 relationship with an Entity via this entity_id.
+    todos:
+      - Ensure that Entity with this ID exists before creating Sample.
+  name:
+    title: name
+    description: Human-readable name
+    range: string
+    required: true
+    examples:
+      - value: EMSL QExactive Plus #3
+      - value: Sample A
+    narrow_mappings:
+      - MIXS:0001107
+    alias:
+      - sample_name
+      - samp_name
+  proposal_id:
+    title: proposal ID
+    description: |-
+      The proposal ID associated with the sample.
+    range: integer
+    examples:
+      - value: 60145
+    comments:
+      - This is the 5 digit proposal ID for the associated proposal.
+  collection_date:
+    title: collection date
+    description: |-
+      The date the sample was collected.
+    range: date # is this YYYY-MM-DD? 
+    examples:
+      - value: 2023-10-15
+    related_mappings:
+      - MIXS:0000011 # GSC's guidance is ISO, NMDC doesn't use that either
+  manufacturer:
+    range: string
+    examples:
+      - value: Thermo Fisher Scientific
+  model:
+    range: string
+    examples:
+      - value: Q Exactive Plus Hybrid Quadrupole-Orbitrap
+  serial_number:
+    description: Instrument instance specifier
+    range: string
+  institution:
+    range: string
+    examples:
+      - value: PNNL-EMSL
+  sampling_activity_id:
+    description: Reference to the sampling activity that collected this sample
+    range: SamplingActivity
+    required: true
+  sample_range:
+    description: The type of sample (soil, aerosol, etc.)
+    range: sampletype
+    required: false
+  guid_source:
+    description: Indicate the source of the GUID that you have provided for your samples
+    range: string
+  other_guid_source:
+    description: Please specify if other GUID source
+    range: string
+  processed_sample_range:
+    description: The type of processed sample
+    range: processedsampletype
+    required: true
+  activity_id:
+    title: activity ID
+    description: Identifier for an Activity
+    identifier: true
+    range: Activity
+  media_range:
+    description: The type of media (e.g., LB, M9)
+    range: MediaTypeEnum
+  media_formulation:
+    description: The formulation method of the media
+    range: FormulationEnum
+  volume_ml:
+    description: Volume of an entity in milliliters.
+    range: number
+  media_recipe:
+    description: Reference or description of recipe used to prepare media
+    range: string
+    todos:
+      - Do we want to capture the actual recipe or just a reference to it?
+      - This is very similar to the GSC MIxS term growth medium (MIXS:0001108). Should we reuse that term instead of creating a new one? Definition = A liquid or gel containing nutrients, salts, and other factors formulated to support the growth of microorganisms, cells, or plants (National Cancer Institute Thesaurus). The name of the medium used to grow the microorganism
+  strain_id:
+    description: Identifier for a strain
+    range: string
+  storage_location:
+    description: Physical storage location (freezer, shelf, well, etc.)
+    range: string
+  creation_date:
+    description: Date of creation or entry
+    range: date
+  optical_density:
+    description: Optical density measurement (OD600)
+    range: number
+  measurement_time:
+    description: Time of measurement (ISO 8601 or timestamp)
+    range: datetime
+  media_id:
+    description: Identifier for a media preparation
+    range: string
+  growth_medium:
+    description: Growth medium used
+    range: string
+    exact_mappings:
+      - MIXS:0001108 # growth medium
+    todos:
+      - Similar to isol_growth_condt, this can be the growth medium of the original sample or the growth medium used in any culture growth activity EMSL does. So needs applied and provided at sample submission. 
+  incubation_time_hours:
+    description: Incubation time in hours
+    range: number
+    alias:
+      - growth time
+  temperature_celsius:
+    description: Temperature in degrees Celsius
+    range: number
+  agitation_speed_rpm:
+    description: Agitation/shaking speed in RPM
+    range: number
+    alias:
+      - shaking speed
+      - shaking
+  purity_percentage:
+    description: Purity percentage of strain
+    range: number
+  container_range:
+    description: Type of container (flask, tube, plate)
+    range: string
+  inspection_method:
+    description: Method used to inspect or verify purity
+    range: string
+  target_strain:
+    description: Target strain for purity check
+    range: string
+  contaminant_strains:
+    description: Known contaminant strains (if any)
+    range: string
+  stock_culture_id:
+    description: Identifier for a stock culture
+    range: string
+  preparation_date:
+    description: Date the stock culture was prepared
+    range: date
+  pre_culture_medium:
+    description: Medium used for pre-culture
+    range: string
+  input:
+    description: Input entities for an activity
+    range: Entity
+    multivalued: true
+  output:
+    description: Output entities for an activity 
+    multivalued: true
+  treatment_range:
+    description: The type of treatment applied in an experimental culture growth activity
+    range: string
+  date_received:
+    description: The date the sample was received
+    range: date
+  condition_received:
+    description: The condition of the sample when received
+    range: string
+  confirmed_receipt:
+    description: Whether receipt of the sample was confirmed
+    range: boolean
+    todos:
+      - boolean or enum (e.g., confirmed, not confirmed)?
+  commercial_media_catalog:
+    description: Reference to commercial media catalog entry if applicable
+    range: string
+    comments:
+      - This is required if formulation method is commercial, otherwise it should be null. It can be a catalog, manufacturer, or lot number.
+  sterilization_method:
+    description: Method used to sterilize the Entity
+    range: SterilizationMethodEnum
+    comments:
+      - This is relevant if entity is sterilized. It can be null if not applicable.
+  ph_adjustment:
+    description: Details if the entity was pH adjusted.
+    range: boolean
+    comments:
+      - boolean or enum (e.g., adjusted, not adjusted)?
+  ph_target:
+    description: Target pH of an entity
+    rnage: number
+    comments:
+      - This is required if 'ph_adjustment' is true.
+  exposure_sensitivity:
+    description: Details what sensitivity the entity has if exposed to.
+    range: string
+    examples:
+      - value: light-sensitive
+      - value: oxygen-sensitive
+    multivalued: true
+  media_additions:
+    description: Additional components added to the media (e.g., antibiotics, inducers)
+    range: string
+    examples:
+      - value: 100 ug/mL ampicillin
+      - value: 1 mM IPTG
+    multivalued: true
+    todos:
+      - LIMS has a separate antibiotic additions metadata field. Can we collapse this and map to this 1 slot?
+      - What would that mean for building LIMS workflows from the schema? Would we lose any important information by collapsing all media additions into one slot?
+  storage_temperature:
+    description: Storage temperature for the entity
+    range: QuantityValue
+    examples:
+      - value: 4 C
+      - value: -80 C
+    comments:
+      - Select 20 C for room temperature storage. This is relevant for samples, stock cultures, and media.
+  oxygen_status:
+    description: Oxygen status of the entity or activity
+    range: OxygenStatusEnum
+    examples:
+      - value: aerobic
+      - value: anaerobic
+  instrument_id:
+    description: Identifier for an instrument used in data generation activities
+    range: Instrument
+  data_range:
+    description: Type of data generated (e.g., raw, processed)
+    range: string
+  optical_density_method:
+    description: Method used to measure optical density (e.g., OD600)
+    range: OpticalDensityMethodEnum
+  software_used:
+    description: Software used for data processing
+    range: string
+  processing_parameters:
+    description: Parameters used in data processing
+    range: string
+  plate_range:
+    description: Type of plate (e.g., 96-well, 12-well)
+    range: string
+  manufacturer:
+    description: Manufacturer of the entity
+    examples:
+      - value: Corning
+      - value: Thermo Fisher Scientific
+    range: string
+  well_contents:
+    description: Contents of the wells in a sample plate
+    range: WellDetails
+    multivalued: true
+  well_position:
+    description: Position of the well in the plate (e.g., A1, B2)
+    range: string
+  sample_id:
+    description: Identifier for the sample in the well
+    range: id
+  treatments:
+    description: Treatments applied to the sample in the well
+    range: string
+    multivalued: true
+  plate_id:
+    description: Identifier for the plate used in a culture growth activity
+    range: id
+  wavelength:
+    description: Wavelength used for optical density measurement
+    range: number
+  read_times:
+    description: Time points at which optical density was measured
+    range: datetime
+    multivalued: true
+  other:
+    description: Other relevant metadata that doesn't fit into the predefined slots
+    range: string
+    multivalued: true
+  storage_condt:
+    description: Storage conditions for the sample
+    range: StorageEnum
+    examples:
+      - value: stored at 4 C in the dark
+      - value: stored at -80 C in a frost-free freezer
+    todos:
+      - submission portal allows for other and then storage condition other is free text. how to manage this?
+  filter_method:
+    description: Type of filter used or how the sample was filteres
+    range: string
+    examples:
+      - value: 0.22 um filter
+      - value: no filtration
+    exact_mappings:
+      - MIXS:0001110 # filtration method
+  common_name:
+    description: Common name for the organism
+    range: string
+  host_common_name:
+    description: Common name for the host
+    range: string
+    examples:
+      - value: E. Coli
+      - value: Dog
+  host_taxid:
+    description: NCBI taxon id of the host
+    range: integer
+    todos: 
+      - NCBItaxa followed by an ID? Should this be an ID or just a string for the number.
+  taxonomy_id:
+    description: NCBI taxon id for the sample
+    range: integer
+    todos:
+      - NCBItaxa followed by an ID? Should this be an ID or just a string for the number.
+  isol_growth_condt:
+    description: Publication reference in the form of pubmed ID (pmid), digital object identifier (doi) or url for isolation and growth condition specifications of the organism/material
+    range: string
+    exact_mappings:
+      - MIXS:0000003 # isolation source
+    todos:
+      - for sample metadata submission, this can be 2 things. this can be HOW the culture sample was grown, or if the user is sending a strain for us to grow on AMP2, it can just be information on how we should grow the sample. So with respect to the data structure, and the idea of sample = what we receive and processed sample = anything we do, it's not clear if this would be for the sample or processed sample.
+  samp_store_temp:
+    description: The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other, add the `other_samp_store_temp` attribute to provide additional detail.
+    range: TemperatureEnum
+    examples:
+      - value: 4 C
+      - value: -80 C
+    comments:
+      - This is relevant for samples. For samples that are received from users, this can be the storage temperature that the user had their sample stored at before sending it to us. For samples that we generate on AMP2, this can be the storage temperature we used for the sample.
+    todos:
+      - submission portal allows for other and then storage temperature other is free text. how to manage this?
+  analysis_range:
+    description: The analyses planned for this sample. The analysis types will later be mapped to an allocated resource. This field is constrained to contain only a set of limited terms.
+    range: AnalysisTypeEnum
+    todos:
+      - This is relevant for samples. For samples that are received from users, this can be the analysis type that the user plans to do with the sample. So should it be on sample? Or even stored in ADB?
+      - for the enum, imaging- xray vs imaging_xray, title Imaging - X-ray
+  technical_reps:
+    description: If sending technical replicates of the same sample, indicate the replicate number here.
+    range: integer
+  replicate_number:
+    description: If samples are biological replicates, indicate the replicate number here.
+    range: integer
+  source_mat_ID:
+    description: A unique identifier assigned to an original material sample collected or to any derived sub-samples. The source material should be listed as a sample to inform details about parent material relationship.
+    range: string
+  sample_link:
+    description: A unique identifier to assign sample relationships. This field allows multiple entries.
+    range: string
+    todos: 
+      - multivalue should be yes, and probably inlined as a list
+      - descriptions might need tweaked for submission portal so how can we generate the submission portal json schemas fgrom this? (Examples, Soil collected from the field will link with the soil used in an incubation. The soil a plant was grown in links to the plant sample. An original culture sample was transferred to a new vial and generated a new sample)
+  growth_facil:
+    description: Type of facility or location from where the sample was collected or grown. This field is NOT multivalued. If selecting other, add the `other_growth_facil` attribute to provide additional detail.
+    range: GrowthFacilityEnum,
+    todos:
+      - submission portal allows for other and then growth facility other is free text. how
+  collection_date:
+    description: The date of sampling as an instance. Format, YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)
+    range: Date
+    pattern: ^[12]\\d3(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$
+    todos:
+      - does the pattern work?
+      - sample vs sample collection activity. WHere does the thing that comes in EMSL door go? Maybe it's a 'received sample' class.
+  collection_time:
+    description: The time of sampling as an instance (single point). Required format, HH:MM:SS in 24-hour time format. Don't forget the second!
+    pattern: ^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$
+    range: string
+  sample_collection_dev:
+    description: The device used to collect an environmental sample. Include dimensions of device if applicable
+    range: string
+  other_treatment:
+    description: Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy, please add it here. Multiple treatments can be entered here, separated by ;
+    range: string
+    todos:
+      - should be inlined as a list & miltivalued
+  shipped_sample_size: 
+    description: Total amount of sample sent to EMSL. Must include units.
+    range: QuantityValue
+    pattern: ^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$
+  sample_collected: 
+    description: This referes to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid
+    range: QuantityValue
+    pattern: ^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$
+  sample_collection_method: 
+    description: The method used to collect an environmental sample
+    range: string
+  sample_processing: 
+    description: A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed.
+    range: string,
+  start_date_inc: 
+    description: Date the incubation was started. Only relevant for incubation samples. Format, YYYY-MM-DD
+    range: Date
+    pattern: ^[12]\\d3(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$
+  watering_regm: 
+    description: Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens    
+    range: string
+  air_temp_regm: 
+    description: Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens
+    range: string,
+  chem_administration: 
+    description: List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
+    range: string
+  isotope_exposure: 
+    description: List isotope exposure or addition applied to your sample.
+    range: string
+  gaseous_environment: 
+    description: Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens
+    range: string
+  humidity_regm:
+    description: Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
+    range: string      
+  light_regm: 
+    description: Information about treatment(s) involving exposure to light, including both light intensity and quality
+    range: string
+  biotic_regm:
+    description: Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi.
+    range: string
+  experimental_factor:
+    desctiption: Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms, please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI
+    range: string
+    todos:
+      - actually, range should be an ontology term.
+  oxygen_relationship:
+    description: Oxygenation status of sample
+    range: string
+  encoded_traits:
+    description: Should include key traits like antibiotic resistance or xenobiotic degradation phenotypes for plasmids, converting genes for phage
+    range: string
+  propagation:
+    description: This field is specific to different taxa. For phages, lytic/lysogenic, for plasmids, incompatibility group, for eukaryotes, sexual/asexual
+    range: string
+  ref_biomaterial:
+    description: Primary publication if isolated before genome publication; otherwise, primary genome report.
+    range: string
+  host_spec_range:
+    description: The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier
+    range: string
+    todos: 
+      - should be an ID / curie
+  subspecf_gen_lin: 
+    description: Information about the genetic distinctness of the sequenced organism below the subspecies level, e.g., serovar, serotype, biotype, ecotype, or any relevant genetic typing schemes like Group I plasmid. Supply both the lineage name and the lineage rank separated by a colon
+    range: string,
+  trophic_level:
+    description: Trophic levels are the feeding position in a food chain. Microbes can be a range of producers.,
+    range: TrophicLevelEnum
+  pathogenicity:
+    description: To what is the entity pathogenic
+    range: string
+  samp_biotic_relationship:
+    description: Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object
+    range: BioticRelationshipEnum
+  genetic_mod:
+    description: Genetic modifications of the genome of an organism, which may occur naturally by spontaneous mutation, or be introduced by some experimental means, e.g. specification of a transgene or the gene knocked-out or details of transient transfection
+    range: string
+  growth_time:
+    description: Total growth time for the culture, required for experimental culture growth activities.
+    range: Time
+    comments:
+      - Total time, like 5hr or 1pm-6pm?
+
+enums:
+  MediaTypeEnum:
+    description: Enumeration of activity that a media entity was used in.
+    permissible_values:
+      strain_purity:
+        title: Strain Purity
+      minimal_culture_growth:
+        title: Minimal Culture Growth
+      experimental_culture:
+        title: Experimental Culture
+      preculture_growth:
+        title: Pre-Culture Growth
+  FormulationEnum:
+    description: Enumeration of formulation method for media.
+    permissible_values:
+      commercial:
+        title: Commercial Media
+      manual mix:
+        title: Manually Mix Media
+      DOI:  
+        title: DOI Reference for Media Formulation
+      protocol document:
+        title: Protocol Document Reference for Media Formulation
+  SterilizationMethodEnum:
+    description: Enumeration of sterilization methods for media or other entities.
+    permissible_values:
+      autoclave:
+        title: Autoclave
+      filter sterilization:
+        title: Filter Sterilization
+      chemical sterilization:
+        title: Chemical Sterilization
+  OxygenStatusEnum:
+    description: Enumeration of oxygen status for entities or activities.
+    permissible_values:
+      aerobic:
+        title: Aerobic
+      anaerobic:
+        title: Anaerobic
+  OpticalDensityMethodEnum:
+    description: Enumeration of methods for measuring optical density.
+    permissible_values:
+      absorbance:
+        title: Absorbance Measurement
+      fluorescence:
+        title: Fluorescence Measurement
+      luminescence:
+        title: Luminescence Measurement
+  StorageEnum:
+    description: Enumeration of storage conditions for samples.
+    permissible_values:
+      fresh:
+        title: Fresh or Room Temperature
+      frozen:
+        title: Frozen
+      lyophilized:
+        title: Lyophilized
+  TemperatureEnum:
+    description: Enumeration of storage temperatures for samples.
+    permissible_values:
+      negative_80:
+        title: -80 C
+      4_c:
+        title: 4 C
+      20_c:
+        title: 20 C (room temperature)
+  AnalysisTypeEnum:
+    description: Enumeration of analysis types planned for samples.
+    permissible_values:
+      metabolome:
+          title: Metabolome
+      proteome:
+          title: Proteome
+      lipidome:
+          title: Lipidome
+      organic_matter:
+          title: Organic Matter
+      molecular_structure:
+          title: Molecular Structure
+      chemical_speciation_mapping:
+          title: Chemical Speciation Mapping
+      genome:
+          title: Genome
+      transcriptome:
+          title: Transcriptome
+      isotope_profiling:
+          title: Isotope Profiling
+      imaging_xray:
+          title: Imaging - X-ray
+      imaging_electron:
+          title: Imaging - Electron
+      imaging_ion:
+          title: Imaging - Ion
+      imaging_light:
+          title: Imaging - Light
+      hydraulic_properties:
+          title: Hydraulic Properties
+      unknown:
+          title: Unknown
+  GrowthFacilityEnum:
+    description: Enumeration of growth facilities or locations for samples.
+    permissible_values:
+      field:
+        title: Field
+      commercially purchased:
+        title: Commercially Purchased
+      experimental garden:
+        title: Experimental Garden
+      field incubation:
+        title: Field Incubation
+      greenhouse:
+        title: Greenhouse
+      growth chamber:
+        title: Growth Chamber
+      lab incubation:
+        title: Lab Incubation
+      open top chamber:
+        title: Open Top Chamber
+      other:
+        title: Other
+  TrophicLevelEnum:
+    description: Enumeration of trophic levels for organisms.
+    permissible_values:
+      autotroph:
+        title: Autotroph
+      carboxydotroph:
+        title: Carboxydotroph
+      chemoautolithotroph:
+        title: Chemoautolithotroph
+      chemoautotroph:
+        title: Chemoautotroph
+      chemoheterotroph:
+        title: Chemoheterotroph
+      chemolithoautotroph:
+        title: Chemolithoautotroph
+      chemolithotroph:
+        title: Chemolithotroph
+      chemoorganoheterotroph:
+        title: Chemoorganoheterotroph
+      chemoorganotroph:
+        title: Chemoorganotroph
+      chemosynthetic:
+        title: Chemosynthetic
+      chemotroph:
+        title: Chemotroph
+      copiotroph:
+        title: Copiotroph
+      diazotroph:
+        title: Diazotroph
+      facultative:
+        title: Facultative
+      heterotroph:
+        title: Heterotroph
+      lithoautotroph:
+        title: Lithoautotroph
+      lithoheterotroph:
+        title: Lithoheterotroph
+      lithotroph:
+        title: Lithotroph
+      methanotroph:
+        title: Methanotroph
+      methylotroph:
+        title: Methylotroph
+      mixotroph:
+        title: Mixotroph
+      obligate:
+        title: Obligate
+      oligotroph:
+        title: Oligotroph
+      organoheterotroph:
+        title: Organoheterotroph
+      organotroph:
+        title: Organotroph
+      photoautotroph:
+        title: Photoautotroph
+      photoheterotroph:
+        title: Photoheterotroph
+      photolithoautotroph:
+        title: Photolithoautotroph
+      photolithotroph:
+        title: Photolithotroph
+      phototroph:
+        title: Phototroph
+  BioticRelationshipEnum:
+    description: Enumeration of biotic relationships between organisms.
+    permissible_values:
+      free_living:
+        title: Free Living
+      parasite:
+        title: Parasite
+      commensal:
+        title: Commensal
+      symbiont:
+        title: Symbiont

@@ -149,7 +149,8 @@ imports:
   - administration
   - study
   - zip_download
-  # - metagenomics
+  - media_strain_culture_plate
+  - metagenomics
   # - linkage_cache   # MR2: uncomment when linkage_cache.yaml is added
   # - enrichment # todo have not reviewed fully
 
