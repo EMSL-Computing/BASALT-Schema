@@ -19,6 +19,8 @@ imports:
   - linkml:types
   - samples
 
+## This file can go away?
+
 classes:
 
   SiteMetadata:

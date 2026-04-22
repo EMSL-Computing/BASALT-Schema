@@ -1,0 +1,331 @@
+---
+id: https://w3id.org/MONet/analysis-api-schema
+name: sample_classes.yaml
+title: MONet Analysis API Sample Class Schema
+description: |-
+  LinkML-based schema for sample classes for Analysis API.
+  This schema defines the data models for samples, sample type subclasses, and processed samples.
+license: MIT
+see_also:
+  - https://MONet.github.io/analysis-api-schema
+  - https://github.com/pnnl/analysis-api
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  # linkml: https://w3id.org/linkml/
+  # schema: http://schema.org/
+  # qudt: http://qudt.org/schema/qudt/
+  # unit: http://qudt.org/vocab/unit/
+  # uuid: https://w3id.org/uuid/
+
+default_prefix: analysis_api_schema
+default_range: string
+
+classes:
+  SiteMetadata:
+    title: Site Metadata
+    description: Site-level metadata for specific locations from which a set of samples are collected.
+    slots:
+      - id
+      - name
+      - description
+      - type
+      - latitude
+      - longitude
+    todos:
+      - move a LOT of these attributes to slots
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      cur_land_use:
+        range: landuseenum
+      drainage_class:
+        range: drainageclassenum
+      fao_class:
+        range: faoclassenum
+      neon_domain:
+        range: neondomainenum
+      from_sampling_activity:
+        description: Reference to the sampling activity that collected samples at this site
+        range: SamplingActivity
+
+  Sample:
+    description: A physical sample collected from an environment. The environment can be ecological, laboratory, or any other context where samples are collected. This class serves as an abstract class to relate subclasses of samples.
+    slots:
+      # - id #should be inherited when Entity class is made
+      - name #should be inherited when Entity class is made
+      - description #should be inherited when Entity class is made
+      - type #should be inherited when Entity class is made
+    attributes:
+      id:
+          identifier: true
+          range: sampleBase #I'm not sure now that base is gone
+        #sampling_activity_id:
+         # description: Reference to the sampling activity that collected this sample
+          #range: samplingActivity
+          #required: true - remove and  use has_output from sampling_activity
+      guid_source:
+        description: Indicate the source of the GUID that you have provided for your samples
+      other_guid_source:
+        description: Please specify if other GUID source
+      proposal_id:
+        description: The 5 digit project ID assigned to an EMSL user proposal/project
+        range: integer
+      sampling_set: # "1"
+    
+  SoilSample:
+    description: A soil sample with specific soil-related properties.
+    is_a: Sample
+    slots:
+      - name
+      - description
+      - type
+    attributes:
+      id:
+        range: sample
+        identifier: true
+      soil_type:
+        description: The specific type of soil sample
+        range: soiltype
+        required: true
+      soil_horizon:
+    
+    MonetSoilSample:
+      title: MONet Soil Sample
+      description: A soil sample with specific soil-related properties that align with the MONet Soil Sample template.
+      is_a: SoilSample
+      slots:
+        - name
+        - description
+        - type
+      attributes:
+        id:
+          range: sample
+          identifier: true
+        soil_type:
+          description: The specific type of soil sample, aligned with the MONet Soil Sample template
+          range: soiltype
+          required: true
+
+  AerosolSample:
+    description: An aerosol sample with specific aerosol-related properties
+    is_a: Sample
+    slots:
+      - name
+      - description
+      - type
+    attributes:
+      id:
+        range: sample
+        identifier: true
+      aerosol_type:
+        description: The type or method of aerosol collection
+        range: aerosoltype
+        required: true
+
+  ProcessedSample:
+    description: A sample that has undergone processing or analysis. Processed Sample entities are derived from Activitites. Relationships to original sample, other processed samples, and projects is avaialble via following Activity to Entity relationships: has_input, has_output.
+    is_a: Sample
+    attributes:
+      id:
+        identifier: true
+        range: sampleBase
+        processed_sample_type:
+          description: The type of processed sample
+          range: processedsampletype
+          required: true
+
+  CoreSection:
+    description: A section of a core sample (TOP, MID, BTM).
+    is_a: ProcessedSample
+    slots:
+      - name
+      - description
+      - type
+    attributes:
+      id:
+        identifier: true
+        range: processedSample
+      core_section:
+        description: The section of the core (e.g. TOP, MID, BTM)
+        range: CoreSectionEnum
+        required: true
+  
+  SamplingActivity:
+    description: An activity that involves the collection of a sample. This class serves as an abstract class to relate subclasses of sampling activities. Note that the sampling activity is related to the sample via the has_output relationship on the activity, not via a direct relationship on the sample.
+    abstract: true
+    slots:
+      - id #will be inherited when Activity class is made
+      - name
+      - description
+      - type
+      - emsl_activity  # [ADDED] replaces planned campaign FK approach
+      - has_output #will be inherited when Activity class is made
+    slot_usage:
+      has_output:
+        range: Sample
+        multivalued: true
+    todos:
+      - move a LOT of these attributes to slots and move them off the activity to the entity or site
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      study_id: #do we need this here? where do we make the campaign, project, pi, etc associations?
+        range: study
+        required: true
+      sample_name: # 60881_1_C2
+        required: true
+      lims_barcode:
+      growth_facil:
+        range: growthfacilityenum
+      other_growth_facil:
+      other_storage_condt:
+      oxygen_relationship:
+        range: oxygenstatusenum
+      sample_store_temp:
+        range: samplestoretemp
+      samp_biotic_relationship:
+        range: sampbioticenum
+      storage_condt:
+        range: storagecondtenum
+      air_temp_regm:
+      chem_administration:
+      collection_date:
+        range: datetime
+      collection_time:
+        range: datetime
+      env_broad_scale_other:
+      env_local_scale_other:
+      env_medium_other:
+      experimental_factor:
+      experimental_factor_other:
+      extraction_method:
+      extreme_event:
+        range: datetime
+      gaseous_environment:
+      geo_loc_name:
+      humidity_regm:
+      isotope_exposure:
+      light_regm:
+      link_addit_analys:
+      method_development:
+      misc_param:
+      neon_plot_id:
+      non_microb_biomass_method:
+      other_sample_store_temp:
+      other_treatment:
+      ph:
+        range: double
+      ph_meth:
+      salinity:
+        range: double
+      salinity_method:
+      sample_collected:
+      sample_collection_dev:
+      sample_collection_method:
+      sample_end_time:
+        range: datetime
+      sample_processing:
+      sample_start_time:
+        range: datetime
+      season_environment:
+      shipped_sample_size:
+      sieving:
+      start_date_inc:
+        range: datetime
+      tot_nitro_cont_meth:
+      tot_org_c_meth:
+      watering_regm:
+  
+  SoilSamplingActivity:
+    title: Soil Sampling Activity
+    description: A sampling activity specific to soil samples.
+    todos:
+      - move a LOT of these attributes to slots and move them off the activity to the entity or site
+    is_a: SamplingActivity
+    slots:
+      - name
+      - description
+      - type
+    slot_usage:
+      has_output:
+        range: SoilSample
+    attributes:
+      id:
+        identifier: true
+        range: samplingActivity
+      profile_position:
+        range: profilepositionenum
+      sediment_type:
+        range: sedimenttypeenum
+        range: soilhorizonenum
+      tillage:
+        range: tillageenum
+      wind_direction:
+        range: winddirectionenum
+      agrochem_addition:
+        range: string
+      al_sat:
+        range: double
+      al_sat_meth:
+        range: string
+      biotic_regm:
+        range: string
+      climate_environment:
+        range: string
+      core_collector:
+        range: string
+      crop_rotation:
+        range: boolean
+      crop_rotation_schedule:
+        range: string
+      cur_vegetation:
+        range: string
+      cur_vegetation_meth:
+        range: string
+      filter_method:
+        range: string
+      fire:
+        range: datetime
+      flooding:
+        range: datetime
+      heavy_metals:
+        range: string
+      heavy_metals_meth:
+        range: string
+      horizon_meth:
+        range: string
+      infiltration_1:
+        range: time
+      infiltration_2:
+        range: time
+      infiltration_notes:
+        range: string
+      link_class_info:
+        range: string
+      link_climate_info:
+        range: string
+      local_class:
+        range: string
+      local_class_meth:
+        range: string
+      perturbation:
+        range: string
+      previous_land_use:
+        range: string
+      previous_land_use_meth:
+        range: string
+      site_definition:
+        range: string
+      soil_type:
+        range: string
+      soil_type_meth:
+        range: string
+      texture_meth:
+        range: string
+      water_content_meth:
+        range: string
+      weather:
+        range: string
