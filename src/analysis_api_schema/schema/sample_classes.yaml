@@ -77,7 +77,7 @@ classes:
     slot_usage:
     attributes:
       id:
-        range: sample
+        range: Sample
         identifier: true
     
   MonetSoilSample:
@@ -93,7 +93,7 @@ classes:
         required: true
     attributes:
       id:
-        range: sample
+        range: Sample
         identifier: true
 
   AerosolSample:
@@ -103,7 +103,7 @@ classes:
       - aerosol_type
     attributes:
       id:
-        range: sample
+        range: Sample
         identifier: true
 
   ProcessedSample:
@@ -113,7 +113,7 @@ classes:
     attributes:
       id:
         identifier: true
-        range: sampleBase
+        range: Sample
 
   CoreSection:
     description: A section of a core sample (TOP, MID, BTM).

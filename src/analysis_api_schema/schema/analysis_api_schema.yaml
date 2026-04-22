@@ -538,7 +538,7 @@ classes:
         range: uuid
       sample_base_id:
         identifier: true
-        range: sampleBase
+        range: Sample
         required: true
       processing_id:
         identifier: true
