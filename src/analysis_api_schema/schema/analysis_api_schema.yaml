@@ -378,7 +378,7 @@ classes:
         range: uuid
       raw_data_id:
         range: instrumentData
-        required: true
+        required: false # subclassed activities handle this explicitly
       description:
         range: string
       ended_at_time:
