@@ -143,6 +143,7 @@ imports:
   - linkml:types
   - enums
   - value_tables
+  - sample_classes
   - metadata
   - methods
   - products
@@ -192,7 +193,7 @@ classes:
     attributes:
       id:
         identifier: true
-        range: processedSample
+        range: ProcessedSample
       rep:
         description: The replicate (or aliquot) number
         range: integer
@@ -267,7 +268,7 @@ classes:
       type:
         range: routemethod
       analyte_id:
-        range: processedSample
+        range: ProcessedSample
       name:
         range: string
       acquisition_time:
@@ -498,7 +499,7 @@ classes:
         range: uuid
       sample_base_id:
         identifier: true
-        range: sampleBase
+        range: Sample
         required: true
       processing_id:
         identifier: true

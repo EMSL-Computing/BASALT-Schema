@@ -40,7 +40,7 @@ slots:
 
   sample_id:
     description: Link back to the originating sample
-    range: sample
+    range: Sample
     required: false
 
   provider_name:
