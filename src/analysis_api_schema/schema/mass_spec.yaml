@@ -1,0 +1,273 @@
+id: https://w3id.org/MONet/analysis-api-schema/mass-spec
+name: mass-spec
+title: Mass spectrometry subclasses for MONet Analysis API
+description: |
+  Mass spectrometry product and workflow classes for the MONet Analysis API.
+
+  Classes defined in this file:
+
+  Relevant to data generation:
+  - MassSpectrometryAnalysisActivity
+  - MassSpectrometryConfiguration
+  - ChromatographyConfiguration
+
+  Relevant to raw data:
+  - MassSpectrometryInstrumentData
+
+  Relevant to data processing:
+  - MassSpectrometryWorkflowExecutionActivity
+  - MassSpectrometryStandardRun
+
+  Processed data products:
+  - MassSpectrometryDataProduct (abstract)
+  - MSImageProduct
+  - MolecularIdentificationProduct
+  - MetaproteomicsProduct (abstract)
+
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+default_prefix: analysis_api_schema
+
+imports:
+  - linkml:types
+  - analysis_api_schema
+
+# Reusable slots specific to mass spectrometry classes.
+# Shared slots (name, s3_key, version, workflow_steps, etc.) are inherited via
+# the dataProduct / workflowExecutionActivity slot definitions in analysis_api_schema.
+slots:
+  
+  aq: 
+    description:
+    range: numeric
+
+  uses_calibration:
+    description: >- 
+      Reference to the raw data file from the standard which was run with a batch of samples that was used as calibration for this data processing workflow run.
+    range: MassSpectrometryStandardRun
+
+  injection:
+    description: Type of injection used in the mass spectrometry method
+    range: string
+    required: true
+
+  ionization:
+    description: Type of ionization used in the mass spectrometry method
+    range: ionizationenum
+    required: true
+
+  polarity:
+    description: Polarity setting used in the mass spectrometry method
+    range: polarityenum
+    required: true
+
+  chromatography_type:
+    description: Type of chromatography used in the method (e.g., GC, LC)
+    range: chromatographytypeenum
+    required: true
+
+  mobile_phases:
+    description: Description of the mobile phases used in the chromatography method (e.g., solvents, gradients)
+    range: string
+
+  stationary_phase:
+    description: Description of the stationary phase used in the chromatography method (e.g., column type)
+    range: string
+
+  temperature_celsius:
+    description: Temperature at which the method was performed
+    range: float
+
+  uses_ms_configuration:
+    description: Points to a record of the configuration used for the mass spectrometry run.
+    range: MassSpectrometryConfiguration
+    required: true
+
+  uses_chromatography:
+    description: Points to a record of the chromatography used to introduce samples for the mass spectrometry run.
+    range: ChromatographyConfiguration
+
+# attributes from deleted FTICR and LCMS method classes
+# do we need to keep them. also what do they mean
+  column:
+    range: string
+    required: true
+  resolution:
+    range: double
+    required: true
+  scan_range:
+    range: string
+    required: true
+  dd_ms2_resolution:
+    range: double
+    required: true
+  loop_count:
+    range: string
+    required: true
+  isolation_window:
+    range: string
+    required: true
+  iat:
+    range: double
+  fid:
+    range: double
+  mass_range:
+    range: double
+  collection_mode:
+    range: msmodeenum
+
+  produced_by_ms_run:
+    description: a reference to the data generation activity that produced instrument data
+    range: MassSpecAnalysisActivity
+
+  ms_raw_file_type:
+    description: the filetype of the mass spectrometry instrument data
+    range: msrawfiletypeenum
+
+  results_from_ms_processing:
+    description: a reference to the mass spec data processing activity that produced this data product
+    range: MassSpectrometryWorkflowExecutionActivity
+  
+  analyte_category:
+    description: omics type for easier search, optional
+    range: analytecategoryenum
+
+  duration_min:
+    description: how long something took, in minutes
+    range: float
+
+classes:
+
+  MassSpectrometryInstrumentData:
+    is_a: instrumentData
+    description: >- 
+      Raw data files output from a mass spectrometry instrument.
+    slots:
+      - produced_by_ms_run
+      - ms_raw_file_type
+      - collection_mode
+
+  # ============================================================================
+  # (NEW ABSTRACT) MassSpectrometryProduct
+  # Middle tier in the dataProduct -> processedData -> MassSpectrometryProduct chain.
+  # Carries slots common to all mass spectrometry sub-types so they do not
+  # need to be repeated on each concrete class.
+  # ============================================================================
+  MassSpectrometryDataProduct:
+    is_a: processedData
+    abstract: true
+    description: |-
+      Abstract base for all mass spectrometry data products.
+      Inherits S3/file slots from dataProduct (via processedData is_a chain).
+    slots:
+      - results_from_ms_processing
+
+  MSImageProduct:
+    is_a: MassSpectrometryDataProduct
+    description: one or more image(s) output from a mass spec data processing workflow (eg. LESA, CoreMS QC plots). Should be a zip file containing all similar image outputs from one data processing workflow.
+    slots:
+
+  MolecularIdentificationProduct:
+    is_a: MassSpectrometryDataProduct
+    description: a file containing molecular formula identifications that was output from a mass spec data processing workflow (eg. .csv of m/z and molecular formulae, .hdf5 file).
+    slots:
+  
+  MetaproteomicsProduct:
+    abstract: true
+    is_a: MassSpectrometryDataProduct
+    description: Abstract parent class for processed metaproteomics data. Details and subclasses TBD.
+
+  # ============================================================================
+  # (NEW) MassSpectrometryAnalysisActivity
+  # New class
+  # ============================================================================
+  MassSpectrometryAnalysisActivity:
+    is_a: analysisActivity
+    description: A record of the mass spectrometry run that generates a raw data product.
+    slots:
+      - uses_ms_configuration # required
+      - uses_chromatography # optional
+      - analyte_category
+
+# New class - configuration, for use on mass spec data generation
+# could be more configurations in future
+# represents instrument configuration and settings
+
+  Configuration:
+    description: Record of configuration and/or settings for an activity.
+    slots:
+      - name
+      - description
+    attributes:
+      id:
+        required: true
+        range: uuid
+
+  MassSpectrometryConfiguration:
+    is_a: Configuration
+    description: Instrument configuration and setup for a mass spectrometry run.
+    slots:
+      - location
+      - injection
+      - ionization
+      - polarity
+      - resolution
+      - scan_range
+      - dd_ms2_resolution
+      - loop_count
+      - iat
+      - fid
+      - mass_range
+
+  ChromatographyConfiguration:
+    is_a: Configuration
+    description: Configuration and settings for a chromatography run.
+    slots:
+      - column
+      - chromatography_type
+      - mobile_phases
+      - stationary_phase
+      - temperature_celsius
+      - duration_min
+
+
+
+
+  # ============================================================================
+  # (NEW) MassSpectrometryWorkflowExecutionActivity
+  # Concrete subclass of workflowExecutionActivity (now abstract in MR1).
+  # Carries no additional unique slots beyond the parent; represents a typed
+  # workflow record so that workflowExecutionActivity can remain abstract.
+  # ============================================================================
+  MassSpectrometryWorkflowExecutionActivity:
+    is_a: workflowExecutionActivity
+    description: |-
+      Concrete mass spectrometry workflow run. Inherits all workflowExecutionActivity
+      slots including used_software and version.
+    slots:
+      - uses_calibration
+
+  # Class to represent data from a standard run with a batch of samples
+  MassSpectrometryStandardRun:
+    slots:
+      - name
+      - description
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      internal_calibration:
+        description: Whether internal calibration was used (true/false)
+        range: Boolean
+      calibration_target:
+        description: The measurement being calibrated
+        range: calibrationtargetenum
+      calibration_standard:
+        description: The reference standard used for calibration
+        range: purchasedMaterial
+      calibration_data:
+        description: Reference to the raw instrument data file used for calibration
+        range: MassSpectrometryInstrumentData

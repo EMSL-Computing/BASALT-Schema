@@ -1,0 +1,3386 @@
+id: https://w3id.org/MONet/analysis-api-schema/metaproteomics
+name: metaproteomics
+title: Metaproteomics additions for MONet Analysis API
+description: |
+  Standalone metaproteomics schema fragment for MONet. This version is designed
+  to validate independently even if other imported schema fragments contain errors.
+  It provides the MetaproteomicsAnalysis class (NMDC-aligned by class_uri) and a
+  specific DataProcessingActivity abstraction, linking upstream to AnalysisActivity.
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+  xsd: http://www.w3.org/2001/XMLSchema#
+
+default_prefix: analysis_api_schema
+default_range: string
+
+imports:
+  - linkml:types
+  #- analysis_api_schema
+
+types:
+  uuid:
+    uri: xsd:string
+    base: string
+
+enums:
+
+  CalibrationStandardEnum:
+    permissible_values:
+      fames:
+        text: fames
+        aliases:
+        - FAMES
+      alkanes:
+        text: alkanes
+        aliases:
+        - Alkanes
+
+  CalibrationTargetEnum:
+    permissible_values:
+      mass_charge_ratio:
+        text: mass_charge_ratio
+        title: m/z
+        aliases:
+        - Mass
+        - m/z
+      retention_time:
+        text: retention_time
+        aliases:
+        - RT
+      retention_index:
+        text: retention_index
+        aliases:
+        - RI
+
+  ChemicalConversionCategoryEnum:
+    permissible_values:
+      addition:
+        text: addition
+      substitution:
+        text: substitution
+      acid_base:
+        text: acid_base
+      reduction_oxidation:
+        text: reduction_oxidation
+      combustion:
+        text: combustion
+      decomposition:
+        text: decomposition
+      protease_cleavage:
+        text: protease_cleavage
+        description: an enzymatic cleavage which relies on an enzyme with protease activity
+          to act on proteins and to produce polypeptides (protein fragments).
+        meaning: OBI:0600056
+
+  ChemicalEntityEnum:
+    description: Common names or identifiers for chemical entities.
+    permissible_values:
+      acetonitrile:
+        text: acetonitrile
+        meaning: CHEBI:38472
+      acetic_acid:
+        text: acetic_acid
+        meaning: CHEBI:15366
+      alphaLP:
+        text: alphaLP
+        meaning: EC:3.4.21.12
+        comments:
+        - A serine protease that hydrolyzes peptide bonds at the C-terminus of threonine,
+          alanine, serine, and valine.
+      ammonium_acetate:
+        text: ammonium_acetate
+        meaning: CHEBI:62947
+      ammonium_bicarbonate:
+        text: ammonium_bicarbonate
+        meaning: CHEBI:184335
+      amitriptyline:
+        text: amitriptyline
+        meaning: CHEBI:2666
+      Arg-C:
+        text: Arg-C
+        meaning: MS:1001303
+        comments:
+        - A cysteine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus
+          of arginine and with lower efficiency, lysine.
+      Asp-N:
+        text: Asp-N
+        meaning: MS:1001304
+        comments:
+        - A zinc metalloendopeptidase that hydrolyzes peptide bonds at the N-terminus
+          of aspartic acid.
+      chloroform:
+        text: chloroform
+        meaning: CHEBI:35255
+      chymotrypsin:
+        text: chymotrypsin
+        meaning: MS:1001306
+        comments:
+        - A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan,
+          leucine, tyrosine, and phenylalanine.
+      ethanol:
+        text: ethanol
+        meaning: CHEBI:16236
+      formic_acid:
+        text: formic_acid
+        meaning: CHEBI:30751
+        comments:
+        - A carboxylic acid that is the simplest aliphatic carboxylic acid, comprising
+          a hydrogen atom joined to the methyl group of methanol.
+      glucose:
+        text: glucose
+        meaning: CHEBI:17234
+        comments:
+        - Generally considered the most abundant monosaccharide in nature.
+      Glu-C:
+        text: Glu-C
+        meaning: MS:1001917
+        comments:
+        - A serine protease that hydrolyzes peptide and ester bonds at the C-terminus
+          of aspartic acid or glutamic acid.
+      hydrochloric_acid:
+        text: hydrochloric_acid
+        meaning: CHEBI:17883
+      isopropyl_alcohol:
+        text: isopropyl_alcohol
+        meaning: CHEBI:17824
+      Lys-C:
+        text: Lys-C
+        meaning: MS:1001309
+        comments:
+        - A serine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus
+          of lysine.
+      Lys-N:
+        text: Lys-N
+        meaning: MS:1003093
+        comments:
+        - A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of lysine.
+      N-methyl-N-trimethylsilyltrifluoroacetamide:
+        text: N-methyl-N-trimethylsilyltrifluoroacetamide
+        meaning: CHEBI:85064
+      methanol:
+        text: methanol
+        meaning: CHEBI:17790
+      methoxyamine:
+        text: methoxyamine
+        meaning: CHEBI:192842
+      medronic_acid:
+        text: medronic_acid
+        meaning: CHEBI:43945
+        comments:
+        - A 1,1-bis(phosphonic acid) consisting of methane substituted by two phosphonic
+          acid groups, also known as methylenediphosphonic acid
+      phosphoric_acid:
+        text: phosphoric_acid
+        meaning: CHEBI:26078
+      trimethylchlorosilane:
+        text: trimethylchlorosilane
+        meaning: CHEBI:85069
+      trypsin:
+        text: trypsin
+        meaning: MS:1001251
+        comments:
+        - A serine protease that hydrolyzes peptide bonds at the C-terminus of arginine
+          and lysine.
+      water:
+        text: water
+        meaning: CHEBI:15377
+        comments:
+        - Any form of water used in an experiment including deionized water, distilled
+          water, and ultrapure water. Protocol or materials and methods should be consulted
+          for exact type of water used in an experiment.
+
+  ChromatographyCategoryEnum:
+      permissible_values:
+        liquid_chromatography:
+          text: liquid_chromatography
+          aliases:
+          - LC
+        gas_chromatography:
+          text: gas_chromatography
+          aliases:
+          - GC
+        solid_phase_extraction:
+          text: solid_phase_extraction
+          aliases:
+          - SPE
+  
+  CreditEnum:
+    permissible_values:
+      Conceptualization:
+        text: Conceptualization
+        description: Conceptualization
+      Data curation:
+        text: Data curation
+        description: Data curation
+      Formal Analysis:
+        text: Formal Analysis
+        description: Formal Analysis
+      Funding acquisition:
+        text: Funding acquisition
+        description: Funding acquisition
+      Investigation:
+        text: Investigation
+        description: Investigation
+      Methodology:
+        text: Methodology
+        description: Methodology
+      Project administration:
+        text: Project administration
+        description: Project administration
+      Resources:
+        text: Resources
+        description: Resources
+      Software:
+        text: Software
+        description: Software
+      Supervision:
+        text: Supervision
+        description: Supervision
+      Validation:
+        text: Validation
+        description: Validation
+      Visualization:
+        text: Visualization
+        description: Visualization
+      Writing original draft:
+        text: Writing original draft
+        description: Writing – original draft
+      Writing review and editing:
+        text: Writing review and editing
+        description: Writing – review & editing
+      Principal Investigator:
+        text: Principal Investigator
+        description: principal investigator role
+        meaning: OBI:0000103
+      Submitter:
+        text: Submitter
+        description: the person(s) who enter study and biosample metadata into the NMDC
+          submission portal
+        meaning: EFO:0001741
+
+  DataCategoryEnum:
+    description: The category of the file, such as Instrument data from data generation or processed data from a workflow execution.
+    permissible_values:
+      Instrument_data:
+        description: Data generated by a DataGeneration PlannedProcess
+      workflow_parameter_data:
+        description: Data used as input into a workflow providing workflow specification
+      processed_data:
+        description: Processed data products generated by workflows
+
+  DigestionMethodEnum:
+    description: Named protein digestion methods used in sample preparation.
+    permissible_values:
+      urea:
+        text: urea
+        description: Urea-based in-solution digestion.
+      s_trap:
+        text: s_trap
+        description: S-Trap-based digestion.
+      fasp:
+        text: fasp
+        description: Filter-Aided Sample Preparation (FASP) digestion.
+      other:
+        text: other
+        description: Other digestion method not otherwise specified.
+  
+  DoiCategoryEnum:
+    description: The authority, or organization, the DOI is associated with
+    permissible_values:
+      award_doi:
+        text: award_doi
+        description: A type of DOI that resolves to a funding authority.
+      dataset_doi:
+        text: dataset_doi
+        description: A type of DOI that resolves to generated data.
+      publication_doi:
+        text: publication_doi
+        description: A type of DOI that resolves to a publication.
+      data_management_plan_doi:
+        text: data_management_plan_doi
+        description: A type of DOI that resolves to a data management plan.
+
+  DoiProviderEnum:
+    description: The authority, or organization, the DOI is associated with
+    permissible_values:
+      emsl:
+        text: emsl
+        meaning: ror:04rc0xn13
+        title: EMSL
+        aliases:
+        - Environmental Molecular Sciences Laboratory
+        - EMSL
+      jgi:
+        text: jgi
+        meaning: ror:04xm1d337
+        title: JGI
+        aliases:
+        - Joint Genome Institute
+        - JGI
+      kbase:
+        text: kbase
+        meaning: ror:01znn6x10
+        title: KBase
+        aliases:
+        - KBase
+      osti:
+        text: osti
+        meaning: ror:031478740
+        title: OSTI
+        aliases:
+        - Office of Scientific and Technical Information
+        - OSTI
+      ess_dive:
+        text: ess_dive
+        meaning: ror:01t14bp54
+        title: ESS-DIVE
+        aliases:
+        - ESS-DIVE
+        - Environmental System Science Data Infrastructure for a Virtual Ecosystem
+      massive:
+        text: massive
+        title: MassIVE
+        aliases:
+        - MassIVE
+        - Mass Spectrometry Virtual Environment
+      gsc:
+        text: gsc
+        title: GSC
+        aliases:
+        - GSC
+        - Genomic Standards Consortium
+      zenodo:
+        text: zenodo
+        title: Zenodo
+        aliases:
+        - Zenodo
+      edi:
+        text: edi
+        meaning: ror:0330j0z60
+        title: EDI
+        aliases:
+        - EDI
+        - Environmental Data Initiative
+      figshare:
+        text: figshare
+        meaning: ror:041mxqs23
+        title: Figshare
+
+  EluentIntroductionCategoryEnum:
+    description: The method used to introduce the eluent into the mass spectrometer.
+    permissible_values:
+      direct_infusion_syringe:
+        description: Direct infusion of the sample into the mass spectrometer
+      liquid_chromatography:
+        description: Introduction via liquid chromatography
+      gas_chromatography:
+        description: Introduction via gas chromatography
+      direct_infusion_autosampler:
+        description: Direct infusion using an autosampler
+
+  EnrichmentTypeEnum:
+    description: Type of targeted peptide or protein enrichment performed.
+    permissible_values:
+      phosphopeptide:
+        text: phosphopeptide
+        description: Enrichment of phosphopeptides.
+      acetyl_peptide:
+        text: acetyl_peptide
+        description: Enrichment of acetylated peptides.
+      ubiquitin_peptide:
+        text: ubiquitin_peptide
+        description: Enrichment of ubiquitinated peptides or diGly-modified peptides.
+      other:
+        text: other
+        description: Other enrichment type not otherwise specified.
+
+  ExecutionResourceEnum:
+    description: The computing resource or facility where the processing was executed.
+    permissible_values:
+      nersc_cori:
+        description: NERSC Cori supercomputer
+        aliases: [Cori]
+      nersc_perlmutter:
+        description: NERSC Perlmutter supercomputer
+        aliases: [Perlmutter, Saul]
+      emsl_rzr:
+        description: Environmental Molecular Sciences Laboratory RZR cluster
+        aliases: [RZR]
+      emsl_tahoma:
+        description: Environmental Molecular Sciences Laboratory Tahoma cluster
+        aliases: [Tahoma]
+
+  ExtractionMethodEnum:
+    description: The named extraction method or workflow applied to the sample.
+    permissible_values:
+      mplex:
+        text: mplex
+        description: MPLEx (Metabolite, Protein, and Lipid Extraction) protocol.
+      bead_beating:
+        text: bead_beating
+        description: Bead beating mechanical lysis and extraction.
+      tca_acetone_precipitation:
+        text: tca_acetone_precipitation
+        description: TCA/Acetone protein precipitation.
+      cell_lysis_s_trap:
+        text: cell_lysis_s_trap
+        description: Cell lysis and S-Trap extraction.
+      other:
+        text: other
+        description: Other extraction method not otherwise specified.
+  
+  ExtractionTargetEnum:
+    description: The target analyte or compound class for the extraction process.
+    permissible_values:
+      DNA:
+        text: DNA
+      RNA:
+        text: RNA
+      metabolite:
+        text: metabolite
+      protein:
+        text: protein
+      lipid:
+        text: lipid
+      natural_organic_matter:
+        text: natural_organic_matter
+
+  FileTypeEnum:
+    permissible_values:
+      FT_ICR_MS_Analysis_Results:
+      GC_MS_Metabolomics_Results:
+      Metaproteomics_Workflow_Statistics:
+      Protein_Report:
+      Peptide_Report:
+      Unfiltered_Metaproteomics_Results:
+      Read_Count_and_RPKM:
+      QC_non_rRNA_R2:
+      QC_non_rRNA_R1:
+      Metagenome_Bins:
+      CheckM_Statistics:
+      GOTTCHA2_Krona_Plot:
+      Kraken2_Krona_Plot:
+      Centrifuge_Krona_Plot:
+      Kraken2_Classification_Report:
+      Kraken2_Taxonomic_Classification:
+      Centrifuge_Classification_Report:
+      Centrifuge_Taxonomic_Classification:
+      Structural_Annotation_GFF:
+      Functional_Annotation_GFF:
+      Annotation_Amino_Acid_FASTA:
+      Annotation_Enzyme_Commission:
+      Annotation_KEGG_Orthology:
+      Assembly_Coverage_BAM:
+      Assembly_AGP:
+      Assembly_Scaffolds:
+      Assembly_Contigs:
+      Assembly_Coverage_Stats:
+      Filtered_Sequencing_Reads:
+      QC_Statistics:
+      TIGRFam_Annotation_GFF:
+      Clusters_of_Orthologous_Groups_COG_Annotation_GFF:
+      CATH_FunFams_Functional_Families_Annotation_GFF:
+      SUPERFam_Annotation_GFF:
+      SMART_Annotation_GFF:
+      Pfam_Annotation_GFF:
+      Direct_Infusion_FT_ICR_MS_Raw_Data:
+
+  FragmentedNodesEnum:
+    description: The fragmentation techniques used in mass spectrometry.
+    permissible_values:
+      HCD:
+        text: HCD
+        description: Higher-energy Collisional Dissociation
+      CID:
+        text: CID
+        description: Collision-Induced Dissociation
+      ETD:
+        text: ETD
+        description: Electron Transfer Dissociation
+      
+  GrowthFacilityEnum:
+    description: Types of growth facilities
+    permissible_values:
+      field:
+        description: Field conditions
+      commercially_purchased:
+        description: Commercially purchased
+      experimental_garden:
+        description: Experimental garden
+      field_incubation:
+        description: Field incubation
+      greenhouse:
+        description: Greenhouse
+      growth_chamber:
+        description: Growth chamber
+      lab_incubation:
+        description: Laboratory incubation
+      open_top_chamber:
+        description: Open top chamber
+      other:
+        description: Other growth facility type  
+
+  InstrumentModelEnum:
+    permissible_values:
+      exploris_21T:
+        text: exploris_21T
+        aliases:
+        - Exploris 21T
+      exploris_240:
+        text: exploris_240
+        aliases:
+        - Orbitrap Exploris 240
+      exploris_480:
+        text: exploris_480
+        aliases:
+        - Orbitrap Exploris 480
+      ltq_orbitrap_velos:
+        text: ltq_orbitrap_velos
+        aliases:
+        - LTQ Orbitrap Velos
+        - LTQ Orbitrap Velos ETD
+        - Velos
+      orbitrap_fusion_lumos:
+        text: orbitrap_fusion_lumos
+        aliases:
+        - Orbitrap Fusion Lumos
+        - Fusion
+      orbitrap_eclipse_tribid:
+        text: orbitrap_eclipse_tribid
+        aliases:
+        - Orbitrap Eclipse Tribid
+        - Eclipse
+      orbitrap_q_exactive:
+        text: orbitrap_q_exactive
+        aliases:
+        - Orbitrap Q-Exactive HF
+        - Orbitrap Q-Exactive HF-X
+      orbitrap_iqx_tribrid:
+        text: orbitrap_iqx_tribrid
+        aliases:
+        - Orbitrap IQ-X Tribrid
+        - Thermo Orbitrap IQ-X Tribrid
+      orbitrap_exploris_120:
+        text: orbitrap_exploris_120
+        aliases:
+        - Orbitrap Exploris 120
+        - Thermo Orbitrap Exploris 120
+      solarix_7T:
+        text: solarix_7T
+        aliases:
+        - 7T Solarix
+        - 7T FT-ICR MS
+        - 7T MRMS
+      solarix_12T:
+        text: solarix_12T
+        aliases:
+        - 12T Solarix
+        - 12T FT-ICR MS
+        - 12T MRMS
+      solarix_15T:
+        text: solarix_15T
+        aliases:
+        - 15T Solarix
+        - 15T FT-ICR MS
+        - 15T MRMS
+      agilent_8890A:
+        text: agilent_8890A
+        aliases:
+        - 8890A GC-MS
+        - Agilent GC MS
+      agilent_7980A:
+        text: agilent_7980A
+        aliases:
+        - 7980A GC-MS
+        - Agilent GC MS
+      vortex_genie_2:
+        text: vortex_genie_2
+        aliases:
+        - VortexGenie2
+      novaseq:
+        text: novaseq
+        aliases:
+        - NovaSeq
+        - Illumina NovaSeq
+      novaseq_6000:
+        text: novaseq_6000
+        meaning: OBI:0002630
+        comments:
+        - Possible flowcell versions are SP, S1, S2, S4.
+        see_also:
+        - https://www.illumina.com/systems/sequencing-platforms/novaseq/specifications.html
+        aliases:
+        - NovaSeq 6000
+        - Illumina NovaSeq 6000
+        structured_aliases:
+          Illumina NovaSeq S2:
+            literal_form: Illumina NovaSeq S2
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+          Illumina NovaSeq S4:
+            literal_form: Illumina NovaSeq S4
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+          Illumina NovaSeq SP:
+            literal_form: Illumina NovaSeq SP
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+      novaseq_x:
+        text: novaseq_x
+        comments:
+        - Possible flowcell versions are 1.5B, 10B, 25B. Only difference between X and
+          X Plus is 2 flowcells for X Plus versus 1 flowcell for X.
+        see_also:
+        - https://www.illumina.com/systems/sequencing-platforms/novaseq-x-plus/specifications.html
+        aliases:
+        - Illumina NovaSeq X
+        - Illumina NovaSeq X Plus
+        exact_mappings:
+        - OBI:0003663
+        narrow_mappings:
+        - OBI:0003664
+      hiseq:
+        text: hiseq
+        aliases:
+        - Illumina HiSeq
+      hiseq_1000:
+        text: hiseq_1000
+        meaning: OBI:0002022
+        aliases:
+        - Illumina HiSeq 1000
+      hiseq_1500:
+        text: hiseq_1500
+        meaning: OBI:0003386
+        aliases:
+        - Illumina HiSeq 1500
+      hiseq_2000:
+        text: hiseq_2000
+        meaning: OBI:0002001
+        aliases:
+        - Illumina HiSeq 2000
+      hiseq_2500:
+        text: hiseq_2500
+        meaning: OBI:0002002
+        aliases:
+        - Illumina HiSeq 2500
+        structured_aliases:
+          Illumina HiSeq 2500-1TB:
+            literal_form: Illumina HiSeq 2500-1TB
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+          Illumina HiSeq 2500-Rapid:
+            literal_form: Illumina HiSeq 2500-Rapid
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+      hiseq_3000:
+        text: hiseq_3000
+        meaning: OBI:0002048
+        aliases:
+        - Illumina HiSeq 3000
+      hiseq_4000:
+        text: hiseq_4000
+        meaning: OBI:0002049
+        aliases:
+        - Illumina HiSeq 4000
+      hiseq_x_ten:
+        text: hiseq_x_ten
+        meaning: OBI:0002129
+        aliases:
+        - Illumina HiSeq X Ten
+      miniseq:
+        text: miniseq
+        meaning: OBI:0003114
+        aliases:
+        - Illumina MiniSeq
+      miseq:
+        text: miseq
+        meaning: OBI:0002003
+        aliases:
+        - MiSeq
+        - Illumina MiSeq
+        structured_aliases:
+          Illumina MiSeq:
+            literal_form: Illumina MiSeq
+            predicate: EXACT_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+      nextseq_1000:
+        text: nextseq_1000
+        meaning: OBI:0003606
+        aliases:
+        - Illumina NextSeq 1000
+      nextseq:
+        text: nextseq
+        aliases:
+        - NextSeq
+        - Illumina NextSeq
+        structured_aliases:
+          Illumina NextSeq-HO:
+            literal_form: Illumina NextSeq-HO
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+          Illumina NextSeq-MO:
+            literal_form: Illumina NextSeq-MO
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+      nextseq_500:
+        text: nextseq_500
+        meaning: OBI:0002021
+        aliases:
+        - NextSeq 500
+        - Illumina NextSeq 500
+      nextseq_550:
+        text: nextseq_550
+        meaning: OBI:0003387
+        aliases:
+        - NextSeq 550
+        - Illumina NextSeq 550
+      gridion:
+        text: gridion
+        meaning: OBI:0002751
+        aliases:
+        - Oxford Nanopore GridION Mk1
+      minion:
+        text: minion
+        meaning: OBI:0002750
+        aliases:
+        - Oxford Nanopore MinION
+      promethion:
+        text: promethion
+        meaning: OBI:0002752
+        aliases:
+        - Oxford Nanopore PromethION
+      rs_II:
+        text: rs_II
+        meaning: OBI:0002012
+        aliases:
+        - PacBio RS II
+      sequel:
+        text: sequel
+        meaning: OBI:0002632
+        aliases:
+        - PacBio Sequel
+      sequel_II:
+        text: sequel_II
+        meaning: OBI:0002633
+        aliases:
+        - PacBio Sequel II
+      revio:
+        text: revio
+        aliases:
+        - PacBio Revio
+        - Revio
+
+  IonizationSourceEnum:
+    permissible_values:
+      electrospray_ionization:
+        text: electrospray_ionization
+        aliases:
+        - ESI
+      matrix_assisted_laser_desorption_ionization:
+        text: matrix_assisted_laser_desorption_ionization
+        aliases:
+        - MALDI
+      atmospheric_pressure_photo_ionization:
+        text: atmospheric_pressure_photo_ionization
+        aliases:
+        - APPI
+      atmospheric_pressure_chemical_ionization:
+        text: atmospheric_pressure_chemical_ionization
+        aliases:
+        - APCI
+      electron_ionization:
+        text: electron_ionization
+        aliases:
+        - EI
+
+  LabelingMethodEnum:
+    description: The chemical labeling strategy applied to peptides or proteins.
+    permissible_values:
+      tmt:
+        text: tmt
+        description: Tandem Mass Tag (TMT) isobaric labeling.
+      itraq:
+        text: itraq
+        description: iTRAQ isobaric labeling.
+      label_free:
+        text: label_free
+        description: No chemical labeling (label-free quantification).
+      other:
+        text: other
+        description: Other labeling method not otherwise specified.
+
+  MassAnalyzerEnum:
+    permissible_values:
+      quadrupole:
+        text: quadrupole
+        aliases:
+        - Q
+      time_of_flight:
+        text: time_of_flight
+        aliases:
+        - TOF
+      orbitrap:
+        text: orbitrap
+      ion_trap:
+        text: ion_trap
+        aliases:
+        - IT
+      ion_cyclotron_resonance:
+        text: ion_cyclotron_resonance
+        aliases:
+        - ICR
+      fourier_transform_ion_cyclotron_resonance:
+        text: fourier_transform_ion_cyclotron_resonance
+        aliases:
+        - FTICR
+
+  MassSpectrometryEnum:
+    permissible_values:
+      metaproteome:
+        text: metaproteome
+        title: Metaproteome
+        aliases:
+        - metaP
+      metabolome:
+        text: metabolome
+        title: Metabolome
+        aliases:
+        - metaB
+      lipidome:
+        text: lipidome
+        title: Lipidome
+      nom:
+        text: nom
+        title: Natural Organic Matter
+        aliases:
+        - natural organic matter
+
+  MassSpectrometryAcquisitionStrategyEnum:
+    permissible_values:
+      data_independent_acquisition:
+        text: data_independent_acquisition
+        description: Data independent mass spectrometer acquisition method wherein the
+          full mass range is fragmented. Examples of such an approach include MS^E, AIF,
+          and bbCID.
+        aliases:
+        - DIA
+        - data independent acquisition from dissociation of full mass range
+        exact_mappings:
+        - MS:1003227
+      data_dependent_acquisition:
+        text: data_dependent_acquisition
+        description: Mass spectrometer data acquisition method wherein MSn spectra are
+          triggered based on the m/z of precursor ions detected in the same run.
+        aliases:
+        - DDA
+        exact_mappings:
+        - MS:1003221
+      full_scan_only:
+        text: full_scan_only
+        description: Mass spectrometer data acquisition method wherein only MS1 data are
+          acquired.
+        aliases:
+        - MS
+  
+  MassSpectrumCollectionModeEnum:
+    permissible_values:
+      full_profile:
+        text: full_profile
+      reduced_profile:
+        text: reduced_profile
+      centroid:
+        text: centroid
+
+  MetaproteomicsAnalysisCategoryEnum: 
+    description: The category of metaproteomics analysis being performed.
+    permissible_values:
+      matched_metagenome:
+        description: A metaproteomics analysis matched to a metagenome from the same biosample.
+      in_silico_metagenome:
+        description: A metaproteomics analysis matched to an in silico generated metagenome.
+
+  MethodNameEnum:
+    permissible_values:
+      MAOM:
+      WOEM:
+
+  NormalizationMethodEnum:
+    description: The strategy used to normalize sample amounts or intensities.
+    permissible_values:
+      equal_mass:
+        text: equal_mass
+        description: Normalization to an equal total protein mass per sample.
+      equal_volume:
+        text: equal_volume
+        description: Normalization by volume.
+      spike_in_standard:
+        text: spike_in_standard
+        description: Normalization using an internal spike-in standard.
+      other:
+        text: other
+        description: Other normalization approach not otherwise specified.
+  
+  NucleotideSequencingEnum:
+    permissible_values:
+      metagenome:
+        text: metagenome
+        title: Metagenome
+        aliases:
+        - metaG
+      metatranscriptome:
+        text: metatranscriptome
+        title: Metatranscriptome
+        aliases:
+        - metaT
+      amplicon_sequencing_assay:
+        text: amplicon_sequencing_assay
+        meaning: OBI:0002767
+        title: Amplicon
+      
+  OxygenStatusEnum:
+    description: Oxygen status of samples
+    permissible_values:
+      aerobic:
+        description: Aerobic conditions
+      anaerobic:
+        description: Anaerobic conditions
+      anoxic:
+        description: Anoxic conditions
+      facultative:
+        description: Facultative conditions
+      microaerophilic:
+        description: Microaerophilic conditions
+      microanaerobe:
+        description: Microanaerobe conditions
+      oblifate_aerobe:
+        description: Obligate aerobe conditions
+        aliases: ["obligate_aerobe"]
+      obligate_anaerobe:
+        description: Obligate anaerobe conditions
+
+  PolarityModeEnum:
+    description: The polarity mode used in the mass spectrometry analysis.
+    permissible_values:
+      positive:
+        text: positive
+      negative:
+        text: negative
+
+  ProcessingInstitutionEnum: #speak with Maya!!! for removal/ We may need this enum to accomodate the masspectrometry class # found in file #double check analysis-api-schema
+    description: The organization that processed the sample / ran the pipeline.
+    permissible_values:
+      nmdc:
+        title: National Microbiome Data Collaborative
+      ucsd:
+        title: University of California, San Diego
+      jgi:
+        title: Joint Genome Institute
+      emsl:
+        title: Environmental Molecular Sciences Laboratory
+      battelle:
+        title: Battelle Memorial Institute
+      anl:
+        title: Argonne National Laboratory
+      ucd_genome_center:
+        title: University of California, Davis Genome Center
+      azenta:
+        title: Azenta Life Sciences
+
+  ProteinAssayTypeEnum:
+    description: Type of protein quantification assay performed.
+    permissible_values:
+      coomassie:
+        text: coomassie
+        description: Coomassie (Bradford-like) protein assay.
+      bca:
+        text: bca
+        description: Bicinchoninic Acid (BCA) protein assay.
+      other:
+        text: other
+        description: Other protein assay not otherwise specified.
+
+  ResolutionCategoryEnum:
+    permissible_values:
+      high:
+        text: high
+        description: higher than unit resolution
+      low:
+        text: low
+        description: at unit resolution
+  
+  RouteMethodEnum:
+    permissible_values:
+      analysis_activity:
+      lcms_metabolomics_method:
+      fticr_acquisition_method:
+      gravimetric_water_content_method:
+      ph_method:
+      hydraulic_properties_method:
+      microbial_biomass_method:
+      xray_computed_tomography_method:
+      REGEN:
+      KUO:
+      respiration_method:
+      texture_method:
+      enzyme_activity_method:
+      elemental_analysis_method:
+      toc_tn_method:
+      bulk_density_method:
+      metagenomics_method:
+
+  SampBioticEnum:
+    description: Sample biotic relationships
+    permissible_values:
+      free_living:
+        description: Free-living organism
+      parasite:
+        description: Parasitic organism
+      commensal:
+        description: Commensal organism
+      symbiont:
+        description: Symbiotic organism
+  
+  SamplePortionEnum:
+    permissible_values:
+      supernatant:
+        text: supernatant
+        aliases:
+        - top_layer
+      pellet:
+        text: pellet
+        aliases:
+        - bottom_layer
+      organic_layer:
+        text: organic_layer
+        description: The portion of a mixture containing dissolved organic material
+        title: Organic layer
+      aqueous_layer:
+        text: aqueous_layer
+        description: The portion of a mixture containing molecules dissolved in water
+        title: Aqueous layer
+        aliases:
+        - water layer
+      interlayer:
+        text: interlayer
+        description: The layer of material between liquid layers of a separated mixture
+        title: Interlayer
+      chloroform_layer:
+        text: chloroform_layer
+        description: The portion of a mixture containing molecules dissolved in chloroform
+        is_a: organic_layer
+        title: Chloroform layer
+      methanol_layer:
+        text: methanol_layer
+        description: The portion of a mixture containing molecules dissolved in methanol
+        is_a: organic_layer
+        title: Methanol layer
+
+  SampleStoreTempEnum:
+    description: Sample storage temperature conditions
+    permissible_values:
+      fresh4:
+        description: Fresh storage at 4°C
+        aliases: ["4 C"]
+      freshroom:
+        description: Fresh storage at room temperature
+        aliases: ["room temperature"]
+      frozen20:
+        description: Frozen storage at -20°C
+        aliases: ["-20 C"]
+      frozen80:
+        description: Frozen storage at -80°C
+        aliases: ["-80 C"]
+      other:
+        description: Other storage temperature
+
+  SampleTypeEnum:
+    description: Types of samples that can be collected
+    permissible_values:
+      soil_sample:
+        description: Soil sample
+      aerosol_sample:
+        description: Aerosol sample
+
+  StationPhaseEnum:
+    description: The stationary phase used in chromatography.
+    permissible_values:
+      BEH-HILIC:
+        text: BEH-HILIC
+        description: Hydrophilic Interaction Chromatography (HILIC) employing BEH (Bridged
+          Ethylene Hybrid) particles as the stationary phase.
+        is_a: HILIC
+      C18:
+        text: C18
+        description: A stationary phase consisting of octadecyl chains (C18) bonded to
+          silica particles.
+      C8:
+        text: C8
+        description: A stationary phase consisting of octyl chains (C8) bonded to silica
+          particles.
+      C4:
+        text: C4
+        description: A stationary phase consisting of butyl chains (C4) bonded to silica
+          particles.
+      C2:
+        text: C2
+        description: A stationary phase consisting of ethyl chains (C2) bonded to silica
+          particles.
+      C1:
+        text: C1
+        description: A stationary phase consisting of methyl chains (C1) bonded to silica
+          particles.
+      C30:
+        text: C30
+        description: A stationary phase consisting of triacontyl chains (C30) bonded to
+          silica particles.
+      C60:
+        text: C60
+        description: A stationary phase consisting of hexatriacontyl chains (C60) bonded
+          to silica particles.
+      CNT:
+        text: CNT
+        description: Carbon Nanotube stationary phase.
+      CN:
+        text: CN
+        description: Cyano (CN) bonded stationary phase.
+      Diol:
+        text: Diol
+        description: A stationary phase with diol (1,2-diol) functional groups.
+      HILIC:
+        text: HILIC
+        description: Hydrophilic Interaction Chromatography (HILIC) stationary phase.
+      HLB:
+        text: HLB
+        description: Hydrophilic-Lipophilic-Balance (HLB) stationary phase.
+      NH2:
+        text: NH2
+        description: Amino (NH2) bonded stationary phase.
+      Phenyl:
+        text: Phenyl
+        description: Phenyl bonded stationary phase.
+      Polysiloxane:
+        text: Polysiloxane
+        description: A stationary phase made of polysiloxane, usually used in gas chromatography.
+      PS-DVB:
+        text: PS-DVB
+        description: Polystyrene-divinylbenzene stationary phase, often used in solid-phase
+          extraction, including proprietary Priority PolLutant (PPL).
+      SAX:
+        text: SAX
+        description: Strong Anion Exchange (SAX) stationary phase.
+      SCX:
+        text: SCX
+        description: Strong Cation Exchange (SCX) stationary phase.
+      Silica:
+        text: Silica
+        description: A stationary phase made of silica, commonly used in chromatography.
+      WCX:
+        text: WCX
+        description: Weak Cation Exchange (WCX) stationary phase.
+      WAX:
+        text: WAX
+        description: Weak Anion Exchange (WAX) stationary phase.
+      ZIC-HILIC:
+        text: ZIC-HILIC
+        description: Zwitterionic Hydrophilic Interaction Chromatography (ZIC-HILIC) stationary
+          phase.
+        is_a: HILIC
+      ZIC-pHILIC:
+        text: ZIC-pHILIC
+        description: Zwitterionic pH-Responsive Hydrophilic Interaction Chromatography
+          (ZIC-pHILIC) stationary phase.
+        is_a: ZIC-HILIC
+      ZIC-cHILIC:
+        text: ZIC-cHILIC
+        description: Zwitterionic Charged Hydrophilic Interaction Chromatography (ZIC-cHILIC)
+          stationary phase.
+        is_a: ZIC-HILIC
+
+  StatusEnum:
+    description: Result/status for a process (e.g., QC outcome).
+    permissible_values:
+      pass:
+        text: pass
+      fail:
+        text: fail
+
+  StorageCondtEnum:
+    description: Sample storage conditions
+    permissible_values:
+      fresh:
+        description: Fresh sample
+      frozen:
+        description: Frozen sample
+      lyophilized:
+        description: Lyophilized (freeze-dried) sample
+      other:
+        description: Other storage condition
+
+  StudyCategoryEnum:
+    permissible_values:
+      research_study:
+        text: research_study
+        description: A detailed examination, analysis, or critical inspection of a hypothesis-driven
+          experiment.
+        exact_mappings:
+        - SIO:001066
+        - NCIT:C63536
+        - ISA:Study
+        close_mappings:
+        - OBI:0000355
+      consortium:
+        text: consortium
+        description: A group formed to undertake a venture that is beyond the capabilities
+          of the individual members. Each member of the consortium brings a high level
+          of expertise in a specific area to ensure the successful completion of the project.
+        comments:
+        - A consortium has collections of data, but those data do not come from a hypothesis-driven
+          experiment.
+        exact_mappings:
+        - NCIT:C61538
+
+  SubstanceRoleEnum:
+    description: The role or function of the substance in the context of its use.
+    permissible_values:
+      buffer:
+        text: buffer
+        description: Maintains the pH of the solution within a specific range to stabilize
+          analytes or reactions.
+        meaning: CHEBI:35225
+      acid:
+        text: acid
+        description: Donates a proton or accepts an electron pair in a chemical reaction.
+        meaning: CHEBI:37527
+      base:
+        text: base
+        description: Accepts a proton or donates an electron pair in a chemical reaction.
+        meaning: CHEBI:22695
+      ms_proteolytic_enzyme:
+        text: ms_proteolytic_enzyme
+        description: Enzyme that catalyzes the hydrolysis of proteins and is used in mass
+          spectrometry based proteomics
+        meaning: MS:1002986
+      solvent:
+        text: solvent
+        description: Dissolves the sample or reagents to facilitate reactions or extraction.
+        meaning: CHEBI:46787
+      surfactant:
+        text: surfactant
+        description: Reduces surface tension and aids in the solubilization of substances.
+        meaning: CHEBI:35195
+      derivatizing_agent:
+        text: derivatizing_agent
+        description: Chemically modifies analytes to improve detection or separation.
+      solubilizing_agent:
+        text: solubilizing_agent
+ 
+  UnitEnum:
+    permissible_values:
+      '%':
+        text: '%'
+        description: The Unified Code for Units of Measure (UCUM) representation of percent.
+        aliases:
+        - percent
+        - Percent
+      J/K:
+        text: J/K
+        description: The Unified Code for Units of Measure (UCUM) representation of joule
+          per kelvin.
+        title: J/degree Celsius
+        comments:
+        - UCUM-compliant unit for energy per temperature. J/Cel deprecated due to non-ratio
+          temperature unit.
+        aliases:
+        - joule per kelvin
+        - joules per kelvin
+        - J/Kelvin
+        - J/Celvin
+        - J/Cel
+        - J/C
+      Cel:
+        text: Cel
+        description: The Unified Code for Units of Measure (UCUM) representation of degrees
+          Celsius; a SI unit of temperature  equal to one unit Kelvin.
+        title: degrees Celsius
+        aliases:
+        - Celsius
+        - C
+        - Celcius
+        - degreeCelsius
+        - degree Celsius
+        exact_mappings:
+        - UO:0000027
+        - wikidata:Q25267
+        - qud:DEG_C
+        - OM:degreeCelsius
+      cm:
+        text: cm
+        description: The Unified Code for Units of Measure (UCUM) representation of centimeter.
+      cP:
+        text: cP
+        description: The Unified Code for Units of Measure (UCUM) representation of centipoise.
+        aliases:
+        - centipoise
+        - centiPoise
+      d:
+        text: d
+        description: The Unified Code for Units of Measure (UCUM) representation of day.
+        aliases:
+        - days
+      g:
+        text: g
+        description: The Unified Code for Units of Measure (UCUM) representation of gram.
+      h:
+        text: h
+        description: The Unified Code for Units of Measure (UCUM) representation of hour.
+      kPa:
+        text: kPa
+        description: The Unified Code for Units of Measure (UCUM) representation of kilopascal.
+      m:
+        text: m
+        description: The Unified Code for Units of Measure (UCUM) representation of meter.
+        aliases:
+        - meter
+        - meters
+      m/s:
+        text: m/s
+        description: The Unified Code for Units of Measure (UCUM) representation of meters
+          per second.
+      mg/kg:
+        text: mg/kg
+        description: The Unified Code for Units of Measure (UCUM) representation of milligrams
+          per kilogram.
+      mg/L:
+        text: mg/L
+        description: The Unified Code for Units of Measure (UCUM) representation of milligrams
+          per liter.
+      min:
+        text: min
+        description: The Unified Code for Units of Measure (UCUM) representation of minute.
+        aliases:
+        - minutes
+        - minute
+      mL:
+        text: mL
+        description: The Unified Code for Units of Measure (UCUM) representation of milliliter.
+      mm:
+        text: mm
+        description: The Unified Code for Units of Measure (UCUM) representation of millimeter.
+      mL/L:
+        text: mL/L
+        description: The Unified Code for Units of Measure (UCUM) representation of milliliters
+          per liter.
+        aliases:
+        - ml/L
+        - milliliters per liter
+      mmol/L:
+        text: mmol/L
+        description: The Unified Code for Units of Measure (UCUM) representation of millimolar.
+        aliases:
+        - mM
+      mS/cm:
+        text: mS/cm
+        description: The Unified Code for Units of Measure (UCUM) representation of millisiemens
+          per centimeter.
+        aliases:
+        - mS/cm
+        - millisiemens/cm
+        - millisiemens per centimeter
+        - milliSiemens/cm
+        - milliSiemens/cm
+      '[ppm]':
+        text: '[ppm]'
+        description: The Unified Code for Units of Measure (UCUM) representation of parts
+          per million.
+        see_also:
+        - https://terminology.hl7.org/5.1.0/ValueSet-v3-UnitsOfMeasureCaseSensitive.html
+        - https://ucum.org/ucum
+        aliases:
+        - ppm
+        - 1*10-6
+      uS/cm:
+        text: uS/cm
+        description: The Unified Code for Units of Measure (UCUM) representation of microsiemens
+          per centimeter.
+        aliases:
+        - μS/cm
+        - microsiemens/cm
+        - microsiemens per centimeter
+        - microSiemens/cm
+      W/m2:
+        text: W/m2
+        description: The Unified Code for Units of Measure (UCUM) representation of watts
+          per square meter.
+      a:
+        text: a
+        description: The Unified Code for Units of Measure (UCUM) representation of year.
+        title: years
+        aliases:
+        - years
+      ug/L:
+        text: ug/L
+        description: The Unified Code for Units of Measure (UCUM) representation of micrograms
+          per liter.
+        aliases:
+        - μg/L
+        - microg/L
+      ug/uL:
+        text: ug/uL
+        description: The Unified Code for Units of Measure (UCUM) representation of micrograms
+          per microliter.
+        aliases:
+        - μg/μL
+      uL:
+        text: uL
+        description: The Unified Code for Units of Measure (UCUM) representation of microliter.
+        aliases:
+        - μL
+        - µL
+      mol/L:
+        text: mol/L
+        description: The Unified Code for Units of Measure (UCUM) representation of moles
+          per liter.
+      mol/L/h:
+        text: mol/L/h
+        description: The Unified Code for Units of Measure (UCUM) representation of moles
+          per liter per hour.
+      ug/L/h:
+        text: ug/L/h
+        description: The Unified Code for Units of Measure (UCUM) representation of micrograms
+          per liter per hour.
+      umol/L:
+        text: umol/L
+        description: The Unified Code for Units of Measure (UCUM) representation of micromoles
+          per liter.
+        aliases:
+        - μmol/L
+        - micromol/L
+      umol/kg:
+        text: umol/kg
+        description: The Unified Code for Units of Measure (UCUM) representation of micromoles
+          per kilogram.
+      umol/m2/s:
+        text: umol/m2/s
+        description: The Unified Code for Units of Measure (UCUM) representation of micromoles
+          per square meter per second.
+        title: micromoles per square meter per second
+        aliases:
+        - μmol/m2/s
+        - micromol/m2/s
+        - u[E]/m2/s
+        - micro Einsteins
+      mg/m3:
+        text: mg/m3
+        description: The Unified Code for Units of Measure (UCUM) representation of milligrams
+          per cubic meter.
+      m2/s:
+        text: m2/s
+        description: The Unified Code for Units of Measure (UCUM) representation of square
+          meters per second.
+      kg/m3:
+        text: kg/m3
+        description: The Unified Code for Units of Measure (UCUM) representation of kilograms
+          per cubic meter.
+      g/m3:
+        text: g/m3
+        description: The Unified Code for Units of Measure (UCUM) representation of grams
+          per cubic meter.
+      m2:
+        text: m2
+        description: The Unified Code for Units of Measure (UCUM) representation of square
+          meters.
+      atm:
+        text: atm
+        description: The Unified Code for Units of Measure (UCUM) representation of atmosphere.
+      V:
+        text: V
+        description: The Unified Code for Units of Measure (UCUM) representation of volt.
+      mV:
+        text: mV
+        description: The Unified Code for Units of Measure (UCUM) representation of millivolt.
+      L:
+        text: L
+        description: The Unified Code for Units of Measure (UCUM) representation of liter.
+      um:
+        text: um
+        description: The Unified Code for Units of Measure (UCUM) representation of micrometer.
+        aliases:
+        - μm
+        - µm
+      '1':
+        text: '1'
+        description: The Unified Code for Units of Measure (UCUM) representation of dimensionless
+          quantity.
+        title: ratio/unitless
+        comments:
+        - Used for ratios, counts, and dimensionless measurements (e.g., number of people,
+          pets, plants).
+        aliases:
+        - ratio
+        - unitless
+        - dimensionless
+        - people
+        - pets
+        - plants
+      uL/kg:
+        text: uL/kg
+        description: The Unified Code for Units of Measure (UCUM) representation of microliters
+          per kilogram.
+      kg:
+        text: kg
+        description: The Unified Code for Units of Measure (UCUM) representation of kilogram.
+      '[ppth]':
+        text: '[ppth]'
+        description: The Unified Code for Units of Measure (UCUM) representation of parts
+          per thousand.
+        aliases:
+        - ppt
+        - parts per thousand
+      g/g:
+        text: g/g
+        description: The Unified Code for Units of Measure (UCUM) representation of gram
+          per gram.
+        aliases:
+        - g/g
+      lx:
+        text: lx
+        description: The Unified Code for Units of Measure (UCUM) representation of lux.
+        title: lux
+        aliases:
+        - lx
+      mg/m3/d:
+        text: mg/m3/d
+        description: The Unified Code for Units of Measure (UCUM) representation of milligrams
+          per cubic meter per day.
+        aliases:
+        - mg/m3/d
+      ng/h:
+        text: ng/h
+        description: The Unified Code for Units of Measure (UCUM) representation of nanograms
+          per hour.
+        aliases:
+        - ng/h
+      mm[Hg]:
+        text: mm[Hg]
+        description: The Unified Code for Units of Measure (UCUM) representation of millimeters
+          of mercury.
+        aliases:
+        - mm[Hg]
+        - mmHg
+      '[ppb]':
+        text: '[ppb]'
+        description: The Unified Code for Units of Measure (UCUM) representation of parts
+          per billion.
+        aliases:
+        - ppb
+      g/kg:
+        text: g/kg
+        description: The Unified Code for Units of Measure (UCUM) representation of grams
+          per kilogram.
+        aliases:
+        - g/kg
+      deg:
+        text: deg
+        description: The Unified Code for Units of Measure (UCUM) representation of degree
+          (angle).
+        aliases:
+        - deg
+        - degree
+        - degrees
+      mg/g:
+        text: mg/g
+        description: The Unified Code for Units of Measure (UCUM) representation of milligrams
+          per gram.
+        aliases:
+        - mg/g
+      ug/g:
+        text: ug/g
+        description: The Unified Code for Units of Measure (UCUM) representation of micrograms
+          per gram.
+        aliases:
+        - ug/g
+        - μg/g
+      ng/g:
+        text: ng/g
+        description: The Unified Code for Units of Measure (UCUM) representation of nanograms
+          per gram.
+        aliases:
+        - ng/g
+      pg/g:
+        text: pg/g
+        description: The Unified Code for Units of Measure (UCUM) representation of picograms
+          per gram.
+        aliases:
+        - pg/g
+      ng/L:
+        text: ng/L
+        description: The Unified Code for Units of Measure (UCUM) representation of nanograms
+          per liter.
+        aliases:
+        - ng/L
+      pg/L:
+        text: pg/L
+        description: The Unified Code for Units of Measure (UCUM) representation of picograms
+          per liter.
+        aliases:
+        - pg/L
+      ug/mL:
+        text: ug/mL
+        description: The Unified Code for Units of Measure (UCUM) representation of micrograms
+          per milliliter.
+        aliases:
+        - ug/mL
+        - μg/mL
+      ng/mL:
+        text: ng/mL
+        description: The Unified Code for Units of Measure (UCUM) representation of nanograms
+          per milliliter.
+        aliases:
+        - ng/mL
+      pg/mL:
+        text: pg/mL
+        description: The Unified Code for Units of Measure (UCUM) representation of picograms
+          per milliliter.
+        aliases:
+        - pg/mL
+      mol:
+        text: mol
+        description: The Unified Code for Units of Measure (UCUM) representation of mole.
+        aliases:
+        - mol
+        - mole
+        - moles
+      mmol:
+        text: mmol
+        description: The Unified Code for Units of Measure (UCUM) representation of millimole.
+        aliases:
+        - mmol
+        - millimole
+        - millimoles
+      umol:
+        text: umol
+        description: The Unified Code for Units of Measure (UCUM) representation of micromole.
+        aliases:
+        - umol
+        - μmol
+        - micromole
+        - micromoles
+      nmol:
+        text: nmol
+        description: The Unified Code for Units of Measure (UCUM) representation of nanomole.
+        aliases:
+        - nmol
+        - nanomole
+        - nanomoles
+      pmol:
+        text: pmol
+        description: The Unified Code for Units of Measure (UCUM) representation of picomole.
+        aliases:
+        - pmol
+        - picomole
+        - picomoles
+      U:
+        text: U
+        description: The Unified Code for Units of Measure (UCUM) representation of enzyme
+          unit.
+        aliases:
+        - U
+        - unit
+        - units
+      mU:
+        text: mU
+        description: The Unified Code for Units of Measure (UCUM) representation of millienzyme
+          unit.
+        aliases:
+        - mU
+        - milliunit
+        - milliunits
+      uU:
+        text: uU
+        description: The Unified Code for Units of Measure (UCUM) representation of microenzyme
+          unit.
+        aliases:
+        - uU
+        - μU
+        - microunit
+        - microunits
+      nU:
+        text: nU
+        description: The Unified Code for Units of Measure (UCUM) representation of nanoenzyme
+          unit.
+        aliases:
+        - nU
+        - nanounit
+        - nanounits
+      Bq:
+        text: Bq
+        description: The Unified Code for Units of Measure (UCUM) representation of becquerel.
+        aliases:
+        - Bq
+        - becquerel
+        - becquerels
+      kBq:
+        text: kBq
+        description: The Unified Code for Units of Measure (UCUM) representation of kilobecquerel.
+        aliases:
+        - kBq
+        - kilobecquerel
+        - kilobecquerels
+      MBq:
+        text: MBq
+        description: The Unified Code for Units of Measure (UCUM) representation of megabecquerel.
+        aliases:
+        - MBq
+        - megabecquerel
+        - megabecquerels
+      GBq:
+        text: GBq
+        description: The Unified Code for Units of Measure (UCUM) representation of gigabecquerel.
+        aliases:
+        - GBq
+        - gigabecquerel
+        - gigabecquerels
+      Ci:
+        text: Ci
+        description: The Unified Code for Units of Measure (UCUM) representation of curie.
+        aliases:
+        - Ci
+        - curie
+        - curies
+      mCi:
+        text: mCi
+        description: The Unified Code for Units of Measure (UCUM) representation of millicurie.
+        aliases:
+        - mCi
+        - millicurie
+        - millicuries
+      uCi:
+        text: uCi
+        description: The Unified Code for Units of Measure (UCUM) representation of microcurie.
+        aliases:
+        - uCi
+        - μCi
+        - microcurie
+        - microcuries
+      nCi:
+        text: nCi
+        description: The Unified Code for Units of Measure (UCUM) representation of nanocurie.
+        aliases:
+        - nCi
+        - nanocurie
+        - nanocuries
+      pCi:
+        text: pCi
+        description: The Unified Code for Units of Measure (UCUM) representation of picocurie.
+        aliases:
+        - pCi
+        - picocurie
+        - picocuries
+      rad:
+        text: rad
+        description: The Unified Code for Units of Measure (UCUM) representation of radian.
+        aliases:
+        - rad
+      sr:
+        text: sr
+        description: The Unified Code for Units of Measure (UCUM) representation of steradian.
+        aliases:
+        - sr
+        - steradian
+        - steradians
+      Hz:
+        text: Hz
+        description: The Unified Code for Units of Measure (UCUM) representation of hertz.
+        aliases:
+        - Hz
+        - hertz
+      1/d:
+        text: 1/d
+        description: The Unified Code for Units of Measure (UCUM) representation of per
+          day (frequency).
+        aliases:
+        - per day
+        - daily frequency
+      1/[sft_i]:
+        text: 1/[sft_i]
+        description: The Unified Code for Units of Measure (UCUM) representation of per
+          square foot.
+        title: per square foot
+        aliases:
+        - per square foot
+        - occupants per square foot
+      kHz:
+        text: kHz
+        description: The Unified Code for Units of Measure (UCUM) representation of kilohertz.
+        aliases:
+        - kHz
+        - kilohertz
+      MHz:
+        text: MHz
+        description: The Unified Code for Units of Measure (UCUM) representation of megahertz.
+        aliases:
+        - MHz
+        - megahertz
+      GHz:
+        text: GHz
+        description: The Unified Code for Units of Measure (UCUM) representation of gigahertz.
+        aliases:
+        - GHz
+        - gigahertz
+      N:
+        text: N
+        description: The Unified Code for Units of Measure (UCUM) representation of newton.
+        aliases:
+        - N
+        - newton
+        - newtons
+      kN:
+        text: kN
+        description: The Unified Code for Units of Measure (UCUM) representation of kilonewton.
+        aliases:
+        - kN
+        - kilonewton
+        - kilonewtons
+      J:
+        text: J
+        description: The Unified Code for Units of Measure (UCUM) representation of joule.
+        aliases:
+        - J
+        - joule
+        - joules
+      kJ:
+        text: kJ
+        description: The Unified Code for Units of Measure (UCUM) representation of kilojoule.
+        aliases:
+        - kJ
+        - kilojoule
+        - kilojoules
+      MJ:
+        text: MJ
+        description: The Unified Code for Units of Measure (UCUM) representation of megajoule.
+        aliases:
+        - MJ
+        - megajoule
+        - megajoules
+      W:
+        text: W
+        description: The Unified Code for Units of Measure (UCUM) representation of watt.
+        aliases:
+        - W
+        - watt
+        - watts
+      kW:
+        text: kW
+        description: The Unified Code for Units of Measure (UCUM) representation of kilowatt.
+        aliases:
+        - kW
+        - kilowatt
+        - kilowatts
+      mbar:
+        text: mbar
+        description: The Unified Code for Units of Measure (UCUM) representation of millibar.
+      kW/m2:
+        text: kW/m2
+        description: The Unified Code for Units of Measure (UCUM) representation of kilowatts
+          per square meter.
+      umol/s/m2:
+        text: umol/s/m2
+        description: The Unified Code for Units of Measure (UCUM) representation of micromoles
+          per second per square meter.
+        aliases:
+        - umol{photon}/s/m2
+      m3/d:
+        text: m3/d
+        description: The Unified Code for Units of Measure (UCUM) representation of cubic
+          meters per day.
+      L/h:
+        text: L/h
+        description: The Unified Code for Units of Measure (UCUM) representation of liters
+          per hour.
+      '[pH]':
+        text: '[pH]'
+        description: The Unified Code for Units of Measure (UCUM) representation of pH
+          units.
+        aliases:
+        - pH
+      kW/m2/d:
+        text: kW/m2/d
+        description: The Unified Code for Units of Measure (UCUM) representation of kilowatts
+          per square meter per day.
+      '[NTU]':
+        text: '[NTU]'
+        description: The Unified Code for Units of Measure (UCUM) representation of Nephelometric
+          Turbidity Units.
+        title: Nephelometric Turbidity Units
+        aliases:
+        - NTU
+      '[FNU]':
+        text: '[FNU]'
+        description: The Unified Code for Units of Measure (UCUM) representation of Formazin
+          Nephelometric Units.
+        title: Formazin Nephelometric Units
+        aliases:
+        - FNU
+      m3/min:
+        text: m3/min
+        description: The Unified Code for Units of Measure (UCUM) representation of cubic
+          meters per minute.
+      km/h:
+        text: km/h
+        description: The Unified Code for Units of Measure (UCUM) representation of kilometers
+          per hour.
+      '[lb_av]':
+        text: '[lb_av]'
+        description: The Unified Code for Units of Measure (UCUM) representation of pound
+          (avoirdupois).
+        title: pounds (avoirdupois)
+        aliases:
+        - pound
+        - lb
+      kg/kg:
+        text: kg/kg
+        description: The Unified Code for Units of Measure (UCUM) representation of kilogram
+          per kilogram.
+        aliases:
+        - kilogram per kilogram
+      ug/m3:
+        text: ug/m3
+        description: The Unified Code for Units of Measure (UCUM) representation of micrograms
+          per cubic meter.
+        aliases:
+        - μg/m3
+        - micrograms per cubic meter
+      meq/L:
+        text: meq/L
+        description: The Unified Code for Units of Measure (UCUM) representation of milliequivalents
+          per liter.
+        aliases:
+        - milliequivalents per liter
+      lm/m2:
+        text: lm/m2
+        description: The Unified Code for Units of Measure (UCUM) representation of lumens
+          per square meter.
+        aliases:
+        - lumens per square meter
+      mg:
+        text: mg
+        description: The Unified Code for Units of Measure (UCUM) representation of milligram.
+        aliases:
+        - milligram
+        - milligrams
+      umol/L/h:
+        text: umol/L/h
+        description: The Unified Code for Units of Measure (UCUM) representation of micromoles
+          per liter per hour.
+        comments:
+        - For example, micromoles of oxygen created by photosynthesis per liter of water
+          per hour.
+        aliases:
+        - micromoles per liter per hour
+      g/cm3:
+        text: g/cm3
+        description: The Unified Code for Units of Measure (UCUM) representation of grams
+          per cubic centimeter.
+        aliases:
+        - grams per cubic centimeter
+      g/L:
+        text: g/L
+        description: The Unified Code for Units of Measure (UCUM) representation of grams
+          per liter.
+        aliases:
+        - grams per liter
+      wk:
+        text: wk
+        description: The Unified Code for Units of Measure (UCUM) representation of week.
+        aliases:
+        - week
+        - weeks
+      '[g]':
+        text: '[g]'
+        description: The Unified Code for Units of Measure (UCUM) representation of standard
+          gravity.
+        title: standard gravity
+        aliases:
+        - standard gravity
+        - g-force
+      m/s2:
+        text: m/s2
+        description: The Unified Code for Units of Measure (UCUM) representation of meters
+          per second squared.
+        aliases:
+        - meters per second squared
+      mol/g:
+        text: mol/g
+        description: The Unified Code for Units of Measure (UCUM) representation of moles
+          per gram.
+        aliases:
+        - moles per gram
+      g/m2/d:
+        text: g/m2/d
+        description: The Unified Code for Units of Measure (UCUM) representation of grams
+          per square meter per day.
+        aliases:
+        - grams per square meter per day
+      Gy:
+        text: Gy
+        description: The Unified Code for Units of Measure (UCUM) representation of gray
+          (absorbed dose).
+        aliases:
+        - gray
+      RAD:
+        text: RAD
+        description: The Unified Code for Units of Measure (UCUM) representation of rad
+          (radiation absorbed dose).
+        title: rad (radiation absorbed dose)
+        aliases:
+        - radiation absorbed dose
+      '[sft_i]':
+        text: '[sft_i]'
+        description: The Unified Code for Units of Measure (UCUM) representation of square
+          feet.
+        title: square feet
+        aliases:
+        - square feet
+        - sq ft
+      '[cft_i]':
+        text: '[cft_i]'
+        description: The Unified Code for Units of Measure (UCUM) representation of cubic
+          feet.
+        title: cubic feet
+        aliases:
+        - cubic feet
+        - cu ft
+      m3:
+        text: m3
+        description: The Unified Code for Units of Measure (UCUM) representation of cubic
+          meter.
+        aliases:
+        - cubic meter
+        - cubic meters
+      ug:
+        text: ug
+        description: The Unified Code for Units of Measure (UCUM) representation of microgram.
+        aliases:
+        - μg
+        - microgram
+        - micrograms
+      mm/a:
+        text: mm/a
+        description: The Unified Code for Units of Measure (UCUM) representation of millimeters
+          per year.
+        title: millimeters per year
+        aliases:
+        - millimeters per year
+      cm2:
+        text: cm2
+        description: The Unified Code for Units of Measure (UCUM) representation of square
+          centimeter.
+        aliases:
+        - square centimeter
+        - square centimeters
+      erg/cm2/s:
+        text: erg/cm2/s
+        description: The Unified Code for Units of Measure (UCUM) representation of ergs
+          per square centimeter per second.
+        aliases:
+        - ergs per square centimeter per second
+      g/m2:
+        text: g/m2
+        description: The Unified Code for Units of Measure (UCUM) representation of grams
+          per square meter.
+        aliases:
+        - grams per square meter
+      L/s:
+        text: L/s
+        description: The Unified Code for Units of Measure (UCUM) representation of liters
+          per second.
+        aliases:
+        - liters per second
+      cm3/cm3:
+        text: cm3/cm3
+        description: The Unified Code for Units of Measure (UCUM) representation of cubic
+          centimeters per cubic centimeter.
+        aliases:
+        - cubic centimeters per cubic centimeter
+      '[kn_i]':
+        text: '[kn_i]'
+        description: The Unified Code for Units of Measure (UCUM) representation of knot
+          (nautical miles per hour).
+        title: knots
+        aliases:
+        - knot
+        - knots
+      m3/s:
+        text: m3/s
+        description: The Unified Code for Units of Measure (UCUM) representation of cubic
+          meters per second.
+        aliases:
+        - cubic meters per second
+      '[in_i]':
+        text: '[in_i]'
+        description: The Unified Code for Units of Measure (UCUM) representation of inch.
+        title: inches
+        aliases:
+        - inch
+        - inches
+  VendorEnum:
+    permissible_values:
+      waters:
+      agilent:
+      bruker:
+      thermo_fisher:
+      perkin_elmer:
+      scientific_industries:
+      illumina:
+      nikon:
+      fia_lab:
+      shimadzu:
+      regen_ag_lab:
+      kuo:
+    
+classes:
+
+  Activity: # L7 - links to PROV-O Activity, but with additional attributes relevant to mass spectrometry and chemical processes
+    is_a: ProcessActivity
+    description: Something that happens over time and can use equipment.
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      description:
+        range: string
+      ended_at_time:
+        range: datetime
+      name:
+        range: string
+      processing_institution:
+        range: ProcessInstitutionEnum
+        description: The institution where the activity took place.
+      protocol_link:
+        range: protocol 
+        description: A link to a protocol that describes the steps and parameters of the activity.
+      started_at_time:
+        range: datetime
+      
+  AnalysisActivity:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      type:
+        range: uriorcurie  
+      analyte_id:
+        range: ProcessedSample
+      name:
+        range: string
+      acquisition_time:
+        range: datetime
+        required: true
+      Instrument_id:
+        range: Instrument
+      Instrument_operator_id:
+        range: PersonValue
+      protocol_url:
+        range: string
+      version:
+        range: string
+
+  CalibrationProtocol: 
+    description: Protocol details for calibration used in mass spectrometry process.
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      calibration_standard:
+        range: CalibrationStandardEnum
+        description: the reference standard(s) used for calibration
+      calibration_target:
+        range: CalibrationTargetEnum
+        description: the target measurement of the calibration
+      internal_calibration:
+        range: boolean
+        description: whether internal calibration was used, if false, external calibration was used
+
+  ChemicalConversionProcess: 
+    is_a: Activity 
+    description: A chemical conversion process used in mass spectrometry sample preparation. A process that results in the interconversion of chemical species by a reaction to transform the reagents into products.
+    attributes:
+      duration:
+        range: QuantityValue
+        description: Total time taken to complete the chemical conversion process.
+      chemical_conversion_category:
+        range: ChemicalConversionCategoryEnum
+        description: The category of chemical conversion process.
+      digestion_method:
+        range: DigestionMethodEnum
+        description: Named digestion method applied, when the category is protease_cleavage.
+      enrichment_type:
+        range: EnrichmentTypeEnum
+        description: Type of enrichment performed, when this process is an enrichment step.
+      has_input:
+        range: Sample
+        multivalued: true
+        description: The input portion(s) of substance(s) used in the chemical conversion process.
+      has_output:
+        range: ProcessedSample
+        multivalued: true
+        description: The output portion(s) of substance(s) generated from the chemical conversion process.
+      labeling_method:
+        range: LabelingMethodEnum
+        description: Chemical labeling strategy applied in this process (e.g., TMT).
+      substances_used:
+        range: PortionOfSubstance
+        multivalued: true
+        description: The portion(s) of substance(s) used in the chemical conversion process.
+      temperature:
+        range: QuantityValue
+        description: Temperature at which the chemical conversion process was performed.
+
+  ChromatographyProtocol: #MassSpectrometry related configuration class. maps to NMDC ChromatographyConfiguration
+    description: Protocol details for chromatography used in mass spectrometry process.
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      column_dimensions:
+        range: string
+        description: Dimensions of the chromatography column used in the process.
+      column_manufacturer:
+        range: string
+      column_temp_celsius:
+        range: QuantityValue
+        description: Temperature of the chromatography column in degrees Celsius.
+      chromatographic_category:
+        range: ChromatographyCategoryEnum
+        description: The type of chromatography used in a process.
+      flow_rate_ul_min:
+        range: QuantityValue
+        description: Flow rate of the mobile phase in microliters per minute.
+      injection_volume_ul:
+        range: float
+      protocol_id:
+        range: uuid
+        required: true
+        description: Unique identifier for the chromatography protocol.
+      stationary_phase:
+        range: StationPhaseEnum
+        description: Description of the stationary phase used in the chromatography.    
+      total_run_time_min:
+        range: float
+
+  ContainerAxis: #container_axis.yml - L7
+    attributes:
+      name:
+        range: string     
+      values:
+        multivalued: true
+        range: string     
+  
+  ContainerType: 
+    description: Template/layout for a container (e.g., 96-well Tecan plate).
+    attributes:
+      id:
+        identifier: true
+        range: string
+      axes:
+        multivalued: true
+        range: ContainerAxis
+      contains:
+        multivalued: true
+        range: uriorcurie   
+      description:
+        range: string
+      label_format:
+        range: string      
+      renderer:
+        range: string       
+        description: UI renderer to use for this container type (e.g., defaultcontainer.js).
+      slot_capacity:
+        range: string       
+
+  ControlledIdentifiedTermValue:
+    attributes:
+      term:
+        range: OntologyClass
+        description: pointer to an ontology class
+      has_raw_value:
+        range: string
+        description: The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
+      type:
+        range: uriorcurie
+       
+  CreditAssociation:
+    description: A credit association linking a study to contributors and their roles.
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      applied_roles:
+        range: CreditEnum
+        required: true
+        description: The role of the contributor in the study (e.g., data analysis, writing).
+      applies_to_person:
+        range: PersonValue
+        required: true
+        description: The person who contributed to the study.
+      type: 
+        range: uriorcurie
+        description: the class_uri of the class that has been instantiated
+  
+  DataObject: 
+    description: 
+      An object that primarily consists of symbols that represent information.
+      Files, records, and omics data are examples of data objects.
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      description:
+        range: string
+        description: Human-readable description of this data object.
+      data_category:
+        range: DataCategoryEnum
+        required: true
+        description: The category of the file (Instrument, processed, workflow-parameter).
+      data_object_type:
+        range: FileTypeEnum
+        required: true
+        description: The controlled file type/kind for this data object.
+      file_size_bytes:
+        range: integer
+        description: Size of the file in bytes.
+      md5_checksum:
+        range: string
+        description: MD5 checksum of the file contents.
+      name:
+        range: string
+        description: Human-readable filename or label.
+      type:
+        range: uriorcurie
+        required: true
+        description: Semantic class CURIE (e.g., nmdc:DataObject).
+      url:
+        range: string
+        description: Resolvable URL where the file can be accessed (if available).
+      was_generated_by:
+        range: ProcessActivity
+        description: Processing run that generated this data object (if applicable).
+
+  DataProcessingActivity:
+    is_a: Activity
+    description: A data processing run that consumes raw Instrument data and produces processed results.
+                 More specific than a generic "workflow execution" abstraction.
+    attributes:
+      Data_processing_steps:
+        range: string
+        multivalued: true
+        description: The specific processing steps or stages involved in this data processing activity (e.g., "peak_picking", "database_search", "FDR_filtering").  
+      execution_resource:
+        range: ExecutionResourceEnum
+        description: Compute resource/facility used (HPC cluster, etc.).
+      git_url:
+        range: string
+        description: URL to pipeline source/release (repo, tag, container registry, etc.). (metadata)
+      input_raw_data:
+        range: InstrumentData
+        multivalued: true
+        description: Raw Instrument files used as input.
+      output_processed_data:
+        range: ProcessedData
+        multivalued: true
+        description: Processed data products generated by this run.
+      qc_status:
+        range: StatusEnum
+        description: QC outcome (pass/fail) for this run.
+      qc_comment:
+        range: string
+        description: QC notes, reasons for failure, caveats, etc.
+      raw_data_id:
+        range: InstrumentData
+      sample_id:
+        range: Sample
+        description: Convenience link to the originating sample/biosample.
+      superseded_by:
+        range: DataProcessingActivity
+        description: Points to a newer processing run that supersedes this one.
+      type:
+        range: uriorcurie
+        required: true
+        description: the class_uri of the class that has been instantiated.
+      version:
+        range: string
+        description: Version/tag of the pipeline or release. (metadata)
+      upstream_Instrument_activity:
+        range: MassSpectrometry
+        description: Upstream Instrument data-generation activity (mass spectrometry run) that produced
+                     the raw data used as input to this processing activity.
+      used_id:
+        range: SoftwareControlledTermValue
+        description: Software, algorithm, or workflow used in this processing activity.
+  
+  DOI:
+    description: A digital object identifier (DOI) representing a persistent link to a digital resource.
+    attributes:
+      doi_value:
+        required: true
+        range: uriorcurie
+      doi_category:
+        range: DoiCategoryEnum
+        description: The resource type the corresponding doi resolves to
+        required: true
+      doi_provider:
+        range: DoiProviderEnum
+        description: The authority, or organization, the DOI is associated with.
+      type:
+        range: uriorcurie
+        description: the class_uri of the class that has been instantiated.
+  
+  Entity:
+    description: Base identifiable thing.
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+  
+  Extraction:
+    is_a: Activity
+    description: 
+    attributes:
+      extraction_targets:
+        range: ExtractionTargetEnum
+        multivalued: true
+        description: The target analyte(s) or compound class(es) for the extraction process.
+      extraction_method:
+        range: ExtractionMethodEnum
+        description: Named extraction method applied (e.g., MPLEx, bead beating, TCA/Acetone).
+      has_input:
+        range: Sample
+        multivalued: true
+        description: The input sample(s) used in the extraction process.
+      has_output:
+        range: ProcessedSample
+        multivalued: true
+        description: The output processed sample(s) generated from the extraction process.
+      input_mass:
+        range: QuantityValue
+        description: Total mass of material/sample used as input for the extraction process.
+      substances_used:
+        range: PortionOfSubstance
+        multivalued: true
+        description: The portion(s) of substance(s) used in the extraction process.
+      type:
+        range: uriorcurie
+        required: true
+        description: the class_uri of the class that has been instantiated.
+      
+  FractionationProcess:
+    is_a: Activity
+    description: >
+      A fractionation process (e.g., off-line high pH fractionation, SCX, etc.) that splits
+      an input sample into multiple fractions for downstream LC-MS/MS.
+    attributes:
+      has_input:
+        range: ProcessedSample
+        multivalued: true
+        required: true
+        description: Processed sample(s) before fractionation.
+      has_output:
+        range: ProcessedSample
+        multivalued: true
+        required: true
+        description: Fractionated processed sample(s) generated by this process.
+      lims_protocol_instance_id:
+        range: integer
+        description: Optional L7 protocol_instance backing this fractionation step.
+  
+  GeolocationValue:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      description:
+        range: string
+      has_raw_value:
+        range: string
+        description: The raw value for a geolocation should follow {latitude} {longitude}
+      latitude:
+        range: numeric
+        description: The latitude coordinate of the geolocation.
+      longitude:
+        range: numeric
+        description: The longitude coordinate of the geolocation.
+      type:
+        range: uriorcurie
+      was_generated_by: 
+        range: string
+
+  Instrument: #MassSpectrometry related Instrument class/ do we need the vendor, range, Instrument parameters etc? same as L7 Equipment class
+    is_a: Entity
+    description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent. This class models the make and model of the Instrument, not the specific instance of the Instrument.
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+        required: true 
+      comment:
+        range: string
+      lims_resource_id:   #ADDED for optional L7 traceability
+        range: integer
+        description: L7 resource_id for the instrument, if known.
+      location:
+        range: string
+      maintenance:
+        range: string
+        description: Maintenance notes or pointer to maintenance log.
+      manufacturer:
+        range: string
+      model:
+        range: InstrumentModelEnum
+      serial_number:
+        range: string 
+        description: Instrument instance specifier
+      property:
+        range: string
+        description: Catch-all Instrument properties. If you want typed key/value, replace with TypedAttributeValue later.
+      vendor:
+        range: VendorEnum
+      unique_name:
+        range: string
+
+  InstrumentData: 
+    is_a: DataObject
+    description: Raw data files generated by an Instrument, such as mass spectrometer output files.
+    attributes:
+      analysis_activity_id:
+        range: AnalysisActivity
+      description:
+        range: string
+        required: true
+      alternative_identifiers:
+        range: string 
+      compression_type:
+        range: string
+      file_type:
+        range: FileTypeEnum
+      version:
+        range: string
+
+  MassSpectrometry:
+    is_a: Activity
+    description: NMDC MassSpectrometry planned process / Instrument run.
+    attributes:
+      alternative_identifiers:
+        range: string
+        multivalued: true
+        description: A list of alternative identifiers for the entity
+      analyte_category:
+        range: MassSpectrometryEnum
+        description: The type of analyte(s) that were measured in the data generation process  
+      associated_studies:
+        range: Study
+        multivalued: true
+        description: Studies associated with this mass spectrometry run.
+      eluent_introduction_category:
+        range: EluentIntroductionCategoryEnum
+        description: A high-level categorization for how the processed sample is introduced into a mass spectrometer.
+      has_chromatography_configuration:
+        #range: ChromatographyConfiguration
+        range: ChromatographyProtocol
+        description: The identifier of the associated MassSpectrometryConfiguration.
+      has_input:
+        range: Sample
+        multivalued: true
+        description: An input to a process.
+      has_mass_spectrometry_configuration:
+        #range: MassSpectrometryConfiguration
+        range: MassSpecProtocol
+        description: The identifier of the associated MassSpectrometryConfiguration.
+      has_output:
+        range: DataObject
+        multivalued: true
+        description: Output raw data files (DataObject). An output from a process
+      Instrument_used:
+        range: Instrument
+        multivalued: true
+        description: What Instrument was used during DataGeneration or MaterialProcessing
+      lims_protocol_instance_id:     # ADDED optional linkage to L7 protocol_instance
+        range: integer
+        description: L7 protocol_instance_id backing this MS run, if known.
+      mod_date:
+        range: datetime
+        description: The last date on which the database information was modified
+      type:
+        range: uriorcurie
+        required: true
+        description: Should be nmdc:MassSpectrometry
+
+  MassSpecProtocol:
+    description:  
+      MS Instrument configuration. Maps to NMDC MassSpectrometryConfiguration.
+      Reusable protocol entity - many acquisitions reference same config.
+      Core parameters in typed attributes for queryability.
+      Linked to activities via Used(role=mass_spectrometry_configuration).
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+        required: true
+      fragmentation_modes:
+        description: Fragmentation techniques
+        range: FragmentedNodesEnum
+        multivalued: true
+      Instrument_entity_id:
+        description: FK to Instrument entity
+        range: Instrument
+      ionization_source:
+        range: IonizationSourceEnum
+        description: The ionization source used to introduce processed samples into a mass spectrometer
+      mass_analyzers:
+        range: MassAnalyzerEnum
+        description: The type(s) of mass analyzers used in the mass spectrometry protocol (e.g., TOF, Orbitrap).
+      mass_range_max:
+        range: float
+      mass_range_min:
+        range: float
+      mass_spectrometry_acquisition_strategy:
+        range: MassSpectrometryAcquisitionStrategyEnum
+        description: Strategy used for data acquisition in mass spectrometry (e.g., DDA, DIA).
+      mass_spectrum_collection_modes:
+        description: Spectrum collection modes
+        range: MassSpectrumCollectionModeEnum
+        multivalued: true
+      polarity_mode:
+        range: PolarityModeEnum
+        description: the polarity of which ions are generated and detected
+      protocol_id:
+        range: uuid
+        required: true
+      resolution_categories:
+        range: ResolutionCategoryEnum
+        multivalued: true
+        description: The relative resolution at which spectra were collected.
+      
+  MetaproteomicsAnalysis:
+    is_a: DataProcessingActivity
+    description: NMDC-aligned MetaproteomicsAnalysis processing run layered onto MONet internal standards.
+    attributes:
+      has_input:
+        range: DataObject
+        multivalued: true
+        description: Input samples used in the metaproteomics analysis.
+      has_output:
+        range: DataObject
+        multivalued: true
+        description: Output data objects generated from the metaproteomics analysis.
+      lims_task_instance_id:          
+        range: integer
+        description: L7 task_instance_id for the metaproteomics workflow, if known.
+      metaproteomics_analysis_category:
+        range: MetaproteomicsAnalysisCategoryEnum
+        required: true
+        description: The category of metaproteomics analysis being performed.
+      type:
+        range: uriorcurie
+        required: true
+        description: the class_uri of the class that has been instantiated
+      version:
+        range: string
+        description: Version of the metaproteomics analysis pipeline used.
+      was_informed_by:
+        range: MassSpectrometry
+        description: Reference to the analysis activity that informed this metaproteomics analysis.
+      
+  MobilePhaseSegment: #maps to NMDC MobilePhaseSegment array
+    description: A segment of the mobile phase used in chromatography during mass spectrometry.
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      concentration_unit:
+        range: string
+        description: Unit of concentration for the substance in the mobile phase during this segment.
+      concentration_value:
+        range: QuantityValue
+        description: Concentration of the substance in the mobile phase during this segment.
+      duration_min:
+        range: QuantityValue
+        description: The elapsed time of an activity.
+      name:
+        range: string
+        required: true
+        description: Human-readable name of the mobile phase segment.
+      protocolid:
+        identifier: true
+        range: uuid
+      segment_order:
+        range: integer
+        description: The order of this segment in the overall chromatography protocol.
+      substance_name:
+        range: string
+        description: Name of the substance making up this segment of the mobile phase.
+      
+  NormalizationProcess:
+    is_a: Activity
+    description: >
+      A process that adjusts sample amounts (e.g., protein mass or volume)
+      to a common level across samples, prior to downstream processing.
+    attributes:
+      has_input:
+        range: ProcessedSample
+        multivalued: true
+        required: true
+        description: Processed sample(s) before normalization.
+      has_output:
+        range: ProcessedSample
+        multivalued: true
+        required: true
+        description: Processed sample(s) after normalization.
+      normalization_method:
+        range: NormalizationMethodEnum
+        description: The strategy used for normalization (equal mass, equal volume, etc.).
+      target_amount:
+        range: QuantityValue
+        description: Target amount (mass or volume) per sample after normalization.
+  
+  NucleotideSequencing:
+    is_a: Activity
+    description: 
+    attributes:
+      add_date:
+        range: string
+        description: The date the nucleotide sequencing record was added to the database.
+      analyte_category:
+        range: NucleotideSequencingEnum
+        description: The type of analyte(s) that were measured in the data generation process
+      associated_studies:
+        range: Study
+        multivalued: true
+        description: Studies associated with this nucleotide sequencing activity.   
+      gold_sequencing_project_identifiers:
+        range: uriorcurie #ExternalIdentifier
+        multivalued: true
+        description: The GOLD (Genomes OnLine Database) identifier(s) associated with the nucleotide sequencing activity.
+      has_input:
+        range: Sample
+        multivalued: true
+        required: true
+        description: The parent sample(s) used as input to subsampling.
+      has_output:
+        range: ProcessedSample
+        multivalued: true
+        required: true
+        description: The processed sample(s) generated by subsampling.
+      mod_date:
+        range: string
+        description: The date the nucleotide sequencing record was last modified in the database.
+      ncbi_project_name:
+        range: string
+        description: The NCBI BioProject name associated with the nucleotide sequencing activity.
+      principal_investigator:
+        range: PersonValue
+        description: Principal investigator responsible for the nucleotide sequencing process.
+
+  OntologyClass:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      alternative_identifiers:
+        range: string
+      description:
+        range: string
+      name:
+        range: string
+
+  PersonValue: #connected to study class
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      has_raw_value:
+        range: string
+      orcid:
+        range: string
+        description: ORCID identifier of the investigator
+      type:
+        range: uriorcurie
+
+  PoolingProcess:
+    is_a: Activity
+    description: >
+      A laboratory pooling process that physically mixes multiple input samples
+      into a single pooled processed sample for downstream analysis.
+      Typically corresponds to the L7 "Sample Pooling" / "Pooling" protocols.
+    attributes:
+      has_input:
+        range: Sample
+        multivalued: true
+        required: true
+        description: The parent sample(s) that are pooled together.
+      has_output:
+        range: ProcessedSample
+        multivalued: false
+        required: true
+        description: The pooled processed sample generated by the pooling process.
+      mass:
+        range: QuantityValue
+        description: Total mass or volume of material pooled, if recorded.
+      substances_used:
+        range: PortionOfSubstance
+        multivalued: true
+        description: Reagents used during pooling (e.g., buffer, solvent).
+
+  PortionOfSubstance:
+    description: A portion of a substance with specific characteristics.
+    attributes:
+      Known_as:
+        range: ChemicalEntityEnum
+        description: Common name or identifier for the substance.
+      substance_role:
+        range: SubstanceRoleEnum
+        description: The role or function of the substance in the context of its use.
+      volume:
+        range: QuantityValue
+        description: The volume of the portion of the substance.
+      
+  ProcessActivity: # Activity-like base for anything that can use protocols/institutions
+    is_a: Entity
+    description: Abstract base for all process-like activities (wet lab or computation).
+    attributes:
+      name:
+        range: string
+        description: Human-readable name of the activity.
+      description:
+        range: string
+        description: Human-readable description of the activity.
+      started_at_time:
+        range: datetime
+        required: true
+        description: Timestamp when activity started.
+      ended_at_time:
+        range: datetime
+        required: true
+        description: Timestamp when activity ended.
+      processing_institution:
+        range: ProcessingInstitutionEnum
+        description: Institution/organization performing the activity.
+      protocol_link:
+        range: Protocol
+        description: Protocol or SOP followed by this activity.
+
+  ProcessedData:
+    is_a: DataObject
+    description: Processed data object resulting from data processing activities.
+    attributes:
+      core_section:
+        range: string
+      data_processing_id:
+        range: DataProcessingActivity
+        required: true
+        description: Processing run that generated this processed data object.
+      lims_barcode:
+        range: string
+      proposal_id:
+        range: string
+      sampling_set:
+        range: integer
+      sample_name:
+        range: string
+      s3_base_url:
+        range: string
+      s3_bucket:
+        range: string
+      s3_key:
+        range: string
+        required: true
+      version:
+        range: string
+  
+  ProcessedSample:
+    description: Portion/aliquot derived for downstream activity
+    is_a: Sample
+    attributes:
+      concentration_ug_per_uL:
+        range: float
+        description: Concentration of the processed sample in micrograms per microliter, if applicable.
+      derived_from:
+        range: Sample
+        description: Parent sample this was derived from (L7 generation)
+      fraction_label:
+        range: string
+        description: Label / index of the fraction (e.g., "F1", "F2", "Fraction_03").
+      lims_resource_id: # optional link back to L7 sample resource_id
+        range: integer
+      sampled_portion:
+        range: SamplePortionEnum
+      storage_location:
+        range: string
+      total_amount_ug:
+        range: float
+      volume_uL:
+        range: float
+
+  ProteinAssay:
+    is_a: Activity
+    description: >
+      A protein quantification assay (e.g., Coomassie or BCA) performed on a sample
+      to determine protein concentration prior to downstream processing.
+    attributes:
+      has_input:
+        range: ProcessedSample
+        multivalued: true
+        required: true
+        description: Processed sample(s) on which the protein assay was performed.
+      has_output:
+        range: ProcessedSample
+        multivalued: true
+        required: true
+        description: Processed sample(s) after the assay; typically the same physical material with updated concentration.
+      lims_protocol_instance_id:
+        range: integer
+        description: Optional L7 protocol_instance backing this BCA assay.
+      measured_concentration:
+        range: QuantityValue
+        description: Measured protein concentration for the assayed sample.
+      protein_assay_type:
+        range: ProteinAssayTypeEnum
+        required: true
+        description: The type of protein assay (Coomassie, BCA, etc.).
+    
+  Protocol:
+    description: A documented protocol or standard operating procedure (SOP) used in a process.
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      description:
+        range: string
+        description: Description of the protocol.
+      name:
+        range: string
+        required: true
+        description: Human-readable name of the protocol.
+      url:
+        range: string
+        description: URL link to the protocol document or resource.
+
+  QuantityValue:
+    description: A quantity value with numeric value and optional unit
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+        description:
+      has_maximum_numeric_value:
+        range: double
+      has_numeric_value:
+        description: The numeric value of the quantity
+        range: double
+      has_raw_value:
+        range: string
+      has_unit:
+        range: UnitEnum
+        description: The human-readable unit name
+      has_value_unit:
+        range: string
+        description: The unit of the value, if applicable.
+  
+  ResuspensionProcess:
+    is_a: Activity
+    description: >
+      A resuspension step (e.g., drying and resolubilizing peptides in LC buffer)
+      before LC-MS/MS injection.
+    attributes:
+      has_input:
+        range: ProcessedSample
+        multivalued: true
+        required: true
+        description: Dried or concentrated peptide samples before resuspension.
+      has_output:
+        range: ProcessedSample
+        multivalued: true
+        required: true
+        description: Resuspended samples ready for LC-MS/MS injection.
+      lims_protocol_instance_id:
+        range: integer
+        description: Optional L7 protocol_instance backing this resuspension step.
+       
+  Sample: 
+    description: A physical sample collected from the environment
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      Analysis_Type:
+        range: RouteMethodEnum
+        description: The type of analysis for which the sample is intended (e.g., metaproteomics, metagenomics).
+      collection_date:
+        range: datetime
+        description: The date and time when the sample was collected.
+      Growth_Facility:
+        range: GrowthFacilityEnum
+        description: The growth facility where the sample was collected, if applicable.
+      guid_source:
+        range: string
+        description: Indicate the source of the GUID that you have provided for your samples
+      lims_resource_id:         
+        range: integer
+      other:
+        range: string
+        description: Any other relevant information about the sample that does not fit into the predefined attributes.
+      other_growth_facily:
+        range: string
+        description: Please specify if other growth facility
+      other_guid_source:
+        range: string
+        description: Please specify if other GUID source
+      other_samp_store_temp:
+        range: string
+        description: Please specify if other sample storage temperature
+      other_storage_condt:
+        description: Please specify if other storage condition
+      proposal_id:
+        range: integer
+      replicate_number:
+        range: integer
+        description: The replicate number of the sample, if applicable.
+      sample_link:
+        range: string
+        description: URL link to additional information about the sample (e.g., in a LIMS or external database).
+      sample_name:
+        range: string
+        required: true
+      sampling_activity_id:
+        description: Reference to the sampling activity that collected this sample
+        range: SamplingActivity
+      samp_store_temp:
+        range: SampleStoreTempEnum
+        description: The storage temperature of the sample (e.g., -80C, room temperature).
+      site:
+        range: string
+      source_mat_id:
+        description: Reference to the source material from which this sample was derived, if applicable.
+        range: string
+      storage_condt:
+        range: StorageCondtEnum
+        description: The storage conditions for the sample (e.g., -80C, room temperature).
+      technical_reps:
+        range: integer
+      type:
+        description: The type of sample (soil, aerosol, etc.)
+        range: SampleTypeEnum
+        required: false
+
+  SampleProcessing:
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      analysis_type:
+        range: RouteMethodEnum
+      method_name:
+        range: MethodNameEnum
+      processing_steps:
+        range: string # TODO JSONB
+        required: true
+      url:
+        range: string
+      version:
+        range: string
+
+  SamplingActivity:
+    is_a: Activity
+    description: Legacy alias of Activity (kept for backward compatibility).
+    attributes:
+      air_temp_regm:
+        range: string
+      alt_id:
+        range: QuantityValue
+      chem_administration:
+        range: string
+      collection_date:
+        range: datetime
+      collection_time:
+        range: datetime
+      elev_id:
+        range: QuantityValue
+      env_broad_scale_other:
+        range: string
+      env_local_scale_other:
+        range: string
+      env_medium_other:
+        range: string
+      experimental_factor:
+        range: string
+      experimental_factor_other:
+        range: string     
+      extraction_method:
+        range: string
+      extreme_event:
+        range: datetime
+      gaseous_environment:
+        range: string
+      geo_loc_name:
+        range: string
+      growth_facil:
+        range: GrowthFacilityEnum
+      humidity_regm:
+        range: string
+      isotope_exposure:
+        range: string
+      lat_lon_id:
+        range: GeolocationValue
+      lims_barcode:
+        range: string
+      light_regm:
+        range: string
+      link_addit_analys:
+        range: string
+      method_development:
+        range: string
+      microbial_biomass_c_meth:
+        range: string
+      microbial_biomass_meth:
+        range: string
+      microbial_biomass_n_meth:
+        range: string
+      misc_param:
+        range: string     
+      neon_plot_id:
+        range: string
+      non_microb_biomass_method:
+        range: string
+      other_growth_facil:
+        range: string
+      other_sample_store_temp:
+        range: string
+      other_storage_condt:
+        range: string
+      other_treatment:
+        range: string
+      oxygen_relationship:
+        range: OxygenStatusEnum
+      ph:
+        range: double
+      ph_meth:
+        range: string
+      salinity:
+        range: double
+      salinity_method:
+        range: string
+      samp_biotic_relationship:
+        range: SampBioticEnum
+      sample_collected:
+        range: string
+      sample_collection_dev:
+        range: string
+      sample_collection_method:
+        range: string     
+      sample_end_time:
+        range: datetime
+      sample_name: 
+        required: true
+      sample_processing:
+        range: SampleProcessing
+      sample_start_time:
+        range: datetime
+      sample_store_temp:
+        range: SampleStoreTempEnum
+      season_environment:
+        range: string
+      shipped_sample_size:
+        range: string
+      sieving:
+        range: string
+      start_date_inc:
+        range: datetime
+      storage_condt:
+        range: StorageCondtEnum
+      study_id:
+        range: Study
+        required: true
+      tot_nitro_cont_meth:
+        range: string
+      tot_org_c_meth:
+        range: string
+      watering_regm:
+        range: string
+  
+  SoftwareControlledTermValue:
+    slots:
+    #  - id
+    attributes:
+      id:
+        identifier: true
+        range: string
+      description:
+        range: string
+      name:
+        range: string
+      version:
+        range: string
+      has_raw_value:
+        range: string
+      was_generated_by:
+        range: string
+      type:
+        range: string
+
+  SolidPhaseExtractionProcess:
+    is_a: Activity
+    description: >
+      A solid phase extraction (SPE) step (e.g., C18 desalting) performed as sample preparation.
+    attributes:
+      chromatography_protocol:
+        range: ChromatographyProtocol
+        description: Chromatography configuration used for the SPE step (C18, SPE).
+      has_input:
+        range: ProcessedSample
+        multivalued: true
+        required: true
+      has_output:
+        range: ProcessedSample
+        multivalued: true
+        required: true
+      lims_protocol_instance_id:
+        range: integer
+        description: Optional L7 protocol_instance backing this SPE/C18 step.
+
+  Study: 
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      description:
+        range: string
+        description: Detailed description of the study objectives and scope
+      associated_dois:
+        range: DOI
+        multivalued: true
+        description: A list of DOIs associated with this study
+      collaborating_institution:
+        range: string
+        multivalued: true
+        description: Institutions collaborating on the study.
+      ecosystem:
+        range: string
+        description: The ecosystem type where the study was conducted
+      ecosystem_category:
+        range: string
+        description: The high-level ecosystem category where the study was conducted
+      ecosystem_type:
+        range: string
+        description: The specific ecosystem type where the study was conducted
+      funding_sources:
+        range: string
+        multivalued: true
+        description: A list of organizations, along with the award numbers, that underwrite financial support for projects of a particular type. Typically, they process applications and award funds to the chosen qualified applicants.
+      has_credit_associations:
+        range: CreditAssociation 
+        multivalued: true
+        description: This slot links a study to a credit association
+      gold_study_identifiers:
+        range: uriorcurie
+        multivalued: true
+        description: List of GOLD study identifiers associated with this study
+      name:
+        range: string
+        required: true
+        description: Short name or code for the study
+      part_of:
+        range: Study
+        description: Reference to a larger study that this study is part of
+      principal_investigator:
+        range: PersonValue
+        required: true
+      proposal_abstract:
+        range: string
+        description: A brief summary of the research proposal associated with this study.
+      project_end:
+        range: datetime
+      project_id:
+        range: string 
+        required: true
+      project_start:
+        range: datetime
+      project_status:
+        range: string
+      proposal_title:
+        range: string
+        description: The title of the research proposal associated with this study.
+      specific_ecosystem:
+        range: string
+        description: More specific details/features about the ecosystem of the study
+      study_category:
+        range: StudyCategoryEnum
+        description: The category of the study (e.g., field study, lab experiment).
+      
+  SubSamplingProcess:
+    is_a: Activity
+    description: A laboratory subsampling process that takes a portion of an existing sample
+      and produces a derived (processed) sample for downstream analysis. (Separating a sample aliquot from the starting material for downstream activity.)
+    attributes:
+      has_input:
+        range: Sample
+        multivalued: true
+        required: true
+        description: The parent sample(s) used as input to subsampling.
+      has_output:
+        range: ProcessedSample
+        multivalued: true
+        required: true
+        description: The processed sample(s) generated by subsampling.
+      mass:
+        range: QuantityValue
+        description: Mass of material subsampled (e.g., 30 g).
+      
+  TextValue: 
+    attributes:
+      description:
+        range: string
+      has_raw_value:
+        range: string
+      language:
+        range: string
+      type:
+        range: string
+      was_generated_by:
+        range: string
+      
+  TimestampValue:
+    attributes:
+      has_raw_value:  
+        range: string
+        description: The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
+      type:
+        range: uriorcurie
+
+  Used:
+    description: Edge table linking Activity -> Instrument (or other entities).
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      activity_id:
+        range: Activity
+        required: true
+      entity_id:
+        range: Instrument
+        required: true
+      role:
+        range: string
+        description: Optional role (e.g., "centrifuge", "plate_reader", "Concentrator", "Bead Beater", "mass_spec").
+
+     
