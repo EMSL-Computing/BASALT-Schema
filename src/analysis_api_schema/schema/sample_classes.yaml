@@ -57,6 +57,7 @@ classes:
       - type #should be inherited when Entity class is made
     todos:
       - add alternate_ids and use inheritance for specific slots
+      - where should prposal ID live? probably not here?
     attributes:
       id:
         identifier: true
@@ -64,95 +65,78 @@ classes:
       proposal_id:
         description: The 5 digit project ID assigned to an EMSL user proposal/project
         range: integer
+    todos:
+      - check all ranges that point to these vlasses sample vs Sample will break
     
   SoilSample:
     description: A soil sample with specific soil-related properties.
     is_a: Sample
     slots:
-      - name
-      - description
-      - type
+      - soil_type
+      - soil_horizon
+    slot_usage:
     attributes:
       id:
         range: sample
         identifier: true
-      soil_type:
-        description: The specific type of soil sample
-        range: soiltype
-        required: true
-      soil_horizon:
     
-    MonetSoilSample:
-      title: MONet Soil Sample
-      description: A soil sample with specific soil-related properties that align with the MONet Soil Sample template.
-      is_a: SoilSample
-      slots:
-        - name
-        - description
-        - type
-        - sampling_set
-      attributes:
-        id:
-          range: sample
-          identifier: true
-        soil_type:
-          description: The specific type of soil sample, aligned with the MONet Soil Sample template
-          range: soiltype
-          required: true
+  MonetSoilSample:
+    title: MONet Soil Sample
+    description: A soil sample with specific soil-related properties that align with the MONet Soil Sample template.
+    is_a: SoilSample
+    slots:
+      - sampling_set
+    slot_usage:
+      soil_type:
+        required: true
+      sampling_set:
+        required: true
+    attributes:
+      id:
+        range: sample
+        identifier: true
 
   AerosolSample:
     description: An aerosol sample with specific aerosol-related properties
     is_a: Sample
     slots:
-      - name
-      - description
-      - type
+      - aerosol_type
     attributes:
       id:
         range: sample
         identifier: true
-      aerosol_type:
-        description: The type or method of aerosol collection
-        range: aerosoltype
-        required: true
 
   ProcessedSample:
+    title: Processed Sample
     description: A sample that has undergone processing or analysis. Processed Sample entities are derived from Activitites. Relationships to original sample, other processed samples, and projects is avaialble via following Activity to Entity relationships: has_input, has_output.
     is_a: Sample
     attributes:
       id:
         identifier: true
         range: sampleBase
-        processed_sample_type:
-          description: The type of processed sample
-          range: processedsampletype
-          required: true
 
   CoreSection:
     description: A section of a core sample (TOP, MID, BTM).
     is_a: ProcessedSample
     slots:
-      - name
-      - description
-      - type
+      - core_section
+    slot_usage:
+      core_section:
+        required: true
     attributes:
       id:
         identifier: true
-        range: processedSample
-      core_section:
-        description: The section of the core (e.g. TOP, MID, BTM)
-        range: CoreSectionEnum
-        required: true
+        range: uuid
   
   SamplingActivity:
     description: An activity that involves the collection of a sample. This class serves as an abstract class to relate subclasses of sampling activities. Note that the sampling activity is related to the sample via the has_output relationship on the activity, not via a direct relationship on the sample.
     abstract: true
     slots:
-      - id #will be inherited when Activity class is made
-      - name
+      - name #will be inherited when Activity class is made
       - description
       - type
-      - emsl_activity  # [ADDED] replaces planned campaign FK approach
+      - project #do we need this here? where do we make the campaign, project, pi, etc associations?
+      - emsl_activity
       - has_output #will be inherited when Activity class is made
     slot_usage:
       has_output:
@@ -164,9 +148,7 @@ classes:
       id:
         identifier: true
         range: uuid
-      study_id: #do we need this here? where do we make the campaign, project, pi, etc associations?
-        range: study
-        required: true
+      
       sample_name: # 60881_1_C2
         required: true
       lims_barcode:

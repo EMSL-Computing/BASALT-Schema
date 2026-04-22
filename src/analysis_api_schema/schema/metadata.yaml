@@ -27,6 +27,8 @@ slots:
       campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
       predating activity tracking.
     range: string
+    todos:
+      - Is sampling activity where we want to capture this?
     required: false
 
 classes:
