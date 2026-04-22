@@ -133,6 +133,8 @@ enums:
       toc_tn_method:
       bulk_density_method:
       metagenomics_method:
+      xrf_analysis:
+      xrd_analysis: 
 
   samplerole:
     permissible_values:
@@ -182,6 +184,10 @@ enums:
       shimadzu:
       regen_ag_lab:
       kuo:
+      rigaku:
+      bruker:
+      thermo_fisher:
+       panalytical:  # (PANalytical, now Malvern Panalytical)
 
   modelenum:
     permissible_values:
@@ -285,6 +291,8 @@ enums:
       MAOMProduct:
       BulkDensityProduct:
       MetaGenomicsProduct:
+      XRFElementalProduct:
+      XRDPhaseProduct:
 
 sitephototype:
   permissible_values:
