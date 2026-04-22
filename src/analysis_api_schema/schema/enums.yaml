@@ -71,11 +71,6 @@ enums:
       MID:
         description: Middle section of core
 
-
-
-
-
-
   productmeasuretype:
     permissible_values:
       Single:

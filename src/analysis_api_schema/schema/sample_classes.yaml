@@ -26,7 +26,6 @@ classes:
     title: Site Metadata
     description: Site-level metadata for specific locations from which a set of samples are collected.
     slots:
-      - id
       - name
       - description
       - type
@@ -39,13 +38,13 @@ classes:
         identifier: true
         range: uuid
       cur_land_use:
-        range: landuseenum
+        range: LandUseEnum
       drainage_class:
-        range: drainageclassenum
+        range: DrainageClassEnum
       fao_class:
-        range: faoclassenum
+        range: FAOClassEnum
       neon_domain:
-        range: neondomainenum
+        range: NEONDomainEnum
       from_sampling_activity:
         description: Reference to the sampling activity that collected samples at this site
         range: SamplingActivity
@@ -53,26 +52,18 @@ classes:
   Sample:
     description: A physical sample collected from an environment. The environment can be ecological, laboratory, or any other context where samples are collected. This class serves as an abstract class to relate subclasses of samples.
     slots:
-      # - id #should be inherited when Entity class is made
       - name #should be inherited when Entity class is made
       - description #should be inherited when Entity class is made
       - type #should be inherited when Entity class is made
+    todos:
+      - add alternate_ids and use inheritance for specific slots
     attributes:
       id:
-          identifier: true
-          range: sampleBase #I'm not sure now that base is gone
-        #sampling_activity_id:
-         # description: Reference to the sampling activity that collected this sample
-          #range: samplingActivity
-          #required: true - remove and  use has_output from sampling_activity
-      guid_source:
-        description: Indicate the source of the GUID that you have provided for your samples
-      other_guid_source:
-        description: Please specify if other GUID source
+        identifier: true
+        range: uuid
       proposal_id:
         description: The 5 digit project ID assigned to an EMSL user proposal/project
         range: integer
-      sampling_set: # "1"
     
   SoilSample:
     description: A soil sample with specific soil-related properties.
@@ -99,6 +90,7 @@ classes:
         - name
         - description
         - type
+        - sampling_set
       attributes:
         id:
           range: sample
