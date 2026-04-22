@@ -38,10 +38,10 @@ classes:
   sampling_activity_site_metadata_link:
     attributes:
       sampling_activity_id:
-        range: samplingActivity
+        range: SamplingActivity
         required: true
       site_metadata_id:
-        range: siteMetadata
+        range: SiteMetadata
         required: true
 
 enums:
