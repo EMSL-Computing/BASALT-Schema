@@ -60,6 +60,8 @@ classes:
       - storage_condition
       - oxygen_relationship
       - samp_biotic_relationship
+      - air_temp_regm
+      - chem_administration
     todos:
       - add alternate_ids and use inheritance for specific slots
       - where should prposal ID live? probably not here?
@@ -163,8 +165,6 @@ classes:
       other_growth_facil:
       sample_store_temp:
         range: samplestoretemp
-      air_temp_regm:
-      chem_administration:
       collection_date:
         range: datetime
       collection_time:

@@ -99,6 +99,18 @@ slots:
       - MIXS:0000016
     aliases:
       - samp_biotic_relationship
+  air_temp_regm:
+    title: air temperature regime
+    description: Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens
+    range: string
+    exact_mappings:
+      - MIXS:0000551
+  chem_administration:
+    title: chemical administration
+    description: List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
+    range: string
+    exact_mappings:
+      - MIXS:0000751
 
   # --- dataProduct base slots (promoted from processedData attributes) ---
   name:
