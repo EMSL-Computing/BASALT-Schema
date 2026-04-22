@@ -28,10 +28,10 @@ classes:
       id:
         identifier: true
         range: uuid
-      campaign_id:
-        range: campaign
+      # campaign_id:
+      #   range: campaign
         #required: true
-        description: Reference to the campaign this study belongs to
+        # description: Reference to the campaign this study belongs to
       participant_name: # TODO not quite correct
         range: string
         array: {}

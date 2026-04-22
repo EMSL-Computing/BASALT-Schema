@@ -185,9 +185,7 @@ enums:
       regen_ag_lab:
       kuo:
       rigaku:
-      bruker:
-      thermo_fisher:
-       panalytical:  # (PANalytical, now Malvern Panalytical)
+      panalytical:  # (PANalytical, now Malvern Panalytical)
 
   modelenum:
     permissible_values:
@@ -294,7 +292,7 @@ enums:
       XRFElementalProduct:
       XRDPhaseProduct:
 
-sitephototype:
-  permissible_values:
-    landscape:
-    measure:
+  sitephototype:
+    permissible_values:
+      landscape:
+      measure:

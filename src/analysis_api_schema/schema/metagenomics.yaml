@@ -70,7 +70,7 @@ classes:
 
   # ============================================================================
   # (NEW ABSTRACT) MetagenomicsProduct
-  # Middle tier in the dataProduct → processedData → MetagenomicsProduct chain.
+  # Middle tier in the dataProduct -> processedData -> MetagenomicsProduct chain.
   # Carries slots common to all three metagenomics sub-types so they do not
   # need to be repeated on each concrete class.
   # ============================================================================
@@ -120,7 +120,7 @@ classes:
   # ============================================================================
   # (CHANGED) Metagenomics_GenePhylogenyProduct
   # Previously used id: range processedData pattern; now uses is_a inheritance.
-  # This is a sub-sub-class: is_a MetagenomicsProduct → is_a processedData → is_a dataProduct.
+  # This is a sub-sub-class: is_a MetagenomicsProduct -> is_a processedData -> is_a dataProduct.
   # Type-specific slot: gene_family.
   # ============================================================================
   Metagenomics_GenePhylogenyProduct:

@@ -459,7 +459,7 @@ classes:
       Individual QC flags for each element using processeddataflag enum.
       
       Relationship to core tables:
-        - id: FK → processedData.id (1:1 linkage)
+        - id: FK -> processedData.id (1:1 linkage)
         - processedData.type = 'XRFElementalProduct'
         - processedData.workflow_id = NULL (direct acquisition; no computational WEA)
         - processedData.summary_metrics = {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, ...}
@@ -631,9 +631,9 @@ classes:
       Individual QC flags for each mineral using processeddataflag enum.
       
       Relationship to core tables:
-        - id: FK → processedData.id (1:1 linkage)
+        - id: FK -> processedData.id (1:1 linkage)
         - processedData.type = 'XRDPhaseProduct'
-        - processedData.workflow_id → workflowExecutionActivity if Rietveld refinement
+        - processedData.workflow_id -> workflowExecutionActivity if Rietveld refinement
           is computational; NULL if manual/semi-quantitative
         - processedData.summary_metrics = {"quartz_percent":42, "albite_percent":18, ...}
         - processedData.s3_key = diffractogram .xy, .xrdml, or .raw file in MinIO
@@ -650,9 +650,9 @@ classes:
         - Semi-quantitative (manual, less precise)
       
       Computational processing workflow (if applicable):
-        XRDAnalysisActivity acquires raw diffractogram →
+        XRDAnalysisActivity acquires raw diffractogram ->
         workflowExecutionActivity (type='xrd_rietveld_refinement') processes with
-        HighScore Plus, GSAS-II, or FullProf →
+        HighScore Plus, GSAS-II, or FullProf ->
         XRDPhaseProduct (workflow_id points to refinement WEA)
         
         workflow_steps JSONB example:

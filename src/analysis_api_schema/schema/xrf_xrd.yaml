@@ -26,11 +26,11 @@ description: |
     
     XRF (direct instrument output, no computational workflow):
       processedSample(soil replicate)
-        → XRFAnalysisActivity
+        -> XRFAnalysisActivity
             protocol_url: vendor SOP or EMSL internal protocol
-            instrument_id → instrument (e.g., Rigaku ZSX Primus IV)
-        → [no workflowExecutionActivity needed for direct output]
-        → XRFElementalProduct (one row per sample, wide format with 27 element columns)
+            instrument_id -> instrument (e.g., Rigaku ZSX Primus IV)
+        -> [no workflowExecutionActivity needed for direct output]
+        -> XRFElementalProduct (one row per sample, wide format with 27 element columns)
             summary_metrics: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2}
             s3_key: "xrf/raw/sample_001_spectrum.csv"
             Columns: cl_mg_per_kg, v_mg_per_kg, cr_mg_per_kg, ni_mg_per_kg, ... (27 elements)
@@ -38,10 +38,10 @@ description: |
     
     XRD (may include computational refinement):
       processedSample(soil replicate, ground powder)
-        → XRDAnalysisActivity
-        → [optional] workflowExecutionActivity(type='xrd_rietveld_refinement')
+        -> XRDAnalysisActivity
+        -> [optional] workflowExecutionActivity(type='xrd_rietveld_refinement')
             if computational refinement is performed
-        → XRDPhaseProduct (one row per sample, wide format with 10 mineral columns)
+        -> XRDPhaseProduct (one row per sample, wide format with 10 mineral columns)
             summary_metrics: {"quartz_percent":42, "albite_percent":18}
             s3_key: "xrd/raw/sample_001_diffractogram.xy"
             Columns: quartz_percent, albite_percent, microcline_percent, ... (10 minerals)
@@ -52,10 +52,10 @@ description: |
     such as X-ray computed tomography (XCT) if needed.
 
   Integration notes:
-    - XRayAnalysisActivity classes → paste into analysis_api_schema.yaml classes section
-    - XRayDataProduct classes → paste into products.yaml classes section
-    - New enum values → add to enums.yaml as noted in comments below
-    - Shared slots → already defined in analysis_api_schema.yaml (inherited via is_a)
+    - XRayAnalysisActivity classes -> paste into analysis_api_schema.yaml classes section
+    - XRayDataProduct classes -> paste into products.yaml classes section
+    - New enum values -> add to enums.yaml as noted in comments below
+    - Shared slots -> already defined in analysis_api_schema.yaml (inherited via is_a)
 
 license: MIT
 
@@ -137,7 +137,7 @@ slots:
 
 # =============================================================================
 # CLASSES — analysisActivity subclasses
-# → PASTE THESE INTO analysis_api_schema.yaml classes section
+# -> PASTE THESE INTO analysis_api_schema.yaml classes section
 # =============================================================================
 
 classes:
@@ -192,7 +192,7 @@ classes:
       Data product: XRFElementalProduct (one row per element per sample)
       
       Workflow pattern: Direct instrument output (no computational processing step)
-        processedSample → XRFAnalysisActivity → XRFElementalProduct (workflow_id = NULL)
+        processedSample -> XRFAnalysisActivity -> XRFElementalProduct (workflow_id = NULL)
       
       Protocol information: Stored externally; link via protocol_url attribute.
       Example protocol parameters (stored in external SOP or workflowExecutionActivity
@@ -230,10 +230,10 @@ classes:
       
       Workflow patterns:
         1. Direct/semi-quantitative: 
-             processedSample → XRDAnalysisActivity → XRDPhaseProduct (workflow_id = NULL)
+             processedSample -> XRDAnalysisActivity -> XRDPhaseProduct (workflow_id = NULL)
         2. With Rietveld refinement (computational):
-             processedSample → XRDAnalysisActivity → 
-             workflowExecutionActivity(type='xrd_rietveld_refinement') → 
+             processedSample -> XRDAnalysisActivity -> 
+             workflowExecutionActivity(type='xrd_rietveld_refinement') -> 
              XRDPhaseProduct (workflow_id = refinement WEA)
       
       Protocol information: Stored externally; link via protocol_url attribute.
@@ -258,7 +258,7 @@ classes:
 
 # =============================================================================
 # CLASSES — dataProduct subclasses
-# → PASTE THESE INTO products.yaml classes section
+# -> PASTE THESE INTO products.yaml classes section
 # =============================================================================
 
   # ---------------------------------------------------------------------------
@@ -311,7 +311,7 @@ classes:
       Individual QC flags for each element using processeddataflag enum.
       
       Relationship to core tables:
-        - id: FK → processedData.id (1:1 linkage)
+        - id: FK -> processedData.id (1:1 linkage)
         - processedData.type = 'XRFElementalProduct'
         - processedData.workflow_id = NULL (direct acquisition; no computational WEA)
         - processedData.summary_metrics = {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, ...}
@@ -483,9 +483,9 @@ classes:
       Individual QC flags for each mineral using processeddataflag enum.
       
       Relationship to core tables:
-        - id: FK → processedData.id (1:1 linkage)
+        - id: FK -> processedData.id (1:1 linkage)
         - processedData.type = 'XRDPhaseProduct'
-        - processedData.workflow_id → workflowExecutionActivity if Rietveld refinement
+        - processedData.workflow_id -> workflowExecutionActivity if Rietveld refinement
           is computational; NULL if manual/semi-quantitative
         - processedData.summary_metrics = {"quartz_percent":42, "albite_percent":18, ...}
         - processedData.s3_key = diffractogram .xy, .xrdml, or .raw file in MinIO
@@ -502,9 +502,9 @@ classes:
         - Semi-quantitative (manual, less precise)
       
       Computational processing workflow (if applicable):
-        XRDAnalysisActivity acquires raw diffractogram →
+        XRDAnalysisActivity acquires raw diffractogram ->
         workflowExecutionActivity (type='xrd_rietveld_refinement') processes with
-        HighScore Plus, GSAS-II, or FullProf →
+        HighScore Plus, GSAS-II, or FullProf ->
         XRDPhaseProduct (workflow_id points to refinement WEA)
         
         workflow_steps JSONB example:
@@ -577,7 +577,7 @@ classes:
 
 # =============================================================================
 # ENUM ADDITIONS REQUIRED
-# → ADD THESE VALUES TO enums.yaml
+# -> ADD THESE VALUES TO enums.yaml
 # =============================================================================
 
 # Add to routemethod enum (in enums.yaml):

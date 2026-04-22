@@ -8,10 +8,10 @@ description: |-
   enabling fast provenance queries without live recursive CTE traversal.
 
   Population: nightly refresh job using recursive CTE across:
-    - processingSampleLink (sample → processed sample chains)
+    - processingSampleLink (sample -> processed sample chains)
     - workflowExecutionActivity.parent_workflow_id (workflow chains)
-    - analysisActivity (processed sample → workflow link)
-    - processedData.workflow_id (workflow → product link)
+    - analysisActivity (processed sample -> workflow link)
+    - processedData.workflow_id (workflow -> product link)
 
   This file is imported by analysis_api_schema.yaml (import added in MR2).
 license: MIT
@@ -44,7 +44,7 @@ slots:
     required: true
 
   path:
-    description: Optional debug string representing the full chain (e.g., 'WEA1→WEA2→WEA3')
+    description: Optional debug string representing the full chain (e.g., 'WEA1->WEA2->WEA3')
     range: string
 
   computed_at:
