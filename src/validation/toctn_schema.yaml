@@ -1,6 +1,6 @@
 ---
 # =============================================================================
-# TOC/TN Analysis — Ingest Validation Schema (WEOM and MAOM/HClExtOM)
+# TOC/TN Analysis   Ingest Validation Schema (WEOM and MAOM/HClExtOM)
 # =============================================================================
 # Source classes: WEOMProduct, MAOMProduct (products.yaml)
 # Analysis types: "weom_toctn", "maom_toctn" (lims_processed_data_schema.yaml)
@@ -11,7 +11,7 @@
 #                       flag_HClExtOM_TOC, flag_HClExtOM_TN
 #                       (soil_biochemical_properties_schema.yaml)
 #
-# DESIGN NOTE: WEOM and MAOM (HClExtOM) have identical schema shapes — both
+# DESIGN NOTE: WEOM and MAOM (HClExtOM) have identical schema shapes   both
 # measure TOC and TN from different extractions. A single class covers both;
 # analysis_type in the envelope discriminates which product table receives the data.
 #
@@ -26,7 +26,7 @@ name: toctn_schema
 title: MONet TOC/TN (WEOM and MAOM/HClExtOM) Ingest Schema
 description: |-
   Ingest validation schema for WEOMProduct and MAOMProduct (HClExtOM).
-  The two products share an identical schema shape — both measure Total Organic
+  The two products share an identical schema shape   both measure Total Organic
   Carbon (TOC) and Total Nitrogen (TN) from different soil extractions:
   
     WEOM  (Water Extractable Organic Matter)  → analysis_type = "weom_toctn"
@@ -76,7 +76,7 @@ classes:
 
   TOCTNProductValues:
     description: |-
-      TOC/TN product values — shared schema for WEOM and MAOM (HClExtOM).
+      TOC/TN product values   shared schema for WEOM and MAOM (HClExtOM).
       Replicate-level data when replicate field is present in CoreSectionData.
       
       For WEOM (analysis_type = "weom_toctn"):

@@ -1,6 +1,6 @@
 ---
 # =============================================================================
-# Texture Analysis — Ingest Validation Schema
+# Texture Analysis   Ingest Validation Schema
 # =============================================================================
 # Source class:  TextureProduct (products.yaml)
 # Analysis type: "texture" (lims_processed_data_schema.yaml AnalysisTypeEnum)

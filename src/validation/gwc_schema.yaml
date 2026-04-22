@@ -1,6 +1,6 @@
 ---
 # =============================================================================
-# Gravimetric Water Content (GWC) — Ingest Validation Schema
+# Gravimetric Water Content (GWC)   Ingest Validation Schema
 # =============================================================================
 # Source class:  GWCMoistureProduct (products.yaml)
 # Analysis type: "gwc" (lims_processed_data_schema.yaml AnalysisTypeEnum)
@@ -74,4 +74,4 @@ classes:
           NOTE: can theoretically exceed 100% for highly organic or saturated soils.
         range: double
         required: false
-        # minimum_value: 0 — not enforced; organic soils can exceed expected range
+        # minimum_value: 0   not enforced; organic soils can exceed expected range

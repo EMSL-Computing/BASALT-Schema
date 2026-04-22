@@ -4,7 +4,7 @@
 # =============================================================================
 #
 # CONTEXT and Purpose:
-# - Validation schema for HydraulicPropertiesProduct — soil hydraulic parameters
+# - Validation schema for HydraulicPropertiesProduct   soil hydraulic parameters
 # - One row per core section; four attributes are the four VGM model parameters
 # - Covers the INGEST contract: what gets POSTed to the API and stored as a product
 #
@@ -15,7 +15,7 @@ id: https://w3id.org/MONet/analysis-api-schema/hydraulic-properties
 name: hydraulic_properties_schema
 title: MONet HYPROP / Hydraulic Properties Schema
 description: |-
-  Validation schema for HydraulicPropertiesProduct — soil hydraulic parameters
+  Validation schema for HydraulicPropertiesProduct   soil hydraulic parameters
   derived from HYPROP evaporation-experiment data.
   
   The four attributes are the four Van Genuchten Model (VGM) parameters.

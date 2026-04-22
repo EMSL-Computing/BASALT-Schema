@@ -22,7 +22,7 @@ end
 %% =====================================================================
 %% NEW ENTITY LAYER (labEntity hierarchy)
 %% =====================================================================
-subgraph entities [" §C  Lab Entities — NEW non-sample things "]
+subgraph entities [" §C  Lab Entities   NEW non-sample things "]
   direction LR
   labEntity["labEntity\n(abstract)"]:::abstract
   Media["Media\nmedia_type, recipe,\nformulation, pH, ..."]:::abstract
@@ -35,7 +35,7 @@ end
 %% =====================================================================
 %% LAB PREPARATION ACTIVITY (creates entities, NOT samples)
 %% =====================================================================
-subgraph entity_activities [" §D  Entity Creation — NOT sampleProcessing "]
+subgraph entity_activities [" §D  Entity Creation   NOT sampleProcessing "]
   labPrepAct["labPreparationActivity\n(abstract)"]:::abstract
   MediaCreation["MediaCreation\ncreation_date"]:::abstract
 
@@ -47,7 +47,7 @@ MediaCreation -->|"produces\n(media_output_id FK)"| Media
 %% =====================================================================
 %% MIXINS (cross-cutting concerns)
 %% =====================================================================
-subgraph mixins [" §A  Mixins — shared slot bundles "]
+subgraph mixins [" §A  Mixins   shared slot bundles "]
   direction LR
   HasIncubation["HasIncubationConditions\ntemp °C, RPM, O₂"]:::mixin
   UsesMedia["UsesMedia\nmedia_ref → Media"]:::mixin
@@ -57,7 +57,7 @@ end
 %% =====================================================================
 %% CULTURE GROWTH ACTIVITIES (sampleProcessing subclasses)
 %% =====================================================================
-subgraph culture [" §E  Culture Growth Chain — is_a sampleProcessing "]
+subgraph culture [" §E  Culture Growth Chain   is_a sampleProcessing "]
   CultureGrowth["CultureGrowth\n(abstract)\nincubation_time, container"]:::amp2
   StrainPurity["StrainPurity\ninspection_method"]:::amp2
   StockCulturePrep["StockCulturePreparation\npreparation_date"]:::amp2
@@ -78,7 +78,7 @@ UsesStrain ====>|mixin| CultureGrowth
 %% =====================================================================
 %% SAMPLE FLOW (existing processedSample types)
 %% =====================================================================
-subgraph samples [" Samples — existing schema, new enum values "]
+subgraph samples [" Samples   existing schema, new enum values "]
   UserSample["sample\n(user_sample)"]:::existing
   StockCulture["processedSample\n(stock_culture)"]:::existing
   PreCulture["processedSample\n(pre_culture)"]:::existing
@@ -106,12 +106,12 @@ Strain -.->|"strain_ref"| StrainPurity
 Strain -.->|"strain_ref"| StockCulturePrep
 
 %% =====================================================================
-%% PLATE SETUP (sampleProcessing subclasses — BRANCHED)
+%% PLATE SETUP (sampleProcessing subclasses   BRANCHED)
 %% =====================================================================
-subgraph plate_setup [" §F  Plate Setup — is_a sampleProcessing "]
+subgraph plate_setup [" §F  Plate Setup   is_a sampleProcessing "]
   PlateSetupAct["PlateSetupActivity\n(abstract)\nplate_type, barcode,\nsetup_date, well_metadata[]"]:::abstract
   AMP2Setup["AMP2PlateSetupActivity\n+ UsesMedia mixin"]:::amp2
-  EcoplateSetup["EcoplatePlateSetupActivity\nNO media — per-well design"]:::ecoplate
+  EcoplateSetup["EcoplatePlateSetupActivity\nNO media   per-well design"]:::ecoplate
 
   PlateSetupAct -.->|is_a| AMP2Setup
   PlateSetupAct -.->|is_a| EcoplateSetup
@@ -130,7 +130,7 @@ Media -.->|"media_ref"| AMP2Setup
 %% =====================================================================
 %% PLATE ANALYSIS (analysisActivity subclasses)
 %% =====================================================================
-subgraph plate_analysis [" §G  Plate Measurement — is_a analysisActivity "]
+subgraph plate_analysis [" §G  Plate Measurement   is_a analysisActivity "]
   PlateAnalysis["PlateAnalysisActivity\n(abstract)\ntimepoint_label"]:::abstract
   AMP2Analysis["AMP2AnalysisActivity\nmeasurement_type,\nwavelength_nm"]:::amp2
   EcoplateAnalysis["EcoplateAnalysisActivity\nwavelength_nm=590"]:::ecoplate
@@ -145,7 +145,7 @@ EcoPlate -->|"analyte_id"| EcoplateAnalysis
 %% =====================================================================
 %% PRODUCTS (satellite tables off processedData)
 %% =====================================================================
-subgraph products [" §H  Products — satellite tables "]
+subgraph products [" §H  Products   satellite tables "]
   PlateProduct["PlateProduct\n(abstract)\nwavelength, timepoint,\nplate_avg, well_readings[]"]:::abstract
   AMP2OD["AMP2ODProduct\nplate_reader_model"]:::amp2
   EcoAbs["EcoplateAbsorbanceProduct\nplate_lot, AWCD,\nuninoculated_mean"]:::ecoplate
@@ -160,7 +160,7 @@ EcoplateAnalysis -->|"→ WEA →"| EcoAbs
 %% =====================================================================
 %% EMBEDDED VALUE OBJECTS
 %% =====================================================================
-subgraph embedded [" §I  Embedded JSONB — NOT tables "]
+subgraph embedded [" §I  Embedded JSONB   NOT tables "]
   direction LR
   WellMeta["WellMetadata\nposition, well_type,\nreplicate_group"]:::abstract
   AMP2Well["AMP2WellMetadata\nmedia_vol, inoc_vol,\nsample_id, treatments"]:::amp2

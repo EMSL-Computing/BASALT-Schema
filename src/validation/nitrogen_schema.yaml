@@ -1,6 +1,6 @@
 ---
 # =============================================================================
-# Nitrogen Analysis — Ingest Validation Schema
+# Nitrogen Analysis   Ingest Validation Schema
 # =============================================================================
 # Source class:  NitrogenAnalysisProduct (products.yaml)
 # Analysis type: "n_ext" (lims_processed_data_schema.yaml AnalysisTypeEnum)

@@ -1,6 +1,6 @@
 ---
 # =============================================================================
-# DOC-GEN OVERLAY  —  DO NOT USE FOR VALIDATION OR CODE GENERATION
+# DOC-GEN OVERLAY     DO NOT USE FOR VALIDATION OR CODE GENERATION
 # =============================================================================
 # This file is the entry-point for `gen-doc` only.
 # It imports the operational schema unchanged and adds thin type stubs for
@@ -10,7 +10,7 @@
 # generating any actual constraints in the operational model.
 #
 # Location: src/doc_templates/doc_gen_overlay.yaml
-# (Kept alongside the Jinja2 template overrides — all doc-gen artefacts in one place)
+# (Kept alongside the Jinja2 template overrides   all doc-gen artefacts in one place)
 #
 # Run docs with:   just gen-doc
 # Serve docs with: just serve-doc
@@ -37,7 +37,7 @@ imports:
   - ../analysis_api_schema/schema/analysis_api_schema
 
 # ---------------------------------------------------------------------------
-# Type stubs — doc-gen only
+# Type stubs   doc-gen only
 # These mirror the intent of the operational schema's uuid/numeric usage
 # without imposing validation constraints there.
 # ---------------------------------------------------------------------------

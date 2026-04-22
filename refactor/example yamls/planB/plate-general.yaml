@@ -1,6 +1,6 @@
 id: https://w3id.org/MONet/analysis-api-schema/plate-general
 name: plate-general
-title: 96-Well Plate General Pattern — Harmonized AMP2 + Ecoplate
+title: 96-Well Plate General Pattern   Harmonized AMP2 + Ecoplate
 description: |-
   Unified schema for 96-well plate workflows across AMP2 and Ecoplate.
   
@@ -31,7 +31,7 @@ imports:
   - linkml:types
 
 # =============================================================================
-# GLOBAL SLOTS — shared across multiple plate-related classes
+# GLOBAL SLOTS   shared across multiple plate-related classes
 # =============================================================================
 
 slots:
@@ -83,8 +83,8 @@ slots:
   well_metadata:
     description: |-
       Structured per-well data. Format varies by activity type:
-        - AMP2: minimal (position, volumes, replicate_group) — media_id carries composition
-        - Ecoplate: rich (position, carbon_source, treatment, volumes) — no media_id
+        - AMP2: minimal (position, volumes, replicate_group)   media_id carries composition
+        - Ecoplate: rich (position, carbon_source, treatment, volumes)   no media_id
     range: WellMetadata
     multivalued: true  # Array of 96 well objects embedded in the PlateSetupActivity record
 
@@ -122,20 +122,20 @@ slots:
 
 # =============================================================================
 # STRUCTURED INLINE DATA CLASSES
-# These are NOT separate database tables — they're embedded within other records.
+# These are NOT separate database tables   they're embedded within other records.
 # Think of them as "value objects" or structured types.
 # =============================================================================
 
 classes:
 
   # ---------------------------------------------------------------------------
-  # WellMetadata — embedded in PlateSetupActivity.well_metadata
+  # WellMetadata   embedded in PlateSetupActivity.well_metadata
   # Base class with common fields; subclasses add type-specific fields
   # ---------------------------------------------------------------------------
   WellMetadata:
     description: |-
       Base structure for per-well metadata in plate setup.
-      NOT a database table — embedded as structured data in PlateSetupActivity.
+      NOT a database table   embedded as structured data in PlateSetupActivity.
       Subclasses add type-specific fields.
     attributes:
       position:
@@ -153,7 +153,7 @@ classes:
     is_a: WellMetadata
     description: |-
       AMP2-specific well metadata.
-      Minimal — media_id on parent PlateSetupActivity carries composition.
+      Minimal   media_id on parent PlateSetupActivity carries composition.
     attributes:
       media_volume_ul:
         description: Volume of media added to this well
@@ -172,7 +172,7 @@ classes:
     is_a: WellMetadata
     description: |-
       Ecoplate-specific well metadata.
-      Rich — no media_id; carbon source and treatment are per-well experimental design.
+      Rich   no media_id; carbon source and treatment are per-well experimental design.
     attributes:
       media_volume_ul:
         description: Volume of inoculum suspension added
@@ -190,13 +190,13 @@ classes:
         range: string
 
   # ---------------------------------------------------------------------------
-  # WellReading — embedded in PlateProduct.well_readings
+  # WellReading   embedded in PlateProduct.well_readings
   # Lightweight per-well measurement summary
   # ---------------------------------------------------------------------------
   WellReading:
     description: |-
       Per-well measurement data.
-      NOT a database table — embedded as structured data in PlateProduct.
+      NOT a database table   embedded as structured data in PlateProduct.
       Lightweight summary for queries; raw data in MinIO.
     attributes:
       position:
@@ -212,7 +212,7 @@ classes:
         range: string
 
 # =============================================================================
-# ACTIVITY CLASSES — processing activities that create plate entities
+# ACTIVITY CLASSES   processing activities that create plate entities
 # =============================================================================
 
   MediaPrepProcessing:
@@ -274,7 +274,7 @@ classes:
     is_a: PlateSetupActivity
     description: |-
       Ecoplate-specific plate setup.
-      No media_id — carbon source and treatment are per-well experimental design.
+      No media_id   carbon source and treatment are per-well experimental design.
       well_metadata stores rich per-well data (position, carbon_source, treatment, volumes).
       
       Linked via processingSampleLink:
@@ -284,7 +284,7 @@ classes:
     # well_metadata contains EcoplateWellMetadata instances (position, carbon_source, treatment, volumes)
 
 # =============================================================================
-# ANALYSIS ACTIVITY CLASSES — instrument measurements of plates
+# ANALYSIS ACTIVITY CLASSES   instrument measurements of plates
 # =============================================================================
 
   PlateAnalysisActivity:
@@ -317,7 +317,7 @@ classes:
       - wavelength_nm      # typically 590 for Biolog Ecoplates
 
 # =============================================================================
-# PRODUCT CLASSES — data products from plate measurements
+# PRODUCT CLASSES   data products from plate measurements
 # =============================================================================
 
   PlateProduct:
@@ -628,5 +628,5 @@ well_metadata is an ARRAY of structured objects, NOT a string:
   - In AMP2: array of AMP2WellMetadata instances (minimal info)
   - In Ecoplate: array of EcoplateWellMetadata instances (rich info)
 
-These are embedded/nested within the PlateSetupActivity record—
+These are embedded/nested within the PlateSetupActivity record 
 NOT separate database table rows (96 rows would be too many).

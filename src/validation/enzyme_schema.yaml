@@ -1,6 +1,6 @@
 ---
 # =============================================================================
-# Enzyme Activity — Ingest Validation Schema
+# Enzyme Activity   Ingest Validation Schema
 # =============================================================================
 # Source class:  EnzymeProduct (products.yaml)
 # Analysis type: "enzyme" (lims_processed_data_schema.yaml AnalysisTypeEnum)
@@ -71,4 +71,4 @@ classes:
           CSV column: Beta_Glucosidase_ug_pNP_per_g_per_h
         range: double
         required: false
-        # minimum_value: 0 — commented out; negative values possible in background-subtracted assays
+        # minimum_value: 0   commented out; negative values possible in background-subtracted assays
