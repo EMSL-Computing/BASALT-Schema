@@ -300,9 +300,9 @@ classes:
       type:
         range: string
         required: true
-      raw_data_id:
-        range: instrumentData
-        required: false # subclassed activities handle this explicitly
+      # raw_data_id:
+      #  range: instrumentData
+      #  required: false # subclassed activities handle this explicitly
       description:
         range: string
       started_at_time:
