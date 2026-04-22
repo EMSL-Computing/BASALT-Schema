@@ -329,12 +329,12 @@ classes:
       type:
         range: sitephototype
 
-  # (CHANGED MR1) analysisActivity is now ABSTRACT.
+  # analysisActivity is now ABSTRACT.
   # Concrete per-method-type subclasses (e.g. EcoplateAnalysisActivity,
   # AMP2AnalysisActivity in companion files) use is_a: analysisActivity and
   # add method-specific slots (including timepoint_label where needed).
   # New slot: sequence_order. version promoted to global slot.
-  # NOTE: Will be renamed DataGenerationActivity in the full Prov-O refactor.
+  # NOTE: Will be renamed DataGenerationActivity.
   analysisActivity:
     abstract: true
     slots:
@@ -360,18 +360,18 @@ classes:
       instrument_operator_id:
         range: personValue
 
-  # (CHANGED MR1) workflowExecutionActivity is now ABSTRACT.
+  # workflowExecutionActivity is ABSTRACT.
   # Concrete per-type subclasses (e.g. MetagenomicsWorkflowExecutionActivity in
   # metagenomics.yaml) use is_a: workflowExecutionActivity.
   # New slot: parent_workflow_id (chain link). workflow_steps direction updated.
   # version promoted to global slot.
-  # NOTE: Will be renamed DataProcessingActivity in the full Prov-O refactor.
+
   workflowExecutionActivity:
     abstract: true
     slots:
-      - parent_workflow_id  # [ADDED] self-referential chain link
-      - workflow_steps      # [CHANGED] key-value direction; schema TBD (was # TODO JSONB)
-      - version             # [PROMOTED] from inline attribute
+      - parent_workflow_id  # self-referential chain link
+      - workflow_steps      # key-value direction; schema TBD (was # TODO JSONB)
+      - version            
     attributes:
       id:
         identifier: true
