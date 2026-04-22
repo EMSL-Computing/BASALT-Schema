@@ -58,9 +58,9 @@ slots:
     title: core section
     description: The section of the core.
     examples:
-      - TOP
-      - MID
-      - BTM
+      - value: TOP
+      - value: MID
+      - value: BTM
     range: string
   project:
     title: Project
