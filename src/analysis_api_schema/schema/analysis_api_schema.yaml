@@ -84,8 +84,8 @@ slots:
   parent_workflow_id:
     description: |-
       Self-referential FK to the preceding workflowExecutionActivity in a chain.
-      NULL  → first (or standalone) step.
-      Non-null → this execution directly follows parent_workflow_id.
+      NULL  -> first (or standalone) step.
+      Non-null -> this execution directly follows parent_workflow_id.
       Enables single-hop chaining queries; full traversal via linkage_cache.
 
       DDL: ALTER TABLE "workflowExecutionActivity"
@@ -135,21 +135,21 @@ slots:
     description: |-
       Reference to the activity that generated this data product.
       Range is overridden per subclass via slot_usage:
-        processedData   → workflowExecutionActivity
-        instrumentData  → analysisActivity
+        processedData   -> workflowExecutionActivity
+        instrumentData  -> analysisActivity
     required: false   # nullable — not all products have a tracked generating activity
 
 imports:
   - linkml:types
   - enums
   - value_tables
-  # - metagenomics
   - metadata
   - methods
   - products
   - administration
   - study
   - zip_download
+  # - metagenomics
   # - linkage_cache   # MR2: uncomment when linkage_cache.yaml is added
   # - enrichment # todo have not reviewed fully
 
@@ -653,7 +653,7 @@ classes:
       Data product: XRFElementalProduct (one row per element per sample)
       
       Workflow pattern: Direct instrument output (no computational processing step)
-        processedSample → XRFAnalysisActivity → XRFElementalProduct (workflow_id = NULL)
+        processedSample -> XRFAnalysisActivity -> XRFElementalProduct (workflow_id = NULL)
       
       Protocol information: Stored externally; link via protocol_url attribute.
       Example protocol parameters (stored in external SOP or workflowExecutionActivity
@@ -691,10 +691,10 @@ classes:
       
       Workflow patterns:
         1. Direct/semi-quantitative: 
-             processedSample → XRDAnalysisActivity → XRDPhaseProduct (workflow_id = NULL)
+             processedSample -> XRDAnalysisActivity -> XRDPhaseProduct (workflow_id = NULL)
         2. With Rietveld refinement (computational):
-             processedSample → XRDAnalysisActivity → 
-             workflowExecutionActivity(type='xrd_rietveld_refinement') → 
+             processedSample -> XRDAnalysisActivity -> 
+             workflowExecutionActivity(type='xrd_rietveld_refinement') -> 
              XRDPhaseProduct (workflow_id = refinement WEA)
       
       Protocol information: Stored externally; link via protocol_url attribute.
