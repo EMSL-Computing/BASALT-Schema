@@ -372,10 +372,6 @@ classes:
       - strain_type
       - strain_source
       - strain_mutation
-    attributes:
-      id:
-        identifier: true
-        range: purchasedMaterial
     slot_usage:
       entity_type:
         equals_string: strain
@@ -449,10 +445,6 @@ classes:
       - media_additions
       - storage_temperature
       - creation_date
-    attributes:
-      id:
-        identifier: true
-        range: sampleProcessing
 
   # ============================================================================
   # CultureGrowth   abstract sampleProcessing subclass
@@ -501,10 +493,6 @@ classes:
       - inspection_method
       - target_strain
       - contaminant_strains
-    attributes:
-      id:
-        identifier: true
-        range: sampleProcessing
 
   # ============================================================================
   # StockCulturePreparation   concrete CultureGrowth
@@ -522,10 +510,6 @@ classes:
                       amp2-complete-001.yaml activity uuid:18
     slots:
       - preparation_date
-    attributes:
-      id:
-        identifier: true
-        range: sampleProcessing
 
   # ============================================================================
   # PreCultureGrowth   concrete CultureGrowth
@@ -542,10 +526,7 @@ classes:
 
       Montana source: amp2-metadata.yaml PreCultureGrowth class,
                       amp2-complete-001.yaml activity uuid:19
-    attributes:
-      id:
-        identifier: true
-        range: sampleProcessing
+
     # No additional slots beyond CultureGrowth base.
     # Montana's schema also shows no pre-culture-only slots.
 
@@ -567,10 +548,6 @@ classes:
     slots:
       - treatment_type
       - growth_time
-    attributes:
-      id:
-        identifier: true
-        range: sampleProcessing
 
 
   # ============================================================================
@@ -625,10 +602,6 @@ classes:
                  range is processedSample (not purchasedMaterial)
     slots:
       - media_ref
-    attributes:
-      id:
-        identifier: true
-        range: sampleProcessing
     # well_metadata array contains AMP2WellMetadata instances
     # AMP2WellMetadata.media_ref provides per-well override (same processedSample range)
 
@@ -646,11 +619,7 @@ classes:
       Output: processedSample(type='ecoplate_plate') via processingSampleLink
 
       v1 origin: plate-general.yaml EcoplatePlateSetupActivity
-    attributes:
-      id:
-        identifier: true
-        range: sampleProcessing
-    # NO UsesMedia mixin   key structural difference from AMP2
+    # NO UsesMedia mixin — key structural difference from AMP2
     # well_metadata array contains EcoplateWellMetadata instances
 
   PlateAnalysisActivity:
@@ -685,10 +654,6 @@ classes:
     slots:
       - measurement_type
       - wavelength_nm
-    attributes:
-      id:
-        identifier: true
-        range: analysisActivity
 
   # ============================================================================
   # EcoplateAnalysisActivity   concrete PlateAnalysisActivity
@@ -703,10 +668,6 @@ classes:
       v1 origin: plate-general.yaml EcoplateAnalysisActivity
     slots:
       - wavelength_nm
-    attributes:
-      id:
-        identifier: true
-        range: analysisActivity
 
 
   # ============================================================================
@@ -742,10 +703,6 @@ classes:
       v1 origin: plate-general.yaml AMP2ODProduct
     slots:
       - plate_reader_model
-    attributes:
-      id:
-        identifier: true
-        range: processedData
 
   # ============================================================================
   # EcoplateAbsorbanceProduct   concrete PlateProduct
@@ -762,10 +719,6 @@ classes:
       - plate_lot
       - uninoculated_mean
       - average_well_color_development
-    attributes:
-      id:
-        identifier: true
-        range: processedData
 
 
   # ============================================================================
