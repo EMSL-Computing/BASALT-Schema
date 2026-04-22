@@ -230,7 +230,7 @@ classes:
     attributes:
       id:
         identifier: true
-        range: samplingActivity
+        range: SamplingActivity
       profile_position:
         range: profilepositionenum
       sediment_type:
