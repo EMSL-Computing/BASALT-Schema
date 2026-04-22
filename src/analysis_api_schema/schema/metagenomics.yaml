@@ -40,7 +40,7 @@ slots:
 
   sample_id:
     description: Link back to the originating sample
-    range: sample
+    range: Sample
     required: false
 
   provider_name:
@@ -144,7 +144,7 @@ classes:
       Concrete metagenomics workflow run. Inherits all workflowExecutionActivity
       slots including parent_workflow_id (chain link) and workflow_steps
       (key-value, schema TBD). Specific workflow step type is captured via the
-      inherited type attribute (string); expected values: 'metagenomics_assembly',
+      inherited type attribute (string); expected values: 
       'metagenomics_annotation', 'metagenomics_binning', 'metagenomics_phylogeny'.
     # No additional type-specific slots beyond workflowExecutionActivity.
 

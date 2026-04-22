@@ -21,6 +21,35 @@ prefixes:
 default_prefix: analysis_api_schema
 default_range: string
 
+slots:
+  id:
+    description: Unique identifier
+    identifier: true
+  
+  name:
+    description: Human-readable name
+    range: string
+  
+  description:
+    description: Textual description
+    range: string
+  
+  type:
+    description: Type or category
+    range: string
+  
+  latitude:
+    description: Latitude coordinate
+    range: double
+  
+  longitude:
+    description: Longitude coordinate
+    range: double
+  
+  has_output:
+    description: Entities produced by an activity
+    multivalued: true
+
 classes:
   SiteMetadata:
     title: Site Metadata
@@ -60,7 +89,6 @@ classes:
     attributes:
       id:
           identifier: true
-          range: sampleBase #I'm not sure now that base is gone
         #sampling_activity_id:
          # description: Reference to the sampling activity that collected this sample
           #range: samplingActivity
@@ -83,30 +111,30 @@ classes:
       - type
     attributes:
       id:
-        range: sample
+        range: Sample
         identifier: true
       soil_type:
         description: The specific type of soil sample
         range: soiltype
         required: true
       soil_horizon:
-    
-    MonetSoilSample:
-      title: MONet Soil Sample
-      description: A soil sample with specific soil-related properties that align with the MONet Soil Sample template.
-      is_a: SoilSample
-      slots:
-        - name
-        - description
-        - type
-      attributes:
-        id:
-          range: sample
-          identifier: true
-        soil_type:
-          description: The specific type of soil sample, aligned with the MONet Soil Sample template
-          range: soiltype
-          required: true
+  
+  MonetSoilSample:
+    title: MONet Soil Sample
+    description: A soil sample with specific soil-related properties that align with the MONet Soil Sample template.
+    is_a: SoilSample
+    slots:
+      - name
+      - description
+      - type
+    attributes:
+      id:
+        range: Sample
+        identifier: true
+      soil_type:
+        description: The specific type of soil sample, aligned with the MONet Soil Sample template
+        range: soiltype
+        required: true
 
   AerosolSample:
     description: An aerosol sample with specific aerosol-related properties
@@ -117,7 +145,7 @@ classes:
       - type
     attributes:
       id:
-        range: sample
+        range: Sample
         identifier: true
       aerosol_type:
         description: The type or method of aerosol collection
@@ -125,16 +153,16 @@ classes:
         required: true
 
   ProcessedSample:
-    description: A sample that has undergone processing or analysis. Processed Sample entities are derived from Activitites. Relationships to original sample, other processed samples, and projects is avaialble via following Activity to Entity relationships: has_input, has_output.
+    description: A sample that has undergone processing or analysis. Processed Sample entities are derived from Activitites. Relationships to original sample, other processed samples, and projects is avaialble via following Activity to Entity relationships has_input, has_output.
     is_a: Sample
     attributes:
       id:
         identifier: true
-        range: sampleBase
-        processed_sample_type:
-          description: The type of processed sample
-          range: processedsampletype
-          required: true
+        range: Sample
+      processed_sample_type:
+        description: The type of processed sample
+        range: processedsampletype
+        required: true
 
   CoreSection:
     description: A section of a core sample (TOP, MID, BTM).
@@ -146,7 +174,7 @@ classes:
     attributes:
       id:
         identifier: true
-        range: processedSample
+        range: ProcessedSample
       core_section:
         description: The section of the core (e.g. TOP, MID, BTM)
         range: CoreSectionEnum
@@ -255,11 +283,12 @@ classes:
     attributes:
       id:
         identifier: true
-        range: samplingActivity
+        range: SamplingActivity
       profile_position:
         range: profilepositionenum
       sediment_type:
         range: sedimenttypeenum
+      soil_horizon:
         range: soilhorizonenum
       tillage:
         range: tillageenum
@@ -329,3 +358,14 @@ classes:
         range: string
       weather:
         range: string
+
+enums:
+  CoreSectionEnum:
+    description: Section of a core sample
+    permissible_values:
+      TOP:
+        description: Top section of the core
+      MID:
+        description: Middle section of the core
+      BTM:
+        description: Bottom section of the core
