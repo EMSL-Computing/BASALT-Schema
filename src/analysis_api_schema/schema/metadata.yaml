@@ -84,7 +84,7 @@ enums:
       other:
         description: Other growth facility type
 
-  oxygenstatusenum:
+  OxygenStatusEnum:
     description: Oxygen status of samples
     permissible_values:
       aerobic:
@@ -123,8 +123,10 @@ enums:
       other:
         description: Other storage temperature
 
-  sampbioticenum:
+  BioticRelationshipEnum:
     description: Sample biotic relationships
+    aliases:
+      - sampbioticenum
     permissible_values:
       free_living:
         description: Free-living organism
@@ -135,7 +137,7 @@ enums:
       symbiont:
         description: Symbiotic organism
 
-  storagecondtenum:
+  StorageConditionEnum:
     description: Sample storage conditions
     permissible_values:
       fresh:

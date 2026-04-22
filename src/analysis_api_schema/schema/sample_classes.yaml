@@ -55,6 +55,11 @@ classes:
       - name #should be inherited when Entity class is made
       - description #should be inherited when Entity class is made
       - type #should be inherited when Entity class is made
+      - project
+      - emsl_activity
+      - storage_condition
+      - oxygen_relationship
+      - samp_biotic_relationship
     todos:
       - add alternate_ids and use inheritance for specific slots
       - where should prposal ID live? probably not here?
@@ -65,6 +70,7 @@ classes:
       proposal_id:
         description: The 5 digit project ID assigned to an EMSL user proposal/project
         range: integer
+      other_storage_condt:
     todos:
       - check all ranges that point to these vlasses sample vs Sample will break
     
@@ -149,22 +155,14 @@ classes:
       id:
         identifier: true
         range: uuid
-      
       sample_name: # 60881_1_C2
         required: true
       lims_barcode:
       growth_facil:
         range: growthfacilityenum
       other_growth_facil:
-      other_storage_condt:
-      oxygen_relationship:
-        range: oxygenstatusenum
       sample_store_temp:
         range: samplestoretemp
-      samp_biotic_relationship:
-        range: sampbioticenum
-      storage_condt:
-        range: storagecondtenum
       air_temp_regm:
       chem_administration:
       collection_date:

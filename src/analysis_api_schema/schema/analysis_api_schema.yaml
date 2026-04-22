@@ -75,7 +75,30 @@ slots:
     range: integer
     todos:
       - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141 where emsl.project is the CURIE prefix
-
+  storage_condition:
+    title: storage condition
+    description: The storage condition of the sample, such as temperature or preservation method.
+    range: StorageConditionEnum
+    exact_mappings:
+      - MIXS:0000327
+    aliases:
+      - samp_store_cond
+      - storage_cond
+      - storage_condt
+  oxygen_relationship:
+    title: oxygen relationship
+    description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
+    range: OxygenStatusEnum
+    exact_mappings:
+      - MIXS:0000015
+  biotic_relationship:
+    title: observed biotic relationship
+    description: The biotic relationship of the sample, such as symbiotic or free-living
+    range: BioticRelationshipEnum
+    exact_mappings:
+      - MIXS:0000016
+    aliases:
+      - samp_biotic_relationship
 
   # --- dataProduct base slots (promoted from processedData attributes) ---
   name:
