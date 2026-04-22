@@ -122,9 +122,6 @@ slots:
     description: 5-digit EMSL user proposal/project ID
     range: integer
 
-  sampling_set:
-    range: integer
-
   core_section:
     range: string
 

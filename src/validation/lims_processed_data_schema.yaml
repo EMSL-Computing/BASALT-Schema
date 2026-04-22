@@ -154,6 +154,11 @@ classes:
       
       This class hides the internal database structure — senders only
       need to know the shape described here.
+    slots:
+      - sampling_set
+    slot_usage:
+      sampling_set:
+        required: true
     attributes:
 
       proposal_id:
@@ -162,14 +167,6 @@ classes:
           Identifies the project under which the sample was collected and analyzed.
         range: string
         required: true
-
-      sampling_set:
-        description: |-
-          Sampling set number (integer ≥ 1).
-          Groups samples collected together in the same sampling event.
-        range: integer
-        required: true
-        # minimum_value: 1
 
       analysis_type:
         description: |-
