@@ -1,0 +1,247 @@
+---
+# Example of a AMP2 process and samples. This is not a full example.
+proposal_set:
+  - entity_id: uuid:00000
+    name: My Best Proposal
+    description: The best proposal ever for doing the best science.
+    type: Proposal
+    title: My Best Proposal
+
+media_set:
+  - entity_id: uuid:1
+    name: my best of the best strain purity media
+    description: the media used in my strain purity check
+    type: Media
+    media_type: strain_purity
+    volume_ml: 5000
+    media_recipe: M9 media with 1% Glucose
+    media_formulation: manual mix
+    ph_adjustment: false
+    storage_temperature: 4 C
+     exposure_sensitivity: light sensitive
+  - entity_id: uuid:2
+    name: my best of the best stock culture media
+    description: the media used in my stock culture preparation
+    type: Media
+    media_type: stock_culture
+    volume_ml: 1000
+    media_recipe: rich media with 10% LB and 90% glycerol
+    media_formulation: manual mix
+    ph_adjustment: false
+    exposure_sensitivity: light sensitive
+    storage_temperature: 20 C
+  - entity_id: uuid:13
+    name: my best of the best pre-culture media
+    description: the media used in my pre-culture growth before experimental culture
+    type: Media
+    media_type: pre_culture
+    volume_ml: 500
+    media_recipe: M9 media with 1% Glucose
+    media_formulation: manual mix
+    ph_adjustment: true
+    ph_target: 7.0
+  - entity_id: uuid:14
+    name: my best of the best rich media for experimental culture
+    description: the media used in my experimental culture growth
+    type: Media
+    media_type: rich_media 
+    volume_ml: 500
+    media_recipe: rich media with 10% LB and 90% glycerol
+    media_formulation: manual mix
+    sterilization_method: autoclave
+    ph_adjustment: false
+
+strain_set:
+  - entity_id: uuid:3
+    name: KT2440 with pTE314 plasmid
+    description: My best strain, KT2440 with pTE314 plasmid
+    type: Strain
+    strain_id: KT2440_pTE314
+    strain_type: bacterial
+    strain_source: PNNL
+    strain_mutation: pTE314
+
+culture_set:
+  - entity_id: uuid:4
+    name: my best stock culture
+    description: My stocked up culture of KT2440 with pTE314 plasmid
+    type: StockCulture
+    strain_id: uuid:3
+    storage_location: 1425 freezer A
+    creation_date: 2023-10-15
+    volume_ml: 500
+  - entity_id: uuid:5
+    name: my second best stock culture
+    description: My second best stocked up culture of KT2440 with pTE314 plasmid
+    type: StockCulture
+    strain_id: uuid:3
+    storage_location: 1425 freezer A
+    creation_date: 2023-10-15
+    volume_ml: 500
+
+sample_set:
+  - entity_id: uuid:6
+    name: my best sample
+    description: my sample from the user for growth and analysis
+    type: Sample
+    part_of: uuid:00000
+    collection_date: 2023-10-20
+    sample_type: user_sample
+    guid_source: LIMS
+    stock_culture_id: uuid:2
+  - entity_id: uuid:9
+    name: my best sample two
+    description: my sample from the user for growth and analysis
+    type: Sample
+    part_of: uuid:00000
+    collection_date: 2023-10-20
+    sample_type: user_sample
+    guid_source: LIMS
+    stock_culture_id: uuid:2
+  - entity_id: uuid:20
+    name: my best pre-culture sample
+    description: my pre-culture sample for inoculating experimental culture growth
+    type: ProcessedSample
+    collection_date: 2023-10-21
+    sample_type: pre_culture_sample
+    guid_source: LIMS
+    stock_culture_id: uuid:2
+  - entity_id: uuid:21
+    name: my best pre culture sample2
+    description: my pre culture sample for measuring growth and doing analysis
+    type: ProcessedSample
+    collection_date: 2023-10-22
+    sample_type: pre_culture_sample
+    guid_source: LIMS
+    stock_culture_id: uuid:2
+  - entity_id: uuid:23
+    name: my best experimental culture sample
+    description: my experimental culture sample for measuring growth and doing analysis
+    type: ProcessedSample
+    collection_date: 2023-10-23
+    sample_type: experimental_culture_sample
+    guid_source: LIMS
+    stock_culture_id: uuid:2
+  - entity_id: uuid:24
+    name: my second best experimental culture sample
+    description: my second experimental culture sample for measuring growth and doing analysis
+    type: ProcessedSample
+    collection_date: 2023-10-23
+    sample_type: experimental_culture_sample
+    guid_source: LIMS
+    stock_culture_id: uuid:2
+
+instrument_set:
+  - entity_id: uuid:7
+    name: plate reader 1
+    description: the plate reader used for measuring optical density in my culture growth experiment
+    type: Instrument
+    instrument_id: the ID EMSL gives the instrument on the floor
+    manufacturer: Best Instruments Inc.
+    model: BestModel 3000
+    serial_number: 12345
+
+receiving_activity_set:
+  - activity_id: uuid:10
+    name: receiving user samples
+    description: receiving user samples and logging them into the system
+    type: SampleReceiving
+    input: 
+      - uuid:6
+      - uuid:9
+    date_received: 2023-10-20
+    condition_received: good
+    storage_location: 1425 freezer A
+    confirmed_receipt: true
+
+media_creation_activity_set:
+  - activity_id: uuid:11
+    name: creating media for strain purity check
+    description: creating media for strain purity check
+    type: MediaCreation
+    output: 
+      - uuid:1
+    creation_date: 2023-10-18
+  - activity_id: uuid:12
+    name: creating media for stock culture preparation
+    description: creating media for stock culture preparation
+    type: MediaCreation
+    output: 
+      - uuid:2
+    creation_date: 2023-10-18
+  - activity_id: uuid:15
+    name: creating media for pre-culture growth
+    description: creating media for pre-culture growth
+    type: MediaCreation
+    output: 
+      - uuid:13
+    creation_date: 2023-10-18
+  - activity_id: uuid:16
+    name: creating media for experimental culture growth
+    description: creating media for experimental culture growth
+    type: MediaCreation
+    output: 
+      - uuid:14
+    creation_date: 2023-10-18
+
+culture_growth_activity_set:
+  - activity_id: uuid:17
+    name: purity check user samples
+    description: growing culture of KT2440 to test purity
+    type: StrainPurity
+    input: 
+      - uuid:6
+      - uuid:9
+    strain_id: uuid:3
+    growth_medium: uuid:1
+    incubation_time_hours: 24
+    temperature_celsius: 30
+    agitation_speed_rpm: 200
+    container_type: flask
+    inspection_method: visual
+  - activity_id: uuid:18
+    name: preparing stock culture from user samples
+    description: preparing stock culture from user samples for long term storage
+    type: StockCulturePreparation
+    input: 
+      - uuid:6
+      - uuid:9
+    strain_id: uuid:3
+    growth_medium: uuid:2
+    incubation_time_hours: 24
+    temperature_celsius: 30
+    agitation_speed_rpm: 200
+    preparation_date: 2023-10-21
+    output:
+      - uuid:4
+      - uuid:5
+  - activity_id: uuid:19
+    name: pre-culture growth before experimental culture
+    description: growing pre-culture before experimental culture growth
+    type: PreCultureGrowth
+    input: 
+      - uuid:4
+      - uuid:5
+    output:
+      - uuid:8
+    strain_id: uuid:3
+    growth_medium: uuid:13
+    incubation_time_hours: 24
+    temperature_celsius: 30
+    agitation_speed_rpm: 200
+  - activity_id: uuid:22
+    name: experimental culture growth
+    description: growing experimental culture for analysis
+    type: ExperimentalCulture
+    input: 
+      - uuid:20
+      - uuid:21
+    output:
+      - uuid:23
+      - uuid:24
+    strain_id: uuid:3
+    growth_medium: uuid:14
+    incubation_time_hours: 24
+    temperature_celsius: 30
+    agitation_speed_rpm: 200
+    treatment_type: mineral concentration

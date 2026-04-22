@@ -296,3 +296,46 @@ enums:
     permissible_values:
       landscape:
       measure:
+
+  MediaTypeEnum:
+    description: |-
+      Purpose/context of the media preparation.
+      Montana source: amp2-metadata.yaml MediaTypeEnum
+    permissible_values:
+      strain_purity:
+        description: Media used in strain purity checks
+      stock_culture:
+        description: Media used in stock culture preparation
+      pre_culture:
+        description: Media used in pre-culture growth
+      rich_media:
+        description: Rich media for experimental culture growth
+      minimal_media:
+        description: Minimal/defined media for experimental culture growth
+
+  FormulationEnum:
+    description: |-
+      Method used to formulate media.
+      Montana source: amp2-metadata.yaml FormulationEnum
+    permissible_values:
+      manual_mix:
+        description: Manually mixed from individual components
+      commercial:
+        description: Commercially prepared (see commercial_media_catalog)
+      premixed:
+        description: Pre-mixed from a stock solution
+
+  SterilizationMethodEnum:
+    description: |-
+      Method used to sterilize media or other entities.
+      Montana source: amp2-metadata.yaml SterilizationMethodEnum
+    permissible_values:
+      autoclave:
+        description: Autoclaved
+      filter:
+        description: Filter-sterilised (typically 0.22 μm)
+      uv:
+        description: UV-sterilised
+      none:
+        description: Not sterilised (used as-is)
+
