@@ -108,7 +108,8 @@ classes:
 
   ProcessedSample:
     title: Processed Sample
-    description: A sample that has undergone processing or analysis. Processed Sample entities are derived from Activitites. Relationships to original sample, other processed samples, and projects is avaialble via following Activity to Entity relationships: has_input, has_output.
+    description: |-
+       A sample that has undergone processing or analysis. Processed Sample entities are derived from Activitites. Relationships to original sample, other processed samples, and projects is avaialble via following Activity to Entity relationships: has_input, has_output.
     is_a: Sample
     attributes:
       id:
