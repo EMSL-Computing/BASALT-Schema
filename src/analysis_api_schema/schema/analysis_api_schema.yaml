@@ -296,26 +296,32 @@ classes:
       id:
         identifier: true
         range: uuid
+      type:
+        range: string
+        required: true
       raw_data_id:
         range: instrumentData
         required: false # subclassed activities handle this explicitly
       description:
         range: string
-      ended_at_time:
-        range: datetime
-      git_url:
-        range: string
-        required: true
-      name:
-        range: string
       started_at_time:
         range: datetime
         required: true
-      type:
+      ended_at_time:
+        range: datetime
+      software_url:
         range: string
-        required: true
-      used_id:
-        range: softwareControlledTermValue
+      software_version:
+        range: string
+      software_poc:
+        range: string
+      #git_url:
+      #  range: string
+      # required: true
+      #name:
+      #  range: string
+      #used_id:
+      #  range: softwareControlledTermValue
       execution_resource:
         range: executionresourcetype
 
