@@ -101,7 +101,7 @@ slots:
       Direction: structured key-value pairs keyed by workflow type.
       Schema for allowed keys TBD per workflow type before full implementation.
       Interim DB storage: JSONB column retained.
-    range: string   # interim placeholder — will reference typed key-value class; schema TBD
+    range: string   # interim placeholder   will reference typed key-value class; schema TBD
     required: false
 
   # --- analysisActivity: temporal ordering ---
@@ -127,7 +127,7 @@ slots:
 
       DDL: ALTER TABLE "processedData"
              ADD COLUMN summary_metrics JSONB;   -- interim; formal key-value schema TBD
-    range: string   # interim placeholder — will reference typed key-value class; schema TBD
+    range: string   # interim placeholder   will reference typed key-value class; schema TBD
     required: false
 
   # --- dataProduct: provenance link ---
@@ -137,7 +137,7 @@ slots:
       Range is overridden per subclass via slot_usage:
         processedData   -> workflowExecutionActivity
         instrumentData  -> analysisActivity
-    required: false   # nullable — not all products have a tracked generating activity
+    required: false   # nullable   not all products have a tracked generating activity
 
 imports:
   - linkml:types
@@ -158,7 +158,7 @@ imports:
 classes:
 
   # ---------------------------------------------------------------------------
-  # (NEW ABSTRACT CLASS) dataProduct — MR1
+  # (NEW ABSTRACT CLASS) dataProduct   MR1
   # Abstract base for any data artifact accessible in S3 storage.
   # processedData inherits via is_a. Future sitePhoto and similar file-based
   # products will also inherit here. No direct database table.
@@ -169,7 +169,7 @@ classes:
       Abstract base class for raw or processed data accessible in S3 storage.
       Carries S3-pointer and sample-linkage slots shared across product types.
       processedData and future sitePhoto extend this via is_a.
-      No direct database table — subclasses map to tables.
+      No direct database table   subclasses map to tables.
     slots:
       - name
       - proposal_id # TODO do we need these, can the API handle queries, also change to project_id?
@@ -218,7 +218,7 @@ classes:
     attributes:
       # id inherited from dataProduct
       type:
-        # NOTE: type stays as an attribute — class-specific range (product enum)
+        # NOTE: type stays as an attribute   class-specific range (product enum)
         # cannot be a single global slot without range polymorphism support.
         range: product
         required: true
@@ -473,7 +473,7 @@ classes:
 
   # (CHANGED MR1) sampleProcessing is now ABSTRACT per PI guidance.
   # Concrete protocol-specific subclasses use is_a: sampleProcessing.
-  # processing_steps noted TODO JSONB — direction change to key-value is deferred.
+  # processing_steps noted TODO JSONB   direction change to key-value is deferred.
   sampleProcessing:
     abstract: true
     attributes:
@@ -485,7 +485,7 @@ classes:
       method_name:
         range: methodname
       processing_steps:
-        range: string # TODO JSONB — key-value direction deferred; schema TBD
+        range: string # TODO JSONB   key-value direction deferred; schema TBD
         required: true
       url:
         range: string
@@ -567,7 +567,7 @@ classes:
         - protocol_url should link to vendor SOP or EMSL internal protocol documentation
 
   # ---------------------------------------------------------------------------
-  # XRFAnalysisActivity — Concrete X-ray Fluorescence
+  # XRFAnalysisActivity   Concrete X-ray Fluorescence
   # ---------------------------------------------------------------------------
   XRFAnalysisActivity:
     is_a: XRayAnalysisActivity
@@ -605,7 +605,7 @@ classes:
 
 
   # ---------------------------------------------------------------------------
-  # XRDAnalysisActivity — Concrete X-ray Diffraction
+  # XRDAnalysisActivity   Concrete X-ray Diffraction
   # ---------------------------------------------------------------------------
   XRDAnalysisActivity:
     is_a: XRayAnalysisActivity
