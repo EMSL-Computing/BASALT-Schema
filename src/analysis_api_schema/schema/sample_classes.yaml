@@ -62,7 +62,7 @@ classes:
       - emsl_activity
       - storage_condition
       - oxygen_relationship
-      - samp_biotic_relationship
+      - biotic_relationship
       - air_temp_regm
       - chem_administration
     todos:
