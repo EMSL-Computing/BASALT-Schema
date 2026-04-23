@@ -1,5 +1,5 @@
 id: https://w3id.org/MONet/analysis-api-schema/xrf-xrd
-name: xrf-xrd
+name: analysis-api-schema-xrf-xrd
 title: XRF/XRD X-ray Analysis for MONet Analysis API
 description: |
   X-ray analytical methods (XRF elemental analysis and XRD mineralogical analysis)

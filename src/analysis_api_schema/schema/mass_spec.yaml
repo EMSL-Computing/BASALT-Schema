@@ -1,5 +1,5 @@
 id: https://w3id.org/MONet/analysis-api-schema/mass-spec
-name: mass-spec
+name: analysis-api-schema-mass-spec
 title: Mass spectrometry subclasses for MONet Analysis API
 description: |
   Mass spectrometry product and workflow classes for the MONet Analysis API.

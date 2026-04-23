@@ -1,6 +1,6 @@
 ---
-id: https://w3id.org/MONet/analysis-api-schema/sample_classes
-name: sample_classes
+id: https://w3id.org/MONet/analysis-api-schema/sample-classes
+name: analysis-api-schema-sample-classes
 title: MONet Analysis API Sample Class Schema
 description: |-
   LinkML-based schema for sample classes for Analysis API.
