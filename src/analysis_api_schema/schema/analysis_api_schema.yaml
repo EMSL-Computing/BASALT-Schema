@@ -136,6 +136,7 @@ slots:
     title: has output
     description: Output entity produced by an activity
     range: string
+    todo: I'm not sure we are going to use this, given our plan to only point 'upstream' from dataProduct to the generating activity, and not have activities point to their outputs. Do we need this slot?
 
   # --- dataProduct base slots (promoted from processedData attributes) ---
   name:
