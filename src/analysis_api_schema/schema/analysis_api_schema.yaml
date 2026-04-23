@@ -112,6 +112,31 @@ slots:
     exact_mappings:
       - MIXS:0000751
 
+  type:
+    title: type
+    description: Type classifier for an entity or activity
+    range: string
+
+  description:
+    title: description
+    description: Human-readable description for the entity or activity
+    range: string
+
+  latitude:
+    title: latitude
+    description: Latitude coordinate of the sampling site
+    range: double
+
+  longitude:
+    title: longitude
+    description: Longitude coordinate of the sampling site
+    range: double
+
+  has_output:
+    title: has output
+    description: Output entity produced by an activity
+    range: string
+
   # --- dataProduct base slots (promoted from processedData attributes) ---
   name:
     description: Human-readable name for the data product
