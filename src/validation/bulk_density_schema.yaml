@@ -1,6 +1,6 @@
 ---
 # =============================================================================
-# Bulk Density — Ingest Validation Schema
+# Bulk Density   Ingest Validation Schema
 # =============================================================================
 # Source class:  BulkDensityProduct (products.yaml)
 # Analysis type: "bulk_density" (lims_processed_data_schema.yaml AnalysisTypeEnum)

@@ -1,6 +1,6 @@
-id: https://w3id.org/MONet/analysis-api-schema/enums
-name: analysis-api-schema-enums
-title: MONet Analysis API - Enumerations
+id: https://w3id.org/MONet/analysis-api-schema/products
+name: analysis-api-schema-products
+title: MONet Analysis API - Products
 description: |-
   Enumerated values used throughout the MONet Analysis API schema
 license: MIT
@@ -27,24 +27,20 @@ slots:
 classes:
 
   BulkDensityProduct:
+    is_a: processedData
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       bulk_density_id:
         range: quantityValue
       flag:
         range: processeddataflag
 
   ElementalAnalysisProduct:
+    is_a: processedData
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       total_carbon_id:
         range: quantityValue
       total_nitrogen_id:
@@ -63,51 +59,20 @@ classes:
         range: processeddataflag
 
   EnzymeProduct:
+    is_a: processedData
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       beta_glucosidase_ug_pnp_per_g_per_h_id:
         range: quantityValue
       flag:
         range: processeddataflag
 
-  FTICRProduct:
-    slots:
-      - id
-      - measure_type
-      - rep
-      - aq
-    attributes:
-      id:
-        identifier: true
-        range: processedData
-      h_c_average:
-        range: double
-      o_c_average:
-        range: double
-      c_average:
-        range: double
-      percent_mz_assigned_id:
-        range: quantityValue
-      rms_id:
-        range: quantityValue
-      dbe_average:
-        range: double
-      low_mass_accuracy_flag:
-        range: boolean # TODO should be processeddataflag
-      low_mz_assignment_flag:
-        range: boolean # TODO should be processeddataflag
-
   GWCMoistureProduct:
+    is_a: processedData
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       gwc_percent_id:
         range: quantityValue
       flag:
@@ -115,6 +80,7 @@ classes:
 
   
   HydraulicPropertiesProduct:
+    is_a: processedData
     description: >-
       Soil hydraulic parameters derived from HYPROP evaporation-experiment data. One row per core section; the four
       attributes are the four VGM model parameters.  Proposal_ID, sampling_set,
@@ -122,9 +88,6 @@ classes:
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       alpha:
         description: >-
           Van Genuchten shape parameter alpha (1/cm). Controls the inverse of the
@@ -150,12 +113,10 @@ classes:
         range: processeddataflag
       
   IonsAnalysisProduct:
+    is_a: processedData
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       sulfate_id:
         range: quantityValue
       boron_id:
@@ -231,11 +192,9 @@ classes:
         range: processeddataflag
 
   MetaGenomicsProduct:
+    is_a: processedData
     slots:
     attributes:
-      id:
-        identifier: true
-        range: processedData
       input_to_step:
         range: metagenomicssteps
       output_to_step:
@@ -243,13 +202,11 @@ classes:
         required: true
 
   MicrobialBiomassProduct:
+    is_a: processedData
     slots:
       - measure_type
       - rep
     attributes:
-      id:
-        identifier: true
-        range: processedData
       mbc_id:
         range: quantityValue
       mbc_avg:
@@ -268,13 +225,11 @@ classes:
         range: processeddataflag
 
   NitrogenAnalysisProduct:
+    is_a: processedData
     slots:
       - measure_type
       - rep
     attributes:
-      id:
-        identifier: true
-        range: processedData
       no3_n_id:
         range: quantityValue
       no3_n_avg:
@@ -293,13 +248,11 @@ classes:
         range: processeddataflag
 
   PhosphorusAnalysisProduct:
+    is_a: processedData
     slots:
       - measure_type
       - rep
     attributes:
-      id:
-        identifier: true
-        range: processedData
       extraction_method:
         range: string
       phosphorus_id:
@@ -312,24 +265,20 @@ classes:
         range: processeddataflag
 
   RespirationProduct:
+    is_a: processedData
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       respiration_rate_per_day_id:
         range: quantityValue
       flag:
         range: processeddataflag
 
   TextureProduct:
+    is_a: processedData
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       sand_pct_id:
         range: quantityValue
       silt_pct_id:
@@ -340,12 +289,10 @@ classes:
         range: processeddataflag
 
   TomographyProduct:
+    is_a: processedData
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       roi_volume_voxel:
         range: double
       voxel_size:
@@ -414,12 +361,10 @@ classes:
         range: processeddataflag
 
   pHProduct:
+    is_a: processedData
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       ph:
         range: double
       flag:
@@ -446,7 +391,7 @@ classes:
 
 
   # ---------------------------------------------------------------------------
-  # XRFElementalProduct — X-ray Fluorescence Elemental Data
+  # XRFElementalProduct   X-ray Fluorescence Elemental Data
   # ---------------------------------------------------------------------------
   XRFElementalProduct:
     is_a: XRayDataProduct
@@ -475,10 +420,6 @@ classes:
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
-        required: true
       # --- Element concentrations in mg/kg (float) ---
       cl_mg_per_kg:
         description: Chlorine concentration in mg/kg
@@ -619,7 +560,7 @@ classes:
 
 
   # ---------------------------------------------------------------------------
-  # XRDPhaseProduct — X-ray Diffraction Mineralogical Data
+  # XRDPhaseProduct   X-ray Diffraction Mineralogical Data
   # ---------------------------------------------------------------------------
   XRDPhaseProduct:
     is_a: XRayDataProduct
@@ -665,10 +606,6 @@ classes:
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
-        required: true
       # --- Mineral phase weight percentages ---
       quartz_percent:
         description: Quartz (SiO2) weight percent

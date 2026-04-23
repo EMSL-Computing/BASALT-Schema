@@ -4,7 +4,7 @@
 # =============================================================================
 #
 # CONTEXT and Purpose:
-# - Validation schema for TomographyProduct — pore geometry and flow properties
+# - Validation schema for TomographyProduct   pore geometry and flow properties
 #   derived from X-ray computed tomography (XCT / micro-CT) of intact soil cores
 # - Source: TomographyProduct class in src/analysis_api_schema/schema/products.yaml
 # - NOT currently in Soil_BioChemical_properties.csv (published in separate XCT deliverable)
@@ -17,10 +17,10 @@
 # - I also see there is already an xct.yaml file in the main repo; feel free to supercede/ignore.
 #
 # Attribute groupings for readability:
-#   ROI geometry        — roi_volume_voxel, voxel_size, connected_pores
-#   Pore diameter stats — pore_diameter_min/max/mean/median/variance
-#   Pore volume         — pore_volume_mean, total_pore_volume
-#   Flow (x/y/z axes)  — permeability, flow_rate, tortuosity per axis
+#   ROI geometry          roi_volume_voxel, voxel_size, connected_pores
+#   Pore diameter stats   pore_diameter_min/max/mean/median/variance
+#   Pore volume           pore_volume_mean, total_pore_volume
+#   Flow (x/y/z axes)    permeability, flow_rate, tortuosity per axis
 #
 # Relationship to broader schema:
 # - analysis_type key in LIMSProcessedData envelope: "xct" (to be confirmed)
@@ -34,7 +34,7 @@ id: https://w3id.org/MONet/analysis-api-schema/tomography
 name: tomography_schema
 title: MONet XCT / Tomography Product Schema
 description: |-
-  Validation schema for TomographyProduct — pore geometry statistics and
+  Validation schema for TomographyProduct   pore geometry statistics and
   computed flow properties derived from X-ray computed tomography (micro-CT)
   of intact soil cores.
   
@@ -178,7 +178,7 @@ classes:
         required: false
 
       # -----------------------------------------------------------------------
-      # Flow Properties — X axis
+      # Flow Properties   X axis
       # -----------------------------------------------------------------------
 
       permeability_x:
@@ -205,7 +205,7 @@ classes:
         required: false
 
       # -----------------------------------------------------------------------
-      # Flow Properties — Y axis
+      # Flow Properties   Y axis
       # -----------------------------------------------------------------------
 
       permeability_y:
@@ -229,7 +229,7 @@ classes:
         required: false
 
       # -----------------------------------------------------------------------
-      # Flow Properties — Z axis
+      # Flow Properties   Z axis
       # -----------------------------------------------------------------------
 
       permeability_z:

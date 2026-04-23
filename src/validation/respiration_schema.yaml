@@ -8,10 +8,10 @@
 # - Describes the shape of RespirationProductValues as POSTed to the API
 # - NOT currently represented as a measurement column in Soil_BioChemical_properties.csv
 #   (only flag_respiration appears in the CSV output; the value column is TBD)
-# - This schema covers the INGEST contract — what Kaizad/LIMS sends to the API
+# - This schema covers the INGEST contract   what Kaizad/LIMS sends to the API
 #
 # Status:
-# - Placeholder values/units marked with TODO — confirm with Kaizad
+# - Placeholder values/units marked with TODO   confirm with Kaizad
 # - flag permissible values to be aligned with ProcessedDataFlagEnum in processed_data.yml
 #
 # Last Updated:  2026-03-16
@@ -86,9 +86,9 @@ classes:
       respiration:
         description: |-
           Soil respiration rate.
-          TODO: confirm units with Kaizad — expected unit is µg CO₂-C g⁻¹ h⁻¹
+          TODO: confirm units with Kaizad   expected unit is µg CO₂-C g⁻¹ h⁻¹
           or mg CO₂-C kg⁻¹ day⁻¹ depending on analytical method.
           Minimum value: 0 (non-negative)
         range: double
         required: false
-        # TODO: unit — confirm with Kaizad
+        # TODO: unit   confirm with Kaizad

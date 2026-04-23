@@ -1,7 +1,7 @@
 ---
-id: https://w3id.org/MONet/analysis-api-schema/plate-general-v2
-name: plate-general-v2
-title: 96-Well Plate Workflows — V2 with Entities, Culture Activities, Montana Slots
+id: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+name: analysis-api-schema-media-strain-culture-plate
+title: 96-Well Plate Workflows   V2 with Entities, Culture Activities, Montana Slots
 description: |-
   Comprehensive schema delta for 96-well plate workflows (AMP2 + Ecoplate)
   with upstream culture growth activities and generalised processing hierarchy.
@@ -10,7 +10,7 @@ imports:
   - linkml:types
 
 slots:
-  # Mixin slots — HasIncubationConditions
+  # Mixin slots   HasIncubationConditions
   temperature_celsius:
     description: Temperature in degrees Celsius
     range: float
@@ -24,7 +24,7 @@ slots:
     range: string
 
   # ---------------------------------------------------------------------------
-  # Direct FK slots — media_ref, strain_ref
+  # Direct FK slots   media_ref, strain_ref
   # ---------------------------------------------------------------------------
   media_ref:
     description: |-
@@ -137,7 +137,7 @@ slots:
   strain_identifier:
     description: |-
       External human-readable strain identifier (e.g. "KT2440_pTE314").
-      NOT the database UUID — that is the Strain.id attribute.
+      NOT the database UUID   that is the Strain.id attribute.
     range: string
     required: true
     # Montana: strain_id (renamed to avoid collision with FK usage)
@@ -332,7 +332,7 @@ classes:
       - oxygen_status
 
   # ============================================================================
-  # purchasedMaterial — abstract base
+  # purchasedMaterial   abstract base
   # ============================================================================
   purchasedMaterial:
     abstract: true
@@ -356,12 +356,12 @@ classes:
         range: string
 
   # ============================================================================
-  # Strain — concrete purchasedMaterial
+  # Strain   concrete purchasedMaterial
   # ============================================================================
   Strain:
     is_a: purchasedMaterial
     description: |-
-      A microbial strain entity.  Strains are reference data — they are stable
+      A microbial strain entity.  Strains are reference data   they are stable
       identities that get referenced by culture growth activities.
 
       entity_type discriminator value: 'strain'
@@ -372,21 +372,17 @@ classes:
       - strain_type
       - strain_source
       - strain_mutation
-    attributes:
-      id:
-        identifier: true
-        range: purchasedMaterial
     slot_usage:
       entity_type:
         equals_string: strain
     todos:
       - Montana asks "Do we need more information about the strain? Genotype? Phenotype?"
       - Consider adding slots for common_name, host_common_name, taxonomy_id
-        (Montana has these on Sample — evaluate if they belong on Strain too).
+        (Montana has these on Sample   evaluate if they belong on Strain too).
 
 
   # ============================================================================
-  # labProcessingActivity — new abstract parent of sampleProcessing
+  # labProcessingActivity   new abstract parent of sampleProcessing
   # ============================================================================
   labProcessingActivity:
     abstract: true
@@ -414,7 +410,7 @@ classes:
         range: string
 
   # ============================================================================
-  # MediaPreparation — concrete sampleProcessing (replaces MediaCreation)
+  # MediaPreparation   concrete sampleProcessing (replaces MediaCreation)
   # ============================================================================
   MediaPreparation:
     is_a: sampleProcessing
@@ -449,13 +445,9 @@ classes:
       - media_additions
       - storage_temperature
       - creation_date
-    attributes:
-      id:
-        identifier: true
-        range: sampleProcessing
 
   # ============================================================================
-  # CultureGrowth — abstract sampleProcessing subclass
+  # CultureGrowth   abstract sampleProcessing subclass
   # ============================================================================
   CultureGrowth:
     is_a: sampleProcessing
@@ -483,7 +475,7 @@ classes:
     #   temperature_celsius, agitation_speed_rpm, oxygen_status
 
   # ============================================================================
-  # StrainPurity — concrete CultureGrowth
+  # StrainPurity   concrete CultureGrowth
   # ============================================================================
   StrainPurity:
     is_a: CultureGrowth
@@ -492,7 +484,7 @@ classes:
       expected strain without contamination.
 
       Input:  sample(s) via processingSampleLink (role: input_sample)
-      Output: typically no new processedSample — pass/fail QC gate.
+      Output: typically no new processedSample   pass/fail QC gate.
       Refs:   Media (growth medium), Strain (target organism)
 
       Montana source: amp2-metadata.yaml StrainPurity class,
@@ -501,13 +493,9 @@ classes:
       - inspection_method
       - target_strain
       - contaminant_strains
-    attributes:
-      id:
-        identifier: true
-        range: sampleProcessing
 
   # ============================================================================
-  # StockCulturePreparation — concrete CultureGrowth
+  # StockCulturePreparation   concrete CultureGrowth
   # ============================================================================
   StockCulturePreparation:
     is_a: CultureGrowth
@@ -522,13 +510,9 @@ classes:
                       amp2-complete-001.yaml activity uuid:18
     slots:
       - preparation_date
-    attributes:
-      id:
-        identifier: true
-        range: sampleProcessing
 
   # ============================================================================
-  # PreCultureGrowth — concrete CultureGrowth
+  # PreCultureGrowth   concrete CultureGrowth
   # ============================================================================
   PreCultureGrowth:
     is_a: CultureGrowth
@@ -542,15 +526,12 @@ classes:
 
       Montana source: amp2-metadata.yaml PreCultureGrowth class,
                       amp2-complete-001.yaml activity uuid:19
-    attributes:
-      id:
-        identifier: true
-        range: sampleProcessing
+
     # No additional slots beyond CultureGrowth base.
     # Montana's schema also shows no pre-culture-only slots.
 
   # ============================================================================
-  # ExperimentalCulture — concrete CultureGrowth
+  # ExperimentalCulture   concrete CultureGrowth
   # ============================================================================
   ExperimentalCulture:
     is_a: CultureGrowth
@@ -567,14 +548,10 @@ classes:
     slots:
       - treatment_type
       - growth_time
-    attributes:
-      id:
-        identifier: true
-        range: sampleProcessing
 
 
   # ============================================================================
-  # PlateSetupActivity — abstract sampleProcessing subclass
+  # PlateSetupActivity   abstract sampleProcessing subclass
   # ============================================================================
   PlateSetupActivity:
     is_a: sampleProcessing
@@ -605,7 +582,7 @@ classes:
     #   oxygen_status
 
   # ============================================================================
-  # AMP2PlateSetupActivity — concrete PlateSetupActivity
+  # AMP2PlateSetupActivity   concrete PlateSetupActivity
   # ============================================================================
   AMP2PlateSetupActivity:
     is_a: PlateSetupActivity
@@ -625,31 +602,23 @@ classes:
                  range is processedSample (not purchasedMaterial)
     slots:
       - media_ref
-    attributes:
-      id:
-        identifier: true
-        range: sampleProcessing
     # well_metadata array contains AMP2WellMetadata instances
     # AMP2WellMetadata.media_ref provides per-well override (same processedSample range)
 
   # ============================================================================
-  # EcoplatePlateSetupActivity — concrete PlateSetupActivity
+  # EcoplatePlateSetupActivity   concrete PlateSetupActivity
   # ============================================================================
   EcoplatePlateSetupActivity:
     is_a: PlateSetupActivity
     description: |-
       Ecoplate-specific plate setup.
-      NO media reference — carbon source and treatment are per-well experimental
+      NO media reference   carbon source and treatment are per-well experimental
       design captured in EcoplateWellMetadata instances.
 
       Input:  processedSample(type='soil_extract') via processingSampleLink
       Output: processedSample(type='ecoplate_plate') via processingSampleLink
 
       v1 origin: plate-general.yaml EcoplatePlateSetupActivity
-    attributes:
-      id:
-        identifier: true
-        range: sampleProcessing
     # NO UsesMedia mixin — key structural difference from AMP2
     # well_metadata array contains EcoplateWellMetadata instances
 
@@ -670,7 +639,7 @@ classes:
     #   instrument_operator_id, sequence_order, version
 
   # ============================================================================
-  # AMP2AnalysisActivity — concrete PlateAnalysisActivity
+  # AMP2AnalysisActivity   concrete PlateAnalysisActivity
   # ============================================================================
   AMP2AnalysisActivity:
     is_a: PlateAnalysisActivity
@@ -685,13 +654,9 @@ classes:
     slots:
       - measurement_type
       - wavelength_nm
-    attributes:
-      id:
-        identifier: true
-        range: analysisActivity
 
   # ============================================================================
-  # EcoplateAnalysisActivity — concrete PlateAnalysisActivity
+  # EcoplateAnalysisActivity   concrete PlateAnalysisActivity
   # ============================================================================
   EcoplateAnalysisActivity:
     is_a: PlateAnalysisActivity
@@ -703,14 +668,10 @@ classes:
       v1 origin: plate-general.yaml EcoplateAnalysisActivity
     slots:
       - wavelength_nm
-    attributes:
-      id:
-        identifier: true
-        range: analysisActivity
 
 
   # ============================================================================
-  # PlateProduct — abstract base for plate data products
+  # PlateProduct   abstract base for plate data products
   # ============================================================================
   PlateProduct:
     abstract: true
@@ -730,7 +691,7 @@ classes:
       - well_readings
 
   # ============================================================================
-  # AMP2ODProduct — concrete PlateProduct
+  # AMP2ODProduct   concrete PlateProduct
   # ============================================================================
   AMP2ODProduct:
     is_a: PlateProduct
@@ -742,13 +703,9 @@ classes:
       v1 origin: plate-general.yaml AMP2ODProduct
     slots:
       - plate_reader_model
-    attributes:
-      id:
-        identifier: true
-        range: processedData
 
   # ============================================================================
-  # EcoplateAbsorbanceProduct — concrete PlateProduct
+  # EcoplateAbsorbanceProduct   concrete PlateProduct
   # ============================================================================
   EcoplateAbsorbanceProduct:
     is_a: PlateProduct
@@ -762,19 +719,15 @@ classes:
       - plate_lot
       - uninoculated_mean
       - average_well_color_development
-    attributes:
-      id:
-        identifier: true
-        range: processedData
 
 
   # ============================================================================
-  # WellMetadata — base embedded type in PlateSetupActivity.well_metadata
+  # WellMetadata   base embedded type in PlateSetupActivity.well_metadata
   # ============================================================================
   WellMetadata:
     description: |-
       Base structure for per-well metadata in plate setup.
-      NOT a database table — embedded as JSONB in PlateSetupActivity.
+      NOT a database table embedded as JSONB in PlateSetupActivity.
       Subclasses add type-specific fields.
     attributes:
       position:
@@ -782,20 +735,20 @@ classes:
         range: string
         required: true
       well_type:
-        description: Role of this well — "sample", "blank", "uninoculated_control", "standard"
+        description: Role of this well   "sample", "blank", "uninoculated_control", "standard"
         range: string
       replicate_group:
         description: Identifier linking technical replicates (e.g. "rep1", "rep2")
         range: string
 
   # ============================================================================
-  # AMP2WellMetadata — AMP2-specific embedded type
+  # AMP2WellMetadata   AMP2-specific embedded type
   # ============================================================================
   AMP2WellMetadata:
     is_a: WellMetadata
     description: |-
       AMP2-specific per-well metadata.
-      Minimal — media composition comes from the Media entity referenced via
+      Minimal   media composition comes from the Media entity referenced via
       the activity's media_ref slot.  Per-well data is volumes and replicate info.
 
       Montana source: amp2-metadata.yaml WellDetails class,
@@ -831,13 +784,13 @@ classes:
         # Montana: treatments (on WellDetails)
 
   # ============================================================================
-  # EcoplateWellMetadata — Ecoplate-specific embedded type
+  # EcoplateWellMetadata   Ecoplate-specific embedded type
   # ============================================================================
   EcoplateWellMetadata:
     is_a: WellMetadata
     description: |-
       Ecoplate-specific per-well metadata.
-      Rich — no media entity; carbon source and treatment are per-well
+      Rich   no media entity; carbon source and treatment are per-well
       experimental design variables.
 
       v1 origin: plate-general.yaml EcoplateWellMetadata
@@ -858,12 +811,12 @@ classes:
         range: string
 
   # ============================================================================
-  # WellReading — embedded type in PlateProduct.well_readings
+  # WellReading   embedded type in PlateProduct.well_readings
   # ============================================================================
   WellReading:
     description: |-
       Per-well measurement data.
-      NOT a database table — embedded as JSONB in PlateProduct records.
+      NOT a database table   embedded as JSONB in PlateProduct records.
       Lightweight summary for queries; raw data in MinIO.
 
       v1 origin: plate-general.yaml WellReading
@@ -877,6 +830,6 @@ classes:
         range: float
         required: true
       flag:
-        description: QC flag — "ok", "blank", "outlier", "contaminated"
+        description: QC flag   "ok", "blank", "outlier", "contaminated"
         range: string
 

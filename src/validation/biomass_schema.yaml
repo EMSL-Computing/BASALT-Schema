@@ -1,6 +1,6 @@
 ---
 # =============================================================================
-# Microbial Biomass — Ingest Validation Schema
+# Microbial Biomass   Ingest Validation Schema
 # =============================================================================
 # Source class:  MicrobialBiomassProduct (products.yaml)
 # Analysis type: "biomass" (lims_processed_data_schema.yaml AnalysisTypeEnum)
@@ -9,7 +9,7 @@
 #                (soil_biochemical_properties_schema.yaml)
 #
 # NOTE: operational schema carries separate mbc_avg / mbn_avg fields and
-#       corresponding flag_avg fields for replicate averages — included here
+#       corresponding flag_avg fields for replicate averages   included here
 #       so ingest can carry both replicate values and pre-computed averages.
 # Last Updated:  2026-03-16
 # =============================================================================

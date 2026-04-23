@@ -4,10 +4,10 @@
 # =============================================================================
 #
 # CONTEXT and Purpose:
-# - Validation schema for FTICRProduct — summary statistics from FT-ICR mass
+# - Validation schema for FTICRProduct   summary statistics from FT-ICR mass
 #   spectrometry analysis of soil organic matter
 # - Attributes are aggregate metrics computed from the full spectral assignment
-#   (not individual peaks — those live in instrument data files)
+#   (not individual peaks   those live in instrument data files)
 # - Source: FTICRProduct class in src/analysis_api_schema/schema/products.yaml
 # - NOT currently in Soil_BioChemical_properties.csv (instrument data, separate deliverable)
 # - This schema covers the API-level ingest contract for rapid validation
@@ -20,7 +20,7 @@
 #
 # Relationship to broader schema:
 # - analysis_type key in LIMSProcessedData envelope: "fticr" (to be confirmed)
-# - fticr_acquisition_method exists in routemethod enum (enums.yaml) — no changes needed
+# - fticr_acquisition_method exists in routemethod enum (enums.yaml)   no changes needed
 # - quantityValue fields (percent_mz_assigned, rms) carry both a numeric and a unit;
 #   flattened here to scalar + unit note for validation simplicity
 #
@@ -31,7 +31,7 @@ id: https://w3id.org/MONet/analysis-api-schema/fticr
 name: fticr_schema
 title: MONet FT-ICR MS Product Schema
 description: |-
-  Validation schema for FTICRProduct — aggregate summary statistics from
+  Validation schema for FTICRProduct   aggregate summary statistics from
   Fourier-Transform Ion Cyclotron Resonance Mass Spectrometry (FT-ICR MS)
   analysis of soil organic matter.
   
@@ -120,7 +120,7 @@ classes:
         description: |-
           Percentage of detected m/z peaks successfully assigned a molecular
           formula (%). Higher values indicate better spectral coverage.
-          TODO: stored as quantityValue in operational schema — confirm unit (%)
+          TODO: stored as quantityValue in operational schema   confirm unit (%)
         range: double
         required: false
         # unit: percent
@@ -128,7 +128,7 @@ classes:
       rms:
         description: |-
           Root Mean Square (RMS) mass accuracy of molecular formula assignments.
-          TODO: confirm unit with instrument team — typically ppm.
+          TODO: confirm unit with instrument team   typically ppm.
           Lower values indicate better calibration and assignment accuracy.
         range: double
         required: false

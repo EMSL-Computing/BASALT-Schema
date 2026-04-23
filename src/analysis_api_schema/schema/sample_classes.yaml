@@ -1,6 +1,6 @@
 ---
-id: https://w3id.org/MONet/analysis-api-schema
-name: sample_classes.yaml
+id: https://w3id.org/MONet/analysis-api-schema/sample-classes
+name: analysis-api-schema-sample-classes
 title: MONet Analysis API Sample Class Schema
 description: |-
   LinkML-based schema for sample classes for Analysis API.
@@ -20,6 +20,9 @@ prefixes:
 
 default_prefix: analysis_api_schema
 default_range: string
+
+imports:
+  - linkml:types
 
 classes:
   SiteMetadata:
@@ -65,6 +68,7 @@ classes:
     todos:
       - add alternate_ids and use inheritance for specific slots
       - where should prposal ID live? probably not here?
+      - check all ranges that point to these vlasses sample vs Sample will break
     attributes:
       id:
         identifier: true
@@ -73,8 +77,6 @@ classes:
         description: The 5 digit project ID assigned to an EMSL user proposal/project
         range: integer
       other_storage_condt:
-    todos:
-      - check all ranges that point to these vlasses sample vs Sample will break
     
   SoilSample:
     description: A soil sample with specific soil-related properties.
@@ -233,6 +235,7 @@ classes:
         range: profilepositionenum
       sediment_type:
         range: sedimenttypeenum
+      soil_horizon:
         range: soilhorizonenum
       tillage:
         range: tillageenum

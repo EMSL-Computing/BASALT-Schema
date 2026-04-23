@@ -274,40 +274,53 @@ enums:
       nexus:
       dms:
 
-
   devicetypeenum:
     permissible_values:
       orbital_shaker:
       thermomixer:
  
-  product:
-    permissible_values:
-      processedData:
-      FTICRProduct:
-      TomographyProduct:
-      MicrobialBiomassProduct:
-      NitrogenAnalysisProduct:
-      PhosphorusAnalysisProduct:
-      pHProduct:
-      ElementalAnalysisProduct:
-      IonsAnalysisProduct:
-      RespirationProduct:
-      EnzymeProduct:
-      TextureProduct:
-      WEOMProduct:
-      HydraulicPropertiesProduct:
-      GWCMoistureProduct:
-      MAOMProduct:
-      BulkDensityProduct:
-      MetaGenomicsProduct:
-      XRFElementalProduct:
-      XRDPhaseProduct:
-
   sitephototype:
     permissible_values:
       landscape:
       measure:
 
+  calibrationtargetenum:
+    permissible_values:
+      mass_charge_ratio:
+      retention_time:
+      retention_index:
+
+  polarityenum:
+    permissible_values:
+      positive:
+      negative:
+
+  chromatographytypeenum:
+    permissible_values:
+      liquid_chromatography:
+      gas_chromatography:
+      solid_phase_extraction:
+
+  msrawfiletypeenum:
+    permissible_values:
+      .d:
+      .raw:
+      other: # fill in more of these idk
+  
+  msmodeenum:
+    permissible_values:
+      profile:
+      centroid:
+
+  analytecategoryenum:
+    permissible_values:
+      dna:
+      rna:
+      protein:
+      metabolite:
+      lipid:
+      natural_organic_matter:
+      unknown:
   MediaTypeEnum:
     description: |-
       Purpose/context of the media preparation.
@@ -349,4 +362,3 @@ enums:
         description: UV-sterilised
       none:
         description: Not sterilised (used as-is)
-

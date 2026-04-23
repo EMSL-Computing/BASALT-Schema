@@ -125,7 +125,7 @@ slots:
   strain_identifier:
     description: |-
       External human-readable strain identifier (e.g. "KT2440_pTE314").
-      NOT the database UUID — that is the Strain.id attribute.
+      NOT the database UUID   that is the Strain.id attribute.
     range: string
     required: true
     # Montana: strain_id (renamed to avoid collision with FK usage)

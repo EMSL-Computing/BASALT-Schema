@@ -1,5 +1,5 @@
 id: https://w3id.org/MONet/analysis-api-schema/xrf-xrd
-name: xrf-xrd
+name: analysis-api-schema-xrf-xrd
 title: XRF/XRD X-ray Analysis for MONet Analysis API
 description: |
   X-ray analytical methods (XRF elemental analysis and XRD mineralogical analysis)
@@ -206,11 +206,6 @@ classes:
       Required enum additions to enums.yaml:
         routemethod:
           xrf_analysis:  # Add to routemethod permissible_values
-    attributes:
-      id:
-        identifier: true
-        range: analysisActivity
-        required: true
     # type field (inherited) should be set to 'xrf_analysis'
     # instrument_id should point to XRF instrument (e.g., Rigaku, Bruker)
 
@@ -247,11 +242,6 @@ classes:
       Required enum additions to enums.yaml:
         routemethod:
           xrd_analysis:  # Add to routemethod permissible_values
-    attributes:
-      id:
-        identifier: true
-        range: analysisActivity
-        required: true
     # type field (inherited) should be set to 'xrd_analysis'
     # instrument_id should point to XRD instrument (e.g., Bruker D8, Rigaku MiniFlex)
 
@@ -327,10 +317,6 @@ classes:
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
-        required: true
       # --- Element concentrations in mg/kg (float) ---
       cl_mg_per_kg:
         description: Chlorine concentration in mg/kg
@@ -517,10 +503,6 @@ classes:
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
-        required: true
       # --- Mineral phase weight percentages ---
       quartz_percent:
         description: Quartz (SiO2) weight percent

@@ -1,6 +1,6 @@
-id: https://w3id.org/MONet/analysis-api-schema/enums
-name: analysis-api-schema-enums
-title: MONet Analysis API - Enumerations
+id: https://w3id.org/MONet/analysis-api-schema/methods
+name: analysis-api-schema-methods
+title: MONet Analysis API - Methods
 description: |-
   Enumerated values used throughout the MONet Analysis API schema
 license: MIT
@@ -18,161 +18,77 @@ slots:
   analytic:
     range: string
     required: true
-  method:
-    range: string
-    required: true
+
   location:
     range: string
     required: true
 
-
+  method:
+    range: string
+    # what is this for.
 
 classes:
 
-  BulkDensityMethod:
+######## existing "method" classes grouped under abstract parent class
+  Method:
+    abstract: true
     slots:
       - analytic
+
+  BulkDensityMethod:
+    is_a: Method
+    slots:
     attributes:
-      id:
-        identifier: true
-        range: analysisActivity
 
   ElementalAnalysisMethod:
+    is_a: Method
+    slots:
     attributes:
-      id:
-        identifier: true
-        range: analysisActivity
-      
 
   EnzymeActivityMethod:
+    is_a: Method
     slots:
-      - analytic
       - location
     attributes:
-      id:
-        identifier: true
-        range: analysisActivity
       incubation_temp_c:
         range: double
       incubation_time:
         range: string
       wavelength:
         range: double
-      method:
-        range: string
-        required: true
 
-  FTICR_AcquisitionMethod:
-    slots:
-      - analytic
-      - location
-    attributes:
-      id:
-        identifier: true
-        range: analysisActivity
-      injection:
-        range: string
-        required: true
-      ionization:
-        range: ionizationenum
-        required: true
-      polarity:
-        range: string
-        required: true
-      iat:
-        range: double
-      fid:
-        range: double
-      mass_range:
-        range: double # another array of double...
-        
   GravimetricWaterContentMethod:
+    is_a: Method
     slots:
-      - analytic
       - location
     attributes:
-      id:
-        identifier: true
-        range: analysisActivity
-
 
   HydraulicPropertiesMethod:
+    is_a: Method
     slots:
-      - analytic
       - location
     attributes:
-      id:
-        identifier: true
-        range: analysisActivity
       fitting_model:
         range: string
         required: true
   
   KuoMethod:
+    is_a: Method
     slots:
-      - analytic
       - location
       - method
     attributes:
-      id:
-        identifier: true
-        range: analysisActivity
       detection_limit:
         range: string
         required: true
       wavelength:
         range: string
-  
-  LCMS_MetabolomicsMethod:
-    slots:
-      - analytic
-      - location
-    attributes:
-      id:
-        identifier: true
-        range: analysisActivity
-      injection:
-        range: string
-        required: true
-      polarity:
-        range: string
-        required: true
-      column:
-        range: string
-        required: true
-      mode:
-        range: string
-        required: true
-      method_duration:
-        range: string
-        required: true
-      runtime:
-        range: string
-        required: true
-      resolution:
-        range: double
-        required: true
-      scan_range:
-        range: string
-        required: true
-      dd_ms2_resolution:
-        range: double
-        required: true
-      loop_count:
-        range: string
-        required: true
-      isolation_window:
-        range: string
-        required: true
-  
+
   MicrobialBiomassMethod:
+    is_a: Method
     slots:
-      - analytic
       - location
     attributes:
-      id:
-        identifier: true
-        range: analysisActivity
       detector:
         range: string
         required: true
@@ -192,24 +108,18 @@ classes:
         required: true
   
   PH_Method:
+    is_a: Method
     slots:
-      - analytic
       - location
     attributes:
-      id:
-        identifier: true
-        range: analysisActivity
       calibration:
         range: string
         required: true
   
   RespirationMethod:
+    is_a: Method
     slots:
-      - analytic
     attributes:
-      id:
-        identifier: true
-        range: analysisActivity
       respiration_analysis_type:
         range: string
         required: true
@@ -225,13 +135,10 @@ classes:
         range: quantityValue
   
   TOC_TN_Method:
+    is_a: Method
     slots:
-      - analytic
       - location
     attributes:
-      id:
-        identifier: true
-        range: analysisActivity
       column:
         range: string
       mode:
@@ -252,23 +159,17 @@ classes:
         range: string
   
   TextureMethod:
+    is_a: Method
     attributes:
-      id:
-        identifier: true
-        range: analysisActivity
     slots:
-      - analytic
       - location
       - method
   
   XrayComputedTomographyMethod:
+    is_a: Method
     slots:
-      - analytic
       - location
     attributes:
-      id:
-        identifier: true
-        range: analysisActivity
       x_ray_power:
         range: string
         required: true
