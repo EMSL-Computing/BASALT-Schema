@@ -31,21 +31,6 @@ slots:
       - Is sampling activity where we want to capture this?
     required: false
 
-classes:
-
-  # (CHANGED MR1) samplingActivity is now ABSTRACT per PI guidance.
-  # Concrete subclasses (e.g. soil, aerosol — see below) use is_a: samplingActivity.
-  # New slot: emsl_activity for EMSL activity/campaign scoping.
-
-  sampling_activity_site_metadata_link:
-    attributes:
-      sampling_activity_id:
-        range: SamplingActivity
-        required: true
-      site_metadata_id:
-        range: SiteMetadata
-        required: true
-
 enums:
   samplingactivitytype:
     description: Types of sampling activities
