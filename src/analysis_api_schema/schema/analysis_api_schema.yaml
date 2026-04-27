@@ -136,7 +136,7 @@ slots:
     title: has output
     description: Output entity produced by an activity
     range: string
-    todo: I'm not sure we are going to use this, given our plan to only point 'upstream' from dataProduct to the generating activity, and not have activities point to their outputs. Do we need this slot?
+    todos: I'm not sure we are going to use this, given our plan to only point 'upstream' from dataProduct to the generating activity, and not have activities point to their outputs. Do we need this slot?
 
   # --- dataProduct base slots (promoted from processedData attributes) ---
   name:
@@ -261,7 +261,7 @@ imports:
   - zip_download
   - media_strain_culture_plate
   - metagenomics
-  # - mass_spec
+  - mass_spec
   # - metaproteomics
   - xrf_xrd
   # - linkage_cache   # MR2: uncomment when linkage_cache.yaml is added
