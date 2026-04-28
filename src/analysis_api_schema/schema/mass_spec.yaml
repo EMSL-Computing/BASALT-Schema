@@ -121,7 +121,7 @@ slots:
 
   produced_by_ms_run:
     description: a reference to the data generation activity that produced instrument data
-    range: MassSpecAnalysisActivity
+    range: MassSpectrometryAnalysisActivity
 
   ms_raw_file_type:
     description: the filetype of the mass spectrometry instrument data
@@ -261,7 +261,7 @@ classes:
         range: uuid
       internal_calibration:
         description: Whether internal calibration was used (true/false)
-        range: Boolean
+        range: boolean
       calibration_target:
         description: The measurement being calibrated
         range: calibrationtargetenum
