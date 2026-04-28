@@ -141,6 +141,9 @@ slots:
 
 classes:
 
+  # New - subclass of instrumentData, with mass spec specific slots
+  # ms_raw_file_type represents the file extension (.raw, .d)
+  # collection_mode states whether the data file is in centroid or profile mode
   MassSpectrometryInstrumentData:
     is_a: instrumentData
     description: >- 
@@ -192,9 +195,9 @@ classes:
       - uses_chromatography # optional
       - analyte_category
 
-# New class - configuration, for use on mass spec data generation
-# could be more configurations in future
-# represents instrument configuration and settings
+  # New class - configuration, for use on mass spec data generation
+  # could be more configurations in future
+  # represents instrument configuration and settings
 
   Configuration:
     description: Record of configuration and/or settings for an activity.
