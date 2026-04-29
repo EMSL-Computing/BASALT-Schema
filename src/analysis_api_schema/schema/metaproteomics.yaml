@@ -207,60 +207,6 @@ enums:
           text: solid_phase_extraction
           aliases:
           - SPE
-  
-  CreditEnum:
-    permissible_values:
-      Conceptualization:
-        text: Conceptualization
-        description: Conceptualization
-      Data curation:
-        text: Data curation
-        description: Data curation
-      Formal Analysis:
-        text: Formal Analysis
-        description: Formal Analysis
-      Funding acquisition:
-        text: Funding acquisition
-        description: Funding acquisition
-      Investigation:
-        text: Investigation
-        description: Investigation
-      Methodology:
-        text: Methodology
-        description: Methodology
-      Project administration:
-        text: Project administration
-        description: Project administration
-      Resources:
-        text: Resources
-        description: Resources
-      Software:
-        text: Software
-        description: Software
-      Supervision:
-        text: Supervision
-        description: Supervision
-      Validation:
-        text: Validation
-        description: Validation
-      Visualization:
-        text: Visualization
-        description: Visualization
-      Writing original draft:
-        text: Writing original draft
-        description: Writing – original draft
-      Writing review and editing:
-        text: Writing review and editing
-        description: Writing – review & editing
-      Principal Investigator:
-        text: Principal Investigator
-        description: principal investigator role
-        meaning: OBI:0000103
-      Submitter:
-        text: Submitter
-        description: the person(s) who enter study and biosample metadata into the NMDC
-          submission portal
-        meaning: EFO:0001741
 
   DataCategoryEnum:
     description: The category of the file, such as Instrument data from data generation or processed data from a workflow execution.
@@ -1228,28 +1174,7 @@ enums:
       other:
         description: Other storage condition
 
-  StudyCategoryEnum:
-    permissible_values:
-      research_study:
-        text: research_study
-        description: A detailed examination, analysis, or critical inspection of a hypothesis-driven
-          experiment.
-        exact_mappings:
-        - SIO:001066
-        - NCIT:C63536
-        - ISA:Study
-        close_mappings:
-        - OBI:0000355
-      consortium:
-        text: consortium
-        description: A group formed to undertake a venture that is beyond the capabilities
-          of the individual members. Each member of the consortium brings a high level
-          of expertise in a specific area to ensure the successful completion of the project.
-        comments:
-        - A consortium has collections of data, but those data do not come from a hypothesis-driven
-          experiment.
-        exact_mappings:
-        - NCIT:C61538
+
 
   SubstanceRoleEnum:
     description: The role or function of the substance in the context of its use.
@@ -2311,23 +2236,7 @@ classes:
         range: string       
 
        
-  CreditAssociation:
-    description: A credit association linking a study to contributors and their roles.
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      applied_roles:
-        range: CreditEnum
-        required: true
-        description: The role of the contributor in the study (e.g., data analysis, writing).
-      applies_to_person:
-        range: PersonValue
-        required: true
-        description: The person who contributed to the study.
-      type: 
-        range: uriorcurie
-        description: the class_uri of the class that has been instantiated
+
   
   DataObject: 
     description: 
@@ -3164,75 +3073,6 @@ classes:
       lims_protocol_instance_id:
         range: integer
         description: Optional L7 protocol_instance backing this SPE/C18 step.
-
-  Study: 
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      description:
-        range: string
-        description: Detailed description of the study objectives and scope
-      associated_dois:
-        range: DOI
-        multivalued: true
-        description: A list of DOIs associated with this study
-      collaborating_institution:
-        range: string
-        multivalued: true
-        description: Institutions collaborating on the study.
-      ecosystem:
-        range: string
-        description: The ecosystem type where the study was conducted
-      ecosystem_category:
-        range: string
-        description: The high-level ecosystem category where the study was conducted
-      ecosystem_type:
-        range: string
-        description: The specific ecosystem type where the study was conducted
-      funding_sources:
-        range: string
-        multivalued: true
-        description: A list of organizations, along with the award numbers, that underwrite financial support for projects of a particular type. Typically, they process applications and award funds to the chosen qualified applicants.
-      has_credit_associations:
-        range: CreditAssociation 
-        multivalued: true
-        description: This slot links a study to a credit association
-      gold_study_identifiers:
-        range: uriorcurie
-        multivalued: true
-        description: List of GOLD study identifiers associated with this study
-      name:
-        range: string
-        required: true
-        description: Short name or code for the study
-      part_of:
-        range: Study
-        description: Reference to a larger study that this study is part of
-      principal_investigator:
-        range: PersonValue
-        required: true
-      proposal_abstract:
-        range: string
-        description: A brief summary of the research proposal associated with this study.
-      project_end:
-        range: datetime
-      project_id:
-        range: string 
-        required: true
-      project_start:
-        range: datetime
-      project_status:
-        range: string
-      proposal_title:
-        range: string
-        description: The title of the research proposal associated with this study.
-      specific_ecosystem:
-        range: string
-        description: More specific details/features about the ecosystem of the study
-      study_category:
-        range: StudyCategoryEnum
-        description: The category of the study (e.g., field study, lab experiment).
       
   SubSamplingProcess:
     is_a: Activity

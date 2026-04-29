@@ -30,25 +30,70 @@ classes:
       #   range: campaign
         #required: true
         # description: Reference to the campaign this study belongs to
-      participant_name: # TODO not quite correct
-        range: string
-        array: {}
+      # could also be part_of_campaign: or something like that
+      project_id:
+        range: integer # like 60880
         required: true
+      title:
+        range: string
+        description: The title of the study/proposal.
+      name:
+        range: string
+        required: true
+        description: Short name or code for the study.
+      proposal_abstract:
+        range: string
+        description: The abstract submitted with the research proposal.
+      description:
+        range: string
+        description: study objectives and scope
+      # participant_name: # TODO not quite correct
+      #   range: string
+      #   array: {}
+      #   required: true
+      has_participants:
+        range: ProjectParticipant
+        multivalued: true
+        description: Links to a record of a person and their roles for this study.
       principal_investigator:
-      collaborating_institution:
+        range: personValue
+        required: true
+      collaborating_institution: # could combine with ProcessingInstitutionEnum
+        range: string
       project_status:
         range: projectstatus
       project_start:
-        # range: date
         range: datetime
       project_end:
-        # range: date
         range: datetime
-      proposal_title:
-      proposal_abstract:
-      project_id:
-        # range: project_id # like 60880
+      associated_dois:
+        range: DOI
+        multivalued: true
+        description: A list of DOIs associated with this study
+      funding_sources:
+        range: DOI
+        multivalued: true
+      # associated dois and funding sources may be redundant if they're both
+      # just gonna link to EMSL award DOIs
+      external_identifiers:
+        range: uriorcurie
+        multivalued: true
+        description: List of external identifiers (e.g., from GOLD) associated with this project. NOT a 1:1 mapping, rather, did you also sequence these at GOLD? What was that project ID? Could be folded into associated_dois.
+
+  ProjectParticipant:
+    description: A record of a person and their role on an EMSL project.
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      role:
+        range: NexusRoleEnum
         required: true
+        description: The role of the contributor in the study (e.g., data analysis, writing).
+      person:
+        range: personValue
+        required: true
+        description: The person who contributed to the study.
 
 enums:
   projectstatus:
@@ -59,3 +104,17 @@ enums:
       EXTENDED:
       ACCEPTED:
       WITHDRAWN:
+  
+  NexusRoleEnum:
+    permissible_values:
+      Principal Investigator:
+      Co-Investigator:
+      Team Member:
+      Integrated Research Platform Lead:
+      Administrative Coordinator:
+      Project Manager:
+      Metadata POC:
+      Science Lead:
+      Science POC:
+    todos:
+      - delete this or get a real list from NEXUS
