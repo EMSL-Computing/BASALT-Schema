@@ -355,6 +355,7 @@ classes:
       - add subclasses for non-mass spec data
       - revisit alternative identifiers range - array?
       - what does version reference? is it software? why is it here
+      - revisit filetype enum - restrict on subclasses
 
   sitePhoto:
     is_a: dataProduct
@@ -380,8 +381,6 @@ classes:
       id:
         identifier: true
         range: uuid
-      type:
-        range: routemethod
       analyte_id:
         range: ProcessedSample
       name:
