@@ -2310,16 +2310,6 @@ classes:
       slot_capacity:
         range: string       
 
-  ControlledIdentifiedTermValue:
-    attributes:
-      term:
-        range: OntologyClass
-        description: pointer to an ontology class
-      has_raw_value:
-        range: string
-        description: The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
-      type:
-        range: uriorcurie
        
   CreditAssociation:
     description: A credit association linking a study to contributors and their roles.
@@ -2792,30 +2782,6 @@ classes:
         range: PersonValue
         description: Principal investigator responsible for the nucleotide sequencing process.
 
-  OntologyClass:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      alternative_identifiers:
-        range: string
-      description:
-        range: string
-      name:
-        range: string
-
-  PersonValue: #connected to study class
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      has_raw_value:
-        range: string
-      orcid:
-        range: string
-        description: ORCID identifier of the investigator
-      type:
-        range: uriorcurie
 
   PoolingProcess:
     is_a: Activity
@@ -2976,26 +2942,6 @@ classes:
         range: string
         description: URL link to the protocol document or resource.
 
-  QuantityValue:
-    description: A quantity value with numeric value and optional unit
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-        description:
-      has_maximum_numeric_value:
-        range: double
-      has_numeric_value:
-        description: The numeric value of the quantity
-        range: double
-      has_raw_value:
-        range: string
-      has_unit:
-        range: UnitEnum
-        description: The human-readable unit name
-      has_value_unit:
-        range: string
-        description: The unit of the value, if applicable.
   
   ResuspensionProcess:
     is_a: Activity
@@ -3217,26 +3163,7 @@ classes:
         range: string
       watering_regm:
         range: string
-  
-  SoftwareControlledTermValue:
-    slots:
-    #  - id
-    attributes:
-      id:
-        identifier: true
-        range: string
-      description:
-        range: string
-      name:
-        range: string
-      version:
-        range: string
-      has_raw_value:
-        range: string
-      was_generated_by:
-        range: string
-      type:
-        range: string
+
 
   SolidPhaseExtractionProcess:
     is_a: Activity
@@ -3346,26 +3273,6 @@ classes:
         range: QuantityValue
         description: Mass of material subsampled (e.g., 30 g).
       
-  TextValue: 
-    attributes:
-      description:
-        range: string
-      has_raw_value:
-        range: string
-      language:
-        range: string
-      type:
-        range: string
-      was_generated_by:
-        range: string
-      
-  TimestampValue:
-    attributes:
-      has_raw_value:  
-        range: string
-        description: The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
-      type:
-        range: uriorcurie
 
   Used:
     description: Edge table linking Activity -> Instrument (or other entities).
