@@ -71,7 +71,6 @@ class AnalysisActivity(Base):
     sequence_order = Column(Integer())
     version = Column(Text(), nullable=False )
     id = Column(UUID(), primary_key=True, nullable=False )
-    type = Column(Enum('analysis_activity', 'lcms_metabolomics_method', 'fticr_acquisition_method', 'gravimetric_water_content_method', 'ph_method', 'hydraulic_properties_method', 'microbial_biomass_method', 'xray_computed_tomography_method', 'REGEN', 'KUO', 'respiration_method', 'texture_method', 'enzyme_activity_method', 'elemental_analysis_method', 'toc_tn_method', 'bulk_density_method', 'metagenomics_method', 'xrf_analysis', 'xrd_analysis', name='routemethod'))
     analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
     name = Column(Text())
     acquisition_start_time = Column(DateTime(), nullable=False )
@@ -84,7 +83,7 @@ class AnalysisActivity(Base):
     
 
     def __repr__(self):
-        return f"analysisActivity(sequence_order={self.sequence_order},version={self.version},id={self.id},type={self.type},analyte_id={self.analyte_id},name={self.name},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_id={self.instrument_id},protocol_url={self.protocol_url},instrument_operator_id={self.instrument_operator_id},)"
+        return f"analysisActivity(sequence_order={self.sequence_order},version={self.version},id={self.id},analyte_id={self.analyte_id},name={self.name},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_id={self.instrument_id},protocol_url={self.protocol_url},instrument_operator_id={self.instrument_operator_id},)"
 
 
 
@@ -2129,7 +2128,6 @@ v1 origin: plate-general.yaml PlateAnalysisActivity
     sequence_order = Column(Integer())
     version = Column(Text(), nullable=False )
     id = Column(UUID(), primary_key=True, nullable=False )
-    type = Column(Enum('analysis_activity', 'lcms_metabolomics_method', 'fticr_acquisition_method', 'gravimetric_water_content_method', 'ph_method', 'hydraulic_properties_method', 'microbial_biomass_method', 'xray_computed_tomography_method', 'REGEN', 'KUO', 'respiration_method', 'texture_method', 'enzyme_activity_method', 'elemental_analysis_method', 'toc_tn_method', 'bulk_density_method', 'metagenomics_method', 'xrf_analysis', 'xrd_analysis', name='routemethod'))
     analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
     name = Column(Text())
     acquisition_start_time = Column(DateTime(), nullable=False )
@@ -2142,7 +2140,7 @@ v1 origin: plate-general.yaml PlateAnalysisActivity
     
 
     def __repr__(self):
-        return f"PlateAnalysisActivity(timepoint_label={self.timepoint_label},sequence_order={self.sequence_order},version={self.version},id={self.id},type={self.type},analyte_id={self.analyte_id},name={self.name},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_id={self.instrument_id},protocol_url={self.protocol_url},instrument_operator_id={self.instrument_operator_id},)"
+        return f"PlateAnalysisActivity(timepoint_label={self.timepoint_label},sequence_order={self.sequence_order},version={self.version},id={self.id},analyte_id={self.analyte_id},name={self.name},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_id={self.instrument_id},protocol_url={self.protocol_url},instrument_operator_id={self.instrument_operator_id},)"
 
 
 
@@ -2357,7 +2355,6 @@ class MassSpectrometryAnalysisActivity(AnalysisActivity):
     sequence_order = Column(Integer())
     version = Column(Text(), nullable=False )
     id = Column(UUID(), primary_key=True, nullable=False )
-    type = Column(Enum('analysis_activity', 'lcms_metabolomics_method', 'fticr_acquisition_method', 'gravimetric_water_content_method', 'ph_method', 'hydraulic_properties_method', 'microbial_biomass_method', 'xray_computed_tomography_method', 'REGEN', 'KUO', 'respiration_method', 'texture_method', 'enzyme_activity_method', 'elemental_analysis_method', 'toc_tn_method', 'bulk_density_method', 'metagenomics_method', 'xrf_analysis', 'xrd_analysis', name='routemethod'))
     analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
     name = Column(Text())
     acquisition_start_time = Column(DateTime(), nullable=False )
@@ -2374,7 +2371,7 @@ class MassSpectrometryAnalysisActivity(AnalysisActivity):
     
 
     def __repr__(self):
-        return f"MassSpectrometryAnalysisActivity(analyte_category={self.analyte_category},sequence_order={self.sequence_order},version={self.version},id={self.id},type={self.type},analyte_id={self.analyte_id},name={self.name},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_id={self.instrument_id},protocol_url={self.protocol_url},instrument_operator_id={self.instrument_operator_id},uses_ms_configuration_uid={self.uses_ms_configuration_uid},uses_chromatography_uid={self.uses_chromatography_uid},)"
+        return f"MassSpectrometryAnalysisActivity(analyte_category={self.analyte_category},sequence_order={self.sequence_order},version={self.version},id={self.id},analyte_id={self.analyte_id},name={self.name},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_id={self.instrument_id},protocol_url={self.protocol_url},instrument_operator_id={self.instrument_operator_id},uses_ms_configuration_uid={self.uses_ms_configuration_uid},uses_chromatography_uid={self.uses_chromatography_uid},)"
 
 
 
@@ -2513,7 +2510,6 @@ Shared patterns:
     sequence_order = Column(Integer())
     version = Column(Text(), nullable=False )
     id = Column(UUID(), primary_key=True, nullable=False )
-    type = Column(Enum('analysis_activity', 'lcms_metabolomics_method', 'fticr_acquisition_method', 'gravimetric_water_content_method', 'ph_method', 'hydraulic_properties_method', 'microbial_biomass_method', 'xray_computed_tomography_method', 'REGEN', 'KUO', 'respiration_method', 'texture_method', 'enzyme_activity_method', 'elemental_analysis_method', 'toc_tn_method', 'bulk_density_method', 'metagenomics_method', 'xrf_analysis', 'xrd_analysis', name='routemethod'))
     analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
     name = Column(Text())
     acquisition_start_time = Column(DateTime(), nullable=False )
@@ -2526,7 +2522,7 @@ Shared patterns:
     
 
     def __repr__(self):
-        return f"XRayAnalysisActivity(sequence_order={self.sequence_order},version={self.version},id={self.id},type={self.type},analyte_id={self.analyte_id},name={self.name},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_id={self.instrument_id},protocol_url={self.protocol_url},instrument_operator_id={self.instrument_operator_id},)"
+        return f"XRayAnalysisActivity(sequence_order={self.sequence_order},version={self.version},id={self.id},analyte_id={self.analyte_id},name={self.name},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_id={self.instrument_id},protocol_url={self.protocol_url},instrument_operator_id={self.instrument_operator_id},)"
 
 
 
@@ -3625,7 +3621,6 @@ v1 origin: plate-general.yaml AMP2AnalysisActivity
     sequence_order = Column(Integer())
     version = Column(Text(), nullable=False )
     id = Column(UUID(), primary_key=True, nullable=False )
-    type = Column(Enum('analysis_activity', 'lcms_metabolomics_method', 'fticr_acquisition_method', 'gravimetric_water_content_method', 'ph_method', 'hydraulic_properties_method', 'microbial_biomass_method', 'xray_computed_tomography_method', 'REGEN', 'KUO', 'respiration_method', 'texture_method', 'enzyme_activity_method', 'elemental_analysis_method', 'toc_tn_method', 'bulk_density_method', 'metagenomics_method', 'xrf_analysis', 'xrd_analysis', name='routemethod'))
     analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
     name = Column(Text())
     acquisition_start_time = Column(DateTime(), nullable=False )
@@ -3638,7 +3633,7 @@ v1 origin: plate-general.yaml AMP2AnalysisActivity
     
 
     def __repr__(self):
-        return f"AMP2AnalysisActivity(measurement_type={self.measurement_type},wavelength_nm={self.wavelength_nm},timepoint_label={self.timepoint_label},sequence_order={self.sequence_order},version={self.version},id={self.id},type={self.type},analyte_id={self.analyte_id},name={self.name},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_id={self.instrument_id},protocol_url={self.protocol_url},instrument_operator_id={self.instrument_operator_id},)"
+        return f"AMP2AnalysisActivity(measurement_type={self.measurement_type},wavelength_nm={self.wavelength_nm},timepoint_label={self.timepoint_label},sequence_order={self.sequence_order},version={self.version},id={self.id},analyte_id={self.analyte_id},name={self.name},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_id={self.instrument_id},protocol_url={self.protocol_url},instrument_operator_id={self.instrument_operator_id},)"
 
 
 
@@ -3665,7 +3660,6 @@ v1 origin: plate-general.yaml EcoplateAnalysisActivity
     sequence_order = Column(Integer())
     version = Column(Text(), nullable=False )
     id = Column(UUID(), primary_key=True, nullable=False )
-    type = Column(Enum('analysis_activity', 'lcms_metabolomics_method', 'fticr_acquisition_method', 'gravimetric_water_content_method', 'ph_method', 'hydraulic_properties_method', 'microbial_biomass_method', 'xray_computed_tomography_method', 'REGEN', 'KUO', 'respiration_method', 'texture_method', 'enzyme_activity_method', 'elemental_analysis_method', 'toc_tn_method', 'bulk_density_method', 'metagenomics_method', 'xrf_analysis', 'xrd_analysis', name='routemethod'))
     analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
     name = Column(Text())
     acquisition_start_time = Column(DateTime(), nullable=False )
@@ -3678,7 +3672,7 @@ v1 origin: plate-general.yaml EcoplateAnalysisActivity
     
 
     def __repr__(self):
-        return f"EcoplateAnalysisActivity(wavelength_nm={self.wavelength_nm},timepoint_label={self.timepoint_label},sequence_order={self.sequence_order},version={self.version},id={self.id},type={self.type},analyte_id={self.analyte_id},name={self.name},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_id={self.instrument_id},protocol_url={self.protocol_url},instrument_operator_id={self.instrument_operator_id},)"
+        return f"EcoplateAnalysisActivity(wavelength_nm={self.wavelength_nm},timepoint_label={self.timepoint_label},sequence_order={self.sequence_order},version={self.version},id={self.id},analyte_id={self.analyte_id},name={self.name},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_id={self.instrument_id},protocol_url={self.protocol_url},instrument_operator_id={self.instrument_operator_id},)"
 
 
 
@@ -3852,7 +3846,6 @@ Required enum additions to enums.yaml:
     sequence_order = Column(Integer())
     version = Column(Text(), nullable=False )
     id = Column(UUID(), primary_key=True, nullable=False )
-    type = Column(Enum('analysis_activity', 'lcms_metabolomics_method', 'fticr_acquisition_method', 'gravimetric_water_content_method', 'ph_method', 'hydraulic_properties_method', 'microbial_biomass_method', 'xray_computed_tomography_method', 'REGEN', 'KUO', 'respiration_method', 'texture_method', 'enzyme_activity_method', 'elemental_analysis_method', 'toc_tn_method', 'bulk_density_method', 'metagenomics_method', 'xrf_analysis', 'xrd_analysis', name='routemethod'))
     analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
     name = Column(Text())
     acquisition_start_time = Column(DateTime(), nullable=False )
@@ -3865,7 +3858,7 @@ Required enum additions to enums.yaml:
     
 
     def __repr__(self):
-        return f"XRFAnalysisActivity(sequence_order={self.sequence_order},version={self.version},id={self.id},type={self.type},analyte_id={self.analyte_id},name={self.name},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_id={self.instrument_id},protocol_url={self.protocol_url},instrument_operator_id={self.instrument_operator_id},)"
+        return f"XRFAnalysisActivity(sequence_order={self.sequence_order},version={self.version},id={self.id},analyte_id={self.analyte_id},name={self.name},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_id={self.instrument_id},protocol_url={self.protocol_url},instrument_operator_id={self.instrument_operator_id},)"
 
 
 
@@ -3911,7 +3904,6 @@ Required enum additions to enums.yaml:
     sequence_order = Column(Integer())
     version = Column(Text(), nullable=False )
     id = Column(UUID(), primary_key=True, nullable=False )
-    type = Column(Enum('analysis_activity', 'lcms_metabolomics_method', 'fticr_acquisition_method', 'gravimetric_water_content_method', 'ph_method', 'hydraulic_properties_method', 'microbial_biomass_method', 'xray_computed_tomography_method', 'REGEN', 'KUO', 'respiration_method', 'texture_method', 'enzyme_activity_method', 'elemental_analysis_method', 'toc_tn_method', 'bulk_density_method', 'metagenomics_method', 'xrf_analysis', 'xrd_analysis', name='routemethod'))
     analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
     name = Column(Text())
     acquisition_start_time = Column(DateTime(), nullable=False )
@@ -3924,7 +3916,7 @@ Required enum additions to enums.yaml:
     
 
     def __repr__(self):
-        return f"XRDAnalysisActivity(sequence_order={self.sequence_order},version={self.version},id={self.id},type={self.type},analyte_id={self.analyte_id},name={self.name},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_id={self.instrument_id},protocol_url={self.protocol_url},instrument_operator_id={self.instrument_operator_id},)"
+        return f"XRDAnalysisActivity(sequence_order={self.sequence_order},version={self.version},id={self.id},analyte_id={self.analyte_id},name={self.name},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_id={self.instrument_id},protocol_url={self.protocol_url},instrument_operator_id={self.instrument_operator_id},)"
 
 
 
