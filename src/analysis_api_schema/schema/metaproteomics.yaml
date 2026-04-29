@@ -2494,27 +2494,7 @@ classes:
       lims_protocol_instance_id:
         range: integer
         description: Optional L7 protocol_instance backing this fractionation step.
-  
-  GeolocationValue:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      description:
-        range: string
-      has_raw_value:
-        range: string
-        description: The raw value for a geolocation should follow {latitude} {longitude}
-      latitude:
-        range: numeric
-        description: The latitude coordinate of the geolocation.
-      longitude:
-        range: numeric
-        description: The longitude coordinate of the geolocation.
-      type:
-        range: uriorcurie
-      was_generated_by: 
-        range: string
+
 
   Instrument: #MassSpectrometry related Instrument class/ do we need the vendor, range, Instrument parameters etc? same as L7 Equipment class
     is_a: Entity
