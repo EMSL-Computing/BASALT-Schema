@@ -580,6 +580,31 @@ classes:
         range: containertypeenum
       container_size_id:
         range: quantityValue
+      axes:
+        multivalued: true
+        range: ContainerAxis
+      contains:
+        multivalued: true
+        range: uriorcurie   
+      label_format:
+        range: string      
+      renderer:
+        range: string       
+        description: UI renderer to use for this container type (e.g., defaultcontainer.js).
+      slot_capacity:
+        range: string
+    todos:
+    - reconcile with enums and in media_strain_culture_plate.yaml
+
+  ContainerAxis: #container_axis.yml - L7
+    attributes:
+      name:
+        range: string     
+      values:
+        multivalued: true
+        range: string
+    todos:
+    - I'm only including this in case we need it to sync up with L7 in some way
 
   custodian:
     attributes:

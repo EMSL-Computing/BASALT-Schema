@@ -299,31 +299,6 @@ classes:
       total_run_time_min:
         range: float
 
-  ContainerAxis: #container_axis.yml - L7
-    attributes:
-      name:
-        range: string     
-      values:
-        multivalued: true
-        range: string     
-  
-  ContainerType: 
-    description: Template/layout for a container (e.g., 96-well Tecan plate).
-    attributes:
-      axes:
-        multivalued: true
-        range: ContainerAxis
-      contains:
-        multivalued: true
-        range: uriorcurie   
-      label_format:
-        range: string      
-      renderer:
-        range: string       
-        description: UI renderer to use for this container type (e.g., defaultcontainer.js).
-      slot_capacity:
-        range: string       
-
   Extraction:
     is_a: Activity
     description: 
