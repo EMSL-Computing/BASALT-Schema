@@ -400,6 +400,16 @@ classes:
     todos:
       - what does version reference? is it software? doesn't make sense here
 
+  RespirationDataGenerationActivity:
+    is_a: dataGenerationActivity
+    description: |-
+      Data generation activity for soil respiration analysis.
+      Captures CO2-C efflux measured per gram of soil.
+    attributes:
+      method_id:
+        range: RespirationMethod
+        description: Reference to the RespirationMethod used for this run
+
   # dataProcessingActivity is ABSTRACT.
   # Concrete per-type subclasses (e.g. MetagenomicsdataProcessingActivity in
   # metagenomics.yaml) use is_a: dataProcessingActivity.
