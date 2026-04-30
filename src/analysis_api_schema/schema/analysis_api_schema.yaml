@@ -179,25 +179,25 @@ slots:
     required: false
 
   version:
-    description: Version string; shared by processedData, analysisActivity, workflowExecutionActivity
+    description: Version string; shared by processedData, dataGenerationActivity, dataProcessingActivity
     range: string
     required: true
 
-  # --- workflowExecutionActivity: new chain-link slot ---
+  # --- dataProcessingActivity: new chain-link slot ---
   parent_workflow_id:
     description: |-
-      Self-referential FK to the preceding workflowExecutionActivity in a chain.
+      Self-referential FK to the preceding dataProcessingActivity in a chain.
       NULL -> first (or standalone) step.
       Non-null -> this execution directly follows parent_workflow_id.
       Enables single-hop chaining queries; full traversal via linkage_cache.
 
-      DDL: ALTER TABLE "workflowExecutionActivity"
+      DDL: ALTER TABLE "dataProcessingActivity"
              ADD COLUMN parent_workflow_id UUID
-             REFERENCES "workflowExecutionActivity"(id);
+             REFERENCES "dataProcessingActivity"(id);
     range: uuid
     required: false
 
-  # --- workflowExecutionActivity: JSONB direction change ---
+  # --- dataProcessingActivity: JSONB direction change ---
   workflow_steps:
     description: |-
       Per-run workflow parameters. Previously annotated TODO JSONB in schema.
@@ -207,13 +207,13 @@ slots:
     range: string   # interim placeholder   will reference typed key-value class; schema TBD
     required: false
 
-  # --- analysisActivity: temporal ordering ---
+  # --- dataGenerationActivity: temporal ordering ---
   sequence_order:
     description: |-
       Integer ordering within a temporal series for the same analyte.
       Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
-      DDL: ALTER TABLE "analysisActivity"
+      DDL: ALTER TABLE "dataGenerationActivity"
              ADD COLUMN sequence_order INTEGER;
     range: integer
     required: false
@@ -244,8 +244,8 @@ slots:
     description: |-
       Reference to the activity that generated this data product.
       Range is overridden per subclass via slot_usage:
-        processedData   -> workflowExecutionActivity
-        instrumentData  -> analysisActivity
+        processedData   -> dataProcessingActivity
+        instrumentData  -> dataGenerationActivity
     required: false   # nullable   not all products have a tracked generating activity
 
 imports:
@@ -365,13 +365,13 @@ classes:
       photo_taken_during:
         range: SamplingActivity
 
-  # analysisActivity is now ABSTRACT.
-  # Concrete per-method-type subclasses (e.g. EcoplateAnalysisActivity,
-  # AMP2AnalysisActivity in companion files) use is_a: analysisActivity and
+  # dataGenerationActivity is now ABSTRACT.
+  # Concrete per-method-type subclasses (e.g. EcoplatedataGenerationActivity,
+  # AMP2dataGenerationActivity in companion files) use is_a: dataGenerationActivity and
   # add method-specific slots (including timepoint_label where needed).
   # New slot: sequence_order. version promoted to global slot.
   # NOTE: Will be renamed DataGenerationActivity.
-  analysisActivity:
+  dataGenerationActivity:
     abstract: true
     slots:
       - sequence_order   # [ADDED] integer ordering within a temporal series
@@ -400,13 +400,13 @@ classes:
     todos:
       - what does version reference? is it software? doesn't make sense here
 
-  # workflowExecutionActivity is ABSTRACT.
-  # Concrete per-type subclasses (e.g. MetagenomicsWorkflowExecutionActivity in
-  # metagenomics.yaml) use is_a: workflowExecutionActivity.
+  # dataProcessingActivity is ABSTRACT.
+  # Concrete per-type subclasses (e.g. MetagenomicsdataProcessingActivity in
+  # metagenomics.yaml) use is_a: dataProcessingActivity.
   # New slot: parent_workflow_id (chain link). workflow_steps direction updated.
   # version promoted to global slot.
 
-  workflowExecutionActivity:
+  dataProcessingActivity:
     abstract: true
     description: |-
       Abstract base for any workflow execution activity. Input data should 
@@ -624,7 +624,7 @@ classes:
   workflowExecutionFunctionalAnnotation:
     attributes:
       workflow_id:
-        range: workflowExecutionActivity
+        range: dataProcessingActivity
         required: true
       functional_annotation_id:
         range: functionalAnnotationIdentifier
