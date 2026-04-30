@@ -1,6 +1,6 @@
 ---
-id: https://w3id.org/MONet/analysis-api-schema
-name: sample_classes.yaml
+id: https://w3id.org/MONet/analysis-api-schema/sample-classes
+name: analysis-api-schema-sample-classes
 title: MONet Analysis API Sample Class Schema
 description: |-
   LinkML-based schema for sample classes for Analysis API.
@@ -21,41 +21,14 @@ prefixes:
 default_prefix: analysis_api_schema
 default_range: string
 
-slots:
-  id:
-    description: Unique identifier
-    identifier: true
-  
-  name:
-    description: Human-readable name
-    range: string
-  
-  description:
-    description: Textual description
-    range: string
-  
-  type:
-    description: Type or category
-    range: string
-  
-  latitude:
-    description: Latitude coordinate
-    range: double
-  
-  longitude:
-    description: Longitude coordinate
-    range: double
-  
-  has_output:
-    description: Entities produced by an activity
-    multivalued: true
+imports:
+  - linkml:types
 
 classes:
   SiteMetadata:
     title: Site Metadata
     description: Site-level metadata for specific locations from which a set of samples are collected.
     slots:
-      - id
       - name
       - description
       - type
@@ -68,13 +41,13 @@ classes:
         identifier: true
         range: uuid
       cur_land_use:
-        range: landuseenum
+        range: LandUseEnum
       drainage_class:
-        range: drainageclassenum
+        range: DrainageClassEnum
       fao_class:
-        range: faoclassenum
+        range: FAOClassEnum
       neon_domain:
-        range: neondomainenum
+        range: NEONDomainEnum
       from_sampling_activity:
         description: Reference to the sampling activity that collected samples at this site
         range: SamplingActivity
@@ -82,113 +55,99 @@ classes:
   Sample:
     description: A physical sample collected from an environment. The environment can be ecological, laboratory, or any other context where samples are collected. This class serves as an abstract class to relate subclasses of samples.
     slots:
-      # - id #should be inherited when Entity class is made
       - name #should be inherited when Entity class is made
       - description #should be inherited when Entity class is made
       - type #should be inherited when Entity class is made
+      - project
+      - emsl_activity
+      - storage_condition
+      - oxygen_relationship
+      - biotic_relationship
+      - air_temp_regm
+      - chem_administration
+    todos:
+      - add alternate_ids and use inheritance for specific slots
+      - where should prposal ID live? probably not here?
+      - check all ranges that point to these vlasses sample vs Sample will break
     attributes:
       id:
-          identifier: true
-        #sampling_activity_id:
-         # description: Reference to the sampling activity that collected this sample
-          #range: samplingActivity
-          #required: true - remove and  use has_output from sampling_activity
-      guid_source:
-        description: Indicate the source of the GUID that you have provided for your samples
-      other_guid_source:
-        description: Please specify if other GUID source
+        identifier: true
+        range: uuid
       proposal_id:
         description: The 5 digit project ID assigned to an EMSL user proposal/project
         range: integer
-      sampling_set: # "1"
+      other_storage_condt:
     
   SoilSample:
     description: A soil sample with specific soil-related properties.
     is_a: Sample
     slots:
-      - name
-      - description
-      - type
+      - soil_type
+      - soil_horizon
+    slot_usage:
     attributes:
       id:
         range: Sample
         identifier: true
-      soil_type:
-        description: The specific type of soil sample
-        range: soiltype
-        required: true
-      soil_horizon:
-  
+    
   MonetSoilSample:
     title: MONet Soil Sample
     description: A soil sample with specific soil-related properties that align with the MONet Soil Sample template.
     is_a: SoilSample
     slots:
-      - name
-      - description
-      - type
+      - sampling_set
+    slot_usage:
+      soil_type:
+        required: true
+      sampling_set:
+        required: true
     attributes:
       id:
         range: Sample
         identifier: true
-      soil_type:
-        description: The specific type of soil sample, aligned with the MONet Soil Sample template
-        range: soiltype
-        required: true
 
   AerosolSample:
     description: An aerosol sample with specific aerosol-related properties
     is_a: Sample
     slots:
-      - name
-      - description
-      - type
+      - aerosol_type
     attributes:
       id:
         range: Sample
         identifier: true
-      aerosol_type:
-        description: The type or method of aerosol collection
-        range: aerosoltype
-        required: true
 
   ProcessedSample:
-    description: A sample that has undergone processing or analysis. Processed Sample entities are derived from Activitites. Relationships to original sample, other processed samples, and projects is avaialble via following Activity to Entity relationships has_input, has_output.
+    title: Processed Sample
+    description: |-
+       A sample that has undergone processing or analysis. Processed Sample entities are derived from Activitites. Relationships to original sample, other processed samples, and projects is avaialble via following Activity to Entity relationships: has_input, has_output.
     is_a: Sample
     attributes:
       id:
         identifier: true
         range: Sample
-      processed_sample_type:
-        description: The type of processed sample
-        range: processedsampletype
-        required: true
 
   CoreSection:
     description: A section of a core sample (TOP, MID, BTM).
     is_a: ProcessedSample
     slots:
-      - name
-      - description
-      - type
+      - core_section
+    slot_usage:
+      core_section:
+        required: true
     attributes:
       id:
         identifier: true
-        range: ProcessedSample
-      core_section:
-        description: The section of the core (e.g. TOP, MID, BTM)
-        range: CoreSectionEnum
-        required: true
+        range: uuid
   
   SamplingActivity:
     description: An activity that involves the collection of a sample. This class serves as an abstract class to relate subclasses of sampling activities. Note that the sampling activity is related to the sample via the has_output relationship on the activity, not via a direct relationship on the sample.
     abstract: true
     slots:
-      - id #will be inherited when Activity class is made
-      - name
+      - name #will be inherited when Activity class is made
       - description
       - type
-      - emsl_activity  # [ADDED] replaces planned campaign FK approach
+      - project #do we need this here? where do we make the campaign, project, pi, etc associations?
+      - emsl_activity
       - has_output #will be inherited when Activity class is made
     slot_usage:
       has_output:
@@ -200,26 +159,14 @@ classes:
       id:
         identifier: true
         range: uuid
-      study_id: #do we need this here? where do we make the campaign, project, pi, etc associations?
-        range: study
-        required: true
       sample_name: # 60881_1_C2
         required: true
       lims_barcode:
       growth_facil:
         range: growthfacilityenum
       other_growth_facil:
-      other_storage_condt:
-      oxygen_relationship:
-        range: oxygenstatusenum
       sample_store_temp:
         range: samplestoretemp
-      samp_biotic_relationship:
-        range: sampbioticenum
-      storage_condt:
-        range: storagecondtenum
-      air_temp_regm:
-      chem_administration:
       collection_date:
         range: datetime
       collection_time:
@@ -240,7 +187,13 @@ classes:
       link_addit_analys:
       method_development:
       misc_param:
+      neon_site_code:
+        range: string
+        description: Four-letter NEON site code, e.g. BART, OSBS, etc.
       neon_plot_id:
+        range: string
+        description: numerical plot ID for NEON sites, e.g. 101, 102, etc. Not all NEON samples were taken within a plot. Do not include the site code.
+        required: false
       non_microb_biomass_method:
       other_sample_store_temp:
       other_treatment:
@@ -358,14 +311,3 @@ classes:
         range: string
       weather:
         range: string
-
-enums:
-  CoreSectionEnum:
-    description: Section of a core sample
-    permissible_values:
-      TOP:
-        description: Top section of the core
-      MID:
-        description: Middle section of the core
-      BTM:
-        description: Bottom section of the core

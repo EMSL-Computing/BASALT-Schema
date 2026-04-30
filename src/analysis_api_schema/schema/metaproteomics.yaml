@@ -1,5 +1,5 @@
 id: https://w3id.org/MONet/analysis-api-schema/metaproteomics
-name: metaproteomics
+name: analysis-api-schema-metaproteomics
 title: Metaproteomics additions for MONet Analysis API
 description: |
   Standalone metaproteomics schema fragment for MONet. This version is designed

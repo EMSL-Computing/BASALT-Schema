@@ -31,9 +31,112 @@ default_range: string
 
 slots:
 
+  sampling_set:
+    title: sampling set
+    description: |-
+      Sampling set number for grouping related samples collected together.
+      This is a user-defined integer that can be used to link samples collected
+      in the same sampling event or campaign.
+    range: integer
+  soil_type:
+    title: soil type
+    description: The specific type of soil sample
+    range: SoilTypeEnum
+    todos: 
+      - this is a GSC slot but it's not constrined by an enum, it's a string. where did this come from?
+  soil_horizon:
+    title: soil horizon
+    description: Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath.
+    exact_mappings:
+      - MIXS:0001082
+    range: SoilHorizonEnum
+  aerosol_type:
+    description: The type or method of aerosol collection
+    range: AerosolTypeEnum
+    required: true
+  core_section:
+    title: core section
+    description: The section of the core.
+    examples:
+      - value: TOP
+      - value: MID
+      - value: BTM
+    range: string
+  project:
+    title: Project
+    alias:
+      - study
+      - study_id
+      - project_id
+      - proposal
+      - proposal_id
+    description: |-
+      Identifier for the user project associated with the entity or activity. 
+    range: integer
+    todos:
+      - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141 where emsl.project is the CURIE prefix
+  storage_condition:
+    title: storage condition
+    description: The storage condition of the sample, such as temperature or preservation method.
+    range: StorageConditionEnum
+    exact_mappings:
+      - MIXS:0000327
+    aliases:
+      - samp_store_cond
+      - storage_cond
+      - storage_condt
+  oxygen_relationship:
+    title: oxygen relationship
+    description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
+    range: OxygenStatusEnum
+    exact_mappings:
+      - MIXS:0000015
+  biotic_relationship:
+    title: observed biotic relationship
+    description: The biotic relationship of the sample, such as symbiotic or free-living
+    range: BioticRelationshipEnum
+    exact_mappings:
+      - MIXS:0000016
+    aliases:
+      - samp_biotic_relationship
+  air_temp_regm:
+    title: air temperature regime
+    description: Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens
+    range: string
+    exact_mappings:
+      - MIXS:0000551
+  chem_administration:
+    title: chemical administration
+    description: List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
+    range: string
+    exact_mappings:
+      - MIXS:0000751
+
+  type:
+    title: type
+    description: Type classifier for an entity or activity
+    range: string
+
   description:
+    title: description
     description: Human-readable description for the entity or activity
     range: string
+
+  latitude:
+    title: latitude
+    description: Latitude coordinate of the sampling site
+    range: double
+
+  longitude:
+    title: longitude
+    description: Longitude coordinate of the sampling site
+    range: double
+
+  has_output:
+    title: has output
+    description: Output entity produced by an activity
+    range: string
+    todos: I'm not sure we are going to use this, given our plan to only point 'upstream' from dataProduct to the generating activity, and not have activities point to their outputs. Do we need this slot?
 
   # --- dataProduct base slots (promoted from processedData attributes) ---
   name:
@@ -44,12 +147,6 @@ slots:
   proposal_id:
     description: 5-digit EMSL user proposal/project ID
     range: integer
-
-  sampling_set:
-    range: integer
-
-  core_section:
-    range: string
 
   sample_name:
     range: string
@@ -164,6 +261,8 @@ imports:
   - zip_download
   - media_strain_culture_plate
   - metagenomics
+  # - mass_spec
+  # - metaproteomics
   - xrf_xrd
   # - linkage_cache   # MR2: uncomment when linkage_cache.yaml is added
   # - enrichment # todo have not reviewed fully
@@ -275,7 +374,9 @@ classes:
       id:
         identifier: true
         range: uuid
-      uses_sample:
+      type:
+        range: routemethod
+      analyte_id:
         range: ProcessedSample
       name:
         range: string

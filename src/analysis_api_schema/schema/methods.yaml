@@ -1,6 +1,6 @@
-id: https://w3id.org/MONet/analysis-api-schema/enums
-name: analysis-api-schema-enums
-title: MONet Analysis API - Enumerations
+id: https://w3id.org/MONet/analysis-api-schema/methods
+name: analysis-api-schema-methods
+title: MONet Analysis API - Methods
 description: |-
   Enumerated values used throughout the MONet Analysis API schema
 license: MIT

@@ -1,6 +1,6 @@
-id: https://w3id.org/MONet/analysis-api-schema/enums
-name: analysis-api-schema-enums
-title: MONet Analysis API - Enumerations
+id: https://w3id.org/MONet/analysis-api-schema/products
+name: analysis-api-schema-products
+title: MONet Analysis API - Products
 description: |-
   Enumerated values used throughout the MONet Analysis API schema
 license: MIT
@@ -391,7 +391,7 @@ classes:
 
 
   # ---------------------------------------------------------------------------
-  # XRFElementalProduct — X-ray Fluorescence Elemental Data
+  # XRFElementalProduct   X-ray Fluorescence Elemental Data
   # ---------------------------------------------------------------------------
   XRFElementalProduct:
     is_a: XRayDataProduct
@@ -560,7 +560,7 @@ classes:
 
 
   # ---------------------------------------------------------------------------
-  # XRDPhaseProduct — X-ray Diffraction Mineralogical Data
+  # XRDPhaseProduct   X-ray Diffraction Mineralogical Data
   # ---------------------------------------------------------------------------
   XRDPhaseProduct:
     is_a: XRayDataProduct
