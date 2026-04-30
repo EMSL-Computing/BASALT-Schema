@@ -44,7 +44,7 @@ slots:
   # purchasedMaterial base slots
   # NOTE: The existing global slot `name` has description scoped to data products.
   # purchasedMaterial uses its own attribute for `name` and `description` (matching the
-  # pattern used by instrument, analysisActivity, etc. in the living schema).
+  # pattern used by instrument, dataGenerationActivity, etc. in the living schema).
   # A future unification pass should promote these to a single global slot with
   # a generalised description.
   # ---------------------------------------------------------------------------
@@ -253,7 +253,7 @@ slots:
     inlined_as_list: true
 
   # ---------------------------------------------------------------------------
-  # PlateAnalysisActivity / PlateProduct slots
+  # PlatedataGenerationActivity / PlateProduct slots
   # ---------------------------------------------------------------------------
   wavelength_nm:
     description: Measurement wavelength in nanometres (e.g. 590 Ecoplate, 610 AMP2 OD)
@@ -264,7 +264,7 @@ slots:
     description: |-
       Human-readable timepoint label for repeated-measurement series.
       Examples: "t=0", "t=24h", "t=48h".
-      Lives on concrete analysis/product subclasses, NOT on base analysisActivity
+      Lives on concrete analysis/product subclasses, NOT on base dataGenerationActivity
       (per core-planB decision).
     range: string
     required: true
@@ -622,50 +622,50 @@ classes:
     # NO UsesMedia mixin — key structural difference from AMP2
     # well_metadata array contains EcoplateWellMetadata instances
 
-  PlateAnalysisActivity:
-    is_a: analysisActivity
+  PlatedataGenerationActivity:
+    is_a: dataGenerationActivity
     abstract: true
     description: |-
       Abstract base for plate measurement activities.
       Adds timepoint_label for repeated-measurement series (per core-planB
       decision to put timepoint_label on concrete subclasses, not on base
-      analysisActivity).
+      dataGenerationActivity).
 
-      v1 origin: plate-general.yaml PlateAnalysisActivity
+      v1 origin: plate-general.yaml PlatedataGenerationActivity
     slots:
       - timepoint_label
-    # Inherited from analysisActivity: id, type (routemethod), analyte_id,
+    # Inherited from dataGenerationActivity: id, type (routemethod), analyte_id,
     #   name, acquisition_time, instrument_id, protocol_url,
     #   instrument_operator_id, sequence_order, version
 
   # ============================================================================
-  # AMP2AnalysisActivity   concrete PlateAnalysisActivity
+  # AMP2dataGenerationActivity   concrete PlatedataGenerationActivity
   # ============================================================================
-  AMP2AnalysisActivity:
-    is_a: PlateAnalysisActivity
+  AMP2dataGenerationActivity:
+    is_a: PlatedataGenerationActivity
     description: |-
       AMP2 plate measurement (OD, fluorescence, flow cytometry).
       analyte_id -> processedSample(type='amp2_96well_plate')
 
-      Chained via workflowExecutionActivity.parent_workflow_id to track
+      Chained via dataProcessingActivity.parent_workflow_id to track
       multi-timepoint series on the same plate.
 
-      v1 origin: plate-general.yaml AMP2AnalysisActivity
+      v1 origin: plate-general.yaml AMP2dataGenerationActivity
     slots:
       - measurement_type
       - wavelength_nm
 
   # ============================================================================
-  # EcoplateAnalysisActivity   concrete PlateAnalysisActivity
+  # EcoplatedataGenerationActivity   concrete PlatedataGenerationActivity
   # ============================================================================
-  EcoplateAnalysisActivity:
-    is_a: PlateAnalysisActivity
+  EcoplatedataGenerationActivity:
+    is_a: PlatedataGenerationActivity
     description: |-
       Ecoplate absorbance measurement at a single timepoint.
       analyte_id -> processedSample(type='ecoplate_plate')
       wavelength_nm typically 590 for Biolog EcoPlates.
 
-      v1 origin: plate-general.yaml EcoplateAnalysisActivity
+      v1 origin: plate-general.yaml EcoplatedataGenerationActivity
     slots:
       - wavelength_nm
 

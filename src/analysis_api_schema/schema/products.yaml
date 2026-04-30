@@ -387,7 +387,7 @@ classes:
             XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
             XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
         - workflow_id is NULL for direct instrument output (XRF typical)
-        - workflow_id links to workflowExecutionActivity for computational processing (XRD Rietveld) 
+        - workflow_id links to dataProcessingActivity for computational processing (XRD Rietveld) 
 
 
   # ---------------------------------------------------------------------------
@@ -574,7 +574,7 @@ classes:
       Relationship to core tables:
         - id: FK -> processedData.id (1:1 linkage)
         - processedData.type = 'XRDPhaseProduct'
-        - processedData.workflow_id -> workflowExecutionActivity if Rietveld refinement
+        - processedData.workflow_id -> dataProcessingActivity if Rietveld refinement
           is computational; NULL if manual/semi-quantitative
         - processedData.summary_metrics = {"quartz_percent":42, "albite_percent":18, ...}
         - processedData.s3_key = diffractogram .xy, .xrdml, or .raw file in MinIO
@@ -591,8 +591,8 @@ classes:
         - Semi-quantitative (manual, less precise)
       
       Computational processing workflow (if applicable):
-        XRDAnalysisActivity acquires raw diffractogram ->
-        workflowExecutionActivity (type='xrd_rietveld_refinement') processes with
+        XRDdataGenerationActivity acquires raw diffractogram ->
+        dataProcessingActivity (type='xrd_rietveld_refinement') processes with
         HighScore Plus, GSAS-II, or FullProf ->
         XRDPhaseProduct (workflow_id points to refinement WEA)
         
