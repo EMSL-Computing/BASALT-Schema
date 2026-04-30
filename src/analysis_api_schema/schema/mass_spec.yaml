@@ -188,7 +188,7 @@ classes:
   # New class
   # ============================================================================
   MassSpectrometryAnalysisActivity:
-    is_a: analysisActivity
+    is_a: dataGenerationActivity
     description: A record of the mass spectrometry run that generates a raw data product.
     slots:
       - uses_ms_configuration # required
