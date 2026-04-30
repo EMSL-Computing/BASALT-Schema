@@ -66,7 +66,7 @@ slots:
 
   chromatography_type:
     description: Type of chromatography used in the method (e.g., GC, LC)
-    range: chromatographytypeenum
+    range: ChromatographyCategoryEnum
     required: true
 
   mobile_phases:
@@ -75,7 +75,7 @@ slots:
 
   stationary_phase:
     description: Description of the stationary phase used in the chromatography method (e.g., column type)
-    range: string
+    range: StationaryPhaseEnum
 
   temperature_celsius:
     description: Temperature at which the method was performed
@@ -267,7 +267,7 @@ classes:
         range: boolean
       calibration_target:
         description: The measurement being calibrated
-        range: calibrationtargetenum
+        range: CalibrationTargetEnum
       calibration_standard:
         description: The reference standard used for calibration
         range: purchasedMaterial

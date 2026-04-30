@@ -440,7 +440,7 @@ classes:
       software_poc:
         range: string
       execution_resource:
-        range: executionresourcetype
+        range: ExecutionResourceEnum
 
   alternativeIdentifier:
     attributes:

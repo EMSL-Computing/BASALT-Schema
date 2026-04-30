@@ -157,12 +157,21 @@ enums:
       MAOM:
       WOEM:
 
-  executionresourcetype:
+  ExecutionResourceEnum:
+    description: The computing resource or facility where the processing was executed.
     permissible_values:
-      RZR:
-      Tahoma:
-      local:
-      other:
+      nersc_cori:
+        description: NERSC Cori supercomputer
+        aliases: [Cori]
+      nersc_perlmutter:
+        description: NERSC Perlmutter supercomputer
+        aliases: [Perlmutter, Saul]
+      emsl_rzr:
+        description: Environmental Molecular Sciences Laboratory RZR cluster
+        aliases: [RZR]
+      emsl_tahoma:
+        description: Environmental Molecular Sciences Laboratory Tahoma cluster
+        aliases: [Tahoma]
 
   binquality:
     permissible_values:
@@ -200,19 +209,261 @@ enums:
 
   modelenum:
     permissible_values:
+      exploris_21T:
+        text: exploris_21T
+        aliases:
+        - Exploris 21T
       exploris_240:
+        text: exploris_240
+        aliases:
+        - Orbitrap Exploris 240
       exploris_480:
+        text: exploris_480
+        aliases:
+        - Orbitrap Exploris 480
       ltq_orbitrap_velos:
+        text: ltq_orbitrap_velos
+        aliases:
+        - LTQ Orbitrap Velos
+        - LTQ Orbitrap Velos ETD
+        - Velos
       orbitrap_fusion_lumos:
+        text: orbitrap_fusion_lumos
+        aliases:
+        - Orbitrap Fusion Lumos
+        - Fusion
       orbitrap_eclipse_tribid:
+        text: orbitrap_eclipse_tribid
+        aliases:
+        - Orbitrap Eclipse Tribid
+        - Eclipse
       orbitrap_q_exactive:
+        text: orbitrap_q_exactive
+        aliases:
+        - Orbitrap Q-Exactive HF
+        - Orbitrap Q-Exactive HF-X
+      orbitrap_iqx_tribrid:
+        text: orbitrap_iqx_tribrid
+        aliases:
+        - Orbitrap IQ-X Tribrid
+        - Thermo Orbitrap IQ-X Tribrid
+      orbitrap_exploris_120:
+        text: orbitrap_exploris_120
+        aliases:
+        - Orbitrap Exploris 120
+        - Thermo Orbitrap Exploris 120
       solarix_7T:
+        text: solarix_7T
+        aliases:
+        - 7T Solarix
+        - 7T FT-ICR MS
+        - 7T MRMS
       solarix_12T:
+        text: solarix_12T
+        aliases:
+        - 12T Solarix
+        - 12T FT-ICR MS
+        - 12T MRMS
       solarix_15T:
+        text: solarix_15T
+        aliases:
+        - 15T Solarix
+        - 15T FT-ICR MS
+        - 15T MRMS
       agilent_8890A:
+        text: agilent_8890A
+        aliases:
+        - 8890A GC-MS
+        - Agilent GC MS
       agilent_7980A:
+        text: agilent_7980A
+        aliases:
+        - 7980A GC-MS
+        - Agilent GC MS
       vortex_genie_2:
+        text: vortex_genie_2
+        aliases:
+        - VortexGenie2
       novaseq:
+        text: novaseq
+        aliases:
+        - NovaSeq
+        - Illumina NovaSeq
+      novaseq_6000:
+        text: novaseq_6000
+        meaning: OBI:0002630
+        comments:
+        - Possible flowcell versions are SP, S1, S2, S4.
+        see_also:
+        - https://www.illumina.com/systems/sequencing-platforms/novaseq/specifications.html
+        aliases:
+        - NovaSeq 6000
+        - Illumina NovaSeq 6000
+        structured_aliases:
+          Illumina NovaSeq S2:
+            literal_form: Illumina NovaSeq S2
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+          Illumina NovaSeq S4:
+            literal_form: Illumina NovaSeq S4
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+          Illumina NovaSeq SP:
+            literal_form: Illumina NovaSeq SP
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+      novaseq_x:
+        text: novaseq_x
+        comments:
+        - Possible flowcell versions are 1.5B, 10B, 25B. Only difference between X and
+          X Plus is 2 flowcells for X Plus versus 1 flowcell for X.
+        see_also:
+        - https://www.illumina.com/systems/sequencing-platforms/novaseq-x-plus/specifications.html
+        aliases:
+        - Illumina NovaSeq X
+        - Illumina NovaSeq X Plus
+        exact_mappings:
+        - OBI:0003663
+        narrow_mappings:
+        - OBI:0003664
+      hiseq:
+        text: hiseq
+        aliases:
+        - Illumina HiSeq
+      hiseq_1000:
+        text: hiseq_1000
+        meaning: OBI:0002022
+        aliases:
+        - Illumina HiSeq 1000
+      hiseq_1500:
+        text: hiseq_1500
+        meaning: OBI:0003386
+        aliases:
+        - Illumina HiSeq 1500
+      hiseq_2000:
+        text: hiseq_2000
+        meaning: OBI:0002001
+        aliases:
+        - Illumina HiSeq 2000
+      hiseq_2500:
+        text: hiseq_2500
+        meaning: OBI:0002002
+        aliases:
+        - Illumina HiSeq 2500
+        structured_aliases:
+          Illumina HiSeq 2500-1TB:
+            literal_form: Illumina HiSeq 2500-1TB
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+          Illumina HiSeq 2500-Rapid:
+            literal_form: Illumina HiSeq 2500-Rapid
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+      hiseq_3000:
+        text: hiseq_3000
+        meaning: OBI:0002048
+        aliases:
+        - Illumina HiSeq 3000
+      hiseq_4000:
+        text: hiseq_4000
+        meaning: OBI:0002049
+        aliases:
+        - Illumina HiSeq 4000
+      hiseq_x_ten:
+        text: hiseq_x_ten
+        meaning: OBI:0002129
+        aliases:
+        - Illumina HiSeq X Ten
+      miniseq:
+        text: miniseq
+        meaning: OBI:0003114
+        aliases:
+        - Illumina MiniSeq
+      miseq:
+        text: miseq
+        meaning: OBI:0002003
+        aliases:
+        - MiSeq
+        - Illumina MiSeq
+        structured_aliases:
+          Illumina MiSeq:
+            literal_form: Illumina MiSeq
+            predicate: EXACT_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+      nextseq_1000:
+        text: nextseq_1000
+        meaning: OBI:0003606
+        aliases:
+        - Illumina NextSeq 1000
+      nextseq:
+        text: nextseq
+        aliases:
+        - NextSeq
+        - Illumina NextSeq
+        structured_aliases:
+          Illumina NextSeq-HO:
+            literal_form: Illumina NextSeq-HO
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+          Illumina NextSeq-MO:
+            literal_form: Illumina NextSeq-MO
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+      nextseq_500:
+        text: nextseq_500
+        meaning: OBI:0002021
+        aliases:
+        - NextSeq 500
+        - Illumina NextSeq 500
+      nextseq_550:
+        text: nextseq_550
+        meaning: OBI:0003387
+        aliases:
+        - NextSeq 550
+        - Illumina NextSeq 550
+      gridion:
+        text: gridion
+        meaning: OBI:0002751
+        aliases:
+        - Oxford Nanopore GridION Mk1
+      minion:
+        text: minion
+        meaning: OBI:0002750
+        aliases:
+        - Oxford Nanopore MinION
+      promethion:
+        text: promethion
+        meaning: OBI:0002752
+        aliases:
+        - Oxford Nanopore PromethION
+      rs_II:
+        text: rs_II
+        meaning: OBI:0002012
+        aliases:
+        - PacBio RS II
+      sequel:
+        text: sequel
+        meaning: OBI:0002632
+        aliases:
+        - PacBio Sequel
+      sequel_II:
+        text: sequel_II
+        meaning: OBI:0002633
+        aliases:
+        - PacBio Sequel II
+      revio:
+        text: revio
+        aliases:
+        - PacBio Revio
+        - Revio
       scimax:
       ed_400_with_rs_422:
       mettler_toledo_30029066:
@@ -226,7 +477,6 @@ enums:
       toc_lcsh:
       sr_1:
       xth320:
-
 
   filetype:
     permissible_values:
@@ -284,22 +534,45 @@ enums:
       landscape:
       measure:
 
-  calibrationtargetenum:
+  CalibrationTargetEnum:
     permissible_values:
       mass_charge_ratio:
+        text: mass_charge_ratio
+        title: m/z
+        aliases:
+        - Mass
+        - m/z
       retention_time:
+        text: retention_time
+        aliases:
+        - RT
       retention_index:
+        text: retention_index
+        aliases:
+        - RI
 
   polarityenum:
+    description: The polarity mode used in the mass spectrometry analysis.
     permissible_values:
       positive:
+        text: positive
       negative:
+        text: negative
 
-  chromatographytypeenum:
-    permissible_values:
-      liquid_chromatography:
-      gas_chromatography:
-      solid_phase_extraction:
+  ChromatographyCategoryEnum:
+      permissible_values:
+        liquid_chromatography:
+          text: liquid_chromatography
+          aliases:
+          - LC
+        gas_chromatography:
+          text: gas_chromatography
+          aliases:
+          - GC
+        solid_phase_extraction:
+          text: solid_phase_extraction
+          aliases:
+          - SPE
 
   msrawfiletypeenum:
     permissible_values:
@@ -379,3 +652,215 @@ enums:
         text: amplicon_sequencing_assay
         meaning: OBI:0002767
         title: Amplicon
+
+  ChemicalEntityEnum:
+    description: Common names or identifiers for chemical entities.
+    permissible_values:
+      acetonitrile:
+        text: acetonitrile
+        meaning: CHEBI:38472
+      acetic_acid:
+        text: acetic_acid
+        meaning: CHEBI:15366
+      alphaLP:
+        text: alphaLP
+        meaning: EC:3.4.21.12
+        comments:
+        - A serine protease that hydrolyzes peptide bonds at the C-terminus of threonine,
+          alanine, serine, and valine.
+      ammonium_acetate:
+        text: ammonium_acetate
+        meaning: CHEBI:62947
+      ammonium_bicarbonate:
+        text: ammonium_bicarbonate
+        meaning: CHEBI:184335
+      amitriptyline:
+        text: amitriptyline
+        meaning: CHEBI:2666
+      Arg-C:
+        text: Arg-C
+        meaning: MS:1001303
+        comments:
+        - A cysteine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus
+          of arginine and with lower efficiency, lysine.
+      Asp-N:
+        text: Asp-N
+        meaning: MS:1001304
+        comments:
+        - A zinc metalloendopeptidase that hydrolyzes peptide bonds at the N-terminus
+          of aspartic acid.
+      chloroform:
+        text: chloroform
+        meaning: CHEBI:35255
+      chymotrypsin:
+        text: chymotrypsin
+        meaning: MS:1001306
+        comments:
+        - A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan,
+          leucine, tyrosine, and phenylalanine.
+      ethanol:
+        text: ethanol
+        meaning: CHEBI:16236
+      formic_acid:
+        text: formic_acid
+        meaning: CHEBI:30751
+        comments:
+        - A carboxylic acid that is the simplest aliphatic carboxylic acid, comprising
+          a hydrogen atom joined to the methyl group of methanol.
+      glucose:
+        text: glucose
+        meaning: CHEBI:17234
+        comments:
+        - Generally considered the most abundant monosaccharide in nature.
+      Glu-C:
+        text: Glu-C
+        meaning: MS:1001917
+        comments:
+        - A serine protease that hydrolyzes peptide and ester bonds at the C-terminus
+          of aspartic acid or glutamic acid.
+      hydrochloric_acid:
+        text: hydrochloric_acid
+        meaning: CHEBI:17883
+      isopropyl_alcohol:
+        text: isopropyl_alcohol
+        meaning: CHEBI:17824
+      Lys-C:
+        text: Lys-C
+        meaning: MS:1001309
+        comments:
+        - A serine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus
+          of lysine.
+      Lys-N:
+        text: Lys-N
+        meaning: MS:1003093
+        comments:
+        - A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of lysine.
+      N-methyl-N-trimethylsilyltrifluoroacetamide:
+        text: N-methyl-N-trimethylsilyltrifluoroacetamide
+        meaning: CHEBI:85064
+      methanol:
+        text: methanol
+        meaning: CHEBI:17790
+      methoxyamine:
+        text: methoxyamine
+        meaning: CHEBI:192842
+      medronic_acid:
+        text: medronic_acid
+        meaning: CHEBI:43945
+        comments:
+        - A 1,1-bis(phosphonic acid) consisting of methane substituted by two phosphonic
+          acid groups, also known as methylenediphosphonic acid
+      phosphoric_acid:
+        text: phosphoric_acid
+        meaning: CHEBI:26078
+      trimethylchlorosilane:
+        text: trimethylchlorosilane
+        meaning: CHEBI:85069
+      trypsin:
+        text: trypsin
+        meaning: MS:1001251
+        comments:
+        - A serine protease that hydrolyzes peptide bonds at the C-terminus of arginine
+          and lysine.
+      water:
+        text: water
+        meaning: CHEBI:15377
+        comments:
+        - Any form of water used in an experiment including deionized water, distilled
+          water, and ultrapure water. Protocol or materials and methods should be consulted
+          for exact type of water used in an experiment.
+
+  StationaryPhaseEnum:
+    description: The stationary phase used in chromatography.
+    permissible_values:
+      BEH-HILIC:
+        text: BEH-HILIC
+        description: Hydrophilic Interaction Chromatography (HILIC) employing BEH (Bridged
+          Ethylene Hybrid) particles as the stationary phase.
+        is_a: HILIC
+      C18:
+        text: C18
+        description: A stationary phase consisting of octadecyl chains (C18) bonded to
+          silica particles.
+      C8:
+        text: C8
+        description: A stationary phase consisting of octyl chains (C8) bonded to silica
+          particles.
+      C4:
+        text: C4
+        description: A stationary phase consisting of butyl chains (C4) bonded to silica
+          particles.
+      C2:
+        text: C2
+        description: A stationary phase consisting of ethyl chains (C2) bonded to silica
+          particles.
+      C1:
+        text: C1
+        description: A stationary phase consisting of methyl chains (C1) bonded to silica
+          particles.
+      C30:
+        text: C30
+        description: A stationary phase consisting of triacontyl chains (C30) bonded to
+          silica particles.
+      C60:
+        text: C60
+        description: A stationary phase consisting of hexatriacontyl chains (C60) bonded
+          to silica particles.
+      CNT:
+        text: CNT
+        description: Carbon Nanotube stationary phase.
+      CN:
+        text: CN
+        description: Cyano (CN) bonded stationary phase.
+      Diol:
+        text: Diol
+        description: A stationary phase with diol (1,2-diol) functional groups.
+      HILIC:
+        text: HILIC
+        description: Hydrophilic Interaction Chromatography (HILIC) stationary phase.
+      HLB:
+        text: HLB
+        description: Hydrophilic-Lipophilic-Balance (HLB) stationary phase.
+      NH2:
+        text: NH2
+        description: Amino (NH2) bonded stationary phase.
+      Phenyl:
+        text: Phenyl
+        description: Phenyl bonded stationary phase.
+      Polysiloxane:
+        text: Polysiloxane
+        description: A stationary phase made of polysiloxane, usually used in gas chromatography.
+      PS-DVB:
+        text: PS-DVB
+        description: Polystyrene-divinylbenzene stationary phase, often used in solid-phase
+          extraction, including proprietary Priority PolLutant (PPL).
+      SAX:
+        text: SAX
+        description: Strong Anion Exchange (SAX) stationary phase.
+      SCX:
+        text: SCX
+        description: Strong Cation Exchange (SCX) stationary phase.
+      Silica:
+        text: Silica
+        description: A stationary phase made of silica, commonly used in chromatography.
+      WCX:
+        text: WCX
+        description: Weak Cation Exchange (WCX) stationary phase.
+      WAX:
+        text: WAX
+        description: Weak Anion Exchange (WAX) stationary phase.
+      ZIC-HILIC:
+        text: ZIC-HILIC
+        description: Zwitterionic Hydrophilic Interaction Chromatography (ZIC-HILIC) stationary
+          phase.
+        is_a: HILIC
+      ZIC-pHILIC:
+        text: ZIC-pHILIC
+        description: Zwitterionic pH-Responsive Hydrophilic Interaction Chromatography
+          (ZIC-pHILIC) stationary phase.
+        is_a: ZIC-HILIC
+      ZIC-cHILIC:
+        text: ZIC-cHILIC
+        description: Zwitterionic Charged Hydrophilic Interaction Chromatography (ZIC-cHILIC)
+          stationary phase.
+        is_a: ZIC-HILIC
