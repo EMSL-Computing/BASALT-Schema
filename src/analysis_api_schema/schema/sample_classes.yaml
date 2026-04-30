@@ -51,6 +51,12 @@ classes:
       from_sampling_activity:
         description: Reference to the sampling activity that collected samples at this site
         range: SamplingActivity
+        todos: 
+        - >-
+          are sites going to be used by multiple samplingactivities? i think we
+          should remove this and add a slot to samplingactivity called 
+          "sampled_at_site" or something. as long as no time dependent metadata
+          goes here.
 
   Sample:
     description: A physical sample collected from an environment. The environment can be ecological, laboratory, or any other context where samples are collected. This class serves as an abstract class to relate subclasses of samples.
@@ -65,6 +71,11 @@ classes:
       - biotic_relationship
       - air_temp_regm
       - chem_administration
+      - replicate
+      - lims_barcode
+    slot_usage:
+      replicate:
+        description: The BIOLOGICAL replicate number of the sample, if applicable.
     todos:
       - add alternate_ids and use inheritance for specific slots
       - where should prposal ID live? probably not here?
@@ -77,6 +88,17 @@ classes:
         description: The 5 digit project ID assigned to an EMSL user proposal/project
         range: integer
       other_storage_condt:
+      sampled_during:
+        range: SamplingActivity
+        description: Reference to the sampling activity during which this sample was collected.
+      sample_link:
+        range: Sample
+        description: >-
+          A reference to another sample that is related to this sample in some 
+          way, eg. one is a parent sample, or they were taken from different 
+          parts of the same organism.
+        todos: 
+        - EMSL and NMDC both need better modelling for this
     
   SoilSample:
     description: A soil sample with specific soil-related properties.
@@ -121,10 +143,31 @@ classes:
     description: |-
        A sample that has undergone processing or analysis. Processed Sample entities are derived from Activitites. Relationships to original sample, other processed samples, and projects is avaialble via following Activity to Entity relationships: has_input, has_output.
     is_a: Sample
+    slot_usage:
+      replicate:
+        description: The TECHNICAL replicate number of the processed sample, if applicable.
     attributes:
       id:
         identifier: true
         range: Sample
+      storage_location:
+        range: string
+        description: The physical or digital location where the processed sample is stored (e.g., freezer location, database ID).
+      label:
+        range: string
+        description: The label on the stored processed sample, if applicable (e.g., "f01").
+      concentration_ug_per_uL:
+        range: float
+        description: Concentration of the processed sample in micrograms per microliter, if applicable.
+      total_amount_ug:
+        range: float
+        description: Total amount of biomolecule in the sample in micrograms, if applicable.
+      volume_uL:
+        range: float
+        description: Volume of the processed sample in microliters, if applicable.
+      sampled_portion:
+        range: SamplePortionEnum
+        description: The portion of the original sample used in creating this processed sample (e.g., "interlayer", "supernatant", "pellet").
 
   CoreSection:
     description: A section of a core sample (TOP, MID, BTM).
@@ -149,6 +192,7 @@ classes:
       - project #do we need this here? where do we make the campaign, project, pi, etc associations?
       - emsl_activity
       - has_output #will be inherited when Activity class is made
+      - lims_barcode
     slot_usage:
       has_output:
         range: Sample
@@ -161,12 +205,13 @@ classes:
         range: uuid
       sample_name: # 60881_1_C2
         required: true
-      lims_barcode:
       growth_facil:
         range: growthfacilityenum
       other_growth_facil:
       sample_store_temp:
         range: samplestoretemp
+      altitude_meters:
+        range: double
       collection_date:
         range: datetime
       collection_time:
@@ -174,6 +219,8 @@ classes:
       env_broad_scale_other:
       env_local_scale_other:
       env_medium_other:
+      elev_meters:
+        range: double
       experimental_factor:
       experimental_factor_other:
       extraction_method:
@@ -188,8 +235,14 @@ classes:
       method_development:
       misc_param:
       neon_plot_id:
+      microbial_biomass_meth:
+      microbial_biomass_c_meth:
+      microbial_biomass_n_meth:
       non_microb_biomass_method:
+      other:
+        description: Any other relevant information about the sample that does not fit into the predefined attributes.
       other_sample_store_temp:
+        alias: other_samp_store_temp
       other_treatment:
       ph:
         range: double

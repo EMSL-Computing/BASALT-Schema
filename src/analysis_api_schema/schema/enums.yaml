@@ -1114,3 +1114,38 @@ enums:
         text: fourier_transform_ion_cyclotron_resonance
         aliases:
         - FTICR
+
+  SamplePortionEnum:
+    permissible_values:
+      supernatant:
+        text: supernatant
+        aliases:
+        - top_layer
+      pellet:
+        text: pellet
+        aliases:
+        - bottom_layer
+      organic_layer:
+        text: organic_layer
+        description: The portion of a mixture containing dissolved organic material
+        title: Organic layer
+      aqueous_layer:
+        text: aqueous_layer
+        description: The portion of a mixture containing molecules dissolved in water
+        title: Aqueous layer
+        aliases:
+        - water layer
+      interlayer:
+        text: interlayer
+        description: The layer of material between liquid layers of a separated mixture
+        title: Interlayer
+      chloroform_layer:
+        text: chloroform_layer
+        description: The portion of a mixture containing molecules dissolved in chloroform
+        is_a: organic_layer
+        title: Chloroform layer
+      methanol_layer:
+        text: methanol_layer
+        description: The portion of a mixture containing molecules dissolved in methanol
+        is_a: organic_layer
+        title: Methanol layer

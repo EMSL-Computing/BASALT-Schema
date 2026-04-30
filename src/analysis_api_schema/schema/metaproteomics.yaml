@@ -48,7 +48,6 @@ enums:
           to act on proteins and to produce polypeptides (protein fragments).
         meaning: OBI:0600056
 
-
   DigestionMethodEnum:
     description: Named protein digestion methods used in sample preparation.
     permissible_values:
@@ -64,7 +63,6 @@ enums:
       other:
         text: other
         description: Other digestion method not otherwise specified.
-  
 
   EnrichmentTypeEnum:
     description: Type of targeted peptide or protein enrichment performed.
@@ -152,7 +150,6 @@ enums:
       in_silico_metagenome:
         description: A metaproteomics analysis matched to an in silico generated metagenome.
 
-
   NormalizationMethodEnum:
     description: The strategy used to normalize sample amounts or intensities.
     permissible_values:
@@ -169,7 +166,6 @@ enums:
         text: other
         description: Other normalization approach not otherwise specified.
 
-
   ProteinAssayTypeEnum:
     description: Type of protein quantification assay performed.
     permissible_values:
@@ -182,47 +178,6 @@ enums:
       other:
         text: other
         description: Other protein assay not otherwise specified.
-
-  
-  SamplePortionEnum:
-    permissible_values:
-      supernatant:
-        text: supernatant
-        aliases:
-        - top_layer
-      pellet:
-        text: pellet
-        aliases:
-        - bottom_layer
-      organic_layer:
-        text: organic_layer
-        description: The portion of a mixture containing dissolved organic material
-        title: Organic layer
-      aqueous_layer:
-        text: aqueous_layer
-        description: The portion of a mixture containing molecules dissolved in water
-        title: Aqueous layer
-        aliases:
-        - water layer
-      interlayer:
-        text: interlayer
-        description: The layer of material between liquid layers of a separated mixture
-        title: Interlayer
-      chloroform_layer:
-        text: chloroform_layer
-        description: The portion of a mixture containing molecules dissolved in chloroform
-        is_a: organic_layer
-        title: Chloroform layer
-      methanol_layer:
-        text: methanol_layer
-        description: The portion of a mixture containing molecules dissolved in methanol
-        is_a: organic_layer
-        title: Methanol layer
-
-
-
-
-
 
   SubstanceRoleEnum:
     description: The role or function of the substance in the context of its use.
@@ -261,8 +216,6 @@ enums:
  
 classes:
 
-
-      
   AnalysisActivity:
     attributes:
       id:
@@ -399,9 +352,6 @@ classes:
       slot_capacity:
         range: string       
 
-       
-
-  
   DataObject: 
     description: 
       An object that primarily consists of symbols that represent information.
@@ -540,7 +490,6 @@ classes:
       lims_protocol_instance_id:
         range: integer
         description: Optional L7 protocol_instance backing this fractionation step.
-
 
   Instrument: #MassSpectrometry related Instrument class/ do we need the vendor, range, Instrument parameters etc? same as L7 Equipment class
     is_a: Entity
@@ -832,30 +781,6 @@ classes:
       protocol_link:
         range: Protocol
         description: Protocol or SOP followed by this activity.
-  
-  ProcessedSample:
-    description: Portion/aliquot derived for downstream activity
-    is_a: Sample
-    attributes:
-      concentration_ug_per_uL:
-        range: float
-        description: Concentration of the processed sample in micrograms per microliter, if applicable.
-      derived_from:
-        range: Sample
-        description: Parent sample this was derived from (L7 generation)
-      fraction_label:
-        range: string
-        description: Label / index of the fraction (e.g., "F1", "F2", "Fraction_03").
-      lims_resource_id: # optional link back to L7 sample resource_id
-        range: integer
-      sampled_portion:
-        range: SamplePortionEnum
-      storage_location:
-        range: string
-      total_amount_ug:
-        range: float
-      volume_uL:
-        range: float
 
   ProteinAssay:
     is_a: Activity
@@ -884,7 +809,6 @@ classes:
         required: true
         description: The type of protein assay (Coomassie, BCA, etc.).
 
-  
   ResuspensionProcess:
     is_a: Activity
     description: >
@@ -904,208 +828,6 @@ classes:
       lims_protocol_instance_id:
         range: integer
         description: Optional L7 protocol_instance backing this resuspension step.
-       
-  Sample: 
-    description: A physical sample collected from the environment
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      Analysis_Type:
-        range: RouteMethodEnum
-        description: The type of analysis for which the sample is intended (e.g., metaproteomics, metagenomics).
-      collection_date:
-        range: datetime
-        description: The date and time when the sample was collected.
-      Growth_Facility:
-        range: GrowthFacilityEnum
-        description: The growth facility where the sample was collected, if applicable.
-      guid_source:
-        range: string
-        description: Indicate the source of the GUID that you have provided for your samples
-      lims_resource_id:         
-        range: integer
-      other:
-        range: string
-        description: Any other relevant information about the sample that does not fit into the predefined attributes.
-      other_growth_facily:
-        range: string
-        description: Please specify if other growth facility
-      other_guid_source:
-        range: string
-        description: Please specify if other GUID source
-      other_samp_store_temp:
-        range: string
-        description: Please specify if other sample storage temperature
-      other_storage_condt:
-        description: Please specify if other storage condition
-      proposal_id:
-        range: integer
-      replicate_number:
-        range: integer
-        description: The replicate number of the sample, if applicable.
-      sample_link:
-        range: string
-        description: URL link to additional information about the sample (e.g., in a LIMS or external database).
-      sample_name:
-        range: string
-        required: true
-      sampling_activity_id:
-        description: Reference to the sampling activity that collected this sample
-        range: SamplingActivity
-      samp_store_temp:
-        range: SampleStoreTempEnum
-        description: The storage temperature of the sample (e.g., -80C, room temperature).
-      site:
-        range: string
-      source_mat_id:
-        description: Reference to the source material from which this sample was derived, if applicable.
-        range: string
-      storage_condt:
-        range: StorageCondtEnum
-        description: The storage conditions for the sample (e.g., -80C, room temperature).
-      technical_reps:
-        range: integer
-      type:
-        description: The type of sample (soil, aerosol, etc.)
-        range: SampleTypeEnum
-        required: false
-
-  SampleProcessing:
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      analysis_type:
-        range: RouteMethodEnum
-      method_name:
-        range: MethodNameEnum
-      processing_steps:
-        range: string # TODO JSONB
-        required: true
-      url:
-        range: string
-      version:
-        range: string
-
-  SamplingActivity:
-    is_a: Activity
-    description: Legacy alias of Activity (kept for backward compatibility).
-    attributes:
-      air_temp_regm:
-        range: string
-      alt_id:
-        range: QuantityValue
-      chem_administration:
-        range: string
-      collection_date:
-        range: datetime
-      collection_time:
-        range: datetime
-      elev_id:
-        range: QuantityValue
-      env_broad_scale_other:
-        range: string
-      env_local_scale_other:
-        range: string
-      env_medium_other:
-        range: string
-      experimental_factor:
-        range: string
-      experimental_factor_other:
-        range: string     
-      extraction_method:
-        range: string
-      extreme_event:
-        range: datetime
-      gaseous_environment:
-        range: string
-      geo_loc_name:
-        range: string
-      growth_facil:
-        range: GrowthFacilityEnum
-      humidity_regm:
-        range: string
-      isotope_exposure:
-        range: string
-      lat_lon_id:
-        range: GeolocationValue
-      lims_barcode:
-        range: string
-      light_regm:
-        range: string
-      link_addit_analys:
-        range: string
-      method_development:
-        range: string
-      microbial_biomass_c_meth:
-        range: string
-      microbial_biomass_meth:
-        range: string
-      microbial_biomass_n_meth:
-        range: string
-      misc_param:
-        range: string     
-      neon_plot_id:
-        range: string
-      non_microb_biomass_method:
-        range: string
-      other_growth_facil:
-        range: string
-      other_sample_store_temp:
-        range: string
-      other_storage_condt:
-        range: string
-      other_treatment:
-        range: string
-      oxygen_relationship:
-        range: OxygenStatusEnum
-      ph:
-        range: double
-      ph_meth:
-        range: string
-      salinity:
-        range: double
-      salinity_method:
-        range: string
-      samp_biotic_relationship:
-        range: SampBioticEnum
-      sample_collected:
-        range: string
-      sample_collection_dev:
-        range: string
-      sample_collection_method:
-        range: string     
-      sample_end_time:
-        range: datetime
-      sample_name: 
-        required: true
-      sample_processing:
-        range: SampleProcessing
-      sample_start_time:
-        range: datetime
-      sample_store_temp:
-        range: SampleStoreTempEnum
-      season_environment:
-        range: string
-      shipped_sample_size:
-        range: string
-      sieving:
-        range: string
-      start_date_inc:
-        range: datetime
-      storage_condt:
-        range: StorageCondtEnum
-      study_id:
-        range: Study
-        required: true
-      tot_nitro_cont_meth:
-        range: string
-      tot_org_c_meth:
-        range: string
-      watering_regm:
-        range: string
-
 
   SolidPhaseExtractionProcess:
     is_a: Activity
@@ -1145,7 +867,6 @@ classes:
       mass:
         range: QuantityValue
         description: Mass of material subsampled (e.g., 30 g).
-      
 
   Used:
     description: Edge table linking Activity -> Instrument (or other entities).
@@ -1162,5 +883,3 @@ classes:
       role:
         range: string
         description: Optional role (e.g., "centrifuge", "plate_reader", "Concentrator", "Bead Beater", "mass_spec").
-
-     

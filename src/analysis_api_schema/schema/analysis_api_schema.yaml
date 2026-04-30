@@ -248,6 +248,10 @@ slots:
         instrumentData  -> analysisActivity
     required: false   # nullable   not all products have a tracked generating activity
 
+  replicate:
+    description: The replicate number of the sample, if applicable.
+    range: integer
+
 imports:
   - linkml:types
   - enums
@@ -340,17 +344,6 @@ classes:
       id:
         identifier: true
         range: uuid
-        required: true
-
-  replicate: # can we remove this?
-    description: A replicate or aliquot of a sample
-    attributes:
-      id:
-        identifier: true
-        range: ProcessedSample
-      rep:
-        description: The replicate (or aliquot) number
-        range: integer
         required: true
 
   # (CHANGED MR1) processedData now inherits from dataProduct via is_a.
