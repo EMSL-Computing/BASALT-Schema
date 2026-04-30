@@ -6,15 +6,10 @@
 # CONTEXT and Purpose:
 # - Validation schema for soil respiration data ingested via the LIMS endpoint
 # - Describes the shape of RespirationProductValues as POSTed to the API
-# - NOT currently represented as a measurement column in Soil_BioChemical_properties.csv
-#   (only flag_respiration appears in the CSV output; the value column is TBD)
-# - This schema covers the INGEST contract   what Kaizad/LIMS sends to the API
+# - Measurement: respiration_co2_c_ug_per_g (µg CO₂-C g⁻¹ soil)
+# - Flag: flag_respiration (processeddataflag enum)
 #
-# Status:
-# - Placeholder values/units marked with TODO   confirm with Kaizad
-# - flag permissible values to be aligned with ProcessedDataFlagEnum in processed_data.yml
-#
-# Last Updated:  2026-03-16
+# Last Updated: 2026-04-30
 # =============================================================================
 
 id: https://w3id.org/MONet/analysis-api-schema/respiration
@@ -71,24 +66,14 @@ classes:
     description: |-
       Soil respiration analysis product values as returned by the LIMS endpoint.
       Represents a single measurement result for one core section.
-      
-      NOTE: Respiration does NOT appear as a value column in Soil_BioChemical_properties.csv
-      (only flag_respiration appears). 
+      Measurement unit: µg CO₂-C g⁻¹ soil.
     slots:
       - flag
-    slot_usage:
-      flag:
-        description: |-
-          Data quality flag for the respiration measurement.
-          Source: RespirationProduct from canonical schema (flag_respiration in CSV output).
     attributes:
-
-      respiration:
+      respiration_co2_c_ug_per_g:
         description: |-
-          Soil respiration rate.
-          TODO: confirm units with Kaizad   expected unit is µg CO₂-C g⁻¹ h⁻¹
-          or mg CO₂-C kg⁻¹ day⁻¹ depending on analytical method.
-          Minimum value: 0 (non-negative)
+          Soil respiration expressed as µg CO₂-C per gram soil.
+          Non-negative float. Maps to RespirationProduct.respiration_co2_c_ug_per_g.
         range: double
         required: false
-        # TODO: unit   confirm with Kaizad
+        minimum_value: 0
