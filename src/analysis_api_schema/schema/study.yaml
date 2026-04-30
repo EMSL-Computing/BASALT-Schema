@@ -94,27 +94,16 @@ classes:
         range: personValue
         required: true
         description: The person who contributed to the study.
-
-enums:
-  projectstatus:
-    permissible_values:
-      STARTED:
-      COMPLETED:
-      CLOSED:
-      EXTENDED:
-      ACCEPTED:
-      WITHDRAWN:
   
-  NexusRoleEnum:
-    permissible_values:
-      Principal Investigator:
-      Co-Investigator:
-      Team Member:
-      Integrated Research Platform Lead:
-      Administrative Coordinator:
-      Project Manager:
-      Metadata POC:
-      Science Lead:
-      Science POC:
-    todos:
-      - delete this or get a real list from NEXUS
+  DOI:
+    description: A digital object identifier (DOI) representing a persistent link to a digital resource.
+    attributes:
+      doi_value:
+        required: true
+        range: uriorcurie
+      doi_category:
+        range: DoiCategoryEnum
+        description: The resource type the corresponding doi resolves to
+      doi_provider:
+        range: DoiProviderEnum
+        description: The authority, or organization, the DOI is associated with.

@@ -104,12 +104,40 @@ enums:
       Failed_QC:
       Insufficient_Material:
 
-  ionizationenum:
+  IonizationSourceEnum:
     permissible_values:
-      ESI:
-      EI:
-      CI:
-      MALDI:
+      electrospray_ionization:
+        text: electrospray_ionization
+        aliases:
+        - ESI
+      matrix_assisted_laser_desorption_ionization:
+        text: matrix_assisted_laser_desorption_ionization
+        aliases:
+        - MALDI
+      atmospheric_pressure_photo_ionization:
+        text: atmospheric_pressure_photo_ionization
+        aliases:
+        - APPI
+      atmospheric_pressure_chemical_ionization:
+        text: atmospheric_pressure_chemical_ionization
+        aliases:
+        - APCI
+      electron_ionization:
+        text: electron_ionization
+        aliases:
+        - EI
+
+  EluentIntroductionEnum:
+    description: The method used to introduce the eluent into the mass spectrometer.
+    permissible_values:
+      direct_infusion_syringe:
+        description: Direct infusion of the sample into the mass spectrometer
+      liquid_chromatography:
+        description: Introduction via liquid chromatography
+      gas_chromatography:
+        description: Introduction via gas chromatography
+      direct_infusion_autosampler:
+        description: Direct infusion using an autosampler
 
   metagenomicssteps:
     permissible_values:
@@ -551,7 +579,7 @@ enums:
         aliases:
         - RI
 
-  polarityenum:
+  PolarityEnum:
     description: The polarity mode used in the mass spectrometry analysis.
     permissible_values:
       positive:
@@ -580,20 +608,62 @@ enums:
       .raw:
       other: # fill in more of these idk
   
-  msmodeenum:
+  MassSpectrumCollectionModeEnum:
     permissible_values:
-      profile:
+      full_profile:
+        text: full_profile
+      reduced_profile:
+        text: reduced_profile
       centroid:
+        text: centroid
 
   analytecategoryenum:
+    description: bundling common terms for different omics types by biomolecule being analyzed
     permissible_values:
       dna:
+        text: DNA
+        aliases:
+        - genome
+        - genomics
+        - metagenome
+        - metagenomics
+        - metaG
       rna:
+        text: RNA
+        aliases:
+        - transcriptome
+        - transcriptomics
+        - metatranscriptome
+        - metatranscriptomics
+        - metaT
       protein:
+        text: Protein
+        aliases:
+        - proteins
+        - proteome
+        - proteomics
+        - metaproteome
+        - metaproteomics
+        - metaP
       metabolite:
+        text: Metabolite
+        aliases:
+        - metabolites
+        - metabolome
+        - metabolomics
       lipid:
+        text: Lipid
+        aliases:
+        - lipids
+        - lipidome
+        - lipidomics
       natural_organic_matter:
+        text: Natural Organic Matter
+        aliases:
+        - NOM
       unknown:
+        text: Unknown
+
   MediaTypeEnum:
     description: |-
       Purpose/context of the media preparation.
@@ -864,3 +934,183 @@ enums:
         description: Zwitterionic Charged Hydrophilic Interaction Chromatography (ZIC-cHILIC)
           stationary phase.
         is_a: ZIC-HILIC
+
+  PassFailEnum:
+    description: Result/status for a process (e.g., QC outcome).
+    permissible_values:
+      pass:
+        text: pass
+      fail:
+        text: fail
+
+  MassSpecResolutionEnum:
+    permissible_values:
+      high:
+        text: high
+        description: higher than unit resolution
+      low:
+        text: low
+        description: at unit resolution
+
+  InstitutionEnum: #speak with Maya!!! for removal/ We may need this enum to accomodate the masspectrometry class # found in file #double check analysis-api-schema
+    description: The organization that processed the sample / ran the pipeline / participated in the project.
+    permissible_values:
+      nmdc:
+        title: National Microbiome Data Collaborative
+      ucsd:
+        title: University of California, San Diego
+      jgi:
+        title: Joint Genome Institute
+      emsl:
+        title: Environmental Molecular Sciences Laboratory
+      battelle:
+        title: Battelle Memorial Institute
+      anl:
+        title: Argonne National Laboratory
+      ucd_genome_center:
+        title: University of California, Davis Genome Center
+      azenta:
+        title: Azenta Life Sciences
+
+  projectstatus:
+    permissible_values:
+      STARTED:
+      COMPLETED:
+      CLOSED:
+      EXTENDED:
+      ACCEPTED:
+      WITHDRAWN:
+  
+  NexusRoleEnum:
+    permissible_values:
+      Principal Investigator:
+      Co-Investigator:
+      Team Member:
+      Integrated Research Platform Lead:
+      Administrative Coordinator:
+      Project Manager:
+      Metadata POC:
+      Science Lead:
+      Science POC:
+    todos:
+      - delete this or get a real list from NEXUS
+
+  DoiCategoryEnum:
+    description: The authority, or organization, the DOI is associated with
+    permissible_values:
+      award_doi:
+        text: award_doi
+        description: A type of DOI that resolves to a funding authority.
+      dataset_doi:
+        text: dataset_doi
+        description: A type of DOI that resolves to generated data.
+      publication_doi:
+        text: publication_doi
+        description: A type of DOI that resolves to a publication.
+      data_management_plan_doi:
+        text: data_management_plan_doi
+        description: A type of DOI that resolves to a data management plan.
+
+  DoiProviderEnum:
+    description: The authority, or organization, the DOI is associated with
+    permissible_values:
+      emsl:
+        text: emsl
+        meaning: ror:04rc0xn13
+        title: EMSL
+        aliases:
+        - Environmental Molecular Sciences Laboratory
+        - EMSL
+      jgi:
+        text: jgi
+        meaning: ror:04xm1d337
+        title: JGI
+        aliases:
+        - Joint Genome Institute
+        - JGI
+      kbase:
+        text: kbase
+        meaning: ror:01znn6x10
+        title: KBase
+        aliases:
+        - KBase
+      osti:
+        text: osti
+        meaning: ror:031478740
+        title: OSTI
+        aliases:
+        - Office of Scientific and Technical Information
+        - OSTI
+      ess_dive:
+        text: ess_dive
+        meaning: ror:01t14bp54
+        title: ESS-DIVE
+        aliases:
+        - ESS-DIVE
+        - Environmental System Science Data Infrastructure for a Virtual Ecosystem
+      massive:
+        text: massive
+        title: MassIVE
+        aliases:
+        - MassIVE
+        - Mass Spectrometry Virtual Environment
+      gsc:
+        text: gsc
+        title: GSC
+        aliases:
+        - GSC
+        - Genomic Standards Consortium
+      zenodo:
+        text: zenodo
+        title: Zenodo
+        aliases:
+        - Zenodo
+      edi:
+        text: edi
+        meaning: ror:0330j0z60
+        title: EDI
+        aliases:
+        - EDI
+        - Environmental Data Initiative
+      figshare:
+        text: figshare
+        meaning: ror:041mxqs23
+        title: Figshare
+
+  FragmentationEnum:
+    description: The fragmentation techniques used in mass spectrometry.
+    permissible_values:
+      HCD:
+        text: HCD
+        description: Higher-energy Collisional Dissociation
+      CID:
+        text: CID
+        description: Collision-Induced Dissociation
+      ETD:
+        text: ETD
+        description: Electron Transfer Dissociation
+  
+    MassAnalyzerEnum:
+    permissible_values:
+      quadrupole:
+        text: quadrupole
+        aliases:
+        - Q
+      time_of_flight:
+        text: time_of_flight
+        aliases:
+        - TOF
+      orbitrap:
+        text: orbitrap
+      ion_trap:
+        text: ion_trap
+        aliases:
+        - IT
+      ion_cyclotron_resonance:
+        text: ion_cyclotron_resonance
+        aliases:
+        - ICR
+      fourier_transform_ion_cyclotron_resonance:
+        text: fourier_transform_ion_cyclotron_resonance
+        aliases:
+        - FTICR

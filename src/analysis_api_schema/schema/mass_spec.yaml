@@ -51,17 +51,17 @@ slots:
 
   injection:
     description: Type of injection used in the mass spectrometry method
-    range: string
+    range: EluentIntroductionEnum
     required: true
 
   ionization:
     description: Type of ionization used in the mass spectrometry method
-    range: ionizationenum
+    range: IonizationSourceEnum
     required: true
 
   polarity:
     description: Polarity setting used in the mass spectrometry method
-    range: polarityenum
+    range: PolarityEnum
     required: true
 
   chromatography_type:
@@ -117,7 +117,7 @@ slots:
   mass_range:
     range: double
   collection_mode:
-    range: msmodeenum
+    range: MassSpectrumCollectionModeEnum
 
   produced_by_ms_run:
     description: a reference to the data generation activity that produced instrument data
@@ -138,6 +138,10 @@ slots:
   duration_min:
     description: how long something took, in minutes
     range: float
+
+  fragmentation:
+    description: fragmentation technique used in the mass spectrometry run
+    range: FragmentationEnum
 
 classes:
 
@@ -216,6 +220,7 @@ classes:
       - location
       - injection
       - ionization
+      - fragmentation
       - polarity
       - resolution
       - scan_range
@@ -271,6 +276,7 @@ classes:
       calibration_standard:
         description: The reference standard used for calibration
         range: purchasedMaterial
+        todos: do we want to restrict this to an enum eg. SRFA, FAMES, alkanes?
       calibration_data:
         description: Reference to the raw instrument data file used for calibration
         range: MassSpectrometryInstrumentData

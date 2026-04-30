@@ -281,7 +281,7 @@ classes:
       Abstract base class for raw or processed data accessible in S3 storage.
       Carries S3-pointer and sample-linkage slots shared across product types.
       processedData and future sitePhoto extend this via is_a.
-      No direct database table   subclasses map to tables.
+      No direct database table, subclasses map to tables.
     slots:
       - name
       - description
@@ -493,6 +493,9 @@ classes:
         range: modelenum
       instrument_parameters:
         range: string # TODO JSON
+      mass_analyzer_type:
+        range: MassAnalyzerEnum
+        description: The type of mass analyzer present in the instrument, if applicable (e.g., Orbitrap, Time-of-Flight, Quadrupole).
 
   ontologyClass: # table has no data
     attributes:
