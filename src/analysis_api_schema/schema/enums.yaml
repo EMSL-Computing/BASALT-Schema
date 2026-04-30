@@ -363,7 +363,7 @@ enums:
       none:
         description: Not sterilised (used as-is)
         
-NEONDomainEnum:
+  NEONDomainEnum:
     description: NEON ecological domains
     todos:
       - move this to the enum.yaml

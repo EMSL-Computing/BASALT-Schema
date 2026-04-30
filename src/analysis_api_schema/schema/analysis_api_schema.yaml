@@ -179,25 +179,25 @@ slots:
     required: false
 
   version:
-    description: Version string; shared by processedData, analysisActivity, workflowExecutionActivity
+    description: Version string; shared by processedData, dataGenerationActivity, dataProcessingActivity
     range: string
     required: true
 
-  # --- workflowExecutionActivity: new chain-link slot ---
+  # --- dataProcessingActivity: new chain-link slot ---
   parent_workflow_id:
     description: |-
-      Self-referential FK to the preceding workflowExecutionActivity in a chain.
+      Self-referential FK to the preceding dataProcessingActivity in a chain.
       NULL -> first (or standalone) step.
       Non-null -> this execution directly follows parent_workflow_id.
       Enables single-hop chaining queries; full traversal via linkage_cache.
 
-      DDL: ALTER TABLE "workflowExecutionActivity"
+      DDL: ALTER TABLE "dataProcessingActivity"
              ADD COLUMN parent_workflow_id UUID
-             REFERENCES "workflowExecutionActivity"(id);
+             REFERENCES "dataProcessingActivity"(id);
     range: uuid
     required: false
 
-  # --- workflowExecutionActivity: JSONB direction change ---
+  # --- dataProcessingActivity: JSONB direction change ---
   workflow_steps:
     description: |-
       Per-run workflow parameters. Previously annotated TODO JSONB in schema.
@@ -207,13 +207,13 @@ slots:
     range: string   # interim placeholder   will reference typed key-value class; schema TBD
     required: false
 
-  # --- analysisActivity: temporal ordering ---
+  # --- dataGenerationActivity: temporal ordering ---
   sequence_order:
     description: |-
       Integer ordering within a temporal series for the same analyte.
       Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
-      DDL: ALTER TABLE "analysisActivity"
+      DDL: ALTER TABLE "dataGenerationActivity"
              ADD COLUMN sequence_order INTEGER;
     range: integer
     required: false
@@ -244,8 +244,8 @@ slots:
     description: |-
       Reference to the activity that generated this data product.
       Range is overridden per subclass via slot_usage:
-        processedData   -> workflowExecutionActivity
-        instrumentData  -> analysisActivity
+        processedData   -> dataProcessingActivity
+        instrumentData  -> dataGenerationActivity
     required: false   # nullable   not all products have a tracked generating activity
 
 imports:
@@ -261,7 +261,7 @@ imports:
   - zip_download
   - media_strain_culture_plate
   - metagenomics
-  # - mass_spec
+  - mass_spec
   # - metaproteomics
   - xrf_xrd
   # - linkage_cache   # MR2: uncomment when linkage_cache.yaml is added
@@ -325,12 +325,15 @@ classes:
       - summary_metrics  # [ADDED] key-value product summary, per-type schema TBD
       - lims_barcode     # [PROMOTED] from inline attribute
       - version          # [PROMOTED] from inline attribute
-      # TODO What is this version referencing
       - sample_id        # [ADDED] link back to originating sample
+    todos:
+      - what does version reference?
+      - all subclasses need a more specific upstream slot to replace was_generated_by
+
 
   instrumentData:
     is_a: dataProduct
-    abstract: true # need to add subclasses for non-mass spec data
+    abstract: true
     slots:
       - file_curie
     slot_usage:
@@ -338,17 +341,21 @@ classes:
         required: true
     attributes:
       alternative_identifiers:
-        range: string # TODO ARRAY
+        range: string
       compression_type:
         range: string
       type:
         range: string
-      # was_generated_by: -> define more specific names on subclasses
-      #   range: analysisActivity
       file_type:
         range: filetype
-      version: # why is this here? instrument_software_version
+      version:
         range: string
+    todos:
+      - all subclasses need a more specific upstream slot to replace was_generated_by
+      - add subclasses for non-mass spec data
+      - revisit alternative identifiers range - array?
+      - what does version reference? is it software? why is it here
+      - revisit filetype enum - restrict on subclasses
 
   sitePhoto:
     is_a: dataProduct
@@ -358,13 +365,13 @@ classes:
       photo_taken_during:
         range: SamplingActivity
 
-  # analysisActivity is now ABSTRACT.
-  # Concrete per-method-type subclasses (e.g. EcoplateAnalysisActivity,
-  # AMP2AnalysisActivity in companion files) use is_a: analysisActivity and
+  # dataGenerationActivity is now ABSTRACT.
+  # Concrete per-method-type subclasses (e.g. EcoplatedataGenerationActivity,
+  # AMP2dataGenerationActivity in companion files) use is_a: dataGenerationActivity and
   # add method-specific slots (including timepoint_label where needed).
   # New slot: sequence_order. version promoted to global slot.
   # NOTE: Will be renamed DataGenerationActivity.
-  analysisActivity:
+  dataGenerationActivity:
     abstract: true
     slots:
       - sequence_order   # [ADDED] integer ordering within a temporal series
@@ -374,8 +381,6 @@ classes:
       id:
         identifier: true
         range: uuid
-      type:
-        range: routemethod
       analyte_id:
         range: ProcessedSample
       name:
@@ -392,14 +397,16 @@ classes:
         range: string
       instrument_operator_id:
         range: personValue
+    todos:
+      - what does version reference? is it software? doesn't make sense here
 
-  # workflowExecutionActivity is ABSTRACT.
-  # Concrete per-type subclasses (e.g. MetagenomicsWorkflowExecutionActivity in
-  # metagenomics.yaml) use is_a: workflowExecutionActivity.
+  # dataProcessingActivity is ABSTRACT.
+  # Concrete per-type subclasses (e.g. MetagenomicsdataProcessingActivity in
+  # metagenomics.yaml) use is_a: dataProcessingActivity.
   # New slot: parent_workflow_id (chain link). workflow_steps direction updated.
   # version promoted to global slot.
 
-  workflowExecutionActivity:
+  dataProcessingActivity:
     abstract: true
     description: |-
       Abstract base for any workflow execution activity. Input data should 
@@ -419,9 +426,6 @@ classes:
       type:
         range: string
         required: true
-      # raw_data_id:
-      #  range: instrumentData
-      #  required: false # subclassed activities handle this explicitly
       description:
         range: string
       started_at_time:
@@ -435,13 +439,6 @@ classes:
         range: string
       software_poc:
         range: string
-      #git_url:
-      #  range: string
-      # required: true
-      #name:
-      #  range: string
-      #used_id:
-      #  range: softwareControlledTermValue
       execution_resource:
         range: executionresourcetype
 
@@ -576,8 +573,10 @@ classes:
         required: true
       url:
         range: string
-      version: # why is this here? lab_protocol_version
+      version:
         range: string
+    todos:
+      - why is version here? should it be lab_protocol_version?
 
   processingSampleLink:
     attributes:
@@ -600,7 +599,7 @@ classes:
         identifier: true
         range: samplerole
         required: true
-      version: # why is this here? processing sample what is a version?
+      version:
         range: string
     unique_keys:
       unique_sample_process_step:
@@ -609,6 +608,8 @@ classes:
           - processing_id
           - step_number
           - role
+    todos:
+      - why is version here? what is a version of a processed sample?
 
   instrumentCustodian:
     attributes:
@@ -623,7 +624,7 @@ classes:
   workflowExecutionFunctionalAnnotation:
     attributes:
       workflow_id:
-        range: workflowExecutionActivity
+        range: dataProcessingActivity
         required: true
       functional_annotation_id:
         range: functionalAnnotationIdentifier

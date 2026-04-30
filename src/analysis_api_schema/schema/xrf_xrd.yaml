@@ -11,10 +11,10 @@ description: |
 
   Inheritance hierarchy (all is_a chains):
     
-    analysisActivity (abstract)
-      └── XRayAnalysisActivity (abstract, MR: xrf_xrd) 
-            ├── XRFAnalysisActivity
-            └── XRDAnalysisActivity
+    dataGenerationActivity (abstract)
+      └── XRaydataGenerationActivity (abstract, MR: xrf_xrd) 
+            ├── XRFdataGenerationActivity
+            └── XRDdataGenerationActivity
     
     dataProduct (abstract)
       └── processedData
@@ -26,10 +26,10 @@ description: |
     
     XRF (direct instrument output, no computational workflow):
       processedSample(soil replicate)
-        -> XRFAnalysisActivity
+        -> XRFdataGenerationActivity
             protocol_url: vendor SOP or EMSL internal protocol
             instrument_id -> instrument (e.g., Rigaku ZSX Primus IV)
-        -> [no workflowExecutionActivity needed for direct output]
+        -> [no dataProcessingActivity needed for direct output]
         -> XRFElementalProduct (one row per sample, wide format with 27 element columns)
             summary_metrics: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2}
             s3_key: "xrf/raw/sample_001_spectrum.csv"
@@ -38,8 +38,8 @@ description: |
     
     XRD (may include computational refinement):
       processedSample(soil replicate, ground powder)
-        -> XRDAnalysisActivity
-        -> [optional] workflowExecutionActivity(type='xrd_rietveld_refinement')
+        -> XRDdataGenerationActivity
+        -> [optional] dataProcessingActivity(type='xrd_rietveld_refinement')
             if computational refinement is performed
         -> XRDPhaseProduct (one row per sample, wide format with 10 mineral columns)
             summary_metrics: {"quartz_percent":42, "albite_percent":18}
@@ -48,11 +48,11 @@ description: |
                      flag_quartz, flag_albite, ... (10 flags using processeddataflag)
 
   Future extensibility:
-    The XRayAnalysisActivity abstract class can accommodate additional X-ray methods
+    The XRaydataGenerationActivity abstract class can accommodate additional X-ray methods
     such as X-ray computed tomography (XCT) if needed.
 
   Integration notes:
-    - XRayAnalysisActivity classes -> paste into analysis_api_schema.yaml classes section
+    - XRaydataGenerationActivity classes -> paste into analysis_api_schema.yaml classes section
     - XRayDataProduct classes -> paste into products.yaml classes section
     - New enum values -> add to enums.yaml as noted in comments below
     - Shared slots -> already defined in analysis_api_schema.yaml (inherited via is_a)
@@ -73,7 +73,7 @@ imports:
 # SLOTS
 # Reusable slots specific to X-ray analysis classes.
 # Shared slots (name, s3_key, version, acquisition_time, instrument_id, 
-# protocol_url, etc.) are inherited via the analysisActivity and dataProduct 
+# protocol_url, etc.) are inherited via the dataGenerationActivity and dataProduct 
 # slot definitions in analysis_api_schema.
 # 
 # NOTE: Protocol detail slots (commented below) can be uncommented and expanded
@@ -136,34 +136,34 @@ slots:
 
 
 # =============================================================================
-# CLASSES — analysisActivity subclasses
+# CLASSES — dataGenerationActivity subclasses
 # -> PASTE THESE INTO analysis_api_schema.yaml classes section
 # =============================================================================
 
 classes:
 
   # ---------------------------------------------------------------------------
-  # (NEW ABSTRACT CLASS) XRayAnalysisActivity
+  # (NEW ABSTRACT CLASS) XRaydataGenerationActivity
   # Abstract parent for all X-ray analytical methods.
-  # Concrete subclasses: XRFAnalysisActivity, XRDAnalysisActivity
-  # Future: XCTAnalysisActivity (X-ray computed tomography) could be added here
+  # Concrete subclasses: XRFdataGenerationActivity, XRDdataGenerationActivity
+  # Future: XCTdataGenerationActivity (X-ray computed tomography) could be added here
   # ---------------------------------------------------------------------------
-  XRayAnalysisActivity:
-    is_a: analysisActivity
+  XRaydataGenerationActivity:
+    is_a: dataGenerationActivity
     abstract: true
     description: |-
       Abstract base class for X-ray analytical methods including XRF (elemental)
       and XRD (mineralogical) analysis. Inherits acquisition_time, instrument_id,
-      protocol_url, analyte_id, and other core metadata from analysisActivity.
+      protocol_url, analyte_id, and other core metadata from dataGenerationActivity.
       
       Concrete subclasses define method-specific measurement parameters.
       Future X-ray methods (e.g., XCT) can extend this class.
       
       Shared patterns:
         - Direct instrument output (no computational workflow) is typical for XRF
-        - XRD may optionally link to workflowExecutionActivity for Rietveld refinement
+        - XRD may optionally link to dataProcessingActivity for Rietveld refinement
         - protocol_url should link to vendor SOP or EMSL internal protocol documentation
-    # Inherits from analysisActivity:
+    # Inherits from dataGenerationActivity:
     #   - id (uuid identifier)
     #   - type (routemethod enum — NEW VALUES: xrf_analysis, xrd_analysis)
     #   - analyte_id (FK to processedSample)
@@ -178,10 +178,10 @@ classes:
 
 
   # ---------------------------------------------------------------------------
-  # XRFAnalysisActivity — Concrete X-ray Fluorescence
+  # XRFdataGenerationActivity — Concrete X-ray Fluorescence
   # ---------------------------------------------------------------------------
-  XRFAnalysisActivity:
-    is_a: XRayAnalysisActivity
+  XRFdataGenerationActivity:
+    is_a: XRaydataGenerationActivity
     description: |-
       X-ray Fluorescence (XRF) elemental analysis activity.
       
@@ -192,10 +192,10 @@ classes:
       Data product: XRFElementalProduct (one row per element per sample)
       
       Workflow pattern: Direct instrument output (no computational processing step)
-        processedSample -> XRFAnalysisActivity -> XRFElementalProduct (workflow_id = NULL)
+        processedSample -> XRFdataGenerationActivity -> XRFElementalProduct (workflow_id = NULL)
       
       Protocol information: Stored externally; link via protocol_url attribute.
-      Example protocol parameters (stored in external SOP or workflowExecutionActivity
+      Example protocol parameters (stored in external SOP or dataProcessingActivity
       if computational correction is needed):
         - Beam voltage (kV), beam current (mA)
         - Measurement duration (seconds)
@@ -211,10 +211,10 @@ classes:
 
 
   # ---------------------------------------------------------------------------
-  # XRDAnalysisActivity — Concrete X-ray Diffraction
+  # XRDdataGenerationActivity — Concrete X-ray Diffraction
   # ---------------------------------------------------------------------------
-  XRDAnalysisActivity:
-    is_a: XRayAnalysisActivity
+  XRDdataGenerationActivity:
+    is_a: XRaydataGenerationActivity
     description: |-
       X-ray Diffraction (XRD) mineralogical analysis activity.
       
@@ -225,14 +225,14 @@ classes:
       
       Workflow patterns:
         1. Direct/semi-quantitative: 
-             processedSample -> XRDAnalysisActivity -> XRDPhaseProduct (workflow_id = NULL)
+             processedSample -> XRDdataGenerationActivity -> XRDPhaseProduct (workflow_id = NULL)
         2. With Rietveld refinement (computational):
-             processedSample -> XRDAnalysisActivity -> 
-             workflowExecutionActivity(type='xrd_rietveld_refinement') -> 
+             processedSample -> XRDdataGenerationActivity -> 
+             dataProcessingActivity(type='xrd_rietveld_refinement') -> 
              XRDPhaseProduct (workflow_id = refinement WEA)
       
       Protocol information: Stored externally; link via protocol_url attribute.
-      Example protocol parameters (stored in external SOP or workflowExecutionActivity):
+      Example protocol parameters (stored in external SOP or dataProcessingActivity):
         - Diffractometer geometry (Bragg-Brentano, Debye-Scherrer)
         - X-ray tube type (Cu, Co, Mo)
         - Scan range (2-theta degrees), step size
@@ -273,7 +273,7 @@ classes:
             XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
             XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
         - workflow_id is NULL for direct instrument output (XRF typical)
-        - workflow_id links to workflowExecutionActivity for computational processing (XRD Rietveld)
+        - workflow_id links to dataProcessingActivity for computational processing (XRD Rietveld)
     # Inherits from processedData via dataProduct:
     #   - id (uuid identifier)
     #   - name (string, required)
@@ -284,7 +284,7 @@ classes:
     #   - summary_metrics (JSONB, lightweight queryable data)
     #   - lims_barcode, version
     #   - type (from product enum — NEW VALUES: XRFElementalProduct, XRDPhaseProduct)
-    #   - workflow_id (FK to workflowExecutionActivity, nullable)
+    #   - workflow_id (FK to dataProcessingActivity, nullable)
 
 
   # ---------------------------------------------------------------------------
@@ -471,7 +471,7 @@ classes:
       Relationship to core tables:
         - id: FK -> processedData.id (1:1 linkage)
         - processedData.type = 'XRDPhaseProduct'
-        - processedData.workflow_id -> workflowExecutionActivity if Rietveld refinement
+        - processedData.workflow_id -> dataProcessingActivity if Rietveld refinement
           is computational; NULL if manual/semi-quantitative
         - processedData.summary_metrics = {"quartz_percent":42, "albite_percent":18, ...}
         - processedData.s3_key = diffractogram .xy, .xrdml, or .raw file in MinIO
@@ -488,8 +488,8 @@ classes:
         - Semi-quantitative (manual, less precise)
       
       Computational processing workflow (if applicable):
-        XRDAnalysisActivity acquires raw diffractogram ->
-        workflowExecutionActivity (type='xrd_rietveld_refinement') processes with
+        XRDdataGenerationActivity acquires raw diffractogram ->
+        dataProcessingActivity (type='xrd_rietveld_refinement') processes with
         HighScore Plus, GSAS-II, or FullProf ->
         XRDPhaseProduct (workflow_id points to refinement WEA)
         
