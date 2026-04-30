@@ -1,5 +1,5 @@
 id: https://w3id.org/MONet/analysis-api-schema/metagenomics
-name: metagenomics
+name: analysis-api-schema-metagenomics
 title: Metagenomics additions for MONet Analysis API
 description: |
   Metagenomics product and workflow classes for the MONet Analysis API.

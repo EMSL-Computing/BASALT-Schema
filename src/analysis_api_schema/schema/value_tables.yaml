@@ -1,6 +1,6 @@
-id: https://w3id.org/MONet/analysis-api-schema/value_tables.yaml
-name: analysis-api-schema-value_tables
-title: MONet Analysis API - Enumerations
+id: https://w3id.org/MONet/analysis-api-schema/value-tables
+name: analysis-api-schema-value-tables
+title: MONet Analysis API - Value Tables
 description: value tables
 license: MIT
 

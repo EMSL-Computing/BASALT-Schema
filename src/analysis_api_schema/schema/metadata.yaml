@@ -1,6 +1,6 @@
-id: https://w3id.org/MONet/analysis-api-schema/enums
-name: analysis-api-schema-enums
-title: MONet Analysis API - Enumerations
+id: https://w3id.org/MONet/analysis-api-schema/metadata
+name: analysis-api-schema-metadata
+title: MONet Analysis API - Metadata
 description: |-
   Enumerated values used throughout the MONet Analysis API schema
 license: MIT
@@ -27,22 +27,9 @@ slots:
       campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
       predating activity tracking.
     range: string
+    todos:
+      - Is sampling activity where we want to capture this?
     required: false
-
-classes:
-
-  # (CHANGED MR1) samplingActivity is now ABSTRACT per PI guidance.
-  # Concrete subclasses (e.g. soil, aerosol — see below) use is_a: samplingActivity.
-  # New slot: emsl_activity for EMSL activity/campaign scoping.
-
-  sampling_activity_site_metadata_link:
-    attributes:
-      sampling_activity_id:
-        range: SamplingActivity
-        required: true
-      site_metadata_id:
-        range: SiteMetadata
-        required: true
 
 enums:
   samplingactivitytype:
@@ -82,7 +69,7 @@ enums:
       other:
         description: Other growth facility type
 
-  oxygenstatusenum:
+  OxygenStatusEnum:
     description: Oxygen status of samples
     permissible_values:
       aerobic:
@@ -121,8 +108,10 @@ enums:
       other:
         description: Other storage temperature
 
-  sampbioticenum:
+  BioticRelationshipEnum:
     description: Sample biotic relationships
+    aliases:
+      - sampbioticenum
     permissible_values:
       free_living:
         description: Free-living organism
@@ -133,7 +122,7 @@ enums:
       symbiont:
         description: Symbiotic organism
 
-  storagecondtenum:
+  StorageConditionEnum:
     description: Sample storage conditions
     permissible_values:
       fresh:
@@ -146,8 +135,10 @@ enums:
         description: Other storage condition
 
 
-  landuseenum:
+  LandUseEnum:
     description: Land use classifications
+    todos:
+      - move this to the enum.yaml
     permissible_values:
       badlands:
         description: Badlands
@@ -221,127 +212,91 @@ enums:
         description: Vine crops (grapes)
 
 
-  drainageclassenum:
+  DrainageClassEnum:
     description: Soil drainage classifications
     permissible_values:
-      Excessively_Drained:
+      excessively_drained:
         description: Excessively drained soil
-        aliases: ["Excessively_Drained"]
-      Moderately_Well:
+      moderately_well:
         description: Moderately well drained soil
-        aliases: ["Moderately_Well"]
-      Poorly:
+      poorly:
         description: Poorly drained soil
-        aliases: ["Poorly"]
-      Somewhat_Poorly:
+      somewhat_poorly:
         description: Somewhat poorly drained soil
-        aliases: ["Somewhat_Poorly"]
-      Very_Poorly:
+      very_poorly:
         description: Very poorly drained soil
-        aliases: ["Very_Poorly"]
-      Well:
+      well:
         description: Well drained soil
-        aliases: ["Well"]
 
-
-
-  faoclassenum:
+  FAOClassEnum:
     description: FAO soil classification system
     permissible_values:
       Acrisols:
         description: Acrisols
-        aliases: ["Acrisols"]
       Alisols:
         description: Alisols
-        aliases: ["Alisols"]
       Andosols:
         description: Andosols
-        aliases: ["Andosols"]
       Anthrosols:
         description: Anthrosols
-        aliases: ["Anthrosols"]
       Arenosols:
         description: Arenosols
-        aliases: ["Arenosols"]
       Calcisols:
         description: Calcisols
-        aliases: ["Calcisols"]
       Cambisols:  
         description: Cambisols
-        aliases: ["Cambisols"]
       Chernozems:
         description: Chernozems
-        aliases: ["Chernozems"]
       Cryosols:
         description: Cryosols
-        aliases: ["Cryosols"]
       Durisols:
         description: Durisols
-        aliases: ["Durisols"]
       Ferrasols:
         description: Ferralsols
-        aliases: ["Ferrasols"]
       Fluvisols:
         description: Fluvisols
-        aliases: ["Fluvisols"]
       Gleysols:
         description: Gleysols
-        aliases: ["Gleysols"]
       Gypsisols:
         description: Gypsisols
-        aliases: ["Gypsisols"]
       Histosols:
         description: Histosols
-        aliases: ["Histosols"]
       Kastanozems:
         description: Kastanozems
-        aliases: ["Kastanozems"]
       Leptosols:
         description: Leptosols
-        aliases: ["Leptosols"]
       Lixisols:
         description: Lixisols
-        aliases: ["Lixisols"]
       Luvisols:
         description: Luvisols
-        aliases: ["Luvisols"]
       Nitosols:
         description: Nitisols
-        aliases: ["Nitosols"]
       Phaeozems:
         description: Phaeozems
-        aliases: ["Phaeozems"]
       Planosols:
         description: Planosols
-        aliases: ["Planosols"]
       Plinthosols:
         description: Plinthosols
-        aliases: ["Plinthosols"]
       Podzols:
         description: Podzols
-        aliases: ["Podzols"]
       Solonchaks:
         description: Solonchaks
-        aliases: ["Solonchaks"]
       Solonetz:
         description: Solonetz
-        aliases: ["Solonetz"]
       Stagnosols:
         description: Stagnosols
-        aliases: ["Stagnosols"]
       Technosols:
         description: Technosols
-        aliases: ["Technosols"]
       Umbrisols:
         description: Umbrisols
-        aliases: ["Umbrisols"]
       Vertisols:
         description: Vertisols
-        aliases: ["Vertisols"]
 
-
-  neondomainenum:
+  NEONDomainEnum:
     description: NEON ecological domains
+    todos:
+      - move this to the enum.yaml
+      - the descriptions should be the titles
     permissible_values:
       northeast:
         description: Northeast domain

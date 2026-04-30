@@ -1,6 +1,6 @@
 ---
-id: https://w3id.org/MONet/analysis-api-schema/plate-general-v2
-name: plate-general-v2
+id: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+name: analysis-api-schema-media-strain-culture-plate
 title: 96-Well Plate Workflows   V2 with Entities, Culture Activities, Montana Slots
 description: |-
   Comprehensive schema delta for 96-well plate workflows (AMP2 + Ecoplate)
