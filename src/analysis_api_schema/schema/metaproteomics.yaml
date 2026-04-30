@@ -261,27 +261,7 @@ enums:
  
 classes:
 
-  Activity: # L7 - links to PROV-O Activity, but with additional attributes relevant to mass spectrometry and chemical processes
-    is_a: ProcessActivity
-    description: Something that happens over time and can use equipment.
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      description:
-        range: string
-      ended_at_time:
-        range: datetime
-      name:
-        range: string
-      processing_institution:
-        range: ProcessInstitutionEnum
-        description: The institution where the activity took place.
-      protocol_link:
-        range: protocol 
-        description: A link to a protocol that describes the steps and parameters of the activity.
-      started_at_time:
-        range: datetime
+
       
   AnalysisActivity:
     attributes:
@@ -508,15 +488,7 @@ classes:
       used_id:
         range: SoftwareControlledTermValue
         description: Software, algorithm, or workflow used in this processing activity.
-  
-  
-  Entity:
-    description: Base identifiable thing.
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-  
+
   Extraction:
     is_a: Activity
     description: 
@@ -860,34 +832,6 @@ classes:
       protocol_link:
         range: Protocol
         description: Protocol or SOP followed by this activity.
-
-  ProcessedData:
-    is_a: DataObject
-    description: Processed data object resulting from data processing activities.
-    attributes:
-      core_section:
-        range: string
-      data_processing_id:
-        range: DataProcessingActivity
-        required: true
-        description: Processing run that generated this processed data object.
-      lims_barcode:
-        range: string
-      proposal_id:
-        range: string
-      sampling_set:
-        range: integer
-      sample_name:
-        range: string
-      s3_base_url:
-        range: string
-      s3_bucket:
-        range: string
-      s3_key:
-        range: string
-        required: true
-      version:
-        range: string
   
   ProcessedSample:
     description: Portion/aliquot derived for downstream activity
@@ -939,23 +883,6 @@ classes:
         range: ProteinAssayTypeEnum
         required: true
         description: The type of protein assay (Coomassie, BCA, etc.).
-    
-  Protocol:
-    description: A documented protocol or standard operating procedure (SOP) used in a process.
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      description:
-        range: string
-        description: Description of the protocol.
-      name:
-        range: string
-        required: true
-        description: Human-readable name of the protocol.
-      url:
-        range: string
-        description: URL link to the protocol document or resource.
 
   
   ResuspensionProcess:

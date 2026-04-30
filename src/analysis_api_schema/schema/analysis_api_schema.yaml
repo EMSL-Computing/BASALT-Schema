@@ -140,7 +140,7 @@ slots:
 
   # --- dataProduct base slots (promoted from processedData attributes) ---
   name:
-    description: Human-readable name for the data product
+    description: Human-readable name for the entity
     range: string
     required: true
 
@@ -268,6 +268,47 @@ imports:
   # - enrichment # todo have not reviewed fully
 
 classes:
+
+  # ---------------------------------------------------------------------------
+  # NEW ABSTRACT BASE CLASSES, FOR EVERYTHING
+  # Activity and Entity were moved here from metaproteomics.yaml,
+  # since we're going to do these anyway it seemed like a good starting point.
+  # The whole is_a inheritance hierarchy is NOT built out in this MR,
+  # that should be its own branch/MR for clarity.
+  # Edit these classes to your heart's content when that work happens.
+
+  Activity: # L7 - links to PROV-O Activity, but with additional attributes relevant to mass spectrometry and chemical processes
+    description: Something that happens over time and can use equipment.
+    abstract: true
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      ended_at_time:
+        range: datetime
+      processing_institution:
+        range: InstitutionEnum
+        description: The institution where the activity took place.
+      protocol_link:
+        range: Protocol 
+        description: A link to a protocol that describes the steps and parameters of the activity.
+      started_at_time:
+        range: datetime
+    slots:
+    - name
+    - description
+
+  Entity:
+    description: Base identifiable thing.
+    abstract: true
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+    slots:
+    - name
+    - description
+  # ---------------------------------------------------------------------------
 
   # ---------------------------------------------------------------------------
   # (NEW ABSTRACT CLASS) dataProduct   MR1
@@ -634,3 +675,20 @@ classes:
         required: true
       count:
         range: numeric
+
+  Protocol:
+    description: >-
+      A protocol document or standard operating procedure (SOP) used in a 
+      process. This class represents a reference to a document, it does NOT 
+      represent all of the processes done according to a protocol, processes
+      should be modeled using appropriate Activity classes.
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      url:
+        range: string
+        description: URL link to the protocol document or resource.
+    slots:
+      - name
+      - description
