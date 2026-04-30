@@ -269,8 +269,9 @@ classes:
     slots:
       - measure_type
     attributes:
-      respiration_rate_per_day_id:
-        range: quantityValue
+      respiration_co2_c_ug_per_g:
+        description: Soil respiration expressed as µg CO₂-C per gram soil
+        range: double
       flag:
         range: processeddataflag
 
