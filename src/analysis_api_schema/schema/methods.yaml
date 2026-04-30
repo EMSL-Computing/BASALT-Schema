@@ -120,19 +120,6 @@ classes:
     is_a: Method
     slots:
     attributes:
-      respiration_analysis_type:
-        range: string
-        required: true
-      sample_volume_id:
-        range: quantityValue
-      scale_id:
-        range: quantityValue
-      duration_id:
-        range: quantityValue
-      sampling_time_id:
-        range: quantityValue
-      bottle_vol_id:
-        range: quantityValue
   
   TOC_TN_Method:
     is_a: Method
