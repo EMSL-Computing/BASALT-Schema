@@ -71,14 +71,16 @@ slots:
 
   mobile_phases:
     description: Description of the mobile phases used in the chromatography method (e.g., solvents, gradients)
-    range: string
+    range: MobilePhaseSegment
+    multivalued: true
+    todos: can this actually be multivalued?
 
   stationary_phase:
-    description: Description of the stationary phase used in the chromatography method (e.g., column type)
+    description: Short name for the stationary phase used in the chromatography method (e.g., column type)
     range: StationaryPhaseEnum
 
   temperature_celsius:
-    description: Temperature at which the method was performed
+    description: Temperature at which the process, method, or activity was performed.
     range: float
 
   uses_ms_configuration:
@@ -90,11 +92,24 @@ slots:
     description: Points to a record of the chromatography used to introduce samples for the mass spectrometry run.
     range: ChromatographyConfiguration
 
+  column_dimensions:
+    range: string
+    description: Dimensions of the chromatography column used in the process.
+
+  column_manufacturer:
+    range: string
+    description: Name of the institution that manufactured the chromatography column.
+
+  flow_rate_ul_min:
+    range: float
+    description: Flow rate of the mobile phase, in microliters per minute.
+
+  injection_volume_ul:
+    range: float
+    todos: description - not sure what this is referencing
+
 # attributes from deleted FTICR and LCMS method classes
 # do we need to keep them. also what do they mean
-  column:
-    range: string
-    required: true
   resolution:
     range: double
     required: true
@@ -199,9 +214,12 @@ classes:
       - uses_chromatography # optional
       - analyte_category
 
+
+  # ============================================================================
   # New class - configuration, for use on mass spec data generation
   # could be more configurations in future
   # represents instrument configuration and settings
+  # ============================================================================
 
   Configuration:
     description: Record of configuration and/or settings for an activity.
@@ -230,6 +248,12 @@ classes:
       - fid
       - mass_range
 
+  # ============================================================================
+  # Chromatography related classes
+  # Useful for mass spec but also other processes, such as
+  # solid phase extraction (sample processing)
+  # ============================================================================
+
   ChromatographyConfiguration:
     is_a: Configuration
     description: Configuration and settings for a chromatography run.
@@ -240,7 +264,26 @@ classes:
       - stationary_phase
       - temperature_celsius
       - duration_min
+      - flow_rate_ul_min
+      - injection_volume_ul
 
+  MobilePhaseSegment: #maps to NMDC MobilePhaseSegment array
+    description: A segment of the mobile phase used in chromatography during mass spectrometry.
+    slots:
+      - duration_min
+      - substances_used
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      name:
+        range: string
+        required: true
+        description: Human-readable name of the mobile phase segment.
+      segment_order:
+        range: integer
+        description: The order of this segment in the overall chromatography protocol.
+    todos: inheritance?
 
 
 

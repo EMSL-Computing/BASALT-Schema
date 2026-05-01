@@ -289,6 +289,17 @@ classes:
       volume_mL:
         range: float
         description: The volume of the portion of the substance, in milliliters.
+      source_concentration_mg_per_ml:
+        range: float
+        description: >-
+          Concentration of the substance before it is added to the experiment, 
+          in milligrams per milliliter.
+      final_concentration_mg_per_ml:
+        range: float
+        description: >-
+          Concentration of the substance in the combined tube/experimental 
+          container after everything in this step is added, in milligrams 
+          per milliliter.
 
   ProteinQuantification:
     is_a: sampleProcessing
