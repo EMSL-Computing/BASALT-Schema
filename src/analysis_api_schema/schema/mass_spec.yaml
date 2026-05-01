@@ -34,110 +34,14 @@ default_prefix: analysis_api_schema
 imports:
   - linkml:types
   - analysis_api_schema
+  - slots
 
 # Reusable slots specific to mass spectrometry classes.
 # Shared slots (name, s3_key, version, workflow_steps, etc.) are inherited via
 # the dataProduct / dataProcessingActivity slot definitions in analysis_api_schema.
 slots:
   
-  aq: 
-    description:
-    range: numeric
 
-  uses_calibration:
-    description: >- 
-      Reference to the raw data file from the standard which was run with a batch of samples that was used as calibration for this data processing workflow run.
-    range: MassSpectrometryStandardRun
-
-  injection:
-    description: Type of injection used in the mass spectrometry method
-    range: string
-    required: true
-
-  ionization:
-    description: Type of ionization used in the mass spectrometry method
-    range: ionizationenum
-    required: true
-
-  polarity:
-    description: Polarity setting used in the mass spectrometry method
-    range: polarityenum
-    required: true
-
-  chromatography_type:
-    description: Type of chromatography used in the method (e.g., GC, LC)
-    range: chromatographytypeenum
-    required: true
-
-  mobile_phases:
-    description: Description of the mobile phases used in the chromatography method (e.g., solvents, gradients)
-    range: string
-
-  stationary_phase:
-    description: Description of the stationary phase used in the chromatography method (e.g., column type)
-    range: string
-
-  temperature_celsius:
-    description: Temperature at which the method was performed
-    range: float
-
-  uses_ms_configuration:
-    description: Points to a record of the configuration used for the mass spectrometry run.
-    range: MassSpectrometryConfiguration
-    required: true
-
-  uses_chromatography:
-    description: Points to a record of the chromatography used to introduce samples for the mass spectrometry run.
-    range: ChromatographyConfiguration
-
-# attributes from deleted FTICR and LCMS method classes
-# do we need to keep them. also what do they mean
-  column:
-    range: string
-    required: true
-  resolution:
-    range: double
-    required: true
-  scan_range:
-    range: string
-    required: true
-  dd_ms2_resolution:
-    range: double
-    required: true
-  loop_count:
-    range: string
-    required: true
-  isolation_window:
-    range: string
-    required: true
-  iat:
-    range: double
-  fid:
-    range: double
-  mass_range:
-    range: double
-  collection_mode:
-    range: msmodeenum
-
-  produced_by_ms_run:
-    description: a reference to the data generation activity that produced instrument data
-    range: MassSpectrometryAnalysisActivity
-
-  ms_raw_file_type:
-    description: the filetype of the mass spectrometry instrument data
-    range: msrawfiletypeenum
-
-  results_from_ms_processing:
-    description: a reference to the mass spec data processing activity that produced this data product
-    range: MassSpectrometrydataProcessingActivity
-  
-  analyte_category:
-    description: omics type for easier search, optional
-    range: analytecategoryenum
-
-  duration_min:
-    description: how long something took, in minutes
-    range: float
 
 classes:
 

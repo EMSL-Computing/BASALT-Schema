@@ -1,0 +1,799 @@
+---
+id: https://w3id.org/MONet/analysis-api-schema/slots
+name: analysis-api-schema-slots
+title: Slot definitions for the MONet Analysis API Schema
+description: |-
+  Slot definitions for analysis-api-schema in one file for better 
+  maintainability and reusability.
+license: MIT
+see_also:
+  - https://MONet.github.io/analysis-api-schema
+  - https://github.com/pnnl/analysis-api
+
+default_range: string
+
+imports:
+  - linkml-types
+
+slots:
+
+  # id: is left as an attribute with range: uuid and identifier: true
+  # everywhere, for now, for (some kind of database reason).
+
+  # from analysis api yaml
+
+  sampling_set:
+    title: sampling set
+    description: |-
+      Sampling set number for grouping related samples collected together.
+      This is a user-defined integer that can be used to link samples collected
+      in the same sampling event or campaign.
+    range: integer
+  soil_type:
+    title: soil type
+    description: The specific type of soil sample
+    range: SoilTypeEnum
+    todos: 
+      - this is a GSC slot but it's not constrined by an enum, it's a string. where did this come from?
+  soil_horizon:
+    title: soil horizon
+    description: Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath.
+    exact_mappings:
+      - MIXS:0001082
+    range: SoilHorizonEnum
+  aerosol_type:
+    description: The type or method of aerosol collection
+    range: AerosolTypeEnum
+    required: true
+  core_section:
+    title: core section
+    description: The section of the core.
+    examples:
+      - value: TOP
+      - value: MID
+      - value: BTM
+    range: string
+  project:
+    title: Project
+    alias:
+      - study
+      - study_id
+      - project_id
+      - proposal
+      - proposal_id
+    description: |-
+      Identifier for the user project associated with the entity or activity. 
+    range: integer
+    todos:
+      - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141 where emsl.project is the CURIE prefix
+  storage_condition:
+    title: storage condition
+    description: The storage condition of the sample, such as temperature or preservation method.
+    range: StorageConditionEnum
+    exact_mappings:
+      - MIXS:0000327
+    aliases:
+      - samp_store_cond
+      - storage_cond
+      - storage_condt
+  oxygen_relationship:
+    title: oxygen relationship
+    description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
+    range: OxygenStatusEnum
+    exact_mappings:
+      - MIXS:0000015
+  biotic_relationship:
+    title: observed biotic relationship
+    description: The biotic relationship of the sample, such as symbiotic or free-living
+    range: BioticRelationshipEnum
+    exact_mappings:
+      - MIXS:0000016
+    aliases:
+      - samp_biotic_relationship
+  air_temp_regm:
+    title: air temperature regime
+    description: Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens
+    range: string
+    exact_mappings:
+      - MIXS:0000551
+  chem_administration:
+    title: chemical administration
+    description: List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
+    range: string
+    exact_mappings:
+      - MIXS:0000751
+
+  type:
+    title: type
+    description: Type classifier for an entity or activity
+    range: string
+
+  description:
+    title: description
+    description: Human-readable description for the entity or activity
+    range: string
+
+  latitude:
+    title: latitude
+    description: Latitude coordinate of the sampling site
+    range: double
+
+  longitude:
+    title: longitude
+    description: Longitude coordinate of the sampling site
+    range: double
+
+  has_output:
+    title: has output
+    description: Output entity produced by an activity
+    range: string
+    todos: I'm not sure we are going to use this, given our plan to only point 'upstream' from dataProduct to the generating activity, and not have activities point to their outputs. Do we need this slot?
+
+  # --- dataProduct base slots (promoted from processedData attributes) ---
+  name:
+    description: Human-readable name for the data product
+    range: string
+    required: true
+
+  proposal_id:
+    description: 5-digit EMSL user proposal/project ID
+    range: integer
+
+  sample_name:
+    range: string
+
+  s3_base_url:
+    range: string
+
+  s3_bucket:
+    range: string
+
+  s3_key:
+    description: MinIO/S3 object key; required for all data products
+    range: string
+    required: true
+
+  filesize:
+    range: integer
+
+  md5checksum:
+    range: string
+
+  file_curie:
+    description: an identifier for a file that resolves to the file's accessible location
+    range: string # restrict
+
+  # --- shared utility slots promoted from processedData inline attributes ---
+  lims_barcode:
+    description: LIMS barcode identifier
+    range: string
+    required: false
+
+  version:
+    description: Version string; shared by processedData, dataGenerationActivity, dataProcessingActivity
+    range: string
+    required: true
+
+  # --- dataProcessingActivity: new chain-link slot ---
+  parent_workflow_id:
+    description: |-
+      Self-referential FK to the preceding dataProcessingActivity in a chain.
+      NULL -> first (or standalone) step.
+      Non-null -> this execution directly follows parent_workflow_id.
+      Enables single-hop chaining queries; full traversal via linkage_cache.
+
+      DDL: ALTER TABLE "dataProcessingActivity"
+             ADD COLUMN parent_workflow_id UUID
+             REFERENCES "dataProcessingActivity"(id);
+    range: uuid
+    required: false
+
+  # --- dataProcessingActivity: JSONB direction change ---
+  workflow_steps:
+    description: |-
+      Per-run workflow parameters. Previously annotated TODO JSONB in schema.
+      Direction: structured key-value pairs keyed by workflow type.
+      Schema for allowed keys TBD per workflow type before full implementation.
+      Interim DB storage: JSONB column retained.
+    range: string   # interim placeholder   will reference typed key-value class; schema TBD
+    required: false
+
+  # --- dataGenerationActivity: temporal ordering ---
+  sequence_order:
+    description: |-
+      Integer ordering within a temporal series for the same analyte.
+      Lower = earlier in series. Use when acquisition_time alone is insufficient.
+
+      DDL: ALTER TABLE "dataGenerationActivity"
+             ADD COLUMN sequence_order INTEGER;
+    range: integer
+    required: false
+
+  # --- processedData: compact queryable summary ---
+  summary_metrics:
+    description: |-
+      Lightweight per-product summary for common queries that avoid full file download.
+      Direction: structured key-value pairs; per-type schemas TBD:
+        ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
+        xrf:       per-element concentration results + QC flag
+        lcms:      feature count, identification count, MSI-2 fraction
+      Interim DB storage: JSONB column retained until formal typed class exists.
+
+      DDL: ALTER TABLE "processedData"
+             ADD COLUMN summary_metrics JSONB;   -- interim; formal key-value schema TBD
+    range: string   # interim placeholder   will reference typed key-value class; schema TBD
+    required: false
+
+
+  sample_id:
+    description: Link back to the originating sample
+    range: Sample
+    required: false
+
+  # --- dataProduct: provenance link ---
+  was_generated_by:
+    description: |-
+      Reference to the activity that generated this data product.
+      Range is overridden per subclass via slot_usage:
+        processedData   -> dataProcessingActivity
+        instrumentData  -> dataGenerationActivity
+    required: false   # nullable   not all products have a tracked generating activity
+
+  # from plate yaml
+
+  # Mixin slots   HasIncubationConditions
+  temperature_celsius:
+    description: Temperature in degrees Celsius
+    range: float
+
+  agitation_speed_rpm:
+    description: Agitation/shaking speed in RPM (0 for static)
+    range: integer
+
+  oxygen_status:
+    description: Oxygen status of the activity or entity (aerobic, anaerobic, etc.)
+    range: string
+
+  # ---------------------------------------------------------------------------
+  # Direct FK slots   media_ref, strain_ref
+  # ---------------------------------------------------------------------------
+  media_ref:
+    description: |-
+      FK reference to a prepared media processedSample used in this activity.
+      Maps to Montana's growth_medium (on CultureGrowth) and media_id
+      (on plate setup).  Points to processedSample(type=prepared_media)
+      produced by an upstream MediaPreparation activity.
+    range: ProcessedSample
+    required: false
+
+  strain_ref:
+    description: FK reference to a Strain purchasedMaterial used in this activity
+    range: Strain
+    required: false
+
+  # ---------------------------------------------------------------------------
+  # purchasedMaterial base slots
+  # NOTE: The existing global slot `name` has description scoped to data products.
+  # purchasedMaterial uses its own attribute for `name` and `description` (matching the
+  # pattern used by instrument, dataGenerationActivity, etc. in the living schema).
+  # A future unification pass should promote these to a single global slot with
+  # a generalised description.
+  # ---------------------------------------------------------------------------
+  entity_type:
+    description: Discriminator for purchasedMaterial subtype (e.g. 'media', 'strain')
+    range: string
+    required: true
+
+  # ---------------------------------------------------------------------------
+  # Media-specific slots 
+  # ---------------------------------------------------------------------------
+  media_type:
+    description: |-
+      Purpose/context of the media preparation.
+      Examples: strain_purity, stock_culture, pre_culture, rich_media.
+    range: MediaTypeEnum
+    # Montana: media_type
+
+  volume_ml:
+    description: Volume of the entity in milliliters
+    range: float
+    # Montana: volume_ml
+
+  media_recipe:
+    description: |-
+      Reference or description of recipe used to prepare media.
+      Examples: "M9 media with 1% Glucose", "rich media with 10% LB and 90% glycerol"
+    range: string
+    # Montana: media_recipe
+    todos:
+      - Consider whether this should be a controlled vocabulary or free text.
+      - Montana notes similarity to MIXS:0001108 (growth medium).
+
+  media_formulation:
+    description: Formulation method of the media (manual mix, commercial, etc.)
+    range: FormulationEnum
+    # Montana: media_formulation
+
+  commercial_media_catalog:
+    description: |-
+      Reference to commercial media catalog entry if applicable.
+      Required if media_formulation is 'commercial', otherwise null.
+    range: string
+    # Montana: commercial_media_catalog
+
+  sterilization_method:
+    description: Method used to sterilize the entity (autoclave, filter, UV, etc.)
+    range: SterilizationMethodEnum
+    required: false
+    # Montana: sterilization_method
+
+  ph_adjustment:
+    description: Whether the entity was pH-adjusted
+    range: boolean
+    required: false
+    # Montana: ph_adjustment
+
+  ph_target:
+    description: Target pH value (required if ph_adjustment is true)
+    range: float
+    required: false
+    # Montana: ph_target
+
+  exposure_sensitivity:
+    description: Sensitivity the entity has if exposed (e.g. light-sensitive, oxygen-sensitive)
+    range: string
+    multivalued: true
+    # Montana: exposure_sensitivity
+
+  media_additions:
+    description: |-
+      Additional components added to the media (antibiotics, inducers, etc.).
+      Examples: "100 ug/mL ampicillin", "1 mM IPTG"
+    range: string
+    multivalued: true
+    # Montana: media_additions
+    todos:
+      - Montana notes LIMS has a separate antibiotic_additions field.
+        Evaluate whether collapsing is acceptable for LIMS workflow generation.
+
+  storage_temperature:
+    description: Storage temperature for the entity (e.g. "4 C", "-80 C")
+    range: string
+    # Montana: storage_temperature  (she used QuantityValue range)
+    # TODO: Consider using quantityValue range for consistency with existing schema.
+
+  # ---------------------------------------------------------------------------
+  # Strain-specific slots  (Montana: amp2-metadata.yaml -> Strain class)
+  # ---------------------------------------------------------------------------
+  strain_identifier:
+    description: |-
+      External human-readable strain identifier (e.g. "KT2440_pTE314").
+      NOT the database UUID   that is the Strain.id attribute.
+    range: string
+    required: true
+    # Montana: strain_id (renamed to avoid collision with FK usage)
+
+  strain_type:
+    description: Type of strain (bacterial, fungal, etc.)
+    range: string
+    # Montana: strain_type
+
+  strain_source:
+    description: Source institution or collection (e.g. "PNNL", "ATCC")
+    range: string
+    # Montana: strain_source
+
+  strain_mutation:
+    description: Genetic modification or plasmid carried (e.g. "pTE314")
+    range: string
+    # Montana: strain_mutation
+
+  # ---------------------------------------------------------------------------
+  # CultureGrowth activity slots
+  # ---------------------------------------------------------------------------
+  incubation_time_hours:
+    description: Incubation duration in hours
+    range: float
+    # Montana: incubation_time_hours
+
+  container_type:
+    description: Physical container used for the culture (flask, tube, plate, etc.)
+    range: string
+    # Montana: container_type
+    # NOTE: existing schema has a containerType CLASS and containertypeenum.
+    # This slot is intentionally a simple string for now.  A future alignment
+    # should reconcile with the existing containerType/containertypeenum.
+
+  inspection_method:
+    description: Method used to inspect or verify purity (visual, sequencing, etc.)
+    range: string
+    # Montana: inspection_method (on StrainPurity)
+
+  target_strain:
+    description: Target strain identifier for purity checks
+    range: string
+    # Montana: target_strain
+
+  contaminant_strains:
+    description: Known or detected contaminant strains (if any)
+    range: string
+    # Montana: contaminant_strains
+
+  preparation_date:
+    description: Date the stock culture or entity was prepared
+    range: date
+    # Montana: preparation_date (on StockCulturePreparation)
+
+  treatment_type:
+    description: Type of treatment applied in experimental culture growth
+    range: string
+    # Montana: treatment_type (on ExperimentalCulture)
+
+  growth_time:
+    description: |-
+      Total growth time for the culture.
+      Required for ExperimentalCulture activities.
+    range: string
+    # Montana: growth_time (on ExperimentalCulture)
+
+  # ---------------------------------------------------------------------------
+  # MediaPreparation activity slots
+  # ---------------------------------------------------------------------------
+  creation_date:
+    description: Date the entity or preparation was created
+    range: date
+    # Montana: creation_date
+
+  # ---------------------------------------------------------------------------
+  # PlateSetupActivity common slots  (carried forward from plate-general v1)
+  # ---------------------------------------------------------------------------
+  plate_type:
+    description: Vendor and model of plate (e.g. "Greiner_96well_flat_bottom", "Biolog_EcoPlate")
+    range: string
+    required: true
+
+  plate_barcode:
+    description: Physical barcode on plate (if different from UUID)
+    range: string
+
+  setup_date:
+    description: When the plate was physically set up
+    range: datetime
+    required: true
+
+  setup_operator_id:
+    description: Person who set up the plate
+    range: personValue
+
+  setup_instrument:
+    description: Automated liquid handler (e.g. "Hamilton_STAR") or "manual"
+    range: string
+
+  sealing_method:
+    description: How the plate is sealed (e.g. "BreathEasy_membrane", "adhesive_film")
+    range: string
+
+  well_metadata:
+    description: |-
+      Structured per-well metadata array. Format varies by activity subclass:
+        AMP2:     AMP2WellMetadata instances (position, volumes, replicate_group)
+        Ecoplate: EcoplateWellMetadata instances (position, carbon_source, treatment, volumes)
+      Stored as JSONB in the database; typed via LinkML inlined classes.
+    range: WellMetadata
+    multivalued: true
+    inlined_as_list: true
+
+  # ---------------------------------------------------------------------------
+  # PlatedataGenerationActivity / PlateProduct slots
+  # ---------------------------------------------------------------------------
+  wavelength_nm:
+    description: Measurement wavelength in nanometres (e.g. 590 Ecoplate, 610 AMP2 OD)
+    range: integer
+    required: true
+
+  timepoint_label:
+    description: |-
+      Human-readable timepoint label for repeated-measurement series.
+      Examples: "t=0", "t=24h", "t=48h".
+      Lives on concrete analysis/product subclasses, NOT on base dataGenerationActivity
+      (per core-planB decision).
+    range: string
+    required: true
+
+  measurement_type:
+    description: Type of plate measurement (optical_density, fluorescence, flow_cytometry)
+    range: string
+
+  plate_average:
+    description: Mean measurement across all sample wells (excludes blanks)
+    range: float
+
+  blank_mean:
+    description: Mean measurement of uninoculated control wells
+    range: float
+
+  cv_percent:
+    description: Coefficient of variation across technical replicates
+    range: float
+
+  well_readings:
+    description: |-
+      Structured per-well measurement data array.
+      Lightweight summary for SQL queries without full file download.
+      Raw data still accessible via processedData.s3_key in MinIO.
+      Stored as JSONB in the database; typed via LinkML inlined class.
+    range: WellReading
+    multivalued: true
+    inlined_as_list: true
+
+  # ---------------------------------------------------------------------------
+  # AMP2-specific product slots
+  # ---------------------------------------------------------------------------
+  plate_reader_model:
+    description: Instrument model used for reading (e.g. "BioTek Epoch2")
+    range: string
+
+  # ---------------------------------------------------------------------------
+  # Ecoplate-specific product slots
+  # ---------------------------------------------------------------------------
+  plate_lot:
+    description: Manufacturer lot number for Biolog EcoPlate QC
+    range: string
+
+  uninoculated_mean:
+    description: Mean measurement of uninoculated control wells (baseline for Ecoplate)
+    range: float
+
+  average_well_color_development:
+    description: Average Well Color Development (AWCD) metric for Ecoplate
+    range: float
+
+  # from mass spec yaml
+  aq: 
+    description:
+    range: numeric
+
+  uses_calibration:
+    description: >- 
+      Reference to the raw data file from the standard which was run with a batch of samples that was used as calibration for this data processing workflow run.
+    range: MassSpectrometryStandardRun
+
+  injection:
+    description: Type of injection used in the mass spectrometry method
+    range: string
+    required: true
+
+  ionization:
+    description: Type of ionization used in the mass spectrometry method
+    range: ionizationenum
+    required: true
+
+  polarity:
+    description: Polarity setting used in the mass spectrometry method
+    range: polarityenum
+    required: true
+
+  chromatography_type:
+    description: Type of chromatography used in the method (e.g., GC, LC)
+    range: chromatographytypeenum
+    required: true
+
+  mobile_phases:
+    description: Description of the mobile phases used in the chromatography method (e.g., solvents, gradients)
+    range: string
+
+  stationary_phase:
+    description: Description of the stationary phase used in the chromatography method (e.g., column type)
+    range: string
+
+  temperature_celsius:
+    description: Temperature at which the method was performed
+    range: float
+
+  uses_ms_configuration:
+    description: Points to a record of the configuration used for the mass spectrometry run.
+    range: MassSpectrometryConfiguration
+    required: true
+
+  uses_chromatography:
+    description: Points to a record of the chromatography used to introduce samples for the mass spectrometry run.
+    range: ChromatographyConfiguration
+
+# attributes from deleted FTICR and LCMS method classes
+# do we need to keep them. also what do they mean
+  column:
+    range: string
+    required: true
+  resolution:
+    range: double
+    required: true
+  scan_range:
+    range: string
+    required: true
+  dd_ms2_resolution:
+    range: double
+    required: true
+  loop_count:
+    range: string
+    required: true
+  isolation_window:
+    range: string
+    required: true
+  iat:
+    range: double
+  fid:
+    range: double
+  mass_range:
+    range: double
+  collection_mode:
+    range: msmodeenum
+
+  produced_by_ms_run:
+    description: a reference to the data generation activity that produced instrument data
+    range: MassSpectrometryAnalysisActivity
+
+  ms_raw_file_type:
+    description: the filetype of the mass spectrometry instrument data
+    range: msrawfiletypeenum
+
+  results_from_ms_processing:
+    description: a reference to the mass spec data processing activity that produced this data product
+    range: MassSpectrometrydataProcessingActivity
+  
+  analyte_category:
+    description: omics type for easier search, optional
+    range: analytecategoryenum
+
+  duration_min:
+    description: how long something took, in minutes
+    range: float
+
+# from metadata yaml
+
+  # (ADDED MR1) Nullable EMSL activity/campaign scoping slot for samplingActivity.
+  # Replaces the previously planned campaign FK approach. Managed as a plain
+  # validated string consistent with how proposal_id is handled today.
+  # Optionally validated at the application layer against campaign.yaml for UI.
+  # DDL: ALTER TABLE "samplingActivity" ADD COLUMN emsl_activity VARCHAR(128);
+  emsl_activity:
+    description: |-
+      Nullable string linking a samplingActivity to a named EMSL activity or
+      campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
+      predating activity tracking.
+    range: string
+    todos:
+      - Is sampling activity where we want to capture this?
+    required: false
+
+# from methods yaml
+
+  analytic:
+    range: string
+    required: true
+    todos: what does this mean
+
+  location:
+    range: string
+    required: true
+    todos: what does this mean
+
+  method:
+    range: string
+    todos: what does this mean
+
+# from xrd xrf
+  # =============================================================================
+  # SLOTS
+  # Reusable slots specific to X-ray analysis classes.
+  # Shared slots (name, s3_key, version, acquisition_time, instrument_id, 
+  # protocol_url, etc.) are inherited via the dataGenerationActivity and dataProduct 
+  # slot definitions in analysis_api_schema.
+  # 
+  # NOTE: Protocol detail slots (commented below) can be uncommented and expanded
+  # if detailed protocol information needs to be stored in the database rather than
+  # referenced via protocol_url. Current design favors lightweight linkage to
+  # external protocol documentation.
+  # =============================================================================
+
+  # NOTE: Commented protocol detail slots available for future expansion:
+  # https://geochemistry.isgs.illinois.edu/labs/xrd-xrf-materials-characterization-laboratory/
+  # xrf_beam_voltage_kv:
+  #   description: X-ray tube voltage in kilovolts (kV)
+  #   range: float
+  # 
+  # xrf_beam_current_ma:
+  #   description: X-ray tube current in milliamps (mA)
+  #   range: float
+  #
+  # xrf_measurement_duration_sec:
+  #   description: Sample measurement duration in seconds
+  #   range: integer
+  #
+  # xrf_matrix_correction_method:
+  #   description: Matrix correction algorithm (e.g., fundamental_parameters, empirical)
+  #   range: string
+  #
+  # xrf_calibration_date:
+  #   description: Date of most recent instrument calibration
+  #   range: date
+  #
+  # xrd_diffractometer_geometry:
+  #   description: Diffractometer geometry (e.g., Bragg-Brentano, Debye-Scherrer)
+  #   range: string
+  #
+  # xrd_tube_type:
+  #   description: X-ray tube anode material (e.g., Cu, Co, Mo)
+  #   range: string
+  #
+  # xrd_scan_range_deg:
+  #   description: 2-theta scan range in degrees
+  #   range: string
+  #
+  # xrd_step_size_deg:
+  #   description: Step size in degrees 2-theta
+  #   range: float
+  #
+  # xrd_refinement_method:
+  #   description: Rietveld refinement software and method (e.g., HighScore Plus, GSAS-II)
+  #   range: string
+  #
+  # xrd_r_factor:
+  #   description: Rietveld refinement R-factor (goodness of fit metric)
+  #   range: float
+  #
+  # xrd_gof:
+  #   description: Goodness of fit from Rietveld refinement
+  #   range: float
+
+  # from products yaml
+
+  measure_type:
+    range: productmeasuretype
+  rep:
+    range: numeric
+  aq:
+    range: numeric
+
+# Reusable slots specific to metagenomics classes.
+# Shared slots (name, s3_key, version, workflow_steps, etc.) are inherited via
+# the dataProduct / dataProcessingActivity slot definitions in analysis_api_schema.
+
+  workflow_step:
+    description: Enumerated workflow step that produced this product (e.g., MagsAnalysis)
+    range: metagenomicssteps
+    required: false
+
+  sample_id:
+    description: Link back to the originating sample
+    range: Sample
+    required: false
+
+  provider_name:
+    range: controlledTermValue
+    description: Provider class (e.g., JGI, SeqCenter) using ontology terms where possible
+
+  raw_fasta_url:
+    range: string
+    description: URL of raw FASTA file, if available from provider
+
+  additional_information:
+    range: string
+    description: Additional information pertaining to these data, including SP Project ID and Taxon OID
+
+  annotation_database:
+    description: Primary annotation database used (e.g., IMG, KEGG)
+    range: annotationdatabasetype
+    required: false
+
+  gene_family:
+    description: Gene family or marker used for the phylogeny (e.g., 16S, ITS)
+    range: string
+    required: false
+
+# from value tables yaml
+
+  id:
+    identifier: true
+    range: uuid
+  email:
+    range: string

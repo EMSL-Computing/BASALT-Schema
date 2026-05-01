@@ -12,14 +12,7 @@ default_prefix: analysis_api_schema
 
 imports:
   - linkml:types
-
-slots:
-  id:
-    identifier: true
-    range: uuid
-  email:
-    range: string
-
+  - slots
 
 classes:
   timestampValue:

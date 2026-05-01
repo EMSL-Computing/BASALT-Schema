@@ -15,14 +15,7 @@ imports:
   - linkml:types
   - enums
   - analysis_api_schema
-
-slots:
-  measure_type:
-    range: productmeasuretype
-  rep:
-    range: numeric
-  aq:
-    range: numeric
+  - slots
 
 classes:
 

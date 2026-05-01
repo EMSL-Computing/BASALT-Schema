@@ -14,22 +14,7 @@ default_prefix: analysis_api_schema
 imports:
   - linkml:types
   - value_tables
-
-slots:
-  # (ADDED MR1) Nullable EMSL activity/campaign scoping slot for samplingActivity.
-  # Replaces the previously planned campaign FK approach. Managed as a plain
-  # validated string consistent with how proposal_id is handled today.
-  # Optionally validated at the application layer against campaign.yaml for UI.
-  # DDL: ALTER TABLE "samplingActivity" ADD COLUMN emsl_activity VARCHAR(128);
-  emsl_activity:
-    description: |-
-      Nullable string linking a samplingActivity to a named EMSL activity or
-      campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
-      predating activity tracking.
-    range: string
-    todos:
-      - Is sampling activity where we want to capture this?
-    required: false
+  - slots
 
 enums:
   samplingactivitytype:

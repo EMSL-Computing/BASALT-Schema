@@ -27,44 +27,7 @@ default_prefix: analysis_api_schema
 imports:
   - linkml:types
   - analysis_api_schema
-
-# Reusable slots specific to metagenomics classes.
-# Shared slots (name, s3_key, version, workflow_steps, etc.) are inherited via
-# the dataProduct / dataProcessingActivity slot definitions in analysis_api_schema.
-slots:
-
-  workflow_step:
-    description: Enumerated workflow step that produced this product (e.g., MagsAnalysis)
-    range: metagenomicssteps
-    required: false
-
-  sample_id:
-    description: Link back to the originating sample
-    range: Sample
-    required: false
-
-  provider_name:
-    range: controlledTermValue
-    description: Provider class (e.g., JGI, SeqCenter) using ontology terms where possible
-
-  raw_fasta_url:
-    range: string
-    description: URL of raw FASTA file, if available from provider
-
-  additional_information:
-    range: string
-    description: Additional information pertaining to these data, including SP Project ID and Taxon OID
-
-  annotation_database:
-    description: Primary annotation database used (e.g., IMG, KEGG)
-    range: annotationdatabasetype
-    required: false
-
-  gene_family:
-    description: Gene family or marker used for the phylogeny (e.g., 16S, ITS)
-    range: string
-    required: false
-
+  - slots
 
 classes:
 
