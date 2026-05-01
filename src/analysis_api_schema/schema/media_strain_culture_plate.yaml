@@ -22,7 +22,7 @@ classes:
     slots:
       - temperature_celsius
       - agitation_speed_rpm
-      - oxygen_status
+      - oxygen_relationship
 
   # ============================================================================
   # purchasedMaterial   abstract base
@@ -34,19 +34,14 @@ classes:
       that are not instruments.  Currently Strain is the only concrete subtype.
       Activities reference Strain via the strain_ref FK slot.
     slots:
-      - entity_type
+      - purchased_material_type
+      - name
+      - description
     attributes:
       id:
         identifier: true
         range: uuid
         required: true
-      name:
-        description: Human-readable name for the entity
-        range: string
-        required: true
-      description:
-        description: Free-text description of the entity
-        range: string
 
   # ============================================================================
   # Strain   concrete purchasedMaterial
@@ -57,7 +52,7 @@ classes:
       A microbial strain entity.  Strains are reference data   they are stable
       identities that get referenced by culture growth activities.
 
-      entity_type discriminator value: 'strain'
+      purchased_material_type discriminator value: 'strain'
 
       Montana source: amp2-metadata.yaml Strain class, amp2-complete-001.yaml strain_set
     slots:
@@ -66,7 +61,7 @@ classes:
       - strain_source
       - strain_mutation
     slot_usage:
-      entity_type:
+      purchased_material_type:
         equals_string: strain
     todos:
       - Montana asks "Do we need more information about the strain? Genotype? Phenotype?"
@@ -522,6 +517,7 @@ classes:
         description: Measured value (absorbance, OD, fluorescence)
         range: float
         required: true
+        todos: units
       flag:
         description: QC flag   "ok", "blank", "outlier", "contaminated"
         range: string

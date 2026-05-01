@@ -99,6 +99,7 @@ slots:
     range: OxygenStatusEnum
     exact_mappings:
       - MIXS:0000015
+    alias: oxygen_status
 
   biotic_relationship:
     title: observed biotic relationship
@@ -125,12 +126,12 @@ slots:
 
   latitude:
     title: latitude
-    description: Latitude coordinate of the sampling site
+    description: Latitude coordinate of the sampling site in WSG 84 format.
     range: double
 
   longitude:
     title: longitude
-    description: Longitude coordinate of the sampling site
+    description: Longitude coordinate of the sampling site in WSG 84 format.
     range: double
 
   has_output:
@@ -140,10 +141,6 @@ slots:
     todos: I'm not sure we are going to use this, given our plan to only point 'upstream' from dataProduct to the generating activity, and not have activities point to their outputs. Do we need this slot?
 
   # --- dataProduct base slots (promoted from processedData attributes) ---
-
-  proposal_id:
-    description: 5-digit EMSL user proposal/project ID
-    range: integer
 
   sample_name:
     range: string
@@ -191,7 +188,7 @@ slots:
       DDL: ALTER TABLE "dataProcessingActivity"
              ADD COLUMN parent_workflow_id UUID
              REFERENCES "dataProcessingActivity"(id);
-    range: uuid
+    range: dataProcessingActivity
     required: false
 
   # --- dataProcessingActivity: JSONB direction change ---
@@ -241,16 +238,12 @@ slots:
     description: Agitation/shaking speed in RPM (0 for static)
     range: integer
 
-  oxygen_status:
-    description: Oxygen status of the activity or entity (aerobic, anaerobic, etc.)
-    range: string
-
   # ---------------------------------------------------------------------------
   # Direct FK slots   media_ref, strain_ref
   # ---------------------------------------------------------------------------
   media_ref:
     description: |-
-      FK reference to a prepared media processedSample used in this activity.
+      FK reference to a prepared media processedSample used in the activity.
       Maps to Montana's growth_medium (on CultureGrowth) and media_id
       (on plate setup).  Points to processedSample(type=prepared_media)
       produced by an upstream MediaPreparation activity.
@@ -258,7 +251,7 @@ slots:
     required: false
 
   strain_ref:
-    description: FK reference to a Strain purchasedMaterial used in this activity
+    description: FK reference to a Strain purchasedMaterial used in the activity
     range: Strain
     required: false
 
@@ -270,7 +263,7 @@ slots:
   # A future unification pass should promote these to a single global slot with
   # a generalised description.
   # ---------------------------------------------------------------------------
-  entity_type:
+  purchased_material_type:
     description: Discriminator for purchasedMaterial subtype (e.g. 'media', 'strain')
     range: string
     required: true
@@ -350,8 +343,8 @@ slots:
   storage_temperature:
     description: Storage temperature for the entity (e.g. "4 C", "-80 C")
     range: string
-    # Montana: storage_temperature  (she used QuantityValue range)
-    # TODO: Consider using quantityValue range for consistency with existing schema.
+    # Montana: storage_temperature
+    todos: combine with temperature_celsius or no?
 
   # ---------------------------------------------------------------------------
   # Strain-specific slots  (Montana: amp2-metadata.yaml -> Strain class)
@@ -386,6 +379,7 @@ slots:
     description: Incubation duration in hours
     range: float
     # Montana: incubation_time_hours
+    todo: could combine with duration_min
 
   container_type:
     description: Physical container used for the culture (flask, tube, plate, etc.)
@@ -404,16 +398,19 @@ slots:
     description: Target strain identifier for purity checks
     range: string
     # Montana: target_strain
+    todos: should this point to the Strain class?
 
   contaminant_strains:
     description: Known or detected contaminant strains (if any)
     range: string
     # Montana: contaminant_strains
+    todos: should this point to the Strain class?
 
   preparation_date:
     description: Date the stock culture or entity was prepared
     range: date
     # Montana: preparation_date (on StockCulturePreparation)
+    todos: how does this differ from creation_date?
 
   treatment_type:
     description: Type of treatment applied in experimental culture growth
@@ -434,6 +431,7 @@ slots:
     description: Date the entity or preparation was created
     range: date
     # Montana: creation_date
+    todos: how does this differ from preparation_date?
 
   # ---------------------------------------------------------------------------
   # PlateSetupActivity common slots  (carried forward from plate-general v1)
@@ -498,10 +496,12 @@ slots:
   plate_average:
     description: Mean measurement across all sample wells (excludes blanks)
     range: float
+    todo: units
 
   blank_mean:
     description: Mean measurement of uninoculated control wells
     range: float
+    todo: units
 
   cv_percent:
     description: Coefficient of variation across technical replicates
@@ -523,6 +523,7 @@ slots:
   plate_reader_model:
     description: Instrument model used for reading (e.g. "BioTek Epoch2")
     range: string
+    todos: harmonize with existing Instrument modelling
 
   # ---------------------------------------------------------------------------
   # Ecoplate-specific product slots
@@ -534,10 +535,12 @@ slots:
   uninoculated_mean:
     description: Mean measurement of uninoculated control wells (baseline for Ecoplate)
     range: float
+    todos: units
 
   average_well_color_development:
     description: Average Well Color Development (AWCD) metric for Ecoplate
     range: float
+    todos: units
 
   # from mass spec yaml
   uses_calibration:
@@ -732,17 +735,25 @@ slots:
 
   measure_type:
     range: productmeasuretype
-  rep:
-    range: numeric
+    description: >-
+      Whether the measurement recorded is a single measurement, one of a set of 
+      replicate measurements, or an average of several replicate measurements.
+
+  replicate:
+    description: The replicate number of the sample or measurement, if applicable.
+    range: integer
+
   aq:
     range: numeric
+    todos: what is this supposed to mean
+
 
 # Reusable slots specific to metagenomics classes.
 # Shared slots (name, s3_key, version, workflow_steps, etc.) are inherited via
 # the dataProduct / dataProcessingActivity slot definitions in analysis_api_schema.
 
-  workflow_step:
-    description: Enumerated workflow step that produced this product (e.g., MagsAnalysis)
+  mg_workflow_step:
+    description: Metagenomics workflow step that produced this product (e.g., MagsAnalysis)
     range: metagenomicssteps
     required: false
 
@@ -775,8 +786,6 @@ slots:
 
 # from value tables yaml
 
-  id:
-    identifier: true
-    range: uuid
   email:
     range: string
+    description: A contactable email address associated with a person or institution.

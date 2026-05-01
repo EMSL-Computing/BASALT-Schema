@@ -215,7 +215,7 @@ classes:
     #   - s3_key (string, required) — path to raw data file
     #   - s3_bucket, s3_base_url
     #   - filesize, md5checksum
-    #   - proposal_id, sampling_set, core_section, sample_name
+    #   - project, sampling_set, core_section, sample_name
     #   - summary_metrics (JSONB, lightweight queryable data)
     #   - lims_barcode, version
     #   - type (from product enum — NEW VALUES: XRFElementalProduct, XRDPhaseProduct)

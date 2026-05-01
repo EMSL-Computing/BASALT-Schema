@@ -321,6 +321,7 @@ enums:
       lipid:
       natural_organic_matter:
       unknown:
+
   MediaTypeEnum:
     description: |-
       Purpose/context of the media preparation.
@@ -348,6 +349,7 @@ enums:
         description: Commercially prepared (see commercial_media_catalog)
       premixed:
         description: Pre-mixed from a stock solution
+    todos: could be made generic for mixing more than just media.
 
   SterilizationMethodEnum:
     description: |-

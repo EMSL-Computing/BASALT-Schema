@@ -74,9 +74,6 @@ classes:
       id:
         identifier: true
         range: uuid
-      proposal_id:
-        description: The 5 digit project ID assigned to an EMSL user proposal/project
-        range: integer
       other_storage_condt:
     
   SoilSample:

@@ -60,7 +60,7 @@ classes:
     slots:
       - name
       - description
-      - proposal_id
+      - project
       - sampling_set
       - core_section
       - sample_name
@@ -87,7 +87,7 @@ classes:
         required: true
 
   # (CHANGED MR1) processedData now inherits from dataProduct via is_a.
-  # Inherited slots: name, description, proposal_id, sampling_set, core_section, sample_name,
+  # Inherited slots: name, description, project, sampling_set, core_section, sample_name,
   # s3_base_url, s3_bucket, s3_key, filesize, md5checksum, id.
   # Retained as attributes: type (class-specific product enum range), workflow_id.
   # New slots: summary_metrics, lims_barcode, version.

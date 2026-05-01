@@ -46,7 +46,7 @@ classes:
       Concrete sub-types (Annotation, Binning, GenePhylogeny) use is_a to inherit
       and add only their type-specific slots.
     slots:
-      - workflow_step
+      - mg_workflow_step
       - sample_id
       - provider_name
       - raw_fasta_url
