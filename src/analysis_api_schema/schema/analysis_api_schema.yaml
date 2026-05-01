@@ -24,20 +24,20 @@ default_range: string
 
 imports:
   - linkml:types
+  - administration
   - enums
-  - value_tables
-  - sample_classes
+  - mass_spec
+  - media_strain_culture_plate
   - metadata
+  - metagenomics
   - methods
   - products
-  - administration
+  - sample_classes
   - slots
   - study
-  - zip_download
-  - media_strain_culture_plate
-  - metagenomics
-  - mass_spec
+  - value_tables
   - xrf_xrd
+  - zip_download
   # - linkage_cache   # MR2: uncomment when linkage_cache.yaml is added
 
 classes:
