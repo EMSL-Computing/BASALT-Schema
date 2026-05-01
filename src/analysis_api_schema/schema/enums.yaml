@@ -1149,3 +1149,38 @@ enums:
         description: The portion of a mixture containing molecules dissolved in methanol
         is_a: organic_layer
         title: Methanol layer
+
+  MassSpectrometryAcquisitionStrategyEnum:
+    permissible_values:
+      data_independent_acquisition:
+        text: data_independent_acquisition
+        description: Data independent mass spectrometer acquisition method wherein the
+          full mass range is fragmented. Examples of such an approach include MS^E, AIF,
+          and bbCID.
+        aliases:
+        - DIA
+        - data independent acquisition from dissociation of full mass range
+        exact_mappings:
+        - MS:1003227
+      data_dependent_acquisition:
+        text: data_dependent_acquisition
+        description: Mass spectrometer data acquisition method wherein MSn spectra are
+          triggered based on the m/z of precursor ions detected in the same run.
+        aliases:
+        - DDA
+        exact_mappings:
+        - MS:1003221
+      full_scan_only:
+        text: full_scan_only
+        description: Mass spectrometer data acquisition method wherein only MS1 data are
+          acquired.
+        aliases:
+        - MS
+
+  MetaproteomicsAnalysisCategoryEnum: 
+    description: The category of metaproteomics analysis being performed.
+    permissible_values:
+      matched_metagenome:
+        description: A metaproteomics analysis matched to a metagenome from the same biosample.
+      in_silico_metagenome:
+        description: A metaproteomics analysis matched to an in silico generated metagenome.

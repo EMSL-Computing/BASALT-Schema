@@ -39,10 +39,15 @@ imports:
 # Shared slots (name, s3_key, version, workflow_steps, etc.) are inherited via
 # the dataProduct / workflowExecutionActivity slot definitions in analysis_api_schema.
 slots:
+
+  lims_task_instance_id:          
+    range: integer
+    description: L7 task_instance_id for the activity, if known.
   
   aq: 
     description:
     range: numeric
+    todos: what was this supposed to be for
 
   uses_calibration:
     description: >- 
@@ -108,10 +113,14 @@ slots:
     range: float
     todos: description - not sure what this is referencing
 
+  acquisition_strategy:
+    range: MassSpectrometryAcquisitionStrategyEnum
+    description: The acquisition strategy used in the mass spectrometry run.
+
 # attributes from deleted FTICR and LCMS method classes
 # do we need to keep them. also what do they mean
   resolution:
-    range: double
+    range: MassSpecResolutionEnum
     required: true
   scan_range:
     range: string
@@ -129,8 +138,12 @@ slots:
     range: double
   fid:
     range: double
-  mass_range:
-    range: double
+  mass_range_max:
+    range: float
+    description: The maximum mass observable by this run (in m/z).
+  mass_range_min:
+    range: float
+    description: The minimum mass observable by this run (in m/z).
   collection_mode:
     range: MassSpectrumCollectionModeEnum
 
@@ -157,6 +170,16 @@ slots:
   fragmentation:
     description: fragmentation technique used in the mass spectrometry run
     range: FragmentationEnum
+
+  metaproteomics_analysis_category:
+    range: MetaproteomicsAnalysisCategoryEnum
+    description: The category of metaproteomics analysis being performed, if applicable.
+  
+  uses_raw_ms_data:
+    range: MassSpectrometryInstrumentData
+    description: >-
+      The raw data file, output by a mass spectrometer, that was analyzed in 
+      this data processing workflow run.
 
 classes:
 
@@ -246,7 +269,10 @@ classes:
       - loop_count
       - iat
       - fid
-      - mass_range
+      - mass_range_max
+      - mass_range_min
+      - acquisition_strategy
+      - lims_protocol_instance_id
 
   # ============================================================================
   # Chromatography related classes
@@ -285,8 +311,6 @@ classes:
         description: The order of this segment in the overall chromatography protocol.
     todos: inheritance?
 
-
-
   # ============================================================================
   # (NEW) MassSpectrometryWorkflowExecutionActivity
   # Concrete subclass of workflowExecutionActivity (now abstract in MR1).
@@ -300,6 +324,10 @@ classes:
       slots including used_software and version.
     slots:
       - uses_calibration
+      - uses_raw_ms_data
+      - lims_task_instance_id
+      - metaproteomics_analysis_category
+
 
   # Class to represent data from a standard run with a batch of samples
   MassSpectrometryStandardRun:
