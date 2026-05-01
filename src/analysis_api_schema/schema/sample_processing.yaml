@@ -182,6 +182,7 @@ slots:
     range: PortionOfSubstance
     multivalued: true
     description: The substances used in the process.
+    todos: is it possible to have this be multivalued?
   
   starting_mass_mg:
     range: float
@@ -196,6 +197,7 @@ slots:
     description: The concentration of the sample or analyte in the processedSample resulting from this activity, in milligrams per milliliter.
 
 classes:
+  todos: revisit sampleProcessing vs. Methods
 
   ChemicalConversionProcess: 
     is_a: sampleProcessing 
@@ -231,7 +233,7 @@ classes:
       - starting_mass_mg
     attributes:
       extraction_target:
-        range: ExtractionTargetEnum
+        range: analytecategoryenum
         multivalued: true
         description: The target analyte(s) or compound class(es) for the extraction process.
       extraction_method:
@@ -245,58 +247,34 @@ classes:
       an input sample into multiple fractions for downstream LC-MS/MS.
     slots:
       - lims_protocol_instance_id
-
-
-  MobilePhaseSegment: #maps to NMDC MobilePhaseSegment array
-    description: A segment of the mobile phase used in chromatography during mass spectrometry.
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      concentration_unit:
-        range: string
-        description: Unit of concentration for the substance in the mobile phase during this segment.
-      concentration_value:
-        range: QuantityValue
-        description: Concentration of the substance in the mobile phase during this segment.
-      duration_min:
-        range: float
-        description: The elapsed time of an activity.
-      name:
-        range: string
-        required: true
-        description: Human-readable name of the mobile phase segment.
-      protocolid:
-        identifier: true
-        range: uuid
-      segment_order:
-        range: integer
-        description: The order of this segment in the overall chromatography protocol.
-      substance_name:
-        range: string
-        description: Name of the substance making up this segment of the mobile phase.
       
   NormalizationProcess:
     is_a: sampleProcessing
-    description: >
+    description: >-
       A process that adjusts sample amounts (e.g., protein mass or volume)
       to a common level across samples, prior to downstream processing.
     attributes:
       normalization_method:
         range: NormalizationMethodEnum
         description: The strategy used for normalization (equal mass, equal volume, etc.).
-      target_amount:
-        range: QuantityValue
-        description: Target amount (mass or volume) per sample after normalization.
+      target_mass_mg:
+        range: float
+        description: >-
+          Target volume of analyte per sample after normalization, 
+          in milligrams, if appropriate. Otherwise fill out target_vol_ul.
+      target_vol_ul:
+        range: float
+        description: >-
+          Target volume of analyte per sample after normalization, 
+          in microliters, if appropriate. Otherwise fill out target_mass_mg.
 
   PoolingProcess:
     is_a: sampleProcessing
-    description: >
+    description: >-
       A laboratory pooling process that physically mixes multiple input samples
       into a single pooled processed sample for downstream analysis.
       Typically corresponds to the L7 "Sample Pooling" / "Pooling" protocols.
     slots:
-      - substances_used
       - final_mass_mg
 
   PortionOfSubstance:
@@ -308,21 +286,19 @@ classes:
       substance_role:
         range: SubstanceRoleEnum
         description: The role or function of the substance in the context of its use.
-      volume:
-        range: QuantityValue
-        description: The volume of the portion of the substance.
+      volume_mL:
+        range: float
+        description: The volume of the portion of the substance, in milliliters.
 
   ProteinQuantification:
     is_a: sampleProcessing
-    description: >
+    description: >-
       A protein quantification assay (e.g., Coomassie or BCA) performed on a sample
       to determine protein concentration prior to downstream processing.
     slots:
       - lims_protocol_instance_id
+      - final_concentration_mg_per_ml
     attributes:
-      measured_concentration:
-        range: QuantityValue
-        description: Measured protein concentration for the assayed sample.
       protein_assay_type:
         range: ProteinAssayTypeEnum
         required: true
@@ -337,7 +313,7 @@ classes:
 
   SolidPhaseExtractionProcess:
     is_a: sampleProcessing
-    description: >
+    description: >-
       A solid phase extraction (SPE) step (e.g., C18 desalting) performed as sample preparation.
     slots:
       - lims_protocol_instance_id
@@ -348,7 +324,10 @@ classes:
       
   SubSamplingProcess:
     is_a: sampleProcessing
-    description: A laboratory subsampling process that takes a portion of an existing sample
-      and produces a derived (processed) sample for downstream analysis. (Separating a sample aliquot from the starting material for downstream activity.)
+    description: >-
+      A laboratory subsampling process that takes a portion of an existing 
+      sample and produces a derived (processed) sample for downstream 
+      analysis. (Separating a sample aliquot from the starting material for 
+      downstream activity.)
     slots:
       - final_mass_mg
