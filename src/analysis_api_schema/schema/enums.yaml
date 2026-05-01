@@ -705,6 +705,57 @@ enums:
         description: UV-sterilised
       none:
         description: Not sterilised (used as-is)
+        
+  NEONDomainEnum:
+    description: NEON ecological domains
+    todos:
+      - move this to the enum.yaml
+      - the descriptions should be the titles
+    permissible_values:
+      northeast:
+        description: Northeast domain
+      mid_atlantic:
+        description: Mid-Atlantic domain
+      southeast:
+        description: Southeast domain
+      atlantic_neotropical:
+        description: Atlantic Neotropical domain
+      great_lakes:
+        description: Great Lakes domain
+      prairie_peninsula:
+        description: Prairie Peninsula domain
+      appalachians_and_cumberland_plateau:
+        description: Appalachians and Cumberland Plateau domain
+      ozarks_complex:
+        description: Ozarks Complex domain
+      northern_plains:
+        description: Northern Plains domain
+      central_plains:
+        description: Central Plains domain
+      southern_plains:
+        description: Southern Plains domain
+      desert_southwest:
+        description: Desert Southwest domain
+      northern_rockies:
+        description: Northern Rockies domain
+      southern_rockies_and_colorado_plateau:
+        description: Southern Rockies and Colorado Plateau domain
+      great_basin:
+        description: Great Basin domain
+      sierra_nevada:
+        description: Sierra Nevada domain
+      pacific_northwest:
+        description: Pacific Northwest domain
+      pacific_southwest:
+        description: Pacific Southwest domain
+      tundra:
+        description: Tundra domain
+      taiga:
+        description: Taiga domain
+      pacific_tropical:
+        description: Pacific Tropical domain
+
+
 
   NucleotideSequencingEnum:
     permissible_values:

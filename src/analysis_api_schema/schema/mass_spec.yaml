@@ -15,7 +15,7 @@ description: |
   - MassSpectrometryInstrumentData
 
   Relevant to data processing:
-  - MassSpectrometryWorkflowExecutionActivity
+  - MassSpectrometrydataProcessingActivity
   - MassSpectrometryStandardRun
 
   Processed data products:
@@ -37,7 +37,7 @@ imports:
 
 # Reusable slots specific to mass spectrometry classes.
 # Shared slots (name, s3_key, version, workflow_steps, etc.) are inherited via
-# the dataProduct / workflowExecutionActivity slot definitions in analysis_api_schema.
+# the dataProduct / dataProcessingActivity slot definitions in analysis_api_schema.
 slots:
 
   lims_task_instance_id:          
@@ -157,7 +157,7 @@ slots:
 
   results_from_ms_processing:
     description: a reference to the mass spec data processing activity that produced this data product
-    range: MassSpectrometryWorkflowExecutionActivity
+    range: MassSpectrometrydataProcessingActivity
   
   analyte_category:
     description: omics type for easier search, optional
@@ -230,7 +230,7 @@ classes:
   # New class
   # ============================================================================
   MassSpectrometryAnalysisActivity:
-    is_a: analysisActivity
+    is_a: dataGenerationActivity
     description: A record of the mass spectrometry run that generates a raw data product.
     slots:
       - uses_ms_configuration # required
@@ -312,15 +312,15 @@ classes:
     todos: inheritance?
 
   # ============================================================================
-  # (NEW) MassSpectrometryWorkflowExecutionActivity
-  # Concrete subclass of workflowExecutionActivity (now abstract in MR1).
+  # (NEW) MassSpectrometrydataProcessingActivity
+  # Concrete subclass of dataProcessingActivity (now abstract in MR1).
   # Carries no additional unique slots beyond the parent; represents a typed
-  # workflow record so that workflowExecutionActivity can remain abstract.
+  # workflow record so that dataProcessingActivity can remain abstract.
   # ============================================================================
-  MassSpectrometryWorkflowExecutionActivity:
-    is_a: workflowExecutionActivity
+  MassSpectrometrydataProcessingActivity:
+    is_a: dataProcessingActivity
     description: |-
-      Concrete mass spectrometry workflow run. Inherits all workflowExecutionActivity
+      Concrete mass spectrometry workflow run. Inherits all dataProcessingActivity
       slots including used_software and version.
     slots:
       - uses_calibration

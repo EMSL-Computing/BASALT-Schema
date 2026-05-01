@@ -239,7 +239,13 @@ classes:
       link_addit_analys:
       method_development:
       misc_param:
+      neon_site_code:
+        range: string
+        description: Four-letter NEON site code, e.g. BART, OSBS, etc.
       neon_plot_id:
+        range: string
+        description: numerical plot ID for NEON sites, e.g. 101, 102, etc. Not all NEON samples were taken within a plot. Do not include the site code.
+        required: false
       microbial_biomass_meth:
       microbial_biomass_c_meth:
       microbial_biomass_n_meth:

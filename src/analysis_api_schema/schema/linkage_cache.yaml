@@ -9,8 +9,8 @@ description: |-
 
   Population: nightly refresh job using recursive CTE across:
     - processingSampleLink (sample -> processed sample chains)
-    - workflowExecutionActivity.parent_workflow_id (workflow chains)
-    - analysisActivity (processed sample -> workflow link)
+    - dataProcessingActivity.parent_workflow_id (workflow chains)
+    - dataGenerationActivity (processed sample -> workflow link)
     - processedData.workflow_id (workflow -> product link)
 
   This file is imported by analysis_api_schema.yaml (import added in MR2).
@@ -31,7 +31,7 @@ slots:
     description: |-
       Class/table name of the ancestor node.
       Expected values: 'sample' | 'processedSample' |
-                       'workflowExecutionActivity' | 'processedData'
+                       'dataProcessingActivity' | 'processedData'
     range: string
 
   descendant_type:
@@ -64,7 +64,7 @@ classes:
           ancestor_id      UUID NOT NULL,
           descendant_id    UUID NOT NULL,
           ancestor_type    VARCHAR(64),    -- 'sample' | 'processedSample' |
-                                          --  'workflowExecutionActivity' | 'processedData'
+                                          --  'dataProcessingActivity' | 'processedData'
           descendant_type  VARCHAR(64),
           depth            INTEGER NOT NULL,  -- 1 = direct parent
           path             TEXT,
