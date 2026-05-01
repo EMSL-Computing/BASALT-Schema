@@ -37,10 +37,8 @@ imports:
   - media_strain_culture_plate
   - metagenomics
   - mass_spec
-  # - metaproteomics
   - xrf_xrd
   # - linkage_cache   # MR2: uncomment when linkage_cache.yaml is added
-  # - enrichment # todo have not reviewed fully
 
 classes:
 

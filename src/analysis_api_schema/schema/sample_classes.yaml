@@ -32,7 +32,6 @@ classes:
     slots:
       - name
       - description
-      - type
       - latitude
       - longitude
     todos:
@@ -58,7 +57,6 @@ classes:
     slots:
       - name #should be inherited when Entity class is made
       - description #should be inherited when Entity class is made
-      - type #should be inherited when Entity class is made
       - project
       - emsl_activity
       - storage_condition
@@ -143,7 +141,6 @@ classes:
     slots:
       - name #will be inherited when Activity class is made
       - description
-      - type
       - project #do we need this here? where do we make the campaign, project, pi, etc associations?
       - emsl_activity
       - has_output #will be inherited when Activity class is made
@@ -227,7 +224,6 @@ classes:
     slots:
       - name
       - description
-      - type
     slot_usage:
       has_output:
         range: SoilSample

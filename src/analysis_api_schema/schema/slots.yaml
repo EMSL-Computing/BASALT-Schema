@@ -13,7 +13,7 @@ see_also:
 default_range: string
 
 imports:
-  - linkml-types
+  - linkml:types
 
 slots:
 
@@ -379,7 +379,7 @@ slots:
     description: Incubation duration in hours
     range: float
     # Montana: incubation_time_hours
-    todo: could combine with duration_min
+    todos: could combine with duration_min
 
   container_type:
     description: Physical container used for the culture (flask, tube, plate, etc.)
@@ -496,12 +496,12 @@ slots:
   plate_average:
     description: Mean measurement across all sample wells (excludes blanks)
     range: float
-    todo: units
+    todos: units
 
   blank_mean:
     description: Mean measurement of uninoculated control wells
     range: float
-    todo: units
+    todos: units
 
   cv_percent:
     description: Coefficient of variation across technical replicates
