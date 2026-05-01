@@ -328,10 +328,7 @@ classes:
       A solid phase extraction (SPE) step (e.g., C18 desalting) performed as sample preparation.
     slots:
       - lims_protocol_instance_id
-    attributes:
-      chromatography_protocol:
-        range: ChromatographyProtocol
-        description: Chromatography configuration used for the SPE step (C18, SPE).
+      - uses_chromatography
       
   SubSamplingProcess:
     is_a: sampleProcessing
