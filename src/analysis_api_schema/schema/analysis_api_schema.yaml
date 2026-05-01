@@ -661,6 +661,8 @@ classes:
         range: string
       version:
         range: string
+      uses_sample:
+        range: Sample
     todos:
       - why is version here? should it be lab_protocol_version?
 

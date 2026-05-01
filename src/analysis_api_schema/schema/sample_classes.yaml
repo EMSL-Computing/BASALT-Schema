@@ -146,6 +146,11 @@ classes:
     slot_usage:
       replicate:
         description: The TECHNICAL replicate number of the processed sample, if applicable.
+      sampled_during:
+        range: sampleProcessing
+        description: >-
+          A reference to the sample processing activity (generally lab work)
+          that generated this processed_sample.
     attributes:
       id:
         identifier: true
