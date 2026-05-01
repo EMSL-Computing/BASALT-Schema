@@ -69,7 +69,6 @@ classes:
       - s3_key
       - filesize
       - md5checksum
-      #- was_generated_by
     attributes:
       id:
         identifier: true
@@ -118,8 +117,6 @@ classes:
       alternative_identifiers:
         range: string
       compression_type:
-        range: string
-      type:
         range: string
       file_type:
         range: filetype
@@ -208,9 +205,6 @@ classes:
       id:
         identifier: true
         range: uuid
-      type:
-        range: string
-        required: true
       description:
         range: string
       started_at_time:
@@ -297,8 +291,6 @@ classes:
         identifier: true
         range: uuid
       description:
-        range: string
-      was_generated_by:
         range: string
       container_type:
         range: containertypeenum

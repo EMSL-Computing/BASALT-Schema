@@ -20,6 +20,16 @@ slots:
   # id: is left as an attribute with range: uuid and identifier: true
   # everywhere, for now, for (some kind of database reason).
 
+  name:
+    description: Human-readable name for the entity or activity.
+    range: string
+    required: true
+  
+  description:
+    title: description
+    description: Human-readable description for the entity or activity
+    range: string
+
   # from analysis api yaml
 
   sampling_set:
@@ -29,22 +39,26 @@ slots:
       This is a user-defined integer that can be used to link samples collected
       in the same sampling event or campaign.
     range: integer
+
   soil_type:
     title: soil type
     description: The specific type of soil sample
     range: SoilTypeEnum
     todos: 
       - this is a GSC slot but it's not constrined by an enum, it's a string. where did this come from?
+
   soil_horizon:
     title: soil horizon
     description: Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath.
     exact_mappings:
       - MIXS:0001082
     range: SoilHorizonEnum
+
   aerosol_type:
     description: The type or method of aerosol collection
     range: AerosolTypeEnum
     required: true
+
   core_section:
     title: core section
     description: The section of the core.
@@ -53,6 +67,7 @@ slots:
       - value: MID
       - value: BTM
     range: string
+
   project:
     title: Project
     alias:
@@ -66,6 +81,7 @@ slots:
     range: integer
     todos:
       - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141 where emsl.project is the CURIE prefix
+
   storage_condition:
     title: storage condition
     description: The storage condition of the sample, such as temperature or preservation method.
@@ -76,12 +92,14 @@ slots:
       - samp_store_cond
       - storage_cond
       - storage_condt
+
   oxygen_relationship:
     title: oxygen relationship
     description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
     range: OxygenStatusEnum
     exact_mappings:
       - MIXS:0000015
+
   biotic_relationship:
     title: observed biotic relationship
     description: The biotic relationship of the sample, such as symbiotic or free-living
@@ -90,28 +108,20 @@ slots:
       - MIXS:0000016
     aliases:
       - samp_biotic_relationship
+
   air_temp_regm:
     title: air temperature regime
     description: Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens
     range: string
     exact_mappings:
       - MIXS:0000551
+
   chem_administration:
     title: chemical administration
     description: List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
     range: string
     exact_mappings:
       - MIXS:0000751
-
-  type:
-    title: type
-    description: Type classifier for an entity or activity
-    range: string
-
-  description:
-    title: description
-    description: Human-readable description for the entity or activity
-    range: string
 
   latitude:
     title: latitude
@@ -130,10 +140,6 @@ slots:
     todos: I'm not sure we are going to use this, given our plan to only point 'upstream' from dataProduct to the generating activity, and not have activities point to their outputs. Do we need this slot?
 
   # --- dataProduct base slots (promoted from processedData attributes) ---
-  name:
-    description: Human-readable name for the data product
-    range: string
-    required: true
 
   proposal_id:
     description: 5-digit EMSL user proposal/project ID
@@ -170,7 +176,7 @@ slots:
     required: false
 
   version:
-    description: Version string; shared by processedData, dataGenerationActivity, dataProcessingActivity
+    description: String indicating the version of the software or protocol
     range: string
     required: true
 
@@ -224,26 +230,11 @@ slots:
     range: string   # interim placeholder   will reference typed key-value class; schema TBD
     required: false
 
-
-  sample_id:
-    description: Link back to the originating sample
-    range: Sample
-    required: false
-
-  # --- dataProduct: provenance link ---
-  was_generated_by:
-    description: |-
-      Reference to the activity that generated this data product.
-      Range is overridden per subclass via slot_usage:
-        processedData   -> dataProcessingActivity
-        instrumentData  -> dataGenerationActivity
-    required: false   # nullable   not all products have a tracked generating activity
-
   # from plate yaml
 
   # Mixin slots   HasIncubationConditions
   temperature_celsius:
-    description: Temperature in degrees Celsius
+    description: Temperature at which the method/process/activity was performed
     range: float
 
   agitation_speed_rpm:
@@ -549,10 +540,6 @@ slots:
     range: float
 
   # from mass spec yaml
-  aq: 
-    description:
-    range: numeric
-
   uses_calibration:
     description: >- 
       Reference to the raw data file from the standard which was run with a batch of samples that was used as calibration for this data processing workflow run.
@@ -585,10 +572,6 @@ slots:
   stationary_phase:
     description: Description of the stationary phase used in the chromatography method (e.g., column type)
     range: string
-
-  temperature_celsius:
-    description: Temperature at which the method was performed
-    range: float
 
   uses_ms_configuration:
     description: Points to a record of the configuration used for the mass spectrometry run.

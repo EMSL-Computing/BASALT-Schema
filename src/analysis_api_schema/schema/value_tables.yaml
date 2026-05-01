@@ -26,10 +26,6 @@ classes:
         range: string
       has_raw_value:
         range: string
-      type:
-        range: string
-      was_generated_by:
-        range: string
 
   textValue:
     slots:
@@ -43,10 +39,6 @@ classes:
       language:
         range: string
       has_raw_value:
-        range: string
-      type:
-        range: string
-      was_generated_by:
         range: string
 
   softwareControlledTermValue:
@@ -64,10 +56,6 @@ classes:
         range: string
       has_raw_value:
         range: string
-      was_generated_by:
-        range: string
-      type:
-        range: string
 
   controlledTermValue:
     slots:
@@ -79,10 +67,6 @@ classes:
       description:
         range: string
       has_raw_value:
-        range: string
-      was_generated_by:
-        range: string
-      type:
         range: string
 
   personValue:
@@ -148,8 +132,6 @@ classes:
         range: numeric
       longitude:
         range: numeric
-      type:
-      was_generated_by:
 
   conditioningValue:
     slots:
@@ -159,8 +141,6 @@ classes:
       #   identifier: true
       #   range: string
       source_material:
-        range: string
-      type:
         range: string
       instrument:
         range: string
