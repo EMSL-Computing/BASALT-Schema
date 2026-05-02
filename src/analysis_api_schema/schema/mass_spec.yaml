@@ -171,7 +171,7 @@ classes:
         range: boolean
       calibration_target:
         description: The measurement being calibrated
-        range: calibrationtargetenum
+        range: CalibrationTargetEnum
       calibration_standard:
         description: The reference standard used for calibration
         range: purchasedMaterial

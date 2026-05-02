@@ -27,7 +27,7 @@ classes:
       bulk_density_id:
         range: quantityValue
       flag:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   ElementalAnalysisProduct:
     is_a: processedData
@@ -43,13 +43,13 @@ classes:
       total_sulfur_id:
         range: quantityValue
       flag_total_carbon:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_total_nitrogen:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_tkn:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_total_sulfur:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   EnzymeProduct:
     is_a: processedData
@@ -59,7 +59,7 @@ classes:
       beta_glucosidase_ug_pnp_per_g_per_h_id:
         range: quantityValue
       flag:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   GWCMoistureProduct:
     is_a: processedData
@@ -69,7 +69,7 @@ classes:
       gwc_percent_id:
         range: quantityValue
       flag:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   
   HydraulicPropertiesProduct:
@@ -103,7 +103,7 @@ classes:
         range: double
       flag:
         description: QC flag for the entire VGM fit (e.g. missing sample, failed QC).
-        range: processeddataflag
+        range: ProcessedDataFlag
       
   IonsAnalysisProduct:
     is_a: processedData
@@ -135,29 +135,29 @@ classes:
       cation_exchange_capacity_id:
         range: quantityValue
       flag_sulfate:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_boron:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_zinc:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_manganate:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_copper:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_iron:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_calcium:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_magnesium:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_sodium:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_potassium:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_total_bases:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_cec:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   MAOMProduct:
     slots:
@@ -176,22 +176,22 @@ classes:
       total_nitrogen_avg:
         range: double
       flag_toc:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_tn:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_toc_avg:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_tn_avg:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   MetaGenomicsProduct:
     is_a: processedData
     slots:
     attributes:
       input_to_step:
-        range: metagenomicssteps
+        range: MetagenomicsSteps
       output_to_step:
-        range: metagenomicssteps
+        range: MetagenomicsSteps
         required: true
 
   MicrobialBiomassProduct:
@@ -209,13 +209,13 @@ classes:
       mbn_avg:
         range: double
       flag_mbc:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_mbn:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_mbc_avg:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_mbn_avg:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   NitrogenAnalysisProduct:
     is_a: processedData
@@ -232,13 +232,13 @@ classes:
       nh4_n_avg:
         range: double
       flag_no3n:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_nh4n:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_no3n_avg:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_nh4n_avg:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   PhosphorusAnalysisProduct:
     is_a: processedData
@@ -253,9 +253,9 @@ classes:
       phosphorus_avg:
         range: double
       flag:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_avg:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   RespirationProduct:
     is_a: processedData
@@ -266,7 +266,7 @@ classes:
         description: Soil respiration expressed as µg CO₂-C per gram soil
         range: double
       flag:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   TextureProduct:
     is_a: processedData
@@ -280,7 +280,7 @@ classes:
       clay_pct_id:
         range: quantityValue
       flag:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   TomographyProduct:
     is_a: processedData
@@ -326,7 +326,7 @@ classes:
       tortuosity_z:
         range: double
       flag_xct:
-        # range: processeddataflag
+        # range: ProcessedDataFlag
         range: string
 
   WEOMProduct:
@@ -346,13 +346,13 @@ classes:
       total_nitrogen_avg:
         range: double
       flag_toc:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_tn:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_toc_avg:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_tn_avg:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   pHProduct:
     is_a: processedData
@@ -362,7 +362,7 @@ classes:
       ph:
         range: double
       flag:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   XRayDataProduct:
     is_a: processedData
@@ -395,7 +395,7 @@ classes:
       
       Follows the wide-format pattern established by IonsAnalysisProduct.
       Element concentrations in mg/kg (parts per million dry weight basis) as float values.
-      Individual QC flags for each element using processeddataflag enum.
+      Individual QC flags for each element using ProcessedDataFlag enum.
       
       Relationship to core tables:
         - id: FK -> processedData.id (1:1 linkage)
@@ -496,61 +496,61 @@ classes:
       u_mg_per_kg:
         description: Uranium concentration in mg/kg
         range: float
-      # --- QC flags (using existing processeddataflag enum) ---
+      # --- QC flags (using existing ProcessedDataFlag enum) ---
       flag_cl:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_v:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_cr:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_ni:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_cu:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_zn:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_ga:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_as:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_se:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_br:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_rb:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_sr:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_y:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_nb:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_mo:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_ag:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_cd:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_in:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_sn:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_sb:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_cs:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_ba:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_la:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_ce:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_pb:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_th:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_u:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
 
   # ---------------------------------------------------------------------------
@@ -563,7 +563,7 @@ classes:
       One row per sample with columns for each mineral phase identified.
       
       Follows the wide-format pattern with individual weight percent columns.
-      Individual QC flags for each mineral using processeddataflag enum.
+      Individual QC flags for each mineral using ProcessedDataFlag enum.
       
       Relationship to core tables:
         - id: FK -> processedData.id (1:1 linkage)
@@ -631,24 +631,24 @@ classes:
       gypsum_percent:
         description: Gypsum (CaSO4 2H2O) weight percent
         range: float
-      # --- QC flags (using existing processeddataflag enum) ---
+      # --- QC flags (using existing ProcessedDataFlag enum) ---
       flag_quartz:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_albite:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_microcline:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_muscovite:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_kaolinite:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_chlorite:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_hornblende:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_pyrite:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_halite:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_gypsum:
-        range: processeddataflag
+        range: ProcessedDataFlag

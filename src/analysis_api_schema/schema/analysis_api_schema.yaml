@@ -28,7 +28,6 @@ imports:
   - enums
   - mass_spec
   - media_strain_culture_plate
-  - metadata
   - metagenomics
   - methods
   - products
@@ -117,7 +116,7 @@ classes:
       compression_type:
         range: string
       file_type:
-        range: filetype
+        range: FileTypeEnum
       version:
         range: string
     todos:
@@ -131,7 +130,7 @@ classes:
     is_a: dataProduct
     attributes:
       site_photo_type:
-        range: sitephototype
+        range: SitePhotoCategoryEnum
       photo_taken_during:
         range: SamplingActivity
 
@@ -217,7 +216,7 @@ classes:
       software_poc:
         range: string
       execution_resource:
-        range: executionresourcetype
+        range: ExecutionResourceEnum
 
   alternativeIdentifier:
     attributes:
@@ -228,7 +227,7 @@ classes:
         range: string
         required: true
       alternate_identifier_type:
-        range: alternateidentifiertype
+        range: AlternateIdentifierType
         required: true
 
 
@@ -250,7 +249,7 @@ classes:
         range: string
         required: true
       database:
-        range: annotationdatabasetype
+        range: AnnotationDatabaseEnum
         required: true
 
 
@@ -265,9 +264,9 @@ classes:
       alternative_names:
         range: string # TODO ARRAY
       vendor:
-        range: vendorenum
+        range: VendorEnum
       model:
-        range: modelenum
+        range: ModelEnum
       instrument_parameters:
         range: string # TODO JSON
 
@@ -291,7 +290,7 @@ classes:
       description:
         range: string
       container_type:
-        range: containertypeenum
+        range: ContainerTypeEnum
       container_size_id:
         range: quantityValue
 
@@ -311,7 +310,7 @@ classes:
       alt_id:
         range: alternativeIdentifier
       instrument_alt_id_provider:
-        range: instrumentaltidprovider
+        range: InstrumentAltIdProviderEnum
       instrument_id:
         range: instrument
         required: true
@@ -324,7 +323,7 @@ classes:
       description:
         range: string
       device_type:
-        range: devicetypeenum
+        range: DeviceTypeEnum
       activity_time_id:
         range: quantityValue
       activity_speed_id:
@@ -340,9 +339,9 @@ classes:
         identifier: true
         range: uuid
       analysis_type:
-        range: routemethod
+        range: RouteMethodEnum
       method_name:
-        range: methodname
+        range: MethodNameEnum
       processing_steps:
         range: string # TODO JSONB   key-value direction deferred; schema TBD
         required: true
@@ -352,6 +351,7 @@ classes:
         range: string
     todos:
       - why is version here? should it be lab_protocol_version?
+      - why does this have both analysis type and method name, as enums, just set the range to the class
 
   processingSampleLink:
     attributes:
@@ -372,7 +372,7 @@ classes:
         required: true
       role:
         identifier: true
-        range: samplerole
+        range: SampleRole
         required: true
       version:
         range: string

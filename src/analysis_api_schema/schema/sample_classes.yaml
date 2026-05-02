@@ -158,10 +158,10 @@ classes:
         required: true
       lims_barcode:
       growth_facil:
-        range: growthfacilityenum
+        range: GrowthFacilityEnum
       other_growth_facil:
       sample_store_temp:
-        range: samplestoretemp
+        range: SampleStoreTempEnum
       collection_date:
         range: datetime
       collection_time:
@@ -232,15 +232,15 @@ classes:
         identifier: true
         range: SamplingActivity
       profile_position:
-        range: profilepositionenum
+        range: ProfilePositionEnum
       sediment_type:
-        range: sedimenttypeenum
+        range: SedimentTypeEnum
       soil_horizon:
-        range: soilhorizonenum
+        range: SoilHorizonEnum
       tillage:
-        range: tillageenum
+        range: TillageEnum
       wind_direction:
-        range: winddirectionenum
+        range: WindDirectionEnum
       agrochem_addition:
         range: string
       al_sat:

@@ -322,7 +322,7 @@ classes:
       v1 origin: plate-general.yaml PlatedataGenerationActivity
     slots:
       - timepoint_label
-    # Inherited from dataGenerationActivity: id, type (routemethod), analyte_id,
+    # Inherited from dataGenerationActivity: id, analyte_id,
     #   name, acquisition_time, instrument_id, protocol_url,
     #   instrument_operator_id, sequence_order, version
 

@@ -34,7 +34,7 @@ description: |
             summary_metrics: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2}
             s3_key: "xrf/raw/sample_001_spectrum.csv"
             Columns: cl_mg_per_kg, v_mg_per_kg, cr_mg_per_kg, ni_mg_per_kg, ... (27 elements)
-                     flag_cl, flag_v, flag_cr, ... (27 flags using processeddataflag)
+                     flag_cl, flag_v, flag_cr, ... (27 flags using ProcessedDataFlag)
     
     XRD (may include computational refinement):
       processedSample(soil replicate, ground powder)
@@ -45,7 +45,7 @@ description: |
             summary_metrics: {"quartz_percent":42, "albite_percent":18}
             s3_key: "xrd/raw/sample_001_diffractogram.xy"
             Columns: quartz_percent, albite_percent, microcline_percent, ... (10 minerals)
-                     flag_quartz, flag_albite, ... (10 flags using processeddataflag)
+                     flag_quartz, flag_albite, ... (10 flags using ProcessedDataFlag)
 
   Future extensibility:
     The XRaydataGenerationActivity abstract class can accommodate additional X-ray methods
@@ -233,7 +233,7 @@ classes:
       
       Follows the wide-format pattern established by IonsAnalysisProduct.
       Element concentrations in mg/kg (parts per million dry weight basis) as float values.
-      Individual QC flags for each element using processeddataflag enum.
+      Individual QC flags for each element using ProcessedDataFlag enum.
       
       Relationship to core tables:
         - id: FK -> processedData.id (1:1 linkage)
@@ -334,61 +334,61 @@ classes:
       u_mg_per_kg:
         description: Uranium concentration in mg/kg
         range: float
-      # --- QC flags (using existing processeddataflag enum) ---
+      # --- QC flags (using existing ProcessedDataFlag enum) ---
       flag_cl:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_v:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_cr:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_ni:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_cu:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_zn:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_ga:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_as:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_se:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_br:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_rb:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_sr:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_y:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_nb:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_mo:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_ag:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_cd:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_in:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_sn:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_sb:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_cs:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_ba:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_la:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_ce:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_pb:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_th:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_u:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
 
   # ---------------------------------------------------------------------------
@@ -401,7 +401,7 @@ classes:
       One row per sample with columns for each mineral phase identified.
       
       Follows the wide-format pattern with individual weight percent columns.
-      Individual QC flags for each mineral using processeddataflag enum.
+      Individual QC flags for each mineral using ProcessedDataFlag enum.
       
       Relationship to core tables:
         - id: FK -> processedData.id (1:1 linkage)
@@ -469,27 +469,27 @@ classes:
       gypsum_percent:
         description: Gypsum (CaSO4·2H2O) weight percent
         range: float
-      # --- QC flags (using existing processeddataflag enum) ---
+      # --- QC flags (using existing ProcessedDataFlag enum) ---
       flag_quartz:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_albite:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_microcline:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_muscovite:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_kaolinite:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_chlorite:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_hornblende:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_pyrite:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_halite:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_gypsum:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
 
 # =============================================================================
@@ -513,8 +513,8 @@ classes:
 #       XRDPhaseProduct:
 #         description: XRD mineral phase identification data (wide format)
 
-# QC flags use existing processeddataflag enum - no new values needed:
-#   processeddataflag:
+# QC flags use existing ProcessedDataFlag enum - no new values needed:
+#   ProcessedDataFlag:
 #     permissible_values:
 #       Below_Detection:
 #       Below_Reporting_Limit:
