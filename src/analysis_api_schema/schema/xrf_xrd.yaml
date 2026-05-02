@@ -11,10 +11,10 @@ description: |
 
   Inheritance hierarchy (all is_a chains):
     
-    dataGenerationActivity (abstract)
-      └── XRaydataGenerationActivity (abstract, MR: xrf_xrd) 
-            ├── XRFdataGenerationActivity
-            └── XRDdataGenerationActivity
+    DataGenerationActivity (abstract)
+      └── XRayDataGenerationActivity (abstract, MR: xrf_xrd) 
+            ├── XRFDataGenerationActivity
+            └── XRDDataGenerationActivity
     
     dataProduct (abstract)
       └── processedData
@@ -26,33 +26,33 @@ description: |
     
     XRF (direct instrument output, no computational workflow):
       processedSample(soil replicate)
-        -> XRFdataGenerationActivity
+        -> XRFDataGenerationActivity
             protocol_url: vendor SOP or EMSL internal protocol
             instrument_id -> instrument (e.g., Rigaku ZSX Primus IV)
-        -> [no dataProcessingActivity needed for direct output]
+        -> [no DataProcessingActivity needed for direct output]
         -> XRFElementalProduct (one row per sample, wide format with 27 element columns)
             summary_metrics: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2}
             s3_key: "xrf/raw/sample_001_spectrum.csv"
             Columns: cl_mg_per_kg, v_mg_per_kg, cr_mg_per_kg, ni_mg_per_kg, ... (27 elements)
-                     flag_cl, flag_v, flag_cr, ... (27 flags using processeddataflag)
+                     flag_cl, flag_v, flag_cr, ... (27 flags using ProcessedDataFlag)
     
     XRD (may include computational refinement):
       processedSample(soil replicate, ground powder)
-        -> XRDdataGenerationActivity
-        -> [optional] dataProcessingActivity(type='xrd_rietveld_refinement')
+        -> XRDDataGenerationActivity
+        -> [optional] DataProcessingActivity(type='xrd_rietveld_refinement')
             if computational refinement is performed
         -> XRDPhaseProduct (one row per sample, wide format with 10 mineral columns)
             summary_metrics: {"quartz_percent":42, "albite_percent":18}
             s3_key: "xrd/raw/sample_001_diffractogram.xy"
             Columns: quartz_percent, albite_percent, microcline_percent, ... (10 minerals)
-                     flag_quartz, flag_albite, ... (10 flags using processeddataflag)
+                     flag_quartz, flag_albite, ... (10 flags using ProcessedDataFlag)
 
   Future extensibility:
-    The XRaydataGenerationActivity abstract class can accommodate additional X-ray methods
+    The XRayDataGenerationActivity abstract class can accommodate additional X-ray methods
     such as X-ray computed tomography (XCT) if needed.
 
   Integration notes:
-    - XRaydataGenerationActivity classes -> paste into analysis_api_schema.yaml classes section
+    - XRayDataGenerationActivity classes -> paste into analysis_api_schema.yaml classes section
     - XRayDataProduct classes -> paste into products.yaml classes section
     - New enum values -> add to enums.yaml as noted in comments below
     - Shared slots -> already defined in analysis_api_schema.yaml (inherited via is_a)
@@ -68,109 +68,44 @@ imports:
   - linkml:types
   - analysis_api_schema
   - enums
+  - slots
 
 # =============================================================================
-# SLOTS
-# Reusable slots specific to X-ray analysis classes.
-# Shared slots (name, s3_key, version, acquisition_time, instrument_id, 
-# protocol_url, etc.) are inherited via the dataGenerationActivity and dataProduct 
-# slot definitions in analysis_api_schema.
-# 
-# NOTE: Protocol detail slots (commented below) can be uncommented and expanded
-# if detailed protocol information needs to be stored in the database rather than
-# referenced via protocol_url. Current design favors lightweight linkage to
-# external protocol documentation.
-# =============================================================================
-
-slots:
-
-  # NOTE: Commented protocol detail slots available for future expansion:
-  # https://geochemistry.isgs.illinois.edu/labs/xrd-xrf-materials-characterization-laboratory/
-  # xrf_beam_voltage_kv:
-  #   description: X-ray tube voltage in kilovolts (kV)
-  #   range: float
-  # 
-  # xrf_beam_current_ma:
-  #   description: X-ray tube current in milliamps (mA)
-  #   range: float
-  #
-  # xrf_measurement_duration_sec:
-  #   description: Sample measurement duration in seconds
-  #   range: integer
-  #
-  # xrf_matrix_correction_method:
-  #   description: Matrix correction algorithm (e.g., fundamental_parameters, empirical)
-  #   range: string
-  #
-  # xrf_calibration_date:
-  #   description: Date of most recent instrument calibration
-  #   range: date
-  #
-  # xrd_diffractometer_geometry:
-  #   description: Diffractometer geometry (e.g., Bragg-Brentano, Debye-Scherrer)
-  #   range: string
-  #
-  # xrd_tube_type:
-  #   description: X-ray tube anode material (e.g., Cu, Co, Mo)
-  #   range: string
-  #
-  # xrd_scan_range_deg:
-  #   description: 2-theta scan range in degrees
-  #   range: string
-  #
-  # xrd_step_size_deg:
-  #   description: Step size in degrees 2-theta
-  #   range: float
-  #
-  # xrd_refinement_method:
-  #   description: Rietveld refinement software and method (e.g., HighScore Plus, GSAS-II)
-  #   range: string
-  #
-  # xrd_r_factor:
-  #   description: Rietveld refinement R-factor (goodness of fit metric)
-  #   range: float
-  #
-  # xrd_gof:
-  #   description: Goodness of fit from Rietveld refinement
-  #   range: float
-
-
-# =============================================================================
-# CLASSES — dataGenerationActivity subclasses
+# CLASSES — DataGenerationActivity subclasses
 # -> PASTE THESE INTO analysis_api_schema.yaml classes section
 # =============================================================================
 
 classes:
 
   # ---------------------------------------------------------------------------
-  # (NEW ABSTRACT CLASS) XRaydataGenerationActivity
+  # (NEW ABSTRACT CLASS) XRayDataGenerationActivity
   # Abstract parent for all X-ray analytical methods.
-  # Concrete subclasses: XRFdataGenerationActivity, XRDdataGenerationActivity
-  # Future: XCTdataGenerationActivity (X-ray computed tomography) could be added here
+  # Concrete subclasses: XRFDataGenerationActivity, XRDDataGenerationActivity
+  # Future: XCTDataGenerationActivity (X-ray computed tomography) could be added here
   # ---------------------------------------------------------------------------
-  XRaydataGenerationActivity:
-    is_a: dataGenerationActivity
+  XRayDataGenerationActivity:
+    is_a: DataGenerationActivity
     abstract: true
     description: |-
       Abstract base class for X-ray analytical methods including XRF (elemental)
       and XRD (mineralogical) analysis. Inherits acquisition_time, instrument_id,
-      protocol_url, analyte_id, and other core metadata from dataGenerationActivity.
+      protocol_url, analyte_id, and other core metadata from DataGenerationActivity.
       
       Concrete subclasses define method-specific measurement parameters.
       Future X-ray methods (e.g., XCT) can extend this class.
       
       Shared patterns:
         - Direct instrument output (no computational workflow) is typical for XRF
-        - XRD may optionally link to dataProcessingActivity for Rietveld refinement
+        - XRD may optionally link to DataProcessingActivity for Rietveld refinement
         - protocol_url should link to vendor SOP or EMSL internal protocol documentation
-    # Inherits from dataGenerationActivity:
+    # Inherits from DataGenerationActivity:
     #   - id (uuid identifier)
     #   - type (routemethod enum — NEW VALUES: xrf_analysis, xrd_analysis)
     #   - analyte_id (FK to processedSample)
     #   - acquisition_time (datetime, required)
     #   - instrument_id (FK to instrument)
     #   - protocol_url (string)
-    #   - instrument_operator_id (FK to personValue)
+    #   - instrument_operator_id (FK to PersonValue)
     #   - sequence_order (integer, for temporal series)
     #   - version (string)
     #   - name (string)
@@ -178,10 +113,10 @@ classes:
 
 
   # ---------------------------------------------------------------------------
-  # XRFdataGenerationActivity — Concrete X-ray Fluorescence
+  # XRFDataGenerationActivity — Concrete X-ray Fluorescence
   # ---------------------------------------------------------------------------
-  XRFdataGenerationActivity:
-    is_a: XRaydataGenerationActivity
+  XRFDataGenerationActivity:
+    is_a: XRayDataGenerationActivity
     description: |-
       X-ray Fluorescence (XRF) elemental analysis activity.
       
@@ -192,10 +127,10 @@ classes:
       Data product: XRFElementalProduct (one row per element per sample)
       
       Workflow pattern: Direct instrument output (no computational processing step)
-        processedSample -> XRFdataGenerationActivity -> XRFElementalProduct (workflow_id = NULL)
+        processedSample -> XRFDataGenerationActivity -> XRFElementalProduct (workflow_id = NULL)
       
       Protocol information: Stored externally; link via protocol_url attribute.
-      Example protocol parameters (stored in external SOP or dataProcessingActivity
+      Example protocol parameters (stored in external SOP or DataProcessingActivity
       if computational correction is needed):
         - Beam voltage (kV), beam current (mA)
         - Measurement duration (seconds)
@@ -211,10 +146,10 @@ classes:
 
 
   # ---------------------------------------------------------------------------
-  # XRDdataGenerationActivity — Concrete X-ray Diffraction
+  # XRDDataGenerationActivity — Concrete X-ray Diffraction
   # ---------------------------------------------------------------------------
-  XRDdataGenerationActivity:
-    is_a: XRaydataGenerationActivity
+  XRDDataGenerationActivity:
+    is_a: XRayDataGenerationActivity
     description: |-
       X-ray Diffraction (XRD) mineralogical analysis activity.
       
@@ -225,14 +160,14 @@ classes:
       
       Workflow patterns:
         1. Direct/semi-quantitative: 
-             processedSample -> XRDdataGenerationActivity -> XRDPhaseProduct (workflow_id = NULL)
+             processedSample -> XRDDataGenerationActivity -> XRDPhaseProduct (workflow_id = NULL)
         2. With Rietveld refinement (computational):
-             processedSample -> XRDdataGenerationActivity -> 
-             dataProcessingActivity(type='xrd_rietveld_refinement') -> 
+             processedSample -> XRDDataGenerationActivity -> 
+             DataProcessingActivity(type='xrd_rietveld_refinement') -> 
              XRDPhaseProduct (workflow_id = refinement WEA)
       
       Protocol information: Stored externally; link via protocol_url attribute.
-      Example protocol parameters (stored in external SOP or dataProcessingActivity):
+      Example protocol parameters (stored in external SOP or DataProcessingActivity):
         - Diffractometer geometry (Bragg-Brentano, Debye-Scherrer)
         - X-ray tube type (Cu, Co, Mo)
         - Scan range (2-theta degrees), step size
@@ -257,7 +192,7 @@ classes:
   # Concrete subclasses: XRFElementalProduct, XRDPhaseProduct
   # ---------------------------------------------------------------------------
   XRayDataProduct:
-    is_a: processedData
+    is_a: ProcessedData
     abstract: true
     description: |-
       Abstract base class for X-ray analytical data products.
@@ -273,18 +208,18 @@ classes:
             XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
             XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
         - workflow_id is NULL for direct instrument output (XRF typical)
-        - workflow_id links to dataProcessingActivity for computational processing (XRD Rietveld)
+        - workflow_id links to DataProcessingActivity for computational processing (XRD Rietveld)
     # Inherits from processedData via dataProduct:
     #   - id (uuid identifier)
     #   - name (string, required)
     #   - s3_key (string, required) — path to raw data file
     #   - s3_bucket, s3_base_url
     #   - filesize, md5checksum
-    #   - proposal_id, sampling_set, core_section, sample_name
+    #   - project, sampling_set, core_section, sample_name
     #   - summary_metrics (JSONB, lightweight queryable data)
     #   - lims_barcode, version
     #   - type (from product enum — NEW VALUES: XRFElementalProduct, XRDPhaseProduct)
-    #   - workflow_id (FK to dataProcessingActivity, nullable)
+    #   - workflow_id (FK to DataProcessingActivity, nullable)
 
 
   # ---------------------------------------------------------------------------
@@ -298,7 +233,7 @@ classes:
       
       Follows the wide-format pattern established by IonsAnalysisProduct.
       Element concentrations in mg/kg (parts per million dry weight basis) as float values.
-      Individual QC flags for each element using processeddataflag enum.
+      Individual QC flags for each element using ProcessedDataFlag enum.
       
       Relationship to core tables:
         - id: FK -> processedData.id (1:1 linkage)
@@ -399,61 +334,61 @@ classes:
       u_mg_per_kg:
         description: Uranium concentration in mg/kg
         range: float
-      # --- QC flags (using existing processeddataflag enum) ---
+      # --- QC flags (using existing ProcessedDataFlag enum) ---
       flag_cl:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_v:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_cr:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_ni:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_cu:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_zn:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_ga:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_as:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_se:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_br:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_rb:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_sr:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_y:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_nb:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_mo:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_ag:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_cd:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_in:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_sn:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_sb:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_cs:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_ba:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_la:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_ce:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_pb:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_th:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_u:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
 
   # ---------------------------------------------------------------------------
@@ -466,12 +401,12 @@ classes:
       One row per sample with columns for each mineral phase identified.
       
       Follows the wide-format pattern with individual weight percent columns.
-      Individual QC flags for each mineral using processeddataflag enum.
+      Individual QC flags for each mineral using ProcessedDataFlag enum.
       
       Relationship to core tables:
         - id: FK -> processedData.id (1:1 linkage)
         - processedData.type = 'XRDPhaseProduct'
-        - processedData.workflow_id -> dataProcessingActivity if Rietveld refinement
+        - processedData.workflow_id -> DataProcessingActivity if Rietveld refinement
           is computational; NULL if manual/semi-quantitative
         - processedData.summary_metrics = {"quartz_percent":42, "albite_percent":18, ...}
         - processedData.s3_key = diffractogram .xy, .xrdml, or .raw file in MinIO
@@ -488,8 +423,8 @@ classes:
         - Semi-quantitative (manual, less precise)
       
       Computational processing workflow (if applicable):
-        XRDdataGenerationActivity acquires raw diffractogram ->
-        dataProcessingActivity (type='xrd_rietveld_refinement') processes with
+        XRDDataGenerationActivity acquires raw diffractogram ->
+        DataProcessingActivity (type='xrd_rietveld_refinement') processes with
         HighScore Plus, GSAS-II, or FullProf ->
         XRDPhaseProduct (workflow_id points to refinement WEA)
         
@@ -534,27 +469,27 @@ classes:
       gypsum_percent:
         description: Gypsum (CaSO4·2H2O) weight percent
         range: float
-      # --- QC flags (using existing processeddataflag enum) ---
+      # --- QC flags (using existing ProcessedDataFlag enum) ---
       flag_quartz:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_albite:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_microcline:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_muscovite:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_kaolinite:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_chlorite:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_hornblende:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_pyrite:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_halite:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_gypsum:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
 
 # =============================================================================
@@ -578,8 +513,8 @@ classes:
 #       XRDPhaseProduct:
 #         description: XRD mineral phase identification data (wide format)
 
-# QC flags use existing processeddataflag enum - no new values needed:
-#   processeddataflag:
+# QC flags use existing ProcessedDataFlag enum - no new values needed:
+#   ProcessedDataFlag:
 #     permissible_values:
 #       Below_Detection:
 #       Below_Reporting_Limit:

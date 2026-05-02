@@ -22,254 +22,22 @@ prefixes:
 default_prefix: analysis_api_schema
 default_range: string
 
-# =============================================================================
-# GLOBAL SLOTS
-# Non-identifier fields that are shared across multiple classes or promoted
-# from inline attributes to support the dataProduct inheritance hierarchy.
-# UUID identifier fields remain as class-level attributes (identifier: true).
-# =============================================================================
-
-slots:
-
-  sampling_set:
-    title: sampling set
-    description: |-
-      Sampling set number for grouping related samples collected together.
-      This is a user-defined integer that can be used to link samples collected
-      in the same sampling event or campaign.
-    range: integer
-  soil_type:
-    title: soil type
-    description: The specific type of soil sample
-    range: SoilTypeEnum
-    todos: 
-      - this is a GSC slot but it's not constrined by an enum, it's a string. where did this come from?
-  soil_horizon:
-    title: soil horizon
-    description: Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath.
-    exact_mappings:
-      - MIXS:0001082
-    range: SoilHorizonEnum
-  aerosol_type:
-    description: The type or method of aerosol collection
-    range: AerosolTypeEnum
-    required: true
-  core_section:
-    title: core section
-    description: The section of the core.
-    examples:
-      - value: TOP
-      - value: MID
-      - value: BTM
-    range: string
-  project:
-    title: Project
-    alias:
-      - study
-      - study_id
-      - project_id
-      - proposal
-      - proposal_id
-    description: |-
-      Identifier for the user project associated with the entity or activity. 
-    range: integer
-    todos:
-      - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141 where emsl.project is the CURIE prefix
-  storage_condition:
-    title: storage condition
-    description: The storage condition of the sample, such as temperature or preservation method.
-    range: StorageConditionEnum
-    exact_mappings:
-      - MIXS:0000327
-    aliases:
-      - samp_store_cond
-      - storage_cond
-      - storage_condt
-  oxygen_relationship:
-    title: oxygen relationship
-    description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
-    range: OxygenStatusEnum
-    exact_mappings:
-      - MIXS:0000015
-  biotic_relationship:
-    title: observed biotic relationship
-    description: The biotic relationship of the sample, such as symbiotic or free-living
-    range: BioticRelationshipEnum
-    exact_mappings:
-      - MIXS:0000016
-    aliases:
-      - samp_biotic_relationship
-  air_temp_regm:
-    title: air temperature regime
-    description: Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens
-    range: string
-    exact_mappings:
-      - MIXS:0000551
-  chem_administration:
-    title: chemical administration
-    description: List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
-    range: string
-    exact_mappings:
-      - MIXS:0000751
-
-  type:
-    title: type
-    description: Type classifier for an entity or activity
-    range: string
-
-  description:
-    title: description
-    description: Human-readable description for the entity or activity
-    range: string
-
-  latitude:
-    title: latitude
-    description: Latitude coordinate of the sampling site
-    range: double
-
-  longitude:
-    title: longitude
-    description: Longitude coordinate of the sampling site
-    range: double
-
-  has_output:
-    title: has output
-    description: Output entity produced by an activity
-    range: string
-    todos: I'm not sure we are going to use this, given our plan to only point 'upstream' from dataProduct to the generating activity, and not have activities point to their outputs. Do we need this slot?
-
-  # --- dataProduct base slots (promoted from processedData attributes) ---
-  name:
-    description: Human-readable name for the entity
-    range: string
-    required: true
-
-  proposal_id:
-    description: 5-digit EMSL user proposal/project ID
-    range: integer
-
-  sample_name:
-    range: string
-
-  s3_base_url:
-    range: string
-
-  s3_bucket:
-    range: string
-
-  s3_key:
-    description: MinIO/S3 object key; required for all data products
-    range: string
-    required: true
-
-  filesize:
-    range: integer
-
-  md5checksum:
-    range: string
-
-  file_curie:
-    description: an identifier for a file that resolves to the file's accessible location
-    range: string # restrict
-
-  # --- shared utility slots promoted from processedData inline attributes ---
-  lims_barcode:
-    description: LIMS barcode identifier
-    range: string
-    required: false
-
-  version:
-    description: Version string; shared by processedData, dataGenerationActivity, dataProcessingActivity
-    range: string
-    required: true
-
-  # --- dataProcessingActivity: new chain-link slot ---
-  parent_workflow_id:
-    description: |-
-      Self-referential FK to the preceding dataProcessingActivity in a chain.
-      NULL -> first (or standalone) step.
-      Non-null -> this execution directly follows parent_workflow_id.
-      Enables single-hop chaining queries; full traversal via linkage_cache.
-
-      DDL: ALTER TABLE "dataProcessingActivity"
-             ADD COLUMN parent_workflow_id UUID
-             REFERENCES "dataProcessingActivity"(id);
-    range: uuid
-    required: false
-
-  # --- dataProcessingActivity: JSONB direction change ---
-  workflow_steps:
-    description: |-
-      Per-run workflow parameters. Previously annotated TODO JSONB in schema.
-      Direction: structured key-value pairs keyed by workflow type.
-      Schema for allowed keys TBD per workflow type before full implementation.
-      Interim DB storage: JSONB column retained.
-    range: string   # interim placeholder   will reference typed key-value class; schema TBD
-    required: false
-
-  # --- dataGenerationActivity: temporal ordering ---
-  sequence_order:
-    description: |-
-      Integer ordering within a temporal series for the same analyte.
-      Lower = earlier in series. Use when acquisition_time alone is insufficient.
-
-      DDL: ALTER TABLE "dataGenerationActivity"
-             ADD COLUMN sequence_order INTEGER;
-    range: integer
-    required: false
-
-  # --- processedData: compact queryable summary ---
-  summary_metrics:
-    description: |-
-      Lightweight per-product summary for common queries that avoid full file download.
-      Direction: structured key-value pairs; per-type schemas TBD:
-        ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
-        xrf:       per-element concentration results + QC flag
-        lcms:      feature count, identification count, MSI-2 fraction
-      Interim DB storage: JSONB column retained until formal typed class exists.
-
-      DDL: ALTER TABLE "processedData"
-             ADD COLUMN summary_metrics JSONB;   -- interim; formal key-value schema TBD
-    range: string   # interim placeholder   will reference typed key-value class; schema TBD
-    required: false
-
-
-  sample_id:
-    description: Link back to the originating sample
-    range: Sample
-    required: false
-
-  # --- dataProduct: provenance link ---
-  was_generated_by:
-    description: |-
-      Reference to the activity that generated this data product.
-      Range is overridden per subclass via slot_usage:
-        processedData   -> dataProcessingActivity
-        instrumentData  -> dataGenerationActivity
-    required: false   # nullable   not all products have a tracked generating activity
-
-  replicate:
-    description: The replicate number of the sample, if applicable.
-    range: integer
-
 imports:
   - linkml:types
-  - enums
-  - value_tables
-  - sample_classes
-  - metadata
-  - methods
-  - products
   - administration
-  - study
-  - zip_download
+  - enums
+  - mass_spec
   - media_strain_culture_plate
   - metagenomics
-  - mass_spec
-  # - metaproteomics
+  - methods
+  - products
+  - sample_classes
+  - slots
+  - study
+  - value_tables
   - xrf_xrd
+  - zip_download
   # - linkage_cache   # MR2: uncomment when linkage_cache.yaml is added
-  # - enrichment # todo have not reviewed fully
 
 classes:
 
@@ -320,7 +88,7 @@ classes:
   # processedData inherits via is_a. Future sitePhoto and similar file-based
   # products will also inherit here. No direct database table.
   # ---------------------------------------------------------------------------
-  dataProduct:
+  DataProduct:
     abstract: true
     description: |-
       Abstract base class for raw or processed data accessible in S3 storage.
@@ -330,7 +98,7 @@ classes:
     slots:
       - name
       - description
-      - proposal_id
+      - project
       - sampling_set
       - core_section
       - sample_name
@@ -339,7 +107,6 @@ classes:
       - s3_key
       - filesize
       - md5checksum
-      #- was_generated_by
     attributes:
       id:
         identifier: true
@@ -347,12 +114,12 @@ classes:
         required: true
 
   # (CHANGED MR1) processedData now inherits from dataProduct via is_a.
-  # Inherited slots: name, description, proposal_id, sampling_set, core_section, sample_name,
+  # Inherited slots: name, description, project, sampling_set, core_section, sample_name,
   # s3_base_url, s3_bucket, s3_key, filesize, md5checksum, id.
   # Retained as attributes: type (class-specific product enum range), workflow_id.
   # New slots: summary_metrics, lims_barcode, version.
-  processedData:
-    is_a: dataProduct
+  ProcessedData:
+    is_a: DataProduct
     abstract: true
     description: A data product generated by a workflow execution.
     slots:
@@ -365,8 +132,8 @@ classes:
       - all subclasses need a more specific upstream slot to replace was_generated_by
 
 
-  instrumentData:
-    is_a: dataProduct
+  InstrumentData:
+    is_a: DataProduct
     abstract: true
     description: >-
       An abstract parent class for raw data files generated by different kinds 
@@ -382,10 +149,8 @@ classes:
         range: string
       compression_type:
         range: string
-      type:
-        range: string
       file_type:
-        range: filetype
+        range: FileTypeEnum
       version:
         range: string
     todos:
@@ -395,21 +160,21 @@ classes:
       - what does version reference? is it software? why is it here
       - revisit filetype enum - restrict on subclasses
 
-  sitePhoto:
-    is_a: dataProduct
+  SitePhoto:
+    is_a: DataProduct
     attributes:
       site_photo_type:
-        range: sitephototype
+        range: SitePhotoCategoryEnum
       photo_taken_during:
         range: SamplingActivity
 
-  # dataGenerationActivity is now ABSTRACT.
-  # Concrete per-method-type subclasses (e.g. EcoplatedataGenerationActivity,
-  # AMP2dataGenerationActivity in companion files) use is_a: dataGenerationActivity and
+  # DataGenerationActivity is now ABSTRACT.
+  # Concrete per-method-type subclasses (e.g. EcoplateDataGenerationActivity,
+  # AMP2DataGenerationActivity in companion files) use is_a: DataGenerationActivity and
   # add method-specific slots (including timepoint_label where needed).
   # New slot: sequence_order. version promoted to global slot.
   # NOTE: Will be renamed DataGenerationActivity.
-  dataGenerationActivity:
+  DataGenerationActivity:
     abstract: true
     slots:
       - sequence_order   # [ADDED] integer ordering within a temporal series
@@ -428,19 +193,17 @@ classes:
       acquisition_end_time:
         range: datetime
         required: true
-      instrument_id:
-        range: instrument
-      protocol:
-        range: Protocol
+      instrument_used:
+        range: Instrument
+      protocol_url:
+        range: string
       instrument_operator_id:
-        range: personValue
-      processing_institution:
-        range: InstitutionEnum
+        range: PersonValue
     todos:
       - what does version reference? is it software? doesn't make sense here
 
   RespirationDataGenerationActivity:
-    is_a: dataGenerationActivity
+    is_a: DataGenerationActivity
     description: |-
       Data generation activity for soil respiration analysis.
       Captures CO2-C efflux measured per gram of soil.
@@ -449,13 +212,13 @@ classes:
         range: RespirationMethod
         description: Reference to the RespirationMethod used for this run
 
-  # dataProcessingActivity is ABSTRACT.
-  # Concrete per-type subclasses (e.g. MetagenomicsdataProcessingActivity in
-  # metagenomics.yaml) use is_a: dataProcessingActivity.
+  # DataProcessingActivity is ABSTRACT.
+  # Concrete per-type subclasses (e.g. MetagenomicsDataProcessingActivity in
+  # metagenomics.yaml) use is_a: DataProcessingActivity.
   # New slot: parent_workflow_id (chain link). workflow_steps direction updated.
   # version promoted to global slot.
 
-  dataProcessingActivity:
+  DataProcessingActivity:
     abstract: true
     description: |-
       Abstract base for any data processing activity. Input data should 
@@ -491,7 +254,7 @@ classes:
       execution_resource:
         range: ExecutionResourceEnum
 
-  alternativeIdentifier:
+  AlternativeIdentifier:
     attributes:
       id:
         identifier: true
@@ -500,11 +263,11 @@ classes:
         range: string
         required: true
       alternate_identifier_type:
-        range: alternateidentifiertype
+        range: AlternateIdentifierType
         required: true
 
 
-  ecoregion:
+  Ecoregion:
     attributes:
       domain_id:
         identifier: true
@@ -513,7 +276,7 @@ classes:
         range: string
         required: true
 
-  functionalAnnotationIdentifier:
+  FunctionalAnnotationIdentifier:
     attributes:
       id:
         identifier: true
@@ -522,11 +285,10 @@ classes:
         range: string
         required: true
       database:
-        range: annotationdatabasetype
+        range: AnnotationDatabaseEnum
         required: true
 
-
-  instrument:
+  Instrument:
     description: |-
       A material entity that is designed to perform a function in a scientific 
       investigation, but is not a reagent. This class models a specific
@@ -540,9 +302,9 @@ classes:
         range: string
         required: true
       vendor:
-        range: vendorenum
+        range: VendorEnum
       model:
-        range: modelenum
+        range: ModelEnum
       serial_number:
         range: string
         description: instrument instance specifier
@@ -565,7 +327,7 @@ classes:
         range: string
         description: Other important properties of the instrument that are not captured in other fields.
 
-  ontologyClass: # table has no data
+  OntologyClass: # table has no data
     attributes:
       id:
         identifier: true
@@ -577,19 +339,17 @@ classes:
       name:
         range: string
 
-  containerType:
+  ContainerType:
     attributes:
       id:
         identifier: true
         range: uuid
       description:
         range: string
-      was_generated_by:
-        range: string
       container_type:
-        range: containertypeenum
+        range: ContainerTypeEnum
       container_size_id:
-        range: quantityValue
+        range: QuantityValue
       axes:
         multivalued: true
         range: ContainerAxis
@@ -616,28 +376,28 @@ classes:
     todos:
     - I'm only including this in case we need it to sync up with L7 in some way
 
-  custodian:
+  Custodian:
     attributes:
       id:
         identifier: true
         range: uuid
       person_id:
-        range: personValue
+        range: PersonValue
 
-  instrument_alt_id:
+  InstrumentAlternativeIdentifier:
     attributes:
       id:
         identifier: true
         range: uuid
       alt_id:
-        range: alternativeIdentifier
+        range: AlternativeIdentifier
       instrument_alt_id_provider:
-        range: instrumentaltidprovider
+        range: InstrumentAltIdProviderEnum
       instrument_id:
-        range: instrument
+        range: Instrument
         required: true
 
-  labDevice:
+  LabDevice:
     attributes:
       id:
         identifier: true
@@ -645,25 +405,25 @@ classes:
       description:
         range: string
       device_type:
-        range: devicetypeenum
+        range: DeviceTypeEnum
       activity_time_id:
-        range: quantityValue
+        range: QuantityValue
       activity_speed_id:
-        range: quantityValue
+        range: QuantityValue
 
   # (CHANGED MR1) sampleProcessing is now ABSTRACT per PI guidance.
   # Concrete protocol-specific subclasses use is_a: sampleProcessing.
   # processing_steps noted TODO JSONB   direction change to key-value is deferred.
-  sampleProcessing:
+  SampleProcessing:
     abstract: true
     attributes:
       id:
         identifier: true
         range: uuid
       analysis_type:
-        range: routemethod
+        range: RouteMethodEnum
       method_name:
-        range: methodname
+        range: MethodNameEnum
       processing_steps:
         range: string # TODO JSONB   key-value direction deferred; schema TBD
         required: true
@@ -675,8 +435,9 @@ classes:
         range: Sample
     todos:
       - why is version here? should it be lab_protocol_version?
+      - why does this have both analysis type and method name, as enums, just set the range to the class
 
-  processingSampleLink:
+  ProcessingSampleLink:
     attributes:
       id:
         identifier: true
@@ -687,7 +448,7 @@ classes:
         required: true
       processing_id:
         identifier: true
-        range: sampleProcessing
+        range: SampleProcessing
         required: true
       step_number:
         identifier: true
@@ -695,7 +456,7 @@ classes:
         required: true
       role:
         identifier: true
-        range: samplerole
+        range: SampleRole
         required: true
       version:
         range: string
@@ -709,23 +470,23 @@ classes:
     todos:
       - why is version here? what is a version of a processed sample?
 
-  instrumentCustodian:
+  InstrumentCustodian:
     attributes:
       instrument_id:
-        range: instrument
+        range: Instrument
         required: true
       custodian_id:
-        range: custodian
+        range: Custodian
         required: true
 
 
-  workflowExecutionFunctionalAnnotation:
+  WorkflowExecutionFunctionalAnnotation:
     attributes:
       workflow_id:
-        range: dataProcessingActivity
+        range: DataProcessingActivity
         required: true
       functional_annotation_id:
-        range: functionalAnnotationIdentifier
+        range: FunctionalAnnotationIdentifier
         required: true
       count:
         range: numeric

@@ -12,8 +12,8 @@ description: |
                   ├── Metagenomics_BinningProduct
                   └── Metagenomics_GenePhylogenyProduct
 
-    dataProcessingActivity (abstract)
-      └── MetagenomicsdataProcessingActivity
+    DataProcessingActivity (abstract)
+      └── MetagenomicsDataProcessingActivity
 
   Each product class carries only its type-specific slots; shared S3/file slots
   are inherited from dataProduct via processedData via MetagenomicsProduct.
@@ -27,44 +27,7 @@ default_prefix: analysis_api_schema
 imports:
   - linkml:types
   - analysis_api_schema
-
-# Reusable slots specific to metagenomics classes.
-# Shared slots (name, s3_key, version, workflow_steps, etc.) are inherited via
-# the dataProduct / dataProcessingActivity slot definitions in analysis_api_schema.
-slots:
-
-  workflow_step:
-    description: Enumerated workflow step that produced this product (e.g., MagsAnalysis)
-    range: metagenomicssteps
-    required: false
-
-  sample_id:
-    description: Link back to the originating sample
-    range: Sample
-    required: false
-
-  provider_name:
-    range: controlledTermValue
-    description: Provider class (e.g., JGI, SeqCenter) using ontology terms where possible
-
-  raw_fasta_url:
-    range: string
-    description: URL of raw FASTA file, if available from provider
-
-  additional_information:
-    range: string
-    description: Additional information pertaining to these data, including SP Project ID and Taxon OID
-
-  annotation_database:
-    description: Primary annotation database used (e.g., IMG, KEGG)
-    range: annotationdatabasetype
-    required: false
-
-  gene_family:
-    description: Gene family or marker used for the phylogeny (e.g., 16S, ITS)
-    range: string
-    required: false
-
+  - slots
 
 classes:
 
@@ -99,7 +62,7 @@ classes:
   # need to be repeated on each concrete class.
   # ============================================================================
   MetagenomicsProduct:
-    is_a: processedData
+    is_a: ProcessedData
     abstract: true
     description: |-
       Abstract base for all metagenomics data products.
@@ -107,7 +70,7 @@ classes:
       Concrete sub-types (Annotation, Binning, GenePhylogeny) use is_a to inherit
       and add only their type-specific slots.
     slots:
-      - workflow_step
+      - mg_workflow_step
       - sample_id
       - provider_name
       - raw_fasta_url
@@ -157,18 +120,18 @@ classes:
 
 
   # ============================================================================
-  # (NEW) MetagenomicsdataProcessingActivity
-  # Concrete subclass of dataProcessingActivity (now abstract in MR1).
+  # (NEW) MetagenomicsDataProcessingActivity
+  # Concrete subclass of DataProcessingActivity (now abstract in MR1).
   # Carries no additional unique slots beyond the parent; represents a typed
-  # workflow record so that dataProcessingActivity can remain abstract.
+  # workflow record so that DataProcessingActivity can remain abstract.
   # ============================================================================
-  MetagenomicsdataProcessingActivity:
-    is_a: dataProcessingActivity
+  MetagenomicsDataProcessingActivity:
+    is_a: DataProcessingActivity
     description: |-
-      Concrete metagenomics workflow run. Inherits all dataProcessingActivity
+      Concrete metagenomics workflow run. Inherits all DataProcessingActivity
       slots including parent_workflow_id (chain link) and workflow_steps
       (key-value, schema TBD). Specific workflow step type is captured via the
       inherited type attribute (string); expected values: 
       'metagenomics_annotation', 'metagenomics_binning', 'metagenomics_phylogeny'.
-    # No additional type-specific slots beyond dataProcessingActivity.
+    # No additional type-specific slots beyond DataProcessingActivity.
 

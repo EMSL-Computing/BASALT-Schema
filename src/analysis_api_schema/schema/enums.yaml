@@ -17,7 +17,7 @@ imports:
 
 enums:
 
-  samplebasetype:
+  SampleBaseType:
     description: Base types for sample entities
     permissible_values:
       sample:
@@ -25,7 +25,7 @@ enums:
       processed_sample:
         description: A sample that has undergone processing
 
-  sampletype:
+  SampleType:
     description: Types of samples that can be collected
     permissible_values:
       soil_sample:
@@ -42,30 +42,6 @@ enums:
       surface_layer:
         title: surface layer
         description: Surface layer soil sample
-  
-  SoilHorizonEnum:
-    title: Soil Horizon Enumeration
-    description: Specific soil horizons for soil samples
-    permissible_values:
-      A horizon:
-        description: The surface horizon, also called topsoil. It has a defined soil structure, and is mostly made up of humus (decayed organic matter).
-      B horizon:
-        description: Also known as the subsoil. It is greatly composed of material illuviated (washed in from) layers above it. It is typically denser than the A horizon and has a clayey texture.
-      C horizon:
-        description: Also known as the substratum is unconsolidated material deepest in the pit and closest to the bedrock.
-      E horizon:
-        description: Used to refer to subsurface horizons that have undergone a significant loss of minerals, also known as Eluviation (or leaching).
-      O horizon:
-        description: The organic horizon. Typically at the top of the soil structure and is made up of mostly organic matter.
-        meaning: http://purl.obolibrary.org/obo/ENVO_03600018
-      Permafrost:
-        description: Soil that continuously remains below 0 °C (32 °F) for two years or more.
-      R layer:
-        description: Hard bedrock, which is usually the lowest layer. It is characterized by tightly bound and unbreakable materials.
-        aliases:
-          - R horizon
-      M horizon:
-        title: Mineral horizon 
 
   AerosolTypeEnum:
     description: Types of aerosol samples
@@ -77,7 +53,7 @@ enums:
       volcanic_ash:
         description: Volcanic ash aerosol
 
-  coresectionenum:
+  CoreSectionEnum:
     description: Sections of a core sample
     permissible_values:
       TOP:
@@ -87,13 +63,13 @@ enums:
       MID:
         description: Middle section of core
 
-  productmeasuretype:
+  ProductMeasureType:
     permissible_values:
       Single:
       Replicate:
       Average:
     
-  processeddataflag:
+  ProcessedDataFlag:
     permissible_values:
       Below_Detection:
       Below_Reporting_Limit:
@@ -139,7 +115,7 @@ enums:
       direct_infusion_autosampler:
         description: Direct infusion using an autosampler
 
-  metagenomicssteps:
+  MetagenomicsSteps:
     permissible_values:
       ReadQcAnalysis:
       MetagenomeAssembly:
@@ -149,11 +125,11 @@ enums:
       FunctionalAnnotation:
       GenePhylogeny:
 
-  alternateidentifiertype:
+  AlternateIdentifierType:
     permissible_values:
       instrument_alt_id:
 
-  routemethod:
+  RouteMethodEnum:
     permissible_values:
       analysis_activity:
       lcms_metabolomics_method:
@@ -175,12 +151,12 @@ enums:
       xrf_analysis:
       xrd_analysis: 
 
-  samplerole:
+  SampleRole:
     permissible_values:
       input_sample:
       output_sample:
 
-  methodname:
+  MethodNameEnum:
     permissible_values:
       MAOM:
       WOEM:
@@ -201,24 +177,24 @@ enums:
         description: Environmental Molecular Sciences Laboratory Tahoma cluster
         aliases: [Tahoma]
 
-  binquality:
+  BinQuality:
     permissible_values:
       HQ:
       MQ:
       LQ:
 
-  containertypeenum:
+  ContainerTypeEnum:
     permissible_values:
       screw_top_conical:
 
 
-  annotationdatabasetype:
+  AnnotationDatabaseEnum:
     permissible_values:
       PFAM:
       COG:
       KEGG:
 
-  vendorenum:
+  VendorEnum:
     permissible_values:
       waters:
       agilent:
@@ -235,7 +211,7 @@ enums:
       rigaku:
       panalytical:  # (PANalytical, now Malvern Panalytical)
 
-  modelenum:
+  ModelEnum:
     permissible_values:
       exploris_21T:
         text: exploris_21T
@@ -506,7 +482,7 @@ enums:
       sr_1:
       xth320:
 
-  filetype:
+  FileTypeEnum:
     permissible_values:
       FT_ICR_MS_Analysis_Results:
       GC_MS_Metabolomics_Results:
@@ -547,17 +523,17 @@ enums:
       Direct_Infusion_FT_ICR_MS_Raw_Data:
     
 
-  instrumentaltidprovider:
+  InstrumentAltIdProviderEnum:
     permissible_values:
       nexus:
       dms:
 
-  devicetypeenum:
+  DeviceTypeEnum:
     permissible_values:
       orbital_shaker:
       thermomixer:
  
-  sitephototype:
+  SitePhotoCategoryEnum:
     permissible_values:
       landscape:
       measure:
@@ -602,7 +578,7 @@ enums:
           aliases:
           - SPE
 
-  msrawfiletypeenum:
+  MSRawFileTypeEnum:
     permissible_values:
       .d:
       .raw:
@@ -617,7 +593,7 @@ enums:
       centroid:
         text: centroid
 
-  analytecategoryenum:
+  AnalyteCategoryEnum:
     description: bundling common terms for different omics types by biomolecule being analyzed
     permissible_values:
       dna:
@@ -691,6 +667,7 @@ enums:
         description: Commercially prepared (see commercial_media_catalog)
       premixed:
         description: Pre-mixed from a stock solution
+    todos: could be made generic for mixing more than just media.
 
   SterilizationMethodEnum:
     description: |-
@@ -705,7 +682,267 @@ enums:
         description: UV-sterilised
       none:
         description: Not sterilised (used as-is)
-        
+
+  SamplingActivityTypeEnum:
+    description: Types of sampling activities
+    permissible_values:
+      soil:
+        description: Soil sampling activity
+      water:
+        description: Water sampling activity
+      air:
+        description: Air sampling activity
+      plant:
+        description: Plant sampling activity
+      none:
+        description: No specific activity type
+        aliases: ["None"]
+
+  GrowthFacilityEnum:
+    description: Types of growth facilities
+    permissible_values:
+      field:
+        description: Field conditions
+      commercially_purchased:
+        description: Commercially purchased
+      experimental_garden:
+        description: Experimental garden
+      field_incubation:
+        description: Field incubation
+      greenhouse:
+        description: Greenhouse
+      growth_chamber:
+        description: Growth chamber
+      lab_incubation:
+        description: Laboratory incubation
+      open_top_chamber:
+        description: Open top chamber
+      other:
+        description: Other growth facility type
+
+  OxygenStatusEnum:
+    description: Oxygen status of samples
+    permissible_values:
+      aerobic:
+        description: Aerobic conditions
+      anaerobic:
+        description: Anaerobic conditions
+      anoxic:
+        description: Anoxic conditions
+      facultative:
+        description: Facultative conditions
+      microaerophilic:
+        description: Microaerophilic conditions
+      microanaerobe:
+        description: Microanaerobe conditions
+      oblifate_aerobe:
+        description: Obligate aerobe conditions
+        aliases: ["obligate_aerobe"]
+      obligate_anaerobe:
+        description: Obligate anaerobe conditions
+
+  SampleStoreTempEnum:
+    description: Sample storage temperature conditions
+    permissible_values:
+      fresh4:
+        description: Fresh storage at 4°C
+        aliases: ["4 C"]
+      freshroom:
+        description: Fresh storage at room temperature
+        aliases: ["room temperature"]
+      frozen20:
+        description: Frozen storage at -20°C
+        aliases: ["-20 C"]
+      frozen80:
+        description: Frozen storage at -80°C
+        aliases: ["-80 C"]
+      other:
+        description: Other storage temperature
+
+  BioticRelationshipEnum:
+    description: Sample biotic relationships
+    aliases:
+      - sampbioticenum
+    permissible_values:
+      free_living:
+        description: Free-living organism
+      parasite:
+        description: Parasitic organism
+      commensal:
+        description: Commensal organism
+      symbiont:
+        description: Symbiotic organism
+
+  StorageConditionEnum:
+    description: Sample storage conditions
+    permissible_values:
+      fresh:
+        description: Fresh sample
+      frozen:
+        description: Frozen sample
+      lyophilized:
+        description: Lyophilized (freeze-dried) sample
+      other:
+        description: Other storage condition
+
+
+  LandUseEnum:
+    description: Land use classifications
+    todos:
+      - move this to the enum.yaml
+    permissible_values:
+      badlands:
+        description: Badlands
+      cities:
+        description: Urban/city areas
+      conifers:
+        description: Coniferous forests (e.g. pine, spruce, fir, cypress)
+      crop_trees:
+        description: Crop trees (nuts, fruit, christmas trees, nursery trees)
+      farmstead:
+        description: Farmstead
+      gravel:
+        description: Gravel areas
+      hardwoods:
+        description: Hardwood forests (e.g. oak, hickory, elm, aspen)
+      hayland:
+        description: Hayland
+      horticultural_plants:
+        description: Horticultural plants (e.g. tulips)
+      industrial_areas:
+        description: Industrial areas
+      intermixed:
+        description: Intermixed hardwood and conifers
+      marshlands:
+        description: Marshlands (grass, sedges, rushes)
+      meadows:
+        description: Meadows (grasses, alfalfa, fescue, bromegrass, timothy)
+      mines_quarries:
+        description: Mines and quarries
+      mudflats:
+        description: Mudflats
+      oil_waste:
+        description: Oil waste areas
+      pastureland:
+        description: Pastureland (grasslands used for livestock grazing)
+      permanent_snow_or_ice:
+        description: Permanent snow or ice
+      rainforest:
+        description: Rainforest (evergreen forest receiving >406 cm annual rainfall)
+      rangeland:
+        description: Rangeland
+      roads_railroads:
+        description: Roads and railroads
+      rock:
+        description: Rock surfaces
+      row_crops:
+        description: Row crops
+      saline_seeps:
+        description: Saline seeps
+      salt_flats:
+        description: Salt flats
+      sand:
+        description: Sand areas
+      shrub_crops:
+        description: Shrub crops (blueberries, nursery ornamentals, filberts)
+      shrub_land:
+        description: Shrub land (e.g. mesquite, sage-brush, creosote bush, shrub oak, eucalyptus)
+      small_grains:
+        description: Small grains
+      successional_shrub_land:
+        description: Successional shrub land (tree saplings, hazels, sumacs, chokecherry, shrub dogwoods, blackberries)
+      swamp:
+        description: Swamp (permanent or semi-permanent water body dominated by woody plants)
+      tropical:
+        description: Tropical vegetation (e.g. mangrove, palms)
+      tundra:
+        description: Tundra (mosses, lichens)
+      vegetable_crops:
+        description: Vegetable crops
+      vine_crops:
+        description: Vine crops (grapes)
+
+
+  DrainageClassEnum:
+    description: Soil drainage classifications
+    permissible_values:
+      excessively_drained:
+        description: Excessively drained soil
+      moderately_well:
+        description: Moderately well drained soil
+      poorly:
+        description: Poorly drained soil
+      somewhat_poorly:
+        description: Somewhat poorly drained soil
+      very_poorly:
+        description: Very poorly drained soil
+      well:
+        description: Well drained soil
+
+  FAOClassEnum:
+    description: FAO soil classification system
+    permissible_values:
+      Acrisols:
+        description: Acrisols
+      Alisols:
+        description: Alisols
+      Andosols:
+        description: Andosols
+      Anthrosols:
+        description: Anthrosols
+      Arenosols:
+        description: Arenosols
+      Calcisols:
+        description: Calcisols
+      Cambisols:  
+        description: Cambisols
+      Chernozems:
+        description: Chernozems
+      Cryosols:
+        description: Cryosols
+      Durisols:
+        description: Durisols
+      Ferrasols:
+        description: Ferralsols
+      Fluvisols:
+        description: Fluvisols
+      Gleysols:
+        description: Gleysols
+      Gypsisols:
+        description: Gypsisols
+      Histosols:
+        description: Histosols
+      Kastanozems:
+        description: Kastanozems
+      Leptosols:
+        description: Leptosols
+      Lixisols:
+        description: Lixisols
+      Luvisols:
+        description: Luvisols
+      Nitosols:
+        description: Nitisols
+      Phaeozems:
+        description: Phaeozems
+      Planosols:
+        description: Planosols
+      Plinthosols:
+        description: Plinthosols
+      Podzols:
+        description: Podzols
+      Solonchaks:
+        description: Solonchaks
+      Solonetz:
+        description: Solonetz
+      Stagnosols:
+        description: Stagnosols
+      Technosols:
+        description: Technosols
+      Umbrisols:
+        description: Umbrisols
+      Vertisols:
+        description: Vertisols
+
   NEONDomainEnum:
     description: NEON ecological domains
     todos:
@@ -754,8 +991,6 @@ enums:
         description: Taiga domain
       pacific_tropical:
         description: Pacific Tropical domain
-
-
 
   NucleotideSequencingEnum:
     permissible_values:
@@ -1023,7 +1258,7 @@ enums:
       azenta:
         title: Azenta Life Sciences
 
-  projectstatus:
+  ProjectStatusEnum:
     permissible_values:
       STARTED:
       COMPLETED:
@@ -1031,6 +1266,120 @@ enums:
       EXTENDED:
       ACCEPTED:
       WITHDRAWN:
+
+  ProfilePositionEnum:
+    description: Soil profile positions
+    permissible_values:
+      backslope:
+        description: Backslope position
+        aliases: ["Backslope"]
+      footslope:
+        description: Footslope position
+        aliases: ["Footslope"]
+      shoulder:
+        description: Shoulder position
+        aliases: ["Shoulder"]
+      summit:
+        description: Summit position
+        aliases: ["Summit"]
+      toeslope:
+        description: Toeslope position
+        aliases: ["Toeslope"]
+
+  SedimentTypeEnum:
+    description: Types of sediment
+    permissible_values:
+      biogenous:
+        description: Biogenous sediment
+      cosmogenous:
+        description: Cosmogenous sediment
+      hydrogenous:
+        description: Hydrogenous sediment
+      lithogenous:
+        description: Lithogenous sediment
+
+  SoilHorizonEnum:
+    description: Soil horizon classifications
+    permissible_values:
+      a_horizon:
+        description: The surface horizon, also called topsoil. It has a defined soil structure, and is mostly made up of humus (decayed organic matter).
+        aliases: ["A_Horizon"]
+      b_horizon:
+        description: Also known as the subsoil. It is greatly composed of material illuviated (washed in from) layers above it. It is typically denser than the A horizon and has a clayey texture.
+        aliases: ["B_Horizon"]
+      c_horizon:
+        description: Also known as the substratum is unconsolidated material deepest in the pit and closest to the bedrock.
+        aliases: ["C_Horizon"]
+      e_horizon:
+        description: Used to refer to subsurface horizons that have undergone a significant loss of minerals, also known as Eluviation (or leaching).
+        aliases: ["E_Horizon"]
+      o_horizon:
+        description: The organic horizon. Typically at the top of the soil structure and is made up of mostly organic matter.
+        aliases: ["O_Horizon"]
+      permafrost:
+        description: Soil that continuously remains below 0 °C (32 °F) for two years or more.
+        aliases: ["Permafrost"]
+      r_layer:
+        description: Hard bedrock, which is usually the lowest layer. It is characterized by tightly bound and unbreakable materials.
+        aliases: ["R_Layer"]
+      m_horizon:
+        description: Mineral horizon
+        aliases: ["M_Horizon"]
+
+  TillageEnum:
+    description: Tillage methods
+    permissible_values:
+      Chisel:
+        description: Chisel tillage
+        aliases: ["Chisel"]
+      Cutting_Disc:
+        description: Cutting disc tillage
+        aliases: ["Cutting_Disc"]
+      Disc_Plough:
+        description: Disc plough tillage
+        aliases: ["Disc_Plough"]
+      Drill:
+        description: Drill tillage
+        aliases: ["Drill"]
+      Mouldboard:
+        description: Mouldboard tillage
+        aliases: ["Mouldboard"]
+      Ridge_Till:
+        description: Ridge till
+        aliases: ["Ridge_Till"]
+      Streip_Tillage:
+        description: Strip tillage
+        aliases: ["Streip_Tillage"]
+      Tined:
+        description: Tined tillage
+        aliases: ["Tined"]
+      Zonal_Tillage:
+        description: Zonal tillage
+        aliases: ["Zonal_Tillage"]
+
+  WindDirectionEnum:
+    description: Wind direction classifications
+    permissible_values:
+      north:
+        description: North wind direction
+      north_east:
+        description: Northeast wind direction
+        aliases: ["north east"]
+      east:
+        description: East wind direction
+      south_east:
+        description: Southeast wind direction
+        aliases: ["south east"]
+      south:
+        description: South wind direction
+      south_west:
+        description: Southwest wind direction
+        aliases: ["south west"]
+      west:
+        description: West wind direction
+      north_west:
+        description: Northwest wind direction
+        aliases: ["north west"]
   
   NexusRoleEnum:
     permissible_values:
@@ -1235,3 +1584,4 @@ enums:
         description: A metaproteomics analysis matched to a metagenome from the same biosample.
       in_silico_metagenome:
         description: A metaproteomics analysis matched to an in silico generated metagenome.
+      WITHDRAWN:

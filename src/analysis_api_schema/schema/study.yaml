@@ -17,11 +17,13 @@ default_range: string
 
 imports:
   - linkml:types
+  - slots
+  - enums
 
 
 classes:
 
-  study:
+  Study:
     attributes:
       id:
         identifier: true
@@ -61,7 +63,7 @@ classes:
       collaborating_institution: # could combine with ProcessingInstitutionEnum
         range: string
       project_status:
-        range: projectstatus
+        range: ProjectStatusEnum
       project_start:
         range: datetime
       project_end:
@@ -91,7 +93,7 @@ classes:
         required: true
         description: The role of the contributor in the study (e.g., data analysis, writing).
       person:
-        range: personValue
+        range: PersonValue
         required: true
         description: The person who contributed to the study.
   
@@ -107,3 +109,4 @@ classes:
       doi_provider:
         range: DoiProviderEnum
         description: The authority, or organization, the DOI is associated with.
+

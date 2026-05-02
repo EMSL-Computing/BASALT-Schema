@@ -8,10 +8,10 @@ description: |-
   enabling fast provenance queries without live recursive CTE traversal.
 
   Population: nightly refresh job using recursive CTE across:
-    - processingSampleLink (sample -> processed sample chains)
-    - dataProcessingActivity.parent_workflow_id (workflow chains)
-    - dataGenerationActivity (processed sample -> workflow link)
-    - processedData.workflow_id (workflow -> product link)
+    - ProcessingSampleLink (sample -> processed sample chains)
+    - DataProcessingActivity.parent_workflow_id (workflow chains)
+    - DataGenerationActivity (processed sample -> workflow link)
+    - ProcessedData.workflow_id (workflow -> product link)
 
   This file is imported by analysis_api_schema.yaml (import added in MR2).
 license: MIT
@@ -25,13 +25,13 @@ default_range: string
 imports:
   - linkml:types
 
-slots:
+slots: # not touching these for now
 
   ancestor_type:
     description: |-
       Class/table name of the ancestor node.
       Expected values: 'sample' | 'processedSample' |
-                       'dataProcessingActivity' | 'processedData'
+                       'DataProcessingActivity' | 'processedData'
     range: string
 
   descendant_type:
@@ -53,7 +53,7 @@ slots:
 
 classes:
 
-  linkage_cache:
+  LinkageCache:
     description: |-
       Pre-computed provenance closure table.
       Stores every (ancestor, descendant) pair across all chain types with depth.
@@ -64,7 +64,7 @@ classes:
           ancestor_id      UUID NOT NULL,
           descendant_id    UUID NOT NULL,
           ancestor_type    VARCHAR(64),    -- 'sample' | 'processedSample' |
-                                          --  'dataProcessingActivity' | 'processedData'
+                                          --  'DataProcessingActivity' | 'processedData'
           descendant_type  VARCHAR(64),
           depth            INTEGER NOT NULL,  -- 1 = direct parent
           path             TEXT,

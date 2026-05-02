@@ -23,6 +23,7 @@ default_range: string
 
 imports:
   - linkml:types
+  - slots
 
 classes:
   SiteMetadata:
@@ -31,7 +32,6 @@ classes:
     slots:
       - name
       - description
-      - type
       - latitude
       - longitude
     todos:
@@ -63,7 +63,6 @@ classes:
     slots:
       - name #should be inherited when Entity class is made
       - description #should be inherited when Entity class is made
-      - type #should be inherited when Entity class is made
       - project
       - emsl_activity
       - storage_condition
@@ -84,9 +83,6 @@ classes:
       id:
         identifier: true
         range: uuid
-      proposal_id:
-        description: The 5 digit project ID assigned to an EMSL user proposal/project
-        range: integer
       other_storage_condt:
       sampled_during:
         range: SamplingActivity
@@ -193,7 +189,6 @@ classes:
     slots:
       - name #will be inherited when Activity class is made
       - description
-      - type
       - project #do we need this here? where do we make the campaign, project, pi, etc associations?
       - emsl_activity
       - has_output #will be inherited when Activity class is made
@@ -211,10 +206,10 @@ classes:
       sample_name: # 60881_1_C2
         required: true
       growth_facil:
-        range: growthfacilityenum
+        range: GrowthFacilityEnum
       other_growth_facil:
       sample_store_temp:
-        range: samplestoretemp
+        range: SampleStoreTempEnum
       altitude_meters:
         range: double
       collection_date:
@@ -287,7 +282,6 @@ classes:
     slots:
       - name
       - description
-      - type
     slot_usage:
       has_output:
         range: SoilSample
@@ -296,15 +290,15 @@ classes:
         identifier: true
         range: SamplingActivity
       profile_position:
-        range: profilepositionenum
+        range: ProfilePositionEnum
       sediment_type:
-        range: sedimenttypeenum
+        range: SedimentTypeEnum
       soil_horizon:
-        range: soilhorizonenum
+        range: SoilHorizonEnum
       tillage:
-        range: tillageenum
+        range: TillageEnum
       wind_direction:
-        range: winddirectionenum
+        range: WindDirectionEnum
       agrochem_addition:
         range: string
       al_sat:
