@@ -177,21 +177,21 @@ slots:
     range: string
     required: true
 
-  # --- dataProcessingActivity: new chain-link slot ---
+  # --- DataProcessingActivity: new chain-link slot ---
   parent_workflow_id:
     description: |-
-      Self-referential FK to the preceding dataProcessingActivity in a chain.
+      Self-referential FK to the preceding DataProcessingActivity in a chain.
       NULL -> first (or standalone) step.
       Non-null -> this execution directly follows parent_workflow_id.
       Enables single-hop chaining queries; full traversal via linkage_cache.
 
-      DDL: ALTER TABLE "dataProcessingActivity"
+      DDL: ALTER TABLE "DataProcessingActivity"
              ADD COLUMN parent_workflow_id UUID
-             REFERENCES "dataProcessingActivity"(id);
-    range: dataProcessingActivity
+             REFERENCES "DataProcessingActivity"(id);
+    range: DataProcessingActivity
     required: false
 
-  # --- dataProcessingActivity: JSONB direction change ---
+  # --- DataProcessingActivity: JSONB direction change ---
   workflow_steps:
     description: |-
       Per-run workflow parameters. Previously annotated TODO JSONB in schema.
@@ -201,13 +201,13 @@ slots:
     range: string   # interim placeholder   will reference typed key-value class; schema TBD
     required: false
 
-  # --- dataGenerationActivity: temporal ordering ---
+  # --- DataGenerationActivity: temporal ordering ---
   sequence_order:
     description: |-
       Integer ordering within a temporal series for the same analyte.
       Lower = earlier in series. Use when acquisition_time alone is insufficient.
 
-      DDL: ALTER TABLE "dataGenerationActivity"
+      DDL: ALTER TABLE "DataGenerationActivity"
              ADD COLUMN sequence_order INTEGER;
     range: integer
     required: false
@@ -259,7 +259,7 @@ slots:
   # purchasedMaterial base slots
   # NOTE: The existing global slot `name` has description scoped to data products.
   # purchasedMaterial uses its own attribute for `name` and `description` (matching the
-  # pattern used by instrument, dataGenerationActivity, etc. in the living schema).
+  # pattern used by instrument, DataGenerationActivity, etc. in the living schema).
   # A future unification pass should promote these to a single global slot with
   # a generalised description.
   # ---------------------------------------------------------------------------
@@ -452,7 +452,7 @@ slots:
 
   setup_operator_id:
     description: Person who set up the plate
-    range: personValue
+    range: PersonValue
 
   setup_instrument:
     description: Automated liquid handler (e.g. "Hamilton_STAR") or "manual"
@@ -473,7 +473,7 @@ slots:
     inlined_as_list: true
 
   # ---------------------------------------------------------------------------
-  # PlatedataGenerationActivity / PlateProduct slots
+  # PlateDataGenerationActivity / PlateProduct slots
   # ---------------------------------------------------------------------------
   wavelength_nm:
     description: Measurement wavelength in nanometres (e.g. 590 Ecoplate, 610 AMP2 OD)
@@ -484,7 +484,7 @@ slots:
     description: |-
       Human-readable timepoint label for repeated-measurement series.
       Examples: "t=0", "t=24h", "t=48h".
-      Lives on concrete analysis/product subclasses, NOT on base dataGenerationActivity
+      Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivity
       (per core-planB decision).
     range: string
     required: true
@@ -616,7 +616,7 @@ slots:
 
   produced_by_ms_run:
     description: a reference to the data generation activity that produced instrument data
-    range: MassSpectrometryAnalysisActivity
+    range: MassSpectrometryDataGenerationActivity
 
   ms_raw_file_type:
     description: the filetype of the mass spectrometry instrument data
@@ -624,7 +624,7 @@ slots:
 
   results_from_ms_processing:
     description: a reference to the mass spec data processing activity that produced this data product
-    range: MassSpectrometrydataProcessingActivity
+    range: MassSpectrometryDataProcessingActivity
   
   analyte_category:
     description: omics type for easier search, optional
@@ -672,7 +672,7 @@ slots:
   # SLOTS
   # Reusable slots specific to X-ray analysis classes.
   # Shared slots (name, s3_key, version, acquisition_time, instrument_id, 
-  # protocol_url, etc.) are inherited via the dataGenerationActivity and dataProduct 
+  # protocol_url, etc.) are inherited via the DataGenerationActivity and dataProduct 
   # slot definitions in analysis_api_schema.
   # 
   # NOTE: Protocol detail slots (commented below) can be uncommented and expanded
@@ -750,7 +750,7 @@ slots:
 
 # Reusable slots specific to metagenomics classes.
 # Shared slots (name, s3_key, version, workflow_steps, etc.) are inherited via
-# the dataProduct / dataProcessingActivity slot definitions in analysis_api_schema.
+# the dataProduct / DataProcessingActivity slot definitions in analysis_api_schema.
 
   mg_workflow_step:
     description: Metagenomics workflow step that produced this product (e.g., MagsAnalysis)
@@ -763,7 +763,7 @@ slots:
     required: false
 
   provider_name:
-    range: controlledTermValue
+    range: ControlledTermValue
     description: Provider class (e.g., JGI, SeqCenter) using ontology terms where possible
 
   raw_fasta_url:

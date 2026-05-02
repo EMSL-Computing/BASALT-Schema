@@ -15,7 +15,7 @@ imports:
   - slots
 
 classes:
-  timestampValue:
+  TimestampValue:
     slots:
       - description
     attributes:
@@ -27,7 +27,7 @@ classes:
       has_raw_value:
         range: string
 
-  textValue:
+  TextValue:
     slots:
       - description
     attributes:
@@ -39,7 +39,7 @@ classes:
       has_raw_value:
         range: string
 
-  softwareControlledTermValue:
+  SoftwareControlledTermValue:
     slots:
       - name
       - description
@@ -51,7 +51,7 @@ classes:
       has_raw_value:
         range: string
 
-  controlledTermValue:
+  ControlledTermValue:
     slots:
       - description
     attributes:
@@ -63,7 +63,7 @@ classes:
       has_raw_value:
         range: string
 
-  personValue:
+  PersonValue:
     slots:
       - email
     attributes:
@@ -85,11 +85,11 @@ classes:
       websites:
         range: string # TODO ARRAY
     unique_keys:
-      personValue_email_key:
+      PersonValue_email_key:
         unique_key_slots:
           - email
 
-  quantityValue:
+  QuantityValue:
     slots:
       - description
     description: A quantity value with numeric value and optional unit
@@ -109,7 +109,7 @@ classes:
         range: numeric
       has_raw_value:
 
-  conditioningValue:
+  ConditioningValue:
     attributes:
       id:
         identifier: true

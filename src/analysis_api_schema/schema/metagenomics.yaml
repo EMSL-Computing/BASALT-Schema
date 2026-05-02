@@ -12,8 +12,8 @@ description: |
                   ├── Metagenomics_BinningProduct
                   └── Metagenomics_GenePhylogenyProduct
 
-    dataProcessingActivity (abstract)
-      └── MetagenomicsdataProcessingActivity
+    DataProcessingActivity (abstract)
+      └── MetagenomicsDataProcessingActivity
 
   Each product class carries only its type-specific slots; shared S3/file slots
   are inherited from dataProduct via processedData via MetagenomicsProduct.
@@ -38,7 +38,7 @@ classes:
   # need to be repeated on each concrete class.
   # ============================================================================
   MetagenomicsProduct:
-    is_a: processedData
+    is_a: ProcessedData
     abstract: true
     description: |-
       Abstract base for all metagenomics data products.
@@ -96,18 +96,18 @@ classes:
 
 
   # ============================================================================
-  # (NEW) MetagenomicsdataProcessingActivity
-  # Concrete subclass of dataProcessingActivity (now abstract in MR1).
+  # (NEW) MetagenomicsDataProcessingActivity
+  # Concrete subclass of DataProcessingActivity (now abstract in MR1).
   # Carries no additional unique slots beyond the parent; represents a typed
-  # workflow record so that dataProcessingActivity can remain abstract.
+  # workflow record so that DataProcessingActivity can remain abstract.
   # ============================================================================
-  MetagenomicsdataProcessingActivity:
-    is_a: dataProcessingActivity
+  MetagenomicsDataProcessingActivity:
+    is_a: DataProcessingActivity
     description: |-
-      Concrete metagenomics workflow run. Inherits all dataProcessingActivity
+      Concrete metagenomics workflow run. Inherits all DataProcessingActivity
       slots including parent_workflow_id (chain link) and workflow_steps
       (key-value, schema TBD). Specific workflow step type is captured via the
       inherited type attribute (string); expected values: 
       'metagenomics_annotation', 'metagenomics_binning', 'metagenomics_phylogeny'.
-    # No additional type-specific slots beyond dataProcessingActivity.
+    # No additional type-specific slots beyond DataProcessingActivity.
 

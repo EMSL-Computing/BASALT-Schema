@@ -18,11 +18,12 @@ default_range: string
 imports:
   - linkml:types
   - slots
+  - enums
 
 
 classes:
 
-  study:
+  Study:
     attributes:
       id:
         identifier: true
@@ -38,7 +39,7 @@ classes:
       principal_investigator:
       collaborating_institution:
       project_status:
-        range: projectstatus
+        range: ProjectStatusEnum
       project_start:
         # range: date
         range: datetime
@@ -50,13 +51,3 @@ classes:
       project_id:
         # range: project_id # like 60880
         required: true
-
-enums:
-  projectstatus:
-    permissible_values:
-      STARTED:
-      COMPLETED:
-      CLOSED:
-      EXTENDED:
-      ACCEPTED:
-      WITHDRAWN:

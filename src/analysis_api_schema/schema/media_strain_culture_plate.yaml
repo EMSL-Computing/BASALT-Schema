@@ -27,7 +27,7 @@ classes:
   # ============================================================================
   # purchasedMaterial   abstract base
   # ============================================================================
-  purchasedMaterial:
+  PurchasedMaterial:
     abstract: true
     description: |-
       [NEW ABSTRACT CLASS] Lightweight base for non-sample physical lab materials
@@ -47,7 +47,7 @@ classes:
   # Strain   concrete purchasedMaterial
   # ============================================================================
   Strain:
-    is_a: purchasedMaterial
+    is_a: PurchasedMaterial
     description: |-
       A microbial strain entity.  Strains are reference data   they are stable
       identities that get referenced by culture growth activities.
@@ -72,7 +72,7 @@ classes:
   # ============================================================================
   # labProcessingActivity   new abstract parent of sampleProcessing
   # ============================================================================
-  labProcessingActivity:
+  LabProcessingActivity:
     abstract: true
     description: |-
       [NEW ABSTRACT CLASS] Higher-level abstract base for any activity that
@@ -101,7 +101,7 @@ classes:
   # MediaPreparation   concrete sampleProcessing (replaces MediaCreation)
   # ============================================================================
   MediaPreparation:
-    is_a: sampleProcessing
+    is_a: SampleProcessing
     description: |-
       Activity that prepares a batch of growth media.
       Replaces the former labPreparationActivity + MediaCreation pattern.
@@ -138,7 +138,7 @@ classes:
   # CultureGrowth   abstract sampleProcessing subclass
   # ============================================================================
   CultureGrowth:
-    is_a: sampleProcessing
+    is_a: SampleProcessing
     abstract: true
     mixins:
       - HasIncubationConditions
@@ -242,7 +242,7 @@ classes:
   # PlateSetupActivity   abstract sampleProcessing subclass
   # ============================================================================
   PlateSetupActivity:
-    is_a: sampleProcessing
+    is_a: SampleProcessing
     abstract: true
     mixins:
       - HasIncubationConditions
@@ -310,50 +310,50 @@ classes:
     # NO UsesMedia mixin — key structural difference from AMP2
     # well_metadata array contains EcoplateWellMetadata instances
 
-  PlatedataGenerationActivity:
-    is_a: dataGenerationActivity
+  PlateDataGenerationActivity:
+    is_a: DataGenerationActivity
     abstract: true
     description: |-
       Abstract base for plate measurement activities.
       Adds timepoint_label for repeated-measurement series (per core-planB
       decision to put timepoint_label on concrete subclasses, not on base
-      dataGenerationActivity).
+      DataGenerationActivity).
 
-      v1 origin: plate-general.yaml PlatedataGenerationActivity
+      v1 origin: plate-general.yaml PlateDataGenerationActivity
     slots:
       - timepoint_label
-    # Inherited from dataGenerationActivity: id, analyte_id,
+    # Inherited from DataGenerationActivity: id, analyte_id,
     #   name, acquisition_time, instrument_id, protocol_url,
     #   instrument_operator_id, sequence_order, version
 
   # ============================================================================
-  # AMP2dataGenerationActivity   concrete PlatedataGenerationActivity
+  # AMP2DataGenerationActivity   concrete PlateDataGenerationActivity
   # ============================================================================
-  AMP2dataGenerationActivity:
-    is_a: PlatedataGenerationActivity
+  AMP2DataGenerationActivity:
+    is_a: PlateDataGenerationActivity
     description: |-
       AMP2 plate measurement (OD, fluorescence, flow cytometry).
       analyte_id -> processedSample(type='amp2_96well_plate')
 
-      Chained via dataProcessingActivity.parent_workflow_id to track
+      Chained via DataProcessingActivity.parent_workflow_id to track
       multi-timepoint series on the same plate.
 
-      v1 origin: plate-general.yaml AMP2dataGenerationActivity
+      v1 origin: plate-general.yaml AMP2DataGenerationActivity
     slots:
       - measurement_type
       - wavelength_nm
 
   # ============================================================================
-  # EcoplatedataGenerationActivity   concrete PlatedataGenerationActivity
+  # EcoplateDataGenerationActivity   concrete PlateDataGenerationActivity
   # ============================================================================
-  EcoplatedataGenerationActivity:
-    is_a: PlatedataGenerationActivity
+  EcoplateDataGenerationActivity:
+    is_a: PlateDataGenerationActivity
     description: |-
       Ecoplate absorbance measurement at a single timepoint.
       analyte_id -> processedSample(type='ecoplate_plate')
       wavelength_nm typically 590 for Biolog EcoPlates.
 
-      v1 origin: plate-general.yaml EcoplatedataGenerationActivity
+      v1 origin: plate-general.yaml EcoplateDataGenerationActivity
     slots:
       - wavelength_nm
 

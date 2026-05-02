@@ -7,7 +7,7 @@ description: |
   Classes defined in this file:
 
   Relevant to data generation:
-  - MassSpectrometryAnalysisActivity
+  - MassSpectrometryDataGenerationActivity
   - MassSpectrometryConfiguration
   - ChromatographyConfiguration
 
@@ -15,7 +15,7 @@ description: |
   - MassSpectrometryInstrumentData
 
   Relevant to data processing:
-  - MassSpectrometrydataProcessingActivity
+  - MassSpectrometryDataProcessingActivity
   - MassSpectrometryStandardRun
 
   Processed data products:
@@ -36,20 +36,13 @@ imports:
   - analysis_api_schema
   - slots
 
-# Reusable slots specific to mass spectrometry classes.
-# Shared slots (name, s3_key, version, workflow_steps, etc.) are inherited via
-# the dataProduct / dataProcessingActivity slot definitions in analysis_api_schema.
-slots:
-  
-
-
 classes:
 
   # New - subclass of instrumentData, with mass spec specific slots
   # ms_raw_file_type represents the file extension (.raw, .d)
   # collection_mode states whether the data file is in centroid or profile mode
   MassSpectrometryInstrumentData:
-    is_a: instrumentData
+    is_a: InstrumentData
     description: >- 
       Raw data files output from a mass spectrometry instrument.
     slots:
@@ -64,7 +57,7 @@ classes:
   # need to be repeated on each concrete class.
   # ============================================================================
   MassSpectrometryDataProduct:
-    is_a: processedData
+    is_a: ProcessedData
     abstract: true
     description: |-
       Abstract base for all mass spectrometry data products.
@@ -88,11 +81,11 @@ classes:
     description: Abstract parent class for processed metaproteomics data. Details and subclasses TBD.
 
   # ============================================================================
-  # (NEW) MassSpectrometryAnalysisActivity
+  # (NEW) MassSpectrometryDataGenerationActivity
   # New class
   # ============================================================================
-  MassSpectrometryAnalysisActivity:
-    is_a: dataGenerationActivity
+  MassSpectrometryDataGenerationActivity:
+    is_a: DataGenerationActivity
     description: A record of the mass spectrometry run that generates a raw data product.
     slots:
       - uses_ms_configuration # required
@@ -144,15 +137,15 @@ classes:
 
 
   # ============================================================================
-  # (NEW) MassSpectrometrydataProcessingActivity
-  # Concrete subclass of dataProcessingActivity (now abstract in MR1).
+  # (NEW) MassSpectrometryDataProcessingActivity
+  # Concrete subclass of DataProcessingActivity (now abstract in MR1).
   # Carries no additional unique slots beyond the parent; represents a typed
-  # workflow record so that dataProcessingActivity can remain abstract.
+  # workflow record so that DataProcessingActivity can remain abstract.
   # ============================================================================
-  MassSpectrometrydataProcessingActivity:
-    is_a: dataProcessingActivity
+  MassSpectrometryDataProcessingActivity:
+    is_a: DataProcessingActivity
     description: |-
-      Concrete mass spectrometry workflow run. Inherits all dataProcessingActivity
+      Concrete mass spectrometry workflow run. Inherits all DataProcessingActivity
       slots including used_software and version.
     slots:
       - uses_calibration
@@ -174,7 +167,7 @@ classes:
         range: CalibrationTargetEnum
       calibration_standard:
         description: The reference standard used for calibration
-        range: purchasedMaterial
+        range: PurchasedMaterial
       calibration_data:
         description: Reference to the raw instrument data file used for calibration
         range: MassSpectrometryInstrumentData

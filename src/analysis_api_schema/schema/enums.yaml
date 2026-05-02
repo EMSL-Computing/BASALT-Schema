@@ -16,7 +16,6 @@ imports:
   - linkml:types
 
 enums:
-# make all enum names CamelCase
 
   SampleBaseType:
     description: Base types for sample entities
@@ -769,3 +768,12 @@ enums:
       north_west:
         description: Northwest wind direction
         aliases: ["north west"]
+
+  ProjectStatusEnum:
+    permissible_values:
+      STARTED:
+      COMPLETED:
+      CLOSED:
+      EXTENDED:
+      ACCEPTED:
+      WITHDRAWN:

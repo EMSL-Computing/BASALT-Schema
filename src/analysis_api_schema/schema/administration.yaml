@@ -18,7 +18,7 @@ imports:
   - linkml:types
 
 classes:
-  changelog:
+  Changelog:
     attributes:
       version:
         identifier: true

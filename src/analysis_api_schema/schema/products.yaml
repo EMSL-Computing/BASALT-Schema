@@ -20,28 +20,28 @@ imports:
 classes:
 
   BulkDensityProduct:
-    is_a: processedData
+    is_a: ProcessedData
     slots:
       - measure_type
     attributes:
       bulk_density_id:
-        range: quantityValue
+        range: QuantityValue
       flag:
         range: ProcessedDataFlag
 
   ElementalAnalysisProduct:
-    is_a: processedData
+    is_a: ProcessedData
     slots:
       - measure_type
     attributes:
       total_carbon_id:
-        range: quantityValue
+        range: QuantityValue
       total_nitrogen_id:
-        range: quantityValue
+        range: QuantityValue
       total_kjeldahl_nitrogen_id:
-        range: quantityValue
+        range: QuantityValue
       total_sulfur_id:
-        range: quantityValue
+        range: QuantityValue
       flag_total_carbon:
         range: ProcessedDataFlag
       flag_total_nitrogen:
@@ -52,28 +52,28 @@ classes:
         range: ProcessedDataFlag
 
   EnzymeProduct:
-    is_a: processedData
+    is_a: ProcessedData
     slots:
       - measure_type
     attributes:
       beta_glucosidase_ug_pnp_per_g_per_h_id:
-        range: quantityValue
+        range: QuantityValue
       flag:
         range: ProcessedDataFlag
 
   GWCMoistureProduct:
-    is_a: processedData
+    is_a: ProcessedData
     slots:
       - measure_type
     attributes:
       gwc_percent_id:
-        range: quantityValue
+        range: QuantityValue
       flag:
         range: ProcessedDataFlag
 
   
   HydraulicPropertiesProduct:
-    is_a: processedData
+    is_a: ProcessedData
     description: >-
       Soil hydraulic parameters derived from HYPROP evaporation-experiment data. One row per core section; the four
       attributes are the four VGM model parameters.  Proposal_ID, sampling_set,
@@ -106,34 +106,34 @@ classes:
         range: ProcessedDataFlag
       
   IonsAnalysisProduct:
-    is_a: processedData
+    is_a: ProcessedData
     slots:
       - measure_type
     attributes:
       sulfate_id:
-        range: quantityValue
+        range: QuantityValue
       boron_id:
-        range: quantityValue
+        range: QuantityValue
       zinc_id:
-        range: quantityValue
+        range: QuantityValue
       manganate_id:
-        range: quantityValue
+        range: QuantityValue
       copper_id:
-        range: quantityValue
+        range: QuantityValue
       iron_id:
-        range: quantityValue
+        range: QuantityValue
       calcium_id:
-        range: quantityValue
+        range: QuantityValue
       magnesium_id:
-        range: quantityValue
+        range: QuantityValue
       sodium_id:
-        range: quantityValue
+        range: QuantityValue
       potassium_id:
-        range: quantityValue
+        range: QuantityValue
       total_bases_id:
-        range: quantityValue
+        range: QuantityValue
       cation_exchange_capacity_id:
-        range: quantityValue
+        range: QuantityValue
       flag_sulfate:
         range: ProcessedDataFlag
       flag_boron:
@@ -166,13 +166,13 @@ classes:
     attributes:
       id:
         identifier: true
-        range: processedData
+        range: ProcessedData
       total_organic_carbon_id:
-        range: quantityValue
+        range: QuantityValue
       total_organic_carbon_avg:
         range: double
       total_nitrogen_id:
-        range: quantityValue
+        range: QuantityValue
       total_nitrogen_avg:
         range: double
       flag_toc:
@@ -185,7 +185,7 @@ classes:
         range: ProcessedDataFlag
 
   MetaGenomicsProduct:
-    is_a: processedData
+    is_a: ProcessedData
     slots:
     attributes:
       input_to_step:
@@ -195,17 +195,17 @@ classes:
         required: true
 
   MicrobialBiomassProduct:
-    is_a: processedData
+    is_a: ProcessedData
     slots:
       - measure_type
       - replicate
     attributes:
       mbc_id:
-        range: quantityValue
+        range: QuantityValue
       mbc_avg:
         range: double
       mbn_id:
-        range: quantityValue
+        range: QuantityValue
       mbn_avg:
         range: double
       flag_mbc:
@@ -218,17 +218,17 @@ classes:
         range: ProcessedDataFlag
 
   NitrogenAnalysisProduct:
-    is_a: processedData
+    is_a: ProcessedData
     slots:
       - measure_type
       - replicate
     attributes:
       no3_n_id:
-        range: quantityValue
+        range: QuantityValue
       no3_n_avg:
         range: double
       nh4_n_id:
-        range: quantityValue
+        range: QuantityValue
       nh4_n_avg:
         range: double
       flag_no3n:
@@ -241,7 +241,7 @@ classes:
         range: ProcessedDataFlag
 
   PhosphorusAnalysisProduct:
-    is_a: processedData
+    is_a: ProcessedData
     slots:
       - measure_type
       - replicate
@@ -249,7 +249,7 @@ classes:
       extraction_method:
         range: string
       phosphorus_id:
-        range: quantityValue
+        range: QuantityValue
       phosphorus_avg:
         range: double
       flag:
@@ -258,7 +258,7 @@ classes:
         range: ProcessedDataFlag
 
   RespirationProduct:
-    is_a: processedData
+    is_a: ProcessedData
     slots:
       - measure_type
     attributes:
@@ -269,21 +269,21 @@ classes:
         range: ProcessedDataFlag
 
   TextureProduct:
-    is_a: processedData
+    is_a: ProcessedData
     slots:
       - measure_type
     attributes:
       sand_pct_id:
-        range: quantityValue
+        range: QuantityValue
       silt_pct_id:
-        range: quantityValue
+        range: QuantityValue
       clay_pct_id:
-        range: quantityValue
+        range: QuantityValue
       flag:
         range: ProcessedDataFlag
 
   TomographyProduct:
-    is_a: processedData
+    is_a: ProcessedData
     slots:
       - measure_type
     attributes:
@@ -336,13 +336,13 @@ classes:
     attributes:
       id:
         identifier: true
-        range: processedData
+        range: ProcessedData
       total_organic_carbon_id:
-        range: quantityValue
+        range: QuantityValue
       total_organic_carbon_avg:
         range: double
       total_nitrogen_id:
-        range: quantityValue
+        range: QuantityValue
       total_nitrogen_avg:
         range: double
       flag_toc:
@@ -355,7 +355,7 @@ classes:
         range: ProcessedDataFlag
 
   pHProduct:
-    is_a: processedData
+    is_a: ProcessedData
     slots:
       - measure_type
     attributes:
@@ -365,11 +365,11 @@ classes:
         range: ProcessedDataFlag
 
   XRayDataProduct:
-    is_a: processedData
+    is_a: ProcessedData
     abstract: true
     description: |-
       Abstract base class for X-ray analytical data products.
-      Inherits S3 storage metadata and sample linkage from dataProduct via processedData.
+      Inherits S3 storage metadata and sample linkage from dataProduct via ProcessedData.
       
       Concrete subclasses:
         - XRFElementalProduct: elemental concentrations (one row per sample)
@@ -381,7 +381,7 @@ classes:
             XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
             XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
         - workflow_id is NULL for direct instrument output (XRF typical)
-        - workflow_id links to dataProcessingActivity for computational processing (XRD Rietveld) 
+        - workflow_id links to DataProcessingActivity for computational processing (XRD Rietveld) 
 
 
   # ---------------------------------------------------------------------------
@@ -568,7 +568,7 @@ classes:
       Relationship to core tables:
         - id: FK -> processedData.id (1:1 linkage)
         - processedData.type = 'XRDPhaseProduct'
-        - processedData.workflow_id -> dataProcessingActivity if Rietveld refinement
+        - processedData.workflow_id -> DataProcessingActivity if Rietveld refinement
           is computational; NULL if manual/semi-quantitative
         - processedData.summary_metrics = {"quartz_percent":42, "albite_percent":18, ...}
         - processedData.s3_key = diffractogram .xy, .xrdml, or .raw file in MinIO
@@ -585,8 +585,8 @@ classes:
         - Semi-quantitative (manual, less precise)
       
       Computational processing workflow (if applicable):
-        XRDdataGenerationActivity acquires raw diffractogram ->
-        dataProcessingActivity (type='xrd_rietveld_refinement') processes with
+        XRDDataGenerationActivity acquires raw diffractogram ->
+        DataProcessingActivity (type='xrd_rietveld_refinement') processes with
         HighScore Plus, GSAS-II, or FullProf ->
         XRDPhaseProduct (workflow_id points to refinement WEA)
         
