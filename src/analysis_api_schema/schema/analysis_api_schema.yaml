@@ -32,6 +32,7 @@ imports:
   - methods
   - products
   - sample_classes
+  - sample_processing
   - slots
   - study
   - value_tables

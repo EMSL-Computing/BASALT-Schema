@@ -597,7 +597,6 @@ enums:
     description: bundling common terms for different omics types by biomolecule being analyzed
     permissible_values:
       dna:
-        text: DNA
         aliases:
         - genome
         - genomics
@@ -605,7 +604,6 @@ enums:
         - metagenomics
         - metaG
       rna:
-        text: RNA
         aliases:
         - transcriptome
         - transcriptomics
@@ -613,7 +611,6 @@ enums:
         - metatranscriptomics
         - metaT
       protein:
-        text: Protein
         aliases:
         - proteins
         - proteome
@@ -622,23 +619,19 @@ enums:
         - metaproteomics
         - metaP
       metabolite:
-        text: Metabolite
         aliases:
         - metabolites
         - metabolome
         - metabolomics
       lipid:
-        text: Lipid
         aliases:
         - lipids
         - lipidome
         - lipidomics
       natural_organic_matter:
-        text: Natural Organic Matter
         aliases:
         - NOM
       unknown:
-        text: Unknown
 
   MediaTypeEnum:
     description: |-

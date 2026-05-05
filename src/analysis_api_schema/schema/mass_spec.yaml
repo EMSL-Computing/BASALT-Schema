@@ -140,6 +140,8 @@ classes:
     description: Configuration and settings for a chromatography run.
     slots:
       - column
+      - column_dimensions
+      - column_manufacturer
       - chromatography_type
       - mobile_phases
       - stationary_phase

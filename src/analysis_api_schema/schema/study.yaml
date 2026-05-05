@@ -58,7 +58,7 @@ classes:
         multivalued: true
         description: Links to a record of a person and their roles for this study.
       principal_investigator:
-        range: personValue
+        range: PersonValue
         required: true
       collaborating_institution: # could combine with ProcessingInstitutionEnum
         range: string

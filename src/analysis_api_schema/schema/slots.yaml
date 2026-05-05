@@ -20,6 +20,10 @@ slots:
   # id: is left as an attribute with range: uuid and identifier: true
   # everywhere, for now, for (some kind of database reason).
 
+  acquisition_strategy:
+    range: MassSpectrometryAcquisitionStrategyEnum
+    description: The acquisition strategy used in the mass spectrometry run.
+
   additional_information:
     range: string
     description: Additional information pertaining to these data, including SP Project ID and Taxon OID
@@ -86,15 +90,22 @@ slots:
 
   chromatography_type:
     description: Type of chromatography used in the method (e.g., GC, LC)
-    range: ChromatographyTypeEnum
+    range: ChromatographyCategoryEnum
     required: true
 
   collection_mode:
-    range: MSModeEnum
+    range: MassSpectrumCollectionModeEnum
 
   column:
     range: string
-    required: true
+
+  column_dimensions:
+    range: string
+    description: Dimensions of the chromatography column used in the process.
+
+  column_manufacturer:
+    range: string
+    description: Name of the institution that manufactured the chromatography column.
 
   commercial_media_catalog:
     description: |-
@@ -169,6 +180,14 @@ slots:
   filesize:
     range: integer
 
+  flow_rate_ul_min:
+    range: float
+    description: Flow rate of the mobile phase, in microliters per minute.
+
+  fragmentation:
+    description: fragmentation technique used in the mass spectrometry run
+    range: FragmentationEnum
+
   gene_family:
     description: Gene family or marker used for the phylogeny (e.g., 16S, ITS)
     range: string
@@ -198,13 +217,17 @@ slots:
     range: string
     required: true
 
+  injection_volume_ul:
+    range: float
+    todos: description - not sure what this is referencing
+
   inspection_method:
     description: Method used to inspect or verify purity (visual, sequencing, etc.)
     range: string
 
   ionization:
     description: Type of ionization used in the mass spectrometry method
-    range: IonizationEnum
+    range: IonizationSourceEnum
     required: true
 
   isolation_window:
@@ -221,6 +244,14 @@ slots:
     range: string
     required: false
 
+  lims_protocol_instance_id:
+    description: Reference to the L7 protocol_instance that corresponds to this sample processing step, if applicable.
+    range: integer
+
+  lims_task_instance_id:          
+    range: integer
+    description: L7 task_instance_id for the activity, if known.
+
   location:
     range: string
     required: true
@@ -235,8 +266,13 @@ slots:
     range: string
     required: true
 
-  mass_range:
-    range: double
+  mass_range_max:
+    range: float
+    description: The maximum mass observable by this run (in m/z).
+
+  mass_range_min:
+    range: float
+    description: The minimum mass observable by this run (in m/z).
 
   md5checksum:
     range: string
@@ -282,6 +318,10 @@ slots:
       Purpose/context of the media preparation.
       Examples: strain_purity, stock_culture, pre_culture, rich_media.
     range: MediaTypeEnum
+
+  metaproteomics_analysis_category:
+    range: MetaproteomicsAnalysisCategoryEnum
+    description: The category of metaproteomics analysis being performed, if applicable.
 
   method:
     range: string
@@ -404,7 +444,7 @@ slots:
     range: integer
 
   resolution:
-    range: double
+    range: MassSpecResolutionEnum
     required: true
 
   results_from_ms_processing:
@@ -585,6 +625,12 @@ slots:
     description: Points to a record of the configuration used for the mass spectrometry run.
     range: MassSpectrometryConfiguration
     required: true
+
+  uses_raw_ms_data:
+    range: MassSpectrometryInstrumentData
+    description: >-
+      The raw data file, output by a mass spectrometer, that was analyzed in 
+      this data processing workflow run.
 
   version:
     description: String indicating the version of the software or protocol

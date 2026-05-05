@@ -166,17 +166,6 @@ enums:
         text: solubilizing_agent
 
 slots:
-  lims_protocol_instance_id:
-    description: Reference to the L7 protocol_instance that corresponds to this sample processing step, if applicable.
-    range: integer
-  
-  duration_min:
-    description: Time in minutes taken to complete the activity.
-    range: float
-  
-  temperature_c:
-    description: Temperature in Celsius at which the activity was performed.
-    range: float
   
   substances_used:
     range: PortionOfSubstance
@@ -197,17 +186,17 @@ slots:
     description: The concentration of the sample or analyte in the processedSample resulting from this activity, in milligrams per milliliter.
 
 classes:
-  todos: revisit sampleProcessing vs. Methods
+  # revisit sampleProcessing vs. Methods
 
   ChemicalConversionProcess: 
-    is_a: sampleProcessing 
+    is_a: SampleProcessing 
     description: >-
       A chemical conversion process used in sample preparation. A process that 
       results in the interconversion of chemical species by a reaction to 
       transform the reagents into products.
     slots:
       - duration_min
-      - temperature_c
+      - temperature_celsius
       - substances_used
     attributes:
       chemical_conversion_category:
@@ -224,7 +213,7 @@ classes:
         description: Chemical labeling strategy applied in this process (e.g., TMT).
 
   Extraction:
-    is_a: sampleProcessing 
+    is_a: SampleProcessing 
     description: >-
       The removal and isolation of a desired analyte from other material 
       in a sample.
@@ -233,7 +222,7 @@ classes:
       - starting_mass_mg
     attributes:
       extraction_target:
-        range: analytecategoryenum
+        range: AnalyteCategoryEnum
         multivalued: true
         description: The target analyte(s) or compound class(es) for the extraction process.
       extraction_method:
@@ -241,7 +230,7 @@ classes:
         description: Named extraction method applied (e.g., MPLEx, bead beating, TCA/Acetone).
       
   FractionationProcess:
-    is_a: sampleProcessing
+    is_a: SampleProcessing
     description: >
       A fractionation process (e.g., off-line high pH fractionation, SCX, etc.) that splits
       an input sample into multiple fractions for downstream LC-MS/MS.
@@ -249,7 +238,7 @@ classes:
       - lims_protocol_instance_id
       
   NormalizationProcess:
-    is_a: sampleProcessing
+    is_a: SampleProcessing
     description: >-
       A process that adjusts sample amounts (e.g., protein mass or volume)
       to a common level across samples, prior to downstream processing.
@@ -269,7 +258,7 @@ classes:
           in microliters, if appropriate. Otherwise fill out target_mass_mg.
 
   PoolingProcess:
-    is_a: sampleProcessing
+    is_a: SampleProcessing
     description: >-
       A laboratory pooling process that physically mixes multiple input samples
       into a single pooled processed sample for downstream analysis.
@@ -302,7 +291,7 @@ classes:
           per milliliter.
 
   ProteinQuantification:
-    is_a: sampleProcessing
+    is_a: SampleProcessing
     description: >-
       A protein quantification assay (e.g., Coomassie or BCA) performed on a sample
       to determine protein concentration prior to downstream processing.
@@ -316,14 +305,14 @@ classes:
         description: The type of protein assay (Coomassie, BCA, etc.).
 
   ResuspensionProcess:
-    is_a: sampleProcessing
+    is_a: SampleProcessing
     description: >-
       Resuspension of an analyte (e.g., drying and resolubilizing peptides in LC buffer).
     slots:
       - lims_protocol_instance_id
 
   SolidPhaseExtractionProcess:
-    is_a: sampleProcessing
+    is_a: SampleProcessing
     description: >-
       A solid phase extraction (SPE) step (e.g., C18 desalting) performed as sample preparation.
     slots:
@@ -331,7 +320,7 @@ classes:
       - uses_chromatography
       
   SubSamplingProcess:
-    is_a: sampleProcessing
+    is_a: SampleProcessing
     description: >-
       A laboratory subsampling process that takes a portion of an existing 
       sample and produces a derived (processed) sample for downstream 
