@@ -101,7 +101,7 @@ enums:
         text: other
         description: Other labeling method not otherwise specified.
   
-    NormalizationMethodEnum:
+  NormalizationMethodEnum:
     description: The strategy used to normalize sample amounts or intensities.
     permissible_values:
       equal_mass:

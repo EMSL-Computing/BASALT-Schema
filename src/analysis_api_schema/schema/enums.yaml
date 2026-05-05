@@ -564,19 +564,19 @@ enums:
         text: negative
 
   ChromatographyCategoryEnum:
-      permissible_values:
-        liquid_chromatography:
-          text: liquid_chromatography
-          aliases:
-          - LC
-        gas_chromatography:
-          text: gas_chromatography
-          aliases:
-          - GC
-        solid_phase_extraction:
-          text: solid_phase_extraction
-          aliases:
-          - SPE
+    permissible_values:
+      liquid_chromatography:
+        text: liquid_chromatography
+        aliases:
+        - LC
+      gas_chromatography:
+        text: gas_chromatography
+        aliases:
+        - GC
+      solid_phase_extraction:
+        text: solid_phase_extraction
+        aliases:
+        - SPE
 
   MSRawFileTypeEnum:
     permissible_values:
@@ -788,8 +788,6 @@ enums:
 
   LandUseEnum:
     description: Land use classifications
-    todos:
-      - move this to the enum.yaml
     permissible_values:
       badlands:
         description: Badlands
@@ -946,51 +944,50 @@ enums:
   NEONDomainEnum:
     description: NEON ecological domains
     todos:
-      - move this to the enum.yaml
       - the descriptions should be the titles
     permissible_values:
       northeast:
-        description: Northeast domain
+        title: Northeast domain
       mid_atlantic:
-        description: Mid-Atlantic domain
+        title: Mid-Atlantic domain
       southeast:
-        description: Southeast domain
+        title: Southeast domain
       atlantic_neotropical:
-        description: Atlantic Neotropical domain
+        title: Atlantic Neotropical domain
       great_lakes:
-        description: Great Lakes domain
+        title: Great Lakes domain
       prairie_peninsula:
-        description: Prairie Peninsula domain
+        title: Prairie Peninsula domain
       appalachians_and_cumberland_plateau:
-        description: Appalachians and Cumberland Plateau domain
+        title: Appalachians and Cumberland Plateau domain
       ozarks_complex:
-        description: Ozarks Complex domain
+        title: Ozarks Complex domain
       northern_plains:
-        description: Northern Plains domain
+        title: Northern Plains domain
       central_plains:
-        description: Central Plains domain
+        title: Central Plains domain
       southern_plains:
-        description: Southern Plains domain
+        title: Southern Plains domain
       desert_southwest:
-        description: Desert Southwest domain
+        title: Desert Southwest domain
       northern_rockies:
-        description: Northern Rockies domain
+        title: Northern Rockies domain
       southern_rockies_and_colorado_plateau:
-        description: Southern Rockies and Colorado Plateau domain
+        title: Southern Rockies and Colorado Plateau domain
       great_basin:
-        description: Great Basin domain
+        title: Great Basin domain
       sierra_nevada:
-        description: Sierra Nevada domain
+        title: Sierra Nevada domain
       pacific_northwest:
-        description: Pacific Northwest domain
+        title: Pacific Northwest domain
       pacific_southwest:
-        description: Pacific Southwest domain
+        title: Pacific Southwest domain
       tundra:
-        description: Tundra domain
+        title: Tundra domain
       taiga:
-        description: Taiga domain
+        title: Taiga domain
       pacific_tropical:
-        description: Pacific Tropical domain
+        title: Pacific Tropical domain
 
   NucleotideSequencingEnum:
     permissible_values:
@@ -1490,7 +1487,7 @@ enums:
         text: ETD
         description: Electron Transfer Dissociation
   
-    MassAnalyzerEnum:
+  MassAnalyzerEnum:
     permissible_values:
       quadrupole:
         text: quadrupole
