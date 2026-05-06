@@ -7,7 +7,7 @@ description: |
   Classes defined in this file:
 
   Relevant to data generation:
-  - MassSpectrometryAnalysisActivity
+  - MassSpectrometryDataGenerationActivity
   - MassSpectrometryConfiguration
   - ChromatographyConfiguration
 
@@ -15,7 +15,7 @@ description: |
   - MassSpectrometryInstrumentData
 
   Relevant to data processing:
-  - MassSpectrometrydataProcessingActivity
+  - MassSpectrometryDataProcessingActivity
   - MassSpectrometryStandardRun
 
   Processed data products:
@@ -34,110 +34,7 @@ default_prefix: analysis_api_schema
 imports:
   - linkml:types
   - analysis_api_schema
-
-# Reusable slots specific to mass spectrometry classes.
-# Shared slots (name, s3_key, version, workflow_steps, etc.) are inherited via
-# the dataProduct / dataProcessingActivity slot definitions in analysis_api_schema.
-slots:
-  
-  aq: 
-    description:
-    range: numeric
-
-  uses_calibration:
-    description: >- 
-      Reference to the raw data file from the standard which was run with a batch of samples that was used as calibration for this data processing workflow run.
-    range: MassSpectrometryStandardRun
-
-  injection:
-    description: Type of injection used in the mass spectrometry method
-    range: string
-    required: true
-
-  ionization:
-    description: Type of ionization used in the mass spectrometry method
-    range: ionizationenum
-    required: true
-
-  polarity:
-    description: Polarity setting used in the mass spectrometry method
-    range: polarityenum
-    required: true
-
-  chromatography_type:
-    description: Type of chromatography used in the method (e.g., GC, LC)
-    range: chromatographytypeenum
-    required: true
-
-  mobile_phases:
-    description: Description of the mobile phases used in the chromatography method (e.g., solvents, gradients)
-    range: string
-
-  stationary_phase:
-    description: Description of the stationary phase used in the chromatography method (e.g., column type)
-    range: string
-
-  temperature_celsius:
-    description: Temperature at which the method was performed
-    range: float
-
-  uses_ms_configuration:
-    description: Points to a record of the configuration used for the mass spectrometry run.
-    range: MassSpectrometryConfiguration
-    required: true
-
-  uses_chromatography:
-    description: Points to a record of the chromatography used to introduce samples for the mass spectrometry run.
-    range: ChromatographyConfiguration
-
-# attributes from deleted FTICR and LCMS method classes
-# do we need to keep them. also what do they mean
-  column:
-    range: string
-    required: true
-  resolution:
-    range: double
-    required: true
-  scan_range:
-    range: string
-    required: true
-  dd_ms2_resolution:
-    range: double
-    required: true
-  loop_count:
-    range: string
-    required: true
-  isolation_window:
-    range: string
-    required: true
-  iat:
-    range: double
-  fid:
-    range: double
-  mass_range:
-    range: double
-  collection_mode:
-    range: msmodeenum
-
-  produced_by_ms_run:
-    description: a reference to the data generation activity that produced instrument data
-    range: MassSpectrometryAnalysisActivity
-
-  ms_raw_file_type:
-    description: the filetype of the mass spectrometry instrument data
-    range: msrawfiletypeenum
-
-  results_from_ms_processing:
-    description: a reference to the mass spec data processing activity that produced this data product
-    range: MassSpectrometrydataProcessingActivity
-  
-  analyte_category:
-    description: omics type for easier search, optional
-    range: analytecategoryenum
-
-  duration_min:
-    description: how long something took, in minutes
-    range: float
+  - slots
 
 classes:
 
@@ -145,7 +42,7 @@ classes:
   # ms_raw_file_type represents the file extension (.raw, .d)
   # collection_mode states whether the data file is in centroid or profile mode
   MassSpectrometryInstrumentData:
-    is_a: instrumentData
+    is_a: InstrumentData
     description: >- 
       Raw data files output from a mass spectrometry instrument.
     slots:
@@ -160,7 +57,7 @@ classes:
   # need to be repeated on each concrete class.
   # ============================================================================
   MassSpectrometryDataProduct:
-    is_a: processedData
+    is_a: ProcessedData
     abstract: true
     description: |-
       Abstract base for all mass spectrometry data products.
@@ -184,11 +81,11 @@ classes:
     description: Abstract parent class for processed metaproteomics data. Details and subclasses TBD.
 
   # ============================================================================
-  # (NEW) MassSpectrometryAnalysisActivity
+  # (NEW) MassSpectrometryDataGenerationActivity
   # New class
   # ============================================================================
-  MassSpectrometryAnalysisActivity:
-    is_a: dataGenerationActivity
+  MassSpectrometryDataGenerationActivity:
+    is_a: DataGenerationActivity
     description: A record of the mass spectrometry run that generates a raw data product.
     slots:
       - uses_ms_configuration # required
@@ -240,15 +137,15 @@ classes:
 
 
   # ============================================================================
-  # (NEW) MassSpectrometrydataProcessingActivity
-  # Concrete subclass of dataProcessingActivity (now abstract in MR1).
+  # (NEW) MassSpectrometryDataProcessingActivity
+  # Concrete subclass of DataProcessingActivity (now abstract in MR1).
   # Carries no additional unique slots beyond the parent; represents a typed
-  # workflow record so that dataProcessingActivity can remain abstract.
+  # workflow record so that DataProcessingActivity can remain abstract.
   # ============================================================================
-  MassSpectrometrydataProcessingActivity:
-    is_a: dataProcessingActivity
+  MassSpectrometryDataProcessingActivity:
+    is_a: DataProcessingActivity
     description: |-
-      Concrete mass spectrometry workflow run. Inherits all dataProcessingActivity
+      Concrete mass spectrometry workflow run. Inherits all DataProcessingActivity
       slots including used_software and version.
     slots:
       - uses_calibration
@@ -267,10 +164,10 @@ classes:
         range: boolean
       calibration_target:
         description: The measurement being calibrated
-        range: calibrationtargetenum
+        range: CalibrationTargetEnum
       calibration_standard:
         description: The reference standard used for calibration
-        range: purchasedMaterial
+        range: PurchasedMaterial
       calibration_data:
         description: Reference to the raw instrument data file used for calibration
         range: MassSpectrometryInstrumentData
