@@ -334,7 +334,8 @@ slots:
 
   mobile_phases:
     description: Description of the mobile phases used in the chromatography method (e.g., solvents, gradients)
-    range: string
+    range: MobilePhaseSegment
+    multivalued: true
 
   ms_raw_file_type:
     description: the filetype of the mass spectrometry instrument data
