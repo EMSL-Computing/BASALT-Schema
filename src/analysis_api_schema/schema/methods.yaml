@@ -13,19 +13,7 @@ default_prefix: analysis_api_schema
 
 imports:
   - linkml:types
-
-slots:
-  analytic:
-    range: string
-    required: true
-
-  location:
-    range: string
-    required: true
-
-  method:
-    range: string
-    # what is this for.
+  - slots
 
 classes:
 
