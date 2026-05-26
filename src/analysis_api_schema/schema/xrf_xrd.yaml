@@ -127,7 +127,7 @@ classes:
       Data product: XRFElementalProduct (one row per element per sample)
       
       Workflow pattern: Direct instrument output (no computational processing step)
-        processedSample -> XRFDataGenerationActivity -> XRFElementalProduct (workflow_id = NULL)
+        processedSample -> XRFDataGenerationActivity -> XRFElementalProduct (no processing link)
       
       Protocol information: Stored externally; link via protocol_url attribute.
       Example protocol parameters (stored in external SOP or DataProcessingActivity
@@ -160,11 +160,11 @@ classes:
       
       Workflow patterns:
         1. Direct/semi-quantitative: 
-             processedSample -> XRDDataGenerationActivity -> XRDPhaseProduct (workflow_id = NULL)
+           processedSample -> XRDDataGenerationActivity -> XRDPhaseProduct (no processing link)
         2. With Rietveld refinement (computational):
              processedSample -> XRDDataGenerationActivity -> 
              DataProcessingActivity(type='xrd_rietveld_refinement') -> 
-             XRDPhaseProduct (workflow_id = refinement WEA)
+           XRDPhaseProduct (typed processing reference = refinement activity)
       
       Protocol information: Stored externally; link via protocol_url attribute.
       Example protocol parameters (stored in external SOP or DataProcessingActivity):
