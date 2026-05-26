@@ -86,7 +86,7 @@ classes:
   # (CHANGED MR1) processedData now inherits from dataProduct via is_a.
   # Inherited slots: name, description, project, sampling_set, core_section, sample_name,
   # s3_base_url, s3_bucket, s3_key, filesize, md5checksum, id.
-  # Retained as attributes: type (class-specific product enum range), workflow_id.
+  # Product subclasses should define typed slots to point to generating activities.
   # New slots: summary_metrics, lims_barcode, version.
   ProcessedData:
     is_a: DataProduct
@@ -179,6 +179,52 @@ classes:
         range: RespirationMethod
         description: Reference to the RespirationMethod used for this run
 
+  XASDataGenerationActivity:
+    is_a: DataGenerationActivity
+    description: |-
+      X-ray Absorption Spectroscopy (XAS) acquisition activity.
+      Represents one beamline measurement session for a sample.
+    slots:
+      - facility
+      - beamline
+      - ring_energy_gev
+      - ring_current_ma
+      - insertion_device
+      - element
+      - edge
+      - reference_material
+      - sample_type
+      - sample_format
+      - sample_holder
+      - sample_temperature_k
+      - sample_orientation_deg
+      - sample_detector_distance_mm
+      - sample_doi
+      - crystal
+      - crystal_cut
+      - crystal_detune_pct
+      - mono_angle_deg
+      - mono_2nd_xtal_mm
+      - mono_energy_motor_ev
+      - mono_energy_encoder_ev
+      - mirror_angle_mrad
+      - m0_coating
+      - m0_cutoff_kev
+      - m1_coating
+      - inhutch_mirror_coating
+      - inhutch_mirror_cutoff_kev
+      - slit_size_h_um
+      - slit_size_v_um
+      - slit_center_h
+      - slit_center_v
+      - beam_attenuation_um
+      - beam_attenuation_material
+      - fy_electronics
+      - fy_channel_num
+      - fy_element
+      - fy_transition
+      - user_comment
+
   # DataProcessingActivity is ABSTRACT.
   # Concrete per-type subclasses (e.g. MetagenomicsDataProcessingActivity in
   # metagenomics.yaml) use is_a: DataProcessingActivity.
@@ -217,6 +263,34 @@ classes:
         range: string
       execution_resource:
         range: ExecutionResourceEnum
+
+  XASLCFDataProcessingActivity:
+    is_a: DataProcessingActivity
+    description: |-
+      Athena Linear Combination Fitting (LCF) processing activity for XAS data.
+      One instance represents a single .lcf fit run.
+    slots:
+      - uses_xas_raw_data
+      - xas_filename
+      - lcf_type
+      - run_label
+      - fit_label
+      - analysis_code
+      - sample_nor_file
+      - fit_range_min
+      - fit_range_max
+      - fit_range_unit
+      - n_data_points
+      - n_variables
+      - n_standards
+      - weights_sum_to_1
+      - weights_bounded
+      - e0_shift_used
+      - noise_added
+      - r_factor
+      - chi_square
+      - reduced_chi_square
+      - weights_sum
 
   AlternativeIdentifier:
     attributes:
