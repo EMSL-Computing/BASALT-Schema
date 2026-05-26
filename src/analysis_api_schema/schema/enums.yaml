@@ -121,7 +121,8 @@ enums:
       bulk_density_method:
       metagenomics_method:
       xrf_analysis:
-      xrd_analysis: 
+      xrd_analysis:
+      xas_analysis:
 
   SampleRole:
     permissible_values:
@@ -173,6 +174,7 @@ enums:
       kuo:
       rigaku:
       panalytical:  # (PANalytical, now Malvern Panalytical)
+      aps_anl:
 
   ModelEnum:
     permissible_values:
@@ -202,6 +204,8 @@ enums:
       toc_lcsh:
       sr_1:
       xth320:
+      aps_20bm:
+      xmap12b:
 
 
   FileTypeEnum:
@@ -243,6 +247,8 @@ enums:
       SMART_Annotation_GFF:
       Pfam_Annotation_GFF:
       Direct_Infusion_FT_ICR_MS_Raw_Data:
+      XAS_Raw_Sweep_File:
+      XAS_LCF_Output:
     
 
   InstrumentAltIdProviderEnum:
@@ -442,6 +448,24 @@ enums:
         description: Lyophilized (freeze-dried) sample
       other:
         description: Other storage condition
+
+  XASScanSubtype:
+    description: XAS scan subtype detected from primary positioner column
+    permissible_values:
+      energy:
+        description: Energy scan; primary positioner is mono energy
+      motor:
+        description: Motor scan; primary positioner is a physical motor
+      unknown:
+        description: Scan subtype could not be determined from file header
+
+  XASLCFType:
+    description: LCF analysis subtype
+    permissible_values:
+      XANES:
+        description: Normalised mu(E) vs energy fit
+      EXAFS:
+        description: chi(k) vs k fit
 
 
   LandUseEnum:
