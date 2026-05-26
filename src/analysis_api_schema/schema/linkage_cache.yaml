@@ -11,7 +11,7 @@ description: |-
     - ProcessingSampleLink (sample -> processed sample chains)
     - DataProcessingActivity.parent_workflow_id (workflow chains)
     - DataGenerationActivity (processed sample -> workflow link)
-    - ProcessedData.workflow_id (workflow -> product link)
+    - Typed product/activity reference slots (workflow -> product links)
 
   This file is imported by analysis_api_schema.yaml (import added in MR2).
 license: MIT

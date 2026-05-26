@@ -207,8 +207,8 @@ classes:
         - summary_metrics (JSONB) provides lightweight queryable summaries:
             XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
             XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
-        - workflow_id is NULL for direct instrument output (XRF typical)
-        - workflow_id links to DataProcessingActivity for computational processing (XRD Rietveld)
+        - direct outputs may not have a processing link (XRF typical)
+        - computational outputs should use a typed processing reference slot
     # Inherits from processedData via dataProduct:
     #   - id (uuid identifier)
     #   - name (string, required)
@@ -219,7 +219,7 @@ classes:
     #   - summary_metrics (JSONB, lightweight queryable data)
     #   - lims_barcode, version
     #   - type (from product enum — NEW VALUES: XRFElementalProduct, XRDPhaseProduct)
-    #   - workflow_id (FK to DataProcessingActivity, nullable)
+    #   - optional typed processing reference slot
 
 
   # ---------------------------------------------------------------------------
@@ -238,7 +238,7 @@ classes:
       Relationship to core tables:
         - id: FK -> processedData.id (1:1 linkage)
         - processedData.type = 'XRFElementalProduct'
-        - processedData.workflow_id = NULL (direct acquisition; no computational WEA)
+        - direct acquisition; no computational processing link required
         - processedData.summary_metrics = {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, ...}
         - processedData.s3_key = path to raw spectrum or calibrated CSV in MinIO
       
@@ -406,7 +406,7 @@ classes:
       Relationship to core tables:
         - id: FK -> processedData.id (1:1 linkage)
         - processedData.type = 'XRDPhaseProduct'
-        - processedData.workflow_id -> DataProcessingActivity if Rietveld refinement
+        - optional typed processing reference when Rietveld refinement is used
           is computational; NULL if manual/semi-quantitative
         - processedData.summary_metrics = {"quartz_percent":42, "albite_percent":18, ...}
         - processedData.s3_key = diffractogram .xy, .xrdml, or .raw file in MinIO
@@ -426,7 +426,7 @@ classes:
         XRDDataGenerationActivity acquires raw diffractogram ->
         DataProcessingActivity (type='xrd_rietveld_refinement') processes with
         HighScore Plus, GSAS-II, or FullProf ->
-        XRDPhaseProduct (workflow_id points to refinement WEA)
+        XRDPhaseProduct (typed processing reference points to refinement activity)
         
         workflow_steps JSONB example:
           {"software": "HighScore_Plus", "version": "5.1", "method": "Rietveld",
