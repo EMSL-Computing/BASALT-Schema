@@ -380,8 +380,8 @@ classes:
         - summary_metrics (JSONB) provides lightweight queryable summaries:
             XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
             XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
-        - workflow_id is NULL for direct instrument output (XRF typical)
-        - workflow_id links to DataProcessingActivity for computational processing (XRD Rietveld) 
+        - direct outputs may not have a processing link (XRF typical)
+        - computational outputs should use a typed processing reference slot
 
 
   # ---------------------------------------------------------------------------
@@ -400,7 +400,7 @@ classes:
       Relationship to core tables:
         - id: FK -> processedData.id (1:1 linkage)
         - processedData.type = 'XRFElementalProduct'
-        - processedData.workflow_id = NULL (direct acquisition; no computational WEA)
+        - direct acquisition; no computational processing link required
         - processedData.summary_metrics = {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, ...}
         - processedData.s3_key = path to raw spectrum or calibrated CSV in MinIO
       
@@ -568,8 +568,7 @@ classes:
       Relationship to core tables:
         - id: FK -> processedData.id (1:1 linkage)
         - processedData.type = 'XRDPhaseProduct'
-        - processedData.workflow_id -> DataProcessingActivity if Rietveld refinement
-          is computational; NULL if manual/semi-quantitative
+        - optional typed processing reference when Rietveld refinement is used
         - processedData.summary_metrics = {"quartz_percent":42, "albite_percent":18, ...}
         - processedData.s3_key = diffractogram .xy, .xrdml, or .raw file in MinIO
       
@@ -588,12 +587,8 @@ classes:
         XRDDataGenerationActivity acquires raw diffractogram ->
         DataProcessingActivity (type='xrd_rietveld_refinement') processes with
         HighScore Plus, GSAS-II, or FullProf ->
-        XRDPhaseProduct (workflow_id points to refinement WEA)
-        
-        workflow_steps JSONB example:
-          {"software": "HighScore_Plus", "version": "5.1", "method": "Rietveld",
-           "r_factor": 0.042, "gof": 1.8, "amorphous_content_pct": 12}
-      
+        XRDPhaseProduct (typed processing reference points to refinement activity)
+           
       Required enum additions to enums.yaml:
         product:
           XRDPhaseProduct:  # Add to product permissible_values
@@ -652,3 +647,59 @@ classes:
         range: ProcessedDataFlag
       flag_gypsum:
         range: ProcessedDataFlag
+
+
+  XASInstrumentData:
+    is_a: InstrumentData
+    description: |-
+      Raw XAS sweep file (.0001, .0002, ...) produced at acquisition time.
+      Stores file pointer metadata and key per-sweep scan header fields.
+    slots:
+      - produced_by_xas_run
+      - sweep_number
+      - scan_datetime
+      - scan_time_sec
+      - scan_subtype
+      - positioner
+      - e0_ev
+      - n_points
+      - n_data_rows
+      - x_first
+      - x_last
+      - scan_bounds
+      - scan_steps
+      - integration_times
+      - kwgt
+      - fy_element
+      - fy_transition
+
+
+  XASLCFProduct:
+    is_a: ProcessedData
+    description: |-
+      XAS Linear Combination Fitting (LCF) processed result.
+      One instance per .lcf file and linked to an XASLCFDataProcessingActivity
+      through a typed processing slot.
+    slots:
+      - measure_type
+      - results_from_xas_processing
+      - xas_filename
+      - lcf_type
+      - run_label
+      - fit_label
+      - analysis_code
+      - sample_nor_file
+      - fit_range_min
+      - fit_range_max
+      - fit_range_unit
+      - n_data_points
+      - n_variables
+      - n_standards
+      - weights_sum_to_1
+      - weights_bounded
+      - e0_shift_used
+      - noise_added
+      - r_factor
+      - chi_square
+      - reduced_chi_square
+      - weights_sum
