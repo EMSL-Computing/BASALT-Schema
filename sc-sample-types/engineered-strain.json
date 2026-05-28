@@ -1,0 +1,231 @@
+{
+  "header": {
+    "title": "Engineered Strain Sample Schema",
+    "version": "1.0.0",
+    "description": "Engineered Strain Schema for the AnalysisAPI"
+  },
+  "items": {
+    "additionalProperties": false,
+    "properties": {
+      "sample_name": {
+        "title": "sample name",
+        "type": "string",
+        "description": "The name or label that is present on the shipped sample. This should be a human readable name."
+      },
+      "strain_name": {
+        "title": "strain name",
+        "type": "string",
+        "description": "Provide a unique name to identify transformed strain lines."
+      },
+      "other": {
+        "title": "other",
+        "type": "string",
+        "description": "Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns."
+      },
+      "storage_condt": {
+        "title": "storage condition",
+        "description": "The storage condition of the sample. This field is NOT multivalued. If selecting other, add the `other_storage_condt` attribute to provide additional detail.",
+        "type": "string",
+        "enum": [
+          "fresh",
+          "frozen",
+          "lyophilized",
+          "other"
+        ]
+      },
+      "other_storage_condt": {
+        "title": "storage condition other",
+        "type": "string",
+        "description": "Please specify your storage conditions if 'other' and the available values are not appropriate"
+      },
+      "samp_store_temp": {
+        "title": "sample storage temperature",
+        "type": "string",
+        "description": "The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other, add the `other_samp_store_temp` attribute to provide additional detail.",
+        "enum": [
+          "4 C",
+          "room temperature",
+          "-20 C",
+          "-80 C",
+          "other"
+        ]
+      },
+      "other_samp_store_temp": {
+        "title": "sample storage temperature other",
+        "type": "string",
+        "description": "Please specify if 'other'"
+      },
+      "strain_source": {
+        "title": "strain source",
+        "description": "Indicate the source of the strain provided. If purchased provide the vendor and lot number, if from another registered or known strain provide a reference.",
+        "type": "string"
+      },
+      "cbi": {
+        "title": "confidential business information",
+        "description": "Indicate if any information about the strain is considered confidential business information",
+        "type": "string",
+        "enum": [
+          "yes",
+          "no"
+        ]
+      },
+      "organism_name": {
+        "title": "organism name",
+        "description": "Provide the scientific name (genus and species) of the host organism.",
+        "type": "string"
+      },
+      "modification_method": {
+        "title": "modification method",
+        "description": "Select the method used to insert your construct into the genome of your modified organism",
+        "type": "string",
+        "enum": [
+          "Aerosol Beam Injector",
+          "Agrobacterium rhizogenes, disarmed",
+          "Agrobacterium tumefaciens, disarmed",
+          "Biolistic",
+          "Chemical Transformation",
+          "Cold Shock",
+          "Conjugation",
+          "Direct Injection",
+          "Direct Uptake",
+          "DNA Synthesis",
+          "Electroporation",
+          "Freeze/Thaw",
+          "Heat Shock",
+          "Mutagenesis",
+          "No Transformation",
+          "Ochrobactrum",
+          "Other",
+          "P-element",
+          "Phage Transformation",
+          "Piggybac",
+          "Polyethylene Glycol-mediated",
+          "Replicon",
+          "Whisker-mediated Transformation"
+        ]
+      },
+      "strain_description": {
+        "title": "strain description",
+        "description": "A brief description of the modifications that comprise this strain",
+        "type": "string"
+      },
+      "trait": {
+        "title": "trait",
+        "description": "Select the general type of intended trait",
+        "type": "string",
+        "enum": [
+          "Other",
+          "Product Quality",
+          "Agronomic Properties",
+          "Bacterial Resistance",
+          "Herbicide Resistance",
+          "Insect Resistance",
+          "Marker Gene",
+          "Nematode Resistance",
+          "Virus Resistance"
+        ]
+      },
+      "phenotype": {
+        "title": "phenotype",
+        "description": "Provide the intended phenotype of the modified organism.",
+        "type": "string"
+      },
+      "genotype_segment_category": {
+        "title": "genotype segment category",
+        "description": "Select the genotype category. A genotype is generally an expression cassett or a grouping of genetic elements or a gene edit containing a set of construct components leading to one or more intended traits. A strain may consist of multiple genotypes.",
+        "type": "string",
+        "enum": [
+          "Empty Transformation Vector",
+          "Gene Knock-Out",
+          "Gene Silencer",
+          "Gene(s) of Interest",
+          "RNA Interface (RNAi)",
+          "Screenable Marker",
+          "Selectable Marker",
+          "Virus Genome",
+          "Wild Type",
+          "Recombination Site",
+          "Other"
+        ]
+      },
+      "genotype_segment_name": {
+        "title": "genotype segment name",
+        "description": "Provide a name that describes the genotype modification engineered relative to the reference, unmodified genome. The name should describe the spatially grouped components or specific function of the modification.",
+        "type": "string"
+      },
+      "component_name": {
+        "title": "construct component name",
+        "description": "Provide a one-to-three word name based on the component. If using an acronym, provide the full component name in the component description.",
+        "type": "string"
+      },
+      "construct_component": {
+        "title": "construct component",
+        "description": "Select the construct component type.",
+        "type": "string",
+        "enum": [
+          "None",
+          "3'UTR",
+          "5'UTR",
+          "Enhancer",
+          "Epitope Tag",
+          "Exon",
+          "Flanking Element",
+          "Gene",
+          "Intron",
+          "Leader Sequence",
+          "Promotor",
+          "Recognition Sequence",
+          "Signal Sequence",
+          "Spacer",
+          "Targeting Sequence",
+          "Terminator",
+          "Transit Peptide",
+          "Vector Sequence"
+        ]
+      },
+      "donor_organism": {
+        "title": "donor organism",
+        "description": "Provide the scientific name (genus and species) of the organism from which the construct component was first described or obtained. You may enter 'synthetic' if relevant.",
+        "type": "string"
+      },
+      "component_description": {
+        "title": "construct component description",
+        "description": "Provide a short statement describing the function of the construct component. You may provide an optional literature reference for lesser-known components.",
+        "type": "string"
+      },
+      "shipped_sample_size": {
+        "title": "shipped sample size",
+        "type": "string",
+        "description": "Total amount of sample sent to EMSL. Must include units.",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "collection_date": {
+        "title": "collection date",
+        "type": "string",
+        "description": "The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$"
+      }
+    },
+    "required": [
+      "sample_name",
+      "strain_name",
+      "storage_condt",
+      "samp_store_temp",
+      "cbi",
+      "strain_source",
+      "organism_name",
+      "modification_method",
+      "strain_description",
+      "trait",
+      "phenotype",
+      "genotype_segment_category",
+      "genotype_segment_name",
+      "component_name",
+      "construct_component",
+      "donor_organism",
+      "component_description"
+    ],
+    "type": "object"
+  },
+  "type": "array"
+}

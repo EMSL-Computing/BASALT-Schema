@@ -1,0 +1,373 @@
+{
+  "header": {
+    "title": "Aerosol Sample Schema",
+    "version": "1.4.1",
+    "description": "Aerosol Schema for the AnalysisAPI"
+  },
+  "items": {
+    "additionalProperties": false,
+    "properties": {
+      "sample_name": {
+        "title": "sample name",
+        "type": "string",
+        "description": "ID that is present on the shipped sample. Human readable."
+      },
+      "other": {
+        "title": "other",
+        "type": "string",
+        "description": "Other details about your sample that you feel can't be accurately represented in the available columns."
+      },
+      "storage_condt": {
+        "title": "storage condition",
+        "type": "string",
+        "description": "The storage condition of the sample. This field is NOT multivalued. If selecting other, add the `other_storage_condt` attribute to provide additional detail.",
+        "enum": [
+          "fresh",
+          "frozen",
+          "lyophilized",
+          "other"
+        ]
+      },
+      "other_storage_condt": {
+        "title": "storage condition other",
+        "type": "string",
+        "description": "Please specify if 'other'"
+      },
+      "samp_store_temp": {
+        "title": "sample storage temperature",
+        "type": "string",
+        "description": "The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other, add the `other_samp_store_temp` attribute to provide additional detail.",
+        "enum": [
+          "4 C",
+          "room temperature",
+          "-20 C",
+          "-80 C",
+          "other"
+        ]
+      },
+      "other_samp_store_temp": {
+        "title": "sample storage temperature other",
+        "type": "string",
+        "description": "Please specify if 'other'"
+      },
+      "analysis_type": {
+        "title": "analysis type",
+        "type": "string",
+        "description": "The analyses planned for this sample. The analysis types will later be mapped to an allocated resource. This field is constrained to contain only a set of limited terms. Include all the data types. This field can have multiple values separated by a ';'.",
+        "enum": [
+          "metabolome",
+          "proteome",
+          "lipidome",
+          "organic matter",
+          "molecular structure",
+          "chemical speciation mapping",
+          "genome",
+          "transcriptome",
+          "isotope profiling",
+          "imaging- xray",
+          "imaging- electron",
+          "imaging- ion",
+          "imaging- light",
+          "hydraulic properties",
+          "unknown"
+        ]
+      },
+      "technical_reps": {
+        "title": "technical replicates",
+        "type": "integer",
+        "description": "If sending technical replicates of the same sample, indicate the replicate number here."
+      },
+      "replicate_number": {
+        "title": "replicate number",
+        "type": "integer",
+        "description": "If samples are biological replicates, indicate the replicate number here."
+      },
+      "source_mat_ID": {
+        "title": "source material identifier",
+        "type": "string",
+        "description": "A unique identifier assigned to an original material sample collected or to any derived sub-samples. The source material should be listed as a sample to inform details about parent material relationship."
+      },
+      "sample_link": {
+        "title": "sample link",
+        "type": "string",
+        "description": "A unique identifier to assign parent-child, subsample, or sibling samples. This is relevant when a sample or other material was used to generate the new sample. This field allows multiple entries separated by ; (Examples: Soil collected from the field will link with the soil used in an incubation. The soil a plant was grown in links to the plant sample. An original culture sample was transferred to a new vial and generated a new sample)"
+      },
+      "growth_facil": {
+        "title": "growth facility",
+        "type": "string",
+        "description": "Type of facility or location from where the sample was collected or grown. This field is NOT multivalued. If selecting other, add the `other_growth_facil` attribute to provide additional detail.",
+        "enum": [
+          "field",
+          "commercially purchased",
+          "experimental garden",
+          "field incubation",
+          "greenhouse",
+          "growth chamber",
+          "lab incubation",
+          "open top chamber",
+          "other"
+        ]
+      },
+      "other_growth_facil": {
+        "title": "growth facility other",
+        "type": "string",
+        "description": "Please specify if other"
+      },
+      "collection_date": {
+        "title": "collection date",
+        "type": "string",
+        "description": "The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$"
+      },
+      "collection_time": {
+        "title": "collection time",
+        "type": "string",
+        "description": "The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)",
+        "pattern": "^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$"
+      },
+      "sample_collection_dev": {
+        "title": "sample collection device",
+        "type": "string",
+        "description": "The device used to collect an environmental sample. Include dimensions of device if applicable"
+      },
+      "other_treatment": {
+        "title": "other treatment",
+        "type": "string",
+        "description": "Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy, please add it here. Multiple treatments can be entered here, separated by ;"
+      },
+      "misc_param": {
+        "title": "miscellaneous parameter",
+        "type": "string",
+        "description": "Any other measurement performed or parameter collected, that is not listed here"
+      },
+      "shipped_sample_size": {
+        "title": "shipped sample size",
+        "type": "string",
+        "description": "Total amount of sample sent to EMSL. Must include units.",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "sample_collected": {
+        "title": "sample collected",
+        "type": "string",
+        "description": "This referes to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "geo_loc_name": {
+        "title": "geographic location name",
+        "type": "string",
+        "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name and site. Formatted as [Country or sea names: region or state, site]",
+        "pattern": "^([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+):\\s?([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+),\\s?([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)$"
+      },
+      "sample_processing": {
+        "title": "sample processing",
+        "type": "string",
+        "description": "A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed."
+      },
+      "air_temp_regm": {
+        "title": "air temperature regimen",
+        "type": "string",
+        "description": "Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens"
+      },
+      "chem_administration": {
+        "title": "chemical adminstration",
+        "type": "string",
+        "description": "List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi"
+      },
+      "isotope_exposure": {
+        "title": "isotope exposure",
+        "type": "string",
+        "description": "List isotope exposure or addition applied to your sample."
+      },
+      "humidity_regm": {
+        "title": "humidity regimen",
+        "type": "string",
+        "description": "Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens"
+      },
+      "extraction_method": {
+        "title": "extraction method",
+        "type": "string",
+        "description": "If you, the user, performed an extraction, preparation, or processing before sending the sample to EMSL, what was it? This is only applicable when sending an 'analytical sample'. See README for more details on types of samples."
+      },
+      "method_development": {
+        "title": "method development",
+        "type": "string",
+        "description": "If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve."
+      },
+      "experimental_factor": {
+        "title": "experimental factor",
+        "type": "string",
+        "description": "Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms, please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI"
+      },
+      "experimental_factor_other": {
+        "title": "experimental factor other",
+        "type": "string",
+        "description": "Other details about your sample that you feel can't be accurately represented in the available columns."
+      },
+      "priority_order": {
+        "title": "priority order",
+        "type": "string",
+        "description": "Indicate the run order priority of your samples"
+      },
+      "volatile_org_comp": {
+        "title": "volatile organic compounds",
+        "type": "string",
+        "description": "Volatile organic compounds are organic chemicals that have a high vapour pressure at room temperature."
+      },
+      "wind_direction": {
+        "title": "wind direction",
+        "type": "string",
+        "description": "Direction of the wind on the day of sampling. Collected via anemometer. Provide cardinal direction.",
+        "enum": [
+          "north",
+          "north east",
+          "east",
+          "south east",
+          "south",
+          "south west",
+          "west",
+          "north west"
+        ]
+      },
+      "photochemical_exposure": {
+        "title": "photochemical exposure",
+        "type": "string",
+        "description": "This term is used to describe a chemical reaction caused by absorption of ultraviolet (wavelength from 100 to 400 nm), uv visible light (400\u2013750 nm) or infrared radiation (750\u20132500 nm)",
+        "enum": [
+          "ultraviolet",
+          "uv visible light",
+          "infrared"
+        ]
+      },
+      "temperature_exposure": {
+        "title": "temperature exposure",
+        "type": "string",
+        "description": "The range of temperatures at which it is safe to store a label that has been applied to a substrate. Provided by iMet"
+      },
+      "env_broad_scale": {
+        "title": "environmental broad scale",
+        "type": "string",
+        "description": "Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS",
+        "pattern": "^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$"
+      },
+      "env_local_scale": {
+        "title": "environmental local scale",
+        "type": "string",
+        "description": "Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html",
+        "pattern": "^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$"
+      },
+      "env_medium": {
+        "title": "environmental medium",
+        "type": "string",
+        "description": "Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS .",
+        "pattern": "^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$"
+      },
+      "lat_lon": {
+        "title": "latitude longitude",
+        "type": "string",
+        "description": "The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal format. Required format is decimal format with a comma separating the latitude, longitude.",
+        "pattern": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$"
+      },
+      "elev": {
+        "title": "elevation",
+        "type": "string",
+        "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface. (Unit: m).",
+        "pattern": "^\\d+(\\.\\d+)?\\s*m$"
+      },
+      "alt": {
+        "title": "altitude",
+        "type": "string",
+        "description": "Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earthbs surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air. For ARM, this can be a range. (Unit: m)",
+        "pattern": "^\\d+(\\.\\d+)?m(?:-\\d+(\\.\\d+)?m)?$"
+      },
+      "annual_precpt": {
+        "title": "annual precipitation",
+        "type": "string",
+        "description": "The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*mm$"
+      },
+      "annual_temp": {
+        "title": "annual temperature",
+        "type": "string",
+        "description": "Mean annual temperature (Unit: C)",
+        "pattern": "^-?\\d+(\\.\\d+)?\\s*C$"
+      },
+      "size_frac_low": {
+        "title": "size fraction, low",
+        "type": "string",
+        "description": "Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample (Unit: um)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*um$"
+      },
+      "size_frac_up": {
+        "title": "size fraction, up",
+        "type": "string",
+        "description": "Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample (Unit: um)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*um$"
+      },
+      "methane": {
+        "title": "methane",
+        "type": "string",
+        "description": "Methane (gas) amount or concentration at the time of sampling. (Unit: umol/L or ppb or ppm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(umol/L|ppm|ppb)$"
+      },
+      "sampling_duration": {
+        "title": "sampling duration",
+        "type": "string",
+        "description": "The difference between sample start and sample end time in seconds. (Unit: s)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*s$"
+      },
+      "carb_dioxide": {
+        "title": "carbon dioxide",
+        "type": "string",
+        "description": "Amount of carbon dioxide measured in the air the day of sampling. (Unit: umol/L or ppm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(umol/L|ppm)$"
+      },
+      "carb_monoxide": {
+        "title": "carbon monoxide",
+        "type": "string",
+        "description": "Amount of carbon monoxide measured in the air the day of sampling. (Unit: umol/L or ppm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(umol/L|ppm)$"
+      },
+      "humidity": {
+        "title": "humidity",
+        "type": "string",
+        "description": "Amount of humidity measured in the air the day of sampling. Provide value and unit, any unit is valid",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "oxygen": {
+        "title": "oxygen",
+        "type": "string",
+        "description": "Amount of oxygen measured in the air the day of sampling. (Unit: mg/L or ppm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(mg/L|ppm)$"
+      },
+      "solar_irradiance": {
+        "title": "solar irradiance",
+        "type": "string",
+        "description": "Solar irradiance is the power per unit area (surface power density) received from the Sun in the form of electromagnetic radiation in the wavelength range of the measuring instrument. (Unit: kW/m2/d or erg/cm2/s",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(kW/m2/d|erg/cm2/s)$"
+      },
+      "wind_speed": {
+        "title": "wind speed",
+        "type": "string",
+        "description": "Wind speed describes how fast the air is moving past a certain point during sampling time. Provide value and unit, any unit is valid",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "pressure_control": {
+        "title": "pressure control",
+        "type": "string",
+        "description": "Measurment of pressure applied to the sample during experimentation (Unit: Pa)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*Pa$"
+      }
+    },
+    "required": [
+      "sample_name",
+      "storage_condt",
+      "samp_store_temp",
+      "shipped_sample_size",
+      "analysis_type",
+      "growth_facil",
+      "collection_date"
+    ],
+    "type": "object"
+  },
+  "type": "array"
+}

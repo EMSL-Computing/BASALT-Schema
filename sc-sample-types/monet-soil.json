@@ -1,0 +1,507 @@
+{
+  "header": {
+    "title": "MONet Soil Schema - AnalysisAPI",
+    "version": "2.1.1",
+    "description": "MONet Soil Schema for the AnalysisAPI"
+  },
+  "items": {
+    "additionalProperties": false,
+    "properties": {
+      "sample_name": {
+        "title": "sample name",
+        "type": "string",
+        "description": "ID that is present on the shipped sample. Human readable."
+      },
+      "LIMS_ID": {
+        "title": "LIMS ID",
+        "type": "string",
+        "description": "An EMSL internal LIMS identifier for your sample. This will be provided by the MPOC and should not be edited.",
+        "pattern": "^INGEST_SAMPLE_\\d{9}$"
+      },
+      "other": {
+        "title": "other",
+        "type": "string",
+        "description": "Other details about your sample that you feel can't be accurately represented in the available columns."
+      },
+      "storage_condt": {
+        "title": "storage condition",
+        "type": "string",
+        "description": "The storage condition of the sample. This field is NOT multivalued. If selecting other, add the `other_storage_condt` attribute to provide additional detail.",
+        "enum": [
+          "fresh",
+          "frozen",
+          "lyophilized",
+          "other"
+        ]
+      },
+      "other_storage_condt": {
+        "title": "storage condition other",
+        "type": "string",
+        "description": "Please specify if 'other'"
+      },
+      "samp_store_temp": {
+        "title": "sample storage temperature",
+        "type": "string",
+        "description": "The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other, add the `other_samp_store_temp` attribute to provide additional detail.",
+        "enum": [
+          "4 C",
+          "room temperature",
+          "-20 C",
+          "-80 C",
+          "other"
+        ]
+      },
+      "other_samp_store_temp": {
+        "title": "sample storage temperature other",
+        "type": "string",
+        "description": "Please specify if 'other'"
+      },
+      "sampling_set": {
+        "title": "sampling set",
+        "type": "integer",
+        "description": "A sequential number to indicate soil cores collect together and to be processed together"
+      },
+      "growth_facil": {
+        "title": "growth facility",
+        "type": "string",
+        "description": "Type of facility or location from where the sample was collected or grown. This field is NOT multivalued. If selecting other, add the `other_growth_facil` attribute to provide additional detail.",
+        "enum": [
+          "field",
+          "commercially purchased",
+          "experimental garden",
+          "field incubation",
+          "greenhouse",
+          "growth chamber",
+          "lab incubation",
+          "open top chamber",
+          "other"
+        ]
+      },
+      "other_growth_facil": {
+        "title": "growth facility other",
+        "type": "string",
+        "description": "Please specify if other"
+      },
+      "collection_date": {
+        "title": "collection date",
+        "type": "string",
+        "description": "The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$"
+      },
+      "collection_time": {
+        "title": "collection time",
+        "type": "string",
+        "description": "The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)",
+        "pattern": "^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$"
+      },
+      "sample_collection_dev": {
+        "title": "sample collection device",
+        "type": "string",
+        "description": "The device used to collect an environmental sample. Include dimensions of device if applicable"
+      },
+      "other_treatment": {
+        "title": "other treatment",
+        "type": "string",
+        "description": "Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy, please add it here. Multiple treatments can be entered here, separated by ;"
+      },
+      "misc_param": {
+        "title": "miscellaneous parameter",
+        "type": "string",
+        "description": "Any other measurement performed or parameter collected, that is not listed here"
+      },
+      "shipped_sample_size": {
+        "title": "shipped sample size",
+        "type": "string",
+        "description": "Total amount of sample sent to EMSL. Must include unit of 'core'.",
+        "pattern": "^\\d+(\\.\\d+)?\\s*core$"
+      },
+      "sample_collected": {
+        "title": "sample collected",
+        "type": "string",
+        "description": "This referes to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. (Unit: cores)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*cores$"
+      },
+      "soil_type": {
+        "title": "soil type",
+        "type": "string",
+        "description": "Soil series name or other lower-level classification",
+        "enum": [
+          "Alfisol",
+          "Andisol",
+          "Aridisol",
+          "Entisol",
+          "Gelisol",
+          "Histosol",
+          "Inceptisol",
+          "Mollisol",
+          "Oxisol",
+          "Spodosol",
+          "Ultisol",
+          "Vertisol"
+        ]
+      },
+      "geo_loc_name": {
+        "title": "geographic location name",
+        "type": "string",
+        "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name and site. Formatted as [Country or sea names: region or state, site]",
+        "pattern": "^([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+):\\s?([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+),\\s?([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)$"
+      },
+      "weather": {
+        "title": "weather",
+        "type": "string",
+        "description": "The state of the atmosphere at a given time and place, with respect to variables such as temperature, moisture, wind velocity, and barometric pressure."
+      },
+      "fire": {
+        "title": "fire",
+        "type": "string",
+        "description": "Historical and/or physical evidence of fire. Format: YYYY-MM-DD",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$"
+      },
+      "flooding": {
+        "title": "flooding",
+        "type": "string",
+        "description": "Historical and/or physical evidence of flooding. Format: YYYY-MM-DD",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$"
+      },
+      "agrochem_addition": {
+        "title": "agrochemical additions",
+        "type": "string",
+        "description": "Addition of fertilizers, pesticides, etc. - amount and time of applications"
+      },
+      "crop_rotation": {
+        "title": "crop rotation",
+        "type": "string",
+        "description": "Whether or not crop is rotated, and if yes, rotation schedule"
+      },
+      "cur_land_use": {
+        "title": "current land use",
+        "type": "string",
+        "description": "Present state of sample site. This slot is NOT multivalued. Valid entries: badlands, cities, conifers, crop trees, farmstead, gravel, hardwoods, hayland, horticultural plants, industrial areas, intermixed, marshlands, meadows, mines quarries, mudflats, oil waste, pastureland, permanent snow or ice, rainforest, rangeland, roads railroads, rock, row crops, saline seeps, salt flats, sand, shrub crops, shrub land, small grains, successional shrub land, swamp, tropical, tundra, vegetable crops, vine crops",
+        "enum": [
+          "badlands",
+          "cities",
+          "conifers",
+          "crop trees",
+          "farmstead",
+          "gravel",
+          "hardwoods",
+          "hayland",
+          "horticultural plants",
+          "industrial areas",
+          "intermixed",
+          "marshlands",
+          "meadows",
+          "mines quarries",
+          "mudflats",
+          "oil waste",
+          "pastureland",
+          "permanent snow or ice",
+          "rainforest",
+          "rangeland",
+          "roads railroads",
+          "rock",
+          "row crops",
+          "saline seeps",
+          "salt flats",
+          "sand",
+          "shrub crops",
+          "shrub land",
+          "small grains",
+          "successional shrub land",
+          "swamp",
+          "tropical",
+          "tundra",
+          "vegetable crops",
+          "vine crops"
+        ]
+      },
+      "tillage": {
+        "title": "tillage",
+        "type": "string",
+        "description": "Note method(s) used for tilling",
+        "enum": [
+          "chisel",
+          "cutting disc",
+          "disc plough",
+          "drill",
+          "mouldboard",
+          "ridge till",
+          "strip tillage",
+          "tined",
+          "zonal tillage"
+        ]
+      },
+      "drainage_class": {
+        "title": "drainage class",
+        "type": "string",
+        "description": "Drainage classification from a standard system such as the USDA system",
+        "enum": [
+          "Excessively_Drained",
+          "Moderately_Well",
+          "Poorly",
+          "Somewhat_Poorly",
+          "Very_Poorly",
+          "Well"
+        ]
+      },
+      "ecoregion": {
+        "title": "ecoregion",
+        "type": "string",
+        "description": "Areas where ecosystems (and the type, quality, and quantity of environmental resources) are generally similar. A map of these regions can be found at https://www.neonscience.org/field-sites/about-field-sites. This field is NOT multivalued. Valid entries: Northeast, Mid Atlantic, Southeast, Atlantic Neotropical, Great Lakes, Prairie Peninsula, Appalachians / Cumberland Plateau, Ozarks Complex, Northern Plains, Central Plains, Southern Plains, Northern Rockies, Southern Rockies/ Colorado Plateau, Desert Southwest, Great Basin, Pacific Northwest, Pacific Southwest, Tundra, Taiga, Pacific Tropical",
+        "enum": [
+          "Northeast",
+          "Mid Atlantic",
+          "Southeast",
+          "Atlantic Neotropical",
+          "Great Lakes",
+          "Prairie Peninsula",
+          "Appalachians / Cumberland Plateau",
+          "Ozarks Complex",
+          "Northern Plains",
+          "Central Plains",
+          "Southern Plains",
+          "Northern Rockies",
+          "Southern Rockies/ Colorado Plateau",
+          "Desert Southwest",
+          "Great Basin",
+          "Pacific Northwest",
+          "Pacific Southwest",
+          "Tundra",
+          "Taiga",
+          "Pacific Tropical"
+        ]
+      },
+      "fao_class": {
+        "title": "FAO soil taxonomy classification",
+        "type": "string",
+        "description": "Soil classification from the FAO World Reference Database for Soil Resources. The list can be found at https://www.isric.org/explore/world-soil-distribution",
+        "enum": [
+          "Acrisols",
+          "Alisols",
+          "Andosols",
+          "Anthrosols",
+          "Arenosols",
+          "Calcisols",
+          "Cambisols",
+          "Chernozems",
+          "Cryosols",
+          "Durisols",
+          "Ferralsols",
+          "Fluvisols",
+          "Gleysols",
+          "Gypsisols",
+          "Histosols",
+          "Kastanozems",
+          "Leptosols",
+          "Lixisols",
+          "Luvisols",
+          "Nitisols",
+          "Phaeozems",
+          "Planosols",
+          "Plinthosols",
+          "Podzols",
+          "Solonchaks",
+          "Solonetz",
+          "Stagnosols",
+          "Technosols",
+          "Umbrisols",
+          "Vertisols"
+        ]
+      },
+      "cur_vegetation": {
+        "title": "current vegetation",
+        "type": "string",
+        "description": "Vegetation classification from one or more standard classification systems, or agricultural crop"
+      },
+      "cur_vegetation_meth": {
+        "title": "current vegetation method",
+        "type": "string",
+        "description": "Reference or method used in vegetation classification"
+      },
+      "infiltration_notes": {
+        "title": "infiltration notes",
+        "type": "string",
+        "description": "Provide any details, issues, or context needed to understand the infiltration activity"
+      },
+      "infiltration_1": {
+        "title": "first infiltration time",
+        "type": "string",
+        "description": "Amount of time it takes to accomplish the first infiltration activity. If infiltration time was started and unsuccessful, enter 'failed', if infiltration time was not attempted enter 'did not collect'. Units and format of mm:ss required. (Example: 15:20 mm:ss)",
+        "pattern": "^((0[0-9]|[1-5][0-9]):([0-5][0-9])\\smm:ss|did not collect|failed)"
+      },
+      "infiltration_2": {
+        "title": "second infiltration time",
+        "type": "string",
+        "description": "Amount of time it takes to accomplish the second infiltration activity. If infiltration time was started and unsuccessful, enter 'failed', if infiltration time was not attempted enter 'did not collect'. Units and format of mm:ss required. (Example: 15:20 mm:ss)",
+        "pattern": "^((0[0-9]|[1-5][0-9]):([0-5][0-9])\\smm:ss|did not collect|failed)"
+      },
+      "water_content_meth": {
+        "title": "water content method",
+        "type": "string",
+        "description": "Reference or method used in determining the water content of soil"
+      },
+      "link_climate_info": {
+        "title": "link to climate information",
+        "type": "string",
+        "description": "Link to climate resource"
+      },
+      "soil_type_meth": {
+        "title": "soil type method",
+        "type": "string",
+        "description": "Reference or method used in determining soil series name or other lower-level classification"
+      },
+      "previous_land_use": {
+        "title": "previous land use",
+        "type": "string",
+        "description": "Previous land use and dates"
+      },
+      "previous_land_use_meth": {
+        "title": "previous land use method",
+        "type": "string",
+        "description": "Reference or method used in determining previous land use and dates"
+      },
+      "watering_regm": {
+        "title": "watering regimen",
+        "type": "string",
+        "description": "Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens"
+      },
+      "chem_administration": {
+        "title": "chemical administration",
+        "type": "string",
+        "description": "List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi"
+      },
+      "extreme_event": {
+        "title": "extreme event",
+        "type": "string",
+        "description": "Unusual physical events that may have affected microbial populations. Format: YYYY-MM-DD",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$"
+      },
+      "env_broad_scale": {
+        "title": "broad-scale environmental context",
+        "type": "string",
+        "description": "Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO's biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS",
+        "pattern": "^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$"
+      },
+      "env_local_scale": {
+        "title": "local environmental context",
+        "type": "string",
+        "description": "Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html",
+        "pattern": "^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$"
+      },
+      "env_medium": {
+        "title": "environmental medium",
+        "type": "string",
+        "description": "Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS .",
+        "pattern": "^_*\\s*[a-zA-Z\\s\\-]+\\[ENVO:\\d+\\]$"
+      },
+      "lat_lon": {
+        "title": "latitude longitude",
+        "type": "string",
+        "description": "The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal format. Required format is decimal format with a comma separating the latitude, longitude.",
+        "pattern": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$"
+      },
+      "elev": {
+        "title": "elevation",
+        "type": "string",
+        "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface. (Unit: m).",
+        "pattern": "^\\d+(\\.\\d+)?\\s*m$"
+      },
+      "depth": {
+        "title": "depth",
+        "type": "string",
+        "description": "The vertical distance below local surface. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth is required to be reported as an interval for subsurface samples. (Units: cm or m)",
+        "pattern": "^\\d+(\\.\\d+)?-\\d+(\\.\\d+)?\\s*(m|cm)$"
+      },
+      "bulk_elect_conductivity": {
+        "title": "bulk electrical conductivity",
+        "type": "string",
+        "description": "Provide the bulk electrical conductivity readout from the Teros ZSC bluetooth sensor. If measurement was started and unsuccessful, enter 'failed', if measurement was not attempted enter 'did not collect'. (Unit: mS/cm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*mS/cm|did not collect|failed"
+      },
+      "water_content": {
+        "title": "water content",
+        "type": "string",
+        "description": "Water content measurement. This will be a readout from the Teros ZSC bluetooth sensor and requires a unit of 'm3/m3'. If measurement was started and unsuccessful, enter 'failed', if measurement was not attempted enter 'did not collect'.",
+        "pattern": "^\\d+(\\.\\d+)?\\s*m3/m3|did not collect|failed"
+      },
+      "temp": {
+        "title": "temperature",
+        "type": "string",
+        "description": "Temperature of the sample at the time of sampling. If measurement was started and unsuccessful, enter 'failed', if measurement was not attempted enter 'did not collect'. (Units: C)",
+        "pattern": "^-?\\d+(\\.\\d+)?\\s*C|did not collect|failed"
+      },
+      "slope_aspect": {
+        "title": "slope aspect",
+        "type": "string",
+        "description": "The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (degrees); e.g., 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration. (Unit: degrees)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*degrees$"
+      },
+      "slope_gradient": {
+        "title": "slope gradient",
+        "type": "string",
+        "description": "Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer. (Unit: percent)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*percent$"
+      },
+      "annual_precpt": {
+        "title": "average annual precipitation",
+        "type": "string",
+        "description": "The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*mm$"
+      },
+      "annual_temp": {
+        "title": "average annual temperature",
+        "type": "string",
+        "description": "Mean annual temperature (Unit: C)",
+        "pattern": "^-?\\d+(\\.\\d+)?\\s*C$"
+      },
+      "season_precpt": {
+        "title": "average seasonal precipitation",
+        "type": "string",
+        "description": "The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*mm$"
+      },
+      "season_temp": {
+        "title": "average seasonal temperature",
+        "type": "string",
+        "description": "Mean seasonal temperature (Unit: C)",
+        "pattern": "^-?\\d+(\\.\\d+)?\\s*C$"
+      },
+      "neon_plot_id": {
+        "title": "neon plot identifier",
+        "type": "string",
+        "description": "When sampling from a NEON site, provide the plot ID from which you sampled. This includes the 4 letter site code followed by the 3 digit ID (Example: DEJU_048). If you do not have your NEON site, use the code SITE_999.",
+        "pattern": "^[A-Z]{4}_\\d{3}$"
+      }
+    },
+    "required": [
+      "sample_name",
+      "storage_condt",
+      "samp_store_temp",
+      "shipped_sample_size",
+      "sampling_set",
+      "growth_facil",
+      "env_broad_scale",
+      "env_local_scale",
+      "env_medium",
+      "sample_collection_dev",
+      "collection_date",
+      "collection_time",
+      "ecoregion",
+      "geo_loc_name",
+      "lat_lon",
+      "elev",
+      "infiltration_1",
+      "infiltration_2",
+      "depth",
+      "cur_land_use",
+      "cur_vegetation",
+      "soil_type",
+      "soil_type_meth",
+      "bulk_elect_conductivity",
+      "temp",
+      "water_content"
+    ],
+    "type": "object"
+  },
+  "type": "array"
+}

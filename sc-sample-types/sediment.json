@@ -1,0 +1,793 @@
+{
+  "header": {
+    "title": "Sediment Sample Schema",
+    "version": "1.2.1",
+    "description": "Sediment Sample Schema for the AnalysisAPI"
+  },
+  "items": {
+    "additionalProperties": false,
+    "properties": {
+      "sample_name": {
+        "title": "sample name",
+        "type": "string",
+        "description": "ID that is present on the shipped sample. Human readable."
+      },
+      "other": {
+        "title": "other",
+        "type": "string",
+        "description": "Other details about your sample that you feel can't be accurately represented in the available columns."
+      },
+      "storage_condt": {
+        "title": "storage condition",
+        "type": "string",
+        "description": "The storage condition of the sample. This field is NOT multivalued. If selecting other, add the `other_storage_condt` attribute to provide additional detail.",
+        "enum": [
+          "fresh",
+          "frozen",
+          "lyophilized",
+          "other"
+        ]
+      },
+      "other_storage_condt": {
+        "title": "storage condition other",
+        "type": "string",
+        "description": "Please specify if 'other'"
+      },
+      "samp_store_temp": {
+        "title": "sample storage temperature",
+        "type": "string",
+        "description": "The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other, add the `other_samp_store_temp` attribute to provide additional detail.",
+        "enum": [
+          "4 C",
+          "room temperature",
+          "-20 C",
+          "-80 C",
+          "other"
+        ]
+      },
+      "other_samp_store_temp": {
+        "title": "sample storage tempetature other",
+        "type": "string",
+        "description": "Please specify if 'other'"
+      },
+      "analysis_type": {
+        "title": "analysis type",
+        "type": "string",
+        "description": "The analyses planned for this sample. The analysis types will later be mapped to an allocated resource. This field is constrained to contain only a set of limited terms. Include all the data types. This field can have multiple values separated by a ';'.",
+        "enum": [
+          "metabolome",
+          "proteome",
+          "lipidome",
+          "organic matter",
+          "molecular structure",
+          "chemical speciation mapping",
+          "genome",
+          "transcriptome",
+          "isotope profiling",
+          "imaging- xray",
+          "imaging- electron",
+          "imaging- ion",
+          "imaging- light",
+          "hydraulic properties",
+          "unknown"
+        ]
+      },
+      "technical_reps": {
+        "title": "technical replicates",
+        "type": "integer",
+        "description": "If sending technical replicates of the same sample, indicate the replicate number here."
+      },
+      "replicate_number": {
+        "title": "replicate number",
+        "type": "integer",
+        "description": "If samples are biological replicates, indicate the replicate number here."
+      },
+      "source_mat_ID": {
+        "title": "source material identifier",
+        "type": "string",
+        "description": "A unique identifier assigned to an original material sample collected or to any derived sub-samples. The source material should be listed as a sample to inform details about parent material relationship."
+      },
+      "sample_link": {
+        "title": "sample link",
+        "type": "string",
+        "description": "A unique identifier to assign parent-child, subsample, or sibling samples. This is relevant when a sample or other material was used to generate the new sample. This field allows multiple entries separated by ; (Examples: Soil collected from the field will link with the soil used in an incubation. The soil a plant was grown in links to the plant sample. An original culture sample was transferred to a new vial and generated a new sample)"
+      },
+      "growth_facil": {
+        "title": "growth facility",
+        "type": "string",
+        "description": "Type of facility or location from where the sample was collected or grown. This field is NOT multivalued. If selecting other, add the `other_growth_facil` attribute to provide additional detail.",
+        "enum": [
+          "field",
+          "commercially purchased",
+          "experimental garden",
+          "field incubation",
+          "greenhouse",
+          "growth chamber",
+          "lab incubation",
+          "open top chamber",
+          "other"
+        ]
+      },
+      "other_growth_facil": {
+        "title": "growth facility other",
+        "type": "string",
+        "description": "Please specify if other"
+      },
+      "collection_date": {
+        "title": "collection date",
+        "type": "string",
+        "description": "The date of sampling as an instance. Format: YYYY-MM-DD. Also valid, if entire collection date is unknown is just year (YYYY) or just year and month (YYYY-MM)",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$"
+      },
+      "collection_time": {
+        "title": "collection time",
+        "type": "string",
+        "description": "The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)",
+        "pattern": "^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$"
+      },
+      "sample_collection_dev": {
+        "title": "sample collection device",
+        "type": "string",
+        "description": "The device used to collect an environmental sample. Include dimensions of device if applicable"
+      },
+      "other_treatment": {
+        "title": "other treatment",
+        "type": "string",
+        "description": "Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy, please add it here. Multiple treatments can be entered here, separated by ;"
+      },
+      "misc_param": {
+        "title": "miscellaneous parameter",
+        "type": "string",
+        "description": "Any other measurement performed or parameter collected, that is not listed here"
+      },
+      "shipped_sample_size": {
+        "title": "shipped sample size",
+        "type": "string",
+        "description": "Total amount of sample sent to EMSL. Must include units.",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "sample_collected": {
+        "title": "sample collected",
+        "type": "string",
+        "description": "This referes to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "sample_collection_method": {
+        "title": "sample collection method",
+        "type": "string",
+        "description": "The method employed for collecting the sample. This can be a citation or description"
+      },
+      "geo_loc_name": {
+        "title": "geographic location name",
+        "type": "string",
+        "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name and site. Formatted as [Country or sea names: region or state, site]",
+        "pattern": "^([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+):\\s?([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+),\\s?([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)$"
+      },
+      "water_content_meth": {
+        "title": "water content method",
+        "type": "string",
+        "description": "Reference or method used in determining the water content of soil"
+      },
+      "fire": {
+        "title": "fire",
+        "type": "string",
+        "description": "Historical and/or physical evidence of fire. Format: YYYY-MM-DD",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$"
+      },
+      "flooding": {
+        "title": "flooding",
+        "type": "string",
+        "description": "Historical and/or physical evidence of flooding. Format: YYYY-MM-DD",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$"
+      },
+      "perturbation": {
+        "title": "perturbation",
+        "type": "string",
+        "description": "Type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with perturbation regimen including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types"
+      },
+      "weather": {
+        "title": "weather",
+        "type": "string",
+        "description": "The state of the atmosphere at a given time and place, with respect to variables such as temperature, moisture, wind velocity, and barometric pressure."
+      },
+      "sediment_type": {
+        "title": "sediment type",
+        "type": "string",
+        "description": "Information about the sediment type based on major constituents",
+        "enum": [
+          "biogenous",
+          "cosmogenous",
+          "hydrogenous",
+          "lithogenous"
+        ]
+      },
+      "ph": {
+        "title": "ph",
+        "type": "number",
+        "description": "pH measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid"
+      },
+      "ph_meth": {
+        "title": "ph method",
+        "type": "string",
+        "description": "Reference or method used in determining ph"
+      },
+      "sample_processing": {
+        "title": "sample processing",
+        "type": "string",
+        "description": "A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed."
+      },
+      "start_date_inc": {
+        "title": "incubation start date",
+        "type": "string",
+        "description": "Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$"
+      },
+      "sieving": {
+        "title": "sieving",
+        "type": "string",
+        "description": "Collection design of pooled samples and/or sieve size and amount of sample sieved"
+      },
+      "watering_regm": {
+        "title": "watering regimen",
+        "type": "string",
+        "description": "Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens"
+      },
+      "air_temp_regm": {
+        "title": "air temperature regimen",
+        "type": "string",
+        "description": "Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens"
+      },
+      "chem_administration": {
+        "title": "chemical administration",
+        "type": "string",
+        "description": "List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi"
+      },
+      "isotope_exposure": {
+        "title": "isotope exposure",
+        "type": "string",
+        "description": "List isotope exposure or addition applied to your sample."
+      },
+      "gaseous_environment": {
+        "title": "gaseous environment",
+        "type": "string",
+        "description": "Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens"
+      },
+      "humidity_regm": {
+        "title": "humidity regimen",
+        "type": "string",
+        "description": "Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens"
+      },
+      "light_regm": {
+        "title": "light regimen",
+        "type": "string",
+        "description": "Information about treatment(s) involving exposure to light, including both light intensity and quality."
+      },
+      "biotic_regm": {
+        "title": "biotic regimen",
+        "type": "string",
+        "description": "Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi."
+      },
+      "extraction_method": {
+        "title": "extraction method",
+        "type": "string",
+        "description": "If you, the user, performed an extraction, preparation, or processing before sending the sample to EMSL, what was it? This is only applicable when sending an 'analytical sample'. See README for more details on types of samples."
+      },
+      "method_development": {
+        "title": "method development",
+        "type": "string",
+        "description": "If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve."
+      },
+      "experimental_factor": {
+        "title": "experimental factor",
+        "type": "string",
+        "description": "Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms, please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI"
+      },
+      "experimental_factor_other": {
+        "title": "experimental factor other",
+        "type": "string",
+        "description": "Other details about your sample that you feel can't be accurately represented in the available columns."
+      },
+      "oxygen_relationship": {
+        "title": "oxygen relationship",
+        "type": "string",
+        "description": "Oxygenation status of sample",
+        "enum": [
+          "aerobic",
+          "anaerobic",
+          "anoxic",
+          "facultative",
+          "microaerophilic",
+          "microanaerobe",
+          "obligate aerobe",
+          "obligate anaerobe"
+        ]
+      },
+      "samp_biotic_relationship": {
+        "title": "sample biotic relationship",
+        "type": "string",
+        "description": "Description of relationship(s) between the subject organism and other organism(s) it is associated with. The target organism is the subject of the relationship, and the other organism(s) is the object",
+        "enum": [
+          "free_living",
+          "parasite",
+          "commensal",
+          "symbiont"
+        ]
+      },
+      "extreme_event": {
+        "title": "extreme event",
+        "type": "string",
+        "description": "Unusual physical events that may have affected microbial populations. Format: YYYY-MM-DD",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$"
+      },
+      "tot_org_c_meth": {
+        "title": "total organic carbon method",
+        "type": "string",
+        "description": "Reference or method used in determining total organic carbon"
+      },
+      "tot_nitro_cont_meth": {
+        "title": "total nitrogen content method",
+        "type": "string",
+        "description": "Reference or method used in determining the total nitrogen"
+      },
+      "salinity_method": {
+        "title": "salinity method",
+        "type": "string",
+        "description": "Method used to determine sample salinity"
+      },
+      "microbial_biomass_meth": {
+        "title": "microbial biomass method",
+        "type": "string",
+        "description": "Reference or method used in determining microbial biomass"
+      },
+      "micro_biomass_c_meth": {
+        "title": "microbial biomass carbon method",
+        "type": "string",
+        "description": "Reference or method used in determining microbial biomass"
+      },
+      "micro_biomass_n_meth": {
+        "title": "microbial biomass nitrogen method",
+        "type": "string",
+        "description": "Reference or method used in determining microbial biomass nitrogen"
+      },
+      "org_nitro": {
+        "title": "organic nitrogen concentration",
+        "type": "string",
+        "description": "Concentration of organic nitrogen. Provide value and unit, any unit is valid",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "org_nitro_method": {
+        "title": "organic nitrogen method",
+        "type": "string",
+        "description": "Method used for obtaining organic nitrogen"
+      },
+      "non_microb_biomass_method": {
+        "title": "non microbial biomass method",
+        "type": "string",
+        "description": "Reference or method used in determining biomass"
+      },
+      "redox_potential": {
+        "title": "redox potential",
+        "type": "string",
+        "description": "Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential, (Unit: mV)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*mV$"
+      },
+      "tidal_stage": {
+        "title": "tidal stage",
+        "type": "string",
+        "description": "Stage of tide",
+        "enum": [
+          "low_tide",
+          "high_tide",
+          "ebb_tide",
+          "flood_tide"
+        ]
+      },
+      "alkalinity_method": {
+        "title": "alkalinity method",
+        "type": "string",
+        "description": "Method used for alkalinity measurement"
+      },
+      "env_broad_scale": {
+        "title": "broad-scale environmental context",
+        "type": "string",
+        "description": "Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO's biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS",
+        "pattern": "^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$"
+      },
+      "env_local_scale": {
+        "title": "local environmental context",
+        "type": "string",
+        "description": "Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html",
+        "pattern": "^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$"
+      },
+      "env_medium": {
+        "title": "environmental medium",
+        "type": "string",
+        "description": "Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS .",
+        "pattern": "^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$"
+      },
+      "lat_lon": {
+        "title": "latitude longitude",
+        "type": "string",
+        "description": "The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal format. Required format is decimal format with a comma separating the latitude, longitude.",
+        "pattern": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$"
+      },
+      "elev": {
+        "title": "elevation",
+        "type": "string",
+        "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface. (Unit: m).",
+        "pattern": "^\\d+(\\.\\d+)?\\s*m$"
+      },
+      "depth": {
+        "title": "depth",
+        "type": "string",
+        "description": "The vertical distance below local surface. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth is required to be reported as an interval for subsurface samples. (Units: m)",
+        "pattern": "^\\d+(\\.\\d+)?-\\d+(\\.\\d+)?\\s*m$"
+      },
+      "water_content": {
+        "title": "water content",
+        "type": "string",
+        "description": "Water content measurement. Provide value and unit, any unit is valid.",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "temp": {
+        "title": "temperature",
+        "type": "string",
+        "description": "Temperature of the sample at the time of sampling. (Units: C)",
+        "pattern": "^-?\\d+(\\.\\d+)?\\s*C$"
+      },
+      "tot_org_carb": {
+        "title": "total organic carbon",
+        "type": "string",
+        "description": "Total organic carbon content. Provided as gram of Carbon per kg of your sample material. (Unit: g C/kg)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*g C/kg$"
+      },
+      "tot_nitro_content": {
+        "title": "total nitrogen content",
+        "type": "string",
+        "description": "Total nitrogen content of the sample. Provide value and unit, any unit is valid",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "org_carb": {
+        "title": "organic carbon concentration",
+        "type": "string",
+        "description": "Concentration of organic carbon. Provide value and unit, any unit is valid",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "salinity": {
+        "title": "salinity concentration",
+        "type": "string",
+        "description": "Salinity is the total concentration of all dissolved salts in sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(practical salinity unit|percent)$"
+      },
+      "microbial_biomass": {
+        "title": "microbial biomass",
+        "type": "string",
+        "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units. (Unit: g/kg sediment or ug/g sediment)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(g/kg sediment|ug/g sediment)$"
+      },
+      "microbial_biomass_c": {
+        "title": "microbial biomass carbon",
+        "type": "string",
+        "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units. Provide value and unit, any unit is valid",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "microbial_biomass_n": {
+        "title": "microbial biomass nitrogen",
+        "type": "string",
+        "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units. Provide value and unit, any unit is valid",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "non_microb_biomass": {
+        "title": "non microbial biomass",
+        "type": "string",
+        "description": "Amount of non-microbial biomass measured. Include the name for the part of biomass measured, e.g.insect, plant, total. Provide value and unit, any unit is valid. (example: insect 5mg; plant 2ug/mL)",
+        "pattern": "^(\\S+\\s+\\d+\\s*\\S+)(;\\s*\\S+\\s+\\d+\\s*\\S+)*$"
+      },
+      "annual_precpt": {
+        "title": "average annual precipitation",
+        "type": "string",
+        "description": "The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*mm$"
+      },
+      "annual_temp": {
+        "title": "average annual temperature",
+        "type": "string",
+        "description": "Mean annual temperature (Unit: C)",
+        "pattern": "^-?\\d+(\\.\\d+)?\\s*C$"
+      },
+      "season_precpt": {
+        "title": "average seasonal precipitation",
+        "type": "string",
+        "description": "The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)",
+        "pattern": "-?^\\d+(\\.\\d+)?\\s*mm$"
+      },
+      "season_temp": {
+        "title": "average seasonal temperature",
+        "type": "string",
+        "description": "Mean seasonal temperature (Unit: C)",
+        "pattern": "^-?\\d+(\\.\\d+)?\\s*C$"
+      },
+      "density": {
+        "title": "density",
+        "type": "string",
+        "description": "Density of the sample, which is its mass per unit volume (aka volumetric mass density) (Unit: g/m3 or g/cm3)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(g/m3|g/cm3)$"
+      },
+      "pressure": {
+        "title": "pressure",
+        "type": "string",
+        "description": "Pressure to which the sample is subject to, in atmospheres (Unit: atm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*atm$"
+      },
+      "tot_depth_water_col": {
+        "title": "total water column depth",
+        "type": "string",
+        "description": "Measurement of total depth of water column (Unit: m)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*m$"
+      },
+      "turbidity": {
+        "title": "turbidity",
+        "type": "string",
+        "description": "Measure of the amount of cloudiness or haziness in water caused by individual particles. Provide value and unit, any unit is valid.",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "methane": {
+        "title": "methane concentration",
+        "type": "string",
+        "description": "Methane (gas) amount or concentration at the time of sampling. (Unit: umol/L or ppb or ppm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(umol/L|ppm|ppb)$"
+      },
+      "particle_class": {
+        "title": "particle class",
+        "type": "string",
+        "description": "Particles are classified, based on their size, into six general categories: clay, silt, sand, gravel, cobbles, and boulders. Include amount of particle, with units, preceded by the name of the particle type; can include multiple values separated by ';'."
+      },
+      "porosity": {
+        "title": "porosity",
+        "type": "string",
+        "description": "Porosity of deposited sediment is volume of voids divided by the total volume of sample (Unit: percent)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*percent$"
+      },
+      "diss_carb_dioxide": {
+        "title": "dissolved carbon dioxide concentration",
+        "type": "string",
+        "description": "Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample (Unit: umol/L or mg/L)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(umol|mg)/L$"
+      },
+      "diss_hydrogen": {
+        "title": "dissolved hydrogen concentration",
+        "type": "string",
+        "description": "Concentration of dissolved hydrogens (Unit: umol/L)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*umol/L$"
+      },
+      "diss_inorg_carb": {
+        "title": "dissolved inorganic carbon concentration",
+        "type": "string",
+        "description": "Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter (Unit:  ug/L or mg/L or ppm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(ug/L|mg/L|ppm)$"
+      },
+      "diss_org_carb": {
+        "title": "dissolved organic carbon concentration",
+        "type": "string",
+        "description": "Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid. (Unit:  umol/L or mg/L)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(umol/L|mg/L)$"
+      },
+      "diss_org_nitro": {
+        "title": "dissolved organic nitrogen concentration",
+        "type": "string",
+        "description": "Dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2. Provide value and unit, any unit is valid",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "diss_oxygen": {
+        "title": "dissolved oxygen concentration",
+        "type": "string",
+        "description": "Concentration of dissolved oxygen. (Unit: umol/kg or mg/L)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(umol/kg|mg/L)$"
+      },
+      "glucosidase_act": {
+        "title": "glucosidase activity",
+        "type": "string",
+        "description": "Measurement of glucosidase activity (Unit: mol/L/h)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*mol/L/h$"
+      },
+      "magnesium": {
+        "title": "magnesium concentration",
+        "type": "string",
+        "description": "Concentration of magnesium in the sample (Unit: umol/kg or mol/L or mg/L or ppm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(umol/kg|mol/L|mg/L|ppm)$"
+      },
+      "mean_frict_vel": {
+        "title": "mean friction velocity",
+        "type": "string",
+        "description": "Measurement of mean friction velocity (Unit: m/s)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*m/s$"
+      },
+      "mean_peak_frict_vel": {
+        "title": "mean peak friction velocity",
+        "type": "string",
+        "description": "Measurement of mean peak friction velocitys (Unit: m/s)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*m/s$"
+      },
+      "n_alkanes": {
+        "title": "normal alkane concentration",
+        "type": "string",
+        "description": "Concentration of n-alkanes; can include multiple n-alkanes (Unit: ug/mL)"
+      },
+      "nitrite": {
+        "title": "nitrite concentration",
+        "type": "string",
+        "description": "Concentration of nitrite in the sample (Unit: umol/L or mg/L or ppm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$"
+      },
+      "nitro": {
+        "title": "nitrogen concentration",
+        "type": "string",
+        "description": "Concentration of nitrogen (total) (Unit: umol/L)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*umol/L$"
+      },
+      "org_matter": {
+        "title": "organic matter concentration",
+        "type": "string",
+        "description": "Concentration of organic matter (Unit: mg/L)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*mg/L$"
+      },
+      "part_org_carb": {
+        "title": "particulate organic carbon concentration",
+        "type": "string",
+        "description": "Concentration of particulate organic carbon. Provide value and unit, any unit is valid.",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "petroleum_hydrocarb": {
+        "title": "petroleum hydrocarbon concentration",
+        "type": "string",
+        "description": "Concentration of petroleum hydrocarbon (Unit: umol/L)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*umol/L$"
+      },
+      "phaeopigments": {
+        "title": "phaeopigments concentration",
+        "type": "string",
+        "description": "Concentration of phaeopigments; can include multiple phaeopigments separated by a `;` (Unit: mg/cm3)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*mg/cm3(;\\s*\\d+(\\.\\d+)?\\s*mg/cm3)*$"
+      },
+      "phosplipid_fatt_acid": {
+        "title": "phospholipid fatty acid concentration",
+        "type": "string",
+        "description": "Concentration of phospholipid fatty acids; can include multiple values separated by `;`. Provide the phospholipid fatty acids followed by the measurement value ({phospholipid fatty acid name},{value} {unit})"
+      },
+      "potassium": {
+        "title": "potassium concentration",
+        "type": "string",
+        "description": "Concentration of potassium in the sample (Unit: mg/L)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(mg/L|ppm)$"
+      },
+      "diether_lipids": {
+        "title": "diether lipids concentration",
+        "type": "string",
+        "description": "Concentration of diether lipids; can include multiple types of diether lipids (Unit: ng/L)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*ng/L$"
+      },
+      "silicate": {
+        "title": "silicate concentration",
+        "type": "string",
+        "description": "Concentration of silicate (Unit: umol/L)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*umol/L$"
+      },
+      "sulfate": {
+        "title": "sulfate concentration",
+        "type": "string",
+        "description": "Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$"
+      },
+      "sulfide": {
+        "title": "sulfide concentration",
+        "type": "string",
+        "description": "Concentration of sulfide in the sample. (Unit: umol/L or mg/L or ppm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$"
+      },
+      "alkalinity": {
+        "title": "alkalinity",
+        "type": "string",
+        "description": "Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate (Unit: mg/L or meq/L)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(mg|meq)/L$"
+      },
+      "nitrate": {
+        "title": "nitrate concentration",
+        "type": "string",
+        "description": "Concentration of nitrate in the sample (Unit: umol/L or mg/L or ppm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$"
+      },
+      "phosphate": {
+        "title": "phosphate concentration",
+        "type": "string",
+        "description": "Concentration of phosphate (Unit: umol/L)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*umol/L$"
+      },
+      "sodium": {
+        "title": "sodium concentration",
+        "type": "string",
+        "description": "Sodium concentration in the sample (Unit: ug/mL)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*ug/mL$"
+      },
+      "tot_carb": {
+        "title": "total carbon content",
+        "type": "string",
+        "description": "Total carbon content. Provide value and unit, any unit is valid",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "alkyl_diethers": {
+        "title": "alkyl diethers concentration",
+        "type": "string",
+        "description": "Concentration of alkyl diethers. Provide value and unit, any unit is valid",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "aminopept_act": {
+        "title": "aminopeptidase activity",
+        "type": "string",
+        "description": "Measurement of aminopeptidase activity (Unit: mol/L/h",
+        "pattern": "^\\d+(\\.\\d+)?\\s*mol/L/h$"
+      },
+      "ammonium": {
+        "title": "ammonium concentration",
+        "type": "string",
+        "description": "Concentration of ammonium in the sample. (Units: umol/L or mg/Liter or ppm",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$"
+      },
+      "bacteria_carb_prod": {
+        "title": "bacterial carbon production",
+        "type": "number",
+        "description": "Measurement of bacterial carbon production. Provide value and unit, any unit is valid",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$"
+      },
+      "bishomohopanol": {
+        "title": "bishomohopanol concentration",
+        "type": "number",
+        "description": "Concentration of bishomohopanol. (Unit: ug/L or ug/g)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(ug/L|ug/g)$"
+      },
+      "bromide": {
+        "title": "bromide concentration",
+        "type": "string",
+        "description": "Concentration of bromide (Unit: ppm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*ppm$"
+      },
+      "calcium": {
+        "title": "calcium concentration",
+        "type": "string",
+        "description": "Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(mg/L|umol/L|ppm)$"
+      },
+      "carb_nitro_ratio": {
+        "title": "carbon nitrogen ratio",
+        "type": "string",
+        "description": "Ratio of amount or concentrations of carbon to nitrogen."
+      },
+      "chloride": {
+        "title": "chloride concentration",
+        "type": "string",
+        "description": "Concentration of chloride in the sample (Unit: mg/L or ppm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(mg/L|ppm)$"
+      },
+      "chlorophyll": {
+        "title": "chlorophyll concentration",
+        "type": "string",
+        "description": "Concentration of chlorophyll (Unit: mg/m3 or ug/L)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(mg/m3|ug/L)$"
+      }
+    },
+    "required": [
+      "sample_name",
+      "storage_condt",
+      "samp_store_temp",
+      "analysis_type",
+      "shipped_sample_size",
+      "growth_facil",
+      "collection_date",
+      "geo_loc_name",
+      "lat_lon",
+      "elev",
+      "depth"
+    ],
+    "type": "object"
+  },
+  "type": "array"
+}
