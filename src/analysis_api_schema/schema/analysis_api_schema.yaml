@@ -63,7 +63,7 @@ classes:
         range: InstitutionEnum
         description: The institution where the activity took place.
       protocol_link:
-        range: Protocol 
+        range: string 
         description: A link to a protocol that describes the steps and parameters of the activity.
       started_at_time:
         range: datetime
@@ -491,20 +491,3 @@ classes:
         required: true
       count:
         range: numeric
-
-  Protocol:
-    description: >-
-      A protocol document or standard operating procedure (SOP) used in a 
-      process. This class represents a reference to a document, it does NOT 
-      represent all of the processes done according to a protocol, processes
-      should be modeled using appropriate Activity classes.
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      url:
-        range: string
-        description: URL link to the protocol document or resource.
-    slots:
-      - name
-      - description

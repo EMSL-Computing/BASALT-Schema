@@ -169,6 +169,11 @@ slots:
     description: Sensitivity the entity has if exposed (e.g. light-sensitive, oxygen-sensitive)
     range: string
     multivalued: true
+  
+  external_identifiers:
+    description: List of external identifiers associated with this entity or activity.
+    range: uriorcurie
+    multivalued: true
 
   fid:
     range: double
@@ -346,6 +351,10 @@ slots:
     range: string
     required: true
 
+  nucleotide_sequencing_category:
+    description: The category of nucleotide sequencing performed (e.g., amplicon, shotgun).
+    range: NucleotideSequencingEnum
+
   oxygen_relationship:
     title: oxygen relationship
     description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
@@ -412,6 +421,10 @@ slots:
   produced_by_ms_run:
     description: a reference to the data generation activity that produced instrument data
     range: MassSpectrometryDataGenerationActivity
+  
+  produced_by_sequencing_activity:
+    description: Link back to the NucleotideSequencing activity that produced this data.
+    range: NucleotideSequencing
 
   project:
     title: Project

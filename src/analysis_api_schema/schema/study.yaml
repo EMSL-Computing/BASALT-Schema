@@ -24,6 +24,8 @@ imports:
 classes:
 
   Study:
+    slots:
+      - external_identifiers
     attributes:
       id:
         identifier: true
@@ -77,10 +79,9 @@ classes:
         multivalued: true
       # associated dois and funding sources may be redundant if they're both
       # just gonna link to EMSL award DOIs
-      external_identifiers:
-        range: uriorcurie
-        multivalued: true
-        description: List of external identifiers (e.g., from GOLD) associated with this project. NOT a 1:1 mapping, rather, did you also sequence these at GOLD? What was that project ID? Could be folded into associated_dois.
+    slot_usage:
+      - external_identifiers:
+          description: List of project- or study-level identifiers (e.g., GOLD study ID) representing this project.
 
   ProjectParticipant:
     description: A record of a person and their role on an EMSL project.
