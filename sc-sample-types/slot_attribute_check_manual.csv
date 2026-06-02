@@ -1,11 +1,4 @@
 slot,property,value,sample_type_count,sample_types,primary_or_modification
-CAS,description,A unique numerical identifier assigned by the Chemical Abstract Service (CAS) a division of the American Chemical Society to chemical compounds polymers biological sequences mixtures and alloys.,1,other-undescribed,primary
-CAS,title,CAS number,1,other-undescribed,primary
-CAS,type,string,1,other-undescribed,primary
-LIMS_ID,description,An EMSL internal LIMS identifier for your sample. This will be provided by the MPOC and should not be edited.,1,monet-soil,primary
-LIMS_ID,pattern,^INGEST_SAMPLE_\d{9}$,1,monet-soil,primary
-LIMS_ID,title,LIMS ID,1,monet-soil,primary
-LIMS_ID,type,string,1,monet-soil,primary
 agrochem_addition,description,Addition of fertilizers pesticides etc. - amount and time of applications,3,"other-undescribed, soil, monet-soil",primary
 agrochem_addition,title,agrochemical addition,2,"other-undescribed, soil",primary
 agrochem_addition,title,agrochemical additions,1,monet-soil,modification
@@ -13,9 +6,9 @@ agrochem_addition,type,string,3,"other-undescribed, soil, monet-soil",primary
 air_temp_regm,description,Information about treatment involving an exposure to varying temperatures; should include the temperature treatment regimen including how many times the treatment was repeated how long each treatment lasted and the start and end time of the entire treatment; can include different temperature regimens,12,"field-deployed-terraform, other-undescribed, soil, water, aerosol, aerosol-arm, pure-culture, culture-environmental, mixed-culture, sediment, terraform, plant",primary
 air_temp_regm,title,air temperature regimen,12,"field-deployed-terraform, other-undescribed, soil, water, aerosol, aerosol-arm, pure-culture, culture-environmental, mixed-culture, sediment, terraform, plant",primary
 air_temp_regm,type,string,12,"field-deployed-terraform, other-undescribed, soil, water, aerosol, aerosol-arm, pure-culture, culture-environmental, mixed-culture, sediment, terraform, plant",primary
-al_sat,description,Aluminum saturation (esp. For tropical soils),1,other-undescribed,manual_review
-al_sat,description,Aluminum saturation (esp. For tropical soils) (Unit: percent),1,soil,manual_review
-al_sat,pattern,^\d+(\.\d+)?\s*percent$,1,soil,primary
+al_sat,description,Aluminum saturation (esp. For tropical soils),1,other-undescribed,primary
+al_sat,description,Aluminum saturation (esp. For tropical soils) (Unit: percent),1,soil,modification
+al_sat,pattern,^\d+(\.\d+)?\s*percent$,1,soil,modification
 al_sat,title,aluminum saturation,2,"other-undescribed, soil",primary
 al_sat,type,string,2,"other-undescribed, soil",primary
 al_sat_meth,description,Reference or method used in determining Al saturation,2,"other-undescribed, soil",primary
@@ -77,18 +70,18 @@ annual_temp,type,string,7,"other-undescribed, soil, aerosol, aerosol-arm, sedime
 antibiotic_regm,description,Information about treatment involving antibiotic administration; should include the name of antibiotic amount administered treatment regimen including how many times the treatment was repeated how long each treatment lasted and the start and end time of the entire treatment; can include multiple antibiotic regimens,1,other-undescribed,primary
 antibiotic_regm,title,antibiotic regimen,1,other-undescribed,primary
 antibiotic_regm,type,string,1,other-undescribed,primary
-atmospheric_data,description,Measurement of atmospheric data; can include multiple data,1,other-undescribed,manual_review
-atmospheric_data,description,Measurement of atmospheric data; can include multiple data. Formatted as measurement data and value (example wind speed 9 knots).,1,water,manual_review
+atmospheric_data,description,Measurement of atmospheric data; can include multiple data,1,other-undescribed,primary
+atmospheric_data,description,Measurement of atmospheric data; can include multiple data. Formatted as measurement data and value (example wind speed 9 knots).,1,water,modification
 atmospheric_data,title,atmospheric data,2,"other-undescribed, water",primary
 atmospheric_data,type,string,2,"other-undescribed, water",primary
-bac_prod,description,Bacterial production in the water column measured by isotope uptake,1,other-undescribed,manual_review
-bac_prod,description,Bacterial production in the water column measured by isotope uptake. Provide value and unit any unit is valid.,1,water,manual_review
-bac_prod,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,primary
+bac_prod,description,Bacterial production in the water column measured by isotope uptake,1,other-undescribed,primary
+bac_prod,description,Bacterial production in the water column measured by isotope uptake. Provide value and unit any unit is valid.,1,water,modification
+bac_prod,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,modification
 bac_prod,title,bacterial production,2,"other-undescribed, water",primary
 bac_prod,type,string,2,"other-undescribed, water",primary
-bac_resp,description,Measurement of bacterial respiration in the water column,1,other-undescribed,manual_review
-bac_resp,description,Measurement of bacterial respiration in the water column. Provide value and unit any unit is valid.,1,water,manual_review
-bac_resp,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,primary
+bac_resp,description,Measurement of bacterial respiration in the water column,1,other-undescribed,primary
+bac_resp,description,Measurement of bacterial respiration in the water column. Provide value and unit any unit is valid.,1,water,modification
+bac_resp,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,modification
 bac_resp,title,bacterial respiration,2,"other-undescribed, water",primary
 bac_resp,type,string,2,"other-undescribed, water",primary
 bacteria_carb_prod,description,Measurement of bacterial carbon production,1,other-undescribed,modification
@@ -120,9 +113,9 @@ bromide,pattern,^\d+(\.\d+)?\s*ppm$,2,"water, sediment",primary
 bromide,title,bromide,2,"other-undescribed, water",primary
 bromide,title,bromide concentration,1,sediment,modification
 bromide,type,string,3,"other-undescribed, water, sediment",primary
-bulk_elect_conductivity,description,Electrical conductivity is a measure of the ability to carry electric current which is mostly dictated by the chemistry of and amount of water. (Unit: mS/cm),1,soil,manual_review
-bulk_elect_conductivity,description,Electrical conductivity is a measure of the bulk soil ability to carry electric current which is mostly dictated by the chemistry of and amount of soil water. (Unit: mS/cm),1,other-undescribed,manual_review
-bulk_elect_conductivity,description,Provide the bulk electrical conductivity readout from the Teros ZSC bluetooth sensor. If measurement was started and unsuccessful enter 'failed' if measurement was not attempted enter 'did not collect'. (Unit: mS/cm),1,monet-soil,manual_review
+bulk_elect_conductivity,description,Electrical conductivity is a measure of the ability to carry electric current which is mostly dictated by the chemistry of and amount of water. (Unit: mS/cm),1,soil,modification
+bulk_elect_conductivity,description,Electrical conductivity is a measure of the bulk soil ability to carry electric current which is mostly dictated by the chemistry of and amount of soil water. (Unit: mS/cm),1,other-undescribed,primary
+bulk_elect_conductivity,description,Provide the bulk electrical conductivity readout from the Teros ZSC bluetooth sensor. If measurement was started and unsuccessful enter 'failed' if measurement was not attempted enter 'did not collect'. (Unit: mS/cm),1,monet-soil,modification
 bulk_elect_conductivity,pattern,^\d+(\.\d+)?\s*mS/cm$,2,"other-undescribed, soil",primary
 bulk_elect_conductivity,pattern,^\d+(\.\d+)?\s*mS/cm|did not collect|failed,1,monet-soil,modification
 bulk_elect_conductivity,title,bulk electrical conductivity,3,"other-undescribed, soil, monet-soil",primary
@@ -133,18 +126,18 @@ calcium,pattern,^\d+(\.\d+)?\s*(mg/L|umol/L|ppm)$,2,"water, sediment",primary
 calcium,title,calcium,2,"other-undescribed, water",primary
 calcium,title,calcium concentration,1,sediment,modification
 calcium,type,string,3,"other-undescribed, water, sediment",primary
-carb_dioxide,description,Amount of carbon dioxide measured in the air the day of sampling. (Unit: umol/L or ppm),1,aerosol,manual_review
-carb_dioxide,description,Amount of carbon dioxide measured in the air the day of sampling. Provided by ARM,1,other-undescribed,manual_review
-carb_dioxide,description,Amount of carbon dioxide measured in the air the day of sampling. Provided by ARM. Provide value and unit any unit is valid,1,aerosol-arm,manual_review
-carb_dioxide,pattern,^\d+(\.\d+)?\s*(umol/L|ppm)$,1,aerosol,manual_review
-carb_dioxide,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,aerosol-arm,manual_review
+carb_dioxide,description,Amount of carbon dioxide measured in the air the day of sampling. (Unit: umol/L or ppm),1,aerosol,primary
+carb_dioxide,description,Amount of carbon dioxide measured in the air the day of sampling. Provided by ARM,1,other-undescribed,modification
+carb_dioxide,description,Amount of carbon dioxide measured in the air the day of sampling. Provided by ARM. Provide value and unit any unit is valid,1,aerosol-arm,modification
+carb_dioxide,pattern,^\d+(\.\d+)?\s*(umol/L|ppm)$,1,aerosol,primary
+carb_dioxide,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,aerosol-arm,modification
 carb_dioxide,title,carbon dioxide,3,"other-undescribed, aerosol, aerosol-arm",primary
 carb_dioxide,type,string,3,"other-undescribed, aerosol, aerosol-arm",primary
-carb_monoxide,description,Amount of carbon monoxide measured in the air the day of sampling. (Unit: umol/L or ppm),1,aerosol,manual_review
-carb_monoxide,description,Amount of carbon monoxide measured in the air the day of sampling. Provided by ARM,1,other-undescribed,manual_review
-carb_monoxide,description,Amount of carbon monoxide measured in the air the day of sampling. Provided by ARM. Provide value and unit any unit is valid,1,aerosol-arm,manual_review
-carb_monoxide,pattern,^\d+(\.\d+)?\s*(umol/L|ppm)$,1,aerosol,manual_review
-carb_monoxide,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,aerosol-arm,manual_review
+carb_monoxide,description,Amount of carbon monoxide measured in the air the day of sampling. (Unit: umol/L or ppm),1,aerosol,primary
+carb_monoxide,description,Amount of carbon monoxide measured in the air the day of sampling. Provided by ARM,1,other-undescribed,modification
+carb_monoxide,description,Amount of carbon monoxide measured in the air the day of sampling. Provided by ARM. Provide value and unit any unit is valid,1,aerosol-arm,modification
+carb_monoxide,pattern,^\d+(\.\d+)?\s*(umol/L|ppm)$,1,aerosol,primary
+carb_monoxide,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,aerosol-arm,modification
 carb_monoxide,title,carbon monoxide,3,"other-undescribed, aerosol, aerosol-arm",primary
 carb_monoxide,type,string,3,"other-undescribed, aerosol, aerosol-arm",primary
 carb_nitro_ratio,description,Ratio of amount or concentrations of carbon to nitrogen,1,other-undescribed,modification
@@ -152,6 +145,9 @@ carb_nitro_ratio,description,Ratio of amount or concentrations of carbon to nitr
 carb_nitro_ratio,title,carbon nitrogen ratio,2,"water, sediment",primary
 carb_nitro_ratio,title,carbon nitrogen ration,1,other-undescribed,modification
 carb_nitro_ratio,type,string,3,"other-undescribed, water, sediment",primary
+CAS,description,A unique numerical identifier assigned by the Chemical Abstract Service (CAS) a division of the American Chemical Society to chemical compounds polymers biological sequences mixtures and alloys.,1,other-undescribed,primary
+CAS,title,CAS number,1,other-undescribed,primary
+CAS,type,string,1,other-undescribed,primary
 cas,description,A unique numerical identifier assigned by the Chemical Abstract Service (CAS) a division of the American Chemical Society to chemical compounds polymers biological sequences mixtures and alloys.,2,"commercially-purchased, synthesized-material",primary
 cas,title,CAS number,2,"commercially-purchased, synthesized-material",primary
 cas,type,string,2,"commercially-purchased, synthesized-material",primary
@@ -205,9 +201,9 @@ component_name,type,string,1,engineered-strain,primary
 compound_name,description,The name of the purchased material. A substance formed by chemical union of two or more elements or ingredients in definite proportion by weight.,3,"other-undescribed, commercially-purchased, synthesized-material",primary
 compound_name,title,compound name,3,"other-undescribed, commercially-purchased, synthesized-material",primary
 compound_name,type,string,3,"other-undescribed, commercially-purchased, synthesized-material",primary
-conduc,description,Electrical conductivity of water,1,other-undescribed,manual_review
-conduc,description,Electrical conductivity of water. Provide value and unit any unit is valid.,1,water,manual_review
-conduc,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,primary
+conduc,description,Electrical conductivity of water,1,other-undescribed,primary
+conduc,description,Electrical conductivity of water. Provide value and unit any unit is valid.,1,water,modification
+conduc,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,modification
 conduc,title,conductivity,2,"other-undescribed, water",primary
 conduc,type,string,2,"other-undescribed, water",primary
 construct_component,description,Select the construct component type.,1,engineered-strain,primary
@@ -269,14 +265,14 @@ diss_inorg_carb,pattern,^\d+(\.\d+)?\s*(ug/L|mg/L|ppm)$,2,"water, sediment",prim
 diss_inorg_carb,title,dissolved inorganic carbon,2,"other-undescribed, water",primary
 diss_inorg_carb,title,dissolved inorganic carbon concentration,1,sediment,modification
 diss_inorg_carb,type,string,3,"other-undescribed, water, sediment",primary
-diss_inorg_nitro,description,Concentration of dissolved inorganic nitrogen,1,other-undescribed,manual_review
-diss_inorg_nitro,description,Concentration of dissolved inorganic nitrogen. (Unit: ug/L or umol/L),1,water,manual_review
-diss_inorg_nitro,pattern,^\d+(\.\d+)?\s*(umol/L|ug/L)$,1,water,primary
+diss_inorg_nitro,description,Concentration of dissolved inorganic nitrogen,1,other-undescribed,primary
+diss_inorg_nitro,description,Concentration of dissolved inorganic nitrogen. (Unit: ug/L or umol/L),1,water,modification
+diss_inorg_nitro,pattern,^\d+(\.\d+)?\s*(umol/L|ug/L)$,1,water,modification
 diss_inorg_nitro,title,dissolved inorganic nitrogen,2,"other-undescribed, water",primary
 diss_inorg_nitro,type,string,2,"other-undescribed, water",primary
-diss_inorg_phosp,description,Concentration of dissolved inorganic phosphorus in the sample,1,other-undescribed,manual_review
-diss_inorg_phosp,description,Concentration of dissolved inorganic phosphorus in the sample. Provide value and unit any unit is valid.,1,water,manual_review
-diss_inorg_phosp,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,primary
+diss_inorg_phosp,description,Concentration of dissolved inorganic phosphorus in the sample,1,other-undescribed,primary
+diss_inorg_phosp,description,Concentration of dissolved inorganic phosphorus in the sample. Provide value and unit any unit is valid.,1,water,modification
+diss_inorg_phosp,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,modification
 diss_inorg_phosp,title,dissolved inorganic phosphate,2,"other-undescribed, water",primary
 diss_inorg_phosp,type,string,2,"other-undescribed, water",primary
 diss_org_carb,description,Concentration of dissolved organic carbon in the sample liquid portion of the sample or aqueous phase of the fluid,1,other-undescribed,modification
@@ -300,9 +296,9 @@ diss_oxygen,type,string,3,"other-undescribed, water, sediment",primary
 donor_organism,description,Provide the scientific name (genus and species) of the organism from which the construct component was first described or obtained. You may enter 'synthetic' if relevant.,1,engineered-strain,primary
 donor_organism,title,donor organism,1,engineered-strain,primary
 donor_organism,type,string,1,engineered-strain,primary
-down_par,description,Visible waveband radiance and irradiance measurements in the water column,1,other-undescribed,manual_review
-down_par,description,Visible waveband radiance and irradiance measurements in the water column. Provide value and unit any unit is valid.,1,water,manual_review
-down_par,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,primary
+down_par,description,Visible waveband radiance and irradiance measurements in the water column,1,other-undescribed,primary
+down_par,description,Visible waveband radiance and irradiance measurements in the water column. Provide value and unit any unit is valid.,1,water,modification
+down_par,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,modification
 down_par,title,downward PAR,2,"other-undescribed, water",primary
 down_par,type,string,2,"other-undescribed, water",primary
 drainage_class,description,Drainage classification from a standard system such as the USDA system,3,"other-undescribed, soil, monet-soil",primary
@@ -362,11 +358,11 @@ extreme_event,description,Unusual physical events that may have affected microbi
 extreme_event,pattern,^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$,3,"soil, sediment, monet-soil",primary
 extreme_event,title,extreme event,4,"other-undescribed, soil, sediment, monet-soil",primary
 extreme_event,type,string,4,"other-undescribed, soil, sediment, monet-soil",primary
-fao_class,description,Soil classification from the FAO World Reference Database for Soil Resources. The list can be found at https://www.isric.org/explore/world-soil-distribution,1,monet-soil,manual_review
-fao_class,description,Soil classification from the FAO World soil distribution from International Soil Reference and Information Centre (ISRIC). The list of available soil classifications can be found at https://www.isric.org/explore/world-soil-distribution,1,soil,manual_review
+fao_class,description,Soil classification from the FAO World Reference Database for Soil Resources. The list can be found at https://www.isric.org/explore/world-soil-distribution,1,monet-soil,modification
+fao_class,description,Soil classification from the FAO World soil distribution from International Soil Reference and Information Centre (ISRIC). The list of available soil classifications can be found at https://www.isric.org/explore/world-soil-distribution,1,soil,primary
 fao_class,enum,Acrisols|Alisols|Andosols|Anthrosols|Arenosols|Calcisols|Cambisols|Chernozems|Cryosols|Durisols|Ferralsols|Fluvisols|Gleysols|Gypsisols|Histosols|Kastanozems|Leptosols|Lixisols|Luvisols|Nitisols|Phaeozems|Planosols|Plinthosols|Podzols|Solonchaks|Solonetz|Stagnosols|Technosols|Umbrisols|Vertisols,2,"soil, monet-soil",primary
-fao_class,title,FAO soil taxonomy classification,1,monet-soil,manual_review
-fao_class,title,fao class,1,soil,manual_review
+fao_class,title,FAO soil taxonomy classification,1,monet-soil,primary
+fao_class,title,fao class,1,soil,modification
 fao_class,type,string,2,"soil, monet-soil",primary
 fertilizer_regm,description,Information about treatment involving the use of fertilizers; should include the name of fertilizer amount administered treatment regimen including how many times the treatment was repeated how long each treatment lasted and the start and end time of the entire treatment; can include multiple fertilizer regimens,2,"other-undescribed, plant",primary
 fertilizer_regm,title,fertilizer regimen,2,"other-undescribed, plant",primary
@@ -393,9 +389,9 @@ flooding,description,Historical and/or physical evidence of flooding. Format: YY
 flooding,pattern,^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$,3,"soil, sediment, monet-soil",primary
 flooding,title,flooding,4,"other-undescribed, soil, sediment, monet-soil",primary
 flooding,type,string,4,"other-undescribed, soil, sediment, monet-soil",primary
-fluor,description,Raw or converted fluorescence of water,1,other-undescribed,manual_review
-fluor,description,Raw or converted fluorescence of water. Provide value and unit any unit is valid.,1,water,manual_review
-fluor,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,primary
+fluor,description,Raw or converted fluorescence of water,1,other-undescribed,primary
+fluor,description,Raw or converted fluorescence of water. Provide value and unit any unit is valid.,1,water,modification
+fluor,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,modification
 fluor,title,fluorescence,2,"other-undescribed, water",primary
 fluor,type,string,2,"other-undescribed, water",primary
 fungicide_regm,description,Information about treatment involving use of fungicides; should include the name of fungicide amount administered treatment regimen including how many times the treatment was repeated how long each treatment lasted and the start and end time of the entire treatment; can include multiple fungicide regimens,2,"other-undescribed, plant",primary
@@ -409,8 +405,7 @@ gaseous_substances,title,gaseous substances,1,other-undescribed,primary
 gaseous_substances,type,string,1,other-undescribed,primary
 genetic_mod,description,Genetic modifications of the genome of an organism which may occur naturally by spontaneous mutation or be introduced by some experimental means e.g. specification of a transgene or the gene knocked-out or details of transient transfection,8,"field-deployed-terraform, other-undescribed, pure-culture, culture-environmental, mixed-culture, terraform, synthesized-material, plant",primary
 genetic_mod,title,genetic modification,6,"field-deployed-terraform, pure-culture, culture-environmental, mixed-culture, synthesized-material, plant",primary
-genetic_mod,title,genetic modifications,1,terraform,modification
-genetic_mod,title,genetic modigication,1,other-undescribed,modification
+genetic_mod,title,genetic modifications,2,"terraform, other-undescribed",modification
 genetic_mod,type,string,8,"field-deployed-terraform, other-undescribed, pure-culture, culture-environmental, mixed-culture, terraform, synthesized-material, plant",primary
 genotype_segment_category,description,Select the genotype category. A genotype is generally an expression cassett or a grouping of genetic elements or a gene edit containing a set of construct components leading to one or more intended traits. A strain may consist of multiple genotypes.,1,engineered-strain,primary
 genotype_segment_category,enum,Empty Transformation Vector|Gene Knock-Out|Gene Silencer|Gene(s) of Interest|RNA Interface (RNAi)|Screenable Marker|Selectable Marker|Virus Genome|Wild Type|Recombination Site|Other,1,engineered-strain,primary
@@ -438,9 +433,8 @@ growth_facil,enum,field|commercially purchased|experimental garden|field incubat
 growth_facil,title,growth facility,15,"field-deployed-terraform, other-undescribed, soil, water, aerosol, aerosol-arm, pure-culture, culture-environmental, commercially-purchased, mixed-culture, sediment, terraform, synthesized-material, monet-soil, plant",primary
 growth_facil,type,string,15,"field-deployed-terraform, other-undescribed, soil, water, aerosol, aerosol-arm, pure-culture, culture-environmental, commercially-purchased, mixed-culture, sediment, terraform, synthesized-material, monet-soil, plant",primary
 growth_habit,description,Characteristic shape appearance or growth form of a plant species,2,"other-undescribed, plant",primary
-growth_habit,enum,erect|semi-erect|spreading|prostrate,1,plant,primary
-growth_habit,title,growth habit,1,plant,manual_review
-growth_habit,title,growth habitat,1,other-undescribed,manual_review
+growth_habit,enum,erect|semi-erect|spreading|prostrate,1,"plant, other-undescribed",primary
+growth_habit,title,growth habit,2,"plant, other-undescribed",primary
 growth_habit,type,string,2,"other-undescribed, plant",primary
 growth_hormone_regm,description,Information about treatment involving use of growth hormones; should include the name of growth hormone amount administered treatment regimen including how many times the treatment was repeated how long each treatment lasted and the start and end time of the entire treatment; can include multiple growth hormone regimens,2,"other-undescribed, plant",primary
 growth_hormone_regm,title,growth hormone regimen,2,"other-undescribed, plant",primary
@@ -448,8 +442,8 @@ growth_hormone_regm,type,string,2,"other-undescribed, plant",primary
 growth_medium,description,Method of growth and medium/materials used. Indicate broth gel 3-D structure bioreactor etc followed by the formula recipe or components used to create the growth medium.,6,"field-deployed-terraform, other-undescribed, pure-culture, culture-environmental, mixed-culture, terraform",primary
 growth_medium,title,growth medium,6,"field-deployed-terraform, other-undescribed, pure-culture, culture-environmental, mixed-culture, terraform",primary
 growth_medium,type,string,6,"field-deployed-terraform, other-undescribed, pure-culture, culture-environmental, mixed-culture, terraform",primary
-heavy_metals,description,Heavy metals present and concentrationsany drug used by subject and the frequency of usage; can include multiple heavy metals and concentrations,1,other-undescribed,manual_review
-heavy_metals,description,Heavy metals present in the sample and the concentration of the metal. For multiple heavy metals and concentrations separate them by `|`. (Example: mercury0.09 micrograms per gram|lead0.05 micrograms per gram,1,soil,manual_review
+heavy_metals,description,Heavy metals present and concentrationsany drug used by subject and the frequency of usage; can include multiple heavy metals and concentrations,1,other-undescribed,primary
+heavy_metals,description,Heavy metals present in the sample and the concentration of the metal. For multiple heavy metals and concentrations separate them by `|`. (Example: mercury0.09 micrograms per gram|lead0.05 micrograms per gram,1,soil,modification
 heavy_metals,title,heavy metals,2,"other-undescribed, soil",primary
 heavy_metals,type,string,2,"other-undescribed, soil",primary
 heavy_metals_meth,description,Reference or method used in determining heavy metals,2,"other-undescribed, soil",primary
@@ -493,9 +487,9 @@ host_infra_spec_name,type,string,1,other-undescribed,primary
 host_infra_spec_rank,description,Taxonomic rank information about the host below subspecies level such as variety form rank etc.,1,other-undescribed,primary
 host_infra_spec_rank,title,host infra-specific rank,1,other-undescribed,primary
 host_infra_spec_rank,type,string,1,other-undescribed,primary
-host_length,description,The length of subject,1,other-undescribed,manual_review
-host_length,description,The length of the plant. (Unit: cm or mm or m),1,plant,manual_review
-host_length,pattern,^\d+(\.\d+)?\s*(cm|mm|m)$,1,plant,primary
+host_length,description,The length of subject,1,other-undescribed,primary
+host_length,description,The length of the plant. (Unit: cm or mm or m),1,plant,modification
+host_length,pattern,^\d+(\.\d+)?\s*(cm|mm|m)$,1,plant,modification
 host_length,title,host length,2,"other-undescribed, plant",primary
 host_length,type,string,2,"other-undescribed, plant",primary
 host_life_stage,description,Description of life stage of host,3,"field-deployed-terraform, other-undescribed, terraform",primary
@@ -529,10 +523,10 @@ host_wet_mass,description,Measurement of wet mass. (Unit: kg or g),2,"field-depl
 host_wet_mass,pattern,^\d+(\.\d+)?\s*(kg|g)$,2,"field-deployed-terraform, terraform",primary
 host_wet_mass,title,host wet mass,3,"field-deployed-terraform, other-undescribed, terraform",primary
 host_wet_mass,type,string,3,"field-deployed-terraform, other-undescribed, terraform",primary
-humidity,description,Amount of humidity measured in the air the day of sampling. Provide value and unit any unit is valid,1,aerosol,manual_review
-humidity,description,Amount of humidity measured in the air the day of sampling. Provided by iMet,1,other-undescribed,manual_review
-humidity,description,Amount of humidity measured in the air the day of sampling. Provided by iMet. Provide value and unit any unit is valid,1,aerosol-arm,manual_review
-humidity,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,2,"aerosol, aerosol-arm",primary
+humidity,description,Amount of humidity measured in the air the day of sampling. Provide value and unit any unit is valid,1,aerosol,primary
+humidity,description,Amount of humidity measured in the air the day of sampling. Provided by iMet,1,other-undescribed,modification
+humidity,description,Amount of humidity measured in the air the day of sampling. Provided by iMet. Provide value and unit any unit is valid,1,aerosol-arm,modification
+humidity,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,2,"aerosol, aerosol-arm",modification
 humidity,title,humidity,3,"other-undescribed, aerosol, aerosol-arm",primary
 humidity,type,string,3,"other-undescribed, aerosol, aerosol-arm",primary
 humidity_regm,description,Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered treatment regimen including how many times the treatment was repeated how long each treatment lasted and the start and end time of the entire treatment; can include multiple regimens,11,"field-deployed-terraform, other-undescribed, soil, aerosol, aerosol-arm, pure-culture, culture-environmental, mixed-culture, sediment, terraform, plant",primary
@@ -542,8 +536,8 @@ indust_eff_percent,description,percentage of industrial effluents received by wa
 indust_eff_percent,title,industrial effluent percent,1,other-undescribed,primary
 indust_eff_percent,type,string,1,other-undescribed,primary
 infiltration_1,description,Amount of time it takes to accomplish the first infiltration activity. If infiltration time was started and unsuccessful enter 'failed' if infiltration time was not attempted enter 'did not collect'. Units and format of mm:ss required. (Example: 15:20 mm:ss),2,"soil, monet-soil",primary
-infiltration_1,pattern,^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed),1,monet-soil,manual_review
-infiltration_1,pattern,^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)$,1,soil,manual_review
+infiltration_1,pattern,^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed),1,monet-soil,modification
+infiltration_1,pattern,^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)$,1,soil,primary
 infiltration_1,title,first infiltration time,2,"soil, monet-soil",primary
 infiltration_1,type,string,2,"soil, monet-soil",primary
 infiltration_2,description,Amount of time it takes to accomplish the second infiltration activity. If infiltration time was started and unsuccessful enter 'failed' if infiltration time was not attempted enter 'did not collect'. Units and format of mm:ss required. (Example: 15:20 mm:ss),2,"soil, monet-soil",primary
@@ -565,8 +559,8 @@ inorg_particles,description,concentration of particles such as sand grit metal p
 inorg_particles,title,inorganic particles,1,other-undescribed,primary
 inorg_particles,type,string,1,other-undescribed,primary
 isol_growth_condt,description,Publication reference in the form of pubmed ID (pmid) digital object identifier (doi) or url for isolation and growth condition specifications of the organism/material,6,"field-deployed-terraform, other-undescribed, pure-culture, culture-environmental, mixed-culture, terraform",primary
-isol_growth_condt,title,isolation and growth condition,3,"field-deployed-terraform, pure-culture, mixed-culture",manual_review
-isol_growth_condt,title,isolation and growth conditions,3,"other-undescribed, culture-environmental, terraform",manual_review
+isol_growth_condt,title,isolation and growth condition,3,"field-deployed-terraform, pure-culture, mixed-culture",primary
+isol_growth_condt,title,isolation and growth conditions,3,"other-undescribed, culture-environmental, terraform",modification
 isol_growth_condt,type,string,6,"field-deployed-terraform, other-undescribed, pure-culture, culture-environmental, mixed-culture, terraform",primary
 isotope_exposure,description,List isotope exposure or addition applied to your sample.,12,"field-deployed-terraform, other-undescribed, soil, water, aerosol, aerosol-arm, pure-culture, culture-environmental, mixed-culture, sediment, terraform, plant",primary
 isotope_exposure,title,isotope exposure,12,"field-deployed-terraform, other-undescribed, soil, water, aerosol, aerosol-arm, pure-culture, culture-environmental, mixed-culture, sediment, terraform, plant",primary
@@ -579,21 +573,25 @@ lat_lon,description,The geographical origin of the sample as defined by latitude
 lat_lon,pattern,^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$,10,"field-deployed-terraform, other-undescribed, soil, water, aerosol, aerosol-arm, culture-environmental, sediment, monet-soil, plant",primary
 lat_lon,title,latitude longitude,10,"field-deployed-terraform, other-undescribed, soil, water, aerosol, aerosol-arm, culture-environmental, sediment, monet-soil, plant",primary
 lat_lon,type,string,10,"field-deployed-terraform, other-undescribed, soil, water, aerosol, aerosol-arm, culture-environmental, sediment, monet-soil, plant",primary
-light_intensity,description,Measurement of light intensity,1,other-undescribed,manual_review
-light_intensity,description,Measurement of light intensity. Provide value and unit any unit is valid.,1,water,manual_review
-light_intensity,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,primary
+light_intensity,description,Measurement of light intensity,1,other-undescribed,primary
+light_intensity,description,Measurement of light intensity. Provide value and unit any unit is valid.,1,water,modification
+light_intensity,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,modification
 light_intensity,title,light intensity,2,"other-undescribed, water",primary
 light_intensity,type,string,2,"other-undescribed, water",primary
 light_regm,description,Information about treatment(s) involving exposure to light including both light intensity and quality.,9,"field-deployed-terraform, other-undescribed, soil, pure-culture, culture-environmental, mixed-culture, sediment, terraform, plant",primary
 light_regm,title,light regimen,9,"field-deployed-terraform, other-undescribed, soil, pure-culture, culture-environmental, mixed-culture, sediment, terraform, plant",primary
 light_regm,type,string,9,"field-deployed-terraform, other-undescribed, soil, pure-culture, culture-environmental, mixed-culture, sediment, terraform, plant",primary
+LIMS_ID,description,An EMSL internal LIMS identifier for your sample. This will be provided by the MPOC and should not be edited.,1,monet-soil,primary
+LIMS_ID,pattern,^INGEST_SAMPLE_\d{9}$,1,monet-soil,primary
+LIMS_ID,title,LIMS ID,1,monet-soil,primary
+LIMS_ID,type,string,1,monet-soil,primary
 link_addit_analys,description,Link to additional analysis results performed on the sample,2,"other-undescribed, soil",primary
-link_addit_analys,title,additional analysis link,1,soil,manual_review
-link_addit_analys,title,link to additional analysis,1,other-undescribed,manual_review
+link_addit_analys,title,additional analysis link,1,soil,modification
+link_addit_analys,title,link to additional analysis,1,other-undescribed,primary
 link_addit_analys,type,string,2,"other-undescribed, soil",primary
 link_class_info,description,Link to digitized soil maps or other soil classification information,2,"other-undescribed, soil",primary
-link_class_info,title,link to classification information,1,other-undescribed,manual_review
-link_class_info,title,soil classification information,1,soil,manual_review
+link_class_info,title,link to classification information,1,other-undescribed,primary
+link_class_info,title,soil classification information,1,soil,modification
 link_class_info,type,string,2,"other-undescribed, soil",primary
 link_climate_info,description,Link to climate resource,3,"other-undescribed, soil, monet-soil",primary
 link_climate_info,title,climate information link,1,soil,modification
@@ -617,9 +615,8 @@ mean_frict_vel,pattern,^\d+(\.\d+)?\s*m/s$,2,"water, sediment",primary
 mean_frict_vel,title,mean friction velocity,2,"water, sediment",primary
 mean_frict_vel,title,mean frictional velocity,1,other-undescribed,modification
 mean_frict_vel,type,string,3,"other-undescribed, water, sediment",primary
-mean_peak_frict_vel,description,Measurement of mean peak friction velocity,1,other-undescribed,manual_review
-mean_peak_frict_vel,description,Measurement of mean peak friction velocity (Unit: m/s),1,water,manual_review
-mean_peak_frict_vel,description,Measurement of mean peak friction velocitys (Unit: m/s),1,sediment,manual_review
+mean_peak_frict_vel,description,Measurement of mean peak friction velocity,1,other-undescribed,primary
+mean_peak_frict_vel,description,Measurement of mean peak friction velocity (Unit: m/s),2,"water, sediment",modification
 mean_peak_frict_vel,pattern,^\d+(\.\d+)?\s*m/s$,2,"water, sediment",primary
 mean_peak_frict_vel,title,mean peak friction velocity,2,"water, sediment",primary
 mean_peak_frict_vel,title,mean peak frictional velocity,1,other-undescribed,modification
@@ -645,28 +642,25 @@ method_development,type,string,13,"field-deployed-terraform, other-undescribed, 
 micro_biomass_C_meth,description,Reference or method used in determining microbial biomass,1,other-undescribed,primary
 micro_biomass_C_meth,title,microbial biomass carbon method,1,other-undescribed,primary
 micro_biomass_C_meth,type,string,1,other-undescribed,primary
-micro_biomass_N_meth,description,Reference or method used in determining microbial biomass nitrogen,1,other-undescribed,primary
-micro_biomass_N_meth,title,microbial biomass nitrogen method,1,other-undescribed,primary
-micro_biomass_N_meth,type,string,1,other-undescribed,primary
 micro_biomass_c_meth,description,Reference or method used in determining microbial biomass,2,"soil, sediment",primary
 micro_biomass_c_meth,title,microbial biomass carbon method,2,"soil, sediment",primary
 micro_biomass_c_meth,type,string,2,"soil, sediment",primary
+micro_biomass_N_meth,description,Reference or method used in determining microbial biomass nitrogen,1,other-undescribed,primary
+micro_biomass_N_meth,title,microbial biomass nitrogen method,1,other-undescribed,primary
+micro_biomass_N_meth,type,string,1,other-undescribed,primary
 micro_biomass_n_meth,description,Reference or method used in determining microbial biomass nitrogen,2,"soil, sediment",primary
 micro_biomass_n_meth,title,microbial biomass nitrogen method,2,"soil, sediment",primary
 micro_biomass_n_meth,type,string,2,"soil, sediment",primary
-microbial_biomass,description,The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this you would need to have correction factors used for conversion to the final units,1,other-undescribed,manual_review
-microbial_biomass,description,The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this you would need to have correction factors used for conversion to the final units. (Unit: g/kg sediment or ug/g sediment),1,sediment,manual_review
-microbial_biomass,description,The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this you would need to have correction factors used for conversion to the final units. (Unit: g/kg soil or ug/g dry soil),1,soil,manual_review
-microbial_biomass,pattern,^\d+(\.\d+)?\s*(g/kg sediment|ug/g sediment)$,1,sediment,manual_review
-microbial_biomass,pattern,^\d+(\.\d+)?\s*(g/kg soil|ug/g dry soil)$,1,soil,manual_review
+microbial_biomass,description,The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this you would need to have correction factors used for conversion to the final units,1,other-undescribed,primary
+microbial_biomass,description,The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this you would need to have correction factors used for conversion to the final units. (Unit: g/kg sediment or ug/g sediment),1,sediment,modification
+microbial_biomass,description,The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this you would need to have correction factors used for conversion to the final units. (Unit: g/kg soil or ug/g dry soil),1,soil,modification
+microbial_biomass,pattern,^\d+(\.\d+)?\s*(g/kg sediment|ug/g sediment)$,1,sediment,modification
+microbial_biomass,pattern,^\d+(\.\d+)?\s*(g/kg soil|ug/g dry soil)$,1,soil,modification
 microbial_biomass,title,microbial biomass,3,"other-undescribed, soil, sediment",primary
 microbial_biomass,type,string,3,"other-undescribed, soil, sediment",primary
 microbial_biomass_C,description,The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this you would need to have correction factors used for conversion to the final units,1,other-undescribed,primary
 microbial_biomass_C,title,microbial biomass carbon,1,other-undescribed,primary
 microbial_biomass_C,type,string,1,other-undescribed,primary
-microbial_biomass_N,description,The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this you would need to have correction factors used for conversion to the final units,1,other-undescribed,primary
-microbial_biomass_N,title,microbial biomass nitrogrn,1,other-undescribed,primary
-microbial_biomass_N,type,string,1,other-undescribed,primary
 microbial_biomass_c,description,The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this you would need to have correction factors used for conversion to the final units. Provide value and unit any unit is valid,2,"soil, sediment",primary
 microbial_biomass_c,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,2,"soil, sediment",primary
 microbial_biomass_c,title,microbial biomass carbon,2,"soil, sediment",primary
@@ -674,6 +668,9 @@ microbial_biomass_c,type,string,2,"soil, sediment",primary
 microbial_biomass_meth,description,Reference or method used in determining microbial biomass,3,"other-undescribed, soil, sediment",primary
 microbial_biomass_meth,title,microbial biomass method,3,"other-undescribed, soil, sediment",primary
 microbial_biomass_meth,type,string,3,"other-undescribed, soil, sediment",primary
+microbial_biomass_N,description,The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this you would need to have correction factors used for conversion to the final units,1,other-undescribed,primary
+microbial_biomass_N,title,microbial biomass nitrogrn,1,other-undescribed,primary
+microbial_biomass_N,type,string,1,other-undescribed,primary
 microbial_biomass_n,description,The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this you would need to have correction factors used for conversion to the final units. Provide value and unit any unit is valid,2,"soil, sediment",primary
 microbial_biomass_n,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,2,"soil, sediment",primary
 microbial_biomass_n,title,microbial biomass nitrogen,2,"soil, sediment",primary
@@ -715,10 +712,10 @@ nitro,pattern,^\d+(\.\d+)?\s*umol/L$,2,"water, sediment",primary
 nitro,title,nitrogen,2,"other-undescribed, water",primary
 nitro,title,nitrogen concentration,1,sediment,modification
 nitro,type,string,3,"other-undescribed, water, sediment",primary
-non_microb_biomass,description,Amount of biomass; should include the name for the part of biomass measured e.g.insect plant total (Unit: µm),3,"pure-culture, culture-environmental, plant",manual_review
-non_microb_biomass,description,Amount of biomass; should include the name for the part of biomass measured e.g.insect plant total. Can include multiple measurements separated by ;,2,"other-undescribed, mixed-culture",manual_review
-non_microb_biomass,description,Amount of non-microbial biomass measured. Include the name for the part of biomass measured e.g.insect plant total. Provide value and unit any unit is valid. (example: insect 5mg; plant 2ug/mL),3,"soil, water, sediment",manual_review
-non_microb_biomass,pattern,^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$,3,"soil, water, sediment",primary
+non_microb_biomass,description,Amount of biomass; should include the name for the part of biomass measured e.g.insect plant total (Unit: µm),3,"pure-culture, culture-environmental, plant",modification
+non_microb_biomass,description,Amount of biomass; should include the name for the part of biomass measured e.g.insect plant total. Can include multiple measurements separated by ;,2,"other-undescribed, mixed-culture",primary
+non_microb_biomass,description,Amount of non-microbial biomass measured. Include the name for the part of biomass measured e.g.insect plant total. Provide value and unit any unit is valid. (example: insect 5mg; plant 2ug/mL),3,"soil, water, sediment",modification
+non_microb_biomass,pattern,^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$,3,"soil, water, sediment",modification
 non_microb_biomass,title,non microbial biomass,8,"other-undescribed, soil, water, pure-culture, culture-environmental, mixed-culture, sediment, plant",primary
 non_microb_biomass,type,string,8,"other-undescribed, soil, water, pure-culture, culture-environmental, mixed-culture, sediment, plant",primary
 non_microb_biomass_method,description,Reference or method used in determining biomass,7,"other-undescribed, soil, water, pure-culture, culture-environmental, sediment, plant",primary
@@ -736,8 +733,8 @@ org_carb,type,string,3,"other-undescribed, water, sediment",primary
 org_matter,description,Concentration of organic matter,1,other-undescribed,modification
 org_matter,description,Concentration of organic matter (Unit: mg/L),2,"water, sediment",primary
 org_matter,pattern,^\d+(\.\d+)?\s*mg/L$,2,"water, sediment",primary
-org_matter,title,organic matter,1,other-undescribed,manual_review
-org_matter,title,organic matter concentration,1,sediment,manual_review
+org_matter,title,organic matter,1,other-undescribed,primary
+org_matter,title,organic matter concentration,1,sediment,modification
 org_matter,type,string,3,"other-undescribed, water, sediment",primary
 org_nitro,description,Concentration of organic nitrogen,1,other-undescribed,modification
 org_nitro,description,Concentration of organic nitrogen. Provide value and unit any unit is valid,2,"water, sediment",primary
@@ -778,9 +775,9 @@ other_treatment,description,"If a treatment is applied to your samples and the p
 other_treatment,description,Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy please add it here. Multiple treatments can be entered here separated by ;,12,"field-deployed-terraform, soil, water, aerosol, aerosol-arm, pure-culture, culture-environmental, commercially-purchased, sediment, terraform, monet-soil, plant",primary
 other_treatment,title,other treatment,14,"field-deployed-terraform, other-undescribed, soil, water, aerosol, aerosol-arm, pure-culture, culture-environmental, commercially-purchased, mixed-culture, sediment, terraform, monet-soil, plant",primary
 other_treatment,type,string,14,"field-deployed-terraform, other-undescribed, soil, water, aerosol, aerosol-arm, pure-culture, culture-environmental, commercially-purchased, mixed-culture, sediment, terraform, monet-soil, plant",primary
-oxygen,description,Amount of oxygen measured in the air the day of sampling. (Unit: mg/L or ppm),1,aerosol,manual_review
-oxygen,description,Amount of oxygen measured in the air the day of sampling. Provided by ARM,1,other-undescribed,manual_review
-oxygen,pattern,^\d+(\.\d+)?\s*(mg/L|ppm)$,1,aerosol,primary
+oxygen,description,Amount of oxygen measured in the air the day of sampling. (Unit: mg/L or ppm),1,aerosol,primary
+oxygen,description,Amount of oxygen measured in the air the day of sampling. Provided by ARM,1,other-undescribed,modification
+oxygen,pattern,^\d+(\.\d+)?\s*(mg/L|ppm)$,1,aerosol,modification
 oxygen,title,oxygen,2,"other-undescribed, aerosol",primary
 oxygen,type,string,2,"other-undescribed, aerosol",primary
 oxygen_relationship,description,Oxygenation status of sample,11,"field-deployed-terraform, other-undescribed, soil, water, pure-culture, culture-environmental, commercially-purchased, mixed-culture, sediment, terraform, synthesized-material",primary
@@ -793,13 +790,13 @@ part_org_carb,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,2,"water, sediment",primary
 part_org_carb,title,particulate organic carbon,2,"other-undescribed, water",primary
 part_org_carb,title,particulate organic carbon concentration,1,sediment,modification
 part_org_carb,type,string,3,"other-undescribed, water, sediment",primary
-part_org_nitro,description,Concentration of particulate organic nitrogen,1,other-undescribed,manual_review
-part_org_nitro,description,Concentration of particulate organic nitrogen. (Unit: ug/L or umol/L),1,water,manual_review
-part_org_nitro,pattern,^\d+(\.\d+)?\s*(umol/L|ug/L)$,1,water,primary
+part_org_nitro,description,Concentration of particulate organic nitrogen,1,other-undescribed,primary
+part_org_nitro,description,Concentration of particulate organic nitrogen. (Unit: ug/L or umol/L),1,water,modification
+part_org_nitro,pattern,^\d+(\.\d+)?\s*(umol/L|ug/L)$,1,water,modification
 part_org_nitro,title,particulate organic nitrogen,2,"other-undescribed, water",primary
 part_org_nitro,type,string,2,"other-undescribed, water",primary
-particle_class,description,Particles are classified based on their size into six general categories: clay silt sand gravel cobbles and boulders. Include amount of particle with units preceded by the name of the particle type; can include multiple values separated by ';'.,1,sediment,manual_review
-particle_class,description,Particles are classified based on their size into six general categories:clay silt sand gravel cobbles and boulders; should include amount of particle preceded by the name of the particle type; can include multiple values,1,other-undescribed,manual_review
+particle_class,description,Particles are classified based on their size into six general categories: clay silt sand gravel cobbles and boulders. Include amount of particle with units preceded by the name of the particle type; can include multiple values separated by ';'.,1,sediment,primary
+particle_class,description,Particles are classified based on their size into six general categories:clay silt sand gravel cobbles and boulders; should include amount of particle preceded by the name of the particle type; can include multiple values,1,other-undescribed,modification
 particle_class,title,particle class,2,"other-undescribed, sediment",primary
 particle_class,type,string,2,"other-undescribed, sediment",primary
 pathogenicity,description,To what is the entity pathogenic,4,"other-undescribed, pure-culture, culture-environmental, mixed-culture",primary
@@ -820,12 +817,12 @@ petroleum_hydrocarb,title,petroleum hydrocarbon concentration,1,sediment,modific
 petroleum_hydrocarb,type,string,3,"other-undescribed, water, sediment",primary
 ph,description,pH measurement of the sample or liquid portion of sample or aqueous phase of the fluid,3,"other-undescribed, water, sediment",primary
 ph,description,pH measurement of the sample or liquid portion of sample or aqueous phase of the fluid.,1,soil,modification
-ph,title,pH,2,"other-undescribed, water",manual_review
-ph,title,ph,2,"soil, sediment",manual_review
+ph,title,pH,2,"other-undescribed, water",primary
+ph,title,ph,2,"soil, sediment",modification
 ph,type,number,4,"other-undescribed, soil, water, sediment",primary
 ph_meth,description,Reference or method used in determining ph,4,"other-undescribed, soil, water, sediment",primary
-ph_meth,title,pH method,2,"other-undescribed, water",manual_review
-ph_meth,title,ph method,2,"soil, sediment",manual_review
+ph_meth,title,pH method,2,"other-undescribed, water",primary
+ph_meth,title,ph method,2,"soil, sediment",modification
 ph_meth,type,string,4,"other-undescribed, soil, water, sediment",primary
 ph_regm,description,Information about treatment involving exposure of plants to varying levels of ph of the growth media treatment regimen including how many times the treatment was repeated how long each treatment lasted and the start and end time of the entire treatment; can include multiple regimen,2,"other-undescribed, plant",primary
 ph_regm,title,pH regimen,2,"other-undescribed, plant",primary
@@ -854,9 +851,9 @@ photochemical_exposure,description,This term is used to describe a chemical reac
 photochemical_exposure,enum,ultraviolet|uv visible light|infrared,2,"aerosol, aerosol-arm",primary
 photochemical_exposure,title,photochemical exposure,3,"other-undescribed, aerosol, aerosol-arm",primary
 photochemical_exposure,type,string,3,"other-undescribed, aerosol, aerosol-arm",primary
-photon_flux,description,Measurement of photon flux,1,other-undescribed,manual_review
-photon_flux,description,Measurement of photon flux. Provide value and unit any unit is valid.,1,water,manual_review
-photon_flux,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,primary
+photon_flux,description,Measurement of photon flux,1,other-undescribed,primary
+photon_flux,description,Measurement of photon flux. Provide value and unit any unit is valid.,1,water,modification
+photon_flux,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,modification
 photon_flux,title,photon flux,2,"other-undescribed, water",primary
 photon_flux,type,string,2,"other-undescribed, water",primary
 plant_age,description,Age of plant at the time of sampling. Must provide unit,1,plant,primary
@@ -903,9 +900,9 @@ plant_wet_mass,description,Measurement of wet mass. (Unit: kg or g),1,plant,prim
 plant_wet_mass,pattern,^\d+(\.\d+)?\s*(kg|g)$,1,plant,primary
 plant_wet_mass,title,plant wet mass,1,plant,primary
 plant_wet_mass,type,string,1,plant,primary
-porosity,description,Porosity of deposited sediment is volume of voids divided by the total volume of sample,1,other-undescribed,manual_review
-porosity,description,Porosity of deposited sediment is volume of voids divided by the total volume of sample (Unit: percent),1,sediment,manual_review
-porosity,pattern,^\d+(\.\d+)?\s*percent$,1,sediment,primary
+porosity,description,Porosity of deposited sediment is volume of voids divided by the total volume of sample,1,other-undescribed,primary
+porosity,description,Porosity of deposited sediment is volume of voids divided by the total volume of sample (Unit: percent),1,sediment,modification
+porosity,pattern,^\d+(\.\d+)?\s*percent$,1,sediment,modification
 porosity,title,porosity,2,"other-undescribed, sediment",primary
 porosity,type,string,2,"other-undescribed, sediment",primary
 potassium,description,Concentration of potassium in the sample,1,other-undescribed,modification
@@ -933,9 +930,9 @@ previous_land_use,type,string,3,"other-undescribed, soil, monet-soil",primary
 previous_land_use_meth,description,Reference or method used in determining previous land use and dates,3,"other-undescribed, soil, monet-soil",primary
 previous_land_use_meth,title,previous land use method,3,"other-undescribed, soil, monet-soil",primary
 previous_land_use_meth,type,string,3,"other-undescribed, soil, monet-soil",primary
-primary_prod,description,Measurement of primary production generally measured as isotope uptake,1,other-undescribed,manual_review
-primary_prod,description,Measurement of primary production generally measured as isotope uptake. Provide value and unit any unit is valid.,1,water,manual_review
-primary_prod,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,primary
+primary_prod,description,Measurement of primary production generally measured as isotope uptake,1,other-undescribed,primary
+primary_prod,description,Measurement of primary production generally measured as isotope uptake. Provide value and unit any unit is valid.,1,water,modification
+primary_prod,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,modification
 primary_prod,title,primary production,2,"other-undescribed, water",primary
 primary_prod,type,string,2,"other-undescribed, water",primary
 primary_treatment,description,the process to produce both a generally homogeneous liquid capable of being treated biologically and a sludge that can be separately treated or processed,1,other-undescribed,primary
@@ -1008,10 +1005,10 @@ root_med_solid,type,string,1,plant,primary
 root_med_suppl,description,Organic supplements of the culture rooting medium such as vitamins amino acids organic acids antibiotics activated charcoal. Can be multivalued separated by ;. e.g. nicotinic acid 0.5 mg/L,1,plant,primary
 root_med_suppl,title,rooting medium organic supplement,1,plant,primary
 root_med_suppl,type,string,1,plant,primary
-salinity,description,Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent),2,"soil, plant",manual_review
-salinity,description,Salinity is the total concentration of all dissolved salts in a water sample. While salinity can be measured by a complete chemical analysis this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater,1,other-undescribed,manual_review
-salinity,description,Salinity is the total concentration of all dissolved salts in sample. While salinity can be measured by a complete chemical analysis this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent),2,"water, sediment",manual_review
-salinity,pattern,^\d+(\.\d+)?\s*(practical salinity unit|percent)$,4,"soil, water, sediment, plant",primary
+salinity,description,Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent),2,"soil, plant",modification
+salinity,description,Salinity is the total concentration of all dissolved salts in a water sample. While salinity can be measured by a complete chemical analysis this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater,1,other-undescribed,primary
+salinity,description,Salinity is the total concentration of all dissolved salts in sample. While salinity can be measured by a complete chemical analysis this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent),2,"water, sediment",modification
+salinity,pattern,^\d+(\.\d+)?\s*(practical salinity unit|percent)$,4,"soil, water, sediment, plant",modification
 salinity,title,salinity,4,"other-undescribed, soil, water, plant",primary
 salinity,title,salinity concentration,1,sediment,modification
 salinity,type,string,5,"other-undescribed, soil, water, sediment, plant",primary
@@ -1070,7 +1067,7 @@ sample_start_time,description,Time of when the sample collection starts. Require
 sample_start_time,pattern,^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$,1,aerosol-arm,primary
 sample_start_time,title,sample start time,1,aerosol-arm,primary
 sample_start_time,type,string,1,aerosol-arm,primary
-sample_type,description,Requires a standardized ontology term to describe what your sample is. Please search for your sample type via Ontology Lookup Sevice at https://www.ebi.ac.uk/ols4/ ,1,other-undescribed,primary
+sample_type,description,"Requires a standardized ontology term to describe what your sample is. Please search for your sample type via Ontology Lookup Sevice at https://www.ebi.ac.uk/ols4/ ",1,other-undescribed,primary
 sample_type,pattern,^_*\s*[a-zA-Z\-]+\s\[[a-zA-Z]+:\d+\]$,1,other-undescribed,primary
 sample_type,title,sample type,1,other-undescribed,primary
 sample_type,type,string,1,other-undescribed,primary
@@ -1132,17 +1129,17 @@ silicate,pattern,^\d+(\.\d+)?\s*umol/L$,2,"water, sediment",primary
 silicate,title,silicate,2,"other-undescribed, water",primary
 silicate,title,silicate concentration,1,sediment,modification
 silicate,type,string,3,"other-undescribed, water, sediment",primary
-size_frac_low,description,Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample,1,other-undescribed,manual_review
-size_frac_low,description,Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample (Unit: um),2,"aerosol, aerosol-arm",manual_review
-size_frac_low,description,Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample (Unit: um),2,"soil, water",manual_review
-size_frac_low,pattern,^\d+(\.\d+)?\s*um$,4,"soil, water, aerosol, aerosol-arm",primary
+size_frac_low,description,Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample,1,other-undescribed,primary
+size_frac_low,description,Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample (Unit: um),2,"aerosol, aerosol-arm",modification
+size_frac_low,description,Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample (Unit: um),2,"soil, water",modification
+size_frac_low,pattern,^\d+(\.\d+)?\s*um$,4,"soil, water, aerosol, aerosol-arm",modification
 size_frac_low,title,size fraction low,2,"aerosol, aerosol-arm",modification
 size_frac_low,title,size fraction lower threshold,3,"other-undescribed, soil, water",primary
 size_frac_low,type,string,5,"other-undescribed, soil, water, aerosol, aerosol-arm",primary
-size_frac_up,description,Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample (Unit: um),2,"soil, water",manual_review
-size_frac_up,description,Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample,1,other-undescribed,manual_review
-size_frac_up,description,Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample (Unit: um),2,"aerosol, aerosol-arm",manual_review
-size_frac_up,pattern,^\d+(\.\d+)?\s*um$,4,"soil, water, aerosol, aerosol-arm",primary
+size_frac_up,description,Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample (Unit: um),2,"soil, water",modification
+size_frac_up,description,Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample,1,other-undescribed,primary
+size_frac_up,description,Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample (Unit: um),2,"aerosol, aerosol-arm",modification
+size_frac_up,pattern,^\d+(\.\d+)?\s*um$,4,"soil, water, aerosol, aerosol-arm",modification
 size_frac_up,title,size fraction up,2,"aerosol, aerosol-arm",modification
 size_frac_up,title,size fraction upper threshold,3,"other-undescribed, soil, water",primary
 size_frac_up,type,string,5,"other-undescribed, soil, water, aerosol, aerosol-arm",primary
@@ -1189,9 +1186,9 @@ soluble_inorg_mat,type,string,1,other-undescribed,primary
 soluble_org_mat,description,concentration of substances such as urea fruit sugars soluble proteins drugs pharmaceuticals etc.,1,other-undescribed,primary
 soluble_org_mat,title,soluble organic material,1,other-undescribed,primary
 soluble_org_mat,type,string,1,other-undescribed,primary
-soluble_react_phosp,description,Concentration of soluble reactive phosphorus,1,other-undescribed,manual_review
-soluble_react_phosp,description,Concentration of soluble reactive phosphorus. (Unit: umol/L or mg/L or ppm),1,water,manual_review
-soluble_react_phosp,pattern,^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$,1,water,primary
+soluble_react_phosp,description,Concentration of soluble reactive phosphorus,1,other-undescribed,primary
+soluble_react_phosp,description,Concentration of soluble reactive phosphorus. (Unit: umol/L or mg/L or ppm),1,water,modification
+soluble_react_phosp,pattern,^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$,1,water,modification
 soluble_react_phosp,title,soluble reactive phosphorus,2,"other-undescribed, water",primary
 soluble_react_phosp,type,string,2,"other-undescribed, water",primary
 source_mat_ID,description,A unique identifier assigned to an original material sample collected or to any derived sub-samples. The source material should be listed as a sample to inform details about parent material relationship.,14,"field-deployed-terraform, other-undescribed, soil, water, aerosol, aerosol-arm, pure-culture, culture-environmental, commercially-purchased, mixed-culture, sediment, terraform, synthesized-material, plant",primary
@@ -1224,8 +1221,8 @@ strain_name,type,string,1,engineered-strain,primary
 strain_source,description,Indicate the source of the strain provided. If purchased provide the vendor and lot number if from another registered or known strain provide a reference.,1,engineered-strain,primary
 strain_source,title,strain source,1,engineered-strain,primary
 strain_source,type,string,1,engineered-strain,primary
-subspecf_gen_lin,description,Information about the genetic distinctness of the sequenced organism below the subspecies level e.g. serovar serotype biotype ecotype or any relevant genetic typing schemes like Group I plasmid. Subspecies should not be recorded in this term but in the NCBI taxonomy. Supply both the lineage name and the lineage rank separated by a colon e.g. biovar:abc123.,2,"other-undescribed, mixed-culture",manual_review
-subspecf_gen_lin,description,Information about the genetic distinctness of the sequenced organism below the subspecies level e.g. serovar serotype biotype ecotype or any relevant genetic typing schemes like Group I plasmid. Supply both the lineage name and the lineage rank separated by a colon e.g. biovar:abc123,2,"pure-culture, culture-environmental",manual_review
+subspecf_gen_lin,description,Information about the genetic distinctness of the sequenced organism below the subspecies level e.g. serovar serotype biotype ecotype or any relevant genetic typing schemes like Group I plasmid. Subspecies should not be recorded in this term but in the NCBI taxonomy. Supply both the lineage name and the lineage rank separated by a colon e.g. biovar:abc123.,2,"other-undescribed, mixed-culture",modification
+subspecf_gen_lin,description,Information about the genetic distinctness of the sequenced organism below the subspecies level e.g. serovar serotype biotype ecotype or any relevant genetic typing schemes like Group I plasmid. Supply both the lineage name and the lineage rank separated by a colon e.g. biovar:abc123,2,"pure-culture, culture-environmental",primary
 subspecf_gen_lin,title,subspecific genetic lineage,3,"other-undescribed, culture-environmental, mixed-culture",primary
 subspecf_gen_lin,title,subspecific genetuc lineage,1,pure-culture,modification
 subspecf_gen_lin,type,string,4,"other-undescribed, pure-culture, culture-environmental, mixed-culture",primary
@@ -1241,11 +1238,10 @@ sulfide,pattern,^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$,2,"water, sediment",primary
 sulfide,title,sulfide,2,"other-undescribed, water",primary
 sulfide,title,sulfide concentration,1,sediment,modification
 sulfide,type,string,3,"other-undescribed, water, sediment",primary
-suspend_part_matter,description,Concentration of suspended particulate matter,1,other-undescribed,manual_review
-suspend_part_matter,description,Concentration of suspended particulate matter. (Unit: mg/L),1,water,manual_review
-suspend_part_matter,pattern,^\d+(\.\d+)?\s*(mg/L)$,1,water,primary
-suspend_part_matter,title,suspended particulate matter,1,water,manual_review
-suspend_part_matter,title,suspended particulate metter,1,other-undescribed,manual_review
+suspend_part_matter,description,Concentration of suspended particulate matter,1,other-undescribed,primary
+suspend_part_matter,description,Concentration of suspended particulate matter. (Unit: mg/L),1,water,modification
+suspend_part_matter,pattern,^\d+(\.\d+)?\s*(mg/L)$,1,water,modification
+suspend_part_matter,title,suspended particulate matter,2,"water, other-undescribed",primary
 suspend_part_matter,type,string,2,"other-undescribed, water",primary
 suspend_solids,description,concentration of substances including a wide variety of material such as silt decaying plant and animal matter etc; can include multiple substances,1,other-undescribed,primary
 suspend_solids,title,suspended solids,1,other-undescribed,primary
@@ -1318,11 +1314,11 @@ tiss_cult_growth_med,description,Description of plant tissue culture growth medi
 tiss_cult_growth_med,title,tissue culture growth media,2,"field-deployed-terraform, terraform",primary
 tiss_cult_growth_med,title,tissue culture growth medium,1,other-undescribed,modification
 tiss_cult_growth_med,type,string,3,"field-deployed-terraform, other-undescribed, terraform",primary
-tot_carb,description,Total carbon content,1,other-undescribed,manual_review
-tot_carb,description,Total carbon content. Provide value and unit any unit is valid,1,sediment,manual_review
-tot_carb,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,sediment,primary
-tot_carb,title,total carbon,1,other-undescribed,manual_review
-tot_carb,title,total carbon content,1,sediment,manual_review
+tot_carb,description,Total carbon content,1,other-undescribed,primary
+tot_carb,description,Total carbon content. Provide value and unit any unit is valid,1,sediment,modification
+tot_carb,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,sediment,modification
+tot_carb,title,total carbon,1,other-undescribed,modification
+tot_carb,title,total carbon content,1,sediment,primary
 tot_carb,type,string,2,"other-undescribed, sediment",primary
 tot_depth_water_col,description,Measurement of total depth of water column,1,other-undescribed,modification
 tot_depth_water_col,description,Measurement of total depth of water column (Unit: m),2,"water, sediment",primary
@@ -1330,19 +1326,19 @@ tot_depth_water_col,pattern,^\d+(\.\d+)?\s*m$,2,"water, sediment",primary
 tot_depth_water_col,title,total depth of water column,2,"other-undescribed, water",primary
 tot_depth_water_col,title,total water column depth,1,sediment,modification
 tot_depth_water_col,type,string,3,"other-undescribed, water, sediment",primary
-tot_diss_nitro,description,Total dissolved nitrogen concentration reported as nitrogen measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen,1,other-undescribed,manual_review
-tot_diss_nitro,description,Total dissolved nitrogen concentration reported as nitrogen measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen. (Unit: ug/L),1,water,manual_review
-tot_diss_nitro,pattern,^\d+(\.\d+)?\s*(ug/L)$,1,water,primary
+tot_diss_nitro,description,Total dissolved nitrogen concentration reported as nitrogen measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen,1,other-undescribed,primary
+tot_diss_nitro,description,Total dissolved nitrogen concentration reported as nitrogen measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen. (Unit: ug/L),1,water,modification
+tot_diss_nitro,pattern,^\d+(\.\d+)?\s*(ug/L)$,1,water,modification
 tot_diss_nitro,title,total dissolved nitrogen,2,"other-undescribed, water",primary
 tot_diss_nitro,type,string,2,"other-undescribed, water",primary
-tot_inorg_nitro,description,Total inorganic nitrogen content,1,other-undescribed,manual_review
-tot_inorg_nitro,description,Total inorganic nitrogen content. (Unit: ug/L),1,water,manual_review
-tot_inorg_nitro,pattern,^\d+(\.\d+)?\s*(ug/L)$,1,water,primary
+tot_inorg_nitro,description,Total inorganic nitrogen content,1,other-undescribed,primary
+tot_inorg_nitro,description,Total inorganic nitrogen content. (Unit: ug/L),1,water,modification
+tot_inorg_nitro,pattern,^\d+(\.\d+)?\s*(ug/L)$,1,water,modification
 tot_inorg_nitro,title,total inorganic nitrogen,2,"other-undescribed, water",primary
 tot_inorg_nitro,type,string,2,"other-undescribed, water",primary
-tot_nitro,description,Total nitrogen concentration of water samples calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering reported as nitrogen,1,other-undescribed,manual_review
-tot_nitro,description,Total nitrogen concentration of water samples calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering reported as nitrogen. (Unit: ug/L or umol/L or mg/L),1,water,manual_review
-tot_nitro,pattern,^\d+(\.\d+)?\s*(ug/L|umol/L|mg/L)$,1,water,primary
+tot_nitro,description,Total nitrogen concentration of water samples calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering reported as nitrogen,1,other-undescribed,primary
+tot_nitro,description,Total nitrogen concentration of water samples calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering reported as nitrogen. (Unit: ug/L or umol/L or mg/L),1,water,modification
+tot_nitro,pattern,^\d+(\.\d+)?\s*(ug/L|umol/L|mg/L)$,1,water,modification
 tot_nitro,title,total nitrogen,2,"other-undescribed, water",primary
 tot_nitro,type,string,2,"other-undescribed, water",primary
 tot_nitro_cont_meth,description,Reference or method used in determining the total nitrogen,3,"other-undescribed, soil, sediment",primary
@@ -1361,16 +1357,15 @@ tot_org_carb,description,Total organic carbon content. Provided as gram of Carbo
 tot_org_carb,pattern,^\d+(\.\d+)?\s*g C/kg$,2,"soil, sediment",primary
 tot_org_carb,title,total organic carbon,3,"other-undescribed, soil, sediment",primary
 tot_org_carb,type,string,3,"other-undescribed, soil, sediment",primary
-tot_part_carb,description,Total particulate carbon content,1,other-undescribed,manual_review
-tot_part_carb,description,Total particulate carbon content. (Unit: ug/L or umol/L),1,water,manual_review
-tot_part_carb,pattern,^\d+(\.\d+)?\s*(ug/L|umol/L)$,1,water,primary
+tot_part_carb,description,Total particulate carbon content,1,other-undescribed,primary
+tot_part_carb,description,Total particulate carbon content. (Unit: ug/L or umol/L),1,water,modification
+tot_part_carb,pattern,^\d+(\.\d+)?\s*(ug/L|umol/L)$,1,water,modification
 tot_part_carb,title,total particulate carbon,2,"other-undescribed, water",primary
 tot_part_carb,type,string,2,"other-undescribed, water",primary
-tot_phosp,description,Total phosphorus concentration in the sample calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus,1,other-undescribed,manual_review
-tot_phosp,description,Total phosphorus concentration in the sample calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus. (Unit: ug/L or umol/L),1,water,manual_review
-tot_phosp,pattern,^\d+(\.\d+)?\s*(ug/L|umol/L)$,1,water,primary
-tot_phosp,title,total phosphate,1,other-undescribed,manual_review
-tot_phosp,title,total phosphorus,1,water,manual_review
+tot_phosp,description,Total phosphorus concentration in the sample calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus,1,other-undescribed,primary
+tot_phosp,description,Total phosphorus concentration in the sample calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus. (Unit: ug/L or umol/L),1,water,modification
+tot_phosp,pattern,^\d+(\.\d+)?\s*(ug/L|umol/L)$,1,water,modification
+tot_phosp,title,total phosphorus,2,"water, other-undescribed",primary
 tot_phosp,type,string,2,"other-undescribed, water",primary
 tot_phosphate,description,total amount or concentration of phosphate,1,other-undescribed,primary
 tot_phosphate,title,total phosphate,1,other-undescribed,primary
@@ -1379,8 +1374,8 @@ trait,description,Select the general type of intended trait,1,engineered-strain,
 trait,enum,Other|Product Quality|Agronomic Properties|Bacterial Resistance|Herbicide Resistance|Insect Resistance|Marker Gene|Nematode Resistance|Virus Resistance,1,engineered-strain,primary
 trait,title,trait,1,engineered-strain,primary
 trait,type,string,1,engineered-strain,primary
-trophic_level,description,Trophic levels are the feeding position in a food chain. Microbes can be a range of producers (e.g. chemolithotroph),2,"other-undescribed, mixed-culture",manual_review
-trophic_level,description,Trophic levels are the feeding position in a food chain. Microbes can be a range of producers.,2,"pure-culture, culture-environmental",manual_review
+trophic_level,description,Trophic levels are the feeding position in a food chain. Microbes can be a range of producers (e.g. chemolithotroph),2,"other-undescribed, mixed-culture",modification
+trophic_level,description,Trophic levels are the feeding position in a food chain. Microbes can be a range of producers.,2,"pure-culture, culture-environmental",primary
 trophic_level,enum,autotroph|carboxydotroph|chemoautolithotroph|chemoautotroph|chemoheterotroph|chemolithoautotroph|chemolithotroph|chemoorganoheterotroph|chemoorganotroph|chemosynthetic|chemotroph|copiotroph|diazotroph|facultative|heterotroph|lithoautotroph|lithoheterotroph|lithotroph|methanotroph|methylotroph|mixotroph|obligate|oligotroph|organoheterotroph|organotroph|photoautotroph|photoheterotroph|photolithoautotroph|photolithotroph|photosynthetic|phototroph,1,pure-culture,primary
 trophic_level,title,trophic level,4,"other-undescribed, pure-culture, culture-environmental, mixed-culture",primary
 trophic_level,type,string,4,"other-undescribed, pure-culture, culture-environmental, mixed-culture",primary
@@ -1407,9 +1402,9 @@ water_content,type,string,6,"field-deployed-terraform, other-undescribed, soil, 
 water_content_meth,description,Reference or method used in determining the water content of soil,5,"field-deployed-terraform, soil, sediment, terraform, monet-soil",primary
 water_content_meth,title,water content method,5,"field-deployed-terraform, soil, sediment, terraform, monet-soil",primary
 water_content_meth,type,string,5,"field-deployed-terraform, soil, sediment, terraform, monet-soil",primary
-water_current,description,Measurement of magnitude and direction of flow within a fluid,1,other-undescribed,manual_review
-water_current,description,Measurement of magnitude and direction of flow within a fluid. Provide value and unit any unit is valid.,1,water,manual_review
-water_current,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,primary
+water_current,description,Measurement of magnitude and direction of flow within a fluid,1,other-undescribed,primary
+water_current,description,Measurement of magnitude and direction of flow within a fluid. Provide value and unit any unit is valid.,1,water,modification
+water_current,pattern,^\d+(\.\d+)?\s*[\w\s/]+$,1,water,modification
 water_current,title,water current,2,"other-undescribed, water",primary
 water_current,type,string,2,"other-undescribed, water",primary
 water_temp_regm,description,Information about treatment involving an exposure to water with varying degree of temperature treatment regimen including how many times the treatment was repeated how long each treatment lasted and the start and end time of the entire treatment; can include multiple regimens,2,"other-undescribed, plant",primary
