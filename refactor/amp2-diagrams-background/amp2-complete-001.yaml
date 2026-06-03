@@ -67,7 +67,6 @@ culture_set:
     description: My stocked up culture of KT2440 with pTE314 plasmid
     type: StockCulture
     strain_id: uuid:3
-    storage_location: 1425 freezer A
     creation_date: 2023-10-15
     volume_ml: 500
   - entity_id: uuid:5
@@ -75,7 +74,6 @@ culture_set:
     description: My second best stocked up culture of KT2440 with pTE314 plasmid
     type: StockCulture
     strain_id: uuid:3
-    storage_location: 1425 freezer A
     creation_date: 2023-10-15
     volume_ml: 500
 
@@ -151,7 +149,6 @@ receiving_activity_set:
       - uuid:9
     date_received: 2023-10-20
     condition_received: good
-    storage_location: 1425 freezer A
     confirmed_receipt: true
 
 media_creation_activity_set:
