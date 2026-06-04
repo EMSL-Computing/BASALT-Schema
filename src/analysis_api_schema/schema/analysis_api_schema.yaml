@@ -354,6 +354,7 @@ classes:
         range: string
     todos:
     - reconcile with enums and in media_strain_culture_plate.yaml
+    - potentially delete along with ContainerAxis? What are these for?
 
   ContainerAxis: #container_axis.yml - L7
     attributes:
