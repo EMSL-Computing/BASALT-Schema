@@ -154,7 +154,6 @@ classes:
     description: A segment of the mobile phase used in chromatography during mass spectrometry.
     slots:
       - duration_min
-      - substances_used
     attributes:
       id:
         identifier: true
@@ -166,7 +165,10 @@ classes:
       segment_order:
         range: integer
         description: The order of this segment in the overall chromatography protocol.
-    todos: inheritance?
+      substance:
+        description: The name of the substance used in this mobile phase segment. 
+        range: string
+    todos: inheritance? substances_used modelling
 
   # ============================================================================
   # (NEW) MassSpectrometryDataProcessingActivity
