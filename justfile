@@ -23,7 +23,7 @@ gen-models:
 gen-project: gen-schema gen-models
 
 gen-doc:
-    uv run python util/gen_doc.py C:\Users\kapu336\Documents\MONet\analysis-api-schema\src\analysis_api_schema\schema\analysis_api_schema.yaml docs/elements/
+    uv run python util/gen_doc.py ./analysis_api_schema/schema/analysis_api_schema.yaml docs/elements/
 
 serve-doc:
     uv run mkdocs serve
