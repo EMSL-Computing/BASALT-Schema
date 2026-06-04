@@ -1862,6 +1862,10 @@ slots:
     range: string
     title: propagation
 
+  protocol_url:
+    description: URL pointing to the protocol used in the activity, if applicable.
+    range: string
+
   provider_name:
     range: ControlledTermValue
     description: Provider class (e.g., JGI, SeqCenter) using ontology terms where possible
