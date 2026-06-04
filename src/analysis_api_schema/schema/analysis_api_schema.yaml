@@ -191,10 +191,6 @@ classes:
         required: true
       instrument_used:
         range: Instrument
-      protocol_url:
-        range: string
-      protocol_version:
-        range: string
       instrument_operator_id:
         range: PersonValue
 
@@ -410,9 +406,6 @@ classes:
   # processing_steps noted TODO JSONB   direction change to key-value is deferred.
   SampleProcessing:
     abstract: true
-    slots:
-      - protocol_url
-      - protocol_version
     attributes:
       id:
         identifier: true

@@ -1857,11 +1857,14 @@ slots:
     description: Version of the protocol used in the activity, if applicable.
     range: string
 
+<<<<<<< HEAD
   propagation:
     description: 'The type of reproduction from the parent stock. Values for this field are specific to different taxa. For phage or virus: lytic/lysogenic/temperate/obligately lytic. For plasmids: incompatibility group. For eukaryotes: sexual/asexual'
     range: string
     title: propagation
 
+=======
+>>>>>>> 5122b9c (add protocol_url, protocol_version to dataGen and samplingAct and slots)
   protocol_url:
     description: URL pointing to the protocol used in the activity, if applicable.
     range: string
