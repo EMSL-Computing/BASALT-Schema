@@ -179,7 +179,6 @@ classes:
     abstract: true
     slots:
       - sequence_order   # [ADDED] integer ordering within a temporal series
-      - version          # [PROMOTED] from inline attribute
       - name
       - description
     attributes:
@@ -200,8 +199,7 @@ classes:
         range: string
       instrument_operator_id:
         range: PersonValue
-    todos:
-      - what does version reference? is it software? doesn't make sense here
+
 
   RespirationDataGenerationActivity:
     is_a: DataGenerationActivity
