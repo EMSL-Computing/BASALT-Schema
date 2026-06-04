@@ -197,6 +197,8 @@ classes:
         range: Instrument
       protocol_url:
         range: string
+      protocol_version:
+        range: string
       instrument_operator_id:
         range: PersonValue
 
@@ -215,7 +217,6 @@ classes:
   # Concrete per-type subclasses (e.g. MetagenomicsDataProcessingActivity in
   # metagenomics.yaml) use is_a: DataProcessingActivity.
   # New slot: parent_workflow_id (chain link). workflow_steps direction updated.
-  # version promoted to global slot.
 
   DataProcessingActivity:
     abstract: true
@@ -225,7 +226,6 @@ classes:
     slots:
       - parent_workflow_id  # [ADDED] self-referential chain link
       - workflow_steps      # [CHANGED] key-value direction; schema TBD (was # TODO JSONB)
-      - version             # [PROMOTED] from inline attribute
       - description
     slot_usage:
       version:
