@@ -415,7 +415,7 @@ classes:
     abstract: true
     slots:
       - protocol_url
-      - version
+      - protocol_version
     attributes:
       id:
         identifier: true
@@ -430,7 +430,6 @@ classes:
       uses_sample:
         range: Sample
     todos:
-      - why is version here? should it be lab_protocol_version?
       - why does this have both analysis type and method name, as enums, just set the range to the class
 
   ProcessingSampleLink:
