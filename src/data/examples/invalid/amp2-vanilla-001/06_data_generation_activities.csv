@@ -1,0 +1,4 @@
+id,activity_type,plate_barcode,timepoint_label,wavelength_nm,measurement_type,sequence_order,acquisition_time,violation_note
+urn:amp2:act:dga-EPix1-t0,AMP2dataGenerationActivity,EPix1,t=0,600,optical_density,1,2026-03-24T16:19:00,
+urn:amp2:act:dga-EPix1-t8h,AMP2dataGenerationActivity,EPix1,t=8h,600nm,optical_density,2,2026-03-25T00:19:00,[V1] wavelength_nm is string '600nm' not integer 600
+urn:amp2:act:dga-EPix1-t24h,AMP2dataGenerationActivity,EPix1,t=24h,600,optical_density,3,2026-03-25T16:19:00,

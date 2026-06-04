@@ -415,7 +415,8 @@ classes:
   WellMetadata:
     description: |-
       Base structure for per-well metadata in plate setup.
-      NOT a database table embedded as JSONB in PlateSetupActivity.
+      NOT a standalone database table; embedded structured entries under
+      PlateSetupActivity.well_metadata.
       Subclasses add type-specific fields.
     attributes:
       position:
@@ -504,7 +505,8 @@ classes:
   WellReading:
     description: |-
       Per-well measurement data.
-      NOT a database table   embedded as JSONB in PlateProduct records.
+      NOT a standalone database table; embedded structured entries under
+      PlateProduct.well_readings.
       Lightweight summary for queries; raw data in MinIO.
 
       v1 origin: plate-general.yaml WellReading

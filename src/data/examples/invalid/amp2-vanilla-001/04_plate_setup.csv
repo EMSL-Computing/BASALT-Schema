@@ -1,0 +1,2 @@
+id,activity_type,plate_type,plate_barcode,setup_date,setup_operator_id,setup_instrument,sealing_method,media_ref,input_sample_id,output_sample_id,violation_note
+urn:amp2:act:plate-setup-EPix1-001,AMP2PlateSetupActivity,Greiner_96well_flat_bottom,EPix1,,kapu336,manual,BreathEasy_membrane,urn:amp2:ps:M9-glucose-batch-001,urn:amp2:ps:KT2440-experimental-output-001,urn:amp2:ps:EPix1-plate-001,[V2] setup_date missing (required field)
