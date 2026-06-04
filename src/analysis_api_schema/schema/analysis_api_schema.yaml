@@ -191,6 +191,10 @@ classes:
         required: true
       instrument_used:
         range: Instrument
+      protocol_url:
+        range: string
+      protocol_version:
+        range: string
       instrument_operator_id:
         range: PersonValue
 
