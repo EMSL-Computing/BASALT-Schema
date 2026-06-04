@@ -118,7 +118,6 @@ classes:
   # Inherited slots: name, description, project, sampling_set, core_section, sample_name,
   # s3_base_url, s3_bucket, s3_key, filesize, md5checksum, id.
   # Retained as attributes: type (class-specific product enum range), workflow_id.
-  # New slots: summary_metrics, lims_barcode, version.
   ProcessedData:
     is_a: DataProduct
     abstract: true
@@ -126,10 +125,8 @@ classes:
     slots:
       - summary_metrics  # [ADDED] key-value product summary, per-type schema TBD
       - lims_barcode     # [PROMOTED] from inline attribute
-      - version          # [PROMOTED] from inline attribute
       - sample_id        # [ADDED] link back to originating sample
     todos:
-      - what does version reference?
       - all subclasses need a more specific upstream slot to replace was_generated_by
 
 
@@ -152,13 +149,12 @@ classes:
         range: string
       file_type:
         range: FileTypeEnum
-      version:
+      software_version:
         range: string
     todos:
       - all subclasses need a more specific upstream slot to replace was_generated_by
       - add subclasses for non-mass spec data
       - revisit alternative identifiers range - array?
-      - what does version reference? is it software? why is it here
       - revisit filetype enum - restrict on subclasses
 
   SitePhoto:
@@ -169,12 +165,10 @@ classes:
       photo_taken_during:
         range: SamplingActivity
 
-  # DataGenerationActivity is now ABSTRACT.
   # Concrete per-method-type subclasses (e.g. EcoplateDataGenerationActivity,
   # AMP2DataGenerationActivity in companion files) use is_a: DataGenerationActivity and
   # add method-specific slots (including timepoint_label where needed).
-  # New slot: sequence_order. version promoted to global slot.
-  # NOTE: Will be renamed DataGenerationActivity.
+
   DataGenerationActivity:
     abstract: true
     slots:
@@ -226,8 +220,6 @@ classes:
       - workflow_steps      # [CHANGED] key-value direction; schema TBD (was # TODO JSONB)
       - description
     slot_usage:
-      version:
-        required: true
       description: 
         description: >-
           A human-readable description of the data analysis workflow. May 
@@ -453,8 +445,6 @@ classes:
         identifier: true
         range: SampleRole
         required: true
-      version:
-        range: string
     unique_keys:
       unique_sample_process_step:
         unique_key_slots:
