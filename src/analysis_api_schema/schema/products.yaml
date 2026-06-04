@@ -184,16 +184,6 @@ classes:
       flag_tn_avg:
         range: ProcessedDataFlag
 
-  MetaGenomicsProduct:
-    is_a: ProcessedData
-    slots:
-    attributes:
-      input_to_step:
-        range: MetagenomicsSteps
-      output_to_step:
-        range: MetagenomicsSteps
-        required: true
-
   MicrobialBiomassProduct:
     is_a: ProcessedData
     slots:

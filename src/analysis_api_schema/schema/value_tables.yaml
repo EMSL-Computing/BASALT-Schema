@@ -58,9 +58,15 @@ classes:
       id:
         identifier: true
         range: string
-      description:
-        range: string
       has_raw_value:
+        range: string
+      term:
+        range: string
+      term_id:
+        description: pointer to an ontology class
+        range: uriorcurie
+      controlled_term_provider:
+        description: name of ontology or other controlled term provider
         range: string
 
   PersonValue:
@@ -80,6 +86,7 @@ classes:
         range: string
       orcid:
         range: string
+        description: ORCID identifier of the person
       profile_image_url:
         range: string
       websites:
