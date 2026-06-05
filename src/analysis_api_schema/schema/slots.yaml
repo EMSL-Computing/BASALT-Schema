@@ -506,6 +506,10 @@ slots:
 
   sample_name:
     range: string
+  
+  sampled_at_site:
+    range: Site
+    description: Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.
 
   sampling_set:
     title: sampling set

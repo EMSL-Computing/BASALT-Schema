@@ -12,6 +12,8 @@ SiteMetadata:
     growth_facil:
       required: true
   slots:
+  - name
+  - description
   - alt
   - annual_precpt
   - annual_temp

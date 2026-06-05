@@ -9,6 +9,7 @@ SamplingActivity:
   - collection_date
   - shipped_sample_size
   - storage_condt
+  - sampled_at_site
 
 AerosolArmSamplingActivity:
   attributes:
