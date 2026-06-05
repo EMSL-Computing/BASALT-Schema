@@ -1,4 +1,3 @@
-
 agrochem_addition:
   description: Addition of fertilizers pesticides etc. - amount and time of applications
   range: string
@@ -648,6 +647,7 @@ host_wet_mass:
 humidity:
   description: Amount of water vapor measured in the air the day of sampling. Provide
     value and unit, any unit is valid
+  pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
   range: string
   title: humidity
 humidity_regm:
@@ -1310,9 +1310,9 @@ samp_store_temp:
   range: SampStoreTempEnum
   title: sample storage temperature
 sample_collected:
-  description: This referes to the TOTAL amount of sample collected from the experiment.
+  description: This refers to the TOTAL amount of sample collected from the experiment.
     NOT the amount sent to EMSL or collected for a specific analysis. Provide value
-    and unit any unit is valid
+    and unit, any unit is valid
   pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
   range: string
   title: sample collected
@@ -1322,7 +1322,7 @@ sample_collection_dev:
   range: string
   title: sample collection device
 sample_collection_method:
-  description: The method used to collect an environmental sample
+  description: The method used to collect an environmental sample. This can be a citation or description.
   range: string
   title: sample collection method
 sample_end_time:
@@ -1802,7 +1802,7 @@ wind_direction:
   title: wind direction
 wind_speed:
   description: Wind speed describes how fast the air is moving past a certain point
-    during sampling time. Provide value and unit any unit is valid
+    during sampling time. Collected via anemometer. Provide value and unit, any unit is valid.
   pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
   range: string
   title: wind speed

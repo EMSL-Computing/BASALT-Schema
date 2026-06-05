@@ -443,6 +443,12 @@ MonetSoilSample:
   description: ''
   is_a: Sample
   slot_usage:
+    bulk_elect_conductivity:
+      description: 'Provide the bulk electrical conductivity readout from the Teros
+        ZSC bluetooth sensor. If measurement was started and unsuccessful enter ''failed''
+        if measurement was not attempted enter ''did not collect''. (Unit: mS/cm)'
+      pattern: ^\d+(\.\d+)?\s*mS/cm|did not collect|failed
+      required: true
     depth:
       description: 'The vertical distance below local surface. For sediment or soil
         samples, depth is measured from sediment or soil surface respectively. Depth
@@ -474,6 +480,7 @@ MonetSoilSample:
   slots:
   - lims_id
   - agrochem_addition
+  - bulk_elect_conductivity
   - chem_administration
   - depth
   - lat_lon
@@ -538,6 +545,7 @@ OtherUndescribedSample:
   - biotic_regm
   - bishomohopanol
   - bromide
+  - bulk_elect_conductivity
   - calcium
   - carb_dioxide
   - carb_monoxide
@@ -1070,6 +1078,7 @@ SoilSample:
   - al_sat_meth
   - analysis_type
   - biotic_regm
+  - bulk_elect_conductivity
   - chem_administration
   - depth
   - experimental_factor
