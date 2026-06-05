@@ -1,0 +1,50 @@
+SiteMetadata:
+  attributes:
+    id:
+      identifier: true
+      range: uuid
+  description: ''
+  slot_usage:
+    elev:
+      required: true # should this be required for all sample types though? probably not.
+    geo_loc_name:
+      required: true
+    growth_facil:
+      required: true
+  slots:
+  - alt
+  - annual_precpt
+  - annual_temp
+  - atmospheric_data
+  - crop_rotation
+  - cur_land_use
+  - cur_vegetation
+  - cur_vegetation_meth
+  - drainage_class
+  - ecoregion
+  - elev
+  - env_broad_scale
+  - env_local_scale
+  - env_medium
+  - extreme_event
+  - fao_class
+  - fire
+  - flooding
+  - geo_loc_name
+  - growth_facil
+  - latitude
+  - link_climate_info
+  - local_class
+  - local_class_meth
+  - longitude
+  - neon_domain
+  - neon_plot_id
+  - other_growth_facil
+  - previous_land_use
+  - previous_land_use_meth
+  - profile_position
+  - season_precpt
+  - season_temp
+  - slope_aspect
+  - slope_gradient
+  - tillage
