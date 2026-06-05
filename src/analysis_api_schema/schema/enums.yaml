@@ -101,6 +101,17 @@ enums:
       MQ:
       LQ:
 
+  BiolStatEnum:
+    permissible_values:
+      wild:
+      natural:
+      semi-natural:
+      inbred line:
+      breeder's line:
+      hybrid:
+      clonal selection:
+      mutant:
+
   BioticRelationshipEnum:
     description: Sample biotic relationships
     aliases:
@@ -131,6 +142,21 @@ enums:
         text: retention_index
         aliases:
         - RI
+
+  CardinalDirectionEnum:
+    permissible_values:
+      north:
+      north_east:
+        aliases: ["north east"]
+      east:
+      south_east:
+        aliases: ["south east"]
+      south:
+      south_west:
+        aliases: ["south west"]
+      west:
+      north_west:
+        aliases: ["north west"]
 
   ChemicalEntityEnum:
     description: Common names or identifiers for chemical entities.
@@ -263,6 +289,40 @@ enums:
         text: solid_phase_extraction
         aliases:
         - SPE
+
+  ColorCodeEnum:
+    permissible_values:
+      Red- 0-250m Profiling:
+      Red Hashed- 0-250m Loitering:
+      Yellow- 251-500m Profiling:
+      Yellow Hashed- 251-500m Loitering:
+      Green- 501-750m Profiling:
+      Green Hashed- 501-750m Loitering:
+      Blue- 751-1000m Profiling:
+      Blue Hashed- 751-1000m Loitering:
+      Purple- >=1001m Profiling:
+      Purple Hashed- >=1001m Loitering:
+
+  ConstructComponentEnum:
+    permissible_values:
+      None:
+      3'UTR:
+      5'UTR:
+      Enhancer:
+      Epitope Tag:
+      Exon:
+      Flanking Element:
+      Gene:
+      Intron:
+      Leader Sequence:
+      Promoter:
+      Recognition Sequence:
+      Signal Sequence:
+      Spacer:
+      Targeting Sequence:
+      Terminator:
+      Transit Peptide:
+      Vector Sequence:
 
   ContainerTypeEnum:
     permissible_values:
@@ -509,6 +569,20 @@ enums:
         text: ETD
         description: Electron Transfer Dissociation
 
+  GenotypeSegmentEnum:
+    permissible_values:
+      Empty Transformation Vector:
+      Gene Knock-Out:
+      Gene Silencer:
+      Gene(s) of Interest:
+      RNA Interface (RNAi):
+      Screenable Marker:
+      Selectable Marker:
+      Virus Genome:
+      Wild Type:
+      Recombination Site:
+      Other:
+
   GrowthFacilityEnum:
     description: Types of growth facilities
     permissible_values:
@@ -530,6 +604,13 @@ enums:
         description: Open top chamber
       other:
         description: Other growth facility type
+  
+  GrowthHabitEnum:
+    permissible_values:
+      erect:
+      semi-erect:
+      spreading:
+      prostrate:
 
   InstrumentAltIdProviderEnum:
     permissible_values:
@@ -555,6 +636,27 @@ enums:
         title: University of California, Davis Genome Center
       azenta:
         title: Azenta Life Sciences
+  
+  IntendedTraitEnum:
+    permissible_values:
+      other:
+        title: Other
+      product_quality:
+        title: Product Quality
+      agronomic_properties:
+        title: Agronomic Properties
+      bacterial_resistance:
+        title: Bacterial Resistance
+      herbicide_resistance:
+        title: Herbicide Resistance
+      insect_resistance:
+        title: Insect Resistance
+      marker_gene:
+        title: Marker Gene
+      nematode_resistance:
+        title: Nematode Resistance
+      virus_resistance:
+        title: Virus Resistance
 
   IonizationSourceEnum:
     permissible_values:
@@ -1040,6 +1142,55 @@ enums:
       sr_1:
       xth320:
 
+  ModificationMethodEnum:
+    permissible_values:
+      aerosol_beam_injector:
+        title: Aerosol Beam Injector
+      agrobacterium_rhizogenes_disarmed:
+        title: Agrobacterium rhizogenes disarmed
+      agrobacterium_tumefasciens_disarmed:
+        title: Agrobacterium tumefaciens disarmed
+      biolistic:
+        title: Biolistic
+      chemical_transformation:
+        title: Chemical Transformation
+      cold_shock:
+        title: Cold Shock
+      conjugation:
+        title: Conjugation
+      direct_injection:
+        title: Direct Injection
+      direct_uptake:
+        title: Direct Uptake
+      dna_synthesis:
+        title: DNA Synthesis
+      electroporation:
+        title: Electroporation
+      freeze_thaw:
+        title: Freeze/Thaw
+      heat_shock:
+        title: Heat Shock
+      mutagenesis:
+        title: Mutagenesis
+      no_transformation:
+        title: No Transformation
+      ochrobactrum:
+        title: Ochrobactrum
+      other:
+        title: Other
+      p_element:
+        title: P-element
+      phage_transformation:
+        title: Phage Transformation
+      piggybac:
+        title: Piggybac
+      polyethylene_glycol_mediated:
+        title: Polyethylene Glycol-mediated
+      replicon:
+        title: Replicon
+      whisker_mediated_transformation:
+        title: Whisker-mediated Transformation
+
   NEONDomainEnum:
     description: NEON ecological domains
     permissible_values:
@@ -1132,11 +1283,12 @@ enums:
         description: Microaerophilic conditions
       microanaerobe:
         description: Microanaerobe conditions
-      oblifate_aerobe:
+      obligate_aerobe:
         description: Obligate aerobe conditions
-        aliases: ["obligate_aerobe"]
+        aliases: ["obligate aerobe"]
       obligate_anaerobe:
         description: Obligate anaerobe conditions
+        aliases: ["obligate anaerobe"]
 
   PassFailEnum:
     description: Result/status for a process (e.g., QC outcome).
@@ -1145,6 +1297,72 @@ enums:
         text: pass
       fail:
         text: fail
+    
+  PhotochemicalExposureEnum:
+  permissible_values:
+    ultraviolet:
+    visible light:
+    infrared:
+
+  PlantSexEnum:
+    permissible_values:
+      androdioecious:
+      androecious:
+      androgynomonoecious:
+      androgynous:
+      andromonoecious:
+      bisexual:
+      dichogamous:
+      diclinous:
+      dioecious:
+      gynodioecious:
+      gynoecious:
+      gynomonoecious:
+      hermaphroditic:
+      imperfect:
+      monoclinous:
+      monoecious:
+      perfect:
+      polygamodioecious:
+      polygamomonoecious:
+      polygamous:
+      protandrous:
+      protogynous:
+      subandroecious:
+      subdioecious:
+      subgynoecious:
+      synoecious:
+      trimonoecious:
+      trioecious:
+      unisexual:
+  
+  PlantStructureEnum:
+    permissible_values:
+      stem:
+        title: stem [PO:0009047]
+        meaning: PO:0009047
+      leaf:
+        title: leaf [PO:0025034]
+        meaning: PO:0025034
+      root:
+        title: root [PO:0009005]
+        meaning: PO:0009005
+      fine_root:
+        title: fine root [BTO:0005194]
+        meaning: BTO:0005194
+      whole_plant:
+        title: whole plant [BTO:0001461]
+        meaning: BTO:0001461
+      stamen:
+        title: stamen [PO:0009029]
+        meaning: PO:0009029
+      carpel:
+        title: carpel [PO:0009030]
+        meaning: PO:0009030
+      seed:
+        title: seed [PO:0009010]
+        meaning: PO:0009010
+      rhizodeposits:
 
   PolarityEnum:
     description: The polarity mode used in the mass spectrometry analysis.
@@ -1355,7 +1573,7 @@ enums:
         description: Mineral horizon
         aliases: ["M_Horizon"]
 
-  SoilTypeEnum:
+  SoilSampleTypeEnum:
     description: Specific types of soil samples
     permissible_values:
       soil_core:
@@ -1364,6 +1582,34 @@ enums:
       surface_layer:
         title: surface layer
         description: Surface layer soil sample
+  
+  SoilTypeEnum:
+    description: USDA soil taxonomy classifications
+    permissible_values:
+      alfisol:
+        title: Alfisol
+      andisol:
+        title: Andisol
+      aridisol:
+        title: Aridisol
+      entisol:
+        title: Entisol
+      gelisol:
+        title: Gelisol
+      histosol:
+        title: Histosol
+      inceptisol:
+        title: Inceptisol
+      mollisol:
+        title: Mollisol
+      oxisol:
+        title: Oxisol
+      spodosol:
+        title: Spodosol
+      ultisol:
+        title: Ultisol
+      vertisol:
+        title: Vertisol
 
   StationaryPhaseEnum:
     description: The stationary phase used in chromatography.
@@ -1485,37 +1731,91 @@ enums:
         description: Lyophilized (freeze-dried) sample
       other:
         description: Other storage condition
+  
+  SyntheticEnvironmentEnum:
+    permissible_values:
+      pore_scale_micromodels:
+        title: Pore-scale micromodels
+      rhizochip:
+        title: RhizoChip
+      subtap:
+        title: SubTap microbial and rhizosphere platforms
+      three_d_bioprinted_synthetic_soil_aggregates:
+        title: 3-D Bioprinted Synthetic Soil Aggregates
+      pore2chip:
+        title: Pore2Chip
+
+  TidalStageEnum:
+    permissible_values:
+      low_tide:
+      high_tide:
+      ebb_tide:
+      flood_tide:
 
   TillageEnum:
     description: Tillage methods
     permissible_values:
-      Chisel:
+      chisel:
         description: Chisel tillage
         aliases: ["Chisel"]
-      Cutting_Disc:
+      cutting_disc:
         description: Cutting disc tillage
         aliases: ["Cutting_Disc"]
-      Disc_Plough:
+      disc_plough:
         description: Disc plough tillage
         aliases: ["Disc_Plough"]
-      Drill:
+      drill:
         description: Drill tillage
         aliases: ["Drill"]
-      Mouldboard:
+      mouldboard:
         description: Mouldboard tillage
         aliases: ["Mouldboard"]
-      Ridge_Till:
+      ridge_till:
         description: Ridge till
         aliases: ["Ridge_Till"]
-      Streip_Tillage:
+      strip_tillage:
         description: Strip tillage
-        aliases: ["Streip_Tillage"]
-      Tined:
+        aliases: ["Strip_Tillage"]
+      tined:
         description: Tined tillage
         aliases: ["Tined"]
-      Zonal_Tillage:
+      zonal_tillage:
         description: Zonal tillage
         aliases: ["Zonal_Tillage"]
+
+  TrophicLevelEnum:
+    permissible_values:
+      autotroph:
+      carboxydotroph:
+      chemoautolithotroph:
+      chemoautotroph:
+      chemoheterotroph:
+      chemolithoautotroph:
+      chemolithotroph:
+      chemoorganoheterotroph:
+      chemoorganotroph:
+      chemosynthetic:
+      chemotroph:
+      copiotroph:
+      diazotroph:
+      facultative:
+      heterotroph:
+      lithoautotroph:
+      lithoheterotroph:
+      lithotroph:
+      methanotroph:
+      methylotroph:
+      mixotroph:
+      obligate:
+      oligotroph:
+      organoheterotroph:
+      organotroph:
+      photoautotroph:
+      photoheterotroph:
+      photolithoautotroph:
+      photolithotroph:
+      photosynthetic:
+      phototroph:
 
   VendorEnum:
     permissible_values:
@@ -1534,26 +1834,7 @@ enums:
       rigaku:
       panalytical:
 
-  WindDirectionEnum:
-    description: Wind direction classifications
-    permissible_values:
-      north:
-        description: North wind direction
-      north_east:
-        description: Northeast wind direction
-        aliases: ["north east"]
-      east:
-        description: East wind direction
-      south_east:
-        description: Southeast wind direction
-        aliases: ["south east"]
-      south:
-        description: South wind direction
-      south_west:
-        description: Southwest wind direction
-        aliases: ["south west"]
-      west:
-        description: West wind direction
-      north_west:
-        description: Northwest wind direction
-        aliases: ["north west"]
+  YesNoEnum:
+  permissible_values:
+    yes:
+    no:
