@@ -1,0 +1,425 @@
+AnalysisTypeEnum:
+  permissible_values:
+    - metabolome
+    - proteome
+    - lipidome
+    - organic matter
+    - molecular structure
+    - chemical speciation mapping
+    - genome
+    - transcriptome
+    - isotope profiling
+    - imaging- xray
+    - imaging- electron
+    - imaging- ion
+    - imaging- light
+    - hydraulic properties
+    - unknown
+
+BiolStatEnum:
+  permissible_values:
+    - wild
+    - natural
+    - semi-natural
+    - inbred line
+    - breeder's line
+    - hybrid
+    - clonal selection
+    - mutant
+
+YesNoEnum:
+  permissible_values:
+    - yes
+    - no
+
+ColorCodeEnum:
+  permissible_values:
+    - Red- 0-250m Profiling
+    - Red Hashed- 0-250m Loitering
+    - Yellow- 251-500m Profiling
+    - Yellow Hashed- 251-500m Loitering
+    - Green- 501-750m Profiling
+    - Green Hashed- 501-750m Loitering
+    - Blue- 751-1000m Profiling
+    - Blue Hashed- 751-1000m Loitering
+    - Purple- >=1001m Profiling
+    - Purple Hashed- >=1001m Loitering
+
+ConstructComponentEnum:
+  permissible_values:
+    - None
+    - 3'UTR
+    - 5'UTR
+    - Enhancer
+    - Epitope Tag
+    - Exon
+    - Flanking Element
+    - Gene
+    - Intron
+    - Leader Sequence
+    - Promotor
+    - Recognition Sequence
+    - Signal Sequence
+    - Spacer
+    - Targeting Sequence
+    - Terminator
+    - Transit Peptide
+    - Vector Sequence
+
+CurLandUseEnum:
+  permissible_values:
+    - badlands
+    - cities
+    - conifers
+    - crop trees
+    - farmstead
+    - gravel
+    - hardwoods
+    - hayland
+    - horticultural plants
+    - industrial areas
+    - intermixed
+    - marshlands
+    - meadows
+    - mines quarries
+    - mudflats
+    - oil waste
+    - pastureland
+    - permanent snow or ice
+    - rainforest
+    - rangeland
+    - roads railroads
+    - rock
+    - row crops
+    - saline seeps
+    - salt flats
+    - sand
+    - shrub crops
+    - shrub land
+    - small grains
+    - successional shrub land
+    - swamp
+    - tropical
+    - tundra
+    - vegetable crops
+    - vine crops
+
+NEONDomainEnum:
+  permissible_values:
+    - Northeast
+    - Mid Atlantic
+    - Southeast
+    - Atlantic Neotropical
+    - Great Lakes
+    - Prairie Peninsula
+    - Appalachians / Cumberland Plateau
+    - Ozarks Complex
+    - Northern Plains
+    - Central Plains
+    - Southern Plains
+    - Northern Rockies
+    - Southern Rockies/ Colorado Plateau
+    - Desert Southwest
+    - Great Basin
+    - Pacific Northwest
+    - Pacific Southwest
+    - Tundra
+    - Taiga
+    - Pacific Tropical
+
+FAOClassEnum:
+  permissible_values:
+    - Acrisols
+    - Alisols
+    - Andosols
+    - Anthrosols
+    - Arenosols
+    - Calcisols
+    - Cambisols
+    - Chernozems
+    - Cryosols
+    - Durisols
+    - Ferralsols
+    - Fluvisols
+    - Gleysols
+    - Gypsisols
+    - Histosols
+    - Kastanozems
+    - Leptosols
+    - Lixisols
+    - Luvisols
+    - Nitisols
+    - Phaeozems
+    - Planosols
+    - Plinthosols
+    - Podzols
+    - Solonchaks
+    - Solonetz
+    - Stagnosols
+    - Technosols
+    - Umbrisols
+    - Vertisols
+
+GenotypeSegmentEnum:
+  permissible_values:
+    - Empty Transformation Vector
+    - Gene Knock-Out
+    - Gene Silencer
+    - Gene(s) of Interest
+    - RNA Interface (RNAi)
+    - Screenable Marker
+    - Selectable Marker
+    - Virus Genome
+    - Wild Type
+    - Recombination Site
+    - Other
+
+GrowthFacilEnum:
+  permissible_values:
+    - field
+    - commercially purchased
+    - experimental garden
+    - field incubation
+    - greenhouse
+    - growth chamber
+    - lab incubation
+    - open top chamber
+    - other
+
+GrowthHabitEnum:
+  permissible_values:
+    - erect
+    - semi-erect
+    - spreading
+    - prostrate
+
+ModificationMethodEnum:
+  permissible_values:
+    - Aerosol Beam Injector
+    - Agrobacterium rhizogenes disarmed
+    - Agrobacterium tumefaciens disarmed
+    - Biolistic
+    - Chemical Transformation
+    - Cold Shock
+    - Conjugation
+    - Direct Injection
+    - Direct Uptake
+    - DNA Synthesis
+    - Electroporation
+    - Freeze/Thaw
+    - Heat Shock
+    - Mutagenesis
+    - No Transformation
+    - Ochrobactrum
+    - Other
+    - P-element
+    - Phage Transformation
+    - Piggybac
+    - Polyethylene Glycol-mediated
+    - Replicon
+    - Whisker-mediated Transformation
+
+OxygenRelationshipEnum:
+  permissible_values:
+    - aerobic
+    - anaerobic
+    - anoxic
+    - facultative
+    - microaerophilic
+    - microanaerobe
+    - obligate aerobe
+    - obligate anaerobe
+
+PhotochemicalExposureEnum:
+  permissible_values:
+    - ultraviolet
+    - visible light
+    - infrared
+
+PlantSexEnum:
+  permissible_values:
+    - Androdioecious
+    - Androecious
+    - Androgynomonoecious
+    - Andromonoecious
+    - Bisexual
+    - Dichogamous
+    - Diclinous
+    - Dioecious
+    - Gynodioecious
+    - Gynoecious
+    - Gynomonoecious
+    - Hermaphroditic
+    - Imperfect
+    - Monoclinous
+    - Monoecious
+    - Perfect
+    - Polygamodioecious
+    - Polygamomonoecious
+    - Polygamous
+    - Protandrous
+    - Protogynous
+    - Subandroecious
+    - Subdioecious
+    - Subgynoecious
+    - Synoecious
+    - Trimonoecious
+    - Trioecious
+    - Unisexual
+
+PlantStructureEnum:
+  permissible_values:
+    - stem [PO:0009047]
+    - leaf [PO:0025034]
+    - root [PO:0009005]
+    - fine root [BTO:0005194]
+    - whole plant [BTO:0001461]
+    - stamen [PO:0009029]
+    - carpel [PO:0009030]
+    - seed [PO:0009010]
+
+SlopeProfilePositionEnum:
+  permissible_values:
+    - Backslope
+    - Footslope
+    - Shoulder
+    - Summit
+    - Toeslope
+
+BioticRelationshipEnum:
+  permissible_values:
+    - free_living
+    - parasite
+    - commensal
+    - symbiont
+
+SampStoreTempEnum:
+  permissible_values:
+    - 4 C
+    - room temperature
+    - -20 C
+    - -80 C
+    - other
+
+SedimentTypeEnum:
+  permissible_values:
+    - biogenous
+    - cosmogenous
+    - hydrogenous
+    - lithogenous
+
+SoilHorizonEnum:
+  permissible_values:
+    - A_Horizon
+    - B_Horizon
+    - C_Horizon
+    - E_Horizon
+    - O_Horizon
+    - Permafrost
+    - R_Layer
+
+SoilTypeEnum:
+  permissible_values:
+    - Alfisol
+    - Andisol
+    - Aridisol
+    - Entisol
+    - Gelisol
+    - Histosol
+    - Inceptisol
+    - Mollisol
+    - Oxisol
+    - Spodosol
+    - Ultisol
+    - Vertisol
+
+StorageConditionEnum:
+  permissible_values:
+    - fresh
+    - frozen
+    - lyophilized
+    - other
+
+SyntheticEnvironmentEnum:
+  permissible_values:
+    - Pore-scale micromodels
+    - RhizoChip
+    - SubTap microbial and rhizosphere platforms
+    - 3-D Bioprinted Synthetic Soil Aggregates
+    - Pore2Chip
+
+TidalStageEnum:
+  permissible_values:
+    - low_tide
+    - high_tide
+    - ebb_tide
+    - flood_tide
+
+TillageEnum:
+  permissible_values:
+    - chisel
+    - cutting disc
+    - disc plough
+    - drill
+    - mouldboard
+    - ridge till
+    - strip tillage
+    - tined
+    - zonal tillage
+
+IntendedTraitEnum:
+  permissible_values:
+    - Other
+    - Product Quality
+    - Agronomic Properties
+    - Bacterial Resistance
+    - Herbicide Resistance
+    - Insect Resistance
+    - Marker Gene
+    - Nematode Resistance
+    - Virus Resistance
+
+TrophicLevelEnum:
+  permissible_values:
+    - autotroph
+    - carboxydotroph
+    - chemoautolithotroph
+    - chemoautotroph
+    - chemoheterotroph
+    - chemolithoautotroph
+    - chemolithotroph
+    - chemoorganoheterotroph
+    - chemoorganotroph
+    - chemosynthetic
+    - chemotroph
+    - copiotroph
+    - diazotroph
+    - facultative
+    - heterotroph
+    - lithoautotroph
+    - lithoheterotroph
+    - lithotroph
+    - methanotroph
+    - methylotroph
+    - mixotroph
+    - obligate
+    - oligotroph
+    - organoheterotroph
+    - organotroph
+    - photoautotroph
+    - photoheterotroph
+    - photolithoautotroph
+    - photolithotroph
+    - photosynthetic
+    - phototroph
+
+CardinalDirectionEnum:
+  permissible_values:
+    - north
+    - north east
+    - east
+    - south east
+    - south
+    - south west
+    - west
+    - north west
