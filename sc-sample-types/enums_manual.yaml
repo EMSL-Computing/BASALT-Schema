@@ -241,6 +241,7 @@ PlantSexEnum:
     - Androdioecious
     - Androecious
     - Androgynomonoecious
+    - Androgynous
     - Andromonoecious
     - Bisexual
     - Dichogamous
@@ -277,6 +278,7 @@ PlantStructureEnum:
     - stamen [PO:0009029]
     - carpel [PO:0009030]
     - seed [PO:0009010]
+    - rhizodeposits
 
 SlopeProfilePositionEnum:
   permissible_values:

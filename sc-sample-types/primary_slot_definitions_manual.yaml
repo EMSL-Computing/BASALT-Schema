@@ -83,11 +83,13 @@ atmospheric_data:
   range: string
   title: atmospheric data
 bac_prod:
-  description: Bacterial production in the water column measured by isotope uptake
+  description: Bacterial production in the water column measured by isotope uptake. Provide value and unit, any unit is valid. 
+  pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
   range: string
   title: bacterial production
 bac_resp:
-  description: Measurement of bacterial respiration in the water column
+  description: Measurement of bacterial respiration in the water column. Provide value and unit,any unit is valid.
+  pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
   range: string
   title: bacterial respiration
 bacteria_carb_prod:
@@ -219,7 +221,8 @@ compound_name:
   range: string
   title: compound name
 conduc:
-  description: Electrical conductivity of water
+  description: Electrical conductivity of water. Provide value and unit, any unit is valid.
+  pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
   range: string
   title: conductivity
 construct_component:
@@ -262,10 +265,10 @@ density:
   range: string
   title: density
 depth:
-  description: 'The vertical distance below local surface. For sediment or soil samples
+  description: 'The vertical distance below local surface. For sediment or soil samples,
     depth is measured from sediment or soil surface respectively. Depth is required
     to be reported as an interval for subsurface samples. (Units: m)'
-  pattern: ^\d+(\.\d+)?-\d+(\.\d+)?\s*m$
+  pattern: ^\d+(\.\d+)?(-\d+(\.\d+)?)?\s*m$
   range: string
   title: depth
 diether_lipids:
@@ -293,11 +296,13 @@ diss_inorg_carb:
   range: string
   title: dissolved inorganic carbon
 diss_inorg_nitro:
-  description: Concentration of dissolved inorganic nitrogen
+  description: 'Concentration of dissolved inorganic nitrogen. (Unit: ug/L or umol/L)'
+  pattern: ^\d+(\.\d+)?\s*(umol/L|ug/L)$
   range: string
   title: dissolved inorganic nitrogen
 diss_inorg_phosp:
-  description: Concentration of dissolved inorganic phosphorus in the sample
+  description: Concentration of dissolved inorganic phosphorus in the sample. Provide value and unit, any unit is valid.
+  pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
   range: string
   title: dissolved inorganic phosphate
 diss_org_carb:
@@ -324,8 +329,8 @@ donor_organism:
   range: string
   title: donor organism
 down_par:
-  description: Visible waveband radiance and irradiance measurements in the water
-    column
+  description: Visible waveband radiance and irradiance measurements in the water column. Provide value and unit, any unit is valid.
+  pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
   range: string
   title: downward PAR
 drainage_class:
@@ -397,7 +402,7 @@ experimental_factor_other:
   description: Other details about your sample that you feel can't be accurately represented
     in the available columns.
   range: string
-  title: experimental factor other
+  title: other experimental factor
 extraction_method:
   description: >-
     If you (the user) performed an extraction preparation or processing before
@@ -453,7 +458,8 @@ flooding:
   range: string
   title: flooding
 fluor:
-  description: Raw or converted fluorescence of water
+  description: Raw or converted fluorescence of water. Provide value and unit, any unit is valid.
+  pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
   range: string
   title: fluorescence
 fungicide_regm:
@@ -480,7 +486,7 @@ genetic_mod:
     e.g. specification of a transgene or the gene knocked-out or details of transient
     transfection
   range: string
-  title: genetic modification
+  title: genetic modifications
 genotype_segment_category:
   description: Select the genotype category. A genotype is generally an expression
     cassett or a grouping of genetic elements or a gene edit containing a set of construct
@@ -699,7 +705,7 @@ isol_growth_condt:
     identifier (DOI), or URL for isolation and growth condition specifications of the
     organism/material
   range: string
-  title: isolation and growth condition
+  title: isolation and growth conditions
 isotope_exposure:
   description: List isotope exposure or addition applied to your sample.
   range: string
@@ -715,7 +721,8 @@ lat_lon:
   range: string
   title: latitude longitude
 light_intensity:
-  description: Measurement of light intensity
+  description: Measurement of light intensity. Provide value and unit, any unit is valid.
+  pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
   range: string
   title: light intensity
 light_regm:
@@ -736,7 +743,7 @@ link_addit_analys:
 link_class_info:
   description: Link to digitized soil maps or other soil classification information
   range: string
-  title: link to classification information
+  title: link to soil classification
 link_climate_info:
   description: Link to climate resource
   range: string
@@ -761,7 +768,7 @@ mean_frict_vel:
   range: string
   title: mean friction velocity
 mean_peak_frict_vel:
-  description: Measurement of mean peak friction velocity
+  description: 'Measurement of mean peak friction velocity (Unit: m/s)'
   pattern: ^\d+(\.\d+)?\s*m/s$
   range: string
   title: mean peak friction velocity
@@ -950,16 +957,16 @@ other:
 other_growth_facil:
   description: Please specify growth facility if you selected 'other'
   range: string
-  title: growth facility other
+  title: other growth facility
 other_samp_store_temp:
   description: Please specify sample storage temperature if you selected 'other'
   range: string
-  title: sample storage temperature other
+  title: other sample storage temperature
 other_storage_condt:
   description: Please specify your storage conditions if you selected 'other' and the available
     values are not appropriate
   range: string
-  title: storage condition other
+  title: other storage condition
 other_treatment:
   description: Many sample treatment descriptor columns are available. If a treatment
     is applied to your samples and the provided treatment terms do not satisfy please
@@ -970,6 +977,7 @@ oxygen:
   description: 'Amount of oxygen measured in the air the day of sampling. (Unit: mg/L
     or ppm)'
   range: string
+  pattern: ^\d+(\.\d+)?\s*(mg/L|ppm)$
   title: oxygen
 oxygen_relationship:
   description: Oxygenation status of sample
@@ -982,7 +990,8 @@ part_org_carb:
   range: string
   title: particulate organic carbon
 part_org_nitro:
-  description: Concentration of particulate organic nitrogen
+  description: 'Concentration of particulate organic nitrogen. (Unit: ug/L or umol/L)'
+  pattern: ^\d+(\.\d+)?\s*(umol/L|ug/L)$
   range: string
   title: particulate organic nitrogen
 particle_class:
@@ -1057,7 +1066,8 @@ photochemical_exposure:
   range: PhotochemicalExposureEnum
   title: photochemical exposure
 photon_flux:
-  description: Measurement of photon flux
+  description: Measurement of photon flux. Provide value and unit, any unit is valid.
+  pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
   range: string
   title: photon flux
 plant_age:
@@ -1085,8 +1095,8 @@ plant_genotype:
   title: plant genotype
 plant_growth_med:
   description: Specification of the media for growing the plants or tissue cultured
-    samples e.g. soil aeroponic hydroponic in vitro solid culture medium in vitro
-    liquid culture medium.
+    samples e.g. soil, aeroponic, hydroponic, in vitro, solid culture medium, in vitro,
+    liquid culture medium. Value is required to be a subclass from the PECO ontology (http://purl.bioontology.org/ontology/PECO). The value should be formatted as the name of the media followed by the PECO identifier in brackets, e.g. aeroponic plant growth media exposure [PECO:0001073]
   pattern: ^_*\s*[a-zA-Z\s]+\[PECO:\d+\]$
   range: string
   title: plant growth medium
@@ -1115,8 +1125,9 @@ plant_wet_mass:
   range: string
   title: plant wet mass
 porosity:
-  description: Porosity of deposited sediment is volume of voids divided by the total
-    volume of sample
+  description: 'Porosity of deposited sediment is volume of voids divided by the
+    total volume of sample. (Unit: percent)'
+  pattern: ^\d+(\.\d+)?\s*percent$
   range: string
   title: porosity
 potassium:
@@ -1149,7 +1160,8 @@ previous_land_use_meth:
   range: string
   title: previous land use method
 primary_prod:
-  description: Measurement of primary production generally measured as isotope uptake
+  description: Measurement of primary production generally measured as isotope uptake. Provide value and unit, any unit is valid.
+  pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
   range: string
   title: primary production
 primary_treatment:
@@ -1159,7 +1171,7 @@ primary_treatment:
   title: primary treatment
 priority_order:
   description: Indicate the run order priority of your samples
-  range: string
+  range: number
   title: priority order
 product_name:
   description: Provide the name of the product used to create the synthetic material.
@@ -1226,13 +1238,11 @@ root_med_carbon:
   range: string
   title: rooting medium carbon
 root_med_macronutr:
-  description: Measurement of the culture rooting medium macronutrients (N P K Ca
-    Mg S); e.g. KH2PO4170 mg/L).
+  description: Measurement of the culture rooting medium macronutrients (NP K Ca Mg S). Can be multivalued separated by ;. e.g. KH2PO4 170 mg/L
   range: string
   title: rooting medium macronutrients
 root_med_micronutr:
-  description: Measurement of the culture rooting medium micronutrients (Fe Mn Zn
-    B Cu Mo); e.g. H3BO3 (6.2 mg/L).
+  description: Measurement of the culture rooting medium micronutrients (Fe Mn Zn B Cu Mo). Can be multivalued separated by ;. e.g. H3BO3 6.2 mg/L
   range: string
   title: rooting medium micronutrients
 root_med_ph:
@@ -1256,11 +1266,13 @@ root_med_suppl:
   range: string
   title: rooting medium organic supplement
 salinity:
-  description: Salinity is the total concentration of all dissolved salts in a water
-    sample. While salinity can be measured by a complete chemical analysis this method
-    is difficult and time consuming. More often it is instead derived from the conductivity
-    measurement. This is known as practical salinity. These derivations compare the
-    specific conductance of the sample to a salinity standard such as seawater.
+  description: 'Salinity is the total concentration of all dissolved salts in
+    a sample. While salinity can be measured by a complete chemical analysis, this
+    method is difficult and time consuming. More often it is instead derived from
+    the conductivity measurement. This is known as practical salinity. These derivations
+    compare the specific conductance of the sample to a salinity standard such
+    as seawater (Unit: practical salinity unit or percent)'
+  pattern: ^\d+(\.\d+)?\s*(practical salinity unit|percent)$
   range: string
   title: salinity
 salinity_method:
@@ -1499,7 +1511,9 @@ soluble_org_mat:
   range: string
   title: soluble organic material
 soluble_react_phosp:
-  description: Concentration of soluble reactive phosphorus
+  description: 'Concentration of soluble reactive phosphorus. (Unit: umol/L or
+    mg/L or ppm)'
+  pattern: ^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$
   range: string
   title: soluble reactive phosphorus
 source_mat_id:
@@ -1549,9 +1563,9 @@ strain_source:
   title: strain source
 subspecf_gen_lin:
   description: Information about the genetic distinctness of the sequenced organism
-    below the subspecies level e.g. serovar serotype biotype ecotype or any relevant
+    below the subspecies level, e.g. serovar, serotype, biotype, ecotype, or any relevant
     genetic typing schemes like Group I plasmid. Supply both the lineage name and
-    the lineage rank separated by a colon e.g. biovar:abc123
+    the lineage rank separated by a colon, e.g. biovar:abc123
   range: string
   title: subspecific genetic lineage
 sulfate:
@@ -1565,7 +1579,8 @@ sulfide:
   range: string
   title: sulfide
 suspend_part_matter:
-  description: Concentration of suspended particulate matter
+  description: 'Concentration of suspended particulate matter. (Unit: mg/L)'
+  pattern: ^\d+(\.\d+)?\s*(mg/L)$
   range: string
   title: suspended particulate matter
 suspend_solids:
@@ -1658,7 +1673,8 @@ tiss_cult_growth_med:
   range: string
   title: tissue culture growth media
 tot_carb:
-  description: Total carbon content
+  description: Total carbon content. Provide value and unit, any unit is valid
+  pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
   range: string
   title: total carbon content
 tot_depth_water_col:
@@ -1668,17 +1684,20 @@ tot_depth_water_col:
   title: total depth of water column
 tot_diss_nitro:
   description: 'Total dissolved nitrogen concentration reported as nitrogen measured
-    by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen'
+    by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen. (Unit: ug/L)'
+  pattern: ^\d+(\.\d+)?\s*(ug/L)$
   range: string
   title: total dissolved nitrogen
 tot_inorg_nitro:
-  description: Total inorganic nitrogen content
+  description: 'Total inorganic nitrogen content. (Unit: ug/L)'
+  pattern: ^\d+(\.\d+)?\s*(ug/L)$
   range: string
   title: total inorganic nitrogen
 tot_nitro:
   description: 'Total nitrogen concentration of water samples calculated by: total
     nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured
-    without filtering reported as nitrogen'
+    without filtering reported as nitrogen. (Unit: ug/L or umol/L or mg/L)'
+  pattern: ^\d+(\.\d+)?\s*(ug/L|umol/L|mg/L)$
   range: string
   title: total nitrogen
 tot_nitro_cont_meth:
@@ -1702,12 +1721,15 @@ tot_org_carb:
   range: string
   title: total organic carbon
 tot_part_carb:
-  description: Total particulate carbon content
+  description: 'Total particulate carbon content. (Unit: ug/L or umol/L)'
+  pattern: ^\d+(\.\d+)?\s*(ug/L|umol/L)$
   range: string
   title: total particulate carbon
 tot_phosp:
   description: 'Total phosphorus concentration in the sample calculated by: total
-    phosphorus = total dissolved phosphorus + particulate phosphorus'
+    phosphorus = total dissolved phosphorus + particulate phosphorus. (Unit: ug/L
+    or umol/L)'
+  pattern: ^\d+(\.\d+)?\s*(ug/L|umol/L)$
   range: string
   title: total phosphorus
 tot_phosphate:
@@ -1749,7 +1771,9 @@ water_content_meth:
   range: string
   title: water content method
 water_current:
-  description: Measurement of magnitude and direction of flow within a fluid
+  description: Measurement of magnitude and direction of flow within a fluid.
+    Provide value and unit, any unit is valid.
+  pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
   range: string
   title: water current
 water_temp_regm:
