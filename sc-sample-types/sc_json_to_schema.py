@@ -37,7 +37,7 @@ slot_holder: list = []
 
 for sample_type in sc_schema_dict.keys(): 
     slots_per_sample_type[sample_type] = list(sc_schema_dict[sample_type]['items']['properties'].keys())
-    required_slots_per_sample_type = list(sc_schema_dict[sample_type]['items']['required'])
+    required_slots_per_sample_type[sample_type] = list(sc_schema_dict[sample_type]['items']['required'])
     slot_holder = slot_holder + slots_per_sample_type[sample_type]
 
 # Then, compare slot usages
@@ -127,6 +127,18 @@ slot_usage_df_manual: pd.DataFrame = pd.read_csv(
     )
 ###############################################################################
 
+# Add rows for required slots from required_slots_per_sample_type
+for sample_type, required_slots in required_slots_per_sample_type.items():
+    for slot in required_slots:
+        slot_usage_df_manual = pd.concat([slot_usage_df_manual, pd.DataFrame([{
+            'slot': slot,
+            'property': "required",
+            'value': True,
+            'sample_type_count': 1,
+            'sample_types': sample_type,
+            'primary_or_modification': 'modification'
+        }])], ignore_index=True)
+
 # Filter to "primary" rows
 primary_slots_df: pd.DataFrame = slot_usage_df_manual[slot_usage_df_manual['primary_or_modification'] == 'primary']
 # Confirm that there is only one primary value per slot/property combination
@@ -167,19 +179,16 @@ for _, row in modification_rows_df.iterrows():
         if slot_name not in slot_usages[sample_type]:
             slot_usages[sample_type][slot_name] = {}
         slot_usages[sample_type][slot_name][property_name] = modification_value
-# print(slot_usages)
+#print(slot_usages)
 
 # Write out the primary slot definitions to a yaml file
-with open("./sc-sample-types/primary_slot_definitions.yaml", "w") as yaml_file:
+with open("./sc-sample-types/primary_slot_definitions_generated.yaml", "w") as yaml_file:
     yaml.dump(primary_slot_definitions, yaml_file)
 
 
 # Break up slots by superclass
 # some of the slots will go on sampling activity
 sampling_activity_slots: list = [
-    'sample_store_temp',
-    'other_samp_store_temp',
-    'other_storage_condt',
     'collection_date',
     'collection_time',
     'sample_collected',
@@ -190,15 +199,11 @@ sampling_activity_slots: list = [
     'sampling_duration',
     'shipped_sample_size',
     'bulk_elect_conductivity',
-    'depth',
     'humidity',
     'infiltration_1',
     'infiltration_2',
     'infiltration_notes',
-    'season_temp',
-    'season_precpt',
     'storage_condt',
-    'temp',
     'weather',
     'wind_direction',
     'wind_speed',
@@ -216,6 +221,8 @@ site_metadata_slots: list = [
     'neon_domain',
     'annual_precpt',
     'annual_temp',
+    'season_temp',
+    'season_precpt',
     'atmospheric_data',
     'crop_rotation',
     'cur_vegetation',
@@ -321,7 +328,7 @@ for class_name, slots in sample_classes_with_slots.items():
             sample_type = key
             break
     try:
-        s = {slot: modifications for slot, modifications in slot_usages[sample_type].items()}
+        s = {slot: modifications for slot, modifications in slot_usages[sample_type].items() if slot in slots}
     except:
         s = ''
 
@@ -338,7 +345,7 @@ for class_name, slots in sample_classes_with_slots.items():
         'slot_usage': s
     }
 
-with open("./sc-sample-types/sample_classes.yaml", "w") as yaml_file:
+with open("./sc-sample-types/sample_classes_generated.yaml", "w") as yaml_file:
     yaml.dump(sample_classes_yaml, yaml_file, default_flow_style=False)
 
 # Do the same for SamplingActivity classes
@@ -351,7 +358,7 @@ for class_name, slots in activity_classes_with_slots.items():
             sample_type = key
             break
     try:
-        s = {slot: modifications for slot, modifications in slot_usages[sample_type].items()}
+        s = {slot: modifications for slot, modifications in slot_usages[sample_type].items() if slot in slots}
     except:
         s = ''
 
@@ -368,7 +375,7 @@ for class_name, slots in activity_classes_with_slots.items():
         'slot_usage': s
     }
 
-with open("./sc-sample-types/sampling_activity_classes.yaml", "w") as yaml_file:
+with open("./sc-sample-types/sampling_activity_classes_generated.yaml", "w") as yaml_file:
     yaml.dump(activity_classes_yaml, yaml_file, default_flow_style=False)
 
 # And write out a SiteMetadata class including all slot usages from any sample type
@@ -385,7 +392,7 @@ site_metadata_class_yaml: dict = {
         'slot_usage': {slot: slot_usages.get(sample_type, {}).get(slot, '') for slot in site_metadata_slots for sample_type in sc_schema_dict.keys()}
     }
 }
-with open("./sc-sample-types/site_metadata_class.yaml", "w") as yaml_file:
+with open("./sc-sample-types/site_metadata_class_generated.yaml", "w") as yaml_file:
     yaml.dump(site_metadata_class_yaml, yaml_file, default_flow_style=False)
 
 # CHECK are all slots listed on either a Sample, SamplingActivity, or SiteMetadata class? ONE AND ONLY ONE OF THOSE

@@ -6,19 +6,8 @@ AerosolArmSample:
   description: ''
   is_a: Sample
   slot_usage:
-    alt:
-      description: Altitude is a term used to identify heights of objects such as
-        airplanes space shuttles rockets atmospheric balloons and heights of places
-        such as atmospheric layers and clouds. It is used to measure the height of
-        an object which is above the earthbs surface. In this context the altitude
-        measurement is the vertical distance between the earth's surface above sea
-        level and the sampled position in the air Required units be provided as 'm'
-        for meters.
-      pattern: ^\d+(\.\d+)?\s*m$
-    annual_precpt:
-      title: annual precipitation
-    annual_temp:
-      title: annual temperature
+    analysis_type:
+      required: true
     carb_dioxide:
       description: Amount of carbon dioxide measured in the air the day of sampling.
         Provided by ARM. Provide value and unit any unit is valid
@@ -27,19 +16,10 @@ AerosolArmSample:
       description: Amount of carbon monoxide measured in the air the day of sampling.
         Provided by ARM. Provide value and unit any unit is valid
       pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
-    humidity:
-      description: Amount of humidity measured in the air the day of sampling. Provided
-        by iMet. Provide value and unit any unit is valid
-      pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
-    other:
-      description: Other details about your sample that you feel can't be accurately
-        represented in the available columns.
     other_storage_condt:
       description: Please specify if 'other'
     priority_order:
       range: number
-    sample_name:
-      description: ID that is present on the shipped sample. Human readable.
     size_frac_low:
       description: 'Refers to the mesh/pore size used to pre-filter/pre-sort the sample.
         Materials larger than the size threshold are excluded from the sample (Unit:
@@ -72,6 +52,8 @@ AerosolArmSample:
   - methane
   - method_development
   - misc_param
+  - other_samp_store_temp
+  - other_storage_condt
   - other_treatment
   - photochemical_exposure
   - pressure_control
@@ -98,33 +80,14 @@ AerosolSample:
   description: ''
   is_a: Sample
   slot_usage:
-    annual_precpt:
-      title: annual precipitation
-    annual_temp:
-      title: annual temperature
+    analysis_type:
+      required: true
     chem_administration:
       title: chemical adminstration
-    env_broad_scale:
-      description: 'Report the major environmental system the sample or specimen came
-        from. The system identified should have a coarse spatial grain to provide
-        the general environmental context of where the sampling was done (e.g. in
-        the desert or a rainforest). We recommend using subclasses of EnvO s biome
-        class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about
-        how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
-      title: environmental broad scale
-    env_local_scale:
-      title: environmental local scale
-    humidity:
-      pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
-    other:
-      description: Other details about your sample that you feel can't be accurately
-        represented in the available columns.
     other_storage_condt:
       description: Please specify if 'other'
     oxygen:
       pattern: ^\d+(\.\d+)?\s*(mg/L|ppm)$
-    sample_name:
-      description: ID that is present on the shipped sample. Human readable.
     size_frac_low:
       description: 'Refers to the mesh/pore size used to pre-filter/pre-sort the sample.
         Materials larger than the size threshold are excluded from the sample (Unit:
@@ -151,6 +114,8 @@ AerosolSample:
   - methane
   - method_development
   - misc_param
+  - other_samp_store_temp
+  - other_storage_condt
   - other_treatment
   - oxygen
   - photochemical_exposure
@@ -174,14 +139,16 @@ CommerciallyPurchasedSample:
   description: ''
   is_a: Sample
   slot_usage:
+    analysis_type:
+      required: true
+    compound_name:
+      required: true
     other_samp_store_temp:
       title: other sample storage temperature
     other_storage_condt:
       title: other storage conditions
     source_mat_ID:
       title: source material ID
-    storage_condt:
-      title: storage conditions
   slots:
   - analysis_type
   - cas
@@ -190,6 +157,8 @@ CommerciallyPurchasedSample:
   - experimental_factor_other
   - item_number
   - method_development
+  - other_samp_store_temp
+  - other_storage_condt
   - other_treatment
   - oxygen_relationship
   - production_method
@@ -198,6 +167,7 @@ CommerciallyPurchasedSample:
   - sample_processing
   - source_mat_ID
   - technical_reps
+  - temp
 CultureEnvironmentalSample:
   attributes:
     id:
@@ -206,13 +176,24 @@ CultureEnvironmentalSample:
   description: ''
   is_a: Sample
   slot_usage:
+    analysis_type:
+      required: true
+    growth_medium:
+      required: true
+    host_common_name:
+      required: true
+    host_taxid:
+      required: true
     isol_growth_condt:
+      required: true
       title: isolation and growth conditions
     non_microb_biomass:
       description: "Amount of biomass; should include the name for the part of biomass\
         \ measured e.g.insect plant total (Unit: \xB5m)"
     pathogenicity:
       title: known pathogenicity
+    start_date_inc:
+      required: true
   slots:
   - air_temp_regm
   - analysis_type
@@ -237,6 +218,8 @@ CultureEnvironmentalSample:
   - method_development
   - non_microb_biomass
   - non_microb_biomass_method
+  - other_samp_store_temp
+  - other_storage_condt
   - other_treatment
   - oxygen_relationship
   - pathogenicity
@@ -259,7 +242,35 @@ EngineeredStrainSample:
       range: uuid
   description: ''
   is_a: Sample
-  slot_usage: ''
+  slot_usage:
+    cbi:
+      required: true
+    component_description:
+      required: true
+    component_name:
+      required: true
+    construct_component:
+      required: true
+    donor_organism:
+      required: true
+    genotype_segment_category:
+      required: true
+    genotype_segment_name:
+      required: true
+    modification_method:
+      required: true
+    organism_name:
+      required: true
+    phenotype:
+      required: true
+    strain_description:
+      required: true
+    strain_name:
+      required: true
+    strain_source:
+      required: true
+    trait:
+      required: true
   slots:
   - cbi
   - component_description
@@ -270,6 +281,8 @@ EngineeredStrainSample:
   - genotype_segment_name
   - modification_method
   - organism_name
+  - other_samp_store_temp
+  - other_storage_condt
   - phenotype
   - strain_description
   - strain_name
@@ -283,14 +296,35 @@ FieldDeployedTerraformSample:
   description: ''
   is_a: Sample
   slot_usage:
+    analysis_type:
+      required: true
+    initiation_date_inoculation:
+      required: true
+    initiation_date_plant:
+      required: true
+    lat_lon:
+      required: true
     propagation:
       title: propogation
+    synth_env_assembly:
+      required: true
+    synth_env_design:
+      required: true
+    synth_env_design_method:
+      required: true
+    synth_env_material:
+      required: true
+    synth_env_treatment:
+      required: true
+    synth_start_date:
+      required: true
   slots:
   - air_temp_regm
   - analysis_type
   - biotic_regm
   - chem_administration
   - cult_root_med
+  - depth
   - encoded_traits
   - gaseous_environment
   - genetic_mod
@@ -316,6 +350,8 @@ FieldDeployedTerraformSample:
   - mineral_nutr_regm
   - misc_param
   - non_min_nutr_regm
+  - other_samp_store_temp
+  - other_storage_condt
   - other_treatment
   - oxygen_relationship
   - plant_growth_med
@@ -344,6 +380,7 @@ FieldDeployedTerraformSample:
   - synth_env_treatment
   - synth_start_date
   - technical_reps
+  - temp
   - tiss_cult_growth_med
   - water_content
   - water_content_meth
@@ -356,38 +393,29 @@ MixedCultureSample:
   description: ''
   is_a: Sample
   slot_usage:
-    collection_date:
-      description: The date of sampling either as an instance (single point) or interval.
-        For commercially purchased samples this will be the purchase date.
-    collection_time:
-      description: The time of sampling either as an instance (single point) or interval.
-        Time should be formatted as HH:MM:SS in 24-hour time format
+    analysis_type:
+      required: true
     extraction_method:
       description: If you the user performed an extraction preparation or processing
         before sending the sample to EMSL what was it? This is only applicable when
         sending an "analytical sample". See README for more details on types of samples.
-    growth_facil:
-      description: Type of facility where the sample was collected or grown
+    growth_medium:
+      required: true
+    host_common_name:
+      required: true
+    host_taxid:
+      required: true
+    isol_growth_condt:
+      required: true
     other_treatment:
       description: If a treatment is applied to your samples and the provided "treatment"
         terms do not satisfy please add it here. Multiple treatments can be entered
         here separated by ;
     ref_biomaterial:
       description: Primary publication for the biomaterial/sample
-    samp_store_temp:
-      description: Details what temperature samples should be stored at
-    sample_collected:
-      description: This refers to the TOTAL amount of sample collected from the experiment.
-        NOT the amount sent to EMSL or collected for a specific analysis.
-    sample_collection_method:
-      description: The method employed for collecting the sample. This can be a citation
-        or description
-    sample_name:
-      description: ID that is present on the shipped sample. Human readable.
-    shipped_sample_size:
-      description: Total amount of sample sent to EMSL include units
     start_date_inc:
       description: Date the incubation was started. Only relevant for incubation samples.
+      required: true
     subspecf_gen_lin:
       description: Information about the genetic distinctness of the sequenced organism
         below the subspecies level e.g. serovar serotype biotype ecotype or any relevant
@@ -418,6 +446,8 @@ MixedCultureSample:
   - light_regm
   - method_development
   - non_microb_biomass
+  - other_samp_store_temp
+  - other_storage_condt
   - other_treatment
   - oxygen_relationship
   - pathogenicity
@@ -443,64 +473,50 @@ MonetSoilSample:
   slot_usage:
     agrochem_addition:
       title: agrochemical additions
-    bulk_elect_conductivity:
-      description: 'Provide the bulk electrical conductivity readout from the Teros
-        ZSC bluetooth sensor. If measurement was started and unsuccessful enter ''failed''
-        if measurement was not attempted enter ''did not collect''. (Unit: mS/cm)'
-      pattern: ^\d+(\.\d+)?\s*mS/cm|did not collect|failed
     depth:
       description: 'The vertical distance below local surface. For sediment or soil
         samples depth is measured from sediment or soil surface respectively. Depth
         is required to be reported as an interval for subsurface samples. (Units:
         cm or m)'
       pattern: ^\d+(\.\d+)?-\d+(\.\d+)?\s*(m|cm)$
-    env_broad_scale:
-      pattern: ^_*\s*[a-zA-Z\s\-]+\[ENVO:\d+\]$
-    env_local_scale:
-      pattern: ^_*\s*[a-zA-Z\s\-]+\[ENVO:\d+\]$
-    env_medium:
-      pattern: ^_*\s*[a-zA-Z\s\-]+\[ENVO:\d+\]$
-    fao_class:
-      description: Soil classification from the FAO World Reference Database for Soil
-        Resources. The list can be found at https://www.isric.org/explore/world-soil-distribution
-    infiltration_1:
-      pattern: ^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)
-    other:
-      description: Other details about your sample that you feel can't be accurately
-        represented in the available columns.
+      required: true
+    lat_lon:
+      required: true
     other_storage_condt:
       description: Please specify if 'other'
-    sample_collected:
-      description: 'This referes to the TOTAL amount of sample collected from the
-        experiment. NOT the amount sent to EMSL or collected for a specific analysis.
-        (Unit: cores)'
-      pattern: ^\d+(\.\d+)?\s*cores$
-    sample_name:
-      description: ID that is present on the shipped sample. Human readable.
-    shipped_sample_size:
-      description: Total amount of sample sent to EMSL. Must include unit of 'core'.
-      pattern: ^\d+(\.\d+)?\s*core$
+    sampling_set:
+      required: true
+    soil_type:
+      required: true
+    soil_type_meth:
+      required: true
     temp:
       description: 'Temperature of the sample at the time of sampling. If measurement
         was started and unsuccessful enter ''failed'' if measurement was not attempted
         enter ''did not collect''. (Units: C)'
       pattern: ^-?\d+(\.\d+)?\s*C|did not collect|failed
+      required: true
     water_content:
       description: Water content measurement. This will be a readout from the Teros
         ZSC bluetooth sensor and requires a unit of 'm3/m3'. If measurement was started
         and unsuccessful enter 'failed' if measurement was not attempted enter 'did
         not collect'.
       pattern: ^\d+(\.\d+)?\s*m3/m3|did not collect|failed
+      required: true
   slots:
   - LIMS_ID
   - agrochem_addition
   - chem_administration
+  - depth
   - lat_lon
   - misc_param
+  - other_samp_store_temp
+  - other_storage_condt
   - other_treatment
   - sampling_set
   - soil_type
   - soil_type_meth
+  - temp
   - water_content
   - water_content_meth
   - watering_regm
@@ -517,13 +533,6 @@ OtherUndescribedSample:
         equivalence point of carbonate or bicarbonate
     alkyl_diethers:
       description: Concentration of alkyl diethers
-    alt:
-      description: Altitude is a term used to identify heights of objects such as
-        airplanes space shuttles rockets atmospheric balloons and heights of places
-        such as atmospheric layers and clouds. It is used to measure the height of
-        an object which is above the earthbs surface. In this context the altitude
-        measurement is the vertical distance between the earth's surface above sea
-        level and the sampled position in the air
     aminopept_act:
       description: Measurement of aminopeptidase activity
     ammonium:
@@ -533,8 +542,7 @@ OtherUndescribedSample:
         be mapped to an allocated resource. This field is constrained to contain only
         a set of limited terms. Include all the data types. This field can have multiple
         values separated by a ";".
-    annual_temp:
-      title: average annual temperate
+      required: true
     bacteria_carb_prod:
       description: Measurement of bacterial carbon production
     bishomohopanol:
@@ -556,16 +564,6 @@ OtherUndescribedSample:
       description: Concentration of chloride in the sample
     chlorophyll:
       description: Concentration of chlorophyll
-    collection_date:
-      description: 'The date of sampling either as an instance (single point) or interval.
-        For commercially purchased samples this will be the purchase date. Format:
-        YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY)
-        or just year and month (YYYY-MM)'
-    collection_time:
-      description: The time of sampling either as an instance (single point) or interval.
-        Time should be formatted as HH:MM:SS in 24-hour time format
-    cur_land_use:
-      description: Present state of sample site
     density:
       description: Density of the sample which is its mass per unit volume (aka volumetric
         mass density)
@@ -593,48 +591,14 @@ OtherUndescribedSample:
         nitrogen - NH4 - NO3 - NO2
     diss_oxygen:
       description: Concentration of dissolved oxygen
-    env_broad_scale:
-      description: 'Report which major environmental system your sample or specimen
-        came from. The systems identified should have a coarse spatial grain to provide
-        the general environmental context of where the sampling was done (e.g. were
-        you in the desert or a rainforest?). We recommend using subclasses of ENVO''s
-        biome class: http://purl.obolibrary.org/obo/ENVO_00000428.'
-    env_local_scale:
-      description: 'Report the entity which are in the sample or specimen''s local
-        vicinity and which you believe have significant causal influences on your
-        sample or specimen. We recommend using EnvO terms which are of smaller spatial
-        grain than your entry for env_broad_scale. Terms such as anatomical sites
-        from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON)
-        are accepted in this field. EnvO documentation about how to use the field:
-        https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'
-    env_medium:
-      description: 'Report the environmental material immediately surrounding the
-        sample or specimen at the time of sampling. We recommend using subclasses
-        of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483).
-        EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS
-        . Terms from other OBO ontologies are permissible as long as they reference
-        mass/volume nouns (e.g. air water blood) and not discrete countable entities
-        (e.g. a tree a leaf a table top).'
     extraction_method:
       description: If you the user performed an extraction preparation or processing
         before sending the sample to EMSL what was it? This is only applicable when
         sending an "analytical sample". See README for more details on types of samples.
-    extreme_event:
-      description: Unusual physical events that may have affected microbial populations
-    fire:
-      description: Historical and/or physical evidence of fire
-    flooding:
-      description: Historical and/or physical evidence of flooding
     genetic_mod:
       title: genetic modifications
-    geo_loc_name:
-      description: The geographical origin of the sample as defined by the country
-        or sea name followed by specific region name. Provide the location of where
-        the sample originated.
     glucosidase_act:
       description: Measurement of glucosidase activity
-    growth_facil:
-      description: Type of facility where the sample was collected or grown
     host_age:
       description: Age of host at the time of sampling; relevant scale depends on
         species and study e.g. Could be seconds for amoebae or centuries for trees
@@ -653,14 +617,12 @@ OtherUndescribedSample:
       description: Total mass of the host at collection the unit depends on host
     host_wet_mass:
       description: Measurement of wet mass
-    humidity:
-      description: Amount of humidity measured in the air the day of sampling. Provided
-        by iMet
     isol_growth_condt:
       title: isolation and growth conditions
     lat_lon:
       description: The geographical origin of the sample as defined by latitude and
         longitude. The values should be reported in decimal degrees and in WGS84 system.
+      required: true
     magnesium:
       description: Concentration of magnesium in the sample
     mean_frict_vel:
@@ -684,9 +646,6 @@ OtherUndescribedSample:
       description: Concentration of organic matter
     org_nitro:
       description: Concentration of organic nitrogen
-    other:
-      description: Other details about your sample that you feel can't be accurately
-        represented in the available columns.
     other_treatment:
       description: If a treatment is applied to your samples and the provided "treatment"
         terms do not satisfy please add it here. Multiple treatments can be entered
@@ -723,19 +682,8 @@ OtherUndescribedSample:
     redox_potential:
       description: Redox potential measured relative to a hydrogen cell indicating
         oxidation or reduction potential
-    sample_collection_dev:
-      title: sample collection devive
-    sample_collection_method:
-      description: The method employed for collecting the sample. This can be a citation
-        or description
-    sample_name:
-      description: ID that is present on the shipped sample. Human readable.
-    sampling_duration:
-      description: The difference between sample start and sample end time
-    season_temp:
-      title: average seasonal temperate
-    shipped_sample_size:
-      description: Total amount of sample sent to EMSL include units
+    sample_type:
+      required: true
     silicate:
       description: Concentration of silicate
     sodium:
@@ -780,11 +728,6 @@ OtherUndescribedSample:
       title: turbitidy
     water_content:
       description: Water content measurement
-    wind_direction:
-      description: Direction of the wind on the day of sampling. Collected via anemometer.
-    wind_speed:
-      description: Wind speed describes how fast the air is moving past a certain
-        point during sampling time. Collected via anemometer
   slots:
   - CAS
   - agrochem_addition
@@ -819,6 +762,7 @@ OtherUndescribedSample:
   - compound_name
   - conduc
   - density
+  - depth
   - diether_lipids
   - diss_carb_dioxide
   - diss_hydrogen
@@ -971,6 +915,7 @@ OtherUndescribedSample:
   - synth_process
   - synth_reagents
   - technical_reps
+  - temp
   - temperature_exposure
   - tertiary_treatment
   - tidal_stage
@@ -1003,10 +948,8 @@ PlantSample:
   description: ''
   is_a: Sample
   slot_usage:
-    annual_precpt:
-      title: mean annual precipitation
-    annual_temp:
-      title: mean annual temperature
+    analysis_type:
+      required: true
     host_height:
       description: 'The height of plant. (Unit: cm or mm or m)'
     host_length:
@@ -1014,9 +957,13 @@ PlantSample:
       pattern: ^\d+(\.\d+)?\s*(cm|mm|m)$
     host_life_stage:
       description: Description of life stage of the plant
+    lat_lon:
+      required: true
     non_microb_biomass:
       description: "Amount of biomass; should include the name for the part of biomass\
         \ measured e.g.insect plant total (Unit: \xB5m)"
+    plant_common_name:
+      required: true
     plant_growth_med:
       description: Specification of the media for growing the plants or tissue cultured
         samples. Value is required to be a subclass from `plant growth medium exposure
@@ -1027,6 +974,9 @@ PlantSample:
     plant_struc:
       description: The plant strucutre that was sampled.
       enum: seed|stem|leaf|root|fine roots|whole plant|rhizodeposits
+      required: true
+    plant_taxid:
+      required: true
     root_med_carbon:
       description: Source of organic carbon in the culture rooting medium. Provide
         as {carbon source} {value}{unit}. Can be multivalued separated by ;. Preferred
@@ -1045,10 +995,6 @@ PlantSample:
         compare the specific conductance of the sample to a salinity standard such
         as seawater (Unit: practical salinity unit or percent)'
       pattern: ^\d+(\.\d+)?\s*(practical salinity unit|percent)$
-    season_precpt:
-      title: mean seasonal precipitation
-    season_temp:
-      title: mean seasonal temperature
   slots:
   - air_temp_regm
   - analysis_type
@@ -1082,6 +1028,8 @@ PlantSample:
   - non_microb_biomass
   - non_microb_biomass_method
   - non_min_nutr_regm
+  - other_samp_store_temp
+  - other_storage_condt
   - other_treatment
   - pesticide_regm
   - ph_regm
@@ -1114,6 +1062,7 @@ PlantSample:
   - standing_water_regm
   - start_date_inc
   - technical_reps
+  - temp
   - water_temp_regm
   - watering_regm
 PureCultureSample:
@@ -1124,9 +1073,21 @@ PureCultureSample:
   description: ''
   is_a: Sample
   slot_usage:
+    analysis_type:
+      required: true
+    growth_medium:
+      required: true
+    host_common_name:
+      required: true
+    host_taxid:
+      required: true
+    isol_growth_condt:
+      required: true
     non_microb_biomass:
       description: "Amount of biomass; should include the name for the part of biomass\
         \ measured e.g.insect plant total (Unit: \xB5m)"
+    start_date_inc:
+      required: true
     subspecf_gen_lin:
       title: subspecific genetuc lineage
   slots:
@@ -1152,6 +1113,8 @@ PureCultureSample:
   - method_development
   - non_microb_biomass
   - non_microb_biomass_method
+  - other_samp_store_temp
+  - other_storage_condt
   - other_treatment
   - oxygen_relationship
   - pathogenicity
@@ -1191,6 +1154,8 @@ SedimentSample:
       title: alkyl diethers concentration
     ammonium:
       title: ammonium concentration
+    analysis_type:
+      required: true
     bacteria_carb_prod:
       range: number
     bishomohopanol:
@@ -1204,6 +1169,8 @@ SedimentSample:
       title: chloride concentration
     chlorophyll:
       title: chlorophyll concentration
+    depth:
+      required: true
     diether_lipids:
       title: diether lipids concentration
     diss_carb_dioxide:
@@ -1218,6 +1185,8 @@ SedimentSample:
       title: dissolved organic nitrogen concentration
     diss_oxygen:
       title: dissolved oxygen concentration
+    lat_lon:
+      required: true
     magnesium:
       title: magnesium concentration
     mean_peak_frict_vel:
@@ -1249,9 +1218,6 @@ SedimentSample:
       title: organic matter concentration
     org_nitro:
       title: organic nitrogen concentration
-    other:
-      description: Other details about your sample that you feel can't be accurately
-        represented in the available columns.
     other_samp_store_temp:
       title: sample storage tempetature other
     other_storage_condt:
@@ -1289,13 +1255,6 @@ SedimentSample:
       description: Description of relationship(s) between the subject organism and
         other organism(s) it is associated with. The target organism is the subject
         of the relationship and the other organism(s) is the object
-    sample_collection_method:
-      description: The method employed for collecting the sample. This can be a citation
-        or description
-    sample_name:
-      description: ID that is present on the shipped sample. Human readable.
-    season_precpt:
-      pattern: -?^\d+(\.\d+)?\s*mm$
     silicate:
       title: silicate concentration
     sodium:
@@ -1329,6 +1288,7 @@ SedimentSample:
   - chloride
   - chlorophyll
   - density
+  - depth
   - diether_lipids
   - diss_carb_dioxide
   - diss_hydrogen
@@ -1367,6 +1327,8 @@ SedimentSample:
   - org_matter
   - org_nitro
   - org_nitro_method
+  - other_samp_store_temp
+  - other_storage_condt
   - other_treatment
   - oxygen_relationship
   - part_org_carb
@@ -1397,6 +1359,7 @@ SedimentSample:
   - sulfate
   - sulfide
   - technical_reps
+  - temp
   - tidal_stage
   - tot_carb
   - tot_depth_water_col
@@ -1419,22 +1382,20 @@ SoilSample:
     al_sat:
       description: 'Aluminum saturation (esp. For tropical soils) (Unit: percent)'
       pattern: ^\d+(\.\d+)?\s*percent$
-    bulk_elect_conductivity:
-      description: 'Electrical conductivity is a measure of the ability to carry electric
-        current which is mostly dictated by the chemistry of and amount of water.
-        (Unit: mS/cm)'
-    fao_class:
-      title: fao class
+    analysis_type:
+      required: true
+    depth:
+      required: true
     heavy_metals:
       description: 'Heavy metals present in the sample and the concentration of the
         metal. For multiple heavy metals and concentrations separate them by `|`.
         (Example: mercury0.09 micrograms per gram|lead0.05 micrograms per gram'
+    lat_lon:
+      required: true
     link_addit_analys:
       title: additional analysis link
     link_class_info:
       title: soil classification information
-    link_climate_info:
-      title: climate information link
     microbial_biomass:
       description: 'The part of the organic matter in the soil that constitutes living
         microorganisms smaller than 5-10 micrometer. If you keep this you would need
@@ -1469,8 +1430,6 @@ SoilSample:
         Materials larger than the size threshold are excluded from the sample (Unit:
         um)'
       pattern: ^\d+(\.\d+)?\s*um$
-    tillage:
-      description: Note method used for tilling
   slots:
   - agrochem_addition
   - air_temp_regm
@@ -1479,6 +1438,7 @@ SoilSample:
   - analysis_type
   - biotic_regm
   - chem_administration
+  - depth
   - experimental_factor
   - experimental_factor_other
   - extraction_method
@@ -1503,6 +1463,8 @@ SoilSample:
   - misc_param
   - non_microb_biomass
   - non_microb_biomass_method
+  - other_samp_store_temp
+  - other_storage_condt
   - other_treatment
   - oxygen_relationship
   - perturbation
@@ -1524,6 +1486,7 @@ SoilSample:
   - source_mat_ID
   - start_date_inc
   - technical_reps
+  - temp
   - texture_meth
   - tot_nitro_cont_meth
   - tot_nitro_content
@@ -1539,7 +1502,13 @@ SynthesizedMaterialSample:
       range: uuid
   description: ''
   is_a: Sample
-  slot_usage: ''
+  slot_usage:
+    analysis_type:
+      required: true
+    synth_instrument:
+      required: true
+    synth_reagents:
+      required: true
   slots:
   - analysis_type
   - cas
@@ -1548,6 +1517,8 @@ SynthesizedMaterialSample:
   - experimental_factor_other
   - genetic_mod
   - item_number
+  - other_samp_store_temp
+  - other_storage_condt
   - oxygen_relationship
   - product_name
   - production_method
@@ -1559,6 +1530,7 @@ SynthesizedMaterialSample:
   - synth_process
   - synth_reagents
   - technical_reps
+  - temp
 TerraformSample:
   attributes:
     id:
@@ -1567,12 +1539,30 @@ TerraformSample:
   description: ''
   is_a: Sample
   slot_usage:
+    analysis_type:
+      required: true
     genetic_mod:
       title: genetic modifications
+    initiation_date_inoculation:
+      required: true
+    initiation_date_plant:
+      required: true
     isol_growth_condt:
       title: isolation and growth conditions
     propagation:
       title: propogation
+    synth_env_assembly:
+      required: true
+    synth_env_design:
+      required: true
+    synth_env_design_method:
+      required: true
+    synth_env_material:
+      required: true
+    synth_env_treatment:
+      required: true
+    synth_start_date:
+      required: true
   slots:
   - air_temp_regm
   - analysis_type
@@ -1603,6 +1593,8 @@ TerraformSample:
   - mineral_nutr_regm
   - misc_param
   - non_min_nutr_regm
+  - other_samp_store_temp
+  - other_storage_condt
   - other_treatment
   - oxygen_relationship
   - plant_growth_med
@@ -1630,6 +1622,7 @@ TerraformSample:
   - synth_env_treatment
   - synth_start_date
   - technical_reps
+  - temp
   - tiss_cult_growth_med
   - water_content
   - water_content_meth
@@ -1642,9 +1635,8 @@ WaterSample:
   description: ''
   is_a: Sample
   slot_usage:
-    atmospheric_data:
-      description: Measurement of atmospheric data; can include multiple data. Formatted
-        as measurement data and value (example wind speed 9 knots).
+    analysis_type:
+      required: true
     bac_prod:
       description: Bacterial production in the water column measured by isotope uptake.
         Provide value and unit any unit is valid.
@@ -1661,6 +1653,7 @@ WaterSample:
       description: 'The vertical distance below local surface of the water. (Units:
         m)'
       pattern: ^\d+(\.\d+)?(-\d+(\.\d+)?)?\s*m$
+      required: true
     diss_inorg_nitro:
       description: 'Concentration of dissolved inorganic nitrogen. (Unit: ug/L or
         umol/L)'
@@ -1673,10 +1666,14 @@ WaterSample:
       description: Visible waveband radiance and irradiance measurements in the water
         column. Provide value and unit any unit is valid.
       pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    filter_method:
+      required: true
     fluor:
       description: Raw or converted fluorescence of water. Provide value and unit
         any unit is valid.
       pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    lat_lon:
+      required: true
     light_intensity:
       description: Measurement of light intensity. Provide value and unit any unit
         is valid.
@@ -1712,11 +1709,13 @@ WaterSample:
       description: 'Refers to the mesh/pore size used to retain the sample. Materials
         smaller than the size threshold are excluded from the sample (Unit: um)'
       pattern: ^\d+(\.\d+)?\s*um$
+      required: true
     size_frac_up:
       description: 'Refers to the mesh/pore size used to pre-filter/pre-sort the sample.
         Materials larger than the size threshold are excluded from the sample (Unit:
         um)'
       pattern: ^\d+(\.\d+)?\s*um$
+      required: true
     soluble_react_phosp:
       description: 'Concentration of soluble reactive phosphorus. (Unit: umol/L or
         mg/L or ppm)'
@@ -1770,6 +1769,7 @@ WaterSample:
   - chlorophyll
   - conduc
   - density
+  - depth
   - diether_lipids
   - diss_carb_dioxide
   - diss_hydrogen
@@ -1805,6 +1805,8 @@ WaterSample:
   - org_matter
   - org_nitro
   - org_nitro_method
+  - other_samp_store_temp
+  - other_storage_condt
   - other_treatment
   - oxygen_relationship
   - part_org_carb
@@ -1836,6 +1838,7 @@ WaterSample:
   - sulfide
   - suspend_part_matter
   - technical_reps
+  - temp
   - tidal_stage
   - tot_depth_water_col
   - tot_diss_nitro

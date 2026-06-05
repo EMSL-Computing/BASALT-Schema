@@ -17,7 +17,8 @@ SiteMetadata:
     cur_vegetation_meth: ''
     drainage_class: ''
     ecoregion: ''
-    elev: ''
+    elev:
+      required: true
     env_broad_scale: ''
     env_local_scale: ''
     env_medium: ''
@@ -25,8 +26,10 @@ SiteMetadata:
     fao_class: ''
     fire: ''
     flooding: ''
-    geo_loc_name: ''
-    growth_facil: ''
+    geo_loc_name:
+      required: true
+    growth_facil:
+      required: true
     latitude: ''
     link_climate_info: ''
     local_class: ''
@@ -38,6 +41,10 @@ SiteMetadata:
     previous_land_use: ''
     previous_land_use_meth: ''
     profile_position: ''
+    season_precpt:
+      title: mean seasonal precipitation
+    season_temp:
+      title: mean seasonal temperature
     slope_aspect: ''
     slope_gradient: ''
     tillage: ''
@@ -73,6 +80,8 @@ SiteMetadata:
   - previous_land_use
   - previous_land_use_meth
   - profile_position
+  - season_precpt
+  - season_temp
   - slope_aspect
   - slope_gradient
   - tillage
