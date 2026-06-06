@@ -3,12 +3,14 @@ Sample:
     id:
       identifier: true
       range: uuid
-  description: ''
-  is_a: Sample
   slots:
   - other
   - samp_store_temp
   - sample_name
+  - storage_condt
+  - other_samp_store_temp
+  - other_storage_condt
+
 
 AerosolArmSample:
   attributes:
@@ -38,6 +40,7 @@ AerosolArmSample:
         smaller than the size threshold are excluded from the sample (Unit: um)'
       pattern: ^\d+(\.\d+)?\s*um$
   slots:
+  - aerosol_type
   - air_temp_regm
   - analysis_type
   - carb_dioxide
@@ -58,8 +61,6 @@ AerosolArmSample:
   - methane
   - method_development
   - misc_param
-  - other_samp_store_temp
-  - other_storage_condt
   - other_treatment
   - photochemical_exposure
   - pressure_control
@@ -98,6 +99,7 @@ AerosolSample:
         smaller than the size threshold are excluded from the sample (Unit: um)'
       pattern: ^\d+(\.\d+)?\s*um$
   slots:
+  - aerosol_type
   - air_temp_regm
   - analysis_type
   - carb_dioxide
@@ -440,7 +442,7 @@ MonetSoilSample:
     id:
       identifier: true
       range: uuid
-  description: ''
+  description: A soil sample that has been collected according to the MONet soil sampling protocol. This sample type has specific slot requirements related to the MONet soil sampling method, such as infiltration rates.
   is_a: Sample
   slot_usage:
     bulk_elect_conductivity:
@@ -459,6 +461,8 @@ MonetSoilSample:
     lat_lon:
       required: true
     sampling_set:
+      required: true
+    soil_sample_type:
       required: true
     soil_type:
       required: true
@@ -489,6 +493,7 @@ MonetSoilSample:
   - other_storage_condt
   - other_treatment
   - sampling_set
+  - soil_sample_type
   - soil_type
   - soil_type_meth
   - temp
@@ -1120,6 +1125,7 @@ SoilSample:
   - size_frac_low
   - size_frac_up
   - soil_horizon
+  - soil_sample_type
   - soil_texture
   - soil_type
   - soil_type_meth
