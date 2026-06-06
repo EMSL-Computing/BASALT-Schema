@@ -3,8 +3,6 @@ SamplingActivity:
     id:
       identifier: true
       range: uuid
-  description: ''
-  is_a: SamplingActivity
   slots:
   - collection_date
   - shipped_sample_size

@@ -616,7 +616,6 @@ OtherUndescribedSample:
   - light_intensity
   - light_regm
   - link_addit_analys
-  - link_class_info
   - magnesium
   - mean_frict_vel
   - mean_peak_frict_vel
@@ -1094,7 +1093,6 @@ SoilSample:
   - lat_lon
   - light_regm
   - link_addit_analys
-  - link_class_info
   - method_development
   - micro_biomass_c_meth
   - micro_biomass_n_meth

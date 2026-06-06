@@ -36,6 +36,7 @@ SiteMetadata:
   - growth_facil
   - latitude
   - link_climate_info
+  - link_class_info
   - local_class
   - local_class_meth
   - longitude

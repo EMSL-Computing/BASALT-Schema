@@ -510,6 +510,10 @@ slots:
   sampled_at_site:
     range: Site
     description: Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.
+  
+  sampled_during:
+    range: SamplingActivity
+    description: Reference to the sampling activity during which this sample was collected. This is a FK to the SamplingActivity class, which contains metadata about the sampling event, such as date, device, method.
 
   sampling_set:
     title: sampling set
