@@ -1299,10 +1299,10 @@ enums:
         text: fail
     
   PhotochemicalExposureEnum:
-  permissible_values:
-    ultraviolet:
-    visible light:
-    infrared:
+    permissible_values:
+      ultraviolet:
+      visible light:
+      infrared:
 
   PlantSexEnum:
     permissible_values:
@@ -1835,6 +1835,6 @@ enums:
       panalytical:
 
   YesNoEnum:
-  permissible_values:
-    yes:
-    no:
+    permissible_values:
+      yes:
+      no:

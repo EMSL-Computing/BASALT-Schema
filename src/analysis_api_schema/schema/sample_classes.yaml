@@ -112,72 +112,72 @@ classes:
       - where should proposal ID live? probably not here?
 
   AerosolArmSample:
-  attributes:
-    id:
-      identifier: true
-      range: uuid
-  description: An aerosol sample collected by the ARM facility.
-  is_a: Sample
-  slots:
-    - aerosol_type
-    - air_temp_regm
-    - analysis_type
-    - carb_dioxide
-    - carb_monoxide
-    - chem_administration
-    - color_code
-    - experimental_factor
-    - experimental_factor_other
-    - extraction_method
-    - first_blh
-    - first_blh_quality_index
-    - first_cbh
-    - humidity_regm
-    - isotope_exposure
-    - lat_lon
-    - mean_total_cpc_concentration
-    - mean_total_pops_concentration
-    - methane
-    - method_development
-    - misc_param
-    - other_treatment
-    - photochemical_exposure
-    - pressure_control
-    - priority_order
-    - replicate_number
-    - sample_link
-    - sample_processing
-    - second_blh
-    - second_blh_quality
-    - second_cbh
-    - size_frac_low
-    - size_frac_up
-    - solar_irradiance
-    - source_mat_ID
-    - technical_reps
-    - third_blh
-    - third_blh_quality
-    - volatile_org_comp
-  slot_usage:
-    analysis_type:
-      required: true
-    carb_dioxide:
-      description: Amount of carbon dioxide measured in the air the day of sampling.
-        Provided by ARM. Provide value and unit, any unit is valid
-      pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
-    carb_monoxide:
-      description: Amount of carbon monoxide measured in the air the day of sampling.
-        Provided by ARM. Provide value and unit any unit is valid
-      pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
-    size_frac_low:
-      description: 'Refers to the mesh/pore size used to pre-filter/pre-sort the sample.
-        Materials larger than the size threshold are excluded from the sample (Unit:
-        um)'
-      pattern: ^\d+(\.\d+)?\s*um$
-    size_frac_up:
-      description: 'Refers to the mesh/pore size used to retain the sample. Materials
-        smaller than the size threshold are excluded from the sample (Unit: um)'
-      pattern: ^\d+(\.\d+)?\s*um$
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+    description: An aerosol sample collected by the ARM facility.
+    is_a: Sample
+    slots:
+      - aerosol_type
+      - air_temp_regm
+      - analysis_type
+      - carb_dioxide
+      - carb_monoxide
+      - chem_administration
+      - color_code
+      - experimental_factor
+      - experimental_factor_other
+      - extraction_method
+      - first_blh
+      - first_blh_quality_index
+      - first_cbh
+      - humidity_regm
+      - isotope_exposure
+      - lat_lon
+      - mean_total_cpc_concentration
+      - mean_total_pops_concentration
+      - methane
+      - method_development
+      - misc_param
+      - other_treatment
+      - photochemical_exposure
+      - pressure_control
+      - priority_order
+      - replicate_number
+      - sample_link
+      - sample_processing
+      - second_blh
+      - second_blh_quality
+      - second_cbh
+      - size_frac_low
+      - size_frac_up
+      - solar_irradiance
+      - source_mat_ID
+      - technical_reps
+      - third_blh
+      - third_blh_quality
+      - volatile_org_comp
+    slot_usage:
+      analysis_type:
+        required: true
+      carb_dioxide:
+        description: Amount of carbon dioxide measured in the air the day of sampling.
+          Provided by ARM. Provide value and unit, any unit is valid
+        pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+      carb_monoxide:
+        description: Amount of carbon monoxide measured in the air the day of sampling.
+          Provided by ARM. Provide value and unit any unit is valid
+        pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+      size_frac_low:
+        description: 'Refers to the mesh/pore size used to pre-filter/pre-sort the sample.
+          Materials larger than the size threshold are excluded from the sample (Unit:
+          um)'
+        pattern: ^\d+(\.\d+)?\s*um$
+      size_frac_up:
+        description: 'Refers to the mesh/pore size used to retain the sample. Materials
+          smaller than the size threshold are excluded from the sample (Unit: um)'
+        pattern: ^\d+(\.\d+)?\s*um$
 
   AerosolSample:
     attributes:
@@ -1790,19 +1790,19 @@ classes:
       - sample_collection_method
 
   WaterSamplingActivity:
-  attributes:
-    id:
-      identifier: true
-      range: uuid
-  description: Collection of water samples.
-  is_a: SamplingActivity
-  slot_usage:
-    sample_collection_dev:
-      required: true
-    sample_collection_method:
-      required: true
-  slots:
-    - collection_time
-    - sample_collected
-    - sample_collection_dev
-    - sample_collection_method
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+    description: Collection of water samples.
+    is_a: SamplingActivity
+    slot_usage:
+      sample_collection_dev:
+        required: true
+      sample_collection_method:
+        required: true
+    slots:
+      - collection_time
+      - sample_collected
+      - sample_collection_dev
+      - sample_collection_method

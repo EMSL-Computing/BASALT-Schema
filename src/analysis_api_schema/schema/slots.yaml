@@ -559,8 +559,7 @@ slots:
 
   drainage_class:
     description: Drainage classification from a standard system such as the USDA system
-    enum: Excessively_Drained|Moderately_Well|Poorly|Somewhat_Poorly|Very_Poorly|Well
-    range: string
+    range: DrainageClassEnum
     title: drainage class
 
   duration_min:
@@ -1284,11 +1283,11 @@ slots:
     range: string
     todos: what does this mean
 
-    method_development:
-      description: If your samples are TEST sample ONLY, please provide information on
-        what you're hoping this test will resolve.
-      range: string
-      title: method development
+  method_development:
+    description: If your samples are TEST sample ONLY, please provide information on
+      what you're hoping this test will resolve.
+    range: string
+    title: method development
 
   mg_workflow_step:
     description: Metagenomics workflow step that produced this product (e.g., MagsAnalysis)
@@ -2302,47 +2301,47 @@ slots:
     range: string
     title: soil type method
 
-solar_irradiance:
-  description: 'Solar irradiance is the power per unit area (surface power density)
-    received from the Sun in the form of electromagnetic radiation in the wavelength
-    range of the measuring instrument. (Unit: kW/m2/d or erg/cm2/s'
-  pattern: ^\d+(\.\d+)?\s*(kW/m2/d|erg/cm2/s)$
-  range: string
-  title: solar irradiance
+  solar_irradiance:
+    description: 'Solar irradiance is the power per unit area (surface power density)
+      received from the Sun in the form of electromagnetic radiation in the wavelength
+      range of the measuring instrument. (Unit: kW/m2/d or erg/cm2/s'
+    pattern: ^\d+(\.\d+)?\s*(kW/m2/d|erg/cm2/s)$
+    range: string
+    title: solar irradiance
 
-soluble_inorg_mat:
-  description: concentration of substances such as ammonia, road-salt, sea-salt, cyanide,
-    hydrogen sulfide, thiocyanates, thiosulfates, etc.
-  range: string
-  title: soluble inorganic material
+  soluble_inorg_mat:
+    description: concentration of substances such as ammonia, road-salt, sea-salt, cyanide,
+      hydrogen sulfide, thiocyanates, thiosulfates, etc.
+    range: string
+    title: soluble inorganic material
 
-soluble_org_mat:
-  description: concentration of substances such as urea, fruit sugars, soluble proteins,
-    drugs, pharmaceuticals, etc.
-  range: string
-  title: soluble organic material
+  soluble_org_mat:
+    description: concentration of substances such as urea, fruit sugars, soluble proteins,
+      drugs, pharmaceuticals, etc.
+    range: string
+    title: soluble organic material
 
-soluble_react_phosp:
-  description: 'Concentration of soluble reactive phosphorus. (Unit: umol/L or
-    mg/L or ppm)'
-  pattern: ^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$
-  range: string
-  title: soluble reactive phosphorus
+  soluble_react_phosp:
+    description: 'Concentration of soluble reactive phosphorus. (Unit: umol/L or
+      mg/L or ppm)'
+    pattern: ^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$
+    range: string
+    title: soluble reactive phosphorus
 
-source_mat_id:
-  description: A unique identifier assigned to an original material sample collected
-    or to any derived sub-samples. The source material should be listed as a sample
-    to inform details about parent material relationship.
-  range: string
-  title: source material identifier
+  source_mat_id:
+    description: A unique identifier assigned to an original material sample collected
+      or to any derived sub-samples. The source material should be listed as a sample
+      to inform details about parent material relationship.
+    range: string
+    title: source material identifier
 
-specific_host:
-  description: If there is a host involved please provide its taxid (or environmental
-    if not actually isolated from the dead or alive host - i.e. a pathogen could be
-    isolated from a swipe of a bench etc) and report whether it is a laboratory or
-    natural host
-  range: string
-  title: host specific name
+  specific_host:
+    description: If there is a host involved please provide its taxid (or environmental
+      if not actually isolated from the dead or alive host - i.e. a pathogen could be
+      isolated from a swipe of a bench etc) and report whether it is a laboratory or
+      natural host
+    range: string
+    title: host specific name
 
   standing_water_regm:
     description: Treatment involving an exposure to standing water during a plant's
@@ -2398,12 +2397,13 @@ specific_host:
     description: A brief description of the modifications that comprise this strain
     range: string
     title: strain description
-    strain_identifier:
-      description: |-
-        External human-readable strain identifier (e.g. "KT2440_pTE314").
-        NOT the database UUID   that is the Strain.id attribute.
-      range: string
-      required: true
+
+  strain_identifier:
+    description: |-
+      External human-readable strain identifier (e.g. "KT2440_pTE314").
+      NOT the database UUID   that is the Strain.id attribute.
+    range: string
+    required: true
 
   strain_mutation:
     description: Genetic modification or plasmid carried (e.g. "pTE314")
@@ -2413,10 +2413,11 @@ specific_host:
     description: Provide a unique name to identify transformed strain lines.
     range: string
     title: strain name
-    strain_ref:
-      description: FK reference to a Strain purchasedMaterial used in the activity
-      range: Strain
-      required: false
+    
+  strain_ref:
+    description: FK reference to a Strain purchasedMaterial used in the activity
+    range: Strain
+    required: false
 
   strain_source:
     description: Indicate the source of the strain provided (e.g. "PNNL", "ATCC"). If purchased provide the
