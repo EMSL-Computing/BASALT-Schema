@@ -42,6 +42,8 @@ classes:
         identifier: true
         range: uuid
         required: true
+    todos:
+      - manufacturer, guid_source and other_guid_source (unclear where the latter should live) 
 
   # ============================================================================
   # Strain   concrete purchasedMaterial
@@ -65,7 +67,8 @@ classes:
         equals_string: strain
     todos:
       - Montana asks "Do we need more information about the strain? Genotype? Phenotype?"
-      - Consider adding slots for common_name, host_common_name, taxonomy_id
+      - Consider adding slots for common_name, host_common_name, taxonomy_id, host_taxa_id
+      - choose one of taxonomy_id, host_taxaid, host_taxid
         (Montana has these on Sample   evaluate if they belong on Strain too).
 
 
@@ -133,6 +136,9 @@ classes:
       - media_additions
       - storage_temperature
       - creation_date
+    todos:
+      - storage_condt as enum?
+      - media range?
 
   # ============================================================================
   # CultureGrowth   abstract sampleProcessing subclass
@@ -181,6 +187,8 @@ classes:
       - inspection_method
       - target_strain
       - contaminant_strains
+    todos:
+      - purity percentage
 
   # ============================================================================
   # StockCulturePreparation   concrete CultureGrowth
@@ -214,9 +222,8 @@ classes:
 
       Montana source: amp2-metadata.yaml PreCultureGrowth class,
                       amp2-complete-001.yaml activity uuid:19
-
-    # No additional slots beyond CultureGrowth base.
-    # Montana's schema also shows no pre-culture-only slots.
+    todos:
+      - pre culture medium is missing 
 
   # ============================================================================
   # ExperimentalCulture   concrete CultureGrowth
@@ -322,6 +329,8 @@ classes:
       v1 origin: plate-general.yaml PlateDataGenerationActivity
     slots:
       - timepoint_label
+    todos:
+      - measurement_time stamp
     # Inherited from DataGenerationActivity: id, analyte_id,
     #   name, acquisition_time, instrument_id, protocol_url,
     #   instrument_operator_id, sequence_order, version
@@ -377,6 +386,8 @@ classes:
       - blank_mean
       - cv_percent
       - well_readings
+    todos:
+      - add plate_range (12 well, 96 well, etc.)?
 
   # ============================================================================
   # AMP2ODProduct   concrete PlateProduct
@@ -523,4 +534,6 @@ classes:
       flag:
         description: QC flag   "ok", "blank", "outlier", "contaminated"
         range: string
+      todos:
+        - add optical_density_method here to flag what value means if we have multiple OD methods (e.g. OD600 vs OD750)
 
