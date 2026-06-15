@@ -1909,14 +1909,26 @@ slots:
       primary genome report.
     range: string
     title: reference for biomaterial
+  
+  replicate:
+    description: The replicate number of the sample or measurement, if applicable.
+    range: integer
+    todos: reconcile replicate modelling
 
   replicate_bio:
     description: The biological replicate number of the sample, if applicable.
     range: integer
+    todos: reconcile replicate modelling
+
+  replicate_number:
+    description: The replicate number of the sample, if applicable. Included for compatibility with submission schema.
+    range: integer
+    todos: reconcile replicate modelling
 
   replicate_tech:
     description: The technical replicate number of the sample or measurement, if applicable.
     range: integer
+    todos: reconcile replicate modelling
 
   resolution:
     range: MassSpecResolutionEnum

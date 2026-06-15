@@ -1533,6 +1533,7 @@ classes:
       - volume_uL
       - sampled_portion
       - sampled_during
+      - replicate
     slot_usage:
       replicate:
         description: The TECHNICAL replicate number of the processed sample, if applicable.
