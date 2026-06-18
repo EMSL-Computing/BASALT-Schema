@@ -2812,20 +2812,24 @@ slots:
       Structured per-well metadata array. Format varies by activity subclass:
         AMP2:     AMP2WellMetadata instances (position, volumes, replicate_group)
         Ecoplate: EcoplateWellMetadata instances (position, carbon_source, treatment, volumes)
-      Stored as JSONB in the database; typed via LinkML inlined classes.
     range: WellMetadata
     multivalued: true
     inlined_as_list: true
+    todos:
+      - decide how to represent in backend (normalized child table with FK to PlateSetupActivity, array column, or other)
 
   well_readings:
     description: |-
       Structured per-well measurement data array.
       Lightweight summary for SQL queries without full file download.
       Raw data still accessible via processedData.s3_key in MinIO.
-      Stored as JSONB in the database; typed via LinkML inlined class.
+      typed via LinkML inlined class.
     range: WellReading
     multivalued: true
     inlined_as_list: true
+    todos:
+      - decide how to represent in backend (normalized child table with FK to PlateSetupActivity, array column, or other)
+
 
   wind_direction:
     description: Direction of the wind on the day of sampling. Collected via anemometer.
@@ -2850,6 +2854,6 @@ slots:
       Per-run workflow parameters. Previously annotated TODO JSONB in schema.
       Direction: structured key-value pairs keyed by workflow type.
       Schema for allowed keys TBD per workflow type before full implementation.
-      Interim DB storage: JSONB column retained.
+  
     range: string
     required: false
