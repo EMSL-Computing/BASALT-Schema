@@ -2478,11 +2478,10 @@ slots:
         xrf:       per-element concentration results + QC flag
         lcms:      feature count, identification count, MSI-2 fraction
       Interim DB storage: JSONB column retained until formal typed class exists.
-
-      DDL: ALTER TABLE "processedData"
-             ADD COLUMN summary_metrics JSONB;   -- interim; formal key-value schema TBD
     range: string
     required: false
+    todos:
+      - make this inined/multivalued?
 
   suspend_part_matter:
     description: 'Concentration of suspended particulate matter. (Unit: mg/L)'
