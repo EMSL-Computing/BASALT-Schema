@@ -2602,7 +2602,6 @@ slots:
       Human-readable timepoint label for repeated-measurement series.
       Examples: "t=0", "t=24h", "t=48h".
       Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivity
-      (per core-planB decision).
     range: string
     required: true
 

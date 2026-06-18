@@ -66,7 +66,14 @@ classes:
       purchased_material_type:
         equals_string: strain
     todos:
+      - isol_growth_condt
+      - growth_medium
+      - organism_name (alias to strain_identifier? these seem semantically similar but unclear)
+      - modification_method
+      - strain_description
+      - trait
       - Montana asks "Do we need more information about the strain? Genotype? Phenotype?"
+      - here are the LIMS fields genotype_segment_name	component_name	construct_component	donor_organism	component_description
       - Consider adding slots for common_name, host_common_name, taxonomy_id, host_taxa_id
       - choose one of taxonomy_id, host_taxaid, host_taxid
         (Montana has these on Sample   evaluate if they belong on Strain too).
