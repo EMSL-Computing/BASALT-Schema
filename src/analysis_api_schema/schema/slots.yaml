@@ -80,6 +80,18 @@ slots:
     description: Mean measurement of uninoculated control wells
     range: float
     todos: units
+  
+  calibration_data:
+    description: Reference to the raw instrument data file used for calibration
+    range: MassSpectrometryInstrumentData
+
+  calibration_target:
+    description: The measurement being calibrated
+    range: CalibrationTargetEnum
+
+  calibration_standard:
+    description: The reference standard used for calibration
+    range: PurchasedMaterial
 
   chem_administration:
     title: chemical administration
@@ -94,9 +106,11 @@ slots:
     required: true
 
   collection_mode:
+    description: The collection mode for the mass spectrometry data (e.g., profile, centroid)
     range: MassSpectrumCollectionModeEnum
 
   column:
+    description: The name or identifier of the chromatography column used.
     range: string
 
   column_dimensions:
@@ -139,6 +153,7 @@ slots:
     range: float
 
   dd_ms2_resolution:
+    description: Data-dependent MS2 resolution setting used in the mass spectrometry method
     range: double
     required: true
 
@@ -176,7 +191,9 @@ slots:
     multivalued: true
 
   fid:
+    description: Free induction decay
     range: double
+    todos: is this a setting or a result?
 
   file_curie:
     description: an identifier for a file that resolves to the file's accessible location
@@ -211,6 +228,7 @@ slots:
     todos: I'm not sure we are going to use this, given our plan to only point 'upstream' from dataProduct to the generating activity, and not have activities point to their outputs. Do we need this slot?
 
   iat:
+    description: Ion accumulation time setting used in the mass spectrometry method.
     range: double
 
   incubation_time_hours:
@@ -229,6 +247,10 @@ slots:
   inspection_method:
     description: Method used to inspect or verify purity (visual, sequencing, etc.)
     range: string
+
+  internal_calibration:
+    description: Whether internal calibration was used
+    range: boolean
 
   ionization:
     description: Type of ionization used in the mass spectrometry method
@@ -260,7 +282,7 @@ slots:
   location:
     range: string
     required: true
-    todos: what does this mean
+    todos: used on many method classes. no description. what was this meant to mean?
 
   longitude:
     title: longitude
@@ -268,6 +290,7 @@ slots:
     range: double
 
   loop_count:
+    description: Number of MS2 scans to be acquired between each full MS scan.
     range: string
     required: true
 
@@ -491,10 +514,6 @@ slots:
       This is a user-defined integer that can be used to link samples collected
       in the same sampling event or campaign.
     range: integer
-
-  scan_range:
-    range: string
-    required: true
 
   sealing_method:
     description: How the plate is sealed (e.g. "BreathEasy_membrane", "adhesive_film")
