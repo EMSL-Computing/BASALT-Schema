@@ -113,13 +113,11 @@ classes:
     is_a: Configuration
     description: Instrument configuration and setup for a mass spectrometry run.
     slots:
-      - location
       - injection
       - ionization
       - fragmentation
       - polarity
       - resolution
-      - scan_range
       - dd_ms2_resolution
       - loop_count
       - iat
@@ -153,15 +151,12 @@ classes:
   MobilePhaseSegment: #maps to NMDC MobilePhaseSegment array
     description: A segment of the mobile phase used in chromatography during mass spectrometry.
     slots:
+      - name
       - duration_min
     attributes:
       id:
         identifier: true
         range: uuid
-      name:
-        range: string
-        required: true
-        description: Human-readable name of the mobile phase segment.
       segment_order:
         range: integer
         description: The order of this segment in the overall chromatography protocol.
@@ -193,19 +188,11 @@ classes:
     slots:
       - name
       - description
+      - internal_calibration
+      - calibration_target
+      - calibration_standard
+      - calibration_data
     attributes:
       id:
         identifier: true
         range: uuid
-      internal_calibration:
-        description: Whether internal calibration was used (true/false)
-        range: boolean
-      calibration_target:
-        description: The measurement being calibrated
-        range: CalibrationTargetEnum
-      calibration_standard:
-        description: The reference standard used for calibration
-        range: PurchasedMaterial
-      calibration_data:
-        description: Reference to the raw instrument data file used for calibration
-        range: MassSpectrometryInstrumentData
