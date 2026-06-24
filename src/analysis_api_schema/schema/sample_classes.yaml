@@ -96,20 +96,20 @@ classes:
     slots:
       - name #should be inherited when Entity class is made
       - description #should be inherited when Entity class is made
-      - project
       - emsl_activity
-      - sample_name # do we need this in addition to name
-      - storage_condt
-      - storage_condition_other
-      - samp_store_temp
-      - other_samp_store_temp
       - lims_barcode
-      - other
-      - sampled_during
-      - external_identifiers
     slot_usage:
     todos:
       - where should proposal ID live? probably not here?
+  
+  AMP2Sample:
+    is_a: Sample
+    description: A sample associated with the AMP2 program.
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+    slots:
 
   AerosolArmSample:
     attributes:
@@ -128,6 +128,7 @@ classes:
       - color_code
       - experimental_factor
       - experimental_factor_other
+      - external_identifiers
       - extraction_method
       - first_blh
       - first_blh_quality_index
@@ -140,13 +141,19 @@ classes:
       - methane
       - method_development
       - misc_param
+      - other
       - other_treatment
+      - other_samp_store_temp
       - photochemical_exposure
       - pressure_control
       - priority_order
+      - project
       - replicate_number
+      - samp_store_temp
       - sample_link
+      - sample_name
       - sample_processing
+      - sampled_during
       - second_blh
       - second_blh_quality
       - second_cbh
@@ -154,6 +161,8 @@ classes:
       - size_frac_up
       - solar_irradiance
       - source_mat_ID
+      - storage_condt
+      - storage_condition_other
       - technical_reps
       - third_blh
       - third_blh_quality
@@ -196,12 +205,14 @@ classes:
       - experimental_factor
       - experimental_factor_other
       - extraction_method
+      - external_identifiers
       - humidity_regm
       - isotope_exposure
       - lat_lon
       - methane
       - method_development
       - misc_param
+      - other
       - other_samp_store_temp
       - other_storage_condt
       - other_treatment
@@ -209,13 +220,19 @@ classes:
       - photochemical_exposure
       - pressure_control
       - priority_order
+      - project
       - replicate_number
       - sample_link
+      - sample_name
       - sample_processing
+      - sampled_during
+      - samp_store_temp
       - size_frac_low
       - size_frac_up
       - solar_irradiance
       - source_mat_ID
+      - storage_condt
+      - storage_condition_other
       - technical_reps
       - temperature_exposure
       - volatile_org_comp
@@ -245,17 +262,25 @@ classes:
       - compound_name
       - experimental_factor
       - experimental_factor_other
+      - external_identifiers
       - item_number
       - method_development
+      - other
       - other_samp_store_temp
       - other_storage_condt
       - other_treatment
       - oxygen_relationship
       - production_method
+      - project
       - replicate_number
       - sample_link
+      - sample_name
       - sample_processing
+      - samp_store_temp
+      - sampled_during
       - source_mat_id
+      - storage_condt
+      - storage_condition_other
       - technical_reps
       - temp
     slot_usage:
@@ -269,7 +294,7 @@ classes:
       id:
         identifier: true
         range: uuid
-    description: ''
+    description: A sample containing organisms cultured from an environmental sample.
     is_a: Sample
     slots:
       - air_temp_regm
@@ -279,6 +304,7 @@ classes:
       - encoded_traits
       - experimental_factor
       - experimental_factor_other
+      - external_identifiers
       - extraction_method
       - filter_method
       - gaseous_environment
@@ -295,19 +321,26 @@ classes:
       - method_development
       - non_microb_biomass
       - non_microb_biomass_method
+      - other
       - other_samp_store_temp
       - other_storage_condt
       - other_treatment
       - oxygen_relationship
       - pathogenicity
+      - project
       - propagation
       - ref_biomaterial
       - replicate_number
       - samp_biotic_relationship
+      - samp_store_temp
       - sample_link
+      - sample_name
       - sample_processing
+      - sampled_during
       - source_mat_id
       - start_date_inc
+      - storage_condt
+      - storage_condition_other
       - subspecf_gen_lin
       - technical_reps
       - trophic_level
@@ -333,7 +366,7 @@ classes:
       id:
         identifier: true
         range: uuid
-    description: ''
+    description: A sample containing a strain of an organism that has been subjected to genetic engineering.
     is_a: Sample
     slots:
       - cbi
@@ -341,17 +374,26 @@ classes:
       - component_name
       - construct_component
       - donor_organism
+      - external_identifiers
       - genotype_segment_category
       - genotype_segment_name
       - modification_method
       - organism_name
+      - other
       - other_samp_store_temp
       - other_storage_condt
       - phenotype
+      - project
+      - sample_name
+      - sampled_during
+      - samp_store_temp
+      - storage_condt
+      - storage_condition_other
       - strain_description
       - strain_name
       - strain_source
       - trait
+      - watering_regm
     slot_usage:
       cbi:
         required: true
@@ -387,7 +429,7 @@ classes:
       id:
         identifier: true
         range: uuid
-    description: ''
+    description: A sample collected from a field-deployed Terraform experiment.
     is_a: Sample
     slots:
       - air_temp_regm
@@ -397,6 +439,7 @@ classes:
       - cult_root_med
       - depth
       - encoded_traits
+      - external_identifiers
       - gaseous_environment
       - genetic_mod
       - growth_medium
@@ -421,6 +464,7 @@ classes:
       - mineral_nutr_regm
       - misc_param
       - non_min_nutr_regm
+      - other
       - other_samp_store_temp
       - other_storage_condt
       - other_treatment
@@ -430,6 +474,7 @@ classes:
       - plant_sex
       - plant_struc
       - pressure
+      - project
       - propagation
       - redox_potential
       - ref_biomaterial
@@ -439,11 +484,16 @@ classes:
       - root_med_macronutr
       - root_med_micronutr
       - salt_regm
-      - samp_biotic_relationship
       - sample_link
+      - sample_name
       - sample_processing
+      - samp_biotic_relationship
+      - samp_store_temp
+      - sampled_during
       - source_mat_ID
       - start_date_inc
+      - storage_condt
+      - storage_condition_other
       - synth_env_assembly
       - synth_env_design
       - synth_env_design_method
@@ -483,7 +533,7 @@ classes:
       id:
         identifier: true
         range: uuid
-    description: ''
+    description: A sample containing multiple cultured organisms.
     is_a: Sample
     slots:
       - air_temp_regm
@@ -493,6 +543,7 @@ classes:
       - encoded_traits
       - experimental_factor
       - experimental_factor_other
+      - external_identifiers
       - extraction_method
       - gaseous_environment
       - genetic_mod
@@ -506,23 +557,31 @@ classes:
       - light_regm
       - method_development
       - non_microb_biomass
+      - other
       - other_samp_store_temp
       - other_storage_condt
       - other_treatment
       - oxygen_relationship
       - pathogenicity
+      - project
       - propagation
       - ref_biomaterial
       - replicate_number
       - samp_biotic_relationship
       - sample_link
+      - sample_name
       - sample_processing
+      - sampled_during
+      - samp_store_temp
       - source_mat_id
       - specific_host
       - start_date_inc
+      - storage_condt
+      - storage_condition_other
       - subspecf_gen_lin
       - technical_reps
       - trophic_level
+      - watering_regm
     slot_usage:
       analysis_type:
         required: true
@@ -551,20 +610,28 @@ classes:
         identifier: true
         range: uuid
     slots:
-      - lims_id
       - agrochem_addition
       - bulk_elect_conductivity
       - chem_administration
       - depth
+      - external_identifiers
       - lat_lon
+      - lims_id
       - misc_param
+      - other
       - other_samp_store_temp
       - other_storage_condt
       - other_treatment
+      - project
+      - sample_name
+      - samp_store_temp
+      - sampled_during
       - sampling_set
       - soil_sample_type
       - soil_type
       - soil_type_meth
+      - storage_condt
+      - storage_condition_other
       - temp
       - water_content
       - water_content_meth
@@ -612,7 +679,7 @@ classes:
       id:
         identifier: true
         range: uuid
-    description: ''
+    description: A sample that does not fit into any of the other described sample types.
     is_a: Sample
     slots:
       - agrochem_addition
@@ -666,6 +733,7 @@ classes:
       - experimental_factor
       - experimental_factor_other
       - extraction_method
+      - external_identifiers
       - fertilizer_regm
       - filter_method
       - fluor
@@ -710,8 +778,8 @@ classes:
       - mean_frict_vel
       - mean_peak_frict_vel
       - mechanical_damage
-      - methane
       - method_development
+      - methane
       - micro_biomass_C_meth
       - micro_biomass_N_meth
       - microbial_biomass
@@ -733,6 +801,8 @@ classes:
       - org_nitro_method
       - org_particles
       - organism_count
+      - other
+      - other_samp_store_temp
       - other_treatment
       - oxygen
       - oxygen_relationship
@@ -760,6 +830,7 @@ classes:
       - primary_treatment
       - priority_order
       - production_method
+      - project
       - propagation
       - radiation_regm
       - rainfall_regm
@@ -773,9 +844,12 @@ classes:
       - samp_biotic_relationship
       - samp_capt_status
       - samp_dis_stage
+      - samp_store_temp
       - sample_link
+      - sample_name
       - sample_processing
       - sample_type
+      - sampled_during
       - season_environment
       - secondary_treatment
       - sewage_type
@@ -792,6 +866,8 @@ classes:
       - source_mat_ID
       - standing_water_regm
       - start_date_inc
+      - storage_condt
+      - storage_condition_other
       - subspecf_gen_lin
       - sulfate
       - sulfide
@@ -854,12 +930,12 @@ classes:
       id:
         identifier: true
         range: uuid
-    description: ''
+    description: A sample containing plant material.
     is_a: Sample
     slots:
       - air_temp_regm
-      - analysis_type
       - ances_data
+      - analysis_type
       - biol_stat
       - biotic_regm
       - chem_administration
@@ -867,6 +943,7 @@ classes:
       - experimental_factor
       - experimental_factor_other
       - extraction_method
+      - external_identifiers
       - fertilizer_regm
       - fungicide_regm
       - gaseous_environment
@@ -889,6 +966,7 @@ classes:
       - non_microb_biomass
       - non_microb_biomass_method
       - non_min_nutr_regm
+      - other
       - other_samp_store_temp
       - other_storage_condt
       - other_treatment
@@ -904,6 +982,7 @@ classes:
       - plant_struc
       - plant_taxid
       - plant_wet_mass
+      - project
       - rainfall_regm
       - replicate_number
       - root_cond
@@ -918,10 +997,15 @@ classes:
       - salinity_method
       - salt_regm
       - sample_link
+      - sample_name
       - sample_processing
+      - samp_store_temp
+      - sampled_during
       - source_mat_ID
       - standing_water_regm
       - start_date_inc
+      - storage_condt
+      - storage_condition_other
       - technical_reps
       - temp
       - water_temp_regm
@@ -953,7 +1037,7 @@ classes:
       id:
         identifier: true
         range: uuid
-    description: ''
+    description: A sample of a culture containing a single organism.
     is_a: Sample
     slots:
       - air_temp_regm
@@ -964,6 +1048,7 @@ classes:
       - experimental_factor
       - experimental_factor_other
       - extraction_method
+      - external_identifiers
       - filter_method
       - gaseous_environment
       - genetic_mod
@@ -978,19 +1063,26 @@ classes:
       - method_development
       - non_microb_biomass
       - non_microb_biomass_method
+      - other
       - other_samp_store_temp
       - other_storage_condt
       - other_treatment
       - oxygen_relationship
       - pathogenicity
+      - project
       - propagation
       - ref_biomaterial
       - replicate_number
       - samp_biotic_relationship
+      - samp_store_temp
       - sample_link
+      - sample_name
       - sample_processing
+      - sampled_during
       - source_mat_ID
       - start_date_inc
+      - storage_condt
+      - storage_condition_other
       - subspecf_gen_lin
       - technical_reps
       - trophic_level
@@ -1013,7 +1105,7 @@ classes:
         required: true
 
   SedimentSample:
-    description: ''
+    description: A sample of sediment collected from the environment.
     is_a: Sample
     attributes:
       id:
@@ -1048,6 +1140,7 @@ classes:
       - experimental_factor
       - experimental_factor_other
       - extraction_method
+      - external_identifiers
       - gaseous_environment
       - glucosidase_act
       - humidity_regm
@@ -1076,6 +1169,7 @@ classes:
       - org_matter
       - org_nitro
       - org_nitro_method
+      - other
       - other_samp_store_temp
       - other_storage_condt
       - other_treatment
@@ -1092,19 +1186,25 @@ classes:
       - porosity
       - potassium
       - pressure
+      - project
       - redox_potential
       - replicate_number
       - salinity
       - salinity_method
-      - samp_biotic_relationship
       - sample_link
+      - sample_name
       - sample_processing
+      - samp_biotic_relationship
+      - samp_store_temp
+      - sampled_during
       - sediment_type
       - sieving
       - silicate
       - sodium
       - source_mat_ID
       - start_date_inc
+      - storage_condt
+      - storage_condition_other
       - sulfate
       - sulfide
       - technical_reps
@@ -1145,7 +1245,7 @@ classes:
           of the relationship and the other organism(s) is the object
 
   SoilSample:
-    description: ''
+    description: A sample of soil collected from the environment.
     is_a: Sample
     attributes:
       id:
@@ -1164,6 +1264,7 @@ classes:
       - experimental_factor
       - experimental_factor_other
       - extraction_method
+      - external_identifiers
       - filter_method
       - gaseous_environment
       - heavy_metals
@@ -1184,6 +1285,7 @@ classes:
       - misc_param
       - non_microb_biomass
       - non_microb_biomass_method
+      - other
       - other_samp_store_temp
       - other_storage_condt
       - other_treatment
@@ -1191,12 +1293,16 @@ classes:
       - perturbation
       - ph
       - ph_meth
+      - project
       - replicate_number
       - salinity
       - salinity_method
       - samp_biotic_relationship
+      - samp_store_temp
       - sample_link
+      - sample_name
       - sample_processing
+      - sampled_during
       - sieving
       - size_frac_low
       - size_frac_up
@@ -1207,6 +1313,8 @@ classes:
       - soil_type_meth
       - source_mat_ID
       - start_date_inc
+      - storage_condt
+      - storage_condition_other
       - technical_reps
       - temp
       - texture_meth
@@ -1254,7 +1362,7 @@ classes:
         pattern: ^\d+(\.\d+)?\s*um$
 
   SynthesizedMaterialSample:
-    description: ''
+    description: A sample containing synthetically generated material.
     is_a: Sample
     attributes:
       id:
@@ -1266,17 +1374,25 @@ classes:
       - compound_name
       - experimental_factor
       - experimental_factor_other
+      - external_identifiers
       - genetic_mod
       - item_number
+      - other
       - other_samp_store_temp
       - other_storage_condt
       - oxygen_relationship
       - product_name
       - production_method
+      - project
       - replicate_number
       - sample_link
+      - sample_name
       - sample_processing
+      - samp_store_temp
+      - sampled_during
       - source_mat_ID
+      - storage_condt
+      - storage_condition_other
       - synth_instrument
       - synth_process
       - synth_reagents
@@ -1291,7 +1407,7 @@ classes:
         required: true
 
   TerraformSample:
-    description: ''
+    description: A sample collected from a Terraform experiment.
     is_a: Sample
     attributes:
       id:
@@ -1304,6 +1420,7 @@ classes:
       - chem_administration
       - cult_root_med
       - encoded_traits
+      - external_identifiers
       - gaseous_environment
       - genetic_mod
       - growth_medium
@@ -1327,6 +1444,7 @@ classes:
       - mineral_nutr_regm
       - misc_param
       - non_min_nutr_regm
+      - other
       - other_samp_store_temp
       - other_storage_condt
       - other_treatment
@@ -1336,6 +1454,7 @@ classes:
       - plant_sex
       - plant_struc
       - pressure
+      - project
       - propagation
       - redox_potential
       - ref_biomaterial
@@ -1345,10 +1464,15 @@ classes:
       - root_med_macronutr
       - root_med_micronutr
       - salt_regm
-      - samp_biotic_relationship
       - sample_link
+      - sample_name
       - sample_processing
+      - samp_biotic_relationship
+      - samp_store_temp
+      - sampled_during
       - source_mat_ID
+      - storage_condt
+      - storage_condition_other
       - synth_env_assembly
       - synth_env_design
       - synth_env_design_method
@@ -1382,7 +1506,7 @@ classes:
         required: true
 
   WaterSample:
-    description: ''
+    description: A sample of water collected from the environment.
     is_a: Sample
     attributes:
       id:
@@ -1422,6 +1546,7 @@ classes:
       - down_par
       - experimental_factor
       - experimental_factor_other
+      - external_identifiers
       - extraction_method
       - filter_method
       - fluor
@@ -1445,6 +1570,7 @@ classes:
       - org_matter
       - org_nitro
       - org_nitro_method
+      - other
       - other_samp_store_temp
       - other_storage_condt
       - other_treatment
@@ -1462,11 +1588,14 @@ classes:
       - potassium
       - pressure
       - primary_prod
+      - project
       - redox_potential
       - replicate_number
       - salinity
       - salinity_method
       - sample_link
+      - sample_name
+      - sampled_during
       - silicate
       - size_frac_low
       - size_frac_up
@@ -1474,8 +1603,11 @@ classes:
       - soluble_react_phosp
       - source_mat_ID
       - start_date_inc
+      - storage_condt
+      - storage_condition_other
       - sulfate
       - sulfide
+      - samp_store_temp
       - suspend_part_matter
       - technical_reps
       - temp
