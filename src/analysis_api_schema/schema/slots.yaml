@@ -132,12 +132,16 @@ slots:
     pattern: '^\d+(\.\d+)?\s*mm$'
     range: string
     title: mean annual precipitation
+    aliases:
+      - average annual precipitation
 
   annual_temp:
     description: 'Mean annual temperature (Unit: C)'
     pattern: '^-?\d+(\.\d+)?\s*C$'
     range: string
     title: mean annual temperature
+    aliases:
+      - average annual temperature
 
   antibiotic_regm:
     description: Information about treatment involving antibiotic administration; should
@@ -408,6 +412,11 @@ slots:
     description: Known or detected contaminant strains (if any)
     range: string
 
+  core_group:
+    title: core group
+    description: The category of soil core taken according to the MONet sampling protocol.
+    range: MONetCoreGroupEnum
+
   core_section:
     title: core section
     description: The section of the core.
@@ -415,7 +424,7 @@ slots:
       - value: TOP
       - value: MID
       - value: BTM
-    range: string
+    range: CoreSectionEnum
 
   creation_date:
     description: Date the entity or preparation was created
@@ -1105,6 +1114,8 @@ slots:
     title: latitude
     description: Latitude coordinate of the sampling site in WSG 84 format.
     range: double
+    broad_mappings:
+      - MIXS:0000009
 
   light_intensity:
     description: Measurement of light intensity. Provide value and unit, any unit is valid.
@@ -1172,6 +1183,8 @@ slots:
     title: longitude
     description: Longitude coordinate of the sampling site in WSG 84 format.
     range: double
+    broad_mappings:
+      - MIXS:0000009
 
   loop_count:
     description: Number of MS2 scans to be acquired between each full MS scan.
@@ -2156,12 +2169,16 @@ slots:
     pattern: ^\d+(\.\d+)?\s*mm$
     range: string
     title: mean seasonal precipitation
+    aliases:
+      - average seasonal precipitation
 
   season_temp:
     description: 'Mean seasonal temperature (Unit: C)'
     pattern: ^-?\d+(\.\d+)?\s*C$
     range: string
     title: mean seasonal temperature
+    aliases:
+      - average seasonal precipitation
 
   second_blh:
     description: 'Second boundary layer height candidate (meters) (Unit: m)'

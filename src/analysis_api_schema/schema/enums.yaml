@@ -1190,6 +1190,16 @@ enums:
         title: Replicon
       whisker_mediated_transformation:
         title: Whisker-mediated Transformation
+  
+  MONetCoreGroupEnum:
+    description: Core groups when sampling according to the MONet sampling protocol
+    permissible_values:
+      A:
+      B:
+      C1:
+      C2:
+      C3:
+      C4:
 
   NEONDomainEnum:
     description: NEON ecological domains
