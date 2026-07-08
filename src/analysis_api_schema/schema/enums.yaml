@@ -16,6 +16,16 @@ imports:
   - linkml:types
 
 enums:
+  AerosolTypeEnum:
+    description: Types of aerosol samples
+    permissible_values:
+      sea_salt:
+        description: Sea salt aerosol
+      dust:
+        description: Dust aerosol
+      volcanic_ash:
+        description: Volcanic ash aerosol
+
   AlternateIdentifierType:
     permissible_values:
       instrument_alt_id:
@@ -78,16 +88,6 @@ enums:
         aliases:
         - NOM
       unknown:
-
-  AerosolTypeEnum:
-    description: Types of aerosol samples
-    permissible_values:
-      sea_salt:
-        description: Sea salt aerosol
-      dust:
-        description: Dust aerosol
-      volcanic_ash:
-        description: Volcanic ash aerosol
 
   AnnotationDatabaseEnum:
     permissible_values:
@@ -612,11 +612,6 @@ enums:
       spreading:
       prostrate:
 
-  InstrumentAltIdProviderEnum:
-    permissible_values:
-      nexus:
-      dms:
-
   InstitutionEnum: #speak with Maya!!! for removal/ We may need this enum to accomodate the masspectrometry class # found in file #double check analysis-api-schema
     description: The organization that processed the sample / ran the pipeline / participated in the project.
     permissible_values:
@@ -637,6 +632,11 @@ enums:
       azenta:
         title: Azenta Life Sciences
   
+  InstrumentAltIdProviderEnum:
+    permissible_values:
+      nexus:
+      dms:
+
   IntendedTraitEnum:
     permissible_values:
       other:
@@ -780,6 +780,12 @@ enums:
         aliases:
         - FTICR
 
+  MassSpecRawFileTypeEnum:
+    permissible_values:
+      .d:
+      .raw:
+      other:
+
   MassSpecResolutionEnum:
     permissible_values:
       high:
@@ -788,12 +794,6 @@ enums:
       low:
         text: low
         description: at unit resolution
-
-  MassSpecRawFileTypeEnum:
-    permissible_values:
-      .d:
-      .raw:
-      other:
 
   MassSpectrometryAcquisitionStrategyEnum:
     permissible_values:
@@ -1143,53 +1143,37 @@ enums:
       xth320:
 
   ModificationMethodEnum:
+    description: |-
+      Methods used to introduce genetic modifications into organisms.
+      Montana source: CRISPRi_Pp_11strains.csv modification_method values
     permissible_values:
-      aerosol_beam_injector:
-        title: Aerosol Beam Injector
-      agrobacterium_rhizogenes_disarmed:
-        title: Agrobacterium rhizogenes disarmed
-      agrobacterium_tumefasciens_disarmed:
-        title: Agrobacterium tumefaciens disarmed
-      biolistic:
-        title: Biolistic
-      chemical_transformation:
-        title: Chemical Transformation
-      cold_shock:
-        title: Cold Shock
-      conjugation:
-        title: Conjugation
-      direct_injection:
-        title: Direct Injection
-      direct_uptake:
-        title: Direct Uptake
-      dna_synthesis:
-        title: DNA Synthesis
       electroporation:
-        title: Electroporation
-      freeze_thaw:
-        title: Freeze/Thaw
-      heat_shock:
-        title: Heat Shock
-      mutagenesis:
-        title: Mutagenesis
-      no_transformation:
-        title: No Transformation
-      ochrobactrum:
-        title: Ochrobactrum
+        description: Introduction of DNA via electrical pulses
+        aliases:
+        - Electroporation
+      conjugation:
+        description: Transfer of DNA via bacterial conjugation
+        aliases:
+        - Conjugation
+      transformation:
+        description: Natural or chemical competence-based DNA uptake
+        aliases:
+        - Transformation
+      transduction:
+        description: Phage-mediated DNA transfer
+        aliases:
+        - Transduction
+      crispr:
+        description: CRISPR-based genome editing
+        aliases:
+        - CRISPR
+        - CRISPR-Cas
+      homologous_recombination:
+        description: Integration via homologous recombination
+      transposon:
+        description: Transposon-mediated insertion
       other:
-        title: Other
-      p_element:
-        title: P-element
-      phage_transformation:
-        title: Phage Transformation
-      piggybac:
-        title: Piggybac
-      polyethylene_glycol_mediated:
-        title: Polyethylene Glycol-mediated
-      replicon:
-        title: Replicon
-      whisker_mediated_transformation:
-        title: Whisker-mediated Transformation
+        description: Other modification method not listed
 
   NEONDomainEnum:
     description: NEON ecological domains
@@ -1732,6 +1716,39 @@ enums:
       other:
         description: Other storage condition
   
+  StrainTypeEnum:
+    description: |-
+      Types of microbial strains/organisms.
+      Montana source: amp2-complete-001.yaml strain_type
+    permissible_values:
+      bacterial:
+        description: Bacterial strain
+        aliases:
+        - bacteria
+      fungal:
+        description: Fungal strain
+        aliases:
+        - fungi
+        - yeast
+      archaeal:
+        description: Archaeal strain
+        aliases:
+        - archaea
+      viral:
+        description: Viral isolate
+        aliases:
+        - virus
+        - phage
+        - bacteriophage
+      algal:
+        description: Algal strain
+        aliases:
+        - algae
+      protist:
+        description: Protist strain
+      other:
+        description: Other organism type
+
   SyntheticEnvironmentEnum:
     permissible_values:
       pore_scale_micromodels:
@@ -1784,38 +1801,72 @@ enums:
         aliases: ["Zonal_Tillage"]
 
   TrophicLevelEnum:
+    description: |-
+      Enumeration of trophic levels for organisms.
+      Montana source: amp2-metadata.yaml TrophicLevelEnum
     permissible_values:
       autotroph:
+        description: Organism that produces complex organic compounds from simple substances
       carboxydotroph:
+        description: Organism that oxidizes carbon monoxide as energy source
       chemoautolithotroph:
+        description: Chemolithoautotroph using inorganic compounds
       chemoautotroph:
+        description: Organism using chemical energy to synthesize organic compounds
       chemoheterotroph:
+        description: Organism obtaining energy by oxidizing organic compounds
       chemolithoautotroph:
+        description: Organism using inorganic electron donors
       chemolithotroph:
+        description: Organism deriving energy from inorganic compounds
       chemoorganoheterotroph:
+        description: Organism using organic compounds as electron donors
       chemoorganotroph:
+        description: Organism obtaining energy from organic compounds
       chemosynthetic:
+        description: Organism using chemosynthesis
       chemotroph:
+        description: Organism obtaining energy from chemical reactions
       copiotroph:
+        description: Organism thriving in nutrient-rich environments
       diazotroph:
+        description: Organism capable of nitrogen fixation
       facultative:
+        description: Organism capable of multiple metabolic modes
       heterotroph:
+        description: Organism requiring organic compounds for nutrition
       lithoautotroph:
+        description: Organism using inorganic substrates
       lithoheterotroph:
+        description: Organism using inorganic electron donors with organic carbon
       lithotroph:
+        description: Organism using inorganic electron donors
       methanotroph:
+        description: Organism using methane as carbon/energy source
       methylotroph:
+        description: Organism using reduced one-carbon compounds
       mixotroph:
+        description: Organism combining autotrophy and heterotrophy
       obligate:
+        description: Organism restricted to one metabolic mode
       oligotroph:
+        description: Organism thriving in nutrient-poor environments
       organoheterotroph:
+        description: Organism using organic compounds
       organotroph:
-      photoautotroph:
+        description: Organism obtaining electrons from organic compounds
+      osmotroph:
+        description: Organism absorbing dissolved nutrients
       photoheterotroph:
+        description: Organism using light with organic carbon
+      photoautotroph:
+        description: Organism using light to fix carbon dioxide
       photolithoautotroph:
+        description: Photosynthetic organism using inorganic electron donors
       photolithotroph:
-      photosynthetic:
+        description: Organism using light and inorganic electron donors
       phototroph:
+        description: Organism using light as energy source
 
   VendorEnum:
     permissible_values:

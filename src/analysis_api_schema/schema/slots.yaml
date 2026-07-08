@@ -20,6 +20,10 @@ slots:
   # id: is left as an attribute with range: uuid and identifier: true
   # everywhere, for now, for (some kind of database reason).
 
+
+  # id: is left as an attribute with range: uuid and identifier: true
+  # everywhere, for now, for (some kind of database reason).
+
   acquisition_strategy:
     range: MassSpectrometryAcquisitionStrategyEnum
     description: The acquisition strategy used in the mass spectrometry run.
@@ -97,13 +101,11 @@ slots:
     title: ammonium
 
   analysis_type:
-    description: The analysis(ses) planned for this sample. The analysis types will later
-      be mapped to an allocated resource. This field is constrained to contain only
-      a set of limited terms. Include all the data types. This field can have multiple
-      values separated by a ';'.
-    range: AnalysisTypeEnum
-    title: analysis type
-
+    description: |-
+      The type(s) of analysis planned for this sample.
+    
+      Montana source: amp2-metadata.yaml Sample:slots, CRISPRi_Pp_11strains.csv
+    range: string
   analyte_category:
     description: omics type for easier search, optional
     range: AnalyteCategoryEnum
@@ -187,6 +189,15 @@ slots:
     range: BiolStatEnum
     title: biological status
 
+  biological_entity_ref:
+    description: |-
+      FK reference to a BiologicalEntity representing the biological identity
+      (strain, isolate, engineered construct) that this sample or activity 
+      is associated with.
+    
+      Montana source: amp2-complete-001.yaml uses strain_id on activities
+    range: BiologicalEntity
+    required: false
   biotic_regm:
     description: Information about treatment(s) involving use of biotic factors such
       as bacteria, viruses, or fungi.
@@ -217,18 +228,6 @@ slots:
     range: float
     todos: units
   
-  calibration_data:
-    description: Reference to the raw instrument data file used for calibration
-    range: MassSpectrometryInstrumentData
-
-  calibration_target:
-    description: The measurement being calibrated
-    range: CalibrationTargetEnum
-
-  calibration_standard:
-    description: The reference standard used for calibration
-    range: PurchasedMaterial
-
   bromide:
     description: 'Concentration of bromide (Unit: ppm)'
     pattern: ^\d+(\.\d+)?\s*ppm$
@@ -248,6 +247,18 @@ slots:
     pattern: ^\d+(\.\d+)?\s*(mg/L|umol/L|ppm)$
     range: string
     title: calcium
+
+  calibration_data:
+    description: Reference to the raw instrument data file used for calibration
+    range: MassSpectrometryInstrumentData
+
+  calibration_standard:
+    description: The reference standard used for calibration
+    range: PurchasedMaterial
+
+  calibration_target:
+    description: The measurement being calibrated
+    range: CalibrationTargetEnum
 
   carb_dioxide:
     description: 'Amount of carbon dioxide measured in the air the day of sampling.
@@ -278,13 +289,12 @@ slots:
       - CAS
 
   cbi:
-    description: Indicate if any information about the strain is considered confidential
-      business information
-    range: YesNoEnum
-    title: confidential business information
-    aliases:
-      - CBI
-
+    description: |-
+      Controlled Biological Information flag (yes/no).
+      Indicates if the sample is subject to CBI restrictions.
+    
+      Montana source: CRISPRi_Pp_11strains.csv cbi column
+    range: boolean
   chem_administration:
     title: chemical administration
     description: List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
@@ -323,13 +333,11 @@ slots:
     required: true
 
   collection_date:
-    description: 'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid
-      if entire collection date is unknown is just year (YYYY) or just year and month
-      (YYYY-MM)'
-    pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
-    range: string
-    title: collection date
-
+    description: |-
+      The date the sample was collected or received.
+    
+      Montana source: amp2-complete-001.yaml sample_set collection_date
+    range: date
   collection_mode:
     description: The collection mode for the mass spectrometry data (e.g., profile, centroid)
     range: MassSpectrumCollectionModeEnum
@@ -366,17 +374,19 @@ slots:
     range: string
   
   component_description:
-    description: Provide a short statement describing the function of the construct
-      component. You may provide an optional literature reference for lesser-known components.
+    description: |-
+      Description of the genetic component's function.
+      Example: "d-Cfp1 to block gene expression", "recognition sequence for guide RNA processing"
+    
+      Montana source: CRISPRi_Pp_11strains.csv component_description column
     range: string
-    title: construct component description
-
   component_name:
-    description: Provide a one-to-three word name based on the component. If using an
-      acronym provide the full component name in the component description.
+    description: |-
+      Name of the genetic component.
+      Examples: "dCas12a", "4_sgRNAs"
+    
+      Montana source: CRISPRi_Pp_11strains.csv component_name column
     range: string
-    title: construct component name
-
   compound_name:
     description: The name of the purchased material. A substance formed by chemical
       union of two or more elements or ingredients in definite proportion by weight.
@@ -387,17 +397,32 @@ slots:
     range: float
     description: Concentration of the substance in micrograms per microliter.
   
+  condition_received:
+    description: |-
+      The condition of the sample when received.
+      Examples: "good", "damaged", "thawed"
+    
+      Montana source: amp2-complete-001.yaml SampleReceiving condition_received
+    range: string
   conduc:
     description: Electrical conductivity of water. Provide value and unit, any unit is valid.
     pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: conductivity
 
+  confirmed_receipt:
+    description: |-
+      Whether receipt of the sample was confirmed.
+    
+      Montana source: amp2-complete-001.yaml SampleReceiving confirmed_receipt
+    range: boolean
   construct_component:
-    description: Select the construct component type.
-    range: ConstructComponentEnum
-    title: construct component
-
+    description: |-
+      Type of construct component.
+      Examples: "Gene", "Recognition Sequence"
+    
+      Montana source: CRISPRi_Pp_11strains.csv construct_component column
+    range: string
   container_type:
     description: Physical container used for the culture (flask, tube, plate, etc.)
     range: string
@@ -456,6 +481,16 @@ slots:
   cv_percent:
     description: Coefficient of variation across technical replicates
     range: float
+
+  date_received:
+    description: |-
+      The date the sample was received.
+    
+      Montana source: amp2-complete-001.yaml SampleReceiving date_received
+    range: date
+    aliases:
+      - received_date
+      - reception_date
 
   dd_ms2_resolution:
     description: Data-dependent MS2 resolution setting used in the mass spectrometry method
@@ -543,12 +578,12 @@ slots:
     title: dissolved oxygen
 
   donor_organism:
-    description: Provide the scientific name (genus and species) of the organism from
-      which the construct component was first described or obtained. You may enter 'synthetic'
-      if relevant.
+    description: |-
+      Source organism for genetic components.
+      Example: "Streptomyces tenebrarius (aprR), synthetic (Jungle express promoter)"
+    
+      Montana source: CRISPRi_Pp_11strains.csv donor_organism column
     range: string
-    title: donor organism
-
   down_par:
     description: Visible waveband radiance and irradiance measurements in the water column. Provide value and unit, any unit is valid.
     pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
@@ -598,11 +633,12 @@ slots:
     title: emulsions
 
   encoded_traits:
-    description: Should include key traits like antibiotic resistance or xenobiotic
-      degradation phenotypes for plasmids, converting genes for phage
+    description: |-
+      Key traits encoded by genetic elements, such as antibiotic resistance 
+      or xenobiotic degradation phenotypes for plasmids.
+    
+      Montana source: amp2-metadata.yaml Sample:slots
     range: string
-    title: encoded traits
-
   env_broad_scale:
     description: >-
       'Report the major environmental system the sample or specimen came
@@ -701,13 +737,13 @@ slots:
     description: an identifier for a file that resolves to the file's accessible location
     range: string
 
+  filesize:
+    range: integer
+
   filter_method:
     description: Type of filter used or how the sample was filtered
     range: string
     title: filter method
-
-  filesize:
-    range: integer
 
   fire:
     description: 'Historical and/or physical evidence of fire. Format: YYYY-MM-DD'
@@ -787,20 +823,19 @@ slots:
     title: genetic modifications
 
   genotype_segment_category:
-    description: Select the genotype category. A genotype is generally an expression
-      cassett or a grouping of genetic elements or a gene edit containing a set of construct
-      components leading to one or more intended traits. A strain may consist of multiple
-      genotypes.
-    range: GenotypeSegmentEnum
-    title: genotype segment category
-
-  genotype_segment_name:
-    description: Provide a name that describes the genotype modification engineered
-      relative to the reference unmodified genome. The name should describe the spatially
-      grouped components or specific function of the modification.
+    description: |-
+      Category of genetic modification or segment.
+      Examples: "Gene(s) of Interest", "Gene Silencer"
+    
+      Montana source: CRISPRi_Pp_11strains.csv genotype_segment_category column
     range: string
-    title: genotype segment name
-
+  genotype_segment_name:
+    description: |-
+      Name of the genetic segment or modification.
+      Example: "aprR_pJE-dCas12a", "PP_0055 guide array"
+    
+      Montana source: CRISPRi_Pp_11strains.csv genotype_segment_name column
+    range: string
   geo_loc_name:
     description: 'The geographical origin of the sample as defined by the country or
       sea name followed by specific region name and site. Formatted as [Country or sea
@@ -825,12 +860,11 @@ slots:
     title: gravity
 
   growth_facil:
-    description: Type of facility or location from where the sample was collected or
-      grown. This field is NOT multivalued. If selecting other, add the `other_growth_facil`
-      attribute to provide additional detail.
-    range: GrowthFacilEnum
-    title: growth facility
-
+    description: |-
+      Growth facility or location where the sample was grown prior to submission.
+    
+      Montana source: amp2-metadata.yaml GrowthFacilityEnum, CRISPRi_Pp_11strains.csv
+    range: GrowthFacilityEnum
   growth_habit:
     description: Characteristic shape appearance or growth form of a plant species
     range: GrowthHabitEnum
@@ -858,6 +892,12 @@ slots:
       Required for ExperimentalCulture activities.
     range: string
 
+  guid_source:
+    description: |-
+      Source system for the sample GUID (e.g., "LIMS").
+    
+      Montana source: amp2-complete-001.yaml Sample guid_source
+    range: string
   heavy_metals:
     description: Heavy metals present and concentrations; can include multiple heavy metals and concentrations
     range: string
@@ -891,10 +931,12 @@ slots:
     title: host age
 
   host_common_name:
-    description: Common name of the host
+    description: |-
+      Common name for the host organism (e.g., "Pseudomonas putida").
+      For microbes, this may be identical to organism_name.
+    
+      Montana source: amp2-metadata.yaml Sample:slots, CRISPRi data
     range: string
-    title: host common name
-
   host_disease_stat:
     description: List of diseases with which the host has been diagnosed; can include
       multiple diagnoses. The value of the field depends on host; for humans the terms
@@ -949,12 +991,11 @@ slots:
     title: host phenotype
 
   host_spec_range:
-    description: The range and diversity of host species that an organism is capable
-      of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####
-    pattern: NCBITaxon:\d+
+    description: |-
+      Host specificity range for the organism (relevant for phages, symbionts).
+    
+      Montana source: amp2-metadata.yaml Sample:slots
     range: string
-    title: host specificity or range
-
   host_symbiont:
     description: The taxonomic name of the organism(s) found living in mutualistic, commensalistic,
       or parasitic symbiosis with the specific host.
@@ -962,11 +1003,11 @@ slots:
     title: observed host symbionts
 
   host_taxid:
-    description: NCBI taxon ID. Format with prefix NCBITaxon:####
-    pattern: NCBITaxon:\d+
+    description: |-
+      NCBI taxon ID of the host organism.
+    
+      Montana source: amp2-metadata.yaml Sample:slots, CRISPRi_Pp_11strains.csv
     range: string
-    title: host taxonomy identifier
-
   host_tot_mass:
     description: 'Total mass of the host at collection. (Unit: kg or g)'
     pattern: ^\d+(\.\d+)?\s*(kg|g)$
@@ -1075,12 +1116,12 @@ slots:
     required: true
   
   isol_growth_condt:
-    description: Publication reference in the form of pubmed ID (PMID), digital object
-      identifier (DOI), or URL for isolation and growth condition specifications of the
-      organism/material
+    description: |-
+      Publication or DOI reference describing isolation/growth conditions.
+      Example: "DOI: 10.1126/sciadv.ade1285"
+    
+      Montana source: amp2-metadata.yaml Sample:slots, CRISPRi_Pp_11strains.csv
     range: string
-    title: isolation and growth conditions
-
   isolation_window:
     range: string
     required: true
@@ -1116,17 +1157,17 @@ slots:
     range: string
     title: light regimen
 
+  lims_barcode:
+    description: LIMS barcode identifier
+    range: string
+    required: false
+
   lims_id:
     description: An EMSL internal LIMS identifier for your sample. This will be provided
       by the MPOC and should not be edited.
     pattern: ^INGEST_SAMPLE_\d{9}$
     range: string
     title: LIMS ID
-
-  lims_barcode:
-    description: LIMS barcode identifier
-    range: string
-    required: false
 
   lims_protocol_instance_id:
     description: Reference to the L7 protocol_instance that corresponds to this sample processing step, if applicable.
@@ -1297,15 +1338,15 @@ slots:
     range: string
     title: microbial biomass carbon method
 
-  micro_biomass_N_meth:
-    description: Reference or method used in determining microbial biomass nitrogen
-    range: string
-    title: microbial biomass nitrogen method
-
   micro_biomass_c_meth:
     description: Reference or method used in determining microbial biomass
     range: string
     title: microbial biomass carbon method
+
+  micro_biomass_N_meth:
+    description: Reference or method used in determining microbial biomass nitrogen
+    range: string
+    title: microbial biomass nitrogen method
 
   micro_biomass_n_meth:
     description: Reference or method used in determining microbial biomass nitrogen
@@ -1363,11 +1404,12 @@ slots:
     multivalued: true
 
   modification_method:
-    description: Select the method used to insert your construct into the genome of
-      your modified organism
+    description: |-
+      Method used to introduce genetic modification.
+      Examples: "Electroporation", "Conjugation", "CRISPR", "Transduction"
+    
+      Montana source: CRISPRi_Pp_11strains.csv modification_method column
     range: ModificationMethodEnum
-    title: modification method
-
   ms_raw_file_type:
     description: the filetype of the mass spectrometry instrument data
     range: MSRawFileTypeEnum
@@ -1484,10 +1526,11 @@ slots:
     title: organism count
 
   organism_name:
-    description: Provide the scientific name (genus and species) of the host organism.
+    description: |-
+      Scientific name of the organism (e.g., "Pseudomonas putida").
+    
+      Montana source: CRISPRi_Pp_11strains.csv organism_name column
     range: string
-    title: organism name
-
   other:
     description: Other/additional details about your sample that you feel can't be accurately
       represented in ANY of the available columns.
@@ -1498,6 +1541,14 @@ slots:
     description: Please specify growth facility if you selected 'other'
     range: string
     title: other growth facility
+
+  other_guid_source:
+    description: |-
+      Description of GUID source if guid_source = "other".
+    
+      Montana source: amp2-metadata.yaml
+    range: string
+
 
   other_samp_store_temp:
     description: Please specify sample storage temperature if you selected 'other'
@@ -1567,10 +1618,11 @@ slots:
     title: particle class
 
   pathogenicity:
-    description: To what is the entity pathogenic
+    description: |-
+      Pathogenicity status or classification of the organism.
+    
+      Montana source: amp2-metadata.yaml Sample:slots
     range: string
-    title: pathogenicity
-
   perturbation:
     description: Type of perturbation, e.g. chemical administration, physical disturbance,
       etc.; coupled with perturbation regimen, including how many times the perturbation
@@ -1630,10 +1682,12 @@ slots:
     title: phaeopigments
 
   phenotype:
-    description: Provide the intended phenotype of the modified organism.
+    description: |-
+      Observable characteristics of the biological entity.
+      Example: "aprimycin resistance, gene knockdown dCas12a construct"
+    
+      Montana source: CRISPRi_Pp_11strains.csv phenotype column
     range: string
-    title: phenotype
-
   phosphate:
     description: 'Concentration of phosphate (Unit: umol/L)'
     pattern: ^\d+(\.\d+)?\s*umol/L$
@@ -1853,20 +1907,19 @@ slots:
     todos:
       - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141 where emsl.project is the CURIE prefix
 
-  protocol_version:
-    description: Version of the protocol used in the activity, if applicable.
-    range: string
-
-<<<<<<< HEAD
   propagation:
-    description: 'The type of reproduction from the parent stock. Values for this field are specific to different taxa. For phage or virus: lytic/lysogenic/temperate/obligately lytic. For plasmids: incompatibility group. For eukaryotes: sexual/asexual'
+    description: |-
+      Propagation characteristics (e.g., lytic/lysogenic for phages, 
+      incompatibility group for plasmids).
+    
+      Montana source: amp2-metadata.yaml Sample:slots
     range: string
-    title: propagation
-
-=======
->>>>>>> 5122b9c (add protocol_url, protocol_version to dataGen and samplingAct and slots)
   protocol_url:
     description: URL pointing to the protocol used in the activity, if applicable.
+    range: string
+
+  protocol_version:
+    description: Version of the protocol used in the activity, if applicable.
     range: string
 
   provider_name:
@@ -2229,11 +2282,12 @@ slots:
     title: sewage type
 
   shipped_sample_size:
-    description: Total amount of sample sent to EMSL. Must include units.
-    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+    description: |-
+      Size/volume of the sample as shipped.
+      Example: "1 mL"
+    
+      Montana source: amp2-metadata.yaml Sample:slots, CRISPRi_Pp_11strains.csv
     range: string
-    title: shipped sample size
-
   sieving:
     description: Collection design of pooled samples and/or sieve size and amount of
       sample sieved
@@ -2373,12 +2427,11 @@ slots:
     title: standing water regimen
 
   start_date_inc:
-    description: 'Date the incubation was started. Only relevant for incubation samples.
-      Format: YYYY-MM-DD'
-    pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
-    range: string
-    title: incubation start date
-
+    description: |-
+      Start date of incubation for the sample.
+    
+      Montana source: amp2-metadata.yaml Sample:slots, CRISPRi_Pp_11strains.csv
+    range: date
   stationary_phase:
     description: Description of the stationary phase used in the chromatography method (e.g., column type)
     range: string
@@ -2411,25 +2464,32 @@ slots:
     description: The physical or digital location where the processed sample is stored (e.g., freezer location, database ID).
 
   storage_temperature:
-    description: Storage temperature for the entity (e.g. "4 C", "-80 C")
+    description: |-
+      Storage temperature for the sample (e.g., "-80 C", "4 C").
+    
+      Montana source: amp2-metadata.yaml Media:slots, CRISPRi_Pp_11strains.csv samp_store_temp
     range: string
-
   strain_description:
-    description: A brief description of the modifications that comprise this strain
+    description: |-
+      Free text description of the strain, including modification details.
+      Example: "AG5577-pJE2165 with CRISPRi guide array targeting PP_0055"
+    
+      Montana source: CRISPRi_Pp_11strains.csv strain_description column
     range: string
-    title: strain description
-
   strain_identifier:
     description: |-
-      External human-readable strain identifier (e.g. "KT2440_pTE314").
-      NOT the database UUID   that is the Strain.id attribute.
+      Primary human-readable strain/entity identifier (e.g., "KT2440_pTE314", "PP_0055").
+      NOT the database UUID - that is the BiologicalEntity.id attribute.
+    
+      Montana source: amp2-complete-001.yaml strain_id field
     range: string
-    required: true
-
   strain_mutation:
-    description: Genetic modification or plasmid carried (e.g. "pTE314")
+    description: |-
+      Primary genetic modification or plasmid carried (e.g., "pTE314").
+      For complex constructs, use genotype_segment_* and component_* slots.
+    
+      Montana source: amp2-complete-001.yaml strain_mutation, amp2-metadata.yaml
     range: string
-
   strain_name:
     description: Provide a unique name to identify transformed strain lines.
     range: string
@@ -2441,15 +2501,18 @@ slots:
     required: false
 
   strain_source:
-    description: Indicate the source of the strain provided (e.g. "PNNL", "ATCC"). If purchased provide the
-      vendor and lot number if from another registered or known strain provide a reference.
+    description: |-
+      Source institution, collection, or derivation note for the biological entity.
+      Examples: "PNNL", "ATCC", "engineered from KT2440"
+    
+      Montana source: amp2-complete-001.yaml strain_source, CRISPRi_Pp_11strains.csv
     range: string
-    title: strain source
-
   strain_type:
-    description: Type of strain (bacterial, fungal, etc.)
-    range: string
-
+    description: |-
+      Type of strain/organism (bacterial, fungal, archaeal, etc.)
+    
+      Montana source: amp2-complete-001.yaml strain_type, amp2-metadata.yaml
+    range: StrainTypeEnum
   subspecf_gen_lin:
     description: Information about the genetic distinctness of the sequenced organism
       below the subspecies level, e.g. serovar, serotype, biotype, ecotype, or any relevant
@@ -2548,6 +2611,12 @@ slots:
     range: string
     todos: should this point to the Strain class?
 
+  taxonomy_id:
+    description: |-
+      NCBI taxon ID for the organism.
+    
+      Montana source: amp2-metadata.yaml Sample:slots
+    range: string
   temp:
     description: 'Temperature of the sample at the time of sampling. (Units: C)'
     pattern: ^-?\d+(\.\d+)?\s*C$
@@ -2690,20 +2759,22 @@ slots:
     description: Total amount of analyte in micrograms
 
   trait:
-    description: Select the general type of intended trait
-    range: IntendedTraitEnum
-    title: trait
-
+    description: |-
+      Trait category for the biological entity.
+      Example: "Bacterial Resistance", "Other"
+    
+      Montana source: CRISPRi_Pp_11strains.csv trait column
+    range: string
   treatment_type:
     description: Type of treatment applied in experimental culture growth
     range: string
 
   trophic_level:
-    description: Trophic levels are the feeding position in a food chain. Microbes can
-      be a range of producers.
+    description: |-
+      Trophic level of the organism (autotroph, heterotroph, etc.)
+    
+      Montana source: amp2-metadata.yaml TrophicLevelEnum, Sample:slots
     range: TrophicLevelEnum
-    title: trophic level
-
   turbidity:
     description: Measure of the amount of cloudiness or haziness in water caused by
       individual particles. Provide value and unit any unit is valid.
@@ -2856,3 +2927,9 @@ slots:
   
     range: string
     required: false
+
+
+# ============================================================================
+# BiologicalEntity reference slot
+# ============================================================================
+
