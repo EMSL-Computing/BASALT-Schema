@@ -95,30 +95,29 @@ classes:
   # ============================================================================
   # CultureGrowth   abstract sampleProcessing subclass
   # ============================================================================
-  CultureGrowth:
+    CultureGrowth:
     is_a: SampleProcessing
-    abstract: true
     mixins:
       - HasIncubationConditions
+      - HasBiologicalEntityRef
     description: |-
-      Abstract base for culture growth activities.  Inherits processing
-      infrastructure from sampleProcessing and gains incubation conditions
-      via mixin.  media_ref and strain_ref are declared directly (no mixins).
-
-      Input/output sample linkage: via processingSampleLink (existing mechanism).
-      Media reference: media_ref -> processedSample(type='prepared_media')
-      Strain reference: strain_ref -> Strain (purchasedMaterial)
-
-      Montana source: amp2-metadata.yaml CultureGrowth class
+      Abstract activity for growing cultures from samples or other cultures.
+      
+      Concrete subclasses: StrainPurity, StockCulturePreparation, 
+      PreCultureGrowth, ExperimentalCulture.
+      
+      Montana source: amp2-metadata.yaml CultureGrowth class,
+      amp2-complete-001.yaml culture_growth_activity_set
     slots:
-      - media_ref
-      - strain_ref
+      - biological_entity_ref
+      - growth_medium
       - incubation_time_hours
       - container_type
-    # Inherited from sampleProcessing (is_a labProcessingActivity):
-    #   id, analysis_type, method_name, processing_steps, url, version
-    # Inherited from HasIncubationConditions mixin:
-    #   temperature_celsius, agitation_speed_rpm, oxygen_status
+    slot_usage:
+      biological_entity_ref:
+        description: |-
+          FK reference to the BiologicalEntity being grown.
+          Aliases: strain_ref, strain_id (for backward compatibility)
 
   # ============================================================================
   # StrainPurity   concrete CultureGrowth
