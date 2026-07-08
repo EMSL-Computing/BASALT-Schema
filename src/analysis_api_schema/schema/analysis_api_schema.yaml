@@ -453,8 +453,6 @@ classes:
           - processing_id
           - step_number
           - role
-    todos:
-      - why is version here? what is a version of a processed sample?
 
   InstrumentCustodian:
     attributes:
