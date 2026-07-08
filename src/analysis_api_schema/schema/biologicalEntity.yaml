@@ -1,0 +1,126 @@
+---
+id: https://w3id.org/MONet/analysis-api-schema/biological-entity
+name: analysis-api-schema-biological-entity
+title: MONet Analysis API - Biological Entity
+description: |-
+  Reference data classes for biological identities (strains, isolates, engineered 
+  constructs) that can be instantiated by multiple physical samples.
+  
+  Montana source: amp2-metadata.yaml Strain class, amp2-complete-001.yaml strain_set,
+  CRISPRi_Pp_11strains.csv for genotype/construct details.
+license: MIT
+see_also:
+  - https://MONet.github.io/analysis-api-schema
+  - https://github.com/pnnl/analysis-api
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: analysis_api_schema
+default_range: string
+
+imports:
+  - linkml:types
+  - slots
+  - enums
+
+classes:
+
+  BiologicalEntity:
+    description: |-
+      Reference data representing a biological identity (strain, isolate, 
+      engineered construct, etc.) that can be instantiated by multiple 
+      physical samples.
+      
+      REPLACES: This class replaces the former Strain class, which was modeled 
+      as a PurchasedMaterial subclass. That approach did not accommodate strains 
+      engineered in-house or received from collaborators, nor did it cleanly 
+      separate biological identity from physical samples. Additionally, the term 
+      "strain" implies purity that cannot always be guaranteed; this class 
+      represents the *intended* or *characterized* biological identity.
+      
+      Montana source: 
+        - amp2-metadata.yaml Strain class
+        - amp2-complete-001.yaml strain_set (e.g., KT2440_pTE314)
+        - CRISPRi_Pp_11strains.csv for genotype/phenotype/construct details
+      
+      Relationship to samples:
+        - One BiologicalEntity can have many AMP2UserSample instances
+        - AMP2UserSample.biological_entity_ref points here
+        - CultureGrowth activities reference via biological_entity_ref (aliased as strain_ref)
+    slots:
+      # Identity slots
+      - name
+      - description
+      - strain_identifier
+      - organism_name
+      - taxonomy_id
+      - host_common_name
+      - host_taxid
+      
+      # Provenance slots
+      - strain_source
+      - strain_type
+      
+      # Genetic modification slots
+      - modification_method
+      - strain_description
+      - strain_mutation
+      
+      # Phenotype slots
+      - phenotype
+      - trait
+      - encoded_traits
+      
+      # Genotype construct detail slots (from CRISPRi data)
+      - genotype_segment_category
+      - genotype_segment_name
+      - component_name
+      - construct_component
+      - donor_organism
+      - component_description
+      
+      # Biological characteristic slots (from amp2-metadata)
+      - trophic_level
+      - pathogenicity
+      - host_spec_range
+      - propagation
+      
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+        required: true
+        
+    slot_usage:
+      strain_identifier:
+        required: true
+        description: |-
+          Primary human-readable identifier for this biological entity.
+          Examples: "KT2440_pTE314", "PP_0055", "AG5577-pJE2165"
+      name:
+        description: |-
+          Human-readable name for the biological entity.
+          May be same as strain_identifier or more descriptive.
+      strain_source:
+        description: |-
+          Provenance of the biological entity. Can be an institution 
+          (e.g., "ATCC", "PNNL"), commercial source, or derivation note 
+          (e.g., "engineered from KT2440").
+      strain_mutation:
+        description: |-
+          Primary genetic modification or plasmid carried (e.g., "pTE314").
+          For more detailed construct information, use the genotype_segment_* 
+          and component_* slots.
+      trophic_level:
+        required: false
+
+
+  HasBiologicalEntityRef:
+    mixin: true
+    description: |-
+      Mixin for classes that reference a BiologicalEntity.
+      Provides the biological_entity_ref FK slot with strain_ref as alias.
+    slots:
+      - biological_entity_ref
