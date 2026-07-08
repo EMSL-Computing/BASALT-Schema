@@ -29,16 +29,14 @@ slots:
     description: Additional information pertaining to these data, including SP Project ID and Taxon OID
 
   aerosol_type:
-    description: The type or method of aerosol collection
     range: AerosolTypeEnum
     required: true
 
   agitation_speed_rpm:
-    description: Agitation/shaking speed in RPM (0 for static)
+
     range: integer
   
   agrochem_addition:
-    description: Addition of fertilizers pesticides etc. - amount and time of applications
     range: string
     title: agrochemical additions
 
@@ -1855,10 +1853,18 @@ slots:
     todos:
       - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141 where emsl.project is the CURIE prefix
 
+  protocol_version:
+    description: Version of the protocol used in the activity, if applicable.
+    range: string
+
   propagation:
     description: 'The type of reproduction from the parent stock. Values for this field are specific to different taxa. For phage or virus: lytic/lysogenic/temperate/obligately lytic. For plasmids: incompatibility group. For eukaryotes: sexual/asexual'
     range: string
     title: propagation
+
+  protocol_url:
+    description: URL pointing to the protocol used in the activity, if applicable.
+    range: string
 
   provider_name:
     range: ControlledTermValue
