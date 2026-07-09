@@ -2794,14 +2794,19 @@ slots:
 
   trophic_level:
     description: |-
-      Trophic level of the organism (autotroph, heterotroph, etc.)
+      Trophic levels are the feeding position in a food chain. Microbes can
+      be a range of producers.
     range: TrophicLevelEnum
+    title: trophic level
+
   turbidity:
     description: Measure of the amount of cloudiness or haziness in water caused by
       individual particles. Provide value and unit any unit is valid.
     pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: turbidity
+    todos:
+      - decide how to represent in backend (normalized child table with FK to PlateSetupActivity, array column, or other)
 
   uninoculated_mean:
     description: Mean measurement of uninoculated control wells (baseline for Ecoplate)
@@ -2927,6 +2932,7 @@ slots:
       Provide cardinal direction.
     range: CardinalDirectionEnum
     title: wind direction
+    required: false
 
   wind_speed:
     description: Wind speed describes how fast the air is moving past a certain point
