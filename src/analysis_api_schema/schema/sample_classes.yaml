@@ -151,8 +151,8 @@ classes:
       - size_frac_low
       - size_frac_up
       - solar_irradiance
-      - source_mat_ID
-      - storage_condt
+      - source_mat_id
+      - storage_condition
       - storage_condition_other
       - technical_reps
       - third_blh
@@ -221,8 +221,8 @@ classes:
       - size_frac_low
       - size_frac_up
       - solar_irradiance
-      - source_mat_ID
-      - storage_condt
+      - source_mat_id
+      - storage_condition
       - storage_condition_other
       - technical_reps
       - temperature_exposure
@@ -353,7 +353,7 @@ classes:
       - samp_store_temp
       - sampled_during
       - source_mat_id
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - technical_reps
       - temp
@@ -413,7 +413,7 @@ classes:
       - sampled_during
       - source_mat_id
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - subspecf_gen_lin
       - technical_reps
@@ -540,9 +540,9 @@ classes:
       - samp_biotic_relationship
       - samp_store_temp
       - sampled_during
-      - source_mat_ID
+      - source_mat_id
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - synth_env_assembly
       - synth_env_design
@@ -626,7 +626,7 @@ classes:
       - source_mat_id
       - specific_host
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - subspecf_gen_lin
       - technical_reps
@@ -680,7 +680,7 @@ classes:
       - soil_sample_type
       - soil_type
       - soil_type_meth
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - temp
       - water_content
@@ -913,10 +913,10 @@ classes:
       - soluble_inorg_mat
       - soluble_org_mat
       - soluble_react_phosp
-      - source_mat_ID
+      - source_mat_id
       - standing_water_regm
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - subspecf_gen_lin
       - sulfate
@@ -1051,10 +1051,10 @@ classes:
       - sample_processing
       - samp_store_temp
       - sampled_during
-      - source_mat_ID
+      - source_mat_id
       - standing_water_regm
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - technical_reps
       - temp
@@ -1129,9 +1129,9 @@ classes:
       - sample_name
       - sample_processing
       - sampled_during
-      - source_mat_ID
+      - source_mat_id
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - subspecf_gen_lin
       - technical_reps
@@ -1251,9 +1251,9 @@ classes:
       - sieving
       - silicate
       - sodium
-      - source_mat_ID
+      - source_mat_id
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - sulfate
       - sulfide
@@ -1361,9 +1361,9 @@ classes:
       - soil_texture
       - soil_type
       - soil_type_meth
-      - source_mat_ID
+      - source_mat_id
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - technical_reps
       - temp
@@ -1440,8 +1440,8 @@ classes:
       - sample_processing
       - samp_store_temp
       - sampled_during
-      - source_mat_ID
-      - storage_condt
+      - source_mat_id
+      - storage_condition
       - storage_condition_other
       - synth_instrument
       - synth_process
@@ -1520,8 +1520,8 @@ classes:
       - samp_biotic_relationship
       - samp_store_temp
       - sampled_during
-      - source_mat_ID
-      - storage_condt
+      - source_mat_id
+      - storage_condition
       - storage_condition_other
       - synth_env_assembly
       - synth_env_design
@@ -1651,9 +1651,9 @@ classes:
       - size_frac_up
       - sodium
       - soluble_react_phosp
-      - source_mat_ID
+      - source_mat_id
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - sulfate
       - sulfide
