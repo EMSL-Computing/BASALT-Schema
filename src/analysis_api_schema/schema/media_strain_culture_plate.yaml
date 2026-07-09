@@ -112,7 +112,7 @@ classes:
   # ============================================================================
   # CultureGrowth   abstract sampleProcessing subclass
   # ============================================================================
-    CultureGrowth:
+  CultureGrowth:
     is_a: SampleProcessing
     mixins:
       - HasIncubationConditions
@@ -473,10 +473,10 @@ classes:
         description: Measured value (absorbance, OD, fluorescence)
         range: float
         required: true
-        todos: units
       flag:
         description: QC flag   "ok", "blank", "outlier", "contaminated"
         range: string
-      todos:
-        - add optical_density_method here to flag what value means if we have multiple OD methods (e.g. OD600 vs OD750)
+    todos:
+      - add optical_density_method here to flag what value means if we have multiple OD methods (e.g. OD600 vs OD750)
+      - units for value slot
 

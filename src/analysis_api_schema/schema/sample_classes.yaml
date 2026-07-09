@@ -240,87 +240,87 @@ classes:
           smaller than the size threshold are excluded from the sample (Unit: um)'
         pattern: ^\d+(\.\d+)?\s*um$
 
-AMP2UserSample:
-  description: |-
-    A user-submitted microbial sample for AMP2 workflows.
-    
-    References a biological_entity for identity (the "what") and carries
-    physical/logistical metadata for the specific sample instance (the "this tube").
-    
-    Relationship to biological_entity:
-      - Many AMP2UserSample instances can reference one biological_entity
-      - biological_entity_ref is the FK (required)
-      - Example: 1000 samples of strain KT2440_pTE314
-    
-    Workflow integration:
-      - Enters workflow via SampleReceiving activity
-      - Processed through StrainPurity → StockCulturePreparation → PreCultureGrowth → ExperimentalCulture
-      - Outputs ProcessedSample instances at each stage
+  AMP2UserSample:
+    description: |-
+      A user-submitted microbial sample for AMP2 workflows.
+      
+      References a biological_entity for identity (the "what") and carries
+      physical/logistical metadata for the specific sample instance (the "this tube").
+      
+      Relationship to biological_entity:
+        - Many AMP2UserSample instances can reference one biological_entity
+        - biological_entity_ref is the FK (required)
+        - Example: 1000 samples of strain KT2440_pTE314
+      
+      Workflow integration:
+        - Enters workflow via SampleReceiving activity
+        - Processed through StrainPurity → StockCulturePreparation → PreCultureGrowth → ExperimentalCulture
+        - Outputs ProcessedSample instances at each stage
 
-  is_a: Sample
+    is_a: Sample
 
-  slots:
-    # Reference to biological identity
-    - biological_entity_ref
-    
-    # Collection/receipt
-    - collection_date
-    
-    # Growth/isolation context (pre-submission)
-    - growth_facil
-    - isol_growth_condt
-    - start_date_inc
-    
-    # Storage (explicit for clarity, inherited from Sample)
-    - storage_condition
-    - storage_temperature
-    
-    # Shipping/logistics
-    - shipped_sample_size
-    - guid_source
-    - other_guid_source
-    
-    # Analysis planning
-    - analysis_type
-    
-    # Regulatory
-    - cbi
-    
-  slot_usage:
-    biological_entity_ref:
-      required: true
-      description: |-
-        FK to biological_entity representing the biological identity this sample instantiates.
-        Required - every AMP2UserSample must reference a biological_entity.
-    storage_condition:
-      required: true
-      description: |-
-        Storage condition for this sample (frozen, fresh, etc.).
-        Inherited from Sample; required for AMP2UserSample.
-        Aliases: samp_store_cond, storage_cond, storage_condt
-    storage_temperature:
-      description: |-
-        Storage temperature for this sample (e.g., "-80 C").
-        Aliases: samp_store_temp
-    name:
-      description: |-
-        Sample identifier/name (e.g., "PP_0055").
-        May match strain_identifier on biological_entity for 1:1 cases,
-        but typically unique per sample instance.
-        Aliases: sample_name, samp_name
-    collection_date:
-      required: false
-      description: |-
-        The date the sample was collected or received from the user.
-    analysis_type:
-      required: false
-      description: |-
-        The type(s) of analysis planned for this sample.
-        
-  attributes:
-    id:
-      range: uuid
-      identifier: true
+    slots:
+      # Reference to biological identity
+      - biological_entity_ref
+      
+      # Collection/receipt
+      - collection_date
+      
+      # Growth/isolation context (pre-submission)
+      - growth_facil
+      - isol_growth_condt
+      - start_date_inc
+      
+      # Storage (explicit for clarity, inherited from Sample)
+      - storage_condition
+      - storage_temperature
+      
+      # Shipping/logistics
+      - shipped_sample_size
+      - guid_source
+      - other_guid_source
+      
+      # Analysis planning
+      - analysis_type
+      
+      # Regulatory
+      - cbi
+      
+    slot_usage:
+      biological_entity_ref:
+        required: true
+        description: |-
+          FK to biological_entity representing the biological identity this sample instantiates.
+          Required - every AMP2UserSample must reference a biological_entity.
+      storage_condition:
+        required: true
+        description: |-
+          Storage condition for this sample (frozen, fresh, etc.).
+          Inherited from Sample; required for AMP2UserSample.
+          Aliases: samp_store_cond, storage_cond, storage_condt
+      storage_temperature:
+        description: |-
+          Storage temperature for this sample (e.g., "-80 C").
+          Aliases: samp_store_temp
+      name:
+        description: |-
+          Sample identifier/name (e.g., "PP_0055").
+          May match strain_identifier on biological_entity for 1:1 cases,
+          but typically unique per sample instance.
+          Aliases: sample_name, samp_name
+      collection_date:
+        required: false
+        description: |-
+          The date the sample was collected or received from the user.
+      analysis_type:
+        required: false
+        description: |-
+          The type(s) of analysis planned for this sample.
+          
+    attributes:
+      id:
+        range: uuid
+        identifier: true
 
 
   CommerciallyPurchasedSample:
