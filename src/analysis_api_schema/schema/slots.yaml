@@ -2646,6 +2646,11 @@ slots:
     aliases:
       - ncbi_taxon_id
       - taxon_id
+  
+  technical_reps:
+    description: Number of technical replicates for the sample.
+    range: integer
+    title: technical replicates
 
   temp:
     description: 'Temperature of the sample at the time of sampling. (Units: C)'
