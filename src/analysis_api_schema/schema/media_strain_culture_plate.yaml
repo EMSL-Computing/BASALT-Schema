@@ -72,9 +72,6 @@ classes:
           -> processingSampleLink(role=output_sample)
           -> processedSample(type='prepared_media'); media_ref points here
           -> CultureGrowth / AMP2PlateSetupActivity.media_ref
-
-      Montana source: amp2-metadata.yaml MediaCreation class,
-                      amp2-complete-001.yaml media_creation_activity_set
     slots:
       - media_type
       - volume_ml
@@ -99,26 +96,16 @@ classes:
     is_a: SampleProcessing
     mixins:
       - HasIncubationConditions
-      - HasBiologicalEntityRef
     description: |-
       Abstract activity for growing cultures from samples or other cultures.
       
       Concrete subclasses: StrainPurity, StockCulturePreparation, 
       PreCultureGrowth, ExperimentalCulture.
-      
-      Montana source: amp2-metadata.yaml CultureGrowth class,
-      amp2-complete-001.yaml culture_growth_activity_set
     slots:
       - biological_entity_ref
       - growth_medium
       - incubation_time_hours
       - container_type
-    slot_usage:
-      biological_entity_ref:
-        description: |-
-          FK reference to the BiologicalEntity being grown.
-          Aliases: strain_ref, strain_id (for backward compatibility)
-
   # ============================================================================
   # StrainPurity   concrete CultureGrowth
   # ============================================================================
@@ -131,9 +118,6 @@ classes:
       Input:  sample(s) via processingSampleLink (role: input_sample)
       Output: typically no new processedSample   pass/fail QC gate.
       Refs:   Media (growth medium), Strain (target organism)
-
-      Montana source: amp2-metadata.yaml StrainPurity class,
-                      amp2-complete-001.yaml activity uuid:17
     slots:
       - inspection_method
       - target_strain
@@ -152,9 +136,6 @@ classes:
       Input:  sample(s) via processingSampleLink (role: input_sample)
       Output: processedSample(type='stock_culture') via processingSampleLink
       Refs:   Media (growth medium), Strain
-
-      Montana source: amp2-metadata.yaml StockCulturePreparation class,
-                      amp2-complete-001.yaml activity uuid:18
     slots:
       - preparation_date
 
@@ -170,9 +151,6 @@ classes:
       Input:  processedSample(type='stock_culture') via processingSampleLink
       Output: processedSample(type='pre_culture') via processingSampleLink
       Refs:   Media (growth medium), Strain
-
-      Montana source: amp2-metadata.yaml PreCultureGrowth class,
-                      amp2-complete-001.yaml activity uuid:19
     todos:
       - pre culture medium is missing 
 
@@ -188,9 +166,6 @@ classes:
       Input:  processedSample(type='pre_culture') via processingSampleLink
       Output: processedSample(type='experimental_culture') via processingSampleLink
       Refs:   Media (growth medium), Strain
-
-      Montana source: amp2-metadata.yaml ExperimentalCulture class,
-                      amp2-complete-001.yaml activity uuid:22
     slots:
       - treatment_type
       - growth_time
@@ -401,9 +376,6 @@ classes:
       AMP2-specific per-well metadata.
       Minimal   media composition comes from the Media entity referenced via
       the activity's media_ref slot.  Per-well data is volumes and replicate info.
-
-      Montana source: amp2-metadata.yaml WellDetails class,
-                      amp2-complete-001.yaml well layout patterns
     attributes:
       media_ref:
         description: |-

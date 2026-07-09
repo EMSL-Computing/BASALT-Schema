@@ -546,7 +546,6 @@ enums:
   FormulationEnum:
     description: |-
       Method used to formulate media.
-      Montana source: amp2-metadata.yaml FormulationEnum
     permissible_values:
       manual_mix:
         description: Manually mixed from individual components
@@ -834,7 +833,6 @@ enums:
   MediaTypeEnum:
     description: |-
       Purpose/context of the media preparation.
-      Montana source: amp2-metadata.yaml MediaTypeEnum
     permissible_values:
       strain_purity:
         description: Media used in strain purity checks
@@ -1145,7 +1143,6 @@ enums:
   ModificationMethodEnum:
     description: |-
       Methods used to introduce genetic modifications into organisms.
-      Montana source: CRISPRi_Pp_11strains.csv modification_method values
     permissible_values:
       electroporation:
         description: Introduction of DNA via electrical pulses
@@ -1693,7 +1690,6 @@ enums:
   SterilizationMethodEnum:
     description: |-
       Method used to sterilize media or other entities.
-      Montana source: amp2-metadata.yaml SterilizationMethodEnum
     permissible_values:
       autoclave:
         description: Autoclaved
@@ -1719,7 +1715,6 @@ enums:
   StrainTypeEnum:
     description: |-
       Types of microbial strains/organisms.
-      Montana source: amp2-complete-001.yaml strain_type
     permissible_values:
       bacterial:
         description: Bacterial strain
@@ -1803,7 +1798,6 @@ enums:
   TrophicLevelEnum:
     description: |-
       Enumeration of trophic levels for organisms.
-      Montana source: amp2-metadata.yaml TrophicLevelEnum
     permissible_values:
       autotroph:
         description: Organism that produces complex organic compounds from simple substances
