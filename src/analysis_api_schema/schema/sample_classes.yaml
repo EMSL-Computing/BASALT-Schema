@@ -199,7 +199,8 @@ classes:
       - external_identifiers
       - humidity_regm
       - isotope_exposure
-      - lat_lon
+      - latitude
+      - longitude
       - methane
       - method_development
       - misc_param
@@ -390,7 +391,8 @@ classes:
       - humidity_regm
       - isol_growth_condt
       - isotope_exposure
-      - lat_lon
+      - latitude
+      - longitude      
       - light_regm
       - method_development
       - non_microb_biomass
@@ -508,7 +510,8 @@ classes:
       - initiation_date_plant
       - isol_growth_condt
       - isotope_exposure
-      - lat_lon
+      - latitude
+      - longitude      
       - light_regm
       - method_development
       - mineral_nutr_regm
@@ -563,7 +566,9 @@ classes:
         required: true
       initiation_date_plant:
         required: true
-      lat_lon:
+      latitude:
+        required: true
+      longitude:
         required: true
       synth_env_assembly:
         required: true
@@ -665,8 +670,8 @@ classes:
       - chem_administration
       - depth
       - external_identifiers
-      - lat_lon
-      - lims_id
+      - latitude
+      - longitude      - lims_id
       - misc_param
       - other
       - other_samp_store_temp
@@ -700,7 +705,9 @@ classes:
           cm or m)'
         pattern: ^\d+(\.\d+)?-\d+(\.\d+)?\s*(m|cm)$
         required: true
-      lat_lon:
+      latitude:
+        required: true
+      longitude:
         required: true
       sampling_set:
         required: true
@@ -820,7 +827,8 @@ classes:
       - isol_growth_condt
       - isotope_exposure
       - item_number
-      - lat_lon
+      - latitude
+      - longitude      
       - light_intensity
       - light_regm
       - link_addit_analys
@@ -961,7 +969,9 @@ classes:
       carb_monoxide:
         description: Amount of carbon monoxide measured in the air the day of sampling.
           Provided by ARM
-      lat_lon:
+      latitude:
+        required: true
+      longitude:
         required: true
       oxygen:
         description: Amount of oxygen measured in the air the day of sampling. Provided
@@ -1007,7 +1017,8 @@ classes:
       - host_life_stage
       - humidity_regm
       - isotope_exposure
-      - lat_lon
+      - latitude
+      - longitude   
       - light_regm
       - mechanical_damage
       - method_development
@@ -1070,7 +1081,9 @@ classes:
         pattern: ^\d+(\.\d+)?\s*(cm|mm|m)$
       host_life_stage:
         description: Description of life stage of the plant
-      lat_lon:
+      latitude:
+        required: true
+      longitude:
         required: true
       non_microb_biomass:
         description: "Amount of biomass; should include the name for the part of biomass\
@@ -1195,7 +1208,8 @@ classes:
       - glucosidase_act
       - humidity_regm
       - isotope_exposure
-      - lat_lon
+      - latitude
+      - longitude    
       - light_regm
       - magnesium
       - mean_frict_vel
@@ -1276,7 +1290,9 @@ classes:
       depth:
         required: true
         pattern: ^\d+(\.\d+)?-\d+(\.\d+)?\s*m$
-      lat_lon:
+      latitude:
+        required: true
+      longitude:
         required: true
       microbial_biomass:
         description: 'The part of the organic matter in the soil that constitutes living
@@ -1322,7 +1338,8 @@ classes:
       - horizon_meth
       - humidity_regm
       - isotope_exposure
-      - lat_lon
+      - latitude
+      - longitude      
       - light_regm
       - link_addit_analys
       - method_development
@@ -1388,7 +1405,9 @@ classes:
         description: 'Heavy metals present in the sample and the concentration of the
           metal. For multiple heavy metals and concentrations, separate them by `|`.
           (Example: mercury,0.09 micrograms per gram|lead,0.05 micrograms per gram'
-      lat_lon:
+      latitude:
+        required: true
+      longitude:
         required: true
       microbial_biomass:
         description: 'The part of the organic matter in the soil that constitutes living
@@ -1603,7 +1622,8 @@ classes:
       - gaseous_environment
       - glucosidase_act
       - isotope_exposure
-      - lat_lon
+      - latitude
+      - longitude      
       - light_intensity
       - magnesium
       - mean_frict_vel
@@ -1679,7 +1699,9 @@ classes:
         required: true
       filter_method:
         required: true
-      lat_lon:
+      latitude:
+        required: true
+      longitude:
         required: true
       non_microb_biomass:
         description: 'Amount of non-microbial biomass measured. Include the name for
