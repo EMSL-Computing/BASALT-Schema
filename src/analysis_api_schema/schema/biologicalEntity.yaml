@@ -126,11 +126,3 @@ classes:
       trophic_level:
         required: false
 
-
-  HasBiologicalEntityRef:
-    mixin: true
-    description: |-
-      Mixin for classes that reference a BiologicalEntity.
-      Provides the biological_entity_ref FK slot with strain_ref as alias.
-    slots:
-      - biological_entity_ref

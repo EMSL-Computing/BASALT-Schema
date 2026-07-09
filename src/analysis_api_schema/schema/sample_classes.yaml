@@ -258,8 +258,7 @@ AMP2UserSample:
       - Outputs ProcessedSample instances at each stage
 
   is_a: Sample
-  mixins:
-    - HasBiologicalEntityRef
+
   slots:
     # Reference to biological identity
     - biological_entity_ref
@@ -448,8 +447,7 @@ AMP2UserSample:
         - CRISPRi_Pp_11strains.csv for real-world examples
         
     is_a: Sample
-    mixins:
-      - HasBiologicalEntityRef
+
     slots:
       # Reference to biological identity (required)
       - biological_entity_ref
@@ -464,16 +462,7 @@ AMP2UserSample:
       id:
         identifier: true
         range: uuid
-        
-    slot_usage:
-      biological_entity_ref:
-        required: true
-        description: |-
-          FK to BiologicalEntity representing the biological identity this sample instantiates.
-          Required - every EngineeredStrainSample must reference a BiologicalEntity.
-          The BiologicalEntity carries strain identity data: organism_name, strain_source,
-          modification_method, strain_description, phenotype, trait, genotype_segment_*,
-          component_*, donor_organism, etc.
+
       cbi:
         required: true
         description: |-
