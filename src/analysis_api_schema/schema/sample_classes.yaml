@@ -306,7 +306,9 @@ classes:
           Sample identifier/name (e.g., "PP_0055").
           May match strain_identifier on BiologicalEntity for 1:1 cases,
           but typically unique per sample instance.
-          Aliases: sample_name, samp_name
+        aliases:
+          - sample_name
+          - samp_name
       collection_date:
         required: false
         description: |-
