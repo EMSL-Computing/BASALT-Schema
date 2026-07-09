@@ -5,9 +5,6 @@ title: MONet Analysis API - Biological Entity
 description: |-
   Reference data classes for biological identities (strains, isolates, engineered 
   constructs) that can be instantiated by multiple physical samples.
-  
-  Montana source: amp2-metadata.yaml Strain class, amp2-complete-001.yaml strain_set,
-  CRISPRi_Pp_11strains.csv for genotype/construct details.
 license: MIT
 see_also:
   - https://MONet.github.io/analysis-api-schema

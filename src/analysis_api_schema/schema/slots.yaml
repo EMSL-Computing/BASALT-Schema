@@ -2490,6 +2490,7 @@ slots:
     
       Montana source: amp2-complete-001.yaml strain_mutation, amp2-metadata.yaml
     range: string
+    
   strain_name:
     description: Provide a unique name to identify transformed strain lines.
     range: string
