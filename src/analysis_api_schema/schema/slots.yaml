@@ -1122,9 +1122,9 @@ slots:
   
   isol_growth_condt:
     description: |-
-    Publication reference in the form of pubmed ID (PMID), digital object
-    identifier (DOI), or URL for isolation and growth condition specifications of the
-    organism/material
+      Publication reference in the form of pubmed ID (PMID), digital object
+      identifier (DOI), or URL for isolation and growth condition specifications of the
+      organism/material
     range: string
     title: isolation and growth conditions
 
