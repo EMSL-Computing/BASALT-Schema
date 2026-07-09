@@ -192,12 +192,15 @@ slots:
   biological_entity_ref:
     description: |-
       FK reference to a BiologicalEntity representing the biological identity
-      (strain, isolate, engineered construct) that this sample or activity 
+      strain, isolate, engineered construct) that this sample or activity
       is associated with.
-    
-      Montana source: amp2-complete-001.yaml uses strain_id on activities
     range: BiologicalEntity
     required: false
+    aliases:
+      - strain_ref
+      - strain_id
+
+
   biotic_regm:
     description: Information about treatment(s) involving use of biotic factors such
       as bacteria, viruses, or fungi.
@@ -934,9 +937,10 @@ slots:
     description: |-
       Common name for the host organism (e.g., "Pseudomonas putida").
       For microbes, this may be identical to organism_name.
-    
-      Montana source: amp2-metadata.yaml Sample:slots, CRISPRi data
     range: string
+    aliases:
+      - common_name
+
   host_disease_stat:
     description: List of diseases with which the host has been diagnosed; can include
       multiple diagnoses. The value of the field depends on host; for humans the terms
@@ -1005,9 +1009,14 @@ slots:
   host_taxid:
     description: |-
       NCBI taxon ID of the host organism.
-    
+      
       Montana source: amp2-metadata.yaml Sample:slots, CRISPRi_Pp_11strains.csv
     range: string
+    aliases:
+      - host_taxonomy_id
+      - host_ncbi_taxon_id
+      - host_taxa_id
+
   host_tot_mass:
     description: 'Total mass of the host at collection. (Unit: kg or g)'
     pattern: ^\d+(\.\d+)?\s*(kg|g)$
@@ -1407,9 +1416,11 @@ slots:
     description: |-
       Method used to introduce genetic modification.
       Examples: "Electroporation", "Conjugation", "CRISPR", "Transduction"
-    
-      Montana source: CRISPRi_Pp_11strains.csv modification_method column
     range: ModificationMethodEnum
+    aliases:
+      - genetic_modification_method
+      - transformation_method
+
   ms_raw_file_type:
     description: the filetype of the mass spectrometry instrument data
     range: MSRawFileTypeEnum
@@ -1528,9 +1539,11 @@ slots:
   organism_name:
     description: |-
       Scientific name of the organism (e.g., "Pseudomonas putida").
-    
-      Montana source: CRISPRi_Pp_11strains.csv organism_name column
     range: string
+    aliases:
+      - scientific_name
+      - species_name
+
   other:
     description: Other/additional details about your sample that you feel can't be accurately
       represented in ANY of the available columns.
@@ -2146,10 +2159,13 @@ slots:
     - EMSL and NMDC both need better modelling for this
 
   sample_name:
-    description: The name or label that is present on the shipped sample. This should
-      be a human readable name.
+    description: |-
+      Sample name/identifier. 
+      NOTE: This is typically an alias for the inherited 'name' slot on Sample classes.
+      Defined separately for compatibility with source data files using 'sample_name' column headers.
     range: string
-    title: sample name
+    aliases:
+      - samp_name
 
   sample_processing:
     description: A brief description of any processing applied to the sample during
@@ -2469,6 +2485,7 @@ slots:
     
       Montana source: amp2-metadata.yaml Media:slots, CRISPRi_Pp_11strains.csv samp_store_temp
     range: string
+
   strain_description:
     description: |-
       Free text description of the strain, including modification details.
@@ -2476,21 +2493,25 @@ slots:
     
       Montana source: CRISPRi_Pp_11strains.csv strain_description column
     range: string
+    aliases:
+      - strain_desc
+      - strain_notes
+
   strain_identifier:
     description: |-
       Primary human-readable strain/entity identifier (e.g., "KT2440_pTE314", "PP_0055").
       NOT the database UUID - that is the BiologicalEntity.id attribute.
-    
-      Montana source: amp2-complete-001.yaml strain_id field
     range: string
+    aliases:
+      - strain_id
+      - strain_name
+
   strain_mutation:
     description: |-
       Primary genetic modification or plasmid carried (e.g., "pTE314").
       For complex constructs, use genotype_segment_* and component_* slots.
-    
-      Montana source: amp2-complete-001.yaml strain_mutation, amp2-metadata.yaml
     range: string
-    
+
   strain_name:
     description: Provide a unique name to identify transformed strain lines.
     range: string
@@ -2505,15 +2526,20 @@ slots:
     description: |-
       Source institution, collection, or derivation note for the biological entity.
       Examples: "PNNL", "ATCC", "engineered from KT2440"
-    
-      Montana source: amp2-complete-001.yaml strain_source, CRISPRi_Pp_11strains.csv
     range: string
+    aliases:
+      - source_institution
+      - strain_origin
+
   strain_type:
     description: |-
       Type of strain/organism (bacterial, fungal, archaeal, etc.)
     
       Montana source: amp2-complete-001.yaml strain_type, amp2-metadata.yaml
     range: StrainTypeEnum
+    aliases:
+      - organism_type
+
   subspecf_gen_lin:
     description: Information about the genetic distinctness of the sequenced organism
       below the subspecies level, e.g. serovar, serotype, biotype, ecotype, or any relevant
@@ -2615,9 +2641,11 @@ slots:
   taxonomy_id:
     description: |-
       NCBI taxon ID for the organism.
-    
-      Montana source: amp2-metadata.yaml Sample:slots
     range: string
+    aliases:
+      - ncbi_taxon_id
+      - taxon_id
+
   temp:
     description: 'Temperature of the sample at the time of sampling. (Units: C)'
     pattern: ^-?\d+(\.\d+)?\s*C$
