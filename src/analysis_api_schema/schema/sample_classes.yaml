@@ -125,7 +125,8 @@ classes:
       - first_cbh
       - humidity_regm
       - isotope_exposure
-      - lat_lon
+      - latitude
+      - longitude
       - mean_total_cpc_concentration
       - mean_total_pops_concentration
       - methane
