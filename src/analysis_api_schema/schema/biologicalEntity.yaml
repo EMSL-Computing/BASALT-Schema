@@ -91,7 +91,6 @@ classes:
         description: |-
           Primary human-readable identifier for this biological entity.
           Examples: "KT2440_pTE314", "PP_0055", "AG5577-pJE2165"
-          Aliases: strain_id, strain_name
       name:
         description: |-
           Human-readable name for the biological entity.
@@ -99,7 +98,6 @@ classes:
       organism_name:
         description: |-
           Scientific name of the organism (e.g., "Pseudomonas putida").
-          Aliases: scientific_name, species_name
       strain_source:
         description: |-
           Provenance of the biological entity. Can be an institution
@@ -110,7 +108,6 @@ classes:
           Primary genetic modification or plasmid carried (e.g., "pTE314").
           For more detailed construct information, use the genotype_segment_*
           and component_* slots.
-          Aliases: genetic_mod, plasmid
       modification_method:
         description: |-
           Method used to introduce genetic modification.
