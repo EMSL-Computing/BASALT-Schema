@@ -442,9 +442,6 @@ AMP2UserSample:
       This class references a BiologicalEntity for strain identity information (organism_name,
       strain_source, modification_method, genotype_segment_*, component_*, phenotype, trait, etc.)
       and carries only sample-instance-specific slots.
-      
-      Montana source:
-        - CRISPRi_Pp_11strains.csv for real-world examples
         
     is_a: Sample
 
