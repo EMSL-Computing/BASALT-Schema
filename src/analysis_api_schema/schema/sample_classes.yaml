@@ -44,7 +44,6 @@ classes:
       - cur_vegetation
       - cur_vegetation_meth
       - drainage_class
-      - ecoregion
       - elev
       - env_broad_scale
       - env_local_scale
@@ -61,8 +60,8 @@ classes:
       - local_class
       - local_class_meth
       - longitude
-      - neon_domain
-      - neon_plot_id # do we need to break this out into neon_site_code and neon_plot_id? users input both in the same column called neon plot id
+      - neon_site_code
+      - neon_plot_id 
       - other_growth_facil
       - previous_land_use
       - previous_land_use_meth

@@ -1453,6 +1453,12 @@ slots:
     range: string
     title: neon plot identifier
 
+  neon_site_code:
+    description: 'When sampling from a NEON site provide the 4 letter site code (Example: DEJU). If you do not have your NEON site use the code SITE_999.'
+    pattern: ^[A-Z]{4}$
+    range: string
+    title: neon site code
+
   nitrate:
     description: 'Concentration of nitrate in the sample (Unit: umol/L or mg/L or ppm)'
     pattern: ^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$
