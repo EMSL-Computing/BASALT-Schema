@@ -101,15 +101,6 @@ classes:
     slot_usage:
     todos:
       - where should proposal ID live? probably not here?
-  
-  AMP2Sample:
-    is_a: Sample
-    description: A sample associated with the AMP2 program.
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-    slots:
 
   AerosolArmSample:
     attributes:
@@ -265,11 +256,6 @@ classes:
         - Enters workflow via SampleReceiving activity
         - Processed through StrainPurity → StockCulturePreparation → PreCultureGrowth → ExperimentalCulture
         - Outputs ProcessedSample instances at each stage
-      
-      Montana source:
-        - amp2-metadata.yaml Sample class
-        - amp2-complete-001.yaml sample_set
-        - CRISPRi_Pp_11strains.csv for real-world examples
         
     is_a: Sample
     mixins:
