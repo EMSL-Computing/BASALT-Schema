@@ -407,7 +407,7 @@ classes:
       - propagation
       - ref_biomaterial
       - replicate_number
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_store_temp
       - sample_link
       - sample_name
@@ -540,7 +540,7 @@ classes:
       - sample_link
       - sample_name
       - sample_processing
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_store_temp
       - sampled_during
       - source_mat_id
@@ -622,7 +622,7 @@ classes:
       - propagation
       - ref_biomaterial
       - replicate_number
-      - samp_biotic_relationship
+      - biotic_relationship
       - sample_link
       - sample_name
       - sample_processing
@@ -899,7 +899,7 @@ classes:
       - salinity
       - salinity_method
       - salt_regm
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_capt_status
       - samp_dis_stage
       - samp_store_temp
@@ -1136,7 +1136,7 @@ classes:
       - propagation
       - ref_biomaterial
       - replicate_number
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_store_temp
       - sample_link
       - sample_name
@@ -1258,7 +1258,7 @@ classes:
       - sample_link
       - sample_name
       - sample_processing
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_store_temp
       - sampled_during
       - sediment_type
@@ -1305,7 +1305,7 @@ classes:
           the part of biomass measured, e.g.insect, plant, total. Provide value and unit,
           any unit is valid. (example: insect 5mg; plant 2ug/mL)'
         pattern: ^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$
-      samp_biotic_relationship:
+      biotic_relationship:
         description: Description of relationship(s) between the subject organism and
           other organism(s) it is associated with. The target organism is the subject
           of the relationship and the other organism(s) is the object
@@ -1364,7 +1364,7 @@ classes:
       - replicate_number
       - salinity
       - salinity_method
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_store_temp
       - sample_link
       - sample_name
@@ -1536,7 +1536,7 @@ classes:
       - sample_link
       - sample_name
       - sample_processing
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_store_temp
       - sampled_during
       - source_mat_id
