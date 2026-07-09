@@ -189,10 +189,10 @@ slots:
 
   biological_entity_ref:
     description: |-
-      FK reference to a BiologicalEntity representing the biological identity
+      FK reference to a biological_entity representing the biological identity
       strain, isolate, engineered construct) that this sample or activity
       is associated with.
-    range: BiologicalEntity
+    range: biological_entity
     required: false
     aliases:
       - strain_ref
@@ -2957,6 +2957,6 @@ slots:
 
 
 # ============================================================================
-# BiologicalEntity reference slot
+# biological_entity reference slot
 # ============================================================================
 

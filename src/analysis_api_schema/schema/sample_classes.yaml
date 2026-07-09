@@ -244,11 +244,11 @@ AMP2UserSample:
   description: |-
     A user-submitted microbial sample for AMP2 workflows.
     
-    References a BiologicalEntity for identity (the "what") and carries
+    References a biological_entity for identity (the "what") and carries
     physical/logistical metadata for the specific sample instance (the "this tube").
     
-    Relationship to BiologicalEntity:
-      - Many AMP2UserSample instances can reference one BiologicalEntity
+    Relationship to biological_entity:
+      - Many AMP2UserSample instances can reference one biological_entity
       - biological_entity_ref is the FK (required)
       - Example: 1000 samples of strain KT2440_pTE314
     
@@ -290,8 +290,8 @@ AMP2UserSample:
     biological_entity_ref:
       required: true
       description: |-
-        FK to BiologicalEntity representing the biological identity this sample instantiates.
-        Required - every AMP2UserSample must reference a BiologicalEntity.
+        FK to biological_entity representing the biological identity this sample instantiates.
+        Required - every AMP2UserSample must reference a biological_entity.
     storage_condition:
       required: true
       description: |-
@@ -305,7 +305,7 @@ AMP2UserSample:
     name:
       description: |-
         Sample identifier/name (e.g., "PP_0055").
-        May match strain_identifier on BiologicalEntity for 1:1 cases,
+        May match strain_identifier on biological_entity for 1:1 cases,
         but typically unique per sample instance.
         Aliases: sample_name, samp_name
     collection_date:
@@ -439,7 +439,7 @@ AMP2UserSample:
     description: |-
       A sample containing a strain of an organism that has been subjected to genetic engineering.
       
-      This class references a BiologicalEntity for strain identity information (organism_name,
+      This class references a biological_entity for strain identity information (organism_name,
       strain_source, modification_method, genotype_segment_*, component_*, phenotype, trait, etc.)
       and carries only sample-instance-specific slots.
         

@@ -24,7 +24,7 @@ imports:
 
 classes:
 
-  BiologicalEntity:
+  biological_entity:
     description: |-
       Reference data representing a biological identity (strain, isolate,
       engineered construct, etc.) that can be instantiated by multiple
@@ -38,7 +38,7 @@ classes:
       represents the *intended* or *characterized* biological identity.
       
       Relationship to samples:
-        - One BiologicalEntity can have many AMP2UserSample instances
+        - One biological_entity can have many AMP2UserSample instances
         - AMP2UserSample.biological_entity_ref points here
         - CultureGrowth activities reference via biological_entity_ref (aliased as strain_ref)
     slots:
