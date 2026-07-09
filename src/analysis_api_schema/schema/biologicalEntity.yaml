@@ -3,8 +3,11 @@ id: https://w3id.org/MONet/analysis-api-schema/biological-entity
 name: analysis-api-schema-biological-entity
 title: MONet Analysis API - Biological Entity
 description: |-
-  Reference data classes for biological identities (strains, isolates, engineered 
+  Reference data classes for biological identities (strains, isolates, engineered
   constructs) that can be instantiated by multiple physical samples.
+  
+  Montana source: amp2-metadata.yaml Strain class, amp2-complete-001.yaml strain_set,
+  CRISPRi_Pp_11strains.csv for genotype/construct details.
 license: MIT
 see_also:
   - https://MONet.github.io/analysis-api-schema
@@ -26,18 +29,18 @@ classes:
 
   BiologicalEntity:
     description: |-
-      Reference data representing a biological identity (strain, isolate, 
-      engineered construct, etc.) that can be instantiated by multiple 
+      Reference data representing a biological identity (strain, isolate,
+      engineered construct, etc.) that can be instantiated by multiple
       physical samples.
       
-      REPLACES: This class replaces the former Strain class, which was modeled 
-      as a PurchasedMaterial subclass. That approach did not accommodate strains 
-      engineered in-house or received from collaborators, nor did it cleanly 
-      separate biological identity from physical samples. Additionally, the term 
-      "strain" implies purity that cannot always be guaranteed; this class 
+      REPLACES: This class replaces the former Strain class, which was modeled
+      as a PurchasedMaterial subclass. That approach did not accommodate strains
+      engineered in-house or received from collaborators, nor did it cleanly
+      separate biological identity from physical samples. Additionally, the term
+      "strain" implies purity that cannot always be guaranteed; this class
       represents the *intended* or *characterized* biological identity.
       
-      Montana source: 
+      Montana source:
         - amp2-metadata.yaml Strain class
         - amp2-complete-001.yaml strain_set (e.g., KT2440_pTE314)
         - CRISPRi_Pp_11strains.csv for genotype/phenotype/construct details
@@ -96,20 +99,30 @@ classes:
         description: |-
           Primary human-readable identifier for this biological entity.
           Examples: "KT2440_pTE314", "PP_0055", "AG5577-pJE2165"
+          Aliases: strain_id, strain_name
       name:
         description: |-
           Human-readable name for the biological entity.
           May be same as strain_identifier or more descriptive.
+      organism_name:
+        description: |-
+          Scientific name of the organism (e.g., "Pseudomonas putida").
+          Aliases: scientific_name, species_name
       strain_source:
         description: |-
-          Provenance of the biological entity. Can be an institution 
-          (e.g., "ATCC", "PNNL"), commercial source, or derivation note 
+          Provenance of the biological entity. Can be an institution
+          (e.g., "ATCC", "PNNL"), commercial source, or derivation note
           (e.g., "engineered from KT2440").
       strain_mutation:
         description: |-
           Primary genetic modification or plasmid carried (e.g., "pTE314").
-          For more detailed construct information, use the genotype_segment_* 
+          For more detailed construct information, use the genotype_segment_*
           and component_* slots.
+          Aliases: genetic_mod, plasmid
+      modification_method:
+        description: |-
+          Method used to introduce genetic modification.
+          Examples: "Electroporation", "Conjugation", "CRISPR", "Transduction"
       trophic_level:
         required: false
 

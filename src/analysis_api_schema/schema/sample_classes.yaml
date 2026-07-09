@@ -240,88 +240,88 @@ classes:
           smaller than the size threshold are excluded from the sample (Unit: um)'
         pattern: ^\d+(\.\d+)?\s*um$
 
-  AMP2UserSample:
-    description: |-
-      A user-submitted microbial sample for AMP2 workflows.
-      
-      References a BiologicalEntity for identity (the "what") and carries
-      physical/logistical metadata for the specific sample instance (the "this tube").
-      
-      Relationship to BiologicalEntity:
-        - Many AMP2UserSample instances can reference one BiologicalEntity
-        - biological_entity_ref is the FK (required)
-        - Example: 1000 samples of strain KT2440_pTE314
-      
-      Workflow integration:
-        - Enters workflow via SampleReceiving activity
-        - Processed through StrainPurity → StockCulturePreparation → PreCultureGrowth → ExperimentalCulture
-        - Outputs ProcessedSample instances at each stage
+AMP2UserSample:
+  description: |-
+    A user-submitted microbial sample for AMP2 workflows.
+    
+    References a BiologicalEntity for identity (the "what") and carries
+    physical/logistical metadata for the specific sample instance (the "this tube").
+    
+    Relationship to BiologicalEntity:
+      - Many AMP2UserSample instances can reference one BiologicalEntity
+      - biological_entity_ref is the FK (required)
+      - Example: 1000 samples of strain KT2440_pTE314
+    
+    Workflow integration:
+      - Enters workflow via SampleReceiving activity
+      - Processed through StrainPurity → StockCulturePreparation → PreCultureGrowth → ExperimentalCulture
+      - Outputs ProcessedSample instances at each stage
+
+  is_a: Sample
+  mixins:
+    - HasBiologicalEntityRef
+  slots:
+    # Reference to biological identity
+    - biological_entity_ref
+    
+    # Collection/receipt
+    - collection_date
+    
+    # Growth/isolation context (pre-submission)
+    - growth_facil
+    - isol_growth_condt
+    - start_date_inc
+    
+    # Storage (explicit for clarity, inherited from Sample)
+    - storage_condition
+    - storage_temperature
+    
+    # Shipping/logistics
+    - shipped_sample_size
+    - guid_source
+    - other_guid_source
+    
+    # Analysis planning
+    - analysis_type
+    
+    # Regulatory
+    - cbi
+    
+  slot_usage:
+    biological_entity_ref:
+      required: true
+      description: |-
+        FK to BiologicalEntity representing the biological identity this sample instantiates.
+        Required - every AMP2UserSample must reference a BiologicalEntity.
+    storage_condition:
+      required: true
+      description: |-
+        Storage condition for this sample (frozen, fresh, etc.).
+        Inherited from Sample; required for AMP2UserSample.
+        Aliases: samp_store_cond, storage_cond, storage_condt
+    storage_temperature:
+      description: |-
+        Storage temperature for this sample (e.g., "-80 C").
+        Aliases: samp_store_temp
+    name:
+      description: |-
+        Sample identifier/name (e.g., "PP_0055").
+        May match strain_identifier on BiologicalEntity for 1:1 cases,
+        but typically unique per sample instance.
+        Aliases: sample_name, samp_name
+    collection_date:
+      required: false
+      description: |-
+        The date the sample was collected or received from the user.
+    analysis_type:
+      required: false
+      description: |-
+        The type(s) of analysis planned for this sample.
         
-    is_a: Sample
-    mixins:
-      - HasBiologicalEntityRef
-    slots:
-      # Reference to biological identity
-      - biological_entity_ref
-      
-      # Collection/receipt
-      - collection_date
-      
-      # Growth/isolation context (pre-submission)
-      - growth_facil
-      - isol_growth_condt
-      - start_date_inc
-      
-      # Storage
-      - storage_temperature
-      
-      # Shipping/logistics
-      - shipped_sample_size
-      - guid_source
-      - other_guid_source
-      
-      # Analysis planning
-      - analysis_type
-      
-      # Regulatory
-      - cbi
-      
-    slot_usage:
-      biological_entity_ref:
-        required: true
-        description: |-
-          FK to BiologicalEntity representing the biological identity this sample instantiates.
-          Required - every AMP2UserSample must reference a BiologicalEntity.
-      storage_condition:
-        required: true
-        description: |-
-          Storage condition for this sample (frozen, fresh, etc.).
-          Inherited from Sample; required for AMP2UserSample.
-      storage_temperature:
-        description: |-
-          Storage temperature for this sample (e.g., "-80 C").
-          Aliases: samp_store_temp
-      name:
-        description: |-
-          Sample identifier/name (e.g., "PP_0055").
-          May match strain_identifier on BiologicalEntity for 1:1 cases,
-          but typically unique per sample instance.
-        aliases:
-          - sample_name
-          - samp_name
-      collection_date:
-        required: false
-        description: |-
-          The date the sample was collected or received from the user.
-      analysis_type:
-        required: false
-        description: |-
-          The type(s) of analysis planned for this sample.
-          
-    attributes:
-      id:
-        range: Sample
-        identifier: true
+  attributes:
+    id:
+      range: Sample
+      identifier: true
 
 
   CommerciallyPurchasedSample:
@@ -437,67 +437,56 @@ classes:
         required: true
 
   EngineeredStrainSample:
+    description: |-
+      A sample containing a strain of an organism that has been subjected to genetic engineering.
+      
+      This class references a BiologicalEntity for strain identity information (organism_name,
+      strain_source, modification_method, genotype_segment_*, component_*, phenotype, trait, etc.)
+      and carries only sample-instance-specific slots.
+      
+      Montana source:
+        - CRISPRi_Pp_11strains.csv for real-world examples
+        
+    is_a: Sample
+    mixins:
+      - HasBiologicalEntityRef
+    slots:
+      # Reference to biological identity (required)
+      - biological_entity_ref
+      
+      # Sample-instance-specific slots
+      - cbi
+      - storage_condition
+      - storage_temperature
+      - external_identifiers
+      
     attributes:
       id:
         identifier: true
         range: uuid
-    description: A sample containing a strain of an organism that has been subjected to genetic engineering.
-    is_a: Sample
-    slots:
-      - cbi
-      - component_description
-      - component_name
-      - construct_component
-      - donor_organism
-      - external_identifiers
-      - genotype_segment_category
-      - genotype_segment_name
-      - modification_method
-      - organism_name
-      - other
-      - other_samp_store_temp
-      - other_storage_condt
-      - phenotype
-      - project
-      - sample_name
-      - sampled_during
-      - samp_store_temp
-      - storage_condt
-      - storage_condition_other
-      - strain_description
-      - strain_name
-      - strain_source
-      - trait
-      - watering_regm
+        
     slot_usage:
+      biological_entity_ref:
+        required: true
+        description: |-
+          FK to BiologicalEntity representing the biological identity this sample instantiates.
+          Required - every EngineeredStrainSample must reference a BiologicalEntity.
+          The BiologicalEntity carries strain identity data: organism_name, strain_source,
+          modification_method, strain_description, phenotype, trait, genotype_segment_*,
+          component_*, donor_organism, etc.
       cbi:
         required: true
-      component_description:
+        description: |-
+          Controlled Biological Information flag (yes/no).
+      storage_condition:
         required: true
-      component_name:
-        required: true
-      construct_component:
-        required: true
-      donor_organism:
-        required: true
-      genotype_segment_category:
-        required: true
-      genotype_segment_name:
-        required: true
-      modification_method:
-        required: true
-      organism_name:
-        required: true
-      phenotype:
-        required: true
-      strain_description:
-        required: true
-      strain_name:
-        required: true
-      strain_source:
-        required: true
-      trait:
-        required: true
+        description: |-
+          Storage condition for this sample (frozen, fresh, etc.).
+          Aliases: samp_store_cond, storage_cond, storage_condt
+      storage_temperature:
+        description: |-
+          Storage temperature for this sample (e.g., "-80 C").
+          Aliases: samp_store_temp
 
   FieldDeployedTerraformSample:
     attributes:
