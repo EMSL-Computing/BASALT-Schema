@@ -319,7 +319,7 @@ AMP2UserSample:
         
   attributes:
     id:
-      range: Sample
+      range: uuid
       identifier: true
 
 
