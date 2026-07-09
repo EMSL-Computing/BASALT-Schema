@@ -291,9 +291,11 @@ slots:
 
   cbi:
     description: |-
-      Controlled Biological Information flag (yes/no).
+      Confidential Business Information flag (yes/no).
       Indicates if the sample is subject to CBI restrictions.
     range: boolean
+    todos: is this confidential business or controlled biological?
+
   chem_administration:
     title: chemical administration
     description: List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
@@ -333,8 +335,12 @@ slots:
 
   collection_date:
     description: |-
-      The date the sample was collected or received.
+      'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
+      (YYYY-MM)'
+    pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
+    title: collection date
     range: date
+
   collection_mode:
     description: The collection mode for the mass spectrometry data (e.g., profile, centroid)
     range: MassSpectrumCollectionModeEnum
@@ -372,14 +378,17 @@ slots:
   
   component_description:
     description: |-
-      Description of the genetic component's function.
+      Provide a short statement describing the function of the construct
+      component. You may provide an optional literature reference for lesser-known components.
       Example: "d-Cfp1 to block gene expression", "recognition sequence for guide RNA processing"
     range: string
+
   component_name:
     description: |-
-      Name of the genetic component.
-      Examples: "dCas12a", "4_sgRNAs"
+      Provide a one-to-three word name based on the component. If using an
+      acronym provide the full component name in the component description.
     range: string
+
   compound_name:
     description: The name of the purchased material. A substance formed by chemical
       union of two or more elements or ingredients in definite proportion by weight.
@@ -395,6 +404,7 @@ slots:
       The condition of the sample when received.
       Examples: "good", "damaged", "thawed"
     range: string
+
   conduc:
     description: Electrical conductivity of water. Provide value and unit, any unit is valid.
     pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
@@ -405,11 +415,12 @@ slots:
     description: |-
       Whether receipt of the sample was confirmed.
     range: boolean
+
   construct_component:
-    description: |-
-      Type of construct component.
-      Examples: "Gene", "Recognition Sequence"
-    range: string
+    description: Select the construct component type.
+    range: ConstructComponentEnum
+    title: construct component
+
   container_type:
     description: Physical container used for the culture (flask, tube, plate, etc.)
     range: string
@@ -564,9 +575,11 @@ slots:
 
   donor_organism:
     description: |-
-      Source organism for genetic components.
-      Example: "Streptomyces tenebrarius (aprR), synthetic (Jungle express promoter)"
+     Provide the scientific name (genus and species) of the organism from which the construct component was first described or obtained. 
+     You may enter 'synthetic' if relevant.
     range: string
+    title: donor organism
+
   down_par:
     description: Visible waveband radiance and irradiance measurements in the water column. Provide value and unit, any unit is valid.
     pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
@@ -617,9 +630,12 @@ slots:
 
   encoded_traits:
     description: |-
-      Key traits encoded by genetic elements, such as antibiotic resistance 
-      or xenobiotic degradation phenotypes for plasmids.
+      Should include key traits like antibiotic resistance or xenobiotic
+      degradation phenotypes for plasmids, converting genes for phage
     range: string
+    title: encoded traits
+
+
   env_broad_scale:
     description: >-
       'Report the major environmental system the sample or specimen came
@@ -807,12 +823,17 @@ slots:
     description: |-
       Category of genetic modification or segment.
       Examples: "Gene(s) of Interest", "Gene Silencer"
-    range: string
+    range: GenotypeSegmentEnum
+    title: genotype segment category
+
   genotype_segment_name:
     description: |-
-      Name of the genetic segment or modification.
-      Example: "aprR_pJE-dCas12a", "PP_0055 guide array"
+      Provide a name that describes the genotype modification engineered
+      relative to the reference unmodified genome. The name should describe the spatially
+      grouped components or specific function of the modification.
     range: string
+    title: genotype segment name
+
   geo_loc_name:
     description: 'The geographical origin of the sample as defined by the country or
       sea name followed by specific region name and site. Formatted as [Country or sea
@@ -838,8 +859,12 @@ slots:
 
   growth_facil:
     description: |-
-      Growth facility or location where the sample was grown prior to submission.
+       Type of facility or location from where the sample was collected or
+       grown. This field is NOT multivalued. If selecting other, add the `other_growth_facil`
+       attribute to provide additional detail.
     range: GrowthFacilityEnum
+    title: growth facility
+
   growth_habit:
     description: Characteristic shape appearance or growth form of a plant species
     range: GrowthHabitEnum
@@ -908,6 +933,7 @@ slots:
       Common name for the host organism (e.g., "Pseudomonas putida").
       For microbes, this may be identical to organism_name.
     range: string
+    title: host common name
     aliases:
       - common_name
 
@@ -965,9 +991,12 @@ slots:
     title: host phenotype
 
   host_spec_range:
-    description: |-
-      Host specificity range for the organism (relevant for phages, symbionts).
+    description: The range and diversity of host species that an organism is capable
+      of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####
+    pattern: NCBITaxon:\d+
     range: string
+    title: host specificity or range
+
   host_symbiont:
     description: The taxonomic name of the organism(s) found living in mutualistic, commensalistic,
       or parasitic symbiosis with the specific host.
@@ -975,9 +1004,10 @@ slots:
     title: observed host symbionts
 
   host_taxid:
-    description: |-
-      NCBI taxon ID of the host organism.
+    description: NCBI taxon ID. Format with prefix NCBITaxon:####
+    pattern: NCBITaxon:\d+
     range: string
+    title: host taxonomy identifier
     aliases:
       - host_taxonomy_id
       - host_ncbi_taxon_id
@@ -1092,9 +1122,12 @@ slots:
   
   isol_growth_condt:
     description: |-
-      Publication or DOI reference describing isolation/growth conditions.
-      Example: "DOI: 10.1126/sciadv.ade1285"
+    Publication reference in the form of pubmed ID (PMID), digital object
+    identifier (DOI), or URL for isolation and growth condition specifications of the
+    organism/material
     range: string
+    title: isolation and growth conditions
+
   isolation_window:
     range: string
     required: true
@@ -1378,9 +1411,10 @@ slots:
 
   modification_method:
     description: |-
-      Method used to introduce genetic modification.
-      Examples: "Electroporation", "Conjugation", "CRISPR", "Transduction"
+      Select the method used to insert your construct into the genome of
+      your modified organism. Examples: "Electroporation", "Conjugation", "CRISPR", "Transduction"
     range: ModificationMethodEnum
+    title: modification method
     aliases:
       - genetic_modification_method
       - transformation_method
@@ -1502,11 +1536,12 @@ slots:
 
   organism_name:
     description: |-
-      Scientific name of the organism (e.g., "Pseudomonas putida").
+      Provide the scientific name (genus and species) of the host organism.
     range: string
     aliases:
       - scientific_name
       - species_name
+    title: organism name
 
   other:
     description: Other/additional details about your sample that you feel can't be accurately
@@ -1594,8 +1629,10 @@ slots:
 
   pathogenicity:
     description: |-
-      Pathogenicity status or classification of the organism.
+      To what is the entity pathogenic, e.g., humans, animals, plants, or specific tissues.
     range: string
+    title: pathogenicity
+
   perturbation:
     description: Type of perturbation, e.g. chemical administration, physical disturbance,
       etc.; coupled with perturbation regimen, including how many times the perturbation
@@ -1656,9 +1693,11 @@ slots:
 
   phenotype:
     description: |-
-      Observable characteristics of the biological entity.
+      Provide the intedned phenotype of hte modified organism. Observable characteristics of the biological entity.
       Example: "aprimycin resistance, gene knockdown dCas12a construct"
     range: string
+    title: phenotype
+
   phosphate:
     description: 'Concentration of phosphate (Unit: umol/L)'
     pattern: ^\d+(\.\d+)?\s*umol/L$
@@ -1880,9 +1919,10 @@ slots:
 
   propagation:
     description: |-
-      Propagation characteristics (e.g., lytic/lysogenic for phages, 
-      incompatibility group for plasmids).
+     The type of reproduction from the parent stock. Values for this field are specific to different taxa. For phage or virus: lytic/lysogenic/temperate/obligately lytic. For plasmids: incompatibility group. For eukaryotes: sexual/asexual'
     range: string
+    title: propagation
+
   protocol_url:
     description: URL pointing to the protocol used in the activity, if applicable.
     range: string
@@ -2116,10 +2156,11 @@ slots:
 
   sample_name:
     description: |-
-      Sample name/identifier. 
-      NOTE: This is typically an alias for the inherited 'name' slot on Sample classes.
-      Defined separately for compatibility with source data files using 'sample_name' column headers.
+      The name or label that is present on the shipped sample. This should
+      be a human readable name.
+    notes: This is typically an alias for the inherited 'name' slot on Sample classes. Defined separately for compatibility with source data files using 'sample_name' column headers.
     range: string
+    title: sample name
     aliases:
       - samp_name
 
@@ -2254,10 +2295,11 @@ slots:
     title: sewage type
 
   shipped_sample_size:
-    description: |-
-      Size/volume of the sample as shipped.
-      Example: "1 mL"
+    description: Total amount of sample sent to EMSL. Must include units.
+    pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
+    title: shipped sample size
+
   sieving:
     description: Collection design of pooled samples and/or sieve size and amount of
       sample sieved
@@ -2397,9 +2439,12 @@ slots:
     title: standing water regimen
 
   start_date_inc:
-    description: |-
-      Start date of incubation for the sample.
-    range: date
+    description: 'Date the incubation was started. Only relevant for incubation samples.
+      Format: YYYY-MM-DD'
+    pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
+    range: string
+    title: incubation start date
+
   stationary_phase:
     description: Description of the stationary phase used in the chromatography method (e.g., column type)
     range: string
@@ -2438,18 +2483,19 @@ slots:
 
   strain_description:
     description: |-
-      Free text description of the strain, including modification details.
-      Example: "AG5577-pJE2165 with CRISPRi guide array targeting PP_0055"
+      A brief description of the modifications that comprise this strain
     range: string
+    title: strain description
     aliases:
       - strain_desc
       - strain_notes
 
   strain_identifier:
     description: |-
-      Primary human-readable strain/entity identifier (e.g., "KT2440_pTE314", "PP_0055").
-      NOT the database UUID - that is the BiologicalEntity.id attribute.
+       External human-readable strain identifier (e.g. "KT2440_pTE314").
+       NOT the database UUID   that is the Strain.id attribute.
     range: string
+    required: true
     aliases:
       - strain_id
       - strain_name
@@ -2472,9 +2518,10 @@ slots:
 
   strain_source:
     description: |-
-      Source institution, collection, or derivation note for the biological entity.
-      Examples: "PNNL", "ATCC", "engineered from KT2440"
+      Indicate the source of the strain provided (e.g. "PNNL", "ATCC"). If purchased provide the
+      vendor and lot number if from another registered or known strain provide a reference.
     range: string
+    title: strain source
     aliases:
       - source_institution
       - strain_origin
@@ -2493,6 +2540,8 @@ slots:
       the lineage rank separated by a colon, e.g. biovar:abc123
     range: string
     title: subspecific genetic lineage
+    todos: 
+      - make this inlined/multivalued?
 
   sulfate:
     description: 'Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)'
@@ -2737,7 +2786,8 @@ slots:
     description: |-
       Trait category for the biological entity.
       Example: "Bacterial Resistance", "Other"
-    range: string
+    range: IntendedTraitEnum
+
   treatment_type:
     description: Type of treatment applied in experimental culture growth
     range: string
