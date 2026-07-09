@@ -671,7 +671,8 @@ classes:
       - depth
       - external_identifiers
       - latitude
-      - longitude      - lims_id
+      - longitude      
+      - lims_id
       - misc_param
       - other
       - other_samp_store_temp
@@ -841,8 +842,8 @@ classes:
       - micro_biomass_C_meth
       - micro_biomass_N_meth
       - microbial_biomass
-      - microbial_biomass_C
-      - microbial_biomass_N
+      - microbial_biomass_c
+      - microbial_biomass_n
       - microbial_biomass_meth
       - mineral_nutr_regm
       - misc_param
