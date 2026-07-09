@@ -25,6 +25,26 @@ classes:
       - oxygen_relationship
 
   # ============================================================================
+  # purchasedMaterial   abstract base
+  # ============================================================================
+  PurchasedMaterial:
+    abstract: true
+    description: |-
+      [NEW ABSTRACT CLASS] Lightweight base for non-sample physical lab materials
+      that are not instruments.  Currently Strain is the only concrete subtype.
+      Activities reference Strain via the strain_ref FK slot.
+    slots:
+      - purchased_material_type
+      - name
+      - description
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+        required: true
+
+
+  # ============================================================================
   # labProcessingActivity   new abstract parent of sampleProcessing
   # ============================================================================
   LabProcessingActivity:
