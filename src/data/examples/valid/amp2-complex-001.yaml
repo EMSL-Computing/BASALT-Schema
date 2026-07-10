@@ -1,0 +1,848 @@
+# =============================================================================
+# amp2-complex-001.yaml
+#
+# Scenario: Two strains (KT2440 pTE314 + E. coli BL21-DE3), two media batches
+#   (M9+glucose, LB), per-well media overrides, 5 OD timepoints at 600nm.
+#   Cols 1–6 → KT2440 / M9 arm; cols 7–12 → BL21 / LB arm; row H = blanks.
+#
+# Intentional violations (for schema / DB validation testing):
+#   [C1] media_type: "experimental_batch" on lb-media-prep — not in MediaTypeEnum
+#   [C2] media_ref on bL21 experimental culture points to nonexistent UUID
+#   [C3] ph_target: 7.5 on lb-media-prep without ph_adjustment: true
+#   [C4] well position "A-1" (should be "A1") in t=4h plate_product well_readings
+#   [C5] inoculum_volume_ul missing (required) on wells A3, B7, D11
+#   [C6] duplicate timepoint_label "t=8h" on two data_generation_activities
+# =============================================================================
+
+strains:
+  - id: "urn:amp2:strain:KT2440-pTE314"
+    entity_type: "strain"
+    name: "Pseudomonas putida KT2440 pTE314"
+    strain_identifier: "KT2440_pTE314"
+    strain_type: "bacterial"
+    strain_source: "PNNL"
+    strain_mutation: "pTE314"
+
+  - id: "urn:amp2:strain:BL21-DE3"
+    entity_type: "strain"
+    name: "Escherichia coli BL21-DE3"
+    strain_identifier: "BL21-DE3"
+    strain_type: "bacterial"
+    strain_source: "ATCC"
+    strain_mutation: null
+
+processed_samples:
+  - id: "urn:amp2:ps:M9-glucose-batch-002"
+    name: "M9 + 1% glucose batch 002"
+    sample_base_type: "processed_sample"
+    processed_sample_type: "prepared_media"
+
+  - id: "urn:amp2:ps:LB-media-batch-001"
+    name: "LB broth batch 001"
+    sample_base_type: "processed_sample"
+    processed_sample_type: "prepared_media"
+
+  - id: "urn:amp2:ps:KT2440-exp-output-complex"
+    name: "KT2440 experimental culture for complex plate"
+    sample_base_type: "processed_sample"
+    processed_sample_type: "experimental_culture"
+
+  - id: "urn:amp2:ps:BL21-exp-output-complex"
+    name: "BL21-DE3 experimental culture for complex plate"
+    sample_base_type: "processed_sample"
+    processed_sample_type: "experimental_culture"
+
+  - id: "urn:amp2:ps:EPix1-complex-plate-001"
+    name: "EPix1-complex AMP2 96-well plate"
+    sample_base_type: "processed_sample"
+    processed_sample_type: "amp2_96well_plate"
+
+media_preparations:
+  - id: "urn:amp2:act:media-prep-M9-002"
+    name: "M9 + 1% glucose preparation (complex)"
+    media_type: "pre_culture"
+    volume_ml: 500.0
+    media_recipe: "M9 minimal salts with 1% glucose (w/v)"
+    media_formulation: "manual_mix"
+    sterilization_method: "autoclave"
+    ph_adjustment: true
+    ph_target: 7.0
+    creation_date: "2026-03-20"
+    output_sample_id: "urn:amp2:ps:M9-glucose-batch-002"
+
+  - id: "urn:amp2:act:media-prep-LB-001"
+    name: "LB broth preparation"
+    media_type: "experimental_batch"   # [C1] "experimental_batch" not in MediaTypeEnum
+    volume_ml: 300.0
+    media_recipe: "Lysogeny broth: 10g/L tryptone, 5g/L yeast extract, 10g/L NaCl"
+    media_formulation: "manual_mix"
+    sterilization_method: "autoclave"
+    ph_adjustment: false
+    ph_target: 7.5   # [C3] ph_target set but ph_adjustment is false
+    creation_date: "2026-03-21"
+    output_sample_id: "urn:amp2:ps:LB-media-batch-001"
+
+culture_growth_activities:
+  - id: "urn:amp2:act:complex-kt2440-preculture"
+    activity_type: "PreCultureGrowth"
+    name: "KT2440 pre-culture (complex)"
+    strain_ref: "urn:amp2:strain:KT2440-pTE314"
+    media_ref: "urn:amp2:ps:M9-glucose-batch-002"
+    incubation_time_hours: 12.0
+    temperature_celsius: 30.0
+    agitation_speed_rpm: 200
+    oxygen_status: "aerobic"
+    container_type: "flask"
+    input_sample_id: null
+    output_sample_id: "urn:amp2:ps:KT2440-exp-output-complex"
+
+  - id: "urn:amp2:act:complex-kt2440-experimental"
+    activity_type: "ExperimentalCulture"
+    name: "KT2440 experimental culture — nickel stress 0.5 mM"
+    strain_ref: "urn:amp2:strain:KT2440-pTE314"
+    media_ref: "urn:amp2:ps:M9-glucose-batch-002"
+    incubation_time_hours: 4.0
+    temperature_celsius: 30.0
+    agitation_speed_rpm: 200
+    oxygen_status: "aerobic"
+    container_type: "flask"
+    treatment_type: "nickel_stress"
+    growth_time: "4 hours"
+    input_sample_id: "urn:amp2:ps:KT2440-exp-output-complex"
+    output_sample_id: "urn:amp2:ps:KT2440-exp-output-complex"
+
+  - id: "urn:amp2:act:complex-bl21-experimental"
+    activity_type: "ExperimentalCulture"
+    name: "BL21-DE3 experimental culture — nickel stress 0.5 mM"
+    strain_ref: "urn:amp2:strain:BL21-DE3"
+    media_ref: "urn:amp2:ps:NONEXISTENT-MEDIA-999"   # [C2] broken FK — ID does not exist
+    incubation_time_hours: 4.0
+    temperature_celsius: 37.0
+    agitation_speed_rpm: 220
+    oxygen_status: "aerobic"
+    container_type: "flask"
+    treatment_type: "nickel_stress"
+    growth_time: "4 hours"
+    input_sample_id: null
+    output_sample_id: "urn:amp2:ps:BL21-exp-output-complex"
+
+plate_setup_activities:
+  - id: "urn:amp2:act:plate-setup-complex-001"
+    activity_type: "AMP2PlateSetupActivity"
+    name: "EPix1-complex plate setup — dual-strain, per-well media"
+    plate_type: "Greiner_96well_flat_bottom"
+    plate_barcode: "EPix1-complex"
+    setup_date: "2026-03-24T15:30:00"
+    setup_operator_id: "kapu336"
+    setup_instrument: "manual"
+    sealing_method: "BreathEasy_membrane"
+    # No plate-level media_ref — per-well overrides used instead
+    input_sample_id: "urn:amp2:ps:KT2440-exp-output-complex"
+    output_sample_id: "urn:amp2:ps:EPix1-complex-plate-001"
+    well_metadata:
+      - {position: "A1", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_1", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-A1"}
+      - {position: "A2", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_2", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-A2"}
+      - {position: "A3", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_3", media_volume_ul: 180.0, sample_id: "KT2440-A3"}
+      - {position: "A4", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_4", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-A4"}
+      - {position: "A5", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_5", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-A5"}
+      - {position: "A6", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_6", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-A6"}
+      - {position: "A7", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_7", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-A7"}
+      - {position: "A8", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_8", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-A8"}
+      - {position: "A9", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_9", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-A9"}
+      - {position: "A10", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_10", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-A10"}
+      - {position: "A11", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_11", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-A11"}
+      - {position: "A12", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_12", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-A12"}
+      - {position: "B1", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_1", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-B1"}
+      - {position: "B2", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_2", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-B2"}
+      - {position: "B3", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_3", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-B3"}
+      - {position: "B4", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_4", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-B4"}
+      - {position: "B5", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_5", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-B5"}
+      - {position: "B6", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_6", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-B6"}
+      - {position: "B7", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_7", media_volume_ul: 180.0, sample_id: "BL21-B7"}
+      - {position: "B8", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_8", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-B8"}
+      - {position: "B9", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_9", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-B9"}
+      - {position: "B10", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_10", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-B10"}
+      - {position: "B11", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_11", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-B11"}
+      - {position: "B12", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_12", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-B12"}
+      - {position: "C1", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_1", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-C1"}
+      - {position: "C2", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_2", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-C2"}
+      - {position: "C3", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_3", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-C3"}
+      - {position: "C4", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_4", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-C4"}
+      - {position: "C5", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_5", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-C5"}
+      - {position: "C6", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_6", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-C6"}
+      - {position: "C7", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_7", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-C7"}
+      - {position: "C8", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_8", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-C8"}
+      - {position: "C9", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_9", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-C9"}
+      - {position: "C10", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_10", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-C10"}
+      - {position: "C11", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_11", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-C11"}
+      - {position: "C12", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_12", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-C12"}
+      - {position: "D1", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_1", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-D1"}
+      - {position: "D2", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_2", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-D2"}
+      - {position: "D3", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_3", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-D3"}
+      - {position: "D4", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_4", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-D4"}
+      - {position: "D5", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_5", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-D5"}
+      - {position: "D6", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_6", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-D6"}
+      - {position: "D7", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_7", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-D7"}
+      - {position: "D8", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_8", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-D8"}
+      - {position: "D9", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_9", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-D9"}
+      - {position: "D10", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_10", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-D10"}
+      - {position: "D11", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_11", media_volume_ul: 180.0, sample_id: "BL21-D11"}
+      - {position: "D12", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_12", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-D12"}
+      - {position: "E1", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_1", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-E1"}
+      - {position: "E2", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_2", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-E2"}
+      - {position: "E3", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_3", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-E3"}
+      - {position: "E4", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_4", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-E4"}
+      - {position: "E5", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_5", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-E5"}
+      - {position: "E6", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_6", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-E6"}
+      - {position: "E7", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_7", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-E7"}
+      - {position: "E8", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_8", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-E8"}
+      - {position: "E9", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_9", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-E9"}
+      - {position: "E10", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_10", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-E10"}
+      - {position: "E11", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_11", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-E11"}
+      - {position: "E12", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_12", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-E12"}
+      - {position: "F1", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_1", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-F1"}
+      - {position: "F2", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_2", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-F2"}
+      - {position: "F3", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_3", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-F3"}
+      - {position: "F4", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_4", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-F4"}
+      - {position: "F5", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_5", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-F5"}
+      - {position: "F6", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_6", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-F6"}
+      - {position: "F7", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_7", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-F7"}
+      - {position: "F8", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_8", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-F8"}
+      - {position: "F9", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_9", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-F9"}
+      - {position: "F10", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_10", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-F10"}
+      - {position: "F11", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_11", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-F11"}
+      - {position: "F12", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_12", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-F12"}
+      - {position: "G1", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_1", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-G1"}
+      - {position: "G2", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_2", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-G2"}
+      - {position: "G3", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_3", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-G3"}
+      - {position: "G4", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_4", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-G4"}
+      - {position: "G5", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_5", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-G5"}
+      - {position: "G6", well_type: "sample", media_ref: "urn:amp2:ps:M9-glucose-batch-002", replicate_group: "rep_6", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "KT2440-G6"}
+      - {position: "G7", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_7", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-G7"}
+      - {position: "G8", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_8", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-G8"}
+      - {position: "G9", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_9", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-G9"}
+      - {position: "G10", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_10", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-G10"}
+      - {position: "G11", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_11", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-G11"}
+      - {position: "G12", well_type: "sample", media_ref: "urn:amp2:ps:LB-media-batch-001", replicate_group: "rep_12", media_volume_ul: 180.0, inoculum_volume_ul: 20.0, sample_id: "BL21-G12"}
+      - {position: "H1", well_type: "blank", media_volume_ul: 200.0, inoculum_volume_ul: 0.0}
+      - {position: "H2", well_type: "blank", media_volume_ul: 200.0, inoculum_volume_ul: 0.0}
+      - {position: "H3", well_type: "blank", media_volume_ul: 200.0, inoculum_volume_ul: 0.0}
+      - {position: "H4", well_type: "blank", media_volume_ul: 200.0, inoculum_volume_ul: 0.0}
+      - {position: "H5", well_type: "blank", media_volume_ul: 200.0, inoculum_volume_ul: 0.0}
+      - {position: "H6", well_type: "blank", media_volume_ul: 200.0, inoculum_volume_ul: 0.0}
+      - {position: "H7", well_type: "blank", media_volume_ul: 200.0, inoculum_volume_ul: 0.0}
+      - {position: "H8", well_type: "blank", media_volume_ul: 200.0, inoculum_volume_ul: 0.0}
+      - {position: "H9", well_type: "blank", media_volume_ul: 200.0, inoculum_volume_ul: 0.0}
+      - {position: "H10", well_type: "blank", media_volume_ul: 200.0, inoculum_volume_ul: 0.0}
+      - {position: "H11", well_type: "blank", media_volume_ul: 200.0, inoculum_volume_ul: 0.0}
+      - {position: "H12", well_type: "blank", media_volume_ul: 200.0, inoculum_volume_ul: 0.0}
+
+data_generation_activities:
+  - id: "urn:amp2:act:dga-complex-t0"
+    activity_type: "AMP2dataGenerationActivity"
+    name: "EPix1-complex OD read t=0"
+    plate_setup_id: "urn:amp2:act:plate-setup-complex-001"
+    plate_id: "urn:amp2:ps:EPix1-complex-plate-001"
+    timepoint_label: "t=0"
+    wavelength_nm: 600
+    measurement_type: "optical_density"
+    sequence_order: 1
+    acquisition_time: "2026-03-24T16:19:00"
+
+  - id: "urn:amp2:act:dga-complex-t4h"
+    activity_type: "AMP2dataGenerationActivity"
+    name: "EPix1-complex OD read t=4h"
+    plate_setup_id: "urn:amp2:act:plate-setup-complex-001"
+    plate_id: "urn:amp2:ps:EPix1-complex-plate-001"
+    timepoint_label: "t=4h"
+    wavelength_nm: 600
+    measurement_type: "optical_density"
+    sequence_order: 2
+    acquisition_time: "2026-03-24T20:19:00"
+
+  - id: "urn:amp2:act:dga-complex-t8h"
+    activity_type: "AMP2dataGenerationActivity"
+    name: "EPix1-complex OD read t=8h"
+    plate_setup_id: "urn:amp2:act:plate-setup-complex-001"
+    plate_id: "urn:amp2:ps:EPix1-complex-plate-001"
+    timepoint_label: "t=8h"
+    wavelength_nm: 600
+    measurement_type: "optical_density"
+    sequence_order: 3
+    acquisition_time: "2026-03-25T00:19:00"
+
+  - id: "urn:amp2:act:dga-complex-t16h"
+    activity_type: "AMP2dataGenerationActivity"
+    name: "EPix1-complex OD read t=16h"
+    plate_setup_id: "urn:amp2:act:plate-setup-complex-001"
+    plate_id: "urn:amp2:ps:EPix1-complex-plate-001"
+    timepoint_label: "t=16h"
+    wavelength_nm: 600
+    measurement_type: "optical_density"
+    sequence_order: 4
+    acquisition_time: "2026-03-25T08:19:00"
+
+  - id: "urn:amp2:act:dga-complex-t24h"
+    activity_type: "AMP2dataGenerationActivity"
+    name: "EPix1-complex OD read t=24h"
+    plate_setup_id: "urn:amp2:act:plate-setup-complex-001"
+    plate_id: "urn:amp2:ps:EPix1-complex-plate-001"
+    timepoint_label: "t=24h"
+    wavelength_nm: 600
+    measurement_type: "optical_density"
+    sequence_order: 5
+    acquisition_time: "2026-03-25T16:19:00"
+
+  - id: "urn:amp2:act:dga-complex-t8h-dup"
+    # [C6] Duplicate timepoint_label — two DGAs both claim "t=8h" for same plate
+    activity_type: "AMP2dataGenerationActivity"
+    name: "EPix1-complex OD read t=8h (DUPLICATE — violation C6)"
+    plate_setup_id: "urn:amp2:act:plate-setup-complex-001"
+    plate_id: "urn:amp2:ps:EPix1-complex-plate-001"
+    timepoint_label: "t=8h"
+    wavelength_nm: 600
+    measurement_type: "optical_density"
+    sequence_order: 3
+    acquisition_time: "2026-03-25T00:45:00"
+
+plate_products:
+  - id: "urn:amp2:prod:complex-t0"
+    product_type: "AMP2ODProduct"
+    activity_id: "urn:amp2:act:dga-complex-t0"
+    plate_barcode: "EPix1-complex"
+    timepoint_label: "t=0"
+    wavelength_nm: 600
+    plate_average: 0.1051
+    blank_mean: 0.0688
+    cv_percent: 129.21
+    plate_reader_model: "Tecan Spark"
+    well_readings:
+        - {position: "A1", value: 0.0684, flag: "ok"}
+        - {position: "A2", value: 0.0789, flag: "ok"}
+        - {position: "A3", value: 0.0681, flag: "ok"}
+        - {position: "A4", value: 0.0676, flag: "ok"}
+        - {position: "A5", value: 0.0672, flag: "ok"}
+        - {position: "A6", value: 0.0729, flag: "ok"}
+        - {position: "A7", value: 0.0833, flag: "ok"}
+        - {position: "A8", value: 0.0672, flag: "ok"}
+        - {position: "A9", value: 0.0668, flag: "ok"}
+        - {position: "A10", value: 0.0676, flag: "ok"}
+        - {position: "A11", value: 0.0697, flag: "ok"}
+        - {position: "A12", value: 0.0665, flag: "ok"}
+        - {position: "B1", value: 0.0679, flag: "ok"}
+        - {position: "B2", value: 0.0712, flag: "ok"}
+        - {position: "B3", value: 0.2862, flag: "ok"}
+        - {position: "B4", value: 0.0685, flag: "ok"}
+        - {position: "B5", value: 0.0693, flag: "ok"}
+        - {position: "B6", value: 0.0693, flag: "ok"}
+        - {position: "B7", value: 0.2143, flag: "ok"}
+        - {position: "B8", value: 0.0682, flag: "ok"}
+        - {position: "B9", value: 0.0686, flag: "ok"}
+        - {position: "B10", value: 0.0910, flag: "ok"}
+        - {position: "B11", value: 0.0690, flag: "ok"}
+        - {position: "B12", value: 0.0671, flag: "ok"}
+        - {position: "C1", value: 0.0689, flag: "ok"}
+        - {position: "C2", value: 0.0695, flag: "ok"}
+        - {position: "C3", value: 0.0693, flag: "ok"}
+        - {position: "C4", value: 0.0684, flag: "ok"}
+        - {position: "C5", value: 0.0675, flag: "ok"}
+        - {position: "C6", value: 0.0677, flag: "ok"}
+        - {position: "C7", value: 0.0672, flag: "ok"}
+        - {position: "C8", value: 0.0685, flag: "ok"}
+        - {position: "C9", value: 0.0676, flag: "ok"}
+        - {position: "C10", value: 0.0679, flag: "ok"}
+        - {position: "C11", value: 0.0677, flag: "ok"}
+        - {position: "C12", value: 0.0680, flag: "ok"}
+        - {position: "D1", value: 0.0741, flag: "ok"}
+        - {position: "D2", value: 0.1551, flag: "ok"}
+        - {position: "D3", value: 0.0683, flag: "ok"}
+        - {position: "D4", value: 0.1079, flag: "ok"}
+        - {position: "D5", value: 0.3321, flag: "ok"}
+        - {position: "D6", value: 0.0677, flag: "ok"}
+        - {position: "D7", value: 0.0686, flag: "ok"}
+        - {position: "D8", value: 0.0697, flag: "ok"}
+        - {position: "D9", value: 0.0680, flag: "ok"}
+        - {position: "D10", value: 0.0700, flag: "ok"}
+        - {position: "D11", value: 0.0687, flag: "ok"}
+        - {position: "D12", value: 0.0677, flag: "ok"}
+        - {position: "E1", value: 0.1407, flag: "ok"}
+        - {position: "E2", value: 0.0673, flag: "ok"}
+        - {position: "E3", value: 0.0694, flag: "ok"}
+        - {position: "E4", value: 0.0684, flag: "ok"}
+        - {position: "E5", value: 0.0853, flag: "ok"}
+        - {position: "E6", value: 0.1326, flag: "ok"}
+        - {position: "E7", value: 0.0705, flag: "ok"}
+        - {position: "E8", value: 0.3191, flag: "ok"}
+        - {position: "E9", value: 0.0671, flag: "ok"}
+        - {position: "E10", value: 0.0741, flag: "ok"}
+        - {position: "E11", value: 0.0723, flag: "ok"}
+        - {position: "E12", value: 0.1230, flag: "ok"}
+        - {position: "F1", value: 0.0709, flag: "ok"}
+        - {position: "F2", value: 0.0678, flag: "ok"}
+        - {position: "F3", value: 0.1221, flag: "ok"}
+        - {position: "F4", value: 0.0782, flag: "ok"}
+        - {position: "F5", value: 0.3594, flag: "ok"}
+        - {position: "F6", value: 0.1341, flag: "ok"}
+        - {position: "F7", value: 0.0793, flag: "ok"}
+        - {position: "F8", value: 0.0734, flag: "ok"}
+        - {position: "F9", value: 0.1124, flag: "ok"}
+        - {position: "F10", value: 0.0774, flag: "ok"}
+        - {position: "F11", value: 0.0762, flag: "ok"}
+        - {position: "F12", value: 0.0959, flag: "ok"}
+        - {position: "G1", value: 1.2251, flag: "ok"}
+        - {position: "G2", value: 0.0682, flag: "ok"}
+        - {position: "G3", value: 0.0733, flag: "ok"}
+        - {position: "G4", value: 0.0680, flag: "ok"}
+        - {position: "G5", value: 0.1302, flag: "ok"}
+        - {position: "G6", value: 0.0739, flag: "ok"}
+        - {position: "G7", value: 0.0685, flag: "ok"}
+        - {position: "G8", value: 0.1044, flag: "ok"}
+        - {position: "G9", value: 0.0742, flag: "ok"}
+        - {position: "G10", value: 0.0756, flag: "ok"}
+        - {position: "G11", value: 0.0733, flag: "ok"}
+        - {position: "G12", value: 0.0696, flag: "ok"}
+        - {position: "H1", value: 0.0679, flag: "blank"}
+        - {position: "H2", value: 0.0702, flag: "blank"}
+        - {position: "H3", value: 0.0691, flag: "blank"}
+        - {position: "H4", value: 0.0685, flag: "blank"}
+        - {position: "H5", value: 0.0697, flag: "blank"}
+        - {position: "H6", value: 0.0696, flag: "blank"}
+        - {position: "H7", value: 0.0689, flag: "blank"}
+        - {position: "H8", value: 0.0668, flag: "blank"}
+        - {position: "H9", value: 0.0674, flag: "blank"}
+        - {position: "H10", value: 0.0698, flag: "blank"}
+        - {position: "H11", value: 0.0693, flag: "blank"}
+        - {position: "H12", value: 0.0684, flag: "blank"}
+
+  - id: "urn:amp2:prod:complex-t4h"
+    product_type: "AMP2ODProduct"
+    activity_id: "urn:amp2:act:dga-complex-t4h"
+    plate_barcode: "EPix1-complex"
+    timepoint_label: "t=4h"
+    wavelength_nm: 600
+    plate_average: 0.1209
+    blank_mean: 0.0702
+    cv_percent: 129.11
+    plate_reader_model: "Tecan Spark"
+    # [C4] well A1 position formatted as 'A-1' (invalid) in well_readings below
+    well_readings:
+        - {position: "A-1", value: 0.0787, flag: "ok"}
+        - {position: "A2", value: 0.0907, flag: "ok"}
+        - {position: "A3", value: 0.0783, flag: "ok"}
+        - {position: "A4", value: 0.0777, flag: "ok"}
+        - {position: "A5", value: 0.0773, flag: "ok"}
+        - {position: "A6", value: 0.0838, flag: "ok"}
+        - {position: "A7", value: 0.0958, flag: "ok"}
+        - {position: "A8", value: 0.0773, flag: "ok"}
+        - {position: "A9", value: 0.0768, flag: "ok"}
+        - {position: "A10", value: 0.0777, flag: "ok"}
+        - {position: "A11", value: 0.0802, flag: "ok"}
+        - {position: "A12", value: 0.0765, flag: "ok"}
+        - {position: "B1", value: 0.0781, flag: "ok"}
+        - {position: "B2", value: 0.0819, flag: "ok"}
+        - {position: "B3", value: 0.3291, flag: "ok"}
+        - {position: "B4", value: 0.0788, flag: "ok"}
+        - {position: "B5", value: 0.0797, flag: "ok"}
+        - {position: "B6", value: 0.0797, flag: "ok"}
+        - {position: "B7", value: 0.2464, flag: "ok"}
+        - {position: "B8", value: 0.0784, flag: "ok"}
+        - {position: "B9", value: 0.0789, flag: "ok"}
+        - {position: "B10", value: 0.1046, flag: "ok"}
+        - {position: "B11", value: 0.0794, flag: "ok"}
+        - {position: "B12", value: 0.0772, flag: "ok"}
+        - {position: "C1", value: 0.0792, flag: "ok"}
+        - {position: "C2", value: 0.0799, flag: "ok"}
+        - {position: "C3", value: 0.0797, flag: "ok"}
+        - {position: "C4", value: 0.0787, flag: "ok"}
+        - {position: "C5", value: 0.0776, flag: "ok"}
+        - {position: "C6", value: 0.0779, flag: "ok"}
+        - {position: "C7", value: 0.0773, flag: "ok"}
+        - {position: "C8", value: 0.0788, flag: "ok"}
+        - {position: "C9", value: 0.0777, flag: "ok"}
+        - {position: "C10", value: 0.0781, flag: "ok"}
+        - {position: "C11", value: 0.0779, flag: "ok"}
+        - {position: "C12", value: 0.0782, flag: "ok"}
+        - {position: "D1", value: 0.0852, flag: "ok"}
+        - {position: "D2", value: 0.1784, flag: "ok"}
+        - {position: "D3", value: 0.0785, flag: "ok"}
+        - {position: "D4", value: 0.1241, flag: "ok"}
+        - {position: "D5", value: 0.3819, flag: "ok"}
+        - {position: "D6", value: 0.0779, flag: "ok"}
+        - {position: "D7", value: 0.0789, flag: "ok"}
+        - {position: "D8", value: 0.0802, flag: "ok"}
+        - {position: "D9", value: 0.0782, flag: "ok"}
+        - {position: "D10", value: 0.0805, flag: "ok"}
+        - {position: "D11", value: 0.0790, flag: "ok"}
+        - {position: "D12", value: 0.0779, flag: "ok"}
+        - {position: "E1", value: 0.1618, flag: "ok"}
+        - {position: "E2", value: 0.0774, flag: "ok"}
+        - {position: "E3", value: 0.0798, flag: "ok"}
+        - {position: "E4", value: 0.0787, flag: "ok"}
+        - {position: "E5", value: 0.0981, flag: "ok"}
+        - {position: "E6", value: 0.1525, flag: "ok"}
+        - {position: "E7", value: 0.0811, flag: "ok"}
+        - {position: "E8", value: 0.3670, flag: "ok"}
+        - {position: "E9", value: 0.0772, flag: "ok"}
+        - {position: "E10", value: 0.0852, flag: "ok"}
+        - {position: "E11", value: 0.0831, flag: "ok"}
+        - {position: "E12", value: 0.1414, flag: "ok"}
+        - {position: "F1", value: 0.0815, flag: "ok"}
+        - {position: "F2", value: 0.0780, flag: "ok"}
+        - {position: "F3", value: 0.1404, flag: "ok"}
+        - {position: "F4", value: 0.0899, flag: "ok"}
+        - {position: "F5", value: 0.4133, flag: "ok"}
+        - {position: "F6", value: 0.1542, flag: "ok"}
+        - {position: "F7", value: 0.0912, flag: "ok"}
+        - {position: "F8", value: 0.0844, flag: "ok"}
+        - {position: "F9", value: 0.1293, flag: "ok"}
+        - {position: "F10", value: 0.0890, flag: "ok"}
+        - {position: "F11", value: 0.0876, flag: "ok"}
+        - {position: "F12", value: 0.1103, flag: "ok"}
+        - {position: "G1", value: 1.4089, flag: "ok"}
+        - {position: "G2", value: 0.0784, flag: "ok"}
+        - {position: "G3", value: 0.0843, flag: "ok"}
+        - {position: "G4", value: 0.0782, flag: "ok"}
+        - {position: "G5", value: 0.1497, flag: "ok"}
+        - {position: "G6", value: 0.0850, flag: "ok"}
+        - {position: "G7", value: 0.0788, flag: "ok"}
+        - {position: "G8", value: 0.1201, flag: "ok"}
+        - {position: "G9", value: 0.0853, flag: "ok"}
+        - {position: "G10", value: 0.0869, flag: "ok"}
+        - {position: "G11", value: 0.0843, flag: "ok"}
+        - {position: "G12", value: 0.0800, flag: "ok"}
+        - {position: "H1", value: 0.0693, flag: "blank"}
+        - {position: "H2", value: 0.0716, flag: "blank"}
+        - {position: "H3", value: 0.0705, flag: "blank"}
+        - {position: "H4", value: 0.0699, flag: "blank"}
+        - {position: "H5", value: 0.0711, flag: "blank"}
+        - {position: "H6", value: 0.0710, flag: "blank"}
+        - {position: "H7", value: 0.0703, flag: "blank"}
+        - {position: "H8", value: 0.0681, flag: "blank"}
+        - {position: "H9", value: 0.0687, flag: "blank"}
+        - {position: "H10", value: 0.0712, flag: "blank"}
+        - {position: "H11", value: 0.0707, flag: "blank"}
+        - {position: "H12", value: 0.0698, flag: "blank"}
+
+  - id: "urn:amp2:prod:complex-t8h"
+    product_type: "AMP2ODProduct"
+    activity_id: "urn:amp2:act:dga-complex-t8h"
+    plate_barcode: "EPix1-complex"
+    timepoint_label: "t=8h"
+    wavelength_nm: 600
+    plate_average: 0.1367
+    blank_mean: 0.0702
+    cv_percent: 129.11
+    plate_reader_model: "Tecan Spark"
+    well_readings:
+        - {position: "A1", value: 0.0889, flag: "ok"}
+        - {position: "A2", value: 0.1026, flag: "ok"}
+        - {position: "A3", value: 0.0885, flag: "ok"}
+        - {position: "A4", value: 0.0879, flag: "ok"}
+        - {position: "A5", value: 0.0874, flag: "ok"}
+        - {position: "A6", value: 0.0948, flag: "ok"}
+        - {position: "A7", value: 0.1083, flag: "ok"}
+        - {position: "A8", value: 0.0874, flag: "ok"}
+        - {position: "A9", value: 0.0868, flag: "ok"}
+        - {position: "A10", value: 0.0879, flag: "ok"}
+        - {position: "A11", value: 0.0906, flag: "ok"}
+        - {position: "A12", value: 0.0865, flag: "ok"}
+        - {position: "B1", value: 0.0883, flag: "ok"}
+        - {position: "B2", value: 0.0926, flag: "ok"}
+        - {position: "B3", value: 0.3721, flag: "ok"}
+        - {position: "B4", value: 0.0891, flag: "ok"}
+        - {position: "B5", value: 0.0901, flag: "ok"}
+        - {position: "B6", value: 0.0901, flag: "ok"}
+        - {position: "B7", value: 0.2786, flag: "ok"}
+        - {position: "B8", value: 0.0887, flag: "ok"}
+        - {position: "B9", value: 0.0892, flag: "ok"}
+        - {position: "B10", value: 0.1183, flag: "ok"}
+        - {position: "B11", value: 0.0897, flag: "ok"}
+        - {position: "B12", value: 0.0872, flag: "ok"}
+        - {position: "C1", value: 0.0896, flag: "ok"}
+        - {position: "C2", value: 0.0904, flag: "ok"}
+        - {position: "C3", value: 0.0901, flag: "ok"}
+        - {position: "C4", value: 0.0889, flag: "ok"}
+        - {position: "C5", value: 0.0878, flag: "ok"}
+        - {position: "C6", value: 0.0880, flag: "ok"}
+        - {position: "C7", value: 0.0874, flag: "ok"}
+        - {position: "C8", value: 0.0891, flag: "ok"}
+        - {position: "C9", value: 0.0879, flag: "ok"}
+        - {position: "C10", value: 0.0883, flag: "ok"}
+        - {position: "C11", value: 0.0880, flag: "ok"}
+        - {position: "C12", value: 0.0884, flag: "ok"}
+        - {position: "D1", value: 0.0963, flag: "ok"}
+        - {position: "D2", value: 0.2016, flag: "ok"}
+        - {position: "D3", value: 0.0888, flag: "ok"}
+        - {position: "D4", value: 0.1403, flag: "ok"}
+        - {position: "D5", value: 0.4317, flag: "ok"}
+        - {position: "D6", value: 0.0880, flag: "ok"}
+        - {position: "D7", value: 0.0892, flag: "ok"}
+        - {position: "D8", value: 0.0906, flag: "ok"}
+        - {position: "D9", value: 0.0884, flag: "ok"}
+        - {position: "D10", value: 0.0910, flag: "ok"}
+        - {position: "D11", value: 0.0893, flag: "ok"}
+        - {position: "D12", value: 0.0880, flag: "ok"}
+        - {position: "E1", value: 0.1829, flag: "ok"}
+        - {position: "E2", value: 0.0875, flag: "ok"}
+        - {position: "E3", value: 0.0902, flag: "ok"}
+        - {position: "E4", value: 0.0889, flag: "ok"}
+        - {position: "E5", value: 0.1109, flag: "ok"}
+        - {position: "E6", value: 0.1724, flag: "ok"}
+        - {position: "E7", value: 0.0916, flag: "ok"}
+        - {position: "E8", value: 0.4148, flag: "ok"}
+        - {position: "E9", value: 0.0872, flag: "ok"}
+        - {position: "E10", value: 0.0963, flag: "ok"}
+        - {position: "E11", value: 0.0940, flag: "ok"}
+        - {position: "E12", value: 0.1599, flag: "ok"}
+        - {position: "F1", value: 0.0922, flag: "ok"}
+        - {position: "F2", value: 0.0881, flag: "ok"}
+        - {position: "F3", value: 0.1587, flag: "ok"}
+        - {position: "F4", value: 0.1017, flag: "ok"}
+        - {position: "F5", value: 0.4672, flag: "ok"}
+        - {position: "F6", value: 0.1743, flag: "ok"}
+        - {position: "F7", value: 0.1031, flag: "ok"}
+        - {position: "F8", value: 0.0954, flag: "ok"}
+        - {position: "F9", value: 0.1461, flag: "ok"}
+        - {position: "F10", value: 0.1006, flag: "ok"}
+        - {position: "F11", value: 0.0991, flag: "ok"}
+        - {position: "F12", value: 0.1247, flag: "ok"}
+        - {position: "G1", value: 1.5926, flag: "outlier"}
+        - {position: "G2", value: 0.0887, flag: "ok"}
+        - {position: "G3", value: 0.0953, flag: "ok"}
+        - {position: "G4", value: 0.0884, flag: "ok"}
+        - {position: "G5", value: 0.1693, flag: "ok"}
+        - {position: "G6", value: 0.0961, flag: "ok"}
+        - {position: "G7", value: 0.0891, flag: "ok"}
+        - {position: "G8", value: 0.1357, flag: "ok"}
+        - {position: "G9", value: 0.0965, flag: "ok"}
+        - {position: "G10", value: 0.0983, flag: "ok"}
+        - {position: "G11", value: 0.0953, flag: "ok"}
+        - {position: "G12", value: 0.0905, flag: "ok"}
+        - {position: "H1", value: 0.0693, flag: "blank"}
+        - {position: "H2", value: 0.0716, flag: "blank"}
+        - {position: "H3", value: 0.0705, flag: "blank"}
+        - {position: "H4", value: 0.0699, flag: "blank"}
+        - {position: "H5", value: 0.0711, flag: "blank"}
+        - {position: "H6", value: 0.0710, flag: "blank"}
+        - {position: "H7", value: 0.0703, flag: "blank"}
+        - {position: "H8", value: 0.0681, flag: "blank"}
+        - {position: "H9", value: 0.0687, flag: "blank"}
+        - {position: "H10", value: 0.0712, flag: "blank"}
+        - {position: "H11", value: 0.0707, flag: "blank"}
+        - {position: "H12", value: 0.0698, flag: "blank"}
+
+  - id: "urn:amp2:prod:complex-t16h"
+    product_type: "AMP2ODProduct"
+    activity_id: "urn:amp2:act:dga-complex-t16h"
+    plate_barcode: "EPix1-complex"
+    timepoint_label: "t=16h"
+    wavelength_nm: 600
+    plate_average: 0.1735
+    blank_mean: 0.0702
+    cv_percent: 129.11
+    plate_reader_model: "Tecan Spark"
+    well_readings:
+        - {position: "A1", value: 0.1129, flag: "ok"}
+        - {position: "A2", value: 0.1302, flag: "ok"}
+        - {position: "A3", value: 0.1124, flag: "ok"}
+        - {position: "A4", value: 0.1115, flag: "ok"}
+        - {position: "A5", value: 0.1109, flag: "ok"}
+        - {position: "A6", value: 0.1203, flag: "ok"}
+        - {position: "A7", value: 0.1374, flag: "ok"}
+        - {position: "A8", value: 0.1109, flag: "ok"}
+        - {position: "A9", value: 0.1102, flag: "ok"}
+        - {position: "A10", value: 0.1115, flag: "ok"}
+        - {position: "A11", value: 0.1150, flag: "ok"}
+        - {position: "A12", value: 0.1097, flag: "ok"}
+        - {position: "B1", value: 0.1120, flag: "ok"}
+        - {position: "B2", value: 0.1175, flag: "ok"}
+        - {position: "B3", value: 0.4722, flag: "ok"}
+        - {position: "B4", value: 0.1130, flag: "ok"}
+        - {position: "B5", value: 0.1143, flag: "ok"}
+        - {position: "B6", value: 0.1143, flag: "ok"}
+        - {position: "B7", value: 0.3536, flag: "ok"}
+        - {position: "B8", value: 0.1125, flag: "ok"}
+        - {position: "B9", value: 0.1132, flag: "ok"}
+        - {position: "B10", value: 0.1501, flag: "ok"}
+        - {position: "B11", value: 0.1139, flag: "ok"}
+        - {position: "B12", value: 0.1107, flag: "ok"}
+        - {position: "C1", value: 0.1137, flag: "ok"}
+        - {position: "C2", value: 0.1147, flag: "ok"}
+        - {position: "C3", value: 0.1143, flag: "ok"}
+        - {position: "C4", value: 0.1129, flag: "ok"}
+        - {position: "C5", value: 0.1114, flag: "ok"}
+        - {position: "C6", value: 0.1117, flag: "ok"}
+        - {position: "C7", value: 0.1109, flag: "ok"}
+        - {position: "C8", value: 0.1130, flag: "ok"}
+        - {position: "C9", value: 0.1115, flag: "ok"}
+        - {position: "C10", value: 0.1120, flag: "ok"}
+        - {position: "C11", value: 0.1117, flag: "ok"}
+        - {position: "C12", value: 0.1122, flag: "ok"}
+        - {position: "D1", value: 0.1223, flag: "ok"}
+        - {position: "D2", value: 0.2559, flag: "ok"}
+        - {position: "D3", value: 0.1127, flag: "ok"}
+        - {position: "D4", value: 0.1780, flag: "ok"}
+        - {position: "D5", value: 0.5480, flag: "ok"}
+        - {position: "D6", value: 0.1117, flag: "ok"}
+        - {position: "D7", value: 0.1132, flag: "ok"}
+        - {position: "D8", value: 0.1150, flag: "ok"}
+        - {position: "D9", value: 0.1122, flag: "ok"}
+        - {position: "D10", value: 0.1155, flag: "ok"}
+        - {position: "D11", value: 0.1134, flag: "ok"}
+        - {position: "D12", value: 0.1117, flag: "ok"}
+        - {position: "E1", value: 0.2322, flag: "ok"}
+        - {position: "E2", value: 0.1110, flag: "ok"}
+        - {position: "E3", value: 0.1145, flag: "ok"}
+        - {position: "E4", value: 0.1129, flag: "ok"}
+        - {position: "E5", value: 0.1407, flag: "ok"}
+        - {position: "E6", value: 0.2188, flag: "ok"}
+        - {position: "E7", value: 0.1163, flag: "ok"}
+        - {position: "E8", value: 0.5265, flag: "ok"}
+        - {position: "E9", value: 0.1107, flag: "ok"}
+        - {position: "E10", value: 0.1223, flag: "ok"}
+        - {position: "E11", value: 0.1193, flag: "ok"}
+        - {position: "E12", value: 0.2029, flag: "ok"}
+        - {position: "F1", value: 0.1170, flag: "ok"}
+        - {position: "F2", value: 0.1119, flag: "ok"}
+        - {position: "F3", value: 0.2015, flag: "ok"}
+        - {position: "F4", value: 0.1290, flag: "ok"}
+        - {position: "F5", value: 0.5930, flag: "ok"}
+        - {position: "F6", value: 0.2213, flag: "ok"}
+        - {position: "F7", value: 0.1308, flag: "ok"}
+        - {position: "F8", value: 0.1211, flag: "ok"}
+        - {position: "F9", value: 0.1855, flag: "ok"}
+        - {position: "F10", value: 0.1277, flag: "ok"}
+        - {position: "F11", value: 0.1257, flag: "ok"}
+        - {position: "F12", value: 0.1582, flag: "ok"}
+        - {position: "G1", value: 2.0214, flag: "outlier"}
+        - {position: "G2", value: 0.1125, flag: "ok"}
+        - {position: "G3", value: 0.1209, flag: "ok"}
+        - {position: "G4", value: 0.1122, flag: "ok"}
+        - {position: "G5", value: 0.2148, flag: "ok"}
+        - {position: "G6", value: 0.1219, flag: "ok"}
+        - {position: "G7", value: 0.1130, flag: "ok"}
+        - {position: "G8", value: 0.1723, flag: "ok"}
+        - {position: "G9", value: 0.1224, flag: "ok"}
+        - {position: "G10", value: 0.1247, flag: "ok"}
+        - {position: "G11", value: 0.1209, flag: "ok"}
+        - {position: "G12", value: 0.1148, flag: "ok"}
+        - {position: "H1", value: 0.0693, flag: "blank"}
+        - {position: "H2", value: 0.0716, flag: "blank"}
+        - {position: "H3", value: 0.0705, flag: "blank"}
+        - {position: "H4", value: 0.0699, flag: "blank"}
+        - {position: "H5", value: 0.0711, flag: "blank"}
+        - {position: "H6", value: 0.0710, flag: "blank"}
+        - {position: "H7", value: 0.0703, flag: "blank"}
+        - {position: "H8", value: 0.0681, flag: "blank"}
+        - {position: "H9", value: 0.0687, flag: "blank"}
+        - {position: "H10", value: 0.0712, flag: "blank"}
+        - {position: "H11", value: 0.0707, flag: "blank"}
+        - {position: "H12", value: 0.0698, flag: "blank"}
+
+  - id: "urn:amp2:prod:complex-t24h"
+    product_type: "AMP2ODProduct"
+    activity_id: "urn:amp2:act:dga-complex-t24h"
+    plate_barcode: "EPix1-complex"
+    timepoint_label: "t=24h"
+    wavelength_nm: 600
+    plate_average: 0.2103
+    blank_mean: 0.0702
+    cv_percent: 129.15
+    plate_reader_model: "Tecan Spark"
+    well_readings:
+        - {position: "A1", value: 0.1368, flag: "ok"}
+        - {position: "A2", value: 0.1578, flag: "ok"}
+        - {position: "A3", value: 0.1362, flag: "ok"}
+        - {position: "A4", value: 0.1352, flag: "ok"}
+        - {position: "A5", value: 0.1344, flag: "ok"}
+        - {position: "A6", value: 0.1458, flag: "ok"}
+        - {position: "A7", value: 0.1666, flag: "ok"}
+        - {position: "A8", value: 0.1344, flag: "ok"}
+        - {position: "A9", value: 0.1336, flag: "ok"}
+        - {position: "A10", value: 0.1352, flag: "ok"}
+        - {position: "A11", value: 0.1394, flag: "ok"}
+        - {position: "A12", value: 0.1330, flag: "ok"}
+        - {position: "B1", value: 0.1358, flag: "ok"}
+        - {position: "B2", value: 0.1424, flag: "ok"}
+        - {position: "B3", value: 0.5724, flag: "ok"}
+        - {position: "B4", value: 0.1370, flag: "ok"}
+        - {position: "B5", value: 0.1386, flag: "ok"}
+        - {position: "B6", value: 0.1386, flag: "ok"}
+        - {position: "B7", value: 0.4286, flag: "ok"}
+        - {position: "B8", value: 0.1364, flag: "ok"}
+        - {position: "B9", value: 0.1372, flag: "ok"}
+        - {position: "B10", value: 0.1820, flag: "ok"}
+        - {position: "B11", value: 0.1380, flag: "ok"}
+        - {position: "B12", value: 0.1342, flag: "ok"}
+        - {position: "C1", value: 0.1378, flag: "ok"}
+        - {position: "C2", value: 0.1390, flag: "ok"}
+        - {position: "C3", value: 0.1386, flag: "ok"}
+        - {position: "C4", value: 0.1368, flag: "ok"}
+        - {position: "C5", value: 0.1350, flag: "ok"}
+        - {position: "C6", value: 0.1354, flag: "ok"}
+        - {position: "C7", value: 0.1344, flag: "ok"}
+        - {position: "C8", value: 0.1370, flag: "ok"}
+        - {position: "C9", value: 0.1352, flag: "ok"}
+        - {position: "C10", value: 0.1358, flag: "ok"}
+        - {position: "C11", value: 0.1354, flag: "ok"}
+        - {position: "C12", value: 0.1360, flag: "ok"}
+        - {position: "D1", value: 0.1482, flag: "ok"}
+        - {position: "D2", value: 0.3102, flag: "ok"}
+        - {position: "D3", value: 0.1366, flag: "ok"}
+        - {position: "D4", value: 0.2158, flag: "ok"}
+        - {position: "D5", value: 0.6642, flag: "ok"}
+        - {position: "D6", value: 0.1354, flag: "ok"}
+        - {position: "D7", value: 0.1372, flag: "ok"}
+        - {position: "D8", value: 0.1394, flag: "ok"}
+        - {position: "D9", value: 0.1360, flag: "ok"}
+        - {position: "D10", value: 0.1400, flag: "ok"}
+        - {position: "D11", value: 0.1374, flag: "ok"}
+        - {position: "D12", value: 0.1354, flag: "ok"}
+        - {position: "E1", value: 0.2814, flag: "ok"}
+        - {position: "E2", value: 0.1346, flag: "ok"}
+        - {position: "E3", value: 0.1388, flag: "ok"}
+        - {position: "E4", value: 0.1368, flag: "ok"}
+        - {position: "E5", value: 0.1706, flag: "ok"}
+        - {position: "E6", value: 0.2652, flag: "ok"}
+        - {position: "E7", value: 0.1410, flag: "ok"}
+        - {position: "E8", value: 0.6382, flag: "ok"}
+        - {position: "E9", value: 0.1342, flag: "ok"}
+        - {position: "E10", value: 0.1482, flag: "ok"}
+        - {position: "E11", value: 0.1446, flag: "ok"}
+        - {position: "E12", value: 0.2460, flag: "ok"}
+        - {position: "F1", value: 0.1418, flag: "ok"}
+        - {position: "F2", value: 0.1356, flag: "ok"}
+        - {position: "F3", value: 0.2442, flag: "ok"}
+        - {position: "F4", value: 0.1564, flag: "ok"}
+        - {position: "F5", value: 0.7188, flag: "ok"}
+        - {position: "F6", value: 0.2682, flag: "ok"}
+        - {position: "F7", value: 0.1586, flag: "ok"}
+        - {position: "F8", value: 0.1468, flag: "ok"}
+        - {position: "F9", value: 0.2248, flag: "ok"}
+        - {position: "F10", value: 0.1548, flag: "ok"}
+        - {position: "F11", value: 0.1524, flag: "ok"}
+        - {position: "F12", value: 0.1918, flag: "ok"}
+        - {position: "G1", value: 2.4502, flag: "outlier"}
+        - {position: "G2", value: 0.1364, flag: "ok"}
+        - {position: "G3", value: 0.1466, flag: "ok"}
+        - {position: "G4", value: 0.1360, flag: "ok"}
+        - {position: "G5", value: 0.2604, flag: "ok"}
+        - {position: "G6", value: 0.1478, flag: "ok"}
+        - {position: "G7", value: 0.1370, flag: "ok"}
+        - {position: "G8", value: 0.2088, flag: "ok"}
+        - {position: "G9", value: 0.1484, flag: "ok"}
+        - {position: "G10", value: 0.1512, flag: "ok"}
+        - {position: "G11", value: 0.1466, flag: "ok"}
+        - {position: "G12", value: 0.1392, flag: "ok"}
+        - {position: "H1", value: 0.0693, flag: "blank"}
+        - {position: "H2", value: 0.0716, flag: "blank"}
+        - {position: "H3", value: 0.0705, flag: "blank"}
+        - {position: "H4", value: 0.0699, flag: "blank"}
+        - {position: "H5", value: 0.0711, flag: "blank"}
+        - {position: "H6", value: 0.0710, flag: "blank"}
+        - {position: "H7", value: 0.0703, flag: "blank"}
+        - {position: "H8", value: 0.0681, flag: "blank"}
+        - {position: "H9", value: 0.0687, flag: "blank"}
+        - {position: "H10", value: 0.0712, flag: "blank"}
+        - {position: "H11", value: 0.0707, flag: "blank"}
+        - {position: "H12", value: 0.0698, flag: "blank"}

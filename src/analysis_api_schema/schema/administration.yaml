@@ -1,10 +1,8 @@
-id: https://w3id.org/MONet/analysis-api-schema
-name: analysis-api-schema
-title: MONet Analysis API Schema
+id: https://w3id.org/MONet/analysis-api-schema/administration
+name: analysis-api-schema-administration
+title: MONet Analysis API - Administration
 description: |-
-  LinkML-based schema for MONet soil analysis data management and metadata enrichment.
-  This schema defines the data models for samples, processed samples, site metadata,
-  and enrichment providers used in the MONet Analysis API.
+  Administration-related classes for the MONet Analysis API.
 license: MIT
 see_also:
   - https://MONet.github.io/analysis-api-schema
@@ -20,7 +18,7 @@ imports:
   - linkml:types
 
 classes:
-  changelog:
+  Changelog:
     attributes:
       version:
         identifier: true

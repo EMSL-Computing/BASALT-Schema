@@ -1,6 +1,6 @@
-id: https://w3id.org/MONet/analysis-api-schema/enums
-name: analysis-api-schema-enums
-title: MONet Analysis API - Enumerations
+id: https://w3id.org/MONet/analysis-api-schema/products
+name: analysis-api-schema-products
+title: MONet Analysis API - Products
 description: |-
   Enumerated values used throughout the MONet Analysis API schema
 license: MIT
@@ -15,106 +15,65 @@ imports:
   - linkml:types
   - enums
   - analysis_api_schema
-
-slots:
-  measure_type:
-    range: productmeasuretype
-  rep:
-    range: numeric
-  aq:
-    range: numeric
+  - slots
 
 classes:
 
   BulkDensityProduct:
+    is_a: ProcessedData
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       bulk_density_id:
-        range: quantityValue
+        range: QuantityValue
       flag:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   ElementalAnalysisProduct:
+    is_a: ProcessedData
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       total_carbon_id:
-        range: quantityValue
+        range: QuantityValue
       total_nitrogen_id:
-        range: quantityValue
+        range: QuantityValue
       total_kjeldahl_nitrogen_id:
-        range: quantityValue
+        range: QuantityValue
       total_sulfur_id:
-        range: quantityValue
+        range: QuantityValue
       flag_total_carbon:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_total_nitrogen:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_tkn:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_total_sulfur:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   EnzymeProduct:
+    is_a: ProcessedData
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       beta_glucosidase_ug_pnp_per_g_per_h_id:
-        range: quantityValue
+        range: QuantityValue
       flag:
-        range: processeddataflag
-
-  FTICRProduct:
-    slots:
-      - id
-      - measure_type
-      - rep
-      - aq
-    attributes:
-      id:
-        identifier: true
-        range: processedData
-      h_c_average:
-        range: double
-      o_c_average:
-        range: double
-      c_average:
-        range: double
-      percent_mz_assigned_id:
-        range: quantityValue
-      rms_id:
-        range: quantityValue
-      dbe_average:
-        range: double
-      low_mass_accuracy_flag:
-        range: boolean # TODO should be processeddataflag
-      low_mz_assignment_flag:
-        range: boolean # TODO should be processeddataflag
+        range: ProcessedDataFlag
 
   GWCMoistureProduct:
+    is_a: ProcessedData
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       gwc_percent_id:
-        range: quantityValue
+        range: QuantityValue
       flag:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   
   HydraulicPropertiesProduct:
+    is_a: ProcessedData
     description: >-
       Soil hydraulic parameters derived from HYPROP evaporation-experiment data. One row per core section; the four
       attributes are the four VGM model parameters.  Proposal_ID, sampling_set,
@@ -122,12 +81,9 @@ classes:
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       alpha:
         description: >-
-          Van Genuchten shape parameter α (1/cm). Controls the inverse of the
+          Van Genuchten shape parameter alpha (1/cm). Controls the inverse of the
           air-entry suction; typically fitted by HYPROP-FIT or similar software.
         range: double
       n:
@@ -137,215 +93,190 @@ classes:
         range: double
       theta_r:
         description: >-
-          Residual volumetric water content θ_r (cm³ cm⁻³). The water content
+          Residual volumetric water content theta_r (cm3 cm). The water content
           at which liquid conductivity approaches zero.
         range: double
       theta_s:
         description: >-
-          Saturated volumetric water content θ_s (cm³ cm⁻³). Approximates
+          Saturated volumetric water content theta_s (cm3 cm e-3). Approximates
           total porosity under saturated conditions.
         range: double
       flag:
         description: QC flag for the entire VGM fit (e.g. missing sample, failed QC).
-        range: processeddataflag
+        range: ProcessedDataFlag
       
   IonsAnalysisProduct:
+    is_a: ProcessedData
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       sulfate_id:
-        range: quantityValue
+        range: QuantityValue
       boron_id:
-        range: quantityValue
+        range: QuantityValue
       zinc_id:
-        range: quantityValue
+        range: QuantityValue
       manganate_id:
-        range: quantityValue
+        range: QuantityValue
       copper_id:
-        range: quantityValue
+        range: QuantityValue
       iron_id:
-        range: quantityValue
+        range: QuantityValue
       calcium_id:
-        range: quantityValue
+        range: QuantityValue
       magnesium_id:
-        range: quantityValue
+        range: QuantityValue
       sodium_id:
-        range: quantityValue
+        range: QuantityValue
       potassium_id:
-        range: quantityValue
+        range: QuantityValue
       total_bases_id:
-        range: quantityValue
+        range: QuantityValue
       cation_exchange_capacity_id:
-        range: quantityValue
+        range: QuantityValue
       flag_sulfate:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_boron:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_zinc:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_manganate:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_copper:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_iron:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_calcium:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_magnesium:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_sodium:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_potassium:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_total_bases:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_cec:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   MAOMProduct:
     slots:
       - measure_type
-      - rep
+      - replicate
     attributes:
       id:
         identifier: true
-        range: processedData
+        range: ProcessedData
       total_organic_carbon_id:
-        range: quantityValue
+        range: QuantityValue
       total_organic_carbon_avg:
         range: double
       total_nitrogen_id:
-        range: quantityValue
+        range: QuantityValue
       total_nitrogen_avg:
         range: double
       flag_toc:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_tn:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_toc_avg:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_tn_avg:
-        range: processeddataflag
-
-  MetaGenomicsProduct:
-    slots:
-    attributes:
-      id:
-        identifier: true
-        range: processedData
-      input_to_step:
-        range: metagenomicssteps
-      output_to_step:
-        range: metagenomicssteps
-        required: true
+        range: ProcessedDataFlag
 
   MicrobialBiomassProduct:
+    is_a: ProcessedData
     slots:
       - measure_type
-      - rep
+      - replicate
     attributes:
-      id:
-        identifier: true
-        range: processedData
       mbc_id:
-        range: quantityValue
+        range: QuantityValue
       mbc_avg:
         range: double
       mbn_id:
-        range: quantityValue
+        range: QuantityValue
       mbn_avg:
         range: double
       flag_mbc:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_mbn:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_mbc_avg:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_mbn_avg:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   NitrogenAnalysisProduct:
+    is_a: ProcessedData
     slots:
       - measure_type
-      - rep
+      - replicate
     attributes:
-      id:
-        identifier: true
-        range: processedData
       no3_n_id:
-        range: quantityValue
+        range: QuantityValue
       no3_n_avg:
         range: double
       nh4_n_id:
-        range: quantityValue
+        range: QuantityValue
       nh4_n_avg:
         range: double
       flag_no3n:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_nh4n:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_no3n_avg:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_nh4n_avg:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   PhosphorusAnalysisProduct:
+    is_a: ProcessedData
     slots:
       - measure_type
-      - rep
+      - replicate
     attributes:
-      id:
-        identifier: true
-        range: processedData
       extraction_method:
         range: string
       phosphorus_id:
-        range: quantityValue
+        range: QuantityValue
       phosphorus_avg:
         range: double
       flag:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_avg:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   RespirationProduct:
+    is_a: ProcessedData
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
-      respiration_rate_per_day_id:
-        range: quantityValue
+      respiration_co2_c_ug_per_g:
+        description: Soil respiration expressed as µg CO₂-C per gram soil
+        range: double
       flag:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   TextureProduct:
+    is_a: ProcessedData
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       sand_pct_id:
-        range: quantityValue
+        range: QuantityValue
       silt_pct_id:
-        range: quantityValue
+        range: QuantityValue
       clay_pct_id:
-        range: quantityValue
+        range: QuantityValue
       flag:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   TomographyProduct:
+    is_a: ProcessedData
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       roi_volume_voxel:
         range: double
       voxel_size:
@@ -385,42 +316,329 @@ classes:
       tortuosity_z:
         range: double
       flag_xct:
-        # range: processeddataflag
+        # range: ProcessedDataFlag
         range: string
 
   WEOMProduct:
     slots:
       - measure_type
-      - rep
+      - replicate
     attributes:
       id:
         identifier: true
-        range: processedData
+        range: ProcessedData
       total_organic_carbon_id:
-        range: quantityValue
+        range: QuantityValue
       total_organic_carbon_avg:
         range: double
       total_nitrogen_id:
-        range: quantityValue
+        range: QuantityValue
       total_nitrogen_avg:
         range: double
       flag_toc:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_tn:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_toc_avg:
-        range: processeddataflag
+        range: ProcessedDataFlag
       flag_tn_avg:
-        range: processeddataflag
+        range: ProcessedDataFlag
 
   pHProduct:
+    is_a: ProcessedData
     slots:
       - measure_type
     attributes:
-      id:
-        identifier: true
-        range: processedData
       ph:
         range: double
       flag:
-        range: processeddataflag
+        range: ProcessedDataFlag
+
+  XRayDataProduct:
+    is_a: ProcessedData
+    abstract: true
+    description: |-
+      Abstract base class for X-ray analytical data products.
+      Inherits S3 storage metadata and sample linkage from dataProduct via ProcessedData.
+      
+      Concrete subclasses:
+        - XRFElementalProduct: elemental concentrations (one row per sample)
+        - XRDPhaseProduct: mineral phases (one row per sample)
+      
+      Common patterns:
+        - s3_key points to raw spectrum/diffractogram file in MinIO
+        - summary_metrics provides lightweight queryable summaries:
+            XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
+            XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
+        - workflow_id is NULL for direct instrument output (XRF typical)
+        - workflow_id links to DataProcessingActivity for computational processing (XRD Rietveld) 
+
+
+  # ---------------------------------------------------------------------------
+  # XRFElementalProduct   X-ray Fluorescence Elemental Data
+  # ---------------------------------------------------------------------------
+  XRFElementalProduct:
+    is_a: XRayDataProduct
+    description: |-
+      X-ray Fluorescence (XRF) elemental concentration data.
+      One row per sample with columns for each element measured.
+      
+      Follows the wide-format pattern established by IonsAnalysisProduct.
+      Element concentrations in mg/kg (parts per million dry weight basis) as float values.
+      Individual QC flags for each element using ProcessedDataFlag enum.
+      
+      Relationship to core tables:
+        - id: FK -> processedData.id (1:1 linkage)
+        - processedData.type = 'XRFElementalProduct'
+        - processedData.workflow_id = NULL (direct acquisition; no computational WEA)
+        - processedData.summary_metrics = {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, ...}
+        - processedData.s3_key = path to raw spectrum or calibrated CSV in MinIO
+      
+      Standard XRF element panel (27 elements):
+        Trace metals: Cl, V, Cr, Ni, Cu, Zn, Ga, As, Se, Br, Rb, Sr, Y, Nb, Mo,
+                      Ag, Cd, In, Sn, Sb, Cs, Ba, La, Ce, Pb, Th, U
+      
+      Required enum additions to enums.yaml:
+        product:
+          XRFElementalProduct:  # Add to product permissible_values
+    slots:
+      - measure_type
+    attributes:
+      # --- Element concentrations in mg/kg (float) ---
+      cl_mg_per_kg:
+        description: Chlorine concentration in mg/kg
+        range: float
+      v_mg_per_kg:
+        description: Vanadium concentration in mg/kg
+        range: float
+      cr_mg_per_kg:
+        description: Chromium concentration in mg/kg
+        range: float
+      ni_mg_per_kg:
+        description: Nickel concentration in mg/kg
+        range: float
+      cu_mg_per_kg:
+        description: Copper concentration in mg/kg
+        range: float
+      zn_mg_per_kg:
+        description: Zinc concentration in mg/kg
+        range: float
+      ga_mg_per_kg:
+        description: Gallium concentration in mg/kg
+        range: float
+      as_mg_per_kg:
+        description: Arsenic concentration in mg/kg
+        range: float
+      se_mg_per_kg:
+        description: Selenium concentration in mg/kg
+        range: float
+      br_mg_per_kg:
+        description: Bromine concentration in mg/kg
+        range: float
+      rb_mg_per_kg:
+        description: Rubidium concentration in mg/kg
+        range: float
+      sr_mg_per_kg:
+        description: Strontium concentration in mg/kg
+        range: float
+      y_mg_per_kg:
+        description: Yttrium concentration in mg/kg
+        range: float
+      nb_mg_per_kg:
+        description: Niobium concentration in mg/kg
+        range: float
+      mo_mg_per_kg:
+        description: Molybdenum concentration in mg/kg
+        range: float
+      ag_mg_per_kg:
+        description: Silver concentration in mg/kg
+        range: float
+      cd_mg_per_kg:
+        description: Cadmium concentration in mg/kg
+        range: float
+      in_mg_per_kg:
+        description: Indium concentration in mg/kg
+        range: float
+      sn_mg_per_kg:
+        description: Tin concentration in mg/kg
+        range: float
+      sb_mg_per_kg:
+        description: Antimony concentration in mg/kg
+        range: float
+      cs_mg_per_kg:
+        description: Cesium concentration in mg/kg
+        range: float
+      ba_mg_per_kg:
+        description: Barium concentration in mg/kg
+        range: float
+      la_mg_per_kg:
+        description: Lanthanum concentration in mg/kg
+        range: float
+      ce_mg_per_kg:
+        description: Cerium concentration in mg/kg
+        range: float
+      pb_mg_per_kg:
+        description: Lead concentration in mg/kg
+        range: float
+      th_mg_per_kg:
+        description: Thorium concentration in mg/kg
+        range: float
+      u_mg_per_kg:
+        description: Uranium concentration in mg/kg
+        range: float
+      # --- QC flags (using existing ProcessedDataFlag enum) ---
+      flag_cl:
+        range: ProcessedDataFlag
+      flag_v:
+        range: ProcessedDataFlag
+      flag_cr:
+        range: ProcessedDataFlag
+      flag_ni:
+        range: ProcessedDataFlag
+      flag_cu:
+        range: ProcessedDataFlag
+      flag_zn:
+        range: ProcessedDataFlag
+      flag_ga:
+        range: ProcessedDataFlag
+      flag_as:
+        range: ProcessedDataFlag
+      flag_se:
+        range: ProcessedDataFlag
+      flag_br:
+        range: ProcessedDataFlag
+      flag_rb:
+        range: ProcessedDataFlag
+      flag_sr:
+        range: ProcessedDataFlag
+      flag_y:
+        range: ProcessedDataFlag
+      flag_nb:
+        range: ProcessedDataFlag
+      flag_mo:
+        range: ProcessedDataFlag
+      flag_ag:
+        range: ProcessedDataFlag
+      flag_cd:
+        range: ProcessedDataFlag
+      flag_in:
+        range: ProcessedDataFlag
+      flag_sn:
+        range: ProcessedDataFlag
+      flag_sb:
+        range: ProcessedDataFlag
+      flag_cs:
+        range: ProcessedDataFlag
+      flag_ba:
+        range: ProcessedDataFlag
+      flag_la:
+        range: ProcessedDataFlag
+      flag_ce:
+        range: ProcessedDataFlag
+      flag_pb:
+        range: ProcessedDataFlag
+      flag_th:
+        range: ProcessedDataFlag
+      flag_u:
+        range: ProcessedDataFlag
+
+
+  # ---------------------------------------------------------------------------
+  # XRDPhaseProduct   X-ray Diffraction Mineralogical Data
+  # ---------------------------------------------------------------------------
+  XRDPhaseProduct:
+    is_a: XRayDataProduct
+    description: |-
+      X-ray Diffraction (XRD) mineral phase identification and quantification data.
+      One row per sample with columns for each mineral phase identified.
+      
+      Follows the wide-format pattern with individual weight percent columns.
+      Individual QC flags for each mineral using ProcessedDataFlag enum.
+      
+      Relationship to core tables:
+        - id: FK -> processedData.id (1:1 linkage)
+        - processedData.type = 'XRDPhaseProduct'
+        - processedData.workflow_id -> DataProcessingActivity if Rietveld refinement
+          is computational; NULL if manual/semi-quantitative
+        - processedData.summary_metrics = {"quartz_percent":42, "albite_percent":18, ...}
+        - processedData.s3_key = diffractogram .xy, .xrdml, or .raw file in MinIO
+      
+      Standard soil mineral panel (10 major phases):
+        Primary minerals: quartz, albite, microcline
+        Phyllosilicates: muscovite, kaolinite, chlorite
+        Amphiboles: hornblende
+        Sulfides and evaporites: pyrite, halite, gypsum
+      
+      Quantification methods:
+        - Rietveld refinement (computational, most accurate)
+        - Reference intensity ratio (RIR) method
+        - Semi-quantitative (manual, less precise)
+      
+      Computational processing workflow (if applicable):
+        XRDDataGenerationActivity acquires raw diffractogram ->
+        DataProcessingActivity (type='xrd_rietveld_refinement') processes with
+        HighScore Plus, GSAS-II, or FullProf ->
+        XRDPhaseProduct (workflow_id points to refinement WEA)
+        
+        workflow_steps JSONB example:
+          {"software": "HighScore_Plus", "version": "5.1", "method": "Rietveld",
+           "r_factor": 0.042, "gof": 1.8, "amorphous_content_pct": 12}
+      
+      Required enum additions to enums.yaml:
+        product:
+          XRDPhaseProduct:  # Add to product permissible_values
+    slots:
+      - measure_type
+    attributes:
+      # --- Mineral phase weight percentages ---
+      quartz_percent:
+        description: Quartz (SiO2) weight percent
+        range: float
+      albite_percent:
+        description: Albite (NaAlSi3O8) weight percent
+        range: float
+      microcline_percent:
+        description: Microcline (KAlSi3O8) weight percent
+        range: float
+      muscovite_percent:
+        description: Muscovite (KAl2(AlSi3O10)(OH)2) weight percent
+        range: float
+      kaolinite_percent:
+        description: Kaolinite (Al2Si2O5(OH)4) weight percent
+        range: float
+      chlorite_percent:
+        description: Chlorite ((Mg,Fe)3(Si,Al)4O10(OH)2 (Mg,Fe)3(OH)6) weight percent
+        range: float
+      hornblende_percent:
+        description: Hornblende (Ca,Na)2-3(Mg,Fe,Al)5(Al,Si)8O22(OH)2 weight percent
+        range: float
+      pyrite_percent:
+        description: Pyrite (FeS2) weight percent
+        range: float
+      halite_percent:
+        description: Halite (NaCl) weight percent
+        range: float
+      gypsum_percent:
+        description: Gypsum (CaSO4 2H2O) weight percent
+        range: float
+      # --- QC flags (using existing ProcessedDataFlag enum) ---
+      flag_quartz:
+        range: ProcessedDataFlag
+      flag_albite:
+        range: ProcessedDataFlag
+      flag_microcline:
+        range: ProcessedDataFlag
+      flag_muscovite:
+        range: ProcessedDataFlag
+      flag_kaolinite:
+        range: ProcessedDataFlag
+      flag_chlorite:
+        range: ProcessedDataFlag
+      flag_hornblende:
+        range: ProcessedDataFlag
+      flag_pyrite:
+        range: ProcessedDataFlag
+      flag_halite:
+        range: ProcessedDataFlag
+      flag_gypsum:
+        range: ProcessedDataFlag

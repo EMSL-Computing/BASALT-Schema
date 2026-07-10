@@ -1,6 +1,6 @@
 ---
 # =============================================================================
-# Phosphorus Analysis — Ingest Validation Schema
+# Phosphorus Analysis   Ingest Validation Schema
 # =============================================================================
 # Source class:  PhosphorusAnalysisProduct (products.yaml)
 # Analysis type: "p_ext" (lims_processed_data_schema.yaml AnalysisTypeEnum)

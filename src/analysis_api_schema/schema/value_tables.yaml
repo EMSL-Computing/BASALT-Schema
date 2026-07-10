@@ -1,6 +1,6 @@
-id: https://w3id.org/MONet/analysis-api-schema/value_tables.yaml
-name: analysis-api-schema-value_tables
-title: MONet Analysis API - Enumerations
+id: https://w3id.org/MONet/analysis-api-schema/value-tables
+name: analysis-api-schema-value-tables
+title: MONet Analysis API - Value Tables
 description: value tables
 license: MIT
 
@@ -12,87 +12,64 @@ default_prefix: analysis_api_schema
 
 imports:
   - linkml:types
-
-slots:
-  id:
-    identifier: true
-    range: uuid
-  email:
-    range: string
-
+  - slots
 
 classes:
-  timestampValue:
+  TimestampValue:
     slots:
-      - id
+      - description
     attributes:
-      # id:
-      #   identifier: true
-      #   range: string
+      id:
+        identifier: true
+        range: string
       description:
         range: string
       has_raw_value:
         range: string
-      type:
-        range: string
-      was_generated_by:
-        range: string
 
-  textValue:
+  TextValue:
     slots:
-      - id
+      - description
     attributes:
-      # id:
-      #   identifier: true
-      #   range: string
-      description:
+      id:
+        identifier: true
         range: string
       language:
         range: string
       has_raw_value:
         range: string
-      type:
-        range: string
-      was_generated_by:
-        range: string
 
-  softwareControlledTermValue:
+  SoftwareControlledTermValue:
     slots:
-      - id
+      - name
+      - description
+      - version
     attributes:
-      # id:
-      #   identifier: true
-      #   range: string
-      description:
-        range: string
-      name:
-        range: string
-      version:
+      id:
+        identifier: true
         range: string
       has_raw_value:
         range: string
-      was_generated_by:
-        range: string
-      type:
-        range: string
 
-  controlledTermValue:
+  ControlledTermValue:
     slots:
-      - id
+      - description
     attributes:
-      # id:
-      #   identifier: true
-      #   range: string
-      description:
+      id:
+        identifier: true
         range: string
       has_raw_value:
         range: string
-      was_generated_by:
+      term:
         range: string
-      type:
+      term_id:
+        description: pointer to an ontology class
+        range: uriorcurie
+      controlled_term_provider:
+        description: name of ontology or other controlled term provider
         range: string
 
-  personValue:
+  PersonValue:
     slots:
       - email
     attributes:
@@ -107,29 +84,26 @@ classes:
         required: true
       middle_initial:
         range: string
-      # email:
-      #   range: string
       orcid:
         range: string
+        description: ORCID identifier of the person
       profile_image_url:
         range: string
       websites:
         range: string # TODO ARRAY
     unique_keys:
-      personValue_email_key:
+      PersonValue_email_key:
         unique_key_slots:
           - email
 
-  
-  quantityValue:
+  QuantityValue:
     slots:
-      - id
+      - description
     description: A quantity value with numeric value and optional unit
     attributes:
-      # id:
-      #   identifier: true
-      #   range: uuid
-      description:
+      id:
+        identifier: true
+        range: uuid
       has_value_unit:
       has_unit:
         description: The human-readable unit name
@@ -142,32 +116,12 @@ classes:
         range: numeric
       has_raw_value:
 
-  geolocationValue:
-    slots:
-      - id
+  ConditioningValue:
     attributes:
-      # id:
-      #   identifier: true
-      #   range: uuid
-      description:
-      has_raw_value:
-      latitude:
-        range: numeric
-      longitude:
-        range: numeric
-      type:
-      was_generated_by:
-
-  conditioningValue:
-    slots:
-      - id
-    attributes:
-      # id:
-      #   identifier: true
-      #   range: string
-      source_material:
+      id:
+        identifier: true
         range: string
-      type:
+      source_material:
         range: string
       instrument:
         range: string
@@ -177,21 +131,3 @@ classes:
         range: string
       has_raw_value:
         range: string
-
-  latLongValue:
-    slots:
-      - id
-    attributes:
-      # id:
-      #   identifier: true
-      #   range: string
-      description:
-        range: string
-      has_raw_value:
-        range: string
-      latitude:
-        range: double # should probably be numeric
-        required: true
-      longitude:
-        range: double # should probably be numeric
-        required: true

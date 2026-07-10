@@ -16,32 +16,7 @@ imports:
   - linkml:types
 
 enums:
-
-  samplebasetype:
-    description: Base types for sample entities
-    permissible_values:
-      sample:
-        description: A physical sample
-      processed_sample:
-        description: A sample that has undergone processing
-
-  sampletype:
-    description: Types of samples that can be collected
-    permissible_values:
-      soil_sample:
-        description: Soil sample
-      aerosol_sample:
-        description: Aerosol sample
-
-  soiltype:
-    description: Specific types of soil samples
-    permissible_values:
-      soil_core:
-        description: Soil core sample
-      surface_layer:
-        description: Surface layer soil sample
-
-  aerosoltype:
+  AerosolTypeEnum:
     description: Types of aerosol samples
     permissible_values:
       sea_salt:
@@ -51,17 +26,309 @@ enums:
       volcanic_ash:
         description: Volcanic ash aerosol
 
-  processedsampletype:
-    description: Types of processed samples
+  AlternateIdentifierType:
     permissible_values:
-      analyte:
-        description: Analyte sample
-      coreSection:
-        description: Core section sample
-      replicate:
-        description: Replicate sample
+      instrument_alt_id:
 
-  coresectionenum:
+  AnalysisTypeEnum:
+    description: Enumeration of common analyses performed on samples shipped to EMSL
+    permissible_values:
+      - metabolome
+      - proteome
+      - lipidome
+      - organic matter
+      - molecular structure
+      - chemical speciation mapping
+      - genome
+      - transcriptome
+      - isotope profiling
+      - imaging- xray
+      - imaging- electron
+      - imaging- ion
+      - imaging- light
+      - hydraulic properties
+      - unknown
+
+  AnalyteCategoryEnum:
+    description: bundling common terms for different omics types by biomolecule being analyzed
+    permissible_values:
+      dna:
+        aliases:
+        - genome
+        - genomics
+        - metagenome
+        - metagenomics
+        - metaG
+      rna:
+        aliases:
+        - transcriptome
+        - transcriptomics
+        - metatranscriptome
+        - metatranscriptomics
+        - metaT
+      protein:
+        aliases:
+        - proteins
+        - proteome
+        - proteomics
+        - metaproteome
+        - metaproteomics
+        - metaP
+      metabolite:
+        aliases:
+        - metabolites
+        - metabolome
+        - metabolomics
+      lipid:
+        aliases:
+        - lipids
+        - lipidome
+        - lipidomics
+      natural_organic_matter:
+        aliases:
+        - NOM
+      unknown:
+
+  AnnotationDatabaseEnum:
+    permissible_values:
+      PFAM:
+      COG:
+      KEGG:
+
+  BinQuality:
+    permissible_values:
+      HQ:
+      MQ:
+      LQ:
+
+  BiolStatEnum:
+    permissible_values:
+      wild:
+      natural:
+      semi-natural:
+      inbred line:
+      breeder's line:
+      hybrid:
+      clonal selection:
+      mutant:
+
+  BioticRelationshipEnum:
+    description: Sample biotic relationships
+    aliases:
+      - sampbioticenum
+    permissible_values:
+      free_living:
+        description: Free-living organism
+      parasite:
+        description: Parasitic organism
+      commensal:
+        description: Commensal organism
+      symbiont:
+        description: Symbiotic organism
+
+  CalibrationTargetEnum:
+    permissible_values:
+      mass_charge_ratio:
+        text: mass_charge_ratio
+        title: m/z
+        aliases:
+        - Mass
+        - m/z
+      retention_time:
+        text: retention_time
+        aliases:
+        - RT
+      retention_index:
+        text: retention_index
+        aliases:
+        - RI
+
+  CardinalDirectionEnum:
+    permissible_values:
+      north:
+      north_east:
+        aliases: ["north east"]
+      east:
+      south_east:
+        aliases: ["south east"]
+      south:
+      south_west:
+        aliases: ["south west"]
+      west:
+      north_west:
+        aliases: ["north west"]
+
+  ChemicalEntityEnum:
+    description: Common names or identifiers for chemical entities.
+    permissible_values:
+      acetonitrile:
+        text: acetonitrile
+        meaning: CHEBI:38472
+      acetic_acid:
+        text: acetic_acid
+        meaning: CHEBI:15366
+      alphaLP:
+        text: alphaLP
+        meaning: EC:3.4.21.12
+        comments:
+        - A serine protease that hydrolyzes peptide bonds at the C-terminus of threonine,
+          alanine, serine, and valine.
+      ammonium_acetate:
+        text: ammonium_acetate
+        meaning: CHEBI:62947
+      ammonium_bicarbonate:
+        text: ammonium_bicarbonate
+        meaning: CHEBI:184335
+      amitriptyline:
+        text: amitriptyline
+        meaning: CHEBI:2666
+      Arg-C:
+        text: Arg-C
+        meaning: MS:1001303
+        comments:
+        - A cysteine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus
+          of arginine and with lower efficiency, lysine.
+      Asp-N:
+        text: Asp-N
+        meaning: MS:1001304
+        comments:
+        - A zinc metalloendopeptidase that hydrolyzes peptide bonds at the N-terminus
+          of aspartic acid.
+      chloroform:
+        text: chloroform
+        meaning: CHEBI:35255
+      chymotrypsin:
+        text: chymotrypsin
+        meaning: MS:1001306
+        comments:
+        - A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan,
+          leucine, tyrosine, and phenylalanine.
+      ethanol:
+        text: ethanol
+        meaning: CHEBI:16236
+      formic_acid:
+        text: formic_acid
+        meaning: CHEBI:30751
+        comments:
+        - A carboxylic acid that is the simplest aliphatic carboxylic acid, comprising
+          a hydrogen atom joined to the methyl group of methanol.
+      glucose:
+        text: glucose
+        meaning: CHEBI:17234
+        comments:
+        - Generally considered the most abundant monosaccharide in nature.
+      Glu-C:
+        text: Glu-C
+        meaning: MS:1001917
+        comments:
+        - A serine protease that hydrolyzes peptide and ester bonds at the C-terminus
+          of aspartic acid or glutamic acid.
+      hydrochloric_acid:
+        text: hydrochloric_acid
+        meaning: CHEBI:17883
+      isopropyl_alcohol:
+        text: isopropyl_alcohol
+        meaning: CHEBI:17824
+      Lys-C:
+        text: Lys-C
+        meaning: MS:1001309
+        comments:
+        - A serine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus
+          of lysine.
+      Lys-N:
+        text: Lys-N
+        meaning: MS:1003093
+        comments:
+        - A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of lysine.
+      N-methyl-N-trimethylsilyltrifluoroacetamide:
+        text: N-methyl-N-trimethylsilyltrifluoroacetamide
+        meaning: CHEBI:85064
+      methanol:
+        text: methanol
+        meaning: CHEBI:17790
+      methoxyamine:
+        text: methoxyamine
+        meaning: CHEBI:192842
+      medronic_acid:
+        text: medronic_acid
+        meaning: CHEBI:43945
+        comments:
+        - A 1,1-bis(phosphonic acid) consisting of methane substituted by two phosphonic
+          acid groups, also known as methylenediphosphonic acid
+      phosphoric_acid:
+        text: phosphoric_acid
+        meaning: CHEBI:26078
+      trimethylchlorosilane:
+        text: trimethylchlorosilane
+        meaning: CHEBI:85069
+      trypsin:
+        text: trypsin
+        meaning: MS:1001251
+        comments:
+        - A serine protease that hydrolyzes peptide bonds at the C-terminus of arginine
+          and lysine.
+      water:
+        text: water
+        meaning: CHEBI:15377
+        comments:
+        - Any form of water used in an experiment including deionized water, distilled
+          water, and ultrapure water. Protocol or materials and methods should be consulted
+          for exact type of water used in an experiment.
+
+  ChromatographyCategoryEnum:
+    permissible_values:
+      liquid_chromatography:
+        text: liquid_chromatography
+        aliases:
+        - LC
+      gas_chromatography:
+        text: gas_chromatography
+        aliases:
+        - GC
+      solid_phase_extraction:
+        text: solid_phase_extraction
+        aliases:
+        - SPE
+
+  ColorCodeEnum:
+    permissible_values:
+      Red- 0-250m Profiling:
+      Red Hashed- 0-250m Loitering:
+      Yellow- 251-500m Profiling:
+      Yellow Hashed- 251-500m Loitering:
+      Green- 501-750m Profiling:
+      Green Hashed- 501-750m Loitering:
+      Blue- 751-1000m Profiling:
+      Blue Hashed- 751-1000m Loitering:
+      Purple- >=1001m Profiling:
+      Purple Hashed- >=1001m Loitering:
+
+  ConstructComponentEnum:
+    permissible_values:
+      None:
+      3'UTR:
+      5'UTR:
+      Enhancer:
+      Epitope Tag:
+      Exon:
+      Flanking Element:
+      Gene:
+      Intron:
+      Leader Sequence:
+      Promoter:
+      Recognition Sequence:
+      Signal Sequence:
+      Spacer:
+      Targeting Sequence:
+      Terminator:
+      Transit Peptide:
+      Vector Sequence:
+
+  ContainerTypeEnum:
+    permissible_values:
+      screw_top_conical:
+
+  CoreSectionEnum:
     description: Sections of a core sample
     permissible_values:
       TOP:
@@ -71,149 +338,172 @@ enums:
       MID:
         description: Middle section of core
 
-
-
-
-
-
-  productmeasuretype:
+  DeviceTypeEnum:
     permissible_values:
-      Single:
-      Replicate:
-      Average:
-    
-  processeddataflag:
+      orbital_shaker:
+      thermomixer:
+
+  DoiCategoryEnum:
+    description: The authority, or organization, the DOI is associated with
     permissible_values:
-      Below_Detection:
-      Below_Reporting_Limit:
-      High_Background:
-      Out_of_Range:
-      Outlier:
-      Data_not_available:
-      Failed_QC:
-      Insufficient_Material:
+      award_doi:
+        text: award_doi
+        description: A type of DOI that resolves to a funding authority.
+      dataset_doi:
+        text: dataset_doi
+        description: A type of DOI that resolves to generated data.
+      publication_doi:
+        text: publication_doi
+        description: A type of DOI that resolves to a publication.
+      data_management_plan_doi:
+        text: data_management_plan_doi
+        description: A type of DOI that resolves to a data management plan.
 
-  ionizationenum:
+  DoiProviderEnum:
+    description: The authority, or organization, the DOI is associated with
     permissible_values:
-      ESI:
-      EI:
-      CI:
-      MALDI:
+      emsl:
+        text: emsl
+        meaning: ror:04rc0xn13
+        title: EMSL
+        aliases:
+        - Environmental Molecular Sciences Laboratory
+        - EMSL
+      jgi:
+        text: jgi
+        meaning: ror:04xm1d337
+        title: JGI
+        aliases:
+        - Joint Genome Institute
+        - JGI
+      kbase:
+        text: kbase
+        meaning: ror:01znn6x10
+        title: KBase
+        aliases:
+        - KBase
+      osti:
+        text: osti
+        meaning: ror:031478740
+        title: OSTI
+        aliases:
+        - Office of Scientific and Technical Information
+        - OSTI
+      ess_dive:
+        text: ess_dive
+        meaning: ror:01t14bp54
+        title: ESS-DIVE
+        aliases:
+        - ESS-DIVE
+        - Environmental System Science Data Infrastructure for a Virtual Ecosystem
+      massive:
+        text: massive
+        title: MassIVE
+        aliases:
+        - MassIVE
+        - Mass Spectrometry Virtual Environment
+      gsc:
+        text: gsc
+        title: GSC
+        aliases:
+        - GSC
+        - Genomic Standards Consortium
+      zenodo:
+        text: zenodo
+        title: Zenodo
+        aliases:
+        - Zenodo
+      edi:
+        text: edi
+        meaning: ror:0330j0z60
+        title: EDI
+        aliases:
+        - EDI
+        - Environmental Data Initiative
+      figshare:
+        text: figshare
+        meaning: ror:041mxqs23
+        title: Figshare
 
-  metagenomicssteps:
+  DrainageClassEnum:
+    description: Soil drainage classifications
     permissible_values:
-      ReadQcAnalysis:
-      MetagenomeAssembly:
-      ReadBasedTaxonomyAnalysis:
-      MetagenomeAnnotation:
-      MagsAnalysis:
-      FunctionalAnnotation:
-      GenePhylogeny:
+      excessively_drained:
+        description: Excessively drained soil
+      moderately_well:
+        description: Moderately well drained soil
+      poorly:
+        description: Poorly drained soil
+      somewhat_poorly:
+        description: Somewhat poorly drained soil
+      very_poorly:
+        description: Very poorly drained soil
+      well:
+        description: Well drained soil
 
-  alternateidentifiertype:
+  EluentIntroductionEnum:
+    description: The method used to introduce the eluent into the mass spectrometer.
     permissible_values:
-      instrument_alt_id:
+      direct_infusion_syringe:
+        description: Direct infusion of the sample into the mass spectrometer
+      liquid_chromatography:
+        description: Introduction via liquid chromatography
+      gas_chromatography:
+        description: Introduction via gas chromatography
+      direct_infusion_autosampler:
+        description: Direct infusion using an autosampler
 
-  routemethod:
+  ExecutionResourceEnum:
+    description: The computing resource or facility where the processing was executed.
     permissible_values:
-      analysis_activity:
-      lcms_metabolomics_method:
-      fticr_acquisition_method:
-      gravimetric_water_content_method:
-      ph_method:
-      hydraulic_properties_method:
-      microbial_biomass_method:
-      xray_computed_tomography_method:
-      REGEN:
-      KUO:
-      respiration_method:
-      texture_method:
-      enzyme_activity_method:
-      elemental_analysis_method:
-      toc_tn_method:
-      bulk_density_method:
-      metagenomics_method:
+      nersc_cori:
+        description: NERSC Cori supercomputer
+        aliases: [Cori]
+      nersc_perlmutter:
+        description: NERSC Perlmutter supercomputer
+        aliases: [Perlmutter, Saul]
+      emsl_rzr:
+        description: Environmental Molecular Sciences Laboratory RZR cluster
+        aliases: [RZR]
+      emsl_tahoma:
+        description: Environmental Molecular Sciences Laboratory Tahoma cluster
+        aliases: [Tahoma]
 
-  samplerole:
+  FAOClassEnum:
+    description: FAO soil classification system
     permissible_values:
-      input_sample:
-      output_sample:
+      Acrisols:
+      Alisols:
+      Andosols:
+      Anthrosols:
+      Arenosols:
+      Calcisols:
+      Cambisols:  
+      Chernozems:
+      Cryosols:
+      Durisols:
+      Ferrasols:
+      Fluvisols:
+      Gleysols:
+      Gypsisols:
+      Histosols:
+      Kastanozems:
+      Leptosols:
+      Lixisols:
+      Luvisols:
+      Nitosols:
+      Phaeozems:
+      Planosols:
+      Plinthosols:
+      Podzols:
+      Solonchaks:
+      Solonetz:
+      Stagnosols:
+      Technosols:
+      Umbrisols:
+      Vertisols:
 
-  methodname:
-    permissible_values:
-      MAOM:
-      WOEM:
-
-  executionresourcetype:
-    permissible_values:
-      RZR:
-      Tahoma:
-      local:
-      other:
-
-  binquality:
-    permissible_values:
-      HQ:
-      MQ:
-      LQ:
-
-  containertypeenum:
-    permissible_values:
-      screw_top_conical:
-
-
-  annotationdatabasetype:
-    permissible_values:
-      PFAM:
-      COG:
-      KEGG:
-
-  vendorenum:
-    permissible_values:
-      waters:
-      agilent:
-      bruker:
-      thermo_fisher:
-      perkin_elmer:
-      scientific_industries:
-      illumina:
-      nikon:
-      fia_lab:
-      shimadzu:
-      regen_ag_lab:
-      kuo:
-
-  modelenum:
-    permissible_values:
-      exploris_240:
-      exploris_480:
-      ltq_orbitrap_velos:
-      orbitrap_fusion_lumos:
-      orbitrap_eclipse_tribid:
-      orbitrap_q_exactive:
-      solarix_7T:
-      solarix_12T:
-      solarix_15T:
-      agilent_8890A:
-      agilent_7980A:
-      vortex_genie_2:
-      novaseq:
-      scimax:
-      ed_400_with_rs_422:
-      mettler_toledo_30029066:
-      mettler_toledo_30266628:
-      ums_hyprop2_020210:
-      fialyzer_1000:
-      fialyzer_1001:
-      fialyzer_1002:
-      orbitrap_q_exactive_plus:
-      toc_5000A:
-      toc_lcsh:
-      sr_1:
-      xth320:
-
-
-  filetype:
+  FileTypeEnum:
     permissible_values:
       FT_ICR_MS_Analysis_Results:
       GC_MS_Metabolomics_Results:
@@ -252,37 +542,1344 @@ enums:
       SMART_Annotation_GFF:
       Pfam_Annotation_GFF:
       Direct_Infusion_FT_ICR_MS_Raw_Data:
-    
 
-  instrumentaltidprovider:
+  FormulationEnum:
+    description: |-
+      Method used to formulate media.
+    permissible_values:
+      manual_mix:
+        description: Manually mixed from individual components
+      commercial:
+        description: Commercially prepared (see commercial_media_catalog)
+      premixed:
+        description: Pre-mixed from a stock solution
+    todos: could be made generic for mixing more than just media.
+
+  FragmentationEnum:
+    description: The fragmentation techniques used in mass spectrometry.
+    permissible_values:
+      HCD:
+        text: HCD
+        description: Higher-energy Collisional Dissociation
+      CID:
+        text: CID
+        description: Collision-Induced Dissociation
+      ETD:
+        text: ETD
+        description: Electron Transfer Dissociation
+
+  GenotypeSegmentEnum:
+    permissible_values:
+      Empty Transformation Vector:
+      Gene Knock-Out:
+      Gene Silencer:
+      Gene(s) of Interest:
+      RNA Interface (RNAi):
+      Screenable Marker:
+      Selectable Marker:
+      Virus Genome:
+      Wild Type:
+      Recombination Site:
+      Other:
+
+  GrowthFacilityEnum:
+    description: Types of growth facilities
+    permissible_values:
+      field:
+        description: Field conditions
+      commercially_purchased:
+        description: Commercially purchased
+      experimental_garden:
+        description: Experimental garden
+      field_incubation:
+        description: Field incubation
+      greenhouse:
+        description: Greenhouse
+      growth_chamber:
+        description: Growth chamber
+      lab_incubation:
+        description: Laboratory incubation
+      open_top_chamber:
+        description: Open top chamber
+      other:
+        description: Other growth facility type
+  
+  GrowthHabitEnum:
+    permissible_values:
+      erect:
+      semi-erect:
+      spreading:
+      prostrate:
+
+  InstitutionEnum: #speak with Maya!!! for removal/ We may need this enum to accomodate the masspectrometry class # found in file #double check analysis-api-schema
+    description: The organization that processed the sample / ran the pipeline / participated in the project.
+    permissible_values:
+      nmdc:
+        title: National Microbiome Data Collaborative
+      ucsd:
+        title: University of California, San Diego
+      jgi:
+        title: Joint Genome Institute
+      emsl:
+        title: Environmental Molecular Sciences Laboratory
+      battelle:
+        title: Battelle Memorial Institute
+      anl:
+        title: Argonne National Laboratory
+      ucd_genome_center:
+        title: University of California, Davis Genome Center
+      azenta:
+        title: Azenta Life Sciences
+  
+  InstrumentAltIdProviderEnum:
     permissible_values:
       nexus:
       dms:
 
-
-  devicetypeenum:
+  IntendedTraitEnum:
     permissible_values:
-      orbital_shaker:
-      thermomixer:
- 
-  product:
-    permissible_values:
-      processedData:
-      FTICRProduct:
-      TomographyProduct:
-      MicrobialBiomassProduct:
-      NitrogenAnalysisProduct:
-      PhosphorusAnalysisProduct:
-      pHProduct:
-      ElementalAnalysisProduct:
-      IonsAnalysisProduct:
-      RespirationProduct:
-      EnzymeProduct:
-      TextureProduct:
-      WEOMProduct:
-      HydraulicPropertiesProduct:
-      GWCMoistureProduct:
-      MAOMProduct:
-      BulkDensityProduct:
-      MetaGenomicsProduct:
+      other:
+        title: Other
+      product_quality:
+        title: Product Quality
+      agronomic_properties:
+        title: Agronomic Properties
+      bacterial_resistance:
+        title: Bacterial Resistance
+      herbicide_resistance:
+        title: Herbicide Resistance
+      insect_resistance:
+        title: Insect Resistance
+      marker_gene:
+        title: Marker Gene
+      nematode_resistance:
+        title: Nematode Resistance
+      virus_resistance:
+        title: Virus Resistance
 
+  IonizationSourceEnum:
+    permissible_values:
+      electrospray_ionization:
+        text: electrospray_ionization
+        aliases:
+        - ESI
+      matrix_assisted_laser_desorption_ionization:
+        text: matrix_assisted_laser_desorption_ionization
+        aliases:
+        - MALDI
+      atmospheric_pressure_photo_ionization:
+        text: atmospheric_pressure_photo_ionization
+        aliases:
+        - APPI
+      atmospheric_pressure_chemical_ionization:
+        text: atmospheric_pressure_chemical_ionization
+        aliases:
+        - APCI
+      electron_ionization:
+        text: electron_ionization
+        aliases:
+        - EI
+
+  LandUseEnum:
+    description: Land use classifications
+    permissible_values:
+      badlands:
+        description: Badlands
+      cities:
+        description: Urban/city areas
+      conifers:
+        description: Coniferous forests (e.g. pine, spruce, fir, cypress)
+      crop_trees:
+        description: Crop trees (nuts, fruit, christmas trees, nursery trees)
+      farmstead:
+        description: Farmstead
+      gravel:
+        description: Gravel areas
+      hardwoods:
+        description: Hardwood forests (e.g. oak, hickory, elm, aspen)
+      hayland:
+        description: Hayland
+      horticultural_plants:
+        description: Horticultural plants (e.g. tulips)
+      industrial_areas:
+        description: Industrial areas
+      intermixed:
+        description: Intermixed hardwood and conifers
+      marshlands:
+        description: Marshlands (grass, sedges, rushes)
+      meadows:
+        description: Meadows (grasses, alfalfa, fescue, bromegrass, timothy)
+      mines_quarries:
+        description: Mines and quarries
+      mudflats:
+        description: Mudflats
+      oil_waste:
+        description: Oil waste areas
+      pastureland:
+        description: Pastureland (grasslands used for livestock grazing)
+      permanent_snow_or_ice:
+        description: Permanent snow or ice
+      rainforest:
+        description: Rainforest (evergreen forest receiving >406 cm annual rainfall)
+      rangeland:
+        description: Rangeland
+      roads_railroads:
+        description: Roads and railroads
+      rock:
+        description: Rock surfaces
+      row_crops:
+        description: Row crops
+      saline_seeps:
+        description: Saline seeps
+      salt_flats:
+        description: Salt flats
+      sand:
+        description: Sand areas
+      shrub_crops:
+        description: Shrub crops (blueberries, nursery ornamentals, filberts)
+      shrub_land:
+        description: Shrub land (e.g. mesquite, sage-brush, creosote bush, shrub oak, eucalyptus)
+      small_grains:
+        description: Small grains
+      successional_shrub_land:
+        description: Successional shrub land (tree saplings, hazels, sumacs, chokecherry, shrub dogwoods, blackberries)
+      swamp:
+        description: Swamp (permanent or semi-permanent water body dominated by woody plants)
+      tropical:
+        description: Tropical vegetation (e.g. mangrove, palms)
+      tundra:
+        description: Tundra (mosses, lichens)
+      vegetable_crops:
+        description: Vegetable crops
+      vine_crops:
+        description: Vine crops (grapes)
+
+  MassAnalyzerEnum:
+    permissible_values:
+      quadrupole:
+        text: quadrupole
+        aliases:
+        - Q
+      time_of_flight:
+        text: time_of_flight
+        aliases:
+        - TOF
+      orbitrap:
+        text: orbitrap
+      ion_trap:
+        text: ion_trap
+        aliases:
+        - IT
+      ion_cyclotron_resonance:
+        text: ion_cyclotron_resonance
+        aliases:
+        - ICR
+      fourier_transform_ion_cyclotron_resonance:
+        text: fourier_transform_ion_cyclotron_resonance
+        aliases:
+        - FTICR
+
+  MassSpecRawFileTypeEnum:
+    permissible_values:
+      .d:
+      .raw:
+      other:
+
+  MassSpecResolutionEnum:
+    permissible_values:
+      high:
+        text: high
+        description: higher than unit resolution
+      low:
+        text: low
+        description: at unit resolution
+
+  MassSpectrometryAcquisitionStrategyEnum:
+    permissible_values:
+      data_independent_acquisition:
+        text: data_independent_acquisition
+        description: Data independent mass spectrometer acquisition method wherein the
+          full mass range is fragmented. Examples of such an approach include MS^E, AIF,
+          and bbCID.
+        aliases:
+        - DIA
+        - data independent acquisition from dissociation of full mass range
+        exact_mappings:
+        - MS:1003227
+      data_dependent_acquisition:
+        text: data_dependent_acquisition
+        description: Mass spectrometer data acquisition method wherein MSn spectra are
+          triggered based on the m/z of precursor ions detected in the same run.
+        aliases:
+        - DDA
+        exact_mappings:
+        - MS:1003221
+      full_scan_only:
+        text: full_scan_only
+        description: Mass spectrometer data acquisition method wherein only MS1 data are
+          acquired.
+        aliases:
+        - MS
+
+  MassSpectrumCollectionModeEnum:
+    permissible_values:
+      full_profile:
+        text: full_profile
+      reduced_profile:
+        text: reduced_profile
+      centroid:
+        text: centroid
+
+  MediaTypeEnum:
+    description: |-
+      Purpose/context of the media preparation.
+    permissible_values:
+      strain_purity:
+        description: Media used in strain purity checks
+      stock_culture:
+        description: Media used in stock culture preparation
+      pre_culture:
+        description: Media used in pre-culture growth
+      rich_media:
+        description: Rich media for experimental culture growth
+      minimal_media:
+        description: Minimal/defined media for experimental culture growth
+
+  MetagenomicsSteps:
+    permissible_values:
+      ReadQcAnalysis:
+      MetagenomeAssembly:
+      ReadBasedTaxonomyAnalysis:
+      MetagenomeAnnotation:
+      MagsAnalysis:
+      FunctionalAnnotation:
+      GenePhylogeny:
+
+  MetaproteomicsAnalysisCategoryEnum:
+    description: The category of metaproteomics analysis being performed.
+    permissible_values:
+      matched_metagenome:
+        description: A metaproteomics analysis matched to a metagenome from the same biosample.
+      in_silico_metagenome:
+        description: A metaproteomics analysis matched to an in silico generated metagenome.
+      WITHDRAWN:
+
+  MethodNameEnum:
+    permissible_values:
+      MAOM:
+      WOEM:
+
+  ModelEnum:
+    permissible_values:
+      exploris_21T:
+        text: exploris_21T
+        aliases:
+        - Exploris 21T
+      exploris_240:
+        text: exploris_240
+        aliases:
+        - Orbitrap Exploris 240
+      exploris_480:
+        text: exploris_480
+        aliases:
+        - Orbitrap Exploris 480
+      ltq_orbitrap_velos:
+        text: ltq_orbitrap_velos
+        aliases:
+        - LTQ Orbitrap Velos
+        - LTQ Orbitrap Velos ETD
+        - Velos
+      orbitrap_fusion_lumos:
+        text: orbitrap_fusion_lumos
+        aliases:
+        - Orbitrap Fusion Lumos
+        - Fusion
+      orbitrap_eclipse_tribid:
+        text: orbitrap_eclipse_tribid
+        aliases:
+        - Orbitrap Eclipse Tribid
+        - Eclipse
+      orbitrap_q_exactive:
+        text: orbitrap_q_exactive
+        aliases:
+        - Orbitrap Q-Exactive HF
+        - Orbitrap Q-Exactive HF-X
+      orbitrap_iqx_tribrid:
+        text: orbitrap_iqx_tribrid
+        aliases:
+        - Orbitrap IQ-X Tribrid
+        - Thermo Orbitrap IQ-X Tribrid
+      orbitrap_exploris_120:
+        text: orbitrap_exploris_120
+        aliases:
+        - Orbitrap Exploris 120
+        - Thermo Orbitrap Exploris 120
+      solarix_7T:
+        text: solarix_7T
+        aliases:
+        - 7T Solarix
+        - 7T FT-ICR MS
+        - 7T MRMS
+      solarix_12T:
+        text: solarix_12T
+        aliases:
+        - 12T Solarix
+        - 12T FT-ICR MS
+        - 12T MRMS
+      solarix_15T:
+        text: solarix_15T
+        aliases:
+        - 15T Solarix
+        - 15T FT-ICR MS
+        - 15T MRMS
+      agilent_8890A:
+        text: agilent_8890A
+        aliases:
+        - 8890A GC-MS
+        - Agilent GC MS
+      agilent_7980A:
+        text: agilent_7980A
+        aliases:
+        - 7980A GC-MS
+        - Agilent GC MS
+      vortex_genie_2:
+        text: vortex_genie_2
+        aliases:
+        - VortexGenie2
+      novaseq:
+        text: novaseq
+        aliases:
+        - NovaSeq
+        - Illumina NovaSeq
+      novaseq_6000:
+        text: novaseq_6000
+        meaning: OBI:0002630
+        comments:
+        - Possible flowcell versions are SP, S1, S2, S4.
+        see_also:
+        - https://www.illumina.com/systems/sequencing-platforms/novaseq/specifications.html
+        aliases:
+        - NovaSeq 6000
+        - Illumina NovaSeq 6000
+        structured_aliases:
+          Illumina NovaSeq S2:
+            literal_form: Illumina NovaSeq S2
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+          Illumina NovaSeq S4:
+            literal_form: Illumina NovaSeq S4
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+          Illumina NovaSeq SP:
+            literal_form: Illumina NovaSeq SP
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+      novaseq_x:
+        text: novaseq_x
+        comments:
+        - Possible flowcell versions are 1.5B, 10B, 25B. Only difference between X and
+          X Plus is 2 flowcells for X Plus versus 1 flowcell for X.
+        see_also:
+        - https://www.illumina.com/systems/sequencing-platforms/novaseq-x-plus/specifications.html
+        aliases:
+        - Illumina NovaSeq X
+        - Illumina NovaSeq X Plus
+        exact_mappings:
+        - OBI:0003663
+        narrow_mappings:
+        - OBI:0003664
+      hiseq:
+        text: hiseq
+        aliases:
+        - Illumina HiSeq
+      hiseq_1000:
+        text: hiseq_1000
+        meaning: OBI:0002022
+        aliases:
+        - Illumina HiSeq 1000
+      hiseq_1500:
+        text: hiseq_1500
+        meaning: OBI:0003386
+        aliases:
+        - Illumina HiSeq 1500
+      hiseq_2000:
+        text: hiseq_2000
+        meaning: OBI:0002001
+        aliases:
+        - Illumina HiSeq 2000
+      hiseq_2500:
+        text: hiseq_2500
+        meaning: OBI:0002002
+        aliases:
+        - Illumina HiSeq 2500
+        structured_aliases:
+          Illumina HiSeq 2500-1TB:
+            literal_form: Illumina HiSeq 2500-1TB
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+          Illumina HiSeq 2500-Rapid:
+            literal_form: Illumina HiSeq 2500-Rapid
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+      hiseq_3000:
+        text: hiseq_3000
+        meaning: OBI:0002048
+        aliases:
+        - Illumina HiSeq 3000
+      hiseq_4000:
+        text: hiseq_4000
+        meaning: OBI:0002049
+        aliases:
+        - Illumina HiSeq 4000
+      hiseq_x_ten:
+        text: hiseq_x_ten
+        meaning: OBI:0002129
+        aliases:
+        - Illumina HiSeq X Ten
+      miniseq:
+        text: miniseq
+        meaning: OBI:0003114
+        aliases:
+        - Illumina MiniSeq
+      miseq:
+        text: miseq
+        meaning: OBI:0002003
+        aliases:
+        - MiSeq
+        - Illumina MiSeq
+        structured_aliases:
+          Illumina MiSeq:
+            literal_form: Illumina MiSeq
+            predicate: EXACT_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+      nextseq_1000:
+        text: nextseq_1000
+        meaning: OBI:0003606
+        aliases:
+        - Illumina NextSeq 1000
+      nextseq:
+        text: nextseq
+        aliases:
+        - NextSeq
+        - Illumina NextSeq
+        structured_aliases:
+          Illumina NextSeq-HO:
+            literal_form: Illumina NextSeq-HO
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+          Illumina NextSeq-MO:
+            literal_form: Illumina NextSeq-MO
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+      nextseq_500:
+        text: nextseq_500
+        meaning: OBI:0002021
+        aliases:
+        - NextSeq 500
+        - Illumina NextSeq 500
+      nextseq_550:
+        text: nextseq_550
+        meaning: OBI:0003387
+        aliases:
+        - NextSeq 550
+        - Illumina NextSeq 550
+      gridion:
+        text: gridion
+        meaning: OBI:0002751
+        aliases:
+        - Oxford Nanopore GridION Mk1
+      minion:
+        text: minion
+        meaning: OBI:0002750
+        aliases:
+        - Oxford Nanopore MinION
+      promethion:
+        text: promethion
+        meaning: OBI:0002752
+        aliases:
+        - Oxford Nanopore PromethION
+      rs_II:
+        text: rs_II
+        meaning: OBI:0002012
+        aliases:
+        - PacBio RS II
+      sequel:
+        text: sequel
+        meaning: OBI:0002632
+        aliases:
+        - PacBio Sequel
+      sequel_II:
+        text: sequel_II
+        meaning: OBI:0002633
+        aliases:
+        - PacBio Sequel II
+      revio:
+        text: revio
+        aliases:
+        - PacBio Revio
+        - Revio
+      scimax:
+      ed_400_with_rs_422:
+      mettler_toledo_30029066:
+      mettler_toledo_30266628:
+      ums_hyprop2_020210:
+      fialyzer_1000:
+      fialyzer_1001:
+      fialyzer_1002:
+      orbitrap_q_exactive_plus:
+      toc_5000A:
+      toc_lcsh:
+      sr_1:
+      xth320:
+
+  ModificationMethodEnum:
+    description: |-
+      Methods used to introduce genetic modifications into organisms.
+    permissible_values:
+      electroporation:
+        description: Introduction of DNA via electrical pulses
+        aliases:
+        - Electroporation
+      conjugation:
+        description: Transfer of DNA via bacterial conjugation
+        aliases:
+        - Conjugation
+      transformation:
+        description: Natural or chemical competence-based DNA uptake
+        aliases:
+        - Transformation
+      transduction:
+        description: Phage-mediated DNA transfer
+        aliases:
+        - Transduction
+      crispr:
+        description: CRISPR-based genome editing
+        aliases:
+        - CRISPR
+        - CRISPR-Cas
+      homologous_recombination:
+        description: Integration via homologous recombination
+      transposon:
+        description: Transposon-mediated insertion
+      other:
+        description: Other modification method not listed
+
+  NEONDomainEnum:
+    description: NEON ecological domains
+    permissible_values:
+      northeast:
+        title: Northeast domain
+      mid_atlantic:
+        title: Mid-Atlantic domain
+      southeast:
+        title: Southeast domain
+      atlantic_neotropical:
+        title: Atlantic Neotropical domain
+      great_lakes:
+        title: Great Lakes domain
+      prairie_peninsula:
+        title: Prairie Peninsula domain
+      appalachians_and_cumberland_plateau:
+        title: Appalachians and Cumberland Plateau domain
+      ozarks_complex:
+        title: Ozarks Complex domain
+      northern_plains:
+        title: Northern Plains domain
+      central_plains:
+        title: Central Plains domain
+      southern_plains:
+        title: Southern Plains domain
+      desert_southwest:
+        title: Desert Southwest domain
+      northern_rockies:
+        title: Northern Rockies domain
+      southern_rockies_and_colorado_plateau:
+        title: Southern Rockies and Colorado Plateau domain
+      great_basin:
+        title: Great Basin domain
+      sierra_nevada:
+        title: Sierra Nevada domain
+      pacific_northwest:
+        title: Pacific Northwest domain
+      pacific_southwest:
+        title: Pacific Southwest domain
+      tundra:
+        title: Tundra domain
+      taiga:
+        title: Taiga domain
+      pacific_tropical:
+        title: Pacific Tropical domain
+
+  NexusRoleEnum:
+    permissible_values:
+      Principal Investigator:
+      Co-Investigator:
+      Team Member:
+      Integrated Research Platform Lead:
+      Administrative Coordinator:
+      Project Manager:
+      Metadata POC:
+      Science Lead:
+      Science POC:
+    todos:
+      - delete this or get a real list from NEXUS
+
+  NucleotideSequencingEnum:
+    permissible_values:
+      metagenome:
+        text: metagenome
+        title: Metagenome
+        aliases:
+        - metaG
+      metatranscriptome:
+        text: metatranscriptome
+        title: Metatranscriptome
+        aliases:
+        - metaT
+      amplicon_sequencing_assay:
+        text: amplicon_sequencing_assay
+        meaning: OBI:0002767
+        title: Amplicon
+
+  OxygenStatusEnum:
+    description: Oxygen status of samples
+    permissible_values:
+      aerobic:
+        description: Aerobic conditions
+      anaerobic:
+        description: Anaerobic conditions
+      anoxic:
+        description: Anoxic conditions
+      facultative:
+        description: Facultative conditions
+      microaerophilic:
+        description: Microaerophilic conditions
+      microanaerobe:
+        description: Microanaerobe conditions
+      obligate_aerobe:
+        description: Obligate aerobe conditions
+        aliases: ["obligate aerobe"]
+      obligate_anaerobe:
+        description: Obligate anaerobe conditions
+        aliases: ["obligate anaerobe"]
+
+  PassFailEnum:
+    description: Result/status for a process (e.g., QC outcome).
+    permissible_values:
+      pass:
+        text: pass
+      fail:
+        text: fail
+    
+  PhotochemicalExposureEnum:
+    permissible_values:
+      ultraviolet:
+      visible light:
+      infrared:
+
+  PlantSexEnum:
+    permissible_values:
+      androdioecious:
+      androecious:
+      androgynomonoecious:
+      androgynous:
+      andromonoecious:
+      bisexual:
+      dichogamous:
+      diclinous:
+      dioecious:
+      gynodioecious:
+      gynoecious:
+      gynomonoecious:
+      hermaphroditic:
+      imperfect:
+      monoclinous:
+      monoecious:
+      perfect:
+      polygamodioecious:
+      polygamomonoecious:
+      polygamous:
+      protandrous:
+      protogynous:
+      subandroecious:
+      subdioecious:
+      subgynoecious:
+      synoecious:
+      trimonoecious:
+      trioecious:
+      unisexual:
+  
+  PlantStructureEnum:
+    permissible_values:
+      stem:
+        title: stem [PO:0009047]
+        meaning: PO:0009047
+      leaf:
+        title: leaf [PO:0025034]
+        meaning: PO:0025034
+      root:
+        title: root [PO:0009005]
+        meaning: PO:0009005
+      fine_root:
+        title: fine root [BTO:0005194]
+        meaning: BTO:0005194
+      whole_plant:
+        title: whole plant [BTO:0001461]
+        meaning: BTO:0001461
+      stamen:
+        title: stamen [PO:0009029]
+        meaning: PO:0009029
+      carpel:
+        title: carpel [PO:0009030]
+        meaning: PO:0009030
+      seed:
+        title: seed [PO:0009010]
+        meaning: PO:0009010
+      rhizodeposits:
+
+  PolarityEnum:
+    description: The polarity mode used in the mass spectrometry analysis.
+    permissible_values:
+      positive:
+        text: positive
+      negative:
+        text: negative
+
+  ProcessedDataFlag:
+    permissible_values:
+      Below_Detection:
+      Below_Reporting_Limit:
+      High_Background:
+      Out_of_Range:
+      Outlier:
+      Data_not_available:
+      Failed_QC:
+      Insufficient_Material:
+
+  ProductMeasureType:
+    permissible_values:
+      Single:
+      Replicate:
+      Average:
+
+  ProfilePositionEnum:
+    description: Soil profile positions
+    permissible_values:
+      backslope:
+        description: Backslope position
+        aliases: ["Backslope"]
+      footslope:
+        description: Footslope position
+        aliases: ["Footslope"]
+      shoulder:
+        description: Shoulder position
+        aliases: ["Shoulder"]
+      summit:
+        description: Summit position
+        aliases: ["Summit"]
+      toeslope:
+        description: Toeslope position
+        aliases: ["Toeslope"]
+
+  ProjectStatusEnum:
+    permissible_values:
+      STARTED:
+      COMPLETED:
+      CLOSED:
+      EXTENDED:
+      ACCEPTED:
+      WITHDRAWN:
+
+  RouteMethodEnum:
+    permissible_values:
+      analysis_activity:
+      lcms_metabolomics_method:
+      fticr_acquisition_method:
+      gravimetric_water_content_method:
+      ph_method:
+      hydraulic_properties_method:
+      microbial_biomass_method:
+      xray_computed_tomography_method:
+      REGEN:
+      KUO:
+      respiration_method:
+      texture_method:
+      enzyme_activity_method:
+      elemental_analysis_method:
+      toc_tn_method:
+      bulk_density_method:
+      metagenomics_method:
+      xrf_analysis:
+      xrd_analysis:
+
+  SampleBaseType:
+    description: Base types for sample entities
+    permissible_values:
+      sample:
+        description: A physical sample
+      processed_sample:
+        description: A sample that has undergone processing
+
+  SamplePortionEnum:
+    permissible_values:
+      supernatant:
+        text: supernatant
+        aliases:
+        - top_layer
+      pellet:
+        text: pellet
+        aliases:
+        - bottom_layer
+      organic_layer:
+        text: organic_layer
+        description: The portion of a mixture containing dissolved organic material
+        title: Organic layer
+      aqueous_layer:
+        text: aqueous_layer
+        description: The portion of a mixture containing molecules dissolved in water
+        title: Aqueous layer
+        aliases:
+        - water layer
+      interlayer:
+        text: interlayer
+        description: The layer of material between liquid layers of a separated mixture
+        title: Interlayer
+      chloroform_layer:
+        text: chloroform_layer
+        description: The portion of a mixture containing molecules dissolved in chloroform
+        is_a: organic_layer
+        title: Chloroform layer
+      methanol_layer:
+        text: methanol_layer
+        description: The portion of a mixture containing molecules dissolved in methanol
+        is_a: organic_layer
+        title: Methanol layer
+
+  SampleRole:
+    permissible_values:
+      input_sample:
+      output_sample:
+
+  SampleStoreTempEnum:
+    description: Sample storage temperature conditions
+    permissible_values:
+      fresh4:
+        description: Fresh storage at 4°C
+        aliases: ["4 C"]
+      freshroom:
+        description: Fresh storage at room temperature
+        aliases: ["room temperature"]
+      frozen20:
+        description: Frozen storage at -20°C
+        aliases: ["-20 C"]
+      frozen80:
+        description: Frozen storage at -80°C
+        aliases: ["-80 C"]
+      other:
+        description: Other storage temperature
+
+  SampleType:
+    description: Types of samples that can be collected
+    permissible_values:
+      soil_sample:
+        description: Soil sample
+      aerosol_sample:
+        description: Aerosol sample
+
+  SamplingActivityTypeEnum:
+    description: Types of sampling activities
+    permissible_values:
+      soil:
+        description: Soil sampling activity
+      water:
+        description: Water sampling activity
+      air:
+        description: Air sampling activity
+      plant:
+        description: Plant sampling activity
+      none:
+        description: No specific activity type
+        aliases: ["None"]
+
+  SedimentTypeEnum:
+    description: Types of sediment
+    permissible_values:
+      biogenous:
+        description: Biogenous sediment
+      cosmogenous:
+        description: Cosmogenous sediment
+      hydrogenous:
+        description: Hydrogenous sediment
+      lithogenous:
+        description: Lithogenous sediment
+
+  SitePhotoCategoryEnum:
+    permissible_values:
+      landscape:
+      measure:
+
+  SoilHorizonEnum:
+    description: Soil horizon classifications
+    permissible_values:
+      a_horizon:
+        description: The surface horizon, also called topsoil. It has a defined soil structure, and is mostly made up of humus (decayed organic matter).
+        aliases: ["A_Horizon"]
+      b_horizon:
+        description: Also known as the subsoil. It is greatly composed of material illuviated (washed in from) layers above it. It is typically denser than the A horizon and has a clayey texture.
+        aliases: ["B_Horizon"]
+      c_horizon:
+        description: Also known as the substratum is unconsolidated material deepest in the pit and closest to the bedrock.
+        aliases: ["C_Horizon"]
+      e_horizon:
+        description: Used to refer to subsurface horizons that have undergone a significant loss of minerals, also known as Eluviation (or leaching).
+        aliases: ["E_Horizon"]
+      o_horizon:
+        description: The organic horizon. Typically at the top of the soil structure and is made up of mostly organic matter.
+        aliases: ["O_Horizon"]
+      permafrost:
+        description: Soil that continuously remains below 0 °C (32 °F) for two years or more.
+        aliases: ["Permafrost"]
+      r_layer:
+        description: Hard bedrock, which is usually the lowest layer. It is characterized by tightly bound and unbreakable materials.
+        aliases: ["R_Layer"]
+      m_horizon:
+        description: Mineral horizon
+        aliases: ["M_Horizon"]
+
+  SoilSampleTypeEnum:
+    description: Specific types of soil samples
+    permissible_values:
+      soil_core:
+        title: soil core
+        description: Soil core sample
+      surface_layer:
+        title: surface layer
+        description: Surface layer soil sample
+  
+  SoilTypeEnum:
+    description: USDA soil taxonomy classifications
+    permissible_values:
+      alfisol:
+        title: Alfisol
+      andisol:
+        title: Andisol
+      aridisol:
+        title: Aridisol
+      entisol:
+        title: Entisol
+      gelisol:
+        title: Gelisol
+      histosol:
+        title: Histosol
+      inceptisol:
+        title: Inceptisol
+      mollisol:
+        title: Mollisol
+      oxisol:
+        title: Oxisol
+      spodosol:
+        title: Spodosol
+      ultisol:
+        title: Ultisol
+      vertisol:
+        title: Vertisol
+
+  StationaryPhaseEnum:
+    description: The stationary phase used in chromatography.
+    permissible_values:
+      BEH-HILIC:
+        text: BEH-HILIC
+        description: Hydrophilic Interaction Chromatography (HILIC) employing BEH (Bridged
+          Ethylene Hybrid) particles as the stationary phase.
+        is_a: HILIC
+      C18:
+        text: C18
+        description: A stationary phase consisting of octadecyl chains (C18) bonded to
+          silica particles.
+      C8:
+        text: C8
+        description: A stationary phase consisting of octyl chains (C8) bonded to silica
+          particles.
+      C4:
+        text: C4
+        description: A stationary phase consisting of butyl chains (C4) bonded to silica
+          particles.
+      C2:
+        text: C2
+        description: A stationary phase consisting of ethyl chains (C2) bonded to silica
+          particles.
+      C1:
+        text: C1
+        description: A stationary phase consisting of methyl chains (C1) bonded to silica
+          particles.
+      C30:
+        text: C30
+        description: A stationary phase consisting of triacontyl chains (C30) bonded to
+          silica particles.
+      C60:
+        text: C60
+        description: A stationary phase consisting of hexatriacontyl chains (C60) bonded
+          to silica particles.
+      CNT:
+        text: CNT
+        description: Carbon Nanotube stationary phase.
+      CN:
+        text: CN
+        description: Cyano (CN) bonded stationary phase.
+      Diol:
+        text: Diol
+        description: A stationary phase with diol (1,2-diol) functional groups.
+      HILIC:
+        text: HILIC
+        description: Hydrophilic Interaction Chromatography (HILIC) stationary phase.
+      HLB:
+        text: HLB
+        description: Hydrophilic-Lipophilic-Balance (HLB) stationary phase.
+      NH2:
+        text: NH2
+        description: Amino (NH2) bonded stationary phase.
+      Phenyl:
+        text: Phenyl
+        description: Phenyl bonded stationary phase.
+      Polysiloxane:
+        text: Polysiloxane
+        description: A stationary phase made of polysiloxane, usually used in gas chromatography.
+      PS-DVB:
+        text: PS-DVB
+        description: Polystyrene-divinylbenzene stationary phase, often used in solid-phase
+          extraction, including proprietary Priority PolLutant (PPL).
+      SAX:
+        text: SAX
+        description: Strong Anion Exchange (SAX) stationary phase.
+      SCX:
+        text: SCX
+        description: Strong Cation Exchange (SCX) stationary phase.
+      Silica:
+        text: Silica
+        description: A stationary phase made of silica, commonly used in chromatography.
+      WCX:
+        text: WCX
+        description: Weak Cation Exchange (WCX) stationary phase.
+      WAX:
+        text: WAX
+        description: Weak Anion Exchange (WAX) stationary phase.
+      ZIC-HILIC:
+        text: ZIC-HILIC
+        description: Zwitterionic Hydrophilic Interaction Chromatography (ZIC-HILIC) stationary
+          phase.
+        is_a: HILIC
+      ZIC-pHILIC:
+        text: ZIC-pHILIC
+        description: Zwitterionic pH-Responsive Hydrophilic Interaction Chromatography
+          (ZIC-pHILIC) stationary phase.
+        is_a: ZIC-HILIC
+      ZIC-cHILIC:
+        text: ZIC-cHILIC
+        description: Zwitterionic Charged Hydrophilic Interaction Chromatography (ZIC-cHILIC)
+          stationary phase.
+        is_a: ZIC-HILIC
+
+  SterilizationMethodEnum:
+    description: |-
+      Method used to sterilize media or other entities.
+    permissible_values:
+      autoclave:
+        description: Autoclaved
+      filter:
+        description: Filter-sterilised (typically 0.22 μm)
+      uv:
+        description: UV-sterilised
+      none:
+        description: Not sterilised (used as-is)
+
+  StorageConditionEnum:
+    description: Sample storage conditions
+    permissible_values:
+      fresh:
+        description: Fresh sample
+      frozen:
+        description: Frozen sample
+      lyophilized:
+        description: Lyophilized (freeze-dried) sample
+      other:
+        description: Other storage condition
+  
+  StrainTypeEnum:
+    description: |-
+      Types of microbial strains/organisms.
+    permissible_values:
+      bacterial:
+        description: Bacterial strain
+        aliases:
+        - bacteria
+      fungal:
+        description: Fungal strain
+        aliases:
+        - fungi
+        - yeast
+      archaeal:
+        description: Archaeal strain
+        aliases:
+        - archaea
+      viral:
+        description: Viral isolate
+        aliases:
+        - virus
+        - phage
+        - bacteriophage
+      algal:
+        description: Algal strain
+        aliases:
+        - algae
+      protist:
+        description: Protist strain
+      other:
+        description: Other organism type
+
+  SyntheticEnvironmentEnum:
+    permissible_values:
+      pore_scale_micromodels:
+        title: Pore-scale micromodels
+      rhizochip:
+        title: RhizoChip
+      subtap:
+        title: SubTap microbial and rhizosphere platforms
+      three_d_bioprinted_synthetic_soil_aggregates:
+        title: 3-D Bioprinted Synthetic Soil Aggregates
+      pore2chip:
+        title: Pore2Chip
+
+  TidalStageEnum:
+    permissible_values:
+      low_tide:
+      high_tide:
+      ebb_tide:
+      flood_tide:
+
+  TillageEnum:
+    description: Tillage methods
+    permissible_values:
+      chisel:
+        description: Chisel tillage
+        aliases: ["Chisel"]
+      cutting_disc:
+        description: Cutting disc tillage
+        aliases: ["Cutting_Disc"]
+      disc_plough:
+        description: Disc plough tillage
+        aliases: ["Disc_Plough"]
+      drill:
+        description: Drill tillage
+        aliases: ["Drill"]
+      mouldboard:
+        description: Mouldboard tillage
+        aliases: ["Mouldboard"]
+      ridge_till:
+        description: Ridge till
+        aliases: ["Ridge_Till"]
+      strip_tillage:
+        description: Strip tillage
+        aliases: ["Strip_Tillage"]
+      tined:
+        description: Tined tillage
+        aliases: ["Tined"]
+      zonal_tillage:
+        description: Zonal tillage
+        aliases: ["Zonal_Tillage"]
+
+  TrophicLevelEnum:
+    description: |-
+      Enumeration of trophic levels for organisms.
+    permissible_values:
+      autotroph:
+        description: Organism that produces complex organic compounds from simple substances
+      carboxydotroph:
+        description: Organism that oxidizes carbon monoxide as energy source
+      chemoautolithotroph:
+        description: Chemolithoautotroph using inorganic compounds
+      chemoautotroph:
+        description: Organism using chemical energy to synthesize organic compounds
+      chemoheterotroph:
+        description: Organism obtaining energy by oxidizing organic compounds
+      chemolithoautotroph:
+        description: Organism using inorganic electron donors
+      chemolithotroph:
+        description: Organism deriving energy from inorganic compounds
+      chemoorganoheterotroph:
+        description: Organism using organic compounds as electron donors
+      chemoorganotroph:
+        description: Organism obtaining energy from organic compounds
+      chemosynthetic:
+        description: Organism using chemosynthesis
+      chemotroph:
+        description: Organism obtaining energy from chemical reactions
+      copiotroph:
+        description: Organism thriving in nutrient-rich environments
+      diazotroph:
+        description: Organism capable of nitrogen fixation
+      facultative:
+        description: Organism capable of multiple metabolic modes
+      heterotroph:
+        description: Organism requiring organic compounds for nutrition
+      lithoautotroph:
+        description: Organism using inorganic substrates
+      lithoheterotroph:
+        description: Organism using inorganic electron donors with organic carbon
+      lithotroph:
+        description: Organism using inorganic electron donors
+      methanotroph:
+        description: Organism using methane as carbon/energy source
+      methylotroph:
+        description: Organism using reduced one-carbon compounds
+      mixotroph:
+        description: Organism combining autotrophy and heterotrophy
+      obligate:
+        description: Organism restricted to one metabolic mode
+      oligotroph:
+        description: Organism thriving in nutrient-poor environments
+      organoheterotroph:
+        description: Organism using organic compounds
+      organotroph:
+        description: Organism obtaining electrons from organic compounds
+      osmotroph:
+        description: Organism absorbing dissolved nutrients
+      photoheterotroph:
+        description: Organism using light with organic carbon
+      photoautotroph:
+        description: Organism using light to fix carbon dioxide
+      photolithoautotroph:
+        description: Photosynthetic organism using inorganic electron donors
+      photolithotroph:
+        description: Organism using light and inorganic electron donors
+      phototroph:
+        description: Organism using light as energy source
+
+  VendorEnum:
+    permissible_values:
+      waters:
+      agilent:
+      bruker:
+      thermo_fisher:
+      perkin_elmer:
+      scientific_industries:
+      illumina:
+      nikon:
+      fia_lab:
+      shimadzu:
+      regen_ag_lab:
+      kuo:
+      rigaku:
+      panalytical:
+
+  YesNoEnum:
+    permissible_values:
+      yes:
+      no:

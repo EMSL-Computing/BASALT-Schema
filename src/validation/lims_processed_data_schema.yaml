@@ -1,6 +1,6 @@
 ---
 # =============================================================================
-# LIMS Processed Data — API Envelope Schema - NOT READY YET
+# LIMS Processed Data   API Envelope Schema - NOT READY YET
 # =============================================================================
 #
 # CONTEXT and Purpose:
@@ -9,11 +9,11 @@
 # - Hides the internal dirty laundry (joined tables, WFE events, endpoints) behind
 #   a clean, human-readable contract that Kaizad/LIMS senders can validate against
 # - One schema per analysis_type exists in this folder (e.g. respiration_schema.yaml,
-#   soil_biochemical_properties_schema.yaml) — this file describes the outer envelope
+#   soil_biochemical_properties_schema.yaml)   this file describes the outer envelope
 #   that references them via the product_values union
 #
 # Relationship to other schemas:
-# - product_values is a typed union — the permissible ranges are the per-analysis-type
+# - product_values is a typed union   the permissible ranges are the per-analysis-type
 #   classes defined in sibling files under src/validation/
 # - analysis_type drives which product_values class is expected (see AnalysisTypeEnum)
 #
@@ -57,7 +57,7 @@ enums:
 
   AnalysisTypeEnum:
     description: |-
-      Discriminator field — tells the API which product_values class to expect
+      Discriminator field   tells the API which product_values class to expect
       and which internal tables/WFEs to update.
     permissible_values:
       ph:
@@ -83,12 +83,12 @@ enums:
       biomass:
         description: Microbial biomass (MBC, MBN)
       weom_toctn:
-        description: Water Extractable Organic Matter — TOC and TN
+        description: Water Extractable Organic Matter   TOC and TN
       maom_toctn:
-        description: Mineral Associated Organic Matter (HClExtOM) — TOC and TN
+        description: Mineral Associated Organic Matter (HClExtOM)   TOC and TN
       hyprop:
         description: >-
-          HYPROP hydraulic properties — Van Genuchten model parameters (alpha, n, theta_r, theta_s).
+          HYPROP hydraulic properties   Van Genuchten model parameters (alpha, n, theta_r, theta_s).
           See src/validation/hydraulic_properties_schema.yaml.
       fticr:
         description: >-
@@ -152,8 +152,13 @@ classes:
         2. Which WorkflowExecution (WFE) to create or update
         3. Which database tables receive the data
       
-      This class hides the internal database structure — senders only
+      This class hides the internal database structure   senders only
       need to know the shape described here.
+    slots:
+      - sampling_set
+    slot_usage:
+      sampling_set:
+        required: true
     attributes:
 
       proposal_id:
@@ -162,14 +167,6 @@ classes:
           Identifies the project under which the sample was collected and analyzed.
         range: string
         required: true
-
-      sampling_set:
-        description: |-
-          Sampling set number (integer ≥ 1).
-          Groups samples collected together in the same sampling event.
-        range: integer
-        required: true
-        # minimum_value: 1
 
       analysis_type:
         description: |-
@@ -187,7 +184,7 @@ classes:
       product_values:
         description: |-
           Analysis-specific measurement values. The expected schema depends on
-          analysis_type — see sibling files in src/validation/ for each type.
+          analysis_type   see sibling files in src/validation/ for each type.
           
           Permissible types (by analysis_type) → sibling schema file:
             ph            → PHProductValues             ph_schema.yaml
@@ -206,5 +203,5 @@ classes:
             hyprop        → HydraulicPropertiesProduct  hydraulic_properties_schema.yaml
             fticr         → FTICRProduct                fticr_schema.yaml
             xct           → TomographyProduct           tomography_schema.yaml
-        range: string   # placeholder — union types handled in code; each sibling schema covers one branch
+        range: string   # placeholder   union types handled in code; each sibling schema covers one branch
         required: true

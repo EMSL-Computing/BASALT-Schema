@@ -1,0 +1,198 @@
+id: https://w3id.org/MONet/analysis-api-schema/mass-spec
+name: analysis-api-schema-mass-spec
+title: Mass spectrometry subclasses for MONet Analysis API
+description: |
+  Mass spectrometry product and workflow classes for the MONet Analysis API.
+
+  Classes defined in this file:
+
+  Relevant to data generation:
+  - MassSpectrometryDataGenerationActivity
+  - MassSpectrometryConfiguration
+  - ChromatographyConfiguration
+
+  Relevant to raw data:
+  - MassSpectrometryInstrumentData
+
+  Relevant to data processing:
+  - MassSpectrometryDataProcessingActivity
+  - MassSpectrometryStandardRun
+
+  Processed data products:
+  - MassSpectrometryDataProduct (abstract)
+  - MSImageProduct
+  - MolecularIdentificationProduct
+  - MetaproteomicsProduct (abstract)
+
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+default_prefix: analysis_api_schema
+
+imports:
+  - linkml:types
+  - analysis_api_schema
+  - slots
+
+classes:
+
+  # New - subclass of instrumentData, with mass spec specific slots
+  # ms_raw_file_type represents the file extension (.raw, .d)
+  # collection_mode states whether the data file is in centroid or profile mode
+  MassSpectrometryInstrumentData:
+    is_a: InstrumentData
+    description: >- 
+      Raw data files output from a mass spectrometry instrument.
+    slots:
+      - produced_by_ms_run
+      - ms_raw_file_type
+      - collection_mode
+
+  # ============================================================================
+  # (NEW ABSTRACT) MassSpectrometryProduct
+  # Middle tier in the dataProduct -> processedData -> MassSpectrometryProduct chain.
+  # Carries slots common to all mass spectrometry sub-types so they do not
+  # need to be repeated on each concrete class.
+  # ============================================================================
+  MassSpectrometryDataProduct:
+    is_a: ProcessedData
+    abstract: true
+    description: |-
+      Abstract base for all mass spectrometry data products.
+      Inherits S3/file slots from dataProduct (via processedData is_a chain).
+    slots:
+      - results_from_ms_processing
+
+  MSImageProduct:
+    is_a: MassSpectrometryDataProduct
+    description: one or more image(s) output from a mass spec data processing workflow (eg. LESA, CoreMS QC plots). Should be a zip file containing all similar image outputs from one data processing workflow.
+    slots:
+
+  MolecularIdentificationProduct:
+    is_a: MassSpectrometryDataProduct
+    description: a file containing molecular formula identifications that was output from a mass spec data processing workflow (eg. .csv of m/z and molecular formulae, .hdf5 file).
+    slots:
+  
+  MetaproteomicsProduct:
+    abstract: true
+    is_a: MassSpectrometryDataProduct
+    description: Abstract parent class for processed metaproteomics data. Details and subclasses TBD.
+
+  # ============================================================================
+  # (NEW) MassSpectrometryDataGenerationActivity
+  # New class
+  # ============================================================================
+  MassSpectrometryDataGenerationActivity:
+    is_a: DataGenerationActivity
+    description: A record of the mass spectrometry run that generates a raw data product.
+    slots:
+      - uses_ms_configuration # required
+      - uses_chromatography # optional
+      - analyte_category
+
+
+  # ============================================================================
+  # New class - configuration, for use on mass spec data generation
+  # could be more configurations in future
+  # represents instrument configuration and settings
+  # ============================================================================
+
+  Configuration:
+    description: Record of configuration and/or settings for an activity.
+    slots:
+      - name
+      - description
+    attributes:
+      id:
+        required: true
+        range: uuid
+
+  MassSpectrometryConfiguration:
+    is_a: Configuration
+    description: Instrument configuration and setup for a mass spectrometry run.
+    slots:
+      - injection
+      - ionization
+      - fragmentation
+      - polarity
+      - resolution
+      - dd_ms2_resolution
+      - loop_count
+      - iat
+      - fid
+      - mass_range_max
+      - mass_range_min
+      - acquisition_strategy
+      - lims_protocol_instance_id
+
+  # ============================================================================
+  # Chromatography related classes
+  # Useful for mass spec but also other processes, such as
+  # solid phase extraction (sample processing)
+  # ============================================================================
+
+  ChromatographyConfiguration:
+    is_a: Configuration
+    description: Configuration and settings for a chromatography run.
+    slots:
+      - column
+      - column_dimensions
+      - column_manufacturer
+      - chromatography_type
+      - mobile_phases
+      - stationary_phase
+      - temperature_celsius
+      - duration_min
+      - flow_rate_ul_min
+      - injection_volume_ul
+
+  MobilePhaseSegment: #maps to NMDC MobilePhaseSegment array
+    description: A segment of the mobile phase used in chromatography during mass spectrometry.
+    slots:
+      - name
+      - duration_min
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      segment_order:
+        range: integer
+        description: The order of this segment in the overall chromatography protocol.
+      substance:
+        description: The name of the substance used in this mobile phase segment. 
+        range: string
+    todos: inheritance? substances_used modelling
+
+  # ============================================================================
+  # (NEW) MassSpectrometryDataProcessingActivity
+  # Concrete subclass of DataProcessingActivity (now abstract in MR1).
+  # Carries no additional unique slots beyond the parent; represents a typed
+  # workflow record so that DataProcessingActivity can remain abstract.
+  # ============================================================================
+  MassSpectrometryDataProcessingActivity:
+    is_a: DataProcessingActivity
+    description: |-
+      Concrete mass spectrometry workflow run. Inherits all DataProcessingActivity
+      slots including used_software and version.
+    slots:
+      - uses_calibration
+      - uses_raw_ms_data
+      - lims_task_instance_id
+      - metaproteomics_analysis_category
+
+
+  # Class to represent data from a standard run with a batch of samples
+  MassSpectrometryStandardRun:
+    slots:
+      - name
+      - description
+      - internal_calibration
+      - calibration_target
+      - calibration_standard
+      - calibration_data
+    attributes:
+      id:
+        identifier: true
+        range: uuid

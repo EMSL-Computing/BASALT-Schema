@@ -1,6 +1,6 @@
 ---
 # =============================================================================
-# Ions Analysis — Ingest Validation Schema
+# Ions Analysis   Ingest Validation Schema
 # =============================================================================
 # Source class:  IonsAnalysisProduct (products.yaml)
 # Analysis type: "ion" (lims_processed_data_schema.yaml AnalysisTypeEnum)
@@ -13,7 +13,7 @@
 # NOTE on units: micronutrients (SO4-S, B, Zn, Mn, Cu, Fe) in mg/kg;
 #                exchangeable cations (Ca, Mg, Na, K) and CEC in meq/100g.
 #                total_bases exists in the operational schema but is NOT
-#                currently a CSV output column — included here for ingest completeness.
+#                currently a CSV output column   included here for ingest completeness.
 # Last Updated:  2026-03-16
 # =============================================================================
 
