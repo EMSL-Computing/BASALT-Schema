@@ -44,7 +44,6 @@ classes:
       - cur_vegetation
       - cur_vegetation_meth
       - drainage_class
-      - ecoregion
       - elev
       - env_broad_scale
       - env_local_scale
@@ -135,7 +134,6 @@ classes:
       - first_cbh
       - humidity_regm
       - isotope_exposure
-      - lat_lon
       - mean_total_cpc_concentration
       - mean_total_pops_concentration
       - methane
@@ -160,10 +158,10 @@ classes:
       - size_frac_low
       - size_frac_up
       - solar_irradiance
-      - source_mat_ID
-      - storage_condt
+      - source_mat_id
+      - storage_condition
       - storage_condition_other
-      - technical_reps
+      - replicate_tech
       - third_blh
       - third_blh_quality
       - volatile_org_comp
@@ -208,7 +206,6 @@ classes:
       - external_identifiers
       - humidity_regm
       - isotope_exposure
-      - lat_lon
       - methane
       - method_development
       - misc_param
@@ -230,10 +227,10 @@ classes:
       - size_frac_low
       - size_frac_up
       - solar_irradiance
-      - source_mat_ID
-      - storage_condt
+      - source_mat_id
+      - storage_condition
       - storage_condition_other
-      - technical_reps
+      - replicate_tech
       - temperature_exposure
       - volatile_org_comp
     slot_usage:
@@ -279,9 +276,9 @@ classes:
       - samp_store_temp
       - sampled_during
       - source_mat_id
-      - storage_condt
+      - storage_condition
       - storage_condition_other
-      - technical_reps
+      - replicate_tech
       - temp
     slot_usage:
       analysis_type:
@@ -316,7 +313,6 @@ classes:
       - humidity_regm
       - isol_growth_condt
       - isotope_exposure
-      - lat_lon
       - light_regm
       - method_development
       - non_microb_biomass
@@ -331,7 +327,7 @@ classes:
       - propagation
       - ref_biomaterial
       - replicate_number
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_store_temp
       - sample_link
       - sample_name
@@ -339,10 +335,10 @@ classes:
       - sampled_during
       - source_mat_id
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - subspecf_gen_lin
-      - technical_reps
+      - replicate_tech
       - trophic_level
       - watering_regm
     slot_usage:
@@ -387,7 +383,7 @@ classes:
       - sample_name
       - sampled_during
       - samp_store_temp
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - strain_description
       - strain_name
@@ -458,7 +454,6 @@ classes:
       - initiation_date_plant
       - isol_growth_condt
       - isotope_exposure
-      - lat_lon
       - light_regm
       - method_development
       - mineral_nutr_regm
@@ -487,12 +482,12 @@ classes:
       - sample_link
       - sample_name
       - sample_processing
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_store_temp
       - sampled_during
-      - source_mat_ID
+      - source_mat_id
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - synth_env_assembly
       - synth_env_design
@@ -500,7 +495,7 @@ classes:
       - synth_env_material
       - synth_env_treatment
       - synth_start_date
-      - technical_reps
+      - replicate_tech
       - temp
       - tiss_cult_growth_med
       - water_content
@@ -512,8 +507,6 @@ classes:
       initiation_date_inoculation:
         required: true
       initiation_date_plant:
-        required: true
-      lat_lon:
         required: true
       synth_env_assembly:
         required: true
@@ -567,7 +560,7 @@ classes:
       - propagation
       - ref_biomaterial
       - replicate_number
-      - samp_biotic_relationship
+      - biotic_relationship
       - sample_link
       - sample_name
       - sample_processing
@@ -576,10 +569,10 @@ classes:
       - source_mat_id
       - specific_host
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - subspecf_gen_lin
-      - technical_reps
+      - replicate_tech
       - trophic_level
       - watering_regm
     slot_usage:
@@ -615,7 +608,6 @@ classes:
       - chem_administration
       - depth
       - external_identifiers
-      - lat_lon
       - lims_id
       - misc_param
       - other
@@ -630,7 +622,7 @@ classes:
       - soil_sample_type
       - soil_type
       - soil_type_meth
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - temp
       - water_content
@@ -649,8 +641,6 @@ classes:
           is required to be reported as an interval for subsurface samples. (Units:
           cm or m)'
         pattern: ^\d+(\.\d+)?-\d+(\.\d+)?\s*(m|cm)$
-        required: true
-      lat_lon:
         required: true
       sampling_set:
         required: true
@@ -770,7 +760,6 @@ classes:
       - isol_growth_condt
       - isotope_exposure
       - item_number
-      - lat_lon
       - light_intensity
       - light_regm
       - link_addit_analys
@@ -780,11 +769,11 @@ classes:
       - mechanical_damage
       - method_development
       - methane
-      - micro_biomass_C_meth
-      - micro_biomass_N_meth
+      - micro_biomass_c_meth
+      - micro_biomass_n_meth
       - microbial_biomass
-      - microbial_biomass_C
-      - microbial_biomass_N
+      - microbial_biomass_c
+      - microbial_biomass_n
       - microbial_biomass_meth
       - mineral_nutr_regm
       - misc_param
@@ -841,7 +830,7 @@ classes:
       - salinity
       - salinity_method
       - salt_regm
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_capt_status
       - samp_dis_stage
       - samp_store_temp
@@ -863,10 +852,10 @@ classes:
       - soluble_inorg_mat
       - soluble_org_mat
       - soluble_react_phosp
-      - source_mat_ID
+      - source_mat_id
       - standing_water_regm
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - subspecf_gen_lin
       - sulfate
@@ -876,7 +865,7 @@ classes:
       - synth_instrument
       - synth_process
       - synth_reagents
-      - technical_reps
+      - replicate_tech
       - temp
       - temperature_exposure
       - tertiary_treatment
@@ -911,8 +900,6 @@ classes:
       carb_monoxide:
         description: Amount of carbon monoxide measured in the air the day of sampling.
           Provided by ARM
-      lat_lon:
-        required: true
       oxygen:
         description: Amount of oxygen measured in the air the day of sampling. Provided
           by ARM
@@ -957,7 +944,6 @@ classes:
       - host_life_stage
       - humidity_regm
       - isotope_exposure
-      - lat_lon
       - light_regm
       - mechanical_damage
       - method_development
@@ -1001,12 +987,12 @@ classes:
       - sample_processing
       - samp_store_temp
       - sampled_during
-      - source_mat_ID
+      - source_mat_id
       - standing_water_regm
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
-      - technical_reps
+      - replicate_tech
       - temp
       - water_temp_regm
       - watering_regm
@@ -1020,8 +1006,6 @@ classes:
         pattern: ^\d+(\.\d+)?\s*(cm|mm|m)$
       host_life_stage:
         description: Description of life stage of the plant
-      lat_lon:
-        required: true
       non_microb_biomass:
         description: "Amount of biomass; should include the name for the part of biomass\
           \ measured e.g.insect plant total (Unit: \xB5m)"
@@ -1073,18 +1057,18 @@ classes:
       - propagation
       - ref_biomaterial
       - replicate_number
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_store_temp
       - sample_link
       - sample_name
       - sample_processing
       - sampled_during
-      - source_mat_ID
+      - source_mat_id
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - subspecf_gen_lin
-      - technical_reps
+      - replicate_tech
       - trophic_level
       - watering_regm
     slot_usage:
@@ -1145,7 +1129,6 @@ classes:
       - glucosidase_act
       - humidity_regm
       - isotope_exposure
-      - lat_lon
       - light_regm
       - magnesium
       - mean_frict_vel
@@ -1194,20 +1177,20 @@ classes:
       - sample_link
       - sample_name
       - sample_processing
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_store_temp
       - sampled_during
       - sediment_type
       - sieving
       - silicate
       - sodium
-      - source_mat_ID
+      - source_mat_id
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - sulfate
       - sulfide
-      - technical_reps
+      - replicate_tech
       - temp
       - tidal_stage
       - tot_carb
@@ -1226,8 +1209,6 @@ classes:
       depth:
         required: true
         pattern: ^\d+(\.\d+)?-\d+(\.\d+)?\s*m$
-      lat_lon:
-        required: true
       microbial_biomass:
         description: 'The part of the organic matter in the soil that constitutes living
           microorganisms smaller than 5-10 micrometer. If you keep this you would need
@@ -1239,7 +1220,7 @@ classes:
           the part of biomass measured, e.g.insect, plant, total. Provide value and unit,
           any unit is valid. (example: insect 5mg; plant 2ug/mL)'
         pattern: ^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$
-      samp_biotic_relationship:
+      biotic_relationship:
         description: Description of relationship(s) between the subject organism and
           other organism(s) it is associated with. The target organism is the subject
           of the relationship and the other organism(s) is the object
@@ -1272,7 +1253,6 @@ classes:
       - horizon_meth
       - humidity_regm
       - isotope_exposure
-      - lat_lon
       - light_regm
       - link_addit_analys
       - method_development
@@ -1297,7 +1277,7 @@ classes:
       - replicate_number
       - salinity
       - salinity_method
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_store_temp
       - sample_link
       - sample_name
@@ -1311,11 +1291,11 @@ classes:
       - soil_texture
       - soil_type
       - soil_type_meth
-      - source_mat_ID
+      - source_mat_id
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
-      - technical_reps
+      - replicate_tech
       - temp
       - texture_meth
       - tot_nitro_cont_meth
@@ -1338,8 +1318,6 @@ classes:
         description: 'Heavy metals present in the sample and the concentration of the
           metal. For multiple heavy metals and concentrations, separate them by `|`.
           (Example: mercury,0.09 micrograms per gram|lead,0.05 micrograms per gram'
-      lat_lon:
-        required: true
       microbial_biomass:
         description: 'The part of the organic matter in the soil that constitutes living
           microorganisms smaller than 5-10 micrometer. If you keep this you would need
@@ -1390,13 +1368,13 @@ classes:
       - sample_processing
       - samp_store_temp
       - sampled_during
-      - source_mat_ID
-      - storage_condt
+      - source_mat_id
+      - storage_condition
       - storage_condition_other
       - synth_instrument
       - synth_process
       - synth_reagents
-      - technical_reps
+      - replicate_tech
       - temp
     slot_usage:
       analysis_type:
@@ -1467,11 +1445,11 @@ classes:
       - sample_link
       - sample_name
       - sample_processing
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_store_temp
       - sampled_during
-      - source_mat_ID
-      - storage_condt
+      - source_mat_id
+      - storage_condition
       - storage_condition_other
       - synth_env_assembly
       - synth_env_design
@@ -1479,7 +1457,7 @@ classes:
       - synth_env_material
       - synth_env_treatment
       - synth_start_date
-      - technical_reps
+      - replicate_tech
       - temp
       - tiss_cult_growth_med
       - water_content
@@ -1553,7 +1531,6 @@ classes:
       - gaseous_environment
       - glucosidase_act
       - isotope_exposure
-      - lat_lon
       - light_intensity
       - magnesium
       - mean_frict_vel
@@ -1601,15 +1578,15 @@ classes:
       - size_frac_up
       - sodium
       - soluble_react_phosp
-      - source_mat_ID
+      - source_mat_id
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - sulfate
       - sulfide
       - samp_store_temp
       - suspend_part_matter
-      - technical_reps
+      - replicate_tech
       - temp
       - tidal_stage
       - tot_depth_water_col
@@ -1628,8 +1605,6 @@ classes:
           m)'
         required: true
       filter_method:
-        required: true
-      lat_lon:
         required: true
       non_microb_biomass:
         description: 'Amount of non-microbial biomass measured. Include the name for
@@ -1703,7 +1678,7 @@ classes:
       - collection_date
       - shipped_sample_size
       - sampled_at_site
-    todos: is this for individual samples or can it be the activity of collecting multiple samples from one site? would need to change shipped_sample_size and storage_condt if so.
+    todos: is this for individual samples or can it be the activity of collecting multiple samples from one site? would need to change shipped_sample_size and storage_condition if so.
 
   AerosolArmSamplingActivity:
     attributes:

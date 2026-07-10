@@ -2734,6 +2734,11 @@ slots:
     description: >-
       The raw data file, output by a mass spectrometer, that was analyzed in 
       this data processing workflow run.
+  
+  uses_sample:
+    range: Sample
+    description: >-
+      The starting sample that is being processed or analyzed. This slot should only be used on an Activity class.
 
   version:
     description: String indicating the version of the software or protocol

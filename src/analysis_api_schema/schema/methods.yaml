@@ -18,6 +18,7 @@ imports:
 classes:
 
 ######## existing "method" classes grouped under abstract parent class
+# these should all really be analysis activity
   Method:
     abstract: true
     slots:

@@ -255,16 +255,6 @@ classes:
         range: AlternateIdentifierType
         required: true
 
-
-  Ecoregion:
-    attributes:
-      domain_id:
-        identifier: true
-        range: integer
-      domain_name:
-        range: string
-        required: true
-
   FunctionalAnnotationIdentifier:
     attributes:
       id:
@@ -401,29 +391,28 @@ classes:
       activity_speed_id:
         range: QuantityValue
 
-  # (CHANGED MR1) sampleProcessing is now ABSTRACT per PI guidance.
-  # Concrete protocol-specific subclasses use is_a: sampleProcessing.
-  # processing_steps noted TODO JSONB   direction change to key-value is deferred.
   SampleProcessing:
     abstract: true
+    description: |-
+      Abstract base class for any sample processing activity. Concrete protocol-specific subclasses use is_a: SampleProcessing.
     slots:
+      - name
+      - description
       - protocol_url
       - protocol_version
+      - uses_sample
     attributes:
       id:
         identifier: true
         range: uuid
       analysis_type:
         range: RouteMethodEnum
-      method_name:
-        range: MethodNameEnum
       processing_steps:
-        range: string # TODO JSONB   key-value direction deferred; schema TBD
+        range: string
         required: true
-      uses_sample:
-        range: Sample
     todos:
       - why does this have both analysis type and method name, as enums, just set the range to the class
+      - JSONB direction change to key-value is deferred on processing_steps
 
   ProcessingSampleLink:
     attributes:

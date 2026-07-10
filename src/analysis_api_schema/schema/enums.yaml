@@ -866,11 +866,6 @@ enums:
         description: A metaproteomics analysis matched to an in silico generated metagenome.
       WITHDRAWN:
 
-  MethodNameEnum:
-    permissible_values:
-      MAOM:
-      WOEM:
-
   ModelEnum:
     permissible_values:
       exploris_21T:
@@ -1438,6 +1433,8 @@ enums:
       metagenomics_method:
       xrf_analysis:
       xrd_analysis:
+      WEOM:
+      MAOM:
 
   SampleBaseType:
     description: Base types for sample entities
