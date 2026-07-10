@@ -473,7 +473,7 @@ slots:
       mudflats, oil waste, pastureland, permanent snow or ice, rainforest, rangeland, roads,
       railroads, rock, row crops, saline seeps, salt flats, sand, shrub crops, shrub land, small
       grains, successional shrub land, swamp, tropical, tundra, vegetable crops, vine crops'
-    range: CurLandUseEnum
+    range: LandUseEnum
     title: current land use
 
   cur_vegetation:
@@ -1438,7 +1438,7 @@ slots:
 
   ms_raw_file_type:
     description: the filetype of the mass spectrometry instrument data
-    range: MSRawFileTypeEnum
+    range: MassSpecRawFileTypeEnum
 
   n_alkanes:
     description: 'Concentration of n-alkanes; can include multiple n-alkanes (Unit:
@@ -1924,7 +1924,7 @@ slots:
   profile_position:
     description: Cross-sectional position in the hillslope where sample was collected.
       Sample area position in relation to surrounding areas
-    range: SlopeProfilePositionEnum
+    range: ProfilePositionEnum
     title: profile position
 
   project:
@@ -2129,7 +2129,7 @@ slots:
     description: The temperature at which your samples should be stored upon arrival.
       This field is NOT multivalued. If selecting other add the `other_samp_store_temp`
       attribute to provide additional detail.
-    range: SampStoreTempEnum
+    range: SampleStoreTempEnum
     title: sample storage temperature
     aliases:
       - sample_storage_temperature
