@@ -293,8 +293,7 @@ slots:
     description: |-
       Confidential Business Information flag (yes/no).
       Indicates if the sample is subject to CBI restrictions.
-    range: boolean
-    todos: is this confidential business or controlled biological?
+    range: boolean 
 
   chem_administration:
     title: chemical administration
@@ -750,7 +749,7 @@ slots:
 
   first_blh:
     description: 'First boundary layer height candidate (meters) (Unit: m)'
-    range: number
+    range: float
     title: first boundary layer height
 
   first_blh_quality_index:
@@ -762,7 +761,7 @@ slots:
   first_cbh:
     description: 'First cloud base (meters) or vertical visibility (meters) (-999 if
       no cloud base or vertical visibility) (Unit: m)'
-    range: number
+    range: float
     title: first cloud base height
 
   flooding:
@@ -1256,13 +1255,13 @@ slots:
   mean_total_cpc_concentration:
     description: "Mean concentration obtained from Condensation Particle Counter (Unit:\
       \ \u03BCm)"
-    range: number
+    range: float
     title: mean total C.P.C. concentration
 
   mean_total_pops_concentration:
     description: "Mean concentration obtained from Portable Optical Particle Spectrometer\
       \ (Unit: \u03BCm)"
-    range: number
+    range: float
     title: mean total P.O.P. concentration
 
   measure_type:
@@ -1664,7 +1663,7 @@ slots:
   ph:
     description: pH measurement of the sample or liquid portion of sample or aqueous
       phase of the fluid
-    range: number
+    range: float
     title: pH
 
   ph_adjustment:
@@ -1881,7 +1880,7 @@ slots:
 
   priority_order:
     description: Indicate the run order priority of your samples
-    range: number
+    range: float
     title: priority order
 
   produced_by_ms_run:
@@ -2038,7 +2037,7 @@ slots:
 
   root_med_ph:
     description: pH measurement of the culture rooting medium.
-    range: number
+    range: float
     title: rooting medium pH
 
   root_med_regl:
@@ -2246,7 +2245,7 @@ slots:
 
   second_blh:
     description: 'Second boundary layer height candidate (meters) (Unit: m)'
-    range: number
+    range: float
     title: second boundary layer height
 
   second_blh_quality:
@@ -2258,7 +2257,7 @@ slots:
   second_cbh:
     description: 'Second cloud base (meters) or highest received signal in vertical
       visibility (meters) (-999 if no cloud base or vertical visibility) (Unit: m)'
-    range: number
+    range: float
     title: second cloud base height
 
   secondary_treatment:
@@ -2681,7 +2680,7 @@ slots:
 
   third_blh:
     description: 'Third boundary layer height candidate (meters) (Unit: m)'
-    range: number
+    range: float
     title: third boundary layer height
 
   third_blh_quality:
