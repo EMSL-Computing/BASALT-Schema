@@ -1,0 +1,76 @@
+
+
+# Slot: flag_mbc 
+
+
+
+URI: [analysis_api_schema:flag_mbc](https://w3id.org/MONet/analysis-api-schema/flag_mbc)
+Alias: flag_mbc
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [MicrobialBiomassProduct](MicrobialBiomassProduct.md) |  |  no  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [ProcessedDataFlag](ProcessedDataFlag.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | analysis_api_schema:flag_mbc |
+| native | analysis_api_schema:flag_mbc |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: flag_mbc
+from_schema: https://w3id.org/MONet/analysis-api-schema
+rank: 1000
+alias: flag_mbc
+owner: MicrobialBiomassProduct
+domain_of:
+- MicrobialBiomassProduct
+range: ProcessedDataFlag
+
+```
+</details>

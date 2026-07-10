@@ -1,0 +1,90 @@
+
+
+# Slot: salinity method (salinity_method) 
+
+
+_Method used to determine sample salinity_
+
+
+
+
+
+URI: [analysis_api_schema:salinity_method](https://w3id.org/MONet/analysis-api-schema/salinity_method)
+Alias: salinity_method
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [String](String.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | analysis_api_schema:salinity_method |
+| native | analysis_api_schema:salinity_method |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: salinity_method
+description: Method used to determine sample salinity
+title: salinity method
+from_schema: https://w3id.org/MONet/analysis-api-schema
+rank: 1000
+alias: salinity_method
+domain_of:
+- OtherUndescribedSample
+- PlantSample
+- SedimentSample
+- SoilSample
+- WaterSample
+range: string
+
+```
+</details>

@@ -1,0 +1,85 @@
+
+
+# Slot: uses_sample 
+
+
+
+URI: [analysis_api_schema:uses_sample](https://w3id.org/MONet/analysis-api-schema/uses_sample)
+Alias: uses_sample
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
+| [SampleProcessing](SampleProcessing.md) |  |  no  |
+| [MediaPreparation](MediaPreparation.md) | Activity that prepares a batch of growth media |  no  |
+| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
+| [StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |  no  |
+| [PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |  no  |
+| [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |  no  |
+| [PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |  no  |
+| [StrainPurity](StrainPurity.md) | Purity check of a strain culture |  no  |
+| [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [Sample](Sample.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | analysis_api_schema:uses_sample |
+| native | analysis_api_schema:uses_sample |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: uses_sample
+from_schema: https://w3id.org/MONet/analysis-api-schema
+rank: 1000
+alias: uses_sample
+owner: SampleProcessing
+domain_of:
+- SampleProcessing
+range: Sample
+
+```
+</details>

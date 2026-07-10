@@ -1,0 +1,83 @@
+
+
+# Slot: observed host symbionts (host_symbiont) 
+
+
+_The taxonomic name of the organism(s) found living in mutualistic, commensalistic, or parasitic symbiosis with the specific host._
+
+
+
+
+
+URI: [analysis_api_schema:host_symbiont](https://w3id.org/MONet/analysis-api-schema/host_symbiont)
+Alias: host_symbiont
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [String](String.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | analysis_api_schema:host_symbiont |
+| native | analysis_api_schema:host_symbiont |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: host_symbiont
+description: The taxonomic name of the organism(s) found living in mutualistic, commensalistic,
+  or parasitic symbiosis with the specific host.
+title: observed host symbionts
+from_schema: https://w3id.org/MONet/analysis-api-schema
+rank: 1000
+alias: host_symbiont
+domain_of:
+- OtherUndescribedSample
+range: string
+
+```
+</details>

@@ -1,0 +1,76 @@
+
+
+# Slot: roi_volume_voxel 
+
+
+
+URI: [analysis_api_schema:roi_volume_voxel](https://w3id.org/MONet/analysis-api-schema/roi_volume_voxel)
+Alias: roi_volume_voxel
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [TomographyProduct](TomographyProduct.md) |  |  no  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [Double](Double.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | analysis_api_schema:roi_volume_voxel |
+| native | analysis_api_schema:roi_volume_voxel |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: roi_volume_voxel
+from_schema: https://w3id.org/MONet/analysis-api-schema
+rank: 1000
+alias: roi_volume_voxel
+owner: TomographyProduct
+domain_of:
+- TomographyProduct
+range: double
+
+```
+</details>

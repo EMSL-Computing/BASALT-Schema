@@ -1,0 +1,82 @@
+
+
+# Slot: plant taxonomy identifier (plant_taxid) 
+
+
+_NCBI taxon ID of the plant from https://www.ncbi.nlm.nih.gov/taxonomy_
+
+
+
+
+
+URI: [analysis_api_schema:plant_taxid](https://w3id.org/MONet/analysis-api-schema/plant_taxid)
+Alias: plant_taxid
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [String](String.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | analysis_api_schema:plant_taxid |
+| native | analysis_api_schema:plant_taxid |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: plant_taxid
+description: NCBI taxon ID of the plant from https://www.ncbi.nlm.nih.gov/taxonomy
+title: plant taxonomy identifier
+from_schema: https://w3id.org/MONet/analysis-api-schema
+rank: 1000
+alias: plant_taxid
+domain_of:
+- PlantSample
+range: string
+
+```
+</details>

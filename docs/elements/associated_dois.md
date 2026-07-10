@@ -1,0 +1,85 @@
+
+
+# Slot: associated_dois 
+
+
+_A list of DOIs associated with this study_
+
+
+
+
+
+URI: [analysis_api_schema:associated_dois](https://w3id.org/MONet/analysis-api-schema/associated_dois)
+Alias: associated_dois
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [Study](Study.md) |  |  no  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [DOI](DOI.md)
+
+* Multivalued: True
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | analysis_api_schema:associated_dois |
+| native | analysis_api_schema:associated_dois |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: associated_dois
+description: A list of DOIs associated with this study
+from_schema: https://w3id.org/MONet/analysis-api-schema
+rank: 1000
+alias: associated_dois
+owner: Study
+domain_of:
+- Study
+range: DOI
+multivalued: true
+
+```
+</details>

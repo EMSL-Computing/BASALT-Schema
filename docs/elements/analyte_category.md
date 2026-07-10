@@ -1,0 +1,81 @@
+
+
+# Slot: analyte_category 
+
+
+_omics type for easier search, optional_
+
+
+
+
+
+URI: [analysis_api_schema:analyte_category](https://w3id.org/MONet/analysis-api-schema/analyte_category)
+Alias: analyte_category
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | A record of the mass spectrometry run that generates a raw data product |  no  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [AnalyteCategoryEnum](AnalyteCategoryEnum.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | analysis_api_schema:analyte_category |
+| native | analysis_api_schema:analyte_category |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: analyte_category
+description: omics type for easier search, optional
+from_schema: https://w3id.org/MONet/analysis-api-schema
+rank: 1000
+alias: analyte_category
+domain_of:
+- MassSpectrometryDataGenerationActivity
+range: AnalyteCategoryEnum
+
+```
+</details>

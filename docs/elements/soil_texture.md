@@ -1,0 +1,88 @@
+
+
+# Slot: soil texture (soil_texture) 
+
+
+_The relative proportion of different grain sizes of mineral particles in a soil as described using a standard system; express as decimal percent sand (50 um to 2 mm) silt (2 um to 50 um) and clay (<2 um) with optional textural name (e.g. sand:0.20 silt:0.25 clay:0.55 description:silty clay loam)._
+
+
+
+
+
+URI: [analysis_api_schema:soil_texture](https://w3id.org/MONet/analysis-api-schema/soil_texture)
+Alias: soil_texture
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [String](String.md)
+
+* Regex pattern: `^(\w+:0\.\d+ )*description:[A-Za-z ]+$`
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | analysis_api_schema:soil_texture |
+| native | analysis_api_schema:soil_texture |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: soil_texture
+description: The relative proportion of different grain sizes of mineral particles
+  in a soil as described using a standard system; express as decimal percent sand
+  (50 um to 2 mm) silt (2 um to 50 um) and clay (<2 um) with optional textural name
+  (e.g. sand:0.20 silt:0.25 clay:0.55 description:silty clay loam).
+title: soil texture
+from_schema: https://w3id.org/MONet/analysis-api-schema
+rank: 1000
+alias: soil_texture
+domain_of:
+- SoilSample
+range: string
+pattern: ^(\w+:0\.\d+ )*description:[A-Za-z ]+$
+
+```
+</details>

@@ -1,0 +1,118 @@
+
+
+# Slot: external_identifiers 
+
+
+_List of external identifiers associated with this entity or activity._
+
+
+
+
+
+URI: [analysis_api_schema:external_identifiers](https://w3id.org/MONet/analysis-api-schema/external_identifiers)
+Alias: external_identifiers
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [Study](Study.md) |  |  yes  |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [EngineeredStrainSample](EngineeredStrainSample.md) | A sample containing a strain of an organism that has been subjected to geneti... |  no  |
+| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
+| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [NucleotideSequencing](NucleotideSequencing.md) | A lab activity in which DNA or RNA that was extracted from a sample is sequen... |  yes  |
+| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [Uriorcurie](Uriorcurie.md)
+
+* Multivalued: True
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | analysis_api_schema:external_identifiers |
+| native | analysis_api_schema:external_identifiers |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: external_identifiers
+description: List of external identifiers associated with this entity or activity.
+from_schema: https://w3id.org/MONet/analysis-api-schema
+rank: 1000
+alias: external_identifiers
+domain_of:
+- NucleotideSequencing
+- AerosolArmSample
+- AerosolSample
+- CommerciallyPurchasedSample
+- CultureEnvironmentalSample
+- EngineeredStrainSample
+- FieldDeployedTerraformSample
+- MixedCultureSample
+- MonetSoilSample
+- OtherUndescribedSample
+- PlantSample
+- PureCultureSample
+- SedimentSample
+- SoilSample
+- SynthesizedMaterialSample
+- TerraformSample
+- WaterSample
+- Study
+range: uriorcurie
+multivalued: true
+
+```
+</details>

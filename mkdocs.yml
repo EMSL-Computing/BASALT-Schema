@@ -24,6 +24,12 @@ plugins:
 nav:
   - Home: index.md
   - Schema: elements/index.md
+  - Background:
+      - Overview: background/index.md
+      - Context: background/context.md
+  - Examples:
+      - Overview: examples/index.md
+      - AMP2: examples/amp2.md
   - About: about.md
 
 exclude_docs: |

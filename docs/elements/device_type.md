@@ -1,0 +1,76 @@
+
+
+# Slot: device_type 
+
+
+
+URI: [analysis_api_schema:device_type](https://w3id.org/MONet/analysis-api-schema/device_type)
+Alias: device_type
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [LabDevice](LabDevice.md) |  |  no  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [DeviceTypeEnum](DeviceTypeEnum.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | analysis_api_schema:device_type |
+| native | analysis_api_schema:device_type |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: device_type
+from_schema: https://w3id.org/MONet/analysis-api-schema
+rank: 1000
+alias: device_type
+owner: LabDevice
+domain_of:
+- LabDevice
+range: DeviceTypeEnum
+
+```
+</details>

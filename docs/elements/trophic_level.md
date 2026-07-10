@@ -1,0 +1,94 @@
+
+
+# Slot: trophic level (trophic_level) 
+
+
+_Trophic levels are the feeding position in a food chain. Microbes can_
+
+_be a range of producers._
+
+
+
+
+
+URI: [analysis_api_schema:trophic_level](https://w3id.org/MONet/analysis-api-schema/trophic_level)
+Alias: trophic_level
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
+| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  yes  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [TrophicLevelEnum](TrophicLevelEnum.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | analysis_api_schema:trophic_level |
+| native | analysis_api_schema:trophic_level |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: trophic_level
+description: 'Trophic levels are the feeding position in a food chain. Microbes can
+
+  be a range of producers.'
+title: trophic level
+from_schema: https://w3id.org/MONet/analysis-api-schema
+rank: 1000
+alias: trophic_level
+domain_of:
+- CultureEnvironmentalSample
+- MixedCultureSample
+- OtherUndescribedSample
+- PureCultureSample
+- biological_entity
+range: TrophicLevelEnum
+
+```
+</details>

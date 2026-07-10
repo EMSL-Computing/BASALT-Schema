@@ -1,0 +1,82 @@
+
+
+# Slot: host infra-specific name (host_infra_spec_name) 
+
+
+_Taxonomic information about the host below subspecies level_
+
+
+
+
+
+URI: [analysis_api_schema:host_infra_spec_name](https://w3id.org/MONet/analysis-api-schema/host_infra_spec_name)
+Alias: host_infra_spec_name
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [String](String.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | analysis_api_schema:host_infra_spec_name |
+| native | analysis_api_schema:host_infra_spec_name |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: host_infra_spec_name
+description: Taxonomic information about the host below subspecies level
+title: host infra-specific name
+from_schema: https://w3id.org/MONet/analysis-api-schema
+rank: 1000
+alias: host_infra_spec_name
+domain_of:
+- OtherUndescribedSample
+range: string
+
+```
+</details>

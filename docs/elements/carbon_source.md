@@ -1,0 +1,85 @@
+
+
+# Slot: carbon_source 
+
+
+_Carbon source in this well (e.g. "L-malic acid", "glucose")_
+
+
+
+
+
+URI: [analysis_api_schema:carbon_source](https://w3id.org/MONet/analysis-api-schema/carbon_source)
+Alias: carbon_source
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [EcoplateWellMetadata](EcoplateWellMetadata.md) | Ecoplate-specific per-well metadata |  no  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [String](String.md)
+
+* Required: True
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | analysis_api_schema:carbon_source |
+| native | analysis_api_schema:carbon_source |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: carbon_source
+description: Carbon source in this well (e.g. "L-malic acid", "glucose")
+from_schema: https://w3id.org/MONet/analysis-api-schema
+rank: 1000
+alias: carbon_source
+owner: EcoplateWellMetadata
+domain_of:
+- EcoplateWellMetadata
+range: string
+required: true
+
+```
+</details>

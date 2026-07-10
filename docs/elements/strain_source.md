@@ -1,0 +1,96 @@
+
+
+# Slot: strain source (strain_source) 
+
+
+_Indicate the source of the strain provided (e.g. "PNNL", "ATCC"). If purchased provide the_
+
+_vendor and lot number if from another registered or known strain provide a reference._
+
+
+
+
+
+URI: [analysis_api_schema:strain_source](https://w3id.org/MONet/analysis-api-schema/strain_source)
+Alias: strain_source
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  yes  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [String](String.md)
+
+
+
+## Aliases
+
+
+* source_institution
+* strain_origin
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | analysis_api_schema:strain_source |
+| native | analysis_api_schema:strain_source |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: strain_source
+description: 'Indicate the source of the strain provided (e.g. "PNNL", "ATCC"). If
+  purchased provide the
+
+  vendor and lot number if from another registered or known strain provide a reference.'
+title: strain source
+from_schema: https://w3id.org/MONet/analysis-api-schema
+aliases:
+- source_institution
+- strain_origin
+rank: 1000
+alias: strain_source
+domain_of:
+- biological_entity
+range: string
+
+```
+</details>

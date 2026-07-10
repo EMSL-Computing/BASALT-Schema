@@ -25,6 +25,11 @@ gen-project: gen-schema gen-models
 gen-doc:
     uv run python util/gen_doc.py ./src/analysis_api_schema/schema/analysis_api_schema.yaml docs/elements/
 
+clean-doc:
+    rm -f docs/elements/*.md
+
+regen-doc: clean-doc gen-doc
+
 serve-doc:
     uv run mkdocs serve
 
