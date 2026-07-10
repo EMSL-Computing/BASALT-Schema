@@ -1,4 +1,4 @@
-set shell := ["powershell", "-Command"]
+set shell := ["bash", "-c"]
 
 # Lists `just` recipes
 default:
