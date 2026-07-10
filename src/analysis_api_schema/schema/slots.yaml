@@ -38,7 +38,7 @@ slots:
     range: integer
   
   agrochem_addition:
-    description: Addition of fertilizers pesticides etc. - amount and time of applications
+    description: Addition of fertilizers, pesticides, etc. - amount and time of applications
     range: string
     title: agrochemical additions
 
@@ -99,12 +99,9 @@ slots:
     title: ammonium
 
   analysis_type:
-    description: The analysis(ses) planned for this sample. The analysis types will later
-      be mapped to an allocated resource. This field is constrained to contain only
-      a set of limited terms. Include all the data types. This field can have multiple
-      values separated by a ';'.
-    range: AnalysisTypeEnum
-    title: analysis type
+    description: |-
+      The type(s) of analysis planned for this sample.
+    range: string
 
   analyte_category:
     description: omics type for easier search, optional
@@ -193,6 +190,17 @@ slots:
     range: BiolStatEnum
     title: biological status
 
+  biological_entity_ref:
+    description: |-
+      FK reference to a biological_entity representing the biological identity
+      strain, isolate, engineered construct) that this sample or activity
+      is associated with.
+    range: biological_entity
+    required: false
+    aliases:
+      - strain_ref
+      - strain_id
+
   biotic_regm:
     description: Information about treatment(s) involving use of biotic factors such
       as bacteria, viruses, or fungi.
@@ -222,18 +230,6 @@ slots:
     description: Mean measurement of uninoculated control wells
     range: float
     todos: units
-  
-  calibration_data:
-    description: Reference to the raw instrument data file used for calibration
-    range: MassSpectrometryInstrumentData
-
-  calibration_target:
-    description: The measurement being calibrated
-    range: CalibrationTargetEnum
-
-  calibration_standard:
-    description: The reference standard used for calibration
-    range: PurchasedMaterial
 
   bromide:
     description: 'Concentration of bromide (Unit: ppm)'
@@ -254,6 +250,18 @@ slots:
     pattern: ^\d+(\.\d+)?\s*(mg/L|umol/L|ppm)$
     range: string
     title: calcium
+
+  calibration_data:
+    description: Reference to the raw instrument data file used for calibration
+    range: MassSpectrometryInstrumentData
+
+  calibration_standard:
+    description: The reference standard used for calibration
+    range: PurchasedMaterial
+
+  calibration_target:
+    description: The measurement being calibrated
+    range: CalibrationTargetEnum
 
   carb_dioxide:
     description: 'Amount of carbon dioxide measured in the air the day of sampling.
@@ -284,10 +292,10 @@ slots:
       - CAS
 
   cbi:
-    description: Indicate if any information about the strain is considered confidential
-      business information
-    range: YesNoEnum
-    title: confidential business information
+    description: |-
+      Confidential Business Information flag (yes/no).
+      Indicates if the sample is subject to CBI restrictions.
+    range: boolean
     aliases:
       - CBI
 
@@ -329,12 +337,12 @@ slots:
     required: true
 
   collection_date:
-    description: 'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid
-      if entire collection date is unknown is just year (YYYY) or just year and month
+    description: |-
+      'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
       (YYYY-MM)'
     pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
-    range: string
     title: collection date
+    range: date
 
   collection_mode:
     description: The collection mode for the mass spectrometry data (e.g., profile, centroid)
@@ -372,13 +380,16 @@ slots:
     range: string
   
   component_description:
-    description: Provide a short statement describing the function of the construct
+    description: |-
+      Provide a short statement describing the function of the construct
       component. You may provide an optional literature reference for lesser-known components.
+      Example: "d-Cfp1 to block gene expression", "recognition sequence for guide RNA processing"
     range: string
     title: construct component description
 
   component_name:
-    description: Provide a one-to-three word name based on the component. If using an
+    description: |-
+      Provide a one-to-three word name based on the component. If using an
       acronym provide the full component name in the component description.
     range: string
     title: construct component name
@@ -392,12 +403,24 @@ slots:
   concentration_ug_per_uL:
     range: float
     description: Concentration of the substance in micrograms per microliter.
+    title: concentration (ug/uL)
   
+  condition_received:
+    description: |-
+      The condition of the sample when received.
+      Examples: "good", "damaged", "thawed"
+    range: string
+
   conduc:
     description: Electrical conductivity of water. Provide value and unit, any unit is valid.
     pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: conductivity
+
+  confirmed_receipt:
+    description: |-
+      Whether receipt of the sample was confirmed.
+    range: boolean
 
   construct_component:
     description: Select the construct component type.
@@ -467,6 +490,14 @@ slots:
   cv_percent:
     description: Coefficient of variation across technical replicates
     range: float
+
+  date_received:
+    description: |-
+      The date the sample was received.
+    range: date
+    aliases:
+      - received_date
+      - reception_date
 
   dd_ms2_resolution:
     description: Data-dependent MS2 resolution setting used in the mass spectrometry method
@@ -554,9 +585,9 @@ slots:
     title: dissolved oxygen
 
   donor_organism:
-    description: Provide the scientific name (genus and species) of the organism from
-      which the construct component was first described or obtained. You may enter 'synthetic'
-      if relevant.
+    description: |-
+     Provide the scientific name (genus and species) of the organism from which the construct component was first described or obtained. 
+     You may enter 'synthetic' if relevant.
     range: string
     title: donor organism
 
@@ -609,7 +640,8 @@ slots:
     title: emulsions
 
   encoded_traits:
-    description: Should include key traits like antibiotic resistance or xenobiotic
+    description: |-
+      Should include key traits like antibiotic resistance or xenobiotic
       degradation phenotypes for plasmids, converting genes for phage
     range: string
     title: encoded traits
@@ -712,13 +744,14 @@ slots:
     description: an identifier for a file that resolves to the file's accessible location
     range: string
 
+  filesize:
+    description: Size of the file in bytes
+    range: integer
+
   filter_method:
     description: Type of filter used or how the sample was filtered
     range: string
     title: filter method
-
-  filesize:
-    range: integer
 
   fire:
     description: 'Historical and/or physical evidence of fire. Format: YYYY-MM-DD'
@@ -728,7 +761,7 @@ slots:
 
   first_blh:
     description: 'First boundary layer height candidate (meters) (Unit: m)'
-    range: number
+    range: float
     title: first boundary layer height
 
   first_blh_quality_index:
@@ -740,7 +773,7 @@ slots:
   first_cbh:
     description: 'First cloud base (meters) or vertical visibility (meters) (-999 if
       no cloud base or vertical visibility) (Unit: m)'
-    range: number
+    range: float
     title: first cloud base height
 
   flooding:
@@ -752,6 +785,7 @@ slots:
   flow_rate_ul_min:
     range: float
     description: Flow rate of the mobile phase, in microliters per minute.
+    title: flow rate (uL/min)
   
   fluor:
     description: Raw or converted fluorescence of water. Provide value and unit, any unit is valid.
@@ -798,15 +832,15 @@ slots:
     title: genetic modifications
 
   genotype_segment_category:
-    description: Select the genotype category. A genotype is generally an expression
-      cassett or a grouping of genetic elements or a gene edit containing a set of construct
-      components leading to one or more intended traits. A strain may consist of multiple
-      genotypes.
+    description: |-
+      Category of genetic modification or segment.
+      Examples: "Gene(s) of Interest", "Gene Silencer"
     range: GenotypeSegmentEnum
     title: genotype segment category
 
   genotype_segment_name:
-    description: Provide a name that describes the genotype modification engineered
+    description: |-
+      Provide a name that describes the genotype modification engineered
       relative to the reference unmodified genome. The name should describe the spatially
       grouped components or specific function of the modification.
     range: string
@@ -836,10 +870,11 @@ slots:
     title: gravity
 
   growth_facil:
-    description: Type of facility or location from where the sample was collected or
-      grown. This field is NOT multivalued. If selecting other, add the `other_growth_facil`
-      attribute to provide additional detail.
-    range: GrowthFacilEnum
+    description: |-
+       Type of facility or location from where the sample was collected or
+       grown. This field is NOT multivalued. If selecting other, add the `other_growth_facil`
+       attribute to provide additional detail.
+    range: GrowthFacilityEnum
     title: growth facility
 
   growth_habit:
@@ -867,6 +902,11 @@ slots:
     description: |-
       Total growth time for the culture.
       Required for ExperimentalCulture activities.
+    range: string
+
+  guid_source:
+    description: |-
+      Source system for the sample GUID (e.g., "LIMS").
     range: string
 
   heavy_metals:
@@ -902,9 +942,13 @@ slots:
     title: host age
 
   host_common_name:
-    description: Common name of the host
+    description: |-
+      Common name for the host organism (e.g., "Pseudomonas putida").
+      For microbes, this may be identical to organism_name.
     range: string
     title: host common name
+    aliases:
+      - common_name
 
   host_disease_stat:
     description: List of diseases with which the host has been diagnosed; can include
@@ -977,6 +1021,10 @@ slots:
     pattern: NCBITaxon:\d+
     range: string
     title: host taxonomy identifier
+    aliases:
+      - host_taxonomy_id
+      - host_ncbi_taxon_id
+      - host_taxa_id
 
   host_tot_mass:
     description: 'Total mass of the host at collection. (Unit: kg or g)'
@@ -1086,7 +1134,8 @@ slots:
     required: true
   
   isol_growth_condt:
-    description: Publication reference in the form of pubmed ID (PMID), digital object
+    description: |-
+      Publication reference in the form of pubmed ID (PMID), digital object
       identifier (DOI), or URL for isolation and growth condition specifications of the
       organism/material
     range: string
@@ -1129,17 +1178,17 @@ slots:
     range: string
     title: light regimen
 
+  lims_barcode:
+    description: LIMS barcode identifier
+    range: string
+    required: false
+
   lims_id:
     description: An EMSL internal LIMS identifier for your sample. This will be provided
       by the MPOC and should not be edited.
     pattern: ^INGEST_SAMPLE_\d{9}$
     range: string
     title: LIMS ID
-
-  lims_barcode:
-    description: LIMS barcode identifier
-    range: string
-    required: false
 
   lims_protocol_instance_id:
     description: Reference to the L7 protocol_instance that corresponds to this sample processing step, if applicable.
@@ -1224,13 +1273,13 @@ slots:
   mean_total_cpc_concentration:
     description: "Mean concentration obtained from Condensation Particle Counter (Unit:\
       \ \u03BCm)"
-    range: number
+    range: float
     title: mean total C.P.C. concentration
 
   mean_total_pops_concentration:
     description: "Mean concentration obtained from Portable Optical Particle Spectrometer\
       \ (Unit: \u03BCm)"
-    range: number
+    range: float
     title: mean total P.O.P. concentration
 
   measure_type:
@@ -1312,15 +1361,15 @@ slots:
     range: string
     title: microbial biomass carbon method
 
-  micro_biomass_N_meth:
-    description: Reference or method used in determining microbial biomass nitrogen
-    range: string
-    title: microbial biomass nitrogen method
-
   micro_biomass_c_meth:
     description: Reference or method used in determining microbial biomass
     range: string
     title: microbial biomass carbon method
+
+  micro_biomass_N_meth:
+    description: Reference or method used in determining microbial biomass nitrogen
+    range: string
+    title: microbial biomass nitrogen method
 
   micro_biomass_n_meth:
     description: Reference or method used in determining microbial biomass nitrogen
@@ -1378,10 +1427,14 @@ slots:
     multivalued: true
 
   modification_method:
-    description: Select the method used to insert your construct into the genome of
-      your modified organism
+    description: |-
+      Select the method used to insert your construct into the genome of
+      your modified organism. Examples: "Electroporation", "Conjugation", "CRISPR", "Transduction"
     range: ModificationMethodEnum
     title: modification method
+    aliases:
+      - genetic_modification_method
+      - transformation_method
 
   ms_raw_file_type:
     description: the filetype of the mass spectrometry instrument data
@@ -1408,7 +1461,7 @@ slots:
       Pacific Southwest Tundra Taiga Pacific Tropical'
     range: NEONDomainEnum
     title: NEON domain
-    
+
   neon_plot_id:
     description: 'When sampling from a NEON site provide the plot ID from which you
       sampled. This includes the 4 letter site code followed by the 3 digit ID (Example:
@@ -1416,6 +1469,14 @@ slots:
     pattern: ^[A-Z]{4}_\d{3}$
     range: string
     title: neon plot identifier
+    todos: 
+      - subport mapping - this is submitted as ABCD_123 but we want to store it as neon_site_code and neon_plot_id separately
+
+  neon_site_code:
+    description: 'When sampling from a NEON site provide the 4 letter site code (Example: DEJU). If you do not have your NEON site use the code SITE_999.'
+    pattern: ^[A-Z]{4}$
+    range: string
+    title: neon site code
 
   nitrate:
     description: 'Concentration of nitrate in the sample (Unit: umol/L or mg/L or ppm)'
@@ -1499,8 +1560,12 @@ slots:
     title: organism count
 
   organism_name:
-    description: Provide the scientific name (genus and species) of the host organism.
+    description: |-
+      Provide the scientific name (genus and species) of the host organism.
     range: string
+    aliases:
+      - scientific_name
+      - species_name
     title: organism name
 
   other:
@@ -1513,6 +1578,11 @@ slots:
     description: Please specify growth facility if you selected 'other'
     range: string
     title: other growth facility
+
+  other_guid_source:
+    description: |-
+      Description of GUID source if guid_source = "other".
+    range: string
 
   other_samp_store_temp:
     description: Please specify sample storage temperature if you selected 'other'
@@ -1582,7 +1652,8 @@ slots:
     title: particle class
 
   pathogenicity:
-    description: To what is the entity pathogenic
+    description: |-
+      To what is the entity pathogenic, e.g., humans, animals, plants, or specific tissues.
     range: string
     title: pathogenicity
 
@@ -1611,7 +1682,7 @@ slots:
   ph:
     description: pH measurement of the sample or liquid portion of sample or aqueous
       phase of the fluid
-    range: number
+    range: float
     title: pH
 
   ph_adjustment:
@@ -1645,7 +1716,9 @@ slots:
     title: phaeopigments
 
   phenotype:
-    description: Provide the intended phenotype of the modified organism.
+    description: |-
+      Provide the intedned phenotype of hte modified organism. Observable characteristics of the biological entity.
+      Example: "aprimycin resistance, gene knockdown dCas12a construct"
     range: string
     title: phenotype
 
@@ -1826,7 +1899,7 @@ slots:
 
   priority_order:
     description: Indicate the run order priority of your samples
-    range: number
+    range: float
     title: priority order
 
   produced_by_ms_run:
@@ -1869,9 +1942,18 @@ slots:
       - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141 where emsl.project is the CURIE prefix
 
   propagation:
-    description: 'The type of reproduction from the parent stock. Values for this field are specific to different taxa. For phage or virus: lytic/lysogenic/temperate/obligately lytic. For plasmids: incompatibility group. For eukaryotes: sexual/asexual'
+    description: |-
+     The type of reproduction from the parent stock. Values for this field are specific to different taxa. For phage or virus: lytic/lysogenic/temperate/obligately lytic. For plasmids: incompatibility group. For eukaryotes: sexual/asexual'
     range: string
     title: propagation
+
+  protocol_url:
+    description: URL pointing to the protocol used in the activity, if applicable.
+    range: string
+
+  protocol_version:
+    description: Version of the protocol used in the activity, if applicable.
+    range: string
 
   provider_name:
     range: ControlledTermValue
@@ -1974,7 +2056,7 @@ slots:
 
   root_med_ph:
     description: pH measurement of the culture rooting medium.
-    range: number
+    range: float
     title: rooting medium pH
 
   root_med_regl:
@@ -2097,10 +2179,14 @@ slots:
     - EMSL and NMDC both need better modelling for this
 
   sample_name:
-    description: The name or label that is present on the shipped sample. This should
+    description: |-
+      The name or label that is present on the shipped sample. This should
       be a human readable name.
+    notes: This is typically an alias for the inherited 'name' slot on Sample classes. Defined separately for compatibility with source data files using 'sample_name' column headers.
     range: string
     title: sample name
+    aliases:
+      - samp_name
 
   sample_processing:
     description: A brief description of any processing applied to the sample during
@@ -2182,7 +2268,7 @@ slots:
 
   second_blh:
     description: 'Second boundary layer height candidate (meters) (Unit: m)'
-    range: number
+    range: float
     title: second boundary layer height
 
   second_blh_quality:
@@ -2194,7 +2280,7 @@ slots:
   second_cbh:
     description: 'Second cloud base (meters) or highest received signal in vertical
       visibility (meters) (-999 if no cloud base or vertical visibility) (Unit: m)'
-    range: number
+    range: float
     title: second cloud base height
 
   secondary_treatment:
@@ -2419,23 +2505,33 @@ slots:
     description: The physical or digital location where the processed sample is stored (e.g., freezer location, database ID).
 
   storage_temperature:
-    description: Storage temperature for the entity (e.g. "4 C", "-80 C")
+    description: |-
+      Storage temperature for the sample (e.g., "-80 C", "4 C").
     range: string
 
   strain_description:
-    description: A brief description of the modifications that comprise this strain
+    description: |-
+      A brief description of the modifications that comprise this strain
     range: string
     title: strain description
+    aliases:
+      - strain_desc
+      - strain_notes
 
   strain_identifier:
     description: |-
-      External human-readable strain identifier (e.g. "KT2440_pTE314").
-      NOT the database UUID   that is the Strain.id attribute.
+       External human-readable strain identifier (e.g. "KT2440_pTE314").
+       NOT the database UUID   that is the Strain.id attribute.
     range: string
     required: true
+    aliases:
+      - strain_id
+      - strain_name
 
   strain_mutation:
-    description: Genetic modification or plasmid carried (e.g. "pTE314")
+    description: |-
+      Primary genetic modification or plasmid carried (e.g., "pTE314").
+      For complex constructs, use genotype_segment_* and component_* slots.
     range: string
 
   strain_name:
@@ -2449,14 +2545,21 @@ slots:
     required: false
 
   strain_source:
-    description: Indicate the source of the strain provided (e.g. "PNNL", "ATCC"). If purchased provide the
+    description: |-
+      Indicate the source of the strain provided (e.g. "PNNL", "ATCC"). If purchased provide the
       vendor and lot number if from another registered or known strain provide a reference.
     range: string
     title: strain source
+    aliases:
+      - source_institution
+      - strain_origin
 
   strain_type:
-    description: Type of strain (bacterial, fungal, etc.)
-    range: string
+    description: |-
+      Type of strain/organism (bacterial, fungal, archaeal, etc.)
+    range: StrainTypeEnum
+    aliases:
+      - organism_type
 
   subspecf_gen_lin:
     description: Information about the genetic distinctness of the sequenced organism
@@ -2465,6 +2568,8 @@ slots:
       the lineage rank separated by a colon, e.g. biovar:abc123
     range: string
     title: subspecific genetic lineage
+    todos: 
+      - make this inlined/multivalued?
 
   sulfate:
     description: 'Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)'
@@ -2486,11 +2591,10 @@ slots:
         xrf:       per-element concentration results + QC flag
         lcms:      feature count, identification count, MSI-2 fraction
       Interim DB storage: JSONB column retained until formal typed class exists.
-
-      DDL: ALTER TABLE "processedData"
-             ADD COLUMN summary_metrics JSONB;   -- interim; formal key-value schema TBD
     range: string
     required: false
+    todos:
+      - make this inined/multivalued?
 
   suspend_part_matter:
     description: 'Concentration of suspended particulate matter. (Unit: mg/L)'
@@ -2557,6 +2661,19 @@ slots:
     range: string
     todos: should this point to the Strain class?
 
+  taxonomy_id:
+    description: |-
+      NCBI taxon ID for the organism.
+    range: string
+    aliases:
+      - ncbi_taxon_id
+      - taxon_id
+  
+  technical_reps:
+    description: Number of technical replicates for the sample.
+    range: integer
+    title: technical replicates
+
   temp:
     description: 'Temperature of the sample at the time of sampling. (Units: C)'
     pattern: ^-?\d+(\.\d+)?\s*C$
@@ -2586,7 +2703,7 @@ slots:
 
   third_blh:
     description: 'Third boundary layer height candidate (meters) (Unit: m)'
-    range: number
+    range: float
     title: third boundary layer height
 
   third_blh_quality:
@@ -2610,7 +2727,6 @@ slots:
       Human-readable timepoint label for repeated-measurement series.
       Examples: "t=0", "t=24h", "t=48h".
       Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivity
-      (per core-planB decision).
     range: string
     required: true
 
@@ -2700,16 +2816,18 @@ slots:
     description: Total amount of analyte in micrograms
 
   trait:
-    description: Select the general type of intended trait
+    description: |-
+      Trait category for the biological entity.
+      Example: "Bacterial Resistance", "Other"
     range: IntendedTraitEnum
-    title: trait
 
   treatment_type:
     description: Type of treatment applied in experimental culture growth
     range: string
 
   trophic_level:
-    description: Trophic levels are the feeding position in a food chain. Microbes can
+    description: |-
+      Trophic levels are the feeding position in a food chain. Microbes can
       be a range of producers.
     range: TrophicLevelEnum
     title: trophic level
@@ -2720,6 +2838,8 @@ slots:
     pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
     range: string
     title: turbidity
+    todos:
+      - decide how to represent in backend (normalized child table with FK to PlateSetupActivity, array column, or other)
 
   uninoculated_mean:
     description: Mean measurement of uninoculated control wells (baseline for Ecoplate)
@@ -2821,26 +2941,31 @@ slots:
       Structured per-well metadata array. Format varies by activity subclass:
         AMP2:     AMP2WellMetadata instances (position, volumes, replicate_group)
         Ecoplate: EcoplateWellMetadata instances (position, carbon_source, treatment, volumes)
-      Stored as JSONB in the database; typed via LinkML inlined classes.
     range: WellMetadata
     multivalued: true
     inlined_as_list: true
+    todos:
+      - decide how to represent in backend (normalized child table with FK to PlateSetupActivity, array column, or other)
 
   well_readings:
     description: |-
       Structured per-well measurement data array.
       Lightweight summary for SQL queries without full file download.
       Raw data still accessible via processedData.s3_key in MinIO.
-      Stored as JSONB in the database; typed via LinkML inlined class.
+      typed via LinkML inlined class.
     range: WellReading
     multivalued: true
     inlined_as_list: true
+    todos:
+      - decide how to represent in backend (normalized child table with FK to PlateSetupActivity, array column, or other)
+
 
   wind_direction:
     description: Direction of the wind on the day of sampling. Collected via anemometer.
       Provide cardinal direction.
     range: CardinalDirectionEnum
     title: wind direction
+    required: false
 
   wind_speed:
     description: Wind speed describes how fast the air is moving past a certain point
@@ -2859,6 +2984,6 @@ slots:
       Per-run workflow parameters. Previously annotated TODO JSONB in schema.
       Direction: structured key-value pairs keyed by workflow type.
       Schema for allowed keys TBD per workflow type before full implementation.
-      Interim DB storage: JSONB column retained.
+  
     range: string
     required: false
