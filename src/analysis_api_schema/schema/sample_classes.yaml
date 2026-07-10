@@ -45,7 +45,6 @@ classes:
       - cur_vegetation_meth
       - drainage_class
       - elev
-      - env_broad_scale
       - extreme_event
       - fao_class
       - fire
@@ -116,6 +115,7 @@ classes:
       - carb_monoxide
       - chem_administration
       - color_code
+      - env_broad_scale
       - env_local_scale
       - env_medium
       - experimental_factor
@@ -195,6 +195,7 @@ classes:
       - carb_dioxide
       - carb_monoxide
       - chem_administration
+      - env_broad_scale
       - env_local_scale
       - env_medium
       - experimental_factor
@@ -381,6 +382,7 @@ classes:
       - biotic_regm
       - chem_administration
       - encoded_traits
+      - env_broad_scale
       - env_local_scale
       - env_medium
       - experimental_factor
@@ -497,6 +499,7 @@ classes:
       - cult_root_med
       - depth
       - encoded_traits
+      - env_broad_scale
       - env_local_scale
       - env_medium
       - external_identifiers
@@ -678,6 +681,7 @@ classes:
       - chem_administration
       - core_group
       - depth
+      - env_broad_scale
       - env_local_scale
       - env_medium
       - external_identifiers
@@ -799,6 +803,7 @@ classes:
       - efficiency_percent
       - emulsions
       - encoded_traits
+      - env_broad_scale
       - env_local_scale
       - env_medium
       - experimental_factor
@@ -1014,6 +1019,7 @@ classes:
       - biotic_regm
       - chem_administration
       - chem_mutagen
+      - env_broad_scale
       - env_local_scale
       - env_medium
       - experimental_factor
@@ -1124,6 +1130,7 @@ classes:
       - biotic_regm
       - chem_administration
       - encoded_traits
+      - env_broad_scale
       - env_local_scale
       - env_medium
       - experimental_factor
@@ -1218,6 +1225,7 @@ classes:
       - diss_org_carb
       - diss_org_nitro
       - diss_oxygen
+      - env_broad_scale
       - env_local_scale
       - env_medium
       - experimental_factor
@@ -1347,6 +1355,7 @@ classes:
       - bulk_elect_conductivity
       - chem_administration
       - depth
+      - env_broad_scale
       - env_local_scale
       - env_medium
       - experimental_factor
@@ -1511,6 +1520,7 @@ classes:
       - chem_administration
       - cult_root_med
       - encoded_traits
+      - env_broad_scale
       - env_local_scale
       - env_medium
       - external_identifiers
@@ -1637,6 +1647,7 @@ classes:
       - diss_org_nitro
       - diss_oxygen
       - down_par
+      - env_broad_scale
       - env_local_scale
       - env_medium
       - experimental_factor
