@@ -108,11 +108,6 @@ slots:
     description: omics type for easier search, optional
     range: AnalyteCategoryEnum
 
-  analytic:
-    range: string
-    required: true
-    todos: what does this mean
-
   ances_data:
     description: Information about either pedigree or other ancestral information description
     range: string
@@ -1161,11 +1156,6 @@ slots:
     range: string
     title: local soil classification method
 
-  location:
-    range: string
-    required: true
-    todos: used on many method classes. no description. what was this meant to mean?
-
   longitude:
     title: longitude
     description: Longitude coordinate of the sampling site in WSG 84 format.
@@ -1276,10 +1266,6 @@ slots:
     pattern: ^\d+(\.\d+)?\s*(umol/L|ppm|ppb)$
     range: string
     title: methane
-
-  method:
-    range: string
-    todos: what does this mean
 
   method_development:
     description: If your samples are TEST sample ONLY, please provide information on
