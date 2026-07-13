@@ -45,9 +45,6 @@ classes:
       - cur_vegetation_meth
       - drainage_class
       - elev
-      - env_broad_scale
-      - env_local_scale
-      - env_medium
       - extreme_event
       - fao_class
       - fire
@@ -83,7 +80,9 @@ classes:
         required: true
       longitude:
         required: true
-    todos: If we only have one Site class, we can't require Site slots based on sample type. We could add this in the submission schema JSON conversion perhaps.
+    todos:
+      - If we only have one Site class, we can't require Site slots based on sample type. We could add this in the submission schema JSON conversion perhaps.
+      - fao_class - can this vary within a site or change with time?
 
   Sample:
     description: A physical sample collected from an environment. The environment can be ecological, laboratory, or any other context where samples are collected. This class serves as an abstract class to relate subclasses of samples.
@@ -99,7 +98,7 @@ classes:
       - lims_barcode
     slot_usage:
     todos:
-      - where should proposal ID live? probably not here?
+      - where should proposal ID live? probably not here? emsl_activity is a string referencing a campaign name. but we do need to link samples to their parent studies/projects somehow.
 
   AerosolArmSample:
     attributes:
@@ -116,6 +115,9 @@ classes:
       - carb_monoxide
       - chem_administration
       - color_code
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - experimental_factor
       - experimental_factor_other
       - external_identifiers
@@ -193,6 +195,9 @@ classes:
       - carb_dioxide
       - carb_monoxide
       - chem_administration
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - experimental_factor
       - experimental_factor_other
       - extraction_method
@@ -377,6 +382,9 @@ classes:
       - biotic_regm
       - chem_administration
       - encoded_traits
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - experimental_factor
       - experimental_factor_other
       - external_identifiers
@@ -392,7 +400,7 @@ classes:
       - isol_growth_condt
       - isotope_exposure
       - latitude
-      - longitude      
+      - longitude
       - light_regm
       - method_development
       - non_microb_biomass
@@ -491,6 +499,9 @@ classes:
       - cult_root_med
       - depth
       - encoded_traits
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - external_identifiers
       - gaseous_environment
       - genetic_mod
@@ -511,7 +522,7 @@ classes:
       - isol_growth_condt
       - isotope_exposure
       - latitude
-      - longitude      
+      - longitude
       - light_regm
       - method_development
       - mineral_nutr_regm
@@ -668,10 +679,14 @@ classes:
       - agrochem_addition
       - bulk_elect_conductivity
       - chem_administration
+      - core_group
       - depth
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - external_identifiers
       - latitude
-      - longitude      
+      - longitude
       - lims_id
       - misc_param
       - other
@@ -788,6 +803,9 @@ classes:
       - efficiency_percent
       - emulsions
       - encoded_traits
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - experimental_factor
       - experimental_factor_other
       - extraction_method
@@ -829,7 +847,7 @@ classes:
       - isotope_exposure
       - item_number
       - latitude
-      - longitude      
+      - longitude
       - light_intensity
       - light_regm
       - link_addit_analys
@@ -1001,6 +1019,9 @@ classes:
       - biotic_regm
       - chem_administration
       - chem_mutagen
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - experimental_factor
       - experimental_factor_other
       - extraction_method
@@ -1019,7 +1040,7 @@ classes:
       - humidity_regm
       - isotope_exposure
       - latitude
-      - longitude   
+      - longitude
       - light_regm
       - mechanical_damage
       - method_development
@@ -1109,6 +1130,9 @@ classes:
       - biotic_regm
       - chem_administration
       - encoded_traits
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - experimental_factor
       - experimental_factor_other
       - extraction_method
@@ -1201,6 +1225,9 @@ classes:
       - diss_org_carb
       - diss_org_nitro
       - diss_oxygen
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - experimental_factor
       - experimental_factor_other
       - extraction_method
@@ -1210,7 +1237,7 @@ classes:
       - humidity_regm
       - isotope_exposure
       - latitude
-      - longitude    
+      - longitude
       - light_regm
       - magnesium
       - mean_frict_vel
@@ -1328,6 +1355,9 @@ classes:
       - bulk_elect_conductivity
       - chem_administration
       - depth
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - experimental_factor
       - experimental_factor_other
       - extraction_method
@@ -1340,7 +1370,7 @@ classes:
       - humidity_regm
       - isotope_exposure
       - latitude
-      - longitude      
+      - longitude
       - light_regm
       - link_addit_analys
       - method_development
@@ -1490,6 +1520,9 @@ classes:
       - chem_administration
       - cult_root_med
       - encoded_traits
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - external_identifiers
       - gaseous_environment
       - genetic_mod
@@ -1614,6 +1647,9 @@ classes:
       - diss_org_nitro
       - diss_oxygen
       - down_par
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - experimental_factor
       - experimental_factor_other
       - external_identifiers
@@ -1624,7 +1660,7 @@ classes:
       - glucosidase_act
       - isotope_exposure
       - latitude
-      - longitude      
+      - longitude
       - light_intensity
       - magnesium
       - mean_frict_vel
@@ -1771,12 +1807,14 @@ classes:
     slots:
       - name #will be inherited when Activity class is made
       - description
-      - project #do we need this here? where do we make the campaign, project, pi, etc associations?
+      - project
       - emsl_activity
       - collection_date
       - shipped_sample_size
       - sampled_at_site
-    todos: is this for individual samples or can it be the activity of collecting multiple samples from one site? would need to change shipped_sample_size and storage_condt if so.
+    todos:
+      - is this for individual samples or can it be the activity of collecting multiple samples from one site? would need to change shipped_sample_size and storage_condt if so.
+      - does project number go here? how do we connect Sample/SamplingActivity to a project/Study?
 
   AerosolArmSamplingActivity:
     attributes:
