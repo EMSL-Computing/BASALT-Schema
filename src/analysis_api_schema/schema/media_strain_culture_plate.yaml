@@ -6,6 +6,12 @@ description: |-
   Comprehensive schema delta for 96-well plate workflows (AMP2 + Ecoplate)
   with upstream culture growth activities and generalised processing hierarchy.
 
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: analysis_api_schema
+
 imports:
   - linkml:types
   - slots

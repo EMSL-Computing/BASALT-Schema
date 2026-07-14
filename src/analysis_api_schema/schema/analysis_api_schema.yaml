@@ -13,7 +13,8 @@ see_also:
 
 prefixes:
   analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
-  # linkml: https://w3id.org/linkml/
+  linkml: https://w3id.org/linkml/
+  xsd: http://www.w3.org/2001/XMLSchema#
   # schema: http://schema.org/
   # qudt: http://qudt.org/schema/qudt/
   # unit: http://qudt.org/vocab/unit/
@@ -37,9 +38,18 @@ imports:
   - slots
   - study
   - value_tables
-  - xrf_xrd
+  # - xrf_xrd  # Draft module duplicates classes already defined in products.yaml
   - zip_download
   # - linkage_cache   # MR2: uncomment when linkage_cache.yaml is added
+
+types:
+  uuid:
+    typeof: string
+    uri: xsd:string
+    pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$'
+  timestamp_tz:
+    typeof: datetime
+    uri: xsd:dateTime
 
 classes:
 
@@ -422,19 +432,15 @@ classes:
         identifier: true
         range: uuid
       sample_base_id:
-        identifier: true
         range: Sample
         required: true
       processing_id:
-        identifier: true
         range: SampleProcessing
         required: true
       step_number:
-        identifier: true
         range: integer
         required: true
       role:
-        identifier: true
         range: SampleRole
         required: true
     unique_keys:
@@ -464,4 +470,4 @@ classes:
         range: FunctionalAnnotationIdentifier
         required: true
       count:
-        range: numeric
+        range: double
