@@ -38,9 +38,8 @@ imports:
   - slots
   - study
   - value_tables
-  # - xrf_xrd  # Draft module duplicates classes already defined in products.yaml
   - zip_download
-  # - linkage_cache   # MR2: uncomment when linkage_cache.yaml is added
+  # - linkage_cache   # uncomment when linkage_cache.yaml is added
 
 types:
   uuid:
@@ -440,3 +439,76 @@ classes:
         required: true
       count:
         range: double
+
+  XRayDataGenerationActivity:
+      is_a: DataGenerationActivity
+      abstract: true
+      description: |-
+        Abstract base class for X-ray analytical methods including XRF (elemental)
+        and XRD (mineralogical) analysis. Inherits acquisition_time, instrument_id,
+        protocol_url, analyte_id, and other core metadata from DataGenerationActivity.
+        
+        Concrete subclasses define method-specific measurement parameters.
+        Future X-ray methods (e.g., XCT) can extend this class.
+        
+        Shared patterns:
+          - Direct instrument output (no computational workflow) is typical for XRF
+          - XRD may optionally link to DataProcessingActivity for Rietveld refinement
+          - protocol_url should link to vendor SOP or EMSL internal protocol documentation
+
+  XRFDataGenerationActivity:
+    is_a: XRayDataGenerationActivity
+    description: |-
+      X-ray Fluorescence (XRF) elemental analysis activity.
+      
+      XRF measures elemental composition by detecting characteristic X-ray emissions
+      from a sample bombarded with high-energy X-rays. Typical output: concentrations
+      of 10-30 elements per sample (Ni, Pb, As, Cr, Fe, Ca, K, etc.).
+      
+      Data product: XRFElementalProduct (one row per element per sample)
+      
+      Workflow pattern: Direct instrument output (no computational processing step)
+        processedSample -> XRFDataGenerationActivity -> XRFElementalProduct (workflow_id = NULL)
+      
+      Protocol information: Stored externally; link via protocol_url attribute.
+      Example protocol parameters (stored in external SOP or DataProcessingActivity
+      if computational correction is needed):
+        - Beam voltage (kV), beam current (mA)
+        - Measurement duration (seconds)
+        - Matrix correction method (fundamental parameters, empirical)
+        - Calibration date
+        - Operator ID
+      
+      Required enum additions to enums.yaml:
+        routemethod:
+          xrf_analysis:  # Add to routemethod permissible_values
+
+  XRDDataGenerationActivity:
+    is_a: XRayDataGenerationActivity
+    description: |-
+      X-ray Diffraction (XRD) mineralogical analysis activity.
+      
+      XRD identifies crystalline mineral phases by measuring diffraction patterns.
+      Output: mineral phase names and quantitative abundances (weight %).
+      
+      Data product: XRDPhaseProduct (one row per mineral phase per sample)
+      
+      Workflow patterns:
+        1. Direct/semi-quantitative: 
+             processedSample -> XRDDataGenerationActivity -> XRDPhaseProduct (workflow_id = NULL)
+        2. With Rietveld refinement (computational):
+             processedSample -> XRDDataGenerationActivity -> 
+             DataProcessingActivity(type='xrd_rietveld_refinement') -> 
+             XRDPhaseProduct (workflow_id = refinement WEA)
+      
+      Protocol information: Stored externally; link via protocol_url attribute.
+      Example protocol parameters (stored in external SOP or DataProcessingActivity):
+        - Diffractometer geometry (Bragg-Brentano, Debye-Scherrer)
+        - X-ray tube type (Cu, Co, Mo)
+        - Scan range (2-theta degrees), step size
+        - Refinement software (HighScore Plus, GSAS-II, FullProf)
+        - R-factor, GOF (goodness of fit)
+      
+      Required enum additions to enums.yaml:
+        routemethod:
+          xrd_analysis:  # Add to routemethod permissible_values
