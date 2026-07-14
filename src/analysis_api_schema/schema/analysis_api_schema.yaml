@@ -53,15 +53,7 @@ types:
 
 classes:
 
-  # ---------------------------------------------------------------------------
-  # NEW ABSTRACT BASE CLASSES, FOR EVERYTHING
-  # Activity and Entity were moved here from metaproteomics.yaml,
-  # since we're going to do these anyway it seemed like a good starting point.
-  # The whole is_a inheritance hierarchy is NOT built out in this MR,
-  # that should be its own branch/MR for clarity.
-  # Edit these classes to your heart's content when that work happens.
-
-  Activity: # L7 - links to PROV-O Activity, but with additional attributes relevant to mass spectrometry and chemical processes
+  Activity: 
     description: Something that happens over time and can use equipment.
     abstract: true
     attributes:
@@ -92,14 +84,7 @@ classes:
     slots:
     - name
     - description
-  # ---------------------------------------------------------------------------
 
-  # ---------------------------------------------------------------------------
-  # (NEW ABSTRACT CLASS) dataProduct   MR1
-  # Abstract base for any data artifact accessible in S3 storage.
-  # processedData inherits via is_a. Future sitePhoto and similar file-based
-  # products will also inherit here. No direct database table.
-  # ---------------------------------------------------------------------------
   DataProduct:
     abstract: true
     description: |-
@@ -125,10 +110,6 @@ classes:
         range: uuid
         required: true
 
-  # (CHANGED MR1) processedData now inherits from dataProduct via is_a.
-  # Inherited slots: name, description, project, sampling_set, core_section, sample_name,
-  # s3_base_url, s3_bucket, s3_key, filesize, md5checksum, id.
-  # Retained as attributes: type (class-specific product enum range), workflow_id.
   ProcessedData:
     is_a: DataProduct
     abstract: true
@@ -176,10 +157,6 @@ classes:
       photo_taken_during:
         range: SamplingActivity
 
-  # Concrete per-method-type subclasses (e.g. EcoplateDataGenerationActivity,
-  # AMP2DataGenerationActivity in companion files) use is_a: DataGenerationActivity and
-  # add method-specific slots (including timepoint_label where needed).
-
   DataGenerationActivity:
     abstract: true
     slots:
@@ -215,11 +192,6 @@ classes:
       method_id:
         range: RespirationMethod
         description: Reference to the RespirationMethod used for this run
-
-  # DataProcessingActivity is ABSTRACT.
-  # Concrete per-type subclasses (e.g. MetagenomicsDataProcessingActivity in
-  # metagenomics.yaml) use is_a: DataProcessingActivity.
-  # New slot: parent_workflow_id (chain link). workflow_steps direction updated.
 
   DataProcessingActivity:
     abstract: true
@@ -402,9 +374,6 @@ classes:
       activity_speed_id:
         range: QuantityValue
 
-  # (CHANGED MR1) sampleProcessing is now ABSTRACT per PI guidance.
-  # Concrete protocol-specific subclasses use is_a: sampleProcessing.
-  # processing_steps noted TODO JSONB   direction change to key-value is deferred.
   SampleProcessing:
     abstract: true
     slots:
