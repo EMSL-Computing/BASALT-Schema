@@ -1170,7 +1170,30 @@ enums:
       transposon:
         description: Transposon-mediated insertion
       other:
+        title: Other
         description: Other modification method not listed
+      p_element:
+        title: P-element
+      phage_transformation:
+        title: Phage Transformation
+      piggybac:
+        title: Piggybac
+      polyethylene_glycol_mediated:
+        title: Polyethylene Glycol-mediated
+      replicon:
+        title: Replicon
+      whisker_mediated_transformation:
+        title: Whisker-mediated Transformation
+  
+  MONetCoreGroupEnum:
+    description: Core groups when sampling according to the MONet sampling protocol
+    permissible_values:
+      A:
+      B:
+      C1:
+      C2:
+      C3:
+      C4:
 
   NEONDomainEnum:
     description: NEON ecological domains

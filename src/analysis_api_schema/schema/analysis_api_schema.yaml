@@ -41,8 +41,6 @@ imports:
   - zip_download
   # - linkage_cache   # MR2: uncomment when linkage_cache.yaml is added
 
-
-
 classes:
 
   # ---------------------------------------------------------------------------
@@ -256,16 +254,6 @@ classes:
         required: true
       alternate_identifier_type:
         range: AlternateIdentifierType
-        required: true
-
-
-  Ecoregion:
-    attributes:
-      domain_id:
-        identifier: true
-        range: integer
-      domain_name:
-        range: string
         required: true
 
   FunctionalAnnotationIdentifier:

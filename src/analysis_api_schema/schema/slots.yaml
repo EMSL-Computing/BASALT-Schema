@@ -20,10 +20,6 @@ slots:
   # id: is left as an attribute with range: uuid and identifier: true
   # everywhere, for now, for (some kind of database reason).
 
-
-  # id: is left as an attribute with range: uuid and identifier: true
-  # everywhere, for now, for (some kind of database reason).
-
   acquisition_strategy:
     range: MassSpectrometryAcquisitionStrategyEnum
     description: The acquisition strategy used in the mass spectrometry run.
@@ -33,14 +29,16 @@ slots:
     description: Additional information pertaining to these data, including SP Project ID and Taxon OID
 
   aerosol_type:
+    description: The type or method of aerosol collection
     range: AerosolTypeEnum
     required: true
 
   agitation_speed_rpm:
-
+    description: Agitation/shaking speed in RPM (0 for static)
     range: integer
   
   agrochem_addition:
+    description: Addition of fertilizers, pesticides, etc. - amount and time of applications
     range: string
     title: agrochemical additions
 
@@ -104,6 +102,7 @@ slots:
     description: |-
       The type(s) of analysis planned for this sample.
     range: string
+
   analyte_category:
     description: omics type for easier search, optional
     range: AnalyteCategoryEnum
@@ -130,12 +129,16 @@ slots:
     pattern: '^\d+(\.\d+)?\s*mm$'
     range: string
     title: mean annual precipitation
+    aliases:
+      - average annual precipitation
 
   annual_temp:
     description: 'Mean annual temperature (Unit: C)'
     pattern: '^-?\d+(\.\d+)?\s*C$'
     range: string
     title: mean annual temperature
+    aliases:
+      - average annual temperature
 
   antibiotic_regm:
     description: Information about treatment involving antibiotic administration; should
@@ -198,7 +201,6 @@ slots:
       - strain_ref
       - strain_id
 
-
   biotic_regm:
     description: Information about treatment(s) involving use of biotic factors such
       as bacteria, viruses, or fungi.
@@ -228,7 +230,7 @@ slots:
     description: Mean measurement of uninoculated control wells
     range: float
     todos: units
-  
+
   bromide:
     description: 'Concentration of bromide (Unit: ppm)'
     pattern: ^\d+(\.\d+)?\s*ppm$
@@ -293,7 +295,9 @@ slots:
     description: |-
       Confidential Business Information flag (yes/no).
       Indicates if the sample is subject to CBI restrictions.
-    range: boolean 
+    range: boolean
+    aliases:
+      - CBI
 
   chem_administration:
     title: chemical administration
@@ -381,12 +385,14 @@ slots:
       component. You may provide an optional literature reference for lesser-known components.
       Example: "d-Cfp1 to block gene expression", "recognition sequence for guide RNA processing"
     range: string
+    title: construct component description
 
   component_name:
     description: |-
       Provide a one-to-three word name based on the component. If using an
       acronym provide the full component name in the component description.
     range: string
+    title: construct component name
 
   compound_name:
     description: The name of the purchased material. A substance formed by chemical
@@ -397,6 +403,7 @@ slots:
   concentration_ug_per_uL:
     range: float
     description: Concentration of the substance in micrograms per microliter.
+    title: concentration (ug/uL)
   
   condition_received:
     description: |-
@@ -428,6 +435,11 @@ slots:
     description: Known or detected contaminant strains (if any)
     range: string
 
+  core_group:
+    title: core group
+    description: The category of soil core taken according to the MONet sampling protocol.
+    range: MONetCoreGroupEnum
+
   core_section:
     title: core section
     description: The section of the core.
@@ -435,7 +447,7 @@ slots:
       - value: TOP
       - value: MID
       - value: BTM
-    range: string
+    range: CoreSectionEnum
 
   creation_date:
     description: Date the entity or preparation was created
@@ -461,7 +473,7 @@ slots:
       mudflats, oil waste, pastureland, permanent snow or ice, rainforest, rangeland, roads,
       railroads, rock, row crops, saline seeps, salt flats, sand, shrub crops, shrub land, small
       grains, successional shrub land, swamp, tropical, tundra, vegetable crops, vine crops'
-    range: CurLandUseEnum
+    range: LandUseEnum
     title: current land use
 
   cur_vegetation:
@@ -634,7 +646,6 @@ slots:
     range: string
     title: encoded traits
 
-
   env_broad_scale:
     description: >-
       'Report the major environmental system the sample or specimen came
@@ -734,6 +745,7 @@ slots:
     range: string
 
   filesize:
+    description: Size of the file in bytes
     range: integer
 
   filter_method:
@@ -773,6 +785,7 @@ slots:
   flow_rate_ul_min:
     range: float
     description: Flow rate of the mobile phase, in microliters per minute.
+    title: flow rate (uL/min)
   
   fluor:
     description: Raw or converted fluorescence of water. Provide value and unit, any unit is valid.
@@ -895,6 +908,7 @@ slots:
     description: |-
       Source system for the sample GUID (e.g., "LIMS").
     range: string
+
   heavy_metals:
     description: Heavy metals present and concentrations; can include multiple heavy metals and concentrations
     range: string
@@ -1149,6 +1163,8 @@ slots:
     title: latitude
     description: Latitude coordinate of the sampling site in WSG 84 format.
     range: double
+    broad_mappings:
+      - MIXS:0000009
 
   light_intensity:
     description: Measurement of light intensity. Provide value and unit, any unit is valid.
@@ -1216,6 +1232,8 @@ slots:
     title: longitude
     description: Longitude coordinate of the sampling site in WSG 84 format.
     range: double
+    broad_mappings:
+      - MIXS:0000009
 
   loop_count:
     description: Number of MS2 scans to be acquired between each full MS scan.
@@ -1420,7 +1438,7 @@ slots:
 
   ms_raw_file_type:
     description: the filetype of the mass spectrometry instrument data
-    range: MSRawFileTypeEnum
+    range: MassSpecRawFileTypeEnum
 
   n_alkanes:
     description: 'Concentration of n-alkanes; can include multiple n-alkanes (Unit:
@@ -1443,7 +1461,7 @@ slots:
       Pacific Southwest Tundra Taiga Pacific Tropical'
     range: NEONDomainEnum
     title: NEON domain
-    
+
   neon_plot_id:
     description: 'When sampling from a NEON site provide the plot ID from which you
       sampled. This includes the 4 letter site code followed by the 3 digit ID (Example:
@@ -1451,6 +1469,8 @@ slots:
     pattern: ^[A-Z]{4}_\d{3}$
     range: string
     title: neon plot identifier
+    todos: 
+      - subport mapping - this is submitted as ABCD_123 but we want to store it as neon_site_code and neon_plot_id separately
 
   neon_site_code:
     description: 'When sampling from a NEON site provide the 4 letter site code (Example: DEJU). If you do not have your NEON site use the code SITE_999.'
@@ -1563,7 +1583,6 @@ slots:
     description: |-
       Description of GUID source if guid_source = "other".
     range: string
-
 
   other_samp_store_temp:
     description: Please specify sample storage temperature if you selected 'other'
@@ -1905,7 +1924,7 @@ slots:
   profile_position:
     description: Cross-sectional position in the hillslope where sample was collected.
       Sample area position in relation to surrounding areas
-    range: SlopeProfilePositionEnum
+    range: ProfilePositionEnum
     title: profile position
 
   project:
@@ -2110,7 +2129,7 @@ slots:
     description: The temperature at which your samples should be stored upon arrival.
       This field is NOT multivalued. If selecting other add the `other_samp_store_temp`
       attribute to provide additional detail.
-    range: SampStoreTempEnum
+    range: SampleStoreTempEnum
     title: sample storage temperature
     aliases:
       - sample_storage_temperature
@@ -2236,12 +2255,16 @@ slots:
     pattern: ^\d+(\.\d+)?\s*mm$
     range: string
     title: mean seasonal precipitation
+    aliases:
+      - average seasonal precipitation
 
   season_temp:
     description: 'Mean seasonal temperature (Unit: C)'
     pattern: ^-?\d+(\.\d+)?\s*C$
     range: string
     title: mean seasonal temperature
+    aliases:
+      - average seasonal precipitation
 
   second_blh:
     description: 'Second boundary layer height candidate (meters) (Unit: m)'
@@ -2964,9 +2987,3 @@ slots:
   
     range: string
     required: false
-
-
-# ============================================================================
-# biological_entity reference slot
-# ============================================================================
-
