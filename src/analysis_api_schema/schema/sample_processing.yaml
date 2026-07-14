@@ -186,7 +186,35 @@ slots:
     description: The concentration of the sample or analyte in the processedSample resulting from this activity, in milligrams per milliliter.
 
 classes:
-  # revisit sampleProcessing vs. Methods
+
+  StandardSampleProcessing:
+    is_a: SampleProcessing
+    description: >-
+      A basic non-abstract SampleProcessing subclass that links to a published standardized 
+      protocol instead of populating a record for each step. This is meant to simplify
+      modelling and data storage for well-documented standard protocols that will be 
+      used repeatedly.
+
+  SampleProcessingProtocol:
+    description: >-
+      A grouping class representing a sample processing protocol consisting of multiple modeled steps.
+    slots:
+      - name
+      - description
+      - protocol_url
+      - protocol_version
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+
+  SampleProcessingStep:
+    description: >-
+      A table for assigning SampleProcessing subclass records to a specific protocol
+      with a step number.
+    slots:
+      - step_number
+      - in_protocol
 
   ChemicalConversionProcess: 
     is_a: SampleProcessing 

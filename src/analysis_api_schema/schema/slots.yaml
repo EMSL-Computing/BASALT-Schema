@@ -990,6 +990,10 @@ slots:
   iat:
     description: Ion accumulation time setting used in the mass spectrometry method.
     range: double
+  
+  in_protocol:
+    description: The protocol that this SampleProcessing step is part of.
+    range: SampleProcessingProtocol
 
   incubation_time_hours:
     description: Incubation duration in hours
@@ -2365,6 +2369,12 @@ slots:
   stationary_phase:
     description: Description of the stationary phase used in the chromatography method (e.g., column type)
     range: string
+  
+  step_number:
+    description: |-
+      Integer ordering within a multi-step process for the same analyte.
+      Lower = earlier in process.
+    range: integer
 
   sterilization_method:
     description: Method used to sterilize the entity (autoclave, filter, UV, etc.)

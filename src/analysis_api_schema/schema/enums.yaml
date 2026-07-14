@@ -1412,30 +1412,6 @@ enums:
       ACCEPTED:
       WITHDRAWN:
 
-  RouteMethodEnum:
-    permissible_values:
-      analysis_activity:
-      lcms_metabolomics_method:
-      fticr_acquisition_method:
-      gravimetric_water_content_method:
-      ph_method:
-      hydraulic_properties_method:
-      microbial_biomass_method:
-      xray_computed_tomography_method:
-      REGEN:
-      KUO:
-      respiration_method:
-      texture_method:
-      enzyme_activity_method:
-      elemental_analysis_method:
-      toc_tn_method:
-      bulk_density_method:
-      metagenomics_method:
-      xrf_analysis:
-      xrd_analysis:
-      WEOM:
-      MAOM:
-
   SampleBaseType:
     description: Base types for sample entities
     permissible_values:
