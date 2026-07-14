@@ -862,6 +862,7 @@ attributes:
       an
 
       acronym provide the full component name in the component description.'
+    title: construct component name
     from_schema: https://w3id.org/MONet/analysis-api-schema
     rank: 1000
     alias: component_name
@@ -902,6 +903,7 @@ attributes:
 
       Example: "d-Cfp1 to block gene expression", "recognition sequence for guide
       RNA processing"'
+    title: construct component description
     from_schema: https://w3id.org/MONet/analysis-api-schema
     rank: 1000
     alias: component_description

@@ -21,6 +21,12 @@ URI: [ModificationMethodEnum](ModificationMethodEnum.md)
 | homologous_recombination | None | Integration via homologous recombination |
 | transposon | None | Transposon-mediated insertion |
 | other | None | Other modification method not listed |
+| p_element | None |  |
+| phage_transformation | None |  |
+| piggybac | None |  |
+| polyethylene_glycol_mediated | None |  |
+| replicon | None |  |
+| whisker_mediated_transformation | None |  |
 
 
 
@@ -98,6 +104,25 @@ permissible_values:
   other:
     text: other
     description: Other modification method not listed
+    title: Other
+  p_element:
+    text: p_element
+    title: P-element
+  phage_transformation:
+    text: phage_transformation
+    title: Phage Transformation
+  piggybac:
+    text: piggybac
+    title: Piggybac
+  polyethylene_glycol_mediated:
+    text: polyethylene_glycol_mediated
+    title: Polyethylene Glycol-mediated
+  replicon:
+    text: replicon
+    title: Replicon
+  whisker_mediated_transformation:
+    text: whisker_mediated_transformation
+    title: Whisker-mediated Transformation
 
 ```
 </details>

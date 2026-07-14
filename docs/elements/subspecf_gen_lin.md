@@ -22,9 +22,9 @@ Alias: subspecf_gen_lin
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  yes  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  yes  |
 
 

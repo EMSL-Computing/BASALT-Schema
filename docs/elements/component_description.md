@@ -1,6 +1,6 @@
 
 
-# Slot: component_description 
+# Slot: construct component description (component_description) 
 
 
 _Provide a short statement describing the function of the construct_
@@ -79,6 +79,7 @@ description: 'Provide a short statement describing the function of the construct
 
   Example: "d-Cfp1 to block gene expression", "recognition sequence for guide RNA
   processing"'
+title: construct component description
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 alias: component_description

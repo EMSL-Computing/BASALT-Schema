@@ -38,6 +38,11 @@ Alias: annual_temp
 
 
 
+## Aliases
+
+
+* average annual temperature
+
 
 
 ## Identifier and Mapping Information
@@ -74,6 +79,8 @@ name: annual_temp
 description: 'Mean annual temperature (Unit: C)'
 title: mean annual temperature
 from_schema: https://w3id.org/MONet/analysis-api-schema
+aliases:
+- average annual temperature
 rank: 1000
 alias: annual_temp
 domain_of:

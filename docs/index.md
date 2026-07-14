@@ -102,5 +102,6 @@ Many-to-many relationships are represented via explicit association tables:
 ## Contacts
 - Yuri Corilo (corilo@pnnl.gov)
 - Maia Kapur (maia.kapur@pnnl.gov)
+- Bea Meluch (beata.meluch@pnnl.gov)
 - Montana Smith (montana.smith@pnnl.gov)
 

@@ -3,6 +3,11 @@
 # Slot: aerosol_type 
 
 
+_The type or method of aerosol collection_
+
+
+
+
 
 URI: [analysis_api_schema:aerosol_type](https://w3id.org/MONet/analysis-api-schema/aerosol_type)
 Alias: aerosol_type
@@ -17,8 +22,8 @@ Alias: aerosol_type
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 | [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 
 
 
@@ -67,6 +72,7 @@ Alias: aerosol_type
 <details>
 ```yaml
 name: aerosol_type
+description: The type or method of aerosol collection
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 alias: aerosol_type

@@ -22,8 +22,8 @@ Alias: oxygen
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  yes  |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 
 
 

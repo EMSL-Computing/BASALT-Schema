@@ -1,6 +1,6 @@
 
 
-# Slot: flow_rate_ul_min 
+# Slot: flow rate (uL/min) (flow_rate_ul_min) 
 
 
 _Flow rate of the mobile phase, in microliters per minute._
@@ -70,6 +70,7 @@ Alias: flow_rate_ul_min
 ```yaml
 name: flow_rate_ul_min
 description: Flow rate of the mobile phase, in microliters per minute.
+title: flow rate (uL/min)
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 alias: flow_rate_ul_min

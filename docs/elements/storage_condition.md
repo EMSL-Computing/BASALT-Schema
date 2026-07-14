@@ -22,23 +22,23 @@ Alias: storage_condition
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
-| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
-| [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |  yes  |
 | [EngineeredStrainSample](EngineeredStrainSample.md) | A sample containing a strain of an organism that has been subjected to geneti... |  no  |
+| [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
+| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 | [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |  yes  |
 
 
 

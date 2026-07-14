@@ -409,6 +409,7 @@ attributes:
   concentration_ug_per_uL:
     name: concentration_ug_per_uL
     description: Concentration of the substance in micrograms per microliter.
+    title: concentration (ug/uL)
     from_schema: https://w3id.org/MONet/analysis-api-schema
     rank: 1000
     alias: concentration_ug_per_uL

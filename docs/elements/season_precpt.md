@@ -38,6 +38,11 @@ Alias: season_precpt
 
 
 
+## Aliases
+
+
+* average seasonal precipitation
+
 
 
 ## Identifier and Mapping Information
@@ -76,6 +81,8 @@ description: 'The average of all seasonal precipitation values known or an estim
   (Unit: mm)'
 title: mean seasonal precipitation
 from_schema: https://w3id.org/MONet/analysis-api-schema
+aliases:
+- average seasonal precipitation
 rank: 1000
 alias: season_precpt
 domain_of:

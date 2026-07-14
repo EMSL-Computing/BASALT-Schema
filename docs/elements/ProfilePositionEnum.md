@@ -22,6 +22,12 @@ URI: [ProfilePositionEnum](ProfilePositionEnum.md)
 
 
 
+## Slots
+
+| Name | Description |
+| ---  | --- |
+| [profile_position](profile_position.md) | Cross-sectional position in the hillslope where sample was collected |
+
 
 
 

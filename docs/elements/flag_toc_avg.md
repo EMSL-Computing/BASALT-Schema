@@ -17,8 +17,8 @@ Alias: flag_toc_avg
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MAOMProduct](MAOMProduct.md) |  |  no  |
 | [WEOMProduct](WEOMProduct.md) |  |  no  |
+| [MAOMProduct](MAOMProduct.md) |  |  no  |
 
 
 

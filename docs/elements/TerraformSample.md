@@ -51,6 +51,12 @@ URI: [analysis_api_schema:TerraformSample](https://w3id.org/MONet/analysis-api-s
         
       TerraformSample : encoded_traits
         
+      TerraformSample : env_broad_scale
+        
+      TerraformSample : env_local_scale
+        
+      TerraformSample : env_medium
+        
       TerraformSample : external_identifiers
         
       TerraformSample : gaseous_environment
@@ -185,6 +191,11 @@ URI: [analysis_api_schema:TerraformSample](https://w3id.org/MONet/analysis-api-s
           
     
     
+    
+    
+    TerraformSample --> "0..1" SampleStoreTempEnum : samp_store_temp
+    click SampleStoreTempEnum href "../SampleStoreTempEnum"
+    
 
         
       TerraformSample : sample_link
@@ -278,6 +289,9 @@ URI: [analysis_api_schema:TerraformSample](https://w3id.org/MONet/analysis-api-s
 | [chem_administration](chem_administration.md) | 0..1 <br/> [String](String.md) | List of chemical compounds administered to the host or site where sampling oc... | direct |
 | [cult_root_med](cult_root_med.md) | 0..1 <br/> [String](String.md) | Name or reference for the hydroponic or in vitro culture rooting medium; can ... | direct |
 | [encoded_traits](encoded_traits.md) | 0..1 <br/> [String](String.md) | Should include key traits like antibiotic resistance or xenobiotic | direct |
+| [env_broad_scale](env_broad_scale.md) | 0..1 <br/> [String](String.md) | 'Report the major environmental system the sample or specimen came from | direct |
+| [env_local_scale](env_local_scale.md) | 0..1 <br/> [String](String.md) | 'Report the entity which are in your sample or specimens local vicinity and w... | direct |
+| [env_medium](env_medium.md) | 0..1 <br/> [String](String.md) | 'Report the environmental material immediately surrounding the sample or spec... | direct |
 | [external_identifiers](external_identifiers.md) | * <br/> [Uriorcurie](Uriorcurie.md) | List of external identifiers associated with this entity or activity | direct |
 | [gaseous_environment](gaseous_environment.md) | 0..1 <br/> [String](String.md) | Use of conditions with differing gaseous environments; should include the nam... | direct |
 | [genetic_mod](genetic_mod.md) | 0..1 <br/> [String](String.md) | Genetic modifications of the genome of an organism, which may occur naturally... | direct |
@@ -326,7 +340,7 @@ URI: [analysis_api_schema:TerraformSample](https://w3id.org/MONet/analysis-api-s
 | [sample_name](sample_name.md) | 0..1 <br/> [String](String.md) | The name or label that is present on the shipped sample | direct |
 | [sample_processing](sample_processing.md) | 0..1 <br/> [String](String.md) | A brief description of any processing applied to the sample during or after r... | direct |
 | [biotic_relationship](biotic_relationship.md) | 0..1 <br/> [BioticRelationshipEnum](BioticRelationshipEnum.md) | Description of relationship(s) between the subject organism and other organis... | direct |
-| [samp_store_temp](samp_store_temp.md) | 0..1 <br/> SampStoreTempEnum | The temperature at which your samples should be stored upon arrival | direct |
+| [samp_store_temp](samp_store_temp.md) | 0..1 <br/> [SampleStoreTempEnum](SampleStoreTempEnum.md) | The temperature at which your samples should be stored upon arrival | direct |
 | [sampled_during](sampled_during.md) | 0..1 <br/> [SamplingActivity](SamplingActivity.md) | Reference to the sampling activity during which this sample was collected | direct |
 | [source_mat_id](source_mat_id.md) | 0..1 <br/> [String](String.md) | A unique identifier assigned to an original material sample collected or to a... | direct |
 | [storage_condition](storage_condition.md) | 0..1 <br/> [StorageConditionEnum](StorageConditionEnum.md) | The storage condition of the sample | direct |
@@ -406,6 +420,9 @@ slots:
 - chem_administration
 - cult_root_med
 - encoded_traits
+- env_broad_scale
+- env_local_scale
+- env_medium
 - external_identifiers
 - gaseous_environment
 - genetic_mod
@@ -836,6 +853,86 @@ attributes:
     - TerraformSample
     - biological_entity
     range: string
+  env_broad_scale:
+    name: env_broad_scale
+    description: '''Report the major environmental system the sample or specimen came
+      from. The system identified should have a coarse spatial grain to provide the
+      general environmental context of where the sampling was done (e.g. in the desert
+      or a rainforest). We recommend using subclasses of EnvO''''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
+      EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'''
+    title: broad-scale environmental context
+    from_schema: https://w3id.org/MONet/analysis-api-schema
+    rank: 1000
+    alias: env_broad_scale
+    owner: TerraformSample
+    domain_of:
+    - AerosolArmSample
+    - AerosolSample
+    - CultureEnvironmentalSample
+    - FieldDeployedTerraformSample
+    - MonetSoilSample
+    - OtherUndescribedSample
+    - PlantSample
+    - PureCultureSample
+    - SedimentSample
+    - SoilSample
+    - TerraformSample
+    - WaterSample
+    range: string
+    pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
+  env_local_scale:
+    name: env_local_scale
+    description: '''Report the entity which are in your sample or specimens local
+      vicinity and which you believe have significant causal influences on your sample
+      or specimen. Please use terms that are present in ENVO and which are of smaller
+      spatial grain than your entry for env_broad_scale.If needed, request new terms
+      on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'''
+    title: local environmental context
+    from_schema: https://w3id.org/MONet/analysis-api-schema
+    rank: 1000
+    alias: env_local_scale
+    owner: TerraformSample
+    domain_of:
+    - AerosolArmSample
+    - AerosolSample
+    - CultureEnvironmentalSample
+    - FieldDeployedTerraformSample
+    - MonetSoilSample
+    - OtherUndescribedSample
+    - PlantSample
+    - PureCultureSample
+    - SedimentSample
+    - SoilSample
+    - TerraformSample
+    - WaterSample
+    range: string
+    pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
+  env_medium:
+    name: env_medium
+    description: '''Report the environmental material immediately surrounding the
+      sample or specimen at the time of sampling. We recommend using subclasses of
+      ''''environmental material'''' (http://purl.obolibrary.org/obo/ENVO_00010483).
+      EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'''
+    title: environmental medium
+    from_schema: https://w3id.org/MONet/analysis-api-schema
+    rank: 1000
+    alias: env_medium
+    owner: TerraformSample
+    domain_of:
+    - AerosolArmSample
+    - AerosolSample
+    - CultureEnvironmentalSample
+    - FieldDeployedTerraformSample
+    - MonetSoilSample
+    - OtherUndescribedSample
+    - PlantSample
+    - PureCultureSample
+    - SedimentSample
+    - SoilSample
+    - TerraformSample
+    - WaterSample
+    range: string
+    pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
   external_identifiers:
     name: external_identifiers
     description: List of external identifiers associated with this entity or activity.
@@ -1820,7 +1917,7 @@ attributes:
     - SynthesizedMaterialSample
     - TerraformSample
     - WaterSample
-    range: SampStoreTempEnum
+    range: SampleStoreTempEnum
   sampled_during:
     name: sampled_during
     description: Reference to the sampling activity during which this sample was collected.

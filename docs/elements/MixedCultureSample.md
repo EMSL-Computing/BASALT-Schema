@@ -127,6 +127,11 @@ URI: [analysis_api_schema:MixedCultureSample](https://w3id.org/MONet/analysis-ap
           
     
     
+    
+    
+    MixedCultureSample --> "0..1" SampleStoreTempEnum : samp_store_temp
+    click SampleStoreTempEnum href "../SampleStoreTempEnum"
+    
 
         
       MixedCultureSample : sample_link
@@ -238,7 +243,7 @@ URI: [analysis_api_schema:MixedCultureSample](https://w3id.org/MONet/analysis-ap
 | [sample_name](sample_name.md) | 0..1 <br/> [String](String.md) | The name or label that is present on the shipped sample | direct |
 | [sample_processing](sample_processing.md) | 0..1 <br/> [String](String.md) | A brief description of any processing applied to the sample during or after r... | direct |
 | [sampled_during](sampled_during.md) | 0..1 <br/> [SamplingActivity](SamplingActivity.md) | Reference to the sampling activity during which this sample was collected | direct |
-| [samp_store_temp](samp_store_temp.md) | 0..1 <br/> SampStoreTempEnum | The temperature at which your samples should be stored upon arrival | direct |
+| [samp_store_temp](samp_store_temp.md) | 0..1 <br/> [SampleStoreTempEnum](SampleStoreTempEnum.md) | The temperature at which your samples should be stored upon arrival | direct |
 | [source_mat_id](source_mat_id.md) | 0..1 <br/> [String](String.md) | A unique identifier assigned to an original material sample collected or to a... | direct |
 | [specific_host](specific_host.md) | 0..1 <br/> [String](String.md) | If there is a host involved please provide its taxid (or environmental if not... | direct |
 | [start_date_inc](start_date_inc.md) | 1 <br/> [String](String.md) | Date the incubation was started | direct |
@@ -1462,7 +1467,7 @@ attributes:
     - SynthesizedMaterialSample
     - TerraformSample
     - WaterSample
-    range: SampStoreTempEnum
+    range: SampleStoreTempEnum
   source_mat_id:
     name: source_mat_id
     description: A unique identifier assigned to an original material sample collected

@@ -166,7 +166,7 @@ URI: [analysis_api_schema:Sample](https://w3id.org/MONet/analysis-api-schema/Sam
 
 ## TODOs
 
-* where should proposal ID live? probably not here?
+* where should proposal ID live? probably not here? emsl_activity is a string referencing a campaign name. but we do need to link samples to their parent studies/projects somehow.
 
 ## Identifier and Mapping Information
 
@@ -210,7 +210,9 @@ description: A physical sample collected from an environment. The environment ca
   be ecological, laboratory, or any other context where samples are collected. This
   class serves as an abstract class to relate subclasses of samples.
 todos:
-- where should proposal ID live? probably not here?
+- where should proposal ID live? probably not here? emsl_activity is a string referencing
+  a campaign name. but we do need to link samples to their parent studies/projects
+  somehow.
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 abstract: true
@@ -311,7 +313,9 @@ description: A physical sample collected from an environment. The environment ca
   be ecological, laboratory, or any other context where samples are collected. This
   class serves as an abstract class to relate subclasses of samples.
 todos:
-- where should proposal ID live? probably not here?
+- where should proposal ID live? probably not here? emsl_activity is a string referencing
+  a campaign name. but we do need to link samples to their parent studies/projects
+  somehow.
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 abstract: true

@@ -29,11 +29,29 @@ URI: [analysis_api_schema:MonetSoilSample](https://w3id.org/MONet/analysis-api-s
         
       MonetSoilSample : chem_administration
         
+      MonetSoilSample : core_group
+        
+          
+    
+    
+    
+    
+    MonetSoilSample --> "0..1" MONetCoreGroupEnum : core_group
+    click MONetCoreGroupEnum href "../MONetCoreGroupEnum"
+    
+
+        
       MonetSoilSample : depth
         
       MonetSoilSample : description
         
       MonetSoilSample : emsl_activity
+        
+      MonetSoilSample : env_broad_scale
+        
+      MonetSoilSample : env_local_scale
+        
+      MonetSoilSample : env_medium
         
       MonetSoilSample : external_identifiers
         
@@ -70,6 +88,11 @@ URI: [analysis_api_schema:MonetSoilSample](https://w3id.org/MONet/analysis-api-s
         
           
     
+    
+    
+    
+    MonetSoilSample --> "0..1" SampleStoreTempEnum : samp_store_temp
+    click SampleStoreTempEnum href "../SampleStoreTempEnum"
     
 
         
@@ -154,10 +177,14 @@ URI: [analysis_api_schema:MonetSoilSample](https://w3id.org/MONet/analysis-api-s
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [agrochem_addition](agrochem_addition.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [agrochem_addition](agrochem_addition.md) | 0..1 <br/> [String](String.md) | Addition of fertilizers, pesticides, etc | direct |
 | [bulk_elect_conductivity](bulk_elect_conductivity.md) | 1 <br/> [String](String.md) | Provide the bulk electrical conductivity readout from the Teros ZSC bluetooth... | direct |
 | [chem_administration](chem_administration.md) | 0..1 <br/> [String](String.md) | List of chemical compounds administered to the host or site where sampling oc... | direct |
+| [core_group](core_group.md) | 0..1 <br/> [MONetCoreGroupEnum](MONetCoreGroupEnum.md) | The category of soil core taken according to the MONet sampling protocol | direct |
 | [depth](depth.md) | 1 <br/> [String](String.md) | The vertical distance below local surface | direct |
+| [env_broad_scale](env_broad_scale.md) | 0..1 <br/> [String](String.md) | 'Report the major environmental system the sample or specimen came from | direct |
+| [env_local_scale](env_local_scale.md) | 0..1 <br/> [String](String.md) | 'Report the entity which are in your sample or specimens local vicinity and w... | direct |
+| [env_medium](env_medium.md) | 0..1 <br/> [String](String.md) | 'Report the environmental material immediately surrounding the sample or spec... | direct |
 | [external_identifiers](external_identifiers.md) | * <br/> [Uriorcurie](Uriorcurie.md) | List of external identifiers associated with this entity or activity | direct |
 | [latitude](latitude.md) | 1 <br/> [Double](Double.md) | Latitude coordinate of the sampling site in WSG 84 format | direct |
 | [longitude](longitude.md) | 1 <br/> [Double](Double.md) | Longitude coordinate of the sampling site in WSG 84 format | direct |
@@ -169,7 +196,7 @@ URI: [analysis_api_schema:MonetSoilSample](https://w3id.org/MONet/analysis-api-s
 | [other_treatment](other_treatment.md) | 0..1 <br/> [String](String.md) | Many sample treatment descriptor columns are available | direct |
 | [project](project.md) | 0..1 <br/> [Integer](Integer.md) | Identifier for the user project associated with the entity or activity | direct |
 | [sample_name](sample_name.md) | 0..1 <br/> [String](String.md) | The name or label that is present on the shipped sample | direct |
-| [samp_store_temp](samp_store_temp.md) | 0..1 <br/> SampStoreTempEnum | The temperature at which your samples should be stored upon arrival | direct |
+| [samp_store_temp](samp_store_temp.md) | 0..1 <br/> [SampleStoreTempEnum](SampleStoreTempEnum.md) | The temperature at which your samples should be stored upon arrival | direct |
 | [sampled_during](sampled_during.md) | 0..1 <br/> [SamplingActivity](SamplingActivity.md) | Reference to the sampling activity during which this sample was collected | direct |
 | [sampling_set](sampling_set.md) | 1 <br/> [Integer](Integer.md) | Sampling set number for grouping related samples collected together | direct |
 | [soil_sample_type](soil_sample_type.md) | 1 <br/> [SoilSampleTypeEnum](SoilSampleTypeEnum.md) | The specific type of soil sample (e | direct |
@@ -243,7 +270,11 @@ slots:
 - agrochem_addition
 - bulk_elect_conductivity
 - chem_administration
+- core_group
 - depth
+- env_broad_scale
+- env_local_scale
+- env_medium
 - external_identifiers
 - latitude
 - longitude
@@ -542,6 +573,7 @@ attributes:
     required: true
   agrochem_addition:
     name: agrochem_addition
+    description: Addition of fertilizers, pesticides, etc. - amount and time of applications
     title: agrochemical additions
     from_schema: https://w3id.org/MONet/analysis-api-schema
     rank: 1000
@@ -597,6 +629,17 @@ attributes:
     - TerraformSample
     - WaterSample
     range: string
+  core_group:
+    name: core_group
+    description: The category of soil core taken according to the MONet sampling protocol.
+    title: core group
+    from_schema: https://w3id.org/MONet/analysis-api-schema
+    rank: 1000
+    alias: core_group
+    owner: MonetSoilSample
+    domain_of:
+    - MonetSoilSample
+    range: MONetCoreGroupEnum
   depth:
     name: depth
     description: 'The vertical distance below local surface. For sediment or soil
@@ -618,6 +661,86 @@ attributes:
     range: string
     required: true
     pattern: ^\d+(\.\d+)?-\d+(\.\d+)?\s*(m|cm)$
+  env_broad_scale:
+    name: env_broad_scale
+    description: '''Report the major environmental system the sample or specimen came
+      from. The system identified should have a coarse spatial grain to provide the
+      general environmental context of where the sampling was done (e.g. in the desert
+      or a rainforest). We recommend using subclasses of EnvO''''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
+      EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'''
+    title: broad-scale environmental context
+    from_schema: https://w3id.org/MONet/analysis-api-schema
+    rank: 1000
+    alias: env_broad_scale
+    owner: MonetSoilSample
+    domain_of:
+    - AerosolArmSample
+    - AerosolSample
+    - CultureEnvironmentalSample
+    - FieldDeployedTerraformSample
+    - MonetSoilSample
+    - OtherUndescribedSample
+    - PlantSample
+    - PureCultureSample
+    - SedimentSample
+    - SoilSample
+    - TerraformSample
+    - WaterSample
+    range: string
+    pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
+  env_local_scale:
+    name: env_local_scale
+    description: '''Report the entity which are in your sample or specimens local
+      vicinity and which you believe have significant causal influences on your sample
+      or specimen. Please use terms that are present in ENVO and which are of smaller
+      spatial grain than your entry for env_broad_scale.If needed, request new terms
+      on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'''
+    title: local environmental context
+    from_schema: https://w3id.org/MONet/analysis-api-schema
+    rank: 1000
+    alias: env_local_scale
+    owner: MonetSoilSample
+    domain_of:
+    - AerosolArmSample
+    - AerosolSample
+    - CultureEnvironmentalSample
+    - FieldDeployedTerraformSample
+    - MonetSoilSample
+    - OtherUndescribedSample
+    - PlantSample
+    - PureCultureSample
+    - SedimentSample
+    - SoilSample
+    - TerraformSample
+    - WaterSample
+    range: string
+    pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
+  env_medium:
+    name: env_medium
+    description: '''Report the environmental material immediately surrounding the
+      sample or specimen at the time of sampling. We recommend using subclasses of
+      ''''environmental material'''' (http://purl.obolibrary.org/obo/ENVO_00010483).
+      EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'''
+    title: environmental medium
+    from_schema: https://w3id.org/MONet/analysis-api-schema
+    rank: 1000
+    alias: env_medium
+    owner: MonetSoilSample
+    domain_of:
+    - AerosolArmSample
+    - AerosolSample
+    - CultureEnvironmentalSample
+    - FieldDeployedTerraformSample
+    - MonetSoilSample
+    - OtherUndescribedSample
+    - PlantSample
+    - PureCultureSample
+    - SedimentSample
+    - SoilSample
+    - TerraformSample
+    - WaterSample
+    range: string
+    pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
   external_identifiers:
     name: external_identifiers
     description: List of external identifiers associated with this entity or activity.
@@ -651,6 +774,8 @@ attributes:
     description: Latitude coordinate of the sampling site in WSG 84 format.
     title: latitude
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    broad_mappings:
+    - MIXS:0000009
     rank: 1000
     alias: latitude
     owner: MonetSoilSample
@@ -673,6 +798,8 @@ attributes:
     description: Longitude coordinate of the sampling site in WSG 84 format.
     title: longitude
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    broad_mappings:
+    - MIXS:0000009
     rank: 1000
     alias: longitude
     owner: MonetSoilSample
@@ -918,7 +1045,7 @@ attributes:
     - SynthesizedMaterialSample
     - TerraformSample
     - WaterSample
-    range: SampStoreTempEnum
+    range: SampleStoreTempEnum
   sampled_during:
     name: sampled_during
     description: Reference to the sampling activity during which this sample was collected.

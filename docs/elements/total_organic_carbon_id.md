@@ -17,8 +17,8 @@ Alias: total_organic_carbon_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MAOMProduct](MAOMProduct.md) |  |  no  |
 | [WEOMProduct](WEOMProduct.md) |  |  no  |
+| [MAOMProduct](MAOMProduct.md) |  |  no  |
 
 
 

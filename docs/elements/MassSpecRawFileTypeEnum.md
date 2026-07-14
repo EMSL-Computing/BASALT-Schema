@@ -15,6 +15,12 @@ URI: [MassSpecRawFileTypeEnum](MassSpecRawFileTypeEnum.md)
 
 
 
+## Slots
+
+| Name | Description |
+| ---  | --- |
+| [ms_raw_file_type](ms_raw_file_type.md) | the filetype of the mass spectrometry instrument data |
+
 
 
 

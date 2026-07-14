@@ -1,6 +1,6 @@
 
 
-# Slot: concentration_ug_per_uL 
+# Slot: concentration (ug/uL) (concentration_ug_per_uL) 
 
 
 _Concentration of the substance in micrograms per microliter._
@@ -22,8 +22,8 @@ Alias: concentration_ug_per_uL
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  no  |
 | [CoreSection](CoreSection.md) | A section of a core sample (TOP, MID, BTM) |  no  |
+| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  no  |
 
 
 
@@ -71,6 +71,7 @@ Alias: concentration_ug_per_uL
 ```yaml
 name: concentration_ug_per_uL
 description: Concentration of the substance in micrograms per microliter.
+title: concentration (ug/uL)
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 alias: concentration_ug_per_uL

@@ -24,8 +24,8 @@ Alias: cbi
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |  no  |
 | [EngineeredStrainSample](EngineeredStrainSample.md) | A sample containing a strain of an organism that has been subjected to geneti... |  no  |
+| [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |  no  |
 
 
 
@@ -38,6 +38,11 @@ Alias: cbi
 * Range: [Boolean](Boolean.md)
 
 
+
+## Aliases
+
+
+* CBI
 
 
 
@@ -76,6 +81,8 @@ description: 'Confidential Business Information flag (yes/no).
 
   Indicates if the sample is subject to CBI restrictions.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
+aliases:
+- CBI
 rank: 1000
 alias: cbi
 domain_of:

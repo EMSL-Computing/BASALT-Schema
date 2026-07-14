@@ -40,6 +40,10 @@ Alias: neon_plot_id
 
 
 
+## TODOs
+
+* subport mapping - this is submitted as ABCD_123 but we want to store it as neon_site_code and neon_plot_id separately
+
 ## Identifier and Mapping Information
 
 
@@ -75,6 +79,9 @@ description: 'When sampling from a NEON site provide the plot ID from which you 
   This includes the 4 letter site code followed by the 3 digit ID (Example: DEJU_048).
   If you do not have your NEON site use the code SITE_999.'
 title: neon plot identifier
+todos:
+- subport mapping - this is submitted as ABCD_123 but we want to store it as neon_site_code
+  and neon_plot_id separately
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 alias: neon_plot_id

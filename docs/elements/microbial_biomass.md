@@ -23,8 +23,8 @@ Alias: microbial_biomass
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  yes  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
 
 
 

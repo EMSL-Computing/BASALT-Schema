@@ -61,7 +61,7 @@ URI: [analysis_api_schema:HasIncubationConditions](https://w3id.org/MONet/analys
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [temperature_celsius](temperature_celsius.md) | 0..1 <br/> [Float](Float.md) | Temperature at which the method/process/activity was performed | direct |
-| [agitation_speed_rpm](agitation_speed_rpm.md) | 0..1 <br/> [Integer](Integer.md) |  | direct |
+| [agitation_speed_rpm](agitation_speed_rpm.md) | 0..1 <br/> [Integer](Integer.md) | Agitation/shaking speed in RPM (0 for static) | direct |
 | [oxygen_relationship](oxygen_relationship.md) | 0..1 <br/> [OxygenStatusEnum](OxygenStatusEnum.md) | The relationship of the sample to oxygen, such as aerobic or anaerobic | direct |
 
 
@@ -165,6 +165,7 @@ attributes:
     range: float
   agitation_speed_rpm:
     name: agitation_speed_rpm
+    description: Agitation/shaking speed in RPM (0 for static)
     from_schema: https://w3id.org/MONet/analysis-api-schema
     rank: 1000
     alias: agitation_speed_rpm

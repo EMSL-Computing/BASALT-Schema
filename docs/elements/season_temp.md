@@ -38,6 +38,11 @@ Alias: season_temp
 
 
 
+## Aliases
+
+
+* average seasonal precipitation
+
 
 
 ## Identifier and Mapping Information
@@ -74,6 +79,8 @@ name: season_temp
 description: 'Mean seasonal temperature (Unit: C)'
 title: mean seasonal temperature
 from_schema: https://w3id.org/MONet/analysis-api-schema
+aliases:
+- average seasonal precipitation
 rank: 1000
 alias: season_temp
 domain_of:

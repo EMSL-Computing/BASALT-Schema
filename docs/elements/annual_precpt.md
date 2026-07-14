@@ -38,6 +38,11 @@ Alias: annual_precpt
 
 
 
+## Aliases
+
+
+* average annual precipitation
+
 
 
 ## Identifier and Mapping Information
@@ -76,6 +81,8 @@ description: 'The average of all annual precipitation values known or an estimat
   (Unit: mm)'
 title: mean annual precipitation
 from_schema: https://w3id.org/MONet/analysis-api-schema
+aliases:
+- average annual precipitation
 rank: 1000
 alias: annual_precpt
 domain_of:

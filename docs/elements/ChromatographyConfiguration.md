@@ -277,6 +277,7 @@ attributes:
   flow_rate_ul_min:
     name: flow_rate_ul_min
     description: Flow rate of the mobile phase, in microliters per minute.
+    title: flow rate (uL/min)
     from_schema: https://w3id.org/MONet/analysis-api-schema
     rank: 1000
     alias: flow_rate_ul_min

@@ -20,6 +20,16 @@ URI: [analysis_api_schema:MicrobialBiomassProduct](https://w3id.org/MONet/analys
       
       MicrobialBiomassProduct : core_section
         
+          
+    
+    
+    
+    
+    MicrobialBiomassProduct --> "0..1" CoreSectionEnum : core_section
+    click CoreSectionEnum href "../CoreSectionEnum"
+    
+
+        
       MicrobialBiomassProduct : description
         
       MicrobialBiomassProduct : filesize
@@ -188,12 +198,12 @@ URI: [analysis_api_schema:MicrobialBiomassProduct](https://w3id.org/MONet/analys
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [DataProduct](DataProduct.md) |
 | [project](project.md) | 0..1 <br/> [Integer](Integer.md) | Identifier for the user project associated with the entity or activity | [DataProduct](DataProduct.md) |
 | [sampling_set](sampling_set.md) | 0..1 <br/> [Integer](Integer.md) | Sampling set number for grouping related samples collected together | [DataProduct](DataProduct.md) |
-| [core_section](core_section.md) | 0..1 <br/> [String](String.md) | The section of the core | [DataProduct](DataProduct.md) |
+| [core_section](core_section.md) | 0..1 <br/> [CoreSectionEnum](CoreSectionEnum.md) | The section of the core | [DataProduct](DataProduct.md) |
 | [sample_name](sample_name.md) | 0..1 <br/> [String](String.md) | The name or label that is present on the shipped sample | [DataProduct](DataProduct.md) |
 | [s3_base_url](s3_base_url.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
 | [s3_bucket](s3_bucket.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | [DataProduct](DataProduct.md) |
-| [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) |  | [DataProduct](DataProduct.md) |
+| [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | [DataProduct](DataProduct.md) |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
 | [id](id.md) | 1 <br/> uuid |  | [DataProduct](DataProduct.md) |
 
@@ -601,7 +611,7 @@ attributes:
     domain_of:
     - DataProduct
     - CoreSection
-    range: string
+    range: CoreSectionEnum
   sample_name:
     name: sample_name
     description: 'The name or label that is present on the shipped sample. This should
@@ -667,6 +677,7 @@ attributes:
     required: true
   filesize:
     name: filesize
+    description: Size of the file in bytes
     from_schema: https://w3id.org/MONet/analysis-api-schema
     rank: 1000
     alias: filesize

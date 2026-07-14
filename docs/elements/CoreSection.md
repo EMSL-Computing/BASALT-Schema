@@ -27,6 +27,16 @@ URI: [analysis_api_schema:CoreSection](https://w3id.org/MONet/analysis-api-schem
         
       CoreSection : core_section
         
+          
+    
+    
+    
+    
+    CoreSection --> "1" CoreSectionEnum : core_section
+    click CoreSectionEnum href "../CoreSectionEnum"
+    
+
+        
       CoreSection : description
         
       CoreSection : emsl_activity
@@ -94,7 +104,7 @@ URI: [analysis_api_schema:CoreSection](https://w3id.org/MONet/analysis-api-schem
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [core_section](core_section.md) | 1 <br/> [String](String.md) | The section of the core | direct |
+| [core_section](core_section.md) | 1 <br/> [CoreSectionEnum](CoreSectionEnum.md) | The section of the core | direct |
 | [id](id.md) | 1 <br/> uuid |  | direct |
 | [storage_location](storage_location.md) | 0..1 <br/> [String](String.md) | The physical or digital location where the processed sample is stored (e | [ProcessedSample](ProcessedSample.md) |
 | [label_text](label_text.md) | 0..1 <br/> [String](String.md) | The label on the stored processed sample, if applicable (e | [ProcessedSample](ProcessedSample.md) |
@@ -357,7 +367,7 @@ attributes:
     domain_of:
     - DataProduct
     - CoreSection
-    range: string
+    range: CoreSectionEnum
     required: true
   storage_location:
     name: storage_location
@@ -383,6 +393,7 @@ attributes:
   concentration_ug_per_uL:
     name: concentration_ug_per_uL
     description: Concentration of the substance in micrograms per microliter.
+    title: concentration (ug/uL)
     from_schema: https://w3id.org/MONet/analysis-api-schema
     rank: 1000
     alias: concentration_ug_per_uL

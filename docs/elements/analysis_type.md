@@ -22,31 +22,31 @@ Alias: analysis_type
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  yes  |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  yes  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  yes  |
-| [MediaPreparation](MediaPreparation.md) | Activity that prepares a batch of growth media |  no  |
-| [StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |  no  |
-| [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |  no  |
-| [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |  yes  |
-| [StrainPurity](StrainPurity.md) | Purity check of a strain culture |  no  |
-| [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  yes  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  yes  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
-| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
-| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  yes  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  yes  |
-| [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  yes  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  yes  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  yes  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  yes  |
-| [SampleProcessing](SampleProcessing.md) |  |  no  |
-| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  yes  |
-| [PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |  no  |
 | [PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |  no  |
+| [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  yes  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  yes  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  yes  |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  yes  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  yes  |
+| [StrainPurity](StrainPurity.md) | Purity check of a strain culture |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
+| [StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |  no  |
+| [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
+| [MediaPreparation](MediaPreparation.md) | Activity that prepares a batch of growth media |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  yes  |
+| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  yes  |
+| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  yes  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  yes  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  yes  |
+| [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |  yes  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  yes  |
+| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
+| [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  yes  |
+| [SampleProcessing](SampleProcessing.md) |  |  no  |
+| [PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |  no  |
+| [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |  no  |
 
 
 

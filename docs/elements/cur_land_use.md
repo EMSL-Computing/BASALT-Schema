@@ -32,7 +32,7 @@ Alias: cur_land_use
 
 ## Properties
 
-* Range: CurLandUseEnum
+* Range: [LandUseEnum](LandUseEnum.md)
 
 
 
@@ -82,7 +82,7 @@ rank: 1000
 alias: cur_land_use
 domain_of:
 - Site
-range: CurLandUseEnum
+range: LandUseEnum
 
 ```
 </details>

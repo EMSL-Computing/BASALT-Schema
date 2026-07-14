@@ -1,6 +1,6 @@
 
 
-# Slot: component_name 
+# Slot: construct component name (component_name) 
 
 
 _Provide a one-to-three word name based on the component. If using an_
@@ -74,6 +74,7 @@ name: component_name
 description: 'Provide a one-to-three word name based on the component. If using an
 
   acronym provide the full component name in the component description.'
+title: construct component name
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 alias: component_name

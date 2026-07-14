@@ -24,7 +24,7 @@ URI: [AerosolTypeEnum](AerosolTypeEnum.md)
 
 | Name | Description |
 | ---  | --- |
-| [aerosol_type](aerosol_type.md) |  |
+| [aerosol_type](aerosol_type.md) | The type or method of aerosol collection |
 
 
 

@@ -22,17 +22,17 @@ Alias: growth_medium
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  yes  |
-| [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  yes  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
-| [StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  yes  |
 | [PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |  no  |
+| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
+| [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  yes  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  yes  |
 | [StrainPurity](StrainPurity.md) | Purity check of a strain culture |  no  |
+| [StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |  no  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  yes  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 
 
 

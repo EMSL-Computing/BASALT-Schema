@@ -690,6 +690,8 @@ attributes:
 
       Indicates if the sample is subject to CBI restrictions.'
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - CBI
     rank: 1000
     alias: cbi
     owner: AMP2UserSample

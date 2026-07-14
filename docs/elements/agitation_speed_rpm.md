@@ -3,6 +3,11 @@
 # Slot: agitation_speed_rpm 
 
 
+_Agitation/shaking speed in RPM (0 for static)_
+
+
+
+
 
 URI: [analysis_api_schema:agitation_speed_rpm](https://w3id.org/MONet/analysis-api-schema/agitation_speed_rpm)
 Alias: agitation_speed_rpm
@@ -17,15 +22,15 @@ Alias: agitation_speed_rpm
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
-| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
-| [HasIncubationConditions](HasIncubationConditions.md) | Mixin for activities/setups that involve controlled incubation |  no  |
-| [StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |  no  |
-| [PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |  no  |
-| [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |  no  |
 | [PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |  no  |
+| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
+| [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
+| [PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |  no  |
 | [StrainPurity](StrainPurity.md) | Purity check of a strain culture |  no  |
+| [StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |  no  |
 | [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
+| [HasIncubationConditions](HasIncubationConditions.md) | Mixin for activities/setups that involve controlled incubation |  no  |
+| [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |  no  |
 
 
 
@@ -72,6 +77,7 @@ Alias: agitation_speed_rpm
 <details>
 ```yaml
 name: agitation_speed_rpm
+description: Agitation/shaking speed in RPM (0 for static)
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 alias: agitation_speed_rpm

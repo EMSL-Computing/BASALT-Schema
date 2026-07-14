@@ -32,7 +32,7 @@ Alias: profile_position
 
 ## Properties
 
-* Range: SlopeProfilePositionEnum
+* Range: [ProfilePositionEnum](ProfilePositionEnum.md)
 
 
 
@@ -77,7 +77,7 @@ rank: 1000
 alias: profile_position
 domain_of:
 - Site
-range: SlopeProfilePositionEnum
+range: ProfilePositionEnum
 
 ```
 </details>

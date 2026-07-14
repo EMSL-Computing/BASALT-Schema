@@ -35,6 +35,11 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
           
     
     
+    
+    
+    Site --> "0..1" LandUseEnum : cur_land_use
+    click LandUseEnum href "../LandUseEnum"
+    
 
         
       Site : cur_vegetation
@@ -56,12 +61,6 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
 
         
       Site : elev
-        
-      Site : env_broad_scale
-        
-      Site : env_local_scale
-        
-      Site : env_medium
         
       Site : extreme_event
         
@@ -131,6 +130,11 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
           
     
     
+    
+    
+    Site --> "0..1" ProfilePositionEnum : profile_position
+    click ProfilePositionEnum href "../ProfilePositionEnum"
+    
 
         
       Site : season_precpt
@@ -173,14 +177,11 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
 | [annual_temp](annual_temp.md) | 0..1 <br/> [String](String.md) | Mean annual temperature (Unit: C) | direct |
 | [atmospheric_data](atmospheric_data.md) | 0..1 <br/> [String](String.md) | Measurement of atmospheric data; can include multiple data | direct |
 | [crop_rotation](crop_rotation.md) | 0..1 <br/> [String](String.md) | Whether or not crop is rotated, and if yes, rotation schedule | direct |
-| [cur_land_use](cur_land_use.md) | 0..1 <br/> CurLandUseEnum | Present state of sample site | direct |
+| [cur_land_use](cur_land_use.md) | 0..1 <br/> [LandUseEnum](LandUseEnum.md) | Present state of sample site | direct |
 | [cur_vegetation](cur_vegetation.md) | 0..1 <br/> [String](String.md) | Vegetation classification from one or more standard classification systems, o... | direct |
 | [cur_vegetation_meth](cur_vegetation_meth.md) | 0..1 <br/> [String](String.md) | Reference or method used in vegetation classification | direct |
 | [drainage_class](drainage_class.md) | 0..1 <br/> [DrainageClassEnum](DrainageClassEnum.md) | Drainage classification from a standard system such as the USDA system | direct |
 | [elev](elev.md) | 1 <br/> [String](String.md) | Elevation of the sampling site is its height above a fixed reference point, m... | direct |
-| [env_broad_scale](env_broad_scale.md) | 0..1 <br/> [String](String.md) | 'Report the major environmental system the sample or specimen came from | direct |
-| [env_local_scale](env_local_scale.md) | 0..1 <br/> [String](String.md) | 'Report the entity which are in your sample or specimens local vicinity and w... | direct |
-| [env_medium](env_medium.md) | 0..1 <br/> [String](String.md) | 'Report the environmental material immediately surrounding the sample or spec... | direct |
 | [extreme_event](extreme_event.md) | 0..1 <br/> [String](String.md) | Unusual physical events that may have affected microbial populations | direct |
 | [fao_class](fao_class.md) | 0..1 <br/> [FAOClassEnum](FAOClassEnum.md) | Soil classification from the FAO World soil distribution from International S... | direct |
 | [fire](fire.md) | 0..1 <br/> [String](String.md) | Historical and/or physical evidence of fire | direct |
@@ -198,7 +199,7 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
 | [other_growth_facil](other_growth_facil.md) | 0..1 <br/> [String](String.md) | Please specify growth facility if you selected 'other' | direct |
 | [previous_land_use](previous_land_use.md) | 0..1 <br/> [String](String.md) | Previous land use and dates | direct |
 | [previous_land_use_meth](previous_land_use_meth.md) | 0..1 <br/> [String](String.md) | Reference or method used in determining previous land use and dates | direct |
-| [profile_position](profile_position.md) | 0..1 <br/> SlopeProfilePositionEnum | Cross-sectional position in the hillslope where sample was collected | direct |
+| [profile_position](profile_position.md) | 0..1 <br/> [ProfilePositionEnum](ProfilePositionEnum.md) | Cross-sectional position in the hillslope where sample was collected | direct |
 | [season_precpt](season_precpt.md) | 0..1 <br/> [String](String.md) | The average of all seasonal precipitation values known or an estimated equiva... | direct |
 | [season_temp](season_temp.md) | 0..1 <br/> [String](String.md) | Mean seasonal temperature (Unit: C) | direct |
 | [slope_aspect](slope_aspect.md) | 0..1 <br/> [String](String.md) | The direction a slope faces | direct |
@@ -240,6 +241,7 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
 ## TODOs
 
 * If we only have one Site class, we can't require Site slots based on sample type. We could add this in the submission schema JSON conversion perhaps.
+* fao_class - can this vary within a site or change with time?
 
 ## Identifier and Mapping Information
 
@@ -284,6 +286,7 @@ description: Site-level metadata for a specific location from which a set of sam
 todos:
 - If we only have one Site class, we can't require Site slots based on sample type.
   We could add this in the submission schema JSON conversion perhaps.
+- fao_class - can this vary within a site or change with time?
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 slots:
@@ -299,9 +302,6 @@ slots:
 - cur_vegetation_meth
 - drainage_class
 - elev
-- env_broad_scale
-- env_local_scale
-- env_medium
 - extreme_event
 - fao_class
 - fire
@@ -436,6 +436,7 @@ description: Site-level metadata for a specific location from which a set of sam
 todos:
 - If we only have one Site class, we can't require Site slots based on sample type.
   We could add this in the submission schema JSON conversion perhaps.
+- fao_class - can this vary within a site or change with time?
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 slot_usage:
@@ -623,6 +624,8 @@ attributes:
       (Unit: mm)'
     title: mean annual precipitation
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - average annual precipitation
     rank: 1000
     alias: annual_precpt
     owner: Site
@@ -635,6 +638,8 @@ attributes:
     description: 'Mean annual temperature (Unit: C)'
     title: mean annual temperature
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - average annual temperature
     rank: 1000
     alias: annual_temp
     owner: Site
@@ -680,7 +685,7 @@ attributes:
     owner: Site
     domain_of:
     - Site
-    range: CurLandUseEnum
+    range: LandUseEnum
   cur_vegetation:
     name: cur_vegetation
     description: Vegetation classification from one or more standard classification
@@ -732,53 +737,6 @@ attributes:
     range: string
     required: true
     pattern: ^\d+(\.\d+)?\s*m$
-  env_broad_scale:
-    name: env_broad_scale
-    description: '''Report the major environmental system the sample or specimen came
-      from. The system identified should have a coarse spatial grain to provide the
-      general environmental context of where the sampling was done (e.g. in the desert
-      or a rainforest). We recommend using subclasses of EnvO''''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
-      EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'''
-    title: broad-scale environmental context
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: env_broad_scale
-    owner: Site
-    domain_of:
-    - Site
-    range: string
-    pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
-  env_local_scale:
-    name: env_local_scale
-    description: '''Report the entity which are in your sample or specimens local
-      vicinity and which you believe have significant causal influences on your sample
-      or specimen. Please use terms that are present in ENVO and which are of smaller
-      spatial grain than your entry for env_broad_scale.If needed, request new terms
-      on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'''
-    title: local environmental context
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: env_local_scale
-    owner: Site
-    domain_of:
-    - Site
-    range: string
-    pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
-  env_medium:
-    name: env_medium
-    description: '''Report the environmental material immediately surrounding the
-      sample or specimen at the time of sampling. We recommend using subclasses of
-      ''''environmental material'''' (http://purl.obolibrary.org/obo/ENVO_00010483).
-      EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'''
-    title: environmental medium
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: env_medium
-    owner: Site
-    domain_of:
-    - Site
-    range: string
-    pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
   extreme_event:
     name: extreme_event
     description: 'Unusual physical events that may have affected microbial populations.
@@ -867,6 +825,8 @@ attributes:
     description: Latitude coordinate of the sampling site in WSG 84 format.
     title: latitude
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    broad_mappings:
+    - MIXS:0000009
     rank: 1000
     alias: latitude
     owner: Site
@@ -933,6 +893,8 @@ attributes:
     description: Longitude coordinate of the sampling site in WSG 84 format.
     title: longitude
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    broad_mappings:
+    - MIXS:0000009
     rank: 1000
     alias: longitude
     owner: Site
@@ -969,6 +931,9 @@ attributes:
       sampled. This includes the 4 letter site code followed by the 3 digit ID (Example:
       DEJU_048). If you do not have your NEON site use the code SITE_999.'
     title: neon plot identifier
+    todos:
+    - subport mapping - this is submitted as ABCD_123 but we want to store it as neon_site_code
+      and neon_plot_id separately
     from_schema: https://w3id.org/MONet/analysis-api-schema
     rank: 1000
     alias: neon_plot_id
@@ -1021,7 +986,7 @@ attributes:
     owner: Site
     domain_of:
     - Site
-    range: SlopeProfilePositionEnum
+    range: ProfilePositionEnum
   season_precpt:
     name: season_precpt
     description: 'The average of all seasonal precipitation values known or an estimated
@@ -1029,6 +994,8 @@ attributes:
       (Unit: mm)'
     title: mean seasonal precipitation
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - average seasonal precipitation
     rank: 1000
     alias: season_precpt
     owner: Site
@@ -1041,6 +1008,8 @@ attributes:
     description: 'Mean seasonal temperature (Unit: C)'
     title: mean seasonal temperature
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - average seasonal precipitation
     rank: 1000
     alias: season_temp
     owner: Site

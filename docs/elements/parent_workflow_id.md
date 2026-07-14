@@ -37,8 +37,8 @@ Alias: parent_workflow_id
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity |  no  |
-| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
 | [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |  no  |
+| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
 
 
 

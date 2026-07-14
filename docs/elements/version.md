@@ -22,8 +22,8 @@ Alias: version
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SoftwareControlledTermValue](SoftwareControlledTermValue.md) |  |  no  |
 | [Changelog](Changelog.md) |  |  no  |
+| [SoftwareControlledTermValue](SoftwareControlledTermValue.md) |  |  no  |
 
 
 

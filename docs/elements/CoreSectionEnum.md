@@ -20,6 +20,12 @@ URI: [CoreSectionEnum](CoreSectionEnum.md)
 
 
 
+## Slots
+
+| Name | Description |
+| ---  | --- |
+| [core_section](core_section.md) | The section of the core |
+
 
 
 

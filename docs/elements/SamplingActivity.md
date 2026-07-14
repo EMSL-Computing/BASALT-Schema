@@ -160,6 +160,7 @@ URI: [analysis_api_schema:SamplingActivity](https://w3id.org/MONet/analysis-api-
 ## TODOs
 
 * is this for individual samples or can it be the activity of collecting multiple samples from one site? would need to change shipped_sample_size and storage_condt if so.
+* does project number go here? how do we connect Sample/SamplingActivity to a project/Study?
 
 ## Identifier and Mapping Information
 
@@ -206,6 +207,7 @@ todos:
 - is this for individual samples or can it be the activity of collecting multiple
   samples from one site? would need to change shipped_sample_size and storage_condt
   if so.
+- does project number go here? how do we connect Sample/SamplingActivity to a project/Study?
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 abstract: true
@@ -312,6 +314,7 @@ todos:
 - is this for individual samples or can it be the activity of collecting multiple
   samples from one site? would need to change shipped_sample_size and storage_condt
   if so.
+- does project number go here? how do we connect Sample/SamplingActivity to a project/Study?
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 abstract: true

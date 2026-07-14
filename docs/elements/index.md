@@ -50,7 +50,6 @@ Name: analysis-api-schema
 | [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |
 | [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |
 | [EcoplateWellMetadata](EcoplateWellMetadata.md) | Ecoplate-specific per-well metadata |
-| [Ecoregion](Ecoregion.md) |  |
 | [ElementalAnalysisMethod](ElementalAnalysisMethod.md) |  |
 | [ElementalAnalysisProduct](ElementalAnalysisProduct.md) |  |
 | [EngineeredStrainSample](EngineeredStrainSample.md) | A sample containing a strain of an organism that has been subjected to geneti... |
@@ -176,10 +175,10 @@ Name: analysis-api-schema
 | [activity_speed_id](activity_speed_id.md) |  |
 | [activity_time_id](activity_time_id.md) |  |
 | [additional_information](additional_information.md) | Additional information pertaining to these data, including SP Project ID and ... |
-| [aerosol_type](aerosol_type.md) |  |
+| [aerosol_type](aerosol_type.md) | The type or method of aerosol collection |
 | [ag_mg_per_kg](ag_mg_per_kg.md) | Silver concentration in mg/kg |
-| [agitation_speed_rpm](agitation_speed_rpm.md) |  |
-| [agrochem_addition](agrochem_addition.md) |  |
+| [agitation_speed_rpm](agitation_speed_rpm.md) | Agitation/shaking speed in RPM (0 for static) |
+| [agrochem_addition](agrochem_addition.md) | Addition of fertilizers, pesticides, etc |
 | [air_temp_regm](air_temp_regm.md) | Information about treatment involving an exposure to varying temperatures; sh... |
 | [al_sat](al_sat.md) | Aluminum saturation (esp |
 | [al_sat_meth](al_sat_meth.md) | Reference or method used in determining Al saturation |
@@ -279,6 +278,7 @@ Name: analysis-api-schema
 | [contaminant_strains](contaminant_strains.md) | Known or detected contaminant strains (if any) |
 | [controlled_term_provider](controlled_term_provider.md) | name of ontology or other controlled term provider |
 | [copper_id](copper_id.md) |  |
+| [core_group](core_group.md) | The category of soil core taken according to the MONet sampling protocol |
 | [core_section](core_section.md) | The section of the core |
 | [count](count.md) |  |
 | [cr_mg_per_kg](cr_mg_per_kg.md) | Chromium concentration in mg/kg |
@@ -314,8 +314,6 @@ Name: analysis-api-schema
 | [doi_category](doi_category.md) | The resource type the corresponding doi resolves to |
 | [doi_provider](doi_provider.md) | The authority, or organization, the DOI is associated with |
 | [doi_value](doi_value.md) |  |
-| [domain_id](domain_id.md) |  |
-| [domain_name](domain_name.md) |  |
 | [donor_organism](donor_organism.md) | Provide the scientific name (genus and species) of the organism from which th... |
 | [down_par](down_par.md) | Visible waveband radiance and irradiance measurements in the water column |
 | [drainage_class](drainage_class.md) | Drainage classification from a standard system such as the USDA system |
@@ -344,7 +342,7 @@ Name: analysis-api-schema
 | [file_curie](file_curie.md) | an identifier for a file that resolves to the file's accessible location |
 | [file_type](file_type.md) |  |
 | [files](files.md) |  |
-| [filesize](filesize.md) |  |
+| [filesize](filesize.md) | Size of the file in bytes |
 | [filter_method](filter_method.md) | Type of filter used or how the sample was filtered |
 | [fire](fire.md) | Historical and/or physical evidence of fire |
 | [first_blh](first_blh.md) | First boundary layer height candidate (meters) (Unit: m) |
@@ -993,6 +991,7 @@ Name: analysis-api-schema
 | [MethodNameEnum](MethodNameEnum.md) |  |
 | [ModelEnum](ModelEnum.md) |  |
 | [ModificationMethodEnum](ModificationMethodEnum.md) | Methods used to introduce genetic modifications into organisms |
+| [MONetCoreGroupEnum](MONetCoreGroupEnum.md) | Core groups when sampling according to the MONet sampling protocol |
 | [NEONDomainEnum](NEONDomainEnum.md) | NEON ecological domains |
 | [NexusRoleEnum](NexusRoleEnum.md) |  |
 | [NucleotideSequencingEnum](NucleotideSequencingEnum.md) |  |

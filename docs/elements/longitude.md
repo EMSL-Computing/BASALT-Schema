@@ -22,17 +22,17 @@ Alias: longitude
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
-| [Site](Site.md) | Site-level metadata for a specific location from which a set of samples are c... |  yes  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  yes  |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  yes  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  yes  |
 | [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 | [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
+| [Site](Site.md) | Site-level metadata for a specific location from which a set of samples are c... |  yes  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  yes  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  yes  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  yes  |
 
 
 
@@ -70,6 +70,7 @@ Alias: longitude
 | ---  | ---  |
 | self | analysis_api_schema:longitude |
 | native | analysis_api_schema:longitude |
+| broad | MIXS:0000009 |
 
 
 
@@ -82,6 +83,8 @@ name: longitude
 description: Longitude coordinate of the sampling site in WSG 84 format.
 title: longitude
 from_schema: https://w3id.org/MONet/analysis-api-schema
+broad_mappings:
+- MIXS:0000009
 rank: 1000
 alias: longitude
 domain_of:

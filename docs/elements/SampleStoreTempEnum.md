@@ -22,6 +22,12 @@ URI: [SampleStoreTempEnum](SampleStoreTempEnum.md)
 
 
 
+## Slots
+
+| Name | Description |
+| ---  | --- |
+| [samp_store_temp](samp_store_temp.md) | The temperature at which your samples should be stored upon arrival |
+
 
 
 

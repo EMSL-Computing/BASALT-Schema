@@ -17,12 +17,12 @@ Alias: has_raw_value
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SoftwareControlledTermValue](SoftwareControlledTermValue.md) |  |  no  |
+| [QuantityValue](QuantityValue.md) | A quantity value with numeric value and optional unit |  no  |
 | [ControlledTermValue](ControlledTermValue.md) |  |  no  |
+| [ConditioningValue](ConditioningValue.md) |  |  no  |
+| [SoftwareControlledTermValue](SoftwareControlledTermValue.md) |  |  no  |
 | [TimestampValue](TimestampValue.md) |  |  no  |
 | [TextValue](TextValue.md) |  |  no  |
-| [QuantityValue](QuantityValue.md) | A quantity value with numeric value and optional unit |  no  |
-| [ConditioningValue](ConditioningValue.md) |  |  no  |
 
 
 

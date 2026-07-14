@@ -49,6 +49,12 @@ URI: [analysis_api_schema:AerosolSample](https://w3id.org/MONet/analysis-api-sch
         
       AerosolSample : emsl_activity
         
+      AerosolSample : env_broad_scale
+        
+      AerosolSample : env_local_scale
+        
+      AerosolSample : env_medium
+        
       AerosolSample : experimental_factor
         
       AerosolSample : experimental_factor_other
@@ -117,6 +123,11 @@ URI: [analysis_api_schema:AerosolSample](https://w3id.org/MONet/analysis-api-sch
           
     
     
+    
+    
+    AerosolSample --> "0..1" SampleStoreTempEnum : samp_store_temp
+    click SampleStoreTempEnum href "../SampleStoreTempEnum"
+    
 
         
       AerosolSample : sample_link
@@ -182,12 +193,15 @@ URI: [analysis_api_schema:AerosolSample](https://w3id.org/MONet/analysis-api-sch
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [aerosol_type](aerosol_type.md) | 1 <br/> [AerosolTypeEnum](AerosolTypeEnum.md) |  | direct |
+| [aerosol_type](aerosol_type.md) | 1 <br/> [AerosolTypeEnum](AerosolTypeEnum.md) | The type or method of aerosol collection | direct |
 | [air_temp_regm](air_temp_regm.md) | 0..1 <br/> [String](String.md) | Information about treatment involving an exposure to varying temperatures; sh... | direct |
 | [analysis_type](analysis_type.md) | 1 <br/> [String](String.md) | The type(s) of analysis planned for this sample | direct |
 | [carb_dioxide](carb_dioxide.md) | 0..1 <br/> [String](String.md) | Amount of carbon dioxide measured in the air the day of sampling | direct |
 | [carb_monoxide](carb_monoxide.md) | 0..1 <br/> [String](String.md) | Amount of carbon monoxide measured in the air the day of sampling | direct |
 | [chem_administration](chem_administration.md) | 0..1 <br/> [String](String.md) | List of chemical compounds administered to the host or site where sampling oc... | direct |
+| [env_broad_scale](env_broad_scale.md) | 0..1 <br/> [String](String.md) | 'Report the major environmental system the sample or specimen came from | direct |
+| [env_local_scale](env_local_scale.md) | 0..1 <br/> [String](String.md) | 'Report the entity which are in your sample or specimens local vicinity and w... | direct |
+| [env_medium](env_medium.md) | 0..1 <br/> [String](String.md) | 'Report the environmental material immediately surrounding the sample or spec... | direct |
 | [experimental_factor](experimental_factor.md) | 0..1 <br/> [String](String.md) | Experimental factors are essentially the variable aspects of an experiment de... | direct |
 | [experimental_factor_other](experimental_factor_other.md) | 0..1 <br/> [String](String.md) | Other details about your sample that you feel can't be accurately represented... | direct |
 | [extraction_method](extraction_method.md) | 0..1 <br/> [String](String.md) | If you (the user) performed an extraction preparation or processing before se... | direct |
@@ -213,7 +227,7 @@ URI: [analysis_api_schema:AerosolSample](https://w3id.org/MONet/analysis-api-sch
 | [sample_name](sample_name.md) | 0..1 <br/> [String](String.md) | The name or label that is present on the shipped sample | direct |
 | [sample_processing](sample_processing.md) | 0..1 <br/> [String](String.md) | A brief description of any processing applied to the sample during or after r... | direct |
 | [sampled_during](sampled_during.md) | 0..1 <br/> [SamplingActivity](SamplingActivity.md) | Reference to the sampling activity during which this sample was collected | direct |
-| [samp_store_temp](samp_store_temp.md) | 0..1 <br/> SampStoreTempEnum | The temperature at which your samples should be stored upon arrival | direct |
+| [samp_store_temp](samp_store_temp.md) | 0..1 <br/> [SampleStoreTempEnum](SampleStoreTempEnum.md) | The temperature at which your samples should be stored upon arrival | direct |
 | [size_frac_low](size_frac_low.md) | 0..1 <br/> [String](String.md) | Refers to the mesh/pore size used to pre-filter/pre-sort the sample | direct |
 | [size_frac_up](size_frac_up.md) | 0..1 <br/> [String](String.md) | Refers to the mesh/pore size used to retain the sample | direct |
 | [solar_irradiance](solar_irradiance.md) | 0..1 <br/> [String](String.md) | Solar irradiance is the power per unit area (surface power density) received ... | direct |
@@ -286,6 +300,9 @@ slots:
 - carb_dioxide
 - carb_monoxide
 - chem_administration
+- env_broad_scale
+- env_local_scale
+- env_medium
 - experimental_factor
 - experimental_factor_other
 - extraction_method
@@ -526,6 +543,7 @@ attributes:
     required: true
   aerosol_type:
     name: aerosol_type
+    description: The type or method of aerosol collection
     from_schema: https://w3id.org/MONet/analysis-api-schema
     rank: 1000
     alias: aerosol_type
@@ -646,6 +664,86 @@ attributes:
     - TerraformSample
     - WaterSample
     range: string
+  env_broad_scale:
+    name: env_broad_scale
+    description: '''Report the major environmental system the sample or specimen came
+      from. The system identified should have a coarse spatial grain to provide the
+      general environmental context of where the sampling was done (e.g. in the desert
+      or a rainforest). We recommend using subclasses of EnvO''''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
+      EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'''
+    title: broad-scale environmental context
+    from_schema: https://w3id.org/MONet/analysis-api-schema
+    rank: 1000
+    alias: env_broad_scale
+    owner: AerosolSample
+    domain_of:
+    - AerosolArmSample
+    - AerosolSample
+    - CultureEnvironmentalSample
+    - FieldDeployedTerraformSample
+    - MonetSoilSample
+    - OtherUndescribedSample
+    - PlantSample
+    - PureCultureSample
+    - SedimentSample
+    - SoilSample
+    - TerraformSample
+    - WaterSample
+    range: string
+    pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
+  env_local_scale:
+    name: env_local_scale
+    description: '''Report the entity which are in your sample or specimens local
+      vicinity and which you believe have significant causal influences on your sample
+      or specimen. Please use terms that are present in ENVO and which are of smaller
+      spatial grain than your entry for env_broad_scale.If needed, request new terms
+      on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'''
+    title: local environmental context
+    from_schema: https://w3id.org/MONet/analysis-api-schema
+    rank: 1000
+    alias: env_local_scale
+    owner: AerosolSample
+    domain_of:
+    - AerosolArmSample
+    - AerosolSample
+    - CultureEnvironmentalSample
+    - FieldDeployedTerraformSample
+    - MonetSoilSample
+    - OtherUndescribedSample
+    - PlantSample
+    - PureCultureSample
+    - SedimentSample
+    - SoilSample
+    - TerraformSample
+    - WaterSample
+    range: string
+    pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
+  env_medium:
+    name: env_medium
+    description: '''Report the environmental material immediately surrounding the
+      sample or specimen at the time of sampling. We recommend using subclasses of
+      ''''environmental material'''' (http://purl.obolibrary.org/obo/ENVO_00010483).
+      EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'''
+    title: environmental medium
+    from_schema: https://w3id.org/MONet/analysis-api-schema
+    rank: 1000
+    alias: env_medium
+    owner: AerosolSample
+    domain_of:
+    - AerosolArmSample
+    - AerosolSample
+    - CultureEnvironmentalSample
+    - FieldDeployedTerraformSample
+    - MonetSoilSample
+    - OtherUndescribedSample
+    - PlantSample
+    - PureCultureSample
+    - SedimentSample
+    - SoilSample
+    - TerraformSample
+    - WaterSample
+    range: string
+    pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
   experimental_factor:
     name: experimental_factor
     description: Experimental factors are essentially the variable aspects of an experiment
@@ -799,6 +897,8 @@ attributes:
     description: Latitude coordinate of the sampling site in WSG 84 format.
     title: latitude
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    broad_mappings:
+    - MIXS:0000009
     rank: 1000
     alias: latitude
     owner: AerosolSample
@@ -820,6 +920,8 @@ attributes:
     description: Longitude coordinate of the sampling site in WSG 84 format.
     title: longitude
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    broad_mappings:
+    - MIXS:0000009
     rank: 1000
     alias: longitude
     owner: AerosolSample
@@ -1256,7 +1358,7 @@ attributes:
     - SynthesizedMaterialSample
     - TerraformSample
     - WaterSample
-    range: SampStoreTempEnum
+    range: SampleStoreTempEnum
   size_frac_low:
     name: size_frac_low
     description: 'Refers to the mesh/pore size used to pre-filter/pre-sort the sample.

@@ -32,7 +32,7 @@ Alias: ms_raw_file_type
 
 ## Properties
 
-* Range: MSRawFileTypeEnum
+* Range: [MassSpecRawFileTypeEnum](MassSpecRawFileTypeEnum.md)
 
 
 
@@ -75,7 +75,7 @@ rank: 1000
 alias: ms_raw_file_type
 domain_of:
 - MassSpectrometryInstrumentData
-range: MSRawFileTypeEnum
+range: MassSpecRawFileTypeEnum
 
 ```
 </details>

@@ -22,8 +22,8 @@ Alias: storage_location
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  no  |
 | [CoreSection](CoreSection.md) | A section of a core sample (TOP, MID, BTM) |  no  |
+| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  no  |
 
 
 

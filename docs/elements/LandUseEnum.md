@@ -52,6 +52,12 @@ URI: [LandUseEnum](LandUseEnum.md)
 
 
 
+## Slots
+
+| Name | Description |
+| ---  | --- |
+| [cur_land_use](cur_land_use.md) | Present state of sample site |
+
 
 
 

@@ -22,12 +22,12 @@ Alias: ref_biomaterial
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 
 
 

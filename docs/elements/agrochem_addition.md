@@ -3,6 +3,11 @@
 # Slot: agrochemical additions (agrochem_addition) 
 
 
+_Addition of fertilizers, pesticides, etc. - amount and time of applications_
+
+
+
+
 
 URI: [analysis_api_schema:agrochem_addition](https://w3id.org/MONet/analysis-api-schema/agrochem_addition)
 Alias: agrochem_addition
@@ -17,9 +22,9 @@ Alias: agrochem_addition
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 
 
 
@@ -66,6 +71,7 @@ Alias: agrochem_addition
 <details>
 ```yaml
 name: agrochem_addition
+description: Addition of fertilizers, pesticides, etc. - amount and time of applications
 title: agrochemical additions
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000

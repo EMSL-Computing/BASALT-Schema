@@ -145,6 +145,12 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
         
       OtherUndescribedSample : encoded_traits
         
+      OtherUndescribedSample : env_broad_scale
+        
+      OtherUndescribedSample : env_local_scale
+        
+      OtherUndescribedSample : env_medium
+        
       OtherUndescribedSample : experimental_factor
         
       OtherUndescribedSample : experimental_factor_other
@@ -419,6 +425,11 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
           
     
     
+    
+    
+    OtherUndescribedSample --> "0..1" SampleStoreTempEnum : samp_store_temp
+    click SampleStoreTempEnum href "../SampleStoreTempEnum"
+    
 
         
       OtherUndescribedSample : sample_link
@@ -592,7 +603,7 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [agrochem_addition](agrochem_addition.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [agrochem_addition](agrochem_addition.md) | 0..1 <br/> [String](String.md) | Addition of fertilizers, pesticides, etc | direct |
 | [air_temp_regm](air_temp_regm.md) | 0..1 <br/> [String](String.md) | Information about treatment involving an exposure to varying temperatures; sh... | direct |
 | [al_sat](al_sat.md) | 0..1 <br/> [String](String.md) | Aluminum saturation (esp | direct |
 | [al_sat_meth](al_sat_meth.md) | 0..1 <br/> [String](String.md) | Reference or method used in determining Al saturation | direct |
@@ -640,6 +651,9 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
 | [efficiency_percent](efficiency_percent.md) | 0..1 <br/> [String](String.md) | percentage of volatile solids removed from the anaerobic digestor | direct |
 | [emulsions](emulsions.md) | 0..1 <br/> [String](String.md) | amount or concentration of substances such as paints, adhesives, mayonnaise, ... | direct |
 | [encoded_traits](encoded_traits.md) | 0..1 <br/> [String](String.md) | Should include key traits like antibiotic resistance or xenobiotic | direct |
+| [env_broad_scale](env_broad_scale.md) | 0..1 <br/> [String](String.md) | 'Report the major environmental system the sample or specimen came from | direct |
+| [env_local_scale](env_local_scale.md) | 0..1 <br/> [String](String.md) | 'Report the entity which are in your sample or specimens local vicinity and w... | direct |
+| [env_medium](env_medium.md) | 0..1 <br/> [String](String.md) | 'Report the environmental material immediately surrounding the sample or spec... | direct |
 | [experimental_factor](experimental_factor.md) | 0..1 <br/> [String](String.md) | Experimental factors are essentially the variable aspects of an experiment de... | direct |
 | [experimental_factor_other](experimental_factor_other.md) | 0..1 <br/> [String](String.md) | Other details about your sample that you feel can't be accurately represented... | direct |
 | [extraction_method](extraction_method.md) | 0..1 <br/> [String](String.md) | If you (the user) performed an extraction preparation or processing before se... | direct |
@@ -755,7 +769,7 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
 | [biotic_relationship](biotic_relationship.md) | 0..1 <br/> [BioticRelationshipEnum](BioticRelationshipEnum.md) | Description of relationship(s) between the subject organism and other organis... | direct |
 | [samp_capt_status](samp_capt_status.md) | 0..1 <br/> [String](String.md) | Reason for the sample | direct |
 | [samp_dis_stage](samp_dis_stage.md) | 0..1 <br/> [String](String.md) | Stage of the disease at the time of sample collection e | direct |
-| [samp_store_temp](samp_store_temp.md) | 0..1 <br/> SampStoreTempEnum | The temperature at which your samples should be stored upon arrival | direct |
+| [samp_store_temp](samp_store_temp.md) | 0..1 <br/> [SampleStoreTempEnum](SampleStoreTempEnum.md) | The temperature at which your samples should be stored upon arrival | direct |
 | [sample_link](sample_link.md) | 0..1 <br/> [String](String.md) | 'A unique identifier to assign parent-child subsample or sibling samples | direct |
 | [sample_name](sample_name.md) | 0..1 <br/> [String](String.md) | The name or label that is present on the shipped sample | direct |
 | [sample_processing](sample_processing.md) | 0..1 <br/> [String](String.md) | A brief description of any processing applied to the sample during or after r... | direct |
@@ -918,6 +932,9 @@ slots:
 - efficiency_percent
 - emulsions
 - encoded_traits
+- env_broad_scale
+- env_local_scale
+- env_medium
 - experimental_factor
 - experimental_factor_other
 - extraction_method
@@ -1330,6 +1347,7 @@ attributes:
     required: true
   agrochem_addition:
     name: agrochem_addition
+    description: Addition of fertilizers, pesticides, etc. - amount and time of applications
     title: agrochemical additions
     from_schema: https://w3id.org/MONet/analysis-api-schema
     rank: 1000
@@ -2055,6 +2073,86 @@ attributes:
     - TerraformSample
     - biological_entity
     range: string
+  env_broad_scale:
+    name: env_broad_scale
+    description: '''Report the major environmental system the sample or specimen came
+      from. The system identified should have a coarse spatial grain to provide the
+      general environmental context of where the sampling was done (e.g. in the desert
+      or a rainforest). We recommend using subclasses of EnvO''''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
+      EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'''
+    title: broad-scale environmental context
+    from_schema: https://w3id.org/MONet/analysis-api-schema
+    rank: 1000
+    alias: env_broad_scale
+    owner: OtherUndescribedSample
+    domain_of:
+    - AerosolArmSample
+    - AerosolSample
+    - CultureEnvironmentalSample
+    - FieldDeployedTerraformSample
+    - MonetSoilSample
+    - OtherUndescribedSample
+    - PlantSample
+    - PureCultureSample
+    - SedimentSample
+    - SoilSample
+    - TerraformSample
+    - WaterSample
+    range: string
+    pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
+  env_local_scale:
+    name: env_local_scale
+    description: '''Report the entity which are in your sample or specimens local
+      vicinity and which you believe have significant causal influences on your sample
+      or specimen. Please use terms that are present in ENVO and which are of smaller
+      spatial grain than your entry for env_broad_scale.If needed, request new terms
+      on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'''
+    title: local environmental context
+    from_schema: https://w3id.org/MONet/analysis-api-schema
+    rank: 1000
+    alias: env_local_scale
+    owner: OtherUndescribedSample
+    domain_of:
+    - AerosolArmSample
+    - AerosolSample
+    - CultureEnvironmentalSample
+    - FieldDeployedTerraformSample
+    - MonetSoilSample
+    - OtherUndescribedSample
+    - PlantSample
+    - PureCultureSample
+    - SedimentSample
+    - SoilSample
+    - TerraformSample
+    - WaterSample
+    range: string
+    pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
+  env_medium:
+    name: env_medium
+    description: '''Report the environmental material immediately surrounding the
+      sample or specimen at the time of sampling. We recommend using subclasses of
+      ''''environmental material'''' (http://purl.obolibrary.org/obo/ENVO_00010483).
+      EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'''
+    title: environmental medium
+    from_schema: https://w3id.org/MONet/analysis-api-schema
+    rank: 1000
+    alias: env_medium
+    owner: OtherUndescribedSample
+    domain_of:
+    - AerosolArmSample
+    - AerosolSample
+    - CultureEnvironmentalSample
+    - FieldDeployedTerraformSample
+    - MonetSoilSample
+    - OtherUndescribedSample
+    - PlantSample
+    - PureCultureSample
+    - SedimentSample
+    - SoilSample
+    - TerraformSample
+    - WaterSample
+    range: string
+    pattern: ^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$
   experimental_factor:
     name: experimental_factor
     description: Experimental factors are essentially the variable aspects of an experiment
@@ -2724,6 +2822,8 @@ attributes:
     description: Latitude coordinate of the sampling site in WSG 84 format.
     title: latitude
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    broad_mappings:
+    - MIXS:0000009
     rank: 1000
     alias: latitude
     owner: OtherUndescribedSample
@@ -2746,6 +2846,8 @@ attributes:
     description: Longitude coordinate of the sampling site in WSG 84 format.
     title: longitude
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    broad_mappings:
+    - MIXS:0000009
     rank: 1000
     alias: longitude
     owner: OtherUndescribedSample
@@ -3971,7 +4073,7 @@ attributes:
     - SynthesizedMaterialSample
     - TerraformSample
     - WaterSample
-    range: SampStoreTempEnum
+    range: SampleStoreTempEnum
   sample_link:
     name: sample_link
     description: '''A unique identifier to assign parent-child subsample or sibling
