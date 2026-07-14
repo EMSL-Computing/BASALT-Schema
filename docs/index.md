@@ -1,6 +1,7 @@
-# MONet Analysis API Schema
+# About
+# NAME PLACEHOLDER Schema
 
-**analysis-api-schema** is a comprehensive schema for representing multimodal environmental and microbiological analysis data, from soil characterization to microbial culture workflows. It supports diverse experimental techniques including mass spectrometry, metagenomics sequencing, X-ray fluorescence/diffraction, and 96-well plate-based growth assays (AMP2/Ecoplate).
+**NAME PLACEHOLDER schema** is a comprehensive, schema for representing multimodal environmental and microbiological analysis data, from soil characterization to microbial culture workflows. It supports diverse experimental techniques including mass spectrometry, metagenomics sequencing, X-ray fluorescence/diffraction, and 96-well plate-based growth assays (AMP2/Ecoplate). It is in active and ongoing development to support data generating activities at the [Environmental Molecular Sciences Laboratory](https://www.emsl.pnnl.gov/) (EMSL).
 
 **NOTE:** This schema is under active development and integrates metadata standards from multiple collaborating institutions (EMSL, GLBRC, NMDC, and more). Some areas are marked with TODOs for future refinement.
 
@@ -30,9 +31,9 @@ All entities are stored in flat collections linked to studies:
 
 - **Purchased Materials**: Commercial reagents, standards, and supplies with catalog information and lot tracking.
 
-### AMP2-Specific Culture-to-Phenotyping Workflows (AMP2)
+### AMP2-Specific Culture-to-Phenotyping Workflows 
 
-**Culture Growth Activities**: Laboratory activities for microbial culture workflows including:
+**Culture Growth Activities**: Laboratory activities for microbial culture workflows on the [Anaerobic Microbial Phenotyping Platform (AMP2)](https://www.emsl.pnnl.gov/science/instruments-resources/anaerobic-microbial-phenotyping-platform-amp2) including:
 
  - *Strain Purity*: Initial purity verification of user samples
 
@@ -76,7 +77,7 @@ All entities are stored in flat collections linked to studies:
  - *Soil Characterization Products*: pH, texture, bulk density, hydraulic properties, elemental analysis, microbial biomass
 
  - *Plate Products*: Well-level readings with timepoints, blanks, and quality metrics
- 
+
  - *X-ray Products*: XRF elemental concentrations and XRD mineral phase percentages
 
 ### Supporting Classes
@@ -96,4 +97,10 @@ Many-to-many relationships are represented via explicit association tables:
 - **Instrument Associations**: Links instruments to activities with custodian tracking
 
 - **Workflow Associations**: Links functional annotations and other outputs to workflow executions
+
+
+## Contacts
+- Yuri Corilo (corilo@pnnl.gov)
+- Maia Kapur (maia.kapur@pnnl.gov)
+- Montana Smith (montana.smith@pnnl.gov)
 
