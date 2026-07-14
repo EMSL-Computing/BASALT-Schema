@@ -32,6 +32,7 @@ imports:
   - methods
   - products
   - sample_classes
+  - biological_entity
   # - sample_processing
   - slots
   - study
@@ -255,16 +256,6 @@ classes:
         range: AlternateIdentifierType
         required: true
 
-
-  Ecoregion:
-    attributes:
-      domain_id:
-        identifier: true
-        range: integer
-      domain_name:
-        range: string
-        required: true
-
   FunctionalAnnotationIdentifier:
     attributes:
       id:
@@ -453,8 +444,6 @@ classes:
           - processing_id
           - step_number
           - role
-    todos:
-      - why is version here? what is a version of a processed sample?
 
   InstrumentCustodian:
     attributes:

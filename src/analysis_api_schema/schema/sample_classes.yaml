@@ -44,11 +44,7 @@ classes:
       - cur_vegetation
       - cur_vegetation_meth
       - drainage_class
-      - ecoregion
       - elev
-      - env_broad_scale
-      - env_local_scale
-      - env_medium
       - extreme_event
       - fao_class
       - fire
@@ -61,8 +57,8 @@ classes:
       - local_class
       - local_class_meth
       - longitude
-      - neon_domain
-      - neon_plot_id # do we need to break this out into neon_site_code and neon_plot_id? users input both in the same column called neon plot id
+      - neon_site_code
+      - neon_plot_id 
       - other_growth_facil
       - previous_land_use
       - previous_land_use_meth
@@ -84,7 +80,9 @@ classes:
         required: true
       longitude:
         required: true
-    todos: If we only have one Site class, we can't require Site slots based on sample type. We could add this in the submission schema JSON conversion perhaps.
+    todos:
+      - If we only have one Site class, we can't require Site slots based on sample type. We could add this in the submission schema JSON conversion perhaps.
+      - fao_class - can this vary within a site or change with time?
 
   Sample:
     description: A physical sample collected from an environment. The environment can be ecological, laboratory, or any other context where samples are collected. This class serves as an abstract class to relate subclasses of samples.
@@ -100,16 +98,7 @@ classes:
       - lims_barcode
     slot_usage:
     todos:
-      - where should proposal ID live? probably not here?
-  
-  AMP2Sample:
-    is_a: Sample
-    description: A sample associated with the AMP2 program.
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-    slots:
+      - where should proposal ID live? probably not here? emsl_activity is a string referencing a campaign name. but we do need to link samples to their parent studies/projects somehow.
 
   AerosolArmSample:
     attributes:
@@ -126,6 +115,9 @@ classes:
       - carb_monoxide
       - chem_administration
       - color_code
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - experimental_factor
       - experimental_factor_other
       - external_identifiers
@@ -135,7 +127,8 @@ classes:
       - first_cbh
       - humidity_regm
       - isotope_exposure
-      - lat_lon
+      - latitude
+      - longitude
       - mean_total_cpc_concentration
       - mean_total_pops_concentration
       - methane
@@ -160,8 +153,8 @@ classes:
       - size_frac_low
       - size_frac_up
       - solar_irradiance
-      - source_mat_ID
-      - storage_condt
+      - source_mat_id
+      - storage_condition
       - storage_condition_other
       - technical_reps
       - third_blh
@@ -202,13 +195,17 @@ classes:
       - carb_dioxide
       - carb_monoxide
       - chem_administration
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - experimental_factor
       - experimental_factor_other
       - extraction_method
       - external_identifiers
       - humidity_regm
       - isotope_exposure
-      - lat_lon
+      - latitude
+      - longitude
       - methane
       - method_development
       - misc_param
@@ -230,8 +227,8 @@ classes:
       - size_frac_low
       - size_frac_up
       - solar_irradiance
-      - source_mat_ID
-      - storage_condt
+      - source_mat_id
+      - storage_condition
       - storage_condition_other
       - technical_reps
       - temperature_exposure
@@ -248,6 +245,89 @@ classes:
         description: 'Refers to the mesh/pore size used to retain the sample. Materials
           smaller than the size threshold are excluded from the sample (Unit: um)'
         pattern: ^\d+(\.\d+)?\s*um$
+
+  AMP2UserSample:
+    description: |-
+      A user-submitted microbial sample for AMP2 workflows.
+      
+      References a biological_entity for identity (the "what") and carries
+      physical/logistical metadata for the specific sample instance (the "this tube").
+      
+      Relationship to biological_entity:
+        - Many AMP2UserSample instances can reference one biological_entity
+        - biological_entity_ref is the FK (required)
+        - Example: 1000 samples of strain KT2440_pTE314
+      
+      Workflow integration:
+        - Enters workflow via SampleReceiving activity
+        - Processed through StrainPurity → StockCulturePreparation → PreCultureGrowth → ExperimentalCulture
+        - Outputs ProcessedSample instances at each stage
+
+    is_a: Sample
+
+    slots:
+      # Reference to biological identity
+      - biological_entity_ref
+      
+      # Collection/receipt
+      - collection_date
+      
+      # Growth/isolation context (pre-submission)
+      - growth_facil
+      - isol_growth_condt
+      - start_date_inc
+      
+      # Storage (explicit for clarity, inherited from Sample)
+      - storage_condition
+      - storage_temperature
+      
+      # Shipping/logistics
+      - shipped_sample_size
+      - guid_source
+      - other_guid_source
+      
+      # Analysis planning
+      - analysis_type
+      
+      # Regulatory
+      - cbi
+      
+    slot_usage:
+      biological_entity_ref:
+        required: true
+        description: |-
+          FK to biological_entity representing the biological identity this sample instantiates.
+          Required - every AMP2UserSample must reference a biological_entity.
+      storage_condition:
+        required: true
+        description: |-
+          Storage condition for this sample (frozen, fresh, etc.).
+          Inherited from Sample; required for AMP2UserSample.
+          Aliases: samp_store_cond, storage_cond, storage_condt
+      storage_temperature:
+        description: |-
+          Storage temperature for this sample (e.g., "-80 C").
+          Aliases: samp_store_temp
+      name:
+        description: |-
+          Sample identifier/name (e.g., "PP_0055").
+          May match strain_identifier on biological_entity for 1:1 cases,
+          but typically unique per sample instance.
+          Aliases: sample_name, samp_name
+      collection_date:
+        required: false
+        description: |-
+          The date the sample was collected or received from the user.
+      analysis_type:
+        required: false
+        description: |-
+          The type(s) of analysis planned for this sample.
+          
+    attributes:
+      id:
+        range: uuid
+        identifier: true
+
 
   CommerciallyPurchasedSample:
     attributes:
@@ -279,7 +359,7 @@ classes:
       - samp_store_temp
       - sampled_during
       - source_mat_id
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - technical_reps
       - temp
@@ -302,6 +382,9 @@ classes:
       - biotic_regm
       - chem_administration
       - encoded_traits
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - experimental_factor
       - experimental_factor_other
       - external_identifiers
@@ -316,7 +399,8 @@ classes:
       - humidity_regm
       - isol_growth_condt
       - isotope_exposure
-      - lat_lon
+      - latitude
+      - longitude
       - light_regm
       - method_development
       - non_microb_biomass
@@ -331,7 +415,7 @@ classes:
       - propagation
       - ref_biomaterial
       - replicate_number
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_store_temp
       - sample_link
       - sample_name
@@ -339,7 +423,7 @@ classes:
       - sampled_during
       - source_mat_id
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - subspecf_gen_lin
       - technical_reps
@@ -362,67 +446,43 @@ classes:
         required: true
 
   EngineeredStrainSample:
+    description: |-
+      A sample containing a strain of an organism that has been subjected to genetic engineering.
+      
+      This class references a biological_entity for strain identity information (organism_name,
+      strain_source, modification_method, genotype_segment_*, component_*, phenotype, trait, etc.)
+      and carries only sample-instance-specific slots.
+        
+    is_a: Sample
+
+    slots:
+      # Reference to biological identity (required)
+      - biological_entity_ref
+      
+      # Sample-instance-specific slots
+      - cbi
+      - storage_condition
+      - storage_temperature
+      - external_identifiers
+      
     attributes:
       id:
         identifier: true
         range: uuid
-    description: A sample containing a strain of an organism that has been subjected to genetic engineering.
-    is_a: Sample
-    slots:
-      - cbi
-      - component_description
-      - component_name
-      - construct_component
-      - donor_organism
-      - external_identifiers
-      - genotype_segment_category
-      - genotype_segment_name
-      - modification_method
-      - organism_name
-      - other
-      - other_samp_store_temp
-      - other_storage_condt
-      - phenotype
-      - project
-      - sample_name
-      - sampled_during
-      - samp_store_temp
-      - storage_condt
-      - storage_condition_other
-      - strain_description
-      - strain_name
-      - strain_source
-      - trait
-      - watering_regm
-    slot_usage:
+
       cbi:
         required: true
-      component_description:
+        description: |-
+          Controlled Biological Information flag (yes/no).
+      storage_condition:
         required: true
-      component_name:
-        required: true
-      construct_component:
-        required: true
-      donor_organism:
-        required: true
-      genotype_segment_category:
-        required: true
-      genotype_segment_name:
-        required: true
-      modification_method:
-        required: true
-      organism_name:
-        required: true
-      phenotype:
-        required: true
-      strain_description:
-        required: true
-      strain_name:
-        required: true
-      strain_source:
-        required: true
-      trait:
-        required: true
+        description: |-
+          Storage condition for this sample (frozen, fresh, etc.).
+          Aliases: samp_store_cond, storage_cond, storage_condt
+      storage_temperature:
+        description: |-
+          Storage temperature for this sample (e.g., "-80 C").
+          Aliases: samp_store_temp
 
   FieldDeployedTerraformSample:
     attributes:
@@ -439,6 +499,9 @@ classes:
       - cult_root_med
       - depth
       - encoded_traits
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - external_identifiers
       - gaseous_environment
       - genetic_mod
@@ -458,7 +521,8 @@ classes:
       - initiation_date_plant
       - isol_growth_condt
       - isotope_exposure
-      - lat_lon
+      - latitude
+      - longitude
       - light_regm
       - method_development
       - mineral_nutr_regm
@@ -487,12 +551,12 @@ classes:
       - sample_link
       - sample_name
       - sample_processing
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_store_temp
       - sampled_during
-      - source_mat_ID
+      - source_mat_id
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - synth_env_assembly
       - synth_env_design
@@ -513,7 +577,9 @@ classes:
         required: true
       initiation_date_plant:
         required: true
-      lat_lon:
+      latitude:
+        required: true
+      longitude:
         required: true
       synth_env_assembly:
         required: true
@@ -567,7 +633,7 @@ classes:
       - propagation
       - ref_biomaterial
       - replicate_number
-      - samp_biotic_relationship
+      - biotic_relationship
       - sample_link
       - sample_name
       - sample_processing
@@ -576,7 +642,7 @@ classes:
       - source_mat_id
       - specific_host
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - subspecf_gen_lin
       - technical_reps
@@ -613,9 +679,14 @@ classes:
       - agrochem_addition
       - bulk_elect_conductivity
       - chem_administration
+      - core_group
       - depth
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - external_identifiers
-      - lat_lon
+      - latitude
+      - longitude
       - lims_id
       - misc_param
       - other
@@ -630,7 +701,7 @@ classes:
       - soil_sample_type
       - soil_type
       - soil_type_meth
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - temp
       - water_content
@@ -650,7 +721,9 @@ classes:
           cm or m)'
         pattern: ^\d+(\.\d+)?-\d+(\.\d+)?\s*(m|cm)$
         required: true
-      lat_lon:
+      latitude:
+        required: true
+      longitude:
         required: true
       sampling_set:
         required: true
@@ -730,6 +803,9 @@ classes:
       - efficiency_percent
       - emulsions
       - encoded_traits
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - experimental_factor
       - experimental_factor_other
       - extraction_method
@@ -770,7 +846,8 @@ classes:
       - isol_growth_condt
       - isotope_exposure
       - item_number
-      - lat_lon
+      - latitude
+      - longitude
       - light_intensity
       - light_regm
       - link_addit_analys
@@ -783,8 +860,8 @@ classes:
       - micro_biomass_C_meth
       - micro_biomass_N_meth
       - microbial_biomass
-      - microbial_biomass_C
-      - microbial_biomass_N
+      - microbial_biomass_c
+      - microbial_biomass_n
       - microbial_biomass_meth
       - mineral_nutr_regm
       - misc_param
@@ -841,7 +918,7 @@ classes:
       - salinity
       - salinity_method
       - salt_regm
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_capt_status
       - samp_dis_stage
       - samp_store_temp
@@ -863,10 +940,10 @@ classes:
       - soluble_inorg_mat
       - soluble_org_mat
       - soluble_react_phosp
-      - source_mat_ID
+      - source_mat_id
       - standing_water_regm
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - subspecf_gen_lin
       - sulfate
@@ -911,7 +988,9 @@ classes:
       carb_monoxide:
         description: Amount of carbon monoxide measured in the air the day of sampling.
           Provided by ARM
-      lat_lon:
+      latitude:
+        required: true
+      longitude:
         required: true
       oxygen:
         description: Amount of oxygen measured in the air the day of sampling. Provided
@@ -940,6 +1019,9 @@ classes:
       - biotic_regm
       - chem_administration
       - chem_mutagen
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - experimental_factor
       - experimental_factor_other
       - extraction_method
@@ -957,7 +1039,8 @@ classes:
       - host_life_stage
       - humidity_regm
       - isotope_exposure
-      - lat_lon
+      - latitude
+      - longitude
       - light_regm
       - mechanical_damage
       - method_development
@@ -1001,10 +1084,10 @@ classes:
       - sample_processing
       - samp_store_temp
       - sampled_during
-      - source_mat_ID
+      - source_mat_id
       - standing_water_regm
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - technical_reps
       - temp
@@ -1020,7 +1103,9 @@ classes:
         pattern: ^\d+(\.\d+)?\s*(cm|mm|m)$
       host_life_stage:
         description: Description of life stage of the plant
-      lat_lon:
+      latitude:
+        required: true
+      longitude:
         required: true
       non_microb_biomass:
         description: "Amount of biomass; should include the name for the part of biomass\
@@ -1045,6 +1130,9 @@ classes:
       - biotic_regm
       - chem_administration
       - encoded_traits
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - experimental_factor
       - experimental_factor_other
       - extraction_method
@@ -1073,15 +1161,15 @@ classes:
       - propagation
       - ref_biomaterial
       - replicate_number
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_store_temp
       - sample_link
       - sample_name
       - sample_processing
       - sampled_during
-      - source_mat_ID
+      - source_mat_id
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - subspecf_gen_lin
       - technical_reps
@@ -1137,6 +1225,9 @@ classes:
       - diss_org_carb
       - diss_org_nitro
       - diss_oxygen
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - experimental_factor
       - experimental_factor_other
       - extraction_method
@@ -1145,7 +1236,8 @@ classes:
       - glucosidase_act
       - humidity_regm
       - isotope_exposure
-      - lat_lon
+      - latitude
+      - longitude
       - light_regm
       - magnesium
       - mean_frict_vel
@@ -1194,16 +1286,16 @@ classes:
       - sample_link
       - sample_name
       - sample_processing
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_store_temp
       - sampled_during
       - sediment_type
       - sieving
       - silicate
       - sodium
-      - source_mat_ID
+      - source_mat_id
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - sulfate
       - sulfide
@@ -1226,7 +1318,9 @@ classes:
       depth:
         required: true
         pattern: ^\d+(\.\d+)?-\d+(\.\d+)?\s*m$
-      lat_lon:
+      latitude:
+        required: true
+      longitude:
         required: true
       microbial_biomass:
         description: 'The part of the organic matter in the soil that constitutes living
@@ -1239,7 +1333,7 @@ classes:
           the part of biomass measured, e.g.insect, plant, total. Provide value and unit,
           any unit is valid. (example: insect 5mg; plant 2ug/mL)'
         pattern: ^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$
-      samp_biotic_relationship:
+      biotic_relationship:
         description: Description of relationship(s) between the subject organism and
           other organism(s) it is associated with. The target organism is the subject
           of the relationship and the other organism(s) is the object
@@ -1261,6 +1355,9 @@ classes:
       - bulk_elect_conductivity
       - chem_administration
       - depth
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - experimental_factor
       - experimental_factor_other
       - extraction_method
@@ -1272,7 +1369,8 @@ classes:
       - horizon_meth
       - humidity_regm
       - isotope_exposure
-      - lat_lon
+      - latitude
+      - longitude
       - light_regm
       - link_addit_analys
       - method_development
@@ -1297,7 +1395,7 @@ classes:
       - replicate_number
       - salinity
       - salinity_method
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_store_temp
       - sample_link
       - sample_name
@@ -1311,9 +1409,9 @@ classes:
       - soil_texture
       - soil_type
       - soil_type_meth
-      - source_mat_ID
+      - source_mat_id
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - technical_reps
       - temp
@@ -1338,7 +1436,9 @@ classes:
         description: 'Heavy metals present in the sample and the concentration of the
           metal. For multiple heavy metals and concentrations, separate them by `|`.
           (Example: mercury,0.09 micrograms per gram|lead,0.05 micrograms per gram'
-      lat_lon:
+      latitude:
+        required: true
+      longitude:
         required: true
       microbial_biomass:
         description: 'The part of the organic matter in the soil that constitutes living
@@ -1390,8 +1490,8 @@ classes:
       - sample_processing
       - samp_store_temp
       - sampled_during
-      - source_mat_ID
-      - storage_condt
+      - source_mat_id
+      - storage_condition
       - storage_condition_other
       - synth_instrument
       - synth_process
@@ -1420,6 +1520,9 @@ classes:
       - chem_administration
       - cult_root_med
       - encoded_traits
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - external_identifiers
       - gaseous_environment
       - genetic_mod
@@ -1467,11 +1570,11 @@ classes:
       - sample_link
       - sample_name
       - sample_processing
-      - samp_biotic_relationship
+      - biotic_relationship
       - samp_store_temp
       - sampled_during
-      - source_mat_ID
-      - storage_condt
+      - source_mat_id
+      - storage_condition
       - storage_condition_other
       - synth_env_assembly
       - synth_env_design
@@ -1544,6 +1647,9 @@ classes:
       - diss_org_nitro
       - diss_oxygen
       - down_par
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
       - experimental_factor
       - experimental_factor_other
       - external_identifiers
@@ -1553,7 +1659,8 @@ classes:
       - gaseous_environment
       - glucosidase_act
       - isotope_exposure
-      - lat_lon
+      - latitude
+      - longitude
       - light_intensity
       - magnesium
       - mean_frict_vel
@@ -1601,9 +1708,9 @@ classes:
       - size_frac_up
       - sodium
       - soluble_react_phosp
-      - source_mat_ID
+      - source_mat_id
       - start_date_inc
-      - storage_condt
+      - storage_condition
       - storage_condition_other
       - sulfate
       - sulfide
@@ -1629,7 +1736,9 @@ classes:
         required: true
       filter_method:
         required: true
-      lat_lon:
+      latitude:
+        required: true
+      longitude:
         required: true
       non_microb_biomass:
         description: 'Amount of non-microbial biomass measured. Include the name for
@@ -1698,12 +1807,14 @@ classes:
     slots:
       - name #will be inherited when Activity class is made
       - description
-      - project #do we need this here? where do we make the campaign, project, pi, etc associations?
+      - project
       - emsl_activity
       - collection_date
       - shipped_sample_size
       - sampled_at_site
-    todos: is this for individual samples or can it be the activity of collecting multiple samples from one site? would need to change shipped_sample_size and storage_condt if so.
+    todos:
+      - is this for individual samples or can it be the activity of collecting multiple samples from one site? would need to change shipped_sample_size and storage_condt if so.
+      - does project number go here? how do we connect Sample/SamplingActivity to a project/Study?
 
   AerosolArmSamplingActivity:
     attributes:
