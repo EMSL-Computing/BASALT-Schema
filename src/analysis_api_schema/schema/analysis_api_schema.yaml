@@ -150,6 +150,9 @@ classes:
 
   SitePhoto:
     is_a: DataProduct
+    description: |-
+      A data product representing a photo of a site, typically taken during sampling.
+      One row per photo with metadata about the photo type and when it was taken.
     attributes:
       site_photo_type:
         range: SitePhotoCategoryEnum
@@ -158,8 +161,11 @@ classes:
 
   DataGenerationActivity:
     abstract: true
+    description: |-
+      Abstract base for any data generation activity (physical to digital). Input data should 
+      be specified on workflow subclasses.
     slots:
-      - sequence_order   # [ADDED] integer ordering within a temporal series
+      - sequence_order   
       - name
       - description
       - protocol_url
@@ -195,7 +201,7 @@ classes:
   DataProcessingActivity:
     abstract: true
     description: |-
-      Abstract base for any data processing activity. Input data should 
+      Abstract base for any data processing activity (digital to digital). Input data should 
       be specified on workflow subclasses.
     slots:
       - parent_workflow_id  # [ADDED] self-referential chain link
@@ -360,6 +366,8 @@ classes:
         required: true
 
   LabDevice:
+    description: |-
+      A lab device is a physical instrument or equipment used in a laboratory setting for conducting experiments, measurements, or analyses. It can include various types of instruments such as microscopes, spectrometers, centrifuges, and other specialized equipment. Lab devices are essential for performing scientific research and obtaining accurate data.
     attributes:
       id:
         identifier: true
@@ -375,6 +383,9 @@ classes:
 
   SampleProcessing:
     abstract: true
+    description: |-
+      Abstract base for any sample processing activity (physical to physical). Input data should 
+      be specified on workflow subclasses.
     slots:
       - protocol_url
       - protocol_version
@@ -395,6 +406,10 @@ classes:
       - why does this have both analysis type and method name, as enums, just set the range to the class
 
   ProcessingSampleLink:
+    description: |-
+      A link between a processed sample and the sample processing activity that produced it.
+      This class captures the relationship between a processed sample and the sample processing
+      activity that generated it, including the step number and role of the sample in the process.
     attributes:
       id:
         identifier: true
@@ -420,6 +435,10 @@ classes:
           - role
 
   InstrumentCustodian:
+    description: |-
+      A link between an instrument and a custodian (person) responsible for it.
+      This class captures the relationship between an instrument and the person
+      who is responsible for its maintenance, calibration, and proper use.
     attributes:
       instrument_id:
         range: Instrument
@@ -430,6 +449,10 @@ classes:
 
 
   WorkflowExecutionFunctionalAnnotation:
+    description: |-
+      A link between a workflow execution and a functional annotation identifier.
+      This class captures the relationship between a workflow execution and the
+      functional annotation identifier that was used in the analysis.
     attributes:
       workflow_id:
         range: DataProcessingActivity

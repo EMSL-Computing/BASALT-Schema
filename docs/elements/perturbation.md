@@ -24,8 +24,8 @@ Alias: perturbation
 | --- | --- | --- |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 

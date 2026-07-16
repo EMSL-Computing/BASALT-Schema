@@ -25,8 +25,8 @@ Alias: water_content
 | [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 
 

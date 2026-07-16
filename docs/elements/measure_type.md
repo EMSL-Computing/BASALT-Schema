@@ -22,23 +22,23 @@ Alias: measure_type
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [HydraulicPropertiesProduct](HydraulicPropertiesProduct.md) | Soil hydraulic parameters derived from HYPROP evaporation-experiment data |  no  |
-| [EnzymeProduct](EnzymeProduct.md) |  |  no  |
-| [TextureProduct](TextureProduct.md) |  |  no  |
-| [PHProduct](PHProduct.md) |  |  no  |
-| [XRDPhaseProduct](XRDPhaseProduct.md) | X-ray Diffraction (XRD) mineral phase identification and quantification data |  no  |
-| [XRFElementalProduct](XRFElementalProduct.md) | X-ray Fluorescence (XRF) elemental concentration data |  no  |
+| [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) |  |  no  |
 | [MicrobialBiomassProduct](MicrobialBiomassProduct.md) |  |  no  |
 | [TomographyProduct](TomographyProduct.md) |  |  no  |
-| [BulkDensityProduct](BulkDensityProduct.md) |  |  no  |
-| [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) |  |  no  |
-| [WEOMProduct](WEOMProduct.md) |  |  no  |
+| [HydraulicPropertiesProduct](HydraulicPropertiesProduct.md) | Soil hydraulic parameters derived from HYPROP evaporation-experiment data |  no  |
+| [XRFElementalProduct](XRFElementalProduct.md) | X-ray Fluorescence (XRF) elemental concentration data |  no  |
 | [ElementalAnalysisProduct](ElementalAnalysisProduct.md) |  |  no  |
-| [GWCMoistureProduct](GWCMoistureProduct.md) |  |  no  |
-| [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) |  |  no  |
-| [RespirationProduct](RespirationProduct.md) |  |  no  |
+| [EnzymeProduct](EnzymeProduct.md) |  |  no  |
+| [XRDPhaseProduct](XRDPhaseProduct.md) | X-ray Diffraction (XRD) mineral phase identification and quantification data |  no  |
 | [MAOMProduct](MAOMProduct.md) |  |  no  |
+| [WEOMProduct](WEOMProduct.md) |  |  no  |
+| [PHProduct](PHProduct.md) |  |  no  |
+| [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) |  |  no  |
+| [TextureProduct](TextureProduct.md) |  |  no  |
+| [RespirationProduct](RespirationProduct.md) |  |  no  |
 | [IonsAnalysisProduct](IonsAnalysisProduct.md) |  |  no  |
+| [GWCMoistureProduct](GWCMoistureProduct.md) |  |  no  |
+| [BulkDensityProduct](BulkDensityProduct.md) |  |  no  |
 
 
 

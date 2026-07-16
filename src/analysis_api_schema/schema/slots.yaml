@@ -156,6 +156,7 @@ slots:
     title: antibiotic regimen
 
   aq:
+    description: acquisition number
     range: double
     todos: what is this supposed to mean
 

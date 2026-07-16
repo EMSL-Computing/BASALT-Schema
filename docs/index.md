@@ -1,13 +1,13 @@
 # About
 # NAME PLACEHOLDER Schema
 
-**NAME PLACEHOLDER schema** is a comprehensive, schema for representing multimodal environmental and microbiological analysis data, from soil characterization to microbial culture workflows. It supports diverse experimental techniques including mass spectrometry, metagenomics sequencing, X-ray fluorescence/diffraction, and 96-well plate-based growth assays (AMP2/Ecoplate). It is in active and ongoing development to support data generating activities at the [Environmental Molecular Sciences Laboratory](https://www.emsl.pnnl.gov/) (EMSL).
+**NAME PLACEHOLDER schema** is a comprehensive schema for representing multimodal environmental and microbiological analysis data, including soil characterization and high-throughput microbial culture workflows. It supports diverse experimental techniques including mass spectrometry, metagenomics sequencing, X-ray fluorescence/diffraction, and 96-well plate-based growth assays. It is a production model in ongoing development to support the open, user-driven science the [Environmental Molecular Sciences Laboratory](https://www.emsl.pnnl.gov/) (EMSL).
 
 **NOTE:** This schema is under active development and integrates metadata standards from multiple collaborating institutions (EMSL, GLBRC, NMDC, and more). Some areas are marked with TODOs for future refinement.
 
 ## Schema Organization
 
-The schema follows a **relational design** with flat entity collections, explicit association tables for many-to-many relationships, and a pre-computed linkage cache for efficient provenance traversal. This maps cleanly to SQL databases while supporting flexible data reuse across studies and proposals.
+The schema follows a **relational design** with flat entity collections, explicit association tables for many-to-many relationships, and a pre-computed linkage cache for efficient provenance traversal. This supports flexible data reuse across studies and proposals.
 
 The top-level entity is a **Study** (or Proposal), which serves as a container for related research. A study might represent all data from a specific EMSL proposal, user project, or collaborative investigation.
 
@@ -70,6 +70,7 @@ All entities are stored in flat collections linked to studies:
 ### Data Products
 
 **Processed Data**: Abstract base for all analytical results, with concrete subclasses by technique:
+
  - *Mass Spectrometry Products*: Molecular identification tables, MS images, metaproteomics results
 
  - *Metagenomics Products*: Annotation, binning, and gene phylogeny outputs 

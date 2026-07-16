@@ -22,8 +22,8 @@ Alias: duration_min
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MobilePhaseSegment](MobilePhaseSegment.md) | A segment of the mobile phase used in chromatography during mass spectrometry |  no  |
 | [ChromatographyConfiguration](ChromatographyConfiguration.md) | Configuration and settings for a chromatography run |  no  |
+| [MobilePhaseSegment](MobilePhaseSegment.md) | A segment of the mobile phase used in chromatography during mass spectrometry |  no  |
 
 
 

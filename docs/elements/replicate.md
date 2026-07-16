@@ -22,12 +22,12 @@ Alias: replicate
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [CoreSection](CoreSection.md) | A section of a core sample (TOP, MID, BTM) |  no  |
-| [MicrobialBiomassProduct](MicrobialBiomassProduct.md) |  |  no  |
 | [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) |  |  no  |
+| [MicrobialBiomassProduct](MicrobialBiomassProduct.md) |  |  no  |
+| [CoreSection](CoreSection.md) | A section of a core sample (TOP, MID, BTM) |  no  |
+| [MAOMProduct](MAOMProduct.md) |  |  no  |
 | [WEOMProduct](WEOMProduct.md) |  |  no  |
 | [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) |  |  no  |
-| [MAOMProduct](MAOMProduct.md) |  |  no  |
 | [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  yes  |
 
 

@@ -16,6 +16,8 @@ imports:
 
 classes:
   TimestampValue:
+    description: |-
+      A timestamp value with optional description. No pattern at present,
     slots:
       - description
     attributes:
@@ -28,6 +30,8 @@ classes:
         range: string
 
   TextValue:
+    description: |-
+      A text value with optional description and language.
     slots:
       - description
     attributes:

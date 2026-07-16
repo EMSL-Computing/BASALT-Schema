@@ -22,14 +22,14 @@ Alias: non_microb_biomass
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  yes  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  yes  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  yes  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  yes  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  yes  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  yes  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
 
 
 

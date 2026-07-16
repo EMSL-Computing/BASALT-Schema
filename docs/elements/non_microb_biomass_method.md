@@ -22,13 +22,13 @@ Alias: non_microb_biomass_method
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 
 
 

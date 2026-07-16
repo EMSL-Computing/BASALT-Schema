@@ -18,14 +18,14 @@ Alias: flag
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [HydraulicPropertiesProduct](HydraulicPropertiesProduct.md) | Soil hydraulic parameters derived from HYPROP evaporation-experiment data |  no  |
-| [EnzymeProduct](EnzymeProduct.md) |  |  no  |
-| [TextureProduct](TextureProduct.md) |  |  no  |
-| [PHProduct](PHProduct.md) |  |  no  |
-| [BulkDensityProduct](BulkDensityProduct.md) |  |  no  |
 | [WellReading](WellReading.md) | Per-well measurement data |  no  |
+| [EnzymeProduct](EnzymeProduct.md) |  |  no  |
+| [PHProduct](PHProduct.md) |  |  no  |
 | [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) |  |  no  |
-| [GWCMoistureProduct](GWCMoistureProduct.md) |  |  no  |
+| [TextureProduct](TextureProduct.md) |  |  no  |
 | [RespirationProduct](RespirationProduct.md) |  |  no  |
+| [GWCMoistureProduct](GWCMoistureProduct.md) |  |  no  |
+| [BulkDensityProduct](BulkDensityProduct.md) |  |  no  |
 
 
 

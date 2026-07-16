@@ -22,10 +22,10 @@ Alias: salinity_method
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 
 

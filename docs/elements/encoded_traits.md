@@ -24,13 +24,13 @@ Alias: encoded_traits
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
+| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 
 
 
