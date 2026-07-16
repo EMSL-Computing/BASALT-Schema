@@ -22,7 +22,7 @@ Alias: title
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Study](Study.md) |  |  no  |
+| [Study](Study.md) | A study or research project, typically associated with a proposal and a set o... |  no  |
 
 
 

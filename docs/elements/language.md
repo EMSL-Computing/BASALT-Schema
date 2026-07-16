@@ -17,7 +17,7 @@ Alias: language
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TextValue](TextValue.md) |  |  no  |
+| [TextValue](TextValue.md) | A text value with optional description and language |  no  |
 
 
 

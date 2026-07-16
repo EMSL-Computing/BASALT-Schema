@@ -22,7 +22,7 @@ Alias: respiration_co2_c_ug_per_g
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [RespirationProduct](RespirationProduct.md) |  |  no  |
+| [RespirationProduct](RespirationProduct.md) | Soil respiration analysis product |  no  |
 
 
 

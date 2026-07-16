@@ -17,7 +17,7 @@ Alias: flag_total_nitrogen
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ElementalAnalysisProduct](ElementalAnalysisProduct.md) |  |  no  |
+| [ElementalAnalysisProduct](ElementalAnalysisProduct.md) | Elemental analysis product, typically derived via combustion or similar instr... |  no  |
 
 
 

@@ -17,7 +17,7 @@ Alias: phosphorus_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) |  |  no  |
+| [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) | Phosphorus analysis product, typically derived via colorimetric assay of soil... |  no  |
 
 
 

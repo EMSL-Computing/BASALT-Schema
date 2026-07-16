@@ -17,8 +17,8 @@ Alias: detector
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |  no  |
 | [TOCTNMethod](TOCTNMethod.md) |  |  no  |
+| [MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |  no  |
 
 
 

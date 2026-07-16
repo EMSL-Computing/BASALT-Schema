@@ -3,6 +3,15 @@
 # Class: ElementalAnalysisProduct 
 
 
+_Elemental analysis product, typically derived via combustion or similar instrument._
+
+_One row per sample with columns for total carbon, total nitrogen, total Kjeldahl nitrogen, and total sulfur._
+
+_Individual QC flags for each measurement using ProcessedDataFlag enum._
+
+
+
+
 
 URI: [analysis_api_schema:ElementalAnalysisProduct](https://w3id.org/MONet/analysis-api-schema/ElementalAnalysisProduct)
 
@@ -255,6 +264,13 @@ URI: [analysis_api_schema:ElementalAnalysisProduct](https://w3id.org/MONet/analy
 <details>
 ```yaml
 name: ElementalAnalysisProduct
+description: 'Elemental analysis product, typically derived via combustion or similar
+  instrument.
+
+  One row per sample with columns for total carbon, total nitrogen, total Kjeldahl
+  nitrogen, and total sulfur.
+
+  Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 slots:
@@ -327,6 +343,13 @@ attributes:
 <details>
 ```yaml
 name: ElementalAnalysisProduct
+description: 'Elemental analysis product, typically derived via combustion or similar
+  instrument.
+
+  One row per sample with columns for total carbon, total nitrogen, total Kjeldahl
+  nitrogen, and total sulfur.
+
+  Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 attributes:

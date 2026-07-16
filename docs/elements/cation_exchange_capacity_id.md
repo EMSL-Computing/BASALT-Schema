@@ -17,7 +17,7 @@ Alias: cation_exchange_capacity_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [IonsAnalysisProduct](IonsAnalysisProduct.md) |  |  no  |
+| [IonsAnalysisProduct](IonsAnalysisProduct.md) | Ions analysis product, typically derived via ICP-OES or similar instrument |  no  |
 
 
 

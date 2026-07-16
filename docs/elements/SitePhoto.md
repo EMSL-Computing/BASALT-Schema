@@ -3,6 +3,13 @@
 # Class: SitePhoto 
 
 
+_A data product representing a photo of a site, typically taken during sampling._
+
+_One row per photo with metadata about the photo type and when it was taken._
+
+
+
+
 
 URI: [analysis_api_schema:SitePhoto](https://w3id.org/MONet/analysis-api-schema/SitePhoto)
 
@@ -152,6 +159,10 @@ URI: [analysis_api_schema:SitePhoto](https://w3id.org/MONet/analysis-api-schema/
 <details>
 ```yaml
 name: SitePhoto
+description: 'A data product representing a photo of a site, typically taken during
+  sampling.
+
+  One row per photo with metadata about the photo type and when it was taken.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: DataProduct
 attributes:
@@ -178,6 +189,10 @@ attributes:
 <details>
 ```yaml
 name: SitePhoto
+description: 'A data product representing a photo of a site, typically taken during
+  sampling.
+
+  One row per photo with metadata about the photo type and when it was taken.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: DataProduct
 attributes:

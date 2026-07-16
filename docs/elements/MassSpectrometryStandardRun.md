@@ -3,6 +3,11 @@
 # Class: MassSpectrometryStandardRun 
 
 
+_A record of a mass spectrometry standard run with a batch of samples, which is used for calibration and quality control._
+
+
+
+
 
 URI: [analysis_api_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/analysis-api-schema/MassSpectrometryStandardRun)
 
@@ -131,6 +136,8 @@ URI: [analysis_api_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/an
 <details>
 ```yaml
 name: MassSpectrometryStandardRun
+description: A record of a mass spectrometry standard run with a batch of samples,
+  which is used for calibration and quality control.
 from_schema: https://w3id.org/MONet/analysis-api-schema
 slots:
 - name
@@ -227,6 +234,8 @@ attributes:
 <details>
 ```yaml
 name: MassSpectrometryStandardRun
+description: A record of a mass spectrometry standard run with a batch of samples,
+  which is used for calibration and quality control.
 from_schema: https://w3id.org/MONet/analysis-api-schema
 attributes:
   id:

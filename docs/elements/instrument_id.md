@@ -18,7 +18,7 @@ Alias: instrument_id
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [InstrumentAlternativeIdentifier](InstrumentAlternativeIdentifier.md) |  |  no  |
-| [InstrumentCustodian](InstrumentCustodian.md) |  |  no  |
+| [InstrumentCustodian](InstrumentCustodian.md) | A link between an instrument and a custodian (person) responsible for it |  no  |
 
 
 

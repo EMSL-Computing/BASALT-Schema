@@ -3304,6 +3304,7 @@ slots:
   aq:
     name: aq
     definition_uri: https://w3id.org/MONet/analysis-api-schema/aq
+    description: acquisition number
     todos:
     - what is this supposed to mean
     from_schema: https://w3id.org/MONet/analysis-api-schema/slots
@@ -16794,6 +16795,10 @@ classes:
   SitePhoto:
     name: SitePhoto
     definition_uri: https://w3id.org/MONet/analysis-api-schema/SitePhoto
+    description: 'A data product representing a photo of a site, typically taken during
+      sampling.
+
+      One row per photo with metadata about the photo type and when it was taken.'
     from_schema: https://w3id.org/MONet/analysis-api-schema
     is_a: DataProduct
     slots:
@@ -16822,6 +16827,8 @@ classes:
   DataGenerationActivity:
     name: DataGenerationActivity
     definition_uri: https://w3id.org/MONet/analysis-api-schema/DataGenerationActivity
+    description: "Abstract base for any data generation activity (physical to digital).\
+      \ Input data should \nbe specified on workflow subclasses."
     from_schema: https://w3id.org/MONet/analysis-api-schema
     abstract: true
     slots:
@@ -16889,8 +16896,8 @@ classes:
   DataProcessingActivity:
     name: DataProcessingActivity
     definition_uri: https://w3id.org/MONet/analysis-api-schema/DataProcessingActivity
-    description: "Abstract base for any data processing activity. Input data should\
-      \ \nbe specified on workflow subclasses."
+    description: "Abstract base for any data processing activity (digital to digital).\
+      \ Input data should \nbe specified on workflow subclasses."
     from_schema: https://w3id.org/MONet/analysis-api-schema
     abstract: true
     slots:
@@ -17182,6 +17189,11 @@ classes:
   LabDevice:
     name: LabDevice
     definition_uri: https://w3id.org/MONet/analysis-api-schema/LabDevice
+    description: A lab device is a physical instrument or equipment used in a laboratory
+      setting for conducting experiments, measurements, or analyses. It can include
+      various types of instruments such as microscopes, spectrometers, centrifuges,
+      and other specialized equipment. Lab devices are essential for performing scientific
+      research and obtaining accurate data.
     from_schema: https://w3id.org/MONet/analysis-api-schema
     slots:
     - labDevice__id
@@ -17210,6 +17222,8 @@ classes:
   SampleProcessing:
     name: SampleProcessing
     definition_uri: https://w3id.org/MONet/analysis-api-schema/SampleProcessing
+    description: "Abstract base for any sample processing activity (physical to physical).\
+      \ Input data should \nbe specified on workflow subclasses."
     todos:
     - why does this have both analysis type and method name, as enums, just set the
       range to the class
@@ -17245,6 +17259,14 @@ classes:
   ProcessingSampleLink:
     name: ProcessingSampleLink
     definition_uri: https://w3id.org/MONet/analysis-api-schema/ProcessingSampleLink
+    description: 'A link between a processed sample and the sample processing activity
+      that produced it.
+
+      This class captures the relationship between a processed sample and the sample
+      processing
+
+      activity that generated it, including the step number and role of the sample
+      in the process.'
     from_schema: https://w3id.org/MONet/analysis-api-schema
     slots:
     - processingSampleLink__id
@@ -17285,6 +17307,12 @@ classes:
   InstrumentCustodian:
     name: InstrumentCustodian
     definition_uri: https://w3id.org/MONet/analysis-api-schema/InstrumentCustodian
+    description: 'A link between an instrument and a custodian (person) responsible
+      for it.
+
+      This class captures the relationship between an instrument and the person
+
+      who is responsible for its maintenance, calibration, and proper use.'
     from_schema: https://w3id.org/MONet/analysis-api-schema
     slots:
     - instrumentCustodian__instrument_id
@@ -17302,6 +17330,12 @@ classes:
   WorkflowExecutionFunctionalAnnotation:
     name: WorkflowExecutionFunctionalAnnotation
     definition_uri: https://w3id.org/MONet/analysis-api-schema/WorkflowExecutionFunctionalAnnotation
+    description: 'A link between a workflow execution and a functional annotation
+      identifier.
+
+      This class captures the relationship between a workflow execution and the
+
+      functional annotation identifier that was used in the analysis.'
     from_schema: https://w3id.org/MONet/analysis-api-schema
     slots:
     - workflowExecutionFunctionalAnnotation__workflow_id
@@ -17698,6 +17732,8 @@ classes:
   MassSpectrometryStandardRun:
     name: MassSpectrometryStandardRun
     definition_uri: https://w3id.org/MONet/analysis-api-schema/MassSpectrometryStandardRun
+    description: A record of a mass spectrometry standard run with a batch of samples,
+      which is used for calibration and quality control.
     from_schema: https://w3id.org/MONet/analysis-api-schema/mass-spec
     slots:
     - name
@@ -18090,14 +18126,7 @@ classes:
     definition_uri: https://w3id.org/MONet/analysis-api-schema/PlateDataGenerationActivity
     description: 'Abstract base for plate measurement activities.
 
-      Adds timepoint_label for repeated-measurement series (per core-planB
-
-      decision to put timepoint_label on concrete subclasses, not on base
-
-      DataGenerationActivity).
-
-
-      v1 origin: plate-general.yaml PlateDataGenerationActivity'
+      Adds timepoint_label for repeated-measurement series '
     todos:
     - measurement_time stamp
     from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
@@ -18360,16 +18389,10 @@ classes:
   WellReading:
     name: WellReading
     definition_uri: https://w3id.org/MONet/analysis-api-schema/WellReading
-    description: 'Per-well measurement data.
+    description: 'Per-well measurement data. NOT a standalone database table; embedded
+      structured entries under
 
-      NOT a standalone database table; embedded structured entries under
-
-      PlateProduct.well_readings.
-
-      Lightweight summary for queries; raw data in MinIO.
-
-
-      v1 origin: plate-general.yaml WellReading'
+      PlateProduct.well_readings.'
     todos:
     - add optical_density_method here to flag what value means if we have multiple
       OD methods (e.g. OD600 vs OD750)
@@ -18848,6 +18871,10 @@ classes:
   BulkDensityProduct:
     name: BulkDensityProduct
     definition_uri: https://w3id.org/MONet/analysis-api-schema/BulkDensityProduct
+    description: 'Bulk density analysis product, typically derived via oven-drying
+      and weighing of a known volume of soil.
+
+      One row per sample with columns for bulk density and QC flag.'
     from_schema: https://w3id.org/MONet/analysis-api-schema/products
     is_a: ProcessedData
     slots:
@@ -18880,6 +18907,13 @@ classes:
   ElementalAnalysisProduct:
     name: ElementalAnalysisProduct
     definition_uri: https://w3id.org/MONet/analysis-api-schema/ElementalAnalysisProduct
+    description: 'Elemental analysis product, typically derived via combustion or
+      similar instrument.
+
+      One row per sample with columns for total carbon, total nitrogen, total Kjeldahl
+      nitrogen, and total sulfur.
+
+      Individual QC flags for each measurement using ProcessedDataFlag enum.'
     from_schema: https://w3id.org/MONet/analysis-api-schema/products
     is_a: ProcessedData
     slots:
@@ -18936,6 +18970,10 @@ classes:
   EnzymeProduct:
     name: EnzymeProduct
     definition_uri: https://w3id.org/MONet/analysis-api-schema/EnzymeProduct
+    description: 'Enzyme activity analysis product, typically derived via colorimetric
+      assay of soil extracts.
+
+      One row per sample with columns for beta-glucosidase activity and QC flag.'
     from_schema: https://w3id.org/MONet/analysis-api-schema/products
     is_a: ProcessedData
     slots:
@@ -18968,6 +19006,10 @@ classes:
   GWCMoistureProduct:
     name: GWCMoistureProduct
     definition_uri: https://w3id.org/MONet/analysis-api-schema/GWCMoistureProduct
+    description: 'Gravimetric water content (GWC) analysis product, typically derived
+      via oven-drying and weighing of a known mass of soil.
+
+      One row per sample with columns for GWC and QC flag.'
     from_schema: https://w3id.org/MONet/analysis-api-schema/products
     is_a: ProcessedData
     slots:
@@ -19056,6 +19098,12 @@ classes:
   IonsAnalysisProduct:
     name: IonsAnalysisProduct
     definition_uri: https://w3id.org/MONet/analysis-api-schema/IonsAnalysisProduct
+    description: 'Ions analysis product, typically derived via ICP-OES or similar
+      instrument.
+
+      One row per sample with columns for each ion measured.
+
+      Individual QC flags for each ion using ProcessedDataFlag enum.'
     from_schema: https://w3id.org/MONet/analysis-api-schema/products
     is_a: ProcessedData
     slots:
@@ -19176,6 +19224,13 @@ classes:
   MAOMProduct:
     name: MAOMProduct
     definition_uri: https://w3id.org/MONet/analysis-api-schema/MAOMProduct
+    description: 'Mineral-Associated Organic Matter (MAOM) analysis product, typically
+      derived via HCl extraction and TOC/TN measurement.
+
+      One row per sample with columns for total organic carbon and total nitrogen.
+
+      Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE
+      RENAMED TO HClExtOMProduct'
     from_schema: https://w3id.org/MONet/analysis-api-schema/products
     slots:
     - measure_type
@@ -19222,6 +19277,12 @@ classes:
   MicrobialBiomassProduct:
     name: MicrobialBiomassProduct
     definition_uri: https://w3id.org/MONet/analysis-api-schema/MicrobialBiomassProduct
+    description: 'Microbial biomass analysis product, typically derived via chloroform
+      fumigation-extraction (CFE) or similar instrument.
+
+      One row per sample with columns for microbial biomass carbon and nitrogen.
+
+      Individual QC flags for each measurement using ProcessedDataFlag enum.'
     from_schema: https://w3id.org/MONet/analysis-api-schema/products
     is_a: ProcessedData
     slots:
@@ -19279,6 +19340,12 @@ classes:
   NitrogenAnalysisProduct:
     name: NitrogenAnalysisProduct
     definition_uri: https://w3id.org/MONet/analysis-api-schema/NitrogenAnalysisProduct
+    description: 'Nitrogen analysis product, typically derived via colorimetric assay
+      of soil extracts.
+
+      One row per sample with columns for nitrate and ammonium concentrations.
+
+      Individual QC flags for each measurement using ProcessedDataFlag enum.'
     from_schema: https://w3id.org/MONet/analysis-api-schema/products
     is_a: ProcessedData
     slots:
@@ -19336,6 +19403,12 @@ classes:
   PhosphorusAnalysisProduct:
     name: PhosphorusAnalysisProduct
     definition_uri: https://w3id.org/MONet/analysis-api-schema/PhosphorusAnalysisProduct
+    description: 'Phosphorus analysis product, typically derived via colorimetric
+      assay of soil extracts.
+
+      One row per sample with columns for phosphorus concentration.
+
+      Individual QC flags for each measurement using ProcessedDataFlag enum.'
     from_schema: https://w3id.org/MONet/analysis-api-schema/products
     is_a: ProcessedData
     slots:
@@ -19381,6 +19454,9 @@ classes:
   RespirationProduct:
     name: RespirationProduct
     definition_uri: https://w3id.org/MONet/analysis-api-schema/RespirationProduct
+    description: 'Soil respiration analysis product.
+
+      One row per sample with columns for soil respiration and QC flag.'
     from_schema: https://w3id.org/MONet/analysis-api-schema/products
     is_a: ProcessedData
     slots:
@@ -19414,6 +19490,12 @@ classes:
   TextureProduct:
     name: TextureProduct
     definition_uri: https://w3id.org/MONet/analysis-api-schema/TextureProduct
+    description: 'Soil texture analysis product, typically derived via hydrometer
+      or similar instrument.
+
+      One row per sample with columns for sand, silt, and clay percentages.
+
+      Individual QC flags for each measurement using ProcessedDataFlag enum.'
     from_schema: https://w3id.org/MONet/analysis-api-schema/products
     is_a: ProcessedData
     slots:
@@ -19454,6 +19536,10 @@ classes:
   TomographyProduct:
     name: TomographyProduct
     definition_uri: https://w3id.org/MONet/analysis-api-schema/TomographyProduct
+    description: 'Soil tomography analysis product, typically derived via X-ray computed
+      tomography (XCT) or similar instrument.
+
+      One row per sample with columns for pore structure metrics and QC flag.'
     from_schema: https://w3id.org/MONet/analysis-api-schema/products
     is_a: ProcessedData
     slots:
@@ -19558,6 +19644,12 @@ classes:
   WEOMProduct:
     name: WEOMProduct
     definition_uri: https://w3id.org/MONet/analysis-api-schema/WEOMProduct
+    description: 'Water Extractable Organic Matter (WEOM) analysis product, typically
+      derived via Shimadzu TOC-L or similar instrument.
+
+      One row per sample with columns for total organic carbon and total nitrogen.
+
+      Individual QC flags for each measurement using ProcessedDataFlag enum.'
     from_schema: https://w3id.org/MONet/analysis-api-schema/products
     slots:
     - measure_type
@@ -19604,6 +19696,10 @@ classes:
   pHProduct:
     name: pHProduct
     definition_uri: https://w3id.org/MONet/analysis-api-schema/PHProduct
+    description: 'Soil pH analysis product, typically derived via pH meter or similar
+      instrument.
+
+      One row per sample with columns for pH and QC flag.'
     from_schema: https://w3id.org/MONet/analysis-api-schema/products
     is_a: ProcessedData
     slots:
@@ -22704,6 +22800,13 @@ classes:
   Study:
     name: Study
     definition_uri: https://w3id.org/MONet/analysis-api-schema/Study
+    description: 'A study or research project, typically associated with a proposal
+      and a set of experiments.
+
+      A study may have multiple participants, each with different roles, and may be
+      associated with
+
+      one or more campaigns. The study may also have associated DOIs and funding sources.'
     from_schema: https://w3id.org/MONet/analysis-api-schema/study
     slots:
     - Study_external_identifiers
@@ -22836,6 +22939,7 @@ classes:
   TimestampValue:
     name: TimestampValue
     definition_uri: https://w3id.org/MONet/analysis-api-schema/TimestampValue
+    description: A timestamp value with optional description. No pattern at present,
     from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
     slots:
     - description
@@ -22857,6 +22961,7 @@ classes:
   TextValue:
     name: TextValue
     definition_uri: https://w3id.org/MONet/analysis-api-schema/TextValue
+    description: A text value with optional description and language.
     from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
     slots:
     - description
@@ -23042,6 +23147,8 @@ classes:
   zipDownload:
     name: zipDownload
     definition_uri: https://w3id.org/MONet/analysis-api-schema/ZipDownload
+    description: A zip download record, capturing the details of a zip file download
+      event.
     from_schema: https://w3id.org/MONet/analysis-api-schema/zip_download
     slots:
     - zipDownload__id
@@ -23072,7 +23179,7 @@ classes:
     class_uri: analysis_api_schema:ZipDownload
 metamodel_version: 1.7.0
 source_file: analysis_api_schema.yaml
-source_file_date: '2026-07-14T16:13:22'
-source_file_size: 15003
-generation_date: '2026-07-16T08:40:51'
+source_file_date: '2026-07-16T09:07:36'
+source_file_size: 16672
+generation_date: '2026-07-16T09:12:23'
 

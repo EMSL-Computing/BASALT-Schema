@@ -17,7 +17,7 @@ Alias: total_carbon_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ElementalAnalysisProduct](ElementalAnalysisProduct.md) |  |  no  |
+| [ElementalAnalysisProduct](ElementalAnalysisProduct.md) | Elemental analysis product, typically derived via combustion or similar instr... |  no  |
 
 
 

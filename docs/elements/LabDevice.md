@@ -3,6 +3,11 @@
 # Class: LabDevice 
 
 
+_A lab device is a physical instrument or equipment used in a laboratory setting for conducting experiments, measurements, or analyses. It can include various types of instruments such as microscopes, spectrometers, centrifuges, and other specialized equipment. Lab devices are essential for performing scientific research and obtaining accurate data._
+
+
+
+
 
 URI: [analysis_api_schema:LabDevice](https://w3id.org/MONet/analysis-api-schema/LabDevice)
 
@@ -118,6 +123,11 @@ URI: [analysis_api_schema:LabDevice](https://w3id.org/MONet/analysis-api-schema/
 <details>
 ```yaml
 name: LabDevice
+description: A lab device is a physical instrument or equipment used in a laboratory
+  setting for conducting experiments, measurements, or analyses. It can include various
+  types of instruments such as microscopes, spectrometers, centrifuges, and other
+  specialized equipment. Lab devices are essential for performing scientific research
+  and obtaining accurate data.
 from_schema: https://w3id.org/MONet/analysis-api-schema
 attributes:
   id:
@@ -256,6 +266,11 @@ attributes:
 <details>
 ```yaml
 name: LabDevice
+description: A lab device is a physical instrument or equipment used in a laboratory
+  setting for conducting experiments, measurements, or analyses. It can include various
+  types of instruments such as microscopes, spectrometers, centrifuges, and other
+  specialized equipment. Lab devices are essential for performing scientific research
+  and obtaining accurate data.
 from_schema: https://w3id.org/MONet/analysis-api-schema
 attributes:
   id:

@@ -3,6 +3,15 @@
 # Class: ProcessingSampleLink 
 
 
+_A link between a processed sample and the sample processing activity that produced it._
+
+_This class captures the relationship between a processed sample and the sample processing_
+
+_activity that generated it, including the step number and role of the sample in the process._
+
+
+
+
 
 URI: [analysis_api_schema:ProcessingSampleLink](https://w3id.org/MONet/analysis-api-schema/ProcessingSampleLink)
 
@@ -126,6 +135,13 @@ URI: [analysis_api_schema:ProcessingSampleLink](https://w3id.org/MONet/analysis-
 <details>
 ```yaml
 name: ProcessingSampleLink
+description: 'A link between a processed sample and the sample processing activity
+  that produced it.
+
+  This class captures the relationship between a processed sample and the sample processing
+
+  activity that generated it, including the step number and role of the sample in
+  the process.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 attributes:
   id:
@@ -256,6 +272,13 @@ unique_keys:
 <details>
 ```yaml
 name: ProcessingSampleLink
+description: 'A link between a processed sample and the sample processing activity
+  that produced it.
+
+  This class captures the relationship between a processed sample and the sample processing
+
+  activity that generated it, including the step number and role of the sample in
+  the process.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 attributes:
   id:

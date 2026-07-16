@@ -17,7 +17,7 @@ Alias: voxel_size
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TomographyProduct](TomographyProduct.md) |  |  no  |
+| [TomographyProduct](TomographyProduct.md) | Soil tomography analysis product, typically derived via X-ray computed tomogr... |  no  |
 
 
 

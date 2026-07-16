@@ -3,6 +3,15 @@
 # Class: NitrogenAnalysisProduct 
 
 
+_Nitrogen analysis product, typically derived via colorimetric assay of soil extracts._
+
+_One row per sample with columns for nitrate and ammonium concentrations._
+
+_Individual QC flags for each measurement using ProcessedDataFlag enum._
+
+
+
+
 
 URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analysis-api-schema/NitrogenAnalysisProduct)
 
@@ -240,6 +249,12 @@ URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analys
 <details>
 ```yaml
 name: NitrogenAnalysisProduct
+description: 'Nitrogen analysis product, typically derived via colorimetric assay
+  of soil extracts.
+
+  One row per sample with columns for nitrate and ammonium concentrations.
+
+  Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 slots:
@@ -311,6 +326,12 @@ attributes:
 <details>
 ```yaml
 name: NitrogenAnalysisProduct
+description: 'Nitrogen analysis product, typically derived via colorimetric assay
+  of soil extracts.
+
+  One row per sample with columns for nitrate and ammonium concentrations.
+
+  Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 attributes:

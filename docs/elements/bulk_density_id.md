@@ -17,7 +17,7 @@ Alias: bulk_density_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BulkDensityProduct](BulkDensityProduct.md) |  |  no  |
+| [BulkDensityProduct](BulkDensityProduct.md) | Bulk density analysis product, typically derived via oven-drying and weighing... |  no  |
 
 
 

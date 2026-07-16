@@ -3,6 +3,13 @@
 # Class: SampleProcessing 
 
 
+_Abstract base for any sample processing activity (physical to physical). Input data should _
+
+_be specified on workflow subclasses._
+
+
+
+
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
@@ -152,6 +159,8 @@ URI: [analysis_api_schema:SampleProcessing](https://w3id.org/MONet/analysis-api-
 <details>
 ```yaml
 name: SampleProcessing
+description: "Abstract base for any sample processing activity (physical to physical).\
+  \ Input data should \nbe specified on workflow subclasses."
 todos:
 - why does this have both analysis type and method name, as enums, just set the range
   to the class
@@ -291,6 +300,8 @@ attributes:
 <details>
 ```yaml
 name: SampleProcessing
+description: "Abstract base for any sample processing activity (physical to physical).\
+  \ Input data should \nbe specified on workflow subclasses."
 todos:
 - why does this have both analysis type and method name, as enums, just set the range
   to the class

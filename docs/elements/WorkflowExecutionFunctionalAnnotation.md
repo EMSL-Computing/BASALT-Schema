@@ -3,6 +3,15 @@
 # Class: WorkflowExecutionFunctionalAnnotation 
 
 
+_A link between a workflow execution and a functional annotation identifier._
+
+_This class captures the relationship between a workflow execution and the_
+
+_functional annotation identifier that was used in the analysis._
+
+
+
+
 
 URI: [analysis_api_schema:WorkflowExecutionFunctionalAnnotation](https://w3id.org/MONet/analysis-api-schema/WorkflowExecutionFunctionalAnnotation)
 
@@ -103,6 +112,11 @@ URI: [analysis_api_schema:WorkflowExecutionFunctionalAnnotation](https://w3id.or
 <details>
 ```yaml
 name: WorkflowExecutionFunctionalAnnotation
+description: 'A link between a workflow execution and a functional annotation identifier.
+
+  This class captures the relationship between a workflow execution and the
+
+  functional annotation identifier that was used in the analysis.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 attributes:
   workflow_id:
@@ -137,6 +151,11 @@ attributes:
 <details>
 ```yaml
 name: WorkflowExecutionFunctionalAnnotation
+description: 'A link between a workflow execution and a functional annotation identifier.
+
+  This class captures the relationship between a workflow execution and the
+
+  functional annotation identifier that was used in the analysis.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 attributes:
   workflow_id:

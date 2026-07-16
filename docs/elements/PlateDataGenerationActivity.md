@@ -5,15 +5,7 @@
 
 _Abstract base for plate measurement activities._
 
-_Adds timepoint_label for repeated-measurement series (per core-planB_
-
-_decision to put timepoint_label on concrete subclasses, not on base_
-
-_DataGenerationActivity)._
-
-__
-
-_v1 origin: plate-general.yaml PlateDataGenerationActivity_
+_Adds timepoint_label for repeated-measurement series _
 
 
 
@@ -178,14 +170,7 @@ URI: [analysis_api_schema:PlateDataGenerationActivity](https://w3id.org/MONet/an
 name: PlateDataGenerationActivity
 description: 'Abstract base for plate measurement activities.
 
-  Adds timepoint_label for repeated-measurement series (per core-planB
-
-  decision to put timepoint_label on concrete subclasses, not on base
-
-  DataGenerationActivity).
-
-
-  v1 origin: plate-general.yaml PlateDataGenerationActivity'
+  Adds timepoint_label for repeated-measurement series '
 todos:
 - measurement_time stamp
 from_schema: https://w3id.org/MONet/analysis-api-schema
@@ -204,14 +189,7 @@ slots:
 name: PlateDataGenerationActivity
 description: 'Abstract base for plate measurement activities.
 
-  Adds timepoint_label for repeated-measurement series (per core-planB
-
-  decision to put timepoint_label on concrete subclasses, not on base
-
-  DataGenerationActivity).
-
-
-  v1 origin: plate-general.yaml PlateDataGenerationActivity'
+  Adds timepoint_label for repeated-measurement series '
 todos:
 - measurement_time stamp
 from_schema: https://w3id.org/MONet/analysis-api-schema

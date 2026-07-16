@@ -17,7 +17,7 @@ Alias: no3_n_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) |  |  no  |
+| [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) | Nitrogen analysis product, typically derived via colorimetric assay of soil e... |  no  |
 
 
 

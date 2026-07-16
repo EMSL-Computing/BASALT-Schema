@@ -3,6 +3,13 @@
 # Class: DataGenerationActivity 
 
 
+_Abstract base for any data generation activity (physical to digital). Input data should _
+
+_be specified on workflow subclasses._
+
+
+
+
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
@@ -157,6 +164,8 @@ URI: [analysis_api_schema:DataGenerationActivity](https://w3id.org/MONet/analysi
 <details>
 ```yaml
 name: DataGenerationActivity
+description: "Abstract base for any data generation activity (physical to digital).\
+  \ Input data should \nbe specified on workflow subclasses."
 from_schema: https://w3id.org/MONet/analysis-api-schema
 abstract: true
 slots:
@@ -290,6 +299,8 @@ attributes:
 <details>
 ```yaml
 name: DataGenerationActivity
+description: "Abstract base for any data generation activity (physical to digital).\
+  \ Input data should \nbe specified on workflow subclasses."
 from_schema: https://w3id.org/MONet/analysis-api-schema
 abstract: true
 attributes:

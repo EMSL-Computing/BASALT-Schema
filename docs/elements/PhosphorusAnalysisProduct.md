@@ -3,6 +3,15 @@
 # Class: PhosphorusAnalysisProduct 
 
 
+_Phosphorus analysis product, typically derived via colorimetric assay of soil extracts._
+
+_One row per sample with columns for phosphorus concentration._
+
+_Individual QC flags for each measurement using ProcessedDataFlag enum._
+
+
+
+
 
 URI: [analysis_api_schema:PhosphorusAnalysisProduct](https://w3id.org/MONet/analysis-api-schema/PhosphorusAnalysisProduct)
 
@@ -204,6 +213,12 @@ URI: [analysis_api_schema:PhosphorusAnalysisProduct](https://w3id.org/MONet/anal
 <details>
 ```yaml
 name: PhosphorusAnalysisProduct
+description: 'Phosphorus analysis product, typically derived via colorimetric assay
+  of soil extracts.
+
+  One row per sample with columns for phosphorus concentration.
+
+  Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 slots:
@@ -270,6 +285,12 @@ attributes:
 <details>
 ```yaml
 name: PhosphorusAnalysisProduct
+description: 'Phosphorus analysis product, typically derived via colorimetric assay
+  of soil extracts.
+
+  One row per sample with columns for phosphorus concentration.
+
+  Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 attributes:

@@ -17,7 +17,7 @@ Alias: processing_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProcessingSampleLink](ProcessingSampleLink.md) |  |  no  |
+| [ProcessingSampleLink](ProcessingSampleLink.md) | A link between a processed sample and the sample processing activity that pro... |  no  |
 
 
 

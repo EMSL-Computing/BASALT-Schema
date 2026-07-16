@@ -17,7 +17,7 @@ Alias: photo_taken_during
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SitePhoto](SitePhoto.md) |  |  no  |
+| [SitePhoto](SitePhoto.md) | A data product representing a photo of a site, typically taken during samplin... |  no  |
 
 
 

@@ -17,7 +17,7 @@ Alias: custodian_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [InstrumentCustodian](InstrumentCustodian.md) |  |  no  |
+| [InstrumentCustodian](InstrumentCustodian.md) | A link between an instrument and a custodian (person) responsible for it |  no  |
 
 
 

@@ -3,6 +3,15 @@
 # Class: TextureProduct 
 
 
+_Soil texture analysis product, typically derived via hydrometer or similar instrument._
+
+_One row per sample with columns for sand, silt, and clay percentages._
+
+_Individual QC flags for each measurement using ProcessedDataFlag enum._
+
+
+
+
 
 URI: [analysis_api_schema:TextureProduct](https://w3id.org/MONet/analysis-api-schema/TextureProduct)
 
@@ -207,6 +216,12 @@ URI: [analysis_api_schema:TextureProduct](https://w3id.org/MONet/analysis-api-sc
 <details>
 ```yaml
 name: TextureProduct
+description: 'Soil texture analysis product, typically derived via hydrometer or similar
+  instrument.
+
+  One row per sample with columns for sand, silt, and clay percentages.
+
+  Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 slots:
@@ -256,6 +271,12 @@ attributes:
 <details>
 ```yaml
 name: TextureProduct
+description: 'Soil texture analysis product, typically derived via hydrometer or similar
+  instrument.
+
+  One row per sample with columns for sand, silt, and clay percentages.
+
+  Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 attributes:

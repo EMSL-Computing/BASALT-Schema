@@ -17,7 +17,7 @@ Alias: flag_nh4n_avg
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) |  |  no  |
+| [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) | Nitrogen analysis product, typically derived via colorimetric assay of soil e... |  no  |
 
 
 

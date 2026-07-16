@@ -3,6 +3,13 @@
 # Class: TomographyProduct 
 
 
+_Soil tomography analysis product, typically derived via X-ray computed tomography (XCT) or similar instrument._
+
+_One row per sample with columns for pore structure metrics and QC flag._
+
+
+
+
 
 URI: [analysis_api_schema:TomographyProduct](https://w3id.org/MONet/analysis-api-schema/TomographyProduct)
 
@@ -219,6 +226,10 @@ URI: [analysis_api_schema:TomographyProduct](https://w3id.org/MONet/analysis-api
 <details>
 ```yaml
 name: TomographyProduct
+description: 'Soil tomography analysis product, typically derived via X-ray computed
+  tomography (XCT) or similar instrument.
+
+  One row per sample with columns for pore structure metrics and QC flag.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 slots:
@@ -373,6 +384,10 @@ attributes:
 <details>
 ```yaml
 name: TomographyProduct
+description: 'Soil tomography analysis product, typically derived via X-ray computed
+  tomography (XCT) or similar instrument.
+
+  One row per sample with columns for pore structure metrics and QC flag.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 attributes:

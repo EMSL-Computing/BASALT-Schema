@@ -17,7 +17,7 @@ Alias: user
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ZipDownload](ZipDownload.md) |  |  no  |
+| [ZipDownload](ZipDownload.md) | A zip download record, capturing the details of a zip file download event |  no  |
 
 
 

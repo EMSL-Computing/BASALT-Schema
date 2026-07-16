@@ -3,6 +3,15 @@
 # Class: Study 
 
 
+_A study or research project, typically associated with a proposal and a set of experiments._
+
+_A study may have multiple participants, each with different roles, and may be associated with_
+
+_one or more campaigns. The study may also have associated DOIs and funding sources._
+
+
+
+
 
 URI: [analysis_api_schema:Study](https://w3id.org/MONet/analysis-api-schema/Study)
 
@@ -166,6 +175,13 @@ URI: [analysis_api_schema:Study](https://w3id.org/MONet/analysis-api-schema/Stud
 <details>
 ```yaml
 name: Study
+description: 'A study or research project, typically associated with a proposal and
+  a set of experiments.
+
+  A study may have multiple participants, each with different roles, and may be associated
+  with
+
+  one or more campaigns. The study may also have associated DOIs and funding sources.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 slots:
 - external_identifiers
@@ -403,6 +419,13 @@ attributes:
 <details>
 ```yaml
 name: Study
+description: 'A study or research project, typically associated with a proposal and
+  a set of experiments.
+
+  A study may have multiple participants, each with different roles, and may be associated
+  with
+
+  one or more campaigns. The study may also have associated DOIs and funding sources.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 slot_usage:
   external_identifiers:

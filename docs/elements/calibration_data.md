@@ -22,7 +22,7 @@ Alias: calibration_data
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MassSpectrometryStandardRun](MassSpectrometryStandardRun.md) |  |  no  |
+| [MassSpectrometryStandardRun](MassSpectrometryStandardRun.md) | A record of a mass spectrometry standard run with a batch of samples, which i... |  no  |
 
 
 

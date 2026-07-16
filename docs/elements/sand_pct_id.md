@@ -17,7 +17,7 @@ Alias: sand_pct_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TextureProduct](TextureProduct.md) |  |  no  |
+| [TextureProduct](TextureProduct.md) | Soil texture analysis product, typically derived via hydrometer or similar in... |  no  |
 
 
 

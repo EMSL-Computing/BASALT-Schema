@@ -17,8 +17,8 @@ Alias: method
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [KuoMethod](KuoMethod.md) |  |  no  |
 | [TextureMethod](TextureMethod.md) |  |  no  |
+| [KuoMethod](KuoMethod.md) |  |  no  |
 
 
 

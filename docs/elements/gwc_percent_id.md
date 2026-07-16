@@ -17,7 +17,7 @@ Alias: gwc_percent_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [GWCMoistureProduct](GWCMoistureProduct.md) |  |  no  |
+| [GWCMoistureProduct](GWCMoistureProduct.md) | Gravimetric water content (GWC) analysis product, typically derived via oven-... |  no  |
 
 
 

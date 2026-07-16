@@ -17,7 +17,7 @@ Alias: flag_mbn_avg
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MicrobialBiomassProduct](MicrobialBiomassProduct.md) |  |  no  |
+| [MicrobialBiomassProduct](MicrobialBiomassProduct.md) | Microbial biomass analysis product, typically derived via chloroform fumigati... |  no  |
 
 
 

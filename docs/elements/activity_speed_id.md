@@ -17,7 +17,7 @@ Alias: activity_speed_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [LabDevice](LabDevice.md) |  |  no  |
+| [LabDevice](LabDevice.md) | A lab device is a physical instrument or equipment used in a laboratory setti... |  no  |
 
 
 

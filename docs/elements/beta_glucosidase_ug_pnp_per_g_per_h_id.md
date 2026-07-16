@@ -17,7 +17,7 @@ Alias: beta_glucosidase_ug_pnp_per_g_per_h_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EnzymeProduct](EnzymeProduct.md) |  |  no  |
+| [EnzymeProduct](EnzymeProduct.md) | Enzyme activity analysis product, typically derived via colorimetric assay of... |  no  |
 
 
 

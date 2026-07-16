@@ -17,7 +17,7 @@ Alias: functional_annotation_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WorkflowExecutionFunctionalAnnotation](WorkflowExecutionFunctionalAnnotation.md) |  |  no  |
+| [WorkflowExecutionFunctionalAnnotation](WorkflowExecutionFunctionalAnnotation.md) | A link between a workflow execution and a functional annotation identifier |  no  |
 
 
 

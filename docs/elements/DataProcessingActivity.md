@@ -3,7 +3,7 @@
 # Class: DataProcessingActivity 
 
 
-_Abstract base for any data processing activity. Input data should _
+_Abstract base for any data processing activity (digital to digital). Input data should _
 
 _be specified on workflow subclasses._
 
@@ -153,8 +153,8 @@ URI: [analysis_api_schema:DataProcessingActivity](https://w3id.org/MONet/analysi
 <details>
 ```yaml
 name: DataProcessingActivity
-description: "Abstract base for any data processing activity. Input data should \n\
-  be specified on workflow subclasses."
+description: "Abstract base for any data processing activity (digital to digital).\
+  \ Input data should \nbe specified on workflow subclasses."
 from_schema: https://w3id.org/MONet/analysis-api-schema
 abstract: true
 slots:
@@ -297,8 +297,8 @@ attributes:
 <details>
 ```yaml
 name: DataProcessingActivity
-description: "Abstract base for any data processing activity. Input data should \n\
-  be specified on workflow subclasses."
+description: "Abstract base for any data processing activity (digital to digital).\
+  \ Input data should \nbe specified on workflow subclasses."
 from_schema: https://w3id.org/MONet/analysis-api-schema
 abstract: true
 slot_usage:

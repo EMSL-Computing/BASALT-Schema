@@ -3,6 +3,11 @@
 # Slot: aq 
 
 
+_acquisition number_
+
+
+
+
 
 URI: [analysis_api_schema:aq](https://w3id.org/MONet/analysis-api-schema/aq)
 Alias: aq
@@ -70,6 +75,7 @@ Alias: aq
 <details>
 ```yaml
 name: aq
+description: acquisition number
 todos:
 - what is this supposed to mean
 from_schema: https://w3id.org/MONet/analysis-api-schema

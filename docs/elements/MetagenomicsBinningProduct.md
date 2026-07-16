@@ -117,7 +117,7 @@ URI: [analysis_api_schema:MetagenomicsBinningProduct](https://w3id.org/MONet/ana
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [mg_workflow_step](mg_workflow_step.md) | 0..1 <br/> [MetagenomicsSteps](MetagenomicsSteps.md) | Metagenomics workflow step that produced this product (e | [MetagenomicsProduct](MetagenomicsProduct.md) |
-| [sample_id](sample_id.md) | 0..1 <br/> [Sample](Sample.md) | Link back to the originating sample | [ProcessedData](ProcessedData.md), [MetagenomicsProduct](MetagenomicsProduct.md) |
+| [sample_id](sample_id.md) | 0..1 <br/> [Sample](Sample.md) | Link back to the originating sample | [MetagenomicsProduct](MetagenomicsProduct.md), [ProcessedData](ProcessedData.md) |
 | [provider_name](provider_name.md) | 0..1 <br/> [ControlledTermValue](ControlledTermValue.md) | Provider class (e | [MetagenomicsProduct](MetagenomicsProduct.md) |
 | [raw_fasta_url](raw_fasta_url.md) | 0..1 <br/> [String](String.md) | URL of raw FASTA file, if available from provider | [MetagenomicsProduct](MetagenomicsProduct.md) |
 | [additional_information](additional_information.md) | 0..1 <br/> [String](String.md) | Additional information pertaining to these data, including SP Project ID and ... | [MetagenomicsProduct](MetagenomicsProduct.md) |

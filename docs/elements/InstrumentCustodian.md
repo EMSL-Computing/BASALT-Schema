@@ -3,6 +3,15 @@
 # Class: InstrumentCustodian 
 
 
+_A link between an instrument and a custodian (person) responsible for it._
+
+_This class captures the relationship between an instrument and the person_
+
+_who is responsible for its maintenance, calibration, and proper use._
+
+
+
+
 
 URI: [analysis_api_schema:InstrumentCustodian](https://w3id.org/MONet/analysis-api-schema/InstrumentCustodian)
 
@@ -100,6 +109,12 @@ URI: [analysis_api_schema:InstrumentCustodian](https://w3id.org/MONet/analysis-a
 <details>
 ```yaml
 name: InstrumentCustodian
+description: 'A link between an instrument and a custodian (person) responsible for
+  it.
+
+  This class captures the relationship between an instrument and the person
+
+  who is responsible for its maintenance, calibration, and proper use.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 attributes:
   instrument_id:
@@ -127,6 +142,12 @@ attributes:
 <details>
 ```yaml
 name: InstrumentCustodian
+description: 'A link between an instrument and a custodian (person) responsible for
+  it.
+
+  This class captures the relationship between an instrument and the person
+
+  who is responsible for its maintenance, calibration, and proper use.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 attributes:
   instrument_id:

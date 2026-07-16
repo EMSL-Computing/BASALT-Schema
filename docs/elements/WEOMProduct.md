@@ -3,6 +3,15 @@
 # Class: WEOMProduct 
 
 
+_Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar instrument._
+
+_One row per sample with columns for total organic carbon and total nitrogen._
+
+_Individual QC flags for each measurement using ProcessedDataFlag enum._
+
+
+
+
 
 URI: [analysis_api_schema:WEOMProduct](https://w3id.org/MONet/analysis-api-schema/WEOMProduct)
 
@@ -181,6 +190,12 @@ URI: [analysis_api_schema:WEOMProduct](https://w3id.org/MONet/analysis-api-schem
 <details>
 ```yaml
 name: WEOMProduct
+description: 'Water Extractable Organic Matter (WEOM) analysis product, typically
+  derived via Shimadzu TOC-L or similar instrument.
+
+  One row per sample with columns for total organic carbon and total nitrogen.
+
+  Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 slots:
 - measure_type
@@ -330,6 +345,12 @@ attributes:
 <details>
 ```yaml
 name: WEOMProduct
+description: 'Water Extractable Organic Matter (WEOM) analysis product, typically
+  derived via Shimadzu TOC-L or similar instrument.
+
+  One row per sample with columns for total organic carbon and total nitrogen.
+
+  Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 attributes:
   id:

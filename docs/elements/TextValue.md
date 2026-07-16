@@ -3,6 +3,11 @@
 # Class: TextValue 
 
 
+_A text value with optional description and language._
+
+
+
+
 
 URI: [analysis_api_schema:TextValue](https://w3id.org/MONet/analysis-api-schema/TextValue)
 
@@ -88,6 +93,7 @@ URI: [analysis_api_schema:TextValue](https://w3id.org/MONet/analysis-api-schema/
 <details>
 ```yaml
 name: TextValue
+description: A text value with optional description and language.
 from_schema: https://w3id.org/MONet/analysis-api-schema
 slots:
 - description
@@ -197,6 +203,7 @@ attributes:
 <details>
 ```yaml
 name: TextValue
+description: A text value with optional description and language.
 from_schema: https://w3id.org/MONet/analysis-api-schema
 attributes:
   id:

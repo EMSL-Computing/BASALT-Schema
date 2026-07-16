@@ -3,6 +3,11 @@
 # Class: TimestampValue 
 
 
+_A timestamp value with optional description. No pattern at present,_
+
+
+
+
 
 URI: [analysis_api_schema:TimestampValue](https://w3id.org/MONet/analysis-api-schema/TimestampValue)
 
@@ -86,6 +91,7 @@ URI: [analysis_api_schema:TimestampValue](https://w3id.org/MONet/analysis-api-sc
 <details>
 ```yaml
 name: TimestampValue
+description: A timestamp value with optional description. No pattern at present,
 from_schema: https://w3id.org/MONet/analysis-api-schema
 slots:
 - description
@@ -217,6 +223,7 @@ attributes:
 <details>
 ```yaml
 name: TimestampValue
+description: A timestamp value with optional description. No pattern at present,
 from_schema: https://w3id.org/MONet/analysis-api-schema
 attributes:
   id:

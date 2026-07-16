@@ -18,7 +18,7 @@ Alias: role
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [ProjectParticipant](ProjectParticipant.md) | A record of a person and their role on an EMSL project |  no  |
-| [ProcessingSampleLink](ProcessingSampleLink.md) |  |  no  |
+| [ProcessingSampleLink](ProcessingSampleLink.md) | A link between a processed sample and the sample processing activity that pro... |  no  |
 
 
 

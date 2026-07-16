@@ -3,6 +3,11 @@
 # Class: ZipDownload 
 
 
+_A zip download record, capturing the details of a zip file download event._
+
+
+
+
 
 URI: [analysis_api_schema:ZipDownload](https://w3id.org/MONet/analysis-api-schema/ZipDownload)
 
@@ -91,6 +96,7 @@ URI: [analysis_api_schema:ZipDownload](https://w3id.org/MONet/analysis-api-schem
 <details>
 ```yaml
 name: zipDownload
+description: A zip download record, capturing the details of a zip file download event.
 from_schema: https://w3id.org/MONet/analysis-api-schema
 attributes:
   id:
@@ -211,6 +217,7 @@ attributes:
 <details>
 ```yaml
 name: zipDownload
+description: A zip download record, capturing the details of a zip file download event.
 from_schema: https://w3id.org/MONet/analysis-api-schema
 attributes:
   id:

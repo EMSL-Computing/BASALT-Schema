@@ -3,17 +3,9 @@
 # Class: WellReading 
 
 
-_Per-well measurement data._
-
-_NOT a standalone database table; embedded structured entries under_
+_Per-well measurement data. NOT a standalone database table; embedded structured entries under_
 
 _PlateProduct.well_readings._
-
-_Lightweight summary for queries; raw data in MinIO._
-
-__
-
-_v1 origin: plate-general.yaml WellReading_
 
 
 
@@ -114,16 +106,10 @@ URI: [analysis_api_schema:WellReading](https://w3id.org/MONet/analysis-api-schem
 <details>
 ```yaml
 name: WellReading
-description: 'Per-well measurement data.
+description: 'Per-well measurement data. NOT a standalone database table; embedded
+  structured entries under
 
-  NOT a standalone database table; embedded structured entries under
-
-  PlateProduct.well_readings.
-
-  Lightweight summary for queries; raw data in MinIO.
-
-
-  v1 origin: plate-general.yaml WellReading'
+  PlateProduct.well_readings.'
 todos:
 - add optical_density_method here to flag what value means if we have multiple OD
   methods (e.g. OD600 vs OD750)
@@ -173,16 +159,10 @@ attributes:
 <details>
 ```yaml
 name: WellReading
-description: 'Per-well measurement data.
+description: 'Per-well measurement data. NOT a standalone database table; embedded
+  structured entries under
 
-  NOT a standalone database table; embedded structured entries under
-
-  PlateProduct.well_readings.
-
-  Lightweight summary for queries; raw data in MinIO.
-
-
-  v1 origin: plate-general.yaml WellReading'
+  PlateProduct.well_readings.'
 todos:
 - add optical_density_method here to flag what value means if we have multiple OD
   methods (e.g. OD600 vs OD750)

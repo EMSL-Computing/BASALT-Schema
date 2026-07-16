@@ -22,8 +22,8 @@ Alias: infiltration_notes
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SoilSamplingActivity](SoilSamplingActivity.md) | Collection of soil samples from the environment |  no  |
 | [MonetSoilSamplingActivity](MonetSoilSamplingActivity.md) | Collection of soil cores according to the MONet soil sampling protocol |  no  |
+| [SoilSamplingActivity](SoilSamplingActivity.md) | Collection of soil samples from the environment |  no  |
 
 
 
