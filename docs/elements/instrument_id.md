@@ -25,18 +25,30 @@ Alias: instrument_id
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [InstrumentAlternativeIdentifier](InstrumentAlternativeIdentifier.md), [InstrumentCustodian](InstrumentCustodian.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

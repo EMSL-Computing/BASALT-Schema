@@ -29,18 +29,30 @@ Alias: nucleotide_sequencing_category
 
 
 
-
 ## Properties
 
-* Range: [NucleotideSequencingEnum](NucleotideSequencingEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [NucleotideSequencingEnum](NucleotideSequencingEnum.md) |
+| Domain Of | [NucleotideSequencing](NucleotideSequencing.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

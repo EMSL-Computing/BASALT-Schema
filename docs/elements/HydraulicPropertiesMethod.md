@@ -10,13 +10,12 @@ URI: [analysis_api_schema:HydraulicPropertiesMethod](https://w3id.org/MONet/anal
 
 
 
-
 ```mermaid
  classDiagram
     class HydraulicPropertiesMethod
-    click HydraulicPropertiesMethod href "../HydraulicPropertiesMethod"
+    click HydraulicPropertiesMethod href "../HydraulicPropertiesMethod/"
       Method <|-- HydraulicPropertiesMethod
-        click Method href "../Method"
+        click Method href "../Method/"
       
       HydraulicPropertiesMethod : analytic
         
@@ -36,7 +35,6 @@ URI: [analysis_api_schema:HydraulicPropertiesMethod](https://w3id.org/MONet/anal
     * **HydraulicPropertiesMethod**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -53,9 +51,13 @@ URI: [analysis_api_schema:HydraulicPropertiesMethod](https://w3id.org/MONet/anal
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -81,7 +83,6 @@ URI: [analysis_api_schema:HydraulicPropertiesMethod](https://w3id.org/MONet/anal
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -92,7 +93,6 @@ URI: [analysis_api_schema:HydraulicPropertiesMethod](https://w3id.org/MONet/anal
 ```yaml
 name: HydraulicPropertiesMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 slots:
 - location
@@ -115,7 +115,6 @@ attributes:
 ```yaml
 name: HydraulicPropertiesMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 attributes:
   fitting_model:

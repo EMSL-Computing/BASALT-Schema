@@ -7,10 +7,9 @@ _Types of samples that can be collected_
 
 
 
-URI: [SampleType](SampleType.md)
+URI: [analysis_api_schema:SampleType](https://w3id.org/MONet/analysis-api-schema/SampleType)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | soil_sample | None | Soil sample |
@@ -24,9 +23,11 @@ URI: [SampleType](SampleType.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -20,20 +20,36 @@ Alias: sample_start_time
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Regex pattern: `^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$`
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Value Constraints
+
+| Property | Value |
+| --- | --- |
+| Regex Pattern | `^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$` |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

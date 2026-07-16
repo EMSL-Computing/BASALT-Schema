@@ -10,31 +10,24 @@ URI: [analysis_api_schema:FunctionalAnnotationIdentifier](https://w3id.org/MONet
 
 
 
-
 ```mermaid
  classDiagram
     class FunctionalAnnotationIdentifier
-    click FunctionalAnnotationIdentifier href "../FunctionalAnnotationIdentifier"
+    click FunctionalAnnotationIdentifier href "../FunctionalAnnotationIdentifier/"
       FunctionalAnnotationIdentifier : database
         
           
     
-    
-    
-    
-    FunctionalAnnotationIdentifier --> "1" AnnotationDatabaseEnum : database
-    click AnnotationDatabaseEnum href "../AnnotationDatabaseEnum"
+        
+        
+        FunctionalAnnotationIdentifier --> "1" AnnotationDatabaseEnum : database
+        click AnnotationDatabaseEnum href "../AnnotationDatabaseEnum/"
     
 
         
       FunctionalAnnotationIdentifier : functional_identifier
         
       FunctionalAnnotationIdentifier : id
-        
-          
-    
-    
-
         
       
 ```
@@ -44,12 +37,11 @@ URI: [analysis_api_schema:FunctionalAnnotationIdentifier](https://w3id.org/MONet
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [functional_identifier](functional_identifier.md) | 1 <br/> [String](String.md) |  | direct |
 | [database](database.md) | 1 <br/> [AnnotationDatabaseEnum](AnnotationDatabaseEnum.md) |  | direct |
 
@@ -68,9 +60,13 @@ URI: [analysis_api_schema:FunctionalAnnotationIdentifier](https://w3id.org/MONet
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -96,7 +92,6 @@ URI: [analysis_api_schema:FunctionalAnnotationIdentifier](https://w3id.org/MONet
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -107,7 +102,6 @@ URI: [analysis_api_schema:FunctionalAnnotationIdentifier](https://w3id.org/MONet
 ```yaml
 name: FunctionalAnnotationIdentifier
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id
@@ -213,7 +207,6 @@ attributes:
 ```yaml
 name: FunctionalAnnotationIdentifier
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

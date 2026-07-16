@@ -22,14 +22,13 @@ Alias: host_taxid
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  yes  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  yes  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  yes  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-
 
 
 
@@ -38,9 +37,28 @@ Alias: host_taxid
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Regex pattern: `NCBITaxon:\d+`
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [CultureEnvironmentalSample](CultureEnvironmentalSample.md), [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md), [MixedCultureSample](MixedCultureSample.md), [OtherUndescribedSample](OtherUndescribedSample.md), [PureCultureSample](PureCultureSample.md), [TerraformSample](TerraformSample.md), [BiologicalEntity](BiologicalEntity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Value Constraints
+
+| Property | Value |
+| --- | --- |
+| Regex Pattern | `NCBITaxon:\d+` |
+
+
+
+
+
+
 
 
 
@@ -53,9 +71,8 @@ Alias: host_taxid
 
 
 
+
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -31,18 +31,30 @@ Alias: genotype_segment_category
 
 
 
-
 ## Properties
 
-* Range: [GenotypeSegmentEnum](GenotypeSegmentEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [GenotypeSegmentEnum](GenotypeSegmentEnum.md) |
+| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

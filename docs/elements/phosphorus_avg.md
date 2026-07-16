@@ -24,18 +24,37 @@ Alias: phosphorus_avg
 
 
 
-
 ## Properties
 
-* Range: [Double](Double.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Double](Double.md) |
+| Domain Of | [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

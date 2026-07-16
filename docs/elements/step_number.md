@@ -24,20 +24,38 @@ Alias: step_number
 
 
 
-
 ## Properties
 
-* Range: [Integer](Integer.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [Integer](Integer.md) |
+| Domain Of | [ProcessingSampleLink](ProcessingSampleLink.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [ProcessingSampleLink](ProcessingSampleLink.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -68,7 +86,6 @@ Alias: step_number
 name: step_number
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
-identifier: true
 alias: step_number
 owner: ProcessingSampleLink
 domain_of:

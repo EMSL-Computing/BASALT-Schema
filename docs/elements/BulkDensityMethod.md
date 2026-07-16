@@ -10,13 +10,12 @@ URI: [analysis_api_schema:BulkDensityMethod](https://w3id.org/MONet/analysis-api
 
 
 
-
 ```mermaid
  classDiagram
     class BulkDensityMethod
-    click BulkDensityMethod href "../BulkDensityMethod"
+    click BulkDensityMethod href "../BulkDensityMethod/"
       Method <|-- BulkDensityMethod
-        click Method href "../Method"
+        click Method href "../Method/"
       
       BulkDensityMethod : analytic
         
@@ -30,7 +29,6 @@ URI: [analysis_api_schema:BulkDensityMethod](https://w3id.org/MONet/analysis-api
 ## Inheritance
 * [Method](Method.md)
     * **BulkDensityMethod**
-
 
 
 ## Slots
@@ -47,9 +45,13 @@ URI: [analysis_api_schema:BulkDensityMethod](https://w3id.org/MONet/analysis-api
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -75,7 +77,6 @@ URI: [analysis_api_schema:BulkDensityMethod](https://w3id.org/MONet/analysis-api
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -86,7 +87,6 @@ URI: [analysis_api_schema:BulkDensityMethod](https://w3id.org/MONet/analysis-api
 ```yaml
 name: BulkDensityMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 
 ```
@@ -98,7 +98,6 @@ is_a: Method
 ```yaml
 name: BulkDensityMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 attributes:
   analytic:

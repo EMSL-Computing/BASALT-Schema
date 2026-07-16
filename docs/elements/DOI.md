@@ -15,20 +15,18 @@ URI: [analysis_api_schema:DOI](https://w3id.org/MONet/analysis-api-schema/DOI)
 
 
 
-
 ```mermaid
  classDiagram
     class DOI
-    click DOI href "../DOI"
+    click DOI href "../DOI/"
       DOI : doi_category
         
           
     
-    
-    
-    
-    DOI --> "0..1" DoiCategoryEnum : doi_category
-    click DoiCategoryEnum href "../DoiCategoryEnum"
+        
+        
+        DOI --> "0..1" DoiCategoryEnum : doi_category
+        click DoiCategoryEnum href "../DoiCategoryEnum/"
     
 
         
@@ -36,11 +34,10 @@ URI: [analysis_api_schema:DOI](https://w3id.org/MONet/analysis-api-schema/DOI)
         
           
     
-    
-    
-    
-    DOI --> "0..1" DoiProviderEnum : doi_provider
-    click DoiProviderEnum href "../DoiProviderEnum"
+        
+        
+        DOI --> "0..1" DoiProviderEnum : doi_provider
+        click DoiProviderEnum href "../DoiProviderEnum/"
     
 
         
@@ -53,7 +50,6 @@ URI: [analysis_api_schema:DOI](https://w3id.org/MONet/analysis-api-schema/DOI)
 
 
 <!-- no inheritance hierarchy -->
-
 
 ## Slots
 
@@ -79,9 +75,13 @@ URI: [analysis_api_schema:DOI](https://w3id.org/MONet/analysis-api-schema/DOI)
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -107,7 +107,6 @@ URI: [analysis_api_schema:DOI](https://w3id.org/MONet/analysis-api-schema/DOI)
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -120,7 +119,6 @@ name: DOI
 description: A digital object identifier (DOI) representing a persistent link to a
   digital resource.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   doi_value:
     name: doi_value
@@ -158,7 +156,6 @@ name: DOI
 description: A digital object identifier (DOI) representing a persistent link to a
   digital resource.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   doi_value:
     name: doi_value

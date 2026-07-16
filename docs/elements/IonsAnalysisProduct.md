@@ -10,23 +10,21 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
 
 
 
-
 ```mermaid
  classDiagram
     class IonsAnalysisProduct
-    click IonsAnalysisProduct href "../IonsAnalysisProduct"
+    click IonsAnalysisProduct href "../IonsAnalysisProduct/"
       ProcessedData <|-- IonsAnalysisProduct
-        click ProcessedData href "../ProcessedData"
+        click ProcessedData href "../ProcessedData/"
       
       IonsAnalysisProduct : boron_id
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" QuantityValue : boron_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        IonsAnalysisProduct --> "0..1" QuantityValue : boron_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -34,11 +32,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" QuantityValue : calcium_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        IonsAnalysisProduct --> "0..1" QuantityValue : calcium_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -46,11 +43,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" QuantityValue : cation_exchange_capacity_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        IonsAnalysisProduct --> "0..1" QuantityValue : cation_exchange_capacity_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -58,11 +54,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" QuantityValue : copper_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        IonsAnalysisProduct --> "0..1" QuantityValue : copper_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -70,11 +65,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        IonsAnalysisProduct --> "0..1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -86,11 +80,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_boron
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_boron
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -98,11 +91,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_calcium
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_calcium
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -110,11 +102,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_cec
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_cec
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -122,11 +113,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_copper
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_copper
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -134,11 +124,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_iron
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_iron
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -146,11 +135,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_magnesium
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_magnesium
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -158,11 +146,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_manganate
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_manganate
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -170,11 +157,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_potassium
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_potassium
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -182,11 +168,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_sodium
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_sodium
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -194,11 +179,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_sulfate
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_sulfate
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -206,11 +190,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_total_bases
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_total_bases
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -218,30 +201,23 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_zinc
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        IonsAnalysisProduct --> "0..1" ProcessedDataFlag : flag_zinc
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
       IonsAnalysisProduct : id
         
-          
-    
-    
-
-        
       IonsAnalysisProduct : iron_id
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" QuantityValue : iron_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        IonsAnalysisProduct --> "0..1" QuantityValue : iron_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -251,11 +227,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" QuantityValue : magnesium_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        IonsAnalysisProduct --> "0..1" QuantityValue : magnesium_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -263,11 +238,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" QuantityValue : manganate_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        IonsAnalysisProduct --> "0..1" QuantityValue : manganate_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -277,11 +251,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" ProductMeasureType : measure_type
-    click ProductMeasureType href "../ProductMeasureType"
+        
+        
+        IonsAnalysisProduct --> "0..1" ProductMeasureType : measure_type
+        click ProductMeasureType href "../ProductMeasureType/"
     
 
         
@@ -291,11 +264,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" QuantityValue : potassium_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        IonsAnalysisProduct --> "0..1" QuantityValue : potassium_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -311,11 +283,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" Sample : sample_id
-    click Sample href "../Sample"
+        
+        
+        IonsAnalysisProduct --> "0..1" Sample : sample_id
+        click Sample href "../Sample/"
     
 
         
@@ -327,11 +298,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" QuantityValue : sodium_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        IonsAnalysisProduct --> "0..1" QuantityValue : sodium_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -339,11 +309,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" QuantityValue : sulfate_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        IonsAnalysisProduct --> "0..1" QuantityValue : sulfate_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -353,11 +322,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" QuantityValue : total_bases_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        IonsAnalysisProduct --> "0..1" QuantityValue : total_bases_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -365,11 +333,10 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    IonsAnalysisProduct --> "0..1" QuantityValue : zinc_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        IonsAnalysisProduct --> "0..1" QuantityValue : zinc_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -384,7 +351,6 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
 * [DataProduct](DataProduct.md)
     * [ProcessedData](ProcessedData.md)
         * **IonsAnalysisProduct**
-
 
 
 ## Slots
@@ -430,7 +396,13 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | [DataProduct](DataProduct.md) |
 | [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | [DataProduct](DataProduct.md) |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProduct](DataProduct.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProduct](DataProduct.md) |
+
+
+
+
+
+
 
 
 
@@ -441,8 +413,6 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -468,7 +438,6 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -479,7 +448,6 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
 ```yaml
 name: IonsAnalysisProduct
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: ProcessedData
 slots:
 - measure_type
@@ -662,7 +630,6 @@ attributes:
 ```yaml
 name: IonsAnalysisProduct
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: ProcessedData
 attributes:
   sulfate_id:
@@ -1021,8 +988,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: IonsAnalysisProduct
     domain_of:
     - DataProduct

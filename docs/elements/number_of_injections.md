@@ -17,9 +17,8 @@ Alias: number_of_injections
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TOCTNMethod](TOCTNMethod.md) |  |  no  |
 | [MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |  no  |
-
+| [TOCTNMethod](TOCTNMethod.md) |  |  no  |
 
 
 
@@ -28,15 +27,28 @@ Alias: number_of_injections
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [MicrobialBiomassMethod](MicrobialBiomassMethod.md), [TOCTNMethod](TOCTNMethod.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

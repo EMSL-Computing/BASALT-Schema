@@ -25,23 +25,21 @@ URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysi
 
 
 
-
 ```mermaid
  classDiagram
     class EngineeredStrainSample
-    click EngineeredStrainSample href "../EngineeredStrainSample"
+    click EngineeredStrainSample href "../EngineeredStrainSample/"
       Sample <|-- EngineeredStrainSample
-        click Sample href "../Sample"
+        click Sample href "../Sample/"
       
       EngineeredStrainSample : biological_entity_ref
         
           
     
-    
-    
-    
-    EngineeredStrainSample --> "0..1" BiologicalEntity : biological_entity_ref
-    click BiologicalEntity href "../BiologicalEntity"
+        
+        
+        EngineeredStrainSample --> "0..1" BiologicalEntity : biological_entity_ref
+        click BiologicalEntity href "../BiologicalEntity/"
     
 
         
@@ -54,11 +52,6 @@ URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysi
       EngineeredStrainSample : external_identifiers
         
       EngineeredStrainSample : id
-        
-          
-    
-    
-
         
       EngineeredStrainSample : lims_barcode
         
@@ -80,7 +73,6 @@ URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysi
     * **EngineeredStrainSample**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -90,7 +82,7 @@ URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysi
 | [storage_condition](storage_condition.md) | 1 <br/> [String](String.md) | Storage condition for this sample (frozen, fresh, etc | direct |
 | [storage_temperature](storage_temperature.md) | 0..1 <br/> [String](String.md) | Storage temperature for this sample (e | direct |
 | [external_identifiers](external_identifiers.md) | * <br/> [Uriorcurie](Uriorcurie.md) | List of external identifiers associated with this entity or activity | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [cbi](cbi.md) | 1 <br/> [String](String.md) | Controlled Biological Information flag (yes/no) | direct |
 | [storage_condition](storage_condition.md) | 1 <br/> [String](String.md) | Storage condition for this sample (frozen, fresh, etc | direct |
 | [storage_temperature](storage_temperature.md) | 0..1 <br/> [String](String.md) | Storage temperature for this sample (e | direct |
@@ -107,9 +99,13 @@ URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysi
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -135,7 +131,6 @@ URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysi
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -151,7 +146,6 @@ description: "A sample containing a strain of an organism that has been subjecte
   \ component_*, phenotype, trait, etc.)\nand carries only sample-instance-specific\
   \ slots.\n  "
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slots:
 - biological_entity_ref
@@ -296,7 +290,6 @@ description: "A sample containing a strain of an organism that has been subjecte
   \ component_*, phenotype, trait, etc.)\nand carries only sample-instance-specific\
   \ slots.\n  "
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 attributes:
   id:

@@ -10,13 +10,12 @@ URI: [analysis_api_schema:MicrobialBiomassMethod](https://w3id.org/MONet/analysi
 
 
 
-
 ```mermaid
  classDiagram
     class MicrobialBiomassMethod
-    click MicrobialBiomassMethod href "../MicrobialBiomassMethod"
+    click MicrobialBiomassMethod href "../MicrobialBiomassMethod/"
       Method <|-- MicrobialBiomassMethod
-        click Method href "../Method"
+        click Method href "../Method/"
       
       MicrobialBiomassMethod : analytic
         
@@ -46,7 +45,6 @@ URI: [analysis_api_schema:MicrobialBiomassMethod](https://w3id.org/MONet/analysi
     * **MicrobialBiomassMethod**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -68,9 +66,13 @@ URI: [analysis_api_schema:MicrobialBiomassMethod](https://w3id.org/MONet/analysi
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -96,7 +98,6 @@ URI: [analysis_api_schema:MicrobialBiomassMethod](https://w3id.org/MONet/analysi
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -107,7 +108,6 @@ URI: [analysis_api_schema:MicrobialBiomassMethod](https://w3id.org/MONet/analysi
 ```yaml
 name: MicrobialBiomassMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 slots:
 - location
@@ -175,7 +175,6 @@ attributes:
 ```yaml
 name: MicrobialBiomassMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 attributes:
   detector:

@@ -30,20 +30,31 @@ Alias: aerosol_type
 
 
 
-
 ## Properties
 
-* Range: [AerosolTypeEnum](AerosolTypeEnum.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [AerosolTypeEnum](AerosolTypeEnum.md) |
+| Domain Of | [AerosolArmSample](AerosolArmSample.md), [AerosolSample](AerosolSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

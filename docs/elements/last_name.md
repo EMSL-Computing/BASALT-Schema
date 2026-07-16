@@ -24,20 +24,38 @@ Alias: last_name
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [PersonValue](PersonValue.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [PersonValue](PersonValue.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

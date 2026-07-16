@@ -29,20 +29,37 @@ Alias: geo_loc_name
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Regex pattern: `^([^\s-]{12}|[^\s-]+.+[^\s-]+):\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)$`
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [Site](Site.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Value Constraints
+
+| Property | Value |
+| --- | --- |
+| Regex Pattern | `^([^\s-]{12}|[^\s-]+.+[^\s-]+):\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)$` |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

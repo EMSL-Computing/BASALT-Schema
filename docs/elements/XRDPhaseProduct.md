@@ -89,13 +89,12 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
 
 
 
-
 ```mermaid
  classDiagram
     class XRDPhaseProduct
-    click XRDPhaseProduct href "../XRDPhaseProduct"
+    click XRDPhaseProduct href "../XRDPhaseProduct/"
       XRayDataProduct <|-- XRDPhaseProduct
-        click XRayDataProduct href "../XRayDataProduct"
+        click XRayDataProduct href "../XRayDataProduct/"
       
       XRDPhaseProduct : albite_percent
         
@@ -105,11 +104,10 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    XRDPhaseProduct --> "0..1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        XRDPhaseProduct --> "0..1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -121,11 +119,10 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_albite
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_albite
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -133,11 +130,10 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_chlorite
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_chlorite
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -145,11 +141,10 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_gypsum
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_gypsum
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -157,11 +152,10 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_halite
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_halite
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -169,11 +163,10 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_hornblende
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_hornblende
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -181,11 +174,10 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_kaolinite
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_kaolinite
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -193,11 +185,10 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_microcline
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_microcline
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -205,11 +196,10 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_muscovite
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_muscovite
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -217,11 +207,10 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_pyrite
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_pyrite
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -229,11 +218,10 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_quartz
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRDPhaseProduct --> "0..1" ProcessedDataFlag : flag_quartz
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -245,11 +233,6 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
         
       XRDPhaseProduct : id
         
-          
-    
-    
-
-        
       XRDPhaseProduct : kaolinite_percent
         
       XRDPhaseProduct : lims_barcode
@@ -260,11 +243,10 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    XRDPhaseProduct --> "0..1" ProductMeasureType : measure_type
-    click ProductMeasureType href "../ProductMeasureType"
+        
+        
+        XRDPhaseProduct --> "0..1" ProductMeasureType : measure_type
+        click ProductMeasureType href "../ProductMeasureType/"
     
 
         
@@ -290,11 +272,10 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    XRDPhaseProduct --> "0..1" Sample : sample_id
-    click Sample href "../Sample"
+        
+        
+        XRDPhaseProduct --> "0..1" Sample : sample_id
+        click Sample href "../Sample/"
     
 
         
@@ -316,7 +297,6 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
     * [ProcessedData](ProcessedData.md)
         * [XRayDataProduct](XRayDataProduct.md)
             * **XRDPhaseProduct**
-
 
 
 ## Slots
@@ -358,7 +338,13 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | [DataProduct](DataProduct.md) |
 | [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | [DataProduct](DataProduct.md) |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProduct](DataProduct.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProduct](DataProduct.md) |
+
+
+
+
+
+
 
 
 
@@ -369,8 +355,6 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -390,7 +374,6 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
 | ---  | ---  |
 | self | analysis_api_schema:XRDPhaseProduct |
 | native | analysis_api_schema:XRDPhaseProduct |
-
 
 
 
@@ -428,7 +411,6 @@ description: "X-ray Diffraction (XRD) mineral phase identification and quantific
   : 0.042, \"gof\": 1.8, \"amorphous_content_pct\": 12}\n\nRequired enum additions\
   \ to enums.yaml:\n  product:\n    XRDPhaseProduct:  # Add to product permissible_values"
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: XRayDataProduct
 slots:
 - measure_type
@@ -614,7 +596,6 @@ description: "X-ray Diffraction (XRD) mineral phase identification and quantific
   : 0.042, \"gof\": 1.8, \"amorphous_content_pct\": 12}\n\nRequired enum additions\
   \ to enums.yaml:\n  product:\n    XRDPhaseProduct:  # Add to product permissible_values"
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: XRayDataProduct
 attributes:
   quartz_percent:
@@ -947,8 +928,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: XRDPhaseProduct
     domain_of:
     - DataProduct

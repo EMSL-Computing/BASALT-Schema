@@ -10,11 +10,10 @@ URI: [analysis_api_schema:TextValue](https://w3id.org/MONet/analysis-api-schema/
 
 
 
-
 ```mermaid
  classDiagram
     class TextValue
-    click TextValue href "../TextValue"
+    click TextValue href "../TextValue/"
       TextValue : description
         
       TextValue : has_raw_value
@@ -30,7 +29,6 @@ URI: [analysis_api_schema:TextValue](https://w3id.org/MONet/analysis-api-schema/
 
 
 <!-- no inheritance hierarchy -->
-
 
 ## Slots
 
@@ -49,9 +47,13 @@ URI: [analysis_api_schema:TextValue](https://w3id.org/MONet/analysis-api-schema/
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -77,7 +79,6 @@ URI: [analysis_api_schema:TextValue](https://w3id.org/MONet/analysis-api-schema/
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -88,7 +89,6 @@ URI: [analysis_api_schema:TextValue](https://w3id.org/MONet/analysis-api-schema/
 ```yaml
 name: TextValue
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 slots:
 - description
 attributes:
@@ -198,7 +198,6 @@ attributes:
 ```yaml
 name: TextValue
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

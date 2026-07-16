@@ -7,10 +7,9 @@ _Sample storage conditions_
 
 
 
-URI: [StorageConditionEnum](StorageConditionEnum.md)
+URI: [analysis_api_schema:StorageConditionEnum](https://w3id.org/MONet/analysis-api-schema/StorageConditionEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | fresh | None | Fresh sample |
@@ -32,9 +31,11 @@ URI: [StorageConditionEnum](StorageConditionEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -7,10 +7,9 @@ _Land use classifications_
 
 
 
-URI: [LandUseEnum](LandUseEnum.md)
+URI: [analysis_api_schema:LandUseEnum](https://w3id.org/MONet/analysis-api-schema/LandUseEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | badlands | None | Badlands |
@@ -63,9 +62,11 @@ URI: [LandUseEnum](LandUseEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

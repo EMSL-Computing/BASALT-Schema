@@ -22,9 +22,8 @@ Alias: soil_type
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-
+| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
 
 
 
@@ -33,15 +32,28 @@ Alias: soil_type
 
 ## Properties
 
-* Range: [SoilTypeEnum](SoilTypeEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [SoilTypeEnum](SoilTypeEnum.md) |
+| Domain Of | [MonetSoilSample](MonetSoilSample.md), [SoilSample](SoilSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

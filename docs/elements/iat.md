@@ -29,18 +29,30 @@ Alias: iat
 
 
 
-
 ## Properties
 
-* Range: [Double](Double.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Double](Double.md) |
+| Domain Of | [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

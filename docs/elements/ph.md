@@ -22,12 +22,11 @@ Alias: ph
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [PHProduct](PHProduct.md) |  |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
-
+| [PHProduct](PHProduct.md) |  |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 
 
 
@@ -36,15 +35,28 @@ Alias: ph
 
 ## Properties
 
-* Range: [Float](Float.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Float](Float.md) |
+| Domain Of | [PHProduct](PHProduct.md), [OtherUndescribedSample](OtherUndescribedSample.md), [SedimentSample](SedimentSample.md), [SoilSample](SoilSample.md), [WaterSample](WaterSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

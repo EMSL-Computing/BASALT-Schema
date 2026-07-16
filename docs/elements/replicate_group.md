@@ -22,10 +22,9 @@ Alias: replicate_group
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [WellMetadata](WellMetadata.md) | Base structure for per-well metadata in plate setup |  no  |
 | [EcoplateWellMetadata](EcoplateWellMetadata.md) | Ecoplate-specific per-well metadata |  no  |
 | [AMP2WellMetadata](AMP2WellMetadata.md) | AMP2-specific per-well metadata |  no  |
-| [WellMetadata](WellMetadata.md) | Base structure for per-well metadata in plate setup |  no  |
-
 
 
 
@@ -34,15 +33,35 @@ Alias: replicate_group
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [WellMetadata](WellMetadata.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [WellMetadata](WellMetadata.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

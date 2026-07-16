@@ -2,10 +2,9 @@
 
 
 
-URI: [MassSpecRawFileTypeEnum](MassSpecRawFileTypeEnum.md)
+URI: [analysis_api_schema:MassSpecRawFileTypeEnum](https://w3id.org/MONet/analysis-api-schema/MassSpecRawFileTypeEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | .d | None |  |
@@ -26,9 +25,11 @@ URI: [MassSpecRawFileTypeEnum](MassSpecRawFileTypeEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

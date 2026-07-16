@@ -30,20 +30,37 @@ Alias: sampling_duration
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Regex pattern: `^\d+(\.\d+)?\s*s$`
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [AerosolSamplingActivity](AerosolSamplingActivity.md), [OtherUndescribedSamplingActivity](OtherUndescribedSamplingActivity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Value Constraints
+
+| Property | Value |
+| --- | --- |
+| Regex Pattern | `^\d+(\.\d+)?\s*s$` |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

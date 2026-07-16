@@ -10,20 +10,18 @@ URI: [analysis_api_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/an
 
 
 
-
 ```mermaid
  classDiagram
     class MassSpectrometryStandardRun
-    click MassSpectrometryStandardRun href "../MassSpectrometryStandardRun"
+    click MassSpectrometryStandardRun href "../MassSpectrometryStandardRun/"
       MassSpectrometryStandardRun : calibration_data
         
           
     
-    
-    
-    
-    MassSpectrometryStandardRun --> "0..1" MassSpectrometryInstrumentData : calibration_data
-    click MassSpectrometryInstrumentData href "../MassSpectrometryInstrumentData"
+        
+        
+        MassSpectrometryStandardRun --> "0..1" MassSpectrometryInstrumentData : calibration_data
+        click MassSpectrometryInstrumentData href "../MassSpectrometryInstrumentData/"
     
 
         
@@ -31,11 +29,10 @@ URI: [analysis_api_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/an
         
           
     
-    
-    
-    
-    MassSpectrometryStandardRun --> "0..1" PurchasedMaterial : calibration_standard
-    click PurchasedMaterial href "../PurchasedMaterial"
+        
+        
+        MassSpectrometryStandardRun --> "0..1" PurchasedMaterial : calibration_standard
+        click PurchasedMaterial href "../PurchasedMaterial/"
     
 
         
@@ -43,22 +40,16 @@ URI: [analysis_api_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/an
         
           
     
-    
-    
-    
-    MassSpectrometryStandardRun --> "0..1" CalibrationTargetEnum : calibration_target
-    click CalibrationTargetEnum href "../CalibrationTargetEnum"
+        
+        
+        MassSpectrometryStandardRun --> "0..1" CalibrationTargetEnum : calibration_target
+        click CalibrationTargetEnum href "../CalibrationTargetEnum/"
     
 
         
       MassSpectrometryStandardRun : description
         
       MassSpectrometryStandardRun : id
-        
-          
-    
-    
-
         
       MassSpectrometryStandardRun : internal_calibration
         
@@ -72,7 +63,6 @@ URI: [analysis_api_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/an
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -83,7 +73,7 @@ URI: [analysis_api_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/an
 | [calibration_target](calibration_target.md) | 0..1 <br/> [CalibrationTargetEnum](CalibrationTargetEnum.md) | The measurement being calibrated | direct |
 | [calibration_standard](calibration_standard.md) | 0..1 <br/> [PurchasedMaterial](PurchasedMaterial.md) | The reference standard used for calibration | direct |
 | [calibration_data](calibration_data.md) | 0..1 <br/> [MassSpectrometryInstrumentData](MassSpectrometryInstrumentData.md) | Reference to the raw instrument data file used for calibration | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 
 
 
@@ -100,9 +90,13 @@ URI: [analysis_api_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/an
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -128,7 +122,6 @@ URI: [analysis_api_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/an
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -139,7 +132,6 @@ URI: [analysis_api_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/an
 ```yaml
 name: MassSpectrometryStandardRun
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 slots:
 - name
 - description
@@ -236,7 +228,6 @@ attributes:
 ```yaml
 name: MassSpectrometryStandardRun
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

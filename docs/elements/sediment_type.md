@@ -29,18 +29,30 @@ Alias: sediment_type
 
 
 
-
 ## Properties
 
-* Range: [SedimentTypeEnum](SedimentTypeEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [SedimentTypeEnum](SedimentTypeEnum.md) |
+| Domain Of | [SedimentSample](SedimentSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

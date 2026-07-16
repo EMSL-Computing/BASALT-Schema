@@ -15,13 +15,12 @@ URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema
 
 
 
-
 ```mermaid
  classDiagram
     class SoilSample
-    click SoilSample href "../SoilSample"
+    click SoilSample href "../SoilSample/"
       Sample <|-- SoilSample
-        click Sample href "../Sample"
+        click Sample href "../Sample/"
       
       SoilSample : agrochem_addition
         
@@ -39,11 +38,10 @@ URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema
         
           
     
-    
-    
-    
-    SoilSample --> "0..1" BioticRelationshipEnum : biotic_relationship
-    click BioticRelationshipEnum href "../BioticRelationshipEnum"
+        
+        
+        SoilSample --> "0..1" BioticRelationshipEnum : biotic_relationship
+        click BioticRelationshipEnum href "../BioticRelationshipEnum/"
     
 
         
@@ -84,11 +82,6 @@ URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema
       SoilSample : humidity_regm
         
       SoilSample : id
-        
-          
-    
-    
-
         
       SoilSample : isotope_exposure
         
@@ -136,11 +129,10 @@ URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema
         
           
     
-    
-    
-    
-    SoilSample --> "0..1" OxygenStatusEnum : oxygen_relationship
-    click OxygenStatusEnum href "../OxygenStatusEnum"
+        
+        
+        SoilSample --> "0..1" OxygenStatusEnum : oxygen_relationship
+        click OxygenStatusEnum href "../OxygenStatusEnum/"
     
 
         
@@ -162,11 +154,10 @@ URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema
         
           
     
-    
-    
-    
-    SoilSample --> "0..1" SampleStoreTempEnum : samp_store_temp
-    click SampleStoreTempEnum href "../SampleStoreTempEnum"
+        
+        
+        SoilSample --> "0..1" SampleStoreTempEnum : samp_store_temp
+        click SampleStoreTempEnum href "../SampleStoreTempEnum/"
     
 
         
@@ -180,11 +171,10 @@ URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema
         
           
     
-    
-    
-    
-    SoilSample --> "0..1" SamplingActivity : sampled_during
-    click SamplingActivity href "../SamplingActivity"
+        
+        
+        SoilSample --> "0..1" SamplingActivity : sampled_during
+        click SamplingActivity href "../SamplingActivity/"
     
 
         
@@ -198,11 +188,10 @@ URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema
         
           
     
-    
-    
-    
-    SoilSample --> "0..1" SoilHorizonEnum : soil_horizon
-    click SoilHorizonEnum href "../SoilHorizonEnum"
+        
+        
+        SoilSample --> "0..1" SoilHorizonEnum : soil_horizon
+        click SoilHorizonEnum href "../SoilHorizonEnum/"
     
 
         
@@ -210,11 +199,10 @@ URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema
         
           
     
-    
-    
-    
-    SoilSample --> "0..1" SoilSampleTypeEnum : soil_sample_type
-    click SoilSampleTypeEnum href "../SoilSampleTypeEnum"
+        
+        
+        SoilSample --> "0..1" SoilSampleTypeEnum : soil_sample_type
+        click SoilSampleTypeEnum href "../SoilSampleTypeEnum/"
     
 
         
@@ -224,11 +212,10 @@ URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema
         
           
     
-    
-    
-    
-    SoilSample --> "0..1" SoilTypeEnum : soil_type
-    click SoilTypeEnum href "../SoilTypeEnum"
+        
+        
+        SoilSample --> "0..1" SoilTypeEnum : soil_type
+        click SoilTypeEnum href "../SoilTypeEnum/"
     
 
         
@@ -242,11 +229,10 @@ URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema
         
           
     
-    
-    
-    
-    SoilSample --> "0..1" StorageConditionEnum : storage_condition
-    click StorageConditionEnum href "../StorageConditionEnum"
+        
+        
+        SoilSample --> "0..1" StorageConditionEnum : storage_condition
+        click StorageConditionEnum href "../StorageConditionEnum/"
     
 
         
@@ -282,7 +268,6 @@ URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema
 ## Inheritance
 * [Sample](Sample.md)
     * **SoilSample**
-
 
 
 ## Slots
@@ -366,7 +351,7 @@ URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema
 | [water_content](water_content.md) | 0..1 <br/> [String](String.md) | Water content measurement | direct |
 | [water_content_meth](water_content_meth.md) | 0..1 <br/> [String](String.md) | Reference or method used in determining the water content of soil | direct |
 | [watering_regm](watering_regm.md) | 0..1 <br/> [String](String.md) | Information about treatment involving an exposure to watering frequencies, tr... | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [Sample](Sample.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [Sample](Sample.md) |
 | [emsl_activity](emsl_activity.md) | 0..1 <br/> [String](String.md) | Nullable string linking a Sample or SamplingActivity to a named EMSL activity... | [Sample](Sample.md) |
@@ -380,9 +365,13 @@ URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -408,7 +397,6 @@ URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -420,7 +408,6 @@ URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema
 name: SoilSample
 description: A sample of soil collected from the environment.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slots:
 - agrochem_addition
@@ -637,7 +624,6 @@ attributes:
 name: SoilSample
 description: A sample of soil collected from the environment.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slot_usage:
   al_sat:
@@ -1676,8 +1662,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: SoilSample
     domain_of:
     - DataProduct

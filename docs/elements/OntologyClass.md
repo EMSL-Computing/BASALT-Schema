@@ -10,21 +10,15 @@ URI: [analysis_api_schema:OntologyClass](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ```mermaid
  classDiagram
     class OntologyClass
-    click OntologyClass href "../OntologyClass"
+    click OntologyClass href "../OntologyClass/"
       OntologyClass : alternative_identifiers
         
       OntologyClass : description
         
       OntologyClass : id
-        
-          
-    
-    
-
         
       OntologyClass : name
         
@@ -36,12 +30,11 @@ URI: [analysis_api_schema:OntologyClass](https://w3id.org/MONet/analysis-api-sch
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [alternative_identifiers](alternative_identifiers.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [name](name.md) | 0..1 <br/> [String](String.md) |  | direct |
@@ -54,9 +47,13 @@ URI: [analysis_api_schema:OntologyClass](https://w3id.org/MONet/analysis-api-sch
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -82,7 +79,6 @@ URI: [analysis_api_schema:OntologyClass](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -93,7 +89,6 @@ URI: [analysis_api_schema:OntologyClass](https://w3id.org/MONet/analysis-api-sch
 ```yaml
 name: OntologyClass
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id
@@ -242,7 +237,6 @@ attributes:
 ```yaml
 name: OntologyClass
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

@@ -15,24 +15,18 @@ URI: [analysis_api_schema:Configuration](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ```mermaid
  classDiagram
     class Configuration
-    click Configuration href "../Configuration"
+    click Configuration href "../Configuration/"
       Configuration <|-- MassSpectrometryConfiguration
-        click MassSpectrometryConfiguration href "../MassSpectrometryConfiguration"
+        click MassSpectrometryConfiguration href "../MassSpectrometryConfiguration/"
       Configuration <|-- ChromatographyConfiguration
-        click ChromatographyConfiguration href "../ChromatographyConfiguration"
+        click ChromatographyConfiguration href "../ChromatographyConfiguration/"
       
       Configuration : description
         
       Configuration : id
-        
-          
-    
-    
-
         
       Configuration : name
         
@@ -49,14 +43,19 @@ URI: [analysis_api_schema:Configuration](https://w3id.org/MONet/analysis-api-sch
     * [ChromatographyConfiguration](ChromatographyConfiguration.md)
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
+
+
+
+
+
+
 
 
 
@@ -67,8 +66,6 @@ URI: [analysis_api_schema:Configuration](https://w3id.org/MONet/analysis-api-sch
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -94,7 +91,6 @@ URI: [analysis_api_schema:Configuration](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -106,7 +102,6 @@ URI: [analysis_api_schema:Configuration](https://w3id.org/MONet/analysis-api-sch
 name: Configuration
 description: Record of configuration and/or settings for an activity.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 slots:
 - name
 - description
@@ -199,7 +194,6 @@ attributes:
 name: Configuration
 description: Record of configuration and/or settings for an activity.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

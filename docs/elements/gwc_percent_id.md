@@ -24,18 +24,37 @@ Alias: gwc_percent_id
 
 
 
-
 ## Properties
 
-* Range: [QuantityValue](QuantityValue.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [QuantityValue](QuantityValue.md) |
+| Domain Of | [GWCMoistureProduct](GWCMoistureProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [GWCMoistureProduct](GWCMoistureProduct.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

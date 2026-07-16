@@ -12,46 +12,38 @@ URI: [analysis_api_schema:SampleProcessing](https://w3id.org/MONet/analysis-api-
 
 
 
-
 ```mermaid
  classDiagram
     class SampleProcessing
-    click SampleProcessing href "../SampleProcessing"
+    click SampleProcessing href "../SampleProcessing/"
       SampleProcessing <|-- MediaPreparation
-        click MediaPreparation href "../MediaPreparation"
+        click MediaPreparation href "../MediaPreparation/"
       SampleProcessing <|-- CultureGrowth
-        click CultureGrowth href "../CultureGrowth"
+        click CultureGrowth href "../CultureGrowth/"
       SampleProcessing <|-- PlateSetupActivity
-        click PlateSetupActivity href "../PlateSetupActivity"
+        click PlateSetupActivity href "../PlateSetupActivity/"
       
       SampleProcessing : analysis_type
         
           
     
-    
-    
-    
-    SampleProcessing --> "0..1" RouteMethodEnum : analysis_type
-    click RouteMethodEnum href "../RouteMethodEnum"
+        
+        
+        SampleProcessing --> "0..1" RouteMethodEnum : analysis_type
+        click RouteMethodEnum href "../RouteMethodEnum/"
     
 
         
       SampleProcessing : id
         
-          
-    
-    
-
-        
       SampleProcessing : method_name
         
           
     
-    
-    
-    
-    SampleProcessing --> "0..1" MethodNameEnum : method_name
-    click MethodNameEnum href "../MethodNameEnum"
+        
+        
+        SampleProcessing --> "0..1" MethodNameEnum : method_name
+        click MethodNameEnum href "../MethodNameEnum/"
     
 
         
@@ -65,11 +57,10 @@ URI: [analysis_api_schema:SampleProcessing](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    SampleProcessing --> "0..1" Sample : uses_sample
-    click Sample href "../Sample"
+        
+        
+        SampleProcessing --> "0..1" Sample : uses_sample
+        click Sample href "../Sample/"
     
 
         
@@ -87,14 +78,13 @@ URI: [analysis_api_schema:SampleProcessing](https://w3id.org/MONet/analysis-api-
     * [PlateSetupActivity](PlateSetupActivity.md) [ [HasIncubationConditions](HasIncubationConditions.md)]
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | direct |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [analysis_type](analysis_type.md) | 0..1 <br/> [RouteMethodEnum](RouteMethodEnum.md) |  | direct |
 | [method_name](method_name.md) | 0..1 <br/> [MethodNameEnum](MethodNameEnum.md) |  | direct |
 | [processing_steps](processing_steps.md) | 1 <br/> [String](String.md) |  | direct |
@@ -117,13 +107,17 @@ URI: [analysis_api_schema:SampleProcessing](https://w3id.org/MONet/analysis-api-
 
 
 
+
+
+
+
 ## TODOs
 
 * why does this have both analysis type and method name, as enums, just set the range to the class
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -149,7 +143,6 @@ URI: [analysis_api_schema:SampleProcessing](https://w3id.org/MONet/analysis-api-
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -163,7 +156,6 @@ todos:
 - why does this have both analysis type and method name, as enums, just set the range
   to the class
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 slots:
 - protocol_url
@@ -303,7 +295,6 @@ todos:
 - why does this have both analysis type and method name, as enums, just set the range
   to the class
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 attributes:
   id:

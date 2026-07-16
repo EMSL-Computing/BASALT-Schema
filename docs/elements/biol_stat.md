@@ -30,18 +30,30 @@ Alias: biol_stat
 
 
 
-
 ## Properties
 
-* Range: [BiolStatEnum](BiolStatEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [BiolStatEnum](BiolStatEnum.md) |
+| Domain Of | [OtherUndescribedSample](OtherUndescribedSample.md), [PlantSample](PlantSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -17,13 +17,12 @@ URI: [analysis_api_schema:RespirationDataGenerationActivity](https://w3id.org/MO
 
 
 
-
 ```mermaid
  classDiagram
     class RespirationDataGenerationActivity
-    click RespirationDataGenerationActivity href "../RespirationDataGenerationActivity"
+    click RespirationDataGenerationActivity href "../RespirationDataGenerationActivity/"
       DataGenerationActivity <|-- RespirationDataGenerationActivity
-        click DataGenerationActivity href "../DataGenerationActivity"
+        click DataGenerationActivity href "../DataGenerationActivity/"
       
       RespirationDataGenerationActivity : acquisition_end_time
         
@@ -33,11 +32,10 @@ URI: [analysis_api_schema:RespirationDataGenerationActivity](https://w3id.org/MO
         
           
     
-    
-    
-    
-    RespirationDataGenerationActivity --> "0..1" ProcessedSample : analyte_id
-    click ProcessedSample href "../ProcessedSample"
+        
+        
+        RespirationDataGenerationActivity --> "0..1" ProcessedSample : analyte_id
+        click ProcessedSample href "../ProcessedSample/"
     
 
         
@@ -45,20 +43,14 @@ URI: [analysis_api_schema:RespirationDataGenerationActivity](https://w3id.org/MO
         
       RespirationDataGenerationActivity : id
         
-          
-    
-    
-
-        
       RespirationDataGenerationActivity : instrument_operator_id
         
           
     
-    
-    
-    
-    RespirationDataGenerationActivity --> "0..1" PersonValue : instrument_operator_id
-    click PersonValue href "../PersonValue"
+        
+        
+        RespirationDataGenerationActivity --> "0..1" PersonValue : instrument_operator_id
+        click PersonValue href "../PersonValue/"
     
 
         
@@ -66,11 +58,10 @@ URI: [analysis_api_schema:RespirationDataGenerationActivity](https://w3id.org/MO
         
           
     
-    
-    
-    
-    RespirationDataGenerationActivity --> "0..1" Instrument : instrument_used
-    click Instrument href "../Instrument"
+        
+        
+        RespirationDataGenerationActivity --> "0..1" Instrument : instrument_used
+        click Instrument href "../Instrument/"
     
 
         
@@ -78,11 +69,10 @@ URI: [analysis_api_schema:RespirationDataGenerationActivity](https://w3id.org/MO
         
           
     
-    
-    
-    
-    RespirationDataGenerationActivity --> "0..1" RespirationMethod : method_id
-    click RespirationMethod href "../RespirationMethod"
+        
+        
+        RespirationDataGenerationActivity --> "0..1" RespirationMethod : method_id
+        click RespirationMethod href "../RespirationMethod/"
     
 
         
@@ -106,7 +96,6 @@ URI: [analysis_api_schema:RespirationDataGenerationActivity](https://w3id.org/MO
     * **RespirationDataGenerationActivity**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -117,7 +106,7 @@ URI: [analysis_api_schema:RespirationDataGenerationActivity](https://w3id.org/MO
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [DataGenerationActivity](DataGenerationActivity.md) |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [DataGenerationActivity](DataGenerationActivity.md) |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [DataGenerationActivity](DataGenerationActivity.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataGenerationActivity](DataGenerationActivity.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
 | [analyte_id](analyte_id.md) | 0..1 <br/> [ProcessedSample](ProcessedSample.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
 | [acquisition_start_time](acquisition_start_time.md) | 1 <br/> [Datetime](Datetime.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
 | [acquisition_end_time](acquisition_end_time.md) | 1 <br/> [Datetime](Datetime.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
@@ -132,9 +121,13 @@ URI: [analysis_api_schema:RespirationDataGenerationActivity](https://w3id.org/MO
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -160,7 +153,6 @@ URI: [analysis_api_schema:RespirationDataGenerationActivity](https://w3id.org/MO
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -174,7 +166,6 @@ description: 'Data generation activity for soil respiration analysis.
 
   Captures CO2-C efflux measured per gram of soil.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: DataGenerationActivity
 attributes:
   method_id:
@@ -198,7 +189,6 @@ description: 'Data generation activity for soil respiration analysis.
 
   Captures CO2-C efflux measured per gram of soil.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: DataGenerationActivity
 attributes:
   method_id:

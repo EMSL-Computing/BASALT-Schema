@@ -10,13 +10,12 @@ URI: [analysis_api_schema:PHMethod](https://w3id.org/MONet/analysis-api-schema/P
 
 
 
-
 ```mermaid
  classDiagram
     class PHMethod
-    click PHMethod href "../PHMethod"
+    click PHMethod href "../PHMethod/"
       Method <|-- PHMethod
-        click Method href "../Method"
+        click Method href "../Method/"
       
       PHMethod : analytic
         
@@ -36,7 +35,6 @@ URI: [analysis_api_schema:PHMethod](https://w3id.org/MONet/analysis-api-schema/P
     * **PHMethod**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -53,9 +51,13 @@ URI: [analysis_api_schema:PHMethod](https://w3id.org/MONet/analysis-api-schema/P
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -81,7 +83,6 @@ URI: [analysis_api_schema:PHMethod](https://w3id.org/MONet/analysis-api-schema/P
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -92,7 +93,6 @@ URI: [analysis_api_schema:PHMethod](https://w3id.org/MONet/analysis-api-schema/P
 ```yaml
 name: PH_Method
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 slots:
 - location
@@ -115,7 +115,6 @@ attributes:
 ```yaml
 name: PH_Method
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 attributes:
   calibration:

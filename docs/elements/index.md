@@ -15,152 +15,152 @@ Name: analysis-api-schema
 | Class | Description |
 | --- | --- |
 | [Activity](Activity.md) | Something that happens over time and can use equipment |
-| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |
-| [AerosolArmSamplingActivity](AerosolArmSamplingActivity.md) | A sampling activity where aerosol samples were collected by ARM |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |
-| [AerosolSamplingActivity](AerosolSamplingActivity.md) | A sampling activity where aerosol samples were collected |
 | [AlternativeIdentifier](AlternativeIdentifier.md) |  |
-| [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | AMP2 plate measurement (OD, fluorescence, flow cytometry) |
-| [AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |
-| [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |
-| [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |
-| [AMP2WellMetadata](AMP2WellMetadata.md) | AMP2-specific per-well metadata |
 | [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |
-| [BulkDensityMethod](BulkDensityMethod.md) |  |
-| [BulkDensityProduct](BulkDensityProduct.md) |  |
 | [Changelog](Changelog.md) |  |
-| [ChromatographyConfiguration](ChromatographyConfiguration.md) | Configuration and settings for a chromatography run |
-| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |
-| [CommerciallyPurchasedSamplingActivity](CommerciallyPurchasedSamplingActivity.md) | Collection of samples that were purchased by the user |
 | [ConditioningValue](ConditioningValue.md) |  |
 | [Configuration](Configuration.md) | Record of configuration and/or settings for an activity |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ChromatographyConfiguration](ChromatographyConfiguration.md) | Configuration and settings for a chromatography run |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MassSpectrometryConfiguration](MassSpectrometryConfiguration.md) | Instrument configuration and setup for a mass spectrometry run |
 | [ContainerAxis](ContainerAxis.md) |  |
 | [ContainerType](ContainerType.md) |  |
 | [ControlledTermValue](ControlledTermValue.md) |  |
-| [CoreSection](CoreSection.md) | A section of a core sample (TOP, MID, BTM) |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |
-| [CultureEnvironmentalSamplingActivity](CultureEnvironmentalSamplingActivity.md) | Collection of samples from a culture of organisms taken from the environment |
-| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |
 | [Custodian](Custodian.md) |  |
 | [DataGenerationActivity](DataGenerationActivity.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | A record of the mass spectrometry run that generates a raw data product |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[NucleotideSequencing](NucleotideSequencing.md) | A lab activity in which DNA or RNA that was extracted from a sample is sequen... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[PlateDataGenerationActivity](PlateDataGenerationActivity.md) | Abstract base for plate measurement activities |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | AMP2 plate measurement (OD, fluorescence, flow cytometry) |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[RespirationDataGenerationActivity](RespirationDataGenerationActivity.md) | Data generation activity for soil respiration analysis |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[XRayDataGenerationActivity](XRayDataGenerationActivity.md) | Abstract base class for X-ray analytical methods including XRF (elemental) |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[XRDDataGenerationActivity](XRDDataGenerationActivity.md) | X-ray Diffraction (XRD) mineralogical analysis activity |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[XRFDataGenerationActivity](XRFDataGenerationActivity.md) | X-ray Fluorescence (XRF) elemental analysis activity |
 | [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |
 | [DataProduct](DataProduct.md) | Abstract base class for raw or processed data accessible in S3 storage |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[InstrumentData](InstrumentData.md) | An abstract parent class for raw data files generated by different kinds  of ... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MassSpectrometryInstrumentData](MassSpectrometryInstrumentData.md) | Raw data files output from a mass spectrometry instrument |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[NucleotideSequencingInstrumentData](NucleotideSequencingInstrumentData.md) | Data generated by a nucleotide sequencing instrument (e |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ProcessedData](ProcessedData.md) | A data product generated by a workflow execution |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[BulkDensityProduct](BulkDensityProduct.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ElementalAnalysisProduct](ElementalAnalysisProduct.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EnzymeProduct](EnzymeProduct.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[GWCMoistureProduct](GWCMoistureProduct.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[HydraulicPropertiesProduct](HydraulicPropertiesProduct.md) | Soil hydraulic parameters derived from HYPROP evaporation-experiment data |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[IonsAnalysisProduct](IonsAnalysisProduct.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MassSpectrometryDataProduct](MassSpectrometryDataProduct.md) | Abstract base for all mass spectrometry data products |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MetaproteomicsProduct](MetaproteomicsProduct.md) | Abstract parent class for processed metaproteomics data |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MolecularIdentificationProduct](MolecularIdentificationProduct.md) | a file containing molecular formula identifications that was output from a ma... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MSImageProduct](MSImageProduct.md) | one or more image(s) output from a mass spec data processing workflow (eg |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MetagenomicsProduct](MetagenomicsProduct.md) | Abstract base for all metagenomics data products |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MetagenomicsAnnotationProduct](MetagenomicsAnnotationProduct.md) | Top-level archive for functional annotation outputs (zip/tar stored in MinIO) |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MetagenomicsBinningProduct](MetagenomicsBinningProduct.md) | Top-level archive (zip/tar) for binning results stored in MinIO |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MetagenomicsGenePhylogenyProduct](MetagenomicsGenePhylogenyProduct.md) | Top-level archive for gene-based phylogeny outputs (zip/tar stored in MinIO) |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MicrobialBiomassProduct](MicrobialBiomassProduct.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[PHProduct](PHProduct.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[RespirationProduct](RespirationProduct.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TextureProduct](TextureProduct.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TomographyProduct](TomographyProduct.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[XRayDataProduct](XRayDataProduct.md) | Abstract base class for X-ray analytical data products |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[XRDPhaseProduct](XRDPhaseProduct.md) | X-ray Diffraction (XRD) mineral phase identification and quantification data |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[XRFElementalProduct](XRFElementalProduct.md) | X-ray Fluorescence (XRF) elemental concentration data |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SitePhoto](SitePhoto.md) |  |
 | [DOI](DOI.md) | A digital object identifier (DOI) representing a persistent link to a digital... |
-| [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |
-| [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |
-| [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |
-| [EcoplateWellMetadata](EcoplateWellMetadata.md) | Ecoplate-specific per-well metadata |
-| [ElementalAnalysisMethod](ElementalAnalysisMethod.md) |  |
-| [ElementalAnalysisProduct](ElementalAnalysisProduct.md) |  |
-| [EngineeredStrainSample](EngineeredStrainSample.md) | A sample containing a strain of an organism that has been subjected to geneti... |
-| [EngineeredStrainSamplingActivity](EngineeredStrainSamplingActivity.md) | Collection of samples from a culture of an engineered organism |
 | [Entity](Entity.md) | Base identifiable thing |
-| [EnzymeActivityMethod](EnzymeActivityMethod.md) |  |
-| [EnzymeProduct](EnzymeProduct.md) |  |
-| [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |
-| [FieldDeployedTerraformSamplingActivity](FieldDeployedTerraformSamplingActivity.md) | Collection of samples from a field-deployed Terraform device |
 | [FunctionalAnnotationIdentifier](FunctionalAnnotationIdentifier.md) |  |
-| [GravimetricWaterContentMethod](GravimetricWaterContentMethod.md) |  |
-| [GWCMoistureProduct](GWCMoistureProduct.md) |  |
 | [HasIncubationConditions](HasIncubationConditions.md) | Mixin for activities/setups that involve controlled incubation |
-| [HydraulicPropertiesMethod](HydraulicPropertiesMethod.md) |  |
-| [HydraulicPropertiesProduct](HydraulicPropertiesProduct.md) | Soil hydraulic parameters derived from HYPROP evaporation-experiment data |
 | [Instrument](Instrument.md) | A material entity that is designed to perform a function in a scientific  |
 | [InstrumentAlternativeIdentifier](InstrumentAlternativeIdentifier.md) |  |
 | [InstrumentCustodian](InstrumentCustodian.md) |  |
-| [InstrumentData](InstrumentData.md) | An abstract parent class for raw data files generated by different kinds  of ... |
-| [IonsAnalysisProduct](IonsAnalysisProduct.md) |  |
-| [KuoMethod](KuoMethod.md) |  |
 | [LabDevice](LabDevice.md) |  |
 | [LabProcessingActivity](LabProcessingActivity.md) | [NEW ABSTRACT CLASS] Higher-level abstract base for any activity that |
 | [MAOMProduct](MAOMProduct.md) |  |
-| [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md) | Instrument configuration and setup for a mass spectrometry run |
-| [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | A record of the mass spectrometry run that generates a raw data product |
-| [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |
-| [MassSpectrometryDataProduct](MassSpectrometryDataProduct.md) | Abstract base for all mass spectrometry data products |
-| [MassSpectrometryInstrumentData](MassSpectrometryInstrumentData.md) | Raw data files output from a mass spectrometry instrument |
 | [MassSpectrometryStandardRun](MassSpectrometryStandardRun.md) |  |
-| [MediaPreparation](MediaPreparation.md) | Activity that prepares a batch of growth media |
-| [MetagenomicsAnnotationProduct](MetagenomicsAnnotationProduct.md) | Top-level archive for functional annotation outputs (zip/tar stored in MinIO) |
-| [MetagenomicsBinningProduct](MetagenomicsBinningProduct.md) | Top-level archive (zip/tar) for binning results stored in MinIO |
-| [MetagenomicsGenePhylogenyProduct](MetagenomicsGenePhylogenyProduct.md) | Top-level archive for gene-based phylogeny outputs (zip/tar stored in MinIO) |
-| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |
-| [MetagenomicsProduct](MetagenomicsProduct.md) | Abstract base for all metagenomics data products |
-| [MetaproteomicsProduct](MetaproteomicsProduct.md) | Abstract parent class for processed metaproteomics data |
 | [Method](Method.md) |  |
-| [MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |
-| [MicrobialBiomassProduct](MicrobialBiomassProduct.md) |  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |
-| [MixedCultureSamplingActivity](MixedCultureSamplingActivity.md) | Collection of samples from a mixed culture |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[BulkDensityMethod](BulkDensityMethod.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ElementalAnalysisMethod](ElementalAnalysisMethod.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EnzymeActivityMethod](EnzymeActivityMethod.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[GravimetricWaterContentMethod](GravimetricWaterContentMethod.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[HydraulicPropertiesMethod](HydraulicPropertiesMethod.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[KuoMethod](KuoMethod.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[PHMethod](PHMethod.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[RespirationMethod](RespirationMethod.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TextureMethod](TextureMethod.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TOCTNMethod](TOCTNMethod.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[XrayComputedTomographyMethod](XrayComputedTomographyMethod.md) |  |
 | [MobilePhaseSegment](MobilePhaseSegment.md) | A segment of the mobile phase used in chromatography during mass spectrometry |
-| [MolecularIdentificationProduct](MolecularIdentificationProduct.md) | a file containing molecular formula identifications that was output from a ma... |
-| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |
-| [MonetSoilSamplingActivity](MonetSoilSamplingActivity.md) | Collection of soil cores according to the MONet soil sampling protocol |
-| [MSImageProduct](MSImageProduct.md) | one or more image(s) output from a mass spec data processing workflow (eg |
-| [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) |  |
-| [NucleotideSequencing](NucleotideSequencing.md) | A lab activity in which DNA or RNA that was extracted from a sample is sequen... |
-| [NucleotideSequencingInstrumentData](NucleotideSequencingInstrumentData.md) | Data generated by a nucleotide sequencing instrument (e |
 | [OntologyClass](OntologyClass.md) |  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |
-| [OtherUndescribedSamplingActivity](OtherUndescribedSamplingActivity.md) | Collection of samples from source that does not fit into any of the other cat... |
 | [PersonValue](PersonValue.md) |  |
-| [PHMethod](PHMethod.md) |  |
-| [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) |  |
-| [PHProduct](PHProduct.md) |  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |
-| [PlantSamplingActivity](PlantSamplingActivity.md) | Collection of samples associated with plants |
-| [PlateDataGenerationActivity](PlateDataGenerationActivity.md) | Abstract base for plate measurement activities |
 | [PlateProduct](PlateProduct.md) | Abstract base for plate measurement data products |
-| [PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |
-| [PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |
-| [ProcessedData](ProcessedData.md) | A data product generated by a workflow execution |
-| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |
 | [ProcessingSampleLink](ProcessingSampleLink.md) |  |
 | [ProjectParticipant](ProjectParticipant.md) | A record of a person and their role on an EMSL project |
 | [PurchasedMaterial](PurchasedMaterial.md) | [NEW ABSTRACT CLASS] Lightweight base for non-sample physical lab materials |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |
-| [PureCultureSamplingActivity](PureCultureSamplingActivity.md) | Collection of samples from a culture containing a single organism |
 | [QuantityValue](QuantityValue.md) | A quantity value with numeric value and optional unit |
-| [RespirationDataGenerationActivity](RespirationDataGenerationActivity.md) | Data generation activity for soil respiration analysis |
-| [RespirationMethod](RespirationMethod.md) |  |
-| [RespirationProduct](RespirationProduct.md) |  |
 | [Sample](Sample.md) | A physical sample collected from an environment |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EngineeredStrainSample](EngineeredStrainSample.md) | A sample containing a strain of an organism that has been subjected to geneti... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[PlantSample](PlantSample.md) | A sample containing plant material |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CoreSection](CoreSection.md) | A section of a core sample (TOP, MID, BTM) |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SoilSample](SoilSample.md) | A sample of soil collected from the environment |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[WaterSample](WaterSample.md) | A sample of water collected from the environment |
 | [SampleProcessing](SampleProcessing.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[StrainPurity](StrainPurity.md) | Purity check of a strain culture |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MediaPreparation](MediaPreparation.md) | Activity that prepares a batch of growth media |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |
 | [SamplingActivity](SamplingActivity.md) | An activity that involves the collection of a sample |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |
-| [SedimentSamplingActivity](SedimentSamplingActivity.md) | Collection of sediment samples from the environment |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[AerosolArmSamplingActivity](AerosolArmSamplingActivity.md) | A sampling activity where aerosol samples were collected by ARM |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[AerosolSamplingActivity](AerosolSamplingActivity.md) | A sampling activity where aerosol samples were collected |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CommerciallyPurchasedSamplingActivity](CommerciallyPurchasedSamplingActivity.md) | Collection of samples that were purchased by the user |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CultureEnvironmentalSamplingActivity](CultureEnvironmentalSamplingActivity.md) | Collection of samples from a culture of organisms taken from the environment |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EngineeredStrainSamplingActivity](EngineeredStrainSamplingActivity.md) | Collection of samples from a culture of an engineered organism |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FieldDeployedTerraformSamplingActivity](FieldDeployedTerraformSamplingActivity.md) | Collection of samples from a field-deployed Terraform device |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MixedCultureSamplingActivity](MixedCultureSamplingActivity.md) | Collection of samples from a mixed culture |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MonetSoilSamplingActivity](MonetSoilSamplingActivity.md) | Collection of soil cores according to the MONet soil sampling protocol |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[OtherUndescribedSamplingActivity](OtherUndescribedSamplingActivity.md) | Collection of samples from source that does not fit into any of the other cat... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[PlantSamplingActivity](PlantSamplingActivity.md) | Collection of samples associated with plants |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[PureCultureSamplingActivity](PureCultureSamplingActivity.md) | Collection of samples from a culture containing a single organism |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SedimentSamplingActivity](SedimentSamplingActivity.md) | Collection of sediment samples from the environment |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SoilSamplingActivity](SoilSamplingActivity.md) | Collection of soil samples from the environment |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SynthesizedMaterialSamplingActivity](SynthesizedMaterialSamplingActivity.md) | Collection of samples of a synthesized material |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TerraformSamplingActivity](TerraformSamplingActivity.md) | Collection of samples from a Terraform device |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[WaterSamplingActivity](WaterSamplingActivity.md) | Collection of water samples |
 | [Site](Site.md) | Site-level metadata for a specific location from which a set of samples are c... |
-| [SitePhoto](SitePhoto.md) |  |
 | [SoftwareControlledTermValue](SoftwareControlledTermValue.md) |  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |
-| [SoilSamplingActivity](SoilSamplingActivity.md) | Collection of soil samples from the environment |
-| [StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |
-| [StrainPurity](StrainPurity.md) | Purity check of a strain culture |
 | [Study](Study.md) |  |
-| [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |
-| [SynthesizedMaterialSamplingActivity](SynthesizedMaterialSamplingActivity.md) | Collection of samples of a synthesized material |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |
-| [TerraformSamplingActivity](TerraformSamplingActivity.md) | Collection of samples from a Terraform device |
-| [TextureMethod](TextureMethod.md) |  |
-| [TextureProduct](TextureProduct.md) |  |
 | [TextValue](TextValue.md) |  |
 | [TimestampValue](TimestampValue.md) |  |
-| [TOCTNMethod](TOCTNMethod.md) |  |
-| [TomographyProduct](TomographyProduct.md) |  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |
-| [WaterSamplingActivity](WaterSamplingActivity.md) | Collection of water samples |
 | [WellMetadata](WellMetadata.md) | Base structure for per-well metadata in plate setup |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[AMP2WellMetadata](AMP2WellMetadata.md) | AMP2-specific per-well metadata |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EcoplateWellMetadata](EcoplateWellMetadata.md) | Ecoplate-specific per-well metadata |
 | [WellReading](WellReading.md) | Per-well measurement data |
 | [WEOMProduct](WEOMProduct.md) |  |
 | [WorkflowExecutionFunctionalAnnotation](WorkflowExecutionFunctionalAnnotation.md) |  |
-| [XrayComputedTomographyMethod](XrayComputedTomographyMethod.md) |  |
-| [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | Abstract base class for X-ray analytical methods including XRF (elemental) |
-| [XRayDataProduct](XRayDataProduct.md) | Abstract base class for X-ray analytical data products |
-| [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | X-ray Diffraction (XRD) mineralogical analysis activity |
-| [XRDPhaseProduct](XRDPhaseProduct.md) | X-ray Diffraction (XRD) mineral phase identification and quantification data |
-| [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | X-ray Fluorescence (XRF) elemental analysis activity |
-| [XRFElementalProduct](XRFElementalProduct.md) | X-ray Fluorescence (XRF) elemental concentration data |
 | [ZipDownload](ZipDownload.md) |  |
 
 
@@ -1050,8 +1050,10 @@ Name: analysis-api-schema
 | [Sparqlpath](Sparqlpath.md) | A string encoding a SPARQL Property Path |
 | [String](String.md) | A character string |
 | [Time](Time.md) | A time object represents a (local) time of day, independent of any particular... |
+| [TimestampTz](TimestampTz.md) |  |
 | [Uri](Uri.md) | a complete URI |
 | [Uriorcurie](Uriorcurie.md) | a URI or a CURIE |
+| [Uuid](Uuid.md) |  |
 
 
 ## Subsets

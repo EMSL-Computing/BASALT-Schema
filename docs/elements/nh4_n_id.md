@@ -24,18 +24,37 @@ Alias: nh4_n_id
 
 
 
-
 ## Properties
 
-* Range: [QuantityValue](QuantityValue.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [QuantityValue](QuantityValue.md) |
+| Domain Of | [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -15,23 +15,21 @@ URI: [analysis_api_schema:MSImageProduct](https://w3id.org/MONet/analysis-api-sc
 
 
 
-
 ```mermaid
  classDiagram
     class MSImageProduct
-    click MSImageProduct href "../MSImageProduct"
+    click MSImageProduct href "../MSImageProduct/"
       MassSpectrometryDataProduct <|-- MSImageProduct
-        click MassSpectrometryDataProduct href "../MassSpectrometryDataProduct"
+        click MassSpectrometryDataProduct href "../MassSpectrometryDataProduct/"
       
       MSImageProduct : core_section
         
           
     
-    
-    
-    
-    MSImageProduct --> "0..1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        MSImageProduct --> "0..1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -40,11 +38,6 @@ URI: [analysis_api_schema:MSImageProduct](https://w3id.org/MONet/analysis-api-sc
       MSImageProduct : filesize
         
       MSImageProduct : id
-        
-          
-    
-    
-
         
       MSImageProduct : lims_barcode
         
@@ -58,11 +51,10 @@ URI: [analysis_api_schema:MSImageProduct](https://w3id.org/MONet/analysis-api-sc
         
           
     
-    
-    
-    
-    MSImageProduct --> "0..1" MassSpectrometryDataProcessingActivity : results_from_ms_processing
-    click MassSpectrometryDataProcessingActivity href "../MassSpectrometryDataProcessingActivity"
+        
+        
+        MSImageProduct --> "0..1" MassSpectrometryDataProcessingActivity : results_from_ms_processing
+        click MassSpectrometryDataProcessingActivity href "../MassSpectrometryDataProcessingActivity/"
     
 
         
@@ -76,11 +68,10 @@ URI: [analysis_api_schema:MSImageProduct](https://w3id.org/MONet/analysis-api-sc
         
           
     
-    
-    
-    
-    MSImageProduct --> "0..1" Sample : sample_id
-    click Sample href "../Sample"
+        
+        
+        MSImageProduct --> "0..1" Sample : sample_id
+        click Sample href "../Sample/"
     
 
         
@@ -104,7 +95,6 @@ URI: [analysis_api_schema:MSImageProduct](https://w3id.org/MONet/analysis-api-sc
             * **MSImageProduct**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -124,7 +114,13 @@ URI: [analysis_api_schema:MSImageProduct](https://w3id.org/MONet/analysis-api-sc
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | [DataProduct](DataProduct.md) |
 | [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | [DataProduct](DataProduct.md) |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProduct](DataProduct.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProduct](DataProduct.md) |
+
+
+
+
+
+
 
 
 
@@ -135,8 +131,6 @@ URI: [analysis_api_schema:MSImageProduct](https://w3id.org/MONet/analysis-api-sc
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -162,7 +156,6 @@ URI: [analysis_api_schema:MSImageProduct](https://w3id.org/MONet/analysis-api-sc
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -176,7 +169,6 @@ description: one or more image(s) output from a mass spec data processing workfl
   (eg. LESA, CoreMS QC plots). Should be a zip file containing all similar image outputs
   from one data processing workflow.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: MassSpectrometryDataProduct
 
 ```
@@ -191,7 +183,6 @@ description: one or more image(s) output from a mass spec data processing workfl
   (eg. LESA, CoreMS QC plots). Should be a zip file containing all similar image outputs
   from one data processing workflow.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: MassSpectrometryDataProduct
 attributes:
   results_from_ms_processing:
@@ -318,8 +309,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: MSImageProduct
     domain_of:
     - DataProduct

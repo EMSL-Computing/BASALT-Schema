@@ -7,10 +7,9 @@ _The fragmentation techniques used in mass spectrometry._
 
 
 
-URI: [FragmentationEnum](FragmentationEnum.md)
+URI: [analysis_api_schema:FragmentationEnum](https://w3id.org/MONet/analysis-api-schema/FragmentationEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | HCD | None | Higher-energy Collisional Dissociation |
@@ -31,9 +30,11 @@ URI: [FragmentationEnum](FragmentationEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

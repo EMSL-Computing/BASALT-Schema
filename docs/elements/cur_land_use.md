@@ -29,18 +29,30 @@ Alias: cur_land_use
 
 
 
-
 ## Properties
 
-* Range: [LandUseEnum](LandUseEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [LandUseEnum](LandUseEnum.md) |
+| Domain Of | [Site](Site.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

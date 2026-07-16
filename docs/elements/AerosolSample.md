@@ -15,23 +15,21 @@ URI: [analysis_api_schema:AerosolSample](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ```mermaid
  classDiagram
     class AerosolSample
-    click AerosolSample href "../AerosolSample"
+    click AerosolSample href "../AerosolSample/"
       Sample <|-- AerosolSample
-        click Sample href "../Sample"
+        click Sample href "../Sample/"
       
       AerosolSample : aerosol_type
         
           
     
-    
-    
-    
-    AerosolSample --> "1" AerosolTypeEnum : aerosol_type
-    click AerosolTypeEnum href "../AerosolTypeEnum"
+        
+        
+        AerosolSample --> "1" AerosolTypeEnum : aerosol_type
+        click AerosolTypeEnum href "../AerosolTypeEnum/"
     
 
         
@@ -67,11 +65,6 @@ URI: [analysis_api_schema:AerosolSample](https://w3id.org/MONet/analysis-api-sch
         
       AerosolSample : id
         
-          
-    
-    
-
-        
       AerosolSample : isotope_exposure
         
       AerosolSample : latitude
@@ -102,11 +95,10 @@ URI: [analysis_api_schema:AerosolSample](https://w3id.org/MONet/analysis-api-sch
         
           
     
-    
-    
-    
-    AerosolSample --> "0..1" PhotochemicalExposureEnum : photochemical_exposure
-    click PhotochemicalExposureEnum href "../PhotochemicalExposureEnum"
+        
+        
+        AerosolSample --> "0..1" PhotochemicalExposureEnum : photochemical_exposure
+        click PhotochemicalExposureEnum href "../PhotochemicalExposureEnum/"
     
 
         
@@ -122,11 +114,10 @@ URI: [analysis_api_schema:AerosolSample](https://w3id.org/MONet/analysis-api-sch
         
           
     
-    
-    
-    
-    AerosolSample --> "0..1" SampleStoreTempEnum : samp_store_temp
-    click SampleStoreTempEnum href "../SampleStoreTempEnum"
+        
+        
+        AerosolSample --> "0..1" SampleStoreTempEnum : samp_store_temp
+        click SampleStoreTempEnum href "../SampleStoreTempEnum/"
     
 
         
@@ -140,11 +131,10 @@ URI: [analysis_api_schema:AerosolSample](https://w3id.org/MONet/analysis-api-sch
         
           
     
-    
-    
-    
-    AerosolSample --> "0..1" SamplingActivity : sampled_during
-    click SamplingActivity href "../SamplingActivity"
+        
+        
+        AerosolSample --> "0..1" SamplingActivity : sampled_during
+        click SamplingActivity href "../SamplingActivity/"
     
 
         
@@ -160,11 +150,10 @@ URI: [analysis_api_schema:AerosolSample](https://w3id.org/MONet/analysis-api-sch
         
           
     
-    
-    
-    
-    AerosolSample --> "0..1" StorageConditionEnum : storage_condition
-    click StorageConditionEnum href "../StorageConditionEnum"
+        
+        
+        AerosolSample --> "0..1" StorageConditionEnum : storage_condition
+        click StorageConditionEnum href "../StorageConditionEnum/"
     
 
         
@@ -186,7 +175,6 @@ URI: [analysis_api_schema:AerosolSample](https://w3id.org/MONet/analysis-api-sch
 ## Inheritance
 * [Sample](Sample.md)
     * **AerosolSample**
-
 
 
 ## Slots
@@ -237,7 +225,7 @@ URI: [analysis_api_schema:AerosolSample](https://w3id.org/MONet/analysis-api-sch
 | [technical_reps](technical_reps.md) | 0..1 <br/> [Integer](Integer.md) | Number of technical replicates for the sample | direct |
 | [temperature_exposure](temperature_exposure.md) | 0..1 <br/> [String](String.md) | The range of temperatures at which it is safe to store a label that has been ... | direct |
 | [volatile_org_comp](volatile_org_comp.md) | 0..1 <br/> [String](String.md) | Volatile organic compounds are organic chemicals that have a high vapour pres... | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [Sample](Sample.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [Sample](Sample.md) |
 | [emsl_activity](emsl_activity.md) | 0..1 <br/> [String](String.md) | Nullable string linking a Sample or SamplingActivity to a named EMSL activity... | [Sample](Sample.md) |
@@ -251,9 +239,13 @@ URI: [analysis_api_schema:AerosolSample](https://w3id.org/MONet/analysis-api-sch
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -279,7 +271,6 @@ URI: [analysis_api_schema:AerosolSample](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -291,7 +282,6 @@ URI: [analysis_api_schema:AerosolSample](https://w3id.org/MONet/analysis-api-sch
 name: AerosolSample
 description: An aerosol sample collected from the environment.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slots:
 - aerosol_type
@@ -443,7 +433,6 @@ attributes:
 name: AerosolSample
 description: An aerosol sample collected from the environment.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slot_usage:
   analysis_type:
@@ -1165,8 +1154,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: AerosolSample
     domain_of:
     - DataProduct

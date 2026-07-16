@@ -24,18 +24,37 @@ Alias: model
 
 
 
-
 ## Properties
 
-* Range: [ModelEnum](ModelEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [ModelEnum](ModelEnum.md) |
+| Domain Of | [Instrument](Instrument.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [Instrument](Instrument.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

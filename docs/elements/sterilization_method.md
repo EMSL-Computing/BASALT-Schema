@@ -29,18 +29,30 @@ Alias: sterilization_method
 
 
 
-
 ## Properties
 
-* Range: [SterilizationMethodEnum](SterilizationMethodEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [SterilizationMethodEnum](SterilizationMethodEnum.md) |
+| Domain Of | [MediaPreparation](MediaPreparation.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

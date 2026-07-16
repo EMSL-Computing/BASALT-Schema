@@ -29,20 +29,31 @@ Alias: purchased_material_type
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [PurchasedMaterial](PurchasedMaterial.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

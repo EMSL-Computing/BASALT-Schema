@@ -2,10 +2,9 @@
 
 
 
-URI: [ContainerTypeEnum](ContainerTypeEnum.md)
+URI: [analysis_api_schema:ContainerTypeEnum](https://w3id.org/MONet/analysis-api-schema/ContainerTypeEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | screw_top_conical | None |  |
@@ -18,9 +17,11 @@ URI: [ContainerTypeEnum](ContainerTypeEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

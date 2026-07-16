@@ -2,10 +2,9 @@
 
 
 
-URI: [InstrumentAltIdProviderEnum](InstrumentAltIdProviderEnum.md)
+URI: [analysis_api_schema:InstrumentAltIdProviderEnum](https://w3id.org/MONet/analysis-api-schema/InstrumentAltIdProviderEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | nexus | None |  |
@@ -25,9 +24,11 @@ URI: [InstrumentAltIdProviderEnum](InstrumentAltIdProviderEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

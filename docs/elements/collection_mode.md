@@ -29,18 +29,30 @@ Alias: collection_mode
 
 
 
-
 ## Properties
 
-* Range: [MassSpectrumCollectionModeEnum](MassSpectrumCollectionModeEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [MassSpectrumCollectionModeEnum](MassSpectrumCollectionModeEnum.md) |
+| Domain Of | [MassSpectrometryInstrumentData](MassSpectrometryInstrumentData.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

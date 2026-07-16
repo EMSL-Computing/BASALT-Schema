@@ -24,20 +24,38 @@ Alias: workflow_id
 
 
 
-
 ## Properties
 
-* Range: [DataProcessingActivity](DataProcessingActivity.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [DataProcessingActivity](DataProcessingActivity.md) |
+| Domain Of | [WorkflowExecutionFunctionalAnnotation](WorkflowExecutionFunctionalAnnotation.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [WorkflowExecutionFunctionalAnnotation](WorkflowExecutionFunctionalAnnotation.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

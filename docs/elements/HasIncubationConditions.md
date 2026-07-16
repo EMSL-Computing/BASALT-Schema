@@ -21,15 +21,14 @@ URI: [analysis_api_schema:HasIncubationConditions](https://w3id.org/MONet/analys
 
 
 
-
 ```mermaid
  classDiagram
     class HasIncubationConditions
-    click HasIncubationConditions href "../HasIncubationConditions"
+    click HasIncubationConditions href "../HasIncubationConditions/"
       HasIncubationConditions <|-- CultureGrowth
-        click CultureGrowth href "../CultureGrowth"
+        click CultureGrowth href "../CultureGrowth/"
       HasIncubationConditions <|-- PlateSetupActivity
-        click PlateSetupActivity href "../PlateSetupActivity"
+        click PlateSetupActivity href "../PlateSetupActivity/"
       
       HasIncubationConditions : agitation_speed_rpm
         
@@ -37,11 +36,10 @@ URI: [analysis_api_schema:HasIncubationConditions](https://w3id.org/MONet/analys
         
           
     
-    
-    
-    
-    HasIncubationConditions --> "0..1" OxygenStatusEnum : oxygen_relationship
-    click OxygenStatusEnum href "../OxygenStatusEnum"
+        
+        
+        HasIncubationConditions --> "0..1" OxygenStatusEnum : oxygen_relationship
+        click OxygenStatusEnum href "../OxygenStatusEnum/"
     
 
         
@@ -54,6 +52,12 @@ URI: [analysis_api_schema:HasIncubationConditions](https://w3id.org/MONet/analys
 
 
 <!-- no inheritance hierarchy -->
+
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Mixin | Yes |
 
 
 ## Slots
@@ -80,9 +84,13 @@ URI: [analysis_api_schema:HasIncubationConditions](https://w3id.org/MONet/analys
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -108,7 +116,6 @@ URI: [analysis_api_schema:HasIncubationConditions](https://w3id.org/MONet/analys
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -126,7 +133,6 @@ description: 'Mixin for activities/setups that involve controlled incubation.
 
   of the sampleProcessing is_a tree.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 mixin: true
 slots:
 - temperature_celsius
@@ -149,7 +155,6 @@ description: 'Mixin for activities/setups that involve controlled incubation.
 
   of the sampleProcessing is_a tree.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 mixin: true
 attributes:
   temperature_celsius:

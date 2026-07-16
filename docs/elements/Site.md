@@ -15,11 +15,10 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
 
 
 
-
 ```mermaid
  classDiagram
     class Site
-    click Site href "../Site"
+    click Site href "../Site/"
       Site : alt
         
       Site : annual_precpt
@@ -34,11 +33,10 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
         
           
     
-    
-    
-    
-    Site --> "0..1" LandUseEnum : cur_land_use
-    click LandUseEnum href "../LandUseEnum"
+        
+        
+        Site --> "0..1" LandUseEnum : cur_land_use
+        click LandUseEnum href "../LandUseEnum/"
     
 
         
@@ -52,11 +50,10 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
         
           
     
-    
-    
-    
-    Site --> "0..1" DrainageClassEnum : drainage_class
-    click DrainageClassEnum href "../DrainageClassEnum"
+        
+        
+        Site --> "0..1" DrainageClassEnum : drainage_class
+        click DrainageClassEnum href "../DrainageClassEnum/"
     
 
         
@@ -68,11 +65,10 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
         
           
     
-    
-    
-    
-    Site --> "0..1" FAOClassEnum : fao_class
-    click FAOClassEnum href "../FAOClassEnum"
+        
+        
+        Site --> "0..1" FAOClassEnum : fao_class
+        click FAOClassEnum href "../FAOClassEnum/"
     
 
         
@@ -86,20 +82,14 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
         
           
     
-    
-    
-    
-    Site --> "1" GrowthFacilityEnum : growth_facil
-    click GrowthFacilityEnum href "../GrowthFacilityEnum"
+        
+        
+        Site --> "1" GrowthFacilityEnum : growth_facil
+        click GrowthFacilityEnum href "../GrowthFacilityEnum/"
     
 
         
       Site : id
-        
-          
-    
-    
-
         
       Site : latitude
         
@@ -129,11 +119,10 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
         
           
     
-    
-    
-    
-    Site --> "0..1" ProfilePositionEnum : profile_position
-    click ProfilePositionEnum href "../ProfilePositionEnum"
+        
+        
+        Site --> "0..1" ProfilePositionEnum : profile_position
+        click ProfilePositionEnum href "../ProfilePositionEnum/"
     
 
         
@@ -149,11 +138,10 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
         
           
     
-    
-    
-    
-    Site --> "0..1" TillageEnum : tillage
-    click TillageEnum href "../TillageEnum"
+        
+        
+        Site --> "0..1" TillageEnum : tillage
+        click TillageEnum href "../TillageEnum/"
     
 
         
@@ -164,7 +152,6 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
 
 
 <!-- no inheritance hierarchy -->
-
 
 ## Slots
 
@@ -205,7 +192,7 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
 | [slope_aspect](slope_aspect.md) | 0..1 <br/> [String](String.md) | The direction a slope faces | direct |
 | [slope_gradient](slope_gradient.md) | 0..1 <br/> [String](String.md) | Commonly called 'slope' | direct |
 | [tillage](tillage.md) | 0..1 <br/> [TillageEnum](TillageEnum.md) | Note method(s) used for tilling | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 
 
 
@@ -238,14 +225,18 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
 
 
 
+
+
+
+
 ## TODOs
 
 * If we only have one Site class, we can't require Site slots based on sample type. We could add this in the submission schema JSON conversion perhaps.
 * fao_class - can this vary within a site or change with time?
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -271,7 +262,6 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -288,7 +278,6 @@ todos:
   We could add this in the submission schema JSON conversion perhaps.
 - fao_class - can this vary within a site or change with time?
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 slots:
 - name
 - description
@@ -438,7 +427,6 @@ todos:
   We could add this in the submission schema JSON conversion perhaps.
 - fao_class - can this vary within a site or change with time?
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 slot_usage:
   elev:
     name: elev

@@ -7,10 +7,9 @@ _Sample biotic relationships_
 
 
 
-URI: [BioticRelationshipEnum](BioticRelationshipEnum.md)
+URI: [analysis_api_schema:BioticRelationshipEnum](https://w3id.org/MONet/analysis-api-schema/BioticRelationshipEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | free_living | None | Free-living organism |
@@ -30,6 +29,9 @@ URI: [BioticRelationshipEnum](BioticRelationshipEnum.md)
 
 
 
+
+
+
 ## Aliases
 
 
@@ -37,9 +39,8 @@ URI: [BioticRelationshipEnum](BioticRelationshipEnum.md)
 
 
 
+
 ## Identifier and Mapping Information
-
-
 
 
 

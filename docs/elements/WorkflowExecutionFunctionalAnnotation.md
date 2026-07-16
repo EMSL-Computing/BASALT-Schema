@@ -10,27 +10,20 @@ URI: [analysis_api_schema:WorkflowExecutionFunctionalAnnotation](https://w3id.or
 
 
 
-
 ```mermaid
  classDiagram
     class WorkflowExecutionFunctionalAnnotation
-    click WorkflowExecutionFunctionalAnnotation href "../WorkflowExecutionFunctionalAnnotation"
+    click WorkflowExecutionFunctionalAnnotation href "../WorkflowExecutionFunctionalAnnotation/"
       WorkflowExecutionFunctionalAnnotation : count
-        
-          
-    
-    
-
         
       WorkflowExecutionFunctionalAnnotation : functional_annotation_id
         
           
     
-    
-    
-    
-    WorkflowExecutionFunctionalAnnotation --> "1" FunctionalAnnotationIdentifier : functional_annotation_id
-    click FunctionalAnnotationIdentifier href "../FunctionalAnnotationIdentifier"
+        
+        
+        WorkflowExecutionFunctionalAnnotation --> "1" FunctionalAnnotationIdentifier : functional_annotation_id
+        click FunctionalAnnotationIdentifier href "../FunctionalAnnotationIdentifier/"
     
 
         
@@ -38,11 +31,10 @@ URI: [analysis_api_schema:WorkflowExecutionFunctionalAnnotation](https://w3id.or
         
           
     
-    
-    
-    
-    WorkflowExecutionFunctionalAnnotation --> "1" DataProcessingActivity : workflow_id
-    click DataProcessingActivity href "../DataProcessingActivity"
+        
+        
+        WorkflowExecutionFunctionalAnnotation --> "1" DataProcessingActivity : workflow_id
+        click DataProcessingActivity href "../DataProcessingActivity/"
     
 
         
@@ -54,14 +46,19 @@ URI: [analysis_api_schema:WorkflowExecutionFunctionalAnnotation](https://w3id.or
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [workflow_id](workflow_id.md) | 1 <br/> [DataProcessingActivity](DataProcessingActivity.md) |  | direct |
 | [functional_annotation_id](functional_annotation_id.md) | 1 <br/> [FunctionalAnnotationIdentifier](FunctionalAnnotationIdentifier.md) |  | direct |
-| [count](count.md) | 0..1 <br/> numeric |  | direct |
+| [count](count.md) | 0..1 <br/> [Double](Double.md) |  | direct |
+
+
+
+
+
+
 
 
 
@@ -72,8 +69,6 @@ URI: [analysis_api_schema:WorkflowExecutionFunctionalAnnotation](https://w3id.or
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -99,7 +94,6 @@ URI: [analysis_api_schema:WorkflowExecutionFunctionalAnnotation](https://w3id.or
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -110,7 +104,6 @@ URI: [analysis_api_schema:WorkflowExecutionFunctionalAnnotation](https://w3id.or
 ```yaml
 name: WorkflowExecutionFunctionalAnnotation
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   workflow_id:
     name: workflow_id
@@ -134,7 +127,7 @@ attributes:
     rank: 1000
     domain_of:
     - WorkflowExecutionFunctionalAnnotation
-    range: numeric
+    range: double
 
 ```
 </details>
@@ -145,7 +138,6 @@ attributes:
 ```yaml
 name: WorkflowExecutionFunctionalAnnotation
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   workflow_id:
     name: workflow_id
@@ -175,7 +167,7 @@ attributes:
     owner: WorkflowExecutionFunctionalAnnotation
     domain_of:
     - WorkflowExecutionFunctionalAnnotation
-    range: numeric
+    range: double
 
 ```
 </details>

@@ -2,10 +2,9 @@
 
 
 
-URI: [MassSpecResolutionEnum](MassSpecResolutionEnum.md)
+URI: [analysis_api_schema:MassSpecResolutionEnum](https://w3id.org/MONet/analysis-api-schema/MassSpecResolutionEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | high | None | higher than unit resolution |
@@ -25,9 +24,11 @@ URI: [MassSpecResolutionEnum](MassSpecResolutionEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

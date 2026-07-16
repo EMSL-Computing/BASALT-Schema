@@ -2,15 +2,14 @@
 
 
 
-URI: [CalibrationTargetEnum](CalibrationTargetEnum.md)
+URI: [analysis_api_schema:CalibrationTargetEnum](https://w3id.org/MONet/analysis-api-schema/CalibrationTargetEnum)
 
 ## Permissible Values
-
-| Value | Meaning | Description |
-| --- | --- | --- |
-| mass_charge_ratio | None |  |
-| retention_time | None |  |
-| retention_index | None |  |
+| Value | Meaning | Description | Additional Info |
+| --- | --- | --- | --- |
+| mass_charge_ratio | None |  | Title: m/z<br>|
+| retention_time | None |  ||
+| retention_index | None |  ||
 
 
 
@@ -26,9 +25,11 @@ URI: [CalibrationTargetEnum](CalibrationTargetEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

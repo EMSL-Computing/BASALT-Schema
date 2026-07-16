@@ -29,18 +29,30 @@ Alias: profile_position
 
 
 
-
 ## Properties
 
-* Range: [ProfilePositionEnum](ProfilePositionEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [ProfilePositionEnum](ProfilePositionEnum.md) |
+| Domain Of | [Site](Site.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

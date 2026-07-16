@@ -7,33 +7,32 @@ _NEON ecological domains_
 
 
 
-URI: [NEONDomainEnum](NEONDomainEnum.md)
+URI: [analysis_api_schema:NEONDomainEnum](https://w3id.org/MONet/analysis-api-schema/NEONDomainEnum)
 
 ## Permissible Values
-
-| Value | Meaning | Description |
-| --- | --- | --- |
-| northeast | None |  |
-| mid_atlantic | None |  |
-| southeast | None |  |
-| atlantic_neotropical | None |  |
-| great_lakes | None |  |
-| prairie_peninsula | None |  |
-| appalachians_and_cumberland_plateau | None |  |
-| ozarks_complex | None |  |
-| northern_plains | None |  |
-| central_plains | None |  |
-| southern_plains | None |  |
-| desert_southwest | None |  |
-| northern_rockies | None |  |
-| southern_rockies_and_colorado_plateau | None |  |
-| great_basin | None |  |
-| sierra_nevada | None |  |
-| pacific_northwest | None |  |
-| pacific_southwest | None |  |
-| tundra | None |  |
-| taiga | None |  |
-| pacific_tropical | None |  |
+| Value | Meaning | Description | Additional Info |
+| --- | --- | --- | --- |
+| northeast | None |  | Title: Northeast domain<br>|
+| mid_atlantic | None |  | Title: Mid-Atlantic domain<br>|
+| southeast | None |  | Title: Southeast domain<br>|
+| atlantic_neotropical | None |  | Title: Atlantic Neotropical domain<br>|
+| great_lakes | None |  | Title: Great Lakes domain<br>|
+| prairie_peninsula | None |  | Title: Prairie Peninsula domain<br>|
+| appalachians_and_cumberland_plateau | None |  | Title: Appalachians and Cumberland Plateau domain<br>|
+| ozarks_complex | None |  | Title: Ozarks Complex domain<br>|
+| northern_plains | None |  | Title: Northern Plains domain<br>|
+| central_plains | None |  | Title: Central Plains domain<br>|
+| southern_plains | None |  | Title: Southern Plains domain<br>|
+| desert_southwest | None |  | Title: Desert Southwest domain<br>|
+| northern_rockies | None |  | Title: Northern Rockies domain<br>|
+| southern_rockies_and_colorado_plateau | None |  | Title: Southern Rockies and Colorado Plateau domain<br>|
+| great_basin | None |  | Title: Great Basin domain<br>|
+| sierra_nevada | None |  | Title: Sierra Nevada domain<br>|
+| pacific_northwest | None |  | Title: Pacific Northwest domain<br>|
+| pacific_southwest | None |  | Title: Pacific Southwest domain<br>|
+| tundra | None |  | Title: Tundra domain<br>|
+| taiga | None |  | Title: Taiga domain<br>|
+| pacific_tropical | None |  | Title: Pacific Tropical domain<br>|
 
 
 
@@ -49,9 +48,11 @@ URI: [NEONDomainEnum](NEONDomainEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

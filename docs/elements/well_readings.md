@@ -28,10 +28,9 @@ Alias: well_readings
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |  no  |
 | [AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |  no  |
 | [PlateProduct](PlateProduct.md) | Abstract base for plate measurement data products |  no  |
-
+| [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |  no  |
 
 
 
@@ -40,9 +39,21 @@ Alias: well_readings
 
 ## Properties
 
-* Range: [WellReading](WellReading.md)
+### Type and Range
 
-* Multivalued: True
+| Property | Value |
+| --- | --- |
+| Range | [WellReading](WellReading.md) |
+| Domain Of | [PlateProduct](PlateProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Multivalued | Yes |
+
+
+
 
 
 
@@ -52,9 +63,9 @@ Alias: well_readings
 
 * decide how to represent in backend (normalized child table with FK to PlateSetupActivity, array column, or other)
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

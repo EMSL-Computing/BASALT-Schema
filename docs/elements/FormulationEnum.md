@@ -7,10 +7,9 @@ _Method used to formulate media._
 
 
 
-URI: [FormulationEnum](FormulationEnum.md)
+URI: [analysis_api_schema:FormulationEnum](https://w3id.org/MONet/analysis-api-schema/FormulationEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | manual_mix | None | Manually mixed from individual components |
@@ -31,13 +30,15 @@ URI: [FormulationEnum](FormulationEnum.md)
 
 
 
+
+
 ## TODOs
 
 * could be made generic for mixing more than just media.
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

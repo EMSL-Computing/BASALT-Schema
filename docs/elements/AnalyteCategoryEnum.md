@@ -7,10 +7,9 @@ _bundling common terms for different omics types by biomolecule being analyzed_
 
 
 
-URI: [AnalyteCategoryEnum](AnalyteCategoryEnum.md)
+URI: [analysis_api_schema:AnalyteCategoryEnum](https://w3id.org/MONet/analysis-api-schema/AnalyteCategoryEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | dna | None |  |
@@ -35,9 +34,11 @@ URI: [AnalyteCategoryEnum](AnalyteCategoryEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

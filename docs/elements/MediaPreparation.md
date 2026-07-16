@@ -41,23 +41,21 @@ URI: [analysis_api_schema:MediaPreparation](https://w3id.org/MONet/analysis-api-
 
 
 
-
 ```mermaid
  classDiagram
     class MediaPreparation
-    click MediaPreparation href "../MediaPreparation"
+    click MediaPreparation href "../MediaPreparation/"
       SampleProcessing <|-- MediaPreparation
-        click SampleProcessing href "../SampleProcessing"
+        click SampleProcessing href "../SampleProcessing/"
       
       MediaPreparation : analysis_type
         
           
     
-    
-    
-    
-    MediaPreparation --> "0..1" RouteMethodEnum : analysis_type
-    click RouteMethodEnum href "../RouteMethodEnum"
+        
+        
+        MediaPreparation --> "0..1" RouteMethodEnum : analysis_type
+        click RouteMethodEnum href "../RouteMethodEnum/"
     
 
         
@@ -69,22 +67,16 @@ URI: [analysis_api_schema:MediaPreparation](https://w3id.org/MONet/analysis-api-
         
       MediaPreparation : id
         
-          
-    
-    
-
-        
       MediaPreparation : media_additions
         
       MediaPreparation : media_formulation
         
           
     
-    
-    
-    
-    MediaPreparation --> "0..1" FormulationEnum : media_formulation
-    click FormulationEnum href "../FormulationEnum"
+        
+        
+        MediaPreparation --> "0..1" FormulationEnum : media_formulation
+        click FormulationEnum href "../FormulationEnum/"
     
 
         
@@ -94,11 +86,10 @@ URI: [analysis_api_schema:MediaPreparation](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    MediaPreparation --> "0..1" MediaTypeEnum : media_type
-    click MediaTypeEnum href "../MediaTypeEnum"
+        
+        
+        MediaPreparation --> "0..1" MediaTypeEnum : media_type
+        click MediaTypeEnum href "../MediaTypeEnum/"
     
 
         
@@ -106,11 +97,10 @@ URI: [analysis_api_schema:MediaPreparation](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    MediaPreparation --> "0..1" MethodNameEnum : method_name
-    click MethodNameEnum href "../MethodNameEnum"
+        
+        
+        MediaPreparation --> "0..1" MethodNameEnum : method_name
+        click MethodNameEnum href "../MethodNameEnum/"
     
 
         
@@ -128,11 +118,10 @@ URI: [analysis_api_schema:MediaPreparation](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    MediaPreparation --> "0..1" SterilizationMethodEnum : sterilization_method
-    click SterilizationMethodEnum href "../SterilizationMethodEnum"
+        
+        
+        MediaPreparation --> "0..1" SterilizationMethodEnum : sterilization_method
+        click SterilizationMethodEnum href "../SterilizationMethodEnum/"
     
 
         
@@ -142,11 +131,10 @@ URI: [analysis_api_schema:MediaPreparation](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    MediaPreparation --> "0..1" Sample : uses_sample
-    click Sample href "../Sample"
+        
+        
+        MediaPreparation --> "0..1" Sample : uses_sample
+        click Sample href "../Sample/"
     
 
         
@@ -162,7 +150,6 @@ URI: [analysis_api_schema:MediaPreparation](https://w3id.org/MONet/analysis-api-
 ## Inheritance
 * [SampleProcessing](SampleProcessing.md)
     * **MediaPreparation**
-
 
 
 ## Slots
@@ -183,11 +170,15 @@ URI: [analysis_api_schema:MediaPreparation](https://w3id.org/MONet/analysis-api-
 | [creation_date](creation_date.md) | 0..1 <br/> [Date](Date.md) | Date the entity or preparation was created | direct |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
-| [id](id.md) | 1 <br/> uuid |  | [SampleProcessing](SampleProcessing.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [analysis_type](analysis_type.md) | 0..1 <br/> [RouteMethodEnum](RouteMethodEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [method_name](method_name.md) | 0..1 <br/> [MethodNameEnum](MethodNameEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [processing_steps](processing_steps.md) | 1 <br/> [String](String.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [uses_sample](uses_sample.md) | 0..1 <br/> [Sample](Sample.md) |  | [SampleProcessing](SampleProcessing.md) |
+
+
+
+
 
 
 
@@ -202,9 +193,9 @@ URI: [analysis_api_schema:MediaPreparation](https://w3id.org/MONet/analysis-api-
 * storage_condt as enum?
 * media range?
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -224,7 +215,6 @@ URI: [analysis_api_schema:MediaPreparation](https://w3id.org/MONet/analysis-api-
 | ---  | ---  |
 | self | analysis_api_schema:MediaPreparation |
 | native | analysis_api_schema:MediaPreparation |
-
 
 
 
@@ -252,7 +242,6 @@ todos:
 - storage_condt as enum?
 - media range?
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: SampleProcessing
 slots:
 - media_type
@@ -288,7 +277,6 @@ todos:
 - storage_condt as enum?
 - media range?
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: SampleProcessing
 attributes:
   media_type:

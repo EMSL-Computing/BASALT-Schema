@@ -29,20 +29,37 @@ Alias: slope_gradient
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Regex pattern: `^\d+(\.\d+)?\s*percent$`
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [Site](Site.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Value Constraints
+
+| Property | Value |
+| --- | --- |
+| Regex Pattern | `^\d+(\.\d+)?\s*percent$` |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

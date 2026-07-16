@@ -10,11 +10,10 @@ URI: [analysis_api_schema:ContainerAxis](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ```mermaid
  classDiagram
     class ContainerAxis
-    click ContainerAxis href "../ContainerAxis"
+    click ContainerAxis href "../ContainerAxis/"
       ContainerAxis : name
         
       ContainerAxis : values
@@ -26,7 +25,6 @@ URI: [analysis_api_schema:ContainerAxis](https://w3id.org/MONet/analysis-api-sch
 
 
 <!-- no inheritance hierarchy -->
-
 
 ## Slots
 
@@ -50,13 +48,17 @@ URI: [analysis_api_schema:ContainerAxis](https://w3id.org/MONet/analysis-api-sch
 
 
 
+
+
+
+
 ## TODOs
 
 * I'm only including this in case we need it to sync up with L7 in some way
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -82,7 +84,6 @@ URI: [analysis_api_schema:ContainerAxis](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -95,7 +96,6 @@ name: ContainerAxis
 todos:
 - I'm only including this in case we need it to sync up with L7 in some way
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   name:
     name: name
@@ -141,7 +141,6 @@ name: ContainerAxis
 todos:
 - I'm only including this in case we need it to sync up with L7 in some way
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   name:
     name: name

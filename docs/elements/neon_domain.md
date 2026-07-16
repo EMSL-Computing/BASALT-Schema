@@ -20,18 +20,29 @@ Alias: neon_domain
 
 
 
-
 ## Properties
 
-* Range: [NEONDomainEnum](NEONDomainEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [NEONDomainEnum](NEONDomainEnum.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

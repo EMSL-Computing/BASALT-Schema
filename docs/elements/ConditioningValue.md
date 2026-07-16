@@ -10,11 +10,10 @@ URI: [analysis_api_schema:ConditioningValue](https://w3id.org/MONet/analysis-api
 
 
 
-
 ```mermaid
  classDiagram
     class ConditioningValue
-    click ConditioningValue href "../ConditioningValue"
+    click ConditioningValue href "../ConditioningValue/"
       ConditioningValue : gas
         
       ConditioningValue : has_raw_value
@@ -35,7 +34,6 @@ URI: [analysis_api_schema:ConditioningValue](https://w3id.org/MONet/analysis-api
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -55,9 +53,13 @@ URI: [analysis_api_schema:ConditioningValue](https://w3id.org/MONet/analysis-api
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -83,7 +85,6 @@ URI: [analysis_api_schema:ConditioningValue](https://w3id.org/MONet/analysis-api
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -94,7 +95,6 @@ URI: [analysis_api_schema:ConditioningValue](https://w3id.org/MONet/analysis-api
 ```yaml
 name: ConditioningValue
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id
@@ -227,7 +227,6 @@ attributes:
 ```yaml
 name: ConditioningValue
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

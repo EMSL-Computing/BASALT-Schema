@@ -17,21 +17,15 @@ URI: [analysis_api_schema:Activity](https://w3id.org/MONet/analysis-api-schema/A
 
 
 
-
 ```mermaid
  classDiagram
     class Activity
-    click Activity href "../Activity"
+    click Activity href "../Activity/"
       Activity : description
         
       Activity : ended_at_time
         
       Activity : id
-        
-          
-    
-    
-
         
       Activity : name
         
@@ -39,11 +33,10 @@ URI: [analysis_api_schema:Activity](https://w3id.org/MONet/analysis-api-schema/A
         
           
     
-    
-    
-    
-    Activity --> "0..1" InstitutionEnum : processing_institution
-    click InstitutionEnum href "../InstitutionEnum"
+        
+        
+        Activity --> "0..1" InstitutionEnum : processing_institution
+        click InstitutionEnum href "../InstitutionEnum/"
     
 
         
@@ -59,14 +52,13 @@ URI: [analysis_api_schema:Activity](https://w3id.org/MONet/analysis-api-schema/A
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [ended_at_time](ended_at_time.md) | 0..1 <br/> [Datetime](Datetime.md) |  | direct |
 | [processing_institution](processing_institution.md) | 0..1 <br/> [InstitutionEnum](InstitutionEnum.md) | The institution where the activity took place | direct |
 | [protocol_link](protocol_link.md) | 0..1 <br/> [String](String.md) | A link to a protocol that describes the steps and parameters of the activity | direct |
@@ -80,9 +72,13 @@ URI: [analysis_api_schema:Activity](https://w3id.org/MONet/analysis-api-schema/A
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -108,7 +104,6 @@ URI: [analysis_api_schema:Activity](https://w3id.org/MONet/analysis-api-schema/A
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -120,7 +115,6 @@ URI: [analysis_api_schema:Activity](https://w3id.org/MONet/analysis-api-schema/A
 name: Activity
 description: Something that happens over time and can use equipment.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 slots:
 - name
@@ -249,7 +243,6 @@ attributes:
 name: Activity
 description: Something that happens over time and can use equipment.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 attributes:
   id:

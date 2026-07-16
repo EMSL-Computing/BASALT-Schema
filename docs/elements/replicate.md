@@ -22,14 +22,13 @@ Alias: replicate
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) |  |  no  |
 | [CoreSection](CoreSection.md) | A section of a core sample (TOP, MID, BTM) |  no  |
-| [WEOMProduct](WEOMProduct.md) |  |  no  |
-| [MAOMProduct](MAOMProduct.md) |  |  no  |
 | [MicrobialBiomassProduct](MicrobialBiomassProduct.md) |  |  no  |
-| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  yes  |
+| [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) |  |  no  |
+| [WEOMProduct](WEOMProduct.md) |  |  no  |
 | [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) |  |  no  |
-
+| [MAOMProduct](MAOMProduct.md) |  |  no  |
+| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  yes  |
 
 
 
@@ -38,7 +37,20 @@ Alias: replicate
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Integer](Integer.md) |
+| Domain Of | [MAOMProduct](MAOMProduct.md), [MicrobialBiomassProduct](MicrobialBiomassProduct.md), [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md), [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md), [WEOMProduct](WEOMProduct.md), [ProcessedSample](ProcessedSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
 
 
 
@@ -48,9 +60,9 @@ Alias: replicate
 
 * reconcile replicate modelling
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

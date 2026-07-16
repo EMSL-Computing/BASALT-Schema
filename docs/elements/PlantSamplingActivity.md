@@ -15,13 +15,12 @@ URI: [analysis_api_schema:PlantSamplingActivity](https://w3id.org/MONet/analysis
 
 
 
-
 ```mermaid
  classDiagram
     class PlantSamplingActivity
-    click PlantSamplingActivity href "../PlantSamplingActivity"
+    click PlantSamplingActivity href "../PlantSamplingActivity/"
       SamplingActivity <|-- PlantSamplingActivity
-        click SamplingActivity href "../SamplingActivity"
+        click SamplingActivity href "../SamplingActivity/"
       
       PlantSamplingActivity : collection_date
         
@@ -32,11 +31,6 @@ URI: [analysis_api_schema:PlantSamplingActivity](https://w3id.org/MONet/analysis
       PlantSamplingActivity : emsl_activity
         
       PlantSamplingActivity : id
-        
-          
-    
-    
-
         
       PlantSamplingActivity : name
         
@@ -52,11 +46,10 @@ URI: [analysis_api_schema:PlantSamplingActivity](https://w3id.org/MONet/analysis
         
           
     
-    
-    
-    
-    PlantSamplingActivity --> "0..1" Site : sampled_at_site
-    click Site href "../Site"
+        
+        
+        PlantSamplingActivity --> "0..1" Site : sampled_at_site
+        click Site href "../Site/"
     
 
         
@@ -76,7 +69,6 @@ URI: [analysis_api_schema:PlantSamplingActivity](https://w3id.org/MONet/analysis
     * **PlantSamplingActivity**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -86,7 +78,7 @@ URI: [analysis_api_schema:PlantSamplingActivity](https://w3id.org/MONet/analysis
 | [sample_collection_dev](sample_collection_dev.md) | 0..1 <br/> [String](String.md) | The device used to collect an environmental sample | direct |
 | [sample_collection_method](sample_collection_method.md) | 0..1 <br/> [String](String.md) | The method used to collect an environmental sample | direct |
 | [weather](weather.md) | 0..1 <br/> [String](String.md) | The state of the atmosphere at a given time and place with respect to variabl... | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [SamplingActivity](SamplingActivity.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [SamplingActivity](SamplingActivity.md) |
 | [project](project.md) | 0..1 <br/> [Integer](Integer.md) | Identifier for the user project associated with the entity or activity | [SamplingActivity](SamplingActivity.md) |
@@ -103,9 +95,13 @@ URI: [analysis_api_schema:PlantSamplingActivity](https://w3id.org/MONet/analysis
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -131,7 +127,6 @@ URI: [analysis_api_schema:PlantSamplingActivity](https://w3id.org/MONet/analysis
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -143,7 +138,6 @@ URI: [analysis_api_schema:PlantSamplingActivity](https://w3id.org/MONet/analysis
 name: PlantSamplingActivity
 description: Collection of samples associated with plants.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: SamplingActivity
 slots:
 - collection_time
@@ -241,7 +235,6 @@ attributes:
 name: PlantSamplingActivity
 description: Collection of samples associated with plants.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: SamplingActivity
 attributes:
   id:
@@ -504,8 +497,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: PlantSamplingActivity
     domain_of:
     - DataProduct

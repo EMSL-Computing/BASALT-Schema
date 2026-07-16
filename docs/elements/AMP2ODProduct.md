@@ -23,13 +23,12 @@ URI: [analysis_api_schema:AMP2ODProduct](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ```mermaid
  classDiagram
     class AMP2ODProduct
-    click AMP2ODProduct href "../AMP2ODProduct"
+    click AMP2ODProduct href "../AMP2ODProduct/"
       PlateProduct <|-- AMP2ODProduct
-        click PlateProduct href "../PlateProduct"
+        click PlateProduct href "../PlateProduct/"
       
       AMP2ODProduct : blank_mean
         
@@ -47,11 +46,10 @@ URI: [analysis_api_schema:AMP2ODProduct](https://w3id.org/MONet/analysis-api-sch
         
           
     
-    
-    
-    
-    AMP2ODProduct --> "*" WellReading : well_readings
-    click WellReading href "../WellReading"
+        
+        
+        AMP2ODProduct --> "*" WellReading : well_readings
+        click WellReading href "../WellReading/"
     
 
         
@@ -65,7 +63,6 @@ URI: [analysis_api_schema:AMP2ODProduct](https://w3id.org/MONet/analysis-api-sch
 ## Inheritance
 * [PlateProduct](PlateProduct.md)
     * **AMP2ODProduct**
-
 
 
 ## Slots
@@ -88,9 +85,13 @@ URI: [analysis_api_schema:AMP2ODProduct](https://w3id.org/MONet/analysis-api-sch
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -116,7 +117,6 @@ URI: [analysis_api_schema:AMP2ODProduct](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -135,7 +135,6 @@ description: 'AMP2 optical density measurement product.
 
   v1 origin: plate-general.yaml AMP2ODProduct'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: PlateProduct
 slots:
 - plate_reader_model
@@ -157,7 +156,6 @@ description: 'AMP2 optical density measurement product.
 
   v1 origin: plate-general.yaml AMP2ODProduct'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: PlateProduct
 attributes:
   plate_reader_model:

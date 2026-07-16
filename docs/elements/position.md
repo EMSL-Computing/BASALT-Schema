@@ -17,11 +17,10 @@ Alias: position
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EcoplateWellMetadata](EcoplateWellMetadata.md) | Ecoplate-specific per-well metadata |  no  |
-| [WellReading](WellReading.md) | Per-well measurement data |  no  |
-| [AMP2WellMetadata](AMP2WellMetadata.md) | AMP2-specific per-well metadata |  no  |
 | [WellMetadata](WellMetadata.md) | Base structure for per-well metadata in plate setup |  no  |
-
+| [EcoplateWellMetadata](EcoplateWellMetadata.md) | Ecoplate-specific per-well metadata |  no  |
+| [AMP2WellMetadata](AMP2WellMetadata.md) | AMP2-specific per-well metadata |  no  |
+| [WellReading](WellReading.md) | Per-well measurement data |  no  |
 
 
 
@@ -30,15 +29,28 @@ Alias: position
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [WellMetadata](WellMetadata.md), [WellReading](WellReading.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

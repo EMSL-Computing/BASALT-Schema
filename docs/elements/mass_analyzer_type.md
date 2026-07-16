@@ -29,18 +29,37 @@ Alias: mass_analyzer_type
 
 
 
-
 ## Properties
 
-* Range: [MassAnalyzerEnum](MassAnalyzerEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [MassAnalyzerEnum](MassAnalyzerEnum.md) |
+| Domain Of | [Instrument](Instrument.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [Instrument](Instrument.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

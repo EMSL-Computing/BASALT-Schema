@@ -24,18 +24,37 @@ Alias: site_photo_type
 
 
 
-
 ## Properties
 
-* Range: [SitePhotoCategoryEnum](SitePhotoCategoryEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [SitePhotoCategoryEnum](SitePhotoCategoryEnum.md) |
+| Domain Of | [SitePhoto](SitePhoto.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [SitePhoto](SitePhoto.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

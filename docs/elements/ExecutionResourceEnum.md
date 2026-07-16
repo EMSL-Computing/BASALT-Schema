@@ -7,10 +7,9 @@ _The computing resource or facility where the processing was executed._
 
 
 
-URI: [ExecutionResourceEnum](ExecutionResourceEnum.md)
+URI: [analysis_api_schema:ExecutionResourceEnum](https://w3id.org/MONet/analysis-api-schema/ExecutionResourceEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | nersc_cori | None | NERSC Cori supercomputer |
@@ -32,9 +31,11 @@ URI: [ExecutionResourceEnum](ExecutionResourceEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

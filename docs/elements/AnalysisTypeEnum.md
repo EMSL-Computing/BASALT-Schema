@@ -7,10 +7,9 @@ _Enumeration of common analyses performed on samples shipped to EMSL_
 
 
 
-URI: [AnalysisTypeEnum](AnalysisTypeEnum.md)
+URI: [analysis_api_schema:AnalysisTypeEnum](https://w3id.org/MONet/analysis-api-schema/AnalysisTypeEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | metabolome | None |  |
@@ -37,9 +36,11 @@ URI: [AnalysisTypeEnum](AnalysisTypeEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

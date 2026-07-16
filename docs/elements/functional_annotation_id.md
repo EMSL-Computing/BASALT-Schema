@@ -24,20 +24,38 @@ Alias: functional_annotation_id
 
 
 
-
 ## Properties
 
-* Range: [FunctionalAnnotationIdentifier](FunctionalAnnotationIdentifier.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [FunctionalAnnotationIdentifier](FunctionalAnnotationIdentifier.md) |
+| Domain Of | [WorkflowExecutionFunctionalAnnotation](WorkflowExecutionFunctionalAnnotation.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [WorkflowExecutionFunctionalAnnotation](WorkflowExecutionFunctionalAnnotation.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

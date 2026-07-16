@@ -31,18 +31,30 @@ Alias: trait
 
 
 
-
 ## Properties
 
-* Range: [IntendedTraitEnum](IntendedTraitEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [IntendedTraitEnum](IntendedTraitEnum.md) |
+| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

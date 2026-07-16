@@ -22,12 +22,11 @@ Alias: wavelength_nm
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |  no  |
 | [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |  no  |
-| [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |  no  |
-| [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | AMP2 plate measurement (OD, fluorescence, flow cytometry) |  no  |
 | [PlateProduct](PlateProduct.md) | Abstract base for plate measurement data products |  no  |
-
+| [AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |  no  |
+| [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | AMP2 plate measurement (OD, fluorescence, flow cytometry) |  no  |
+| [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |  no  |
 
 
 
@@ -36,17 +35,29 @@ Alias: wavelength_nm
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [Integer](Integer.md) |
+| Domain Of | [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md), [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md), [PlateProduct](PlateProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

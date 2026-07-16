@@ -24,18 +24,37 @@ Alias: total_carbon_id
 
 
 
-
 ## Properties
 
-* Range: [QuantityValue](QuantityValue.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [QuantityValue](QuantityValue.md) |
+| Domain Of | [ElementalAnalysisProduct](ElementalAnalysisProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [ElementalAnalysisProduct](ElementalAnalysisProduct.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

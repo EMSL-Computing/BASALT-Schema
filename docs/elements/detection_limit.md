@@ -24,20 +24,38 @@ Alias: detection_limit
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [KuoMethod](KuoMethod.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [KuoMethod](KuoMethod.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

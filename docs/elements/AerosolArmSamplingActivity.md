@@ -15,13 +15,12 @@ URI: [analysis_api_schema:AerosolArmSamplingActivity](https://w3id.org/MONet/ana
 
 
 
-
 ```mermaid
  classDiagram
     class AerosolArmSamplingActivity
-    click AerosolArmSamplingActivity href "../AerosolArmSamplingActivity"
+    click AerosolArmSamplingActivity href "../AerosolArmSamplingActivity/"
       SamplingActivity <|-- AerosolArmSamplingActivity
-        click SamplingActivity href "../SamplingActivity"
+        click SamplingActivity href "../SamplingActivity/"
       
       AerosolArmSamplingActivity : collection_date
         
@@ -31,11 +30,6 @@ URI: [analysis_api_schema:AerosolArmSamplingActivity](https://w3id.org/MONet/ana
         
       AerosolArmSamplingActivity : id
         
-          
-    
-    
-
-        
       AerosolArmSamplingActivity : name
         
       AerosolArmSamplingActivity : project
@@ -44,11 +38,10 @@ URI: [analysis_api_schema:AerosolArmSamplingActivity](https://w3id.org/MONet/ana
         
           
     
-    
-    
-    
-    AerosolArmSamplingActivity --> "0..1" Site : sampled_at_site
-    click Site href "../Site"
+        
+        
+        AerosolArmSamplingActivity --> "0..1" Site : sampled_at_site
+        click Site href "../Site/"
     
 
         
@@ -66,12 +59,11 @@ URI: [analysis_api_schema:AerosolArmSamplingActivity](https://w3id.org/MONet/ana
     * **AerosolArmSamplingActivity**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [SamplingActivity](SamplingActivity.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [SamplingActivity](SamplingActivity.md) |
 | [project](project.md) | 0..1 <br/> [Integer](Integer.md) | Identifier for the user project associated with the entity or activity | [SamplingActivity](SamplingActivity.md) |
@@ -88,9 +80,13 @@ URI: [analysis_api_schema:AerosolArmSamplingActivity](https://w3id.org/MONet/ana
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -116,7 +112,6 @@ URI: [analysis_api_schema:AerosolArmSamplingActivity](https://w3id.org/MONet/ana
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -128,7 +123,6 @@ URI: [analysis_api_schema:AerosolArmSamplingActivity](https://w3id.org/MONet/ana
 name: AerosolArmSamplingActivity
 description: A sampling activity where aerosol samples were collected by ARM.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: SamplingActivity
 slot_usage:
   humidity:
@@ -225,7 +219,6 @@ attributes:
 name: AerosolArmSamplingActivity
 description: A sampling activity where aerosol samples were collected by ARM.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: SamplingActivity
 slot_usage:
   humidity:
@@ -383,8 +376,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: AerosolArmSamplingActivity
     domain_of:
     - DataProduct

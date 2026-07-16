@@ -35,12 +35,23 @@ Alias: well_metadata
 
 
 
-
 ## Properties
 
-* Range: [WellMetadata](WellMetadata.md)
+### Type and Range
 
-* Multivalued: True
+| Property | Value |
+| --- | --- |
+| Range | [WellMetadata](WellMetadata.md) |
+| Domain Of | [PlateSetupActivity](PlateSetupActivity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Multivalued | Yes |
+
+
+
 
 
 
@@ -50,9 +61,9 @@ Alias: well_metadata
 
 * decide how to represent in backend (normalized child table with FK to PlateSetupActivity, array column, or other)
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

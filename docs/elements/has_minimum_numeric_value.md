@@ -24,18 +24,37 @@ Alias: has_minimum_numeric_value
 
 
 
-
 ## Properties
 
-* Range: numeric
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Double](Double.md) |
+| Domain Of | [QuantityValue](QuantityValue.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [QuantityValue](QuantityValue.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -70,7 +89,7 @@ alias: has_minimum_numeric_value
 owner: QuantityValue
 domain_of:
 - QuantityValue
-range: numeric
+range: double
 
 ```
 </details>

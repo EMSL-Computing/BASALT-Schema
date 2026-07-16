@@ -29,18 +29,37 @@ Alias: doi_category
 
 
 
-
 ## Properties
 
-* Range: [DoiCategoryEnum](DoiCategoryEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [DoiCategoryEnum](DoiCategoryEnum.md) |
+| Domain Of | [DOI](DOI.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [DOI](DOI.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -15,23 +15,21 @@ URI: [analysis_api_schema:MolecularIdentificationProduct](https://w3id.org/MONet
 
 
 
-
 ```mermaid
  classDiagram
     class MolecularIdentificationProduct
-    click MolecularIdentificationProduct href "../MolecularIdentificationProduct"
+    click MolecularIdentificationProduct href "../MolecularIdentificationProduct/"
       MassSpectrometryDataProduct <|-- MolecularIdentificationProduct
-        click MassSpectrometryDataProduct href "../MassSpectrometryDataProduct"
+        click MassSpectrometryDataProduct href "../MassSpectrometryDataProduct/"
       
       MolecularIdentificationProduct : core_section
         
           
     
-    
-    
-    
-    MolecularIdentificationProduct --> "0..1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        MolecularIdentificationProduct --> "0..1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -40,11 +38,6 @@ URI: [analysis_api_schema:MolecularIdentificationProduct](https://w3id.org/MONet
       MolecularIdentificationProduct : filesize
         
       MolecularIdentificationProduct : id
-        
-          
-    
-    
-
         
       MolecularIdentificationProduct : lims_barcode
         
@@ -58,11 +51,10 @@ URI: [analysis_api_schema:MolecularIdentificationProduct](https://w3id.org/MONet
         
           
     
-    
-    
-    
-    MolecularIdentificationProduct --> "0..1" MassSpectrometryDataProcessingActivity : results_from_ms_processing
-    click MassSpectrometryDataProcessingActivity href "../MassSpectrometryDataProcessingActivity"
+        
+        
+        MolecularIdentificationProduct --> "0..1" MassSpectrometryDataProcessingActivity : results_from_ms_processing
+        click MassSpectrometryDataProcessingActivity href "../MassSpectrometryDataProcessingActivity/"
     
 
         
@@ -76,11 +68,10 @@ URI: [analysis_api_schema:MolecularIdentificationProduct](https://w3id.org/MONet
         
           
     
-    
-    
-    
-    MolecularIdentificationProduct --> "0..1" Sample : sample_id
-    click Sample href "../Sample"
+        
+        
+        MolecularIdentificationProduct --> "0..1" Sample : sample_id
+        click Sample href "../Sample/"
     
 
         
@@ -104,7 +95,6 @@ URI: [analysis_api_schema:MolecularIdentificationProduct](https://w3id.org/MONet
             * **MolecularIdentificationProduct**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -124,7 +114,13 @@ URI: [analysis_api_schema:MolecularIdentificationProduct](https://w3id.org/MONet
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | [DataProduct](DataProduct.md) |
 | [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | [DataProduct](DataProduct.md) |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProduct](DataProduct.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProduct](DataProduct.md) |
+
+
+
+
+
+
 
 
 
@@ -135,8 +131,6 @@ URI: [analysis_api_schema:MolecularIdentificationProduct](https://w3id.org/MONet
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -162,7 +156,6 @@ URI: [analysis_api_schema:MolecularIdentificationProduct](https://w3id.org/MONet
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -176,7 +169,6 @@ description: a file containing molecular formula identifications that was output
   a mass spec data processing workflow (eg. .csv of m/z and molecular formulae, .hdf5
   file).
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: MassSpectrometryDataProduct
 
 ```
@@ -191,7 +183,6 @@ description: a file containing molecular formula identifications that was output
   a mass spec data processing workflow (eg. .csv of m/z and molecular formulae, .hdf5
   file).
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: MassSpectrometryDataProduct
 attributes:
   results_from_ms_processing:
@@ -318,8 +309,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: MolecularIdentificationProduct
     domain_of:
     - DataProduct

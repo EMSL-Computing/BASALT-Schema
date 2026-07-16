@@ -24,18 +24,37 @@ Alias: silt_pct_id
 
 
 
-
 ## Properties
 
-* Range: [QuantityValue](QuantityValue.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [QuantityValue](QuantityValue.md) |
+| Domain Of | [TextureProduct](TextureProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [TextureProduct](TextureProduct.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

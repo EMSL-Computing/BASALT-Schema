@@ -29,18 +29,30 @@ Alias: tillage
 
 
 
-
 ## Properties
 
-* Range: [TillageEnum](TillageEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [TillageEnum](TillageEnum.md) |
+| Domain Of | [Site](Site.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

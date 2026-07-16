@@ -29,10 +29,23 @@ Alias: organism_name
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
 
 
 
@@ -44,9 +57,8 @@ Alias: organism_name
 
 
 
+
 ## Identifier and Mapping Information
-
-
 
 
 

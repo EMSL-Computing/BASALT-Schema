@@ -2,17 +2,16 @@
 
 
 
-URI: [SyntheticEnvironmentEnum](SyntheticEnvironmentEnum.md)
+URI: [analysis_api_schema:SyntheticEnvironmentEnum](https://w3id.org/MONet/analysis-api-schema/SyntheticEnvironmentEnum)
 
 ## Permissible Values
-
-| Value | Meaning | Description |
-| --- | --- | --- |
-| pore_scale_micromodels | None |  |
-| rhizochip | None |  |
-| subtap | None |  |
-| three_d_bioprinted_synthetic_soil_aggregates | None |  |
-| pore2chip | None |  |
+| Value | Meaning | Description | Additional Info |
+| --- | --- | --- | --- |
+| pore_scale_micromodels | None |  | Title: Pore-scale micromodels<br>|
+| rhizochip | None |  | Title: RhizoChip<br>|
+| subtap | None |  | Title: SubTap microbial and rhizosphere platforms<br>|
+| three_d_bioprinted_synthetic_soil_aggregates | None |  | Title: 3-D Bioprinted Synthetic Soil Aggregates<br>|
+| pore2chip | None |  | Title: Pore2Chip<br>|
 
 
 
@@ -28,9 +27,11 @@ URI: [SyntheticEnvironmentEnum](SyntheticEnvironmentEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

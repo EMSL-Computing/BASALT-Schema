@@ -20,18 +20,29 @@ Alias: confirmed_receipt
 
 
 
-
 ## Properties
 
-* Range: [Boolean](Boolean.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Boolean](Boolean.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

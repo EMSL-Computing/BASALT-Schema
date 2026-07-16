@@ -7,10 +7,9 @@ _Core groups when sampling according to the MONet sampling protocol_
 
 
 
-URI: [MONetCoreGroupEnum](MONetCoreGroupEnum.md)
+URI: [analysis_api_schema:MONetCoreGroupEnum](https://w3id.org/MONet/analysis-api-schema/MONetCoreGroupEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | A | None |  |
@@ -34,9 +33,11 @@ URI: [MONetCoreGroupEnum](MONetCoreGroupEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

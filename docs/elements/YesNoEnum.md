@@ -2,10 +2,9 @@
 
 
 
-URI: [YesNoEnum](YesNoEnum.md)
+URI: [analysis_api_schema:YesNoEnum](https://w3id.org/MONet/analysis-api-schema/YesNoEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | True | None |  |
@@ -19,9 +18,11 @@ URI: [YesNoEnum](YesNoEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

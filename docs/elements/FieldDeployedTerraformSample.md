@@ -15,13 +15,12 @@ URI: [analysis_api_schema:FieldDeployedTerraformSample](https://w3id.org/MONet/a
 
 
 
-
 ```mermaid
  classDiagram
     class FieldDeployedTerraformSample
-    click FieldDeployedTerraformSample href "../FieldDeployedTerraformSample"
+    click FieldDeployedTerraformSample href "../FieldDeployedTerraformSample/"
       Sample <|-- FieldDeployedTerraformSample
-        click Sample href "../Sample"
+        click Sample href "../Sample/"
       
       FieldDeployedTerraformSample : air_temp_regm
         
@@ -33,11 +32,10 @@ URI: [analysis_api_schema:FieldDeployedTerraformSample](https://w3id.org/MONet/a
         
           
     
-    
-    
-    
-    FieldDeployedTerraformSample --> "0..1" BioticRelationshipEnum : biotic_relationship
-    click BioticRelationshipEnum href "../BioticRelationshipEnum"
+        
+        
+        FieldDeployedTerraformSample --> "0..1" BioticRelationshipEnum : biotic_relationship
+        click BioticRelationshipEnum href "../BioticRelationshipEnum/"
     
 
         
@@ -91,11 +89,6 @@ URI: [analysis_api_schema:FieldDeployedTerraformSample](https://w3id.org/MONet/a
         
       FieldDeployedTerraformSample : id
         
-          
-    
-    
-
-        
       FieldDeployedTerraformSample : initiation_date_inoculation
         
       FieldDeployedTerraformSample : initiation_date_plant
@@ -134,11 +127,10 @@ URI: [analysis_api_schema:FieldDeployedTerraformSample](https://w3id.org/MONet/a
         
           
     
-    
-    
-    
-    FieldDeployedTerraformSample --> "0..1" OxygenStatusEnum : oxygen_relationship
-    click OxygenStatusEnum href "../OxygenStatusEnum"
+        
+        
+        FieldDeployedTerraformSample --> "0..1" OxygenStatusEnum : oxygen_relationship
+        click OxygenStatusEnum href "../OxygenStatusEnum/"
     
 
         
@@ -150,11 +142,10 @@ URI: [analysis_api_schema:FieldDeployedTerraformSample](https://w3id.org/MONet/a
         
           
     
-    
-    
-    
-    FieldDeployedTerraformSample --> "0..1" PlantSexEnum : plant_sex
-    click PlantSexEnum href "../PlantSexEnum"
+        
+        
+        FieldDeployedTerraformSample --> "0..1" PlantSexEnum : plant_sex
+        click PlantSexEnum href "../PlantSexEnum/"
     
 
         
@@ -162,11 +153,10 @@ URI: [analysis_api_schema:FieldDeployedTerraformSample](https://w3id.org/MONet/a
         
           
     
-    
-    
-    
-    FieldDeployedTerraformSample --> "0..1" PlantStructureEnum : plant_struc
-    click PlantStructureEnum href "../PlantStructureEnum"
+        
+        
+        FieldDeployedTerraformSample --> "0..1" PlantStructureEnum : plant_struc
+        click PlantStructureEnum href "../PlantStructureEnum/"
     
 
         
@@ -196,11 +186,10 @@ URI: [analysis_api_schema:FieldDeployedTerraformSample](https://w3id.org/MONet/a
         
           
     
-    
-    
-    
-    FieldDeployedTerraformSample --> "0..1" SampleStoreTempEnum : samp_store_temp
-    click SampleStoreTempEnum href "../SampleStoreTempEnum"
+        
+        
+        FieldDeployedTerraformSample --> "0..1" SampleStoreTempEnum : samp_store_temp
+        click SampleStoreTempEnum href "../SampleStoreTempEnum/"
     
 
         
@@ -214,11 +203,10 @@ URI: [analysis_api_schema:FieldDeployedTerraformSample](https://w3id.org/MONet/a
         
           
     
-    
-    
-    
-    FieldDeployedTerraformSample --> "0..1" SamplingActivity : sampled_during
-    click SamplingActivity href "../SamplingActivity"
+        
+        
+        FieldDeployedTerraformSample --> "0..1" SamplingActivity : sampled_during
+        click SamplingActivity href "../SamplingActivity/"
     
 
         
@@ -230,11 +218,10 @@ URI: [analysis_api_schema:FieldDeployedTerraformSample](https://w3id.org/MONet/a
         
           
     
-    
-    
-    
-    FieldDeployedTerraformSample --> "0..1" StorageConditionEnum : storage_condition
-    click StorageConditionEnum href "../StorageConditionEnum"
+        
+        
+        FieldDeployedTerraformSample --> "0..1" StorageConditionEnum : storage_condition
+        click StorageConditionEnum href "../StorageConditionEnum/"
     
 
         
@@ -246,11 +233,10 @@ URI: [analysis_api_schema:FieldDeployedTerraformSample](https://w3id.org/MONet/a
         
           
     
-    
-    
-    
-    FieldDeployedTerraformSample --> "1" SyntheticEnvironmentEnum : synth_env_design
-    click SyntheticEnvironmentEnum href "../SyntheticEnvironmentEnum"
+        
+        
+        FieldDeployedTerraformSample --> "1" SyntheticEnvironmentEnum : synth_env_design
+        click SyntheticEnvironmentEnum href "../SyntheticEnvironmentEnum/"
     
 
         
@@ -284,7 +270,6 @@ URI: [analysis_api_schema:FieldDeployedTerraformSample](https://w3id.org/MONet/a
 ## Inheritance
 * [Sample](Sample.md)
     * **FieldDeployedTerraformSample**
-
 
 
 ## Slots
@@ -369,7 +354,7 @@ URI: [analysis_api_schema:FieldDeployedTerraformSample](https://w3id.org/MONet/a
 | [water_content](water_content.md) | 0..1 <br/> [String](String.md) | Water content measurement | direct |
 | [water_content_meth](water_content_meth.md) | 0..1 <br/> [String](String.md) | Reference or method used in determining the water content of soil | direct |
 | [watering_regm](watering_regm.md) | 0..1 <br/> [String](String.md) | Information about treatment involving an exposure to watering frequencies, tr... | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [Sample](Sample.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [Sample](Sample.md) |
 | [emsl_activity](emsl_activity.md) | 0..1 <br/> [String](String.md) | Nullable string linking a Sample or SamplingActivity to a named EMSL activity... | [Sample](Sample.md) |
@@ -383,9 +368,13 @@ URI: [analysis_api_schema:FieldDeployedTerraformSample](https://w3id.org/MONet/a
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -411,7 +400,6 @@ URI: [analysis_api_schema:FieldDeployedTerraformSample](https://w3id.org/MONet/a
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -423,7 +411,6 @@ URI: [analysis_api_schema:FieldDeployedTerraformSample](https://w3id.org/MONet/a
 name: FieldDeployedTerraformSample
 description: A sample collected from a field-deployed Terraform experiment.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slots:
 - air_temp_regm
@@ -628,7 +615,6 @@ attributes:
 name: FieldDeployedTerraformSample
 description: A sample collected from a field-deployed Terraform experiment.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slot_usage:
   analysis_type:
@@ -1693,8 +1679,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: FieldDeployedTerraformSample
     domain_of:
     - DataProduct

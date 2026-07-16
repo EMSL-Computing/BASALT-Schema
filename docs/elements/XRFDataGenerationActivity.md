@@ -59,13 +59,12 @@ URI: [analysis_api_schema:XRFDataGenerationActivity](https://w3id.org/MONet/anal
 
 
 
-
 ```mermaid
  classDiagram
     class XRFDataGenerationActivity
-    click XRFDataGenerationActivity href "../XRFDataGenerationActivity"
+    click XRFDataGenerationActivity href "../XRFDataGenerationActivity/"
       XRayDataGenerationActivity <|-- XRFDataGenerationActivity
-        click XRayDataGenerationActivity href "../XRayDataGenerationActivity"
+        click XRayDataGenerationActivity href "../XRayDataGenerationActivity/"
       
       XRFDataGenerationActivity : acquisition_end_time
         
@@ -75,11 +74,10 @@ URI: [analysis_api_schema:XRFDataGenerationActivity](https://w3id.org/MONet/anal
         
           
     
-    
-    
-    
-    XRFDataGenerationActivity --> "0..1" ProcessedSample : analyte_id
-    click ProcessedSample href "../ProcessedSample"
+        
+        
+        XRFDataGenerationActivity --> "0..1" ProcessedSample : analyte_id
+        click ProcessedSample href "../ProcessedSample/"
     
 
         
@@ -87,20 +85,14 @@ URI: [analysis_api_schema:XRFDataGenerationActivity](https://w3id.org/MONet/anal
         
       XRFDataGenerationActivity : id
         
-          
-    
-    
-
-        
       XRFDataGenerationActivity : instrument_operator_id
         
           
     
-    
-    
-    
-    XRFDataGenerationActivity --> "0..1" PersonValue : instrument_operator_id
-    click PersonValue href "../PersonValue"
+        
+        
+        XRFDataGenerationActivity --> "0..1" PersonValue : instrument_operator_id
+        click PersonValue href "../PersonValue/"
     
 
         
@@ -108,11 +100,10 @@ URI: [analysis_api_schema:XRFDataGenerationActivity](https://w3id.org/MONet/anal
         
           
     
-    
-    
-    
-    XRFDataGenerationActivity --> "0..1" Instrument : instrument_used
-    click Instrument href "../Instrument"
+        
+        
+        XRFDataGenerationActivity --> "0..1" Instrument : instrument_used
+        click Instrument href "../Instrument/"
     
 
         
@@ -137,7 +128,6 @@ URI: [analysis_api_schema:XRFDataGenerationActivity](https://w3id.org/MONet/anal
         * **XRFDataGenerationActivity**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -147,7 +137,7 @@ URI: [analysis_api_schema:XRFDataGenerationActivity](https://w3id.org/MONet/anal
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [DataGenerationActivity](DataGenerationActivity.md) |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [DataGenerationActivity](DataGenerationActivity.md) |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [DataGenerationActivity](DataGenerationActivity.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataGenerationActivity](DataGenerationActivity.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
 | [analyte_id](analyte_id.md) | 0..1 <br/> [ProcessedSample](ProcessedSample.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
 | [acquisition_start_time](acquisition_start_time.md) | 1 <br/> [Datetime](Datetime.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
 | [acquisition_end_time](acquisition_end_time.md) | 1 <br/> [Datetime](Datetime.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
@@ -162,9 +152,13 @@ URI: [analysis_api_schema:XRFDataGenerationActivity](https://w3id.org/MONet/anal
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -184,7 +178,6 @@ URI: [analysis_api_schema:XRFDataGenerationActivity](https://w3id.org/MONet/anal
 | ---  | ---  |
 | self | analysis_api_schema:XRFDataGenerationActivity |
 | native | analysis_api_schema:XRFDataGenerationActivity |
-
 
 
 
@@ -214,7 +207,6 @@ description: "X-ray Fluorescence (XRF) elemental analysis activity.\n\nXRF measu
   \  - Operator ID\n\nRequired enum additions to enums.yaml:\n  routemethod:\n   \
   \ xrf_analysis:  # Add to routemethod permissible_values"
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: XRayDataGenerationActivity
 
 ```
@@ -239,7 +231,6 @@ description: "X-ray Fluorescence (XRF) elemental analysis activity.\n\nXRF measu
   \  - Operator ID\n\nRequired enum additions to enums.yaml:\n  routemethod:\n   \
   \ xrf_analysis:  # Add to routemethod permissible_values"
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: XRayDataGenerationActivity
 attributes:
   sequence_order:

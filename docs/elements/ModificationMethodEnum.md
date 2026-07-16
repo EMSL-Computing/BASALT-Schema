@@ -7,26 +7,25 @@ _Methods used to introduce genetic modifications into organisms._
 
 
 
-URI: [ModificationMethodEnum](ModificationMethodEnum.md)
+URI: [analysis_api_schema:ModificationMethodEnum](https://w3id.org/MONet/analysis-api-schema/ModificationMethodEnum)
 
 ## Permissible Values
-
-| Value | Meaning | Description |
-| --- | --- | --- |
-| electroporation | None | Introduction of DNA via electrical pulses |
-| conjugation | None | Transfer of DNA via bacterial conjugation |
-| transformation | None | Natural or chemical competence-based DNA uptake |
-| transduction | None | Phage-mediated DNA transfer |
-| crispr | None | CRISPR-based genome editing |
-| homologous_recombination | None | Integration via homologous recombination |
-| transposon | None | Transposon-mediated insertion |
-| other | None | Other modification method not listed |
-| p_element | None |  |
-| phage_transformation | None |  |
-| piggybac | None |  |
-| polyethylene_glycol_mediated | None |  |
-| replicon | None |  |
-| whisker_mediated_transformation | None |  |
+| Value | Meaning | Description | Additional Info |
+| --- | --- | --- | --- |
+| electroporation | None | Introduction of DNA via electrical pulses ||
+| conjugation | None | Transfer of DNA via bacterial conjugation ||
+| transformation | None | Natural or chemical competence-based DNA uptake ||
+| transduction | None | Phage-mediated DNA transfer ||
+| crispr | None | CRISPR-based genome editing ||
+| homologous_recombination | None | Integration via homologous recombination ||
+| transposon | None | Transposon-mediated insertion ||
+| other | None | Other modification method not listed | Title: Other<br>|
+| p_element | None |  | Title: P-element<br>|
+| phage_transformation | None |  | Title: Phage Transformation<br>|
+| piggybac | None |  | Title: Piggybac<br>|
+| polyethylene_glycol_mediated | None |  | Title: Polyethylene Glycol-mediated<br>|
+| replicon | None |  | Title: Replicon<br>|
+| whisker_mediated_transformation | None |  | Title: Whisker-mediated Transformation<br>|
 
 
 
@@ -42,9 +41,11 @@ URI: [ModificationMethodEnum](ModificationMethodEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

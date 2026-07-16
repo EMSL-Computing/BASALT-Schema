@@ -22,9 +22,8 @@ Alias: porosity
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 
 
 
@@ -33,17 +32,35 @@ Alias: porosity
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Regex pattern: `^\d+(\.\d+)?\s*percent$`
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [OtherUndescribedSample](OtherUndescribedSample.md), [SedimentSample](SedimentSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Value Constraints
+
+| Property | Value |
+| --- | --- |
+| Regex Pattern | `^\d+(\.\d+)?\s*percent$` |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

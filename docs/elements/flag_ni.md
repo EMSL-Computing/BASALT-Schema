@@ -24,18 +24,37 @@ Alias: flag_ni
 
 
 
-
 ## Properties
 
-* Range: [ProcessedDataFlag](ProcessedDataFlag.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [ProcessedDataFlag](ProcessedDataFlag.md) |
+| Domain Of | [XRFElementalProduct](XRFElementalProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [XRFElementalProduct](XRFElementalProduct.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

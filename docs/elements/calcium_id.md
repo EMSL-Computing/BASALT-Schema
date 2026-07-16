@@ -24,18 +24,37 @@ Alias: calcium_id
 
 
 
-
 ## Properties
 
-* Range: [QuantityValue](QuantityValue.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [QuantityValue](QuantityValue.md) |
+| Domain Of | [IonsAnalysisProduct](IonsAnalysisProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [IonsAnalysisProduct](IonsAnalysisProduct.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

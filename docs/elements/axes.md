@@ -24,20 +24,38 @@ Alias: axes
 
 
 
-
 ## Properties
 
-* Range: [ContainerAxis](ContainerAxis.md)
+### Type and Range
 
-* Multivalued: True
+| Property | Value |
+| --- | --- |
+| Range | [ContainerAxis](ContainerAxis.md) |
+| Domain Of | [ContainerType](ContainerType.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Multivalued | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [ContainerType](ContainerType.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

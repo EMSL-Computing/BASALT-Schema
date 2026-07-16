@@ -2,10 +2,9 @@
 
 
 
-URI: [ProductMeasureType](ProductMeasureType.md)
+URI: [analysis_api_schema:ProductMeasureType](https://w3id.org/MONet/analysis-api-schema/ProductMeasureType)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | Single | None |  |
@@ -26,9 +25,11 @@ URI: [ProductMeasureType](ProductMeasureType.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

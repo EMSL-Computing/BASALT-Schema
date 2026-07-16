@@ -10,11 +10,10 @@ URI: [analysis_api_schema:SoftwareControlledTermValue](https://w3id.org/MONet/an
 
 
 
-
 ```mermaid
  classDiagram
     class SoftwareControlledTermValue
-    click SoftwareControlledTermValue href "../SoftwareControlledTermValue"
+    click SoftwareControlledTermValue href "../SoftwareControlledTermValue/"
       SoftwareControlledTermValue : description
         
       SoftwareControlledTermValue : has_raw_value
@@ -32,7 +31,6 @@ URI: [analysis_api_schema:SoftwareControlledTermValue](https://w3id.org/MONet/an
 
 
 <!-- no inheritance hierarchy -->
-
 
 ## Slots
 
@@ -52,9 +50,13 @@ URI: [analysis_api_schema:SoftwareControlledTermValue](https://w3id.org/MONet/an
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -80,7 +82,6 @@ URI: [analysis_api_schema:SoftwareControlledTermValue](https://w3id.org/MONet/an
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -91,7 +92,6 @@ URI: [analysis_api_schema:SoftwareControlledTermValue](https://w3id.org/MONet/an
 ```yaml
 name: SoftwareControlledTermValue
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 slots:
 - name
 - description
@@ -196,7 +196,6 @@ attributes:
 ```yaml
 name: SoftwareControlledTermValue
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

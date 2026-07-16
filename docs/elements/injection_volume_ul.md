@@ -24,10 +24,22 @@ Alias: injection_volume_ul
 
 
 
-
 ## Properties
 
-* Range: [Float](Float.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Float](Float.md) |
+| Domain Of | [ChromatographyConfiguration](ChromatographyConfiguration.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
 
 
 
@@ -37,9 +49,9 @@ Alias: injection_volume_ul
 
 * description - not sure what this is referencing
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

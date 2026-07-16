@@ -32,20 +32,37 @@ Alias: host_height
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Regex pattern: `^\d+(\.\d+)?\s*(cm|mm|m)$`
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md), [OtherUndescribedSample](OtherUndescribedSample.md), [PlantSample](PlantSample.md), [TerraformSample](TerraformSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Value Constraints
+
+| Property | Value |
+| --- | --- |
+| Regex Pattern | `^\d+(\.\d+)?\s*(cm|mm|m)$` |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

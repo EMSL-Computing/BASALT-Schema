@@ -43,11 +43,10 @@ URI: [analysis_api_schema:BiologicalEntity](https://w3id.org/MONet/analysis-api-
 
 
 
-
 ```mermaid
  classDiagram
     class BiologicalEntity
-    click BiologicalEntity href "../BiologicalEntity"
+    click BiologicalEntity href "../BiologicalEntity/"
       BiologicalEntity : component_description
         
       BiologicalEntity : component_name
@@ -56,11 +55,10 @@ URI: [analysis_api_schema:BiologicalEntity](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    BiologicalEntity --> "0..1" ConstructComponentEnum : construct_component
-    click ConstructComponentEnum href "../ConstructComponentEnum"
+        
+        
+        BiologicalEntity --> "0..1" ConstructComponentEnum : construct_component
+        click ConstructComponentEnum href "../ConstructComponentEnum/"
     
 
         
@@ -74,11 +72,10 @@ URI: [analysis_api_schema:BiologicalEntity](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    BiologicalEntity --> "0..1" GenotypeSegmentEnum : genotype_segment_category
-    click GenotypeSegmentEnum href "../GenotypeSegmentEnum"
+        
+        
+        BiologicalEntity --> "0..1" GenotypeSegmentEnum : genotype_segment_category
+        click GenotypeSegmentEnum href "../GenotypeSegmentEnum/"
     
 
         
@@ -92,20 +89,14 @@ URI: [analysis_api_schema:BiologicalEntity](https://w3id.org/MONet/analysis-api-
         
       BiologicalEntity : id
         
-          
-    
-    
-
-        
       BiologicalEntity : modification_method
         
           
     
-    
-    
-    
-    BiologicalEntity --> "0..1" ModificationMethodEnum : modification_method
-    click ModificationMethodEnum href "../ModificationMethodEnum"
+        
+        
+        BiologicalEntity --> "0..1" ModificationMethodEnum : modification_method
+        click ModificationMethodEnum href "../ModificationMethodEnum/"
     
 
         
@@ -131,11 +122,10 @@ URI: [analysis_api_schema:BiologicalEntity](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    BiologicalEntity --> "0..1" StrainTypeEnum : strain_type
-    click StrainTypeEnum href "../StrainTypeEnum"
+        
+        
+        BiologicalEntity --> "0..1" StrainTypeEnum : strain_type
+        click StrainTypeEnum href "../StrainTypeEnum/"
     
 
         
@@ -145,11 +135,10 @@ URI: [analysis_api_schema:BiologicalEntity](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    BiologicalEntity --> "0..1" IntendedTraitEnum : trait
-    click IntendedTraitEnum href "../IntendedTraitEnum"
+        
+        
+        BiologicalEntity --> "0..1" IntendedTraitEnum : trait
+        click IntendedTraitEnum href "../IntendedTraitEnum/"
     
 
         
@@ -157,11 +146,10 @@ URI: [analysis_api_schema:BiologicalEntity](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    BiologicalEntity --> "0..1" TrophicLevelEnum : trophic_level
-    click TrophicLevelEnum href "../TrophicLevelEnum"
+        
+        
+        BiologicalEntity --> "0..1" TrophicLevelEnum : trophic_level
+        click TrophicLevelEnum href "../TrophicLevelEnum/"
     
 
         
@@ -172,7 +160,6 @@ URI: [analysis_api_schema:BiologicalEntity](https://w3id.org/MONet/analysis-api-
 
 
 <!-- no inheritance hierarchy -->
-
 
 ## Slots
 
@@ -203,7 +190,7 @@ URI: [analysis_api_schema:BiologicalEntity](https://w3id.org/MONet/analysis-api-
 | [pathogenicity](pathogenicity.md) | 0..1 <br/> [String](String.md) | To what is the entity pathogenic, e | direct |
 | [host_spec_range](host_spec_range.md) | 0..1 <br/> [String](String.md) | The range and diversity of host species that an organism is capable of infect... | direct |
 | [propagation](propagation.md) | 0..1 <br/> [String](String.md) | The type of reproduction from the parent stock | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 
 
 
@@ -226,9 +213,13 @@ URI: [analysis_api_schema:BiologicalEntity](https://w3id.org/MONet/analysis-api-
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -248,7 +239,6 @@ URI: [analysis_api_schema:BiologicalEntity](https://w3id.org/MONet/analysis-api-
 | ---  | ---  |
 | self | analysis_api_schema:BiologicalEntity |
 | native | analysis_api_schema:BiologicalEntity |
-
 
 
 
@@ -276,7 +266,6 @@ description: "Reference data representing a biological identity (strain, isolate
   \ here\n  - CultureGrowth activities reference via biological_entity_ref (aliased\
   \ as strain_ref)"
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 slots:
 - name
 - description
@@ -440,7 +429,6 @@ description: "Reference data representing a biological identity (strain, isolate
   \ here\n  - CultureGrowth activities reference via biological_entity_ref (aliased\
   \ as strain_ref)"
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 slot_usage:
   strain_identifier:
     name: strain_identifier

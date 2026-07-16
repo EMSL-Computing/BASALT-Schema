@@ -22,10 +22,9 @@ Alias: bulk_elect_conductivity
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-
+| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
 
 
 
@@ -34,17 +33,35 @@ Alias: bulk_elect_conductivity
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Regex pattern: `^\d+(\.\d+)?\s*mS/cm$`
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [MonetSoilSample](MonetSoilSample.md), [OtherUndescribedSample](OtherUndescribedSample.md), [SoilSample](SoilSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Value Constraints
+
+| Property | Value |
+| --- | --- |
+| Regex Pattern | `^\d+(\.\d+)?\s*mS/cm$` |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

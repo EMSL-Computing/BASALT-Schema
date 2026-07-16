@@ -29,20 +29,31 @@ Alias: loop_count
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

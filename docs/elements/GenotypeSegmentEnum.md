@@ -2,10 +2,9 @@
 
 
 
-URI: [GenotypeSegmentEnum](GenotypeSegmentEnum.md)
+URI: [analysis_api_schema:GenotypeSegmentEnum](https://w3id.org/MONet/analysis-api-schema/GenotypeSegmentEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | Empty Transformation Vector | None |  |
@@ -34,9 +33,11 @@ URI: [GenotypeSegmentEnum](GenotypeSegmentEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

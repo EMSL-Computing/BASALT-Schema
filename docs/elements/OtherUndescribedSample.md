@@ -15,13 +15,12 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
 
 
 
-
 ```mermaid
  classDiagram
     class OtherUndescribedSample
-    click OtherUndescribedSample href "../OtherUndescribedSample"
+    click OtherUndescribedSample href "../OtherUndescribedSample/"
       Sample <|-- OtherUndescribedSample
-        click Sample href "../Sample"
+        click Sample href "../Sample/"
       
       OtherUndescribedSample : agrochem_addition
         
@@ -59,11 +58,10 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    OtherUndescribedSample --> "0..1" BiolStatEnum : biol_stat
-    click BiolStatEnum href "../BiolStatEnum"
+        
+        
+        OtherUndescribedSample --> "0..1" BiolStatEnum : biol_stat
+        click BiolStatEnum href "../BiolStatEnum/"
     
 
         
@@ -73,11 +71,10 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    OtherUndescribedSample --> "0..1" BioticRelationshipEnum : biotic_relationship
-    click BioticRelationshipEnum href "../BioticRelationshipEnum"
+        
+        
+        OtherUndescribedSample --> "0..1" BioticRelationshipEnum : biotic_relationship
+        click BioticRelationshipEnum href "../BioticRelationshipEnum/"
     
 
         
@@ -181,11 +178,10 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    OtherUndescribedSample --> "0..1" GrowthHabitEnum : growth_habit
-    click GrowthHabitEnum href "../GrowthHabitEnum"
+        
+        
+        OtherUndescribedSample --> "0..1" GrowthHabitEnum : growth_habit
+        click GrowthHabitEnum href "../GrowthHabitEnum/"
     
 
         
@@ -232,11 +228,6 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
       OtherUndescribedSample : humidity_regm
         
       OtherUndescribedSample : id
-        
-          
-    
-    
-
         
       OtherUndescribedSample : indust_eff_percent
         
@@ -328,11 +319,10 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    OtherUndescribedSample --> "0..1" OxygenStatusEnum : oxygen_relationship
-    click OxygenStatusEnum href "../OxygenStatusEnum"
+        
+        
+        OtherUndescribedSample --> "0..1" OxygenStatusEnum : oxygen_relationship
+        click OxygenStatusEnum href "../OxygenStatusEnum/"
     
 
         
@@ -366,11 +356,10 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    OtherUndescribedSample --> "0..1" PhotochemicalExposureEnum : photochemical_exposure
-    click PhotochemicalExposureEnum href "../PhotochemicalExposureEnum"
+        
+        
+        OtherUndescribedSample --> "0..1" PhotochemicalExposureEnum : photochemical_exposure
+        click PhotochemicalExposureEnum href "../PhotochemicalExposureEnum/"
     
 
         
@@ -424,11 +413,10 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    OtherUndescribedSample --> "0..1" SampleStoreTempEnum : samp_store_temp
-    click SampleStoreTempEnum href "../SampleStoreTempEnum"
+        
+        
+        OtherUndescribedSample --> "0..1" SampleStoreTempEnum : samp_store_temp
+        click SampleStoreTempEnum href "../SampleStoreTempEnum/"
     
 
         
@@ -444,11 +432,10 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    OtherUndescribedSample --> "0..1" SamplingActivity : sampled_during
-    click SamplingActivity href "../SamplingActivity"
+        
+        
+        OtherUndescribedSample --> "0..1" SamplingActivity : sampled_during
+        click SamplingActivity href "../SamplingActivity/"
     
 
         
@@ -488,11 +475,10 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    OtherUndescribedSample --> "0..1" StorageConditionEnum : storage_condition
-    click StorageConditionEnum href "../StorageConditionEnum"
+        
+        
+        OtherUndescribedSample --> "0..1" StorageConditionEnum : storage_condition
+        click StorageConditionEnum href "../StorageConditionEnum/"
     
 
         
@@ -526,11 +512,10 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    OtherUndescribedSample --> "0..1" TidalStageEnum : tidal_stage
-    click TidalStageEnum href "../TidalStageEnum"
+        
+        
+        OtherUndescribedSample --> "0..1" TidalStageEnum : tidal_stage
+        click TidalStageEnum href "../TidalStageEnum/"
     
 
         
@@ -564,11 +549,10 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    OtherUndescribedSample --> "0..1" TrophicLevelEnum : trophic_level
-    click TrophicLevelEnum href "../TrophicLevelEnum"
+        
+        
+        OtherUndescribedSample --> "0..1" TrophicLevelEnum : trophic_level
+        click TrophicLevelEnum href "../TrophicLevelEnum/"
     
 
         
@@ -596,7 +580,6 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
 ## Inheritance
 * [Sample](Sample.md)
     * **OtherUndescribedSample**
-
 
 
 ## Slots
@@ -827,7 +810,7 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
 | [water_current](water_current.md) | 0..1 <br/> [String](String.md) | Measurement of magnitude and direction of flow within a fluid | direct |
 | [water_temp_regm](water_temp_regm.md) | 0..1 <br/> [String](String.md) | Information about treatment involving an exposure to water with varying degre... | direct |
 | [watering_regm](watering_regm.md) | 0..1 <br/> [String](String.md) | Information about treatment involving an exposure to watering frequencies, tr... | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [Sample](Sample.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [Sample](Sample.md) |
 | [emsl_activity](emsl_activity.md) | 0..1 <br/> [String](String.md) | Nullable string linking a Sample or SamplingActivity to a named EMSL activity... | [Sample](Sample.md) |
@@ -841,9 +824,13 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -869,7 +856,6 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -881,7 +867,6 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
 name: OtherUndescribedSample
 description: A sample that does not fit into any of the other described sample types.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slots:
 - agrochem_addition
@@ -1230,7 +1215,6 @@ attributes:
 name: OtherUndescribedSample
 description: A sample that does not fit into any of the other described sample types.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slot_usage:
   analysis_type:
@@ -3798,8 +3782,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: OtherUndescribedSample
     domain_of:
     - DataProduct

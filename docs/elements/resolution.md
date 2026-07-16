@@ -24,20 +24,31 @@ Alias: resolution
 
 
 
-
 ## Properties
 
-* Range: [MassSpecResolutionEnum](MassSpecResolutionEnum.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [MassSpecResolutionEnum](MassSpecResolutionEnum.md) |
+| Domain Of | [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

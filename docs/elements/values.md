@@ -24,20 +24,38 @@ Alias: values
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Multivalued: True
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [ContainerAxis](ContainerAxis.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Multivalued | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [ContainerAxis](ContainerAxis.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

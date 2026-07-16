@@ -22,10 +22,9 @@ Alias: turbidity
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
-
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 
 
 
@@ -34,9 +33,27 @@ Alias: turbidity
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Regex pattern: `^\d+(\.\d+)?\s*[\w\s/]+$`
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [OtherUndescribedSample](OtherUndescribedSample.md), [SedimentSample](SedimentSample.md), [WaterSample](WaterSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Value Constraints
+
+| Property | Value |
+| --- | --- |
+| Regex Pattern | `^\d+(\.\d+)?\s*[\w\s/]+$` |
+
+
+
+
+
 
 
 
@@ -46,9 +63,9 @@ Alias: turbidity
 
 * decide how to represent in backend (normalized child table with FK to PlateSetupActivity, array column, or other)
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

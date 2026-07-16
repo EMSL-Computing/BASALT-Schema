@@ -2,10 +2,9 @@
 
 
 
-URI: [ModelEnum](ModelEnum.md)
+URI: [analysis_api_schema:ModelEnum](https://w3id.org/MONet/analysis-api-schema/ModelEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | exploris_21T | None |  |
@@ -75,9 +74,11 @@ URI: [ModelEnum](ModelEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

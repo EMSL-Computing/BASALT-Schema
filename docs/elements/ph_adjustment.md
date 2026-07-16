@@ -29,18 +29,30 @@ Alias: ph_adjustment
 
 
 
-
 ## Properties
 
-* Range: [Boolean](Boolean.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Boolean](Boolean.md) |
+| Domain Of | [MediaPreparation](MediaPreparation.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

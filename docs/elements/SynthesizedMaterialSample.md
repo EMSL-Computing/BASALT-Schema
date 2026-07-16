@@ -15,13 +15,12 @@ URI: [analysis_api_schema:SynthesizedMaterialSample](https://w3id.org/MONet/anal
 
 
 
-
 ```mermaid
  classDiagram
     class SynthesizedMaterialSample
-    click SynthesizedMaterialSample href "../SynthesizedMaterialSample"
+    click SynthesizedMaterialSample href "../SynthesizedMaterialSample/"
       Sample <|-- SynthesizedMaterialSample
-        click Sample href "../Sample"
+        click Sample href "../Sample/"
       
       SynthesizedMaterialSample : analysis_type
         
@@ -43,11 +42,6 @@ URI: [analysis_api_schema:SynthesizedMaterialSample](https://w3id.org/MONet/anal
         
       SynthesizedMaterialSample : id
         
-          
-    
-    
-
-        
       SynthesizedMaterialSample : item_number
         
       SynthesizedMaterialSample : lims_barcode
@@ -64,11 +58,10 @@ URI: [analysis_api_schema:SynthesizedMaterialSample](https://w3id.org/MONet/anal
         
           
     
-    
-    
-    
-    SynthesizedMaterialSample --> "0..1" OxygenStatusEnum : oxygen_relationship
-    click OxygenStatusEnum href "../OxygenStatusEnum"
+        
+        
+        SynthesizedMaterialSample --> "0..1" OxygenStatusEnum : oxygen_relationship
+        click OxygenStatusEnum href "../OxygenStatusEnum/"
     
 
         
@@ -84,11 +77,10 @@ URI: [analysis_api_schema:SynthesizedMaterialSample](https://w3id.org/MONet/anal
         
           
     
-    
-    
-    
-    SynthesizedMaterialSample --> "0..1" SampleStoreTempEnum : samp_store_temp
-    click SampleStoreTempEnum href "../SampleStoreTempEnum"
+        
+        
+        SynthesizedMaterialSample --> "0..1" SampleStoreTempEnum : samp_store_temp
+        click SampleStoreTempEnum href "../SampleStoreTempEnum/"
     
 
         
@@ -102,11 +94,10 @@ URI: [analysis_api_schema:SynthesizedMaterialSample](https://w3id.org/MONet/anal
         
           
     
-    
-    
-    
-    SynthesizedMaterialSample --> "0..1" SamplingActivity : sampled_during
-    click SamplingActivity href "../SamplingActivity"
+        
+        
+        SynthesizedMaterialSample --> "0..1" SamplingActivity : sampled_during
+        click SamplingActivity href "../SamplingActivity/"
     
 
         
@@ -116,11 +107,10 @@ URI: [analysis_api_schema:SynthesizedMaterialSample](https://w3id.org/MONet/anal
         
           
     
-    
-    
-    
-    SynthesizedMaterialSample --> "0..1" StorageConditionEnum : storage_condition
-    click StorageConditionEnum href "../StorageConditionEnum"
+        
+        
+        SynthesizedMaterialSample --> "0..1" StorageConditionEnum : storage_condition
+        click StorageConditionEnum href "../StorageConditionEnum/"
     
 
         
@@ -146,7 +136,6 @@ URI: [analysis_api_schema:SynthesizedMaterialSample](https://w3id.org/MONet/anal
 ## Inheritance
 * [Sample](Sample.md)
     * **SynthesizedMaterialSample**
-
 
 
 ## Slots
@@ -182,7 +171,7 @@ URI: [analysis_api_schema:SynthesizedMaterialSample](https://w3id.org/MONet/anal
 | [synth_reagents](synth_reagents.md) | 1 <br/> [String](String.md) | The reagents used in the material synthesis | direct |
 | [technical_reps](technical_reps.md) | 0..1 <br/> [Integer](Integer.md) | Number of technical replicates for the sample | direct |
 | [temp](temp.md) | 0..1 <br/> [String](String.md) | Temperature of the sample at the time of sampling | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [Sample](Sample.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [Sample](Sample.md) |
 | [emsl_activity](emsl_activity.md) | 0..1 <br/> [String](String.md) | Nullable string linking a Sample or SamplingActivity to a named EMSL activity... | [Sample](Sample.md) |
@@ -196,9 +185,13 @@ URI: [analysis_api_schema:SynthesizedMaterialSample](https://w3id.org/MONet/anal
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -224,7 +217,6 @@ URI: [analysis_api_schema:SynthesizedMaterialSample](https://w3id.org/MONet/anal
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -236,7 +228,6 @@ URI: [analysis_api_schema:SynthesizedMaterialSample](https://w3id.org/MONet/anal
 name: SynthesizedMaterialSample
 description: A sample containing synthetically generated material.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slots:
 - analysis_type
@@ -368,7 +359,6 @@ attributes:
 name: SynthesizedMaterialSample
 description: A sample containing synthetically generated material.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slot_usage:
   analysis_type:
@@ -762,8 +752,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: SynthesizedMaterialSample
     domain_of:
     - DataProduct

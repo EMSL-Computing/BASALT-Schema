@@ -22,9 +22,8 @@ Alias: duration_min
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ChromatographyConfiguration](ChromatographyConfiguration.md) | Configuration and settings for a chromatography run |  no  |
 | [MobilePhaseSegment](MobilePhaseSegment.md) | A segment of the mobile phase used in chromatography during mass spectrometry |  no  |
-
+| [ChromatographyConfiguration](ChromatographyConfiguration.md) | Configuration and settings for a chromatography run |  no  |
 
 
 
@@ -33,15 +32,28 @@ Alias: duration_min
 
 ## Properties
 
-* Range: [Float](Float.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Float](Float.md) |
+| Domain Of | [ChromatographyConfiguration](ChromatographyConfiguration.md), [MobilePhaseSegment](MobilePhaseSegment.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

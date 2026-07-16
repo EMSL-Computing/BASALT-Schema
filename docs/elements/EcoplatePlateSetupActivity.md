@@ -29,13 +29,12 @@ URI: [analysis_api_schema:EcoplatePlateSetupActivity](https://w3id.org/MONet/ana
 
 
 
-
 ```mermaid
  classDiagram
     class EcoplatePlateSetupActivity
-    click EcoplatePlateSetupActivity href "../EcoplatePlateSetupActivity"
+    click EcoplatePlateSetupActivity href "../EcoplatePlateSetupActivity/"
       PlateSetupActivity <|-- EcoplatePlateSetupActivity
-        click PlateSetupActivity href "../PlateSetupActivity"
+        click PlateSetupActivity href "../PlateSetupActivity/"
       
       EcoplatePlateSetupActivity : agitation_speed_rpm
         
@@ -43,30 +42,23 @@ URI: [analysis_api_schema:EcoplatePlateSetupActivity](https://w3id.org/MONet/ana
         
           
     
-    
-    
-    
-    EcoplatePlateSetupActivity --> "0..1" RouteMethodEnum : analysis_type
-    click RouteMethodEnum href "../RouteMethodEnum"
+        
+        
+        EcoplatePlateSetupActivity --> "0..1" RouteMethodEnum : analysis_type
+        click RouteMethodEnum href "../RouteMethodEnum/"
     
 
         
       EcoplatePlateSetupActivity : id
         
-          
-    
-    
-
-        
       EcoplatePlateSetupActivity : method_name
         
           
     
-    
-    
-    
-    EcoplatePlateSetupActivity --> "0..1" MethodNameEnum : method_name
-    click MethodNameEnum href "../MethodNameEnum"
+        
+        
+        EcoplatePlateSetupActivity --> "0..1" MethodNameEnum : method_name
+        click MethodNameEnum href "../MethodNameEnum/"
     
 
         
@@ -74,11 +66,10 @@ URI: [analysis_api_schema:EcoplatePlateSetupActivity](https://w3id.org/MONet/ana
         
           
     
-    
-    
-    
-    EcoplatePlateSetupActivity --> "0..1" OxygenStatusEnum : oxygen_relationship
-    click OxygenStatusEnum href "../OxygenStatusEnum"
+        
+        
+        EcoplatePlateSetupActivity --> "0..1" OxygenStatusEnum : oxygen_relationship
+        click OxygenStatusEnum href "../OxygenStatusEnum/"
     
 
         
@@ -102,11 +93,10 @@ URI: [analysis_api_schema:EcoplatePlateSetupActivity](https://w3id.org/MONet/ana
         
           
     
-    
-    
-    
-    EcoplatePlateSetupActivity --> "0..1" PersonValue : setup_operator_id
-    click PersonValue href "../PersonValue"
+        
+        
+        EcoplatePlateSetupActivity --> "0..1" PersonValue : setup_operator_id
+        click PersonValue href "../PersonValue/"
     
 
         
@@ -116,11 +106,10 @@ URI: [analysis_api_schema:EcoplatePlateSetupActivity](https://w3id.org/MONet/ana
         
           
     
-    
-    
-    
-    EcoplatePlateSetupActivity --> "0..1" Sample : uses_sample
-    click Sample href "../Sample"
+        
+        
+        EcoplatePlateSetupActivity --> "0..1" Sample : uses_sample
+        click Sample href "../Sample/"
     
 
         
@@ -128,11 +117,10 @@ URI: [analysis_api_schema:EcoplatePlateSetupActivity](https://w3id.org/MONet/ana
         
           
     
-    
-    
-    
-    EcoplatePlateSetupActivity --> "*" WellMetadata : well_metadata
-    click WellMetadata href "../WellMetadata"
+        
+        
+        EcoplatePlateSetupActivity --> "*" WellMetadata : well_metadata
+        click WellMetadata href "../WellMetadata/"
     
 
         
@@ -147,7 +135,6 @@ URI: [analysis_api_schema:EcoplatePlateSetupActivity](https://w3id.org/MONet/ana
 * [SampleProcessing](SampleProcessing.md)
     * [PlateSetupActivity](PlateSetupActivity.md) [ [HasIncubationConditions](HasIncubationConditions.md)]
         * **EcoplatePlateSetupActivity**
-
 
 
 ## Slots
@@ -166,7 +153,7 @@ URI: [analysis_api_schema:EcoplatePlateSetupActivity](https://w3id.org/MONet/ana
 | [oxygen_relationship](oxygen_relationship.md) | 0..1 <br/> [OxygenStatusEnum](OxygenStatusEnum.md) | The relationship of the sample to oxygen, such as aerobic or anaerobic | [HasIncubationConditions](HasIncubationConditions.md) |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
-| [id](id.md) | 1 <br/> uuid |  | [SampleProcessing](SampleProcessing.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [analysis_type](analysis_type.md) | 0..1 <br/> [RouteMethodEnum](RouteMethodEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [method_name](method_name.md) | 0..1 <br/> [MethodNameEnum](MethodNameEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [processing_steps](processing_steps.md) | 1 <br/> [String](String.md) |  | [SampleProcessing](SampleProcessing.md) |
@@ -180,9 +167,13 @@ URI: [analysis_api_schema:EcoplatePlateSetupActivity](https://w3id.org/MONet/ana
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -202,7 +193,6 @@ URI: [analysis_api_schema:EcoplatePlateSetupActivity](https://w3id.org/MONet/ana
 | ---  | ---  |
 | self | analysis_api_schema:EcoplatePlateSetupActivity |
 | native | analysis_api_schema:EcoplatePlateSetupActivity |
-
 
 
 
@@ -232,7 +222,6 @@ description: 'Ecoplate-specific plate setup.
 
   v1 origin: plate-general.yaml EcoplatePlateSetupActivity'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: PlateSetupActivity
 
 ```
@@ -257,7 +246,6 @@ description: 'Ecoplate-specific plate setup.
 
   v1 origin: plate-general.yaml EcoplatePlateSetupActivity'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: PlateSetupActivity
 attributes:
   plate_type:

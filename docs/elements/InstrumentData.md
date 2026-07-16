@@ -17,21 +17,20 @@ URI: [analysis_api_schema:InstrumentData](https://w3id.org/MONet/analysis-api-sc
 
 
 
-
 ```mermaid
  classDiagram
     class InstrumentData
-    click InstrumentData href "../InstrumentData"
+    click InstrumentData href "../InstrumentData/"
       DataProduct <|-- InstrumentData
-        click DataProduct href "../DataProduct"
+        click DataProduct href "../DataProduct/"
       
 
       InstrumentData <|-- MassSpectrometryInstrumentData
-        click MassSpectrometryInstrumentData href "../MassSpectrometryInstrumentData"
+        click MassSpectrometryInstrumentData href "../MassSpectrometryInstrumentData/"
       InstrumentData <|-- NucleotideSequencingInstrumentData
-        click NucleotideSequencingInstrumentData href "../NucleotideSequencingInstrumentData"
+        click NucleotideSequencingInstrumentData href "../NucleotideSequencingInstrumentData/"
       
-      
+
       InstrumentData : alternative_identifiers
         
       InstrumentData : compression_type
@@ -40,11 +39,10 @@ URI: [analysis_api_schema:InstrumentData](https://w3id.org/MONet/analysis-api-sc
         
           
     
-    
-    
-    
-    InstrumentData --> "0..1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        InstrumentData --> "0..1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -56,22 +54,16 @@ URI: [analysis_api_schema:InstrumentData](https://w3id.org/MONet/analysis-api-sc
         
           
     
-    
-    
-    
-    InstrumentData --> "0..1" FileTypeEnum : file_type
-    click FileTypeEnum href "../FileTypeEnum"
+        
+        
+        InstrumentData --> "0..1" FileTypeEnum : file_type
+        click FileTypeEnum href "../FileTypeEnum/"
     
 
         
       InstrumentData : filesize
         
       InstrumentData : id
-        
-          
-    
-    
-
         
       InstrumentData : md5checksum
         
@@ -105,7 +97,6 @@ URI: [analysis_api_schema:InstrumentData](https://w3id.org/MONet/analysis-api-sc
         * [NucleotideSequencingInstrumentData](NucleotideSequencingInstrumentData.md)
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -126,7 +117,11 @@ URI: [analysis_api_schema:InstrumentData](https://w3id.org/MONet/analysis-api-sc
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | [DataProduct](DataProduct.md) |
 | [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | [DataProduct](DataProduct.md) |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProduct](DataProduct.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProduct](DataProduct.md) |
+
+
+
+
 
 
 
@@ -143,9 +138,9 @@ URI: [analysis_api_schema:InstrumentData](https://w3id.org/MONet/analysis-api-sc
 * revisit alternative identifiers range - array?
 * revisit filetype enum - restrict on subclasses
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -171,7 +166,6 @@ URI: [analysis_api_schema:InstrumentData](https://w3id.org/MONet/analysis-api-sc
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -190,7 +184,6 @@ todos:
 - revisit alternative identifiers range - array?
 - revisit filetype enum - restrict on subclasses
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: DataProduct
 abstract: true
 slots:
@@ -248,7 +241,6 @@ todos:
 - revisit alternative identifiers range - array?
 - revisit filetype enum - restrict on subclasses
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: DataProduct
 abstract: true
 slot_usage:
@@ -375,8 +367,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: InstrumentData
     domain_of:
     - DataProduct

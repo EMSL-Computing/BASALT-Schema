@@ -29,18 +29,30 @@ Alias: core_group
 
 
 
-
 ## Properties
 
-* Range: [MONetCoreGroupEnum](MONetCoreGroupEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [MONetCoreGroupEnum](MONetCoreGroupEnum.md) |
+| Domain Of | [MonetSoilSample](MonetSoilSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

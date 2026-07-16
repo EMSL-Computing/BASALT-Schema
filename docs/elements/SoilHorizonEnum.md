@@ -7,10 +7,9 @@ _Soil horizon classifications_
 
 
 
-URI: [SoilHorizonEnum](SoilHorizonEnum.md)
+URI: [analysis_api_schema:SoilHorizonEnum](https://w3id.org/MONet/analysis-api-schema/SoilHorizonEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | a_horizon | None | The surface horizon, also called topsoil |
@@ -36,9 +35,11 @@ URI: [SoilHorizonEnum](SoilHorizonEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

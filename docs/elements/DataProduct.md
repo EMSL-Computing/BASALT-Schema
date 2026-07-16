@@ -23,27 +23,25 @@ URI: [analysis_api_schema:DataProduct](https://w3id.org/MONet/analysis-api-schem
 
 
 
-
 ```mermaid
  classDiagram
     class DataProduct
-    click DataProduct href "../DataProduct"
+    click DataProduct href "../DataProduct/"
       DataProduct <|-- ProcessedData
-        click ProcessedData href "../ProcessedData"
+        click ProcessedData href "../ProcessedData/"
       DataProduct <|-- InstrumentData
-        click InstrumentData href "../InstrumentData"
+        click InstrumentData href "../InstrumentData/"
       DataProduct <|-- SitePhoto
-        click SitePhoto href "../SitePhoto"
+        click SitePhoto href "../SitePhoto/"
       
       DataProduct : core_section
         
           
     
-    
-    
-    
-    DataProduct --> "0..1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        DataProduct --> "0..1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -52,11 +50,6 @@ URI: [analysis_api_schema:DataProduct](https://w3id.org/MONet/analysis-api-schem
       DataProduct : filesize
         
       DataProduct : id
-        
-          
-    
-    
-
         
       DataProduct : md5checksum
         
@@ -88,7 +81,6 @@ URI: [analysis_api_schema:DataProduct](https://w3id.org/MONet/analysis-api-schem
     * [SitePhoto](SitePhoto.md)
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -104,7 +96,13 @@ URI: [analysis_api_schema:DataProduct](https://w3id.org/MONet/analysis-api-schem
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | direct |
 | [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | direct |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
+
+
+
+
+
+
 
 
 
@@ -115,8 +113,6 @@ URI: [analysis_api_schema:DataProduct](https://w3id.org/MONet/analysis-api-schem
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -142,7 +138,6 @@ URI: [analysis_api_schema:DataProduct](https://w3id.org/MONet/analysis-api-schem
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -160,7 +155,6 @@ description: 'Abstract base class for raw or processed data accessible in S3 sto
 
   No direct database table, subclasses map to tables.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 slots:
 - name
@@ -270,7 +264,6 @@ description: 'Abstract base class for raw or processed data accessible in S3 sto
 
   No direct database table, subclasses map to tables.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 attributes:
   id:
@@ -423,8 +416,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: DataProduct
     domain_of:
     - DataProduct

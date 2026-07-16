@@ -17,58 +17,52 @@ URI: [analysis_api_schema:Sample](https://w3id.org/MONet/analysis-api-schema/Sam
 
 
 
-
 ```mermaid
  classDiagram
     class Sample
-    click Sample href "../Sample"
+    click Sample href "../Sample/"
       Sample <|-- AerosolArmSample
-        click AerosolArmSample href "../AerosolArmSample"
+        click AerosolArmSample href "../AerosolArmSample/"
       Sample <|-- AerosolSample
-        click AerosolSample href "../AerosolSample"
+        click AerosolSample href "../AerosolSample/"
       Sample <|-- AMP2UserSample
-        click AMP2UserSample href "../AMP2UserSample"
+        click AMP2UserSample href "../AMP2UserSample/"
       Sample <|-- CommerciallyPurchasedSample
-        click CommerciallyPurchasedSample href "../CommerciallyPurchasedSample"
+        click CommerciallyPurchasedSample href "../CommerciallyPurchasedSample/"
       Sample <|-- CultureEnvironmentalSample
-        click CultureEnvironmentalSample href "../CultureEnvironmentalSample"
+        click CultureEnvironmentalSample href "../CultureEnvironmentalSample/"
       Sample <|-- EngineeredStrainSample
-        click EngineeredStrainSample href "../EngineeredStrainSample"
+        click EngineeredStrainSample href "../EngineeredStrainSample/"
       Sample <|-- FieldDeployedTerraformSample
-        click FieldDeployedTerraformSample href "../FieldDeployedTerraformSample"
+        click FieldDeployedTerraformSample href "../FieldDeployedTerraformSample/"
       Sample <|-- MixedCultureSample
-        click MixedCultureSample href "../MixedCultureSample"
+        click MixedCultureSample href "../MixedCultureSample/"
       Sample <|-- MonetSoilSample
-        click MonetSoilSample href "../MonetSoilSample"
+        click MonetSoilSample href "../MonetSoilSample/"
       Sample <|-- OtherUndescribedSample
-        click OtherUndescribedSample href "../OtherUndescribedSample"
+        click OtherUndescribedSample href "../OtherUndescribedSample/"
       Sample <|-- PlantSample
-        click PlantSample href "../PlantSample"
+        click PlantSample href "../PlantSample/"
       Sample <|-- PureCultureSample
-        click PureCultureSample href "../PureCultureSample"
+        click PureCultureSample href "../PureCultureSample/"
       Sample <|-- SedimentSample
-        click SedimentSample href "../SedimentSample"
+        click SedimentSample href "../SedimentSample/"
       Sample <|-- SoilSample
-        click SoilSample href "../SoilSample"
+        click SoilSample href "../SoilSample/"
       Sample <|-- SynthesizedMaterialSample
-        click SynthesizedMaterialSample href "../SynthesizedMaterialSample"
+        click SynthesizedMaterialSample href "../SynthesizedMaterialSample/"
       Sample <|-- TerraformSample
-        click TerraformSample href "../TerraformSample"
+        click TerraformSample href "../TerraformSample/"
       Sample <|-- WaterSample
-        click WaterSample href "../WaterSample"
+        click WaterSample href "../WaterSample/"
       Sample <|-- ProcessedSample
-        click ProcessedSample href "../ProcessedSample"
+        click ProcessedSample href "../ProcessedSample/"
       
       Sample : description
         
       Sample : emsl_activity
         
       Sample : id
-        
-          
-    
-    
-
         
       Sample : lims_barcode
         
@@ -103,7 +97,6 @@ URI: [analysis_api_schema:Sample](https://w3id.org/MONet/analysis-api-schema/Sam
     * [ProcessedSample](ProcessedSample.md)
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -112,7 +105,7 @@ URI: [analysis_api_schema:Sample](https://w3id.org/MONet/analysis-api-schema/Sam
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | direct |
 | [emsl_activity](emsl_activity.md) | 0..1 <br/> [String](String.md) | Nullable string linking a Sample or SamplingActivity to a named EMSL activity... | direct |
 | [lims_barcode](lims_barcode.md) | 0..1 <br/> [String](String.md) | LIMS barcode identifier | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 
 
 
@@ -164,13 +157,17 @@ URI: [analysis_api_schema:Sample](https://w3id.org/MONet/analysis-api-schema/Sam
 
 
 
+
+
+
+
 ## TODOs
 
 * where should proposal ID live? probably not here? emsl_activity is a string referencing a campaign name. but we do need to link samples to their parent studies/projects somehow.
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -196,7 +193,6 @@ URI: [analysis_api_schema:Sample](https://w3id.org/MONet/analysis-api-schema/Sam
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -214,7 +210,6 @@ todos:
   a campaign name. but we do need to link samples to their parent studies/projects
   somehow.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 slots:
 - name
@@ -317,7 +312,6 @@ todos:
   a campaign name. but we do need to link samples to their parent studies/projects
   somehow.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 attributes:
   id:

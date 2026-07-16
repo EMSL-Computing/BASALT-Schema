@@ -10,20 +10,18 @@ URI: [analysis_api_schema:ContainerType](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ```mermaid
  classDiagram
     class ContainerType
-    click ContainerType href "../ContainerType"
+    click ContainerType href "../ContainerType/"
       ContainerType : axes
         
           
     
-    
-    
-    
-    ContainerType --> "*" ContainerAxis : axes
-    click ContainerAxis href "../ContainerAxis"
+        
+        
+        ContainerType --> "*" ContainerAxis : axes
+        click ContainerAxis href "../ContainerAxis/"
     
 
         
@@ -31,11 +29,10 @@ URI: [analysis_api_schema:ContainerType](https://w3id.org/MONet/analysis-api-sch
         
           
     
-    
-    
-    
-    ContainerType --> "0..1" QuantityValue : container_size_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        ContainerType --> "0..1" QuantityValue : container_size_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -43,11 +40,10 @@ URI: [analysis_api_schema:ContainerType](https://w3id.org/MONet/analysis-api-sch
         
           
     
-    
-    
-    
-    ContainerType --> "0..1" ContainerTypeEnum : container_type
-    click ContainerTypeEnum href "../ContainerTypeEnum"
+        
+        
+        ContainerType --> "0..1" ContainerTypeEnum : container_type
+        click ContainerTypeEnum href "../ContainerTypeEnum/"
     
 
         
@@ -56,11 +52,6 @@ URI: [analysis_api_schema:ContainerType](https://w3id.org/MONet/analysis-api-sch
       ContainerType : description
         
       ContainerType : id
-        
-          
-    
-    
-
         
       ContainerType : label_format
         
@@ -76,12 +67,11 @@ URI: [analysis_api_schema:ContainerType](https://w3id.org/MONet/analysis-api-sch
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [container_type](container_type.md) | 0..1 <br/> [ContainerTypeEnum](ContainerTypeEnum.md) |  | direct |
 | [container_size_id](container_size_id.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) |  | direct |
@@ -99,14 +89,18 @@ URI: [analysis_api_schema:ContainerType](https://w3id.org/MONet/analysis-api-sch
 
 
 
+
+
+
+
 ## TODOs
 
 * reconcile with enums and in media_strain_culture_plate.yaml
 * potentially delete along with ContainerAxis? What are these for?
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -132,7 +126,6 @@ URI: [analysis_api_schema:ContainerType](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -146,7 +139,6 @@ todos:
 - reconcile with enums and in media_strain_culture_plate.yaml
 - potentially delete along with ContainerAxis? What are these for?
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id
@@ -319,7 +311,6 @@ todos:
 - reconcile with enums and in media_strain_culture_plate.yaml
 - potentially delete along with ContainerAxis? What are these for?
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

@@ -10,19 +10,13 @@ URI: [analysis_api_schema:ZipDownload](https://w3id.org/MONet/analysis-api-schem
 
 
 
-
 ```mermaid
  classDiagram
     class ZipDownload
-    click ZipDownload href "../ZipDownload"
+    click ZipDownload href "../ZipDownload/"
       ZipDownload : files
         
       ZipDownload : id
-        
-          
-    
-    
-
         
       ZipDownload : packages
         
@@ -38,12 +32,11 @@ URI: [analysis_api_schema:ZipDownload](https://w3id.org/MONet/analysis-api-schem
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [time](time.md) | 1 <br/> [Datetime](Datetime.md) |  | direct |
 | [user](user.md) | 1 <br/> [String](String.md) |  | direct |
 | [files](files.md) | 1 <br/> [Integer](Integer.md) |  | direct |
@@ -57,9 +50,13 @@ URI: [analysis_api_schema:ZipDownload](https://w3id.org/MONet/analysis-api-schem
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -85,7 +82,6 @@ URI: [analysis_api_schema:ZipDownload](https://w3id.org/MONet/analysis-api-schem
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -96,7 +92,6 @@ URI: [analysis_api_schema:ZipDownload](https://w3id.org/MONet/analysis-api-schem
 ```yaml
 name: zipDownload
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id
@@ -217,7 +212,6 @@ attributes:
 ```yaml
 name: zipDownload
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

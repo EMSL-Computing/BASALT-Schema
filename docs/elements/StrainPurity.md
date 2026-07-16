@@ -25,13 +25,12 @@ URI: [analysis_api_schema:StrainPurity](https://w3id.org/MONet/analysis-api-sche
 
 
 
-
 ```mermaid
  classDiagram
     class StrainPurity
-    click StrainPurity href "../StrainPurity"
+    click StrainPurity href "../StrainPurity/"
       CultureGrowth <|-- StrainPurity
-        click CultureGrowth href "../CultureGrowth"
+        click CultureGrowth href "../CultureGrowth/"
       
       StrainPurity : agitation_speed_rpm
         
@@ -39,11 +38,10 @@ URI: [analysis_api_schema:StrainPurity](https://w3id.org/MONet/analysis-api-sche
         
           
     
-    
-    
-    
-    StrainPurity --> "0..1" RouteMethodEnum : analysis_type
-    click RouteMethodEnum href "../RouteMethodEnum"
+        
+        
+        StrainPurity --> "0..1" RouteMethodEnum : analysis_type
+        click RouteMethodEnum href "../RouteMethodEnum/"
     
 
         
@@ -51,11 +49,10 @@ URI: [analysis_api_schema:StrainPurity](https://w3id.org/MONet/analysis-api-sche
         
           
     
-    
-    
-    
-    StrainPurity --> "0..1" BiologicalEntity : biological_entity_ref
-    click BiologicalEntity href "../BiologicalEntity"
+        
+        
+        StrainPurity --> "0..1" BiologicalEntity : biological_entity_ref
+        click BiologicalEntity href "../BiologicalEntity/"
     
 
         
@@ -67,11 +64,6 @@ URI: [analysis_api_schema:StrainPurity](https://w3id.org/MONet/analysis-api-sche
         
       StrainPurity : id
         
-          
-    
-    
-
-        
       StrainPurity : incubation_time_hours
         
       StrainPurity : inspection_method
@@ -80,11 +72,10 @@ URI: [analysis_api_schema:StrainPurity](https://w3id.org/MONet/analysis-api-sche
         
           
     
-    
-    
-    
-    StrainPurity --> "0..1" MethodNameEnum : method_name
-    click MethodNameEnum href "../MethodNameEnum"
+        
+        
+        StrainPurity --> "0..1" MethodNameEnum : method_name
+        click MethodNameEnum href "../MethodNameEnum/"
     
 
         
@@ -92,11 +83,10 @@ URI: [analysis_api_schema:StrainPurity](https://w3id.org/MONet/analysis-api-sche
         
           
     
-    
-    
-    
-    StrainPurity --> "0..1" OxygenStatusEnum : oxygen_relationship
-    click OxygenStatusEnum href "../OxygenStatusEnum"
+        
+        
+        StrainPurity --> "0..1" OxygenStatusEnum : oxygen_relationship
+        click OxygenStatusEnum href "../OxygenStatusEnum/"
     
 
         
@@ -114,11 +104,10 @@ URI: [analysis_api_schema:StrainPurity](https://w3id.org/MONet/analysis-api-sche
         
           
     
-    
-    
-    
-    StrainPurity --> "0..1" Sample : uses_sample
-    click Sample href "../Sample"
+        
+        
+        StrainPurity --> "0..1" Sample : uses_sample
+        click Sample href "../Sample/"
     
 
         
@@ -133,7 +122,6 @@ URI: [analysis_api_schema:StrainPurity](https://w3id.org/MONet/analysis-api-sche
 * [SampleProcessing](SampleProcessing.md)
     * [CultureGrowth](CultureGrowth.md) [ [HasIncubationConditions](HasIncubationConditions.md)]
         * **StrainPurity**
-
 
 
 ## Slots
@@ -152,7 +140,7 @@ URI: [analysis_api_schema:StrainPurity](https://w3id.org/MONet/analysis-api-sche
 | [oxygen_relationship](oxygen_relationship.md) | 0..1 <br/> [OxygenStatusEnum](OxygenStatusEnum.md) | The relationship of the sample to oxygen, such as aerobic or anaerobic | [HasIncubationConditions](HasIncubationConditions.md) |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
-| [id](id.md) | 1 <br/> uuid |  | [SampleProcessing](SampleProcessing.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [analysis_type](analysis_type.md) | 0..1 <br/> [RouteMethodEnum](RouteMethodEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [method_name](method_name.md) | 0..1 <br/> [MethodNameEnum](MethodNameEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [processing_steps](processing_steps.md) | 1 <br/> [String](String.md) |  | [SampleProcessing](SampleProcessing.md) |
@@ -166,13 +154,17 @@ URI: [analysis_api_schema:StrainPurity](https://w3id.org/MONet/analysis-api-sche
 
 
 
+
+
+
+
 ## TODOs
 
 * purity percentage
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -192,7 +184,6 @@ URI: [analysis_api_schema:StrainPurity](https://w3id.org/MONet/analysis-api-sche
 | ---  | ---  |
 | self | analysis_api_schema:StrainPurity |
 | native | analysis_api_schema:StrainPurity |
-
 
 
 
@@ -221,7 +212,6 @@ description: 'Purity check of a strain culture.  Verifies that a sample contains
 todos:
 - purity percentage
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: CultureGrowth
 slots:
 - inspection_method
@@ -249,7 +239,6 @@ description: 'Purity check of a strain culture.  Verifies that a sample contains
 todos:
 - purity percentage
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: CultureGrowth
 attributes:
   inspection_method:

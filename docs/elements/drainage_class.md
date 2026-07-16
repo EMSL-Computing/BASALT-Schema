@@ -29,18 +29,30 @@ Alias: drainage_class
 
 
 
-
 ## Properties
 
-* Range: [DrainageClassEnum](DrainageClassEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [DrainageClassEnum](DrainageClassEnum.md) |
+| Domain Of | [Site](Site.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

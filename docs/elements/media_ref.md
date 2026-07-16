@@ -36,18 +36,30 @@ Alias: media_ref
 
 
 
-
 ## Properties
 
-* Range: [ProcessedSample](ProcessedSample.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [ProcessedSample](ProcessedSample.md) |
+| Domain Of | [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md), [AMP2WellMetadata](AMP2WellMetadata.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -7,10 +7,9 @@ _Types of sampling activities_
 
 
 
-URI: [SamplingActivityTypeEnum](SamplingActivityTypeEnum.md)
+URI: [analysis_api_schema:SamplingActivityTypeEnum](https://w3id.org/MONet/analysis-api-schema/SamplingActivityTypeEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | soil | None | Soil sampling activity |
@@ -27,9 +26,11 @@ URI: [SamplingActivityTypeEnum](SamplingActivityTypeEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

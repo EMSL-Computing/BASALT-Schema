@@ -24,18 +24,37 @@ Alias: alt_id
 
 
 
-
 ## Properties
 
-* Range: [AlternativeIdentifier](AlternativeIdentifier.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [AlternativeIdentifier](AlternativeIdentifier.md) |
+| Domain Of | [InstrumentAlternativeIdentifier](InstrumentAlternativeIdentifier.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [InstrumentAlternativeIdentifier](InstrumentAlternativeIdentifier.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

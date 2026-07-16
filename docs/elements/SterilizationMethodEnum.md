@@ -7,10 +7,9 @@ _Method used to sterilize media or other entities._
 
 
 
-URI: [SterilizationMethodEnum](SterilizationMethodEnum.md)
+URI: [analysis_api_schema:SterilizationMethodEnum](https://w3id.org/MONet/analysis-api-schema/SterilizationMethodEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | autoclave | None | Autoclaved |
@@ -32,9 +31,11 @@ URI: [SterilizationMethodEnum](SterilizationMethodEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

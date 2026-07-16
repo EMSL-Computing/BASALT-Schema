@@ -7,10 +7,9 @@ _Sections of a core sample_
 
 
 
-URI: [CoreSectionEnum](CoreSectionEnum.md)
+URI: [analysis_api_schema:CoreSectionEnum](https://w3id.org/MONet/analysis-api-schema/CoreSectionEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | TOP | None | Top section of core |
@@ -31,9 +30,11 @@ URI: [CoreSectionEnum](CoreSectionEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

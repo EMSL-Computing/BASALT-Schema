@@ -26,13 +26,12 @@ Alias: timepoint_label
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |  no  |
+| [PlateProduct](PlateProduct.md) | Abstract base for plate measurement data products |  no  |
 | [PlateDataGenerationActivity](PlateDataGenerationActivity.md) | Abstract base for plate measurement activities |  no  |
 | [AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |  no  |
-| [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |  no  |
-| [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |  no  |
 | [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | AMP2 plate measurement (OD, fluorescence, flow cytometry) |  no  |
-| [PlateProduct](PlateProduct.md) | Abstract base for plate measurement data products |  no  |
-
+| [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |  no  |
 
 
 
@@ -41,17 +40,29 @@ Alias: timepoint_label
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [PlateDataGenerationActivity](PlateDataGenerationActivity.md), [PlateProduct](PlateProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

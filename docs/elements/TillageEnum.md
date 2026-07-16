@@ -7,10 +7,9 @@ _Tillage methods_
 
 
 
-URI: [TillageEnum](TillageEnum.md)
+URI: [analysis_api_schema:TillageEnum](https://w3id.org/MONet/analysis-api-schema/TillageEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | chisel | None | Chisel tillage |
@@ -37,9 +36,11 @@ URI: [TillageEnum](TillageEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

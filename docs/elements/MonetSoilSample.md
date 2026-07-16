@@ -15,13 +15,12 @@ URI: [analysis_api_schema:MonetSoilSample](https://w3id.org/MONet/analysis-api-s
 
 
 
-
 ```mermaid
  classDiagram
     class MonetSoilSample
-    click MonetSoilSample href "../MonetSoilSample"
+    click MonetSoilSample href "../MonetSoilSample/"
       Sample <|-- MonetSoilSample
-        click Sample href "../Sample"
+        click Sample href "../Sample/"
       
       MonetSoilSample : agrochem_addition
         
@@ -33,11 +32,10 @@ URI: [analysis_api_schema:MonetSoilSample](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    MonetSoilSample --> "0..1" MONetCoreGroupEnum : core_group
-    click MONetCoreGroupEnum href "../MONetCoreGroupEnum"
+        
+        
+        MonetSoilSample --> "0..1" MONetCoreGroupEnum : core_group
+        click MONetCoreGroupEnum href "../MONetCoreGroupEnum/"
     
 
         
@@ -56,11 +54,6 @@ URI: [analysis_api_schema:MonetSoilSample](https://w3id.org/MONet/analysis-api-s
       MonetSoilSample : external_identifiers
         
       MonetSoilSample : id
-        
-          
-    
-    
-
         
       MonetSoilSample : latitude
         
@@ -88,11 +81,10 @@ URI: [analysis_api_schema:MonetSoilSample](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    MonetSoilSample --> "0..1" SampleStoreTempEnum : samp_store_temp
-    click SampleStoreTempEnum href "../SampleStoreTempEnum"
+        
+        
+        MonetSoilSample --> "0..1" SampleStoreTempEnum : samp_store_temp
+        click SampleStoreTempEnum href "../SampleStoreTempEnum/"
     
 
         
@@ -102,11 +94,10 @@ URI: [analysis_api_schema:MonetSoilSample](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    MonetSoilSample --> "0..1" SamplingActivity : sampled_during
-    click SamplingActivity href "../SamplingActivity"
+        
+        
+        MonetSoilSample --> "0..1" SamplingActivity : sampled_during
+        click SamplingActivity href "../SamplingActivity/"
     
 
         
@@ -116,11 +107,10 @@ URI: [analysis_api_schema:MonetSoilSample](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    MonetSoilSample --> "1" SoilSampleTypeEnum : soil_sample_type
-    click SoilSampleTypeEnum href "../SoilSampleTypeEnum"
+        
+        
+        MonetSoilSample --> "1" SoilSampleTypeEnum : soil_sample_type
+        click SoilSampleTypeEnum href "../SoilSampleTypeEnum/"
     
 
         
@@ -128,11 +118,10 @@ URI: [analysis_api_schema:MonetSoilSample](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    MonetSoilSample --> "1" SoilTypeEnum : soil_type
-    click SoilTypeEnum href "../SoilTypeEnum"
+        
+        
+        MonetSoilSample --> "1" SoilTypeEnum : soil_type
+        click SoilTypeEnum href "../SoilTypeEnum/"
     
 
         
@@ -142,11 +131,10 @@ URI: [analysis_api_schema:MonetSoilSample](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    MonetSoilSample --> "0..1" StorageConditionEnum : storage_condition
-    click StorageConditionEnum href "../StorageConditionEnum"
+        
+        
+        MonetSoilSample --> "0..1" StorageConditionEnum : storage_condition
+        click StorageConditionEnum href "../StorageConditionEnum/"
     
 
         
@@ -170,7 +158,6 @@ URI: [analysis_api_schema:MonetSoilSample](https://w3id.org/MONet/analysis-api-s
 ## Inheritance
 * [Sample](Sample.md)
     * **MonetSoilSample**
-
 
 
 ## Slots
@@ -208,7 +195,7 @@ URI: [analysis_api_schema:MonetSoilSample](https://w3id.org/MONet/analysis-api-s
 | [water_content](water_content.md) | 1 <br/> [String](String.md) | Water content measurement | direct |
 | [water_content_meth](water_content_meth.md) | 0..1 <br/> [String](String.md) | Reference or method used in determining the water content of soil | direct |
 | [watering_regm](watering_regm.md) | 0..1 <br/> [String](String.md) | Information about treatment involving an exposure to watering frequencies, tr... | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [Sample](Sample.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [Sample](Sample.md) |
 | [emsl_activity](emsl_activity.md) | 0..1 <br/> [String](String.md) | Nullable string linking a Sample or SamplingActivity to a named EMSL activity... | [Sample](Sample.md) |
@@ -222,9 +209,13 @@ URI: [analysis_api_schema:MonetSoilSample](https://w3id.org/MONet/analysis-api-s
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -250,7 +241,6 @@ URI: [analysis_api_schema:MonetSoilSample](https://w3id.org/MONet/analysis-api-s
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -264,7 +254,6 @@ description: A soil sample that has been collected according to the MONet soil s
   protocol. This sample type has specific slot requirements related to the MONet soil
   sampling method, such as infiltration rates.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slots:
 - agrochem_addition
@@ -439,7 +428,6 @@ description: A soil sample that has been collected according to the MONet soil s
   protocol. This sample type has specific slot requirements related to the MONet soil
   sampling method, such as infiltration rates.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slot_usage:
   bulk_elect_conductivity:
@@ -960,8 +948,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: MonetSoilSample
     domain_of:
     - DataProduct

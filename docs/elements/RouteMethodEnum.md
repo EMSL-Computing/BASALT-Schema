@@ -2,10 +2,9 @@
 
 
 
-URI: [RouteMethodEnum](RouteMethodEnum.md)
+URI: [analysis_api_schema:RouteMethodEnum](https://w3id.org/MONet/analysis-api-schema/RouteMethodEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | analysis_activity | None |  |
@@ -36,9 +35,11 @@ URI: [RouteMethodEnum](RouteMethodEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

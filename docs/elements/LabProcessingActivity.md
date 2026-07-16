@@ -35,19 +35,13 @@ URI: [analysis_api_schema:LabProcessingActivity](https://w3id.org/MONet/analysis
 
 
 
-
 ```mermaid
  classDiagram
     class LabProcessingActivity
-    click LabProcessingActivity href "../LabProcessingActivity"
+    click LabProcessingActivity href "../LabProcessingActivity/"
       LabProcessingActivity : description
         
       LabProcessingActivity : id
-        
-          
-    
-    
-
         
       LabProcessingActivity : name
         
@@ -59,12 +53,11 @@ URI: [analysis_api_schema:LabProcessingActivity](https://w3id.org/MONet/analysis
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 0..1 <br/> [String](String.md) | Human-readable name for the activity | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Free-text description of the activity | direct |
 
@@ -76,9 +69,13 @@ URI: [analysis_api_schema:LabProcessingActivity](https://w3id.org/MONet/analysis
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -104,7 +101,6 @@ URI: [analysis_api_schema:LabProcessingActivity](https://w3id.org/MONet/analysis
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -122,7 +118,6 @@ description: "[NEW ABSTRACT CLASS] Higher-level abstract base for any activity t
   \ gain\n  is_a: labProcessingActivity\nand its existing id attribute can be retained\
   \ or removed (inherited)."
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 attributes:
   id:
@@ -274,7 +269,6 @@ description: "[NEW ABSTRACT CLASS] Higher-level abstract base for any activity t
   \ gain\n  is_a: labProcessingActivity\nand its existing id attribute can be retained\
   \ or removed (inherited)."
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 attributes:
   id:

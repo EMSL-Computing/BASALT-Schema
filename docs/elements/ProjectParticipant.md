@@ -15,27 +15,20 @@ URI: [analysis_api_schema:ProjectParticipant](https://w3id.org/MONet/analysis-ap
 
 
 
-
 ```mermaid
  classDiagram
     class ProjectParticipant
-    click ProjectParticipant href "../ProjectParticipant"
+    click ProjectParticipant href "../ProjectParticipant/"
       ProjectParticipant : id
-        
-          
-    
-    
-
         
       ProjectParticipant : person
         
           
     
-    
-    
-    
-    ProjectParticipant --> "1" PersonValue : person
-    click PersonValue href "../PersonValue"
+        
+        
+        ProjectParticipant --> "1" PersonValue : person
+        click PersonValue href "../PersonValue/"
     
 
         
@@ -43,11 +36,10 @@ URI: [analysis_api_schema:ProjectParticipant](https://w3id.org/MONet/analysis-ap
         
           
     
-    
-    
-    
-    ProjectParticipant --> "1" NexusRoleEnum : role
-    click NexusRoleEnum href "../NexusRoleEnum"
+        
+        
+        ProjectParticipant --> "1" NexusRoleEnum : role
+        click NexusRoleEnum href "../NexusRoleEnum/"
     
 
         
@@ -59,12 +51,11 @@ URI: [analysis_api_schema:ProjectParticipant](https://w3id.org/MONet/analysis-ap
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [role](role.md) | 1 <br/> [NexusRoleEnum](NexusRoleEnum.md) | The role of the contributor in the study (e | direct |
 | [person](person.md) | 1 <br/> [PersonValue](PersonValue.md) | The person who contributed to the study | direct |
 
@@ -83,9 +74,13 @@ URI: [analysis_api_schema:ProjectParticipant](https://w3id.org/MONet/analysis-ap
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -111,7 +106,6 @@ URI: [analysis_api_schema:ProjectParticipant](https://w3id.org/MONet/analysis-ap
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -123,7 +117,6 @@ URI: [analysis_api_schema:ProjectParticipant](https://w3id.org/MONet/analysis-ap
 name: ProjectParticipant
 description: A record of a person and their role on an EMSL project.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id
@@ -232,7 +225,6 @@ attributes:
 name: ProjectParticipant
 description: A record of a person and their role on an EMSL project.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

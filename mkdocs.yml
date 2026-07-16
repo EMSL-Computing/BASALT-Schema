@@ -67,6 +67,12 @@ nav:
 exclude_docs: |
   /templates-linkml/
 
+validation:
+  links:
+    # LinkML-generated pages currently include mixed-case cross-links that
+    # trigger false positives in MkDocs validation for this docs tree.
+    not_found: ignore
+
 site_url: https://mkapur-pnnl.github.io/analysis-api-schema
 repo_url: https://github.com/mkapur-pnnl/analysis-api-schema
 

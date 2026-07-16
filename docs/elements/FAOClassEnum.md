@@ -7,10 +7,9 @@ _FAO soil classification system_
 
 
 
-URI: [FAOClassEnum](FAOClassEnum.md)
+URI: [analysis_api_schema:FAOClassEnum](https://w3id.org/MONet/analysis-api-schema/FAOClassEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | Acrisols | None |  |
@@ -58,9 +57,11 @@ URI: [FAOClassEnum](FAOClassEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

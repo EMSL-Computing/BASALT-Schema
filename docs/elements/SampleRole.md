@@ -2,10 +2,9 @@
 
 
 
-URI: [SampleRole](SampleRole.md)
+URI: [analysis_api_schema:SampleRole](https://w3id.org/MONet/analysis-api-schema/SampleRole)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | input_sample | None |  |
@@ -25,9 +24,11 @@ URI: [SampleRole](SampleRole.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

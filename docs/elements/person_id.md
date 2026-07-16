@@ -24,18 +24,37 @@ Alias: person_id
 
 
 
-
 ## Properties
 
-* Range: [PersonValue](PersonValue.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [PersonValue](PersonValue.md) |
+| Domain Of | [Custodian](Custodian.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [Custodian](Custodian.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

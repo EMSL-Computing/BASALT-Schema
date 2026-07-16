@@ -17,9 +17,8 @@ Alias: role
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProcessingSampleLink](ProcessingSampleLink.md) |  |  no  |
 | [ProjectParticipant](ProjectParticipant.md) | A record of a person and their role on an EMSL project |  no  |
-
+| [ProcessingSampleLink](ProcessingSampleLink.md) |  |  no  |
 
 
 
@@ -28,15 +27,28 @@ Alias: role
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [ProcessingSampleLink](ProcessingSampleLink.md), [ProjectParticipant](ProjectParticipant.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

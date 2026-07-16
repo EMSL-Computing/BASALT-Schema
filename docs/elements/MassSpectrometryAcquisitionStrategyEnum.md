@@ -2,10 +2,9 @@
 
 
 
-URI: [MassSpectrometryAcquisitionStrategyEnum](MassSpectrometryAcquisitionStrategyEnum.md)
+URI: [analysis_api_schema:MassSpectrometryAcquisitionStrategyEnum](https://w3id.org/MONet/analysis-api-schema/MassSpectrometryAcquisitionStrategyEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | data_independent_acquisition | None | Data independent mass spectrometer acquisition method wherein the full mass r... |
@@ -26,9 +25,11 @@ URI: [MassSpectrometryAcquisitionStrategyEnum](MassSpectrometryAcquisitionStrate
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -30,18 +30,30 @@ Alias: synth_env_design
 
 
 
-
 ## Properties
 
-* Range: [SyntheticEnvironmentEnum](SyntheticEnvironmentEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [SyntheticEnvironmentEnum](SyntheticEnvironmentEnum.md) |
+| Domain Of | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md), [TerraformSample](TerraformSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

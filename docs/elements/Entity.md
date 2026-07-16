@@ -17,19 +17,13 @@ URI: [analysis_api_schema:Entity](https://w3id.org/MONet/analysis-api-schema/Ent
 
 
 
-
 ```mermaid
  classDiagram
     class Entity
-    click Entity href "../Entity"
+    click Entity href "../Entity/"
       Entity : description
         
       Entity : id
-        
-          
-    
-    
-
         
       Entity : name
         
@@ -41,14 +35,19 @@ URI: [analysis_api_schema:Entity](https://w3id.org/MONet/analysis-api-schema/Ent
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
+
+
+
+
+
+
 
 
 
@@ -59,8 +58,6 @@ URI: [analysis_api_schema:Entity](https://w3id.org/MONet/analysis-api-schema/Ent
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -86,7 +83,6 @@ URI: [analysis_api_schema:Entity](https://w3id.org/MONet/analysis-api-schema/Ent
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -98,7 +94,6 @@ URI: [analysis_api_schema:Entity](https://w3id.org/MONet/analysis-api-schema/Ent
 name: Entity
 description: Base identifiable thing.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 slots:
 - name
@@ -193,7 +188,6 @@ attributes:
 name: Entity
 description: Base identifiable thing.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 attributes:
   id:

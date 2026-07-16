@@ -22,9 +22,8 @@ Alias: soil_sample_type
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-
+| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
 
 
 
@@ -33,7 +32,20 @@ Alias: soil_sample_type
 
 ## Properties
 
-* Range: [SoilSampleTypeEnum](SoilSampleTypeEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [SoilSampleTypeEnum](SoilSampleTypeEnum.md) |
+| Domain Of | [MonetSoilSample](MonetSoilSample.md), [SoilSample](SoilSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
 
 
 
@@ -44,9 +56,9 @@ Alias: soil_sample_type
 * this is a GSC slot but it's not constrined by an enum, it's a string. where did this come from?
 * BJM 060626 - clarified this slot and enum name from 'soil_type' but I'm still not sure we need it. it is populated in the current database though.
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

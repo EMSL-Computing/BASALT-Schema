@@ -10,13 +10,12 @@ URI: [analysis_api_schema:RespirationMethod](https://w3id.org/MONet/analysis-api
 
 
 
-
 ```mermaid
  classDiagram
     class RespirationMethod
-    click RespirationMethod href "../RespirationMethod"
+    click RespirationMethod href "../RespirationMethod/"
       Method <|-- RespirationMethod
-        click Method href "../Method"
+        click Method href "../Method/"
       
       RespirationMethod : analytic
         
@@ -30,7 +29,6 @@ URI: [analysis_api_schema:RespirationMethod](https://w3id.org/MONet/analysis-api
 ## Inheritance
 * [Method](Method.md)
     * **RespirationMethod**
-
 
 
 ## Slots
@@ -54,9 +52,13 @@ URI: [analysis_api_schema:RespirationMethod](https://w3id.org/MONet/analysis-api
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -82,7 +84,6 @@ URI: [analysis_api_schema:RespirationMethod](https://w3id.org/MONet/analysis-api
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -93,7 +94,6 @@ URI: [analysis_api_schema:RespirationMethod](https://w3id.org/MONet/analysis-api
 ```yaml
 name: RespirationMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 
 ```
@@ -105,7 +105,6 @@ is_a: Method
 ```yaml
 name: RespirationMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 attributes:
   analytic:

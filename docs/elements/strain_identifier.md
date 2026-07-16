@@ -31,12 +31,24 @@ Alias: strain_identifier
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+
+
+
+
 
 
 
@@ -48,9 +60,8 @@ Alias: strain_identifier
 
 
 
+
 ## Identifier and Mapping Information
-
-
 
 
 

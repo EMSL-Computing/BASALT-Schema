@@ -29,18 +29,30 @@ Alias: acquisition_strategy
 
 
 
-
 ## Properties
 
-* Range: [MassSpectrometryAcquisitionStrategyEnum](MassSpectrometryAcquisitionStrategyEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [MassSpectrometryAcquisitionStrategyEnum](MassSpectrometryAcquisitionStrategyEnum.md) |
+| Domain Of | [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

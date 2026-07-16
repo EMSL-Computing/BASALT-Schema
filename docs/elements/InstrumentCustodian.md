@@ -10,20 +10,18 @@ URI: [analysis_api_schema:InstrumentCustodian](https://w3id.org/MONet/analysis-a
 
 
 
-
 ```mermaid
  classDiagram
     class InstrumentCustodian
-    click InstrumentCustodian href "../InstrumentCustodian"
+    click InstrumentCustodian href "../InstrumentCustodian/"
       InstrumentCustodian : custodian_id
         
           
     
-    
-    
-    
-    InstrumentCustodian --> "1" Custodian : custodian_id
-    click Custodian href "../Custodian"
+        
+        
+        InstrumentCustodian --> "1" Custodian : custodian_id
+        click Custodian href "../Custodian/"
     
 
         
@@ -31,11 +29,10 @@ URI: [analysis_api_schema:InstrumentCustodian](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    InstrumentCustodian --> "1" Instrument : instrument_id
-    click Instrument href "../Instrument"
+        
+        
+        InstrumentCustodian --> "1" Instrument : instrument_id
+        click Instrument href "../Instrument/"
     
 
         
@@ -46,7 +43,6 @@ URI: [analysis_api_schema:InstrumentCustodian](https://w3id.org/MONet/analysis-a
 
 
 <!-- no inheritance hierarchy -->
-
 
 ## Slots
 
@@ -63,9 +59,13 @@ URI: [analysis_api_schema:InstrumentCustodian](https://w3id.org/MONet/analysis-a
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -91,7 +91,6 @@ URI: [analysis_api_schema:InstrumentCustodian](https://w3id.org/MONet/analysis-a
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -102,7 +101,6 @@ URI: [analysis_api_schema:InstrumentCustodian](https://w3id.org/MONet/analysis-a
 ```yaml
 name: InstrumentCustodian
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   instrument_id:
     name: instrument_id
@@ -130,7 +128,6 @@ attributes:
 ```yaml
 name: InstrumentCustodian
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   instrument_id:
     name: instrument_id

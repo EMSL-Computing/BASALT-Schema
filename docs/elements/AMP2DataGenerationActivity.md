@@ -27,13 +27,12 @@ URI: [analysis_api_schema:AMP2DataGenerationActivity](https://w3id.org/MONet/ana
 
 
 
-
 ```mermaid
  classDiagram
     class AMP2DataGenerationActivity
-    click AMP2DataGenerationActivity href "../AMP2DataGenerationActivity"
+    click AMP2DataGenerationActivity href "../AMP2DataGenerationActivity/"
       PlateDataGenerationActivity <|-- AMP2DataGenerationActivity
-        click PlateDataGenerationActivity href "../PlateDataGenerationActivity"
+        click PlateDataGenerationActivity href "../PlateDataGenerationActivity/"
       
       AMP2DataGenerationActivity : acquisition_end_time
         
@@ -43,11 +42,10 @@ URI: [analysis_api_schema:AMP2DataGenerationActivity](https://w3id.org/MONet/ana
         
           
     
-    
-    
-    
-    AMP2DataGenerationActivity --> "0..1" ProcessedSample : analyte_id
-    click ProcessedSample href "../ProcessedSample"
+        
+        
+        AMP2DataGenerationActivity --> "0..1" ProcessedSample : analyte_id
+        click ProcessedSample href "../ProcessedSample/"
     
 
         
@@ -55,20 +53,14 @@ URI: [analysis_api_schema:AMP2DataGenerationActivity](https://w3id.org/MONet/ana
         
       AMP2DataGenerationActivity : id
         
-          
-    
-    
-
-        
       AMP2DataGenerationActivity : instrument_operator_id
         
           
     
-    
-    
-    
-    AMP2DataGenerationActivity --> "0..1" PersonValue : instrument_operator_id
-    click PersonValue href "../PersonValue"
+        
+        
+        AMP2DataGenerationActivity --> "0..1" PersonValue : instrument_operator_id
+        click PersonValue href "../PersonValue/"
     
 
         
@@ -76,11 +68,10 @@ URI: [analysis_api_schema:AMP2DataGenerationActivity](https://w3id.org/MONet/ana
         
           
     
-    
-    
-    
-    AMP2DataGenerationActivity --> "0..1" Instrument : instrument_used
-    click Instrument href "../Instrument"
+        
+        
+        AMP2DataGenerationActivity --> "0..1" Instrument : instrument_used
+        click Instrument href "../Instrument/"
     
 
         
@@ -111,7 +102,6 @@ URI: [analysis_api_schema:AMP2DataGenerationActivity](https://w3id.org/MONet/ana
         * **AMP2DataGenerationActivity**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -124,7 +114,7 @@ URI: [analysis_api_schema:AMP2DataGenerationActivity](https://w3id.org/MONet/ana
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [DataGenerationActivity](DataGenerationActivity.md) |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [DataGenerationActivity](DataGenerationActivity.md) |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [DataGenerationActivity](DataGenerationActivity.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataGenerationActivity](DataGenerationActivity.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
 | [analyte_id](analyte_id.md) | 0..1 <br/> [ProcessedSample](ProcessedSample.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
 | [acquisition_start_time](acquisition_start_time.md) | 1 <br/> [Datetime](Datetime.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
 | [acquisition_end_time](acquisition_end_time.md) | 1 <br/> [Datetime](Datetime.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
@@ -139,9 +129,13 @@ URI: [analysis_api_schema:AMP2DataGenerationActivity](https://w3id.org/MONet/ana
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -161,7 +155,6 @@ URI: [analysis_api_schema:AMP2DataGenerationActivity](https://w3id.org/MONet/ana
 | ---  | ---  |
 | self | analysis_api_schema:AMP2DataGenerationActivity |
 | native | analysis_api_schema:AMP2DataGenerationActivity |
-
 
 
 
@@ -189,7 +182,6 @@ description: 'AMP2 plate measurement (OD, fluorescence, flow cytometry).
 
   v1 origin: plate-general.yaml AMP2DataGenerationActivity'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: PlateDataGenerationActivity
 slots:
 - measurement_type
@@ -215,7 +207,6 @@ description: 'AMP2 plate measurement (OD, fluorescence, flow cytometry).
 
   v1 origin: plate-general.yaml AMP2DataGenerationActivity'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: PlateDataGenerationActivity
 attributes:
   measurement_type:

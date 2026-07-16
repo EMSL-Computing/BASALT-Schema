@@ -10,23 +10,21 @@ URI: [analysis_api_schema:EnzymeProduct](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ```mermaid
  classDiagram
     class EnzymeProduct
-    click EnzymeProduct href "../EnzymeProduct"
+    click EnzymeProduct href "../EnzymeProduct/"
       ProcessedData <|-- EnzymeProduct
-        click ProcessedData href "../ProcessedData"
+        click ProcessedData href "../ProcessedData/"
       
       EnzymeProduct : beta_glucosidase_ug_pnp_per_g_per_h_id
         
           
     
-    
-    
-    
-    EnzymeProduct --> "0..1" QuantityValue : beta_glucosidase_ug_pnp_per_g_per_h_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        EnzymeProduct --> "0..1" QuantityValue : beta_glucosidase_ug_pnp_per_g_per_h_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -34,11 +32,10 @@ URI: [analysis_api_schema:EnzymeProduct](https://w3id.org/MONet/analysis-api-sch
         
           
     
-    
-    
-    
-    EnzymeProduct --> "0..1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        EnzymeProduct --> "0..1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -50,20 +47,14 @@ URI: [analysis_api_schema:EnzymeProduct](https://w3id.org/MONet/analysis-api-sch
         
           
     
-    
-    
-    
-    EnzymeProduct --> "0..1" ProcessedDataFlag : flag
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        EnzymeProduct --> "0..1" ProcessedDataFlag : flag
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
       EnzymeProduct : id
-        
-          
-    
-    
-
         
       EnzymeProduct : lims_barcode
         
@@ -73,11 +64,10 @@ URI: [analysis_api_schema:EnzymeProduct](https://w3id.org/MONet/analysis-api-sch
         
           
     
-    
-    
-    
-    EnzymeProduct --> "0..1" ProductMeasureType : measure_type
-    click ProductMeasureType href "../ProductMeasureType"
+        
+        
+        EnzymeProduct --> "0..1" ProductMeasureType : measure_type
+        click ProductMeasureType href "../ProductMeasureType/"
     
 
         
@@ -95,11 +85,10 @@ URI: [analysis_api_schema:EnzymeProduct](https://w3id.org/MONet/analysis-api-sch
         
           
     
-    
-    
-    
-    EnzymeProduct --> "0..1" Sample : sample_id
-    click Sample href "../Sample"
+        
+        
+        EnzymeProduct --> "0..1" Sample : sample_id
+        click Sample href "../Sample/"
     
 
         
@@ -120,7 +109,6 @@ URI: [analysis_api_schema:EnzymeProduct](https://w3id.org/MONet/analysis-api-sch
 * [DataProduct](DataProduct.md)
     * [ProcessedData](ProcessedData.md)
         * **EnzymeProduct**
-
 
 
 ## Slots
@@ -144,7 +132,13 @@ URI: [analysis_api_schema:EnzymeProduct](https://w3id.org/MONet/analysis-api-sch
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | [DataProduct](DataProduct.md) |
 | [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | [DataProduct](DataProduct.md) |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProduct](DataProduct.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProduct](DataProduct.md) |
+
+
+
+
+
+
 
 
 
@@ -155,8 +149,6 @@ URI: [analysis_api_schema:EnzymeProduct](https://w3id.org/MONet/analysis-api-sch
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -182,7 +174,6 @@ URI: [analysis_api_schema:EnzymeProduct](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -193,7 +184,6 @@ URI: [analysis_api_schema:EnzymeProduct](https://w3id.org/MONet/analysis-api-sch
 ```yaml
 name: EnzymeProduct
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: ProcessedData
 slots:
 - measure_type
@@ -229,7 +219,6 @@ attributes:
 ```yaml
 name: EnzymeProduct
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: ProcessedData
 attributes:
   beta_glucosidase_ug_pnp_per_g_per_h_id:
@@ -397,8 +386,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: EnzymeProduct
     domain_of:
     - DataProduct

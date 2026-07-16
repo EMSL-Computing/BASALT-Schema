@@ -33,53 +33,45 @@ URI: [analysis_api_schema:PlateSetupActivity](https://w3id.org/MONet/analysis-ap
 
 
 
-
 ```mermaid
  classDiagram
     class PlateSetupActivity
-    click PlateSetupActivity href "../PlateSetupActivity"
+    click PlateSetupActivity href "../PlateSetupActivity/"
       HasIncubationConditions <|-- PlateSetupActivity
-        click HasIncubationConditions href "../HasIncubationConditions"
+        click HasIncubationConditions href "../HasIncubationConditions/"
       SampleProcessing <|-- PlateSetupActivity
-        click SampleProcessing href "../SampleProcessing"
+        click SampleProcessing href "../SampleProcessing/"
       
 
       PlateSetupActivity <|-- AMP2PlateSetupActivity
-        click AMP2PlateSetupActivity href "../AMP2PlateSetupActivity"
+        click AMP2PlateSetupActivity href "../AMP2PlateSetupActivity/"
       PlateSetupActivity <|-- EcoplatePlateSetupActivity
-        click EcoplatePlateSetupActivity href "../EcoplatePlateSetupActivity"
+        click EcoplatePlateSetupActivity href "../EcoplatePlateSetupActivity/"
       
-      
+
       PlateSetupActivity : agitation_speed_rpm
         
       PlateSetupActivity : analysis_type
         
           
     
-    
-    
-    
-    PlateSetupActivity --> "0..1" RouteMethodEnum : analysis_type
-    click RouteMethodEnum href "../RouteMethodEnum"
+        
+        
+        PlateSetupActivity --> "0..1" RouteMethodEnum : analysis_type
+        click RouteMethodEnum href "../RouteMethodEnum/"
     
 
         
       PlateSetupActivity : id
         
-          
-    
-    
-
-        
       PlateSetupActivity : method_name
         
           
     
-    
-    
-    
-    PlateSetupActivity --> "0..1" MethodNameEnum : method_name
-    click MethodNameEnum href "../MethodNameEnum"
+        
+        
+        PlateSetupActivity --> "0..1" MethodNameEnum : method_name
+        click MethodNameEnum href "../MethodNameEnum/"
     
 
         
@@ -87,11 +79,10 @@ URI: [analysis_api_schema:PlateSetupActivity](https://w3id.org/MONet/analysis-ap
         
           
     
-    
-    
-    
-    PlateSetupActivity --> "0..1" OxygenStatusEnum : oxygen_relationship
-    click OxygenStatusEnum href "../OxygenStatusEnum"
+        
+        
+        PlateSetupActivity --> "0..1" OxygenStatusEnum : oxygen_relationship
+        click OxygenStatusEnum href "../OxygenStatusEnum/"
     
 
         
@@ -115,11 +106,10 @@ URI: [analysis_api_schema:PlateSetupActivity](https://w3id.org/MONet/analysis-ap
         
           
     
-    
-    
-    
-    PlateSetupActivity --> "0..1" PersonValue : setup_operator_id
-    click PersonValue href "../PersonValue"
+        
+        
+        PlateSetupActivity --> "0..1" PersonValue : setup_operator_id
+        click PersonValue href "../PersonValue/"
     
 
         
@@ -129,11 +119,10 @@ URI: [analysis_api_schema:PlateSetupActivity](https://w3id.org/MONet/analysis-ap
         
           
     
-    
-    
-    
-    PlateSetupActivity --> "0..1" Sample : uses_sample
-    click Sample href "../Sample"
+        
+        
+        PlateSetupActivity --> "0..1" Sample : uses_sample
+        click Sample href "../Sample/"
     
 
         
@@ -141,11 +130,10 @@ URI: [analysis_api_schema:PlateSetupActivity](https://w3id.org/MONet/analysis-ap
         
           
     
-    
-    
-    
-    PlateSetupActivity --> "*" WellMetadata : well_metadata
-    click WellMetadata href "../WellMetadata"
+        
+        
+        PlateSetupActivity --> "*" WellMetadata : well_metadata
+        click WellMetadata href "../WellMetadata/"
     
 
         
@@ -161,7 +149,6 @@ URI: [analysis_api_schema:PlateSetupActivity](https://w3id.org/MONet/analysis-ap
     * **PlateSetupActivity** [ [HasIncubationConditions](HasIncubationConditions.md)]
         * [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md)
         * [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md)
-
 
 
 ## Slots
@@ -180,7 +167,7 @@ URI: [analysis_api_schema:PlateSetupActivity](https://w3id.org/MONet/analysis-ap
 | [oxygen_relationship](oxygen_relationship.md) | 0..1 <br/> [OxygenStatusEnum](OxygenStatusEnum.md) | The relationship of the sample to oxygen, such as aerobic or anaerobic | [HasIncubationConditions](HasIncubationConditions.md) |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
-| [id](id.md) | 1 <br/> uuid |  | [SampleProcessing](SampleProcessing.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [analysis_type](analysis_type.md) | 0..1 <br/> [RouteMethodEnum](RouteMethodEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [method_name](method_name.md) | 0..1 <br/> [MethodNameEnum](MethodNameEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [processing_steps](processing_steps.md) | 1 <br/> [String](String.md) |  | [SampleProcessing](SampleProcessing.md) |
@@ -194,9 +181,13 @@ URI: [analysis_api_schema:PlateSetupActivity](https://w3id.org/MONet/analysis-ap
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -222,7 +213,6 @@ URI: [analysis_api_schema:PlateSetupActivity](https://w3id.org/MONet/analysis-ap
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -239,7 +229,6 @@ description: "Abstract base for 96-well plate setup activities.\nCommon plate-le
   \ input_sample)\nOutput: processedSample(type='*_plate') via processingSampleLink\n\
   \nv1 origin: plate-general.yaml PlateSetupActivity"
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: SampleProcessing
 abstract: true
 mixins:
@@ -268,7 +257,6 @@ description: "Abstract base for 96-well plate setup activities.\nCommon plate-le
   \ input_sample)\nOutput: processedSample(type='*_plate') via processingSampleLink\n\
   \nv1 origin: plate-general.yaml PlateSetupActivity"
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: SampleProcessing
 abstract: true
 mixins:

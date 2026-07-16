@@ -29,18 +29,30 @@ Alias: construct_component
 
 
 
-
 ## Properties
 
-* Range: [ConstructComponentEnum](ConstructComponentEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [ConstructComponentEnum](ConstructComponentEnum.md) |
+| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

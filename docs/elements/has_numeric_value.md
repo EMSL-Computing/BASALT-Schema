@@ -29,18 +29,37 @@ Alias: has_numeric_value
 
 
 
-
 ## Properties
 
-* Range: [Double](Double.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Double](Double.md) |
+| Domain Of | [QuantityValue](QuantityValue.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [QuantityValue](QuantityValue.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

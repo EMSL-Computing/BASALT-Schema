@@ -26,18 +26,37 @@ Alias: execution_resource
 
 
 
-
 ## Properties
 
-* Range: [ExecutionResourceEnum](ExecutionResourceEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [ExecutionResourceEnum](ExecutionResourceEnum.md) |
+| Domain Of | [DataProcessingActivity](DataProcessingActivity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [DataProcessingActivity](DataProcessingActivity.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

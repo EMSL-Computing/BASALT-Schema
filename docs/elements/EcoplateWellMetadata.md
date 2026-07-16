@@ -23,13 +23,12 @@ URI: [analysis_api_schema:EcoplateWellMetadata](https://w3id.org/MONet/analysis-
 
 
 
-
 ```mermaid
  classDiagram
     class EcoplateWellMetadata
-    click EcoplateWellMetadata href "../EcoplateWellMetadata"
+    click EcoplateWellMetadata href "../EcoplateWellMetadata/"
       WellMetadata <|-- EcoplateWellMetadata
-        click WellMetadata href "../WellMetadata"
+        click WellMetadata href "../WellMetadata/"
       
       EcoplateWellMetadata : carbon_source
         
@@ -57,7 +56,6 @@ URI: [analysis_api_schema:EcoplateWellMetadata](https://w3id.org/MONet/analysis-
     * **EcoplateWellMetadata**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -78,9 +76,13 @@ URI: [analysis_api_schema:EcoplateWellMetadata](https://w3id.org/MONet/analysis-
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -106,7 +108,6 @@ URI: [analysis_api_schema:EcoplateWellMetadata](https://w3id.org/MONet/analysis-
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -125,7 +126,6 @@ description: 'Ecoplate-specific per-well metadata.
 
   v1 origin: plate-general.yaml EcoplateWellMetadata'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: WellMetadata
 attributes:
   media_volume_ul:
@@ -180,7 +180,6 @@ description: 'Ecoplate-specific per-well metadata.
 
   v1 origin: plate-general.yaml EcoplateWellMetadata'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: WellMetadata
 attributes:
   media_volume_ul:

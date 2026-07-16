@@ -20,18 +20,29 @@ Alias: strain_ref
 
 
 
-
 ## Properties
 
-* Range: Strain
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [BiologicalEntity](BiologicalEntity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -64,7 +75,7 @@ description: FK reference to a Strain purchasedMaterial used in the activity
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 alias: strain_ref
-range: Strain
+range: biological_entity
 required: false
 
 ```

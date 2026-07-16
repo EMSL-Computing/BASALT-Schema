@@ -24,18 +24,37 @@ Alias: flag_nh4n_avg
 
 
 
-
 ## Properties
 
-* Range: [ProcessedDataFlag](ProcessedDataFlag.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [ProcessedDataFlag](ProcessedDataFlag.md) |
+| Domain Of | [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

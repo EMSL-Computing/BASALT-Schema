@@ -29,20 +29,31 @@ Alias: uses_ms_configuration
 
 
 
-
 ## Properties
 
-* Range: [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md) |
+| Domain Of | [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

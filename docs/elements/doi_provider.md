@@ -29,18 +29,37 @@ Alias: doi_provider
 
 
 
-
 ## Properties
 
-* Range: [DoiProviderEnum](DoiProviderEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [DoiProviderEnum](DoiProviderEnum.md) |
+| Domain Of | [DOI](DOI.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [DOI](DOI.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

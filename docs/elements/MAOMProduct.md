@@ -10,20 +10,18 @@ URI: [analysis_api_schema:MAOMProduct](https://w3id.org/MONet/analysis-api-schem
 
 
 
-
 ```mermaid
  classDiagram
     class MAOMProduct
-    click MAOMProduct href "../MAOMProduct"
+    click MAOMProduct href "../MAOMProduct/"
       MAOMProduct : flag_tn
         
           
     
-    
-    
-    
-    MAOMProduct --> "0..1" ProcessedDataFlag : flag_tn
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        MAOMProduct --> "0..1" ProcessedDataFlag : flag_tn
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -31,11 +29,10 @@ URI: [analysis_api_schema:MAOMProduct](https://w3id.org/MONet/analysis-api-schem
         
           
     
-    
-    
-    
-    MAOMProduct --> "0..1" ProcessedDataFlag : flag_tn_avg
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        MAOMProduct --> "0..1" ProcessedDataFlag : flag_tn_avg
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -43,11 +40,10 @@ URI: [analysis_api_schema:MAOMProduct](https://w3id.org/MONet/analysis-api-schem
         
           
     
-    
-    
-    
-    MAOMProduct --> "0..1" ProcessedDataFlag : flag_toc
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        MAOMProduct --> "0..1" ProcessedDataFlag : flag_toc
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -55,11 +51,10 @@ URI: [analysis_api_schema:MAOMProduct](https://w3id.org/MONet/analysis-api-schem
         
           
     
-    
-    
-    
-    MAOMProduct --> "0..1" ProcessedDataFlag : flag_toc_avg
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        MAOMProduct --> "0..1" ProcessedDataFlag : flag_toc_avg
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -67,11 +62,10 @@ URI: [analysis_api_schema:MAOMProduct](https://w3id.org/MONet/analysis-api-schem
         
           
     
-    
-    
-    
-    MAOMProduct --> "1" ProcessedData : id
-    click ProcessedData href "../ProcessedData"
+        
+        
+        MAOMProduct --> "1" ProcessedData : id
+        click ProcessedData href "../ProcessedData/"
     
 
         
@@ -79,11 +73,10 @@ URI: [analysis_api_schema:MAOMProduct](https://w3id.org/MONet/analysis-api-schem
         
           
     
-    
-    
-    
-    MAOMProduct --> "0..1" ProductMeasureType : measure_type
-    click ProductMeasureType href "../ProductMeasureType"
+        
+        
+        MAOMProduct --> "0..1" ProductMeasureType : measure_type
+        click ProductMeasureType href "../ProductMeasureType/"
     
 
         
@@ -95,11 +88,10 @@ URI: [analysis_api_schema:MAOMProduct](https://w3id.org/MONet/analysis-api-schem
         
           
     
-    
-    
-    
-    MAOMProduct --> "0..1" QuantityValue : total_nitrogen_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        MAOMProduct --> "0..1" QuantityValue : total_nitrogen_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -109,11 +101,10 @@ URI: [analysis_api_schema:MAOMProduct](https://w3id.org/MONet/analysis-api-schem
         
           
     
-    
-    
-    
-    MAOMProduct --> "0..1" QuantityValue : total_organic_carbon_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        MAOMProduct --> "0..1" QuantityValue : total_organic_carbon_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -124,7 +115,6 @@ URI: [analysis_api_schema:MAOMProduct](https://w3id.org/MONet/analysis-api-schem
 
 
 <!-- no inheritance hierarchy -->
-
 
 ## Slots
 
@@ -150,9 +140,13 @@ URI: [analysis_api_schema:MAOMProduct](https://w3id.org/MONet/analysis-api-schem
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -178,7 +172,6 @@ URI: [analysis_api_schema:MAOMProduct](https://w3id.org/MONet/analysis-api-schem
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -189,7 +182,6 @@ URI: [analysis_api_schema:MAOMProduct](https://w3id.org/MONet/analysis-api-schem
 ```yaml
 name: MAOMProduct
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 slots:
 - measure_type
 - replicate
@@ -346,7 +338,6 @@ attributes:
 ```yaml
 name: MAOMProduct
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

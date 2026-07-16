@@ -10,31 +10,24 @@ URI: [analysis_api_schema:AlternativeIdentifier](https://w3id.org/MONet/analysis
 
 
 
-
 ```mermaid
  classDiagram
     class AlternativeIdentifier
-    click AlternativeIdentifier href "../AlternativeIdentifier"
+    click AlternativeIdentifier href "../AlternativeIdentifier/"
       AlternativeIdentifier : alternate_id
         
       AlternativeIdentifier : alternate_identifier_type
         
           
     
-    
-    
-    
-    AlternativeIdentifier --> "1" AlternateIdentifierType : alternate_identifier_type
-    click AlternateIdentifierType href "../AlternateIdentifierType"
+        
+        
+        AlternativeIdentifier --> "1" AlternateIdentifierType : alternate_identifier_type
+        click AlternateIdentifierType href "../AlternateIdentifierType/"
     
 
         
       AlternativeIdentifier : id
-        
-          
-    
-    
-
         
       
 ```
@@ -44,12 +37,11 @@ URI: [analysis_api_schema:AlternativeIdentifier](https://w3id.org/MONet/analysis
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [alternate_id](alternate_id.md) | 1 <br/> [String](String.md) |  | direct |
 | [alternate_identifier_type](alternate_identifier_type.md) | 1 <br/> [AlternateIdentifierType](AlternateIdentifierType.md) |  | direct |
 
@@ -68,9 +60,13 @@ URI: [analysis_api_schema:AlternativeIdentifier](https://w3id.org/MONet/analysis
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -96,7 +92,6 @@ URI: [analysis_api_schema:AlternativeIdentifier](https://w3id.org/MONet/analysis
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -107,7 +102,6 @@ URI: [analysis_api_schema:AlternativeIdentifier](https://w3id.org/MONet/analysis
 ```yaml
 name: AlternativeIdentifier
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id
@@ -213,7 +207,6 @@ attributes:
 ```yaml
 name: AlternativeIdentifier
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

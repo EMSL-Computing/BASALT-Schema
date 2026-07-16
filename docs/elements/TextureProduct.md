@@ -10,23 +10,21 @@ URI: [analysis_api_schema:TextureProduct](https://w3id.org/MONet/analysis-api-sc
 
 
 
-
 ```mermaid
  classDiagram
     class TextureProduct
-    click TextureProduct href "../TextureProduct"
+    click TextureProduct href "../TextureProduct/"
       ProcessedData <|-- TextureProduct
-        click ProcessedData href "../ProcessedData"
+        click ProcessedData href "../ProcessedData/"
       
       TextureProduct : clay_pct_id
         
           
     
-    
-    
-    
-    TextureProduct --> "0..1" QuantityValue : clay_pct_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        TextureProduct --> "0..1" QuantityValue : clay_pct_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -34,11 +32,10 @@ URI: [analysis_api_schema:TextureProduct](https://w3id.org/MONet/analysis-api-sc
         
           
     
-    
-    
-    
-    TextureProduct --> "0..1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        TextureProduct --> "0..1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -50,20 +47,14 @@ URI: [analysis_api_schema:TextureProduct](https://w3id.org/MONet/analysis-api-sc
         
           
     
-    
-    
-    
-    TextureProduct --> "0..1" ProcessedDataFlag : flag
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        TextureProduct --> "0..1" ProcessedDataFlag : flag
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
       TextureProduct : id
-        
-          
-    
-    
-
         
       TextureProduct : lims_barcode
         
@@ -73,11 +64,10 @@ URI: [analysis_api_schema:TextureProduct](https://w3id.org/MONet/analysis-api-sc
         
           
     
-    
-    
-    
-    TextureProduct --> "0..1" ProductMeasureType : measure_type
-    click ProductMeasureType href "../ProductMeasureType"
+        
+        
+        TextureProduct --> "0..1" ProductMeasureType : measure_type
+        click ProductMeasureType href "../ProductMeasureType/"
     
 
         
@@ -95,11 +85,10 @@ URI: [analysis_api_schema:TextureProduct](https://w3id.org/MONet/analysis-api-sc
         
           
     
-    
-    
-    
-    TextureProduct --> "0..1" Sample : sample_id
-    click Sample href "../Sample"
+        
+        
+        TextureProduct --> "0..1" Sample : sample_id
+        click Sample href "../Sample/"
     
 
         
@@ -111,11 +100,10 @@ URI: [analysis_api_schema:TextureProduct](https://w3id.org/MONet/analysis-api-sc
         
           
     
-    
-    
-    
-    TextureProduct --> "0..1" QuantityValue : sand_pct_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        TextureProduct --> "0..1" QuantityValue : sand_pct_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -123,11 +111,10 @@ URI: [analysis_api_schema:TextureProduct](https://w3id.org/MONet/analysis-api-sc
         
           
     
-    
-    
-    
-    TextureProduct --> "0..1" QuantityValue : silt_pct_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        TextureProduct --> "0..1" QuantityValue : silt_pct_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -144,7 +131,6 @@ URI: [analysis_api_schema:TextureProduct](https://w3id.org/MONet/analysis-api-sc
 * [DataProduct](DataProduct.md)
     * [ProcessedData](ProcessedData.md)
         * **TextureProduct**
-
 
 
 ## Slots
@@ -170,7 +156,13 @@ URI: [analysis_api_schema:TextureProduct](https://w3id.org/MONet/analysis-api-sc
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | [DataProduct](DataProduct.md) |
 | [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | [DataProduct](DataProduct.md) |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProduct](DataProduct.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProduct](DataProduct.md) |
+
+
+
+
+
+
 
 
 
@@ -181,8 +173,6 @@ URI: [analysis_api_schema:TextureProduct](https://w3id.org/MONet/analysis-api-sc
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -208,7 +198,6 @@ URI: [analysis_api_schema:TextureProduct](https://w3id.org/MONet/analysis-api-sc
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -219,7 +208,6 @@ URI: [analysis_api_schema:TextureProduct](https://w3id.org/MONet/analysis-api-sc
 ```yaml
 name: TextureProduct
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: ProcessedData
 slots:
 - measure_type
@@ -269,7 +257,6 @@ attributes:
 ```yaml
 name: TextureProduct
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: ProcessedData
 attributes:
   sand_pct_id:
@@ -455,8 +442,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: TextureProduct
     domain_of:
     - DataProduct

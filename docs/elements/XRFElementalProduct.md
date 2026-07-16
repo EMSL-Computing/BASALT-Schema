@@ -55,13 +55,12 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
 
 
 
-
 ```mermaid
  classDiagram
     class XRFElementalProduct
-    click XRFElementalProduct href "../XRFElementalProduct"
+    click XRFElementalProduct href "../XRFElementalProduct/"
       XRayDataProduct <|-- XRFElementalProduct
-        click XRayDataProduct href "../XRayDataProduct"
+        click XRayDataProduct href "../XRayDataProduct/"
       
       XRFElementalProduct : ag_mg_per_kg
         
@@ -81,11 +80,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        XRFElementalProduct --> "0..1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -103,11 +101,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_ag
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_ag
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -115,11 +112,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_as
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_as
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -127,11 +123,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_ba
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_ba
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -139,11 +134,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_br
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_br
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -151,11 +145,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_cd
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_cd
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -163,11 +156,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_ce
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_ce
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -175,11 +167,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_cl
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_cl
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -187,11 +178,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_cr
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_cr
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -199,11 +189,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_cs
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_cs
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -211,11 +200,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_cu
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_cu
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -223,11 +211,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_ga
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_ga
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -235,11 +222,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_in
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_in
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -247,11 +233,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_la
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_la
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -259,11 +244,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_mo
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_mo
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -271,11 +255,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_nb
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_nb
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -283,11 +266,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_ni
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_ni
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -295,11 +277,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_pb
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_pb
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -307,11 +288,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_rb
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_rb
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -319,11 +299,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_sb
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_sb
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -331,11 +310,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_se
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_se
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -343,11 +321,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_sn
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_sn
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -355,11 +332,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_sr
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_sr
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -367,11 +343,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_th
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_th
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -379,11 +354,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_u
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_u
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -391,11 +365,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_v
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_v
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -403,11 +376,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_y
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_y
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -415,22 +387,16 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_zn
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        XRFElementalProduct --> "0..1" ProcessedDataFlag : flag_zn
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
       XRFElementalProduct : ga_mg_per_kg
         
       XRFElementalProduct : id
-        
-          
-    
-    
-
         
       XRFElementalProduct : in_mg_per_kg
         
@@ -444,11 +410,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" ProductMeasureType : measure_type
-    click ProductMeasureType href "../ProductMeasureType"
+        
+        
+        XRFElementalProduct --> "0..1" ProductMeasureType : measure_type
+        click ProductMeasureType href "../ProductMeasureType/"
     
 
         
@@ -476,11 +441,10 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    XRFElementalProduct --> "0..1" Sample : sample_id
-    click Sample href "../Sample"
+        
+        
+        XRFElementalProduct --> "0..1" Sample : sample_id
+        click Sample href "../Sample/"
     
 
         
@@ -520,7 +484,6 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
     * [ProcessedData](ProcessedData.md)
         * [XRayDataProduct](XRayDataProduct.md)
             * **XRFElementalProduct**
-
 
 
 ## Slots
@@ -596,7 +559,13 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | [DataProduct](DataProduct.md) |
 | [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | [DataProduct](DataProduct.md) |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProduct](DataProduct.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProduct](DataProduct.md) |
+
+
+
+
+
+
 
 
 
@@ -607,8 +576,6 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -628,7 +595,6 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
 | ---  | ---  |
 | self | analysis_api_schema:XRFElementalProduct |
 | native | analysis_api_schema:XRFElementalProduct |
-
 
 
 
@@ -657,7 +623,6 @@ description: "X-ray Fluorescence (XRF) elemental concentration data.\nOne row pe
   \             Ag, Cd, In, Sn, Sb, Cs, Ba, La, Ce, Pb, Th, U\n\nRequired enum additions\
   \ to enums.yaml:\n  product:\n    XRFElementalProduct:  # Add to product permissible_values"
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: XRayDataProduct
 slots:
 - measure_type
@@ -1089,7 +1054,6 @@ description: "X-ray Fluorescence (XRF) elemental concentration data.\nOne row pe
   \             Ag, Cd, In, Sn, Sb, Cs, Ba, La, Ce, Pb, Th, U\n\nRequired enum additions\
   \ to enums.yaml:\n  product:\n    XRFElementalProduct:  # Add to product permissible_values"
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: XRayDataProduct
 attributes:
   cl_mg_per_kg:
@@ -1745,8 +1709,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: XRFElementalProduct
     domain_of:
     - DataProduct

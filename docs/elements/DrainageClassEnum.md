@@ -7,10 +7,9 @@ _Soil drainage classifications_
 
 
 
-URI: [DrainageClassEnum](DrainageClassEnum.md)
+URI: [analysis_api_schema:DrainageClassEnum](https://w3id.org/MONet/analysis-api-schema/DrainageClassEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | excessively_drained | None | Excessively drained soil |
@@ -34,9 +33,11 @@ URI: [DrainageClassEnum](DrainageClassEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -24,20 +24,38 @@ Alias: alternate_identifier_type
 
 
 
-
 ## Properties
 
-* Range: [AlternateIdentifierType](AlternateIdentifierType.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [AlternateIdentifierType](AlternateIdentifierType.md) |
+| Domain Of | [AlternativeIdentifier](AlternativeIdentifier.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [AlternativeIdentifier](AlternativeIdentifier.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

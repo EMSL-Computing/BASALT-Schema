@@ -10,20 +10,18 @@ URI: [analysis_api_schema:LabDevice](https://w3id.org/MONet/analysis-api-schema/
 
 
 
-
 ```mermaid
  classDiagram
     class LabDevice
-    click LabDevice href "../LabDevice"
+    click LabDevice href "../LabDevice/"
       LabDevice : activity_speed_id
         
           
     
-    
-    
-    
-    LabDevice --> "0..1" QuantityValue : activity_speed_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        LabDevice --> "0..1" QuantityValue : activity_speed_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -31,11 +29,10 @@ URI: [analysis_api_schema:LabDevice](https://w3id.org/MONet/analysis-api-schema/
         
           
     
-    
-    
-    
-    LabDevice --> "0..1" QuantityValue : activity_time_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        LabDevice --> "0..1" QuantityValue : activity_time_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -45,20 +42,14 @@ URI: [analysis_api_schema:LabDevice](https://w3id.org/MONet/analysis-api-schema/
         
           
     
-    
-    
-    
-    LabDevice --> "0..1" DeviceTypeEnum : device_type
-    click DeviceTypeEnum href "../DeviceTypeEnum"
+        
+        
+        LabDevice --> "0..1" DeviceTypeEnum : device_type
+        click DeviceTypeEnum href "../DeviceTypeEnum/"
     
 
         
       LabDevice : id
-        
-          
-    
-    
-
         
       
 ```
@@ -68,12 +59,11 @@ URI: [analysis_api_schema:LabDevice](https://w3id.org/MONet/analysis-api-schema/
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [device_type](device_type.md) | 0..1 <br/> [DeviceTypeEnum](DeviceTypeEnum.md) |  | direct |
 | [activity_time_id](activity_time_id.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) |  | direct |
@@ -87,9 +77,13 @@ URI: [analysis_api_schema:LabDevice](https://w3id.org/MONet/analysis-api-schema/
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -115,7 +109,6 @@ URI: [analysis_api_schema:LabDevice](https://w3id.org/MONet/analysis-api-schema/
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -126,7 +119,6 @@ URI: [analysis_api_schema:LabDevice](https://w3id.org/MONet/analysis-api-schema/
 ```yaml
 name: LabDevice
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id
@@ -265,7 +257,6 @@ attributes:
 ```yaml
 name: LabDevice
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

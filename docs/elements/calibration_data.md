@@ -29,18 +29,30 @@ Alias: calibration_data
 
 
 
-
 ## Properties
 
-* Range: [MassSpectrometryInstrumentData](MassSpectrometryInstrumentData.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [MassSpectrometryInstrumentData](MassSpectrometryInstrumentData.md) |
+| Domain Of | [MassSpectrometryStandardRun](MassSpectrometryStandardRun.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

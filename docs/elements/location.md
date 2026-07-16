@@ -17,17 +17,16 @@ Alias: location
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [KuoMethod](KuoMethod.md) |  |  no  |
-| [Instrument](Instrument.md) | A material entity that is designed to perform a function in a scientific  |  no  |
-| [PHMethod](PHMethod.md) |  |  no  |
-| [GravimetricWaterContentMethod](GravimetricWaterContentMethod.md) |  |  no  |
-| [TextureMethod](TextureMethod.md) |  |  no  |
-| [HydraulicPropertiesMethod](HydraulicPropertiesMethod.md) |  |  no  |
 | [XrayComputedTomographyMethod](XrayComputedTomographyMethod.md) |  |  no  |
-| [TOCTNMethod](TOCTNMethod.md) |  |  no  |
-| [MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |  no  |
 | [EnzymeActivityMethod](EnzymeActivityMethod.md) |  |  no  |
-
+| [GravimetricWaterContentMethod](GravimetricWaterContentMethod.md) |  |  no  |
+| [Instrument](Instrument.md) | A material entity that is designed to perform a function in a scientific  |  no  |
+| [HydraulicPropertiesMethod](HydraulicPropertiesMethod.md) |  |  no  |
+| [KuoMethod](KuoMethod.md) |  |  no  |
+| [TOCTNMethod](TOCTNMethod.md) |  |  no  |
+| [PHMethod](PHMethod.md) |  |  no  |
+| [MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |  no  |
+| [TextureMethod](TextureMethod.md) |  |  no  |
 
 
 
@@ -36,9 +35,21 @@ Alias: location
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [Instrument](Instrument.md), [EnzymeActivityMethod](EnzymeActivityMethod.md), [GravimetricWaterContentMethod](GravimetricWaterContentMethod.md), [HydraulicPropertiesMethod](HydraulicPropertiesMethod.md), [KuoMethod](KuoMethod.md), [MicrobialBiomassMethod](MicrobialBiomassMethod.md), [PHMethod](PHMethod.md), [TOCTNMethod](TOCTNMethod.md), [TextureMethod](TextureMethod.md), [XrayComputedTomographyMethod](XrayComputedTomographyMethod.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+
+
+
 
 
 
@@ -48,9 +59,9 @@ Alias: location
 
 * used on many method classes. no description. what was this meant to mean?
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

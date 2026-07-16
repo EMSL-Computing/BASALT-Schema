@@ -20,10 +20,22 @@ Alias: date_received
 
 
 
-
 ## Properties
 
-* Range: [Date](Date.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Date](Date.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
 
 
 
@@ -35,9 +47,8 @@ Alias: date_received
 
 
 
+
 ## Identifier and Mapping Information
-
-
 
 
 

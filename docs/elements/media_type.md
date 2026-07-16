@@ -31,18 +31,30 @@ Alias: media_type
 
 
 
-
 ## Properties
 
-* Range: [MediaTypeEnum](MediaTypeEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [MediaTypeEnum](MediaTypeEnum.md) |
+| Domain Of | [MediaPreparation](MediaPreparation.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

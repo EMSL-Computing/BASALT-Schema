@@ -7,10 +7,9 @@ _The method used to introduce the eluent into the mass spectrometer._
 
 
 
-URI: [EluentIntroductionEnum](EluentIntroductionEnum.md)
+URI: [analysis_api_schema:EluentIntroductionEnum](https://w3id.org/MONet/analysis-api-schema/EluentIntroductionEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | direct_infusion_syringe | None | Direct infusion of the sample into the mass spectrometer |
@@ -26,9 +25,11 @@ URI: [EluentIntroductionEnum](EluentIntroductionEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

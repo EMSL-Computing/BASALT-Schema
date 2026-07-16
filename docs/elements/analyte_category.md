@@ -29,18 +29,30 @@ Alias: analyte_category
 
 
 
-
 ## Properties
 
-* Range: [AnalyteCategoryEnum](AnalyteCategoryEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [AnalyteCategoryEnum](AnalyteCategoryEnum.md) |
+| Domain Of | [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

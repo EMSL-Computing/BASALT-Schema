@@ -10,13 +10,12 @@ URI: [analysis_api_schema:XrayComputedTomographyMethod](https://w3id.org/MONet/a
 
 
 
-
 ```mermaid
  classDiagram
     class XrayComputedTomographyMethod
-    click XrayComputedTomographyMethod href "../XrayComputedTomographyMethod"
+    click XrayComputedTomographyMethod href "../XrayComputedTomographyMethod/"
       Method <|-- XrayComputedTomographyMethod
-        click Method href "../Method"
+        click Method href "../Method/"
       
       XrayComputedTomographyMethod : analytic
         
@@ -48,7 +47,6 @@ URI: [analysis_api_schema:XrayComputedTomographyMethod](https://w3id.org/MONet/a
     * **XrayComputedTomographyMethod**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -71,9 +69,13 @@ URI: [analysis_api_schema:XrayComputedTomographyMethod](https://w3id.org/MONet/a
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -99,7 +101,6 @@ URI: [analysis_api_schema:XrayComputedTomographyMethod](https://w3id.org/MONet/a
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -110,7 +111,6 @@ URI: [analysis_api_schema:XrayComputedTomographyMethod](https://w3id.org/MONet/a
 ```yaml
 name: XrayComputedTomographyMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 slots:
 - location
@@ -181,7 +181,6 @@ attributes:
 ```yaml
 name: XrayComputedTomographyMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 attributes:
   x_ray_power:

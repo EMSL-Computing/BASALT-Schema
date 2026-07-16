@@ -24,18 +24,37 @@ Alias: flow_rate_y
 
 
 
-
 ## Properties
 
-* Range: [Double](Double.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Double](Double.md) |
+| Domain Of | [TomographyProduct](TomographyProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [TomographyProduct](TomographyProduct.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

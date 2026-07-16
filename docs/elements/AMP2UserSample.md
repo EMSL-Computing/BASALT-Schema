@@ -41,13 +41,12 @@ URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-sc
 
 
 
-
 ```mermaid
  classDiagram
     class AMP2UserSample
-    click AMP2UserSample href "../AMP2UserSample"
+    click AMP2UserSample href "../AMP2UserSample/"
       Sample <|-- AMP2UserSample
-        click Sample href "../Sample"
+        click Sample href "../Sample/"
       
       AMP2UserSample : analysis_type
         
@@ -55,11 +54,10 @@ URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-sc
         
           
     
-    
-    
-    
-    AMP2UserSample --> "1" BiologicalEntity : biological_entity_ref
-    click BiologicalEntity href "../BiologicalEntity"
+        
+        
+        AMP2UserSample --> "1" BiologicalEntity : biological_entity_ref
+        click BiologicalEntity href "../BiologicalEntity/"
     
 
         
@@ -75,22 +73,16 @@ URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-sc
         
           
     
-    
-    
-    
-    AMP2UserSample --> "0..1" GrowthFacilityEnum : growth_facil
-    click GrowthFacilityEnum href "../GrowthFacilityEnum"
+        
+        
+        AMP2UserSample --> "0..1" GrowthFacilityEnum : growth_facil
+        click GrowthFacilityEnum href "../GrowthFacilityEnum/"
     
 
         
       AMP2UserSample : guid_source
         
       AMP2UserSample : id
-        
-          
-    
-    
-
         
       AMP2UserSample : isol_growth_condt
         
@@ -108,11 +100,10 @@ URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-sc
         
           
     
-    
-    
-    
-    AMP2UserSample --> "1" StorageConditionEnum : storage_condition
-    click StorageConditionEnum href "../StorageConditionEnum"
+        
+        
+        AMP2UserSample --> "1" StorageConditionEnum : storage_condition
+        click StorageConditionEnum href "../StorageConditionEnum/"
     
 
         
@@ -128,7 +119,6 @@ URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-sc
 ## Inheritance
 * [Sample](Sample.md)
     * **AMP2UserSample**
-
 
 
 ## Slots
@@ -147,7 +137,7 @@ URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-sc
 | [other_guid_source](other_guid_source.md) | 0..1 <br/> [String](String.md) | Description of GUID source if guid_source = "other" | direct |
 | [analysis_type](analysis_type.md) | 0..1 <br/> [String](String.md) | The type(s) of analysis planned for this sample | direct |
 | [cbi](cbi.md) | 0..1 <br/> [Boolean](Boolean.md) | Confidential Business Information flag (yes/no) | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Sample identifier/name (e | [Sample](Sample.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [Sample](Sample.md) |
 | [emsl_activity](emsl_activity.md) | 0..1 <br/> [String](String.md) | Nullable string linking a Sample or SamplingActivity to a named EMSL activity... | [Sample](Sample.md) |
@@ -161,9 +151,13 @@ URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-sc
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -189,7 +183,6 @@ URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-sc
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -208,7 +201,6 @@ description: "A user-submitted microbial sample for AMP2 workflows.\n\nReference
   \ activity\n  - Processed through StrainPurity → StockCulturePreparation → PreCultureGrowth\
   \ → ExperimentalCulture\n  - Outputs ProcessedSample instances at each stage"
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slots:
 - biological_entity_ref
@@ -358,7 +350,6 @@ description: "A user-submitted microbial sample for AMP2 workflows.\n\nReference
   \ activity\n  - Processed through StrainPurity → StockCulturePreparation → PreCultureGrowth\
   \ → ExperimentalCulture\n  - Outputs ProcessedSample instances at each stage"
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slot_usage:
   biological_entity_ref:

@@ -29,18 +29,30 @@ Alias: produced_by_ms_run
 
 
 
-
 ## Properties
 
-* Range: [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) |
+| Domain Of | [MassSpectrometryInstrumentData](MassSpectrometryInstrumentData.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

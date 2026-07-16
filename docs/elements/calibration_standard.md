@@ -29,18 +29,30 @@ Alias: calibration_standard
 
 
 
-
 ## Properties
 
-* Range: [PurchasedMaterial](PurchasedMaterial.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [PurchasedMaterial](PurchasedMaterial.md) |
+| Domain Of | [MassSpectrometryStandardRun](MassSpectrometryStandardRun.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

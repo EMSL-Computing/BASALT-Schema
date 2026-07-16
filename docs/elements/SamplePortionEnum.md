@@ -2,19 +2,18 @@
 
 
 
-URI: [SamplePortionEnum](SamplePortionEnum.md)
+URI: [analysis_api_schema:SamplePortionEnum](https://w3id.org/MONet/analysis-api-schema/SamplePortionEnum)
 
 ## Permissible Values
-
-| Value | Meaning | Description |
-| --- | --- | --- |
-| supernatant | None |  |
-| pellet | None |  |
-| organic_layer | None | The portion of a mixture containing dissolved organic material |
-| aqueous_layer | None | The portion of a mixture containing molecules dissolved in water |
-| interlayer | None | The layer of material between liquid layers of a separated mixture |
-| chloroform_layer | None | The portion of a mixture containing molecules dissolved in chloroform |
-| methanol_layer | None | The portion of a mixture containing molecules dissolved in methanol |
+| Value | Meaning | Description | Additional Info |
+| --- | --- | --- | --- |
+| supernatant | None |  ||
+| pellet | None |  ||
+| organic_layer | None | The portion of a mixture containing dissolved organic material | Title: Organic layer<br>|
+| aqueous_layer | None | The portion of a mixture containing molecules dissolved in water | Title: Aqueous layer<br>|
+| interlayer | None | The layer of material between liquid layers of a separated mixture | Title: Interlayer<br>|
+| chloroform_layer | None | The portion of a mixture containing molecules dissolved in chloroform | Title: Chloroform layer<br> Is-A: NONE<br>|
+| methanol_layer | None | The portion of a mixture containing molecules dissolved in methanol | Title: Methanol layer<br> Is-A: NONE<br>|
 
 
 
@@ -30,9 +29,11 @@ URI: [SamplePortionEnum](SamplePortionEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

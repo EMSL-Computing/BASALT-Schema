@@ -29,18 +29,37 @@ Alias: processing_institution
 
 
 
-
 ## Properties
 
-* Range: [InstitutionEnum](InstitutionEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [InstitutionEnum](InstitutionEnum.md) |
+| Domain Of | [Activity](Activity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [Activity](Activity.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

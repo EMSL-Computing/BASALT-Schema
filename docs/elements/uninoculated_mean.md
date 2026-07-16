@@ -29,10 +29,22 @@ Alias: uninoculated_mean
 
 
 
-
 ## Properties
 
-* Range: [Float](Float.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Float](Float.md) |
+| Domain Of | [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
 
 
 
@@ -42,9 +54,9 @@ Alias: uninoculated_mean
 
 * units
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -15,13 +15,12 @@ URI: [analysis_api_schema:NucleotideSequencing](https://w3id.org/MONet/analysis-
 
 
 
-
 ```mermaid
  classDiagram
     class NucleotideSequencing
-    click NucleotideSequencing href "../NucleotideSequencing"
+    click NucleotideSequencing href "../NucleotideSequencing/"
       DataGenerationActivity <|-- NucleotideSequencing
-        click DataGenerationActivity href "../DataGenerationActivity"
+        click DataGenerationActivity href "../DataGenerationActivity/"
       
       NucleotideSequencing : acquisition_end_time
         
@@ -31,11 +30,10 @@ URI: [analysis_api_schema:NucleotideSequencing](https://w3id.org/MONet/analysis-
         
           
     
-    
-    
-    
-    NucleotideSequencing --> "0..1" ProcessedSample : analyte_id
-    click ProcessedSample href "../ProcessedSample"
+        
+        
+        NucleotideSequencing --> "0..1" ProcessedSample : analyte_id
+        click ProcessedSample href "../ProcessedSample/"
     
 
         
@@ -45,20 +43,14 @@ URI: [analysis_api_schema:NucleotideSequencing](https://w3id.org/MONet/analysis-
         
       NucleotideSequencing : id
         
-          
-    
-    
-
-        
       NucleotideSequencing : instrument_operator_id
         
           
     
-    
-    
-    
-    NucleotideSequencing --> "0..1" PersonValue : instrument_operator_id
-    click PersonValue href "../PersonValue"
+        
+        
+        NucleotideSequencing --> "0..1" PersonValue : instrument_operator_id
+        click PersonValue href "../PersonValue/"
     
 
         
@@ -66,11 +58,10 @@ URI: [analysis_api_schema:NucleotideSequencing](https://w3id.org/MONet/analysis-
         
           
     
-    
-    
-    
-    NucleotideSequencing --> "0..1" Instrument : instrument_used
-    click Instrument href "../Instrument"
+        
+        
+        NucleotideSequencing --> "0..1" Instrument : instrument_used
+        click Instrument href "../Instrument/"
     
 
         
@@ -80,11 +71,10 @@ URI: [analysis_api_schema:NucleotideSequencing](https://w3id.org/MONet/analysis-
         
           
     
-    
-    
-    
-    NucleotideSequencing --> "0..1" NucleotideSequencingEnum : nucleotide_sequencing_category
-    click NucleotideSequencingEnum href "../NucleotideSequencingEnum"
+        
+        
+        NucleotideSequencing --> "0..1" NucleotideSequencingEnum : nucleotide_sequencing_category
+        click NucleotideSequencingEnum href "../NucleotideSequencingEnum/"
     
 
         
@@ -106,7 +96,6 @@ URI: [analysis_api_schema:NucleotideSequencing](https://w3id.org/MONet/analysis-
     * **NucleotideSequencing**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -118,7 +107,7 @@ URI: [analysis_api_schema:NucleotideSequencing](https://w3id.org/MONet/analysis-
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [DataGenerationActivity](DataGenerationActivity.md) |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [DataGenerationActivity](DataGenerationActivity.md) |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [DataGenerationActivity](DataGenerationActivity.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataGenerationActivity](DataGenerationActivity.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
 | [analyte_id](analyte_id.md) | 0..1 <br/> [ProcessedSample](ProcessedSample.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
 | [acquisition_start_time](acquisition_start_time.md) | 1 <br/> [Datetime](Datetime.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
 | [acquisition_end_time](acquisition_end_time.md) | 1 <br/> [Datetime](Datetime.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
@@ -140,9 +129,13 @@ URI: [analysis_api_schema:NucleotideSequencing](https://w3id.org/MONet/analysis-
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -168,7 +161,6 @@ URI: [analysis_api_schema:NucleotideSequencing](https://w3id.org/MONet/analysis-
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -181,7 +173,6 @@ name: NucleotideSequencing
 description: A lab activity in which DNA or RNA that was extracted from a sample is
   sequenced.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: DataGenerationActivity
 slots:
 - nucleotide_sequencing_category
@@ -203,7 +194,6 @@ name: NucleotideSequencing
 description: A lab activity in which DNA or RNA that was extracted from a sample is
   sequenced.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: DataGenerationActivity
 slot_usage:
   external_identifiers:

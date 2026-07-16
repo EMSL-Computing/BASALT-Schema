@@ -21,19 +21,13 @@ URI: [analysis_api_schema:PurchasedMaterial](https://w3id.org/MONet/analysis-api
 
 
 
-
 ```mermaid
  classDiagram
     class PurchasedMaterial
-    click PurchasedMaterial href "../PurchasedMaterial"
+    click PurchasedMaterial href "../PurchasedMaterial/"
       PurchasedMaterial : description
         
       PurchasedMaterial : id
-        
-          
-    
-    
-
         
       PurchasedMaterial : name
         
@@ -47,7 +41,6 @@ URI: [analysis_api_schema:PurchasedMaterial](https://w3id.org/MONet/analysis-api
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -55,7 +48,7 @@ URI: [analysis_api_schema:PurchasedMaterial](https://w3id.org/MONet/analysis-api
 | [purchased_material_type](purchased_material_type.md) | 1 <br/> [String](String.md) | Discriminator for purchasedMaterial subtype (e | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 
 
 
@@ -72,9 +65,13 @@ URI: [analysis_api_schema:PurchasedMaterial](https://w3id.org/MONet/analysis-api
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -100,7 +97,6 @@ URI: [analysis_api_schema:PurchasedMaterial](https://w3id.org/MONet/analysis-api
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -116,7 +112,6 @@ description: '[NEW ABSTRACT CLASS] Lightweight base for non-sample physical lab 
 
   Activities reference Strain via the strain_ref FK slot.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 slots:
 - purchased_material_type
@@ -216,7 +211,6 @@ description: '[NEW ABSTRACT CLASS] Lightweight base for non-sample physical lab 
 
   Activities reference Strain via the strain_ref FK slot.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 attributes:
   id:

@@ -24,18 +24,37 @@ Alias: instrument_alt_id_provider
 
 
 
-
 ## Properties
 
-* Range: [InstrumentAltIdProviderEnum](InstrumentAltIdProviderEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [InstrumentAltIdProviderEnum](InstrumentAltIdProviderEnum.md) |
+| Domain Of | [InstrumentAlternativeIdentifier](InstrumentAlternativeIdentifier.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [InstrumentAlternativeIdentifier](InstrumentAlternativeIdentifier.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

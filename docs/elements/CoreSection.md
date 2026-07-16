@@ -15,13 +15,12 @@ URI: [analysis_api_schema:CoreSection](https://w3id.org/MONet/analysis-api-schem
 
 
 
-
 ```mermaid
  classDiagram
     class CoreSection
-    click CoreSection href "../CoreSection"
+    click CoreSection href "../CoreSection/"
       ProcessedSample <|-- CoreSection
-        click ProcessedSample href "../ProcessedSample"
+        click ProcessedSample href "../ProcessedSample/"
       
       CoreSection : concentration_ug_per_uL
         
@@ -29,11 +28,10 @@ URI: [analysis_api_schema:CoreSection](https://w3id.org/MONet/analysis-api-schem
         
           
     
-    
-    
-    
-    CoreSection --> "1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        CoreSection --> "1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -42,11 +40,6 @@ URI: [analysis_api_schema:CoreSection](https://w3id.org/MONet/analysis-api-schem
       CoreSection : emsl_activity
         
       CoreSection : id
-        
-          
-    
-    
-
         
       CoreSection : label_text
         
@@ -60,11 +53,10 @@ URI: [analysis_api_schema:CoreSection](https://w3id.org/MONet/analysis-api-schem
         
           
     
-    
-    
-    
-    CoreSection --> "0..1" SampleProcessing : sampled_during
-    click SampleProcessing href "../SampleProcessing"
+        
+        
+        CoreSection --> "0..1" SampleProcessing : sampled_during
+        click SampleProcessing href "../SampleProcessing/"
     
 
         
@@ -72,11 +64,10 @@ URI: [analysis_api_schema:CoreSection](https://w3id.org/MONet/analysis-api-schem
         
           
     
-    
-    
-    
-    CoreSection --> "0..1" SamplePortionEnum : sampled_portion
-    click SamplePortionEnum href "../SamplePortionEnum"
+        
+        
+        CoreSection --> "0..1" SamplePortionEnum : sampled_portion
+        click SamplePortionEnum href "../SamplePortionEnum/"
     
 
         
@@ -99,13 +90,12 @@ URI: [analysis_api_schema:CoreSection](https://w3id.org/MONet/analysis-api-schem
         * **CoreSection**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [core_section](core_section.md) | 1 <br/> [CoreSectionEnum](CoreSectionEnum.md) | The section of the core | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [storage_location](storage_location.md) | 0..1 <br/> [String](String.md) | The physical or digital location where the processed sample is stored (e | [ProcessedSample](ProcessedSample.md) |
 | [label_text](label_text.md) | 0..1 <br/> [String](String.md) | The label on the stored processed sample, if applicable (e | [ProcessedSample](ProcessedSample.md) |
 | [concentration_ug_per_uL](concentration_ug_per_uL.md) | 0..1 <br/> [Float](Float.md) | Concentration of the substance in micrograms per microliter | [ProcessedSample](ProcessedSample.md) |
@@ -127,9 +117,13 @@ URI: [analysis_api_schema:CoreSection](https://w3id.org/MONet/analysis-api-schem
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -155,7 +149,6 @@ URI: [analysis_api_schema:CoreSection](https://w3id.org/MONet/analysis-api-schem
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -167,7 +160,6 @@ URI: [analysis_api_schema:CoreSection](https://w3id.org/MONet/analysis-api-schem
 name: CoreSection
 description: A section of a core sample (TOP, MID, BTM).
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: ProcessedSample
 slots:
 - core_section
@@ -265,7 +257,6 @@ attributes:
 name: CoreSection
 description: A section of a core sample (TOP, MID, BTM).
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: ProcessedSample
 slot_usage:
   core_section:

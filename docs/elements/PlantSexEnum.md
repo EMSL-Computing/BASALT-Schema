@@ -2,10 +2,9 @@
 
 
 
-URI: [PlantSexEnum](PlantSexEnum.md)
+URI: [analysis_api_schema:PlantSexEnum](https://w3id.org/MONet/analysis-api-schema/PlantSexEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | androdioecious | None |  |
@@ -52,9 +51,11 @@ URI: [PlantSexEnum](PlantSexEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

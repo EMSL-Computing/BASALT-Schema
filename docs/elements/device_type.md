@@ -24,18 +24,37 @@ Alias: device_type
 
 
 
-
 ## Properties
 
-* Range: [DeviceTypeEnum](DeviceTypeEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [DeviceTypeEnum](DeviceTypeEnum.md) |
+| Domain Of | [LabDevice](LabDevice.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [LabDevice](LabDevice.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

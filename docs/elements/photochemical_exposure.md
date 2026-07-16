@@ -31,18 +31,30 @@ Alias: photochemical_exposure
 
 
 
-
 ## Properties
 
-* Range: [PhotochemicalExposureEnum](PhotochemicalExposureEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [PhotochemicalExposureEnum](PhotochemicalExposureEnum.md) |
+| Domain Of | [AerosolArmSample](AerosolArmSample.md), [AerosolSample](AerosolSample.md), [OtherUndescribedSample](OtherUndescribedSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

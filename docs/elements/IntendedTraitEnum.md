@@ -2,21 +2,20 @@
 
 
 
-URI: [IntendedTraitEnum](IntendedTraitEnum.md)
+URI: [analysis_api_schema:IntendedTraitEnum](https://w3id.org/MONet/analysis-api-schema/IntendedTraitEnum)
 
 ## Permissible Values
-
-| Value | Meaning | Description |
-| --- | --- | --- |
-| other | None |  |
-| product_quality | None |  |
-| agronomic_properties | None |  |
-| bacterial_resistance | None |  |
-| herbicide_resistance | None |  |
-| insect_resistance | None |  |
-| marker_gene | None |  |
-| nematode_resistance | None |  |
-| virus_resistance | None |  |
+| Value | Meaning | Description | Additional Info |
+| --- | --- | --- | --- |
+| other | None |  | Title: Other<br>|
+| product_quality | None |  | Title: Product Quality<br>|
+| agronomic_properties | None |  | Title: Agronomic Properties<br>|
+| bacterial_resistance | None |  | Title: Bacterial Resistance<br>|
+| herbicide_resistance | None |  | Title: Herbicide Resistance<br>|
+| insect_resistance | None |  | Title: Insect Resistance<br>|
+| marker_gene | None |  | Title: Marker Gene<br>|
+| nematode_resistance | None |  | Title: Nematode Resistance<br>|
+| virus_resistance | None |  | Title: Virus Resistance<br>|
 
 
 
@@ -32,9 +31,11 @@ URI: [IntendedTraitEnum](IntendedTraitEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

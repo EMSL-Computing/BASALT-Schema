@@ -2,10 +2,9 @@
 
 
 
-URI: [DeviceTypeEnum](DeviceTypeEnum.md)
+URI: [analysis_api_schema:DeviceTypeEnum](https://w3id.org/MONet/analysis-api-schema/DeviceTypeEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | orbital_shaker | None |  |
@@ -25,9 +24,11 @@ URI: [DeviceTypeEnum](DeviceTypeEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

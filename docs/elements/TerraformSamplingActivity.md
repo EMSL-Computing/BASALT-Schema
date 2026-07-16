@@ -15,13 +15,12 @@ URI: [analysis_api_schema:TerraformSamplingActivity](https://w3id.org/MONet/anal
 
 
 
-
 ```mermaid
  classDiagram
     class TerraformSamplingActivity
-    click TerraformSamplingActivity href "../TerraformSamplingActivity"
+    click TerraformSamplingActivity href "../TerraformSamplingActivity/"
       SamplingActivity <|-- TerraformSamplingActivity
-        click SamplingActivity href "../SamplingActivity"
+        click SamplingActivity href "../SamplingActivity/"
       
       TerraformSamplingActivity : collection_date
         
@@ -32,11 +31,6 @@ URI: [analysis_api_schema:TerraformSamplingActivity](https://w3id.org/MONet/anal
       TerraformSamplingActivity : emsl_activity
         
       TerraformSamplingActivity : id
-        
-          
-    
-    
-
         
       TerraformSamplingActivity : name
         
@@ -50,11 +44,10 @@ URI: [analysis_api_schema:TerraformSamplingActivity](https://w3id.org/MONet/anal
         
           
     
-    
-    
-    
-    TerraformSamplingActivity --> "0..1" Site : sampled_at_site
-    click Site href "../Site"
+        
+        
+        TerraformSamplingActivity --> "0..1" Site : sampled_at_site
+        click Site href "../Site/"
     
 
         
@@ -72,7 +65,6 @@ URI: [analysis_api_schema:TerraformSamplingActivity](https://w3id.org/MONet/anal
     * **TerraformSamplingActivity**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -80,7 +72,7 @@ URI: [analysis_api_schema:TerraformSamplingActivity](https://w3id.org/MONet/anal
 | [collection_time](collection_time.md) | 0..1 <br/> [String](String.md) | The time of sampling as an instance (single point) | direct |
 | [sample_collected](sample_collected.md) | 0..1 <br/> [String](String.md) | This refers to the TOTAL amount of sample collected from the experiment | direct |
 | [sample_collection_method](sample_collection_method.md) | 0..1 <br/> [String](String.md) | The method used to collect an environmental sample | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [SamplingActivity](SamplingActivity.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [SamplingActivity](SamplingActivity.md) |
 | [project](project.md) | 0..1 <br/> [Integer](Integer.md) | Identifier for the user project associated with the entity or activity | [SamplingActivity](SamplingActivity.md) |
@@ -97,9 +89,13 @@ URI: [analysis_api_schema:TerraformSamplingActivity](https://w3id.org/MONet/anal
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -125,7 +121,6 @@ URI: [analysis_api_schema:TerraformSamplingActivity](https://w3id.org/MONet/anal
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -137,7 +132,6 @@ URI: [analysis_api_schema:TerraformSamplingActivity](https://w3id.org/MONet/anal
 name: TerraformSamplingActivity
 description: Collection of samples from a Terraform device.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: SamplingActivity
 slots:
 - collection_time
@@ -233,7 +227,6 @@ attributes:
 name: TerraformSamplingActivity
 description: Collection of samples from a Terraform device.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: SamplingActivity
 attributes:
   id:
@@ -458,8 +451,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: TerraformSamplingActivity
     domain_of:
     - DataProduct

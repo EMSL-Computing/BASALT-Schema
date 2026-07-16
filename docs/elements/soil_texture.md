@@ -29,20 +29,37 @@ Alias: soil_texture
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Regex pattern: `^(\w+:0\.\d+ )*description:[A-Za-z ]+$`
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [SoilSample](SoilSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Value Constraints
+
+| Property | Value |
+| --- | --- |
+| Regex Pattern | `^(\w+:0\.\d+ )*description:[A-Za-z ]+$` |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

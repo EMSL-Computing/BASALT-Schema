@@ -2,10 +2,9 @@
 
 
 
-URI: [BiolStatEnum](BiolStatEnum.md)
+URI: [analysis_api_schema:BiolStatEnum](https://w3id.org/MONet/analysis-api-schema/BiolStatEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | wild | None |  |
@@ -31,9 +30,11 @@ URI: [BiolStatEnum](BiolStatEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

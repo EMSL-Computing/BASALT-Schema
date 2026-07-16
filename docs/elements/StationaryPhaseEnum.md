@@ -7,37 +7,40 @@ _The stationary phase used in chromatography._
 
 
 
-URI: [StationaryPhaseEnum](StationaryPhaseEnum.md)
+URI: [analysis_api_schema:StationaryPhaseEnum](https://w3id.org/MONet/analysis-api-schema/StationaryPhaseEnum)
 
 ## Permissible Values
+| Value | Meaning | Description | Additional Info |
+| --- | --- | --- | --- |
+| BEH-HILIC | None | Hydrophilic Interaction Chromatography (HILIC) employing BEH (Bridged Ethylen... | Is-A: NONE<br>|
+| C18 | None | A stationary phase consisting of octadecyl chains (C18) bonded to silica part... ||
+| C8 | None | A stationary phase consisting of octyl chains (C8) bonded to silica particles ||
+| C4 | None | A stationary phase consisting of butyl chains (C4) bonded to silica particles ||
+| C2 | None | A stationary phase consisting of ethyl chains (C2) bonded to silica particles ||
+| C1 | None | A stationary phase consisting of methyl chains (C1) bonded to silica particle... ||
+| C30 | None | A stationary phase consisting of triacontyl chains (C30) bonded to silica par... ||
+| C60 | None | A stationary phase consisting of hexatriacontyl chains (C60) bonded to silica... ||
+| CNT | None | Carbon Nanotube stationary phase ||
+| CN | None | Cyano (CN) bonded stationary phase ||
+| Diol | None | A stationary phase with diol (1,2-diol) functional groups ||
+| HILIC | None | Hydrophilic Interaction Chromatography (HILIC) stationary phase ||
+| HLB | None | Hydrophilic-Lipophilic-Balance (HLB) stationary phase ||
+| NH2 | None | Amino (NH2) bonded stationary phase ||
+| Phenyl | None | Phenyl bonded stationary phase ||
+| Polysiloxane | None | A stationary phase made of polysiloxane, usually used in gas chromatography ||
+| PS-DVB | None | Polystyrene-divinylbenzene stationary phase, often used in solid-phase extrac... ||
+| SAX | None | Strong Anion Exchange (SAX) stationary phase ||
+| SCX | None | Strong Cation Exchange (SCX) stationary phase ||
+| Silica | None | A stationary phase made of silica, commonly used in chromatography ||
+| WCX | None | Weak Cation Exchange (WCX) stationary phase ||
+| WAX | None | Weak Anion Exchange (WAX) stationary phase ||
+| ZIC-HILIC | None | Zwitterionic Hydrophilic Interaction Chromatography (ZIC-HILIC) stationary ph... | Is-A: NONE<br>|
+| ZIC-pHILIC | None | Zwitterionic pH-Responsive Hydrophilic Interaction Chromatography (ZIC-pHILIC... | Is-A: NONE<br>|
+| ZIC-cHILIC | None | Zwitterionic Charged Hydrophilic Interaction Chromatography (ZIC-cHILIC) stat... | Is-A: NONE<br>|
 
-| Value | Meaning | Description |
-| --- | --- | --- |
-| BEH-HILIC | None | Hydrophilic Interaction Chromatography (HILIC) employing BEH (Bridged Ethylen... |
-| C18 | None | A stationary phase consisting of octadecyl chains (C18) bonded to silica part... |
-| C8 | None | A stationary phase consisting of octyl chains (C8) bonded to silica particles |
-| C4 | None | A stationary phase consisting of butyl chains (C4) bonded to silica particles |
-| C2 | None | A stationary phase consisting of ethyl chains (C2) bonded to silica particles |
-| C1 | None | A stationary phase consisting of methyl chains (C1) bonded to silica particle... |
-| C30 | None | A stationary phase consisting of triacontyl chains (C30) bonded to silica par... |
-| C60 | None | A stationary phase consisting of hexatriacontyl chains (C60) bonded to silica... |
-| CNT | None | Carbon Nanotube stationary phase |
-| CN | None | Cyano (CN) bonded stationary phase |
-| Diol | None | A stationary phase with diol (1,2-diol) functional groups |
-| HILIC | None | Hydrophilic Interaction Chromatography (HILIC) stationary phase |
-| HLB | None | Hydrophilic-Lipophilic-Balance (HLB) stationary phase |
-| NH2 | None | Amino (NH2) bonded stationary phase |
-| Phenyl | None | Phenyl bonded stationary phase |
-| Polysiloxane | None | A stationary phase made of polysiloxane, usually used in gas chromatography |
-| PS-DVB | None | Polystyrene-divinylbenzene stationary phase, often used in solid-phase extrac... |
-| SAX | None | Strong Anion Exchange (SAX) stationary phase |
-| SCX | None | Strong Cation Exchange (SCX) stationary phase |
-| Silica | None | A stationary phase made of silica, commonly used in chromatography |
-| WCX | None | Weak Cation Exchange (WCX) stationary phase |
-| WAX | None | Weak Anion Exchange (WAX) stationary phase |
-| ZIC-HILIC | None | Zwitterionic Hydrophilic Interaction Chromatography (ZIC-HILIC) stationary ph... |
-| ZIC-pHILIC | None | Zwitterionic pH-Responsive Hydrophilic Interaction Chromatography (ZIC-pHILIC... |
-| ZIC-cHILIC | None | Zwitterionic Charged Hydrophilic Interaction Chromatography (ZIC-cHILIC) stat... |
+
+
+
 
 
 
@@ -48,8 +51,6 @@ URI: [StationaryPhaseEnum](StationaryPhaseEnum.md)
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

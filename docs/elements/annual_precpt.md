@@ -29,12 +29,30 @@ Alias: annual_precpt
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Regex pattern: `^\d+(\.\d+)?\s*mm$`
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [Site](Site.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Value Constraints
+
+| Property | Value |
+| --- | --- |
+| Regex Pattern | `^\d+(\.\d+)?\s*mm$` |
+
+
+
+
+
+
 
 
 
@@ -45,9 +63,8 @@ Alias: annual_precpt
 
 
 
+
 ## Identifier and Mapping Information
-
-
 
 
 

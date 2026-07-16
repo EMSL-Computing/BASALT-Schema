@@ -2,10 +2,9 @@
 
 
 
-URI: [PhotochemicalExposureEnum](PhotochemicalExposureEnum.md)
+URI: [analysis_api_schema:PhotochemicalExposureEnum](https://w3id.org/MONet/analysis-api-schema/PhotochemicalExposureEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | ultraviolet | None |  |
@@ -26,9 +25,11 @@ URI: [PhotochemicalExposureEnum](PhotochemicalExposureEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

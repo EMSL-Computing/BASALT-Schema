@@ -24,18 +24,37 @@ Alias: vendor
 
 
 
-
 ## Properties
 
-* Range: [VendorEnum](VendorEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [VendorEnum](VendorEnum.md) |
+| Domain Of | [Instrument](Instrument.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [Instrument](Instrument.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

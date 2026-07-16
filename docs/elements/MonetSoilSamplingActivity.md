@@ -15,13 +15,12 @@ URI: [analysis_api_schema:MonetSoilSamplingActivity](https://w3id.org/MONet/anal
 
 
 
-
 ```mermaid
  classDiagram
     class MonetSoilSamplingActivity
-    click MonetSoilSamplingActivity href "../MonetSoilSamplingActivity"
+    click MonetSoilSamplingActivity href "../MonetSoilSamplingActivity/"
       SamplingActivity <|-- MonetSoilSamplingActivity
-        click SamplingActivity href "../SamplingActivity"
+        click SamplingActivity href "../SamplingActivity/"
       
       MonetSoilSamplingActivity : collection_date
         
@@ -32,11 +31,6 @@ URI: [analysis_api_schema:MonetSoilSamplingActivity](https://w3id.org/MONet/anal
       MonetSoilSamplingActivity : emsl_activity
         
       MonetSoilSamplingActivity : id
-        
-          
-    
-    
-
         
       MonetSoilSamplingActivity : infiltration_1
         
@@ -54,11 +48,10 @@ URI: [analysis_api_schema:MonetSoilSamplingActivity](https://w3id.org/MONet/anal
         
           
     
-    
-    
-    
-    MonetSoilSamplingActivity --> "0..1" Site : sampled_at_site
-    click Site href "../Site"
+        
+        
+        MonetSoilSamplingActivity --> "0..1" Site : sampled_at_site
+        click Site href "../Site/"
     
 
         
@@ -78,7 +71,6 @@ URI: [analysis_api_schema:MonetSoilSamplingActivity](https://w3id.org/MONet/anal
     * **MonetSoilSamplingActivity**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -89,7 +81,7 @@ URI: [analysis_api_schema:MonetSoilSamplingActivity](https://w3id.org/MONet/anal
 | [infiltration_notes](infiltration_notes.md) | 0..1 <br/> [String](String.md) | Provide any details, issues, or context needed to understand the infiltration... | direct |
 | [sample_collection_dev](sample_collection_dev.md) | 1 <br/> [String](String.md) | The device used to collect an environmental sample | direct |
 | [weather](weather.md) | 0..1 <br/> [String](String.md) | The state of the atmosphere at a given time and place with respect to variabl... | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [SamplingActivity](SamplingActivity.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [SamplingActivity](SamplingActivity.md) |
 | [project](project.md) | 0..1 <br/> [Integer](Integer.md) | Identifier for the user project associated with the entity or activity | [SamplingActivity](SamplingActivity.md) |
@@ -106,9 +98,13 @@ URI: [analysis_api_schema:MonetSoilSamplingActivity](https://w3id.org/MONet/anal
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -134,7 +130,6 @@ URI: [analysis_api_schema:MonetSoilSamplingActivity](https://w3id.org/MONet/anal
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -146,7 +141,6 @@ URI: [analysis_api_schema:MonetSoilSamplingActivity](https://w3id.org/MONet/anal
 name: MonetSoilSamplingActivity
 description: Collection of soil cores according to the MONet soil sampling protocol.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: SamplingActivity
 slots:
 - collection_time
@@ -258,7 +252,6 @@ attributes:
 name: MonetSoilSamplingActivity
 description: Collection of soil cores according to the MONet soil sampling protocol.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: SamplingActivity
 slot_usage:
   collection_time:
@@ -536,8 +529,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: MonetSoilSamplingActivity
     domain_of:
     - DataProduct

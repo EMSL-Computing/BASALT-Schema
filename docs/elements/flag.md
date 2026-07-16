@@ -17,16 +17,15 @@ Alias: flag
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PHProduct](PHProduct.md) |  |  no  |
+| [HydraulicPropertiesProduct](HydraulicPropertiesProduct.md) | Soil hydraulic parameters derived from HYPROP evaporation-experiment data |  no  |
+| [EnzymeProduct](EnzymeProduct.md) |  |  no  |
 | [TextureProduct](TextureProduct.md) |  |  no  |
-| [RespirationProduct](RespirationProduct.md) |  |  no  |
+| [PHProduct](PHProduct.md) |  |  no  |
 | [BulkDensityProduct](BulkDensityProduct.md) |  |  no  |
 | [WellReading](WellReading.md) | Per-well measurement data |  no  |
-| [GWCMoistureProduct](GWCMoistureProduct.md) |  |  no  |
-| [HydraulicPropertiesProduct](HydraulicPropertiesProduct.md) | Soil hydraulic parameters derived from HYPROP evaporation-experiment data |  no  |
 | [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) |  |  no  |
-| [EnzymeProduct](EnzymeProduct.md) |  |  no  |
-
+| [GWCMoistureProduct](GWCMoistureProduct.md) |  |  no  |
+| [RespirationProduct](RespirationProduct.md) |  |  no  |
 
 
 
@@ -35,15 +34,28 @@ Alias: flag
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [WellReading](WellReading.md), [BulkDensityProduct](BulkDensityProduct.md), [EnzymeProduct](EnzymeProduct.md), [GWCMoistureProduct](GWCMoistureProduct.md), [HydraulicPropertiesProduct](HydraulicPropertiesProduct.md), [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md), [RespirationProduct](RespirationProduct.md), [TextureProduct](TextureProduct.md), [PHProduct](PHProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

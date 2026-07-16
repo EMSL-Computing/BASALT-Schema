@@ -2,10 +2,9 @@
 
 
 
-URI: [SitePhotoCategoryEnum](SitePhotoCategoryEnum.md)
+URI: [analysis_api_schema:SitePhotoCategoryEnum](https://w3id.org/MONet/analysis-api-schema/SitePhotoCategoryEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | landscape | None |  |
@@ -25,9 +24,11 @@ URI: [SitePhotoCategoryEnum](SitePhotoCategoryEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

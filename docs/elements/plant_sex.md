@@ -22,10 +22,9 @@ Alias: plant_sex
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 
 
 
@@ -34,15 +33,28 @@ Alias: plant_sex
 
 ## Properties
 
-* Range: [PlantSexEnum](PlantSexEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [PlantSexEnum](PlantSexEnum.md) |
+| Domain Of | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md), [PlantSample](PlantSample.md), [TerraformSample](TerraformSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

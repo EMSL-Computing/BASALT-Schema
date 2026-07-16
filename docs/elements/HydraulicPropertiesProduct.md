@@ -15,13 +15,12 @@ URI: [analysis_api_schema:HydraulicPropertiesProduct](https://w3id.org/MONet/ana
 
 
 
-
 ```mermaid
  classDiagram
     class HydraulicPropertiesProduct
-    click HydraulicPropertiesProduct href "../HydraulicPropertiesProduct"
+    click HydraulicPropertiesProduct href "../HydraulicPropertiesProduct/"
       ProcessedData <|-- HydraulicPropertiesProduct
-        click ProcessedData href "../ProcessedData"
+        click ProcessedData href "../ProcessedData/"
       
       HydraulicPropertiesProduct : alpha
         
@@ -29,11 +28,10 @@ URI: [analysis_api_schema:HydraulicPropertiesProduct](https://w3id.org/MONet/ana
         
           
     
-    
-    
-    
-    HydraulicPropertiesProduct --> "0..1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        HydraulicPropertiesProduct --> "0..1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -45,20 +43,14 @@ URI: [analysis_api_schema:HydraulicPropertiesProduct](https://w3id.org/MONet/ana
         
           
     
-    
-    
-    
-    HydraulicPropertiesProduct --> "0..1" ProcessedDataFlag : flag
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        HydraulicPropertiesProduct --> "0..1" ProcessedDataFlag : flag
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
       HydraulicPropertiesProduct : id
-        
-          
-    
-    
-
         
       HydraulicPropertiesProduct : lims_barcode
         
@@ -68,11 +60,10 @@ URI: [analysis_api_schema:HydraulicPropertiesProduct](https://w3id.org/MONet/ana
         
           
     
-    
-    
-    
-    HydraulicPropertiesProduct --> "0..1" ProductMeasureType : measure_type
-    click ProductMeasureType href "../ProductMeasureType"
+        
+        
+        HydraulicPropertiesProduct --> "0..1" ProductMeasureType : measure_type
+        click ProductMeasureType href "../ProductMeasureType/"
     
 
         
@@ -92,11 +83,10 @@ URI: [analysis_api_schema:HydraulicPropertiesProduct](https://w3id.org/MONet/ana
         
           
     
-    
-    
-    
-    HydraulicPropertiesProduct --> "0..1" Sample : sample_id
-    click Sample href "../Sample"
+        
+        
+        HydraulicPropertiesProduct --> "0..1" Sample : sample_id
+        click Sample href "../Sample/"
     
 
         
@@ -123,7 +113,6 @@ URI: [analysis_api_schema:HydraulicPropertiesProduct](https://w3id.org/MONet/ana
         * **HydraulicPropertiesProduct**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -148,7 +137,13 @@ URI: [analysis_api_schema:HydraulicPropertiesProduct](https://w3id.org/MONet/ana
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | [DataProduct](DataProduct.md) |
 | [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | [DataProduct](DataProduct.md) |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProduct](DataProduct.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProduct](DataProduct.md) |
+
+
+
+
+
+
 
 
 
@@ -159,8 +154,6 @@ URI: [analysis_api_schema:HydraulicPropertiesProduct](https://w3id.org/MONet/ana
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -186,7 +179,6 @@ URI: [analysis_api_schema:HydraulicPropertiesProduct](https://w3id.org/MONet/ana
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -200,7 +192,6 @@ description: Soil hydraulic parameters derived from HYPROP evaporation-experimen
   data. One row per core section; the four attributes are the four VGM model parameters.  Proposal_ID,
   sampling_set, and core_section are inherited from the parent processedData record.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: ProcessedData
 slots:
 - measure_type
@@ -269,7 +260,6 @@ description: Soil hydraulic parameters derived from HYPROP evaporation-experimen
   data. One row per core section; the four attributes are the four VGM model parameters.  Proposal_ID,
   sampling_set, and core_section are inherited from the parent processedData record.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: ProcessedData
 attributes:
   alpha:
@@ -473,8 +463,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: HydraulicPropertiesProduct
     domain_of:
     - DataProduct

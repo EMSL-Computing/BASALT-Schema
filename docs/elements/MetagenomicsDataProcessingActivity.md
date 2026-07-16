@@ -23,13 +23,12 @@ URI: [analysis_api_schema:MetagenomicsDataProcessingActivity](https://w3id.org/M
 
 
 
-
 ```mermaid
  classDiagram
     class MetagenomicsDataProcessingActivity
-    click MetagenomicsDataProcessingActivity href "../MetagenomicsDataProcessingActivity"
+    click MetagenomicsDataProcessingActivity href "../MetagenomicsDataProcessingActivity/"
       DataProcessingActivity <|-- MetagenomicsDataProcessingActivity
-        click DataProcessingActivity href "../DataProcessingActivity"
+        click DataProcessingActivity href "../DataProcessingActivity/"
       
       MetagenomicsDataProcessingActivity : description
         
@@ -39,30 +38,23 @@ URI: [analysis_api_schema:MetagenomicsDataProcessingActivity](https://w3id.org/M
         
           
     
-    
-    
-    
-    MetagenomicsDataProcessingActivity --> "0..1" ExecutionResourceEnum : execution_resource
-    click ExecutionResourceEnum href "../ExecutionResourceEnum"
+        
+        
+        MetagenomicsDataProcessingActivity --> "0..1" ExecutionResourceEnum : execution_resource
+        click ExecutionResourceEnum href "../ExecutionResourceEnum/"
     
 
         
       MetagenomicsDataProcessingActivity : id
         
-          
-    
-    
-
-        
       MetagenomicsDataProcessingActivity : parent_workflow_id
         
           
     
-    
-    
-    
-    MetagenomicsDataProcessingActivity --> "0..1" DataProcessingActivity : parent_workflow_id
-    click DataProcessingActivity href "../DataProcessingActivity"
+        
+        
+        MetagenomicsDataProcessingActivity --> "0..1" DataProcessingActivity : parent_workflow_id
+        click DataProcessingActivity href "../DataProcessingActivity/"
     
 
         
@@ -88,7 +80,6 @@ URI: [analysis_api_schema:MetagenomicsDataProcessingActivity](https://w3id.org/M
     * **MetagenomicsDataProcessingActivity**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -96,7 +87,7 @@ URI: [analysis_api_schema:MetagenomicsDataProcessingActivity](https://w3id.org/M
 | [parent_workflow_id](parent_workflow_id.md) | 0..1 <br/> [DataProcessingActivity](DataProcessingActivity.md) | Self-referential FK to the preceding DataProcessingActivity in a chain | [DataProcessingActivity](DataProcessingActivity.md) |
 | [workflow_steps](workflow_steps.md) | 0..1 <br/> [String](String.md) | Per-run workflow parameters | [DataProcessingActivity](DataProcessingActivity.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A human-readable description of the data analysis workflow | [DataProcessingActivity](DataProcessingActivity.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProcessingActivity](DataProcessingActivity.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProcessingActivity](DataProcessingActivity.md) |
 | [started_at_time](started_at_time.md) | 1 <br/> [Datetime](Datetime.md) |  | [DataProcessingActivity](DataProcessingActivity.md) |
 | [ended_at_time](ended_at_time.md) | 0..1 <br/> [Datetime](Datetime.md) |  | [DataProcessingActivity](DataProcessingActivity.md) |
 | [software_url](software_url.md) | 0..1 <br/> [String](String.md) |  | [DataProcessingActivity](DataProcessingActivity.md) |
@@ -112,9 +103,13 @@ URI: [analysis_api_schema:MetagenomicsDataProcessingActivity](https://w3id.org/M
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -140,7 +135,6 @@ URI: [analysis_api_schema:MetagenomicsDataProcessingActivity](https://w3id.org/M
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -156,7 +150,6 @@ description: "Concrete metagenomics workflow run. Inherits all DataProcessingAct
   \ (string); expected values: \n'metagenomics_annotation', 'metagenomics_binning',\
   \ 'metagenomics_phylogeny'."
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: DataProcessingActivity
 
 ```
@@ -173,7 +166,6 @@ description: "Concrete metagenomics workflow run. Inherits all DataProcessingAct
   \ (string); expected values: \n'metagenomics_annotation', 'metagenomics_binning',\
   \ 'metagenomics_phylogeny'."
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: DataProcessingActivity
 attributes:
   parent_workflow_id:

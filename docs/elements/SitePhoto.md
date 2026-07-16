@@ -10,23 +10,21 @@ URI: [analysis_api_schema:SitePhoto](https://w3id.org/MONet/analysis-api-schema/
 
 
 
-
 ```mermaid
  classDiagram
     class SitePhoto
-    click SitePhoto href "../SitePhoto"
+    click SitePhoto href "../SitePhoto/"
       DataProduct <|-- SitePhoto
-        click DataProduct href "../DataProduct"
+        click DataProduct href "../DataProduct/"
       
       SitePhoto : core_section
         
           
     
-    
-    
-    
-    SitePhoto --> "0..1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        SitePhoto --> "0..1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -36,11 +34,6 @@ URI: [analysis_api_schema:SitePhoto](https://w3id.org/MONet/analysis-api-schema/
         
       SitePhoto : id
         
-          
-    
-    
-
-        
       SitePhoto : md5checksum
         
       SitePhoto : name
@@ -49,11 +42,10 @@ URI: [analysis_api_schema:SitePhoto](https://w3id.org/MONet/analysis-api-schema/
         
           
     
-    
-    
-    
-    SitePhoto --> "0..1" SamplingActivity : photo_taken_during
-    click SamplingActivity href "../SamplingActivity"
+        
+        
+        SitePhoto --> "0..1" SamplingActivity : photo_taken_during
+        click SamplingActivity href "../SamplingActivity/"
     
 
         
@@ -73,11 +65,10 @@ URI: [analysis_api_schema:SitePhoto](https://w3id.org/MONet/analysis-api-schema/
         
           
     
-    
-    
-    
-    SitePhoto --> "0..1" SitePhotoCategoryEnum : site_photo_type
-    click SitePhotoCategoryEnum href "../SitePhotoCategoryEnum"
+        
+        
+        SitePhoto --> "0..1" SitePhotoCategoryEnum : site_photo_type
+        click SitePhotoCategoryEnum href "../SitePhotoCategoryEnum/"
     
 
         
@@ -91,7 +82,6 @@ URI: [analysis_api_schema:SitePhoto](https://w3id.org/MONet/analysis-api-schema/
 ## Inheritance
 * [DataProduct](DataProduct.md)
     * **SitePhoto**
-
 
 
 ## Slots
@@ -111,7 +101,13 @@ URI: [analysis_api_schema:SitePhoto](https://w3id.org/MONet/analysis-api-schema/
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | [DataProduct](DataProduct.md) |
 | [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | [DataProduct](DataProduct.md) |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProduct](DataProduct.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProduct](DataProduct.md) |
+
+
+
+
+
+
 
 
 
@@ -122,8 +118,6 @@ URI: [analysis_api_schema:SitePhoto](https://w3id.org/MONet/analysis-api-schema/
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -149,7 +143,6 @@ URI: [analysis_api_schema:SitePhoto](https://w3id.org/MONet/analysis-api-schema/
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -160,7 +153,6 @@ URI: [analysis_api_schema:SitePhoto](https://w3id.org/MONet/analysis-api-schema/
 ```yaml
 name: SitePhoto
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: DataProduct
 attributes:
   site_photo_type:
@@ -187,7 +179,6 @@ attributes:
 ```yaml
 name: SitePhoto
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: DataProduct
 attributes:
   site_photo_type:
@@ -278,8 +269,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: SitePhoto
     domain_of:
     - DataProduct

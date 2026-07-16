@@ -10,21 +10,15 @@ URI: [analysis_api_schema:PersonValue](https://w3id.org/MONet/analysis-api-schem
 
 
 
-
 ```mermaid
  classDiagram
     class PersonValue
-    click PersonValue href "../PersonValue"
+    click PersonValue href "../PersonValue/"
       PersonValue : email
         
       PersonValue : first_name
         
       PersonValue : id
-        
-          
-    
-    
-
         
       PersonValue : last_name
         
@@ -44,19 +38,26 @@ URI: [analysis_api_schema:PersonValue](https://w3id.org/MONet/analysis-api-schem
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [email](email.md) | 0..1 <br/> [String](String.md) | A contactable email address associated with a person or institution | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [first_name](first_name.md) | 1 <br/> [String](String.md) |  | direct |
 | [last_name](last_name.md) | 1 <br/> [String](String.md) |  | direct |
 | [middle_initial](middle_initial.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [orcid](orcid.md) | 0..1 <br/> [String](String.md) | ORCID identifier of the person | direct |
 | [profile_image_url](profile_image_url.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [websites](websites.md) | 0..1 <br/> [String](String.md) |  | direct |
+
+## Unique Keys
+
+
+### PersonValue_email_key
+
+**Unique key slots:** email
+
 
 
 
@@ -69,6 +70,9 @@ URI: [analysis_api_schema:PersonValue](https://w3id.org/MONet/analysis-api-schem
 | [DataGenerationActivity](DataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
 | [RespirationDataGenerationActivity](RespirationDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
 | [Custodian](Custodian.md) | [person_id](person_id.md) | range | [PersonValue](PersonValue.md) |
+| [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
+| [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
+| [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
 | [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
 | [PlateSetupActivity](PlateSetupActivity.md) | [setup_operator_id](setup_operator_id.md) | range | [PersonValue](PersonValue.md) |
 | [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | [setup_operator_id](setup_operator_id.md) | range | [PersonValue](PersonValue.md) |
@@ -79,9 +83,12 @@ URI: [analysis_api_schema:PersonValue](https://w3id.org/MONet/analysis-api-schem
 | [NucleotideSequencing](NucleotideSequencing.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
 | [Study](Study.md) | [principal_investigator](principal_investigator.md) | range | [PersonValue](PersonValue.md) |
 | [ProjectParticipant](ProjectParticipant.md) | [person](person.md) | range | [PersonValue](PersonValue.md) |
-| [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
+
+
+
+
+
+
 
 
 
@@ -89,8 +96,6 @@ URI: [analysis_api_schema:PersonValue](https://w3id.org/MONet/analysis-api-schem
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -116,7 +121,6 @@ URI: [analysis_api_schema:PersonValue](https://w3id.org/MONet/analysis-api-schem
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -127,7 +131,6 @@ URI: [analysis_api_schema:PersonValue](https://w3id.org/MONet/analysis-api-schem
 ```yaml
 name: PersonValue
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 slots:
 - email
 attributes:
@@ -269,7 +272,6 @@ unique_keys:
 ```yaml
 name: PersonValue
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

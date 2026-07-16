@@ -24,18 +24,37 @@ Alias: count
 
 
 
-
 ## Properties
 
-* Range: numeric
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Double](Double.md) |
+| Domain Of | [WorkflowExecutionFunctionalAnnotation](WorkflowExecutionFunctionalAnnotation.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [WorkflowExecutionFunctionalAnnotation](WorkflowExecutionFunctionalAnnotation.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -70,7 +89,7 @@ alias: count
 owner: WorkflowExecutionFunctionalAnnotation
 domain_of:
 - WorkflowExecutionFunctionalAnnotation
-range: numeric
+range: double
 
 ```
 </details>

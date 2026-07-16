@@ -10,20 +10,18 @@ URI: [analysis_api_schema:Study](https://w3id.org/MONet/analysis-api-schema/Stud
 
 
 
-
 ```mermaid
  classDiagram
     class Study
-    click Study href "../Study"
+    click Study href "../Study/"
       Study : associated_dois
         
           
     
-    
-    
-    
-    Study --> "*" DOI : associated_dois
-    click DOI href "../DOI"
+        
+        
+        Study --> "*" DOI : associated_dois
+        click DOI href "../DOI/"
     
 
         
@@ -37,11 +35,10 @@ URI: [analysis_api_schema:Study](https://w3id.org/MONet/analysis-api-schema/Stud
         
           
     
-    
-    
-    
-    Study --> "*" DOI : funding_sources
-    click DOI href "../DOI"
+        
+        
+        Study --> "*" DOI : funding_sources
+        click DOI href "../DOI/"
     
 
         
@@ -49,20 +46,14 @@ URI: [analysis_api_schema:Study](https://w3id.org/MONet/analysis-api-schema/Stud
         
           
     
-    
-    
-    
-    Study --> "*" ProjectParticipant : has_participants
-    click ProjectParticipant href "../ProjectParticipant"
+        
+        
+        Study --> "*" ProjectParticipant : has_participants
+        click ProjectParticipant href "../ProjectParticipant/"
     
 
         
       Study : id
-        
-          
-    
-    
-
         
       Study : name
         
@@ -70,11 +61,10 @@ URI: [analysis_api_schema:Study](https://w3id.org/MONet/analysis-api-schema/Stud
         
           
     
-    
-    
-    
-    Study --> "1" PersonValue : principal_investigator
-    click PersonValue href "../PersonValue"
+        
+        
+        Study --> "1" PersonValue : principal_investigator
+        click PersonValue href "../PersonValue/"
     
 
         
@@ -88,11 +78,10 @@ URI: [analysis_api_schema:Study](https://w3id.org/MONet/analysis-api-schema/Stud
         
           
     
-    
-    
-    
-    Study --> "0..1" ProjectStatusEnum : project_status
-    click ProjectStatusEnum href "../ProjectStatusEnum"
+        
+        
+        Study --> "0..1" ProjectStatusEnum : project_status
+        click ProjectStatusEnum href "../ProjectStatusEnum/"
     
 
         
@@ -108,13 +97,12 @@ URI: [analysis_api_schema:Study](https://w3id.org/MONet/analysis-api-schema/Stud
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [external_identifiers](external_identifiers.md) | * <br/> [Uriorcurie](Uriorcurie.md) | List of project- or study-level identifiers (e | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [project_id](project_id.md) | 1 <br/> [Integer](Integer.md) |  | direct |
 | [title](title.md) | 0..1 <br/> [String](String.md) | The title of the study/proposal | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Short name or code for the study | direct |
@@ -137,9 +125,13 @@ URI: [analysis_api_schema:Study](https://w3id.org/MONet/analysis-api-schema/Stud
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -165,7 +157,6 @@ URI: [analysis_api_schema:Study](https://w3id.org/MONet/analysis-api-schema/Stud
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -176,7 +167,6 @@ URI: [analysis_api_schema:Study](https://w3id.org/MONet/analysis-api-schema/Stud
 ```yaml
 name: Study
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 slots:
 - external_identifiers
 slot_usage:
@@ -414,7 +404,6 @@ attributes:
 ```yaml
 name: Study
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 slot_usage:
   external_identifiers:
     name: external_identifiers

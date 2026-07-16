@@ -15,13 +15,12 @@ URI: [analysis_api_schema:OtherUndescribedSamplingActivity](https://w3id.org/MON
 
 
 
-
 ```mermaid
  classDiagram
     class OtherUndescribedSamplingActivity
-    click OtherUndescribedSamplingActivity href "../OtherUndescribedSamplingActivity"
+    click OtherUndescribedSamplingActivity href "../OtherUndescribedSamplingActivity/"
       SamplingActivity <|-- OtherUndescribedSamplingActivity
-        click SamplingActivity href "../SamplingActivity"
+        click SamplingActivity href "../SamplingActivity/"
       
       OtherUndescribedSamplingActivity : collection_date
         
@@ -34,11 +33,6 @@ URI: [analysis_api_schema:OtherUndescribedSamplingActivity](https://w3id.org/MON
       OtherUndescribedSamplingActivity : humidity
         
       OtherUndescribedSamplingActivity : id
-        
-          
-    
-    
-
         
       OtherUndescribedSamplingActivity : name
         
@@ -54,11 +48,10 @@ URI: [analysis_api_schema:OtherUndescribedSamplingActivity](https://w3id.org/MON
         
           
     
-    
-    
-    
-    OtherUndescribedSamplingActivity --> "0..1" Site : sampled_at_site
-    click Site href "../Site"
+        
+        
+        OtherUndescribedSamplingActivity --> "0..1" Site : sampled_at_site
+        click Site href "../Site/"
     
 
         
@@ -70,11 +63,10 @@ URI: [analysis_api_schema:OtherUndescribedSamplingActivity](https://w3id.org/MON
         
           
     
-    
-    
-    
-    OtherUndescribedSamplingActivity --> "0..1" CardinalDirectionEnum : wind_direction
-    click CardinalDirectionEnum href "../CardinalDirectionEnum"
+        
+        
+        OtherUndescribedSamplingActivity --> "0..1" CardinalDirectionEnum : wind_direction
+        click CardinalDirectionEnum href "../CardinalDirectionEnum/"
     
 
         
@@ -92,7 +84,6 @@ URI: [analysis_api_schema:OtherUndescribedSamplingActivity](https://w3id.org/MON
     * **OtherUndescribedSamplingActivity**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -105,7 +96,7 @@ URI: [analysis_api_schema:OtherUndescribedSamplingActivity](https://w3id.org/MON
 | [sampling_duration](sampling_duration.md) | 0..1 <br/> [String](String.md) | The difference between sample start and sample end time in seconds | direct |
 | [wind_direction](wind_direction.md) | 0..1 <br/> [CardinalDirectionEnum](CardinalDirectionEnum.md) | Direction of the wind on the day of sampling | direct |
 | [wind_speed](wind_speed.md) | 0..1 <br/> [String](String.md) | Wind speed describes how fast the air is moving past a certain point during s... | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [SamplingActivity](SamplingActivity.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [SamplingActivity](SamplingActivity.md) |
 | [project](project.md) | 0..1 <br/> [Integer](Integer.md) | Identifier for the user project associated with the entity or activity | [SamplingActivity](SamplingActivity.md) |
@@ -122,9 +113,13 @@ URI: [analysis_api_schema:OtherUndescribedSamplingActivity](https://w3id.org/MON
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -150,7 +145,6 @@ URI: [analysis_api_schema:OtherUndescribedSamplingActivity](https://w3id.org/MON
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -163,7 +157,6 @@ name: OtherUndescribedSamplingActivity
 description: Collection of samples from source that does not fit into any of the other
   categories.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: SamplingActivity
 slots:
 - collection_time
@@ -270,7 +263,6 @@ name: OtherUndescribedSamplingActivity
 description: Collection of samples from source that does not fit into any of the other
   categories.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: SamplingActivity
 slot_usage:
   humidity:
@@ -581,8 +573,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: OtherUndescribedSamplingActivity
     domain_of:
     - DataProduct

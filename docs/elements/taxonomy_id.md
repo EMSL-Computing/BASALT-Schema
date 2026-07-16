@@ -29,10 +29,23 @@ Alias: taxonomy_id
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
 
 
 
@@ -44,9 +57,8 @@ Alias: taxonomy_id
 
 
 
+
 ## Identifier and Mapping Information
-
-
 
 
 

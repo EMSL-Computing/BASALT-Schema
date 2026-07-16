@@ -26,9 +26,8 @@ Alias: growth_facil
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Site](Site.md) | Site-level metadata for a specific location from which a set of samples are c... |  yes  |
 | [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |  no  |
-
+| [Site](Site.md) | Site-level metadata for a specific location from which a set of samples are c... |  yes  |
 
 
 
@@ -37,15 +36,28 @@ Alias: growth_facil
 
 ## Properties
 
-* Range: [GrowthFacilityEnum](GrowthFacilityEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [GrowthFacilityEnum](GrowthFacilityEnum.md) |
+| Domain Of | [Site](Site.md), [AMP2UserSample](AMP2UserSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -29,20 +29,31 @@ Alias: mobile_phases
 
 
 
-
 ## Properties
 
-* Range: [MobilePhaseSegment](MobilePhaseSegment.md)
+### Type and Range
 
-* Multivalued: True
+| Property | Value |
+| --- | --- |
+| Range | [MobilePhaseSegment](MobilePhaseSegment.md) |
+| Domain Of | [ChromatographyConfiguration](ChromatographyConfiguration.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Multivalued | Yes |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -26,14 +26,13 @@ Alias: biological_entity_ref
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |  no  |
-| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
-| [EngineeredStrainSample](EngineeredStrainSample.md) | A sample containing a strain of an organism that has been subjected to geneti... |  no  |
-| [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
-| [StrainPurity](StrainPurity.md) | Purity check of a strain culture |  no  |
 | [StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |  no  |
 | [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |  yes  |
-
+| [StrainPurity](StrainPurity.md) | Purity check of a strain culture |  no  |
+| [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
+| [EngineeredStrainSample](EngineeredStrainSample.md) | A sample containing a strain of an organism that has been subjected to geneti... |  no  |
+| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
+| [PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |  no  |
 
 
 
@@ -42,7 +41,21 @@ Alias: biological_entity_ref
 
 ## Properties
 
-* Range: [BiologicalEntity](BiologicalEntity.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [CultureGrowth](CultureGrowth.md), [AMP2UserSample](AMP2UserSample.md), [EngineeredStrainSample](EngineeredStrainSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
 
 
 
@@ -54,9 +67,8 @@ Alias: biological_entity_ref
 
 
 
+
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -2,10 +2,9 @@
 
 
 
-URI: [FileTypeEnum](FileTypeEnum.md)
+URI: [analysis_api_schema:FileTypeEnum](https://w3id.org/MONet/analysis-api-schema/FileTypeEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | FT_ICR_MS_Analysis_Results | None |  |
@@ -60,9 +59,11 @@ URI: [FileTypeEnum](FileTypeEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

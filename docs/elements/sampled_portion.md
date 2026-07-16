@@ -30,18 +30,30 @@ Alias: sampled_portion
 
 
 
-
 ## Properties
 
-* Range: [SamplePortionEnum](SamplePortionEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [SamplePortionEnum](SamplePortionEnum.md) |
+| Domain Of | [ProcessedSample](ProcessedSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

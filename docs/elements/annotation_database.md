@@ -29,18 +29,30 @@ Alias: annotation_database
 
 
 
-
 ## Properties
 
-* Range: [AnnotationDatabaseEnum](AnnotationDatabaseEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [AnnotationDatabaseEnum](AnnotationDatabaseEnum.md) |
+| Domain Of | [MetagenomicsAnnotationProduct](MetagenomicsAnnotationProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

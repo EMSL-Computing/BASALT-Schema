@@ -29,18 +29,30 @@ Alias: uses_chromatography
 
 
 
-
 ## Properties
 
-* Range: [ChromatographyConfiguration](ChromatographyConfiguration.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [ChromatographyConfiguration](ChromatographyConfiguration.md) |
+| Domain Of | [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -29,18 +29,30 @@ Alias: uses_calibration
 
 
 
-
 ## Properties
 
-* Range: [MassSpectrometryStandardRun](MassSpectrometryStandardRun.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [MassSpectrometryStandardRun](MassSpectrometryStandardRun.md) |
+| Domain Of | [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

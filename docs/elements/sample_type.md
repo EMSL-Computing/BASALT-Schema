@@ -29,20 +29,37 @@ Alias: sample_type
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Regex pattern: `^_*\s*[a-zA-Z\-]+\s\[[a-zA-Z]+:\d+\]$`
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [OtherUndescribedSample](OtherUndescribedSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Value Constraints
+
+| Property | Value |
+| --- | --- |
+| Regex Pattern | `^_*\s*[a-zA-Z\-]+\s\[[a-zA-Z]+:\d+\]$` |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

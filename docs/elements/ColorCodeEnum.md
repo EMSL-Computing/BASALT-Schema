@@ -2,10 +2,9 @@
 
 
 
-URI: [ColorCodeEnum](ColorCodeEnum.md)
+URI: [analysis_api_schema:ColorCodeEnum](https://w3id.org/MONet/analysis-api-schema/ColorCodeEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | Red- 0-250m Profiling | None |  |
@@ -33,9 +32,11 @@ URI: [ColorCodeEnum](ColorCodeEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

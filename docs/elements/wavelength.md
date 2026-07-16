@@ -17,9 +17,8 @@ Alias: wavelength
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [KuoMethod](KuoMethod.md) |  |  no  |
 | [EnzymeActivityMethod](EnzymeActivityMethod.md) |  |  no  |
-
+| [KuoMethod](KuoMethod.md) |  |  no  |
 
 
 
@@ -28,15 +27,28 @@ Alias: wavelength
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [EnzymeActivityMethod](EnzymeActivityMethod.md), [KuoMethod](KuoMethod.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

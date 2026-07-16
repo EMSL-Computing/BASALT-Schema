@@ -15,19 +15,13 @@ URI: [analysis_api_schema:MobilePhaseSegment](https://w3id.org/MONet/analysis-ap
 
 
 
-
 ```mermaid
  classDiagram
     class MobilePhaseSegment
-    click MobilePhaseSegment href "../MobilePhaseSegment"
+    click MobilePhaseSegment href "../MobilePhaseSegment/"
       MobilePhaseSegment : duration_min
         
       MobilePhaseSegment : id
-        
-          
-    
-    
-
         
       MobilePhaseSegment : name
         
@@ -43,14 +37,13 @@ URI: [analysis_api_schema:MobilePhaseSegment](https://w3id.org/MONet/analysis-ap
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | direct |
 | [duration_min](duration_min.md) | 0..1 <br/> [Float](Float.md) | how long something took, in minutes | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [segment_order](segment_order.md) | 0..1 <br/> [Integer](Integer.md) | The order of this segment in the overall chromatography protocol | direct |
 | [substance](substance.md) | 0..1 <br/> [String](String.md) | The name of the substance used in this mobile phase segment | direct |
 
@@ -69,13 +62,17 @@ URI: [analysis_api_schema:MobilePhaseSegment](https://w3id.org/MONet/analysis-ap
 
 
 
+
+
+
+
 ## TODOs
 
 * inheritance? substances_used modelling
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -101,7 +98,6 @@ URI: [analysis_api_schema:MobilePhaseSegment](https://w3id.org/MONet/analysis-ap
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -115,7 +111,6 @@ description: A segment of the mobile phase used in chromatography during mass sp
 todos:
 - inheritance? substances_used modelling
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 slots:
 - name
 - duration_min
@@ -227,7 +222,6 @@ description: A segment of the mobile phase used in chromatography during mass sp
 todos:
 - inheritance? substances_used modelling
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

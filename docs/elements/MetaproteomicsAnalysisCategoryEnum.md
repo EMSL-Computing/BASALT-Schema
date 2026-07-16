@@ -7,10 +7,9 @@ _The category of metaproteomics analysis being performed._
 
 
 
-URI: [MetaproteomicsAnalysisCategoryEnum](MetaproteomicsAnalysisCategoryEnum.md)
+URI: [analysis_api_schema:MetaproteomicsAnalysisCategoryEnum](https://w3id.org/MONet/analysis-api-schema/MetaproteomicsAnalysisCategoryEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | matched_metagenome | None | A metaproteomics analysis matched to a metagenome from the same biosample |
@@ -31,9 +30,11 @@ URI: [MetaproteomicsAnalysisCategoryEnum](MetaproteomicsAnalysisCategoryEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

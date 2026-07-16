@@ -15,23 +15,21 @@ URI: [analysis_api_schema:AerosolArmSample](https://w3id.org/MONet/analysis-api-
 
 
 
-
 ```mermaid
  classDiagram
     class AerosolArmSample
-    click AerosolArmSample href "../AerosolArmSample"
+    click AerosolArmSample href "../AerosolArmSample/"
       Sample <|-- AerosolArmSample
-        click Sample href "../Sample"
+        click Sample href "../Sample/"
       
       AerosolArmSample : aerosol_type
         
           
     
-    
-    
-    
-    AerosolArmSample --> "1" AerosolTypeEnum : aerosol_type
-    click AerosolTypeEnum href "../AerosolTypeEnum"
+        
+        
+        AerosolArmSample --> "1" AerosolTypeEnum : aerosol_type
+        click AerosolTypeEnum href "../AerosolTypeEnum/"
     
 
         
@@ -49,11 +47,10 @@ URI: [analysis_api_schema:AerosolArmSample](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    AerosolArmSample --> "0..1" ColorCodeEnum : color_code
-    click ColorCodeEnum href "../ColorCodeEnum"
+        
+        
+        AerosolArmSample --> "0..1" ColorCodeEnum : color_code
+        click ColorCodeEnum href "../ColorCodeEnum/"
     
 
         
@@ -85,11 +82,6 @@ URI: [analysis_api_schema:AerosolArmSample](https://w3id.org/MONet/analysis-api-
         
       AerosolArmSample : id
         
-          
-    
-    
-
-        
       AerosolArmSample : isotope_exposure
         
       AerosolArmSample : latitude
@@ -120,11 +112,10 @@ URI: [analysis_api_schema:AerosolArmSample](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    AerosolArmSample --> "0..1" PhotochemicalExposureEnum : photochemical_exposure
-    click PhotochemicalExposureEnum href "../PhotochemicalExposureEnum"
+        
+        
+        AerosolArmSample --> "0..1" PhotochemicalExposureEnum : photochemical_exposure
+        click PhotochemicalExposureEnum href "../PhotochemicalExposureEnum/"
     
 
         
@@ -140,11 +131,10 @@ URI: [analysis_api_schema:AerosolArmSample](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    AerosolArmSample --> "0..1" SampleStoreTempEnum : samp_store_temp
-    click SampleStoreTempEnum href "../SampleStoreTempEnum"
+        
+        
+        AerosolArmSample --> "0..1" SampleStoreTempEnum : samp_store_temp
+        click SampleStoreTempEnum href "../SampleStoreTempEnum/"
     
 
         
@@ -158,11 +148,10 @@ URI: [analysis_api_schema:AerosolArmSample](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    AerosolArmSample --> "0..1" SamplingActivity : sampled_during
-    click SamplingActivity href "../SamplingActivity"
+        
+        
+        AerosolArmSample --> "0..1" SamplingActivity : sampled_during
+        click SamplingActivity href "../SamplingActivity/"
     
 
         
@@ -184,11 +173,10 @@ URI: [analysis_api_schema:AerosolArmSample](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    AerosolArmSample --> "0..1" StorageConditionEnum : storage_condition
-    click StorageConditionEnum href "../StorageConditionEnum"
+        
+        
+        AerosolArmSample --> "0..1" StorageConditionEnum : storage_condition
+        click StorageConditionEnum href "../StorageConditionEnum/"
     
 
         
@@ -212,7 +200,6 @@ URI: [analysis_api_schema:AerosolArmSample](https://w3id.org/MONet/analysis-api-
 ## Inheritance
 * [Sample](Sample.md)
     * **AerosolArmSample**
-
 
 
 ## Slots
@@ -271,7 +258,7 @@ URI: [analysis_api_schema:AerosolArmSample](https://w3id.org/MONet/analysis-api-
 | [third_blh](third_blh.md) | 0..1 <br/> [Float](Float.md) | Third boundary layer height candidate (meters) (Unit: m) | direct |
 | [third_blh_quality](third_blh_quality.md) | 0..1 <br/> [String](String.md) | Quality index for third boundary layer height candidate (-999 if no candidate... | direct |
 | [volatile_org_comp](volatile_org_comp.md) | 0..1 <br/> [String](String.md) | Volatile organic compounds are organic chemicals that have a high vapour pres... | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [Sample](Sample.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [Sample](Sample.md) |
 | [emsl_activity](emsl_activity.md) | 0..1 <br/> [String](String.md) | Nullable string linking a Sample or SamplingActivity to a named EMSL activity... | [Sample](Sample.md) |
@@ -285,9 +272,13 @@ URI: [analysis_api_schema:AerosolArmSample](https://w3id.org/MONet/analysis-api-
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -313,7 +304,6 @@ URI: [analysis_api_schema:AerosolArmSample](https://w3id.org/MONet/analysis-api-
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -325,7 +315,6 @@ URI: [analysis_api_schema:AerosolArmSample](https://w3id.org/MONet/analysis-api-
 name: AerosolArmSample
 description: An aerosol sample collected by the ARM facility.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slots:
 - aerosol_type
@@ -495,7 +484,6 @@ attributes:
 name: AerosolArmSample
 description: An aerosol sample collected by the ARM facility.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slot_usage:
   analysis_type:
@@ -1259,8 +1247,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: AerosolArmSample
     domain_of:
     - DataProduct

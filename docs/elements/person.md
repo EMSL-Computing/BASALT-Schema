@@ -29,20 +29,38 @@ Alias: person
 
 
 
-
 ## Properties
 
-* Range: [PersonValue](PersonValue.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [PersonValue](PersonValue.md) |
+| Domain Of | [ProjectParticipant](ProjectParticipant.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [ProjectParticipant](ProjectParticipant.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -29,18 +29,37 @@ Alias: method_id
 
 
 
-
 ## Properties
 
-* Range: [RespirationMethod](RespirationMethod.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [RespirationMethod](RespirationMethod.md) |
+| Domain Of | [RespirationDataGenerationActivity](RespirationDataGenerationActivity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [RespirationDataGenerationActivity](RespirationDataGenerationActivity.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

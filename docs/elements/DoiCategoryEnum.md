@@ -7,10 +7,9 @@ _The authority, or organization, the DOI is associated with_
 
 
 
-URI: [DoiCategoryEnum](DoiCategoryEnum.md)
+URI: [analysis_api_schema:DoiCategoryEnum](https://w3id.org/MONet/analysis-api-schema/DoiCategoryEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | award_doi | None | A type of DOI that resolves to a funding authority |
@@ -32,9 +31,11 @@ URI: [DoiCategoryEnum](DoiCategoryEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

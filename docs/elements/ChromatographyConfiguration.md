@@ -15,23 +15,21 @@ URI: [analysis_api_schema:ChromatographyConfiguration](https://w3id.org/MONet/an
 
 
 
-
 ```mermaid
  classDiagram
     class ChromatographyConfiguration
-    click ChromatographyConfiguration href "../ChromatographyConfiguration"
+    click ChromatographyConfiguration href "../ChromatographyConfiguration/"
       Configuration <|-- ChromatographyConfiguration
-        click Configuration href "../Configuration"
+        click Configuration href "../Configuration/"
       
       ChromatographyConfiguration : chromatography_type
         
           
     
-    
-    
-    
-    ChromatographyConfiguration --> "1" ChromatographyCategoryEnum : chromatography_type
-    click ChromatographyCategoryEnum href "../ChromatographyCategoryEnum"
+        
+        
+        ChromatographyConfiguration --> "1" ChromatographyCategoryEnum : chromatography_type
+        click ChromatographyCategoryEnum href "../ChromatographyCategoryEnum/"
     
 
         
@@ -49,22 +47,16 @@ URI: [analysis_api_schema:ChromatographyConfiguration](https://w3id.org/MONet/an
         
       ChromatographyConfiguration : id
         
-          
-    
-    
-
-        
       ChromatographyConfiguration : injection_volume_ul
         
       ChromatographyConfiguration : mobile_phases
         
           
     
-    
-    
-    
-    ChromatographyConfiguration --> "*" MobilePhaseSegment : mobile_phases
-    click MobilePhaseSegment href "../MobilePhaseSegment"
+        
+        
+        ChromatographyConfiguration --> "*" MobilePhaseSegment : mobile_phases
+        click MobilePhaseSegment href "../MobilePhaseSegment/"
     
 
         
@@ -86,7 +78,6 @@ URI: [analysis_api_schema:ChromatographyConfiguration](https://w3id.org/MONet/an
     * **ChromatographyConfiguration**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -103,7 +94,7 @@ URI: [analysis_api_schema:ChromatographyConfiguration](https://w3id.org/MONet/an
 | [injection_volume_ul](injection_volume_ul.md) | 0..1 <br/> [Float](Float.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [Configuration](Configuration.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [Configuration](Configuration.md) |
-| [id](id.md) | 1 <br/> uuid |  | [Configuration](Configuration.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [Configuration](Configuration.md) |
 
 
 
@@ -120,9 +111,13 @@ URI: [analysis_api_schema:ChromatographyConfiguration](https://w3id.org/MONet/an
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -148,7 +143,6 @@ URI: [analysis_api_schema:ChromatographyConfiguration](https://w3id.org/MONet/an
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -160,7 +154,6 @@ URI: [analysis_api_schema:ChromatographyConfiguration](https://w3id.org/MONet/an
 name: ChromatographyConfiguration
 description: Configuration and settings for a chromatography run.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Configuration
 slots:
 - column
@@ -184,7 +177,6 @@ slots:
 name: ChromatographyConfiguration
 description: Configuration and settings for a chromatography run.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Configuration
 attributes:
   column:

@@ -24,18 +24,37 @@ Alias: flag_mbn_avg
 
 
 
-
 ## Properties
 
-* Range: [ProcessedDataFlag](ProcessedDataFlag.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [ProcessedDataFlag](ProcessedDataFlag.md) |
+| Domain Of | [MicrobialBiomassProduct](MicrobialBiomassProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [MicrobialBiomassProduct](MicrobialBiomassProduct.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

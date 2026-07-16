@@ -2,10 +2,9 @@
 
 
 
-URI: [NexusRoleEnum](NexusRoleEnum.md)
+URI: [analysis_api_schema:NexusRoleEnum](https://w3id.org/MONet/analysis-api-schema/NexusRoleEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | Principal Investigator | None |  |
@@ -26,13 +25,15 @@ URI: [NexusRoleEnum](NexusRoleEnum.md)
 
 
 
+
+
 ## TODOs
 
 * delete this or get a real list from NEXUS
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

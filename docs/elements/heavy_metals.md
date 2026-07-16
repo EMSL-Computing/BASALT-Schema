@@ -22,9 +22,8 @@ Alias: heavy_metals
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
 
 
 
@@ -33,15 +32,28 @@ Alias: heavy_metals
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [OtherUndescribedSample](OtherUndescribedSample.md), [SoilSample](SoilSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

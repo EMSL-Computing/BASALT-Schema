@@ -25,13 +25,12 @@ URI: [analysis_api_schema:PreCultureGrowth](https://w3id.org/MONet/analysis-api-
 
 
 
-
 ```mermaid
  classDiagram
     class PreCultureGrowth
-    click PreCultureGrowth href "../PreCultureGrowth"
+    click PreCultureGrowth href "../PreCultureGrowth/"
       CultureGrowth <|-- PreCultureGrowth
-        click CultureGrowth href "../CultureGrowth"
+        click CultureGrowth href "../CultureGrowth/"
       
       PreCultureGrowth : agitation_speed_rpm
         
@@ -39,11 +38,10 @@ URI: [analysis_api_schema:PreCultureGrowth](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    PreCultureGrowth --> "0..1" RouteMethodEnum : analysis_type
-    click RouteMethodEnum href "../RouteMethodEnum"
+        
+        
+        PreCultureGrowth --> "0..1" RouteMethodEnum : analysis_type
+        click RouteMethodEnum href "../RouteMethodEnum/"
     
 
         
@@ -51,11 +49,10 @@ URI: [analysis_api_schema:PreCultureGrowth](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    PreCultureGrowth --> "0..1" BiologicalEntity : biological_entity_ref
-    click BiologicalEntity href "../BiologicalEntity"
+        
+        
+        PreCultureGrowth --> "0..1" BiologicalEntity : biological_entity_ref
+        click BiologicalEntity href "../BiologicalEntity/"
     
 
         
@@ -65,22 +62,16 @@ URI: [analysis_api_schema:PreCultureGrowth](https://w3id.org/MONet/analysis-api-
         
       PreCultureGrowth : id
         
-          
-    
-    
-
-        
       PreCultureGrowth : incubation_time_hours
         
       PreCultureGrowth : method_name
         
           
     
-    
-    
-    
-    PreCultureGrowth --> "0..1" MethodNameEnum : method_name
-    click MethodNameEnum href "../MethodNameEnum"
+        
+        
+        PreCultureGrowth --> "0..1" MethodNameEnum : method_name
+        click MethodNameEnum href "../MethodNameEnum/"
     
 
         
@@ -88,11 +79,10 @@ URI: [analysis_api_schema:PreCultureGrowth](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    PreCultureGrowth --> "0..1" OxygenStatusEnum : oxygen_relationship
-    click OxygenStatusEnum href "../OxygenStatusEnum"
+        
+        
+        PreCultureGrowth --> "0..1" OxygenStatusEnum : oxygen_relationship
+        click OxygenStatusEnum href "../OxygenStatusEnum/"
     
 
         
@@ -108,11 +98,10 @@ URI: [analysis_api_schema:PreCultureGrowth](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    PreCultureGrowth --> "0..1" Sample : uses_sample
-    click Sample href "../Sample"
+        
+        
+        PreCultureGrowth --> "0..1" Sample : uses_sample
+        click Sample href "../Sample/"
     
 
         
@@ -129,7 +118,6 @@ URI: [analysis_api_schema:PreCultureGrowth](https://w3id.org/MONet/analysis-api-
         * **PreCultureGrowth**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -143,7 +131,7 @@ URI: [analysis_api_schema:PreCultureGrowth](https://w3id.org/MONet/analysis-api-
 | [oxygen_relationship](oxygen_relationship.md) | 0..1 <br/> [OxygenStatusEnum](OxygenStatusEnum.md) | The relationship of the sample to oxygen, such as aerobic or anaerobic | [HasIncubationConditions](HasIncubationConditions.md) |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
-| [id](id.md) | 1 <br/> uuid |  | [SampleProcessing](SampleProcessing.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [analysis_type](analysis_type.md) | 0..1 <br/> [RouteMethodEnum](RouteMethodEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [method_name](method_name.md) | 0..1 <br/> [MethodNameEnum](MethodNameEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [processing_steps](processing_steps.md) | 1 <br/> [String](String.md) |  | [SampleProcessing](SampleProcessing.md) |
@@ -157,13 +145,17 @@ URI: [analysis_api_schema:PreCultureGrowth](https://w3id.org/MONet/analysis-api-
 
 
 
+
+
+
+
 ## TODOs
 
 * pre culture medium is missing
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -183,7 +175,6 @@ URI: [analysis_api_schema:PreCultureGrowth](https://w3id.org/MONet/analysis-api-
 | ---  | ---  |
 | self | analysis_api_schema:PreCultureGrowth |
 | native | analysis_api_schema:PreCultureGrowth |
-
 
 
 
@@ -212,7 +203,6 @@ description: 'Growth of a pre-culture to establish viable inoculum before
 todos:
 - pre culture medium is missing
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: CultureGrowth
 
 ```
@@ -236,7 +226,6 @@ description: 'Growth of a pre-culture to establish viable inoculum before
 todos:
 - pre culture medium is missing
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: CultureGrowth
 attributes:
   biological_entity_ref:

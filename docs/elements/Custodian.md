@@ -10,27 +10,20 @@ URI: [analysis_api_schema:Custodian](https://w3id.org/MONet/analysis-api-schema/
 
 
 
-
 ```mermaid
  classDiagram
     class Custodian
-    click Custodian href "../Custodian"
+    click Custodian href "../Custodian/"
       Custodian : id
-        
-          
-    
-    
-
         
       Custodian : person_id
         
           
     
-    
-    
-    
-    Custodian --> "0..1" PersonValue : person_id
-    click PersonValue href "../PersonValue"
+        
+        
+        Custodian --> "0..1" PersonValue : person_id
+        click PersonValue href "../PersonValue/"
     
 
         
@@ -42,12 +35,11 @@ URI: [analysis_api_schema:Custodian](https://w3id.org/MONet/analysis-api-schema/
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [person_id](person_id.md) | 0..1 <br/> [PersonValue](PersonValue.md) |  | direct |
 
 
@@ -65,9 +57,13 @@ URI: [analysis_api_schema:Custodian](https://w3id.org/MONet/analysis-api-schema/
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -93,7 +89,6 @@ URI: [analysis_api_schema:Custodian](https://w3id.org/MONet/analysis-api-schema/
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -104,7 +99,6 @@ URI: [analysis_api_schema:Custodian](https://w3id.org/MONet/analysis-api-schema/
 ```yaml
 name: Custodian
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id
@@ -201,7 +195,6 @@ attributes:
 ```yaml
 name: Custodian
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

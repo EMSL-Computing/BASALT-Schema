@@ -7,10 +7,9 @@ _Common names or identifiers for chemical entities._
 
 
 
-URI: [ChemicalEntityEnum](ChemicalEntityEnum.md)
+URI: [analysis_api_schema:ChemicalEntityEnum](https://w3id.org/MONet/analysis-api-schema/ChemicalEntityEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | acetonitrile | CHEBI:38472 |  |
@@ -48,9 +47,11 @@ URI: [ChemicalEntityEnum](ChemicalEntityEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

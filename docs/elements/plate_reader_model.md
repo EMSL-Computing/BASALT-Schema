@@ -29,10 +29,22 @@ Alias: plate_reader_model
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [AMP2ODProduct](AMP2ODProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
 
 
 
@@ -42,9 +54,9 @@ Alias: plate_reader_model
 
 * harmonize with existing Instrument modelling
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

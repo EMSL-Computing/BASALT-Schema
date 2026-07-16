@@ -15,26 +15,15 @@ URI: [analysis_api_schema:QuantityValue](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ```mermaid
  classDiagram
     class QuantityValue
-    click QuantityValue href "../QuantityValue"
+    click QuantityValue href "../QuantityValue/"
       QuantityValue : description
         
       QuantityValue : has_maximum_numeric_value
         
-          
-    
-    
-
-        
       QuantityValue : has_minimum_numeric_value
-        
-          
-    
-    
-
         
       QuantityValue : has_numeric_value
         
@@ -46,11 +35,6 @@ URI: [analysis_api_schema:QuantityValue](https://w3id.org/MONet/analysis-api-sch
         
       QuantityValue : id
         
-          
-    
-    
-
-        
       
 ```
 
@@ -59,18 +43,17 @@ URI: [analysis_api_schema:QuantityValue](https://w3id.org/MONet/analysis-api-sch
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [has_value_unit](has_value_unit.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [has_unit](has_unit.md) | 0..1 <br/> [String](String.md) | The human-readable unit name | direct |
 | [has_numeric_value](has_numeric_value.md) | 0..1 <br/> [Double](Double.md) | The numeric value of the quantity | direct |
-| [has_minimum_numeric_value](has_minimum_numeric_value.md) | 0..1 <br/> numeric |  | direct |
-| [has_maximum_numeric_value](has_maximum_numeric_value.md) | 0..1 <br/> numeric |  | direct |
+| [has_minimum_numeric_value](has_minimum_numeric_value.md) | 0..1 <br/> [Double](Double.md) |  | direct |
+| [has_maximum_numeric_value](has_maximum_numeric_value.md) | 0..1 <br/> [Double](Double.md) |  | direct |
 | [has_raw_value](has_raw_value.md) | 0..1 <br/> [String](String.md) |  | direct |
 
 
@@ -121,9 +104,13 @@ URI: [analysis_api_schema:QuantityValue](https://w3id.org/MONet/analysis-api-sch
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -149,7 +136,6 @@ URI: [analysis_api_schema:QuantityValue](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -161,7 +147,6 @@ URI: [analysis_api_schema:QuantityValue](https://w3id.org/MONet/analysis-api-sch
 name: QuantityValue
 description: A quantity value with numeric value and optional unit
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 slots:
 - description
 attributes:
@@ -270,14 +255,14 @@ attributes:
     rank: 1000
     domain_of:
     - QuantityValue
-    range: numeric
+    range: double
   has_maximum_numeric_value:
     name: has_maximum_numeric_value
     from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
     rank: 1000
     domain_of:
     - QuantityValue
-    range: numeric
+    range: double
   has_raw_value:
     name: has_raw_value
     from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
@@ -299,7 +284,6 @@ attributes:
 name: QuantityValue
 description: A quantity value with numeric value and optional unit
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id
@@ -418,7 +402,7 @@ attributes:
     owner: QuantityValue
     domain_of:
     - QuantityValue
-    range: numeric
+    range: double
   has_maximum_numeric_value:
     name: has_maximum_numeric_value
     from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
@@ -427,7 +411,7 @@ attributes:
     owner: QuantityValue
     domain_of:
     - QuantityValue
-    range: numeric
+    range: double
   has_raw_value:
     name: has_raw_value
     from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables

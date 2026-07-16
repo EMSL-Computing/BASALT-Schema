@@ -29,18 +29,37 @@ Alias: respiration_co2_c_ug_per_g
 
 
 
-
 ## Properties
 
-* Range: [Double](Double.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Double](Double.md) |
+| Domain Of | [RespirationProduct](RespirationProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [RespirationProduct](RespirationProduct.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

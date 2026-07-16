@@ -2,10 +2,9 @@
 
 
 
-URI: [TidalStageEnum](TidalStageEnum.md)
+URI: [analysis_api_schema:TidalStageEnum](https://w3id.org/MONet/analysis-api-schema/TidalStageEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | low_tide | None |  |
@@ -27,9 +26,11 @@ URI: [TidalStageEnum](TidalStageEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

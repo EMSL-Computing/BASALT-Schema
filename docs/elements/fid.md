@@ -29,10 +29,22 @@ Alias: fid
 
 
 
-
 ## Properties
 
-* Range: [Double](Double.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Double](Double.md) |
+| Domain Of | [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
 
 
 
@@ -42,9 +54,9 @@ Alias: fid
 
 * is this a setting or a result?
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -31,20 +31,31 @@ Alias: setup_date
 
 
 
-
 ## Properties
 
-* Range: [Datetime](Datetime.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [Datetime](Datetime.md) |
+| Domain Of | [PlateSetupActivity](PlateSetupActivity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

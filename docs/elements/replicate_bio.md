@@ -20,10 +20,21 @@ Alias: replicate_bio
 
 
 
-
 ## Properties
 
-* Range: [Integer](Integer.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Integer](Integer.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
 
 
 
@@ -33,9 +44,9 @@ Alias: replicate_bio
 
 * reconcile replicate modelling
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -29,18 +29,30 @@ Alias: produced_by_sequencing_activity
 
 
 
-
 ## Properties
 
-* Range: [NucleotideSequencing](NucleotideSequencing.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [NucleotideSequencing](NucleotideSequencing.md) |
+| Domain Of | [NucleotideSequencingInstrumentData](NucleotideSequencingInstrumentData.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

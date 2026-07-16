@@ -29,10 +29,23 @@ Alias: strain_type
 
 
 
-
 ## Properties
 
-* Range: [StrainTypeEnum](StrainTypeEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [StrainTypeEnum](StrainTypeEnum.md) |
+| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
 
 
 
@@ -43,9 +56,8 @@ Alias: strain_type
 
 
 
+
 ## Identifier and Mapping Information
-
-
 
 
 

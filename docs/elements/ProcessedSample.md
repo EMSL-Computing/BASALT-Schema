@@ -15,19 +15,18 @@ URI: [analysis_api_schema:ProcessedSample](https://w3id.org/MONet/analysis-api-s
 
 
 
-
 ```mermaid
  classDiagram
     class ProcessedSample
-    click ProcessedSample href "../ProcessedSample"
+    click ProcessedSample href "../ProcessedSample/"
       Sample <|-- ProcessedSample
-        click Sample href "../Sample"
+        click Sample href "../Sample/"
       
 
       ProcessedSample <|-- CoreSection
-        click CoreSection href "../CoreSection"
+        click CoreSection href "../CoreSection/"
       
-      
+
       ProcessedSample : concentration_ug_per_uL
         
       ProcessedSample : description
@@ -35,11 +34,6 @@ URI: [analysis_api_schema:ProcessedSample](https://w3id.org/MONet/analysis-api-s
       ProcessedSample : emsl_activity
         
       ProcessedSample : id
-        
-          
-    
-    
-
         
       ProcessedSample : label_text
         
@@ -53,11 +47,10 @@ URI: [analysis_api_schema:ProcessedSample](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    ProcessedSample --> "0..1" SampleProcessing : sampled_during
-    click SampleProcessing href "../SampleProcessing"
+        
+        
+        ProcessedSample --> "0..1" SampleProcessing : sampled_during
+        click SampleProcessing href "../SampleProcessing/"
     
 
         
@@ -65,11 +58,10 @@ URI: [analysis_api_schema:ProcessedSample](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    ProcessedSample --> "0..1" SamplePortionEnum : sampled_portion
-    click SamplePortionEnum href "../SamplePortionEnum"
+        
+        
+        ProcessedSample --> "0..1" SamplePortionEnum : sampled_portion
+        click SamplePortionEnum href "../SamplePortionEnum/"
     
 
         
@@ -92,7 +84,6 @@ URI: [analysis_api_schema:ProcessedSample](https://w3id.org/MONet/analysis-api-s
         * [CoreSection](CoreSection.md)
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -105,7 +96,7 @@ URI: [analysis_api_schema:ProcessedSample](https://w3id.org/MONet/analysis-api-s
 | [sampled_portion](sampled_portion.md) | 0..1 <br/> [SamplePortionEnum](SamplePortionEnum.md) | The portion of the original sample used in creating this processed sample (e | direct |
 | [sampled_during](sampled_during.md) | 0..1 <br/> [SampleProcessing](SampleProcessing.md) | A reference to the sample processing activity (generally lab work) that gener... | direct |
 | [replicate](replicate.md) | 0..1 <br/> [Integer](Integer.md) | The TECHNICAL replicate number of the processed sample, if applicable | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [Sample](Sample.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [Sample](Sample.md) |
 | [emsl_activity](emsl_activity.md) | 0..1 <br/> [String](String.md) | Nullable string linking a Sample or SamplingActivity to a named EMSL activity... | [Sample](Sample.md) |
@@ -121,6 +112,9 @@ URI: [analysis_api_schema:ProcessedSample](https://w3id.org/MONet/analysis-api-s
 | ---  | --- | --- | --- |
 | [DataGenerationActivity](DataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [RespirationDataGenerationActivity](RespirationDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
+| [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
+| [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
+| [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | [media_ref](media_ref.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [PlateDataGenerationActivity](PlateDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
@@ -128,9 +122,12 @@ URI: [analysis_api_schema:ProcessedSample](https://w3id.org/MONet/analysis-api-s
 | [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [AMP2WellMetadata](AMP2WellMetadata.md) | [media_ref](media_ref.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [NucleotideSequencing](NucleotideSequencing.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
-| [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
-| [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
-| [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
+
+
+
+
+
+
 
 
 
@@ -138,8 +135,6 @@ URI: [analysis_api_schema:ProcessedSample](https://w3id.org/MONet/analysis-api-s
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -165,7 +160,6 @@ URI: [analysis_api_schema:ProcessedSample](https://w3id.org/MONet/analysis-api-s
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -180,7 +174,6 @@ description: A sample that has undergone processing or analysis. Processed Sampl
   this ProcessedSample is referenced via sampled_during.
 title: Processed Sample
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slots:
 - storage_location
@@ -293,7 +286,6 @@ description: A sample that has undergone processing or analysis. Processed Sampl
   this ProcessedSample is referenced via sampled_during.
 title: Processed Sample
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slot_usage:
   replicate:

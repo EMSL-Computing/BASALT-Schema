@@ -43,30 +43,28 @@ URI: [analysis_api_schema:XRayDataProduct](https://w3id.org/MONet/analysis-api-s
 
 
 
-
 ```mermaid
  classDiagram
     class XRayDataProduct
-    click XRayDataProduct href "../XRayDataProduct"
+    click XRayDataProduct href "../XRayDataProduct/"
       ProcessedData <|-- XRayDataProduct
-        click ProcessedData href "../ProcessedData"
+        click ProcessedData href "../ProcessedData/"
       
 
       XRayDataProduct <|-- XRFElementalProduct
-        click XRFElementalProduct href "../XRFElementalProduct"
+        click XRFElementalProduct href "../XRFElementalProduct/"
       XRayDataProduct <|-- XRDPhaseProduct
-        click XRDPhaseProduct href "../XRDPhaseProduct"
+        click XRDPhaseProduct href "../XRDPhaseProduct/"
       
-      
+
       XRayDataProduct : core_section
         
           
     
-    
-    
-    
-    XRayDataProduct --> "0..1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        XRayDataProduct --> "0..1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -75,11 +73,6 @@ URI: [analysis_api_schema:XRayDataProduct](https://w3id.org/MONet/analysis-api-s
       XRayDataProduct : filesize
         
       XRayDataProduct : id
-        
-          
-    
-    
-
         
       XRayDataProduct : lims_barcode
         
@@ -99,11 +92,10 @@ URI: [analysis_api_schema:XRayDataProduct](https://w3id.org/MONet/analysis-api-s
         
           
     
-    
-    
-    
-    XRayDataProduct --> "0..1" Sample : sample_id
-    click Sample href "../Sample"
+        
+        
+        XRayDataProduct --> "0..1" Sample : sample_id
+        click Sample href "../Sample/"
     
 
         
@@ -128,7 +120,6 @@ URI: [analysis_api_schema:XRayDataProduct](https://w3id.org/MONet/analysis-api-s
             * [XRDPhaseProduct](XRDPhaseProduct.md)
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -147,7 +138,13 @@ URI: [analysis_api_schema:XRayDataProduct](https://w3id.org/MONet/analysis-api-s
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | [DataProduct](DataProduct.md) |
 | [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | [DataProduct](DataProduct.md) |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProduct](DataProduct.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProduct](DataProduct.md) |
+
+
+
+
+
+
 
 
 
@@ -158,8 +155,6 @@ URI: [analysis_api_schema:XRayDataProduct](https://w3id.org/MONet/analysis-api-s
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -179,7 +174,6 @@ URI: [analysis_api_schema:XRayDataProduct](https://w3id.org/MONet/analysis-api-s
 | ---  | ---  |
 | self | analysis_api_schema:XRayDataProduct |
 | native | analysis_api_schema:XRayDataProduct |
-
 
 
 
@@ -206,7 +200,6 @@ description: "Abstract base class for X-ray analytical data products.\nInherits 
   \ (XRF typical)\n  - workflow_id links to DataProcessingActivity for computational\
   \ processing (XRD Rietveld) "
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: ProcessedData
 abstract: true
 
@@ -229,7 +222,6 @@ description: "Abstract base class for X-ray analytical data products.\nInherits 
   \ (XRF typical)\n  - workflow_id links to DataProcessingActivity for computational\
   \ processing (XRD Rietveld) "
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: ProcessedData
 abstract: true
 attributes:
@@ -346,8 +338,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: XRayDataProduct
     domain_of:
     - DataProduct

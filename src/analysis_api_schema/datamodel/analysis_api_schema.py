@@ -1,5 +1,5 @@
 # Auto generated from analysis_api_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-14T15:59:24
+# Generation date: 2026-07-14T16:14:19
 # Schema: analysis-api-schema
 #
 # id: https://w3id.org/MONet/analysis-api-schema
@@ -161,6 +161,18 @@ class SampleProcessingId(Uuid):
 
 
 class ProcessingSampleLinkId(Uuid):
+    pass
+
+
+class XRayDataGenerationActivityId(DataGenerationActivityId):
+    pass
+
+
+class XRFDataGenerationActivityId(XRayDataGenerationActivityId):
+    pass
+
+
+class XRDDataGenerationActivityId(XRayDataGenerationActivityId):
     pass
 
 
@@ -1461,6 +1473,132 @@ class WorkflowExecutionFunctionalAnnotation(YAMLRoot):
 
         if self.count is not None and not isinstance(self.count, float):
             self.count = float(self.count)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class XRayDataGenerationActivity(DataGenerationActivity):
+    """
+    Abstract base class for X-ray analytical methods including XRF (elemental)
+    and XRD (mineralogical) analysis. Inherits acquisition_time, instrument_id,
+    protocol_url, analyte_id, and other core metadata from DataGenerationActivity.
+
+    Concrete subclasses define method-specific measurement parameters.
+    Future X-ray methods (e.g., XCT) can extend this class.
+
+    Shared patterns:
+    - Direct instrument output (no computational workflow) is typical for XRF
+    - XRD may optionally link to DataProcessingActivity for Rietveld refinement
+    - protocol_url should link to vendor SOP or EMSL internal protocol documentation
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["XRayDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "analysis_api_schema:XRayDataGenerationActivity"
+    class_name: ClassVar[str] = "XRayDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.XRayDataGenerationActivity
+
+    id: Union[str, XRayDataGenerationActivityId] = None
+    name: str = None
+    acquisition_start_time: Union[str, XSDDateTime] = None
+    acquisition_end_time: Union[str, XSDDateTime] = None
+
+@dataclass(repr=False)
+class XRFDataGenerationActivity(XRayDataGenerationActivity):
+    """
+    X-ray Fluorescence (XRF) elemental analysis activity.
+
+    XRF measures elemental composition by detecting characteristic X-ray emissions
+    from a sample bombarded with high-energy X-rays. Typical output: concentrations
+    of 10-30 elements per sample (Ni, Pb, As, Cr, Fe, Ca, K, etc.).
+
+    Data product: XRFElementalProduct (one row per element per sample)
+
+    Workflow pattern: Direct instrument output (no computational processing step)
+    processedSample -> XRFDataGenerationActivity -> XRFElementalProduct (workflow_id = NULL)
+
+    Protocol information: Stored externally; link via protocol_url attribute.
+    Example protocol parameters (stored in external SOP or DataProcessingActivity
+    if computational correction is needed):
+    - Beam voltage (kV), beam current (mA)
+    - Measurement duration (seconds)
+    - Matrix correction method (fundamental parameters, empirical)
+    - Calibration date
+    - Operator ID
+
+    Required enum additions to enums.yaml:
+    routemethod:
+    xrf_analysis:  # Add to routemethod permissible_values
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["XRFDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "analysis_api_schema:XRFDataGenerationActivity"
+    class_name: ClassVar[str] = "XRFDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.XRFDataGenerationActivity
+
+    id: Union[str, XRFDataGenerationActivityId] = None
+    name: str = None
+    acquisition_start_time: Union[str, XSDDateTime] = None
+    acquisition_end_time: Union[str, XSDDateTime] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, XRFDataGenerationActivityId):
+            self.id = XRFDataGenerationActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class XRDDataGenerationActivity(XRayDataGenerationActivity):
+    """
+    X-ray Diffraction (XRD) mineralogical analysis activity.
+
+    XRD identifies crystalline mineral phases by measuring diffraction patterns.
+    Output: mineral phase names and quantitative abundances (weight %).
+
+    Data product: XRDPhaseProduct (one row per mineral phase per sample)
+
+    Workflow patterns:
+    1. Direct/semi-quantitative:
+    processedSample -> XRDDataGenerationActivity -> XRDPhaseProduct (workflow_id = NULL)
+    2. With Rietveld refinement (computational):
+    processedSample -> XRDDataGenerationActivity ->
+    DataProcessingActivity(type='xrd_rietveld_refinement') ->
+    XRDPhaseProduct (workflow_id = refinement WEA)
+
+    Protocol information: Stored externally; link via protocol_url attribute.
+    Example protocol parameters (stored in external SOP or DataProcessingActivity):
+    - Diffractometer geometry (Bragg-Brentano, Debye-Scherrer)
+    - X-ray tube type (Cu, Co, Mo)
+    - Scan range (2-theta degrees), step size
+    - Refinement software (HighScore Plus, GSAS-II, FullProf)
+    - R-factor, GOF (goodness of fit)
+
+    Required enum additions to enums.yaml:
+    routemethod:
+    xrd_analysis:  # Add to routemethod permissible_values
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["XRDDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "analysis_api_schema:XRDDataGenerationActivity"
+    class_name: ClassVar[str] = "XRDDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.XRDDataGenerationActivity
+
+    id: Union[str, XRDDataGenerationActivityId] = None
+    name: str = None
+    acquisition_start_time: Union[str, XSDDateTime] = None
+    acquisition_end_time: Union[str, XSDDateTime] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, XRDDataGenerationActivityId):
+            self.id = XRDDataGenerationActivityId(self.id)
 
         super().__post_init__(**kwargs)
 

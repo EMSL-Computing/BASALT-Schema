@@ -22,12 +22,11 @@ Alias: size_frac_low
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  yes  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
 | [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  yes  |
 | [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  yes  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  yes  |
-
 
 
 
@@ -36,15 +35,28 @@ Alias: size_frac_low
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [AerosolArmSample](AerosolArmSample.md), [AerosolSample](AerosolSample.md), [OtherUndescribedSample](OtherUndescribedSample.md), [SoilSample](SoilSample.md), [WaterSample](WaterSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

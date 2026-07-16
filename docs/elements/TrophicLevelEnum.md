@@ -7,10 +7,9 @@ _Enumeration of trophic levels for organisms._
 
 
 
-URI: [TrophicLevelEnum](TrophicLevelEnum.md)
+URI: [analysis_api_schema:TrophicLevelEnum](https://w3id.org/MONet/analysis-api-schema/TrophicLevelEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | autotroph | None | Organism that produces complex organic compounds from simple substances |
@@ -59,9 +58,11 @@ URI: [TrophicLevelEnum](TrophicLevelEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

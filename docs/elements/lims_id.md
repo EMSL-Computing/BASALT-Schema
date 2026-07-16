@@ -29,20 +29,37 @@ Alias: lims_id
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Regex pattern: `^INGEST_SAMPLE_\d{9}$`
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [MonetSoilSample](MonetSoilSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Value Constraints
+
+| Property | Value |
+| --- | --- |
+| Regex Pattern | `^INGEST_SAMPLE_\d{9}$` |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

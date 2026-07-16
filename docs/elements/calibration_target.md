@@ -29,18 +29,30 @@ Alias: calibration_target
 
 
 
-
 ## Properties
 
-* Range: [CalibrationTargetEnum](CalibrationTargetEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [CalibrationTargetEnum](CalibrationTargetEnum.md) |
+| Domain Of | [MassSpectrometryStandardRun](MassSpectrometryStandardRun.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

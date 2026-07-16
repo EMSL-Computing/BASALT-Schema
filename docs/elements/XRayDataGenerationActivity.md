@@ -37,21 +37,20 @@ URI: [analysis_api_schema:XRayDataGenerationActivity](https://w3id.org/MONet/ana
 
 
 
-
 ```mermaid
  classDiagram
     class XRayDataGenerationActivity
-    click XRayDataGenerationActivity href "../XRayDataGenerationActivity"
+    click XRayDataGenerationActivity href "../XRayDataGenerationActivity/"
       DataGenerationActivity <|-- XRayDataGenerationActivity
-        click DataGenerationActivity href "../DataGenerationActivity"
+        click DataGenerationActivity href "../DataGenerationActivity/"
       
 
       XRayDataGenerationActivity <|-- XRFDataGenerationActivity
-        click XRFDataGenerationActivity href "../XRFDataGenerationActivity"
+        click XRFDataGenerationActivity href "../XRFDataGenerationActivity/"
       XRayDataGenerationActivity <|-- XRDDataGenerationActivity
-        click XRDDataGenerationActivity href "../XRDDataGenerationActivity"
+        click XRDDataGenerationActivity href "../XRDDataGenerationActivity/"
       
-      
+
       XRayDataGenerationActivity : acquisition_end_time
         
       XRayDataGenerationActivity : acquisition_start_time
@@ -60,11 +59,10 @@ URI: [analysis_api_schema:XRayDataGenerationActivity](https://w3id.org/MONet/ana
         
           
     
-    
-    
-    
-    XRayDataGenerationActivity --> "0..1" ProcessedSample : analyte_id
-    click ProcessedSample href "../ProcessedSample"
+        
+        
+        XRayDataGenerationActivity --> "0..1" ProcessedSample : analyte_id
+        click ProcessedSample href "../ProcessedSample/"
     
 
         
@@ -72,20 +70,14 @@ URI: [analysis_api_schema:XRayDataGenerationActivity](https://w3id.org/MONet/ana
         
       XRayDataGenerationActivity : id
         
-          
-    
-    
-
-        
       XRayDataGenerationActivity : instrument_operator_id
         
           
     
-    
-    
-    
-    XRayDataGenerationActivity --> "0..1" PersonValue : instrument_operator_id
-    click PersonValue href "../PersonValue"
+        
+        
+        XRayDataGenerationActivity --> "0..1" PersonValue : instrument_operator_id
+        click PersonValue href "../PersonValue/"
     
 
         
@@ -93,11 +85,10 @@ URI: [analysis_api_schema:XRayDataGenerationActivity](https://w3id.org/MONet/ana
         
           
     
-    
-    
-    
-    XRayDataGenerationActivity --> "0..1" Instrument : instrument_used
-    click Instrument href "../Instrument"
+        
+        
+        XRayDataGenerationActivity --> "0..1" Instrument : instrument_used
+        click Instrument href "../Instrument/"
     
 
         
@@ -123,7 +114,6 @@ URI: [analysis_api_schema:XRayDataGenerationActivity](https://w3id.org/MONet/ana
         * [XRDDataGenerationActivity](XRDDataGenerationActivity.md)
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -133,7 +123,7 @@ URI: [analysis_api_schema:XRayDataGenerationActivity](https://w3id.org/MONet/ana
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [DataGenerationActivity](DataGenerationActivity.md) |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [DataGenerationActivity](DataGenerationActivity.md) |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [DataGenerationActivity](DataGenerationActivity.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataGenerationActivity](DataGenerationActivity.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
 | [analyte_id](analyte_id.md) | 0..1 <br/> [ProcessedSample](ProcessedSample.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
 | [acquisition_start_time](acquisition_start_time.md) | 1 <br/> [Datetime](Datetime.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
 | [acquisition_end_time](acquisition_end_time.md) | 1 <br/> [Datetime](Datetime.md) |  | [DataGenerationActivity](DataGenerationActivity.md) |
@@ -148,9 +138,13 @@ URI: [analysis_api_schema:XRayDataGenerationActivity](https://w3id.org/MONet/ana
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -176,7 +170,6 @@ URI: [analysis_api_schema:XRayDataGenerationActivity](https://w3id.org/MONet/ana
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -195,7 +188,6 @@ description: "Abstract base class for X-ray analytical methods including XRF (el
   \ for Rietveld refinement\n  - protocol_url should link to vendor SOP or EMSL internal\
   \ protocol documentation"
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: DataGenerationActivity
 abstract: true
 
@@ -216,7 +208,6 @@ description: "Abstract base class for X-ray analytical methods including XRF (el
   \ for Rietveld refinement\n  - protocol_url should link to vendor SOP or EMSL internal\
   \ protocol documentation"
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: DataGenerationActivity
 abstract: true
 attributes:

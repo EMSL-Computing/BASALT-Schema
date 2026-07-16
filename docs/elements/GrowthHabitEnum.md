@@ -2,10 +2,9 @@
 
 
 
-URI: [GrowthHabitEnum](GrowthHabitEnum.md)
+URI: [analysis_api_schema:GrowthHabitEnum](https://w3id.org/MONet/analysis-api-schema/GrowthHabitEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | erect | None |  |
@@ -27,9 +26,11 @@ URI: [GrowthHabitEnum](GrowthHabitEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

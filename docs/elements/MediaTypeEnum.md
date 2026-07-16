@@ -7,10 +7,9 @@ _Purpose/context of the media preparation._
 
 
 
-URI: [MediaTypeEnum](MediaTypeEnum.md)
+URI: [analysis_api_schema:MediaTypeEnum](https://w3id.org/MONet/analysis-api-schema/MediaTypeEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | strain_purity | None | Media used in strain purity checks |
@@ -33,9 +32,11 @@ URI: [MediaTypeEnum](MediaTypeEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

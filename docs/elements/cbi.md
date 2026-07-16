@@ -32,10 +32,23 @@ Alias: cbi
 
 
 
-
 ## Properties
 
-* Range: [Boolean](Boolean.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Boolean](Boolean.md) |
+| Domain Of | [AMP2UserSample](AMP2UserSample.md), [EngineeredStrainSample](EngineeredStrainSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
 
 
 
@@ -46,9 +59,8 @@ Alias: cbi
 
 
 
+
 ## Identifier and Mapping Information
-
-
 
 
 

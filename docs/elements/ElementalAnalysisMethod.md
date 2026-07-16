@@ -10,13 +10,12 @@ URI: [analysis_api_schema:ElementalAnalysisMethod](https://w3id.org/MONet/analys
 
 
 
-
 ```mermaid
  classDiagram
     class ElementalAnalysisMethod
-    click ElementalAnalysisMethod href "../ElementalAnalysisMethod"
+    click ElementalAnalysisMethod href "../ElementalAnalysisMethod/"
       Method <|-- ElementalAnalysisMethod
-        click Method href "../Method"
+        click Method href "../Method/"
       
       ElementalAnalysisMethod : analytic
         
@@ -30,7 +29,6 @@ URI: [analysis_api_schema:ElementalAnalysisMethod](https://w3id.org/MONet/analys
 ## Inheritance
 * [Method](Method.md)
     * **ElementalAnalysisMethod**
-
 
 
 ## Slots
@@ -47,9 +45,13 @@ URI: [analysis_api_schema:ElementalAnalysisMethod](https://w3id.org/MONet/analys
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -75,7 +77,6 @@ URI: [analysis_api_schema:ElementalAnalysisMethod](https://w3id.org/MONet/analys
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -86,7 +87,6 @@ URI: [analysis_api_schema:ElementalAnalysisMethod](https://w3id.org/MONet/analys
 ```yaml
 name: ElementalAnalysisMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 
 ```
@@ -98,7 +98,6 @@ is_a: Method
 ```yaml
 name: ElementalAnalysisMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 attributes:
   analytic:

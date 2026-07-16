@@ -29,18 +29,30 @@ Alias: metaproteomics_analysis_category
 
 
 
-
 ## Properties
 
-* Range: [MetaproteomicsAnalysisCategoryEnum](MetaproteomicsAnalysisCategoryEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [MetaproteomicsAnalysisCategoryEnum](MetaproteomicsAnalysisCategoryEnum.md) |
+| Domain Of | [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

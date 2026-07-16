@@ -25,10 +25,22 @@ Alias: method
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [KuoMethod](KuoMethod.md), [TextureMethod](TextureMethod.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
 
 
 
@@ -38,9 +50,9 @@ Alias: method
 
 * what does this mean
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

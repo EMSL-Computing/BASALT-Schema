@@ -29,20 +29,38 @@ Alias: has_participants
 
 
 
-
 ## Properties
 
-* Range: [ProjectParticipant](ProjectParticipant.md)
+### Type and Range
 
-* Multivalued: True
+| Property | Value |
+| --- | --- |
+| Range | [ProjectParticipant](ProjectParticipant.md) |
+| Domain Of | [Study](Study.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Multivalued | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [Study](Study.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

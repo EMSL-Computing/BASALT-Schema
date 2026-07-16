@@ -10,13 +10,12 @@ URI: [analysis_api_schema:EnzymeActivityMethod](https://w3id.org/MONet/analysis-
 
 
 
-
 ```mermaid
  classDiagram
     class EnzymeActivityMethod
-    click EnzymeActivityMethod href "../EnzymeActivityMethod"
+    click EnzymeActivityMethod href "../EnzymeActivityMethod/"
       Method <|-- EnzymeActivityMethod
-        click Method href "../Method"
+        click Method href "../Method/"
       
       EnzymeActivityMethod : analytic
         
@@ -40,7 +39,6 @@ URI: [analysis_api_schema:EnzymeActivityMethod](https://w3id.org/MONet/analysis-
     * **EnzymeActivityMethod**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -59,9 +57,13 @@ URI: [analysis_api_schema:EnzymeActivityMethod](https://w3id.org/MONet/analysis-
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -87,7 +89,6 @@ URI: [analysis_api_schema:EnzymeActivityMethod](https://w3id.org/MONet/analysis-
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -98,7 +99,6 @@ URI: [analysis_api_schema:EnzymeActivityMethod](https://w3id.org/MONet/analysis-
 ```yaml
 name: EnzymeActivityMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 slots:
 - location
@@ -135,7 +135,6 @@ attributes:
 ```yaml
 name: EnzymeActivityMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 attributes:
   incubation_temp_c:

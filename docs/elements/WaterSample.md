@@ -15,13 +15,12 @@ URI: [analysis_api_schema:WaterSample](https://w3id.org/MONet/analysis-api-schem
 
 
 
-
 ```mermaid
  classDiagram
     class WaterSample
-    click WaterSample href "../WaterSample"
+    click WaterSample href "../WaterSample/"
       Sample <|-- WaterSample
-        click Sample href "../Sample"
+        click Sample href "../Sample/"
       
       WaterSample : air_temp_regm
         
@@ -113,11 +112,6 @@ URI: [analysis_api_schema:WaterSample](https://w3id.org/MONet/analysis-api-schem
         
       WaterSample : id
         
-          
-    
-    
-
-        
       WaterSample : isotope_exposure
         
       WaterSample : latitude
@@ -172,11 +166,10 @@ URI: [analysis_api_schema:WaterSample](https://w3id.org/MONet/analysis-api-schem
         
           
     
-    
-    
-    
-    WaterSample --> "0..1" OxygenStatusEnum : oxygen_relationship
-    click OxygenStatusEnum href "../OxygenStatusEnum"
+        
+        
+        WaterSample --> "0..1" OxygenStatusEnum : oxygen_relationship
+        click OxygenStatusEnum href "../OxygenStatusEnum/"
     
 
         
@@ -220,11 +213,10 @@ URI: [analysis_api_schema:WaterSample](https://w3id.org/MONet/analysis-api-schem
         
           
     
-    
-    
-    
-    WaterSample --> "0..1" SampleStoreTempEnum : samp_store_temp
-    click SampleStoreTempEnum href "../SampleStoreTempEnum"
+        
+        
+        WaterSample --> "0..1" SampleStoreTempEnum : samp_store_temp
+        click SampleStoreTempEnum href "../SampleStoreTempEnum/"
     
 
         
@@ -236,11 +228,10 @@ URI: [analysis_api_schema:WaterSample](https://w3id.org/MONet/analysis-api-schem
         
           
     
-    
-    
-    
-    WaterSample --> "0..1" SamplingActivity : sampled_during
-    click SamplingActivity href "../SamplingActivity"
+        
+        
+        WaterSample --> "0..1" SamplingActivity : sampled_during
+        click SamplingActivity href "../SamplingActivity/"
     
 
         
@@ -262,11 +253,10 @@ URI: [analysis_api_schema:WaterSample](https://w3id.org/MONet/analysis-api-schem
         
           
     
-    
-    
-    
-    WaterSample --> "0..1" StorageConditionEnum : storage_condition
-    click StorageConditionEnum href "../StorageConditionEnum"
+        
+        
+        WaterSample --> "0..1" StorageConditionEnum : storage_condition
+        click StorageConditionEnum href "../StorageConditionEnum/"
     
 
         
@@ -286,11 +276,10 @@ URI: [analysis_api_schema:WaterSample](https://w3id.org/MONet/analysis-api-schem
         
           
     
-    
-    
-    
-    WaterSample --> "0..1" TidalStageEnum : tidal_stage
-    click TidalStageEnum href "../TidalStageEnum"
+        
+        
+        WaterSample --> "0..1" TidalStageEnum : tidal_stage
+        click TidalStageEnum href "../TidalStageEnum/"
     
 
         
@@ -320,7 +309,6 @@ URI: [analysis_api_schema:WaterSample](https://w3id.org/MONet/analysis-api-schem
 ## Inheritance
 * [Sample](Sample.md)
     * **WaterSample**
-
 
 
 ## Slots
@@ -438,7 +426,7 @@ URI: [analysis_api_schema:WaterSample](https://w3id.org/MONet/analysis-api-schem
 | [tot_phosp](tot_phosp.md) | 0..1 <br/> [String](String.md) | Total phosphorus concentration in the sample calculated by: total phosphorus ... | direct |
 | [turbidity](turbidity.md) | 0..1 <br/> [String](String.md) | Measure of the amount of cloudiness or haziness in water caused by individual... | direct |
 | [water_current](water_current.md) | 0..1 <br/> [String](String.md) | Measurement of magnitude and direction of flow within a fluid | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [Sample](Sample.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [Sample](Sample.md) |
 | [emsl_activity](emsl_activity.md) | 0..1 <br/> [String](String.md) | Nullable string linking a Sample or SamplingActivity to a named EMSL activity... | [Sample](Sample.md) |
@@ -452,9 +440,13 @@ URI: [analysis_api_schema:WaterSample](https://w3id.org/MONet/analysis-api-schem
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -480,7 +472,6 @@ URI: [analysis_api_schema:WaterSample](https://w3id.org/MONet/analysis-api-schem
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -492,7 +483,6 @@ URI: [analysis_api_schema:WaterSample](https://w3id.org/MONet/analysis-api-schem
 name: WaterSample
 description: A sample of water collected from the environment.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slots:
 - air_temp_regm
@@ -733,7 +723,6 @@ attributes:
 name: WaterSample
 description: A sample of water collected from the environment.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Sample
 slot_usage:
   analysis_type:
@@ -2243,8 +2232,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: WaterSample
     domain_of:
     - DataProduct

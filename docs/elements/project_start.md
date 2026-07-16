@@ -24,18 +24,37 @@ Alias: project_start
 
 
 
-
 ## Properties
 
-* Range: [Datetime](Datetime.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Datetime](Datetime.md) |
+| Domain Of | [Study](Study.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [Study](Study.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

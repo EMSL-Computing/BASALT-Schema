@@ -23,13 +23,12 @@ URI: [analysis_api_schema:EcoplateAbsorbanceProduct](https://w3id.org/MONet/anal
 
 
 
-
 ```mermaid
  classDiagram
     class EcoplateAbsorbanceProduct
-    click EcoplateAbsorbanceProduct href "../EcoplateAbsorbanceProduct"
+    click EcoplateAbsorbanceProduct href "../EcoplateAbsorbanceProduct/"
       PlateProduct <|-- EcoplateAbsorbanceProduct
-        click PlateProduct href "../PlateProduct"
+        click PlateProduct href "../PlateProduct/"
       
       EcoplateAbsorbanceProduct : average_well_color_development
         
@@ -51,11 +50,10 @@ URI: [analysis_api_schema:EcoplateAbsorbanceProduct](https://w3id.org/MONet/anal
         
           
     
-    
-    
-    
-    EcoplateAbsorbanceProduct --> "*" WellReading : well_readings
-    click WellReading href "../WellReading"
+        
+        
+        EcoplateAbsorbanceProduct --> "*" WellReading : well_readings
+        click WellReading href "../WellReading/"
     
 
         
@@ -69,7 +67,6 @@ URI: [analysis_api_schema:EcoplateAbsorbanceProduct](https://w3id.org/MONet/anal
 ## Inheritance
 * [PlateProduct](PlateProduct.md)
     * **EcoplateAbsorbanceProduct**
-
 
 
 ## Slots
@@ -94,9 +91,13 @@ URI: [analysis_api_schema:EcoplateAbsorbanceProduct](https://w3id.org/MONet/anal
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -122,7 +123,6 @@ URI: [analysis_api_schema:EcoplateAbsorbanceProduct](https://w3id.org/MONet/anal
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -141,7 +141,6 @@ description: 'Ecoplate absorbance measurement product.
 
   v1 origin: plate-general.yaml EcoplateAbsorbanceProduct'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: PlateProduct
 slots:
 - plate_lot
@@ -165,7 +164,6 @@ description: 'Ecoplate absorbance measurement product.
 
   v1 origin: plate-general.yaml EcoplateAbsorbanceProduct'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: PlateProduct
 attributes:
   plate_lot:

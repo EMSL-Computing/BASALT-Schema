@@ -2,10 +2,9 @@
 
 
 
-URI: [ConstructComponentEnum](ConstructComponentEnum.md)
+URI: [analysis_api_schema:ConstructComponentEnum](https://w3id.org/MONet/analysis-api-schema/ConstructComponentEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | None | None |  |
@@ -41,9 +40,11 @@ URI: [ConstructComponentEnum](ConstructComponentEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

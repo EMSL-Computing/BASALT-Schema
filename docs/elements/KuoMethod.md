@@ -10,13 +10,12 @@ URI: [analysis_api_schema:KuoMethod](https://w3id.org/MONet/analysis-api-schema/
 
 
 
-
 ```mermaid
  classDiagram
     class KuoMethod
-    click KuoMethod href "../KuoMethod"
+    click KuoMethod href "../KuoMethod/"
       Method <|-- KuoMethod
-        click Method href "../Method"
+        click Method href "../Method/"
       
       KuoMethod : analytic
         
@@ -40,7 +39,6 @@ URI: [analysis_api_schema:KuoMethod](https://w3id.org/MONet/analysis-api-schema/
     * **KuoMethod**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -59,9 +57,13 @@ URI: [analysis_api_schema:KuoMethod](https://w3id.org/MONet/analysis-api-schema/
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -87,7 +89,6 @@ URI: [analysis_api_schema:KuoMethod](https://w3id.org/MONet/analysis-api-schema/
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -98,7 +99,6 @@ URI: [analysis_api_schema:KuoMethod](https://w3id.org/MONet/analysis-api-schema/
 ```yaml
 name: KuoMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 slots:
 - location
@@ -129,7 +129,6 @@ attributes:
 ```yaml
 name: KuoMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 attributes:
   detection_limit:

@@ -7,20 +7,19 @@ _The organization that processed the sample / ran the pipeline / participated in
 
 
 
-URI: [InstitutionEnum](InstitutionEnum.md)
+URI: [analysis_api_schema:InstitutionEnum](https://w3id.org/MONet/analysis-api-schema/InstitutionEnum)
 
 ## Permissible Values
-
-| Value | Meaning | Description |
-| --- | --- | --- |
-| nmdc | None |  |
-| ucsd | None |  |
-| jgi | None |  |
-| emsl | None |  |
-| battelle | None |  |
-| anl | None |  |
-| ucd_genome_center | None |  |
-| azenta | None |  |
+| Value | Meaning | Description | Additional Info |
+| --- | --- | --- | --- |
+| nmdc | None |  | Title: National Microbiome Data Collaborative<br>|
+| ucsd | None |  | Title: University of California, San Diego<br>|
+| jgi | None |  | Title: Joint Genome Institute<br>|
+| emsl | None |  | Title: Environmental Molecular Sciences Laboratory<br>|
+| battelle | None |  | Title: Battelle Memorial Institute<br>|
+| anl | None |  | Title: Argonne National Laboratory<br>|
+| ucd_genome_center | None |  | Title: University of California, Davis Genome Center<br>|
+| azenta | None |  | Title: Azenta Life Sciences<br>|
 
 
 
@@ -36,9 +35,11 @@ URI: [InstitutionEnum](InstitutionEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

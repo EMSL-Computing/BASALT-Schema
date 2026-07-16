@@ -10,23 +10,21 @@ URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analys
 
 
 
-
 ```mermaid
  classDiagram
     class NitrogenAnalysisProduct
-    click NitrogenAnalysisProduct href "../NitrogenAnalysisProduct"
+    click NitrogenAnalysisProduct href "../NitrogenAnalysisProduct/"
       ProcessedData <|-- NitrogenAnalysisProduct
-        click ProcessedData href "../ProcessedData"
+        click ProcessedData href "../ProcessedData/"
       
       NitrogenAnalysisProduct : core_section
         
           
     
-    
-    
-    
-    NitrogenAnalysisProduct --> "0..1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        NitrogenAnalysisProduct --> "0..1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -38,11 +36,10 @@ URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analys
         
           
     
-    
-    
-    
-    NitrogenAnalysisProduct --> "0..1" ProcessedDataFlag : flag_nh4n
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        NitrogenAnalysisProduct --> "0..1" ProcessedDataFlag : flag_nh4n
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -50,11 +47,10 @@ URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analys
         
           
     
-    
-    
-    
-    NitrogenAnalysisProduct --> "0..1" ProcessedDataFlag : flag_nh4n_avg
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        NitrogenAnalysisProduct --> "0..1" ProcessedDataFlag : flag_nh4n_avg
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -62,11 +58,10 @@ URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analys
         
           
     
-    
-    
-    
-    NitrogenAnalysisProduct --> "0..1" ProcessedDataFlag : flag_no3n
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        NitrogenAnalysisProduct --> "0..1" ProcessedDataFlag : flag_no3n
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
@@ -74,20 +69,14 @@ URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analys
         
           
     
-    
-    
-    
-    NitrogenAnalysisProduct --> "0..1" ProcessedDataFlag : flag_no3n_avg
-    click ProcessedDataFlag href "../ProcessedDataFlag"
+        
+        
+        NitrogenAnalysisProduct --> "0..1" ProcessedDataFlag : flag_no3n_avg
+        click ProcessedDataFlag href "../ProcessedDataFlag/"
     
 
         
       NitrogenAnalysisProduct : id
-        
-          
-    
-    
-
         
       NitrogenAnalysisProduct : lims_barcode
         
@@ -97,11 +86,10 @@ URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analys
         
           
     
-    
-    
-    
-    NitrogenAnalysisProduct --> "0..1" ProductMeasureType : measure_type
-    click ProductMeasureType href "../ProductMeasureType"
+        
+        
+        NitrogenAnalysisProduct --> "0..1" ProductMeasureType : measure_type
+        click ProductMeasureType href "../ProductMeasureType/"
     
 
         
@@ -113,11 +101,10 @@ URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analys
         
           
     
-    
-    
-    
-    NitrogenAnalysisProduct --> "0..1" QuantityValue : nh4_n_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        NitrogenAnalysisProduct --> "0..1" QuantityValue : nh4_n_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -127,11 +114,10 @@ URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analys
         
           
     
-    
-    
-    
-    NitrogenAnalysisProduct --> "0..1" QuantityValue : no3_n_id
-    click QuantityValue href "../QuantityValue"
+        
+        
+        NitrogenAnalysisProduct --> "0..1" QuantityValue : no3_n_id
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -149,11 +135,10 @@ URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analys
         
           
     
-    
-    
-    
-    NitrogenAnalysisProduct --> "0..1" Sample : sample_id
-    click Sample href "../Sample"
+        
+        
+        NitrogenAnalysisProduct --> "0..1" Sample : sample_id
+        click Sample href "../Sample/"
     
 
         
@@ -174,7 +159,6 @@ URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analys
 * [DataProduct](DataProduct.md)
     * [ProcessedData](ProcessedData.md)
         * **NitrogenAnalysisProduct**
-
 
 
 ## Slots
@@ -205,7 +189,13 @@ URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analys
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | [DataProduct](DataProduct.md) |
 | [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | [DataProduct](DataProduct.md) |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProduct](DataProduct.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProduct](DataProduct.md) |
+
+
+
+
+
+
 
 
 
@@ -216,8 +206,6 @@ URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analys
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -243,7 +231,6 @@ URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analys
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -254,7 +241,6 @@ URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analys
 ```yaml
 name: NitrogenAnalysisProduct
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: ProcessedData
 slots:
 - measure_type
@@ -326,7 +312,6 @@ attributes:
 ```yaml
 name: NitrogenAnalysisProduct
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: ProcessedData
 attributes:
   no3_n_id:
@@ -558,8 +543,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: NitrogenAnalysisProduct
     domain_of:
     - DataProduct

@@ -7,22 +7,21 @@ _The authority, or organization, the DOI is associated with_
 
 
 
-URI: [DoiProviderEnum](DoiProviderEnum.md)
+URI: [analysis_api_schema:DoiProviderEnum](https://w3id.org/MONet/analysis-api-schema/DoiProviderEnum)
 
 ## Permissible Values
-
-| Value | Meaning | Description |
-| --- | --- | --- |
-| emsl | ror:04rc0xn13 |  |
-| jgi | ror:04xm1d337 |  |
-| kbase | ror:01znn6x10 |  |
-| osti | ror:031478740 |  |
-| ess_dive | ror:01t14bp54 |  |
-| massive | None |  |
-| gsc | None |  |
-| zenodo | None |  |
-| edi | ror:0330j0z60 |  |
-| figshare | ror:041mxqs23 |  |
+| Value | Meaning | Description | Additional Info |
+| --- | --- | --- | --- |
+| emsl | ror:04rc0xn13 |  | Title: EMSL<br>|
+| jgi | ror:04xm1d337 |  | Title: JGI<br>|
+| kbase | ror:01znn6x10 |  | Title: KBase<br>|
+| osti | ror:031478740 |  | Title: OSTI<br>|
+| ess_dive | ror:01t14bp54 |  | Title: ESS-DIVE<br>|
+| massive | None |  | Title: MassIVE<br>|
+| gsc | None |  | Title: GSC<br>|
+| zenodo | None |  | Title: Zenodo<br>|
+| edi | ror:0330j0z60 |  | Title: EDI<br>|
+| figshare | ror:041mxqs23 |  | Title: Figshare<br>|
 
 
 
@@ -38,9 +37,11 @@ URI: [DoiProviderEnum](DoiProviderEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

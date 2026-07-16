@@ -7,10 +7,9 @@ _Types of growth facilities_
 
 
 
-URI: [GrowthFacilityEnum](GrowthFacilityEnum.md)
+URI: [analysis_api_schema:GrowthFacilityEnum](https://w3id.org/MONet/analysis-api-schema/GrowthFacilityEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | field | None | Field conditions |
@@ -37,9 +36,11 @@ URI: [GrowthFacilityEnum](GrowthFacilityEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

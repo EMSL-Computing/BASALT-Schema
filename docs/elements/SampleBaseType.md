@@ -7,10 +7,9 @@ _Base types for sample entities_
 
 
 
-URI: [SampleBaseType](SampleBaseType.md)
+URI: [analysis_api_schema:SampleBaseType](https://w3id.org/MONet/analysis-api-schema/SampleBaseType)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | sample | None | A physical sample |
@@ -24,9 +23,11 @@ URI: [SampleBaseType](SampleBaseType.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

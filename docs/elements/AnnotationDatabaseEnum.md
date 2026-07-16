@@ -2,10 +2,9 @@
 
 
 
-URI: [AnnotationDatabaseEnum](AnnotationDatabaseEnum.md)
+URI: [analysis_api_schema:AnnotationDatabaseEnum](https://w3id.org/MONet/analysis-api-schema/AnnotationDatabaseEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | PFAM | None |  |
@@ -27,9 +26,11 @@ URI: [AnnotationDatabaseEnum](AnnotationDatabaseEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

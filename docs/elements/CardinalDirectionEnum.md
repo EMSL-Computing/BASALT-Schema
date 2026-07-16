@@ -2,10 +2,9 @@
 
 
 
-URI: [CardinalDirectionEnum](CardinalDirectionEnum.md)
+URI: [analysis_api_schema:CardinalDirectionEnum](https://w3id.org/MONet/analysis-api-schema/CardinalDirectionEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | north | None |  |
@@ -31,9 +30,11 @@ URI: [CardinalDirectionEnum](CardinalDirectionEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -29,18 +29,30 @@ Alias: color_code
 
 
 
-
 ## Properties
 
-* Range: [ColorCodeEnum](ColorCodeEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [ColorCodeEnum](ColorCodeEnum.md) |
+| Domain Of | [AerosolArmSample](AerosolArmSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -17,58 +17,56 @@ URI: [analysis_api_schema:ProcessedData](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ```mermaid
  classDiagram
     class ProcessedData
-    click ProcessedData href "../ProcessedData"
+    click ProcessedData href "../ProcessedData/"
       DataProduct <|-- ProcessedData
-        click DataProduct href "../DataProduct"
+        click DataProduct href "../DataProduct/"
       
 
       ProcessedData <|-- MassSpectrometryDataProduct
-        click MassSpectrometryDataProduct href "../MassSpectrometryDataProduct"
+        click MassSpectrometryDataProduct href "../MassSpectrometryDataProduct/"
       ProcessedData <|-- MetagenomicsProduct
-        click MetagenomicsProduct href "../MetagenomicsProduct"
+        click MetagenomicsProduct href "../MetagenomicsProduct/"
       ProcessedData <|-- BulkDensityProduct
-        click BulkDensityProduct href "../BulkDensityProduct"
+        click BulkDensityProduct href "../BulkDensityProduct/"
       ProcessedData <|-- ElementalAnalysisProduct
-        click ElementalAnalysisProduct href "../ElementalAnalysisProduct"
+        click ElementalAnalysisProduct href "../ElementalAnalysisProduct/"
       ProcessedData <|-- EnzymeProduct
-        click EnzymeProduct href "../EnzymeProduct"
+        click EnzymeProduct href "../EnzymeProduct/"
       ProcessedData <|-- GWCMoistureProduct
-        click GWCMoistureProduct href "../GWCMoistureProduct"
+        click GWCMoistureProduct href "../GWCMoistureProduct/"
       ProcessedData <|-- HydraulicPropertiesProduct
-        click HydraulicPropertiesProduct href "../HydraulicPropertiesProduct"
+        click HydraulicPropertiesProduct href "../HydraulicPropertiesProduct/"
       ProcessedData <|-- IonsAnalysisProduct
-        click IonsAnalysisProduct href "../IonsAnalysisProduct"
+        click IonsAnalysisProduct href "../IonsAnalysisProduct/"
       ProcessedData <|-- MicrobialBiomassProduct
-        click MicrobialBiomassProduct href "../MicrobialBiomassProduct"
+        click MicrobialBiomassProduct href "../MicrobialBiomassProduct/"
       ProcessedData <|-- NitrogenAnalysisProduct
-        click NitrogenAnalysisProduct href "../NitrogenAnalysisProduct"
+        click NitrogenAnalysisProduct href "../NitrogenAnalysisProduct/"
       ProcessedData <|-- PhosphorusAnalysisProduct
-        click PhosphorusAnalysisProduct href "../PhosphorusAnalysisProduct"
+        click PhosphorusAnalysisProduct href "../PhosphorusAnalysisProduct/"
       ProcessedData <|-- RespirationProduct
-        click RespirationProduct href "../RespirationProduct"
+        click RespirationProduct href "../RespirationProduct/"
       ProcessedData <|-- TextureProduct
-        click TextureProduct href "../TextureProduct"
+        click TextureProduct href "../TextureProduct/"
       ProcessedData <|-- TomographyProduct
-        click TomographyProduct href "../TomographyProduct"
+        click TomographyProduct href "../TomographyProduct/"
       ProcessedData <|-- PHProduct
-        click PHProduct href "../PHProduct"
+        click PHProduct href "../PHProduct/"
       ProcessedData <|-- XRayDataProduct
-        click XRayDataProduct href "../XRayDataProduct"
+        click XRayDataProduct href "../XRayDataProduct/"
       
-      
+
       ProcessedData : core_section
         
           
     
-    
-    
-    
-    ProcessedData --> "0..1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        ProcessedData --> "0..1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -77,11 +75,6 @@ URI: [analysis_api_schema:ProcessedData](https://w3id.org/MONet/analysis-api-sch
       ProcessedData : filesize
         
       ProcessedData : id
-        
-          
-    
-    
-
         
       ProcessedData : lims_barcode
         
@@ -101,11 +94,10 @@ URI: [analysis_api_schema:ProcessedData](https://w3id.org/MONet/analysis-api-sch
         
           
     
-    
-    
-    
-    ProcessedData --> "0..1" Sample : sample_id
-    click Sample href "../Sample"
+        
+        
+        ProcessedData --> "0..1" Sample : sample_id
+        click Sample href "../Sample/"
     
 
         
@@ -143,7 +135,6 @@ URI: [analysis_api_schema:ProcessedData](https://w3id.org/MONet/analysis-api-sch
         * [XRayDataProduct](XRayDataProduct.md)
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -162,7 +153,7 @@ URI: [analysis_api_schema:ProcessedData](https://w3id.org/MONet/analysis-api-sch
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | [DataProduct](DataProduct.md) |
 | [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | [DataProduct](DataProduct.md) |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProduct](DataProduct.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProduct](DataProduct.md) |
 
 
 
@@ -180,13 +171,17 @@ URI: [analysis_api_schema:ProcessedData](https://w3id.org/MONet/analysis-api-sch
 
 
 
+
+
+
+
 ## TODOs
 
 * all subclasses need a more specific upstream slot to replace was_generated_by
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -212,7 +207,6 @@ URI: [analysis_api_schema:ProcessedData](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -226,7 +220,6 @@ description: A data product generated by a workflow execution.
 todos:
 - all subclasses need a more specific upstream slot to replace was_generated_by
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: DataProduct
 abstract: true
 slots:
@@ -246,7 +239,6 @@ description: A data product generated by a workflow execution.
 todos:
 - all subclasses need a more specific upstream slot to replace was_generated_by
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: DataProduct
 abstract: true
 attributes:
@@ -363,8 +355,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: ProcessedData
     domain_of:
     - DataProduct

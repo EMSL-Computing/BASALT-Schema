@@ -23,13 +23,12 @@ URI: [analysis_api_schema:StockCulturePreparation](https://w3id.org/MONet/analys
 
 
 
-
 ```mermaid
  classDiagram
     class StockCulturePreparation
-    click StockCulturePreparation href "../StockCulturePreparation"
+    click StockCulturePreparation href "../StockCulturePreparation/"
       CultureGrowth <|-- StockCulturePreparation
-        click CultureGrowth href "../CultureGrowth"
+        click CultureGrowth href "../CultureGrowth/"
       
       StockCulturePreparation : agitation_speed_rpm
         
@@ -37,11 +36,10 @@ URI: [analysis_api_schema:StockCulturePreparation](https://w3id.org/MONet/analys
         
           
     
-    
-    
-    
-    StockCulturePreparation --> "0..1" RouteMethodEnum : analysis_type
-    click RouteMethodEnum href "../RouteMethodEnum"
+        
+        
+        StockCulturePreparation --> "0..1" RouteMethodEnum : analysis_type
+        click RouteMethodEnum href "../RouteMethodEnum/"
     
 
         
@@ -49,11 +47,10 @@ URI: [analysis_api_schema:StockCulturePreparation](https://w3id.org/MONet/analys
         
           
     
-    
-    
-    
-    StockCulturePreparation --> "0..1" BiologicalEntity : biological_entity_ref
-    click BiologicalEntity href "../BiologicalEntity"
+        
+        
+        StockCulturePreparation --> "0..1" BiologicalEntity : biological_entity_ref
+        click BiologicalEntity href "../BiologicalEntity/"
     
 
         
@@ -63,22 +60,16 @@ URI: [analysis_api_schema:StockCulturePreparation](https://w3id.org/MONet/analys
         
       StockCulturePreparation : id
         
-          
-    
-    
-
-        
       StockCulturePreparation : incubation_time_hours
         
       StockCulturePreparation : method_name
         
           
     
-    
-    
-    
-    StockCulturePreparation --> "0..1" MethodNameEnum : method_name
-    click MethodNameEnum href "../MethodNameEnum"
+        
+        
+        StockCulturePreparation --> "0..1" MethodNameEnum : method_name
+        click MethodNameEnum href "../MethodNameEnum/"
     
 
         
@@ -86,11 +77,10 @@ URI: [analysis_api_schema:StockCulturePreparation](https://w3id.org/MONet/analys
         
           
     
-    
-    
-    
-    StockCulturePreparation --> "0..1" OxygenStatusEnum : oxygen_relationship
-    click OxygenStatusEnum href "../OxygenStatusEnum"
+        
+        
+        StockCulturePreparation --> "0..1" OxygenStatusEnum : oxygen_relationship
+        click OxygenStatusEnum href "../OxygenStatusEnum/"
     
 
         
@@ -108,11 +98,10 @@ URI: [analysis_api_schema:StockCulturePreparation](https://w3id.org/MONet/analys
         
           
     
-    
-    
-    
-    StockCulturePreparation --> "0..1" Sample : uses_sample
-    click Sample href "../Sample"
+        
+        
+        StockCulturePreparation --> "0..1" Sample : uses_sample
+        click Sample href "../Sample/"
     
 
         
@@ -129,7 +118,6 @@ URI: [analysis_api_schema:StockCulturePreparation](https://w3id.org/MONet/analys
         * **StockCulturePreparation**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -144,7 +132,7 @@ URI: [analysis_api_schema:StockCulturePreparation](https://w3id.org/MONet/analys
 | [oxygen_relationship](oxygen_relationship.md) | 0..1 <br/> [OxygenStatusEnum](OxygenStatusEnum.md) | The relationship of the sample to oxygen, such as aerobic or anaerobic | [HasIncubationConditions](HasIncubationConditions.md) |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
-| [id](id.md) | 1 <br/> uuid |  | [SampleProcessing](SampleProcessing.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [analysis_type](analysis_type.md) | 0..1 <br/> [RouteMethodEnum](RouteMethodEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [method_name](method_name.md) | 0..1 <br/> [MethodNameEnum](MethodNameEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [processing_steps](processing_steps.md) | 1 <br/> [String](String.md) |  | [SampleProcessing](SampleProcessing.md) |
@@ -158,9 +146,13 @@ URI: [analysis_api_schema:StockCulturePreparation](https://w3id.org/MONet/analys
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -186,7 +178,6 @@ URI: [analysis_api_schema:StockCulturePreparation](https://w3id.org/MONet/analys
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -205,7 +196,6 @@ description: 'Preparation of a stock culture from user samples for long-term sto
 
   Refs:   Media (growth medium), Strain'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: CultureGrowth
 slots:
 - preparation_date
@@ -227,7 +217,6 @@ description: 'Preparation of a stock culture from user samples for long-term sto
 
   Refs:   Media (growth medium), Strain'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: CultureGrowth
 attributes:
   preparation_date:

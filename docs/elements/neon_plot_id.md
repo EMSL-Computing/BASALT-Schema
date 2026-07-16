@@ -29,12 +29,29 @@ Alias: neon_plot_id
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Regex pattern: `^[A-Z]{4}_\d{3}$`
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [Site](Site.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Value Constraints
+
+| Property | Value |
+| --- | --- |
+| Regex Pattern | `^[A-Z]{4}_\d{3}$` |
+
+
+
+
+
 
 
 
@@ -44,9 +61,9 @@ Alias: neon_plot_id
 
 * subport mapping - this is submitted as ABCD_123 but we want to store it as neon_site_code and neon_plot_id separately
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

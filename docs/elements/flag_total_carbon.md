@@ -24,18 +24,37 @@ Alias: flag_total_carbon
 
 
 
-
 ## Properties
 
-* Range: [ProcessedDataFlag](ProcessedDataFlag.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [ProcessedDataFlag](ProcessedDataFlag.md) |
+| Domain Of | [ElementalAnalysisProduct](ElementalAnalysisProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [ElementalAnalysisProduct](ElementalAnalysisProduct.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

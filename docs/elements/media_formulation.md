@@ -29,18 +29,30 @@ Alias: media_formulation
 
 
 
-
 ## Properties
 
-* Range: [FormulationEnum](FormulationEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [FormulationEnum](FormulationEnum.md) |
+| Domain Of | [MediaPreparation](MediaPreparation.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

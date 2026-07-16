@@ -7,10 +7,9 @@ _Result/status for a process (e.g., QC outcome)._
 
 
 
-URI: [PassFailEnum](PassFailEnum.md)
+URI: [analysis_api_schema:PassFailEnum](https://w3id.org/MONet/analysis-api-schema/PassFailEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | pass | None |  |
@@ -24,9 +23,11 @@ URI: [PassFailEnum](PassFailEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

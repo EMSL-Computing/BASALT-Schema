@@ -2,10 +2,9 @@
 
 
 
-URI: [AlternateIdentifierType](AlternateIdentifierType.md)
+URI: [analysis_api_schema:AlternateIdentifierType](https://w3id.org/MONet/analysis-api-schema/AlternateIdentifierType)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | instrument_alt_id | None |  |
@@ -24,9 +23,11 @@ URI: [AlternateIdentifierType](AlternateIdentifierType.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -2,10 +2,9 @@
 
 
 
-URI: [MethodNameEnum](MethodNameEnum.md)
+URI: [analysis_api_schema:MethodNameEnum](https://w3id.org/MONet/analysis-api-schema/MethodNameEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | MAOM | None |  |
@@ -25,9 +24,11 @@ URI: [MethodNameEnum](MethodNameEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

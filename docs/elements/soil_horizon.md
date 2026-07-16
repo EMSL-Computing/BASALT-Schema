@@ -29,18 +29,30 @@ Alias: soil_horizon
 
 
 
-
 ## Properties
 
-* Range: [SoilHorizonEnum](SoilHorizonEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [SoilHorizonEnum](SoilHorizonEnum.md) |
+| Domain Of | [SoilSample](SoilSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

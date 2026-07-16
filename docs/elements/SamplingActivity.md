@@ -17,43 +17,42 @@ URI: [analysis_api_schema:SamplingActivity](https://w3id.org/MONet/analysis-api-
 
 
 
-
 ```mermaid
  classDiagram
     class SamplingActivity
-    click SamplingActivity href "../SamplingActivity"
+    click SamplingActivity href "../SamplingActivity/"
       SamplingActivity <|-- AerosolArmSamplingActivity
-        click AerosolArmSamplingActivity href "../AerosolArmSamplingActivity"
+        click AerosolArmSamplingActivity href "../AerosolArmSamplingActivity/"
       SamplingActivity <|-- AerosolSamplingActivity
-        click AerosolSamplingActivity href "../AerosolSamplingActivity"
+        click AerosolSamplingActivity href "../AerosolSamplingActivity/"
       SamplingActivity <|-- CommerciallyPurchasedSamplingActivity
-        click CommerciallyPurchasedSamplingActivity href "../CommerciallyPurchasedSamplingActivity"
+        click CommerciallyPurchasedSamplingActivity href "../CommerciallyPurchasedSamplingActivity/"
       SamplingActivity <|-- CultureEnvironmentalSamplingActivity
-        click CultureEnvironmentalSamplingActivity href "../CultureEnvironmentalSamplingActivity"
+        click CultureEnvironmentalSamplingActivity href "../CultureEnvironmentalSamplingActivity/"
       SamplingActivity <|-- EngineeredStrainSamplingActivity
-        click EngineeredStrainSamplingActivity href "../EngineeredStrainSamplingActivity"
+        click EngineeredStrainSamplingActivity href "../EngineeredStrainSamplingActivity/"
       SamplingActivity <|-- FieldDeployedTerraformSamplingActivity
-        click FieldDeployedTerraformSamplingActivity href "../FieldDeployedTerraformSamplingActivity"
+        click FieldDeployedTerraformSamplingActivity href "../FieldDeployedTerraformSamplingActivity/"
       SamplingActivity <|-- MixedCultureSamplingActivity
-        click MixedCultureSamplingActivity href "../MixedCultureSamplingActivity"
+        click MixedCultureSamplingActivity href "../MixedCultureSamplingActivity/"
       SamplingActivity <|-- MonetSoilSamplingActivity
-        click MonetSoilSamplingActivity href "../MonetSoilSamplingActivity"
+        click MonetSoilSamplingActivity href "../MonetSoilSamplingActivity/"
       SamplingActivity <|-- OtherUndescribedSamplingActivity
-        click OtherUndescribedSamplingActivity href "../OtherUndescribedSamplingActivity"
+        click OtherUndescribedSamplingActivity href "../OtherUndescribedSamplingActivity/"
       SamplingActivity <|-- PlantSamplingActivity
-        click PlantSamplingActivity href "../PlantSamplingActivity"
+        click PlantSamplingActivity href "../PlantSamplingActivity/"
       SamplingActivity <|-- PureCultureSamplingActivity
-        click PureCultureSamplingActivity href "../PureCultureSamplingActivity"
+        click PureCultureSamplingActivity href "../PureCultureSamplingActivity/"
       SamplingActivity <|-- SedimentSamplingActivity
-        click SedimentSamplingActivity href "../SedimentSamplingActivity"
+        click SedimentSamplingActivity href "../SedimentSamplingActivity/"
       SamplingActivity <|-- SoilSamplingActivity
-        click SoilSamplingActivity href "../SoilSamplingActivity"
+        click SoilSamplingActivity href "../SoilSamplingActivity/"
       SamplingActivity <|-- SynthesizedMaterialSamplingActivity
-        click SynthesizedMaterialSamplingActivity href "../SynthesizedMaterialSamplingActivity"
+        click SynthesizedMaterialSamplingActivity href "../SynthesizedMaterialSamplingActivity/"
       SamplingActivity <|-- TerraformSamplingActivity
-        click TerraformSamplingActivity href "../TerraformSamplingActivity"
+        click TerraformSamplingActivity href "../TerraformSamplingActivity/"
       SamplingActivity <|-- WaterSamplingActivity
-        click WaterSamplingActivity href "../WaterSamplingActivity"
+        click WaterSamplingActivity href "../WaterSamplingActivity/"
       
       SamplingActivity : collection_date
         
@@ -63,11 +62,6 @@ URI: [analysis_api_schema:SamplingActivity](https://w3id.org/MONet/analysis-api-
         
       SamplingActivity : id
         
-          
-    
-    
-
-        
       SamplingActivity : name
         
       SamplingActivity : project
@@ -76,11 +70,10 @@ URI: [analysis_api_schema:SamplingActivity](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    SamplingActivity --> "0..1" Site : sampled_at_site
-    click Site href "../Site"
+        
+        
+        SamplingActivity --> "0..1" Site : sampled_at_site
+        click Site href "../Site/"
     
 
         
@@ -113,7 +106,6 @@ URI: [analysis_api_schema:SamplingActivity](https://w3id.org/MONet/analysis-api-
     * [WaterSamplingActivity](WaterSamplingActivity.md)
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -125,7 +117,7 @@ URI: [analysis_api_schema:SamplingActivity](https://w3id.org/MONet/analysis-api-
 | [collection_date](collection_date.md) | 0..1 <br/> [Date](Date.md) | 'The date of sampling as an instance | direct |
 | [shipped_sample_size](shipped_sample_size.md) | 0..1 <br/> [String](String.md) | Total amount of sample sent to EMSL | direct |
 | [sampled_at_site](sampled_at_site.md) | 0..1 <br/> [Site](Site.md) | Reference to the site where the sample was collected | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 
 
 
@@ -157,14 +149,18 @@ URI: [analysis_api_schema:SamplingActivity](https://w3id.org/MONet/analysis-api-
 
 
 
+
+
+
+
 ## TODOs
 
 * is this for individual samples or can it be the activity of collecting multiple samples from one site? would need to change shipped_sample_size and storage_condt if so.
 * does project number go here? how do we connect Sample/SamplingActivity to a project/Study?
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -190,7 +186,6 @@ URI: [analysis_api_schema:SamplingActivity](https://w3id.org/MONet/analysis-api-
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -209,7 +204,6 @@ todos:
   if so.
 - does project number go here? how do we connect Sample/SamplingActivity to a project/Study?
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 slots:
 - name
@@ -316,7 +310,6 @@ todos:
   if so.
 - does project number go here? how do we connect Sample/SamplingActivity to a project/Study?
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 attributes:
   id:
@@ -469,8 +462,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: SamplingActivity
     domain_of:
     - DataProduct

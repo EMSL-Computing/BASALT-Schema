@@ -29,20 +29,38 @@ Alias: inoculum_volume_ul
 
 
 
-
 ## Properties
 
-* Range: [Float](Float.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [Float](Float.md) |
+| Domain Of | [AMP2WellMetadata](AMP2WellMetadata.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [AMP2WellMetadata](AMP2WellMetadata.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -24,20 +24,38 @@ Alias: sample_base_id
 
 
 
-
 ## Properties
 
-* Range: [Sample](Sample.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [Sample](Sample.md) |
+| Domain Of | [ProcessingSampleLink](ProcessingSampleLink.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [ProcessingSampleLink](ProcessingSampleLink.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -68,7 +86,6 @@ Alias: sample_base_id
 name: sample_base_id
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
-identifier: true
 alias: sample_base_id
 owner: ProcessingSampleLink
 domain_of:

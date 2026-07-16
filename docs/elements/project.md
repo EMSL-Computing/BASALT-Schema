@@ -10,7 +10,7 @@ _Identifier for the user project associated with the entity or activity. _
 
 
 URI: [analysis_api_schema:project](https://w3id.org/MONet/analysis-api-schema/project)
-Alias: ['study', 'study_id', 'project_id', 'proposal', 'proposal_id']
+Alias: project
 
 <!-- no inheritance hierarchy -->
 
@@ -22,69 +22,68 @@ Alias: ['study', 'study_id', 'project_id', 'proposal', 'proposal_id']
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [IonsAnalysisProduct](IonsAnalysisProduct.md) |  |  no  |
-| [MSImageProduct](MSImageProduct.md) | one or more image(s) output from a mass spec data processing workflow (eg |  no  |
-| [SoilSamplingActivity](SoilSamplingActivity.md) | Collection of soil samples from the environment |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
-| [MassSpectrometryDataProduct](MassSpectrometryDataProduct.md) | Abstract base for all mass spectrometry data products |  no  |
+| [XRayDataProduct](XRayDataProduct.md) | Abstract base class for X-ray analytical data products |  no  |
+| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [CommerciallyPurchasedSamplingActivity](CommerciallyPurchasedSamplingActivity.md) | Collection of samples that were purchased by the user |  no  |
 | [OtherUndescribedSamplingActivity](OtherUndescribedSamplingActivity.md) | Collection of samples from source that does not fit into any of the other cat... |  no  |
-| [MetagenomicsGenePhylogenyProduct](MetagenomicsGenePhylogenyProduct.md) | Top-level archive for gene-based phylogeny outputs (zip/tar stored in MinIO) |  no  |
+| [SamplingActivity](SamplingActivity.md) | An activity that involves the collection of a sample |  no  |
+| [TextureProduct](TextureProduct.md) |  |  no  |
 | [WaterSamplingActivity](WaterSamplingActivity.md) | Collection of water samples |  no  |
 | [DataProduct](DataProduct.md) | Abstract base class for raw or processed data accessible in S3 storage |  no  |
-| [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) |  |  no  |
-| [AerosolArmSamplingActivity](AerosolArmSamplingActivity.md) | A sampling activity where aerosol samples were collected by ARM |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
-| [HydraulicPropertiesProduct](HydraulicPropertiesProduct.md) | Soil hydraulic parameters derived from HYPROP evaporation-experiment data |  no  |
-| [CommerciallyPurchasedSamplingActivity](CommerciallyPurchasedSamplingActivity.md) | Collection of samples that were purchased by the user |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [CultureEnvironmentalSamplingActivity](CultureEnvironmentalSamplingActivity.md) | Collection of samples from a culture of organisms taken from the environment |  no  |
-| [EnzymeProduct](EnzymeProduct.md) |  |  no  |
-| [SynthesizedMaterialSamplingActivity](SynthesizedMaterialSamplingActivity.md) | Collection of samples of a synthesized material |  no  |
 | [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) |  |  no  |
-| [MonetSoilSamplingActivity](MonetSoilSamplingActivity.md) | Collection of soil cores according to the MONet soil sampling protocol |  no  |
-| [MolecularIdentificationProduct](MolecularIdentificationProduct.md) | a file containing molecular formula identifications that was output from a ma... |  no  |
-| [TextureProduct](TextureProduct.md) |  |  no  |
-| [XRFElementalProduct](XRFElementalProduct.md) | X-ray Fluorescence (XRF) elemental concentration data |  no  |
-| [XRDPhaseProduct](XRDPhaseProduct.md) | X-ray Diffraction (XRD) mineral phase identification and quantification data |  no  |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
-| [RespirationProduct](RespirationProduct.md) |  |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
-| [EngineeredStrainSamplingActivity](EngineeredStrainSamplingActivity.md) | Collection of samples from a culture of an engineered organism |  no  |
-| [TerraformSamplingActivity](TerraformSamplingActivity.md) | Collection of samples from a Terraform device |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [TomographyProduct](TomographyProduct.md) |  |  no  |
-| [FieldDeployedTerraformSamplingActivity](FieldDeployedTerraformSamplingActivity.md) | Collection of samples from a field-deployed Terraform device |  no  |
-| [SedimentSamplingActivity](SedimentSamplingActivity.md) | Collection of sediment samples from the environment |  no  |
-| [PHProduct](PHProduct.md) |  |  no  |
-| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
-| [PlantSamplingActivity](PlantSamplingActivity.md) | Collection of samples associated with plants |  no  |
-| [PureCultureSamplingActivity](PureCultureSamplingActivity.md) | Collection of samples from a culture containing a single organism |  no  |
-| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
-| [InstrumentData](InstrumentData.md) | An abstract parent class for raw data files generated by different kinds  of ... |  no  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [BulkDensityProduct](BulkDensityProduct.md) |  |  no  |
-| [MetagenomicsProduct](MetagenomicsProduct.md) | Abstract base for all metagenomics data products |  no  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [GWCMoistureProduct](GWCMoistureProduct.md) |  |  no  |
-| [SamplingActivity](SamplingActivity.md) | An activity that involves the collection of a sample |  no  |
-| [XRayDataProduct](XRayDataProduct.md) | Abstract base class for X-ray analytical data products |  no  |
-| [MixedCultureSamplingActivity](MixedCultureSamplingActivity.md) | Collection of samples from a mixed culture |  no  |
-| [MassSpectrometryInstrumentData](MassSpectrometryInstrumentData.md) | Raw data files output from a mass spectrometry instrument |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [ElementalAnalysisProduct](ElementalAnalysisProduct.md) |  |  no  |
-| [MetagenomicsBinningProduct](MetagenomicsBinningProduct.md) | Top-level archive (zip/tar) for binning results stored in MinIO |  no  |
-| [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
-| [MetaproteomicsProduct](MetaproteomicsProduct.md) | Abstract parent class for processed metaproteomics data |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [AerosolSamplingActivity](AerosolSamplingActivity.md) | A sampling activity where aerosol samples were collected |  no  |
-| [NucleotideSequencingInstrumentData](NucleotideSequencingInstrumentData.md) | Data generated by a nucleotide sequencing instrument (e |  no  |
-| [ProcessedData](ProcessedData.md) | A data product generated by a workflow execution |  no  |
-| [SitePhoto](SitePhoto.md) |  |  no  |
-| [MicrobialBiomassProduct](MicrobialBiomassProduct.md) |  |  no  |
+| [EngineeredStrainSamplingActivity](EngineeredStrainSamplingActivity.md) | Collection of samples from a culture of an engineered organism |  no  |
+| [CultureEnvironmentalSamplingActivity](CultureEnvironmentalSamplingActivity.md) | Collection of samples from a culture of organisms taken from the environment |  no  |
+| [PlantSamplingActivity](PlantSamplingActivity.md) | Collection of samples associated with plants |  no  |
+| [XRDPhaseProduct](XRDPhaseProduct.md) | X-ray Diffraction (XRD) mineral phase identification and quantification data |  no  |
+| [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [MassSpectrometryInstrumentData](MassSpectrometryInstrumentData.md) | Raw data files output from a mass spectrometry instrument |  no  |
+| [MassSpectrometryDataProduct](MassSpectrometryDataProduct.md) | Abstract base for all mass spectrometry data products |  no  |
+| [RespirationProduct](RespirationProduct.md) |  |  no  |
+| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
 | [MetagenomicsAnnotationProduct](MetagenomicsAnnotationProduct.md) | Top-level archive for functional annotation outputs (zip/tar stored in MinIO) |  no  |
-
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [SitePhoto](SitePhoto.md) |  |  no  |
+| [SedimentSamplingActivity](SedimentSamplingActivity.md) | Collection of sediment samples from the environment |  no  |
+| [IonsAnalysisProduct](IonsAnalysisProduct.md) |  |  no  |
+| [TerraformSamplingActivity](TerraformSamplingActivity.md) | Collection of samples from a Terraform device |  no  |
+| [NucleotideSequencingInstrumentData](NucleotideSequencingInstrumentData.md) | Data generated by a nucleotide sequencing instrument (e |  no  |
+| [SoilSamplingActivity](SoilSamplingActivity.md) | Collection of soil samples from the environment |  no  |
+| [FieldDeployedTerraformSamplingActivity](FieldDeployedTerraformSamplingActivity.md) | Collection of samples from a field-deployed Terraform device |  no  |
+| [EnzymeProduct](EnzymeProduct.md) |  |  no  |
+| [PHProduct](PHProduct.md) |  |  no  |
+| [BulkDensityProduct](BulkDensityProduct.md) |  |  no  |
+| [InstrumentData](InstrumentData.md) | An abstract parent class for raw data files generated by different kinds  of ... |  no  |
+| [MSImageProduct](MSImageProduct.md) | one or more image(s) output from a mass spec data processing workflow (eg |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
+| [ProcessedData](ProcessedData.md) | A data product generated by a workflow execution |  no  |
+| [ElementalAnalysisProduct](ElementalAnalysisProduct.md) |  |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) |  |  no  |
+| [SynthesizedMaterialSamplingActivity](SynthesizedMaterialSamplingActivity.md) | Collection of samples of a synthesized material |  no  |
+| [MetaproteomicsProduct](MetaproteomicsProduct.md) | Abstract parent class for processed metaproteomics data |  no  |
+| [TomographyProduct](TomographyProduct.md) |  |  no  |
+| [MetagenomicsBinningProduct](MetagenomicsBinningProduct.md) | Top-level archive (zip/tar) for binning results stored in MinIO |  no  |
+| [HydraulicPropertiesProduct](HydraulicPropertiesProduct.md) | Soil hydraulic parameters derived from HYPROP evaporation-experiment data |  no  |
+| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [MetagenomicsProduct](MetagenomicsProduct.md) | Abstract base for all metagenomics data products |  no  |
+| [MetagenomicsGenePhylogenyProduct](MetagenomicsGenePhylogenyProduct.md) | Top-level archive for gene-based phylogeny outputs (zip/tar stored in MinIO) |  no  |
+| [XRFElementalProduct](XRFElementalProduct.md) | X-ray Fluorescence (XRF) elemental concentration data |  no  |
+| [MicrobialBiomassProduct](MicrobialBiomassProduct.md) |  |  no  |
+| [MonetSoilSamplingActivity](MonetSoilSamplingActivity.md) | Collection of soil cores according to the MONet soil sampling protocol |  no  |
+| [PureCultureSamplingActivity](PureCultureSamplingActivity.md) | Collection of samples from a culture containing a single organism |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [GWCMoistureProduct](GWCMoistureProduct.md) |  |  no  |
+| [AerosolArmSamplingActivity](AerosolArmSamplingActivity.md) | A sampling activity where aerosol samples were collected by ARM |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
+| [MolecularIdentificationProduct](MolecularIdentificationProduct.md) | a file containing molecular formula identifications that was output from a ma... |  no  |
+| [MixedCultureSamplingActivity](MixedCultureSamplingActivity.md) | Collection of samples from a mixed culture |  no  |
 
 
 
@@ -93,19 +92,41 @@ Alias: ['study', 'study_id', 'project_id', 'proposal', 'proposal_id']
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Integer](Integer.md) |
+| Domain Of | [DataProduct](DataProduct.md), [AerosolArmSample](AerosolArmSample.md), [AerosolSample](AerosolSample.md), [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md), [CultureEnvironmentalSample](CultureEnvironmentalSample.md), [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md), [MixedCultureSample](MixedCultureSample.md), [MonetSoilSample](MonetSoilSample.md), [OtherUndescribedSample](OtherUndescribedSample.md), [PlantSample](PlantSample.md), [PureCultureSample](PureCultureSample.md), [SedimentSample](SedimentSample.md), [SoilSample](SoilSample.md), [SynthesizedMaterialSample](SynthesizedMaterialSample.md), [TerraformSample](TerraformSample.md), [WaterSample](WaterSample.md), [SamplingActivity](SamplingActivity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
 
 
 
+
+
+
+
+## Aliases
+
+
+* study
+* study_id
+* project_id
+* proposal
+* proposal_id
 
 
 ## TODOs
 
 * should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141 where emsl.project is the CURIE prefix
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -140,8 +161,14 @@ todos:
 - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
   where emsl.project is the CURIE prefix
 from_schema: https://w3id.org/MONet/analysis-api-schema
+aliases:
+- study
+- study_id
+- project_id
+- proposal
+- proposal_id
 rank: 1000
-alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+alias: project
 domain_of:
 - DataProduct
 - AerosolArmSample

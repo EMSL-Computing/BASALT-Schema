@@ -17,13 +17,12 @@ URI: [analysis_api_schema:MetagenomicsAnnotationProduct](https://w3id.org/MONet/
 
 
 
-
 ```mermaid
  classDiagram
     class MetagenomicsAnnotationProduct
-    click MetagenomicsAnnotationProduct href "../MetagenomicsAnnotationProduct"
+    click MetagenomicsAnnotationProduct href "../MetagenomicsAnnotationProduct/"
       MetagenomicsProduct <|-- MetagenomicsAnnotationProduct
-        click MetagenomicsProduct href "../MetagenomicsProduct"
+        click MetagenomicsProduct href "../MetagenomicsProduct/"
       
       MetagenomicsAnnotationProduct : additional_information
         
@@ -31,11 +30,10 @@ URI: [analysis_api_schema:MetagenomicsAnnotationProduct](https://w3id.org/MONet/
         
           
     
-    
-    
-    
-    MetagenomicsAnnotationProduct --> "0..1" AnnotationDatabaseEnum : annotation_database
-    click AnnotationDatabaseEnum href "../AnnotationDatabaseEnum"
+        
+        
+        MetagenomicsAnnotationProduct --> "0..1" AnnotationDatabaseEnum : annotation_database
+        click AnnotationDatabaseEnum href "../AnnotationDatabaseEnum/"
     
 
         
@@ -43,11 +41,10 @@ URI: [analysis_api_schema:MetagenomicsAnnotationProduct](https://w3id.org/MONet/
         
           
     
-    
-    
-    
-    MetagenomicsAnnotationProduct --> "0..1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        MetagenomicsAnnotationProduct --> "0..1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -57,11 +54,6 @@ URI: [analysis_api_schema:MetagenomicsAnnotationProduct](https://w3id.org/MONet/
         
       MetagenomicsAnnotationProduct : id
         
-          
-    
-    
-
-        
       MetagenomicsAnnotationProduct : lims_barcode
         
       MetagenomicsAnnotationProduct : md5checksum
@@ -70,11 +62,10 @@ URI: [analysis_api_schema:MetagenomicsAnnotationProduct](https://w3id.org/MONet/
         
           
     
-    
-    
-    
-    MetagenomicsAnnotationProduct --> "0..1" MetagenomicsSteps : mg_workflow_step
-    click MetagenomicsSteps href "../MetagenomicsSteps"
+        
+        
+        MetagenomicsAnnotationProduct --> "0..1" MetagenomicsSteps : mg_workflow_step
+        click MetagenomicsSteps href "../MetagenomicsSteps/"
     
 
         
@@ -86,11 +77,10 @@ URI: [analysis_api_schema:MetagenomicsAnnotationProduct](https://w3id.org/MONet/
         
           
     
-    
-    
-    
-    MetagenomicsAnnotationProduct --> "0..1" ControlledTermValue : provider_name
-    click ControlledTermValue href "../ControlledTermValue"
+        
+        
+        MetagenomicsAnnotationProduct --> "0..1" ControlledTermValue : provider_name
+        click ControlledTermValue href "../ControlledTermValue/"
     
 
         
@@ -106,11 +96,10 @@ URI: [analysis_api_schema:MetagenomicsAnnotationProduct](https://w3id.org/MONet/
         
           
     
-    
-    
-    
-    MetagenomicsAnnotationProduct --> "0..1" Sample : sample_id
-    click Sample href "../Sample"
+        
+        
+        MetagenomicsAnnotationProduct --> "0..1" Sample : sample_id
+        click Sample href "../Sample/"
     
 
         
@@ -134,14 +123,13 @@ URI: [analysis_api_schema:MetagenomicsAnnotationProduct](https://w3id.org/MONet/
             * **MetagenomicsAnnotationProduct**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [annotation_database](annotation_database.md) | 0..1 <br/> [AnnotationDatabaseEnum](AnnotationDatabaseEnum.md) | Primary annotation database used (e | direct |
 | [mg_workflow_step](mg_workflow_step.md) | 0..1 <br/> [MetagenomicsSteps](MetagenomicsSteps.md) | Metagenomics workflow step that produced this product (e | [MetagenomicsProduct](MetagenomicsProduct.md) |
-| [sample_id](sample_id.md) | 0..1 <br/> [Sample](Sample.md) | Link back to the originating sample | [ProcessedData](ProcessedData.md), [MetagenomicsProduct](MetagenomicsProduct.md) |
+| [sample_id](sample_id.md) | 0..1 <br/> [Sample](Sample.md) | Link back to the originating sample | [MetagenomicsProduct](MetagenomicsProduct.md), [ProcessedData](ProcessedData.md) |
 | [provider_name](provider_name.md) | 0..1 <br/> [ControlledTermValue](ControlledTermValue.md) | Provider class (e | [MetagenomicsProduct](MetagenomicsProduct.md) |
 | [raw_fasta_url](raw_fasta_url.md) | 0..1 <br/> [String](String.md) | URL of raw FASTA file, if available from provider | [MetagenomicsProduct](MetagenomicsProduct.md) |
 | [additional_information](additional_information.md) | 0..1 <br/> [String](String.md) | Additional information pertaining to these data, including SP Project ID and ... | [MetagenomicsProduct](MetagenomicsProduct.md) |
@@ -158,7 +146,13 @@ URI: [analysis_api_schema:MetagenomicsAnnotationProduct](https://w3id.org/MONet/
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | [DataProduct](DataProduct.md) |
 | [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | [DataProduct](DataProduct.md) |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProduct](DataProduct.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProduct](DataProduct.md) |
+
+
+
+
+
+
 
 
 
@@ -169,8 +163,6 @@ URI: [analysis_api_schema:MetagenomicsAnnotationProduct](https://w3id.org/MONet/
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -196,7 +188,6 @@ URI: [analysis_api_schema:MetagenomicsAnnotationProduct](https://w3id.org/MONet/
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -211,7 +202,6 @@ description: 'Top-level archive for functional annotation outputs (zip/tar store
 
   Inherits all MetagenomicsProduct and dataProduct slots.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: MetagenomicsProduct
 slots:
 - annotation_database
@@ -229,7 +219,6 @@ description: 'Top-level archive for functional annotation outputs (zip/tar store
 
   Inherits all MetagenomicsProduct and dataProduct slots.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: MetagenomicsProduct
 attributes:
   annotation_database:
@@ -399,8 +388,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: Metagenomics_AnnotationProduct
     domain_of:
     - DataProduct

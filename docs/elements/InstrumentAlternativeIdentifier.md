@@ -10,39 +10,31 @@ URI: [analysis_api_schema:InstrumentAlternativeIdentifier](https://w3id.org/MONe
 
 
 
-
 ```mermaid
  classDiagram
     class InstrumentAlternativeIdentifier
-    click InstrumentAlternativeIdentifier href "../InstrumentAlternativeIdentifier"
+    click InstrumentAlternativeIdentifier href "../InstrumentAlternativeIdentifier/"
       InstrumentAlternativeIdentifier : alt_id
         
           
     
-    
-    
-    
-    InstrumentAlternativeIdentifier --> "0..1" AlternativeIdentifier : alt_id
-    click AlternativeIdentifier href "../AlternativeIdentifier"
+        
+        
+        InstrumentAlternativeIdentifier --> "0..1" AlternativeIdentifier : alt_id
+        click AlternativeIdentifier href "../AlternativeIdentifier/"
     
 
         
       InstrumentAlternativeIdentifier : id
         
-          
-    
-    
-
-        
       InstrumentAlternativeIdentifier : instrument_alt_id_provider
         
           
     
-    
-    
-    
-    InstrumentAlternativeIdentifier --> "0..1" InstrumentAltIdProviderEnum : instrument_alt_id_provider
-    click InstrumentAltIdProviderEnum href "../InstrumentAltIdProviderEnum"
+        
+        
+        InstrumentAlternativeIdentifier --> "0..1" InstrumentAltIdProviderEnum : instrument_alt_id_provider
+        click InstrumentAltIdProviderEnum href "../InstrumentAltIdProviderEnum/"
     
 
         
@@ -50,11 +42,10 @@ URI: [analysis_api_schema:InstrumentAlternativeIdentifier](https://w3id.org/MONe
         
           
     
-    
-    
-    
-    InstrumentAlternativeIdentifier --> "1" Instrument : instrument_id
-    click Instrument href "../Instrument"
+        
+        
+        InstrumentAlternativeIdentifier --> "1" Instrument : instrument_id
+        click Instrument href "../Instrument/"
     
 
         
@@ -66,12 +57,11 @@ URI: [analysis_api_schema:InstrumentAlternativeIdentifier](https://w3id.org/MONe
 
 <!-- no inheritance hierarchy -->
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [alt_id](alt_id.md) | 0..1 <br/> [AlternativeIdentifier](AlternativeIdentifier.md) |  | direct |
 | [instrument_alt_id_provider](instrument_alt_id_provider.md) | 0..1 <br/> [InstrumentAltIdProviderEnum](InstrumentAltIdProviderEnum.md) |  | direct |
 | [instrument_id](instrument_id.md) | 1 <br/> [Instrument](Instrument.md) |  | direct |
@@ -84,9 +74,13 @@ URI: [analysis_api_schema:InstrumentAlternativeIdentifier](https://w3id.org/MONe
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -112,7 +106,6 @@ URI: [analysis_api_schema:InstrumentAlternativeIdentifier](https://w3id.org/MONe
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -123,7 +116,6 @@ URI: [analysis_api_schema:InstrumentAlternativeIdentifier](https://w3id.org/MONe
 ```yaml
 name: InstrumentAlternativeIdentifier
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id
@@ -236,7 +228,6 @@ attributes:
 ```yaml
 name: InstrumentAlternativeIdentifier
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

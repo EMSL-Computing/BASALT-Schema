@@ -2,21 +2,20 @@
 
 
 
-URI: [PlantStructureEnum](PlantStructureEnum.md)
+URI: [analysis_api_schema:PlantStructureEnum](https://w3id.org/MONet/analysis-api-schema/PlantStructureEnum)
 
 ## Permissible Values
-
-| Value | Meaning | Description |
-| --- | --- | --- |
-| stem | PO:0009047 |  |
-| leaf | PO:0025034 |  |
-| root | PO:0009005 |  |
-| fine_root | BTO:0005194 |  |
-| whole_plant | BTO:0001461 |  |
-| stamen | PO:0009029 |  |
-| carpel | PO:0009030 |  |
-| seed | PO:0009010 |  |
-| rhizodeposits | None |  |
+| Value | Meaning | Description | Additional Info |
+| --- | --- | --- | --- |
+| stem | PO:0009047 |  | Title: stem [PO:0009047]<br>|
+| leaf | PO:0025034 |  | Title: leaf [PO:0025034]<br>|
+| root | PO:0009005 |  | Title: root [PO:0009005]<br>|
+| fine_root | BTO:0005194 |  | Title: fine root [BTO:0005194]<br>|
+| whole_plant | BTO:0001461 |  | Title: whole plant [BTO:0001461]<br>|
+| stamen | PO:0009029 |  | Title: stamen [PO:0009029]<br>|
+| carpel | PO:0009030 |  | Title: carpel [PO:0009030]<br>|
+| seed | PO:0009010 |  | Title: seed [PO:0009010]<br>|
+| rhizodeposits | None |  ||
 
 
 
@@ -32,9 +31,11 @@ URI: [PlantStructureEnum](PlantStructureEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

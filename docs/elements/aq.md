@@ -15,10 +15,21 @@ Alias: aq
 
 
 
-
 ## Properties
 
-* Range: numeric
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Double](Double.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
 
 
 
@@ -28,9 +39,9 @@ Alias: aq
 
 * what is this supposed to mean
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -64,7 +75,7 @@ todos:
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 alias: aq
-range: numeric
+range: double
 
 ```
 </details>

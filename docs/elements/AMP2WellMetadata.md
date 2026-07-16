@@ -19,13 +19,12 @@ URI: [analysis_api_schema:AMP2WellMetadata](https://w3id.org/MONet/analysis-api-
 
 
 
-
 ```mermaid
  classDiagram
     class AMP2WellMetadata
-    click AMP2WellMetadata href "../AMP2WellMetadata"
+    click AMP2WellMetadata href "../AMP2WellMetadata/"
       WellMetadata <|-- AMP2WellMetadata
-        click WellMetadata href "../WellMetadata"
+        click WellMetadata href "../WellMetadata/"
       
       AMP2WellMetadata : inoculum_volume_ul
         
@@ -33,11 +32,10 @@ URI: [analysis_api_schema:AMP2WellMetadata](https://w3id.org/MONet/analysis-api-
         
           
     
-    
-    
-    
-    AMP2WellMetadata --> "0..1" ProcessedSample : media_ref
-    click ProcessedSample href "../ProcessedSample"
+        
+        
+        AMP2WellMetadata --> "0..1" ProcessedSample : media_ref
+        click ProcessedSample href "../ProcessedSample/"
     
 
         
@@ -65,7 +63,6 @@ URI: [analysis_api_schema:AMP2WellMetadata](https://w3id.org/MONet/analysis-api-
     * **AMP2WellMetadata**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -87,9 +84,13 @@ URI: [analysis_api_schema:AMP2WellMetadata](https://w3id.org/MONet/analysis-api-
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -115,7 +116,6 @@ URI: [analysis_api_schema:AMP2WellMetadata](https://w3id.org/MONet/analysis-api-
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -131,7 +131,6 @@ description: 'AMP2-specific per-well metadata.
 
   the activity''s media_ref slot.  Per-well data is volumes and replicate info.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: WellMetadata
 attributes:
   media_ref:
@@ -203,7 +202,6 @@ description: 'AMP2-specific per-well metadata.
 
   the activity''s media_ref slot.  Per-well data is volumes and replicate info.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: WellMetadata
 attributes:
   media_ref:

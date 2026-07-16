@@ -24,20 +24,38 @@ Alias: custodian_id
 
 
 
-
 ## Properties
 
-* Range: [Custodian](Custodian.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [Custodian](Custodian.md) |
+| Domain Of | [InstrumentCustodian](InstrumentCustodian.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [InstrumentCustodian](InstrumentCustodian.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

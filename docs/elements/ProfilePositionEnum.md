@@ -7,10 +7,9 @@ _Soil profile positions_
 
 
 
-URI: [ProfilePositionEnum](ProfilePositionEnum.md)
+URI: [analysis_api_schema:ProfilePositionEnum](https://w3id.org/MONet/analysis-api-schema/ProfilePositionEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | backslope | None | Backslope position |
@@ -33,9 +32,11 @@ URI: [ProfilePositionEnum](ProfilePositionEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

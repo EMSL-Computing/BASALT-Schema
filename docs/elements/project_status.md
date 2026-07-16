@@ -24,18 +24,37 @@ Alias: project_status
 
 
 
-
 ## Properties
 
-* Range: [ProjectStatusEnum](ProjectStatusEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [ProjectStatusEnum](ProjectStatusEnum.md) |
+| Domain Of | [Study](Study.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [Study](Study.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

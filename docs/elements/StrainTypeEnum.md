@@ -7,10 +7,9 @@ _Types of microbial strains/organisms._
 
 
 
-URI: [StrainTypeEnum](StrainTypeEnum.md)
+URI: [analysis_api_schema:StrainTypeEnum](https://w3id.org/MONet/analysis-api-schema/StrainTypeEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | bacterial | None | Bacterial strain |
@@ -35,9 +34,11 @@ URI: [StrainTypeEnum](StrainTypeEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

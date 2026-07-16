@@ -39,13 +39,12 @@ URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysi
 
 
 
-
 ```mermaid
  classDiagram
     class AMP2PlateSetupActivity
-    click AMP2PlateSetupActivity href "../AMP2PlateSetupActivity"
+    click AMP2PlateSetupActivity href "../AMP2PlateSetupActivity/"
       PlateSetupActivity <|-- AMP2PlateSetupActivity
-        click PlateSetupActivity href "../PlateSetupActivity"
+        click PlateSetupActivity href "../PlateSetupActivity/"
       
       AMP2PlateSetupActivity : agitation_speed_rpm
         
@@ -53,30 +52,23 @@ URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    AMP2PlateSetupActivity --> "0..1" RouteMethodEnum : analysis_type
-    click RouteMethodEnum href "../RouteMethodEnum"
+        
+        
+        AMP2PlateSetupActivity --> "0..1" RouteMethodEnum : analysis_type
+        click RouteMethodEnum href "../RouteMethodEnum/"
     
 
         
       AMP2PlateSetupActivity : id
         
-          
-    
-    
-
-        
       AMP2PlateSetupActivity : media_ref
         
           
     
-    
-    
-    
-    AMP2PlateSetupActivity --> "0..1" ProcessedSample : media_ref
-    click ProcessedSample href "../ProcessedSample"
+        
+        
+        AMP2PlateSetupActivity --> "0..1" ProcessedSample : media_ref
+        click ProcessedSample href "../ProcessedSample/"
     
 
         
@@ -84,11 +76,10 @@ URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    AMP2PlateSetupActivity --> "0..1" MethodNameEnum : method_name
-    click MethodNameEnum href "../MethodNameEnum"
+        
+        
+        AMP2PlateSetupActivity --> "0..1" MethodNameEnum : method_name
+        click MethodNameEnum href "../MethodNameEnum/"
     
 
         
@@ -96,11 +87,10 @@ URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    AMP2PlateSetupActivity --> "0..1" OxygenStatusEnum : oxygen_relationship
-    click OxygenStatusEnum href "../OxygenStatusEnum"
+        
+        
+        AMP2PlateSetupActivity --> "0..1" OxygenStatusEnum : oxygen_relationship
+        click OxygenStatusEnum href "../OxygenStatusEnum/"
     
 
         
@@ -124,11 +114,10 @@ URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    AMP2PlateSetupActivity --> "0..1" PersonValue : setup_operator_id
-    click PersonValue href "../PersonValue"
+        
+        
+        AMP2PlateSetupActivity --> "0..1" PersonValue : setup_operator_id
+        click PersonValue href "../PersonValue/"
     
 
         
@@ -138,11 +127,10 @@ URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    AMP2PlateSetupActivity --> "0..1" Sample : uses_sample
-    click Sample href "../Sample"
+        
+        
+        AMP2PlateSetupActivity --> "0..1" Sample : uses_sample
+        click Sample href "../Sample/"
     
 
         
@@ -150,11 +138,10 @@ URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    AMP2PlateSetupActivity --> "*" WellMetadata : well_metadata
-    click WellMetadata href "../WellMetadata"
+        
+        
+        AMP2PlateSetupActivity --> "*" WellMetadata : well_metadata
+        click WellMetadata href "../WellMetadata/"
     
 
         
@@ -169,7 +156,6 @@ URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysi
 * [SampleProcessing](SampleProcessing.md)
     * [PlateSetupActivity](PlateSetupActivity.md) [ [HasIncubationConditions](HasIncubationConditions.md)]
         * **AMP2PlateSetupActivity**
-
 
 
 ## Slots
@@ -189,7 +175,7 @@ URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysi
 | [oxygen_relationship](oxygen_relationship.md) | 0..1 <br/> [OxygenStatusEnum](OxygenStatusEnum.md) | The relationship of the sample to oxygen, such as aerobic or anaerobic | [HasIncubationConditions](HasIncubationConditions.md) |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
-| [id](id.md) | 1 <br/> uuid |  | [SampleProcessing](SampleProcessing.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [analysis_type](analysis_type.md) | 0..1 <br/> [RouteMethodEnum](RouteMethodEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [method_name](method_name.md) | 0..1 <br/> [MethodNameEnum](MethodNameEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [processing_steps](processing_steps.md) | 1 <br/> [String](String.md) |  | [SampleProcessing](SampleProcessing.md) |
@@ -203,9 +189,13 @@ URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysi
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -231,7 +221,6 @@ URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysi
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -251,7 +240,6 @@ description: "AMP2-specific plate setup.\nmedia_ref points to the plate-level pr
   \ media_ref directly on class (no UsesMedia mixin);\n           range is processedSample\
   \ (not purchasedMaterial)"
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: PlateSetupActivity
 slots:
 - media_ref
@@ -274,7 +262,6 @@ description: "AMP2-specific plate setup.\nmedia_ref points to the plate-level pr
   \ media_ref directly on class (no UsesMedia mixin);\n           range is processedSample\
   \ (not purchasedMaterial)"
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: PlateSetupActivity
 attributes:
   media_ref:

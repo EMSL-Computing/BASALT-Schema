@@ -23,34 +23,32 @@ URI: [analysis_api_schema:MetagenomicsProduct](https://w3id.org/MONet/analysis-a
 
 
 
-
 ```mermaid
  classDiagram
     class MetagenomicsProduct
-    click MetagenomicsProduct href "../MetagenomicsProduct"
+    click MetagenomicsProduct href "../MetagenomicsProduct/"
       ProcessedData <|-- MetagenomicsProduct
-        click ProcessedData href "../ProcessedData"
+        click ProcessedData href "../ProcessedData/"
       
 
       MetagenomicsProduct <|-- MetagenomicsAnnotationProduct
-        click MetagenomicsAnnotationProduct href "../MetagenomicsAnnotationProduct"
+        click MetagenomicsAnnotationProduct href "../MetagenomicsAnnotationProduct/"
       MetagenomicsProduct <|-- MetagenomicsBinningProduct
-        click MetagenomicsBinningProduct href "../MetagenomicsBinningProduct"
+        click MetagenomicsBinningProduct href "../MetagenomicsBinningProduct/"
       MetagenomicsProduct <|-- MetagenomicsGenePhylogenyProduct
-        click MetagenomicsGenePhylogenyProduct href "../MetagenomicsGenePhylogenyProduct"
+        click MetagenomicsGenePhylogenyProduct href "../MetagenomicsGenePhylogenyProduct/"
       
-      
+
       MetagenomicsProduct : additional_information
         
       MetagenomicsProduct : core_section
         
           
     
-    
-    
-    
-    MetagenomicsProduct --> "0..1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        MetagenomicsProduct --> "0..1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -60,11 +58,6 @@ URI: [analysis_api_schema:MetagenomicsProduct](https://w3id.org/MONet/analysis-a
         
       MetagenomicsProduct : id
         
-          
-    
-    
-
-        
       MetagenomicsProduct : lims_barcode
         
       MetagenomicsProduct : md5checksum
@@ -73,11 +66,10 @@ URI: [analysis_api_schema:MetagenomicsProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    MetagenomicsProduct --> "0..1" MetagenomicsSteps : mg_workflow_step
-    click MetagenomicsSteps href "../MetagenomicsSteps"
+        
+        
+        MetagenomicsProduct --> "0..1" MetagenomicsSteps : mg_workflow_step
+        click MetagenomicsSteps href "../MetagenomicsSteps/"
     
 
         
@@ -89,11 +81,10 @@ URI: [analysis_api_schema:MetagenomicsProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    MetagenomicsProduct --> "0..1" ControlledTermValue : provider_name
-    click ControlledTermValue href "../ControlledTermValue"
+        
+        
+        MetagenomicsProduct --> "0..1" ControlledTermValue : provider_name
+        click ControlledTermValue href "../ControlledTermValue/"
     
 
         
@@ -109,11 +100,10 @@ URI: [analysis_api_schema:MetagenomicsProduct](https://w3id.org/MONet/analysis-a
         
           
     
-    
-    
-    
-    MetagenomicsProduct --> "0..1" Sample : sample_id
-    click Sample href "../Sample"
+        
+        
+        MetagenomicsProduct --> "0..1" Sample : sample_id
+        click Sample href "../Sample/"
     
 
         
@@ -139,7 +129,6 @@ URI: [analysis_api_schema:MetagenomicsProduct](https://w3id.org/MONet/analysis-a
             * [MetagenomicsGenePhylogenyProduct](MetagenomicsGenePhylogenyProduct.md)
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -162,7 +151,13 @@ URI: [analysis_api_schema:MetagenomicsProduct](https://w3id.org/MONet/analysis-a
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | [DataProduct](DataProduct.md) |
 | [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | [DataProduct](DataProduct.md) |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProduct](DataProduct.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProduct](DataProduct.md) |
+
+
+
+
+
+
 
 
 
@@ -173,8 +168,6 @@ URI: [analysis_api_schema:MetagenomicsProduct](https://w3id.org/MONet/analysis-a
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -200,7 +193,6 @@ URI: [analysis_api_schema:MetagenomicsProduct](https://w3id.org/MONet/analysis-a
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -218,7 +210,6 @@ description: 'Abstract base for all metagenomics data products.
 
   and add only their type-specific slots.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: ProcessedData
 abstract: true
 slots:
@@ -244,7 +235,6 @@ description: 'Abstract base for all metagenomics data products.
 
   and add only their type-specific slots.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: ProcessedData
 abstract: true
 attributes:
@@ -404,8 +394,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: MetagenomicsProduct
     domain_of:
     - DataProduct

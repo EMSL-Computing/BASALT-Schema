@@ -29,20 +29,31 @@ Alias: polarity
 
 
 
-
 ## Properties
 
-* Range: [PolarityEnum](PolarityEnum.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [PolarityEnum](PolarityEnum.md) |
+| Domain Of | [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

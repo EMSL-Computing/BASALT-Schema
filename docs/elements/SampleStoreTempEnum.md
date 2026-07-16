@@ -7,10 +7,9 @@ _Sample storage temperature conditions_
 
 
 
-URI: [SampleStoreTempEnum](SampleStoreTempEnum.md)
+URI: [analysis_api_schema:SampleStoreTempEnum](https://w3id.org/MONet/analysis-api-schema/SampleStoreTempEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | fresh4 | None | Fresh storage at 4°C |
@@ -33,9 +32,11 @@ URI: [SampleStoreTempEnum](SampleStoreTempEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -17,13 +17,12 @@ URI: [analysis_api_schema:MassSpectrometryDataProcessingActivity](https://w3id.o
 
 
 
-
 ```mermaid
  classDiagram
     class MassSpectrometryDataProcessingActivity
-    click MassSpectrometryDataProcessingActivity href "../MassSpectrometryDataProcessingActivity"
+    click MassSpectrometryDataProcessingActivity href "../MassSpectrometryDataProcessingActivity/"
       DataProcessingActivity <|-- MassSpectrometryDataProcessingActivity
-        click DataProcessingActivity href "../DataProcessingActivity"
+        click DataProcessingActivity href "../DataProcessingActivity/"
       
       MassSpectrometryDataProcessingActivity : description
         
@@ -33,20 +32,14 @@ URI: [analysis_api_schema:MassSpectrometryDataProcessingActivity](https://w3id.o
         
           
     
-    
-    
-    
-    MassSpectrometryDataProcessingActivity --> "0..1" ExecutionResourceEnum : execution_resource
-    click ExecutionResourceEnum href "../ExecutionResourceEnum"
+        
+        
+        MassSpectrometryDataProcessingActivity --> "0..1" ExecutionResourceEnum : execution_resource
+        click ExecutionResourceEnum href "../ExecutionResourceEnum/"
     
 
         
       MassSpectrometryDataProcessingActivity : id
-        
-          
-    
-    
-
         
       MassSpectrometryDataProcessingActivity : lims_task_instance_id
         
@@ -54,11 +47,10 @@ URI: [analysis_api_schema:MassSpectrometryDataProcessingActivity](https://w3id.o
         
           
     
-    
-    
-    
-    MassSpectrometryDataProcessingActivity --> "0..1" MetaproteomicsAnalysisCategoryEnum : metaproteomics_analysis_category
-    click MetaproteomicsAnalysisCategoryEnum href "../MetaproteomicsAnalysisCategoryEnum"
+        
+        
+        MassSpectrometryDataProcessingActivity --> "0..1" MetaproteomicsAnalysisCategoryEnum : metaproteomics_analysis_category
+        click MetaproteomicsAnalysisCategoryEnum href "../MetaproteomicsAnalysisCategoryEnum/"
     
 
         
@@ -66,11 +58,10 @@ URI: [analysis_api_schema:MassSpectrometryDataProcessingActivity](https://w3id.o
         
           
     
-    
-    
-    
-    MassSpectrometryDataProcessingActivity --> "0..1" DataProcessingActivity : parent_workflow_id
-    click DataProcessingActivity href "../DataProcessingActivity"
+        
+        
+        MassSpectrometryDataProcessingActivity --> "0..1" DataProcessingActivity : parent_workflow_id
+        click DataProcessingActivity href "../DataProcessingActivity/"
     
 
         
@@ -86,11 +77,10 @@ URI: [analysis_api_schema:MassSpectrometryDataProcessingActivity](https://w3id.o
         
           
     
-    
-    
-    
-    MassSpectrometryDataProcessingActivity --> "0..1" MassSpectrometryStandardRun : uses_calibration
-    click MassSpectrometryStandardRun href "../MassSpectrometryStandardRun"
+        
+        
+        MassSpectrometryDataProcessingActivity --> "0..1" MassSpectrometryStandardRun : uses_calibration
+        click MassSpectrometryStandardRun href "../MassSpectrometryStandardRun/"
     
 
         
@@ -98,11 +88,10 @@ URI: [analysis_api_schema:MassSpectrometryDataProcessingActivity](https://w3id.o
         
           
     
-    
-    
-    
-    MassSpectrometryDataProcessingActivity --> "0..1" MassSpectrometryInstrumentData : uses_raw_ms_data
-    click MassSpectrometryInstrumentData href "../MassSpectrometryInstrumentData"
+        
+        
+        MassSpectrometryDataProcessingActivity --> "0..1" MassSpectrometryInstrumentData : uses_raw_ms_data
+        click MassSpectrometryInstrumentData href "../MassSpectrometryInstrumentData/"
     
 
         
@@ -120,7 +109,6 @@ URI: [analysis_api_schema:MassSpectrometryDataProcessingActivity](https://w3id.o
     * **MassSpectrometryDataProcessingActivity**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -132,7 +120,7 @@ URI: [analysis_api_schema:MassSpectrometryDataProcessingActivity](https://w3id.o
 | [parent_workflow_id](parent_workflow_id.md) | 0..1 <br/> [DataProcessingActivity](DataProcessingActivity.md) | Self-referential FK to the preceding DataProcessingActivity in a chain | [DataProcessingActivity](DataProcessingActivity.md) |
 | [workflow_steps](workflow_steps.md) | 0..1 <br/> [String](String.md) | Per-run workflow parameters | [DataProcessingActivity](DataProcessingActivity.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A human-readable description of the data analysis workflow | [DataProcessingActivity](DataProcessingActivity.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProcessingActivity](DataProcessingActivity.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProcessingActivity](DataProcessingActivity.md) |
 | [started_at_time](started_at_time.md) | 1 <br/> [Datetime](Datetime.md) |  | [DataProcessingActivity](DataProcessingActivity.md) |
 | [ended_at_time](ended_at_time.md) | 0..1 <br/> [Datetime](Datetime.md) |  | [DataProcessingActivity](DataProcessingActivity.md) |
 | [software_url](software_url.md) | 0..1 <br/> [String](String.md) |  | [DataProcessingActivity](DataProcessingActivity.md) |
@@ -158,9 +146,13 @@ URI: [analysis_api_schema:MassSpectrometryDataProcessingActivity](https://w3id.o
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -186,7 +178,6 @@ URI: [analysis_api_schema:MassSpectrometryDataProcessingActivity](https://w3id.o
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -200,7 +191,6 @@ description: 'Concrete mass spectrometry workflow run. Inherits all DataProcessi
 
   slots including used_software and version.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: DataProcessingActivity
 slots:
 - uses_calibration
@@ -220,7 +210,6 @@ description: 'Concrete mass spectrometry workflow run. Inherits all DataProcessi
 
   slots including used_software and version.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: DataProcessingActivity
 attributes:
   uses_calibration:

@@ -15,13 +15,12 @@ URI: [analysis_api_schema:AerosolSamplingActivity](https://w3id.org/MONet/analys
 
 
 
-
 ```mermaid
  classDiagram
     class AerosolSamplingActivity
-    click AerosolSamplingActivity href "../AerosolSamplingActivity"
+    click AerosolSamplingActivity href "../AerosolSamplingActivity/"
       SamplingActivity <|-- AerosolSamplingActivity
-        click SamplingActivity href "../SamplingActivity"
+        click SamplingActivity href "../SamplingActivity/"
       
       AerosolSamplingActivity : collection_date
         
@@ -35,11 +34,6 @@ URI: [analysis_api_schema:AerosolSamplingActivity](https://w3id.org/MONet/analys
         
       AerosolSamplingActivity : id
         
-          
-    
-    
-
-        
       AerosolSamplingActivity : name
         
       AerosolSamplingActivity : project
@@ -52,11 +46,10 @@ URI: [analysis_api_schema:AerosolSamplingActivity](https://w3id.org/MONet/analys
         
           
     
-    
-    
-    
-    AerosolSamplingActivity --> "0..1" Site : sampled_at_site
-    click Site href "../Site"
+        
+        
+        AerosolSamplingActivity --> "0..1" Site : sampled_at_site
+        click Site href "../Site/"
     
 
         
@@ -68,11 +61,10 @@ URI: [analysis_api_schema:AerosolSamplingActivity](https://w3id.org/MONet/analys
         
           
     
-    
-    
-    
-    AerosolSamplingActivity --> "0..1" CardinalDirectionEnum : wind_direction
-    click CardinalDirectionEnum href "../CardinalDirectionEnum"
+        
+        
+        AerosolSamplingActivity --> "0..1" CardinalDirectionEnum : wind_direction
+        click CardinalDirectionEnum href "../CardinalDirectionEnum/"
     
 
         
@@ -90,7 +82,6 @@ URI: [analysis_api_schema:AerosolSamplingActivity](https://w3id.org/MONet/analys
     * **AerosolSamplingActivity**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -102,7 +93,7 @@ URI: [analysis_api_schema:AerosolSamplingActivity](https://w3id.org/MONet/analys
 | [sampling_duration](sampling_duration.md) | 0..1 <br/> [String](String.md) | The difference between sample start and sample end time in seconds | direct |
 | [wind_direction](wind_direction.md) | 0..1 <br/> [CardinalDirectionEnum](CardinalDirectionEnum.md) | Direction of the wind on the day of sampling | direct |
 | [wind_speed](wind_speed.md) | 0..1 <br/> [String](String.md) | Wind speed describes how fast the air is moving past a certain point during s... | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [SamplingActivity](SamplingActivity.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [SamplingActivity](SamplingActivity.md) |
 | [project](project.md) | 0..1 <br/> [Integer](Integer.md) | Identifier for the user project associated with the entity or activity | [SamplingActivity](SamplingActivity.md) |
@@ -119,9 +110,13 @@ URI: [analysis_api_schema:AerosolSamplingActivity](https://w3id.org/MONet/analys
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -147,7 +142,6 @@ URI: [analysis_api_schema:AerosolSamplingActivity](https://w3id.org/MONet/analys
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -159,7 +153,6 @@ URI: [analysis_api_schema:AerosolSamplingActivity](https://w3id.org/MONet/analys
 name: AerosolSamplingActivity
 description: A sampling activity where aerosol samples were collected.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: SamplingActivity
 slots:
 - collection_time
@@ -259,7 +252,6 @@ attributes:
 name: AerosolSamplingActivity
 description: A sampling activity where aerosol samples were collected.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: SamplingActivity
 attributes:
   id:
@@ -544,8 +536,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: AerosolSamplingActivity
     domain_of:
     - DataProduct

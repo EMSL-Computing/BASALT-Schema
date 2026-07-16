@@ -29,20 +29,31 @@ Alias: chromatography_type
 
 
 
-
 ## Properties
 
-* Range: [ChromatographyCategoryEnum](ChromatographyCategoryEnum.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [ChromatographyCategoryEnum](ChromatographyCategoryEnum.md) |
+| Domain Of | [ChromatographyConfiguration](ChromatographyConfiguration.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

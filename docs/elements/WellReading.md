@@ -25,11 +25,10 @@ URI: [analysis_api_schema:WellReading](https://w3id.org/MONet/analysis-api-schem
 
 
 
-
 ```mermaid
  classDiagram
     class WellReading
-    click WellReading href "../WellReading"
+    click WellReading href "../WellReading/"
       WellReading : flag
         
       WellReading : position
@@ -43,7 +42,6 @@ URI: [analysis_api_schema:WellReading](https://w3id.org/MONet/analysis-api-schem
 
 
 <!-- no inheritance hierarchy -->
-
 
 ## Slots
 
@@ -70,14 +68,18 @@ URI: [analysis_api_schema:WellReading](https://w3id.org/MONet/analysis-api-schem
 
 
 
+
+
+
+
 ## TODOs
 
 * add optical_density_method here to flag what value means if we have multiple OD methods (e.g. OD600 vs OD750)
 * units for value slot
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -97,7 +99,6 @@ URI: [analysis_api_schema:WellReading](https://w3id.org/MONet/analysis-api-schem
 | ---  | ---  |
 | self | analysis_api_schema:WellReading |
 | native | analysis_api_schema:WellReading |
-
 
 
 
@@ -128,7 +129,6 @@ todos:
   methods (e.g. OD600 vs OD750)
 - units for value slot
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   position:
     name: position
@@ -188,7 +188,6 @@ todos:
   methods (e.g. OD600 vs OD750)
 - units for value slot
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   position:
     name: position

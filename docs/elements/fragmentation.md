@@ -29,18 +29,30 @@ Alias: fragmentation
 
 
 
-
 ## Properties
 
-* Range: [FragmentationEnum](FragmentationEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [FragmentationEnum](FragmentationEnum.md) |
+| Domain Of | [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

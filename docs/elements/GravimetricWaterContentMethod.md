@@ -10,13 +10,12 @@ URI: [analysis_api_schema:GravimetricWaterContentMethod](https://w3id.org/MONet/
 
 
 
-
 ```mermaid
  classDiagram
     class GravimetricWaterContentMethod
-    click GravimetricWaterContentMethod href "../GravimetricWaterContentMethod"
+    click GravimetricWaterContentMethod href "../GravimetricWaterContentMethod/"
       Method <|-- GravimetricWaterContentMethod
-        click Method href "../Method"
+        click Method href "../Method/"
       
       GravimetricWaterContentMethod : analytic
         
@@ -34,7 +33,6 @@ URI: [analysis_api_schema:GravimetricWaterContentMethod](https://w3id.org/MONet/
     * **GravimetricWaterContentMethod**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -50,9 +48,13 @@ URI: [analysis_api_schema:GravimetricWaterContentMethod](https://w3id.org/MONet/
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -78,7 +80,6 @@ URI: [analysis_api_schema:GravimetricWaterContentMethod](https://w3id.org/MONet/
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -89,7 +90,6 @@ URI: [analysis_api_schema:GravimetricWaterContentMethod](https://w3id.org/MONet/
 ```yaml
 name: GravimetricWaterContentMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 slots:
 - location
@@ -103,7 +103,6 @@ slots:
 ```yaml
 name: GravimetricWaterContentMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 attributes:
   location:

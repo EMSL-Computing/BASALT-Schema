@@ -29,18 +29,30 @@ Alias: fao_class
 
 
 
-
 ## Properties
 
-* Range: [FAOClassEnum](FAOClassEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [FAOClassEnum](FAOClassEnum.md) |
+| Domain Of | [Site](Site.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

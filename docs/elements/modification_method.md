@@ -31,10 +31,23 @@ Alias: modification_method
 
 
 
-
 ## Properties
 
-* Range: [ModificationMethodEnum](ModificationMethodEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [ModificationMethodEnum](ModificationMethodEnum.md) |
+| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
 
 
 
@@ -46,9 +59,8 @@ Alias: modification_method
 
 
 
+
 ## Identifier and Mapping Information
-
-
 
 
 

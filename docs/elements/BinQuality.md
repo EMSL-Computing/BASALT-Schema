@@ -2,10 +2,9 @@
 
 
 
-URI: [BinQuality](BinQuality.md)
+URI: [analysis_api_schema:BinQuality](https://w3id.org/MONet/analysis-api-schema/BinQuality)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | HQ | None |  |
@@ -20,9 +19,11 @@ URI: [BinQuality](BinQuality.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -27,15 +27,14 @@ URI: [analysis_api_schema:PlateProduct](https://w3id.org/MONet/analysis-api-sche
 
 
 
-
 ```mermaid
  classDiagram
     class PlateProduct
-    click PlateProduct href "../PlateProduct"
+    click PlateProduct href "../PlateProduct/"
       PlateProduct <|-- AMP2ODProduct
-        click AMP2ODProduct href "../AMP2ODProduct"
+        click AMP2ODProduct href "../AMP2ODProduct/"
       PlateProduct <|-- EcoplateAbsorbanceProduct
-        click EcoplateAbsorbanceProduct href "../EcoplateAbsorbanceProduct"
+        click EcoplateAbsorbanceProduct href "../EcoplateAbsorbanceProduct/"
       
       PlateProduct : blank_mean
         
@@ -51,11 +50,10 @@ URI: [analysis_api_schema:PlateProduct](https://w3id.org/MONet/analysis-api-sche
         
           
     
-    
-    
-    
-    PlateProduct --> "*" WellReading : well_readings
-    click WellReading href "../WellReading"
+        
+        
+        PlateProduct --> "*" WellReading : well_readings
+        click WellReading href "../WellReading/"
     
 
         
@@ -70,7 +68,6 @@ URI: [analysis_api_schema:PlateProduct](https://w3id.org/MONet/analysis-api-sche
 * **PlateProduct**
     * [AMP2ODProduct](AMP2ODProduct.md)
     * [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md)
-
 
 
 ## Slots
@@ -92,13 +89,17 @@ URI: [analysis_api_schema:PlateProduct](https://w3id.org/MONet/analysis-api-sche
 
 
 
+
+
+
+
 ## TODOs
 
 * add plate_range (12 well, 96 well, etc.)?
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -124,7 +125,6 @@ URI: [analysis_api_schema:PlateProduct](https://w3id.org/MONet/analysis-api-sche
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -141,7 +141,6 @@ description: "Abstract base for plate measurement data products.\nCommon summary
 todos:
 - add plate_range (12 well, 96 well, etc.)?
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 slots:
 - wavelength_nm
@@ -166,7 +165,6 @@ description: "Abstract base for plate measurement data products.\nCommon summary
 todos:
 - add plate_range (12 well, 96 well, etc.)?
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 attributes:
   wavelength_nm:

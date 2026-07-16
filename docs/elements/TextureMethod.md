@@ -10,13 +10,12 @@ URI: [analysis_api_schema:TextureMethod](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ```mermaid
  classDiagram
     class TextureMethod
-    click TextureMethod href "../TextureMethod"
+    click TextureMethod href "../TextureMethod/"
       Method <|-- TextureMethod
-        click Method href "../Method"
+        click Method href "../Method/"
       
       TextureMethod : analytic
         
@@ -36,7 +35,6 @@ URI: [analysis_api_schema:TextureMethod](https://w3id.org/MONet/analysis-api-sch
     * **TextureMethod**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -53,9 +51,13 @@ URI: [analysis_api_schema:TextureMethod](https://w3id.org/MONet/analysis-api-sch
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -81,7 +83,6 @@ URI: [analysis_api_schema:TextureMethod](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -92,7 +93,6 @@ URI: [analysis_api_schema:TextureMethod](https://w3id.org/MONet/analysis-api-sch
 ```yaml
 name: TextureMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 slots:
 - location
@@ -107,7 +107,6 @@ slots:
 ```yaml
 name: TextureMethod
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 attributes:
   location:

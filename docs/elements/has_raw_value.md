@@ -17,13 +17,12 @@ Alias: has_raw_value
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [QuantityValue](QuantityValue.md) | A quantity value with numeric value and optional unit |  no  |
-| [ControlledTermValue](ControlledTermValue.md) |  |  no  |
-| [ConditioningValue](ConditioningValue.md) |  |  no  |
 | [SoftwareControlledTermValue](SoftwareControlledTermValue.md) |  |  no  |
-| [TimestampValue](TimestampValue.md) |  |  no  |
+| [QuantityValue](QuantityValue.md) | A quantity value with numeric value and optional unit |  no  |
+| [ConditioningValue](ConditioningValue.md) |  |  no  |
 | [TextValue](TextValue.md) |  |  no  |
-
+| [ControlledTermValue](ControlledTermValue.md) |  |  no  |
+| [TimestampValue](TimestampValue.md) |  |  no  |
 
 
 
@@ -32,15 +31,28 @@ Alias: has_raw_value
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [TimestampValue](TimestampValue.md), [TextValue](TextValue.md), [SoftwareControlledTermValue](SoftwareControlledTermValue.md), [ControlledTermValue](ControlledTermValue.md), [QuantityValue](QuantityValue.md), [ConditioningValue](ConditioningValue.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

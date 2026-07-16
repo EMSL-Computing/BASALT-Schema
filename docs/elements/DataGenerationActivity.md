@@ -12,21 +12,20 @@ URI: [analysis_api_schema:DataGenerationActivity](https://w3id.org/MONet/analysi
 
 
 
-
 ```mermaid
  classDiagram
     class DataGenerationActivity
-    click DataGenerationActivity href "../DataGenerationActivity"
+    click DataGenerationActivity href "../DataGenerationActivity/"
       DataGenerationActivity <|-- RespirationDataGenerationActivity
-        click RespirationDataGenerationActivity href "../RespirationDataGenerationActivity"
-      DataGenerationActivity <|-- MassSpectrometryDataGenerationActivity
-        click MassSpectrometryDataGenerationActivity href "../MassSpectrometryDataGenerationActivity"
-      DataGenerationActivity <|-- PlateDataGenerationActivity
-        click PlateDataGenerationActivity href "../PlateDataGenerationActivity"
-      DataGenerationActivity <|-- NucleotideSequencing
-        click NucleotideSequencing href "../NucleotideSequencing"
+        click RespirationDataGenerationActivity href "../RespirationDataGenerationActivity/"
       DataGenerationActivity <|-- XRayDataGenerationActivity
-        click XRayDataGenerationActivity href "../XRayDataGenerationActivity"
+        click XRayDataGenerationActivity href "../XRayDataGenerationActivity/"
+      DataGenerationActivity <|-- MassSpectrometryDataGenerationActivity
+        click MassSpectrometryDataGenerationActivity href "../MassSpectrometryDataGenerationActivity/"
+      DataGenerationActivity <|-- PlateDataGenerationActivity
+        click PlateDataGenerationActivity href "../PlateDataGenerationActivity/"
+      DataGenerationActivity <|-- NucleotideSequencing
+        click NucleotideSequencing href "../NucleotideSequencing/"
       
       DataGenerationActivity : acquisition_end_time
         
@@ -36,11 +35,10 @@ URI: [analysis_api_schema:DataGenerationActivity](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    DataGenerationActivity --> "0..1" ProcessedSample : analyte_id
-    click ProcessedSample href "../ProcessedSample"
+        
+        
+        DataGenerationActivity --> "0..1" ProcessedSample : analyte_id
+        click ProcessedSample href "../ProcessedSample/"
     
 
         
@@ -48,20 +46,14 @@ URI: [analysis_api_schema:DataGenerationActivity](https://w3id.org/MONet/analysi
         
       DataGenerationActivity : id
         
-          
-    
-    
-
-        
       DataGenerationActivity : instrument_operator_id
         
           
     
-    
-    
-    
-    DataGenerationActivity --> "0..1" PersonValue : instrument_operator_id
-    click PersonValue href "../PersonValue"
+        
+        
+        DataGenerationActivity --> "0..1" PersonValue : instrument_operator_id
+        click PersonValue href "../PersonValue/"
     
 
         
@@ -69,11 +61,10 @@ URI: [analysis_api_schema:DataGenerationActivity](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    DataGenerationActivity --> "0..1" Instrument : instrument_used
-    click Instrument href "../Instrument"
+        
+        
+        DataGenerationActivity --> "0..1" Instrument : instrument_used
+        click Instrument href "../Instrument/"
     
 
         
@@ -95,11 +86,10 @@ URI: [analysis_api_schema:DataGenerationActivity](https://w3id.org/MONet/analysi
 ## Inheritance
 * **DataGenerationActivity**
     * [RespirationDataGenerationActivity](RespirationDataGenerationActivity.md)
+    * [XRayDataGenerationActivity](XRayDataGenerationActivity.md)
     * [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md)
     * [PlateDataGenerationActivity](PlateDataGenerationActivity.md)
     * [NucleotideSequencing](NucleotideSequencing.md)
-    * [XRayDataGenerationActivity](XRayDataGenerationActivity.md)
-
 
 
 ## Slots
@@ -111,7 +101,7 @@ URI: [analysis_api_schema:DataGenerationActivity](https://w3id.org/MONet/analysi
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | direct |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | direct |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [analyte_id](analyte_id.md) | 0..1 <br/> [ProcessedSample](ProcessedSample.md) |  | direct |
 | [acquisition_start_time](acquisition_start_time.md) | 1 <br/> [Datetime](Datetime.md) |  | direct |
 | [acquisition_end_time](acquisition_end_time.md) | 1 <br/> [Datetime](Datetime.md) |  | direct |
@@ -126,9 +116,13 @@ URI: [analysis_api_schema:DataGenerationActivity](https://w3id.org/MONet/analysi
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -154,7 +148,6 @@ URI: [analysis_api_schema:DataGenerationActivity](https://w3id.org/MONet/analysi
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -165,7 +158,6 @@ URI: [analysis_api_schema:DataGenerationActivity](https://w3id.org/MONet/analysi
 ```yaml
 name: DataGenerationActivity
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 slots:
 - sequence_order
@@ -299,7 +291,6 @@ attributes:
 ```yaml
 name: DataGenerationActivity
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 attributes:
   id:

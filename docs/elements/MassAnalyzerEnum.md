@@ -2,10 +2,9 @@
 
 
 
-URI: [MassAnalyzerEnum](MassAnalyzerEnum.md)
+URI: [analysis_api_schema:MassAnalyzerEnum](https://w3id.org/MONet/analysis-api-schema/MassAnalyzerEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | quadrupole | None |  |
@@ -29,9 +28,11 @@ URI: [MassAnalyzerEnum](MassAnalyzerEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

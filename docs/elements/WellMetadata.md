@@ -21,15 +21,14 @@ URI: [analysis_api_schema:WellMetadata](https://w3id.org/MONet/analysis-api-sche
 
 
 
-
 ```mermaid
  classDiagram
     class WellMetadata
-    click WellMetadata href "../WellMetadata"
+    click WellMetadata href "../WellMetadata/"
       WellMetadata <|-- AMP2WellMetadata
-        click AMP2WellMetadata href "../AMP2WellMetadata"
+        click AMP2WellMetadata href "../AMP2WellMetadata/"
       WellMetadata <|-- EcoplateWellMetadata
-        click EcoplateWellMetadata href "../EcoplateWellMetadata"
+        click EcoplateWellMetadata href "../EcoplateWellMetadata/"
       
       WellMetadata : position
         
@@ -48,7 +47,6 @@ URI: [analysis_api_schema:WellMetadata](https://w3id.org/MONet/analysis-api-sche
 * **WellMetadata**
     * [AMP2WellMetadata](AMP2WellMetadata.md)
     * [EcoplateWellMetadata](EcoplateWellMetadata.md)
-
 
 
 ## Slots
@@ -76,9 +74,13 @@ URI: [analysis_api_schema:WellMetadata](https://w3id.org/MONet/analysis-api-sche
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -104,7 +106,6 @@ URI: [analysis_api_schema:WellMetadata](https://w3id.org/MONet/analysis-api-sche
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -122,7 +123,6 @@ description: 'Base structure for per-well metadata in plate setup.
 
   Subclasses add type-specific fields.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   position:
     name: position
@@ -167,7 +167,6 @@ description: 'Base structure for per-well metadata in plate setup.
 
   Subclasses add type-specific fields.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   position:
     name: position

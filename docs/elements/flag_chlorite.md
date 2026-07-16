@@ -24,18 +24,37 @@ Alias: flag_chlorite
 
 
 
-
 ## Properties
 
-* Range: [ProcessedDataFlag](ProcessedDataFlag.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [ProcessedDataFlag](ProcessedDataFlag.md) |
+| Domain Of | [XRDPhaseProduct](XRDPhaseProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [XRDPhaseProduct](XRDPhaseProduct.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

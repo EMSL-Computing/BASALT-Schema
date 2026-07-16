@@ -2,10 +2,9 @@
 
 
 
-URI: [ProjectStatusEnum](ProjectStatusEnum.md)
+URI: [analysis_api_schema:ProjectStatusEnum](https://w3id.org/MONet/analysis-api-schema/ProjectStatusEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | STARTED | None |  |
@@ -29,9 +28,11 @@ URI: [ProjectStatusEnum](ProjectStatusEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

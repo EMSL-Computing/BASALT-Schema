@@ -29,18 +29,30 @@ Alias: uses_raw_ms_data
 
 
 
-
 ## Properties
 
-* Range: [MassSpectrometryInstrumentData](MassSpectrometryInstrumentData.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [MassSpectrometryInstrumentData](MassSpectrometryInstrumentData.md) |
+| Domain Of | [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

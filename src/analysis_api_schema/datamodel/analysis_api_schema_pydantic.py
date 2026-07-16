@@ -9498,6 +9498,462 @@ class WorkflowExecutionFunctionalAnnotation(ConfiguredBaseModel):
     count: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['WorkflowExecutionFunctionalAnnotation']} })
 
 
+class XRayDataGenerationActivity(DataGenerationActivity):
+    """
+    Abstract base class for X-ray analytical methods including XRF (elemental)
+    and XRD (mineralogical) analysis. Inherits acquisition_time, instrument_id,
+    protocol_url, analyte_id, and other core metadata from DataGenerationActivity.
+
+    Concrete subclasses define method-specific measurement parameters.
+    Future X-ray methods (e.g., XCT) can extend this class.
+
+    Shared patterns:
+      - Direct instrument output (no computational workflow) is typical for XRF
+      - XRD may optionally link to DataProcessingActivity for Rietveld refinement
+      - protocol_url should link to vendor SOP or EMSL internal protocol documentation
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://w3id.org/MONet/analysis-api-schema'})
+
+    sequence_order: Optional[int] = Field(default=None, description="""Integer ordering within a temporal series for the same analyte.
+Lower = earlier in series. Use when acquisition_time alone is insufficient.
+
+DDL: ALTER TABLE \"DataGenerationActivity\"
+       ADD COLUMN sequence_order INTEGER;""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'LabProcessingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerAxis',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'biological_entity',
+                       'Study',
+                       'SoftwareControlledTermValue']} })
+    description: Optional[str] = Field(default=None, title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'LabProcessingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'OntologyClass',
+                       'ContainerType',
+                       'LabDevice',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'biological_entity',
+                       'Study',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'QuantityValue']} })
+    protocol_url: Optional[str] = Field(default=None, description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessing']} })
+    protocol_version: Optional[str] = Field(default=None, description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessing']} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'LabProcessingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'MAOMProduct',
+                       'WEOMProduct',
+                       'Site',
+                       'Sample',
+                       'AerosolArmSample',
+                       'AerosolSample',
+                       'AMP2UserSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'EngineeredStrainSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'ProcessedSample',
+                       'CoreSection',
+                       'SamplingActivity',
+                       'AerosolArmSamplingActivity',
+                       'AerosolSamplingActivity',
+                       'CommerciallyPurchasedSamplingActivity',
+                       'CultureEnvironmentalSamplingActivity',
+                       'EngineeredStrainSamplingActivity',
+                       'FieldDeployedTerraformSamplingActivity',
+                       'MixedCultureSamplingActivity',
+                       'MonetSoilSamplingActivity',
+                       'OtherUndescribedSamplingActivity',
+                       'PlantSamplingActivity',
+                       'PureCultureSamplingActivity',
+                       'SedimentSamplingActivity',
+                       'SoilSamplingActivity',
+                       'SynthesizedMaterialSamplingActivity',
+                       'TerraformSamplingActivity',
+                       'WaterSamplingActivity',
+                       'biological_entity',
+                       'Study',
+                       'ProjectParticipant',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'PersonValue',
+                       'QuantityValue',
+                       'ConditioningValue',
+                       'zipDownload']} })
+    analyte_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    acquisition_start_time: datetime  = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    acquisition_end_time: datetime  = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    instrument_used: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    instrument_operator_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+
+
+class XRFDataGenerationActivity(XRayDataGenerationActivity):
+    """
+    X-ray Fluorescence (XRF) elemental analysis activity.
+
+    XRF measures elemental composition by detecting characteristic X-ray emissions
+    from a sample bombarded with high-energy X-rays. Typical output: concentrations
+    of 10-30 elements per sample (Ni, Pb, As, Cr, Fe, Ca, K, etc.).
+
+    Data product: XRFElementalProduct (one row per element per sample)
+
+    Workflow pattern: Direct instrument output (no computational processing step)
+      processedSample -> XRFDataGenerationActivity -> XRFElementalProduct (workflow_id = NULL)
+
+    Protocol information: Stored externally; link via protocol_url attribute.
+    Example protocol parameters (stored in external SOP or DataProcessingActivity
+    if computational correction is needed):
+      - Beam voltage (kV), beam current (mA)
+      - Measurement duration (seconds)
+      - Matrix correction method (fundamental parameters, empirical)
+      - Calibration date
+      - Operator ID
+
+    Required enum additions to enums.yaml:
+      routemethod:
+        xrf_analysis:  # Add to routemethod permissible_values
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema'})
+
+    sequence_order: Optional[int] = Field(default=None, description="""Integer ordering within a temporal series for the same analyte.
+Lower = earlier in series. Use when acquisition_time alone is insufficient.
+
+DDL: ALTER TABLE \"DataGenerationActivity\"
+       ADD COLUMN sequence_order INTEGER;""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'LabProcessingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerAxis',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'biological_entity',
+                       'Study',
+                       'SoftwareControlledTermValue']} })
+    description: Optional[str] = Field(default=None, title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'LabProcessingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'OntologyClass',
+                       'ContainerType',
+                       'LabDevice',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'biological_entity',
+                       'Study',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'QuantityValue']} })
+    protocol_url: Optional[str] = Field(default=None, description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessing']} })
+    protocol_version: Optional[str] = Field(default=None, description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessing']} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'LabProcessingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'MAOMProduct',
+                       'WEOMProduct',
+                       'Site',
+                       'Sample',
+                       'AerosolArmSample',
+                       'AerosolSample',
+                       'AMP2UserSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'EngineeredStrainSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'ProcessedSample',
+                       'CoreSection',
+                       'SamplingActivity',
+                       'AerosolArmSamplingActivity',
+                       'AerosolSamplingActivity',
+                       'CommerciallyPurchasedSamplingActivity',
+                       'CultureEnvironmentalSamplingActivity',
+                       'EngineeredStrainSamplingActivity',
+                       'FieldDeployedTerraformSamplingActivity',
+                       'MixedCultureSamplingActivity',
+                       'MonetSoilSamplingActivity',
+                       'OtherUndescribedSamplingActivity',
+                       'PlantSamplingActivity',
+                       'PureCultureSamplingActivity',
+                       'SedimentSamplingActivity',
+                       'SoilSamplingActivity',
+                       'SynthesizedMaterialSamplingActivity',
+                       'TerraformSamplingActivity',
+                       'WaterSamplingActivity',
+                       'biological_entity',
+                       'Study',
+                       'ProjectParticipant',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'PersonValue',
+                       'QuantityValue',
+                       'ConditioningValue',
+                       'zipDownload']} })
+    analyte_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    acquisition_start_time: datetime  = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    acquisition_end_time: datetime  = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    instrument_used: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    instrument_operator_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+
+
+class XRDDataGenerationActivity(XRayDataGenerationActivity):
+    """
+    X-ray Diffraction (XRD) mineralogical analysis activity.
+
+    XRD identifies crystalline mineral phases by measuring diffraction patterns.
+    Output: mineral phase names and quantitative abundances (weight %).
+
+    Data product: XRDPhaseProduct (one row per mineral phase per sample)
+
+    Workflow patterns:
+      1. Direct/semi-quantitative: 
+           processedSample -> XRDDataGenerationActivity -> XRDPhaseProduct (workflow_id = NULL)
+      2. With Rietveld refinement (computational):
+           processedSample -> XRDDataGenerationActivity -> 
+           DataProcessingActivity(type='xrd_rietveld_refinement') -> 
+           XRDPhaseProduct (workflow_id = refinement WEA)
+
+    Protocol information: Stored externally; link via protocol_url attribute.
+    Example protocol parameters (stored in external SOP or DataProcessingActivity):
+      - Diffractometer geometry (Bragg-Brentano, Debye-Scherrer)
+      - X-ray tube type (Cu, Co, Mo)
+      - Scan range (2-theta degrees), step size
+      - Refinement software (HighScore Plus, GSAS-II, FullProf)
+      - R-factor, GOF (goodness of fit)
+
+    Required enum additions to enums.yaml:
+      routemethod:
+        xrd_analysis:  # Add to routemethod permissible_values
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema'})
+
+    sequence_order: Optional[int] = Field(default=None, description="""Integer ordering within a temporal series for the same analyte.
+Lower = earlier in series. Use when acquisition_time alone is insufficient.
+
+DDL: ALTER TABLE \"DataGenerationActivity\"
+       ADD COLUMN sequence_order INTEGER;""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'LabProcessingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerAxis',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'biological_entity',
+                       'Study',
+                       'SoftwareControlledTermValue']} })
+    description: Optional[str] = Field(default=None, title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'LabProcessingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'OntologyClass',
+                       'ContainerType',
+                       'LabDevice',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'biological_entity',
+                       'Study',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'QuantityValue']} })
+    protocol_url: Optional[str] = Field(default=None, description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessing']} })
+    protocol_version: Optional[str] = Field(default=None, description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessing']} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'LabProcessingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'MAOMProduct',
+                       'WEOMProduct',
+                       'Site',
+                       'Sample',
+                       'AerosolArmSample',
+                       'AerosolSample',
+                       'AMP2UserSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'EngineeredStrainSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'ProcessedSample',
+                       'CoreSection',
+                       'SamplingActivity',
+                       'AerosolArmSamplingActivity',
+                       'AerosolSamplingActivity',
+                       'CommerciallyPurchasedSamplingActivity',
+                       'CultureEnvironmentalSamplingActivity',
+                       'EngineeredStrainSamplingActivity',
+                       'FieldDeployedTerraformSamplingActivity',
+                       'MixedCultureSamplingActivity',
+                       'MonetSoilSamplingActivity',
+                       'OtherUndescribedSamplingActivity',
+                       'PlantSamplingActivity',
+                       'PureCultureSamplingActivity',
+                       'SedimentSamplingActivity',
+                       'SoilSamplingActivity',
+                       'SynthesizedMaterialSamplingActivity',
+                       'TerraformSamplingActivity',
+                       'WaterSamplingActivity',
+                       'biological_entity',
+                       'Study',
+                       'ProjectParticipant',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'PersonValue',
+                       'QuantityValue',
+                       'ConditioningValue',
+                       'zipDownload']} })
+    analyte_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    acquisition_start_time: datetime  = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    acquisition_end_time: datetime  = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    instrument_used: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    instrument_operator_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+
+
 class BulkDensityProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
@@ -34814,6 +35270,9 @@ EcoplatePlateSetupActivity.model_rebuild()
 ProcessingSampleLink.model_rebuild()
 InstrumentCustodian.model_rebuild()
 WorkflowExecutionFunctionalAnnotation.model_rebuild()
+XRayDataGenerationActivity.model_rebuild()
+XRFDataGenerationActivity.model_rebuild()
+XRDDataGenerationActivity.model_rebuild()
 BulkDensityProduct.model_rebuild()
 ElementalAnalysisProduct.model_rebuild()
 EnzymeProduct.model_rebuild()

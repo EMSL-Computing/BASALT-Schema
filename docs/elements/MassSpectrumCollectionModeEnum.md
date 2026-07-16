@@ -2,10 +2,9 @@
 
 
 
-URI: [MassSpectrumCollectionModeEnum](MassSpectrumCollectionModeEnum.md)
+URI: [analysis_api_schema:MassSpectrumCollectionModeEnum](https://w3id.org/MONet/analysis-api-schema/MassSpectrumCollectionModeEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | full_profile | None |  |
@@ -26,9 +25,11 @@ URI: [MassSpectrumCollectionModeEnum](MassSpectrumCollectionModeEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

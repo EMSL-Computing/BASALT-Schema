@@ -10,11 +10,10 @@ URI: [analysis_api_schema:TimestampValue](https://w3id.org/MONet/analysis-api-sc
 
 
 
-
 ```mermaid
  classDiagram
     class TimestampValue
-    click TimestampValue href "../TimestampValue"
+    click TimestampValue href "../TimestampValue/"
       TimestampValue : description
         
       TimestampValue : has_raw_value
@@ -28,7 +27,6 @@ URI: [analysis_api_schema:TimestampValue](https://w3id.org/MONet/analysis-api-sc
 
 
 <!-- no inheritance hierarchy -->
-
 
 ## Slots
 
@@ -47,9 +45,13 @@ URI: [analysis_api_schema:TimestampValue](https://w3id.org/MONet/analysis-api-sc
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -75,7 +77,6 @@ URI: [analysis_api_schema:TimestampValue](https://w3id.org/MONet/analysis-api-sc
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -86,7 +87,6 @@ URI: [analysis_api_schema:TimestampValue](https://w3id.org/MONet/analysis-api-sc
 ```yaml
 name: TimestampValue
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 slots:
 - description
 attributes:
@@ -218,7 +218,6 @@ attributes:
 ```yaml
 name: TimestampValue
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

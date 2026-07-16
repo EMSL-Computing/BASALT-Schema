@@ -24,20 +24,38 @@ Alias: processing_id
 
 
 
-
 ## Properties
 
-* Range: [SampleProcessing](SampleProcessing.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [SampleProcessing](SampleProcessing.md) |
+| Domain Of | [ProcessingSampleLink](ProcessingSampleLink.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [ProcessingSampleLink](ProcessingSampleLink.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -68,7 +86,6 @@ Alias: processing_id
 name: processing_id
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
-identifier: true
 alias: processing_id
 owner: ProcessingSampleLink
 domain_of:

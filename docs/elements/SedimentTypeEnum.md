@@ -7,10 +7,9 @@ _Types of sediment_
 
 
 
-URI: [SedimentTypeEnum](SedimentTypeEnum.md)
+URI: [analysis_api_schema:SedimentTypeEnum](https://w3id.org/MONet/analysis-api-schema/SedimentTypeEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | biogenous | None | Biogenous sediment |
@@ -32,9 +31,11 @@ URI: [SedimentTypeEnum](SedimentTypeEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

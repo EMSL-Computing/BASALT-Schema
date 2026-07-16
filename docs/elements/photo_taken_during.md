@@ -24,18 +24,37 @@ Alias: photo_taken_during
 
 
 
-
 ## Properties
 
-* Range: [SamplingActivity](SamplingActivity.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [SamplingActivity](SamplingActivity.md) |
+| Domain Of | [SitePhoto](SitePhoto.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [SitePhoto](SitePhoto.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

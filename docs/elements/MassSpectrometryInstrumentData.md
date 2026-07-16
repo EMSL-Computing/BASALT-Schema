@@ -15,13 +15,12 @@ URI: [analysis_api_schema:MassSpectrometryInstrumentData](https://w3id.org/MONet
 
 
 
-
 ```mermaid
  classDiagram
     class MassSpectrometryInstrumentData
-    click MassSpectrometryInstrumentData href "../MassSpectrometryInstrumentData"
+    click MassSpectrometryInstrumentData href "../MassSpectrometryInstrumentData/"
       InstrumentData <|-- MassSpectrometryInstrumentData
-        click InstrumentData href "../InstrumentData"
+        click InstrumentData href "../InstrumentData/"
       
       MassSpectrometryInstrumentData : alternative_identifiers
         
@@ -29,11 +28,10 @@ URI: [analysis_api_schema:MassSpectrometryInstrumentData](https://w3id.org/MONet
         
           
     
-    
-    
-    
-    MassSpectrometryInstrumentData --> "0..1" MassSpectrumCollectionModeEnum : collection_mode
-    click MassSpectrumCollectionModeEnum href "../MassSpectrumCollectionModeEnum"
+        
+        
+        MassSpectrometryInstrumentData --> "0..1" MassSpectrumCollectionModeEnum : collection_mode
+        click MassSpectrumCollectionModeEnum href "../MassSpectrumCollectionModeEnum/"
     
 
         
@@ -43,11 +41,10 @@ URI: [analysis_api_schema:MassSpectrometryInstrumentData](https://w3id.org/MONet
         
           
     
-    
-    
-    
-    MassSpectrometryInstrumentData --> "0..1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        MassSpectrometryInstrumentData --> "0..1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -59,11 +56,10 @@ URI: [analysis_api_schema:MassSpectrometryInstrumentData](https://w3id.org/MONet
         
           
     
-    
-    
-    
-    MassSpectrometryInstrumentData --> "0..1" FileTypeEnum : file_type
-    click FileTypeEnum href "../FileTypeEnum"
+        
+        
+        MassSpectrometryInstrumentData --> "0..1" FileTypeEnum : file_type
+        click FileTypeEnum href "../FileTypeEnum/"
     
 
         
@@ -71,22 +67,16 @@ URI: [analysis_api_schema:MassSpectrometryInstrumentData](https://w3id.org/MONet
         
       MassSpectrometryInstrumentData : id
         
-          
-    
-    
-
-        
       MassSpectrometryInstrumentData : md5checksum
         
       MassSpectrometryInstrumentData : ms_raw_file_type
         
           
     
-    
-    
-    
-    MassSpectrometryInstrumentData --> "0..1" MassSpecRawFileTypeEnum : ms_raw_file_type
-    click MassSpecRawFileTypeEnum href "../MassSpecRawFileTypeEnum"
+        
+        
+        MassSpectrometryInstrumentData --> "0..1" MassSpecRawFileTypeEnum : ms_raw_file_type
+        click MassSpecRawFileTypeEnum href "../MassSpecRawFileTypeEnum/"
     
 
         
@@ -96,11 +86,10 @@ URI: [analysis_api_schema:MassSpectrometryInstrumentData](https://w3id.org/MONet
         
           
     
-    
-    
-    
-    MassSpectrometryInstrumentData --> "0..1" MassSpectrometryDataGenerationActivity : produced_by_ms_run
-    click MassSpectrometryDataGenerationActivity href "../MassSpectrometryDataGenerationActivity"
+        
+        
+        MassSpectrometryInstrumentData --> "0..1" MassSpectrometryDataGenerationActivity : produced_by_ms_run
+        click MassSpectrometryDataGenerationActivity href "../MassSpectrometryDataGenerationActivity/"
     
 
         
@@ -131,7 +120,6 @@ URI: [analysis_api_schema:MassSpectrometryInstrumentData](https://w3id.org/MONet
         * **MassSpectrometryInstrumentData**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -155,7 +143,7 @@ URI: [analysis_api_schema:MassSpectrometryInstrumentData](https://w3id.org/MONet
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | [DataProduct](DataProduct.md) |
 | [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | [DataProduct](DataProduct.md) |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProduct](DataProduct.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProduct](DataProduct.md) |
 
 
 
@@ -173,9 +161,13 @@ URI: [analysis_api_schema:MassSpectrometryInstrumentData](https://w3id.org/MONet
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -201,7 +193,6 @@ URI: [analysis_api_schema:MassSpectrometryInstrumentData](https://w3id.org/MONet
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -213,7 +204,6 @@ URI: [analysis_api_schema:MassSpectrometryInstrumentData](https://w3id.org/MONet
 name: MassSpectrometryInstrumentData
 description: Raw data files output from a mass spectrometry instrument.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: InstrumentData
 slots:
 - produced_by_ms_run
@@ -230,7 +220,6 @@ slots:
 name: MassSpectrometryInstrumentData
 description: Raw data files output from a mass spectrometry instrument.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: InstrumentData
 attributes:
   produced_by_ms_run:
@@ -384,8 +373,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: MassSpectrometryInstrumentData
     domain_of:
     - DataProduct

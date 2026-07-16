@@ -22,24 +22,23 @@ Alias: measure_type
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [IonsAnalysisProduct](IonsAnalysisProduct.md) |  |  no  |
-| [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) |  |  no  |
-| [ElementalAnalysisProduct](ElementalAnalysisProduct.md) |  |  no  |
-| [PHProduct](PHProduct.md) |  |  no  |
-| [TextureProduct](TextureProduct.md) |  |  no  |
-| [XRFElementalProduct](XRFElementalProduct.md) | X-ray Fluorescence (XRF) elemental concentration data |  no  |
-| [WEOMProduct](WEOMProduct.md) |  |  no  |
-| [XRDPhaseProduct](XRDPhaseProduct.md) | X-ray Diffraction (XRD) mineral phase identification and quantification data |  no  |
-| [MAOMProduct](MAOMProduct.md) |  |  no  |
-| [RespirationProduct](RespirationProduct.md) |  |  no  |
-| [BulkDensityProduct](BulkDensityProduct.md) |  |  no  |
-| [MicrobialBiomassProduct](MicrobialBiomassProduct.md) |  |  no  |
-| [GWCMoistureProduct](GWCMoistureProduct.md) |  |  no  |
-| [TomographyProduct](TomographyProduct.md) |  |  no  |
 | [HydraulicPropertiesProduct](HydraulicPropertiesProduct.md) | Soil hydraulic parameters derived from HYPROP evaporation-experiment data |  no  |
-| [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) |  |  no  |
 | [EnzymeProduct](EnzymeProduct.md) |  |  no  |
-
+| [TextureProduct](TextureProduct.md) |  |  no  |
+| [PHProduct](PHProduct.md) |  |  no  |
+| [XRDPhaseProduct](XRDPhaseProduct.md) | X-ray Diffraction (XRD) mineral phase identification and quantification data |  no  |
+| [XRFElementalProduct](XRFElementalProduct.md) | X-ray Fluorescence (XRF) elemental concentration data |  no  |
+| [MicrobialBiomassProduct](MicrobialBiomassProduct.md) |  |  no  |
+| [TomographyProduct](TomographyProduct.md) |  |  no  |
+| [BulkDensityProduct](BulkDensityProduct.md) |  |  no  |
+| [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) |  |  no  |
+| [WEOMProduct](WEOMProduct.md) |  |  no  |
+| [ElementalAnalysisProduct](ElementalAnalysisProduct.md) |  |  no  |
+| [GWCMoistureProduct](GWCMoistureProduct.md) |  |  no  |
+| [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) |  |  no  |
+| [RespirationProduct](RespirationProduct.md) |  |  no  |
+| [MAOMProduct](MAOMProduct.md) |  |  no  |
+| [IonsAnalysisProduct](IonsAnalysisProduct.md) |  |  no  |
 
 
 
@@ -48,15 +47,28 @@ Alias: measure_type
 
 ## Properties
 
-* Range: [ProductMeasureType](ProductMeasureType.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [ProductMeasureType](ProductMeasureType.md) |
+| Domain Of | [BulkDensityProduct](BulkDensityProduct.md), [ElementalAnalysisProduct](ElementalAnalysisProduct.md), [EnzymeProduct](EnzymeProduct.md), [GWCMoistureProduct](GWCMoistureProduct.md), [HydraulicPropertiesProduct](HydraulicPropertiesProduct.md), [IonsAnalysisProduct](IonsAnalysisProduct.md), [MAOMProduct](MAOMProduct.md), [MicrobialBiomassProduct](MicrobialBiomassProduct.md), [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md), [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md), [RespirationProduct](RespirationProduct.md), [TextureProduct](TextureProduct.md), [TomographyProduct](TomographyProduct.md), [WEOMProduct](WEOMProduct.md), [PHProduct](PHProduct.md), [XRFElementalProduct](XRFElementalProduct.md), [XRDPhaseProduct](XRDPhaseProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

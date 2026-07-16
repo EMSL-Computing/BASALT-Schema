@@ -17,20 +17,19 @@ Alias: analytic
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [KuoMethod](KuoMethod.md) |  |  no  |
-| [PHMethod](PHMethod.md) |  |  no  |
 | [BulkDensityMethod](BulkDensityMethod.md) |  |  no  |
-| [GravimetricWaterContentMethod](GravimetricWaterContentMethod.md) |  |  no  |
-| [TextureMethod](TextureMethod.md) |  |  no  |
-| [HydraulicPropertiesMethod](HydraulicPropertiesMethod.md) |  |  no  |
-| [XrayComputedTomographyMethod](XrayComputedTomographyMethod.md) |  |  no  |
 | [ElementalAnalysisMethod](ElementalAnalysisMethod.md) |  |  no  |
-| [RespirationMethod](RespirationMethod.md) |  |  no  |
-| [TOCTNMethod](TOCTNMethod.md) |  |  no  |
-| [MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |  no  |
+| [XrayComputedTomographyMethod](XrayComputedTomographyMethod.md) |  |  no  |
 | [EnzymeActivityMethod](EnzymeActivityMethod.md) |  |  no  |
+| [GravimetricWaterContentMethod](GravimetricWaterContentMethod.md) |  |  no  |
 | [Method](Method.md) |  |  no  |
-
+| [HydraulicPropertiesMethod](HydraulicPropertiesMethod.md) |  |  no  |
+| [KuoMethod](KuoMethod.md) |  |  no  |
+| [TOCTNMethod](TOCTNMethod.md) |  |  no  |
+| [PHMethod](PHMethod.md) |  |  no  |
+| [RespirationMethod](RespirationMethod.md) |  |  no  |
+| [MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |  no  |
+| [TextureMethod](TextureMethod.md) |  |  no  |
 
 
 
@@ -39,9 +38,21 @@ Alias: analytic
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [Method](Method.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+
+
+
 
 
 
@@ -51,9 +62,9 @@ Alias: analytic
 
 * what does this mean
 
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -7,24 +7,23 @@ _USDA soil taxonomy classifications_
 
 
 
-URI: [SoilTypeEnum](SoilTypeEnum.md)
+URI: [analysis_api_schema:SoilTypeEnum](https://w3id.org/MONet/analysis-api-schema/SoilTypeEnum)
 
 ## Permissible Values
-
-| Value | Meaning | Description |
-| --- | --- | --- |
-| alfisol | None |  |
-| andisol | None |  |
-| aridisol | None |  |
-| entisol | None |  |
-| gelisol | None |  |
-| histosol | None |  |
-| inceptisol | None |  |
-| mollisol | None |  |
-| oxisol | None |  |
-| spodosol | None |  |
-| ultisol | None |  |
-| vertisol | None |  |
+| Value | Meaning | Description | Additional Info |
+| --- | --- | --- | --- |
+| alfisol | None |  | Title: Alfisol<br>|
+| andisol | None |  | Title: Andisol<br>|
+| aridisol | None |  | Title: Aridisol<br>|
+| entisol | None |  | Title: Entisol<br>|
+| gelisol | None |  | Title: Gelisol<br>|
+| histosol | None |  | Title: Histosol<br>|
+| inceptisol | None |  | Title: Inceptisol<br>|
+| mollisol | None |  | Title: Mollisol<br>|
+| oxisol | None |  | Title: Oxisol<br>|
+| spodosol | None |  | Title: Spodosol<br>|
+| ultisol | None |  | Title: Ultisol<br>|
+| vertisol | None |  | Title: Vertisol<br>|
 
 
 
@@ -40,9 +39,11 @@ URI: [SoilTypeEnum](SoilTypeEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

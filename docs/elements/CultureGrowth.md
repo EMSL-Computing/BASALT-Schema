@@ -21,38 +21,36 @@ URI: [analysis_api_schema:CultureGrowth](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ```mermaid
  classDiagram
     class CultureGrowth
-    click CultureGrowth href "../CultureGrowth"
+    click CultureGrowth href "../CultureGrowth/"
       HasIncubationConditions <|-- CultureGrowth
-        click HasIncubationConditions href "../HasIncubationConditions"
+        click HasIncubationConditions href "../HasIncubationConditions/"
       SampleProcessing <|-- CultureGrowth
-        click SampleProcessing href "../SampleProcessing"
+        click SampleProcessing href "../SampleProcessing/"
       
 
       CultureGrowth <|-- StrainPurity
-        click StrainPurity href "../StrainPurity"
+        click StrainPurity href "../StrainPurity/"
       CultureGrowth <|-- StockCulturePreparation
-        click StockCulturePreparation href "../StockCulturePreparation"
+        click StockCulturePreparation href "../StockCulturePreparation/"
       CultureGrowth <|-- PreCultureGrowth
-        click PreCultureGrowth href "../PreCultureGrowth"
+        click PreCultureGrowth href "../PreCultureGrowth/"
       CultureGrowth <|-- ExperimentalCulture
-        click ExperimentalCulture href "../ExperimentalCulture"
+        click ExperimentalCulture href "../ExperimentalCulture/"
       
-      
+
       CultureGrowth : agitation_speed_rpm
         
       CultureGrowth : analysis_type
         
           
     
-    
-    
-    
-    CultureGrowth --> "0..1" RouteMethodEnum : analysis_type
-    click RouteMethodEnum href "../RouteMethodEnum"
+        
+        
+        CultureGrowth --> "0..1" RouteMethodEnum : analysis_type
+        click RouteMethodEnum href "../RouteMethodEnum/"
     
 
         
@@ -60,11 +58,10 @@ URI: [analysis_api_schema:CultureGrowth](https://w3id.org/MONet/analysis-api-sch
         
           
     
-    
-    
-    
-    CultureGrowth --> "0..1" BiologicalEntity : biological_entity_ref
-    click BiologicalEntity href "../BiologicalEntity"
+        
+        
+        CultureGrowth --> "0..1" BiologicalEntity : biological_entity_ref
+        click BiologicalEntity href "../BiologicalEntity/"
     
 
         
@@ -74,22 +71,16 @@ URI: [analysis_api_schema:CultureGrowth](https://w3id.org/MONet/analysis-api-sch
         
       CultureGrowth : id
         
-          
-    
-    
-
-        
       CultureGrowth : incubation_time_hours
         
       CultureGrowth : method_name
         
           
     
-    
-    
-    
-    CultureGrowth --> "0..1" MethodNameEnum : method_name
-    click MethodNameEnum href "../MethodNameEnum"
+        
+        
+        CultureGrowth --> "0..1" MethodNameEnum : method_name
+        click MethodNameEnum href "../MethodNameEnum/"
     
 
         
@@ -97,11 +88,10 @@ URI: [analysis_api_schema:CultureGrowth](https://w3id.org/MONet/analysis-api-sch
         
           
     
-    
-    
-    
-    CultureGrowth --> "0..1" OxygenStatusEnum : oxygen_relationship
-    click OxygenStatusEnum href "../OxygenStatusEnum"
+        
+        
+        CultureGrowth --> "0..1" OxygenStatusEnum : oxygen_relationship
+        click OxygenStatusEnum href "../OxygenStatusEnum/"
     
 
         
@@ -117,11 +107,10 @@ URI: [analysis_api_schema:CultureGrowth](https://w3id.org/MONet/analysis-api-sch
         
           
     
-    
-    
-    
-    CultureGrowth --> "0..1" Sample : uses_sample
-    click Sample href "../Sample"
+        
+        
+        CultureGrowth --> "0..1" Sample : uses_sample
+        click Sample href "../Sample/"
     
 
         
@@ -141,7 +130,6 @@ URI: [analysis_api_schema:CultureGrowth](https://w3id.org/MONet/analysis-api-sch
         * [ExperimentalCulture](ExperimentalCulture.md)
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -155,7 +143,7 @@ URI: [analysis_api_schema:CultureGrowth](https://w3id.org/MONet/analysis-api-sch
 | [oxygen_relationship](oxygen_relationship.md) | 0..1 <br/> [OxygenStatusEnum](OxygenStatusEnum.md) | The relationship of the sample to oxygen, such as aerobic or anaerobic | [HasIncubationConditions](HasIncubationConditions.md) |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
-| [id](id.md) | 1 <br/> uuid |  | [SampleProcessing](SampleProcessing.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [analysis_type](analysis_type.md) | 0..1 <br/> [RouteMethodEnum](RouteMethodEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [method_name](method_name.md) | 0..1 <br/> [MethodNameEnum](MethodNameEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
 | [processing_steps](processing_steps.md) | 1 <br/> [String](String.md) |  | [SampleProcessing](SampleProcessing.md) |
@@ -169,9 +157,13 @@ URI: [analysis_api_schema:CultureGrowth](https://w3id.org/MONet/analysis-api-sch
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -197,7 +189,6 @@ URI: [analysis_api_schema:CultureGrowth](https://w3id.org/MONet/analysis-api-sch
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -211,7 +202,6 @@ description: "Abstract activity for growing cultures from samples or other cultu
   \nConcrete subclasses: StrainPurity, StockCulturePreparation, \nPreCultureGrowth,\
   \ ExperimentalCulture."
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: SampleProcessing
 mixins:
 - HasIncubationConditions
@@ -233,7 +223,6 @@ description: "Abstract activity for growing cultures from samples or other cultu
   \nConcrete subclasses: StrainPurity, StockCulturePreparation, \nPreCultureGrowth,\
   \ ExperimentalCulture."
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: SampleProcessing
 mixins:
 - HasIncubationConditions

@@ -45,18 +45,30 @@ Alias: parent_workflow_id
 
 
 
-
 ## Properties
 
-* Range: [DataProcessingActivity](DataProcessingActivity.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [DataProcessingActivity](DataProcessingActivity.md) |
+| Domain Of | [DataProcessingActivity](DataProcessingActivity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -29,18 +29,30 @@ Alias: ms_raw_file_type
 
 
 
-
 ## Properties
 
-* Range: [MassSpecRawFileTypeEnum](MassSpecRawFileTypeEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [MassSpecRawFileTypeEnum](MassSpecRawFileTypeEnum.md) |
+| Domain Of | [MassSpectrometryInstrumentData](MassSpectrometryInstrumentData.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -17,23 +17,21 @@ URI: [analysis_api_schema:MetaproteomicsProduct](https://w3id.org/MONet/analysis
 
 
 
-
 ```mermaid
  classDiagram
     class MetaproteomicsProduct
-    click MetaproteomicsProduct href "../MetaproteomicsProduct"
+    click MetaproteomicsProduct href "../MetaproteomicsProduct/"
       MassSpectrometryDataProduct <|-- MetaproteomicsProduct
-        click MassSpectrometryDataProduct href "../MassSpectrometryDataProduct"
+        click MassSpectrometryDataProduct href "../MassSpectrometryDataProduct/"
       
       MetaproteomicsProduct : core_section
         
           
     
-    
-    
-    
-    MetaproteomicsProduct --> "0..1" CoreSectionEnum : core_section
-    click CoreSectionEnum href "../CoreSectionEnum"
+        
+        
+        MetaproteomicsProduct --> "0..1" CoreSectionEnum : core_section
+        click CoreSectionEnum href "../CoreSectionEnum/"
     
 
         
@@ -42,11 +40,6 @@ URI: [analysis_api_schema:MetaproteomicsProduct](https://w3id.org/MONet/analysis
       MetaproteomicsProduct : filesize
         
       MetaproteomicsProduct : id
-        
-          
-    
-    
-
         
       MetaproteomicsProduct : lims_barcode
         
@@ -60,11 +53,10 @@ URI: [analysis_api_schema:MetaproteomicsProduct](https://w3id.org/MONet/analysis
         
           
     
-    
-    
-    
-    MetaproteomicsProduct --> "0..1" MassSpectrometryDataProcessingActivity : results_from_ms_processing
-    click MassSpectrometryDataProcessingActivity href "../MassSpectrometryDataProcessingActivity"
+        
+        
+        MetaproteomicsProduct --> "0..1" MassSpectrometryDataProcessingActivity : results_from_ms_processing
+        click MassSpectrometryDataProcessingActivity href "../MassSpectrometryDataProcessingActivity/"
     
 
         
@@ -78,11 +70,10 @@ URI: [analysis_api_schema:MetaproteomicsProduct](https://w3id.org/MONet/analysis
         
           
     
-    
-    
-    
-    MetaproteomicsProduct --> "0..1" Sample : sample_id
-    click Sample href "../Sample"
+        
+        
+        MetaproteomicsProduct --> "0..1" Sample : sample_id
+        click Sample href "../Sample/"
     
 
         
@@ -106,7 +97,6 @@ URI: [analysis_api_schema:MetaproteomicsProduct](https://w3id.org/MONet/analysis
             * **MetaproteomicsProduct**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -126,7 +116,13 @@ URI: [analysis_api_schema:MetaproteomicsProduct](https://w3id.org/MONet/analysis
 | [s3_key](s3_key.md) | 1 <br/> [String](String.md) | MinIO/S3 object key; required for all data products | [DataProduct](DataProduct.md) |
 | [filesize](filesize.md) | 0..1 <br/> [Integer](Integer.md) | Size of the file in bytes | [DataProduct](DataProduct.md) |
 | [md5checksum](md5checksum.md) | 0..1 <br/> [String](String.md) |  | [DataProduct](DataProduct.md) |
-| [id](id.md) | 1 <br/> uuid |  | [DataProduct](DataProduct.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [DataProduct](DataProduct.md) |
+
+
+
+
+
+
 
 
 
@@ -137,8 +133,6 @@ URI: [analysis_api_schema:MetaproteomicsProduct](https://w3id.org/MONet/analysis
 
 
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -164,7 +158,6 @@ URI: [analysis_api_schema:MetaproteomicsProduct](https://w3id.org/MONet/analysis
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -177,7 +170,6 @@ name: MetaproteomicsProduct
 description: Abstract parent class for processed metaproteomics data. Details and
   subclasses TBD.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: MassSpectrometryDataProduct
 abstract: true
 
@@ -192,7 +184,6 @@ name: MetaproteomicsProduct
 description: Abstract parent class for processed metaproteomics data. Details and
   subclasses TBD.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: MassSpectrometryDataProduct
 abstract: true
 attributes:
@@ -320,8 +311,14 @@ attributes:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
     from_schema: https://w3id.org/MONet/analysis-api-schema
+    aliases:
+    - study
+    - study_id
+    - project_id
+    - proposal
+    - proposal_id
     rank: 1000
-    alias: '[''study'', ''study_id'', ''project_id'', ''proposal'', ''proposal_id'']'
+    alias: project
     owner: MetaproteomicsProduct
     domain_of:
     - DataProduct

@@ -2,15 +2,14 @@
 
 
 
-URI: [NucleotideSequencingEnum](NucleotideSequencingEnum.md)
+URI: [analysis_api_schema:NucleotideSequencingEnum](https://w3id.org/MONet/analysis-api-schema/NucleotideSequencingEnum)
 
 ## Permissible Values
-
-| Value | Meaning | Description |
-| --- | --- | --- |
-| metagenome | None |  |
-| metatranscriptome | None |  |
-| amplicon_sequencing_assay | OBI:0002767 |  |
+| Value | Meaning | Description | Additional Info |
+| --- | --- | --- | --- |
+| metagenome | None |  | Title: Metagenome<br>|
+| metatranscriptome | None |  | Title: Metatranscriptome<br>|
+| amplicon_sequencing_assay | OBI:0002767 |  | Title: Amplicon<br>|
 
 
 
@@ -26,9 +25,11 @@ URI: [NucleotideSequencingEnum](NucleotideSequencingEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

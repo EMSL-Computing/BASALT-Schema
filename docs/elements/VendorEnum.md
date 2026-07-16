@@ -2,10 +2,9 @@
 
 
 
-URI: [VendorEnum](VendorEnum.md)
+URI: [analysis_api_schema:VendorEnum](https://w3id.org/MONet/analysis-api-schema/VendorEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | waters | None |  |
@@ -37,9 +36,11 @@ URI: [VendorEnum](VendorEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

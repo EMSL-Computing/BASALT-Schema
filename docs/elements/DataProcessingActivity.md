@@ -19,15 +19,14 @@ URI: [analysis_api_schema:DataProcessingActivity](https://w3id.org/MONet/analysi
 
 
 
-
 ```mermaid
  classDiagram
     class DataProcessingActivity
-    click DataProcessingActivity href "../DataProcessingActivity"
+    click DataProcessingActivity href "../DataProcessingActivity/"
       DataProcessingActivity <|-- MassSpectrometryDataProcessingActivity
-        click MassSpectrometryDataProcessingActivity href "../MassSpectrometryDataProcessingActivity"
+        click MassSpectrometryDataProcessingActivity href "../MassSpectrometryDataProcessingActivity/"
       DataProcessingActivity <|-- MetagenomicsDataProcessingActivity
-        click MetagenomicsDataProcessingActivity href "../MetagenomicsDataProcessingActivity"
+        click MetagenomicsDataProcessingActivity href "../MetagenomicsDataProcessingActivity/"
       
       DataProcessingActivity : description
         
@@ -37,30 +36,23 @@ URI: [analysis_api_schema:DataProcessingActivity](https://w3id.org/MONet/analysi
         
           
     
-    
-    
-    
-    DataProcessingActivity --> "0..1" ExecutionResourceEnum : execution_resource
-    click ExecutionResourceEnum href "../ExecutionResourceEnum"
+        
+        
+        DataProcessingActivity --> "0..1" ExecutionResourceEnum : execution_resource
+        click ExecutionResourceEnum href "../ExecutionResourceEnum/"
     
 
         
       DataProcessingActivity : id
         
-          
-    
-    
-
-        
       DataProcessingActivity : parent_workflow_id
         
           
     
-    
-    
-    
-    DataProcessingActivity --> "0..1" DataProcessingActivity : parent_workflow_id
-    click DataProcessingActivity href "../DataProcessingActivity"
+        
+        
+        DataProcessingActivity --> "0..1" DataProcessingActivity : parent_workflow_id
+        click DataProcessingActivity href "../DataProcessingActivity/"
     
 
         
@@ -87,7 +79,6 @@ URI: [analysis_api_schema:DataProcessingActivity](https://w3id.org/MONet/analysi
     * [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md)
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -95,7 +86,7 @@ URI: [analysis_api_schema:DataProcessingActivity](https://w3id.org/MONet/analysi
 | [parent_workflow_id](parent_workflow_id.md) | 0..1 <br/> [DataProcessingActivity](DataProcessingActivity.md) | Self-referential FK to the preceding DataProcessingActivity in a chain | direct |
 | [workflow_steps](workflow_steps.md) | 0..1 <br/> [String](String.md) | Per-run workflow parameters | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A human-readable description of the data analysis workflow | direct |
-| [id](id.md) | 1 <br/> uuid |  | direct |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [started_at_time](started_at_time.md) | 1 <br/> [Datetime](Datetime.md) |  | direct |
 | [ended_at_time](ended_at_time.md) | 0..1 <br/> [Datetime](Datetime.md) |  | direct |
 | [software_url](software_url.md) | 0..1 <br/> [String](String.md) |  | direct |
@@ -121,9 +112,13 @@ URI: [analysis_api_schema:DataProcessingActivity](https://w3id.org/MONet/analysi
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -149,7 +144,6 @@ URI: [analysis_api_schema:DataProcessingActivity](https://w3id.org/MONet/analysi
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -162,7 +156,6 @@ name: DataProcessingActivity
 description: "Abstract base for any data processing activity. Input data should \n\
   be specified on workflow subclasses."
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 slots:
 - parent_workflow_id
@@ -307,7 +300,6 @@ name: DataProcessingActivity
 description: "Abstract base for any data processing activity. Input data should \n\
   be specified on workflow subclasses."
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 abstract: true
 slot_usage:
   description:

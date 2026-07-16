@@ -2,10 +2,9 @@
 
 
 
-URI: [ChromatographyCategoryEnum](ChromatographyCategoryEnum.md)
+URI: [analysis_api_schema:ChromatographyCategoryEnum](https://w3id.org/MONet/analysis-api-schema/ChromatographyCategoryEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | liquid_chromatography | None |  |
@@ -26,9 +25,11 @@ URI: [ChromatographyCategoryEnum](ChromatographyCategoryEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

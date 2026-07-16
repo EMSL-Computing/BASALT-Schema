@@ -31,10 +31,23 @@ Alias: strain_source
 
 
 
-
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
 
 
 
@@ -46,9 +59,8 @@ Alias: strain_source
 
 
 
+
 ## Identifier and Mapping Information
-
-
 
 
 

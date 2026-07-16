@@ -2,10 +2,9 @@
 
 
 
-URI: [IonizationSourceEnum](IonizationSourceEnum.md)
+URI: [analysis_api_schema:IonizationSourceEnum](https://w3id.org/MONet/analysis-api-schema/IonizationSourceEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | electrospray_ionization | None |  |
@@ -28,9 +27,11 @@ URI: [IonizationSourceEnum](IonizationSourceEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

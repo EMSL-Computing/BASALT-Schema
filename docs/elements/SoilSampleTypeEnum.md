@@ -7,14 +7,13 @@ _Specific types of soil samples_
 
 
 
-URI: [SoilSampleTypeEnum](SoilSampleTypeEnum.md)
+URI: [analysis_api_schema:SoilSampleTypeEnum](https://w3id.org/MONet/analysis-api-schema/SoilSampleTypeEnum)
 
 ## Permissible Values
-
-| Value | Meaning | Description |
-| --- | --- | --- |
-| soil_core | None | Soil core sample |
-| surface_layer | None | Surface layer soil sample |
+| Value | Meaning | Description | Additional Info |
+| --- | --- | --- | --- |
+| soil_core | None | Soil core sample | Title: soil core<br>|
+| surface_layer | None | Surface layer soil sample | Title: surface layer<br>|
 
 
 
@@ -30,9 +29,11 @@ URI: [SoilSampleTypeEnum](SoilSampleTypeEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

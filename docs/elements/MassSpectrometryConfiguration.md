@@ -15,23 +15,21 @@ URI: [analysis_api_schema:MassSpectrometryConfiguration](https://w3id.org/MONet/
 
 
 
-
 ```mermaid
  classDiagram
     class MassSpectrometryConfiguration
-    click MassSpectrometryConfiguration href "../MassSpectrometryConfiguration"
+    click MassSpectrometryConfiguration href "../MassSpectrometryConfiguration/"
       Configuration <|-- MassSpectrometryConfiguration
-        click Configuration href "../Configuration"
+        click Configuration href "../Configuration/"
       
       MassSpectrometryConfiguration : acquisition_strategy
         
           
     
-    
-    
-    
-    MassSpectrometryConfiguration --> "0..1" MassSpectrometryAcquisitionStrategyEnum : acquisition_strategy
-    click MassSpectrometryAcquisitionStrategyEnum href "../MassSpectrometryAcquisitionStrategyEnum"
+        
+        
+        MassSpectrometryConfiguration --> "0..1" MassSpectrometryAcquisitionStrategyEnum : acquisition_strategy
+        click MassSpectrometryAcquisitionStrategyEnum href "../MassSpectrometryAcquisitionStrategyEnum/"
     
 
         
@@ -45,11 +43,10 @@ URI: [analysis_api_schema:MassSpectrometryConfiguration](https://w3id.org/MONet/
         
           
     
-    
-    
-    
-    MassSpectrometryConfiguration --> "0..1" FragmentationEnum : fragmentation
-    click FragmentationEnum href "../FragmentationEnum"
+        
+        
+        MassSpectrometryConfiguration --> "0..1" FragmentationEnum : fragmentation
+        click FragmentationEnum href "../FragmentationEnum/"
     
 
         
@@ -57,22 +54,16 @@ URI: [analysis_api_schema:MassSpectrometryConfiguration](https://w3id.org/MONet/
         
       MassSpectrometryConfiguration : id
         
-          
-    
-    
-
-        
       MassSpectrometryConfiguration : injection
         
       MassSpectrometryConfiguration : ionization
         
           
     
-    
-    
-    
-    MassSpectrometryConfiguration --> "1" IonizationSourceEnum : ionization
-    click IonizationSourceEnum href "../IonizationSourceEnum"
+        
+        
+        MassSpectrometryConfiguration --> "1" IonizationSourceEnum : ionization
+        click IonizationSourceEnum href "../IonizationSourceEnum/"
     
 
         
@@ -90,11 +81,10 @@ URI: [analysis_api_schema:MassSpectrometryConfiguration](https://w3id.org/MONet/
         
           
     
-    
-    
-    
-    MassSpectrometryConfiguration --> "1" PolarityEnum : polarity
-    click PolarityEnum href "../PolarityEnum"
+        
+        
+        MassSpectrometryConfiguration --> "1" PolarityEnum : polarity
+        click PolarityEnum href "../PolarityEnum/"
     
 
         
@@ -102,11 +92,10 @@ URI: [analysis_api_schema:MassSpectrometryConfiguration](https://w3id.org/MONet/
         
           
     
-    
-    
-    
-    MassSpectrometryConfiguration --> "1" MassSpecResolutionEnum : resolution
-    click MassSpecResolutionEnum href "../MassSpecResolutionEnum"
+        
+        
+        MassSpectrometryConfiguration --> "1" MassSpecResolutionEnum : resolution
+        click MassSpecResolutionEnum href "../MassSpecResolutionEnum/"
     
 
         
@@ -120,7 +109,6 @@ URI: [analysis_api_schema:MassSpectrometryConfiguration](https://w3id.org/MONet/
 ## Inheritance
 * [Configuration](Configuration.md)
     * **MassSpectrometryConfiguration**
-
 
 
 ## Slots
@@ -142,7 +130,7 @@ URI: [analysis_api_schema:MassSpectrometryConfiguration](https://w3id.org/MONet/
 | [lims_protocol_instance_id](lims_protocol_instance_id.md) | 0..1 <br/> [Integer](Integer.md) | Reference to the L7 protocol_instance that corresponds to this sample process... | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [Configuration](Configuration.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [Configuration](Configuration.md) |
-| [id](id.md) | 1 <br/> uuid |  | [Configuration](Configuration.md) |
+| [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [Configuration](Configuration.md) |
 
 
 
@@ -159,9 +147,13 @@ URI: [analysis_api_schema:MassSpectrometryConfiguration](https://w3id.org/MONet/
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -187,7 +179,6 @@ URI: [analysis_api_schema:MassSpectrometryConfiguration](https://w3id.org/MONet/
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -199,7 +190,6 @@ URI: [analysis_api_schema:MassSpectrometryConfiguration](https://w3id.org/MONet/
 name: MassSpectrometryConfiguration
 description: Instrument configuration and setup for a mass spectrometry run.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Configuration
 slots:
 - injection
@@ -226,7 +216,6 @@ slots:
 name: MassSpectrometryConfiguration
 description: Instrument configuration and setup for a mass spectrometry run.
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Configuration
 attributes:
   injection:

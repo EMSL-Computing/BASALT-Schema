@@ -7,10 +7,9 @@ _The polarity mode used in the mass spectrometry analysis._
 
 
 
-URI: [PolarityEnum](PolarityEnum.md)
+URI: [analysis_api_schema:PolarityEnum](https://w3id.org/MONet/analysis-api-schema/PolarityEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | positive | None |  |
@@ -30,9 +29,11 @@ URI: [PolarityEnum](PolarityEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

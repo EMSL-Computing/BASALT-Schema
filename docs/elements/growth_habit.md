@@ -30,18 +30,30 @@ Alias: growth_habit
 
 
 
-
 ## Properties
 
-* Range: [GrowthHabitEnum](GrowthHabitEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [GrowthHabitEnum](GrowthHabitEnum.md) |
+| Domain Of | [OtherUndescribedSample](OtherUndescribedSample.md), [PlantSample](PlantSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

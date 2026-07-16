@@ -10,13 +10,12 @@ URI: [analysis_api_schema:TOCTNMethod](https://w3id.org/MONet/analysis-api-schem
 
 
 
-
 ```mermaid
  classDiagram
     class TOCTNMethod
-    click TOCTNMethod href "../TOCTNMethod"
+    click TOCTNMethod href "../TOCTNMethod/"
       Method <|-- TOCTNMethod
-        click Method href "../Method"
+        click Method href "../Method/"
       
       TOCTNMethod : analytic
         
@@ -48,7 +47,6 @@ URI: [analysis_api_schema:TOCTNMethod](https://w3id.org/MONet/analysis-api-schem
     * **TOCTNMethod**
 
 
-
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
@@ -71,9 +69,13 @@ URI: [analysis_api_schema:TOCTNMethod](https://w3id.org/MONet/analysis-api-schem
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -99,7 +101,6 @@ URI: [analysis_api_schema:TOCTNMethod](https://w3id.org/MONet/analysis-api-schem
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -110,7 +111,6 @@ URI: [analysis_api_schema:TOCTNMethod](https://w3id.org/MONet/analysis-api-schem
 ```yaml
 name: TOC_TN_Method
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 slots:
 - location
@@ -178,7 +178,6 @@ attributes:
 ```yaml
 name: TOC_TN_Method
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 is_a: Method
 attributes:
   column:

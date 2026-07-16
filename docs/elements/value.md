@@ -29,20 +29,38 @@ Alias: value
 
 
 
-
 ## Properties
 
-* Range: [Float](Float.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [Float](Float.md) |
+| Domain Of | [WellReading](WellReading.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [WellReading](WellReading.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

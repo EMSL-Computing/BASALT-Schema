@@ -17,10 +17,9 @@ Alias: total_nitrogen_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WEOMProduct](WEOMProduct.md) |  |  no  |
 | [ElementalAnalysisProduct](ElementalAnalysisProduct.md) |  |  no  |
 | [MAOMProduct](MAOMProduct.md) |  |  no  |
-
+| [WEOMProduct](WEOMProduct.md) |  |  no  |
 
 
 
@@ -29,15 +28,28 @@ Alias: total_nitrogen_id
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [ElementalAnalysisProduct](ElementalAnalysisProduct.md), [MAOMProduct](MAOMProduct.md), [WEOMProduct](WEOMProduct.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

@@ -24,20 +24,38 @@ Alias: database
 
 
 
-
 ## Properties
 
-* Range: [AnnotationDatabaseEnum](AnnotationDatabaseEnum.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [AnnotationDatabaseEnum](AnnotationDatabaseEnum.md) |
+| Domain Of | [FunctionalAnnotationIdentifier](FunctionalAnnotationIdentifier.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [FunctionalAnnotationIdentifier](FunctionalAnnotationIdentifier.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

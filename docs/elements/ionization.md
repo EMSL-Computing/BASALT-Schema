@@ -29,20 +29,31 @@ Alias: ionization
 
 
 
-
 ## Properties
 
-* Range: [IonizationSourceEnum](IonizationSourceEnum.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [IonizationSourceEnum](IonizationSourceEnum.md) |
+| Domain Of | [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

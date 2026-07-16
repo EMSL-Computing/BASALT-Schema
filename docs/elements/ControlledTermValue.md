@@ -10,11 +10,10 @@ URI: [analysis_api_schema:ControlledTermValue](https://w3id.org/MONet/analysis-a
 
 
 
-
 ```mermaid
  classDiagram
     class ControlledTermValue
-    click ControlledTermValue href "../ControlledTermValue"
+    click ControlledTermValue href "../ControlledTermValue/"
       ControlledTermValue : controlled_term_provider
         
       ControlledTermValue : description
@@ -34,7 +33,6 @@ URI: [analysis_api_schema:ControlledTermValue](https://w3id.org/MONet/analysis-a
 
 
 <!-- no inheritance hierarchy -->
-
 
 ## Slots
 
@@ -65,9 +63,13 @@ URI: [analysis_api_schema:ControlledTermValue](https://w3id.org/MONet/analysis-a
 
 
 
+
+
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
@@ -93,7 +95,6 @@ URI: [analysis_api_schema:ControlledTermValue](https://w3id.org/MONet/analysis-a
 
 
 
-
 ## LinkML Source
 
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
@@ -104,7 +105,6 @@ URI: [analysis_api_schema:ControlledTermValue](https://w3id.org/MONet/analysis-a
 ```yaml
 name: ControlledTermValue
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 slots:
 - description
 attributes:
@@ -230,7 +230,6 @@ attributes:
 ```yaml
 name: ControlledTermValue
 from_schema: https://w3id.org/MONet/analysis-api-schema
-rank: 1000
 attributes:
   id:
     name: id

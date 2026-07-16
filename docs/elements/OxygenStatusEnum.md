@@ -7,10 +7,9 @@ _Oxygen status of samples_
 
 
 
-URI: [OxygenStatusEnum](OxygenStatusEnum.md)
+URI: [analysis_api_schema:OxygenStatusEnum](https://w3id.org/MONet/analysis-api-schema/OxygenStatusEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | aerobic | None | Aerobic conditions |
@@ -36,9 +35,11 @@ URI: [OxygenStatusEnum](OxygenStatusEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

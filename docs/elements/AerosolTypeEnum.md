@@ -7,10 +7,9 @@ _Types of aerosol samples_
 
 
 
-URI: [AerosolTypeEnum](AerosolTypeEnum.md)
+URI: [analysis_api_schema:AerosolTypeEnum](https://w3id.org/MONet/analysis-api-schema/AerosolTypeEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | sea_salt | None | Sea salt aerosol |
@@ -31,9 +30,11 @@ URI: [AerosolTypeEnum](AerosolTypeEnum.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 

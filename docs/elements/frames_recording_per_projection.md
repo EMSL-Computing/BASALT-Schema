@@ -24,20 +24,38 @@ Alias: frames_recording_per_projection
 
 
 
-
 ## Properties
 
-* Range: [Double](Double.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [Double](Double.md) |
+| Domain Of | [XrayComputedTomographyMethod](XrayComputedTomographyMethod.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [XrayComputedTomographyMethod](XrayComputedTomographyMethod.md) |
+
+
+
+
+
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
-
 
 
 

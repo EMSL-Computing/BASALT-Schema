@@ -2,10 +2,9 @@
 
 
 
-URI: [MetagenomicsSteps](MetagenomicsSteps.md)
+URI: [analysis_api_schema:MetagenomicsSteps](https://w3id.org/MONet/analysis-api-schema/MetagenomicsSteps)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | ReadQcAnalysis | None |  |
@@ -30,9 +29,11 @@ URI: [MetagenomicsSteps](MetagenomicsSteps.md)
 
 
 
+
+
+
+
 ## Identifier and Mapping Information
-
-
 
 
 
