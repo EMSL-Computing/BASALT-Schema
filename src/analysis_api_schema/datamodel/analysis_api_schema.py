@@ -1,5 +1,5 @@
 # Auto generated from analysis_api_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-14T16:14:19
+# Generation date: 2026-07-16T09:21:34
 # Schema: analysis-api-schema
 #
 # id: https://w3id.org/MONet/analysis-api-schema
@@ -805,6 +805,10 @@ class InstrumentData(DataProduct):
 
 @dataclass(repr=False)
 class SitePhoto(DataProduct):
+    """
+    A data product representing a photo of a site, typically taken during sampling.
+    One row per photo with metadata about the photo type and when it was taken.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["SitePhoto"]
@@ -835,6 +839,10 @@ class SitePhoto(DataProduct):
 
 @dataclass(repr=False)
 class DataGenerationActivity(YAMLRoot):
+    """
+    Abstract base for any data generation activity (physical to digital). Input data should
+    be specified on workflow subclasses.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["DataGenerationActivity"]
@@ -933,7 +941,7 @@ class RespirationDataGenerationActivity(DataGenerationActivity):
 @dataclass(repr=False)
 class DataProcessingActivity(YAMLRoot):
     """
-    Abstract base for any data processing activity. Input data should
+    Abstract base for any data processing activity (digital to digital). Input data should
     be specified on workflow subclasses.
     """
     _inherited_slots: ClassVar[list[str]] = []
@@ -1297,6 +1305,12 @@ class InstrumentAlternativeIdentifier(YAMLRoot):
 
 @dataclass(repr=False)
 class LabDevice(YAMLRoot):
+    """
+    A lab device is a physical instrument or equipment used in a laboratory setting for conducting experiments,
+    measurements, or analyses. It can include various types of instruments such as microscopes, spectrometers,
+    centrifuges, and other specialized equipment. Lab devices are essential for performing scientific research and
+    obtaining accurate data.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["LabDevice"]
@@ -1333,6 +1347,10 @@ class LabDevice(YAMLRoot):
 
 @dataclass(repr=False)
 class SampleProcessing(YAMLRoot):
+    """
+    Abstract base for any sample processing activity (physical to physical). Input data should
+    be specified on workflow subclasses.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["SampleProcessing"]
@@ -1379,6 +1397,11 @@ class SampleProcessing(YAMLRoot):
 
 @dataclass(repr=False)
 class ProcessingSampleLink(YAMLRoot):
+    """
+    A link between a processed sample and the sample processing activity that produced it.
+    This class captures the relationship between a processed sample and the sample processing
+    activity that generated it, including the step number and role of the sample in the process.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["ProcessingSampleLink"]
@@ -1423,6 +1446,11 @@ class ProcessingSampleLink(YAMLRoot):
 
 @dataclass(repr=False)
 class InstrumentCustodian(YAMLRoot):
+    """
+    A link between an instrument and a custodian (person) responsible for it.
+    This class captures the relationship between an instrument and the person
+    who is responsible for its maintenance, calibration, and proper use.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["InstrumentCustodian"]
@@ -1449,6 +1477,11 @@ class InstrumentCustodian(YAMLRoot):
 
 @dataclass(repr=False)
 class WorkflowExecutionFunctionalAnnotation(YAMLRoot):
+    """
+    A link between a workflow execution and a functional annotation identifier.
+    This class captures the relationship between a workflow execution and the
+    functional annotation identifier that was used in the analysis.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["WorkflowExecutionFunctionalAnnotation"]
@@ -2062,6 +2095,10 @@ class MassSpectrometryDataProcessingActivity(DataProcessingActivity):
 
 @dataclass(repr=False)
 class MassSpectrometryStandardRun(YAMLRoot):
+    """
+    A record of a mass spectrometry standard run with a batch of samples, which is used for calibration and quality
+    control.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MassSpectrometryStandardRun"]
@@ -2649,11 +2686,7 @@ class EcoplatePlateSetupActivity(PlateSetupActivity):
 class PlateDataGenerationActivity(DataGenerationActivity):
     """
     Abstract base for plate measurement activities.
-    Adds timepoint_label for repeated-measurement series (per core-planB
-    decision to put timepoint_label on concrete subclasses, not on base
-    DataGenerationActivity).
-
-    v1 origin: plate-general.yaml PlateDataGenerationActivity
+    Adds timepoint_label for repeated-measurement series
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -2992,12 +3025,8 @@ class EcoplateWellMetadata(WellMetadata):
 @dataclass(repr=False)
 class WellReading(YAMLRoot):
     """
-    Per-well measurement data.
-    NOT a standalone database table; embedded structured entries under
+    Per-well measurement data. NOT a standalone database table; embedded structured entries under
     PlateProduct.well_readings.
-    Lightweight summary for queries; raw data in MinIO.
-
-    v1 origin: plate-general.yaml WellReading
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -3647,6 +3676,10 @@ class XrayComputedTomographyMethod(Method):
 
 @dataclass(repr=False)
 class BulkDensityProduct(ProcessedData):
+    """
+    Bulk density analysis product, typically derived via oven-drying and weighing of a known volume of soil.
+    One row per sample with columns for bulk density and QC flag.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["BulkDensityProduct"]
@@ -3681,6 +3714,11 @@ class BulkDensityProduct(ProcessedData):
 
 @dataclass(repr=False)
 class ElementalAnalysisProduct(ProcessedData):
+    """
+    Elemental analysis product, typically derived via combustion or similar instrument.
+    One row per sample with columns for total carbon, total nitrogen, total Kjeldahl nitrogen, and total sulfur.
+    Individual QC flags for each measurement using ProcessedDataFlag enum.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["ElementalAnalysisProduct"]
@@ -3739,6 +3777,10 @@ class ElementalAnalysisProduct(ProcessedData):
 
 @dataclass(repr=False)
 class EnzymeProduct(ProcessedData):
+    """
+    Enzyme activity analysis product, typically derived via colorimetric assay of soil extracts.
+    One row per sample with columns for beta-glucosidase activity and QC flag.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["EnzymeProduct"]
@@ -3773,6 +3815,11 @@ class EnzymeProduct(ProcessedData):
 
 @dataclass(repr=False)
 class GWCMoistureProduct(ProcessedData):
+    """
+    Gravimetric water content (GWC) analysis product, typically derived via oven-drying and weighing of a known mass
+    of soil.
+    One row per sample with columns for GWC and QC flag.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["GWCMoistureProduct"]
@@ -3858,6 +3905,11 @@ class HydraulicPropertiesProduct(ProcessedData):
 
 @dataclass(repr=False)
 class IonsAnalysisProduct(ProcessedData):
+    """
+    Ions analysis product, typically derived via ICP-OES or similar instrument.
+    One row per sample with columns for each ion measured.
+    Individual QC flags for each ion using ProcessedDataFlag enum.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["IonsAnalysisProduct"]
@@ -3980,6 +4032,12 @@ class IonsAnalysisProduct(ProcessedData):
 
 @dataclass(repr=False)
 class MAOMProduct(YAMLRoot):
+    """
+    Mineral-Associated Organic Matter (MAOM) analysis product, typically derived via HCl extraction and TOC/TN
+    measurement.
+    One row per sample with columns for total organic carbon and total nitrogen.
+    Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED TO HClExtOMProduct
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MAOMProduct"]
@@ -4040,6 +4098,12 @@ class MAOMProduct(YAMLRoot):
 
 @dataclass(repr=False)
 class MicrobialBiomassProduct(ProcessedData):
+    """
+    Microbial biomass analysis product, typically derived via chloroform fumigation-extraction (CFE) or similar
+    instrument.
+    One row per sample with columns for microbial biomass carbon and nitrogen.
+    Individual QC flags for each measurement using ProcessedDataFlag enum.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MicrobialBiomassProduct"]
@@ -4102,6 +4166,11 @@ class MicrobialBiomassProduct(ProcessedData):
 
 @dataclass(repr=False)
 class NitrogenAnalysisProduct(ProcessedData):
+    """
+    Nitrogen analysis product, typically derived via colorimetric assay of soil extracts.
+    One row per sample with columns for nitrate and ammonium concentrations.
+    Individual QC flags for each measurement using ProcessedDataFlag enum.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["NitrogenAnalysisProduct"]
@@ -4164,6 +4233,11 @@ class NitrogenAnalysisProduct(ProcessedData):
 
 @dataclass(repr=False)
 class PhosphorusAnalysisProduct(ProcessedData):
+    """
+    Phosphorus analysis product, typically derived via colorimetric assay of soil extracts.
+    One row per sample with columns for phosphorus concentration.
+    Individual QC flags for each measurement using ProcessedDataFlag enum.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["PhosphorusAnalysisProduct"]
@@ -4214,6 +4288,10 @@ class PhosphorusAnalysisProduct(ProcessedData):
 
 @dataclass(repr=False)
 class RespirationProduct(ProcessedData):
+    """
+    Soil respiration analysis product.
+    One row per sample with columns for soil respiration and QC flag.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["RespirationProduct"]
@@ -4248,6 +4326,11 @@ class RespirationProduct(ProcessedData):
 
 @dataclass(repr=False)
 class TextureProduct(ProcessedData):
+    """
+    Soil texture analysis product, typically derived via hydrometer or similar instrument.
+    One row per sample with columns for sand, silt, and clay percentages.
+    Individual QC flags for each measurement using ProcessedDataFlag enum.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["TextureProduct"]
@@ -4290,6 +4373,10 @@ class TextureProduct(ProcessedData):
 
 @dataclass(repr=False)
 class TomographyProduct(ProcessedData):
+    """
+    Soil tomography analysis product, typically derived via X-ray computed tomography (XCT) or similar instrument.
+    One row per sample with columns for pore structure metrics and QC flag.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["TomographyProduct"]
@@ -4396,6 +4483,12 @@ class TomographyProduct(ProcessedData):
 
 @dataclass(repr=False)
 class WEOMProduct(YAMLRoot):
+    """
+    Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar
+    instrument.
+    One row per sample with columns for total organic carbon and total nitrogen.
+    Individual QC flags for each measurement using ProcessedDataFlag enum.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["WEOMProduct"]
@@ -4456,6 +4549,10 @@ class WEOMProduct(YAMLRoot):
 
 @dataclass(repr=False)
 class PHProduct(ProcessedData):
+    """
+    Soil pH analysis product, typically derived via pH meter or similar instrument.
+    One row per sample with columns for pH and QC flag.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["PHProduct"]
@@ -11146,6 +11243,11 @@ class BiologicalEntity(YAMLRoot):
 
 @dataclass(repr=False)
 class Study(YAMLRoot):
+    """
+    A study or research project, typically associated with a proposal and a set of experiments.
+    A study may have multiple participants, each with different roles, and may be associated with
+    one or more campaigns. The study may also have associated DOIs and funding sources.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["Study"]
@@ -11294,6 +11396,9 @@ class DOI(YAMLRoot):
 
 @dataclass(repr=False)
 class TimestampValue(YAMLRoot):
+    """
+    A timestamp value with optional description. No pattern at present,
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["TimestampValue"]
@@ -11325,6 +11430,9 @@ class TimestampValue(YAMLRoot):
 
 @dataclass(repr=False)
 class TextValue(YAMLRoot):
+    """
+    A text value with optional description and language.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["TextValue"]
@@ -11580,6 +11688,9 @@ class ConditioningValue(YAMLRoot):
 
 @dataclass(repr=False)
 class ZipDownload(YAMLRoot):
+    """
+    A zip download record, capturing the details of a zip file download event.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["ZipDownload"]

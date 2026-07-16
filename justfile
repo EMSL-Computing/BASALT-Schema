@@ -133,6 +133,7 @@ testdoc: gen-doc _serve
 gen-python:
   uv run gen-project -d  {{pymodel}} -I python {{source_schema_path}}
   uv run gen-pydantic {{gen_pydantic_args}} {{source_schema_path}} > {{pymodel}}/{{schema_name}}_pydantic.py
+  just _fix-generated-python-encoding
 
 # Generate project files including Python data model
 [group('model development')]
@@ -154,6 +155,17 @@ gen-project:
     mkdir -p {{dest}}/owl ; \
   fi
   uv run gen-owl {{gen_owl_args}} {{source_schema_path}} > "{{dest}}/owl/{{schema_name}}.owl.ttl"
+  just _fix-generated-python-encoding
+
+[private]
+_fix-generated-python-encoding:
+  @if [ "{{os()}}" = "windows" ]; then \
+    for f in {{pymodel}}/*.py; do \
+      if [ -f "$f" ]; then \
+        uv run python util/fix_encoding.py "$f"; \
+      fi; \
+    done; \
+  fi
 
 # ============== Migrations recipes for Copier ==============
 

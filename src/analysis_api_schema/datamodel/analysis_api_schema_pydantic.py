@@ -2335,6 +2335,9 @@ class MobilePhaseSegment(ConfiguredBaseModel):
 
 
 class MassSpectrometryStandardRun(ConfiguredBaseModel):
+    """
+    A record of a mass spectrometry standard run with a batch of samples, which is used for calibration and quality control.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/mass-spec'})
 
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
@@ -2885,12 +2888,8 @@ class EcoplateWellMetadata(WellMetadata):
 
 class WellReading(ConfiguredBaseModel):
     """
-    Per-well measurement data.
-    NOT a standalone database table; embedded structured entries under
+    Per-well measurement data. NOT a standalone database table; embedded structured entries under
     PlateProduct.well_readings.
-    Lightweight summary for queries; raw data in MinIO.
-
-    v1 origin: plate-general.yaml WellReading
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate',
          'todos': ['add optical_density_method here to flag what value means if we '
@@ -5758,6 +5757,10 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 
 
 class SitePhoto(DataProduct):
+    """
+    A data product representing a photo of a site, typically taken during sampling.
+    One row per photo with metadata about the photo type and when it was taken.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema'})
 
     site_photo_type: Optional[SitePhotoCategoryEnum] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['SitePhoto']} })
@@ -5930,6 +5933,10 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 
 
 class DataGenerationActivity(ConfiguredBaseModel):
+    """
+    Abstract base for any data generation activity (physical to digital). Input data should 
+    be specified on workflow subclasses.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://w3id.org/MONet/analysis-api-schema'})
 
     sequence_order: Optional[int] = Field(default=None, description="""Integer ordering within a temporal series for the same analyte.
@@ -6198,11 +6205,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
 class PlateDataGenerationActivity(DataGenerationActivity):
     """
     Abstract base for plate measurement activities.
-    Adds timepoint_label for repeated-measurement series (per core-planB
-    decision to put timepoint_label on concrete subclasses, not on base
-    DataGenerationActivity).
-
-    v1 origin: plate-general.yaml PlateDataGenerationActivity
+    Adds timepoint_label for repeated-measurement series 
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
          'from_schema': 'https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate',
@@ -6924,7 +6927,7 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
 
 class DataProcessingActivity(ConfiguredBaseModel):
     """
-    Abstract base for any data processing activity. Input data should 
+    Abstract base for any data processing activity (digital to digital). Input data should 
     be specified on workflow subclasses.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
@@ -7983,6 +7986,9 @@ class InstrumentAlternativeIdentifier(ConfiguredBaseModel):
 
 
 class LabDevice(ConfiguredBaseModel):
+    """
+    A lab device is a physical instrument or equipment used in a laboratory setting for conducting experiments, measurements, or analyses. It can include various types of instruments such as microscopes, spectrometers, centrifuges, and other specialized equipment. Lab devices are essential for performing scientific research and obtaining accurate data.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema'})
 
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
@@ -8085,6 +8091,10 @@ class LabDevice(ConfiguredBaseModel):
 
 
 class SampleProcessing(ConfiguredBaseModel):
+    """
+    Abstract base for any sample processing activity (physical to physical). Input data should 
+    be specified on workflow subclasses.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
          'from_schema': 'https://w3id.org/MONet/analysis-api-schema',
          'todos': ['why does this have both analysis type and method name, as enums, '
@@ -9399,6 +9409,11 @@ class EcoplatePlateSetupActivity(PlateSetupActivity):
 
 
 class ProcessingSampleLink(ConfiguredBaseModel):
+    """
+    A link between a processed sample and the sample processing activity that produced it.
+    This class captures the relationship between a processed sample and the sample processing
+    activity that generated it, including the step number and role of the sample in the process.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema',
          'unique_keys': {'unique_sample_process_step': {'unique_key_name': 'unique_sample_process_step',
                                                         'unique_key_slots': ['sample_base_id',
@@ -9484,6 +9499,11 @@ class ProcessingSampleLink(ConfiguredBaseModel):
 
 
 class InstrumentCustodian(ConfiguredBaseModel):
+    """
+    A link between an instrument and a custodian (person) responsible for it.
+    This class captures the relationship between an instrument and the person
+    who is responsible for its maintenance, calibration, and proper use.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema'})
 
     instrument_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['InstrumentAlternativeIdentifier', 'InstrumentCustodian']} })
@@ -9491,6 +9511,11 @@ class InstrumentCustodian(ConfiguredBaseModel):
 
 
 class WorkflowExecutionFunctionalAnnotation(ConfiguredBaseModel):
+    """
+    A link between a workflow execution and a functional annotation identifier.
+    This class captures the relationship between a workflow execution and the
+    functional annotation identifier that was used in the analysis.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema'})
 
     workflow_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['WorkflowExecutionFunctionalAnnotation']} })
@@ -9955,6 +9980,10 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
 
 
 class BulkDensityProduct(ProcessedData):
+    """
+    Bulk density analysis product, typically derived via oven-drying and weighing of a known volume of soil.
+    One row per sample with columns for bulk density and QC flag.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
@@ -10160,6 +10189,11 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 
 
 class ElementalAnalysisProduct(ProcessedData):
+    """
+    Elemental analysis product, typically derived via combustion or similar instrument.
+    One row per sample with columns for total carbon, total nitrogen, total Kjeldahl nitrogen, and total sulfur.
+    Individual QC flags for each measurement using ProcessedDataFlag enum.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
@@ -10363,6 +10397,10 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 
 
 class EnzymeProduct(ProcessedData):
+    """
+    Enzyme activity analysis product, typically derived via colorimetric assay of soil extracts.
+    One row per sample with columns for beta-glucosidase activity and QC flag.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
@@ -10568,6 +10606,10 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 
 
 class GWCMoistureProduct(ProcessedData):
+    """
+    Gravimetric water content (GWC) analysis product, typically derived via oven-drying and weighing of a known mass of soil.
+    One row per sample with columns for GWC and QC flag.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
@@ -10984,6 +11026,11 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 
 
 class IonsAnalysisProduct(ProcessedData):
+    """
+    Ions analysis product, typically derived via ICP-OES or similar instrument.
+    One row per sample with columns for each ion measured.
+    Individual QC flags for each ion using ProcessedDataFlag enum.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
@@ -11203,6 +11250,11 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 
 
 class MAOMProduct(ConfiguredBaseModel):
+    """
+    Mineral-Associated Organic Matter (MAOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
+    One row per sample with columns for total organic carbon and total nitrogen.
+    Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED TO HClExtOMProduct
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
@@ -11311,6 +11363,11 @@ class MAOMProduct(ConfiguredBaseModel):
 
 
 class MicrobialBiomassProduct(ProcessedData):
+    """
+    Microbial biomass analysis product, typically derived via chloroform fumigation-extraction (CFE) or similar instrument.
+    One row per sample with columns for microbial biomass carbon and nitrogen.
+    Individual QC flags for each measurement using ProcessedDataFlag enum.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
@@ -11521,6 +11578,11 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 
 
 class NitrogenAnalysisProduct(ProcessedData):
+    """
+    Nitrogen analysis product, typically derived via colorimetric assay of soil extracts.
+    One row per sample with columns for nitrate and ammonium concentrations.
+    Individual QC flags for each measurement using ProcessedDataFlag enum.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
@@ -11731,6 +11793,11 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 
 
 class PhosphorusAnalysisProduct(ProcessedData):
+    """
+    Phosphorus analysis product, typically derived via colorimetric assay of soil extracts.
+    One row per sample with columns for phosphorus concentration.
+    Individual QC flags for each measurement using ProcessedDataFlag enum.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
@@ -11956,6 +12023,10 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 
 
 class RespirationProduct(ProcessedData):
+    """
+    Soil respiration analysis product.
+    One row per sample with columns for soil respiration and QC flag.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
@@ -12161,6 +12232,11 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 
 
 class TextureProduct(ProcessedData):
+    """
+    Soil texture analysis product, typically derived via hydrometer or similar instrument.
+    One row per sample with columns for sand, silt, and clay percentages.
+    Individual QC flags for each measurement using ProcessedDataFlag enum.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
@@ -12368,6 +12444,10 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 
 
 class TomographyProduct(ProcessedData):
+    """
+    Soil tomography analysis product, typically derived via X-ray computed tomography (XCT) or similar instrument.
+    One row per sample with columns for pore structure metrics and QC flag.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
@@ -12583,6 +12663,11 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 
 
 class WEOMProduct(ConfiguredBaseModel):
+    """
+    Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar instrument.
+    One row per sample with columns for total organic carbon and total nitrogen.
+    Individual QC flags for each measurement using ProcessedDataFlag enum.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
@@ -12691,6 +12776,10 @@ class WEOMProduct(ConfiguredBaseModel):
 
 
 class PHProduct(ProcessedData):
+    """
+    Soil pH analysis product, typically derived via pH meter or similar instrument.
+    One row per sample with columns for pH and QC flag.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
@@ -34133,6 +34222,11 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
 
 
 class Study(ConfiguredBaseModel):
+    """
+    A study or research project, typically associated with a proposal and a set of experiments.
+    A study may have multiple participants, each with different roles, and may be associated with
+    one or more campaigns. The study may also have associated DOIs and funding sources.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/study',
          'slot_usage': {'external_identifiers': {'description': 'List of project- or '
                                                                 'study-level '
@@ -34379,6 +34473,9 @@ class DOI(ConfiguredBaseModel):
 
 
 class TimestampValue(ConfiguredBaseModel):
+    """
+    A timestamp value with optional description. No pattern at present,
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/value-tables'})
 
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
@@ -34484,6 +34581,9 @@ class TimestampValue(ConfiguredBaseModel):
 
 
 class TextValue(ConfiguredBaseModel):
+    """
+    A text value with optional description and language.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/value-tables'})
 
     description: Optional[str] = Field(default=None, title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
@@ -35112,6 +35212,9 @@ class ConditioningValue(ConfiguredBaseModel):
 
 
 class ZipDownload(ConfiguredBaseModel):
+    """
+    A zip download record, capturing the details of a zip file download event.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/zip_download'})
 
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
