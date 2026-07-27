@@ -176,24 +176,17 @@ classes:
       - sequence_order   # [ADDED] integer ordering within a temporal series
       - name
       - description
+      - analyte_id
       - protocol_url
       - protocol_version
+      - acquisition_start_time
+      - acquisition_end_time
+      - instrument_used
+      - instrument_operator
     attributes:
       id:
         identifier: true
         range: uuid
-      analyte_id:
-        range: ProcessedSample
-      acquisition_start_time:
-        range: datetime
-        required: true
-      acquisition_end_time:
-        range: datetime
-        required: true
-      instrument_used:
-        range: Instrument
-      instrument_operator_id:
-        range: PersonValue
 
   # DataProcessingActivity is ABSTRACT.
   # Concrete per-type subclasses (e.g. MetagenomicsDataProcessingActivity in

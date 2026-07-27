@@ -20,6 +20,14 @@ slots:
   # id: is left as an attribute with range: uuid and identifier: true
   # everywhere, for now, for (some kind of database reason).
 
+  acquisition_end_time:
+    description: The time that data collection ended for this activity.
+    range: datetime
+
+  acquisition_start_time:
+    description: The time that data collection started for this activity.
+    range: datetime
+
   acquisition_strategy:
     range: MassSpectrometryAcquisitionStrategyEnum
     description: The acquisition strategy used in the mass spectrometry run.
@@ -106,6 +114,11 @@ slots:
   analyte_category:
     description: omics type for easier search, optional
     range: AnalyteCategoryEnum
+  
+  analyte_id:
+    description: |-
+      FK reference to a ProcessedSample representing the substance analyzed in this activity.
+    range: ProcessedSample
 
   ances_data:
     description: Information about either pedigree or other ancestral information description
@@ -1122,6 +1135,14 @@ slots:
   inspection_method:
     description: Method used to inspect or verify purity (visual, sequencing, etc.)
     range: string
+
+  instrument_operator:
+    description: User who operated the instrument
+    range: PersonValue
+
+  instrument_used:
+    description: Instrument used for the measurement
+    range: Instrument
 
   internal_calibration:
     description: Whether internal calibration was used
