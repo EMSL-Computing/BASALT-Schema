@@ -1346,20 +1346,10 @@ slots:
     range: MetagenomicsSteps
     required: false
 
-  micro_biomass_C_meth:
-    description: Reference or method used in determining microbial biomass
-    range: string
-    title: microbial biomass carbon method
-
   micro_biomass_c_meth:
     description: Reference or method used in determining microbial biomass
     range: string
     title: microbial biomass carbon method
-
-  micro_biomass_N_meth:
-    description: Reference or method used in determining microbial biomass nitrogen
-    range: string
-    title: microbial biomass nitrogen method
 
   micro_biomass_n_meth:
     description: Reference or method used in determining microbial biomass nitrogen

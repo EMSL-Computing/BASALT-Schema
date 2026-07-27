@@ -156,7 +156,7 @@ classes:
       - source_mat_id
       - storage_condition
       - storage_condition_other
-      - replicate_tech
+      - technical_reps
       - third_blh
       - third_blh_quality
       - volatile_org_comp
@@ -230,7 +230,7 @@ classes:
       - source_mat_id
       - storage_condition
       - storage_condition_other
-      - replicate_tech
+      - technical_reps
       - temperature_exposure
       - volatile_org_comp
     slot_usage:
@@ -361,7 +361,7 @@ classes:
       - source_mat_id
       - storage_condition
       - storage_condition_other
-      - replicate_tech
+      - technical_reps
       - temp
     slot_usage:
       analysis_type:
@@ -426,7 +426,7 @@ classes:
       - storage_condition
       - storage_condition_other
       - subspecf_gen_lin
-      - replicate_tech
+      - technical_reps
       - trophic_level
       - watering_regm
     slot_usage:
@@ -564,7 +564,7 @@ classes:
       - synth_env_material
       - synth_env_treatment
       - synth_start_date
-      - replicate_tech
+      - technical_reps
       - temp
       - tiss_cult_growth_med
       - water_content
@@ -645,7 +645,7 @@ classes:
       - storage_condition
       - storage_condition_other
       - subspecf_gen_lin
-      - replicate_tech
+      - technical_reps
       - trophic_level
       - watering_regm
     slot_usage:
@@ -953,7 +953,7 @@ classes:
       - synth_instrument
       - synth_process
       - synth_reagents
-      - replicate_tech
+      - technical_reps
       - temp
       - temperature_exposure
       - tertiary_treatment
@@ -1089,7 +1089,7 @@ classes:
       - start_date_inc
       - storage_condition
       - storage_condition_other
-      - replicate_tech
+      - technical_reps
       - temp
       - water_temp_regm
       - watering_regm
@@ -1172,7 +1172,7 @@ classes:
       - storage_condition
       - storage_condition_other
       - subspecf_gen_lin
-      - replicate_tech
+      - technical_reps
       - trophic_level
       - watering_regm
     slot_usage:
@@ -1299,7 +1299,7 @@ classes:
       - storage_condition_other
       - sulfate
       - sulfide
-      - replicate_tech
+      - technical_reps
       - temp
       - tidal_stage
       - tot_carb
@@ -1413,7 +1413,7 @@ classes:
       - start_date_inc
       - storage_condition
       - storage_condition_other
-      - replicate_tech
+      - technical_reps
       - temp
       - texture_meth
       - tot_nitro_cont_meth
@@ -1496,7 +1496,7 @@ classes:
       - synth_instrument
       - synth_process
       - synth_reagents
-      - replicate_tech
+      - technical_reps
       - temp
     slot_usage:
       analysis_type:
@@ -1582,7 +1582,7 @@ classes:
       - synth_env_material
       - synth_env_treatment
       - synth_start_date
-      - replicate_tech
+      - technical_reps
       - temp
       - tiss_cult_growth_med
       - water_content
@@ -1716,7 +1716,7 @@ classes:
       - sulfide
       - samp_store_temp
       - suspend_part_matter
-      - replicate_tech
+      - technical_reps
       - temp
       - tidal_stage
       - tot_depth_water_col
