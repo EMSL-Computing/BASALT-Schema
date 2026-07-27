@@ -43,31 +43,6 @@ classes:
         range: uuid
         required: true
 
-  # ============================================================================
-  # Strain   concrete purchasedMaterial
-  # ============================================================================
-  Strain:
-    is_a: PurchasedMaterial
-    description: |-
-      A microbial strain entity.  Strains are reference data   they are stable
-      identities that get referenced by culture growth activities.
-
-      purchased_material_type discriminator value: 'strain'
-
-      Montana source: amp2-metadata.yaml Strain class, amp2-complete-001.yaml strain_set
-    slots:
-      - strain_identifier
-      - strain_type
-      - strain_source
-      - strain_mutation
-    slot_usage:
-      purchased_material_type:
-        equals_string: strain
-    todos:
-      - Montana asks "Do we need more information about the strain? Genotype? Phenotype?"
-      - Consider adding slots for common_name, host_common_name, taxonomy_id
-        (Montana has these on Sample   evaluate if they belong on Strain too).
-
 
   # ============================================================================
   # labProcessingActivity   new abstract parent of sampleProcessing
@@ -117,9 +92,6 @@ classes:
           -> processingSampleLink(role=output_sample)
           -> processedSample(type='prepared_media'); media_ref points here
           -> CultureGrowth / AMP2PlateSetupActivity.media_ref
-
-      Montana source: amp2-metadata.yaml MediaCreation class,
-                      amp2-complete-001.yaml media_creation_activity_set
     slots:
       - media_type
       - volume_ml
@@ -133,35 +105,27 @@ classes:
       - media_additions
       - storage_temperature
       - creation_date
+    todos:
+      - storage_condt as enum?
+      - media range?
 
   # ============================================================================
   # CultureGrowth   abstract sampleProcessing subclass
   # ============================================================================
   CultureGrowth:
     is_a: SampleProcessing
-    abstract: true
     mixins:
       - HasIncubationConditions
     description: |-
-      Abstract base for culture growth activities.  Inherits processing
-      infrastructure from sampleProcessing and gains incubation conditions
-      via mixin.  media_ref and strain_ref are declared directly (no mixins).
-
-      Input/output sample linkage: via processingSampleLink (existing mechanism).
-      Media reference: media_ref -> processedSample(type='prepared_media')
-      Strain reference: strain_ref -> Strain (purchasedMaterial)
-
-      Montana source: amp2-metadata.yaml CultureGrowth class
+      Abstract activity for growing cultures from samples or other cultures.
+      
+      Concrete subclasses: StrainPurity, StockCulturePreparation, 
+      PreCultureGrowth, ExperimentalCulture.
     slots:
-      - media_ref
-      - strain_ref
+      - biological_entity_ref
+      - growth_medium
       - incubation_time_hours
       - container_type
-    # Inherited from sampleProcessing (is_a labProcessingActivity):
-    #   id, analysis_type, method_name, processing_steps, url, version
-    # Inherited from HasIncubationConditions mixin:
-    #   temperature_celsius, agitation_speed_rpm, oxygen_status
-
   # ============================================================================
   # StrainPurity   concrete CultureGrowth
   # ============================================================================
@@ -174,13 +138,12 @@ classes:
       Input:  sample(s) via processingSampleLink (role: input_sample)
       Output: typically no new processedSample   pass/fail QC gate.
       Refs:   Media (growth medium), Strain (target organism)
-
-      Montana source: amp2-metadata.yaml StrainPurity class,
-                      amp2-complete-001.yaml activity uuid:17
     slots:
       - inspection_method
       - target_strain
       - contaminant_strains
+    todos:
+      - purity percentage
 
   # ============================================================================
   # StockCulturePreparation   concrete CultureGrowth
@@ -193,9 +156,6 @@ classes:
       Input:  sample(s) via processingSampleLink (role: input_sample)
       Output: processedSample(type='stock_culture') via processingSampleLink
       Refs:   Media (growth medium), Strain
-
-      Montana source: amp2-metadata.yaml StockCulturePreparation class,
-                      amp2-complete-001.yaml activity uuid:18
     slots:
       - preparation_date
 
@@ -211,12 +171,8 @@ classes:
       Input:  processedSample(type='stock_culture') via processingSampleLink
       Output: processedSample(type='pre_culture') via processingSampleLink
       Refs:   Media (growth medium), Strain
-
-      Montana source: amp2-metadata.yaml PreCultureGrowth class,
-                      amp2-complete-001.yaml activity uuid:19
-
-    # No additional slots beyond CultureGrowth base.
-    # Montana's schema also shows no pre-culture-only slots.
+    todos:
+      - pre culture medium is missing 
 
   # ============================================================================
   # ExperimentalCulture   concrete CultureGrowth
@@ -230,9 +186,6 @@ classes:
       Input:  processedSample(type='pre_culture') via processingSampleLink
       Output: processedSample(type='experimental_culture') via processingSampleLink
       Refs:   Media (growth medium), Strain
-
-      Montana source: amp2-metadata.yaml ExperimentalCulture class,
-                      amp2-complete-001.yaml activity uuid:22
     slots:
       - treatment_type
       - growth_time
@@ -322,6 +275,8 @@ classes:
       v1 origin: plate-general.yaml PlateDataGenerationActivity
     slots:
       - timepoint_label
+    todos:
+      - measurement_time stamp
     # Inherited from DataGenerationActivity: id, analyte_id,
     #   name, acquisition_time, instrument_id, protocol_url,
     #   instrument_operator_id, sequence_order, version
@@ -377,6 +332,8 @@ classes:
       - blank_mean
       - cv_percent
       - well_readings
+    todos:
+      - add plate_range (12 well, 96 well, etc.)?
 
   # ============================================================================
   # AMP2ODProduct   concrete PlateProduct
@@ -439,9 +396,6 @@ classes:
       AMP2-specific per-well metadata.
       Minimal   media composition comes from the Media entity referenced via
       the activity's media_ref slot.  Per-well data is volumes and replicate info.
-
-      Montana source: amp2-metadata.yaml WellDetails class,
-                      amp2-complete-001.yaml well layout patterns
     attributes:
       media_ref:
         description: |-
@@ -519,8 +473,10 @@ classes:
         description: Measured value (absorbance, OD, fluorescence)
         range: float
         required: true
-        todos: units
       flag:
         description: QC flag   "ok", "blank", "outlier", "contaminated"
         range: string
+    todos:
+      - add optical_density_method here to flag what value means if we have multiple OD methods (e.g. OD600 vs OD750)
+      - units for value slot
 

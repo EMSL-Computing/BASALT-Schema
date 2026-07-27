@@ -367,7 +367,7 @@ classes:
       
       Common patterns:
         - s3_key points to raw spectrum/diffractogram file in MinIO
-        - summary_metrics (JSONB) provides lightweight queryable summaries:
+        - summary_metrics provides lightweight queryable summaries:
             XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
             XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
         - workflow_id is NULL for direct instrument output (XRF typical)
