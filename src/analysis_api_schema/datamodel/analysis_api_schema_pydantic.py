@@ -73,6 +73,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'analysis_api_schema',
                     'This schema defines the data models for samples, processed '
                     'samples, site metadata,\n'
                     'and enrichment providers used in the MONet Analysis API.',
+     'emit_prefixes': ['CHEBI', 'OBI', 'PO', 'BTO', 'MS', 'EC', 'ror'],
      'id': 'https://w3id.org/MONet/analysis-api-schema',
      'imports': ['linkml:types',
                  'administration',

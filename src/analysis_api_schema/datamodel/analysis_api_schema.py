@@ -1,5 +1,5 @@
 # Auto generated from analysis_api_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-16T09:21:34
+# Generation date: 2026-07-28T15:36:05
 # Schema: analysis-api-schema
 #
 # id: https://w3id.org/MONet/analysis-api-schema
@@ -65,9 +65,16 @@ metamodel_version = "1.7.0"
 version = None
 
 # Namespaces
+BTO = CurieNamespace('BTO', 'http://purl.obolibrary.org/obo/BTO_')
+CHEBI = CurieNamespace('CHEBI', 'http://purl.obolibrary.org/obo/CHEBI_')
+EC = CurieNamespace('EC', 'https://enzyme.expasy.org/EC/')
 MIXS = CurieNamespace('MIXS', 'https://w3id.org/mixs/')
+MS = CurieNamespace('MS', 'http://purl.obolibrary.org/obo/MS_')
+OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
+PO = CurieNamespace('PO', 'http://purl.obolibrary.org/obo/PO_')
 ANALYSIS_API_SCHEMA = CurieNamespace('analysis_api_schema', 'https://w3id.org/MONet/analysis-api-schema/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
+ROR = CurieNamespace('ror', 'https://ror.org/')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
 DEFAULT_ = ANALYSIS_API_SCHEMA
 

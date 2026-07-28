@@ -7,6 +7,12 @@
 excludes:
   - markdown
   - shacl
+  # excelgen re-saves the whole workbook once per class AND once per slot
+  # (~2900 full writes for this schema), which is ~97% of gen-project's runtime
+  # (507s of 520s) and the source of the "permissible values with total length
+  # > 255 characters" warnings. Run `just gen-excel` on demand if you need the
+  # xlsx template.
+  - excel
 
 # Alternatively only specify the generators to run
 # (comment out the above "excludes" section)
@@ -55,7 +61,9 @@ generator_args:
     mergeimports: true
   shex:
     mergeimports: true
-  sqlddl:
+  # Key must be "sqltable" to match projectgen's GEN_MAP - a "sqlddl" key is
+  # silently ignored, which left the SQL DDL generated without mergeimports.
+  sqltable:
     mergeimports: true
   typescript:
     mergeimports: true

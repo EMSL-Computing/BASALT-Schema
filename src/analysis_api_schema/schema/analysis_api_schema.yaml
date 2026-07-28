@@ -20,6 +20,19 @@ prefixes:
   # unit: http://qudt.org/vocab/unit/
   # uuid: https://w3id.org/uuid/
 
+# Prefixes declared in enums.yaml and used only in permissible-value "meaning:".
+# pythongen emits CurieNamespace variables for root-schema prefixes, class/slot/type
+# URIs and mappings, but it never scans enum meanings - so without listing them here
+# the generated dataclasses reference undefined names (e.g. CHEBI["38472"]).
+emit_prefixes:
+  - CHEBI
+  - OBI
+  - PO
+  - BTO
+  - MS
+  - EC
+  - ror
+
 default_prefix: analysis_api_schema
 default_range: string
 
