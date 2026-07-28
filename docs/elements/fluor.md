@@ -1,0 +1,105 @@
+
+
+# Slot: fluorescence (fluor) 
+
+
+_Raw or converted fluorescence of water. Provide value and unit, any unit is valid._
+
+
+
+
+
+URI: [analysis_api_schema:fluor](https://w3id.org/MONet/analysis-api-schema/fluor)
+Alias: fluor
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+
+
+
+
+
+
+## Properties
+
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [OtherUndescribedSample](OtherUndescribedSample.md), [WaterSample](WaterSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+### Value Constraints
+
+| Property | Value |
+| --- | --- |
+| Regex Pattern | `^\d+(\.\d+)?\s*[\w\s/]+$` |
+
+
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | analysis_api_schema:fluor |
+| native | analysis_api_schema:fluor |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: fluor
+description: Raw or converted fluorescence of water. Provide value and unit, any unit
+  is valid.
+title: fluorescence
+from_schema: https://w3id.org/MONet/analysis-api-schema
+rank: 1000
+alias: fluor
+domain_of:
+- OtherUndescribedSample
+- WaterSample
+range: string
+pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+
+```
+</details>

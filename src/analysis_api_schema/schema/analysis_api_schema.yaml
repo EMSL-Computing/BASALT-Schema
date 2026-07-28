@@ -13,11 +13,25 @@ see_also:
 
 prefixes:
   analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
-  # linkml: https://w3id.org/linkml/
+  linkml: https://w3id.org/linkml/
+  xsd: http://www.w3.org/2001/XMLSchema#
   # schema: http://schema.org/
   # qudt: http://qudt.org/schema/qudt/
   # unit: http://qudt.org/vocab/unit/
   # uuid: https://w3id.org/uuid/
+
+# Prefixes declared in enums.yaml and used only in permissible-value "meaning:".
+# pythongen emits CurieNamespace variables for root-schema prefixes, class/slot/type
+# URIs and mappings, but it never scans enum meanings - so without listing them here
+# the generated dataclasses reference undefined names (e.g. CHEBI["38472"]).
+emit_prefixes:
+  - CHEBI
+  - OBI
+  - PO
+  - BTO
+  - MS
+  - EC
+  - ror
 
 default_prefix: analysis_api_schema
 default_range: string
@@ -37,21 +51,21 @@ imports:
   - slots
   - study
   - value_tables
-  - xrf_xrd
   - zip_download
-  # - linkage_cache   # MR2: uncomment when linkage_cache.yaml is added
+  # - linkage_cache   # uncomment when linkage_cache.yaml is added
+
+types:
+  uuid:
+    typeof: string
+    uri: xsd:string
+    pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$'
+  timestamp_tz:
+    typeof: datetime
+    uri: xsd:dateTime
 
 classes:
 
-  # ---------------------------------------------------------------------------
-  # NEW ABSTRACT BASE CLASSES, FOR EVERYTHING
-  # Activity and Entity were moved here from metaproteomics.yaml,
-  # since we're going to do these anyway it seemed like a good starting point.
-  # The whole is_a inheritance hierarchy is NOT built out in this MR,
-  # that should be its own branch/MR for clarity.
-  # Edit these classes to your heart's content when that work happens.
-
-  Activity: # L7 - links to PROV-O Activity, but with additional attributes relevant to mass spectrometry and chemical processes
+  Activity: 
     description: Something that happens over time and can use equipment.
     abstract: true
     attributes:
@@ -82,14 +96,7 @@ classes:
     slots:
     - name
     - description
-  # ---------------------------------------------------------------------------
 
-  # ---------------------------------------------------------------------------
-  # (NEW ABSTRACT CLASS) dataProduct   MR1
-  # Abstract base for any data artifact accessible in S3 storage.
-  # processedData inherits via is_a. Future sitePhoto and similar file-based
-  # products will also inherit here. No direct database table.
-  # ---------------------------------------------------------------------------
   DataProduct:
     abstract: true
     description: |-
@@ -115,10 +122,6 @@ classes:
         range: uuid
         required: true
 
-  # (CHANGED MR1) processedData now inherits from dataProduct via is_a.
-  # Inherited slots: name, description, project, sampling_set, core_section, sample_name,
-  # s3_base_url, s3_bucket, s3_key, filesize, md5checksum, id.
-  # Retained as attributes: type (class-specific product enum range), workflow_id.
   ProcessedData:
     is_a: DataProduct
     abstract: true
@@ -160,20 +163,22 @@ classes:
 
   SitePhoto:
     is_a: DataProduct
+    description: |-
+      A data product representing a photo of a site, typically taken during sampling.
+      One row per photo with metadata about the photo type and when it was taken.
     attributes:
       site_photo_type:
         range: SitePhotoCategoryEnum
       photo_taken_during:
         range: SamplingActivity
 
-  # Concrete per-method-type subclasses (e.g. EcoplateDataGenerationActivity,
-  # AMP2DataGenerationActivity in companion files) use is_a: DataGenerationActivity and
-  # add method-specific slots (including timepoint_label where needed).
-
   DataGenerationActivity:
     abstract: true
+    description: |-
+      Abstract base for any data generation activity (physical to digital). Input data should 
+      be specified on workflow subclasses.
     slots:
-      - sequence_order   # [ADDED] integer ordering within a temporal series
+      - sequence_order   
       - name
       - description
       - protocol_url
@@ -206,15 +211,10 @@ classes:
         range: RespirationMethod
         description: Reference to the RespirationMethod used for this run
 
-  # DataProcessingActivity is ABSTRACT.
-  # Concrete per-type subclasses (e.g. MetagenomicsDataProcessingActivity in
-  # metagenomics.yaml) use is_a: DataProcessingActivity.
-  # New slot: parent_workflow_id (chain link). workflow_steps direction updated.
-
   DataProcessingActivity:
     abstract: true
     description: |-
-      Abstract base for any data processing activity. Input data should 
+      Abstract base for any data processing activity (digital to digital). Input data should 
       be specified on workflow subclasses.
     slots:
       - parent_workflow_id  # [ADDED] self-referential chain link
@@ -379,6 +379,8 @@ classes:
         required: true
 
   LabDevice:
+    description: |-
+      A lab device is a physical instrument or equipment used in a laboratory setting for conducting experiments, measurements, or analyses. It can include various types of instruments such as microscopes, spectrometers, centrifuges, and other specialized equipment. Lab devices are essential for performing scientific research and obtaining accurate data.
     attributes:
       id:
         identifier: true
@@ -392,11 +394,11 @@ classes:
       activity_speed_id:
         range: QuantityValue
 
-  # (CHANGED MR1) sampleProcessing is now ABSTRACT per PI guidance.
-  # Concrete protocol-specific subclasses use is_a: sampleProcessing.
-  # processing_steps noted TODO JSONB   direction change to key-value is deferred.
   SampleProcessing:
     abstract: true
+    description: |-
+      Abstract base for any sample processing activity (physical to physical). Input data should 
+      be specified on workflow subclasses.
     slots:
       - protocol_url
       - protocol_version
@@ -417,24 +419,24 @@ classes:
       - why does this have both analysis type and method name, as enums, just set the range to the class
 
   ProcessingSampleLink:
+    description: |-
+      A link between a processed sample and the sample processing activity that produced it.
+      This class captures the relationship between a processed sample and the sample processing
+      activity that generated it, including the step number and role of the sample in the process.
     attributes:
       id:
         identifier: true
         range: uuid
       sample_base_id:
-        identifier: true
         range: Sample
         required: true
       processing_id:
-        identifier: true
         range: SampleProcessing
         required: true
       step_number:
-        identifier: true
         range: integer
         required: true
       role:
-        identifier: true
         range: SampleRole
         required: true
     unique_keys:
@@ -446,6 +448,10 @@ classes:
           - role
 
   InstrumentCustodian:
+    description: |-
+      A link between an instrument and a custodian (person) responsible for it.
+      This class captures the relationship between an instrument and the person
+      who is responsible for its maintenance, calibration, and proper use.
     attributes:
       instrument_id:
         range: Instrument
@@ -456,6 +462,10 @@ classes:
 
 
   WorkflowExecutionFunctionalAnnotation:
+    description: |-
+      A link between a workflow execution and a functional annotation identifier.
+      This class captures the relationship between a workflow execution and the
+      functional annotation identifier that was used in the analysis.
     attributes:
       workflow_id:
         range: DataProcessingActivity
@@ -464,4 +474,77 @@ classes:
         range: FunctionalAnnotationIdentifier
         required: true
       count:
-        range: numeric
+        range: double
+
+  XRayDataGenerationActivity:
+      is_a: DataGenerationActivity
+      abstract: true
+      description: |-
+        Abstract base class for X-ray analytical methods including XRF (elemental)
+        and XRD (mineralogical) analysis. Inherits acquisition_time, instrument_id,
+        protocol_url, analyte_id, and other core metadata from DataGenerationActivity.
+        
+        Concrete subclasses define method-specific measurement parameters.
+        Future X-ray methods (e.g., XCT) can extend this class.
+        
+        Shared patterns:
+          - Direct instrument output (no computational workflow) is typical for XRF
+          - XRD may optionally link to DataProcessingActivity for Rietveld refinement
+          - protocol_url should link to vendor SOP or EMSL internal protocol documentation
+
+  XRFDataGenerationActivity:
+    is_a: XRayDataGenerationActivity
+    description: |-
+      X-ray Fluorescence (XRF) elemental analysis activity.
+      
+      XRF measures elemental composition by detecting characteristic X-ray emissions
+      from a sample bombarded with high-energy X-rays. Typical output: concentrations
+      of 10-30 elements per sample (Ni, Pb, As, Cr, Fe, Ca, K, etc.).
+      
+      Data product: XRFElementalProduct (one row per element per sample)
+      
+      Workflow pattern: Direct instrument output (no computational processing step)
+        processedSample -> XRFDataGenerationActivity -> XRFElementalProduct (workflow_id = NULL)
+      
+      Protocol information: Stored externally; link via protocol_url attribute.
+      Example protocol parameters (stored in external SOP or DataProcessingActivity
+      if computational correction is needed):
+        - Beam voltage (kV), beam current (mA)
+        - Measurement duration (seconds)
+        - Matrix correction method (fundamental parameters, empirical)
+        - Calibration date
+        - Operator ID
+      
+      Required enum additions to enums.yaml:
+        routemethod:
+          xrf_analysis:  # Add to routemethod permissible_values
+
+  XRDDataGenerationActivity:
+    is_a: XRayDataGenerationActivity
+    description: |-
+      X-ray Diffraction (XRD) mineralogical analysis activity.
+      
+      XRD identifies crystalline mineral phases by measuring diffraction patterns.
+      Output: mineral phase names and quantitative abundances (weight %).
+      
+      Data product: XRDPhaseProduct (one row per mineral phase per sample)
+      
+      Workflow patterns:
+        1. Direct/semi-quantitative: 
+             processedSample -> XRDDataGenerationActivity -> XRDPhaseProduct (workflow_id = NULL)
+        2. With Rietveld refinement (computational):
+             processedSample -> XRDDataGenerationActivity -> 
+             DataProcessingActivity(type='xrd_rietveld_refinement') -> 
+             XRDPhaseProduct (workflow_id = refinement WEA)
+      
+      Protocol information: Stored externally; link via protocol_url attribute.
+      Example protocol parameters (stored in external SOP or DataProcessingActivity):
+        - Diffractometer geometry (Bragg-Brentano, Debye-Scherrer)
+        - X-ray tube type (Cu, Co, Mo)
+        - Scan range (2-theta degrees), step size
+        - Refinement software (HighScore Plus, GSAS-II, FullProf)
+        - R-factor, GOF (goodness of fit)
+      
+      Required enum additions to enums.yaml:
+        routemethod:
+          xrd_analysis:  # Add to routemethod permissible_values

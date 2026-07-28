@@ -1,0 +1,77 @@
+# Enum: StorageConditionEnum 
+
+
+
+
+_Sample storage conditions_
+
+
+
+URI: [analysis_api_schema:StorageConditionEnum](https://w3id.org/MONet/analysis-api-schema/StorageConditionEnum)
+
+## Permissible Values
+| Value | Meaning | Description |
+| --- | --- | --- |
+| fresh | None | Fresh sample |
+| frozen | None | Frozen sample |
+| lyophilized | None | Lyophilized (freeze-dried) sample |
+| other | None | Other storage condition |
+
+
+
+
+## Slots
+
+| Name | Description |
+| ---  | --- |
+| [storage_condition](storage_condition.md) | The storage condition of the sample |
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: StorageConditionEnum
+description: Sample storage conditions
+from_schema: https://w3id.org/MONet/analysis-api-schema
+rank: 1000
+permissible_values:
+  fresh:
+    text: fresh
+    description: Fresh sample
+  frozen:
+    text: frozen
+    description: Frozen sample
+  lyophilized:
+    text: lyophilized
+    description: Lyophilized (freeze-dried) sample
+  other:
+    text: other
+    description: Other storage condition
+
+```
+</details>

@@ -1,0 +1,53 @@
+# Type: Datetime 
+
+
+
+
+_The combination of a date and time_
+
+
+
+URI: [xsd:dateTime](http://www.w3.org/2001/XMLSchema#dateTime)
+
+## Type Properties
+
+| Property | Value |
+| --- | --- |
+| Base | `XSDDateTime` |
+| Type URI | [xsd:dateTime](http://www.w3.org/2001/XMLSchema#dateTime) |
+| Representation | `str` |
+
+
+
+
+
+
+## Notes
+
+* If you are authoring schemas in LinkML YAML, the type is referenced with the lower case "datetime".
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | xsd:dateTime |
+| native | analysis_api_schema:datetime |
+| exact | schema:DateTime |
+
+

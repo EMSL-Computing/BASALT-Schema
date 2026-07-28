@@ -21,6 +21,9 @@ classes:
 
   BulkDensityProduct:
     is_a: ProcessedData
+    description: |-
+      Bulk density analysis product, typically derived via oven-drying and weighing of a known volume of soil.
+      One row per sample with columns for bulk density and QC flag.
     slots:
       - measure_type
     attributes:
@@ -31,6 +34,10 @@ classes:
 
   ElementalAnalysisProduct:
     is_a: ProcessedData
+    description: |-
+      Elemental analysis product, typically derived via combustion or similar instrument.
+      One row per sample with columns for total carbon, total nitrogen, total Kjeldahl nitrogen, and total sulfur.
+      Individual QC flags for each measurement using ProcessedDataFlag enum.
     slots:
       - measure_type
     attributes:
@@ -53,6 +60,9 @@ classes:
 
   EnzymeProduct:
     is_a: ProcessedData
+    description: |-
+      Enzyme activity analysis product, typically derived via colorimetric assay of soil extracts.
+      One row per sample with columns for beta-glucosidase activity and QC flag.
     slots:
       - measure_type
     attributes:
@@ -63,6 +73,9 @@ classes:
 
   GWCMoistureProduct:
     is_a: ProcessedData
+    description: |-
+      Gravimetric water content (GWC) analysis product, typically derived via oven-drying and weighing of a known mass of soil.
+      One row per sample with columns for GWC and QC flag.
     slots:
       - measure_type
     attributes:
@@ -107,6 +120,10 @@ classes:
       
   IonsAnalysisProduct:
     is_a: ProcessedData
+    description: |-
+      Ions analysis product, typically derived via ICP-OES or similar instrument.
+      One row per sample with columns for each ion measured.
+      Individual QC flags for each ion using ProcessedDataFlag enum.
     slots:
       - measure_type
     attributes:
@@ -160,6 +177,10 @@ classes:
         range: ProcessedDataFlag
 
   MAOMProduct:
+    description: |-
+      Mineral-Associated Organic Matter (MAOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
+      One row per sample with columns for total organic carbon and total nitrogen.
+      Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED TO HClExtOMProduct
     slots:
       - measure_type
       - replicate
@@ -186,6 +207,10 @@ classes:
 
   MicrobialBiomassProduct:
     is_a: ProcessedData
+    description: |-
+      Microbial biomass analysis product, typically derived via chloroform fumigation-extraction (CFE) or similar instrument.
+      One row per sample with columns for microbial biomass carbon and nitrogen.
+      Individual QC flags for each measurement using ProcessedDataFlag enum.
     slots:
       - measure_type
       - replicate
@@ -209,6 +234,10 @@ classes:
 
   NitrogenAnalysisProduct:
     is_a: ProcessedData
+    description: |-
+      Nitrogen analysis product, typically derived via colorimetric assay of soil extracts.
+      One row per sample with columns for nitrate and ammonium concentrations.
+      Individual QC flags for each measurement using ProcessedDataFlag enum.
     slots:
       - measure_type
       - replicate
@@ -232,6 +261,10 @@ classes:
 
   PhosphorusAnalysisProduct:
     is_a: ProcessedData
+    description: |-
+      Phosphorus analysis product, typically derived via colorimetric assay of soil extracts.
+      One row per sample with columns for phosphorus concentration.
+      Individual QC flags for each measurement using ProcessedDataFlag enum.
     slots:
       - measure_type
       - replicate
@@ -249,6 +282,9 @@ classes:
 
   RespirationProduct:
     is_a: ProcessedData
+    description: |-
+      Soil respiration analysis product.
+      One row per sample with columns for soil respiration and QC flag.
     slots:
       - measure_type
     attributes:
@@ -259,6 +295,10 @@ classes:
         range: ProcessedDataFlag
 
   TextureProduct:
+    description: |-
+      Soil texture analysis product, typically derived via hydrometer or similar instrument.
+      One row per sample with columns for sand, silt, and clay percentages.
+      Individual QC flags for each measurement using ProcessedDataFlag enum.
     is_a: ProcessedData
     slots:
       - measure_type
@@ -273,6 +313,9 @@ classes:
         range: ProcessedDataFlag
 
   TomographyProduct:
+    description: |-
+      Soil tomography analysis product, typically derived via X-ray computed tomography (XCT) or similar instrument.
+      One row per sample with columns for pore structure metrics and QC flag.
     is_a: ProcessedData
     slots:
       - measure_type
@@ -320,6 +363,10 @@ classes:
         range: string
 
   WEOMProduct:
+    description: |-
+      Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar instrument.
+      One row per sample with columns for total organic carbon and total nitrogen.
+      Individual QC flags for each measurement using ProcessedDataFlag enum.
     slots:
       - measure_type
       - replicate
@@ -346,6 +393,9 @@ classes:
 
   pHProduct:
     is_a: ProcessedData
+    description: |-
+      Soil pH analysis product, typically derived via pH meter or similar instrument.
+      One row per sample with columns for pH and QC flag.
     slots:
       - measure_type
     attributes:
