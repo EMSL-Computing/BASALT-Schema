@@ -1,5 +1,5 @@
 # Auto generated from analysis_api_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-28T15:36:05
+# Generation date: 2026-07-28T15:41:41
 # Schema: analysis-api-schema
 #
 # id: https://w3id.org/MONet/analysis-api-schema

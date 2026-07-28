@@ -135,9 +135,11 @@ gen-python:
   uv run gen-pydantic {{gen_pydantic_args}} {{source_schema_path}} > {{pymodel}}/{{schema_name}}_pydantic.py
   just _fix-generated-python-encoding
 
-# Generate project files including Python data model
+# Generate project files including Python data model.
+# gen-orm runs last (schema.py + models.py) so it is not disturbed by the
+# "mv {{dest}}/*.py" below, which only moves projectgen's own output.
 [group('model development')]
-gen-project:
+gen-project: && gen-orm
   uv run gen-project {{config_yaml}} -d {{dest}} {{source_schema_path}}
   mkdir -p {{pymodel}}
   mv {{dest}}/*.py {{pymodel}}/
