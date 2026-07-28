@@ -2617,7 +2617,7 @@ slots:
     range: string
 
   analysis_code:
-    description: Athena internal code from the .lcf filename
+    description: Athena or Larch internal code from the .lcf filename
     range: string
 
   sample_nor_file:
@@ -2685,7 +2685,7 @@ slots:
     range: integer
 
   std_name:
-    description: Reference standard name as written in the Athena project
+    description: Reference standard name as written in the Athena or Larch project
     range: string
 
   weight:
