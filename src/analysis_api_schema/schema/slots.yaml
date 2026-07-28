@@ -2728,7 +2728,7 @@ slots:
     description: Raw XAS instrument data inputs consumed by this LCF processing activity
     range: XASInstrumentData
     multivalued: true
-    inlined_as_list: false
+    inlined: false
 
   results_from_xas_processing:
     description: Reference to the XAS LCF processing activity that produced this processed product
