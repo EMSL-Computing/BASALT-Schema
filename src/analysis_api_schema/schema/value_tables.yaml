@@ -16,6 +16,8 @@ imports:
 
 classes:
   TimestampValue:
+    description: |-
+      A timestamp value with optional description. No pattern at present,
     slots:
       - description
     attributes:
@@ -28,6 +30,8 @@ classes:
         range: string
 
   TextValue:
+    description: |-
+      A text value with optional description and language.
     slots:
       - description
     attributes:
@@ -111,9 +115,9 @@ classes:
         description: The numeric value of the quantity
         range: double
       has_minimum_numeric_value:
-        range: numeric
+        range: double
       has_maximum_numeric_value:
-        range: numeric
+        range: double
       has_raw_value:
 
   ConditioningValue:
