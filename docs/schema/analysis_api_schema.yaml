@@ -37,6 +37,14 @@ prefixes:
   xsd:
     prefix_prefix: xsd
     prefix_reference: http://www.w3.org/2001/XMLSchema#
+emit_prefixes:
+- CHEBI
+- OBI
+- PO
+- BTO
+- MS
+- EC
+- ror
 default_prefix: analysis_api_schema
 default_range: string
 types:
@@ -23179,7 +23187,7 @@ classes:
     class_uri: analysis_api_schema:ZipDownload
 metamodel_version: 1.7.0
 source_file: analysis_api_schema.yaml
-source_file_date: '2026-07-16T09:07:36'
-source_file_size: 16672
-generation_date: '2026-07-16T09:12:23'
+source_file_date: '2026-07-28T15:15:46'
+source_file_size: 17071
+generation_date: '2026-07-28T16:02:34'
 

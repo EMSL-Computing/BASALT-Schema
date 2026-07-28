@@ -1,5 +1,5 @@
 # Auto generated from analysis_api_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-28T15:41:41
+# Generation date: 2026-07-28T15:44:05
 # Schema: analysis-api-schema
 #
 # id: https://w3id.org/MONet/analysis-api-schema
@@ -3685,7 +3685,6 @@ class XrayComputedTomographyMethod(Method):
 class BulkDensityProduct(ProcessedData):
     """
     Bulk density analysis product, typically derived via oven-drying and weighing of a known volume of soil.
-    One row per sample with columns for bulk density and QC flag.
     """
     _inherited_slots: ClassVar[list[str]] = []
 

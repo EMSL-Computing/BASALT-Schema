@@ -26,8 +26,8 @@ Alias: growth_facil
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |  no  |
 | [Site](Site.md) | Site-level metadata for a specific location from which a set of samples are c... |  yes  |
+| [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |  no  |
 
 
 

@@ -23,11 +23,11 @@ Alias: depth
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  yes  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  yes  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
-| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
 
 
 
