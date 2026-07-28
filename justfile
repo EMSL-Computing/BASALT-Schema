@@ -250,6 +250,8 @@ _gen-yaml:
 
 # Overridable recipe to add project-specific artifacts to the distribution schema path
 _add-artifacts:
+  mkdir -p docs/files
+  cp visuals/schema-explorer.html docs/files/schema-explorer.html
 
 # Run documentation server
 _serve:

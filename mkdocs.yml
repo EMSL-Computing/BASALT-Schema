@@ -62,6 +62,8 @@ watch:
 nav:
   - Home: index.md
   - Schema: elements/index.md
+  - Visuals:
+      - Schema Explorer: https://mkapur-pnnl.github.io/analysis-api-schema/files/schema-explorer.html
   - About: about.md
 
 exclude_docs: |

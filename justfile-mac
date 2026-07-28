@@ -24,6 +24,8 @@ gen-project: gen-schema gen-models
 
 gen-doc:
     uv run python util/gen_doc.py ./src/analysis_api_schema/schema/analysis_api_schema.yaml docs/elements/
+    mkdir -p docs/files
+    cp visuals/schema-explorer.html docs/files/schema-explorer.html
 
 clean-doc:
     rm -f docs/elements/*.md
