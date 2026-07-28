@@ -5,8 +5,6 @@
 
 _Bulk density analysis product, typically derived via oven-drying and weighing of a known volume of soil._
 
-_One row per sample with columns for bulk density and QC flag._
-
 
 
 
@@ -190,10 +188,8 @@ URI: [analysis_api_schema:BulkDensityProduct](https://w3id.org/MONet/analysis-ap
 <details>
 ```yaml
 name: BulkDensityProduct
-description: 'Bulk density analysis product, typically derived via oven-drying and
+description: Bulk density analysis product, typically derived via oven-drying and
   weighing of a known volume of soil.
-
-  One row per sample with columns for bulk density and QC flag.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 slots:
@@ -229,10 +225,8 @@ attributes:
 <details>
 ```yaml
 name: BulkDensityProduct
-description: 'Bulk density analysis product, typically derived via oven-drying and
+description: Bulk density analysis product, typically derived via oven-drying and
   weighing of a known volume of soil.
-
-  One row per sample with columns for bulk density and QC flag.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 attributes:
@@ -287,6 +281,7 @@ attributes:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   summary_metrics:
     name: summary_metrics

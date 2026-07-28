@@ -2814,7 +2814,6 @@ typed via LinkML inlined class.""", json_schema_extra = { "linkml_meta": {'domai
 class AMP2ODProduct(PlateProduct):
     """
     AMP2 optical density measurement product.
-    One row per plate × timepoint.
     processedData.type = 'amp2_od'
 
     v1 origin: plate-general.yaml AMP2ODProduct
@@ -2843,7 +2842,6 @@ typed via LinkML inlined class.""", json_schema_extra = { "linkml_meta": {'domai
 class EcoplateAbsorbanceProduct(PlateProduct):
     """
     Ecoplate absorbance measurement product.
-    One row per plate × timepoint.
     processedData.type = 'ecoplate_absorbance'
 
     v1 origin: plate-general.yaml EcoplateAbsorbanceProduct
@@ -5798,7 +5796,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class SitePhoto(DataProduct):
     """
     A data product representing a photo of a site, typically taken during sampling.
-    One row per photo with metadata about the photo type and when it was taken.
+    Carries metadata about the photo type and when it was taken.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema'})
 
@@ -9564,9 +9562,10 @@ class WorkflowExecutionFunctionalAnnotation(ConfiguredBaseModel):
 
 class XRayDataGenerationActivity(DataGenerationActivity):
     """
-    Abstract base class for X-ray analytical methods including XRF (elemental)
-    and XRD (mineralogical) analysis. Inherits acquisition_time, instrument_id,
-    protocol_url, analyte_id, and other core metadata from DataGenerationActivity.
+    Abstract base class for X-ray analytical methods including XRF (elemental),
+    XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits
+    acquisition_start_time, acquisition_end_time, instrument_used, protocol_url,
+    analyte_id, and other core metadata from DataGenerationActivity.
 
     Concrete subclasses define method-specific measurement parameters.
     Future X-ray methods (e.g., XCT) can extend this class.
@@ -9574,6 +9573,8 @@ class XRayDataGenerationActivity(DataGenerationActivity):
     Shared patterns:
       - Direct instrument output (no computational workflow) is typical for XRF
       - XRD may optionally link to DataProcessingActivity for Rietveld refinement
+      - XAS acquires raw sweep files as XASInstrumentData, which are later fitted
+        by an XASLCFDataProcessingActivity to yield an XASLCFProduct
       - protocol_url should link to vendor SOP or EMSL internal protocol documentation
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://w3id.org/MONet/analysis-api-schema'})
@@ -9713,7 +9714,7 @@ class XRFDataGenerationActivity(XRayDataGenerationActivity):
     from a sample bombarded with high-energy X-rays. Typical output: concentrations
     of 10-30 elements per sample (Ni, Pb, As, Cr, Fe, Ca, K, etc.).
 
-    Data product: XRFElementalProduct (one row per element per sample)
+    Data product: XRFElementalProduct
 
     Workflow pattern: Direct instrument output (no computational processing step)
       processedSample -> XRFDataGenerationActivity -> XRFElementalProduct (workflow_id = NULL)
@@ -9867,7 +9868,7 @@ class XRDDataGenerationActivity(XRayDataGenerationActivity):
     XRD identifies crystalline mineral phases by measuring diffraction patterns.
     Output: mineral phase names and quantitative abundances (weight %).
 
-    Data product: XRDPhaseProduct (one row per mineral phase per sample)
+    Data product: XRDPhaseProduct
 
     Workflow patterns:
       1. Direct/semi-quantitative: 
@@ -10018,10 +10019,14 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
     instrument_operator_id: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
 
 
-class XASDataGenerationActivity(DataGenerationActivity):
+class XASDataGenerationActivity(XRayDataGenerationActivity):
     """
     X-ray Absorption Spectroscopy (XAS) acquisition activity.
     Represents one beamline measurement session for a sample.
+
+    Unlike XRF and XRD, acquisition does not yield a product directly: each
+    sweep is captured as XASInstrumentData, and an XASLCFDataProcessingActivity
+    fits those sweeps to produce an XASLCFProduct.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema'})
 
@@ -10335,7 +10340,6 @@ Schema for allowed keys TBD per workflow type before full implementation.""", js
 class BulkDensityProduct(ProcessedData):
     """
     Bulk density analysis product, typically derived via oven-drying and weighing of a known volume of soil.
-    One row per sample with columns for bulk density and QC flag.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
@@ -10545,7 +10549,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class ElementalAnalysisProduct(ProcessedData):
     """
     Elemental analysis product, typically derived via combustion or similar instrument.
-    One row per sample with columns for total carbon, total nitrogen, total Kjeldahl nitrogen, and total sulfur.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
@@ -10754,7 +10757,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class EnzymeProduct(ProcessedData):
     """
     Enzyme activity analysis product, typically derived via colorimetric assay of soil extracts.
-    One row per sample with columns for beta-glucosidase activity and QC flag.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
@@ -10964,7 +10966,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class GWCMoistureProduct(ProcessedData):
     """
     Gravimetric water content (GWC) analysis product, typically derived via oven-drying and weighing of a known mass of soil.
-    One row per sample with columns for GWC and QC flag.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
@@ -11173,7 +11174,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 
 class HydraulicPropertiesProduct(ProcessedData):
     """
-    Soil hydraulic parameters derived from HYPROP evaporation-experiment data. One row per core section; the four attributes are the four VGM model parameters.  Proposal_ID, sampling_set, and core_section are inherited from the parent processedData record.
+    Soil hydraulic parameters derived from HYPROP evaporation-experiment data. The four attributes are the four VGM model parameters.  Proposal_ID, sampling_set, and core_section are inherited from the parent processedData record.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
@@ -11386,7 +11387,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class IonsAnalysisProduct(ProcessedData):
     """
     Ions analysis product, typically derived via ICP-OES or similar instrument.
-    One row per sample with columns for each ion measured.
     Individual QC flags for each ion using ProcessedDataFlag enum.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
@@ -11611,7 +11611,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class MAOMProduct(ConfiguredBaseModel):
     """
     Mineral-Associated Organic Matter (MAOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
-    One row per sample with columns for total organic carbon and total nitrogen.
     Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED TO HClExtOMProduct
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
@@ -11725,7 +11724,6 @@ class MAOMProduct(ConfiguredBaseModel):
 class MicrobialBiomassProduct(ProcessedData):
     """
     Microbial biomass analysis product, typically derived via chloroform fumigation-extraction (CFE) or similar instrument.
-    One row per sample with columns for microbial biomass carbon and nitrogen.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
@@ -11941,7 +11939,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class NitrogenAnalysisProduct(ProcessedData):
     """
     Nitrogen analysis product, typically derived via colorimetric assay of soil extracts.
-    One row per sample with columns for nitrate and ammonium concentrations.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
@@ -12157,7 +12154,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class PhosphorusAnalysisProduct(ProcessedData):
     """
     Phosphorus analysis product, typically derived via colorimetric assay of soil extracts.
-    One row per sample with columns for phosphorus concentration.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
@@ -12388,7 +12384,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class RespirationProduct(ProcessedData):
     """
     Soil respiration analysis product.
-    One row per sample with columns for soil respiration and QC flag.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
@@ -12598,7 +12593,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class TextureProduct(ProcessedData):
     """
     Soil texture analysis product, typically derived via hydrometer or similar instrument.
-    One row per sample with columns for sand, silt, and clay percentages.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
@@ -12811,7 +12805,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class TomographyProduct(ProcessedData):
     """
     Soil tomography analysis product, typically derived via X-ray computed tomography (XCT) or similar instrument.
-    One row per sample with columns for pore structure metrics and QC flag.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
@@ -13031,7 +13024,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class WEOMProduct(ConfiguredBaseModel):
     """
     Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar instrument.
-    One row per sample with columns for total organic carbon and total nitrogen.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
@@ -13145,7 +13137,6 @@ class WEOMProduct(ConfiguredBaseModel):
 class PHProduct(ProcessedData):
     """
     Soil pH analysis product, typically derived via pH meter or similar instrument.
-    One row per sample with columns for pH and QC flag.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
 
@@ -13362,8 +13353,8 @@ class XRayDataProduct(ProcessedData):
     Inherits S3 storage metadata and sample linkage from dataProduct via ProcessedData.
 
     Concrete subclasses:
-      - XRFElementalProduct: elemental concentrations (one row per sample)
-      - XRDPhaseProduct: mineral phases (one row per sample)
+      - XRFElementalProduct: elemental concentrations
+      - XRDPhaseProduct: mineral phases
 
     Common patterns:
       - s3_key points to raw spectrum/diffractogram file in MinIO
@@ -13554,7 +13545,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class XRFElementalProduct(XRayDataProduct):
     """
     X-ray Fluorescence (XRF) elemental concentration data.
-    One row per sample with columns for each element measured.
 
     Follows the wide-format pattern established by IonsAnalysisProduct.
     Element concentrations in mg/kg (parts per million dry weight basis) as float values.
@@ -13827,7 +13817,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class XRDPhaseProduct(XRayDataProduct):
     """
     X-ray Diffraction (XRD) mineral phase identification and quantification data.
-    One row per sample with columns for each mineral phase identified.
 
     Follows the wide-format pattern with individual weight percent columns.
     Individual QC flags for each mineral using ProcessedDataFlag enum.

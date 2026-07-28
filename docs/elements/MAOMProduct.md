@@ -5,8 +5,6 @@
 
 _Mineral-Associated Organic Matter (MAOM) analysis product, typically derived via HCl extraction and TOC/TN measurement._
 
-_One row per sample with columns for total organic carbon and total nitrogen._
-
 _Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED TO HClExtOMProduct_
 
 
@@ -193,8 +191,6 @@ name: MAOMProduct
 description: 'Mineral-Associated Organic Matter (MAOM) analysis product, typically
   derived via HCl extraction and TOC/TN measurement.
 
-  One row per sample with columns for total organic carbon and total nitrogen.
-
   Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED
   TO HClExtOMProduct'
 from_schema: https://w3id.org/MONet/analysis-api-schema
@@ -355,8 +351,6 @@ attributes:
 name: MAOMProduct
 description: 'Mineral-Associated Organic Matter (MAOM) analysis product, typically
   derived via HCl extraction and TOC/TN measurement.
-
-  One row per sample with columns for total organic carbon and total nitrogen.
 
   Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED
   TO HClExtOMProduct'
@@ -548,6 +542,7 @@ attributes:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   replicate:
     name: replicate

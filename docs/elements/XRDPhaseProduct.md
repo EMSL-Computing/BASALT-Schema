@@ -5,8 +5,6 @@
 
 _X-ray Diffraction (XRD) mineral phase identification and quantification data._
 
-_One row per sample with columns for each mineral phase identified._
-
 __
 
 _Follows the wide-format pattern with individual weight percent columns._
@@ -21,9 +19,7 @@ _  - id: FK -> processedData.id (1:1 linkage)_
 
 _  - processedData.type = 'XRDPhaseProduct'_
 
-_  - processedData.workflow_id -> DataProcessingActivity if Rietveld refinement_
-
-_    is computational; NULL if manual/semi-quantitative_
+_  - optional typed processing reference when Rietveld refinement is used_
 
 _  - processedData.summary_metrics = {"quartz_percent":42, "albite_percent":18, ...}_
 
@@ -61,17 +57,9 @@ _  DataProcessingActivity (type='xrd_rietveld_refinement') processes with_
 
 _  HighScore Plus, GSAS-II, or FullProf ->_
 
-_  XRDPhaseProduct (workflow_id points to refinement WEA)_
+_  XRDPhaseProduct (typed processing reference points to refinement activity)_
 
-_  _
-
-_  workflow_steps JSONB example:_
-
-_    {"software": "HighScore_Plus", "version": "5.1", "method": "Rietveld",_
-
-_     "r_factor": 0.042, "gof": 1.8, "amorphous_content_pct": 12}_
-
-__
+_     _
 
 _Required enum additions to enums.yaml:_
 
@@ -390,13 +378,11 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
 ```yaml
 name: XRDPhaseProduct
 description: "X-ray Diffraction (XRD) mineral phase identification and quantification\
-  \ data.\nOne row per sample with columns for each mineral phase identified.\n\n\
-  Follows the wide-format pattern with individual weight percent columns.\nIndividual\
-  \ QC flags for each mineral using ProcessedDataFlag enum.\n\nRelationship to core\
-  \ tables:\n  - id: FK -> processedData.id (1:1 linkage)\n  - processedData.type\
-  \ = 'XRDPhaseProduct'\n  - processedData.workflow_id -> DataProcessingActivity if\
-  \ Rietveld refinement\n    is computational; NULL if manual/semi-quantitative\n\
-  \  - processedData.summary_metrics = {\"quartz_percent\":42, \"albite_percent\"\
+  \ data.\n\nFollows the wide-format pattern with individual weight percent columns.\n\
+  Individual QC flags for each mineral using ProcessedDataFlag enum.\n\nRelationship\
+  \ to core tables:\n  - id: FK -> processedData.id (1:1 linkage)\n  - processedData.type\
+  \ = 'XRDPhaseProduct'\n  - optional typed processing reference when Rietveld refinement\
+  \ is used\n  - processedData.summary_metrics = {\"quartz_percent\":42, \"albite_percent\"\
   :18, ...}\n  - processedData.s3_key = diffractogram .xy, .xrdml, or .raw file in\
   \ MinIO\n\nStandard soil mineral panel (10 major phases):\n  Primary minerals: quartz,\
   \ albite, microcline\n  Phyllosilicates: muscovite, kaolinite, chlorite\n  Amphiboles:\
@@ -405,10 +391,8 @@ description: "X-ray Diffraction (XRD) mineral phase identification and quantific
   \ intensity ratio (RIR) method\n  - Semi-quantitative (manual, less precise)\n\n\
   Computational processing workflow (if applicable):\n  XRDDataGenerationActivity\
   \ acquires raw diffractogram ->\n  DataProcessingActivity (type='xrd_rietveld_refinement')\
-  \ processes with\n  HighScore Plus, GSAS-II, or FullProf ->\n  XRDPhaseProduct (workflow_id\
-  \ points to refinement WEA)\n  \n  workflow_steps JSONB example:\n    {\"software\"\
-  : \"HighScore_Plus\", \"version\": \"5.1\", \"method\": \"Rietveld\",\n     \"r_factor\"\
-  : 0.042, \"gof\": 1.8, \"amorphous_content_pct\": 12}\n\nRequired enum additions\
+  \ processes with\n  HighScore Plus, GSAS-II, or FullProf ->\n  XRDPhaseProduct (typed\
+  \ processing reference points to refinement activity)\n     \nRequired enum additions\
   \ to enums.yaml:\n  product:\n    XRDPhaseProduct:  # Add to product permissible_values"
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: XRayDataProduct
@@ -575,13 +559,11 @@ attributes:
 ```yaml
 name: XRDPhaseProduct
 description: "X-ray Diffraction (XRD) mineral phase identification and quantification\
-  \ data.\nOne row per sample with columns for each mineral phase identified.\n\n\
-  Follows the wide-format pattern with individual weight percent columns.\nIndividual\
-  \ QC flags for each mineral using ProcessedDataFlag enum.\n\nRelationship to core\
-  \ tables:\n  - id: FK -> processedData.id (1:1 linkage)\n  - processedData.type\
-  \ = 'XRDPhaseProduct'\n  - processedData.workflow_id -> DataProcessingActivity if\
-  \ Rietveld refinement\n    is computational; NULL if manual/semi-quantitative\n\
-  \  - processedData.summary_metrics = {\"quartz_percent\":42, \"albite_percent\"\
+  \ data.\n\nFollows the wide-format pattern with individual weight percent columns.\n\
+  Individual QC flags for each mineral using ProcessedDataFlag enum.\n\nRelationship\
+  \ to core tables:\n  - id: FK -> processedData.id (1:1 linkage)\n  - processedData.type\
+  \ = 'XRDPhaseProduct'\n  - optional typed processing reference when Rietveld refinement\
+  \ is used\n  - processedData.summary_metrics = {\"quartz_percent\":42, \"albite_percent\"\
   :18, ...}\n  - processedData.s3_key = diffractogram .xy, .xrdml, or .raw file in\
   \ MinIO\n\nStandard soil mineral panel (10 major phases):\n  Primary minerals: quartz,\
   \ albite, microcline\n  Phyllosilicates: muscovite, kaolinite, chlorite\n  Amphiboles:\
@@ -590,10 +572,8 @@ description: "X-ray Diffraction (XRD) mineral phase identification and quantific
   \ intensity ratio (RIR) method\n  - Semi-quantitative (manual, less precise)\n\n\
   Computational processing workflow (if applicable):\n  XRDDataGenerationActivity\
   \ acquires raw diffractogram ->\n  DataProcessingActivity (type='xrd_rietveld_refinement')\
-  \ processes with\n  HighScore Plus, GSAS-II, or FullProf ->\n  XRDPhaseProduct (workflow_id\
-  \ points to refinement WEA)\n  \n  workflow_steps JSONB example:\n    {\"software\"\
-  : \"HighScore_Plus\", \"version\": \"5.1\", \"method\": \"Rietveld\",\n     \"r_factor\"\
-  : 0.042, \"gof\": 1.8, \"amorphous_content_pct\": 12}\n\nRequired enum additions\
+  \ processes with\n  HighScore Plus, GSAS-II, or FullProf ->\n  XRDPhaseProduct (typed\
+  \ processing reference points to refinement activity)\n     \nRequired enum additions\
   \ to enums.yaml:\n  product:\n    XRDPhaseProduct:  # Add to product permissible_values"
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: XRayDataProduct
@@ -814,6 +794,7 @@ attributes:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   summary_metrics:
     name: summary_metrics

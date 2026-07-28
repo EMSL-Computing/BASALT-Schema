@@ -29,6 +29,8 @@ URI: [analysis_api_schema:InstrumentData](https://w3id.org/MONet/analysis-api-sc
         click MassSpectrometryInstrumentData href "../MassSpectrometryInstrumentData/"
       InstrumentData <|-- NucleotideSequencingInstrumentData
         click NucleotideSequencingInstrumentData href "../NucleotideSequencingInstrumentData/"
+      InstrumentData <|-- XASInstrumentData
+        click XASInstrumentData href "../XASInstrumentData/"
       
 
       InstrumentData : alternative_identifiers
@@ -95,6 +97,7 @@ URI: [analysis_api_schema:InstrumentData](https://w3id.org/MONet/analysis-api-sc
     * **InstrumentData**
         * [MassSpectrometryInstrumentData](MassSpectrometryInstrumentData.md)
         * [NucleotideSequencingInstrumentData](NucleotideSequencingInstrumentData.md)
+        * [XASInstrumentData](XASInstrumentData.md)
 
 
 ## Slots

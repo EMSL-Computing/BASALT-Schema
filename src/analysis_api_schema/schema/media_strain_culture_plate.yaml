@@ -344,7 +344,6 @@ classes:
     is_a: PlateProduct
     description: |-
       AMP2 optical density measurement product.
-      One row per plate × timepoint.
       processedData.type = 'amp2_od'
 
       v1 origin: plate-general.yaml AMP2ODProduct
@@ -358,7 +357,6 @@ classes:
     is_a: PlateProduct
     description: |-
       Ecoplate absorbance measurement product.
-      One row per plate × timepoint.
       processedData.type = 'ecoplate_absorbance'
 
       v1 origin: plate-general.yaml EcoplateAbsorbanceProduct

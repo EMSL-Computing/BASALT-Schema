@@ -115,6 +115,7 @@ URI: [analysis_api_schema:ProcessedSample](https://w3id.org/MONet/analysis-api-s
 | [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
+| [XASDataGenerationActivity](XASDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | [media_ref](media_ref.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [PlateDataGenerationActivity](PlateDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |

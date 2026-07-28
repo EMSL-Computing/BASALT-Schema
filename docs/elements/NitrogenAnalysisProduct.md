@@ -5,8 +5,6 @@
 
 _Nitrogen analysis product, typically derived via colorimetric assay of soil extracts._
 
-_One row per sample with columns for nitrate and ammonium concentrations._
-
 _Individual QC flags for each measurement using ProcessedDataFlag enum._
 
 
@@ -252,8 +250,6 @@ name: NitrogenAnalysisProduct
 description: 'Nitrogen analysis product, typically derived via colorimetric assay
   of soil extracts.
 
-  One row per sample with columns for nitrate and ammonium concentrations.
-
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
@@ -328,8 +324,6 @@ attributes:
 name: NitrogenAnalysisProduct
 description: 'Nitrogen analysis product, typically derived via colorimetric assay
   of soil extracts.
-
-  One row per sample with columns for nitrate and ammonium concentrations.
 
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
@@ -433,6 +427,7 @@ attributes:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   replicate:
     name: replicate

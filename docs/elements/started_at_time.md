@@ -17,10 +17,11 @@ Alias: started_at_time
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Activity](Activity.md) | Something that happens over time and can use equipment |  no  |
 | [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
-| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
 | [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |  no  |
+| [XASLCFDataProcessingActivity](XASLCFDataProcessingActivity.md) | Athena or Larch Linear Combination Fitting (LCF) processing activity for |  no  |
+| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
+| [Activity](Activity.md) | Something that happens over time and can use equipment |  no  |
 
 
 

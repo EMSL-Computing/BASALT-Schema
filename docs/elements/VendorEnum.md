@@ -21,6 +21,7 @@ URI: [analysis_api_schema:VendorEnum](https://w3id.org/MONet/analysis-api-schema
 | kuo | None |  |
 | rigaku | None |  |
 | panalytical | None |  |
+| aps_anl | None |  |
 
 
 
@@ -92,6 +93,8 @@ permissible_values:
     text: rigaku
   panalytical:
     text: panalytical
+  aps_anl:
+    text: aps_anl
 
 ```
 </details>

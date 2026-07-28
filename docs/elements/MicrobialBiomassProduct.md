@@ -5,8 +5,6 @@
 
 _Microbial biomass analysis product, typically derived via chloroform fumigation-extraction (CFE) or similar instrument._
 
-_One row per sample with columns for microbial biomass carbon and nitrogen._
-
 _Individual QC flags for each measurement using ProcessedDataFlag enum._
 
 
@@ -252,8 +250,6 @@ name: MicrobialBiomassProduct
 description: 'Microbial biomass analysis product, typically derived via chloroform
   fumigation-extraction (CFE) or similar instrument.
 
-  One row per sample with columns for microbial biomass carbon and nitrogen.
-
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
@@ -328,8 +324,6 @@ attributes:
 name: MicrobialBiomassProduct
 description: 'Microbial biomass analysis product, typically derived via chloroform
   fumigation-extraction (CFE) or similar instrument.
-
-  One row per sample with columns for microbial biomass carbon and nitrogen.
 
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
@@ -433,6 +427,7 @@ attributes:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   replicate:
     name: replicate

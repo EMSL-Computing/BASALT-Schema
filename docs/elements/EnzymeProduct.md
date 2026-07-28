@@ -5,8 +5,6 @@
 
 _Enzyme activity analysis product, typically derived via colorimetric assay of soil extracts._
 
-_One row per sample with columns for beta-glucosidase activity and QC flag._
-
 
 
 
@@ -190,10 +188,8 @@ URI: [analysis_api_schema:EnzymeProduct](https://w3id.org/MONet/analysis-api-sch
 <details>
 ```yaml
 name: EnzymeProduct
-description: 'Enzyme activity analysis product, typically derived via colorimetric
+description: Enzyme activity analysis product, typically derived via colorimetric
   assay of soil extracts.
-
-  One row per sample with columns for beta-glucosidase activity and QC flag.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 slots:
@@ -229,10 +225,8 @@ attributes:
 <details>
 ```yaml
 name: EnzymeProduct
-description: 'Enzyme activity analysis product, typically derived via colorimetric
+description: Enzyme activity analysis product, typically derived via colorimetric
   assay of soil extracts.
-
-  One row per sample with columns for beta-glucosidase activity and QC flag.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 attributes:
@@ -287,6 +281,7 @@ attributes:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   summary_metrics:
     name: summary_metrics

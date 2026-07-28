@@ -5,8 +5,6 @@
 
 _Soil respiration analysis product._
 
-_One row per sample with columns for soil respiration and QC flag._
-
 
 
 
@@ -181,9 +179,7 @@ URI: [analysis_api_schema:RespirationProduct](https://w3id.org/MONet/analysis-ap
 <details>
 ```yaml
 name: RespirationProduct
-description: 'Soil respiration analysis product.
-
-  One row per sample with columns for soil respiration and QC flag.'
+description: Soil respiration analysis product.
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 slots:
@@ -220,9 +216,7 @@ attributes:
 <details>
 ```yaml
 name: RespirationProduct
-description: 'Soil respiration analysis product.
-
-  One row per sample with columns for soil respiration and QC flag.'
+description: Soil respiration analysis product.
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 attributes:
@@ -278,6 +272,7 @@ attributes:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   summary_metrics:
     name: summary_metrics

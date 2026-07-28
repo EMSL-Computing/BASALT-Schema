@@ -73,6 +73,7 @@ URI: [analysis_api_schema:PersonValue](https://w3id.org/MONet/analysis-api-schem
 | [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
 | [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
 | [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
+| [XASDataGenerationActivity](XASDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
 | [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
 | [PlateSetupActivity](PlateSetupActivity.md) | [setup_operator_id](setup_operator_id.md) | range | [PersonValue](PersonValue.md) |
 | [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | [setup_operator_id](setup_operator_id.md) | range | [PersonValue](PersonValue.md) |

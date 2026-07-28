@@ -3,7 +3,7 @@
 # Class: HydraulicPropertiesProduct 
 
 
-_Soil hydraulic parameters derived from HYPROP evaporation-experiment data. One row per core section; the four attributes are the four VGM model parameters.  Proposal_ID, sampling_set, and core_section are inherited from the parent processedData record._
+_Soil hydraulic parameters derived from HYPROP evaporation-experiment data. The four attributes are the four VGM model parameters.  Proposal_ID, sampling_set, and core_section are inherited from the parent processedData record._
 
 
 
@@ -189,8 +189,8 @@ URI: [analysis_api_schema:HydraulicPropertiesProduct](https://w3id.org/MONet/ana
 ```yaml
 name: HydraulicPropertiesProduct
 description: Soil hydraulic parameters derived from HYPROP evaporation-experiment
-  data. One row per core section; the four attributes are the four VGM model parameters.  Proposal_ID,
-  sampling_set, and core_section are inherited from the parent processedData record.
+  data. The four attributes are the four VGM model parameters.  Proposal_ID, sampling_set,
+  and core_section are inherited from the parent processedData record.
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 slots:
@@ -257,8 +257,8 @@ attributes:
 ```yaml
 name: HydraulicPropertiesProduct
 description: Soil hydraulic parameters derived from HYPROP evaporation-experiment
-  data. One row per core section; the four attributes are the four VGM model parameters.  Proposal_ID,
-  sampling_set, and core_section are inherited from the parent processedData record.
+  data. The four attributes are the four VGM model parameters.  Proposal_ID, sampling_set,
+  and core_section are inherited from the parent processedData record.
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 attributes:
@@ -349,6 +349,7 @@ attributes:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   summary_metrics:
     name: summary_metrics

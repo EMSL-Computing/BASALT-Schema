@@ -26,6 +26,7 @@ URI: [analysis_api_schema:RouteMethodEnum](https://w3id.org/MONet/analysis-api-s
 | metagenomics_method | None |  |
 | xrf_analysis | None |  |
 | xrd_analysis | None |  |
+| xas_analysis | None |  |
 
 
 
@@ -101,6 +102,8 @@ permissible_values:
     text: xrf_analysis
   xrd_analysis:
     text: xrd_analysis
+  xas_analysis:
+    text: xas_analysis
 
 ```
 </details>

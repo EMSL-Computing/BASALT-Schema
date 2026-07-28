@@ -750,7 +750,6 @@ class Method(Base):
 class MAOMProduct(Base):
     """
     Mineral-Associated Organic Matter (MAOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
-One row per sample with columns for total organic carbon and total nitrogen.
 Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED TO HClExtOMProduct
     """
     __tablename__ = 'MAOMProduct'
@@ -781,7 +780,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE REN
 class WEOMProduct(Base):
     """
     Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar instrument.
-One row per sample with columns for total organic carbon and total nitrogen.
 Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     __tablename__ = 'WEOMProduct'
@@ -2129,7 +2127,7 @@ class InstrumentData(DataProduct):
 class SitePhoto(DataProduct):
     """
     A data product representing a photo of a site, typically taken during sampling.
-One row per photo with metadata about the photo type and when it was taken.
+Carries metadata about the photo type and when it was taken.
     """
     __tablename__ = 'SitePhoto'
 
@@ -2203,9 +2201,10 @@ Captures CO2-C efflux measured per gram of soil.
 
 class XRayDataGenerationActivity(DataGenerationActivity):
     """
-    Abstract base class for X-ray analytical methods including XRF (elemental)
-and XRD (mineralogical) analysis. Inherits acquisition_time, instrument_id,
-protocol_url, analyte_id, and other core metadata from DataGenerationActivity.
+    Abstract base class for X-ray analytical methods including XRF (elemental),
+XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits
+acquisition_start_time, acquisition_end_time, instrument_used, protocol_url,
+analyte_id, and other core metadata from DataGenerationActivity.
 
 Concrete subclasses define method-specific measurement parameters.
 Future X-ray methods (e.g., XCT) can extend this class.
@@ -2213,6 +2212,8 @@ Future X-ray methods (e.g., XCT) can extend this class.
 Shared patterns:
   - Direct instrument output (no computational workflow) is typical for XRF
   - XRD may optionally link to DataProcessingActivity for Rietveld refinement
+  - XAS acquires raw sweep files as XASInstrumentData, which are later fitted
+    by an XASLCFDataProcessingActivity to yield an XASLCFProduct
   - protocol_url should link to vendor SOP or EMSL internal protocol documentation
     """
     __tablename__ = 'XRayDataGenerationActivity'
@@ -2234,80 +2235,6 @@ Shared patterns:
 
     def __repr__(self):
         return f"XRayDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analyte_id={self.analyte_id},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator_id={self.instrument_operator_id},)"
-
-
-
-    
-    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
-    __mapper_args__ = {
-        'concrete': True
-    }
-    
-
-
-class XASDataGenerationActivity(DataGenerationActivity):
-    """
-    X-ray Absorption Spectroscopy (XAS) acquisition activity.
-Represents one beamline measurement session for a sample.
-    """
-    __tablename__ = 'XASDataGenerationActivity'
-
-    facility = Column(Text())
-    beamline = Column(Text())
-    ring_energy_gev = Column(Float())
-    ring_current_ma = Column(Float())
-    insertion_device = Column(Text())
-    element = Column(Text())
-    edge = Column(Text())
-    reference_material = Column(Text())
-    xas_sample_type = Column(Text())
-    sample_format = Column(Text())
-    sample_holder = Column(Text())
-    sample_temperature_k = Column(Float())
-    sample_orientation_deg = Column(Float())
-    sample_detector_distance_mm = Column(Float())
-    sample_doi = Column(Text())
-    crystal = Column(Text())
-    crystal_cut = Column(Text())
-    crystal_detune_pct = Column(Float())
-    mono_angle_deg = Column(Float())
-    mono_2nd_xtal_mm = Column(Float())
-    mono_energy_motor_ev = Column(Float())
-    mono_energy_encoder_ev = Column(Float())
-    mirror_angle_mrad = Column(Float())
-    m0_coating = Column(Text())
-    m0_cutoff_kev = Column(Float())
-    m1_coating = Column(Text())
-    inhutch_mirror_coating = Column(Text())
-    inhutch_mirror_cutoff_kev = Column(Float())
-    slit_size_h_um = Column(Float())
-    slit_size_v_um = Column(Float())
-    slit_center_h = Column(Float())
-    slit_center_v = Column(Float())
-    beam_attenuation_um = Column(Float())
-    beam_attenuation_material = Column(Text())
-    fy_electronics = Column(Text())
-    fy_channel_num = Column(Integer())
-    fy_element = Column(Text())
-    fy_transition = Column(Text())
-    user_comment = Column(Text())
-    sequence_order = Column(Integer())
-    name = Column(Text(), nullable=False )
-    description = Column(Text())
-    protocol_url = Column(Text())
-    protocol_version = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
-    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
-    acquisition_start_time = Column(DateTime(), nullable=False )
-    acquisition_end_time = Column(DateTime(), nullable=False )
-    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
-    instrument_operator_id = Column(UUID(), ForeignKey('PersonValue.id'))
-    
-
-    
-
-    def __repr__(self):
-        return f"XASDataGenerationActivity(facility={self.facility},beamline={self.beamline},ring_energy_gev={self.ring_energy_gev},ring_current_ma={self.ring_current_ma},insertion_device={self.insertion_device},element={self.element},edge={self.edge},reference_material={self.reference_material},xas_sample_type={self.xas_sample_type},sample_format={self.sample_format},sample_holder={self.sample_holder},sample_temperature_k={self.sample_temperature_k},sample_orientation_deg={self.sample_orientation_deg},sample_detector_distance_mm={self.sample_detector_distance_mm},sample_doi={self.sample_doi},crystal={self.crystal},crystal_cut={self.crystal_cut},crystal_detune_pct={self.crystal_detune_pct},mono_angle_deg={self.mono_angle_deg},mono_2nd_xtal_mm={self.mono_2nd_xtal_mm},mono_energy_motor_ev={self.mono_energy_motor_ev},mono_energy_encoder_ev={self.mono_energy_encoder_ev},mirror_angle_mrad={self.mirror_angle_mrad},m0_coating={self.m0_coating},m0_cutoff_kev={self.m0_cutoff_kev},m1_coating={self.m1_coating},inhutch_mirror_coating={self.inhutch_mirror_coating},inhutch_mirror_cutoff_kev={self.inhutch_mirror_cutoff_kev},slit_size_h_um={self.slit_size_h_um},slit_size_v_um={self.slit_size_v_um},slit_center_h={self.slit_center_h},slit_center_v={self.slit_center_v},beam_attenuation_um={self.beam_attenuation_um},beam_attenuation_material={self.beam_attenuation_material},fy_electronics={self.fy_electronics},fy_channel_num={self.fy_channel_num},fy_element={self.fy_element},fy_transition={self.fy_transition},user_comment={self.user_comment},sequence_order={self.sequence_order},name={self.name},description={self.description},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analyte_id={self.analyte_id},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator_id={self.instrument_operator_id},)"
 
 
 
@@ -2727,7 +2654,6 @@ Adds timepoint_label for repeated-measurement series
 class AMP2ODProduct(PlateProduct):
     """
     AMP2 optical density measurement product.
-One row per plate × timepoint.
 processedData.type = 'amp2_od'
 
 v1 origin: plate-general.yaml AMP2ODProduct
@@ -2765,7 +2691,6 @@ v1 origin: plate-general.yaml AMP2ODProduct
 class EcoplateAbsorbanceProduct(PlateProduct):
     """
     Ecoplate absorbance measurement product.
-One row per plate × timepoint.
 processedData.type = 'ecoplate_absorbance'
 
 v1 origin: plate-general.yaml EcoplateAbsorbanceProduct
@@ -5558,7 +5483,7 @@ XRF measures elemental composition by detecting characteristic X-ray emissions
 from a sample bombarded with high-energy X-rays. Typical output: concentrations
 of 10-30 elements per sample (Ni, Pb, As, Cr, Fe, Ca, K, etc.).
 
-Data product: XRFElementalProduct (one row per element per sample)
+Data product: XRFElementalProduct
 
 Workflow pattern: Direct instrument output (no computational processing step)
   processedSample -> XRFDataGenerationActivity -> XRFElementalProduct (workflow_id = NULL)
@@ -5613,7 +5538,7 @@ class XRDDataGenerationActivity(XRayDataGenerationActivity):
 XRD identifies crystalline mineral phases by measuring diffraction patterns.
 Output: mineral phase names and quantitative abundances (weight %).
 
-Data product: XRDPhaseProduct (one row per mineral phase per sample)
+Data product: XRDPhaseProduct
 
 Workflow patterns:
   1. Direct/semi-quantitative: 
@@ -5654,6 +5579,84 @@ Required enum additions to enums.yaml:
 
     def __repr__(self):
         return f"XRDDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analyte_id={self.analyte_id},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator_id={self.instrument_operator_id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class XASDataGenerationActivity(XRayDataGenerationActivity):
+    """
+    X-ray Absorption Spectroscopy (XAS) acquisition activity.
+Represents one beamline measurement session for a sample.
+
+Unlike XRF and XRD, acquisition does not yield a product directly: each
+sweep is captured as XASInstrumentData, and an XASLCFDataProcessingActivity
+fits those sweeps to produce an XASLCFProduct.
+    """
+    __tablename__ = 'XASDataGenerationActivity'
+
+    facility = Column(Text())
+    beamline = Column(Text())
+    ring_energy_gev = Column(Float())
+    ring_current_ma = Column(Float())
+    insertion_device = Column(Text())
+    element = Column(Text())
+    edge = Column(Text())
+    reference_material = Column(Text())
+    xas_sample_type = Column(Text())
+    sample_format = Column(Text())
+    sample_holder = Column(Text())
+    sample_temperature_k = Column(Float())
+    sample_orientation_deg = Column(Float())
+    sample_detector_distance_mm = Column(Float())
+    sample_doi = Column(Text())
+    crystal = Column(Text())
+    crystal_cut = Column(Text())
+    crystal_detune_pct = Column(Float())
+    mono_angle_deg = Column(Float())
+    mono_2nd_xtal_mm = Column(Float())
+    mono_energy_motor_ev = Column(Float())
+    mono_energy_encoder_ev = Column(Float())
+    mirror_angle_mrad = Column(Float())
+    m0_coating = Column(Text())
+    m0_cutoff_kev = Column(Float())
+    m1_coating = Column(Text())
+    inhutch_mirror_coating = Column(Text())
+    inhutch_mirror_cutoff_kev = Column(Float())
+    slit_size_h_um = Column(Float())
+    slit_size_v_um = Column(Float())
+    slit_center_h = Column(Float())
+    slit_center_v = Column(Float())
+    beam_attenuation_um = Column(Float())
+    beam_attenuation_material = Column(Text())
+    fy_electronics = Column(Text())
+    fy_channel_num = Column(Integer())
+    fy_element = Column(Text())
+    fy_transition = Column(Text())
+    user_comment = Column(Text())
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    acquisition_start_time = Column(DateTime(), nullable=False )
+    acquisition_end_time = Column(DateTime(), nullable=False )
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator_id = Column(UUID(), ForeignKey('PersonValue.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"XASDataGenerationActivity(facility={self.facility},beamline={self.beamline},ring_energy_gev={self.ring_energy_gev},ring_current_ma={self.ring_current_ma},insertion_device={self.insertion_device},element={self.element},edge={self.edge},reference_material={self.reference_material},xas_sample_type={self.xas_sample_type},sample_format={self.sample_format},sample_holder={self.sample_holder},sample_temperature_k={self.sample_temperature_k},sample_orientation_deg={self.sample_orientation_deg},sample_detector_distance_mm={self.sample_detector_distance_mm},sample_doi={self.sample_doi},crystal={self.crystal},crystal_cut={self.crystal_cut},crystal_detune_pct={self.crystal_detune_pct},mono_angle_deg={self.mono_angle_deg},mono_2nd_xtal_mm={self.mono_2nd_xtal_mm},mono_energy_motor_ev={self.mono_energy_motor_ev},mono_energy_encoder_ev={self.mono_energy_encoder_ev},mirror_angle_mrad={self.mirror_angle_mrad},m0_coating={self.m0_coating},m0_cutoff_kev={self.m0_cutoff_kev},m1_coating={self.m1_coating},inhutch_mirror_coating={self.inhutch_mirror_coating},inhutch_mirror_cutoff_kev={self.inhutch_mirror_cutoff_kev},slit_size_h_um={self.slit_size_h_um},slit_size_v_um={self.slit_size_v_um},slit_center_h={self.slit_center_h},slit_center_v={self.slit_center_v},beam_attenuation_um={self.beam_attenuation_um},beam_attenuation_material={self.beam_attenuation_material},fy_electronics={self.fy_electronics},fy_channel_num={self.fy_channel_num},fy_element={self.fy_element},fy_transition={self.fy_transition},user_comment={self.user_comment},sequence_order={self.sequence_order},name={self.name},description={self.description},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analyte_id={self.analyte_id},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator_id={self.instrument_operator_id},)"
 
 
 
@@ -6199,7 +6202,6 @@ and add only their type-specific slots.
 class BulkDensityProduct(ProcessedData):
     """
     Bulk density analysis product, typically derived via oven-drying and weighing of a known volume of soil.
-One row per sample with columns for bulk density and QC flag.
     """
     __tablename__ = 'BulkDensityProduct'
 
@@ -6241,7 +6243,6 @@ One row per sample with columns for bulk density and QC flag.
 class ElementalAnalysisProduct(ProcessedData):
     """
     Elemental analysis product, typically derived via combustion or similar instrument.
-One row per sample with columns for total carbon, total nitrogen, total Kjeldahl nitrogen, and total sulfur.
 Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     __tablename__ = 'ElementalAnalysisProduct'
@@ -6290,7 +6291,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 class EnzymeProduct(ProcessedData):
     """
     Enzyme activity analysis product, typically derived via colorimetric assay of soil extracts.
-One row per sample with columns for beta-glucosidase activity and QC flag.
     """
     __tablename__ = 'EnzymeProduct'
 
@@ -6332,7 +6332,6 @@ One row per sample with columns for beta-glucosidase activity and QC flag.
 class GWCMoistureProduct(ProcessedData):
     """
     Gravimetric water content (GWC) analysis product, typically derived via oven-drying and weighing of a known mass of soil.
-One row per sample with columns for GWC and QC flag.
     """
     __tablename__ = 'GWCMoistureProduct'
 
@@ -6373,7 +6372,7 @@ One row per sample with columns for GWC and QC flag.
 
 class HydraulicPropertiesProduct(ProcessedData):
     """
-    Soil hydraulic parameters derived from HYPROP evaporation-experiment data. One row per core section; the four attributes are the four VGM model parameters.  Proposal_ID, sampling_set, and core_section are inherited from the parent processedData record.
+    Soil hydraulic parameters derived from HYPROP evaporation-experiment data. The four attributes are the four VGM model parameters.  Proposal_ID, sampling_set, and core_section are inherited from the parent processedData record.
     """
     __tablename__ = 'HydraulicPropertiesProduct'
 
@@ -6418,7 +6417,6 @@ class HydraulicPropertiesProduct(ProcessedData):
 class IonsAnalysisProduct(ProcessedData):
     """
     Ions analysis product, typically derived via ICP-OES or similar instrument.
-One row per sample with columns for each ion measured.
 Individual QC flags for each ion using ProcessedDataFlag enum.
     """
     __tablename__ = 'IonsAnalysisProduct'
@@ -6483,7 +6481,6 @@ Individual QC flags for each ion using ProcessedDataFlag enum.
 class MicrobialBiomassProduct(ProcessedData):
     """
     Microbial biomass analysis product, typically derived via chloroform fumigation-extraction (CFE) or similar instrument.
-One row per sample with columns for microbial biomass carbon and nitrogen.
 Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     __tablename__ = 'MicrobialBiomassProduct'
@@ -6533,7 +6530,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 class NitrogenAnalysisProduct(ProcessedData):
     """
     Nitrogen analysis product, typically derived via colorimetric assay of soil extracts.
-One row per sample with columns for nitrate and ammonium concentrations.
 Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     __tablename__ = 'NitrogenAnalysisProduct'
@@ -6583,7 +6579,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 class PhosphorusAnalysisProduct(ProcessedData):
     """
     Phosphorus analysis product, typically derived via colorimetric assay of soil extracts.
-One row per sample with columns for phosphorus concentration.
 Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     __tablename__ = 'PhosphorusAnalysisProduct'
@@ -6630,7 +6625,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 class RespirationProduct(ProcessedData):
     """
     Soil respiration analysis product.
-One row per sample with columns for soil respiration and QC flag.
     """
     __tablename__ = 'RespirationProduct'
 
@@ -6672,7 +6666,6 @@ One row per sample with columns for soil respiration and QC flag.
 class TextureProduct(ProcessedData):
     """
     Soil texture analysis product, typically derived via hydrometer or similar instrument.
-One row per sample with columns for sand, silt, and clay percentages.
 Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     __tablename__ = 'TextureProduct'
@@ -6717,7 +6710,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 class TomographyProduct(ProcessedData):
     """
     Soil tomography analysis product, typically derived via X-ray computed tomography (XCT) or similar instrument.
-One row per sample with columns for pore structure metrics and QC flag.
     """
     __tablename__ = 'TomographyProduct'
 
@@ -6777,7 +6769,6 @@ One row per sample with columns for pore structure metrics and QC flag.
 class PHProduct(ProcessedData):
     """
     Soil pH analysis product, typically derived via pH meter or similar instrument.
-One row per sample with columns for pH and QC flag.
     """
     __tablename__ = 'pHProduct'
 
@@ -6822,8 +6813,8 @@ class XRayDataProduct(ProcessedData):
 Inherits S3 storage metadata and sample linkage from dataProduct via ProcessedData.
 
 Concrete subclasses:
-  - XRFElementalProduct: elemental concentrations (one row per sample)
-  - XRDPhaseProduct: mineral phases (one row per sample)
+  - XRFElementalProduct: elemental concentrations
+  - XRDPhaseProduct: mineral phases
 
 Common patterns:
   - s3_key points to raw spectrum/diffractogram file in MinIO
@@ -7307,7 +7298,6 @@ Inherits all MetagenomicsProduct and dataProduct slots.
 class XRFElementalProduct(XRayDataProduct):
     """
     X-ray Fluorescence (XRF) elemental concentration data.
-One row per sample with columns for each element measured.
 
 Follows the wide-format pattern established by IonsAnalysisProduct.
 Element concentrations in mg/kg (parts per million dry weight basis) as float values.
@@ -7420,7 +7410,6 @@ Required enum additions to enums.yaml:
 class XRDPhaseProduct(XRayDataProduct):
     """
     X-ray Diffraction (XRD) mineral phase identification and quantification data.
-One row per sample with columns for each mineral phase identified.
 
 Follows the wide-format pattern with individual weight percent columns.
 Individual QC flags for each mineral using ProcessedDataFlag enum.

@@ -228,12 +228,12 @@ attributes:
     name: position
     description: Well position (e.g. "A01", "H12")
     from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
-    rank: 1000
     alias: position
     owner: EcoplateWellMetadata
     domain_of:
     - WellMetadata
     - WellReading
+    - XASMotorPosition
     range: string
     required: true
   well_type:

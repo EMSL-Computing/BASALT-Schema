@@ -5,8 +5,6 @@
 
 _Soil pH analysis product, typically derived via pH meter or similar instrument._
 
-_One row per sample with columns for pH and QC flag._
-
 
 
 
@@ -181,10 +179,7 @@ URI: [analysis_api_schema:PHProduct](https://w3id.org/MONet/analysis-api-schema/
 <details>
 ```yaml
 name: pHProduct
-description: 'Soil pH analysis product, typically derived via pH meter or similar
-  instrument.
-
-  One row per sample with columns for pH and QC flag.'
+description: Soil pH analysis product, typically derived via pH meter or similar instrument.
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 slots:
@@ -223,10 +218,7 @@ attributes:
 <details>
 ```yaml
 name: pHProduct
-description: 'Soil pH analysis product, typically derived via pH meter or similar
-  instrument.
-
-  One row per sample with columns for pH and QC flag.'
+description: Soil pH analysis product, typically derived via pH meter or similar instrument.
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 attributes:
@@ -284,6 +276,7 @@ attributes:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   summary_metrics:
     name: summary_metrics

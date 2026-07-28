@@ -11,9 +11,9 @@ __
 
 _Concrete subclasses:_
 
-_  - XRFElementalProduct: elemental concentrations (one row per sample)_
+_  - XRFElementalProduct: elemental concentrations_
 
-_  - XRDPhaseProduct: mineral phases (one row per sample)_
+_  - XRDPhaseProduct: mineral phases_
 
 __
 
@@ -27,9 +27,9 @@ _      XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}_
 
 _      XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}_
 
-_  - workflow_id is NULL for direct instrument output (XRF typical)_
+_  - direct outputs may not have a processing link (XRF typical)_
 
-_  - workflow_id links to DataProcessingActivity for computational processing (XRD Rietveld) _
+_  - computational outputs should use a typed processing reference slot_
 
 
 
@@ -191,14 +191,13 @@ URI: [analysis_api_schema:XRayDataProduct](https://w3id.org/MONet/analysis-api-s
 name: XRayDataProduct
 description: "Abstract base class for X-ray analytical data products.\nInherits S3\
   \ storage metadata and sample linkage from dataProduct via ProcessedData.\n\nConcrete\
-  \ subclasses:\n  - XRFElementalProduct: elemental concentrations (one row per sample)\n\
-  \  - XRDPhaseProduct: mineral phases (one row per sample)\n\nCommon patterns:\n\
-  \  - s3_key points to raw spectrum/diffractogram file in MinIO\n  - summary_metrics\
-  \ provides lightweight queryable summaries:\n      XRF: {\"Ni_mg_kg\":45.3, \"Pb_mg_kg\"\
-  :8.2, \"As_mg_kg\":12.1}\n      XRD: {\"quartz_percent\":42, \"albite_percent\"\
-  :18, \"kaolinite_percent\":31}\n  - workflow_id is NULL for direct instrument output\
-  \ (XRF typical)\n  - workflow_id links to DataProcessingActivity for computational\
-  \ processing (XRD Rietveld) "
+  \ subclasses:\n  - XRFElementalProduct: elemental concentrations\n  - XRDPhaseProduct:\
+  \ mineral phases\n\nCommon patterns:\n  - s3_key points to raw spectrum/diffractogram\
+  \ file in MinIO\n  - summary_metrics provides lightweight queryable summaries:\n\
+  \      XRF: {\"Ni_mg_kg\":45.3, \"Pb_mg_kg\":8.2, \"As_mg_kg\":12.1}\n      XRD:\
+  \ {\"quartz_percent\":42, \"albite_percent\":18, \"kaolinite_percent\":31}\n  -\
+  \ direct outputs may not have a processing link (XRF typical)\n  - computational\
+  \ outputs should use a typed processing reference slot"
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 abstract: true
@@ -213,14 +212,13 @@ abstract: true
 name: XRayDataProduct
 description: "Abstract base class for X-ray analytical data products.\nInherits S3\
   \ storage metadata and sample linkage from dataProduct via ProcessedData.\n\nConcrete\
-  \ subclasses:\n  - XRFElementalProduct: elemental concentrations (one row per sample)\n\
-  \  - XRDPhaseProduct: mineral phases (one row per sample)\n\nCommon patterns:\n\
-  \  - s3_key points to raw spectrum/diffractogram file in MinIO\n  - summary_metrics\
-  \ provides lightweight queryable summaries:\n      XRF: {\"Ni_mg_kg\":45.3, \"Pb_mg_kg\"\
-  :8.2, \"As_mg_kg\":12.1}\n      XRD: {\"quartz_percent\":42, \"albite_percent\"\
-  :18, \"kaolinite_percent\":31}\n  - workflow_id is NULL for direct instrument output\
-  \ (XRF typical)\n  - workflow_id links to DataProcessingActivity for computational\
-  \ processing (XRD Rietveld) "
+  \ subclasses:\n  - XRFElementalProduct: elemental concentrations\n  - XRDPhaseProduct:\
+  \ mineral phases\n\nCommon patterns:\n  - s3_key points to raw spectrum/diffractogram\
+  \ file in MinIO\n  - summary_metrics provides lightweight queryable summaries:\n\
+  \      XRF: {\"Ni_mg_kg\":45.3, \"Pb_mg_kg\":8.2, \"As_mg_kg\":12.1}\n      XRD:\
+  \ {\"quartz_percent\":42, \"albite_percent\":18, \"kaolinite_percent\":31}\n  -\
+  \ direct outputs may not have a processing link (XRF typical)\n  - computational\
+  \ outputs should use a typed processing reference slot"
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
 abstract: true

@@ -5,8 +5,6 @@
 
 _Soil texture analysis product, typically derived via hydrometer or similar instrument._
 
-_One row per sample with columns for sand, silt, and clay percentages._
-
 _Individual QC flags for each measurement using ProcessedDataFlag enum._
 
 
@@ -219,8 +217,6 @@ name: TextureProduct
 description: 'Soil texture analysis product, typically derived via hydrometer or similar
   instrument.
 
-  One row per sample with columns for sand, silt, and clay percentages.
-
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
@@ -273,8 +269,6 @@ attributes:
 name: TextureProduct
 description: 'Soil texture analysis product, typically derived via hydrometer or similar
   instrument.
-
-  One row per sample with columns for sand, silt, and clay percentages.
 
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
@@ -349,6 +343,7 @@ attributes:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   summary_metrics:
     name: summary_metrics

@@ -5,8 +5,6 @@
 
 _Ecoplate absorbance measurement product._
 
-_One row per plate × timepoint._
-
 _processedData.type = 'ecoplate_absorbance'_
 
 __
@@ -134,8 +132,6 @@ URI: [analysis_api_schema:EcoplateAbsorbanceProduct](https://w3id.org/MONet/anal
 name: EcoplateAbsorbanceProduct
 description: 'Ecoplate absorbance measurement product.
 
-  One row per plate × timepoint.
-
   processedData.type = ''ecoplate_absorbance''
 
 
@@ -156,8 +152,6 @@ slots:
 ```yaml
 name: EcoplateAbsorbanceProduct
 description: 'Ecoplate absorbance measurement product.
-
-  One row per plate × timepoint.
 
   processedData.type = ''ecoplate_absorbance''
 

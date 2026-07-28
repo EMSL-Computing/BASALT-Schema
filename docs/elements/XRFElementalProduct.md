@@ -5,8 +5,6 @@
 
 _X-ray Fluorescence (XRF) elemental concentration data._
 
-_One row per sample with columns for each element measured._
-
 __
 
 _Follows the wide-format pattern established by IonsAnalysisProduct._
@@ -23,7 +21,7 @@ _  - id: FK -> processedData.id (1:1 linkage)_
 
 _  - processedData.type = 'XRFElementalProduct'_
 
-_  - processedData.workflow_id = NULL (direct acquisition; no computational WEA)_
+_  - direct acquisition; no computational processing link required_
 
 _  - processedData.summary_metrics = {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, ...}_
 
@@ -610,13 +608,12 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
 <details>
 ```yaml
 name: XRFElementalProduct
-description: "X-ray Fluorescence (XRF) elemental concentration data.\nOne row per\
-  \ sample with columns for each element measured.\n\nFollows the wide-format pattern\
-  \ established by IonsAnalysisProduct.\nElement concentrations in mg/kg (parts per\
-  \ million dry weight basis) as float values.\nIndividual QC flags for each element\
-  \ using ProcessedDataFlag enum.\n\nRelationship to core tables:\n  - id: FK -> processedData.id\
-  \ (1:1 linkage)\n  - processedData.type = 'XRFElementalProduct'\n  - processedData.workflow_id\
-  \ = NULL (direct acquisition; no computational WEA)\n  - processedData.summary_metrics\
+description: "X-ray Fluorescence (XRF) elemental concentration data.\n\nFollows the\
+  \ wide-format pattern established by IonsAnalysisProduct.\nElement concentrations\
+  \ in mg/kg (parts per million dry weight basis) as float values.\nIndividual QC\
+  \ flags for each element using ProcessedDataFlag enum.\n\nRelationship to core tables:\n\
+  \  - id: FK -> processedData.id (1:1 linkage)\n  - processedData.type = 'XRFElementalProduct'\n\
+  \  - direct acquisition; no computational processing link required\n  - processedData.summary_metrics\
   \ = {\"Ni_mg_kg\":45.3, \"Pb_mg_kg\":8.2, ...}\n  - processedData.s3_key = path\
   \ to raw spectrum or calibrated CSV in MinIO\n\nStandard XRF element panel (27 elements):\n\
   \  Trace metals: Cl, V, Cr, Ni, Cu, Zn, Ga, As, Se, Br, Rb, Sr, Y, Nb, Mo,\n   \
@@ -1041,13 +1038,12 @@ attributes:
 <details>
 ```yaml
 name: XRFElementalProduct
-description: "X-ray Fluorescence (XRF) elemental concentration data.\nOne row per\
-  \ sample with columns for each element measured.\n\nFollows the wide-format pattern\
-  \ established by IonsAnalysisProduct.\nElement concentrations in mg/kg (parts per\
-  \ million dry weight basis) as float values.\nIndividual QC flags for each element\
-  \ using ProcessedDataFlag enum.\n\nRelationship to core tables:\n  - id: FK -> processedData.id\
-  \ (1:1 linkage)\n  - processedData.type = 'XRFElementalProduct'\n  - processedData.workflow_id\
-  \ = NULL (direct acquisition; no computational WEA)\n  - processedData.summary_metrics\
+description: "X-ray Fluorescence (XRF) elemental concentration data.\n\nFollows the\
+  \ wide-format pattern established by IonsAnalysisProduct.\nElement concentrations\
+  \ in mg/kg (parts per million dry weight basis) as float values.\nIndividual QC\
+  \ flags for each element using ProcessedDataFlag enum.\n\nRelationship to core tables:\n\
+  \  - id: FK -> processedData.id (1:1 linkage)\n  - processedData.type = 'XRFElementalProduct'\n\
+  \  - direct acquisition; no computational processing link required\n  - processedData.summary_metrics\
   \ = {\"Ni_mg_kg\":45.3, \"Pb_mg_kg\":8.2, ...}\n  - processedData.s3_key = path\
   \ to raw spectrum or calibrated CSV in MinIO\n\nStandard XRF element panel (27 elements):\n\
   \  Trace metals: Cl, V, Cr, Ni, Cu, Zn, Ga, As, Se, Br, Rb, Sr, Y, Nb, Mo,\n   \
@@ -1595,6 +1591,7 @@ attributes:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   summary_metrics:
     name: summary_metrics

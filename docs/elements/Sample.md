@@ -151,6 +151,7 @@ URI: [analysis_api_schema:Sample](https://w3id.org/MONet/analysis-api-schema/Sam
 | [XRayDataProduct](XRayDataProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [XRFElementalProduct](XRFElementalProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [XRDPhaseProduct](XRDPhaseProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
+| [XASLCFProduct](XASLCFProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 
 
 

@@ -59,6 +59,8 @@ URI: [analysis_api_schema:ModelEnum](https://w3id.org/MONet/analysis-api-schema/
 | toc_lcsh | None |  |
 | sr_1 | None |  |
 | xth320 | None |  |
+| aps_20bm | None |  |
+| xmap12b | None |  |
 
 
 
@@ -383,6 +385,10 @@ permissible_values:
     text: sr_1
   xth320:
     text: xth320
+  aps_20bm:
+    text: aps_20bm
+  xmap12b:
+    text: xmap12b
 
 ```
 </details>

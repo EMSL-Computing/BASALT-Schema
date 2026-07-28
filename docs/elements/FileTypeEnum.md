@@ -44,6 +44,8 @@ URI: [analysis_api_schema:FileTypeEnum](https://w3id.org/MONet/analysis-api-sche
 | SMART_Annotation_GFF | None |  |
 | Pfam_Annotation_GFF | None |  |
 | Direct_Infusion_FT_ICR_MS_Raw_Data | None |  |
+| XAS_Raw_Sweep_File | None |  |
+| XAS_LCF_Output | None |  |
 
 
 
@@ -161,6 +163,10 @@ permissible_values:
     text: Pfam_Annotation_GFF
   Direct_Infusion_FT_ICR_MS_Raw_Data:
     text: Direct_Infusion_FT_ICR_MS_Raw_Data
+  XAS_Raw_Sweep_File:
+    text: XAS_Raw_Sweep_File
+  XAS_LCF_Output:
+    text: XAS_LCF_Output
 
 ```
 </details>

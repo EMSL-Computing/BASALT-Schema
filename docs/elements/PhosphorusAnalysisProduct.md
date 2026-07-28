@@ -5,8 +5,6 @@
 
 _Phosphorus analysis product, typically derived via colorimetric assay of soil extracts._
 
-_One row per sample with columns for phosphorus concentration._
-
 _Individual QC flags for each measurement using ProcessedDataFlag enum._
 
 
@@ -216,8 +214,6 @@ name: PhosphorusAnalysisProduct
 description: 'Phosphorus analysis product, typically derived via colorimetric assay
   of soil extracts.
 
-  One row per sample with columns for phosphorus concentration.
-
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
@@ -287,8 +283,6 @@ attributes:
 name: PhosphorusAnalysisProduct
 description: 'Phosphorus analysis product, typically derived via colorimetric assay
   of soil extracts.
-
-  One row per sample with columns for phosphorus concentration.
 
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
@@ -381,6 +375,7 @@ attributes:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   replicate:
     name: replicate

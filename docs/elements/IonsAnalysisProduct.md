@@ -5,8 +5,6 @@
 
 _Ions analysis product, typically derived via ICP-OES or similar instrument._
 
-_One row per sample with columns for each ion measured._
-
 _Individual QC flags for each ion using ProcessedDataFlag enum._
 
 
@@ -458,8 +456,6 @@ URI: [analysis_api_schema:IonsAnalysisProduct](https://w3id.org/MONet/analysis-a
 name: IonsAnalysisProduct
 description: 'Ions analysis product, typically derived via ICP-OES or similar instrument.
 
-  One row per sample with columns for each ion measured.
-
   Individual QC flags for each ion using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: ProcessedData
@@ -644,8 +640,6 @@ attributes:
 ```yaml
 name: IonsAnalysisProduct
 description: 'Ions analysis product, typically derived via ICP-OES or similar instrument.
-
-  One row per sample with columns for each ion measured.
 
   Individual QC flags for each ion using ProcessedDataFlag enum.'
 from_schema: https://w3id.org/MONet/analysis-api-schema
@@ -893,6 +887,7 @@ attributes:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   summary_metrics:
     name: summary_metrics

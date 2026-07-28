@@ -23,6 +23,8 @@ URI: [analysis_api_schema:DataProcessingActivity](https://w3id.org/MONet/analysi
  classDiagram
     class DataProcessingActivity
     click DataProcessingActivity href "../DataProcessingActivity/"
+      DataProcessingActivity <|-- XASLCFDataProcessingActivity
+        click XASLCFDataProcessingActivity href "../XASLCFDataProcessingActivity/"
       DataProcessingActivity <|-- MassSpectrometryDataProcessingActivity
         click MassSpectrometryDataProcessingActivity href "../MassSpectrometryDataProcessingActivity/"
       DataProcessingActivity <|-- MetagenomicsDataProcessingActivity
@@ -75,6 +77,7 @@ URI: [analysis_api_schema:DataProcessingActivity](https://w3id.org/MONet/analysi
 
 ## Inheritance
 * **DataProcessingActivity**
+    * [XASLCFDataProcessingActivity](XASLCFDataProcessingActivity.md)
     * [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md)
     * [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md)
 
@@ -104,6 +107,7 @@ URI: [analysis_api_schema:DataProcessingActivity](https://w3id.org/MONet/analysi
 | ---  | --- | --- | --- |
 | [DataProcessingActivity](DataProcessingActivity.md) | [parent_workflow_id](parent_workflow_id.md) | range | [DataProcessingActivity](DataProcessingActivity.md) |
 | [WorkflowExecutionFunctionalAnnotation](WorkflowExecutionFunctionalAnnotation.md) | [workflow_id](workflow_id.md) | range | [DataProcessingActivity](DataProcessingActivity.md) |
+| [XASLCFDataProcessingActivity](XASLCFDataProcessingActivity.md) | [parent_workflow_id](parent_workflow_id.md) | range | [DataProcessingActivity](DataProcessingActivity.md) |
 | [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | [parent_workflow_id](parent_workflow_id.md) | range | [DataProcessingActivity](DataProcessingActivity.md) |
 | [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | [parent_workflow_id](parent_workflow_id.md) | range | [DataProcessingActivity](DataProcessingActivity.md) |
 
