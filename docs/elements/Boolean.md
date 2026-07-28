@@ -1,0 +1,53 @@
+# Type: Boolean 
+
+
+
+
+_A binary (true or false) value_
+
+
+
+URI: [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean)
+
+## Type Properties
+
+| Property | Value |
+| --- | --- |
+| Base | `Bool` |
+| Type URI | [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean) |
+| Representation | `bool` |
+
+
+
+
+
+
+## Notes
+
+* If you are authoring schemas in LinkML YAML, the type is referenced with the lower case "boolean".
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | xsd:boolean |
+| native | analysis_api_schema:boolean |
+| exact | schema:Boolean |
+
+

@@ -1,0 +1,1058 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AMP2 Data Journey — MONet Analysis API</title>
+<style>
+  /* ------------------------------------------------------------------ *
+   *  Theme tokens                                                       *
+   * ------------------------------------------------------------------ */
+  :root {
+    --bg:          #0b1020;
+    --bg-2:        #0e1528;
+    --panel:       #121a30;
+    --panel-2:     #16203a;
+    --border:      #263149;
+    --border-soft: #1c2740;
+    --text:        #e7ecf6;
+    --muted:       #93a1bd;
+    --faint:       #5f6f90;
+
+    --accent:      #38bdf8;   /* cyan — the "flow" colour               */
+    --accent-2:    #22d3ee;
+    --ok:          #34d399;   /* validation pass / stored               */
+    --err:         #fb7185;   /* validation fail                        */
+    --warn:        #fbbf24;
+
+    --kt:          #f5b642;   /* strain KT2440_pTE314 (M9 arm)          */
+    --bl:          #a78bfa;   /* strain BL21-DE3 (LB arm)               */
+    --blank:       #56688c;   /* blank wells                            */
+
+    --shadow: 0 18px 44px -20px rgba(0,0,0,.75);
+    --radius: 14px;
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  :root[data-theme="light"] {
+    --bg:          #eef2f9;
+    --bg-2:        #e6ecf6;
+    --panel:       #ffffff;
+    --panel-2:     #f4f7fc;
+    --border:      #d3dcec;
+    --border-soft: #e2e8f4;
+    --text:        #142033;
+    --muted:       #52627e;
+    --faint:       #8b99b4;
+    --accent:      #0284c7;
+    --accent-2:    #0891b2;
+    --ok:          #059669;
+    --err:         #e11d48;
+    --warn:        #b45309;
+    --kt:          #c77f14;
+    --bl:          #7c3aed;
+    --blank:       #94a3b8;
+    --shadow: 0 16px 40px -22px rgba(20,40,80,.35);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    background:
+      radial-gradient(1200px 700px at 82% -10%, rgba(56,189,248,.10), transparent 55%),
+      radial-gradient(900px 600px at 0% 110%, rgba(167,139,250,.10), transparent 55%),
+      var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+  .app {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  /* ------------------------------------------------------------------ *
+   *  Header                                                             *
+   * ------------------------------------------------------------------ */
+  header {
+    display: flex; align-items: center; gap: 16px;
+    padding: 14px 22px;
+    border-bottom: 1px solid var(--border-soft);
+    background: linear-gradient(180deg, rgba(255,255,255,.02), transparent);
+  }
+  .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .logo {
+    width: 34px; height: 34px; flex: none; border-radius: 9px;
+    background: conic-gradient(from 210deg, var(--accent), var(--bl), var(--kt), var(--accent));
+    box-shadow: 0 0 0 1px var(--border) inset, 0 6px 18px -8px var(--accent);
+    display: grid; place-items: center;
+    font-weight: 800; font-size: 15px; color: #06101f;
+  }
+  header h1 { font-size: 15px; margin: 0; letter-spacing: .2px; }
+  header .sub { font-size: 12px; color: var(--muted); margin-top: 1px; }
+  .spacer { flex: 1; }
+  .pill {
+    font-size: 11px; color: var(--muted); border: 1px solid var(--border);
+    padding: 5px 10px; border-radius: 999px; background: var(--panel);
+    white-space: nowrap;
+  }
+  .pill b { color: var(--text); font-weight: 600; }
+  .icon-btn {
+    appearance: none; cursor: pointer;
+    background: var(--panel); color: var(--text);
+    border: 1px solid var(--border); border-radius: 9px;
+    width: 34px; height: 34px; display: grid; place-items: center;
+    font-size: 15px; transition: border-color .15s, transform .1s;
+  }
+  .icon-btn:hover { border-color: var(--accent); }
+  .icon-btn:active { transform: translateY(1px); }
+
+  /* ------------------------------------------------------------------ *
+   *  Body layout                                                        *
+   * ------------------------------------------------------------------ */
+  main {
+    display: grid;
+    grid-template-columns: 1fr 384px;
+    gap: 18px;
+    padding: 18px 22px;
+    min-height: 0;
+  }
+
+  /* Stage (left) */
+  .stage-wrap {
+    position: relative; min-width: 0; min-height: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background:
+      linear-gradient(180deg, var(--panel-2), var(--panel));
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .stage-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--border-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
+    background-size: 34px 34px;
+    opacity: .35;
+    -webkit-mask-image: radial-gradient(120% 100% at 50% 40%, #000 55%, transparent 100%);
+            mask-image: radial-gradient(120% 100% at 50% 40%, #000 55%, transparent 100%);
+  }
+  .stage-tag {
+    position: absolute; top: 14px; left: 16px; z-index: 5;
+    font: 600 11px var(--mono); letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--accent);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .stage-tag .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(56,189,248,.18); animation: pulse 1.6s infinite; }
+  @keyframes pulse { 50% { box-shadow: 0 0 0 7px rgba(56,189,248,0); } }
+
+  .stage {
+    position: absolute; inset: 0;
+    display: grid; place-items: center;
+    padding: 46px 34px 30px;
+  }
+  .scene { position: relative; width: 100%; height: 100%;
+           display: flex; align-items: center; justify-content: center; }
+  .scene > * { max-width: 100%; }
+
+  /* Step rail (right) */
+  .rail {
+    display: grid; grid-template-rows: 1fr auto; gap: 14px; min-height: 0;
+  }
+  .steps {
+    border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--panel); box-shadow: var(--shadow);
+    overflow-y: auto; padding: 8px;
+  }
+  .steps::-webkit-scrollbar { width: 9px; }
+  .steps::-webkit-scrollbar-thumb { background: var(--border); border-radius: 9px; }
+  .step {
+    display: grid; grid-template-columns: 30px 1fr; gap: 12px;
+    align-items: start; padding: 12px 12px; border-radius: 11px;
+    cursor: pointer; border: 1px solid transparent;
+    transition: background .18s, border-color .18s;
+  }
+  .step:hover { background: var(--panel-2); }
+  .step .num {
+    width: 30px; height: 30px; border-radius: 8px; flex: none;
+    display: grid; place-items: center; font: 700 13px var(--mono);
+    background: var(--panel-2); color: var(--muted);
+    border: 1px solid var(--border);
+    transition: all .18s;
+  }
+  .step .t { font-size: 13.5px; font-weight: 650; line-height: 1.25; }
+  .step .d { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.4;
+             display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .step .cls { margin-top: 7px; display: flex; flex-wrap: wrap; gap: 5px; }
+  .chip {
+    font: 500 10.5px var(--mono); color: var(--accent-2);
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    padding: 2px 7px; border-radius: 6px; white-space: nowrap;
+  }
+  .step.done .num { color: var(--ok); border-color: color-mix(in srgb, var(--ok) 45%, transparent); }
+  .step.active {
+    background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 12%, transparent), transparent 90%);
+    border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .step.active .num {
+    background: var(--accent); color: #06101f; border-color: var(--accent);
+    box-shadow: 0 6px 16px -6px var(--accent);
+  }
+  .step:not(.active) .d, .step:not(.active) .cls { display: none; }
+  .step.active .d { display: -webkit-box; }
+  .step.active .cls { display: flex; }
+
+  /* Now-playing detail */
+  .detail {
+    border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--panel); box-shadow: var(--shadow); padding: 14px 15px;
+  }
+  .detail h3 { margin: 0 0 6px; font-size: 13px; letter-spacing: .3px; }
+  .detail p { margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+  .detail .flow {
+    margin-top: 11px; font: 500 11px var(--mono); color: var(--faint);
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  }
+  .detail .flow b { color: var(--accent-2); font-weight: 600; }
+
+  /* ------------------------------------------------------------------ *
+   *  Controls                                                           *
+   * ------------------------------------------------------------------ */
+  footer {
+    display: flex; align-items: center; gap: 14px;
+    padding: 13px 22px; border-top: 1px solid var(--border-soft);
+    background: linear-gradient(0deg, rgba(0,0,0,.14), transparent);
+  }
+  .transport { display: flex; align-items: center; gap: 8px; }
+  .btn {
+    appearance: none; cursor: pointer; font: 600 13px var(--sans);
+    background: var(--panel); color: var(--text);
+    border: 1px solid var(--border); border-radius: 10px;
+    padding: 9px 13px; display: inline-flex; align-items: center; gap: 7px;
+    transition: border-color .15s, background .15s, transform .1s;
+  }
+  .btn:hover { border-color: var(--accent); }
+  .btn:active { transform: translateY(1px); }
+  .btn.primary { background: var(--accent); color: #06101f; border-color: var(--accent); min-width: 104px; justify-content: center; }
+  .btn.primary:hover { filter: brightness(1.06); }
+  .btn.toggle.on { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+  .btn[disabled] { opacity: .4; cursor: not-allowed; }
+
+  .scrub { flex: 1; display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .track {
+    position: relative; flex: 1; height: 6px; border-radius: 6px;
+    background: var(--panel-2); border: 1px solid var(--border); cursor: pointer;
+  }
+  .track .fill {
+    position: absolute; inset: 0; width: 0%; border-radius: 6px;
+    background: linear-gradient(90deg, var(--bl), var(--accent));
+    transition: width .3s ease;
+  }
+  .track .buf {
+    position: absolute; top: 50%; transform: translate(-50%,-50%);
+    width: 13px; height: 13px; border-radius: 50%; background: var(--text);
+    box-shadow: 0 0 0 3px var(--bg); transition: left .3s ease; left: 0%;
+  }
+  .counter { font: 600 12px var(--mono); color: var(--muted); white-space: nowrap; }
+  .speeds { display: flex; gap: 4px; }
+  .speeds .btn { padding: 7px 9px; font-size: 12px; }
+
+  /* ------------------------------------------------------------------ *
+   *  Scene primitives (shared)                                          *
+   * ------------------------------------------------------------------ */
+  .card {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; box-shadow: var(--shadow);
+  }
+  .lbl { font: 600 10.5px var(--mono); letter-spacing: 1px; text-transform: uppercase; color: var(--faint); }
+  svg.wires { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+  .wire { fill: none; stroke: var(--accent); stroke-width: 2; opacity: .55;
+          stroke-dasharray: var(--len); stroke-dashoffset: var(--len); }
+
+  /* entrance animations */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @keyframes popIn  { 0% { opacity: 0; transform: scale(.82); } 60% { opacity: 1; transform: scale(1.04); } 100% { opacity: 1; transform: scale(1); } }
+  @keyframes drawIn { to { stroke-dashoffset: 0; } }
+  @keyframes flyIn  { from { opacity: 0; transform: translateX(-40px) rotate(-6deg); } to { opacity: 1; transform: none; } }
+  @keyframes shake  { 10%,90%{transform:translateX(-1px)} 30%,70%{transform:translateX(2px)} 50%{transform:translateX(-3px)} }
+  @keyframes glow   { 50% { box-shadow: 0 0 0 1px var(--accent), 0 0 22px -4px var(--accent); } }
+  @keyframes barfill{ from { width: 0; } }
+
+  .anim { opacity: 0; animation: fadeUp .5s forwards; }
+  .anim.pop { animation-name: popIn; }
+  .anim.fly { animation-name: flyIn; }
+
+  /* file card */
+  .file {
+    width: 168px; padding: 11px 13px; border-radius: 10px;
+    background: var(--panel-2); border: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .file .ext {
+    font: 700 10px var(--mono); color: #06101f; background: var(--ok);
+    border-radius: 5px; padding: 3px 5px; flex: none;
+  }
+  .file .fn { font: 600 12px var(--mono); color: var(--text); white-space: nowrap; }
+  .file .fmeta { font-size: 10.5px; color: var(--muted); margin-top: 1px; }
+
+  /* plate */
+  .plate {
+    display: grid; grid-template-columns: 16px repeat(12, 1fr); gap: 4px;
+    padding: 16px; border-radius: 14px; background: var(--panel-2);
+    border: 1px solid var(--border); box-shadow: var(--shadow);
+    width: min(640px, 92%);
+  }
+  .well {
+    aspect-ratio: 1; border-radius: 50%;
+    background: var(--bg-2); border: 1px solid var(--border);
+    position: relative; transition: background .5s ease, box-shadow .5s ease;
+  }
+  .well .core { position: absolute; inset: 18%; border-radius: 50%; opacity: 0; transition: opacity .5s; }
+  .rowlbl, .collbl { font: 600 9.5px var(--mono); color: var(--faint); display: grid; place-items: center; }
+
+  .badge { font: 600 11px var(--mono); padding: 3px 8px; border-radius: 6px; }
+  .legend { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; justify-content: center; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
+  .legend i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+
+  .fade-note { font-size: 12px; color: var(--muted); }
+
+  @media (max-width: 1080px) {
+    main { grid-template-columns: 1fr; }
+    .rail { grid-template-rows: auto auto; }
+    .steps { max-height: 200px; }
+    body { overflow: auto; }
+    .app { height: auto; min-height: 100vh; }
+    .stage-wrap { min-height: 440px; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="brand">
+      <div class="logo">A2</div>
+      <div style="min-width:0">
+        <h1>AMP2 Data Journey</h1>
+        <div class="sub">How a 96-well plate submission travels through the MONet Analysis API</div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="pill">Schema&nbsp;·&nbsp;<b>media_strain_culture_plate.yaml</b></div>
+    <button class="icon-btn" id="theme" title="Toggle light / dark">◐</button>
+  </header>
+
+  <main>
+    <section class="stage-wrap">
+      <div class="stage-grid"></div>
+      <div class="stage-tag"><span class="dot"></span><span id="tag">Upload</span></div>
+      <div class="stage" id="stage"></div>
+    </section>
+
+    <aside class="rail">
+      <div class="steps" id="steps"></div>
+      <div class="detail">
+        <h3 id="d-title">—</h3>
+        <p id="d-desc">—</p>
+        <div class="flow" id="d-flow"></div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <div class="transport">
+      <button class="btn" id="prev" title="Previous (←)">◀</button>
+      <button class="btn primary" id="play" title="Play / Pause (space)">▶ Play</button>
+      <button class="btn" id="next" title="Next (→)">▶</button>
+      <button class="btn" id="restart" title="Restart (R)">↺</button>
+    </div>
+    <button class="btn toggle on" id="loop" title="Loop the journey">↻ Loop</button>
+    <div class="scrub">
+      <div class="track" id="track"><div class="fill" id="fill"></div><div class="buf" id="buf"></div></div>
+      <div class="counter" id="counter">1 / 8</div>
+    </div>
+    <div class="speeds">
+      <button class="btn" data-sp="0.5">0.5×</button>
+      <button class="btn on" data-sp="1">1×</button>
+      <button class="btn" data-sp="1.5">1.5×</button>
+    </div>
+  </footer>
+</div>
+
+<script>
+"use strict";
+/* ==================================================================== *
+ *  Helpers                                                             *
+ * ==================================================================== */
+const $ = (s, r=document) => r.querySelector(s);
+function el(tag, cls, html) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (html != null) n.innerHTML = html;
+  return n;
+}
+function delay(node, ms) { node.style.animationDelay = ms + "ms"; return node; }
+const raf = (fn) => requestAnimationFrame(() => requestAnimationFrame(fn));
+
+/* Plate model: rows A–G = samples, H = blanks.
+   cols 1–6 → KT2440 on M9;  cols 7–12 → BL21 on LB. */
+const ROWS = ["A","B","C","D","E","F","G","H"];
+const PLATE_AVG = [0.1051, 0.1209, 0.1367, 0.1735, 0.2103];   // real t=0,4,8,16,24h
+const TP_LABELS = ["t=0", "t=4h", "t=8h", "t=16h", "t=24h"];
+
+/* Real per-well OD600 series (position -> [t0,t4,t8,t16,t24]) and QC flags,
+   extracted from src/data/examples/valid/amp2-complex-001.yaml. */
+const WELL_SERIES = {"A2":[0.0789,0.0907,0.1026,0.1302,0.1578],"A3":[0.0681,0.0783,0.0885,0.1124,0.1362],"A4":[0.0676,0.0777,0.0879,0.1115,0.1352],"A5":[0.0672,0.0773,0.0874,0.1109,0.1344],"A6":[0.0729,0.0838,0.0948,0.1203,0.1458],"A7":[0.0833,0.0958,0.1083,0.1374,0.1666],"A8":[0.0672,0.0773,0.0874,0.1109,0.1344],"A9":[0.0668,0.0768,0.0868,0.1102,0.1336],"A10":[0.0676,0.0777,0.0879,0.1115,0.1352],"A11":[0.0697,0.0802,0.0906,0.115,0.1394],"A12":[0.0665,0.0765,0.0865,0.1097,0.133],"B1":[0.0679,0.0781,0.0883,0.112,0.1358],"B2":[0.0712,0.0819,0.0926,0.1175,0.1424],"B3":[0.2862,0.3291,0.3721,0.4722,0.5724],"B4":[0.0685,0.0788,0.0891,0.113,0.137],"B5":[0.0693,0.0797,0.0901,0.1143,0.1386],"B6":[0.0693,0.0797,0.0901,0.1143,0.1386],"B7":[0.2143,0.2464,0.2786,0.3536,0.4286],"B8":[0.0682,0.0784,0.0887,0.1125,0.1364],"B9":[0.0686,0.0789,0.0892,0.1132,0.1372],"B10":[0.091,0.1046,0.1183,0.1501,0.182],"B11":[0.069,0.0794,0.0897,0.1139,0.138],"B12":[0.0671,0.0772,0.0872,0.1107,0.1342],"C1":[0.0689,0.0792,0.0896,0.1137,0.1378],"C2":[0.0695,0.0799,0.0904,0.1147,0.139],"C3":[0.0693,0.0797,0.0901,0.1143,0.1386],"C4":[0.0684,0.0787,0.0889,0.1129,0.1368],"C5":[0.0675,0.0776,0.0878,0.1114,0.135],"C6":[0.0677,0.0779,0.088,0.1117,0.1354],"C7":[0.0672,0.0773,0.0874,0.1109,0.1344],"C8":[0.0685,0.0788,0.0891,0.113,0.137],"C9":[0.0676,0.0777,0.0879,0.1115,0.1352],"C10":[0.0679,0.0781,0.0883,0.112,0.1358],"C11":[0.0677,0.0779,0.088,0.1117,0.1354],"C12":[0.068,0.0782,0.0884,0.1122,0.136],"D1":[0.0741,0.0852,0.0963,0.1223,0.1482],"D2":[0.1551,0.1784,0.2016,0.2559,0.3102],"D3":[0.0683,0.0785,0.0888,0.1127,0.1366],"D4":[0.1079,0.1241,0.1403,0.178,0.2158],"D5":[0.3321,0.3819,0.4317,0.548,0.6642],"D6":[0.0677,0.0779,0.088,0.1117,0.1354],"D7":[0.0686,0.0789,0.0892,0.1132,0.1372],"D8":[0.0697,0.0802,0.0906,0.115,0.1394],"D9":[0.068,0.0782,0.0884,0.1122,0.136],"D10":[0.07,0.0805,0.091,0.1155,0.14],"D11":[0.0687,0.079,0.0893,0.1134,0.1374],"D12":[0.0677,0.0779,0.088,0.1117,0.1354],"E1":[0.1407,0.1618,0.1829,0.2322,0.2814],"E2":[0.0673,0.0774,0.0875,0.111,0.1346],"E3":[0.0694,0.0798,0.0902,0.1145,0.1388],"E4":[0.0684,0.0787,0.0889,0.1129,0.1368],"E5":[0.0853,0.0981,0.1109,0.1407,0.1706],"E6":[0.1326,0.1525,0.1724,0.2188,0.2652],"E7":[0.0705,0.0811,0.0916,0.1163,0.141],"E8":[0.3191,0.367,0.4148,0.5265,0.6382],"E9":[0.0671,0.0772,0.0872,0.1107,0.1342],"E10":[0.0741,0.0852,0.0963,0.1223,0.1482],"E11":[0.0723,0.0831,0.094,0.1193,0.1446],"E12":[0.123,0.1414,0.1599,0.2029,0.246],"F1":[0.0709,0.0815,0.0922,0.117,0.1418],"F2":[0.0678,0.078,0.0881,0.1119,0.1356],"F3":[0.1221,0.1404,0.1587,0.2015,0.2442],"F4":[0.0782,0.0899,0.1017,0.129,0.1564],"F5":[0.3594,0.4133,0.4672,0.593,0.7188],"F6":[0.1341,0.1542,0.1743,0.2213,0.2682],"F7":[0.0793,0.0912,0.1031,0.1308,0.1586],"F8":[0.0734,0.0844,0.0954,0.1211,0.1468],"F9":[0.1124,0.1293,0.1461,0.1855,0.2248],"F10":[0.0774,0.089,0.1006,0.1277,0.1548],"F11":[0.0762,0.0876,0.0991,0.1257,0.1524],"F12":[0.0959,0.1103,0.1247,0.1582,0.1918],"G1":[1.2251,1.4089,1.5926,2.0214,2.4502],"G2":[0.0682,0.0784,0.0887,0.1125,0.1364],"G3":[0.0733,0.0843,0.0953,0.1209,0.1466],"G4":[0.068,0.0782,0.0884,0.1122,0.136],"G5":[0.1302,0.1497,0.1693,0.2148,0.2604],"G6":[0.0739,0.085,0.0961,0.1219,0.1478],"G7":[0.0685,0.0788,0.0891,0.113,0.137],"G8":[0.1044,0.1201,0.1357,0.1723,0.2088],"G9":[0.0742,0.0853,0.0965,0.1224,0.1484],"G10":[0.0756,0.0869,0.0983,0.1247,0.1512],"G11":[0.0733,0.0843,0.0953,0.1209,0.1466],"G12":[0.0696,0.08,0.0905,0.1148,0.1392],"H1":[0.0679,0.0693,0.0693,0.0693,0.0693],"H2":[0.0702,0.0716,0.0716,0.0716,0.0716],"H3":[0.0691,0.0705,0.0705,0.0705,0.0705],"H4":[0.0685,0.0699,0.0699,0.0699,0.0699],"H5":[0.0697,0.0711,0.0711,0.0711,0.0711],"H6":[0.0696,0.071,0.071,0.071,0.071],"H7":[0.0689,0.0703,0.0703,0.0703,0.0703],"H8":[0.0668,0.0681,0.0681,0.0681,0.0681],"H9":[0.0674,0.0687,0.0687,0.0687,0.0687],"H10":[0.0698,0.0712,0.0712,0.0712,0.0712],"H11":[0.0693,0.0707,0.0707,0.0707,0.0707],"H12":[0.0684,0.0698,0.0698,0.0698,0.0698]};
+const WELL_FLAGS = {"A2":"ok","A3":"ok","A4":"ok","A5":"ok","A6":"ok","A7":"ok","A8":"ok","A9":"ok","A10":"ok","A11":"ok","A12":"ok","B1":"ok","B2":"ok","B3":"ok","B4":"ok","B5":"ok","B6":"ok","B7":"ok","B8":"ok","B9":"ok","B10":"ok","B11":"ok","B12":"ok","C1":"ok","C2":"ok","C3":"ok","C4":"ok","C5":"ok","C6":"ok","C7":"ok","C8":"ok","C9":"ok","C10":"ok","C11":"ok","C12":"ok","D1":"ok","D2":"ok","D3":"ok","D4":"ok","D5":"ok","D6":"ok","D7":"ok","D8":"ok","D9":"ok","D10":"ok","D11":"ok","D12":"ok","E1":"ok","E2":"ok","E3":"ok","E4":"ok","E5":"ok","E6":"ok","E7":"ok","E8":"ok","E9":"ok","E10":"ok","E11":"ok","E12":"ok","F1":"ok","F2":"ok","F3":"ok","F4":"ok","F5":"ok","F6":"ok","F7":"ok","F8":"ok","F9":"ok","F10":"ok","F11":"ok","F12":"ok","G1":"outlier","G2":"ok","G3":"ok","G4":"ok","G5":"ok","G6":"ok","G7":"ok","G8":"ok","G9":"ok","G10":"ok","G11":"ok","G12":"ok","H1":"blank","H2":"blank","H3":"blank","H4":"blank","H5":"blank","H6":"blank","H7":"blank","H8":"blank","H9":"blank","H10":"blank","H11":"blank","H12":"blank"};
+
+function wellArm(row, col) {
+  if (row === "H") return "blank";
+  return col <= 6 ? "kt" : "bl";
+}
+function armColor(arm) {
+  return arm === "kt" ? "var(--kt)" : arm === "bl" ? "var(--bl)" : "var(--blank)";
+}
+
+/* Build a 96-well plate DOM. onWell(cell, core, row, col, arm) for styling. */
+function buildPlate(opts = {}) {
+  const plate = el("div", "plate");
+  plate.appendChild(el("div", "rowlbl", ""));                 // corner
+  for (let c = 1; c <= 12; c++) plate.appendChild(el("div", "collbl", c));
+  const cells = [];
+  ROWS.forEach((row, ri) => {
+    plate.appendChild(el("div", "rowlbl", row));
+    for (let c = 1; c <= 12; c++) {
+      const arm = wellArm(row, c);
+      const w = el("div", "well");
+      const core = el("div", "core");
+      core.style.background = armColor(arm);
+      w.appendChild(core);
+      plate.appendChild(w);
+      const rec = { w, core, row, col: c, arm, idx: ri * 12 + (c - 1) };
+      cells.push(rec);
+      if (opts.onWell) opts.onWell(rec);
+    }
+  });
+  return { plate, cells };
+}
+
+/* ==================================================================== *
+ *  Scenes                                                              *
+ *  Each returns an optional cleanup() to stop timers on step change.   *
+ * ==================================================================== */
+const SCENES = {};
+
+/* ---- 0 · Upload ---------------------------------------------------- */
+SCENES.upload = (stage) => {
+  const files = [
+    ["01", "strains.csv", "2 rows"],
+    ["02", "media_preparations.csv", "2 rows"],
+    ["03", "culture_activities.csv", "3 rows"],
+    ["04", "plate_setup.csv", "1 row"],
+    ["05", "well_metadata.csv", "96 rows"],
+    ["06", "data_generation.csv", "6 rows"],
+    ["07", "well_readings.csv", "480 rows"],
+  ];
+  const scene = el("div", "scene");
+  const wrap = el("div");
+  wrap.style.cssText = "display:grid;grid-template-columns:1fr 260px;gap:40px;align-items:center;width:100%;max-width:760px";
+
+  const list = el("div");
+  list.style.cssText = "display:flex;flex-direction:column;gap:9px";
+  files.forEach((f, i) => {
+    const card = el("div", "file anim fly");
+    delay(card, 120 + i * 130);
+    card.innerHTML =
+      `<span class="ext">CSV</span><div style="min-width:0">
+         <div class="fn">${f[0]}_${f[1]}</div>
+         <div class="fmeta">${f[2]}</div>
+       </div>`;
+    list.appendChild(card);
+  });
+
+  const drop = el("div", "card anim pop");
+  delay(drop, 200);
+  drop.style.cssText += "padding:26px 20px;text-align:center;border-style:dashed;border-width:2px;border-color:var(--accent);background:color-mix(in srgb,var(--accent) 6%,var(--panel))";
+  drop.innerHTML =
+    `<div style="font-size:34px;line-height:1">☁︎</div>
+     <div style="font-weight:700;margin-top:8px">Web Uploader</div>
+     <div class="fade-note" style="margin-top:4px">Drop the AMP2 submission bundle</div>
+     <div style="margin-top:16px" class="track"><div class="fill" id="upbar" style="background:linear-gradient(90deg,var(--kt),var(--accent))"></div></div>
+     <div class="lbl" style="margin-top:8px" id="uptext">receiving…</div>`;
+
+  wrap.appendChild(list); wrap.appendChild(drop);
+  scene.appendChild(wrap); stage.appendChild(scene);
+
+  const bar = $("#upbar", drop), txt = $("#uptext", drop);
+  raf(() => { bar.style.transition = "width 1.6s ease .9s"; bar.style.width = "100%"; });
+  const t = setTimeout(() => { txt.textContent = "7 files · 1 submission ✓"; txt.style.color = "var(--ok)"; }, 2600);
+  return () => clearTimeout(t);
+};
+
+/* ---- 1 · Parse ----------------------------------------------------- */
+SCENES.parse = (stage) => {
+  const scene = el("div", "scene");
+  const wrap = el("div");
+  wrap.style.cssText = "display:grid;grid-template-columns:1fr 90px 1fr;gap:8px;align-items:center;width:100%;max-width:820px;position:relative";
+
+  // CSV grid (strains.csv)
+  const csv = el("div", "card anim");
+  csv.style.cssText += "padding:12px;font:12px var(--mono)";
+  csv.innerHTML =
+    `<div class="lbl" style="margin-bottom:8px">01_strains.csv</div>
+     <table style="border-collapse:collapse;width:100%">
+       <tr style="color:var(--accent-2)">
+         <td style="padding:4px 8px">id</td><td style="padding:4px 8px">strain_identifier</td><td style="padding:4px 8px">strain_source</td>
+       </tr>
+       <tr style="border-top:1px solid var(--border-soft)"><td style="padding:4px 8px">…KT2440</td><td style="padding:4px 8px;color:var(--kt)">KT2440_pTE314</td><td style="padding:4px 8px">PNNL</td></tr>
+       <tr style="border-top:1px solid var(--border-soft)"><td style="padding:4px 8px">…BL21</td><td style="padding:4px 8px;color:var(--bl)">BL21-DE3</td><td style="padding:4px 8px">ATCC</td></tr>
+     </table>`;
+
+  const arrow = el("div", "anim");
+  delay(arrow, 700);
+  arrow.style.cssText += "text-align:center;color:var(--accent);font-size:26px";
+  arrow.innerHTML = "→<div class='lbl' style='margin-top:6px'>map</div>";
+
+  // LinkML class
+  const cls = el("div", "card anim pop");
+  delay(cls, 900);
+  cls.style.cssText += "padding:14px;background:color-mix(in srgb,var(--kt) 6%,var(--panel))";
+  cls.innerHTML =
+    `<div style="font:700 13px var(--mono);color:var(--kt)">class biological_entity</div>
+     <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px;font:12px var(--mono);color:var(--muted)">
+       <div><b style="color:var(--text)">id:</b> uuid</div>
+       <div><b style="color:var(--text)">strain_identifier:</b> string</div>
+       <div><b style="color:var(--text)">strain_source:</b> string</div>
+       <div><b style="color:var(--text)">organism_name:</b> string</div>
+     </div>`;
+
+  wrap.appendChild(csv); wrap.appendChild(arrow); wrap.appendChild(cls);
+
+  const foot = el("div", "anim fade-note");
+  delay(foot, 1300);
+  foot.style.cssText += "text-align:center;max-width:640px;margin:0 auto;line-height:1.6";
+  foot.innerHTML = "Each CSV maps to a LinkML class — the 7 files become <b style='color:var(--text)'>biological_entity</b>, <b style='color:var(--text)'>MediaPreparation</b>, <b style='color:var(--text)'>CultureGrowth</b>, <b style='color:var(--text)'>AMP2PlateSetupActivity</b>, <b style='color:var(--text)'>AMP2DataGenerationActivity</b> &amp; <b style='color:var(--text)'>AMP2ODProduct</b>.";
+
+  const container = el("div"); container.style.cssText = "display:flex;flex-direction:column;align-items:center;gap:28px;width:100%";
+  container.appendChild(wrap); container.appendChild(foot);
+  scene.appendChild(container); stage.appendChild(scene);
+};
+
+/* ---- 2 · Validate -------------------------------------------------- */
+SCENES.validate = (stage) => {
+  const checks = [
+    ["C1", "media_type \"experimental_batch\" not in MediaTypeEnum", "enum"],
+    ["C2", "media_ref → nonexistent processed_sample UUID", "foreign key"],
+    ["C3", "ph_target set without ph_adjustment: true", "conditional"],
+    ["C4", "well position \"A-1\" should be \"A1\"", "pattern"],
+    ["C5", "inoculum_volume_ul missing (required) — 3 wells", "required"],
+    ["C6", "duplicate timepoint_label \"t=8h\" on one plate", "unique key"],
+  ];
+  const scene = el("div", "scene");
+  const col = el("div"); col.style.cssText = "width:100%;max-width:640px";
+
+  const head = el("div", "anim");
+  head.style.cssText = "display:flex;align-items:center;justify-content:space-between;margin-bottom:12px";
+  head.innerHTML = `<div class="lbl">linkml-validate · amp2-complex-001</div>
+                    <div class="badge" id="vcount" style="background:color-mix(in srgb,var(--err) 15%,transparent);color:var(--err)">scanning…</div>`;
+  col.appendChild(head);
+
+  checks.forEach((c, i) => {
+    const row = el("div", "card anim");
+    delay(row, 300 + i * 320);
+    row.style.cssText += "padding:11px 13px;margin-bottom:8px;display:grid;grid-template-columns:26px 1fr auto;gap:11px;align-items:center;border-left:3px solid var(--err)";
+    row.innerHTML =
+      `<span style="color:var(--err);font-size:16px">✗</span>
+       <div><div style="font:600 12.5px var(--sans)">${c[1]}</div>
+            <div class="lbl" style="margin-top:2px">${c[0]}</div></div>
+       <span class="chip" style="color:var(--warn);background:color-mix(in srgb,var(--warn) 12%,transparent);border-color:color-mix(in srgb,var(--warn) 30%,transparent)">${c[2]}</span>`;
+    col.appendChild(row);
+  });
+
+  const note = el("div", "anim fade-note");
+  delay(note, 300 + checks.length * 320 + 200);
+  note.style.cssText += "margin-top:6px;text-align:center";
+  note.innerHTML = "A clean submission clears every rule and flows straight through. Here, 6 seeded violations are caught <b style='color:var(--text)'>before any data reaches the database.</b>";
+  col.appendChild(note);
+
+  scene.appendChild(col); stage.appendChild(scene);
+  const t = setTimeout(() => {
+    const b = $("#vcount", col);
+    b.textContent = "6 issues · blocked";
+  }, 300 + checks.length * 320);
+  return () => clearTimeout(t);
+};
+
+/* ---- 3 · Biological identity -------------------------------------- */
+SCENES.identity = (stage) => {
+  const scene = el("div", "scene");
+  const wrap = el("div"); wrap.style.cssText = "display:flex;gap:30px;flex-wrap:wrap;justify-content:center;align-items:stretch;width:100%;max-width:720px";
+  const strains = [
+    ["KT2440_pTE314", "Pseudomonas putida", "PNNL", "pTE314", "var(--kt)"],
+    ["BL21-DE3", "Escherichia coli", "ATCC", "—", "var(--bl)"],
+  ];
+  strains.forEach((s, i) => {
+    const c = el("div", "card anim pop");
+    delay(c, 200 + i * 260);
+    c.style.cssText += `padding:18px 20px;width:280px;border-top:3px solid ${s[4]}`;
+    c.innerHTML =
+      `<div class="lbl">biological_entity</div>
+       <div style="font:700 16px var(--mono);color:${s[4]};margin:6px 0 2px">${s[0]}</div>
+       <div style="font-style:italic;color:var(--muted);font-size:13px">${s[1]}</div>
+       <div style="margin-top:14px;display:flex;flex-direction:column;gap:7px;font-size:12.5px">
+         <div><span class="lbl">source</span> &nbsp;${s[2]}</div>
+         <div><span class="lbl">mutation</span> &nbsp;${s[3]}</div>
+         <div><span class="lbl">type</span> &nbsp;bacterial</div>
+       </div>`;
+    wrap.appendChild(c);
+  });
+  const note = el("div", "anim fade-note");
+  delay(note, 900);
+  note.style.cssText += "flex-basis:100%;text-align:center;margin-top:8px";
+  note.innerHTML = "Identity is stored <b style='color:var(--text)'>once</b>. Many physical samples (<span style='font-family:var(--mono)'>AMP2UserSample</span>) point back to one <span style='font-family:var(--mono)'>biological_entity</span> via <span style='font-family:var(--mono)'>biological_entity_ref</span>.";
+  wrap.appendChild(note);
+  scene.appendChild(wrap); stage.appendChild(scene);
+};
+
+/* ---- 4 · Lab lifecycle -------------------------------------------- */
+SCENES.lifecycle = (stage) => {
+  const stages = [
+    ["MediaPreparation", "prepared_media", true],
+    ["StrainPurity", "QC gate", false],
+    ["StockCulturePreparation", "stock_culture", false],
+    ["PreCultureGrowth", "pre_culture", true],
+    ["ExperimentalCulture", "experimental_culture", true],
+  ];
+  const scene = el("div", "scene");
+  const col = el("div"); col.style.cssText = "width:100%;max-width:840px";
+  const title = el("div", "anim lbl"); title.style.cssText += "text-align:center;margin-bottom:16px";
+  title.innerHTML = "is_a: SampleProcessing &nbsp;—&nbsp; each activity emits a ProcessedSample carried forward by the next";
+  col.appendChild(title);
+
+  const row = el("div"); row.style.cssText = "display:flex;align-items:stretch;gap:6px;justify-content:center;flex-wrap:wrap";
+  stages.forEach((s, i) => {
+    const box = el("div", "anim pop");
+    delay(box, 200 + i * 340);
+    const inSub = s[2];
+    box.style.cssText = `flex:1;min-width:118px;max-width:150px;border-radius:11px;padding:12px 10px;text-align:center;
+      background:${inSub ? "color-mix(in srgb,var(--accent) 9%,var(--panel))" : "var(--panel-2)"};
+      border:1px solid ${inSub ? "color-mix(in srgb,var(--accent) 40%,transparent)" : "var(--border)"}`;
+    box.innerHTML =
+      `<div style="font:700 11.5px var(--mono);color:${inSub ? "var(--accent-2)" : "var(--muted)"};line-height:1.3">${s[0]}</div>
+       <div style="margin-top:9px;font-size:10px" class="lbl">emits</div>
+       <div style="font:600 11px var(--mono);margin-top:2px;color:${inSub ? "var(--text)" : "var(--faint)"}">${s[1]}</div>
+       ${inSub ? '<div class="chip" style="margin-top:9px;display:inline-block">in bundle</div>' : '<div class="fade-note" style="margin-top:9px;font-size:10.5px">optional</div>'}`;
+    row.appendChild(box);
+    if (i < stages.length - 1) {
+      const a = el("div", "anim"); delay(a, 360 + i * 340);
+      a.style.cssText += "align-self:center;color:var(--accent);font-size:20px";
+      a.textContent = "→";
+      row.appendChild(a);
+    }
+  });
+  col.appendChild(row);
+
+  const note = el("div", "anim fade-note"); delay(note, 200 + stages.length * 340);
+  note.style.cssText += "text-align:center;margin-top:18px";
+  note.innerHTML = "Media flows in by reference: <span style='font-family:var(--mono);color:var(--kt)'>M9+glucose</span> and <span style='font-family:var(--mono);color:var(--bl)'>LB</span> batches (<span style='font-family:var(--mono)'>prepared_media</span>) are linked into the cultures via <span style='font-family:var(--mono)'>media_ref</span>.";
+  col.appendChild(note);
+  scene.appendChild(col); stage.appendChild(scene);
+};
+
+/* ---- 5 · Plate setup ---------------------------------------------- */
+SCENES.plate = (stage) => {
+  const scene = el("div", "scene");
+  const col = el("div"); col.style.cssText = "display:flex;flex-direction:column;align-items:center;gap:16px;width:100%";
+
+  const { plate, cells } = buildPlate();
+  plate.classList.add("anim");
+  col.appendChild(plate);
+
+  const legend = el("div", "legend anim"); delay(legend, 200);
+  legend.innerHTML =
+    `<span><i style="background:var(--kt)"></i> KT2440 · M9 (cols 1–6)</span>
+     <span><i style="background:var(--bl)"></i> BL21 · LB (cols 7–12)</span>
+     <span><i style="background:var(--blank)"></i> blanks (row H)</span>
+     <span class="chip">AMP2PlateSetupActivity → amp2_96well_plate</span>`;
+  col.appendChild(legend);
+
+  scene.appendChild(col); stage.appendChild(scene);
+
+  // fill wells column-by-column
+  let k = 0;
+  const timers = [];
+  cells.slice().sort((a,b)=> a.col-b.col || a.idx-b.idx).forEach((c) => {
+    const t = setTimeout(() => {
+      c.w.style.background = "var(--panel)";
+      c.core.style.opacity = c.arm === "blank" ? ".28" : ".9";
+      c.w.style.boxShadow = c.arm === "blank" ? "none" : `0 0 10px -3px ${armColor(c.arm)}`;
+    }, 260 + (k++) * 11);
+    timers.push(t);
+  });
+  return () => timers.forEach(clearTimeout);
+};
+
+/* ---- 6 · Data generation ------------------------------------------ */
+SCENES.measure = (stage) => {
+  const svgNS = "http://www.w3.org/2000/svg";
+  const armOf = p => p[0] === "H" ? "blank" : (parseInt(p.slice(1), 10) <= 6 ? "kt" : "bl");
+  const armColorV = a => a === "kt" ? "var(--kt)" : a === "bl" ? "var(--bl)" : "var(--blank)";
+  const N = TP_LABELS.length;
+
+  const scene = el("div", "scene");
+  const wrap = el("div");
+  wrap.style.cssText = "display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:24px;align-items:center;width:100%;max-width:920px";
+
+  /* ---- left: plate + timepoint badge ---- */
+  const left = el("div"); left.style.cssText = "display:flex;flex-direction:column;align-items:center;gap:12px";
+  const { plate, cells } = buildPlate();
+  cells.forEach(c => {
+    c.pos = c.row + c.col;
+    if (c.arm === "blank") c.core.style.background = "var(--blank)";
+    c.core.style.opacity = c.arm === "blank" ? ".24" : ".14";
+  });
+  left.appendChild(plate);
+  const tpBadge = el("div", "badge");
+  tpBadge.style.cssText += "background:color-mix(in srgb,var(--accent) 15%,transparent);color:var(--accent);font-size:14px;padding:6px 14px";
+  tpBadge.textContent = "t = 0";
+  left.appendChild(tpBadge);
+
+  /* ---- right: metadata strip + per-well trajectory chart ---- */
+  const right = el("div"); right.style.cssText = "display:flex;flex-direction:column;gap:11px;min-width:0";
+  const meta = el("div");
+  meta.style.cssText = "display:flex;gap:14px;flex-wrap:wrap;align-items:center;font:12px var(--mono);color:var(--muted)";
+  meta.innerHTML = `<span class="lbl">AMP2DataGenerationActivity</span><span>OD · 600 nm</span><span>Tecan Spark</span><span>96 wells × 5 timepoints</span>`;
+  right.appendChild(meta);
+
+  const chart = el("div", "card"); chart.style.cssText += "padding:14px 16px 12px";
+  chart.appendChild(el("div", "lbl", "well_readings — individual OD₆₀₀ per well, one line each, coloured by strain arm"));
+
+  const YMAX = 0.78;
+  const Wc = 480, Hc = 292, padL = 40, padR = 14, padT = 14, padB = 32;
+  const plotW = Wc - padL - padR, plotH = Hc - padT - padB;
+  const X = i => padL + i * plotW / (N - 1);
+  const Y = v => padT + plotH * (1 - Math.max(0, Math.min(1, v / YMAX)));
+  const pts = (vals, upto) => { let s = ""; for (let i = 0; i <= upto; i++) s += (i ? " " : "") + X(i).toFixed(1) + "," + Y(vals[i]).toFixed(1); return s; };
+
+  const svg = document.createElementNS(svgNS, "svg");
+  svg.setAttribute("viewBox", `0 0 ${Wc} ${Hc}`); svg.style.width = "100%"; svg.style.overflow = "hidden"; svg.style.marginTop = "6px";
+  let grid = "";
+  [0, 0.2, 0.4, 0.6].forEach(gv => {
+    const y = Y(gv);
+    grid += `<line x1="${padL}" y1="${y}" x2="${Wc-padR}" y2="${y}" style="stroke:var(--border-soft)"/>`;
+    grid += `<text x="${padL-6}" y="${y+3}" text-anchor="end" style="fill:var(--faint);font:9px var(--mono)">${gv.toFixed(1)}</text>`;
+  });
+  TP_LABELS.forEach((t, i) => { grid += `<text x="${X(i)}" y="${Hc-padB+16}" text-anchor="middle" style="fill:var(--faint);font:9px var(--mono)">${t}</text>`; });
+  grid += `<line x1="${padL}" y1="${padT}" x2="${padL}" y2="${Hc-padB}" style="stroke:var(--border)"/>`;
+  svg.innerHTML = grid;
+
+  // sweeping playhead
+  const playhead = document.createElementNS(svgNS, "line");
+  playhead.setAttribute("y1", padT); playhead.setAttribute("y2", Hc - padB);
+  playhead.setAttribute("x1", X(0)); playhead.setAttribute("x2", X(0));
+  playhead.style.cssText = "stroke:var(--accent);stroke-width:1;opacity:.35;stroke-dasharray:2 3";
+  svg.appendChild(playhead);
+
+  const positions = Object.keys(WELL_SERIES);
+  const lines = [];   // faint per-well lines
+  function addLine(pos) {
+    const a = armOf(pos), outlier = WELL_FLAGS[pos] === "outlier";
+    const pl = document.createElementNS(svgNS, "polyline");
+    pl.style.fill = "none"; pl.style.stroke = armColorV(a);
+    pl.style.strokeLinejoin = "round"; pl.style.strokeLinecap = "round";
+    if (a === "blank") { pl.style.strokeWidth = "1"; pl.style.opacity = ".2"; }
+    else if (outlier) { pl.style.strokeWidth = "1.6"; pl.style.opacity = ".75"; pl.style.strokeDasharray = "3 3"; }
+    else { pl.style.strokeWidth = "1.2"; pl.style.opacity = ".4"; }
+    svg.appendChild(pl);
+    lines.push({ pl, vals: WELL_SERIES[pos] });
+  }
+  // draw order: blanks (back), sample wells, outliers on top
+  positions.filter(p => armOf(p) === "blank").forEach(addLine);
+  positions.filter(p => armOf(p) !== "blank" && WELL_FLAGS[p] !== "outlier").forEach(addLine);
+  positions.filter(p => WELL_FLAGS[p] === "outlier").forEach(addLine);
+
+  // arm-mean lines (bold) — exclude blanks and QC outliers, mirroring plate_average
+  const means = { kt: [], bl: [] };
+  for (let i = 0; i < N; i++) ["kt", "bl"].forEach(a => {
+    const vs = positions.filter(p => armOf(p) === a && WELL_FLAGS[p] !== "outlier").map(p => WELL_SERIES[p][i]);
+    means[a][i] = vs.reduce((s, x) => s + x, 0) / vs.length;
+  });
+  const meanEls = ["kt", "bl"].map(a => {
+    const pl = document.createElementNS(svgNS, "polyline");
+    pl.style.cssText = `fill:none;stroke:${armColorV(a)};stroke-width:3;stroke-linejoin:round;stroke-linecap:round;filter:drop-shadow(0 1px 3px rgba(0,0,0,.4))`;
+    svg.appendChild(pl);
+    const dot = document.createElementNS(svgNS, "circle");
+    dot.setAttribute("r", "3.5"); dot.style.cssText = `fill:${armColorV(a)};opacity:0;transition:opacity .3s`;
+    svg.appendChild(dot);
+    return { pl, dot, vals: means[a] };
+  });
+
+  chart.appendChild(svg);
+  const legend = el("div", "legend"); legend.style.marginTop = "10px";
+  legend.innerHTML =
+    `<span><i style="background:var(--kt)"></i> KT2440 · M9 arm</span>
+     <span><i style="background:var(--bl)"></i> BL21 · LB arm</span>
+     <span><i style="background:var(--blank)"></i> blanks</span>
+     <span style="color:var(--faint)">thin = one well · bold = arm mean · dashed = QC outlier (G1)</span>`;
+  chart.appendChild(legend);
+  right.appendChild(chart);
+
+  wrap.appendChild(left); wrap.appendChild(right);
+  scene.appendChild(wrap); stage.appendChild(scene);
+
+  /* ---- timeline: reveal timepoint by timepoint ---- */
+  const timers = [];
+  function showTP(i) {
+    tpBadge.textContent = TP_LABELS[i];
+    lines.forEach(o => o.pl.setAttribute("points", pts(o.vals, i)));
+    meanEls.forEach(o => {
+      o.pl.setAttribute("points", pts(o.vals, i));
+      o.dot.setAttribute("cx", X(i)); o.dot.setAttribute("cy", Y(o.vals[i])); o.dot.style.opacity = "1";
+    });
+    playhead.setAttribute("x1", X(i)); playhead.setAttribute("x2", X(i));
+    cells.forEach(c => {
+      if (c.arm === "blank") { c.core.style.opacity = ".24"; return; }
+      const arr = WELL_SERIES[c.pos];
+      const v = arr ? arr[i] : means[c.arm][i];
+      const o = Math.max(0.12, Math.min(0.95, (v - 0.06) / (0.72 - 0.06)));
+      c.core.style.opacity = o.toFixed(3);
+      c.w.style.boxShadow = `0 0 ${(o*10).toFixed(0)}px -3px ${armColorV(c.arm)}`;
+    });
+  }
+  let tp = 0;
+  timers.push(setTimeout(() => showTP(0), 80));
+  function tick() {
+    tp = Math.min(tp + 1, N - 1);
+    showTP(tp);
+    if (tp < N - 1) timers.push(setTimeout(tick, 1250));
+  }
+  timers.push(setTimeout(tick, 1200));
+  return () => timers.forEach(clearTimeout);
+};
+
+/* ---- 7 · Products & storage --------------------------------------- */
+SCENES.store = (stage) => {
+  const scene = el("div", "scene");
+  const wrap = el("div"); wrap.style.cssText = "position:relative;display:grid;grid-template-columns:250px 64px 1fr;gap:22px;align-items:center;width:100%;max-width:780px";
+
+  const prod = el("div", "card anim pop");
+  prod.style.cssText += "padding:16px 18px;border-top:3px solid var(--accent)";
+  prod.innerHTML =
+    `<div class="lbl">AMP2ODProduct · one row per plate × timepoint</div>
+     <div style="margin-top:10px;display:flex;flex-direction:column;gap:7px;font:12.5px var(--mono)">
+       <div><span class="lbl">plate_average</span> &nbsp;0.2103</div>
+       <div><span class="lbl">blank_mean</span> &nbsp;0.0702</div>
+       <div><span class="lbl">cv_percent</span> &nbsp;129.15</div>
+       <div><span class="lbl">well_readings</span> &nbsp;96 entries</div>
+     </div>`;
+
+  const dest = el("div"); dest.style.cssText = "display:flex;flex-direction:column;gap:16px";
+  const db = el("div", "card anim"); delay(db, 700);
+  db.style.cssText += "padding:14px 16px;border-left:3px solid var(--ok)";
+  db.innerHTML = `<div style="font-weight:700;display:flex;align-items:center;gap:9px"><span style="font-size:18px">🛢</span> PostgreSQL</div>
+                  <div class="fade-note" style="margin-top:5px">Typed entities, activities &amp; links — queryable metadata graph</div>`;
+  const s3 = el("div", "card anim"); delay(s3, 950);
+  s3.style.cssText += "padding:14px 16px;border-left:3px solid var(--bl)";
+  s3.innerHTML = `<div style="font-weight:700;display:flex;align-items:center;gap:9px"><span style="font-size:18px">🗄</span> S3 / MinIO</div>
+                  <div class="fade-note" style="margin-top:5px">Raw uploaded CSVs preserved at their <span style="font-family:var(--mono)">s3_key</span></div>`;
+  dest.appendChild(db); dest.appendChild(s3);
+
+  // arrow fan from product → the two destinations
+  const fan = el("div"); fan.style.cssText = "display:flex;flex-direction:column;gap:34px;align-items:center;color:var(--faint);font-size:22px;line-height:1";
+  const aUp = el("div", "anim"); delay(aUp, 650); aUp.textContent = "↗"; aUp.style.color = "var(--ok)";
+  const aDn = el("div", "anim"); delay(aDn, 900); aDn.textContent = "↘"; aDn.style.color = "var(--bl)";
+  fan.appendChild(aUp); fan.appendChild(aDn);
+
+  wrap.appendChild(prod); wrap.appendChild(fan); wrap.appendChild(dest);
+
+  const done = el("div", "anim"); delay(done, 1300);
+  done.style.cssText += "position:absolute;bottom:-44px;left:0;right:0;text-align:center;font-weight:650;color:var(--ok)";
+  done.innerHTML = "✓ Journey complete — the plate is now a linked, queryable record.";
+  wrap.appendChild(done);
+
+  scene.appendChild(wrap); stage.appendChild(scene);
+};
+
+/* ==================================================================== *
+ *  Steps                                                               *
+ * ==================================================================== */
+const STEPS = [
+  { tag: "Upload", scene: "upload", dur: 4200,
+    title: "1 · Upload the submission bundle",
+    desc: "A researcher drops seven linked CSVs into the web uploader — strains, media, cultures, plate setup, wells, reads and readings — together describing one 96-well experiment.",
+    flow: ["7 CSV files", "→", "1 AMP2 submission"] },
+
+  { tag: "Parse", scene: "parse", dur: 4200,
+    title: "2 · Parse rows into schema classes",
+    desc: "Each file and column is mapped onto a LinkML class and slot defined in the schema. Rows become candidate typed records.",
+    flow: ["CSV columns", "→", "LinkML slots"] },
+
+  { tag: "Validate", scene: "validate", dur: 5200,
+    title: "3 · Validate against the schema",
+    desc: "linkml-validate enforces enums, required fields, foreign-key references, patterns and unique keys. This example carries six seeded violations, all caught before storage.",
+    flow: ["enum", "required", "FK", "pattern", "unique"] },
+
+  { tag: "Identity", scene: "identity", dur: 3800,
+    title: "4 · Resolve biological identity",
+    desc: "Strain rows become biological_entity records — identity stored once. Two strains here: KT2440_pTE314 on M9, BL21-DE3 on LB.",
+    flow: ["strains.csv", "→", "biological_entity"] },
+
+  { tag: "Lab lifecycle", scene: "lifecycle", dur: 5000,
+    title: "5 · Walk the processing lifecycle",
+    desc: "Sample-processing activities chain together, each an is_a SampleProcessing that emits a ProcessedSample. Media batches feed in by reference.",
+    flow: ["MediaPreparation", "→", "PreCulture", "→", "ExperimentalCulture"] },
+
+  { tag: "Plate setup", scene: "plate", dur: 4200,
+    title: "6 · Lay out the 96-well plate",
+    desc: "AMP2PlateSetupActivity records the plate; AMP2WellMetadata fills each well — KT2440 on the left, BL21 on the right, blanks along row H.",
+    flow: ["AMP2PlateSetupActivity", "→", "amp2_96well_plate"] },
+
+  { tag: "Measure", scene: "measure", dur: 7600,
+    title: "7 · Read optical density over time",
+    desc: "AMP2DataGenerationActivity captures OD₆₀₀ at five timepoints on a Tecan Spark. Every well_readings entry is a separate row, so each well has its own trajectory — the KT2440/M9 arm (amber) outgrows the BL21/LB arm (violet), and well G1 trips its QC outlier flag.",
+    flow: ["per-well", "trajectories", "·", "by arm"] },
+
+  { tag: "Store", scene: "store", dur: 5200,
+    title: "8 · Materialise products & store",
+    desc: "Readings roll up into AMP2ODProduct rows. Structured metadata lands in PostgreSQL; the original files are preserved in S3 / MinIO.",
+    flow: ["AMP2ODProduct", "→", "PostgreSQL", "+", "S3"] },
+];
+
+/* ==================================================================== *
+ *  Player                                                              *
+ * ==================================================================== */
+const stage   = $("#stage");
+const stepsEl = $("#steps");
+let idx = 0, playing = false, looping = true, speed = 1;
+let advTimer = null, cleanup = null;
+
+// build rail
+STEPS.forEach((s, i) => {
+  const node = el("div", "step");
+  node.dataset.i = i;
+  node.innerHTML =
+    `<div class="num">${i+1}</div>
+     <div><div class="t">${s.title.replace(/^\d+ · /,"")}</div>
+          <div class="d">${s.desc}</div>
+          <div class="cls">${s.flow.filter(x=>!["→","+"].includes(x)).map(c=>`<span class="chip">${c}</span>`).join("")}</div>
+     </div>`;
+  node.addEventListener("click", () => goto(i, false));
+  stepsEl.appendChild(node);
+});
+const stepNodes = [...stepsEl.querySelectorAll(".step")];
+
+function renderDetail(s) {
+  $("#d-title").textContent = s.title;
+  $("#d-desc").textContent = s.desc;
+  $("#d-flow").innerHTML = s.flow.map(x =>
+    ["→","+"].includes(x) ? `<span style="color:var(--faint)">${x}</span>` : `<b>${x}</b>`).join(" ");
+}
+
+function paintRail() {
+  stepNodes.forEach((n, i) => {
+    n.classList.toggle("active", i === idx);
+    n.classList.toggle("done", i < idx);
+  });
+  const active = stepNodes[idx];
+  if (active) active.scrollIntoView({ block: "nearest", behavior: "smooth" });
+}
+
+function paintScrub() {
+  const pct = STEPS.length > 1 ? (idx / (STEPS.length - 1)) * 100 : 0;
+  $("#fill").style.width = pct + "%";
+  $("#buf").style.left = pct + "%";
+  $("#counter").textContent = `${idx+1} / ${STEPS.length}`;
+}
+
+function clearTimers() {
+  if (advTimer) { clearTimeout(advTimer); advTimer = null; }
+  if (cleanup) { try { cleanup(); } catch(e){} cleanup = null; }
+}
+
+function render() {
+  clearTimers();
+  stage.innerHTML = "";
+  const s = STEPS[idx];
+  $("#tag").textContent = s.tag;
+  renderDetail(s);
+  paintRail();
+  paintScrub();
+  cleanup = SCENES[s.scene](stage) || null;
+  if (playing) scheduleAdvance();
+}
+
+function scheduleAdvance() {
+  const d = STEPS[idx].dur / speed;
+  advTimer = setTimeout(() => {
+    if (idx < STEPS.length - 1) { idx++; render(); }
+    else if (looping) { idx = 0; render(); }
+    else { setPlaying(false); }
+  }, d);
+}
+
+function goto(i, keepPlaying) {
+  idx = Math.max(0, Math.min(STEPS.length - 1, i));
+  if (keepPlaying === false) setPlaying(false);
+  render();
+}
+
+function setPlaying(v) {
+  playing = v;
+  $("#play").innerHTML = v ? "❚❚ Pause" : "▶ Play";
+  if (v) { if (!advTimer) scheduleAdvance(); }
+  else if (advTimer) { clearTimeout(advTimer); advTimer = null; }
+}
+
+/* controls */
+$("#play").addEventListener("click", () => {
+  if (!playing && idx === STEPS.length - 1 && !looping) { idx = 0; render(); }
+  setPlaying(!playing);
+  if (playing && !advTimer) scheduleAdvance();
+});
+$("#next").addEventListener("click", () => goto(idx + 1, false));
+$("#prev").addEventListener("click", () => goto(idx - 1, false));
+$("#restart").addEventListener("click", () => { idx = 0; render(); });
+$("#loop").addEventListener("click", (e) => {
+  looping = !looping;
+  e.currentTarget.classList.toggle("on", looping);
+});
+$("#track").addEventListener("click", (e) => {
+  const r = e.currentTarget.getBoundingClientRect();
+  const p = (e.clientX - r.left) / r.width;
+  goto(Math.round(p * (STEPS.length - 1)), false);
+});
+document.querySelectorAll(".speeds .btn").forEach(b => {
+  b.addEventListener("click", () => {
+    speed = parseFloat(b.dataset.sp);
+    document.querySelectorAll(".speeds .btn").forEach(x => x.classList.toggle("on", x === b));
+    if (playing) { if (advTimer) { clearTimeout(advTimer); advTimer = null; } scheduleAdvance(); }
+  });
+});
+$("#theme").addEventListener("click", () => {
+  const root = document.documentElement;
+  root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light";
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowRight") goto(idx + 1, false);
+  else if (e.key === "ArrowLeft") goto(idx - 1, false);
+  else if (e.key === " ") { e.preventDefault(); $("#play").click(); }
+  else if (e.key.toLowerCase() === "r") { idx = 0; render(); }
+});
+
+/* boot — supports deep-links: #s=3 jumps to a step, #still starts paused */
+(function boot() {
+  const h = location.hash;
+  const m = h.match(/s=(\d+)/);
+  if (m) idx = Math.max(0, Math.min(STEPS.length - 1, parseInt(m[1], 10) - 1));
+  render();
+  setPlaying(!/still/.test(h));
+})();
+</script>
+</body>
+</html>

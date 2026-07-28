@@ -10,6 +10,13 @@ see_also:
   - https://MONet.github.io/analysis-api-schema
   - https://github.com/pnnl/analysis-api
 
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+  MIXS: https://w3id.org/mixs/
+
+default_prefix: analysis_api_schema
+
 default_range: string
 
 imports:
@@ -149,7 +156,8 @@ slots:
     title: antibiotic regimen
 
   aq:
-    range: numeric
+    description: acquisition number
+    range: double
     todos: what is this supposed to mean
 
   atmospheric_data:
@@ -1929,7 +1937,7 @@ slots:
 
   project:
     title: Project
-    alias:
+    aliases:
       - study
       - study_id
       - project_id
@@ -2541,7 +2549,7 @@ slots:
     
   strain_ref:
     description: FK reference to a Strain purchasedMaterial used in the activity
-    range: Strain
+    range: biological_entity
     required: false
 
   strain_source:

@@ -24,6 +24,10 @@ imports:
 classes:
 
   Study:
+    description: |-
+      A study or research project, typically associated with a proposal and a set of experiments.
+      A study may have multiple participants, each with different roles, and may be associated with
+      one or more campaigns. The study may also have associated DOIs and funding sources.
     slots:
       - external_identifiers
     attributes:
