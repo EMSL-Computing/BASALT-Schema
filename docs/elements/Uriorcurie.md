@@ -1,0 +1,52 @@
+# Type: Uriorcurie 
+
+
+
+
+_a URI or a CURIE_
+
+
+
+URI: [xsd:anyURI](http://www.w3.org/2001/XMLSchema#anyURI)
+
+## Type Properties
+
+| Property | Value |
+| --- | --- |
+| Base | `URIorCURIE` |
+| Type URI | [xsd:anyURI](http://www.w3.org/2001/XMLSchema#anyURI) |
+| Representation | `str` |
+
+
+
+
+
+
+## Notes
+
+* If you are authoring schemas in LinkML YAML, the type is referenced with the lower case "uriorcurie".
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | xsd:anyURI |
+| native | analysis_api_schema:uriorcurie |
+
+

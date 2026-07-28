@@ -1,36 +1,82 @@
 ---
 site_name: "analysis-api-schema"
 theme:
+  # https://www.mkdocs.org/user-guide/configuration/#theme
   name: material
-  palette:
-   scheme: slate
-   primary: cyan
+  icon:
+    logo: material/book-open-page-variant
+  # palette:
+  #  scheme: slate
+  #  primary: cyan
   features:
     - content.tabs.link
+    - header.autohide      # maximum screen space during scrolling
+    - navigation.expand    # optimize user experience
+    - navigation.instant   # optimize user experience
+    - navigation.instant.progress
+    - navigation.tracking  # update address bar
+    - search.suggest       # suggest good completions
+    - content.code.copy    # enable copy to clipboard
+
+# extra css/js see https://www.mkdocs.org/user-guide/customizing-your-theme/
+extra_css: []
+extra_javascript: []
+
 plugins:
   - search
-  # - mknotebooks:  # install mknotebooks if needed for notebook rendering
-  #     execute: false
+  - mknotebooks:
+      execute: false
   - mermaid2:
       version: 11.4.1
-  # TODO rebuild docs on schema change (https://github.com/dalito/linkml-project-copier/issues/39)
-  # - gen-files:
-  #     scripts:
-  #       - gen_pages.py  # or any other name or path
+  # https://pypi.org/project/mkdocs-pymdownx-material-extras
+  - mkdocs_pymdownx_material_extras:
 
-# watch:
-#   - src/test_linkml/schema
+markdown_extensions:
+  - pymdownx.superfences:
+      # https://mkdocs-mermaid2.readthedocs.io/en/latest/superfences
+      # custom code highlighting rules
+      custom_fences:
+        - name: mermaid
+          # disable code highlighting to display diagrams
+          format: !!python/name:pymdownx.superfences.fence_code_format
+          class: mermaid
+  # https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/
+  # auto-link HTML, FTP, and email links
+  - pymdownx.magiclink
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#admonition
+  # support for call-outs
+  - admonition
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#tables
+  # create tables
+  - tables
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#attribute-lists
+  # enables use of HTML attributes and CSS classes to applicable elements
+  - attr_list
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#markdown-in-html
+  # write markdown inside of HTML
+  - md_in_html
+
+watch:
+  - src/analysis_api_schema/schema
 
 nav:
   - Home: index.md
   - Schema: elements/index.md
+  - Visuals:
+      - Schema Explorer: https://mkapur-pnnl.github.io/analysis-api-schema/files/schema-explorer.html
   - About: about.md
 
 exclude_docs: |
   /templates-linkml/
 
-site_url: https://my-org.github.io/test-linkml
-repo_url: https://github.com/my-org/test-linkml
+validation:
+  links:
+    # LinkML-generated pages currently include mixed-case cross-links that
+    # trigger false positives in MkDocs validation for this docs tree.
+    not_found: ignore
+
+site_url: https://mkapur-pnnl.github.io/analysis-api-schema
+repo_url: https://github.com/mkapur-pnnl/analysis-api-schema
 
 # Uncomment this block to enable use of Google Analytics.
 # Replace the property value with your own ID.

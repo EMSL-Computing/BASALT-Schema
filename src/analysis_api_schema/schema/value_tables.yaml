@@ -16,6 +16,8 @@ imports:
 
 classes:
   TimestampValue:
+    description: |-
+      A timestamp value with optional description. No pattern at present,
     slots:
       - description
     attributes:
@@ -28,6 +30,8 @@ classes:
         range: string
 
   TextValue:
+    description: |-
+      A text value with optional description and language.
     slots:
       - description
     attributes:
@@ -58,9 +62,15 @@ classes:
       id:
         identifier: true
         range: string
-      description:
-        range: string
       has_raw_value:
+        range: string
+      term:
+        range: string
+      term_id:
+        description: pointer to an ontology class
+        range: uriorcurie
+      controlled_term_provider:
+        description: name of ontology or other controlled term provider
         range: string
 
   PersonValue:
@@ -80,6 +90,7 @@ classes:
         range: string
       orcid:
         range: string
+        description: ORCID identifier of the person
       profile_image_url:
         range: string
       websites:
@@ -104,9 +115,9 @@ classes:
         description: The numeric value of the quantity
         range: double
       has_minimum_numeric_value:
-        range: numeric
+        range: double
       has_maximum_numeric_value:
-        range: numeric
+        range: double
       has_raw_value:
 
   ConditioningValue:

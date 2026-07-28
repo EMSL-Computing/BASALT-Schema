@@ -1,0 +1,2 @@
+id,name,media_type,volume_ml,media_recipe,media_formulation,sterilization_method,ph_adjustment,ph_target,creation_date,storage_temperature,media_additions,output_sample_id
+urn:amp2:act:media-prep-M9-001,M9 + 1% glucose preparation,pre_culture,500.0,M9 minimal salts with 1% glucose (w/v),manual_mix,autoclave,True,7.0,2026-03-20,4 C,1% glucose (w/v),urn:amp2:ps:M9-glucose-batch-001

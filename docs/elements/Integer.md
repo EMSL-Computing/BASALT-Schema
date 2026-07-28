@@ -1,0 +1,52 @@
+# Type: Integer 
+
+
+
+
+_An integer_
+
+
+
+URI: [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
+
+## Type Properties
+
+| Property | Value |
+| --- | --- |
+| Base | `int` |
+| Type URI | [xsd:integer](http://www.w3.org/2001/XMLSchema#integer) |
+
+
+
+
+
+
+## Notes
+
+* If you are authoring schemas in LinkML YAML, the type is referenced with the lower case "integer".
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/MONet/analysis-api-schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | xsd:integer |
+| native | analysis_api_schema:integer |
+| exact | schema:Integer |
+
+

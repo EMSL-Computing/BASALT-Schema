@@ -1,0 +1,7 @@
+id,activity_type,plate_barcode,timepoint_label,wavelength_nm,sequence_order,acquisition_time,violation_note
+urn:amp2:act:dga-complex-t0,AMP2dataGenerationActivity,EPix1-complex,t=0,600,1,2026-03-24T16:19:00,
+urn:amp2:act:dga-complex-t4h,AMP2dataGenerationActivity,EPix1-complex,t=4h,600,2,2026-03-24T20:19:00,
+urn:amp2:act:dga-complex-t8h,AMP2dataGenerationActivity,EPix1-complex,t=8h,600,3,2026-03-25T00:19:00,
+urn:amp2:act:dga-complex-t16h,AMP2dataGenerationActivity,EPix1-complex,t=16h,600,4,2026-03-25T08:19:00,
+urn:amp2:act:dga-complex-t24h,AMP2dataGenerationActivity,EPix1-complex,t=24h,600,5,2026-03-25T16:19:00,
+urn:amp2:act:dga-complex-t8h-dup,AMP2dataGenerationActivity,EPix1-complex,t=8h,600,3,2026-03-25T00:45:00,[C6] duplicate timepoint_label 't=8h' for same plate

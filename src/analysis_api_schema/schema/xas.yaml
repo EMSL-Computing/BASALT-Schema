@@ -33,7 +33,7 @@ classes:
       - element
       - edge
       - reference_material
-      - sample_type
+      - xas_sample_type
       - sample_format
       - sample_holder
       - sample_temperature_k

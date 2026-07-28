@@ -1,0 +1,3 @@
+id,name,media_type,volume_ml,media_recipe,media_formulation,sterilization_method,ph_adjustment,ph_target,creation_date,output_sample_id,violation_note
+urn:amp2:act:media-prep-M9-002,M9 + 1% glucose preparation (complex),pre_culture,500.0,M9 minimal salts with 1% glucose (w/v),manual_mix,autoclave,True,7.0,2026-03-20,urn:amp2:ps:M9-glucose-batch-002,
+urn:amp2:act:media-prep-LB-001,LB broth preparation,experimental_batch,300.0,"Lysogeny broth: 10g/L tryptone, 5g/L yeast, 10g/L NaCl",manual_mix,autoclave,False,7.5,2026-03-21,urn:amp2:ps:LB-media-batch-001,[C1] invalid media_type enum; [C3] ph_target set without ph_adjustment

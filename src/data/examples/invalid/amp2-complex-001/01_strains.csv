@@ -1,0 +1,3 @@
+id,entity_type,name,strain_identifier,strain_type,strain_source,strain_mutation
+urn:amp2:strain:KT2440-pTE314,strain,Pseudomonas putida KT2440 pTE314,KT2440_pTE314,bacterial,PNNL,pTE314
+urn:amp2:strain:BL21-DE3,strain,Escherichia coli BL21-DE3,BL21-DE3,bacterial,ATCC,
