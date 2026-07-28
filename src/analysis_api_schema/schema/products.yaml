@@ -396,18 +396,21 @@ classes:
     description: |-
       Abstract base class for X-ray analytical data products.
       Inherits S3 storage metadata and sample linkage from dataProduct via ProcessedData.
-      
+
       Concrete subclasses:
         - XRFElementalProduct: elemental concentrations
         - XRDPhaseProduct: mineral phases
-      
+        - XASLCFProduct: linear combination fitting results
+
       Common patterns:
-        - s3_key points to raw spectrum/diffractogram file in MinIO
+        - s3_key points to the raw or processed X-ray data file in MinIO
         - summary_metrics provides lightweight queryable summaries:
             XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
             XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
+            XAS: {"r_factor":0.000975, "lcf_type":"XANES", "n_standards":3}
         - direct outputs may not have a processing link (XRF typical)
         - computational outputs should use a typed processing reference slot
+          (XRD Rietveld refinement, XAS LCF fitting)
 
 
   # ---------------------------------------------------------------------------
@@ -805,7 +808,7 @@ classes:
   # XASLCFProduct -- LCF analysis result summary, one per .lcf file
   # ---------------------------------------------------------------------------
   XASLCFProduct:
-    is_a: ProcessedData
+    is_a: XRayDataProduct
     description: |-
       XAS Linear Combination Fitting (LCF) processed result.
       One instance per .lcf file and linked to an XASLCFDataProcessingActivity
