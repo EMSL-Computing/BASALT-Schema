@@ -51,7 +51,6 @@ imports:
   - slots
   - study
   - value_tables
-  - xas
   - zip_download
   # - linkage_cache   # uncomment when linkage_cache.yaml is added
 
@@ -549,3 +548,77 @@ classes:
       Required enum additions to enums.yaml:
         routemethod:
           xrd_analysis:  # Add to routemethod permissible_values
+
+  XASDataGenerationActivity:
+    is_a: DataGenerationActivity
+    description: |-
+      X-ray Absorption Spectroscopy (XAS) acquisition activity.
+      Represents one beamline measurement session for a sample.
+    slots:
+      - facility
+      - beamline
+      - ring_energy_gev
+      - ring_current_ma
+      - insertion_device
+      - element
+      - edge
+      - reference_material
+      - xas_sample_type
+      - sample_format
+      - sample_holder
+      - sample_temperature_k
+      - sample_orientation_deg
+      - sample_detector_distance_mm
+      - sample_doi
+      - crystal
+      - crystal_cut
+      - crystal_detune_pct
+      - mono_angle_deg
+      - mono_2nd_xtal_mm
+      - mono_energy_motor_ev
+      - mono_energy_encoder_ev
+      - mirror_angle_mrad
+      - m0_coating
+      - m0_cutoff_kev
+      - m1_coating
+      - inhutch_mirror_coating
+      - inhutch_mirror_cutoff_kev
+      - slit_size_h_um
+      - slit_size_v_um
+      - slit_center_h
+      - slit_center_v
+      - beam_attenuation_um
+      - beam_attenuation_material
+      - fy_electronics
+      - fy_channel_num
+      - fy_element
+      - fy_transition
+      - user_comment
+
+  XASLCFDataProcessingActivity:
+    is_a: DataProcessingActivity
+    description: |-
+      Athena or Larch Linear Combination Fitting (LCF) processing activity for
+      XAS data. One instance represents a single .lcf fit run.
+    slots:
+      - uses_xas_raw_data
+      - xas_filename
+      - lcf_type
+      - run_label
+      - fit_label
+      - analysis_code
+      - sample_nor_file
+      - fit_range_min
+      - fit_range_max
+      - fit_range_unit
+      - n_data_points
+      - n_variables
+      - n_standards
+      - weights_sum_to_1
+      - weights_bounded
+      - e0_shift_used
+      - noise_added
+      - r_factor
+      - chi_square
+      - reduced_chi_square
+      - weights_sum

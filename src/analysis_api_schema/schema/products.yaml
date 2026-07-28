@@ -689,6 +689,9 @@ classes:
         range: ProcessedDataFlag
 
 
+  # ---------------------------------------------------------------------------
+  # XASInstrumentData -- one raw sweep file from an XAS measurement session
+  # ---------------------------------------------------------------------------
   XASInstrumentData:
     is_a: InstrumentData
     description: |-
@@ -712,8 +715,111 @@ classes:
       - kwgt
       - fy_element
       - fy_transition
+    attributes:
+      amplifiers:
+        range: XASAmplifier
+        multivalued: true
+        inlined_as_list: true
+        description: Amplifier sensitivity entries (one per signal channel)
+      motors:
+        range: XASMotorPosition
+        multivalued: true
+        inlined_as_list: true
+        description: Motor positions recorded at scan start
+      signal_columns:
+        range: XASSignalColumn
+        multivalued: true
+        inlined_as_list: true
+        description: Detector signal name / EPICS PV pairs
+      data_rows:
+        range: XASDataRow
+        multivalued: true
+        inlined_as_list: true
+        description: Per-energy-point representative fluorescence or transmission values
+      ion_chambers:
+        range: XASIonChamber
+        multivalued: true
+        inlined_as_list: true
+        description: Ion chamber gas mixture components parsed from user comment
 
 
+  # ---------------------------------------------------------------------------
+  # XAS sweep child records -- one instance per child row of XASInstrumentData
+  # ---------------------------------------------------------------------------
+  XASAmplifier:
+    description: |-
+      Amplifier sensitivity entry for one signal channel in an XAS sweep.
+      Corresponds to one row in LAM_XAS_AMPS (Amplifier_Gain_N / Analog_In_Offset_N).
+    slots:
+      - amp_index
+      - signal_name
+      - gain
+      - gain_unit
+      - voltage_start
+      - voltage_end
+    slot_usage:
+      amp_index:
+        required: true
+
+  XASMotorPosition:
+    description: |-
+      Motor position recorded at the start of an XAS sweep.
+      Corresponds to one row in LAM_XAS_MOTS (Motor_N_Pos header fields).
+    slots:
+      - motor_index
+      - motor_name
+      - pv
+      - position
+    slot_usage:
+      motor_index:
+        required: true
+
+  XASSignalColumn:
+    description: |-
+      Detector signal name / EPICS PV pair for one data column in an XAS sweep.
+      Corresponds to one row in LAM_XAS_COLS (Analog_In_Signal_Type_N).
+    slots:
+      - col_index
+      - col_name
+      - pv
+    slot_usage:
+      col_index:
+        required: true
+
+  XASDataRow:
+    description: |-
+      One data point from an XAS sweep scan.
+      row_val holds the representative fluorescence or transmission value at
+      each energy step (e.g. FeKa_Sum count, or I0 if FY detector absent).
+      Corresponds to one row in LAM_XAS_DROWS.
+    slots:
+      - row_num
+      - row_val
+    slot_usage:
+      row_num:
+        required: true
+
+  XASIonChamber:
+    description: |-
+      Ion chamber gas mixture component for one chamber in an XAS sweep.
+      Parsed from the user comment (e.g. 'i0 = 30%N2, 70%He. It and Iref = N2').
+      Corresponds to one row in LAM_XAS_ICS.
+    slots:
+      - chamber_index
+      - gas_index
+      - gas_name
+      - chamber_length_mm
+      - pressure_bar
+    slot_usage:
+      chamber_index:
+        required: true
+      gas_index:
+        required: true
+
+
+  # ---------------------------------------------------------------------------
+  # XASLCFProduct -- LCF analysis result summary, one per .lcf file
+  # ---------------------------------------------------------------------------
   XASLCFProduct:
     is_a: ProcessedData
     description: |-
@@ -743,3 +849,78 @@ classes:
       - chi_square
       - reduced_chi_square
       - weights_sum
+    attributes:
+      standards:
+        range: XASLCFStandard
+        multivalued: true
+        inlined_as_list: true
+        description: Reference standards used in the linear combination fit
+      species_proportions:
+        range: XASLCFSpeciesProportion
+        multivalued: true
+        inlined_as_list: true
+        description: Derived species proportion results (XANES only)
+      lcf_data_rows:
+        range: XASLCFDataRow
+        multivalued: true
+        inlined_as_list: true
+        description: Per-point fit curve data for plotting
+
+
+  # ---------------------------------------------------------------------------
+  # XAS LCF child records -- one instance per child row of XASLCFProduct
+  # ---------------------------------------------------------------------------
+  XASLCFStandard:
+    description: |-
+      One reference standard (spectral component) used in an LCF fit.
+      The fitted weight represents this standard's fractional contribution
+      to the measured sample spectrum.
+      Corresponds to one row in LAM_XAS_LCF_STDS.
+    slots:
+      - std_index
+      - std_name
+      - weight
+    slot_usage:
+      std_index:
+        required: true
+      std_name:
+        required: true
+
+  XASLCFSpeciesProportion:
+    description: |-
+      Derived species proportion reported in the LC XANES analysis section.
+      For Fe XAS these are typically Fe(II) and Fe(III) proportions; the
+      generalised design supports any element or oxidation state.
+
+      Proportions are derived by summing weights of standards associated with
+      each oxidation state, as reported by Athena or Larch:
+        'Fe(III) proportion in sample: 0.44 (+/-0.05)'
+
+      Corresponds to one row in LAM_XAS_LCF_PROPS.
+    slots:
+      - species_name
+      - proportion
+      - uncertainty
+    slot_usage:
+      species_name:
+        required: true
+      proportion:
+        required: true
+
+  XASLCFDataRow:
+    description: |-
+      One point from the LCF fit output, enabling reconstruction and plotting
+      of the measured spectrum, fitted curve, and residual without accessing
+      the raw .lcf file.
+      Corresponds to one row in LAM_XAS_LCF_DROWS.
+    slots:
+      - row_num
+      - x_val
+      - data_val
+      - fit_val
+      - residual
+    slot_usage:
+      row_num:
+        required: true
+      x_val:
+        required: true
