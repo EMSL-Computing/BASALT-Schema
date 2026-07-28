@@ -10,13 +10,6 @@ prefixes:
   analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
   linkml: https://w3id.org/linkml/
   schema: http://schema.org/
-  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
-  OBI: http://purl.obolibrary.org/obo/OBI_
-  PO: http://purl.obolibrary.org/obo/PO_
-  BTO: http://purl.obolibrary.org/obo/BTO_
-  MS: http://purl.obolibrary.org/obo/MS_
-  EC: https://enzyme.expasy.org/EC/
-  ror: https://ror.org/
 default_prefix: analysis_api_schema
 
 imports:

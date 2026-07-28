@@ -4,29 +4,35 @@ build-backend = "hatchling.build"
 
 [project]
 name = "analysis_api_schema"
-description = "Data schema for analysis database at EMSL (PNNL)."
+description = "linkML transition for analysis-api schemas"
 authors = [
   {name = "Maia Kapur", email = "maia.kapur@pnnl.gov"},
+  {name = "Conrad Mearns", email = "conrad.mearns@pnnl.gov"},
+  {name = "Montana Smith", email = "montana.smith@pnnl.gov"},
 ]
-license = "MIT"
-license-files = ["LICENSE"]
+
+# TODO: legal will require review
+# license = "MIT"
+# license-files = ["LICENSE"]
+
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.9,<4.0"
 dynamic = ["version"]
 
 dependencies = [
-  "linkml-runtime >=1.9.4",
+#   "linkml-runtime >=1.9.4",
+    "linkml==1.9.1",
 ]
 
 [dependency-groups]
 dev = [
-    "linkml>=1.9.3",
+    # "linkml>=1.9.1",
     "mkdocs-material>=8.2.8",
     "mkdocs-mermaid2-plugin>=1.1.1",
-    "mkdocs-pymdownx-material-extras>=2.5.6",
-    "jupyter>=1.0.0",
-    "mknotebooks>= 0.8.0",
+    # "jupyter>=1.0.0",
+    # "mknotebooks>= 0.8.0",
 ]
+
 
 # See https://hatch.pypa.io/latest/config/build/#file-selection for how to
 # explicitly include files other than default into the build distributions.
@@ -39,44 +45,3 @@ source = "uv-dynamic-versioning"
 vcs = "git"
 style = "pep440"
 fallback-version = "0.0.0"
-
-# Ref.: https://docs.pytest.org/en/stable/reference/reference.html#configuration-options
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-
-# https://docs.astral.sh/ruff/configuration/
-[tool.ruff]
-exclude = [
-    "src/analysis_api_schema/_version.py",
-]
-# Set oldest supported Python version
-target-version = "py310"
-
-# Ref.: https://github.com/codespell-project/codespell
-[tool.codespell]
-skip = [
-  "LICENSE",
-  "pyproject.toml",
-  "uv.lock",
-  "project/*",
-  "src/analysis_api_schema/datamodel/analysis_api_schema_pydantic.py",
-  "src/analysis_api_schema/datamodel/analysis_api_schema.py",
-]
-
-# Reminder: words have to be lowercased for the ignore-words-list
-ignore-words-list = "linke"
-quiet-level = 3
-
-# Ref.: https://github.com/crate-ci/typos (spell checker)
-[tool.typos.default.extend-words]
-linke = "linke"
-
-[tool.typos.files]
-extend-exclude = [
-  "LICENSE",
-  "uv.lock",
-  "pyproject.toml",
-  "project/*",
-  "src/analysis_api_schema/datamodel/analysis_api_schema_pydantic.py",
-  "src/analysis_api_schema/datamodel/analysis_api_schema.py",
-]

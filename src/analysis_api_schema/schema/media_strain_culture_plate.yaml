@@ -6,12 +6,6 @@ description: |-
   Comprehensive schema delta for 96-well plate workflows (AMP2 + Ecoplate)
   with upstream culture growth activities and generalised processing hierarchy.
 
-prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
-  linkml: https://w3id.org/linkml/
-
-default_prefix: analysis_api_schema
-
 imports:
   - linkml:types
   - slots
@@ -274,7 +268,11 @@ classes:
     abstract: true
     description: |-
       Abstract base for plate measurement activities.
-      Adds timepoint_label for repeated-measurement series 
+      Adds timepoint_label for repeated-measurement series (per core-planB
+      decision to put timepoint_label on concrete subclasses, not on base
+      DataGenerationActivity).
+
+      v1 origin: plate-general.yaml PlateDataGenerationActivity
     slots:
       - timepoint_label
     todos:
@@ -455,10 +453,17 @@ classes:
         description: Treatment concentration with unit (e.g. "1.0 pct", "10 mM")
         range: string
 
+  # ============================================================================
+  # WellReading   embedded type in PlateProduct.well_readings
+  # ============================================================================
   WellReading:
     description: |-
-      Per-well measurement data. NOT a standalone database table; embedded structured entries under
+      Per-well measurement data.
+      NOT a standalone database table; embedded structured entries under
       PlateProduct.well_readings.
+      Lightweight summary for queries; raw data in MinIO.
+
+      v1 origin: plate-general.yaml WellReading
     attributes:
       position:
         description: Well position (e.g. "A01")

@@ -21,8 +21,6 @@ imports:
 classes:
 
   zipDownload:
-    description: |-
-      A zip download record, capturing the details of a zip file download event.
     attributes:
       id:
         identifier: true

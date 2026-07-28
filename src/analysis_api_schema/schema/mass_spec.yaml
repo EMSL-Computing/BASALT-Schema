@@ -183,9 +183,8 @@ classes:
       - metaproteomics_analysis_category
 
 
+  # Class to represent data from a standard run with a batch of samples
   MassSpectrometryStandardRun:
-    description: |-
-      A record of a mass spectrometry standard run with a batch of samples, which is used for calibration and quality control.
     slots:
       - name
       - description

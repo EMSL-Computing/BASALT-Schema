@@ -12,7 +12,7 @@ see_also:
 
 prefixes:
   analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
-  linkml: https://w3id.org/linkml/
+  # linkml: https://w3id.org/linkml/
   # schema: http://schema.org/
   # qudt: http://qudt.org/schema/qudt/
   # unit: http://qudt.org/vocab/unit/
