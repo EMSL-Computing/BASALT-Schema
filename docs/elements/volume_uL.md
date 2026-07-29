@@ -22,8 +22,8 @@ Alias: volume_uL
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [CoreSection](CoreSection.md) | A section of a core sample (TOP, MID, BTM) |  no  |
 | [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  no  |
+| [CoreSection](CoreSection.md) | A section of a core sample (TOP, MID, BTM) |  no  |
 
 
 

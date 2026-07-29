@@ -17,8 +17,8 @@ Alias: wavelength
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EnzymeActivityMethod](EnzymeActivityMethod.md) |  |  no  |
 | [KuoMethod](KuoMethod.md) |  |  no  |
+| [EnzymeActivityMethod](EnzymeActivityMethod.md) |  |  no  |
 
 
 

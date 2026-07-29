@@ -13355,14 +13355,17 @@ class XRayDataProduct(ProcessedData):
     Concrete subclasses:
       - XRFElementalProduct: elemental concentrations
       - XRDPhaseProduct: mineral phases
+      - XASLCFProduct: linear combination fitting results
 
     Common patterns:
-      - s3_key points to raw spectrum/diffractogram file in MinIO
+      - s3_key points to the raw or processed X-ray data file in MinIO
       - summary_metrics provides lightweight queryable summaries:
           XRF: {\"Ni_mg_kg\":45.3, \"Pb_mg_kg\":8.2, \"As_mg_kg\":12.1}
           XRD: {\"quartz_percent\":42, \"albite_percent\":18, \"kaolinite_percent\":31}
+          XAS: {\"r_factor\":0.000975, \"lcf_type\":\"XANES\", \"n_standards\":3}
       - direct outputs may not have a processing link (XRF typical)
       - computational outputs should use a typed processing reference slot
+        (XRD Rietveld refinement, XAS LCF fitting)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
          'from_schema': 'https://w3id.org/MONet/analysis-api-schema/products'})
@@ -14339,7 +14342,7 @@ class XASIonChamber(ConfiguredBaseModel):
     pressure_bar: Optional[float] = Field(default=None, description="""Gas fill pressure in bar""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASIonChamber']} })
 
 
-class XASLCFProduct(ProcessedData):
+class XASLCFProduct(XRayDataProduct):
     """
     XAS Linear Combination Fitting (LCF) processed result.
     One instance per .lcf file and linked to an XASLCFDataProcessingActivity

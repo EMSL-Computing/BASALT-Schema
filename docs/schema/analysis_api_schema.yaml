@@ -9457,7 +9457,7 @@ slots:
     - XASLCFDataProcessingActivity
     range: XASInstrumentData
     multivalued: true
-    inlined_as_list: false
+    inlined: false
   results_from_xas_processing:
     name: results_from_xas_processing
     definition_uri: https://w3id.org/MONet/analysis-api-schema/results_from_xas_processing
@@ -21245,13 +21245,15 @@ classes:
     description: "Abstract base class for X-ray analytical data products.\nInherits\
       \ S3 storage metadata and sample linkage from dataProduct via ProcessedData.\n\
       \nConcrete subclasses:\n  - XRFElementalProduct: elemental concentrations\n\
-      \  - XRDPhaseProduct: mineral phases\n\nCommon patterns:\n  - s3_key points\
-      \ to raw spectrum/diffractogram file in MinIO\n  - summary_metrics provides\
-      \ lightweight queryable summaries:\n      XRF: {\"Ni_mg_kg\":45.3, \"Pb_mg_kg\"\
-      :8.2, \"As_mg_kg\":12.1}\n      XRD: {\"quartz_percent\":42, \"albite_percent\"\
-      :18, \"kaolinite_percent\":31}\n  - direct outputs may not have a processing\
-      \ link (XRF typical)\n  - computational outputs should use a typed processing\
-      \ reference slot"
+      \  - XRDPhaseProduct: mineral phases\n  - XASLCFProduct: linear combination\
+      \ fitting results\n\nCommon patterns:\n  - s3_key points to the raw or processed\
+      \ X-ray data file in MinIO\n  - summary_metrics provides lightweight queryable\
+      \ summaries:\n      XRF: {\"Ni_mg_kg\":45.3, \"Pb_mg_kg\":8.2, \"As_mg_kg\"\
+      :12.1}\n      XRD: {\"quartz_percent\":42, \"albite_percent\":18, \"kaolinite_percent\"\
+      :31}\n      XAS: {\"r_factor\":0.000975, \"lcf_type\":\"XANES\", \"n_standards\"\
+      :3}\n  - direct outputs may not have a processing link (XRF typical)\n  - computational\
+      \ outputs should use a typed processing reference slot\n    (XRD Rietveld refinement,\
+      \ XAS LCF fitting)"
     from_schema: https://w3id.org/MONet/analysis-api-schema/products
     is_a: ProcessedData
     abstract: true
@@ -21868,7 +21870,7 @@ classes:
 
       through a typed processing slot.'
     from_schema: https://w3id.org/MONet/analysis-api-schema/products
-    is_a: ProcessedData
+    is_a: XRayDataProduct
     slots:
     - name
     - description
@@ -25003,5 +25005,5 @@ metamodel_version: 1.7.0
 source_file: analysis_api_schema.yaml
 source_file_date: '2026-07-28T16:49:15'
 source_file_size: 19253
-generation_date: '2026-07-28T16:51:26'
+generation_date: '2026-07-28T16:57:43'
 

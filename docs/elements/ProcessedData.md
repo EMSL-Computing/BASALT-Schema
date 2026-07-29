@@ -57,8 +57,6 @@ URI: [analysis_api_schema:ProcessedData](https://w3id.org/MONet/analysis-api-sch
         click PHProduct href "../PHProduct/"
       ProcessedData <|-- XRayDataProduct
         click XRayDataProduct href "../XRayDataProduct/"
-      ProcessedData <|-- XASLCFProduct
-        click XASLCFProduct href "../XASLCFProduct/"
       
 
       ProcessedData : core_section
@@ -135,7 +133,6 @@ URI: [analysis_api_schema:ProcessedData](https://w3id.org/MONet/analysis-api-sch
         * [TomographyProduct](TomographyProduct.md)
         * [PHProduct](PHProduct.md)
         * [XRayDataProduct](XRayDataProduct.md)
-        * [XASLCFProduct](XASLCFProduct.md)
 
 
 ## Slots

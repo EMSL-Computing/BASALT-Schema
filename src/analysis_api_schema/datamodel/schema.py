@@ -6815,14 +6815,17 @@ Inherits S3 storage metadata and sample linkage from dataProduct via ProcessedDa
 Concrete subclasses:
   - XRFElementalProduct: elemental concentrations
   - XRDPhaseProduct: mineral phases
+  - XASLCFProduct: linear combination fitting results
 
 Common patterns:
-  - s3_key points to raw spectrum/diffractogram file in MinIO
+  - s3_key points to the raw or processed X-ray data file in MinIO
   - summary_metrics provides lightweight queryable summaries:
       XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
       XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
+      XAS: {"r_factor":0.000975, "lcf_type":"XANES", "n_standards":3}
   - direct outputs may not have a processing link (XRF typical)
   - computational outputs should use a typed processing reference slot
+    (XRD Rietveld refinement, XAS LCF fitting)
     """
     __tablename__ = 'XRayDataProduct'
 
@@ -6925,80 +6928,6 @@ Stores file pointer metadata and key per-sweep scan header fields.
 
     def __repr__(self):
         return f"XASInstrumentData(produced_by_xas_run={self.produced_by_xas_run},sweep_number={self.sweep_number},scan_datetime={self.scan_datetime},scan_time_sec={self.scan_time_sec},scan_subtype={self.scan_subtype},positioner={self.positioner},e0_ev={self.e0_ev},n_points={self.n_points},n_data_rows={self.n_data_rows},x_first={self.x_first},x_last={self.x_last},scan_bounds={self.scan_bounds},scan_steps={self.scan_steps},integration_times={self.integration_times},kwgt={self.kwgt},fy_element={self.fy_element},fy_transition={self.fy_transition},file_curie={self.file_curie},alternative_identifiers={self.alternative_identifiers},compression_type={self.compression_type},file_type={self.file_type},software_version={self.software_version},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
-
-
-
-    
-    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
-    __mapper_args__ = {
-        'concrete': True
-    }
-    
-
-
-class XASLCFProduct(ProcessedData):
-    """
-    XAS Linear Combination Fitting (LCF) processed result.
-One instance per .lcf file and linked to an XASLCFDataProcessingActivity
-through a typed processing slot.
-    """
-    __tablename__ = 'XASLCFProduct'
-
-    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    results_from_xas_processing = Column(UUID(), ForeignKey('XASLCFDataProcessingActivity.id'))
-    xas_filename = Column(Text())
-    lcf_type = Column(Enum('XANES', 'EXAFS', name='XASLCFType'))
-    run_label = Column(Text())
-    fit_label = Column(Text())
-    analysis_code = Column(Text())
-    sample_nor_file = Column(Text())
-    fit_range_min = Column(Float())
-    fit_range_max = Column(Float())
-    fit_range_unit = Column(Text())
-    n_data_points = Column(Integer())
-    n_variables = Column(Integer())
-    n_standards = Column(Integer())
-    weights_sum_to_1 = Column(Text())
-    weights_bounded = Column(Text())
-    e0_shift_used = Column(Text())
-    noise_added = Column(Float())
-    r_factor = Column(Float())
-    chi_square = Column(Float())
-    reduced_chi_square = Column(Float())
-    weights_sum = Column(Float())
-    summary_metrics = Column(Text())
-    lims_barcode = Column(Text())
-    sample_id = Column(UUID(), ForeignKey('Sample.id'))
-    name = Column(Text(), nullable=False )
-    description = Column(Text())
-    project = Column(Integer())
-    sampling_set = Column(Integer())
-    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
-    sample_name = Column(Text())
-    s3_base_url = Column(Text())
-    s3_bucket = Column(Text())
-    s3_key = Column(Text(), nullable=False )
-    filesize = Column(Integer())
-    md5checksum = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
-    
-    
-    # One-To-Many: OneToAnyMapping(source_class='XASLCFProduct', source_slot='standards', mapping_type=None, target_class='XASLCFStandard', target_slot='XASLCFProduct_id', join_class=None, uses_join_table=None, multivalued=False)
-    standards = relationship( "XASLCFStandard", foreign_keys="[XASLCFStandard.XASLCFProduct_id]")
-    
-    
-    # One-To-Many: OneToAnyMapping(source_class='XASLCFProduct', source_slot='species_proportions', mapping_type=None, target_class='XASLCFSpeciesProportion', target_slot='XASLCFProduct_id', join_class=None, uses_join_table=None, multivalued=False)
-    species_proportions = relationship( "XASLCFSpeciesProportion", foreign_keys="[XASLCFSpeciesProportion.XASLCFProduct_id]")
-    
-    
-    # One-To-Many: OneToAnyMapping(source_class='XASLCFProduct', source_slot='lcf_data_rows', mapping_type=None, target_class='XASLCFDataRow', target_slot='XASLCFProduct_id', join_class=None, uses_join_table=None, multivalued=False)
-    lcf_data_rows = relationship( "XASLCFDataRow", foreign_keys="[XASLCFDataRow.XASLCFProduct_id]")
-    
-
-    
-
-    def __repr__(self):
-        return f"XASLCFProduct(measure_type={self.measure_type},results_from_xas_processing={self.results_from_xas_processing},xas_filename={self.xas_filename},lcf_type={self.lcf_type},run_label={self.run_label},fit_label={self.fit_label},analysis_code={self.analysis_code},sample_nor_file={self.sample_nor_file},fit_range_min={self.fit_range_min},fit_range_max={self.fit_range_max},fit_range_unit={self.fit_range_unit},n_data_points={self.n_data_points},n_variables={self.n_variables},n_standards={self.n_standards},weights_sum_to_1={self.weights_sum_to_1},weights_bounded={self.weights_bounded},e0_shift_used={self.e0_shift_used},noise_added={self.noise_added},r_factor={self.r_factor},chi_square={self.chi_square},reduced_chi_square={self.reduced_chi_square},weights_sum={self.weights_sum},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
 
 
 
@@ -7486,6 +7415,80 @@ Required enum additions to enums.yaml:
 
     def __repr__(self):
         return f"XRDPhaseProduct(measure_type={self.measure_type},quartz_percent={self.quartz_percent},albite_percent={self.albite_percent},microcline_percent={self.microcline_percent},muscovite_percent={self.muscovite_percent},kaolinite_percent={self.kaolinite_percent},chlorite_percent={self.chlorite_percent},hornblende_percent={self.hornblende_percent},pyrite_percent={self.pyrite_percent},halite_percent={self.halite_percent},gypsum_percent={self.gypsum_percent},flag_quartz={self.flag_quartz},flag_albite={self.flag_albite},flag_microcline={self.flag_microcline},flag_muscovite={self.flag_muscovite},flag_kaolinite={self.flag_kaolinite},flag_chlorite={self.flag_chlorite},flag_hornblende={self.flag_hornblende},flag_pyrite={self.flag_pyrite},flag_halite={self.flag_halite},flag_gypsum={self.flag_gypsum},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class XASLCFProduct(XRayDataProduct):
+    """
+    XAS Linear Combination Fitting (LCF) processed result.
+One instance per .lcf file and linked to an XASLCFDataProcessingActivity
+through a typed processing slot.
+    """
+    __tablename__ = 'XASLCFProduct'
+
+    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
+    results_from_xas_processing = Column(UUID(), ForeignKey('XASLCFDataProcessingActivity.id'))
+    xas_filename = Column(Text())
+    lcf_type = Column(Enum('XANES', 'EXAFS', name='XASLCFType'))
+    run_label = Column(Text())
+    fit_label = Column(Text())
+    analysis_code = Column(Text())
+    sample_nor_file = Column(Text())
+    fit_range_min = Column(Float())
+    fit_range_max = Column(Float())
+    fit_range_unit = Column(Text())
+    n_data_points = Column(Integer())
+    n_variables = Column(Integer())
+    n_standards = Column(Integer())
+    weights_sum_to_1 = Column(Text())
+    weights_bounded = Column(Text())
+    e0_shift_used = Column(Text())
+    noise_added = Column(Float())
+    r_factor = Column(Float())
+    chi_square = Column(Float())
+    reduced_chi_square = Column(Float())
+    weights_sum = Column(Float())
+    summary_metrics = Column(Text())
+    lims_barcode = Column(Text())
+    sample_id = Column(UUID(), ForeignKey('Sample.id'))
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASLCFProduct', source_slot='standards', mapping_type=None, target_class='XASLCFStandard', target_slot='XASLCFProduct_id', join_class=None, uses_join_table=None, multivalued=False)
+    standards = relationship( "XASLCFStandard", foreign_keys="[XASLCFStandard.XASLCFProduct_id]")
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASLCFProduct', source_slot='species_proportions', mapping_type=None, target_class='XASLCFSpeciesProportion', target_slot='XASLCFProduct_id', join_class=None, uses_join_table=None, multivalued=False)
+    species_proportions = relationship( "XASLCFSpeciesProportion", foreign_keys="[XASLCFSpeciesProportion.XASLCFProduct_id]")
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASLCFProduct', source_slot='lcf_data_rows', mapping_type=None, target_class='XASLCFDataRow', target_slot='XASLCFProduct_id', join_class=None, uses_join_table=None, multivalued=False)
+    lcf_data_rows = relationship( "XASLCFDataRow", foreign_keys="[XASLCFDataRow.XASLCFProduct_id]")
+    
+
+    
+
+    def __repr__(self):
+        return f"XASLCFProduct(measure_type={self.measure_type},results_from_xas_processing={self.results_from_xas_processing},xas_filename={self.xas_filename},lcf_type={self.lcf_type},run_label={self.run_label},fit_label={self.fit_label},analysis_code={self.analysis_code},sample_nor_file={self.sample_nor_file},fit_range_min={self.fit_range_min},fit_range_max={self.fit_range_max},fit_range_unit={self.fit_range_unit},n_data_points={self.n_data_points},n_variables={self.n_variables},n_standards={self.n_standards},weights_sum_to_1={self.weights_sum_to_1},weights_bounded={self.weights_bounded},e0_shift_used={self.e0_shift_used},noise_added={self.noise_added},r_factor={self.r_factor},chi_square={self.chi_square},reduced_chi_square={self.reduced_chi_square},weights_sum={self.weights_sum},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
 
 
 
