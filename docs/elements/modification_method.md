@@ -24,7 +24,7 @@ Alias: modification_method
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  yes  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  yes  |
 
 
 
@@ -38,7 +38,7 @@ Alias: modification_method
 | Property | Value |
 | --- | --- |
 | Range | [ModificationMethodEnum](ModificationMethodEnum.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -100,7 +100,7 @@ aliases:
 rank: 1000
 alias: modification_method
 domain_of:
-- biological_entity
+- organism
 range: ModificationMethodEnum
 
 ```

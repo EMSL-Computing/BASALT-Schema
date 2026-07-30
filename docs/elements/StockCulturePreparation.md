@@ -43,17 +43,6 @@ URI: [analysis_api_schema:StockCulturePreparation](https://w3id.org/MONet/analys
     
 
         
-      StockCulturePreparation : biological_entity_ref
-        
-          
-    
-        
-        
-        StockCulturePreparation --> "0..1" BiologicalEntity : biological_entity_ref
-        click BiologicalEntity href "../BiologicalEntity/"
-    
-
-        
       StockCulturePreparation : container_type
         
       StockCulturePreparation : growth_medium
@@ -70,6 +59,17 @@ URI: [analysis_api_schema:StockCulturePreparation](https://w3id.org/MONet/analys
         
         StockCulturePreparation --> "0..1" MethodNameEnum : method_name
         click MethodNameEnum href "../MethodNameEnum/"
+    
+
+        
+      StockCulturePreparation : organism_ref
+        
+          
+    
+        
+        
+        StockCulturePreparation --> "0..1" Organism : organism_ref
+        click Organism href "../Organism/"
     
 
         
@@ -123,7 +123,7 @@ URI: [analysis_api_schema:StockCulturePreparation](https://w3id.org/MONet/analys
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [preparation_date](preparation_date.md) | 0..1 <br/> [Date](Date.md) | Date the stock culture or entity was prepared | direct |
-| [biological_entity_ref](biological_entity_ref.md) | 0..1 <br/> [BiologicalEntity](BiologicalEntity.md) | FK reference to a biological_entity representing the biological identity | [CultureGrowth](CultureGrowth.md) |
+| [organism_ref](organism_ref.md) | 0..1 <br/> [Organism](Organism.md) | FK reference to an organism representing the biological identity | [CultureGrowth](CultureGrowth.md) |
 | [growth_medium](growth_medium.md) | 0..1 <br/> [String](String.md) | Method of growth and medium/materials used | [CultureGrowth](CultureGrowth.md) |
 | [incubation_time_hours](incubation_time_hours.md) | 0..1 <br/> [Float](Float.md) | Incubation duration in hours | [CultureGrowth](CultureGrowth.md) |
 | [container_type](container_type.md) | 0..1 <br/> [String](String.md) | Physical container used for the culture (flask, tube, plate, etc | [CultureGrowth](CultureGrowth.md) |
@@ -229,10 +229,9 @@ attributes:
     domain_of:
     - StockCulturePreparation
     range: date
-  biological_entity_ref:
-    name: biological_entity_ref
-    description: 'FK reference to a biological_entity representing the biological
-      identity
+  organism_ref:
+    name: organism_ref
+    description: 'FK reference to an organism representing the biological identity
 
       strain, isolate, engineered construct) that this sample or activity
 
@@ -242,13 +241,13 @@ attributes:
     - strain_ref
     - strain_id
     rank: 1000
-    alias: biological_entity_ref
+    alias: organism_ref
     owner: StockCulturePreparation
     domain_of:
     - CultureGrowth
     - AMP2UserSample
     - EngineeredStrainSample
-    range: biological_entity
+    range: organism
     required: false
   growth_medium:
     name: growth_medium
@@ -384,6 +383,7 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
+    - organism
     - MAOMProduct
     - WEOMProduct
     - Site
@@ -424,7 +424,6 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
     - Study
     - ProjectParticipant
     - TimestampValue

@@ -524,7 +524,7 @@ SCENES.parse = (stage) => {
   delay(cls, 900);
   cls.style.cssText += "padding:14px;background:color-mix(in srgb,var(--kt) 6%,var(--panel))";
   cls.innerHTML =
-    `<div style="font:700 13px var(--mono);color:var(--kt)">class biological_entity</div>
+    `<div style="font:700 13px var(--mono);color:var(--kt)">class organism</div>
      <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px;font:12px var(--mono);color:var(--muted)">
        <div><b style="color:var(--text)">id:</b> uuid</div>
        <div><b style="color:var(--text)">strain_identifier:</b> string</div>
@@ -537,7 +537,7 @@ SCENES.parse = (stage) => {
   const foot = el("div", "anim fade-note");
   delay(foot, 1300);
   foot.style.cssText += "text-align:center;max-width:640px;margin:0 auto;line-height:1.6";
-  foot.innerHTML = "Each CSV maps to a LinkML class — the 7 files become <b style='color:var(--text)'>biological_entity</b>, <b style='color:var(--text)'>MediaPreparation</b>, <b style='color:var(--text)'>CultureGrowth</b>, <b style='color:var(--text)'>AMP2PlateSetupActivity</b>, <b style='color:var(--text)'>AMP2DataGenerationActivity</b> &amp; <b style='color:var(--text)'>AMP2ODProduct</b>.";
+  foot.innerHTML = "Each CSV maps to a LinkML class — the 7 files become <b style='color:var(--text)'>organism</b>, <b style='color:var(--text)'>MediaPreparation</b>, <b style='color:var(--text)'>CultureGrowth</b>, <b style='color:var(--text)'>AMP2PlateSetupActivity</b>, <b style='color:var(--text)'>AMP2DataGenerationActivity</b> &amp; <b style='color:var(--text)'>AMP2ODProduct</b>.";
 
   const container = el("div"); container.style.cssText = "display:flex;flex-direction:column;align-items:center;gap:28px;width:100%";
   container.appendChild(wrap); container.appendChild(foot);
@@ -602,7 +602,7 @@ SCENES.identity = (stage) => {
     delay(c, 200 + i * 260);
     c.style.cssText += `padding:18px 20px;width:280px;border-top:3px solid ${s[4]}`;
     c.innerHTML =
-      `<div class="lbl">biological_entity</div>
+      `<div class="lbl">organism</div>
        <div style="font:700 16px var(--mono);color:${s[4]};margin:6px 0 2px">${s[0]}</div>
        <div style="font-style:italic;color:var(--muted);font-size:13px">${s[1]}</div>
        <div style="margin-top:14px;display:flex;flex-direction:column;gap:7px;font-size:12.5px">
@@ -615,7 +615,7 @@ SCENES.identity = (stage) => {
   const note = el("div", "anim fade-note");
   delay(note, 900);
   note.style.cssText += "flex-basis:100%;text-align:center;margin-top:8px";
-  note.innerHTML = "Identity is stored <b style='color:var(--text)'>once</b>. Many physical samples (<span style='font-family:var(--mono)'>AMP2UserSample</span>) point back to one <span style='font-family:var(--mono)'>biological_entity</span> via <span style='font-family:var(--mono)'>biological_entity_ref</span>.";
+  note.innerHTML = "Identity is stored <b style='color:var(--text)'>once</b>. Many physical samples (<span style='font-family:var(--mono)'>AMP2UserSample</span>) point back to one <span style='font-family:var(--mono)'>organism</span> via <span style='font-family:var(--mono)'>organism_ref</span>.";
   wrap.appendChild(note);
   scene.appendChild(wrap); stage.appendChild(scene);
 };
@@ -900,8 +900,8 @@ const STEPS = [
 
   { tag: "Identity", scene: "identity", dur: 3800,
     title: "4 · Resolve biological identity",
-    desc: "Strain rows become biological_entity records — identity stored once. Two strains here: KT2440_pTE314 on M9, BL21-DE3 on LB.",
-    flow: ["strains.csv", "→", "biological_entity"] },
+    desc: "Strain rows become organism records — identity stored once. Two strains here: KT2440_pTE314 on M9, BL21-DE3 on LB.",
+    flow: ["strains.csv", "→", "organism"] },
 
   { tag: "Lab lifecycle", scene: "lifecycle", dur: 5000,
     title: "5 · Walk the processing lifecycle",

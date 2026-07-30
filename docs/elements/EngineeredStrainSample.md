@@ -7,7 +7,7 @@ _A sample containing a strain of an organism that has been subjected to genetic 
 
 __
 
-_This class references a biological_entity for strain identity information (organism_name,_
+_This class references an organism for strain identity information (organism_name,_
 
 _strain_source, modification_method, genotype_segment_*, component_*, phenotype, trait, etc.)_
 
@@ -32,17 +32,6 @@ URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysi
       Sample <|-- EngineeredStrainSample
         click Sample href "../Sample/"
       
-      EngineeredStrainSample : biological_entity_ref
-        
-          
-    
-        
-        
-        EngineeredStrainSample --> "0..1" BiologicalEntity : biological_entity_ref
-        click BiologicalEntity href "../BiologicalEntity/"
-    
-
-        
       EngineeredStrainSample : cbi
         
       EngineeredStrainSample : description
@@ -56,6 +45,17 @@ URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysi
       EngineeredStrainSample : lims_barcode
         
       EngineeredStrainSample : name
+        
+      EngineeredStrainSample : organism_ref
+        
+          
+    
+        
+        
+        EngineeredStrainSample --> "0..1" Organism : organism_ref
+        click Organism href "../Organism/"
+    
+
         
       EngineeredStrainSample : storage_condition
         
@@ -77,7 +77,7 @@ URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysi
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [biological_entity_ref](biological_entity_ref.md) | 0..1 <br/> [BiologicalEntity](BiologicalEntity.md) | FK reference to a biological_entity representing the biological identity | direct |
+| [organism_ref](organism_ref.md) | 0..1 <br/> [Organism](Organism.md) | FK reference to an organism representing the biological identity | direct |
 | [cbi](cbi.md) | 1 <br/> [String](String.md) | Controlled Biological Information flag (yes/no) | direct |
 | [storage_condition](storage_condition.md) | 1 <br/> [String](String.md) | Storage condition for this sample (frozen, fresh, etc | direct |
 | [storage_temperature](storage_temperature.md) | 0..1 <br/> [String](String.md) | Storage temperature for this sample (e | direct |
@@ -141,14 +141,14 @@ URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysi
 ```yaml
 name: EngineeredStrainSample
 description: "A sample containing a strain of an organism that has been subjected\
-  \ to genetic engineering.\n\nThis class references a biological_entity for strain\
-  \ identity information (organism_name,\nstrain_source, modification_method, genotype_segment_*,\
+  \ to genetic engineering.\n\nThis class references an organism for strain identity\
+  \ information (organism_name,\nstrain_source, modification_method, genotype_segment_*,\
   \ component_*, phenotype, trait, etc.)\nand carries only sample-instance-specific\
   \ slots.\n  "
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: Sample
 slots:
-- biological_entity_ref
+- organism_ref
 - cbi
 - storage_condition
 - storage_temperature
@@ -179,6 +179,7 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
+    - organism
     - MAOMProduct
     - WEOMProduct
     - Site
@@ -219,7 +220,6 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -285,8 +285,8 @@ attributes:
 ```yaml
 name: EngineeredStrainSample
 description: "A sample containing a strain of an organism that has been subjected\
-  \ to genetic engineering.\n\nThis class references a biological_entity for strain\
-  \ identity information (organism_name,\nstrain_source, modification_method, genotype_segment_*,\
+  \ to genetic engineering.\n\nThis class references an organism for strain identity\
+  \ information (organism_name,\nstrain_source, modification_method, genotype_segment_*,\
   \ component_*, phenotype, trait, etc.)\nand carries only sample-instance-specific\
   \ slots.\n  "
 from_schema: https://w3id.org/MONet/analysis-api-schema
@@ -319,6 +319,7 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
+    - organism
     - MAOMProduct
     - WEOMProduct
     - Site
@@ -359,7 +360,6 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -424,10 +424,9 @@ attributes:
     - AMP2UserSample
     - EngineeredStrainSample
     range: string
-  biological_entity_ref:
-    name: biological_entity_ref
-    description: 'FK reference to a biological_entity representing the biological
-      identity
+  organism_ref:
+    name: organism_ref
+    description: 'FK reference to an organism representing the biological identity
 
       strain, isolate, engineered construct) that this sample or activity
 
@@ -437,13 +436,13 @@ attributes:
     - strain_ref
     - strain_id
     rank: 1000
-    alias: biological_entity_ref
+    alias: organism_ref
     owner: EngineeredStrainSample
     domain_of:
     - CultureGrowth
     - AMP2UserSample
     - EngineeredStrainSample
-    range: biological_entity
+    range: organism
     required: false
   external_identifiers:
     name: external_identifiers
@@ -493,11 +492,11 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -523,11 +522,11 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
     - Study
     - TimestampValue
     - TextValue

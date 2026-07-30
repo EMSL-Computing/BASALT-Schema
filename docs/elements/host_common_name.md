@@ -24,13 +24,13 @@ Alias: host_common_name
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  yes  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  yes  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  yes  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  yes  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  yes  |
 
 
 
@@ -44,7 +44,7 @@ Alias: host_common_name
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [CultureEnvironmentalSample](CultureEnvironmentalSample.md), [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md), [MixedCultureSample](MixedCultureSample.md), [OtherUndescribedSample](OtherUndescribedSample.md), [PureCultureSample](PureCultureSample.md), [TerraformSample](TerraformSample.md), [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md), [CultureEnvironmentalSample](CultureEnvironmentalSample.md), [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md), [MixedCultureSample](MixedCultureSample.md), [OtherUndescribedSample](OtherUndescribedSample.md), [PureCultureSample](PureCultureSample.md), [TerraformSample](TerraformSample.md) |
 
 ### Cardinality and Requirements
 
@@ -104,13 +104,13 @@ aliases:
 rank: 1000
 alias: host_common_name
 domain_of:
+- organism
 - CultureEnvironmentalSample
 - FieldDeployedTerraformSample
 - MixedCultureSample
 - OtherUndescribedSample
 - PureCultureSample
 - TerraformSample
-- biological_entity
 range: string
 
 ```

@@ -18,9 +18,9 @@ imports:
 - media_strain_culture_plate
 - metagenomics
 - methods
+- organism
 - products
 - sample_classes
-- biological_entity
 - slots
 - study
 - value_tables
@@ -3407,27 +3407,6 @@ slots:
     - OtherUndescribedSample
     - PlantSample
     range: BiolStatEnum
-  biological_entity_ref:
-    name: biological_entity_ref
-    definition_uri: https://w3id.org/MONet/analysis-api-schema/biological_entity_ref
-    description: 'FK reference to a biological_entity representing the biological
-      identity
-
-      strain, isolate, engineered construct) that this sample or activity
-
-      is associated with.'
-    from_schema: https://w3id.org/MONet/analysis-api-schema/slots
-    aliases:
-    - strain_ref
-    - strain_id
-    slot_uri: analysis_api_schema:biological_entity_ref
-    owner: EngineeredStrainSample
-    domain_of:
-    - CultureGrowth
-    - AMP2UserSample
-    - EngineeredStrainSample
-    range: biological_entity
-    required: false
   biotic_regm:
     name: biotic_regm
     definition_uri: https://w3id.org/MONet/analysis-api-schema/biotic_regm
@@ -3862,9 +3841,9 @@ slots:
     title: construct component description
     from_schema: https://w3id.org/MONet/analysis-api-schema/slots
     slot_uri: analysis_api_schema:component_description
-    owner: biological_entity
+    owner: organism
     domain_of:
-    - biological_entity
+    - organism
     range: string
   component_name:
     name: component_name
@@ -3876,9 +3855,9 @@ slots:
     title: construct component name
     from_schema: https://w3id.org/MONet/analysis-api-schema/slots
     slot_uri: analysis_api_schema:component_name
-    owner: biological_entity
+    owner: organism
     domain_of:
-    - biological_entity
+    - organism
     range: string
   compound_name:
     name: compound_name
@@ -3942,9 +3921,9 @@ slots:
     title: construct component
     from_schema: https://w3id.org/MONet/analysis-api-schema/slots
     slot_uri: analysis_api_schema:construct_component
-    owner: biological_entity
+    owner: organism
     domain_of:
-    - biological_entity
+    - organism
     range: ConstructComponentEnum
   container_type:
     name: container_type
@@ -4152,11 +4131,11 @@ slots:
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
     - TimestampValue
     - TextValue
     - SoftwareControlledTermValue
@@ -4303,9 +4282,9 @@ slots:
     title: donor organism
     from_schema: https://w3id.org/MONet/analysis-api-schema/slots
     slot_uri: analysis_api_schema:donor_organism
-    owner: biological_entity
+    owner: organism
     domain_of:
-    - biological_entity
+    - organism
     range: string
   down_par:
     name: down_par
@@ -4419,15 +4398,15 @@ slots:
     title: encoded traits
     from_schema: https://w3id.org/MONet/analysis-api-schema/slots
     slot_uri: analysis_api_schema:encoded_traits
-    owner: biological_entity
+    owner: TerraformSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
   env_broad_scale:
     name: env_broad_scale
@@ -4893,9 +4872,9 @@ slots:
     title: genotype segment category
     from_schema: https://w3id.org/MONet/analysis-api-schema/slots
     slot_uri: analysis_api_schema:genotype_segment_category
-    owner: biological_entity
+    owner: organism
     domain_of:
-    - biological_entity
+    - organism
     range: GenotypeSegmentEnum
   genotype_segment_name:
     name: genotype_segment_name
@@ -4908,9 +4887,9 @@ slots:
     title: genotype segment name
     from_schema: https://w3id.org/MONet/analysis-api-schema/slots
     slot_uri: analysis_api_schema:genotype_segment_name
-    owner: biological_entity
+    owner: organism
     domain_of:
-    - biological_entity
+    - organism
     range: string
   geo_loc_name:
     name: geo_loc_name
@@ -5122,15 +5101,15 @@ slots:
     aliases:
     - common_name
     slot_uri: analysis_api_schema:host_common_name
-    owner: biological_entity
+    owner: TerraformSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
   host_disease_stat:
     name: host_disease_stat
@@ -5257,15 +5236,15 @@ slots:
     title: host specificity or range
     from_schema: https://w3id.org/MONet/analysis-api-schema/slots
     slot_uri: analysis_api_schema:host_spec_range
-    owner: biological_entity
+    owner: TerraformSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
     pattern: NCBITaxon:\d+
   host_symbiont:
@@ -5291,15 +5270,15 @@ slots:
     - host_ncbi_taxon_id
     - host_taxa_id
     slot_uri: analysis_api_schema:host_taxid
-    owner: biological_entity
+    owner: TerraformSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
     pattern: NCBITaxon:\d+
   host_tot_mass:
@@ -6286,9 +6265,9 @@ slots:
     - genetic_modification_method
     - transformation_method
     slot_uri: analysis_api_schema:modification_method
-    owner: biological_entity
+    owner: organism
     domain_of:
-    - biological_entity
+    - organism
     range: ModificationMethodEnum
   ms_raw_file_type:
     name: ms_raw_file_type
@@ -6330,11 +6309,11 @@ slots:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
     - SoftwareControlledTermValue
     range: string
     required: true
@@ -6577,18 +6556,42 @@ slots:
     range: string
   organism_name:
     name: organism_name
-    definition_uri: https://w3id.org/MONet/analysis-api-schema/organism_name
-    description: Provide the scientific name (genus and species) of the host organism.
-    title: organism name
+    definition_uri: https://w3id.org/MONet/analysis-api-schema/name
+    description: 'Human-readable name for the organism.
+
+      May be same as strain_identifier or more descriptive.'
+    from_schema: https://w3id.org/MONet/analysis-api-schema/slots
+    is_a: name
+    domain: organism
+    slot_uri: analysis_api_schema:name
+    alias: name
+    owner: organism
+    domain_of:
+    - organism
+    is_usage_slot: true
+    usage_slot_name: name
+    range: string
+    required: true
+  organism_ref:
+    name: organism_ref
+    definition_uri: https://w3id.org/MONet/analysis-api-schema/organism_ref
+    description: 'FK reference to an organism representing the biological identity
+
+      strain, isolate, engineered construct) that this sample or activity
+
+      is associated with.'
     from_schema: https://w3id.org/MONet/analysis-api-schema/slots
     aliases:
-    - scientific_name
-    - species_name
-    slot_uri: analysis_api_schema:organism_name
-    owner: biological_entity
+    - strain_ref
+    - strain_id
+    slot_uri: analysis_api_schema:organism_ref
+    owner: EngineeredStrainSample
     domain_of:
-    - biological_entity
-    range: string
+    - CultureGrowth
+    - AMP2UserSample
+    - EngineeredStrainSample
+    range: organism
+    required: false
   other:
     name: other
     definition_uri: https://w3id.org/MONet/analysis-api-schema/other
@@ -6817,13 +6820,13 @@ slots:
     title: pathogenicity
     from_schema: https://w3id.org/MONet/analysis-api-schema/slots
     slot_uri: analysis_api_schema:pathogenicity
-    owner: biological_entity
+    owner: PureCultureSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
-    - biological_entity
     range: string
   perturbation:
     name: perturbation
@@ -6957,15 +6960,15 @@ slots:
     name: phenotype
     definition_uri: https://w3id.org/MONet/analysis-api-schema/phenotype
     description: 'Provide the intedned phenotype of hte modified organism. Observable
-      characteristics of the biological entity.
+      characteristics of the organism.
 
       Example: "aprimycin resistance, gene knockdown dCas12a construct"'
     title: phenotype
     from_schema: https://w3id.org/MONet/analysis-api-schema/slots
     slot_uri: analysis_api_schema:phenotype
-    owner: biological_entity
+    owner: organism
     domain_of:
-    - biological_entity
+    - organism
     range: string
   phosphate:
     name: phosphate
@@ -7478,15 +7481,15 @@ slots:
     title: propagation
     from_schema: https://w3id.org/MONet/analysis-api-schema/slots
     slot_uri: analysis_api_schema:propagation
-    owner: biological_entity
+    owner: TerraformSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
   protocol_url:
     name: protocol_url
@@ -8842,9 +8845,9 @@ slots:
     - strain_desc
     - strain_notes
     slot_uri: analysis_api_schema:strain_description
-    owner: biological_entity
+    owner: organism
     domain_of:
-    - biological_entity
+    - organism
     range: string
   strain_identifier:
     name: strain_identifier
@@ -8857,9 +8860,9 @@ slots:
     - strain_id
     - strain_name
     slot_uri: analysis_api_schema:strain_identifier
-    owner: biological_entity
+    owner: organism
     domain_of:
-    - biological_entity
+    - organism
     range: string
     required: true
   strain_mutation:
@@ -8870,9 +8873,9 @@ slots:
       For complex constructs, use genotype_segment_* and component_* slots.'
     from_schema: https://w3id.org/MONet/analysis-api-schema/slots
     slot_uri: analysis_api_schema:strain_mutation
-    owner: biological_entity
+    owner: organism
     domain_of:
-    - biological_entity
+    - organism
     range: string
   strain_name:
     name: strain_name
@@ -8888,7 +8891,7 @@ slots:
     description: FK reference to a Strain purchasedMaterial used in the activity
     from_schema: https://w3id.org/MONet/analysis-api-schema/slots
     slot_uri: analysis_api_schema:strain_ref
-    range: biological_entity
+    range: organism
     required: false
   strain_source:
     name: strain_source
@@ -8903,9 +8906,9 @@ slots:
     - source_institution
     - strain_origin
     slot_uri: analysis_api_schema:strain_source
-    owner: biological_entity
+    owner: organism
     domain_of:
-    - biological_entity
+    - organism
     range: string
   strain_type:
     name: strain_type
@@ -8915,9 +8918,9 @@ slots:
     aliases:
     - organism_type
     slot_uri: analysis_api_schema:strain_type
-    owner: biological_entity
+    owner: organism
     domain_of:
-    - biological_entity
+    - organism
     range: StrainTypeEnum
   subspecf_gen_lin:
     name: subspecf_gen_lin
@@ -9144,9 +9147,9 @@ slots:
     - ncbi_taxon_id
     - taxon_id
     slot_uri: analysis_api_schema:taxonomy_id
-    owner: biological_entity
+    owner: organism
     domain_of:
-    - biological_entity
+    - organism
     range: string
   technical_reps:
     name: technical_reps
@@ -9494,14 +9497,14 @@ slots:
   trait:
     name: trait
     definition_uri: https://w3id.org/MONet/analysis-api-schema/trait
-    description: 'Trait category for the biological entity.
+    description: 'Trait category for the organism.
 
       Example: "Bacterial Resistance", "Other"'
     from_schema: https://w3id.org/MONet/analysis-api-schema/slots
     slot_uri: analysis_api_schema:trait
-    owner: biological_entity
+    owner: organism
     domain_of:
-    - biological_entity
+    - organism
     range: IntendedTraitEnum
   treatment_type:
     name: treatment_type
@@ -9523,13 +9526,13 @@ slots:
     title: trophic level
     from_schema: https://w3id.org/MONet/analysis-api-schema/slots
     slot_uri: analysis_api_schema:trophic_level
-    owner: biological_entity
+    owner: PureCultureSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
-    - biological_entity
     range: TrophicLevelEnum
   turbidity:
     name: turbidity
@@ -11260,6 +11263,17 @@ slots:
     domain_of:
     - XrayComputedTomographyMethod
     range: string
+    required: true
+  organism__id:
+    name: organism__id
+    from_schema: https://w3id.org/MONet/analysis-api-schema/organism
+    slot_uri: analysis_api_schema:id
+    identifier: true
+    alias: id
+    owner: organism
+    domain_of:
+    - organism
+    range: uuid
     required: true
   bulkDensityProduct__bulk_density_id:
     name: bulkDensityProduct__bulk_density_id
@@ -13422,17 +13436,6 @@ slots:
     - WaterSamplingActivity
     range: uuid
     required: true
-  biologicalEntity__id:
-    name: biologicalEntity__id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/biological-entity
-    slot_uri: analysis_api_schema:id
-    identifier: true
-    alias: id
-    owner: biological_entity
-    domain_of:
-    - biological_entity
-    range: uuid
-    required: true
   study__id:
     name: study__id
     from_schema: https://w3id.org/MONet/analysis-api-schema/study
@@ -14059,6 +14062,126 @@ slots:
     usage_slot_name: external_identifiers
     range: uriorcurie
     multivalued: true
+  organism_strain_identifier:
+    name: organism_strain_identifier
+    definition_uri: https://w3id.org/MONet/analysis-api-schema/strain_identifier
+    description: 'Primary human-readable identifier for this organism.
+
+      Examples: "KT2440_pTE314", "PP_0055", "AG5577-pJE2165"'
+    from_schema: https://w3id.org/MONet/analysis-api-schema/slots
+    aliases:
+    - strain_id
+    - strain_name
+    is_a: strain_identifier
+    domain: organism
+    slot_uri: analysis_api_schema:strain_identifier
+    alias: strain_identifier
+    owner: organism
+    domain_of:
+    - organism
+    is_usage_slot: true
+    usage_slot_name: strain_identifier
+    range: string
+    required: true
+  organism_organism_name:
+    name: organism_organism_name
+    definition_uri: https://w3id.org/MONet/analysis-api-schema/name
+    description: Scientific name of the organism (e.g., "Pseudomonas putida").
+    from_schema: https://w3id.org/MONet/analysis-api-schema/slots
+    is_a: organism_name
+    domain: organism
+    slot_uri: analysis_api_schema:name
+    alias: name
+    owner: organism
+    domain_of:
+    - organism
+    is_usage_slot: true
+    usage_slot_name: organism_name
+    range: string
+    required: true
+  organism_strain_source:
+    name: organism_strain_source
+    definition_uri: https://w3id.org/MONet/analysis-api-schema/strain_source
+    description: 'Provenance of the organism. Can be an institution
+
+      (e.g., "ATCC", "PNNL"), commercial source, or derivation note
+
+      (e.g., "engineered from KT2440").'
+    title: strain source
+    from_schema: https://w3id.org/MONet/analysis-api-schema/slots
+    aliases:
+    - source_institution
+    - strain_origin
+    is_a: strain_source
+    domain: organism
+    slot_uri: analysis_api_schema:strain_source
+    alias: strain_source
+    owner: organism
+    domain_of:
+    - organism
+    is_usage_slot: true
+    usage_slot_name: strain_source
+    range: string
+  organism_strain_mutation:
+    name: organism_strain_mutation
+    definition_uri: https://w3id.org/MONet/analysis-api-schema/strain_mutation
+    description: 'Primary genetic modification or plasmid carried (e.g., "pTE314").
+
+      For more detailed construct information, use the genotype_segment_*
+
+      and component_* slots.'
+    from_schema: https://w3id.org/MONet/analysis-api-schema/slots
+    is_a: strain_mutation
+    domain: organism
+    slot_uri: analysis_api_schema:strain_mutation
+    alias: strain_mutation
+    owner: organism
+    domain_of:
+    - organism
+    is_usage_slot: true
+    usage_slot_name: strain_mutation
+    range: string
+  organism_modification_method:
+    name: organism_modification_method
+    definition_uri: https://w3id.org/MONet/analysis-api-schema/modification_method
+    description: 'Method used to introduce genetic modification.
+
+      Examples: "Electroporation", "Conjugation", "CRISPR", "Transduction"'
+    title: modification method
+    from_schema: https://w3id.org/MONet/analysis-api-schema/slots
+    aliases:
+    - genetic_modification_method
+    - transformation_method
+    is_a: modification_method
+    domain: organism
+    slot_uri: analysis_api_schema:modification_method
+    alias: modification_method
+    owner: organism
+    domain_of:
+    - organism
+    is_usage_slot: true
+    usage_slot_name: modification_method
+    range: ModificationMethodEnum
+  organism_trophic_level:
+    name: organism_trophic_level
+    definition_uri: https://w3id.org/MONet/analysis-api-schema/trophic_level
+    description: 'Trophic levels are the feeding position in a food chain. Microbes
+      can
+
+      be a range of producers.'
+    title: trophic level
+    from_schema: https://w3id.org/MONet/analysis-api-schema/slots
+    is_a: trophic_level
+    domain: organism
+    slot_uri: analysis_api_schema:trophic_level
+    alias: trophic_level
+    owner: organism
+    domain_of:
+    - organism
+    is_usage_slot: true
+    usage_slot_name: trophic_level
+    range: TrophicLevelEnum
+    required: false
   Site_elev:
     name: Site_elev
     definition_uri: https://w3id.org/MONet/analysis-api-schema/elev
@@ -14303,27 +14426,27 @@ slots:
     usage_slot_name: size_frac_up
     range: string
     pattern: ^\d+(\.\d+)?\s*um$
-  AMP2UserSample_biological_entity_ref:
-    name: AMP2UserSample_biological_entity_ref
-    definition_uri: https://w3id.org/MONet/analysis-api-schema/biological_entity_ref
-    description: 'FK to biological_entity representing the biological identity this
-      sample instantiates.
+  AMP2UserSample_organism_ref:
+    name: AMP2UserSample_organism_ref
+    definition_uri: https://w3id.org/MONet/analysis-api-schema/organism_ref
+    description: 'FK to organism representing the biological identity this sample
+      instantiates.
 
-      Required - every AMP2UserSample must reference a biological_entity.'
+      Required - every AMP2UserSample must reference an organism.'
     from_schema: https://w3id.org/MONet/analysis-api-schema/slots
     aliases:
     - strain_ref
     - strain_id
-    is_a: biological_entity_ref
+    is_a: organism_ref
     domain: AMP2UserSample
-    slot_uri: analysis_api_schema:biological_entity_ref
-    alias: biological_entity_ref
+    slot_uri: analysis_api_schema:organism_ref
+    alias: organism_ref
     owner: AMP2UserSample
     domain_of:
     - AMP2UserSample
     is_usage_slot: true
-    usage_slot_name: biological_entity_ref
-    range: biological_entity
+    usage_slot_name: organism_ref
+    range: organism
     required: true
   AMP2UserSample_storage_condition:
     name: AMP2UserSample_storage_condition
@@ -14374,7 +14497,7 @@ slots:
     definition_uri: https://w3id.org/MONet/analysis-api-schema/name
     description: 'Sample identifier/name (e.g., "PP_0055").
 
-      May match strain_identifier on biological_entity for 1:1 cases,
+      May match strain_identifier on organism for 1:1 cases,
 
       but typically unique per sample instance.
 
@@ -16482,147 +16605,6 @@ slots:
     usage_slot_name: sample_collection_method
     range: string
     required: true
-  biological_entity_strain_identifier:
-    name: biological_entity_strain_identifier
-    definition_uri: https://w3id.org/MONet/analysis-api-schema/strain_identifier
-    description: 'Primary human-readable identifier for this biological entity.
-
-      Examples: "KT2440_pTE314", "PP_0055", "AG5577-pJE2165"'
-    from_schema: https://w3id.org/MONet/analysis-api-schema/slots
-    aliases:
-    - strain_id
-    - strain_name
-    is_a: strain_identifier
-    domain: biological_entity
-    slot_uri: analysis_api_schema:strain_identifier
-    alias: strain_identifier
-    owner: biological_entity
-    domain_of:
-    - biological_entity
-    is_usage_slot: true
-    usage_slot_name: strain_identifier
-    range: string
-    required: true
-  biological_entity_name:
-    name: biological_entity_name
-    definition_uri: https://w3id.org/MONet/analysis-api-schema/name
-    description: 'Human-readable name for the biological entity.
-
-      May be same as strain_identifier or more descriptive.'
-    from_schema: https://w3id.org/MONet/analysis-api-schema/slots
-    is_a: name
-    domain: biological_entity
-    slot_uri: analysis_api_schema:name
-    alias: name
-    owner: biological_entity
-    domain_of:
-    - biological_entity
-    is_usage_slot: true
-    usage_slot_name: name
-    range: string
-    required: true
-  biological_entity_organism_name:
-    name: biological_entity_organism_name
-    definition_uri: https://w3id.org/MONet/analysis-api-schema/organism_name
-    description: Scientific name of the organism (e.g., "Pseudomonas putida").
-    title: organism name
-    from_schema: https://w3id.org/MONet/analysis-api-schema/slots
-    aliases:
-    - scientific_name
-    - species_name
-    is_a: organism_name
-    domain: biological_entity
-    slot_uri: analysis_api_schema:organism_name
-    alias: organism_name
-    owner: biological_entity
-    domain_of:
-    - biological_entity
-    is_usage_slot: true
-    usage_slot_name: organism_name
-    range: string
-  biological_entity_strain_source:
-    name: biological_entity_strain_source
-    definition_uri: https://w3id.org/MONet/analysis-api-schema/strain_source
-    description: 'Provenance of the biological entity. Can be an institution
-
-      (e.g., "ATCC", "PNNL"), commercial source, or derivation note
-
-      (e.g., "engineered from KT2440").'
-    title: strain source
-    from_schema: https://w3id.org/MONet/analysis-api-schema/slots
-    aliases:
-    - source_institution
-    - strain_origin
-    is_a: strain_source
-    domain: biological_entity
-    slot_uri: analysis_api_schema:strain_source
-    alias: strain_source
-    owner: biological_entity
-    domain_of:
-    - biological_entity
-    is_usage_slot: true
-    usage_slot_name: strain_source
-    range: string
-  biological_entity_strain_mutation:
-    name: biological_entity_strain_mutation
-    definition_uri: https://w3id.org/MONet/analysis-api-schema/strain_mutation
-    description: 'Primary genetic modification or plasmid carried (e.g., "pTE314").
-
-      For more detailed construct information, use the genotype_segment_*
-
-      and component_* slots.'
-    from_schema: https://w3id.org/MONet/analysis-api-schema/slots
-    is_a: strain_mutation
-    domain: biological_entity
-    slot_uri: analysis_api_schema:strain_mutation
-    alias: strain_mutation
-    owner: biological_entity
-    domain_of:
-    - biological_entity
-    is_usage_slot: true
-    usage_slot_name: strain_mutation
-    range: string
-  biological_entity_modification_method:
-    name: biological_entity_modification_method
-    definition_uri: https://w3id.org/MONet/analysis-api-schema/modification_method
-    description: 'Method used to introduce genetic modification.
-
-      Examples: "Electroporation", "Conjugation", "CRISPR", "Transduction"'
-    title: modification method
-    from_schema: https://w3id.org/MONet/analysis-api-schema/slots
-    aliases:
-    - genetic_modification_method
-    - transformation_method
-    is_a: modification_method
-    domain: biological_entity
-    slot_uri: analysis_api_schema:modification_method
-    alias: modification_method
-    owner: biological_entity
-    domain_of:
-    - biological_entity
-    is_usage_slot: true
-    usage_slot_name: modification_method
-    range: ModificationMethodEnum
-  biological_entity_trophic_level:
-    name: biological_entity_trophic_level
-    definition_uri: https://w3id.org/MONet/analysis-api-schema/trophic_level
-    description: 'Trophic levels are the feeding position in a food chain. Microbes
-      can
-
-      be a range of producers.'
-    title: trophic level
-    from_schema: https://w3id.org/MONet/analysis-api-schema/slots
-    is_a: trophic_level
-    domain: biological_entity
-    slot_uri: analysis_api_schema:trophic_level
-    alias: trophic_level
-    owner: biological_entity
-    domain_of:
-    - biological_entity
-    is_usage_slot: true
-    usage_slot_name: trophic_level
-    range: TrophicLevelEnum
-    required: false
   Study_external_identifiers:
     name: Study_external_identifiers
     definition_uri: https://w3id.org/MONet/analysis-api-schema/external_identifiers
@@ -17884,7 +17866,7 @@ classes:
     - sampleProcessing__method_name
     - sampleProcessing__processing_steps
     - sampleProcessing__uses_sample
-    - biological_entity_ref
+    - organism_ref
     - growth_medium
     - incubation_time_hours
     - container_type
@@ -17918,7 +17900,7 @@ classes:
     - sampleProcessing__method_name
     - sampleProcessing__processing_steps
     - sampleProcessing__uses_sample
-    - biological_entity_ref
+    - organism_ref
     - growth_medium
     - incubation_time_hours
     - container_type
@@ -17950,7 +17932,7 @@ classes:
     - sampleProcessing__method_name
     - sampleProcessing__processing_steps
     - sampleProcessing__uses_sample
-    - biological_entity_ref
+    - organism_ref
     - growth_medium
     - incubation_time_hours
     - container_type
@@ -17984,7 +17966,7 @@ classes:
     - sampleProcessing__method_name
     - sampleProcessing__processing_steps
     - sampleProcessing__uses_sample
-    - biological_entity_ref
+    - organism_ref
     - growth_medium
     - incubation_time_hours
     - container_type
@@ -18015,7 +17997,7 @@ classes:
     - sampleProcessing__method_name
     - sampleProcessing__processing_steps
     - sampleProcessing__uses_sample
-    - biological_entity_ref
+    - organism_ref
     - growth_medium
     - incubation_time_hours
     - container_type
@@ -18876,6 +18858,91 @@ classes:
         range: string
         required: true
     class_uri: analysis_api_schema:XrayComputedTomographyMethod
+  organism:
+    name: organism
+    definition_uri: https://w3id.org/MONet/analysis-api-schema/Organism
+    description: "Reference data representing a biological identity (strain, isolate,\n\
+      engineered construct, etc.) that can be instantiated by multiple\nphysical samples.\n\
+      \nREPLACES: This class replaces the former Strain class, which was modeled\n\
+      as a PurchasedMaterial subclass. That approach did not accommodate strains\n\
+      engineered in-house or received from collaborators, nor did it cleanly\nseparate\
+      \ biological identity from physical samples. Additionally, the term\n\"strain\"\
+      \ implies purity that cannot always be guaranteed; this class\nrepresents the\
+      \ *intended* or *characterized* biological identity.\n\nRelationship to samples:\n\
+      \  - One organism can have many AMP2UserSample instances\n  - AMP2UserSample.organism_ref\
+      \ points here\n  - CultureGrowth activities reference via organism_ref (aliased\
+      \ as strain_ref)"
+    from_schema: https://w3id.org/MONet/analysis-api-schema/organism
+    slots:
+    - organism_organism_name
+    - description
+    - organism_strain_identifier
+    - taxonomy_id
+    - host_common_name
+    - host_taxid
+    - organism_strain_source
+    - strain_type
+    - organism_modification_method
+    - strain_description
+    - organism_strain_mutation
+    - phenotype
+    - trait
+    - encoded_traits
+    - genotype_segment_category
+    - genotype_segment_name
+    - component_name
+    - construct_component
+    - donor_organism
+    - component_description
+    - organism_trophic_level
+    - pathogenicity
+    - host_spec_range
+    - propagation
+    - organism__id
+    slot_usage:
+      strain_identifier:
+        name: strain_identifier
+        description: 'Primary human-readable identifier for this organism.
+
+          Examples: "KT2440_pTE314", "PP_0055", "AG5577-pJE2165"'
+        required: true
+      name:
+        name: name
+        description: 'Human-readable name for the organism.
+
+          May be same as strain_identifier or more descriptive.'
+      organism_name:
+        name: organism_name
+        description: Scientific name of the organism (e.g., "Pseudomonas putida").
+      strain_source:
+        name: strain_source
+        description: 'Provenance of the organism. Can be an institution
+
+          (e.g., "ATCC", "PNNL"), commercial source, or derivation note
+
+          (e.g., "engineered from KT2440").'
+      strain_mutation:
+        name: strain_mutation
+        description: 'Primary genetic modification or plasmid carried (e.g., "pTE314").
+
+          For more detailed construct information, use the genotype_segment_*
+
+          and component_* slots.'
+      modification_method:
+        name: modification_method
+        description: 'Method used to introduce genetic modification.
+
+          Examples: "Electroporation", "Conjugation", "CRISPR", "Transduction"'
+      trophic_level:
+        name: trophic_level
+        required: false
+    attributes:
+      id:
+        name: id
+        identifier: true
+        range: uuid
+        required: true
+    class_uri: analysis_api_schema:Organism
   BulkDensityProduct:
     name: BulkDensityProduct
     definition_uri: https://w3id.org/MONet/analysis-api-schema/BulkDensityProduct
@@ -20457,21 +20524,21 @@ classes:
     name: AMP2UserSample
     definition_uri: https://w3id.org/MONet/analysis-api-schema/AMP2UserSample
     description: "A user-submitted microbial sample for AMP2 workflows.\n\nReferences\
-      \ a biological_entity for identity (the \"what\") and carries\nphysical/logistical\
-      \ metadata for the specific sample instance (the \"this tube\").\n\nRelationship\
-      \ to biological_entity:\n  - Many AMP2UserSample instances can reference one\
-      \ biological_entity\n  - biological_entity_ref is the FK (required)\n  - Example:\
-      \ 1000 samples of strain KT2440_pTE314\n\nWorkflow integration:\n  - Enters\
-      \ workflow via SampleReceiving activity\n  - Processed through StrainPurity\
-      \ \u2192 StockCulturePreparation \u2192 PreCultureGrowth \u2192 ExperimentalCulture\n\
-      \  - Outputs ProcessedSample instances at each stage"
+      \ an organism for identity (the \"what\") and carries\nphysical/logistical metadata\
+      \ for the specific sample instance (the \"this tube\").\n\nRelationship to organism:\n\
+      \  - Many AMP2UserSample instances can reference one organism\n  - organism_ref\
+      \ is the FK (required)\n  - Example: 1000 samples of strain KT2440_pTE314\n\n\
+      Workflow integration:\n  - Enters workflow via SampleReceiving activity\n  -\
+      \ Processed through StrainPurity \u2192 StockCulturePreparation \u2192 PreCultureGrowth\
+      \ \u2192 ExperimentalCulture\n  - Outputs ProcessedSample instances at each\
+      \ stage"
     from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
     is_a: Sample
     slots:
     - description
     - emsl_activity
     - lims_barcode
-    - AMP2UserSample_biological_entity_ref
+    - AMP2UserSample_organism_ref
     - AMP2UserSample_collection_date
     - growth_facil
     - isol_growth_condt
@@ -20486,12 +20553,12 @@ classes:
     - aMP2UserSample__id
     - AMP2UserSample_name
     slot_usage:
-      biological_entity_ref:
-        name: biological_entity_ref
-        description: 'FK to biological_entity representing the biological identity
-          this sample instantiates.
+      organism_ref:
+        name: organism_ref
+        description: 'FK to organism representing the biological identity this sample
+          instantiates.
 
-          Required - every AMP2UserSample must reference a biological_entity.'
+          Required - every AMP2UserSample must reference an organism.'
         required: true
       storage_condition:
         name: storage_condition
@@ -20510,7 +20577,7 @@ classes:
         name: name
         description: 'Sample identifier/name (e.g., "PP_0055").
 
-          May match strain_identifier on biological_entity for 1:1 cases,
+          May match strain_identifier on organism for 1:1 cases,
 
           but typically unique per sample instance.
 
@@ -20677,10 +20744,10 @@ classes:
     name: EngineeredStrainSample
     definition_uri: https://w3id.org/MONet/analysis-api-schema/EngineeredStrainSample
     description: "A sample containing a strain of an organism that has been subjected\
-      \ to genetic engineering.\n\nThis class references a biological_entity for strain\
-      \ identity information (organism_name,\nstrain_source, modification_method,\
-      \ genotype_segment_*, component_*, phenotype, trait, etc.)\nand carries only\
-      \ sample-instance-specific slots.\n  "
+      \ to genetic engineering.\n\nThis class references an organism for strain identity\
+      \ information (organism_name,\nstrain_source, modification_method, genotype_segment_*,\
+      \ component_*, phenotype, trait, etc.)\nand carries only sample-instance-specific\
+      \ slots.\n  "
     from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
     is_a: Sample
     slots:
@@ -20688,7 +20755,7 @@ classes:
     - description
     - emsl_activity
     - lims_barcode
-    - biological_entity_ref
+    - organism_ref
     - cbi
     - storage_condition
     - storage_temperature
@@ -22719,92 +22786,6 @@ classes:
         identifier: true
         range: uuid
     class_uri: analysis_api_schema:WaterSamplingActivity
-  biological_entity:
-    name: biological_entity
-    definition_uri: https://w3id.org/MONet/analysis-api-schema/BiologicalEntity
-    description: "Reference data representing a biological identity (strain, isolate,\n\
-      engineered construct, etc.) that can be instantiated by multiple\nphysical samples.\n\
-      \nREPLACES: This class replaces the former Strain class, which was modeled\n\
-      as a PurchasedMaterial subclass. That approach did not accommodate strains\n\
-      engineered in-house or received from collaborators, nor did it cleanly\nseparate\
-      \ biological identity from physical samples. Additionally, the term\n\"strain\"\
-      \ implies purity that cannot always be guaranteed; this class\nrepresents the\
-      \ *intended* or *characterized* biological identity.\n\nRelationship to samples:\n\
-      \  - One biological_entity can have many AMP2UserSample instances\n  - AMP2UserSample.biological_entity_ref\
-      \ points here\n  - CultureGrowth activities reference via biological_entity_ref\
-      \ (aliased as strain_ref)"
-    from_schema: https://w3id.org/MONet/analysis-api-schema/biological-entity
-    slots:
-    - biological_entity_name
-    - description
-    - biological_entity_strain_identifier
-    - biological_entity_organism_name
-    - taxonomy_id
-    - host_common_name
-    - host_taxid
-    - biological_entity_strain_source
-    - strain_type
-    - biological_entity_modification_method
-    - strain_description
-    - biological_entity_strain_mutation
-    - phenotype
-    - trait
-    - encoded_traits
-    - genotype_segment_category
-    - genotype_segment_name
-    - component_name
-    - construct_component
-    - donor_organism
-    - component_description
-    - biological_entity_trophic_level
-    - pathogenicity
-    - host_spec_range
-    - propagation
-    - biologicalEntity__id
-    slot_usage:
-      strain_identifier:
-        name: strain_identifier
-        description: 'Primary human-readable identifier for this biological entity.
-
-          Examples: "KT2440_pTE314", "PP_0055", "AG5577-pJE2165"'
-        required: true
-      name:
-        name: name
-        description: 'Human-readable name for the biological entity.
-
-          May be same as strain_identifier or more descriptive.'
-      organism_name:
-        name: organism_name
-        description: Scientific name of the organism (e.g., "Pseudomonas putida").
-      strain_source:
-        name: strain_source
-        description: 'Provenance of the biological entity. Can be an institution
-
-          (e.g., "ATCC", "PNNL"), commercial source, or derivation note
-
-          (e.g., "engineered from KT2440").'
-      strain_mutation:
-        name: strain_mutation
-        description: 'Primary genetic modification or plasmid carried (e.g., "pTE314").
-
-          For more detailed construct information, use the genotype_segment_*
-
-          and component_* slots.'
-      modification_method:
-        name: modification_method
-        description: 'Method used to introduce genetic modification.
-
-          Examples: "Electroporation", "Conjugation", "CRISPR", "Transduction"'
-      trophic_level:
-        name: trophic_level
-        required: false
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
-        required: true
-    class_uri: analysis_api_schema:BiologicalEntity
   Study:
     name: Study
     definition_uri: https://w3id.org/MONet/analysis-api-schema/Study
@@ -23187,7 +23168,7 @@ classes:
     class_uri: analysis_api_schema:ZipDownload
 metamodel_version: 1.7.0
 source_file: analysis_api_schema.yaml
-source_file_date: '2026-07-28T15:15:46'
-source_file_size: 17071
-generation_date: '2026-07-28T16:02:34'
+source_file_date: '2026-07-29T13:46:51'
+source_file_size: 17062
+generation_date: '2026-07-29T17:19:14'
 

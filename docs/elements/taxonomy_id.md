@@ -22,7 +22,7 @@ Alias: taxonomy_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
 
 
 
@@ -36,7 +36,7 @@ Alias: taxonomy_id
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -95,7 +95,7 @@ aliases:
 rank: 1000
 alias: taxonomy_id
 domain_of:
-- biological_entity
+- organism
 range: string
 
 ```

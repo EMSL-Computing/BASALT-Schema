@@ -1151,6 +1151,7 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
+    - organism
     - MAOMProduct
     - WEOMProduct
     - Site
@@ -1191,7 +1192,6 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -1276,6 +1276,7 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
+    - organism
     - MAOMProduct
     - WEOMProduct
     - Site
@@ -1316,7 +1317,6 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -2049,13 +2049,13 @@ attributes:
     alias: encoded_traits
     owner: OtherUndescribedSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
   env_broad_scale:
     name: env_broad_scale
@@ -2501,13 +2501,13 @@ attributes:
     alias: host_common_name
     owner: OtherUndescribedSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
   host_disease_stat:
     name: host_disease_stat
@@ -2624,13 +2624,13 @@ attributes:
     alias: host_spec_range
     owner: OtherUndescribedSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
     pattern: NCBITaxon:\d+
   host_symbiont:
@@ -2658,13 +2658,13 @@ attributes:
     alias: host_taxid
     owner: OtherUndescribedSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
     pattern: NCBITaxon:\d+
   host_tot_mass:
@@ -3478,11 +3478,11 @@ attributes:
     alias: pathogenicity
     owner: OtherUndescribedSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
-    - biological_entity
     range: string
   perturbation:
     name: perturbation
@@ -3821,13 +3821,13 @@ attributes:
     alias: propagation
     owner: OtherUndescribedSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
   radiation_regm:
     name: radiation_regm
@@ -4880,11 +4880,11 @@ attributes:
     alias: trophic_level
     owner: OtherUndescribedSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
-    - biological_entity
     range: TrophicLevelEnum
   turbidity:
     name: turbidity
@@ -5019,11 +5019,11 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -5049,11 +5049,11 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
     - Study
     - TimestampValue
     - TextValue

@@ -16,7 +16,6 @@ Name: analysis-api-schema
 | --- | --- |
 | [Activity](Activity.md) | Something that happens over time and can use equipment |
 | [AlternativeIdentifier](AlternativeIdentifier.md) |  |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |
 | [Changelog](Changelog.md) |  |
 | [ConditioningValue](ConditioningValue.md) |  |
 | [Configuration](Configuration.md) | Record of configuration and/or settings for an activity |
@@ -95,6 +94,7 @@ Name: analysis-api-schema
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[XrayComputedTomographyMethod](XrayComputedTomographyMethod.md) |  |
 | [MobilePhaseSegment](MobilePhaseSegment.md) | A segment of the mobile phase used in chromatography during mass spectrometry |
 | [OntologyClass](OntologyClass.md) |  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |
 | [PersonValue](PersonValue.md) |  |
 | [PlateProduct](PlateProduct.md) | Abstract base for plate measurement data products |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |
@@ -217,7 +217,6 @@ Name: analysis-api-schema
 | [beta_glucosidase_ug_pnp_per_g_per_h_id](beta_glucosidase_ug_pnp_per_g_per_h_id.md) |  |
 | [biochem_oxygen_dem](biochem_oxygen_dem.md) | a measure of the relative oxygen-depletion effect of a waste contaminant |
 | [biol_stat](biol_stat.md) | The level of genome modification |
-| [biological_entity_ref](biological_entity_ref.md) | FK reference to a biological_entity representing the biological identity |
 | [biotic_regm](biotic_regm.md) | Information about treatment(s) involving use of biotic factors such as bacter... |
 | [biotic_relationship](biotic_relationship.md) | Description of relationship(s) between the subject organism and other organis... |
 | [bishomohopanol](bishomohopanol.md) | Concentration of bishomohopanol |
@@ -613,6 +612,7 @@ Name: analysis-api-schema
 | [org_particles](org_particles.md) | concentration of particles such as faeces, hairs, food, vomit, paper, fibers,... |
 | [organism_count](organism_count.md) | Total cell count of any organism (or group of organisms) per gram volume or a... |
 | [organism_name](organism_name.md) | Provide the scientific name (genus and species) of the host organism |
+| [organism_ref](organism_ref.md) | FK reference to an organism representing the biological identity |
 | [other](other.md) | Other/additional details about your sample that you feel can't be accurately ... |
 | [other_growth_facil](other_growth_facil.md) | Please specify growth facility if you selected 'other' |
 | [other_guid_source](other_guid_source.md) | Description of GUID source if guid_source = "other" |
@@ -894,7 +894,7 @@ Name: analysis-api-schema
 | [total_pore_volume](total_pore_volume.md) |  |
 | [total_projections_collected](total_projections_collected.md) |  |
 | [total_sulfur_id](total_sulfur_id.md) |  |
-| [trait](trait.md) | Trait category for the biological entity |
+| [trait](trait.md) | Trait category for the organism |
 | [treatment](treatment.md) | Experimental treatment (e |
 | [treatment_concentration](treatment_concentration.md) | Treatment concentration with unit (e |
 | [treatment_type](treatment_type.md) | Type of treatment applied in experimental culture growth |

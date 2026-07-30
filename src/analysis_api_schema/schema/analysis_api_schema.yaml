@@ -44,9 +44,9 @@ imports:
   - media_strain_culture_plate
   - metagenomics
   - methods
+  - organism
   - products
   - sample_classes
-  - biological_entity
   # - sample_processing
   - slots
   - study

@@ -1,7 +1,7 @@
 ---
-id: https://w3id.org/MONet/analysis-api-schema/biological-entity
-name: analysis-api-schema-biological-entity
-title: MONet Analysis API - Biological Entity
+id: https://w3id.org/MONet/analysis-api-schema/organism
+name: analysis-api-schema-organism
+title: MONet Analysis API - Organism
 description: |-
   Reference data classes for biological identities (strains, isolates, engineered
   constructs) that can be instantiated by multiple physical samples.
@@ -24,23 +24,23 @@ imports:
 
 classes:
 
-  biological_entity:
+  organism:
     description: |-
       Reference data representing a biological identity (strain, isolate,
       engineered construct, etc.) that can be instantiated by multiple
       physical samples.
-      
+
       REPLACES: This class replaces the former Strain class, which was modeled
       as a PurchasedMaterial subclass. That approach did not accommodate strains
       engineered in-house or received from collaborators, nor did it cleanly
       separate biological identity from physical samples. Additionally, the term
       "strain" implies purity that cannot always be guaranteed; this class
       represents the *intended* or *characterized* biological identity.
-      
+
       Relationship to samples:
-        - One biological_entity can have many AMP2UserSample instances
-        - AMP2UserSample.biological_entity_ref points here
-        - CultureGrowth activities reference via biological_entity_ref (aliased as strain_ref)
+        - One organism can have many AMP2UserSample instances
+        - AMP2UserSample.organism_ref points here
+        - CultureGrowth activities reference via organism_ref (aliased as strain_ref)
     slots:
       # Identity slots
       - name
@@ -89,18 +89,18 @@ classes:
       strain_identifier:
         required: true
         description: |-
-          Primary human-readable identifier for this biological entity.
+          Primary human-readable identifier for this organism.
           Examples: "KT2440_pTE314", "PP_0055", "AG5577-pJE2165"
       name:
         description: |-
-          Human-readable name for the biological entity.
+          Human-readable name for the organism.
           May be same as strain_identifier or more descriptive.
       organism_name:
         description: |-
           Scientific name of the organism (e.g., "Pseudomonas putida").
       strain_source:
         description: |-
-          Provenance of the biological entity. Can be an institution
+          Provenance of the organism. Can be an institution
           (e.g., "ATCC", "PNNL"), commercial source, or derivation note
           (e.g., "engineered from KT2440").
       strain_mutation:

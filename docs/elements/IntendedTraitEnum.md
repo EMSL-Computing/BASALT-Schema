@@ -24,7 +24,7 @@ URI: [analysis_api_schema:IntendedTraitEnum](https://w3id.org/MONet/analysis-api
 
 | Name | Description |
 | ---  | --- |
-| [trait](trait.md) | Trait category for the biological entity |
+| [trait](trait.md) | Trait category for the organism |
 
 
 

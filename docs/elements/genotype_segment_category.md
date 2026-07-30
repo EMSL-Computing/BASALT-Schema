@@ -24,7 +24,7 @@ Alias: genotype_segment_category
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
 
 
 
@@ -38,7 +38,7 @@ Alias: genotype_segment_category
 | Property | Value |
 | --- | --- |
 | Range | [GenotypeSegmentEnum](GenotypeSegmentEnum.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -91,7 +91,7 @@ from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 alias: genotype_segment_category
 domain_of:
-- biological_entity
+- organism
 range: GenotypeSegmentEnum
 
 ```

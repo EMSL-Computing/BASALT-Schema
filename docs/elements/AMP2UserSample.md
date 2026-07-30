@@ -7,17 +7,17 @@ _A user-submitted microbial sample for AMP2 workflows._
 
 __
 
-_References a biological_entity for identity (the "what") and carries_
+_References an organism for identity (the "what") and carries_
 
 _physical/logistical metadata for the specific sample instance (the "this tube")._
 
 __
 
-_Relationship to biological_entity:_
+_Relationship to organism:_
 
-_  - Many AMP2UserSample instances can reference one biological_entity_
+_  - Many AMP2UserSample instances can reference one organism_
 
-_  - biological_entity_ref is the FK (required)_
+_  - organism_ref is the FK (required)_
 
 _  - Example: 1000 samples of strain KT2440_pTE314_
 
@@ -50,17 +50,6 @@ URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-sc
       
       AMP2UserSample : analysis_type
         
-      AMP2UserSample : biological_entity_ref
-        
-          
-    
-        
-        
-        AMP2UserSample --> "1" BiologicalEntity : biological_entity_ref
-        click BiologicalEntity href "../BiologicalEntity/"
-    
-
-        
       AMP2UserSample : cbi
         
       AMP2UserSample : collection_date
@@ -89,6 +78,17 @@ URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-sc
       AMP2UserSample : lims_barcode
         
       AMP2UserSample : name
+        
+      AMP2UserSample : organism_ref
+        
+          
+    
+        
+        
+        AMP2UserSample --> "1" Organism : organism_ref
+        click Organism href "../Organism/"
+    
+
         
       AMP2UserSample : other_guid_source
         
@@ -125,7 +125,7 @@ URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-sc
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [biological_entity_ref](biological_entity_ref.md) | 1 <br/> [BiologicalEntity](BiologicalEntity.md) | FK to biological_entity representing the biological identity this sample inst... | direct |
+| [organism_ref](organism_ref.md) | 1 <br/> [Organism](Organism.md) | FK to organism representing the biological identity this sample instantiates | direct |
 | [collection_date](collection_date.md) | 0..1 <br/> [Date](Date.md) | The date the sample was collected or received from the user | direct |
 | [growth_facil](growth_facil.md) | 0..1 <br/> [GrowthFacilityEnum](GrowthFacilityEnum.md) | Type of facility or location from where the sample was collected or | direct |
 | [isol_growth_condt](isol_growth_condt.md) | 0..1 <br/> [String](String.md) | Publication reference in the form of pubmed ID (PMID), digital object | direct |
@@ -193,17 +193,17 @@ URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-sc
 ```yaml
 name: AMP2UserSample
 description: "A user-submitted microbial sample for AMP2 workflows.\n\nReferences\
-  \ a biological_entity for identity (the \"what\") and carries\nphysical/logistical\
-  \ metadata for the specific sample instance (the \"this tube\").\n\nRelationship\
-  \ to biological_entity:\n  - Many AMP2UserSample instances can reference one biological_entity\n\
-  \  - biological_entity_ref is the FK (required)\n  - Example: 1000 samples of strain\
-  \ KT2440_pTE314\n\nWorkflow integration:\n  - Enters workflow via SampleReceiving\
-  \ activity\n  - Processed through StrainPurity → StockCulturePreparation → PreCultureGrowth\
-  \ → ExperimentalCulture\n  - Outputs ProcessedSample instances at each stage"
+  \ an organism for identity (the \"what\") and carries\nphysical/logistical metadata\
+  \ for the specific sample instance (the \"this tube\").\n\nRelationship to organism:\n\
+  \  - Many AMP2UserSample instances can reference one organism\n  - organism_ref\
+  \ is the FK (required)\n  - Example: 1000 samples of strain KT2440_pTE314\n\nWorkflow\
+  \ integration:\n  - Enters workflow via SampleReceiving activity\n  - Processed\
+  \ through StrainPurity → StockCulturePreparation → PreCultureGrowth → ExperimentalCulture\n\
+  \  - Outputs ProcessedSample instances at each stage"
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: Sample
 slots:
-- biological_entity_ref
+- organism_ref
 - collection_date
 - growth_facil
 - isol_growth_condt
@@ -216,12 +216,12 @@ slots:
 - analysis_type
 - cbi
 slot_usage:
-  biological_entity_ref:
-    name: biological_entity_ref
-    description: 'FK to biological_entity representing the biological identity this
-      sample instantiates.
+  organism_ref:
+    name: organism_ref
+    description: 'FK to organism representing the biological identity this sample
+      instantiates.
 
-      Required - every AMP2UserSample must reference a biological_entity.'
+      Required - every AMP2UserSample must reference an organism.'
     required: true
   storage_condition:
     name: storage_condition
@@ -240,7 +240,7 @@ slot_usage:
     name: name
     description: 'Sample identifier/name (e.g., "PP_0055").
 
-      May match strain_identifier on biological_entity for 1:1 cases,
+      May match strain_identifier on organism for 1:1 cases,
 
       but typically unique per sample instance.
 
@@ -279,6 +279,7 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
+    - organism
     - MAOMProduct
     - WEOMProduct
     - Site
@@ -319,7 +320,6 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -342,22 +342,22 @@ attributes:
 ```yaml
 name: AMP2UserSample
 description: "A user-submitted microbial sample for AMP2 workflows.\n\nReferences\
-  \ a biological_entity for identity (the \"what\") and carries\nphysical/logistical\
-  \ metadata for the specific sample instance (the \"this tube\").\n\nRelationship\
-  \ to biological_entity:\n  - Many AMP2UserSample instances can reference one biological_entity\n\
-  \  - biological_entity_ref is the FK (required)\n  - Example: 1000 samples of strain\
-  \ KT2440_pTE314\n\nWorkflow integration:\n  - Enters workflow via SampleReceiving\
-  \ activity\n  - Processed through StrainPurity → StockCulturePreparation → PreCultureGrowth\
-  \ → ExperimentalCulture\n  - Outputs ProcessedSample instances at each stage"
+  \ an organism for identity (the \"what\") and carries\nphysical/logistical metadata\
+  \ for the specific sample instance (the \"this tube\").\n\nRelationship to organism:\n\
+  \  - Many AMP2UserSample instances can reference one organism\n  - organism_ref\
+  \ is the FK (required)\n  - Example: 1000 samples of strain KT2440_pTE314\n\nWorkflow\
+  \ integration:\n  - Enters workflow via SampleReceiving activity\n  - Processed\
+  \ through StrainPurity → StockCulturePreparation → PreCultureGrowth → ExperimentalCulture\n\
+  \  - Outputs ProcessedSample instances at each stage"
 from_schema: https://w3id.org/MONet/analysis-api-schema
 is_a: Sample
 slot_usage:
-  biological_entity_ref:
-    name: biological_entity_ref
-    description: 'FK to biological_entity representing the biological identity this
-      sample instantiates.
+  organism_ref:
+    name: organism_ref
+    description: 'FK to organism representing the biological identity this sample
+      instantiates.
 
-      Required - every AMP2UserSample must reference a biological_entity.'
+      Required - every AMP2UserSample must reference an organism.'
     required: true
   storage_condition:
     name: storage_condition
@@ -376,7 +376,7 @@ slot_usage:
     name: name
     description: 'Sample identifier/name (e.g., "PP_0055").
 
-      May match strain_identifier on biological_entity for 1:1 cases,
+      May match strain_identifier on organism for 1:1 cases,
 
       but typically unique per sample instance.
 
@@ -417,6 +417,7 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
+    - organism
     - MAOMProduct
     - WEOMProduct
     - Site
@@ -457,7 +458,6 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -470,24 +470,24 @@ attributes:
     - zipDownload
     range: uuid
     required: true
-  biological_entity_ref:
-    name: biological_entity_ref
-    description: 'FK to biological_entity representing the biological identity this
-      sample instantiates.
+  organism_ref:
+    name: organism_ref
+    description: 'FK to organism representing the biological identity this sample
+      instantiates.
 
-      Required - every AMP2UserSample must reference a biological_entity.'
+      Required - every AMP2UserSample must reference an organism.'
     from_schema: https://w3id.org/MONet/analysis-api-schema
     aliases:
     - strain_ref
     - strain_id
     rank: 1000
-    alias: biological_entity_ref
+    alias: organism_ref
     owner: AMP2UserSample
     domain_of:
     - CultureGrowth
     - AMP2UserSample
     - EngineeredStrainSample
-    range: biological_entity
+    range: organism
     required: true
   collection_date:
     name: collection_date
@@ -694,7 +694,7 @@ attributes:
     name: name
     description: 'Sample identifier/name (e.g., "PP_0055").
 
-      May match strain_identifier on biological_entity for 1:1 cases,
+      May match strain_identifier on organism for 1:1 cases,
 
       but typically unique per sample instance.
 
@@ -716,11 +716,11 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -746,11 +746,11 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
     - Study
     - TimestampValue
     - TextValue

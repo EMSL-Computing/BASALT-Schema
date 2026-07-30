@@ -54,17 +54,6 @@ URI: [analysis_api_schema:CultureGrowth](https://w3id.org/MONet/analysis-api-sch
     
 
         
-      CultureGrowth : biological_entity_ref
-        
-          
-    
-        
-        
-        CultureGrowth --> "0..1" BiologicalEntity : biological_entity_ref
-        click BiologicalEntity href "../BiologicalEntity/"
-    
-
-        
       CultureGrowth : container_type
         
       CultureGrowth : growth_medium
@@ -81,6 +70,17 @@ URI: [analysis_api_schema:CultureGrowth](https://w3id.org/MONet/analysis-api-sch
         
         CultureGrowth --> "0..1" MethodNameEnum : method_name
         click MethodNameEnum href "../MethodNameEnum/"
+    
+
+        
+      CultureGrowth : organism_ref
+        
+          
+    
+        
+        
+        CultureGrowth --> "0..1" Organism : organism_ref
+        click Organism href "../Organism/"
     
 
         
@@ -134,7 +134,7 @@ URI: [analysis_api_schema:CultureGrowth](https://w3id.org/MONet/analysis-api-sch
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [biological_entity_ref](biological_entity_ref.md) | 0..1 <br/> [BiologicalEntity](BiologicalEntity.md) | FK reference to a biological_entity representing the biological identity | direct |
+| [organism_ref](organism_ref.md) | 0..1 <br/> [Organism](Organism.md) | FK reference to an organism representing the biological identity | direct |
 | [growth_medium](growth_medium.md) | 0..1 <br/> [String](String.md) | Method of growth and medium/materials used | direct |
 | [incubation_time_hours](incubation_time_hours.md) | 0..1 <br/> [Float](Float.md) | Incubation duration in hours | direct |
 | [container_type](container_type.md) | 0..1 <br/> [String](String.md) | Physical container used for the culture (flask, tube, plate, etc | direct |
@@ -206,7 +206,7 @@ is_a: SampleProcessing
 mixins:
 - HasIncubationConditions
 slots:
-- biological_entity_ref
+- organism_ref
 - growth_medium
 - incubation_time_hours
 - container_type
@@ -227,10 +227,9 @@ is_a: SampleProcessing
 mixins:
 - HasIncubationConditions
 attributes:
-  biological_entity_ref:
-    name: biological_entity_ref
-    description: 'FK reference to a biological_entity representing the biological
-      identity
+  organism_ref:
+    name: organism_ref
+    description: 'FK reference to an organism representing the biological identity
 
       strain, isolate, engineered construct) that this sample or activity
 
@@ -240,13 +239,13 @@ attributes:
     - strain_ref
     - strain_id
     rank: 1000
-    alias: biological_entity_ref
+    alias: organism_ref
     owner: CultureGrowth
     domain_of:
     - CultureGrowth
     - AMP2UserSample
     - EngineeredStrainSample
-    range: biological_entity
+    range: organism
     required: false
   growth_medium:
     name: growth_medium
@@ -382,6 +381,7 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
+    - organism
     - MAOMProduct
     - WEOMProduct
     - Site
@@ -422,7 +422,6 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
     - Study
     - ProjectParticipant
     - TimestampValue

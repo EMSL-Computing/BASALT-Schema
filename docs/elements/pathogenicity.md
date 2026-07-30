@@ -22,11 +22,11 @@ Alias: pathogenicity
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 
 
 
@@ -40,7 +40,7 @@ Alias: pathogenicity
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [CultureEnvironmentalSample](CultureEnvironmentalSample.md), [MixedCultureSample](MixedCultureSample.md), [OtherUndescribedSample](OtherUndescribedSample.md), [PureCultureSample](PureCultureSample.md), [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md), [CultureEnvironmentalSample](CultureEnvironmentalSample.md), [MixedCultureSample](MixedCultureSample.md), [OtherUndescribedSample](OtherUndescribedSample.md), [PureCultureSample](PureCultureSample.md) |
 
 ### Cardinality and Requirements
 
@@ -92,11 +92,11 @@ from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 alias: pathogenicity
 domain_of:
+- organism
 - CultureEnvironmentalSample
 - MixedCultureSample
 - OtherUndescribedSample
 - PureCultureSample
-- biological_entity
 range: string
 
 ```

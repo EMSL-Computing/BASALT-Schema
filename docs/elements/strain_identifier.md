@@ -24,7 +24,7 @@ Alias: strain_identifier
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  yes  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  yes  |
 
 
 
@@ -38,7 +38,7 @@ Alias: strain_identifier
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -100,7 +100,7 @@ aliases:
 rank: 1000
 alias: strain_identifier
 domain_of:
-- biological_entity
+- organism
 range: string
 required: true
 

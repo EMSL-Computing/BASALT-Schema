@@ -747,6 +747,64 @@ class Method(Base):
     
 
 
+class Organism(Base):
+    """
+    Reference data representing a biological identity (strain, isolate,
+engineered construct, etc.) that can be instantiated by multiple
+physical samples.
+
+REPLACES: This class replaces the former Strain class, which was modeled
+as a PurchasedMaterial subclass. That approach did not accommodate strains
+engineered in-house or received from collaborators, nor did it cleanly
+separate biological identity from physical samples. Additionally, the term
+"strain" implies purity that cannot always be guaranteed; this class
+represents the *intended* or *characterized* biological identity.
+
+Relationship to samples:
+  - One organism can have many AMP2UserSample instances
+  - AMP2UserSample.organism_ref points here
+  - CultureGrowth activities reference via organism_ref (aliased as strain_ref)
+    """
+    __tablename__ = 'organism'
+
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    strain_identifier = Column(Text(), nullable=False )
+    organism_name = Column(Text())
+    taxonomy_id = Column(Text())
+    host_common_name = Column(Text())
+    host_taxid = Column(Text())
+    strain_source = Column(Text())
+    strain_type = Column(Enum('bacterial', 'fungal', 'archaeal', 'viral', 'algal', 'protist', 'other', name='StrainTypeEnum'))
+    modification_method = Column(Enum('electroporation', 'conjugation', 'transformation', 'transduction', 'crispr', 'homologous_recombination', 'transposon', 'other', 'p_element', 'phage_transformation', 'piggybac', 'polyethylene_glycol_mediated', 'replicon', 'whisker_mediated_transformation', name='ModificationMethodEnum'))
+    strain_description = Column(Text())
+    strain_mutation = Column(Text())
+    phenotype = Column(Text())
+    trait = Column(Enum('other', 'product_quality', 'agronomic_properties', 'bacterial_resistance', 'herbicide_resistance', 'insect_resistance', 'marker_gene', 'nematode_resistance', 'virus_resistance', name='IntendedTraitEnum'))
+    encoded_traits = Column(Text())
+    genotype_segment_category = Column(Enum('Empty Transformation Vector', 'Gene Knock-Out', 'Gene Silencer', 'Gene(s) of Interest', 'RNA Interface (RNAi)', 'Screenable Marker', 'Selectable Marker', 'Virus Genome', 'Wild Type', 'Recombination Site', 'Other', name='GenotypeSegmentEnum'))
+    genotype_segment_name = Column(Text())
+    component_name = Column(Text())
+    construct_component = Column(Enum('None', "3'UTR", "5'UTR", 'Enhancer', 'Epitope Tag', 'Exon', 'Flanking Element', 'Gene', 'Intron', 'Leader Sequence', 'Promoter', 'Recognition Sequence', 'Signal Sequence', 'Spacer', 'Targeting Sequence', 'Terminator', 'Transit Peptide', 'Vector Sequence', name='ConstructComponentEnum'))
+    donor_organism = Column(Text())
+    component_description = Column(Text())
+    trophic_level = Column(Enum('autotroph', 'carboxydotroph', 'chemoautolithotroph', 'chemoautotroph', 'chemoheterotroph', 'chemolithoautotroph', 'chemolithotroph', 'chemoorganoheterotroph', 'chemoorganotroph', 'chemosynthetic', 'chemotroph', 'copiotroph', 'diazotroph', 'facultative', 'heterotroph', 'lithoautotroph', 'lithoheterotroph', 'lithotroph', 'methanotroph', 'methylotroph', 'mixotroph', 'obligate', 'oligotroph', 'organoheterotroph', 'organotroph', 'osmotroph', 'photoheterotroph', 'photoautotroph', 'photolithoautotroph', 'photolithotroph', 'phototroph', name='TrophicLevelEnum'))
+    pathogenicity = Column(Text())
+    host_spec_range = Column(Text())
+    propagation = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"organism(name={self.name},description={self.description},strain_identifier={self.strain_identifier},organism_name={self.organism_name},taxonomy_id={self.taxonomy_id},host_common_name={self.host_common_name},host_taxid={self.host_taxid},strain_source={self.strain_source},strain_type={self.strain_type},modification_method={self.modification_method},strain_description={self.strain_description},strain_mutation={self.strain_mutation},phenotype={self.phenotype},trait={self.trait},encoded_traits={self.encoded_traits},genotype_segment_category={self.genotype_segment_category},genotype_segment_name={self.genotype_segment_name},component_name={self.component_name},construct_component={self.construct_component},donor_organism={self.donor_organism},component_description={self.component_description},trophic_level={self.trophic_level},pathogenicity={self.pathogenicity},host_spec_range={self.host_spec_range},propagation={self.propagation},id={self.id},)"
+
+
+
+    
+
+
 class MAOMProduct(Base):
     """
     Mineral-Associated Organic Matter (MAOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
@@ -906,64 +964,6 @@ class SamplingActivity(Base):
 
     def __repr__(self):
         return f"SamplingActivity(name={self.name},description={self.description},project={self.project},emsl_activity={self.emsl_activity},collection_date={self.collection_date},shipped_sample_size={self.shipped_sample_size},sampled_at_site={self.sampled_at_site},id={self.id},)"
-
-
-
-    
-
-
-class Biological_entity(Base):
-    """
-    Reference data representing a biological identity (strain, isolate,
-engineered construct, etc.) that can be instantiated by multiple
-physical samples.
-
-REPLACES: This class replaces the former Strain class, which was modeled
-as a PurchasedMaterial subclass. That approach did not accommodate strains
-engineered in-house or received from collaborators, nor did it cleanly
-separate biological identity from physical samples. Additionally, the term
-"strain" implies purity that cannot always be guaranteed; this class
-represents the *intended* or *characterized* biological identity.
-
-Relationship to samples:
-  - One biological_entity can have many AMP2UserSample instances
-  - AMP2UserSample.biological_entity_ref points here
-  - CultureGrowth activities reference via biological_entity_ref (aliased as strain_ref)
-    """
-    __tablename__ = 'biological_entity'
-
-    name = Column(Text(), nullable=False )
-    description = Column(Text())
-    strain_identifier = Column(Text(), nullable=False )
-    organism_name = Column(Text())
-    taxonomy_id = Column(Text())
-    host_common_name = Column(Text())
-    host_taxid = Column(Text())
-    strain_source = Column(Text())
-    strain_type = Column(Enum('bacterial', 'fungal', 'archaeal', 'viral', 'algal', 'protist', 'other', name='StrainTypeEnum'))
-    modification_method = Column(Enum('electroporation', 'conjugation', 'transformation', 'transduction', 'crispr', 'homologous_recombination', 'transposon', 'other', 'p_element', 'phage_transformation', 'piggybac', 'polyethylene_glycol_mediated', 'replicon', 'whisker_mediated_transformation', name='ModificationMethodEnum'))
-    strain_description = Column(Text())
-    strain_mutation = Column(Text())
-    phenotype = Column(Text())
-    trait = Column(Enum('other', 'product_quality', 'agronomic_properties', 'bacterial_resistance', 'herbicide_resistance', 'insect_resistance', 'marker_gene', 'nematode_resistance', 'virus_resistance', name='IntendedTraitEnum'))
-    encoded_traits = Column(Text())
-    genotype_segment_category = Column(Enum('Empty Transformation Vector', 'Gene Knock-Out', 'Gene Silencer', 'Gene(s) of Interest', 'RNA Interface (RNAi)', 'Screenable Marker', 'Selectable Marker', 'Virus Genome', 'Wild Type', 'Recombination Site', 'Other', name='GenotypeSegmentEnum'))
-    genotype_segment_name = Column(Text())
-    component_name = Column(Text())
-    construct_component = Column(Enum('None', "3'UTR", "5'UTR", 'Enhancer', 'Epitope Tag', 'Exon', 'Flanking Element', 'Gene', 'Intron', 'Leader Sequence', 'Promoter', 'Recognition Sequence', 'Signal Sequence', 'Spacer', 'Targeting Sequence', 'Terminator', 'Transit Peptide', 'Vector Sequence', name='ConstructComponentEnum'))
-    donor_organism = Column(Text())
-    component_description = Column(Text())
-    trophic_level = Column(Enum('autotroph', 'carboxydotroph', 'chemoautolithotroph', 'chemoautotroph', 'chemoheterotroph', 'chemolithoautotroph', 'chemolithotroph', 'chemoorganoheterotroph', 'chemoorganotroph', 'chemosynthetic', 'chemotroph', 'copiotroph', 'diazotroph', 'facultative', 'heterotroph', 'lithoautotroph', 'lithoheterotroph', 'lithotroph', 'methanotroph', 'methylotroph', 'mixotroph', 'obligate', 'oligotroph', 'organoheterotroph', 'organotroph', 'osmotroph', 'photoheterotroph', 'photoautotroph', 'photolithoautotroph', 'photolithotroph', 'phototroph', name='TrophicLevelEnum'))
-    pathogenicity = Column(Text())
-    host_spec_range = Column(Text())
-    propagation = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
-    
-
-    
-
-    def __repr__(self):
-        return f"biological_entity(name={self.name},description={self.description},strain_identifier={self.strain_identifier},organism_name={self.organism_name},taxonomy_id={self.taxonomy_id},host_common_name={self.host_common_name},host_taxid={self.host_taxid},strain_source={self.strain_source},strain_type={self.strain_type},modification_method={self.modification_method},strain_description={self.strain_description},strain_mutation={self.strain_mutation},phenotype={self.phenotype},trait={self.trait},encoded_traits={self.encoded_traits},genotype_segment_category={self.genotype_segment_category},genotype_segment_name={self.genotype_segment_name},component_name={self.component_name},construct_component={self.construct_component},donor_organism={self.donor_organism},component_description={self.component_description},trophic_level={self.trophic_level},pathogenicity={self.pathogenicity},host_spec_range={self.host_spec_range},propagation={self.propagation},id={self.id},)"
 
 
 
@@ -2241,7 +2241,7 @@ PreCultureGrowth, ExperimentalCulture.
     """
     __tablename__ = 'CultureGrowth'
 
-    biological_entity_ref = Column(UUID(), ForeignKey('biological_entity.id'))
+    organism_ref = Column(UUID(), ForeignKey('organism.id'))
     growth_medium = Column(Text())
     incubation_time_hours = Column(Float())
     container_type = Column(Text())
@@ -2260,7 +2260,7 @@ PreCultureGrowth, ExperimentalCulture.
     
 
     def __repr__(self):
-        return f"CultureGrowth(biological_entity_ref={self.biological_entity_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
+        return f"CultureGrowth(organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
 
 
 
@@ -3089,12 +3089,12 @@ class AMP2UserSample(Sample):
     """
     A user-submitted microbial sample for AMP2 workflows.
 
-References a biological_entity for identity (the "what") and carries
+References an organism for identity (the "what") and carries
 physical/logistical metadata for the specific sample instance (the "this tube").
 
-Relationship to biological_entity:
-  - Many AMP2UserSample instances can reference one biological_entity
-  - biological_entity_ref is the FK (required)
+Relationship to organism:
+  - Many AMP2UserSample instances can reference one organism
+  - organism_ref is the FK (required)
   - Example: 1000 samples of strain KT2440_pTE314
 
 Workflow integration:
@@ -3104,7 +3104,7 @@ Workflow integration:
     """
     __tablename__ = 'AMP2UserSample'
 
-    biological_entity_ref = Column(UUID(), ForeignKey('biological_entity.id'), nullable=False )
+    organism_ref = Column(UUID(), ForeignKey('organism.id'), nullable=False )
     collection_date = Column(Date())
     growth_facil = Column(Enum('field', 'commercially_purchased', 'experimental_garden', 'field_incubation', 'greenhouse', 'growth_chamber', 'lab_incubation', 'open_top_chamber', 'other', name='GrowthFacilityEnum'))
     isol_growth_condt = Column(Text())
@@ -3126,7 +3126,7 @@ Workflow integration:
     
 
     def __repr__(self):
-        return f"AMP2UserSample(biological_entity_ref={self.biological_entity_ref},collection_date={self.collection_date},growth_facil={self.growth_facil},isol_growth_condt={self.isol_growth_condt},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_temperature={self.storage_temperature},shipped_sample_size={self.shipped_sample_size},guid_source={self.guid_source},other_guid_source={self.other_guid_source},analysis_type={self.analysis_type},cbi={self.cbi},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"AMP2UserSample(organism_ref={self.organism_ref},collection_date={self.collection_date},growth_facil={self.growth_facil},isol_growth_condt={self.isol_growth_condt},start_date_inc={self.start_date_inc},storage_condition={self.storage_condition},storage_temperature={self.storage_temperature},shipped_sample_size={self.shipped_sample_size},guid_source={self.guid_source},other_guid_source={self.other_guid_source},analysis_type={self.analysis_type},cbi={self.cbi},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
 
 
 
@@ -3284,14 +3284,14 @@ class EngineeredStrainSample(Sample):
     """
     A sample containing a strain of an organism that has been subjected to genetic engineering.
 
-This class references a biological_entity for strain identity information (organism_name,
+This class references an organism for strain identity information (organism_name,
 strain_source, modification_method, genotype_segment_*, component_*, phenotype, trait, etc.)
 and carries only sample-instance-specific slots.
   
     """
     __tablename__ = 'EngineeredStrainSample'
 
-    biological_entity_ref = Column(UUID(), ForeignKey('biological_entity.id'))
+    organism_ref = Column(UUID(), ForeignKey('organism.id'))
     cbi = Column(Text(), nullable=False )
     storage_condition = Column(Text(), nullable=False )
     storage_temperature = Column(Text())
@@ -3310,7 +3310,7 @@ and carries only sample-instance-specific slots.
     
 
     def __repr__(self):
-        return f"EngineeredStrainSample(biological_entity_ref={self.biological_entity_ref},cbi={self.cbi},storage_condition={self.storage_condition},storage_temperature={self.storage_temperature},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
+        return f"EngineeredStrainSample(organism_ref={self.organism_ref},cbi={self.cbi},storage_condition={self.storage_condition},storage_temperature={self.storage_temperature},id={self.id},name={self.name},description={self.description},emsl_activity={self.emsl_activity},lims_barcode={self.lims_barcode},)"
 
 
 
@@ -5397,7 +5397,7 @@ Refs:   Media (growth medium), Strain (target organism)
     inspection_method = Column(Text())
     target_strain = Column(Text())
     contaminant_strains = Column(Text())
-    biological_entity_ref = Column(UUID(), ForeignKey('biological_entity.id'))
+    organism_ref = Column(UUID(), ForeignKey('organism.id'))
     growth_medium = Column(Text())
     incubation_time_hours = Column(Float())
     container_type = Column(Text())
@@ -5416,7 +5416,7 @@ Refs:   Media (growth medium), Strain (target organism)
     
 
     def __repr__(self):
-        return f"StrainPurity(inspection_method={self.inspection_method},target_strain={self.target_strain},contaminant_strains={self.contaminant_strains},biological_entity_ref={self.biological_entity_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
+        return f"StrainPurity(inspection_method={self.inspection_method},target_strain={self.target_strain},contaminant_strains={self.contaminant_strains},organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
 
 
 
@@ -5439,7 +5439,7 @@ Refs:   Media (growth medium), Strain
     __tablename__ = 'StockCulturePreparation'
 
     preparation_date = Column(Date())
-    biological_entity_ref = Column(UUID(), ForeignKey('biological_entity.id'))
+    organism_ref = Column(UUID(), ForeignKey('organism.id'))
     growth_medium = Column(Text())
     incubation_time_hours = Column(Float())
     container_type = Column(Text())
@@ -5458,7 +5458,7 @@ Refs:   Media (growth medium), Strain
     
 
     def __repr__(self):
-        return f"StockCulturePreparation(preparation_date={self.preparation_date},biological_entity_ref={self.biological_entity_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
+        return f"StockCulturePreparation(preparation_date={self.preparation_date},organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
 
 
 
@@ -5481,7 +5481,7 @@ Refs:   Media (growth medium), Strain
     """
     __tablename__ = 'PreCultureGrowth'
 
-    biological_entity_ref = Column(UUID(), ForeignKey('biological_entity.id'))
+    organism_ref = Column(UUID(), ForeignKey('organism.id'))
     growth_medium = Column(Text())
     incubation_time_hours = Column(Float())
     container_type = Column(Text())
@@ -5500,7 +5500,7 @@ Refs:   Media (growth medium), Strain
     
 
     def __repr__(self):
-        return f"PreCultureGrowth(biological_entity_ref={self.biological_entity_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
+        return f"PreCultureGrowth(organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
 
 
 
@@ -5525,7 +5525,7 @@ Refs:   Media (growth medium), Strain
 
     treatment_type = Column(Text())
     growth_time = Column(Text())
-    biological_entity_ref = Column(UUID(), ForeignKey('biological_entity.id'))
+    organism_ref = Column(UUID(), ForeignKey('organism.id'))
     growth_medium = Column(Text())
     incubation_time_hours = Column(Float())
     container_type = Column(Text())
@@ -5544,7 +5544,7 @@ Refs:   Media (growth medium), Strain
     
 
     def __repr__(self):
-        return f"ExperimentalCulture(treatment_type={self.treatment_type},growth_time={self.growth_time},biological_entity_ref={self.biological_entity_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
+        return f"ExperimentalCulture(treatment_type={self.treatment_type},growth_time={self.growth_time},organism_ref={self.organism_ref},growth_medium={self.growth_medium},incubation_time_hours={self.incubation_time_hours},container_type={self.container_type},temperature_celsius={self.temperature_celsius},agitation_speed_rpm={self.agitation_speed_rpm},oxygen_status={self.oxygen_status},protocol_url={self.protocol_url},protocol_version={self.protocol_version},id={self.id},analysis_type={self.analysis_type},method_name={self.method_name},processing_steps={self.processing_steps},uses_sample={self.uses_sample},)"
 
 
 

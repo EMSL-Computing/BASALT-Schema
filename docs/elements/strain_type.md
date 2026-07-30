@@ -22,7 +22,7 @@ Alias: strain_type
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
 
 
 
@@ -36,7 +36,7 @@ Alias: strain_type
 | Property | Value |
 | --- | --- |
 | Range | [StrainTypeEnum](StrainTypeEnum.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -93,7 +93,7 @@ aliases:
 rank: 1000
 alias: strain_type
 domain_of:
-- biological_entity
+- organism
 range: StrainTypeEnum
 
 ```

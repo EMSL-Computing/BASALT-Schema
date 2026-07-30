@@ -128,7 +128,7 @@ classes:
       Concrete subclasses: StrainPurity, StockCulturePreparation, 
       PreCultureGrowth, ExperimentalCulture.
     slots:
-      - biological_entity_ref
+      - organism_ref
       - growth_medium
       - incubation_time_hours
       - container_type

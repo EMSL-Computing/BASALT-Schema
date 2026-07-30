@@ -529,6 +529,7 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
+    - organism
     - MAOMProduct
     - WEOMProduct
     - Site
@@ -569,7 +570,6 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -650,6 +650,7 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
+    - organism
     - MAOMProduct
     - WEOMProduct
     - Site
@@ -690,7 +691,6 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -831,13 +831,13 @@ attributes:
     alias: encoded_traits
     owner: TerraformSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
   env_broad_scale:
     name: env_broad_scale
@@ -1039,13 +1039,13 @@ attributes:
     alias: host_common_name
     owner: TerraformSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
   host_dry_mass:
     name: host_dry_mass
@@ -1112,13 +1112,13 @@ attributes:
     alias: host_spec_range
     owner: TerraformSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
     pattern: NCBITaxon:\d+
   host_taxid:
@@ -1134,13 +1134,13 @@ attributes:
     alias: host_taxid
     owner: TerraformSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
     pattern: NCBITaxon:\d+
   host_tot_mass:
@@ -1623,13 +1623,13 @@ attributes:
     alias: propagation
     owner: TerraformSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
   redox_potential:
     name: redox_potential
@@ -2241,11 +2241,11 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -2271,11 +2271,11 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
     - Study
     - TimestampValue
     - TextValue

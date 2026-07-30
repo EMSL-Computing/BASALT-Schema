@@ -13,8 +13,8 @@ extracted directly from the LinkML schema with `SchemaView` (see
 (range, pattern, required, description) are the real thing, not hand-transcribed.
 
 Layout is a left-to-right process flow — **Sampling → Samples → Sample processing →
-Data generation → Data processing → Data products** — with `biological_entity` shown
-as a satellite linked in by `biological_entity_ref`/`strain_ref`, and supporting lanes
+Data generation → Data processing → Data products** — with `organism` shown
+as a satellite linked in by `organism_ref`/`strain_ref`, and supporting lanes
 (Methods, Value tables, Reference/embedded) below. Colour encodes the inheritance
 family / process stage. Within each column, classes nest by `is_a` (dashed border =
 abstract base, solid = concrete).
@@ -79,7 +79,7 @@ scrubber. Light/dark theme aware.
 2. **Parse** — each file/column maps onto a LinkML class and slot.
 3. **Validate** — `linkml-validate` enforces enums, required fields, foreign keys,
    patterns and unique keys (the example carries six seeded violations).
-4. **Identity** — strain rows become `biological_entity` records.
+4. **Identity** — strain rows become `organism` records.
 5. **Lab lifecycle** — the `SampleProcessing` chain (MediaPreparation → cultures),
    each activity emitting a `ProcessedSample`.
 6. **Plate setup** — `AMP2PlateSetupActivity` / `AMP2WellMetadata` lay out the 96 wells.

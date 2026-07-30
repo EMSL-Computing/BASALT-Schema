@@ -3,7 +3,7 @@
 # Slot: phenotype (phenotype) 
 
 
-_Provide the intedned phenotype of hte modified organism. Observable characteristics of the biological entity._
+_Provide the intedned phenotype of hte modified organism. Observable characteristics of the organism._
 
 _Example: "aprimycin resistance, gene knockdown dCas12a construct"_
 
@@ -24,7 +24,7 @@ Alias: phenotype
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
 
 
 
@@ -38,7 +38,7 @@ Alias: phenotype
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -84,7 +84,7 @@ Alias: phenotype
 ```yaml
 name: phenotype
 description: 'Provide the intedned phenotype of hte modified organism. Observable
-  characteristics of the biological entity.
+  characteristics of the organism.
 
   Example: "aprimycin resistance, gene knockdown dCas12a construct"'
 title: phenotype
@@ -92,7 +92,7 @@ from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 alias: phenotype
 domain_of:
-- biological_entity
+- organism
 range: string
 
 ```

@@ -198,17 +198,6 @@ slots:
     range: BiolStatEnum
     title: biological status
 
-  biological_entity_ref:
-    description: |-
-      FK reference to a biological_entity representing the biological identity
-      strain, isolate, engineered construct) that this sample or activity
-      is associated with.
-    range: biological_entity
-    required: false
-    aliases:
-      - strain_ref
-      - strain_id
-
   biotic_regm:
     description: Information about treatment(s) involving use of biotic factors such
       as bacteria, viruses, or fungi.
@@ -1576,6 +1565,17 @@ slots:
       - species_name
     title: organism name
 
+  organism_ref:
+    description: |-
+      FK reference to an organism representing the biological identity
+      strain, isolate, engineered construct) that this sample or activity
+      is associated with.
+    range: organism
+    required: false
+    aliases:
+      - strain_ref
+      - strain_id
+
   other:
     description: Other/additional details about your sample that you feel can't be accurately
       represented in ANY of the available columns.
@@ -1725,7 +1725,7 @@ slots:
 
   phenotype:
     description: |-
-      Provide the intedned phenotype of hte modified organism. Observable characteristics of the biological entity.
+      Provide the intedned phenotype of hte modified organism. Observable characteristics of the organism.
       Example: "aprimycin resistance, gene knockdown dCas12a construct"
     range: string
     title: phenotype
@@ -2549,7 +2549,7 @@ slots:
     
   strain_ref:
     description: FK reference to a Strain purchasedMaterial used in the activity
-    range: biological_entity
+    range: organism
     required: false
 
   strain_source:
@@ -2825,7 +2825,7 @@ slots:
 
   trait:
     description: |-
-      Trait category for the biological entity.
+      Trait category for the organism.
       Example: "Bacterial Resistance", "Other"
     range: IntendedTraitEnum
 

@@ -1,5 +1,5 @@
 # Auto generated from analysis_api_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-28T15:44:05
+# Generation date: 2026-07-29T17:44:55
 # Schema: analysis-api-schema
 #
 # id: https://w3id.org/MONet/analysis-api-schema
@@ -307,6 +307,10 @@ class MetagenomicsDataProcessingActivityId(DataProcessingActivityId):
     pass
 
 
+class OrganismId(Uuid):
+    pass
+
+
 class BulkDensityProductId(ProcessedDataId):
     pass
 
@@ -528,10 +532,6 @@ class TerraformSamplingActivityId(SamplingActivityId):
 
 
 class WaterSamplingActivityId(SamplingActivityId):
-    pass
-
-
-class BiologicalEntityId(Uuid):
     pass
 
 
@@ -2367,7 +2367,7 @@ class CultureGrowth(SampleProcessing):
 
     id: Union[str, CultureGrowthId] = None
     processing_steps: str = None
-    biological_entity_ref: Optional[Union[str, BiologicalEntityId]] = None
+    organism_ref: Optional[Union[str, OrganismId]] = None
     growth_medium: Optional[str] = None
     incubation_time_hours: Optional[float] = None
     container_type: Optional[str] = None
@@ -2381,8 +2381,8 @@ class CultureGrowth(SampleProcessing):
         if not isinstance(self.id, CultureGrowthId):
             self.id = CultureGrowthId(self.id)
 
-        if self.biological_entity_ref is not None and not isinstance(self.biological_entity_ref, BiologicalEntityId):
-            self.biological_entity_ref = BiologicalEntityId(self.biological_entity_ref)
+        if self.organism_ref is not None and not isinstance(self.organism_ref, OrganismId):
+            self.organism_ref = OrganismId(self.organism_ref)
 
         if self.growth_medium is not None and not isinstance(self.growth_medium, str):
             self.growth_medium = str(self.growth_medium)
@@ -3682,9 +3682,147 @@ class XrayComputedTomographyMethod(Method):
 
 
 @dataclass(repr=False)
+class Organism(YAMLRoot):
+    """
+    Reference data representing a biological identity (strain, isolate,
+    engineered construct, etc.) that can be instantiated by multiple
+    physical samples.
+
+    REPLACES: This class replaces the former Strain class, which was modeled
+    as a PurchasedMaterial subclass. That approach did not accommodate strains
+    engineered in-house or received from collaborators, nor did it cleanly
+    separate biological identity from physical samples. Additionally, the term
+    "strain" implies purity that cannot always be guaranteed; this class
+    represents the *intended* or *characterized* biological identity.
+
+    Relationship to samples:
+    - One organism can have many AMP2UserSample instances
+    - AMP2UserSample.organism_ref points here
+    - CultureGrowth activities reference via organism_ref (aliased as strain_ref)
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["Organism"]
+    class_class_curie: ClassVar[str] = "analysis_api_schema:Organism"
+    class_name: ClassVar[str] = "organism"
+    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.Organism
+
+    id: Union[str, OrganismId] = None
+    name: str = None
+    strain_identifier: str = None
+    description: Optional[str] = None
+    taxonomy_id: Optional[str] = None
+    host_common_name: Optional[str] = None
+    host_taxid: Optional[str] = None
+    strain_source: Optional[str] = None
+    strain_type: Optional[Union[str, "StrainTypeEnum"]] = None
+    modification_method: Optional[Union[str, "ModificationMethodEnum"]] = None
+    strain_description: Optional[str] = None
+    strain_mutation: Optional[str] = None
+    phenotype: Optional[str] = None
+    trait: Optional[Union[str, "IntendedTraitEnum"]] = None
+    encoded_traits: Optional[str] = None
+    genotype_segment_category: Optional[Union[str, "GenotypeSegmentEnum"]] = None
+    genotype_segment_name: Optional[str] = None
+    component_name: Optional[str] = None
+    construct_component: Optional[Union[str, "ConstructComponentEnum"]] = None
+    donor_organism: Optional[str] = None
+    component_description: Optional[str] = None
+    trophic_level: Optional[Union[str, "TrophicLevelEnum"]] = None
+    pathogenicity: Optional[str] = None
+    host_spec_range: Optional[str] = None
+    propagation: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, OrganismId):
+            self.id = OrganismId(self.id)
+
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self._is_empty(self.strain_identifier):
+            self.MissingRequiredField("strain_identifier")
+        if not isinstance(self.strain_identifier, str):
+            self.strain_identifier = str(self.strain_identifier)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.taxonomy_id is not None and not isinstance(self.taxonomy_id, str):
+            self.taxonomy_id = str(self.taxonomy_id)
+
+        if self.host_common_name is not None and not isinstance(self.host_common_name, str):
+            self.host_common_name = str(self.host_common_name)
+
+        if self.host_taxid is not None and not isinstance(self.host_taxid, str):
+            self.host_taxid = str(self.host_taxid)
+
+        if self.strain_source is not None and not isinstance(self.strain_source, str):
+            self.strain_source = str(self.strain_source)
+
+        if self.strain_type is not None and not isinstance(self.strain_type, StrainTypeEnum):
+            self.strain_type = StrainTypeEnum(self.strain_type)
+
+        if self.modification_method is not None and not isinstance(self.modification_method, ModificationMethodEnum):
+            self.modification_method = ModificationMethodEnum(self.modification_method)
+
+        if self.strain_description is not None and not isinstance(self.strain_description, str):
+            self.strain_description = str(self.strain_description)
+
+        if self.strain_mutation is not None and not isinstance(self.strain_mutation, str):
+            self.strain_mutation = str(self.strain_mutation)
+
+        if self.phenotype is not None and not isinstance(self.phenotype, str):
+            self.phenotype = str(self.phenotype)
+
+        if self.trait is not None and not isinstance(self.trait, IntendedTraitEnum):
+            self.trait = IntendedTraitEnum(self.trait)
+
+        if self.encoded_traits is not None and not isinstance(self.encoded_traits, str):
+            self.encoded_traits = str(self.encoded_traits)
+
+        if self.genotype_segment_category is not None and not isinstance(self.genotype_segment_category, GenotypeSegmentEnum):
+            self.genotype_segment_category = GenotypeSegmentEnum(self.genotype_segment_category)
+
+        if self.genotype_segment_name is not None and not isinstance(self.genotype_segment_name, str):
+            self.genotype_segment_name = str(self.genotype_segment_name)
+
+        if self.component_name is not None and not isinstance(self.component_name, str):
+            self.component_name = str(self.component_name)
+
+        if self.construct_component is not None and not isinstance(self.construct_component, ConstructComponentEnum):
+            self.construct_component = ConstructComponentEnum(self.construct_component)
+
+        if self.donor_organism is not None and not isinstance(self.donor_organism, str):
+            self.donor_organism = str(self.donor_organism)
+
+        if self.component_description is not None and not isinstance(self.component_description, str):
+            self.component_description = str(self.component_description)
+
+        if self.trophic_level is not None and not isinstance(self.trophic_level, TrophicLevelEnum):
+            self.trophic_level = TrophicLevelEnum(self.trophic_level)
+
+        if self.pathogenicity is not None and not isinstance(self.pathogenicity, str):
+            self.pathogenicity = str(self.pathogenicity)
+
+        if self.host_spec_range is not None and not isinstance(self.host_spec_range, str):
+            self.host_spec_range = str(self.host_spec_range)
+
+        if self.propagation is not None and not isinstance(self.propagation, str):
+            self.propagation = str(self.propagation)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class BulkDensityProduct(ProcessedData):
     """
     Bulk density analysis product, typically derived via oven-drying and weighing of a known volume of soil.
+    One row per sample with columns for bulk density and QC flag.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -5695,12 +5833,12 @@ class AMP2UserSample(Sample):
     """
     A user-submitted microbial sample for AMP2 workflows.
 
-    References a biological_entity for identity (the "what") and carries
+    References an organism for identity (the "what") and carries
     physical/logistical metadata for the specific sample instance (the "this tube").
 
-    Relationship to biological_entity:
-    - Many AMP2UserSample instances can reference one biological_entity
-    - biological_entity_ref is the FK (required)
+    Relationship to organism:
+    - Many AMP2UserSample instances can reference one organism
+    - organism_ref is the FK (required)
     - Example: 1000 samples of strain KT2440_pTE314
 
     Workflow integration:
@@ -5716,7 +5854,7 @@ class AMP2UserSample(Sample):
     class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.AMP2UserSample
 
     id: Union[str, AMP2UserSampleId] = None
-    biological_entity_ref: Union[str, BiologicalEntityId] = None
+    organism_ref: Union[str, OrganismId] = None
     storage_condition: Union[str, "StorageConditionEnum"] = None
     name: str = None
     collection_date: Optional[Union[str, XSDDate]] = None
@@ -5736,10 +5874,10 @@ class AMP2UserSample(Sample):
         if not isinstance(self.id, AMP2UserSampleId):
             self.id = AMP2UserSampleId(self.id)
 
-        if self._is_empty(self.biological_entity_ref):
-            self.MissingRequiredField("biological_entity_ref")
-        if not isinstance(self.biological_entity_ref, BiologicalEntityId):
-            self.biological_entity_ref = BiologicalEntityId(self.biological_entity_ref)
+        if self._is_empty(self.organism_ref):
+            self.MissingRequiredField("organism_ref")
+        if not isinstance(self.organism_ref, OrganismId):
+            self.organism_ref = OrganismId(self.organism_ref)
 
         if self._is_empty(self.storage_condition):
             self.MissingRequiredField("storage_condition")
@@ -6167,7 +6305,7 @@ class EngineeredStrainSample(Sample):
     """
     A sample containing a strain of an organism that has been subjected to genetic engineering.
 
-    This class references a biological_entity for strain identity information (organism_name,
+    This class references an organism for strain identity information (organism_name,
     strain_source, modification_method, genotype_segment_*, component_*, phenotype, trait, etc.)
     and carries only sample-instance-specific slots.
     """
@@ -6180,7 +6318,7 @@ class EngineeredStrainSample(Sample):
 
     id: Union[str, EngineeredStrainSampleId] = None
     name: str = None
-    biological_entity_ref: Optional[Union[str, BiologicalEntityId]] = None
+    organism_ref: Optional[Union[str, OrganismId]] = None
     cbi: Optional[Union[bool, Bool]] = None
     storage_condition: Optional[Union[str, "StorageConditionEnum"]] = None
     storage_temperature: Optional[str] = None
@@ -6202,8 +6340,8 @@ class EngineeredStrainSample(Sample):
         if not isinstance(self.storage_condition, str):
             self.storage_condition = str(self.storage_condition)
 
-        if self.biological_entity_ref is not None and not isinstance(self.biological_entity_ref, BiologicalEntityId):
-            self.biological_entity_ref = BiologicalEntityId(self.biological_entity_ref)
+        if self.organism_ref is not None and not isinstance(self.organism_ref, OrganismId):
+            self.organism_ref = OrganismId(self.organism_ref)
 
         if self.cbi is not None and not isinstance(self.cbi, Bool):
             self.cbi = Bool(self.cbi)
@@ -11107,147 +11245,6 @@ class WaterSamplingActivity(SamplingActivity):
 
 
 @dataclass(repr=False)
-class BiologicalEntity(YAMLRoot):
-    """
-    Reference data representing a biological identity (strain, isolate,
-    engineered construct, etc.) that can be instantiated by multiple
-    physical samples.
-
-    REPLACES: This class replaces the former Strain class, which was modeled
-    as a PurchasedMaterial subclass. That approach did not accommodate strains
-    engineered in-house or received from collaborators, nor did it cleanly
-    separate biological identity from physical samples. Additionally, the term
-    "strain" implies purity that cannot always be guaranteed; this class
-    represents the *intended* or *characterized* biological identity.
-
-    Relationship to samples:
-    - One biological_entity can have many AMP2UserSample instances
-    - AMP2UserSample.biological_entity_ref points here
-    - CultureGrowth activities reference via biological_entity_ref (aliased as strain_ref)
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["BiologicalEntity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:BiologicalEntity"
-    class_name: ClassVar[str] = "biological_entity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.BiologicalEntity
-
-    id: Union[str, BiologicalEntityId] = None
-    name: str = None
-    strain_identifier: str = None
-    description: Optional[str] = None
-    organism_name: Optional[str] = None
-    taxonomy_id: Optional[str] = None
-    host_common_name: Optional[str] = None
-    host_taxid: Optional[str] = None
-    strain_source: Optional[str] = None
-    strain_type: Optional[Union[str, "StrainTypeEnum"]] = None
-    modification_method: Optional[Union[str, "ModificationMethodEnum"]] = None
-    strain_description: Optional[str] = None
-    strain_mutation: Optional[str] = None
-    phenotype: Optional[str] = None
-    trait: Optional[Union[str, "IntendedTraitEnum"]] = None
-    encoded_traits: Optional[str] = None
-    genotype_segment_category: Optional[Union[str, "GenotypeSegmentEnum"]] = None
-    genotype_segment_name: Optional[str] = None
-    component_name: Optional[str] = None
-    construct_component: Optional[Union[str, "ConstructComponentEnum"]] = None
-    donor_organism: Optional[str] = None
-    component_description: Optional[str] = None
-    trophic_level: Optional[Union[str, "TrophicLevelEnum"]] = None
-    pathogenicity: Optional[str] = None
-    host_spec_range: Optional[str] = None
-    propagation: Optional[str] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, BiologicalEntityId):
-            self.id = BiologicalEntityId(self.id)
-
-        if self._is_empty(self.name):
-            self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
-
-        if self._is_empty(self.strain_identifier):
-            self.MissingRequiredField("strain_identifier")
-        if not isinstance(self.strain_identifier, str):
-            self.strain_identifier = str(self.strain_identifier)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self.organism_name is not None and not isinstance(self.organism_name, str):
-            self.organism_name = str(self.organism_name)
-
-        if self.taxonomy_id is not None and not isinstance(self.taxonomy_id, str):
-            self.taxonomy_id = str(self.taxonomy_id)
-
-        if self.host_common_name is not None and not isinstance(self.host_common_name, str):
-            self.host_common_name = str(self.host_common_name)
-
-        if self.host_taxid is not None and not isinstance(self.host_taxid, str):
-            self.host_taxid = str(self.host_taxid)
-
-        if self.strain_source is not None and not isinstance(self.strain_source, str):
-            self.strain_source = str(self.strain_source)
-
-        if self.strain_type is not None and not isinstance(self.strain_type, StrainTypeEnum):
-            self.strain_type = StrainTypeEnum(self.strain_type)
-
-        if self.modification_method is not None and not isinstance(self.modification_method, ModificationMethodEnum):
-            self.modification_method = ModificationMethodEnum(self.modification_method)
-
-        if self.strain_description is not None and not isinstance(self.strain_description, str):
-            self.strain_description = str(self.strain_description)
-
-        if self.strain_mutation is not None and not isinstance(self.strain_mutation, str):
-            self.strain_mutation = str(self.strain_mutation)
-
-        if self.phenotype is not None and not isinstance(self.phenotype, str):
-            self.phenotype = str(self.phenotype)
-
-        if self.trait is not None and not isinstance(self.trait, IntendedTraitEnum):
-            self.trait = IntendedTraitEnum(self.trait)
-
-        if self.encoded_traits is not None and not isinstance(self.encoded_traits, str):
-            self.encoded_traits = str(self.encoded_traits)
-
-        if self.genotype_segment_category is not None and not isinstance(self.genotype_segment_category, GenotypeSegmentEnum):
-            self.genotype_segment_category = GenotypeSegmentEnum(self.genotype_segment_category)
-
-        if self.genotype_segment_name is not None and not isinstance(self.genotype_segment_name, str):
-            self.genotype_segment_name = str(self.genotype_segment_name)
-
-        if self.component_name is not None and not isinstance(self.component_name, str):
-            self.component_name = str(self.component_name)
-
-        if self.construct_component is not None and not isinstance(self.construct_component, ConstructComponentEnum):
-            self.construct_component = ConstructComponentEnum(self.construct_component)
-
-        if self.donor_organism is not None and not isinstance(self.donor_organism, str):
-            self.donor_organism = str(self.donor_organism)
-
-        if self.component_description is not None and not isinstance(self.component_description, str):
-            self.component_description = str(self.component_description)
-
-        if self.trophic_level is not None and not isinstance(self.trophic_level, TrophicLevelEnum):
-            self.trophic_level = TrophicLevelEnum(self.trophic_level)
-
-        if self.pathogenicity is not None and not isinstance(self.pathogenicity, str):
-            self.pathogenicity = str(self.pathogenicity)
-
-        if self.host_spec_range is not None and not isinstance(self.host_spec_range, str):
-            self.host_spec_range = str(self.host_spec_range)
-
-        if self.propagation is not None and not isinstance(self.propagation, str):
-            self.propagation = str(self.propagation)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
 class Study(YAMLRoot):
     """
     A study or research project, typically associated with a proposal and a set of experiments.
@@ -14055,9 +14052,6 @@ slots.biochem_oxygen_dem = Slot(uri=ANALYSIS_API_SCHEMA.biochem_oxygen_dem, name
 slots.biol_stat = Slot(uri=ANALYSIS_API_SCHEMA.biol_stat, name="biol_stat", curie=ANALYSIS_API_SCHEMA.curie('biol_stat'),
                    model_uri=ANALYSIS_API_SCHEMA.biol_stat, domain=None, range=Optional[Union[str, "BiolStatEnum"]])
 
-slots.biological_entity_ref = Slot(uri=ANALYSIS_API_SCHEMA.biological_entity_ref, name="biological_entity_ref", curie=ANALYSIS_API_SCHEMA.curie('biological_entity_ref'),
-                   model_uri=ANALYSIS_API_SCHEMA.biological_entity_ref, domain=None, range=Optional[Union[str, BiologicalEntityId]])
-
 slots.biotic_regm = Slot(uri=ANALYSIS_API_SCHEMA.biotic_regm, name="biotic_regm", curie=ANALYSIS_API_SCHEMA.curie('biotic_regm'),
                    model_uri=ANALYSIS_API_SCHEMA.biotic_regm, domain=None, range=Optional[str])
 
@@ -14776,8 +14770,11 @@ slots.org_particles = Slot(uri=ANALYSIS_API_SCHEMA.org_particles, name="org_part
 slots.organism_count = Slot(uri=ANALYSIS_API_SCHEMA.organism_count, name="organism_count", curie=ANALYSIS_API_SCHEMA.curie('organism_count'),
                    model_uri=ANALYSIS_API_SCHEMA.organism_count, domain=None, range=Optional[str])
 
-slots.organism_name = Slot(uri=ANALYSIS_API_SCHEMA.organism_name, name="organism_name", curie=ANALYSIS_API_SCHEMA.curie('organism_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.organism_name, domain=None, range=Optional[str])
+slots.organism_name = Slot(uri=ANALYSIS_API_SCHEMA.name, name="organism_name", curie=ANALYSIS_API_SCHEMA.curie('name'),
+                   model_uri=ANALYSIS_API_SCHEMA.organism_name, domain=Organism, range=str)
+
+slots.organism_ref = Slot(uri=ANALYSIS_API_SCHEMA.organism_ref, name="organism_ref", curie=ANALYSIS_API_SCHEMA.curie('organism_ref'),
+                   model_uri=ANALYSIS_API_SCHEMA.organism_ref, domain=None, range=Optional[Union[str, OrganismId]])
 
 slots.other = Slot(uri=ANALYSIS_API_SCHEMA.other, name="other", curie=ANALYSIS_API_SCHEMA.curie('other'),
                    model_uri=ANALYSIS_API_SCHEMA.other, domain=None, range=Optional[str])
@@ -15282,7 +15279,7 @@ slots.strain_name = Slot(uri=ANALYSIS_API_SCHEMA.strain_name, name="strain_name"
                    model_uri=ANALYSIS_API_SCHEMA.strain_name, domain=None, range=Optional[str])
 
 slots.strain_ref = Slot(uri=ANALYSIS_API_SCHEMA.strain_ref, name="strain_ref", curie=ANALYSIS_API_SCHEMA.curie('strain_ref'),
-                   model_uri=ANALYSIS_API_SCHEMA.strain_ref, domain=None, range=Optional[Union[str, BiologicalEntityId]])
+                   model_uri=ANALYSIS_API_SCHEMA.strain_ref, domain=None, range=Optional[Union[str, OrganismId]])
 
 slots.strain_source = Slot(uri=ANALYSIS_API_SCHEMA.strain_source, name="strain_source", curie=ANALYSIS_API_SCHEMA.curie('strain_source'),
                    model_uri=ANALYSIS_API_SCHEMA.strain_source, domain=None, range=Optional[str])
@@ -15931,6 +15928,9 @@ slots.xrayComputedTomographyMethod__exposure_time_per_frame = Slot(uri=ANALYSIS_
 
 slots.xrayComputedTomographyMethod__image_voxel_size_is = Slot(uri=ANALYSIS_API_SCHEMA.image_voxel_size_is, name="xrayComputedTomographyMethod__image_voxel_size_is", curie=ANALYSIS_API_SCHEMA.curie('image_voxel_size_is'),
                    model_uri=ANALYSIS_API_SCHEMA.xrayComputedTomographyMethod__image_voxel_size_is, domain=None, range=str)
+
+slots.organism__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="organism__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
+                   model_uri=ANALYSIS_API_SCHEMA.organism__id, domain=None, range=URIRef)
 
 slots.bulkDensityProduct__bulk_density_id = Slot(uri=ANALYSIS_API_SCHEMA.bulk_density_id, name="bulkDensityProduct__bulk_density_id", curie=ANALYSIS_API_SCHEMA.curie('bulk_density_id'),
                    model_uri=ANALYSIS_API_SCHEMA.bulkDensityProduct__bulk_density_id, domain=None, range=Optional[Union[str, QuantityValueId]])
@@ -16607,9 +16607,6 @@ slots.terraformSamplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="ter
 slots.waterSamplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="waterSamplingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
                    model_uri=ANALYSIS_API_SCHEMA.waterSamplingActivity__id, domain=None, range=URIRef)
 
-slots.biologicalEntity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="biologicalEntity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.biologicalEntity__id, domain=None, range=URIRef)
-
 slots.study__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="study__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
                    model_uri=ANALYSIS_API_SCHEMA.study__id, domain=None, range=URIRef)
 
@@ -16793,6 +16790,24 @@ slots.DataProcessingActivity_description = Slot(uri=ANALYSIS_API_SCHEMA.descript
 slots.NucleotideSequencing_external_identifiers = Slot(uri=ANALYSIS_API_SCHEMA.external_identifiers, name="NucleotideSequencing_external_identifiers", curie=ANALYSIS_API_SCHEMA.curie('external_identifiers'),
                    model_uri=ANALYSIS_API_SCHEMA.NucleotideSequencing_external_identifiers, domain=NucleotideSequencing, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
 
+slots.organism_strain_identifier = Slot(uri=ANALYSIS_API_SCHEMA.strain_identifier, name="organism_strain_identifier", curie=ANALYSIS_API_SCHEMA.curie('strain_identifier'),
+                   model_uri=ANALYSIS_API_SCHEMA.organism_strain_identifier, domain=Organism, range=str)
+
+slots.organism_organism_name = Slot(uri=ANALYSIS_API_SCHEMA.name, name="organism_organism_name", curie=ANALYSIS_API_SCHEMA.curie('name'),
+                   model_uri=ANALYSIS_API_SCHEMA.organism_organism_name, domain=Organism, range=str)
+
+slots.organism_strain_source = Slot(uri=ANALYSIS_API_SCHEMA.strain_source, name="organism_strain_source", curie=ANALYSIS_API_SCHEMA.curie('strain_source'),
+                   model_uri=ANALYSIS_API_SCHEMA.organism_strain_source, domain=Organism, range=Optional[str])
+
+slots.organism_strain_mutation = Slot(uri=ANALYSIS_API_SCHEMA.strain_mutation, name="organism_strain_mutation", curie=ANALYSIS_API_SCHEMA.curie('strain_mutation'),
+                   model_uri=ANALYSIS_API_SCHEMA.organism_strain_mutation, domain=Organism, range=Optional[str])
+
+slots.organism_modification_method = Slot(uri=ANALYSIS_API_SCHEMA.modification_method, name="organism_modification_method", curie=ANALYSIS_API_SCHEMA.curie('modification_method'),
+                   model_uri=ANALYSIS_API_SCHEMA.organism_modification_method, domain=Organism, range=Optional[Union[str, "ModificationMethodEnum"]])
+
+slots.organism_trophic_level = Slot(uri=ANALYSIS_API_SCHEMA.trophic_level, name="organism_trophic_level", curie=ANALYSIS_API_SCHEMA.curie('trophic_level'),
+                   model_uri=ANALYSIS_API_SCHEMA.organism_trophic_level, domain=Organism, range=Optional[Union[str, "TrophicLevelEnum"]])
+
 slots.Site_elev = Slot(uri=ANALYSIS_API_SCHEMA.elev, name="Site_elev", curie=ANALYSIS_API_SCHEMA.curie('elev'),
                    model_uri=ANALYSIS_API_SCHEMA.Site_elev, domain=Site, range=str,
                    pattern=re.compile(r'^\d+(\.\d+)?\s*m$'))
@@ -16840,8 +16855,8 @@ slots.AerosolSample_size_frac_up = Slot(uri=ANALYSIS_API_SCHEMA.size_frac_up, na
                    model_uri=ANALYSIS_API_SCHEMA.AerosolSample_size_frac_up, domain=AerosolSample, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*um$'))
 
-slots.AMP2UserSample_biological_entity_ref = Slot(uri=ANALYSIS_API_SCHEMA.biological_entity_ref, name="AMP2UserSample_biological_entity_ref", curie=ANALYSIS_API_SCHEMA.curie('biological_entity_ref'),
-                   model_uri=ANALYSIS_API_SCHEMA.AMP2UserSample_biological_entity_ref, domain=AMP2UserSample, range=Union[str, BiologicalEntityId])
+slots.AMP2UserSample_organism_ref = Slot(uri=ANALYSIS_API_SCHEMA.organism_ref, name="AMP2UserSample_organism_ref", curie=ANALYSIS_API_SCHEMA.curie('organism_ref'),
+                   model_uri=ANALYSIS_API_SCHEMA.AMP2UserSample_organism_ref, domain=AMP2UserSample, range=Union[str, OrganismId])
 
 slots.AMP2UserSample_storage_condition = Slot(uri=ANALYSIS_API_SCHEMA.storage_condition, name="AMP2UserSample_storage_condition", curie=ANALYSIS_API_SCHEMA.curie('storage_condition'),
                    model_uri=ANALYSIS_API_SCHEMA.AMP2UserSample_storage_condition, domain=AMP2UserSample, range=Union[str, "StorageConditionEnum"])
@@ -17228,27 +17243,6 @@ slots.WaterSamplingActivity_sample_collection_dev = Slot(uri=ANALYSIS_API_SCHEMA
 
 slots.WaterSamplingActivity_sample_collection_method = Slot(uri=ANALYSIS_API_SCHEMA.sample_collection_method, name="WaterSamplingActivity_sample_collection_method", curie=ANALYSIS_API_SCHEMA.curie('sample_collection_method'),
                    model_uri=ANALYSIS_API_SCHEMA.WaterSamplingActivity_sample_collection_method, domain=WaterSamplingActivity, range=str)
-
-slots.biological_entity_strain_identifier = Slot(uri=ANALYSIS_API_SCHEMA.strain_identifier, name="biological_entity_strain_identifier", curie=ANALYSIS_API_SCHEMA.curie('strain_identifier'),
-                   model_uri=ANALYSIS_API_SCHEMA.biological_entity_strain_identifier, domain=BiologicalEntity, range=str)
-
-slots.biological_entity_name = Slot(uri=ANALYSIS_API_SCHEMA.name, name="biological_entity_name", curie=ANALYSIS_API_SCHEMA.curie('name'),
-                   model_uri=ANALYSIS_API_SCHEMA.biological_entity_name, domain=BiologicalEntity, range=str)
-
-slots.biological_entity_organism_name = Slot(uri=ANALYSIS_API_SCHEMA.organism_name, name="biological_entity_organism_name", curie=ANALYSIS_API_SCHEMA.curie('organism_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.biological_entity_organism_name, domain=BiologicalEntity, range=Optional[str])
-
-slots.biological_entity_strain_source = Slot(uri=ANALYSIS_API_SCHEMA.strain_source, name="biological_entity_strain_source", curie=ANALYSIS_API_SCHEMA.curie('strain_source'),
-                   model_uri=ANALYSIS_API_SCHEMA.biological_entity_strain_source, domain=BiologicalEntity, range=Optional[str])
-
-slots.biological_entity_strain_mutation = Slot(uri=ANALYSIS_API_SCHEMA.strain_mutation, name="biological_entity_strain_mutation", curie=ANALYSIS_API_SCHEMA.curie('strain_mutation'),
-                   model_uri=ANALYSIS_API_SCHEMA.biological_entity_strain_mutation, domain=BiologicalEntity, range=Optional[str])
-
-slots.biological_entity_modification_method = Slot(uri=ANALYSIS_API_SCHEMA.modification_method, name="biological_entity_modification_method", curie=ANALYSIS_API_SCHEMA.curie('modification_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.biological_entity_modification_method, domain=BiologicalEntity, range=Optional[Union[str, "ModificationMethodEnum"]])
-
-slots.biological_entity_trophic_level = Slot(uri=ANALYSIS_API_SCHEMA.trophic_level, name="biological_entity_trophic_level", curie=ANALYSIS_API_SCHEMA.curie('trophic_level'),
-                   model_uri=ANALYSIS_API_SCHEMA.biological_entity_trophic_level, domain=BiologicalEntity, range=Optional[Union[str, "TrophicLevelEnum"]])
 
 slots.Study_external_identifiers = Slot(uri=ANALYSIS_API_SCHEMA.external_identifiers, name="Study_external_identifiers", curie=ANALYSIS_API_SCHEMA.curie('external_identifiers'),
                    model_uri=ANALYSIS_API_SCHEMA.Study_external_identifiers, domain=Study, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])

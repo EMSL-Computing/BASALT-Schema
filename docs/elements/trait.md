@@ -3,7 +3,7 @@
 # Slot: trait 
 
 
-_Trait category for the biological entity._
+_Trait category for the organism._
 
 _Example: "Bacterial Resistance", "Other"_
 
@@ -24,7 +24,7 @@ Alias: trait
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
 
 
 
@@ -38,7 +38,7 @@ Alias: trait
 | Property | Value |
 | --- | --- |
 | Range | [IntendedTraitEnum](IntendedTraitEnum.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -83,14 +83,14 @@ Alias: trait
 <details>
 ```yaml
 name: trait
-description: 'Trait category for the biological entity.
+description: 'Trait category for the organism.
 
   Example: "Bacterial Resistance", "Other"'
 from_schema: https://w3id.org/MONet/analysis-api-schema
 rank: 1000
 alias: trait
 domain_of:
-- biological_entity
+- organism
 range: IntendedTraitEnum
 
 ```

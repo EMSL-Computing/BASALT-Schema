@@ -19,7 +19,7 @@ All entities are stored in flat collections linked to studies:
 
 - **Samples**: Physical specimens submitted for analysis (soil, aerosol, user-submitted microbial cultures). Each sample includes collection metadata, storage conditions, and analysis type specifications.
 
-- **Biological Entities**: Reference data representing biological identities (strains, isolates, engineered constructs) that can be instantiated by multiple physical samples. This separates the "what" (strain identity) from the "this tube" (physical sample).
+- **Organisms**: Reference data representing biological identities (strains, isolates, engineered constructs) that can be instantiated by multiple physical samples. This separates the "what" (strain identity) from the "this tube" (physical sample).
 
 - **Processed Samples**: Samples that have undergone laboratory processing—subsampling, extraction, digestion, or culture growth. These form chains linking back to original samples.
 
