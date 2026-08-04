@@ -3095,7 +3095,6 @@ slots:
       Provide cardinal direction.
     range: CardinalDirectionEnum
     title: wind direction
-    required: false
 
   wind_speed:
     description: Wind speed describes how fast the air is moving past a certain point
