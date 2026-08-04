@@ -1,0 +1,725 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "header": {
+    "title": "Plant Sample Schema",
+    "description": "JSON schema for plant sample submissions.",
+    "version": "1.0.0"
+  },
+  "items": {
+    "additionalProperties": false,
+    "properties": {
+      "air_temp_regm": {
+        "description": "Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens",
+        "type": "string"
+      },
+      "alt": {
+        "description": "Heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air. For ARM this can be a range. (Unit: m)",
+        "pattern": "^\\d+(\\.\\d+)?m(?:-\\d+(\\.\\d+)?m)?$",
+        "type": "string"
+      },
+      "analysis_type": {
+        "description": "The type(s) of analysis planned for this sample.",
+        "type": "string"
+      },
+      "ances_data": {
+        "description": "Information about either pedigree or other ancestral information description",
+        "type": "string"
+      },
+      "annual_precpt": {
+        "description": "The average of all annual precipitation values known or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*mm$",
+        "type": "string"
+      },
+      "annual_temp": {
+        "description": "Mean annual temperature (Unit: C)",
+        "pattern": "^-?\\d+(\\.\\d+)?\\s*C$",
+        "type": "string"
+      },
+      "atmospheric_data": {
+        "description": "Measurement of atmospheric data; can include multiple data",
+        "type": "string"
+      },
+      "biol_stat": {
+        "description": "The level of genome modification.",
+        "enum": [
+          "wild",
+          "natural",
+          "semi-natural",
+          "inbred line",
+          "breeder's line",
+          "hybrid",
+          "clonal selection",
+          "mutant"
+        ]
+      },
+      "biotic_regm": {
+        "description": "Information about treatment(s) involving use of biotic factors such as bacteria, viruses, or fungi.",
+        "type": "string"
+      },
+      "chem_administration": {
+        "description": "List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi",
+        "type": "string"
+      },
+      "chem_mutagen": {
+        "description": "Treatment involving use of mutagens; should include the name of mutagen, amount administered, treatment regimen, including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mutagen regimens",
+        "type": "string"
+      },
+      "collection_date": {
+        "description": "'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month\n(YYYY-MM)'",
+        "format": "date",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$",
+        "type": "string"
+      },
+      "collection_time": {
+        "description": "The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)",
+        "pattern": "^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$",
+        "type": "string"
+      },
+      "crop_rotation": {
+        "description": "Whether or not crop is rotated, and if yes, rotation schedule",
+        "type": "string"
+      },
+      "cur_land_use": {
+        "description": "Present state of sample site. This slot is NOT multivalued. Valid entries: badlands, cities, conifers, crop trees, farmstead, gravel, hardwoods, hayland, horticultural plants, industrial areas, intermixed, marshlands, meadows, mines, quarries, mudflats, oil waste, pastureland, permanent snow or ice, rainforest, rangeland, roads, railroads, rock, row crops, saline seeps, salt flats, sand, shrub crops, shrub land, small grains, successional shrub land, swamp, tropical, tundra, vegetable crops, vine crops",
+        "enum": [
+          "badlands",
+          "cities",
+          "conifers",
+          "crop_trees",
+          "farmstead",
+          "gravel",
+          "hardwoods",
+          "hayland",
+          "horticultural_plants",
+          "industrial_areas",
+          "intermixed",
+          "marshlands",
+          "meadows",
+          "mines_quarries",
+          "mudflats",
+          "oil_waste",
+          "pastureland",
+          "permanent_snow_or_ice",
+          "rainforest",
+          "rangeland",
+          "roads_railroads",
+          "rock",
+          "row_crops",
+          "saline_seeps",
+          "salt_flats",
+          "sand",
+          "shrub_crops",
+          "shrub_land",
+          "small_grains",
+          "successional_shrub_land",
+          "swamp",
+          "tropical",
+          "tundra",
+          "vegetable_crops",
+          "vine_crops"
+        ]
+      },
+      "cur_vegetation": {
+        "description": "Vegetation classification from one or more standard classification systems, or agricultural crop",
+        "type": "string"
+      },
+      "cur_vegetation_meth": {
+        "description": "Reference or method used in vegetation classification",
+        "type": "string"
+      },
+      "description": {
+        "description": "Human-readable description for the entity or activity",
+        "type": "string"
+      },
+      "drainage_class": {
+        "description": "Drainage classification from a standard system such as the USDA system",
+        "enum": [
+          "excessively_drained",
+          "moderately_well",
+          "poorly",
+          "somewhat_poorly",
+          "very_poorly",
+          "well"
+        ]
+      },
+      "elev": {
+        "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface. (Unit: m).",
+        "pattern": "^\\d+(\\.\\d+)?\\s*m$",
+        "type": "string"
+      },
+      "emsl_activity": {
+        "description": "Nullable string linking a Sample or SamplingActivity to a named EMSL activity or\ncampaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records\npredating activity tracking.",
+        "type": "string"
+      },
+      "env_broad_scale": {
+        "description": "'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'",
+        "pattern": "^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$",
+        "type": "string"
+      },
+      "env_local_scale": {
+        "description": "'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'",
+        "pattern": "^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$",
+        "type": "string"
+      },
+      "env_medium": {
+        "description": "'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'",
+        "pattern": "^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$",
+        "type": "string"
+      },
+      "experimental_factor": {
+        "description": "Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment or set of experiments in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI",
+        "type": "string"
+      },
+      "experimental_factor_other": {
+        "description": "Other details about your sample that you feel can't be accurately represented in the available columns.",
+        "type": "string"
+      },
+      "external_identifiers": {
+        "description": "List of external identifiers associated with this entity or activity.",
+        "items": {
+          "type": "string"
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "extraction_method": {
+        "description": "If you (the user) performed an extraction preparation or processing before sending the sample to EMSL, what was it? This is only applicable when sending an 'analytical sample'. See README for more details on types of samples.",
+        "type": "string"
+      },
+      "extreme_event": {
+        "description": "Unusual physical events that may have affected microbial populations. Format: YYYY-MM-DD",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$",
+        "type": "string"
+      },
+      "fao_class": {
+        "description": "Soil classification from the FAO World soil distribution from International Soil Reference and Information Centre (ISRIC). The list of available soil classifications can be found at https://www.isric.org/explore/world-soil-distribution",
+        "enum": [
+          "Acrisols",
+          "Alisols",
+          "Andosols",
+          "Anthrosols",
+          "Arenosols",
+          "Calcisols",
+          "Cambisols",
+          "Chernozems",
+          "Cryosols",
+          "Durisols",
+          "Ferrasols",
+          "Fluvisols",
+          "Gleysols",
+          "Gypsisols",
+          "Histosols",
+          "Kastanozems",
+          "Leptosols",
+          "Lixisols",
+          "Luvisols",
+          "Nitosols",
+          "Phaeozems",
+          "Planosols",
+          "Plinthosols",
+          "Podzols",
+          "Solonchaks",
+          "Solonetz",
+          "Stagnosols",
+          "Technosols",
+          "Umbrisols",
+          "Vertisols"
+        ]
+      },
+      "fertilizer_regm": {
+        "description": "Information about treatment involving the use of fertilizers; should include the name of fertilizer, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fertilizer regimens",
+        "type": "string"
+      },
+      "fire": {
+        "description": "Historical and/or physical evidence of fire. Format: YYYY-MM-DD",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$",
+        "type": "string"
+      },
+      "flooding": {
+        "description": "Historical and/or physical evidence of flooding. Format: YYYY-MM-DD",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$",
+        "type": "string"
+      },
+      "fungicide_regm": {
+        "description": "Information about treatment involving use of fungicides; should include the name of fungicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fungicide regimens",
+        "type": "string"
+      },
+      "gaseous_environment": {
+        "description": "Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval, and total experimental duration; can include multiple gaseous environment regimens",
+        "type": "string"
+      },
+      "genetic_mod": {
+        "description": "Genetic modifications of the genome of an organism, which may occur naturally by spontaneous mutation or be introduced by some experimental means, e.g. specification of a transgene or the gene knocked-out or details of transient transfection",
+        "type": "string"
+      },
+      "geo_loc_name": {
+        "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name and site. Formatted as [Country or sea names: region or state, site]",
+        "pattern": "^([^\\s-]{12}|[^\\s-]+.+[^\\s-]+):\\s?([^\\s-]{12}|[^\\s-]+.+[^\\s-]+)\\s?([^\\s-]{12}|[^\\s-]+.+[^\\s-]+)$",
+        "type": "string"
+      },
+      "gravity": {
+        "description": "Information about treatment involving use of gravity factor to study various types of responses in presence, absence, or modified levels of gravity; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple treatments",
+        "type": "string"
+      },
+      "growth_facil": {
+        "description": "Type of facility or location from where the sample was collected or\ngrown. This field is NOT multivalued. If selecting other, add the `other_growth_facil`\nattribute to provide additional detail.",
+        "enum": [
+          "field",
+          "commercially_purchased",
+          "experimental_garden",
+          "field_incubation",
+          "greenhouse",
+          "growth_chamber",
+          "lab_incubation",
+          "open_top_chamber",
+          "other"
+        ]
+      },
+      "growth_habit": {
+        "description": "Characteristic shape appearance or growth form of a plant species",
+        "enum": [
+          "erect",
+          "semi-erect",
+          "spreading",
+          "prostrate"
+        ]
+      },
+      "growth_hormone_regm": {
+        "description": "Information about treatment involving use of growth hormones; should include the name of growth hormone, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple growth hormone regimens",
+        "type": "string"
+      },
+      "herbicide_regm": {
+        "description": "Information about treatment involving use of herbicides; information about treatment involving use of growth hormones; should include the name of herbicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens",
+        "type": "string"
+      },
+      "host_height": {
+        "description": "The height of plant. (Unit: cm or mm or m)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(cm|mm|m)$",
+        "type": "string"
+      },
+      "host_length": {
+        "description": "The length of the plant. (Unit: cm or mm or m)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(cm|mm|m)$",
+        "type": "string"
+      },
+      "host_life_stage": {
+        "description": "Description of life stage of the plant",
+        "type": "string"
+      },
+      "humidity_regm": {
+        "description": "Information about treatment involving an exposure to varying degrees of humidity; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens",
+        "type": "string"
+      },
+      "id": {},
+      "isotope_exposure": {
+        "description": "List isotope exposure or addition applied to your sample.",
+        "type": "string"
+      },
+      "latitude": {
+        "description": "Latitude coordinate of the sampling site in WSG 84 format.",
+        "type": "number"
+      },
+      "light_regm": {
+        "description": "Information about treatment(s) involving exposure to light including both light intensity and quality.",
+        "type": "string"
+      },
+      "lims_barcode": {
+        "description": "LIMS barcode identifier",
+        "type": "string"
+      },
+      "link_class_info": {
+        "description": "Link to digitized soil maps or other soil classification information",
+        "type": "string"
+      },
+      "link_climate_info": {
+        "description": "Link to climate resource",
+        "type": "string"
+      },
+      "local_class": {
+        "description": "Soil classification based on local soil classification system",
+        "type": "string"
+      },
+      "local_class_meth": {
+        "description": "Reference or method used in determining the local soil classification",
+        "type": "string"
+      },
+      "longitude": {
+        "description": "Longitude coordinate of the sampling site in WSG 84 format.",
+        "type": "number"
+      },
+      "mechanical_damage": {
+        "description": "Information about any mechanical damage exerted on the plant; can include multiple damages and sites",
+        "type": "string"
+      },
+      "method_development": {
+        "description": "If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve.",
+        "type": "string"
+      },
+      "mineral_nutr_regm": {
+        "description": "Information about treatment involving the use of mineral supplements; should include the name of mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mineral nutrient regimens",
+        "type": "string"
+      },
+      "misc_param": {
+        "description": "Any other measurement performed or parameter collected that is not listed here",
+        "type": "string"
+      },
+      "name": {
+        "description": "Human-readable name for the entity or activity.",
+        "type": "string"
+      },
+      "neon_plot_id": {
+        "description": "When sampling from a NEON site provide the plot ID from which you sampled. This includes the 4 letter site code followed by the 3 digit ID (Example: DEJU_048). If you do not have your NEON site use the code SITE_999.",
+        "pattern": "^[A-Z]{4}_\\d{3}$",
+        "type": "string"
+      },
+      "neon_site_code": {
+        "description": "When sampling from a NEON site provide the 4 letter site code (Example: DEJU). If you do not have your NEON site use the code SITE_999.",
+        "pattern": "^[A-Z]{4}$",
+        "type": "string"
+      },
+      "non_microb_biomass": {
+        "description": "Amount of biomass; should include the name for the part of biomass measured e.g.insect plant total (Unit: \u00b5m)",
+        "type": "string"
+      },
+      "non_microb_biomass_method": {
+        "description": "Reference or method used in determining biomass",
+        "type": "string"
+      },
+      "non_min_nutr_regm": {
+        "description": "Information about treatment involving the exposure of plant to non-mineral nutrient such as oxygen, hydrogen, or carbon; should include the name of non-mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple non-mineral nutrient regimens",
+        "type": "string"
+      },
+      "other": {
+        "description": "Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.",
+        "type": "string"
+      },
+      "other_growth_facil": {
+        "description": "Please specify growth facility if you selected 'other'",
+        "type": "string"
+      },
+      "other_samp_store_temp": {
+        "description": "Please specify sample storage temperature if you selected 'other'",
+        "type": "string"
+      },
+      "other_storage_condt": {
+        "description": "Please specify your storage conditions if you selected 'other' and the available values are not appropriate",
+        "type": "string"
+      },
+      "other_treatment": {
+        "description": "Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy please add it here. Multiple treatments can be entered here separated by ;",
+        "type": "string"
+      },
+      "pesticide_regm": {
+        "description": "Information about treatment involving use of insecticides; should include the name of pesticide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple pesticide regimens",
+        "type": "string"
+      },
+      "ph_regm": {
+        "description": "Information about treatment involving exposure of plants to varying levels of pH of the growth media, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimen",
+        "type": "string"
+      },
+      "plant_age": {
+        "description": "Age of plant at the time of sampling. Must provide unit",
+        "pattern": "^\\d+(\\.\\d+)?\\s*\\w+$",
+        "type": "string"
+      },
+      "plant_common_name": {
+        "description": "Common name of the plant.",
+        "type": "string"
+      },
+      "plant_disease_stat": {
+        "description": "List of diseases with which the plant has been diagnosed; can include multiple diagnoses.",
+        "type": "string"
+      },
+      "plant_dry_mass": {
+        "description": "Measurement of dry mass. (Unit: kg or g)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(kg|g)$",
+        "type": "string"
+      },
+      "plant_genotype": {
+        "description": "Observed genotype of the plant",
+        "type": "string"
+      },
+      "plant_growth_med": {
+        "description": "Specification of the media for growing the plants or tissue cultured samples e.g. soil, aeroponic, hydroponic, in vitro, solid culture medium, in vitro, liquid culture medium. Value is required to be a subclass from the PECO ontology (http://purl.bioontology.org/ontology/PECO). The value should be formatted as the name of the media followed by the PECO identifier in brackets, e.g. aeroponic plant growth media exposure [PECO:0001073]",
+        "pattern": "^_*\\s*[a-zA-Z\\s]+\\[PECO:\\d+\\]$",
+        "type": "string"
+      },
+      "plant_sex": {
+        "description": "Sex of the reproductive parts on the whole plant.",
+        "enum": [
+          "androdioecious",
+          "androecious",
+          "androgynomonoecious",
+          "androgynous",
+          "andromonoecious",
+          "bisexual",
+          "dichogamous",
+          "diclinous",
+          "dioecious",
+          "gynodioecious",
+          "gynoecious",
+          "gynomonoecious",
+          "hermaphroditic",
+          "imperfect",
+          "monoclinous",
+          "monoecious",
+          "perfect",
+          "polygamodioecious",
+          "polygamomonoecious",
+          "polygamous",
+          "protandrous",
+          "protogynous",
+          "subandroecious",
+          "subdioecious",
+          "subgynoecious",
+          "synoecious",
+          "trimonoecious",
+          "trioecious",
+          "unisexual"
+        ]
+      },
+      "plant_struc": {
+        "description": "Name of plant structure the sample was obtained from; for Plant Ontology (PO) (v releases/2017-12-14) terms see http://purl.bioontology.org/ontology/PO e.g. petiole epidermis (PO_0000051). If an individual flower is sampled the sex of it can be recorded here.",
+        "enum": [
+          "stem",
+          "leaf",
+          "root",
+          "fine_root",
+          "whole_plant",
+          "stamen",
+          "carpel",
+          "seed",
+          "rhizodeposits"
+        ]
+      },
+      "plant_taxid": {
+        "description": "NCBI taxon ID of the plant from https://www.ncbi.nlm.nih.gov/taxonomy",
+        "type": "string"
+      },
+      "plant_wet_mass": {
+        "description": "Measurement of wet mass. (Unit: kg or g)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(kg|g)$",
+        "type": "string"
+      },
+      "previous_land_use": {
+        "description": "Previous land use and dates",
+        "type": "string"
+      },
+      "previous_land_use_meth": {
+        "description": "Reference or method used in determining previous land use and dates",
+        "type": "string"
+      },
+      "profile_position": {
+        "description": "Cross-sectional position in the hillslope where sample was collected. Sample area position in relation to surrounding areas",
+        "enum": [
+          "backslope",
+          "footslope",
+          "shoulder",
+          "summit",
+          "toeslope"
+        ]
+      },
+      "project": {
+        "description": "Identifier for the user project associated with the entity or activity. ",
+        "type": "integer"
+      },
+      "rainfall_regm": {
+        "description": "Information about treatment involving an exposure to a given amount of rainfall, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens",
+        "type": "string"
+      },
+      "replicate_number": {
+        "description": "The replicate number of the sample, if applicable. Included for compatibility with submission schema.",
+        "type": "integer"
+      },
+      "root_cond": {
+        "description": "Relevant rooting conditions such as field plot size, sowing density, container dimensions, number of plants per container.",
+        "type": "string"
+      },
+      "root_med_carbon": {
+        "description": "Source of organic carbon in the culture rooting medium. Provide as {carbon source}, {value}{unit}. Can be multivalued, separated by ;. Preferred unit mg/L.",
+        "type": "string"
+      },
+      "root_med_macronutr": {
+        "description": "Measurement of the culture rooting medium macronutrients (NP K Ca Mg S). Can be multivalued separated by ;. e.g. KH2PO4 170 mg/L",
+        "type": "string"
+      },
+      "root_med_micronutr": {
+        "description": "Measurement of the culture rooting medium micronutrients (Fe Mn Zn B Cu Mo). Can be multivalued separated by ;. e.g. H3BO3 6.2 mg/L",
+        "type": "string"
+      },
+      "root_med_ph": {
+        "description": "pH measurement of the culture rooting medium.",
+        "type": "number"
+      },
+      "root_med_regl": {
+        "description": "Growth regulators in the culture rooting medium such as cytokinins, auxins, gybberellins, abscisic acid. Can be multivalued separated by ;. e.g. Naphthaleneacetic Acid 0.5 mg/L",
+        "type": "string"
+      },
+      "root_med_solid": {
+        "description": "Specification of the solidifying agent in the culture rooting medium.",
+        "type": "string"
+      },
+      "root_med_suppl": {
+        "description": "Organic supplements of the culture rooting medium such as vitamins, amino acids, organic acids, antibiotics, activated charcoal. Can be multivalued separated by ;. e.g. nicotinic acid 0.5 mg/L",
+        "type": "string"
+      },
+      "salinity": {
+        "description": "Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(practical salinity unit|percent)$",
+        "type": "string"
+      },
+      "salinity_method": {
+        "description": "Method used to determine sample salinity",
+        "type": "string"
+      },
+      "salt_regm": {
+        "description": "Information about treatment involving use of salts as supplement to liquid and soil growth media; should include the name of salt, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple salt regimens.",
+        "type": "string"
+      },
+      "samp_store_temp": {
+        "description": "The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other add the `other_samp_store_temp` attribute to provide additional detail.",
+        "enum": [
+          "fresh4",
+          "freshroom",
+          "frozen20",
+          "frozen80",
+          "other"
+        ]
+      },
+      "sample_collected": {
+        "description": "This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$",
+        "type": "string"
+      },
+      "sample_collection_dev": {
+        "description": "The device used to collect an environmental sample. Include dimensions of device if applicable",
+        "type": "string"
+      },
+      "sample_collection_method": {
+        "description": "The method used to collect an environmental sample. This can be a citation or description.",
+        "type": "string"
+      },
+      "sample_link": {
+        "description": "'A unique identifier to assign parent-child subsample or sibling samples. This is relevant when a sample or other material was used to generate the new sample. This field allows multiple entries separated by ; (Examples: Soil collected from the field will link with the soil used in an incubation. The soil a plant was grown in links to the plant sample. An original culture sample was transferred to a new vial and generated a new sample)'",
+        "type": "string"
+      },
+      "sample_name": {
+        "description": "The name or label that is present on the shipped sample. This should\nbe a human readable name.",
+        "type": "string"
+      },
+      "sample_processing": {
+        "description": "A brief description of any processing applied to the sample during or after retrieving the sample from environment or a link to the relevant protocol(s) performed.",
+        "type": "string"
+      },
+      "sampled_at_site": {
+        "description": "Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location."
+      },
+      "sampled_during": {
+        "description": "Reference to the sampling activity during which this sample was collected. This is a FK to the SamplingActivity class, which contains metadata about the sampling event, such as date, device, method."
+      },
+      "season_precpt": {
+        "description": "The average of all seasonal precipitation values known or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*mm$",
+        "type": "string"
+      },
+      "season_temp": {
+        "description": "Mean seasonal temperature (Unit: C)",
+        "pattern": "^-?\\d+(\\.\\d+)?\\s*C$",
+        "type": "string"
+      },
+      "shipped_sample_size": {
+        "description": "Total amount of sample sent to EMSL. Must include units.",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$",
+        "type": "string"
+      },
+      "slope_aspect": {
+        "description": "The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (degrees); e.g. 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration. (Unit: degrees)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*degrees$",
+        "type": "string"
+      },
+      "slope_gradient": {
+        "description": "Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer. (Unit: percent)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*percent$",
+        "type": "string"
+      },
+      "source_mat_id": {
+        "description": "A unique identifier assigned to an original material sample collected or to any derived sub-samples. The source material should be listed as a sample to inform details about parent material relationship.",
+        "type": "string"
+      },
+      "standing_water_regm": {
+        "description": "Treatment involving an exposure to standing water during a plant's life span; types can be flood water or standing water, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens",
+        "type": "string"
+      },
+      "start_date_inc": {
+        "description": "Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$",
+        "type": "string"
+      },
+      "storage_condition": {
+        "description": "The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.",
+        "enum": [
+          "fresh",
+          "frozen",
+          "lyophilized",
+          "other"
+        ]
+      },
+      "storage_condition_other": {
+        "description": "Free-text field for storage conditions when 'storage_condition' is 'other'",
+        "type": "string"
+      },
+      "technical_reps": {
+        "description": "Number of technical replicates for the sample.",
+        "type": "integer"
+      },
+      "temp": {
+        "description": "Temperature of the sample at the time of sampling. (Units: C)",
+        "pattern": "^-?\\d+(\\.\\d+)?\\s*C$",
+        "type": "string"
+      },
+      "tillage": {
+        "description": "Note method(s) used for tilling",
+        "enum": [
+          "chisel",
+          "cutting_disc",
+          "disc_plough",
+          "drill",
+          "mouldboard",
+          "ridge_till",
+          "strip_tillage",
+          "tined",
+          "zonal_tillage"
+        ]
+      },
+      "water_temp_regm": {
+        "description": "Information about treatment involving an exposure to water with varying degree of temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens",
+        "type": "string"
+      },
+      "watering_regm": {
+        "description": "Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens",
+        "type": "string"
+      },
+      "weather": {
+        "description": "The state of the atmosphere at a given time and place with respect to variables such as temperature, moisture, wind velocity, and barometric pressure.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "elev",
+      "geo_loc_name",
+      "growth_facil",
+      "latitude",
+      "longitude",
+      "id",
+      "analysis_type",
+      "plant_common_name",
+      "plant_struc",
+      "plant_taxid"
+    ],
+    "type": "object"
+  },
+  "type": "array"
+}

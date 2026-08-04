@@ -1,0 +1,548 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "header": {
+    "title": "Aerosol Arm Sample Schema",
+    "description": "JSON schema for aerosol-arm sample submissions.",
+    "version": "1.0.0"
+  },
+  "items": {
+    "additionalProperties": false,
+    "properties": {
+      "aerosol_type": {
+        "description": "The type or method of aerosol collection",
+        "enum": [
+          "sea_salt",
+          "dust",
+          "volcanic_ash"
+        ]
+      },
+      "air_temp_regm": {
+        "description": "Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens",
+        "type": "string"
+      },
+      "alt": {
+        "description": "Heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air. For ARM this can be a range. (Unit: m)",
+        "pattern": "^\\d+(\\.\\d+)?m(?:-\\d+(\\.\\d+)?m)?$",
+        "type": "string"
+      },
+      "analysis_type": {
+        "description": "The type(s) of analysis planned for this sample.",
+        "type": "string"
+      },
+      "annual_precpt": {
+        "description": "The average of all annual precipitation values known or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*mm$",
+        "type": "string"
+      },
+      "annual_temp": {
+        "description": "Mean annual temperature (Unit: C)",
+        "pattern": "^-?\\d+(\\.\\d+)?\\s*C$",
+        "type": "string"
+      },
+      "atmospheric_data": {
+        "description": "Measurement of atmospheric data; can include multiple data",
+        "type": "string"
+      },
+      "carb_dioxide": {
+        "description": "Amount of carbon dioxide measured in the air the day of sampling. Provided by ARM. Provide value and unit, any unit is valid",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$",
+        "type": "string"
+      },
+      "carb_monoxide": {
+        "description": "Amount of carbon monoxide measured in the air the day of sampling. Provided by ARM. Provide value and unit any unit is valid",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$",
+        "type": "string"
+      },
+      "chem_administration": {
+        "description": "List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi",
+        "type": "string"
+      },
+      "collection_date": {
+        "description": "'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month\n(YYYY-MM)'",
+        "format": "date",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$",
+        "type": "string"
+      },
+      "color_code": {
+        "description": "Color indicates the max altitude.",
+        "enum": [
+          "Red- 0-250m Profiling",
+          "Red Hashed- 0-250m Loitering",
+          "Yellow- 251-500m Profiling",
+          "Yellow Hashed- 251-500m Loitering",
+          "Green- 501-750m Profiling",
+          "Green Hashed- 501-750m Loitering",
+          "Blue- 751-1000m Profiling",
+          "Blue Hashed- 751-1000m Loitering",
+          "Purple- >=1001m Profiling",
+          "Purple Hashed- >=1001m Loitering"
+        ]
+      },
+      "crop_rotation": {
+        "description": "Whether or not crop is rotated, and if yes, rotation schedule",
+        "type": "string"
+      },
+      "cur_land_use": {
+        "description": "Present state of sample site. This slot is NOT multivalued. Valid entries: badlands, cities, conifers, crop trees, farmstead, gravel, hardwoods, hayland, horticultural plants, industrial areas, intermixed, marshlands, meadows, mines, quarries, mudflats, oil waste, pastureland, permanent snow or ice, rainforest, rangeland, roads, railroads, rock, row crops, saline seeps, salt flats, sand, shrub crops, shrub land, small grains, successional shrub land, swamp, tropical, tundra, vegetable crops, vine crops",
+        "enum": [
+          "badlands",
+          "cities",
+          "conifers",
+          "crop_trees",
+          "farmstead",
+          "gravel",
+          "hardwoods",
+          "hayland",
+          "horticultural_plants",
+          "industrial_areas",
+          "intermixed",
+          "marshlands",
+          "meadows",
+          "mines_quarries",
+          "mudflats",
+          "oil_waste",
+          "pastureland",
+          "permanent_snow_or_ice",
+          "rainforest",
+          "rangeland",
+          "roads_railroads",
+          "rock",
+          "row_crops",
+          "saline_seeps",
+          "salt_flats",
+          "sand",
+          "shrub_crops",
+          "shrub_land",
+          "small_grains",
+          "successional_shrub_land",
+          "swamp",
+          "tropical",
+          "tundra",
+          "vegetable_crops",
+          "vine_crops"
+        ]
+      },
+      "cur_vegetation": {
+        "description": "Vegetation classification from one or more standard classification systems, or agricultural crop",
+        "type": "string"
+      },
+      "cur_vegetation_meth": {
+        "description": "Reference or method used in vegetation classification",
+        "type": "string"
+      },
+      "description": {
+        "description": "Human-readable description for the entity or activity",
+        "type": "string"
+      },
+      "drainage_class": {
+        "description": "Drainage classification from a standard system such as the USDA system",
+        "enum": [
+          "excessively_drained",
+          "moderately_well",
+          "poorly",
+          "somewhat_poorly",
+          "very_poorly",
+          "well"
+        ]
+      },
+      "elev": {
+        "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface. (Unit: m).",
+        "pattern": "^\\d+(\\.\\d+)?\\s*m$",
+        "type": "string"
+      },
+      "emsl_activity": {
+        "description": "Nullable string linking a Sample or SamplingActivity to a named EMSL activity or\ncampaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records\npredating activity tracking.",
+        "type": "string"
+      },
+      "env_broad_scale": {
+        "description": "'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'",
+        "pattern": "^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$",
+        "type": "string"
+      },
+      "env_local_scale": {
+        "description": "'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'",
+        "pattern": "^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$",
+        "type": "string"
+      },
+      "env_medium": {
+        "description": "'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'",
+        "pattern": "^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$",
+        "type": "string"
+      },
+      "experimental_factor": {
+        "description": "Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment or set of experiments in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI",
+        "type": "string"
+      },
+      "experimental_factor_other": {
+        "description": "Other details about your sample that you feel can't be accurately represented in the available columns.",
+        "type": "string"
+      },
+      "external_identifiers": {
+        "description": "List of external identifiers associated with this entity or activity.",
+        "items": {
+          "type": "string"
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "extraction_method": {
+        "description": "If you (the user) performed an extraction preparation or processing before sending the sample to EMSL, what was it? This is only applicable when sending an 'analytical sample'. See README for more details on types of samples.",
+        "type": "string"
+      },
+      "extreme_event": {
+        "description": "Unusual physical events that may have affected microbial populations. Format: YYYY-MM-DD",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$",
+        "type": "string"
+      },
+      "fao_class": {
+        "description": "Soil classification from the FAO World soil distribution from International Soil Reference and Information Centre (ISRIC). The list of available soil classifications can be found at https://www.isric.org/explore/world-soil-distribution",
+        "enum": [
+          "Acrisols",
+          "Alisols",
+          "Andosols",
+          "Anthrosols",
+          "Arenosols",
+          "Calcisols",
+          "Cambisols",
+          "Chernozems",
+          "Cryosols",
+          "Durisols",
+          "Ferrasols",
+          "Fluvisols",
+          "Gleysols",
+          "Gypsisols",
+          "Histosols",
+          "Kastanozems",
+          "Leptosols",
+          "Lixisols",
+          "Luvisols",
+          "Nitosols",
+          "Phaeozems",
+          "Planosols",
+          "Plinthosols",
+          "Podzols",
+          "Solonchaks",
+          "Solonetz",
+          "Stagnosols",
+          "Technosols",
+          "Umbrisols",
+          "Vertisols"
+        ]
+      },
+      "fire": {
+        "description": "Historical and/or physical evidence of fire. Format: YYYY-MM-DD",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$",
+        "type": "string"
+      },
+      "first_blh": {
+        "description": "First boundary layer height candidate (meters) (Unit: m)",
+        "type": "number"
+      },
+      "first_blh_quality_index": {
+        "description": "Quality index for first boundary layer height candidate (-999 if no candidate)",
+        "type": "string"
+      },
+      "first_cbh": {
+        "description": "First cloud base (meters) or vertical visibility (meters) (-999 if no cloud base or vertical visibility) (Unit: m)",
+        "type": "number"
+      },
+      "flooding": {
+        "description": "Historical and/or physical evidence of flooding. Format: YYYY-MM-DD",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$",
+        "type": "string"
+      },
+      "geo_loc_name": {
+        "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name and site. Formatted as [Country or sea names: region or state, site]",
+        "pattern": "^([^\\s-]{12}|[^\\s-]+.+[^\\s-]+):\\s?([^\\s-]{12}|[^\\s-]+.+[^\\s-]+)\\s?([^\\s-]{12}|[^\\s-]+.+[^\\s-]+)$",
+        "type": "string"
+      },
+      "growth_facil": {
+        "description": "Type of facility or location from where the sample was collected or\ngrown. This field is NOT multivalued. If selecting other, add the `other_growth_facil`\nattribute to provide additional detail.",
+        "enum": [
+          "field",
+          "commercially_purchased",
+          "experimental_garden",
+          "field_incubation",
+          "greenhouse",
+          "growth_chamber",
+          "lab_incubation",
+          "open_top_chamber",
+          "other"
+        ]
+      },
+      "humidity_regm": {
+        "description": "Information about treatment involving an exposure to varying degrees of humidity; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens",
+        "type": "string"
+      },
+      "id": {},
+      "isotope_exposure": {
+        "description": "List isotope exposure or addition applied to your sample.",
+        "type": "string"
+      },
+      "latitude": {
+        "description": "Latitude coordinate of the sampling site in WSG 84 format.",
+        "type": "number"
+      },
+      "lims_barcode": {
+        "description": "LIMS barcode identifier",
+        "type": "string"
+      },
+      "link_class_info": {
+        "description": "Link to digitized soil maps or other soil classification information",
+        "type": "string"
+      },
+      "link_climate_info": {
+        "description": "Link to climate resource",
+        "type": "string"
+      },
+      "local_class": {
+        "description": "Soil classification based on local soil classification system",
+        "type": "string"
+      },
+      "local_class_meth": {
+        "description": "Reference or method used in determining the local soil classification",
+        "type": "string"
+      },
+      "longitude": {
+        "description": "Longitude coordinate of the sampling site in WSG 84 format.",
+        "type": "number"
+      },
+      "mean_total_cpc_concentration": {
+        "description": "Mean concentration obtained from Condensation Particle Counter (Unit: \u03bcm)",
+        "type": "number"
+      },
+      "mean_total_pops_concentration": {
+        "description": "Mean concentration obtained from Portable Optical Particle Spectrometer (Unit: \u03bcm)",
+        "type": "number"
+      },
+      "methane": {
+        "description": "Methane (gas) amount or concentration at the time of sampling. (Unit: umol/L or ppb or ppm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(umol/L|ppm|ppb)$",
+        "type": "string"
+      },
+      "method_development": {
+        "description": "If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve.",
+        "type": "string"
+      },
+      "misc_param": {
+        "description": "Any other measurement performed or parameter collected that is not listed here",
+        "type": "string"
+      },
+      "name": {
+        "description": "Human-readable name for the entity or activity.",
+        "type": "string"
+      },
+      "neon_plot_id": {
+        "description": "When sampling from a NEON site provide the plot ID from which you sampled. This includes the 4 letter site code followed by the 3 digit ID (Example: DEJU_048). If you do not have your NEON site use the code SITE_999.",
+        "pattern": "^[A-Z]{4}_\\d{3}$",
+        "type": "string"
+      },
+      "neon_site_code": {
+        "description": "When sampling from a NEON site provide the 4 letter site code (Example: DEJU). If you do not have your NEON site use the code SITE_999.",
+        "pattern": "^[A-Z]{4}$",
+        "type": "string"
+      },
+      "other": {
+        "description": "Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.",
+        "type": "string"
+      },
+      "other_growth_facil": {
+        "description": "Please specify growth facility if you selected 'other'",
+        "type": "string"
+      },
+      "other_samp_store_temp": {
+        "description": "Please specify sample storage temperature if you selected 'other'",
+        "type": "string"
+      },
+      "other_treatment": {
+        "description": "Many sample treatment descriptor columns are available. If a treatment is applied to your samples and the provided treatment terms do not satisfy please add it here. Multiple treatments can be entered here separated by ;",
+        "type": "string"
+      },
+      "photochemical_exposure": {
+        "description": "This term is used to describe a chemical reaction caused by absorption of ultraviolet (wavelength from 100 to 400 nm), visible light (400-750 nm), or infrared radiation (750-2500 nm)",
+        "enum": [
+          "ultraviolet",
+          "visible light",
+          "infrared"
+        ]
+      },
+      "pressure_control": {
+        "description": "Measurment of pressure applied to the sample during experimentation (Unit: Pa)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*Pa$",
+        "type": "string"
+      },
+      "previous_land_use": {
+        "description": "Previous land use and dates",
+        "type": "string"
+      },
+      "previous_land_use_meth": {
+        "description": "Reference or method used in determining previous land use and dates",
+        "type": "string"
+      },
+      "priority_order": {
+        "description": "Indicate the run order priority of your samples",
+        "type": "number"
+      },
+      "profile_position": {
+        "description": "Cross-sectional position in the hillslope where sample was collected. Sample area position in relation to surrounding areas",
+        "enum": [
+          "backslope",
+          "footslope",
+          "shoulder",
+          "summit",
+          "toeslope"
+        ]
+      },
+      "project": {
+        "description": "Identifier for the user project associated with the entity or activity. ",
+        "type": "integer"
+      },
+      "replicate_number": {
+        "description": "The replicate number of the sample, if applicable. Included for compatibility with submission schema.",
+        "type": "integer"
+      },
+      "samp_store_temp": {
+        "description": "The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other add the `other_samp_store_temp` attribute to provide additional detail.",
+        "enum": [
+          "fresh4",
+          "freshroom",
+          "frozen20",
+          "frozen80",
+          "other"
+        ]
+      },
+      "sample_link": {
+        "description": "'A unique identifier to assign parent-child subsample or sibling samples. This is relevant when a sample or other material was used to generate the new sample. This field allows multiple entries separated by ; (Examples: Soil collected from the field will link with the soil used in an incubation. The soil a plant was grown in links to the plant sample. An original culture sample was transferred to a new vial and generated a new sample)'",
+        "type": "string"
+      },
+      "sample_name": {
+        "description": "The name or label that is present on the shipped sample. This should\nbe a human readable name.",
+        "type": "string"
+      },
+      "sample_processing": {
+        "description": "A brief description of any processing applied to the sample during or after retrieving the sample from environment or a link to the relevant protocol(s) performed.",
+        "type": "string"
+      },
+      "sampled_at_site": {
+        "description": "Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location."
+      },
+      "sampled_during": {
+        "description": "Reference to the sampling activity during which this sample was collected. This is a FK to the SamplingActivity class, which contains metadata about the sampling event, such as date, device, method."
+      },
+      "season_precpt": {
+        "description": "The average of all seasonal precipitation values known or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*mm$",
+        "type": "string"
+      },
+      "season_temp": {
+        "description": "Mean seasonal temperature (Unit: C)",
+        "pattern": "^-?\\d+(\\.\\d+)?\\s*C$",
+        "type": "string"
+      },
+      "second_blh": {
+        "description": "Second boundary layer height candidate (meters) (Unit: m)",
+        "type": "number"
+      },
+      "second_blh_quality": {
+        "description": "Quality index for second boundary layer height candidate (-999 if no candidate)",
+        "type": "string"
+      },
+      "second_cbh": {
+        "description": "Second cloud base (meters) or highest received signal in vertical visibility (meters) (-999 if no cloud base or vertical visibility) (Unit: m)",
+        "type": "number"
+      },
+      "shipped_sample_size": {
+        "description": "Total amount of sample sent to EMSL. Must include units.",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$",
+        "type": "string"
+      },
+      "size_frac_low": {
+        "description": "Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample (Unit: um)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*um$",
+        "type": "string"
+      },
+      "size_frac_up": {
+        "description": "Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample (Unit: um)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*um$",
+        "type": "string"
+      },
+      "slope_aspect": {
+        "description": "The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (degrees); e.g. 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration. (Unit: degrees)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*degrees$",
+        "type": "string"
+      },
+      "slope_gradient": {
+        "description": "Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer. (Unit: percent)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*percent$",
+        "type": "string"
+      },
+      "solar_irradiance": {
+        "description": "Solar irradiance is the power per unit area (surface power density) received from the Sun in the form of electromagnetic radiation in the wavelength range of the measuring instrument. (Unit: kW/m2/d or erg/cm2/s",
+        "pattern": "^\\d+(\\.\\d+)?\\s*(kW/m2/d|erg/cm2/s)$",
+        "type": "string"
+      },
+      "source_mat_id": {
+        "description": "A unique identifier assigned to an original material sample collected or to any derived sub-samples. The source material should be listed as a sample to inform details about parent material relationship.",
+        "type": "string"
+      },
+      "storage_condition": {
+        "description": "The storage condition of the sample. This field is NOT multivalued. If selecting other add the `other_storage_condt` attribute to provide additional detail.",
+        "enum": [
+          "fresh",
+          "frozen",
+          "lyophilized",
+          "other"
+        ]
+      },
+      "storage_condition_other": {
+        "description": "Free-text field for storage conditions when 'storage_condition' is 'other'",
+        "type": "string"
+      },
+      "technical_reps": {
+        "description": "Number of technical replicates for the sample.",
+        "type": "integer"
+      },
+      "third_blh": {
+        "description": "Third boundary layer height candidate (meters) (Unit: m)",
+        "type": "number"
+      },
+      "third_blh_quality": {
+        "description": "Quality index for third boundary layer height candidate (-999 if no candidate)",
+        "type": "string"
+      },
+      "tillage": {
+        "description": "Note method(s) used for tilling",
+        "enum": [
+          "chisel",
+          "cutting_disc",
+          "disc_plough",
+          "drill",
+          "mouldboard",
+          "ridge_till",
+          "strip_tillage",
+          "tined",
+          "zonal_tillage"
+        ]
+      },
+      "volatile_org_comp": {
+        "description": "Volatile organic compounds are organic chemicals that have a high vapour pressure at room temperature.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "elev",
+      "geo_loc_name",
+      "growth_facil",
+      "latitude",
+      "longitude",
+      "id",
+      "aerosol_type",
+      "analysis_type"
+    ],
+    "type": "object"
+  },
+  "type": "array"
+}

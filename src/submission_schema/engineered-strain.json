@@ -1,0 +1,332 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "header": {
+    "title": "Engineered Strain Sample Schema",
+    "description": "JSON schema for engineered-strain sample submissions.",
+    "version": "1.0.0"
+  },
+  "items": {
+    "additionalProperties": false,
+    "properties": {
+      "alt": {
+        "description": "Heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air. For ARM this can be a range. (Unit: m)",
+        "pattern": "^\\d+(\\.\\d+)?m(?:-\\d+(\\.\\d+)?m)?$",
+        "type": "string"
+      },
+      "annual_precpt": {
+        "description": "The average of all annual precipitation values known or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*mm$",
+        "type": "string"
+      },
+      "annual_temp": {
+        "description": "Mean annual temperature (Unit: C)",
+        "pattern": "^-?\\d+(\\.\\d+)?\\s*C$",
+        "type": "string"
+      },
+      "atmospheric_data": {
+        "description": "Measurement of atmospheric data; can include multiple data",
+        "type": "string"
+      },
+      "cbi": {
+        "description": "Controlled Biological Information flag (yes/no).",
+        "type": "string"
+      },
+      "collection_date": {
+        "description": "'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month\n(YYYY-MM)'",
+        "format": "date",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$",
+        "type": "string"
+      },
+      "crop_rotation": {
+        "description": "Whether or not crop is rotated, and if yes, rotation schedule",
+        "type": "string"
+      },
+      "cur_land_use": {
+        "description": "Present state of sample site. This slot is NOT multivalued. Valid entries: badlands, cities, conifers, crop trees, farmstead, gravel, hardwoods, hayland, horticultural plants, industrial areas, intermixed, marshlands, meadows, mines, quarries, mudflats, oil waste, pastureland, permanent snow or ice, rainforest, rangeland, roads, railroads, rock, row crops, saline seeps, salt flats, sand, shrub crops, shrub land, small grains, successional shrub land, swamp, tropical, tundra, vegetable crops, vine crops",
+        "enum": [
+          "badlands",
+          "cities",
+          "conifers",
+          "crop_trees",
+          "farmstead",
+          "gravel",
+          "hardwoods",
+          "hayland",
+          "horticultural_plants",
+          "industrial_areas",
+          "intermixed",
+          "marshlands",
+          "meadows",
+          "mines_quarries",
+          "mudflats",
+          "oil_waste",
+          "pastureland",
+          "permanent_snow_or_ice",
+          "rainforest",
+          "rangeland",
+          "roads_railroads",
+          "rock",
+          "row_crops",
+          "saline_seeps",
+          "salt_flats",
+          "sand",
+          "shrub_crops",
+          "shrub_land",
+          "small_grains",
+          "successional_shrub_land",
+          "swamp",
+          "tropical",
+          "tundra",
+          "vegetable_crops",
+          "vine_crops"
+        ]
+      },
+      "cur_vegetation": {
+        "description": "Vegetation classification from one or more standard classification systems, or agricultural crop",
+        "type": "string"
+      },
+      "cur_vegetation_meth": {
+        "description": "Reference or method used in vegetation classification",
+        "type": "string"
+      },
+      "description": {
+        "description": "Human-readable description for the entity or activity",
+        "type": "string"
+      },
+      "drainage_class": {
+        "description": "Drainage classification from a standard system such as the USDA system",
+        "enum": [
+          "excessively_drained",
+          "moderately_well",
+          "poorly",
+          "somewhat_poorly",
+          "very_poorly",
+          "well"
+        ]
+      },
+      "elev": {
+        "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface. (Unit: m).",
+        "pattern": "^\\d+(\\.\\d+)?\\s*m$",
+        "type": "string"
+      },
+      "emsl_activity": {
+        "description": "Nullable string linking a Sample or SamplingActivity to a named EMSL activity or\ncampaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records\npredating activity tracking.",
+        "type": "string"
+      },
+      "external_identifiers": {
+        "description": "List of external identifiers associated with this entity or activity.",
+        "items": {
+          "type": "string"
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "extreme_event": {
+        "description": "Unusual physical events that may have affected microbial populations. Format: YYYY-MM-DD",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$",
+        "type": "string"
+      },
+      "fao_class": {
+        "description": "Soil classification from the FAO World soil distribution from International Soil Reference and Information Centre (ISRIC). The list of available soil classifications can be found at https://www.isric.org/explore/world-soil-distribution",
+        "enum": [
+          "Acrisols",
+          "Alisols",
+          "Andosols",
+          "Anthrosols",
+          "Arenosols",
+          "Calcisols",
+          "Cambisols",
+          "Chernozems",
+          "Cryosols",
+          "Durisols",
+          "Ferrasols",
+          "Fluvisols",
+          "Gleysols",
+          "Gypsisols",
+          "Histosols",
+          "Kastanozems",
+          "Leptosols",
+          "Lixisols",
+          "Luvisols",
+          "Nitosols",
+          "Phaeozems",
+          "Planosols",
+          "Plinthosols",
+          "Podzols",
+          "Solonchaks",
+          "Solonetz",
+          "Stagnosols",
+          "Technosols",
+          "Umbrisols",
+          "Vertisols"
+        ]
+      },
+      "fire": {
+        "description": "Historical and/or physical evidence of fire. Format: YYYY-MM-DD",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$",
+        "type": "string"
+      },
+      "flooding": {
+        "description": "Historical and/or physical evidence of flooding. Format: YYYY-MM-DD",
+        "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$",
+        "type": "string"
+      },
+      "geo_loc_name": {
+        "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name and site. Formatted as [Country or sea names: region or state, site]",
+        "pattern": "^([^\\s-]{12}|[^\\s-]+.+[^\\s-]+):\\s?([^\\s-]{12}|[^\\s-]+.+[^\\s-]+)\\s?([^\\s-]{12}|[^\\s-]+.+[^\\s-]+)$",
+        "type": "string"
+      },
+      "growth_facil": {
+        "description": "Type of facility or location from where the sample was collected or\ngrown. This field is NOT multivalued. If selecting other, add the `other_growth_facil`\nattribute to provide additional detail.",
+        "enum": [
+          "field",
+          "commercially_purchased",
+          "experimental_garden",
+          "field_incubation",
+          "greenhouse",
+          "growth_chamber",
+          "lab_incubation",
+          "open_top_chamber",
+          "other"
+        ]
+      },
+      "id": {},
+      "latitude": {
+        "description": "Latitude coordinate of the sampling site in WSG 84 format.",
+        "type": "number"
+      },
+      "lims_barcode": {
+        "description": "LIMS barcode identifier",
+        "type": "string"
+      },
+      "link_class_info": {
+        "description": "Link to digitized soil maps or other soil classification information",
+        "type": "string"
+      },
+      "link_climate_info": {
+        "description": "Link to climate resource",
+        "type": "string"
+      },
+      "local_class": {
+        "description": "Soil classification based on local soil classification system",
+        "type": "string"
+      },
+      "local_class_meth": {
+        "description": "Reference or method used in determining the local soil classification",
+        "type": "string"
+      },
+      "longitude": {
+        "description": "Longitude coordinate of the sampling site in WSG 84 format.",
+        "type": "number"
+      },
+      "name": {
+        "description": "Human-readable name for the entity or activity.",
+        "type": "string"
+      },
+      "neon_plot_id": {
+        "description": "When sampling from a NEON site provide the plot ID from which you sampled. This includes the 4 letter site code followed by the 3 digit ID (Example: DEJU_048). If you do not have your NEON site use the code SITE_999.",
+        "pattern": "^[A-Z]{4}_\\d{3}$",
+        "type": "string"
+      },
+      "neon_site_code": {
+        "description": "When sampling from a NEON site provide the 4 letter site code (Example: DEJU). If you do not have your NEON site use the code SITE_999.",
+        "pattern": "^[A-Z]{4}$",
+        "type": "string"
+      },
+      "organism_ref": {
+        "description": "FK reference to an organism representing the biological identity\nstrain, isolate, engineered construct) that this sample or activity\nis associated with."
+      },
+      "other_growth_facil": {
+        "description": "Please specify growth facility if you selected 'other'",
+        "type": "string"
+      },
+      "previous_land_use": {
+        "description": "Previous land use and dates",
+        "type": "string"
+      },
+      "previous_land_use_meth": {
+        "description": "Reference or method used in determining previous land use and dates",
+        "type": "string"
+      },
+      "profile_position": {
+        "description": "Cross-sectional position in the hillslope where sample was collected. Sample area position in relation to surrounding areas",
+        "enum": [
+          "backslope",
+          "footslope",
+          "shoulder",
+          "summit",
+          "toeslope"
+        ]
+      },
+      "project": {
+        "description": "Identifier for the user project associated with the entity or activity. ",
+        "type": "integer"
+      },
+      "sampled_at_site": {
+        "description": "Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location."
+      },
+      "season_precpt": {
+        "description": "The average of all seasonal precipitation values known or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*mm$",
+        "type": "string"
+      },
+      "season_temp": {
+        "description": "Mean seasonal temperature (Unit: C)",
+        "pattern": "^-?\\d+(\\.\\d+)?\\s*C$",
+        "type": "string"
+      },
+      "shipped_sample_size": {
+        "description": "Total amount of sample sent to EMSL. Must include units.",
+        "pattern": "^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$",
+        "type": "string"
+      },
+      "slope_aspect": {
+        "description": "The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (degrees); e.g. 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration. (Unit: degrees)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*degrees$",
+        "type": "string"
+      },
+      "slope_gradient": {
+        "description": "Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer. (Unit: percent)",
+        "pattern": "^\\d+(\\.\\d+)?\\s*percent$",
+        "type": "string"
+      },
+      "storage_condition": {
+        "description": "Storage condition for this sample (frozen, fresh, etc.).\nAliases: samp_store_cond, storage_cond, storage_condt",
+        "type": "string"
+      },
+      "storage_temperature": {
+        "description": "Storage temperature for this sample (e.g., \"-80 C\").\nAliases: samp_store_temp",
+        "type": "string"
+      },
+      "tillage": {
+        "description": "Note method(s) used for tilling",
+        "enum": [
+          "chisel",
+          "cutting_disc",
+          "disc_plough",
+          "drill",
+          "mouldboard",
+          "ridge_till",
+          "strip_tillage",
+          "tined",
+          "zonal_tillage"
+        ]
+      }
+    },
+    "required": [
+      "name",
+      "elev",
+      "geo_loc_name",
+      "growth_facil",
+      "latitude",
+      "longitude",
+      "id",
+      "cbi",
+      "storage_condition"
+    ],
+    "type": "object"
+  },
+  "type": "array"
+}
