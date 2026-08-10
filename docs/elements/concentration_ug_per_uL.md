@@ -9,7 +9,7 @@ _Concentration of the substance in micrograms per microliter._
 
 
 
-URI: [analysis_api_schema:concentration_ug_per_uL](https://w3id.org/MONet/analysis-api-schema/concentration_ug_per_uL)
+URI: [basalt_schema:concentration_ug_per_uL](https://w3id.org/MONet/basalt-schema/concentration_ug_per_uL)
 Alias: concentration_ug_per_uL
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: concentration_ug_per_uL
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: concentration_ug_per_uL
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:concentration_ug_per_uL |
-| native | analysis_api_schema:concentration_ug_per_uL |
+| self | basalt_schema:concentration_ug_per_uL |
+| native | basalt_schema:concentration_ug_per_uL |
 
 
 
@@ -84,7 +84,7 @@ Alias: concentration_ug_per_uL
 name: concentration_ug_per_uL
 description: Concentration of the substance in micrograms per microliter.
 title: concentration (ug/uL)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: concentration_ug_per_uL
 domain_of:

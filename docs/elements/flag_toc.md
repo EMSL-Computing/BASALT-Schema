@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_toc](https://w3id.org/MONet/analysis-api-schema/flag_toc)
+URI: [basalt_schema:flag_toc](https://w3id.org/MONet/basalt-schema/flag_toc)
 Alias: flag_toc
 
 <!-- no inheritance hierarchy -->
@@ -59,8 +59,8 @@ Alias: flag_toc
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_toc |
-| native | analysis_api_schema:flag_toc |
+| self | basalt_schema:flag_toc |
+| native | basalt_schema:flag_toc |
 
 
 

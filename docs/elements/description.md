@@ -9,7 +9,7 @@ _Human-readable description for the entity or activity_
 
 
 
-URI: [analysis_api_schema:description](https://w3id.org/MONet/analysis-api-schema/description)
+URI: [basalt_schema:description](https://w3id.org/MONet/basalt-schema/description)
 Alias: description
 
 <!-- no inheritance hierarchy -->
@@ -159,7 +159,7 @@ Alias: description
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -168,8 +168,8 @@ Alias: description
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:description |
-| native | analysis_api_schema:description |
+| self | basalt_schema:description |
+| native | basalt_schema:description |
 
 
 
@@ -181,7 +181,7 @@ Alias: description
 name: description
 description: Human-readable description for the entity or activity
 title: description
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: description
 domain_of:

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_total_sulfur](https://w3id.org/MONet/analysis-api-schema/flag_total_sulfur)
+URI: [basalt_schema:flag_total_sulfur](https://w3id.org/MONet/basalt-schema/flag_total_sulfur)
 Alias: flag_total_sulfur
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_total_sulfur
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_total_sulfur
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_total_sulfur |
-| native | analysis_api_schema:flag_total_sulfur |
+| self | basalt_schema:flag_total_sulfur |
+| native | basalt_schema:flag_total_sulfur |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_total_sulfur
 <details>
 ```yaml
 name: flag_total_sulfur
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: flag_total_sulfur
 owner: ElementalAnalysisProduct

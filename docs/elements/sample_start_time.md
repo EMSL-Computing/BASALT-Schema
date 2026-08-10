@@ -9,7 +9,7 @@ _Time of when the sample collection starts. Required format: HH:MM:SS in 24-hour
 
 
 
-URI: [analysis_api_schema:sample_start_time](https://w3id.org/MONet/analysis-api-schema/sample_start_time)
+URI: [basalt_schema:sample_start_time](https://w3id.org/MONet/basalt-schema/sample_start_time)
 Alias: sample_start_time
 
 <!-- no inheritance hierarchy -->
@@ -58,7 +58,7 @@ Alias: sample_start_time
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -67,8 +67,8 @@ Alias: sample_start_time
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sample_start_time |
-| native | analysis_api_schema:sample_start_time |
+| self | basalt_schema:sample_start_time |
+| native | basalt_schema:sample_start_time |
 
 
 
@@ -81,7 +81,7 @@ name: sample_start_time
 description: 'Time of when the sample collection starts. Required format: HH:MM:SS
   in 24-hour time format. Don''t forget the seconds! (Unit: hh:mm:ss or HH:MM:SS)'
 title: sample start time
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: sample_start_time
 range: string

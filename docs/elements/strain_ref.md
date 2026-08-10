@@ -9,7 +9,7 @@ _FK reference to a Strain purchasedMaterial used in the activity_
 
 
 
-URI: [analysis_api_schema:strain_ref](https://w3id.org/MONet/analysis-api-schema/strain_ref)
+URI: [basalt_schema:strain_ref](https://w3id.org/MONet/basalt-schema/strain_ref)
 Alias: strain_ref
 
 <!-- no inheritance hierarchy -->
@@ -51,7 +51,7 @@ Alias: strain_ref
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -60,8 +60,8 @@ Alias: strain_ref
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:strain_ref |
-| native | analysis_api_schema:strain_ref |
+| self | basalt_schema:strain_ref |
+| native | basalt_schema:strain_ref |
 
 
 
@@ -72,7 +72,7 @@ Alias: strain_ref
 ```yaml
 name: strain_ref
 description: FK reference to a Strain purchasedMaterial used in the activity
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: strain_ref
 range: organism

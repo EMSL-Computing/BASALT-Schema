@@ -11,7 +11,7 @@ _(YYYY-MM)'_
 
 
 
-URI: [analysis_api_schema:collection_date](https://w3id.org/MONet/analysis-api-schema/collection_date)
+URI: [basalt_schema:collection_date](https://w3id.org/MONet/basalt-schema/collection_date)
 Alias: collection_date
 
 <!-- no inheritance hierarchy -->
@@ -87,7 +87,7 @@ Alias: collection_date
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -96,8 +96,8 @@ Alias: collection_date
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:collection_date |
-| native | analysis_api_schema:collection_date |
+| self | basalt_schema:collection_date |
+| native | basalt_schema:collection_date |
 
 
 
@@ -112,7 +112,7 @@ description: '''The date of sampling as an instance. Format: YYYY-MM-DD. Also va
 
   (YYYY-MM)'''
 title: collection date
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: collection_date
 domain_of:

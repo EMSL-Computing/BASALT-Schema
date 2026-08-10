@@ -49,7 +49,7 @@ _    XRFElementalProduct:  # Add to product permissible_values_
 
 
 
-URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-api-schema/XRFElementalProduct)
+URI: [basalt_schema:XRFElementalProduct](https://w3id.org/MONet/basalt-schema/XRFElementalProduct)
 
 
 
@@ -584,7 +584,7 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -593,8 +593,8 @@ URI: [analysis_api_schema:XRFElementalProduct](https://w3id.org/MONet/analysis-a
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:XRFElementalProduct |
-| native | analysis_api_schema:XRFElementalProduct |
+| self | basalt_schema:XRFElementalProduct |
+| native | basalt_schema:XRFElementalProduct |
 
 
 
@@ -622,7 +622,7 @@ description: "X-ray Fluorescence (XRF) elemental concentration data.\nOne row pe
   \  Trace metals: Cl, V, Cr, Ni, Cu, Zn, Ga, As, Se, Br, Rb, Sr, Y, Nb, Mo,\n   \
   \             Ag, Cd, In, Sn, Sb, Cs, Ba, La, Ce, Pb, Th, U\n\nRequired enum additions\
   \ to enums.yaml:\n  product:\n    XRFElementalProduct:  # Add to product permissible_values"
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: XRayDataProduct
 slots:
 - measure_type
@@ -630,7 +630,7 @@ attributes:
   cl_mg_per_kg:
     name: cl_mg_per_kg
     description: Chlorine concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -638,7 +638,7 @@ attributes:
   v_mg_per_kg:
     name: v_mg_per_kg
     description: Vanadium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -646,7 +646,7 @@ attributes:
   cr_mg_per_kg:
     name: cr_mg_per_kg
     description: Chromium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -654,7 +654,7 @@ attributes:
   ni_mg_per_kg:
     name: ni_mg_per_kg
     description: Nickel concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -662,7 +662,7 @@ attributes:
   cu_mg_per_kg:
     name: cu_mg_per_kg
     description: Copper concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -670,7 +670,7 @@ attributes:
   zn_mg_per_kg:
     name: zn_mg_per_kg
     description: Zinc concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -678,7 +678,7 @@ attributes:
   ga_mg_per_kg:
     name: ga_mg_per_kg
     description: Gallium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -686,7 +686,7 @@ attributes:
   as_mg_per_kg:
     name: as_mg_per_kg
     description: Arsenic concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -694,7 +694,7 @@ attributes:
   se_mg_per_kg:
     name: se_mg_per_kg
     description: Selenium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -702,7 +702,7 @@ attributes:
   br_mg_per_kg:
     name: br_mg_per_kg
     description: Bromine concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -710,7 +710,7 @@ attributes:
   rb_mg_per_kg:
     name: rb_mg_per_kg
     description: Rubidium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -718,7 +718,7 @@ attributes:
   sr_mg_per_kg:
     name: sr_mg_per_kg
     description: Strontium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -726,7 +726,7 @@ attributes:
   y_mg_per_kg:
     name: y_mg_per_kg
     description: Yttrium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -734,7 +734,7 @@ attributes:
   nb_mg_per_kg:
     name: nb_mg_per_kg
     description: Niobium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -742,7 +742,7 @@ attributes:
   mo_mg_per_kg:
     name: mo_mg_per_kg
     description: Molybdenum concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -750,7 +750,7 @@ attributes:
   ag_mg_per_kg:
     name: ag_mg_per_kg
     description: Silver concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -758,7 +758,7 @@ attributes:
   cd_mg_per_kg:
     name: cd_mg_per_kg
     description: Cadmium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -766,7 +766,7 @@ attributes:
   in_mg_per_kg:
     name: in_mg_per_kg
     description: Indium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -774,7 +774,7 @@ attributes:
   sn_mg_per_kg:
     name: sn_mg_per_kg
     description: Tin concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -782,7 +782,7 @@ attributes:
   sb_mg_per_kg:
     name: sb_mg_per_kg
     description: Antimony concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -790,7 +790,7 @@ attributes:
   cs_mg_per_kg:
     name: cs_mg_per_kg
     description: Cesium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -798,7 +798,7 @@ attributes:
   ba_mg_per_kg:
     name: ba_mg_per_kg
     description: Barium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -806,7 +806,7 @@ attributes:
   la_mg_per_kg:
     name: la_mg_per_kg
     description: Lanthanum concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -814,7 +814,7 @@ attributes:
   ce_mg_per_kg:
     name: ce_mg_per_kg
     description: Cerium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -822,7 +822,7 @@ attributes:
   pb_mg_per_kg:
     name: pb_mg_per_kg
     description: Lead concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -830,7 +830,7 @@ attributes:
   th_mg_per_kg:
     name: th_mg_per_kg
     description: Thorium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -838,196 +838,196 @@ attributes:
   u_mg_per_kg:
     name: u_mg_per_kg
     description: Uranium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: float
   flag_cl:
     name: flag_cl
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_v:
     name: flag_v
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_cr:
     name: flag_cr
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_ni:
     name: flag_ni
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_cu:
     name: flag_cu
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_zn:
     name: flag_zn
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_ga:
     name: flag_ga
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_as:
     name: flag_as
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_se:
     name: flag_se
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_br:
     name: flag_br
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_rb:
     name: flag_rb
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_sr:
     name: flag_sr
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_y:
     name: flag_y
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_nb:
     name: flag_nb
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_mo:
     name: flag_mo
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_ag:
     name: flag_ag
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_cd:
     name: flag_cd
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_in:
     name: flag_in
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_sn:
     name: flag_sn
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_sb:
     name: flag_sb
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_cs:
     name: flag_cs
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_ba:
     name: flag_ba
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_la:
     name: flag_la
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_ce:
     name: flag_ce
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_pb:
     name: flag_pb
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_th:
     name: flag_th
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
     range: ProcessedDataFlag
   flag_u:
     name: flag_u
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - XRFElementalProduct
@@ -1053,13 +1053,13 @@ description: "X-ray Fluorescence (XRF) elemental concentration data.\nOne row pe
   \  Trace metals: Cl, V, Cr, Ni, Cu, Zn, Ga, As, Se, Br, Rb, Sr, Y, Nb, Mo,\n   \
   \             Ag, Cd, In, Sn, Sb, Cs, Ba, La, Ce, Pb, Th, U\n\nRequired enum additions\
   \ to enums.yaml:\n  product:\n    XRFElementalProduct:  # Add to product permissible_values"
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: XRayDataProduct
 attributes:
   cl_mg_per_kg:
     name: cl_mg_per_kg
     description: Chlorine concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: cl_mg_per_kg
     owner: XRFElementalProduct
@@ -1069,7 +1069,7 @@ attributes:
   v_mg_per_kg:
     name: v_mg_per_kg
     description: Vanadium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: v_mg_per_kg
     owner: XRFElementalProduct
@@ -1079,7 +1079,7 @@ attributes:
   cr_mg_per_kg:
     name: cr_mg_per_kg
     description: Chromium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: cr_mg_per_kg
     owner: XRFElementalProduct
@@ -1089,7 +1089,7 @@ attributes:
   ni_mg_per_kg:
     name: ni_mg_per_kg
     description: Nickel concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: ni_mg_per_kg
     owner: XRFElementalProduct
@@ -1099,7 +1099,7 @@ attributes:
   cu_mg_per_kg:
     name: cu_mg_per_kg
     description: Copper concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: cu_mg_per_kg
     owner: XRFElementalProduct
@@ -1109,7 +1109,7 @@ attributes:
   zn_mg_per_kg:
     name: zn_mg_per_kg
     description: Zinc concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: zn_mg_per_kg
     owner: XRFElementalProduct
@@ -1119,7 +1119,7 @@ attributes:
   ga_mg_per_kg:
     name: ga_mg_per_kg
     description: Gallium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: ga_mg_per_kg
     owner: XRFElementalProduct
@@ -1129,7 +1129,7 @@ attributes:
   as_mg_per_kg:
     name: as_mg_per_kg
     description: Arsenic concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: as_mg_per_kg
     owner: XRFElementalProduct
@@ -1139,7 +1139,7 @@ attributes:
   se_mg_per_kg:
     name: se_mg_per_kg
     description: Selenium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: se_mg_per_kg
     owner: XRFElementalProduct
@@ -1149,7 +1149,7 @@ attributes:
   br_mg_per_kg:
     name: br_mg_per_kg
     description: Bromine concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: br_mg_per_kg
     owner: XRFElementalProduct
@@ -1159,7 +1159,7 @@ attributes:
   rb_mg_per_kg:
     name: rb_mg_per_kg
     description: Rubidium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: rb_mg_per_kg
     owner: XRFElementalProduct
@@ -1169,7 +1169,7 @@ attributes:
   sr_mg_per_kg:
     name: sr_mg_per_kg
     description: Strontium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: sr_mg_per_kg
     owner: XRFElementalProduct
@@ -1179,7 +1179,7 @@ attributes:
   y_mg_per_kg:
     name: y_mg_per_kg
     description: Yttrium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: y_mg_per_kg
     owner: XRFElementalProduct
@@ -1189,7 +1189,7 @@ attributes:
   nb_mg_per_kg:
     name: nb_mg_per_kg
     description: Niobium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: nb_mg_per_kg
     owner: XRFElementalProduct
@@ -1199,7 +1199,7 @@ attributes:
   mo_mg_per_kg:
     name: mo_mg_per_kg
     description: Molybdenum concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: mo_mg_per_kg
     owner: XRFElementalProduct
@@ -1209,7 +1209,7 @@ attributes:
   ag_mg_per_kg:
     name: ag_mg_per_kg
     description: Silver concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: ag_mg_per_kg
     owner: XRFElementalProduct
@@ -1219,7 +1219,7 @@ attributes:
   cd_mg_per_kg:
     name: cd_mg_per_kg
     description: Cadmium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: cd_mg_per_kg
     owner: XRFElementalProduct
@@ -1229,7 +1229,7 @@ attributes:
   in_mg_per_kg:
     name: in_mg_per_kg
     description: Indium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: in_mg_per_kg
     owner: XRFElementalProduct
@@ -1239,7 +1239,7 @@ attributes:
   sn_mg_per_kg:
     name: sn_mg_per_kg
     description: Tin concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: sn_mg_per_kg
     owner: XRFElementalProduct
@@ -1249,7 +1249,7 @@ attributes:
   sb_mg_per_kg:
     name: sb_mg_per_kg
     description: Antimony concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: sb_mg_per_kg
     owner: XRFElementalProduct
@@ -1259,7 +1259,7 @@ attributes:
   cs_mg_per_kg:
     name: cs_mg_per_kg
     description: Cesium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: cs_mg_per_kg
     owner: XRFElementalProduct
@@ -1269,7 +1269,7 @@ attributes:
   ba_mg_per_kg:
     name: ba_mg_per_kg
     description: Barium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: ba_mg_per_kg
     owner: XRFElementalProduct
@@ -1279,7 +1279,7 @@ attributes:
   la_mg_per_kg:
     name: la_mg_per_kg
     description: Lanthanum concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: la_mg_per_kg
     owner: XRFElementalProduct
@@ -1289,7 +1289,7 @@ attributes:
   ce_mg_per_kg:
     name: ce_mg_per_kg
     description: Cerium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: ce_mg_per_kg
     owner: XRFElementalProduct
@@ -1299,7 +1299,7 @@ attributes:
   pb_mg_per_kg:
     name: pb_mg_per_kg
     description: Lead concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: pb_mg_per_kg
     owner: XRFElementalProduct
@@ -1309,7 +1309,7 @@ attributes:
   th_mg_per_kg:
     name: th_mg_per_kg
     description: Thorium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: th_mg_per_kg
     owner: XRFElementalProduct
@@ -1319,7 +1319,7 @@ attributes:
   u_mg_per_kg:
     name: u_mg_per_kg
     description: Uranium concentration in mg/kg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: u_mg_per_kg
     owner: XRFElementalProduct
@@ -1328,7 +1328,7 @@ attributes:
     range: float
   flag_cl:
     name: flag_cl
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_cl
     owner: XRFElementalProduct
@@ -1337,7 +1337,7 @@ attributes:
     range: ProcessedDataFlag
   flag_v:
     name: flag_v
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_v
     owner: XRFElementalProduct
@@ -1346,7 +1346,7 @@ attributes:
     range: ProcessedDataFlag
   flag_cr:
     name: flag_cr
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_cr
     owner: XRFElementalProduct
@@ -1355,7 +1355,7 @@ attributes:
     range: ProcessedDataFlag
   flag_ni:
     name: flag_ni
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_ni
     owner: XRFElementalProduct
@@ -1364,7 +1364,7 @@ attributes:
     range: ProcessedDataFlag
   flag_cu:
     name: flag_cu
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_cu
     owner: XRFElementalProduct
@@ -1373,7 +1373,7 @@ attributes:
     range: ProcessedDataFlag
   flag_zn:
     name: flag_zn
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_zn
     owner: XRFElementalProduct
@@ -1382,7 +1382,7 @@ attributes:
     range: ProcessedDataFlag
   flag_ga:
     name: flag_ga
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_ga
     owner: XRFElementalProduct
@@ -1391,7 +1391,7 @@ attributes:
     range: ProcessedDataFlag
   flag_as:
     name: flag_as
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_as
     owner: XRFElementalProduct
@@ -1400,7 +1400,7 @@ attributes:
     range: ProcessedDataFlag
   flag_se:
     name: flag_se
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_se
     owner: XRFElementalProduct
@@ -1409,7 +1409,7 @@ attributes:
     range: ProcessedDataFlag
   flag_br:
     name: flag_br
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_br
     owner: XRFElementalProduct
@@ -1418,7 +1418,7 @@ attributes:
     range: ProcessedDataFlag
   flag_rb:
     name: flag_rb
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_rb
     owner: XRFElementalProduct
@@ -1427,7 +1427,7 @@ attributes:
     range: ProcessedDataFlag
   flag_sr:
     name: flag_sr
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_sr
     owner: XRFElementalProduct
@@ -1436,7 +1436,7 @@ attributes:
     range: ProcessedDataFlag
   flag_y:
     name: flag_y
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_y
     owner: XRFElementalProduct
@@ -1445,7 +1445,7 @@ attributes:
     range: ProcessedDataFlag
   flag_nb:
     name: flag_nb
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_nb
     owner: XRFElementalProduct
@@ -1454,7 +1454,7 @@ attributes:
     range: ProcessedDataFlag
   flag_mo:
     name: flag_mo
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_mo
     owner: XRFElementalProduct
@@ -1463,7 +1463,7 @@ attributes:
     range: ProcessedDataFlag
   flag_ag:
     name: flag_ag
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_ag
     owner: XRFElementalProduct
@@ -1472,7 +1472,7 @@ attributes:
     range: ProcessedDataFlag
   flag_cd:
     name: flag_cd
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_cd
     owner: XRFElementalProduct
@@ -1481,7 +1481,7 @@ attributes:
     range: ProcessedDataFlag
   flag_in:
     name: flag_in
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_in
     owner: XRFElementalProduct
@@ -1490,7 +1490,7 @@ attributes:
     range: ProcessedDataFlag
   flag_sn:
     name: flag_sn
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_sn
     owner: XRFElementalProduct
@@ -1499,7 +1499,7 @@ attributes:
     range: ProcessedDataFlag
   flag_sb:
     name: flag_sb
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_sb
     owner: XRFElementalProduct
@@ -1508,7 +1508,7 @@ attributes:
     range: ProcessedDataFlag
   flag_cs:
     name: flag_cs
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_cs
     owner: XRFElementalProduct
@@ -1517,7 +1517,7 @@ attributes:
     range: ProcessedDataFlag
   flag_ba:
     name: flag_ba
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_ba
     owner: XRFElementalProduct
@@ -1526,7 +1526,7 @@ attributes:
     range: ProcessedDataFlag
   flag_la:
     name: flag_la
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_la
     owner: XRFElementalProduct
@@ -1535,7 +1535,7 @@ attributes:
     range: ProcessedDataFlag
   flag_ce:
     name: flag_ce
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_ce
     owner: XRFElementalProduct
@@ -1544,7 +1544,7 @@ attributes:
     range: ProcessedDataFlag
   flag_pb:
     name: flag_pb
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_pb
     owner: XRFElementalProduct
@@ -1553,7 +1553,7 @@ attributes:
     range: ProcessedDataFlag
   flag_th:
     name: flag_th
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_th
     owner: XRFElementalProduct
@@ -1562,7 +1562,7 @@ attributes:
     range: ProcessedDataFlag
   flag_u:
     name: flag_u
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: flag_u
     owner: XRFElementalProduct
@@ -1573,7 +1573,7 @@ attributes:
     name: measure_type
     description: Whether the measurement recorded is a single measurement, one of
       a set of  replicate measurements, or an average of several replicate measurements.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: measure_type
     owner: XRFElementalProduct
@@ -1606,7 +1606,7 @@ attributes:
       \ retained until formal typed class exists."
     todos:
     - make this inined/multivalued?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: summary_metrics
     owner: XRFElementalProduct
@@ -1617,7 +1617,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: lims_barcode
     owner: XRFElementalProduct
@@ -1629,7 +1629,7 @@ attributes:
   sample_id:
     name: sample_id
     description: Link back to the originating sample
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sample_id
     owner: XRFElementalProduct
@@ -1642,7 +1642,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: name
     owner: XRFElementalProduct
@@ -1672,7 +1672,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: description
     owner: XRFElementalProduct
@@ -1708,7 +1708,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - study
     - study_id
@@ -1745,7 +1745,7 @@ attributes:
 
       in the same sampling event or campaign.'
     title: sampling set
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sampling_set
     owner: XRFElementalProduct
@@ -1761,7 +1761,7 @@ attributes:
     - value: TOP
     - value: MID
     - value: BTM
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: core_section
     owner: XRFElementalProduct
@@ -1779,7 +1779,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - samp_name
     rank: 1000
@@ -1805,7 +1805,7 @@ attributes:
     range: string
   s3_base_url:
     name: s3_base_url
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: s3_base_url
     owner: XRFElementalProduct
@@ -1814,7 +1814,7 @@ attributes:
     range: string
   s3_bucket:
     name: s3_bucket
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: s3_bucket
     owner: XRFElementalProduct
@@ -1824,7 +1824,7 @@ attributes:
   s3_key:
     name: s3_key
     description: MinIO/S3 object key; required for all data products
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: s3_key
     owner: XRFElementalProduct
@@ -1835,7 +1835,7 @@ attributes:
   filesize:
     name: filesize
     description: Size of the file in bytes
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: filesize
     owner: XRFElementalProduct
@@ -1844,7 +1844,7 @@ attributes:
     range: integer
   md5checksum:
     name: md5checksum
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: md5checksum
     owner: XRFElementalProduct
@@ -1853,7 +1853,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     identifier: true
     alias: id
     owner: XRFElementalProduct

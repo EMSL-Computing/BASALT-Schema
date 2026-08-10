@@ -9,7 +9,7 @@ _The part of the organic matter in the soil that constitutes living microorganis
 
 
 
-URI: [analysis_api_schema:microbial_biomass_c](https://w3id.org/MONet/analysis-api-schema/microbial_biomass_c)
+URI: [basalt_schema:microbial_biomass_c](https://w3id.org/MONet/basalt-schema/microbial_biomass_c)
 Alias: microbial_biomass_c
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: microbial_biomass_c
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: microbial_biomass_c
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:microbial_biomass_c |
-| native | analysis_api_schema:microbial_biomass_c |
+| self | basalt_schema:microbial_biomass_c |
+| native | basalt_schema:microbial_biomass_c |
 
 
 
@@ -95,7 +95,7 @@ description: The part of the organic matter in the soil that constitutes living 
   factors used for conversion to the final units. Provide value and unit, any unit
   is valid
 title: microbial biomass carbon
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: microbial_biomass_c
 domain_of:

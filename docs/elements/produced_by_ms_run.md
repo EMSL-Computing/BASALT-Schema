@@ -9,7 +9,7 @@ _a reference to the data generation activity that produced instrument data_
 
 
 
-URI: [analysis_api_schema:produced_by_ms_run](https://w3id.org/MONet/analysis-api-schema/produced_by_ms_run)
+URI: [basalt_schema:produced_by_ms_run](https://w3id.org/MONet/basalt-schema/produced_by_ms_run)
 Alias: produced_by_ms_run
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: produced_by_ms_run
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: produced_by_ms_run
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:produced_by_ms_run |
-| native | analysis_api_schema:produced_by_ms_run |
+| self | basalt_schema:produced_by_ms_run |
+| native | basalt_schema:produced_by_ms_run |
 
 
 
@@ -83,7 +83,7 @@ Alias: produced_by_ms_run
 name: produced_by_ms_run
 description: a reference to the data generation activity that produced instrument
   data
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: produced_by_ms_run
 domain_of:

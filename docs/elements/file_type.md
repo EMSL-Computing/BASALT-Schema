@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:file_type](https://w3id.org/MONet/analysis-api-schema/file_type)
+URI: [basalt_schema:file_type](https://w3id.org/MONet/basalt-schema/file_type)
 Alias: file_type
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: file_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -74,8 +74,8 @@ Alias: file_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:file_type |
-| native | analysis_api_schema:file_type |
+| self | basalt_schema:file_type |
+| native | basalt_schema:file_type |
 
 
 
@@ -85,7 +85,7 @@ Alias: file_type
 <details>
 ```yaml
 name: file_type
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: file_type
 owner: InstrumentData

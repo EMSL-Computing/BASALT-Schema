@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:DeviceTypeEnum](https://w3id.org/MONet/analysis-api-schema/DeviceTypeEnum)
+URI: [basalt_schema:DeviceTypeEnum](https://w3id.org/MONet/basalt-schema/DeviceTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -37,7 +37,7 @@ URI: [analysis_api_schema:DeviceTypeEnum](https://w3id.org/MONet/analysis-api-sc
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -49,7 +49,7 @@ URI: [analysis_api_schema:DeviceTypeEnum](https://w3id.org/MONet/analysis-api-sc
 <details>
 ```yaml
 name: DeviceTypeEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   orbital_shaker:

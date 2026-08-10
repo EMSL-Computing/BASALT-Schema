@@ -1,15 +1,15 @@
-id: https://w3id.org/MONet/analysis-api-schema/methods
-name: analysis-api-schema-methods
-title: MONet Analysis API - Methods
+id: https://w3id.org/MONet/basalt-schema/methods
+name: basalt-schema-methods
+title: Basalt Schema - Methods
 description: |-
-  Enumerated values used throughout the MONet Analysis API schema
+  Enumerated values used throughout the Basalt Schema
 license: MIT
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://w3id.org/MONet/basalt-schema/
   linkml: https://w3id.org/linkml/
   schema: http://schema.org/
-default_prefix: analysis_api_schema
+default_prefix: basalt_schema
 
 imports:
   - linkml:types

@@ -9,7 +9,7 @@ _Target strain identifier for purity checks_
 
 
 
-URI: [analysis_api_schema:target_strain](https://w3id.org/MONet/analysis-api-schema/target_strain)
+URI: [basalt_schema:target_strain](https://w3id.org/MONet/basalt-schema/target_strain)
 Alias: target_strain
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: target_strain
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -74,8 +74,8 @@ Alias: target_strain
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:target_strain |
-| native | analysis_api_schema:target_strain |
+| self | basalt_schema:target_strain |
+| native | basalt_schema:target_strain |
 
 
 
@@ -88,7 +88,7 @@ name: target_strain
 description: Target strain identifier for purity checks
 todos:
 - should this point to the Strain class?
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: target_strain
 domain_of:

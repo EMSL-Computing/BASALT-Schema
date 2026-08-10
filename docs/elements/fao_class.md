@@ -9,7 +9,7 @@ _Soil classification from the FAO World soil distribution from International Soi
 
 
 
-URI: [analysis_api_schema:fao_class](https://w3id.org/MONet/analysis-api-schema/fao_class)
+URI: [basalt_schema:fao_class](https://w3id.org/MONet/basalt-schema/fao_class)
 Alias: fao_class
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: fao_class
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: fao_class
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:fao_class |
-| native | analysis_api_schema:fao_class |
+| self | basalt_schema:fao_class |
+| native | basalt_schema:fao_class |
 
 
 
@@ -85,7 +85,7 @@ description: Soil classification from the FAO World soil distribution from Inter
   Soil Reference and Information Centre (ISRIC). The list of available soil classifications
   can be found at https://www.isric.org/explore/world-soil-distribution
 title: FAO soil taxonomy classification
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: fao_class
 domain_of:

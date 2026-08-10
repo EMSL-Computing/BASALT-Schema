@@ -1,18 +1,18 @@
 ---
-id: https://w3id.org/MONet/analysis-api-schema/study
-name: analysis-api-schema-study
-title: MONet Analysis API - Study
+id: https://w3id.org/MONet/basalt-schema/study
+name: basalt-schema-study
+title: Basalt Schema - Study
 description: |-
-  Study-related classes for the MONet Analysis API.
+  Study-related classes for Basalt.
 license: MIT
 see_also:
-  - https://MONet.github.io/analysis-api-schema
+  - https://MONet.github.io/basalt-schema
   - https://github.com/pnnl/analysis-api
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://w3id.org/MONet/basalt-schema/
 
-default_prefix: analysis_api_schema
+default_prefix: basalt_schema
 default_range: string
 
 imports:

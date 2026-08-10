@@ -9,7 +9,7 @@ _Name of plant structure the sample was obtained from; for Plant Ontology (PO) (
 
 
 
-URI: [analysis_api_schema:plant_struc](https://w3id.org/MONet/analysis-api-schema/plant_struc)
+URI: [basalt_schema:plant_struc](https://w3id.org/MONet/basalt-schema/plant_struc)
 Alias: plant_struc
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: plant_struc
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: plant_struc
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:plant_struc |
-| native | analysis_api_schema:plant_struc |
+| self | basalt_schema:plant_struc |
+| native | basalt_schema:plant_struc |
 
 
 
@@ -88,7 +88,7 @@ description: Name of plant structure the sample was obtained from; for Plant Ont
   petiole epidermis (PO_0000051). If an individual flower is sampled the sex of it
   can be recorded here.
 title: plant structure
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: plant_struc
 domain_of:

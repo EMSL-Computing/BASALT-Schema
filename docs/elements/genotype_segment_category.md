@@ -11,7 +11,7 @@ _Examples: "Gene(s) of Interest", "Gene Silencer"_
 
 
 
-URI: [analysis_api_schema:genotype_segment_category](https://w3id.org/MONet/analysis-api-schema/genotype_segment_category)
+URI: [basalt_schema:genotype_segment_category](https://w3id.org/MONet/basalt-schema/genotype_segment_category)
 Alias: genotype_segment_category
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: genotype_segment_category
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: genotype_segment_category
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:genotype_segment_category |
-| native | analysis_api_schema:genotype_segment_category |
+| self | basalt_schema:genotype_segment_category |
+| native | basalt_schema:genotype_segment_category |
 
 
 
@@ -87,7 +87,7 @@ description: 'Category of genetic modification or segment.
 
   Examples: "Gene(s) of Interest", "Gene Silencer"'
 title: genotype segment category
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: genotype_segment_category
 domain_of:

@@ -9,7 +9,7 @@ _Information about treatment involving the use of mineral supplements; should in
 
 
 
-URI: [analysis_api_schema:mineral_nutr_regm](https://w3id.org/MONet/analysis-api-schema/mineral_nutr_regm)
+URI: [basalt_schema:mineral_nutr_regm](https://w3id.org/MONet/basalt-schema/mineral_nutr_regm)
 Alias: mineral_nutr_regm
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: mineral_nutr_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: mineral_nutr_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:mineral_nutr_regm |
-| native | analysis_api_schema:mineral_nutr_regm |
+| self | basalt_schema:mineral_nutr_regm |
+| native | basalt_schema:mineral_nutr_regm |
 
 
 
@@ -90,7 +90,7 @@ description: Information about treatment involving the use of mineral supplement
   and the start and end time of the entire treatment; can include multiple mineral
   nutrient regimens
 title: mineral nutrient regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: mineral_nutr_regm
 domain_of:

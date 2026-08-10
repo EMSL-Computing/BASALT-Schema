@@ -9,7 +9,7 @@ _Electrical conductivity of water. Provide value and unit, any unit is valid._
 
 
 
-URI: [analysis_api_schema:conduc](https://w3id.org/MONet/analysis-api-schema/conduc)
+URI: [basalt_schema:conduc](https://w3id.org/MONet/basalt-schema/conduc)
 Alias: conduc
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: conduc
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: conduc
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:conduc |
-| native | analysis_api_schema:conduc |
+| self | basalt_schema:conduc |
+| native | basalt_schema:conduc |
 
 
 
@@ -92,7 +92,7 @@ name: conduc
 description: Electrical conductivity of water. Provide value and unit, any unit is
   valid.
 title: conductivity
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: conduc
 domain_of:

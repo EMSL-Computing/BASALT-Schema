@@ -9,7 +9,7 @@ _Many sample treatment descriptor columns are available. If a treatment is appli
 
 
 
-URI: [analysis_api_schema:other_treatment](https://w3id.org/MONet/analysis-api-schema/other_treatment)
+URI: [basalt_schema:other_treatment](https://w3id.org/MONet/basalt-schema/other_treatment)
 Alias: other_treatment
 
 <!-- no inheritance hierarchy -->
@@ -74,7 +74,7 @@ Alias: other_treatment
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -83,8 +83,8 @@ Alias: other_treatment
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:other_treatment |
-| native | analysis_api_schema:other_treatment |
+| self | basalt_schema:other_treatment |
+| native | basalt_schema:other_treatment |
 
 
 
@@ -98,7 +98,7 @@ description: Many sample treatment descriptor columns are available. If a treatm
   is applied to your samples and the provided treatment terms do not satisfy please
   add it here. Multiple treatments can be entered here separated by ;
 title: other treatment
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: other_treatment
 domain_of:

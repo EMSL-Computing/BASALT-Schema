@@ -9,7 +9,7 @@ _Reference or method used in determining the total nitrogen_
 
 
 
-URI: [analysis_api_schema:tot_nitro_cont_meth](https://w3id.org/MONet/analysis-api-schema/tot_nitro_cont_meth)
+URI: [basalt_schema:tot_nitro_cont_meth](https://w3id.org/MONet/basalt-schema/tot_nitro_cont_meth)
 Alias: tot_nitro_cont_meth
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: tot_nitro_cont_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: tot_nitro_cont_meth
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:tot_nitro_cont_meth |
-| native | analysis_api_schema:tot_nitro_cont_meth |
+| self | basalt_schema:tot_nitro_cont_meth |
+| native | basalt_schema:tot_nitro_cont_meth |
 
 
 
@@ -85,7 +85,7 @@ Alias: tot_nitro_cont_meth
 name: tot_nitro_cont_meth
 description: Reference or method used in determining the total nitrogen
 title: total nitrogen content method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: tot_nitro_cont_meth
 domain_of:

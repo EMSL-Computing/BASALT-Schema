@@ -9,7 +9,7 @@ _Provide a unique name to identify transformed strain lines._
 
 
 
-URI: [analysis_api_schema:strain_name](https://w3id.org/MONet/analysis-api-schema/strain_name)
+URI: [basalt_schema:strain_name](https://w3id.org/MONet/basalt-schema/strain_name)
 Alias: strain_name
 
 <!-- no inheritance hierarchy -->
@@ -51,7 +51,7 @@ Alias: strain_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -60,8 +60,8 @@ Alias: strain_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:strain_name |
-| native | analysis_api_schema:strain_name |
+| self | basalt_schema:strain_name |
+| native | basalt_schema:strain_name |
 
 
 
@@ -73,7 +73,7 @@ Alias: strain_name
 name: strain_name
 description: Provide a unique name to identify transformed strain lines.
 title: strain name
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: strain_name
 range: string

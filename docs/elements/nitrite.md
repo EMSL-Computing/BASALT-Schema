@@ -9,7 +9,7 @@ _Concentration of nitrite in the sample (Unit: umol/L or mg/L or ppm)_
 
 
 
-URI: [analysis_api_schema:nitrite](https://w3id.org/MONet/analysis-api-schema/nitrite)
+URI: [basalt_schema:nitrite](https://w3id.org/MONet/basalt-schema/nitrite)
 Alias: nitrite
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: nitrite
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: nitrite
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:nitrite |
-| native | analysis_api_schema:nitrite |
+| self | basalt_schema:nitrite |
+| native | basalt_schema:nitrite |
 
 
 
@@ -92,7 +92,7 @@ Alias: nitrite
 name: nitrite
 description: 'Concentration of nitrite in the sample (Unit: umol/L or mg/L or ppm)'
 title: nitrite
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: nitrite
 domain_of:

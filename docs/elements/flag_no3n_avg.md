@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_no3n_avg](https://w3id.org/MONet/analysis-api-schema/flag_no3n_avg)
+URI: [basalt_schema:flag_no3n_avg](https://w3id.org/MONet/basalt-schema/flag_no3n_avg)
 Alias: flag_no3n_avg
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_no3n_avg
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_no3n_avg
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_no3n_avg |
-| native | analysis_api_schema:flag_no3n_avg |
+| self | basalt_schema:flag_no3n_avg |
+| native | basalt_schema:flag_no3n_avg |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_no3n_avg
 <details>
 ```yaml
 name: flag_no3n_avg
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: flag_no3n_avg
 owner: NitrogenAnalysisProduct

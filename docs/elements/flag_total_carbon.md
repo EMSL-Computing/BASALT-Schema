@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_total_carbon](https://w3id.org/MONet/analysis-api-schema/flag_total_carbon)
+URI: [basalt_schema:flag_total_carbon](https://w3id.org/MONet/basalt-schema/flag_total_carbon)
 Alias: flag_total_carbon
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_total_carbon
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_total_carbon
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_total_carbon |
-| native | analysis_api_schema:flag_total_carbon |
+| self | basalt_schema:flag_total_carbon |
+| native | basalt_schema:flag_total_carbon |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_total_carbon
 <details>
 ```yaml
 name: flag_total_carbon
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: flag_total_carbon
 owner: ElementalAnalysisProduct

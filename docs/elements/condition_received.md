@@ -11,7 +11,7 @@ _Examples: "good", "damaged", "thawed"_
 
 
 
-URI: [analysis_api_schema:condition_received](https://w3id.org/MONet/analysis-api-schema/condition_received)
+URI: [basalt_schema:condition_received](https://w3id.org/MONet/basalt-schema/condition_received)
 Alias: condition_received
 
 <!-- no inheritance hierarchy -->
@@ -53,7 +53,7 @@ Alias: condition_received
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -62,8 +62,8 @@ Alias: condition_received
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:condition_received |
-| native | analysis_api_schema:condition_received |
+| self | basalt_schema:condition_received |
+| native | basalt_schema:condition_received |
 
 
 
@@ -76,7 +76,7 @@ name: condition_received
 description: 'The condition of the sample when received.
 
   Examples: "good", "damaged", "thawed"'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: condition_received
 range: string

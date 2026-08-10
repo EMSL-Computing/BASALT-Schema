@@ -11,7 +11,7 @@ _Example: "Bacterial Resistance", "Other"_
 
 
 
-URI: [analysis_api_schema:trait](https://w3id.org/MONet/analysis-api-schema/trait)
+URI: [basalt_schema:trait](https://w3id.org/MONet/basalt-schema/trait)
 Alias: trait
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: trait
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: trait
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:trait |
-| native | analysis_api_schema:trait |
+| self | basalt_schema:trait |
+| native | basalt_schema:trait |
 
 
 
@@ -86,7 +86,7 @@ name: trait
 description: 'Trait category for the organism.
 
   Example: "Bacterial Resistance", "Other"'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: trait
 domain_of:

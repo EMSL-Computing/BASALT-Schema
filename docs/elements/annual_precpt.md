@@ -9,7 +9,7 @@ _The average of all annual precipitation values known or an estimated equivalent
 
 
 
-URI: [analysis_api_schema:annual_precpt](https://w3id.org/MONet/analysis-api-schema/annual_precpt)
+URI: [basalt_schema:annual_precpt](https://w3id.org/MONet/basalt-schema/annual_precpt)
 Alias: annual_precpt
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: annual_precpt
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -82,8 +82,8 @@ Alias: annual_precpt
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:annual_precpt |
-| native | analysis_api_schema:annual_precpt |
+| self | basalt_schema:annual_precpt |
+| native | basalt_schema:annual_precpt |
 
 
 
@@ -97,7 +97,7 @@ description: 'The average of all annual precipitation values known or an estimat
   equivalent value derived by such methods as regional indexes or Isohyetal maps.
   (Unit: mm)'
 title: mean annual precipitation
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 aliases:
 - average annual precipitation
 rank: 1000

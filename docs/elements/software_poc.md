@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:software_poc](https://w3id.org/MONet/analysis-api-schema/software_poc)
+URI: [basalt_schema:software_poc](https://w3id.org/MONet/basalt-schema/software_poc)
 Alias: software_poc
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: software_poc
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -74,8 +74,8 @@ Alias: software_poc
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:software_poc |
-| native | analysis_api_schema:software_poc |
+| self | basalt_schema:software_poc |
+| native | basalt_schema:software_poc |
 
 
 
@@ -85,7 +85,7 @@ Alias: software_poc
 <details>
 ```yaml
 name: software_poc
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: software_poc
 owner: DataProcessingActivity

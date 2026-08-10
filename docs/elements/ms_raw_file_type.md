@@ -9,7 +9,7 @@ _the filetype of the mass spectrometry instrument data_
 
 
 
-URI: [analysis_api_schema:ms_raw_file_type](https://w3id.org/MONet/analysis-api-schema/ms_raw_file_type)
+URI: [basalt_schema:ms_raw_file_type](https://w3id.org/MONet/basalt-schema/ms_raw_file_type)
 Alias: ms_raw_file_type
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: ms_raw_file_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: ms_raw_file_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ms_raw_file_type |
-| native | analysis_api_schema:ms_raw_file_type |
+| self | basalt_schema:ms_raw_file_type |
+| native | basalt_schema:ms_raw_file_type |
 
 
 
@@ -82,7 +82,7 @@ Alias: ms_raw_file_type
 ```yaml
 name: ms_raw_file_type
 description: the filetype of the mass spectrometry instrument data
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: ms_raw_file_type
 domain_of:

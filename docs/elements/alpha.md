@@ -9,7 +9,7 @@ _Van Genuchten shape parameter alpha (1/cm). Controls the inverse of the air-ent
 
 
 
-URI: [analysis_api_schema:alpha](https://w3id.org/MONet/analysis-api-schema/alpha)
+URI: [basalt_schema:alpha](https://w3id.org/MONet/basalt-schema/alpha)
 Alias: alpha
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: alpha
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: alpha
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:alpha |
-| native | analysis_api_schema:alpha |
+| self | basalt_schema:alpha |
+| native | basalt_schema:alpha |
 
 
 
@@ -90,7 +90,7 @@ Alias: alpha
 name: alpha
 description: Van Genuchten shape parameter alpha (1/cm). Controls the inverse of the
   air-entry suction; typically fitted by HYPROP-FIT or similar software.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: alpha
 owner: HydraulicPropertiesProduct

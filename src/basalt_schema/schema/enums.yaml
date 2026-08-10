@@ -1,13 +1,13 @@
 ---
-id: https://w3id.org/MONet/analysis-api-schema/enums
-name: analysis-api-schema-enums
-title: MONet Analysis API - Enumerations
+id: https://w3id.org/MONet/basalt-schema/enums
+name: basalt-schema-enums
+title: Basalt Schema - Enumerations
 description: |-
-  Enumerated values used throughout the MONet Analysis API schema
+  Enumerated values used throughout the Basalt Schema
 license: MIT
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://w3id.org/MONet/basalt-schema/
   linkml: https://w3id.org/linkml/
   schema: http://schema.org/
   CHEBI: http://purl.obolibrary.org/obo/CHEBI_
@@ -17,7 +17,7 @@ prefixes:
   MS: http://purl.obolibrary.org/obo/MS_
   EC: https://enzyme.expasy.org/EC/
   ror: https://ror.org/
-default_prefix: analysis_api_schema
+default_prefix: basalt_schema
 
 imports:
   - linkml:types
@@ -618,7 +618,7 @@ enums:
       spreading:
       prostrate:
 
-  InstitutionEnum: #speak with Maya!!! for removal/ We may need this enum to accomodate the masspectrometry class # found in file #double check analysis-api-schema
+  InstitutionEnum: #speak with Maya!!! for removal/ We may need this enum to accomodate the masspectrometry class # found in file #double check basalt-schema
     description: The organization that processed the sample / ran the pipeline / participated in the project.
     permissible_values:
       nmdc:

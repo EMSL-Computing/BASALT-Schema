@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_no3n](https://w3id.org/MONet/analysis-api-schema/flag_no3n)
+URI: [basalt_schema:flag_no3n](https://w3id.org/MONet/basalt-schema/flag_no3n)
 Alias: flag_no3n
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_no3n
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_no3n
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_no3n |
-| native | analysis_api_schema:flag_no3n |
+| self | basalt_schema:flag_no3n |
+| native | basalt_schema:flag_no3n |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_no3n
 <details>
 ```yaml
 name: flag_no3n
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: flag_no3n
 owner: NitrogenAnalysisProduct

@@ -19,7 +19,7 @@ _Interim DB storage: JSONB column retained until formal typed class exists._
 
 
 
-URI: [analysis_api_schema:summary_metrics](https://w3id.org/MONet/analysis-api-schema/summary_metrics)
+URI: [basalt_schema:summary_metrics](https://w3id.org/MONet/basalt-schema/summary_metrics)
 Alias: summary_metrics
 
 <!-- no inheritance hierarchy -->
@@ -99,7 +99,7 @@ Alias: summary_metrics
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -108,8 +108,8 @@ Alias: summary_metrics
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:summary_metrics |
-| native | analysis_api_schema:summary_metrics |
+| self | basalt_schema:summary_metrics |
+| native | basalt_schema:summary_metrics |
 
 
 
@@ -127,7 +127,7 @@ description: "Lightweight per-product summary for common queries that avoid full
   \ typed class exists."
 todos:
 - make this inined/multivalued?
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: summary_metrics
 domain_of:

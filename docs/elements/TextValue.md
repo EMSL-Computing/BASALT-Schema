@@ -9,7 +9,7 @@ _A text value with optional description and language._
 
 
 
-URI: [analysis_api_schema:TextValue](https://w3id.org/MONet/analysis-api-schema/TextValue)
+URI: [basalt_schema:TextValue](https://w3id.org/MONet/basalt-schema/TextValue)
 
 
 
@@ -67,7 +67,7 @@ URI: [analysis_api_schema:TextValue](https://w3id.org/MONet/analysis-api-schema/
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -76,8 +76,8 @@ URI: [analysis_api_schema:TextValue](https://w3id.org/MONet/analysis-api-schema/
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:TextValue |
-| native | analysis_api_schema:TextValue |
+| self | basalt_schema:TextValue |
+| native | basalt_schema:TextValue |
 
 
 
@@ -94,13 +94,13 @@ URI: [analysis_api_schema:TextValue](https://w3id.org/MONet/analysis-api-schema/
 ```yaml
 name: TextValue
 description: A text value with optional description and language.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 slots:
 - description
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://w3id.org/MONet/basalt-schema/value-tables
     identifier: true
     domain_of:
     - Activity
@@ -178,14 +178,14 @@ attributes:
     required: true
   language:
     name: language
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://w3id.org/MONet/basalt-schema/value-tables
     rank: 1000
     domain_of:
     - TextValue
     range: string
   has_raw_value:
     name: has_raw_value
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://w3id.org/MONet/basalt-schema/value-tables
     domain_of:
     - TimestampValue
     - TextValue
@@ -204,11 +204,11 @@ attributes:
 ```yaml
 name: TextValue
 description: A text value with optional description and language.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://w3id.org/MONet/basalt-schema/value-tables
     identifier: true
     alias: id
     owner: TextValue
@@ -288,7 +288,7 @@ attributes:
     required: true
   language:
     name: language
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://w3id.org/MONet/basalt-schema/value-tables
     rank: 1000
     alias: language
     owner: TextValue
@@ -297,7 +297,7 @@ attributes:
     range: string
   has_raw_value:
     name: has_raw_value
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://w3id.org/MONet/basalt-schema/value-tables
     alias: has_raw_value
     owner: TextValue
     domain_of:
@@ -312,7 +312,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: description
     owner: TextValue

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag](https://w3id.org/MONet/analysis-api-schema/flag)
+URI: [basalt_schema:flag](https://w3id.org/MONet/basalt-schema/flag)
 Alias: flag
 
 <!-- no inheritance hierarchy -->
@@ -66,8 +66,8 @@ Alias: flag
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag |
-| native | analysis_api_schema:flag |
+| self | basalt_schema:flag |
+| native | basalt_schema:flag |
 
 
 

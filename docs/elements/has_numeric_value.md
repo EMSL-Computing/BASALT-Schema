@@ -9,7 +9,7 @@ _The numeric value of the quantity_
 
 
 
-URI: [analysis_api_schema:has_numeric_value](https://w3id.org/MONet/analysis-api-schema/has_numeric_value)
+URI: [basalt_schema:has_numeric_value](https://w3id.org/MONet/basalt-schema/has_numeric_value)
 Alias: has_numeric_value
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: has_numeric_value
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: has_numeric_value
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:has_numeric_value |
-| native | analysis_api_schema:has_numeric_value |
+| self | basalt_schema:has_numeric_value |
+| native | basalt_schema:has_numeric_value |
 
 
 
@@ -89,7 +89,7 @@ Alias: has_numeric_value
 ```yaml
 name: has_numeric_value
 description: The numeric value of the quantity
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: has_numeric_value
 owner: QuantityValue

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:instrument_operator_id](https://w3id.org/MONet/analysis-api-schema/instrument_operator_id)
+URI: [basalt_schema:instrument_operator_id](https://w3id.org/MONet/basalt-schema/instrument_operator_id)
 Alias: instrument_operator_id
 
 <!-- no inheritance hierarchy -->
@@ -72,7 +72,7 @@ Alias: instrument_operator_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -81,8 +81,8 @@ Alias: instrument_operator_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:instrument_operator_id |
-| native | analysis_api_schema:instrument_operator_id |
+| self | basalt_schema:instrument_operator_id |
+| native | basalt_schema:instrument_operator_id |
 
 
 
@@ -92,7 +92,7 @@ Alias: instrument_operator_id
 <details>
 ```yaml
 name: instrument_operator_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: instrument_operator_id
 owner: DataGenerationActivity

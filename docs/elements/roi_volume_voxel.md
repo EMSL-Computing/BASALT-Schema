@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:roi_volume_voxel](https://w3id.org/MONet/analysis-api-schema/roi_volume_voxel)
+URI: [basalt_schema:roi_volume_voxel](https://w3id.org/MONet/basalt-schema/roi_volume_voxel)
 Alias: roi_volume_voxel
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: roi_volume_voxel
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: roi_volume_voxel
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:roi_volume_voxel |
-| native | analysis_api_schema:roi_volume_voxel |
+| self | basalt_schema:roi_volume_voxel |
+| native | basalt_schema:roi_volume_voxel |
 
 
 
@@ -83,7 +83,7 @@ Alias: roi_volume_voxel
 <details>
 ```yaml
 name: roi_volume_voxel
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: roi_volume_voxel
 owner: TomographyProduct

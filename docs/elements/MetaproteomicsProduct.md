@@ -11,7 +11,7 @@ _Abstract parent class for processed metaproteomics data. Details and subclasses
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [analysis_api_schema:MetaproteomicsProduct](https://w3id.org/MONet/analysis-api-schema/MetaproteomicsProduct)
+URI: [basalt_schema:MetaproteomicsProduct](https://w3id.org/MONet/basalt-schema/MetaproteomicsProduct)
 
 
 
@@ -141,7 +141,7 @@ URI: [analysis_api_schema:MetaproteomicsProduct](https://w3id.org/MONet/analysis
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -150,8 +150,8 @@ URI: [analysis_api_schema:MetaproteomicsProduct](https://w3id.org/MONet/analysis
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:MetaproteomicsProduct |
-| native | analysis_api_schema:MetaproteomicsProduct |
+| self | basalt_schema:MetaproteomicsProduct |
+| native | basalt_schema:MetaproteomicsProduct |
 
 
 
@@ -169,7 +169,7 @@ URI: [analysis_api_schema:MetaproteomicsProduct](https://w3id.org/MONet/analysis
 name: MetaproteomicsProduct
 description: Abstract parent class for processed metaproteomics data. Details and
   subclasses TBD.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: MassSpectrometryDataProduct
 abstract: true
 
@@ -183,7 +183,7 @@ abstract: true
 name: MetaproteomicsProduct
 description: Abstract parent class for processed metaproteomics data. Details and
   subclasses TBD.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: MassSpectrometryDataProduct
 abstract: true
 attributes:
@@ -191,7 +191,7 @@ attributes:
     name: results_from_ms_processing
     description: a reference to the mass spec data processing activity that produced
       this data product
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: results_from_ms_processing
     owner: MetaproteomicsProduct
@@ -208,7 +208,7 @@ attributes:
       \ retained until formal typed class exists."
     todos:
     - make this inined/multivalued?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: summary_metrics
     owner: MetaproteomicsProduct
@@ -219,7 +219,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: lims_barcode
     owner: MetaproteomicsProduct
@@ -231,7 +231,7 @@ attributes:
   sample_id:
     name: sample_id
     description: Link back to the originating sample
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sample_id
     owner: MetaproteomicsProduct
@@ -244,7 +244,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: name
     owner: MetaproteomicsProduct
@@ -274,7 +274,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: description
     owner: MetaproteomicsProduct
@@ -310,7 +310,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - study
     - study_id
@@ -347,7 +347,7 @@ attributes:
 
       in the same sampling event or campaign.'
     title: sampling set
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sampling_set
     owner: MetaproteomicsProduct
@@ -363,7 +363,7 @@ attributes:
     - value: TOP
     - value: MID
     - value: BTM
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: core_section
     owner: MetaproteomicsProduct
@@ -381,7 +381,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - samp_name
     rank: 1000
@@ -407,7 +407,7 @@ attributes:
     range: string
   s3_base_url:
     name: s3_base_url
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: s3_base_url
     owner: MetaproteomicsProduct
@@ -416,7 +416,7 @@ attributes:
     range: string
   s3_bucket:
     name: s3_bucket
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: s3_bucket
     owner: MetaproteomicsProduct
@@ -426,7 +426,7 @@ attributes:
   s3_key:
     name: s3_key
     description: MinIO/S3 object key; required for all data products
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: s3_key
     owner: MetaproteomicsProduct
@@ -437,7 +437,7 @@ attributes:
   filesize:
     name: filesize
     description: Size of the file in bytes
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: filesize
     owner: MetaproteomicsProduct
@@ -446,7 +446,7 @@ attributes:
     range: integer
   md5checksum:
     name: md5checksum
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: md5checksum
     owner: MetaproteomicsProduct
@@ -455,7 +455,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     identifier: true
     alias: id
     owner: MetaproteomicsProduct

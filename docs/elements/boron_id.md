@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:boron_id](https://w3id.org/MONet/analysis-api-schema/boron_id)
+URI: [basalt_schema:boron_id](https://w3id.org/MONet/basalt-schema/boron_id)
 Alias: boron_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: boron_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: boron_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:boron_id |
-| native | analysis_api_schema:boron_id |
+| self | basalt_schema:boron_id |
+| native | basalt_schema:boron_id |
 
 
 
@@ -83,7 +83,7 @@ Alias: boron_id
 <details>
 ```yaml
 name: boron_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: boron_id
 owner: IonsAnalysisProduct

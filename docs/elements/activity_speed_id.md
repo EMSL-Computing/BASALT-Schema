@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:activity_speed_id](https://w3id.org/MONet/analysis-api-schema/activity_speed_id)
+URI: [basalt_schema:activity_speed_id](https://w3id.org/MONet/basalt-schema/activity_speed_id)
 Alias: activity_speed_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: activity_speed_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: activity_speed_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:activity_speed_id |
-| native | analysis_api_schema:activity_speed_id |
+| self | basalt_schema:activity_speed_id |
+| native | basalt_schema:activity_speed_id |
 
 
 
@@ -83,7 +83,7 @@ Alias: activity_speed_id
 <details>
 ```yaml
 name: activity_speed_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: activity_speed_id
 owner: LabDevice

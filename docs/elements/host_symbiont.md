@@ -9,7 +9,7 @@ _The taxonomic name of the organism(s) found living in mutualistic, commensalist
 
 
 
-URI: [analysis_api_schema:host_symbiont](https://w3id.org/MONet/analysis-api-schema/host_symbiont)
+URI: [basalt_schema:host_symbiont](https://w3id.org/MONet/basalt-schema/host_symbiont)
 Alias: host_symbiont
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: host_symbiont
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: host_symbiont
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:host_symbiont |
-| native | analysis_api_schema:host_symbiont |
+| self | basalt_schema:host_symbiont |
+| native | basalt_schema:host_symbiont |
 
 
 
@@ -84,7 +84,7 @@ name: host_symbiont
 description: The taxonomic name of the organism(s) found living in mutualistic, commensalistic,
   or parasitic symbiosis with the specific host.
 title: observed host symbionts
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: host_symbiont
 domain_of:

@@ -1,9 +1,9 @@
 ---
-id: https://w3id.org/MONet/analysis-api-schema/linkage_cache
-name: analysis-api-schema-linkage-cache
-title: MONet Analysis API — Provenance Linkage Cache
+id: https://w3id.org/MONet/basalt-schema/linkage_cache
+name: basalt-schema-linkage-cache
+title: Basalt Schema — Provenance Linkage Cache
 description: |-
-  Pre-computed provenance closure table for the MONet Analysis API.
+  Pre-computed provenance closure table for Basalt.
   Stores every (ancestor, descendant) pair across all chain types with depth,
   enabling fast provenance queries without live recursive CTE traversal.
 
@@ -13,13 +13,13 @@ description: |-
     - DataGenerationActivity (processed sample -> workflow link)
     - ProcessedData.workflow_id (workflow -> product link)
 
-  This file is imported by analysis_api_schema.yaml (import added in MR2).
+  This file is imported by basalt_schema.yaml (import added in MR2).
 license: MIT
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://w3id.org/MONet/basalt-schema/
   linkml: https://w3id.org/linkml/
-default_prefix: analysis_api_schema
+default_prefix: basalt_schema
 default_range: string
 
 imports:

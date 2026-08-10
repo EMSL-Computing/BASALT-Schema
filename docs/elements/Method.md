@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:method](https://w3id.org/MONet/analysis-api-schema/method)
+URI: [basalt_schema:method](https://w3id.org/MONet/basalt-schema/method)
 Alias: method
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:method |
-| native | analysis_api_schema:method |
+| self | basalt_schema:method |
+| native | basalt_schema:method |
 
 
 
@@ -83,7 +83,7 @@ Alias: method
 name: method
 todos:
 - what does this mean
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: method
 domain_of:

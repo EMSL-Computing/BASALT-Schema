@@ -9,7 +9,7 @@ _Information about treatment involving the use of fertilizers; should include th
 
 
 
-URI: [analysis_api_schema:fertilizer_regm](https://w3id.org/MONet/analysis-api-schema/fertilizer_regm)
+URI: [basalt_schema:fertilizer_regm](https://w3id.org/MONet/basalt-schema/fertilizer_regm)
 Alias: fertilizer_regm
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: fertilizer_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: fertilizer_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:fertilizer_regm |
-| native | analysis_api_schema:fertilizer_regm |
+| self | basalt_schema:fertilizer_regm |
+| native | basalt_schema:fertilizer_regm |
 
 
 
@@ -87,7 +87,7 @@ description: Information about treatment involving the use of fertilizers; shoul
   how many times the treatment was repeated, how long each treatment lasted, and the
   start and end time of the entire treatment; can include multiple fertilizer regimens
 title: fertilizer regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: fertilizer_regm
 domain_of:

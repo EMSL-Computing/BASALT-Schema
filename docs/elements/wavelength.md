@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:wavelength](https://w3id.org/MONet/analysis-api-schema/wavelength)
+URI: [basalt_schema:wavelength](https://w3id.org/MONet/basalt-schema/wavelength)
 Alias: wavelength
 
 <!-- no inheritance hierarchy -->
@@ -59,8 +59,8 @@ Alias: wavelength
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:wavelength |
-| native | analysis_api_schema:wavelength |
+| self | basalt_schema:wavelength |
+| native | basalt_schema:wavelength |
 
 
 

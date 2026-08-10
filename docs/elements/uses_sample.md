@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:uses_sample](https://w3id.org/MONet/analysis-api-schema/uses_sample)
+URI: [basalt_schema:uses_sample](https://w3id.org/MONet/basalt-schema/uses_sample)
 Alias: uses_sample
 
 <!-- no inheritance hierarchy -->
@@ -72,7 +72,7 @@ Alias: uses_sample
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -81,8 +81,8 @@ Alias: uses_sample
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:uses_sample |
-| native | analysis_api_schema:uses_sample |
+| self | basalt_schema:uses_sample |
+| native | basalt_schema:uses_sample |
 
 
 
@@ -92,7 +92,7 @@ Alias: uses_sample
 <details>
 ```yaml
 name: uses_sample
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: uses_sample
 owner: SampleProcessing

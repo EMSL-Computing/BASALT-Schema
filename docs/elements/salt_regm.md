@@ -9,7 +9,7 @@ _Information about treatment involving use of salts as supplement to liquid and 
 
 
 
-URI: [analysis_api_schema:salt_regm](https://w3id.org/MONet/analysis-api-schema/salt_regm)
+URI: [basalt_schema:salt_regm](https://w3id.org/MONet/basalt-schema/salt_regm)
 Alias: salt_regm
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: salt_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: salt_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:salt_regm |
-| native | analysis_api_schema:salt_regm |
+| self | basalt_schema:salt_regm |
+| native | basalt_schema:salt_regm |
 
 
 
@@ -90,7 +90,7 @@ description: Information about treatment involving use of salts as supplement to
   lasted, and the start and end time of the entire treatment; can include multiple
   salt regimens.
 title: salt regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: salt_regm
 domain_of:

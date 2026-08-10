@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:KuoMethod](https://w3id.org/MONet/analysis-api-schema/KuoMethod)
+URI: [basalt_schema:KuoMethod](https://w3id.org/MONet/basalt-schema/KuoMethod)
 
 
 
@@ -72,7 +72,7 @@ URI: [analysis_api_schema:KuoMethod](https://w3id.org/MONet/analysis-api-schema/
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -81,8 +81,8 @@ URI: [analysis_api_schema:KuoMethod](https://w3id.org/MONet/analysis-api-schema/
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:KuoMethod |
-| native | analysis_api_schema:KuoMethod |
+| self | basalt_schema:KuoMethod |
+| native | basalt_schema:KuoMethod |
 
 
 
@@ -98,7 +98,7 @@ URI: [analysis_api_schema:KuoMethod](https://w3id.org/MONet/analysis-api-schema/
 <details>
 ```yaml
 name: KuoMethod
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: Method
 slots:
 - location
@@ -106,7 +106,7 @@ slots:
 attributes:
   detection_limit:
     name: detection_limit
-    from_schema: https://w3id.org/MONet/analysis-api-schema/methods
+    from_schema: https://w3id.org/MONet/basalt-schema/methods
     rank: 1000
     domain_of:
     - KuoMethod
@@ -114,7 +114,7 @@ attributes:
     required: true
   wavelength:
     name: wavelength
-    from_schema: https://w3id.org/MONet/analysis-api-schema/methods
+    from_schema: https://w3id.org/MONet/basalt-schema/methods
     domain_of:
     - EnzymeActivityMethod
     - KuoMethod
@@ -128,12 +128,12 @@ attributes:
 <details>
 ```yaml
 name: KuoMethod
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: Method
 attributes:
   detection_limit:
     name: detection_limit
-    from_schema: https://w3id.org/MONet/analysis-api-schema/methods
+    from_schema: https://w3id.org/MONet/basalt-schema/methods
     rank: 1000
     alias: detection_limit
     owner: KuoMethod
@@ -143,7 +143,7 @@ attributes:
     required: true
   wavelength:
     name: wavelength
-    from_schema: https://w3id.org/MONet/analysis-api-schema/methods
+    from_schema: https://w3id.org/MONet/basalt-schema/methods
     alias: wavelength
     owner: KuoMethod
     domain_of:
@@ -154,7 +154,7 @@ attributes:
     name: location
     todos:
     - used on many method classes. no description. what was this meant to mean?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: location
     owner: KuoMethod
@@ -175,7 +175,7 @@ attributes:
     name: method
     todos:
     - what does this mean
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: method
     owner: KuoMethod
@@ -187,7 +187,7 @@ attributes:
     name: analytic
     todos:
     - what does this mean
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: analytic
     owner: KuoMethod

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_total_bases](https://w3id.org/MONet/analysis-api-schema/flag_total_bases)
+URI: [basalt_schema:flag_total_bases](https://w3id.org/MONet/basalt-schema/flag_total_bases)
 Alias: flag_total_bases
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_total_bases
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_total_bases
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_total_bases |
-| native | analysis_api_schema:flag_total_bases |
+| self | basalt_schema:flag_total_bases |
+| native | basalt_schema:flag_total_bases |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_total_bases
 <details>
 ```yaml
 name: flag_total_bases
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: flag_total_bases
 owner: IonsAnalysisProduct

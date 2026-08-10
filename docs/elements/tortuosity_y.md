@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:tortuosity_y](https://w3id.org/MONet/analysis-api-schema/tortuosity_y)
+URI: [basalt_schema:tortuosity_y](https://w3id.org/MONet/basalt-schema/tortuosity_y)
 Alias: tortuosity_y
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: tortuosity_y
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: tortuosity_y
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:tortuosity_y |
-| native | analysis_api_schema:tortuosity_y |
+| self | basalt_schema:tortuosity_y |
+| native | basalt_schema:tortuosity_y |
 
 
 
@@ -83,7 +83,7 @@ Alias: tortuosity_y
 <details>
 ```yaml
 name: tortuosity_y
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: tortuosity_y
 owner: TomographyProduct

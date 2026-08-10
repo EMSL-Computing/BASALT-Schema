@@ -9,7 +9,7 @@ _Mean measurement across all sample wells (excludes blanks)_
 
 
 
-URI: [analysis_api_schema:plate_average](https://w3id.org/MONet/analysis-api-schema/plate_average)
+URI: [basalt_schema:plate_average](https://w3id.org/MONet/basalt-schema/plate_average)
 Alias: plate_average
 
 <!-- no inheritance hierarchy -->
@@ -67,7 +67,7 @@ Alias: plate_average
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -76,8 +76,8 @@ Alias: plate_average
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:plate_average |
-| native | analysis_api_schema:plate_average |
+| self | basalt_schema:plate_average |
+| native | basalt_schema:plate_average |
 
 
 
@@ -90,7 +90,7 @@ name: plate_average
 description: Mean measurement across all sample wells (excludes blanks)
 todos:
 - units
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: plate_average
 domain_of:

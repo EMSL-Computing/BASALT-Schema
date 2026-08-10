@@ -9,7 +9,7 @@ _Method of growth and medium/materials used. Indicate broth, gel, 3-D structure,
 
 
 
-URI: [analysis_api_schema:growth_medium](https://w3id.org/MONet/analysis-api-schema/growth_medium)
+URI: [basalt_schema:growth_medium](https://w3id.org/MONet/basalt-schema/growth_medium)
 Alias: growth_medium
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: growth_medium
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -80,8 +80,8 @@ Alias: growth_medium
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:growth_medium |
-| native | analysis_api_schema:growth_medium |
+| self | basalt_schema:growth_medium |
+| native | basalt_schema:growth_medium |
 
 
 
@@ -95,7 +95,7 @@ description: Method of growth and medium/materials used. Indicate broth, gel, 3-
   structure, bioreactor, etc. followed by the formula, recipe, or components used
   to create the growth medium.
 title: growth medium
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: growth_medium
 domain_of:

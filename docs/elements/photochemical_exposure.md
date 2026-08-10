@@ -9,7 +9,7 @@ _This term is used to describe a chemical reaction caused by absorption of ultra
 
 
 
-URI: [analysis_api_schema:photochemical_exposure](https://w3id.org/MONet/analysis-api-schema/photochemical_exposure)
+URI: [basalt_schema:photochemical_exposure](https://w3id.org/MONet/basalt-schema/photochemical_exposure)
 Alias: photochemical_exposure
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: photochemical_exposure
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: photochemical_exposure
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:photochemical_exposure |
-| native | analysis_api_schema:photochemical_exposure |
+| self | basalt_schema:photochemical_exposure |
+| native | basalt_schema:photochemical_exposure |
 
 
 
@@ -87,7 +87,7 @@ description: This term is used to describe a chemical reaction caused by absorpt
   of ultraviolet (wavelength from 100 to 400 nm), visible light (400-750 nm), or infrared
   radiation (750-2500 nm)
 title: photochemical exposure
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: photochemical_exposure
 domain_of:

@@ -9,7 +9,7 @@ _Primary publication if isolated before genome publication; otherwise primary ge
 
 
 
-URI: [analysis_api_schema:ref_biomaterial](https://w3id.org/MONet/analysis-api-schema/ref_biomaterial)
+URI: [basalt_schema:ref_biomaterial](https://w3id.org/MONet/basalt-schema/ref_biomaterial)
 Alias: ref_biomaterial
 
 <!-- no inheritance hierarchy -->
@@ -66,7 +66,7 @@ Alias: ref_biomaterial
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -75,8 +75,8 @@ Alias: ref_biomaterial
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ref_biomaterial |
-| native | analysis_api_schema:ref_biomaterial |
+| self | basalt_schema:ref_biomaterial |
+| native | basalt_schema:ref_biomaterial |
 
 
 
@@ -89,7 +89,7 @@ name: ref_biomaterial
 description: Primary publication if isolated before genome publication; otherwise
   primary genome report.
 title: reference for biomaterial
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: ref_biomaterial
 domain_of:

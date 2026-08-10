@@ -9,7 +9,7 @@ _Role of this well   "sample", "blank", "uninoculated_control", "standard"_
 
 
 
-URI: [analysis_api_schema:well_type](https://w3id.org/MONet/analysis-api-schema/well_type)
+URI: [basalt_schema:well_type](https://w3id.org/MONet/basalt-schema/well_type)
 Alias: well_type
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: well_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: well_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:well_type |
-| native | analysis_api_schema:well_type |
+| self | basalt_schema:well_type |
+| native | basalt_schema:well_type |
 
 
 
@@ -91,7 +91,7 @@ Alias: well_type
 ```yaml
 name: well_type
 description: Role of this well   "sample", "blank", "uninoculated_control", "standard"
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: well_type
 owner: WellMetadata

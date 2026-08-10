@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:doi_value](https://w3id.org/MONet/analysis-api-schema/doi_value)
+URI: [basalt_schema:doi_value](https://w3id.org/MONet/basalt-schema/doi_value)
 Alias: doi_value
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: doi_value
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: doi_value
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:doi_value |
-| native | analysis_api_schema:doi_value |
+| self | basalt_schema:doi_value |
+| native | basalt_schema:doi_value |
 
 
 
@@ -84,7 +84,7 @@ Alias: doi_value
 <details>
 ```yaml
 name: doi_value
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: doi_value
 owner: DOI

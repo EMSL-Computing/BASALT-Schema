@@ -9,7 +9,7 @@ _Information about any mechanical damage exerted on the plant; can include multi
 
 
 
-URI: [analysis_api_schema:mechanical_damage](https://w3id.org/MONet/analysis-api-schema/mechanical_damage)
+URI: [basalt_schema:mechanical_damage](https://w3id.org/MONet/basalt-schema/mechanical_damage)
 Alias: mechanical_damage
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: mechanical_damage
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: mechanical_damage
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:mechanical_damage |
-| native | analysis_api_schema:mechanical_damage |
+| self | basalt_schema:mechanical_damage |
+| native | basalt_schema:mechanical_damage |
 
 
 
@@ -85,7 +85,7 @@ name: mechanical_damage
 description: Information about any mechanical damage exerted on the plant; can include
   multiple damages and sites
 title: mechanical damage
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: mechanical_damage
 domain_of:

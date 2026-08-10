@@ -9,7 +9,7 @@ _Latitude coordinate of the sampling site in WSG 84 format._
 
 
 
-URI: [analysis_api_schema:latitude](https://w3id.org/MONet/analysis-api-schema/latitude)
+URI: [basalt_schema:latitude](https://w3id.org/MONet/basalt-schema/latitude)
 Alias: latitude
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: latitude
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -80,8 +80,8 @@ Alias: latitude
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:latitude |
-| native | analysis_api_schema:latitude |
+| self | basalt_schema:latitude |
+| native | basalt_schema:latitude |
 | broad | MIXS:0000009 |
 
 
@@ -94,7 +94,7 @@ Alias: latitude
 name: latitude
 description: Latitude coordinate of the sampling site in WSG 84 format.
 title: latitude
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 broad_mappings:
 - MIXS:0000009
 rank: 1000

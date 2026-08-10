@@ -9,7 +9,7 @@ _Describes any treatments that are built into the synthetic environment_
 
 
 
-URI: [analysis_api_schema:synth_env_treatment](https://w3id.org/MONet/analysis-api-schema/synth_env_treatment)
+URI: [basalt_schema:synth_env_treatment](https://w3id.org/MONet/basalt-schema/synth_env_treatment)
 Alias: synth_env_treatment
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: synth_env_treatment
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: synth_env_treatment
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:synth_env_treatment |
-| native | analysis_api_schema:synth_env_treatment |
+| self | basalt_schema:synth_env_treatment |
+| native | basalt_schema:synth_env_treatment |
 
 
 
@@ -84,7 +84,7 @@ Alias: synth_env_treatment
 name: synth_env_treatment
 description: Describes any treatments that are built into the synthetic environment
 title: synthetic environment treatment
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: synth_env_treatment
 domain_of:

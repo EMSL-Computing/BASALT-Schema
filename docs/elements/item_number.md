@@ -9,7 +9,7 @@ _The item number of the purchased material_
 
 
 
-URI: [analysis_api_schema:item_number](https://w3id.org/MONet/analysis-api-schema/item_number)
+URI: [basalt_schema:item_number](https://w3id.org/MONet/basalt-schema/item_number)
 Alias: item_number
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: item_number
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: item_number
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:item_number |
-| native | analysis_api_schema:item_number |
+| self | basalt_schema:item_number |
+| native | basalt_schema:item_number |
 
 
 
@@ -85,7 +85,7 @@ Alias: item_number
 name: item_number
 description: The item number of the purchased material
 title: item number
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: item_number
 domain_of:

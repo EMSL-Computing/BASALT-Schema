@@ -9,7 +9,7 @@ _Known or detected contaminant strains (if any)_
 
 
 
-URI: [analysis_api_schema:contaminant_strains](https://w3id.org/MONet/analysis-api-schema/contaminant_strains)
+URI: [basalt_schema:contaminant_strains](https://w3id.org/MONet/basalt-schema/contaminant_strains)
 Alias: contaminant_strains
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: contaminant_strains
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: contaminant_strains
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:contaminant_strains |
-| native | analysis_api_schema:contaminant_strains |
+| self | basalt_schema:contaminant_strains |
+| native | basalt_schema:contaminant_strains |
 
 
 
@@ -82,7 +82,7 @@ Alias: contaminant_strains
 ```yaml
 name: contaminant_strains
 description: Known or detected contaminant strains (if any)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: contaminant_strains
 domain_of:

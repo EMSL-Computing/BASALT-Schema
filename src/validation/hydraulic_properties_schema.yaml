@@ -11,7 +11,7 @@
 # Last Updated: 2026-02-25
 # =============================================================================
 
-id: https://w3id.org/MONet/analysis-api-schema/hydraulic-properties
+id: https://w3id.org/MONet/basalt-schema/hydraulic-properties
 name: hydraulic_properties_schema
 title: MONet HYPROP / Hydraulic Properties Schema
 description: |-
@@ -25,7 +25,7 @@ description: |-
 license: MIT
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://w3id.org/MONet/basalt-schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: hydraulic_properties_schema

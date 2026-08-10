@@ -9,7 +9,7 @@ _Direction of the wind on the day of sampling. Collected via anemometer. Provide
 
 
 
-URI: [analysis_api_schema:wind_direction](https://w3id.org/MONet/analysis-api-schema/wind_direction)
+URI: [basalt_schema:wind_direction](https://w3id.org/MONet/basalt-schema/wind_direction)
 Alias: wind_direction
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: wind_direction
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: wind_direction
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:wind_direction |
-| native | analysis_api_schema:wind_direction |
+| self | basalt_schema:wind_direction |
+| native | basalt_schema:wind_direction |
 
 
 
@@ -86,7 +86,7 @@ name: wind_direction
 description: Direction of the wind on the day of sampling. Collected via anemometer.
   Provide cardinal direction.
 title: wind direction
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: wind_direction
 domain_of:

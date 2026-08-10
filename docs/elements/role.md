@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:role](https://w3id.org/MONet/analysis-api-schema/role)
+URI: [basalt_schema:role](https://w3id.org/MONet/basalt-schema/role)
 Alias: role
 
 <!-- no inheritance hierarchy -->
@@ -59,8 +59,8 @@ Alias: role
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:role |
-| native | analysis_api_schema:role |
+| self | basalt_schema:role |
+| native | basalt_schema:role |
 
 
 

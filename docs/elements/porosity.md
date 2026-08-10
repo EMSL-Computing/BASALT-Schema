@@ -9,7 +9,7 @@ _Porosity of deposited sediment is volume of voids divided by the total volume o
 
 
 
-URI: [analysis_api_schema:porosity](https://w3id.org/MONet/analysis-api-schema/porosity)
+URI: [basalt_schema:porosity](https://w3id.org/MONet/basalt-schema/porosity)
 Alias: porosity
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: porosity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: porosity
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:porosity |
-| native | analysis_api_schema:porosity |
+| self | basalt_schema:porosity |
+| native | basalt_schema:porosity |
 
 
 
@@ -92,7 +92,7 @@ name: porosity
 description: 'Porosity of deposited sediment is volume of voids divided by the total
   volume of sample. (Unit: percent)'
 title: porosity
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: porosity
 domain_of:

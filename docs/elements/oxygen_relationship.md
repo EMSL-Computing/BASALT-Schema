@@ -9,7 +9,7 @@ _The relationship of the sample to oxygen, such as aerobic or anaerobic._
 
 
 
-URI: [analysis_api_schema:oxygen_relationship](https://w3id.org/MONet/analysis-api-schema/oxygen_relationship)
+URI: [basalt_schema:oxygen_relationship](https://w3id.org/MONet/basalt-schema/oxygen_relationship)
 Alias: oxygen_status
 
 <!-- no inheritance hierarchy -->
@@ -80,7 +80,7 @@ Alias: oxygen_status
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -89,8 +89,8 @@ Alias: oxygen_status
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:oxygen_relationship |
-| native | analysis_api_schema:oxygen_relationship |
+| self | basalt_schema:oxygen_relationship |
+| native | basalt_schema:oxygen_relationship |
 | exact | MIXS:0000015 |
 
 
@@ -103,7 +103,7 @@ Alias: oxygen_status
 name: oxygen_relationship
 description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
 title: oxygen relationship
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 exact_mappings:
 - MIXS:0000015
 rank: 1000

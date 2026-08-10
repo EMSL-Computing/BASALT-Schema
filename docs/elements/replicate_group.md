@@ -9,7 +9,7 @@ _Identifier linking technical replicates (e.g. "rep1", "rep2")_
 
 
 
-URI: [analysis_api_schema:replicate_group](https://w3id.org/MONet/analysis-api-schema/replicate_group)
+URI: [basalt_schema:replicate_group](https://w3id.org/MONet/basalt-schema/replicate_group)
 Alias: replicate_group
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: replicate_group
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: replicate_group
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:replicate_group |
-| native | analysis_api_schema:replicate_group |
+| self | basalt_schema:replicate_group |
+| native | basalt_schema:replicate_group |
 
 
 
@@ -91,7 +91,7 @@ Alias: replicate_group
 ```yaml
 name: replicate_group
 description: Identifier linking technical replicates (e.g. "rep1", "rep2")
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: replicate_group
 owner: WellMetadata

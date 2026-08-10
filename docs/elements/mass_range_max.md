@@ -9,7 +9,7 @@ _The maximum mass observable by this run (in m/z)._
 
 
 
-URI: [analysis_api_schema:mass_range_max](https://w3id.org/MONet/analysis-api-schema/mass_range_max)
+URI: [basalt_schema:mass_range_max](https://w3id.org/MONet/basalt-schema/mass_range_max)
 Alias: mass_range_max
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: mass_range_max
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: mass_range_max
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:mass_range_max |
-| native | analysis_api_schema:mass_range_max |
+| self | basalt_schema:mass_range_max |
+| native | basalt_schema:mass_range_max |
 
 
 
@@ -82,7 +82,7 @@ Alias: mass_range_max
 ```yaml
 name: mass_range_max
 description: The maximum mass observable by this run (in m/z).
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: mass_range_max
 domain_of:

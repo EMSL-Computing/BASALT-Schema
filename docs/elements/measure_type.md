@@ -9,7 +9,7 @@ _Whether the measurement recorded is a single measurement, one of a set of  repl
 
 
 
-URI: [analysis_api_schema:measure_type](https://w3id.org/MONet/analysis-api-schema/measure_type)
+URI: [basalt_schema:measure_type](https://w3id.org/MONet/basalt-schema/measure_type)
 Alias: measure_type
 
 <!-- no inheritance hierarchy -->
@@ -77,7 +77,7 @@ Alias: measure_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -86,8 +86,8 @@ Alias: measure_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:measure_type |
-| native | analysis_api_schema:measure_type |
+| self | basalt_schema:measure_type |
+| native | basalt_schema:measure_type |
 
 
 
@@ -99,7 +99,7 @@ Alias: measure_type
 name: measure_type
 description: Whether the measurement recorded is a single measurement, one of a set
   of  replicate measurements, or an average of several replicate measurements.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: measure_type
 domain_of:

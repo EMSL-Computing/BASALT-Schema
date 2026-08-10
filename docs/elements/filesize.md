@@ -9,7 +9,7 @@ _Size of the file in bytes_
 
 
 
-URI: [analysis_api_schema:filesize](https://w3id.org/MONet/analysis-api-schema/filesize)
+URI: [basalt_schema:filesize](https://w3id.org/MONet/basalt-schema/filesize)
 Alias: filesize
 
 <!-- no inheritance hierarchy -->
@@ -90,7 +90,7 @@ Alias: filesize
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -99,8 +99,8 @@ Alias: filesize
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:filesize |
-| native | analysis_api_schema:filesize |
+| self | basalt_schema:filesize |
+| native | basalt_schema:filesize |
 
 
 
@@ -111,7 +111,7 @@ Alias: filesize
 ```yaml
 name: filesize
 description: Size of the file in bytes
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: filesize
 domain_of:

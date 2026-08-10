@@ -9,7 +9,7 @@ _Van Genuchten pore-size distribution index n (dimensionless, n > 1). Controls t
 
 
 
-URI: [analysis_api_schema:n](https://w3id.org/MONet/analysis-api-schema/n)
+URI: [basalt_schema:n](https://w3id.org/MONet/basalt-schema/n)
 Alias: n
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: n
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: n
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:n |
-| native | analysis_api_schema:n |
+| self | basalt_schema:n |
+| native | basalt_schema:n |
 
 
 
@@ -90,7 +90,7 @@ Alias: n
 name: n
 description: Van Genuchten pore-size distribution index n (dimensionless, n > 1).
   Controls the slope of the water-retention curve.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: n
 owner: HydraulicPropertiesProduct

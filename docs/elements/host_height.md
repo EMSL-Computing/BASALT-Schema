@@ -9,7 +9,7 @@ _The height of subject. (Unit: cm or mm or m)_
 
 
 
-URI: [analysis_api_schema:host_height](https://w3id.org/MONet/analysis-api-schema/host_height)
+URI: [basalt_schema:host_height](https://w3id.org/MONet/basalt-schema/host_height)
 Alias: host_height
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: host_height
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -80,8 +80,8 @@ Alias: host_height
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:host_height |
-| native | analysis_api_schema:host_height |
+| self | basalt_schema:host_height |
+| native | basalt_schema:host_height |
 
 
 
@@ -93,7 +93,7 @@ Alias: host_height
 name: host_height
 description: 'The height of subject. (Unit: cm or mm or m)'
 title: host height
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: host_height
 domain_of:

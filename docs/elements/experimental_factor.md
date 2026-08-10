@@ -9,7 +9,7 @@ _Experimental factors are essentially the variable aspects of an experiment desi
 
 
 
-URI: [analysis_api_schema:experimental_factor](https://w3id.org/MONet/analysis-api-schema/experimental_factor)
+URI: [basalt_schema:experimental_factor](https://w3id.org/MONet/basalt-schema/experimental_factor)
 Alias: experimental_factor
 
 <!-- no inheritance hierarchy -->
@@ -72,7 +72,7 @@ Alias: experimental_factor
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -81,8 +81,8 @@ Alias: experimental_factor
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:experimental_factor |
-| native | analysis_api_schema:experimental_factor |
+| self | basalt_schema:experimental_factor |
+| native | basalt_schema:experimental_factor |
 
 
 
@@ -99,7 +99,7 @@ description: Experimental factors are essentially the variable aspects of an exp
   (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO; for a browser
   of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI
 title: experimental factor
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: experimental_factor
 domain_of:

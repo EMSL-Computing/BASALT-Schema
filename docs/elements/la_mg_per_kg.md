@@ -9,7 +9,7 @@ _Lanthanum concentration in mg/kg_
 
 
 
-URI: [analysis_api_schema:la_mg_per_kg](https://w3id.org/MONet/analysis-api-schema/la_mg_per_kg)
+URI: [basalt_schema:la_mg_per_kg](https://w3id.org/MONet/basalt-schema/la_mg_per_kg)
 Alias: la_mg_per_kg
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: la_mg_per_kg
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: la_mg_per_kg
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:la_mg_per_kg |
-| native | analysis_api_schema:la_mg_per_kg |
+| self | basalt_schema:la_mg_per_kg |
+| native | basalt_schema:la_mg_per_kg |
 
 
 
@@ -89,7 +89,7 @@ Alias: la_mg_per_kg
 ```yaml
 name: la_mg_per_kg
 description: Lanthanum concentration in mg/kg
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: la_mg_per_kg
 owner: XRFElementalProduct

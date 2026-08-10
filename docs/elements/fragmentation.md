@@ -9,7 +9,7 @@ _fragmentation technique used in the mass spectrometry run_
 
 
 
-URI: [analysis_api_schema:fragmentation](https://w3id.org/MONet/analysis-api-schema/fragmentation)
+URI: [basalt_schema:fragmentation](https://w3id.org/MONet/basalt-schema/fragmentation)
 Alias: fragmentation
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: fragmentation
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: fragmentation
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:fragmentation |
-| native | analysis_api_schema:fragmentation |
+| self | basalt_schema:fragmentation |
+| native | basalt_schema:fragmentation |
 
 
 
@@ -82,7 +82,7 @@ Alias: fragmentation
 ```yaml
 name: fragmentation
 description: fragmentation technique used in the mass spectrometry run
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: fragmentation
 domain_of:

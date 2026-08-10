@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:software_version](https://w3id.org/MONet/analysis-api-schema/software_version)
+URI: [basalt_schema:software_version](https://w3id.org/MONet/basalt-schema/software_version)
 Alias: software_version
 
 <!-- no inheritance hierarchy -->
@@ -63,8 +63,8 @@ Alias: software_version
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:software_version |
-| native | analysis_api_schema:software_version |
+| self | basalt_schema:software_version |
+| native | basalt_schema:software_version |
 
 
 

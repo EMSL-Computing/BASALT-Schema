@@ -9,7 +9,7 @@ _Concentration of magnesium in the sample (Unit: umol/kg or mol/L or mg/L or ppm
 
 
 
-URI: [analysis_api_schema:magnesium](https://w3id.org/MONet/analysis-api-schema/magnesium)
+URI: [basalt_schema:magnesium](https://w3id.org/MONet/basalt-schema/magnesium)
 Alias: magnesium
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: magnesium
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: magnesium
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:magnesium |
-| native | analysis_api_schema:magnesium |
+| self | basalt_schema:magnesium |
+| native | basalt_schema:magnesium |
 
 
 
@@ -93,7 +93,7 @@ name: magnesium
 description: 'Concentration of magnesium in the sample (Unit: umol/kg or mol/L or
   mg/L or ppm)'
 title: magnesium
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: magnesium
 domain_of:

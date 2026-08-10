@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_toc_avg](https://w3id.org/MONet/analysis-api-schema/flag_toc_avg)
+URI: [basalt_schema:flag_toc_avg](https://w3id.org/MONet/basalt-schema/flag_toc_avg)
 Alias: flag_toc_avg
 
 <!-- no inheritance hierarchy -->
@@ -59,8 +59,8 @@ Alias: flag_toc_avg
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_toc_avg |
-| native | analysis_api_schema:flag_toc_avg |
+| self | basalt_schema:flag_toc_avg |
+| native | basalt_schema:flag_toc_avg |
 
 
 

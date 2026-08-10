@@ -9,7 +9,7 @@ _The name of the purchased material. A substance formed by chemical union of two
 
 
 
-URI: [analysis_api_schema:compound_name](https://w3id.org/MONet/analysis-api-schema/compound_name)
+URI: [basalt_schema:compound_name](https://w3id.org/MONet/basalt-schema/compound_name)
 Alias: compound_name
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: compound_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: compound_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:compound_name |
-| native | analysis_api_schema:compound_name |
+| self | basalt_schema:compound_name |
+| native | basalt_schema:compound_name |
 
 
 
@@ -86,7 +86,7 @@ name: compound_name
 description: The name of the purchased material. A substance formed by chemical union
   of two or more elements or ingredients in definite proportion by weight.
 title: compound name
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: compound_name
 domain_of:

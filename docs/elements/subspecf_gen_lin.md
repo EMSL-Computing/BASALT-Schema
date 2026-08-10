@@ -9,7 +9,7 @@ _Information about the genetic distinctness of the sequenced organism below the 
 
 
 
-URI: [analysis_api_schema:subspecf_gen_lin](https://w3id.org/MONet/analysis-api-schema/subspecf_gen_lin)
+URI: [basalt_schema:subspecf_gen_lin](https://w3id.org/MONet/basalt-schema/subspecf_gen_lin)
 Alias: subspecf_gen_lin
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: subspecf_gen_lin
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: subspecf_gen_lin
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:subspecf_gen_lin |
-| native | analysis_api_schema:subspecf_gen_lin |
+| self | basalt_schema:subspecf_gen_lin |
+| native | basalt_schema:subspecf_gen_lin |
 
 
 
@@ -95,7 +95,7 @@ description: Information about the genetic distinctness of the sequenced organis
 title: subspecific genetic lineage
 todos:
 - make this inlined/multivalued?
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: subspecf_gen_lin
 domain_of:

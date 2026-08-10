@@ -1,1 +1,1 @@
-"""Tests for analysis-api-schema."""
+"""Tests for basalt-schema."""

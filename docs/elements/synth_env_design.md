@@ -9,7 +9,7 @@ _The design of the synthetic environment that was created for experimentation_
 
 
 
-URI: [analysis_api_schema:synth_env_design](https://w3id.org/MONet/analysis-api-schema/synth_env_design)
+URI: [basalt_schema:synth_env_design](https://w3id.org/MONet/basalt-schema/synth_env_design)
 Alias: synth_env_design
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: synth_env_design
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: synth_env_design
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:synth_env_design |
-| native | analysis_api_schema:synth_env_design |
+| self | basalt_schema:synth_env_design |
+| native | basalt_schema:synth_env_design |
 
 
 
@@ -84,7 +84,7 @@ Alias: synth_env_design
 name: synth_env_design
 description: The design of the synthetic environment that was created for experimentation
 title: synthetic environment design
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: synth_env_design
 domain_of:

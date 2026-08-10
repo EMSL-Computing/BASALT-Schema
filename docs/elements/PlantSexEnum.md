@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:PlantSexEnum](https://w3id.org/MONet/analysis-api-schema/PlantSexEnum)
+URI: [basalt_schema:PlantSexEnum](https://w3id.org/MONet/basalt-schema/PlantSexEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -64,7 +64,7 @@ URI: [analysis_api_schema:PlantSexEnum](https://w3id.org/MONet/analysis-api-sche
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -76,7 +76,7 @@ URI: [analysis_api_schema:PlantSexEnum](https://w3id.org/MONet/analysis-api-sche
 <details>
 ```yaml
 name: PlantSexEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   androdioecious:

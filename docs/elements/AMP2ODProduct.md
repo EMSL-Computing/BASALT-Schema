@@ -17,7 +17,7 @@ _v1 origin: plate-general.yaml AMP2ODProduct_
 
 
 
-URI: [analysis_api_schema:AMP2ODProduct](https://w3id.org/MONet/analysis-api-schema/AMP2ODProduct)
+URI: [basalt_schema:AMP2ODProduct](https://w3id.org/MONet/basalt-schema/AMP2ODProduct)
 
 
 
@@ -100,7 +100,7 @@ URI: [analysis_api_schema:AMP2ODProduct](https://w3id.org/MONet/analysis-api-sch
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -109,8 +109,8 @@ URI: [analysis_api_schema:AMP2ODProduct](https://w3id.org/MONet/analysis-api-sch
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:AMP2ODProduct |
-| native | analysis_api_schema:AMP2ODProduct |
+| self | basalt_schema:AMP2ODProduct |
+| native | basalt_schema:AMP2ODProduct |
 
 
 
@@ -134,7 +134,7 @@ description: 'AMP2 optical density measurement product.
 
 
   v1 origin: plate-general.yaml AMP2ODProduct'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: PlateProduct
 slots:
 - plate_reader_model
@@ -155,7 +155,7 @@ description: 'AMP2 optical density measurement product.
 
 
   v1 origin: plate-general.yaml AMP2ODProduct'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: PlateProduct
 attributes:
   plate_reader_model:
@@ -163,7 +163,7 @@ attributes:
     description: Instrument model used for reading (e.g. "BioTek Epoch2")
     todos:
     - harmonize with existing Instrument modelling
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: plate_reader_model
     owner: AMP2ODProduct
@@ -174,7 +174,7 @@ attributes:
     name: wavelength_nm
     description: Measurement wavelength in nanometres (e.g. 590 Ecoplate, 610 AMP2
       OD)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: wavelength_nm
     owner: AMP2ODProduct
@@ -191,7 +191,7 @@ attributes:
       Examples: "t=0", "t=24h", "t=48h".
 
       Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivity'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: timepoint_label
     owner: AMP2ODProduct
@@ -205,7 +205,7 @@ attributes:
     description: Mean measurement across all sample wells (excludes blanks)
     todos:
     - units
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: plate_average
     owner: AMP2ODProduct
@@ -217,7 +217,7 @@ attributes:
     description: Mean measurement of uninoculated control wells
     todos:
     - units
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: blank_mean
     owner: AMP2ODProduct
@@ -227,7 +227,7 @@ attributes:
   cv_percent:
     name: cv_percent
     description: Coefficient of variation across technical replicates
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: cv_percent
     owner: AMP2ODProduct
@@ -246,7 +246,7 @@ attributes:
     todos:
     - decide how to represent in backend (normalized child table with FK to PlateSetupActivity,
       array column, or other)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: well_readings
     owner: AMP2ODProduct

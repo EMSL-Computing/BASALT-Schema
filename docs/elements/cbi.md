@@ -11,7 +11,7 @@ _Indicates if the sample is subject to CBI restrictions._
 
 
 
-URI: [analysis_api_schema:cbi](https://w3id.org/MONet/analysis-api-schema/cbi)
+URI: [basalt_schema:cbi](https://w3id.org/MONet/basalt-schema/cbi)
 Alias: cbi
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: cbi
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: cbi
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:cbi |
-| native | analysis_api_schema:cbi |
+| self | basalt_schema:cbi |
+| native | basalt_schema:cbi |
 
 
 
@@ -92,7 +92,7 @@ name: cbi
 description: 'Confidential Business Information flag (yes/no).
 
   Indicates if the sample is subject to CBI restrictions.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 aliases:
 - CBI
 rank: 1000

@@ -9,7 +9,7 @@ _how long something took, in minutes_
 
 
 
-URI: [analysis_api_schema:duration_min](https://w3id.org/MONet/analysis-api-schema/duration_min)
+URI: [basalt_schema:duration_min](https://w3id.org/MONet/basalt-schema/duration_min)
 Alias: duration_min
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: duration_min
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: duration_min
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:duration_min |
-| native | analysis_api_schema:duration_min |
+| self | basalt_schema:duration_min |
+| native | basalt_schema:duration_min |
 
 
 
@@ -83,7 +83,7 @@ Alias: duration_min
 ```yaml
 name: duration_min
 description: how long something took, in minutes
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: duration_min
 domain_of:

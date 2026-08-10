@@ -11,7 +11,7 @@ _be a human readable name._
 
 
 
-URI: [analysis_api_schema:sample_name](https://w3id.org/MONet/analysis-api-schema/sample_name)
+URI: [basalt_schema:sample_name](https://w3id.org/MONet/basalt-schema/sample_name)
 Alias: sample_name
 
 <!-- no inheritance hierarchy -->
@@ -116,7 +116,7 @@ Alias: sample_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -125,8 +125,8 @@ Alias: sample_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sample_name |
-| native | analysis_api_schema:sample_name |
+| self | basalt_schema:sample_name |
+| native | basalt_schema:sample_name |
 
 
 
@@ -143,7 +143,7 @@ title: sample name
 notes:
 - This is typically an alias for the inherited 'name' slot on Sample classes. Defined
   separately for compatibility with source data files using 'sample_name' column headers.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 aliases:
 - samp_name
 rank: 1000

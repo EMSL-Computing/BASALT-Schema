@@ -9,7 +9,7 @@ _Microcline (KAlSi3O8) weight percent_
 
 
 
-URI: [analysis_api_schema:microcline_percent](https://w3id.org/MONet/analysis-api-schema/microcline_percent)
+URI: [basalt_schema:microcline_percent](https://w3id.org/MONet/basalt-schema/microcline_percent)
 Alias: microcline_percent
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: microcline_percent
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: microcline_percent
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:microcline_percent |
-| native | analysis_api_schema:microcline_percent |
+| self | basalt_schema:microcline_percent |
+| native | basalt_schema:microcline_percent |
 
 
 
@@ -89,7 +89,7 @@ Alias: microcline_percent
 ```yaml
 name: microcline_percent
 description: Microcline (KAlSi3O8) weight percent
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: microcline_percent
 owner: XRDPhaseProduct

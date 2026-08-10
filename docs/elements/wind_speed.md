@@ -9,7 +9,7 @@ _Wind speed describes how fast the air is moving past a certain point during sam
 
 
 
-URI: [analysis_api_schema:wind_speed](https://w3id.org/MONet/analysis-api-schema/wind_speed)
+URI: [basalt_schema:wind_speed](https://w3id.org/MONet/basalt-schema/wind_speed)
 Alias: wind_speed
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: wind_speed
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: wind_speed
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:wind_speed |
-| native | analysis_api_schema:wind_speed |
+| self | basalt_schema:wind_speed |
+| native | basalt_schema:wind_speed |
 
 
 
@@ -93,7 +93,7 @@ description: Wind speed describes how fast the air is moving past a certain poin
   during sampling time. Collected via anemometer. Provide value and unit, any unit
   is valid.
 title: wind speed
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: wind_speed
 domain_of:

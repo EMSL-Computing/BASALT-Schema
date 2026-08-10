@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:position](https://w3id.org/MONet/analysis-api-schema/position)
+URI: [basalt_schema:position](https://w3id.org/MONet/basalt-schema/position)
 Alias: position
 
 <!-- no inheritance hierarchy -->
@@ -61,8 +61,8 @@ Alias: position
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:position |
-| native | analysis_api_schema:position |
+| self | basalt_schema:position |
+| native | basalt_schema:position |
 
 
 

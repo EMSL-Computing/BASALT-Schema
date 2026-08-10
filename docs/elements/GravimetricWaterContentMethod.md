@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:GravimetricWaterContentMethod](https://w3id.org/MONet/analysis-api-schema/GravimetricWaterContentMethod)
+URI: [basalt_schema:GravimetricWaterContentMethod](https://w3id.org/MONet/basalt-schema/GravimetricWaterContentMethod)
 
 
 
@@ -63,7 +63,7 @@ URI: [analysis_api_schema:GravimetricWaterContentMethod](https://w3id.org/MONet/
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ URI: [analysis_api_schema:GravimetricWaterContentMethod](https://w3id.org/MONet/
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:GravimetricWaterContentMethod |
-| native | analysis_api_schema:GravimetricWaterContentMethod |
+| self | basalt_schema:GravimetricWaterContentMethod |
+| native | basalt_schema:GravimetricWaterContentMethod |
 
 
 
@@ -89,7 +89,7 @@ URI: [analysis_api_schema:GravimetricWaterContentMethod](https://w3id.org/MONet/
 <details>
 ```yaml
 name: GravimetricWaterContentMethod
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: Method
 slots:
 - location
@@ -102,14 +102,14 @@ slots:
 <details>
 ```yaml
 name: GravimetricWaterContentMethod
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: Method
 attributes:
   location:
     name: location
     todos:
     - used on many method classes. no description. what was this meant to mean?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: location
     owner: GravimetricWaterContentMethod
@@ -130,7 +130,7 @@ attributes:
     name: analytic
     todos:
     - what does this mean
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: analytic
     owner: GravimetricWaterContentMethod

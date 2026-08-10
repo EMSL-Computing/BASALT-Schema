@@ -9,7 +9,7 @@ _Whether or not crop is rotated, and if yes, rotation schedule_
 
 
 
-URI: [analysis_api_schema:crop_rotation](https://w3id.org/MONet/analysis-api-schema/crop_rotation)
+URI: [basalt_schema:crop_rotation](https://w3id.org/MONet/basalt-schema/crop_rotation)
 Alias: crop_rotation
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: crop_rotation
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: crop_rotation
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:crop_rotation |
-| native | analysis_api_schema:crop_rotation |
+| self | basalt_schema:crop_rotation |
+| native | basalt_schema:crop_rotation |
 
 
 
@@ -83,7 +83,7 @@ Alias: crop_rotation
 name: crop_rotation
 description: Whether or not crop is rotated, and if yes, rotation schedule
 title: crop rotation
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: crop_rotation
 domain_of:

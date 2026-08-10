@@ -9,7 +9,7 @@ _Measurement of glucosidase activity (Unit: mol/L/h)_
 
 
 
-URI: [analysis_api_schema:glucosidase_act](https://w3id.org/MONet/analysis-api-schema/glucosidase_act)
+URI: [basalt_schema:glucosidase_act](https://w3id.org/MONet/basalt-schema/glucosidase_act)
 Alias: glucosidase_act
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: glucosidase_act
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: glucosidase_act
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:glucosidase_act |
-| native | analysis_api_schema:glucosidase_act |
+| self | basalt_schema:glucosidase_act |
+| native | basalt_schema:glucosidase_act |
 
 
 
@@ -92,7 +92,7 @@ Alias: glucosidase_act
 name: glucosidase_act
 description: 'Measurement of glucosidase activity (Unit: mol/L/h)'
 title: glucosidase activity
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: glucosidase_act
 domain_of:

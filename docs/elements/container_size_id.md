@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:container_size_id](https://w3id.org/MONet/analysis-api-schema/container_size_id)
+URI: [basalt_schema:container_size_id](https://w3id.org/MONet/basalt-schema/container_size_id)
 Alias: container_size_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: container_size_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: container_size_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:container_size_id |
-| native | analysis_api_schema:container_size_id |
+| self | basalt_schema:container_size_id |
+| native | basalt_schema:container_size_id |
 
 
 
@@ -83,7 +83,7 @@ Alias: container_size_id
 <details>
 ```yaml
 name: container_size_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: container_size_id
 owner: ContainerType

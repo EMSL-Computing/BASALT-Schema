@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:injection_volume](https://w3id.org/MONet/analysis-api-schema/injection_volume)
+URI: [basalt_schema:injection_volume](https://w3id.org/MONet/basalt-schema/injection_volume)
 Alias: injection_volume
 
 <!-- no inheritance hierarchy -->
@@ -59,8 +59,8 @@ Alias: injection_volume
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:injection_volume |
-| native | analysis_api_schema:injection_volume |
+| self | basalt_schema:injection_volume |
+| native | basalt_schema:injection_volume |
 
 
 

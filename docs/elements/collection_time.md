@@ -9,7 +9,7 @@ _The time of sampling as an instance (single point). Required format: HH:MM:SS i
 
 
 
-URI: [analysis_api_schema:collection_time](https://w3id.org/MONet/analysis-api-schema/collection_time)
+URI: [basalt_schema:collection_time](https://w3id.org/MONet/basalt-schema/collection_time)
 Alias: collection_time
 
 <!-- no inheritance hierarchy -->
@@ -79,7 +79,7 @@ Alias: collection_time
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -88,8 +88,8 @@ Alias: collection_time
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:collection_time |
-| native | analysis_api_schema:collection_time |
+| self | basalt_schema:collection_time |
+| native | basalt_schema:collection_time |
 
 
 
@@ -102,7 +102,7 @@ name: collection_time
 description: 'The time of sampling as an instance (single point). Required format:
   HH:MM:SS in 24-hour time format. Don''t forget the second! (Unit: hh:mm:ss or HH:MM:SS)'
 title: collection time
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: collection_time
 domain_of:

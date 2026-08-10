@@ -9,7 +9,7 @@ _Measurement of dry mass. (Unit: kg or g)_
 
 
 
-URI: [analysis_api_schema:plant_dry_mass](https://w3id.org/MONet/analysis-api-schema/plant_dry_mass)
+URI: [basalt_schema:plant_dry_mass](https://w3id.org/MONet/basalt-schema/plant_dry_mass)
 Alias: plant_dry_mass
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: plant_dry_mass
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: plant_dry_mass
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:plant_dry_mass |
-| native | analysis_api_schema:plant_dry_mass |
+| self | basalt_schema:plant_dry_mass |
+| native | basalt_schema:plant_dry_mass |
 
 
 
@@ -90,7 +90,7 @@ Alias: plant_dry_mass
 name: plant_dry_mass
 description: 'Measurement of dry mass. (Unit: kg or g)'
 title: plant dry mass
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: plant_dry_mass
 domain_of:

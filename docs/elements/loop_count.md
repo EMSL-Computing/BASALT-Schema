@@ -9,7 +9,7 @@ _Number of MS2 scans to be acquired between each full MS scan._
 
 
 
-URI: [analysis_api_schema:loop_count](https://w3id.org/MONet/analysis-api-schema/loop_count)
+URI: [basalt_schema:loop_count](https://w3id.org/MONet/basalt-schema/loop_count)
 Alias: loop_count
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: loop_count
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: loop_count
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:loop_count |
-| native | analysis_api_schema:loop_count |
+| self | basalt_schema:loop_count |
+| native | basalt_schema:loop_count |
 
 
 
@@ -83,7 +83,7 @@ Alias: loop_count
 ```yaml
 name: loop_count
 description: Number of MS2 scans to be acquired between each full MS scan.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: loop_count
 domain_of:

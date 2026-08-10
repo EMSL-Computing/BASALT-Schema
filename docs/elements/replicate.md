@@ -9,7 +9,7 @@ _The replicate number of the sample or measurement, if applicable._
 
 
 
-URI: [analysis_api_schema:replicate](https://w3id.org/MONet/analysis-api-schema/replicate)
+URI: [basalt_schema:replicate](https://w3id.org/MONet/basalt-schema/replicate)
 Alias: replicate
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: replicate
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -80,8 +80,8 @@ Alias: replicate
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:replicate |
-| native | analysis_api_schema:replicate |
+| self | basalt_schema:replicate |
+| native | basalt_schema:replicate |
 
 
 
@@ -94,7 +94,7 @@ name: replicate
 description: The replicate number of the sample or measurement, if applicable.
 todos:
 - reconcile replicate modelling
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: replicate
 domain_of:

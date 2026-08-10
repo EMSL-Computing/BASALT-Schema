@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:mode](https://w3id.org/MONet/analysis-api-schema/mode)
+URI: [basalt_schema:mode](https://w3id.org/MONet/basalt-schema/mode)
 Alias: mode
 
 <!-- no inheritance hierarchy -->
@@ -59,8 +59,8 @@ Alias: mode
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:mode |
-| native | analysis_api_schema:mode |
+| self | basalt_schema:mode |
+| native | basalt_schema:mode |
 
 
 

@@ -9,7 +9,7 @@ _Amount of biomass; should include the name for the part of biomass measured, e.
 
 
 
-URI: [analysis_api_schema:non_microb_biomass](https://w3id.org/MONet/analysis-api-schema/non_microb_biomass)
+URI: [basalt_schema:non_microb_biomass](https://w3id.org/MONet/basalt-schema/non_microb_biomass)
 Alias: non_microb_biomass
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: non_microb_biomass
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: non_microb_biomass
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:non_microb_biomass |
-| native | analysis_api_schema:non_microb_biomass |
+| self | basalt_schema:non_microb_biomass |
+| native | basalt_schema:non_microb_biomass |
 
 
 
@@ -91,7 +91,7 @@ name: non_microb_biomass
 description: Amount of biomass; should include the name for the part of biomass measured,
   e.g.insect, plant, total. Can include multiple measurements separated by ;
 title: non microbial biomass
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: non_microb_biomass
 domain_of:

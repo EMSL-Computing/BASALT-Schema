@@ -11,7 +11,7 @@ _Examples: "100 ug/mL ampicillin", "1 mM IPTG"_
 
 
 
-URI: [analysis_api_schema:media_additions](https://w3id.org/MONet/analysis-api-schema/media_additions)
+URI: [basalt_schema:media_additions](https://w3id.org/MONet/basalt-schema/media_additions)
 Alias: media_additions
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: media_additions
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: media_additions
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:media_additions |
-| native | analysis_api_schema:media_additions |
+| self | basalt_schema:media_additions |
+| native | basalt_schema:media_additions |
 
 
 
@@ -87,7 +87,7 @@ name: media_additions
 description: 'Additional components added to the media (antibiotics, inducers, etc.).
 
   Examples: "100 ug/mL ampicillin", "1 mM IPTG"'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: media_additions
 domain_of:

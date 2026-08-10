@@ -9,7 +9,7 @@ _Please specify sample storage temperature if you selected 'other'_
 
 
 
-URI: [analysis_api_schema:other_samp_store_temp](https://w3id.org/MONet/analysis-api-schema/other_samp_store_temp)
+URI: [basalt_schema:other_samp_store_temp](https://w3id.org/MONet/basalt-schema/other_samp_store_temp)
 Alias: other_samp_store_temp
 
 <!-- no inheritance hierarchy -->
@@ -75,7 +75,7 @@ Alias: other_samp_store_temp
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -84,8 +84,8 @@ Alias: other_samp_store_temp
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:other_samp_store_temp |
-| native | analysis_api_schema:other_samp_store_temp |
+| self | basalt_schema:other_samp_store_temp |
+| native | basalt_schema:other_samp_store_temp |
 
 
 
@@ -97,7 +97,7 @@ Alias: other_samp_store_temp
 name: other_samp_store_temp
 description: Please specify sample storage temperature if you selected 'other'
 title: other sample storage temperature
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: other_samp_store_temp
 domain_of:

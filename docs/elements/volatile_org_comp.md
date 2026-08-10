@@ -9,7 +9,7 @@ _Volatile organic compounds are organic chemicals that have a high vapour pressu
 
 
 
-URI: [analysis_api_schema:volatile_org_comp](https://w3id.org/MONet/analysis-api-schema/volatile_org_comp)
+URI: [basalt_schema:volatile_org_comp](https://w3id.org/MONet/basalt-schema/volatile_org_comp)
 Alias: volatile_org_comp
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: volatile_org_comp
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: volatile_org_comp
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:volatile_org_comp |
-| native | analysis_api_schema:volatile_org_comp |
+| self | basalt_schema:volatile_org_comp |
+| native | basalt_schema:volatile_org_comp |
 
 
 
@@ -86,7 +86,7 @@ name: volatile_org_comp
 description: Volatile organic compounds are organic chemicals that have a high vapour
   pressure at room temperature.
 title: volatile organic compounds
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: volatile_org_comp
 domain_of:

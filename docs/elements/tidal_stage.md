@@ -9,7 +9,7 @@ _Stage of tide_
 
 
 
-URI: [analysis_api_schema:tidal_stage](https://w3id.org/MONet/analysis-api-schema/tidal_stage)
+URI: [basalt_schema:tidal_stage](https://w3id.org/MONet/basalt-schema/tidal_stage)
 Alias: tidal_stage
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: tidal_stage
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: tidal_stage
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:tidal_stage |
-| native | analysis_api_schema:tidal_stage |
+| self | basalt_schema:tidal_stage |
+| native | basalt_schema:tidal_stage |
 
 
 
@@ -85,7 +85,7 @@ Alias: tidal_stage
 name: tidal_stage
 description: Stage of tide
 title: tidal stage
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: tidal_stage
 domain_of:

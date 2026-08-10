@@ -37,7 +37,7 @@ URI: [shex:nonLiteral](http://www.w3.org/ns/shex#nonLiteral)
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -47,6 +47,6 @@ URI: [shex:nonLiteral](http://www.w3.org/ns/shex#nonLiteral)
 | Mapping Type | Mapped Value |
 | ---  | ---  |
 | self | shex:nonLiteral |
-| native | analysis_api_schema:nodeidentifier |
+| native | basalt_schema:nodeidentifier |
 
 

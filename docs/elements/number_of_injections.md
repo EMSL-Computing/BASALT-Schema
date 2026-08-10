@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:number_of_injections](https://w3id.org/MONet/analysis-api-schema/number_of_injections)
+URI: [basalt_schema:number_of_injections](https://w3id.org/MONet/basalt-schema/number_of_injections)
 Alias: number_of_injections
 
 <!-- no inheritance hierarchy -->
@@ -59,8 +59,8 @@ Alias: number_of_injections
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:number_of_injections |
-| native | analysis_api_schema:number_of_injections |
+| self | basalt_schema:number_of_injections |
+| native | basalt_schema:number_of_injections |
 
 
 

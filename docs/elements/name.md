@@ -9,7 +9,7 @@ _Human-readable name for the entity or activity._
 
 
 
-URI: [analysis_api_schema:name](https://w3id.org/MONet/analysis-api-schema/name)
+URI: [basalt_schema:name](https://w3id.org/MONet/basalt-schema/name)
 Alias: name
 
 <!-- no inheritance hierarchy -->
@@ -154,7 +154,7 @@ Alias: name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -163,8 +163,8 @@ Alias: name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:name |
-| native | analysis_api_schema:name |
+| self | basalt_schema:name |
+| native | basalt_schema:name |
 
 
 
@@ -175,7 +175,7 @@ Alias: name
 ```yaml
 name: name
 description: Human-readable name for the entity or activity.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: name
 domain_of:

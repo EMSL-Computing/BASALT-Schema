@@ -9,7 +9,7 @@ _Reference to the raw data file from the standard which was run with a batch of 
 
 
 
-URI: [analysis_api_schema:uses_calibration](https://w3id.org/MONet/analysis-api-schema/uses_calibration)
+URI: [basalt_schema:uses_calibration](https://w3id.org/MONet/basalt-schema/uses_calibration)
 Alias: uses_calibration
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: uses_calibration
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: uses_calibration
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:uses_calibration |
-| native | analysis_api_schema:uses_calibration |
+| self | basalt_schema:uses_calibration |
+| native | basalt_schema:uses_calibration |
 
 
 
@@ -84,7 +84,7 @@ name: uses_calibration
 description: Reference to the raw data file from the standard which was run with a
   batch of samples that was used as calibration for this data processing workflow
   run.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: uses_calibration
 domain_of:

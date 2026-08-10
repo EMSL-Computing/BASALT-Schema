@@ -9,7 +9,7 @@ _Type of filter used or how the sample was filtered_
 
 
 
-URI: [analysis_api_schema:filter_method](https://w3id.org/MONet/analysis-api-schema/filter_method)
+URI: [basalt_schema:filter_method](https://w3id.org/MONet/basalt-schema/filter_method)
 Alias: filter_method
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: filter_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -74,8 +74,8 @@ Alias: filter_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:filter_method |
-| native | analysis_api_schema:filter_method |
+| self | basalt_schema:filter_method |
+| native | basalt_schema:filter_method |
 
 
 
@@ -87,7 +87,7 @@ Alias: filter_method
 name: filter_method
 description: Type of filter used or how the sample was filtered
 title: filter method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: filter_method
 domain_of:

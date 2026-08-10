@@ -7,7 +7,7 @@ _The fragmentation techniques used in mass spectrometry._
 
 
 
-URI: [analysis_api_schema:FragmentationEnum](https://w3id.org/MONet/analysis-api-schema/FragmentationEnum)
+URI: [basalt_schema:FragmentationEnum](https://w3id.org/MONet/basalt-schema/FragmentationEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -43,7 +43,7 @@ URI: [analysis_api_schema:FragmentationEnum](https://w3id.org/MONet/analysis-api
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -56,7 +56,7 @@ URI: [analysis_api_schema:FragmentationEnum](https://w3id.org/MONet/analysis-api
 ```yaml
 name: FragmentationEnum
 description: The fragmentation techniques used in mass spectrometry.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   HCD:

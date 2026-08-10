@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:ended_at_time](https://w3id.org/MONet/analysis-api-schema/ended_at_time)
+URI: [basalt_schema:ended_at_time](https://w3id.org/MONet/basalt-schema/ended_at_time)
 Alias: ended_at_time
 
 <!-- no inheritance hierarchy -->
@@ -61,8 +61,8 @@ Alias: ended_at_time
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ended_at_time |
-| native | analysis_api_schema:ended_at_time |
+| self | basalt_schema:ended_at_time |
+| native | basalt_schema:ended_at_time |
 
 
 

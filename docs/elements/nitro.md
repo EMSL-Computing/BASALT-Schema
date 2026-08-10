@@ -9,7 +9,7 @@ _Concentration of nitrogen (total) (Unit: umol/L)_
 
 
 
-URI: [analysis_api_schema:nitro](https://w3id.org/MONet/analysis-api-schema/nitro)
+URI: [basalt_schema:nitro](https://w3id.org/MONet/basalt-schema/nitro)
 Alias: nitro
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: nitro
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: nitro
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:nitro |
-| native | analysis_api_schema:nitro |
+| self | basalt_schema:nitro |
+| native | basalt_schema:nitro |
 
 
 
@@ -92,7 +92,7 @@ Alias: nitro
 name: nitro
 description: 'Concentration of nitrogen (total) (Unit: umol/L)'
 title: nitrogen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: nitro
 domain_of:

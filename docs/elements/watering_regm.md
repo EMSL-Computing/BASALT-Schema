@@ -9,7 +9,7 @@ _Information about treatment involving an exposure to watering frequencies, trea
 
 
 
-URI: [analysis_api_schema:watering_regm](https://w3id.org/MONet/analysis-api-schema/watering_regm)
+URI: [basalt_schema:watering_regm](https://w3id.org/MONet/basalt-schema/watering_regm)
 Alias: watering_regm
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: watering_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: watering_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:watering_regm |
-| native | analysis_api_schema:watering_regm |
+| self | basalt_schema:watering_regm |
+| native | basalt_schema:watering_regm |
 
 
 
@@ -95,7 +95,7 @@ description: Information about treatment involving an exposure to watering frequ
   each treatment lasted, and the start and end time of the entire treatment; can include
   multiple regimens
 title: watering regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: watering_regm
 domain_of:

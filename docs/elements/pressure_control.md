@@ -9,7 +9,7 @@ _Measurment of pressure applied to the sample during experimentation (Unit: Pa)_
 
 
 
-URI: [analysis_api_schema:pressure_control](https://w3id.org/MONet/analysis-api-schema/pressure_control)
+URI: [basalt_schema:pressure_control](https://w3id.org/MONet/basalt-schema/pressure_control)
 Alias: pressure_control
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: pressure_control
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: pressure_control
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:pressure_control |
-| native | analysis_api_schema:pressure_control |
+| self | basalt_schema:pressure_control |
+| native | basalt_schema:pressure_control |
 
 
 
@@ -93,7 +93,7 @@ name: pressure_control
 description: 'Measurment of pressure applied to the sample during experimentation
   (Unit: Pa)'
 title: pressure control
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: pressure_control
 domain_of:

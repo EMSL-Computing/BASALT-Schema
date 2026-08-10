@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:term](https://w3id.org/MONet/analysis-api-schema/term)
+URI: [basalt_schema:term](https://w3id.org/MONet/basalt-schema/term)
 Alias: term
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: term
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: term
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:term |
-| native | analysis_api_schema:term |
+| self | basalt_schema:term |
+| native | basalt_schema:term |
 
 
 
@@ -83,7 +83,7 @@ Alias: term
 <details>
 ```yaml
 name: term
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: term
 owner: ControlledTermValue

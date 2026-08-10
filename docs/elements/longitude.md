@@ -9,7 +9,7 @@ _Longitude coordinate of the sampling site in WSG 84 format._
 
 
 
-URI: [analysis_api_schema:longitude](https://w3id.org/MONet/analysis-api-schema/longitude)
+URI: [basalt_schema:longitude](https://w3id.org/MONet/basalt-schema/longitude)
 Alias: longitude
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: longitude
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -80,8 +80,8 @@ Alias: longitude
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:longitude |
-| native | analysis_api_schema:longitude |
+| self | basalt_schema:longitude |
+| native | basalt_schema:longitude |
 | broad | MIXS:0000009 |
 
 
@@ -94,7 +94,7 @@ Alias: longitude
 name: longitude
 description: Longitude coordinate of the sampling site in WSG 84 format.
 title: longitude
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 broad_mappings:
 - MIXS:0000009
 rank: 1000

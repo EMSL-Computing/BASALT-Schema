@@ -9,7 +9,7 @@ _Temperature at which the method/process/activity was performed_
 
 
 
-URI: [analysis_api_schema:temperature_celsius](https://w3id.org/MONet/analysis-api-schema/temperature_celsius)
+URI: [basalt_schema:temperature_celsius](https://w3id.org/MONet/basalt-schema/temperature_celsius)
 Alias: temperature_celsius
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: temperature_celsius
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: temperature_celsius
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:temperature_celsius |
-| native | analysis_api_schema:temperature_celsius |
+| self | basalt_schema:temperature_celsius |
+| native | basalt_schema:temperature_celsius |
 
 
 
@@ -91,7 +91,7 @@ Alias: temperature_celsius
 ```yaml
 name: temperature_celsius
 description: Temperature at which the method/process/activity was performed
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: temperature_celsius
 domain_of:

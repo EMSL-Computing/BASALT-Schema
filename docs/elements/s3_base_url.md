@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:s3_base_url](https://w3id.org/MONet/analysis-api-schema/s3_base_url)
+URI: [basalt_schema:s3_base_url](https://w3id.org/MONet/basalt-schema/s3_base_url)
 Alias: s3_base_url
 
 <!-- no inheritance hierarchy -->
@@ -85,7 +85,7 @@ Alias: s3_base_url
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -94,8 +94,8 @@ Alias: s3_base_url
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:s3_base_url |
-| native | analysis_api_schema:s3_base_url |
+| self | basalt_schema:s3_base_url |
+| native | basalt_schema:s3_base_url |
 
 
 
@@ -105,7 +105,7 @@ Alias: s3_base_url
 <details>
 ```yaml
 name: s3_base_url
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: s3_base_url
 domain_of:

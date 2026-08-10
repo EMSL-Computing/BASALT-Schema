@@ -9,7 +9,7 @@ _Quality index for second boundary layer height candidate (-999 if no candidate)
 
 
 
-URI: [analysis_api_schema:second_blh_quality](https://w3id.org/MONet/analysis-api-schema/second_blh_quality)
+URI: [basalt_schema:second_blh_quality](https://w3id.org/MONet/basalt-schema/second_blh_quality)
 Alias: second_blh_quality
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: second_blh_quality
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: second_blh_quality
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:second_blh_quality |
-| native | analysis_api_schema:second_blh_quality |
+| self | basalt_schema:second_blh_quality |
+| native | basalt_schema:second_blh_quality |
 
 
 
@@ -84,7 +84,7 @@ name: second_blh_quality
 description: Quality index for second boundary layer height candidate (-999 if no
   candidate)
 title: second boundary layer height quality
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: second_blh_quality
 domain_of:

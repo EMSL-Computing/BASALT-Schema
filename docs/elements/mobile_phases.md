@@ -9,7 +9,7 @@ _Description of the mobile phases used in the chromatography method (e.g., solve
 
 
 
-URI: [analysis_api_schema:mobile_phases](https://w3id.org/MONet/analysis-api-schema/mobile_phases)
+URI: [basalt_schema:mobile_phases](https://w3id.org/MONet/basalt-schema/mobile_phases)
 Alias: mobile_phases
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: mobile_phases
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: mobile_phases
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:mobile_phases |
-| native | analysis_api_schema:mobile_phases |
+| self | basalt_schema:mobile_phases |
+| native | basalt_schema:mobile_phases |
 
 
 
@@ -84,7 +84,7 @@ Alias: mobile_phases
 name: mobile_phases
 description: Description of the mobile phases used in the chromatography method (e.g.,
   solvents, gradients)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: mobile_phases
 domain_of:

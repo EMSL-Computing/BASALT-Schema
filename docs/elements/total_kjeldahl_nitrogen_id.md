@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:total_kjeldahl_nitrogen_id](https://w3id.org/MONet/analysis-api-schema/total_kjeldahl_nitrogen_id)
+URI: [basalt_schema:total_kjeldahl_nitrogen_id](https://w3id.org/MONet/basalt-schema/total_kjeldahl_nitrogen_id)
 Alias: total_kjeldahl_nitrogen_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: total_kjeldahl_nitrogen_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: total_kjeldahl_nitrogen_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:total_kjeldahl_nitrogen_id |
-| native | analysis_api_schema:total_kjeldahl_nitrogen_id |
+| self | basalt_schema:total_kjeldahl_nitrogen_id |
+| native | basalt_schema:total_kjeldahl_nitrogen_id |
 
 
 
@@ -83,7 +83,7 @@ Alias: total_kjeldahl_nitrogen_id
 <details>
 ```yaml
 name: total_kjeldahl_nitrogen_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: total_kjeldahl_nitrogen_id
 owner: ElementalAnalysisProduct

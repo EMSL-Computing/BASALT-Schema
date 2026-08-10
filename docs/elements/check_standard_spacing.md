@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:check_standard_spacing](https://w3id.org/MONet/analysis-api-schema/check_standard_spacing)
+URI: [basalt_schema:check_standard_spacing](https://w3id.org/MONet/basalt-schema/check_standard_spacing)
 Alias: check_standard_spacing
 
 <!-- no inheritance hierarchy -->
@@ -59,8 +59,8 @@ Alias: check_standard_spacing
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:check_standard_spacing |
-| native | analysis_api_schema:check_standard_spacing |
+| self | basalt_schema:check_standard_spacing |
+| native | basalt_schema:check_standard_spacing |
 
 
 

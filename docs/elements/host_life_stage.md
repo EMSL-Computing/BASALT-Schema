@@ -9,7 +9,7 @@ _Description of life stage of host_
 
 
 
-URI: [analysis_api_schema:host_life_stage](https://w3id.org/MONet/analysis-api-schema/host_life_stage)
+URI: [basalt_schema:host_life_stage](https://w3id.org/MONet/basalt-schema/host_life_stage)
 Alias: host_life_stage
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: host_life_stage
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: host_life_stage
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:host_life_stage |
-| native | analysis_api_schema:host_life_stage |
+| self | basalt_schema:host_life_stage |
+| native | basalt_schema:host_life_stage |
 
 
 
@@ -86,7 +86,7 @@ Alias: host_life_stage
 name: host_life_stage
 description: Description of life stage of host
 title: host life stage
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: host_life_stage
 domain_of:

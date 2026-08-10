@@ -9,7 +9,7 @@ _Commonly called 'slope'. The angle between ground surface and a horizontal line
 
 
 
-URI: [analysis_api_schema:slope_gradient](https://w3id.org/MONet/analysis-api-schema/slope_gradient)
+URI: [basalt_schema:slope_gradient](https://w3id.org/MONet/basalt-schema/slope_gradient)
 Alias: slope_gradient
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: slope_gradient
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: slope_gradient
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:slope_gradient |
-| native | analysis_api_schema:slope_gradient |
+| self | basalt_schema:slope_gradient |
+| native | basalt_schema:slope_gradient |
 
 
 
@@ -92,7 +92,7 @@ description: 'Commonly called ''slope''. The angle between ground surface and a 
   line (in percent). This is the direction that overland water would flow. This measure
   is usually taken with a hand level meter or clinometer. (Unit: percent)'
 title: slope gradient
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: slope_gradient
 domain_of:

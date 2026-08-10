@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:x_ray_power](https://w3id.org/MONet/analysis-api-schema/x_ray_power)
+URI: [basalt_schema:x_ray_power](https://w3id.org/MONet/basalt-schema/x_ray_power)
 Alias: x_ray_power
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: x_ray_power
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: x_ray_power
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:x_ray_power |
-| native | analysis_api_schema:x_ray_power |
+| self | basalt_schema:x_ray_power |
+| native | basalt_schema:x_ray_power |
 
 
 
@@ -84,7 +84,7 @@ Alias: x_ray_power
 <details>
 ```yaml
 name: x_ray_power
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: x_ray_power
 owner: XrayComputedTomographyMethod

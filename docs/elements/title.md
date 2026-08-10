@@ -9,7 +9,7 @@ _The title of the study/proposal._
 
 
 
-URI: [analysis_api_schema:title](https://w3id.org/MONet/analysis-api-schema/title)
+URI: [basalt_schema:title](https://w3id.org/MONet/basalt-schema/title)
 Alias: title
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: title
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: title
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:title |
-| native | analysis_api_schema:title |
+| self | basalt_schema:title |
+| native | basalt_schema:title |
 
 
 
@@ -89,7 +89,7 @@ Alias: title
 ```yaml
 name: title
 description: The title of the study/proposal.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: title
 owner: Study

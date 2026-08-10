@@ -9,7 +9,7 @@ _Treatment involving an exposure to standing water during a plant's life span; t
 
 
 
-URI: [analysis_api_schema:standing_water_regm](https://w3id.org/MONet/analysis-api-schema/standing_water_regm)
+URI: [basalt_schema:standing_water_regm](https://w3id.org/MONet/basalt-schema/standing_water_regm)
 Alias: standing_water_regm
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: standing_water_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: standing_water_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:standing_water_regm |
-| native | analysis_api_schema:standing_water_regm |
+| self | basalt_schema:standing_water_regm |
+| native | basalt_schema:standing_water_regm |
 
 
 
@@ -87,7 +87,7 @@ description: Treatment involving an exposure to standing water during a plant's 
   many times the treatment was repeated, how long each treatment lasted, and the start
   and end time of the entire treatment; can include multiple regimens
 title: standing water regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: standing_water_regm
 domain_of:

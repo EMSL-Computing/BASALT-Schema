@@ -9,7 +9,7 @@ _Heavy metals present and concentrations; can include multiple heavy metals and 
 
 
 
-URI: [analysis_api_schema:heavy_metals](https://w3id.org/MONet/analysis-api-schema/heavy_metals)
+URI: [basalt_schema:heavy_metals](https://w3id.org/MONet/basalt-schema/heavy_metals)
 Alias: heavy_metals
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: heavy_metals
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: heavy_metals
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:heavy_metals |
-| native | analysis_api_schema:heavy_metals |
+| self | basalt_schema:heavy_metals |
+| native | basalt_schema:heavy_metals |
 
 
 
@@ -85,7 +85,7 @@ name: heavy_metals
 description: Heavy metals present and concentrations; can include multiple heavy metals
   and concentrations
 title: heavy metals
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: heavy_metals
 domain_of:

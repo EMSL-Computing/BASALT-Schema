@@ -9,7 +9,7 @@ _Gene family or marker used for the phylogeny (e.g., 16S, ITS)_
 
 
 
-URI: [analysis_api_schema:gene_family](https://w3id.org/MONet/analysis-api-schema/gene_family)
+URI: [basalt_schema:gene_family](https://w3id.org/MONet/basalt-schema/gene_family)
 Alias: gene_family
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: gene_family
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: gene_family
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:gene_family |
-| native | analysis_api_schema:gene_family |
+| self | basalt_schema:gene_family |
+| native | basalt_schema:gene_family |
 
 
 
@@ -82,7 +82,7 @@ Alias: gene_family
 ```yaml
 name: gene_family
 description: Gene family or marker used for the phylogeny (e.g., 16S, ITS)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: gene_family
 domain_of:

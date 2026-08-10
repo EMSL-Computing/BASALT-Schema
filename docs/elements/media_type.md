@@ -11,7 +11,7 @@ _Examples: strain_purity, stock_culture, pre_culture, rich_media._
 
 
 
-URI: [analysis_api_schema:media_type](https://w3id.org/MONet/analysis-api-schema/media_type)
+URI: [basalt_schema:media_type](https://w3id.org/MONet/basalt-schema/media_type)
 Alias: media_type
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: media_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: media_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:media_type |
-| native | analysis_api_schema:media_type |
+| self | basalt_schema:media_type |
+| native | basalt_schema:media_type |
 
 
 
@@ -86,7 +86,7 @@ name: media_type
 description: 'Purpose/context of the media preparation.
 
   Examples: strain_purity, stock_culture, pre_culture, rich_media.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: media_type
 domain_of:

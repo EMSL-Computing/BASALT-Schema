@@ -9,7 +9,7 @@ _Concentration of organic matter (Unit: mg/L)_
 
 
 
-URI: [analysis_api_schema:org_matter](https://w3id.org/MONet/analysis-api-schema/org_matter)
+URI: [basalt_schema:org_matter](https://w3id.org/MONet/basalt-schema/org_matter)
 Alias: org_matter
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: org_matter
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: org_matter
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:org_matter |
-| native | analysis_api_schema:org_matter |
+| self | basalt_schema:org_matter |
+| native | basalt_schema:org_matter |
 
 
 
@@ -92,7 +92,7 @@ Alias: org_matter
 name: org_matter
 description: 'Concentration of organic matter (Unit: mg/L)'
 title: organic matter
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: org_matter
 domain_of:

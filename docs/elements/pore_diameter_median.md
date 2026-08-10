@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:pore_diameter_median](https://w3id.org/MONet/analysis-api-schema/pore_diameter_median)
+URI: [basalt_schema:pore_diameter_median](https://w3id.org/MONet/basalt-schema/pore_diameter_median)
 Alias: pore_diameter_median
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: pore_diameter_median
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: pore_diameter_median
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:pore_diameter_median |
-| native | analysis_api_schema:pore_diameter_median |
+| self | basalt_schema:pore_diameter_median |
+| native | basalt_schema:pore_diameter_median |
 
 
 
@@ -83,7 +83,7 @@ Alias: pore_diameter_median
 <details>
 ```yaml
 name: pore_diameter_median
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: pore_diameter_median
 owner: TomographyProduct

@@ -9,7 +9,7 @@ _List of external identifiers associated with this entity or activity._
 
 
 
-URI: [analysis_api_schema:external_identifiers](https://w3id.org/MONet/analysis-api-schema/external_identifiers)
+URI: [basalt_schema:external_identifiers](https://w3id.org/MONet/basalt-schema/external_identifiers)
 Alias: external_identifiers
 
 <!-- no inheritance hierarchy -->
@@ -79,7 +79,7 @@ Alias: external_identifiers
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -88,8 +88,8 @@ Alias: external_identifiers
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:external_identifiers |
-| native | analysis_api_schema:external_identifiers |
+| self | basalt_schema:external_identifiers |
+| native | basalt_schema:external_identifiers |
 
 
 
@@ -100,7 +100,7 @@ Alias: external_identifiers
 ```yaml
 name: external_identifiers
 description: List of external identifiers associated with this entity or activity.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: external_identifiers
 domain_of:

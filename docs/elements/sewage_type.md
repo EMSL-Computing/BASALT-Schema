@@ -9,7 +9,7 @@ _type of wastewater treatment plant as municipial or industrial_
 
 
 
-URI: [analysis_api_schema:sewage_type](https://w3id.org/MONet/analysis-api-schema/sewage_type)
+URI: [basalt_schema:sewage_type](https://w3id.org/MONet/basalt-schema/sewage_type)
 Alias: sewage_type
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: sewage_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: sewage_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sewage_type |
-| native | analysis_api_schema:sewage_type |
+| self | basalt_schema:sewage_type |
+| native | basalt_schema:sewage_type |
 
 
 
@@ -83,7 +83,7 @@ Alias: sewage_type
 name: sewage_type
 description: type of wastewater treatment plant as municipial or industrial
 title: sewage type
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: sewage_type
 domain_of:

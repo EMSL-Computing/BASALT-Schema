@@ -9,7 +9,7 @@ _Other/additional details about your sample that you feel can't be accurately re
 
 
 
-URI: [analysis_api_schema:other](https://w3id.org/MONet/analysis-api-schema/other)
+URI: [basalt_schema:other](https://w3id.org/MONet/basalt-schema/other)
 Alias: other
 
 <!-- no inheritance hierarchy -->
@@ -75,7 +75,7 @@ Alias: other
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -84,8 +84,8 @@ Alias: other
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:other |
-| native | analysis_api_schema:other |
+| self | basalt_schema:other |
+| native | basalt_schema:other |
 
 
 
@@ -98,7 +98,7 @@ name: other
 description: Other/additional details about your sample that you feel can't be accurately
   represented in ANY of the available columns.
 title: other
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: other
 domain_of:

@@ -9,7 +9,7 @@ _Information about treatment(s) involving exposure to light including both light
 
 
 
-URI: [analysis_api_schema:light_regm](https://w3id.org/MONet/analysis-api-schema/light_regm)
+URI: [basalt_schema:light_regm](https://w3id.org/MONet/basalt-schema/light_regm)
 Alias: light_regm
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: light_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: light_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:light_regm |
-| native | analysis_api_schema:light_regm |
+| self | basalt_schema:light_regm |
+| native | basalt_schema:light_regm |
 
 
 
@@ -92,7 +92,7 @@ name: light_regm
 description: Information about treatment(s) involving exposure to light including
   both light intensity and quality.
 title: light regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: light_regm
 domain_of:

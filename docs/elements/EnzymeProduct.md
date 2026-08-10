@@ -11,7 +11,7 @@ _One row per sample with columns for beta-glucosidase activity and QC flag._
 
 
 
-URI: [analysis_api_schema:EnzymeProduct](https://w3id.org/MONet/analysis-api-schema/EnzymeProduct)
+URI: [basalt_schema:EnzymeProduct](https://w3id.org/MONet/basalt-schema/EnzymeProduct)
 
 
 
@@ -164,7 +164,7 @@ URI: [analysis_api_schema:EnzymeProduct](https://w3id.org/MONet/analysis-api-sch
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -173,8 +173,8 @@ URI: [analysis_api_schema:EnzymeProduct](https://w3id.org/MONet/analysis-api-sch
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:EnzymeProduct |
-| native | analysis_api_schema:EnzymeProduct |
+| self | basalt_schema:EnzymeProduct |
+| native | basalt_schema:EnzymeProduct |
 
 
 
@@ -194,21 +194,21 @@ description: 'Enzyme activity analysis product, typically derived via colorimetr
   assay of soil extracts.
 
   One row per sample with columns for beta-glucosidase activity and QC flag.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: ProcessedData
 slots:
 - measure_type
 attributes:
   beta_glucosidase_ug_pnp_per_g_per_h_id:
     name: beta_glucosidase_ug_pnp_per_g_per_h_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     domain_of:
     - EnzymeProduct
     range: QuantityValue
   flag:
     name: flag
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     domain_of:
     - WellReading
     - BulkDensityProduct
@@ -233,12 +233,12 @@ description: 'Enzyme activity analysis product, typically derived via colorimetr
   assay of soil extracts.
 
   One row per sample with columns for beta-glucosidase activity and QC flag.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: ProcessedData
 attributes:
   beta_glucosidase_ug_pnp_per_g_per_h_id:
     name: beta_glucosidase_ug_pnp_per_g_per_h_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     rank: 1000
     alias: beta_glucosidase_ug_pnp_per_g_per_h_id
     owner: EnzymeProduct
@@ -247,7 +247,7 @@ attributes:
     range: QuantityValue
   flag:
     name: flag
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://w3id.org/MONet/basalt-schema/products
     alias: flag
     owner: EnzymeProduct
     domain_of:
@@ -265,7 +265,7 @@ attributes:
     name: measure_type
     description: Whether the measurement recorded is a single measurement, one of
       a set of  replicate measurements, or an average of several replicate measurements.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: measure_type
     owner: EnzymeProduct
@@ -298,7 +298,7 @@ attributes:
       \ retained until formal typed class exists."
     todos:
     - make this inined/multivalued?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: summary_metrics
     owner: EnzymeProduct
@@ -309,7 +309,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: lims_barcode
     owner: EnzymeProduct
@@ -321,7 +321,7 @@ attributes:
   sample_id:
     name: sample_id
     description: Link back to the originating sample
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sample_id
     owner: EnzymeProduct
@@ -334,7 +334,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: name
     owner: EnzymeProduct
@@ -364,7 +364,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: description
     owner: EnzymeProduct
@@ -400,7 +400,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - study
     - study_id
@@ -437,7 +437,7 @@ attributes:
 
       in the same sampling event or campaign.'
     title: sampling set
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sampling_set
     owner: EnzymeProduct
@@ -453,7 +453,7 @@ attributes:
     - value: TOP
     - value: MID
     - value: BTM
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: core_section
     owner: EnzymeProduct
@@ -471,7 +471,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - samp_name
     rank: 1000
@@ -497,7 +497,7 @@ attributes:
     range: string
   s3_base_url:
     name: s3_base_url
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: s3_base_url
     owner: EnzymeProduct
@@ -506,7 +506,7 @@ attributes:
     range: string
   s3_bucket:
     name: s3_bucket
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: s3_bucket
     owner: EnzymeProduct
@@ -516,7 +516,7 @@ attributes:
   s3_key:
     name: s3_key
     description: MinIO/S3 object key; required for all data products
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: s3_key
     owner: EnzymeProduct
@@ -527,7 +527,7 @@ attributes:
   filesize:
     name: filesize
     description: Size of the file in bytes
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: filesize
     owner: EnzymeProduct
@@ -536,7 +536,7 @@ attributes:
     range: integer
   md5checksum:
     name: md5checksum
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: md5checksum
     owner: EnzymeProduct
@@ -545,7 +545,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     identifier: true
     alias: id
     owner: EnzymeProduct

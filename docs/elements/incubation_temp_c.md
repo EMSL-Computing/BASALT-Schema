@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:incubation_temp_c](https://w3id.org/MONet/analysis-api-schema/incubation_temp_c)
+URI: [basalt_schema:incubation_temp_c](https://w3id.org/MONet/basalt-schema/incubation_temp_c)
 Alias: incubation_temp_c
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: incubation_temp_c
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: incubation_temp_c
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:incubation_temp_c |
-| native | analysis_api_schema:incubation_temp_c |
+| self | basalt_schema:incubation_temp_c |
+| native | basalt_schema:incubation_temp_c |
 
 
 
@@ -83,7 +83,7 @@ Alias: incubation_temp_c
 <details>
 ```yaml
 name: incubation_temp_c
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: incubation_temp_c
 owner: EnzymeActivityMethod

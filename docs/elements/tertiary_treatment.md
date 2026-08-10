@@ -9,7 +9,7 @@ _the process providing a final treatment stage to raise the effluent quality bef
 
 
 
-URI: [analysis_api_schema:tertiary_treatment](https://w3id.org/MONet/analysis-api-schema/tertiary_treatment)
+URI: [basalt_schema:tertiary_treatment](https://w3id.org/MONet/basalt-schema/tertiary_treatment)
 Alias: tertiary_treatment
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: tertiary_treatment
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: tertiary_treatment
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:tertiary_treatment |
-| native | analysis_api_schema:tertiary_treatment |
+| self | basalt_schema:tertiary_treatment |
+| native | basalt_schema:tertiary_treatment |
 
 
 
@@ -84,7 +84,7 @@ name: tertiary_treatment
 description: the process providing a final treatment stage to raise the effluent quality
   before it is discharged to the receiving environment
 title: tertiary treatment
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: tertiary_treatment
 domain_of:

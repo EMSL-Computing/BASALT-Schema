@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flow_rate_x](https://w3id.org/MONet/analysis-api-schema/flow_rate_x)
+URI: [basalt_schema:flow_rate_x](https://w3id.org/MONet/basalt-schema/flow_rate_x)
 Alias: flow_rate_x
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flow_rate_x
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flow_rate_x
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flow_rate_x |
-| native | analysis_api_schema:flow_rate_x |
+| self | basalt_schema:flow_rate_x |
+| native | basalt_schema:flow_rate_x |
 
 
 
@@ -83,7 +83,7 @@ Alias: flow_rate_x
 <details>
 ```yaml
 name: flow_rate_x
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: flow_rate_x
 owner: TomographyProduct

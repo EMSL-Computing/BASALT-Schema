@@ -9,7 +9,7 @@ _Quality index for third boundary layer height candidate (-999 if no candidate)_
 
 
 
-URI: [analysis_api_schema:third_blh_quality](https://w3id.org/MONet/analysis-api-schema/third_blh_quality)
+URI: [basalt_schema:third_blh_quality](https://w3id.org/MONet/basalt-schema/third_blh_quality)
 Alias: third_blh_quality
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: third_blh_quality
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: third_blh_quality
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:third_blh_quality |
-| native | analysis_api_schema:third_blh_quality |
+| self | basalt_schema:third_blh_quality |
+| native | basalt_schema:third_blh_quality |
 
 
 
@@ -83,7 +83,7 @@ Alias: third_blh_quality
 name: third_blh_quality
 description: Quality index for third boundary layer height candidate (-999 if no candidate)
 title: third boundary layer height quality
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: third_blh_quality
 domain_of:

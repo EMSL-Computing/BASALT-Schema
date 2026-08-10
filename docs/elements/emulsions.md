@@ -9,7 +9,7 @@ _amount or concentration of substances such as paints, adhesives, mayonnaise, ha
 
 
 
-URI: [analysis_api_schema:emulsions](https://w3id.org/MONet/analysis-api-schema/emulsions)
+URI: [basalt_schema:emulsions](https://w3id.org/MONet/basalt-schema/emulsions)
 Alias: emulsions
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: emulsions
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: emulsions
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:emulsions |
-| native | analysis_api_schema:emulsions |
+| self | basalt_schema:emulsions |
+| native | basalt_schema:emulsions |
 
 
 
@@ -84,7 +84,7 @@ name: emulsions
 description: amount or concentration of substances such as paints, adhesives, mayonnaise,
   hair colorants, emulsified oils, etc.; can include multiple emulsion types
 title: emulsions
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: emulsions
 domain_of:

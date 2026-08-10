@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:vendor](https://w3id.org/MONet/analysis-api-schema/vendor)
+URI: [basalt_schema:vendor](https://w3id.org/MONet/basalt-schema/vendor)
 Alias: vendor
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: vendor
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: vendor
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:vendor |
-| native | analysis_api_schema:vendor |
+| self | basalt_schema:vendor |
+| native | basalt_schema:vendor |
 
 
 
@@ -83,7 +83,7 @@ Alias: vendor
 <details>
 ```yaml
 name: vendor
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: vendor
 owner: Instrument

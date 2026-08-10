@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:YesNoEnum](https://w3id.org/MONet/analysis-api-schema/YesNoEnum)
+URI: [basalt_schema:YesNoEnum](https://w3id.org/MONet/basalt-schema/YesNoEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -31,7 +31,7 @@ URI: [analysis_api_schema:YesNoEnum](https://w3id.org/MONet/analysis-api-schema/
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -43,7 +43,7 @@ URI: [analysis_api_schema:YesNoEnum](https://w3id.org/MONet/analysis-api-schema/
 <details>
 ```yaml
 name: YesNoEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   'True':

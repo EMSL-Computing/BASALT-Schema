@@ -9,7 +9,7 @@ _Aluminum saturation (esp. For tropical soils)_
 
 
 
-URI: [analysis_api_schema:al_sat](https://w3id.org/MONet/analysis-api-schema/al_sat)
+URI: [basalt_schema:al_sat](https://w3id.org/MONet/basalt-schema/al_sat)
 Alias: al_sat
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: al_sat
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: al_sat
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:al_sat |
-| native | analysis_api_schema:al_sat |
+| self | basalt_schema:al_sat |
+| native | basalt_schema:al_sat |
 
 
 
@@ -84,7 +84,7 @@ Alias: al_sat
 name: al_sat
 description: Aluminum saturation (esp. For tropical soils)
 title: aluminum saturation
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: al_sat
 domain_of:

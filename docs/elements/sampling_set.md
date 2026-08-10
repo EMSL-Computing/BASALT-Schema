@@ -13,7 +13,7 @@ _in the same sampling event or campaign._
 
 
 
-URI: [analysis_api_schema:sampling_set](https://w3id.org/MONet/analysis-api-schema/sampling_set)
+URI: [basalt_schema:sampling_set](https://w3id.org/MONet/basalt-schema/sampling_set)
 Alias: sampling_set
 
 <!-- no inheritance hierarchy -->
@@ -95,7 +95,7 @@ Alias: sampling_set
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -104,8 +104,8 @@ Alias: sampling_set
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sampling_set |
-| native | analysis_api_schema:sampling_set |
+| self | basalt_schema:sampling_set |
+| native | basalt_schema:sampling_set |
 
 
 
@@ -121,7 +121,7 @@ description: 'Sampling set number for grouping related samples collected togethe
 
   in the same sampling event or campaign.'
 title: sampling set
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: sampling_set
 domain_of:

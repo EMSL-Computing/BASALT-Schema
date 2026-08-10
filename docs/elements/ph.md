@@ -9,7 +9,7 @@ _pH measurement of the sample or liquid portion of sample or aqueous phase of th
 
 
 
-URI: [analysis_api_schema:ph](https://w3id.org/MONet/analysis-api-schema/ph)
+URI: [basalt_schema:ph](https://w3id.org/MONet/basalt-schema/ph)
 Alias: ph
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: ph
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -74,8 +74,8 @@ Alias: ph
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ph |
-| native | analysis_api_schema:ph |
+| self | basalt_schema:ph |
+| native | basalt_schema:ph |
 
 
 
@@ -88,7 +88,7 @@ name: ph
 description: pH measurement of the sample or liquid portion of sample or aqueous phase
   of the fluid
 title: pH
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: ph
 domain_of:

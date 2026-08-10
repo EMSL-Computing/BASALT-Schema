@@ -9,7 +9,7 @@ _LIMS barcode identifier_
 
 
 
-URI: [analysis_api_schema:lims_barcode](https://w3id.org/MONet/analysis-api-schema/lims_barcode)
+URI: [basalt_schema:lims_barcode](https://w3id.org/MONet/basalt-schema/lims_barcode)
 Alias: lims_barcode
 
 <!-- no inheritance hierarchy -->
@@ -105,7 +105,7 @@ Alias: lims_barcode
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -114,8 +114,8 @@ Alias: lims_barcode
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:lims_barcode |
-| native | analysis_api_schema:lims_barcode |
+| self | basalt_schema:lims_barcode |
+| native | basalt_schema:lims_barcode |
 
 
 
@@ -126,7 +126,7 @@ Alias: lims_barcode
 ```yaml
 name: lims_barcode
 description: LIMS barcode identifier
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: lims_barcode
 domain_of:

@@ -9,7 +9,7 @@ _Measurement of magnitude and direction of flow within a fluid. Provide value an
 
 
 
-URI: [analysis_api_schema:water_current](https://w3id.org/MONet/analysis-api-schema/water_current)
+URI: [basalt_schema:water_current](https://w3id.org/MONet/basalt-schema/water_current)
 Alias: water_current
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: water_current
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: water_current
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:water_current |
-| native | analysis_api_schema:water_current |
+| self | basalt_schema:water_current |
+| native | basalt_schema:water_current |
 
 
 
@@ -92,7 +92,7 @@ name: water_current
 description: Measurement of magnitude and direction of flow within a fluid. Provide
   value and unit, any unit is valid.
 title: water current
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: water_current
 domain_of:

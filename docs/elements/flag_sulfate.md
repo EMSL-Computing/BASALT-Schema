@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_sulfate](https://w3id.org/MONet/analysis-api-schema/flag_sulfate)
+URI: [basalt_schema:flag_sulfate](https://w3id.org/MONet/basalt-schema/flag_sulfate)
 Alias: flag_sulfate
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_sulfate
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_sulfate
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_sulfate |
-| native | analysis_api_schema:flag_sulfate |
+| self | basalt_schema:flag_sulfate |
+| native | basalt_schema:flag_sulfate |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_sulfate
 <details>
 ```yaml
 name: flag_sulfate
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: flag_sulfate
 owner: IonsAnalysisProduct

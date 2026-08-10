@@ -9,7 +9,7 @@ _When the plate was physically set up_
 
 
 
-URI: [analysis_api_schema:setup_date](https://w3id.org/MONet/analysis-api-schema/setup_date)
+URI: [basalt_schema:setup_date](https://w3id.org/MONet/basalt-schema/setup_date)
 Alias: setup_date
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: setup_date
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: setup_date
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:setup_date |
-| native | analysis_api_schema:setup_date |
+| self | basalt_schema:setup_date |
+| native | basalt_schema:setup_date |
 
 
 
@@ -85,7 +85,7 @@ Alias: setup_date
 ```yaml
 name: setup_date
 description: When the plate was physically set up
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: setup_date
 domain_of:

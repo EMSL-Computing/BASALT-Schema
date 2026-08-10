@@ -9,7 +9,7 @@ _Second cloud base (meters) or highest received signal in vertical visibility (m
 
 
 
-URI: [analysis_api_schema:second_cbh](https://w3id.org/MONet/analysis-api-schema/second_cbh)
+URI: [basalt_schema:second_cbh](https://w3id.org/MONet/basalt-schema/second_cbh)
 Alias: second_cbh
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: second_cbh
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: second_cbh
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:second_cbh |
-| native | analysis_api_schema:second_cbh |
+| self | basalt_schema:second_cbh |
+| native | basalt_schema:second_cbh |
 
 
 
@@ -84,7 +84,7 @@ name: second_cbh
 description: 'Second cloud base (meters) or highest received signal in vertical visibility
   (meters) (-999 if no cloud base or vertical visibility) (Unit: m)'
 title: second cloud base height
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: second_cbh
 domain_of:

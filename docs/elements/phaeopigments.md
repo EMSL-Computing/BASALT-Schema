@@ -9,7 +9,7 @@ _Concentration of phaeopigments; can include multiple phaeopigments separated by
 
 
 
-URI: [analysis_api_schema:phaeopigments](https://w3id.org/MONet/analysis-api-schema/phaeopigments)
+URI: [basalt_schema:phaeopigments](https://w3id.org/MONet/basalt-schema/phaeopigments)
 Alias: phaeopigments
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: phaeopigments
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: phaeopigments
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:phaeopigments |
-| native | analysis_api_schema:phaeopigments |
+| self | basalt_schema:phaeopigments |
+| native | basalt_schema:phaeopigments |
 
 
 
@@ -93,7 +93,7 @@ name: phaeopigments
 description: 'Concentration of phaeopigments; can include multiple phaeopigments separated
   by a `;` (Unit: mg/cm3)'
 title: phaeopigments
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: phaeopigments
 domain_of:

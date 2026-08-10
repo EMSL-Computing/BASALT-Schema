@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:instrument_id](https://w3id.org/MONet/analysis-api-schema/instrument_id)
+URI: [basalt_schema:instrument_id](https://w3id.org/MONet/basalt-schema/instrument_id)
 Alias: instrument_id
 
 <!-- no inheritance hierarchy -->
@@ -59,8 +59,8 @@ Alias: instrument_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:instrument_id |
-| native | analysis_api_schema:instrument_id |
+| self | basalt_schema:instrument_id |
+| native | basalt_schema:instrument_id |
 
 
 

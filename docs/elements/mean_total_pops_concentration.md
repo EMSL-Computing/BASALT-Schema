@@ -9,7 +9,7 @@ _Mean concentration obtained from Portable Optical Particle Spectrometer (Unit: 
 
 
 
-URI: [analysis_api_schema:mean_total_pops_concentration](https://w3id.org/MONet/analysis-api-schema/mean_total_pops_concentration)
+URI: [basalt_schema:mean_total_pops_concentration](https://w3id.org/MONet/basalt-schema/mean_total_pops_concentration)
 Alias: mean_total_pops_concentration
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: mean_total_pops_concentration
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: mean_total_pops_concentration
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:mean_total_pops_concentration |
-| native | analysis_api_schema:mean_total_pops_concentration |
+| self | basalt_schema:mean_total_pops_concentration |
+| native | basalt_schema:mean_total_pops_concentration |
 
 
 
@@ -84,7 +84,7 @@ name: mean_total_pops_concentration
 description: 'Mean concentration obtained from Portable Optical Particle Spectrometer
   (Unit: μm)'
 title: mean total P.O.P. concentration
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: mean_total_pops_concentration
 domain_of:

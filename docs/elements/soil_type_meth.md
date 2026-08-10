@@ -9,7 +9,7 @@ _Reference or method used in determining soil series name or other lower-level c
 
 
 
-URI: [analysis_api_schema:soil_type_meth](https://w3id.org/MONet/analysis-api-schema/soil_type_meth)
+URI: [basalt_schema:soil_type_meth](https://w3id.org/MONet/basalt-schema/soil_type_meth)
 Alias: soil_type_meth
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: soil_type_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: soil_type_meth
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:soil_type_meth |
-| native | analysis_api_schema:soil_type_meth |
+| self | basalt_schema:soil_type_meth |
+| native | basalt_schema:soil_type_meth |
 
 
 
@@ -85,7 +85,7 @@ name: soil_type_meth
 description: Reference or method used in determining soil series name or other lower-level
   classification
 title: soil type method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: soil_type_meth
 domain_of:

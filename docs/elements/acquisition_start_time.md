@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:acquisition_start_time](https://w3id.org/MONet/analysis-api-schema/acquisition_start_time)
+URI: [basalt_schema:acquisition_start_time](https://w3id.org/MONet/basalt-schema/acquisition_start_time)
 Alias: acquisition_start_time
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: acquisition_start_time
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -82,8 +82,8 @@ Alias: acquisition_start_time
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:acquisition_start_time |
-| native | analysis_api_schema:acquisition_start_time |
+| self | basalt_schema:acquisition_start_time |
+| native | basalt_schema:acquisition_start_time |
 
 
 
@@ -93,7 +93,7 @@ Alias: acquisition_start_time
 <details>
 ```yaml
 name: acquisition_start_time
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: acquisition_start_time
 owner: DataGenerationActivity

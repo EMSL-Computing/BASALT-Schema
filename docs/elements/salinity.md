@@ -9,7 +9,7 @@ _Salinity is the total concentration of all dissolved salts in a sample. While s
 
 
 
-URI: [analysis_api_schema:salinity](https://w3id.org/MONet/analysis-api-schema/salinity)
+URI: [basalt_schema:salinity](https://w3id.org/MONet/basalt-schema/salinity)
 Alias: salinity
 
 <!-- no inheritance hierarchy -->
@@ -72,7 +72,7 @@ Alias: salinity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -81,8 +81,8 @@ Alias: salinity
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:salinity |
-| native | analysis_api_schema:salinity |
+| self | basalt_schema:salinity |
+| native | basalt_schema:salinity |
 
 
 
@@ -99,7 +99,7 @@ description: 'Salinity is the total concentration of all dissolved salts in a sa
   of the sample to a salinity standard such as seawater (Unit: practical salinity
   unit or percent)'
 title: salinity
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: salinity
 domain_of:

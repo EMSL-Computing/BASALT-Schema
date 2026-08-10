@@ -9,7 +9,7 @@ _Additional information pertaining to these data, including SP Project ID and Ta
 
 
 
-URI: [analysis_api_schema:additional_information](https://w3id.org/MONet/analysis-api-schema/additional_information)
+URI: [basalt_schema:additional_information](https://w3id.org/MONet/basalt-schema/additional_information)
 Alias: additional_information
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: additional_information
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: additional_information
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:additional_information |
-| native | analysis_api_schema:additional_information |
+| self | basalt_schema:additional_information |
+| native | basalt_schema:additional_information |
 
 
 
@@ -86,7 +86,7 @@ Alias: additional_information
 name: additional_information
 description: Additional information pertaining to these data, including SP Project
   ID and Taxon OID
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: additional_information
 domain_of:

@@ -19,7 +19,7 @@ _  _
 
 
 
-URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysis-api-schema/EngineeredStrainSample)
+URI: [basalt_schema:EngineeredStrainSample](https://w3id.org/MONet/basalt-schema/EngineeredStrainSample)
 
 
 
@@ -114,7 +114,7 @@ URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysi
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -123,8 +123,8 @@ URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysi
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:EngineeredStrainSample |
-| native | analysis_api_schema:EngineeredStrainSample |
+| self | basalt_schema:EngineeredStrainSample |
+| native | basalt_schema:EngineeredStrainSample |
 
 
 
@@ -145,7 +145,7 @@ description: "A sample containing a strain of an organism that has been subjecte
   \ information (organism_name,\nstrain_source, modification_method, genotype_segment_*,\
   \ component_*, phenotype, trait, etc.)\nand carries only sample-instance-specific\
   \ slots.\n  "
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: Sample
 slots:
 - organism_ref
@@ -156,7 +156,7 @@ slots:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -235,7 +235,7 @@ attributes:
   cbi:
     name: cbi
     description: Controlled Biological Information flag (yes/no).
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
     domain_of:
     - AMP2UserSample
     - EngineeredStrainSample
@@ -245,7 +245,7 @@ attributes:
     description: 'Storage condition for this sample (frozen, fresh, etc.).
 
       Aliases: samp_store_cond, storage_cond, storage_condt'
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
     domain_of:
     - AerosolArmSample
     - AerosolSample
@@ -270,7 +270,7 @@ attributes:
     description: 'Storage temperature for this sample (e.g., "-80 C").
 
       Aliases: samp_store_temp'
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
     domain_of:
     - MediaPreparation
     - AMP2UserSample
@@ -289,12 +289,12 @@ description: "A sample containing a strain of an organism that has been subjecte
   \ information (organism_name,\nstrain_source, modification_method, genotype_segment_*,\
   \ component_*, phenotype, trait, etc.)\nand carries only sample-instance-specific\
   \ slots.\n  "
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: Sample
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
     identifier: true
     alias: id
     owner: EngineeredStrainSample
@@ -375,7 +375,7 @@ attributes:
   cbi:
     name: cbi
     description: Controlled Biological Information flag (yes/no).
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
     alias: cbi
     owner: EngineeredStrainSample
     domain_of:
@@ -388,7 +388,7 @@ attributes:
     description: 'Storage condition for this sample (frozen, fresh, etc.).
 
       Aliases: samp_store_cond, storage_cond, storage_condt'
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
     alias: storage_condition
     owner: EngineeredStrainSample
     domain_of:
@@ -416,7 +416,7 @@ attributes:
     description: 'Storage temperature for this sample (e.g., "-80 C").
 
       Aliases: samp_store_temp'
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
     alias: storage_temperature
     owner: EngineeredStrainSample
     domain_of:
@@ -431,7 +431,7 @@ attributes:
       strain, isolate, engineered construct) that this sample or activity
 
       is associated with.'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - strain_ref
     - strain_id
@@ -447,7 +447,7 @@ attributes:
   external_identifiers:
     name: external_identifiers
     description: List of external identifiers associated with this entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: external_identifiers
     owner: EngineeredStrainSample
@@ -475,7 +475,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: name
     owner: EngineeredStrainSample
@@ -505,7 +505,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: description
     owner: EngineeredStrainSample
@@ -544,7 +544,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: emsl_activity
     owner: EngineeredStrainSample
@@ -556,7 +556,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: lims_barcode
     owner: EngineeredStrainSample

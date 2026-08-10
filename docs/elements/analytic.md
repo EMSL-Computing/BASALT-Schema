@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:analytic](https://w3id.org/MONet/analysis-api-schema/analytic)
+URI: [basalt_schema:analytic](https://w3id.org/MONet/basalt-schema/analytic)
 Alias: analytic
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: analytic
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -82,8 +82,8 @@ Alias: analytic
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:analytic |
-| native | analysis_api_schema:analytic |
+| self | basalt_schema:analytic |
+| native | basalt_schema:analytic |
 
 
 
@@ -95,7 +95,7 @@ Alias: analytic
 name: analytic
 todos:
 - what does this mean
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: analytic
 domain_of:

@@ -9,7 +9,7 @@ _Link back to the originating sample_
 
 
 
-URI: [analysis_api_schema:sample_id](https://w3id.org/MONet/analysis-api-schema/sample_id)
+URI: [basalt_schema:sample_id](https://w3id.org/MONet/basalt-schema/sample_id)
 Alias: sample_id
 
 <!-- no inheritance hierarchy -->
@@ -86,7 +86,7 @@ Alias: sample_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -95,8 +95,8 @@ Alias: sample_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sample_id |
-| native | analysis_api_schema:sample_id |
+| self | basalt_schema:sample_id |
+| native | basalt_schema:sample_id |
 
 
 
@@ -107,7 +107,7 @@ Alias: sample_id
 ```yaml
 name: sample_id
 description: Link back to the originating sample
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: sample_id
 domain_of:

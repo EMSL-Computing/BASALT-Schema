@@ -9,7 +9,7 @@ _Please specify your storage conditions if you selected 'other' and the availabl
 
 
 
-URI: [analysis_api_schema:other_storage_condt](https://w3id.org/MONet/analysis-api-schema/other_storage_condt)
+URI: [basalt_schema:other_storage_condt](https://w3id.org/MONet/basalt-schema/other_storage_condt)
 Alias: other_storage_condt
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: other_storage_condt
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -82,8 +82,8 @@ Alias: other_storage_condt
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:other_storage_condt |
-| native | analysis_api_schema:other_storage_condt |
+| self | basalt_schema:other_storage_condt |
+| native | basalt_schema:other_storage_condt |
 
 
 
@@ -96,7 +96,7 @@ name: other_storage_condt
 description: Please specify your storage conditions if you selected 'other' and the
   available values are not appropriate
 title: other storage condition
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: other_storage_condt
 domain_of:

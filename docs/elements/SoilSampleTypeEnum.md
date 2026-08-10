@@ -7,7 +7,7 @@ _Specific types of soil samples_
 
 
 
-URI: [analysis_api_schema:SoilSampleTypeEnum](https://w3id.org/MONet/analysis-api-schema/SoilSampleTypeEnum)
+URI: [basalt_schema:SoilSampleTypeEnum](https://w3id.org/MONet/basalt-schema/SoilSampleTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -42,7 +42,7 @@ URI: [analysis_api_schema:SoilSampleTypeEnum](https://w3id.org/MONet/analysis-ap
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -55,7 +55,7 @@ URI: [analysis_api_schema:SoilSampleTypeEnum](https://w3id.org/MONet/analysis-ap
 ```yaml
 name: SoilSampleTypeEnum
 description: Specific types of soil samples
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   soil_core:

@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:SyntheticEnvironmentEnum](https://w3id.org/MONet/analysis-api-schema/SyntheticEnvironmentEnum)
+URI: [basalt_schema:SyntheticEnvironmentEnum](https://w3id.org/MONet/basalt-schema/SyntheticEnvironmentEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -40,7 +40,7 @@ URI: [analysis_api_schema:SyntheticEnvironmentEnum](https://w3id.org/MONet/analy
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -52,7 +52,7 @@ URI: [analysis_api_schema:SyntheticEnvironmentEnum](https://w3id.org/MONet/analy
 <details>
 ```yaml
 name: SyntheticEnvironmentEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   pore_scale_micromodels:

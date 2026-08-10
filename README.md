@@ -1,15 +1,15 @@
-# analysis-api-schema
+# basalt-schema
 
-LinkML for the EMSL Science Cental MONet Analysis API schemas
+Broad Analytical Schema for Samples and Laboratory Techniques
 
 ## Repository Structure
 
 * [examples/](examples/) - example data
 * [project/](project/) - project files (do not edit these)
 * [src/](src/) - source files (edit these)
-  * [analysis_api_schema](src/analysis_api_schema)
-    * [schema](src/analysis_api_schema/schema) -- LinkML schema
-    * [datamodel](src/analysis_api_schema/datamodel) -- generated
+  * [basalt_schema](src/basalt_schema)
+    * [schema](src/basalt_schema/schema) -- LinkML schema
+    * [datamodel](src/basalt_schema/datamodel) -- generated
 * [tests/](tests/) - Python tests
 * [util/](util/) - Adhoc LinkML replacement code
 
@@ -25,4 +25,6 @@ just gen-project
 
 ## Credits
 
-This project was made with `LinkML`
+This material is free to use, and attribution is always appreciated.  Attribution may read as follows:
+Authored by Yuri E.Corilo, Conrad Mearns, Maia Kapur, Montana Smitth, Beata Meluch  (Staff) at the Pacific Northwest National Laboratory, operated by Battelle for the U.S. Department of Energy.
+(Optional, if applicable):  Please cite the following in your work: (Place Holder Zenodo)

@@ -7,7 +7,7 @@ _NEON ecological domains_
 
 
 
-URI: [analysis_api_schema:NEONDomainEnum](https://w3id.org/MONet/analysis-api-schema/NEONDomainEnum)
+URI: [basalt_schema:NEONDomainEnum](https://w3id.org/MONet/basalt-schema/NEONDomainEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -61,7 +61,7 @@ URI: [analysis_api_schema:NEONDomainEnum](https://w3id.org/MONet/analysis-api-sc
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -74,7 +74,7 @@ URI: [analysis_api_schema:NEONDomainEnum](https://w3id.org/MONet/analysis-api-sc
 ```yaml
 name: NEONDomainEnum
 description: NEON ecological domains
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   northeast:

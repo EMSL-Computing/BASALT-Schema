@@ -21,7 +21,7 @@ _           instead of v1's is_a: dataProduct._
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [analysis_api_schema:PlateProduct](https://w3id.org/MONet/analysis-api-schema/PlateProduct)
+URI: [basalt_schema:PlateProduct](https://w3id.org/MONet/basalt-schema/PlateProduct)
 
 
 
@@ -108,7 +108,7 @@ URI: [analysis_api_schema:PlateProduct](https://w3id.org/MONet/analysis-api-sche
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -117,8 +117,8 @@ URI: [analysis_api_schema:PlateProduct](https://w3id.org/MONet/analysis-api-sche
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:PlateProduct |
-| native | analysis_api_schema:PlateProduct |
+| self | basalt_schema:PlateProduct |
+| native | basalt_schema:PlateProduct |
 
 
 
@@ -140,7 +140,7 @@ description: "Abstract base for plate measurement data products.\nCommon summary
   \           instead of v1's is_a: dataProduct."
 todos:
 - add plate_range (12 well, 96 well, etc.)?
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 abstract: true
 slots:
 - wavelength_nm
@@ -164,14 +164,14 @@ description: "Abstract base for plate measurement data products.\nCommon summary
   \           instead of v1's is_a: dataProduct."
 todos:
 - add plate_range (12 well, 96 well, etc.)?
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 abstract: true
 attributes:
   wavelength_nm:
     name: wavelength_nm
     description: Measurement wavelength in nanometres (e.g. 590 Ecoplate, 610 AMP2
       OD)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: wavelength_nm
     owner: PlateProduct
@@ -188,7 +188,7 @@ attributes:
       Examples: "t=0", "t=24h", "t=48h".
 
       Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivity'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: timepoint_label
     owner: PlateProduct
@@ -202,7 +202,7 @@ attributes:
     description: Mean measurement across all sample wells (excludes blanks)
     todos:
     - units
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: plate_average
     owner: PlateProduct
@@ -214,7 +214,7 @@ attributes:
     description: Mean measurement of uninoculated control wells
     todos:
     - units
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: blank_mean
     owner: PlateProduct
@@ -224,7 +224,7 @@ attributes:
   cv_percent:
     name: cv_percent
     description: Coefficient of variation across technical replicates
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: cv_percent
     owner: PlateProduct
@@ -243,7 +243,7 @@ attributes:
     todos:
     - decide how to represent in backend (normalized child table with FK to PlateSetupActivity,
       array column, or other)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: well_readings
     owner: PlateProduct

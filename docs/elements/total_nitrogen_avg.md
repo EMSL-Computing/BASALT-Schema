@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:total_nitrogen_avg](https://w3id.org/MONet/analysis-api-schema/total_nitrogen_avg)
+URI: [basalt_schema:total_nitrogen_avg](https://w3id.org/MONet/basalt-schema/total_nitrogen_avg)
 Alias: total_nitrogen_avg
 
 <!-- no inheritance hierarchy -->
@@ -59,8 +59,8 @@ Alias: total_nitrogen_avg
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:total_nitrogen_avg |
-| native | analysis_api_schema:total_nitrogen_avg |
+| self | basalt_schema:total_nitrogen_avg |
+| native | basalt_schema:total_nitrogen_avg |
 
 
 

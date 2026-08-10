@@ -9,7 +9,7 @@ _Date the incubation was started. Only relevant for incubation samples. Format: 
 
 
 
-URI: [analysis_api_schema:start_date_inc](https://w3id.org/MONet/analysis-api-schema/start_date_inc)
+URI: [basalt_schema:start_date_inc](https://w3id.org/MONet/basalt-schema/start_date_inc)
 Alias: start_date_inc
 
 <!-- no inheritance hierarchy -->
@@ -77,7 +77,7 @@ Alias: start_date_inc
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -86,8 +86,8 @@ Alias: start_date_inc
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:start_date_inc |
-| native | analysis_api_schema:start_date_inc |
+| self | basalt_schema:start_date_inc |
+| native | basalt_schema:start_date_inc |
 
 
 
@@ -100,7 +100,7 @@ name: start_date_inc
 description: 'Date the incubation was started. Only relevant for incubation samples.
   Format: YYYY-MM-DD'
 title: incubation start date
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: start_date_inc
 domain_of:

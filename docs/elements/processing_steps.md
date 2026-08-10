@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:processing_steps](https://w3id.org/MONet/analysis-api-schema/processing_steps)
+URI: [basalt_schema:processing_steps](https://w3id.org/MONet/basalt-schema/processing_steps)
 Alias: processing_steps
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: processing_steps
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -82,8 +82,8 @@ Alias: processing_steps
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:processing_steps |
-| native | analysis_api_schema:processing_steps |
+| self | basalt_schema:processing_steps |
+| native | basalt_schema:processing_steps |
 
 
 
@@ -93,7 +93,7 @@ Alias: processing_steps
 <details>
 ```yaml
 name: processing_steps
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: processing_steps
 owner: SampleProcessing

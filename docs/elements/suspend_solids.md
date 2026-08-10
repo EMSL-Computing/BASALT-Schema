@@ -9,7 +9,7 @@ _concentration of substances including a wide variety of material such as silt, 
 
 
 
-URI: [analysis_api_schema:suspend_solids](https://w3id.org/MONet/analysis-api-schema/suspend_solids)
+URI: [basalt_schema:suspend_solids](https://w3id.org/MONet/basalt-schema/suspend_solids)
 Alias: suspend_solids
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: suspend_solids
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: suspend_solids
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:suspend_solids |
-| native | analysis_api_schema:suspend_solids |
+| self | basalt_schema:suspend_solids |
+| native | basalt_schema:suspend_solids |
 
 
 
@@ -84,7 +84,7 @@ name: suspend_solids
 description: concentration of substances including a wide variety of material such
   as silt, decaying plant and animal matter, etc; can include multiple substances
 title: suspended solids
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: suspend_solids
 domain_of:

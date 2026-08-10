@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:cu_filter](https://w3id.org/MONet/analysis-api-schema/cu_filter)
+URI: [basalt_schema:cu_filter](https://w3id.org/MONet/basalt-schema/cu_filter)
 Alias: cu_filter
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: cu_filter
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: cu_filter
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:cu_filter |
-| native | analysis_api_schema:cu_filter |
+| self | basalt_schema:cu_filter |
+| native | basalt_schema:cu_filter |
 
 
 
@@ -84,7 +84,7 @@ Alias: cu_filter
 <details>
 ```yaml
 name: cu_filter
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: cu_filter
 owner: XrayComputedTomographyMethod

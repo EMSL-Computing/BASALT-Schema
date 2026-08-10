@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:has_value_unit](https://w3id.org/MONet/analysis-api-schema/has_value_unit)
+URI: [basalt_schema:has_value_unit](https://w3id.org/MONet/basalt-schema/has_value_unit)
 Alias: has_value_unit
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: has_value_unit
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: has_value_unit
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:has_value_unit |
-| native | analysis_api_schema:has_value_unit |
+| self | basalt_schema:has_value_unit |
+| native | basalt_schema:has_value_unit |
 
 
 
@@ -83,7 +83,7 @@ Alias: has_value_unit
 <details>
 ```yaml
 name: has_value_unit
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: has_value_unit
 owner: QuantityValue

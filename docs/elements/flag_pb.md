@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_pb](https://w3id.org/MONet/analysis-api-schema/flag_pb)
+URI: [basalt_schema:flag_pb](https://w3id.org/MONet/basalt-schema/flag_pb)
 Alias: flag_pb
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_pb
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_pb
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_pb |
-| native | analysis_api_schema:flag_pb |
+| self | basalt_schema:flag_pb |
+| native | basalt_schema:flag_pb |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_pb
 <details>
 ```yaml
 name: flag_pb
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: flag_pb
 owner: XRFElementalProduct

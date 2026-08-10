@@ -9,7 +9,7 @@ _To what is the entity pathogenic, e.g., humans, animals, plants, or specific ti
 
 
 
-URI: [analysis_api_schema:pathogenicity](https://w3id.org/MONet/analysis-api-schema/pathogenicity)
+URI: [basalt_schema:pathogenicity](https://w3id.org/MONet/basalt-schema/pathogenicity)
 Alias: pathogenicity
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: pathogenicity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -74,8 +74,8 @@ Alias: pathogenicity
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:pathogenicity |
-| native | analysis_api_schema:pathogenicity |
+| self | basalt_schema:pathogenicity |
+| native | basalt_schema:pathogenicity |
 
 
 
@@ -88,7 +88,7 @@ name: pathogenicity
 description: To what is the entity pathogenic, e.g., humans, animals, plants, or specific
   tissues.
 title: pathogenicity
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: pathogenicity
 domain_of:

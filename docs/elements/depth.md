@@ -9,7 +9,7 @@ _The vertical distance below local surface. For sediment or soil samples, depth 
 
 
 
-URI: [analysis_api_schema:depth](https://w3id.org/MONet/analysis-api-schema/depth)
+URI: [basalt_schema:depth](https://w3id.org/MONet/basalt-schema/depth)
 Alias: depth
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: depth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -82,8 +82,8 @@ Alias: depth
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:depth |
-| native | analysis_api_schema:depth |
+| self | basalt_schema:depth |
+| native | basalt_schema:depth |
 
 
 
@@ -97,7 +97,7 @@ description: 'The vertical distance below local surface. For sediment or soil sa
   depth is measured from sediment or soil surface respectively. Depth is required
   to be reported as an interval for subsurface samples. (Units: m)'
 title: depth
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: depth
 domain_of:

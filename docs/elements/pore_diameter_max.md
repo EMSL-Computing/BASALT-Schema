@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:pore_diameter_max](https://w3id.org/MONet/analysis-api-schema/pore_diameter_max)
+URI: [basalt_schema:pore_diameter_max](https://w3id.org/MONet/basalt-schema/pore_diameter_max)
 Alias: pore_diameter_max
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: pore_diameter_max
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: pore_diameter_max
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:pore_diameter_max |
-| native | analysis_api_schema:pore_diameter_max |
+| self | basalt_schema:pore_diameter_max |
+| native | basalt_schema:pore_diameter_max |
 
 
 
@@ -83,7 +83,7 @@ Alias: pore_diameter_max
 <details>
 ```yaml
 name: pore_diameter_max
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: pore_diameter_max
 owner: TomographyProduct

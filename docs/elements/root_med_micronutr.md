@@ -9,7 +9,7 @@ _Measurement of the culture rooting medium micronutrients (Fe Mn Zn B Cu Mo). Ca
 
 
 
-URI: [analysis_api_schema:root_med_micronutr](https://w3id.org/MONet/analysis-api-schema/root_med_micronutr)
+URI: [basalt_schema:root_med_micronutr](https://w3id.org/MONet/basalt-schema/root_med_micronutr)
 Alias: root_med_micronutr
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: root_med_micronutr
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: root_med_micronutr
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:root_med_micronutr |
-| native | analysis_api_schema:root_med_micronutr |
+| self | basalt_schema:root_med_micronutr |
+| native | basalt_schema:root_med_micronutr |
 
 
 
@@ -86,7 +86,7 @@ name: root_med_micronutr
 description: Measurement of the culture rooting medium micronutrients (Fe Mn Zn B
   Cu Mo). Can be multivalued separated by ;. e.g. H3BO3 6.2 mg/L
 title: rooting medium micronutrients
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: root_med_micronutr
 domain_of:

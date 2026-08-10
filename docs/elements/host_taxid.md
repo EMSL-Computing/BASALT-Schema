@@ -9,7 +9,7 @@ _NCBI taxon ID. Format with prefix NCBITaxon:####_
 
 
 
-URI: [analysis_api_schema:host_taxid](https://w3id.org/MONet/analysis-api-schema/host_taxid)
+URI: [basalt_schema:host_taxid](https://w3id.org/MONet/basalt-schema/host_taxid)
 Alias: host_taxid
 
 <!-- no inheritance hierarchy -->
@@ -81,7 +81,7 @@ Alias: host_taxid
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -90,8 +90,8 @@ Alias: host_taxid
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:host_taxid |
-| native | analysis_api_schema:host_taxid |
+| self | basalt_schema:host_taxid |
+| native | basalt_schema:host_taxid |
 
 
 
@@ -103,7 +103,7 @@ Alias: host_taxid
 name: host_taxid
 description: NCBI taxon ID. Format with prefix NCBITaxon:####
 title: host taxonomy identifier
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 aliases:
 - host_taxonomy_id
 - host_ncbi_taxon_id

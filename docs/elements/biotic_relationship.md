@@ -9,7 +9,7 @@ _Description of relationship(s) between the subject organism and other organism(
 
 
 
-URI: [analysis_api_schema:biotic_relationship](https://w3id.org/MONet/analysis-api-schema/biotic_relationship)
+URI: [basalt_schema:biotic_relationship](https://w3id.org/MONet/basalt-schema/biotic_relationship)
 Alias: biotic_relationship
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: biotic_relationship
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -82,8 +82,8 @@ Alias: biotic_relationship
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:biotic_relationship |
-| native | analysis_api_schema:biotic_relationship |
+| self | basalt_schema:biotic_relationship |
+| native | basalt_schema:biotic_relationship |
 | exact | MIXS:0000016 |
 
 
@@ -99,7 +99,7 @@ description: Description of relationship(s) between the subject organism and oth
   Y. The target organism is the subject of the relationship and the other organism(s)
   is the object
 title: observed biotic relationship
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 aliases:
 - samp_biotic_relationship
 exact_mappings:

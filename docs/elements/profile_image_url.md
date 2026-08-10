@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:profile_image_url](https://w3id.org/MONet/analysis-api-schema/profile_image_url)
+URI: [basalt_schema:profile_image_url](https://w3id.org/MONet/basalt-schema/profile_image_url)
 Alias: profile_image_url
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: profile_image_url
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: profile_image_url
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:profile_image_url |
-| native | analysis_api_schema:profile_image_url |
+| self | basalt_schema:profile_image_url |
+| native | basalt_schema:profile_image_url |
 
 
 
@@ -83,7 +83,7 @@ Alias: profile_image_url
 <details>
 ```yaml
 name: profile_image_url
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: profile_image_url
 owner: PersonValue

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:iron_id](https://w3id.org/MONet/analysis-api-schema/iron_id)
+URI: [basalt_schema:iron_id](https://w3id.org/MONet/basalt-schema/iron_id)
 Alias: iron_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: iron_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: iron_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:iron_id |
-| native | analysis_api_schema:iron_id |
+| self | basalt_schema:iron_id |
+| native | basalt_schema:iron_id |
 
 
 
@@ -83,7 +83,7 @@ Alias: iron_id
 <details>
 ```yaml
 name: iron_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: iron_id
 owner: IonsAnalysisProduct

@@ -9,7 +9,7 @@ _List of diseases with which the host has been diagnosed; can include multiple d
 
 
 
-URI: [analysis_api_schema:host_disease_stat](https://w3id.org/MONet/analysis-api-schema/host_disease_stat)
+URI: [basalt_schema:host_disease_stat](https://w3id.org/MONet/basalt-schema/host_disease_stat)
 Alias: host_disease_stat
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: host_disease_stat
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: host_disease_stat
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:host_disease_stat |
-| native | analysis_api_schema:host_disease_stat |
+| self | basalt_schema:host_disease_stat |
+| native | basalt_schema:host_disease_stat |
 
 
 
@@ -86,7 +86,7 @@ description: List of diseases with which the host has been diagnosed; can includ
   should be chosen from the DO (Human Disease Ontology) at https://www.disease-ontology.org
   non-human host diseases are free text
 title: host disease status
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: host_disease_stat
 domain_of:

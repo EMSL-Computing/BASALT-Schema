@@ -9,7 +9,7 @@ _Data-dependent MS2 resolution setting used in the mass spectrometry method_
 
 
 
-URI: [analysis_api_schema:dd_ms2_resolution](https://w3id.org/MONet/analysis-api-schema/dd_ms2_resolution)
+URI: [basalt_schema:dd_ms2_resolution](https://w3id.org/MONet/basalt-schema/dd_ms2_resolution)
 Alias: dd_ms2_resolution
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: dd_ms2_resolution
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: dd_ms2_resolution
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:dd_ms2_resolution |
-| native | analysis_api_schema:dd_ms2_resolution |
+| self | basalt_schema:dd_ms2_resolution |
+| native | basalt_schema:dd_ms2_resolution |
 
 
 
@@ -83,7 +83,7 @@ Alias: dd_ms2_resolution
 ```yaml
 name: dd_ms2_resolution
 description: Data-dependent MS2 resolution setting used in the mass spectrometry method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: dd_ms2_resolution
 domain_of:

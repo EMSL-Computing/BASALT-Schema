@@ -15,7 +15,7 @@ _Subclasses add type-specific fields._
 
 
 
-URI: [analysis_api_schema:WellMetadata](https://w3id.org/MONet/analysis-api-schema/WellMetadata)
+URI: [basalt_schema:WellMetadata](https://w3id.org/MONet/basalt-schema/WellMetadata)
 
 
 
@@ -89,7 +89,7 @@ URI: [analysis_api_schema:WellMetadata](https://w3id.org/MONet/analysis-api-sche
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -98,8 +98,8 @@ URI: [analysis_api_schema:WellMetadata](https://w3id.org/MONet/analysis-api-sche
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:WellMetadata |
-| native | analysis_api_schema:WellMetadata |
+| self | basalt_schema:WellMetadata |
+| native | basalt_schema:WellMetadata |
 
 
 
@@ -122,12 +122,12 @@ description: 'Base structure for per-well metadata in plate setup.
   PlateSetupActivity.well_metadata.
 
   Subclasses add type-specific fields.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 attributes:
   position:
     name: position
     description: Well position (e.g. "A01", "H12")
-    from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
     rank: 1000
     domain_of:
     - WellMetadata
@@ -137,7 +137,7 @@ attributes:
   well_type:
     name: well_type
     description: Role of this well   "sample", "blank", "uninoculated_control", "standard"
-    from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
     rank: 1000
     domain_of:
     - WellMetadata
@@ -145,7 +145,7 @@ attributes:
   replicate_group:
     name: replicate_group
     description: Identifier linking technical replicates (e.g. "rep1", "rep2")
-    from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
     rank: 1000
     domain_of:
     - WellMetadata
@@ -166,12 +166,12 @@ description: 'Base structure for per-well metadata in plate setup.
   PlateSetupActivity.well_metadata.
 
   Subclasses add type-specific fields.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 attributes:
   position:
     name: position
     description: Well position (e.g. "A01", "H12")
-    from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
     rank: 1000
     alias: position
     owner: WellMetadata
@@ -183,7 +183,7 @@ attributes:
   well_type:
     name: well_type
     description: Role of this well   "sample", "blank", "uninoculated_control", "standard"
-    from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
     rank: 1000
     alias: well_type
     owner: WellMetadata
@@ -193,7 +193,7 @@ attributes:
   replicate_group:
     name: replicate_group
     description: Identifier linking technical replicates (e.g. "rep1", "rep2")
-    from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
     rank: 1000
     alias: replicate_group
     owner: WellMetadata

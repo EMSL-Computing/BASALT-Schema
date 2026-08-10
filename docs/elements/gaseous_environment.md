@@ -9,7 +9,7 @@ _Use of conditions with differing gaseous environments; should include the name 
 
 
 
-URI: [analysis_api_schema:gaseous_environment](https://w3id.org/MONet/analysis-api-schema/gaseous_environment)
+URI: [basalt_schema:gaseous_environment](https://w3id.org/MONet/basalt-schema/gaseous_environment)
 Alias: gaseous_environment
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: gaseous_environment
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: gaseous_environment
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:gaseous_environment |
-| native | analysis_api_schema:gaseous_environment |
+| self | basalt_schema:gaseous_environment |
+| native | basalt_schema:gaseous_environment |
 
 
 
@@ -94,7 +94,7 @@ description: Use of conditions with differing gaseous environments; should inclu
   the name of gaseous compound, amount administered, treatment duration, interval,
   and total experimental duration; can include multiple gaseous environment regimens
 title: gaseous environment
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: gaseous_environment
 domain_of:

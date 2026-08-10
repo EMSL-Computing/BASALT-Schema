@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:mbc_id](https://w3id.org/MONet/analysis-api-schema/mbc_id)
+URI: [basalt_schema:mbc_id](https://w3id.org/MONet/basalt-schema/mbc_id)
 Alias: mbc_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: mbc_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: mbc_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:mbc_id |
-| native | analysis_api_schema:mbc_id |
+| self | basalt_schema:mbc_id |
+| native | basalt_schema:mbc_id |
 
 
 
@@ -83,7 +83,7 @@ Alias: mbc_id
 <details>
 ```yaml
 name: mbc_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: mbc_id
 owner: MicrobialBiomassProduct

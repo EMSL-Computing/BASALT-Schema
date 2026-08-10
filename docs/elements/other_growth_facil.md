@@ -9,7 +9,7 @@ _Please specify growth facility if you selected 'other'_
 
 
 
-URI: [analysis_api_schema:other_growth_facil](https://w3id.org/MONet/analysis-api-schema/other_growth_facil)
+URI: [basalt_schema:other_growth_facil](https://w3id.org/MONet/basalt-schema/other_growth_facil)
 Alias: other_growth_facil
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: other_growth_facil
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: other_growth_facil
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:other_growth_facil |
-| native | analysis_api_schema:other_growth_facil |
+| self | basalt_schema:other_growth_facil |
+| native | basalt_schema:other_growth_facil |
 
 
 
@@ -83,7 +83,7 @@ Alias: other_growth_facil
 name: other_growth_facil
 description: Please specify growth facility if you selected 'other'
 title: other growth facility
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: other_growth_facil
 domain_of:

@@ -9,7 +9,7 @@ _First boundary layer height candidate (meters) (Unit: m)_
 
 
 
-URI: [analysis_api_schema:first_blh](https://w3id.org/MONet/analysis-api-schema/first_blh)
+URI: [basalt_schema:first_blh](https://w3id.org/MONet/basalt-schema/first_blh)
 Alias: first_blh
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: first_blh
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: first_blh
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:first_blh |
-| native | analysis_api_schema:first_blh |
+| self | basalt_schema:first_blh |
+| native | basalt_schema:first_blh |
 
 
 
@@ -83,7 +83,7 @@ Alias: first_blh
 name: first_blh
 description: 'First boundary layer height candidate (meters) (Unit: m)'
 title: first boundary layer height
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: first_blh
 domain_of:

@@ -9,7 +9,7 @@ _The storage condition of the sample. This field is NOT multivalued. If selectin
 
 
 
-URI: [analysis_api_schema:storage_condition](https://w3id.org/MONet/analysis-api-schema/storage_condition)
+URI: [basalt_schema:storage_condition](https://w3id.org/MONet/basalt-schema/storage_condition)
 Alias: storage_condition
 
 <!-- no inheritance hierarchy -->
@@ -84,7 +84,7 @@ Alias: storage_condition
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -93,8 +93,8 @@ Alias: storage_condition
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:storage_condition |
-| native | analysis_api_schema:storage_condition |
+| self | basalt_schema:storage_condition |
+| native | basalt_schema:storage_condition |
 | exact | MIXS:0000327 |
 
 
@@ -108,7 +108,7 @@ name: storage_condition
 description: The storage condition of the sample. This field is NOT multivalued. If
   selecting other add the `other_storage_condt` attribute to provide additional detail.
 title: storage condition
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 aliases:
 - samp_store_cond
 - storage_cond

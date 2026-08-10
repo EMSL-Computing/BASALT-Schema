@@ -9,7 +9,7 @@ _A sample of water collected from the environment._
 
 
 
-URI: [analysis_api_schema:WaterSample](https://w3id.org/MONet/analysis-api-schema/WaterSample)
+URI: [basalt_schema:WaterSample](https://w3id.org/MONet/basalt-schema/WaterSample)
 
 
 
@@ -455,7 +455,7 @@ URI: [analysis_api_schema:WaterSample](https://w3id.org/MONet/analysis-api-schem
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -464,8 +464,8 @@ URI: [analysis_api_schema:WaterSample](https://w3id.org/MONet/analysis-api-schem
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:WaterSample |
-| native | analysis_api_schema:WaterSample |
+| self | basalt_schema:WaterSample |
+| native | basalt_schema:WaterSample |
 
 
 
@@ -482,7 +482,7 @@ URI: [analysis_api_schema:WaterSample](https://w3id.org/MONet/analysis-api-schem
 ```yaml
 name: WaterSample
 description: A sample of water collected from the environment.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: Sample
 slots:
 - air_temp_regm
@@ -636,7 +636,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -722,7 +722,7 @@ attributes:
 ```yaml
 name: WaterSample
 description: A sample of water collected from the environment.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: Sample
 slot_usage:
   analysis_type:
@@ -764,7 +764,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
     identifier: true
     alias: id
     owner: WaterSample
@@ -849,7 +849,7 @@ attributes:
       treatment was repeated, how long each treatment lasted, and the start and end
       time of the entire treatment; can include different temperature regimens
     title: air temperature regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     exact_mappings:
     - MIXS:0000551
     rank: 1000
@@ -874,7 +874,7 @@ attributes:
     description: 'The ability of a solution to neutralize acids to the equivalence
       point of carbonate or bicarbonate (Unit: mg/L or meq/L)'
     title: alkalinity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: alkalinity
     owner: WaterSample
@@ -888,7 +888,7 @@ attributes:
     name: alkalinity_method
     description: Method used for alkalinity measurement
     title: alkalinity method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: alkalinity_method
     owner: WaterSample
@@ -902,7 +902,7 @@ attributes:
     description: Concentration of alkyl diethers. Provide value and unit, any unit
       is valid
     title: alkyl diethers
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: alkyl_diethers
     owner: WaterSample
@@ -916,7 +916,7 @@ attributes:
     name: aminopept_act
     description: 'Measurement of aminopeptidase activity (Unit: mol/L/h)'
     title: aminopeptidase activity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: aminopept_act
     owner: WaterSample
@@ -931,7 +931,7 @@ attributes:
     description: 'Concentration of ammonium in the sample. (Units: umol/L or mg/Liter
       or ppm)'
     title: ammonium
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: ammonium
     owner: WaterSample
@@ -944,7 +944,7 @@ attributes:
   analysis_type:
     name: analysis_type
     description: The type(s) of analysis planned for this sample.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: analysis_type
     owner: WaterSample
@@ -972,7 +972,7 @@ attributes:
     description: Bacterial production in the water column measured by isotope uptake.
       Provide value and unit, any unit is valid.
     title: bacterial production
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: bac_prod
     owner: WaterSample
@@ -986,7 +986,7 @@ attributes:
     description: Measurement of bacterial respiration in the water column. Provide
       value and unit,any unit is valid.
     title: bacterial respiration
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: bac_resp
     owner: WaterSample
@@ -1000,7 +1000,7 @@ attributes:
     description: Measurement of bacterial carbon production. Provide value and unit,
       any unit is valid
     title: bacterial carbon production
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: bacteria_carb_prod
     owner: WaterSample
@@ -1015,7 +1015,7 @@ attributes:
     description: Information about treatment(s) involving use of biotic factors such
       as bacteria, viruses, or fungi.
     title: biotic regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: biotic_regm
     owner: WaterSample
@@ -1035,7 +1035,7 @@ attributes:
     name: bishomohopanol
     description: 'Concentration of bishomohopanol. (Unit: ug/L or ug/g)'
     title: bishomohopanol
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: bishomohopanol
     owner: WaterSample
@@ -1049,7 +1049,7 @@ attributes:
     name: bromide
     description: 'Concentration of bromide (Unit: ppm)'
     title: bromide
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: bromide
     owner: WaterSample
@@ -1064,7 +1064,7 @@ attributes:
     description: 'Concentration of calcium in the sample (Unit: mg/L or umol/L or
       ppm)'
     title: calcium
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: calcium
     owner: WaterSample
@@ -1078,7 +1078,7 @@ attributes:
     name: carb_nitro_ratio
     description: Ratio of amount or concentrations of carbon to nitrogen.
     title: carbon nitrogen ratio
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: carb_nitro_ratio
     owner: WaterSample
@@ -1094,7 +1094,7 @@ attributes:
       include multiple compounds. For chemical entities of biological interest ontology
       (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
     title: chemical administration
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     exact_mappings:
     - MIXS:0000751
     rank: 1000
@@ -1119,7 +1119,7 @@ attributes:
     name: chloride
     description: 'Concentration of chloride in the sample (Unit: mg/L or ppm)'
     title: chloride
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: chloride
     owner: WaterSample
@@ -1133,7 +1133,7 @@ attributes:
     name: chlorophyll
     description: 'Concentration of chlorophyll (Unit: mg/m3 or ug/L)'
     title: chlorophyll
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: chlorophyll
     owner: WaterSample
@@ -1148,7 +1148,7 @@ attributes:
     description: Electrical conductivity of water. Provide value and unit, any unit
       is valid.
     title: conductivity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: conduc
     owner: WaterSample
@@ -1162,7 +1162,7 @@ attributes:
     description: 'Density of the sample, which is its mass per unit volume (aka volumetric
       mass density) (Unit: g/m3 or g/cm3)'
     title: density
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: density
     owner: WaterSample
@@ -1177,7 +1177,7 @@ attributes:
     description: 'The vertical distance below local surface of the water. (Units:
       m)'
     title: depth
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: depth
     owner: WaterSample
@@ -1196,7 +1196,7 @@ attributes:
     description: 'Concentration of diether lipids; can include multiple types of diether
       lipids (Unit: ng/L)'
     title: diether lipids
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: diether_lipids
     owner: WaterSample
@@ -1211,7 +1211,7 @@ attributes:
     description: 'Concentration of dissolved carbon dioxide in the sample or liquid
       portion of the sample (Unit: umol/L or mg/L)'
     title: dissolved carbon dioxide
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: diss_carb_dioxide
     owner: WaterSample
@@ -1225,7 +1225,7 @@ attributes:
     name: diss_hydrogen
     description: 'Concentration of dissolved hydrogens (Unit: umol/L)'
     title: dissolved hydrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: diss_hydrogen
     owner: WaterSample
@@ -1241,7 +1241,7 @@ attributes:
       measured after filtering the sample using a 0.45 micrometer filter (Unit:  ug/L
       or mg/L or ppm)'
     title: dissolved inorganic carbon
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: diss_inorg_carb
     owner: WaterSample
@@ -1255,7 +1255,7 @@ attributes:
     name: diss_inorg_nitro
     description: 'Concentration of dissolved inorganic nitrogen. (Unit: ug/L or umol/L)'
     title: dissolved inorganic nitrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: diss_inorg_nitro
     owner: WaterSample
@@ -1269,7 +1269,7 @@ attributes:
     description: Concentration of dissolved inorganic phosphorus in the sample. Provide
       value and unit, any unit is valid.
     title: dissolved inorganic phosphate
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: diss_inorg_phosp
     owner: WaterSample
@@ -1283,7 +1283,7 @@ attributes:
     description: 'Concentration of dissolved organic carbon in the sample, liquid
       portion of the sample, or aqueous phase of the fluid. (Unit:  umol/L or mg/L)'
     title: dissolved organic carbon
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: diss_org_carb
     owner: WaterSample
@@ -1298,7 +1298,7 @@ attributes:
     description: 'Dissolved organic nitrogen concentration measured as: total dissolved
       nitrogen - NH4 - NO3 - NO2. Provide value and unit, any unit is valid'
     title: dissolved organic nitrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: diss_org_nitro
     owner: WaterSample
@@ -1312,7 +1312,7 @@ attributes:
     name: diss_oxygen
     description: 'Concentration of dissolved oxygen. (Unit: umol/kg or mg/L)'
     title: dissolved oxygen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: diss_oxygen
     owner: WaterSample
@@ -1327,7 +1327,7 @@ attributes:
     description: Visible waveband radiance and irradiance measurements in the water
       column. Provide value and unit, any unit is valid.
     title: downward PAR
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: down_par
     owner: WaterSample
@@ -1344,7 +1344,7 @@ attributes:
       or a rainforest). We recommend using subclasses of EnvO''''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'''
     title: broad-scale environmental context
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: env_broad_scale
     owner: WaterSample
@@ -1371,7 +1371,7 @@ attributes:
       spatial grain than your entry for env_broad_scale.If needed, request new terms
       on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'''
     title: local environmental context
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: env_local_scale
     owner: WaterSample
@@ -1397,7 +1397,7 @@ attributes:
       ''''environmental material'''' (http://purl.obolibrary.org/obo/ENVO_00010483).
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'''
     title: environmental medium
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: env_medium
     owner: WaterSample
@@ -1425,7 +1425,7 @@ attributes:
       a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO;
       for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI
     title: experimental factor
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: experimental_factor
     owner: WaterSample
@@ -1448,7 +1448,7 @@ attributes:
     description: Other details about your sample that you feel can't be accurately
       represented in the available columns.
     title: other experimental factor
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: experimental_factor_other
     owner: WaterSample
@@ -1469,7 +1469,7 @@ attributes:
   external_identifiers:
     name: external_identifiers
     description: List of external identifiers associated with this entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: external_identifiers
     owner: WaterSample
@@ -1500,7 +1500,7 @@ attributes:
       before sending the sample to EMSL, what was it? This is only applicable when
       sending an 'analytical sample'. See README for more details on types of samples.
     title: extraction method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: extraction_method
     owner: WaterSample
@@ -1521,7 +1521,7 @@ attributes:
     name: filter_method
     description: Type of filter used or how the sample was filtered
     title: filter method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: filter_method
     owner: WaterSample
@@ -1538,7 +1538,7 @@ attributes:
     description: Raw or converted fluorescence of water. Provide value and unit, any
       unit is valid.
     title: fluorescence
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: fluor
     owner: WaterSample
@@ -1553,7 +1553,7 @@ attributes:
       the name of gaseous compound, amount administered, treatment duration, interval,
       and total experimental duration; can include multiple gaseous environment regimens
     title: gaseous environment
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: gaseous_environment
     owner: WaterSample
@@ -1573,7 +1573,7 @@ attributes:
     name: glucosidase_act
     description: 'Measurement of glucosidase activity (Unit: mol/L/h)'
     title: glucosidase activity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: glucosidase_act
     owner: WaterSample
@@ -1587,7 +1587,7 @@ attributes:
     name: isotope_exposure
     description: List isotope exposure or addition applied to your sample.
     title: isotope exposure
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: isotope_exposure
     owner: WaterSample
@@ -1609,7 +1609,7 @@ attributes:
     name: latitude
     description: Latitude coordinate of the sampling site in WSG 84 format.
     title: latitude
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     broad_mappings:
     - MIXS:0000009
     rank: 1000
@@ -1633,7 +1633,7 @@ attributes:
     name: longitude
     description: Longitude coordinate of the sampling site in WSG 84 format.
     title: longitude
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     broad_mappings:
     - MIXS:0000009
     rank: 1000
@@ -1658,7 +1658,7 @@ attributes:
     description: Measurement of light intensity. Provide value and unit, any unit
       is valid.
     title: light intensity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: light_intensity
     owner: WaterSample
@@ -1672,7 +1672,7 @@ attributes:
     description: 'Concentration of magnesium in the sample (Unit: umol/kg or mol/L
       or mg/L or ppm)'
     title: magnesium
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: magnesium
     owner: WaterSample
@@ -1686,7 +1686,7 @@ attributes:
     name: mean_frict_vel
     description: 'Measurement of mean friction velocity (Unit: m/s)'
     title: mean friction velocity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: mean_frict_vel
     owner: WaterSample
@@ -1700,7 +1700,7 @@ attributes:
     name: mean_peak_frict_vel
     description: 'Measurement of mean peak friction velocity (Unit: m/s)'
     title: mean peak friction velocity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: mean_peak_frict_vel
     owner: WaterSample
@@ -1715,7 +1715,7 @@ attributes:
     description: If your samples are TEST sample ONLY, please provide information
       on what you're hoping this test will resolve.
     title: method development
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: method_development
     owner: WaterSample
@@ -1739,7 +1739,7 @@ attributes:
     description: Any other measurement performed or parameter collected that is not
       listed here
     title: miscellaneous parameter
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: misc_param
     owner: WaterSample
@@ -1760,7 +1760,7 @@ attributes:
     description: 'Concentration of n-alkanes; can include multiple n-alkanes (Unit:
       ug/mL)'
     title: n-alkanes
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: n_alkanes
     owner: WaterSample
@@ -1774,7 +1774,7 @@ attributes:
     description: 'Concentration of nitrate in the sample (Unit: umol/L or mg/L or
       ppm)'
     title: nitrate
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: nitrate
     owner: WaterSample
@@ -1789,7 +1789,7 @@ attributes:
     description: 'Concentration of nitrite in the sample (Unit: umol/L or mg/L or
       ppm)'
     title: nitrite
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: nitrite
     owner: WaterSample
@@ -1803,7 +1803,7 @@ attributes:
     name: nitro
     description: 'Concentration of nitrogen (total) (Unit: umol/L)'
     title: nitrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: nitro
     owner: WaterSample
@@ -1819,7 +1819,7 @@ attributes:
       part of biomass measured, e.g. insect, plant, total. Provide value and unit,
       any unit is valid. (example: insect 5mg; plant 2ug/mL)'
     title: non microbial biomass
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: non_microb_biomass
     owner: WaterSample
@@ -1838,7 +1838,7 @@ attributes:
     name: non_microb_biomass_method
     description: Reference or method used in determining biomass
     title: non microbial biomass method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: non_microb_biomass_method
     owner: WaterSample
@@ -1856,7 +1856,7 @@ attributes:
     description: Concentration of organic carbon. Provide value and unit any unit
       is valid
     title: organic carbon
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: org_carb
     owner: WaterSample
@@ -1870,7 +1870,7 @@ attributes:
     name: org_matter
     description: 'Concentration of organic matter (Unit: mg/L)'
     title: organic matter
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: org_matter
     owner: WaterSample
@@ -1885,7 +1885,7 @@ attributes:
     description: Concentration of organic nitrogen. Provide value and unit any unit
       is valid
     title: organic nitrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: org_nitro
     owner: WaterSample
@@ -1899,7 +1899,7 @@ attributes:
     name: org_nitro_method
     description: Method used for obtaining organic nitrogen
     title: organic nitrogen method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: org_nitro_method
     owner: WaterSample
@@ -1913,7 +1913,7 @@ attributes:
     description: Other/additional details about your sample that you feel can't be
       accurately represented in ANY of the available columns.
     title: other
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: other
     owner: WaterSample
@@ -1938,7 +1938,7 @@ attributes:
     name: other_samp_store_temp
     description: Please specify sample storage temperature if you selected 'other'
     title: other sample storage temperature
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: other_samp_store_temp
     owner: WaterSample
@@ -1964,7 +1964,7 @@ attributes:
     description: Please specify your storage conditions if you selected 'other' and
       the available values are not appropriate
     title: other storage condition
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: other_storage_condt
     owner: WaterSample
@@ -1989,7 +1989,7 @@ attributes:
       is applied to your samples and the provided treatment terms do not satisfy please
       add it here. Multiple treatments can be entered here separated by ;
     title: other treatment
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: other_treatment
     owner: WaterSample
@@ -2013,7 +2013,7 @@ attributes:
     name: oxygen_relationship
     description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
     title: oxygen relationship
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     exact_mappings:
     - MIXS:0000015
     rank: 1000
@@ -2038,7 +2038,7 @@ attributes:
     description: Concentration of particulate organic carbon. Provide value and unit,
       any unit is valid.
     title: particulate organic carbon
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: part_org_carb
     owner: WaterSample
@@ -2052,7 +2052,7 @@ attributes:
     name: part_org_nitro
     description: 'Concentration of particulate organic nitrogen. (Unit: ug/L or umol/L)'
     title: particulate organic nitrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: part_org_nitro
     owner: WaterSample
@@ -2068,7 +2068,7 @@ attributes:
       was repeated, how long each perturbation lasted, and the start and end time
       of the entire perturbation period; can include multiple perturbation types
     title: perturbation
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: perturbation
     owner: WaterSample
@@ -2082,7 +2082,7 @@ attributes:
     name: petroleum_hydrocarb
     description: 'Concentration of petroleum hydrocarbon (Unit: umol/L)'
     title: petroleum hydrocarbon
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: petroleum_hydrocarb
     owner: WaterSample
@@ -2097,7 +2097,7 @@ attributes:
     description: pH measurement of the sample or liquid portion of sample or aqueous
       phase of the fluid
     title: pH
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: ph
     owner: WaterSample
@@ -2112,7 +2112,7 @@ attributes:
     name: ph_meth
     description: Reference or method used in determining ph of the sample
     title: pH method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: ph_meth
     owner: WaterSample
@@ -2127,7 +2127,7 @@ attributes:
     description: 'Concentration of phaeopigments; can include multiple phaeopigments
       separated by a `;` (Unit: mg/cm3)'
     title: phaeopigments
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: phaeopigments
     owner: WaterSample
@@ -2141,7 +2141,7 @@ attributes:
     name: phosphate
     description: 'Concentration of phosphate (Unit: umol/L)'
     title: phosphate
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: phosphate
     owner: WaterSample
@@ -2157,7 +2157,7 @@ attributes:
       separated by `;`. Provide the phospholipid fatty acids followed by the measurement
       value ({phospholipid fatty acid name}{value} {unit})
     title: phospholipid fatty acid
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: phosplipid_fatt_acid
     owner: WaterSample
@@ -2170,7 +2170,7 @@ attributes:
     name: photon_flux
     description: Measurement of photon flux. Provide value and unit, any unit is valid.
     title: photon flux
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: photon_flux
     owner: WaterSample
@@ -2183,7 +2183,7 @@ attributes:
     name: potassium
     description: 'Concentration of potassium in the sample (Unit: mg/L)'
     title: potassium
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: potassium
     owner: WaterSample
@@ -2197,7 +2197,7 @@ attributes:
     name: pressure
     description: 'Pressure to which the sample is subject, in atmospheres (Unit: atm)'
     title: pressure
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: pressure
     owner: WaterSample
@@ -2215,7 +2215,7 @@ attributes:
     description: Measurement of primary production generally measured as isotope uptake.
       Provide value and unit, any unit is valid.
     title: primary production
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: primary_prod
     owner: WaterSample
@@ -2231,7 +2231,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - study
     - study_id
@@ -2265,7 +2265,7 @@ attributes:
     description: 'Redox potential measured relative to a hydrogen cell indicating
       oxidation or reduction potential (Unit: mV)'
     title: redox potential
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: redox_potential
     owner: WaterSample
@@ -2283,7 +2283,7 @@ attributes:
       with submission schema.
     todos:
     - reconcile replicate modelling
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: replicate_number
     owner: WaterSample
@@ -2312,7 +2312,7 @@ attributes:
       compare the specific conductance of the sample to a salinity standard such as
       seawater (Unit: practical salinity unit or percent)'
     title: salinity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: salinity
     owner: WaterSample
@@ -2328,7 +2328,7 @@ attributes:
     name: salinity_method
     description: Method used to determine sample salinity
     title: salinity method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: salinity_method
     owner: WaterSample
@@ -2349,7 +2349,7 @@ attributes:
       sample was transferred to a new vial and generated a new sample)'''
     todos:
     - EMSL and NMDC both need better modelling for this
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sample_link
     owner: WaterSample
@@ -2379,7 +2379,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - samp_name
     rank: 1000
@@ -2408,7 +2408,7 @@ attributes:
     description: Reference to the sampling activity during which this sample was collected.
       This is a FK to the SamplingActivity class, which contains metadata about the
       sampling event, such as date, device, method.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sampled_during
     owner: WaterSample
@@ -2434,7 +2434,7 @@ attributes:
     name: silicate
     description: 'Concentration of silicate (Unit: umol/L)'
     title: silicate
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: silicate
     owner: WaterSample
@@ -2449,7 +2449,7 @@ attributes:
     description: 'Refers to the mesh/pore size used to retain the sample. Materials
       smaller than the size threshold are excluded from the sample (Unit: um)'
     title: size fraction lower threshold
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: size_frac_low
     owner: WaterSample
@@ -2468,7 +2468,7 @@ attributes:
       Materials larger than the size threshold are excluded from the sample (Unit:
       um)'
     title: size fraction upper threshold
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: size_frac_up
     owner: WaterSample
@@ -2485,7 +2485,7 @@ attributes:
     name: sodium
     description: 'Sodium concentration in the sample (Unit: ug/mL)'
     title: sodium
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sodium
     owner: WaterSample
@@ -2500,7 +2500,7 @@ attributes:
     description: 'Concentration of soluble reactive phosphorus. (Unit: umol/L or mg/L
       or ppm)'
     title: soluble reactive phosphorus
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: soluble_react_phosp
     owner: WaterSample
@@ -2515,7 +2515,7 @@ attributes:
       or to any derived sub-samples. The source material should be listed as a sample
       to inform details about parent material relationship.
     title: source material identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: source_mat_id
     owner: WaterSample
@@ -2540,7 +2540,7 @@ attributes:
     description: 'Date the incubation was started. Only relevant for incubation samples.
       Format: YYYY-MM-DD'
     title: incubation start date
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: start_date_inc
     owner: WaterSample
@@ -2563,7 +2563,7 @@ attributes:
       If selecting other add the `other_storage_condt` attribute to provide additional
       detail.
     title: storage condition
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - samp_store_cond
     - storage_cond
@@ -2596,7 +2596,7 @@ attributes:
     name: storage_condition_other
     description: Free-text field for storage conditions when 'storage_condition' is
       'other'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - other_storage_condt
     - storage_condt_other
@@ -2625,7 +2625,7 @@ attributes:
     description: 'Concentration of sulfate in the sample. (Unit: umol/L or mg/L or
       ppm)'
     title: sulfate
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sulfate
     owner: WaterSample
@@ -2640,7 +2640,7 @@ attributes:
     description: 'Concentration of sulfide in the sample. (Unit: umol/L or mg/L or
       ppm)'
     title: sulfide
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sulfide
     owner: WaterSample
@@ -2656,7 +2656,7 @@ attributes:
       This field is NOT multivalued. If selecting other add the `other_samp_store_temp`
       attribute to provide additional detail.
     title: sample storage temperature
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - sample_storage_temperature
     - storage_temperature
@@ -2684,7 +2684,7 @@ attributes:
     name: suspend_part_matter
     description: 'Concentration of suspended particulate matter. (Unit: mg/L)'
     title: suspended particulate matter
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: suspend_part_matter
     owner: WaterSample
@@ -2697,7 +2697,7 @@ attributes:
     name: technical_reps
     description: Number of technical replicates for the sample.
     title: technical replicates
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: technical_reps
     owner: WaterSample
@@ -2721,7 +2721,7 @@ attributes:
     name: temp
     description: 'Temperature of the sample at the time of sampling. (Units: C)'
     title: temperature
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: temp
     owner: WaterSample
@@ -2742,7 +2742,7 @@ attributes:
     name: tidal_stage
     description: Stage of tide
     title: tidal stage
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: tidal_stage
     owner: WaterSample
@@ -2755,7 +2755,7 @@ attributes:
     name: tot_depth_water_col
     description: 'Measurement of total depth of water column (Unit: m)'
     title: total depth of water column
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: tot_depth_water_col
     owner: WaterSample
@@ -2771,7 +2771,7 @@ attributes:
       by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen. (Unit:
       ug/L)'
     title: total dissolved nitrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: tot_diss_nitro
     owner: WaterSample
@@ -2784,7 +2784,7 @@ attributes:
     name: tot_inorg_nitro
     description: 'Total inorganic nitrogen content. (Unit: ug/L)'
     title: total inorganic nitrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: tot_inorg_nitro
     owner: WaterSample
@@ -2799,7 +2799,7 @@ attributes:
       nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured
       without filtering reported as nitrogen. (Unit: ug/L or umol/L or mg/L)'
     title: total nitrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: tot_nitro
     owner: WaterSample
@@ -2812,7 +2812,7 @@ attributes:
     name: tot_part_carb
     description: 'Total particulate carbon content. (Unit: ug/L or umol/L)'
     title: total particulate carbon
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: tot_part_carb
     owner: WaterSample
@@ -2827,7 +2827,7 @@ attributes:
       phosphorus = total dissolved phosphorus + particulate phosphorus. (Unit: ug/L
       or umol/L)'
     title: total phosphorus
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: tot_phosp
     owner: WaterSample
@@ -2844,7 +2844,7 @@ attributes:
     todos:
     - decide how to represent in backend (normalized child table with FK to PlateSetupActivity,
       array column, or other)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: turbidity
     owner: WaterSample
@@ -2859,7 +2859,7 @@ attributes:
     description: Measurement of magnitude and direction of flow within a fluid. Provide
       value and unit, any unit is valid.
     title: water current
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: water_current
     owner: WaterSample
@@ -2871,7 +2871,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: name
     owner: WaterSample
@@ -2901,7 +2901,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: description
     owner: WaterSample
@@ -2940,7 +2940,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: emsl_activity
     owner: WaterSample
@@ -2952,7 +2952,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: lims_barcode
     owner: WaterSample

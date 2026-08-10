@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:calibration](https://w3id.org/MONet/analysis-api-schema/calibration)
+URI: [basalt_schema:calibration](https://w3id.org/MONet/basalt-schema/calibration)
 Alias: calibration
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: calibration
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: calibration
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:calibration |
-| native | analysis_api_schema:calibration |
+| self | basalt_schema:calibration |
+| native | basalt_schema:calibration |
 
 
 
@@ -84,7 +84,7 @@ Alias: calibration
 <details>
 ```yaml
 name: calibration
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: calibration
 owner: PH_Method

@@ -1,18 +1,18 @@
 ---
-id: https://w3id.org/MONet/analysis-api-schema/zip_download
-name: analysis-api-schema-zip-download
-title: MONet Analysis API - Zip Download
+id: https://w3id.org/MONet/basalt-schema/zip_download
+name: basalt-schema-zip-download
+title: Basalt Schema - Zip Download
 description: |-
-  Zip download-related classes for the MONet Analysis API.
+  Zip download-related classes for Basalt.
 license: MIT
 see_also:
-  - https://MONet.github.io/analysis-api-schema
+  - https://MONet.github.io/basalt-schema
   - https://github.com/pnnl/analysis-api
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://w3id.org/MONet/basalt-schema/
 
-default_prefix: analysis_api_schema
+default_prefix: basalt_schema
 default_range: string
 
 imports:

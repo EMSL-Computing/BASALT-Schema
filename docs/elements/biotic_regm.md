@@ -9,7 +9,7 @@ _Information about treatment(s) involving use of biotic factors such as bacteria
 
 
 
-URI: [analysis_api_schema:biotic_regm](https://w3id.org/MONet/analysis-api-schema/biotic_regm)
+URI: [basalt_schema:biotic_regm](https://w3id.org/MONet/basalt-schema/biotic_regm)
 Alias: biotic_regm
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: biotic_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: biotic_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:biotic_regm |
-| native | analysis_api_schema:biotic_regm |
+| self | basalt_schema:biotic_regm |
+| native | basalt_schema:biotic_regm |
 
 
 
@@ -93,7 +93,7 @@ name: biotic_regm
 description: Information about treatment(s) involving use of biotic factors such as
   bacteria, viruses, or fungi.
 title: biotic regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: biotic_regm
 domain_of:

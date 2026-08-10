@@ -9,7 +9,7 @@ _The section of the core._
 
 
 
-URI: [analysis_api_schema:core_section](https://w3id.org/MONet/analysis-api-schema/core_section)
+URI: [basalt_schema:core_section](https://w3id.org/MONet/basalt-schema/core_section)
 Alias: core_section
 
 <!-- no inheritance hierarchy -->
@@ -100,7 +100,7 @@ Alias: core_section
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -109,8 +109,8 @@ Alias: core_section
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:core_section |
-| native | analysis_api_schema:core_section |
+| self | basalt_schema:core_section |
+| native | basalt_schema:core_section |
 
 
 
@@ -126,7 +126,7 @@ examples:
 - value: TOP
 - value: MID
 - value: BTM
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: core_section
 domain_of:

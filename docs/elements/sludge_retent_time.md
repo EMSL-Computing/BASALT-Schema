@@ -9,7 +9,7 @@ _the time activated sludge remains in reactor_
 
 
 
-URI: [analysis_api_schema:sludge_retent_time](https://w3id.org/MONet/analysis-api-schema/sludge_retent_time)
+URI: [basalt_schema:sludge_retent_time](https://w3id.org/MONet/basalt-schema/sludge_retent_time)
 Alias: sludge_retent_time
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: sludge_retent_time
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: sludge_retent_time
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sludge_retent_time |
-| native | analysis_api_schema:sludge_retent_time |
+| self | basalt_schema:sludge_retent_time |
+| native | basalt_schema:sludge_retent_time |
 
 
 
@@ -83,7 +83,7 @@ Alias: sludge_retent_time
 name: sludge_retent_time
 description: the time activated sludge remains in reactor
 title: sludge retention time
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: sludge_retent_time
 domain_of:

@@ -9,7 +9,7 @@ _Reference to the RespirationMethod used for this run_
 
 
 
-URI: [analysis_api_schema:method_id](https://w3id.org/MONet/analysis-api-schema/method_id)
+URI: [basalt_schema:method_id](https://w3id.org/MONet/basalt-schema/method_id)
 Alias: method_id
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: method_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: method_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:method_id |
-| native | analysis_api_schema:method_id |
+| self | basalt_schema:method_id |
+| native | basalt_schema:method_id |
 
 
 
@@ -89,7 +89,7 @@ Alias: method_id
 ```yaml
 name: method_id
 description: Reference to the RespirationMethod used for this run
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: method_id
 owner: RespirationDataGenerationActivity

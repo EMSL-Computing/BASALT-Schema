@@ -9,7 +9,7 @@ _Method used to determine sample salinity_
 
 
 
-URI: [analysis_api_schema:salinity_method](https://w3id.org/MONet/analysis-api-schema/salinity_method)
+URI: [basalt_schema:salinity_method](https://w3id.org/MONet/basalt-schema/salinity_method)
 Alias: salinity_method
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: salinity_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -74,8 +74,8 @@ Alias: salinity_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:salinity_method |
-| native | analysis_api_schema:salinity_method |
+| self | basalt_schema:salinity_method |
+| native | basalt_schema:salinity_method |
 
 
 
@@ -87,7 +87,7 @@ Alias: salinity_method
 name: salinity_method
 description: Method used to determine sample salinity
 title: salinity method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: salinity_method
 domain_of:

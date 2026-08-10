@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:total_projections_collected](https://w3id.org/MONet/analysis-api-schema/total_projections_collected)
+URI: [basalt_schema:total_projections_collected](https://w3id.org/MONet/basalt-schema/total_projections_collected)
 Alias: total_projections_collected
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: total_projections_collected
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: total_projections_collected
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:total_projections_collected |
-| native | analysis_api_schema:total_projections_collected |
+| self | basalt_schema:total_projections_collected |
+| native | basalt_schema:total_projections_collected |
 
 
 
@@ -84,7 +84,7 @@ Alias: total_projections_collected
 <details>
 ```yaml
 name: total_projections_collected
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: total_projections_collected
 owner: XrayComputedTomographyMethod

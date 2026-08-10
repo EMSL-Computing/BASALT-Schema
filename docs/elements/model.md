@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:model](https://w3id.org/MONet/analysis-api-schema/model)
+URI: [basalt_schema:model](https://w3id.org/MONet/basalt-schema/model)
 Alias: model
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: model
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: model
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:model |
-| native | analysis_api_schema:model |
+| self | basalt_schema:model |
+| native | basalt_schema:model |
 
 
 
@@ -83,7 +83,7 @@ Alias: model
 <details>
 ```yaml
 name: model
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: model
 owner: Instrument

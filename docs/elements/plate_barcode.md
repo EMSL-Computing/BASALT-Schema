@@ -9,7 +9,7 @@ _Physical barcode on plate (if different from UUID)_
 
 
 
-URI: [analysis_api_schema:plate_barcode](https://w3id.org/MONet/analysis-api-schema/plate_barcode)
+URI: [basalt_schema:plate_barcode](https://w3id.org/MONet/basalt-schema/plate_barcode)
 Alias: plate_barcode
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: plate_barcode
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: plate_barcode
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:plate_barcode |
-| native | analysis_api_schema:plate_barcode |
+| self | basalt_schema:plate_barcode |
+| native | basalt_schema:plate_barcode |
 
 
 
@@ -84,7 +84,7 @@ Alias: plate_barcode
 ```yaml
 name: plate_barcode
 description: Physical barcode on plate (if different from UUID)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: plate_barcode
 domain_of:

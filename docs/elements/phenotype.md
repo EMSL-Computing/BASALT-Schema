@@ -11,7 +11,7 @@ _Example: "aprimycin resistance, gene knockdown dCas12a construct"_
 
 
 
-URI: [analysis_api_schema:phenotype](https://w3id.org/MONet/analysis-api-schema/phenotype)
+URI: [basalt_schema:phenotype](https://w3id.org/MONet/basalt-schema/phenotype)
 Alias: phenotype
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: phenotype
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: phenotype
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:phenotype |
-| native | analysis_api_schema:phenotype |
+| self | basalt_schema:phenotype |
+| native | basalt_schema:phenotype |
 
 
 
@@ -88,7 +88,7 @@ description: 'Provide the intedned phenotype of hte modified organism. Observabl
 
   Example: "aprimycin resistance, gene knockdown dCas12a construct"'
 title: phenotype
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: phenotype
 domain_of:

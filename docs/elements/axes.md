@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:axes](https://w3id.org/MONet/analysis-api-schema/axes)
+URI: [basalt_schema:axes](https://w3id.org/MONet/basalt-schema/axes)
 Alias: axes
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: axes
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: axes
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:axes |
-| native | analysis_api_schema:axes |
+| self | basalt_schema:axes |
+| native | basalt_schema:axes |
 
 
 
@@ -84,7 +84,7 @@ Alias: axes
 <details>
 ```yaml
 name: axes
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: axes
 owner: ContainerType

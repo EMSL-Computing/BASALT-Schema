@@ -9,7 +9,7 @@ _MinIO/S3 object key; required for all data products_
 
 
 
-URI: [analysis_api_schema:s3_key](https://w3id.org/MONet/analysis-api-schema/s3_key)
+URI: [basalt_schema:s3_key](https://w3id.org/MONet/basalt-schema/s3_key)
 Alias: s3_key
 
 <!-- no inheritance hierarchy -->
@@ -91,7 +91,7 @@ Alias: s3_key
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -100,8 +100,8 @@ Alias: s3_key
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:s3_key |
-| native | analysis_api_schema:s3_key |
+| self | basalt_schema:s3_key |
+| native | basalt_schema:s3_key |
 
 
 
@@ -112,7 +112,7 @@ Alias: s3_key
 ```yaml
 name: s3_key
 description: MinIO/S3 object key; required for all data products
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: s3_key
 domain_of:

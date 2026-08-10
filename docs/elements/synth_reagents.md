@@ -9,7 +9,7 @@ _The reagents used in the material synthesis_
 
 
 
-URI: [analysis_api_schema:synth_reagents](https://w3id.org/MONet/analysis-api-schema/synth_reagents)
+URI: [basalt_schema:synth_reagents](https://w3id.org/MONet/basalt-schema/synth_reagents)
 Alias: synth_reagents
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: synth_reagents
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: synth_reagents
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:synth_reagents |
-| native | analysis_api_schema:synth_reagents |
+| self | basalt_schema:synth_reagents |
+| native | basalt_schema:synth_reagents |
 
 
 
@@ -84,7 +84,7 @@ Alias: synth_reagents
 name: synth_reagents
 description: The reagents used in the material synthesis
 title: synthesis reagents
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: synth_reagents
 domain_of:

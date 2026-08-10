@@ -7,7 +7,7 @@ _The authority, or organization, the DOI is associated with_
 
 
 
-URI: [analysis_api_schema:DoiCategoryEnum](https://w3id.org/MONet/analysis-api-schema/DoiCategoryEnum)
+URI: [basalt_schema:DoiCategoryEnum](https://w3id.org/MONet/basalt-schema/DoiCategoryEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -44,7 +44,7 @@ URI: [analysis_api_schema:DoiCategoryEnum](https://w3id.org/MONet/analysis-api-s
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -57,7 +57,7 @@ URI: [analysis_api_schema:DoiCategoryEnum](https://w3id.org/MONet/analysis-api-s
 ```yaml
 name: DoiCategoryEnum
 description: The authority, or organization, the DOI is associated with
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   award_doi:

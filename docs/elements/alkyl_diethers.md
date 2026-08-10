@@ -9,7 +9,7 @@ _Concentration of alkyl diethers. Provide value and unit, any unit is valid_
 
 
 
-URI: [analysis_api_schema:alkyl_diethers](https://w3id.org/MONet/analysis-api-schema/alkyl_diethers)
+URI: [basalt_schema:alkyl_diethers](https://w3id.org/MONet/basalt-schema/alkyl_diethers)
 Alias: alkyl_diethers
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: alkyl_diethers
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: alkyl_diethers
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:alkyl_diethers |
-| native | analysis_api_schema:alkyl_diethers |
+| self | basalt_schema:alkyl_diethers |
+| native | basalt_schema:alkyl_diethers |
 
 
 
@@ -93,7 +93,7 @@ name: alkyl_diethers
 description: Concentration of alkyl diethers. Provide value and unit, any unit is
   valid
 title: alkyl diethers
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: alkyl_diethers
 domain_of:

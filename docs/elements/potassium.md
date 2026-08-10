@@ -9,7 +9,7 @@ _Concentration of potassium in the sample (Unit: mg/L)_
 
 
 
-URI: [analysis_api_schema:potassium](https://w3id.org/MONet/analysis-api-schema/potassium)
+URI: [basalt_schema:potassium](https://w3id.org/MONet/basalt-schema/potassium)
 Alias: potassium
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: potassium
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: potassium
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:potassium |
-| native | analysis_api_schema:potassium |
+| self | basalt_schema:potassium |
+| native | basalt_schema:potassium |
 
 
 
@@ -92,7 +92,7 @@ Alias: potassium
 name: potassium
 description: 'Concentration of potassium in the sample (Unit: mg/L)'
 title: potassium
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: potassium
 domain_of:

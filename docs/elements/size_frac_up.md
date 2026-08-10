@@ -9,7 +9,7 @@ _Refers to the mesh/pore size used to retain the sample. Materials smaller than 
 
 
 
-URI: [analysis_api_schema:size_frac_up](https://w3id.org/MONet/analysis-api-schema/size_frac_up)
+URI: [basalt_schema:size_frac_up](https://w3id.org/MONet/basalt-schema/size_frac_up)
 Alias: size_frac_up
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: size_frac_up
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -74,8 +74,8 @@ Alias: size_frac_up
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:size_frac_up |
-| native | analysis_api_schema:size_frac_up |
+| self | basalt_schema:size_frac_up |
+| native | basalt_schema:size_frac_up |
 
 
 
@@ -88,7 +88,7 @@ name: size_frac_up
 description: Refers to the mesh/pore size used to retain the sample. Materials smaller
   than the size threshold are excluded from the sample
 title: size fraction upper threshold
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: size_frac_up
 domain_of:

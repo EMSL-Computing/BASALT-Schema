@@ -9,7 +9,7 @@ _Dissolved organic nitrogen concentration measured as: total dissolved nitrogen 
 
 
 
-URI: [analysis_api_schema:diss_org_nitro](https://w3id.org/MONet/analysis-api-schema/diss_org_nitro)
+URI: [basalt_schema:diss_org_nitro](https://w3id.org/MONet/basalt-schema/diss_org_nitro)
 Alias: diss_org_nitro
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: diss_org_nitro
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: diss_org_nitro
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:diss_org_nitro |
-| native | analysis_api_schema:diss_org_nitro |
+| self | basalt_schema:diss_org_nitro |
+| native | basalt_schema:diss_org_nitro |
 
 
 
@@ -93,7 +93,7 @@ name: diss_org_nitro
 description: 'Dissolved organic nitrogen concentration measured as: total dissolved
   nitrogen - NH4 - NO3 - NO2. Provide value and unit, any unit is valid'
 title: dissolved organic nitrogen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: diss_org_nitro
 domain_of:

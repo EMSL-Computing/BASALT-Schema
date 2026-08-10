@@ -9,7 +9,7 @@ _Person who set up the plate_
 
 
 
-URI: [analysis_api_schema:setup_operator_id](https://w3id.org/MONet/analysis-api-schema/setup_operator_id)
+URI: [basalt_schema:setup_operator_id](https://w3id.org/MONet/basalt-schema/setup_operator_id)
 Alias: setup_operator_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: setup_operator_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: setup_operator_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:setup_operator_id |
-| native | analysis_api_schema:setup_operator_id |
+| self | basalt_schema:setup_operator_id |
+| native | basalt_schema:setup_operator_id |
 
 
 
@@ -84,7 +84,7 @@ Alias: setup_operator_id
 ```yaml
 name: setup_operator_id
 description: Person who set up the plate
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: setup_operator_id
 domain_of:

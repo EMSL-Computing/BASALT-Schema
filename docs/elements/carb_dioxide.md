@@ -9,7 +9,7 @@ _Amount of carbon dioxide measured in the air the day of sampling. (Unit: umol/L
 
 
 
-URI: [analysis_api_schema:carb_dioxide](https://w3id.org/MONet/analysis-api-schema/carb_dioxide)
+URI: [basalt_schema:carb_dioxide](https://w3id.org/MONet/basalt-schema/carb_dioxide)
 Alias: carb_dioxide
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: carb_dioxide
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: carb_dioxide
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:carb_dioxide |
-| native | analysis_api_schema:carb_dioxide |
+| self | basalt_schema:carb_dioxide |
+| native | basalt_schema:carb_dioxide |
 
 
 
@@ -93,7 +93,7 @@ name: carb_dioxide
 description: 'Amount of carbon dioxide measured in the air the day of sampling. (Unit:
   umol/L or ppm)'
 title: carbon dioxide
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: carb_dioxide
 domain_of:

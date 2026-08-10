@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:frames_recording_per_projection](https://w3id.org/MONet/analysis-api-schema/frames_recording_per_projection)
+URI: [basalt_schema:frames_recording_per_projection](https://w3id.org/MONet/basalt-schema/frames_recording_per_projection)
 Alias: frames_recording_per_projection
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: frames_recording_per_projection
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: frames_recording_per_projection
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:frames_recording_per_projection |
-| native | analysis_api_schema:frames_recording_per_projection |
+| self | basalt_schema:frames_recording_per_projection |
+| native | basalt_schema:frames_recording_per_projection |
 
 
 
@@ -84,7 +84,7 @@ Alias: frames_recording_per_projection
 <details>
 ```yaml
 name: frames_recording_per_projection
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: frames_recording_per_projection
 owner: XrayComputedTomographyMethod

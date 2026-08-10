@@ -9,7 +9,7 @@ _The order of this segment in the overall chromatography protocol._
 
 
 
-URI: [analysis_api_schema:segment_order](https://w3id.org/MONet/analysis-api-schema/segment_order)
+URI: [basalt_schema:segment_order](https://w3id.org/MONet/basalt-schema/segment_order)
 Alias: segment_order
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: segment_order
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: segment_order
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:segment_order |
-| native | analysis_api_schema:segment_order |
+| self | basalt_schema:segment_order |
+| native | basalt_schema:segment_order |
 
 
 
@@ -89,7 +89,7 @@ Alias: segment_order
 ```yaml
 name: segment_order
 description: The order of this segment in the overall chromatography protocol.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: segment_order
 owner: MobilePhaseSegment

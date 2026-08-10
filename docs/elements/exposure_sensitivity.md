@@ -9,7 +9,7 @@ _Sensitivity the entity has if exposed (e.g. light-sensitive, oxygen-sensitive)_
 
 
 
-URI: [analysis_api_schema:exposure_sensitivity](https://w3id.org/MONet/analysis-api-schema/exposure_sensitivity)
+URI: [basalt_schema:exposure_sensitivity](https://w3id.org/MONet/basalt-schema/exposure_sensitivity)
 Alias: exposure_sensitivity
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: exposure_sensitivity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: exposure_sensitivity
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:exposure_sensitivity |
-| native | analysis_api_schema:exposure_sensitivity |
+| self | basalt_schema:exposure_sensitivity |
+| native | basalt_schema:exposure_sensitivity |
 
 
 
@@ -83,7 +83,7 @@ Alias: exposure_sensitivity
 ```yaml
 name: exposure_sensitivity
 description: Sensitivity the entity has if exposed (e.g. light-sensitive, oxygen-sensitive)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: exposure_sensitivity
 domain_of:

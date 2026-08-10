@@ -9,7 +9,7 @@ _Temperature of the sample at the time of sampling. (Units: C)_
 
 
 
-URI: [analysis_api_schema:temp](https://w3id.org/MONet/analysis-api-schema/temp)
+URI: [basalt_schema:temp](https://w3id.org/MONet/basalt-schema/temp)
 Alias: temp
 
 <!-- no inheritance hierarchy -->
@@ -77,7 +77,7 @@ Alias: temp
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -86,8 +86,8 @@ Alias: temp
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:temp |
-| native | analysis_api_schema:temp |
+| self | basalt_schema:temp |
+| native | basalt_schema:temp |
 
 
 
@@ -99,7 +99,7 @@ Alias: temp
 name: temp
 description: 'Temperature of the sample at the time of sampling. (Units: C)'
 title: temperature
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: temp
 domain_of:

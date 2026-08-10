@@ -9,7 +9,7 @@ _concentration of substances such as urea, fruit sugars, soluble proteins, drugs
 
 
 
-URI: [analysis_api_schema:soluble_org_mat](https://w3id.org/MONet/analysis-api-schema/soluble_org_mat)
+URI: [basalt_schema:soluble_org_mat](https://w3id.org/MONet/basalt-schema/soluble_org_mat)
 Alias: soluble_org_mat
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: soluble_org_mat
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: soluble_org_mat
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:soluble_org_mat |
-| native | analysis_api_schema:soluble_org_mat |
+| self | basalt_schema:soluble_org_mat |
+| native | basalt_schema:soluble_org_mat |
 
 
 
@@ -84,7 +84,7 @@ name: soluble_org_mat
 description: concentration of substances such as urea, fruit sugars, soluble proteins,
   drugs, pharmaceuticals, etc.
 title: soluble organic material
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: soluble_org_mat
 domain_of:

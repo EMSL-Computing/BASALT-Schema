@@ -9,7 +9,7 @@ _Second boundary layer height candidate (meters) (Unit: m)_
 
 
 
-URI: [analysis_api_schema:second_blh](https://w3id.org/MONet/analysis-api-schema/second_blh)
+URI: [basalt_schema:second_blh](https://w3id.org/MONet/basalt-schema/second_blh)
 Alias: second_blh
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: second_blh
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: second_blh
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:second_blh |
-| native | analysis_api_schema:second_blh |
+| self | basalt_schema:second_blh |
+| native | basalt_schema:second_blh |
 
 
 
@@ -83,7 +83,7 @@ Alias: second_blh
 name: second_blh
 description: 'Second boundary layer height candidate (meters) (Unit: m)'
 title: second boundary layer height
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: second_blh
 domain_of:

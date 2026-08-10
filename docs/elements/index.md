@@ -1,12 +1,12 @@
-# MONet Analysis API Schema
+# Basalt Schema
 
 LinkML-based schema for MONet soil analysis data management and metadata enrichment.
 This schema defines the data models for samples, processed samples, site metadata,
-and enrichment providers used in the MONet Analysis API.
+and enrichment providers used by Basalt.
 
-URI: https://w3id.org/MONet/analysis-api-schema
+URI: https://w3id.org/MONet/basalt-schema
 
-Name: analysis-api-schema
+Name: basalt-schema
 
 
 

@@ -9,7 +9,7 @@ _Reference or method used in determining ph of the sample_
 
 
 
-URI: [analysis_api_schema:ph_meth](https://w3id.org/MONet/analysis-api-schema/ph_meth)
+URI: [basalt_schema:ph_meth](https://w3id.org/MONet/basalt-schema/ph_meth)
 Alias: ph_meth
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: ph_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: ph_meth
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ph_meth |
-| native | analysis_api_schema:ph_meth |
+| self | basalt_schema:ph_meth |
+| native | basalt_schema:ph_meth |
 
 
 
@@ -86,7 +86,7 @@ Alias: ph_meth
 name: ph_meth
 description: Reference or method used in determining ph of the sample
 title: pH method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: ph_meth
 domain_of:

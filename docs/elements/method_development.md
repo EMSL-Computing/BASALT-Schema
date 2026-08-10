@@ -9,7 +9,7 @@ _If your samples are TEST sample ONLY, please provide information on what you're
 
 
 
-URI: [analysis_api_schema:method_development](https://w3id.org/MONet/analysis-api-schema/method_development)
+URI: [basalt_schema:method_development](https://w3id.org/MONet/basalt-schema/method_development)
 Alias: method_development
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: method_development
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -82,8 +82,8 @@ Alias: method_development
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:method_development |
-| native | analysis_api_schema:method_development |
+| self | basalt_schema:method_development |
+| native | basalt_schema:method_development |
 
 
 
@@ -96,7 +96,7 @@ name: method_development
 description: If your samples are TEST sample ONLY, please provide information on what
   you're hoping this test will resolve.
 title: method development
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: method_development
 domain_of:

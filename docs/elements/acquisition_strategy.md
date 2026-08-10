@@ -9,7 +9,7 @@ _The acquisition strategy used in the mass spectrometry run._
 
 
 
-URI: [analysis_api_schema:acquisition_strategy](https://w3id.org/MONet/analysis-api-schema/acquisition_strategy)
+URI: [basalt_schema:acquisition_strategy](https://w3id.org/MONet/basalt-schema/acquisition_strategy)
 Alias: acquisition_strategy
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: acquisition_strategy
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: acquisition_strategy
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:acquisition_strategy |
-| native | analysis_api_schema:acquisition_strategy |
+| self | basalt_schema:acquisition_strategy |
+| native | basalt_schema:acquisition_strategy |
 
 
 
@@ -82,7 +82,7 @@ Alias: acquisition_strategy
 ```yaml
 name: acquisition_strategy
 description: The acquisition strategy used in the mass spectrometry run.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: acquisition_strategy
 domain_of:

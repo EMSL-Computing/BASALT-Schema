@@ -9,7 +9,7 @@ _Concentration of ammonium in the sample. (Units: umol/L or mg/Liter or ppm)_
 
 
 
-URI: [analysis_api_schema:ammonium](https://w3id.org/MONet/analysis-api-schema/ammonium)
+URI: [basalt_schema:ammonium](https://w3id.org/MONet/basalt-schema/ammonium)
 Alias: ammonium
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: ammonium
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: ammonium
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ammonium |
-| native | analysis_api_schema:ammonium |
+| self | basalt_schema:ammonium |
+| native | basalt_schema:ammonium |
 
 
 
@@ -93,7 +93,7 @@ name: ammonium
 description: 'Concentration of ammonium in the sample. (Units: umol/L or mg/Liter
   or ppm)'
 title: ammonium
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: ammonium
 domain_of:

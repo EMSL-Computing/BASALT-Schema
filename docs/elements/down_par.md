@@ -9,7 +9,7 @@ _Visible waveband radiance and irradiance measurements in the water column. Prov
 
 
 
-URI: [analysis_api_schema:down_par](https://w3id.org/MONet/analysis-api-schema/down_par)
+URI: [basalt_schema:down_par](https://w3id.org/MONet/basalt-schema/down_par)
 Alias: down_par
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: down_par
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: down_par
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:down_par |
-| native | analysis_api_schema:down_par |
+| self | basalt_schema:down_par |
+| native | basalt_schema:down_par |
 
 
 
@@ -92,7 +92,7 @@ name: down_par
 description: Visible waveband radiance and irradiance measurements in the water column.
   Provide value and unit, any unit is valid.
 title: downward PAR
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: down_par
 domain_of:

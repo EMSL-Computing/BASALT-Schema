@@ -9,7 +9,7 @@ _an identifier for a file that resolves to the file's accessible location_
 
 
 
-URI: [analysis_api_schema:file_curie](https://w3id.org/MONet/analysis-api-schema/file_curie)
+URI: [basalt_schema:file_curie](https://w3id.org/MONet/basalt-schema/file_curie)
 Alias: file_curie
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: file_curie
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: file_curie
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:file_curie |
-| native | analysis_api_schema:file_curie |
+| self | basalt_schema:file_curie |
+| native | basalt_schema:file_curie |
 
 
 
@@ -84,7 +84,7 @@ Alias: file_curie
 ```yaml
 name: file_curie
 description: an identifier for a file that resolves to the file's accessible location
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: file_curie
 domain_of:

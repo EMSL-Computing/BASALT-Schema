@@ -9,7 +9,7 @@ _'Report the major environmental system the sample or specimen came from. The sy
 
 
 
-URI: [analysis_api_schema:env_broad_scale](https://w3id.org/MONet/analysis-api-schema/env_broad_scale)
+URI: [basalt_schema:env_broad_scale](https://w3id.org/MONet/basalt-schema/env_broad_scale)
 Alias: env_broad_scale
 
 <!-- no inheritance hierarchy -->
@@ -79,7 +79,7 @@ Alias: env_broad_scale
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -88,8 +88,8 @@ Alias: env_broad_scale
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:env_broad_scale |
-| native | analysis_api_schema:env_broad_scale |
+| self | basalt_schema:env_broad_scale |
+| native | basalt_schema:env_broad_scale |
 
 
 
@@ -105,7 +105,7 @@ description: '''Report the major environmental system the sample or specimen cam
   We recommend using subclasses of EnvO''''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
   EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'''
 title: broad-scale environmental context
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: env_broad_scale
 domain_of:

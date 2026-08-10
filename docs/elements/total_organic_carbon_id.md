@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:total_organic_carbon_id](https://w3id.org/MONet/analysis-api-schema/total_organic_carbon_id)
+URI: [basalt_schema:total_organic_carbon_id](https://w3id.org/MONet/basalt-schema/total_organic_carbon_id)
 Alias: total_organic_carbon_id
 
 <!-- no inheritance hierarchy -->
@@ -59,8 +59,8 @@ Alias: total_organic_carbon_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:total_organic_carbon_id |
-| native | analysis_api_schema:total_organic_carbon_id |
+| self | basalt_schema:total_organic_carbon_id |
+| native | basalt_schema:total_organic_carbon_id |
 
 
 

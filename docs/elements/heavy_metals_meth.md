@@ -9,7 +9,7 @@ _Reference or method used in determining heavy metals_
 
 
 
-URI: [analysis_api_schema:heavy_metals_meth](https://w3id.org/MONet/analysis-api-schema/heavy_metals_meth)
+URI: [basalt_schema:heavy_metals_meth](https://w3id.org/MONet/basalt-schema/heavy_metals_meth)
 Alias: heavy_metals_meth
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: heavy_metals_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: heavy_metals_meth
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:heavy_metals_meth |
-| native | analysis_api_schema:heavy_metals_meth |
+| self | basalt_schema:heavy_metals_meth |
+| native | basalt_schema:heavy_metals_meth |
 
 
 
@@ -84,7 +84,7 @@ Alias: heavy_metals_meth
 name: heavy_metals_meth
 description: Reference or method used in determining heavy metals
 title: heavy metals method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: heavy_metals_meth
 domain_of:

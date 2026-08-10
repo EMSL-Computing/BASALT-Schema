@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:alternate_identifier_type](https://w3id.org/MONet/analysis-api-schema/alternate_identifier_type)
+URI: [basalt_schema:alternate_identifier_type](https://w3id.org/MONet/basalt-schema/alternate_identifier_type)
 Alias: alternate_identifier_type
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: alternate_identifier_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: alternate_identifier_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:alternate_identifier_type |
-| native | analysis_api_schema:alternate_identifier_type |
+| self | basalt_schema:alternate_identifier_type |
+| native | basalt_schema:alternate_identifier_type |
 
 
 
@@ -84,7 +84,7 @@ Alias: alternate_identifier_type
 <details>
 ```yaml
 name: alternate_identifier_type
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: alternate_identifier_type
 owner: AlternativeIdentifier

@@ -9,7 +9,7 @@ _Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials 
 
 
 
-URI: [analysis_api_schema:size_frac_low](https://w3id.org/MONet/analysis-api-schema/size_frac_low)
+URI: [basalt_schema:size_frac_low](https://w3id.org/MONet/basalt-schema/size_frac_low)
 Alias: size_frac_low
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: size_frac_low
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -74,8 +74,8 @@ Alias: size_frac_low
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:size_frac_low |
-| native | analysis_api_schema:size_frac_low |
+| self | basalt_schema:size_frac_low |
+| native | basalt_schema:size_frac_low |
 
 
 
@@ -88,7 +88,7 @@ name: size_frac_low
 description: Refers to the mesh/pore size used to pre-filter/pre-sort the sample.
   Materials larger than the size threshold are excluded from the sample
 title: size fraction lower threshold
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: size_frac_low
 domain_of:

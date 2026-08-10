@@ -9,7 +9,7 @@ _Polarity setting used in the mass spectrometry method_
 
 
 
-URI: [analysis_api_schema:polarity](https://w3id.org/MONet/analysis-api-schema/polarity)
+URI: [basalt_schema:polarity](https://w3id.org/MONet/basalt-schema/polarity)
 Alias: polarity
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: polarity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: polarity
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:polarity |
-| native | analysis_api_schema:polarity |
+| self | basalt_schema:polarity |
+| native | basalt_schema:polarity |
 
 
 
@@ -83,7 +83,7 @@ Alias: polarity
 ```yaml
 name: polarity
 description: Polarity setting used in the mass spectrometry method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: polarity
 domain_of:

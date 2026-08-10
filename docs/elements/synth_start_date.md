@@ -9,7 +9,7 @@ _Provide the date the sample was transferred to the synthetic environment. Forma
 
 
 
-URI: [analysis_api_schema:synth_start_date](https://w3id.org/MONet/analysis-api-schema/synth_start_date)
+URI: [basalt_schema:synth_start_date](https://w3id.org/MONet/basalt-schema/synth_start_date)
 Alias: synth_start_date
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: synth_start_date
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: synth_start_date
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:synth_start_date |
-| native | analysis_api_schema:synth_start_date |
+| self | basalt_schema:synth_start_date |
+| native | basalt_schema:synth_start_date |
 
 
 
@@ -92,7 +92,7 @@ name: synth_start_date
 description: Provide the date the sample was transferred to the synthetic environment.
   Formatted as YYYY-MM-DD
 title: synthetic environment start date
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: synth_start_date
 domain_of:

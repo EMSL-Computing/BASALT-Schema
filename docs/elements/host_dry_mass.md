@@ -9,7 +9,7 @@ _Measurement of dry mass. (Unit: kg or g)_
 
 
 
-URI: [analysis_api_schema:host_dry_mass](https://w3id.org/MONet/analysis-api-schema/host_dry_mass)
+URI: [basalt_schema:host_dry_mass](https://w3id.org/MONet/basalt-schema/host_dry_mass)
 Alias: host_dry_mass
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: host_dry_mass
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: host_dry_mass
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:host_dry_mass |
-| native | analysis_api_schema:host_dry_mass |
+| self | basalt_schema:host_dry_mass |
+| native | basalt_schema:host_dry_mass |
 
 
 
@@ -92,7 +92,7 @@ Alias: host_dry_mass
 name: host_dry_mass
 description: 'Measurement of dry mass. (Unit: kg or g)'
 title: host dry mass
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: host_dry_mass
 domain_of:

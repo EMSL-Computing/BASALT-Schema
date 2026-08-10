@@ -9,7 +9,7 @@ _the process to produce both a generally homogeneous liquid capable of being tre
 
 
 
-URI: [analysis_api_schema:primary_treatment](https://w3id.org/MONet/analysis-api-schema/primary_treatment)
+URI: [basalt_schema:primary_treatment](https://w3id.org/MONet/basalt-schema/primary_treatment)
 Alias: primary_treatment
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: primary_treatment
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: primary_treatment
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:primary_treatment |
-| native | analysis_api_schema:primary_treatment |
+| self | basalt_schema:primary_treatment |
+| native | basalt_schema:primary_treatment |
 
 
 
@@ -84,7 +84,7 @@ name: primary_treatment
 description: the process to produce both a generally homogeneous liquid capable of
   being treated biologically and a sludge that can be separately treated or processed
 title: primary treatmentz
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: primary_treatment
 domain_of:

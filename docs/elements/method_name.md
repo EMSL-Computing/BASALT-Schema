@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:method_name](https://w3id.org/MONet/analysis-api-schema/method_name)
+URI: [basalt_schema:method_name](https://w3id.org/MONet/basalt-schema/method_name)
 Alias: method_name
 
 <!-- no inheritance hierarchy -->
@@ -72,7 +72,7 @@ Alias: method_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -81,8 +81,8 @@ Alias: method_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:method_name |
-| native | analysis_api_schema:method_name |
+| self | basalt_schema:method_name |
+| native | basalt_schema:method_name |
 
 
 
@@ -92,7 +92,7 @@ Alias: method_name
 <details>
 ```yaml
 name: method_name
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: method_name
 owner: SampleProcessing

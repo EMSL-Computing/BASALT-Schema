@@ -9,7 +9,7 @@ _Link to additional analysis results performed on the sample_
 
 
 
-URI: [analysis_api_schema:link_addit_analys](https://w3id.org/MONet/analysis-api-schema/link_addit_analys)
+URI: [basalt_schema:link_addit_analys](https://w3id.org/MONet/basalt-schema/link_addit_analys)
 Alias: link_addit_analys
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: link_addit_analys
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: link_addit_analys
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:link_addit_analys |
-| native | analysis_api_schema:link_addit_analys |
+| self | basalt_schema:link_addit_analys |
+| native | basalt_schema:link_addit_analys |
 
 
 
@@ -84,7 +84,7 @@ Alias: link_addit_analys
 name: link_addit_analys
 description: Link to additional analysis results performed on the sample
 title: link to additional analysis
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: link_addit_analys
 domain_of:

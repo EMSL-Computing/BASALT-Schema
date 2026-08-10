@@ -9,7 +9,7 @@ _Indicate if samples were collected during the local afternoon time_
 
 
 
-URI: [analysis_api_schema:within_17_oz](https://w3id.org/MONet/analysis-api-schema/within_17_oz)
+URI: [basalt_schema:within_17_oz](https://w3id.org/MONet/basalt-schema/within_17_oz)
 Alias: within_17_oz
 
 <!-- no inheritance hierarchy -->
@@ -51,7 +51,7 @@ Alias: within_17_oz
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -60,8 +60,8 @@ Alias: within_17_oz
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:within_17_oz |
-| native | analysis_api_schema:within_17_oz |
+| self | basalt_schema:within_17_oz |
+| native | basalt_schema:within_17_oz |
 
 
 
@@ -73,7 +73,7 @@ Alias: within_17_oz
 name: within_17_oz
 description: Indicate if samples were collected during the local afternoon time
 title: Within 17 Oz
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: within_17_oz
 range: string

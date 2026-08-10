@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:HydraulicPropertiesMethod](https://w3id.org/MONet/analysis-api-schema/HydraulicPropertiesMethod)
+URI: [basalt_schema:HydraulicPropertiesMethod](https://w3id.org/MONet/basalt-schema/HydraulicPropertiesMethod)
 
 
 
@@ -66,7 +66,7 @@ URI: [analysis_api_schema:HydraulicPropertiesMethod](https://w3id.org/MONet/anal
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -75,8 +75,8 @@ URI: [analysis_api_schema:HydraulicPropertiesMethod](https://w3id.org/MONet/anal
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:HydraulicPropertiesMethod |
-| native | analysis_api_schema:HydraulicPropertiesMethod |
+| self | basalt_schema:HydraulicPropertiesMethod |
+| native | basalt_schema:HydraulicPropertiesMethod |
 
 
 
@@ -92,14 +92,14 @@ URI: [analysis_api_schema:HydraulicPropertiesMethod](https://w3id.org/MONet/anal
 <details>
 ```yaml
 name: HydraulicPropertiesMethod
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: Method
 slots:
 - location
 attributes:
   fitting_model:
     name: fitting_model
-    from_schema: https://w3id.org/MONet/analysis-api-schema/methods
+    from_schema: https://w3id.org/MONet/basalt-schema/methods
     rank: 1000
     domain_of:
     - HydraulicPropertiesMethod
@@ -114,12 +114,12 @@ attributes:
 <details>
 ```yaml
 name: HydraulicPropertiesMethod
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: Method
 attributes:
   fitting_model:
     name: fitting_model
-    from_schema: https://w3id.org/MONet/analysis-api-schema/methods
+    from_schema: https://w3id.org/MONet/basalt-schema/methods
     rank: 1000
     alias: fitting_model
     owner: HydraulicPropertiesMethod
@@ -131,7 +131,7 @@ attributes:
     name: location
     todos:
     - used on many method classes. no description. what was this meant to mean?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: location
     owner: HydraulicPropertiesMethod
@@ -152,7 +152,7 @@ attributes:
     name: analytic
     todos:
     - what does this mean
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: analytic
     owner: HydraulicPropertiesMethod

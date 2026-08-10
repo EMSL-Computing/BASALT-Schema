@@ -9,7 +9,7 @@ _Whether the entity was pH-adjusted_
 
 
 
-URI: [analysis_api_schema:ph_adjustment](https://w3id.org/MONet/analysis-api-schema/ph_adjustment)
+URI: [basalt_schema:ph_adjustment](https://w3id.org/MONet/basalt-schema/ph_adjustment)
 Alias: ph_adjustment
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: ph_adjustment
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: ph_adjustment
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ph_adjustment |
-| native | analysis_api_schema:ph_adjustment |
+| self | basalt_schema:ph_adjustment |
+| native | basalt_schema:ph_adjustment |
 
 
 
@@ -82,7 +82,7 @@ Alias: ph_adjustment
 ```yaml
 name: ph_adjustment
 description: Whether the entity was pH-adjusted
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: ph_adjustment
 domain_of:

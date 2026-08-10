@@ -9,7 +9,7 @@ _Name of the institution that manufactured the chromatography column._
 
 
 
-URI: [analysis_api_schema:column_manufacturer](https://w3id.org/MONet/analysis-api-schema/column_manufacturer)
+URI: [basalt_schema:column_manufacturer](https://w3id.org/MONet/basalt-schema/column_manufacturer)
 Alias: column_manufacturer
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: column_manufacturer
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: column_manufacturer
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:column_manufacturer |
-| native | analysis_api_schema:column_manufacturer |
+| self | basalt_schema:column_manufacturer |
+| native | basalt_schema:column_manufacturer |
 
 
 
@@ -82,7 +82,7 @@ Alias: column_manufacturer
 ```yaml
 name: column_manufacturer
 description: Name of the institution that manufactured the chromatography column.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: column_manufacturer
 domain_of:

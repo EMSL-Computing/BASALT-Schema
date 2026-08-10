@@ -9,7 +9,7 @@ _concentration of particles such as faeces, hairs, food, vomit, paper, fibers, p
 
 
 
-URI: [analysis_api_schema:org_particles](https://w3id.org/MONet/analysis-api-schema/org_particles)
+URI: [basalt_schema:org_particles](https://w3id.org/MONet/basalt-schema/org_particles)
 Alias: org_particles
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: org_particles
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: org_particles
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:org_particles |
-| native | analysis_api_schema:org_particles |
+| self | basalt_schema:org_particles |
+| native | basalt_schema:org_particles |
 
 
 
@@ -84,7 +84,7 @@ name: org_particles
 description: concentration of particles such as faeces, hairs, food, vomit, paper,
   fibers, plant material, humus etc.
 title: organic particles
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: org_particles
 domain_of:

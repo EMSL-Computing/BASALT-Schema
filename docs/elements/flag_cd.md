@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_cd](https://w3id.org/MONet/analysis-api-schema/flag_cd)
+URI: [basalt_schema:flag_cd](https://w3id.org/MONet/basalt-schema/flag_cd)
 Alias: flag_cd
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_cd
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_cd
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_cd |
-| native | analysis_api_schema:flag_cd |
+| self | basalt_schema:flag_cd |
+| native | basalt_schema:flag_cd |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_cd
 <details>
 ```yaml
 name: flag_cd
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: flag_cd
 owner: XRFElementalProduct

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:location](https://w3id.org/MONet/analysis-api-schema/location)
+URI: [basalt_schema:location](https://w3id.org/MONet/basalt-schema/location)
 Alias: location
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: location
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: location
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:location |
-| native | analysis_api_schema:location |
+| self | basalt_schema:location |
+| native | basalt_schema:location |
 
 
 
@@ -92,7 +92,7 @@ Alias: location
 name: location
 todos:
 - used on many method classes. no description. what was this meant to mean?
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: location
 domain_of:

@@ -9,7 +9,7 @@ _Metagenomics workflow step that produced this product (e.g., MagsAnalysis)_
 
 
 
-URI: [analysis_api_schema:mg_workflow_step](https://w3id.org/MONet/analysis-api-schema/mg_workflow_step)
+URI: [basalt_schema:mg_workflow_step](https://w3id.org/MONet/basalt-schema/mg_workflow_step)
 Alias: mg_workflow_step
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: mg_workflow_step
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: mg_workflow_step
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:mg_workflow_step |
-| native | analysis_api_schema:mg_workflow_step |
+| self | basalt_schema:mg_workflow_step |
+| native | basalt_schema:mg_workflow_step |
 
 
 
@@ -85,7 +85,7 @@ Alias: mg_workflow_step
 ```yaml
 name: mg_workflow_step
 description: Metagenomics workflow step that produced this product (e.g., MagsAnalysis)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: mg_workflow_step
 domain_of:

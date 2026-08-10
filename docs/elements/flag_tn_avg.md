@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_tn_avg](https://w3id.org/MONet/analysis-api-schema/flag_tn_avg)
+URI: [basalt_schema:flag_tn_avg](https://w3id.org/MONet/basalt-schema/flag_tn_avg)
 Alias: flag_tn_avg
 
 <!-- no inheritance hierarchy -->
@@ -59,8 +59,8 @@ Alias: flag_tn_avg
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_tn_avg |
-| native | analysis_api_schema:flag_tn_avg |
+| self | basalt_schema:flag_tn_avg |
+| native | basalt_schema:flag_tn_avg |
 
 
 

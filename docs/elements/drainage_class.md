@@ -9,7 +9,7 @@ _Drainage classification from a standard system such as the USDA system_
 
 
 
-URI: [analysis_api_schema:drainage_class](https://w3id.org/MONet/analysis-api-schema/drainage_class)
+URI: [basalt_schema:drainage_class](https://w3id.org/MONet/basalt-schema/drainage_class)
 Alias: drainage_class
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: drainage_class
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: drainage_class
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:drainage_class |
-| native | analysis_api_schema:drainage_class |
+| self | basalt_schema:drainage_class |
+| native | basalt_schema:drainage_class |
 
 
 
@@ -83,7 +83,7 @@ Alias: drainage_class
 name: drainage_class
 description: Drainage classification from a standard system such as the USDA system
 title: drainage class
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: drainage_class
 domain_of:

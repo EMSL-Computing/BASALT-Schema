@@ -9,7 +9,7 @@ _The replicate number of the sample, if applicable. Included for compatibility w
 
 
 
-URI: [analysis_api_schema:replicate_number](https://w3id.org/MONet/analysis-api-schema/replicate_number)
+URI: [basalt_schema:replicate_number](https://w3id.org/MONet/basalt-schema/replicate_number)
 Alias: replicate_number
 
 <!-- no inheritance hierarchy -->
@@ -78,7 +78,7 @@ Alias: replicate_number
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -87,8 +87,8 @@ Alias: replicate_number
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:replicate_number |
-| native | analysis_api_schema:replicate_number |
+| self | basalt_schema:replicate_number |
+| native | basalt_schema:replicate_number |
 
 
 
@@ -102,7 +102,7 @@ description: The replicate number of the sample, if applicable. Included for com
   with submission schema.
 todos:
 - reconcile replicate modelling
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: replicate_number
 domain_of:

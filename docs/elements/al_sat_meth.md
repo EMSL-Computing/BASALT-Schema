@@ -9,7 +9,7 @@ _Reference or method used in determining Al saturation_
 
 
 
-URI: [analysis_api_schema:al_sat_meth](https://w3id.org/MONet/analysis-api-schema/al_sat_meth)
+URI: [basalt_schema:al_sat_meth](https://w3id.org/MONet/basalt-schema/al_sat_meth)
 Alias: al_sat_meth
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: al_sat_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: al_sat_meth
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:al_sat_meth |
-| native | analysis_api_schema:al_sat_meth |
+| self | basalt_schema:al_sat_meth |
+| native | basalt_schema:al_sat_meth |
 
 
 
@@ -84,7 +84,7 @@ Alias: al_sat_meth
 name: al_sat_meth
 description: Reference or method used in determining Al saturation
 title: aluminum saturation method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: al_sat_meth
 domain_of:

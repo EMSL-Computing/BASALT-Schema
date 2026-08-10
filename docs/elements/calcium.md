@@ -9,7 +9,7 @@ _Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)_
 
 
 
-URI: [analysis_api_schema:calcium](https://w3id.org/MONet/analysis-api-schema/calcium)
+URI: [basalt_schema:calcium](https://w3id.org/MONet/basalt-schema/calcium)
 Alias: calcium
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: calcium
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: calcium
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:calcium |
-| native | analysis_api_schema:calcium |
+| self | basalt_schema:calcium |
+| native | basalt_schema:calcium |
 
 
 
@@ -92,7 +92,7 @@ Alias: calcium
 name: calcium
 description: 'Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)'
 title: calcium
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: calcium
 domain_of:

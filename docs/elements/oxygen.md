@@ -9,7 +9,7 @@ _Amount of oxygen measured in the air the day of sampling. (Unit: mg/L or ppm)_
 
 
 
-URI: [analysis_api_schema:oxygen](https://w3id.org/MONet/analysis-api-schema/oxygen)
+URI: [basalt_schema:oxygen](https://w3id.org/MONet/basalt-schema/oxygen)
 Alias: oxygen
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: oxygen
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: oxygen
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:oxygen |
-| native | analysis_api_schema:oxygen |
+| self | basalt_schema:oxygen |
+| native | basalt_schema:oxygen |
 
 
 
@@ -92,7 +92,7 @@ name: oxygen
 description: 'Amount of oxygen measured in the air the day of sampling. (Unit: mg/L
   or ppm)'
 title: oxygen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: oxygen
 domain_of:

@@ -9,7 +9,7 @@ _Substance produced by the plant where the sample was obtained from_
 
 
 
-URI: [analysis_api_schema:plant_product](https://w3id.org/MONet/analysis-api-schema/plant_product)
+URI: [basalt_schema:plant_product](https://w3id.org/MONet/basalt-schema/plant_product)
 Alias: plant_product
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: plant_product
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: plant_product
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:plant_product |
-| native | analysis_api_schema:plant_product |
+| self | basalt_schema:plant_product |
+| native | basalt_schema:plant_product |
 
 
 
@@ -84,7 +84,7 @@ Alias: plant_product
 name: plant_product
 description: Substance produced by the plant where the sample was obtained from
 title: plant product
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: plant_product
 domain_of:

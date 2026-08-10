@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:calcium_id](https://w3id.org/MONet/analysis-api-schema/calcium_id)
+URI: [basalt_schema:calcium_id](https://w3id.org/MONet/basalt-schema/calcium_id)
 Alias: calcium_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: calcium_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: calcium_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:calcium_id |
-| native | analysis_api_schema:calcium_id |
+| self | basalt_schema:calcium_id |
+| native | basalt_schema:calcium_id |
 
 
 
@@ -83,7 +83,7 @@ Alias: calcium_id
 <details>
 ```yaml
 name: calcium_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: calcium_id
 owner: IonsAnalysisProduct

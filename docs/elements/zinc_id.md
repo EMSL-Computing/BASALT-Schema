@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:zinc_id](https://w3id.org/MONet/analysis-api-schema/zinc_id)
+URI: [basalt_schema:zinc_id](https://w3id.org/MONet/basalt-schema/zinc_id)
 Alias: zinc_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: zinc_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: zinc_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:zinc_id |
-| native | analysis_api_schema:zinc_id |
+| self | basalt_schema:zinc_id |
+| native | basalt_schema:zinc_id |
 
 
 
@@ -83,7 +83,7 @@ Alias: zinc_id
 <details>
 ```yaml
 name: zinc_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: zinc_id
 owner: IonsAnalysisProduct

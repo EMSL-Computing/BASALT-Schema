@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:has_raw_value](https://w3id.org/MONet/analysis-api-schema/has_raw_value)
+URI: [basalt_schema:has_raw_value](https://w3id.org/MONet/basalt-schema/has_raw_value)
 Alias: has_raw_value
 
 <!-- no inheritance hierarchy -->
@@ -63,8 +63,8 @@ Alias: has_raw_value
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:has_raw_value |
-| native | analysis_api_schema:has_raw_value |
+| self | basalt_schema:has_raw_value |
+| native | basalt_schema:has_raw_value |
 
 
 

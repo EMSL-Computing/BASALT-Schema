@@ -9,7 +9,7 @@ _The raw data file, output by a mass spectrometer, that was analyzed in  this da
 
 
 
-URI: [analysis_api_schema:uses_raw_ms_data](https://w3id.org/MONet/analysis-api-schema/uses_raw_ms_data)
+URI: [basalt_schema:uses_raw_ms_data](https://w3id.org/MONet/basalt-schema/uses_raw_ms_data)
 Alias: uses_raw_ms_data
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: uses_raw_ms_data
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: uses_raw_ms_data
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:uses_raw_ms_data |
-| native | analysis_api_schema:uses_raw_ms_data |
+| self | basalt_schema:uses_raw_ms_data |
+| native | basalt_schema:uses_raw_ms_data |
 
 
 
@@ -83,7 +83,7 @@ Alias: uses_raw_ms_data
 name: uses_raw_ms_data
 description: The raw data file, output by a mass spectrometer, that was analyzed in  this
   data processing workflow run.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: uses_raw_ms_data
 domain_of:

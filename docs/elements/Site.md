@@ -9,7 +9,7 @@ _Site-level metadata for a specific location from which a set of samples are col
 
 
 
-URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
+URI: [basalt_schema:Site](https://w3id.org/MONet/basalt-schema/Site)
 
 
 
@@ -245,7 +245,7 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -254,8 +254,8 @@ URI: [analysis_api_schema:Site](https://w3id.org/MONet/analysis-api-schema/Site)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:Site |
-| native | analysis_api_schema:Site |
+| self | basalt_schema:Site |
+| native | basalt_schema:Site |
 
 
 
@@ -277,7 +277,7 @@ todos:
 - If we only have one Site class, we can't require Site slots based on sample type.
   We could add this in the submission schema JSON conversion perhaps.
 - fao_class - can this vary within a site or change with time?
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 slots:
 - name
 - description
@@ -335,7 +335,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -426,7 +426,7 @@ todos:
 - If we only have one Site class, we can't require Site slots based on sample type.
   We could add this in the submission schema JSON conversion perhaps.
 - fao_class - can this vary within a site or change with time?
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 slot_usage:
   elev:
     name: elev
@@ -448,7 +448,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
     identifier: true
     alias: id
     owner: Site
@@ -529,7 +529,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: name
     owner: Site
@@ -559,7 +559,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: description
     owner: Site
@@ -597,7 +597,7 @@ attributes:
       earth''s surface above sea level and the sampled position in the air. For ARM
       this can be a range. (Unit: m)'
     title: altitude
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: alt
     owner: Site
@@ -611,7 +611,7 @@ attributes:
       equivalent value derived by such methods as regional indexes or Isohyetal maps.
       (Unit: mm)'
     title: mean annual precipitation
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - average annual precipitation
     rank: 1000
@@ -625,7 +625,7 @@ attributes:
     name: annual_temp
     description: 'Mean annual temperature (Unit: C)'
     title: mean annual temperature
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - average annual temperature
     rank: 1000
@@ -639,7 +639,7 @@ attributes:
     name: atmospheric_data
     description: Measurement of atmospheric data; can include multiple data
     title: atmospheric data
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: atmospheric_data
     owner: Site
@@ -650,7 +650,7 @@ attributes:
     name: crop_rotation
     description: Whether or not crop is rotated, and if yes, rotation schedule
     title: crop rotation
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: crop_rotation
     owner: Site
@@ -667,7 +667,7 @@ attributes:
       shrub crops, shrub land, small grains, successional shrub land, swamp, tropical,
       tundra, vegetable crops, vine crops'
     title: current land use
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: cur_land_use
     owner: Site
@@ -679,7 +679,7 @@ attributes:
     description: Vegetation classification from one or more standard classification
       systems, or agricultural crop
     title: current vegetation
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: cur_vegetation
     owner: Site
@@ -690,7 +690,7 @@ attributes:
     name: cur_vegetation_meth
     description: Reference or method used in vegetation classification
     title: current vegetation method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: cur_vegetation_meth
     owner: Site
@@ -701,7 +701,7 @@ attributes:
     name: drainage_class
     description: Drainage classification from a standard system such as the USDA system
     title: drainage class
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: drainage_class
     owner: Site
@@ -716,7 +716,7 @@ attributes:
     title: elevation
     todos:
     - should this be required for all sample types though? probably not.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: elev
     owner: Site
@@ -730,7 +730,7 @@ attributes:
     description: 'Unusual physical events that may have affected microbial populations.
       Format: YYYY-MM-DD'
     title: extreme event
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: extreme_event
     owner: Site
@@ -744,7 +744,7 @@ attributes:
       Soil Reference and Information Centre (ISRIC). The list of available soil classifications
       can be found at https://www.isric.org/explore/world-soil-distribution
     title: FAO soil taxonomy classification
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: fao_class
     owner: Site
@@ -755,7 +755,7 @@ attributes:
     name: fire
     description: 'Historical and/or physical evidence of fire. Format: YYYY-MM-DD'
     title: fire
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: fire
     owner: Site
@@ -767,7 +767,7 @@ attributes:
     name: flooding
     description: 'Historical and/or physical evidence of flooding. Format: YYYY-MM-DD'
     title: flooding
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: flooding
     owner: Site
@@ -781,7 +781,7 @@ attributes:
       or sea name followed by specific region name and site. Formatted as [Country
       or sea names: region or state, site]'
     title: geographic location name
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: geo_loc_name
     owner: Site
@@ -799,7 +799,7 @@ attributes:
 
       attribute to provide additional detail.'
     title: growth facility
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: growth_facil
     owner: Site
@@ -812,7 +812,7 @@ attributes:
     name: latitude
     description: Latitude coordinate of the sampling site in WSG 84 format.
     title: latitude
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     broad_mappings:
     - MIXS:0000009
     rank: 1000
@@ -836,7 +836,7 @@ attributes:
     name: link_climate_info
     description: Link to climate resource
     title: link to climate information
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: link_climate_info
     owner: Site
@@ -847,7 +847,7 @@ attributes:
     name: link_class_info
     description: Link to digitized soil maps or other soil classification information
     title: link to soil classification
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: link_class_info
     owner: Site
@@ -858,7 +858,7 @@ attributes:
     name: local_class
     description: Soil classification based on local soil classification system
     title: local soil classification
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: local_class
     owner: Site
@@ -869,7 +869,7 @@ attributes:
     name: local_class_meth
     description: Reference or method used in determining the local soil classification
     title: local soil classification method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: local_class_meth
     owner: Site
@@ -880,7 +880,7 @@ attributes:
     name: longitude
     description: Longitude coordinate of the sampling site in WSG 84 format.
     title: longitude
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     broad_mappings:
     - MIXS:0000009
     rank: 1000
@@ -905,7 +905,7 @@ attributes:
     description: 'When sampling from a NEON site provide the 4 letter site code (Example:
       DEJU). If you do not have your NEON site use the code SITE_999.'
     title: neon site code
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: neon_site_code
     owner: Site
@@ -922,7 +922,7 @@ attributes:
     todos:
     - subport mapping - this is submitted as ABCD_123 but we want to store it as neon_site_code
       and neon_plot_id separately
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: neon_plot_id
     owner: Site
@@ -934,7 +934,7 @@ attributes:
     name: other_growth_facil
     description: Please specify growth facility if you selected 'other'
     title: other growth facility
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: other_growth_facil
     owner: Site
@@ -945,7 +945,7 @@ attributes:
     name: previous_land_use
     description: Previous land use and dates
     title: previous land use
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: previous_land_use
     owner: Site
@@ -956,7 +956,7 @@ attributes:
     name: previous_land_use_meth
     description: Reference or method used in determining previous land use and dates
     title: previous land use method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: previous_land_use_meth
     owner: Site
@@ -968,7 +968,7 @@ attributes:
     description: Cross-sectional position in the hillslope where sample was collected.
       Sample area position in relation to surrounding areas
     title: profile position
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: profile_position
     owner: Site
@@ -981,7 +981,7 @@ attributes:
       equivalent value derived by such methods as regional indexes or Isohyetal maps.
       (Unit: mm)'
     title: mean seasonal precipitation
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - average seasonal precipitation
     rank: 1000
@@ -995,7 +995,7 @@ attributes:
     name: season_temp
     description: 'Mean seasonal temperature (Unit: C)'
     title: mean seasonal temperature
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - average seasonal precipitation
     rank: 1000
@@ -1012,7 +1012,7 @@ attributes:
       provides an indication of sun and wind exposure that will influence soil temperature
       and evapotranspiration. (Unit: degrees)'
     title: slope aspect
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: slope_aspect
     owner: Site
@@ -1027,7 +1027,7 @@ attributes:
       flow. This measure is usually taken with a hand level meter or clinometer. (Unit:
       percent)'
     title: slope gradient
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: slope_gradient
     owner: Site
@@ -1039,7 +1039,7 @@ attributes:
     name: tillage
     description: Note method(s) used for tilling
     title: tillage
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: tillage
     owner: Site

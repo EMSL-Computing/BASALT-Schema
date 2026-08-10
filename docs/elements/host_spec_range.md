@@ -9,7 +9,7 @@ _The range and diversity of host species that an organism is capable of infectin
 
 
 
-URI: [analysis_api_schema:host_spec_range](https://w3id.org/MONet/analysis-api-schema/host_spec_range)
+URI: [basalt_schema:host_spec_range](https://w3id.org/MONet/basalt-schema/host_spec_range)
 Alias: host_spec_range
 
 <!-- no inheritance hierarchy -->
@@ -74,7 +74,7 @@ Alias: host_spec_range
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -83,8 +83,8 @@ Alias: host_spec_range
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:host_spec_range |
-| native | analysis_api_schema:host_spec_range |
+| self | basalt_schema:host_spec_range |
+| native | basalt_schema:host_spec_range |
 
 
 
@@ -97,7 +97,7 @@ name: host_spec_range
 description: The range and diversity of host species that an organism is capable of
   infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####
 title: host specificity or range
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: host_spec_range
 domain_of:

@@ -9,7 +9,7 @@ _Amount of water vapor measured in the air the day of sampling. Provide value an
 
 
 
-URI: [analysis_api_schema:humidity](https://w3id.org/MONet/analysis-api-schema/humidity)
+URI: [basalt_schema:humidity](https://w3id.org/MONet/basalt-schema/humidity)
 Alias: humidity
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: humidity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: humidity
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:humidity |
-| native | analysis_api_schema:humidity |
+| self | basalt_schema:humidity |
+| native | basalt_schema:humidity |
 
 
 
@@ -92,7 +92,7 @@ name: humidity
 description: Amount of water vapor measured in the air the day of sampling. Provide
   value and unit, any unit is valid
 title: humidity
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: humidity
 domain_of:

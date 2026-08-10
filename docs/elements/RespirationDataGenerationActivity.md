@@ -11,7 +11,7 @@ _Captures CO2-C efflux measured per gram of soil._
 
 
 
-URI: [analysis_api_schema:RespirationDataGenerationActivity](https://w3id.org/MONet/analysis-api-schema/RespirationDataGenerationActivity)
+URI: [basalt_schema:RespirationDataGenerationActivity](https://w3id.org/MONet/basalt-schema/RespirationDataGenerationActivity)
 
 
 
@@ -136,7 +136,7 @@ URI: [analysis_api_schema:RespirationDataGenerationActivity](https://w3id.org/MO
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -145,8 +145,8 @@ URI: [analysis_api_schema:RespirationDataGenerationActivity](https://w3id.org/MO
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:RespirationDataGenerationActivity |
-| native | analysis_api_schema:RespirationDataGenerationActivity |
+| self | basalt_schema:RespirationDataGenerationActivity |
+| native | basalt_schema:RespirationDataGenerationActivity |
 
 
 
@@ -165,13 +165,13 @@ name: RespirationDataGenerationActivity
 description: 'Data generation activity for soil respiration analysis.
 
   Captures CO2-C efflux measured per gram of soil.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: DataGenerationActivity
 attributes:
   method_id:
     name: method_id
     description: Reference to the RespirationMethod used for this run
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     domain_of:
     - RespirationDataGenerationActivity
@@ -188,13 +188,13 @@ name: RespirationDataGenerationActivity
 description: 'Data generation activity for soil respiration analysis.
 
   Captures CO2-C efflux measured per gram of soil.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: DataGenerationActivity
 attributes:
   method_id:
     name: method_id
     description: Reference to the RespirationMethod used for this run
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: method_id
     owner: RespirationDataGenerationActivity
@@ -207,7 +207,7 @@ attributes:
       Lower = earlier in series. Use when acquisition_time alone is insufficient.\n\
       \nDDL: ALTER TABLE \"DataGenerationActivity\"\n       ADD COLUMN sequence_order\
       \ INTEGER;"
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sequence_order
     owner: RespirationDataGenerationActivity
@@ -218,7 +218,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: name
     owner: RespirationDataGenerationActivity
@@ -248,7 +248,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: description
     owner: RespirationDataGenerationActivity
@@ -280,7 +280,7 @@ attributes:
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: protocol_url
     owner: RespirationDataGenerationActivity
@@ -291,7 +291,7 @@ attributes:
   protocol_version:
     name: protocol_version
     description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: protocol_version
     owner: RespirationDataGenerationActivity
@@ -301,7 +301,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     identifier: true
     alias: id
     owner: RespirationDataGenerationActivity
@@ -381,7 +381,7 @@ attributes:
     required: true
   analyte_id:
     name: analyte_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: analyte_id
     owner: RespirationDataGenerationActivity
@@ -390,7 +390,7 @@ attributes:
     range: ProcessedSample
   acquisition_start_time:
     name: acquisition_start_time
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: acquisition_start_time
     owner: RespirationDataGenerationActivity
@@ -400,7 +400,7 @@ attributes:
     required: true
   acquisition_end_time:
     name: acquisition_end_time
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: acquisition_end_time
     owner: RespirationDataGenerationActivity
@@ -410,7 +410,7 @@ attributes:
     required: true
   instrument_used:
     name: instrument_used
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: instrument_used
     owner: RespirationDataGenerationActivity
@@ -419,7 +419,7 @@ attributes:
     range: Instrument
   instrument_operator_id:
     name: instrument_operator_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: instrument_operator_id
     owner: RespirationDataGenerationActivity

@@ -9,7 +9,7 @@ _Incubation duration in hours_
 
 
 
-URI: [analysis_api_schema:incubation_time_hours](https://w3id.org/MONet/analysis-api-schema/incubation_time_hours)
+URI: [basalt_schema:incubation_time_hours](https://w3id.org/MONet/basalt-schema/incubation_time_hours)
 Alias: incubation_time_hours
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: incubation_time_hours
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -74,8 +74,8 @@ Alias: incubation_time_hours
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:incubation_time_hours |
-| native | analysis_api_schema:incubation_time_hours |
+| self | basalt_schema:incubation_time_hours |
+| native | basalt_schema:incubation_time_hours |
 
 
 
@@ -86,7 +86,7 @@ Alias: incubation_time_hours
 ```yaml
 name: incubation_time_hours
 description: Incubation duration in hours
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: incubation_time_hours
 domain_of:

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:changelog](https://w3id.org/MONet/analysis-api-schema/changelog)
+URI: [basalt_schema:changelog](https://w3id.org/MONet/basalt-schema/changelog)
 Alias: changelog
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: changelog
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: changelog
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:changelog |
-| native | analysis_api_schema:changelog |
+| self | basalt_schema:changelog |
+| native | basalt_schema:changelog |
 
 
 
@@ -84,7 +84,7 @@ Alias: changelog
 <details>
 ```yaml
 name: changelog
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: changelog
 owner: Changelog

@@ -13,7 +13,7 @@ _organism/material_
 
 
 
-URI: [analysis_api_schema:isol_growth_condt](https://w3id.org/MONet/analysis-api-schema/isol_growth_condt)
+URI: [basalt_schema:isol_growth_condt](https://w3id.org/MONet/basalt-schema/isol_growth_condt)
 Alias: isol_growth_condt
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: isol_growth_condt
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -80,8 +80,8 @@ Alias: isol_growth_condt
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:isol_growth_condt |
-| native | analysis_api_schema:isol_growth_condt |
+| self | basalt_schema:isol_growth_condt |
+| native | basalt_schema:isol_growth_condt |
 
 
 
@@ -97,7 +97,7 @@ description: 'Publication reference in the form of pubmed ID (PMID), digital obj
 
   organism/material'
 title: isolation and growth conditions
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: isol_growth_condt
 domain_of:

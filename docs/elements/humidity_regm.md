@@ -9,7 +9,7 @@ _Information about treatment involving an exposure to varying degrees of humidit
 
 
 
-URI: [analysis_api_schema:humidity_regm](https://w3id.org/MONet/analysis-api-schema/humidity_regm)
+URI: [basalt_schema:humidity_regm](https://w3id.org/MONet/basalt-schema/humidity_regm)
 Alias: humidity_regm
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: humidity_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -80,8 +80,8 @@ Alias: humidity_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:humidity_regm |
-| native | analysis_api_schema:humidity_regm |
+| self | basalt_schema:humidity_regm |
+| native | basalt_schema:humidity_regm |
 
 
 
@@ -96,7 +96,7 @@ description: Information about treatment involving an exposure to varying degree
   how many times the treatment was repeated, how long each treatment lasted, and the
   start and end time of the entire treatment; can include multiple regimens
 title: humidity regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: humidity_regm
 domain_of:

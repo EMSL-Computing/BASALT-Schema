@@ -11,7 +11,7 @@ _be a range of producers._
 
 
 
-URI: [analysis_api_schema:trophic_level](https://w3id.org/MONet/analysis-api-schema/trophic_level)
+URI: [basalt_schema:trophic_level](https://w3id.org/MONet/basalt-schema/trophic_level)
 Alias: trophic_level
 
 <!-- no inheritance hierarchy -->
@@ -67,7 +67,7 @@ Alias: trophic_level
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -76,8 +76,8 @@ Alias: trophic_level
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:trophic_level |
-| native | analysis_api_schema:trophic_level |
+| self | basalt_schema:trophic_level |
+| native | basalt_schema:trophic_level |
 
 
 
@@ -91,7 +91,7 @@ description: 'Trophic levels are the feeding position in a food chain. Microbes 
 
   be a range of producers.'
 title: trophic level
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: trophic_level
 domain_of:

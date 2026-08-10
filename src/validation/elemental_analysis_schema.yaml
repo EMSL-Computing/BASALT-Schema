@@ -14,7 +14,7 @@
 # Last Updated:  2026-03-16
 # =============================================================================
 
-id: https://w3id.org/MONet/analysis-api-schema/elemental-analysis
+id: https://w3id.org/MONet/basalt-schema/elemental-analysis
 name: elemental_analysis_schema
 title: MONet Elemental Analysis Ingest Schema
 description: |-
@@ -25,7 +25,7 @@ description: |-
 license: MIT
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://w3id.org/MONet/basalt-schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: elemental_analysis_schema

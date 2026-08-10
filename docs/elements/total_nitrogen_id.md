@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:total_nitrogen_id](https://w3id.org/MONet/analysis-api-schema/total_nitrogen_id)
+URI: [basalt_schema:total_nitrogen_id](https://w3id.org/MONet/basalt-schema/total_nitrogen_id)
 Alias: total_nitrogen_id
 
 <!-- no inheritance hierarchy -->
@@ -60,8 +60,8 @@ Alias: total_nitrogen_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:total_nitrogen_id |
-| native | analysis_api_schema:total_nitrogen_id |
+| self | basalt_schema:total_nitrogen_id |
+| native | basalt_schema:total_nitrogen_id |
 
 
 

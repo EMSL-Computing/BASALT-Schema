@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:MetagenomicsSteps](https://w3id.org/MONet/analysis-api-schema/MetagenomicsSteps)
+URI: [basalt_schema:MetagenomicsSteps](https://w3id.org/MONet/basalt-schema/MetagenomicsSteps)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -42,7 +42,7 @@ URI: [analysis_api_schema:MetagenomicsSteps](https://w3id.org/MONet/analysis-api
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -54,7 +54,7 @@ URI: [analysis_api_schema:MetagenomicsSteps](https://w3id.org/MONet/analysis-api
 <details>
 ```yaml
 name: MetagenomicsSteps
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   ReadQcAnalysis:

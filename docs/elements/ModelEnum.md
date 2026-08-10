@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:ModelEnum](https://w3id.org/MONet/analysis-api-schema/ModelEnum)
+URI: [basalt_schema:ModelEnum](https://w3id.org/MONet/basalt-schema/ModelEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -87,7 +87,7 @@ URI: [analysis_api_schema:ModelEnum](https://w3id.org/MONet/analysis-api-schema/
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -99,7 +99,7 @@ URI: [analysis_api_schema:ModelEnum](https://w3id.org/MONet/analysis-api-schema/
 <details>
 ```yaml
 name: ModelEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   exploris_21T:

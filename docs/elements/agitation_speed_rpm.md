@@ -9,7 +9,7 @@ _Agitation/shaking speed in RPM (0 for static)_
 
 
 
-URI: [analysis_api_schema:agitation_speed_rpm](https://w3id.org/MONet/analysis-api-schema/agitation_speed_rpm)
+URI: [basalt_schema:agitation_speed_rpm](https://w3id.org/MONet/basalt-schema/agitation_speed_rpm)
 Alias: agitation_speed_rpm
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: agitation_speed_rpm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: agitation_speed_rpm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:agitation_speed_rpm |
-| native | analysis_api_schema:agitation_speed_rpm |
+| self | basalt_schema:agitation_speed_rpm |
+| native | basalt_schema:agitation_speed_rpm |
 
 
 
@@ -90,7 +90,7 @@ Alias: agitation_speed_rpm
 ```yaml
 name: agitation_speed_rpm
 description: Agitation/shaking speed in RPM (0 for static)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: agitation_speed_rpm
 domain_of:

@@ -9,7 +9,7 @@ _Reference or method used in determining the water content of soil_
 
 
 
-URI: [analysis_api_schema:water_content_meth](https://w3id.org/MONet/analysis-api-schema/water_content_meth)
+URI: [basalt_schema:water_content_meth](https://w3id.org/MONet/basalt-schema/water_content_meth)
 Alias: water_content_meth
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: water_content_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -74,8 +74,8 @@ Alias: water_content_meth
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:water_content_meth |
-| native | analysis_api_schema:water_content_meth |
+| self | basalt_schema:water_content_meth |
+| native | basalt_schema:water_content_meth |
 
 
 
@@ -87,7 +87,7 @@ Alias: water_content_meth
 name: water_content_meth
 description: Reference or method used in determining the water content of soil
 title: water content method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: water_content_meth
 domain_of:

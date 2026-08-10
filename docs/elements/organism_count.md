@@ -9,7 +9,7 @@ _Total cell count of any organism (or group of organisms) per gram volume or are
 
 
 
-URI: [analysis_api_schema:organism_count](https://w3id.org/MONet/analysis-api-schema/organism_count)
+URI: [basalt_schema:organism_count](https://w3id.org/MONet/basalt-schema/organism_count)
 Alias: organism_count
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: organism_count
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: organism_count
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:organism_count |
-| native | analysis_api_schema:organism_count |
+| self | basalt_schema:organism_count |
+| native | basalt_schema:organism_count |
 
 
 
@@ -86,7 +86,7 @@ description: 'Total cell count of any organism (or group of organisms) per gram 
   that was used for the enumeration (e.g. qPCR atp mpn etc.) should also be provided.
   (example: total prokaryotes; 3.5e7 cells per ml; qpcr)'
 title: organism count
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: organism_count
 domain_of:

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:exposure_time_per_frame](https://w3id.org/MONet/analysis-api-schema/exposure_time_per_frame)
+URI: [basalt_schema:exposure_time_per_frame](https://w3id.org/MONet/basalt-schema/exposure_time_per_frame)
 Alias: exposure_time_per_frame
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: exposure_time_per_frame
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: exposure_time_per_frame
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:exposure_time_per_frame |
-| native | analysis_api_schema:exposure_time_per_frame |
+| self | basalt_schema:exposure_time_per_frame |
+| native | basalt_schema:exposure_time_per_frame |
 
 
 
@@ -84,7 +84,7 @@ Alias: exposure_time_per_frame
 <details>
 ```yaml
 name: exposure_time_per_frame
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: exposure_time_per_frame
 owner: XrayComputedTomographyMethod

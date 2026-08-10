@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:InstrumentAltIdProviderEnum](https://w3id.org/MONet/analysis-api-schema/InstrumentAltIdProviderEnum)
+URI: [basalt_schema:InstrumentAltIdProviderEnum](https://w3id.org/MONet/basalt-schema/InstrumentAltIdProviderEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -37,7 +37,7 @@ URI: [analysis_api_schema:InstrumentAltIdProviderEnum](https://w3id.org/MONet/an
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -49,7 +49,7 @@ URI: [analysis_api_schema:InstrumentAltIdProviderEnum](https://w3id.org/MONet/an
 <details>
 ```yaml
 name: InstrumentAltIdProviderEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   nexus:

@@ -9,7 +9,7 @@ _Concentration of dissolved organic carbon in the sample, liquid portion of the 
 
 
 
-URI: [analysis_api_schema:diss_org_carb](https://w3id.org/MONet/analysis-api-schema/diss_org_carb)
+URI: [basalt_schema:diss_org_carb](https://w3id.org/MONet/basalt-schema/diss_org_carb)
 Alias: diss_org_carb
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: diss_org_carb
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: diss_org_carb
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:diss_org_carb |
-| native | analysis_api_schema:diss_org_carb |
+| self | basalt_schema:diss_org_carb |
+| native | basalt_schema:diss_org_carb |
 
 
 
@@ -93,7 +93,7 @@ name: diss_org_carb
 description: 'Concentration of dissolved organic carbon in the sample, liquid portion
   of the sample, or aqueous phase of the fluid. (Unit:  umol/L or mg/L)'
 title: dissolved organic carbon
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: diss_org_carb
 domain_of:

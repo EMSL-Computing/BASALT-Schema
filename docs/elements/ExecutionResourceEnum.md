@@ -7,7 +7,7 @@ _The computing resource or facility where the processing was executed._
 
 
 
-URI: [analysis_api_schema:ExecutionResourceEnum](https://w3id.org/MONet/analysis-api-schema/ExecutionResourceEnum)
+URI: [basalt_schema:ExecutionResourceEnum](https://w3id.org/MONet/basalt-schema/ExecutionResourceEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -44,7 +44,7 @@ URI: [analysis_api_schema:ExecutionResourceEnum](https://w3id.org/MONet/analysis
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -57,7 +57,7 @@ URI: [analysis_api_schema:ExecutionResourceEnum](https://w3id.org/MONet/analysis
 ```yaml
 name: ExecutionResourceEnum
 description: The computing resource or facility where the processing was executed.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   nersc_cori:

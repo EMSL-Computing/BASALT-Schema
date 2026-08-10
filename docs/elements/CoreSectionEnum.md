@@ -7,7 +7,7 @@ _Sections of a core sample_
 
 
 
-URI: [analysis_api_schema:CoreSectionEnum](https://w3id.org/MONet/analysis-api-schema/CoreSectionEnum)
+URI: [basalt_schema:CoreSectionEnum](https://w3id.org/MONet/basalt-schema/CoreSectionEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -43,7 +43,7 @@ URI: [analysis_api_schema:CoreSectionEnum](https://w3id.org/MONet/analysis-api-s
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -56,7 +56,7 @@ URI: [analysis_api_schema:CoreSectionEnum](https://w3id.org/MONet/analysis-api-s
 ```yaml
 name: CoreSectionEnum
 description: Sections of a core sample
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   TOP:

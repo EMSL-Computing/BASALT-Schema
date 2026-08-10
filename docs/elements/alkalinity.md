@@ -9,7 +9,7 @@ _The ability of a solution to neutralize acids to the equivalence point of carbo
 
 
 
-URI: [analysis_api_schema:alkalinity](https://w3id.org/MONet/analysis-api-schema/alkalinity)
+URI: [basalt_schema:alkalinity](https://w3id.org/MONet/basalt-schema/alkalinity)
 Alias: alkalinity
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: alkalinity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: alkalinity
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:alkalinity |
-| native | analysis_api_schema:alkalinity |
+| self | basalt_schema:alkalinity |
+| native | basalt_schema:alkalinity |
 
 
 
@@ -93,7 +93,7 @@ name: alkalinity
 description: 'The ability of a solution to neutralize acids to the equivalence point
   of carbonate or bicarbonate (Unit: mg/L or meq/L)'
 title: alkalinity
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: alkalinity
 domain_of:

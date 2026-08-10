@@ -9,7 +9,7 @@ _A record of a mass spectrometry standard run with a batch of samples, which is 
 
 
 
-URI: [analysis_api_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/analysis-api-schema/MassSpectrometryStandardRun)
+URI: [basalt_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/basalt-schema/MassSpectrometryStandardRun)
 
 
 
@@ -110,7 +110,7 @@ URI: [analysis_api_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/an
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -119,8 +119,8 @@ URI: [analysis_api_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/an
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:MassSpectrometryStandardRun |
-| native | analysis_api_schema:MassSpectrometryStandardRun |
+| self | basalt_schema:MassSpectrometryStandardRun |
+| native | basalt_schema:MassSpectrometryStandardRun |
 
 
 
@@ -138,7 +138,7 @@ URI: [analysis_api_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/an
 name: MassSpectrometryStandardRun
 description: A record of a mass spectrometry standard run with a batch of samples,
   which is used for calibration and quality control.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 slots:
 - name
 - description
@@ -149,7 +149,7 @@ slots:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/mass-spec
+    from_schema: https://w3id.org/MONet/basalt-schema/mass-spec
     identifier: true
     domain_of:
     - Activity
@@ -236,11 +236,11 @@ attributes:
 name: MassSpectrometryStandardRun
 description: A record of a mass spectrometry standard run with a batch of samples,
   which is used for calibration and quality control.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/mass-spec
+    from_schema: https://w3id.org/MONet/basalt-schema/mass-spec
     identifier: true
     alias: id
     owner: MassSpectrometryStandardRun
@@ -321,7 +321,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: name
     owner: MassSpectrometryStandardRun
@@ -351,7 +351,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: description
     owner: MassSpectrometryStandardRun
@@ -383,7 +383,7 @@ attributes:
   internal_calibration:
     name: internal_calibration
     description: Whether internal calibration was used
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: internal_calibration
     owner: MassSpectrometryStandardRun
@@ -393,7 +393,7 @@ attributes:
   calibration_target:
     name: calibration_target
     description: The measurement being calibrated
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: calibration_target
     owner: MassSpectrometryStandardRun
@@ -403,7 +403,7 @@ attributes:
   calibration_standard:
     name: calibration_standard
     description: The reference standard used for calibration
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: calibration_standard
     owner: MassSpectrometryStandardRun
@@ -413,7 +413,7 @@ attributes:
   calibration_data:
     name: calibration_data
     description: Reference to the raw instrument data file used for calibration
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: calibration_data
     owner: MassSpectrometryStandardRun

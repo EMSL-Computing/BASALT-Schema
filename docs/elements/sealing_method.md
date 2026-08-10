@@ -9,7 +9,7 @@ _How the plate is sealed (e.g. "BreathEasy_membrane", "adhesive_film")_
 
 
 
-URI: [analysis_api_schema:sealing_method](https://w3id.org/MONet/analysis-api-schema/sealing_method)
+URI: [basalt_schema:sealing_method](https://w3id.org/MONet/basalt-schema/sealing_method)
 Alias: sealing_method
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: sealing_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: sealing_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sealing_method |
-| native | analysis_api_schema:sealing_method |
+| self | basalt_schema:sealing_method |
+| native | basalt_schema:sealing_method |
 
 
 
@@ -84,7 +84,7 @@ Alias: sealing_method
 ```yaml
 name: sealing_method
 description: How the plate is sealed (e.g. "BreathEasy_membrane", "adhesive_film")
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: sealing_method
 domain_of:

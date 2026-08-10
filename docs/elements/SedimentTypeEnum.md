@@ -7,7 +7,7 @@ _Types of sediment_
 
 
 
-URI: [analysis_api_schema:SedimentTypeEnum](https://w3id.org/MONet/analysis-api-schema/SedimentTypeEnum)
+URI: [basalt_schema:SedimentTypeEnum](https://w3id.org/MONet/basalt-schema/SedimentTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -44,7 +44,7 @@ URI: [analysis_api_schema:SedimentTypeEnum](https://w3id.org/MONet/analysis-api-
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -57,7 +57,7 @@ URI: [analysis_api_schema:SedimentTypeEnum](https://w3id.org/MONet/analysis-api-
 ```yaml
 name: SedimentTypeEnum
 description: Types of sediment
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   biogenous:

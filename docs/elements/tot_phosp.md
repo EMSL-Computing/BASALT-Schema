@@ -9,7 +9,7 @@ _Total phosphorus concentration in the sample calculated by: total phosphorus = 
 
 
 
-URI: [analysis_api_schema:tot_phosp](https://w3id.org/MONet/analysis-api-schema/tot_phosp)
+URI: [basalt_schema:tot_phosp](https://w3id.org/MONet/basalt-schema/tot_phosp)
 Alias: tot_phosp
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: tot_phosp
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: tot_phosp
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:tot_phosp |
-| native | analysis_api_schema:tot_phosp |
+| self | basalt_schema:tot_phosp |
+| native | basalt_schema:tot_phosp |
 
 
 
@@ -92,7 +92,7 @@ name: tot_phosp
 description: 'Total phosphorus concentration in the sample calculated by: total phosphorus
   = total dissolved phosphorus + particulate phosphorus. (Unit: ug/L or umol/L)'
 title: total phosphorus
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: tot_phosp
 domain_of:

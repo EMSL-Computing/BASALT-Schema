@@ -9,7 +9,7 @@ _A sample of soil collected from the environment._
 
 
 
-URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema/SoilSample)
+URI: [basalt_schema:SoilSample](https://w3id.org/MONet/basalt-schema/SoilSample)
 
 
 
@@ -380,7 +380,7 @@ URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -389,8 +389,8 @@ URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:SoilSample |
-| native | analysis_api_schema:SoilSample |
+| self | basalt_schema:SoilSample |
+| native | basalt_schema:SoilSample |
 
 
 
@@ -407,7 +407,7 @@ URI: [analysis_api_schema:SoilSample](https://w3id.org/MONet/analysis-api-schema
 ```yaml
 name: SoilSample
 description: A sample of soil collected from the environment.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: Sample
 slots:
 - agrochem_addition
@@ -537,7 +537,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -623,7 +623,7 @@ attributes:
 ```yaml
 name: SoilSample
 description: A sample of soil collected from the environment.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: Sample
 slot_usage:
   al_sat:
@@ -675,7 +675,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
     identifier: true
     alias: id
     owner: SoilSample
@@ -757,7 +757,7 @@ attributes:
     name: agrochem_addition
     description: Addition of fertilizers, pesticides, etc. - amount and time of applications
     title: agrochemical additions
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: agrochem_addition
     owner: SoilSample
@@ -773,7 +773,7 @@ attributes:
       treatment was repeated, how long each treatment lasted, and the start and end
       time of the entire treatment; can include different temperature regimens
     title: air temperature regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     exact_mappings:
     - MIXS:0000551
     rank: 1000
@@ -797,7 +797,7 @@ attributes:
     name: al_sat
     description: 'Aluminum saturation (esp. For tropical soils) (Unit: percent)'
     title: aluminum saturation
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: al_sat
     owner: SoilSample
@@ -810,7 +810,7 @@ attributes:
     name: al_sat_meth
     description: Reference or method used in determining Al saturation
     title: aluminum saturation method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: al_sat_meth
     owner: SoilSample
@@ -821,7 +821,7 @@ attributes:
   analysis_type:
     name: analysis_type
     description: The type(s) of analysis planned for this sample.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: analysis_type
     owner: SoilSample
@@ -849,7 +849,7 @@ attributes:
     description: Information about treatment(s) involving use of biotic factors such
       as bacteria, viruses, or fungi.
     title: biotic regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: biotic_regm
     owner: SoilSample
@@ -871,7 +871,7 @@ attributes:
       carry electric current which is mostly dictated by the chemistry of and amount
       of soil water. (Unit: mS/cm)'
     title: bulk electrical conductivity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: bulk_elect_conductivity
     owner: SoilSample
@@ -888,7 +888,7 @@ attributes:
       include multiple compounds. For chemical entities of biological interest ontology
       (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
     title: chemical administration
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     exact_mappings:
     - MIXS:0000751
     rank: 1000
@@ -915,7 +915,7 @@ attributes:
       samples, depth is measured from sediment or soil surface respectively. Depth
       is required to be reported as an interval for subsurface samples. (Units: m)'
     title: depth
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: depth
     owner: SoilSample
@@ -937,7 +937,7 @@ attributes:
       or a rainforest). We recommend using subclasses of EnvO''''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'''
     title: broad-scale environmental context
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: env_broad_scale
     owner: SoilSample
@@ -964,7 +964,7 @@ attributes:
       spatial grain than your entry for env_broad_scale.If needed, request new terms
       on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'''
     title: local environmental context
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: env_local_scale
     owner: SoilSample
@@ -990,7 +990,7 @@ attributes:
       ''''environmental material'''' (http://purl.obolibrary.org/obo/ENVO_00010483).
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'''
     title: environmental medium
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: env_medium
     owner: SoilSample
@@ -1018,7 +1018,7 @@ attributes:
       a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO;
       for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI
     title: experimental factor
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: experimental_factor
     owner: SoilSample
@@ -1041,7 +1041,7 @@ attributes:
     description: Other details about your sample that you feel can't be accurately
       represented in the available columns.
     title: other experimental factor
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: experimental_factor_other
     owner: SoilSample
@@ -1065,7 +1065,7 @@ attributes:
       before sending the sample to EMSL, what was it? This is only applicable when
       sending an 'analytical sample'. See README for more details on types of samples.
     title: extraction method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: extraction_method
     owner: SoilSample
@@ -1085,7 +1085,7 @@ attributes:
   external_identifiers:
     name: external_identifiers
     description: List of external identifiers associated with this entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: external_identifiers
     owner: SoilSample
@@ -1114,7 +1114,7 @@ attributes:
     name: filter_method
     description: Type of filter used or how the sample was filtered
     title: filter method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: filter_method
     owner: SoilSample
@@ -1131,7 +1131,7 @@ attributes:
       the name of gaseous compound, amount administered, treatment duration, interval,
       and total experimental duration; can include multiple gaseous environment regimens
     title: gaseous environment
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: gaseous_environment
     owner: SoilSample
@@ -1153,7 +1153,7 @@ attributes:
       metal. For multiple heavy metals and concentrations, separate them by `|`. (Example:
       mercury,0.09 micrograms per gram|lead,0.05 micrograms per gram'
     title: heavy metals
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: heavy_metals
     owner: SoilSample
@@ -1165,7 +1165,7 @@ attributes:
     name: heavy_metals_meth
     description: Reference or method used in determining heavy metals
     title: heavy metals method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: heavy_metals_meth
     owner: SoilSample
@@ -1177,7 +1177,7 @@ attributes:
     name: horizon_meth
     description: Reference or method used in determining the horizon
     title: soil horizon method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: horizon_meth
     owner: SoilSample
@@ -1192,7 +1192,7 @@ attributes:
       lasted, and the start and end time of the entire treatment; can include multiple
       regimens
     title: humidity regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: humidity_regm
     owner: SoilSample
@@ -1213,7 +1213,7 @@ attributes:
     name: isotope_exposure
     description: List isotope exposure or addition applied to your sample.
     title: isotope exposure
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: isotope_exposure
     owner: SoilSample
@@ -1235,7 +1235,7 @@ attributes:
     name: latitude
     description: Latitude coordinate of the sampling site in WSG 84 format.
     title: latitude
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     broad_mappings:
     - MIXS:0000009
     rank: 1000
@@ -1259,7 +1259,7 @@ attributes:
     name: longitude
     description: Longitude coordinate of the sampling site in WSG 84 format.
     title: longitude
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     broad_mappings:
     - MIXS:0000009
     rank: 1000
@@ -1284,7 +1284,7 @@ attributes:
     description: Information about treatment(s) involving exposure to light including
       both light intensity and quality.
     title: light regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: light_regm
     owner: SoilSample
@@ -1303,7 +1303,7 @@ attributes:
     name: link_addit_analys
     description: Link to additional analysis results performed on the sample
     title: link to additional analysis
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: link_addit_analys
     owner: SoilSample
@@ -1316,7 +1316,7 @@ attributes:
     description: If your samples are TEST sample ONLY, please provide information
       on what you're hoping this test will resolve.
     title: method development
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: method_development
     owner: SoilSample
@@ -1339,7 +1339,7 @@ attributes:
     name: micro_biomass_c_meth
     description: Reference or method used in determining microbial biomass
     title: microbial biomass carbon method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: micro_biomass_c_meth
     owner: SoilSample
@@ -1351,7 +1351,7 @@ attributes:
     name: micro_biomass_n_meth
     description: Reference or method used in determining microbial biomass nitrogen
     title: microbial biomass nitrogen method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: micro_biomass_n_meth
     owner: SoilSample
@@ -1366,7 +1366,7 @@ attributes:
       to have correction factors used for conversion to the final units. (Unit: g/kg
       soil or ug/g dry soil)'
     title: microbial biomass
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: microbial_biomass
     owner: SoilSample
@@ -1383,7 +1383,7 @@ attributes:
       to have correction factors used for conversion to the final units. Provide value
       and unit, any unit is valid
     title: microbial biomass carbon
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: microbial_biomass_c
     owner: SoilSample
@@ -1397,7 +1397,7 @@ attributes:
     name: microbial_biomass_meth
     description: Reference or method used in determining microbial biomass
     title: microbial biomass method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: microbial_biomass_meth
     owner: SoilSample
@@ -1413,7 +1413,7 @@ attributes:
       to have correction factors used for conversion to the final units. Provide value
       and unit, any unit is valid
     title: microbial biomass nitrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: microbial_biomass_n
     owner: SoilSample
@@ -1428,7 +1428,7 @@ attributes:
     description: Any other measurement performed or parameter collected that is not
       listed here
     title: miscellaneous parameter
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: misc_param
     owner: SoilSample
@@ -1450,7 +1450,7 @@ attributes:
       part of biomass measured, e.g. insect, plant, total. Provide value and unit,
       any unit is valid. (example: insect 5mg; plant 2ug/mL)'
     title: non microbial biomass
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: non_microb_biomass
     owner: SoilSample
@@ -1469,7 +1469,7 @@ attributes:
     name: non_microb_biomass_method
     description: Reference or method used in determining biomass
     title: non microbial biomass method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: non_microb_biomass_method
     owner: SoilSample
@@ -1487,7 +1487,7 @@ attributes:
     description: Other/additional details about your sample that you feel can't be
       accurately represented in ANY of the available columns.
     title: other
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: other
     owner: SoilSample
@@ -1512,7 +1512,7 @@ attributes:
     name: other_samp_store_temp
     description: Please specify sample storage temperature if you selected 'other'
     title: other sample storage temperature
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: other_samp_store_temp
     owner: SoilSample
@@ -1538,7 +1538,7 @@ attributes:
     description: Please specify your storage conditions if you selected 'other' and
       the available values are not appropriate
     title: other storage condition
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: other_storage_condt
     owner: SoilSample
@@ -1563,7 +1563,7 @@ attributes:
       is applied to your samples and the provided treatment terms do not satisfy please
       add it here. Multiple treatments can be entered here separated by ;
     title: other treatment
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: other_treatment
     owner: SoilSample
@@ -1587,7 +1587,7 @@ attributes:
     name: oxygen_relationship
     description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
     title: oxygen relationship
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     exact_mappings:
     - MIXS:0000015
     rank: 1000
@@ -1614,7 +1614,7 @@ attributes:
       was repeated, how long each perturbation lasted, and the start and end time
       of the entire perturbation period; can include multiple perturbation types
     title: perturbation
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: perturbation
     owner: SoilSample
@@ -1629,7 +1629,7 @@ attributes:
     description: pH measurement of the sample or liquid portion of sample or aqueous
       phase of the fluid
     title: pH
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: ph
     owner: SoilSample
@@ -1644,7 +1644,7 @@ attributes:
     name: ph_meth
     description: Reference or method used in determining ph of the sample
     title: pH method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: ph_meth
     owner: SoilSample
@@ -1661,7 +1661,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - study
     - study_id
@@ -1696,7 +1696,7 @@ attributes:
       with submission schema.
     todos:
     - reconcile replicate modelling
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: replicate_number
     owner: SoilSample
@@ -1725,7 +1725,7 @@ attributes:
       compare the specific conductance of the sample to a salinity standard such as
       seawater (Unit: practical salinity unit or percent)'
     title: salinity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: salinity
     owner: SoilSample
@@ -1741,7 +1741,7 @@ attributes:
     name: salinity_method
     description: Method used to determine sample salinity
     title: salinity method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: salinity_method
     owner: SoilSample
@@ -1759,7 +1759,7 @@ attributes:
       species Y. The target organism is the subject of the relationship and the other
       organism(s) is the object
     title: observed biotic relationship
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - samp_biotic_relationship
     exact_mappings:
@@ -1783,7 +1783,7 @@ attributes:
       This field is NOT multivalued. If selecting other add the `other_samp_store_temp`
       attribute to provide additional detail.
     title: sample storage temperature
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - sample_storage_temperature
     - storage_temperature
@@ -1817,7 +1817,7 @@ attributes:
       sample was transferred to a new vial and generated a new sample)'''
     todos:
     - EMSL and NMDC both need better modelling for this
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sample_link
     owner: SoilSample
@@ -1847,7 +1847,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - samp_name
     rank: 1000
@@ -1877,7 +1877,7 @@ attributes:
       or after retrieving the sample from environment or a link to the relevant protocol(s)
       performed.
     title: sample processing
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sample_processing
     owner: SoilSample
@@ -1901,7 +1901,7 @@ attributes:
     description: Reference to the sampling activity during which this sample was collected.
       This is a FK to the SamplingActivity class, which contains metadata about the
       sampling event, such as date, device, method.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sampled_during
     owner: SoilSample
@@ -1928,7 +1928,7 @@ attributes:
     description: Collection design of pooled samples and/or sieve size and amount
       of sample sieved
     title: sieving
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sieving
     owner: SoilSample
@@ -1942,7 +1942,7 @@ attributes:
     description: 'Refers to the mesh/pore size used to retain the sample. Materials
       smaller than the size threshold are excluded from the sample. (Unit: um)'
     title: size fraction lower threshold
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: size_frac_low
     owner: SoilSample
@@ -1960,7 +1960,7 @@ attributes:
       Materials larger than the size threshold are excluded from the sample. (Unit:
       um)'
     title: size fraction upper threshold
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: size_frac_up
     owner: SoilSample
@@ -1978,7 +1978,7 @@ attributes:
       surface and possesses physical characteristics which differ from the layers
       above and beneath.
     title: soil horizon
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     exact_mappings:
     - MIXS:0001082
     rank: 1000
@@ -1996,7 +1996,7 @@ attributes:
       did this come from?
     - BJM 060626 - clarified this slot and enum name from 'soil_type' but I'm still
       not sure we need it. it is populated in the current database though.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: soil_sample_type
     owner: SoilSample
@@ -2011,7 +2011,7 @@ attributes:
       (50 um to 2 mm) silt (2 um to 50 um) and clay (<2 um) with optional textural
       name (e.g. sand:0.20 silt:0.25 clay:0.55 description:silty clay loam).
     title: soil texture
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: soil_texture
     owner: SoilSample
@@ -2023,7 +2023,7 @@ attributes:
     name: soil_type
     description: Soil series name or other lower-level classification
     title: soil type
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: soil_type
     owner: SoilSample
@@ -2036,7 +2036,7 @@ attributes:
     description: Reference or method used in determining soil series name or other
       lower-level classification
     title: soil type method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: soil_type_meth
     owner: SoilSample
@@ -2050,7 +2050,7 @@ attributes:
       or to any derived sub-samples. The source material should be listed as a sample
       to inform details about parent material relationship.
     title: source material identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: source_mat_id
     owner: SoilSample
@@ -2075,7 +2075,7 @@ attributes:
     description: 'Date the incubation was started. Only relevant for incubation samples.
       Format: YYYY-MM-DD'
     title: incubation start date
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: start_date_inc
     owner: SoilSample
@@ -2098,7 +2098,7 @@ attributes:
       If selecting other add the `other_storage_condt` attribute to provide additional
       detail.
     title: storage condition
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - samp_store_cond
     - storage_cond
@@ -2131,7 +2131,7 @@ attributes:
     name: storage_condition_other
     description: Free-text field for storage conditions when 'storage_condition' is
       'other'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - other_storage_condt
     - storage_condt_other
@@ -2159,7 +2159,7 @@ attributes:
     name: technical_reps
     description: Number of technical replicates for the sample.
     title: technical replicates
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: technical_reps
     owner: SoilSample
@@ -2183,7 +2183,7 @@ attributes:
     name: temp
     description: 'Temperature of the sample at the time of sampling. (Units: C)'
     title: temperature
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: temp
     owner: SoilSample
@@ -2204,7 +2204,7 @@ attributes:
     name: texture_meth
     description: Reference or method used in determining soil texture
     title: texture method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: texture_meth
     owner: SoilSample
@@ -2215,7 +2215,7 @@ attributes:
     name: tot_nitro_cont_meth
     description: Reference or method used in determining the total nitrogen
     title: total nitrogen content method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: tot_nitro_cont_meth
     owner: SoilSample
@@ -2229,7 +2229,7 @@ attributes:
     description: Total nitrogen content of the sample. Provide value and unit any
       unit is valid
     title: total nitrogen content
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: tot_nitro_content
     owner: SoilSample
@@ -2243,7 +2243,7 @@ attributes:
     name: tot_org_c_meth
     description: Reference or method used in determining total organic carbon
     title: total organic carbon method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: tot_org_c_meth
     owner: SoilSample
@@ -2257,7 +2257,7 @@ attributes:
     description: 'Total organic carbon content. Provided as gram of Carbon per kg
       of your sample material. (Unit: g C/kg)'
     title: total organic carbon
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: tot_org_carb
     owner: SoilSample
@@ -2271,7 +2271,7 @@ attributes:
     name: water_content
     description: Water content measurement. Provide value and unit any unit is valid
     title: water content
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: water_content
     owner: SoilSample
@@ -2288,7 +2288,7 @@ attributes:
     name: water_content_meth
     description: Reference or method used in determining the water content of soil
     title: water content method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: water_content_meth
     owner: SoilSample
@@ -2306,7 +2306,7 @@ attributes:
       each treatment lasted, and the start and end time of the entire treatment; can
       include multiple regimens
     title: watering regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: watering_regm
     owner: SoilSample
@@ -2325,7 +2325,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: name
     owner: SoilSample
@@ -2355,7 +2355,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: description
     owner: SoilSample
@@ -2394,7 +2394,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: emsl_activity
     owner: SoilSample
@@ -2406,7 +2406,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: lims_barcode
     owner: SoilSample

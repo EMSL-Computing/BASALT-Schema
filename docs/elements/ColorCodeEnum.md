@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:ColorCodeEnum](https://w3id.org/MONet/analysis-api-schema/ColorCodeEnum)
+URI: [basalt_schema:ColorCodeEnum](https://w3id.org/MONet/basalt-schema/ColorCodeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -45,7 +45,7 @@ URI: [analysis_api_schema:ColorCodeEnum](https://w3id.org/MONet/analysis-api-sch
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -57,7 +57,7 @@ URI: [analysis_api_schema:ColorCodeEnum](https://w3id.org/MONet/analysis-api-sch
 <details>
 ```yaml
 name: ColorCodeEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   Red- 0-250m Profiling:

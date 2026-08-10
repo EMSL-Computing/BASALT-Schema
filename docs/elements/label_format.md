@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:label_format](https://w3id.org/MONet/analysis-api-schema/label_format)
+URI: [basalt_schema:label_format](https://w3id.org/MONet/basalt-schema/label_format)
 Alias: label_format
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: label_format
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: label_format
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:label_format |
-| native | analysis_api_schema:label_format |
+| self | basalt_schema:label_format |
+| native | basalt_schema:label_format |
 
 
 
@@ -83,7 +83,7 @@ Alias: label_format
 <details>
 ```yaml
 name: label_format
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: label_format
 owner: ContainerType

@@ -9,7 +9,7 @@ _Method used for obtaining organic nitrogen_
 
 
 
-URI: [analysis_api_schema:org_nitro_method](https://w3id.org/MONet/analysis-api-schema/org_nitro_method)
+URI: [basalt_schema:org_nitro_method](https://w3id.org/MONet/basalt-schema/org_nitro_method)
 Alias: org_nitro_method
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: org_nitro_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: org_nitro_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:org_nitro_method |
-| native | analysis_api_schema:org_nitro_method |
+| self | basalt_schema:org_nitro_method |
+| native | basalt_schema:org_nitro_method |
 
 
 
@@ -85,7 +85,7 @@ Alias: org_nitro_method
 name: org_nitro_method
 description: Method used for obtaining organic nitrogen
 title: organic nitrogen method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: org_nitro_method
 domain_of:

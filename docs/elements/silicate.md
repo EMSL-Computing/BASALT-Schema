@@ -9,7 +9,7 @@ _Concentration of silicate (Unit: umol/L)_
 
 
 
-URI: [analysis_api_schema:silicate](https://w3id.org/MONet/analysis-api-schema/silicate)
+URI: [basalt_schema:silicate](https://w3id.org/MONet/basalt-schema/silicate)
 Alias: silicate
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: silicate
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: silicate
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:silicate |
-| native | analysis_api_schema:silicate |
+| self | basalt_schema:silicate |
+| native | basalt_schema:silicate |
 
 
 
@@ -92,7 +92,7 @@ Alias: silicate
 name: silicate
 description: 'Concentration of silicate (Unit: umol/L)'
 title: silicate
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: silicate
 domain_of:

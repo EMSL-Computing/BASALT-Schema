@@ -9,7 +9,7 @@ _Free-text field for storage conditions when 'storage_condition' is 'other'_
 
 
 
-URI: [analysis_api_schema:storage_condition_other](https://w3id.org/MONet/analysis-api-schema/storage_condition_other)
+URI: [basalt_schema:storage_condition_other](https://w3id.org/MONet/basalt-schema/storage_condition_other)
 Alias: storage_condition_other
 
 <!-- no inheritance hierarchy -->
@@ -81,7 +81,7 @@ Alias: storage_condition_other
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -90,8 +90,8 @@ Alias: storage_condition_other
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:storage_condition_other |
-| native | analysis_api_schema:storage_condition_other |
+| self | basalt_schema:storage_condition_other |
+| native | basalt_schema:storage_condition_other |
 
 
 
@@ -102,7 +102,7 @@ Alias: storage_condition_other
 ```yaml
 name: storage_condition_other
 description: Free-text field for storage conditions when 'storage_condition' is 'other'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 aliases:
 - other_storage_condt
 - storage_condt_other

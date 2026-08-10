@@ -38,7 +38,7 @@ URI: [xsd:time](http://www.w3.org/2001/XMLSchema#time)
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -47,7 +47,7 @@ URI: [xsd:time](http://www.w3.org/2001/XMLSchema#time)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:time |
-| native | analysis_api_schema:time |
+| self | basalt_schema:time |
+| native | basalt_schema:time |
 
 

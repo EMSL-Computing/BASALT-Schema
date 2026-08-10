@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:analyte_id](https://w3id.org/MONet/analysis-api-schema/analyte_id)
+URI: [basalt_schema:analyte_id](https://w3id.org/MONet/basalt-schema/analyte_id)
 Alias: analyte_id
 
 <!-- no inheritance hierarchy -->
@@ -72,7 +72,7 @@ Alias: analyte_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -81,8 +81,8 @@ Alias: analyte_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:analyte_id |
-| native | analysis_api_schema:analyte_id |
+| self | basalt_schema:analyte_id |
+| native | basalt_schema:analyte_id |
 
 
 
@@ -92,7 +92,7 @@ Alias: analyte_id
 <details>
 ```yaml
 name: analyte_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: analyte_id
 owner: DataGenerationActivity

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:functional_annotation_id](https://w3id.org/MONet/analysis-api-schema/functional_annotation_id)
+URI: [basalt_schema:functional_annotation_id](https://w3id.org/MONet/basalt-schema/functional_annotation_id)
 Alias: functional_annotation_id
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: functional_annotation_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: functional_annotation_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:functional_annotation_id |
-| native | analysis_api_schema:functional_annotation_id |
+| self | basalt_schema:functional_annotation_id |
+| native | basalt_schema:functional_annotation_id |
 
 
 
@@ -84,7 +84,7 @@ Alias: functional_annotation_id
 <details>
 ```yaml
 name: functional_annotation_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: functional_annotation_id
 owner: WorkflowExecutionFunctionalAnnotation

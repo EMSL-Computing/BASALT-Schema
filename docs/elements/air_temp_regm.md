@@ -9,7 +9,7 @@ _Information about treatment involving an exposure to varying temperatures; shou
 
 
 
-URI: [analysis_api_schema:air_temp_regm](https://w3id.org/MONet/analysis-api-schema/air_temp_regm)
+URI: [basalt_schema:air_temp_regm](https://w3id.org/MONet/basalt-schema/air_temp_regm)
 Alias: air_temp_regm
 
 <!-- no inheritance hierarchy -->
@@ -72,7 +72,7 @@ Alias: air_temp_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -81,8 +81,8 @@ Alias: air_temp_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:air_temp_regm |
-| native | analysis_api_schema:air_temp_regm |
+| self | basalt_schema:air_temp_regm |
+| native | basalt_schema:air_temp_regm |
 | exact | MIXS:0000551 |
 
 
@@ -98,7 +98,7 @@ description: Information about treatment involving an exposure to varying temper
   was repeated, how long each treatment lasted, and the start and end time of the
   entire treatment; can include different temperature regimens
 title: air temperature regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 exact_mappings:
 - MIXS:0000551
 rank: 1000

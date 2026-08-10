@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:alt_id](https://w3id.org/MONet/analysis-api-schema/alt_id)
+URI: [basalt_schema:alt_id](https://w3id.org/MONet/basalt-schema/alt_id)
 Alias: alt_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: alt_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: alt_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:alt_id |
-| native | analysis_api_schema:alt_id |
+| self | basalt_schema:alt_id |
+| native | basalt_schema:alt_id |
 
 
 
@@ -83,7 +83,7 @@ Alias: alt_id
 <details>
 ```yaml
 name: alt_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: alt_id
 owner: InstrumentAlternativeIdentifier

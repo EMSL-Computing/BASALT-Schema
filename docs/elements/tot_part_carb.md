@@ -9,7 +9,7 @@ _Total particulate carbon content. (Unit: ug/L or umol/L)_
 
 
 
-URI: [analysis_api_schema:tot_part_carb](https://w3id.org/MONet/analysis-api-schema/tot_part_carb)
+URI: [basalt_schema:tot_part_carb](https://w3id.org/MONet/basalt-schema/tot_part_carb)
 Alias: tot_part_carb
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: tot_part_carb
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: tot_part_carb
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:tot_part_carb |
-| native | analysis_api_schema:tot_part_carb |
+| self | basalt_schema:tot_part_carb |
+| native | basalt_schema:tot_part_carb |
 
 
 
@@ -91,7 +91,7 @@ Alias: tot_part_carb
 name: tot_part_carb
 description: 'Total particulate carbon content. (Unit: ug/L or umol/L)'
 title: total particulate carbon
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: tot_part_carb
 domain_of:

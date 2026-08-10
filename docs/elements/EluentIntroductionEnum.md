@@ -7,7 +7,7 @@ _The method used to introduce the eluent into the mass spectrometer._
 
 
 
-URI: [analysis_api_schema:EluentIntroductionEnum](https://w3id.org/MONet/analysis-api-schema/EluentIntroductionEnum)
+URI: [basalt_schema:EluentIntroductionEnum](https://w3id.org/MONet/basalt-schema/EluentIntroductionEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -38,7 +38,7 @@ URI: [analysis_api_schema:EluentIntroductionEnum](https://w3id.org/MONet/analysi
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -51,7 +51,7 @@ URI: [analysis_api_schema:EluentIntroductionEnum](https://w3id.org/MONet/analysi
 ```yaml
 name: EluentIntroductionEnum
 description: The method used to introduce the eluent into the mass spectrometer.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   direct_infusion_syringe:

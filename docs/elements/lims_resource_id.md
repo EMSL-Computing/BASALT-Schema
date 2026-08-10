@@ -9,7 +9,7 @@ _L7 resource_id for the instrument, if known._
 
 
 
-URI: [analysis_api_schema:lims_resource_id](https://w3id.org/MONet/analysis-api-schema/lims_resource_id)
+URI: [basalt_schema:lims_resource_id](https://w3id.org/MONet/basalt-schema/lims_resource_id)
 Alias: lims_resource_id
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: lims_resource_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: lims_resource_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:lims_resource_id |
-| native | analysis_api_schema:lims_resource_id |
+| self | basalt_schema:lims_resource_id |
+| native | basalt_schema:lims_resource_id |
 
 
 
@@ -89,7 +89,7 @@ Alias: lims_resource_id
 ```yaml
 name: lims_resource_id
 description: L7 resource_id for the instrument, if known.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: lims_resource_id
 owner: Instrument

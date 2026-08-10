@@ -9,7 +9,7 @@ _Concentration of dissolved hydrogens (Unit: umol/L)_
 
 
 
-URI: [analysis_api_schema:diss_hydrogen](https://w3id.org/MONet/analysis-api-schema/diss_hydrogen)
+URI: [basalt_schema:diss_hydrogen](https://w3id.org/MONet/basalt-schema/diss_hydrogen)
 Alias: diss_hydrogen
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: diss_hydrogen
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: diss_hydrogen
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:diss_hydrogen |
-| native | analysis_api_schema:diss_hydrogen |
+| self | basalt_schema:diss_hydrogen |
+| native | basalt_schema:diss_hydrogen |
 
 
 
@@ -92,7 +92,7 @@ Alias: diss_hydrogen
 name: diss_hydrogen
 description: 'Concentration of dissolved hydrogens (Unit: umol/L)'
 title: dissolved hydrogen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: diss_hydrogen
 domain_of:

@@ -9,7 +9,7 @@ _Amount of time it takes to accomplish the first infiltration activity. If infil
 
 
 
-URI: [analysis_api_schema:infiltration_1](https://w3id.org/MONet/analysis-api-schema/infiltration_1)
+URI: [basalt_schema:infiltration_1](https://w3id.org/MONet/basalt-schema/infiltration_1)
 Alias: infiltration_1
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: infiltration_1
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: infiltration_1
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:infiltration_1 |
-| native | analysis_api_schema:infiltration_1 |
+| self | basalt_schema:infiltration_1 |
+| native | basalt_schema:infiltration_1 |
 
 
 
@@ -94,7 +94,7 @@ description: 'Amount of time it takes to accomplish the first infiltration activ
   time was not attempted enter ''did not collect''. Units and format of mm:ss required.
   (Example: 15:20 mm:ss)'
 title: first infiltration time
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: infiltration_1
 domain_of:

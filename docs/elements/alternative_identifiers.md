@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:alternative_identifiers](https://w3id.org/MONet/analysis-api-schema/alternative_identifiers)
+URI: [basalt_schema:alternative_identifiers](https://w3id.org/MONet/basalt-schema/alternative_identifiers)
 Alias: alternative_identifiers
 
 <!-- no inheritance hierarchy -->
@@ -61,8 +61,8 @@ Alias: alternative_identifiers
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:alternative_identifiers |
-| native | analysis_api_schema:alternative_identifiers |
+| self | basalt_schema:alternative_identifiers |
+| native | basalt_schema:alternative_identifiers |
 
 
 

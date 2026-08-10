@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:media_volume_ul](https://w3id.org/MONet/analysis-api-schema/media_volume_ul)
+URI: [basalt_schema:media_volume_ul](https://w3id.org/MONet/basalt-schema/media_volume_ul)
 Alias: media_volume_ul
 
 <!-- no inheritance hierarchy -->
@@ -59,8 +59,8 @@ Alias: media_volume_ul
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:media_volume_ul |
-| native | analysis_api_schema:media_volume_ul |
+| self | basalt_schema:media_volume_ul |
+| native | basalt_schema:media_volume_ul |
 
 
 

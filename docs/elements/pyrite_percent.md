@@ -9,7 +9,7 @@ _Pyrite (FeS2) weight percent_
 
 
 
-URI: [analysis_api_schema:pyrite_percent](https://w3id.org/MONet/analysis-api-schema/pyrite_percent)
+URI: [basalt_schema:pyrite_percent](https://w3id.org/MONet/basalt-schema/pyrite_percent)
 Alias: pyrite_percent
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: pyrite_percent
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: pyrite_percent
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:pyrite_percent |
-| native | analysis_api_schema:pyrite_percent |
+| self | basalt_schema:pyrite_percent |
+| native | basalt_schema:pyrite_percent |
 
 
 
@@ -89,7 +89,7 @@ Alias: pyrite_percent
 ```yaml
 name: pyrite_percent
 description: Pyrite (FeS2) weight percent
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: pyrite_percent
 owner: XRDPhaseProduct

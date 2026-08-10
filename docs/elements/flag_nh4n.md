@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_nh4n](https://w3id.org/MONet/analysis-api-schema/flag_nh4n)
+URI: [basalt_schema:flag_nh4n](https://w3id.org/MONet/basalt-schema/flag_nh4n)
 Alias: flag_nh4n
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_nh4n
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_nh4n
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_nh4n |
-| native | analysis_api_schema:flag_nh4n |
+| self | basalt_schema:flag_nh4n |
+| native | basalt_schema:flag_nh4n |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_nh4n
 <details>
 ```yaml
 name: flag_nh4n
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: flag_nh4n
 owner: NitrogenAnalysisProduct

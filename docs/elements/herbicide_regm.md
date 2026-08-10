@@ -9,7 +9,7 @@ _Information about treatment involving use of herbicides; information about trea
 
 
 
-URI: [analysis_api_schema:herbicide_regm](https://w3id.org/MONet/analysis-api-schema/herbicide_regm)
+URI: [basalt_schema:herbicide_regm](https://w3id.org/MONet/basalt-schema/herbicide_regm)
 Alias: herbicide_regm
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: herbicide_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: herbicide_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:herbicide_regm |
-| native | analysis_api_schema:herbicide_regm |
+| self | basalt_schema:herbicide_regm |
+| native | basalt_schema:herbicide_regm |
 
 
 
@@ -88,7 +88,7 @@ description: Information about treatment involving use of herbicides; informatio
   repeated, how long each treatment lasted, and the start and end time of the entire
   treatment; can include multiple regimens
 title: herbicide regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: herbicide_regm
 domain_of:

@@ -9,7 +9,7 @@ _Raw or converted fluorescence of water. Provide value and unit, any unit is val
 
 
 
-URI: [analysis_api_schema:fluor](https://w3id.org/MONet/analysis-api-schema/fluor)
+URI: [basalt_schema:fluor](https://w3id.org/MONet/basalt-schema/fluor)
 Alias: fluor
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: fluor
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: fluor
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:fluor |
-| native | analysis_api_schema:fluor |
+| self | basalt_schema:fluor |
+| native | basalt_schema:fluor |
 
 
 
@@ -92,7 +92,7 @@ name: fluor
 description: Raw or converted fluorescence of water. Provide value and unit, any unit
   is valid.
 title: fluorescence
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: fluor
 domain_of:

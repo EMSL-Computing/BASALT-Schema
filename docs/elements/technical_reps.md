@@ -9,7 +9,7 @@ _Number of technical replicates for the sample._
 
 
 
-URI: [analysis_api_schema:technical_reps](https://w3id.org/MONet/analysis-api-schema/technical_reps)
+URI: [basalt_schema:technical_reps](https://w3id.org/MONet/basalt-schema/technical_reps)
 Alias: technical_reps
 
 <!-- no inheritance hierarchy -->
@@ -74,7 +74,7 @@ Alias: technical_reps
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -83,8 +83,8 @@ Alias: technical_reps
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:technical_reps |
-| native | analysis_api_schema:technical_reps |
+| self | basalt_schema:technical_reps |
+| native | basalt_schema:technical_reps |
 
 
 
@@ -96,7 +96,7 @@ Alias: technical_reps
 name: technical_reps
 description: Number of technical replicates for the sample.
 title: technical replicates
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: technical_reps
 domain_of:

@@ -9,7 +9,7 @@ _Concentration of sulfide in the sample. (Unit: umol/L or mg/L or ppm)_
 
 
 
-URI: [analysis_api_schema:sulfide](https://w3id.org/MONet/analysis-api-schema/sulfide)
+URI: [basalt_schema:sulfide](https://w3id.org/MONet/basalt-schema/sulfide)
 Alias: sulfide
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: sulfide
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: sulfide
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sulfide |
-| native | analysis_api_schema:sulfide |
+| self | basalt_schema:sulfide |
+| native | basalt_schema:sulfide |
 
 
 
@@ -92,7 +92,7 @@ Alias: sulfide
 name: sulfide
 description: 'Concentration of sulfide in the sample. (Unit: umol/L or mg/L or ppm)'
 title: sulfide
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: sulfide
 domain_of:

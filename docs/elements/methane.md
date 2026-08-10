@@ -9,7 +9,7 @@ _Methane (gas) amount or concentration at the time of sampling. (Unit: umol/L or
 
 
 
-URI: [analysis_api_schema:methane](https://w3id.org/MONet/analysis-api-schema/methane)
+URI: [basalt_schema:methane](https://w3id.org/MONet/basalt-schema/methane)
 Alias: methane
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: methane
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -80,8 +80,8 @@ Alias: methane
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:methane |
-| native | analysis_api_schema:methane |
+| self | basalt_schema:methane |
+| native | basalt_schema:methane |
 
 
 
@@ -94,7 +94,7 @@ name: methane
 description: 'Methane (gas) amount or concentration at the time of sampling. (Unit:
   umol/L or ppb or ppm)'
 title: methane
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: methane
 domain_of:

@@ -9,7 +9,7 @@ _Measurement of aminopeptidase activity (Unit: mol/L/h)_
 
 
 
-URI: [analysis_api_schema:aminopept_act](https://w3id.org/MONet/analysis-api-schema/aminopept_act)
+URI: [basalt_schema:aminopept_act](https://w3id.org/MONet/basalt-schema/aminopept_act)
 Alias: aminopept_act
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: aminopept_act
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: aminopept_act
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:aminopept_act |
-| native | analysis_api_schema:aminopept_act |
+| self | basalt_schema:aminopept_act |
+| native | basalt_schema:aminopept_act |
 
 
 
@@ -92,7 +92,7 @@ Alias: aminopept_act
 name: aminopept_act
 description: 'Measurement of aminopeptidase activity (Unit: mol/L/h)'
 title: aminopeptidase activity
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: aminopept_act
 domain_of:

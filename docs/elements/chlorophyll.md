@@ -9,7 +9,7 @@ _Concentration of chlorophyll (Unit: mg/m3 or ug/L)_
 
 
 
-URI: [analysis_api_schema:chlorophyll](https://w3id.org/MONet/analysis-api-schema/chlorophyll)
+URI: [basalt_schema:chlorophyll](https://w3id.org/MONet/basalt-schema/chlorophyll)
 Alias: chlorophyll
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: chlorophyll
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: chlorophyll
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:chlorophyll |
-| native | analysis_api_schema:chlorophyll |
+| self | basalt_schema:chlorophyll |
+| native | basalt_schema:chlorophyll |
 
 
 
@@ -92,7 +92,7 @@ Alias: chlorophyll
 name: chlorophyll
 description: 'Concentration of chlorophyll (Unit: mg/m3 or ug/L)'
 title: chlorophyll
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: chlorophyll
 domain_of:

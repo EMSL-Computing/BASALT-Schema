@@ -9,7 +9,7 @@ _Name or reference for the hydroponic or in vitro culture rooting medium; can be
 
 
 
-URI: [analysis_api_schema:cult_root_med](https://w3id.org/MONet/analysis-api-schema/cult_root_med)
+URI: [basalt_schema:cult_root_med](https://w3id.org/MONet/basalt-schema/cult_root_med)
 Alias: cult_root_med
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: cult_root_med
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: cult_root_med
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:cult_root_med |
-| native | analysis_api_schema:cult_root_med |
+| self | basalt_schema:cult_root_med |
+| native | basalt_schema:cult_root_med |
 
 
 
@@ -87,7 +87,7 @@ description: Name or reference for the hydroponic or in vitro culture rooting me
   Murashige and Skoog medium. If the medium has not been formally published use the
   rooting medium descriptors.
 title: culture rooting medium
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: cult_root_med
 domain_of:

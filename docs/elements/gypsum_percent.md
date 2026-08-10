@@ -9,7 +9,7 @@ _Gypsum (CaSO4 2H2O) weight percent_
 
 
 
-URI: [analysis_api_schema:gypsum_percent](https://w3id.org/MONet/analysis-api-schema/gypsum_percent)
+URI: [basalt_schema:gypsum_percent](https://w3id.org/MONet/basalt-schema/gypsum_percent)
 Alias: gypsum_percent
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: gypsum_percent
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: gypsum_percent
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:gypsum_percent |
-| native | analysis_api_schema:gypsum_percent |
+| self | basalt_schema:gypsum_percent |
+| native | basalt_schema:gypsum_percent |
 
 
 
@@ -89,7 +89,7 @@ Alias: gypsum_percent
 ```yaml
 name: gypsum_percent
 description: Gypsum (CaSO4 2H2O) weight percent
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: gypsum_percent
 owner: XRDPhaseProduct

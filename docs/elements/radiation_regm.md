@@ -9,7 +9,7 @@ _Information about treatment involving exposure of plant or a plant part to a pa
 
 
 
-URI: [analysis_api_schema:radiation_regm](https://w3id.org/MONet/analysis-api-schema/radiation_regm)
+URI: [basalt_schema:radiation_regm](https://w3id.org/MONet/basalt-schema/radiation_regm)
 Alias: radiation_regm
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: radiation_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: radiation_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:radiation_regm |
-| native | analysis_api_schema:radiation_regm |
+| self | basalt_schema:radiation_regm |
+| native | basalt_schema:radiation_regm |
 
 
 
@@ -87,7 +87,7 @@ description: Information about treatment involving exposure of plant or a plant 
   was repeated, how long each treatment lasted, and the start and end time of the
   entire treatment; can include multiple radiation regimens
 title: radiation regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: radiation_regm
 domain_of:

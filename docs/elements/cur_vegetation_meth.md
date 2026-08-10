@@ -9,7 +9,7 @@ _Reference or method used in vegetation classification_
 
 
 
-URI: [analysis_api_schema:cur_vegetation_meth](https://w3id.org/MONet/analysis-api-schema/cur_vegetation_meth)
+URI: [basalt_schema:cur_vegetation_meth](https://w3id.org/MONet/basalt-schema/cur_vegetation_meth)
 Alias: cur_vegetation_meth
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: cur_vegetation_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: cur_vegetation_meth
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:cur_vegetation_meth |
-| native | analysis_api_schema:cur_vegetation_meth |
+| self | basalt_schema:cur_vegetation_meth |
+| native | basalt_schema:cur_vegetation_meth |
 
 
 
@@ -83,7 +83,7 @@ Alias: cur_vegetation_meth
 name: cur_vegetation_meth
 description: Reference or method used in vegetation classification
 title: current vegetation method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: cur_vegetation_meth
 domain_of:

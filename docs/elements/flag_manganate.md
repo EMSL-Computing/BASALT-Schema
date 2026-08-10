@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_manganate](https://w3id.org/MONet/analysis-api-schema/flag_manganate)
+URI: [basalt_schema:flag_manganate](https://w3id.org/MONet/basalt-schema/flag_manganate)
 Alias: flag_manganate
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_manganate
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_manganate
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_manganate |
-| native | analysis_api_schema:flag_manganate |
+| self | basalt_schema:flag_manganate |
+| native | basalt_schema:flag_manganate |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_manganate
 <details>
 ```yaml
 name: flag_manganate
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: flag_manganate
 owner: IonsAnalysisProduct

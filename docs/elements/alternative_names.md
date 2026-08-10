@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:alternative_names](https://w3id.org/MONet/analysis-api-schema/alternative_names)
+URI: [basalt_schema:alternative_names](https://w3id.org/MONet/basalt-schema/alternative_names)
 Alias: alternative_names
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: alternative_names
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: alternative_names
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:alternative_names |
-| native | analysis_api_schema:alternative_names |
+| self | basalt_schema:alternative_names |
+| native | basalt_schema:alternative_names |
 
 
 
@@ -83,7 +83,7 @@ Alias: alternative_names
 <details>
 ```yaml
 name: alternative_names
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: alternative_names
 owner: Instrument

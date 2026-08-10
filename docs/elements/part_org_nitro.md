@@ -9,7 +9,7 @@ _Concentration of particulate organic nitrogen. (Unit: ug/L or umol/L)_
 
 
 
-URI: [analysis_api_schema:part_org_nitro](https://w3id.org/MONet/analysis-api-schema/part_org_nitro)
+URI: [basalt_schema:part_org_nitro](https://w3id.org/MONet/basalt-schema/part_org_nitro)
 Alias: part_org_nitro
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: part_org_nitro
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: part_org_nitro
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:part_org_nitro |
-| native | analysis_api_schema:part_org_nitro |
+| self | basalt_schema:part_org_nitro |
+| native | basalt_schema:part_org_nitro |
 
 
 
@@ -91,7 +91,7 @@ Alias: part_org_nitro
 name: part_org_nitro
 description: 'Concentration of particulate organic nitrogen. (Unit: ug/L or umol/L)'
 title: particulate organic nitrogen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: part_org_nitro
 domain_of:

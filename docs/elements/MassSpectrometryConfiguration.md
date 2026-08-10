@@ -9,7 +9,7 @@ _Instrument configuration and setup for a mass spectrometry run._
 
 
 
-URI: [analysis_api_schema:MassSpectrometryConfiguration](https://w3id.org/MONet/analysis-api-schema/MassSpectrometryConfiguration)
+URI: [basalt_schema:MassSpectrometryConfiguration](https://w3id.org/MONet/basalt-schema/MassSpectrometryConfiguration)
 
 
 
@@ -162,7 +162,7 @@ URI: [analysis_api_schema:MassSpectrometryConfiguration](https://w3id.org/MONet/
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -171,8 +171,8 @@ URI: [analysis_api_schema:MassSpectrometryConfiguration](https://w3id.org/MONet/
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:MassSpectrometryConfiguration |
-| native | analysis_api_schema:MassSpectrometryConfiguration |
+| self | basalt_schema:MassSpectrometryConfiguration |
+| native | basalt_schema:MassSpectrometryConfiguration |
 
 
 
@@ -189,7 +189,7 @@ URI: [analysis_api_schema:MassSpectrometryConfiguration](https://w3id.org/MONet/
 ```yaml
 name: MassSpectrometryConfiguration
 description: Instrument configuration and setup for a mass spectrometry run.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: Configuration
 slots:
 - injection
@@ -215,13 +215,13 @@ slots:
 ```yaml
 name: MassSpectrometryConfiguration
 description: Instrument configuration and setup for a mass spectrometry run.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: Configuration
 attributes:
   injection:
     name: injection
     description: Type of injection used in the mass spectrometry method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: injection
     owner: MassSpectrometryConfiguration
@@ -232,7 +232,7 @@ attributes:
   ionization:
     name: ionization
     description: Type of ionization used in the mass spectrometry method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: ionization
     owner: MassSpectrometryConfiguration
@@ -243,7 +243,7 @@ attributes:
   fragmentation:
     name: fragmentation
     description: fragmentation technique used in the mass spectrometry run
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: fragmentation
     owner: MassSpectrometryConfiguration
@@ -253,7 +253,7 @@ attributes:
   polarity:
     name: polarity
     description: Polarity setting used in the mass spectrometry method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: polarity
     owner: MassSpectrometryConfiguration
@@ -263,7 +263,7 @@ attributes:
     required: true
   resolution:
     name: resolution
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: resolution
     owner: MassSpectrometryConfiguration
@@ -275,7 +275,7 @@ attributes:
     name: dd_ms2_resolution
     description: Data-dependent MS2 resolution setting used in the mass spectrometry
       method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: dd_ms2_resolution
     owner: MassSpectrometryConfiguration
@@ -286,7 +286,7 @@ attributes:
   loop_count:
     name: loop_count
     description: Number of MS2 scans to be acquired between each full MS scan.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: loop_count
     owner: MassSpectrometryConfiguration
@@ -297,7 +297,7 @@ attributes:
   iat:
     name: iat
     description: Ion accumulation time setting used in the mass spectrometry method.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: iat
     owner: MassSpectrometryConfiguration
@@ -309,7 +309,7 @@ attributes:
     description: Free induction decay
     todos:
     - is this a setting or a result?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: fid
     owner: MassSpectrometryConfiguration
@@ -319,7 +319,7 @@ attributes:
   mass_range_max:
     name: mass_range_max
     description: The maximum mass observable by this run (in m/z).
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: mass_range_max
     owner: MassSpectrometryConfiguration
@@ -329,7 +329,7 @@ attributes:
   mass_range_min:
     name: mass_range_min
     description: The minimum mass observable by this run (in m/z).
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: mass_range_min
     owner: MassSpectrometryConfiguration
@@ -339,7 +339,7 @@ attributes:
   acquisition_strategy:
     name: acquisition_strategy
     description: The acquisition strategy used in the mass spectrometry run.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: acquisition_strategy
     owner: MassSpectrometryConfiguration
@@ -350,7 +350,7 @@ attributes:
     name: lims_protocol_instance_id
     description: Reference to the L7 protocol_instance that corresponds to this sample
       processing step, if applicable.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: lims_protocol_instance_id
     owner: MassSpectrometryConfiguration
@@ -360,7 +360,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: name
     owner: MassSpectrometryConfiguration
@@ -390,7 +390,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: description
     owner: MassSpectrometryConfiguration
@@ -421,7 +421,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/mass-spec
+    from_schema: https://w3id.org/MONet/basalt-schema/mass-spec
     alias: id
     owner: MassSpectrometryConfiguration
     domain_of:

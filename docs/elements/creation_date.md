@@ -9,7 +9,7 @@ _Date the entity or preparation was created_
 
 
 
-URI: [analysis_api_schema:creation_date](https://w3id.org/MONet/analysis-api-schema/creation_date)
+URI: [basalt_schema:creation_date](https://w3id.org/MONet/basalt-schema/creation_date)
 Alias: creation_date
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: creation_date
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: creation_date
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:creation_date |
-| native | analysis_api_schema:creation_date |
+| self | basalt_schema:creation_date |
+| native | basalt_schema:creation_date |
 
 
 
@@ -82,7 +82,7 @@ Alias: creation_date
 ```yaml
 name: creation_date
 description: Date the entity or preparation was created
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: creation_date
 domain_of:

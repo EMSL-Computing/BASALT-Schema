@@ -9,7 +9,7 @@ _A list of DOIs associated with this study_
 
 
 
-URI: [analysis_api_schema:associated_dois](https://w3id.org/MONet/analysis-api-schema/associated_dois)
+URI: [basalt_schema:associated_dois](https://w3id.org/MONet/basalt-schema/associated_dois)
 Alias: associated_dois
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: associated_dois
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: associated_dois
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:associated_dois |
-| native | analysis_api_schema:associated_dois |
+| self | basalt_schema:associated_dois |
+| native | basalt_schema:associated_dois |
 
 
 
@@ -90,7 +90,7 @@ Alias: associated_dois
 ```yaml
 name: associated_dois
 description: A list of DOIs associated with this study
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: associated_dois
 owner: Study

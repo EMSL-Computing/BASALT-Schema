@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:magnesium_id](https://w3id.org/MONet/analysis-api-schema/magnesium_id)
+URI: [basalt_schema:magnesium_id](https://w3id.org/MONet/basalt-schema/magnesium_id)
 Alias: magnesium_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: magnesium_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: magnesium_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:magnesium_id |
-| native | analysis_api_schema:magnesium_id |
+| self | basalt_schema:magnesium_id |
+| native | basalt_schema:magnesium_id |
 
 
 
@@ -83,7 +83,7 @@ Alias: magnesium_id
 <details>
 ```yaml
 name: magnesium_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: magnesium_id
 owner: IonsAnalysisProduct

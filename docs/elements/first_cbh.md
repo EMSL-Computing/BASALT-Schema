@@ -9,7 +9,7 @@ _First cloud base (meters) or vertical visibility (meters) (-999 if no cloud bas
 
 
 
-URI: [analysis_api_schema:first_cbh](https://w3id.org/MONet/analysis-api-schema/first_cbh)
+URI: [basalt_schema:first_cbh](https://w3id.org/MONet/basalt-schema/first_cbh)
 Alias: first_cbh
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: first_cbh
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: first_cbh
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:first_cbh |
-| native | analysis_api_schema:first_cbh |
+| self | basalt_schema:first_cbh |
+| native | basalt_schema:first_cbh |
 
 
 
@@ -84,7 +84,7 @@ name: first_cbh
 description: 'First cloud base (meters) or vertical visibility (meters) (-999 if no
   cloud base or vertical visibility) (Unit: m)'
 title: first cloud base height
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: first_cbh
 domain_of:

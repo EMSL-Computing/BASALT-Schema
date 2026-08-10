@@ -9,7 +9,7 @@ _Collection of samples that were purchased by the user._
 
 
 
-URI: [analysis_api_schema:CommerciallyPurchasedSamplingActivity](https://w3id.org/MONet/analysis-api-schema/CommerciallyPurchasedSamplingActivity)
+URI: [basalt_schema:CommerciallyPurchasedSamplingActivity](https://w3id.org/MONet/basalt-schema/CommerciallyPurchasedSamplingActivity)
 
 
 
@@ -101,7 +101,7 @@ URI: [analysis_api_schema:CommerciallyPurchasedSamplingActivity](https://w3id.or
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -110,8 +110,8 @@ URI: [analysis_api_schema:CommerciallyPurchasedSamplingActivity](https://w3id.or
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:CommerciallyPurchasedSamplingActivity |
-| native | analysis_api_schema:CommerciallyPurchasedSamplingActivity |
+| self | basalt_schema:CommerciallyPurchasedSamplingActivity |
+| native | basalt_schema:CommerciallyPurchasedSamplingActivity |
 
 
 
@@ -128,7 +128,7 @@ URI: [analysis_api_schema:CommerciallyPurchasedSamplingActivity](https://w3id.or
 ```yaml
 name: CommerciallyPurchasedSamplingActivity
 description: Collection of samples that were purchased by the user.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: SamplingActivity
 slots:
 - sample_collected
@@ -136,7 +136,7 @@ slots:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -222,12 +222,12 @@ attributes:
 ```yaml
 name: CommerciallyPurchasedSamplingActivity
 description: Collection of samples that were purchased by the user.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: SamplingActivity
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
     identifier: true
     alias: id
     owner: CommerciallyPurchasedSamplingActivity
@@ -311,7 +311,7 @@ attributes:
       NOT the amount sent to EMSL or collected for a specific analysis. Provide value
       and unit, any unit is valid
     title: sample collected
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sample_collected
     owner: CommerciallyPurchasedSamplingActivity
@@ -336,7 +336,7 @@ attributes:
     description: The device used to collect an environmental sample. Include dimensions
       of device if applicable
     title: sample collection device
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sample_collection_dev
     owner: CommerciallyPurchasedSamplingActivity
@@ -357,7 +357,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: name
     owner: CommerciallyPurchasedSamplingActivity
@@ -387,7 +387,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: description
     owner: CommerciallyPurchasedSamplingActivity
@@ -423,7 +423,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     aliases:
     - study
     - study_id
@@ -462,7 +462,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: emsl_activity
     owner: CommerciallyPurchasedSamplingActivity
@@ -479,7 +479,7 @@ attributes:
 
       (YYYY-MM)'''
     title: collection date
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: collection_date
     owner: CommerciallyPurchasedSamplingActivity
@@ -492,7 +492,7 @@ attributes:
     name: shipped_sample_size
     description: Total amount of sample sent to EMSL. Must include units.
     title: shipped sample size
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: shipped_sample_size
     owner: CommerciallyPurchasedSamplingActivity
@@ -505,7 +505,7 @@ attributes:
     name: sampled_at_site
     description: Reference to the site where the sample was collected. This is a FK
       to the Site class, which contains detailed metadata about the sampling location.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: sampled_at_site
     owner: CommerciallyPurchasedSamplingActivity

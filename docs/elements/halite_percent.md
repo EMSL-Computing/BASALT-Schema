@@ -9,7 +9,7 @@ _Halite (NaCl) weight percent_
 
 
 
-URI: [analysis_api_schema:halite_percent](https://w3id.org/MONet/analysis-api-schema/halite_percent)
+URI: [basalt_schema:halite_percent](https://w3id.org/MONet/basalt-schema/halite_percent)
 Alias: halite_percent
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: halite_percent
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: halite_percent
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:halite_percent |
-| native | analysis_api_schema:halite_percent |
+| self | basalt_schema:halite_percent |
+| native | basalt_schema:halite_percent |
 
 
 
@@ -89,7 +89,7 @@ Alias: halite_percent
 ```yaml
 name: halite_percent
 description: Halite (NaCl) weight percent
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: halite_percent
 owner: XRDPhaseProduct

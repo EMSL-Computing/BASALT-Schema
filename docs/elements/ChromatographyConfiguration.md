@@ -9,7 +9,7 @@ _Configuration and settings for a chromatography run._
 
 
 
-URI: [analysis_api_schema:ChromatographyConfiguration](https://w3id.org/MONet/analysis-api-schema/ChromatographyConfiguration)
+URI: [basalt_schema:ChromatographyConfiguration](https://w3id.org/MONet/basalt-schema/ChromatographyConfiguration)
 
 
 
@@ -126,7 +126,7 @@ URI: [analysis_api_schema:ChromatographyConfiguration](https://w3id.org/MONet/an
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -135,8 +135,8 @@ URI: [analysis_api_schema:ChromatographyConfiguration](https://w3id.org/MONet/an
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ChromatographyConfiguration |
-| native | analysis_api_schema:ChromatographyConfiguration |
+| self | basalt_schema:ChromatographyConfiguration |
+| native | basalt_schema:ChromatographyConfiguration |
 
 
 
@@ -153,7 +153,7 @@ URI: [analysis_api_schema:ChromatographyConfiguration](https://w3id.org/MONet/an
 ```yaml
 name: ChromatographyConfiguration
 description: Configuration and settings for a chromatography run.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: Configuration
 slots:
 - column
@@ -176,13 +176,13 @@ slots:
 ```yaml
 name: ChromatographyConfiguration
 description: Configuration and settings for a chromatography run.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: Configuration
 attributes:
   column:
     name: column
     description: The name or identifier of the chromatography column used.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: column
     owner: ChromatographyConfiguration
@@ -193,7 +193,7 @@ attributes:
   column_dimensions:
     name: column_dimensions
     description: Dimensions of the chromatography column used in the process.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: column_dimensions
     owner: ChromatographyConfiguration
@@ -203,7 +203,7 @@ attributes:
   column_manufacturer:
     name: column_manufacturer
     description: Name of the institution that manufactured the chromatography column.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: column_manufacturer
     owner: ChromatographyConfiguration
@@ -213,7 +213,7 @@ attributes:
   chromatography_type:
     name: chromatography_type
     description: Type of chromatography used in the method (e.g., GC, LC)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: chromatography_type
     owner: ChromatographyConfiguration
@@ -225,7 +225,7 @@ attributes:
     name: mobile_phases
     description: Description of the mobile phases used in the chromatography method
       (e.g., solvents, gradients)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: mobile_phases
     owner: ChromatographyConfiguration
@@ -237,7 +237,7 @@ attributes:
     name: stationary_phase
     description: Description of the stationary phase used in the chromatography method
       (e.g., column type)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: stationary_phase
     owner: ChromatographyConfiguration
@@ -247,7 +247,7 @@ attributes:
   temperature_celsius:
     name: temperature_celsius
     description: Temperature at which the method/process/activity was performed
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: temperature_celsius
     owner: ChromatographyConfiguration
@@ -258,7 +258,7 @@ attributes:
   duration_min:
     name: duration_min
     description: how long something took, in minutes
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: duration_min
     owner: ChromatographyConfiguration
@@ -270,7 +270,7 @@ attributes:
     name: flow_rate_ul_min
     description: Flow rate of the mobile phase, in microliters per minute.
     title: flow rate (uL/min)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: flow_rate_ul_min
     owner: ChromatographyConfiguration
@@ -281,7 +281,7 @@ attributes:
     name: injection_volume_ul
     todos:
     - description - not sure what this is referencing
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: injection_volume_ul
     owner: ChromatographyConfiguration
@@ -291,7 +291,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: name
     owner: ChromatographyConfiguration
@@ -321,7 +321,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     rank: 1000
     alias: description
     owner: ChromatographyConfiguration
@@ -352,7 +352,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/mass-spec
+    from_schema: https://w3id.org/MONet/basalt-schema/mass-spec
     alias: id
     owner: ChromatographyConfiguration
     domain_of:

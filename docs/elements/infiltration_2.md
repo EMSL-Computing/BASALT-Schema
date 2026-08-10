@@ -9,7 +9,7 @@ _Amount of time it takes to accomplish the second infiltration activity. If infi
 
 
 
-URI: [analysis_api_schema:infiltration_2](https://w3id.org/MONet/analysis-api-schema/infiltration_2)
+URI: [basalt_schema:infiltration_2](https://w3id.org/MONet/basalt-schema/infiltration_2)
 Alias: infiltration_2
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: infiltration_2
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: infiltration_2
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:infiltration_2 |
-| native | analysis_api_schema:infiltration_2 |
+| self | basalt_schema:infiltration_2 |
+| native | basalt_schema:infiltration_2 |
 
 
 
@@ -94,7 +94,7 @@ description: 'Amount of time it takes to accomplish the second infiltration acti
   time was not attempted enter ''did not collect''. Units and format of mm:ss required.
   (Example: 15:20 mm:ss)'
 title: second infiltration time
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: infiltration_2
 domain_of:

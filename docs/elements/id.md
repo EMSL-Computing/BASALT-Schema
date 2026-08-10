@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:id](https://w3id.org/MONet/analysis-api-schema/id)
+URI: [basalt_schema:id](https://w3id.org/MONet/basalt-schema/id)
 Alias: id
 
 <!-- no inheritance hierarchy -->
@@ -179,8 +179,8 @@ Alias: id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:id |
-| native | analysis_api_schema:id |
+| self | basalt_schema:id |
+| native | basalt_schema:id |
 
 
 

@@ -7,7 +7,7 @@ _Types of aerosol samples_
 
 
 
-URI: [analysis_api_schema:AerosolTypeEnum](https://w3id.org/MONet/analysis-api-schema/AerosolTypeEnum)
+URI: [basalt_schema:AerosolTypeEnum](https://w3id.org/MONet/basalt-schema/AerosolTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -43,7 +43,7 @@ URI: [analysis_api_schema:AerosolTypeEnum](https://w3id.org/MONet/analysis-api-s
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -56,7 +56,7 @@ URI: [analysis_api_schema:AerosolTypeEnum](https://w3id.org/MONet/analysis-api-s
 ```yaml
 name: AerosolTypeEnum
 description: Types of aerosol samples
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   sea_salt:

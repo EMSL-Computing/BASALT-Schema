@@ -9,7 +9,7 @@ _Color indicates the max altitude._
 
 
 
-URI: [analysis_api_schema:color_code](https://w3id.org/MONet/analysis-api-schema/color_code)
+URI: [basalt_schema:color_code](https://w3id.org/MONet/basalt-schema/color_code)
 Alias: color_code
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: color_code
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: color_code
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:color_code |
-| native | analysis_api_schema:color_code |
+| self | basalt_schema:color_code |
+| native | basalt_schema:color_code |
 
 
 
@@ -83,7 +83,7 @@ Alias: color_code
 name: color_code
 description: Color indicates the max altitude.
 title: color code
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: color_code
 domain_of:

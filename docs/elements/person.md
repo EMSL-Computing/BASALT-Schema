@@ -9,7 +9,7 @@ _The person who contributed to the study._
 
 
 
-URI: [analysis_api_schema:person](https://w3id.org/MONet/analysis-api-schema/person)
+URI: [basalt_schema:person](https://w3id.org/MONet/basalt-schema/person)
 Alias: person
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: person
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: person
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:person |
-| native | analysis_api_schema:person |
+| self | basalt_schema:person |
+| native | basalt_schema:person |
 
 
 
@@ -90,7 +90,7 @@ Alias: person
 ```yaml
 name: person
 description: The person who contributed to the study.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: person
 owner: ProjectParticipant

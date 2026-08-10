@@ -9,7 +9,7 @@ _Measurement of mean peak friction velocity (Unit: m/s)_
 
 
 
-URI: [analysis_api_schema:mean_peak_frict_vel](https://w3id.org/MONet/analysis-api-schema/mean_peak_frict_vel)
+URI: [basalt_schema:mean_peak_frict_vel](https://w3id.org/MONet/basalt-schema/mean_peak_frict_vel)
 Alias: mean_peak_frict_vel
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: mean_peak_frict_vel
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: mean_peak_frict_vel
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:mean_peak_frict_vel |
-| native | analysis_api_schema:mean_peak_frict_vel |
+| self | basalt_schema:mean_peak_frict_vel |
+| native | basalt_schema:mean_peak_frict_vel |
 
 
 
@@ -92,7 +92,7 @@ Alias: mean_peak_frict_vel
 name: mean_peak_frict_vel
 description: 'Measurement of mean peak friction velocity (Unit: m/s)'
 title: mean peak friction velocity
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: mean_peak_frict_vel
 domain_of:

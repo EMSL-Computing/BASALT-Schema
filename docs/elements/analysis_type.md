@@ -9,7 +9,7 @@ _The type(s) of analysis planned for this sample._
 
 
 
-URI: [analysis_api_schema:analysis_type](https://w3id.org/MONet/analysis-api-schema/analysis_type)
+URI: [basalt_schema:analysis_type](https://w3id.org/MONet/basalt-schema/analysis_type)
 Alias: analysis_type
 
 <!-- no inheritance hierarchy -->
@@ -85,7 +85,7 @@ Alias: analysis_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -94,8 +94,8 @@ Alias: analysis_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:analysis_type |
-| native | analysis_api_schema:analysis_type |
+| self | basalt_schema:analysis_type |
+| native | basalt_schema:analysis_type |
 
 
 
@@ -106,7 +106,7 @@ Alias: analysis_type
 ```yaml
 name: analysis_type
 description: The type(s) of analysis planned for this sample.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: analysis_type
 domain_of:

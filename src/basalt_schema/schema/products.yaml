@@ -1,20 +1,20 @@
-id: https://w3id.org/MONet/analysis-api-schema/products
-name: analysis-api-schema-products
-title: MONet Analysis API - Products
+id: https://w3id.org/MONet/basalt-schema/products
+name: basalt-schema-products
+title: Basalt Schema - Products
 description: |-
-  Enumerated values used throughout the MONet Analysis API schema
+  Enumerated values used throughout the Basalt Schema
 license: MIT
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://w3id.org/MONet/basalt-schema/
   linkml: https://w3id.org/linkml/
   schema: http://schema.org/
-default_prefix: analysis_api_schema
+default_prefix: basalt_schema
 
 imports:
   - linkml:types
   - enums
-  - analysis_api_schema
+  - basalt_schema
   - slots
 
 classes:

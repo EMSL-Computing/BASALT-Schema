@@ -9,7 +9,7 @@ _Average Well Color Development (AWCD) metric for Ecoplate_
 
 
 
-URI: [analysis_api_schema:average_well_color_development](https://w3id.org/MONet/analysis-api-schema/average_well_color_development)
+URI: [basalt_schema:average_well_color_development](https://w3id.org/MONet/basalt-schema/average_well_color_development)
 Alias: average_well_color_development
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: average_well_color_development
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -74,8 +74,8 @@ Alias: average_well_color_development
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:average_well_color_development |
-| native | analysis_api_schema:average_well_color_development |
+| self | basalt_schema:average_well_color_development |
+| native | basalt_schema:average_well_color_development |
 
 
 
@@ -88,7 +88,7 @@ name: average_well_color_development
 description: Average Well Color Development (AWCD) metric for Ecoplate
 todos:
 - units
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: average_well_color_development
 domain_of:

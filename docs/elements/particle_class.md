@@ -9,7 +9,7 @@ _Particles are classified based on their size into six general categories: clay,
 
 
 
-URI: [analysis_api_schema:particle_class](https://w3id.org/MONet/analysis-api-schema/particle_class)
+URI: [basalt_schema:particle_class](https://w3id.org/MONet/basalt-schema/particle_class)
 Alias: particle_class
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: particle_class
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: particle_class
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:particle_class |
-| native | analysis_api_schema:particle_class |
+| self | basalt_schema:particle_class |
+| native | basalt_schema:particle_class |
 
 
 
@@ -87,7 +87,7 @@ description: 'Particles are classified based on their size into six general cate
   units preceded by the name of the particle type; can include multiple values separated
   by '';''.'
 title: particle class
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: particle_class
 domain_of:

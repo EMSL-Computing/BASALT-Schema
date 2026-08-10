@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:pore_diameter_variance](https://w3id.org/MONet/analysis-api-schema/pore_diameter_variance)
+URI: [basalt_schema:pore_diameter_variance](https://w3id.org/MONet/basalt-schema/pore_diameter_variance)
 Alias: pore_diameter_variance
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: pore_diameter_variance
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: pore_diameter_variance
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:pore_diameter_variance |
-| native | analysis_api_schema:pore_diameter_variance |
+| self | basalt_schema:pore_diameter_variance |
+| native | basalt_schema:pore_diameter_variance |
 
 
 
@@ -83,7 +83,7 @@ Alias: pore_diameter_variance
 <details>
 ```yaml
 name: pore_diameter_variance
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: pore_diameter_variance
 owner: TomographyProduct

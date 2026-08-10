@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:AlternateIdentifierType](https://w3id.org/MONet/analysis-api-schema/AlternateIdentifierType)
+URI: [basalt_schema:AlternateIdentifierType](https://w3id.org/MONet/basalt-schema/AlternateIdentifierType)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -36,7 +36,7 @@ URI: [analysis_api_schema:AlternateIdentifierType](https://w3id.org/MONet/analys
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -48,7 +48,7 @@ URI: [analysis_api_schema:AlternateIdentifierType](https://w3id.org/MONet/analys
 <details>
 ```yaml
 name: AlternateIdentifierType
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   instrument_alt_id:

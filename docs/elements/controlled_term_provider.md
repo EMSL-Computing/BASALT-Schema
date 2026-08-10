@@ -9,7 +9,7 @@ _name of ontology or other controlled term provider_
 
 
 
-URI: [analysis_api_schema:controlled_term_provider](https://w3id.org/MONet/analysis-api-schema/controlled_term_provider)
+URI: [basalt_schema:controlled_term_provider](https://w3id.org/MONet/basalt-schema/controlled_term_provider)
 Alias: controlled_term_provider
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: controlled_term_provider
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: controlled_term_provider
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:controlled_term_provider |
-| native | analysis_api_schema:controlled_term_provider |
+| self | basalt_schema:controlled_term_provider |
+| native | basalt_schema:controlled_term_provider |
 
 
 
@@ -89,7 +89,7 @@ Alias: controlled_term_provider
 ```yaml
 name: controlled_term_provider
 description: name of ontology or other controlled term provider
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: controlled_term_provider
 owner: ControlledTermValue

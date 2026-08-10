@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:injection_volume_ul](https://w3id.org/MONet/analysis-api-schema/injection_volume_ul)
+URI: [basalt_schema:injection_volume_ul](https://w3id.org/MONet/basalt-schema/injection_volume_ul)
 Alias: injection_volume_ul
 
 <!-- no inheritance hierarchy -->
@@ -60,7 +60,7 @@ Alias: injection_volume_ul
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -69,8 +69,8 @@ Alias: injection_volume_ul
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:injection_volume_ul |
-| native | analysis_api_schema:injection_volume_ul |
+| self | basalt_schema:injection_volume_ul |
+| native | basalt_schema:injection_volume_ul |
 
 
 
@@ -82,7 +82,7 @@ Alias: injection_volume_ul
 name: injection_volume_ul
 todos:
 - description - not sure what this is referencing
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: injection_volume_ul
 domain_of:

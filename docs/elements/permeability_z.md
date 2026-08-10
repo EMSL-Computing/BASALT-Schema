@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:permeability_z](https://w3id.org/MONet/analysis-api-schema/permeability_z)
+URI: [basalt_schema:permeability_z](https://w3id.org/MONet/basalt-schema/permeability_z)
 Alias: permeability_z
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: permeability_z
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: permeability_z
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:permeability_z |
-| native | analysis_api_schema:permeability_z |
+| self | basalt_schema:permeability_z |
+| native | basalt_schema:permeability_z |
 
 
 
@@ -83,7 +83,7 @@ Alias: permeability_z
 <details>
 ```yaml
 name: permeability_z
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: permeability_z
 owner: TomographyProduct

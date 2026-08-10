@@ -17,7 +17,7 @@ _v1 origin: plate-general.yaml EcoplateWellMetadata_
 
 
 
-URI: [analysis_api_schema:EcoplateWellMetadata](https://w3id.org/MONet/analysis-api-schema/EcoplateWellMetadata)
+URI: [basalt_schema:EcoplateWellMetadata](https://w3id.org/MONet/basalt-schema/EcoplateWellMetadata)
 
 
 
@@ -91,7 +91,7 @@ URI: [analysis_api_schema:EcoplateWellMetadata](https://w3id.org/MONet/analysis-
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -100,8 +100,8 @@ URI: [analysis_api_schema:EcoplateWellMetadata](https://w3id.org/MONet/analysis-
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:EcoplateWellMetadata |
-| native | analysis_api_schema:EcoplateWellMetadata |
+| self | basalt_schema:EcoplateWellMetadata |
+| native | basalt_schema:EcoplateWellMetadata |
 
 
 
@@ -125,13 +125,13 @@ description: 'Ecoplate-specific per-well metadata.
 
 
   v1 origin: plate-general.yaml EcoplateWellMetadata'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: WellMetadata
 attributes:
   media_volume_ul:
     name: media_volume_ul
     description: Volume of inoculum suspension added (microlitres)
-    from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
     domain_of:
     - AMP2WellMetadata
     - EcoplateWellMetadata
@@ -140,7 +140,7 @@ attributes:
   carbon_source:
     name: carbon_source
     description: Carbon source in this well (e.g. "L-malic acid", "glucose")
-    from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
     rank: 1000
     domain_of:
     - EcoplateWellMetadata
@@ -149,7 +149,7 @@ attributes:
   treatment:
     name: treatment
     description: Experimental treatment (e.g. "control", "nickel_1pct")
-    from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
     rank: 1000
     domain_of:
     - EcoplateWellMetadata
@@ -157,7 +157,7 @@ attributes:
   treatment_concentration:
     name: treatment_concentration
     description: Treatment concentration with unit (e.g. "1.0 pct", "10 mM")
-    from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
     rank: 1000
     domain_of:
     - EcoplateWellMetadata
@@ -179,13 +179,13 @@ description: 'Ecoplate-specific per-well metadata.
 
 
   v1 origin: plate-general.yaml EcoplateWellMetadata'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 is_a: WellMetadata
 attributes:
   media_volume_ul:
     name: media_volume_ul
     description: Volume of inoculum suspension added (microlitres)
-    from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
     alias: media_volume_ul
     owner: EcoplateWellMetadata
     domain_of:
@@ -196,7 +196,7 @@ attributes:
   carbon_source:
     name: carbon_source
     description: Carbon source in this well (e.g. "L-malic acid", "glucose")
-    from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
     rank: 1000
     alias: carbon_source
     owner: EcoplateWellMetadata
@@ -207,7 +207,7 @@ attributes:
   treatment:
     name: treatment
     description: Experimental treatment (e.g. "control", "nickel_1pct")
-    from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
     rank: 1000
     alias: treatment
     owner: EcoplateWellMetadata
@@ -217,7 +217,7 @@ attributes:
   treatment_concentration:
     name: treatment_concentration
     description: Treatment concentration with unit (e.g. "1.0 pct", "10 mM")
-    from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
     rank: 1000
     alias: treatment_concentration
     owner: EcoplateWellMetadata
@@ -227,7 +227,7 @@ attributes:
   position:
     name: position
     description: Well position (e.g. "A01", "H12")
-    from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
     rank: 1000
     alias: position
     owner: EcoplateWellMetadata
@@ -239,7 +239,7 @@ attributes:
   well_type:
     name: well_type
     description: Role of this well   "sample", "blank", "uninoculated_control", "standard"
-    from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
     rank: 1000
     alias: well_type
     owner: EcoplateWellMetadata
@@ -249,7 +249,7 @@ attributes:
   replicate_group:
     name: replicate_group
     description: Identifier linking technical replicates (e.g. "rep1", "rep2")
-    from_schema: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
+    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
     rank: 1000
     alias: replicate_group
     owner: EcoplateWellMetadata

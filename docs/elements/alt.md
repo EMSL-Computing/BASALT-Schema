@@ -9,7 +9,7 @@ _Heights of objects such as airplanes, space shuttles, rockets, atmospheric ball
 
 
 
-URI: [analysis_api_schema:alt](https://w3id.org/MONet/analysis-api-schema/alt)
+URI: [basalt_schema:alt](https://w3id.org/MONet/basalt-schema/alt)
 Alias: alt
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: alt
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: alt
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:alt |
-| native | analysis_api_schema:alt |
+| self | basalt_schema:alt |
+| native | basalt_schema:alt |
 
 
 
@@ -95,7 +95,7 @@ description: 'Heights of objects such as airplanes, space shuttles, rockets, atm
   surface above sea level and the sampled position in the air. For ARM this can be
   a range. (Unit: m)'
 title: altitude
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: alt
 domain_of:

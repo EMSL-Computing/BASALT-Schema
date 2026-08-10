@@ -9,7 +9,7 @@ _Pressure to which the sample is subject, in atmospheres (Unit: atm)_
 
 
 
-URI: [analysis_api_schema:pressure](https://w3id.org/MONet/analysis-api-schema/pressure)
+URI: [basalt_schema:pressure](https://w3id.org/MONet/basalt-schema/pressure)
 Alias: pressure
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: pressure
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -82,8 +82,8 @@ Alias: pressure
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:pressure |
-| native | analysis_api_schema:pressure |
+| self | basalt_schema:pressure |
+| native | basalt_schema:pressure |
 
 
 
@@ -95,7 +95,7 @@ Alias: pressure
 name: pressure
 description: 'Pressure to which the sample is subject, in atmospheres (Unit: atm)'
 title: pressure
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: pressure
 domain_of:

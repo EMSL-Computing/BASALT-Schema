@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:NexusRoleEnum](https://w3id.org/MONet/analysis-api-schema/NexusRoleEnum)
+URI: [basalt_schema:NexusRoleEnum](https://w3id.org/MONet/basalt-schema/NexusRoleEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -42,7 +42,7 @@ URI: [analysis_api_schema:NexusRoleEnum](https://w3id.org/MONet/analysis-api-sch
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -56,7 +56,7 @@ URI: [analysis_api_schema:NexusRoleEnum](https://w3id.org/MONet/analysis-api-sch
 name: NexusRoleEnum
 todos:
 - delete this or get a real list from NEXUS
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   Principal Investigator:

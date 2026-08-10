@@ -3,10 +3,14 @@ requires = ["hatchling", "uv-dynamic-versioning"]
 build-backend = "hatchling.build"
 
 [project]
-name = "analysis_api_schema"
-description = "Data schema for analysis database at EMSL (PNNL)."
+name = "basalt_schema"
+description = "Broad Analytical Schema for Samples and Laboratory Techniques"
 authors = [
-  {name = "Maia Kapur", email = "maia.kapur@pnnl.gov"},
+  {name = "Maia Kapur", email = "maia.kapur@pnnl.gov",
+  name = "Montana Smith", email = "montana.smith@pnnl.gov",
+  name = "Beata Meluch", email = "beata.meluch@pnnl.gov",
+  name = "Conrad Mearns", email = "conrad.mearns@pnnl.gov",
+  name = "Yuri Corilo", email = "corilo@pnnl.gov"},
 ]
 license = "MIT"
 license-files = ["LICENSE"]
@@ -47,7 +51,7 @@ testpaths = ["tests"]
 # https://docs.astral.sh/ruff/configuration/
 [tool.ruff]
 exclude = [
-    "src/analysis_api_schema/_version.py",
+    "src/basalt_schema/_version.py",
 ]
 # Set oldest supported Python version
 target-version = "py310"
@@ -59,8 +63,8 @@ skip = [
   "pyproject.toml",
   "uv.lock",
   "project/*",
-  "src/analysis_api_schema/datamodel/analysis_api_schema_pydantic.py",
-  "src/analysis_api_schema/datamodel/analysis_api_schema.py",
+  "src/basalt_schema/datamodel/basalt_schema_pydantic.py",
+  "src/basalt_schema/datamodel/basalt_schema.py",
 ]
 
 # Reminder: words have to be lowercased for the ignore-words-list
@@ -77,6 +81,6 @@ extend-exclude = [
   "uv.lock",
   "pyproject.toml",
   "project/*",
-  "src/analysis_api_schema/datamodel/analysis_api_schema_pydantic.py",
-  "src/analysis_api_schema/datamodel/analysis_api_schema.py",
+  "src/basalt_schema/datamodel/basalt_schema_pydantic.py",
+  "src/basalt_schema/datamodel/basalt_schema.py",
 ]

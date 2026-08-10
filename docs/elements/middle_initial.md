@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:middle_initial](https://w3id.org/MONet/analysis-api-schema/middle_initial)
+URI: [basalt_schema:middle_initial](https://w3id.org/MONet/basalt-schema/middle_initial)
 Alias: middle_initial
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: middle_initial
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: middle_initial
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:middle_initial |
-| native | analysis_api_schema:middle_initial |
+| self | basalt_schema:middle_initial |
+| native | basalt_schema:middle_initial |
 
 
 
@@ -83,7 +83,7 @@ Alias: middle_initial
 <details>
 ```yaml
 name: middle_initial
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: middle_initial
 owner: PersonValue

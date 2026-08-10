@@ -9,7 +9,7 @@
 # Last Updated:  2026-03-16
 # =============================================================================
 
-id: https://w3id.org/MONet/analysis-api-schema/ph
+id: https://w3id.org/MONet/basalt-schema/ph
 name: ph_schema
 title: MONet pH Analysis Ingest Schema
 description: |-
@@ -18,7 +18,7 @@ description: |-
 license: MIT
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://w3id.org/MONet/basalt-schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: ph_schema

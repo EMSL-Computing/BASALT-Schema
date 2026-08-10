@@ -9,7 +9,7 @@ _Information about treatment involving exposure of plants to varying levels of p
 
 
 
-URI: [analysis_api_schema:ph_regm](https://w3id.org/MONet/analysis-api-schema/ph_regm)
+URI: [basalt_schema:ph_regm](https://w3id.org/MONet/basalt-schema/ph_regm)
 Alias: ph_regm
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: ph_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: ph_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ph_regm |
-| native | analysis_api_schema:ph_regm |
+| self | basalt_schema:ph_regm |
+| native | basalt_schema:ph_regm |
 
 
 
@@ -87,7 +87,7 @@ description: Information about treatment involving exposure of plants to varying
   was repeated, how long each treatment lasted, and the start and end time of the
   entire treatment; can include multiple regimen
 title: pH regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: ph_regm
 domain_of:

@@ -9,7 +9,7 @@ _Concentration of dissolved carbon dioxide in the sample or liquid portion of th
 
 
 
-URI: [analysis_api_schema:diss_carb_dioxide](https://w3id.org/MONet/analysis-api-schema/diss_carb_dioxide)
+URI: [basalt_schema:diss_carb_dioxide](https://w3id.org/MONet/basalt-schema/diss_carb_dioxide)
 Alias: diss_carb_dioxide
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: diss_carb_dioxide
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: diss_carb_dioxide
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:diss_carb_dioxide |
-| native | analysis_api_schema:diss_carb_dioxide |
+| self | basalt_schema:diss_carb_dioxide |
+| native | basalt_schema:diss_carb_dioxide |
 
 
 
@@ -93,7 +93,7 @@ name: diss_carb_dioxide
 description: 'Concentration of dissolved carbon dioxide in the sample or liquid portion
   of the sample (Unit: umol/L or mg/L)'
 title: dissolved carbon dioxide
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 alias: diss_carb_dioxide
 domain_of:

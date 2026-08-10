@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:OntologyClass](https://w3id.org/MONet/analysis-api-schema/OntologyClass)
+URI: [basalt_schema:OntologyClass](https://w3id.org/MONet/basalt-schema/OntologyClass)
 
 
 
@@ -62,7 +62,7 @@ URI: [analysis_api_schema:OntologyClass](https://w3id.org/MONet/analysis-api-sch
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ URI: [analysis_api_schema:OntologyClass](https://w3id.org/MONet/analysis-api-sch
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:OntologyClass |
-| native | analysis_api_schema:OntologyClass |
+| self | basalt_schema:OntologyClass |
+| native | basalt_schema:OntologyClass |
 
 
 
@@ -88,11 +88,11 @@ URI: [analysis_api_schema:OntologyClass](https://w3id.org/MONet/analysis-api-sch
 <details>
 ```yaml
 name: OntologyClass
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     identifier: true
     domain_of:
     - Activity
@@ -170,7 +170,7 @@ attributes:
     required: true
   description:
     name: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     domain_of:
     - Activity
     - Entity
@@ -198,14 +198,14 @@ attributes:
     range: string
   alternative_identifiers:
     name: alternative_identifiers
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     domain_of:
     - InstrumentData
     - OntologyClass
     range: string
   name:
     name: name
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     domain_of:
     - Activity
     - Entity
@@ -236,11 +236,11 @@ attributes:
 <details>
 ```yaml
 name: OntologyClass
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     identifier: true
     alias: id
     owner: OntologyClass
@@ -320,7 +320,7 @@ attributes:
     required: true
   description:
     name: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     alias: description
     owner: OntologyClass
     domain_of:
@@ -350,7 +350,7 @@ attributes:
     range: string
   alternative_identifiers:
     name: alternative_identifiers
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     alias: alternative_identifiers
     owner: OntologyClass
     domain_of:
@@ -359,7 +359,7 @@ attributes:
     range: string
   name:
     name: name
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://w3id.org/MONet/basalt-schema
     alias: name
     owner: OntologyClass
     domain_of:

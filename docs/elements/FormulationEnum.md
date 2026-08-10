@@ -7,7 +7,7 @@ _Method used to formulate media._
 
 
 
-URI: [analysis_api_schema:FormulationEnum](https://w3id.org/MONet/analysis-api-schema/FormulationEnum)
+URI: [basalt_schema:FormulationEnum](https://w3id.org/MONet/basalt-schema/FormulationEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -47,7 +47,7 @@ URI: [analysis_api_schema:FormulationEnum](https://w3id.org/MONet/analysis-api-s
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://w3id.org/MONet/basalt-schema
 
 
 
@@ -62,7 +62,7 @@ name: FormulationEnum
 description: Method used to formulate media.
 todos:
 - could be made generic for mixing more than just media.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://w3id.org/MONet/basalt-schema
 rank: 1000
 permissible_values:
   manual_mix:
