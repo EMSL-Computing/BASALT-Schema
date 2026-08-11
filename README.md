@@ -7,6 +7,7 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org)
 [![License: CC0-1.0](https://img.shields.io/badge/license-CC0%201.0-lightgrey.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-informational.svg)](https://EMSL-Computing.github.io/basalt-schema)
+[![DOI](https://zenodo.org/badge/1330063141.svg)](https://doi.org/10.5281/zenodo.21893601)
 
 LinkML schema for MONet/EMSL scientific data across **biogeochemical**, **biological**, and **environmental** domains. Canonical source of truth for samples, provenance, laboratory activities, and analytical products used by the Analysis API and database models.
 
@@ -70,4 +71,6 @@ This material is free to use, and attribution is always appreciated. Attribution
 
 Authored by Conrad Mearns, Maia Kapur, Montana Smith, Beata Meluch, Aramy Truong, and Yuri E. Corilo at the Pacific Northwest National Laboratory, operated by Battelle for the U.S. Department of Energy.
 
-Please cite the following in your work: (Place Holder Zenodo)
+Please cite the following in your work: 
+
+Prymolennna, A., Zalmanek, B., Kapur, M. S., Meluch, B. J., Smith, M., Mearns, C., Truong, A.& Corilo, Y. (2026). EMSL-Computing/BASALT-Schema: v0.1.0 — Initial public release of BASALT schema (Version v0.1.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.21893602

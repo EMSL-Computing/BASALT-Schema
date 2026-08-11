@@ -27,4 +27,6 @@ This material is free to use, and attribution is always appreciated. Attribution
 
 Authored by Conrad Mearns, Maia Kapur, Montana Smith, Beata Meluch, Aramy Truong, and Yuri E. Corilo at the Pacific Northwest National Laboratory, operated by Battelle for the U.S. Department of Energy.
 
-(Optional, if applicable): Please cite the following in your work: (Place Holder Zenodo)
+Please cite the following in your work: 
+
+Prymolennna, A., Zalmanek, B., Kapur, M. S., Meluch, B. J., Smith, M., Mearns, C., Truong, A.& Corilo, Y. (2026). EMSL-Computing/BASALT-Schema: v0.1.0 — Initial public release of BASALT schema (Version v0.1.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.21893602
