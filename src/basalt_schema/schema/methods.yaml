@@ -1,8 +1,8 @@
 id: https://w3id.org/MONet/basalt-schema/methods
 name: basalt-schema-methods
-title: Basalt Schema - Methods
+title: BASALT Schema - Methods
 description: |-
-  Enumerated values used throughout the Basalt Schema
+  Enumerated values used throughout the BASALT Schema
 license: MIT
 
 prefixes:

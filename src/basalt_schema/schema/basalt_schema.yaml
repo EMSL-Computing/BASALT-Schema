@@ -1,15 +1,15 @@
 ---
 id: https://w3id.org/MONet/basalt-schema
 name: basalt-schema
-title: Basalt Schema
+title: BASALT Schema
 description: |-
   LinkML-based schema for MONet soil analysis data management and metadata enrichment.
   This schema defines the data models for samples, processed samples, site metadata,
-  and enrichment providers used by Basalt.
+  and enrichment providers used by BASALT.
 license: MIT
 see_also:
   - https://MONet.github.io/basalt-schema
-  - https://github.com/pnnl/analysis-api
+  - https://github.com/mkapur-pnnl/basalt-schema
 
 prefixes:
   basalt_schema: https://w3id.org/MONet/basalt-schema/

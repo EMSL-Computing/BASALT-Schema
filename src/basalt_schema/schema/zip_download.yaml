@@ -1,13 +1,13 @@
 ---
 id: https://w3id.org/MONet/basalt-schema/zip_download
 name: basalt-schema-zip-download
-title: Basalt Schema - Zip Download
+title: BASALT Schema - Zip Download
 description: |-
-  Zip download-related classes for Basalt.
+  Zip download-related classes for BASALT.
 license: MIT
 see_also:
   - https://MONet.github.io/basalt-schema
-  - https://github.com/pnnl/analysis-api
+  - https://github.com/mkapur-pnnl/basalt-schema
 
 prefixes:
   basalt_schema: https://w3id.org/MONet/basalt-schema/

@@ -1,8 +1,8 @@
 id: https://w3id.org/MONet/basalt-schema/products
 name: basalt-schema-products
-title: Basalt Schema - Products
+title: BASALT Schema - Products
 description: |-
-  Enumerated values used throughout the Basalt Schema
+  Enumerated values used throughout the BASALT Schema
 license: MIT
 
 prefixes:

@@ -22,11 +22,11 @@ Alias: size_frac_low
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
 | [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  yes  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  yes  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  yes  |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  yes  |
 
 
 

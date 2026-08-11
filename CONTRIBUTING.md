@@ -1,9 +1,9 @@
-# Contributing to basalt-schema
+# Contributing to BASALT
 
 :+1: First of all: Thank you for taking the time to contribute!
 
 The following is a set of guidelines for contributing to
-basalt-schema. These guidelines are not strict rules.
+BASALT. These guidelines are not strict rules.
 Use your best judgment, and feel free to propose changes to this document
 in a pull request.
 
@@ -22,7 +22,7 @@ in a pull request.
 
 ## Code of Conduct
 
-The basalt-schema team strives to create a
+The BASALT team strives to create a
 welcoming environment for editors, users and other contributors.
 Please carefully read our [Code of Conduct](CODE_OF_CONDUCT.md).
 
@@ -73,7 +73,7 @@ Please submit a [Pull Request][pulls] to submit a new term for consideration.
     - Never work on the main branch, always work on an issue/feature branch
     - Core developers can work on branches off origin rather than forks
     - Always create a PR on a branch to maximize transparency of what you are doing
-    - PRs should be reviewed and merged in a timely fashion by the basalt-schema technical leads
+    - PRs should be reviewed and merged in a timely fashion by the BASALT technical leads
     - PRs that do not pass GitHub actions should never be merged
     - In the case of git conflicts, the contributor should try and resolve the conflict
     - If a PR fails a GitHub action check, the contributor should try and resolve the issue in a timely fashion

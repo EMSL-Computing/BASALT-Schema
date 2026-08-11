@@ -4,11 +4,11 @@
 # =============================================================================
 # 
 # CONTEXT and Purpose:
-# - Documentation and communication tool for the Soil_BioChemical_properties.csv file generaetd by: analysis-api/web/analysisapi/blueprints/zip_download_blueprint.py
+# - Documentation and communication tool for the Soil_BioChemical_properties.csv file generaetd by: the BASALT zip-download service (zip_download_blueprint.py)
 # - Reference for understanding column names and units
 # - NOT used for validation (no min/max constraints included)
 # - Data levels: L2 (sample averages) or L1 (replicate-level data)
-# - This schema is derived from the Basalt Schema as the source of truth https://w3id.org/MONet/basalt-schema
+# - This schema is derived from the BASALT Schema as the source of truth https://w3id.org/MONet/basalt-schema
 # - and therefore column names are faithful to the canonical schema, not the zipdownloader as of last update
 #
 # This file should be updated when:

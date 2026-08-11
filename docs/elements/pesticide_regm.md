@@ -22,8 +22,8 @@ Alias: pesticide_regm
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 

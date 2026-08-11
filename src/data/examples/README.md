@@ -1,6 +1,6 @@
-# Basalt Schema Examples
+# BASALT Schema Examples
 
-This directory contains example YAML files demonstrating the usage of the LinkML-based Basalt Schema.
+This directory contains example YAML files demonstrating the usage of the LinkML-based BASALT Schema.
 
 ## Valid Examples
 

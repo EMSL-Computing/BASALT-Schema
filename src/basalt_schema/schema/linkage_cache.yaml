@@ -1,9 +1,9 @@
 ---
 id: https://w3id.org/MONet/basalt-schema/linkage_cache
 name: basalt-schema-linkage-cache
-title: Basalt Schema — Provenance Linkage Cache
+title: BASALT Schema — Provenance Linkage Cache
 description: |-
-  Pre-computed provenance closure table for Basalt.
+  Pre-computed provenance closure table for BASALT.
   Stores every (ancestor, descendant) pair across all chain types with depth,
   enabling fast provenance queries without live recursive CTE traversal.
 

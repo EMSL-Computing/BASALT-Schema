@@ -1,14 +1,14 @@
 ---
 id: https://w3id.org/MONet/basalt-schema/organism
 name: basalt-schema-organism
-title: Basalt Schema - Organism
+title: BASALT Schema - Organism
 description: |-
   Reference data classes for biological identities (strains, isolates, engineered
   constructs) that can be instantiated by multiple physical samples.
 license: MIT
 see_also:
   - https://MONet.github.io/basalt-schema
-  - https://github.com/pnnl/analysis-api
+  - https://github.com/mkapur-pnnl/basalt-schema
 
 prefixes:
   basalt_schema: https://w3id.org/MONet/basalt-schema/

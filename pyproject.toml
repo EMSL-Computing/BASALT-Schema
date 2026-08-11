@@ -6,11 +6,11 @@ build-backend = "hatchling.build"
 name = "basalt_schema"
 description = "Broad Analytical Schema for Samples and Laboratory Techniques"
 authors = [
-  {name = "Maia Kapur", email = "maia.kapur@pnnl.gov",
-  name = "Montana Smith", email = "montana.smith@pnnl.gov",
-  name = "Beata Meluch", email = "beata.meluch@pnnl.gov",
-  name = "Conrad Mearns", email = "conrad.mearns@pnnl.gov",
-  name = "Yuri Corilo", email = "corilo@pnnl.gov"},
+  {name = "Maia Kapur", email = "maia.kapur@pnnl.gov"},
+  {name = "Montana Smith", email = "montana.smith@pnnl.gov"},
+  {name = "Beata Meluch", email = "beata.meluch@pnnl.gov"},
+  {name = "Conrad Mearns", email = "conrad.mearns@pnnl.gov"},
+  {name = "Yuri Corilo", email = "corilo@pnnl.gov"},
 ]
 license = "MIT"
 license-files = ["LICENSE"]

@@ -18,9 +18,9 @@
 
 id: https://w3id.org/MONet/basalt-schema/doc-overlay
 name: basalt-schema-doc-overlay
-title: Basalt Schema (Doc-Gen Overlay)
+title: BASALT Schema (Doc-Gen Overlay)
 description: |-
-  Documentation-generation overlay for the Basalt Schema.
+  Documentation-generation overlay for the BASALT Schema.
   Imports the operational schema and resolves opaque types for rendering only.
 license: MIT
 

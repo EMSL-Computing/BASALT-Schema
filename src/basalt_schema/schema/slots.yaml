@@ -1,14 +1,14 @@
 ---
 id: https://w3id.org/MONet/basalt-schema/slots
 name: basalt-schema-slots
-title: Slot definitions for the Basalt Schema
+title: Slot definitions for the BASALT Schema
 description: |-
   Slot definitions for basalt-schema in one file for better 
   maintainability and reusability.
 license: MIT
 see_also:
   - https://MONet.github.io/basalt-schema
-  - https://github.com/pnnl/analysis-api
+  - https://github.com/mkapur-pnnl/basalt-schema
 
 prefixes:
   basalt_schema: https://w3id.org/MONet/basalt-schema/

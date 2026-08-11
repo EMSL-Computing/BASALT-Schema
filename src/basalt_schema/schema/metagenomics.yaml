@@ -1,8 +1,8 @@
 id: https://w3id.org/MONet/basalt-schema/metagenomics
 name: basalt-schema-metagenomics
-title: Metagenomics additions for Basalt
+title: Metagenomics additions for BASALT
 description: |
-  Metagenomics product and workflow classes for Basalt.
+  Metagenomics product and workflow classes for BASALT.
 
   Inheritance hierarchy (all is_a chains):
     dataProduct (abstract)

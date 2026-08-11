@@ -4,11 +4,11 @@ description: 'LinkML-based schema for MONet soil analysis data management and me
 
   This schema defines the data models for samples, processed samples, site metadata,
 
-  and enrichment providers used by Basalt.'
-title: Basalt Schema
+  and enrichment providers used by BASALT.'
+title: BASALT Schema
 see_also:
 - https://MONet.github.io/basalt-schema
-- https://github.com/pnnl/analysis-api
+- https://github.com/mkapur-pnnl/basalt-schema
 id: https://w3id.org/MONet/basalt-schema
 imports:
 - linkml:types
@@ -23168,7 +23168,7 @@ classes:
     class_uri: basalt_schema:ZipDownload
 metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
-source_file_date: '2026-07-29T13:46:51'
-source_file_size: 17062
-generation_date: '2026-07-29T17:19:14'
+source_file_date: '2026-08-10T17:18:23'
+source_file_size: 17006
+generation_date: '2026-08-10T17:23:43'
 

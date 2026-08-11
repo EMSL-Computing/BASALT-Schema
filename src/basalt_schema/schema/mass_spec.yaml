@@ -1,8 +1,8 @@
 id: https://w3id.org/MONet/basalt-schema/mass-spec
 name: basalt-schema-mass-spec
-title: Mass spectrometry subclasses for Basalt
+title: Mass spectrometry subclasses for BASALT
 description: |
-  Mass spectrometry product and workflow classes for Basalt.
+  Mass spectrometry product and workflow classes for BASALT.
 
   Classes defined in this file:
 

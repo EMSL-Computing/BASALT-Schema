@@ -1,13 +1,13 @@
 ---
 id: https://w3id.org/MONet/basalt-schema/study
 name: basalt-schema-study
-title: Basalt Schema - Study
+title: BASALT Schema - Study
 description: |-
-  Study-related classes for Basalt.
+  Study-related classes for BASALT.
 license: MIT
 see_also:
   - https://MONet.github.io/basalt-schema
-  - https://github.com/pnnl/analysis-api
+  - https://github.com/mkapur-pnnl/basalt-schema
 
 prefixes:
   basalt_schema: https://w3id.org/MONet/basalt-schema/

@@ -1,8 +1,8 @@
 id: https://w3id.org/MONet/basalt-schema/sample-processing
 name: basalt-schema-sample-processing
-title: Sample processing subclasses for Basalt
+title: Sample processing subclasses for BASALT
 description: |
-  Sample processing subclasses for Basalt.
+  Sample processing subclasses for BASALT.
 license: MIT
 prefixes:
   basalt_schema: https://w3id.org/MONet/basalt-schema/

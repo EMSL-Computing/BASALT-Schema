@@ -22,11 +22,11 @@ Alias: filter_method
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  yes  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 
 
 

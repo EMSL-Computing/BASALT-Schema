@@ -1,14 +1,14 @@
 ---
 id: https://w3id.org/MONet/basalt-schema/sample-classes
 name: basalt-schema-sample-classes
-title: Basalt Sample Class Schema
+title: BASALT Sample Class Schema
 description: |-
-  LinkML-based schema for sample classes for Analysis API.
+  LinkML-based schema for sample classes for BASALT.
   This schema defines the data models for samples, sample type subclasses, and processed samples.
 license: MIT
 see_also:
   - https://MONet.github.io/basalt-schema
-  - https://github.com/pnnl/analysis-api
+  - https://github.com/mkapur-pnnl/basalt-schema
 
 prefixes:
   basalt_schema: https://w3id.org/MONet/basalt-schema/

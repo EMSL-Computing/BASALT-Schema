@@ -22,23 +22,23 @@ Alias: measure_type
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EnzymeProduct](EnzymeProduct.md) | Enzyme activity analysis product, typically derived via colorimetric assay of... |  no  |
-| [PHProduct](PHProduct.md) | Soil pH analysis product, typically derived via pH meter or similar instrumen... |  no  |
-| [IonsAnalysisProduct](IonsAnalysisProduct.md) | Ions analysis product, typically derived via ICP-OES or similar instrument |  no  |
-| [RespirationProduct](RespirationProduct.md) | Soil respiration analysis product |  no  |
-| [XRFElementalProduct](XRFElementalProduct.md) | X-ray Fluorescence (XRF) elemental concentration data |  no  |
-| [XRDPhaseProduct](XRDPhaseProduct.md) | X-ray Diffraction (XRD) mineral phase identification and quantification data |  no  |
-| [TextureProduct](TextureProduct.md) | Soil texture analysis product, typically derived via hydrometer or similar in... |  no  |
-| [MAOMProduct](MAOMProduct.md) | Mineral-Associated Organic Matter (MAOM) analysis product, typically derived ... |  no  |
-| [GWCMoistureProduct](GWCMoistureProduct.md) | Gravimetric water content (GWC) analysis product, typically derived via oven-... |  no  |
-| [ElementalAnalysisProduct](ElementalAnalysisProduct.md) | Elemental analysis product, typically derived via combustion or similar instr... |  no  |
 | [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) | Phosphorus analysis product, typically derived via colorimetric assay of soil... |  no  |
+| [PHProduct](PHProduct.md) | Soil pH analysis product, typically derived via pH meter or similar instrumen... |  no  |
+| [XRFElementalProduct](XRFElementalProduct.md) | X-ray Fluorescence (XRF) elemental concentration data |  no  |
+| [IonsAnalysisProduct](IonsAnalysisProduct.md) | Ions analysis product, typically derived via ICP-OES or similar instrument |  no  |
 | [BulkDensityProduct](BulkDensityProduct.md) | Bulk density analysis product, typically derived via oven-drying and weighing... |  no  |
 | [MicrobialBiomassProduct](MicrobialBiomassProduct.md) | Microbial biomass analysis product, typically derived via chloroform fumigati... |  no  |
+| [MAOMProduct](MAOMProduct.md) | Mineral-Associated Organic Matter (MAOM) analysis product, typically derived ... |  no  |
+| [XRDPhaseProduct](XRDPhaseProduct.md) | X-ray Diffraction (XRD) mineral phase identification and quantification data |  no  |
+| [EnzymeProduct](EnzymeProduct.md) | Enzyme activity analysis product, typically derived via colorimetric assay of... |  no  |
+| [ElementalAnalysisProduct](ElementalAnalysisProduct.md) | Elemental analysis product, typically derived via combustion or similar instr... |  no  |
 | [TomographyProduct](TomographyProduct.md) | Soil tomography analysis product, typically derived via X-ray computed tomogr... |  no  |
 | [HydraulicPropertiesProduct](HydraulicPropertiesProduct.md) | Soil hydraulic parameters derived from HYPROP evaporation-experiment data |  no  |
+| [RespirationProduct](RespirationProduct.md) | Soil respiration analysis product |  no  |
 | [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) | Nitrogen analysis product, typically derived via colorimetric assay of soil e... |  no  |
+| [GWCMoistureProduct](GWCMoistureProduct.md) | Gravimetric water content (GWC) analysis product, typically derived via oven-... |  no  |
 | [WEOMProduct](WEOMProduct.md) | Water Extractable Organic Matter (WEOM) analysis product, typically derived v... |  no  |
+| [TextureProduct](TextureProduct.md) | Soil texture analysis product, typically derived via hydrometer or similar in... |  no  |
 
 
 

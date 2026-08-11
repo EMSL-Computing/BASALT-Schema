@@ -1,12 +1,12 @@
 id: https://w3id.org/MONet/basalt-schema/administration
 name: basalt-schema-administration
-title: Basalt Schema - Administration
+title: BASALT Schema - Administration
 description: |-
-  Administration-related classes for Basalt.
+  Administration-related classes for BASALT.
 license: MIT
 see_also:
   - https://MONet.github.io/basalt-schema
-  - https://github.com/pnnl/analysis-api
+  - https://github.com/mkapur-pnnl/basalt-schema
 
 prefixes:
   basalt_schema: https://w3id.org/MONet/basalt-schema/

@@ -1,9 +1,9 @@
 ---
 id: https://w3id.org/MONet/basalt-schema/enums
 name: basalt-schema-enums
-title: Basalt Schema - Enumerations
+title: BASALT Schema - Enumerations
 description: |-
-  Enumerated values used throughout the Basalt Schema
+  Enumerated values used throughout the BASALT Schema
 license: MIT
 
 prefixes:

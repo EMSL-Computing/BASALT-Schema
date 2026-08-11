@@ -1,4 +1,4 @@
-# basalt-schema
+# BASALT
 
 Broad Analytical Schema for Samples and Laboratory Techniques
 

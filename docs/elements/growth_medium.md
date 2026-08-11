@@ -22,17 +22,17 @@ Alias: growth_medium
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |  no  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  yes  |
-| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  yes  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
-| [StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |  no  |
-| [StrainPurity](StrainPurity.md) | Purity check of a strain culture |  no  |
+| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
+| [PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  yes  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  yes  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  yes  |
+| [StrainPurity](StrainPurity.md) | Purity check of a strain culture |  no  |
 
 
 

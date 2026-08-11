@@ -1,11 +1,11 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-29T17:44:55
+# Generation date: 2026-08-10T17:24:37
 # Schema: basalt-schema
 #
 # id: https://w3id.org/MONet/basalt-schema
 # description: LinkML-based schema for MONet soil analysis data management and metadata enrichment.
 #   This schema defines the data models for samples, processed samples, site metadata,
-#   and enrichment providers used by Basalt.
+#   and enrichment providers used by BASALT.
 # license: MIT
 
 import dataclasses
