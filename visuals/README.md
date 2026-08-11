@@ -1,6 +1,6 @@
 # Visuals
 
-Standalone, self-contained visual explainers for the Basalt Schema.
+Standalone, self-contained visual explainers for the BASALT Schema.
 Each file is a single HTML page with all CSS/JS inlined — no build step, no server,
 no external dependencies. Open directly in any browser (`file://` works).
 

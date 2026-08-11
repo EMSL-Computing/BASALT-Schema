@@ -1,5 +1,5 @@
 ---
-site_name: "basalt-schema"
+site_name: "BASALT"
 theme:
   # https://www.mkdocs.org/user-guide/configuration/#theme
   name: material
@@ -20,7 +20,10 @@ theme:
 
 # extra css/js see https://www.mkdocs.org/user-guide/customizing-your-theme/
 extra_css: []
-extra_javascript: []
+extra_javascript:
+  # Opens the "Schema Visualizer" nav entry in a new tab, resolved against the
+  # site root so it works both under `mkdocs serve` and on the published site.
+  - js/nav-visualizer.js
 
 plugins:
   - search
@@ -62,8 +65,7 @@ watch:
 nav:
   - Home: index.md
   - Schema: elements/index.md
-  - Visuals:
-      - Schema Explorer: https://mkapur-pnnl.github.io/basalt-schema/files/schema-explorer.html
+  - Schema Visualizer: https://mkapur-pnnl.github.io/basalt-schema/files/schema-explorer.html
   - About: about.md
 
 exclude_docs: |
