@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:sample_volume](https://w3id.org/MONet/analysis-api-schema/sample_volume)
+URI: [basalt_schema:sample_volume](https://EMSL-Computing.github.io/basalt-schema/sample_volume)
 Alias: sample_volume
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: sample_volume
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TOCTNMethod](TOCTNMethod.md) |  |  no  |
 | [MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |  no  |
+| [TOCTNMethod](TOCTNMethod.md) |  |  no  |
 
 
 
@@ -59,8 +59,8 @@ Alias: sample_volume
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sample_volume |
-| native | analysis_api_schema:sample_volume |
+| self | basalt_schema:sample_volume |
+| native | basalt_schema:sample_volume |
 
 
 

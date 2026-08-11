@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:language](https://w3id.org/MONet/analysis-api-schema/language)
+URI: [basalt_schema:language](https://EMSL-Computing.github.io/basalt-schema/language)
 Alias: language
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: language
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: language
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:language |
-| native | analysis_api_schema:language |
+| self | basalt_schema:language |
+| native | basalt_schema:language |
 
 
 
@@ -83,7 +83,7 @@ Alias: language
 <details>
 ```yaml
 name: language
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: language
 owner: TextValue

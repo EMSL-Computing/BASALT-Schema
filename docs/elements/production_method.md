@@ -9,7 +9,7 @@ _A DOI or description of how the compound was produced, if the commercially purc
 
 
 
-URI: [analysis_api_schema:production_method](https://w3id.org/MONet/analysis-api-schema/production_method)
+URI: [basalt_schema:production_method](https://EMSL-Computing.github.io/basalt-schema/production_method)
 Alias: production_method
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: production_method
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
-| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: production_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: production_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:production_method |
-| native | analysis_api_schema:production_method |
+| self | basalt_schema:production_method |
+| native | basalt_schema:production_method |
 
 
 
@@ -86,7 +86,7 @@ name: production_method
 description: A DOI or description of how the compound was produced, if the commercially
   purchased material was altered
 title: production method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: production_method
 domain_of:

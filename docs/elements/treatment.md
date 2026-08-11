@@ -9,7 +9,7 @@ _Experimental treatment (e.g. "control", "nickel_1pct")_
 
 
 
-URI: [analysis_api_schema:treatment](https://w3id.org/MONet/analysis-api-schema/treatment)
+URI: [basalt_schema:treatment](https://EMSL-Computing.github.io/basalt-schema/treatment)
 Alias: treatment
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: treatment
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: treatment
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:treatment |
-| native | analysis_api_schema:treatment |
+| self | basalt_schema:treatment |
+| native | basalt_schema:treatment |
 
 
 
@@ -89,7 +89,7 @@ Alias: treatment
 ```yaml
 name: treatment
 description: Experimental treatment (e.g. "control", "nickel_1pct")
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: treatment
 owner: EcoplateWellMetadata

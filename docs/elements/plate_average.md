@@ -9,7 +9,7 @@ _Mean measurement across all sample wells (excludes blanks)_
 
 
 
-URI: [analysis_api_schema:plate_average](https://w3id.org/MONet/analysis-api-schema/plate_average)
+URI: [basalt_schema:plate_average](https://EMSL-Computing.github.io/basalt-schema/plate_average)
 Alias: plate_average
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: plate_average
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |  no  |
 | [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |  no  |
+| [AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |  no  |
 | [PlateProduct](PlateProduct.md) | Abstract base for plate measurement data products |  no  |
 
 
@@ -67,7 +67,7 @@ Alias: plate_average
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -76,8 +76,8 @@ Alias: plate_average
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:plate_average |
-| native | analysis_api_schema:plate_average |
+| self | basalt_schema:plate_average |
+| native | basalt_schema:plate_average |
 
 
 
@@ -90,7 +90,7 @@ name: plate_average
 description: Mean measurement across all sample wells (excludes blanks)
 todos:
 - units
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: plate_average
 domain_of:

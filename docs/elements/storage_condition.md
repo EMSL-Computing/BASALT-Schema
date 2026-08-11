@@ -9,7 +9,7 @@ _The storage condition of the sample. This field is NOT multivalued. If selectin
 
 
 
-URI: [analysis_api_schema:storage_condition](https://w3id.org/MONet/analysis-api-schema/storage_condition)
+URI: [basalt_schema:storage_condition](https://EMSL-Computing.github.io/basalt-schema/storage_condition)
 Alias: storage_condition
 
 <!-- no inheritance hierarchy -->
@@ -22,23 +22,23 @@ Alias: storage_condition
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
-| [EngineeredStrainSample](EngineeredStrainSample.md) | A sample containing a strain of an organism that has been subjected to geneti... |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |  yes  |
-| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
 | [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
+| [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |  yes  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
+| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
 | [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [EngineeredStrainSample](EngineeredStrainSample.md) | A sample containing a strain of an organism that has been subjected to geneti... |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
 
 
 
@@ -84,7 +84,7 @@ Alias: storage_condition
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -93,8 +93,8 @@ Alias: storage_condition
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:storage_condition |
-| native | analysis_api_schema:storage_condition |
+| self | basalt_schema:storage_condition |
+| native | basalt_schema:storage_condition |
 | exact | MIXS:0000327 |
 
 
@@ -108,7 +108,7 @@ name: storage_condition
 description: The storage condition of the sample. This field is NOT multivalued. If
   selecting other add the `other_storage_condt` attribute to provide additional detail.
 title: storage condition
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - samp_store_cond
 - storage_cond

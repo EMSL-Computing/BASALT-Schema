@@ -9,7 +9,7 @@ _NCBI taxon ID. Format with prefix NCBITaxon:####_
 
 
 
-URI: [analysis_api_schema:host_taxid](https://w3id.org/MONet/analysis-api-schema/host_taxid)
+URI: [basalt_schema:host_taxid](https://EMSL-Computing.github.io/basalt-schema/host_taxid)
 Alias: host_taxid
 
 <!-- no inheritance hierarchy -->
@@ -23,12 +23,12 @@ Alias: host_taxid
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  yes  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  yes  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  yes  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  yes  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  yes  |
 
 
 
@@ -81,7 +81,7 @@ Alias: host_taxid
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -90,8 +90,8 @@ Alias: host_taxid
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:host_taxid |
-| native | analysis_api_schema:host_taxid |
+| self | basalt_schema:host_taxid |
+| native | basalt_schema:host_taxid |
 
 
 
@@ -103,7 +103,7 @@ Alias: host_taxid
 name: host_taxid
 description: NCBI taxon ID. Format with prefix NCBITaxon:####
 title: host taxonomy identifier
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - host_taxonomy_id
 - host_ncbi_taxon_id

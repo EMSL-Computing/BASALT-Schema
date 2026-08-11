@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:MassSpecRawFileTypeEnum](https://w3id.org/MONet/analysis-api-schema/MassSpecRawFileTypeEnum)
+URI: [basalt_schema:MassSpecRawFileTypeEnum](https://EMSL-Computing.github.io/basalt-schema/MassSpecRawFileTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -38,7 +38,7 @@ URI: [analysis_api_schema:MassSpecRawFileTypeEnum](https://w3id.org/MONet/analys
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -50,7 +50,7 @@ URI: [analysis_api_schema:MassSpecRawFileTypeEnum](https://w3id.org/MONet/analys
 <details>
 ```yaml
 name: MassSpecRawFileTypeEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   .d:

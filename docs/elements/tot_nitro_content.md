@@ -9,7 +9,7 @@ _Total nitrogen content of the sample. Provide value and unit any unit is valid_
 
 
 
-URI: [analysis_api_schema:tot_nitro_content](https://w3id.org/MONet/analysis-api-schema/tot_nitro_content)
+URI: [basalt_schema:tot_nitro_content](https://EMSL-Computing.github.io/basalt-schema/tot_nitro_content)
 Alias: tot_nitro_content
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: tot_nitro_content
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 
 
@@ -70,7 +70,7 @@ Alias: tot_nitro_content
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: tot_nitro_content
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:tot_nitro_content |
-| native | analysis_api_schema:tot_nitro_content |
+| self | basalt_schema:tot_nitro_content |
+| native | basalt_schema:tot_nitro_content |
 
 
 
@@ -93,7 +93,7 @@ name: tot_nitro_content
 description: Total nitrogen content of the sample. Provide value and unit any unit
   is valid
 title: total nitrogen content
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: tot_nitro_content
 domain_of:

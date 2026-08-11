@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:first_name](https://w3id.org/MONet/analysis-api-schema/first_name)
+URI: [basalt_schema:first_name](https://EMSL-Computing.github.io/basalt-schema/first_name)
 Alias: first_name
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: first_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: first_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:first_name |
-| native | analysis_api_schema:first_name |
+| self | basalt_schema:first_name |
+| native | basalt_schema:first_name |
 
 
 
@@ -84,7 +84,7 @@ Alias: first_name
 <details>
 ```yaml
 name: first_name
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: first_name
 owner: PersonValue

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_sb](https://w3id.org/MONet/analysis-api-schema/flag_sb)
+URI: [basalt_schema:flag_sb](https://EMSL-Computing.github.io/basalt-schema/flag_sb)
 Alias: flag_sb
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_sb
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_sb
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_sb |
-| native | analysis_api_schema:flag_sb |
+| self | basalt_schema:flag_sb |
+| native | basalt_schema:flag_sb |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_sb
 <details>
 ```yaml
 name: flag_sb
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_sb
 owner: XRFElementalProduct

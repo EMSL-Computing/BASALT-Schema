@@ -3,12 +3,16 @@ requires = ["hatchling", "uv-dynamic-versioning"]
 build-backend = "hatchling.build"
 
 [project]
-name = "analysis_api_schema"
-description = "Data schema for analysis database at EMSL (PNNL)."
+name = "basalt_schema"
+description = "Broad Analytical Schema for Samples and Laboratory Techniques"
 authors = [
   {name = "Maia Kapur", email = "maia.kapur@pnnl.gov"},
+  {name = "Montana Smith", email = "montana.smith@pnnl.gov"},
+  {name = "Beata Meluch", email = "beata.meluch@pnnl.gov"},
+  {name = "Conrad Mearns", email = "conrad.mearns@pnnl.gov"},
+  {name = "Yuri Corilo", email = "corilo@pnnl.gov"},
 ]
-license = "MIT"
+license = "CC0-1.0"
 license-files = ["LICENSE"]
 readme = "README.md"
 requires-python = ">=3.10"
@@ -38,7 +42,8 @@ source = "uv-dynamic-versioning"
 [tool.uv-dynamic-versioning]
 vcs = "git"
 style = "pep440"
-fallback-version = "0.0.0"
+# Keep in sync with `version` in src/basalt_schema/schema/basalt_schema.yaml when untagged
+fallback-version = "0.1.0"
 
 # Ref.: https://docs.pytest.org/en/stable/reference/reference.html#configuration-options
 [tool.pytest.ini_options]
@@ -47,7 +52,7 @@ testpaths = ["tests"]
 # https://docs.astral.sh/ruff/configuration/
 [tool.ruff]
 exclude = [
-    "src/analysis_api_schema/_version.py",
+    "src/basalt_schema/_version.py",
 ]
 # Set oldest supported Python version
 target-version = "py310"
@@ -59,8 +64,8 @@ skip = [
   "pyproject.toml",
   "uv.lock",
   "project/*",
-  "src/analysis_api_schema/datamodel/analysis_api_schema_pydantic.py",
-  "src/analysis_api_schema/datamodel/analysis_api_schema.py",
+  "src/basalt_schema/datamodel/basalt_schema_pydantic.py",
+  "src/basalt_schema/datamodel/basalt_schema.py",
 ]
 
 # Reminder: words have to be lowercased for the ignore-words-list
@@ -77,6 +82,6 @@ extend-exclude = [
   "uv.lock",
   "pyproject.toml",
   "project/*",
-  "src/analysis_api_schema/datamodel/analysis_api_schema_pydantic.py",
-  "src/analysis_api_schema/datamodel/analysis_api_schema.py",
+  "src/basalt_schema/datamodel/basalt_schema_pydantic.py",
+  "src/basalt_schema/datamodel/basalt_schema.py",
 ]

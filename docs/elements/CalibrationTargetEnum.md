@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:CalibrationTargetEnum](https://w3id.org/MONet/analysis-api-schema/CalibrationTargetEnum)
+URI: [basalt_schema:CalibrationTargetEnum](https://EMSL-Computing.github.io/basalt-schema/CalibrationTargetEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -38,7 +38,7 @@ URI: [analysis_api_schema:CalibrationTargetEnum](https://w3id.org/MONet/analysis
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -50,7 +50,7 @@ URI: [analysis_api_schema:CalibrationTargetEnum](https://w3id.org/MONet/analysis
 <details>
 ```yaml
 name: CalibrationTargetEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   mass_charge_ratio:

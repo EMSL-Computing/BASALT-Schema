@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:database](https://w3id.org/MONet/analysis-api-schema/database)
+URI: [basalt_schema:database](https://EMSL-Computing.github.io/basalt-schema/database)
 Alias: database
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: database
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: database
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:database |
-| native | analysis_api_schema:database |
+| self | basalt_schema:database |
+| native | basalt_schema:database |
 
 
 
@@ -84,7 +84,7 @@ Alias: database
 <details>
 ```yaml
 name: database
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: database
 owner: FunctionalAnnotationIdentifier

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_zinc](https://w3id.org/MONet/analysis-api-schema/flag_zinc)
+URI: [basalt_schema:flag_zinc](https://EMSL-Computing.github.io/basalt-schema/flag_zinc)
 Alias: flag_zinc
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_zinc
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_zinc
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_zinc |
-| native | analysis_api_schema:flag_zinc |
+| self | basalt_schema:flag_zinc |
+| native | basalt_schema:flag_zinc |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_zinc
 <details>
 ```yaml
 name: flag_zinc
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_zinc
 owner: IonsAnalysisProduct

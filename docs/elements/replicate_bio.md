@@ -9,7 +9,7 @@ _The biological replicate number of the sample, if applicable._
 
 
 
-URI: [analysis_api_schema:replicate_bio](https://w3id.org/MONet/analysis-api-schema/replicate_bio)
+URI: [basalt_schema:replicate_bio](https://EMSL-Computing.github.io/basalt-schema/replicate_bio)
 Alias: replicate_bio
 
 <!-- no inheritance hierarchy -->
@@ -55,7 +55,7 @@ Alias: replicate_bio
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -64,8 +64,8 @@ Alias: replicate_bio
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:replicate_bio |
-| native | analysis_api_schema:replicate_bio |
+| self | basalt_schema:replicate_bio |
+| native | basalt_schema:replicate_bio |
 
 
 
@@ -78,7 +78,7 @@ name: replicate_bio
 description: The biological replicate number of the sample, if applicable.
 todos:
 - reconcile replicate modelling
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: replicate_bio
 range: integer

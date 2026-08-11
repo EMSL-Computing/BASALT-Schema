@@ -9,7 +9,7 @@ _pH measurement of the culture rooting medium._
 
 
 
-URI: [analysis_api_schema:root_med_ph](https://w3id.org/MONet/analysis-api-schema/root_med_ph)
+URI: [basalt_schema:root_med_ph](https://EMSL-Computing.github.io/basalt-schema/root_med_ph)
 Alias: root_med_ph
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: root_med_ph
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: root_med_ph
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:root_med_ph |
-| native | analysis_api_schema:root_med_ph |
+| self | basalt_schema:root_med_ph |
+| native | basalt_schema:root_med_ph |
 
 
 
@@ -83,7 +83,7 @@ Alias: root_med_ph
 name: root_med_ph
 description: pH measurement of the culture rooting medium.
 title: rooting medium pH
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: root_med_ph
 domain_of:

@@ -9,7 +9,7 @@ _Concentration of dissolved carbon dioxide in the sample or liquid portion of th
 
 
 
-URI: [analysis_api_schema:diss_carb_dioxide](https://w3id.org/MONet/analysis-api-schema/diss_carb_dioxide)
+URI: [basalt_schema:diss_carb_dioxide](https://EMSL-Computing.github.io/basalt-schema/diss_carb_dioxide)
 Alias: diss_carb_dioxide
 
 <!-- no inheritance hierarchy -->
@@ -23,8 +23,8 @@ Alias: diss_carb_dioxide
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: diss_carb_dioxide
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: diss_carb_dioxide
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:diss_carb_dioxide |
-| native | analysis_api_schema:diss_carb_dioxide |
+| self | basalt_schema:diss_carb_dioxide |
+| native | basalt_schema:diss_carb_dioxide |
 
 
 
@@ -93,7 +93,7 @@ name: diss_carb_dioxide
 description: 'Concentration of dissolved carbon dioxide in the sample or liquid portion
   of the sample (Unit: umol/L or mg/L)'
 title: dissolved carbon dioxide
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: diss_carb_dioxide
 domain_of:

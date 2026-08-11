@@ -9,7 +9,7 @@ _The difference between sample start and sample end time in seconds. (Unit: s)_
 
 
 
-URI: [analysis_api_schema:sampling_duration](https://w3id.org/MONet/analysis-api-schema/sampling_duration)
+URI: [basalt_schema:sampling_duration](https://EMSL-Computing.github.io/basalt-schema/sampling_duration)
 Alias: sampling_duration
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: sampling_duration
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: sampling_duration
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sampling_duration |
-| native | analysis_api_schema:sampling_duration |
+| self | basalt_schema:sampling_duration |
+| native | basalt_schema:sampling_duration |
 
 
 
@@ -92,7 +92,7 @@ name: sampling_duration
 description: 'The difference between sample start and sample end time in seconds.
   (Unit: s)'
 title: sampling duration
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sampling_duration
 domain_of:

@@ -9,7 +9,7 @@ _A brief description of any processing applied to the sample during or after ret
 
 
 
-URI: [analysis_api_schema:sample_processing](https://w3id.org/MONet/analysis-api-schema/sample_processing)
+URI: [basalt_schema:sample_processing](https://EMSL-Computing.github.io/basalt-schema/sample_processing)
 Alias: sample_processing
 
 <!-- no inheritance hierarchy -->
@@ -22,19 +22,19 @@ Alias: sample_processing
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
-| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
 
 
 
@@ -73,7 +73,7 @@ Alias: sample_processing
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -82,8 +82,8 @@ Alias: sample_processing
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sample_processing |
-| native | analysis_api_schema:sample_processing |
+| self | basalt_schema:sample_processing |
+| native | basalt_schema:sample_processing |
 
 
 
@@ -97,7 +97,7 @@ description: A brief description of any processing applied to the sample during 
   after retrieving the sample from environment or a link to the relevant protocol(s)
   performed.
 title: sample processing
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sample_processing
 domain_of:

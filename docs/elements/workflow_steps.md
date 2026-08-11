@@ -13,7 +13,7 @@ _Schema for allowed keys TBD per workflow type before full implementation._
 
 
 
-URI: [analysis_api_schema:workflow_steps](https://w3id.org/MONet/analysis-api-schema/workflow_steps)
+URI: [basalt_schema:workflow_steps](https://EMSL-Computing.github.io/basalt-schema/workflow_steps)
 Alias: workflow_steps
 
 <!-- no inheritance hierarchy -->
@@ -26,9 +26,9 @@ Alias: workflow_steps
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
-| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
 | [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |  no  |
+| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
+| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
 
 
 
@@ -67,7 +67,7 @@ Alias: workflow_steps
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -76,8 +76,8 @@ Alias: workflow_steps
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:workflow_steps |
-| native | analysis_api_schema:workflow_steps |
+| self | basalt_schema:workflow_steps |
+| native | basalt_schema:workflow_steps |
 
 
 
@@ -92,7 +92,7 @@ description: 'Per-run workflow parameters. Previously annotated TODO JSONB in sc
   Direction: structured key-value pairs keyed by workflow type.
 
   Schema for allowed keys TBD per workflow type before full implementation.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: workflow_steps
 domain_of:

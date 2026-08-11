@@ -9,7 +9,7 @@ _Elevation of the sampling site is its height above a fixed reference point, mos
 
 
 
-URI: [analysis_api_schema:elev](https://w3id.org/MONet/analysis-api-schema/elev)
+URI: [basalt_schema:elev](https://EMSL-Computing.github.io/basalt-schema/elev)
 Alias: elev
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: elev
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: elev
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:elev |
-| native | analysis_api_schema:elev |
+| self | basalt_schema:elev |
+| native | basalt_schema:elev |
 
 
 
@@ -92,7 +92,7 @@ description: 'Elevation of the sampling site is its height above a fixed referen
   point, most commonly the mean sea level. Elevation is mainly used when referring
   to points on the earth''s surface. (Unit: m).'
 title: elevation
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: elev
 domain_of:

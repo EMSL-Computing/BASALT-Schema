@@ -18,7 +18,7 @@ from pathlib import Path
 from linkml_runtime import SchemaView
 
 ROOT = Path(__file__).resolve().parent.parent
-SCHEMA = ROOT / "src/analysis_api_schema/schema/analysis_api_schema.yaml"
+SCHEMA = ROOT / "src/basalt_schema/schema/basalt_schema.yaml"
 HTML = ROOT / "visuals/schema-explorer.html"
 MARKER = '<script id="model" type="application/json">'
 

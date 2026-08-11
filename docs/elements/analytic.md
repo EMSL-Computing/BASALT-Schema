@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:analytic](https://w3id.org/MONet/analysis-api-schema/analytic)
+URI: [basalt_schema:analytic](https://EMSL-Computing.github.io/basalt-schema/analytic)
 Alias: analytic
 
 <!-- no inheritance hierarchy -->
@@ -17,19 +17,19 @@ Alias: analytic
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TextureMethod](TextureMethod.md) |  |  no  |
-| [EnzymeActivityMethod](EnzymeActivityMethod.md) |  |  no  |
-| [ElementalAnalysisMethod](ElementalAnalysisMethod.md) |  |  no  |
-| [KuoMethod](KuoMethod.md) |  |  no  |
-| [MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |  no  |
-| [RespirationMethod](RespirationMethod.md) |  |  no  |
-| [PHMethod](PHMethod.md) |  |  no  |
 | [XrayComputedTomographyMethod](XrayComputedTomographyMethod.md) |  |  no  |
+| [TextureMethod](TextureMethod.md) |  |  no  |
 | [TOCTNMethod](TOCTNMethod.md) |  |  no  |
-| [BulkDensityMethod](BulkDensityMethod.md) |  |  no  |
+| [PHMethod](PHMethod.md) |  |  no  |
 | [Method](Method.md) |  |  no  |
+| [EnzymeActivityMethod](EnzymeActivityMethod.md) |  |  no  |
+| [KuoMethod](KuoMethod.md) |  |  no  |
 | [HydraulicPropertiesMethod](HydraulicPropertiesMethod.md) |  |  no  |
+| [MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |  no  |
+| [ElementalAnalysisMethod](ElementalAnalysisMethod.md) |  |  no  |
+| [RespirationMethod](RespirationMethod.md) |  |  no  |
 | [GravimetricWaterContentMethod](GravimetricWaterContentMethod.md) |  |  no  |
+| [BulkDensityMethod](BulkDensityMethod.md) |  |  no  |
 
 
 
@@ -73,7 +73,7 @@ Alias: analytic
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -82,8 +82,8 @@ Alias: analytic
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:analytic |
-| native | analysis_api_schema:analytic |
+| self | basalt_schema:analytic |
+| native | basalt_schema:analytic |
 
 
 
@@ -95,7 +95,7 @@ Alias: analytic
 name: analytic
 todos:
 - what does this mean
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: analytic
 domain_of:

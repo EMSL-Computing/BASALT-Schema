@@ -13,7 +13,7 @@ _  Ecoplate: EcoplateWellMetadata instances (position, carbon_source, treatment,
 
 
 
-URI: [analysis_api_schema:well_metadata](https://w3id.org/MONet/analysis-api-schema/well_metadata)
+URI: [basalt_schema:well_metadata](https://EMSL-Computing.github.io/basalt-schema/well_metadata)
 Alias: well_metadata
 
 <!-- no inheritance hierarchy -->
@@ -26,8 +26,8 @@ Alias: well_metadata
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |  no  |
 | [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
+| [PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |  no  |
 | [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |  no  |
 
 
@@ -72,7 +72,7 @@ Alias: well_metadata
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -81,8 +81,8 @@ Alias: well_metadata
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:well_metadata |
-| native | analysis_api_schema:well_metadata |
+| self | basalt_schema:well_metadata |
+| native | basalt_schema:well_metadata |
 
 
 
@@ -99,7 +99,7 @@ description: "Structured per-well metadata array. Format varies by activity subc
 todos:
 - decide how to represent in backend (normalized child table with FK to PlateSetupActivity,
   array column, or other)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: well_metadata
 domain_of:

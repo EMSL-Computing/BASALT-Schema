@@ -9,7 +9,7 @@ _Information about treatment(s) involving use of biotic factors such as bacteria
 
 
 
-URI: [analysis_api_schema:biotic_regm](https://w3id.org/MONet/analysis-api-schema/biotic_regm)
+URI: [basalt_schema:biotic_regm](https://EMSL-Computing.github.io/basalt-schema/biotic_regm)
 Alias: biotic_regm
 
 <!-- no inheritance hierarchy -->
@@ -22,16 +22,16 @@ Alias: biotic_regm
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: biotic_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: biotic_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:biotic_regm |
-| native | analysis_api_schema:biotic_regm |
+| self | basalt_schema:biotic_regm |
+| native | basalt_schema:biotic_regm |
 
 
 
@@ -93,7 +93,7 @@ name: biotic_regm
 description: Information about treatment(s) involving use of biotic factors such as
   bacteria, viruses, or fungi.
 title: biotic regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: biotic_regm
 domain_of:

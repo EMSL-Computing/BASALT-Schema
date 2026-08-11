@@ -9,7 +9,7 @@ _Points to a record of the chromatography used to introduce samples for the mass
 
 
 
-URI: [analysis_api_schema:uses_chromatography](https://w3id.org/MONet/analysis-api-schema/uses_chromatography)
+URI: [basalt_schema:uses_chromatography](https://EMSL-Computing.github.io/basalt-schema/uses_chromatography)
 Alias: uses_chromatography
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: uses_chromatography
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: uses_chromatography
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:uses_chromatography |
-| native | analysis_api_schema:uses_chromatography |
+| self | basalt_schema:uses_chromatography |
+| native | basalt_schema:uses_chromatography |
 
 
 
@@ -83,7 +83,7 @@ Alias: uses_chromatography
 name: uses_chromatography
 description: Points to a record of the chromatography used to introduce samples for
   the mass spectrometry run.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: uses_chromatography
 domain_of:

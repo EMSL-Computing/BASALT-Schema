@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:VendorEnum](https://w3id.org/MONet/analysis-api-schema/VendorEnum)
+URI: [basalt_schema:VendorEnum](https://EMSL-Computing.github.io/basalt-schema/VendorEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -49,7 +49,7 @@ URI: [analysis_api_schema:VendorEnum](https://w3id.org/MONet/analysis-api-schema
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -61,7 +61,7 @@ URI: [analysis_api_schema:VendorEnum](https://w3id.org/MONet/analysis-api-schema
 <details>
 ```yaml
 name: VendorEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   waters:

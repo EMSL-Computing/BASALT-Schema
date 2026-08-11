@@ -9,7 +9,7 @@ _Information about treatment involving use of fungicides; should include the nam
 
 
 
-URI: [analysis_api_schema:fungicide_regm](https://w3id.org/MONet/analysis-api-schema/fungicide_regm)
+URI: [basalt_schema:fungicide_regm](https://EMSL-Computing.github.io/basalt-schema/fungicide_regm)
 Alias: fungicide_regm
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: fungicide_regm
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: fungicide_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: fungicide_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:fungicide_regm |
-| native | analysis_api_schema:fungicide_regm |
+| self | basalt_schema:fungicide_regm |
+| native | basalt_schema:fungicide_regm |
 
 
 
@@ -87,7 +87,7 @@ description: Information about treatment involving use of fungicides; should inc
   times the treatment was repeated, how long each treatment lasted, and the start
   and end time of the entire treatment; can include multiple fungicide regimens
 title: fungicide regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: fungicide_regm
 domain_of:

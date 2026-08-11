@@ -16,25 +16,25 @@
 # Serve docs with: just serve-doc
 # =============================================================================
 
-id: https://w3id.org/MONet/analysis-api-schema/doc-overlay
-name: analysis-api-schema-doc-overlay
-title: MONet Analysis API Schema (Doc-Gen Overlay)
+id: https://EMSL-Computing.github.io/basalt-schema/doc-overlay
+name: basalt-schema-doc-overlay
+title: BASALT Schema (Doc-Gen Overlay)
 description: |-
-  Documentation-generation overlay for the MONet Analysis API Schema.
+  Documentation-generation overlay for the BASALT Schema.
   Imports the operational schema and resolves opaque types for rendering only.
 license: MIT
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
   xsd: http://www.w3.org/2001/XMLSchema#
 
-default_prefix: analysis_api_schema
+default_prefix: basalt_schema
 default_range: string
 
 imports:
   - linkml:types
-  - ../analysis_api_schema/schema/analysis_api_schema
+  - ../basalt_schema/schema/basalt_schema
 
 # ---------------------------------------------------------------------------
 # Type stubs   doc-gen only

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:processing_id](https://w3id.org/MONet/analysis-api-schema/processing_id)
+URI: [basalt_schema:processing_id](https://EMSL-Computing.github.io/basalt-schema/processing_id)
 Alias: processing_id
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: processing_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: processing_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:processing_id |
-| native | analysis_api_schema:processing_id |
+| self | basalt_schema:processing_id |
+| native | basalt_schema:processing_id |
 
 
 
@@ -84,7 +84,7 @@ Alias: processing_id
 <details>
 ```yaml
 name: processing_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: processing_id
 owner: ProcessingSampleLink

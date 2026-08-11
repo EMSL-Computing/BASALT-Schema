@@ -7,7 +7,7 @@ _Sample biotic relationships_
 
 
 
-URI: [analysis_api_schema:BioticRelationshipEnum](https://w3id.org/MONet/analysis-api-schema/BioticRelationshipEnum)
+URI: [basalt_schema:BioticRelationshipEnum](https://EMSL-Computing.github.io/basalt-schema/BioticRelationshipEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -49,7 +49,7 @@ URI: [analysis_api_schema:BioticRelationshipEnum](https://w3id.org/MONet/analysi
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -62,7 +62,7 @@ URI: [analysis_api_schema:BioticRelationshipEnum](https://w3id.org/MONet/analysi
 ```yaml
 name: BioticRelationshipEnum
 description: Sample biotic relationships
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - sampbioticenum
 rank: 1000

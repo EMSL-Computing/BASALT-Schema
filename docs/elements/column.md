@@ -9,7 +9,7 @@ _The name or identifier of the chromatography column used._
 
 
 
-URI: [analysis_api_schema:column](https://w3id.org/MONet/analysis-api-schema/column)
+URI: [basalt_schema:column](https://EMSL-Computing.github.io/basalt-schema/column)
 Alias: column
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: column
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ChromatographyConfiguration](ChromatographyConfiguration.md) | Configuration and settings for a chromatography run |  no  |
 | [TOCTNMethod](TOCTNMethod.md) |  |  no  |
+| [ChromatographyConfiguration](ChromatographyConfiguration.md) | Configuration and settings for a chromatography run |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: column
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: column
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:column |
-| native | analysis_api_schema:column |
+| self | basalt_schema:column |
+| native | basalt_schema:column |
 
 
 
@@ -83,7 +83,7 @@ Alias: column
 ```yaml
 name: column
 description: The name or identifier of the chromatography column used.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: column
 domain_of:

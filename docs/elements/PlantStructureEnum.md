@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:PlantStructureEnum](https://w3id.org/MONet/analysis-api-schema/PlantStructureEnum)
+URI: [basalt_schema:PlantStructureEnum](https://EMSL-Computing.github.io/basalt-schema/PlantStructureEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -44,7 +44,7 @@ URI: [analysis_api_schema:PlantStructureEnum](https://w3id.org/MONet/analysis-ap
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -56,7 +56,7 @@ URI: [analysis_api_schema:PlantStructureEnum](https://w3id.org/MONet/analysis-ap
 <details>
 ```yaml
 name: PlantStructureEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   stem:

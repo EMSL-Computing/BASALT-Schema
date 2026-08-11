@@ -1,0 +1,28 @@
+id: https://EMSL-Computing.github.io/basalt-schema/administration
+name: basalt-schema-administration
+title: BASALT Schema - Administration
+description: |-
+  Administration-related classes for BASALT.
+license: MIT
+see_also:
+  - https://EMSL-Computing.github.io/basalt-schema
+  - https://github.com/EMSL-Computing/basalt-schema
+
+prefixes:
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
+
+default_prefix: basalt_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+classes:
+  Changelog:
+    attributes:
+      version:
+        identifier: true
+        range: string
+      changelog:
+        range: string
+        required: true

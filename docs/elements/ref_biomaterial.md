@@ -9,7 +9,7 @@ _Primary publication if isolated before genome publication; otherwise primary ge
 
 
 
-URI: [analysis_api_schema:ref_biomaterial](https://w3id.org/MONet/analysis-api-schema/ref_biomaterial)
+URI: [basalt_schema:ref_biomaterial](https://EMSL-Computing.github.io/basalt-schema/ref_biomaterial)
 Alias: ref_biomaterial
 
 <!-- no inheritance hierarchy -->
@@ -22,12 +22,12 @@ Alias: ref_biomaterial
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
 
 
 
@@ -66,7 +66,7 @@ Alias: ref_biomaterial
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -75,8 +75,8 @@ Alias: ref_biomaterial
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ref_biomaterial |
-| native | analysis_api_schema:ref_biomaterial |
+| self | basalt_schema:ref_biomaterial |
+| native | basalt_schema:ref_biomaterial |
 
 
 
@@ -89,7 +89,7 @@ name: ref_biomaterial
 description: Primary publication if isolated before genome publication; otherwise
   primary genome report.
 title: reference for biomaterial
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: ref_biomaterial
 domain_of:

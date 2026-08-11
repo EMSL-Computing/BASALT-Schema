@@ -9,7 +9,7 @@ _Information about treatment involving use of herbicides; information about trea
 
 
 
-URI: [analysis_api_schema:herbicide_regm](https://w3id.org/MONet/analysis-api-schema/herbicide_regm)
+URI: [basalt_schema:herbicide_regm](https://EMSL-Computing.github.io/basalt-schema/herbicide_regm)
 Alias: herbicide_regm
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: herbicide_regm
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: herbicide_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: herbicide_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:herbicide_regm |
-| native | analysis_api_schema:herbicide_regm |
+| self | basalt_schema:herbicide_regm |
+| native | basalt_schema:herbicide_regm |
 
 
 
@@ -88,7 +88,7 @@ description: Information about treatment involving use of herbicides; informatio
   repeated, how long each treatment lasted, and the start and end time of the entire
   treatment; can include multiple regimens
 title: herbicide regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: herbicide_regm
 domain_of:

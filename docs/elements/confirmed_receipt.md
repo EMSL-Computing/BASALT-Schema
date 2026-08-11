@@ -9,7 +9,7 @@ _Whether receipt of the sample was confirmed._
 
 
 
-URI: [analysis_api_schema:confirmed_receipt](https://w3id.org/MONet/analysis-api-schema/confirmed_receipt)
+URI: [basalt_schema:confirmed_receipt](https://EMSL-Computing.github.io/basalt-schema/confirmed_receipt)
 Alias: confirmed_receipt
 
 <!-- no inheritance hierarchy -->
@@ -51,7 +51,7 @@ Alias: confirmed_receipt
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -60,8 +60,8 @@ Alias: confirmed_receipt
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:confirmed_receipt |
-| native | analysis_api_schema:confirmed_receipt |
+| self | basalt_schema:confirmed_receipt |
+| native | basalt_schema:confirmed_receipt |
 
 
 
@@ -72,7 +72,7 @@ Alias: confirmed_receipt
 ```yaml
 name: confirmed_receipt
 description: Whether receipt of the sample was confirmed.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: confirmed_receipt
 range: boolean

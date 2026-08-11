@@ -9,7 +9,7 @@ _Measurement of bacterial carbon production. Provide value and unit, any unit is
 
 
 
-URI: [analysis_api_schema:bacteria_carb_prod](https://w3id.org/MONet/analysis-api-schema/bacteria_carb_prod)
+URI: [basalt_schema:bacteria_carb_prod](https://EMSL-Computing.github.io/basalt-schema/bacteria_carb_prod)
 Alias: bacteria_carb_prod
 
 <!-- no inheritance hierarchy -->
@@ -23,8 +23,8 @@ Alias: bacteria_carb_prod
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: bacteria_carb_prod
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: bacteria_carb_prod
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:bacteria_carb_prod |
-| native | analysis_api_schema:bacteria_carb_prod |
+| self | basalt_schema:bacteria_carb_prod |
+| native | basalt_schema:bacteria_carb_prod |
 
 
 
@@ -93,7 +93,7 @@ name: bacteria_carb_prod
 description: Measurement of bacterial carbon production. Provide value and unit, any
   unit is valid
 title: bacterial carbon production
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: bacteria_carb_prod
 domain_of:

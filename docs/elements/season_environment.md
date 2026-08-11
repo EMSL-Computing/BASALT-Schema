@@ -9,7 +9,7 @@ _Treatment involving an exposure to a particular season (e.g. Winter, summer, ra
 
 
 
-URI: [analysis_api_schema:season_environment](https://w3id.org/MONet/analysis-api-schema/season_environment)
+URI: [basalt_schema:season_environment](https://EMSL-Computing.github.io/basalt-schema/season_environment)
 Alias: season_environment
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: season_environment
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: season_environment
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:season_environment |
-| native | analysis_api_schema:season_environment |
+| self | basalt_schema:season_environment |
+| native | basalt_schema:season_environment |
 
 
 
@@ -86,7 +86,7 @@ description: Treatment involving an exposure to a particular season (e.g. Winter
   was repeated how long each treatment lasted and the start and end time of the entire
   treatment
 title: season environment
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: season_environment
 domain_of:

@@ -23,7 +23,7 @@ _       REFERENCES "DataProcessingActivity"(id);_
 
 
 
-URI: [analysis_api_schema:parent_workflow_id](https://w3id.org/MONet/analysis-api-schema/parent_workflow_id)
+URI: [basalt_schema:parent_workflow_id](https://EMSL-Computing.github.io/basalt-schema/parent_workflow_id)
 Alias: parent_workflow_id
 
 <!-- no inheritance hierarchy -->
@@ -36,9 +36,9 @@ Alias: parent_workflow_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
-| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
 | [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |  no  |
+| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
+| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
 
 
 
@@ -77,7 +77,7 @@ Alias: parent_workflow_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -86,8 +86,8 @@ Alias: parent_workflow_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:parent_workflow_id |
-| native | analysis_api_schema:parent_workflow_id |
+| self | basalt_schema:parent_workflow_id |
+| native | basalt_schema:parent_workflow_id |
 
 
 
@@ -102,7 +102,7 @@ description: "Self-referential FK to the preceding DataProcessingActivity in a c
   \ parent_workflow_id.\nEnables single-hop chaining queries; full traversal via linkage_cache.\n\
   \nDDL: ALTER TABLE \"DataProcessingActivity\"\n       ADD COLUMN parent_workflow_id\
   \ UUID\n       REFERENCES \"DataProcessingActivity\"(id);"
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: parent_workflow_id
 domain_of:

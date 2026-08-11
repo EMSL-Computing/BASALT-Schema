@@ -13,7 +13,7 @@ _who is responsible for its maintenance, calibration, and proper use._
 
 
 
-URI: [analysis_api_schema:InstrumentCustodian](https://w3id.org/MONet/analysis-api-schema/InstrumentCustodian)
+URI: [basalt_schema:InstrumentCustodian](https://EMSL-Computing.github.io/basalt-schema/InstrumentCustodian)
 
 
 
@@ -83,7 +83,7 @@ URI: [analysis_api_schema:InstrumentCustodian](https://w3id.org/MONet/analysis-a
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,8 +92,8 @@ URI: [analysis_api_schema:InstrumentCustodian](https://w3id.org/MONet/analysis-a
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:InstrumentCustodian |
-| native | analysis_api_schema:InstrumentCustodian |
+| self | basalt_schema:InstrumentCustodian |
+| native | basalt_schema:InstrumentCustodian |
 
 
 
@@ -115,11 +115,11 @@ description: 'A link between an instrument and a custodian (person) responsible 
   This class captures the relationship between an instrument and the person
 
   who is responsible for its maintenance, calibration, and proper use.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   instrument_id:
     name: instrument_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     domain_of:
     - InstrumentAlternativeIdentifier
     - InstrumentCustodian
@@ -127,7 +127,7 @@ attributes:
     required: true
   custodian_id:
     name: custodian_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     domain_of:
     - InstrumentCustodian
@@ -148,11 +148,11 @@ description: 'A link between an instrument and a custodian (person) responsible 
   This class captures the relationship between an instrument and the person
 
   who is responsible for its maintenance, calibration, and proper use.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   instrument_id:
     name: instrument_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     alias: instrument_id
     owner: InstrumentCustodian
     domain_of:
@@ -162,7 +162,7 @@ attributes:
     required: true
   custodian_id:
     name: custodian_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: custodian_id
     owner: InstrumentCustodian

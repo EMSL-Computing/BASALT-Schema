@@ -9,7 +9,7 @@ _Select the construct component type._
 
 
 
-URI: [analysis_api_schema:construct_component](https://w3id.org/MONet/analysis-api-schema/construct_component)
+URI: [basalt_schema:construct_component](https://EMSL-Computing.github.io/basalt-schema/construct_component)
 Alias: construct_component
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: construct_component
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: construct_component
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:construct_component |
-| native | analysis_api_schema:construct_component |
+| self | basalt_schema:construct_component |
+| native | basalt_schema:construct_component |
 
 
 
@@ -83,7 +83,7 @@ Alias: construct_component
 name: construct_component
 description: Select the construct component type.
 title: construct component
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: construct_component
 domain_of:

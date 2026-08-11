@@ -9,7 +9,7 @@ _Type of strain/organism (bacterial, fungal, archaeal, etc.)_
 
 
 
-URI: [analysis_api_schema:strain_type](https://w3id.org/MONet/analysis-api-schema/strain_type)
+URI: [basalt_schema:strain_type](https://EMSL-Computing.github.io/basalt-schema/strain_type)
 Alias: strain_type
 
 <!-- no inheritance hierarchy -->
@@ -66,7 +66,7 @@ Alias: strain_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -75,8 +75,8 @@ Alias: strain_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:strain_type |
-| native | analysis_api_schema:strain_type |
+| self | basalt_schema:strain_type |
+| native | basalt_schema:strain_type |
 
 
 
@@ -87,7 +87,7 @@ Alias: strain_type
 ```yaml
 name: strain_type
 description: Type of strain/organism (bacterial, fungal, archaeal, etc.)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - organism_type
 rank: 1000

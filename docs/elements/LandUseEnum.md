@@ -7,7 +7,7 @@ _Land use classifications_
 
 
 
-URI: [analysis_api_schema:LandUseEnum](https://w3id.org/MONet/analysis-api-schema/LandUseEnum)
+URI: [basalt_schema:LandUseEnum](https://EMSL-Computing.github.io/basalt-schema/LandUseEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -75,7 +75,7 @@ URI: [analysis_api_schema:LandUseEnum](https://w3id.org/MONet/analysis-api-schem
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -88,7 +88,7 @@ URI: [analysis_api_schema:LandUseEnum](https://w3id.org/MONet/analysis-api-schem
 ```yaml
 name: LandUseEnum
 description: Land use classifications
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   badlands:

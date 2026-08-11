@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:user](https://w3id.org/MONet/analysis-api-schema/user)
+URI: [basalt_schema:user](https://EMSL-Computing.github.io/basalt-schema/user)
 Alias: user
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: user
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: user
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:user |
-| native | analysis_api_schema:user |
+| self | basalt_schema:user |
+| native | basalt_schema:user |
 
 
 
@@ -84,7 +84,7 @@ Alias: user
 <details>
 ```yaml
 name: user
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: user
 owner: zipDownload

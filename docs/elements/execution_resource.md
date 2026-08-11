@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:execution_resource](https://w3id.org/MONet/analysis-api-schema/execution_resource)
+URI: [basalt_schema:execution_resource](https://EMSL-Computing.github.io/basalt-schema/execution_resource)
 Alias: execution_resource
 
 <!-- no inheritance hierarchy -->
@@ -17,9 +17,9 @@ Alias: execution_resource
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
-| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
 | [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |  no  |
+| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
+| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
 
 
 
@@ -65,7 +65,7 @@ Alias: execution_resource
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -74,8 +74,8 @@ Alias: execution_resource
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:execution_resource |
-| native | analysis_api_schema:execution_resource |
+| self | basalt_schema:execution_resource |
+| native | basalt_schema:execution_resource |
 
 
 
@@ -85,7 +85,7 @@ Alias: execution_resource
 <details>
 ```yaml
 name: execution_resource
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: execution_resource
 owner: DataProcessingActivity

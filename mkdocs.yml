@@ -1,5 +1,5 @@
 ---
-site_name: "analysis-api-schema"
+site_name: "BASALT"
 theme:
   # https://www.mkdocs.org/user-guide/configuration/#theme
   name: material
@@ -20,7 +20,10 @@ theme:
 
 # extra css/js see https://www.mkdocs.org/user-guide/customizing-your-theme/
 extra_css: []
-extra_javascript: []
+extra_javascript:
+  # Opens the "Schema Visualizer" nav entry in a new tab, resolved against the
+  # site root so it works both under `mkdocs serve` and on the published site.
+  - js/nav-visualizer.js
 
 plugins:
   - search
@@ -57,13 +60,12 @@ markdown_extensions:
   - md_in_html
 
 watch:
-  - src/analysis_api_schema/schema
+  - src/basalt_schema/schema
 
 nav:
   - Home: index.md
   - Schema: elements/index.md
-  - Visuals:
-      - Schema Explorer: https://mkapur-pnnl.github.io/analysis-api-schema/files/schema-explorer.html
+  - Schema Visualizer: https://EMSL-Computing.github.io/basalt-schema/files/schema-explorer.html
   - About: about.md
 
 exclude_docs: |
@@ -75,8 +77,8 @@ validation:
     # trigger false positives in MkDocs validation for this docs tree.
     not_found: ignore
 
-site_url: https://mkapur-pnnl.github.io/analysis-api-schema
-repo_url: https://github.com/mkapur-pnnl/analysis-api-schema
+site_url: https://EMSL-Computing.github.io/basalt-schema
+repo_url: https://github.com/EMSL-Computing/basalt-schema
 
 # Uncomment this block to enable use of Google Analytics.
 # Replace the property value with your own ID.

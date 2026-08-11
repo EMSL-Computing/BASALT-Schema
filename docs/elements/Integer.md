@@ -36,7 +36,7 @@ URI: [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -46,7 +46,7 @@ URI: [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
 | Mapping Type | Mapped Value |
 | ---  | ---  |
 | self | xsd:integer |
-| native | analysis_api_schema:integer |
+| native | basalt_schema:integer |
 | exact | schema:Integer |
 
 

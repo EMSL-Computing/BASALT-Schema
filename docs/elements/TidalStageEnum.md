@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:TidalStageEnum](https://w3id.org/MONet/analysis-api-schema/TidalStageEnum)
+URI: [basalt_schema:TidalStageEnum](https://EMSL-Computing.github.io/basalt-schema/TidalStageEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -39,7 +39,7 @@ URI: [analysis_api_schema:TidalStageEnum](https://w3id.org/MONet/analysis-api-sc
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -51,7 +51,7 @@ URI: [analysis_api_schema:TidalStageEnum](https://w3id.org/MONet/analysis-api-sc
 <details>
 ```yaml
 name: TidalStageEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   low_tide:

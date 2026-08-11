@@ -9,7 +9,7 @@ _The length of subject_
 
 
 
-URI: [analysis_api_schema:host_length](https://w3id.org/MONet/analysis-api-schema/host_length)
+URI: [basalt_schema:host_length](https://EMSL-Computing.github.io/basalt-schema/host_length)
 Alias: host_length
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: host_length
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: host_length
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: host_length
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:host_length |
-| native | analysis_api_schema:host_length |
+| self | basalt_schema:host_length |
+| native | basalt_schema:host_length |
 
 
 
@@ -84,7 +84,7 @@ Alias: host_length
 name: host_length
 description: The length of subject
 title: host length
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: host_length
 domain_of:

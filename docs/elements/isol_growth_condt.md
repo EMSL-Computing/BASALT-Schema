@@ -13,7 +13,7 @@ _organism/material_
 
 
 
-URI: [analysis_api_schema:isol_growth_condt](https://w3id.org/MONet/analysis-api-schema/isol_growth_condt)
+URI: [basalt_schema:isol_growth_condt](https://EMSL-Computing.github.io/basalt-schema/isol_growth_condt)
 Alias: isol_growth_condt
 
 <!-- no inheritance hierarchy -->
@@ -26,13 +26,13 @@ Alias: isol_growth_condt
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  yes  |
 | [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |  no  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  yes  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  yes  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  yes  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  yes  |
 
 
 
@@ -71,7 +71,7 @@ Alias: isol_growth_condt
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -80,8 +80,8 @@ Alias: isol_growth_condt
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:isol_growth_condt |
-| native | analysis_api_schema:isol_growth_condt |
+| self | basalt_schema:isol_growth_condt |
+| native | basalt_schema:isol_growth_condt |
 
 
 
@@ -97,7 +97,7 @@ description: 'Publication reference in the form of pubmed ID (PMID), digital obj
 
   organism/material'
 title: isolation and growth conditions
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: isol_growth_condt
 domain_of:

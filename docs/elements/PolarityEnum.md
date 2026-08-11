@@ -7,7 +7,7 @@ _The polarity mode used in the mass spectrometry analysis._
 
 
 
-URI: [analysis_api_schema:PolarityEnum](https://w3id.org/MONet/analysis-api-schema/PolarityEnum)
+URI: [basalt_schema:PolarityEnum](https://EMSL-Computing.github.io/basalt-schema/PolarityEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -42,7 +42,7 @@ URI: [analysis_api_schema:PolarityEnum](https://w3id.org/MONet/analysis-api-sche
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -55,7 +55,7 @@ URI: [analysis_api_schema:PolarityEnum](https://w3id.org/MONet/analysis-api-sche
 ```yaml
 name: PolarityEnum
 description: The polarity mode used in the mass spectrometry analysis.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   positive:

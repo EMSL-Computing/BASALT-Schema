@@ -9,7 +9,7 @@ _Concentration of alkyl diethers. Provide value and unit, any unit is valid_
 
 
 
-URI: [analysis_api_schema:alkyl_diethers](https://w3id.org/MONet/analysis-api-schema/alkyl_diethers)
+URI: [basalt_schema:alkyl_diethers](https://EMSL-Computing.github.io/basalt-schema/alkyl_diethers)
 Alias: alkyl_diethers
 
 <!-- no inheritance hierarchy -->
@@ -23,8 +23,8 @@ Alias: alkyl_diethers
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: alkyl_diethers
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: alkyl_diethers
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:alkyl_diethers |
-| native | analysis_api_schema:alkyl_diethers |
+| self | basalt_schema:alkyl_diethers |
+| native | basalt_schema:alkyl_diethers |
 
 
 
@@ -93,7 +93,7 @@ name: alkyl_diethers
 description: Concentration of alkyl diethers. Provide value and unit, any unit is
   valid
 title: alkyl diethers
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: alkyl_diethers
 domain_of:

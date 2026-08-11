@@ -9,7 +9,7 @@ _The device used to collect an environmental sample. Include dimensions of devic
 
 
 
-URI: [analysis_api_schema:sample_collection_dev](https://w3id.org/MONet/analysis-api-schema/sample_collection_dev)
+URI: [basalt_schema:sample_collection_dev](https://EMSL-Computing.github.io/basalt-schema/sample_collection_dev)
 Alias: sample_collection_dev
 
 <!-- no inheritance hierarchy -->
@@ -23,17 +23,17 @@ Alias: sample_collection_dev
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [MixedCultureSamplingActivity](MixedCultureSamplingActivity.md) | Collection of samples from a mixed culture |  no  |
-| [SoilSamplingActivity](SoilSamplingActivity.md) | Collection of soil samples from the environment |  no  |
+| [OtherUndescribedSamplingActivity](OtherUndescribedSamplingActivity.md) | Collection of samples from source that does not fit into any of the other cat... |  no  |
+| [MonetSoilSamplingActivity](MonetSoilSamplingActivity.md) | Collection of soil cores according to the MONet soil sampling protocol |  yes  |
+| [CultureEnvironmentalSamplingActivity](CultureEnvironmentalSamplingActivity.md) | Collection of samples from a culture of organisms taken from the environment |  no  |
 | [PureCultureSamplingActivity](PureCultureSamplingActivity.md) | Collection of samples from a culture containing a single organism |  no  |
+| [SoilSamplingActivity](SoilSamplingActivity.md) | Collection of soil samples from the environment |  no  |
+| [SynthesizedMaterialSamplingActivity](SynthesizedMaterialSamplingActivity.md) | Collection of samples of a synthesized material |  no  |
+| [WaterSamplingActivity](WaterSamplingActivity.md) | Collection of water samples |  yes  |
+| [AerosolSamplingActivity](AerosolSamplingActivity.md) | A sampling activity where aerosol samples were collected |  no  |
 | [SedimentSamplingActivity](SedimentSamplingActivity.md) | Collection of sediment samples from the environment |  no  |
 | [CommerciallyPurchasedSamplingActivity](CommerciallyPurchasedSamplingActivity.md) | Collection of samples that were purchased by the user |  no  |
-| [MonetSoilSamplingActivity](MonetSoilSamplingActivity.md) | Collection of soil cores according to the MONet soil sampling protocol |  yes  |
-| [WaterSamplingActivity](WaterSamplingActivity.md) | Collection of water samples |  yes  |
 | [PlantSamplingActivity](PlantSamplingActivity.md) | Collection of samples associated with plants |  no  |
-| [SynthesizedMaterialSamplingActivity](SynthesizedMaterialSamplingActivity.md) | Collection of samples of a synthesized material |  no  |
-| [CultureEnvironmentalSamplingActivity](CultureEnvironmentalSamplingActivity.md) | Collection of samples from a culture of organisms taken from the environment |  no  |
-| [AerosolSamplingActivity](AerosolSamplingActivity.md) | A sampling activity where aerosol samples were collected |  no  |
-| [OtherUndescribedSamplingActivity](OtherUndescribedSamplingActivity.md) | Collection of samples from source that does not fit into any of the other cat... |  no  |
 
 
 
@@ -72,7 +72,7 @@ Alias: sample_collection_dev
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -81,8 +81,8 @@ Alias: sample_collection_dev
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sample_collection_dev |
-| native | analysis_api_schema:sample_collection_dev |
+| self | basalt_schema:sample_collection_dev |
+| native | basalt_schema:sample_collection_dev |
 
 
 
@@ -95,7 +95,7 @@ name: sample_collection_dev
 description: The device used to collect an environmental sample. Include dimensions
   of device if applicable
 title: sample collection device
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sample_collection_dev
 domain_of:

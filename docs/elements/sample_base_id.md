@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:sample_base_id](https://w3id.org/MONet/analysis-api-schema/sample_base_id)
+URI: [basalt_schema:sample_base_id](https://EMSL-Computing.github.io/basalt-schema/sample_base_id)
 Alias: sample_base_id
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: sample_base_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: sample_base_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sample_base_id |
-| native | analysis_api_schema:sample_base_id |
+| self | basalt_schema:sample_base_id |
+| native | basalt_schema:sample_base_id |
 
 
 
@@ -84,7 +84,7 @@ Alias: sample_base_id
 <details>
 ```yaml
 name: sample_base_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sample_base_id
 owner: ProcessingSampleLink

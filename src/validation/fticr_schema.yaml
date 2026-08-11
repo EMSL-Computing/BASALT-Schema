@@ -8,7 +8,7 @@
 #   spectrometry analysis of soil organic matter
 # - Attributes are aggregate metrics computed from the full spectral assignment
 #   (not individual peaks   those live in instrument data files)
-# - Source: FTICRProduct class in src/analysis_api_schema/schema/products.yaml
+# - Source: FTICRProduct class in src/basalt_schema/schema/products.yaml
 # - NOT currently in Soil_BioChemical_properties.csv (instrument data, separate deliverable)
 # - This schema covers the API-level ingest contract for rapid validation
 #
@@ -27,7 +27,7 @@
 # Last Updated:  2026-03-16
 # =============================================================================
 
-id: https://w3id.org/MONet/analysis-api-schema/fticr
+id: https://EMSL-Computing.github.io/basalt-schema/fticr
 name: fticr_schema
 title: MONet FT-ICR MS Product Schema
 description: |-
@@ -40,7 +40,7 @@ description: |-
 license: MIT
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: fticr_schema

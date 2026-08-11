@@ -9,7 +9,7 @@ _Mean concentration obtained from Condensation Particle Counter (Unit: μm)_
 
 
 
-URI: [analysis_api_schema:mean_total_cpc_concentration](https://w3id.org/MONet/analysis-api-schema/mean_total_cpc_concentration)
+URI: [basalt_schema:mean_total_cpc_concentration](https://EMSL-Computing.github.io/basalt-schema/mean_total_cpc_concentration)
 Alias: mean_total_cpc_concentration
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: mean_total_cpc_concentration
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: mean_total_cpc_concentration
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:mean_total_cpc_concentration |
-| native | analysis_api_schema:mean_total_cpc_concentration |
+| self | basalt_schema:mean_total_cpc_concentration |
+| native | basalt_schema:mean_total_cpc_concentration |
 
 
 
@@ -84,7 +84,7 @@ name: mean_total_cpc_concentration
 description: 'Mean concentration obtained from Condensation Particle Counter (Unit:
   μm)'
 title: mean total C.P.C. concentration
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: mean_total_cpc_concentration
 domain_of:

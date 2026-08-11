@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:PHMethod](https://w3id.org/MONet/analysis-api-schema/PHMethod)
+URI: [basalt_schema:PHMethod](https://EMSL-Computing.github.io/basalt-schema/PHMethod)
 
 
 
@@ -66,7 +66,7 @@ URI: [analysis_api_schema:PHMethod](https://w3id.org/MONet/analysis-api-schema/P
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -75,8 +75,8 @@ URI: [analysis_api_schema:PHMethod](https://w3id.org/MONet/analysis-api-schema/P
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:PHMethod |
-| native | analysis_api_schema:PHMethod |
+| self | basalt_schema:PHMethod |
+| native | basalt_schema:PHMethod |
 
 
 
@@ -92,14 +92,14 @@ URI: [analysis_api_schema:PHMethod](https://w3id.org/MONet/analysis-api-schema/P
 <details>
 ```yaml
 name: PH_Method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Method
 slots:
 - location
 attributes:
   calibration:
     name: calibration
-    from_schema: https://w3id.org/MONet/analysis-api-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     rank: 1000
     domain_of:
     - PH_Method
@@ -114,12 +114,12 @@ attributes:
 <details>
 ```yaml
 name: PH_Method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Method
 attributes:
   calibration:
     name: calibration
-    from_schema: https://w3id.org/MONet/analysis-api-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     rank: 1000
     alias: calibration
     owner: PH_Method
@@ -131,7 +131,7 @@ attributes:
     name: location
     todos:
     - used on many method classes. no description. what was this meant to mean?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: location
     owner: PH_Method
@@ -152,7 +152,7 @@ attributes:
     name: analytic
     todos:
     - what does this mean
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: analytic
     owner: PH_Method

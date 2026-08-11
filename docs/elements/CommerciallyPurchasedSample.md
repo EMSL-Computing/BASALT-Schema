@@ -9,7 +9,7 @@ _A sample containing commercially purchased material._
 
 
 
-URI: [analysis_api_schema:CommerciallyPurchasedSample](https://w3id.org/MONet/analysis-api-schema/CommerciallyPurchasedSample)
+URI: [basalt_schema:CommerciallyPurchasedSample](https://EMSL-Computing.github.io/basalt-schema/CommerciallyPurchasedSample)
 
 
 
@@ -191,7 +191,7 @@ URI: [analysis_api_schema:CommerciallyPurchasedSample](https://w3id.org/MONet/an
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -200,8 +200,8 @@ URI: [analysis_api_schema:CommerciallyPurchasedSample](https://w3id.org/MONet/an
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:CommerciallyPurchasedSample |
-| native | analysis_api_schema:CommerciallyPurchasedSample |
+| self | basalt_schema:CommerciallyPurchasedSample |
+| native | basalt_schema:CommerciallyPurchasedSample |
 
 
 
@@ -218,7 +218,7 @@ URI: [analysis_api_schema:CommerciallyPurchasedSample](https://w3id.org/MONet/an
 ```yaml
 name: CommerciallyPurchasedSample
 description: A sample containing commercially purchased material.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Sample
 slots:
 - analysis_type
@@ -257,7 +257,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -343,7 +343,7 @@ attributes:
 ```yaml
 name: CommerciallyPurchasedSample
 description: A sample containing commercially purchased material.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Sample
 slot_usage:
   analysis_type:
@@ -355,7 +355,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     alias: id
     owner: CommerciallyPurchasedSample
@@ -436,7 +436,7 @@ attributes:
   analysis_type:
     name: analysis_type
     description: The type(s) of analysis planned for this sample.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: analysis_type
     owner: CommerciallyPurchasedSample
@@ -465,7 +465,7 @@ attributes:
       (CAS), a division of the American Chemical Society, to chemical compounds, polymers,
       biological sequences, mixtures, and alloys.
     title: CAS number
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - CAS
     rank: 1000
@@ -481,7 +481,7 @@ attributes:
     description: The name of the purchased material. A substance formed by chemical
       union of two or more elements or ingredients in definite proportion by weight.
     title: compound name
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: compound_name
     owner: CommerciallyPurchasedSample
@@ -500,7 +500,7 @@ attributes:
       a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO;
       for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI
     title: experimental factor
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: experimental_factor
     owner: CommerciallyPurchasedSample
@@ -523,7 +523,7 @@ attributes:
     description: Other details about your sample that you feel can't be accurately
       represented in the available columns.
     title: other experimental factor
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: experimental_factor_other
     owner: CommerciallyPurchasedSample
@@ -544,7 +544,7 @@ attributes:
   external_identifiers:
     name: external_identifiers
     description: List of external identifiers associated with this entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: external_identifiers
     owner: CommerciallyPurchasedSample
@@ -573,7 +573,7 @@ attributes:
     name: item_number
     description: The item number of the purchased material
     title: item number
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: item_number
     owner: CommerciallyPurchasedSample
@@ -587,7 +587,7 @@ attributes:
     description: If your samples are TEST sample ONLY, please provide information
       on what you're hoping this test will resolve.
     title: method development
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: method_development
     owner: CommerciallyPurchasedSample
@@ -611,7 +611,7 @@ attributes:
     description: Other/additional details about your sample that you feel can't be
       accurately represented in ANY of the available columns.
     title: other
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: other
     owner: CommerciallyPurchasedSample
@@ -636,7 +636,7 @@ attributes:
     name: other_samp_store_temp
     description: Please specify sample storage temperature if you selected 'other'
     title: other sample storage temperature
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: other_samp_store_temp
     owner: CommerciallyPurchasedSample
@@ -662,7 +662,7 @@ attributes:
     description: Please specify your storage conditions if you selected 'other' and
       the available values are not appropriate
     title: other storage condition
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: other_storage_condt
     owner: CommerciallyPurchasedSample
@@ -687,7 +687,7 @@ attributes:
       is applied to your samples and the provided treatment terms do not satisfy please
       add it here. Multiple treatments can be entered here separated by ;
     title: other treatment
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: other_treatment
     owner: CommerciallyPurchasedSample
@@ -711,7 +711,7 @@ attributes:
     name: oxygen_relationship
     description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
     title: oxygen relationship
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     exact_mappings:
     - MIXS:0000015
     rank: 1000
@@ -736,7 +736,7 @@ attributes:
     description: A DOI or description of how the compound was produced, if the commercially
       purchased material was altered
     title: production method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: production_method
     owner: CommerciallyPurchasedSample
@@ -752,7 +752,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - study
     - study_id
@@ -787,7 +787,7 @@ attributes:
       with submission schema.
     todos:
     - reconcile replicate modelling
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: replicate_number
     owner: CommerciallyPurchasedSample
@@ -817,7 +817,7 @@ attributes:
       sample was transferred to a new vial and generated a new sample)'''
     todos:
     - EMSL and NMDC both need better modelling for this
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sample_link
     owner: CommerciallyPurchasedSample
@@ -847,7 +847,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - samp_name
     rank: 1000
@@ -877,7 +877,7 @@ attributes:
       or after retrieving the sample from environment or a link to the relevant protocol(s)
       performed.
     title: sample processing
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sample_processing
     owner: CommerciallyPurchasedSample
@@ -902,7 +902,7 @@ attributes:
       This field is NOT multivalued. If selecting other add the `other_samp_store_temp`
       attribute to provide additional detail.
     title: sample storage temperature
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - sample_storage_temperature
     - storage_temperature
@@ -931,7 +931,7 @@ attributes:
     description: Reference to the sampling activity during which this sample was collected.
       This is a FK to the SamplingActivity class, which contains metadata about the
       sampling event, such as date, device, method.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sampled_during
     owner: CommerciallyPurchasedSample
@@ -959,7 +959,7 @@ attributes:
       or to any derived sub-samples. The source material should be listed as a sample
       to inform details about parent material relationship.
     title: source material identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: source_mat_id
     owner: CommerciallyPurchasedSample
@@ -985,7 +985,7 @@ attributes:
       If selecting other add the `other_storage_condt` attribute to provide additional
       detail.
     title: storage condition
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - samp_store_cond
     - storage_cond
@@ -1018,7 +1018,7 @@ attributes:
     name: storage_condition_other
     description: Free-text field for storage conditions when 'storage_condition' is
       'other'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - other_storage_condt
     - storage_condt_other
@@ -1046,7 +1046,7 @@ attributes:
     name: technical_reps
     description: Number of technical replicates for the sample.
     title: technical replicates
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: technical_reps
     owner: CommerciallyPurchasedSample
@@ -1070,7 +1070,7 @@ attributes:
     name: temp
     description: 'Temperature of the sample at the time of sampling. (Units: C)'
     title: temperature
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: temp
     owner: CommerciallyPurchasedSample
@@ -1090,7 +1090,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: CommerciallyPurchasedSample
@@ -1120,7 +1120,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: CommerciallyPurchasedSample
@@ -1159,7 +1159,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: emsl_activity
     owner: CommerciallyPurchasedSample
@@ -1171,7 +1171,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: lims_barcode
     owner: CommerciallyPurchasedSample

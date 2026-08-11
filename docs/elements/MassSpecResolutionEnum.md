@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:MassSpecResolutionEnum](https://w3id.org/MONet/analysis-api-schema/MassSpecResolutionEnum)
+URI: [basalt_schema:MassSpecResolutionEnum](https://EMSL-Computing.github.io/basalt-schema/MassSpecResolutionEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -37,7 +37,7 @@ URI: [analysis_api_schema:MassSpecResolutionEnum](https://w3id.org/MONet/analysi
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -49,7 +49,7 @@ URI: [analysis_api_schema:MassSpecResolutionEnum](https://w3id.org/MONet/analysi
 <details>
 ```yaml
 name: MassSpecResolutionEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   high:

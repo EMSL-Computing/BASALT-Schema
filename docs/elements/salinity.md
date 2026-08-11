@@ -9,7 +9,7 @@ _Salinity is the total concentration of all dissolved salts in a sample. While s
 
 
 
-URI: [analysis_api_schema:salinity](https://w3id.org/MONet/analysis-api-schema/salinity)
+URI: [basalt_schema:salinity](https://EMSL-Computing.github.io/basalt-schema/salinity)
 Alias: salinity
 
 <!-- no inheritance hierarchy -->
@@ -23,10 +23,10 @@ Alias: salinity
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 
 
 
@@ -72,7 +72,7 @@ Alias: salinity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -81,8 +81,8 @@ Alias: salinity
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:salinity |
-| native | analysis_api_schema:salinity |
+| self | basalt_schema:salinity |
+| native | basalt_schema:salinity |
 
 
 
@@ -99,7 +99,7 @@ description: 'Salinity is the total concentration of all dissolved salts in a sa
   of the sample to a salinity standard such as seawater (Unit: practical salinity
   unit or percent)'
 title: salinity
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: salinity
 domain_of:

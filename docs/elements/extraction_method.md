@@ -9,7 +9,7 @@ _If you (the user) performed an extraction preparation or processing before send
 
 
 
-URI: [analysis_api_schema:extraction_method](https://w3id.org/MONet/analysis-api-schema/extraction_method)
+URI: [basalt_schema:extraction_method](https://EMSL-Computing.github.io/basalt-schema/extraction_method)
 Alias: extraction_method
 
 <!-- no inheritance hierarchy -->
@@ -22,17 +22,17 @@ Alias: extraction_method
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) | Phosphorus analysis product, typically derived via colorimetric assay of soil... |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
 
 
 
@@ -71,7 +71,7 @@ Alias: extraction_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -80,8 +80,8 @@ Alias: extraction_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:extraction_method |
-| native | analysis_api_schema:extraction_method |
+| self | basalt_schema:extraction_method |
+| native | basalt_schema:extraction_method |
 
 
 
@@ -95,7 +95,7 @@ description: If you (the user) performed an extraction preparation or processing
   sending the sample to EMSL, what was it? This is only applicable when sending an
   'analytical sample'. See README for more details on types of samples.
 title: extraction method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: extraction_method
 domain_of:

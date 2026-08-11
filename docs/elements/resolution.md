@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:resolution](https://w3id.org/MONet/analysis-api-schema/resolution)
+URI: [basalt_schema:resolution](https://EMSL-Computing.github.io/basalt-schema/resolution)
 Alias: resolution
 
 <!-- no inheritance hierarchy -->
@@ -57,7 +57,7 @@ Alias: resolution
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -66,8 +66,8 @@ Alias: resolution
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:resolution |
-| native | analysis_api_schema:resolution |
+| self | basalt_schema:resolution |
+| native | basalt_schema:resolution |
 
 
 
@@ -77,7 +77,7 @@ Alias: resolution
 <details>
 ```yaml
 name: resolution
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: resolution
 domain_of:

@@ -9,7 +9,7 @@ _Total carbon content. Provide value and unit, any unit is valid_
 
 
 
-URI: [analysis_api_schema:tot_carb](https://w3id.org/MONet/analysis-api-schema/tot_carb)
+URI: [basalt_schema:tot_carb](https://EMSL-Computing.github.io/basalt-schema/tot_carb)
 Alias: tot_carb
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: tot_carb
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: tot_carb
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:tot_carb |
-| native | analysis_api_schema:tot_carb |
+| self | basalt_schema:tot_carb |
+| native | basalt_schema:tot_carb |
 
 
 
@@ -91,7 +91,7 @@ Alias: tot_carb
 name: tot_carb
 description: Total carbon content. Provide value and unit, any unit is valid
 title: total carbon content
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: tot_carb
 domain_of:

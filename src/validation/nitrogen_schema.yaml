@@ -12,7 +12,7 @@
 # Last Updated:  2026-03-16
 # =============================================================================
 
-id: https://w3id.org/MONet/analysis-api-schema/nitrogen
+id: https://EMSL-Computing.github.io/basalt-schema/nitrogen
 name: nitrogen_schema
 title: MONet Nitrogen Analysis Ingest Schema
 description: |-
@@ -23,7 +23,7 @@ description: |-
 license: MIT
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: nitrogen_schema

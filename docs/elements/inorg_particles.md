@@ -9,7 +9,7 @@ _concentration of particles such as sand, grit, metal particles, ceramics, etc.;
 
 
 
-URI: [analysis_api_schema:inorg_particles](https://w3id.org/MONet/analysis-api-schema/inorg_particles)
+URI: [basalt_schema:inorg_particles](https://EMSL-Computing.github.io/basalt-schema/inorg_particles)
 Alias: inorg_particles
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: inorg_particles
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: inorg_particles
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:inorg_particles |
-| native | analysis_api_schema:inorg_particles |
+| self | basalt_schema:inorg_particles |
+| native | basalt_schema:inorg_particles |
 
 
 
@@ -84,7 +84,7 @@ name: inorg_particles
 description: concentration of particles such as sand, grit, metal particles, ceramics,
   etc.; can include multiple particles
 title: inorganic particles
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: inorg_particles
 domain_of:

@@ -9,7 +9,7 @@ _Provide the citation or describe the method of synthesis._
 
 
 
-URI: [analysis_api_schema:synth_process](https://w3id.org/MONet/analysis-api-schema/synth_process)
+URI: [basalt_schema:synth_process](https://EMSL-Computing.github.io/basalt-schema/synth_process)
 Alias: synth_process
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: synth_process
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: synth_process
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: synth_process
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:synth_process |
-| native | analysis_api_schema:synth_process |
+| self | basalt_schema:synth_process |
+| native | basalt_schema:synth_process |
 
 
 
@@ -84,7 +84,7 @@ Alias: synth_process
 name: synth_process
 description: Provide the citation or describe the method of synthesis.
 title: synthesis process
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: synth_process
 domain_of:

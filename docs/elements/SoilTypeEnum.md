@@ -7,7 +7,7 @@ _USDA soil taxonomy classifications_
 
 
 
-URI: [analysis_api_schema:SoilTypeEnum](https://w3id.org/MONet/analysis-api-schema/SoilTypeEnum)
+URI: [basalt_schema:SoilTypeEnum](https://EMSL-Computing.github.io/basalt-schema/SoilTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -52,7 +52,7 @@ URI: [analysis_api_schema:SoilTypeEnum](https://w3id.org/MONet/analysis-api-sche
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -65,7 +65,7 @@ URI: [analysis_api_schema:SoilTypeEnum](https://w3id.org/MONet/analysis-api-sche
 ```yaml
 name: SoilTypeEnum
 description: USDA soil taxonomy classifications
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   alfisol:

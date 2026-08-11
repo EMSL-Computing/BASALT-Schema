@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:total_bases_id](https://w3id.org/MONet/analysis-api-schema/total_bases_id)
+URI: [basalt_schema:total_bases_id](https://EMSL-Computing.github.io/basalt-schema/total_bases_id)
 Alias: total_bases_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: total_bases_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: total_bases_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:total_bases_id |
-| native | analysis_api_schema:total_bases_id |
+| self | basalt_schema:total_bases_id |
+| native | basalt_schema:total_bases_id |
 
 
 
@@ -83,7 +83,7 @@ Alias: total_bases_id
 <details>
 ```yaml
 name: total_bases_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: total_bases_id
 owner: IonsAnalysisProduct

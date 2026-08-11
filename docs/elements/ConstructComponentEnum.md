@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:ConstructComponentEnum](https://w3id.org/MONet/analysis-api-schema/ConstructComponentEnum)
+URI: [basalt_schema:ConstructComponentEnum](https://EMSL-Computing.github.io/basalt-schema/ConstructComponentEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -53,7 +53,7 @@ URI: [analysis_api_schema:ConstructComponentEnum](https://w3id.org/MONet/analysi
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -65,7 +65,7 @@ URI: [analysis_api_schema:ConstructComponentEnum](https://w3id.org/MONet/analysi
 <details>
 ```yaml
 name: ConstructComponentEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   None:

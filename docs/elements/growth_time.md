@@ -11,7 +11,7 @@ _Required for ExperimentalCulture activities._
 
 
 
-URI: [analysis_api_schema:growth_time](https://w3id.org/MONet/analysis-api-schema/growth_time)
+URI: [basalt_schema:growth_time](https://EMSL-Computing.github.io/basalt-schema/growth_time)
 Alias: growth_time
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: growth_time
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: growth_time
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:growth_time |
-| native | analysis_api_schema:growth_time |
+| self | basalt_schema:growth_time |
+| native | basalt_schema:growth_time |
 
 
 
@@ -86,7 +86,7 @@ name: growth_time
 description: 'Total growth time for the culture.
 
   Required for ExperimentalCulture activities.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: growth_time
 domain_of:

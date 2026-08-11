@@ -9,7 +9,7 @@ _Points to a record of the configuration used for the mass spectrometry run._
 
 
 
-URI: [analysis_api_schema:uses_ms_configuration](https://w3id.org/MONet/analysis-api-schema/uses_ms_configuration)
+URI: [basalt_schema:uses_ms_configuration](https://EMSL-Computing.github.io/basalt-schema/uses_ms_configuration)
 Alias: uses_ms_configuration
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: uses_ms_configuration
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: uses_ms_configuration
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:uses_ms_configuration |
-| native | analysis_api_schema:uses_ms_configuration |
+| self | basalt_schema:uses_ms_configuration |
+| native | basalt_schema:uses_ms_configuration |
 
 
 
@@ -84,7 +84,7 @@ Alias: uses_ms_configuration
 name: uses_ms_configuration
 description: Points to a record of the configuration used for the mass spectrometry
   run.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: uses_ms_configuration
 domain_of:

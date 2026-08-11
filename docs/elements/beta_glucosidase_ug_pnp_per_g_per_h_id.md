@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:beta_glucosidase_ug_pnp_per_g_per_h_id](https://w3id.org/MONet/analysis-api-schema/beta_glucosidase_ug_pnp_per_g_per_h_id)
+URI: [basalt_schema:beta_glucosidase_ug_pnp_per_g_per_h_id](https://EMSL-Computing.github.io/basalt-schema/beta_glucosidase_ug_pnp_per_g_per_h_id)
 Alias: beta_glucosidase_ug_pnp_per_g_per_h_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: beta_glucosidase_ug_pnp_per_g_per_h_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: beta_glucosidase_ug_pnp_per_g_per_h_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:beta_glucosidase_ug_pnp_per_g_per_h_id |
-| native | analysis_api_schema:beta_glucosidase_ug_pnp_per_g_per_h_id |
+| self | basalt_schema:beta_glucosidase_ug_pnp_per_g_per_h_id |
+| native | basalt_schema:beta_glucosidase_ug_pnp_per_g_per_h_id |
 
 
 
@@ -83,7 +83,7 @@ Alias: beta_glucosidase_ug_pnp_per_g_per_h_id
 <details>
 ```yaml
 name: beta_glucosidase_ug_pnp_per_g_per_h_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: beta_glucosidase_ug_pnp_per_g_per_h_id
 owner: EnzymeProduct

@@ -9,7 +9,7 @@ _the process of pre-treatment removes materials that can be easily collected fro
 
 
 
-URI: [analysis_api_schema:pre_treatment](https://w3id.org/MONet/analysis-api-schema/pre_treatment)
+URI: [basalt_schema:pre_treatment](https://EMSL-Computing.github.io/basalt-schema/pre_treatment)
 Alias: pre_treatment
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: pre_treatment
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: pre_treatment
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:pre_treatment |
-| native | analysis_api_schema:pre_treatment |
+| self | basalt_schema:pre_treatment |
+| native | basalt_schema:pre_treatment |
 
 
 
@@ -84,7 +84,7 @@ name: pre_treatment
 description: the process of pre-treatment removes materials that can be easily collected
   from the raw wastewater
 title: pre-treatment
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: pre_treatment
 domain_of:

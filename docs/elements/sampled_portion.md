@@ -9,7 +9,7 @@ _The portion of the original sample used in creating this processed sample (e.g.
 
 
 
-URI: [analysis_api_schema:sampled_portion](https://w3id.org/MONet/analysis-api-schema/sampled_portion)
+URI: [basalt_schema:sampled_portion](https://EMSL-Computing.github.io/basalt-schema/sampled_portion)
 Alias: sampled_portion
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: sampled_portion
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: sampled_portion
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sampled_portion |
-| native | analysis_api_schema:sampled_portion |
+| self | basalt_schema:sampled_portion |
+| native | basalt_schema:sampled_portion |
 
 
 
@@ -84,7 +84,7 @@ Alias: sampled_portion
 name: sampled_portion
 description: The portion of the original sample used in creating this processed sample
   (e.g., "interlayer", "supernatant", "pellet").
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sampled_portion
 domain_of:

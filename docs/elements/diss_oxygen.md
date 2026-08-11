@@ -9,7 +9,7 @@ _Concentration of dissolved oxygen. (Unit: umol/kg or mg/L)_
 
 
 
-URI: [analysis_api_schema:diss_oxygen](https://w3id.org/MONet/analysis-api-schema/diss_oxygen)
+URI: [basalt_schema:diss_oxygen](https://EMSL-Computing.github.io/basalt-schema/diss_oxygen)
 Alias: diss_oxygen
 
 <!-- no inheritance hierarchy -->
@@ -23,8 +23,8 @@ Alias: diss_oxygen
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: diss_oxygen
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: diss_oxygen
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:diss_oxygen |
-| native | analysis_api_schema:diss_oxygen |
+| self | basalt_schema:diss_oxygen |
+| native | basalt_schema:diss_oxygen |
 
 
 
@@ -92,7 +92,7 @@ Alias: diss_oxygen
 name: diss_oxygen
 description: 'Concentration of dissolved oxygen. (Unit: umol/kg or mg/L)'
 title: dissolved oxygen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: diss_oxygen
 domain_of:

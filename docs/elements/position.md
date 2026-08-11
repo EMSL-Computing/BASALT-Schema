@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:position](https://w3id.org/MONet/analysis-api-schema/position)
+URI: [basalt_schema:position](https://EMSL-Computing.github.io/basalt-schema/position)
 Alias: position
 
 <!-- no inheritance hierarchy -->
@@ -19,8 +19,8 @@ Alias: position
 | --- | --- | --- |
 | [AMP2WellMetadata](AMP2WellMetadata.md) | AMP2-specific per-well metadata |  no  |
 | [WellMetadata](WellMetadata.md) | Base structure for per-well metadata in plate setup |  no  |
-| [EcoplateWellMetadata](EcoplateWellMetadata.md) | Ecoplate-specific per-well metadata |  no  |
 | [WellReading](WellReading.md) | Per-well measurement data |  no  |
+| [EcoplateWellMetadata](EcoplateWellMetadata.md) | Ecoplate-specific per-well metadata |  no  |
 
 
 
@@ -61,8 +61,8 @@ Alias: position
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:position |
-| native | analysis_api_schema:position |
+| self | basalt_schema:position |
+| native | basalt_schema:position |
 
 
 

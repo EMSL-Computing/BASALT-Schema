@@ -9,7 +9,7 @@ _acquisition number_
 
 
 
-URI: [analysis_api_schema:aq](https://w3id.org/MONet/analysis-api-schema/aq)
+URI: [basalt_schema:aq](https://EMSL-Computing.github.io/basalt-schema/aq)
 Alias: aq
 
 <!-- no inheritance hierarchy -->
@@ -55,7 +55,7 @@ Alias: aq
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -64,8 +64,8 @@ Alias: aq
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:aq |
-| native | analysis_api_schema:aq |
+| self | basalt_schema:aq |
+| native | basalt_schema:aq |
 
 
 
@@ -78,7 +78,7 @@ name: aq
 description: acquisition number
 todos:
 - what is this supposed to mean
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: aq
 range: double

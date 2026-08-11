@@ -1,7 +1,6 @@
-# About
-# NAME PLACEHOLDER Schema
+# BASALT Schema
 
-**NAME PLACEHOLDER schema** is a comprehensive schema for representing multimodal environmental and microbiological analysis data, including soil characterization and high-throughput microbial culture workflows. It supports diverse experimental techniques including mass spectrometry, metagenomics sequencing, X-ray fluorescence/diffraction, and 96-well plate-based growth assays. It is a production model in ongoing development to support the open, user-driven science the [Environmental Molecular Sciences Laboratory](https://www.emsl.pnnl.gov/) (EMSL).
+**BASALT** (Broad Analytical Schema for Samples and Laboratory Techniques) is a comprehensive schema for representing multimodal environmental and microbiological analysis data, including soil characterization and high-throughput microbial culture workflows. It supports diverse experimental techniques including mass spectrometry, metagenomics sequencing, X-ray fluorescence/diffraction, and 96-well plate-based growth assays. It is a production model in ongoing development to support the open, user-driven science the [Environmental Molecular Sciences Laboratory](https://www.emsl.pnnl.gov/) (EMSL).
 
 **NOTE:** This schema is under active development and integrates metadata standards from multiple collaborating institutions (EMSL, GLBRC, NMDC, and more). Some areas are marked with TODOs for future refinement.
 

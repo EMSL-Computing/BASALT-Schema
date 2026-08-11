@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_toc](https://w3id.org/MONet/analysis-api-schema/flag_toc)
+URI: [basalt_schema:flag_toc](https://EMSL-Computing.github.io/basalt-schema/flag_toc)
 Alias: flag_toc
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: flag_toc
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MAOMProduct](MAOMProduct.md) | Mineral-Associated Organic Matter (MAOM) analysis product, typically derived ... |  no  |
 | [WEOMProduct](WEOMProduct.md) | Water Extractable Organic Matter (WEOM) analysis product, typically derived v... |  no  |
+| [MAOMProduct](MAOMProduct.md) | Mineral-Associated Organic Matter (MAOM) analysis product, typically derived ... |  no  |
 
 
 
@@ -59,8 +59,8 @@ Alias: flag_toc
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_toc |
-| native | analysis_api_schema:flag_toc |
+| self | basalt_schema:flag_toc |
+| native | basalt_schema:flag_toc |
 
 
 

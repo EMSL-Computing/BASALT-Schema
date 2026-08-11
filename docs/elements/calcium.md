@@ -9,7 +9,7 @@ _Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)_
 
 
 
-URI: [analysis_api_schema:calcium](https://w3id.org/MONet/analysis-api-schema/calcium)
+URI: [basalt_schema:calcium](https://EMSL-Computing.github.io/basalt-schema/calcium)
 Alias: calcium
 
 <!-- no inheritance hierarchy -->
@@ -23,8 +23,8 @@ Alias: calcium
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: calcium
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: calcium
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:calcium |
-| native | analysis_api_schema:calcium |
+| self | basalt_schema:calcium |
+| native | basalt_schema:calcium |
 
 
 
@@ -92,7 +92,7 @@ Alias: calcium
 name: calcium
 description: 'Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)'
 title: calcium
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: calcium
 domain_of:

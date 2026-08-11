@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:step_number](https://w3id.org/MONet/analysis-api-schema/step_number)
+URI: [basalt_schema:step_number](https://EMSL-Computing.github.io/basalt-schema/step_number)
 Alias: step_number
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: step_number
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: step_number
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:step_number |
-| native | analysis_api_schema:step_number |
+| self | basalt_schema:step_number |
+| native | basalt_schema:step_number |
 
 
 
@@ -84,7 +84,7 @@ Alias: step_number
 <details>
 ```yaml
 name: step_number
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: step_number
 owner: ProcessingSampleLink

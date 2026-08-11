@@ -9,7 +9,7 @@ _Reference or method used in determining microbial biomass_
 
 
 
-URI: [analysis_api_schema:micro_biomass_c_meth](https://w3id.org/MONet/analysis-api-schema/micro_biomass_c_meth)
+URI: [basalt_schema:micro_biomass_c_meth](https://EMSL-Computing.github.io/basalt-schema/micro_biomass_c_meth)
 Alias: micro_biomass_c_meth
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: micro_biomass_c_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: micro_biomass_c_meth
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:micro_biomass_c_meth |
-| native | analysis_api_schema:micro_biomass_c_meth |
+| self | basalt_schema:micro_biomass_c_meth |
+| native | basalt_schema:micro_biomass_c_meth |
 
 
 
@@ -84,7 +84,7 @@ Alias: micro_biomass_c_meth
 name: micro_biomass_c_meth
 description: Reference or method used in determining microbial biomass
 title: microbial biomass carbon method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: micro_biomass_c_meth
 domain_of:

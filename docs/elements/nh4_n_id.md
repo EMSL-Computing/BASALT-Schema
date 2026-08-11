@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:nh4_n_id](https://w3id.org/MONet/analysis-api-schema/nh4_n_id)
+URI: [basalt_schema:nh4_n_id](https://EMSL-Computing.github.io/basalt-schema/nh4_n_id)
 Alias: nh4_n_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: nh4_n_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: nh4_n_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:nh4_n_id |
-| native | analysis_api_schema:nh4_n_id |
+| self | basalt_schema:nh4_n_id |
+| native | basalt_schema:nh4_n_id |
 
 
 
@@ -83,7 +83,7 @@ Alias: nh4_n_id
 <details>
 ```yaml
 name: nh4_n_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: nh4_n_id
 owner: NitrogenAnalysisProduct

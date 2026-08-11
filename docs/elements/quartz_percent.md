@@ -9,7 +9,7 @@ _Quartz (SiO2) weight percent_
 
 
 
-URI: [analysis_api_schema:quartz_percent](https://w3id.org/MONet/analysis-api-schema/quartz_percent)
+URI: [basalt_schema:quartz_percent](https://EMSL-Computing.github.io/basalt-schema/quartz_percent)
 Alias: quartz_percent
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: quartz_percent
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: quartz_percent
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:quartz_percent |
-| native | analysis_api_schema:quartz_percent |
+| self | basalt_schema:quartz_percent |
+| native | basalt_schema:quartz_percent |
 
 
 
@@ -89,7 +89,7 @@ Alias: quartz_percent
 ```yaml
 name: quartz_percent
 description: Quartz (SiO2) weight percent
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: quartz_percent
 owner: XRDPhaseProduct

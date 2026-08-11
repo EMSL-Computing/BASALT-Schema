@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_halite](https://w3id.org/MONet/analysis-api-schema/flag_halite)
+URI: [basalt_schema:flag_halite](https://EMSL-Computing.github.io/basalt-schema/flag_halite)
 Alias: flag_halite
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_halite
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_halite
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_halite |
-| native | analysis_api_schema:flag_halite |
+| self | basalt_schema:flag_halite |
+| native | basalt_schema:flag_halite |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_halite
 <details>
 ```yaml
 name: flag_halite
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_halite
 owner: XRDPhaseProduct

@@ -9,7 +9,7 @@ _An EMSL internal LIMS identifier for your sample. This will be provided by the 
 
 
 
-URI: [analysis_api_schema:lims_id](https://w3id.org/MONet/analysis-api-schema/lims_id)
+URI: [basalt_schema:lims_id](https://EMSL-Computing.github.io/basalt-schema/lims_id)
 Alias: lims_id
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: lims_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: lims_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:lims_id |
-| native | analysis_api_schema:lims_id |
+| self | basalt_schema:lims_id |
+| native | basalt_schema:lims_id |
 
 
 
@@ -91,7 +91,7 @@ name: lims_id
 description: An EMSL internal LIMS identifier for your sample. This will be provided
   by the MPOC and should not be edited.
 title: LIMS ID
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: lims_id
 domain_of:

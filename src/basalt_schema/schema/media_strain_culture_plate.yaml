@@ -1,16 +1,16 @@
 ---
-id: https://w3id.org/MONet/analysis-api-schema/media-strain-culture-plate
-name: analysis-api-schema-media-strain-culture-plate
+id: https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate
+name: basalt-schema-media-strain-culture-plate
 title: 96-Well Plate Workflows   V2 with Entities, Culture Activities, Montana Slots
 description: |-
   Comprehensive schema delta for 96-well plate workflows (AMP2 + Ecoplate)
   with upstream culture growth activities and generalised processing hierarchy.
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
 
-default_prefix: analysis_api_schema
+default_prefix: basalt_schema
 
 imports:
   - linkml:types

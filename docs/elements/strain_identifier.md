@@ -11,7 +11,7 @@ _NOT the database UUID   that is the Strain.id attribute._
 
 
 
-URI: [analysis_api_schema:strain_identifier](https://w3id.org/MONet/analysis-api-schema/strain_identifier)
+URI: [basalt_schema:strain_identifier](https://EMSL-Computing.github.io/basalt-schema/strain_identifier)
 Alias: strain_identifier
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: strain_identifier
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: strain_identifier
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:strain_identifier |
-| native | analysis_api_schema:strain_identifier |
+| self | basalt_schema:strain_identifier |
+| native | basalt_schema:strain_identifier |
 
 
 
@@ -93,7 +93,7 @@ name: strain_identifier
 description: 'External human-readable strain identifier (e.g. "KT2440_pTE314").
 
   NOT the database UUID   that is the Strain.id attribute.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - strain_id
 - strain_name

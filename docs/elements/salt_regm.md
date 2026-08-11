@@ -9,7 +9,7 @@ _Information about treatment involving use of salts as supplement to liquid and 
 
 
 
-URI: [analysis_api_schema:salt_regm](https://w3id.org/MONet/analysis-api-schema/salt_regm)
+URI: [basalt_schema:salt_regm](https://EMSL-Computing.github.io/basalt-schema/salt_regm)
 Alias: salt_regm
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: salt_regm
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 
@@ -64,7 +64,7 @@ Alias: salt_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: salt_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:salt_regm |
-| native | analysis_api_schema:salt_regm |
+| self | basalt_schema:salt_regm |
+| native | basalt_schema:salt_regm |
 
 
 
@@ -90,7 +90,7 @@ description: Information about treatment involving use of salts as supplement to
   lasted, and the start and end time of the entire treatment; can include multiple
   salt regimens.
 title: salt regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: salt_regm
 domain_of:

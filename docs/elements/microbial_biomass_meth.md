@@ -9,7 +9,7 @@ _Reference or method used in determining microbial biomass_
 
 
 
-URI: [analysis_api_schema:microbial_biomass_meth](https://w3id.org/MONet/analysis-api-schema/microbial_biomass_meth)
+URI: [basalt_schema:microbial_biomass_meth](https://EMSL-Computing.github.io/basalt-schema/microbial_biomass_meth)
 Alias: microbial_biomass_meth
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: microbial_biomass_meth
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 
 
@@ -63,7 +63,7 @@ Alias: microbial_biomass_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: microbial_biomass_meth
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:microbial_biomass_meth |
-| native | analysis_api_schema:microbial_biomass_meth |
+| self | basalt_schema:microbial_biomass_meth |
+| native | basalt_schema:microbial_biomass_meth |
 
 
 
@@ -85,7 +85,7 @@ Alias: microbial_biomass_meth
 name: microbial_biomass_meth
 description: Reference or method used in determining microbial biomass
 title: microbial biomass method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: microbial_biomass_meth
 domain_of:

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:count](https://w3id.org/MONet/analysis-api-schema/count)
+URI: [basalt_schema:count](https://EMSL-Computing.github.io/basalt-schema/count)
 Alias: count
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: count
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: count
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:count |
-| native | analysis_api_schema:count |
+| self | basalt_schema:count |
+| native | basalt_schema:count |
 
 
 
@@ -83,7 +83,7 @@ Alias: count
 <details>
 ```yaml
 name: count
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: count
 owner: WorkflowExecutionFunctionalAnnotation

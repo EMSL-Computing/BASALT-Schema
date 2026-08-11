@@ -9,7 +9,7 @@ _Target pH value (required if ph_adjustment is true)_
 
 
 
-URI: [analysis_api_schema:ph_target](https://w3id.org/MONet/analysis-api-schema/ph_target)
+URI: [basalt_schema:ph_target](https://EMSL-Computing.github.io/basalt-schema/ph_target)
 Alias: ph_target
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: ph_target
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: ph_target
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ph_target |
-| native | analysis_api_schema:ph_target |
+| self | basalt_schema:ph_target |
+| native | basalt_schema:ph_target |
 
 
 
@@ -82,7 +82,7 @@ Alias: ph_target
 ```yaml
 name: ph_target
 description: Target pH value (required if ph_adjustment is true)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: ph_target
 domain_of:

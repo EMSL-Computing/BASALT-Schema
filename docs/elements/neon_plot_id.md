@@ -9,7 +9,7 @@ _When sampling from a NEON site provide the plot ID from which you sampled. This
 
 
 
-URI: [analysis_api_schema:neon_plot_id](https://w3id.org/MONet/analysis-api-schema/neon_plot_id)
+URI: [basalt_schema:neon_plot_id](https://EMSL-Computing.github.io/basalt-schema/neon_plot_id)
 Alias: neon_plot_id
 
 <!-- no inheritance hierarchy -->
@@ -72,7 +72,7 @@ Alias: neon_plot_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -81,8 +81,8 @@ Alias: neon_plot_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:neon_plot_id |
-| native | analysis_api_schema:neon_plot_id |
+| self | basalt_schema:neon_plot_id |
+| native | basalt_schema:neon_plot_id |
 
 
 
@@ -99,7 +99,7 @@ title: neon plot identifier
 todos:
 - subport mapping - this is submitted as ABCD_123 but we want to store it as neon_site_code
   and neon_plot_id separately
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: neon_plot_id
 domain_of:

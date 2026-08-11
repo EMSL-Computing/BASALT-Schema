@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:instrument](https://w3id.org/MONet/analysis-api-schema/instrument)
+URI: [basalt_schema:instrument](https://EMSL-Computing.github.io/basalt-schema/instrument)
 Alias: instrument
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: instrument
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: instrument
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:instrument |
-| native | analysis_api_schema:instrument |
+| self | basalt_schema:instrument |
+| native | basalt_schema:instrument |
 
 
 
@@ -83,7 +83,7 @@ Alias: instrument
 <details>
 ```yaml
 name: instrument
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: instrument
 owner: ConditioningValue

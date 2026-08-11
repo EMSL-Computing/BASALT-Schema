@@ -1,8 +1,8 @@
-id: https://w3id.org/MONet/analysis-api-schema/mass-spec
-name: analysis-api-schema-mass-spec
-title: Mass spectrometry subclasses for MONet Analysis API
+id: https://EMSL-Computing.github.io/basalt-schema/mass-spec
+name: basalt-schema-mass-spec
+title: Mass spectrometry subclasses for BASALT
 description: |
-  Mass spectrometry product and workflow classes for the MONet Analysis API.
+  Mass spectrometry product and workflow classes for BASALT.
 
   Classes defined in this file:
 
@@ -27,13 +27,13 @@ description: |
 license: MIT
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
-default_prefix: analysis_api_schema
+default_prefix: basalt_schema
 
 imports:
   - linkml:types
-  - analysis_api_schema
+  - basalt_schema
   - slots
 
 classes:

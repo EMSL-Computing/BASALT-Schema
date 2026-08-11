@@ -11,7 +11,7 @@ _your modified organism. Examples: "Electroporation", "Conjugation", "CRISPR", "
 
 
 
-URI: [analysis_api_schema:modification_method](https://w3id.org/MONet/analysis-api-schema/modification_method)
+URI: [basalt_schema:modification_method](https://EMSL-Computing.github.io/basalt-schema/modification_method)
 Alias: modification_method
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: modification_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: modification_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:modification_method |
-| native | analysis_api_schema:modification_method |
+| self | basalt_schema:modification_method |
+| native | basalt_schema:modification_method |
 
 
 
@@ -93,7 +93,7 @@ description: 'Select the method used to insert your construct into the genome of
 
   your modified organism. Examples: "Electroporation", "Conjugation", "CRISPR", "Transduction"'
 title: modification method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - genetic_modification_method
 - transformation_method

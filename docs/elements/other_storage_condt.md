@@ -9,7 +9,7 @@ _Please specify your storage conditions if you selected 'other' and the availabl
 
 
 
-URI: [analysis_api_schema:other_storage_condt](https://w3id.org/MONet/analysis-api-schema/other_storage_condt)
+URI: [basalt_schema:other_storage_condt](https://EMSL-Computing.github.io/basalt-schema/other_storage_condt)
 Alias: other_storage_condt
 
 <!-- no inheritance hierarchy -->
@@ -22,19 +22,19 @@ Alias: other_storage_condt
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
 
 
 
@@ -73,7 +73,7 @@ Alias: other_storage_condt
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -82,8 +82,8 @@ Alias: other_storage_condt
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:other_storage_condt |
-| native | analysis_api_schema:other_storage_condt |
+| self | basalt_schema:other_storage_condt |
+| native | basalt_schema:other_storage_condt |
 
 
 
@@ -96,7 +96,7 @@ name: other_storage_condt
 description: Please specify your storage conditions if you selected 'other' and the
   available values are not appropriate
 title: other storage condition
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: other_storage_condt
 domain_of:

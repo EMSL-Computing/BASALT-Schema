@@ -9,7 +9,7 @@ _Latitude coordinate of the sampling site in WSG 84 format._
 
 
 
-URI: [analysis_api_schema:latitude](https://w3id.org/MONet/analysis-api-schema/latitude)
+URI: [basalt_schema:latitude](https://EMSL-Computing.github.io/basalt-schema/latitude)
 Alias: latitude
 
 <!-- no inheritance hierarchy -->
@@ -22,17 +22,17 @@ Alias: latitude
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  yes  |
-| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  yes  |
-| [Site](Site.md) | Site-level metadata for a specific location from which a set of samples are c... |  yes  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  yes  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  yes  |
+| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  yes  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
+| [Site](Site.md) | Site-level metadata for a specific location from which a set of samples are c... |  yes  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  yes  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  yes  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  yes  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
 
 
 
@@ -71,7 +71,7 @@ Alias: latitude
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -80,8 +80,8 @@ Alias: latitude
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:latitude |
-| native | analysis_api_schema:latitude |
+| self | basalt_schema:latitude |
+| native | basalt_schema:latitude |
 | broad | MIXS:0000009 |
 
 
@@ -94,7 +94,7 @@ Alias: latitude
 name: latitude
 description: Latitude coordinate of the sampling site in WSG 84 format.
 title: latitude
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 broad_mappings:
 - MIXS:0000009
 rank: 1000

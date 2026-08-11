@@ -9,7 +9,7 @@ _Specification of the solidifying agent in the culture rooting medium._
 
 
 
-URI: [analysis_api_schema:root_med_solid](https://w3id.org/MONet/analysis-api-schema/root_med_solid)
+URI: [basalt_schema:root_med_solid](https://EMSL-Computing.github.io/basalt-schema/root_med_solid)
 Alias: root_med_solid
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: root_med_solid
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: root_med_solid
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:root_med_solid |
-| native | analysis_api_schema:root_med_solid |
+| self | basalt_schema:root_med_solid |
+| native | basalt_schema:root_med_solid |
 
 
 
@@ -83,7 +83,7 @@ Alias: root_med_solid
 name: root_med_solid
 description: Specification of the solidifying agent in the culture rooting medium.
 title: rooting medium solidifier
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: root_med_solid
 domain_of:

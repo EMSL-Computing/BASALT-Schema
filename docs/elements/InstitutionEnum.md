@@ -7,7 +7,7 @@ _The organization that processed the sample / ran the pipeline / participated in
 
 
 
-URI: [analysis_api_schema:InstitutionEnum](https://w3id.org/MONet/analysis-api-schema/InstitutionEnum)
+URI: [basalt_schema:InstitutionEnum](https://EMSL-Computing.github.io/basalt-schema/InstitutionEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -48,7 +48,7 @@ URI: [analysis_api_schema:InstitutionEnum](https://w3id.org/MONet/analysis-api-s
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -62,7 +62,7 @@ URI: [analysis_api_schema:InstitutionEnum](https://w3id.org/MONet/analysis-api-s
 name: InstitutionEnum
 description: The organization that processed the sample / ran the pipeline / participated
   in the project.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   nmdc:

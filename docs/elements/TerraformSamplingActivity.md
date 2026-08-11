@@ -9,7 +9,7 @@ _Collection of samples from a Terraform device._
 
 
 
-URI: [analysis_api_schema:TerraformSamplingActivity](https://w3id.org/MONet/analysis-api-schema/TerraformSamplingActivity)
+URI: [basalt_schema:TerraformSamplingActivity](https://EMSL-Computing.github.io/basalt-schema/TerraformSamplingActivity)
 
 
 
@@ -104,7 +104,7 @@ URI: [analysis_api_schema:TerraformSamplingActivity](https://w3id.org/MONet/anal
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -113,8 +113,8 @@ URI: [analysis_api_schema:TerraformSamplingActivity](https://w3id.org/MONet/anal
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:TerraformSamplingActivity |
-| native | analysis_api_schema:TerraformSamplingActivity |
+| self | basalt_schema:TerraformSamplingActivity |
+| native | basalt_schema:TerraformSamplingActivity |
 
 
 
@@ -131,7 +131,7 @@ URI: [analysis_api_schema:TerraformSamplingActivity](https://w3id.org/MONet/anal
 ```yaml
 name: TerraformSamplingActivity
 description: Collection of samples from a Terraform device.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: SamplingActivity
 slots:
 - collection_time
@@ -140,7 +140,7 @@ slots:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -226,12 +226,12 @@ attributes:
 ```yaml
 name: TerraformSamplingActivity
 description: Collection of samples from a Terraform device.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: SamplingActivity
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     alias: id
     owner: TerraformSamplingActivity
@@ -315,7 +315,7 @@ attributes:
       HH:MM:SS in 24-hour time format. Don''t forget the second! (Unit: hh:mm:ss or
       HH:MM:SS)'
     title: collection time
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: collection_time
     owner: TerraformSamplingActivity
@@ -340,7 +340,7 @@ attributes:
       NOT the amount sent to EMSL or collected for a specific analysis. Provide value
       and unit, any unit is valid
     title: sample collected
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sample_collected
     owner: TerraformSamplingActivity
@@ -365,7 +365,7 @@ attributes:
     description: The method used to collect an environmental sample. This can be a
       citation or description.
     title: sample collection method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sample_collection_method
     owner: TerraformSamplingActivity
@@ -384,7 +384,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: TerraformSamplingActivity
@@ -414,7 +414,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: TerraformSamplingActivity
@@ -450,7 +450,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - study
     - study_id
@@ -489,7 +489,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: emsl_activity
     owner: TerraformSamplingActivity
@@ -506,7 +506,7 @@ attributes:
 
       (YYYY-MM)'''
     title: collection date
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: collection_date
     owner: TerraformSamplingActivity
@@ -519,7 +519,7 @@ attributes:
     name: shipped_sample_size
     description: Total amount of sample sent to EMSL. Must include units.
     title: shipped sample size
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: shipped_sample_size
     owner: TerraformSamplingActivity
@@ -532,7 +532,7 @@ attributes:
     name: sampled_at_site
     description: Reference to the site where the sample was collected. This is a FK
       to the Site class, which contains detailed metadata about the sampling location.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sampled_at_site
     owner: TerraformSamplingActivity

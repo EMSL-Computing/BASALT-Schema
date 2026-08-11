@@ -9,7 +9,7 @@ _Age of host at the time of sampling; relevant scale depends on species and stud
 
 
 
-URI: [analysis_api_schema:host_age](https://w3id.org/MONet/analysis-api-schema/host_age)
+URI: [basalt_schema:host_age](https://EMSL-Computing.github.io/basalt-schema/host_age)
 Alias: host_age
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: host_age
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: host_age
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: host_age
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:host_age |
-| native | analysis_api_schema:host_age |
+| self | basalt_schema:host_age |
+| native | basalt_schema:host_age |
 
 
 
@@ -94,7 +94,7 @@ description: 'Age of host at the time of sampling; relevant scale depends on spe
   and study, e.g. Could be seconds for amoebae or centuries for trees. (Unit: a (year)
   or d (day) or h (hour). Do not include the additional information in ().)'
 title: host age
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: host_age
 domain_of:

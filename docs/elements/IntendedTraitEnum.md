@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:IntendedTraitEnum](https://w3id.org/MONet/analysis-api-schema/IntendedTraitEnum)
+URI: [basalt_schema:IntendedTraitEnum](https://EMSL-Computing.github.io/basalt-schema/IntendedTraitEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -44,7 +44,7 @@ URI: [analysis_api_schema:IntendedTraitEnum](https://w3id.org/MONet/analysis-api
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -56,7 +56,7 @@ URI: [analysis_api_schema:IntendedTraitEnum](https://w3id.org/MONet/analysis-api
 <details>
 ```yaml
 name: IntendedTraitEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   other:

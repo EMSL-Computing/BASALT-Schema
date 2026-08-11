@@ -9,7 +9,7 @@ _Relevant rooting conditions such as field plot size, sowing density, container 
 
 
 
-URI: [analysis_api_schema:root_cond](https://w3id.org/MONet/analysis-api-schema/root_cond)
+URI: [basalt_schema:root_cond](https://EMSL-Computing.github.io/basalt-schema/root_cond)
 Alias: root_cond
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: root_cond
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: root_cond
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: root_cond
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:root_cond |
-| native | analysis_api_schema:root_cond |
+| self | basalt_schema:root_cond |
+| native | basalt_schema:root_cond |
 
 
 
@@ -86,7 +86,7 @@ name: root_cond
 description: Relevant rooting conditions such as field plot size, sowing density,
   container dimensions, number of plants per container.
 title: rooting conditions
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: root_cond
 domain_of:

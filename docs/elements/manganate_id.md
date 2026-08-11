@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:manganate_id](https://w3id.org/MONet/analysis-api-schema/manganate_id)
+URI: [basalt_schema:manganate_id](https://EMSL-Computing.github.io/basalt-schema/manganate_id)
 Alias: manganate_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: manganate_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: manganate_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:manganate_id |
-| native | analysis_api_schema:manganate_id |
+| self | basalt_schema:manganate_id |
+| native | basalt_schema:manganate_id |
 
 
 
@@ -83,7 +83,7 @@ Alias: manganate_id
 <details>
 ```yaml
 name: manganate_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: manganate_id
 owner: IonsAnalysisProduct

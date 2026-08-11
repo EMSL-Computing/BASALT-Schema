@@ -9,7 +9,7 @@ _The reference standard used for calibration_
 
 
 
-URI: [analysis_api_schema:calibration_standard](https://w3id.org/MONet/analysis-api-schema/calibration_standard)
+URI: [basalt_schema:calibration_standard](https://EMSL-Computing.github.io/basalt-schema/calibration_standard)
 Alias: calibration_standard
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: calibration_standard
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: calibration_standard
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:calibration_standard |
-| native | analysis_api_schema:calibration_standard |
+| self | basalt_schema:calibration_standard |
+| native | basalt_schema:calibration_standard |
 
 
 
@@ -82,7 +82,7 @@ Alias: calibration_standard
 ```yaml
 name: calibration_standard
 description: The reference standard used for calibration
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: calibration_standard
 domain_of:

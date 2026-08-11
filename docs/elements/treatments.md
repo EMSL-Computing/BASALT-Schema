@@ -11,7 +11,7 @@ _NULL for uniform-treatment plates._
 
 
 
-URI: [analysis_api_schema:treatments](https://w3id.org/MONet/analysis-api-schema/treatments)
+URI: [basalt_schema:treatments](https://EMSL-Computing.github.io/basalt-schema/treatments)
 Alias: treatments
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: treatments
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -80,8 +80,8 @@ Alias: treatments
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:treatments |
-| native | analysis_api_schema:treatments |
+| self | basalt_schema:treatments |
+| native | basalt_schema:treatments |
 
 
 
@@ -94,7 +94,7 @@ name: treatments
 description: 'Per-well treatments if applicable (e.g. different mineral concentrations).
 
   NULL for uniform-treatment plates.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: treatments
 owner: AMP2WellMetadata

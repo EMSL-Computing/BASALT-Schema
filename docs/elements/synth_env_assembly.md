@@ -9,7 +9,7 @@ _Describes how the synthetic environments parts are contained and assembled_
 
 
 
-URI: [analysis_api_schema:synth_env_assembly](https://w3id.org/MONet/analysis-api-schema/synth_env_assembly)
+URI: [basalt_schema:synth_env_assembly](https://EMSL-Computing.github.io/basalt-schema/synth_env_assembly)
 Alias: synth_env_assembly
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: synth_env_assembly
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  yes  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  yes  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  yes  |
 
 
 
@@ -62,7 +62,7 @@ Alias: synth_env_assembly
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: synth_env_assembly
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:synth_env_assembly |
-| native | analysis_api_schema:synth_env_assembly |
+| self | basalt_schema:synth_env_assembly |
+| native | basalt_schema:synth_env_assembly |
 
 
 
@@ -84,7 +84,7 @@ Alias: synth_env_assembly
 name: synth_env_assembly
 description: Describes how the synthetic environments parts are contained and assembled
 title: synthetic environment assembly
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: synth_env_assembly
 domain_of:

@@ -35,7 +35,7 @@ _    -> CultureGrowth / AMP2PlateSetupActivity.media_ref_
 
 
 
-URI: [analysis_api_schema:MediaPreparation](https://w3id.org/MONet/analysis-api-schema/MediaPreparation)
+URI: [basalt_schema:MediaPreparation](https://EMSL-Computing.github.io/basalt-schema/MediaPreparation)
 
 
 
@@ -204,7 +204,7 @@ URI: [analysis_api_schema:MediaPreparation](https://w3id.org/MONet/analysis-api-
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -213,8 +213,8 @@ URI: [analysis_api_schema:MediaPreparation](https://w3id.org/MONet/analysis-api-
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:MediaPreparation |
-| native | analysis_api_schema:MediaPreparation |
+| self | basalt_schema:MediaPreparation |
+| native | basalt_schema:MediaPreparation |
 
 
 
@@ -241,7 +241,7 @@ description: "Activity that prepares a batch of growth media.\nReplaces the form
 todos:
 - storage_condt as enum?
 - media range?
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: SampleProcessing
 slots:
 - media_type
@@ -276,7 +276,7 @@ description: "Activity that prepares a batch of growth media.\nReplaces the form
 todos:
 - storage_condt as enum?
 - media range?
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: SampleProcessing
 attributes:
   media_type:
@@ -284,7 +284,7 @@ attributes:
     description: 'Purpose/context of the media preparation.
 
       Examples: strain_purity, stock_culture, pre_culture, rich_media.'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: media_type
     owner: MediaPreparation
@@ -294,7 +294,7 @@ attributes:
   volume_ml:
     name: volume_ml
     description: Volume of the entity in milliliters
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: volume_ml
     owner: MediaPreparation
@@ -306,7 +306,7 @@ attributes:
     description: 'Reference or description of recipe used to prepare media.
 
       Examples: "M9 media with 1% Glucose", "rich media with 10% LB and 90% glycerol"'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: media_recipe
     owner: MediaPreparation
@@ -316,7 +316,7 @@ attributes:
   media_formulation:
     name: media_formulation
     description: Formulation method of the media (manual mix, commercial, etc.)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: media_formulation
     owner: MediaPreparation
@@ -328,7 +328,7 @@ attributes:
     description: 'Reference to commercial media catalog entry if applicable.
 
       Required if media_formulation is ''commercial'', otherwise null.'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: commercial_media_catalog
     owner: MediaPreparation
@@ -338,7 +338,7 @@ attributes:
   sterilization_method:
     name: sterilization_method
     description: Method used to sterilize the entity (autoclave, filter, UV, etc.)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sterilization_method
     owner: MediaPreparation
@@ -349,7 +349,7 @@ attributes:
   ph_adjustment:
     name: ph_adjustment
     description: Whether the entity was pH-adjusted
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: ph_adjustment
     owner: MediaPreparation
@@ -360,7 +360,7 @@ attributes:
   ph_target:
     name: ph_target
     description: Target pH value (required if ph_adjustment is true)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: ph_target
     owner: MediaPreparation
@@ -371,7 +371,7 @@ attributes:
   exposure_sensitivity:
     name: exposure_sensitivity
     description: Sensitivity the entity has if exposed (e.g. light-sensitive, oxygen-sensitive)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: exposure_sensitivity
     owner: MediaPreparation
@@ -385,7 +385,7 @@ attributes:
       etc.).
 
       Examples: "100 ug/mL ampicillin", "1 mM IPTG"'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: media_additions
     owner: MediaPreparation
@@ -396,7 +396,7 @@ attributes:
   storage_temperature:
     name: storage_temperature
     description: Storage temperature for the sample (e.g., "-80 C", "4 C").
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: storage_temperature
     owner: MediaPreparation
@@ -408,7 +408,7 @@ attributes:
   creation_date:
     name: creation_date
     description: Date the entity or preparation was created
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: creation_date
     owner: MediaPreparation
@@ -418,7 +418,7 @@ attributes:
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: protocol_url
     owner: MediaPreparation
@@ -429,7 +429,7 @@ attributes:
   protocol_version:
     name: protocol_version
     description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: protocol_version
     owner: MediaPreparation
@@ -439,7 +439,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     identifier: true
     alias: id
     owner: MediaPreparation
@@ -519,7 +519,7 @@ attributes:
     required: true
   analysis_type:
     name: analysis_type
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     alias: analysis_type
     owner: MediaPreparation
     domain_of:
@@ -542,7 +542,7 @@ attributes:
     range: RouteMethodEnum
   method_name:
     name: method_name
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: method_name
     owner: MediaPreparation
@@ -551,7 +551,7 @@ attributes:
     range: MethodNameEnum
   processing_steps:
     name: processing_steps
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: processing_steps
     owner: MediaPreparation
@@ -561,7 +561,7 @@ attributes:
     required: true
   uses_sample:
     name: uses_sample
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: uses_sample
     owner: MediaPreparation

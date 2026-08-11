@@ -9,7 +9,7 @@ _Concentration of potassium in the sample (Unit: mg/L)_
 
 
 
-URI: [analysis_api_schema:potassium](https://w3id.org/MONet/analysis-api-schema/potassium)
+URI: [basalt_schema:potassium](https://EMSL-Computing.github.io/basalt-schema/potassium)
 Alias: potassium
 
 <!-- no inheritance hierarchy -->
@@ -23,8 +23,8 @@ Alias: potassium
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: potassium
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: potassium
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:potassium |
-| native | analysis_api_schema:potassium |
+| self | basalt_schema:potassium |
+| native | basalt_schema:potassium |
 
 
 
@@ -92,7 +92,7 @@ Alias: potassium
 name: potassium
 description: 'Concentration of potassium in the sample (Unit: mg/L)'
 title: potassium
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: potassium
 domain_of:

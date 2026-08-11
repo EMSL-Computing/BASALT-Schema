@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:phosphorus_avg](https://w3id.org/MONet/analysis-api-schema/phosphorus_avg)
+URI: [basalt_schema:phosphorus_avg](https://EMSL-Computing.github.io/basalt-schema/phosphorus_avg)
 Alias: phosphorus_avg
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: phosphorus_avg
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: phosphorus_avg
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:phosphorus_avg |
-| native | analysis_api_schema:phosphorus_avg |
+| self | basalt_schema:phosphorus_avg |
+| native | basalt_schema:phosphorus_avg |
 
 
 
@@ -83,7 +83,7 @@ Alias: phosphorus_avg
 <details>
 ```yaml
 name: phosphorus_avg
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: phosphorus_avg
 owner: PhosphorusAnalysisProduct

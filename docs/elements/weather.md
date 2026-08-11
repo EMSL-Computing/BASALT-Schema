@@ -9,7 +9,7 @@ _The state of the atmosphere at a given time and place with respect to variables
 
 
 
-URI: [analysis_api_schema:weather](https://w3id.org/MONet/analysis-api-schema/weather)
+URI: [basalt_schema:weather](https://EMSL-Computing.github.io/basalt-schema/weather)
 Alias: weather
 
 <!-- no inheritance hierarchy -->
@@ -23,9 +23,9 @@ Alias: weather
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [MonetSoilSamplingActivity](MonetSoilSamplingActivity.md) | Collection of soil cores according to the MONet soil sampling protocol |  no  |
-| [PlantSamplingActivity](PlantSamplingActivity.md) | Collection of samples associated with plants |  no  |
-| [SoilSamplingActivity](SoilSamplingActivity.md) | Collection of soil samples from the environment |  no  |
 | [SedimentSamplingActivity](SedimentSamplingActivity.md) | Collection of sediment samples from the environment |  no  |
+| [SoilSamplingActivity](SoilSamplingActivity.md) | Collection of soil samples from the environment |  no  |
+| [PlantSamplingActivity](PlantSamplingActivity.md) | Collection of samples associated with plants |  no  |
 
 
 
@@ -64,7 +64,7 @@ Alias: weather
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: weather
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:weather |
-| native | analysis_api_schema:weather |
+| self | basalt_schema:weather |
+| native | basalt_schema:weather |
 
 
 
@@ -87,7 +87,7 @@ name: weather
 description: The state of the atmosphere at a given time and place with respect to
   variables such as temperature, moisture, wind velocity, and barometric pressure.
 title: weather
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: weather
 domain_of:

@@ -11,7 +11,7 @@ _One row per sample with columns for soil respiration and QC flag._
 
 
 
-URI: [analysis_api_schema:RespirationProduct](https://w3id.org/MONet/analysis-api-schema/RespirationProduct)
+URI: [basalt_schema:RespirationProduct](https://EMSL-Computing.github.io/basalt-schema/RespirationProduct)
 
 
 
@@ -155,7 +155,7 @@ URI: [analysis_api_schema:RespirationProduct](https://w3id.org/MONet/analysis-ap
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -164,8 +164,8 @@ URI: [analysis_api_schema:RespirationProduct](https://w3id.org/MONet/analysis-ap
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:RespirationProduct |
-| native | analysis_api_schema:RespirationProduct |
+| self | basalt_schema:RespirationProduct |
+| native | basalt_schema:RespirationProduct |
 
 
 
@@ -184,7 +184,7 @@ name: RespirationProduct
 description: 'Soil respiration analysis product.
 
   One row per sample with columns for soil respiration and QC flag.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: ProcessedData
 slots:
 - measure_type
@@ -192,14 +192,14 @@ attributes:
   respiration_co2_c_ug_per_g:
     name: respiration_co2_c_ug_per_g
     description: Soil respiration expressed as µg CO₂-C per gram soil
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
     rank: 1000
     domain_of:
     - RespirationProduct
     range: double
   flag:
     name: flag
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
     domain_of:
     - WellReading
     - BulkDensityProduct
@@ -223,13 +223,13 @@ name: RespirationProduct
 description: 'Soil respiration analysis product.
 
   One row per sample with columns for soil respiration and QC flag.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: ProcessedData
 attributes:
   respiration_co2_c_ug_per_g:
     name: respiration_co2_c_ug_per_g
     description: Soil respiration expressed as µg CO₂-C per gram soil
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
     rank: 1000
     alias: respiration_co2_c_ug_per_g
     owner: RespirationProduct
@@ -238,7 +238,7 @@ attributes:
     range: double
   flag:
     name: flag
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
     alias: flag
     owner: RespirationProduct
     domain_of:
@@ -256,7 +256,7 @@ attributes:
     name: measure_type
     description: Whether the measurement recorded is a single measurement, one of
       a set of  replicate measurements, or an average of several replicate measurements.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: measure_type
     owner: RespirationProduct
@@ -289,7 +289,7 @@ attributes:
       \ retained until formal typed class exists."
     todos:
     - make this inined/multivalued?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: summary_metrics
     owner: RespirationProduct
@@ -300,7 +300,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: lims_barcode
     owner: RespirationProduct
@@ -312,7 +312,7 @@ attributes:
   sample_id:
     name: sample_id
     description: Link back to the originating sample
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sample_id
     owner: RespirationProduct
@@ -325,7 +325,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: RespirationProduct
@@ -355,7 +355,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: RespirationProduct
@@ -391,7 +391,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - study
     - study_id
@@ -428,7 +428,7 @@ attributes:
 
       in the same sampling event or campaign.'
     title: sampling set
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sampling_set
     owner: RespirationProduct
@@ -444,7 +444,7 @@ attributes:
     - value: TOP
     - value: MID
     - value: BTM
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: core_section
     owner: RespirationProduct
@@ -462,7 +462,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - samp_name
     rank: 1000
@@ -488,7 +488,7 @@ attributes:
     range: string
   s3_base_url:
     name: s3_base_url
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: s3_base_url
     owner: RespirationProduct
@@ -497,7 +497,7 @@ attributes:
     range: string
   s3_bucket:
     name: s3_bucket
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: s3_bucket
     owner: RespirationProduct
@@ -507,7 +507,7 @@ attributes:
   s3_key:
     name: s3_key
     description: MinIO/S3 object key; required for all data products
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: s3_key
     owner: RespirationProduct
@@ -518,7 +518,7 @@ attributes:
   filesize:
     name: filesize
     description: Size of the file in bytes
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: filesize
     owner: RespirationProduct
@@ -527,7 +527,7 @@ attributes:
     range: integer
   md5checksum:
     name: md5checksum
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: md5checksum
     owner: RespirationProduct
@@ -536,7 +536,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     identifier: true
     alias: id
     owner: RespirationProduct

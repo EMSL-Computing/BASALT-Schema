@@ -9,7 +9,7 @@ _Reference or method used in determining soil texture_
 
 
 
-URI: [analysis_api_schema:texture_meth](https://w3id.org/MONet/analysis-api-schema/texture_meth)
+URI: [basalt_schema:texture_meth](https://EMSL-Computing.github.io/basalt-schema/texture_meth)
 Alias: texture_meth
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: texture_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: texture_meth
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:texture_meth |
-| native | analysis_api_schema:texture_meth |
+| self | basalt_schema:texture_meth |
+| native | basalt_schema:texture_meth |
 
 
 
@@ -83,7 +83,7 @@ Alias: texture_meth
 name: texture_meth
 description: Reference or method used in determining soil texture
 title: texture method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: texture_meth
 domain_of:

@@ -9,7 +9,7 @@ _Measurement of aminopeptidase activity (Unit: mol/L/h)_
 
 
 
-URI: [analysis_api_schema:aminopept_act](https://w3id.org/MONet/analysis-api-schema/aminopept_act)
+URI: [basalt_schema:aminopept_act](https://EMSL-Computing.github.io/basalt-schema/aminopept_act)
 Alias: aminopept_act
 
 <!-- no inheritance hierarchy -->
@@ -23,8 +23,8 @@ Alias: aminopept_act
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: aminopept_act
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: aminopept_act
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:aminopept_act |
-| native | analysis_api_schema:aminopept_act |
+| self | basalt_schema:aminopept_act |
+| native | basalt_schema:aminopept_act |
 
 
 
@@ -92,7 +92,7 @@ Alias: aminopept_act
 name: aminopept_act
 description: 'Measurement of aminopeptidase activity (Unit: mol/L/h)'
 title: aminopeptidase activity
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: aminopept_act
 domain_of:

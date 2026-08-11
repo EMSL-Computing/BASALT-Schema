@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:instrument_id](https://w3id.org/MONet/analysis-api-schema/instrument_id)
+URI: [basalt_schema:instrument_id](https://EMSL-Computing.github.io/basalt-schema/instrument_id)
 Alias: instrument_id
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: instrument_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [InstrumentCustodian](InstrumentCustodian.md) | A link between an instrument and a custodian (person) responsible for it |  no  |
 | [InstrumentAlternativeIdentifier](InstrumentAlternativeIdentifier.md) |  |  no  |
+| [InstrumentCustodian](InstrumentCustodian.md) | A link between an instrument and a custodian (person) responsible for it |  no  |
 
 
 
@@ -59,8 +59,8 @@ Alias: instrument_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:instrument_id |
-| native | analysis_api_schema:instrument_id |
+| self | basalt_schema:instrument_id |
+| native | basalt_schema:instrument_id |
 
 
 

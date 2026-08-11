@@ -9,7 +9,7 @@ _A unique numerical identifier assigned by the Chemical Abstract Service (CAS), 
 
 
 
-URI: [analysis_api_schema:cas](https://w3id.org/MONet/analysis-api-schema/cas)
+URI: [basalt_schema:cas](https://EMSL-Computing.github.io/basalt-schema/cas)
 Alias: cas
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: cas
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
-| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
 
 
 
@@ -68,7 +68,7 @@ Alias: cas
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: cas
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:cas |
-| native | analysis_api_schema:cas |
+| self | basalt_schema:cas |
+| native | basalt_schema:cas |
 
 
 
@@ -92,7 +92,7 @@ description: A unique numerical identifier assigned by the Chemical Abstract Ser
   (CAS), a division of the American Chemical Society, to chemical compounds, polymers,
   biological sequences, mixtures, and alloys.
 title: CAS number
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - CAS
 rank: 1000

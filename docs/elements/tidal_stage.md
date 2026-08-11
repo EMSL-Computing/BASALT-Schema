@@ -9,7 +9,7 @@ _Stage of tide_
 
 
 
-URI: [analysis_api_schema:tidal_stage](https://w3id.org/MONet/analysis-api-schema/tidal_stage)
+URI: [basalt_schema:tidal_stage](https://EMSL-Computing.github.io/basalt-schema/tidal_stage)
 Alias: tidal_stage
 
 <!-- no inheritance hierarchy -->
@@ -23,8 +23,8 @@ Alias: tidal_stage
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: tidal_stage
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: tidal_stage
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:tidal_stage |
-| native | analysis_api_schema:tidal_stage |
+| self | basalt_schema:tidal_stage |
+| native | basalt_schema:tidal_stage |
 
 
 
@@ -85,7 +85,7 @@ Alias: tidal_stage
 name: tidal_stage
 description: Stage of tide
 title: tidal stage
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: tidal_stage
 domain_of:

@@ -20,6 +20,12 @@ gen-models:
 [group('model development')]
 gen-orm: gen-sqlalchemy gen-models
 
+# Rebuild the embedded model in visuals/schema-explorer.html from the schema.
+# Run by _add-artifacts, so `just gen-doc` always publishes a current explorer.
+[group('model development')]
+gen-viz:
+  uv run python visuals/build.py
+
 # Excluded from gen-project because it accounts for ~97% of that recipe's
 # runtime; expect this to take roughly 8 minutes.
 

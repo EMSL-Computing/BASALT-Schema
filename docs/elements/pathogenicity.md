@@ -9,7 +9,7 @@ _To what is the entity pathogenic, e.g., humans, animals, plants, or specific ti
 
 
 
-URI: [analysis_api_schema:pathogenicity](https://w3id.org/MONet/analysis-api-schema/pathogenicity)
+URI: [basalt_schema:pathogenicity](https://EMSL-Computing.github.io/basalt-schema/pathogenicity)
 Alias: pathogenicity
 
 <!-- no inheritance hierarchy -->
@@ -23,10 +23,10 @@ Alias: pathogenicity
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
 
 
 
@@ -65,7 +65,7 @@ Alias: pathogenicity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -74,8 +74,8 @@ Alias: pathogenicity
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:pathogenicity |
-| native | analysis_api_schema:pathogenicity |
+| self | basalt_schema:pathogenicity |
+| native | basalt_schema:pathogenicity |
 
 
 
@@ -88,7 +88,7 @@ name: pathogenicity
 description: To what is the entity pathogenic, e.g., humans, animals, plants, or specific
   tissues.
 title: pathogenicity
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: pathogenicity
 domain_of:

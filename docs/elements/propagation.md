@@ -9,7 +9,7 @@ _The type of reproduction from the parent stock. Values for this field are speci
 
 
 
-URI: [analysis_api_schema:propagation](https://w3id.org/MONet/analysis-api-schema/propagation)
+URI: [basalt_schema:propagation](https://EMSL-Computing.github.io/basalt-schema/propagation)
 Alias: propagation
 
 <!-- no inheritance hierarchy -->
@@ -23,12 +23,12 @@ Alias: propagation
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
 
 
 
@@ -67,7 +67,7 @@ Alias: propagation
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -76,8 +76,8 @@ Alias: propagation
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:propagation |
-| native | analysis_api_schema:propagation |
+| self | basalt_schema:propagation |
+| native | basalt_schema:propagation |
 
 
 
@@ -91,7 +91,7 @@ description: 'The type of reproduction from the parent stock. Values for this fi
   are specific to different taxa. For phage or virus: lytic/lysogenic/temperate/obligately
   lytic. For plasmids: incompatibility group. For eukaryotes: sexual/asexual'''
 title: propagation
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: propagation
 domain_of:

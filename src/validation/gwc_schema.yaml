@@ -9,7 +9,7 @@
 # Last Updated:  2026-03-16
 # =============================================================================
 
-id: https://w3id.org/MONet/analysis-api-schema/gwc
+id: https://EMSL-Computing.github.io/basalt-schema/gwc
 name: gwc_schema
 title: MONet Gravimetric Water Content Ingest Schema
 description: |-
@@ -21,7 +21,7 @@ description: |-
 license: MIT
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: gwc_schema

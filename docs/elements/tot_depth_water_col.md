@@ -9,7 +9,7 @@ _Measurement of total depth of water column (Unit: m)_
 
 
 
-URI: [analysis_api_schema:tot_depth_water_col](https://w3id.org/MONet/analysis-api-schema/tot_depth_water_col)
+URI: [basalt_schema:tot_depth_water_col](https://EMSL-Computing.github.io/basalt-schema/tot_depth_water_col)
 Alias: tot_depth_water_col
 
 <!-- no inheritance hierarchy -->
@@ -23,8 +23,8 @@ Alias: tot_depth_water_col
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: tot_depth_water_col
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: tot_depth_water_col
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:tot_depth_water_col |
-| native | analysis_api_schema:tot_depth_water_col |
+| self | basalt_schema:tot_depth_water_col |
+| native | basalt_schema:tot_depth_water_col |
 
 
 
@@ -92,7 +92,7 @@ Alias: tot_depth_water_col
 name: tot_depth_water_col
 description: 'Measurement of total depth of water column (Unit: m)'
 title: total depth of water column
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: tot_depth_water_col
 domain_of:

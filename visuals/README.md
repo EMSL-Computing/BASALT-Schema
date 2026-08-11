@@ -1,6 +1,6 @@
 # Visuals
 
-Standalone, self-contained visual explainers for the MONet Analysis API schema.
+Standalone, self-contained visual explainers for the BASALT Schema.
 Each file is a single HTML page with all CSS/JS inlined — no build step, no server,
 no external dependencies. Open directly in any browser (`file://` works).
 
@@ -64,7 +64,7 @@ gen-viz:
 
 An animated walkthrough of how one **AMP2 96-well plate submission** travels through
 the API, from the web uploader to stored, queryable records. Built around the classes
-in [`media_strain_culture_plate.yaml`](../src/analysis_api_schema/schema/media_strain_culture_plate.yaml)
+in [`media_strain_culture_plate.yaml`](../src/basalt_schema/schema/media_strain_culture_plate.yaml)
 and grounded in the worked example under
 [`src/data/examples`](../src/data/examples) (two strains, two media batches, 96 wells,
 five OD₆₀₀ timepoints).

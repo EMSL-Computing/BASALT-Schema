@@ -9,7 +9,7 @@ _The date the sample was inoculated. This can be the date of inoculation, isolat
 
 
 
-URI: [analysis_api_schema:initiation_date_inoculation](https://w3id.org/MONet/analysis-api-schema/initiation_date_inoculation)
+URI: [basalt_schema:initiation_date_inoculation](https://EMSL-Computing.github.io/basalt-schema/initiation_date_inoculation)
 Alias: initiation_date_inoculation
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: initiation_date_inoculation
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  yes  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  yes  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  yes  |
 
 
 
@@ -69,7 +69,7 @@ Alias: initiation_date_inoculation
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: initiation_date_inoculation
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:initiation_date_inoculation |
-| native | analysis_api_schema:initiation_date_inoculation |
+| self | basalt_schema:initiation_date_inoculation |
+| native | basalt_schema:initiation_date_inoculation |
 
 
 
@@ -93,7 +93,7 @@ description: The date the sample was inoculated. This can be the date of inocula
   isolation, etc. If providing a sequential initiation, the sample should be linked
   to the sample it originated from. Formatted as YYYY-MM-DD
 title: initiation date of inoculation
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: initiation_date_inoculation
 domain_of:

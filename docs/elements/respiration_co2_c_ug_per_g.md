@@ -9,7 +9,7 @@ _Soil respiration expressed as µg CO₂-C per gram soil_
 
 
 
-URI: [analysis_api_schema:respiration_co2_c_ug_per_g](https://w3id.org/MONet/analysis-api-schema/respiration_co2_c_ug_per_g)
+URI: [basalt_schema:respiration_co2_c_ug_per_g](https://EMSL-Computing.github.io/basalt-schema/respiration_co2_c_ug_per_g)
 Alias: respiration_co2_c_ug_per_g
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: respiration_co2_c_ug_per_g
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: respiration_co2_c_ug_per_g
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:respiration_co2_c_ug_per_g |
-| native | analysis_api_schema:respiration_co2_c_ug_per_g |
+| self | basalt_schema:respiration_co2_c_ug_per_g |
+| native | basalt_schema:respiration_co2_c_ug_per_g |
 
 
 
@@ -89,7 +89,7 @@ Alias: respiration_co2_c_ug_per_g
 ```yaml
 name: respiration_co2_c_ug_per_g
 description: Soil respiration expressed as µg CO₂-C per gram soil
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: respiration_co2_c_ug_per_g
 owner: RespirationProduct

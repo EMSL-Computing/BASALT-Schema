@@ -9,7 +9,7 @@ _String indicating the version of the software or protocol_
 
 
 
-URI: [analysis_api_schema:version](https://w3id.org/MONet/analysis-api-schema/version)
+URI: [basalt_schema:version](https://EMSL-Computing.github.io/basalt-schema/version)
 Alias: version
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: version
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Changelog](Changelog.md) |  |  no  |
 | [SoftwareControlledTermValue](SoftwareControlledTermValue.md) |  |  no  |
+| [Changelog](Changelog.md) |  |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: version
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: version
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:version |
-| native | analysis_api_schema:version |
+| self | basalt_schema:version |
+| native | basalt_schema:version |
 
 
 
@@ -84,7 +84,7 @@ Alias: version
 ```yaml
 name: version
 description: String indicating the version of the software or protocol
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: version
 domain_of:

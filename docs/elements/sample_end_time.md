@@ -9,7 +9,7 @@ _Time of when the sample collection ends. Required format: HH:MM:SS in 24-hour t
 
 
 
-URI: [analysis_api_schema:sample_end_time](https://w3id.org/MONet/analysis-api-schema/sample_end_time)
+URI: [basalt_schema:sample_end_time](https://EMSL-Computing.github.io/basalt-schema/sample_end_time)
 Alias: sample_end_time
 
 <!-- no inheritance hierarchy -->
@@ -58,7 +58,7 @@ Alias: sample_end_time
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -67,8 +67,8 @@ Alias: sample_end_time
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sample_end_time |
-| native | analysis_api_schema:sample_end_time |
+| self | basalt_schema:sample_end_time |
+| native | basalt_schema:sample_end_time |
 
 
 
@@ -81,7 +81,7 @@ name: sample_end_time
 description: 'Time of when the sample collection ends. Required format: HH:MM:SS in
   24-hour time format. Don''t forget the seconds! (Unit: hh:mm:ss or HH:MM:SS)'
 title: sample end time
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sample_end_time
 range: string

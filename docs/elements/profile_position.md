@@ -9,7 +9,7 @@ _Cross-sectional position in the hillslope where sample was collected. Sample ar
 
 
 
-URI: [analysis_api_schema:profile_position](https://w3id.org/MONet/analysis-api-schema/profile_position)
+URI: [basalt_schema:profile_position](https://EMSL-Computing.github.io/basalt-schema/profile_position)
 Alias: profile_position
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: profile_position
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: profile_position
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:profile_position |
-| native | analysis_api_schema:profile_position |
+| self | basalt_schema:profile_position |
+| native | basalt_schema:profile_position |
 
 
 
@@ -84,7 +84,7 @@ name: profile_position
 description: Cross-sectional position in the hillslope where sample was collected.
   Sample area position in relation to surrounding areas
 title: profile position
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: profile_position
 domain_of:

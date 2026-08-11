@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flow_rate_z](https://w3id.org/MONet/analysis-api-schema/flow_rate_z)
+URI: [basalt_schema:flow_rate_z](https://EMSL-Computing.github.io/basalt-schema/flow_rate_z)
 Alias: flow_rate_z
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flow_rate_z
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flow_rate_z
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flow_rate_z |
-| native | analysis_api_schema:flow_rate_z |
+| self | basalt_schema:flow_rate_z |
+| native | basalt_schema:flow_rate_z |
 
 
 
@@ -83,7 +83,7 @@ Alias: flow_rate_z
 <details>
 ```yaml
 name: flow_rate_z
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flow_rate_z
 owner: TomographyProduct

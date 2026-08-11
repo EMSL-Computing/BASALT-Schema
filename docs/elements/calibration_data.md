@@ -9,7 +9,7 @@ _Reference to the raw instrument data file used for calibration_
 
 
 
-URI: [analysis_api_schema:calibration_data](https://w3id.org/MONet/analysis-api-schema/calibration_data)
+URI: [basalt_schema:calibration_data](https://EMSL-Computing.github.io/basalt-schema/calibration_data)
 Alias: calibration_data
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: calibration_data
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: calibration_data
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:calibration_data |
-| native | analysis_api_schema:calibration_data |
+| self | basalt_schema:calibration_data |
+| native | basalt_schema:calibration_data |
 
 
 
@@ -82,7 +82,7 @@ Alias: calibration_data
 ```yaml
 name: calibration_data
 description: Reference to the raw instrument data file used for calibration
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: calibration_data
 domain_of:

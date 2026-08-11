@@ -9,7 +9,7 @@ _the origin of wastewater such as human waste rainfall storm drains etc._
 
 
 
-URI: [analysis_api_schema:wastewater_type](https://w3id.org/MONet/analysis-api-schema/wastewater_type)
+URI: [basalt_schema:wastewater_type](https://EMSL-Computing.github.io/basalt-schema/wastewater_type)
 Alias: wastewater_type
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: wastewater_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: wastewater_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:wastewater_type |
-| native | analysis_api_schema:wastewater_type |
+| self | basalt_schema:wastewater_type |
+| native | basalt_schema:wastewater_type |
 
 
 
@@ -83,7 +83,7 @@ Alias: wastewater_type
 name: wastewater_type
 description: the origin of wastewater such as human waste rainfall storm drains etc.
 title: wasterwater type
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: wastewater_type
 domain_of:

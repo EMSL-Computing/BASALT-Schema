@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:collaborating_institution](https://w3id.org/MONet/analysis-api-schema/collaborating_institution)
+URI: [basalt_schema:collaborating_institution](https://EMSL-Computing.github.io/basalt-schema/collaborating_institution)
 Alias: collaborating_institution
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: collaborating_institution
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: collaborating_institution
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:collaborating_institution |
-| native | analysis_api_schema:collaborating_institution |
+| self | basalt_schema:collaborating_institution |
+| native | basalt_schema:collaborating_institution |
 
 
 
@@ -83,7 +83,7 @@ Alias: collaborating_institution
 <details>
 ```yaml
 name: collaborating_institution
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: collaborating_institution
 owner: Study

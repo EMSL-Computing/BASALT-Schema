@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:funding_sources](https://w3id.org/MONet/analysis-api-schema/funding_sources)
+URI: [basalt_schema:funding_sources](https://EMSL-Computing.github.io/basalt-schema/funding_sources)
 Alias: funding_sources
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: funding_sources
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: funding_sources
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:funding_sources |
-| native | analysis_api_schema:funding_sources |
+| self | basalt_schema:funding_sources |
+| native | basalt_schema:funding_sources |
 
 
 
@@ -84,7 +84,7 @@ Alias: funding_sources
 <details>
 ```yaml
 name: funding_sources
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: funding_sources
 owner: Study

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:project_start](https://w3id.org/MONet/analysis-api-schema/project_start)
+URI: [basalt_schema:project_start](https://EMSL-Computing.github.io/basalt-schema/project_start)
 Alias: project_start
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: project_start
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: project_start
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:project_start |
-| native | analysis_api_schema:project_start |
+| self | basalt_schema:project_start |
+| native | basalt_schema:project_start |
 
 
 
@@ -83,7 +83,7 @@ Alias: project_start
 <details>
 ```yaml
 name: project_start
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: project_start
 owner: Study

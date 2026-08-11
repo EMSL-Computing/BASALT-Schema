@@ -7,7 +7,7 @@ _Result/status for a process (e.g., QC outcome)._
 
 
 
-URI: [analysis_api_schema:PassFailEnum](https://w3id.org/MONet/analysis-api-schema/PassFailEnum)
+URI: [basalt_schema:PassFailEnum](https://EMSL-Computing.github.io/basalt-schema/PassFailEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -36,7 +36,7 @@ URI: [analysis_api_schema:PassFailEnum](https://w3id.org/MONet/analysis-api-sche
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -49,7 +49,7 @@ URI: [analysis_api_schema:PassFailEnum](https://w3id.org/MONet/analysis-api-sche
 ```yaml
 name: PassFailEnum
 description: Result/status for a process (e.g., QC outcome).
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   pass:

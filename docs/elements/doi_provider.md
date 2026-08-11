@@ -9,7 +9,7 @@ _The authority, or organization, the DOI is associated with._
 
 
 
-URI: [analysis_api_schema:doi_provider](https://w3id.org/MONet/analysis-api-schema/doi_provider)
+URI: [basalt_schema:doi_provider](https://EMSL-Computing.github.io/basalt-schema/doi_provider)
 Alias: doi_provider
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: doi_provider
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: doi_provider
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:doi_provider |
-| native | analysis_api_schema:doi_provider |
+| self | basalt_schema:doi_provider |
+| native | basalt_schema:doi_provider |
 
 
 
@@ -89,7 +89,7 @@ Alias: doi_provider
 ```yaml
 name: doi_provider
 description: The authority, or organization, the DOI is associated with.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: doi_provider
 owner: DOI

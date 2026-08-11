@@ -9,7 +9,7 @@ _Link to climate resource_
 
 
 
-URI: [analysis_api_schema:link_climate_info](https://w3id.org/MONet/analysis-api-schema/link_climate_info)
+URI: [basalt_schema:link_climate_info](https://EMSL-Computing.github.io/basalt-schema/link_climate_info)
 Alias: link_climate_info
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: link_climate_info
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: link_climate_info
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:link_climate_info |
-| native | analysis_api_schema:link_climate_info |
+| self | basalt_schema:link_climate_info |
+| native | basalt_schema:link_climate_info |
 
 
 
@@ -83,7 +83,7 @@ Alias: link_climate_info
 name: link_climate_info
 description: Link to climate resource
 title: link to climate information
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: link_climate_info
 domain_of:

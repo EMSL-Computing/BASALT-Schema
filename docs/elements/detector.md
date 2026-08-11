@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:detector](https://w3id.org/MONet/analysis-api-schema/detector)
+URI: [basalt_schema:detector](https://EMSL-Computing.github.io/basalt-schema/detector)
 Alias: detector
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: detector
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TOCTNMethod](TOCTNMethod.md) |  |  no  |
 | [MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |  no  |
+| [TOCTNMethod](TOCTNMethod.md) |  |  no  |
 
 
 
@@ -59,8 +59,8 @@ Alias: detector
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:detector |
-| native | analysis_api_schema:detector |
+| self | basalt_schema:detector |
+| native | basalt_schema:detector |
 
 
 

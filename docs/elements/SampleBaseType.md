@@ -7,7 +7,7 @@ _Base types for sample entities_
 
 
 
-URI: [analysis_api_schema:SampleBaseType](https://w3id.org/MONet/analysis-api-schema/SampleBaseType)
+URI: [basalt_schema:SampleBaseType](https://EMSL-Computing.github.io/basalt-schema/SampleBaseType)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -36,7 +36,7 @@ URI: [analysis_api_schema:SampleBaseType](https://w3id.org/MONet/analysis-api-sc
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -49,7 +49,7 @@ URI: [analysis_api_schema:SampleBaseType](https://w3id.org/MONet/analysis-api-sc
 ```yaml
 name: SampleBaseType
 description: Base types for sample entities
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   sample:

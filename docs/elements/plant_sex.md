@@ -9,7 +9,7 @@ _Sex of the reproductive parts on the whole plant._
 
 
 
-URI: [analysis_api_schema:plant_sex](https://w3id.org/MONet/analysis-api-schema/plant_sex)
+URI: [basalt_schema:plant_sex](https://EMSL-Computing.github.io/basalt-schema/plant_sex)
 Alias: plant_sex
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: plant_sex
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: plant_sex
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: plant_sex
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:plant_sex |
-| native | analysis_api_schema:plant_sex |
+| self | basalt_schema:plant_sex |
+| native | basalt_schema:plant_sex |
 
 
 
@@ -85,7 +85,7 @@ Alias: plant_sex
 name: plant_sex
 description: Sex of the reproductive parts on the whole plant.
 title: plant sex
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: plant_sex
 domain_of:

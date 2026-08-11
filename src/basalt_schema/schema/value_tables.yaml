@@ -1,14 +1,14 @@
-id: https://w3id.org/MONet/analysis-api-schema/value-tables
-name: analysis-api-schema-value-tables
-title: MONet Analysis API - Value Tables
+id: https://EMSL-Computing.github.io/basalt-schema/value-tables
+name: basalt-schema-value-tables
+title: BASALT Schema - Value Tables
 description: value tables
 license: MIT
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
   schema: http://schema.org/
-default_prefix: analysis_api_schema
+default_prefix: basalt_schema
 
 imports:
   - linkml:types

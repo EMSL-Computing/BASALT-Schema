@@ -9,7 +9,7 @@ _Use of conditions with differing gaseous environments; should include the name 
 
 
 
-URI: [analysis_api_schema:gaseous_environment](https://w3id.org/MONet/analysis-api-schema/gaseous_environment)
+URI: [basalt_schema:gaseous_environment](https://EMSL-Computing.github.io/basalt-schema/gaseous_environment)
 Alias: gaseous_environment
 
 <!-- no inheritance hierarchy -->
@@ -22,16 +22,16 @@ Alias: gaseous_environment
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: gaseous_environment
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: gaseous_environment
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:gaseous_environment |
-| native | analysis_api_schema:gaseous_environment |
+| self | basalt_schema:gaseous_environment |
+| native | basalt_schema:gaseous_environment |
 
 
 
@@ -94,7 +94,7 @@ description: Use of conditions with differing gaseous environments; should inclu
   the name of gaseous compound, amount administered, treatment duration, interval,
   and total experimental duration; can include multiple gaseous environment regimens
 title: gaseous environment
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: gaseous_environment
 domain_of:

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_pyrite](https://w3id.org/MONet/analysis-api-schema/flag_pyrite)
+URI: [basalt_schema:flag_pyrite](https://EMSL-Computing.github.io/basalt-schema/flag_pyrite)
 Alias: flag_pyrite
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_pyrite
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_pyrite
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_pyrite |
-| native | analysis_api_schema:flag_pyrite |
+| self | basalt_schema:flag_pyrite |
+| native | basalt_schema:flag_pyrite |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_pyrite
 <details>
 ```yaml
 name: flag_pyrite
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_pyrite
 owner: XRDPhaseProduct

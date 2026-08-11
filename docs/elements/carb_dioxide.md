@@ -9,7 +9,7 @@ _Amount of carbon dioxide measured in the air the day of sampling. (Unit: umol/L
 
 
 
-URI: [analysis_api_schema:carb_dioxide](https://w3id.org/MONet/analysis-api-schema/carb_dioxide)
+URI: [basalt_schema:carb_dioxide](https://EMSL-Computing.github.io/basalt-schema/carb_dioxide)
 Alias: carb_dioxide
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: carb_dioxide
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  yes  |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 | [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  yes  |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  yes  |
 
 
 
@@ -70,7 +70,7 @@ Alias: carb_dioxide
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: carb_dioxide
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:carb_dioxide |
-| native | analysis_api_schema:carb_dioxide |
+| self | basalt_schema:carb_dioxide |
+| native | basalt_schema:carb_dioxide |
 
 
 
@@ -93,7 +93,7 @@ name: carb_dioxide
 description: 'Amount of carbon dioxide measured in the air the day of sampling. (Unit:
   umol/L or ppm)'
 title: carbon dioxide
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: carb_dioxide
 domain_of:

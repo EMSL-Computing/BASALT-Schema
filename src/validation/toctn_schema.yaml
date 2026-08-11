@@ -21,7 +21,7 @@
 # Last Updated:  2026-03-16
 # =============================================================================
 
-id: https://w3id.org/MONet/analysis-api-schema/toctn
+id: https://EMSL-Computing.github.io/basalt-schema/toctn
 name: toctn_schema
 title: MONet TOC/TN (WEOM and MAOM/HClExtOM) Ingest Schema
 description: |-
@@ -37,7 +37,7 @@ description: |-
 license: MIT
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: toctn_schema

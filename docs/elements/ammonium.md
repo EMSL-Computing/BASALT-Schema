@@ -9,7 +9,7 @@ _Concentration of ammonium in the sample. (Units: umol/L or mg/Liter or ppm)_
 
 
 
-URI: [analysis_api_schema:ammonium](https://w3id.org/MONet/analysis-api-schema/ammonium)
+URI: [basalt_schema:ammonium](https://EMSL-Computing.github.io/basalt-schema/ammonium)
 Alias: ammonium
 
 <!-- no inheritance hierarchy -->
@@ -23,8 +23,8 @@ Alias: ammonium
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: ammonium
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: ammonium
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ammonium |
-| native | analysis_api_schema:ammonium |
+| self | basalt_schema:ammonium |
+| native | basalt_schema:ammonium |
 
 
 
@@ -93,7 +93,7 @@ name: ammonium
 description: 'Concentration of ammonium in the sample. (Units: umol/L or mg/Liter
   or ppm)'
 title: ammonium
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: ammonium
 domain_of:

@@ -1,20 +1,20 @@
 ---
-id: https://w3id.org/MONet/analysis-api-schema/organism
-name: analysis-api-schema-organism
-title: MONet Analysis API - Organism
+id: https://EMSL-Computing.github.io/basalt-schema/organism
+name: basalt-schema-organism
+title: BASALT Schema - Organism
 description: |-
   Reference data classes for biological identities (strains, isolates, engineered
   constructs) that can be instantiated by multiple physical samples.
 license: MIT
 see_also:
-  - https://MONet.github.io/analysis-api-schema
-  - https://github.com/pnnl/analysis-api
+  - https://EMSL-Computing.github.io/basalt-schema
+  - https://github.com/EMSL-Computing/basalt-schema
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
 
-default_prefix: analysis_api_schema
+default_prefix: basalt_schema
 default_range: string
 
 imports:

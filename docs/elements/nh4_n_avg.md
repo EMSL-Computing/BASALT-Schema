@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:nh4_n_avg](https://w3id.org/MONet/analysis-api-schema/nh4_n_avg)
+URI: [basalt_schema:nh4_n_avg](https://EMSL-Computing.github.io/basalt-schema/nh4_n_avg)
 Alias: nh4_n_avg
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: nh4_n_avg
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: nh4_n_avg
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:nh4_n_avg |
-| native | analysis_api_schema:nh4_n_avg |
+| self | basalt_schema:nh4_n_avg |
+| native | basalt_schema:nh4_n_avg |
 
 
 
@@ -83,7 +83,7 @@ Alias: nh4_n_avg
 <details>
 ```yaml
 name: nh4_n_avg
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: nh4_n_avg
 owner: NitrogenAnalysisProduct

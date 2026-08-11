@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:bulk_density_id](https://w3id.org/MONet/analysis-api-schema/bulk_density_id)
+URI: [basalt_schema:bulk_density_id](https://EMSL-Computing.github.io/basalt-schema/bulk_density_id)
 Alias: bulk_density_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: bulk_density_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: bulk_density_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:bulk_density_id |
-| native | analysis_api_schema:bulk_density_id |
+| self | basalt_schema:bulk_density_id |
+| native | basalt_schema:bulk_density_id |
 
 
 
@@ -83,7 +83,7 @@ Alias: bulk_density_id
 <details>
 ```yaml
 name: bulk_density_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: bulk_density_id
 owner: BulkDensityProduct

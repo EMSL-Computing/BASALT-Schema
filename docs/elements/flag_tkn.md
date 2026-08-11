@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_tkn](https://w3id.org/MONet/analysis-api-schema/flag_tkn)
+URI: [basalt_schema:flag_tkn](https://EMSL-Computing.github.io/basalt-schema/flag_tkn)
 Alias: flag_tkn
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_tkn
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_tkn
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_tkn |
-| native | analysis_api_schema:flag_tkn |
+| self | basalt_schema:flag_tkn |
+| native | basalt_schema:flag_tkn |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_tkn
 <details>
 ```yaml
 name: flag_tkn
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_tkn
 owner: ElementalAnalysisProduct

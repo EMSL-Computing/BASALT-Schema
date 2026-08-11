@@ -9,7 +9,7 @@ _Flow rate of the mobile phase, in microliters per minute._
 
 
 
-URI: [analysis_api_schema:flow_rate_ul_min](https://w3id.org/MONet/analysis-api-schema/flow_rate_ul_min)
+URI: [basalt_schema:flow_rate_ul_min](https://EMSL-Computing.github.io/basalt-schema/flow_rate_ul_min)
 Alias: flow_rate_ul_min
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: flow_rate_ul_min
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: flow_rate_ul_min
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flow_rate_ul_min |
-| native | analysis_api_schema:flow_rate_ul_min |
+| self | basalt_schema:flow_rate_ul_min |
+| native | basalt_schema:flow_rate_ul_min |
 
 
 
@@ -83,7 +83,7 @@ Alias: flow_rate_ul_min
 name: flow_rate_ul_min
 description: Flow rate of the mobile phase, in microliters per minute.
 title: flow rate (uL/min)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flow_rate_ul_min
 domain_of:

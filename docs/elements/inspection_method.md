@@ -9,7 +9,7 @@ _Method used to inspect or verify purity (visual, sequencing, etc.)_
 
 
 
-URI: [analysis_api_schema:inspection_method](https://w3id.org/MONet/analysis-api-schema/inspection_method)
+URI: [basalt_schema:inspection_method](https://EMSL-Computing.github.io/basalt-schema/inspection_method)
 Alias: inspection_method
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: inspection_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: inspection_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:inspection_method |
-| native | analysis_api_schema:inspection_method |
+| self | basalt_schema:inspection_method |
+| native | basalt_schema:inspection_method |
 
 
 
@@ -82,7 +82,7 @@ Alias: inspection_method
 ```yaml
 name: inspection_method
 description: Method used to inspect or verify purity (visual, sequencing, etc.)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: inspection_method
 domain_of:

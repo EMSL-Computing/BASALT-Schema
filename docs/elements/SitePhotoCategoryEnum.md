@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:SitePhotoCategoryEnum](https://w3id.org/MONet/analysis-api-schema/SitePhotoCategoryEnum)
+URI: [basalt_schema:SitePhotoCategoryEnum](https://EMSL-Computing.github.io/basalt-schema/SitePhotoCategoryEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -37,7 +37,7 @@ URI: [analysis_api_schema:SitePhotoCategoryEnum](https://w3id.org/MONet/analysis
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -49,7 +49,7 @@ URI: [analysis_api_schema:SitePhotoCategoryEnum](https://w3id.org/MONet/analysis
 <details>
 ```yaml
 name: SitePhotoCategoryEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   landscape:

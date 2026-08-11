@@ -9,7 +9,7 @@ _Reference or method used in determining the total nitrogen_
 
 
 
-URI: [analysis_api_schema:tot_nitro_cont_meth](https://w3id.org/MONet/analysis-api-schema/tot_nitro_cont_meth)
+URI: [basalt_schema:tot_nitro_cont_meth](https://EMSL-Computing.github.io/basalt-schema/tot_nitro_cont_meth)
 Alias: tot_nitro_cont_meth
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: tot_nitro_cont_meth
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 
 
@@ -63,7 +63,7 @@ Alias: tot_nitro_cont_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: tot_nitro_cont_meth
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:tot_nitro_cont_meth |
-| native | analysis_api_schema:tot_nitro_cont_meth |
+| self | basalt_schema:tot_nitro_cont_meth |
+| native | basalt_schema:tot_nitro_cont_meth |
 
 
 
@@ -85,7 +85,7 @@ Alias: tot_nitro_cont_meth
 name: tot_nitro_cont_meth
 description: Reference or method used in determining the total nitrogen
 title: total nitrogen content method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: tot_nitro_cont_meth
 domain_of:

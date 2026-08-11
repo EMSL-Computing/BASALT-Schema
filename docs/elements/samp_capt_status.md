@@ -9,7 +9,7 @@ _Reason for the sample_
 
 
 
-URI: [analysis_api_schema:samp_capt_status](https://w3id.org/MONet/analysis-api-schema/samp_capt_status)
+URI: [basalt_schema:samp_capt_status](https://EMSL-Computing.github.io/basalt-schema/samp_capt_status)
 Alias: samp_capt_status
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: samp_capt_status
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: samp_capt_status
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:samp_capt_status |
-| native | analysis_api_schema:samp_capt_status |
+| self | basalt_schema:samp_capt_status |
+| native | basalt_schema:samp_capt_status |
 
 
 
@@ -83,7 +83,7 @@ Alias: samp_capt_status
 name: samp_capt_status
 description: Reason for the sample
 title: sample capture status
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: samp_capt_status
 domain_of:

@@ -9,7 +9,7 @@ _Saturated volumetric water content theta_s (cm3 cm e-3). Approximates total por
 
 
 
-URI: [analysis_api_schema:theta_s](https://w3id.org/MONet/analysis-api-schema/theta_s)
+URI: [basalt_schema:theta_s](https://EMSL-Computing.github.io/basalt-schema/theta_s)
 Alias: theta_s
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: theta_s
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: theta_s
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:theta_s |
-| native | analysis_api_schema:theta_s |
+| self | basalt_schema:theta_s |
+| native | basalt_schema:theta_s |
 
 
 
@@ -90,7 +90,7 @@ Alias: theta_s
 name: theta_s
 description: Saturated volumetric water content theta_s (cm3 cm e-3). Approximates
   total porosity under saturated conditions.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: theta_s
 owner: HydraulicPropertiesProduct

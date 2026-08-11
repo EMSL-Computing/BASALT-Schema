@@ -9,7 +9,7 @@ _Sodium concentration in the sample (Unit: ug/mL)_
 
 
 
-URI: [analysis_api_schema:sodium](https://w3id.org/MONet/analysis-api-schema/sodium)
+URI: [basalt_schema:sodium](https://EMSL-Computing.github.io/basalt-schema/sodium)
 Alias: sodium
 
 <!-- no inheritance hierarchy -->
@@ -23,8 +23,8 @@ Alias: sodium
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: sodium
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: sodium
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sodium |
-| native | analysis_api_schema:sodium |
+| self | basalt_schema:sodium |
+| native | basalt_schema:sodium |
 
 
 
@@ -92,7 +92,7 @@ Alias: sodium
 name: sodium
 description: 'Sodium concentration in the sample (Unit: ug/mL)'
 title: sodium
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sodium
 domain_of:

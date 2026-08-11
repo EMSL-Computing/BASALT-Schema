@@ -9,7 +9,7 @@ _Stage of the disease at the time of sample collection e.g. inoculation, penetra
 
 
 
-URI: [analysis_api_schema:samp_dis_stage](https://w3id.org/MONet/analysis-api-schema/samp_dis_stage)
+URI: [basalt_schema:samp_dis_stage](https://EMSL-Computing.github.io/basalt-schema/samp_dis_stage)
 Alias: samp_dis_stage
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: samp_dis_stage
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: samp_dis_stage
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:samp_dis_stage |
-| native | analysis_api_schema:samp_dis_stage |
+| self | basalt_schema:samp_dis_stage |
+| native | basalt_schema:samp_dis_stage |
 
 
 
@@ -84,7 +84,7 @@ name: samp_dis_stage
 description: Stage of the disease at the time of sample collection e.g. inoculation,
   penetration, infection, growth and reproduction, dissemination of pathogen.
 title: sample disease stage
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: samp_dis_stage
 domain_of:

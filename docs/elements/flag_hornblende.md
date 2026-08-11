@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_hornblende](https://w3id.org/MONet/analysis-api-schema/flag_hornblende)
+URI: [basalt_schema:flag_hornblende](https://EMSL-Computing.github.io/basalt-schema/flag_hornblende)
 Alias: flag_hornblende
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_hornblende
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_hornblende
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_hornblende |
-| native | analysis_api_schema:flag_hornblende |
+| self | basalt_schema:flag_hornblende |
+| native | basalt_schema:flag_hornblende |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_hornblende
 <details>
 ```yaml
 name: flag_hornblende
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_hornblende
 owner: XRDPhaseProduct

@@ -9,7 +9,7 @@ _The category of nucleotide sequencing performed (e.g., amplicon, shotgun)._
 
 
 
-URI: [analysis_api_schema:nucleotide_sequencing_category](https://w3id.org/MONet/analysis-api-schema/nucleotide_sequencing_category)
+URI: [basalt_schema:nucleotide_sequencing_category](https://EMSL-Computing.github.io/basalt-schema/nucleotide_sequencing_category)
 Alias: nucleotide_sequencing_category
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: nucleotide_sequencing_category
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: nucleotide_sequencing_category
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:nucleotide_sequencing_category |
-| native | analysis_api_schema:nucleotide_sequencing_category |
+| self | basalt_schema:nucleotide_sequencing_category |
+| native | basalt_schema:nucleotide_sequencing_category |
 
 
 
@@ -82,7 +82,7 @@ Alias: nucleotide_sequencing_category
 ```yaml
 name: nucleotide_sequencing_category
 description: The category of nucleotide sequencing performed (e.g., amplicon, shotgun).
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: nucleotide_sequencing_category
 domain_of:

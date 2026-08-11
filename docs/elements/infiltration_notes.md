@@ -9,7 +9,7 @@ _Provide any details, issues, or context needed to understand the infiltration a
 
 
 
-URI: [analysis_api_schema:infiltration_notes](https://w3id.org/MONet/analysis-api-schema/infiltration_notes)
+URI: [basalt_schema:infiltration_notes](https://EMSL-Computing.github.io/basalt-schema/infiltration_notes)
 Alias: infiltration_notes
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: infiltration_notes
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: infiltration_notes
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:infiltration_notes |
-| native | analysis_api_schema:infiltration_notes |
+| self | basalt_schema:infiltration_notes |
+| native | basalt_schema:infiltration_notes |
 
 
 
@@ -85,7 +85,7 @@ name: infiltration_notes
 description: Provide any details, issues, or context needed to understand the infiltration
   activity
 title: infiltration notes
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: infiltration_notes
 domain_of:

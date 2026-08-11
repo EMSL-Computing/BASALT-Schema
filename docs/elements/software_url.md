@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:software_url](https://w3id.org/MONet/analysis-api-schema/software_url)
+URI: [basalt_schema:software_url](https://EMSL-Computing.github.io/basalt-schema/software_url)
 Alias: software_url
 
 <!-- no inheritance hierarchy -->
@@ -17,9 +17,9 @@ Alias: software_url
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
-| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
 | [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |  no  |
+| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
+| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
 
 
 
@@ -65,7 +65,7 @@ Alias: software_url
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -74,8 +74,8 @@ Alias: software_url
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:software_url |
-| native | analysis_api_schema:software_url |
+| self | basalt_schema:software_url |
+| native | basalt_schema:software_url |
 
 
 
@@ -85,7 +85,7 @@ Alias: software_url
 <details>
 ```yaml
 name: software_url
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: software_url
 owner: DataProcessingActivity

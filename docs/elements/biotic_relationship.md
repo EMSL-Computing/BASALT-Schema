@@ -9,7 +9,7 @@ _Description of relationship(s) between the subject organism and other organism(
 
 
 
-URI: [analysis_api_schema:biotic_relationship](https://w3id.org/MONet/analysis-api-schema/biotic_relationship)
+URI: [basalt_schema:biotic_relationship](https://EMSL-Computing.github.io/basalt-schema/biotic_relationship)
 Alias: biotic_relationship
 
 <!-- no inheritance hierarchy -->
@@ -22,14 +22,14 @@ Alias: biotic_relationship
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  yes  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
 
 
 
@@ -73,7 +73,7 @@ Alias: biotic_relationship
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -82,8 +82,8 @@ Alias: biotic_relationship
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:biotic_relationship |
-| native | analysis_api_schema:biotic_relationship |
+| self | basalt_schema:biotic_relationship |
+| native | basalt_schema:biotic_relationship |
 | exact | MIXS:0000016 |
 
 
@@ -99,7 +99,7 @@ description: Description of relationship(s) between the subject organism and oth
   Y. The target organism is the subject of the relationship and the other organism(s)
   is the object
 title: observed biotic relationship
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - samp_biotic_relationship
 exact_mappings:

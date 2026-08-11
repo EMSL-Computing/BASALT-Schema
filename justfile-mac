@@ -6,7 +6,7 @@ default:
 
 # set working-directory := "."
 
-src_schema_path := "./src/analysis_api_schema/schema/analysis_api_schema.yaml"
+src_schema_path := "./src/basalt_schema/schema/basalt_schema.yaml"
 # doc_gen_overlay: adds uuid/numeric type stubs for doc rendering only
 # kept alongside other doc-gen artefacts in src/doc_templates/
 doc_overlay_path := "./src/doc_templates/doc_gen_overlay.yaml"
@@ -23,7 +23,7 @@ gen-models:
 gen-project: gen-schema gen-models
 
 gen-doc:
-    uv run python util/gen_doc.py ./src/analysis_api_schema/schema/analysis_api_schema.yaml docs/elements/
+    uv run python util/gen_doc.py ./src/basalt_schema/schema/basalt_schema.yaml docs/elements/
     mkdir -p docs/files
     cp visuals/schema-explorer.html docs/files/schema-explorer.html
 
@@ -37,15 +37,15 @@ serve-doc:
 
 # deprecating
 # gen-enums:
-#     # gen-pydantic ../src/analysis_api_schema/schema/enums.yaml > enums.py
+#     # gen-pydantic ../src/basalt_schema/schema/enums.yaml > enums.py
 #     # python fix_encoding.py enums.py
 
-[working-directory: '../src/analysis_api_schema/schema/']
+[working-directory: '../src/basalt_schema/schema/']
 render:
     @echo "Broken - expect failure"
-    linkml generate dbml -s analysis_api_schema.yaml -o pg.dbml
+    linkml generate dbml -s basalt_schema.yaml -o pg.dbml
     dbml-renderer -i pg.dbml -o pg.svg
 
 gen-pydantic:
-    python pydanticgen.py  ../src/analysis_api_schema/schema/analysis_api_schema.yaml > models.py
+    python pydanticgen.py  ../src/basalt_schema/schema/basalt_schema.yaml > models.py
     python fix_encoding.py models.py

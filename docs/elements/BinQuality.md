@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:BinQuality](https://w3id.org/MONet/analysis-api-schema/BinQuality)
+URI: [basalt_schema:BinQuality](https://EMSL-Computing.github.io/basalt-schema/BinQuality)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -32,7 +32,7 @@ URI: [analysis_api_schema:BinQuality](https://w3id.org/MONet/analysis-api-schema
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -44,7 +44,7 @@ URI: [analysis_api_schema:BinQuality](https://w3id.org/MONet/analysis-api-schema
 <details>
 ```yaml
 name: BinQuality
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   HQ:

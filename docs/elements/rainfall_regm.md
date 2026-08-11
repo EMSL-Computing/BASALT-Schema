@@ -9,7 +9,7 @@ _Information about treatment involving an exposure to a given amount of rainfall
 
 
 
-URI: [analysis_api_schema:rainfall_regm](https://w3id.org/MONet/analysis-api-schema/rainfall_regm)
+URI: [basalt_schema:rainfall_regm](https://EMSL-Computing.github.io/basalt-schema/rainfall_regm)
 Alias: rainfall_regm
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: rainfall_regm
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: rainfall_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: rainfall_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:rainfall_regm |
-| native | analysis_api_schema:rainfall_regm |
+| self | basalt_schema:rainfall_regm |
+| native | basalt_schema:rainfall_regm |
 
 
 
@@ -87,7 +87,7 @@ description: Information about treatment involving an exposure to a given amount
   how long each treatment lasted, and the start and end time of the entire treatment;
   can include multiple regimens
 title: rainfall regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: rainfall_regm
 domain_of:

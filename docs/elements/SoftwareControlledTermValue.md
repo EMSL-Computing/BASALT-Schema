@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:SoftwareControlledTermValue](https://w3id.org/MONet/analysis-api-schema/SoftwareControlledTermValue)
+URI: [basalt_schema:SoftwareControlledTermValue](https://EMSL-Computing.github.io/basalt-schema/SoftwareControlledTermValue)
 
 
 
@@ -65,7 +65,7 @@ URI: [analysis_api_schema:SoftwareControlledTermValue](https://w3id.org/MONet/an
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -74,8 +74,8 @@ URI: [analysis_api_schema:SoftwareControlledTermValue](https://w3id.org/MONet/an
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:SoftwareControlledTermValue |
-| native | analysis_api_schema:SoftwareControlledTermValue |
+| self | basalt_schema:SoftwareControlledTermValue |
+| native | basalt_schema:SoftwareControlledTermValue |
 
 
 
@@ -91,7 +91,7 @@ URI: [analysis_api_schema:SoftwareControlledTermValue](https://w3id.org/MONet/an
 <details>
 ```yaml
 name: SoftwareControlledTermValue
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 slots:
 - name
 - description
@@ -99,7 +99,7 @@ slots:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
     identifier: true
     domain_of:
     - Activity
@@ -177,7 +177,7 @@ attributes:
     required: true
   has_raw_value:
     name: has_raw_value
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
     domain_of:
     - TimestampValue
     - TextValue
@@ -195,11 +195,11 @@ attributes:
 <details>
 ```yaml
 name: SoftwareControlledTermValue
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
     identifier: true
     alias: id
     owner: SoftwareControlledTermValue
@@ -279,7 +279,7 @@ attributes:
     required: true
   has_raw_value:
     name: has_raw_value
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
     alias: has_raw_value
     owner: SoftwareControlledTermValue
     domain_of:
@@ -293,7 +293,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: SoftwareControlledTermValue
@@ -323,7 +323,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: SoftwareControlledTermValue
@@ -355,7 +355,7 @@ attributes:
   version:
     name: version
     description: String indicating the version of the software or protocol
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: version
     owner: SoftwareControlledTermValue

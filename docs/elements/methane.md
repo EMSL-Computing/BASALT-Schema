@@ -9,7 +9,7 @@ _Methane (gas) amount or concentration at the time of sampling. (Unit: umol/L or
 
 
 
-URI: [analysis_api_schema:methane](https://w3id.org/MONet/analysis-api-schema/methane)
+URI: [basalt_schema:methane](https://EMSL-Computing.github.io/basalt-schema/methane)
 Alias: methane
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: methane
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
-| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
 
 
 
@@ -71,7 +71,7 @@ Alias: methane
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -80,8 +80,8 @@ Alias: methane
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:methane |
-| native | analysis_api_schema:methane |
+| self | basalt_schema:methane |
+| native | basalt_schema:methane |
 
 
 
@@ -94,7 +94,7 @@ name: methane
 description: 'Methane (gas) amount or concentration at the time of sampling. (Unit:
   umol/L or ppb or ppm)'
 title: methane
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: methane
 domain_of:

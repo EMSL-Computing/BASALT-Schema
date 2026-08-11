@@ -9,7 +9,7 @@ _Physical barcode on plate (if different from UUID)_
 
 
 
-URI: [analysis_api_schema:plate_barcode](https://w3id.org/MONet/analysis-api-schema/plate_barcode)
+URI: [basalt_schema:plate_barcode](https://EMSL-Computing.github.io/basalt-schema/plate_barcode)
 Alias: plate_barcode
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: plate_barcode
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |  no  |
 | [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
+| [PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |  no  |
 | [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |  no  |
 
 
@@ -63,7 +63,7 @@ Alias: plate_barcode
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: plate_barcode
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:plate_barcode |
-| native | analysis_api_schema:plate_barcode |
+| self | basalt_schema:plate_barcode |
+| native | basalt_schema:plate_barcode |
 
 
 
@@ -84,7 +84,7 @@ Alias: plate_barcode
 ```yaml
 name: plate_barcode
 description: Physical barcode on plate (if different from UUID)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: plate_barcode
 domain_of:

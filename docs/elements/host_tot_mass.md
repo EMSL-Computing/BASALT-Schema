@@ -9,7 +9,7 @@ _Total mass of the host at collection. (Unit: kg or g)_
 
 
 
-URI: [analysis_api_schema:host_tot_mass](https://w3id.org/MONet/analysis-api-schema/host_tot_mass)
+URI: [basalt_schema:host_tot_mass](https://EMSL-Computing.github.io/basalt-schema/host_tot_mass)
 Alias: host_tot_mass
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: host_tot_mass
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: host_tot_mass
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: host_tot_mass
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:host_tot_mass |
-| native | analysis_api_schema:host_tot_mass |
+| self | basalt_schema:host_tot_mass |
+| native | basalt_schema:host_tot_mass |
 
 
 
@@ -92,7 +92,7 @@ Alias: host_tot_mass
 name: host_tot_mass
 description: 'Total mass of the host at collection. (Unit: kg or g)'
 title: host total mass
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: host_tot_mass
 domain_of:

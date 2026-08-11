@@ -9,7 +9,7 @@ _Phenotype of human or other host. For phenotypic quality ontology (pato) (v 201
 
 
 
-URI: [analysis_api_schema:host_phenotype](https://w3id.org/MONet/analysis-api-schema/host_phenotype)
+URI: [basalt_schema:host_phenotype](https://EMSL-Computing.github.io/basalt-schema/host_phenotype)
 Alias: host_phenotype
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: host_phenotype
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: host_phenotype
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:host_phenotype |
-| native | analysis_api_schema:host_phenotype |
+| self | basalt_schema:host_phenotype |
+| native | basalt_schema:host_phenotype |
 
 
 
@@ -85,7 +85,7 @@ description: Phenotype of human or other host. For phenotypic quality ontology (
   (v 2018-03-27) terms please see http://purl.bioontology.org/ontology/pato. For Human
   Phenotype Ontology (HP) (v 2018-06-13) please see http://purl.bioontology.org/ontology/HP
 title: host phenotype
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: host_phenotype
 domain_of:

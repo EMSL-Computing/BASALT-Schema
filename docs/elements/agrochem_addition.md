@@ -9,7 +9,7 @@ _Addition of fertilizers, pesticides, etc. - amount and time of applications_
 
 
 
-URI: [analysis_api_schema:agrochem_addition](https://w3id.org/MONet/analysis-api-schema/agrochem_addition)
+URI: [basalt_schema:agrochem_addition](https://EMSL-Computing.github.io/basalt-schema/agrochem_addition)
 Alias: agrochem_addition
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: agrochem_addition
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
 
 
@@ -63,7 +63,7 @@ Alias: agrochem_addition
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: agrochem_addition
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:agrochem_addition |
-| native | analysis_api_schema:agrochem_addition |
+| self | basalt_schema:agrochem_addition |
+| native | basalt_schema:agrochem_addition |
 
 
 
@@ -85,7 +85,7 @@ Alias: agrochem_addition
 name: agrochem_addition
 description: Addition of fertilizers, pesticides, etc. - amount and time of applications
 title: agrochemical additions
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: agrochem_addition
 domain_of:

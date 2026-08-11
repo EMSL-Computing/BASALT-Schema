@@ -9,7 +9,7 @@ _Links to a record of a person and their roles for this study._
 
 
 
-URI: [analysis_api_schema:has_participants](https://w3id.org/MONet/analysis-api-schema/has_participants)
+URI: [basalt_schema:has_participants](https://EMSL-Computing.github.io/basalt-schema/has_participants)
 Alias: has_participants
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: has_participants
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: has_participants
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:has_participants |
-| native | analysis_api_schema:has_participants |
+| self | basalt_schema:has_participants |
+| native | basalt_schema:has_participants |
 
 
 
@@ -90,7 +90,7 @@ Alias: has_participants
 ```yaml
 name: has_participants
 description: Links to a record of a person and their roles for this study.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: has_participants
 owner: Study

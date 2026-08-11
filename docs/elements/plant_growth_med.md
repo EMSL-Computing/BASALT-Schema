@@ -9,7 +9,7 @@ _Specification of the media for growing the plants or tissue cultured samples e.
 
 
 
-URI: [analysis_api_schema:plant_growth_med](https://w3id.org/MONet/analysis-api-schema/plant_growth_med)
+URI: [basalt_schema:plant_growth_med](https://EMSL-Computing.github.io/basalt-schema/plant_growth_med)
 Alias: plant_growth_med
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: plant_growth_med
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: plant_growth_med
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: plant_growth_med
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:plant_growth_med |
-| native | analysis_api_schema:plant_growth_med |
+| self | basalt_schema:plant_growth_med |
+| native | basalt_schema:plant_growth_med |
 
 
 
@@ -97,7 +97,7 @@ description: Specification of the media for growing the plants or tissue culture
   name of the media followed by the PECO identifier in brackets, e.g. aeroponic plant
   growth media exposure [PECO:0001073]
 title: plant growth medium
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: plant_growth_med
 domain_of:

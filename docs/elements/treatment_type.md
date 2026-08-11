@@ -9,7 +9,7 @@ _Type of treatment applied in experimental culture growth_
 
 
 
-URI: [analysis_api_schema:treatment_type](https://w3id.org/MONet/analysis-api-schema/treatment_type)
+URI: [basalt_schema:treatment_type](https://EMSL-Computing.github.io/basalt-schema/treatment_type)
 Alias: treatment_type
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: treatment_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: treatment_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:treatment_type |
-| native | analysis_api_schema:treatment_type |
+| self | basalt_schema:treatment_type |
+| native | basalt_schema:treatment_type |
 
 
 
@@ -82,7 +82,7 @@ Alias: treatment_type
 ```yaml
 name: treatment_type
 description: Type of treatment applied in experimental culture growth
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: treatment_type
 domain_of:

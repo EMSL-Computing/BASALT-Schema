@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:functional_identifier](https://w3id.org/MONet/analysis-api-schema/functional_identifier)
+URI: [basalt_schema:functional_identifier](https://EMSL-Computing.github.io/basalt-schema/functional_identifier)
 Alias: functional_identifier
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: functional_identifier
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: functional_identifier
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:functional_identifier |
-| native | analysis_api_schema:functional_identifier |
+| self | basalt_schema:functional_identifier |
+| native | basalt_schema:functional_identifier |
 
 
 
@@ -84,7 +84,7 @@ Alias: functional_identifier
 <details>
 ```yaml
 name: functional_identifier
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: functional_identifier
 owner: FunctionalAnnotationIdentifier

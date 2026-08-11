@@ -9,7 +9,7 @@ _Measurement of mean friction velocity (Unit: m/s)_
 
 
 
-URI: [analysis_api_schema:mean_frict_vel](https://w3id.org/MONet/analysis-api-schema/mean_frict_vel)
+URI: [basalt_schema:mean_frict_vel](https://EMSL-Computing.github.io/basalt-schema/mean_frict_vel)
 Alias: mean_frict_vel
 
 <!-- no inheritance hierarchy -->
@@ -23,8 +23,8 @@ Alias: mean_frict_vel
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: mean_frict_vel
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: mean_frict_vel
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:mean_frict_vel |
-| native | analysis_api_schema:mean_frict_vel |
+| self | basalt_schema:mean_frict_vel |
+| native | basalt_schema:mean_frict_vel |
 
 
 
@@ -92,7 +92,7 @@ Alias: mean_frict_vel
 name: mean_frict_vel
 description: 'Measurement of mean friction velocity (Unit: m/s)'
 title: mean friction velocity
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: mean_frict_vel
 domain_of:

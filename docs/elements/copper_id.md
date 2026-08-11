@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:copper_id](https://w3id.org/MONet/analysis-api-schema/copper_id)
+URI: [basalt_schema:copper_id](https://EMSL-Computing.github.io/basalt-schema/copper_id)
 Alias: copper_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: copper_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: copper_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:copper_id |
-| native | analysis_api_schema:copper_id |
+| self | basalt_schema:copper_id |
+| native | basalt_schema:copper_id |
 
 
 
@@ -83,7 +83,7 @@ Alias: copper_id
 <details>
 ```yaml
 name: copper_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: copper_id
 owner: IonsAnalysisProduct

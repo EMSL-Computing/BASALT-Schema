@@ -11,7 +11,7 @@ _A physical sample collected from an environment. The environment can be ecologi
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [analysis_api_schema:Sample](https://w3id.org/MONet/analysis-api-schema/Sample)
+URI: [basalt_schema:Sample](https://EMSL-Computing.github.io/basalt-schema/Sample)
 
 
 
@@ -176,7 +176,7 @@ URI: [analysis_api_schema:Sample](https://w3id.org/MONet/analysis-api-schema/Sam
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -185,8 +185,8 @@ URI: [analysis_api_schema:Sample](https://w3id.org/MONet/analysis-api-schema/Sam
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:Sample |
-| native | analysis_api_schema:Sample |
+| self | basalt_schema:Sample |
+| native | basalt_schema:Sample |
 
 
 
@@ -209,7 +209,7 @@ todos:
 - where should proposal ID live? probably not here? emsl_activity is a string referencing
   a campaign name. but we do need to link samples to their parent studies/projects
   somehow.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 abstract: true
 slots:
 - name
@@ -219,7 +219,7 @@ slots:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -311,12 +311,12 @@ todos:
 - where should proposal ID live? probably not here? emsl_activity is a string referencing
   a campaign name. but we do need to link samples to their parent studies/projects
   somehow.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 abstract: true
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     alias: id
     owner: Sample
@@ -397,7 +397,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: Sample
@@ -427,7 +427,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: Sample
@@ -466,7 +466,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: emsl_activity
     owner: Sample
@@ -478,7 +478,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: lims_barcode
     owner: Sample

@@ -11,7 +11,7 @@ _slots including used_software and version._
 
 
 
-URI: [analysis_api_schema:MassSpectrometryDataProcessingActivity](https://w3id.org/MONet/analysis-api-schema/MassSpectrometryDataProcessingActivity)
+URI: [basalt_schema:MassSpectrometryDataProcessingActivity](https://EMSL-Computing.github.io/basalt-schema/MassSpectrometryDataProcessingActivity)
 
 
 
@@ -161,7 +161,7 @@ URI: [analysis_api_schema:MassSpectrometryDataProcessingActivity](https://w3id.o
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -170,8 +170,8 @@ URI: [analysis_api_schema:MassSpectrometryDataProcessingActivity](https://w3id.o
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:MassSpectrometryDataProcessingActivity |
-| native | analysis_api_schema:MassSpectrometryDataProcessingActivity |
+| self | basalt_schema:MassSpectrometryDataProcessingActivity |
+| native | basalt_schema:MassSpectrometryDataProcessingActivity |
 
 
 
@@ -190,7 +190,7 @@ name: MassSpectrometryDataProcessingActivity
 description: 'Concrete mass spectrometry workflow run. Inherits all DataProcessingActivity
 
   slots including used_software and version.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: DataProcessingActivity
 slots:
 - uses_calibration
@@ -209,7 +209,7 @@ name: MassSpectrometryDataProcessingActivity
 description: 'Concrete mass spectrometry workflow run. Inherits all DataProcessingActivity
 
   slots including used_software and version.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: DataProcessingActivity
 attributes:
   uses_calibration:
@@ -217,7 +217,7 @@ attributes:
     description: Reference to the raw data file from the standard which was run with
       a batch of samples that was used as calibration for this data processing workflow
       run.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: uses_calibration
     owner: MassSpectrometryDataProcessingActivity
@@ -228,7 +228,7 @@ attributes:
     name: uses_raw_ms_data
     description: The raw data file, output by a mass spectrometer, that was analyzed
       in  this data processing workflow run.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: uses_raw_ms_data
     owner: MassSpectrometryDataProcessingActivity
@@ -238,7 +238,7 @@ attributes:
   lims_task_instance_id:
     name: lims_task_instance_id
     description: L7 task_instance_id for the activity, if known.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: lims_task_instance_id
     owner: MassSpectrometryDataProcessingActivity
@@ -248,7 +248,7 @@ attributes:
   metaproteomics_analysis_category:
     name: metaproteomics_analysis_category
     description: The category of metaproteomics analysis being performed, if applicable.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: metaproteomics_analysis_category
     owner: MassSpectrometryDataProcessingActivity
@@ -263,7 +263,7 @@ attributes:
       \ via linkage_cache.\n\nDDL: ALTER TABLE \"DataProcessingActivity\"\n      \
       \ ADD COLUMN parent_workflow_id UUID\n       REFERENCES \"DataProcessingActivity\"\
       (id);"
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: parent_workflow_id
     owner: MassSpectrometryDataProcessingActivity
@@ -279,7 +279,7 @@ attributes:
       Direction: structured key-value pairs keyed by workflow type.
 
       Schema for allowed keys TBD per workflow type before full implementation.'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: workflow_steps
     owner: MassSpectrometryDataProcessingActivity
@@ -292,7 +292,7 @@ attributes:
     description: A human-readable description of the data analysis workflow. May  include
       details such as the purpose, output, and/or main steps of  the workflow.
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: MassSpectrometryDataProcessingActivity
@@ -323,7 +323,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     identifier: true
     alias: id
     owner: MassSpectrometryDataProcessingActivity
@@ -403,7 +403,7 @@ attributes:
     required: true
   started_at_time:
     name: started_at_time
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     alias: started_at_time
     owner: MassSpectrometryDataProcessingActivity
     domain_of:
@@ -413,7 +413,7 @@ attributes:
     required: true
   ended_at_time:
     name: ended_at_time
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     alias: ended_at_time
     owner: MassSpectrometryDataProcessingActivity
     domain_of:
@@ -422,7 +422,7 @@ attributes:
     range: datetime
   software_url:
     name: software_url
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: software_url
     owner: MassSpectrometryDataProcessingActivity
@@ -431,7 +431,7 @@ attributes:
     range: string
   software_version:
     name: software_version
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     alias: software_version
     owner: MassSpectrometryDataProcessingActivity
     domain_of:
@@ -440,7 +440,7 @@ attributes:
     range: string
   software_poc:
     name: software_poc
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: software_poc
     owner: MassSpectrometryDataProcessingActivity
@@ -449,7 +449,7 @@ attributes:
     range: string
   execution_resource:
     name: execution_resource
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: execution_resource
     owner: MassSpectrometryDataProcessingActivity

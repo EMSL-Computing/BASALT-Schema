@@ -9,7 +9,7 @@ _Carbon source in this well (e.g. "L-malic acid", "glucose")_
 
 
 
-URI: [analysis_api_schema:carbon_source](https://w3id.org/MONet/analysis-api-schema/carbon_source)
+URI: [basalt_schema:carbon_source](https://EMSL-Computing.github.io/basalt-schema/carbon_source)
 Alias: carbon_source
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: carbon_source
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: carbon_source
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:carbon_source |
-| native | analysis_api_schema:carbon_source |
+| self | basalt_schema:carbon_source |
+| native | basalt_schema:carbon_source |
 
 
 
@@ -90,7 +90,7 @@ Alias: carbon_source
 ```yaml
 name: carbon_source
 description: Carbon source in this well (e.g. "L-malic acid", "glucose")
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: carbon_source
 owner: EcoplateWellMetadata

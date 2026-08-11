@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:total_organic_carbon_id](https://w3id.org/MONet/analysis-api-schema/total_organic_carbon_id)
+URI: [basalt_schema:total_organic_carbon_id](https://EMSL-Computing.github.io/basalt-schema/total_organic_carbon_id)
 Alias: total_organic_carbon_id
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: total_organic_carbon_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MAOMProduct](MAOMProduct.md) | Mineral-Associated Organic Matter (MAOM) analysis product, typically derived ... |  no  |
 | [WEOMProduct](WEOMProduct.md) | Water Extractable Organic Matter (WEOM) analysis product, typically derived v... |  no  |
+| [MAOMProduct](MAOMProduct.md) | Mineral-Associated Organic Matter (MAOM) analysis product, typically derived ... |  no  |
 
 
 
@@ -59,8 +59,8 @@ Alias: total_organic_carbon_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:total_organic_carbon_id |
-| native | analysis_api_schema:total_organic_carbon_id |
+| self | basalt_schema:total_organic_carbon_id |
+| native | basalt_schema:total_organic_carbon_id |
 
 
 

@@ -5,8 +5,8 @@ from pathlib import Path
 
 from linkml_runtime.utils.schemaview import SchemaView
 
-METAGENOMICS_YAML = Path("src/analysis_api_schema/schema/metagenomics.yaml")
-ANALYSIS_SCHEMA_YAML = Path("src/analysis_api_schema/schema/analysis_api_schema.yaml")
+METAGENOMICS_YAML = Path("src/basalt_schema/schema/metagenomics.yaml")
+BASALT_SCHEMA_YAML = Path("src/basalt_schema/schema/basalt_schema.yaml")
 
 METAGENOMICS_PRODUCTS = (
     "Metagenomics_BinningProduct",
@@ -25,7 +25,7 @@ def sv():
     on these classes are inherited rather than declared in the class's own
     "attributes" block, so raw yaml.safe_load cannot see them.
     """
-    return SchemaView(str(ANALYSIS_SCHEMA_YAML))
+    return SchemaView(str(BASALT_SCHEMA_YAML))
 
 def test_metagenomics_classes_exist():
     data = load_yaml(METAGENOMICS_YAML)

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_calcium](https://w3id.org/MONet/analysis-api-schema/flag_calcium)
+URI: [basalt_schema:flag_calcium](https://EMSL-Computing.github.io/basalt-schema/flag_calcium)
 Alias: flag_calcium
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_calcium
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_calcium
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_calcium |
-| native | analysis_api_schema:flag_calcium |
+| self | basalt_schema:flag_calcium |
+| native | basalt_schema:flag_calcium |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_calcium
 <details>
 ```yaml
 name: flag_calcium
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_calcium
 owner: IonsAnalysisProduct

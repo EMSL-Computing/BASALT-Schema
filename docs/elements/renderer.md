@@ -9,7 +9,7 @@ _UI renderer to use for this container type (e.g., defaultcontainer.js)._
 
 
 
-URI: [analysis_api_schema:renderer](https://w3id.org/MONet/analysis-api-schema/renderer)
+URI: [basalt_schema:renderer](https://EMSL-Computing.github.io/basalt-schema/renderer)
 Alias: renderer
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: renderer
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: renderer
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:renderer |
-| native | analysis_api_schema:renderer |
+| self | basalt_schema:renderer |
+| native | basalt_schema:renderer |
 
 
 
@@ -89,7 +89,7 @@ Alias: renderer
 ```yaml
 name: renderer
 description: UI renderer to use for this container type (e.g., defaultcontainer.js).
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: renderer
 owner: ContainerType

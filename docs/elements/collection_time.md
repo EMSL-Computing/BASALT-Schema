@@ -9,7 +9,7 @@ _The time of sampling as an instance (single point). Required format: HH:MM:SS i
 
 
 
-URI: [analysis_api_schema:collection_time](https://w3id.org/MONet/analysis-api-schema/collection_time)
+URI: [basalt_schema:collection_time](https://EMSL-Computing.github.io/basalt-schema/collection_time)
 Alias: collection_time
 
 <!-- no inheritance hierarchy -->
@@ -23,17 +23,17 @@ Alias: collection_time
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [MixedCultureSamplingActivity](MixedCultureSamplingActivity.md) | Collection of samples from a mixed culture |  no  |
-| [SoilSamplingActivity](SoilSamplingActivity.md) | Collection of soil samples from the environment |  no  |
-| [PureCultureSamplingActivity](PureCultureSamplingActivity.md) | Collection of samples from a culture containing a single organism |  no  |
-| [SedimentSamplingActivity](SedimentSamplingActivity.md) | Collection of sediment samples from the environment |  no  |
-| [WaterSamplingActivity](WaterSamplingActivity.md) | Collection of water samples |  no  |
+| [OtherUndescribedSamplingActivity](OtherUndescribedSamplingActivity.md) | Collection of samples from source that does not fit into any of the other cat... |  no  |
 | [MonetSoilSamplingActivity](MonetSoilSamplingActivity.md) | Collection of soil cores according to the MONet soil sampling protocol |  yes  |
 | [TerraformSamplingActivity](TerraformSamplingActivity.md) | Collection of samples from a Terraform device |  no  |
-| [PlantSamplingActivity](PlantSamplingActivity.md) | Collection of samples associated with plants |  no  |
-| [AerosolSamplingActivity](AerosolSamplingActivity.md) | A sampling activity where aerosol samples were collected |  no  |
 | [CultureEnvironmentalSamplingActivity](CultureEnvironmentalSamplingActivity.md) | Collection of samples from a culture of organisms taken from the environment |  no  |
+| [PureCultureSamplingActivity](PureCultureSamplingActivity.md) | Collection of samples from a culture containing a single organism |  no  |
+| [SoilSamplingActivity](SoilSamplingActivity.md) | Collection of soil samples from the environment |  no  |
 | [FieldDeployedTerraformSamplingActivity](FieldDeployedTerraformSamplingActivity.md) | Collection of samples from a field-deployed Terraform device |  no  |
-| [OtherUndescribedSamplingActivity](OtherUndescribedSamplingActivity.md) | Collection of samples from source that does not fit into any of the other cat... |  no  |
+| [WaterSamplingActivity](WaterSamplingActivity.md) | Collection of water samples |  no  |
+| [AerosolSamplingActivity](AerosolSamplingActivity.md) | A sampling activity where aerosol samples were collected |  no  |
+| [SedimentSamplingActivity](SedimentSamplingActivity.md) | Collection of sediment samples from the environment |  no  |
+| [PlantSamplingActivity](PlantSamplingActivity.md) | Collection of samples associated with plants |  no  |
 
 
 
@@ -79,7 +79,7 @@ Alias: collection_time
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -88,8 +88,8 @@ Alias: collection_time
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:collection_time |
-| native | analysis_api_schema:collection_time |
+| self | basalt_schema:collection_time |
+| native | basalt_schema:collection_time |
 
 
 
@@ -102,7 +102,7 @@ name: collection_time
 description: 'The time of sampling as an instance (single point). Required format:
   HH:MM:SS in 24-hour time format. Don''t forget the second! (Unit: hh:mm:ss or HH:MM:SS)'
 title: collection time
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: collection_time
 domain_of:

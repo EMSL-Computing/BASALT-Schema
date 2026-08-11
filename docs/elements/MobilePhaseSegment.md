@@ -9,7 +9,7 @@ _A segment of the mobile phase used in chromatography during mass spectrometry._
 
 
 
-URI: [analysis_api_schema:MobilePhaseSegment](https://w3id.org/MONet/analysis-api-schema/MobilePhaseSegment)
+URI: [basalt_schema:MobilePhaseSegment](https://EMSL-Computing.github.io/basalt-schema/MobilePhaseSegment)
 
 
 
@@ -81,7 +81,7 @@ URI: [analysis_api_schema:MobilePhaseSegment](https://w3id.org/MONet/analysis-ap
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -90,8 +90,8 @@ URI: [analysis_api_schema:MobilePhaseSegment](https://w3id.org/MONet/analysis-ap
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:MobilePhaseSegment |
-| native | analysis_api_schema:MobilePhaseSegment |
+| self | basalt_schema:MobilePhaseSegment |
+| native | basalt_schema:MobilePhaseSegment |
 
 
 
@@ -110,14 +110,14 @@ name: MobilePhaseSegment
 description: A segment of the mobile phase used in chromatography during mass spectrometry.
 todos:
 - inheritance? substances_used modelling
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 slots:
 - name
 - duration_min
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/mass-spec
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/mass-spec
     identifier: true
     domain_of:
     - Activity
@@ -196,7 +196,7 @@ attributes:
   segment_order:
     name: segment_order
     description: The order of this segment in the overall chromatography protocol.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/mass-spec
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/mass-spec
     rank: 1000
     domain_of:
     - MobilePhaseSegment
@@ -204,7 +204,7 @@ attributes:
   substance:
     name: substance
     description: The name of the substance used in this mobile phase segment.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/mass-spec
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/mass-spec
     rank: 1000
     domain_of:
     - MobilePhaseSegment
@@ -221,11 +221,11 @@ name: MobilePhaseSegment
 description: A segment of the mobile phase used in chromatography during mass spectrometry.
 todos:
 - inheritance? substances_used modelling
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/mass-spec
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/mass-spec
     identifier: true
     alias: id
     owner: MobilePhaseSegment
@@ -306,7 +306,7 @@ attributes:
   segment_order:
     name: segment_order
     description: The order of this segment in the overall chromatography protocol.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/mass-spec
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/mass-spec
     rank: 1000
     alias: segment_order
     owner: MobilePhaseSegment
@@ -316,7 +316,7 @@ attributes:
   substance:
     name: substance
     description: The name of the substance used in this mobile phase segment.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/mass-spec
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/mass-spec
     rank: 1000
     alias: substance
     owner: MobilePhaseSegment
@@ -326,7 +326,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: MobilePhaseSegment
@@ -355,7 +355,7 @@ attributes:
   duration_min:
     name: duration_min
     description: how long something took, in minutes
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: duration_min
     owner: MobilePhaseSegment

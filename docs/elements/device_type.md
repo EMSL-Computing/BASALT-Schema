@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:device_type](https://w3id.org/MONet/analysis-api-schema/device_type)
+URI: [basalt_schema:device_type](https://EMSL-Computing.github.io/basalt-schema/device_type)
 Alias: device_type
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: device_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: device_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:device_type |
-| native | analysis_api_schema:device_type |
+| self | basalt_schema:device_type |
+| native | basalt_schema:device_type |
 
 
 
@@ -83,7 +83,7 @@ Alias: device_type
 <details>
 ```yaml
 name: device_type
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: device_type
 owner: LabDevice

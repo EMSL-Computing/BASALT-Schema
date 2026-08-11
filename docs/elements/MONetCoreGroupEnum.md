@@ -7,7 +7,7 @@ _Core groups when sampling according to the MONet sampling protocol_
 
 
 
-URI: [analysis_api_schema:MONetCoreGroupEnum](https://w3id.org/MONet/analysis-api-schema/MONetCoreGroupEnum)
+URI: [basalt_schema:MONetCoreGroupEnum](https://EMSL-Computing.github.io/basalt-schema/MONetCoreGroupEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -46,7 +46,7 @@ URI: [analysis_api_schema:MONetCoreGroupEnum](https://w3id.org/MONet/analysis-ap
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -59,7 +59,7 @@ URI: [analysis_api_schema:MONetCoreGroupEnum](https://w3id.org/MONet/analysis-ap
 ```yaml
 name: MONetCoreGroupEnum
 description: Core groups when sampling according to the MONet sampling protocol
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   A:

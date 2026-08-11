@@ -9,7 +9,7 @@ _NCBI taxon ID for the organism._
 
 
 
-URI: [analysis_api_schema:taxonomy_id](https://w3id.org/MONet/analysis-api-schema/taxonomy_id)
+URI: [basalt_schema:taxonomy_id](https://EMSL-Computing.github.io/basalt-schema/taxonomy_id)
 Alias: taxonomy_id
 
 <!-- no inheritance hierarchy -->
@@ -67,7 +67,7 @@ Alias: taxonomy_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -76,8 +76,8 @@ Alias: taxonomy_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:taxonomy_id |
-| native | analysis_api_schema:taxonomy_id |
+| self | basalt_schema:taxonomy_id |
+| native | basalt_schema:taxonomy_id |
 
 
 
@@ -88,7 +88,7 @@ Alias: taxonomy_id
 ```yaml
 name: taxonomy_id
 description: NCBI taxon ID for the organism.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - ncbi_taxon_id
 - taxon_id

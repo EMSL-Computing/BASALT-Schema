@@ -9,7 +9,7 @@ _Record of configuration and/or settings for an activity._
 
 
 
-URI: [analysis_api_schema:Configuration](https://w3id.org/MONet/analysis-api-schema/Configuration)
+URI: [basalt_schema:Configuration](https://EMSL-Computing.github.io/basalt-schema/Configuration)
 
 
 
@@ -74,7 +74,7 @@ URI: [analysis_api_schema:Configuration](https://w3id.org/MONet/analysis-api-sch
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,8 +83,8 @@ URI: [analysis_api_schema:Configuration](https://w3id.org/MONet/analysis-api-sch
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:Configuration |
-| native | analysis_api_schema:Configuration |
+| self | basalt_schema:Configuration |
+| native | basalt_schema:Configuration |
 
 
 
@@ -101,14 +101,14 @@ URI: [analysis_api_schema:Configuration](https://w3id.org/MONet/analysis-api-sch
 ```yaml
 name: Configuration
 description: Record of configuration and/or settings for an activity.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 slots:
 - name
 - description
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/mass-spec
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/mass-spec
     domain_of:
     - Activity
     - Entity
@@ -193,11 +193,11 @@ attributes:
 ```yaml
 name: Configuration
 description: Record of configuration and/or settings for an activity.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/mass-spec
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/mass-spec
     alias: id
     owner: Configuration
     domain_of:
@@ -277,7 +277,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: Configuration
@@ -307,7 +307,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: Configuration

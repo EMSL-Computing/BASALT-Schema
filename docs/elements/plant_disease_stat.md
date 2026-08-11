@@ -9,7 +9,7 @@ _List of diseases with which the plant has been diagnosed; can include multiple 
 
 
 
-URI: [analysis_api_schema:plant_disease_stat](https://w3id.org/MONet/analysis-api-schema/plant_disease_stat)
+URI: [basalt_schema:plant_disease_stat](https://EMSL-Computing.github.io/basalt-schema/plant_disease_stat)
 Alias: plant_disease_stat
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: plant_disease_stat
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: plant_disease_stat
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:plant_disease_stat |
-| native | analysis_api_schema:plant_disease_stat |
+| self | basalt_schema:plant_disease_stat |
+| native | basalt_schema:plant_disease_stat |
 
 
 
@@ -84,7 +84,7 @@ name: plant_disease_stat
 description: List of diseases with which the plant has been diagnosed; can include
   multiple diagnoses.
 title: plant disease status
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: plant_disease_stat
 domain_of:

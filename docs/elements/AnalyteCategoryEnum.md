@@ -7,7 +7,7 @@ _bundling common terms for different omics types by biomolecule being analyzed_
 
 
 
-URI: [analysis_api_schema:AnalyteCategoryEnum](https://w3id.org/MONet/analysis-api-schema/AnalyteCategoryEnum)
+URI: [basalt_schema:AnalyteCategoryEnum](https://EMSL-Computing.github.io/basalt-schema/AnalyteCategoryEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -47,7 +47,7 @@ URI: [analysis_api_schema:AnalyteCategoryEnum](https://w3id.org/MONet/analysis-a
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -61,7 +61,7 @@ URI: [analysis_api_schema:AnalyteCategoryEnum](https://w3id.org/MONet/analysis-a
 name: AnalyteCategoryEnum
 description: bundling common terms for different omics types by biomolecule being
   analyzed
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   dna:

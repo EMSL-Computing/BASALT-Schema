@@ -9,7 +9,7 @@ _Collection design of pooled samples and/or sieve size and amount of sample siev
 
 
 
-URI: [analysis_api_schema:sieving](https://w3id.org/MONet/analysis-api-schema/sieving)
+URI: [basalt_schema:sieving](https://EMSL-Computing.github.io/basalt-schema/sieving)
 Alias: sieving
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: sieving
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 
 
@@ -63,7 +63,7 @@ Alias: sieving
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: sieving
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sieving |
-| native | analysis_api_schema:sieving |
+| self | basalt_schema:sieving |
+| native | basalt_schema:sieving |
 
 
 
@@ -86,7 +86,7 @@ name: sieving
 description: Collection design of pooled samples and/or sieve size and amount of sample
   sieved
 title: sieving
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sieving
 domain_of:

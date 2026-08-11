@@ -11,7 +11,7 @@ _acronym provide the full component name in the component description._
 
 
 
-URI: [analysis_api_schema:component_name](https://w3id.org/MONet/analysis-api-schema/component_name)
+URI: [basalt_schema:component_name](https://EMSL-Computing.github.io/basalt-schema/component_name)
 Alias: component_name
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: component_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: component_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:component_name |
-| native | analysis_api_schema:component_name |
+| self | basalt_schema:component_name |
+| native | basalt_schema:component_name |
 
 
 
@@ -87,7 +87,7 @@ description: 'Provide a one-to-three word name based on the component. If using 
 
   acronym provide the full component name in the component description.'
 title: construct component name
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: component_name
 domain_of:

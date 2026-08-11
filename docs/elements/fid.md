@@ -9,7 +9,7 @@ _Free induction decay_
 
 
 
-URI: [analysis_api_schema:fid](https://w3id.org/MONet/analysis-api-schema/fid)
+URI: [basalt_schema:fid](https://EMSL-Computing.github.io/basalt-schema/fid)
 Alias: fid
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: fid
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -74,8 +74,8 @@ Alias: fid
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:fid |
-| native | analysis_api_schema:fid |
+| self | basalt_schema:fid |
+| native | basalt_schema:fid |
 
 
 
@@ -88,7 +88,7 @@ name: fid
 description: Free induction decay
 todos:
 - is this a setting or a result?
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: fid
 domain_of:

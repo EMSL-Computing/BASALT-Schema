@@ -11,7 +11,7 @@ _Examples: "M9 media with 1% Glucose", "rich media with 10% LB and 90% glycerol"
 
 
 
-URI: [analysis_api_schema:media_recipe](https://w3id.org/MONet/analysis-api-schema/media_recipe)
+URI: [basalt_schema:media_recipe](https://EMSL-Computing.github.io/basalt-schema/media_recipe)
 Alias: media_recipe
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: media_recipe
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: media_recipe
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:media_recipe |
-| native | analysis_api_schema:media_recipe |
+| self | basalt_schema:media_recipe |
+| native | basalt_schema:media_recipe |
 
 
 
@@ -86,7 +86,7 @@ name: media_recipe
 description: 'Reference or description of recipe used to prepare media.
 
   Examples: "M9 media with 1% Glucose", "rich media with 10% LB and 90% glycerol"'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: media_recipe
 domain_of:

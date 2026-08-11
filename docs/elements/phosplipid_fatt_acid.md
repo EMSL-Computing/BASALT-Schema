@@ -9,7 +9,7 @@ _Concentration of phospholipid fatty acids; can include multiple values separate
 
 
 
-URI: [analysis_api_schema:phosplipid_fatt_acid](https://w3id.org/MONet/analysis-api-schema/phosplipid_fatt_acid)
+URI: [basalt_schema:phosplipid_fatt_acid](https://EMSL-Computing.github.io/basalt-schema/phosplipid_fatt_acid)
 Alias: phosplipid_fatt_acid
 
 <!-- no inheritance hierarchy -->
@@ -23,8 +23,8 @@ Alias: phosplipid_fatt_acid
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: phosplipid_fatt_acid
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: phosplipid_fatt_acid
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:phosplipid_fatt_acid |
-| native | analysis_api_schema:phosplipid_fatt_acid |
+| self | basalt_schema:phosplipid_fatt_acid |
+| native | basalt_schema:phosplipid_fatt_acid |
 
 
 
@@ -87,7 +87,7 @@ description: Concentration of phospholipid fatty acids; can include multiple val
   separated by `;`. Provide the phospholipid fatty acids followed by the measurement
   value ({phospholipid fatty acid name}{value} {unit})
 title: phospholipid fatty acid
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: phosplipid_fatt_acid
 domain_of:

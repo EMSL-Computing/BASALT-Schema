@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_ni](https://w3id.org/MONet/analysis-api-schema/flag_ni)
+URI: [basalt_schema:flag_ni](https://EMSL-Computing.github.io/basalt-schema/flag_ni)
 Alias: flag_ni
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_ni
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_ni
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_ni |
-| native | analysis_api_schema:flag_ni |
+| self | basalt_schema:flag_ni |
+| native | basalt_schema:flag_ni |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_ni
 <details>
 ```yaml
 name: flag_ni
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_ni
 owner: XRFElementalProduct

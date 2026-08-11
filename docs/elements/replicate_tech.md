@@ -9,7 +9,7 @@ _The technical replicate number of the sample or measurement, if applicable._
 
 
 
-URI: [analysis_api_schema:replicate_tech](https://w3id.org/MONet/analysis-api-schema/replicate_tech)
+URI: [basalt_schema:replicate_tech](https://EMSL-Computing.github.io/basalt-schema/replicate_tech)
 Alias: replicate_tech
 
 <!-- no inheritance hierarchy -->
@@ -55,7 +55,7 @@ Alias: replicate_tech
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -64,8 +64,8 @@ Alias: replicate_tech
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:replicate_tech |
-| native | analysis_api_schema:replicate_tech |
+| self | basalt_schema:replicate_tech |
+| native | basalt_schema:replicate_tech |
 
 
 
@@ -78,7 +78,7 @@ name: replicate_tech
 description: The technical replicate number of the sample or measurement, if applicable.
 todos:
 - reconcile replicate modelling
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: replicate_tech
 range: integer

@@ -9,7 +9,7 @@ _Concentration of chloride in the sample (Unit: mg/L or ppm)_
 
 
 
-URI: [analysis_api_schema:chloride](https://w3id.org/MONet/analysis-api-schema/chloride)
+URI: [basalt_schema:chloride](https://EMSL-Computing.github.io/basalt-schema/chloride)
 Alias: chloride
 
 <!-- no inheritance hierarchy -->
@@ -23,8 +23,8 @@ Alias: chloride
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: chloride
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: chloride
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:chloride |
-| native | analysis_api_schema:chloride |
+| self | basalt_schema:chloride |
+| native | basalt_schema:chloride |
 
 
 
@@ -92,7 +92,7 @@ Alias: chloride
 name: chloride
 description: 'Concentration of chloride in the sample (Unit: mg/L or ppm)'
 title: chloride
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: chloride
 domain_of:

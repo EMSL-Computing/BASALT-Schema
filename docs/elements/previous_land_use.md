@@ -9,7 +9,7 @@ _Previous land use and dates_
 
 
 
-URI: [analysis_api_schema:previous_land_use](https://w3id.org/MONet/analysis-api-schema/previous_land_use)
+URI: [basalt_schema:previous_land_use](https://EMSL-Computing.github.io/basalt-schema/previous_land_use)
 Alias: previous_land_use
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: previous_land_use
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: previous_land_use
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:previous_land_use |
-| native | analysis_api_schema:previous_land_use |
+| self | basalt_schema:previous_land_use |
+| native | basalt_schema:previous_land_use |
 
 
 
@@ -83,7 +83,7 @@ Alias: previous_land_use
 name: previous_land_use
 description: Previous land use and dates
 title: previous land use
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: previous_land_use
 domain_of:

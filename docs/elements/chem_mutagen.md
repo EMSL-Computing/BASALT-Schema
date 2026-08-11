@@ -9,7 +9,7 @@ _Treatment involving use of mutagens; should include the name of mutagen, amount
 
 
 
-URI: [analysis_api_schema:chem_mutagen](https://w3id.org/MONet/analysis-api-schema/chem_mutagen)
+URI: [basalt_schema:chem_mutagen](https://EMSL-Computing.github.io/basalt-schema/chem_mutagen)
 Alias: chem_mutagen
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: chem_mutagen
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: chem_mutagen
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: chem_mutagen
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:chem_mutagen |
-| native | analysis_api_schema:chem_mutagen |
+| self | basalt_schema:chem_mutagen |
+| native | basalt_schema:chem_mutagen |
 
 
 
@@ -87,7 +87,7 @@ description: Treatment involving use of mutagens; should include the name of mut
   repeated, how long each treatment lasted, and the start and end time of the entire
   treatment; can include multiple mutagen regimens
 title: chemical mutagen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: chem_mutagen
 domain_of:

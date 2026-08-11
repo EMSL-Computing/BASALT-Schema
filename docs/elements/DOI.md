@@ -9,7 +9,7 @@ _A digital object identifier (DOI) representing a persistent link to a digital r
 
 
 
-URI: [analysis_api_schema:DOI](https://w3id.org/MONet/analysis-api-schema/DOI)
+URI: [basalt_schema:DOI](https://EMSL-Computing.github.io/basalt-schema/DOI)
 
 
 
@@ -90,7 +90,7 @@ URI: [analysis_api_schema:DOI](https://w3id.org/MONet/analysis-api-schema/DOI)
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -99,8 +99,8 @@ URI: [analysis_api_schema:DOI](https://w3id.org/MONet/analysis-api-schema/DOI)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:DOI |
-| native | analysis_api_schema:DOI |
+| self | basalt_schema:DOI |
+| native | basalt_schema:DOI |
 
 
 
@@ -118,11 +118,11 @@ URI: [analysis_api_schema:DOI](https://w3id.org/MONet/analysis-api-schema/DOI)
 name: DOI
 description: A digital object identifier (DOI) representing a persistent link to a
   digital resource.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   doi_value:
     name: doi_value
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/study
     rank: 1000
     domain_of:
     - DOI
@@ -131,7 +131,7 @@ attributes:
   doi_category:
     name: doi_category
     description: The resource type the corresponding doi resolves to
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/study
     rank: 1000
     domain_of:
     - DOI
@@ -139,7 +139,7 @@ attributes:
   doi_provider:
     name: doi_provider
     description: The authority, or organization, the DOI is associated with.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/study
     rank: 1000
     domain_of:
     - DOI
@@ -155,11 +155,11 @@ attributes:
 name: DOI
 description: A digital object identifier (DOI) representing a persistent link to a
   digital resource.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   doi_value:
     name: doi_value
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/study
     rank: 1000
     alias: doi_value
     owner: DOI
@@ -170,7 +170,7 @@ attributes:
   doi_category:
     name: doi_category
     description: The resource type the corresponding doi resolves to
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/study
     rank: 1000
     alias: doi_category
     owner: DOI
@@ -180,7 +180,7 @@ attributes:
   doi_provider:
     name: doi_provider
     description: The authority, or organization, the DOI is associated with.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/study
     rank: 1000
     alias: doi_provider
     owner: DOI

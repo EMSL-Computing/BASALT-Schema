@@ -7,7 +7,7 @@ _Enumeration of trophic levels for organisms._
 
 
 
-URI: [analysis_api_schema:TrophicLevelEnum](https://w3id.org/MONet/analysis-api-schema/TrophicLevelEnum)
+URI: [basalt_schema:TrophicLevelEnum](https://EMSL-Computing.github.io/basalt-schema/TrophicLevelEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -71,7 +71,7 @@ URI: [analysis_api_schema:TrophicLevelEnum](https://w3id.org/MONet/analysis-api-
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ URI: [analysis_api_schema:TrophicLevelEnum](https://w3id.org/MONet/analysis-api-
 ```yaml
 name: TrophicLevelEnum
 description: Enumeration of trophic levels for organisms.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   autotroph:

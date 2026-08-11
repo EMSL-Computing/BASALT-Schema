@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:started_at_time](https://w3id.org/MONet/analysis-api-schema/started_at_time)
+URI: [basalt_schema:started_at_time](https://EMSL-Computing.github.io/basalt-schema/started_at_time)
 Alias: started_at_time
 
 <!-- no inheritance hierarchy -->
@@ -17,10 +17,10 @@ Alias: started_at_time
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Activity](Activity.md) | Something that happens over time and can use equipment |  no  |
-| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
-| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
 | [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |  no  |
+| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
+| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
+| [Activity](Activity.md) | Something that happens over time and can use equipment |  no  |
 
 
 
@@ -61,8 +61,8 @@ Alias: started_at_time
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:started_at_time |
-| native | analysis_api_schema:started_at_time |
+| self | basalt_schema:started_at_time |
+| native | basalt_schema:started_at_time |
 
 
 

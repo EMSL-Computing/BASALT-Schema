@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:RouteMethodEnum](https://w3id.org/MONet/analysis-api-schema/RouteMethodEnum)
+URI: [basalt_schema:RouteMethodEnum](https://EMSL-Computing.github.io/basalt-schema/RouteMethodEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -48,7 +48,7 @@ URI: [analysis_api_schema:RouteMethodEnum](https://w3id.org/MONet/analysis-api-s
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -60,7 +60,7 @@ URI: [analysis_api_schema:RouteMethodEnum](https://w3id.org/MONet/analysis-api-s
 <details>
 ```yaml
 name: RouteMethodEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   analysis_activity:

@@ -9,7 +9,7 @@ _The category of metaproteomics analysis being performed, if applicable._
 
 
 
-URI: [analysis_api_schema:metaproteomics_analysis_category](https://w3id.org/MONet/analysis-api-schema/metaproteomics_analysis_category)
+URI: [basalt_schema:metaproteomics_analysis_category](https://EMSL-Computing.github.io/basalt-schema/metaproteomics_analysis_category)
 Alias: metaproteomics_analysis_category
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: metaproteomics_analysis_category
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: metaproteomics_analysis_category
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:metaproteomics_analysis_category |
-| native | analysis_api_schema:metaproteomics_analysis_category |
+| self | basalt_schema:metaproteomics_analysis_category |
+| native | basalt_schema:metaproteomics_analysis_category |
 
 
 
@@ -82,7 +82,7 @@ Alias: metaproteomics_analysis_category
 ```yaml
 name: metaproteomics_analysis_category
 description: The category of metaproteomics analysis being performed, if applicable.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: metaproteomics_analysis_category
 domain_of:

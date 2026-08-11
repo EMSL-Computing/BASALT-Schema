@@ -9,7 +9,7 @@ _Measured value (absorbance, OD, fluorescence)_
 
 
 
-URI: [analysis_api_schema:value](https://w3id.org/MONet/analysis-api-schema/value)
+URI: [basalt_schema:value](https://EMSL-Computing.github.io/basalt-schema/value)
 Alias: value
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: value
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: value
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:value |
-| native | analysis_api_schema:value |
+| self | basalt_schema:value |
+| native | basalt_schema:value |
 
 
 
@@ -90,7 +90,7 @@ Alias: value
 ```yaml
 name: value
 description: Measured value (absorbance, OD, fluorescence)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: value
 owner: WellReading

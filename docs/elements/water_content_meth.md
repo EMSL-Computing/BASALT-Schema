@@ -9,7 +9,7 @@ _Reference or method used in determining the water content of soil_
 
 
 
-URI: [analysis_api_schema:water_content_meth](https://w3id.org/MONet/analysis-api-schema/water_content_meth)
+URI: [basalt_schema:water_content_meth](https://EMSL-Computing.github.io/basalt-schema/water_content_meth)
 Alias: water_content_meth
 
 <!-- no inheritance hierarchy -->
@@ -22,11 +22,11 @@ Alias: water_content_meth
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 
@@ -65,7 +65,7 @@ Alias: water_content_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -74,8 +74,8 @@ Alias: water_content_meth
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:water_content_meth |
-| native | analysis_api_schema:water_content_meth |
+| self | basalt_schema:water_content_meth |
+| native | basalt_schema:water_content_meth |
 
 
 
@@ -87,7 +87,7 @@ Alias: water_content_meth
 name: water_content_meth
 description: Reference or method used in determining the water content of soil
 title: water content method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: water_content_meth
 domain_of:

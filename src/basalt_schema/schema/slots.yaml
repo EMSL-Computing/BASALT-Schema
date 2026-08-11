@@ -1,21 +1,21 @@
 ---
-id: https://w3id.org/MONet/analysis-api-schema/slots
-name: analysis-api-schema-slots
-title: Slot definitions for the MONet Analysis API Schema
+id: https://EMSL-Computing.github.io/basalt-schema/slots
+name: basalt-schema-slots
+title: Slot definitions for the BASALT Schema
 description: |-
-  Slot definitions for analysis-api-schema in one file for better 
+  Slot definitions for basalt-schema in one file for better 
   maintainability and reusability.
 license: MIT
 see_also:
-  - https://MONet.github.io/analysis-api-schema
-  - https://github.com/pnnl/analysis-api
+  - https://EMSL-Computing.github.io/basalt-schema
+  - https://github.com/EMSL-Computing/basalt-schema
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
   MIXS: https://w3id.org/mixs/
 
-default_prefix: analysis_api_schema
+default_prefix: basalt_schema
 
 default_range: string
 

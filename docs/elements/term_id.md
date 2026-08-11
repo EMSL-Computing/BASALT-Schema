@@ -9,7 +9,7 @@ _pointer to an ontology class_
 
 
 
-URI: [analysis_api_schema:term_id](https://w3id.org/MONet/analysis-api-schema/term_id)
+URI: [basalt_schema:term_id](https://EMSL-Computing.github.io/basalt-schema/term_id)
 Alias: term_id
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: term_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: term_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:term_id |
-| native | analysis_api_schema:term_id |
+| self | basalt_schema:term_id |
+| native | basalt_schema:term_id |
 
 
 
@@ -89,7 +89,7 @@ Alias: term_id
 ```yaml
 name: term_id
 description: pointer to an ontology class
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: term_id
 owner: ControlledTermValue

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:location](https://w3id.org/MONet/analysis-api-schema/location)
+URI: [basalt_schema:location](https://EMSL-Computing.github.io/basalt-schema/location)
 Alias: location
 
 <!-- no inheritance hierarchy -->
@@ -17,15 +17,15 @@ Alias: location
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TextureMethod](TextureMethod.md) |  |  no  |
-| [Instrument](Instrument.md) | A material entity that is designed to perform a function in a scientific  |  no  |
-| [EnzymeActivityMethod](EnzymeActivityMethod.md) |  |  no  |
-| [MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |  no  |
-| [KuoMethod](KuoMethod.md) |  |  no  |
-| [PHMethod](PHMethod.md) |  |  no  |
 | [XrayComputedTomographyMethod](XrayComputedTomographyMethod.md) |  |  no  |
+| [TextureMethod](TextureMethod.md) |  |  no  |
 | [TOCTNMethod](TOCTNMethod.md) |  |  no  |
+| [PHMethod](PHMethod.md) |  |  no  |
+| [EnzymeActivityMethod](EnzymeActivityMethod.md) |  |  no  |
+| [KuoMethod](KuoMethod.md) |  |  no  |
 | [HydraulicPropertiesMethod](HydraulicPropertiesMethod.md) |  |  no  |
+| [Instrument](Instrument.md) | A material entity that is designed to perform a function in a scientific  |  no  |
+| [MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |  no  |
 | [GravimetricWaterContentMethod](GravimetricWaterContentMethod.md) |  |  no  |
 
 
@@ -70,7 +70,7 @@ Alias: location
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: location
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:location |
-| native | analysis_api_schema:location |
+| self | basalt_schema:location |
+| native | basalt_schema:location |
 
 
 
@@ -92,7 +92,7 @@ Alias: location
 name: location
 todos:
 - used on many method classes. no description. what was this meant to mean?
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: location
 domain_of:

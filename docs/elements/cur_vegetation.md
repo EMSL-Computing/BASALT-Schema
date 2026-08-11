@@ -9,7 +9,7 @@ _Vegetation classification from one or more standard classification systems, or 
 
 
 
-URI: [analysis_api_schema:cur_vegetation](https://w3id.org/MONet/analysis-api-schema/cur_vegetation)
+URI: [basalt_schema:cur_vegetation](https://EMSL-Computing.github.io/basalt-schema/cur_vegetation)
 Alias: cur_vegetation
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: cur_vegetation
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: cur_vegetation
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:cur_vegetation |
-| native | analysis_api_schema:cur_vegetation |
+| self | basalt_schema:cur_vegetation |
+| native | basalt_schema:cur_vegetation |
 
 
 
@@ -84,7 +84,7 @@ name: cur_vegetation
 description: Vegetation classification from one or more standard classification systems,
   or agricultural crop
 title: current vegetation
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: cur_vegetation
 domain_of:

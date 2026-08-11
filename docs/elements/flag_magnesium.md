@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_magnesium](https://w3id.org/MONet/analysis-api-schema/flag_magnesium)
+URI: [basalt_schema:flag_magnesium](https://EMSL-Computing.github.io/basalt-schema/flag_magnesium)
 Alias: flag_magnesium
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_magnesium
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_magnesium
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_magnesium |
-| native | analysis_api_schema:flag_magnesium |
+| self | basalt_schema:flag_magnesium |
+| native | basalt_schema:flag_magnesium |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_magnesium
 <details>
 ```yaml
 name: flag_magnesium
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_magnesium
 owner: IonsAnalysisProduct

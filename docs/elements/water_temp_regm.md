@@ -9,7 +9,7 @@ _Information about treatment involving an exposure to water with varying degree 
 
 
 
-URI: [analysis_api_schema:water_temp_regm](https://w3id.org/MONet/analysis-api-schema/water_temp_regm)
+URI: [basalt_schema:water_temp_regm](https://EMSL-Computing.github.io/basalt-schema/water_temp_regm)
 Alias: water_temp_regm
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: water_temp_regm
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: water_temp_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: water_temp_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:water_temp_regm |
-| native | analysis_api_schema:water_temp_regm |
+| self | basalt_schema:water_temp_regm |
+| native | basalt_schema:water_temp_regm |
 
 
 
@@ -87,7 +87,7 @@ description: Information about treatment involving an exposure to water with var
   was repeated, how long each treatment lasted, and the start and end time of the
   entire treatment; can include multiple regimens
 title: water temperature regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: water_temp_regm
 domain_of:

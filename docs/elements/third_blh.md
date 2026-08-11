@@ -9,7 +9,7 @@ _Third boundary layer height candidate (meters) (Unit: m)_
 
 
 
-URI: [analysis_api_schema:third_blh](https://w3id.org/MONet/analysis-api-schema/third_blh)
+URI: [basalt_schema:third_blh](https://EMSL-Computing.github.io/basalt-schema/third_blh)
 Alias: third_blh
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: third_blh
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: third_blh
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:third_blh |
-| native | analysis_api_schema:third_blh |
+| self | basalt_schema:third_blh |
+| native | basalt_schema:third_blh |
 
 
 
@@ -83,7 +83,7 @@ Alias: third_blh
 name: third_blh
 description: 'Third boundary layer height candidate (meters) (Unit: m)'
 title: third boundary layer height
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: third_blh
 domain_of:

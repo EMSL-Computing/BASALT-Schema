@@ -9,7 +9,7 @@ _Residual volumetric water content theta_r (cm3 cm). The water content at which 
 
 
 
-URI: [analysis_api_schema:theta_r](https://w3id.org/MONet/analysis-api-schema/theta_r)
+URI: [basalt_schema:theta_r](https://EMSL-Computing.github.io/basalt-schema/theta_r)
 Alias: theta_r
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: theta_r
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: theta_r
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:theta_r |
-| native | analysis_api_schema:theta_r |
+| self | basalt_schema:theta_r |
+| native | basalt_schema:theta_r |
 
 
 
@@ -90,7 +90,7 @@ Alias: theta_r
 name: theta_r
 description: Residual volumetric water content theta_r (cm3 cm). The water content
   at which liquid conductivity approaches zero.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: theta_r
 owner: HydraulicPropertiesProduct

@@ -9,7 +9,7 @@ _Provide the scientific name (genus and species) of the host organism._
 
 
 
-URI: [analysis_api_schema:organism_name](https://w3id.org/MONet/analysis-api-schema/organism_name)
+URI: [basalt_schema:organism_name](https://EMSL-Computing.github.io/basalt-schema/organism_name)
 Alias: organism_name
 
 <!-- no inheritance hierarchy -->
@@ -67,7 +67,7 @@ Alias: organism_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -76,8 +76,8 @@ Alias: organism_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:organism_name |
-| native | analysis_api_schema:organism_name |
+| self | basalt_schema:organism_name |
+| native | basalt_schema:organism_name |
 
 
 
@@ -89,7 +89,7 @@ Alias: organism_name
 name: organism_name
 description: Provide the scientific name (genus and species) of the host organism.
 title: organism name
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - scientific_name
 - species_name

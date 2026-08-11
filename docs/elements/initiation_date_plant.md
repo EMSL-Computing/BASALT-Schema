@@ -9,7 +9,7 @@ _The date the plant part of the sample was initiated. This can be the date of ge
 
 
 
-URI: [analysis_api_schema:initiation_date_plant](https://w3id.org/MONet/analysis-api-schema/initiation_date_plant)
+URI: [basalt_schema:initiation_date_plant](https://EMSL-Computing.github.io/basalt-schema/initiation_date_plant)
 Alias: initiation_date_plant
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: initiation_date_plant
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  yes  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  yes  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  yes  |
 
 
 
@@ -69,7 +69,7 @@ Alias: initiation_date_plant
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: initiation_date_plant
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:initiation_date_plant |
-| native | analysis_api_schema:initiation_date_plant |
+| self | basalt_schema:initiation_date_plant |
+| native | basalt_schema:initiation_date_plant |
 
 
 
@@ -93,7 +93,7 @@ description: The date the plant part of the sample was initiated. This can be th
   date of germination or propagation. If providing a sequential initiation (propagation),
   the sample should be linked to the sample it originated from. Formatted as YYYY-MM-DD
 title: initiation date of plant
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: initiation_date_plant
 domain_of:

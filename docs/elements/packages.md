@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:packages](https://w3id.org/MONet/analysis-api-schema/packages)
+URI: [basalt_schema:packages](https://EMSL-Computing.github.io/basalt-schema/packages)
 Alias: packages
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: packages
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: packages
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:packages |
-| native | analysis_api_schema:packages |
+| self | basalt_schema:packages |
+| native | basalt_schema:packages |
 
 
 
@@ -83,7 +83,7 @@ Alias: packages
 <details>
 ```yaml
 name: packages
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: packages
 owner: zipDownload

@@ -9,7 +9,7 @@ _Measurement of bacterial respiration in the water column. Provide value and uni
 
 
 
-URI: [analysis_api_schema:bac_resp](https://w3id.org/MONet/analysis-api-schema/bac_resp)
+URI: [basalt_schema:bac_resp](https://EMSL-Computing.github.io/basalt-schema/bac_resp)
 Alias: bac_resp
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: bac_resp
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -78,8 +78,8 @@ Alias: bac_resp
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:bac_resp |
-| native | analysis_api_schema:bac_resp |
+| self | basalt_schema:bac_resp |
+| native | basalt_schema:bac_resp |
 
 
 
@@ -92,7 +92,7 @@ name: bac_resp
 description: Measurement of bacterial respiration in the water column. Provide value
   and unit,any unit is valid.
 title: bacterial respiration
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: bac_resp
 domain_of:

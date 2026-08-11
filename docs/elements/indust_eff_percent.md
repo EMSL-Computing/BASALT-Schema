@@ -9,7 +9,7 @@ _percentage of industrial effluents received by wastewater treatment plant_
 
 
 
-URI: [analysis_api_schema:indust_eff_percent](https://w3id.org/MONet/analysis-api-schema/indust_eff_percent)
+URI: [basalt_schema:indust_eff_percent](https://EMSL-Computing.github.io/basalt-schema/indust_eff_percent)
 Alias: indust_eff_percent
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: indust_eff_percent
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: indust_eff_percent
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:indust_eff_percent |
-| native | analysis_api_schema:indust_eff_percent |
+| self | basalt_schema:indust_eff_percent |
+| native | basalt_schema:indust_eff_percent |
 
 
 
@@ -83,7 +83,7 @@ Alias: indust_eff_percent
 name: indust_eff_percent
 description: percentage of industrial effluents received by wastewater treatment plant
 title: industrial effluent percent
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: indust_eff_percent
 domain_of:

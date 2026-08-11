@@ -9,7 +9,7 @@ _The category of soil core taken according to the MONet sampling protocol._
 
 
 
-URI: [analysis_api_schema:core_group](https://w3id.org/MONet/analysis-api-schema/core_group)
+URI: [basalt_schema:core_group](https://EMSL-Computing.github.io/basalt-schema/core_group)
 Alias: core_group
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: core_group
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: core_group
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:core_group |
-| native | analysis_api_schema:core_group |
+| self | basalt_schema:core_group |
+| native | basalt_schema:core_group |
 
 
 
@@ -83,7 +83,7 @@ Alias: core_group
 name: core_group
 description: The category of soil core taken according to the MONet sampling protocol.
 title: core group
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: core_group
 domain_of:

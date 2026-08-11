@@ -9,7 +9,7 @@ _Reference or method used in determining the horizon_
 
 
 
-URI: [analysis_api_schema:horizon_meth](https://w3id.org/MONet/analysis-api-schema/horizon_meth)
+URI: [basalt_schema:horizon_meth](https://EMSL-Computing.github.io/basalt-schema/horizon_meth)
 Alias: horizon_meth
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: horizon_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: horizon_meth
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:horizon_meth |
-| native | analysis_api_schema:horizon_meth |
+| self | basalt_schema:horizon_meth |
+| native | basalt_schema:horizon_meth |
 
 
 
@@ -83,7 +83,7 @@ Alias: horizon_meth
 name: horizon_meth
 description: Reference or method used in determining the horizon
 title: soil horizon method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: horizon_meth
 domain_of:

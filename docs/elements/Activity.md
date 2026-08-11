@@ -11,7 +11,7 @@ _Something that happens over time and can use equipment._
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [analysis_api_schema:Activity](https://w3id.org/MONet/analysis-api-schema/Activity)
+URI: [basalt_schema:Activity](https://EMSL-Computing.github.io/basalt-schema/Activity)
 
 
 
@@ -87,7 +87,7 @@ URI: [analysis_api_schema:Activity](https://w3id.org/MONet/analysis-api-schema/A
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -96,8 +96,8 @@ URI: [analysis_api_schema:Activity](https://w3id.org/MONet/analysis-api-schema/A
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:Activity |
-| native | analysis_api_schema:Activity |
+| self | basalt_schema:Activity |
+| native | basalt_schema:Activity |
 
 
 
@@ -114,7 +114,7 @@ URI: [analysis_api_schema:Activity](https://w3id.org/MONet/analysis-api-schema/A
 ```yaml
 name: Activity
 description: Something that happens over time and can use equipment.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 abstract: true
 slots:
 - name
@@ -122,7 +122,7 @@ slots:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     identifier: true
     domain_of:
@@ -201,7 +201,7 @@ attributes:
     required: true
   ended_at_time:
     name: ended_at_time
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     domain_of:
     - Activity
@@ -210,7 +210,7 @@ attributes:
   processing_institution:
     name: processing_institution
     description: The institution where the activity took place.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     domain_of:
     - Activity
@@ -219,14 +219,14 @@ attributes:
     name: protocol_link
     description: A link to a protocol that describes the steps and parameters of the
       activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     domain_of:
     - Activity
     range: string
   started_at_time:
     name: started_at_time
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     domain_of:
     - Activity
@@ -242,12 +242,12 @@ attributes:
 ```yaml
 name: Activity
 description: Something that happens over time and can use equipment.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 abstract: true
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     identifier: true
     alias: id
@@ -327,7 +327,7 @@ attributes:
     range: uuid
   ended_at_time:
     name: ended_at_time
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: ended_at_time
     owner: Activity
@@ -338,7 +338,7 @@ attributes:
   processing_institution:
     name: processing_institution
     description: The institution where the activity took place.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: processing_institution
     owner: Activity
@@ -349,7 +349,7 @@ attributes:
     name: protocol_link
     description: A link to a protocol that describes the steps and parameters of the
       activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: protocol_link
     owner: Activity
@@ -358,7 +358,7 @@ attributes:
     range: string
   started_at_time:
     name: started_at_time
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: started_at_time
     owner: Activity
@@ -369,7 +369,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: Activity
@@ -399,7 +399,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: Activity

@@ -9,7 +9,7 @@ _When sampling from a NEON site provide the 4 letter site code (Example: DEJU). 
 
 
 
-URI: [analysis_api_schema:neon_site_code](https://w3id.org/MONet/analysis-api-schema/neon_site_code)
+URI: [basalt_schema:neon_site_code](https://EMSL-Computing.github.io/basalt-schema/neon_site_code)
 Alias: neon_site_code
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: neon_site_code
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: neon_site_code
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:neon_site_code |
-| native | analysis_api_schema:neon_site_code |
+| self | basalt_schema:neon_site_code |
+| native | basalt_schema:neon_site_code |
 
 
 
@@ -91,7 +91,7 @@ name: neon_site_code
 description: 'When sampling from a NEON site provide the 4 letter site code (Example:
   DEJU). If you do not have your NEON site use the code SITE_999.'
 title: neon site code
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: neon_site_code
 domain_of:

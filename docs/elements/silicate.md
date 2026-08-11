@@ -9,7 +9,7 @@ _Concentration of silicate (Unit: umol/L)_
 
 
 
-URI: [analysis_api_schema:silicate](https://w3id.org/MONet/analysis-api-schema/silicate)
+URI: [basalt_schema:silicate](https://EMSL-Computing.github.io/basalt-schema/silicate)
 Alias: silicate
 
 <!-- no inheritance hierarchy -->
@@ -23,8 +23,8 @@ Alias: silicate
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: silicate
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: silicate
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:silicate |
-| native | analysis_api_schema:silicate |
+| self | basalt_schema:silicate |
+| native | basalt_schema:silicate |
 
 
 
@@ -92,7 +92,7 @@ Alias: silicate
 name: silicate
 description: 'Concentration of silicate (Unit: umol/L)'
 title: silicate
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: silicate
 domain_of:

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:websites](https://w3id.org/MONet/analysis-api-schema/websites)
+URI: [basalt_schema:websites](https://EMSL-Computing.github.io/basalt-schema/websites)
 Alias: websites
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: websites
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: websites
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:websites |
-| native | analysis_api_schema:websites |
+| self | basalt_schema:websites |
+| native | basalt_schema:websites |
 
 
 
@@ -83,7 +83,7 @@ Alias: websites
 <details>
 ```yaml
 name: websites
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: websites
 owner: PersonValue

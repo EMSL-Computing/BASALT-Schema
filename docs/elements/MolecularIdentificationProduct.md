@@ -9,7 +9,7 @@ _a file containing molecular formula identifications that was output from a mass
 
 
 
-URI: [analysis_api_schema:MolecularIdentificationProduct](https://w3id.org/MONet/analysis-api-schema/MolecularIdentificationProduct)
+URI: [basalt_schema:MolecularIdentificationProduct](https://EMSL-Computing.github.io/basalt-schema/MolecularIdentificationProduct)
 
 
 
@@ -139,7 +139,7 @@ URI: [analysis_api_schema:MolecularIdentificationProduct](https://w3id.org/MONet
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -148,8 +148,8 @@ URI: [analysis_api_schema:MolecularIdentificationProduct](https://w3id.org/MONet
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:MolecularIdentificationProduct |
-| native | analysis_api_schema:MolecularIdentificationProduct |
+| self | basalt_schema:MolecularIdentificationProduct |
+| native | basalt_schema:MolecularIdentificationProduct |
 
 
 
@@ -168,7 +168,7 @@ name: MolecularIdentificationProduct
 description: a file containing molecular formula identifications that was output from
   a mass spec data processing workflow (eg. .csv of m/z and molecular formulae, .hdf5
   file).
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: MassSpectrometryDataProduct
 
 ```
@@ -182,14 +182,14 @@ name: MolecularIdentificationProduct
 description: a file containing molecular formula identifications that was output from
   a mass spec data processing workflow (eg. .csv of m/z and molecular formulae, .hdf5
   file).
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: MassSpectrometryDataProduct
 attributes:
   results_from_ms_processing:
     name: results_from_ms_processing
     description: a reference to the mass spec data processing activity that produced
       this data product
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: results_from_ms_processing
     owner: MolecularIdentificationProduct
@@ -206,7 +206,7 @@ attributes:
       \ retained until formal typed class exists."
     todos:
     - make this inined/multivalued?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: summary_metrics
     owner: MolecularIdentificationProduct
@@ -217,7 +217,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: lims_barcode
     owner: MolecularIdentificationProduct
@@ -229,7 +229,7 @@ attributes:
   sample_id:
     name: sample_id
     description: Link back to the originating sample
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sample_id
     owner: MolecularIdentificationProduct
@@ -242,7 +242,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: MolecularIdentificationProduct
@@ -272,7 +272,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: MolecularIdentificationProduct
@@ -308,7 +308,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - study
     - study_id
@@ -345,7 +345,7 @@ attributes:
 
       in the same sampling event or campaign.'
     title: sampling set
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sampling_set
     owner: MolecularIdentificationProduct
@@ -361,7 +361,7 @@ attributes:
     - value: TOP
     - value: MID
     - value: BTM
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: core_section
     owner: MolecularIdentificationProduct
@@ -379,7 +379,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - samp_name
     rank: 1000
@@ -405,7 +405,7 @@ attributes:
     range: string
   s3_base_url:
     name: s3_base_url
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: s3_base_url
     owner: MolecularIdentificationProduct
@@ -414,7 +414,7 @@ attributes:
     range: string
   s3_bucket:
     name: s3_bucket
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: s3_bucket
     owner: MolecularIdentificationProduct
@@ -424,7 +424,7 @@ attributes:
   s3_key:
     name: s3_key
     description: MinIO/S3 object key; required for all data products
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: s3_key
     owner: MolecularIdentificationProduct
@@ -435,7 +435,7 @@ attributes:
   filesize:
     name: filesize
     description: Size of the file in bytes
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: filesize
     owner: MolecularIdentificationProduct
@@ -444,7 +444,7 @@ attributes:
     range: integer
   md5checksum:
     name: md5checksum
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: md5checksum
     owner: MolecularIdentificationProduct
@@ -453,7 +453,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     identifier: true
     alias: id
     owner: MolecularIdentificationProduct

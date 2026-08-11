@@ -13,7 +13,7 @@ _functional annotation identifier that was used in the analysis._
 
 
 
-URI: [analysis_api_schema:WorkflowExecutionFunctionalAnnotation](https://w3id.org/MONet/analysis-api-schema/WorkflowExecutionFunctionalAnnotation)
+URI: [basalt_schema:WorkflowExecutionFunctionalAnnotation](https://EMSL-Computing.github.io/basalt-schema/WorkflowExecutionFunctionalAnnotation)
 
 
 
@@ -86,7 +86,7 @@ URI: [analysis_api_schema:WorkflowExecutionFunctionalAnnotation](https://w3id.or
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -95,8 +95,8 @@ URI: [analysis_api_schema:WorkflowExecutionFunctionalAnnotation](https://w3id.or
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:WorkflowExecutionFunctionalAnnotation |
-| native | analysis_api_schema:WorkflowExecutionFunctionalAnnotation |
+| self | basalt_schema:WorkflowExecutionFunctionalAnnotation |
+| native | basalt_schema:WorkflowExecutionFunctionalAnnotation |
 
 
 
@@ -117,11 +117,11 @@ description: 'A link between a workflow execution and a functional annotation id
   This class captures the relationship between a workflow execution and the
 
   functional annotation identifier that was used in the analysis.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   workflow_id:
     name: workflow_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     domain_of:
     - WorkflowExecutionFunctionalAnnotation
@@ -129,7 +129,7 @@ attributes:
     required: true
   functional_annotation_id:
     name: functional_annotation_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     domain_of:
     - WorkflowExecutionFunctionalAnnotation
@@ -137,7 +137,7 @@ attributes:
     required: true
   count:
     name: count
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     domain_of:
     - WorkflowExecutionFunctionalAnnotation
@@ -156,11 +156,11 @@ description: 'A link between a workflow execution and a functional annotation id
   This class captures the relationship between a workflow execution and the
 
   functional annotation identifier that was used in the analysis.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   workflow_id:
     name: workflow_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: workflow_id
     owner: WorkflowExecutionFunctionalAnnotation
@@ -170,7 +170,7 @@ attributes:
     required: true
   functional_annotation_id:
     name: functional_annotation_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: functional_annotation_id
     owner: WorkflowExecutionFunctionalAnnotation
@@ -180,7 +180,7 @@ attributes:
     required: true
   count:
     name: count
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: count
     owner: WorkflowExecutionFunctionalAnnotation

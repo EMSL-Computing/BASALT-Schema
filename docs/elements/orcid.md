@@ -9,7 +9,7 @@ _ORCID identifier of the person_
 
 
 
-URI: [analysis_api_schema:orcid](https://w3id.org/MONet/analysis-api-schema/orcid)
+URI: [basalt_schema:orcid](https://EMSL-Computing.github.io/basalt-schema/orcid)
 Alias: orcid
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: orcid
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: orcid
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:orcid |
-| native | analysis_api_schema:orcid |
+| self | basalt_schema:orcid |
+| native | basalt_schema:orcid |
 
 
 
@@ -89,7 +89,7 @@ Alias: orcid
 ```yaml
 name: orcid
 description: ORCID identifier of the person
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: orcid
 owner: PersonValue

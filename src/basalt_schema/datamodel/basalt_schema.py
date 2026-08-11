@@ -1,11 +1,11 @@
-# Auto generated from analysis_api_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-29T17:44:55
-# Schema: analysis-api-schema
+# Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
+# Generation date: 2026-08-10T17:24:37
+# Schema: basalt-schema
 #
-# id: https://w3id.org/MONet/analysis-api-schema
+# id: https://EMSL-Computing.github.io/basalt-schema
 # description: LinkML-based schema for MONet soil analysis data management and metadata enrichment.
 #   This schema defines the data models for samples, processed samples, site metadata,
-#   and enrichment providers used in the MONet Analysis API.
+#   and enrichment providers used by BASALT.
 # license: MIT
 
 import dataclasses
@@ -72,11 +72,11 @@ MIXS = CurieNamespace('MIXS', 'https://w3id.org/mixs/')
 MS = CurieNamespace('MS', 'http://purl.obolibrary.org/obo/MS_')
 OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
 PO = CurieNamespace('PO', 'http://purl.obolibrary.org/obo/PO_')
-ANALYSIS_API_SCHEMA = CurieNamespace('analysis_api_schema', 'https://w3id.org/MONet/analysis-api-schema/')
+BASALT_SCHEMA = CurieNamespace('basalt_schema', 'https://EMSL-Computing.github.io/basalt-schema/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 ROR = CurieNamespace('ror', 'https://ror.org/')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
-DEFAULT_ = ANALYSIS_API_SCHEMA
+DEFAULT_ = BASALT_SCHEMA
 
 
 # Types
@@ -84,14 +84,14 @@ class Uuid(String):
     type_class_uri = XSD["string"]
     type_class_curie = "xsd:string"
     type_name = "uuid"
-    type_model_uri = ANALYSIS_API_SCHEMA.Uuid
+    type_model_uri = BASALT_SCHEMA.Uuid
 
 
 class TimestampTz(Datetime):
     type_class_uri = XSD["dateTime"]
     type_class_curie = "xsd:dateTime"
     type_name = "timestamp_tz"
-    type_model_uri = ANALYSIS_API_SCHEMA.TimestampTz
+    type_model_uri = BASALT_SCHEMA.TimestampTz
 
 
 # Class references
@@ -582,10 +582,10 @@ class Activity(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["Activity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:Activity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["Activity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:Activity"
     class_name: ClassVar[str] = "Activity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.Activity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.Activity
 
     id: Union[str, ActivityId] = None
     name: str = None
@@ -631,10 +631,10 @@ class Entity(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["Entity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:Entity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["Entity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:Entity"
     class_name: ClassVar[str] = "Entity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.Entity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.Entity
 
     id: Union[str, EntityId] = None
     name: str = None
@@ -667,10 +667,10 @@ class DataProduct(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["DataProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:DataProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["DataProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:DataProduct"
     class_name: ClassVar[str] = "DataProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.DataProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.DataProduct
 
     id: Union[str, DataProductId] = None
     name: str = None
@@ -738,10 +738,10 @@ class ProcessedData(DataProduct):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["ProcessedData"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:ProcessedData"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ProcessedData"]
+    class_class_curie: ClassVar[str] = "basalt_schema:ProcessedData"
     class_name: ClassVar[str] = "ProcessedData"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.ProcessedData
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ProcessedData
 
     id: Union[str, ProcessedDataId] = None
     name: str = None
@@ -771,10 +771,10 @@ class InstrumentData(DataProduct):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["InstrumentData"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:InstrumentData"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["InstrumentData"]
+    class_class_curie: ClassVar[str] = "basalt_schema:InstrumentData"
     class_name: ClassVar[str] = "InstrumentData"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.InstrumentData
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.InstrumentData
 
     id: Union[str, InstrumentDataId] = None
     name: str = None
@@ -818,10 +818,10 @@ class SitePhoto(DataProduct):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["SitePhoto"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:SitePhoto"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SitePhoto"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SitePhoto"
     class_name: ClassVar[str] = "SitePhoto"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.SitePhoto
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SitePhoto
 
     id: Union[str, SitePhotoId] = None
     name: str = None
@@ -852,10 +852,10 @@ class DataGenerationActivity(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["DataGenerationActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:DataGenerationActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["DataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:DataGenerationActivity"
     class_name: ClassVar[str] = "DataGenerationActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.DataGenerationActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.DataGenerationActivity
 
     id: Union[str, DataGenerationActivityId] = None
     name: str = None
@@ -922,10 +922,10 @@ class RespirationDataGenerationActivity(DataGenerationActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["RespirationDataGenerationActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:RespirationDataGenerationActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["RespirationDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:RespirationDataGenerationActivity"
     class_name: ClassVar[str] = "RespirationDataGenerationActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.RespirationDataGenerationActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.RespirationDataGenerationActivity
 
     id: Union[str, RespirationDataGenerationActivityId] = None
     name: str = None
@@ -953,10 +953,10 @@ class DataProcessingActivity(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["DataProcessingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:DataProcessingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["DataProcessingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:DataProcessingActivity"
     class_name: ClassVar[str] = "DataProcessingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.DataProcessingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.DataProcessingActivity
 
     id: Union[str, DataProcessingActivityId] = None
     started_at_time: Union[str, XSDDateTime] = None
@@ -1011,10 +1011,10 @@ class DataProcessingActivity(YAMLRoot):
 class AlternativeIdentifier(YAMLRoot):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["AlternativeIdentifier"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:AlternativeIdentifier"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["AlternativeIdentifier"]
+    class_class_curie: ClassVar[str] = "basalt_schema:AlternativeIdentifier"
     class_name: ClassVar[str] = "AlternativeIdentifier"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.AlternativeIdentifier
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.AlternativeIdentifier
 
     id: Union[str, AlternativeIdentifierId] = None
     alternate_id: str = None
@@ -1043,10 +1043,10 @@ class AlternativeIdentifier(YAMLRoot):
 class FunctionalAnnotationIdentifier(YAMLRoot):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["FunctionalAnnotationIdentifier"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:FunctionalAnnotationIdentifier"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["FunctionalAnnotationIdentifier"]
+    class_class_curie: ClassVar[str] = "basalt_schema:FunctionalAnnotationIdentifier"
     class_name: ClassVar[str] = "FunctionalAnnotationIdentifier"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.FunctionalAnnotationIdentifier
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.FunctionalAnnotationIdentifier
 
     id: Union[str, FunctionalAnnotationIdentifierId] = None
     functional_identifier: str = None
@@ -1081,10 +1081,10 @@ class Instrument(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["Instrument"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:Instrument"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["Instrument"]
+    class_class_curie: ClassVar[str] = "basalt_schema:Instrument"
     class_name: ClassVar[str] = "Instrument"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.Instrument
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.Instrument
 
     id: Union[str, InstrumentId] = None
     name: str = None
@@ -1147,10 +1147,10 @@ class Instrument(YAMLRoot):
 class OntologyClass(YAMLRoot):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["OntologyClass"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:OntologyClass"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["OntologyClass"]
+    class_class_curie: ClassVar[str] = "basalt_schema:OntologyClass"
     class_name: ClassVar[str] = "OntologyClass"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.OntologyClass
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.OntologyClass
 
     id: Union[str, OntologyClassId] = None
     description: Optional[str] = None
@@ -1179,10 +1179,10 @@ class OntologyClass(YAMLRoot):
 class ContainerType(YAMLRoot):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["ContainerType"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:ContainerType"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ContainerType"]
+    class_class_curie: ClassVar[str] = "basalt_schema:ContainerType"
     class_name: ClassVar[str] = "ContainerType"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.ContainerType
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ContainerType
 
     id: Union[str, ContainerTypeId] = None
     description: Optional[str] = None
@@ -1233,10 +1233,10 @@ class ContainerType(YAMLRoot):
 class ContainerAxis(YAMLRoot):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["ContainerAxis"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:ContainerAxis"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ContainerAxis"]
+    class_class_curie: ClassVar[str] = "basalt_schema:ContainerAxis"
     class_name: ClassVar[str] = "ContainerAxis"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.ContainerAxis
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ContainerAxis
 
     name: Optional[str] = None
     values: Optional[Union[str, list[str]]] = empty_list()
@@ -1256,10 +1256,10 @@ class ContainerAxis(YAMLRoot):
 class Custodian(YAMLRoot):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["Custodian"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:Custodian"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["Custodian"]
+    class_class_curie: ClassVar[str] = "basalt_schema:Custodian"
     class_name: ClassVar[str] = "Custodian"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.Custodian
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.Custodian
 
     id: Union[str, CustodianId] = None
     person_id: Optional[Union[str, PersonValueId]] = None
@@ -1280,10 +1280,10 @@ class Custodian(YAMLRoot):
 class InstrumentAlternativeIdentifier(YAMLRoot):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["InstrumentAlternativeIdentifier"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:InstrumentAlternativeIdentifier"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["InstrumentAlternativeIdentifier"]
+    class_class_curie: ClassVar[str] = "basalt_schema:InstrumentAlternativeIdentifier"
     class_name: ClassVar[str] = "InstrumentAlternativeIdentifier"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.InstrumentAlternativeIdentifier
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.InstrumentAlternativeIdentifier
 
     id: Union[str, InstrumentAlternativeIdentifierId] = None
     instrument_id: Union[str, InstrumentId] = None
@@ -1320,10 +1320,10 @@ class LabDevice(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["LabDevice"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:LabDevice"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["LabDevice"]
+    class_class_curie: ClassVar[str] = "basalt_schema:LabDevice"
     class_name: ClassVar[str] = "LabDevice"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.LabDevice
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.LabDevice
 
     id: Union[str, LabDeviceId] = None
     description: Optional[str] = None
@@ -1360,10 +1360,10 @@ class SampleProcessing(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["SampleProcessing"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:SampleProcessing"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SampleProcessing"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SampleProcessing"
     class_name: ClassVar[str] = "SampleProcessing"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.SampleProcessing
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SampleProcessing
 
     id: Union[str, SampleProcessingId] = None
     processing_steps: str = None
@@ -1411,10 +1411,10 @@ class ProcessingSampleLink(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["ProcessingSampleLink"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:ProcessingSampleLink"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ProcessingSampleLink"]
+    class_class_curie: ClassVar[str] = "basalt_schema:ProcessingSampleLink"
     class_name: ClassVar[str] = "ProcessingSampleLink"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.ProcessingSampleLink
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ProcessingSampleLink
 
     id: Union[str, ProcessingSampleLinkId] = None
     sample_base_id: Union[str, SampleId] = None
@@ -1460,10 +1460,10 @@ class InstrumentCustodian(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["InstrumentCustodian"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:InstrumentCustodian"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["InstrumentCustodian"]
+    class_class_curie: ClassVar[str] = "basalt_schema:InstrumentCustodian"
     class_name: ClassVar[str] = "InstrumentCustodian"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.InstrumentCustodian
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.InstrumentCustodian
 
     instrument_id: Union[str, InstrumentId] = None
     custodian_id: Union[str, CustodianId] = None
@@ -1491,10 +1491,10 @@ class WorkflowExecutionFunctionalAnnotation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["WorkflowExecutionFunctionalAnnotation"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:WorkflowExecutionFunctionalAnnotation"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["WorkflowExecutionFunctionalAnnotation"]
+    class_class_curie: ClassVar[str] = "basalt_schema:WorkflowExecutionFunctionalAnnotation"
     class_name: ClassVar[str] = "WorkflowExecutionFunctionalAnnotation"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.WorkflowExecutionFunctionalAnnotation
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.WorkflowExecutionFunctionalAnnotation
 
     workflow_id: Union[str, DataProcessingActivityId] = None
     functional_annotation_id: Union[str, FunctionalAnnotationIdentifierId] = None
@@ -1534,10 +1534,10 @@ class XRayDataGenerationActivity(DataGenerationActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["XRayDataGenerationActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:XRayDataGenerationActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XRayDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XRayDataGenerationActivity"
     class_name: ClassVar[str] = "XRayDataGenerationActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.XRayDataGenerationActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XRayDataGenerationActivity
 
     id: Union[str, XRayDataGenerationActivityId] = None
     name: str = None
@@ -1573,10 +1573,10 @@ class XRFDataGenerationActivity(XRayDataGenerationActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["XRFDataGenerationActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:XRFDataGenerationActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XRFDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XRFDataGenerationActivity"
     class_name: ClassVar[str] = "XRFDataGenerationActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.XRFDataGenerationActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XRFDataGenerationActivity
 
     id: Union[str, XRFDataGenerationActivityId] = None
     name: str = None
@@ -1624,10 +1624,10 @@ class XRDDataGenerationActivity(XRayDataGenerationActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["XRDDataGenerationActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:XRDDataGenerationActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XRDDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XRDDataGenerationActivity"
     class_name: ClassVar[str] = "XRDDataGenerationActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.XRDDataGenerationActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XRDDataGenerationActivity
 
     id: Union[str, XRDDataGenerationActivityId] = None
     name: str = None
@@ -1647,10 +1647,10 @@ class XRDDataGenerationActivity(XRayDataGenerationActivity):
 class Changelog(YAMLRoot):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["Changelog"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:Changelog"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["Changelog"]
+    class_class_curie: ClassVar[str] = "basalt_schema:Changelog"
     class_name: ClassVar[str] = "Changelog"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.Changelog
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.Changelog
 
     version: Union[str, ChangelogVersion] = None
     changelog: str = None
@@ -1676,10 +1676,10 @@ class MassSpectrometryInstrumentData(InstrumentData):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MassSpectrometryInstrumentData"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MassSpectrometryInstrumentData"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MassSpectrometryInstrumentData"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MassSpectrometryInstrumentData"
     class_name: ClassVar[str] = "MassSpectrometryInstrumentData"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MassSpectrometryInstrumentData
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MassSpectrometryInstrumentData
 
     id: Union[str, MassSpectrometryInstrumentDataId] = None
     name: str = None
@@ -1715,10 +1715,10 @@ class MassSpectrometryDataProduct(ProcessedData):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MassSpectrometryDataProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MassSpectrometryDataProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MassSpectrometryDataProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MassSpectrometryDataProduct"
     class_name: ClassVar[str] = "MassSpectrometryDataProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MassSpectrometryDataProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MassSpectrometryDataProduct
 
     id: Union[str, MassSpectrometryDataProductId] = None
     name: str = None
@@ -1740,10 +1740,10 @@ class MSImageProduct(MassSpectrometryDataProduct):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MSImageProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MSImageProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MSImageProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MSImageProduct"
     class_name: ClassVar[str] = "MSImageProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MSImageProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MSImageProduct
 
     id: Union[str, MSImageProductId] = None
     name: str = None
@@ -1766,10 +1766,10 @@ class MolecularIdentificationProduct(MassSpectrometryDataProduct):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MolecularIdentificationProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MolecularIdentificationProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MolecularIdentificationProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MolecularIdentificationProduct"
     class_name: ClassVar[str] = "MolecularIdentificationProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MolecularIdentificationProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MolecularIdentificationProduct
 
     id: Union[str, MolecularIdentificationProductId] = None
     name: str = None
@@ -1791,10 +1791,10 @@ class MetaproteomicsProduct(MassSpectrometryDataProduct):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MetaproteomicsProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MetaproteomicsProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MetaproteomicsProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MetaproteomicsProduct"
     class_name: ClassVar[str] = "MetaproteomicsProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MetaproteomicsProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MetaproteomicsProduct
 
     id: Union[str, MetaproteomicsProductId] = None
     name: str = None
@@ -1807,10 +1807,10 @@ class MassSpectrometryDataGenerationActivity(DataGenerationActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MassSpectrometryDataGenerationActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MassSpectrometryDataGenerationActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MassSpectrometryDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MassSpectrometryDataGenerationActivity"
     class_name: ClassVar[str] = "MassSpectrometryDataGenerationActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MassSpectrometryDataGenerationActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MassSpectrometryDataGenerationActivity
 
     id: Union[str, MassSpectrometryDataGenerationActivityId] = None
     name: str = None
@@ -1847,10 +1847,10 @@ class Configuration(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["Configuration"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:Configuration"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["Configuration"]
+    class_class_curie: ClassVar[str] = "basalt_schema:Configuration"
     class_name: ClassVar[str] = "Configuration"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.Configuration
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.Configuration
 
     name: str = None
     id: Union[str, Uuid] = None
@@ -1880,10 +1880,10 @@ class MassSpectrometryConfiguration(Configuration):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MassSpectrometryConfiguration"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MassSpectrometryConfiguration"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MassSpectrometryConfiguration"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MassSpectrometryConfiguration"
     class_name: ClassVar[str] = "MassSpectrometryConfiguration"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MassSpectrometryConfiguration
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MassSpectrometryConfiguration
 
     name: str = None
     id: Union[str, Uuid] = None
@@ -1963,10 +1963,10 @@ class ChromatographyConfiguration(Configuration):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["ChromatographyConfiguration"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:ChromatographyConfiguration"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ChromatographyConfiguration"]
+    class_class_curie: ClassVar[str] = "basalt_schema:ChromatographyConfiguration"
     class_name: ClassVar[str] = "ChromatographyConfiguration"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.ChromatographyConfiguration
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ChromatographyConfiguration
 
     name: str = None
     id: Union[str, Uuid] = None
@@ -2025,10 +2025,10 @@ class MobilePhaseSegment(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MobilePhaseSegment"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MobilePhaseSegment"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MobilePhaseSegment"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MobilePhaseSegment"
     class_name: ClassVar[str] = "MobilePhaseSegment"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MobilePhaseSegment
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MobilePhaseSegment
 
     id: Union[str, MobilePhaseSegmentId] = None
     name: str = None
@@ -2067,10 +2067,10 @@ class MassSpectrometryDataProcessingActivity(DataProcessingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MassSpectrometryDataProcessingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MassSpectrometryDataProcessingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MassSpectrometryDataProcessingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MassSpectrometryDataProcessingActivity"
     class_name: ClassVar[str] = "MassSpectrometryDataProcessingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MassSpectrometryDataProcessingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MassSpectrometryDataProcessingActivity
 
     id: Union[str, MassSpectrometryDataProcessingActivityId] = None
     started_at_time: Union[str, XSDDateTime] = None
@@ -2108,10 +2108,10 @@ class MassSpectrometryStandardRun(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MassSpectrometryStandardRun"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MassSpectrometryStandardRun"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MassSpectrometryStandardRun"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MassSpectrometryStandardRun"
     class_name: ClassVar[str] = "MassSpectrometryStandardRun"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MassSpectrometryStandardRun
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MassSpectrometryStandardRun
 
     id: Union[str, MassSpectrometryStandardRunId] = None
     name: str = None
@@ -2160,10 +2160,10 @@ class HasIncubationConditions(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["HasIncubationConditions"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:HasIncubationConditions"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["HasIncubationConditions"]
+    class_class_curie: ClassVar[str] = "basalt_schema:HasIncubationConditions"
     class_name: ClassVar[str] = "HasIncubationConditions"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.HasIncubationConditions
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.HasIncubationConditions
 
     temperature_celsius: Optional[float] = None
     agitation_speed_rpm: Optional[int] = None
@@ -2191,10 +2191,10 @@ class PurchasedMaterial(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["PurchasedMaterial"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:PurchasedMaterial"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["PurchasedMaterial"]
+    class_class_curie: ClassVar[str] = "basalt_schema:PurchasedMaterial"
     class_name: ClassVar[str] = "PurchasedMaterial"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.PurchasedMaterial
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.PurchasedMaterial
 
     id: Union[str, PurchasedMaterialId] = None
     purchased_material_type: str = None
@@ -2239,10 +2239,10 @@ class LabProcessingActivity(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["LabProcessingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:LabProcessingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["LabProcessingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:LabProcessingActivity"
     class_name: ClassVar[str] = "LabProcessingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.LabProcessingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.LabProcessingActivity
 
     id: Union[str, LabProcessingActivityId] = None
     name: Optional[str] = None
@@ -2283,10 +2283,10 @@ class MediaPreparation(SampleProcessing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MediaPreparation"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MediaPreparation"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MediaPreparation"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MediaPreparation"
     class_name: ClassVar[str] = "MediaPreparation"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MediaPreparation
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MediaPreparation
 
     id: Union[str, MediaPreparationId] = None
     processing_steps: str = None
@@ -2360,10 +2360,10 @@ class CultureGrowth(SampleProcessing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["CultureGrowth"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:CultureGrowth"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["CultureGrowth"]
+    class_class_curie: ClassVar[str] = "basalt_schema:CultureGrowth"
     class_name: ClassVar[str] = "CultureGrowth"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.CultureGrowth
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.CultureGrowth
 
     id: Union[str, CultureGrowthId] = None
     processing_steps: str = None
@@ -2417,10 +2417,10 @@ class StrainPurity(CultureGrowth):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["StrainPurity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:StrainPurity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["StrainPurity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:StrainPurity"
     class_name: ClassVar[str] = "StrainPurity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.StrainPurity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.StrainPurity
 
     id: Union[str, StrainPurityId] = None
     processing_steps: str = None
@@ -2457,10 +2457,10 @@ class StockCulturePreparation(CultureGrowth):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["StockCulturePreparation"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:StockCulturePreparation"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["StockCulturePreparation"]
+    class_class_curie: ClassVar[str] = "basalt_schema:StockCulturePreparation"
     class_name: ClassVar[str] = "StockCulturePreparation"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.StockCulturePreparation
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.StockCulturePreparation
 
     id: Union[str, StockCulturePreparationId] = None
     processing_steps: str = None
@@ -2490,10 +2490,10 @@ class PreCultureGrowth(CultureGrowth):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["PreCultureGrowth"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:PreCultureGrowth"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["PreCultureGrowth"]
+    class_class_curie: ClassVar[str] = "basalt_schema:PreCultureGrowth"
     class_name: ClassVar[str] = "PreCultureGrowth"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.PreCultureGrowth
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.PreCultureGrowth
 
     id: Union[str, PreCultureGrowthId] = None
     processing_steps: str = None
@@ -2519,10 +2519,10 @@ class ExperimentalCulture(CultureGrowth):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["ExperimentalCulture"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:ExperimentalCulture"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ExperimentalCulture"]
+    class_class_curie: ClassVar[str] = "basalt_schema:ExperimentalCulture"
     class_name: ClassVar[str] = "ExperimentalCulture"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.ExperimentalCulture
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ExperimentalCulture
 
     id: Union[str, ExperimentalCultureId] = None
     processing_steps: str = None
@@ -2559,10 +2559,10 @@ class PlateSetupActivity(SampleProcessing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["PlateSetupActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:PlateSetupActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["PlateSetupActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:PlateSetupActivity"
     class_name: ClassVar[str] = "PlateSetupActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.PlateSetupActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.PlateSetupActivity
 
     id: Union[str, PlateSetupActivityId] = None
     processing_steps: str = None
@@ -2633,10 +2633,10 @@ class AMP2PlateSetupActivity(PlateSetupActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["AMP2PlateSetupActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:AMP2PlateSetupActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["AMP2PlateSetupActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:AMP2PlateSetupActivity"
     class_name: ClassVar[str] = "AMP2PlateSetupActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.AMP2PlateSetupActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.AMP2PlateSetupActivity
 
     id: Union[str, AMP2PlateSetupActivityId] = None
     processing_steps: str = None
@@ -2670,10 +2670,10 @@ class EcoplatePlateSetupActivity(PlateSetupActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["EcoplatePlateSetupActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:EcoplatePlateSetupActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["EcoplatePlateSetupActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:EcoplatePlateSetupActivity"
     class_name: ClassVar[str] = "EcoplatePlateSetupActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.EcoplatePlateSetupActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.EcoplatePlateSetupActivity
 
     id: Union[str, EcoplatePlateSetupActivityId] = None
     processing_steps: str = None
@@ -2697,10 +2697,10 @@ class PlateDataGenerationActivity(DataGenerationActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["PlateDataGenerationActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:PlateDataGenerationActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["PlateDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:PlateDataGenerationActivity"
     class_name: ClassVar[str] = "PlateDataGenerationActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.PlateDataGenerationActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.PlateDataGenerationActivity
 
     id: Union[str, PlateDataGenerationActivityId] = None
     name: str = None
@@ -2730,10 +2730,10 @@ class AMP2DataGenerationActivity(PlateDataGenerationActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["AMP2DataGenerationActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:AMP2DataGenerationActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["AMP2DataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:AMP2DataGenerationActivity"
     class_name: ClassVar[str] = "AMP2DataGenerationActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.AMP2DataGenerationActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.AMP2DataGenerationActivity
 
     id: Union[str, AMP2DataGenerationActivityId] = None
     name: str = None
@@ -2771,10 +2771,10 @@ class EcoplateDataGenerationActivity(PlateDataGenerationActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["EcoplateDataGenerationActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:EcoplateDataGenerationActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["EcoplateDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:EcoplateDataGenerationActivity"
     class_name: ClassVar[str] = "EcoplateDataGenerationActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.EcoplateDataGenerationActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.EcoplateDataGenerationActivity
 
     id: Union[str, EcoplateDataGenerationActivityId] = None
     name: str = None
@@ -2809,10 +2809,10 @@ class PlateProduct(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["PlateProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:PlateProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["PlateProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:PlateProduct"
     class_name: ClassVar[str] = "PlateProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.PlateProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.PlateProduct
 
     wavelength_nm: int = None
     timepoint_label: str = None
@@ -2857,10 +2857,10 @@ class AMP2ODProduct(PlateProduct):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["AMP2ODProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:AMP2ODProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["AMP2ODProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:AMP2ODProduct"
     class_name: ClassVar[str] = "AMP2ODProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.AMP2ODProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.AMP2ODProduct
 
     wavelength_nm: int = None
     timepoint_label: str = None
@@ -2884,10 +2884,10 @@ class EcoplateAbsorbanceProduct(PlateProduct):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["EcoplateAbsorbanceProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:EcoplateAbsorbanceProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["EcoplateAbsorbanceProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:EcoplateAbsorbanceProduct"
     class_name: ClassVar[str] = "EcoplateAbsorbanceProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.EcoplateAbsorbanceProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.EcoplateAbsorbanceProduct
 
     wavelength_nm: int = None
     timepoint_label: str = None
@@ -2918,10 +2918,10 @@ class WellMetadata(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["WellMetadata"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:WellMetadata"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["WellMetadata"]
+    class_class_curie: ClassVar[str] = "basalt_schema:WellMetadata"
     class_name: ClassVar[str] = "WellMetadata"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.WellMetadata
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.WellMetadata
 
     position: str = None
     well_type: Optional[str] = None
@@ -2951,10 +2951,10 @@ class AMP2WellMetadata(WellMetadata):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["AMP2WellMetadata"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:AMP2WellMetadata"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["AMP2WellMetadata"]
+    class_class_curie: ClassVar[str] = "basalt_schema:AMP2WellMetadata"
     class_name: ClassVar[str] = "AMP2WellMetadata"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.AMP2WellMetadata
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.AMP2WellMetadata
 
     position: str = None
     media_volume_ul: float = None
@@ -2998,10 +2998,10 @@ class EcoplateWellMetadata(WellMetadata):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["EcoplateWellMetadata"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:EcoplateWellMetadata"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["EcoplateWellMetadata"]
+    class_class_curie: ClassVar[str] = "basalt_schema:EcoplateWellMetadata"
     class_name: ClassVar[str] = "EcoplateWellMetadata"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.EcoplateWellMetadata
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.EcoplateWellMetadata
 
     position: str = None
     media_volume_ul: float = None
@@ -3037,10 +3037,10 @@ class WellReading(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["WellReading"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:WellReading"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["WellReading"]
+    class_class_curie: ClassVar[str] = "basalt_schema:WellReading"
     class_name: ClassVar[str] = "WellReading"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.WellReading
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.WellReading
 
     position: str = None
     value: float = None
@@ -3070,10 +3070,10 @@ class NucleotideSequencing(DataGenerationActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["NucleotideSequencing"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:NucleotideSequencing"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["NucleotideSequencing"]
+    class_class_curie: ClassVar[str] = "basalt_schema:NucleotideSequencing"
     class_name: ClassVar[str] = "NucleotideSequencing"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.NucleotideSequencing
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.NucleotideSequencing
 
     id: Union[str, NucleotideSequencingId] = None
     name: str = None
@@ -3105,10 +3105,10 @@ class NucleotideSequencingInstrumentData(InstrumentData):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["NucleotideSequencingInstrumentData"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:NucleotideSequencingInstrumentData"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["NucleotideSequencingInstrumentData"]
+    class_class_curie: ClassVar[str] = "basalt_schema:NucleotideSequencingInstrumentData"
     class_name: ClassVar[str] = "NucleotideSequencingInstrumentData"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.NucleotideSequencingInstrumentData
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.NucleotideSequencingInstrumentData
 
     id: Union[str, NucleotideSequencingInstrumentDataId] = None
     name: str = None
@@ -3138,10 +3138,10 @@ class MetagenomicsProduct(ProcessedData):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MetagenomicsProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MetagenomicsProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MetagenomicsProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MetagenomicsProduct"
     class_name: ClassVar[str] = "MetagenomicsProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MetagenomicsProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MetagenomicsProduct
 
     id: Union[str, MetagenomicsProductId] = None
     name: str = None
@@ -3179,10 +3179,10 @@ class MetagenomicsAnnotationProduct(MetagenomicsProduct):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MetagenomicsAnnotationProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MetagenomicsAnnotationProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MetagenomicsAnnotationProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MetagenomicsAnnotationProduct"
     class_name: ClassVar[str] = "Metagenomics_AnnotationProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MetagenomicsAnnotationProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MetagenomicsAnnotationProduct
 
     id: Union[str, MetagenomicsAnnotationProductId] = None
     name: str = None
@@ -3209,10 +3209,10 @@ class MetagenomicsBinningProduct(MetagenomicsProduct):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MetagenomicsBinningProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MetagenomicsBinningProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MetagenomicsBinningProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MetagenomicsBinningProduct"
     class_name: ClassVar[str] = "Metagenomics_BinningProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MetagenomicsBinningProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MetagenomicsBinningProduct
 
     id: Union[str, MetagenomicsBinningProductId] = None
     name: str = None
@@ -3235,10 +3235,10 @@ class MetagenomicsGenePhylogenyProduct(MetagenomicsProduct):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MetagenomicsGenePhylogenyProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MetagenomicsGenePhylogenyProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MetagenomicsGenePhylogenyProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MetagenomicsGenePhylogenyProduct"
     class_name: ClassVar[str] = "Metagenomics_GenePhylogenyProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MetagenomicsGenePhylogenyProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MetagenomicsGenePhylogenyProduct
 
     id: Union[str, MetagenomicsGenePhylogenyProductId] = None
     name: str = None
@@ -3268,10 +3268,10 @@ class MetagenomicsDataProcessingActivity(DataProcessingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MetagenomicsDataProcessingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MetagenomicsDataProcessingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MetagenomicsDataProcessingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MetagenomicsDataProcessingActivity"
     class_name: ClassVar[str] = "MetagenomicsDataProcessingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MetagenomicsDataProcessingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MetagenomicsDataProcessingActivity
 
     id: Union[str, MetagenomicsDataProcessingActivityId] = None
     started_at_time: Union[str, XSDDateTime] = None
@@ -3289,10 +3289,10 @@ class MetagenomicsDataProcessingActivity(DataProcessingActivity):
 class Method(YAMLRoot):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["Method"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:Method"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["Method"]
+    class_class_curie: ClassVar[str] = "basalt_schema:Method"
     class_name: ClassVar[str] = "Method"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.Method
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.Method
 
     analytic: str = None
 
@@ -3309,10 +3309,10 @@ class Method(YAMLRoot):
 class BulkDensityMethod(Method):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["BulkDensityMethod"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:BulkDensityMethod"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["BulkDensityMethod"]
+    class_class_curie: ClassVar[str] = "basalt_schema:BulkDensityMethod"
     class_name: ClassVar[str] = "BulkDensityMethod"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.BulkDensityMethod
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.BulkDensityMethod
 
     analytic: str = None
 
@@ -3320,10 +3320,10 @@ class BulkDensityMethod(Method):
 class ElementalAnalysisMethod(Method):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["ElementalAnalysisMethod"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:ElementalAnalysisMethod"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ElementalAnalysisMethod"]
+    class_class_curie: ClassVar[str] = "basalt_schema:ElementalAnalysisMethod"
     class_name: ClassVar[str] = "ElementalAnalysisMethod"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.ElementalAnalysisMethod
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ElementalAnalysisMethod
 
     analytic: str = None
 
@@ -3331,10 +3331,10 @@ class ElementalAnalysisMethod(Method):
 class EnzymeActivityMethod(Method):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["EnzymeActivityMethod"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:EnzymeActivityMethod"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["EnzymeActivityMethod"]
+    class_class_curie: ClassVar[str] = "basalt_schema:EnzymeActivityMethod"
     class_name: ClassVar[str] = "EnzymeActivityMethod"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.EnzymeActivityMethod
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.EnzymeActivityMethod
 
     analytic: str = None
     location: str = None
@@ -3364,10 +3364,10 @@ class EnzymeActivityMethod(Method):
 class GravimetricWaterContentMethod(Method):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["GravimetricWaterContentMethod"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:GravimetricWaterContentMethod"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["GravimetricWaterContentMethod"]
+    class_class_curie: ClassVar[str] = "basalt_schema:GravimetricWaterContentMethod"
     class_name: ClassVar[str] = "GravimetricWaterContentMethod"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.GravimetricWaterContentMethod
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.GravimetricWaterContentMethod
 
     analytic: str = None
     location: str = None
@@ -3385,10 +3385,10 @@ class GravimetricWaterContentMethod(Method):
 class HydraulicPropertiesMethod(Method):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["HydraulicPropertiesMethod"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:HydraulicPropertiesMethod"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["HydraulicPropertiesMethod"]
+    class_class_curie: ClassVar[str] = "basalt_schema:HydraulicPropertiesMethod"
     class_name: ClassVar[str] = "HydraulicPropertiesMethod"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.HydraulicPropertiesMethod
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.HydraulicPropertiesMethod
 
     analytic: str = None
     location: str = None
@@ -3412,10 +3412,10 @@ class HydraulicPropertiesMethod(Method):
 class KuoMethod(Method):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["KuoMethod"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:KuoMethod"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["KuoMethod"]
+    class_class_curie: ClassVar[str] = "basalt_schema:KuoMethod"
     class_name: ClassVar[str] = "KuoMethod"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.KuoMethod
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.KuoMethod
 
     analytic: str = None
     location: str = None
@@ -3447,10 +3447,10 @@ class KuoMethod(Method):
 class MicrobialBiomassMethod(Method):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MicrobialBiomassMethod"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MicrobialBiomassMethod"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MicrobialBiomassMethod"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MicrobialBiomassMethod"
     class_name: ClassVar[str] = "MicrobialBiomassMethod"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MicrobialBiomassMethod
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MicrobialBiomassMethod
 
     analytic: str = None
     location: str = None
@@ -3502,10 +3502,10 @@ class MicrobialBiomassMethod(Method):
 class PHMethod(Method):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["PHMethod"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:PHMethod"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["PHMethod"]
+    class_class_curie: ClassVar[str] = "basalt_schema:PHMethod"
     class_name: ClassVar[str] = "PH_Method"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.PHMethod
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.PHMethod
 
     analytic: str = None
     location: str = None
@@ -3529,10 +3529,10 @@ class PHMethod(Method):
 class RespirationMethod(Method):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["RespirationMethod"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:RespirationMethod"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["RespirationMethod"]
+    class_class_curie: ClassVar[str] = "basalt_schema:RespirationMethod"
     class_name: ClassVar[str] = "RespirationMethod"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.RespirationMethod
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.RespirationMethod
 
     analytic: str = None
 
@@ -3540,10 +3540,10 @@ class RespirationMethod(Method):
 class TOCTNMethod(Method):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["TOCTNMethod"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:TOCTNMethod"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["TOCTNMethod"]
+    class_class_curie: ClassVar[str] = "basalt_schema:TOCTNMethod"
     class_name: ClassVar[str] = "TOC_TN_Method"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.TOCTNMethod
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.TOCTNMethod
 
     analytic: str = None
     location: str = None
@@ -3597,10 +3597,10 @@ class TOCTNMethod(Method):
 class TextureMethod(Method):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["TextureMethod"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:TextureMethod"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["TextureMethod"]
+    class_class_curie: ClassVar[str] = "basalt_schema:TextureMethod"
     class_name: ClassVar[str] = "TextureMethod"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.TextureMethod
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.TextureMethod
 
     analytic: str = None
     location: str = None
@@ -3622,10 +3622,10 @@ class TextureMethod(Method):
 class XrayComputedTomographyMethod(Method):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["XrayComputedTomographyMethod"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:XrayComputedTomographyMethod"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XrayComputedTomographyMethod"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XrayComputedTomographyMethod"
     class_name: ClassVar[str] = "XrayComputedTomographyMethod"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.XrayComputedTomographyMethod
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XrayComputedTomographyMethod
 
     analytic: str = None
     location: str = None
@@ -3702,10 +3702,10 @@ class Organism(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["Organism"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:Organism"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["Organism"]
+    class_class_curie: ClassVar[str] = "basalt_schema:Organism"
     class_name: ClassVar[str] = "organism"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.Organism
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.Organism
 
     id: Union[str, OrganismId] = None
     name: str = None
@@ -3826,10 +3826,10 @@ class BulkDensityProduct(ProcessedData):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["BulkDensityProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:BulkDensityProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["BulkDensityProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:BulkDensityProduct"
     class_name: ClassVar[str] = "BulkDensityProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.BulkDensityProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.BulkDensityProduct
 
     id: Union[str, BulkDensityProductId] = None
     name: str = None
@@ -3865,10 +3865,10 @@ class ElementalAnalysisProduct(ProcessedData):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["ElementalAnalysisProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:ElementalAnalysisProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ElementalAnalysisProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:ElementalAnalysisProduct"
     class_name: ClassVar[str] = "ElementalAnalysisProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.ElementalAnalysisProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ElementalAnalysisProduct
 
     id: Union[str, ElementalAnalysisProductId] = None
     name: str = None
@@ -3927,10 +3927,10 @@ class EnzymeProduct(ProcessedData):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["EnzymeProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:EnzymeProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["EnzymeProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:EnzymeProduct"
     class_name: ClassVar[str] = "EnzymeProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.EnzymeProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.EnzymeProduct
 
     id: Union[str, EnzymeProductId] = None
     name: str = None
@@ -3966,10 +3966,10 @@ class GWCMoistureProduct(ProcessedData):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["GWCMoistureProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:GWCMoistureProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["GWCMoistureProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:GWCMoistureProduct"
     class_name: ClassVar[str] = "GWCMoistureProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.GWCMoistureProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.GWCMoistureProduct
 
     id: Union[str, GWCMoistureProductId] = None
     name: str = None
@@ -4005,10 +4005,10 @@ class HydraulicPropertiesProduct(ProcessedData):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["HydraulicPropertiesProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:HydraulicPropertiesProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["HydraulicPropertiesProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:HydraulicPropertiesProduct"
     class_name: ClassVar[str] = "HydraulicPropertiesProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.HydraulicPropertiesProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.HydraulicPropertiesProduct
 
     id: Union[str, HydraulicPropertiesProductId] = None
     name: str = None
@@ -4056,10 +4056,10 @@ class IonsAnalysisProduct(ProcessedData):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["IonsAnalysisProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:IonsAnalysisProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["IonsAnalysisProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:IonsAnalysisProduct"
     class_name: ClassVar[str] = "IonsAnalysisProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.IonsAnalysisProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.IonsAnalysisProduct
 
     id: Union[str, IonsAnalysisProductId] = None
     name: str = None
@@ -4184,10 +4184,10 @@ class MAOMProduct(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MAOMProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MAOMProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MAOMProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MAOMProduct"
     class_name: ClassVar[str] = "MAOMProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MAOMProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MAOMProduct
 
     id: Union[str, MAOMProductId] = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
@@ -4250,10 +4250,10 @@ class MicrobialBiomassProduct(ProcessedData):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MicrobialBiomassProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MicrobialBiomassProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MicrobialBiomassProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MicrobialBiomassProduct"
     class_name: ClassVar[str] = "MicrobialBiomassProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MicrobialBiomassProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MicrobialBiomassProduct
 
     id: Union[str, MicrobialBiomassProductId] = None
     name: str = None
@@ -4317,10 +4317,10 @@ class NitrogenAnalysisProduct(ProcessedData):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["NitrogenAnalysisProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:NitrogenAnalysisProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["NitrogenAnalysisProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:NitrogenAnalysisProduct"
     class_name: ClassVar[str] = "NitrogenAnalysisProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.NitrogenAnalysisProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.NitrogenAnalysisProduct
 
     id: Union[str, NitrogenAnalysisProductId] = None
     name: str = None
@@ -4384,10 +4384,10 @@ class PhosphorusAnalysisProduct(ProcessedData):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["PhosphorusAnalysisProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:PhosphorusAnalysisProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["PhosphorusAnalysisProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:PhosphorusAnalysisProduct"
     class_name: ClassVar[str] = "PhosphorusAnalysisProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.PhosphorusAnalysisProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.PhosphorusAnalysisProduct
 
     id: Union[str, PhosphorusAnalysisProductId] = None
     name: str = None
@@ -4438,10 +4438,10 @@ class RespirationProduct(ProcessedData):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["RespirationProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:RespirationProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["RespirationProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:RespirationProduct"
     class_name: ClassVar[str] = "RespirationProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.RespirationProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.RespirationProduct
 
     id: Union[str, RespirationProductId] = None
     name: str = None
@@ -4477,10 +4477,10 @@ class TextureProduct(ProcessedData):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["TextureProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:TextureProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["TextureProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:TextureProduct"
     class_name: ClassVar[str] = "TextureProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.TextureProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.TextureProduct
 
     id: Union[str, TextureProductId] = None
     name: str = None
@@ -4523,10 +4523,10 @@ class TomographyProduct(ProcessedData):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["TomographyProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:TomographyProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["TomographyProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:TomographyProduct"
     class_name: ClassVar[str] = "TomographyProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.TomographyProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.TomographyProduct
 
     id: Union[str, TomographyProductId] = None
     name: str = None
@@ -4635,10 +4635,10 @@ class WEOMProduct(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["WEOMProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:WEOMProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["WEOMProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:WEOMProduct"
     class_name: ClassVar[str] = "WEOMProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.WEOMProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.WEOMProduct
 
     id: Union[str, WEOMProductId] = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
@@ -4699,10 +4699,10 @@ class PHProduct(ProcessedData):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["PHProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:PHProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["PHProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:PHProduct"
     class_name: ClassVar[str] = "pHProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.PHProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.PHProduct
 
     id: Union[str, PHProductId] = None
     name: str = None
@@ -4749,10 +4749,10 @@ class XRayDataProduct(ProcessedData):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["XRayDataProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:XRayDataProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XRayDataProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XRayDataProduct"
     class_name: ClassVar[str] = "XRayDataProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.XRayDataProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XRayDataProduct
 
     id: Union[str, XRayDataProductId] = None
     name: str = None
@@ -4785,10 +4785,10 @@ class XRFElementalProduct(XRayDataProduct):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["XRFElementalProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:XRFElementalProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XRFElementalProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XRFElementalProduct"
     class_name: ClassVar[str] = "XRFElementalProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.XRFElementalProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XRFElementalProduct
 
     id: Union[str, XRFElementalProductId] = None
     name: str = None
@@ -5067,10 +5067,10 @@ class XRDPhaseProduct(XRayDataProduct):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["XRDPhaseProduct"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:XRDPhaseProduct"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XRDPhaseProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XRDPhaseProduct"
     class_name: ClassVar[str] = "XRDPhaseProduct"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.XRDPhaseProduct
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XRDPhaseProduct
 
     id: Union[str, XRDPhaseProductId] = None
     name: str = None
@@ -5176,10 +5176,10 @@ class Site(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["Site"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:Site"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["Site"]
+    class_class_curie: ClassVar[str] = "basalt_schema:Site"
     class_name: ClassVar[str] = "Site"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.Site
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.Site
 
     id: Union[str, SiteId] = None
     name: str = None
@@ -5352,10 +5352,10 @@ class Sample(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["Sample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:Sample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["Sample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:Sample"
     class_name: ClassVar[str] = "Sample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.Sample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.Sample
 
     id: Union[str, SampleId] = None
     name: str = None
@@ -5393,10 +5393,10 @@ class AerosolArmSample(Sample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["AerosolArmSample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:AerosolArmSample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["AerosolArmSample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:AerosolArmSample"
     class_name: ClassVar[str] = "AerosolArmSample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.AerosolArmSample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.AerosolArmSample
 
     id: Union[str, AerosolArmSampleId] = None
     name: str = None
@@ -5630,10 +5630,10 @@ class AerosolSample(Sample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["AerosolSample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:AerosolSample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["AerosolSample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:AerosolSample"
     class_name: ClassVar[str] = "AerosolSample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.AerosolSample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.AerosolSample
 
     id: Union[str, AerosolSampleId] = None
     name: str = None
@@ -5848,10 +5848,10 @@ class AMP2UserSample(Sample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["AMP2UserSample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:AMP2UserSample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["AMP2UserSample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:AMP2UserSample"
     class_name: ClassVar[str] = "AMP2UserSample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.AMP2UserSample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.AMP2UserSample
 
     id: Union[str, AMP2UserSampleId] = None
     organism_ref: Union[str, OrganismId] = None
@@ -5929,10 +5929,10 @@ class CommerciallyPurchasedSample(Sample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["CommerciallyPurchasedSample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:CommerciallyPurchasedSample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["CommerciallyPurchasedSample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:CommerciallyPurchasedSample"
     class_name: ClassVar[str] = "CommerciallyPurchasedSample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.CommerciallyPurchasedSample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.CommerciallyPurchasedSample
 
     id: Union[str, CommerciallyPurchasedSampleId] = None
     name: str = None
@@ -6062,10 +6062,10 @@ class CultureEnvironmentalSample(Sample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["CultureEnvironmentalSample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:CultureEnvironmentalSample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["CultureEnvironmentalSample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:CultureEnvironmentalSample"
     class_name: ClassVar[str] = "CultureEnvironmentalSample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.CultureEnvironmentalSample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.CultureEnvironmentalSample
 
     id: Union[str, CultureEnvironmentalSampleId] = None
     name: str = None
@@ -6311,10 +6311,10 @@ class EngineeredStrainSample(Sample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["EngineeredStrainSample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:EngineeredStrainSample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["EngineeredStrainSample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:EngineeredStrainSample"
     class_name: ClassVar[str] = "EngineeredStrainSample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.EngineeredStrainSample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.EngineeredStrainSample
 
     id: Union[str, EngineeredStrainSampleId] = None
     name: str = None
@@ -6369,10 +6369,10 @@ class FieldDeployedTerraformSample(Sample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["FieldDeployedTerraformSample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:FieldDeployedTerraformSample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["FieldDeployedTerraformSample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:FieldDeployedTerraformSample"
     class_name: ClassVar[str] = "FieldDeployedTerraformSample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.FieldDeployedTerraformSample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.FieldDeployedTerraformSample
 
     id: Union[str, FieldDeployedTerraformSampleId] = None
     name: str = None
@@ -6728,10 +6728,10 @@ class MixedCultureSample(Sample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MixedCultureSample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MixedCultureSample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MixedCultureSample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MixedCultureSample"
     class_name: ClassVar[str] = "MixedCultureSample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MixedCultureSample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MixedCultureSample
 
     id: Union[str, MixedCultureSampleId] = None
     name: str = None
@@ -6950,10 +6950,10 @@ class MonetSoilSample(Sample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MonetSoilSample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MonetSoilSample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MonetSoilSample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MonetSoilSample"
     class_name: ClassVar[str] = "MonetSoilSample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MonetSoilSample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MonetSoilSample
 
     id: Union[str, MonetSoilSampleId] = None
     name: str = None
@@ -7119,10 +7119,10 @@ class OtherUndescribedSample(Sample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["OtherUndescribedSample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:OtherUndescribedSample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["OtherUndescribedSample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:OtherUndescribedSample"
     class_name: ClassVar[str] = "OtherUndescribedSample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.OtherUndescribedSample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.OtherUndescribedSample
 
     id: Union[str, OtherUndescribedSampleId] = None
     name: str = None
@@ -8048,10 +8048,10 @@ class PlantSample(Sample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["PlantSample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:PlantSample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["PlantSample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:PlantSample"
     class_name: ClassVar[str] = "PlantSample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.PlantSample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.PlantSample
 
     id: Union[str, PlantSampleId] = None
     name: str = None
@@ -8409,10 +8409,10 @@ class PureCultureSample(Sample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["PureCultureSample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:PureCultureSample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["PureCultureSample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:PureCultureSample"
     class_name: ClassVar[str] = "PureCultureSample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.PureCultureSample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.PureCultureSample
 
     id: Union[str, PureCultureSampleId] = None
     name: str = None
@@ -8646,10 +8646,10 @@ class SedimentSample(Sample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["SedimentSample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:SedimentSample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SedimentSample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SedimentSample"
     class_name: ClassVar[str] = "SedimentSample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.SedimentSample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SedimentSample
 
     id: Union[str, SedimentSampleId] = None
     name: str = None
@@ -9127,10 +9127,10 @@ class SoilSample(Sample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["SoilSample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:SoilSample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SoilSample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SoilSample"
     class_name: ClassVar[str] = "SoilSample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.SoilSample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SoilSample
 
     id: Union[str, SoilSampleId] = None
     name: str = None
@@ -9468,10 +9468,10 @@ class SynthesizedMaterialSample(Sample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["SynthesizedMaterialSample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:SynthesizedMaterialSample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SynthesizedMaterialSample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SynthesizedMaterialSample"
     class_name: ClassVar[str] = "SynthesizedMaterialSample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.SynthesizedMaterialSample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SynthesizedMaterialSample
 
     id: Union[str, SynthesizedMaterialSampleId] = None
     name: str = None
@@ -9615,10 +9615,10 @@ class TerraformSample(Sample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["TerraformSample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:TerraformSample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["TerraformSample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:TerraformSample"
     class_name: ClassVar[str] = "TerraformSample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.TerraformSample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.TerraformSample
 
     id: Union[str, TerraformSampleId] = None
     name: str = None
@@ -9954,10 +9954,10 @@ class WaterSample(Sample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["WaterSample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:WaterSample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["WaterSample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:WaterSample"
     class_name: ClassVar[str] = "WaterSample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.WaterSample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.WaterSample
 
     id: Union[str, WaterSampleId] = None
     name: str = None
@@ -10438,10 +10438,10 @@ class ProcessedSample(Sample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["ProcessedSample"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:ProcessedSample"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ProcessedSample"]
+    class_class_curie: ClassVar[str] = "basalt_schema:ProcessedSample"
     class_name: ClassVar[str] = "ProcessedSample"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.ProcessedSample
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ProcessedSample
 
     id: Union[str, ProcessedSampleId] = None
     name: str = None
@@ -10494,10 +10494,10 @@ class CoreSection(ProcessedSample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["CoreSection"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:CoreSection"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["CoreSection"]
+    class_class_curie: ClassVar[str] = "basalt_schema:CoreSection"
     class_name: ClassVar[str] = "CoreSection"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.CoreSection
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.CoreSection
 
     id: Union[str, CoreSectionId] = None
     name: str = None
@@ -10525,10 +10525,10 @@ class SamplingActivity(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["SamplingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:SamplingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SamplingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SamplingActivity"
     class_name: ClassVar[str] = "SamplingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.SamplingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SamplingActivity
 
     id: Union[str, SamplingActivityId] = None
     name: str = None
@@ -10578,10 +10578,10 @@ class AerosolArmSamplingActivity(SamplingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["AerosolArmSamplingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:AerosolArmSamplingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["AerosolArmSamplingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:AerosolArmSamplingActivity"
     class_name: ClassVar[str] = "AerosolArmSamplingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.AerosolArmSamplingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.AerosolArmSamplingActivity
 
     id: Union[str, AerosolArmSamplingActivityId] = None
     name: str = None
@@ -10606,10 +10606,10 @@ class AerosolSamplingActivity(SamplingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["AerosolSamplingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:AerosolSamplingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["AerosolSamplingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:AerosolSamplingActivity"
     class_name: ClassVar[str] = "AerosolSamplingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.AerosolSamplingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.AerosolSamplingActivity
 
     id: Union[str, AerosolSamplingActivityId] = None
     name: str = None
@@ -10658,10 +10658,10 @@ class CommerciallyPurchasedSamplingActivity(SamplingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["CommerciallyPurchasedSamplingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:CommerciallyPurchasedSamplingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["CommerciallyPurchasedSamplingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:CommerciallyPurchasedSamplingActivity"
     class_name: ClassVar[str] = "CommerciallyPurchasedSamplingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.CommerciallyPurchasedSamplingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.CommerciallyPurchasedSamplingActivity
 
     id: Union[str, CommerciallyPurchasedSamplingActivityId] = None
     name: str = None
@@ -10690,10 +10690,10 @@ class CultureEnvironmentalSamplingActivity(SamplingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["CultureEnvironmentalSamplingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:CultureEnvironmentalSamplingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["CultureEnvironmentalSamplingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:CultureEnvironmentalSamplingActivity"
     class_name: ClassVar[str] = "CultureEnvironmentalSamplingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.CultureEnvironmentalSamplingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.CultureEnvironmentalSamplingActivity
 
     id: Union[str, CultureEnvironmentalSamplingActivityId] = None
     name: str = None
@@ -10730,10 +10730,10 @@ class EngineeredStrainSamplingActivity(SamplingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["EngineeredStrainSamplingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:EngineeredStrainSamplingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["EngineeredStrainSamplingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:EngineeredStrainSamplingActivity"
     class_name: ClassVar[str] = "EngineeredStrainSamplingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.EngineeredStrainSamplingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.EngineeredStrainSamplingActivity
 
     id: Union[str, EngineeredStrainSamplingActivityId] = None
     name: str = None
@@ -10754,10 +10754,10 @@ class FieldDeployedTerraformSamplingActivity(SamplingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["FieldDeployedTerraformSamplingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:FieldDeployedTerraformSamplingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["FieldDeployedTerraformSamplingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:FieldDeployedTerraformSamplingActivity"
     class_name: ClassVar[str] = "FieldDeployedTerraformSamplingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.FieldDeployedTerraformSamplingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.FieldDeployedTerraformSamplingActivity
 
     id: Union[str, FieldDeployedTerraformSamplingActivityId] = None
     name: str = None
@@ -10790,10 +10790,10 @@ class MixedCultureSamplingActivity(SamplingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MixedCultureSamplingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MixedCultureSamplingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MixedCultureSamplingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MixedCultureSamplingActivity"
     class_name: ClassVar[str] = "MixedCultureSamplingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MixedCultureSamplingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MixedCultureSamplingActivity
 
     id: Union[str, MixedCultureSamplingActivityId] = None
     name: str = None
@@ -10830,10 +10830,10 @@ class MonetSoilSamplingActivity(SamplingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["MonetSoilSamplingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:MonetSoilSamplingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MonetSoilSamplingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MonetSoilSamplingActivity"
     class_name: ClassVar[str] = "MonetSoilSamplingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.MonetSoilSamplingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MonetSoilSamplingActivity
 
     id: Union[str, MonetSoilSamplingActivityId] = None
     name: str = None
@@ -10886,10 +10886,10 @@ class OtherUndescribedSamplingActivity(SamplingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["OtherUndescribedSamplingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:OtherUndescribedSamplingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["OtherUndescribedSamplingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:OtherUndescribedSamplingActivity"
     class_name: ClassVar[str] = "OtherUndescribedSamplingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.OtherUndescribedSamplingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.OtherUndescribedSamplingActivity
 
     id: Union[str, OtherUndescribedSamplingActivityId] = None
     name: str = None
@@ -10942,10 +10942,10 @@ class PlantSamplingActivity(SamplingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["PlantSamplingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:PlantSamplingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["PlantSamplingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:PlantSamplingActivity"
     class_name: ClassVar[str] = "PlantSamplingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.PlantSamplingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.PlantSamplingActivity
 
     id: Union[str, PlantSamplingActivityId] = None
     name: str = None
@@ -10986,10 +10986,10 @@ class PureCultureSamplingActivity(SamplingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["PureCultureSamplingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:PureCultureSamplingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["PureCultureSamplingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:PureCultureSamplingActivity"
     class_name: ClassVar[str] = "PureCultureSamplingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.PureCultureSamplingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.PureCultureSamplingActivity
 
     id: Union[str, PureCultureSamplingActivityId] = None
     name: str = None
@@ -11026,10 +11026,10 @@ class SedimentSamplingActivity(SamplingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["SedimentSamplingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:SedimentSamplingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SedimentSamplingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SedimentSamplingActivity"
     class_name: ClassVar[str] = "SedimentSamplingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.SedimentSamplingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SedimentSamplingActivity
 
     id: Union[str, SedimentSamplingActivityId] = None
     name: str = None
@@ -11070,10 +11070,10 @@ class SoilSamplingActivity(SamplingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["SoilSamplingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:SoilSamplingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SoilSamplingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SoilSamplingActivity"
     class_name: ClassVar[str] = "SoilSamplingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.SoilSamplingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SoilSamplingActivity
 
     id: Union[str, SoilSamplingActivityId] = None
     name: str = None
@@ -11139,10 +11139,10 @@ class SynthesizedMaterialSamplingActivity(SamplingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["SynthesizedMaterialSamplingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:SynthesizedMaterialSamplingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SynthesizedMaterialSamplingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SynthesizedMaterialSamplingActivity"
     class_name: ClassVar[str] = "SynthesizedMaterialSamplingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.SynthesizedMaterialSamplingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SynthesizedMaterialSamplingActivity
 
     id: Union[str, SynthesizedMaterialSamplingActivityId] = None
     name: str = None
@@ -11171,10 +11171,10 @@ class TerraformSamplingActivity(SamplingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["TerraformSamplingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:TerraformSamplingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["TerraformSamplingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:TerraformSamplingActivity"
     class_name: ClassVar[str] = "TerraformSamplingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.TerraformSamplingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.TerraformSamplingActivity
 
     id: Union[str, TerraformSamplingActivityId] = None
     name: str = None
@@ -11207,10 +11207,10 @@ class WaterSamplingActivity(SamplingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["WaterSamplingActivity"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:WaterSamplingActivity"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["WaterSamplingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:WaterSamplingActivity"
     class_name: ClassVar[str] = "WaterSamplingActivity"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.WaterSamplingActivity
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.WaterSamplingActivity
 
     id: Union[str, WaterSamplingActivityId] = None
     name: str = None
@@ -11253,10 +11253,10 @@ class Study(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["Study"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:Study"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["Study"]
+    class_class_curie: ClassVar[str] = "basalt_schema:Study"
     class_name: ClassVar[str] = "Study"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.Study
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.Study
 
     id: Union[str, StudyId] = None
     project_id: int = None
@@ -11338,10 +11338,10 @@ class ProjectParticipant(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["ProjectParticipant"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:ProjectParticipant"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ProjectParticipant"]
+    class_class_curie: ClassVar[str] = "basalt_schema:ProjectParticipant"
     class_name: ClassVar[str] = "ProjectParticipant"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.ProjectParticipant
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ProjectParticipant
 
     id: Union[str, ProjectParticipantId] = None
     role: Union[str, "NexusRoleEnum"] = None
@@ -11373,10 +11373,10 @@ class DOI(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["DOI"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:DOI"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["DOI"]
+    class_class_curie: ClassVar[str] = "basalt_schema:DOI"
     class_name: ClassVar[str] = "DOI"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.DOI
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.DOI
 
     doi_value: Union[str, URIorCURIE] = None
     doi_category: Optional[Union[str, "DoiCategoryEnum"]] = None
@@ -11404,10 +11404,10 @@ class TimestampValue(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["TimestampValue"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:TimestampValue"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["TimestampValue"]
+    class_class_curie: ClassVar[str] = "basalt_schema:TimestampValue"
     class_name: ClassVar[str] = "TimestampValue"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.TimestampValue
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.TimestampValue
 
     id: Union[str, TimestampValueId] = None
     description: Optional[str] = None
@@ -11438,10 +11438,10 @@ class TextValue(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["TextValue"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:TextValue"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["TextValue"]
+    class_class_curie: ClassVar[str] = "basalt_schema:TextValue"
     class_name: ClassVar[str] = "TextValue"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.TextValue
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.TextValue
 
     id: Union[str, TextValueId] = None
     description: Optional[str] = None
@@ -11470,10 +11470,10 @@ class TextValue(YAMLRoot):
 class SoftwareControlledTermValue(YAMLRoot):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["SoftwareControlledTermValue"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:SoftwareControlledTermValue"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SoftwareControlledTermValue"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SoftwareControlledTermValue"
     class_name: ClassVar[str] = "SoftwareControlledTermValue"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.SoftwareControlledTermValue
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SoftwareControlledTermValue
 
     id: Union[str, SoftwareControlledTermValueId] = None
     name: str = None
@@ -11510,10 +11510,10 @@ class SoftwareControlledTermValue(YAMLRoot):
 class ControlledTermValue(YAMLRoot):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["ControlledTermValue"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:ControlledTermValue"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ControlledTermValue"]
+    class_class_curie: ClassVar[str] = "basalt_schema:ControlledTermValue"
     class_name: ClassVar[str] = "ControlledTermValue"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.ControlledTermValue
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ControlledTermValue
 
     id: Union[str, ControlledTermValueId] = None
     description: Optional[str] = None
@@ -11550,10 +11550,10 @@ class ControlledTermValue(YAMLRoot):
 class PersonValue(YAMLRoot):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["PersonValue"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:PersonValue"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["PersonValue"]
+    class_class_curie: ClassVar[str] = "basalt_schema:PersonValue"
     class_name: ClassVar[str] = "PersonValue"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.PersonValue
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.PersonValue
 
     id: Union[str, PersonValueId] = None
     first_name: str = None
@@ -11605,10 +11605,10 @@ class QuantityValue(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["QuantityValue"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:QuantityValue"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["QuantityValue"]
+    class_class_curie: ClassVar[str] = "basalt_schema:QuantityValue"
     class_name: ClassVar[str] = "QuantityValue"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.QuantityValue
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.QuantityValue
 
     id: Union[str, QuantityValueId] = None
     description: Optional[str] = None
@@ -11653,10 +11653,10 @@ class QuantityValue(YAMLRoot):
 class ConditioningValue(YAMLRoot):
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["ConditioningValue"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:ConditioningValue"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ConditioningValue"]
+    class_class_curie: ClassVar[str] = "basalt_schema:ConditioningValue"
     class_name: ClassVar[str] = "ConditioningValue"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.ConditioningValue
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ConditioningValue
 
     id: Union[str, ConditioningValueId] = None
     source_material: Optional[str] = None
@@ -11696,10 +11696,10 @@ class ZipDownload(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA["ZipDownload"]
-    class_class_curie: ClassVar[str] = "analysis_api_schema:ZipDownload"
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["ZipDownload"]
+    class_class_curie: ClassVar[str] = "basalt_schema:ZipDownload"
     class_name: ClassVar[str] = "zipDownload"
-    class_model_uri: ClassVar[URIRef] = ANALYSIS_API_SCHEMA.ZipDownload
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ZipDownload
 
     id: Union[str, ZipDownloadId] = None
     time: Union[str, XSDDateTime] = None
@@ -13952,3297 +13952,3297 @@ class YesNoEnum(EnumDefinitionImpl):
 class slots:
     pass
 
-slots.acquisition_strategy = Slot(uri=ANALYSIS_API_SCHEMA.acquisition_strategy, name="acquisition_strategy", curie=ANALYSIS_API_SCHEMA.curie('acquisition_strategy'),
-                   model_uri=ANALYSIS_API_SCHEMA.acquisition_strategy, domain=None, range=Optional[Union[str, "MassSpectrometryAcquisitionStrategyEnum"]])
+slots.acquisition_strategy = Slot(uri=BASALT_SCHEMA.acquisition_strategy, name="acquisition_strategy", curie=BASALT_SCHEMA.curie('acquisition_strategy'),
+                   model_uri=BASALT_SCHEMA.acquisition_strategy, domain=None, range=Optional[Union[str, "MassSpectrometryAcquisitionStrategyEnum"]])
 
-slots.additional_information = Slot(uri=ANALYSIS_API_SCHEMA.additional_information, name="additional_information", curie=ANALYSIS_API_SCHEMA.curie('additional_information'),
-                   model_uri=ANALYSIS_API_SCHEMA.additional_information, domain=None, range=Optional[str])
+slots.additional_information = Slot(uri=BASALT_SCHEMA.additional_information, name="additional_information", curie=BASALT_SCHEMA.curie('additional_information'),
+                   model_uri=BASALT_SCHEMA.additional_information, domain=None, range=Optional[str])
 
-slots.aerosol_type = Slot(uri=ANALYSIS_API_SCHEMA.aerosol_type, name="aerosol_type", curie=ANALYSIS_API_SCHEMA.curie('aerosol_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.aerosol_type, domain=None, range=Union[str, "AerosolTypeEnum"])
+slots.aerosol_type = Slot(uri=BASALT_SCHEMA.aerosol_type, name="aerosol_type", curie=BASALT_SCHEMA.curie('aerosol_type'),
+                   model_uri=BASALT_SCHEMA.aerosol_type, domain=None, range=Union[str, "AerosolTypeEnum"])
 
-slots.agitation_speed_rpm = Slot(uri=ANALYSIS_API_SCHEMA.agitation_speed_rpm, name="agitation_speed_rpm", curie=ANALYSIS_API_SCHEMA.curie('agitation_speed_rpm'),
-                   model_uri=ANALYSIS_API_SCHEMA.agitation_speed_rpm, domain=None, range=Optional[int])
+slots.agitation_speed_rpm = Slot(uri=BASALT_SCHEMA.agitation_speed_rpm, name="agitation_speed_rpm", curie=BASALT_SCHEMA.curie('agitation_speed_rpm'),
+                   model_uri=BASALT_SCHEMA.agitation_speed_rpm, domain=None, range=Optional[int])
 
-slots.agrochem_addition = Slot(uri=ANALYSIS_API_SCHEMA.agrochem_addition, name="agrochem_addition", curie=ANALYSIS_API_SCHEMA.curie('agrochem_addition'),
-                   model_uri=ANALYSIS_API_SCHEMA.agrochem_addition, domain=None, range=Optional[str])
+slots.agrochem_addition = Slot(uri=BASALT_SCHEMA.agrochem_addition, name="agrochem_addition", curie=BASALT_SCHEMA.curie('agrochem_addition'),
+                   model_uri=BASALT_SCHEMA.agrochem_addition, domain=None, range=Optional[str])
 
-slots.air_temp_regm = Slot(uri=ANALYSIS_API_SCHEMA.air_temp_regm, name="air_temp_regm", curie=ANALYSIS_API_SCHEMA.curie('air_temp_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.air_temp_regm, domain=None, range=Optional[str])
+slots.air_temp_regm = Slot(uri=BASALT_SCHEMA.air_temp_regm, name="air_temp_regm", curie=BASALT_SCHEMA.curie('air_temp_regm'),
+                   model_uri=BASALT_SCHEMA.air_temp_regm, domain=None, range=Optional[str])
 
-slots.al_sat = Slot(uri=ANALYSIS_API_SCHEMA.al_sat, name="al_sat", curie=ANALYSIS_API_SCHEMA.curie('al_sat'),
-                   model_uri=ANALYSIS_API_SCHEMA.al_sat, domain=None, range=Optional[str])
+slots.al_sat = Slot(uri=BASALT_SCHEMA.al_sat, name="al_sat", curie=BASALT_SCHEMA.curie('al_sat'),
+                   model_uri=BASALT_SCHEMA.al_sat, domain=None, range=Optional[str])
 
-slots.al_sat_meth = Slot(uri=ANALYSIS_API_SCHEMA.al_sat_meth, name="al_sat_meth", curie=ANALYSIS_API_SCHEMA.curie('al_sat_meth'),
-                   model_uri=ANALYSIS_API_SCHEMA.al_sat_meth, domain=None, range=Optional[str])
+slots.al_sat_meth = Slot(uri=BASALT_SCHEMA.al_sat_meth, name="al_sat_meth", curie=BASALT_SCHEMA.curie('al_sat_meth'),
+                   model_uri=BASALT_SCHEMA.al_sat_meth, domain=None, range=Optional[str])
 
-slots.alkalinity = Slot(uri=ANALYSIS_API_SCHEMA.alkalinity, name="alkalinity", curie=ANALYSIS_API_SCHEMA.curie('alkalinity'),
-                   model_uri=ANALYSIS_API_SCHEMA.alkalinity, domain=None, range=Optional[str],
+slots.alkalinity = Slot(uri=BASALT_SCHEMA.alkalinity, name="alkalinity", curie=BASALT_SCHEMA.curie('alkalinity'),
+                   model_uri=BASALT_SCHEMA.alkalinity, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(mg|meq)/L$'))
 
-slots.alkalinity_method = Slot(uri=ANALYSIS_API_SCHEMA.alkalinity_method, name="alkalinity_method", curie=ANALYSIS_API_SCHEMA.curie('alkalinity_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.alkalinity_method, domain=None, range=Optional[str])
+slots.alkalinity_method = Slot(uri=BASALT_SCHEMA.alkalinity_method, name="alkalinity_method", curie=BASALT_SCHEMA.curie('alkalinity_method'),
+                   model_uri=BASALT_SCHEMA.alkalinity_method, domain=None, range=Optional[str])
 
-slots.alkyl_diethers = Slot(uri=ANALYSIS_API_SCHEMA.alkyl_diethers, name="alkyl_diethers", curie=ANALYSIS_API_SCHEMA.curie('alkyl_diethers'),
-                   model_uri=ANALYSIS_API_SCHEMA.alkyl_diethers, domain=None, range=Optional[str],
+slots.alkyl_diethers = Slot(uri=BASALT_SCHEMA.alkyl_diethers, name="alkyl_diethers", curie=BASALT_SCHEMA.curie('alkyl_diethers'),
+                   model_uri=BASALT_SCHEMA.alkyl_diethers, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.alt = Slot(uri=ANALYSIS_API_SCHEMA.alt, name="alt", curie=ANALYSIS_API_SCHEMA.curie('alt'),
-                   model_uri=ANALYSIS_API_SCHEMA.alt, domain=None, range=Optional[str],
+slots.alt = Slot(uri=BASALT_SCHEMA.alt, name="alt", curie=BASALT_SCHEMA.curie('alt'),
+                   model_uri=BASALT_SCHEMA.alt, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?m(?:-\d+(\.\d+)?m)?$'))
 
-slots.aminopept_act = Slot(uri=ANALYSIS_API_SCHEMA.aminopept_act, name="aminopept_act", curie=ANALYSIS_API_SCHEMA.curie('aminopept_act'),
-                   model_uri=ANALYSIS_API_SCHEMA.aminopept_act, domain=None, range=Optional[str],
+slots.aminopept_act = Slot(uri=BASALT_SCHEMA.aminopept_act, name="aminopept_act", curie=BASALT_SCHEMA.curie('aminopept_act'),
+                   model_uri=BASALT_SCHEMA.aminopept_act, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*mol/L/h$'))
 
-slots.ammonium = Slot(uri=ANALYSIS_API_SCHEMA.ammonium, name="ammonium", curie=ANALYSIS_API_SCHEMA.curie('ammonium'),
-                   model_uri=ANALYSIS_API_SCHEMA.ammonium, domain=None, range=Optional[str],
+slots.ammonium = Slot(uri=BASALT_SCHEMA.ammonium, name="ammonium", curie=BASALT_SCHEMA.curie('ammonium'),
+                   model_uri=BASALT_SCHEMA.ammonium, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$'))
 
-slots.analysis_type = Slot(uri=ANALYSIS_API_SCHEMA.analysis_type, name="analysis_type", curie=ANALYSIS_API_SCHEMA.curie('analysis_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.analysis_type, domain=None, range=Optional[str])
+slots.analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
+                   model_uri=BASALT_SCHEMA.analysis_type, domain=None, range=Optional[str])
 
-slots.analyte_category = Slot(uri=ANALYSIS_API_SCHEMA.analyte_category, name="analyte_category", curie=ANALYSIS_API_SCHEMA.curie('analyte_category'),
-                   model_uri=ANALYSIS_API_SCHEMA.analyte_category, domain=None, range=Optional[Union[str, "AnalyteCategoryEnum"]])
+slots.analyte_category = Slot(uri=BASALT_SCHEMA.analyte_category, name="analyte_category", curie=BASALT_SCHEMA.curie('analyte_category'),
+                   model_uri=BASALT_SCHEMA.analyte_category, domain=None, range=Optional[Union[str, "AnalyteCategoryEnum"]])
 
-slots.analytic = Slot(uri=ANALYSIS_API_SCHEMA.analytic, name="analytic", curie=ANALYSIS_API_SCHEMA.curie('analytic'),
-                   model_uri=ANALYSIS_API_SCHEMA.analytic, domain=None, range=str)
+slots.analytic = Slot(uri=BASALT_SCHEMA.analytic, name="analytic", curie=BASALT_SCHEMA.curie('analytic'),
+                   model_uri=BASALT_SCHEMA.analytic, domain=None, range=str)
 
-slots.ances_data = Slot(uri=ANALYSIS_API_SCHEMA.ances_data, name="ances_data", curie=ANALYSIS_API_SCHEMA.curie('ances_data'),
-                   model_uri=ANALYSIS_API_SCHEMA.ances_data, domain=None, range=Optional[str])
+slots.ances_data = Slot(uri=BASALT_SCHEMA.ances_data, name="ances_data", curie=BASALT_SCHEMA.curie('ances_data'),
+                   model_uri=BASALT_SCHEMA.ances_data, domain=None, range=Optional[str])
 
-slots.annotation_database = Slot(uri=ANALYSIS_API_SCHEMA.annotation_database, name="annotation_database", curie=ANALYSIS_API_SCHEMA.curie('annotation_database'),
-                   model_uri=ANALYSIS_API_SCHEMA.annotation_database, domain=None, range=Optional[Union[str, "AnnotationDatabaseEnum"]])
+slots.annotation_database = Slot(uri=BASALT_SCHEMA.annotation_database, name="annotation_database", curie=BASALT_SCHEMA.curie('annotation_database'),
+                   model_uri=BASALT_SCHEMA.annotation_database, domain=None, range=Optional[Union[str, "AnnotationDatabaseEnum"]])
 
-slots.annual_precpt = Slot(uri=ANALYSIS_API_SCHEMA.annual_precpt, name="annual_precpt", curie=ANALYSIS_API_SCHEMA.curie('annual_precpt'),
-                   model_uri=ANALYSIS_API_SCHEMA.annual_precpt, domain=None, range=Optional[str],
+slots.annual_precpt = Slot(uri=BASALT_SCHEMA.annual_precpt, name="annual_precpt", curie=BASALT_SCHEMA.curie('annual_precpt'),
+                   model_uri=BASALT_SCHEMA.annual_precpt, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*mm$'))
 
-slots.annual_temp = Slot(uri=ANALYSIS_API_SCHEMA.annual_temp, name="annual_temp", curie=ANALYSIS_API_SCHEMA.curie('annual_temp'),
-                   model_uri=ANALYSIS_API_SCHEMA.annual_temp, domain=None, range=Optional[str],
+slots.annual_temp = Slot(uri=BASALT_SCHEMA.annual_temp, name="annual_temp", curie=BASALT_SCHEMA.curie('annual_temp'),
+                   model_uri=BASALT_SCHEMA.annual_temp, domain=None, range=Optional[str],
                    pattern=re.compile(r'^-?\d+(\.\d+)?\s*C$'))
 
-slots.antibiotic_regm = Slot(uri=ANALYSIS_API_SCHEMA.antibiotic_regm, name="antibiotic_regm", curie=ANALYSIS_API_SCHEMA.curie('antibiotic_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.antibiotic_regm, domain=None, range=Optional[str])
+slots.antibiotic_regm = Slot(uri=BASALT_SCHEMA.antibiotic_regm, name="antibiotic_regm", curie=BASALT_SCHEMA.curie('antibiotic_regm'),
+                   model_uri=BASALT_SCHEMA.antibiotic_regm, domain=None, range=Optional[str])
 
-slots.aq = Slot(uri=ANALYSIS_API_SCHEMA.aq, name="aq", curie=ANALYSIS_API_SCHEMA.curie('aq'),
-                   model_uri=ANALYSIS_API_SCHEMA.aq, domain=None, range=Optional[float])
+slots.aq = Slot(uri=BASALT_SCHEMA.aq, name="aq", curie=BASALT_SCHEMA.curie('aq'),
+                   model_uri=BASALT_SCHEMA.aq, domain=None, range=Optional[float])
 
-slots.atmospheric_data = Slot(uri=ANALYSIS_API_SCHEMA.atmospheric_data, name="atmospheric_data", curie=ANALYSIS_API_SCHEMA.curie('atmospheric_data'),
-                   model_uri=ANALYSIS_API_SCHEMA.atmospheric_data, domain=None, range=Optional[str])
+slots.atmospheric_data = Slot(uri=BASALT_SCHEMA.atmospheric_data, name="atmospheric_data", curie=BASALT_SCHEMA.curie('atmospheric_data'),
+                   model_uri=BASALT_SCHEMA.atmospheric_data, domain=None, range=Optional[str])
 
-slots.average_well_color_development = Slot(uri=ANALYSIS_API_SCHEMA.average_well_color_development, name="average_well_color_development", curie=ANALYSIS_API_SCHEMA.curie('average_well_color_development'),
-                   model_uri=ANALYSIS_API_SCHEMA.average_well_color_development, domain=None, range=Optional[float])
+slots.average_well_color_development = Slot(uri=BASALT_SCHEMA.average_well_color_development, name="average_well_color_development", curie=BASALT_SCHEMA.curie('average_well_color_development'),
+                   model_uri=BASALT_SCHEMA.average_well_color_development, domain=None, range=Optional[float])
 
-slots.bac_prod = Slot(uri=ANALYSIS_API_SCHEMA.bac_prod, name="bac_prod", curie=ANALYSIS_API_SCHEMA.curie('bac_prod'),
-                   model_uri=ANALYSIS_API_SCHEMA.bac_prod, domain=None, range=Optional[str],
+slots.bac_prod = Slot(uri=BASALT_SCHEMA.bac_prod, name="bac_prod", curie=BASALT_SCHEMA.curie('bac_prod'),
+                   model_uri=BASALT_SCHEMA.bac_prod, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.bac_resp = Slot(uri=ANALYSIS_API_SCHEMA.bac_resp, name="bac_resp", curie=ANALYSIS_API_SCHEMA.curie('bac_resp'),
-                   model_uri=ANALYSIS_API_SCHEMA.bac_resp, domain=None, range=Optional[str],
+slots.bac_resp = Slot(uri=BASALT_SCHEMA.bac_resp, name="bac_resp", curie=BASALT_SCHEMA.curie('bac_resp'),
+                   model_uri=BASALT_SCHEMA.bac_resp, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.bacteria_carb_prod = Slot(uri=ANALYSIS_API_SCHEMA.bacteria_carb_prod, name="bacteria_carb_prod", curie=ANALYSIS_API_SCHEMA.curie('bacteria_carb_prod'),
-                   model_uri=ANALYSIS_API_SCHEMA.bacteria_carb_prod, domain=None, range=Optional[str],
+slots.bacteria_carb_prod = Slot(uri=BASALT_SCHEMA.bacteria_carb_prod, name="bacteria_carb_prod", curie=BASALT_SCHEMA.curie('bacteria_carb_prod'),
+                   model_uri=BASALT_SCHEMA.bacteria_carb_prod, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.biochem_oxygen_dem = Slot(uri=ANALYSIS_API_SCHEMA.biochem_oxygen_dem, name="biochem_oxygen_dem", curie=ANALYSIS_API_SCHEMA.curie('biochem_oxygen_dem'),
-                   model_uri=ANALYSIS_API_SCHEMA.biochem_oxygen_dem, domain=None, range=Optional[str])
+slots.biochem_oxygen_dem = Slot(uri=BASALT_SCHEMA.biochem_oxygen_dem, name="biochem_oxygen_dem", curie=BASALT_SCHEMA.curie('biochem_oxygen_dem'),
+                   model_uri=BASALT_SCHEMA.biochem_oxygen_dem, domain=None, range=Optional[str])
 
-slots.biol_stat = Slot(uri=ANALYSIS_API_SCHEMA.biol_stat, name="biol_stat", curie=ANALYSIS_API_SCHEMA.curie('biol_stat'),
-                   model_uri=ANALYSIS_API_SCHEMA.biol_stat, domain=None, range=Optional[Union[str, "BiolStatEnum"]])
+slots.biol_stat = Slot(uri=BASALT_SCHEMA.biol_stat, name="biol_stat", curie=BASALT_SCHEMA.curie('biol_stat'),
+                   model_uri=BASALT_SCHEMA.biol_stat, domain=None, range=Optional[Union[str, "BiolStatEnum"]])
 
-slots.biotic_regm = Slot(uri=ANALYSIS_API_SCHEMA.biotic_regm, name="biotic_regm", curie=ANALYSIS_API_SCHEMA.curie('biotic_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.biotic_regm, domain=None, range=Optional[str])
+slots.biotic_regm = Slot(uri=BASALT_SCHEMA.biotic_regm, name="biotic_regm", curie=BASALT_SCHEMA.curie('biotic_regm'),
+                   model_uri=BASALT_SCHEMA.biotic_regm, domain=None, range=Optional[str])
 
-slots.biotic_relationship = Slot(uri=ANALYSIS_API_SCHEMA.biotic_relationship, name="biotic_relationship", curie=ANALYSIS_API_SCHEMA.curie('biotic_relationship'),
-                   model_uri=ANALYSIS_API_SCHEMA.biotic_relationship, domain=None, range=Optional[Union[str, "BioticRelationshipEnum"]])
+slots.biotic_relationship = Slot(uri=BASALT_SCHEMA.biotic_relationship, name="biotic_relationship", curie=BASALT_SCHEMA.curie('biotic_relationship'),
+                   model_uri=BASALT_SCHEMA.biotic_relationship, domain=None, range=Optional[Union[str, "BioticRelationshipEnum"]])
 
-slots.bishomohopanol = Slot(uri=ANALYSIS_API_SCHEMA.bishomohopanol, name="bishomohopanol", curie=ANALYSIS_API_SCHEMA.curie('bishomohopanol'),
-                   model_uri=ANALYSIS_API_SCHEMA.bishomohopanol, domain=None, range=Optional[str],
+slots.bishomohopanol = Slot(uri=BASALT_SCHEMA.bishomohopanol, name="bishomohopanol", curie=BASALT_SCHEMA.curie('bishomohopanol'),
+                   model_uri=BASALT_SCHEMA.bishomohopanol, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(ug/L|ug/g)$'))
 
-slots.blank_mean = Slot(uri=ANALYSIS_API_SCHEMA.blank_mean, name="blank_mean", curie=ANALYSIS_API_SCHEMA.curie('blank_mean'),
-                   model_uri=ANALYSIS_API_SCHEMA.blank_mean, domain=None, range=Optional[float])
+slots.blank_mean = Slot(uri=BASALT_SCHEMA.blank_mean, name="blank_mean", curie=BASALT_SCHEMA.curie('blank_mean'),
+                   model_uri=BASALT_SCHEMA.blank_mean, domain=None, range=Optional[float])
 
-slots.bromide = Slot(uri=ANALYSIS_API_SCHEMA.bromide, name="bromide", curie=ANALYSIS_API_SCHEMA.curie('bromide'),
-                   model_uri=ANALYSIS_API_SCHEMA.bromide, domain=None, range=Optional[str],
+slots.bromide = Slot(uri=BASALT_SCHEMA.bromide, name="bromide", curie=BASALT_SCHEMA.curie('bromide'),
+                   model_uri=BASALT_SCHEMA.bromide, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*ppm$'))
 
-slots.bulk_elect_conductivity = Slot(uri=ANALYSIS_API_SCHEMA.bulk_elect_conductivity, name="bulk_elect_conductivity", curie=ANALYSIS_API_SCHEMA.curie('bulk_elect_conductivity'),
-                   model_uri=ANALYSIS_API_SCHEMA.bulk_elect_conductivity, domain=None, range=Optional[str],
+slots.bulk_elect_conductivity = Slot(uri=BASALT_SCHEMA.bulk_elect_conductivity, name="bulk_elect_conductivity", curie=BASALT_SCHEMA.curie('bulk_elect_conductivity'),
+                   model_uri=BASALT_SCHEMA.bulk_elect_conductivity, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*mS/cm$'))
 
-slots.calcium = Slot(uri=ANALYSIS_API_SCHEMA.calcium, name="calcium", curie=ANALYSIS_API_SCHEMA.curie('calcium'),
-                   model_uri=ANALYSIS_API_SCHEMA.calcium, domain=None, range=Optional[str],
+slots.calcium = Slot(uri=BASALT_SCHEMA.calcium, name="calcium", curie=BASALT_SCHEMA.curie('calcium'),
+                   model_uri=BASALT_SCHEMA.calcium, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(mg/L|umol/L|ppm)$'))
 
-slots.calibration_data = Slot(uri=ANALYSIS_API_SCHEMA.calibration_data, name="calibration_data", curie=ANALYSIS_API_SCHEMA.curie('calibration_data'),
-                   model_uri=ANALYSIS_API_SCHEMA.calibration_data, domain=None, range=Optional[Union[str, MassSpectrometryInstrumentDataId]])
+slots.calibration_data = Slot(uri=BASALT_SCHEMA.calibration_data, name="calibration_data", curie=BASALT_SCHEMA.curie('calibration_data'),
+                   model_uri=BASALT_SCHEMA.calibration_data, domain=None, range=Optional[Union[str, MassSpectrometryInstrumentDataId]])
 
-slots.calibration_standard = Slot(uri=ANALYSIS_API_SCHEMA.calibration_standard, name="calibration_standard", curie=ANALYSIS_API_SCHEMA.curie('calibration_standard'),
-                   model_uri=ANALYSIS_API_SCHEMA.calibration_standard, domain=None, range=Optional[Union[str, PurchasedMaterialId]])
+slots.calibration_standard = Slot(uri=BASALT_SCHEMA.calibration_standard, name="calibration_standard", curie=BASALT_SCHEMA.curie('calibration_standard'),
+                   model_uri=BASALT_SCHEMA.calibration_standard, domain=None, range=Optional[Union[str, PurchasedMaterialId]])
 
-slots.calibration_target = Slot(uri=ANALYSIS_API_SCHEMA.calibration_target, name="calibration_target", curie=ANALYSIS_API_SCHEMA.curie('calibration_target'),
-                   model_uri=ANALYSIS_API_SCHEMA.calibration_target, domain=None, range=Optional[Union[str, "CalibrationTargetEnum"]])
+slots.calibration_target = Slot(uri=BASALT_SCHEMA.calibration_target, name="calibration_target", curie=BASALT_SCHEMA.curie('calibration_target'),
+                   model_uri=BASALT_SCHEMA.calibration_target, domain=None, range=Optional[Union[str, "CalibrationTargetEnum"]])
 
-slots.carb_dioxide = Slot(uri=ANALYSIS_API_SCHEMA.carb_dioxide, name="carb_dioxide", curie=ANALYSIS_API_SCHEMA.curie('carb_dioxide'),
-                   model_uri=ANALYSIS_API_SCHEMA.carb_dioxide, domain=None, range=Optional[str],
+slots.carb_dioxide = Slot(uri=BASALT_SCHEMA.carb_dioxide, name="carb_dioxide", curie=BASALT_SCHEMA.curie('carb_dioxide'),
+                   model_uri=BASALT_SCHEMA.carb_dioxide, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|ppm)$'))
 
-slots.carb_monoxide = Slot(uri=ANALYSIS_API_SCHEMA.carb_monoxide, name="carb_monoxide", curie=ANALYSIS_API_SCHEMA.curie('carb_monoxide'),
-                   model_uri=ANALYSIS_API_SCHEMA.carb_monoxide, domain=None, range=Optional[str],
+slots.carb_monoxide = Slot(uri=BASALT_SCHEMA.carb_monoxide, name="carb_monoxide", curie=BASALT_SCHEMA.curie('carb_monoxide'),
+                   model_uri=BASALT_SCHEMA.carb_monoxide, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|ppm)$'))
 
-slots.carb_nitro_ratio = Slot(uri=ANALYSIS_API_SCHEMA.carb_nitro_ratio, name="carb_nitro_ratio", curie=ANALYSIS_API_SCHEMA.curie('carb_nitro_ratio'),
-                   model_uri=ANALYSIS_API_SCHEMA.carb_nitro_ratio, domain=None, range=Optional[str])
+slots.carb_nitro_ratio = Slot(uri=BASALT_SCHEMA.carb_nitro_ratio, name="carb_nitro_ratio", curie=BASALT_SCHEMA.curie('carb_nitro_ratio'),
+                   model_uri=BASALT_SCHEMA.carb_nitro_ratio, domain=None, range=Optional[str])
 
-slots.cas = Slot(uri=ANALYSIS_API_SCHEMA.cas, name="cas", curie=ANALYSIS_API_SCHEMA.curie('cas'),
-                   model_uri=ANALYSIS_API_SCHEMA.cas, domain=None, range=Optional[str])
+slots.cas = Slot(uri=BASALT_SCHEMA.cas, name="cas", curie=BASALT_SCHEMA.curie('cas'),
+                   model_uri=BASALT_SCHEMA.cas, domain=None, range=Optional[str])
 
-slots.cbi = Slot(uri=ANALYSIS_API_SCHEMA.cbi, name="cbi", curie=ANALYSIS_API_SCHEMA.curie('cbi'),
-                   model_uri=ANALYSIS_API_SCHEMA.cbi, domain=None, range=Optional[Union[bool, Bool]])
+slots.cbi = Slot(uri=BASALT_SCHEMA.cbi, name="cbi", curie=BASALT_SCHEMA.curie('cbi'),
+                   model_uri=BASALT_SCHEMA.cbi, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.chem_administration = Slot(uri=ANALYSIS_API_SCHEMA.chem_administration, name="chem_administration", curie=ANALYSIS_API_SCHEMA.curie('chem_administration'),
-                   model_uri=ANALYSIS_API_SCHEMA.chem_administration, domain=None, range=Optional[str])
+slots.chem_administration = Slot(uri=BASALT_SCHEMA.chem_administration, name="chem_administration", curie=BASALT_SCHEMA.curie('chem_administration'),
+                   model_uri=BASALT_SCHEMA.chem_administration, domain=None, range=Optional[str])
 
-slots.chem_mutagen = Slot(uri=ANALYSIS_API_SCHEMA.chem_mutagen, name="chem_mutagen", curie=ANALYSIS_API_SCHEMA.curie('chem_mutagen'),
-                   model_uri=ANALYSIS_API_SCHEMA.chem_mutagen, domain=None, range=Optional[str])
+slots.chem_mutagen = Slot(uri=BASALT_SCHEMA.chem_mutagen, name="chem_mutagen", curie=BASALT_SCHEMA.curie('chem_mutagen'),
+                   model_uri=BASALT_SCHEMA.chem_mutagen, domain=None, range=Optional[str])
 
-slots.chem_oxygen_dem = Slot(uri=ANALYSIS_API_SCHEMA.chem_oxygen_dem, name="chem_oxygen_dem", curie=ANALYSIS_API_SCHEMA.curie('chem_oxygen_dem'),
-                   model_uri=ANALYSIS_API_SCHEMA.chem_oxygen_dem, domain=None, range=Optional[str])
+slots.chem_oxygen_dem = Slot(uri=BASALT_SCHEMA.chem_oxygen_dem, name="chem_oxygen_dem", curie=BASALT_SCHEMA.curie('chem_oxygen_dem'),
+                   model_uri=BASALT_SCHEMA.chem_oxygen_dem, domain=None, range=Optional[str])
 
-slots.chloride = Slot(uri=ANALYSIS_API_SCHEMA.chloride, name="chloride", curie=ANALYSIS_API_SCHEMA.curie('chloride'),
-                   model_uri=ANALYSIS_API_SCHEMA.chloride, domain=None, range=Optional[str],
+slots.chloride = Slot(uri=BASALT_SCHEMA.chloride, name="chloride", curie=BASALT_SCHEMA.curie('chloride'),
+                   model_uri=BASALT_SCHEMA.chloride, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(mg/L|ppm)$'))
 
-slots.chlorophyll = Slot(uri=ANALYSIS_API_SCHEMA.chlorophyll, name="chlorophyll", curie=ANALYSIS_API_SCHEMA.curie('chlorophyll'),
-                   model_uri=ANALYSIS_API_SCHEMA.chlorophyll, domain=None, range=Optional[str],
+slots.chlorophyll = Slot(uri=BASALT_SCHEMA.chlorophyll, name="chlorophyll", curie=BASALT_SCHEMA.curie('chlorophyll'),
+                   model_uri=BASALT_SCHEMA.chlorophyll, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(mg/m3|ug/L)$'))
 
-slots.chromatography_type = Slot(uri=ANALYSIS_API_SCHEMA.chromatography_type, name="chromatography_type", curie=ANALYSIS_API_SCHEMA.curie('chromatography_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.chromatography_type, domain=None, range=Union[str, "ChromatographyCategoryEnum"])
+slots.chromatography_type = Slot(uri=BASALT_SCHEMA.chromatography_type, name="chromatography_type", curie=BASALT_SCHEMA.curie('chromatography_type'),
+                   model_uri=BASALT_SCHEMA.chromatography_type, domain=None, range=Union[str, "ChromatographyCategoryEnum"])
 
-slots.collection_date = Slot(uri=ANALYSIS_API_SCHEMA.collection_date, name="collection_date", curie=ANALYSIS_API_SCHEMA.curie('collection_date'),
-                   model_uri=ANALYSIS_API_SCHEMA.collection_date, domain=None, range=Optional[Union[str, XSDDate]],
+slots.collection_date = Slot(uri=BASALT_SCHEMA.collection_date, name="collection_date", curie=BASALT_SCHEMA.curie('collection_date'),
+                   model_uri=BASALT_SCHEMA.collection_date, domain=None, range=Optional[Union[str, XSDDate]],
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.collection_mode = Slot(uri=ANALYSIS_API_SCHEMA.collection_mode, name="collection_mode", curie=ANALYSIS_API_SCHEMA.curie('collection_mode'),
-                   model_uri=ANALYSIS_API_SCHEMA.collection_mode, domain=None, range=Optional[Union[str, "MassSpectrumCollectionModeEnum"]])
+slots.collection_mode = Slot(uri=BASALT_SCHEMA.collection_mode, name="collection_mode", curie=BASALT_SCHEMA.curie('collection_mode'),
+                   model_uri=BASALT_SCHEMA.collection_mode, domain=None, range=Optional[Union[str, "MassSpectrumCollectionModeEnum"]])
 
-slots.collection_time = Slot(uri=ANALYSIS_API_SCHEMA.collection_time, name="collection_time", curie=ANALYSIS_API_SCHEMA.curie('collection_time'),
-                   model_uri=ANALYSIS_API_SCHEMA.collection_time, domain=None, range=Optional[str],
+slots.collection_time = Slot(uri=BASALT_SCHEMA.collection_time, name="collection_time", curie=BASALT_SCHEMA.curie('collection_time'),
+                   model_uri=BASALT_SCHEMA.collection_time, domain=None, range=Optional[str],
                    pattern=re.compile(r'^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$'))
 
-slots.color_code = Slot(uri=ANALYSIS_API_SCHEMA.color_code, name="color_code", curie=ANALYSIS_API_SCHEMA.curie('color_code'),
-                   model_uri=ANALYSIS_API_SCHEMA.color_code, domain=None, range=Optional[Union[str, "ColorCodeEnum"]])
+slots.color_code = Slot(uri=BASALT_SCHEMA.color_code, name="color_code", curie=BASALT_SCHEMA.curie('color_code'),
+                   model_uri=BASALT_SCHEMA.color_code, domain=None, range=Optional[Union[str, "ColorCodeEnum"]])
 
-slots.column = Slot(uri=ANALYSIS_API_SCHEMA.column, name="column", curie=ANALYSIS_API_SCHEMA.curie('column'),
-                   model_uri=ANALYSIS_API_SCHEMA.column, domain=None, range=Optional[str])
+slots.column = Slot(uri=BASALT_SCHEMA.column, name="column", curie=BASALT_SCHEMA.curie('column'),
+                   model_uri=BASALT_SCHEMA.column, domain=None, range=Optional[str])
 
-slots.column_dimensions = Slot(uri=ANALYSIS_API_SCHEMA.column_dimensions, name="column_dimensions", curie=ANALYSIS_API_SCHEMA.curie('column_dimensions'),
-                   model_uri=ANALYSIS_API_SCHEMA.column_dimensions, domain=None, range=Optional[str])
+slots.column_dimensions = Slot(uri=BASALT_SCHEMA.column_dimensions, name="column_dimensions", curie=BASALT_SCHEMA.curie('column_dimensions'),
+                   model_uri=BASALT_SCHEMA.column_dimensions, domain=None, range=Optional[str])
 
-slots.column_manufacturer = Slot(uri=ANALYSIS_API_SCHEMA.column_manufacturer, name="column_manufacturer", curie=ANALYSIS_API_SCHEMA.curie('column_manufacturer'),
-                   model_uri=ANALYSIS_API_SCHEMA.column_manufacturer, domain=None, range=Optional[str])
+slots.column_manufacturer = Slot(uri=BASALT_SCHEMA.column_manufacturer, name="column_manufacturer", curie=BASALT_SCHEMA.curie('column_manufacturer'),
+                   model_uri=BASALT_SCHEMA.column_manufacturer, domain=None, range=Optional[str])
 
-slots.commercial_media_catalog = Slot(uri=ANALYSIS_API_SCHEMA.commercial_media_catalog, name="commercial_media_catalog", curie=ANALYSIS_API_SCHEMA.curie('commercial_media_catalog'),
-                   model_uri=ANALYSIS_API_SCHEMA.commercial_media_catalog, domain=None, range=Optional[str])
+slots.commercial_media_catalog = Slot(uri=BASALT_SCHEMA.commercial_media_catalog, name="commercial_media_catalog", curie=BASALT_SCHEMA.curie('commercial_media_catalog'),
+                   model_uri=BASALT_SCHEMA.commercial_media_catalog, domain=None, range=Optional[str])
 
-slots.component_description = Slot(uri=ANALYSIS_API_SCHEMA.component_description, name="component_description", curie=ANALYSIS_API_SCHEMA.curie('component_description'),
-                   model_uri=ANALYSIS_API_SCHEMA.component_description, domain=None, range=Optional[str])
+slots.component_description = Slot(uri=BASALT_SCHEMA.component_description, name="component_description", curie=BASALT_SCHEMA.curie('component_description'),
+                   model_uri=BASALT_SCHEMA.component_description, domain=None, range=Optional[str])
 
-slots.component_name = Slot(uri=ANALYSIS_API_SCHEMA.component_name, name="component_name", curie=ANALYSIS_API_SCHEMA.curie('component_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.component_name, domain=None, range=Optional[str])
+slots.component_name = Slot(uri=BASALT_SCHEMA.component_name, name="component_name", curie=BASALT_SCHEMA.curie('component_name'),
+                   model_uri=BASALT_SCHEMA.component_name, domain=None, range=Optional[str])
 
-slots.compound_name = Slot(uri=ANALYSIS_API_SCHEMA.compound_name, name="compound_name", curie=ANALYSIS_API_SCHEMA.curie('compound_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.compound_name, domain=None, range=Optional[str])
+slots.compound_name = Slot(uri=BASALT_SCHEMA.compound_name, name="compound_name", curie=BASALT_SCHEMA.curie('compound_name'),
+                   model_uri=BASALT_SCHEMA.compound_name, domain=None, range=Optional[str])
 
-slots.concentration_ug_per_uL = Slot(uri=ANALYSIS_API_SCHEMA.concentration_ug_per_uL, name="concentration_ug_per_uL", curie=ANALYSIS_API_SCHEMA.curie('concentration_ug_per_uL'),
-                   model_uri=ANALYSIS_API_SCHEMA.concentration_ug_per_uL, domain=None, range=Optional[float])
+slots.concentration_ug_per_uL = Slot(uri=BASALT_SCHEMA.concentration_ug_per_uL, name="concentration_ug_per_uL", curie=BASALT_SCHEMA.curie('concentration_ug_per_uL'),
+                   model_uri=BASALT_SCHEMA.concentration_ug_per_uL, domain=None, range=Optional[float])
 
-slots.condition_received = Slot(uri=ANALYSIS_API_SCHEMA.condition_received, name="condition_received", curie=ANALYSIS_API_SCHEMA.curie('condition_received'),
-                   model_uri=ANALYSIS_API_SCHEMA.condition_received, domain=None, range=Optional[str])
+slots.condition_received = Slot(uri=BASALT_SCHEMA.condition_received, name="condition_received", curie=BASALT_SCHEMA.curie('condition_received'),
+                   model_uri=BASALT_SCHEMA.condition_received, domain=None, range=Optional[str])
 
-slots.conduc = Slot(uri=ANALYSIS_API_SCHEMA.conduc, name="conduc", curie=ANALYSIS_API_SCHEMA.curie('conduc'),
-                   model_uri=ANALYSIS_API_SCHEMA.conduc, domain=None, range=Optional[str],
+slots.conduc = Slot(uri=BASALT_SCHEMA.conduc, name="conduc", curie=BASALT_SCHEMA.curie('conduc'),
+                   model_uri=BASALT_SCHEMA.conduc, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.confirmed_receipt = Slot(uri=ANALYSIS_API_SCHEMA.confirmed_receipt, name="confirmed_receipt", curie=ANALYSIS_API_SCHEMA.curie('confirmed_receipt'),
-                   model_uri=ANALYSIS_API_SCHEMA.confirmed_receipt, domain=None, range=Optional[Union[bool, Bool]])
+slots.confirmed_receipt = Slot(uri=BASALT_SCHEMA.confirmed_receipt, name="confirmed_receipt", curie=BASALT_SCHEMA.curie('confirmed_receipt'),
+                   model_uri=BASALT_SCHEMA.confirmed_receipt, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.construct_component = Slot(uri=ANALYSIS_API_SCHEMA.construct_component, name="construct_component", curie=ANALYSIS_API_SCHEMA.curie('construct_component'),
-                   model_uri=ANALYSIS_API_SCHEMA.construct_component, domain=None, range=Optional[Union[str, "ConstructComponentEnum"]])
+slots.construct_component = Slot(uri=BASALT_SCHEMA.construct_component, name="construct_component", curie=BASALT_SCHEMA.curie('construct_component'),
+                   model_uri=BASALT_SCHEMA.construct_component, domain=None, range=Optional[Union[str, "ConstructComponentEnum"]])
 
-slots.container_type = Slot(uri=ANALYSIS_API_SCHEMA.container_type, name="container_type", curie=ANALYSIS_API_SCHEMA.curie('container_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.container_type, domain=None, range=Optional[str])
+slots.container_type = Slot(uri=BASALT_SCHEMA.container_type, name="container_type", curie=BASALT_SCHEMA.curie('container_type'),
+                   model_uri=BASALT_SCHEMA.container_type, domain=None, range=Optional[str])
 
-slots.contaminant_strains = Slot(uri=ANALYSIS_API_SCHEMA.contaminant_strains, name="contaminant_strains", curie=ANALYSIS_API_SCHEMA.curie('contaminant_strains'),
-                   model_uri=ANALYSIS_API_SCHEMA.contaminant_strains, domain=None, range=Optional[str])
+slots.contaminant_strains = Slot(uri=BASALT_SCHEMA.contaminant_strains, name="contaminant_strains", curie=BASALT_SCHEMA.curie('contaminant_strains'),
+                   model_uri=BASALT_SCHEMA.contaminant_strains, domain=None, range=Optional[str])
 
-slots.core_group = Slot(uri=ANALYSIS_API_SCHEMA.core_group, name="core_group", curie=ANALYSIS_API_SCHEMA.curie('core_group'),
-                   model_uri=ANALYSIS_API_SCHEMA.core_group, domain=None, range=Optional[Union[str, "MONetCoreGroupEnum"]])
+slots.core_group = Slot(uri=BASALT_SCHEMA.core_group, name="core_group", curie=BASALT_SCHEMA.curie('core_group'),
+                   model_uri=BASALT_SCHEMA.core_group, domain=None, range=Optional[Union[str, "MONetCoreGroupEnum"]])
 
-slots.core_section = Slot(uri=ANALYSIS_API_SCHEMA.core_section, name="core_section", curie=ANALYSIS_API_SCHEMA.curie('core_section'),
-                   model_uri=ANALYSIS_API_SCHEMA.core_section, domain=None, range=Optional[Union[str, "CoreSectionEnum"]])
+slots.core_section = Slot(uri=BASALT_SCHEMA.core_section, name="core_section", curie=BASALT_SCHEMA.curie('core_section'),
+                   model_uri=BASALT_SCHEMA.core_section, domain=None, range=Optional[Union[str, "CoreSectionEnum"]])
 
-slots.creation_date = Slot(uri=ANALYSIS_API_SCHEMA.creation_date, name="creation_date", curie=ANALYSIS_API_SCHEMA.curie('creation_date'),
-                   model_uri=ANALYSIS_API_SCHEMA.creation_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.creation_date = Slot(uri=BASALT_SCHEMA.creation_date, name="creation_date", curie=BASALT_SCHEMA.curie('creation_date'),
+                   model_uri=BASALT_SCHEMA.creation_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.crop_rotation = Slot(uri=ANALYSIS_API_SCHEMA.crop_rotation, name="crop_rotation", curie=ANALYSIS_API_SCHEMA.curie('crop_rotation'),
-                   model_uri=ANALYSIS_API_SCHEMA.crop_rotation, domain=None, range=Optional[str])
+slots.crop_rotation = Slot(uri=BASALT_SCHEMA.crop_rotation, name="crop_rotation", curie=BASALT_SCHEMA.curie('crop_rotation'),
+                   model_uri=BASALT_SCHEMA.crop_rotation, domain=None, range=Optional[str])
 
-slots.cult_root_med = Slot(uri=ANALYSIS_API_SCHEMA.cult_root_med, name="cult_root_med", curie=ANALYSIS_API_SCHEMA.curie('cult_root_med'),
-                   model_uri=ANALYSIS_API_SCHEMA.cult_root_med, domain=None, range=Optional[str])
+slots.cult_root_med = Slot(uri=BASALT_SCHEMA.cult_root_med, name="cult_root_med", curie=BASALT_SCHEMA.curie('cult_root_med'),
+                   model_uri=BASALT_SCHEMA.cult_root_med, domain=None, range=Optional[str])
 
-slots.cur_land_use = Slot(uri=ANALYSIS_API_SCHEMA.cur_land_use, name="cur_land_use", curie=ANALYSIS_API_SCHEMA.curie('cur_land_use'),
-                   model_uri=ANALYSIS_API_SCHEMA.cur_land_use, domain=None, range=Optional[Union[str, "LandUseEnum"]])
+slots.cur_land_use = Slot(uri=BASALT_SCHEMA.cur_land_use, name="cur_land_use", curie=BASALT_SCHEMA.curie('cur_land_use'),
+                   model_uri=BASALT_SCHEMA.cur_land_use, domain=None, range=Optional[Union[str, "LandUseEnum"]])
 
-slots.cur_vegetation = Slot(uri=ANALYSIS_API_SCHEMA.cur_vegetation, name="cur_vegetation", curie=ANALYSIS_API_SCHEMA.curie('cur_vegetation'),
-                   model_uri=ANALYSIS_API_SCHEMA.cur_vegetation, domain=None, range=Optional[str])
+slots.cur_vegetation = Slot(uri=BASALT_SCHEMA.cur_vegetation, name="cur_vegetation", curie=BASALT_SCHEMA.curie('cur_vegetation'),
+                   model_uri=BASALT_SCHEMA.cur_vegetation, domain=None, range=Optional[str])
 
-slots.cur_vegetation_meth = Slot(uri=ANALYSIS_API_SCHEMA.cur_vegetation_meth, name="cur_vegetation_meth", curie=ANALYSIS_API_SCHEMA.curie('cur_vegetation_meth'),
-                   model_uri=ANALYSIS_API_SCHEMA.cur_vegetation_meth, domain=None, range=Optional[str])
+slots.cur_vegetation_meth = Slot(uri=BASALT_SCHEMA.cur_vegetation_meth, name="cur_vegetation_meth", curie=BASALT_SCHEMA.curie('cur_vegetation_meth'),
+                   model_uri=BASALT_SCHEMA.cur_vegetation_meth, domain=None, range=Optional[str])
 
-slots.cv_percent = Slot(uri=ANALYSIS_API_SCHEMA.cv_percent, name="cv_percent", curie=ANALYSIS_API_SCHEMA.curie('cv_percent'),
-                   model_uri=ANALYSIS_API_SCHEMA.cv_percent, domain=None, range=Optional[float])
+slots.cv_percent = Slot(uri=BASALT_SCHEMA.cv_percent, name="cv_percent", curie=BASALT_SCHEMA.curie('cv_percent'),
+                   model_uri=BASALT_SCHEMA.cv_percent, domain=None, range=Optional[float])
 
-slots.date_received = Slot(uri=ANALYSIS_API_SCHEMA.date_received, name="date_received", curie=ANALYSIS_API_SCHEMA.curie('date_received'),
-                   model_uri=ANALYSIS_API_SCHEMA.date_received, domain=None, range=Optional[Union[str, XSDDate]])
+slots.date_received = Slot(uri=BASALT_SCHEMA.date_received, name="date_received", curie=BASALT_SCHEMA.curie('date_received'),
+                   model_uri=BASALT_SCHEMA.date_received, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.dd_ms2_resolution = Slot(uri=ANALYSIS_API_SCHEMA.dd_ms2_resolution, name="dd_ms2_resolution", curie=ANALYSIS_API_SCHEMA.curie('dd_ms2_resolution'),
-                   model_uri=ANALYSIS_API_SCHEMA.dd_ms2_resolution, domain=None, range=float)
+slots.dd_ms2_resolution = Slot(uri=BASALT_SCHEMA.dd_ms2_resolution, name="dd_ms2_resolution", curie=BASALT_SCHEMA.curie('dd_ms2_resolution'),
+                   model_uri=BASALT_SCHEMA.dd_ms2_resolution, domain=None, range=float)
 
-slots.density = Slot(uri=ANALYSIS_API_SCHEMA.density, name="density", curie=ANALYSIS_API_SCHEMA.curie('density'),
-                   model_uri=ANALYSIS_API_SCHEMA.density, domain=None, range=Optional[str],
+slots.density = Slot(uri=BASALT_SCHEMA.density, name="density", curie=BASALT_SCHEMA.curie('density'),
+                   model_uri=BASALT_SCHEMA.density, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(g/m3|g/cm3)$'))
 
-slots.depth = Slot(uri=ANALYSIS_API_SCHEMA.depth, name="depth", curie=ANALYSIS_API_SCHEMA.curie('depth'),
-                   model_uri=ANALYSIS_API_SCHEMA.depth, domain=None, range=Optional[str],
+slots.depth = Slot(uri=BASALT_SCHEMA.depth, name="depth", curie=BASALT_SCHEMA.curie('depth'),
+                   model_uri=BASALT_SCHEMA.depth, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?(-\d+(\.\d+)?)?\s*m$'))
 
-slots.description = Slot(uri=ANALYSIS_API_SCHEMA.description, name="description", curie=ANALYSIS_API_SCHEMA.curie('description'),
-                   model_uri=ANALYSIS_API_SCHEMA.description, domain=None, range=Optional[str])
+slots.description = Slot(uri=BASALT_SCHEMA.description, name="description", curie=BASALT_SCHEMA.curie('description'),
+                   model_uri=BASALT_SCHEMA.description, domain=None, range=Optional[str])
 
-slots.diether_lipids = Slot(uri=ANALYSIS_API_SCHEMA.diether_lipids, name="diether_lipids", curie=ANALYSIS_API_SCHEMA.curie('diether_lipids'),
-                   model_uri=ANALYSIS_API_SCHEMA.diether_lipids, domain=None, range=Optional[str],
+slots.diether_lipids = Slot(uri=BASALT_SCHEMA.diether_lipids, name="diether_lipids", curie=BASALT_SCHEMA.curie('diether_lipids'),
+                   model_uri=BASALT_SCHEMA.diether_lipids, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*ng/L$'))
 
-slots.diss_carb_dioxide = Slot(uri=ANALYSIS_API_SCHEMA.diss_carb_dioxide, name="diss_carb_dioxide", curie=ANALYSIS_API_SCHEMA.curie('diss_carb_dioxide'),
-                   model_uri=ANALYSIS_API_SCHEMA.diss_carb_dioxide, domain=None, range=Optional[str],
+slots.diss_carb_dioxide = Slot(uri=BASALT_SCHEMA.diss_carb_dioxide, name="diss_carb_dioxide", curie=BASALT_SCHEMA.curie('diss_carb_dioxide'),
+                   model_uri=BASALT_SCHEMA.diss_carb_dioxide, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(umol|mg)/L$'))
 
-slots.diss_hydrogen = Slot(uri=ANALYSIS_API_SCHEMA.diss_hydrogen, name="diss_hydrogen", curie=ANALYSIS_API_SCHEMA.curie('diss_hydrogen'),
-                   model_uri=ANALYSIS_API_SCHEMA.diss_hydrogen, domain=None, range=Optional[str],
+slots.diss_hydrogen = Slot(uri=BASALT_SCHEMA.diss_hydrogen, name="diss_hydrogen", curie=BASALT_SCHEMA.curie('diss_hydrogen'),
+                   model_uri=BASALT_SCHEMA.diss_hydrogen, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*umol/L$'))
 
-slots.diss_inorg_carb = Slot(uri=ANALYSIS_API_SCHEMA.diss_inorg_carb, name="diss_inorg_carb", curie=ANALYSIS_API_SCHEMA.curie('diss_inorg_carb'),
-                   model_uri=ANALYSIS_API_SCHEMA.diss_inorg_carb, domain=None, range=Optional[str],
+slots.diss_inorg_carb = Slot(uri=BASALT_SCHEMA.diss_inorg_carb, name="diss_inorg_carb", curie=BASALT_SCHEMA.curie('diss_inorg_carb'),
+                   model_uri=BASALT_SCHEMA.diss_inorg_carb, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(ug/L|mg/L|ppm)$'))
 
-slots.diss_inorg_nitro = Slot(uri=ANALYSIS_API_SCHEMA.diss_inorg_nitro, name="diss_inorg_nitro", curie=ANALYSIS_API_SCHEMA.curie('diss_inorg_nitro'),
-                   model_uri=ANALYSIS_API_SCHEMA.diss_inorg_nitro, domain=None, range=Optional[str],
+slots.diss_inorg_nitro = Slot(uri=BASALT_SCHEMA.diss_inorg_nitro, name="diss_inorg_nitro", curie=BASALT_SCHEMA.curie('diss_inorg_nitro'),
+                   model_uri=BASALT_SCHEMA.diss_inorg_nitro, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|ug/L)$'))
 
-slots.diss_inorg_phosp = Slot(uri=ANALYSIS_API_SCHEMA.diss_inorg_phosp, name="diss_inorg_phosp", curie=ANALYSIS_API_SCHEMA.curie('diss_inorg_phosp'),
-                   model_uri=ANALYSIS_API_SCHEMA.diss_inorg_phosp, domain=None, range=Optional[str],
+slots.diss_inorg_phosp = Slot(uri=BASALT_SCHEMA.diss_inorg_phosp, name="diss_inorg_phosp", curie=BASALT_SCHEMA.curie('diss_inorg_phosp'),
+                   model_uri=BASALT_SCHEMA.diss_inorg_phosp, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.diss_org_carb = Slot(uri=ANALYSIS_API_SCHEMA.diss_org_carb, name="diss_org_carb", curie=ANALYSIS_API_SCHEMA.curie('diss_org_carb'),
-                   model_uri=ANALYSIS_API_SCHEMA.diss_org_carb, domain=None, range=Optional[str],
+slots.diss_org_carb = Slot(uri=BASALT_SCHEMA.diss_org_carb, name="diss_org_carb", curie=BASALT_SCHEMA.curie('diss_org_carb'),
+                   model_uri=BASALT_SCHEMA.diss_org_carb, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|mg/L)$'))
 
-slots.diss_org_nitro = Slot(uri=ANALYSIS_API_SCHEMA.diss_org_nitro, name="diss_org_nitro", curie=ANALYSIS_API_SCHEMA.curie('diss_org_nitro'),
-                   model_uri=ANALYSIS_API_SCHEMA.diss_org_nitro, domain=None, range=Optional[str],
+slots.diss_org_nitro = Slot(uri=BASALT_SCHEMA.diss_org_nitro, name="diss_org_nitro", curie=BASALT_SCHEMA.curie('diss_org_nitro'),
+                   model_uri=BASALT_SCHEMA.diss_org_nitro, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.diss_oxygen = Slot(uri=ANALYSIS_API_SCHEMA.diss_oxygen, name="diss_oxygen", curie=ANALYSIS_API_SCHEMA.curie('diss_oxygen'),
-                   model_uri=ANALYSIS_API_SCHEMA.diss_oxygen, domain=None, range=Optional[str],
+slots.diss_oxygen = Slot(uri=BASALT_SCHEMA.diss_oxygen, name="diss_oxygen", curie=BASALT_SCHEMA.curie('diss_oxygen'),
+                   model_uri=BASALT_SCHEMA.diss_oxygen, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/kg|mg/L)$'))
 
-slots.donor_organism = Slot(uri=ANALYSIS_API_SCHEMA.donor_organism, name="donor_organism", curie=ANALYSIS_API_SCHEMA.curie('donor_organism'),
-                   model_uri=ANALYSIS_API_SCHEMA.donor_organism, domain=None, range=Optional[str])
+slots.donor_organism = Slot(uri=BASALT_SCHEMA.donor_organism, name="donor_organism", curie=BASALT_SCHEMA.curie('donor_organism'),
+                   model_uri=BASALT_SCHEMA.donor_organism, domain=None, range=Optional[str])
 
-slots.down_par = Slot(uri=ANALYSIS_API_SCHEMA.down_par, name="down_par", curie=ANALYSIS_API_SCHEMA.curie('down_par'),
-                   model_uri=ANALYSIS_API_SCHEMA.down_par, domain=None, range=Optional[str],
+slots.down_par = Slot(uri=BASALT_SCHEMA.down_par, name="down_par", curie=BASALT_SCHEMA.curie('down_par'),
+                   model_uri=BASALT_SCHEMA.down_par, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.drainage_class = Slot(uri=ANALYSIS_API_SCHEMA.drainage_class, name="drainage_class", curie=ANALYSIS_API_SCHEMA.curie('drainage_class'),
-                   model_uri=ANALYSIS_API_SCHEMA.drainage_class, domain=None, range=Optional[Union[str, "DrainageClassEnum"]])
+slots.drainage_class = Slot(uri=BASALT_SCHEMA.drainage_class, name="drainage_class", curie=BASALT_SCHEMA.curie('drainage_class'),
+                   model_uri=BASALT_SCHEMA.drainage_class, domain=None, range=Optional[Union[str, "DrainageClassEnum"]])
 
-slots.duration_min = Slot(uri=ANALYSIS_API_SCHEMA.duration_min, name="duration_min", curie=ANALYSIS_API_SCHEMA.curie('duration_min'),
-                   model_uri=ANALYSIS_API_SCHEMA.duration_min, domain=None, range=Optional[float])
+slots.duration_min = Slot(uri=BASALT_SCHEMA.duration_min, name="duration_min", curie=BASALT_SCHEMA.curie('duration_min'),
+                   model_uri=BASALT_SCHEMA.duration_min, domain=None, range=Optional[float])
 
-slots.efficiency_percent = Slot(uri=ANALYSIS_API_SCHEMA.efficiency_percent, name="efficiency_percent", curie=ANALYSIS_API_SCHEMA.curie('efficiency_percent'),
-                   model_uri=ANALYSIS_API_SCHEMA.efficiency_percent, domain=None, range=Optional[str])
+slots.efficiency_percent = Slot(uri=BASALT_SCHEMA.efficiency_percent, name="efficiency_percent", curie=BASALT_SCHEMA.curie('efficiency_percent'),
+                   model_uri=BASALT_SCHEMA.efficiency_percent, domain=None, range=Optional[str])
 
-slots.elev = Slot(uri=ANALYSIS_API_SCHEMA.elev, name="elev", curie=ANALYSIS_API_SCHEMA.curie('elev'),
-                   model_uri=ANALYSIS_API_SCHEMA.elev, domain=None, range=Optional[str],
+slots.elev = Slot(uri=BASALT_SCHEMA.elev, name="elev", curie=BASALT_SCHEMA.curie('elev'),
+                   model_uri=BASALT_SCHEMA.elev, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*m$'))
 
-slots.email = Slot(uri=ANALYSIS_API_SCHEMA.email, name="email", curie=ANALYSIS_API_SCHEMA.curie('email'),
-                   model_uri=ANALYSIS_API_SCHEMA.email, domain=None, range=Optional[str])
+slots.email = Slot(uri=BASALT_SCHEMA.email, name="email", curie=BASALT_SCHEMA.curie('email'),
+                   model_uri=BASALT_SCHEMA.email, domain=None, range=Optional[str])
 
-slots.emsl_activity = Slot(uri=ANALYSIS_API_SCHEMA.emsl_activity, name="emsl_activity", curie=ANALYSIS_API_SCHEMA.curie('emsl_activity'),
-                   model_uri=ANALYSIS_API_SCHEMA.emsl_activity, domain=None, range=Optional[str])
+slots.emsl_activity = Slot(uri=BASALT_SCHEMA.emsl_activity, name="emsl_activity", curie=BASALT_SCHEMA.curie('emsl_activity'),
+                   model_uri=BASALT_SCHEMA.emsl_activity, domain=None, range=Optional[str])
 
-slots.emulsions = Slot(uri=ANALYSIS_API_SCHEMA.emulsions, name="emulsions", curie=ANALYSIS_API_SCHEMA.curie('emulsions'),
-                   model_uri=ANALYSIS_API_SCHEMA.emulsions, domain=None, range=Optional[str])
+slots.emulsions = Slot(uri=BASALT_SCHEMA.emulsions, name="emulsions", curie=BASALT_SCHEMA.curie('emulsions'),
+                   model_uri=BASALT_SCHEMA.emulsions, domain=None, range=Optional[str])
 
-slots.encoded_traits = Slot(uri=ANALYSIS_API_SCHEMA.encoded_traits, name="encoded_traits", curie=ANALYSIS_API_SCHEMA.curie('encoded_traits'),
-                   model_uri=ANALYSIS_API_SCHEMA.encoded_traits, domain=None, range=Optional[str])
+slots.encoded_traits = Slot(uri=BASALT_SCHEMA.encoded_traits, name="encoded_traits", curie=BASALT_SCHEMA.curie('encoded_traits'),
+                   model_uri=BASALT_SCHEMA.encoded_traits, domain=None, range=Optional[str])
 
-slots.env_broad_scale = Slot(uri=ANALYSIS_API_SCHEMA.env_broad_scale, name="env_broad_scale", curie=ANALYSIS_API_SCHEMA.curie('env_broad_scale'),
-                   model_uri=ANALYSIS_API_SCHEMA.env_broad_scale, domain=None, range=Optional[str],
+slots.env_broad_scale = Slot(uri=BASALT_SCHEMA.env_broad_scale, name="env_broad_scale", curie=BASALT_SCHEMA.curie('env_broad_scale'),
+                   model_uri=BASALT_SCHEMA.env_broad_scale, domain=None, range=Optional[str],
                    pattern=re.compile(r'^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$'))
 
-slots.env_local_scale = Slot(uri=ANALYSIS_API_SCHEMA.env_local_scale, name="env_local_scale", curie=ANALYSIS_API_SCHEMA.curie('env_local_scale'),
-                   model_uri=ANALYSIS_API_SCHEMA.env_local_scale, domain=None, range=Optional[str],
+slots.env_local_scale = Slot(uri=BASALT_SCHEMA.env_local_scale, name="env_local_scale", curie=BASALT_SCHEMA.curie('env_local_scale'),
+                   model_uri=BASALT_SCHEMA.env_local_scale, domain=None, range=Optional[str],
                    pattern=re.compile(r'^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$'))
 
-slots.env_medium = Slot(uri=ANALYSIS_API_SCHEMA.env_medium, name="env_medium", curie=ANALYSIS_API_SCHEMA.curie('env_medium'),
-                   model_uri=ANALYSIS_API_SCHEMA.env_medium, domain=None, range=Optional[str],
+slots.env_medium = Slot(uri=BASALT_SCHEMA.env_medium, name="env_medium", curie=BASALT_SCHEMA.curie('env_medium'),
+                   model_uri=BASALT_SCHEMA.env_medium, domain=None, range=Optional[str],
                    pattern=re.compile(r'^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$'))
 
-slots.experimental_factor = Slot(uri=ANALYSIS_API_SCHEMA.experimental_factor, name="experimental_factor", curie=ANALYSIS_API_SCHEMA.curie('experimental_factor'),
-                   model_uri=ANALYSIS_API_SCHEMA.experimental_factor, domain=None, range=Optional[str])
+slots.experimental_factor = Slot(uri=BASALT_SCHEMA.experimental_factor, name="experimental_factor", curie=BASALT_SCHEMA.curie('experimental_factor'),
+                   model_uri=BASALT_SCHEMA.experimental_factor, domain=None, range=Optional[str])
 
-slots.experimental_factor_other = Slot(uri=ANALYSIS_API_SCHEMA.experimental_factor_other, name="experimental_factor_other", curie=ANALYSIS_API_SCHEMA.curie('experimental_factor_other'),
-                   model_uri=ANALYSIS_API_SCHEMA.experimental_factor_other, domain=None, range=Optional[str])
+slots.experimental_factor_other = Slot(uri=BASALT_SCHEMA.experimental_factor_other, name="experimental_factor_other", curie=BASALT_SCHEMA.curie('experimental_factor_other'),
+                   model_uri=BASALT_SCHEMA.experimental_factor_other, domain=None, range=Optional[str])
 
-slots.exposure_sensitivity = Slot(uri=ANALYSIS_API_SCHEMA.exposure_sensitivity, name="exposure_sensitivity", curie=ANALYSIS_API_SCHEMA.curie('exposure_sensitivity'),
-                   model_uri=ANALYSIS_API_SCHEMA.exposure_sensitivity, domain=None, range=Optional[Union[str, list[str]]])
+slots.exposure_sensitivity = Slot(uri=BASALT_SCHEMA.exposure_sensitivity, name="exposure_sensitivity", curie=BASALT_SCHEMA.curie('exposure_sensitivity'),
+                   model_uri=BASALT_SCHEMA.exposure_sensitivity, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.external_identifiers = Slot(uri=ANALYSIS_API_SCHEMA.external_identifiers, name="external_identifiers", curie=ANALYSIS_API_SCHEMA.curie('external_identifiers'),
-                   model_uri=ANALYSIS_API_SCHEMA.external_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
+slots.external_identifiers = Slot(uri=BASALT_SCHEMA.external_identifiers, name="external_identifiers", curie=BASALT_SCHEMA.curie('external_identifiers'),
+                   model_uri=BASALT_SCHEMA.external_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
 
-slots.extraction_method = Slot(uri=ANALYSIS_API_SCHEMA.extraction_method, name="extraction_method", curie=ANALYSIS_API_SCHEMA.curie('extraction_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.extraction_method, domain=None, range=Optional[str])
+slots.extraction_method = Slot(uri=BASALT_SCHEMA.extraction_method, name="extraction_method", curie=BASALT_SCHEMA.curie('extraction_method'),
+                   model_uri=BASALT_SCHEMA.extraction_method, domain=None, range=Optional[str])
 
-slots.extreme_event = Slot(uri=ANALYSIS_API_SCHEMA.extreme_event, name="extreme_event", curie=ANALYSIS_API_SCHEMA.curie('extreme_event'),
-                   model_uri=ANALYSIS_API_SCHEMA.extreme_event, domain=None, range=Optional[str],
+slots.extreme_event = Slot(uri=BASALT_SCHEMA.extreme_event, name="extreme_event", curie=BASALT_SCHEMA.curie('extreme_event'),
+                   model_uri=BASALT_SCHEMA.extreme_event, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.fao_class = Slot(uri=ANALYSIS_API_SCHEMA.fao_class, name="fao_class", curie=ANALYSIS_API_SCHEMA.curie('fao_class'),
-                   model_uri=ANALYSIS_API_SCHEMA.fao_class, domain=None, range=Optional[Union[str, "FAOClassEnum"]])
+slots.fao_class = Slot(uri=BASALT_SCHEMA.fao_class, name="fao_class", curie=BASALT_SCHEMA.curie('fao_class'),
+                   model_uri=BASALT_SCHEMA.fao_class, domain=None, range=Optional[Union[str, "FAOClassEnum"]])
 
-slots.fertilizer_regm = Slot(uri=ANALYSIS_API_SCHEMA.fertilizer_regm, name="fertilizer_regm", curie=ANALYSIS_API_SCHEMA.curie('fertilizer_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.fertilizer_regm, domain=None, range=Optional[str])
+slots.fertilizer_regm = Slot(uri=BASALT_SCHEMA.fertilizer_regm, name="fertilizer_regm", curie=BASALT_SCHEMA.curie('fertilizer_regm'),
+                   model_uri=BASALT_SCHEMA.fertilizer_regm, domain=None, range=Optional[str])
 
-slots.fid = Slot(uri=ANALYSIS_API_SCHEMA.fid, name="fid", curie=ANALYSIS_API_SCHEMA.curie('fid'),
-                   model_uri=ANALYSIS_API_SCHEMA.fid, domain=None, range=Optional[float])
+slots.fid = Slot(uri=BASALT_SCHEMA.fid, name="fid", curie=BASALT_SCHEMA.curie('fid'),
+                   model_uri=BASALT_SCHEMA.fid, domain=None, range=Optional[float])
 
-slots.file_curie = Slot(uri=ANALYSIS_API_SCHEMA.file_curie, name="file_curie", curie=ANALYSIS_API_SCHEMA.curie('file_curie'),
-                   model_uri=ANALYSIS_API_SCHEMA.file_curie, domain=None, range=Optional[str])
+slots.file_curie = Slot(uri=BASALT_SCHEMA.file_curie, name="file_curie", curie=BASALT_SCHEMA.curie('file_curie'),
+                   model_uri=BASALT_SCHEMA.file_curie, domain=None, range=Optional[str])
 
-slots.filesize = Slot(uri=ANALYSIS_API_SCHEMA.filesize, name="filesize", curie=ANALYSIS_API_SCHEMA.curie('filesize'),
-                   model_uri=ANALYSIS_API_SCHEMA.filesize, domain=None, range=Optional[int])
+slots.filesize = Slot(uri=BASALT_SCHEMA.filesize, name="filesize", curie=BASALT_SCHEMA.curie('filesize'),
+                   model_uri=BASALT_SCHEMA.filesize, domain=None, range=Optional[int])
 
-slots.filter_method = Slot(uri=ANALYSIS_API_SCHEMA.filter_method, name="filter_method", curie=ANALYSIS_API_SCHEMA.curie('filter_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.filter_method, domain=None, range=Optional[str])
+slots.filter_method = Slot(uri=BASALT_SCHEMA.filter_method, name="filter_method", curie=BASALT_SCHEMA.curie('filter_method'),
+                   model_uri=BASALT_SCHEMA.filter_method, domain=None, range=Optional[str])
 
-slots.fire = Slot(uri=ANALYSIS_API_SCHEMA.fire, name="fire", curie=ANALYSIS_API_SCHEMA.curie('fire'),
-                   model_uri=ANALYSIS_API_SCHEMA.fire, domain=None, range=Optional[str],
+slots.fire = Slot(uri=BASALT_SCHEMA.fire, name="fire", curie=BASALT_SCHEMA.curie('fire'),
+                   model_uri=BASALT_SCHEMA.fire, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.first_blh = Slot(uri=ANALYSIS_API_SCHEMA.first_blh, name="first_blh", curie=ANALYSIS_API_SCHEMA.curie('first_blh'),
-                   model_uri=ANALYSIS_API_SCHEMA.first_blh, domain=None, range=Optional[float])
+slots.first_blh = Slot(uri=BASALT_SCHEMA.first_blh, name="first_blh", curie=BASALT_SCHEMA.curie('first_blh'),
+                   model_uri=BASALT_SCHEMA.first_blh, domain=None, range=Optional[float])
 
-slots.first_blh_quality_index = Slot(uri=ANALYSIS_API_SCHEMA.first_blh_quality_index, name="first_blh_quality_index", curie=ANALYSIS_API_SCHEMA.curie('first_blh_quality_index'),
-                   model_uri=ANALYSIS_API_SCHEMA.first_blh_quality_index, domain=None, range=Optional[str])
+slots.first_blh_quality_index = Slot(uri=BASALT_SCHEMA.first_blh_quality_index, name="first_blh_quality_index", curie=BASALT_SCHEMA.curie('first_blh_quality_index'),
+                   model_uri=BASALT_SCHEMA.first_blh_quality_index, domain=None, range=Optional[str])
 
-slots.first_cbh = Slot(uri=ANALYSIS_API_SCHEMA.first_cbh, name="first_cbh", curie=ANALYSIS_API_SCHEMA.curie('first_cbh'),
-                   model_uri=ANALYSIS_API_SCHEMA.first_cbh, domain=None, range=Optional[float])
+slots.first_cbh = Slot(uri=BASALT_SCHEMA.first_cbh, name="first_cbh", curie=BASALT_SCHEMA.curie('first_cbh'),
+                   model_uri=BASALT_SCHEMA.first_cbh, domain=None, range=Optional[float])
 
-slots.flooding = Slot(uri=ANALYSIS_API_SCHEMA.flooding, name="flooding", curie=ANALYSIS_API_SCHEMA.curie('flooding'),
-                   model_uri=ANALYSIS_API_SCHEMA.flooding, domain=None, range=Optional[str],
+slots.flooding = Slot(uri=BASALT_SCHEMA.flooding, name="flooding", curie=BASALT_SCHEMA.curie('flooding'),
+                   model_uri=BASALT_SCHEMA.flooding, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.flow_rate_ul_min = Slot(uri=ANALYSIS_API_SCHEMA.flow_rate_ul_min, name="flow_rate_ul_min", curie=ANALYSIS_API_SCHEMA.curie('flow_rate_ul_min'),
-                   model_uri=ANALYSIS_API_SCHEMA.flow_rate_ul_min, domain=None, range=Optional[float])
+slots.flow_rate_ul_min = Slot(uri=BASALT_SCHEMA.flow_rate_ul_min, name="flow_rate_ul_min", curie=BASALT_SCHEMA.curie('flow_rate_ul_min'),
+                   model_uri=BASALT_SCHEMA.flow_rate_ul_min, domain=None, range=Optional[float])
 
-slots.fluor = Slot(uri=ANALYSIS_API_SCHEMA.fluor, name="fluor", curie=ANALYSIS_API_SCHEMA.curie('fluor'),
-                   model_uri=ANALYSIS_API_SCHEMA.fluor, domain=None, range=Optional[str],
+slots.fluor = Slot(uri=BASALT_SCHEMA.fluor, name="fluor", curie=BASALT_SCHEMA.curie('fluor'),
+                   model_uri=BASALT_SCHEMA.fluor, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.fragmentation = Slot(uri=ANALYSIS_API_SCHEMA.fragmentation, name="fragmentation", curie=ANALYSIS_API_SCHEMA.curie('fragmentation'),
-                   model_uri=ANALYSIS_API_SCHEMA.fragmentation, domain=None, range=Optional[Union[str, "FragmentationEnum"]])
+slots.fragmentation = Slot(uri=BASALT_SCHEMA.fragmentation, name="fragmentation", curie=BASALT_SCHEMA.curie('fragmentation'),
+                   model_uri=BASALT_SCHEMA.fragmentation, domain=None, range=Optional[Union[str, "FragmentationEnum"]])
 
-slots.fungicide_regm = Slot(uri=ANALYSIS_API_SCHEMA.fungicide_regm, name="fungicide_regm", curie=ANALYSIS_API_SCHEMA.curie('fungicide_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.fungicide_regm, domain=None, range=Optional[str])
+slots.fungicide_regm = Slot(uri=BASALT_SCHEMA.fungicide_regm, name="fungicide_regm", curie=BASALT_SCHEMA.curie('fungicide_regm'),
+                   model_uri=BASALT_SCHEMA.fungicide_regm, domain=None, range=Optional[str])
 
-slots.gaseous_environment = Slot(uri=ANALYSIS_API_SCHEMA.gaseous_environment, name="gaseous_environment", curie=ANALYSIS_API_SCHEMA.curie('gaseous_environment'),
-                   model_uri=ANALYSIS_API_SCHEMA.gaseous_environment, domain=None, range=Optional[str])
+slots.gaseous_environment = Slot(uri=BASALT_SCHEMA.gaseous_environment, name="gaseous_environment", curie=BASALT_SCHEMA.curie('gaseous_environment'),
+                   model_uri=BASALT_SCHEMA.gaseous_environment, domain=None, range=Optional[str])
 
-slots.gaseous_substances = Slot(uri=ANALYSIS_API_SCHEMA.gaseous_substances, name="gaseous_substances", curie=ANALYSIS_API_SCHEMA.curie('gaseous_substances'),
-                   model_uri=ANALYSIS_API_SCHEMA.gaseous_substances, domain=None, range=Optional[str])
+slots.gaseous_substances = Slot(uri=BASALT_SCHEMA.gaseous_substances, name="gaseous_substances", curie=BASALT_SCHEMA.curie('gaseous_substances'),
+                   model_uri=BASALT_SCHEMA.gaseous_substances, domain=None, range=Optional[str])
 
-slots.gene_family = Slot(uri=ANALYSIS_API_SCHEMA.gene_family, name="gene_family", curie=ANALYSIS_API_SCHEMA.curie('gene_family'),
-                   model_uri=ANALYSIS_API_SCHEMA.gene_family, domain=None, range=Optional[str])
+slots.gene_family = Slot(uri=BASALT_SCHEMA.gene_family, name="gene_family", curie=BASALT_SCHEMA.curie('gene_family'),
+                   model_uri=BASALT_SCHEMA.gene_family, domain=None, range=Optional[str])
 
-slots.genetic_mod = Slot(uri=ANALYSIS_API_SCHEMA.genetic_mod, name="genetic_mod", curie=ANALYSIS_API_SCHEMA.curie('genetic_mod'),
-                   model_uri=ANALYSIS_API_SCHEMA.genetic_mod, domain=None, range=Optional[str])
+slots.genetic_mod = Slot(uri=BASALT_SCHEMA.genetic_mod, name="genetic_mod", curie=BASALT_SCHEMA.curie('genetic_mod'),
+                   model_uri=BASALT_SCHEMA.genetic_mod, domain=None, range=Optional[str])
 
-slots.genotype_segment_category = Slot(uri=ANALYSIS_API_SCHEMA.genotype_segment_category, name="genotype_segment_category", curie=ANALYSIS_API_SCHEMA.curie('genotype_segment_category'),
-                   model_uri=ANALYSIS_API_SCHEMA.genotype_segment_category, domain=None, range=Optional[Union[str, "GenotypeSegmentEnum"]])
+slots.genotype_segment_category = Slot(uri=BASALT_SCHEMA.genotype_segment_category, name="genotype_segment_category", curie=BASALT_SCHEMA.curie('genotype_segment_category'),
+                   model_uri=BASALT_SCHEMA.genotype_segment_category, domain=None, range=Optional[Union[str, "GenotypeSegmentEnum"]])
 
-slots.genotype_segment_name = Slot(uri=ANALYSIS_API_SCHEMA.genotype_segment_name, name="genotype_segment_name", curie=ANALYSIS_API_SCHEMA.curie('genotype_segment_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.genotype_segment_name, domain=None, range=Optional[str])
+slots.genotype_segment_name = Slot(uri=BASALT_SCHEMA.genotype_segment_name, name="genotype_segment_name", curie=BASALT_SCHEMA.curie('genotype_segment_name'),
+                   model_uri=BASALT_SCHEMA.genotype_segment_name, domain=None, range=Optional[str])
 
-slots.geo_loc_name = Slot(uri=ANALYSIS_API_SCHEMA.geo_loc_name, name="geo_loc_name", curie=ANALYSIS_API_SCHEMA.curie('geo_loc_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.geo_loc_name, domain=None, range=Optional[str],
+slots.geo_loc_name = Slot(uri=BASALT_SCHEMA.geo_loc_name, name="geo_loc_name", curie=BASALT_SCHEMA.curie('geo_loc_name'),
+                   model_uri=BASALT_SCHEMA.geo_loc_name, domain=None, range=Optional[str],
                    pattern=re.compile(r'^([^\s-]{12}|[^\s-]+.+[^\s-]+):\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)$'))
 
-slots.glucosidase_act = Slot(uri=ANALYSIS_API_SCHEMA.glucosidase_act, name="glucosidase_act", curie=ANALYSIS_API_SCHEMA.curie('glucosidase_act'),
-                   model_uri=ANALYSIS_API_SCHEMA.glucosidase_act, domain=None, range=Optional[str],
+slots.glucosidase_act = Slot(uri=BASALT_SCHEMA.glucosidase_act, name="glucosidase_act", curie=BASALT_SCHEMA.curie('glucosidase_act'),
+                   model_uri=BASALT_SCHEMA.glucosidase_act, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*mol/L/h$'))
 
-slots.gravity = Slot(uri=ANALYSIS_API_SCHEMA.gravity, name="gravity", curie=ANALYSIS_API_SCHEMA.curie('gravity'),
-                   model_uri=ANALYSIS_API_SCHEMA.gravity, domain=None, range=Optional[str])
+slots.gravity = Slot(uri=BASALT_SCHEMA.gravity, name="gravity", curie=BASALT_SCHEMA.curie('gravity'),
+                   model_uri=BASALT_SCHEMA.gravity, domain=None, range=Optional[str])
 
-slots.growth_facil = Slot(uri=ANALYSIS_API_SCHEMA.growth_facil, name="growth_facil", curie=ANALYSIS_API_SCHEMA.curie('growth_facil'),
-                   model_uri=ANALYSIS_API_SCHEMA.growth_facil, domain=None, range=Optional[Union[str, "GrowthFacilityEnum"]])
+slots.growth_facil = Slot(uri=BASALT_SCHEMA.growth_facil, name="growth_facil", curie=BASALT_SCHEMA.curie('growth_facil'),
+                   model_uri=BASALT_SCHEMA.growth_facil, domain=None, range=Optional[Union[str, "GrowthFacilityEnum"]])
 
-slots.growth_habit = Slot(uri=ANALYSIS_API_SCHEMA.growth_habit, name="growth_habit", curie=ANALYSIS_API_SCHEMA.curie('growth_habit'),
-                   model_uri=ANALYSIS_API_SCHEMA.growth_habit, domain=None, range=Optional[Union[str, "GrowthHabitEnum"]])
+slots.growth_habit = Slot(uri=BASALT_SCHEMA.growth_habit, name="growth_habit", curie=BASALT_SCHEMA.curie('growth_habit'),
+                   model_uri=BASALT_SCHEMA.growth_habit, domain=None, range=Optional[Union[str, "GrowthHabitEnum"]])
 
-slots.growth_hormone_regm = Slot(uri=ANALYSIS_API_SCHEMA.growth_hormone_regm, name="growth_hormone_regm", curie=ANALYSIS_API_SCHEMA.curie('growth_hormone_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.growth_hormone_regm, domain=None, range=Optional[str])
+slots.growth_hormone_regm = Slot(uri=BASALT_SCHEMA.growth_hormone_regm, name="growth_hormone_regm", curie=BASALT_SCHEMA.curie('growth_hormone_regm'),
+                   model_uri=BASALT_SCHEMA.growth_hormone_regm, domain=None, range=Optional[str])
 
-slots.growth_medium = Slot(uri=ANALYSIS_API_SCHEMA.growth_medium, name="growth_medium", curie=ANALYSIS_API_SCHEMA.curie('growth_medium'),
-                   model_uri=ANALYSIS_API_SCHEMA.growth_medium, domain=None, range=Optional[str])
+slots.growth_medium = Slot(uri=BASALT_SCHEMA.growth_medium, name="growth_medium", curie=BASALT_SCHEMA.curie('growth_medium'),
+                   model_uri=BASALT_SCHEMA.growth_medium, domain=None, range=Optional[str])
 
-slots.growth_time = Slot(uri=ANALYSIS_API_SCHEMA.growth_time, name="growth_time", curie=ANALYSIS_API_SCHEMA.curie('growth_time'),
-                   model_uri=ANALYSIS_API_SCHEMA.growth_time, domain=None, range=Optional[str])
+slots.growth_time = Slot(uri=BASALT_SCHEMA.growth_time, name="growth_time", curie=BASALT_SCHEMA.curie('growth_time'),
+                   model_uri=BASALT_SCHEMA.growth_time, domain=None, range=Optional[str])
 
-slots.guid_source = Slot(uri=ANALYSIS_API_SCHEMA.guid_source, name="guid_source", curie=ANALYSIS_API_SCHEMA.curie('guid_source'),
-                   model_uri=ANALYSIS_API_SCHEMA.guid_source, domain=None, range=Optional[str])
+slots.guid_source = Slot(uri=BASALT_SCHEMA.guid_source, name="guid_source", curie=BASALT_SCHEMA.curie('guid_source'),
+                   model_uri=BASALT_SCHEMA.guid_source, domain=None, range=Optional[str])
 
-slots.heavy_metals = Slot(uri=ANALYSIS_API_SCHEMA.heavy_metals, name="heavy_metals", curie=ANALYSIS_API_SCHEMA.curie('heavy_metals'),
-                   model_uri=ANALYSIS_API_SCHEMA.heavy_metals, domain=None, range=Optional[str])
+slots.heavy_metals = Slot(uri=BASALT_SCHEMA.heavy_metals, name="heavy_metals", curie=BASALT_SCHEMA.curie('heavy_metals'),
+                   model_uri=BASALT_SCHEMA.heavy_metals, domain=None, range=Optional[str])
 
-slots.heavy_metals_meth = Slot(uri=ANALYSIS_API_SCHEMA.heavy_metals_meth, name="heavy_metals_meth", curie=ANALYSIS_API_SCHEMA.curie('heavy_metals_meth'),
-                   model_uri=ANALYSIS_API_SCHEMA.heavy_metals_meth, domain=None, range=Optional[str])
+slots.heavy_metals_meth = Slot(uri=BASALT_SCHEMA.heavy_metals_meth, name="heavy_metals_meth", curie=BASALT_SCHEMA.curie('heavy_metals_meth'),
+                   model_uri=BASALT_SCHEMA.heavy_metals_meth, domain=None, range=Optional[str])
 
-slots.herbicide_regm = Slot(uri=ANALYSIS_API_SCHEMA.herbicide_regm, name="herbicide_regm", curie=ANALYSIS_API_SCHEMA.curie('herbicide_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.herbicide_regm, domain=None, range=Optional[str])
+slots.herbicide_regm = Slot(uri=BASALT_SCHEMA.herbicide_regm, name="herbicide_regm", curie=BASALT_SCHEMA.curie('herbicide_regm'),
+                   model_uri=BASALT_SCHEMA.herbicide_regm, domain=None, range=Optional[str])
 
-slots.horizon_meth = Slot(uri=ANALYSIS_API_SCHEMA.horizon_meth, name="horizon_meth", curie=ANALYSIS_API_SCHEMA.curie('horizon_meth'),
-                   model_uri=ANALYSIS_API_SCHEMA.horizon_meth, domain=None, range=Optional[str])
+slots.horizon_meth = Slot(uri=BASALT_SCHEMA.horizon_meth, name="horizon_meth", curie=BASALT_SCHEMA.curie('horizon_meth'),
+                   model_uri=BASALT_SCHEMA.horizon_meth, domain=None, range=Optional[str])
 
-slots.host_age = Slot(uri=ANALYSIS_API_SCHEMA.host_age, name="host_age", curie=ANALYSIS_API_SCHEMA.curie('host_age'),
-                   model_uri=ANALYSIS_API_SCHEMA.host_age, domain=None, range=Optional[str],
+slots.host_age = Slot(uri=BASALT_SCHEMA.host_age, name="host_age", curie=BASALT_SCHEMA.curie('host_age'),
+                   model_uri=BASALT_SCHEMA.host_age, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(a|d|h)$'))
 
-slots.host_common_name = Slot(uri=ANALYSIS_API_SCHEMA.host_common_name, name="host_common_name", curie=ANALYSIS_API_SCHEMA.curie('host_common_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.host_common_name, domain=None, range=Optional[str])
+slots.host_common_name = Slot(uri=BASALT_SCHEMA.host_common_name, name="host_common_name", curie=BASALT_SCHEMA.curie('host_common_name'),
+                   model_uri=BASALT_SCHEMA.host_common_name, domain=None, range=Optional[str])
 
-slots.host_disease_stat = Slot(uri=ANALYSIS_API_SCHEMA.host_disease_stat, name="host_disease_stat", curie=ANALYSIS_API_SCHEMA.curie('host_disease_stat'),
-                   model_uri=ANALYSIS_API_SCHEMA.host_disease_stat, domain=None, range=Optional[str])
+slots.host_disease_stat = Slot(uri=BASALT_SCHEMA.host_disease_stat, name="host_disease_stat", curie=BASALT_SCHEMA.curie('host_disease_stat'),
+                   model_uri=BASALT_SCHEMA.host_disease_stat, domain=None, range=Optional[str])
 
-slots.host_dry_mass = Slot(uri=ANALYSIS_API_SCHEMA.host_dry_mass, name="host_dry_mass", curie=ANALYSIS_API_SCHEMA.curie('host_dry_mass'),
-                   model_uri=ANALYSIS_API_SCHEMA.host_dry_mass, domain=None, range=Optional[str],
+slots.host_dry_mass = Slot(uri=BASALT_SCHEMA.host_dry_mass, name="host_dry_mass", curie=BASALT_SCHEMA.curie('host_dry_mass'),
+                   model_uri=BASALT_SCHEMA.host_dry_mass, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(kg|g)$'))
 
-slots.host_genotype = Slot(uri=ANALYSIS_API_SCHEMA.host_genotype, name="host_genotype", curie=ANALYSIS_API_SCHEMA.curie('host_genotype'),
-                   model_uri=ANALYSIS_API_SCHEMA.host_genotype, domain=None, range=Optional[str])
+slots.host_genotype = Slot(uri=BASALT_SCHEMA.host_genotype, name="host_genotype", curie=BASALT_SCHEMA.curie('host_genotype'),
+                   model_uri=BASALT_SCHEMA.host_genotype, domain=None, range=Optional[str])
 
-slots.host_height = Slot(uri=ANALYSIS_API_SCHEMA.host_height, name="host_height", curie=ANALYSIS_API_SCHEMA.curie('host_height'),
-                   model_uri=ANALYSIS_API_SCHEMA.host_height, domain=None, range=Optional[str],
+slots.host_height = Slot(uri=BASALT_SCHEMA.host_height, name="host_height", curie=BASALT_SCHEMA.curie('host_height'),
+                   model_uri=BASALT_SCHEMA.host_height, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(cm|mm|m)$'))
 
-slots.host_infra_spec_name = Slot(uri=ANALYSIS_API_SCHEMA.host_infra_spec_name, name="host_infra_spec_name", curie=ANALYSIS_API_SCHEMA.curie('host_infra_spec_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.host_infra_spec_name, domain=None, range=Optional[str])
+slots.host_infra_spec_name = Slot(uri=BASALT_SCHEMA.host_infra_spec_name, name="host_infra_spec_name", curie=BASALT_SCHEMA.curie('host_infra_spec_name'),
+                   model_uri=BASALT_SCHEMA.host_infra_spec_name, domain=None, range=Optional[str])
 
-slots.host_infra_spec_rank = Slot(uri=ANALYSIS_API_SCHEMA.host_infra_spec_rank, name="host_infra_spec_rank", curie=ANALYSIS_API_SCHEMA.curie('host_infra_spec_rank'),
-                   model_uri=ANALYSIS_API_SCHEMA.host_infra_spec_rank, domain=None, range=Optional[str])
+slots.host_infra_spec_rank = Slot(uri=BASALT_SCHEMA.host_infra_spec_rank, name="host_infra_spec_rank", curie=BASALT_SCHEMA.curie('host_infra_spec_rank'),
+                   model_uri=BASALT_SCHEMA.host_infra_spec_rank, domain=None, range=Optional[str])
 
-slots.host_length = Slot(uri=ANALYSIS_API_SCHEMA.host_length, name="host_length", curie=ANALYSIS_API_SCHEMA.curie('host_length'),
-                   model_uri=ANALYSIS_API_SCHEMA.host_length, domain=None, range=Optional[str])
+slots.host_length = Slot(uri=BASALT_SCHEMA.host_length, name="host_length", curie=BASALT_SCHEMA.curie('host_length'),
+                   model_uri=BASALT_SCHEMA.host_length, domain=None, range=Optional[str])
 
-slots.host_life_stage = Slot(uri=ANALYSIS_API_SCHEMA.host_life_stage, name="host_life_stage", curie=ANALYSIS_API_SCHEMA.curie('host_life_stage'),
-                   model_uri=ANALYSIS_API_SCHEMA.host_life_stage, domain=None, range=Optional[str])
+slots.host_life_stage = Slot(uri=BASALT_SCHEMA.host_life_stage, name="host_life_stage", curie=BASALT_SCHEMA.curie('host_life_stage'),
+                   model_uri=BASALT_SCHEMA.host_life_stage, domain=None, range=Optional[str])
 
-slots.host_phenotype = Slot(uri=ANALYSIS_API_SCHEMA.host_phenotype, name="host_phenotype", curie=ANALYSIS_API_SCHEMA.curie('host_phenotype'),
-                   model_uri=ANALYSIS_API_SCHEMA.host_phenotype, domain=None, range=Optional[str])
+slots.host_phenotype = Slot(uri=BASALT_SCHEMA.host_phenotype, name="host_phenotype", curie=BASALT_SCHEMA.curie('host_phenotype'),
+                   model_uri=BASALT_SCHEMA.host_phenotype, domain=None, range=Optional[str])
 
-slots.host_spec_range = Slot(uri=ANALYSIS_API_SCHEMA.host_spec_range, name="host_spec_range", curie=ANALYSIS_API_SCHEMA.curie('host_spec_range'),
-                   model_uri=ANALYSIS_API_SCHEMA.host_spec_range, domain=None, range=Optional[str],
+slots.host_spec_range = Slot(uri=BASALT_SCHEMA.host_spec_range, name="host_spec_range", curie=BASALT_SCHEMA.curie('host_spec_range'),
+                   model_uri=BASALT_SCHEMA.host_spec_range, domain=None, range=Optional[str],
                    pattern=re.compile(r'NCBITaxon:\d+'))
 
-slots.host_symbiont = Slot(uri=ANALYSIS_API_SCHEMA.host_symbiont, name="host_symbiont", curie=ANALYSIS_API_SCHEMA.curie('host_symbiont'),
-                   model_uri=ANALYSIS_API_SCHEMA.host_symbiont, domain=None, range=Optional[str])
+slots.host_symbiont = Slot(uri=BASALT_SCHEMA.host_symbiont, name="host_symbiont", curie=BASALT_SCHEMA.curie('host_symbiont'),
+                   model_uri=BASALT_SCHEMA.host_symbiont, domain=None, range=Optional[str])
 
-slots.host_taxid = Slot(uri=ANALYSIS_API_SCHEMA.host_taxid, name="host_taxid", curie=ANALYSIS_API_SCHEMA.curie('host_taxid'),
-                   model_uri=ANALYSIS_API_SCHEMA.host_taxid, domain=None, range=Optional[str],
+slots.host_taxid = Slot(uri=BASALT_SCHEMA.host_taxid, name="host_taxid", curie=BASALT_SCHEMA.curie('host_taxid'),
+                   model_uri=BASALT_SCHEMA.host_taxid, domain=None, range=Optional[str],
                    pattern=re.compile(r'NCBITaxon:\d+'))
 
-slots.host_tot_mass = Slot(uri=ANALYSIS_API_SCHEMA.host_tot_mass, name="host_tot_mass", curie=ANALYSIS_API_SCHEMA.curie('host_tot_mass'),
-                   model_uri=ANALYSIS_API_SCHEMA.host_tot_mass, domain=None, range=Optional[str],
+slots.host_tot_mass = Slot(uri=BASALT_SCHEMA.host_tot_mass, name="host_tot_mass", curie=BASALT_SCHEMA.curie('host_tot_mass'),
+                   model_uri=BASALT_SCHEMA.host_tot_mass, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(kg|g)$'))
 
-slots.host_wet_mass = Slot(uri=ANALYSIS_API_SCHEMA.host_wet_mass, name="host_wet_mass", curie=ANALYSIS_API_SCHEMA.curie('host_wet_mass'),
-                   model_uri=ANALYSIS_API_SCHEMA.host_wet_mass, domain=None, range=Optional[str],
+slots.host_wet_mass = Slot(uri=BASALT_SCHEMA.host_wet_mass, name="host_wet_mass", curie=BASALT_SCHEMA.curie('host_wet_mass'),
+                   model_uri=BASALT_SCHEMA.host_wet_mass, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(kg|g)$'))
 
-slots.humidity = Slot(uri=ANALYSIS_API_SCHEMA.humidity, name="humidity", curie=ANALYSIS_API_SCHEMA.curie('humidity'),
-                   model_uri=ANALYSIS_API_SCHEMA.humidity, domain=None, range=Optional[str],
+slots.humidity = Slot(uri=BASALT_SCHEMA.humidity, name="humidity", curie=BASALT_SCHEMA.curie('humidity'),
+                   model_uri=BASALT_SCHEMA.humidity, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.humidity_regm = Slot(uri=ANALYSIS_API_SCHEMA.humidity_regm, name="humidity_regm", curie=ANALYSIS_API_SCHEMA.curie('humidity_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.humidity_regm, domain=None, range=Optional[str])
+slots.humidity_regm = Slot(uri=BASALT_SCHEMA.humidity_regm, name="humidity_regm", curie=BASALT_SCHEMA.curie('humidity_regm'),
+                   model_uri=BASALT_SCHEMA.humidity_regm, domain=None, range=Optional[str])
 
-slots.iat = Slot(uri=ANALYSIS_API_SCHEMA.iat, name="iat", curie=ANALYSIS_API_SCHEMA.curie('iat'),
-                   model_uri=ANALYSIS_API_SCHEMA.iat, domain=None, range=Optional[float])
+slots.iat = Slot(uri=BASALT_SCHEMA.iat, name="iat", curie=BASALT_SCHEMA.curie('iat'),
+                   model_uri=BASALT_SCHEMA.iat, domain=None, range=Optional[float])
 
-slots.incubation_time_hours = Slot(uri=ANALYSIS_API_SCHEMA.incubation_time_hours, name="incubation_time_hours", curie=ANALYSIS_API_SCHEMA.curie('incubation_time_hours'),
-                   model_uri=ANALYSIS_API_SCHEMA.incubation_time_hours, domain=None, range=Optional[float])
+slots.incubation_time_hours = Slot(uri=BASALT_SCHEMA.incubation_time_hours, name="incubation_time_hours", curie=BASALT_SCHEMA.curie('incubation_time_hours'),
+                   model_uri=BASALT_SCHEMA.incubation_time_hours, domain=None, range=Optional[float])
 
-slots.indust_eff_percent = Slot(uri=ANALYSIS_API_SCHEMA.indust_eff_percent, name="indust_eff_percent", curie=ANALYSIS_API_SCHEMA.curie('indust_eff_percent'),
-                   model_uri=ANALYSIS_API_SCHEMA.indust_eff_percent, domain=None, range=Optional[str])
+slots.indust_eff_percent = Slot(uri=BASALT_SCHEMA.indust_eff_percent, name="indust_eff_percent", curie=BASALT_SCHEMA.curie('indust_eff_percent'),
+                   model_uri=BASALT_SCHEMA.indust_eff_percent, domain=None, range=Optional[str])
 
-slots.infiltration_1 = Slot(uri=ANALYSIS_API_SCHEMA.infiltration_1, name="infiltration_1", curie=ANALYSIS_API_SCHEMA.curie('infiltration_1'),
-                   model_uri=ANALYSIS_API_SCHEMA.infiltration_1, domain=None, range=Optional[str],
+slots.infiltration_1 = Slot(uri=BASALT_SCHEMA.infiltration_1, name="infiltration_1", curie=BASALT_SCHEMA.curie('infiltration_1'),
+                   model_uri=BASALT_SCHEMA.infiltration_1, domain=None, range=Optional[str],
                    pattern=re.compile(r'^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)$'))
 
-slots.infiltration_2 = Slot(uri=ANALYSIS_API_SCHEMA.infiltration_2, name="infiltration_2", curie=ANALYSIS_API_SCHEMA.curie('infiltration_2'),
-                   model_uri=ANALYSIS_API_SCHEMA.infiltration_2, domain=None, range=Optional[str],
+slots.infiltration_2 = Slot(uri=BASALT_SCHEMA.infiltration_2, name="infiltration_2", curie=BASALT_SCHEMA.curie('infiltration_2'),
+                   model_uri=BASALT_SCHEMA.infiltration_2, domain=None, range=Optional[str],
                    pattern=re.compile(r'^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)'))
 
-slots.infiltration_notes = Slot(uri=ANALYSIS_API_SCHEMA.infiltration_notes, name="infiltration_notes", curie=ANALYSIS_API_SCHEMA.curie('infiltration_notes'),
-                   model_uri=ANALYSIS_API_SCHEMA.infiltration_notes, domain=None, range=Optional[str])
+slots.infiltration_notes = Slot(uri=BASALT_SCHEMA.infiltration_notes, name="infiltration_notes", curie=BASALT_SCHEMA.curie('infiltration_notes'),
+                   model_uri=BASALT_SCHEMA.infiltration_notes, domain=None, range=Optional[str])
 
-slots.initiation_date_inoculation = Slot(uri=ANALYSIS_API_SCHEMA.initiation_date_inoculation, name="initiation_date_inoculation", curie=ANALYSIS_API_SCHEMA.curie('initiation_date_inoculation'),
-                   model_uri=ANALYSIS_API_SCHEMA.initiation_date_inoculation, domain=None, range=Optional[str],
+slots.initiation_date_inoculation = Slot(uri=BASALT_SCHEMA.initiation_date_inoculation, name="initiation_date_inoculation", curie=BASALT_SCHEMA.curie('initiation_date_inoculation'),
+                   model_uri=BASALT_SCHEMA.initiation_date_inoculation, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.initiation_date_plant = Slot(uri=ANALYSIS_API_SCHEMA.initiation_date_plant, name="initiation_date_plant", curie=ANALYSIS_API_SCHEMA.curie('initiation_date_plant'),
-                   model_uri=ANALYSIS_API_SCHEMA.initiation_date_plant, domain=None, range=Optional[str],
+slots.initiation_date_plant = Slot(uri=BASALT_SCHEMA.initiation_date_plant, name="initiation_date_plant", curie=BASALT_SCHEMA.curie('initiation_date_plant'),
+                   model_uri=BASALT_SCHEMA.initiation_date_plant, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.injection = Slot(uri=ANALYSIS_API_SCHEMA.injection, name="injection", curie=ANALYSIS_API_SCHEMA.curie('injection'),
-                   model_uri=ANALYSIS_API_SCHEMA.injection, domain=None, range=str)
+slots.injection = Slot(uri=BASALT_SCHEMA.injection, name="injection", curie=BASALT_SCHEMA.curie('injection'),
+                   model_uri=BASALT_SCHEMA.injection, domain=None, range=str)
 
-slots.injection_volume_ul = Slot(uri=ANALYSIS_API_SCHEMA.injection_volume_ul, name="injection_volume_ul", curie=ANALYSIS_API_SCHEMA.curie('injection_volume_ul'),
-                   model_uri=ANALYSIS_API_SCHEMA.injection_volume_ul, domain=None, range=Optional[float])
+slots.injection_volume_ul = Slot(uri=BASALT_SCHEMA.injection_volume_ul, name="injection_volume_ul", curie=BASALT_SCHEMA.curie('injection_volume_ul'),
+                   model_uri=BASALT_SCHEMA.injection_volume_ul, domain=None, range=Optional[float])
 
-slots.inorg_particles = Slot(uri=ANALYSIS_API_SCHEMA.inorg_particles, name="inorg_particles", curie=ANALYSIS_API_SCHEMA.curie('inorg_particles'),
-                   model_uri=ANALYSIS_API_SCHEMA.inorg_particles, domain=None, range=Optional[str])
+slots.inorg_particles = Slot(uri=BASALT_SCHEMA.inorg_particles, name="inorg_particles", curie=BASALT_SCHEMA.curie('inorg_particles'),
+                   model_uri=BASALT_SCHEMA.inorg_particles, domain=None, range=Optional[str])
 
-slots.inspection_method = Slot(uri=ANALYSIS_API_SCHEMA.inspection_method, name="inspection_method", curie=ANALYSIS_API_SCHEMA.curie('inspection_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.inspection_method, domain=None, range=Optional[str])
+slots.inspection_method = Slot(uri=BASALT_SCHEMA.inspection_method, name="inspection_method", curie=BASALT_SCHEMA.curie('inspection_method'),
+                   model_uri=BASALT_SCHEMA.inspection_method, domain=None, range=Optional[str])
 
-slots.internal_calibration = Slot(uri=ANALYSIS_API_SCHEMA.internal_calibration, name="internal_calibration", curie=ANALYSIS_API_SCHEMA.curie('internal_calibration'),
-                   model_uri=ANALYSIS_API_SCHEMA.internal_calibration, domain=None, range=Optional[Union[bool, Bool]])
+slots.internal_calibration = Slot(uri=BASALT_SCHEMA.internal_calibration, name="internal_calibration", curie=BASALT_SCHEMA.curie('internal_calibration'),
+                   model_uri=BASALT_SCHEMA.internal_calibration, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.ionization = Slot(uri=ANALYSIS_API_SCHEMA.ionization, name="ionization", curie=ANALYSIS_API_SCHEMA.curie('ionization'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionization, domain=None, range=Union[str, "IonizationSourceEnum"])
+slots.ionization = Slot(uri=BASALT_SCHEMA.ionization, name="ionization", curie=BASALT_SCHEMA.curie('ionization'),
+                   model_uri=BASALT_SCHEMA.ionization, domain=None, range=Union[str, "IonizationSourceEnum"])
 
-slots.isol_growth_condt = Slot(uri=ANALYSIS_API_SCHEMA.isol_growth_condt, name="isol_growth_condt", curie=ANALYSIS_API_SCHEMA.curie('isol_growth_condt'),
-                   model_uri=ANALYSIS_API_SCHEMA.isol_growth_condt, domain=None, range=Optional[str])
+slots.isol_growth_condt = Slot(uri=BASALT_SCHEMA.isol_growth_condt, name="isol_growth_condt", curie=BASALT_SCHEMA.curie('isol_growth_condt'),
+                   model_uri=BASALT_SCHEMA.isol_growth_condt, domain=None, range=Optional[str])
 
-slots.isolation_window = Slot(uri=ANALYSIS_API_SCHEMA.isolation_window, name="isolation_window", curie=ANALYSIS_API_SCHEMA.curie('isolation_window'),
-                   model_uri=ANALYSIS_API_SCHEMA.isolation_window, domain=None, range=str)
+slots.isolation_window = Slot(uri=BASALT_SCHEMA.isolation_window, name="isolation_window", curie=BASALT_SCHEMA.curie('isolation_window'),
+                   model_uri=BASALT_SCHEMA.isolation_window, domain=None, range=str)
 
-slots.isotope_exposure = Slot(uri=ANALYSIS_API_SCHEMA.isotope_exposure, name="isotope_exposure", curie=ANALYSIS_API_SCHEMA.curie('isotope_exposure'),
-                   model_uri=ANALYSIS_API_SCHEMA.isotope_exposure, domain=None, range=Optional[str])
+slots.isotope_exposure = Slot(uri=BASALT_SCHEMA.isotope_exposure, name="isotope_exposure", curie=BASALT_SCHEMA.curie('isotope_exposure'),
+                   model_uri=BASALT_SCHEMA.isotope_exposure, domain=None, range=Optional[str])
 
-slots.item_number = Slot(uri=ANALYSIS_API_SCHEMA.item_number, name="item_number", curie=ANALYSIS_API_SCHEMA.curie('item_number'),
-                   model_uri=ANALYSIS_API_SCHEMA.item_number, domain=None, range=Optional[str])
+slots.item_number = Slot(uri=BASALT_SCHEMA.item_number, name="item_number", curie=BASALT_SCHEMA.curie('item_number'),
+                   model_uri=BASALT_SCHEMA.item_number, domain=None, range=Optional[str])
 
-slots.label_text = Slot(uri=ANALYSIS_API_SCHEMA.label_text, name="label_text", curie=ANALYSIS_API_SCHEMA.curie('label_text'),
-                   model_uri=ANALYSIS_API_SCHEMA.label_text, domain=None, range=Optional[str])
+slots.label_text = Slot(uri=BASALT_SCHEMA.label_text, name="label_text", curie=BASALT_SCHEMA.curie('label_text'),
+                   model_uri=BASALT_SCHEMA.label_text, domain=None, range=Optional[str])
 
-slots.latitude = Slot(uri=ANALYSIS_API_SCHEMA.latitude, name="latitude", curie=ANALYSIS_API_SCHEMA.curie('latitude'),
-                   model_uri=ANALYSIS_API_SCHEMA.latitude, domain=None, range=Optional[float])
+slots.latitude = Slot(uri=BASALT_SCHEMA.latitude, name="latitude", curie=BASALT_SCHEMA.curie('latitude'),
+                   model_uri=BASALT_SCHEMA.latitude, domain=None, range=Optional[float])
 
-slots.light_intensity = Slot(uri=ANALYSIS_API_SCHEMA.light_intensity, name="light_intensity", curie=ANALYSIS_API_SCHEMA.curie('light_intensity'),
-                   model_uri=ANALYSIS_API_SCHEMA.light_intensity, domain=None, range=Optional[str],
+slots.light_intensity = Slot(uri=BASALT_SCHEMA.light_intensity, name="light_intensity", curie=BASALT_SCHEMA.curie('light_intensity'),
+                   model_uri=BASALT_SCHEMA.light_intensity, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.light_regm = Slot(uri=ANALYSIS_API_SCHEMA.light_regm, name="light_regm", curie=ANALYSIS_API_SCHEMA.curie('light_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.light_regm, domain=None, range=Optional[str])
+slots.light_regm = Slot(uri=BASALT_SCHEMA.light_regm, name="light_regm", curie=BASALT_SCHEMA.curie('light_regm'),
+                   model_uri=BASALT_SCHEMA.light_regm, domain=None, range=Optional[str])
 
-slots.lims_barcode = Slot(uri=ANALYSIS_API_SCHEMA.lims_barcode, name="lims_barcode", curie=ANALYSIS_API_SCHEMA.curie('lims_barcode'),
-                   model_uri=ANALYSIS_API_SCHEMA.lims_barcode, domain=None, range=Optional[str])
+slots.lims_barcode = Slot(uri=BASALT_SCHEMA.lims_barcode, name="lims_barcode", curie=BASALT_SCHEMA.curie('lims_barcode'),
+                   model_uri=BASALT_SCHEMA.lims_barcode, domain=None, range=Optional[str])
 
-slots.lims_id = Slot(uri=ANALYSIS_API_SCHEMA.lims_id, name="lims_id", curie=ANALYSIS_API_SCHEMA.curie('lims_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.lims_id, domain=None, range=Optional[str],
+slots.lims_id = Slot(uri=BASALT_SCHEMA.lims_id, name="lims_id", curie=BASALT_SCHEMA.curie('lims_id'),
+                   model_uri=BASALT_SCHEMA.lims_id, domain=None, range=Optional[str],
                    pattern=re.compile(r'^INGEST_SAMPLE_\d{9}$'))
 
-slots.lims_protocol_instance_id = Slot(uri=ANALYSIS_API_SCHEMA.lims_protocol_instance_id, name="lims_protocol_instance_id", curie=ANALYSIS_API_SCHEMA.curie('lims_protocol_instance_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.lims_protocol_instance_id, domain=None, range=Optional[int])
+slots.lims_protocol_instance_id = Slot(uri=BASALT_SCHEMA.lims_protocol_instance_id, name="lims_protocol_instance_id", curie=BASALT_SCHEMA.curie('lims_protocol_instance_id'),
+                   model_uri=BASALT_SCHEMA.lims_protocol_instance_id, domain=None, range=Optional[int])
 
-slots.lims_task_instance_id = Slot(uri=ANALYSIS_API_SCHEMA.lims_task_instance_id, name="lims_task_instance_id", curie=ANALYSIS_API_SCHEMA.curie('lims_task_instance_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.lims_task_instance_id, domain=None, range=Optional[int])
+slots.lims_task_instance_id = Slot(uri=BASALT_SCHEMA.lims_task_instance_id, name="lims_task_instance_id", curie=BASALT_SCHEMA.curie('lims_task_instance_id'),
+                   model_uri=BASALT_SCHEMA.lims_task_instance_id, domain=None, range=Optional[int])
 
-slots.link_addit_analys = Slot(uri=ANALYSIS_API_SCHEMA.link_addit_analys, name="link_addit_analys", curie=ANALYSIS_API_SCHEMA.curie('link_addit_analys'),
-                   model_uri=ANALYSIS_API_SCHEMA.link_addit_analys, domain=None, range=Optional[str])
+slots.link_addit_analys = Slot(uri=BASALT_SCHEMA.link_addit_analys, name="link_addit_analys", curie=BASALT_SCHEMA.curie('link_addit_analys'),
+                   model_uri=BASALT_SCHEMA.link_addit_analys, domain=None, range=Optional[str])
 
-slots.link_class_info = Slot(uri=ANALYSIS_API_SCHEMA.link_class_info, name="link_class_info", curie=ANALYSIS_API_SCHEMA.curie('link_class_info'),
-                   model_uri=ANALYSIS_API_SCHEMA.link_class_info, domain=None, range=Optional[str])
+slots.link_class_info = Slot(uri=BASALT_SCHEMA.link_class_info, name="link_class_info", curie=BASALT_SCHEMA.curie('link_class_info'),
+                   model_uri=BASALT_SCHEMA.link_class_info, domain=None, range=Optional[str])
 
-slots.link_climate_info = Slot(uri=ANALYSIS_API_SCHEMA.link_climate_info, name="link_climate_info", curie=ANALYSIS_API_SCHEMA.curie('link_climate_info'),
-                   model_uri=ANALYSIS_API_SCHEMA.link_climate_info, domain=None, range=Optional[str])
+slots.link_climate_info = Slot(uri=BASALT_SCHEMA.link_climate_info, name="link_climate_info", curie=BASALT_SCHEMA.curie('link_climate_info'),
+                   model_uri=BASALT_SCHEMA.link_climate_info, domain=None, range=Optional[str])
 
-slots.local_class = Slot(uri=ANALYSIS_API_SCHEMA.local_class, name="local_class", curie=ANALYSIS_API_SCHEMA.curie('local_class'),
-                   model_uri=ANALYSIS_API_SCHEMA.local_class, domain=None, range=Optional[str])
+slots.local_class = Slot(uri=BASALT_SCHEMA.local_class, name="local_class", curie=BASALT_SCHEMA.curie('local_class'),
+                   model_uri=BASALT_SCHEMA.local_class, domain=None, range=Optional[str])
 
-slots.local_class_meth = Slot(uri=ANALYSIS_API_SCHEMA.local_class_meth, name="local_class_meth", curie=ANALYSIS_API_SCHEMA.curie('local_class_meth'),
-                   model_uri=ANALYSIS_API_SCHEMA.local_class_meth, domain=None, range=Optional[str])
+slots.local_class_meth = Slot(uri=BASALT_SCHEMA.local_class_meth, name="local_class_meth", curie=BASALT_SCHEMA.curie('local_class_meth'),
+                   model_uri=BASALT_SCHEMA.local_class_meth, domain=None, range=Optional[str])
 
-slots.location = Slot(uri=ANALYSIS_API_SCHEMA.location, name="location", curie=ANALYSIS_API_SCHEMA.curie('location'),
-                   model_uri=ANALYSIS_API_SCHEMA.location, domain=None, range=str)
+slots.location = Slot(uri=BASALT_SCHEMA.location, name="location", curie=BASALT_SCHEMA.curie('location'),
+                   model_uri=BASALT_SCHEMA.location, domain=None, range=str)
 
-slots.longitude = Slot(uri=ANALYSIS_API_SCHEMA.longitude, name="longitude", curie=ANALYSIS_API_SCHEMA.curie('longitude'),
-                   model_uri=ANALYSIS_API_SCHEMA.longitude, domain=None, range=Optional[float])
+slots.longitude = Slot(uri=BASALT_SCHEMA.longitude, name="longitude", curie=BASALT_SCHEMA.curie('longitude'),
+                   model_uri=BASALT_SCHEMA.longitude, domain=None, range=Optional[float])
 
-slots.loop_count = Slot(uri=ANALYSIS_API_SCHEMA.loop_count, name="loop_count", curie=ANALYSIS_API_SCHEMA.curie('loop_count'),
-                   model_uri=ANALYSIS_API_SCHEMA.loop_count, domain=None, range=str)
+slots.loop_count = Slot(uri=BASALT_SCHEMA.loop_count, name="loop_count", curie=BASALT_SCHEMA.curie('loop_count'),
+                   model_uri=BASALT_SCHEMA.loop_count, domain=None, range=str)
 
-slots.magnesium = Slot(uri=ANALYSIS_API_SCHEMA.magnesium, name="magnesium", curie=ANALYSIS_API_SCHEMA.curie('magnesium'),
-                   model_uri=ANALYSIS_API_SCHEMA.magnesium, domain=None, range=Optional[str],
+slots.magnesium = Slot(uri=BASALT_SCHEMA.magnesium, name="magnesium", curie=BASALT_SCHEMA.curie('magnesium'),
+                   model_uri=BASALT_SCHEMA.magnesium, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/kg|mol/L|mg/L|ppm)$'))
 
-slots.mass_range_max = Slot(uri=ANALYSIS_API_SCHEMA.mass_range_max, name="mass_range_max", curie=ANALYSIS_API_SCHEMA.curie('mass_range_max'),
-                   model_uri=ANALYSIS_API_SCHEMA.mass_range_max, domain=None, range=Optional[float])
+slots.mass_range_max = Slot(uri=BASALT_SCHEMA.mass_range_max, name="mass_range_max", curie=BASALT_SCHEMA.curie('mass_range_max'),
+                   model_uri=BASALT_SCHEMA.mass_range_max, domain=None, range=Optional[float])
 
-slots.mass_range_min = Slot(uri=ANALYSIS_API_SCHEMA.mass_range_min, name="mass_range_min", curie=ANALYSIS_API_SCHEMA.curie('mass_range_min'),
-                   model_uri=ANALYSIS_API_SCHEMA.mass_range_min, domain=None, range=Optional[float])
+slots.mass_range_min = Slot(uri=BASALT_SCHEMA.mass_range_min, name="mass_range_min", curie=BASALT_SCHEMA.curie('mass_range_min'),
+                   model_uri=BASALT_SCHEMA.mass_range_min, domain=None, range=Optional[float])
 
-slots.md5checksum = Slot(uri=ANALYSIS_API_SCHEMA.md5checksum, name="md5checksum", curie=ANALYSIS_API_SCHEMA.curie('md5checksum'),
-                   model_uri=ANALYSIS_API_SCHEMA.md5checksum, domain=None, range=Optional[str])
+slots.md5checksum = Slot(uri=BASALT_SCHEMA.md5checksum, name="md5checksum", curie=BASALT_SCHEMA.curie('md5checksum'),
+                   model_uri=BASALT_SCHEMA.md5checksum, domain=None, range=Optional[str])
 
-slots.mean_frict_vel = Slot(uri=ANALYSIS_API_SCHEMA.mean_frict_vel, name="mean_frict_vel", curie=ANALYSIS_API_SCHEMA.curie('mean_frict_vel'),
-                   model_uri=ANALYSIS_API_SCHEMA.mean_frict_vel, domain=None, range=Optional[str],
+slots.mean_frict_vel = Slot(uri=BASALT_SCHEMA.mean_frict_vel, name="mean_frict_vel", curie=BASALT_SCHEMA.curie('mean_frict_vel'),
+                   model_uri=BASALT_SCHEMA.mean_frict_vel, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*m/s$'))
 
-slots.mean_peak_frict_vel = Slot(uri=ANALYSIS_API_SCHEMA.mean_peak_frict_vel, name="mean_peak_frict_vel", curie=ANALYSIS_API_SCHEMA.curie('mean_peak_frict_vel'),
-                   model_uri=ANALYSIS_API_SCHEMA.mean_peak_frict_vel, domain=None, range=Optional[str],
+slots.mean_peak_frict_vel = Slot(uri=BASALT_SCHEMA.mean_peak_frict_vel, name="mean_peak_frict_vel", curie=BASALT_SCHEMA.curie('mean_peak_frict_vel'),
+                   model_uri=BASALT_SCHEMA.mean_peak_frict_vel, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*m/s$'))
 
-slots.mean_total_cpc_concentration = Slot(uri=ANALYSIS_API_SCHEMA.mean_total_cpc_concentration, name="mean_total_cpc_concentration", curie=ANALYSIS_API_SCHEMA.curie('mean_total_cpc_concentration'),
-                   model_uri=ANALYSIS_API_SCHEMA.mean_total_cpc_concentration, domain=None, range=Optional[float])
+slots.mean_total_cpc_concentration = Slot(uri=BASALT_SCHEMA.mean_total_cpc_concentration, name="mean_total_cpc_concentration", curie=BASALT_SCHEMA.curie('mean_total_cpc_concentration'),
+                   model_uri=BASALT_SCHEMA.mean_total_cpc_concentration, domain=None, range=Optional[float])
 
-slots.mean_total_pops_concentration = Slot(uri=ANALYSIS_API_SCHEMA.mean_total_pops_concentration, name="mean_total_pops_concentration", curie=ANALYSIS_API_SCHEMA.curie('mean_total_pops_concentration'),
-                   model_uri=ANALYSIS_API_SCHEMA.mean_total_pops_concentration, domain=None, range=Optional[float])
+slots.mean_total_pops_concentration = Slot(uri=BASALT_SCHEMA.mean_total_pops_concentration, name="mean_total_pops_concentration", curie=BASALT_SCHEMA.curie('mean_total_pops_concentration'),
+                   model_uri=BASALT_SCHEMA.mean_total_pops_concentration, domain=None, range=Optional[float])
 
-slots.measure_type = Slot(uri=ANALYSIS_API_SCHEMA.measure_type, name="measure_type", curie=ANALYSIS_API_SCHEMA.curie('measure_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.measure_type, domain=None, range=Optional[Union[str, "ProductMeasureType"]])
+slots.measure_type = Slot(uri=BASALT_SCHEMA.measure_type, name="measure_type", curie=BASALT_SCHEMA.curie('measure_type'),
+                   model_uri=BASALT_SCHEMA.measure_type, domain=None, range=Optional[Union[str, "ProductMeasureType"]])
 
-slots.measurement_type = Slot(uri=ANALYSIS_API_SCHEMA.measurement_type, name="measurement_type", curie=ANALYSIS_API_SCHEMA.curie('measurement_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.measurement_type, domain=None, range=Optional[str])
+slots.measurement_type = Slot(uri=BASALT_SCHEMA.measurement_type, name="measurement_type", curie=BASALT_SCHEMA.curie('measurement_type'),
+                   model_uri=BASALT_SCHEMA.measurement_type, domain=None, range=Optional[str])
 
-slots.mechanical_damage = Slot(uri=ANALYSIS_API_SCHEMA.mechanical_damage, name="mechanical_damage", curie=ANALYSIS_API_SCHEMA.curie('mechanical_damage'),
-                   model_uri=ANALYSIS_API_SCHEMA.mechanical_damage, domain=None, range=Optional[str])
+slots.mechanical_damage = Slot(uri=BASALT_SCHEMA.mechanical_damage, name="mechanical_damage", curie=BASALT_SCHEMA.curie('mechanical_damage'),
+                   model_uri=BASALT_SCHEMA.mechanical_damage, domain=None, range=Optional[str])
 
-slots.media_additions = Slot(uri=ANALYSIS_API_SCHEMA.media_additions, name="media_additions", curie=ANALYSIS_API_SCHEMA.curie('media_additions'),
-                   model_uri=ANALYSIS_API_SCHEMA.media_additions, domain=None, range=Optional[Union[str, list[str]]])
+slots.media_additions = Slot(uri=BASALT_SCHEMA.media_additions, name="media_additions", curie=BASALT_SCHEMA.curie('media_additions'),
+                   model_uri=BASALT_SCHEMA.media_additions, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.media_formulation = Slot(uri=ANALYSIS_API_SCHEMA.media_formulation, name="media_formulation", curie=ANALYSIS_API_SCHEMA.curie('media_formulation'),
-                   model_uri=ANALYSIS_API_SCHEMA.media_formulation, domain=None, range=Optional[Union[str, "FormulationEnum"]])
+slots.media_formulation = Slot(uri=BASALT_SCHEMA.media_formulation, name="media_formulation", curie=BASALT_SCHEMA.curie('media_formulation'),
+                   model_uri=BASALT_SCHEMA.media_formulation, domain=None, range=Optional[Union[str, "FormulationEnum"]])
 
-slots.media_recipe = Slot(uri=ANALYSIS_API_SCHEMA.media_recipe, name="media_recipe", curie=ANALYSIS_API_SCHEMA.curie('media_recipe'),
-                   model_uri=ANALYSIS_API_SCHEMA.media_recipe, domain=None, range=Optional[str])
+slots.media_recipe = Slot(uri=BASALT_SCHEMA.media_recipe, name="media_recipe", curie=BASALT_SCHEMA.curie('media_recipe'),
+                   model_uri=BASALT_SCHEMA.media_recipe, domain=None, range=Optional[str])
 
-slots.media_ref = Slot(uri=ANALYSIS_API_SCHEMA.media_ref, name="media_ref", curie=ANALYSIS_API_SCHEMA.curie('media_ref'),
-                   model_uri=ANALYSIS_API_SCHEMA.media_ref, domain=None, range=Optional[Union[str, ProcessedSampleId]])
+slots.media_ref = Slot(uri=BASALT_SCHEMA.media_ref, name="media_ref", curie=BASALT_SCHEMA.curie('media_ref'),
+                   model_uri=BASALT_SCHEMA.media_ref, domain=None, range=Optional[Union[str, ProcessedSampleId]])
 
-slots.media_type = Slot(uri=ANALYSIS_API_SCHEMA.media_type, name="media_type", curie=ANALYSIS_API_SCHEMA.curie('media_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.media_type, domain=None, range=Optional[Union[str, "MediaTypeEnum"]])
+slots.media_type = Slot(uri=BASALT_SCHEMA.media_type, name="media_type", curie=BASALT_SCHEMA.curie('media_type'),
+                   model_uri=BASALT_SCHEMA.media_type, domain=None, range=Optional[Union[str, "MediaTypeEnum"]])
 
-slots.metaproteomics_analysis_category = Slot(uri=ANALYSIS_API_SCHEMA.metaproteomics_analysis_category, name="metaproteomics_analysis_category", curie=ANALYSIS_API_SCHEMA.curie('metaproteomics_analysis_category'),
-                   model_uri=ANALYSIS_API_SCHEMA.metaproteomics_analysis_category, domain=None, range=Optional[Union[str, "MetaproteomicsAnalysisCategoryEnum"]])
+slots.metaproteomics_analysis_category = Slot(uri=BASALT_SCHEMA.metaproteomics_analysis_category, name="metaproteomics_analysis_category", curie=BASALT_SCHEMA.curie('metaproteomics_analysis_category'),
+                   model_uri=BASALT_SCHEMA.metaproteomics_analysis_category, domain=None, range=Optional[Union[str, "MetaproteomicsAnalysisCategoryEnum"]])
 
-slots.methane = Slot(uri=ANALYSIS_API_SCHEMA.methane, name="methane", curie=ANALYSIS_API_SCHEMA.curie('methane'),
-                   model_uri=ANALYSIS_API_SCHEMA.methane, domain=None, range=Optional[str],
+slots.methane = Slot(uri=BASALT_SCHEMA.methane, name="methane", curie=BASALT_SCHEMA.curie('methane'),
+                   model_uri=BASALT_SCHEMA.methane, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|ppm|ppb)$'))
 
-slots.method = Slot(uri=ANALYSIS_API_SCHEMA.method, name="method", curie=ANALYSIS_API_SCHEMA.curie('method'),
-                   model_uri=ANALYSIS_API_SCHEMA.method, domain=None, range=Optional[str])
+slots.method = Slot(uri=BASALT_SCHEMA.method, name="method", curie=BASALT_SCHEMA.curie('method'),
+                   model_uri=BASALT_SCHEMA.method, domain=None, range=Optional[str])
 
-slots.method_development = Slot(uri=ANALYSIS_API_SCHEMA.method_development, name="method_development", curie=ANALYSIS_API_SCHEMA.curie('method_development'),
-                   model_uri=ANALYSIS_API_SCHEMA.method_development, domain=None, range=Optional[str])
+slots.method_development = Slot(uri=BASALT_SCHEMA.method_development, name="method_development", curie=BASALT_SCHEMA.curie('method_development'),
+                   model_uri=BASALT_SCHEMA.method_development, domain=None, range=Optional[str])
 
-slots.mg_workflow_step = Slot(uri=ANALYSIS_API_SCHEMA.mg_workflow_step, name="mg_workflow_step", curie=ANALYSIS_API_SCHEMA.curie('mg_workflow_step'),
-                   model_uri=ANALYSIS_API_SCHEMA.mg_workflow_step, domain=None, range=Optional[Union[str, "MetagenomicsSteps"]])
+slots.mg_workflow_step = Slot(uri=BASALT_SCHEMA.mg_workflow_step, name="mg_workflow_step", curie=BASALT_SCHEMA.curie('mg_workflow_step'),
+                   model_uri=BASALT_SCHEMA.mg_workflow_step, domain=None, range=Optional[Union[str, "MetagenomicsSteps"]])
 
-slots.micro_biomass_C_meth = Slot(uri=ANALYSIS_API_SCHEMA.micro_biomass_C_meth, name="micro_biomass_C_meth", curie=ANALYSIS_API_SCHEMA.curie('micro_biomass_C_meth'),
-                   model_uri=ANALYSIS_API_SCHEMA.micro_biomass_C_meth, domain=None, range=Optional[str])
+slots.micro_biomass_C_meth = Slot(uri=BASALT_SCHEMA.micro_biomass_C_meth, name="micro_biomass_C_meth", curie=BASALT_SCHEMA.curie('micro_biomass_C_meth'),
+                   model_uri=BASALT_SCHEMA.micro_biomass_C_meth, domain=None, range=Optional[str])
 
-slots.micro_biomass_c_meth = Slot(uri=ANALYSIS_API_SCHEMA.micro_biomass_c_meth, name="micro_biomass_c_meth", curie=ANALYSIS_API_SCHEMA.curie('micro_biomass_c_meth'),
-                   model_uri=ANALYSIS_API_SCHEMA.micro_biomass_c_meth, domain=None, range=Optional[str])
+slots.micro_biomass_c_meth = Slot(uri=BASALT_SCHEMA.micro_biomass_c_meth, name="micro_biomass_c_meth", curie=BASALT_SCHEMA.curie('micro_biomass_c_meth'),
+                   model_uri=BASALT_SCHEMA.micro_biomass_c_meth, domain=None, range=Optional[str])
 
-slots.micro_biomass_N_meth = Slot(uri=ANALYSIS_API_SCHEMA.micro_biomass_N_meth, name="micro_biomass_N_meth", curie=ANALYSIS_API_SCHEMA.curie('micro_biomass_N_meth'),
-                   model_uri=ANALYSIS_API_SCHEMA.micro_biomass_N_meth, domain=None, range=Optional[str])
+slots.micro_biomass_N_meth = Slot(uri=BASALT_SCHEMA.micro_biomass_N_meth, name="micro_biomass_N_meth", curie=BASALT_SCHEMA.curie('micro_biomass_N_meth'),
+                   model_uri=BASALT_SCHEMA.micro_biomass_N_meth, domain=None, range=Optional[str])
 
-slots.micro_biomass_n_meth = Slot(uri=ANALYSIS_API_SCHEMA.micro_biomass_n_meth, name="micro_biomass_n_meth", curie=ANALYSIS_API_SCHEMA.curie('micro_biomass_n_meth'),
-                   model_uri=ANALYSIS_API_SCHEMA.micro_biomass_n_meth, domain=None, range=Optional[str])
+slots.micro_biomass_n_meth = Slot(uri=BASALT_SCHEMA.micro_biomass_n_meth, name="micro_biomass_n_meth", curie=BASALT_SCHEMA.curie('micro_biomass_n_meth'),
+                   model_uri=BASALT_SCHEMA.micro_biomass_n_meth, domain=None, range=Optional[str])
 
-slots.microbial_biomass = Slot(uri=ANALYSIS_API_SCHEMA.microbial_biomass, name="microbial_biomass", curie=ANALYSIS_API_SCHEMA.curie('microbial_biomass'),
-                   model_uri=ANALYSIS_API_SCHEMA.microbial_biomass, domain=None, range=Optional[str])
+slots.microbial_biomass = Slot(uri=BASALT_SCHEMA.microbial_biomass, name="microbial_biomass", curie=BASALT_SCHEMA.curie('microbial_biomass'),
+                   model_uri=BASALT_SCHEMA.microbial_biomass, domain=None, range=Optional[str])
 
-slots.microbial_biomass_c = Slot(uri=ANALYSIS_API_SCHEMA.microbial_biomass_c, name="microbial_biomass_c", curie=ANALYSIS_API_SCHEMA.curie('microbial_biomass_c'),
-                   model_uri=ANALYSIS_API_SCHEMA.microbial_biomass_c, domain=None, range=Optional[str],
+slots.microbial_biomass_c = Slot(uri=BASALT_SCHEMA.microbial_biomass_c, name="microbial_biomass_c", curie=BASALT_SCHEMA.curie('microbial_biomass_c'),
+                   model_uri=BASALT_SCHEMA.microbial_biomass_c, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.microbial_biomass_meth = Slot(uri=ANALYSIS_API_SCHEMA.microbial_biomass_meth, name="microbial_biomass_meth", curie=ANALYSIS_API_SCHEMA.curie('microbial_biomass_meth'),
-                   model_uri=ANALYSIS_API_SCHEMA.microbial_biomass_meth, domain=None, range=Optional[str])
+slots.microbial_biomass_meth = Slot(uri=BASALT_SCHEMA.microbial_biomass_meth, name="microbial_biomass_meth", curie=BASALT_SCHEMA.curie('microbial_biomass_meth'),
+                   model_uri=BASALT_SCHEMA.microbial_biomass_meth, domain=None, range=Optional[str])
 
-slots.microbial_biomass_n = Slot(uri=ANALYSIS_API_SCHEMA.microbial_biomass_n, name="microbial_biomass_n", curie=ANALYSIS_API_SCHEMA.curie('microbial_biomass_n'),
-                   model_uri=ANALYSIS_API_SCHEMA.microbial_biomass_n, domain=None, range=Optional[str],
+slots.microbial_biomass_n = Slot(uri=BASALT_SCHEMA.microbial_biomass_n, name="microbial_biomass_n", curie=BASALT_SCHEMA.curie('microbial_biomass_n'),
+                   model_uri=BASALT_SCHEMA.microbial_biomass_n, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.mineral_nutr_regm = Slot(uri=ANALYSIS_API_SCHEMA.mineral_nutr_regm, name="mineral_nutr_regm", curie=ANALYSIS_API_SCHEMA.curie('mineral_nutr_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.mineral_nutr_regm, domain=None, range=Optional[str])
+slots.mineral_nutr_regm = Slot(uri=BASALT_SCHEMA.mineral_nutr_regm, name="mineral_nutr_regm", curie=BASALT_SCHEMA.curie('mineral_nutr_regm'),
+                   model_uri=BASALT_SCHEMA.mineral_nutr_regm, domain=None, range=Optional[str])
 
-slots.misc_param = Slot(uri=ANALYSIS_API_SCHEMA.misc_param, name="misc_param", curie=ANALYSIS_API_SCHEMA.curie('misc_param'),
-                   model_uri=ANALYSIS_API_SCHEMA.misc_param, domain=None, range=Optional[str])
+slots.misc_param = Slot(uri=BASALT_SCHEMA.misc_param, name="misc_param", curie=BASALT_SCHEMA.curie('misc_param'),
+                   model_uri=BASALT_SCHEMA.misc_param, domain=None, range=Optional[str])
 
-slots.mobile_phases = Slot(uri=ANALYSIS_API_SCHEMA.mobile_phases, name="mobile_phases", curie=ANALYSIS_API_SCHEMA.curie('mobile_phases'),
-                   model_uri=ANALYSIS_API_SCHEMA.mobile_phases, domain=None, range=Optional[Union[Union[str, MobilePhaseSegmentId], list[Union[str, MobilePhaseSegmentId]]]])
+slots.mobile_phases = Slot(uri=BASALT_SCHEMA.mobile_phases, name="mobile_phases", curie=BASALT_SCHEMA.curie('mobile_phases'),
+                   model_uri=BASALT_SCHEMA.mobile_phases, domain=None, range=Optional[Union[Union[str, MobilePhaseSegmentId], list[Union[str, MobilePhaseSegmentId]]]])
 
-slots.modification_method = Slot(uri=ANALYSIS_API_SCHEMA.modification_method, name="modification_method", curie=ANALYSIS_API_SCHEMA.curie('modification_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.modification_method, domain=None, range=Optional[Union[str, "ModificationMethodEnum"]])
+slots.modification_method = Slot(uri=BASALT_SCHEMA.modification_method, name="modification_method", curie=BASALT_SCHEMA.curie('modification_method'),
+                   model_uri=BASALT_SCHEMA.modification_method, domain=None, range=Optional[Union[str, "ModificationMethodEnum"]])
 
-slots.ms_raw_file_type = Slot(uri=ANALYSIS_API_SCHEMA.ms_raw_file_type, name="ms_raw_file_type", curie=ANALYSIS_API_SCHEMA.curie('ms_raw_file_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.ms_raw_file_type, domain=None, range=Optional[Union[str, "MassSpecRawFileTypeEnum"]])
+slots.ms_raw_file_type = Slot(uri=BASALT_SCHEMA.ms_raw_file_type, name="ms_raw_file_type", curie=BASALT_SCHEMA.curie('ms_raw_file_type'),
+                   model_uri=BASALT_SCHEMA.ms_raw_file_type, domain=None, range=Optional[Union[str, "MassSpecRawFileTypeEnum"]])
 
-slots.n_alkanes = Slot(uri=ANALYSIS_API_SCHEMA.n_alkanes, name="n_alkanes", curie=ANALYSIS_API_SCHEMA.curie('n_alkanes'),
-                   model_uri=ANALYSIS_API_SCHEMA.n_alkanes, domain=None, range=Optional[str])
+slots.n_alkanes = Slot(uri=BASALT_SCHEMA.n_alkanes, name="n_alkanes", curie=BASALT_SCHEMA.curie('n_alkanes'),
+                   model_uri=BASALT_SCHEMA.n_alkanes, domain=None, range=Optional[str])
 
-slots.name = Slot(uri=ANALYSIS_API_SCHEMA.name, name="name", curie=ANALYSIS_API_SCHEMA.curie('name'),
-                   model_uri=ANALYSIS_API_SCHEMA.name, domain=None, range=str)
+slots.name = Slot(uri=BASALT_SCHEMA.name, name="name", curie=BASALT_SCHEMA.curie('name'),
+                   model_uri=BASALT_SCHEMA.name, domain=None, range=str)
 
-slots.neon_domain = Slot(uri=ANALYSIS_API_SCHEMA.neon_domain, name="neon_domain", curie=ANALYSIS_API_SCHEMA.curie('neon_domain'),
-                   model_uri=ANALYSIS_API_SCHEMA.neon_domain, domain=None, range=Optional[Union[str, "NEONDomainEnum"]])
+slots.neon_domain = Slot(uri=BASALT_SCHEMA.neon_domain, name="neon_domain", curie=BASALT_SCHEMA.curie('neon_domain'),
+                   model_uri=BASALT_SCHEMA.neon_domain, domain=None, range=Optional[Union[str, "NEONDomainEnum"]])
 
-slots.neon_plot_id = Slot(uri=ANALYSIS_API_SCHEMA.neon_plot_id, name="neon_plot_id", curie=ANALYSIS_API_SCHEMA.curie('neon_plot_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.neon_plot_id, domain=None, range=Optional[str],
+slots.neon_plot_id = Slot(uri=BASALT_SCHEMA.neon_plot_id, name="neon_plot_id", curie=BASALT_SCHEMA.curie('neon_plot_id'),
+                   model_uri=BASALT_SCHEMA.neon_plot_id, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[A-Z]{4}_\d{3}$'))
 
-slots.neon_site_code = Slot(uri=ANALYSIS_API_SCHEMA.neon_site_code, name="neon_site_code", curie=ANALYSIS_API_SCHEMA.curie('neon_site_code'),
-                   model_uri=ANALYSIS_API_SCHEMA.neon_site_code, domain=None, range=Optional[str],
+slots.neon_site_code = Slot(uri=BASALT_SCHEMA.neon_site_code, name="neon_site_code", curie=BASALT_SCHEMA.curie('neon_site_code'),
+                   model_uri=BASALT_SCHEMA.neon_site_code, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[A-Z]{4}$'))
 
-slots.nitrate = Slot(uri=ANALYSIS_API_SCHEMA.nitrate, name="nitrate", curie=ANALYSIS_API_SCHEMA.curie('nitrate'),
-                   model_uri=ANALYSIS_API_SCHEMA.nitrate, domain=None, range=Optional[str],
+slots.nitrate = Slot(uri=BASALT_SCHEMA.nitrate, name="nitrate", curie=BASALT_SCHEMA.curie('nitrate'),
+                   model_uri=BASALT_SCHEMA.nitrate, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$'))
 
-slots.nitrite = Slot(uri=ANALYSIS_API_SCHEMA.nitrite, name="nitrite", curie=ANALYSIS_API_SCHEMA.curie('nitrite'),
-                   model_uri=ANALYSIS_API_SCHEMA.nitrite, domain=None, range=Optional[str],
+slots.nitrite = Slot(uri=BASALT_SCHEMA.nitrite, name="nitrite", curie=BASALT_SCHEMA.curie('nitrite'),
+                   model_uri=BASALT_SCHEMA.nitrite, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$'))
 
-slots.nitro = Slot(uri=ANALYSIS_API_SCHEMA.nitro, name="nitro", curie=ANALYSIS_API_SCHEMA.curie('nitro'),
-                   model_uri=ANALYSIS_API_SCHEMA.nitro, domain=None, range=Optional[str],
+slots.nitro = Slot(uri=BASALT_SCHEMA.nitro, name="nitro", curie=BASALT_SCHEMA.curie('nitro'),
+                   model_uri=BASALT_SCHEMA.nitro, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*umol/L$'))
 
-slots.non_microb_biomass = Slot(uri=ANALYSIS_API_SCHEMA.non_microb_biomass, name="non_microb_biomass", curie=ANALYSIS_API_SCHEMA.curie('non_microb_biomass'),
-                   model_uri=ANALYSIS_API_SCHEMA.non_microb_biomass, domain=None, range=Optional[str])
+slots.non_microb_biomass = Slot(uri=BASALT_SCHEMA.non_microb_biomass, name="non_microb_biomass", curie=BASALT_SCHEMA.curie('non_microb_biomass'),
+                   model_uri=BASALT_SCHEMA.non_microb_biomass, domain=None, range=Optional[str])
 
-slots.non_microb_biomass_method = Slot(uri=ANALYSIS_API_SCHEMA.non_microb_biomass_method, name="non_microb_biomass_method", curie=ANALYSIS_API_SCHEMA.curie('non_microb_biomass_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.non_microb_biomass_method, domain=None, range=Optional[str])
+slots.non_microb_biomass_method = Slot(uri=BASALT_SCHEMA.non_microb_biomass_method, name="non_microb_biomass_method", curie=BASALT_SCHEMA.curie('non_microb_biomass_method'),
+                   model_uri=BASALT_SCHEMA.non_microb_biomass_method, domain=None, range=Optional[str])
 
-slots.non_min_nutr_regm = Slot(uri=ANALYSIS_API_SCHEMA.non_min_nutr_regm, name="non_min_nutr_regm", curie=ANALYSIS_API_SCHEMA.curie('non_min_nutr_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.non_min_nutr_regm, domain=None, range=Optional[str])
+slots.non_min_nutr_regm = Slot(uri=BASALT_SCHEMA.non_min_nutr_regm, name="non_min_nutr_regm", curie=BASALT_SCHEMA.curie('non_min_nutr_regm'),
+                   model_uri=BASALT_SCHEMA.non_min_nutr_regm, domain=None, range=Optional[str])
 
-slots.nucleotide_sequencing_category = Slot(uri=ANALYSIS_API_SCHEMA.nucleotide_sequencing_category, name="nucleotide_sequencing_category", curie=ANALYSIS_API_SCHEMA.curie('nucleotide_sequencing_category'),
-                   model_uri=ANALYSIS_API_SCHEMA.nucleotide_sequencing_category, domain=None, range=Optional[Union[str, "NucleotideSequencingEnum"]])
+slots.nucleotide_sequencing_category = Slot(uri=BASALT_SCHEMA.nucleotide_sequencing_category, name="nucleotide_sequencing_category", curie=BASALT_SCHEMA.curie('nucleotide_sequencing_category'),
+                   model_uri=BASALT_SCHEMA.nucleotide_sequencing_category, domain=None, range=Optional[Union[str, "NucleotideSequencingEnum"]])
 
-slots.org_carb = Slot(uri=ANALYSIS_API_SCHEMA.org_carb, name="org_carb", curie=ANALYSIS_API_SCHEMA.curie('org_carb'),
-                   model_uri=ANALYSIS_API_SCHEMA.org_carb, domain=None, range=Optional[str],
+slots.org_carb = Slot(uri=BASALT_SCHEMA.org_carb, name="org_carb", curie=BASALT_SCHEMA.curie('org_carb'),
+                   model_uri=BASALT_SCHEMA.org_carb, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.org_matter = Slot(uri=ANALYSIS_API_SCHEMA.org_matter, name="org_matter", curie=ANALYSIS_API_SCHEMA.curie('org_matter'),
-                   model_uri=ANALYSIS_API_SCHEMA.org_matter, domain=None, range=Optional[str],
+slots.org_matter = Slot(uri=BASALT_SCHEMA.org_matter, name="org_matter", curie=BASALT_SCHEMA.curie('org_matter'),
+                   model_uri=BASALT_SCHEMA.org_matter, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*mg/L$'))
 
-slots.org_nitro = Slot(uri=ANALYSIS_API_SCHEMA.org_nitro, name="org_nitro", curie=ANALYSIS_API_SCHEMA.curie('org_nitro'),
-                   model_uri=ANALYSIS_API_SCHEMA.org_nitro, domain=None, range=Optional[str],
+slots.org_nitro = Slot(uri=BASALT_SCHEMA.org_nitro, name="org_nitro", curie=BASALT_SCHEMA.curie('org_nitro'),
+                   model_uri=BASALT_SCHEMA.org_nitro, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.org_nitro_method = Slot(uri=ANALYSIS_API_SCHEMA.org_nitro_method, name="org_nitro_method", curie=ANALYSIS_API_SCHEMA.curie('org_nitro_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.org_nitro_method, domain=None, range=Optional[str])
+slots.org_nitro_method = Slot(uri=BASALT_SCHEMA.org_nitro_method, name="org_nitro_method", curie=BASALT_SCHEMA.curie('org_nitro_method'),
+                   model_uri=BASALT_SCHEMA.org_nitro_method, domain=None, range=Optional[str])
 
-slots.org_particles = Slot(uri=ANALYSIS_API_SCHEMA.org_particles, name="org_particles", curie=ANALYSIS_API_SCHEMA.curie('org_particles'),
-                   model_uri=ANALYSIS_API_SCHEMA.org_particles, domain=None, range=Optional[str])
+slots.org_particles = Slot(uri=BASALT_SCHEMA.org_particles, name="org_particles", curie=BASALT_SCHEMA.curie('org_particles'),
+                   model_uri=BASALT_SCHEMA.org_particles, domain=None, range=Optional[str])
 
-slots.organism_count = Slot(uri=ANALYSIS_API_SCHEMA.organism_count, name="organism_count", curie=ANALYSIS_API_SCHEMA.curie('organism_count'),
-                   model_uri=ANALYSIS_API_SCHEMA.organism_count, domain=None, range=Optional[str])
+slots.organism_count = Slot(uri=BASALT_SCHEMA.organism_count, name="organism_count", curie=BASALT_SCHEMA.curie('organism_count'),
+                   model_uri=BASALT_SCHEMA.organism_count, domain=None, range=Optional[str])
 
-slots.organism_name = Slot(uri=ANALYSIS_API_SCHEMA.name, name="organism_name", curie=ANALYSIS_API_SCHEMA.curie('name'),
-                   model_uri=ANALYSIS_API_SCHEMA.organism_name, domain=Organism, range=str)
+slots.organism_name = Slot(uri=BASALT_SCHEMA.name, name="organism_name", curie=BASALT_SCHEMA.curie('name'),
+                   model_uri=BASALT_SCHEMA.organism_name, domain=Organism, range=str)
 
-slots.organism_ref = Slot(uri=ANALYSIS_API_SCHEMA.organism_ref, name="organism_ref", curie=ANALYSIS_API_SCHEMA.curie('organism_ref'),
-                   model_uri=ANALYSIS_API_SCHEMA.organism_ref, domain=None, range=Optional[Union[str, OrganismId]])
+slots.organism_ref = Slot(uri=BASALT_SCHEMA.organism_ref, name="organism_ref", curie=BASALT_SCHEMA.curie('organism_ref'),
+                   model_uri=BASALT_SCHEMA.organism_ref, domain=None, range=Optional[Union[str, OrganismId]])
 
-slots.other = Slot(uri=ANALYSIS_API_SCHEMA.other, name="other", curie=ANALYSIS_API_SCHEMA.curie('other'),
-                   model_uri=ANALYSIS_API_SCHEMA.other, domain=None, range=Optional[str])
+slots.other = Slot(uri=BASALT_SCHEMA.other, name="other", curie=BASALT_SCHEMA.curie('other'),
+                   model_uri=BASALT_SCHEMA.other, domain=None, range=Optional[str])
 
-slots.other_growth_facil = Slot(uri=ANALYSIS_API_SCHEMA.other_growth_facil, name="other_growth_facil", curie=ANALYSIS_API_SCHEMA.curie('other_growth_facil'),
-                   model_uri=ANALYSIS_API_SCHEMA.other_growth_facil, domain=None, range=Optional[str])
+slots.other_growth_facil = Slot(uri=BASALT_SCHEMA.other_growth_facil, name="other_growth_facil", curie=BASALT_SCHEMA.curie('other_growth_facil'),
+                   model_uri=BASALT_SCHEMA.other_growth_facil, domain=None, range=Optional[str])
 
-slots.other_guid_source = Slot(uri=ANALYSIS_API_SCHEMA.other_guid_source, name="other_guid_source", curie=ANALYSIS_API_SCHEMA.curie('other_guid_source'),
-                   model_uri=ANALYSIS_API_SCHEMA.other_guid_source, domain=None, range=Optional[str])
+slots.other_guid_source = Slot(uri=BASALT_SCHEMA.other_guid_source, name="other_guid_source", curie=BASALT_SCHEMA.curie('other_guid_source'),
+                   model_uri=BASALT_SCHEMA.other_guid_source, domain=None, range=Optional[str])
 
-slots.other_samp_store_temp = Slot(uri=ANALYSIS_API_SCHEMA.other_samp_store_temp, name="other_samp_store_temp", curie=ANALYSIS_API_SCHEMA.curie('other_samp_store_temp'),
-                   model_uri=ANALYSIS_API_SCHEMA.other_samp_store_temp, domain=None, range=Optional[str])
+slots.other_samp_store_temp = Slot(uri=BASALT_SCHEMA.other_samp_store_temp, name="other_samp_store_temp", curie=BASALT_SCHEMA.curie('other_samp_store_temp'),
+                   model_uri=BASALT_SCHEMA.other_samp_store_temp, domain=None, range=Optional[str])
 
-slots.other_storage_condt = Slot(uri=ANALYSIS_API_SCHEMA.other_storage_condt, name="other_storage_condt", curie=ANALYSIS_API_SCHEMA.curie('other_storage_condt'),
-                   model_uri=ANALYSIS_API_SCHEMA.other_storage_condt, domain=None, range=Optional[str])
+slots.other_storage_condt = Slot(uri=BASALT_SCHEMA.other_storage_condt, name="other_storage_condt", curie=BASALT_SCHEMA.curie('other_storage_condt'),
+                   model_uri=BASALT_SCHEMA.other_storage_condt, domain=None, range=Optional[str])
 
-slots.other_treatment = Slot(uri=ANALYSIS_API_SCHEMA.other_treatment, name="other_treatment", curie=ANALYSIS_API_SCHEMA.curie('other_treatment'),
-                   model_uri=ANALYSIS_API_SCHEMA.other_treatment, domain=None, range=Optional[str])
+slots.other_treatment = Slot(uri=BASALT_SCHEMA.other_treatment, name="other_treatment", curie=BASALT_SCHEMA.curie('other_treatment'),
+                   model_uri=BASALT_SCHEMA.other_treatment, domain=None, range=Optional[str])
 
-slots.oxygen = Slot(uri=ANALYSIS_API_SCHEMA.oxygen, name="oxygen", curie=ANALYSIS_API_SCHEMA.curie('oxygen'),
-                   model_uri=ANALYSIS_API_SCHEMA.oxygen, domain=None, range=Optional[str],
+slots.oxygen = Slot(uri=BASALT_SCHEMA.oxygen, name="oxygen", curie=BASALT_SCHEMA.curie('oxygen'),
+                   model_uri=BASALT_SCHEMA.oxygen, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(mg/L|ppm)$'))
 
-slots.oxygen_relationship = Slot(uri=ANALYSIS_API_SCHEMA.oxygen_status, name="oxygen_relationship", curie=ANALYSIS_API_SCHEMA.curie('oxygen_status'),
-                   model_uri=ANALYSIS_API_SCHEMA.oxygen_relationship, domain=None, range=Optional[Union[str, "OxygenStatusEnum"]])
+slots.oxygen_relationship = Slot(uri=BASALT_SCHEMA.oxygen_status, name="oxygen_relationship", curie=BASALT_SCHEMA.curie('oxygen_status'),
+                   model_uri=BASALT_SCHEMA.oxygen_relationship, domain=None, range=Optional[Union[str, "OxygenStatusEnum"]])
 
-slots.parent_workflow_id = Slot(uri=ANALYSIS_API_SCHEMA.parent_workflow_id, name="parent_workflow_id", curie=ANALYSIS_API_SCHEMA.curie('parent_workflow_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.parent_workflow_id, domain=None, range=Optional[Union[str, DataProcessingActivityId]])
+slots.parent_workflow_id = Slot(uri=BASALT_SCHEMA.parent_workflow_id, name="parent_workflow_id", curie=BASALT_SCHEMA.curie('parent_workflow_id'),
+                   model_uri=BASALT_SCHEMA.parent_workflow_id, domain=None, range=Optional[Union[str, DataProcessingActivityId]])
 
-slots.part_org_carb = Slot(uri=ANALYSIS_API_SCHEMA.part_org_carb, name="part_org_carb", curie=ANALYSIS_API_SCHEMA.curie('part_org_carb'),
-                   model_uri=ANALYSIS_API_SCHEMA.part_org_carb, domain=None, range=Optional[str],
+slots.part_org_carb = Slot(uri=BASALT_SCHEMA.part_org_carb, name="part_org_carb", curie=BASALT_SCHEMA.curie('part_org_carb'),
+                   model_uri=BASALT_SCHEMA.part_org_carb, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.part_org_nitro = Slot(uri=ANALYSIS_API_SCHEMA.part_org_nitro, name="part_org_nitro", curie=ANALYSIS_API_SCHEMA.curie('part_org_nitro'),
-                   model_uri=ANALYSIS_API_SCHEMA.part_org_nitro, domain=None, range=Optional[str],
+slots.part_org_nitro = Slot(uri=BASALT_SCHEMA.part_org_nitro, name="part_org_nitro", curie=BASALT_SCHEMA.curie('part_org_nitro'),
+                   model_uri=BASALT_SCHEMA.part_org_nitro, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|ug/L)$'))
 
-slots.particle_class = Slot(uri=ANALYSIS_API_SCHEMA.particle_class, name="particle_class", curie=ANALYSIS_API_SCHEMA.curie('particle_class'),
-                   model_uri=ANALYSIS_API_SCHEMA.particle_class, domain=None, range=Optional[str])
+slots.particle_class = Slot(uri=BASALT_SCHEMA.particle_class, name="particle_class", curie=BASALT_SCHEMA.curie('particle_class'),
+                   model_uri=BASALT_SCHEMA.particle_class, domain=None, range=Optional[str])
 
-slots.pathogenicity = Slot(uri=ANALYSIS_API_SCHEMA.pathogenicity, name="pathogenicity", curie=ANALYSIS_API_SCHEMA.curie('pathogenicity'),
-                   model_uri=ANALYSIS_API_SCHEMA.pathogenicity, domain=None, range=Optional[str])
+slots.pathogenicity = Slot(uri=BASALT_SCHEMA.pathogenicity, name="pathogenicity", curie=BASALT_SCHEMA.curie('pathogenicity'),
+                   model_uri=BASALT_SCHEMA.pathogenicity, domain=None, range=Optional[str])
 
-slots.perturbation = Slot(uri=ANALYSIS_API_SCHEMA.perturbation, name="perturbation", curie=ANALYSIS_API_SCHEMA.curie('perturbation'),
-                   model_uri=ANALYSIS_API_SCHEMA.perturbation, domain=None, range=Optional[str])
+slots.perturbation = Slot(uri=BASALT_SCHEMA.perturbation, name="perturbation", curie=BASALT_SCHEMA.curie('perturbation'),
+                   model_uri=BASALT_SCHEMA.perturbation, domain=None, range=Optional[str])
 
-slots.pesticide_regm = Slot(uri=ANALYSIS_API_SCHEMA.pesticide_regm, name="pesticide_regm", curie=ANALYSIS_API_SCHEMA.curie('pesticide_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.pesticide_regm, domain=None, range=Optional[str])
+slots.pesticide_regm = Slot(uri=BASALT_SCHEMA.pesticide_regm, name="pesticide_regm", curie=BASALT_SCHEMA.curie('pesticide_regm'),
+                   model_uri=BASALT_SCHEMA.pesticide_regm, domain=None, range=Optional[str])
 
-slots.petroleum_hydrocarb = Slot(uri=ANALYSIS_API_SCHEMA.petroleum_hydrocarb, name="petroleum_hydrocarb", curie=ANALYSIS_API_SCHEMA.curie('petroleum_hydrocarb'),
-                   model_uri=ANALYSIS_API_SCHEMA.petroleum_hydrocarb, domain=None, range=Optional[str],
+slots.petroleum_hydrocarb = Slot(uri=BASALT_SCHEMA.petroleum_hydrocarb, name="petroleum_hydrocarb", curie=BASALT_SCHEMA.curie('petroleum_hydrocarb'),
+                   model_uri=BASALT_SCHEMA.petroleum_hydrocarb, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*umol/L$'))
 
-slots.ph = Slot(uri=ANALYSIS_API_SCHEMA.ph, name="ph", curie=ANALYSIS_API_SCHEMA.curie('ph'),
-                   model_uri=ANALYSIS_API_SCHEMA.ph, domain=None, range=Optional[float])
+slots.ph = Slot(uri=BASALT_SCHEMA.ph, name="ph", curie=BASALT_SCHEMA.curie('ph'),
+                   model_uri=BASALT_SCHEMA.ph, domain=None, range=Optional[float])
 
-slots.ph_adjustment = Slot(uri=ANALYSIS_API_SCHEMA.ph_adjustment, name="ph_adjustment", curie=ANALYSIS_API_SCHEMA.curie('ph_adjustment'),
-                   model_uri=ANALYSIS_API_SCHEMA.ph_adjustment, domain=None, range=Optional[Union[bool, Bool]])
+slots.ph_adjustment = Slot(uri=BASALT_SCHEMA.ph_adjustment, name="ph_adjustment", curie=BASALT_SCHEMA.curie('ph_adjustment'),
+                   model_uri=BASALT_SCHEMA.ph_adjustment, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.ph_meth = Slot(uri=ANALYSIS_API_SCHEMA.ph_meth, name="ph_meth", curie=ANALYSIS_API_SCHEMA.curie('ph_meth'),
-                   model_uri=ANALYSIS_API_SCHEMA.ph_meth, domain=None, range=Optional[str])
+slots.ph_meth = Slot(uri=BASALT_SCHEMA.ph_meth, name="ph_meth", curie=BASALT_SCHEMA.curie('ph_meth'),
+                   model_uri=BASALT_SCHEMA.ph_meth, domain=None, range=Optional[str])
 
-slots.ph_regm = Slot(uri=ANALYSIS_API_SCHEMA.ph_regm, name="ph_regm", curie=ANALYSIS_API_SCHEMA.curie('ph_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.ph_regm, domain=None, range=Optional[str])
+slots.ph_regm = Slot(uri=BASALT_SCHEMA.ph_regm, name="ph_regm", curie=BASALT_SCHEMA.curie('ph_regm'),
+                   model_uri=BASALT_SCHEMA.ph_regm, domain=None, range=Optional[str])
 
-slots.ph_target = Slot(uri=ANALYSIS_API_SCHEMA.ph_target, name="ph_target", curie=ANALYSIS_API_SCHEMA.curie('ph_target'),
-                   model_uri=ANALYSIS_API_SCHEMA.ph_target, domain=None, range=Optional[float])
+slots.ph_target = Slot(uri=BASALT_SCHEMA.ph_target, name="ph_target", curie=BASALT_SCHEMA.curie('ph_target'),
+                   model_uri=BASALT_SCHEMA.ph_target, domain=None, range=Optional[float])
 
-slots.phaeopigments = Slot(uri=ANALYSIS_API_SCHEMA.phaeopigments, name="phaeopigments", curie=ANALYSIS_API_SCHEMA.curie('phaeopigments'),
-                   model_uri=ANALYSIS_API_SCHEMA.phaeopigments, domain=None, range=Optional[str],
+slots.phaeopigments = Slot(uri=BASALT_SCHEMA.phaeopigments, name="phaeopigments", curie=BASALT_SCHEMA.curie('phaeopigments'),
+                   model_uri=BASALT_SCHEMA.phaeopigments, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*mg/cm3(;\s*\d+(\.\d+)?\s*mg/cm3)*$'))
 
-slots.phenotype = Slot(uri=ANALYSIS_API_SCHEMA.phenotype, name="phenotype", curie=ANALYSIS_API_SCHEMA.curie('phenotype'),
-                   model_uri=ANALYSIS_API_SCHEMA.phenotype, domain=None, range=Optional[str])
+slots.phenotype = Slot(uri=BASALT_SCHEMA.phenotype, name="phenotype", curie=BASALT_SCHEMA.curie('phenotype'),
+                   model_uri=BASALT_SCHEMA.phenotype, domain=None, range=Optional[str])
 
-slots.phosphate = Slot(uri=ANALYSIS_API_SCHEMA.phosphate, name="phosphate", curie=ANALYSIS_API_SCHEMA.curie('phosphate'),
-                   model_uri=ANALYSIS_API_SCHEMA.phosphate, domain=None, range=Optional[str],
+slots.phosphate = Slot(uri=BASALT_SCHEMA.phosphate, name="phosphate", curie=BASALT_SCHEMA.curie('phosphate'),
+                   model_uri=BASALT_SCHEMA.phosphate, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*umol/L$'))
 
-slots.phosplipid_fatt_acid = Slot(uri=ANALYSIS_API_SCHEMA.phosplipid_fatt_acid, name="phosplipid_fatt_acid", curie=ANALYSIS_API_SCHEMA.curie('phosplipid_fatt_acid'),
-                   model_uri=ANALYSIS_API_SCHEMA.phosplipid_fatt_acid, domain=None, range=Optional[str])
+slots.phosplipid_fatt_acid = Slot(uri=BASALT_SCHEMA.phosplipid_fatt_acid, name="phosplipid_fatt_acid", curie=BASALT_SCHEMA.curie('phosplipid_fatt_acid'),
+                   model_uri=BASALT_SCHEMA.phosplipid_fatt_acid, domain=None, range=Optional[str])
 
-slots.photochemical_exposure = Slot(uri=ANALYSIS_API_SCHEMA.photochemical_exposure, name="photochemical_exposure", curie=ANALYSIS_API_SCHEMA.curie('photochemical_exposure'),
-                   model_uri=ANALYSIS_API_SCHEMA.photochemical_exposure, domain=None, range=Optional[Union[str, "PhotochemicalExposureEnum"]])
+slots.photochemical_exposure = Slot(uri=BASALT_SCHEMA.photochemical_exposure, name="photochemical_exposure", curie=BASALT_SCHEMA.curie('photochemical_exposure'),
+                   model_uri=BASALT_SCHEMA.photochemical_exposure, domain=None, range=Optional[Union[str, "PhotochemicalExposureEnum"]])
 
-slots.photon_flux = Slot(uri=ANALYSIS_API_SCHEMA.photon_flux, name="photon_flux", curie=ANALYSIS_API_SCHEMA.curie('photon_flux'),
-                   model_uri=ANALYSIS_API_SCHEMA.photon_flux, domain=None, range=Optional[str],
+slots.photon_flux = Slot(uri=BASALT_SCHEMA.photon_flux, name="photon_flux", curie=BASALT_SCHEMA.curie('photon_flux'),
+                   model_uri=BASALT_SCHEMA.photon_flux, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.plant_age = Slot(uri=ANALYSIS_API_SCHEMA.plant_age, name="plant_age", curie=ANALYSIS_API_SCHEMA.curie('plant_age'),
-                   model_uri=ANALYSIS_API_SCHEMA.plant_age, domain=None, range=Optional[str],
+slots.plant_age = Slot(uri=BASALT_SCHEMA.plant_age, name="plant_age", curie=BASALT_SCHEMA.curie('plant_age'),
+                   model_uri=BASALT_SCHEMA.plant_age, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*\w+$'))
 
-slots.plant_common_name = Slot(uri=ANALYSIS_API_SCHEMA.plant_common_name, name="plant_common_name", curie=ANALYSIS_API_SCHEMA.curie('plant_common_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.plant_common_name, domain=None, range=Optional[str])
+slots.plant_common_name = Slot(uri=BASALT_SCHEMA.plant_common_name, name="plant_common_name", curie=BASALT_SCHEMA.curie('plant_common_name'),
+                   model_uri=BASALT_SCHEMA.plant_common_name, domain=None, range=Optional[str])
 
-slots.plant_disease_stat = Slot(uri=ANALYSIS_API_SCHEMA.plant_disease_stat, name="plant_disease_stat", curie=ANALYSIS_API_SCHEMA.curie('plant_disease_stat'),
-                   model_uri=ANALYSIS_API_SCHEMA.plant_disease_stat, domain=None, range=Optional[str])
+slots.plant_disease_stat = Slot(uri=BASALT_SCHEMA.plant_disease_stat, name="plant_disease_stat", curie=BASALT_SCHEMA.curie('plant_disease_stat'),
+                   model_uri=BASALT_SCHEMA.plant_disease_stat, domain=None, range=Optional[str])
 
-slots.plant_dry_mass = Slot(uri=ANALYSIS_API_SCHEMA.plant_dry_mass, name="plant_dry_mass", curie=ANALYSIS_API_SCHEMA.curie('plant_dry_mass'),
-                   model_uri=ANALYSIS_API_SCHEMA.plant_dry_mass, domain=None, range=Optional[str],
+slots.plant_dry_mass = Slot(uri=BASALT_SCHEMA.plant_dry_mass, name="plant_dry_mass", curie=BASALT_SCHEMA.curie('plant_dry_mass'),
+                   model_uri=BASALT_SCHEMA.plant_dry_mass, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(kg|g)$'))
 
-slots.plant_genotype = Slot(uri=ANALYSIS_API_SCHEMA.plant_genotype, name="plant_genotype", curie=ANALYSIS_API_SCHEMA.curie('plant_genotype'),
-                   model_uri=ANALYSIS_API_SCHEMA.plant_genotype, domain=None, range=Optional[str])
+slots.plant_genotype = Slot(uri=BASALT_SCHEMA.plant_genotype, name="plant_genotype", curie=BASALT_SCHEMA.curie('plant_genotype'),
+                   model_uri=BASALT_SCHEMA.plant_genotype, domain=None, range=Optional[str])
 
-slots.plant_growth_med = Slot(uri=ANALYSIS_API_SCHEMA.plant_growth_med, name="plant_growth_med", curie=ANALYSIS_API_SCHEMA.curie('plant_growth_med'),
-                   model_uri=ANALYSIS_API_SCHEMA.plant_growth_med, domain=None, range=Optional[str],
+slots.plant_growth_med = Slot(uri=BASALT_SCHEMA.plant_growth_med, name="plant_growth_med", curie=BASALT_SCHEMA.curie('plant_growth_med'),
+                   model_uri=BASALT_SCHEMA.plant_growth_med, domain=None, range=Optional[str],
                    pattern=re.compile(r'^_*\s*[a-zA-Z\s]+\[PECO:\d+\]$'))
 
-slots.plant_product = Slot(uri=ANALYSIS_API_SCHEMA.plant_product, name="plant_product", curie=ANALYSIS_API_SCHEMA.curie('plant_product'),
-                   model_uri=ANALYSIS_API_SCHEMA.plant_product, domain=None, range=Optional[str])
+slots.plant_product = Slot(uri=BASALT_SCHEMA.plant_product, name="plant_product", curie=BASALT_SCHEMA.curie('plant_product'),
+                   model_uri=BASALT_SCHEMA.plant_product, domain=None, range=Optional[str])
 
-slots.plant_sex = Slot(uri=ANALYSIS_API_SCHEMA.plant_sex, name="plant_sex", curie=ANALYSIS_API_SCHEMA.curie('plant_sex'),
-                   model_uri=ANALYSIS_API_SCHEMA.plant_sex, domain=None, range=Optional[Union[str, "PlantSexEnum"]])
+slots.plant_sex = Slot(uri=BASALT_SCHEMA.plant_sex, name="plant_sex", curie=BASALT_SCHEMA.curie('plant_sex'),
+                   model_uri=BASALT_SCHEMA.plant_sex, domain=None, range=Optional[Union[str, "PlantSexEnum"]])
 
-slots.plant_struc = Slot(uri=ANALYSIS_API_SCHEMA.plant_struc, name="plant_struc", curie=ANALYSIS_API_SCHEMA.curie('plant_struc'),
-                   model_uri=ANALYSIS_API_SCHEMA.plant_struc, domain=None, range=Optional[Union[str, "PlantStructureEnum"]])
+slots.plant_struc = Slot(uri=BASALT_SCHEMA.plant_struc, name="plant_struc", curie=BASALT_SCHEMA.curie('plant_struc'),
+                   model_uri=BASALT_SCHEMA.plant_struc, domain=None, range=Optional[Union[str, "PlantStructureEnum"]])
 
-slots.plant_taxid = Slot(uri=ANALYSIS_API_SCHEMA.plant_taxid, name="plant_taxid", curie=ANALYSIS_API_SCHEMA.curie('plant_taxid'),
-                   model_uri=ANALYSIS_API_SCHEMA.plant_taxid, domain=None, range=Optional[str])
+slots.plant_taxid = Slot(uri=BASALT_SCHEMA.plant_taxid, name="plant_taxid", curie=BASALT_SCHEMA.curie('plant_taxid'),
+                   model_uri=BASALT_SCHEMA.plant_taxid, domain=None, range=Optional[str])
 
-slots.plant_wet_mass = Slot(uri=ANALYSIS_API_SCHEMA.plant_wet_mass, name="plant_wet_mass", curie=ANALYSIS_API_SCHEMA.curie('plant_wet_mass'),
-                   model_uri=ANALYSIS_API_SCHEMA.plant_wet_mass, domain=None, range=Optional[str],
+slots.plant_wet_mass = Slot(uri=BASALT_SCHEMA.plant_wet_mass, name="plant_wet_mass", curie=BASALT_SCHEMA.curie('plant_wet_mass'),
+                   model_uri=BASALT_SCHEMA.plant_wet_mass, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(kg|g)$'))
 
-slots.plate_average = Slot(uri=ANALYSIS_API_SCHEMA.plate_average, name="plate_average", curie=ANALYSIS_API_SCHEMA.curie('plate_average'),
-                   model_uri=ANALYSIS_API_SCHEMA.plate_average, domain=None, range=Optional[float])
+slots.plate_average = Slot(uri=BASALT_SCHEMA.plate_average, name="plate_average", curie=BASALT_SCHEMA.curie('plate_average'),
+                   model_uri=BASALT_SCHEMA.plate_average, domain=None, range=Optional[float])
 
-slots.plate_barcode = Slot(uri=ANALYSIS_API_SCHEMA.plate_barcode, name="plate_barcode", curie=ANALYSIS_API_SCHEMA.curie('plate_barcode'),
-                   model_uri=ANALYSIS_API_SCHEMA.plate_barcode, domain=None, range=Optional[str])
+slots.plate_barcode = Slot(uri=BASALT_SCHEMA.plate_barcode, name="plate_barcode", curie=BASALT_SCHEMA.curie('plate_barcode'),
+                   model_uri=BASALT_SCHEMA.plate_barcode, domain=None, range=Optional[str])
 
-slots.plate_lot = Slot(uri=ANALYSIS_API_SCHEMA.plate_lot, name="plate_lot", curie=ANALYSIS_API_SCHEMA.curie('plate_lot'),
-                   model_uri=ANALYSIS_API_SCHEMA.plate_lot, domain=None, range=Optional[str])
+slots.plate_lot = Slot(uri=BASALT_SCHEMA.plate_lot, name="plate_lot", curie=BASALT_SCHEMA.curie('plate_lot'),
+                   model_uri=BASALT_SCHEMA.plate_lot, domain=None, range=Optional[str])
 
-slots.plate_reader_model = Slot(uri=ANALYSIS_API_SCHEMA.plate_reader_model, name="plate_reader_model", curie=ANALYSIS_API_SCHEMA.curie('plate_reader_model'),
-                   model_uri=ANALYSIS_API_SCHEMA.plate_reader_model, domain=None, range=Optional[str])
+slots.plate_reader_model = Slot(uri=BASALT_SCHEMA.plate_reader_model, name="plate_reader_model", curie=BASALT_SCHEMA.curie('plate_reader_model'),
+                   model_uri=BASALT_SCHEMA.plate_reader_model, domain=None, range=Optional[str])
 
-slots.plate_type = Slot(uri=ANALYSIS_API_SCHEMA.plate_type, name="plate_type", curie=ANALYSIS_API_SCHEMA.curie('plate_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.plate_type, domain=None, range=str)
+slots.plate_type = Slot(uri=BASALT_SCHEMA.plate_type, name="plate_type", curie=BASALT_SCHEMA.curie('plate_type'),
+                   model_uri=BASALT_SCHEMA.plate_type, domain=None, range=str)
 
-slots.polarity = Slot(uri=ANALYSIS_API_SCHEMA.polarity, name="polarity", curie=ANALYSIS_API_SCHEMA.curie('polarity'),
-                   model_uri=ANALYSIS_API_SCHEMA.polarity, domain=None, range=Union[str, "PolarityEnum"])
+slots.polarity = Slot(uri=BASALT_SCHEMA.polarity, name="polarity", curie=BASALT_SCHEMA.curie('polarity'),
+                   model_uri=BASALT_SCHEMA.polarity, domain=None, range=Union[str, "PolarityEnum"])
 
-slots.porosity = Slot(uri=ANALYSIS_API_SCHEMA.porosity, name="porosity", curie=ANALYSIS_API_SCHEMA.curie('porosity'),
-                   model_uri=ANALYSIS_API_SCHEMA.porosity, domain=None, range=Optional[str],
+slots.porosity = Slot(uri=BASALT_SCHEMA.porosity, name="porosity", curie=BASALT_SCHEMA.curie('porosity'),
+                   model_uri=BASALT_SCHEMA.porosity, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*percent$'))
 
-slots.potassium = Slot(uri=ANALYSIS_API_SCHEMA.potassium, name="potassium", curie=ANALYSIS_API_SCHEMA.curie('potassium'),
-                   model_uri=ANALYSIS_API_SCHEMA.potassium, domain=None, range=Optional[str],
+slots.potassium = Slot(uri=BASALT_SCHEMA.potassium, name="potassium", curie=BASALT_SCHEMA.curie('potassium'),
+                   model_uri=BASALT_SCHEMA.potassium, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(mg/L|ppm)$'))
 
-slots.pre_treatment = Slot(uri=ANALYSIS_API_SCHEMA.pre_treatment, name="pre_treatment", curie=ANALYSIS_API_SCHEMA.curie('pre_treatment'),
-                   model_uri=ANALYSIS_API_SCHEMA.pre_treatment, domain=None, range=Optional[str])
+slots.pre_treatment = Slot(uri=BASALT_SCHEMA.pre_treatment, name="pre_treatment", curie=BASALT_SCHEMA.curie('pre_treatment'),
+                   model_uri=BASALT_SCHEMA.pre_treatment, domain=None, range=Optional[str])
 
-slots.preparation_date = Slot(uri=ANALYSIS_API_SCHEMA.preparation_date, name="preparation_date", curie=ANALYSIS_API_SCHEMA.curie('preparation_date'),
-                   model_uri=ANALYSIS_API_SCHEMA.preparation_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.preparation_date = Slot(uri=BASALT_SCHEMA.preparation_date, name="preparation_date", curie=BASALT_SCHEMA.curie('preparation_date'),
+                   model_uri=BASALT_SCHEMA.preparation_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.pressure = Slot(uri=ANALYSIS_API_SCHEMA.pressure, name="pressure", curie=ANALYSIS_API_SCHEMA.curie('pressure'),
-                   model_uri=ANALYSIS_API_SCHEMA.pressure, domain=None, range=Optional[str],
+slots.pressure = Slot(uri=BASALT_SCHEMA.pressure, name="pressure", curie=BASALT_SCHEMA.curie('pressure'),
+                   model_uri=BASALT_SCHEMA.pressure, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*atm$'))
 
-slots.pressure_control = Slot(uri=ANALYSIS_API_SCHEMA.pressure_control, name="pressure_control", curie=ANALYSIS_API_SCHEMA.curie('pressure_control'),
-                   model_uri=ANALYSIS_API_SCHEMA.pressure_control, domain=None, range=Optional[str],
+slots.pressure_control = Slot(uri=BASALT_SCHEMA.pressure_control, name="pressure_control", curie=BASALT_SCHEMA.curie('pressure_control'),
+                   model_uri=BASALT_SCHEMA.pressure_control, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*Pa$'))
 
-slots.previous_land_use = Slot(uri=ANALYSIS_API_SCHEMA.previous_land_use, name="previous_land_use", curie=ANALYSIS_API_SCHEMA.curie('previous_land_use'),
-                   model_uri=ANALYSIS_API_SCHEMA.previous_land_use, domain=None, range=Optional[str])
+slots.previous_land_use = Slot(uri=BASALT_SCHEMA.previous_land_use, name="previous_land_use", curie=BASALT_SCHEMA.curie('previous_land_use'),
+                   model_uri=BASALT_SCHEMA.previous_land_use, domain=None, range=Optional[str])
 
-slots.previous_land_use_meth = Slot(uri=ANALYSIS_API_SCHEMA.previous_land_use_meth, name="previous_land_use_meth", curie=ANALYSIS_API_SCHEMA.curie('previous_land_use_meth'),
-                   model_uri=ANALYSIS_API_SCHEMA.previous_land_use_meth, domain=None, range=Optional[str])
+slots.previous_land_use_meth = Slot(uri=BASALT_SCHEMA.previous_land_use_meth, name="previous_land_use_meth", curie=BASALT_SCHEMA.curie('previous_land_use_meth'),
+                   model_uri=BASALT_SCHEMA.previous_land_use_meth, domain=None, range=Optional[str])
 
-slots.primary_prod = Slot(uri=ANALYSIS_API_SCHEMA.primary_prod, name="primary_prod", curie=ANALYSIS_API_SCHEMA.curie('primary_prod'),
-                   model_uri=ANALYSIS_API_SCHEMA.primary_prod, domain=None, range=Optional[str],
+slots.primary_prod = Slot(uri=BASALT_SCHEMA.primary_prod, name="primary_prod", curie=BASALT_SCHEMA.curie('primary_prod'),
+                   model_uri=BASALT_SCHEMA.primary_prod, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.primary_treatment = Slot(uri=ANALYSIS_API_SCHEMA.primary_treatment, name="primary_treatment", curie=ANALYSIS_API_SCHEMA.curie('primary_treatment'),
-                   model_uri=ANALYSIS_API_SCHEMA.primary_treatment, domain=None, range=Optional[str])
+slots.primary_treatment = Slot(uri=BASALT_SCHEMA.primary_treatment, name="primary_treatment", curie=BASALT_SCHEMA.curie('primary_treatment'),
+                   model_uri=BASALT_SCHEMA.primary_treatment, domain=None, range=Optional[str])
 
-slots.priority_order = Slot(uri=ANALYSIS_API_SCHEMA.priority_order, name="priority_order", curie=ANALYSIS_API_SCHEMA.curie('priority_order'),
-                   model_uri=ANALYSIS_API_SCHEMA.priority_order, domain=None, range=Optional[float])
+slots.priority_order = Slot(uri=BASALT_SCHEMA.priority_order, name="priority_order", curie=BASALT_SCHEMA.curie('priority_order'),
+                   model_uri=BASALT_SCHEMA.priority_order, domain=None, range=Optional[float])
 
-slots.produced_by_ms_run = Slot(uri=ANALYSIS_API_SCHEMA.produced_by_ms_run, name="produced_by_ms_run", curie=ANALYSIS_API_SCHEMA.curie('produced_by_ms_run'),
-                   model_uri=ANALYSIS_API_SCHEMA.produced_by_ms_run, domain=None, range=Optional[Union[str, MassSpectrometryDataGenerationActivityId]])
+slots.produced_by_ms_run = Slot(uri=BASALT_SCHEMA.produced_by_ms_run, name="produced_by_ms_run", curie=BASALT_SCHEMA.curie('produced_by_ms_run'),
+                   model_uri=BASALT_SCHEMA.produced_by_ms_run, domain=None, range=Optional[Union[str, MassSpectrometryDataGenerationActivityId]])
 
-slots.produced_by_sequencing_activity = Slot(uri=ANALYSIS_API_SCHEMA.produced_by_sequencing_activity, name="produced_by_sequencing_activity", curie=ANALYSIS_API_SCHEMA.curie('produced_by_sequencing_activity'),
-                   model_uri=ANALYSIS_API_SCHEMA.produced_by_sequencing_activity, domain=None, range=Optional[Union[str, NucleotideSequencingId]])
+slots.produced_by_sequencing_activity = Slot(uri=BASALT_SCHEMA.produced_by_sequencing_activity, name="produced_by_sequencing_activity", curie=BASALT_SCHEMA.curie('produced_by_sequencing_activity'),
+                   model_uri=BASALT_SCHEMA.produced_by_sequencing_activity, domain=None, range=Optional[Union[str, NucleotideSequencingId]])
 
-slots.product_name = Slot(uri=ANALYSIS_API_SCHEMA.product_name, name="product_name", curie=ANALYSIS_API_SCHEMA.curie('product_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.product_name, domain=None, range=Optional[str])
+slots.product_name = Slot(uri=BASALT_SCHEMA.product_name, name="product_name", curie=BASALT_SCHEMA.curie('product_name'),
+                   model_uri=BASALT_SCHEMA.product_name, domain=None, range=Optional[str])
 
-slots.production_method = Slot(uri=ANALYSIS_API_SCHEMA.production_method, name="production_method", curie=ANALYSIS_API_SCHEMA.curie('production_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.production_method, domain=None, range=Optional[str])
+slots.production_method = Slot(uri=BASALT_SCHEMA.production_method, name="production_method", curie=BASALT_SCHEMA.curie('production_method'),
+                   model_uri=BASALT_SCHEMA.production_method, domain=None, range=Optional[str])
 
-slots.profile_position = Slot(uri=ANALYSIS_API_SCHEMA.profile_position, name="profile_position", curie=ANALYSIS_API_SCHEMA.curie('profile_position'),
-                   model_uri=ANALYSIS_API_SCHEMA.profile_position, domain=None, range=Optional[Union[str, "ProfilePositionEnum"]])
+slots.profile_position = Slot(uri=BASALT_SCHEMA.profile_position, name="profile_position", curie=BASALT_SCHEMA.curie('profile_position'),
+                   model_uri=BASALT_SCHEMA.profile_position, domain=None, range=Optional[Union[str, "ProfilePositionEnum"]])
 
-slots.project = Slot(uri=ANALYSIS_API_SCHEMA.project, name="project", curie=ANALYSIS_API_SCHEMA.curie('project'),
-                   model_uri=ANALYSIS_API_SCHEMA.project, domain=None, range=Optional[int])
+slots.project = Slot(uri=BASALT_SCHEMA.project, name="project", curie=BASALT_SCHEMA.curie('project'),
+                   model_uri=BASALT_SCHEMA.project, domain=None, range=Optional[int])
 
-slots.propagation = Slot(uri=ANALYSIS_API_SCHEMA.propagation, name="propagation", curie=ANALYSIS_API_SCHEMA.curie('propagation'),
-                   model_uri=ANALYSIS_API_SCHEMA.propagation, domain=None, range=Optional[str])
+slots.propagation = Slot(uri=BASALT_SCHEMA.propagation, name="propagation", curie=BASALT_SCHEMA.curie('propagation'),
+                   model_uri=BASALT_SCHEMA.propagation, domain=None, range=Optional[str])
 
-slots.protocol_url = Slot(uri=ANALYSIS_API_SCHEMA.protocol_url, name="protocol_url", curie=ANALYSIS_API_SCHEMA.curie('protocol_url'),
-                   model_uri=ANALYSIS_API_SCHEMA.protocol_url, domain=None, range=Optional[str])
+slots.protocol_url = Slot(uri=BASALT_SCHEMA.protocol_url, name="protocol_url", curie=BASALT_SCHEMA.curie('protocol_url'),
+                   model_uri=BASALT_SCHEMA.protocol_url, domain=None, range=Optional[str])
 
-slots.protocol_version = Slot(uri=ANALYSIS_API_SCHEMA.protocol_version, name="protocol_version", curie=ANALYSIS_API_SCHEMA.curie('protocol_version'),
-                   model_uri=ANALYSIS_API_SCHEMA.protocol_version, domain=None, range=Optional[str])
+slots.protocol_version = Slot(uri=BASALT_SCHEMA.protocol_version, name="protocol_version", curie=BASALT_SCHEMA.curie('protocol_version'),
+                   model_uri=BASALT_SCHEMA.protocol_version, domain=None, range=Optional[str])
 
-slots.provider_name = Slot(uri=ANALYSIS_API_SCHEMA.provider_name, name="provider_name", curie=ANALYSIS_API_SCHEMA.curie('provider_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.provider_name, domain=None, range=Optional[Union[str, ControlledTermValueId]])
+slots.provider_name = Slot(uri=BASALT_SCHEMA.provider_name, name="provider_name", curie=BASALT_SCHEMA.curie('provider_name'),
+                   model_uri=BASALT_SCHEMA.provider_name, domain=None, range=Optional[Union[str, ControlledTermValueId]])
 
-slots.purchased_material_type = Slot(uri=ANALYSIS_API_SCHEMA.purchased_material_type, name="purchased_material_type", curie=ANALYSIS_API_SCHEMA.curie('purchased_material_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.purchased_material_type, domain=None, range=str)
+slots.purchased_material_type = Slot(uri=BASALT_SCHEMA.purchased_material_type, name="purchased_material_type", curie=BASALT_SCHEMA.curie('purchased_material_type'),
+                   model_uri=BASALT_SCHEMA.purchased_material_type, domain=None, range=str)
 
-slots.radiation_regm = Slot(uri=ANALYSIS_API_SCHEMA.radiation_regm, name="radiation_regm", curie=ANALYSIS_API_SCHEMA.curie('radiation_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.radiation_regm, domain=None, range=Optional[str])
+slots.radiation_regm = Slot(uri=BASALT_SCHEMA.radiation_regm, name="radiation_regm", curie=BASALT_SCHEMA.curie('radiation_regm'),
+                   model_uri=BASALT_SCHEMA.radiation_regm, domain=None, range=Optional[str])
 
-slots.rainfall_regm = Slot(uri=ANALYSIS_API_SCHEMA.rainfall_regm, name="rainfall_regm", curie=ANALYSIS_API_SCHEMA.curie('rainfall_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.rainfall_regm, domain=None, range=Optional[str])
+slots.rainfall_regm = Slot(uri=BASALT_SCHEMA.rainfall_regm, name="rainfall_regm", curie=BASALT_SCHEMA.curie('rainfall_regm'),
+                   model_uri=BASALT_SCHEMA.rainfall_regm, domain=None, range=Optional[str])
 
-slots.raw_fasta_url = Slot(uri=ANALYSIS_API_SCHEMA.raw_fasta_url, name="raw_fasta_url", curie=ANALYSIS_API_SCHEMA.curie('raw_fasta_url'),
-                   model_uri=ANALYSIS_API_SCHEMA.raw_fasta_url, domain=None, range=Optional[str])
+slots.raw_fasta_url = Slot(uri=BASALT_SCHEMA.raw_fasta_url, name="raw_fasta_url", curie=BASALT_SCHEMA.curie('raw_fasta_url'),
+                   model_uri=BASALT_SCHEMA.raw_fasta_url, domain=None, range=Optional[str])
 
-slots.reactor_type = Slot(uri=ANALYSIS_API_SCHEMA.reactor_type, name="reactor_type", curie=ANALYSIS_API_SCHEMA.curie('reactor_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.reactor_type, domain=None, range=Optional[str])
+slots.reactor_type = Slot(uri=BASALT_SCHEMA.reactor_type, name="reactor_type", curie=BASALT_SCHEMA.curie('reactor_type'),
+                   model_uri=BASALT_SCHEMA.reactor_type, domain=None, range=Optional[str])
 
-slots.redox_potential = Slot(uri=ANALYSIS_API_SCHEMA.redox_potential, name="redox_potential", curie=ANALYSIS_API_SCHEMA.curie('redox_potential'),
-                   model_uri=ANALYSIS_API_SCHEMA.redox_potential, domain=None, range=Optional[str],
+slots.redox_potential = Slot(uri=BASALT_SCHEMA.redox_potential, name="redox_potential", curie=BASALT_SCHEMA.curie('redox_potential'),
+                   model_uri=BASALT_SCHEMA.redox_potential, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*mV$'))
 
-slots.ref_biomaterial = Slot(uri=ANALYSIS_API_SCHEMA.ref_biomaterial, name="ref_biomaterial", curie=ANALYSIS_API_SCHEMA.curie('ref_biomaterial'),
-                   model_uri=ANALYSIS_API_SCHEMA.ref_biomaterial, domain=None, range=Optional[str])
+slots.ref_biomaterial = Slot(uri=BASALT_SCHEMA.ref_biomaterial, name="ref_biomaterial", curie=BASALT_SCHEMA.curie('ref_biomaterial'),
+                   model_uri=BASALT_SCHEMA.ref_biomaterial, domain=None, range=Optional[str])
 
-slots.replicate = Slot(uri=ANALYSIS_API_SCHEMA.replicate, name="replicate", curie=ANALYSIS_API_SCHEMA.curie('replicate'),
-                   model_uri=ANALYSIS_API_SCHEMA.replicate, domain=None, range=Optional[int])
+slots.replicate = Slot(uri=BASALT_SCHEMA.replicate, name="replicate", curie=BASALT_SCHEMA.curie('replicate'),
+                   model_uri=BASALT_SCHEMA.replicate, domain=None, range=Optional[int])
 
-slots.replicate_bio = Slot(uri=ANALYSIS_API_SCHEMA.replicate_bio, name="replicate_bio", curie=ANALYSIS_API_SCHEMA.curie('replicate_bio'),
-                   model_uri=ANALYSIS_API_SCHEMA.replicate_bio, domain=None, range=Optional[int])
+slots.replicate_bio = Slot(uri=BASALT_SCHEMA.replicate_bio, name="replicate_bio", curie=BASALT_SCHEMA.curie('replicate_bio'),
+                   model_uri=BASALT_SCHEMA.replicate_bio, domain=None, range=Optional[int])
 
-slots.replicate_number = Slot(uri=ANALYSIS_API_SCHEMA.replicate_number, name="replicate_number", curie=ANALYSIS_API_SCHEMA.curie('replicate_number'),
-                   model_uri=ANALYSIS_API_SCHEMA.replicate_number, domain=None, range=Optional[int])
+slots.replicate_number = Slot(uri=BASALT_SCHEMA.replicate_number, name="replicate_number", curie=BASALT_SCHEMA.curie('replicate_number'),
+                   model_uri=BASALT_SCHEMA.replicate_number, domain=None, range=Optional[int])
 
-slots.replicate_tech = Slot(uri=ANALYSIS_API_SCHEMA.replicate_tech, name="replicate_tech", curie=ANALYSIS_API_SCHEMA.curie('replicate_tech'),
-                   model_uri=ANALYSIS_API_SCHEMA.replicate_tech, domain=None, range=Optional[int])
+slots.replicate_tech = Slot(uri=BASALT_SCHEMA.replicate_tech, name="replicate_tech", curie=BASALT_SCHEMA.curie('replicate_tech'),
+                   model_uri=BASALT_SCHEMA.replicate_tech, domain=None, range=Optional[int])
 
-slots.resolution = Slot(uri=ANALYSIS_API_SCHEMA.resolution, name="resolution", curie=ANALYSIS_API_SCHEMA.curie('resolution'),
-                   model_uri=ANALYSIS_API_SCHEMA.resolution, domain=None, range=Union[str, "MassSpecResolutionEnum"])
+slots.resolution = Slot(uri=BASALT_SCHEMA.resolution, name="resolution", curie=BASALT_SCHEMA.curie('resolution'),
+                   model_uri=BASALT_SCHEMA.resolution, domain=None, range=Union[str, "MassSpecResolutionEnum"])
 
-slots.results_from_ms_processing = Slot(uri=ANALYSIS_API_SCHEMA.results_from_ms_processing, name="results_from_ms_processing", curie=ANALYSIS_API_SCHEMA.curie('results_from_ms_processing'),
-                   model_uri=ANALYSIS_API_SCHEMA.results_from_ms_processing, domain=None, range=Optional[Union[str, MassSpectrometryDataProcessingActivityId]])
+slots.results_from_ms_processing = Slot(uri=BASALT_SCHEMA.results_from_ms_processing, name="results_from_ms_processing", curie=BASALT_SCHEMA.curie('results_from_ms_processing'),
+                   model_uri=BASALT_SCHEMA.results_from_ms_processing, domain=None, range=Optional[Union[str, MassSpectrometryDataProcessingActivityId]])
 
-slots.root_cond = Slot(uri=ANALYSIS_API_SCHEMA.root_cond, name="root_cond", curie=ANALYSIS_API_SCHEMA.curie('root_cond'),
-                   model_uri=ANALYSIS_API_SCHEMA.root_cond, domain=None, range=Optional[str])
+slots.root_cond = Slot(uri=BASALT_SCHEMA.root_cond, name="root_cond", curie=BASALT_SCHEMA.curie('root_cond'),
+                   model_uri=BASALT_SCHEMA.root_cond, domain=None, range=Optional[str])
 
-slots.root_med_carbon = Slot(uri=ANALYSIS_API_SCHEMA.root_med_carbon, name="root_med_carbon", curie=ANALYSIS_API_SCHEMA.curie('root_med_carbon'),
-                   model_uri=ANALYSIS_API_SCHEMA.root_med_carbon, domain=None, range=Optional[str])
+slots.root_med_carbon = Slot(uri=BASALT_SCHEMA.root_med_carbon, name="root_med_carbon", curie=BASALT_SCHEMA.curie('root_med_carbon'),
+                   model_uri=BASALT_SCHEMA.root_med_carbon, domain=None, range=Optional[str])
 
-slots.root_med_macronutr = Slot(uri=ANALYSIS_API_SCHEMA.root_med_macronutr, name="root_med_macronutr", curie=ANALYSIS_API_SCHEMA.curie('root_med_macronutr'),
-                   model_uri=ANALYSIS_API_SCHEMA.root_med_macronutr, domain=None, range=Optional[str])
+slots.root_med_macronutr = Slot(uri=BASALT_SCHEMA.root_med_macronutr, name="root_med_macronutr", curie=BASALT_SCHEMA.curie('root_med_macronutr'),
+                   model_uri=BASALT_SCHEMA.root_med_macronutr, domain=None, range=Optional[str])
 
-slots.root_med_micronutr = Slot(uri=ANALYSIS_API_SCHEMA.root_med_micronutr, name="root_med_micronutr", curie=ANALYSIS_API_SCHEMA.curie('root_med_micronutr'),
-                   model_uri=ANALYSIS_API_SCHEMA.root_med_micronutr, domain=None, range=Optional[str])
+slots.root_med_micronutr = Slot(uri=BASALT_SCHEMA.root_med_micronutr, name="root_med_micronutr", curie=BASALT_SCHEMA.curie('root_med_micronutr'),
+                   model_uri=BASALT_SCHEMA.root_med_micronutr, domain=None, range=Optional[str])
 
-slots.root_med_ph = Slot(uri=ANALYSIS_API_SCHEMA.root_med_ph, name="root_med_ph", curie=ANALYSIS_API_SCHEMA.curie('root_med_ph'),
-                   model_uri=ANALYSIS_API_SCHEMA.root_med_ph, domain=None, range=Optional[float])
+slots.root_med_ph = Slot(uri=BASALT_SCHEMA.root_med_ph, name="root_med_ph", curie=BASALT_SCHEMA.curie('root_med_ph'),
+                   model_uri=BASALT_SCHEMA.root_med_ph, domain=None, range=Optional[float])
 
-slots.root_med_regl = Slot(uri=ANALYSIS_API_SCHEMA.root_med_regl, name="root_med_regl", curie=ANALYSIS_API_SCHEMA.curie('root_med_regl'),
-                   model_uri=ANALYSIS_API_SCHEMA.root_med_regl, domain=None, range=Optional[str])
+slots.root_med_regl = Slot(uri=BASALT_SCHEMA.root_med_regl, name="root_med_regl", curie=BASALT_SCHEMA.curie('root_med_regl'),
+                   model_uri=BASALT_SCHEMA.root_med_regl, domain=None, range=Optional[str])
 
-slots.root_med_solid = Slot(uri=ANALYSIS_API_SCHEMA.root_med_solid, name="root_med_solid", curie=ANALYSIS_API_SCHEMA.curie('root_med_solid'),
-                   model_uri=ANALYSIS_API_SCHEMA.root_med_solid, domain=None, range=Optional[str])
+slots.root_med_solid = Slot(uri=BASALT_SCHEMA.root_med_solid, name="root_med_solid", curie=BASALT_SCHEMA.curie('root_med_solid'),
+                   model_uri=BASALT_SCHEMA.root_med_solid, domain=None, range=Optional[str])
 
-slots.root_med_suppl = Slot(uri=ANALYSIS_API_SCHEMA.root_med_suppl, name="root_med_suppl", curie=ANALYSIS_API_SCHEMA.curie('root_med_suppl'),
-                   model_uri=ANALYSIS_API_SCHEMA.root_med_suppl, domain=None, range=Optional[str])
+slots.root_med_suppl = Slot(uri=BASALT_SCHEMA.root_med_suppl, name="root_med_suppl", curie=BASALT_SCHEMA.curie('root_med_suppl'),
+                   model_uri=BASALT_SCHEMA.root_med_suppl, domain=None, range=Optional[str])
 
-slots.s3_base_url = Slot(uri=ANALYSIS_API_SCHEMA.s3_base_url, name="s3_base_url", curie=ANALYSIS_API_SCHEMA.curie('s3_base_url'),
-                   model_uri=ANALYSIS_API_SCHEMA.s3_base_url, domain=None, range=Optional[str])
+slots.s3_base_url = Slot(uri=BASALT_SCHEMA.s3_base_url, name="s3_base_url", curie=BASALT_SCHEMA.curie('s3_base_url'),
+                   model_uri=BASALT_SCHEMA.s3_base_url, domain=None, range=Optional[str])
 
-slots.s3_bucket = Slot(uri=ANALYSIS_API_SCHEMA.s3_bucket, name="s3_bucket", curie=ANALYSIS_API_SCHEMA.curie('s3_bucket'),
-                   model_uri=ANALYSIS_API_SCHEMA.s3_bucket, domain=None, range=Optional[str])
+slots.s3_bucket = Slot(uri=BASALT_SCHEMA.s3_bucket, name="s3_bucket", curie=BASALT_SCHEMA.curie('s3_bucket'),
+                   model_uri=BASALT_SCHEMA.s3_bucket, domain=None, range=Optional[str])
 
-slots.s3_key = Slot(uri=ANALYSIS_API_SCHEMA.s3_key, name="s3_key", curie=ANALYSIS_API_SCHEMA.curie('s3_key'),
-                   model_uri=ANALYSIS_API_SCHEMA.s3_key, domain=None, range=str)
+slots.s3_key = Slot(uri=BASALT_SCHEMA.s3_key, name="s3_key", curie=BASALT_SCHEMA.curie('s3_key'),
+                   model_uri=BASALT_SCHEMA.s3_key, domain=None, range=str)
 
-slots.salinity = Slot(uri=ANALYSIS_API_SCHEMA.salinity, name="salinity", curie=ANALYSIS_API_SCHEMA.curie('salinity'),
-                   model_uri=ANALYSIS_API_SCHEMA.salinity, domain=None, range=Optional[str],
+slots.salinity = Slot(uri=BASALT_SCHEMA.salinity, name="salinity", curie=BASALT_SCHEMA.curie('salinity'),
+                   model_uri=BASALT_SCHEMA.salinity, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(practical salinity unit|percent)$'))
 
-slots.salinity_method = Slot(uri=ANALYSIS_API_SCHEMA.salinity_method, name="salinity_method", curie=ANALYSIS_API_SCHEMA.curie('salinity_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.salinity_method, domain=None, range=Optional[str])
+slots.salinity_method = Slot(uri=BASALT_SCHEMA.salinity_method, name="salinity_method", curie=BASALT_SCHEMA.curie('salinity_method'),
+                   model_uri=BASALT_SCHEMA.salinity_method, domain=None, range=Optional[str])
 
-slots.salt_regm = Slot(uri=ANALYSIS_API_SCHEMA.salt_regm, name="salt_regm", curie=ANALYSIS_API_SCHEMA.curie('salt_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.salt_regm, domain=None, range=Optional[str])
+slots.salt_regm = Slot(uri=BASALT_SCHEMA.salt_regm, name="salt_regm", curie=BASALT_SCHEMA.curie('salt_regm'),
+                   model_uri=BASALT_SCHEMA.salt_regm, domain=None, range=Optional[str])
 
-slots.samp_capt_status = Slot(uri=ANALYSIS_API_SCHEMA.samp_capt_status, name="samp_capt_status", curie=ANALYSIS_API_SCHEMA.curie('samp_capt_status'),
-                   model_uri=ANALYSIS_API_SCHEMA.samp_capt_status, domain=None, range=Optional[str])
+slots.samp_capt_status = Slot(uri=BASALT_SCHEMA.samp_capt_status, name="samp_capt_status", curie=BASALT_SCHEMA.curie('samp_capt_status'),
+                   model_uri=BASALT_SCHEMA.samp_capt_status, domain=None, range=Optional[str])
 
-slots.samp_dis_stage = Slot(uri=ANALYSIS_API_SCHEMA.samp_dis_stage, name="samp_dis_stage", curie=ANALYSIS_API_SCHEMA.curie('samp_dis_stage'),
-                   model_uri=ANALYSIS_API_SCHEMA.samp_dis_stage, domain=None, range=Optional[str])
+slots.samp_dis_stage = Slot(uri=BASALT_SCHEMA.samp_dis_stage, name="samp_dis_stage", curie=BASALT_SCHEMA.curie('samp_dis_stage'),
+                   model_uri=BASALT_SCHEMA.samp_dis_stage, domain=None, range=Optional[str])
 
-slots.samp_store_temp = Slot(uri=ANALYSIS_API_SCHEMA.samp_store_temp, name="samp_store_temp", curie=ANALYSIS_API_SCHEMA.curie('samp_store_temp'),
-                   model_uri=ANALYSIS_API_SCHEMA.samp_store_temp, domain=None, range=Optional[Union[str, "SampleStoreTempEnum"]])
+slots.samp_store_temp = Slot(uri=BASALT_SCHEMA.samp_store_temp, name="samp_store_temp", curie=BASALT_SCHEMA.curie('samp_store_temp'),
+                   model_uri=BASALT_SCHEMA.samp_store_temp, domain=None, range=Optional[Union[str, "SampleStoreTempEnum"]])
 
-slots.sample_collected = Slot(uri=ANALYSIS_API_SCHEMA.sample_collected, name="sample_collected", curie=ANALYSIS_API_SCHEMA.curie('sample_collected'),
-                   model_uri=ANALYSIS_API_SCHEMA.sample_collected, domain=None, range=Optional[str],
+slots.sample_collected = Slot(uri=BASALT_SCHEMA.sample_collected, name="sample_collected", curie=BASALT_SCHEMA.curie('sample_collected'),
+                   model_uri=BASALT_SCHEMA.sample_collected, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.sample_collection_dev = Slot(uri=ANALYSIS_API_SCHEMA.sample_collection_dev, name="sample_collection_dev", curie=ANALYSIS_API_SCHEMA.curie('sample_collection_dev'),
-                   model_uri=ANALYSIS_API_SCHEMA.sample_collection_dev, domain=None, range=Optional[str])
+slots.sample_collection_dev = Slot(uri=BASALT_SCHEMA.sample_collection_dev, name="sample_collection_dev", curie=BASALT_SCHEMA.curie('sample_collection_dev'),
+                   model_uri=BASALT_SCHEMA.sample_collection_dev, domain=None, range=Optional[str])
 
-slots.sample_collection_method = Slot(uri=ANALYSIS_API_SCHEMA.sample_collection_method, name="sample_collection_method", curie=ANALYSIS_API_SCHEMA.curie('sample_collection_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.sample_collection_method, domain=None, range=Optional[str])
+slots.sample_collection_method = Slot(uri=BASALT_SCHEMA.sample_collection_method, name="sample_collection_method", curie=BASALT_SCHEMA.curie('sample_collection_method'),
+                   model_uri=BASALT_SCHEMA.sample_collection_method, domain=None, range=Optional[str])
 
-slots.sample_end_time = Slot(uri=ANALYSIS_API_SCHEMA.sample_end_time, name="sample_end_time", curie=ANALYSIS_API_SCHEMA.curie('sample_end_time'),
-                   model_uri=ANALYSIS_API_SCHEMA.sample_end_time, domain=None, range=Optional[str],
+slots.sample_end_time = Slot(uri=BASALT_SCHEMA.sample_end_time, name="sample_end_time", curie=BASALT_SCHEMA.curie('sample_end_time'),
+                   model_uri=BASALT_SCHEMA.sample_end_time, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.sample_id = Slot(uri=ANALYSIS_API_SCHEMA.sample_id, name="sample_id", curie=ANALYSIS_API_SCHEMA.curie('sample_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.sample_id, domain=None, range=Optional[Union[str, SampleId]])
+slots.sample_id = Slot(uri=BASALT_SCHEMA.sample_id, name="sample_id", curie=BASALT_SCHEMA.curie('sample_id'),
+                   model_uri=BASALT_SCHEMA.sample_id, domain=None, range=Optional[Union[str, SampleId]])
 
-slots.sample_link = Slot(uri=ANALYSIS_API_SCHEMA.sample_link, name="sample_link", curie=ANALYSIS_API_SCHEMA.curie('sample_link'),
-                   model_uri=ANALYSIS_API_SCHEMA.sample_link, domain=None, range=Optional[str])
+slots.sample_link = Slot(uri=BASALT_SCHEMA.sample_link, name="sample_link", curie=BASALT_SCHEMA.curie('sample_link'),
+                   model_uri=BASALT_SCHEMA.sample_link, domain=None, range=Optional[str])
 
-slots.sample_name = Slot(uri=ANALYSIS_API_SCHEMA.sample_name, name="sample_name", curie=ANALYSIS_API_SCHEMA.curie('sample_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.sample_name, domain=None, range=Optional[str])
+slots.sample_name = Slot(uri=BASALT_SCHEMA.sample_name, name="sample_name", curie=BASALT_SCHEMA.curie('sample_name'),
+                   model_uri=BASALT_SCHEMA.sample_name, domain=None, range=Optional[str])
 
-slots.sample_processing = Slot(uri=ANALYSIS_API_SCHEMA.sample_processing, name="sample_processing", curie=ANALYSIS_API_SCHEMA.curie('sample_processing'),
-                   model_uri=ANALYSIS_API_SCHEMA.sample_processing, domain=None, range=Optional[str])
+slots.sample_processing = Slot(uri=BASALT_SCHEMA.sample_processing, name="sample_processing", curie=BASALT_SCHEMA.curie('sample_processing'),
+                   model_uri=BASALT_SCHEMA.sample_processing, domain=None, range=Optional[str])
 
-slots.sample_start_time = Slot(uri=ANALYSIS_API_SCHEMA.sample_start_time, name="sample_start_time", curie=ANALYSIS_API_SCHEMA.curie('sample_start_time'),
-                   model_uri=ANALYSIS_API_SCHEMA.sample_start_time, domain=None, range=Optional[str],
+slots.sample_start_time = Slot(uri=BASALT_SCHEMA.sample_start_time, name="sample_start_time", curie=BASALT_SCHEMA.curie('sample_start_time'),
+                   model_uri=BASALT_SCHEMA.sample_start_time, domain=None, range=Optional[str],
                    pattern=re.compile(r'^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$'))
 
-slots.sample_type = Slot(uri=ANALYSIS_API_SCHEMA.sample_type, name="sample_type", curie=ANALYSIS_API_SCHEMA.curie('sample_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.sample_type, domain=None, range=Optional[str],
+slots.sample_type = Slot(uri=BASALT_SCHEMA.sample_type, name="sample_type", curie=BASALT_SCHEMA.curie('sample_type'),
+                   model_uri=BASALT_SCHEMA.sample_type, domain=None, range=Optional[str],
                    pattern=re.compile(r'^_*\s*[a-zA-Z\-]+\s\[[a-zA-Z]+:\d+\]$'))
 
-slots.sampled_at_site = Slot(uri=ANALYSIS_API_SCHEMA.sampled_at_site, name="sampled_at_site", curie=ANALYSIS_API_SCHEMA.curie('sampled_at_site'),
-                   model_uri=ANALYSIS_API_SCHEMA.sampled_at_site, domain=None, range=Optional[Union[str, SiteId]])
+slots.sampled_at_site = Slot(uri=BASALT_SCHEMA.sampled_at_site, name="sampled_at_site", curie=BASALT_SCHEMA.curie('sampled_at_site'),
+                   model_uri=BASALT_SCHEMA.sampled_at_site, domain=None, range=Optional[Union[str, SiteId]])
 
-slots.sampled_during = Slot(uri=ANALYSIS_API_SCHEMA.sampled_during, name="sampled_during", curie=ANALYSIS_API_SCHEMA.curie('sampled_during'),
-                   model_uri=ANALYSIS_API_SCHEMA.sampled_during, domain=None, range=Optional[Union[str, SamplingActivityId]])
+slots.sampled_during = Slot(uri=BASALT_SCHEMA.sampled_during, name="sampled_during", curie=BASALT_SCHEMA.curie('sampled_during'),
+                   model_uri=BASALT_SCHEMA.sampled_during, domain=None, range=Optional[Union[str, SamplingActivityId]])
 
-slots.sampled_portion = Slot(uri=ANALYSIS_API_SCHEMA.sampled_portion, name="sampled_portion", curie=ANALYSIS_API_SCHEMA.curie('sampled_portion'),
-                   model_uri=ANALYSIS_API_SCHEMA.sampled_portion, domain=None, range=Optional[Union[str, "SamplePortionEnum"]])
+slots.sampled_portion = Slot(uri=BASALT_SCHEMA.sampled_portion, name="sampled_portion", curie=BASALT_SCHEMA.curie('sampled_portion'),
+                   model_uri=BASALT_SCHEMA.sampled_portion, domain=None, range=Optional[Union[str, "SamplePortionEnum"]])
 
-slots.sampling_duration = Slot(uri=ANALYSIS_API_SCHEMA.sampling_duration, name="sampling_duration", curie=ANALYSIS_API_SCHEMA.curie('sampling_duration'),
-                   model_uri=ANALYSIS_API_SCHEMA.sampling_duration, domain=None, range=Optional[str],
+slots.sampling_duration = Slot(uri=BASALT_SCHEMA.sampling_duration, name="sampling_duration", curie=BASALT_SCHEMA.curie('sampling_duration'),
+                   model_uri=BASALT_SCHEMA.sampling_duration, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*s$'))
 
-slots.sampling_set = Slot(uri=ANALYSIS_API_SCHEMA.sampling_set, name="sampling_set", curie=ANALYSIS_API_SCHEMA.curie('sampling_set'),
-                   model_uri=ANALYSIS_API_SCHEMA.sampling_set, domain=None, range=Optional[int])
+slots.sampling_set = Slot(uri=BASALT_SCHEMA.sampling_set, name="sampling_set", curie=BASALT_SCHEMA.curie('sampling_set'),
+                   model_uri=BASALT_SCHEMA.sampling_set, domain=None, range=Optional[int])
 
-slots.sealing_method = Slot(uri=ANALYSIS_API_SCHEMA.sealing_method, name="sealing_method", curie=ANALYSIS_API_SCHEMA.curie('sealing_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.sealing_method, domain=None, range=Optional[str])
+slots.sealing_method = Slot(uri=BASALT_SCHEMA.sealing_method, name="sealing_method", curie=BASALT_SCHEMA.curie('sealing_method'),
+                   model_uri=BASALT_SCHEMA.sealing_method, domain=None, range=Optional[str])
 
-slots.season_environment = Slot(uri=ANALYSIS_API_SCHEMA.season_environment, name="season_environment", curie=ANALYSIS_API_SCHEMA.curie('season_environment'),
-                   model_uri=ANALYSIS_API_SCHEMA.season_environment, domain=None, range=Optional[str])
+slots.season_environment = Slot(uri=BASALT_SCHEMA.season_environment, name="season_environment", curie=BASALT_SCHEMA.curie('season_environment'),
+                   model_uri=BASALT_SCHEMA.season_environment, domain=None, range=Optional[str])
 
-slots.season_precpt = Slot(uri=ANALYSIS_API_SCHEMA.season_precpt, name="season_precpt", curie=ANALYSIS_API_SCHEMA.curie('season_precpt'),
-                   model_uri=ANALYSIS_API_SCHEMA.season_precpt, domain=None, range=Optional[str],
+slots.season_precpt = Slot(uri=BASALT_SCHEMA.season_precpt, name="season_precpt", curie=BASALT_SCHEMA.curie('season_precpt'),
+                   model_uri=BASALT_SCHEMA.season_precpt, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*mm$'))
 
-slots.season_temp = Slot(uri=ANALYSIS_API_SCHEMA.season_temp, name="season_temp", curie=ANALYSIS_API_SCHEMA.curie('season_temp'),
-                   model_uri=ANALYSIS_API_SCHEMA.season_temp, domain=None, range=Optional[str],
+slots.season_temp = Slot(uri=BASALT_SCHEMA.season_temp, name="season_temp", curie=BASALT_SCHEMA.curie('season_temp'),
+                   model_uri=BASALT_SCHEMA.season_temp, domain=None, range=Optional[str],
                    pattern=re.compile(r'^-?\d+(\.\d+)?\s*C$'))
 
-slots.second_blh = Slot(uri=ANALYSIS_API_SCHEMA.second_blh, name="second_blh", curie=ANALYSIS_API_SCHEMA.curie('second_blh'),
-                   model_uri=ANALYSIS_API_SCHEMA.second_blh, domain=None, range=Optional[float])
+slots.second_blh = Slot(uri=BASALT_SCHEMA.second_blh, name="second_blh", curie=BASALT_SCHEMA.curie('second_blh'),
+                   model_uri=BASALT_SCHEMA.second_blh, domain=None, range=Optional[float])
 
-slots.second_blh_quality = Slot(uri=ANALYSIS_API_SCHEMA.second_blh_quality, name="second_blh_quality", curie=ANALYSIS_API_SCHEMA.curie('second_blh_quality'),
-                   model_uri=ANALYSIS_API_SCHEMA.second_blh_quality, domain=None, range=Optional[str])
+slots.second_blh_quality = Slot(uri=BASALT_SCHEMA.second_blh_quality, name="second_blh_quality", curie=BASALT_SCHEMA.curie('second_blh_quality'),
+                   model_uri=BASALT_SCHEMA.second_blh_quality, domain=None, range=Optional[str])
 
-slots.second_cbh = Slot(uri=ANALYSIS_API_SCHEMA.second_cbh, name="second_cbh", curie=ANALYSIS_API_SCHEMA.curie('second_cbh'),
-                   model_uri=ANALYSIS_API_SCHEMA.second_cbh, domain=None, range=Optional[float])
+slots.second_cbh = Slot(uri=BASALT_SCHEMA.second_cbh, name="second_cbh", curie=BASALT_SCHEMA.curie('second_cbh'),
+                   model_uri=BASALT_SCHEMA.second_cbh, domain=None, range=Optional[float])
 
-slots.secondary_treatment = Slot(uri=ANALYSIS_API_SCHEMA.secondary_treatment, name="secondary_treatment", curie=ANALYSIS_API_SCHEMA.curie('secondary_treatment'),
-                   model_uri=ANALYSIS_API_SCHEMA.secondary_treatment, domain=None, range=Optional[str])
+slots.secondary_treatment = Slot(uri=BASALT_SCHEMA.secondary_treatment, name="secondary_treatment", curie=BASALT_SCHEMA.curie('secondary_treatment'),
+                   model_uri=BASALT_SCHEMA.secondary_treatment, domain=None, range=Optional[str])
 
-slots.sediment_type = Slot(uri=ANALYSIS_API_SCHEMA.sediment_type, name="sediment_type", curie=ANALYSIS_API_SCHEMA.curie('sediment_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.sediment_type, domain=None, range=Optional[Union[str, "SedimentTypeEnum"]])
+slots.sediment_type = Slot(uri=BASALT_SCHEMA.sediment_type, name="sediment_type", curie=BASALT_SCHEMA.curie('sediment_type'),
+                   model_uri=BASALT_SCHEMA.sediment_type, domain=None, range=Optional[Union[str, "SedimentTypeEnum"]])
 
-slots.sequence_order = Slot(uri=ANALYSIS_API_SCHEMA.sequence_order, name="sequence_order", curie=ANALYSIS_API_SCHEMA.curie('sequence_order'),
-                   model_uri=ANALYSIS_API_SCHEMA.sequence_order, domain=None, range=Optional[int])
+slots.sequence_order = Slot(uri=BASALT_SCHEMA.sequence_order, name="sequence_order", curie=BASALT_SCHEMA.curie('sequence_order'),
+                   model_uri=BASALT_SCHEMA.sequence_order, domain=None, range=Optional[int])
 
-slots.setup_date = Slot(uri=ANALYSIS_API_SCHEMA.setup_date, name="setup_date", curie=ANALYSIS_API_SCHEMA.curie('setup_date'),
-                   model_uri=ANALYSIS_API_SCHEMA.setup_date, domain=None, range=Union[str, XSDDateTime])
+slots.setup_date = Slot(uri=BASALT_SCHEMA.setup_date, name="setup_date", curie=BASALT_SCHEMA.curie('setup_date'),
+                   model_uri=BASALT_SCHEMA.setup_date, domain=None, range=Union[str, XSDDateTime])
 
-slots.setup_instrument = Slot(uri=ANALYSIS_API_SCHEMA.setup_instrument, name="setup_instrument", curie=ANALYSIS_API_SCHEMA.curie('setup_instrument'),
-                   model_uri=ANALYSIS_API_SCHEMA.setup_instrument, domain=None, range=Optional[str])
+slots.setup_instrument = Slot(uri=BASALT_SCHEMA.setup_instrument, name="setup_instrument", curie=BASALT_SCHEMA.curie('setup_instrument'),
+                   model_uri=BASALT_SCHEMA.setup_instrument, domain=None, range=Optional[str])
 
-slots.setup_operator_id = Slot(uri=ANALYSIS_API_SCHEMA.setup_operator_id, name="setup_operator_id", curie=ANALYSIS_API_SCHEMA.curie('setup_operator_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.setup_operator_id, domain=None, range=Optional[Union[str, PersonValueId]])
+slots.setup_operator_id = Slot(uri=BASALT_SCHEMA.setup_operator_id, name="setup_operator_id", curie=BASALT_SCHEMA.curie('setup_operator_id'),
+                   model_uri=BASALT_SCHEMA.setup_operator_id, domain=None, range=Optional[Union[str, PersonValueId]])
 
-slots.sewage_type = Slot(uri=ANALYSIS_API_SCHEMA.sewage_type, name="sewage_type", curie=ANALYSIS_API_SCHEMA.curie('sewage_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.sewage_type, domain=None, range=Optional[str])
+slots.sewage_type = Slot(uri=BASALT_SCHEMA.sewage_type, name="sewage_type", curie=BASALT_SCHEMA.curie('sewage_type'),
+                   model_uri=BASALT_SCHEMA.sewage_type, domain=None, range=Optional[str])
 
-slots.shipped_sample_size = Slot(uri=ANALYSIS_API_SCHEMA.shipped_sample_size, name="shipped_sample_size", curie=ANALYSIS_API_SCHEMA.curie('shipped_sample_size'),
-                   model_uri=ANALYSIS_API_SCHEMA.shipped_sample_size, domain=None, range=Optional[str],
+slots.shipped_sample_size = Slot(uri=BASALT_SCHEMA.shipped_sample_size, name="shipped_sample_size", curie=BASALT_SCHEMA.curie('shipped_sample_size'),
+                   model_uri=BASALT_SCHEMA.shipped_sample_size, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.sieving = Slot(uri=ANALYSIS_API_SCHEMA.sieving, name="sieving", curie=ANALYSIS_API_SCHEMA.curie('sieving'),
-                   model_uri=ANALYSIS_API_SCHEMA.sieving, domain=None, range=Optional[str])
+slots.sieving = Slot(uri=BASALT_SCHEMA.sieving, name="sieving", curie=BASALT_SCHEMA.curie('sieving'),
+                   model_uri=BASALT_SCHEMA.sieving, domain=None, range=Optional[str])
 
-slots.silicate = Slot(uri=ANALYSIS_API_SCHEMA.silicate, name="silicate", curie=ANALYSIS_API_SCHEMA.curie('silicate'),
-                   model_uri=ANALYSIS_API_SCHEMA.silicate, domain=None, range=Optional[str],
+slots.silicate = Slot(uri=BASALT_SCHEMA.silicate, name="silicate", curie=BASALT_SCHEMA.curie('silicate'),
+                   model_uri=BASALT_SCHEMA.silicate, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*umol/L$'))
 
-slots.size_frac_low = Slot(uri=ANALYSIS_API_SCHEMA.size_frac_low, name="size_frac_low", curie=ANALYSIS_API_SCHEMA.curie('size_frac_low'),
-                   model_uri=ANALYSIS_API_SCHEMA.size_frac_low, domain=None, range=Optional[str])
+slots.size_frac_low = Slot(uri=BASALT_SCHEMA.size_frac_low, name="size_frac_low", curie=BASALT_SCHEMA.curie('size_frac_low'),
+                   model_uri=BASALT_SCHEMA.size_frac_low, domain=None, range=Optional[str])
 
-slots.size_frac_up = Slot(uri=ANALYSIS_API_SCHEMA.size_frac_up, name="size_frac_up", curie=ANALYSIS_API_SCHEMA.curie('size_frac_up'),
-                   model_uri=ANALYSIS_API_SCHEMA.size_frac_up, domain=None, range=Optional[str])
+slots.size_frac_up = Slot(uri=BASALT_SCHEMA.size_frac_up, name="size_frac_up", curie=BASALT_SCHEMA.curie('size_frac_up'),
+                   model_uri=BASALT_SCHEMA.size_frac_up, domain=None, range=Optional[str])
 
-slots.slope_aspect = Slot(uri=ANALYSIS_API_SCHEMA.slope_aspect, name="slope_aspect", curie=ANALYSIS_API_SCHEMA.curie('slope_aspect'),
-                   model_uri=ANALYSIS_API_SCHEMA.slope_aspect, domain=None, range=Optional[str],
+slots.slope_aspect = Slot(uri=BASALT_SCHEMA.slope_aspect, name="slope_aspect", curie=BASALT_SCHEMA.curie('slope_aspect'),
+                   model_uri=BASALT_SCHEMA.slope_aspect, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*degrees$'))
 
-slots.slope_gradient = Slot(uri=ANALYSIS_API_SCHEMA.slope_gradient, name="slope_gradient", curie=ANALYSIS_API_SCHEMA.curie('slope_gradient'),
-                   model_uri=ANALYSIS_API_SCHEMA.slope_gradient, domain=None, range=Optional[str],
+slots.slope_gradient = Slot(uri=BASALT_SCHEMA.slope_gradient, name="slope_gradient", curie=BASALT_SCHEMA.curie('slope_gradient'),
+                   model_uri=BASALT_SCHEMA.slope_gradient, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*percent$'))
 
-slots.sludge_retent_time = Slot(uri=ANALYSIS_API_SCHEMA.sludge_retent_time, name="sludge_retent_time", curie=ANALYSIS_API_SCHEMA.curie('sludge_retent_time'),
-                   model_uri=ANALYSIS_API_SCHEMA.sludge_retent_time, domain=None, range=Optional[str])
+slots.sludge_retent_time = Slot(uri=BASALT_SCHEMA.sludge_retent_time, name="sludge_retent_time", curie=BASALT_SCHEMA.curie('sludge_retent_time'),
+                   model_uri=BASALT_SCHEMA.sludge_retent_time, domain=None, range=Optional[str])
 
-slots.sodium = Slot(uri=ANALYSIS_API_SCHEMA.sodium, name="sodium", curie=ANALYSIS_API_SCHEMA.curie('sodium'),
-                   model_uri=ANALYSIS_API_SCHEMA.sodium, domain=None, range=Optional[str],
+slots.sodium = Slot(uri=BASALT_SCHEMA.sodium, name="sodium", curie=BASALT_SCHEMA.curie('sodium'),
+                   model_uri=BASALT_SCHEMA.sodium, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*ug/mL$'))
 
-slots.soil_horizon = Slot(uri=ANALYSIS_API_SCHEMA.soil_horizon, name="soil_horizon", curie=ANALYSIS_API_SCHEMA.curie('soil_horizon'),
-                   model_uri=ANALYSIS_API_SCHEMA.soil_horizon, domain=None, range=Optional[Union[str, "SoilHorizonEnum"]])
+slots.soil_horizon = Slot(uri=BASALT_SCHEMA.soil_horizon, name="soil_horizon", curie=BASALT_SCHEMA.curie('soil_horizon'),
+                   model_uri=BASALT_SCHEMA.soil_horizon, domain=None, range=Optional[Union[str, "SoilHorizonEnum"]])
 
-slots.soil_sample_type = Slot(uri=ANALYSIS_API_SCHEMA.soil_sample_type, name="soil_sample_type", curie=ANALYSIS_API_SCHEMA.curie('soil_sample_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.soil_sample_type, domain=None, range=Optional[Union[str, "SoilSampleTypeEnum"]])
+slots.soil_sample_type = Slot(uri=BASALT_SCHEMA.soil_sample_type, name="soil_sample_type", curie=BASALT_SCHEMA.curie('soil_sample_type'),
+                   model_uri=BASALT_SCHEMA.soil_sample_type, domain=None, range=Optional[Union[str, "SoilSampleTypeEnum"]])
 
-slots.soil_texture = Slot(uri=ANALYSIS_API_SCHEMA.soil_texture, name="soil_texture", curie=ANALYSIS_API_SCHEMA.curie('soil_texture'),
-                   model_uri=ANALYSIS_API_SCHEMA.soil_texture, domain=None, range=Optional[str],
+slots.soil_texture = Slot(uri=BASALT_SCHEMA.soil_texture, name="soil_texture", curie=BASALT_SCHEMA.curie('soil_texture'),
+                   model_uri=BASALT_SCHEMA.soil_texture, domain=None, range=Optional[str],
                    pattern=re.compile(r'^(\w+:0\.\d+ )*description:[A-Za-z ]+$'))
 
-slots.soil_type = Slot(uri=ANALYSIS_API_SCHEMA.soil_type, name="soil_type", curie=ANALYSIS_API_SCHEMA.curie('soil_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.soil_type, domain=None, range=Optional[Union[str, "SoilTypeEnum"]])
+slots.soil_type = Slot(uri=BASALT_SCHEMA.soil_type, name="soil_type", curie=BASALT_SCHEMA.curie('soil_type'),
+                   model_uri=BASALT_SCHEMA.soil_type, domain=None, range=Optional[Union[str, "SoilTypeEnum"]])
 
-slots.soil_type_meth = Slot(uri=ANALYSIS_API_SCHEMA.soil_type_meth, name="soil_type_meth", curie=ANALYSIS_API_SCHEMA.curie('soil_type_meth'),
-                   model_uri=ANALYSIS_API_SCHEMA.soil_type_meth, domain=None, range=Optional[str])
+slots.soil_type_meth = Slot(uri=BASALT_SCHEMA.soil_type_meth, name="soil_type_meth", curie=BASALT_SCHEMA.curie('soil_type_meth'),
+                   model_uri=BASALT_SCHEMA.soil_type_meth, domain=None, range=Optional[str])
 
-slots.solar_irradiance = Slot(uri=ANALYSIS_API_SCHEMA.solar_irradiance, name="solar_irradiance", curie=ANALYSIS_API_SCHEMA.curie('solar_irradiance'),
-                   model_uri=ANALYSIS_API_SCHEMA.solar_irradiance, domain=None, range=Optional[str],
+slots.solar_irradiance = Slot(uri=BASALT_SCHEMA.solar_irradiance, name="solar_irradiance", curie=BASALT_SCHEMA.curie('solar_irradiance'),
+                   model_uri=BASALT_SCHEMA.solar_irradiance, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(kW/m2/d|erg/cm2/s)$'))
 
-slots.soluble_inorg_mat = Slot(uri=ANALYSIS_API_SCHEMA.soluble_inorg_mat, name="soluble_inorg_mat", curie=ANALYSIS_API_SCHEMA.curie('soluble_inorg_mat'),
-                   model_uri=ANALYSIS_API_SCHEMA.soluble_inorg_mat, domain=None, range=Optional[str])
+slots.soluble_inorg_mat = Slot(uri=BASALT_SCHEMA.soluble_inorg_mat, name="soluble_inorg_mat", curie=BASALT_SCHEMA.curie('soluble_inorg_mat'),
+                   model_uri=BASALT_SCHEMA.soluble_inorg_mat, domain=None, range=Optional[str])
 
-slots.soluble_org_mat = Slot(uri=ANALYSIS_API_SCHEMA.soluble_org_mat, name="soluble_org_mat", curie=ANALYSIS_API_SCHEMA.curie('soluble_org_mat'),
-                   model_uri=ANALYSIS_API_SCHEMA.soluble_org_mat, domain=None, range=Optional[str])
+slots.soluble_org_mat = Slot(uri=BASALT_SCHEMA.soluble_org_mat, name="soluble_org_mat", curie=BASALT_SCHEMA.curie('soluble_org_mat'),
+                   model_uri=BASALT_SCHEMA.soluble_org_mat, domain=None, range=Optional[str])
 
-slots.soluble_react_phosp = Slot(uri=ANALYSIS_API_SCHEMA.soluble_react_phosp, name="soluble_react_phosp", curie=ANALYSIS_API_SCHEMA.curie('soluble_react_phosp'),
-                   model_uri=ANALYSIS_API_SCHEMA.soluble_react_phosp, domain=None, range=Optional[str],
+slots.soluble_react_phosp = Slot(uri=BASALT_SCHEMA.soluble_react_phosp, name="soluble_react_phosp", curie=BASALT_SCHEMA.curie('soluble_react_phosp'),
+                   model_uri=BASALT_SCHEMA.soluble_react_phosp, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$'))
 
-slots.source_mat_id = Slot(uri=ANALYSIS_API_SCHEMA.source_mat_id, name="source_mat_id", curie=ANALYSIS_API_SCHEMA.curie('source_mat_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.source_mat_id, domain=None, range=Optional[str])
+slots.source_mat_id = Slot(uri=BASALT_SCHEMA.source_mat_id, name="source_mat_id", curie=BASALT_SCHEMA.curie('source_mat_id'),
+                   model_uri=BASALT_SCHEMA.source_mat_id, domain=None, range=Optional[str])
 
-slots.specific_host = Slot(uri=ANALYSIS_API_SCHEMA.specific_host, name="specific_host", curie=ANALYSIS_API_SCHEMA.curie('specific_host'),
-                   model_uri=ANALYSIS_API_SCHEMA.specific_host, domain=None, range=Optional[str])
+slots.specific_host = Slot(uri=BASALT_SCHEMA.specific_host, name="specific_host", curie=BASALT_SCHEMA.curie('specific_host'),
+                   model_uri=BASALT_SCHEMA.specific_host, domain=None, range=Optional[str])
 
-slots.standing_water_regm = Slot(uri=ANALYSIS_API_SCHEMA.standing_water_regm, name="standing_water_regm", curie=ANALYSIS_API_SCHEMA.curie('standing_water_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.standing_water_regm, domain=None, range=Optional[str])
+slots.standing_water_regm = Slot(uri=BASALT_SCHEMA.standing_water_regm, name="standing_water_regm", curie=BASALT_SCHEMA.curie('standing_water_regm'),
+                   model_uri=BASALT_SCHEMA.standing_water_regm, domain=None, range=Optional[str])
 
-slots.start_date_inc = Slot(uri=ANALYSIS_API_SCHEMA.start_date_inc, name="start_date_inc", curie=ANALYSIS_API_SCHEMA.curie('start_date_inc'),
-                   model_uri=ANALYSIS_API_SCHEMA.start_date_inc, domain=None, range=Optional[str],
+slots.start_date_inc = Slot(uri=BASALT_SCHEMA.start_date_inc, name="start_date_inc", curie=BASALT_SCHEMA.curie('start_date_inc'),
+                   model_uri=BASALT_SCHEMA.start_date_inc, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.stationary_phase = Slot(uri=ANALYSIS_API_SCHEMA.stationary_phase, name="stationary_phase", curie=ANALYSIS_API_SCHEMA.curie('stationary_phase'),
-                   model_uri=ANALYSIS_API_SCHEMA.stationary_phase, domain=None, range=Optional[str])
+slots.stationary_phase = Slot(uri=BASALT_SCHEMA.stationary_phase, name="stationary_phase", curie=BASALT_SCHEMA.curie('stationary_phase'),
+                   model_uri=BASALT_SCHEMA.stationary_phase, domain=None, range=Optional[str])
 
-slots.sterilization_method = Slot(uri=ANALYSIS_API_SCHEMA.sterilization_method, name="sterilization_method", curie=ANALYSIS_API_SCHEMA.curie('sterilization_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.sterilization_method, domain=None, range=Optional[Union[str, "SterilizationMethodEnum"]])
+slots.sterilization_method = Slot(uri=BASALT_SCHEMA.sterilization_method, name="sterilization_method", curie=BASALT_SCHEMA.curie('sterilization_method'),
+                   model_uri=BASALT_SCHEMA.sterilization_method, domain=None, range=Optional[Union[str, "SterilizationMethodEnum"]])
 
-slots.storage_condition = Slot(uri=ANALYSIS_API_SCHEMA.storage_condition, name="storage_condition", curie=ANALYSIS_API_SCHEMA.curie('storage_condition'),
-                   model_uri=ANALYSIS_API_SCHEMA.storage_condition, domain=None, range=Optional[Union[str, "StorageConditionEnum"]])
+slots.storage_condition = Slot(uri=BASALT_SCHEMA.storage_condition, name="storage_condition", curie=BASALT_SCHEMA.curie('storage_condition'),
+                   model_uri=BASALT_SCHEMA.storage_condition, domain=None, range=Optional[Union[str, "StorageConditionEnum"]])
 
-slots.storage_condition_other = Slot(uri=ANALYSIS_API_SCHEMA.storage_condition_other, name="storage_condition_other", curie=ANALYSIS_API_SCHEMA.curie('storage_condition_other'),
-                   model_uri=ANALYSIS_API_SCHEMA.storage_condition_other, domain=None, range=Optional[str])
+slots.storage_condition_other = Slot(uri=BASALT_SCHEMA.storage_condition_other, name="storage_condition_other", curie=BASALT_SCHEMA.curie('storage_condition_other'),
+                   model_uri=BASALT_SCHEMA.storage_condition_other, domain=None, range=Optional[str])
 
-slots.storage_location = Slot(uri=ANALYSIS_API_SCHEMA.storage_location, name="storage_location", curie=ANALYSIS_API_SCHEMA.curie('storage_location'),
-                   model_uri=ANALYSIS_API_SCHEMA.storage_location, domain=None, range=Optional[str])
+slots.storage_location = Slot(uri=BASALT_SCHEMA.storage_location, name="storage_location", curie=BASALT_SCHEMA.curie('storage_location'),
+                   model_uri=BASALT_SCHEMA.storage_location, domain=None, range=Optional[str])
 
-slots.storage_temperature = Slot(uri=ANALYSIS_API_SCHEMA.storage_temperature, name="storage_temperature", curie=ANALYSIS_API_SCHEMA.curie('storage_temperature'),
-                   model_uri=ANALYSIS_API_SCHEMA.storage_temperature, domain=None, range=Optional[str])
+slots.storage_temperature = Slot(uri=BASALT_SCHEMA.storage_temperature, name="storage_temperature", curie=BASALT_SCHEMA.curie('storage_temperature'),
+                   model_uri=BASALT_SCHEMA.storage_temperature, domain=None, range=Optional[str])
 
-slots.strain_description = Slot(uri=ANALYSIS_API_SCHEMA.strain_description, name="strain_description", curie=ANALYSIS_API_SCHEMA.curie('strain_description'),
-                   model_uri=ANALYSIS_API_SCHEMA.strain_description, domain=None, range=Optional[str])
+slots.strain_description = Slot(uri=BASALT_SCHEMA.strain_description, name="strain_description", curie=BASALT_SCHEMA.curie('strain_description'),
+                   model_uri=BASALT_SCHEMA.strain_description, domain=None, range=Optional[str])
 
-slots.strain_identifier = Slot(uri=ANALYSIS_API_SCHEMA.strain_identifier, name="strain_identifier", curie=ANALYSIS_API_SCHEMA.curie('strain_identifier'),
-                   model_uri=ANALYSIS_API_SCHEMA.strain_identifier, domain=None, range=str)
+slots.strain_identifier = Slot(uri=BASALT_SCHEMA.strain_identifier, name="strain_identifier", curie=BASALT_SCHEMA.curie('strain_identifier'),
+                   model_uri=BASALT_SCHEMA.strain_identifier, domain=None, range=str)
 
-slots.strain_mutation = Slot(uri=ANALYSIS_API_SCHEMA.strain_mutation, name="strain_mutation", curie=ANALYSIS_API_SCHEMA.curie('strain_mutation'),
-                   model_uri=ANALYSIS_API_SCHEMA.strain_mutation, domain=None, range=Optional[str])
+slots.strain_mutation = Slot(uri=BASALT_SCHEMA.strain_mutation, name="strain_mutation", curie=BASALT_SCHEMA.curie('strain_mutation'),
+                   model_uri=BASALT_SCHEMA.strain_mutation, domain=None, range=Optional[str])
 
-slots.strain_name = Slot(uri=ANALYSIS_API_SCHEMA.strain_name, name="strain_name", curie=ANALYSIS_API_SCHEMA.curie('strain_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.strain_name, domain=None, range=Optional[str])
+slots.strain_name = Slot(uri=BASALT_SCHEMA.strain_name, name="strain_name", curie=BASALT_SCHEMA.curie('strain_name'),
+                   model_uri=BASALT_SCHEMA.strain_name, domain=None, range=Optional[str])
 
-slots.strain_ref = Slot(uri=ANALYSIS_API_SCHEMA.strain_ref, name="strain_ref", curie=ANALYSIS_API_SCHEMA.curie('strain_ref'),
-                   model_uri=ANALYSIS_API_SCHEMA.strain_ref, domain=None, range=Optional[Union[str, OrganismId]])
+slots.strain_ref = Slot(uri=BASALT_SCHEMA.strain_ref, name="strain_ref", curie=BASALT_SCHEMA.curie('strain_ref'),
+                   model_uri=BASALT_SCHEMA.strain_ref, domain=None, range=Optional[Union[str, OrganismId]])
 
-slots.strain_source = Slot(uri=ANALYSIS_API_SCHEMA.strain_source, name="strain_source", curie=ANALYSIS_API_SCHEMA.curie('strain_source'),
-                   model_uri=ANALYSIS_API_SCHEMA.strain_source, domain=None, range=Optional[str])
+slots.strain_source = Slot(uri=BASALT_SCHEMA.strain_source, name="strain_source", curie=BASALT_SCHEMA.curie('strain_source'),
+                   model_uri=BASALT_SCHEMA.strain_source, domain=None, range=Optional[str])
 
-slots.strain_type = Slot(uri=ANALYSIS_API_SCHEMA.strain_type, name="strain_type", curie=ANALYSIS_API_SCHEMA.curie('strain_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.strain_type, domain=None, range=Optional[Union[str, "StrainTypeEnum"]])
+slots.strain_type = Slot(uri=BASALT_SCHEMA.strain_type, name="strain_type", curie=BASALT_SCHEMA.curie('strain_type'),
+                   model_uri=BASALT_SCHEMA.strain_type, domain=None, range=Optional[Union[str, "StrainTypeEnum"]])
 
-slots.subspecf_gen_lin = Slot(uri=ANALYSIS_API_SCHEMA.subspecf_gen_lin, name="subspecf_gen_lin", curie=ANALYSIS_API_SCHEMA.curie('subspecf_gen_lin'),
-                   model_uri=ANALYSIS_API_SCHEMA.subspecf_gen_lin, domain=None, range=Optional[str])
+slots.subspecf_gen_lin = Slot(uri=BASALT_SCHEMA.subspecf_gen_lin, name="subspecf_gen_lin", curie=BASALT_SCHEMA.curie('subspecf_gen_lin'),
+                   model_uri=BASALT_SCHEMA.subspecf_gen_lin, domain=None, range=Optional[str])
 
-slots.sulfate = Slot(uri=ANALYSIS_API_SCHEMA.sulfate, name="sulfate", curie=ANALYSIS_API_SCHEMA.curie('sulfate'),
-                   model_uri=ANALYSIS_API_SCHEMA.sulfate, domain=None, range=Optional[str],
+slots.sulfate = Slot(uri=BASALT_SCHEMA.sulfate, name="sulfate", curie=BASALT_SCHEMA.curie('sulfate'),
+                   model_uri=BASALT_SCHEMA.sulfate, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$'))
 
-slots.sulfide = Slot(uri=ANALYSIS_API_SCHEMA.sulfide, name="sulfide", curie=ANALYSIS_API_SCHEMA.curie('sulfide'),
-                   model_uri=ANALYSIS_API_SCHEMA.sulfide, domain=None, range=Optional[str],
+slots.sulfide = Slot(uri=BASALT_SCHEMA.sulfide, name="sulfide", curie=BASALT_SCHEMA.curie('sulfide'),
+                   model_uri=BASALT_SCHEMA.sulfide, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$'))
 
-slots.summary_metrics = Slot(uri=ANALYSIS_API_SCHEMA.summary_metrics, name="summary_metrics", curie=ANALYSIS_API_SCHEMA.curie('summary_metrics'),
-                   model_uri=ANALYSIS_API_SCHEMA.summary_metrics, domain=None, range=Optional[str])
+slots.summary_metrics = Slot(uri=BASALT_SCHEMA.summary_metrics, name="summary_metrics", curie=BASALT_SCHEMA.curie('summary_metrics'),
+                   model_uri=BASALT_SCHEMA.summary_metrics, domain=None, range=Optional[str])
 
-slots.suspend_part_matter = Slot(uri=ANALYSIS_API_SCHEMA.suspend_part_matter, name="suspend_part_matter", curie=ANALYSIS_API_SCHEMA.curie('suspend_part_matter'),
-                   model_uri=ANALYSIS_API_SCHEMA.suspend_part_matter, domain=None, range=Optional[str],
+slots.suspend_part_matter = Slot(uri=BASALT_SCHEMA.suspend_part_matter, name="suspend_part_matter", curie=BASALT_SCHEMA.curie('suspend_part_matter'),
+                   model_uri=BASALT_SCHEMA.suspend_part_matter, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(mg/L)$'))
 
-slots.suspend_solids = Slot(uri=ANALYSIS_API_SCHEMA.suspend_solids, name="suspend_solids", curie=ANALYSIS_API_SCHEMA.curie('suspend_solids'),
-                   model_uri=ANALYSIS_API_SCHEMA.suspend_solids, domain=None, range=Optional[str])
+slots.suspend_solids = Slot(uri=BASALT_SCHEMA.suspend_solids, name="suspend_solids", curie=BASALT_SCHEMA.curie('suspend_solids'),
+                   model_uri=BASALT_SCHEMA.suspend_solids, domain=None, range=Optional[str])
 
-slots.synth_env_assembly = Slot(uri=ANALYSIS_API_SCHEMA.synth_env_assembly, name="synth_env_assembly", curie=ANALYSIS_API_SCHEMA.curie('synth_env_assembly'),
-                   model_uri=ANALYSIS_API_SCHEMA.synth_env_assembly, domain=None, range=Optional[str])
+slots.synth_env_assembly = Slot(uri=BASALT_SCHEMA.synth_env_assembly, name="synth_env_assembly", curie=BASALT_SCHEMA.curie('synth_env_assembly'),
+                   model_uri=BASALT_SCHEMA.synth_env_assembly, domain=None, range=Optional[str])
 
-slots.synth_env_design = Slot(uri=ANALYSIS_API_SCHEMA.synth_env_design, name="synth_env_design", curie=ANALYSIS_API_SCHEMA.curie('synth_env_design'),
-                   model_uri=ANALYSIS_API_SCHEMA.synth_env_design, domain=None, range=Optional[Union[str, "SyntheticEnvironmentEnum"]])
+slots.synth_env_design = Slot(uri=BASALT_SCHEMA.synth_env_design, name="synth_env_design", curie=BASALT_SCHEMA.curie('synth_env_design'),
+                   model_uri=BASALT_SCHEMA.synth_env_design, domain=None, range=Optional[Union[str, "SyntheticEnvironmentEnum"]])
 
-slots.synth_env_design_method = Slot(uri=ANALYSIS_API_SCHEMA.synth_env_design_method, name="synth_env_design_method", curie=ANALYSIS_API_SCHEMA.curie('synth_env_design_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.synth_env_design_method, domain=None, range=Optional[str])
+slots.synth_env_design_method = Slot(uri=BASALT_SCHEMA.synth_env_design_method, name="synth_env_design_method", curie=BASALT_SCHEMA.curie('synth_env_design_method'),
+                   model_uri=BASALT_SCHEMA.synth_env_design_method, domain=None, range=Optional[str])
 
-slots.synth_env_material = Slot(uri=ANALYSIS_API_SCHEMA.synth_env_material, name="synth_env_material", curie=ANALYSIS_API_SCHEMA.curie('synth_env_material'),
-                   model_uri=ANALYSIS_API_SCHEMA.synth_env_material, domain=None, range=Optional[str])
+slots.synth_env_material = Slot(uri=BASALT_SCHEMA.synth_env_material, name="synth_env_material", curie=BASALT_SCHEMA.curie('synth_env_material'),
+                   model_uri=BASALT_SCHEMA.synth_env_material, domain=None, range=Optional[str])
 
-slots.synth_env_treatment = Slot(uri=ANALYSIS_API_SCHEMA.synth_env_treatment, name="synth_env_treatment", curie=ANALYSIS_API_SCHEMA.curie('synth_env_treatment'),
-                   model_uri=ANALYSIS_API_SCHEMA.synth_env_treatment, domain=None, range=Optional[str])
+slots.synth_env_treatment = Slot(uri=BASALT_SCHEMA.synth_env_treatment, name="synth_env_treatment", curie=BASALT_SCHEMA.curie('synth_env_treatment'),
+                   model_uri=BASALT_SCHEMA.synth_env_treatment, domain=None, range=Optional[str])
 
-slots.synth_instrument = Slot(uri=ANALYSIS_API_SCHEMA.synth_instrument, name="synth_instrument", curie=ANALYSIS_API_SCHEMA.curie('synth_instrument'),
-                   model_uri=ANALYSIS_API_SCHEMA.synth_instrument, domain=None, range=Optional[str])
+slots.synth_instrument = Slot(uri=BASALT_SCHEMA.synth_instrument, name="synth_instrument", curie=BASALT_SCHEMA.curie('synth_instrument'),
+                   model_uri=BASALT_SCHEMA.synth_instrument, domain=None, range=Optional[str])
 
-slots.synth_process = Slot(uri=ANALYSIS_API_SCHEMA.synth_process, name="synth_process", curie=ANALYSIS_API_SCHEMA.curie('synth_process'),
-                   model_uri=ANALYSIS_API_SCHEMA.synth_process, domain=None, range=Optional[str])
+slots.synth_process = Slot(uri=BASALT_SCHEMA.synth_process, name="synth_process", curie=BASALT_SCHEMA.curie('synth_process'),
+                   model_uri=BASALT_SCHEMA.synth_process, domain=None, range=Optional[str])
 
-slots.synth_reagents = Slot(uri=ANALYSIS_API_SCHEMA.synth_reagents, name="synth_reagents", curie=ANALYSIS_API_SCHEMA.curie('synth_reagents'),
-                   model_uri=ANALYSIS_API_SCHEMA.synth_reagents, domain=None, range=Optional[str])
+slots.synth_reagents = Slot(uri=BASALT_SCHEMA.synth_reagents, name="synth_reagents", curie=BASALT_SCHEMA.curie('synth_reagents'),
+                   model_uri=BASALT_SCHEMA.synth_reagents, domain=None, range=Optional[str])
 
-slots.synth_start_date = Slot(uri=ANALYSIS_API_SCHEMA.synth_start_date, name="synth_start_date", curie=ANALYSIS_API_SCHEMA.curie('synth_start_date'),
-                   model_uri=ANALYSIS_API_SCHEMA.synth_start_date, domain=None, range=Optional[str],
+slots.synth_start_date = Slot(uri=BASALT_SCHEMA.synth_start_date, name="synth_start_date", curie=BASALT_SCHEMA.curie('synth_start_date'),
+                   model_uri=BASALT_SCHEMA.synth_start_date, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.target_strain = Slot(uri=ANALYSIS_API_SCHEMA.target_strain, name="target_strain", curie=ANALYSIS_API_SCHEMA.curie('target_strain'),
-                   model_uri=ANALYSIS_API_SCHEMA.target_strain, domain=None, range=Optional[str])
+slots.target_strain = Slot(uri=BASALT_SCHEMA.target_strain, name="target_strain", curie=BASALT_SCHEMA.curie('target_strain'),
+                   model_uri=BASALT_SCHEMA.target_strain, domain=None, range=Optional[str])
 
-slots.taxonomy_id = Slot(uri=ANALYSIS_API_SCHEMA.taxonomy_id, name="taxonomy_id", curie=ANALYSIS_API_SCHEMA.curie('taxonomy_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.taxonomy_id, domain=None, range=Optional[str])
+slots.taxonomy_id = Slot(uri=BASALT_SCHEMA.taxonomy_id, name="taxonomy_id", curie=BASALT_SCHEMA.curie('taxonomy_id'),
+                   model_uri=BASALT_SCHEMA.taxonomy_id, domain=None, range=Optional[str])
 
-slots.technical_reps = Slot(uri=ANALYSIS_API_SCHEMA.technical_reps, name="technical_reps", curie=ANALYSIS_API_SCHEMA.curie('technical_reps'),
-                   model_uri=ANALYSIS_API_SCHEMA.technical_reps, domain=None, range=Optional[int])
+slots.technical_reps = Slot(uri=BASALT_SCHEMA.technical_reps, name="technical_reps", curie=BASALT_SCHEMA.curie('technical_reps'),
+                   model_uri=BASALT_SCHEMA.technical_reps, domain=None, range=Optional[int])
 
-slots.temp = Slot(uri=ANALYSIS_API_SCHEMA.temp, name="temp", curie=ANALYSIS_API_SCHEMA.curie('temp'),
-                   model_uri=ANALYSIS_API_SCHEMA.temp, domain=None, range=Optional[str],
+slots.temp = Slot(uri=BASALT_SCHEMA.temp, name="temp", curie=BASALT_SCHEMA.curie('temp'),
+                   model_uri=BASALT_SCHEMA.temp, domain=None, range=Optional[str],
                    pattern=re.compile(r'^-?\d+(\.\d+)?\s*C$'))
 
-slots.temperature_celsius = Slot(uri=ANALYSIS_API_SCHEMA.temperature_celsius, name="temperature_celsius", curie=ANALYSIS_API_SCHEMA.curie('temperature_celsius'),
-                   model_uri=ANALYSIS_API_SCHEMA.temperature_celsius, domain=None, range=Optional[float])
+slots.temperature_celsius = Slot(uri=BASALT_SCHEMA.temperature_celsius, name="temperature_celsius", curie=BASALT_SCHEMA.curie('temperature_celsius'),
+                   model_uri=BASALT_SCHEMA.temperature_celsius, domain=None, range=Optional[float])
 
-slots.temperature_exposure = Slot(uri=ANALYSIS_API_SCHEMA.temperature_exposure, name="temperature_exposure", curie=ANALYSIS_API_SCHEMA.curie('temperature_exposure'),
-                   model_uri=ANALYSIS_API_SCHEMA.temperature_exposure, domain=None, range=Optional[str])
+slots.temperature_exposure = Slot(uri=BASALT_SCHEMA.temperature_exposure, name="temperature_exposure", curie=BASALT_SCHEMA.curie('temperature_exposure'),
+                   model_uri=BASALT_SCHEMA.temperature_exposure, domain=None, range=Optional[str])
 
-slots.tertiary_treatment = Slot(uri=ANALYSIS_API_SCHEMA.tertiary_treatment, name="tertiary_treatment", curie=ANALYSIS_API_SCHEMA.curie('tertiary_treatment'),
-                   model_uri=ANALYSIS_API_SCHEMA.tertiary_treatment, domain=None, range=Optional[str])
+slots.tertiary_treatment = Slot(uri=BASALT_SCHEMA.tertiary_treatment, name="tertiary_treatment", curie=BASALT_SCHEMA.curie('tertiary_treatment'),
+                   model_uri=BASALT_SCHEMA.tertiary_treatment, domain=None, range=Optional[str])
 
-slots.texture_meth = Slot(uri=ANALYSIS_API_SCHEMA.texture_meth, name="texture_meth", curie=ANALYSIS_API_SCHEMA.curie('texture_meth'),
-                   model_uri=ANALYSIS_API_SCHEMA.texture_meth, domain=None, range=Optional[str])
+slots.texture_meth = Slot(uri=BASALT_SCHEMA.texture_meth, name="texture_meth", curie=BASALT_SCHEMA.curie('texture_meth'),
+                   model_uri=BASALT_SCHEMA.texture_meth, domain=None, range=Optional[str])
 
-slots.third_blh = Slot(uri=ANALYSIS_API_SCHEMA.third_blh, name="third_blh", curie=ANALYSIS_API_SCHEMA.curie('third_blh'),
-                   model_uri=ANALYSIS_API_SCHEMA.third_blh, domain=None, range=Optional[float])
+slots.third_blh = Slot(uri=BASALT_SCHEMA.third_blh, name="third_blh", curie=BASALT_SCHEMA.curie('third_blh'),
+                   model_uri=BASALT_SCHEMA.third_blh, domain=None, range=Optional[float])
 
-slots.third_blh_quality = Slot(uri=ANALYSIS_API_SCHEMA.third_blh_quality, name="third_blh_quality", curie=ANALYSIS_API_SCHEMA.curie('third_blh_quality'),
-                   model_uri=ANALYSIS_API_SCHEMA.third_blh_quality, domain=None, range=Optional[str])
+slots.third_blh_quality = Slot(uri=BASALT_SCHEMA.third_blh_quality, name="third_blh_quality", curie=BASALT_SCHEMA.curie('third_blh_quality'),
+                   model_uri=BASALT_SCHEMA.third_blh_quality, domain=None, range=Optional[str])
 
-slots.tidal_stage = Slot(uri=ANALYSIS_API_SCHEMA.tidal_stage, name="tidal_stage", curie=ANALYSIS_API_SCHEMA.curie('tidal_stage'),
-                   model_uri=ANALYSIS_API_SCHEMA.tidal_stage, domain=None, range=Optional[Union[str, "TidalStageEnum"]])
+slots.tidal_stage = Slot(uri=BASALT_SCHEMA.tidal_stage, name="tidal_stage", curie=BASALT_SCHEMA.curie('tidal_stage'),
+                   model_uri=BASALT_SCHEMA.tidal_stage, domain=None, range=Optional[Union[str, "TidalStageEnum"]])
 
-slots.tillage = Slot(uri=ANALYSIS_API_SCHEMA.tillage, name="tillage", curie=ANALYSIS_API_SCHEMA.curie('tillage'),
-                   model_uri=ANALYSIS_API_SCHEMA.tillage, domain=None, range=Optional[Union[str, "TillageEnum"]])
+slots.tillage = Slot(uri=BASALT_SCHEMA.tillage, name="tillage", curie=BASALT_SCHEMA.curie('tillage'),
+                   model_uri=BASALT_SCHEMA.tillage, domain=None, range=Optional[Union[str, "TillageEnum"]])
 
-slots.timepoint_label = Slot(uri=ANALYSIS_API_SCHEMA.timepoint_label, name="timepoint_label", curie=ANALYSIS_API_SCHEMA.curie('timepoint_label'),
-                   model_uri=ANALYSIS_API_SCHEMA.timepoint_label, domain=None, range=str)
+slots.timepoint_label = Slot(uri=BASALT_SCHEMA.timepoint_label, name="timepoint_label", curie=BASALT_SCHEMA.curie('timepoint_label'),
+                   model_uri=BASALT_SCHEMA.timepoint_label, domain=None, range=str)
 
-slots.tiss_cult_growth_med = Slot(uri=ANALYSIS_API_SCHEMA.tiss_cult_growth_med, name="tiss_cult_growth_med", curie=ANALYSIS_API_SCHEMA.curie('tiss_cult_growth_med'),
-                   model_uri=ANALYSIS_API_SCHEMA.tiss_cult_growth_med, domain=None, range=Optional[str])
+slots.tiss_cult_growth_med = Slot(uri=BASALT_SCHEMA.tiss_cult_growth_med, name="tiss_cult_growth_med", curie=BASALT_SCHEMA.curie('tiss_cult_growth_med'),
+                   model_uri=BASALT_SCHEMA.tiss_cult_growth_med, domain=None, range=Optional[str])
 
-slots.tot_carb = Slot(uri=ANALYSIS_API_SCHEMA.tot_carb, name="tot_carb", curie=ANALYSIS_API_SCHEMA.curie('tot_carb'),
-                   model_uri=ANALYSIS_API_SCHEMA.tot_carb, domain=None, range=Optional[str],
+slots.tot_carb = Slot(uri=BASALT_SCHEMA.tot_carb, name="tot_carb", curie=BASALT_SCHEMA.curie('tot_carb'),
+                   model_uri=BASALT_SCHEMA.tot_carb, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.tot_depth_water_col = Slot(uri=ANALYSIS_API_SCHEMA.tot_depth_water_col, name="tot_depth_water_col", curie=ANALYSIS_API_SCHEMA.curie('tot_depth_water_col'),
-                   model_uri=ANALYSIS_API_SCHEMA.tot_depth_water_col, domain=None, range=Optional[str],
+slots.tot_depth_water_col = Slot(uri=BASALT_SCHEMA.tot_depth_water_col, name="tot_depth_water_col", curie=BASALT_SCHEMA.curie('tot_depth_water_col'),
+                   model_uri=BASALT_SCHEMA.tot_depth_water_col, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*m$'))
 
-slots.tot_diss_nitro = Slot(uri=ANALYSIS_API_SCHEMA.tot_diss_nitro, name="tot_diss_nitro", curie=ANALYSIS_API_SCHEMA.curie('tot_diss_nitro'),
-                   model_uri=ANALYSIS_API_SCHEMA.tot_diss_nitro, domain=None, range=Optional[str],
+slots.tot_diss_nitro = Slot(uri=BASALT_SCHEMA.tot_diss_nitro, name="tot_diss_nitro", curie=BASALT_SCHEMA.curie('tot_diss_nitro'),
+                   model_uri=BASALT_SCHEMA.tot_diss_nitro, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(ug/L)$'))
 
-slots.tot_inorg_nitro = Slot(uri=ANALYSIS_API_SCHEMA.tot_inorg_nitro, name="tot_inorg_nitro", curie=ANALYSIS_API_SCHEMA.curie('tot_inorg_nitro'),
-                   model_uri=ANALYSIS_API_SCHEMA.tot_inorg_nitro, domain=None, range=Optional[str],
+slots.tot_inorg_nitro = Slot(uri=BASALT_SCHEMA.tot_inorg_nitro, name="tot_inorg_nitro", curie=BASALT_SCHEMA.curie('tot_inorg_nitro'),
+                   model_uri=BASALT_SCHEMA.tot_inorg_nitro, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(ug/L)$'))
 
-slots.tot_nitro = Slot(uri=ANALYSIS_API_SCHEMA.tot_nitro, name="tot_nitro", curie=ANALYSIS_API_SCHEMA.curie('tot_nitro'),
-                   model_uri=ANALYSIS_API_SCHEMA.tot_nitro, domain=None, range=Optional[str],
+slots.tot_nitro = Slot(uri=BASALT_SCHEMA.tot_nitro, name="tot_nitro", curie=BASALT_SCHEMA.curie('tot_nitro'),
+                   model_uri=BASALT_SCHEMA.tot_nitro, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(ug/L|umol/L|mg/L)$'))
 
-slots.tot_nitro_cont_meth = Slot(uri=ANALYSIS_API_SCHEMA.tot_nitro_cont_meth, name="tot_nitro_cont_meth", curie=ANALYSIS_API_SCHEMA.curie('tot_nitro_cont_meth'),
-                   model_uri=ANALYSIS_API_SCHEMA.tot_nitro_cont_meth, domain=None, range=Optional[str])
+slots.tot_nitro_cont_meth = Slot(uri=BASALT_SCHEMA.tot_nitro_cont_meth, name="tot_nitro_cont_meth", curie=BASALT_SCHEMA.curie('tot_nitro_cont_meth'),
+                   model_uri=BASALT_SCHEMA.tot_nitro_cont_meth, domain=None, range=Optional[str])
 
-slots.tot_nitro_content = Slot(uri=ANALYSIS_API_SCHEMA.tot_nitro_content, name="tot_nitro_content", curie=ANALYSIS_API_SCHEMA.curie('tot_nitro_content'),
-                   model_uri=ANALYSIS_API_SCHEMA.tot_nitro_content, domain=None, range=Optional[str],
+slots.tot_nitro_content = Slot(uri=BASALT_SCHEMA.tot_nitro_content, name="tot_nitro_content", curie=BASALT_SCHEMA.curie('tot_nitro_content'),
+                   model_uri=BASALT_SCHEMA.tot_nitro_content, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.tot_org_c_meth = Slot(uri=ANALYSIS_API_SCHEMA.tot_org_c_meth, name="tot_org_c_meth", curie=ANALYSIS_API_SCHEMA.curie('tot_org_c_meth'),
-                   model_uri=ANALYSIS_API_SCHEMA.tot_org_c_meth, domain=None, range=Optional[str])
+slots.tot_org_c_meth = Slot(uri=BASALT_SCHEMA.tot_org_c_meth, name="tot_org_c_meth", curie=BASALT_SCHEMA.curie('tot_org_c_meth'),
+                   model_uri=BASALT_SCHEMA.tot_org_c_meth, domain=None, range=Optional[str])
 
-slots.tot_org_carb = Slot(uri=ANALYSIS_API_SCHEMA.tot_org_carb, name="tot_org_carb", curie=ANALYSIS_API_SCHEMA.curie('tot_org_carb'),
-                   model_uri=ANALYSIS_API_SCHEMA.tot_org_carb, domain=None, range=Optional[str],
+slots.tot_org_carb = Slot(uri=BASALT_SCHEMA.tot_org_carb, name="tot_org_carb", curie=BASALT_SCHEMA.curie('tot_org_carb'),
+                   model_uri=BASALT_SCHEMA.tot_org_carb, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*g C/kg$'))
 
-slots.tot_part_carb = Slot(uri=ANALYSIS_API_SCHEMA.tot_part_carb, name="tot_part_carb", curie=ANALYSIS_API_SCHEMA.curie('tot_part_carb'),
-                   model_uri=ANALYSIS_API_SCHEMA.tot_part_carb, domain=None, range=Optional[str],
+slots.tot_part_carb = Slot(uri=BASALT_SCHEMA.tot_part_carb, name="tot_part_carb", curie=BASALT_SCHEMA.curie('tot_part_carb'),
+                   model_uri=BASALT_SCHEMA.tot_part_carb, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(ug/L|umol/L)$'))
 
-slots.tot_phosp = Slot(uri=ANALYSIS_API_SCHEMA.tot_phosp, name="tot_phosp", curie=ANALYSIS_API_SCHEMA.curie('tot_phosp'),
-                   model_uri=ANALYSIS_API_SCHEMA.tot_phosp, domain=None, range=Optional[str],
+slots.tot_phosp = Slot(uri=BASALT_SCHEMA.tot_phosp, name="tot_phosp", curie=BASALT_SCHEMA.curie('tot_phosp'),
+                   model_uri=BASALT_SCHEMA.tot_phosp, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(ug/L|umol/L)$'))
 
-slots.tot_phosphate = Slot(uri=ANALYSIS_API_SCHEMA.tot_phosphate, name="tot_phosphate", curie=ANALYSIS_API_SCHEMA.curie('tot_phosphate'),
-                   model_uri=ANALYSIS_API_SCHEMA.tot_phosphate, domain=None, range=Optional[str])
+slots.tot_phosphate = Slot(uri=BASALT_SCHEMA.tot_phosphate, name="tot_phosphate", curie=BASALT_SCHEMA.curie('tot_phosphate'),
+                   model_uri=BASALT_SCHEMA.tot_phosphate, domain=None, range=Optional[str])
 
-slots.total_amount_ug = Slot(uri=ANALYSIS_API_SCHEMA.total_amount_ug, name="total_amount_ug", curie=ANALYSIS_API_SCHEMA.curie('total_amount_ug'),
-                   model_uri=ANALYSIS_API_SCHEMA.total_amount_ug, domain=None, range=Optional[float])
+slots.total_amount_ug = Slot(uri=BASALT_SCHEMA.total_amount_ug, name="total_amount_ug", curie=BASALT_SCHEMA.curie('total_amount_ug'),
+                   model_uri=BASALT_SCHEMA.total_amount_ug, domain=None, range=Optional[float])
 
-slots.trait = Slot(uri=ANALYSIS_API_SCHEMA.trait, name="trait", curie=ANALYSIS_API_SCHEMA.curie('trait'),
-                   model_uri=ANALYSIS_API_SCHEMA.trait, domain=None, range=Optional[Union[str, "IntendedTraitEnum"]])
+slots.trait = Slot(uri=BASALT_SCHEMA.trait, name="trait", curie=BASALT_SCHEMA.curie('trait'),
+                   model_uri=BASALT_SCHEMA.trait, domain=None, range=Optional[Union[str, "IntendedTraitEnum"]])
 
-slots.treatment_type = Slot(uri=ANALYSIS_API_SCHEMA.treatment_type, name="treatment_type", curie=ANALYSIS_API_SCHEMA.curie('treatment_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.treatment_type, domain=None, range=Optional[str])
+slots.treatment_type = Slot(uri=BASALT_SCHEMA.treatment_type, name="treatment_type", curie=BASALT_SCHEMA.curie('treatment_type'),
+                   model_uri=BASALT_SCHEMA.treatment_type, domain=None, range=Optional[str])
 
-slots.trophic_level = Slot(uri=ANALYSIS_API_SCHEMA.trophic_level, name="trophic_level", curie=ANALYSIS_API_SCHEMA.curie('trophic_level'),
-                   model_uri=ANALYSIS_API_SCHEMA.trophic_level, domain=None, range=Optional[Union[str, "TrophicLevelEnum"]])
+slots.trophic_level = Slot(uri=BASALT_SCHEMA.trophic_level, name="trophic_level", curie=BASALT_SCHEMA.curie('trophic_level'),
+                   model_uri=BASALT_SCHEMA.trophic_level, domain=None, range=Optional[Union[str, "TrophicLevelEnum"]])
 
-slots.turbidity = Slot(uri=ANALYSIS_API_SCHEMA.turbidity, name="turbidity", curie=ANALYSIS_API_SCHEMA.curie('turbidity'),
-                   model_uri=ANALYSIS_API_SCHEMA.turbidity, domain=None, range=Optional[str],
+slots.turbidity = Slot(uri=BASALT_SCHEMA.turbidity, name="turbidity", curie=BASALT_SCHEMA.curie('turbidity'),
+                   model_uri=BASALT_SCHEMA.turbidity, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.uninoculated_mean = Slot(uri=ANALYSIS_API_SCHEMA.uninoculated_mean, name="uninoculated_mean", curie=ANALYSIS_API_SCHEMA.curie('uninoculated_mean'),
-                   model_uri=ANALYSIS_API_SCHEMA.uninoculated_mean, domain=None, range=Optional[float])
+slots.uninoculated_mean = Slot(uri=BASALT_SCHEMA.uninoculated_mean, name="uninoculated_mean", curie=BASALT_SCHEMA.curie('uninoculated_mean'),
+                   model_uri=BASALT_SCHEMA.uninoculated_mean, domain=None, range=Optional[float])
 
-slots.uses_calibration = Slot(uri=ANALYSIS_API_SCHEMA.uses_calibration, name="uses_calibration", curie=ANALYSIS_API_SCHEMA.curie('uses_calibration'),
-                   model_uri=ANALYSIS_API_SCHEMA.uses_calibration, domain=None, range=Optional[Union[str, MassSpectrometryStandardRunId]])
+slots.uses_calibration = Slot(uri=BASALT_SCHEMA.uses_calibration, name="uses_calibration", curie=BASALT_SCHEMA.curie('uses_calibration'),
+                   model_uri=BASALT_SCHEMA.uses_calibration, domain=None, range=Optional[Union[str, MassSpectrometryStandardRunId]])
 
-slots.uses_chromatography = Slot(uri=ANALYSIS_API_SCHEMA.uses_chromatography, name="uses_chromatography", curie=ANALYSIS_API_SCHEMA.curie('uses_chromatography'),
-                   model_uri=ANALYSIS_API_SCHEMA.uses_chromatography, domain=None, range=Optional[Union[dict, ChromatographyConfiguration]])
+slots.uses_chromatography = Slot(uri=BASALT_SCHEMA.uses_chromatography, name="uses_chromatography", curie=BASALT_SCHEMA.curie('uses_chromatography'),
+                   model_uri=BASALT_SCHEMA.uses_chromatography, domain=None, range=Optional[Union[dict, ChromatographyConfiguration]])
 
-slots.uses_ms_configuration = Slot(uri=ANALYSIS_API_SCHEMA.uses_ms_configuration, name="uses_ms_configuration", curie=ANALYSIS_API_SCHEMA.curie('uses_ms_configuration'),
-                   model_uri=ANALYSIS_API_SCHEMA.uses_ms_configuration, domain=None, range=Union[dict, MassSpectrometryConfiguration])
+slots.uses_ms_configuration = Slot(uri=BASALT_SCHEMA.uses_ms_configuration, name="uses_ms_configuration", curie=BASALT_SCHEMA.curie('uses_ms_configuration'),
+                   model_uri=BASALT_SCHEMA.uses_ms_configuration, domain=None, range=Union[dict, MassSpectrometryConfiguration])
 
-slots.uses_raw_ms_data = Slot(uri=ANALYSIS_API_SCHEMA.uses_raw_ms_data, name="uses_raw_ms_data", curie=ANALYSIS_API_SCHEMA.curie('uses_raw_ms_data'),
-                   model_uri=ANALYSIS_API_SCHEMA.uses_raw_ms_data, domain=None, range=Optional[Union[str, MassSpectrometryInstrumentDataId]])
+slots.uses_raw_ms_data = Slot(uri=BASALT_SCHEMA.uses_raw_ms_data, name="uses_raw_ms_data", curie=BASALT_SCHEMA.curie('uses_raw_ms_data'),
+                   model_uri=BASALT_SCHEMA.uses_raw_ms_data, domain=None, range=Optional[Union[str, MassSpectrometryInstrumentDataId]])
 
-slots.version = Slot(uri=ANALYSIS_API_SCHEMA.version, name="version", curie=ANALYSIS_API_SCHEMA.curie('version'),
-                   model_uri=ANALYSIS_API_SCHEMA.version, domain=None, range=str)
+slots.version = Slot(uri=BASALT_SCHEMA.version, name="version", curie=BASALT_SCHEMA.curie('version'),
+                   model_uri=BASALT_SCHEMA.version, domain=None, range=str)
 
-slots.volatile_org_comp = Slot(uri=ANALYSIS_API_SCHEMA.volatile_org_comp, name="volatile_org_comp", curie=ANALYSIS_API_SCHEMA.curie('volatile_org_comp'),
-                   model_uri=ANALYSIS_API_SCHEMA.volatile_org_comp, domain=None, range=Optional[str])
+slots.volatile_org_comp = Slot(uri=BASALT_SCHEMA.volatile_org_comp, name="volatile_org_comp", curie=BASALT_SCHEMA.curie('volatile_org_comp'),
+                   model_uri=BASALT_SCHEMA.volatile_org_comp, domain=None, range=Optional[str])
 
-slots.volume_ml = Slot(uri=ANALYSIS_API_SCHEMA.volume_ml, name="volume_ml", curie=ANALYSIS_API_SCHEMA.curie('volume_ml'),
-                   model_uri=ANALYSIS_API_SCHEMA.volume_ml, domain=None, range=Optional[float])
+slots.volume_ml = Slot(uri=BASALT_SCHEMA.volume_ml, name="volume_ml", curie=BASALT_SCHEMA.curie('volume_ml'),
+                   model_uri=BASALT_SCHEMA.volume_ml, domain=None, range=Optional[float])
 
-slots.volume_uL = Slot(uri=ANALYSIS_API_SCHEMA.volume_uL, name="volume_uL", curie=ANALYSIS_API_SCHEMA.curie('volume_uL'),
-                   model_uri=ANALYSIS_API_SCHEMA.volume_uL, domain=None, range=Optional[float])
+slots.volume_uL = Slot(uri=BASALT_SCHEMA.volume_uL, name="volume_uL", curie=BASALT_SCHEMA.curie('volume_uL'),
+                   model_uri=BASALT_SCHEMA.volume_uL, domain=None, range=Optional[float])
 
-slots.wastewater_type = Slot(uri=ANALYSIS_API_SCHEMA.wastewater_type, name="wastewater_type", curie=ANALYSIS_API_SCHEMA.curie('wastewater_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.wastewater_type, domain=None, range=Optional[str])
+slots.wastewater_type = Slot(uri=BASALT_SCHEMA.wastewater_type, name="wastewater_type", curie=BASALT_SCHEMA.curie('wastewater_type'),
+                   model_uri=BASALT_SCHEMA.wastewater_type, domain=None, range=Optional[str])
 
-slots.water_content = Slot(uri=ANALYSIS_API_SCHEMA.water_content, name="water_content", curie=ANALYSIS_API_SCHEMA.curie('water_content'),
-                   model_uri=ANALYSIS_API_SCHEMA.water_content, domain=None, range=Optional[str],
+slots.water_content = Slot(uri=BASALT_SCHEMA.water_content, name="water_content", curie=BASALT_SCHEMA.curie('water_content'),
+                   model_uri=BASALT_SCHEMA.water_content, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.water_content_meth = Slot(uri=ANALYSIS_API_SCHEMA.water_content_meth, name="water_content_meth", curie=ANALYSIS_API_SCHEMA.curie('water_content_meth'),
-                   model_uri=ANALYSIS_API_SCHEMA.water_content_meth, domain=None, range=Optional[str])
+slots.water_content_meth = Slot(uri=BASALT_SCHEMA.water_content_meth, name="water_content_meth", curie=BASALT_SCHEMA.curie('water_content_meth'),
+                   model_uri=BASALT_SCHEMA.water_content_meth, domain=None, range=Optional[str])
 
-slots.water_current = Slot(uri=ANALYSIS_API_SCHEMA.water_current, name="water_current", curie=ANALYSIS_API_SCHEMA.curie('water_current'),
-                   model_uri=ANALYSIS_API_SCHEMA.water_current, domain=None, range=Optional[str],
+slots.water_current = Slot(uri=BASALT_SCHEMA.water_current, name="water_current", curie=BASALT_SCHEMA.curie('water_current'),
+                   model_uri=BASALT_SCHEMA.water_current, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.water_temp_regm = Slot(uri=ANALYSIS_API_SCHEMA.water_temp_regm, name="water_temp_regm", curie=ANALYSIS_API_SCHEMA.curie('water_temp_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.water_temp_regm, domain=None, range=Optional[str])
+slots.water_temp_regm = Slot(uri=BASALT_SCHEMA.water_temp_regm, name="water_temp_regm", curie=BASALT_SCHEMA.curie('water_temp_regm'),
+                   model_uri=BASALT_SCHEMA.water_temp_regm, domain=None, range=Optional[str])
 
-slots.watering_regm = Slot(uri=ANALYSIS_API_SCHEMA.watering_regm, name="watering_regm", curie=ANALYSIS_API_SCHEMA.curie('watering_regm'),
-                   model_uri=ANALYSIS_API_SCHEMA.watering_regm, domain=None, range=Optional[str])
+slots.watering_regm = Slot(uri=BASALT_SCHEMA.watering_regm, name="watering_regm", curie=BASALT_SCHEMA.curie('watering_regm'),
+                   model_uri=BASALT_SCHEMA.watering_regm, domain=None, range=Optional[str])
 
-slots.wavelength_nm = Slot(uri=ANALYSIS_API_SCHEMA.wavelength_nm, name="wavelength_nm", curie=ANALYSIS_API_SCHEMA.curie('wavelength_nm'),
-                   model_uri=ANALYSIS_API_SCHEMA.wavelength_nm, domain=None, range=int)
+slots.wavelength_nm = Slot(uri=BASALT_SCHEMA.wavelength_nm, name="wavelength_nm", curie=BASALT_SCHEMA.curie('wavelength_nm'),
+                   model_uri=BASALT_SCHEMA.wavelength_nm, domain=None, range=int)
 
-slots.weather = Slot(uri=ANALYSIS_API_SCHEMA.weather, name="weather", curie=ANALYSIS_API_SCHEMA.curie('weather'),
-                   model_uri=ANALYSIS_API_SCHEMA.weather, domain=None, range=Optional[str])
+slots.weather = Slot(uri=BASALT_SCHEMA.weather, name="weather", curie=BASALT_SCHEMA.curie('weather'),
+                   model_uri=BASALT_SCHEMA.weather, domain=None, range=Optional[str])
 
-slots.well_metadata = Slot(uri=ANALYSIS_API_SCHEMA.well_metadata, name="well_metadata", curie=ANALYSIS_API_SCHEMA.curie('well_metadata'),
-                   model_uri=ANALYSIS_API_SCHEMA.well_metadata, domain=None, range=Optional[Union[Union[dict, WellMetadata], list[Union[dict, WellMetadata]]]])
+slots.well_metadata = Slot(uri=BASALT_SCHEMA.well_metadata, name="well_metadata", curie=BASALT_SCHEMA.curie('well_metadata'),
+                   model_uri=BASALT_SCHEMA.well_metadata, domain=None, range=Optional[Union[Union[dict, WellMetadata], list[Union[dict, WellMetadata]]]])
 
-slots.well_readings = Slot(uri=ANALYSIS_API_SCHEMA.well_readings, name="well_readings", curie=ANALYSIS_API_SCHEMA.curie('well_readings'),
-                   model_uri=ANALYSIS_API_SCHEMA.well_readings, domain=None, range=Optional[Union[Union[dict, WellReading], list[Union[dict, WellReading]]]])
+slots.well_readings = Slot(uri=BASALT_SCHEMA.well_readings, name="well_readings", curie=BASALT_SCHEMA.curie('well_readings'),
+                   model_uri=BASALT_SCHEMA.well_readings, domain=None, range=Optional[Union[Union[dict, WellReading], list[Union[dict, WellReading]]]])
 
-slots.wind_direction = Slot(uri=ANALYSIS_API_SCHEMA.wind_direction, name="wind_direction", curie=ANALYSIS_API_SCHEMA.curie('wind_direction'),
-                   model_uri=ANALYSIS_API_SCHEMA.wind_direction, domain=None, range=Optional[Union[str, "CardinalDirectionEnum"]])
+slots.wind_direction = Slot(uri=BASALT_SCHEMA.wind_direction, name="wind_direction", curie=BASALT_SCHEMA.curie('wind_direction'),
+                   model_uri=BASALT_SCHEMA.wind_direction, domain=None, range=Optional[Union[str, "CardinalDirectionEnum"]])
 
-slots.wind_speed = Slot(uri=ANALYSIS_API_SCHEMA.wind_speed, name="wind_speed", curie=ANALYSIS_API_SCHEMA.curie('wind_speed'),
-                   model_uri=ANALYSIS_API_SCHEMA.wind_speed, domain=None, range=Optional[str],
+slots.wind_speed = Slot(uri=BASALT_SCHEMA.wind_speed, name="wind_speed", curie=BASALT_SCHEMA.curie('wind_speed'),
+                   model_uri=BASALT_SCHEMA.wind_speed, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.within_17_oz = Slot(uri=ANALYSIS_API_SCHEMA.within_17_oz, name="within_17_oz", curie=ANALYSIS_API_SCHEMA.curie('within_17_oz'),
-                   model_uri=ANALYSIS_API_SCHEMA.within_17_oz, domain=None, range=Optional[str])
+slots.within_17_oz = Slot(uri=BASALT_SCHEMA.within_17_oz, name="within_17_oz", curie=BASALT_SCHEMA.curie('within_17_oz'),
+                   model_uri=BASALT_SCHEMA.within_17_oz, domain=None, range=Optional[str])
 
-slots.workflow_steps = Slot(uri=ANALYSIS_API_SCHEMA.workflow_steps, name="workflow_steps", curie=ANALYSIS_API_SCHEMA.curie('workflow_steps'),
-                   model_uri=ANALYSIS_API_SCHEMA.workflow_steps, domain=None, range=Optional[str])
+slots.workflow_steps = Slot(uri=BASALT_SCHEMA.workflow_steps, name="workflow_steps", curie=BASALT_SCHEMA.curie('workflow_steps'),
+                   model_uri=BASALT_SCHEMA.workflow_steps, domain=None, range=Optional[str])
 
-slots.activity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="activity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.activity__id, domain=None, range=URIRef)
+slots.activity__id = Slot(uri=BASALT_SCHEMA.id, name="activity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.activity__id, domain=None, range=URIRef)
 
-slots.activity__ended_at_time = Slot(uri=ANALYSIS_API_SCHEMA.ended_at_time, name="activity__ended_at_time", curie=ANALYSIS_API_SCHEMA.curie('ended_at_time'),
-                   model_uri=ANALYSIS_API_SCHEMA.activity__ended_at_time, domain=None, range=Optional[Union[str, XSDDateTime]])
+slots.activity__ended_at_time = Slot(uri=BASALT_SCHEMA.ended_at_time, name="activity__ended_at_time", curie=BASALT_SCHEMA.curie('ended_at_time'),
+                   model_uri=BASALT_SCHEMA.activity__ended_at_time, domain=None, range=Optional[Union[str, XSDDateTime]])
 
-slots.activity__processing_institution = Slot(uri=ANALYSIS_API_SCHEMA.processing_institution, name="activity__processing_institution", curie=ANALYSIS_API_SCHEMA.curie('processing_institution'),
-                   model_uri=ANALYSIS_API_SCHEMA.activity__processing_institution, domain=None, range=Optional[Union[str, "InstitutionEnum"]])
+slots.activity__processing_institution = Slot(uri=BASALT_SCHEMA.processing_institution, name="activity__processing_institution", curie=BASALT_SCHEMA.curie('processing_institution'),
+                   model_uri=BASALT_SCHEMA.activity__processing_institution, domain=None, range=Optional[Union[str, "InstitutionEnum"]])
 
-slots.activity__protocol_link = Slot(uri=ANALYSIS_API_SCHEMA.protocol_link, name="activity__protocol_link", curie=ANALYSIS_API_SCHEMA.curie('protocol_link'),
-                   model_uri=ANALYSIS_API_SCHEMA.activity__protocol_link, domain=None, range=Optional[str])
+slots.activity__protocol_link = Slot(uri=BASALT_SCHEMA.protocol_link, name="activity__protocol_link", curie=BASALT_SCHEMA.curie('protocol_link'),
+                   model_uri=BASALT_SCHEMA.activity__protocol_link, domain=None, range=Optional[str])
 
-slots.activity__started_at_time = Slot(uri=ANALYSIS_API_SCHEMA.started_at_time, name="activity__started_at_time", curie=ANALYSIS_API_SCHEMA.curie('started_at_time'),
-                   model_uri=ANALYSIS_API_SCHEMA.activity__started_at_time, domain=None, range=Optional[Union[str, XSDDateTime]])
+slots.activity__started_at_time = Slot(uri=BASALT_SCHEMA.started_at_time, name="activity__started_at_time", curie=BASALT_SCHEMA.curie('started_at_time'),
+                   model_uri=BASALT_SCHEMA.activity__started_at_time, domain=None, range=Optional[Union[str, XSDDateTime]])
 
-slots.entity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="entity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.entity__id, domain=None, range=URIRef)
+slots.entity__id = Slot(uri=BASALT_SCHEMA.id, name="entity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.entity__id, domain=None, range=URIRef)
 
-slots.dataProduct__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="dataProduct__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.dataProduct__id, domain=None, range=URIRef)
+slots.dataProduct__id = Slot(uri=BASALT_SCHEMA.id, name="dataProduct__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.dataProduct__id, domain=None, range=URIRef)
 
-slots.instrumentData__alternative_identifiers = Slot(uri=ANALYSIS_API_SCHEMA.alternative_identifiers, name="instrumentData__alternative_identifiers", curie=ANALYSIS_API_SCHEMA.curie('alternative_identifiers'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrumentData__alternative_identifiers, domain=None, range=Optional[str])
+slots.instrumentData__alternative_identifiers = Slot(uri=BASALT_SCHEMA.alternative_identifiers, name="instrumentData__alternative_identifiers", curie=BASALT_SCHEMA.curie('alternative_identifiers'),
+                   model_uri=BASALT_SCHEMA.instrumentData__alternative_identifiers, domain=None, range=Optional[str])
 
-slots.instrumentData__compression_type = Slot(uri=ANALYSIS_API_SCHEMA.compression_type, name="instrumentData__compression_type", curie=ANALYSIS_API_SCHEMA.curie('compression_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrumentData__compression_type, domain=None, range=Optional[str])
+slots.instrumentData__compression_type = Slot(uri=BASALT_SCHEMA.compression_type, name="instrumentData__compression_type", curie=BASALT_SCHEMA.curie('compression_type'),
+                   model_uri=BASALT_SCHEMA.instrumentData__compression_type, domain=None, range=Optional[str])
 
-slots.instrumentData__file_type = Slot(uri=ANALYSIS_API_SCHEMA.file_type, name="instrumentData__file_type", curie=ANALYSIS_API_SCHEMA.curie('file_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrumentData__file_type, domain=None, range=Optional[Union[str, "FileTypeEnum"]])
+slots.instrumentData__file_type = Slot(uri=BASALT_SCHEMA.file_type, name="instrumentData__file_type", curie=BASALT_SCHEMA.curie('file_type'),
+                   model_uri=BASALT_SCHEMA.instrumentData__file_type, domain=None, range=Optional[Union[str, "FileTypeEnum"]])
 
-slots.instrumentData__software_version = Slot(uri=ANALYSIS_API_SCHEMA.software_version, name="instrumentData__software_version", curie=ANALYSIS_API_SCHEMA.curie('software_version'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrumentData__software_version, domain=None, range=Optional[str])
+slots.instrumentData__software_version = Slot(uri=BASALT_SCHEMA.software_version, name="instrumentData__software_version", curie=BASALT_SCHEMA.curie('software_version'),
+                   model_uri=BASALT_SCHEMA.instrumentData__software_version, domain=None, range=Optional[str])
 
-slots.sitePhoto__site_photo_type = Slot(uri=ANALYSIS_API_SCHEMA.site_photo_type, name="sitePhoto__site_photo_type", curie=ANALYSIS_API_SCHEMA.curie('site_photo_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.sitePhoto__site_photo_type, domain=None, range=Optional[Union[str, "SitePhotoCategoryEnum"]])
+slots.sitePhoto__site_photo_type = Slot(uri=BASALT_SCHEMA.site_photo_type, name="sitePhoto__site_photo_type", curie=BASALT_SCHEMA.curie('site_photo_type'),
+                   model_uri=BASALT_SCHEMA.sitePhoto__site_photo_type, domain=None, range=Optional[Union[str, "SitePhotoCategoryEnum"]])
 
-slots.sitePhoto__photo_taken_during = Slot(uri=ANALYSIS_API_SCHEMA.photo_taken_during, name="sitePhoto__photo_taken_during", curie=ANALYSIS_API_SCHEMA.curie('photo_taken_during'),
-                   model_uri=ANALYSIS_API_SCHEMA.sitePhoto__photo_taken_during, domain=None, range=Optional[Union[str, SamplingActivityId]])
+slots.sitePhoto__photo_taken_during = Slot(uri=BASALT_SCHEMA.photo_taken_during, name="sitePhoto__photo_taken_during", curie=BASALT_SCHEMA.curie('photo_taken_during'),
+                   model_uri=BASALT_SCHEMA.sitePhoto__photo_taken_during, domain=None, range=Optional[Union[str, SamplingActivityId]])
 
-slots.dataGenerationActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="dataGenerationActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.dataGenerationActivity__id, domain=None, range=URIRef)
+slots.dataGenerationActivity__id = Slot(uri=BASALT_SCHEMA.id, name="dataGenerationActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.dataGenerationActivity__id, domain=None, range=URIRef)
 
-slots.dataGenerationActivity__analyte_id = Slot(uri=ANALYSIS_API_SCHEMA.analyte_id, name="dataGenerationActivity__analyte_id", curie=ANALYSIS_API_SCHEMA.curie('analyte_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.dataGenerationActivity__analyte_id, domain=None, range=Optional[Union[str, ProcessedSampleId]])
+slots.dataGenerationActivity__analyte_id = Slot(uri=BASALT_SCHEMA.analyte_id, name="dataGenerationActivity__analyte_id", curie=BASALT_SCHEMA.curie('analyte_id'),
+                   model_uri=BASALT_SCHEMA.dataGenerationActivity__analyte_id, domain=None, range=Optional[Union[str, ProcessedSampleId]])
 
-slots.dataGenerationActivity__acquisition_start_time = Slot(uri=ANALYSIS_API_SCHEMA.acquisition_start_time, name="dataGenerationActivity__acquisition_start_time", curie=ANALYSIS_API_SCHEMA.curie('acquisition_start_time'),
-                   model_uri=ANALYSIS_API_SCHEMA.dataGenerationActivity__acquisition_start_time, domain=None, range=Union[str, XSDDateTime])
+slots.dataGenerationActivity__acquisition_start_time = Slot(uri=BASALT_SCHEMA.acquisition_start_time, name="dataGenerationActivity__acquisition_start_time", curie=BASALT_SCHEMA.curie('acquisition_start_time'),
+                   model_uri=BASALT_SCHEMA.dataGenerationActivity__acquisition_start_time, domain=None, range=Union[str, XSDDateTime])
 
-slots.dataGenerationActivity__acquisition_end_time = Slot(uri=ANALYSIS_API_SCHEMA.acquisition_end_time, name="dataGenerationActivity__acquisition_end_time", curie=ANALYSIS_API_SCHEMA.curie('acquisition_end_time'),
-                   model_uri=ANALYSIS_API_SCHEMA.dataGenerationActivity__acquisition_end_time, domain=None, range=Union[str, XSDDateTime])
+slots.dataGenerationActivity__acquisition_end_time = Slot(uri=BASALT_SCHEMA.acquisition_end_time, name="dataGenerationActivity__acquisition_end_time", curie=BASALT_SCHEMA.curie('acquisition_end_time'),
+                   model_uri=BASALT_SCHEMA.dataGenerationActivity__acquisition_end_time, domain=None, range=Union[str, XSDDateTime])
 
-slots.dataGenerationActivity__instrument_used = Slot(uri=ANALYSIS_API_SCHEMA.instrument_used, name="dataGenerationActivity__instrument_used", curie=ANALYSIS_API_SCHEMA.curie('instrument_used'),
-                   model_uri=ANALYSIS_API_SCHEMA.dataGenerationActivity__instrument_used, domain=None, range=Optional[Union[str, InstrumentId]])
+slots.dataGenerationActivity__instrument_used = Slot(uri=BASALT_SCHEMA.instrument_used, name="dataGenerationActivity__instrument_used", curie=BASALT_SCHEMA.curie('instrument_used'),
+                   model_uri=BASALT_SCHEMA.dataGenerationActivity__instrument_used, domain=None, range=Optional[Union[str, InstrumentId]])
 
-slots.dataGenerationActivity__instrument_operator_id = Slot(uri=ANALYSIS_API_SCHEMA.instrument_operator_id, name="dataGenerationActivity__instrument_operator_id", curie=ANALYSIS_API_SCHEMA.curie('instrument_operator_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.dataGenerationActivity__instrument_operator_id, domain=None, range=Optional[Union[str, PersonValueId]])
+slots.dataGenerationActivity__instrument_operator_id = Slot(uri=BASALT_SCHEMA.instrument_operator_id, name="dataGenerationActivity__instrument_operator_id", curie=BASALT_SCHEMA.curie('instrument_operator_id'),
+                   model_uri=BASALT_SCHEMA.dataGenerationActivity__instrument_operator_id, domain=None, range=Optional[Union[str, PersonValueId]])
 
-slots.respirationDataGenerationActivity__method_id = Slot(uri=ANALYSIS_API_SCHEMA.method_id, name="respirationDataGenerationActivity__method_id", curie=ANALYSIS_API_SCHEMA.curie('method_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.respirationDataGenerationActivity__method_id, domain=None, range=Optional[Union[dict, RespirationMethod]])
+slots.respirationDataGenerationActivity__method_id = Slot(uri=BASALT_SCHEMA.method_id, name="respirationDataGenerationActivity__method_id", curie=BASALT_SCHEMA.curie('method_id'),
+                   model_uri=BASALT_SCHEMA.respirationDataGenerationActivity__method_id, domain=None, range=Optional[Union[dict, RespirationMethod]])
 
-slots.dataProcessingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="dataProcessingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.dataProcessingActivity__id, domain=None, range=URIRef)
+slots.dataProcessingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="dataProcessingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.dataProcessingActivity__id, domain=None, range=URIRef)
 
-slots.dataProcessingActivity__started_at_time = Slot(uri=ANALYSIS_API_SCHEMA.started_at_time, name="dataProcessingActivity__started_at_time", curie=ANALYSIS_API_SCHEMA.curie('started_at_time'),
-                   model_uri=ANALYSIS_API_SCHEMA.dataProcessingActivity__started_at_time, domain=None, range=Union[str, XSDDateTime])
+slots.dataProcessingActivity__started_at_time = Slot(uri=BASALT_SCHEMA.started_at_time, name="dataProcessingActivity__started_at_time", curie=BASALT_SCHEMA.curie('started_at_time'),
+                   model_uri=BASALT_SCHEMA.dataProcessingActivity__started_at_time, domain=None, range=Union[str, XSDDateTime])
 
-slots.dataProcessingActivity__ended_at_time = Slot(uri=ANALYSIS_API_SCHEMA.ended_at_time, name="dataProcessingActivity__ended_at_time", curie=ANALYSIS_API_SCHEMA.curie('ended_at_time'),
-                   model_uri=ANALYSIS_API_SCHEMA.dataProcessingActivity__ended_at_time, domain=None, range=Optional[Union[str, XSDDateTime]])
+slots.dataProcessingActivity__ended_at_time = Slot(uri=BASALT_SCHEMA.ended_at_time, name="dataProcessingActivity__ended_at_time", curie=BASALT_SCHEMA.curie('ended_at_time'),
+                   model_uri=BASALT_SCHEMA.dataProcessingActivity__ended_at_time, domain=None, range=Optional[Union[str, XSDDateTime]])
 
-slots.dataProcessingActivity__software_url = Slot(uri=ANALYSIS_API_SCHEMA.software_url, name="dataProcessingActivity__software_url", curie=ANALYSIS_API_SCHEMA.curie('software_url'),
-                   model_uri=ANALYSIS_API_SCHEMA.dataProcessingActivity__software_url, domain=None, range=Optional[str])
+slots.dataProcessingActivity__software_url = Slot(uri=BASALT_SCHEMA.software_url, name="dataProcessingActivity__software_url", curie=BASALT_SCHEMA.curie('software_url'),
+                   model_uri=BASALT_SCHEMA.dataProcessingActivity__software_url, domain=None, range=Optional[str])
 
-slots.dataProcessingActivity__software_version = Slot(uri=ANALYSIS_API_SCHEMA.software_version, name="dataProcessingActivity__software_version", curie=ANALYSIS_API_SCHEMA.curie('software_version'),
-                   model_uri=ANALYSIS_API_SCHEMA.dataProcessingActivity__software_version, domain=None, range=Optional[str])
+slots.dataProcessingActivity__software_version = Slot(uri=BASALT_SCHEMA.software_version, name="dataProcessingActivity__software_version", curie=BASALT_SCHEMA.curie('software_version'),
+                   model_uri=BASALT_SCHEMA.dataProcessingActivity__software_version, domain=None, range=Optional[str])
 
-slots.dataProcessingActivity__software_poc = Slot(uri=ANALYSIS_API_SCHEMA.software_poc, name="dataProcessingActivity__software_poc", curie=ANALYSIS_API_SCHEMA.curie('software_poc'),
-                   model_uri=ANALYSIS_API_SCHEMA.dataProcessingActivity__software_poc, domain=None, range=Optional[str])
+slots.dataProcessingActivity__software_poc = Slot(uri=BASALT_SCHEMA.software_poc, name="dataProcessingActivity__software_poc", curie=BASALT_SCHEMA.curie('software_poc'),
+                   model_uri=BASALT_SCHEMA.dataProcessingActivity__software_poc, domain=None, range=Optional[str])
 
-slots.dataProcessingActivity__execution_resource = Slot(uri=ANALYSIS_API_SCHEMA.execution_resource, name="dataProcessingActivity__execution_resource", curie=ANALYSIS_API_SCHEMA.curie('execution_resource'),
-                   model_uri=ANALYSIS_API_SCHEMA.dataProcessingActivity__execution_resource, domain=None, range=Optional[Union[str, "ExecutionResourceEnum"]])
+slots.dataProcessingActivity__execution_resource = Slot(uri=BASALT_SCHEMA.execution_resource, name="dataProcessingActivity__execution_resource", curie=BASALT_SCHEMA.curie('execution_resource'),
+                   model_uri=BASALT_SCHEMA.dataProcessingActivity__execution_resource, domain=None, range=Optional[Union[str, "ExecutionResourceEnum"]])
 
-slots.alternativeIdentifier__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="alternativeIdentifier__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.alternativeIdentifier__id, domain=None, range=URIRef)
+slots.alternativeIdentifier__id = Slot(uri=BASALT_SCHEMA.id, name="alternativeIdentifier__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.alternativeIdentifier__id, domain=None, range=URIRef)
 
-slots.alternativeIdentifier__alternate_id = Slot(uri=ANALYSIS_API_SCHEMA.alternate_id, name="alternativeIdentifier__alternate_id", curie=ANALYSIS_API_SCHEMA.curie('alternate_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.alternativeIdentifier__alternate_id, domain=None, range=str)
+slots.alternativeIdentifier__alternate_id = Slot(uri=BASALT_SCHEMA.alternate_id, name="alternativeIdentifier__alternate_id", curie=BASALT_SCHEMA.curie('alternate_id'),
+                   model_uri=BASALT_SCHEMA.alternativeIdentifier__alternate_id, domain=None, range=str)
 
-slots.alternativeIdentifier__alternate_identifier_type = Slot(uri=ANALYSIS_API_SCHEMA.alternate_identifier_type, name="alternativeIdentifier__alternate_identifier_type", curie=ANALYSIS_API_SCHEMA.curie('alternate_identifier_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.alternativeIdentifier__alternate_identifier_type, domain=None, range=Union[str, "AlternateIdentifierType"])
+slots.alternativeIdentifier__alternate_identifier_type = Slot(uri=BASALT_SCHEMA.alternate_identifier_type, name="alternativeIdentifier__alternate_identifier_type", curie=BASALT_SCHEMA.curie('alternate_identifier_type'),
+                   model_uri=BASALT_SCHEMA.alternativeIdentifier__alternate_identifier_type, domain=None, range=Union[str, "AlternateIdentifierType"])
 
-slots.functionalAnnotationIdentifier__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="functionalAnnotationIdentifier__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.functionalAnnotationIdentifier__id, domain=None, range=URIRef)
+slots.functionalAnnotationIdentifier__id = Slot(uri=BASALT_SCHEMA.id, name="functionalAnnotationIdentifier__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.functionalAnnotationIdentifier__id, domain=None, range=URIRef)
 
-slots.functionalAnnotationIdentifier__functional_identifier = Slot(uri=ANALYSIS_API_SCHEMA.functional_identifier, name="functionalAnnotationIdentifier__functional_identifier", curie=ANALYSIS_API_SCHEMA.curie('functional_identifier'),
-                   model_uri=ANALYSIS_API_SCHEMA.functionalAnnotationIdentifier__functional_identifier, domain=None, range=str)
+slots.functionalAnnotationIdentifier__functional_identifier = Slot(uri=BASALT_SCHEMA.functional_identifier, name="functionalAnnotationIdentifier__functional_identifier", curie=BASALT_SCHEMA.curie('functional_identifier'),
+                   model_uri=BASALT_SCHEMA.functionalAnnotationIdentifier__functional_identifier, domain=None, range=str)
 
-slots.functionalAnnotationIdentifier__database = Slot(uri=ANALYSIS_API_SCHEMA.database, name="functionalAnnotationIdentifier__database", curie=ANALYSIS_API_SCHEMA.curie('database'),
-                   model_uri=ANALYSIS_API_SCHEMA.functionalAnnotationIdentifier__database, domain=None, range=Union[str, "AnnotationDatabaseEnum"])
+slots.functionalAnnotationIdentifier__database = Slot(uri=BASALT_SCHEMA.database, name="functionalAnnotationIdentifier__database", curie=BASALT_SCHEMA.curie('database'),
+                   model_uri=BASALT_SCHEMA.functionalAnnotationIdentifier__database, domain=None, range=Union[str, "AnnotationDatabaseEnum"])
 
-slots.instrument__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="instrument__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrument__id, domain=None, range=URIRef)
+slots.instrument__id = Slot(uri=BASALT_SCHEMA.id, name="instrument__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.instrument__id, domain=None, range=URIRef)
 
-slots.instrument__name = Slot(uri=ANALYSIS_API_SCHEMA.name, name="instrument__name", curie=ANALYSIS_API_SCHEMA.curie('name'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrument__name, domain=None, range=str)
+slots.instrument__name = Slot(uri=BASALT_SCHEMA.name, name="instrument__name", curie=BASALT_SCHEMA.curie('name'),
+                   model_uri=BASALT_SCHEMA.instrument__name, domain=None, range=str)
 
-slots.instrument__vendor = Slot(uri=ANALYSIS_API_SCHEMA.vendor, name="instrument__vendor", curie=ANALYSIS_API_SCHEMA.curie('vendor'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrument__vendor, domain=None, range=Optional[Union[str, "VendorEnum"]])
+slots.instrument__vendor = Slot(uri=BASALT_SCHEMA.vendor, name="instrument__vendor", curie=BASALT_SCHEMA.curie('vendor'),
+                   model_uri=BASALT_SCHEMA.instrument__vendor, domain=None, range=Optional[Union[str, "VendorEnum"]])
 
-slots.instrument__model = Slot(uri=ANALYSIS_API_SCHEMA.model, name="instrument__model", curie=ANALYSIS_API_SCHEMA.curie('model'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrument__model, domain=None, range=Optional[Union[str, "ModelEnum"]])
+slots.instrument__model = Slot(uri=BASALT_SCHEMA.model, name="instrument__model", curie=BASALT_SCHEMA.curie('model'),
+                   model_uri=BASALT_SCHEMA.instrument__model, domain=None, range=Optional[Union[str, "ModelEnum"]])
 
-slots.instrument__serial_number = Slot(uri=ANALYSIS_API_SCHEMA.serial_number, name="instrument__serial_number", curie=ANALYSIS_API_SCHEMA.curie('serial_number'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrument__serial_number, domain=None, range=Optional[str])
+slots.instrument__serial_number = Slot(uri=BASALT_SCHEMA.serial_number, name="instrument__serial_number", curie=BASALT_SCHEMA.curie('serial_number'),
+                   model_uri=BASALT_SCHEMA.instrument__serial_number, domain=None, range=Optional[str])
 
-slots.instrument__lims_resource_id = Slot(uri=ANALYSIS_API_SCHEMA.lims_resource_id, name="instrument__lims_resource_id", curie=ANALYSIS_API_SCHEMA.curie('lims_resource_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrument__lims_resource_id, domain=None, range=Optional[int])
+slots.instrument__lims_resource_id = Slot(uri=BASALT_SCHEMA.lims_resource_id, name="instrument__lims_resource_id", curie=BASALT_SCHEMA.curie('lims_resource_id'),
+                   model_uri=BASALT_SCHEMA.instrument__lims_resource_id, domain=None, range=Optional[int])
 
-slots.instrument__location = Slot(uri=ANALYSIS_API_SCHEMA.location, name="instrument__location", curie=ANALYSIS_API_SCHEMA.curie('location'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrument__location, domain=None, range=Optional[str])
+slots.instrument__location = Slot(uri=BASALT_SCHEMA.location, name="instrument__location", curie=BASALT_SCHEMA.curie('location'),
+                   model_uri=BASALT_SCHEMA.instrument__location, domain=None, range=Optional[str])
 
-slots.instrument__maintenance = Slot(uri=ANALYSIS_API_SCHEMA.maintenance, name="instrument__maintenance", curie=ANALYSIS_API_SCHEMA.curie('maintenance'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrument__maintenance, domain=None, range=Optional[str])
+slots.instrument__maintenance = Slot(uri=BASALT_SCHEMA.maintenance, name="instrument__maintenance", curie=BASALT_SCHEMA.curie('maintenance'),
+                   model_uri=BASALT_SCHEMA.instrument__maintenance, domain=None, range=Optional[str])
 
-slots.instrument__alternative_names = Slot(uri=ANALYSIS_API_SCHEMA.alternative_names, name="instrument__alternative_names", curie=ANALYSIS_API_SCHEMA.curie('alternative_names'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrument__alternative_names, domain=None, range=Optional[str])
+slots.instrument__alternative_names = Slot(uri=BASALT_SCHEMA.alternative_names, name="instrument__alternative_names", curie=BASALT_SCHEMA.curie('alternative_names'),
+                   model_uri=BASALT_SCHEMA.instrument__alternative_names, domain=None, range=Optional[str])
 
-slots.instrument__instrument_parameters = Slot(uri=ANALYSIS_API_SCHEMA.instrument_parameters, name="instrument__instrument_parameters", curie=ANALYSIS_API_SCHEMA.curie('instrument_parameters'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrument__instrument_parameters, domain=None, range=Optional[str])
+slots.instrument__instrument_parameters = Slot(uri=BASALT_SCHEMA.instrument_parameters, name="instrument__instrument_parameters", curie=BASALT_SCHEMA.curie('instrument_parameters'),
+                   model_uri=BASALT_SCHEMA.instrument__instrument_parameters, domain=None, range=Optional[str])
 
-slots.instrument__mass_analyzer_type = Slot(uri=ANALYSIS_API_SCHEMA.mass_analyzer_type, name="instrument__mass_analyzer_type", curie=ANALYSIS_API_SCHEMA.curie('mass_analyzer_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrument__mass_analyzer_type, domain=None, range=Optional[Union[str, "MassAnalyzerEnum"]])
+slots.instrument__mass_analyzer_type = Slot(uri=BASALT_SCHEMA.mass_analyzer_type, name="instrument__mass_analyzer_type", curie=BASALT_SCHEMA.curie('mass_analyzer_type'),
+                   model_uri=BASALT_SCHEMA.instrument__mass_analyzer_type, domain=None, range=Optional[Union[str, "MassAnalyzerEnum"]])
 
-slots.instrument__other_properties = Slot(uri=ANALYSIS_API_SCHEMA.other_properties, name="instrument__other_properties", curie=ANALYSIS_API_SCHEMA.curie('other_properties'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrument__other_properties, domain=None, range=Optional[str])
+slots.instrument__other_properties = Slot(uri=BASALT_SCHEMA.other_properties, name="instrument__other_properties", curie=BASALT_SCHEMA.curie('other_properties'),
+                   model_uri=BASALT_SCHEMA.instrument__other_properties, domain=None, range=Optional[str])
 
-slots.ontologyClass__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="ontologyClass__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.ontologyClass__id, domain=None, range=URIRef)
+slots.ontologyClass__id = Slot(uri=BASALT_SCHEMA.id, name="ontologyClass__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.ontologyClass__id, domain=None, range=URIRef)
 
-slots.ontologyClass__description = Slot(uri=ANALYSIS_API_SCHEMA.description, name="ontologyClass__description", curie=ANALYSIS_API_SCHEMA.curie('description'),
-                   model_uri=ANALYSIS_API_SCHEMA.ontologyClass__description, domain=None, range=Optional[str])
+slots.ontologyClass__description = Slot(uri=BASALT_SCHEMA.description, name="ontologyClass__description", curie=BASALT_SCHEMA.curie('description'),
+                   model_uri=BASALT_SCHEMA.ontologyClass__description, domain=None, range=Optional[str])
 
-slots.ontologyClass__alternative_identifiers = Slot(uri=ANALYSIS_API_SCHEMA.alternative_identifiers, name="ontologyClass__alternative_identifiers", curie=ANALYSIS_API_SCHEMA.curie('alternative_identifiers'),
-                   model_uri=ANALYSIS_API_SCHEMA.ontologyClass__alternative_identifiers, domain=None, range=Optional[str])
+slots.ontologyClass__alternative_identifiers = Slot(uri=BASALT_SCHEMA.alternative_identifiers, name="ontologyClass__alternative_identifiers", curie=BASALT_SCHEMA.curie('alternative_identifiers'),
+                   model_uri=BASALT_SCHEMA.ontologyClass__alternative_identifiers, domain=None, range=Optional[str])
 
-slots.ontologyClass__name = Slot(uri=ANALYSIS_API_SCHEMA.name, name="ontologyClass__name", curie=ANALYSIS_API_SCHEMA.curie('name'),
-                   model_uri=ANALYSIS_API_SCHEMA.ontologyClass__name, domain=None, range=Optional[str])
+slots.ontologyClass__name = Slot(uri=BASALT_SCHEMA.name, name="ontologyClass__name", curie=BASALT_SCHEMA.curie('name'),
+                   model_uri=BASALT_SCHEMA.ontologyClass__name, domain=None, range=Optional[str])
 
-slots.containerType__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="containerType__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.containerType__id, domain=None, range=URIRef)
+slots.containerType__id = Slot(uri=BASALT_SCHEMA.id, name="containerType__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.containerType__id, domain=None, range=URIRef)
 
-slots.containerType__description = Slot(uri=ANALYSIS_API_SCHEMA.description, name="containerType__description", curie=ANALYSIS_API_SCHEMA.curie('description'),
-                   model_uri=ANALYSIS_API_SCHEMA.containerType__description, domain=None, range=Optional[str])
+slots.containerType__description = Slot(uri=BASALT_SCHEMA.description, name="containerType__description", curie=BASALT_SCHEMA.curie('description'),
+                   model_uri=BASALT_SCHEMA.containerType__description, domain=None, range=Optional[str])
 
-slots.containerType__container_type = Slot(uri=ANALYSIS_API_SCHEMA.container_type, name="containerType__container_type", curie=ANALYSIS_API_SCHEMA.curie('container_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.containerType__container_type, domain=None, range=Optional[Union[str, "ContainerTypeEnum"]])
+slots.containerType__container_type = Slot(uri=BASALT_SCHEMA.container_type, name="containerType__container_type", curie=BASALT_SCHEMA.curie('container_type'),
+                   model_uri=BASALT_SCHEMA.containerType__container_type, domain=None, range=Optional[Union[str, "ContainerTypeEnum"]])
 
-slots.containerType__container_size_id = Slot(uri=ANALYSIS_API_SCHEMA.container_size_id, name="containerType__container_size_id", curie=ANALYSIS_API_SCHEMA.curie('container_size_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.containerType__container_size_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.containerType__container_size_id = Slot(uri=BASALT_SCHEMA.container_size_id, name="containerType__container_size_id", curie=BASALT_SCHEMA.curie('container_size_id'),
+                   model_uri=BASALT_SCHEMA.containerType__container_size_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.containerType__axes = Slot(uri=ANALYSIS_API_SCHEMA.axes, name="containerType__axes", curie=ANALYSIS_API_SCHEMA.curie('axes'),
-                   model_uri=ANALYSIS_API_SCHEMA.containerType__axes, domain=None, range=Optional[Union[Union[dict, ContainerAxis], list[Union[dict, ContainerAxis]]]])
+slots.containerType__axes = Slot(uri=BASALT_SCHEMA.axes, name="containerType__axes", curie=BASALT_SCHEMA.curie('axes'),
+                   model_uri=BASALT_SCHEMA.containerType__axes, domain=None, range=Optional[Union[Union[dict, ContainerAxis], list[Union[dict, ContainerAxis]]]])
 
-slots.containerType__contains = Slot(uri=ANALYSIS_API_SCHEMA.contains, name="containerType__contains", curie=ANALYSIS_API_SCHEMA.curie('contains'),
-                   model_uri=ANALYSIS_API_SCHEMA.containerType__contains, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
+slots.containerType__contains = Slot(uri=BASALT_SCHEMA.contains, name="containerType__contains", curie=BASALT_SCHEMA.curie('contains'),
+                   model_uri=BASALT_SCHEMA.containerType__contains, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
 
-slots.containerType__label_format = Slot(uri=ANALYSIS_API_SCHEMA.label_format, name="containerType__label_format", curie=ANALYSIS_API_SCHEMA.curie('label_format'),
-                   model_uri=ANALYSIS_API_SCHEMA.containerType__label_format, domain=None, range=Optional[str])
+slots.containerType__label_format = Slot(uri=BASALT_SCHEMA.label_format, name="containerType__label_format", curie=BASALT_SCHEMA.curie('label_format'),
+                   model_uri=BASALT_SCHEMA.containerType__label_format, domain=None, range=Optional[str])
 
-slots.containerType__renderer = Slot(uri=ANALYSIS_API_SCHEMA.renderer, name="containerType__renderer", curie=ANALYSIS_API_SCHEMA.curie('renderer'),
-                   model_uri=ANALYSIS_API_SCHEMA.containerType__renderer, domain=None, range=Optional[str])
+slots.containerType__renderer = Slot(uri=BASALT_SCHEMA.renderer, name="containerType__renderer", curie=BASALT_SCHEMA.curie('renderer'),
+                   model_uri=BASALT_SCHEMA.containerType__renderer, domain=None, range=Optional[str])
 
-slots.containerType__slot_capacity = Slot(uri=ANALYSIS_API_SCHEMA.slot_capacity, name="containerType__slot_capacity", curie=ANALYSIS_API_SCHEMA.curie('slot_capacity'),
-                   model_uri=ANALYSIS_API_SCHEMA.containerType__slot_capacity, domain=None, range=Optional[str])
+slots.containerType__slot_capacity = Slot(uri=BASALT_SCHEMA.slot_capacity, name="containerType__slot_capacity", curie=BASALT_SCHEMA.curie('slot_capacity'),
+                   model_uri=BASALT_SCHEMA.containerType__slot_capacity, domain=None, range=Optional[str])
 
-slots.containerAxis__name = Slot(uri=ANALYSIS_API_SCHEMA.name, name="containerAxis__name", curie=ANALYSIS_API_SCHEMA.curie('name'),
-                   model_uri=ANALYSIS_API_SCHEMA.containerAxis__name, domain=None, range=Optional[str])
+slots.containerAxis__name = Slot(uri=BASALT_SCHEMA.name, name="containerAxis__name", curie=BASALT_SCHEMA.curie('name'),
+                   model_uri=BASALT_SCHEMA.containerAxis__name, domain=None, range=Optional[str])
 
-slots.containerAxis__values = Slot(uri=ANALYSIS_API_SCHEMA.values, name="containerAxis__values", curie=ANALYSIS_API_SCHEMA.curie('values'),
-                   model_uri=ANALYSIS_API_SCHEMA.containerAxis__values, domain=None, range=Optional[Union[str, list[str]]])
+slots.containerAxis__values = Slot(uri=BASALT_SCHEMA.values, name="containerAxis__values", curie=BASALT_SCHEMA.curie('values'),
+                   model_uri=BASALT_SCHEMA.containerAxis__values, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.custodian__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="custodian__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.custodian__id, domain=None, range=URIRef)
+slots.custodian__id = Slot(uri=BASALT_SCHEMA.id, name="custodian__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.custodian__id, domain=None, range=URIRef)
 
-slots.custodian__person_id = Slot(uri=ANALYSIS_API_SCHEMA.person_id, name="custodian__person_id", curie=ANALYSIS_API_SCHEMA.curie('person_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.custodian__person_id, domain=None, range=Optional[Union[str, PersonValueId]])
+slots.custodian__person_id = Slot(uri=BASALT_SCHEMA.person_id, name="custodian__person_id", curie=BASALT_SCHEMA.curie('person_id'),
+                   model_uri=BASALT_SCHEMA.custodian__person_id, domain=None, range=Optional[Union[str, PersonValueId]])
 
-slots.instrumentAlternativeIdentifier__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="instrumentAlternativeIdentifier__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrumentAlternativeIdentifier__id, domain=None, range=URIRef)
+slots.instrumentAlternativeIdentifier__id = Slot(uri=BASALT_SCHEMA.id, name="instrumentAlternativeIdentifier__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.instrumentAlternativeIdentifier__id, domain=None, range=URIRef)
 
-slots.instrumentAlternativeIdentifier__alt_id = Slot(uri=ANALYSIS_API_SCHEMA.alt_id, name="instrumentAlternativeIdentifier__alt_id", curie=ANALYSIS_API_SCHEMA.curie('alt_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrumentAlternativeIdentifier__alt_id, domain=None, range=Optional[Union[str, AlternativeIdentifierId]])
+slots.instrumentAlternativeIdentifier__alt_id = Slot(uri=BASALT_SCHEMA.alt_id, name="instrumentAlternativeIdentifier__alt_id", curie=BASALT_SCHEMA.curie('alt_id'),
+                   model_uri=BASALT_SCHEMA.instrumentAlternativeIdentifier__alt_id, domain=None, range=Optional[Union[str, AlternativeIdentifierId]])
 
-slots.instrumentAlternativeIdentifier__instrument_alt_id_provider = Slot(uri=ANALYSIS_API_SCHEMA.instrument_alt_id_provider, name="instrumentAlternativeIdentifier__instrument_alt_id_provider", curie=ANALYSIS_API_SCHEMA.curie('instrument_alt_id_provider'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrumentAlternativeIdentifier__instrument_alt_id_provider, domain=None, range=Optional[Union[str, "InstrumentAltIdProviderEnum"]])
+slots.instrumentAlternativeIdentifier__instrument_alt_id_provider = Slot(uri=BASALT_SCHEMA.instrument_alt_id_provider, name="instrumentAlternativeIdentifier__instrument_alt_id_provider", curie=BASALT_SCHEMA.curie('instrument_alt_id_provider'),
+                   model_uri=BASALT_SCHEMA.instrumentAlternativeIdentifier__instrument_alt_id_provider, domain=None, range=Optional[Union[str, "InstrumentAltIdProviderEnum"]])
 
-slots.instrumentAlternativeIdentifier__instrument_id = Slot(uri=ANALYSIS_API_SCHEMA.instrument_id, name="instrumentAlternativeIdentifier__instrument_id", curie=ANALYSIS_API_SCHEMA.curie('instrument_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrumentAlternativeIdentifier__instrument_id, domain=None, range=Union[str, InstrumentId])
+slots.instrumentAlternativeIdentifier__instrument_id = Slot(uri=BASALT_SCHEMA.instrument_id, name="instrumentAlternativeIdentifier__instrument_id", curie=BASALT_SCHEMA.curie('instrument_id'),
+                   model_uri=BASALT_SCHEMA.instrumentAlternativeIdentifier__instrument_id, domain=None, range=Union[str, InstrumentId])
 
-slots.labDevice__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="labDevice__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.labDevice__id, domain=None, range=URIRef)
+slots.labDevice__id = Slot(uri=BASALT_SCHEMA.id, name="labDevice__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.labDevice__id, domain=None, range=URIRef)
 
-slots.labDevice__description = Slot(uri=ANALYSIS_API_SCHEMA.description, name="labDevice__description", curie=ANALYSIS_API_SCHEMA.curie('description'),
-                   model_uri=ANALYSIS_API_SCHEMA.labDevice__description, domain=None, range=Optional[str])
+slots.labDevice__description = Slot(uri=BASALT_SCHEMA.description, name="labDevice__description", curie=BASALT_SCHEMA.curie('description'),
+                   model_uri=BASALT_SCHEMA.labDevice__description, domain=None, range=Optional[str])
 
-slots.labDevice__device_type = Slot(uri=ANALYSIS_API_SCHEMA.device_type, name="labDevice__device_type", curie=ANALYSIS_API_SCHEMA.curie('device_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.labDevice__device_type, domain=None, range=Optional[Union[str, "DeviceTypeEnum"]])
+slots.labDevice__device_type = Slot(uri=BASALT_SCHEMA.device_type, name="labDevice__device_type", curie=BASALT_SCHEMA.curie('device_type'),
+                   model_uri=BASALT_SCHEMA.labDevice__device_type, domain=None, range=Optional[Union[str, "DeviceTypeEnum"]])
 
-slots.labDevice__activity_time_id = Slot(uri=ANALYSIS_API_SCHEMA.activity_time_id, name="labDevice__activity_time_id", curie=ANALYSIS_API_SCHEMA.curie('activity_time_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.labDevice__activity_time_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.labDevice__activity_time_id = Slot(uri=BASALT_SCHEMA.activity_time_id, name="labDevice__activity_time_id", curie=BASALT_SCHEMA.curie('activity_time_id'),
+                   model_uri=BASALT_SCHEMA.labDevice__activity_time_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.labDevice__activity_speed_id = Slot(uri=ANALYSIS_API_SCHEMA.activity_speed_id, name="labDevice__activity_speed_id", curie=ANALYSIS_API_SCHEMA.curie('activity_speed_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.labDevice__activity_speed_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.labDevice__activity_speed_id = Slot(uri=BASALT_SCHEMA.activity_speed_id, name="labDevice__activity_speed_id", curie=BASALT_SCHEMA.curie('activity_speed_id'),
+                   model_uri=BASALT_SCHEMA.labDevice__activity_speed_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.sampleProcessing__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="sampleProcessing__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.sampleProcessing__id, domain=None, range=URIRef)
+slots.sampleProcessing__id = Slot(uri=BASALT_SCHEMA.id, name="sampleProcessing__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.sampleProcessing__id, domain=None, range=URIRef)
 
-slots.sampleProcessing__analysis_type = Slot(uri=ANALYSIS_API_SCHEMA.analysis_type, name="sampleProcessing__analysis_type", curie=ANALYSIS_API_SCHEMA.curie('analysis_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.sampleProcessing__analysis_type, domain=None, range=Optional[Union[str, "RouteMethodEnum"]])
+slots.sampleProcessing__analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="sampleProcessing__analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
+                   model_uri=BASALT_SCHEMA.sampleProcessing__analysis_type, domain=None, range=Optional[Union[str, "RouteMethodEnum"]])
 
-slots.sampleProcessing__method_name = Slot(uri=ANALYSIS_API_SCHEMA.method_name, name="sampleProcessing__method_name", curie=ANALYSIS_API_SCHEMA.curie('method_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.sampleProcessing__method_name, domain=None, range=Optional[Union[str, "MethodNameEnum"]])
+slots.sampleProcessing__method_name = Slot(uri=BASALT_SCHEMA.method_name, name="sampleProcessing__method_name", curie=BASALT_SCHEMA.curie('method_name'),
+                   model_uri=BASALT_SCHEMA.sampleProcessing__method_name, domain=None, range=Optional[Union[str, "MethodNameEnum"]])
 
-slots.sampleProcessing__processing_steps = Slot(uri=ANALYSIS_API_SCHEMA.processing_steps, name="sampleProcessing__processing_steps", curie=ANALYSIS_API_SCHEMA.curie('processing_steps'),
-                   model_uri=ANALYSIS_API_SCHEMA.sampleProcessing__processing_steps, domain=None, range=str)
+slots.sampleProcessing__processing_steps = Slot(uri=BASALT_SCHEMA.processing_steps, name="sampleProcessing__processing_steps", curie=BASALT_SCHEMA.curie('processing_steps'),
+                   model_uri=BASALT_SCHEMA.sampleProcessing__processing_steps, domain=None, range=str)
 
-slots.sampleProcessing__uses_sample = Slot(uri=ANALYSIS_API_SCHEMA.uses_sample, name="sampleProcessing__uses_sample", curie=ANALYSIS_API_SCHEMA.curie('uses_sample'),
-                   model_uri=ANALYSIS_API_SCHEMA.sampleProcessing__uses_sample, domain=None, range=Optional[Union[str, SampleId]])
+slots.sampleProcessing__uses_sample = Slot(uri=BASALT_SCHEMA.uses_sample, name="sampleProcessing__uses_sample", curie=BASALT_SCHEMA.curie('uses_sample'),
+                   model_uri=BASALT_SCHEMA.sampleProcessing__uses_sample, domain=None, range=Optional[Union[str, SampleId]])
 
-slots.processingSampleLink__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="processingSampleLink__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.processingSampleLink__id, domain=None, range=URIRef)
+slots.processingSampleLink__id = Slot(uri=BASALT_SCHEMA.id, name="processingSampleLink__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.processingSampleLink__id, domain=None, range=URIRef)
 
-slots.processingSampleLink__sample_base_id = Slot(uri=ANALYSIS_API_SCHEMA.sample_base_id, name="processingSampleLink__sample_base_id", curie=ANALYSIS_API_SCHEMA.curie('sample_base_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.processingSampleLink__sample_base_id, domain=None, range=Union[str, SampleId])
+slots.processingSampleLink__sample_base_id = Slot(uri=BASALT_SCHEMA.sample_base_id, name="processingSampleLink__sample_base_id", curie=BASALT_SCHEMA.curie('sample_base_id'),
+                   model_uri=BASALT_SCHEMA.processingSampleLink__sample_base_id, domain=None, range=Union[str, SampleId])
 
-slots.processingSampleLink__processing_id = Slot(uri=ANALYSIS_API_SCHEMA.processing_id, name="processingSampleLink__processing_id", curie=ANALYSIS_API_SCHEMA.curie('processing_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.processingSampleLink__processing_id, domain=None, range=Union[str, SampleProcessingId])
+slots.processingSampleLink__processing_id = Slot(uri=BASALT_SCHEMA.processing_id, name="processingSampleLink__processing_id", curie=BASALT_SCHEMA.curie('processing_id'),
+                   model_uri=BASALT_SCHEMA.processingSampleLink__processing_id, domain=None, range=Union[str, SampleProcessingId])
 
-slots.processingSampleLink__step_number = Slot(uri=ANALYSIS_API_SCHEMA.step_number, name="processingSampleLink__step_number", curie=ANALYSIS_API_SCHEMA.curie('step_number'),
-                   model_uri=ANALYSIS_API_SCHEMA.processingSampleLink__step_number, domain=None, range=int)
+slots.processingSampleLink__step_number = Slot(uri=BASALT_SCHEMA.step_number, name="processingSampleLink__step_number", curie=BASALT_SCHEMA.curie('step_number'),
+                   model_uri=BASALT_SCHEMA.processingSampleLink__step_number, domain=None, range=int)
 
-slots.processingSampleLink__role = Slot(uri=ANALYSIS_API_SCHEMA.role, name="processingSampleLink__role", curie=ANALYSIS_API_SCHEMA.curie('role'),
-                   model_uri=ANALYSIS_API_SCHEMA.processingSampleLink__role, domain=None, range=Union[str, "SampleRole"])
+slots.processingSampleLink__role = Slot(uri=BASALT_SCHEMA.role, name="processingSampleLink__role", curie=BASALT_SCHEMA.curie('role'),
+                   model_uri=BASALT_SCHEMA.processingSampleLink__role, domain=None, range=Union[str, "SampleRole"])
 
-slots.instrumentCustodian__instrument_id = Slot(uri=ANALYSIS_API_SCHEMA.instrument_id, name="instrumentCustodian__instrument_id", curie=ANALYSIS_API_SCHEMA.curie('instrument_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrumentCustodian__instrument_id, domain=None, range=Union[str, InstrumentId])
+slots.instrumentCustodian__instrument_id = Slot(uri=BASALT_SCHEMA.instrument_id, name="instrumentCustodian__instrument_id", curie=BASALT_SCHEMA.curie('instrument_id'),
+                   model_uri=BASALT_SCHEMA.instrumentCustodian__instrument_id, domain=None, range=Union[str, InstrumentId])
 
-slots.instrumentCustodian__custodian_id = Slot(uri=ANALYSIS_API_SCHEMA.custodian_id, name="instrumentCustodian__custodian_id", curie=ANALYSIS_API_SCHEMA.curie('custodian_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.instrumentCustodian__custodian_id, domain=None, range=Union[str, CustodianId])
+slots.instrumentCustodian__custodian_id = Slot(uri=BASALT_SCHEMA.custodian_id, name="instrumentCustodian__custodian_id", curie=BASALT_SCHEMA.curie('custodian_id'),
+                   model_uri=BASALT_SCHEMA.instrumentCustodian__custodian_id, domain=None, range=Union[str, CustodianId])
 
-slots.workflowExecutionFunctionalAnnotation__workflow_id = Slot(uri=ANALYSIS_API_SCHEMA.workflow_id, name="workflowExecutionFunctionalAnnotation__workflow_id", curie=ANALYSIS_API_SCHEMA.curie('workflow_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.workflowExecutionFunctionalAnnotation__workflow_id, domain=None, range=Union[str, DataProcessingActivityId])
+slots.workflowExecutionFunctionalAnnotation__workflow_id = Slot(uri=BASALT_SCHEMA.workflow_id, name="workflowExecutionFunctionalAnnotation__workflow_id", curie=BASALT_SCHEMA.curie('workflow_id'),
+                   model_uri=BASALT_SCHEMA.workflowExecutionFunctionalAnnotation__workflow_id, domain=None, range=Union[str, DataProcessingActivityId])
 
-slots.workflowExecutionFunctionalAnnotation__functional_annotation_id = Slot(uri=ANALYSIS_API_SCHEMA.functional_annotation_id, name="workflowExecutionFunctionalAnnotation__functional_annotation_id", curie=ANALYSIS_API_SCHEMA.curie('functional_annotation_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.workflowExecutionFunctionalAnnotation__functional_annotation_id, domain=None, range=Union[str, FunctionalAnnotationIdentifierId])
+slots.workflowExecutionFunctionalAnnotation__functional_annotation_id = Slot(uri=BASALT_SCHEMA.functional_annotation_id, name="workflowExecutionFunctionalAnnotation__functional_annotation_id", curie=BASALT_SCHEMA.curie('functional_annotation_id'),
+                   model_uri=BASALT_SCHEMA.workflowExecutionFunctionalAnnotation__functional_annotation_id, domain=None, range=Union[str, FunctionalAnnotationIdentifierId])
 
-slots.workflowExecutionFunctionalAnnotation__count = Slot(uri=ANALYSIS_API_SCHEMA.count, name="workflowExecutionFunctionalAnnotation__count", curie=ANALYSIS_API_SCHEMA.curie('count'),
-                   model_uri=ANALYSIS_API_SCHEMA.workflowExecutionFunctionalAnnotation__count, domain=None, range=Optional[float])
+slots.workflowExecutionFunctionalAnnotation__count = Slot(uri=BASALT_SCHEMA.count, name="workflowExecutionFunctionalAnnotation__count", curie=BASALT_SCHEMA.curie('count'),
+                   model_uri=BASALT_SCHEMA.workflowExecutionFunctionalAnnotation__count, domain=None, range=Optional[float])
 
-slots.changelog__version = Slot(uri=ANALYSIS_API_SCHEMA.version, name="changelog__version", curie=ANALYSIS_API_SCHEMA.curie('version'),
-                   model_uri=ANALYSIS_API_SCHEMA.changelog__version, domain=None, range=URIRef)
+slots.changelog__version = Slot(uri=BASALT_SCHEMA.version, name="changelog__version", curie=BASALT_SCHEMA.curie('version'),
+                   model_uri=BASALT_SCHEMA.changelog__version, domain=None, range=URIRef)
 
-slots.changelog__changelog = Slot(uri=ANALYSIS_API_SCHEMA.changelog, name="changelog__changelog", curie=ANALYSIS_API_SCHEMA.curie('changelog'),
-                   model_uri=ANALYSIS_API_SCHEMA.changelog__changelog, domain=None, range=str)
+slots.changelog__changelog = Slot(uri=BASALT_SCHEMA.changelog, name="changelog__changelog", curie=BASALT_SCHEMA.curie('changelog'),
+                   model_uri=BASALT_SCHEMA.changelog__changelog, domain=None, range=str)
 
-slots.configuration__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="configuration__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.configuration__id, domain=None, range=Union[str, Uuid])
+slots.configuration__id = Slot(uri=BASALT_SCHEMA.id, name="configuration__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.configuration__id, domain=None, range=Union[str, Uuid])
 
-slots.mobilePhaseSegment__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="mobilePhaseSegment__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.mobilePhaseSegment__id, domain=None, range=URIRef)
+slots.mobilePhaseSegment__id = Slot(uri=BASALT_SCHEMA.id, name="mobilePhaseSegment__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.mobilePhaseSegment__id, domain=None, range=URIRef)
 
-slots.mobilePhaseSegment__segment_order = Slot(uri=ANALYSIS_API_SCHEMA.segment_order, name="mobilePhaseSegment__segment_order", curie=ANALYSIS_API_SCHEMA.curie('segment_order'),
-                   model_uri=ANALYSIS_API_SCHEMA.mobilePhaseSegment__segment_order, domain=None, range=Optional[int])
+slots.mobilePhaseSegment__segment_order = Slot(uri=BASALT_SCHEMA.segment_order, name="mobilePhaseSegment__segment_order", curie=BASALT_SCHEMA.curie('segment_order'),
+                   model_uri=BASALT_SCHEMA.mobilePhaseSegment__segment_order, domain=None, range=Optional[int])
 
-slots.mobilePhaseSegment__substance = Slot(uri=ANALYSIS_API_SCHEMA.substance, name="mobilePhaseSegment__substance", curie=ANALYSIS_API_SCHEMA.curie('substance'),
-                   model_uri=ANALYSIS_API_SCHEMA.mobilePhaseSegment__substance, domain=None, range=Optional[str])
+slots.mobilePhaseSegment__substance = Slot(uri=BASALT_SCHEMA.substance, name="mobilePhaseSegment__substance", curie=BASALT_SCHEMA.curie('substance'),
+                   model_uri=BASALT_SCHEMA.mobilePhaseSegment__substance, domain=None, range=Optional[str])
 
-slots.massSpectrometryStandardRun__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="massSpectrometryStandardRun__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.massSpectrometryStandardRun__id, domain=None, range=URIRef)
+slots.massSpectrometryStandardRun__id = Slot(uri=BASALT_SCHEMA.id, name="massSpectrometryStandardRun__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.massSpectrometryStandardRun__id, domain=None, range=URIRef)
 
-slots.purchasedMaterial__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="purchasedMaterial__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.purchasedMaterial__id, domain=None, range=URIRef)
+slots.purchasedMaterial__id = Slot(uri=BASALT_SCHEMA.id, name="purchasedMaterial__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.purchasedMaterial__id, domain=None, range=URIRef)
 
-slots.labProcessingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="labProcessingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.labProcessingActivity__id, domain=None, range=URIRef)
+slots.labProcessingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="labProcessingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.labProcessingActivity__id, domain=None, range=URIRef)
 
-slots.labProcessingActivity__name = Slot(uri=ANALYSIS_API_SCHEMA.name, name="labProcessingActivity__name", curie=ANALYSIS_API_SCHEMA.curie('name'),
-                   model_uri=ANALYSIS_API_SCHEMA.labProcessingActivity__name, domain=None, range=Optional[str])
+slots.labProcessingActivity__name = Slot(uri=BASALT_SCHEMA.name, name="labProcessingActivity__name", curie=BASALT_SCHEMA.curie('name'),
+                   model_uri=BASALT_SCHEMA.labProcessingActivity__name, domain=None, range=Optional[str])
 
-slots.labProcessingActivity__description = Slot(uri=ANALYSIS_API_SCHEMA.description, name="labProcessingActivity__description", curie=ANALYSIS_API_SCHEMA.curie('description'),
-                   model_uri=ANALYSIS_API_SCHEMA.labProcessingActivity__description, domain=None, range=Optional[str])
+slots.labProcessingActivity__description = Slot(uri=BASALT_SCHEMA.description, name="labProcessingActivity__description", curie=BASALT_SCHEMA.curie('description'),
+                   model_uri=BASALT_SCHEMA.labProcessingActivity__description, domain=None, range=Optional[str])
 
-slots.wellMetadata__position = Slot(uri=ANALYSIS_API_SCHEMA.position, name="wellMetadata__position", curie=ANALYSIS_API_SCHEMA.curie('position'),
-                   model_uri=ANALYSIS_API_SCHEMA.wellMetadata__position, domain=None, range=str)
+slots.wellMetadata__position = Slot(uri=BASALT_SCHEMA.position, name="wellMetadata__position", curie=BASALT_SCHEMA.curie('position'),
+                   model_uri=BASALT_SCHEMA.wellMetadata__position, domain=None, range=str)
 
-slots.wellMetadata__well_type = Slot(uri=ANALYSIS_API_SCHEMA.well_type, name="wellMetadata__well_type", curie=ANALYSIS_API_SCHEMA.curie('well_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.wellMetadata__well_type, domain=None, range=Optional[str])
+slots.wellMetadata__well_type = Slot(uri=BASALT_SCHEMA.well_type, name="wellMetadata__well_type", curie=BASALT_SCHEMA.curie('well_type'),
+                   model_uri=BASALT_SCHEMA.wellMetadata__well_type, domain=None, range=Optional[str])
 
-slots.wellMetadata__replicate_group = Slot(uri=ANALYSIS_API_SCHEMA.replicate_group, name="wellMetadata__replicate_group", curie=ANALYSIS_API_SCHEMA.curie('replicate_group'),
-                   model_uri=ANALYSIS_API_SCHEMA.wellMetadata__replicate_group, domain=None, range=Optional[str])
+slots.wellMetadata__replicate_group = Slot(uri=BASALT_SCHEMA.replicate_group, name="wellMetadata__replicate_group", curie=BASALT_SCHEMA.curie('replicate_group'),
+                   model_uri=BASALT_SCHEMA.wellMetadata__replicate_group, domain=None, range=Optional[str])
 
-slots.aMP2WellMetadata__media_ref = Slot(uri=ANALYSIS_API_SCHEMA.media_ref, name="aMP2WellMetadata__media_ref", curie=ANALYSIS_API_SCHEMA.curie('media_ref'),
-                   model_uri=ANALYSIS_API_SCHEMA.aMP2WellMetadata__media_ref, domain=None, range=Optional[Union[str, ProcessedSampleId]])
+slots.aMP2WellMetadata__media_ref = Slot(uri=BASALT_SCHEMA.media_ref, name="aMP2WellMetadata__media_ref", curie=BASALT_SCHEMA.curie('media_ref'),
+                   model_uri=BASALT_SCHEMA.aMP2WellMetadata__media_ref, domain=None, range=Optional[Union[str, ProcessedSampleId]])
 
-slots.aMP2WellMetadata__media_volume_ul = Slot(uri=ANALYSIS_API_SCHEMA.media_volume_ul, name="aMP2WellMetadata__media_volume_ul", curie=ANALYSIS_API_SCHEMA.curie('media_volume_ul'),
-                   model_uri=ANALYSIS_API_SCHEMA.aMP2WellMetadata__media_volume_ul, domain=None, range=float)
+slots.aMP2WellMetadata__media_volume_ul = Slot(uri=BASALT_SCHEMA.media_volume_ul, name="aMP2WellMetadata__media_volume_ul", curie=BASALT_SCHEMA.curie('media_volume_ul'),
+                   model_uri=BASALT_SCHEMA.aMP2WellMetadata__media_volume_ul, domain=None, range=float)
 
-slots.aMP2WellMetadata__inoculum_volume_ul = Slot(uri=ANALYSIS_API_SCHEMA.inoculum_volume_ul, name="aMP2WellMetadata__inoculum_volume_ul", curie=ANALYSIS_API_SCHEMA.curie('inoculum_volume_ul'),
-                   model_uri=ANALYSIS_API_SCHEMA.aMP2WellMetadata__inoculum_volume_ul, domain=None, range=float)
+slots.aMP2WellMetadata__inoculum_volume_ul = Slot(uri=BASALT_SCHEMA.inoculum_volume_ul, name="aMP2WellMetadata__inoculum_volume_ul", curie=BASALT_SCHEMA.curie('inoculum_volume_ul'),
+                   model_uri=BASALT_SCHEMA.aMP2WellMetadata__inoculum_volume_ul, domain=None, range=float)
 
-slots.aMP2WellMetadata__sample_id = Slot(uri=ANALYSIS_API_SCHEMA.sample_id, name="aMP2WellMetadata__sample_id", curie=ANALYSIS_API_SCHEMA.curie('sample_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.aMP2WellMetadata__sample_id, domain=None, range=Optional[str])
+slots.aMP2WellMetadata__sample_id = Slot(uri=BASALT_SCHEMA.sample_id, name="aMP2WellMetadata__sample_id", curie=BASALT_SCHEMA.curie('sample_id'),
+                   model_uri=BASALT_SCHEMA.aMP2WellMetadata__sample_id, domain=None, range=Optional[str])
 
-slots.aMP2WellMetadata__treatments = Slot(uri=ANALYSIS_API_SCHEMA.treatments, name="aMP2WellMetadata__treatments", curie=ANALYSIS_API_SCHEMA.curie('treatments'),
-                   model_uri=ANALYSIS_API_SCHEMA.aMP2WellMetadata__treatments, domain=None, range=Optional[Union[str, list[str]]])
+slots.aMP2WellMetadata__treatments = Slot(uri=BASALT_SCHEMA.treatments, name="aMP2WellMetadata__treatments", curie=BASALT_SCHEMA.curie('treatments'),
+                   model_uri=BASALT_SCHEMA.aMP2WellMetadata__treatments, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.ecoplateWellMetadata__media_volume_ul = Slot(uri=ANALYSIS_API_SCHEMA.media_volume_ul, name="ecoplateWellMetadata__media_volume_ul", curie=ANALYSIS_API_SCHEMA.curie('media_volume_ul'),
-                   model_uri=ANALYSIS_API_SCHEMA.ecoplateWellMetadata__media_volume_ul, domain=None, range=float)
+slots.ecoplateWellMetadata__media_volume_ul = Slot(uri=BASALT_SCHEMA.media_volume_ul, name="ecoplateWellMetadata__media_volume_ul", curie=BASALT_SCHEMA.curie('media_volume_ul'),
+                   model_uri=BASALT_SCHEMA.ecoplateWellMetadata__media_volume_ul, domain=None, range=float)
 
-slots.ecoplateWellMetadata__carbon_source = Slot(uri=ANALYSIS_API_SCHEMA.carbon_source, name="ecoplateWellMetadata__carbon_source", curie=ANALYSIS_API_SCHEMA.curie('carbon_source'),
-                   model_uri=ANALYSIS_API_SCHEMA.ecoplateWellMetadata__carbon_source, domain=None, range=str)
+slots.ecoplateWellMetadata__carbon_source = Slot(uri=BASALT_SCHEMA.carbon_source, name="ecoplateWellMetadata__carbon_source", curie=BASALT_SCHEMA.curie('carbon_source'),
+                   model_uri=BASALT_SCHEMA.ecoplateWellMetadata__carbon_source, domain=None, range=str)
 
-slots.ecoplateWellMetadata__treatment = Slot(uri=ANALYSIS_API_SCHEMA.treatment, name="ecoplateWellMetadata__treatment", curie=ANALYSIS_API_SCHEMA.curie('treatment'),
-                   model_uri=ANALYSIS_API_SCHEMA.ecoplateWellMetadata__treatment, domain=None, range=Optional[str])
+slots.ecoplateWellMetadata__treatment = Slot(uri=BASALT_SCHEMA.treatment, name="ecoplateWellMetadata__treatment", curie=BASALT_SCHEMA.curie('treatment'),
+                   model_uri=BASALT_SCHEMA.ecoplateWellMetadata__treatment, domain=None, range=Optional[str])
 
-slots.ecoplateWellMetadata__treatment_concentration = Slot(uri=ANALYSIS_API_SCHEMA.treatment_concentration, name="ecoplateWellMetadata__treatment_concentration", curie=ANALYSIS_API_SCHEMA.curie('treatment_concentration'),
-                   model_uri=ANALYSIS_API_SCHEMA.ecoplateWellMetadata__treatment_concentration, domain=None, range=Optional[str])
+slots.ecoplateWellMetadata__treatment_concentration = Slot(uri=BASALT_SCHEMA.treatment_concentration, name="ecoplateWellMetadata__treatment_concentration", curie=BASALT_SCHEMA.curie('treatment_concentration'),
+                   model_uri=BASALT_SCHEMA.ecoplateWellMetadata__treatment_concentration, domain=None, range=Optional[str])
 
-slots.wellReading__position = Slot(uri=ANALYSIS_API_SCHEMA.position, name="wellReading__position", curie=ANALYSIS_API_SCHEMA.curie('position'),
-                   model_uri=ANALYSIS_API_SCHEMA.wellReading__position, domain=None, range=str)
+slots.wellReading__position = Slot(uri=BASALT_SCHEMA.position, name="wellReading__position", curie=BASALT_SCHEMA.curie('position'),
+                   model_uri=BASALT_SCHEMA.wellReading__position, domain=None, range=str)
 
-slots.wellReading__value = Slot(uri=ANALYSIS_API_SCHEMA.value, name="wellReading__value", curie=ANALYSIS_API_SCHEMA.curie('value'),
-                   model_uri=ANALYSIS_API_SCHEMA.wellReading__value, domain=None, range=float)
+slots.wellReading__value = Slot(uri=BASALT_SCHEMA.value, name="wellReading__value", curie=BASALT_SCHEMA.curie('value'),
+                   model_uri=BASALT_SCHEMA.wellReading__value, domain=None, range=float)
 
-slots.wellReading__flag = Slot(uri=ANALYSIS_API_SCHEMA.flag, name="wellReading__flag", curie=ANALYSIS_API_SCHEMA.curie('flag'),
-                   model_uri=ANALYSIS_API_SCHEMA.wellReading__flag, domain=None, range=Optional[str])
+slots.wellReading__flag = Slot(uri=BASALT_SCHEMA.flag, name="wellReading__flag", curie=BASALT_SCHEMA.curie('flag'),
+                   model_uri=BASALT_SCHEMA.wellReading__flag, domain=None, range=Optional[str])
 
-slots.enzymeActivityMethod__incubation_temp_c = Slot(uri=ANALYSIS_API_SCHEMA.incubation_temp_c, name="enzymeActivityMethod__incubation_temp_c", curie=ANALYSIS_API_SCHEMA.curie('incubation_temp_c'),
-                   model_uri=ANALYSIS_API_SCHEMA.enzymeActivityMethod__incubation_temp_c, domain=None, range=Optional[float])
+slots.enzymeActivityMethod__incubation_temp_c = Slot(uri=BASALT_SCHEMA.incubation_temp_c, name="enzymeActivityMethod__incubation_temp_c", curie=BASALT_SCHEMA.curie('incubation_temp_c'),
+                   model_uri=BASALT_SCHEMA.enzymeActivityMethod__incubation_temp_c, domain=None, range=Optional[float])
 
-slots.enzymeActivityMethod__incubation_time = Slot(uri=ANALYSIS_API_SCHEMA.incubation_time, name="enzymeActivityMethod__incubation_time", curie=ANALYSIS_API_SCHEMA.curie('incubation_time'),
-                   model_uri=ANALYSIS_API_SCHEMA.enzymeActivityMethod__incubation_time, domain=None, range=Optional[str])
+slots.enzymeActivityMethod__incubation_time = Slot(uri=BASALT_SCHEMA.incubation_time, name="enzymeActivityMethod__incubation_time", curie=BASALT_SCHEMA.curie('incubation_time'),
+                   model_uri=BASALT_SCHEMA.enzymeActivityMethod__incubation_time, domain=None, range=Optional[str])
 
-slots.enzymeActivityMethod__wavelength = Slot(uri=ANALYSIS_API_SCHEMA.wavelength, name="enzymeActivityMethod__wavelength", curie=ANALYSIS_API_SCHEMA.curie('wavelength'),
-                   model_uri=ANALYSIS_API_SCHEMA.enzymeActivityMethod__wavelength, domain=None, range=Optional[float])
+slots.enzymeActivityMethod__wavelength = Slot(uri=BASALT_SCHEMA.wavelength, name="enzymeActivityMethod__wavelength", curie=BASALT_SCHEMA.curie('wavelength'),
+                   model_uri=BASALT_SCHEMA.enzymeActivityMethod__wavelength, domain=None, range=Optional[float])
 
-slots.hydraulicPropertiesMethod__fitting_model = Slot(uri=ANALYSIS_API_SCHEMA.fitting_model, name="hydraulicPropertiesMethod__fitting_model", curie=ANALYSIS_API_SCHEMA.curie('fitting_model'),
-                   model_uri=ANALYSIS_API_SCHEMA.hydraulicPropertiesMethod__fitting_model, domain=None, range=str)
+slots.hydraulicPropertiesMethod__fitting_model = Slot(uri=BASALT_SCHEMA.fitting_model, name="hydraulicPropertiesMethod__fitting_model", curie=BASALT_SCHEMA.curie('fitting_model'),
+                   model_uri=BASALT_SCHEMA.hydraulicPropertiesMethod__fitting_model, domain=None, range=str)
 
-slots.kuoMethod__detection_limit = Slot(uri=ANALYSIS_API_SCHEMA.detection_limit, name="kuoMethod__detection_limit", curie=ANALYSIS_API_SCHEMA.curie('detection_limit'),
-                   model_uri=ANALYSIS_API_SCHEMA.kuoMethod__detection_limit, domain=None, range=str)
+slots.kuoMethod__detection_limit = Slot(uri=BASALT_SCHEMA.detection_limit, name="kuoMethod__detection_limit", curie=BASALT_SCHEMA.curie('detection_limit'),
+                   model_uri=BASALT_SCHEMA.kuoMethod__detection_limit, domain=None, range=str)
 
-slots.kuoMethod__wavelength = Slot(uri=ANALYSIS_API_SCHEMA.wavelength, name="kuoMethod__wavelength", curie=ANALYSIS_API_SCHEMA.curie('wavelength'),
-                   model_uri=ANALYSIS_API_SCHEMA.kuoMethod__wavelength, domain=None, range=Optional[str])
+slots.kuoMethod__wavelength = Slot(uri=BASALT_SCHEMA.wavelength, name="kuoMethod__wavelength", curie=BASALT_SCHEMA.curie('wavelength'),
+                   model_uri=BASALT_SCHEMA.kuoMethod__wavelength, domain=None, range=Optional[str])
 
-slots.microbialBiomassMethod__detector = Slot(uri=ANALYSIS_API_SCHEMA.detector, name="microbialBiomassMethod__detector", curie=ANALYSIS_API_SCHEMA.curie('detector'),
-                   model_uri=ANALYSIS_API_SCHEMA.microbialBiomassMethod__detector, domain=None, range=str)
+slots.microbialBiomassMethod__detector = Slot(uri=BASALT_SCHEMA.detector, name="microbialBiomassMethod__detector", curie=BASALT_SCHEMA.curie('detector'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassMethod__detector, domain=None, range=str)
 
-slots.microbialBiomassMethod__mode = Slot(uri=ANALYSIS_API_SCHEMA.mode, name="microbialBiomassMethod__mode", curie=ANALYSIS_API_SCHEMA.curie('mode'),
-                   model_uri=ANALYSIS_API_SCHEMA.microbialBiomassMethod__mode, domain=None, range=Optional[str])
+slots.microbialBiomassMethod__mode = Slot(uri=BASALT_SCHEMA.mode, name="microbialBiomassMethod__mode", curie=BASALT_SCHEMA.curie('mode'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassMethod__mode, domain=None, range=Optional[str])
 
-slots.microbialBiomassMethod__injection_volume = Slot(uri=ANALYSIS_API_SCHEMA.injection_volume, name="microbialBiomassMethod__injection_volume", curie=ANALYSIS_API_SCHEMA.curie('injection_volume'),
-                   model_uri=ANALYSIS_API_SCHEMA.microbialBiomassMethod__injection_volume, domain=None, range=str)
+slots.microbialBiomassMethod__injection_volume = Slot(uri=BASALT_SCHEMA.injection_volume, name="microbialBiomassMethod__injection_volume", curie=BASALT_SCHEMA.curie('injection_volume'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassMethod__injection_volume, domain=None, range=str)
 
-slots.microbialBiomassMethod__sample_volume = Slot(uri=ANALYSIS_API_SCHEMA.sample_volume, name="microbialBiomassMethod__sample_volume", curie=ANALYSIS_API_SCHEMA.curie('sample_volume'),
-                   model_uri=ANALYSIS_API_SCHEMA.microbialBiomassMethod__sample_volume, domain=None, range=str)
+slots.microbialBiomassMethod__sample_volume = Slot(uri=BASALT_SCHEMA.sample_volume, name="microbialBiomassMethod__sample_volume", curie=BASALT_SCHEMA.curie('sample_volume'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassMethod__sample_volume, domain=None, range=str)
 
-slots.microbialBiomassMethod__number_of_injections = Slot(uri=ANALYSIS_API_SCHEMA.number_of_injections, name="microbialBiomassMethod__number_of_injections", curie=ANALYSIS_API_SCHEMA.curie('number_of_injections'),
-                   model_uri=ANALYSIS_API_SCHEMA.microbialBiomassMethod__number_of_injections, domain=None, range=float)
+slots.microbialBiomassMethod__number_of_injections = Slot(uri=BASALT_SCHEMA.number_of_injections, name="microbialBiomassMethod__number_of_injections", curie=BASALT_SCHEMA.curie('number_of_injections'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassMethod__number_of_injections, domain=None, range=float)
 
-slots.microbialBiomassMethod__check_standard_spacing = Slot(uri=ANALYSIS_API_SCHEMA.check_standard_spacing, name="microbialBiomassMethod__check_standard_spacing", curie=ANALYSIS_API_SCHEMA.curie('check_standard_spacing'),
-                   model_uri=ANALYSIS_API_SCHEMA.microbialBiomassMethod__check_standard_spacing, domain=None, range=str)
+slots.microbialBiomassMethod__check_standard_spacing = Slot(uri=BASALT_SCHEMA.check_standard_spacing, name="microbialBiomassMethod__check_standard_spacing", curie=BASALT_SCHEMA.curie('check_standard_spacing'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassMethod__check_standard_spacing, domain=None, range=str)
 
-slots.pHMethod__calibration = Slot(uri=ANALYSIS_API_SCHEMA.calibration, name="pHMethod__calibration", curie=ANALYSIS_API_SCHEMA.curie('calibration'),
-                   model_uri=ANALYSIS_API_SCHEMA.pHMethod__calibration, domain=None, range=str)
+slots.pHMethod__calibration = Slot(uri=BASALT_SCHEMA.calibration, name="pHMethod__calibration", curie=BASALT_SCHEMA.curie('calibration'),
+                   model_uri=BASALT_SCHEMA.pHMethod__calibration, domain=None, range=str)
 
-slots.tOCTNMethod__column = Slot(uri=ANALYSIS_API_SCHEMA.column, name="tOCTNMethod__column", curie=ANALYSIS_API_SCHEMA.curie('column'),
-                   model_uri=ANALYSIS_API_SCHEMA.tOCTNMethod__column, domain=None, range=Optional[str])
+slots.tOCTNMethod__column = Slot(uri=BASALT_SCHEMA.column, name="tOCTNMethod__column", curie=BASALT_SCHEMA.curie('column'),
+                   model_uri=BASALT_SCHEMA.tOCTNMethod__column, domain=None, range=Optional[str])
 
-slots.tOCTNMethod__mode = Slot(uri=ANALYSIS_API_SCHEMA.mode, name="tOCTNMethod__mode", curie=ANALYSIS_API_SCHEMA.curie('mode'),
-                   model_uri=ANALYSIS_API_SCHEMA.tOCTNMethod__mode, domain=None, range=Optional[str])
+slots.tOCTNMethod__mode = Slot(uri=BASALT_SCHEMA.mode, name="tOCTNMethod__mode", curie=BASALT_SCHEMA.curie('mode'),
+                   model_uri=BASALT_SCHEMA.tOCTNMethod__mode, domain=None, range=Optional[str])
 
-slots.tOCTNMethod__detector = Slot(uri=ANALYSIS_API_SCHEMA.detector, name="tOCTNMethod__detector", curie=ANALYSIS_API_SCHEMA.curie('detector'),
-                   model_uri=ANALYSIS_API_SCHEMA.tOCTNMethod__detector, domain=None, range=str)
+slots.tOCTNMethod__detector = Slot(uri=BASALT_SCHEMA.detector, name="tOCTNMethod__detector", curie=BASALT_SCHEMA.curie('detector'),
+                   model_uri=BASALT_SCHEMA.tOCTNMethod__detector, domain=None, range=str)
 
-slots.tOCTNMethod__injection_volume = Slot(uri=ANALYSIS_API_SCHEMA.injection_volume, name="tOCTNMethod__injection_volume", curie=ANALYSIS_API_SCHEMA.curie('injection_volume'),
-                   model_uri=ANALYSIS_API_SCHEMA.tOCTNMethod__injection_volume, domain=None, range=str)
+slots.tOCTNMethod__injection_volume = Slot(uri=BASALT_SCHEMA.injection_volume, name="tOCTNMethod__injection_volume", curie=BASALT_SCHEMA.curie('injection_volume'),
+                   model_uri=BASALT_SCHEMA.tOCTNMethod__injection_volume, domain=None, range=str)
 
-slots.tOCTNMethod__sample_volume = Slot(uri=ANALYSIS_API_SCHEMA.sample_volume, name="tOCTNMethod__sample_volume", curie=ANALYSIS_API_SCHEMA.curie('sample_volume'),
-                   model_uri=ANALYSIS_API_SCHEMA.tOCTNMethod__sample_volume, domain=None, range=str)
+slots.tOCTNMethod__sample_volume = Slot(uri=BASALT_SCHEMA.sample_volume, name="tOCTNMethod__sample_volume", curie=BASALT_SCHEMA.curie('sample_volume'),
+                   model_uri=BASALT_SCHEMA.tOCTNMethod__sample_volume, domain=None, range=str)
 
-slots.tOCTNMethod__number_of_injections = Slot(uri=ANALYSIS_API_SCHEMA.number_of_injections, name="tOCTNMethod__number_of_injections", curie=ANALYSIS_API_SCHEMA.curie('number_of_injections'),
-                   model_uri=ANALYSIS_API_SCHEMA.tOCTNMethod__number_of_injections, domain=None, range=float)
+slots.tOCTNMethod__number_of_injections = Slot(uri=BASALT_SCHEMA.number_of_injections, name="tOCTNMethod__number_of_injections", curie=BASALT_SCHEMA.curie('number_of_injections'),
+                   model_uri=BASALT_SCHEMA.tOCTNMethod__number_of_injections, domain=None, range=float)
 
-slots.tOCTNMethod__check_standard_spacing = Slot(uri=ANALYSIS_API_SCHEMA.check_standard_spacing, name="tOCTNMethod__check_standard_spacing", curie=ANALYSIS_API_SCHEMA.curie('check_standard_spacing'),
-                   model_uri=ANALYSIS_API_SCHEMA.tOCTNMethod__check_standard_spacing, domain=None, range=Optional[str])
+slots.tOCTNMethod__check_standard_spacing = Slot(uri=BASALT_SCHEMA.check_standard_spacing, name="tOCTNMethod__check_standard_spacing", curie=BASALT_SCHEMA.curie('check_standard_spacing'),
+                   model_uri=BASALT_SCHEMA.tOCTNMethod__check_standard_spacing, domain=None, range=Optional[str])
 
-slots.xrayComputedTomographyMethod__x_ray_power = Slot(uri=ANALYSIS_API_SCHEMA.x_ray_power, name="xrayComputedTomographyMethod__x_ray_power", curie=ANALYSIS_API_SCHEMA.curie('x_ray_power'),
-                   model_uri=ANALYSIS_API_SCHEMA.xrayComputedTomographyMethod__x_ray_power, domain=None, range=str)
+slots.xrayComputedTomographyMethod__x_ray_power = Slot(uri=BASALT_SCHEMA.x_ray_power, name="xrayComputedTomographyMethod__x_ray_power", curie=BASALT_SCHEMA.curie('x_ray_power'),
+                   model_uri=BASALT_SCHEMA.xrayComputedTomographyMethod__x_ray_power, domain=None, range=str)
 
-slots.xrayComputedTomographyMethod__cu_filter = Slot(uri=ANALYSIS_API_SCHEMA.cu_filter, name="xrayComputedTomographyMethod__cu_filter", curie=ANALYSIS_API_SCHEMA.curie('cu_filter'),
-                   model_uri=ANALYSIS_API_SCHEMA.xrayComputedTomographyMethod__cu_filter, domain=None, range=str)
+slots.xrayComputedTomographyMethod__cu_filter = Slot(uri=BASALT_SCHEMA.cu_filter, name="xrayComputedTomographyMethod__cu_filter", curie=BASALT_SCHEMA.curie('cu_filter'),
+                   model_uri=BASALT_SCHEMA.xrayComputedTomographyMethod__cu_filter, domain=None, range=str)
 
-slots.xrayComputedTomographyMethod__total_projections_collected = Slot(uri=ANALYSIS_API_SCHEMA.total_projections_collected, name="xrayComputedTomographyMethod__total_projections_collected", curie=ANALYSIS_API_SCHEMA.curie('total_projections_collected'),
-                   model_uri=ANALYSIS_API_SCHEMA.xrayComputedTomographyMethod__total_projections_collected, domain=None, range=float)
+slots.xrayComputedTomographyMethod__total_projections_collected = Slot(uri=BASALT_SCHEMA.total_projections_collected, name="xrayComputedTomographyMethod__total_projections_collected", curie=BASALT_SCHEMA.curie('total_projections_collected'),
+                   model_uri=BASALT_SCHEMA.xrayComputedTomographyMethod__total_projections_collected, domain=None, range=float)
 
-slots.xrayComputedTomographyMethod__rotation = Slot(uri=ANALYSIS_API_SCHEMA.rotation, name="xrayComputedTomographyMethod__rotation", curie=ANALYSIS_API_SCHEMA.curie('rotation'),
-                   model_uri=ANALYSIS_API_SCHEMA.xrayComputedTomographyMethod__rotation, domain=None, range=str)
+slots.xrayComputedTomographyMethod__rotation = Slot(uri=BASALT_SCHEMA.rotation, name="xrayComputedTomographyMethod__rotation", curie=BASALT_SCHEMA.curie('rotation'),
+                   model_uri=BASALT_SCHEMA.xrayComputedTomographyMethod__rotation, domain=None, range=str)
 
-slots.xrayComputedTomographyMethod__frames_recording_per_projection = Slot(uri=ANALYSIS_API_SCHEMA.frames_recording_per_projection, name="xrayComputedTomographyMethod__frames_recording_per_projection", curie=ANALYSIS_API_SCHEMA.curie('frames_recording_per_projection'),
-                   model_uri=ANALYSIS_API_SCHEMA.xrayComputedTomographyMethod__frames_recording_per_projection, domain=None, range=float)
+slots.xrayComputedTomographyMethod__frames_recording_per_projection = Slot(uri=BASALT_SCHEMA.frames_recording_per_projection, name="xrayComputedTomographyMethod__frames_recording_per_projection", curie=BASALT_SCHEMA.curie('frames_recording_per_projection'),
+                   model_uri=BASALT_SCHEMA.xrayComputedTomographyMethod__frames_recording_per_projection, domain=None, range=float)
 
-slots.xrayComputedTomographyMethod__exposure_time_per_frame = Slot(uri=ANALYSIS_API_SCHEMA.exposure_time_per_frame, name="xrayComputedTomographyMethod__exposure_time_per_frame", curie=ANALYSIS_API_SCHEMA.curie('exposure_time_per_frame'),
-                   model_uri=ANALYSIS_API_SCHEMA.xrayComputedTomographyMethod__exposure_time_per_frame, domain=None, range=str)
+slots.xrayComputedTomographyMethod__exposure_time_per_frame = Slot(uri=BASALT_SCHEMA.exposure_time_per_frame, name="xrayComputedTomographyMethod__exposure_time_per_frame", curie=BASALT_SCHEMA.curie('exposure_time_per_frame'),
+                   model_uri=BASALT_SCHEMA.xrayComputedTomographyMethod__exposure_time_per_frame, domain=None, range=str)
 
-slots.xrayComputedTomographyMethod__image_voxel_size_is = Slot(uri=ANALYSIS_API_SCHEMA.image_voxel_size_is, name="xrayComputedTomographyMethod__image_voxel_size_is", curie=ANALYSIS_API_SCHEMA.curie('image_voxel_size_is'),
-                   model_uri=ANALYSIS_API_SCHEMA.xrayComputedTomographyMethod__image_voxel_size_is, domain=None, range=str)
+slots.xrayComputedTomographyMethod__image_voxel_size_is = Slot(uri=BASALT_SCHEMA.image_voxel_size_is, name="xrayComputedTomographyMethod__image_voxel_size_is", curie=BASALT_SCHEMA.curie('image_voxel_size_is'),
+                   model_uri=BASALT_SCHEMA.xrayComputedTomographyMethod__image_voxel_size_is, domain=None, range=str)
 
-slots.organism__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="organism__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.organism__id, domain=None, range=URIRef)
+slots.organism__id = Slot(uri=BASALT_SCHEMA.id, name="organism__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.organism__id, domain=None, range=URIRef)
 
-slots.bulkDensityProduct__bulk_density_id = Slot(uri=ANALYSIS_API_SCHEMA.bulk_density_id, name="bulkDensityProduct__bulk_density_id", curie=ANALYSIS_API_SCHEMA.curie('bulk_density_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.bulkDensityProduct__bulk_density_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.bulkDensityProduct__bulk_density_id = Slot(uri=BASALT_SCHEMA.bulk_density_id, name="bulkDensityProduct__bulk_density_id", curie=BASALT_SCHEMA.curie('bulk_density_id'),
+                   model_uri=BASALT_SCHEMA.bulkDensityProduct__bulk_density_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.bulkDensityProduct__flag = Slot(uri=ANALYSIS_API_SCHEMA.flag, name="bulkDensityProduct__flag", curie=ANALYSIS_API_SCHEMA.curie('flag'),
-                   model_uri=ANALYSIS_API_SCHEMA.bulkDensityProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.bulkDensityProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="bulkDensityProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
+                   model_uri=BASALT_SCHEMA.bulkDensityProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.elementalAnalysisProduct__total_carbon_id = Slot(uri=ANALYSIS_API_SCHEMA.total_carbon_id, name="elementalAnalysisProduct__total_carbon_id", curie=ANALYSIS_API_SCHEMA.curie('total_carbon_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.elementalAnalysisProduct__total_carbon_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.elementalAnalysisProduct__total_carbon_id = Slot(uri=BASALT_SCHEMA.total_carbon_id, name="elementalAnalysisProduct__total_carbon_id", curie=BASALT_SCHEMA.curie('total_carbon_id'),
+                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_carbon_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.elementalAnalysisProduct__total_nitrogen_id = Slot(uri=ANALYSIS_API_SCHEMA.total_nitrogen_id, name="elementalAnalysisProduct__total_nitrogen_id", curie=ANALYSIS_API_SCHEMA.curie('total_nitrogen_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.elementalAnalysisProduct__total_nitrogen_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.elementalAnalysisProduct__total_nitrogen_id = Slot(uri=BASALT_SCHEMA.total_nitrogen_id, name="elementalAnalysisProduct__total_nitrogen_id", curie=BASALT_SCHEMA.curie('total_nitrogen_id'),
+                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_nitrogen_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.elementalAnalysisProduct__total_kjeldahl_nitrogen_id = Slot(uri=ANALYSIS_API_SCHEMA.total_kjeldahl_nitrogen_id, name="elementalAnalysisProduct__total_kjeldahl_nitrogen_id", curie=ANALYSIS_API_SCHEMA.curie('total_kjeldahl_nitrogen_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.elementalAnalysisProduct__total_kjeldahl_nitrogen_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.elementalAnalysisProduct__total_kjeldahl_nitrogen_id = Slot(uri=BASALT_SCHEMA.total_kjeldahl_nitrogen_id, name="elementalAnalysisProduct__total_kjeldahl_nitrogen_id", curie=BASALT_SCHEMA.curie('total_kjeldahl_nitrogen_id'),
+                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_kjeldahl_nitrogen_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.elementalAnalysisProduct__total_sulfur_id = Slot(uri=ANALYSIS_API_SCHEMA.total_sulfur_id, name="elementalAnalysisProduct__total_sulfur_id", curie=ANALYSIS_API_SCHEMA.curie('total_sulfur_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.elementalAnalysisProduct__total_sulfur_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.elementalAnalysisProduct__total_sulfur_id = Slot(uri=BASALT_SCHEMA.total_sulfur_id, name="elementalAnalysisProduct__total_sulfur_id", curie=BASALT_SCHEMA.curie('total_sulfur_id'),
+                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__total_sulfur_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.elementalAnalysisProduct__flag_total_carbon = Slot(uri=ANALYSIS_API_SCHEMA.flag_total_carbon, name="elementalAnalysisProduct__flag_total_carbon", curie=ANALYSIS_API_SCHEMA.curie('flag_total_carbon'),
-                   model_uri=ANALYSIS_API_SCHEMA.elementalAnalysisProduct__flag_total_carbon, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.elementalAnalysisProduct__flag_total_carbon = Slot(uri=BASALT_SCHEMA.flag_total_carbon, name="elementalAnalysisProduct__flag_total_carbon", curie=BASALT_SCHEMA.curie('flag_total_carbon'),
+                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__flag_total_carbon, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.elementalAnalysisProduct__flag_total_nitrogen = Slot(uri=ANALYSIS_API_SCHEMA.flag_total_nitrogen, name="elementalAnalysisProduct__flag_total_nitrogen", curie=ANALYSIS_API_SCHEMA.curie('flag_total_nitrogen'),
-                   model_uri=ANALYSIS_API_SCHEMA.elementalAnalysisProduct__flag_total_nitrogen, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.elementalAnalysisProduct__flag_total_nitrogen = Slot(uri=BASALT_SCHEMA.flag_total_nitrogen, name="elementalAnalysisProduct__flag_total_nitrogen", curie=BASALT_SCHEMA.curie('flag_total_nitrogen'),
+                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__flag_total_nitrogen, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.elementalAnalysisProduct__flag_tkn = Slot(uri=ANALYSIS_API_SCHEMA.flag_tkn, name="elementalAnalysisProduct__flag_tkn", curie=ANALYSIS_API_SCHEMA.curie('flag_tkn'),
-                   model_uri=ANALYSIS_API_SCHEMA.elementalAnalysisProduct__flag_tkn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.elementalAnalysisProduct__flag_tkn = Slot(uri=BASALT_SCHEMA.flag_tkn, name="elementalAnalysisProduct__flag_tkn", curie=BASALT_SCHEMA.curie('flag_tkn'),
+                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__flag_tkn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.elementalAnalysisProduct__flag_total_sulfur = Slot(uri=ANALYSIS_API_SCHEMA.flag_total_sulfur, name="elementalAnalysisProduct__flag_total_sulfur", curie=ANALYSIS_API_SCHEMA.curie('flag_total_sulfur'),
-                   model_uri=ANALYSIS_API_SCHEMA.elementalAnalysisProduct__flag_total_sulfur, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.elementalAnalysisProduct__flag_total_sulfur = Slot(uri=BASALT_SCHEMA.flag_total_sulfur, name="elementalAnalysisProduct__flag_total_sulfur", curie=BASALT_SCHEMA.curie('flag_total_sulfur'),
+                   model_uri=BASALT_SCHEMA.elementalAnalysisProduct__flag_total_sulfur, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h_id = Slot(uri=ANALYSIS_API_SCHEMA.beta_glucosidase_ug_pnp_per_g_per_h_id, name="enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h_id", curie=ANALYSIS_API_SCHEMA.curie('beta_glucosidase_ug_pnp_per_g_per_h_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h_id = Slot(uri=BASALT_SCHEMA.beta_glucosidase_ug_pnp_per_g_per_h_id, name="enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h_id", curie=BASALT_SCHEMA.curie('beta_glucosidase_ug_pnp_per_g_per_h_id'),
+                   model_uri=BASALT_SCHEMA.enzymeProduct__beta_glucosidase_ug_pnp_per_g_per_h_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.enzymeProduct__flag = Slot(uri=ANALYSIS_API_SCHEMA.flag, name="enzymeProduct__flag", curie=ANALYSIS_API_SCHEMA.curie('flag'),
-                   model_uri=ANALYSIS_API_SCHEMA.enzymeProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.enzymeProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="enzymeProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
+                   model_uri=BASALT_SCHEMA.enzymeProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.gWCMoistureProduct__gwc_percent_id = Slot(uri=ANALYSIS_API_SCHEMA.gwc_percent_id, name="gWCMoistureProduct__gwc_percent_id", curie=ANALYSIS_API_SCHEMA.curie('gwc_percent_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.gWCMoistureProduct__gwc_percent_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.gWCMoistureProduct__gwc_percent_id = Slot(uri=BASALT_SCHEMA.gwc_percent_id, name="gWCMoistureProduct__gwc_percent_id", curie=BASALT_SCHEMA.curie('gwc_percent_id'),
+                   model_uri=BASALT_SCHEMA.gWCMoistureProduct__gwc_percent_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.gWCMoistureProduct__flag = Slot(uri=ANALYSIS_API_SCHEMA.flag, name="gWCMoistureProduct__flag", curie=ANALYSIS_API_SCHEMA.curie('flag'),
-                   model_uri=ANALYSIS_API_SCHEMA.gWCMoistureProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.gWCMoistureProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="gWCMoistureProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
+                   model_uri=BASALT_SCHEMA.gWCMoistureProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.hydraulicPropertiesProduct__alpha = Slot(uri=ANALYSIS_API_SCHEMA.alpha, name="hydraulicPropertiesProduct__alpha", curie=ANALYSIS_API_SCHEMA.curie('alpha'),
-                   model_uri=ANALYSIS_API_SCHEMA.hydraulicPropertiesProduct__alpha, domain=None, range=Optional[float])
+slots.hydraulicPropertiesProduct__alpha = Slot(uri=BASALT_SCHEMA.alpha, name="hydraulicPropertiesProduct__alpha", curie=BASALT_SCHEMA.curie('alpha'),
+                   model_uri=BASALT_SCHEMA.hydraulicPropertiesProduct__alpha, domain=None, range=Optional[float])
 
-slots.hydraulicPropertiesProduct__n = Slot(uri=ANALYSIS_API_SCHEMA.n, name="hydraulicPropertiesProduct__n", curie=ANALYSIS_API_SCHEMA.curie('n'),
-                   model_uri=ANALYSIS_API_SCHEMA.hydraulicPropertiesProduct__n, domain=None, range=Optional[float])
+slots.hydraulicPropertiesProduct__n = Slot(uri=BASALT_SCHEMA.n, name="hydraulicPropertiesProduct__n", curie=BASALT_SCHEMA.curie('n'),
+                   model_uri=BASALT_SCHEMA.hydraulicPropertiesProduct__n, domain=None, range=Optional[float])
 
-slots.hydraulicPropertiesProduct__theta_r = Slot(uri=ANALYSIS_API_SCHEMA.theta_r, name="hydraulicPropertiesProduct__theta_r", curie=ANALYSIS_API_SCHEMA.curie('theta_r'),
-                   model_uri=ANALYSIS_API_SCHEMA.hydraulicPropertiesProduct__theta_r, domain=None, range=Optional[float])
+slots.hydraulicPropertiesProduct__theta_r = Slot(uri=BASALT_SCHEMA.theta_r, name="hydraulicPropertiesProduct__theta_r", curie=BASALT_SCHEMA.curie('theta_r'),
+                   model_uri=BASALT_SCHEMA.hydraulicPropertiesProduct__theta_r, domain=None, range=Optional[float])
 
-slots.hydraulicPropertiesProduct__theta_s = Slot(uri=ANALYSIS_API_SCHEMA.theta_s, name="hydraulicPropertiesProduct__theta_s", curie=ANALYSIS_API_SCHEMA.curie('theta_s'),
-                   model_uri=ANALYSIS_API_SCHEMA.hydraulicPropertiesProduct__theta_s, domain=None, range=Optional[float])
+slots.hydraulicPropertiesProduct__theta_s = Slot(uri=BASALT_SCHEMA.theta_s, name="hydraulicPropertiesProduct__theta_s", curie=BASALT_SCHEMA.curie('theta_s'),
+                   model_uri=BASALT_SCHEMA.hydraulicPropertiesProduct__theta_s, domain=None, range=Optional[float])
 
-slots.hydraulicPropertiesProduct__flag = Slot(uri=ANALYSIS_API_SCHEMA.flag, name="hydraulicPropertiesProduct__flag", curie=ANALYSIS_API_SCHEMA.curie('flag'),
-                   model_uri=ANALYSIS_API_SCHEMA.hydraulicPropertiesProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.hydraulicPropertiesProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="hydraulicPropertiesProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
+                   model_uri=BASALT_SCHEMA.hydraulicPropertiesProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.ionsAnalysisProduct__sulfate_id = Slot(uri=ANALYSIS_API_SCHEMA.sulfate_id, name="ionsAnalysisProduct__sulfate_id", curie=ANALYSIS_API_SCHEMA.curie('sulfate_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__sulfate_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.ionsAnalysisProduct__sulfate_id = Slot(uri=BASALT_SCHEMA.sulfate_id, name="ionsAnalysisProduct__sulfate_id", curie=BASALT_SCHEMA.curie('sulfate_id'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__sulfate_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.ionsAnalysisProduct__boron_id = Slot(uri=ANALYSIS_API_SCHEMA.boron_id, name="ionsAnalysisProduct__boron_id", curie=ANALYSIS_API_SCHEMA.curie('boron_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__boron_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.ionsAnalysisProduct__boron_id = Slot(uri=BASALT_SCHEMA.boron_id, name="ionsAnalysisProduct__boron_id", curie=BASALT_SCHEMA.curie('boron_id'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__boron_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.ionsAnalysisProduct__zinc_id = Slot(uri=ANALYSIS_API_SCHEMA.zinc_id, name="ionsAnalysisProduct__zinc_id", curie=ANALYSIS_API_SCHEMA.curie('zinc_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__zinc_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.ionsAnalysisProduct__zinc_id = Slot(uri=BASALT_SCHEMA.zinc_id, name="ionsAnalysisProduct__zinc_id", curie=BASALT_SCHEMA.curie('zinc_id'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__zinc_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.ionsAnalysisProduct__manganate_id = Slot(uri=ANALYSIS_API_SCHEMA.manganate_id, name="ionsAnalysisProduct__manganate_id", curie=ANALYSIS_API_SCHEMA.curie('manganate_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__manganate_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.ionsAnalysisProduct__manganate_id = Slot(uri=BASALT_SCHEMA.manganate_id, name="ionsAnalysisProduct__manganate_id", curie=BASALT_SCHEMA.curie('manganate_id'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__manganate_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.ionsAnalysisProduct__copper_id = Slot(uri=ANALYSIS_API_SCHEMA.copper_id, name="ionsAnalysisProduct__copper_id", curie=ANALYSIS_API_SCHEMA.curie('copper_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__copper_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.ionsAnalysisProduct__copper_id = Slot(uri=BASALT_SCHEMA.copper_id, name="ionsAnalysisProduct__copper_id", curie=BASALT_SCHEMA.curie('copper_id'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__copper_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.ionsAnalysisProduct__iron_id = Slot(uri=ANALYSIS_API_SCHEMA.iron_id, name="ionsAnalysisProduct__iron_id", curie=ANALYSIS_API_SCHEMA.curie('iron_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__iron_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.ionsAnalysisProduct__iron_id = Slot(uri=BASALT_SCHEMA.iron_id, name="ionsAnalysisProduct__iron_id", curie=BASALT_SCHEMA.curie('iron_id'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__iron_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.ionsAnalysisProduct__calcium_id = Slot(uri=ANALYSIS_API_SCHEMA.calcium_id, name="ionsAnalysisProduct__calcium_id", curie=ANALYSIS_API_SCHEMA.curie('calcium_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__calcium_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.ionsAnalysisProduct__calcium_id = Slot(uri=BASALT_SCHEMA.calcium_id, name="ionsAnalysisProduct__calcium_id", curie=BASALT_SCHEMA.curie('calcium_id'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__calcium_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.ionsAnalysisProduct__magnesium_id = Slot(uri=ANALYSIS_API_SCHEMA.magnesium_id, name="ionsAnalysisProduct__magnesium_id", curie=ANALYSIS_API_SCHEMA.curie('magnesium_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__magnesium_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.ionsAnalysisProduct__magnesium_id = Slot(uri=BASALT_SCHEMA.magnesium_id, name="ionsAnalysisProduct__magnesium_id", curie=BASALT_SCHEMA.curie('magnesium_id'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__magnesium_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.ionsAnalysisProduct__sodium_id = Slot(uri=ANALYSIS_API_SCHEMA.sodium_id, name="ionsAnalysisProduct__sodium_id", curie=ANALYSIS_API_SCHEMA.curie('sodium_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__sodium_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.ionsAnalysisProduct__sodium_id = Slot(uri=BASALT_SCHEMA.sodium_id, name="ionsAnalysisProduct__sodium_id", curie=BASALT_SCHEMA.curie('sodium_id'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__sodium_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.ionsAnalysisProduct__potassium_id = Slot(uri=ANALYSIS_API_SCHEMA.potassium_id, name="ionsAnalysisProduct__potassium_id", curie=ANALYSIS_API_SCHEMA.curie('potassium_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__potassium_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.ionsAnalysisProduct__potassium_id = Slot(uri=BASALT_SCHEMA.potassium_id, name="ionsAnalysisProduct__potassium_id", curie=BASALT_SCHEMA.curie('potassium_id'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__potassium_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.ionsAnalysisProduct__total_bases_id = Slot(uri=ANALYSIS_API_SCHEMA.total_bases_id, name="ionsAnalysisProduct__total_bases_id", curie=ANALYSIS_API_SCHEMA.curie('total_bases_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__total_bases_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.ionsAnalysisProduct__total_bases_id = Slot(uri=BASALT_SCHEMA.total_bases_id, name="ionsAnalysisProduct__total_bases_id", curie=BASALT_SCHEMA.curie('total_bases_id'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__total_bases_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.ionsAnalysisProduct__cation_exchange_capacity_id = Slot(uri=ANALYSIS_API_SCHEMA.cation_exchange_capacity_id, name="ionsAnalysisProduct__cation_exchange_capacity_id", curie=ANALYSIS_API_SCHEMA.curie('cation_exchange_capacity_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__cation_exchange_capacity_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.ionsAnalysisProduct__cation_exchange_capacity_id = Slot(uri=BASALT_SCHEMA.cation_exchange_capacity_id, name="ionsAnalysisProduct__cation_exchange_capacity_id", curie=BASALT_SCHEMA.curie('cation_exchange_capacity_id'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__cation_exchange_capacity_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.ionsAnalysisProduct__flag_sulfate = Slot(uri=ANALYSIS_API_SCHEMA.flag_sulfate, name="ionsAnalysisProduct__flag_sulfate", curie=ANALYSIS_API_SCHEMA.curie('flag_sulfate'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__flag_sulfate, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.ionsAnalysisProduct__flag_sulfate = Slot(uri=BASALT_SCHEMA.flag_sulfate, name="ionsAnalysisProduct__flag_sulfate", curie=BASALT_SCHEMA.curie('flag_sulfate'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__flag_sulfate, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.ionsAnalysisProduct__flag_boron = Slot(uri=ANALYSIS_API_SCHEMA.flag_boron, name="ionsAnalysisProduct__flag_boron", curie=ANALYSIS_API_SCHEMA.curie('flag_boron'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__flag_boron, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.ionsAnalysisProduct__flag_boron = Slot(uri=BASALT_SCHEMA.flag_boron, name="ionsAnalysisProduct__flag_boron", curie=BASALT_SCHEMA.curie('flag_boron'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__flag_boron, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.ionsAnalysisProduct__flag_zinc = Slot(uri=ANALYSIS_API_SCHEMA.flag_zinc, name="ionsAnalysisProduct__flag_zinc", curie=ANALYSIS_API_SCHEMA.curie('flag_zinc'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__flag_zinc, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.ionsAnalysisProduct__flag_zinc = Slot(uri=BASALT_SCHEMA.flag_zinc, name="ionsAnalysisProduct__flag_zinc", curie=BASALT_SCHEMA.curie('flag_zinc'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__flag_zinc, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.ionsAnalysisProduct__flag_manganate = Slot(uri=ANALYSIS_API_SCHEMA.flag_manganate, name="ionsAnalysisProduct__flag_manganate", curie=ANALYSIS_API_SCHEMA.curie('flag_manganate'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__flag_manganate, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.ionsAnalysisProduct__flag_manganate = Slot(uri=BASALT_SCHEMA.flag_manganate, name="ionsAnalysisProduct__flag_manganate", curie=BASALT_SCHEMA.curie('flag_manganate'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__flag_manganate, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.ionsAnalysisProduct__flag_copper = Slot(uri=ANALYSIS_API_SCHEMA.flag_copper, name="ionsAnalysisProduct__flag_copper", curie=ANALYSIS_API_SCHEMA.curie('flag_copper'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__flag_copper, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.ionsAnalysisProduct__flag_copper = Slot(uri=BASALT_SCHEMA.flag_copper, name="ionsAnalysisProduct__flag_copper", curie=BASALT_SCHEMA.curie('flag_copper'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__flag_copper, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.ionsAnalysisProduct__flag_iron = Slot(uri=ANALYSIS_API_SCHEMA.flag_iron, name="ionsAnalysisProduct__flag_iron", curie=ANALYSIS_API_SCHEMA.curie('flag_iron'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__flag_iron, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.ionsAnalysisProduct__flag_iron = Slot(uri=BASALT_SCHEMA.flag_iron, name="ionsAnalysisProduct__flag_iron", curie=BASALT_SCHEMA.curie('flag_iron'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__flag_iron, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.ionsAnalysisProduct__flag_calcium = Slot(uri=ANALYSIS_API_SCHEMA.flag_calcium, name="ionsAnalysisProduct__flag_calcium", curie=ANALYSIS_API_SCHEMA.curie('flag_calcium'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__flag_calcium, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.ionsAnalysisProduct__flag_calcium = Slot(uri=BASALT_SCHEMA.flag_calcium, name="ionsAnalysisProduct__flag_calcium", curie=BASALT_SCHEMA.curie('flag_calcium'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__flag_calcium, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.ionsAnalysisProduct__flag_magnesium = Slot(uri=ANALYSIS_API_SCHEMA.flag_magnesium, name="ionsAnalysisProduct__flag_magnesium", curie=ANALYSIS_API_SCHEMA.curie('flag_magnesium'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__flag_magnesium, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.ionsAnalysisProduct__flag_magnesium = Slot(uri=BASALT_SCHEMA.flag_magnesium, name="ionsAnalysisProduct__flag_magnesium", curie=BASALT_SCHEMA.curie('flag_magnesium'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__flag_magnesium, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.ionsAnalysisProduct__flag_sodium = Slot(uri=ANALYSIS_API_SCHEMA.flag_sodium, name="ionsAnalysisProduct__flag_sodium", curie=ANALYSIS_API_SCHEMA.curie('flag_sodium'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__flag_sodium, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.ionsAnalysisProduct__flag_sodium = Slot(uri=BASALT_SCHEMA.flag_sodium, name="ionsAnalysisProduct__flag_sodium", curie=BASALT_SCHEMA.curie('flag_sodium'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__flag_sodium, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.ionsAnalysisProduct__flag_potassium = Slot(uri=ANALYSIS_API_SCHEMA.flag_potassium, name="ionsAnalysisProduct__flag_potassium", curie=ANALYSIS_API_SCHEMA.curie('flag_potassium'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__flag_potassium, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.ionsAnalysisProduct__flag_potassium = Slot(uri=BASALT_SCHEMA.flag_potassium, name="ionsAnalysisProduct__flag_potassium", curie=BASALT_SCHEMA.curie('flag_potassium'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__flag_potassium, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.ionsAnalysisProduct__flag_total_bases = Slot(uri=ANALYSIS_API_SCHEMA.flag_total_bases, name="ionsAnalysisProduct__flag_total_bases", curie=ANALYSIS_API_SCHEMA.curie('flag_total_bases'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__flag_total_bases, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.ionsAnalysisProduct__flag_total_bases = Slot(uri=BASALT_SCHEMA.flag_total_bases, name="ionsAnalysisProduct__flag_total_bases", curie=BASALT_SCHEMA.curie('flag_total_bases'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__flag_total_bases, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.ionsAnalysisProduct__flag_cec = Slot(uri=ANALYSIS_API_SCHEMA.flag_cec, name="ionsAnalysisProduct__flag_cec", curie=ANALYSIS_API_SCHEMA.curie('flag_cec'),
-                   model_uri=ANALYSIS_API_SCHEMA.ionsAnalysisProduct__flag_cec, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.ionsAnalysisProduct__flag_cec = Slot(uri=BASALT_SCHEMA.flag_cec, name="ionsAnalysisProduct__flag_cec", curie=BASALT_SCHEMA.curie('flag_cec'),
+                   model_uri=BASALT_SCHEMA.ionsAnalysisProduct__flag_cec, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.mAOMProduct__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="mAOMProduct__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.mAOMProduct__id, domain=None, range=URIRef)
+slots.mAOMProduct__id = Slot(uri=BASALT_SCHEMA.id, name="mAOMProduct__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.mAOMProduct__id, domain=None, range=URIRef)
 
-slots.mAOMProduct__total_organic_carbon_id = Slot(uri=ANALYSIS_API_SCHEMA.total_organic_carbon_id, name="mAOMProduct__total_organic_carbon_id", curie=ANALYSIS_API_SCHEMA.curie('total_organic_carbon_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.mAOMProduct__total_organic_carbon_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.mAOMProduct__total_organic_carbon_id = Slot(uri=BASALT_SCHEMA.total_organic_carbon_id, name="mAOMProduct__total_organic_carbon_id", curie=BASALT_SCHEMA.curie('total_organic_carbon_id'),
+                   model_uri=BASALT_SCHEMA.mAOMProduct__total_organic_carbon_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.mAOMProduct__total_organic_carbon_avg = Slot(uri=ANALYSIS_API_SCHEMA.total_organic_carbon_avg, name="mAOMProduct__total_organic_carbon_avg", curie=ANALYSIS_API_SCHEMA.curie('total_organic_carbon_avg'),
-                   model_uri=ANALYSIS_API_SCHEMA.mAOMProduct__total_organic_carbon_avg, domain=None, range=Optional[float])
+slots.mAOMProduct__total_organic_carbon_avg = Slot(uri=BASALT_SCHEMA.total_organic_carbon_avg, name="mAOMProduct__total_organic_carbon_avg", curie=BASALT_SCHEMA.curie('total_organic_carbon_avg'),
+                   model_uri=BASALT_SCHEMA.mAOMProduct__total_organic_carbon_avg, domain=None, range=Optional[float])
 
-slots.mAOMProduct__total_nitrogen_id = Slot(uri=ANALYSIS_API_SCHEMA.total_nitrogen_id, name="mAOMProduct__total_nitrogen_id", curie=ANALYSIS_API_SCHEMA.curie('total_nitrogen_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.mAOMProduct__total_nitrogen_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.mAOMProduct__total_nitrogen_id = Slot(uri=BASALT_SCHEMA.total_nitrogen_id, name="mAOMProduct__total_nitrogen_id", curie=BASALT_SCHEMA.curie('total_nitrogen_id'),
+                   model_uri=BASALT_SCHEMA.mAOMProduct__total_nitrogen_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.mAOMProduct__total_nitrogen_avg = Slot(uri=ANALYSIS_API_SCHEMA.total_nitrogen_avg, name="mAOMProduct__total_nitrogen_avg", curie=ANALYSIS_API_SCHEMA.curie('total_nitrogen_avg'),
-                   model_uri=ANALYSIS_API_SCHEMA.mAOMProduct__total_nitrogen_avg, domain=None, range=Optional[float])
+slots.mAOMProduct__total_nitrogen_avg = Slot(uri=BASALT_SCHEMA.total_nitrogen_avg, name="mAOMProduct__total_nitrogen_avg", curie=BASALT_SCHEMA.curie('total_nitrogen_avg'),
+                   model_uri=BASALT_SCHEMA.mAOMProduct__total_nitrogen_avg, domain=None, range=Optional[float])
 
-slots.mAOMProduct__flag_toc = Slot(uri=ANALYSIS_API_SCHEMA.flag_toc, name="mAOMProduct__flag_toc", curie=ANALYSIS_API_SCHEMA.curie('flag_toc'),
-                   model_uri=ANALYSIS_API_SCHEMA.mAOMProduct__flag_toc, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.mAOMProduct__flag_toc = Slot(uri=BASALT_SCHEMA.flag_toc, name="mAOMProduct__flag_toc", curie=BASALT_SCHEMA.curie('flag_toc'),
+                   model_uri=BASALT_SCHEMA.mAOMProduct__flag_toc, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.mAOMProduct__flag_tn = Slot(uri=ANALYSIS_API_SCHEMA.flag_tn, name="mAOMProduct__flag_tn", curie=ANALYSIS_API_SCHEMA.curie('flag_tn'),
-                   model_uri=ANALYSIS_API_SCHEMA.mAOMProduct__flag_tn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.mAOMProduct__flag_tn = Slot(uri=BASALT_SCHEMA.flag_tn, name="mAOMProduct__flag_tn", curie=BASALT_SCHEMA.curie('flag_tn'),
+                   model_uri=BASALT_SCHEMA.mAOMProduct__flag_tn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.mAOMProduct__flag_toc_avg = Slot(uri=ANALYSIS_API_SCHEMA.flag_toc_avg, name="mAOMProduct__flag_toc_avg", curie=ANALYSIS_API_SCHEMA.curie('flag_toc_avg'),
-                   model_uri=ANALYSIS_API_SCHEMA.mAOMProduct__flag_toc_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.mAOMProduct__flag_toc_avg = Slot(uri=BASALT_SCHEMA.flag_toc_avg, name="mAOMProduct__flag_toc_avg", curie=BASALT_SCHEMA.curie('flag_toc_avg'),
+                   model_uri=BASALT_SCHEMA.mAOMProduct__flag_toc_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.mAOMProduct__flag_tn_avg = Slot(uri=ANALYSIS_API_SCHEMA.flag_tn_avg, name="mAOMProduct__flag_tn_avg", curie=ANALYSIS_API_SCHEMA.curie('flag_tn_avg'),
-                   model_uri=ANALYSIS_API_SCHEMA.mAOMProduct__flag_tn_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.mAOMProduct__flag_tn_avg = Slot(uri=BASALT_SCHEMA.flag_tn_avg, name="mAOMProduct__flag_tn_avg", curie=BASALT_SCHEMA.curie('flag_tn_avg'),
+                   model_uri=BASALT_SCHEMA.mAOMProduct__flag_tn_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.microbialBiomassProduct__mbc_id = Slot(uri=ANALYSIS_API_SCHEMA.mbc_id, name="microbialBiomassProduct__mbc_id", curie=ANALYSIS_API_SCHEMA.curie('mbc_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.microbialBiomassProduct__mbc_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.microbialBiomassProduct__mbc_id = Slot(uri=BASALT_SCHEMA.mbc_id, name="microbialBiomassProduct__mbc_id", curie=BASALT_SCHEMA.curie('mbc_id'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassProduct__mbc_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.microbialBiomassProduct__mbc_avg = Slot(uri=ANALYSIS_API_SCHEMA.mbc_avg, name="microbialBiomassProduct__mbc_avg", curie=ANALYSIS_API_SCHEMA.curie('mbc_avg'),
-                   model_uri=ANALYSIS_API_SCHEMA.microbialBiomassProduct__mbc_avg, domain=None, range=Optional[float])
+slots.microbialBiomassProduct__mbc_avg = Slot(uri=BASALT_SCHEMA.mbc_avg, name="microbialBiomassProduct__mbc_avg", curie=BASALT_SCHEMA.curie('mbc_avg'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassProduct__mbc_avg, domain=None, range=Optional[float])
 
-slots.microbialBiomassProduct__mbn_id = Slot(uri=ANALYSIS_API_SCHEMA.mbn_id, name="microbialBiomassProduct__mbn_id", curie=ANALYSIS_API_SCHEMA.curie('mbn_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.microbialBiomassProduct__mbn_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.microbialBiomassProduct__mbn_id = Slot(uri=BASALT_SCHEMA.mbn_id, name="microbialBiomassProduct__mbn_id", curie=BASALT_SCHEMA.curie('mbn_id'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassProduct__mbn_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.microbialBiomassProduct__mbn_avg = Slot(uri=ANALYSIS_API_SCHEMA.mbn_avg, name="microbialBiomassProduct__mbn_avg", curie=ANALYSIS_API_SCHEMA.curie('mbn_avg'),
-                   model_uri=ANALYSIS_API_SCHEMA.microbialBiomassProduct__mbn_avg, domain=None, range=Optional[float])
+slots.microbialBiomassProduct__mbn_avg = Slot(uri=BASALT_SCHEMA.mbn_avg, name="microbialBiomassProduct__mbn_avg", curie=BASALT_SCHEMA.curie('mbn_avg'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassProduct__mbn_avg, domain=None, range=Optional[float])
 
-slots.microbialBiomassProduct__flag_mbc = Slot(uri=ANALYSIS_API_SCHEMA.flag_mbc, name="microbialBiomassProduct__flag_mbc", curie=ANALYSIS_API_SCHEMA.curie('flag_mbc'),
-                   model_uri=ANALYSIS_API_SCHEMA.microbialBiomassProduct__flag_mbc, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.microbialBiomassProduct__flag_mbc = Slot(uri=BASALT_SCHEMA.flag_mbc, name="microbialBiomassProduct__flag_mbc", curie=BASALT_SCHEMA.curie('flag_mbc'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassProduct__flag_mbc, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.microbialBiomassProduct__flag_mbn = Slot(uri=ANALYSIS_API_SCHEMA.flag_mbn, name="microbialBiomassProduct__flag_mbn", curie=ANALYSIS_API_SCHEMA.curie('flag_mbn'),
-                   model_uri=ANALYSIS_API_SCHEMA.microbialBiomassProduct__flag_mbn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.microbialBiomassProduct__flag_mbn = Slot(uri=BASALT_SCHEMA.flag_mbn, name="microbialBiomassProduct__flag_mbn", curie=BASALT_SCHEMA.curie('flag_mbn'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassProduct__flag_mbn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.microbialBiomassProduct__flag_mbc_avg = Slot(uri=ANALYSIS_API_SCHEMA.flag_mbc_avg, name="microbialBiomassProduct__flag_mbc_avg", curie=ANALYSIS_API_SCHEMA.curie('flag_mbc_avg'),
-                   model_uri=ANALYSIS_API_SCHEMA.microbialBiomassProduct__flag_mbc_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.microbialBiomassProduct__flag_mbc_avg = Slot(uri=BASALT_SCHEMA.flag_mbc_avg, name="microbialBiomassProduct__flag_mbc_avg", curie=BASALT_SCHEMA.curie('flag_mbc_avg'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassProduct__flag_mbc_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.microbialBiomassProduct__flag_mbn_avg = Slot(uri=ANALYSIS_API_SCHEMA.flag_mbn_avg, name="microbialBiomassProduct__flag_mbn_avg", curie=ANALYSIS_API_SCHEMA.curie('flag_mbn_avg'),
-                   model_uri=ANALYSIS_API_SCHEMA.microbialBiomassProduct__flag_mbn_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.microbialBiomassProduct__flag_mbn_avg = Slot(uri=BASALT_SCHEMA.flag_mbn_avg, name="microbialBiomassProduct__flag_mbn_avg", curie=BASALT_SCHEMA.curie('flag_mbn_avg'),
+                   model_uri=BASALT_SCHEMA.microbialBiomassProduct__flag_mbn_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.nitrogenAnalysisProduct__no3_n_id = Slot(uri=ANALYSIS_API_SCHEMA.no3_n_id, name="nitrogenAnalysisProduct__no3_n_id", curie=ANALYSIS_API_SCHEMA.curie('no3_n_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.nitrogenAnalysisProduct__no3_n_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.nitrogenAnalysisProduct__no3_n_id = Slot(uri=BASALT_SCHEMA.no3_n_id, name="nitrogenAnalysisProduct__no3_n_id", curie=BASALT_SCHEMA.curie('no3_n_id'),
+                   model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__no3_n_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.nitrogenAnalysisProduct__no3_n_avg = Slot(uri=ANALYSIS_API_SCHEMA.no3_n_avg, name="nitrogenAnalysisProduct__no3_n_avg", curie=ANALYSIS_API_SCHEMA.curie('no3_n_avg'),
-                   model_uri=ANALYSIS_API_SCHEMA.nitrogenAnalysisProduct__no3_n_avg, domain=None, range=Optional[float])
+slots.nitrogenAnalysisProduct__no3_n_avg = Slot(uri=BASALT_SCHEMA.no3_n_avg, name="nitrogenAnalysisProduct__no3_n_avg", curie=BASALT_SCHEMA.curie('no3_n_avg'),
+                   model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__no3_n_avg, domain=None, range=Optional[float])
 
-slots.nitrogenAnalysisProduct__nh4_n_id = Slot(uri=ANALYSIS_API_SCHEMA.nh4_n_id, name="nitrogenAnalysisProduct__nh4_n_id", curie=ANALYSIS_API_SCHEMA.curie('nh4_n_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.nitrogenAnalysisProduct__nh4_n_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.nitrogenAnalysisProduct__nh4_n_id = Slot(uri=BASALT_SCHEMA.nh4_n_id, name="nitrogenAnalysisProduct__nh4_n_id", curie=BASALT_SCHEMA.curie('nh4_n_id'),
+                   model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__nh4_n_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.nitrogenAnalysisProduct__nh4_n_avg = Slot(uri=ANALYSIS_API_SCHEMA.nh4_n_avg, name="nitrogenAnalysisProduct__nh4_n_avg", curie=ANALYSIS_API_SCHEMA.curie('nh4_n_avg'),
-                   model_uri=ANALYSIS_API_SCHEMA.nitrogenAnalysisProduct__nh4_n_avg, domain=None, range=Optional[float])
+slots.nitrogenAnalysisProduct__nh4_n_avg = Slot(uri=BASALT_SCHEMA.nh4_n_avg, name="nitrogenAnalysisProduct__nh4_n_avg", curie=BASALT_SCHEMA.curie('nh4_n_avg'),
+                   model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__nh4_n_avg, domain=None, range=Optional[float])
 
-slots.nitrogenAnalysisProduct__flag_no3n = Slot(uri=ANALYSIS_API_SCHEMA.flag_no3n, name="nitrogenAnalysisProduct__flag_no3n", curie=ANALYSIS_API_SCHEMA.curie('flag_no3n'),
-                   model_uri=ANALYSIS_API_SCHEMA.nitrogenAnalysisProduct__flag_no3n, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.nitrogenAnalysisProduct__flag_no3n = Slot(uri=BASALT_SCHEMA.flag_no3n, name="nitrogenAnalysisProduct__flag_no3n", curie=BASALT_SCHEMA.curie('flag_no3n'),
+                   model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__flag_no3n, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.nitrogenAnalysisProduct__flag_nh4n = Slot(uri=ANALYSIS_API_SCHEMA.flag_nh4n, name="nitrogenAnalysisProduct__flag_nh4n", curie=ANALYSIS_API_SCHEMA.curie('flag_nh4n'),
-                   model_uri=ANALYSIS_API_SCHEMA.nitrogenAnalysisProduct__flag_nh4n, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.nitrogenAnalysisProduct__flag_nh4n = Slot(uri=BASALT_SCHEMA.flag_nh4n, name="nitrogenAnalysisProduct__flag_nh4n", curie=BASALT_SCHEMA.curie('flag_nh4n'),
+                   model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__flag_nh4n, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.nitrogenAnalysisProduct__flag_no3n_avg = Slot(uri=ANALYSIS_API_SCHEMA.flag_no3n_avg, name="nitrogenAnalysisProduct__flag_no3n_avg", curie=ANALYSIS_API_SCHEMA.curie('flag_no3n_avg'),
-                   model_uri=ANALYSIS_API_SCHEMA.nitrogenAnalysisProduct__flag_no3n_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.nitrogenAnalysisProduct__flag_no3n_avg = Slot(uri=BASALT_SCHEMA.flag_no3n_avg, name="nitrogenAnalysisProduct__flag_no3n_avg", curie=BASALT_SCHEMA.curie('flag_no3n_avg'),
+                   model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__flag_no3n_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.nitrogenAnalysisProduct__flag_nh4n_avg = Slot(uri=ANALYSIS_API_SCHEMA.flag_nh4n_avg, name="nitrogenAnalysisProduct__flag_nh4n_avg", curie=ANALYSIS_API_SCHEMA.curie('flag_nh4n_avg'),
-                   model_uri=ANALYSIS_API_SCHEMA.nitrogenAnalysisProduct__flag_nh4n_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.nitrogenAnalysisProduct__flag_nh4n_avg = Slot(uri=BASALT_SCHEMA.flag_nh4n_avg, name="nitrogenAnalysisProduct__flag_nh4n_avg", curie=BASALT_SCHEMA.curie('flag_nh4n_avg'),
+                   model_uri=BASALT_SCHEMA.nitrogenAnalysisProduct__flag_nh4n_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.phosphorusAnalysisProduct__extraction_method = Slot(uri=ANALYSIS_API_SCHEMA.extraction_method, name="phosphorusAnalysisProduct__extraction_method", curie=ANALYSIS_API_SCHEMA.curie('extraction_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.phosphorusAnalysisProduct__extraction_method, domain=None, range=Optional[str])
+slots.phosphorusAnalysisProduct__extraction_method = Slot(uri=BASALT_SCHEMA.extraction_method, name="phosphorusAnalysisProduct__extraction_method", curie=BASALT_SCHEMA.curie('extraction_method'),
+                   model_uri=BASALT_SCHEMA.phosphorusAnalysisProduct__extraction_method, domain=None, range=Optional[str])
 
-slots.phosphorusAnalysisProduct__phosphorus_id = Slot(uri=ANALYSIS_API_SCHEMA.phosphorus_id, name="phosphorusAnalysisProduct__phosphorus_id", curie=ANALYSIS_API_SCHEMA.curie('phosphorus_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.phosphorusAnalysisProduct__phosphorus_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.phosphorusAnalysisProduct__phosphorus_id = Slot(uri=BASALT_SCHEMA.phosphorus_id, name="phosphorusAnalysisProduct__phosphorus_id", curie=BASALT_SCHEMA.curie('phosphorus_id'),
+                   model_uri=BASALT_SCHEMA.phosphorusAnalysisProduct__phosphorus_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.phosphorusAnalysisProduct__phosphorus_avg = Slot(uri=ANALYSIS_API_SCHEMA.phosphorus_avg, name="phosphorusAnalysisProduct__phosphorus_avg", curie=ANALYSIS_API_SCHEMA.curie('phosphorus_avg'),
-                   model_uri=ANALYSIS_API_SCHEMA.phosphorusAnalysisProduct__phosphorus_avg, domain=None, range=Optional[float])
+slots.phosphorusAnalysisProduct__phosphorus_avg = Slot(uri=BASALT_SCHEMA.phosphorus_avg, name="phosphorusAnalysisProduct__phosphorus_avg", curie=BASALT_SCHEMA.curie('phosphorus_avg'),
+                   model_uri=BASALT_SCHEMA.phosphorusAnalysisProduct__phosphorus_avg, domain=None, range=Optional[float])
 
-slots.phosphorusAnalysisProduct__flag = Slot(uri=ANALYSIS_API_SCHEMA.flag, name="phosphorusAnalysisProduct__flag", curie=ANALYSIS_API_SCHEMA.curie('flag'),
-                   model_uri=ANALYSIS_API_SCHEMA.phosphorusAnalysisProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.phosphorusAnalysisProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="phosphorusAnalysisProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
+                   model_uri=BASALT_SCHEMA.phosphorusAnalysisProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.phosphorusAnalysisProduct__flag_avg = Slot(uri=ANALYSIS_API_SCHEMA.flag_avg, name="phosphorusAnalysisProduct__flag_avg", curie=ANALYSIS_API_SCHEMA.curie('flag_avg'),
-                   model_uri=ANALYSIS_API_SCHEMA.phosphorusAnalysisProduct__flag_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.phosphorusAnalysisProduct__flag_avg = Slot(uri=BASALT_SCHEMA.flag_avg, name="phosphorusAnalysisProduct__flag_avg", curie=BASALT_SCHEMA.curie('flag_avg'),
+                   model_uri=BASALT_SCHEMA.phosphorusAnalysisProduct__flag_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.respirationProduct__respiration_co2_c_ug_per_g = Slot(uri=ANALYSIS_API_SCHEMA.respiration_co2_c_ug_per_g, name="respirationProduct__respiration_co2_c_ug_per_g", curie=ANALYSIS_API_SCHEMA.curie('respiration_co2_c_ug_per_g'),
-                   model_uri=ANALYSIS_API_SCHEMA.respirationProduct__respiration_co2_c_ug_per_g, domain=None, range=Optional[float])
+slots.respirationProduct__respiration_co2_c_ug_per_g = Slot(uri=BASALT_SCHEMA.respiration_co2_c_ug_per_g, name="respirationProduct__respiration_co2_c_ug_per_g", curie=BASALT_SCHEMA.curie('respiration_co2_c_ug_per_g'),
+                   model_uri=BASALT_SCHEMA.respirationProduct__respiration_co2_c_ug_per_g, domain=None, range=Optional[float])
 
-slots.respirationProduct__flag = Slot(uri=ANALYSIS_API_SCHEMA.flag, name="respirationProduct__flag", curie=ANALYSIS_API_SCHEMA.curie('flag'),
-                   model_uri=ANALYSIS_API_SCHEMA.respirationProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.respirationProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="respirationProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
+                   model_uri=BASALT_SCHEMA.respirationProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.textureProduct__sand_pct_id = Slot(uri=ANALYSIS_API_SCHEMA.sand_pct_id, name="textureProduct__sand_pct_id", curie=ANALYSIS_API_SCHEMA.curie('sand_pct_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.textureProduct__sand_pct_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.textureProduct__sand_pct_id = Slot(uri=BASALT_SCHEMA.sand_pct_id, name="textureProduct__sand_pct_id", curie=BASALT_SCHEMA.curie('sand_pct_id'),
+                   model_uri=BASALT_SCHEMA.textureProduct__sand_pct_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.textureProduct__silt_pct_id = Slot(uri=ANALYSIS_API_SCHEMA.silt_pct_id, name="textureProduct__silt_pct_id", curie=ANALYSIS_API_SCHEMA.curie('silt_pct_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.textureProduct__silt_pct_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.textureProduct__silt_pct_id = Slot(uri=BASALT_SCHEMA.silt_pct_id, name="textureProduct__silt_pct_id", curie=BASALT_SCHEMA.curie('silt_pct_id'),
+                   model_uri=BASALT_SCHEMA.textureProduct__silt_pct_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.textureProduct__clay_pct_id = Slot(uri=ANALYSIS_API_SCHEMA.clay_pct_id, name="textureProduct__clay_pct_id", curie=ANALYSIS_API_SCHEMA.curie('clay_pct_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.textureProduct__clay_pct_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.textureProduct__clay_pct_id = Slot(uri=BASALT_SCHEMA.clay_pct_id, name="textureProduct__clay_pct_id", curie=BASALT_SCHEMA.curie('clay_pct_id'),
+                   model_uri=BASALT_SCHEMA.textureProduct__clay_pct_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.textureProduct__flag = Slot(uri=ANALYSIS_API_SCHEMA.flag, name="textureProduct__flag", curie=ANALYSIS_API_SCHEMA.curie('flag'),
-                   model_uri=ANALYSIS_API_SCHEMA.textureProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.textureProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="textureProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
+                   model_uri=BASALT_SCHEMA.textureProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.tomographyProduct__roi_volume_voxel = Slot(uri=ANALYSIS_API_SCHEMA.roi_volume_voxel, name="tomographyProduct__roi_volume_voxel", curie=ANALYSIS_API_SCHEMA.curie('roi_volume_voxel'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__roi_volume_voxel, domain=None, range=Optional[float])
+slots.tomographyProduct__roi_volume_voxel = Slot(uri=BASALT_SCHEMA.roi_volume_voxel, name="tomographyProduct__roi_volume_voxel", curie=BASALT_SCHEMA.curie('roi_volume_voxel'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__roi_volume_voxel, domain=None, range=Optional[float])
 
-slots.tomographyProduct__voxel_size = Slot(uri=ANALYSIS_API_SCHEMA.voxel_size, name="tomographyProduct__voxel_size", curie=ANALYSIS_API_SCHEMA.curie('voxel_size'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__voxel_size, domain=None, range=Optional[float])
+slots.tomographyProduct__voxel_size = Slot(uri=BASALT_SCHEMA.voxel_size, name="tomographyProduct__voxel_size", curie=BASALT_SCHEMA.curie('voxel_size'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__voxel_size, domain=None, range=Optional[float])
 
-slots.tomographyProduct__connected_pores = Slot(uri=ANALYSIS_API_SCHEMA.connected_pores, name="tomographyProduct__connected_pores", curie=ANALYSIS_API_SCHEMA.curie('connected_pores'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__connected_pores, domain=None, range=Optional[float])
+slots.tomographyProduct__connected_pores = Slot(uri=BASALT_SCHEMA.connected_pores, name="tomographyProduct__connected_pores", curie=BASALT_SCHEMA.curie('connected_pores'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__connected_pores, domain=None, range=Optional[float])
 
-slots.tomographyProduct__pore_diameter_min = Slot(uri=ANALYSIS_API_SCHEMA.pore_diameter_min, name="tomographyProduct__pore_diameter_min", curie=ANALYSIS_API_SCHEMA.curie('pore_diameter_min'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__pore_diameter_min, domain=None, range=Optional[float])
+slots.tomographyProduct__pore_diameter_min = Slot(uri=BASALT_SCHEMA.pore_diameter_min, name="tomographyProduct__pore_diameter_min", curie=BASALT_SCHEMA.curie('pore_diameter_min'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__pore_diameter_min, domain=None, range=Optional[float])
 
-slots.tomographyProduct__pore_diameter_max = Slot(uri=ANALYSIS_API_SCHEMA.pore_diameter_max, name="tomographyProduct__pore_diameter_max", curie=ANALYSIS_API_SCHEMA.curie('pore_diameter_max'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__pore_diameter_max, domain=None, range=Optional[float])
+slots.tomographyProduct__pore_diameter_max = Slot(uri=BASALT_SCHEMA.pore_diameter_max, name="tomographyProduct__pore_diameter_max", curie=BASALT_SCHEMA.curie('pore_diameter_max'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__pore_diameter_max, domain=None, range=Optional[float])
 
-slots.tomographyProduct__pore_diameter_mean = Slot(uri=ANALYSIS_API_SCHEMA.pore_diameter_mean, name="tomographyProduct__pore_diameter_mean", curie=ANALYSIS_API_SCHEMA.curie('pore_diameter_mean'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__pore_diameter_mean, domain=None, range=Optional[float])
+slots.tomographyProduct__pore_diameter_mean = Slot(uri=BASALT_SCHEMA.pore_diameter_mean, name="tomographyProduct__pore_diameter_mean", curie=BASALT_SCHEMA.curie('pore_diameter_mean'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__pore_diameter_mean, domain=None, range=Optional[float])
 
-slots.tomographyProduct__pore_diameter_median = Slot(uri=ANALYSIS_API_SCHEMA.pore_diameter_median, name="tomographyProduct__pore_diameter_median", curie=ANALYSIS_API_SCHEMA.curie('pore_diameter_median'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__pore_diameter_median, domain=None, range=Optional[float])
+slots.tomographyProduct__pore_diameter_median = Slot(uri=BASALT_SCHEMA.pore_diameter_median, name="tomographyProduct__pore_diameter_median", curie=BASALT_SCHEMA.curie('pore_diameter_median'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__pore_diameter_median, domain=None, range=Optional[float])
 
-slots.tomographyProduct__pore_diameter_variance = Slot(uri=ANALYSIS_API_SCHEMA.pore_diameter_variance, name="tomographyProduct__pore_diameter_variance", curie=ANALYSIS_API_SCHEMA.curie('pore_diameter_variance'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__pore_diameter_variance, domain=None, range=Optional[float])
+slots.tomographyProduct__pore_diameter_variance = Slot(uri=BASALT_SCHEMA.pore_diameter_variance, name="tomographyProduct__pore_diameter_variance", curie=BASALT_SCHEMA.curie('pore_diameter_variance'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__pore_diameter_variance, domain=None, range=Optional[float])
 
-slots.tomographyProduct__pore_volume_mean = Slot(uri=ANALYSIS_API_SCHEMA.pore_volume_mean, name="tomographyProduct__pore_volume_mean", curie=ANALYSIS_API_SCHEMA.curie('pore_volume_mean'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__pore_volume_mean, domain=None, range=Optional[float])
+slots.tomographyProduct__pore_volume_mean = Slot(uri=BASALT_SCHEMA.pore_volume_mean, name="tomographyProduct__pore_volume_mean", curie=BASALT_SCHEMA.curie('pore_volume_mean'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__pore_volume_mean, domain=None, range=Optional[float])
 
-slots.tomographyProduct__total_pore_volume = Slot(uri=ANALYSIS_API_SCHEMA.total_pore_volume, name="tomographyProduct__total_pore_volume", curie=ANALYSIS_API_SCHEMA.curie('total_pore_volume'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__total_pore_volume, domain=None, range=Optional[float])
+slots.tomographyProduct__total_pore_volume = Slot(uri=BASALT_SCHEMA.total_pore_volume, name="tomographyProduct__total_pore_volume", curie=BASALT_SCHEMA.curie('total_pore_volume'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__total_pore_volume, domain=None, range=Optional[float])
 
-slots.tomographyProduct__permeability_x = Slot(uri=ANALYSIS_API_SCHEMA.permeability_x, name="tomographyProduct__permeability_x", curie=ANALYSIS_API_SCHEMA.curie('permeability_x'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__permeability_x, domain=None, range=Optional[float])
+slots.tomographyProduct__permeability_x = Slot(uri=BASALT_SCHEMA.permeability_x, name="tomographyProduct__permeability_x", curie=BASALT_SCHEMA.curie('permeability_x'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__permeability_x, domain=None, range=Optional[float])
 
-slots.tomographyProduct__flow_rate_x = Slot(uri=ANALYSIS_API_SCHEMA.flow_rate_x, name="tomographyProduct__flow_rate_x", curie=ANALYSIS_API_SCHEMA.curie('flow_rate_x'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__flow_rate_x, domain=None, range=Optional[float])
+slots.tomographyProduct__flow_rate_x = Slot(uri=BASALT_SCHEMA.flow_rate_x, name="tomographyProduct__flow_rate_x", curie=BASALT_SCHEMA.curie('flow_rate_x'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__flow_rate_x, domain=None, range=Optional[float])
 
-slots.tomographyProduct__tortuosity_x = Slot(uri=ANALYSIS_API_SCHEMA.tortuosity_x, name="tomographyProduct__tortuosity_x", curie=ANALYSIS_API_SCHEMA.curie('tortuosity_x'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__tortuosity_x, domain=None, range=Optional[float])
+slots.tomographyProduct__tortuosity_x = Slot(uri=BASALT_SCHEMA.tortuosity_x, name="tomographyProduct__tortuosity_x", curie=BASALT_SCHEMA.curie('tortuosity_x'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__tortuosity_x, domain=None, range=Optional[float])
 
-slots.tomographyProduct__permeability_y = Slot(uri=ANALYSIS_API_SCHEMA.permeability_y, name="tomographyProduct__permeability_y", curie=ANALYSIS_API_SCHEMA.curie('permeability_y'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__permeability_y, domain=None, range=Optional[float])
+slots.tomographyProduct__permeability_y = Slot(uri=BASALT_SCHEMA.permeability_y, name="tomographyProduct__permeability_y", curie=BASALT_SCHEMA.curie('permeability_y'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__permeability_y, domain=None, range=Optional[float])
 
-slots.tomographyProduct__flow_rate_y = Slot(uri=ANALYSIS_API_SCHEMA.flow_rate_y, name="tomographyProduct__flow_rate_y", curie=ANALYSIS_API_SCHEMA.curie('flow_rate_y'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__flow_rate_y, domain=None, range=Optional[float])
+slots.tomographyProduct__flow_rate_y = Slot(uri=BASALT_SCHEMA.flow_rate_y, name="tomographyProduct__flow_rate_y", curie=BASALT_SCHEMA.curie('flow_rate_y'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__flow_rate_y, domain=None, range=Optional[float])
 
-slots.tomographyProduct__tortuosity_y = Slot(uri=ANALYSIS_API_SCHEMA.tortuosity_y, name="tomographyProduct__tortuosity_y", curie=ANALYSIS_API_SCHEMA.curie('tortuosity_y'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__tortuosity_y, domain=None, range=Optional[float])
+slots.tomographyProduct__tortuosity_y = Slot(uri=BASALT_SCHEMA.tortuosity_y, name="tomographyProduct__tortuosity_y", curie=BASALT_SCHEMA.curie('tortuosity_y'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__tortuosity_y, domain=None, range=Optional[float])
 
-slots.tomographyProduct__permeability_z = Slot(uri=ANALYSIS_API_SCHEMA.permeability_z, name="tomographyProduct__permeability_z", curie=ANALYSIS_API_SCHEMA.curie('permeability_z'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__permeability_z, domain=None, range=Optional[float])
+slots.tomographyProduct__permeability_z = Slot(uri=BASALT_SCHEMA.permeability_z, name="tomographyProduct__permeability_z", curie=BASALT_SCHEMA.curie('permeability_z'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__permeability_z, domain=None, range=Optional[float])
 
-slots.tomographyProduct__flow_rate_z = Slot(uri=ANALYSIS_API_SCHEMA.flow_rate_z, name="tomographyProduct__flow_rate_z", curie=ANALYSIS_API_SCHEMA.curie('flow_rate_z'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__flow_rate_z, domain=None, range=Optional[float])
+slots.tomographyProduct__flow_rate_z = Slot(uri=BASALT_SCHEMA.flow_rate_z, name="tomographyProduct__flow_rate_z", curie=BASALT_SCHEMA.curie('flow_rate_z'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__flow_rate_z, domain=None, range=Optional[float])
 
-slots.tomographyProduct__tortuosity_z = Slot(uri=ANALYSIS_API_SCHEMA.tortuosity_z, name="tomographyProduct__tortuosity_z", curie=ANALYSIS_API_SCHEMA.curie('tortuosity_z'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__tortuosity_z, domain=None, range=Optional[float])
+slots.tomographyProduct__tortuosity_z = Slot(uri=BASALT_SCHEMA.tortuosity_z, name="tomographyProduct__tortuosity_z", curie=BASALT_SCHEMA.curie('tortuosity_z'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__tortuosity_z, domain=None, range=Optional[float])
 
-slots.tomographyProduct__flag_xct = Slot(uri=ANALYSIS_API_SCHEMA.flag_xct, name="tomographyProduct__flag_xct", curie=ANALYSIS_API_SCHEMA.curie('flag_xct'),
-                   model_uri=ANALYSIS_API_SCHEMA.tomographyProduct__flag_xct, domain=None, range=Optional[str])
+slots.tomographyProduct__flag_xct = Slot(uri=BASALT_SCHEMA.flag_xct, name="tomographyProduct__flag_xct", curie=BASALT_SCHEMA.curie('flag_xct'),
+                   model_uri=BASALT_SCHEMA.tomographyProduct__flag_xct, domain=None, range=Optional[str])
 
-slots.wEOMProduct__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="wEOMProduct__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.wEOMProduct__id, domain=None, range=URIRef)
+slots.wEOMProduct__id = Slot(uri=BASALT_SCHEMA.id, name="wEOMProduct__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.wEOMProduct__id, domain=None, range=URIRef)
 
-slots.wEOMProduct__total_organic_carbon_id = Slot(uri=ANALYSIS_API_SCHEMA.total_organic_carbon_id, name="wEOMProduct__total_organic_carbon_id", curie=ANALYSIS_API_SCHEMA.curie('total_organic_carbon_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.wEOMProduct__total_organic_carbon_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.wEOMProduct__total_organic_carbon_id = Slot(uri=BASALT_SCHEMA.total_organic_carbon_id, name="wEOMProduct__total_organic_carbon_id", curie=BASALT_SCHEMA.curie('total_organic_carbon_id'),
+                   model_uri=BASALT_SCHEMA.wEOMProduct__total_organic_carbon_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.wEOMProduct__total_organic_carbon_avg = Slot(uri=ANALYSIS_API_SCHEMA.total_organic_carbon_avg, name="wEOMProduct__total_organic_carbon_avg", curie=ANALYSIS_API_SCHEMA.curie('total_organic_carbon_avg'),
-                   model_uri=ANALYSIS_API_SCHEMA.wEOMProduct__total_organic_carbon_avg, domain=None, range=Optional[float])
+slots.wEOMProduct__total_organic_carbon_avg = Slot(uri=BASALT_SCHEMA.total_organic_carbon_avg, name="wEOMProduct__total_organic_carbon_avg", curie=BASALT_SCHEMA.curie('total_organic_carbon_avg'),
+                   model_uri=BASALT_SCHEMA.wEOMProduct__total_organic_carbon_avg, domain=None, range=Optional[float])
 
-slots.wEOMProduct__total_nitrogen_id = Slot(uri=ANALYSIS_API_SCHEMA.total_nitrogen_id, name="wEOMProduct__total_nitrogen_id", curie=ANALYSIS_API_SCHEMA.curie('total_nitrogen_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.wEOMProduct__total_nitrogen_id, domain=None, range=Optional[Union[str, QuantityValueId]])
+slots.wEOMProduct__total_nitrogen_id = Slot(uri=BASALT_SCHEMA.total_nitrogen_id, name="wEOMProduct__total_nitrogen_id", curie=BASALT_SCHEMA.curie('total_nitrogen_id'),
+                   model_uri=BASALT_SCHEMA.wEOMProduct__total_nitrogen_id, domain=None, range=Optional[Union[str, QuantityValueId]])
 
-slots.wEOMProduct__total_nitrogen_avg = Slot(uri=ANALYSIS_API_SCHEMA.total_nitrogen_avg, name="wEOMProduct__total_nitrogen_avg", curie=ANALYSIS_API_SCHEMA.curie('total_nitrogen_avg'),
-                   model_uri=ANALYSIS_API_SCHEMA.wEOMProduct__total_nitrogen_avg, domain=None, range=Optional[float])
+slots.wEOMProduct__total_nitrogen_avg = Slot(uri=BASALT_SCHEMA.total_nitrogen_avg, name="wEOMProduct__total_nitrogen_avg", curie=BASALT_SCHEMA.curie('total_nitrogen_avg'),
+                   model_uri=BASALT_SCHEMA.wEOMProduct__total_nitrogen_avg, domain=None, range=Optional[float])
 
-slots.wEOMProduct__flag_toc = Slot(uri=ANALYSIS_API_SCHEMA.flag_toc, name="wEOMProduct__flag_toc", curie=ANALYSIS_API_SCHEMA.curie('flag_toc'),
-                   model_uri=ANALYSIS_API_SCHEMA.wEOMProduct__flag_toc, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.wEOMProduct__flag_toc = Slot(uri=BASALT_SCHEMA.flag_toc, name="wEOMProduct__flag_toc", curie=BASALT_SCHEMA.curie('flag_toc'),
+                   model_uri=BASALT_SCHEMA.wEOMProduct__flag_toc, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.wEOMProduct__flag_tn = Slot(uri=ANALYSIS_API_SCHEMA.flag_tn, name="wEOMProduct__flag_tn", curie=ANALYSIS_API_SCHEMA.curie('flag_tn'),
-                   model_uri=ANALYSIS_API_SCHEMA.wEOMProduct__flag_tn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.wEOMProduct__flag_tn = Slot(uri=BASALT_SCHEMA.flag_tn, name="wEOMProduct__flag_tn", curie=BASALT_SCHEMA.curie('flag_tn'),
+                   model_uri=BASALT_SCHEMA.wEOMProduct__flag_tn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.wEOMProduct__flag_toc_avg = Slot(uri=ANALYSIS_API_SCHEMA.flag_toc_avg, name="wEOMProduct__flag_toc_avg", curie=ANALYSIS_API_SCHEMA.curie('flag_toc_avg'),
-                   model_uri=ANALYSIS_API_SCHEMA.wEOMProduct__flag_toc_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.wEOMProduct__flag_toc_avg = Slot(uri=BASALT_SCHEMA.flag_toc_avg, name="wEOMProduct__flag_toc_avg", curie=BASALT_SCHEMA.curie('flag_toc_avg'),
+                   model_uri=BASALT_SCHEMA.wEOMProduct__flag_toc_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.wEOMProduct__flag_tn_avg = Slot(uri=ANALYSIS_API_SCHEMA.flag_tn_avg, name="wEOMProduct__flag_tn_avg", curie=ANALYSIS_API_SCHEMA.curie('flag_tn_avg'),
-                   model_uri=ANALYSIS_API_SCHEMA.wEOMProduct__flag_tn_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.wEOMProduct__flag_tn_avg = Slot(uri=BASALT_SCHEMA.flag_tn_avg, name="wEOMProduct__flag_tn_avg", curie=BASALT_SCHEMA.curie('flag_tn_avg'),
+                   model_uri=BASALT_SCHEMA.wEOMProduct__flag_tn_avg, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.pHProduct__ph = Slot(uri=ANALYSIS_API_SCHEMA.ph, name="pHProduct__ph", curie=ANALYSIS_API_SCHEMA.curie('ph'),
-                   model_uri=ANALYSIS_API_SCHEMA.pHProduct__ph, domain=None, range=Optional[float])
+slots.pHProduct__ph = Slot(uri=BASALT_SCHEMA.ph, name="pHProduct__ph", curie=BASALT_SCHEMA.curie('ph'),
+                   model_uri=BASALT_SCHEMA.pHProduct__ph, domain=None, range=Optional[float])
 
-slots.pHProduct__flag = Slot(uri=ANALYSIS_API_SCHEMA.flag, name="pHProduct__flag", curie=ANALYSIS_API_SCHEMA.curie('flag'),
-                   model_uri=ANALYSIS_API_SCHEMA.pHProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.pHProduct__flag = Slot(uri=BASALT_SCHEMA.flag, name="pHProduct__flag", curie=BASALT_SCHEMA.curie('flag'),
+                   model_uri=BASALT_SCHEMA.pHProduct__flag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__cl_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.cl_mg_per_kg, name="xRFElementalProduct__cl_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('cl_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__cl_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__cl_mg_per_kg = Slot(uri=BASALT_SCHEMA.cl_mg_per_kg, name="xRFElementalProduct__cl_mg_per_kg", curie=BASALT_SCHEMA.curie('cl_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__cl_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__v_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.v_mg_per_kg, name="xRFElementalProduct__v_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('v_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__v_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__v_mg_per_kg = Slot(uri=BASALT_SCHEMA.v_mg_per_kg, name="xRFElementalProduct__v_mg_per_kg", curie=BASALT_SCHEMA.curie('v_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__v_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__cr_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.cr_mg_per_kg, name="xRFElementalProduct__cr_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('cr_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__cr_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__cr_mg_per_kg = Slot(uri=BASALT_SCHEMA.cr_mg_per_kg, name="xRFElementalProduct__cr_mg_per_kg", curie=BASALT_SCHEMA.curie('cr_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__cr_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__ni_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.ni_mg_per_kg, name="xRFElementalProduct__ni_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('ni_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__ni_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__ni_mg_per_kg = Slot(uri=BASALT_SCHEMA.ni_mg_per_kg, name="xRFElementalProduct__ni_mg_per_kg", curie=BASALT_SCHEMA.curie('ni_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__ni_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__cu_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.cu_mg_per_kg, name="xRFElementalProduct__cu_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('cu_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__cu_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__cu_mg_per_kg = Slot(uri=BASALT_SCHEMA.cu_mg_per_kg, name="xRFElementalProduct__cu_mg_per_kg", curie=BASALT_SCHEMA.curie('cu_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__cu_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__zn_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.zn_mg_per_kg, name="xRFElementalProduct__zn_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('zn_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__zn_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__zn_mg_per_kg = Slot(uri=BASALT_SCHEMA.zn_mg_per_kg, name="xRFElementalProduct__zn_mg_per_kg", curie=BASALT_SCHEMA.curie('zn_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__zn_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__ga_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.ga_mg_per_kg, name="xRFElementalProduct__ga_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('ga_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__ga_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__ga_mg_per_kg = Slot(uri=BASALT_SCHEMA.ga_mg_per_kg, name="xRFElementalProduct__ga_mg_per_kg", curie=BASALT_SCHEMA.curie('ga_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__ga_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__as_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.as_mg_per_kg, name="xRFElementalProduct__as_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('as_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__as_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__as_mg_per_kg = Slot(uri=BASALT_SCHEMA.as_mg_per_kg, name="xRFElementalProduct__as_mg_per_kg", curie=BASALT_SCHEMA.curie('as_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__as_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__se_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.se_mg_per_kg, name="xRFElementalProduct__se_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('se_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__se_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__se_mg_per_kg = Slot(uri=BASALT_SCHEMA.se_mg_per_kg, name="xRFElementalProduct__se_mg_per_kg", curie=BASALT_SCHEMA.curie('se_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__se_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__br_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.br_mg_per_kg, name="xRFElementalProduct__br_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('br_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__br_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__br_mg_per_kg = Slot(uri=BASALT_SCHEMA.br_mg_per_kg, name="xRFElementalProduct__br_mg_per_kg", curie=BASALT_SCHEMA.curie('br_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__br_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__rb_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.rb_mg_per_kg, name="xRFElementalProduct__rb_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('rb_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__rb_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__rb_mg_per_kg = Slot(uri=BASALT_SCHEMA.rb_mg_per_kg, name="xRFElementalProduct__rb_mg_per_kg", curie=BASALT_SCHEMA.curie('rb_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__rb_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__sr_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.sr_mg_per_kg, name="xRFElementalProduct__sr_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('sr_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__sr_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__sr_mg_per_kg = Slot(uri=BASALT_SCHEMA.sr_mg_per_kg, name="xRFElementalProduct__sr_mg_per_kg", curie=BASALT_SCHEMA.curie('sr_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__sr_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__y_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.y_mg_per_kg, name="xRFElementalProduct__y_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('y_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__y_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__y_mg_per_kg = Slot(uri=BASALT_SCHEMA.y_mg_per_kg, name="xRFElementalProduct__y_mg_per_kg", curie=BASALT_SCHEMA.curie('y_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__y_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__nb_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.nb_mg_per_kg, name="xRFElementalProduct__nb_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('nb_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__nb_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__nb_mg_per_kg = Slot(uri=BASALT_SCHEMA.nb_mg_per_kg, name="xRFElementalProduct__nb_mg_per_kg", curie=BASALT_SCHEMA.curie('nb_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__nb_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__mo_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.mo_mg_per_kg, name="xRFElementalProduct__mo_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('mo_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__mo_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__mo_mg_per_kg = Slot(uri=BASALT_SCHEMA.mo_mg_per_kg, name="xRFElementalProduct__mo_mg_per_kg", curie=BASALT_SCHEMA.curie('mo_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__mo_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__ag_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.ag_mg_per_kg, name="xRFElementalProduct__ag_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('ag_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__ag_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__ag_mg_per_kg = Slot(uri=BASALT_SCHEMA.ag_mg_per_kg, name="xRFElementalProduct__ag_mg_per_kg", curie=BASALT_SCHEMA.curie('ag_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__ag_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__cd_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.cd_mg_per_kg, name="xRFElementalProduct__cd_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('cd_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__cd_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__cd_mg_per_kg = Slot(uri=BASALT_SCHEMA.cd_mg_per_kg, name="xRFElementalProduct__cd_mg_per_kg", curie=BASALT_SCHEMA.curie('cd_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__cd_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__in_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.in_mg_per_kg, name="xRFElementalProduct__in_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('in_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__in_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__in_mg_per_kg = Slot(uri=BASALT_SCHEMA.in_mg_per_kg, name="xRFElementalProduct__in_mg_per_kg", curie=BASALT_SCHEMA.curie('in_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__in_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__sn_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.sn_mg_per_kg, name="xRFElementalProduct__sn_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('sn_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__sn_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__sn_mg_per_kg = Slot(uri=BASALT_SCHEMA.sn_mg_per_kg, name="xRFElementalProduct__sn_mg_per_kg", curie=BASALT_SCHEMA.curie('sn_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__sn_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__sb_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.sb_mg_per_kg, name="xRFElementalProduct__sb_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('sb_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__sb_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__sb_mg_per_kg = Slot(uri=BASALT_SCHEMA.sb_mg_per_kg, name="xRFElementalProduct__sb_mg_per_kg", curie=BASALT_SCHEMA.curie('sb_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__sb_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__cs_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.cs_mg_per_kg, name="xRFElementalProduct__cs_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('cs_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__cs_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__cs_mg_per_kg = Slot(uri=BASALT_SCHEMA.cs_mg_per_kg, name="xRFElementalProduct__cs_mg_per_kg", curie=BASALT_SCHEMA.curie('cs_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__cs_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__ba_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.ba_mg_per_kg, name="xRFElementalProduct__ba_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('ba_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__ba_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__ba_mg_per_kg = Slot(uri=BASALT_SCHEMA.ba_mg_per_kg, name="xRFElementalProduct__ba_mg_per_kg", curie=BASALT_SCHEMA.curie('ba_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__ba_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__la_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.la_mg_per_kg, name="xRFElementalProduct__la_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('la_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__la_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__la_mg_per_kg = Slot(uri=BASALT_SCHEMA.la_mg_per_kg, name="xRFElementalProduct__la_mg_per_kg", curie=BASALT_SCHEMA.curie('la_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__la_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__ce_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.ce_mg_per_kg, name="xRFElementalProduct__ce_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('ce_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__ce_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__ce_mg_per_kg = Slot(uri=BASALT_SCHEMA.ce_mg_per_kg, name="xRFElementalProduct__ce_mg_per_kg", curie=BASALT_SCHEMA.curie('ce_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__ce_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__pb_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.pb_mg_per_kg, name="xRFElementalProduct__pb_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('pb_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__pb_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__pb_mg_per_kg = Slot(uri=BASALT_SCHEMA.pb_mg_per_kg, name="xRFElementalProduct__pb_mg_per_kg", curie=BASALT_SCHEMA.curie('pb_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__pb_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__th_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.th_mg_per_kg, name="xRFElementalProduct__th_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('th_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__th_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__th_mg_per_kg = Slot(uri=BASALT_SCHEMA.th_mg_per_kg, name="xRFElementalProduct__th_mg_per_kg", curie=BASALT_SCHEMA.curie('th_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__th_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__u_mg_per_kg = Slot(uri=ANALYSIS_API_SCHEMA.u_mg_per_kg, name="xRFElementalProduct__u_mg_per_kg", curie=ANALYSIS_API_SCHEMA.curie('u_mg_per_kg'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__u_mg_per_kg, domain=None, range=Optional[float])
+slots.xRFElementalProduct__u_mg_per_kg = Slot(uri=BASALT_SCHEMA.u_mg_per_kg, name="xRFElementalProduct__u_mg_per_kg", curie=BASALT_SCHEMA.curie('u_mg_per_kg'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__u_mg_per_kg, domain=None, range=Optional[float])
 
-slots.xRFElementalProduct__flag_cl = Slot(uri=ANALYSIS_API_SCHEMA.flag_cl, name="xRFElementalProduct__flag_cl", curie=ANALYSIS_API_SCHEMA.curie('flag_cl'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_cl, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_cl = Slot(uri=BASALT_SCHEMA.flag_cl, name="xRFElementalProduct__flag_cl", curie=BASALT_SCHEMA.curie('flag_cl'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_cl, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_v = Slot(uri=ANALYSIS_API_SCHEMA.flag_v, name="xRFElementalProduct__flag_v", curie=ANALYSIS_API_SCHEMA.curie('flag_v'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_v, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_v = Slot(uri=BASALT_SCHEMA.flag_v, name="xRFElementalProduct__flag_v", curie=BASALT_SCHEMA.curie('flag_v'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_v, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_cr = Slot(uri=ANALYSIS_API_SCHEMA.flag_cr, name="xRFElementalProduct__flag_cr", curie=ANALYSIS_API_SCHEMA.curie('flag_cr'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_cr, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_cr = Slot(uri=BASALT_SCHEMA.flag_cr, name="xRFElementalProduct__flag_cr", curie=BASALT_SCHEMA.curie('flag_cr'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_cr, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_ni = Slot(uri=ANALYSIS_API_SCHEMA.flag_ni, name="xRFElementalProduct__flag_ni", curie=ANALYSIS_API_SCHEMA.curie('flag_ni'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_ni, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_ni = Slot(uri=BASALT_SCHEMA.flag_ni, name="xRFElementalProduct__flag_ni", curie=BASALT_SCHEMA.curie('flag_ni'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_ni, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_cu = Slot(uri=ANALYSIS_API_SCHEMA.flag_cu, name="xRFElementalProduct__flag_cu", curie=ANALYSIS_API_SCHEMA.curie('flag_cu'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_cu, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_cu = Slot(uri=BASALT_SCHEMA.flag_cu, name="xRFElementalProduct__flag_cu", curie=BASALT_SCHEMA.curie('flag_cu'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_cu, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_zn = Slot(uri=ANALYSIS_API_SCHEMA.flag_zn, name="xRFElementalProduct__flag_zn", curie=ANALYSIS_API_SCHEMA.curie('flag_zn'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_zn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_zn = Slot(uri=BASALT_SCHEMA.flag_zn, name="xRFElementalProduct__flag_zn", curie=BASALT_SCHEMA.curie('flag_zn'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_zn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_ga = Slot(uri=ANALYSIS_API_SCHEMA.flag_ga, name="xRFElementalProduct__flag_ga", curie=ANALYSIS_API_SCHEMA.curie('flag_ga'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_ga, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_ga = Slot(uri=BASALT_SCHEMA.flag_ga, name="xRFElementalProduct__flag_ga", curie=BASALT_SCHEMA.curie('flag_ga'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_ga, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_as = Slot(uri=ANALYSIS_API_SCHEMA.flag_as, name="xRFElementalProduct__flag_as", curie=ANALYSIS_API_SCHEMA.curie('flag_as'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_as, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_as = Slot(uri=BASALT_SCHEMA.flag_as, name="xRFElementalProduct__flag_as", curie=BASALT_SCHEMA.curie('flag_as'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_as, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_se = Slot(uri=ANALYSIS_API_SCHEMA.flag_se, name="xRFElementalProduct__flag_se", curie=ANALYSIS_API_SCHEMA.curie('flag_se'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_se, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_se = Slot(uri=BASALT_SCHEMA.flag_se, name="xRFElementalProduct__flag_se", curie=BASALT_SCHEMA.curie('flag_se'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_se, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_br = Slot(uri=ANALYSIS_API_SCHEMA.flag_br, name="xRFElementalProduct__flag_br", curie=ANALYSIS_API_SCHEMA.curie('flag_br'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_br, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_br = Slot(uri=BASALT_SCHEMA.flag_br, name="xRFElementalProduct__flag_br", curie=BASALT_SCHEMA.curie('flag_br'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_br, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_rb = Slot(uri=ANALYSIS_API_SCHEMA.flag_rb, name="xRFElementalProduct__flag_rb", curie=ANALYSIS_API_SCHEMA.curie('flag_rb'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_rb, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_rb = Slot(uri=BASALT_SCHEMA.flag_rb, name="xRFElementalProduct__flag_rb", curie=BASALT_SCHEMA.curie('flag_rb'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_rb, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_sr = Slot(uri=ANALYSIS_API_SCHEMA.flag_sr, name="xRFElementalProduct__flag_sr", curie=ANALYSIS_API_SCHEMA.curie('flag_sr'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_sr, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_sr = Slot(uri=BASALT_SCHEMA.flag_sr, name="xRFElementalProduct__flag_sr", curie=BASALT_SCHEMA.curie('flag_sr'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_sr, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_y = Slot(uri=ANALYSIS_API_SCHEMA.flag_y, name="xRFElementalProduct__flag_y", curie=ANALYSIS_API_SCHEMA.curie('flag_y'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_y, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_y = Slot(uri=BASALT_SCHEMA.flag_y, name="xRFElementalProduct__flag_y", curie=BASALT_SCHEMA.curie('flag_y'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_y, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_nb = Slot(uri=ANALYSIS_API_SCHEMA.flag_nb, name="xRFElementalProduct__flag_nb", curie=ANALYSIS_API_SCHEMA.curie('flag_nb'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_nb, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_nb = Slot(uri=BASALT_SCHEMA.flag_nb, name="xRFElementalProduct__flag_nb", curie=BASALT_SCHEMA.curie('flag_nb'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_nb, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_mo = Slot(uri=ANALYSIS_API_SCHEMA.flag_mo, name="xRFElementalProduct__flag_mo", curie=ANALYSIS_API_SCHEMA.curie('flag_mo'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_mo, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_mo = Slot(uri=BASALT_SCHEMA.flag_mo, name="xRFElementalProduct__flag_mo", curie=BASALT_SCHEMA.curie('flag_mo'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_mo, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_ag = Slot(uri=ANALYSIS_API_SCHEMA.flag_ag, name="xRFElementalProduct__flag_ag", curie=ANALYSIS_API_SCHEMA.curie('flag_ag'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_ag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_ag = Slot(uri=BASALT_SCHEMA.flag_ag, name="xRFElementalProduct__flag_ag", curie=BASALT_SCHEMA.curie('flag_ag'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_ag, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_cd = Slot(uri=ANALYSIS_API_SCHEMA.flag_cd, name="xRFElementalProduct__flag_cd", curie=ANALYSIS_API_SCHEMA.curie('flag_cd'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_cd, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_cd = Slot(uri=BASALT_SCHEMA.flag_cd, name="xRFElementalProduct__flag_cd", curie=BASALT_SCHEMA.curie('flag_cd'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_cd, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_in = Slot(uri=ANALYSIS_API_SCHEMA.flag_in, name="xRFElementalProduct__flag_in", curie=ANALYSIS_API_SCHEMA.curie('flag_in'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_in, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_in = Slot(uri=BASALT_SCHEMA.flag_in, name="xRFElementalProduct__flag_in", curie=BASALT_SCHEMA.curie('flag_in'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_in, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_sn = Slot(uri=ANALYSIS_API_SCHEMA.flag_sn, name="xRFElementalProduct__flag_sn", curie=ANALYSIS_API_SCHEMA.curie('flag_sn'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_sn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_sn = Slot(uri=BASALT_SCHEMA.flag_sn, name="xRFElementalProduct__flag_sn", curie=BASALT_SCHEMA.curie('flag_sn'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_sn, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_sb = Slot(uri=ANALYSIS_API_SCHEMA.flag_sb, name="xRFElementalProduct__flag_sb", curie=ANALYSIS_API_SCHEMA.curie('flag_sb'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_sb, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_sb = Slot(uri=BASALT_SCHEMA.flag_sb, name="xRFElementalProduct__flag_sb", curie=BASALT_SCHEMA.curie('flag_sb'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_sb, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_cs = Slot(uri=ANALYSIS_API_SCHEMA.flag_cs, name="xRFElementalProduct__flag_cs", curie=ANALYSIS_API_SCHEMA.curie('flag_cs'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_cs, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_cs = Slot(uri=BASALT_SCHEMA.flag_cs, name="xRFElementalProduct__flag_cs", curie=BASALT_SCHEMA.curie('flag_cs'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_cs, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_ba = Slot(uri=ANALYSIS_API_SCHEMA.flag_ba, name="xRFElementalProduct__flag_ba", curie=ANALYSIS_API_SCHEMA.curie('flag_ba'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_ba, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_ba = Slot(uri=BASALT_SCHEMA.flag_ba, name="xRFElementalProduct__flag_ba", curie=BASALT_SCHEMA.curie('flag_ba'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_ba, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_la = Slot(uri=ANALYSIS_API_SCHEMA.flag_la, name="xRFElementalProduct__flag_la", curie=ANALYSIS_API_SCHEMA.curie('flag_la'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_la, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_la = Slot(uri=BASALT_SCHEMA.flag_la, name="xRFElementalProduct__flag_la", curie=BASALT_SCHEMA.curie('flag_la'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_la, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_ce = Slot(uri=ANALYSIS_API_SCHEMA.flag_ce, name="xRFElementalProduct__flag_ce", curie=ANALYSIS_API_SCHEMA.curie('flag_ce'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_ce, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_ce = Slot(uri=BASALT_SCHEMA.flag_ce, name="xRFElementalProduct__flag_ce", curie=BASALT_SCHEMA.curie('flag_ce'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_ce, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_pb = Slot(uri=ANALYSIS_API_SCHEMA.flag_pb, name="xRFElementalProduct__flag_pb", curie=ANALYSIS_API_SCHEMA.curie('flag_pb'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_pb, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_pb = Slot(uri=BASALT_SCHEMA.flag_pb, name="xRFElementalProduct__flag_pb", curie=BASALT_SCHEMA.curie('flag_pb'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_pb, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_th = Slot(uri=ANALYSIS_API_SCHEMA.flag_th, name="xRFElementalProduct__flag_th", curie=ANALYSIS_API_SCHEMA.curie('flag_th'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_th, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_th = Slot(uri=BASALT_SCHEMA.flag_th, name="xRFElementalProduct__flag_th", curie=BASALT_SCHEMA.curie('flag_th'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_th, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRFElementalProduct__flag_u = Slot(uri=ANALYSIS_API_SCHEMA.flag_u, name="xRFElementalProduct__flag_u", curie=ANALYSIS_API_SCHEMA.curie('flag_u'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRFElementalProduct__flag_u, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRFElementalProduct__flag_u = Slot(uri=BASALT_SCHEMA.flag_u, name="xRFElementalProduct__flag_u", curie=BASALT_SCHEMA.curie('flag_u'),
+                   model_uri=BASALT_SCHEMA.xRFElementalProduct__flag_u, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRDPhaseProduct__quartz_percent = Slot(uri=ANALYSIS_API_SCHEMA.quartz_percent, name="xRDPhaseProduct__quartz_percent", curie=ANALYSIS_API_SCHEMA.curie('quartz_percent'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__quartz_percent, domain=None, range=Optional[float])
+slots.xRDPhaseProduct__quartz_percent = Slot(uri=BASALT_SCHEMA.quartz_percent, name="xRDPhaseProduct__quartz_percent", curie=BASALT_SCHEMA.curie('quartz_percent'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__quartz_percent, domain=None, range=Optional[float])
 
-slots.xRDPhaseProduct__albite_percent = Slot(uri=ANALYSIS_API_SCHEMA.albite_percent, name="xRDPhaseProduct__albite_percent", curie=ANALYSIS_API_SCHEMA.curie('albite_percent'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__albite_percent, domain=None, range=Optional[float])
+slots.xRDPhaseProduct__albite_percent = Slot(uri=BASALT_SCHEMA.albite_percent, name="xRDPhaseProduct__albite_percent", curie=BASALT_SCHEMA.curie('albite_percent'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__albite_percent, domain=None, range=Optional[float])
 
-slots.xRDPhaseProduct__microcline_percent = Slot(uri=ANALYSIS_API_SCHEMA.microcline_percent, name="xRDPhaseProduct__microcline_percent", curie=ANALYSIS_API_SCHEMA.curie('microcline_percent'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__microcline_percent, domain=None, range=Optional[float])
+slots.xRDPhaseProduct__microcline_percent = Slot(uri=BASALT_SCHEMA.microcline_percent, name="xRDPhaseProduct__microcline_percent", curie=BASALT_SCHEMA.curie('microcline_percent'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__microcline_percent, domain=None, range=Optional[float])
 
-slots.xRDPhaseProduct__muscovite_percent = Slot(uri=ANALYSIS_API_SCHEMA.muscovite_percent, name="xRDPhaseProduct__muscovite_percent", curie=ANALYSIS_API_SCHEMA.curie('muscovite_percent'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__muscovite_percent, domain=None, range=Optional[float])
+slots.xRDPhaseProduct__muscovite_percent = Slot(uri=BASALT_SCHEMA.muscovite_percent, name="xRDPhaseProduct__muscovite_percent", curie=BASALT_SCHEMA.curie('muscovite_percent'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__muscovite_percent, domain=None, range=Optional[float])
 
-slots.xRDPhaseProduct__kaolinite_percent = Slot(uri=ANALYSIS_API_SCHEMA.kaolinite_percent, name="xRDPhaseProduct__kaolinite_percent", curie=ANALYSIS_API_SCHEMA.curie('kaolinite_percent'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__kaolinite_percent, domain=None, range=Optional[float])
+slots.xRDPhaseProduct__kaolinite_percent = Slot(uri=BASALT_SCHEMA.kaolinite_percent, name="xRDPhaseProduct__kaolinite_percent", curie=BASALT_SCHEMA.curie('kaolinite_percent'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__kaolinite_percent, domain=None, range=Optional[float])
 
-slots.xRDPhaseProduct__chlorite_percent = Slot(uri=ANALYSIS_API_SCHEMA.chlorite_percent, name="xRDPhaseProduct__chlorite_percent", curie=ANALYSIS_API_SCHEMA.curie('chlorite_percent'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__chlorite_percent, domain=None, range=Optional[float])
+slots.xRDPhaseProduct__chlorite_percent = Slot(uri=BASALT_SCHEMA.chlorite_percent, name="xRDPhaseProduct__chlorite_percent", curie=BASALT_SCHEMA.curie('chlorite_percent'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__chlorite_percent, domain=None, range=Optional[float])
 
-slots.xRDPhaseProduct__hornblende_percent = Slot(uri=ANALYSIS_API_SCHEMA.hornblende_percent, name="xRDPhaseProduct__hornblende_percent", curie=ANALYSIS_API_SCHEMA.curie('hornblende_percent'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__hornblende_percent, domain=None, range=Optional[float])
+slots.xRDPhaseProduct__hornblende_percent = Slot(uri=BASALT_SCHEMA.hornblende_percent, name="xRDPhaseProduct__hornblende_percent", curie=BASALT_SCHEMA.curie('hornblende_percent'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__hornblende_percent, domain=None, range=Optional[float])
 
-slots.xRDPhaseProduct__pyrite_percent = Slot(uri=ANALYSIS_API_SCHEMA.pyrite_percent, name="xRDPhaseProduct__pyrite_percent", curie=ANALYSIS_API_SCHEMA.curie('pyrite_percent'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__pyrite_percent, domain=None, range=Optional[float])
+slots.xRDPhaseProduct__pyrite_percent = Slot(uri=BASALT_SCHEMA.pyrite_percent, name="xRDPhaseProduct__pyrite_percent", curie=BASALT_SCHEMA.curie('pyrite_percent'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__pyrite_percent, domain=None, range=Optional[float])
 
-slots.xRDPhaseProduct__halite_percent = Slot(uri=ANALYSIS_API_SCHEMA.halite_percent, name="xRDPhaseProduct__halite_percent", curie=ANALYSIS_API_SCHEMA.curie('halite_percent'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__halite_percent, domain=None, range=Optional[float])
+slots.xRDPhaseProduct__halite_percent = Slot(uri=BASALT_SCHEMA.halite_percent, name="xRDPhaseProduct__halite_percent", curie=BASALT_SCHEMA.curie('halite_percent'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__halite_percent, domain=None, range=Optional[float])
 
-slots.xRDPhaseProduct__gypsum_percent = Slot(uri=ANALYSIS_API_SCHEMA.gypsum_percent, name="xRDPhaseProduct__gypsum_percent", curie=ANALYSIS_API_SCHEMA.curie('gypsum_percent'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__gypsum_percent, domain=None, range=Optional[float])
+slots.xRDPhaseProduct__gypsum_percent = Slot(uri=BASALT_SCHEMA.gypsum_percent, name="xRDPhaseProduct__gypsum_percent", curie=BASALT_SCHEMA.curie('gypsum_percent'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__gypsum_percent, domain=None, range=Optional[float])
 
-slots.xRDPhaseProduct__flag_quartz = Slot(uri=ANALYSIS_API_SCHEMA.flag_quartz, name="xRDPhaseProduct__flag_quartz", curie=ANALYSIS_API_SCHEMA.curie('flag_quartz'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__flag_quartz, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRDPhaseProduct__flag_quartz = Slot(uri=BASALT_SCHEMA.flag_quartz, name="xRDPhaseProduct__flag_quartz", curie=BASALT_SCHEMA.curie('flag_quartz'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__flag_quartz, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRDPhaseProduct__flag_albite = Slot(uri=ANALYSIS_API_SCHEMA.flag_albite, name="xRDPhaseProduct__flag_albite", curie=ANALYSIS_API_SCHEMA.curie('flag_albite'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__flag_albite, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRDPhaseProduct__flag_albite = Slot(uri=BASALT_SCHEMA.flag_albite, name="xRDPhaseProduct__flag_albite", curie=BASALT_SCHEMA.curie('flag_albite'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__flag_albite, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRDPhaseProduct__flag_microcline = Slot(uri=ANALYSIS_API_SCHEMA.flag_microcline, name="xRDPhaseProduct__flag_microcline", curie=ANALYSIS_API_SCHEMA.curie('flag_microcline'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__flag_microcline, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRDPhaseProduct__flag_microcline = Slot(uri=BASALT_SCHEMA.flag_microcline, name="xRDPhaseProduct__flag_microcline", curie=BASALT_SCHEMA.curie('flag_microcline'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__flag_microcline, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRDPhaseProduct__flag_muscovite = Slot(uri=ANALYSIS_API_SCHEMA.flag_muscovite, name="xRDPhaseProduct__flag_muscovite", curie=ANALYSIS_API_SCHEMA.curie('flag_muscovite'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__flag_muscovite, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRDPhaseProduct__flag_muscovite = Slot(uri=BASALT_SCHEMA.flag_muscovite, name="xRDPhaseProduct__flag_muscovite", curie=BASALT_SCHEMA.curie('flag_muscovite'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__flag_muscovite, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRDPhaseProduct__flag_kaolinite = Slot(uri=ANALYSIS_API_SCHEMA.flag_kaolinite, name="xRDPhaseProduct__flag_kaolinite", curie=ANALYSIS_API_SCHEMA.curie('flag_kaolinite'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__flag_kaolinite, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRDPhaseProduct__flag_kaolinite = Slot(uri=BASALT_SCHEMA.flag_kaolinite, name="xRDPhaseProduct__flag_kaolinite", curie=BASALT_SCHEMA.curie('flag_kaolinite'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__flag_kaolinite, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRDPhaseProduct__flag_chlorite = Slot(uri=ANALYSIS_API_SCHEMA.flag_chlorite, name="xRDPhaseProduct__flag_chlorite", curie=ANALYSIS_API_SCHEMA.curie('flag_chlorite'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__flag_chlorite, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRDPhaseProduct__flag_chlorite = Slot(uri=BASALT_SCHEMA.flag_chlorite, name="xRDPhaseProduct__flag_chlorite", curie=BASALT_SCHEMA.curie('flag_chlorite'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__flag_chlorite, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRDPhaseProduct__flag_hornblende = Slot(uri=ANALYSIS_API_SCHEMA.flag_hornblende, name="xRDPhaseProduct__flag_hornblende", curie=ANALYSIS_API_SCHEMA.curie('flag_hornblende'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__flag_hornblende, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRDPhaseProduct__flag_hornblende = Slot(uri=BASALT_SCHEMA.flag_hornblende, name="xRDPhaseProduct__flag_hornblende", curie=BASALT_SCHEMA.curie('flag_hornblende'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__flag_hornblende, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRDPhaseProduct__flag_pyrite = Slot(uri=ANALYSIS_API_SCHEMA.flag_pyrite, name="xRDPhaseProduct__flag_pyrite", curie=ANALYSIS_API_SCHEMA.curie('flag_pyrite'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__flag_pyrite, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRDPhaseProduct__flag_pyrite = Slot(uri=BASALT_SCHEMA.flag_pyrite, name="xRDPhaseProduct__flag_pyrite", curie=BASALT_SCHEMA.curie('flag_pyrite'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__flag_pyrite, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRDPhaseProduct__flag_halite = Slot(uri=ANALYSIS_API_SCHEMA.flag_halite, name="xRDPhaseProduct__flag_halite", curie=ANALYSIS_API_SCHEMA.curie('flag_halite'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__flag_halite, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRDPhaseProduct__flag_halite = Slot(uri=BASALT_SCHEMA.flag_halite, name="xRDPhaseProduct__flag_halite", curie=BASALT_SCHEMA.curie('flag_halite'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__flag_halite, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.xRDPhaseProduct__flag_gypsum = Slot(uri=ANALYSIS_API_SCHEMA.flag_gypsum, name="xRDPhaseProduct__flag_gypsum", curie=ANALYSIS_API_SCHEMA.curie('flag_gypsum'),
-                   model_uri=ANALYSIS_API_SCHEMA.xRDPhaseProduct__flag_gypsum, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
+slots.xRDPhaseProduct__flag_gypsum = Slot(uri=BASALT_SCHEMA.flag_gypsum, name="xRDPhaseProduct__flag_gypsum", curie=BASALT_SCHEMA.curie('flag_gypsum'),
+                   model_uri=BASALT_SCHEMA.xRDPhaseProduct__flag_gypsum, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
-slots.site__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="site__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.site__id, domain=None, range=URIRef)
+slots.site__id = Slot(uri=BASALT_SCHEMA.id, name="site__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.site__id, domain=None, range=URIRef)
 
-slots.sample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="sample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.sample__id, domain=None, range=URIRef)
+slots.sample__id = Slot(uri=BASALT_SCHEMA.id, name="sample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.sample__id, domain=None, range=URIRef)
 
-slots.aerosolArmSample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="aerosolArmSample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.aerosolArmSample__id, domain=None, range=URIRef)
+slots.aerosolArmSample__id = Slot(uri=BASALT_SCHEMA.id, name="aerosolArmSample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.aerosolArmSample__id, domain=None, range=URIRef)
 
-slots.aerosolSample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="aerosolSample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.aerosolSample__id, domain=None, range=URIRef)
+slots.aerosolSample__id = Slot(uri=BASALT_SCHEMA.id, name="aerosolSample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.aerosolSample__id, domain=None, range=URIRef)
 
-slots.aMP2UserSample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="aMP2UserSample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.aMP2UserSample__id, domain=None, range=URIRef)
+slots.aMP2UserSample__id = Slot(uri=BASALT_SCHEMA.id, name="aMP2UserSample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.aMP2UserSample__id, domain=None, range=URIRef)
 
-slots.commerciallyPurchasedSample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="commerciallyPurchasedSample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.commerciallyPurchasedSample__id, domain=None, range=URIRef)
+slots.commerciallyPurchasedSample__id = Slot(uri=BASALT_SCHEMA.id, name="commerciallyPurchasedSample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.commerciallyPurchasedSample__id, domain=None, range=URIRef)
 
-slots.cultureEnvironmentalSample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="cultureEnvironmentalSample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.cultureEnvironmentalSample__id, domain=None, range=URIRef)
+slots.cultureEnvironmentalSample__id = Slot(uri=BASALT_SCHEMA.id, name="cultureEnvironmentalSample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.cultureEnvironmentalSample__id, domain=None, range=URIRef)
 
-slots.engineeredStrainSample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="engineeredStrainSample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.engineeredStrainSample__id, domain=None, range=URIRef)
+slots.engineeredStrainSample__id = Slot(uri=BASALT_SCHEMA.id, name="engineeredStrainSample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.engineeredStrainSample__id, domain=None, range=URIRef)
 
-slots.engineeredStrainSample__cbi = Slot(uri=ANALYSIS_API_SCHEMA.cbi, name="engineeredStrainSample__cbi", curie=ANALYSIS_API_SCHEMA.curie('cbi'),
-                   model_uri=ANALYSIS_API_SCHEMA.engineeredStrainSample__cbi, domain=None, range=str)
+slots.engineeredStrainSample__cbi = Slot(uri=BASALT_SCHEMA.cbi, name="engineeredStrainSample__cbi", curie=BASALT_SCHEMA.curie('cbi'),
+                   model_uri=BASALT_SCHEMA.engineeredStrainSample__cbi, domain=None, range=str)
 
-slots.engineeredStrainSample__storage_condition = Slot(uri=ANALYSIS_API_SCHEMA.storage_condition, name="engineeredStrainSample__storage_condition", curie=ANALYSIS_API_SCHEMA.curie('storage_condition'),
-                   model_uri=ANALYSIS_API_SCHEMA.engineeredStrainSample__storage_condition, domain=None, range=str)
+slots.engineeredStrainSample__storage_condition = Slot(uri=BASALT_SCHEMA.storage_condition, name="engineeredStrainSample__storage_condition", curie=BASALT_SCHEMA.curie('storage_condition'),
+                   model_uri=BASALT_SCHEMA.engineeredStrainSample__storage_condition, domain=None, range=str)
 
-slots.engineeredStrainSample__storage_temperature = Slot(uri=ANALYSIS_API_SCHEMA.storage_temperature, name="engineeredStrainSample__storage_temperature", curie=ANALYSIS_API_SCHEMA.curie('storage_temperature'),
-                   model_uri=ANALYSIS_API_SCHEMA.engineeredStrainSample__storage_temperature, domain=None, range=Optional[str])
+slots.engineeredStrainSample__storage_temperature = Slot(uri=BASALT_SCHEMA.storage_temperature, name="engineeredStrainSample__storage_temperature", curie=BASALT_SCHEMA.curie('storage_temperature'),
+                   model_uri=BASALT_SCHEMA.engineeredStrainSample__storage_temperature, domain=None, range=Optional[str])
 
-slots.fieldDeployedTerraformSample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="fieldDeployedTerraformSample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.fieldDeployedTerraformSample__id, domain=None, range=URIRef)
+slots.fieldDeployedTerraformSample__id = Slot(uri=BASALT_SCHEMA.id, name="fieldDeployedTerraformSample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.fieldDeployedTerraformSample__id, domain=None, range=URIRef)
 
-slots.mixedCultureSample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="mixedCultureSample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.mixedCultureSample__id, domain=None, range=URIRef)
+slots.mixedCultureSample__id = Slot(uri=BASALT_SCHEMA.id, name="mixedCultureSample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.mixedCultureSample__id, domain=None, range=URIRef)
 
-slots.monetSoilSample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="monetSoilSample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.monetSoilSample__id, domain=None, range=URIRef)
+slots.monetSoilSample__id = Slot(uri=BASALT_SCHEMA.id, name="monetSoilSample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.monetSoilSample__id, domain=None, range=URIRef)
 
-slots.otherUndescribedSample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="otherUndescribedSample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.otherUndescribedSample__id, domain=None, range=URIRef)
+slots.otherUndescribedSample__id = Slot(uri=BASALT_SCHEMA.id, name="otherUndescribedSample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.otherUndescribedSample__id, domain=None, range=URIRef)
 
-slots.plantSample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="plantSample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.plantSample__id, domain=None, range=URIRef)
+slots.plantSample__id = Slot(uri=BASALT_SCHEMA.id, name="plantSample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.plantSample__id, domain=None, range=URIRef)
 
-slots.pureCultureSample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="pureCultureSample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.pureCultureSample__id, domain=None, range=URIRef)
+slots.pureCultureSample__id = Slot(uri=BASALT_SCHEMA.id, name="pureCultureSample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.pureCultureSample__id, domain=None, range=URIRef)
 
-slots.sedimentSample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="sedimentSample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.sedimentSample__id, domain=None, range=URIRef)
+slots.sedimentSample__id = Slot(uri=BASALT_SCHEMA.id, name="sedimentSample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.sedimentSample__id, domain=None, range=URIRef)
 
-slots.soilSample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="soilSample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.soilSample__id, domain=None, range=URIRef)
+slots.soilSample__id = Slot(uri=BASALT_SCHEMA.id, name="soilSample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.soilSample__id, domain=None, range=URIRef)
 
-slots.synthesizedMaterialSample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="synthesizedMaterialSample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.synthesizedMaterialSample__id, domain=None, range=URIRef)
+slots.synthesizedMaterialSample__id = Slot(uri=BASALT_SCHEMA.id, name="synthesizedMaterialSample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.synthesizedMaterialSample__id, domain=None, range=URIRef)
 
-slots.terraformSample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="terraformSample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.terraformSample__id, domain=None, range=URIRef)
+slots.terraformSample__id = Slot(uri=BASALT_SCHEMA.id, name="terraformSample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.terraformSample__id, domain=None, range=URIRef)
 
-slots.waterSample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="waterSample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.waterSample__id, domain=None, range=URIRef)
+slots.waterSample__id = Slot(uri=BASALT_SCHEMA.id, name="waterSample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.waterSample__id, domain=None, range=URIRef)
 
-slots.processedSample__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="processedSample__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.processedSample__id, domain=None, range=URIRef)
+slots.processedSample__id = Slot(uri=BASALT_SCHEMA.id, name="processedSample__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.processedSample__id, domain=None, range=URIRef)
 
-slots.coreSection__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="coreSection__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.coreSection__id, domain=None, range=URIRef)
+slots.coreSection__id = Slot(uri=BASALT_SCHEMA.id, name="coreSection__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.coreSection__id, domain=None, range=URIRef)
 
-slots.samplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="samplingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.samplingActivity__id, domain=None, range=URIRef)
+slots.samplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="samplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.samplingActivity__id, domain=None, range=URIRef)
 
-slots.aerosolArmSamplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="aerosolArmSamplingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.aerosolArmSamplingActivity__id, domain=None, range=URIRef)
+slots.aerosolArmSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="aerosolArmSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.aerosolArmSamplingActivity__id, domain=None, range=URIRef)
 
-slots.aerosolSamplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="aerosolSamplingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.aerosolSamplingActivity__id, domain=None, range=URIRef)
+slots.aerosolSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="aerosolSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.aerosolSamplingActivity__id, domain=None, range=URIRef)
 
-slots.commerciallyPurchasedSamplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="commerciallyPurchasedSamplingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.commerciallyPurchasedSamplingActivity__id, domain=None, range=URIRef)
+slots.commerciallyPurchasedSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="commerciallyPurchasedSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.commerciallyPurchasedSamplingActivity__id, domain=None, range=URIRef)
 
-slots.cultureEnvironmentalSamplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="cultureEnvironmentalSamplingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.cultureEnvironmentalSamplingActivity__id, domain=None, range=URIRef)
+slots.cultureEnvironmentalSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="cultureEnvironmentalSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.cultureEnvironmentalSamplingActivity__id, domain=None, range=URIRef)
 
-slots.engineeredStrainSamplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="engineeredStrainSamplingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.engineeredStrainSamplingActivity__id, domain=None, range=URIRef)
+slots.engineeredStrainSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="engineeredStrainSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.engineeredStrainSamplingActivity__id, domain=None, range=URIRef)
 
-slots.fieldDeployedTerraformSamplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="fieldDeployedTerraformSamplingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.fieldDeployedTerraformSamplingActivity__id, domain=None, range=URIRef)
+slots.fieldDeployedTerraformSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="fieldDeployedTerraformSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.fieldDeployedTerraformSamplingActivity__id, domain=None, range=URIRef)
 
-slots.mixedCultureSamplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="mixedCultureSamplingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.mixedCultureSamplingActivity__id, domain=None, range=URIRef)
+slots.mixedCultureSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="mixedCultureSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.mixedCultureSamplingActivity__id, domain=None, range=URIRef)
 
-slots.monetSoilSamplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="monetSoilSamplingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.monetSoilSamplingActivity__id, domain=None, range=URIRef)
+slots.monetSoilSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="monetSoilSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.monetSoilSamplingActivity__id, domain=None, range=URIRef)
 
-slots.otherUndescribedSamplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="otherUndescribedSamplingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.otherUndescribedSamplingActivity__id, domain=None, range=URIRef)
+slots.otherUndescribedSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="otherUndescribedSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.otherUndescribedSamplingActivity__id, domain=None, range=URIRef)
 
-slots.plantSamplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="plantSamplingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.plantSamplingActivity__id, domain=None, range=URIRef)
+slots.plantSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="plantSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.plantSamplingActivity__id, domain=None, range=URIRef)
 
-slots.pureCultureSamplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="pureCultureSamplingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.pureCultureSamplingActivity__id, domain=None, range=URIRef)
+slots.pureCultureSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="pureCultureSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.pureCultureSamplingActivity__id, domain=None, range=URIRef)
 
-slots.sedimentSamplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="sedimentSamplingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.sedimentSamplingActivity__id, domain=None, range=URIRef)
+slots.sedimentSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="sedimentSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.sedimentSamplingActivity__id, domain=None, range=URIRef)
 
-slots.soilSamplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="soilSamplingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.soilSamplingActivity__id, domain=None, range=URIRef)
+slots.soilSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="soilSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.soilSamplingActivity__id, domain=None, range=URIRef)
 
-slots.synthesizedMaterialSamplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="synthesizedMaterialSamplingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.synthesizedMaterialSamplingActivity__id, domain=None, range=URIRef)
+slots.synthesizedMaterialSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="synthesizedMaterialSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.synthesizedMaterialSamplingActivity__id, domain=None, range=URIRef)
 
-slots.terraformSamplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="terraformSamplingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.terraformSamplingActivity__id, domain=None, range=URIRef)
+slots.terraformSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="terraformSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.terraformSamplingActivity__id, domain=None, range=URIRef)
 
-slots.waterSamplingActivity__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="waterSamplingActivity__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.waterSamplingActivity__id, domain=None, range=URIRef)
+slots.waterSamplingActivity__id = Slot(uri=BASALT_SCHEMA.id, name="waterSamplingActivity__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.waterSamplingActivity__id, domain=None, range=URIRef)
 
-slots.study__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="study__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.study__id, domain=None, range=URIRef)
+slots.study__id = Slot(uri=BASALT_SCHEMA.id, name="study__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.study__id, domain=None, range=URIRef)
 
-slots.study__project_id = Slot(uri=ANALYSIS_API_SCHEMA.project_id, name="study__project_id", curie=ANALYSIS_API_SCHEMA.curie('project_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.study__project_id, domain=None, range=int)
+slots.study__project_id = Slot(uri=BASALT_SCHEMA.project_id, name="study__project_id", curie=BASALT_SCHEMA.curie('project_id'),
+                   model_uri=BASALT_SCHEMA.study__project_id, domain=None, range=int)
 
-slots.study__title = Slot(uri=ANALYSIS_API_SCHEMA.title, name="study__title", curie=ANALYSIS_API_SCHEMA.curie('title'),
-                   model_uri=ANALYSIS_API_SCHEMA.study__title, domain=None, range=Optional[str])
+slots.study__title = Slot(uri=BASALT_SCHEMA.title, name="study__title", curie=BASALT_SCHEMA.curie('title'),
+                   model_uri=BASALT_SCHEMA.study__title, domain=None, range=Optional[str])
 
-slots.study__name = Slot(uri=ANALYSIS_API_SCHEMA.name, name="study__name", curie=ANALYSIS_API_SCHEMA.curie('name'),
-                   model_uri=ANALYSIS_API_SCHEMA.study__name, domain=None, range=str)
+slots.study__name = Slot(uri=BASALT_SCHEMA.name, name="study__name", curie=BASALT_SCHEMA.curie('name'),
+                   model_uri=BASALT_SCHEMA.study__name, domain=None, range=str)
 
-slots.study__proposal_abstract = Slot(uri=ANALYSIS_API_SCHEMA.proposal_abstract, name="study__proposal_abstract", curie=ANALYSIS_API_SCHEMA.curie('proposal_abstract'),
-                   model_uri=ANALYSIS_API_SCHEMA.study__proposal_abstract, domain=None, range=Optional[str])
+slots.study__proposal_abstract = Slot(uri=BASALT_SCHEMA.proposal_abstract, name="study__proposal_abstract", curie=BASALT_SCHEMA.curie('proposal_abstract'),
+                   model_uri=BASALT_SCHEMA.study__proposal_abstract, domain=None, range=Optional[str])
 
-slots.study__description = Slot(uri=ANALYSIS_API_SCHEMA.description, name="study__description", curie=ANALYSIS_API_SCHEMA.curie('description'),
-                   model_uri=ANALYSIS_API_SCHEMA.study__description, domain=None, range=Optional[str])
+slots.study__description = Slot(uri=BASALT_SCHEMA.description, name="study__description", curie=BASALT_SCHEMA.curie('description'),
+                   model_uri=BASALT_SCHEMA.study__description, domain=None, range=Optional[str])
 
-slots.study__has_participants = Slot(uri=ANALYSIS_API_SCHEMA.has_participants, name="study__has_participants", curie=ANALYSIS_API_SCHEMA.curie('has_participants'),
-                   model_uri=ANALYSIS_API_SCHEMA.study__has_participants, domain=None, range=Optional[Union[Union[str, ProjectParticipantId], list[Union[str, ProjectParticipantId]]]])
+slots.study__has_participants = Slot(uri=BASALT_SCHEMA.has_participants, name="study__has_participants", curie=BASALT_SCHEMA.curie('has_participants'),
+                   model_uri=BASALT_SCHEMA.study__has_participants, domain=None, range=Optional[Union[Union[str, ProjectParticipantId], list[Union[str, ProjectParticipantId]]]])
 
-slots.study__principal_investigator = Slot(uri=ANALYSIS_API_SCHEMA.principal_investigator, name="study__principal_investigator", curie=ANALYSIS_API_SCHEMA.curie('principal_investigator'),
-                   model_uri=ANALYSIS_API_SCHEMA.study__principal_investigator, domain=None, range=Union[str, PersonValueId])
+slots.study__principal_investigator = Slot(uri=BASALT_SCHEMA.principal_investigator, name="study__principal_investigator", curie=BASALT_SCHEMA.curie('principal_investigator'),
+                   model_uri=BASALT_SCHEMA.study__principal_investigator, domain=None, range=Union[str, PersonValueId])
 
-slots.study__collaborating_institution = Slot(uri=ANALYSIS_API_SCHEMA.collaborating_institution, name="study__collaborating_institution", curie=ANALYSIS_API_SCHEMA.curie('collaborating_institution'),
-                   model_uri=ANALYSIS_API_SCHEMA.study__collaborating_institution, domain=None, range=Optional[str])
+slots.study__collaborating_institution = Slot(uri=BASALT_SCHEMA.collaborating_institution, name="study__collaborating_institution", curie=BASALT_SCHEMA.curie('collaborating_institution'),
+                   model_uri=BASALT_SCHEMA.study__collaborating_institution, domain=None, range=Optional[str])
 
-slots.study__project_status = Slot(uri=ANALYSIS_API_SCHEMA.project_status, name="study__project_status", curie=ANALYSIS_API_SCHEMA.curie('project_status'),
-                   model_uri=ANALYSIS_API_SCHEMA.study__project_status, domain=None, range=Optional[Union[str, "ProjectStatusEnum"]])
+slots.study__project_status = Slot(uri=BASALT_SCHEMA.project_status, name="study__project_status", curie=BASALT_SCHEMA.curie('project_status'),
+                   model_uri=BASALT_SCHEMA.study__project_status, domain=None, range=Optional[Union[str, "ProjectStatusEnum"]])
 
-slots.study__project_start = Slot(uri=ANALYSIS_API_SCHEMA.project_start, name="study__project_start", curie=ANALYSIS_API_SCHEMA.curie('project_start'),
-                   model_uri=ANALYSIS_API_SCHEMA.study__project_start, domain=None, range=Optional[Union[str, XSDDateTime]])
+slots.study__project_start = Slot(uri=BASALT_SCHEMA.project_start, name="study__project_start", curie=BASALT_SCHEMA.curie('project_start'),
+                   model_uri=BASALT_SCHEMA.study__project_start, domain=None, range=Optional[Union[str, XSDDateTime]])
 
-slots.study__project_end = Slot(uri=ANALYSIS_API_SCHEMA.project_end, name="study__project_end", curie=ANALYSIS_API_SCHEMA.curie('project_end'),
-                   model_uri=ANALYSIS_API_SCHEMA.study__project_end, domain=None, range=Optional[Union[str, XSDDateTime]])
+slots.study__project_end = Slot(uri=BASALT_SCHEMA.project_end, name="study__project_end", curie=BASALT_SCHEMA.curie('project_end'),
+                   model_uri=BASALT_SCHEMA.study__project_end, domain=None, range=Optional[Union[str, XSDDateTime]])
 
-slots.study__associated_dois = Slot(uri=ANALYSIS_API_SCHEMA.associated_dois, name="study__associated_dois", curie=ANALYSIS_API_SCHEMA.curie('associated_dois'),
-                   model_uri=ANALYSIS_API_SCHEMA.study__associated_dois, domain=None, range=Optional[Union[Union[dict, DOI], list[Union[dict, DOI]]]])
+slots.study__associated_dois = Slot(uri=BASALT_SCHEMA.associated_dois, name="study__associated_dois", curie=BASALT_SCHEMA.curie('associated_dois'),
+                   model_uri=BASALT_SCHEMA.study__associated_dois, domain=None, range=Optional[Union[Union[dict, DOI], list[Union[dict, DOI]]]])
 
-slots.study__funding_sources = Slot(uri=ANALYSIS_API_SCHEMA.funding_sources, name="study__funding_sources", curie=ANALYSIS_API_SCHEMA.curie('funding_sources'),
-                   model_uri=ANALYSIS_API_SCHEMA.study__funding_sources, domain=None, range=Optional[Union[Union[dict, DOI], list[Union[dict, DOI]]]])
+slots.study__funding_sources = Slot(uri=BASALT_SCHEMA.funding_sources, name="study__funding_sources", curie=BASALT_SCHEMA.curie('funding_sources'),
+                   model_uri=BASALT_SCHEMA.study__funding_sources, domain=None, range=Optional[Union[Union[dict, DOI], list[Union[dict, DOI]]]])
 
-slots.projectParticipant__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="projectParticipant__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.projectParticipant__id, domain=None, range=URIRef)
+slots.projectParticipant__id = Slot(uri=BASALT_SCHEMA.id, name="projectParticipant__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.projectParticipant__id, domain=None, range=URIRef)
 
-slots.projectParticipant__role = Slot(uri=ANALYSIS_API_SCHEMA.role, name="projectParticipant__role", curie=ANALYSIS_API_SCHEMA.curie('role'),
-                   model_uri=ANALYSIS_API_SCHEMA.projectParticipant__role, domain=None, range=Union[str, "NexusRoleEnum"])
+slots.projectParticipant__role = Slot(uri=BASALT_SCHEMA.role, name="projectParticipant__role", curie=BASALT_SCHEMA.curie('role'),
+                   model_uri=BASALT_SCHEMA.projectParticipant__role, domain=None, range=Union[str, "NexusRoleEnum"])
 
-slots.projectParticipant__person = Slot(uri=ANALYSIS_API_SCHEMA.person, name="projectParticipant__person", curie=ANALYSIS_API_SCHEMA.curie('person'),
-                   model_uri=ANALYSIS_API_SCHEMA.projectParticipant__person, domain=None, range=Union[str, PersonValueId])
+slots.projectParticipant__person = Slot(uri=BASALT_SCHEMA.person, name="projectParticipant__person", curie=BASALT_SCHEMA.curie('person'),
+                   model_uri=BASALT_SCHEMA.projectParticipant__person, domain=None, range=Union[str, PersonValueId])
 
-slots.dOI__doi_value = Slot(uri=ANALYSIS_API_SCHEMA.doi_value, name="dOI__doi_value", curie=ANALYSIS_API_SCHEMA.curie('doi_value'),
-                   model_uri=ANALYSIS_API_SCHEMA.dOI__doi_value, domain=None, range=Union[str, URIorCURIE])
+slots.dOI__doi_value = Slot(uri=BASALT_SCHEMA.doi_value, name="dOI__doi_value", curie=BASALT_SCHEMA.curie('doi_value'),
+                   model_uri=BASALT_SCHEMA.dOI__doi_value, domain=None, range=Union[str, URIorCURIE])
 
-slots.dOI__doi_category = Slot(uri=ANALYSIS_API_SCHEMA.doi_category, name="dOI__doi_category", curie=ANALYSIS_API_SCHEMA.curie('doi_category'),
-                   model_uri=ANALYSIS_API_SCHEMA.dOI__doi_category, domain=None, range=Optional[Union[str, "DoiCategoryEnum"]])
+slots.dOI__doi_category = Slot(uri=BASALT_SCHEMA.doi_category, name="dOI__doi_category", curie=BASALT_SCHEMA.curie('doi_category'),
+                   model_uri=BASALT_SCHEMA.dOI__doi_category, domain=None, range=Optional[Union[str, "DoiCategoryEnum"]])
 
-slots.dOI__doi_provider = Slot(uri=ANALYSIS_API_SCHEMA.doi_provider, name="dOI__doi_provider", curie=ANALYSIS_API_SCHEMA.curie('doi_provider'),
-                   model_uri=ANALYSIS_API_SCHEMA.dOI__doi_provider, domain=None, range=Optional[Union[str, "DoiProviderEnum"]])
+slots.dOI__doi_provider = Slot(uri=BASALT_SCHEMA.doi_provider, name="dOI__doi_provider", curie=BASALT_SCHEMA.curie('doi_provider'),
+                   model_uri=BASALT_SCHEMA.dOI__doi_provider, domain=None, range=Optional[Union[str, "DoiProviderEnum"]])
 
-slots.timestampValue__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="timestampValue__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.timestampValue__id, domain=None, range=URIRef)
+slots.timestampValue__id = Slot(uri=BASALT_SCHEMA.id, name="timestampValue__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.timestampValue__id, domain=None, range=URIRef)
 
-slots.timestampValue__description = Slot(uri=ANALYSIS_API_SCHEMA.description, name="timestampValue__description", curie=ANALYSIS_API_SCHEMA.curie('description'),
-                   model_uri=ANALYSIS_API_SCHEMA.timestampValue__description, domain=None, range=Optional[str])
+slots.timestampValue__description = Slot(uri=BASALT_SCHEMA.description, name="timestampValue__description", curie=BASALT_SCHEMA.curie('description'),
+                   model_uri=BASALT_SCHEMA.timestampValue__description, domain=None, range=Optional[str])
 
-slots.timestampValue__has_raw_value = Slot(uri=ANALYSIS_API_SCHEMA.has_raw_value, name="timestampValue__has_raw_value", curie=ANALYSIS_API_SCHEMA.curie('has_raw_value'),
-                   model_uri=ANALYSIS_API_SCHEMA.timestampValue__has_raw_value, domain=None, range=Optional[str])
+slots.timestampValue__has_raw_value = Slot(uri=BASALT_SCHEMA.has_raw_value, name="timestampValue__has_raw_value", curie=BASALT_SCHEMA.curie('has_raw_value'),
+                   model_uri=BASALT_SCHEMA.timestampValue__has_raw_value, domain=None, range=Optional[str])
 
-slots.textValue__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="textValue__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.textValue__id, domain=None, range=URIRef)
+slots.textValue__id = Slot(uri=BASALT_SCHEMA.id, name="textValue__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.textValue__id, domain=None, range=URIRef)
 
-slots.textValue__language = Slot(uri=ANALYSIS_API_SCHEMA.language, name="textValue__language", curie=ANALYSIS_API_SCHEMA.curie('language'),
-                   model_uri=ANALYSIS_API_SCHEMA.textValue__language, domain=None, range=Optional[str])
+slots.textValue__language = Slot(uri=BASALT_SCHEMA.language, name="textValue__language", curie=BASALT_SCHEMA.curie('language'),
+                   model_uri=BASALT_SCHEMA.textValue__language, domain=None, range=Optional[str])
 
-slots.textValue__has_raw_value = Slot(uri=ANALYSIS_API_SCHEMA.has_raw_value, name="textValue__has_raw_value", curie=ANALYSIS_API_SCHEMA.curie('has_raw_value'),
-                   model_uri=ANALYSIS_API_SCHEMA.textValue__has_raw_value, domain=None, range=Optional[str])
+slots.textValue__has_raw_value = Slot(uri=BASALT_SCHEMA.has_raw_value, name="textValue__has_raw_value", curie=BASALT_SCHEMA.curie('has_raw_value'),
+                   model_uri=BASALT_SCHEMA.textValue__has_raw_value, domain=None, range=Optional[str])
 
-slots.softwareControlledTermValue__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="softwareControlledTermValue__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.softwareControlledTermValue__id, domain=None, range=URIRef)
+slots.softwareControlledTermValue__id = Slot(uri=BASALT_SCHEMA.id, name="softwareControlledTermValue__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.softwareControlledTermValue__id, domain=None, range=URIRef)
 
-slots.softwareControlledTermValue__has_raw_value = Slot(uri=ANALYSIS_API_SCHEMA.has_raw_value, name="softwareControlledTermValue__has_raw_value", curie=ANALYSIS_API_SCHEMA.curie('has_raw_value'),
-                   model_uri=ANALYSIS_API_SCHEMA.softwareControlledTermValue__has_raw_value, domain=None, range=Optional[str])
+slots.softwareControlledTermValue__has_raw_value = Slot(uri=BASALT_SCHEMA.has_raw_value, name="softwareControlledTermValue__has_raw_value", curie=BASALT_SCHEMA.curie('has_raw_value'),
+                   model_uri=BASALT_SCHEMA.softwareControlledTermValue__has_raw_value, domain=None, range=Optional[str])
 
-slots.controlledTermValue__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="controlledTermValue__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.controlledTermValue__id, domain=None, range=URIRef)
+slots.controlledTermValue__id = Slot(uri=BASALT_SCHEMA.id, name="controlledTermValue__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.controlledTermValue__id, domain=None, range=URIRef)
 
-slots.controlledTermValue__has_raw_value = Slot(uri=ANALYSIS_API_SCHEMA.has_raw_value, name="controlledTermValue__has_raw_value", curie=ANALYSIS_API_SCHEMA.curie('has_raw_value'),
-                   model_uri=ANALYSIS_API_SCHEMA.controlledTermValue__has_raw_value, domain=None, range=Optional[str])
+slots.controlledTermValue__has_raw_value = Slot(uri=BASALT_SCHEMA.has_raw_value, name="controlledTermValue__has_raw_value", curie=BASALT_SCHEMA.curie('has_raw_value'),
+                   model_uri=BASALT_SCHEMA.controlledTermValue__has_raw_value, domain=None, range=Optional[str])
 
-slots.controlledTermValue__term = Slot(uri=ANALYSIS_API_SCHEMA.term, name="controlledTermValue__term", curie=ANALYSIS_API_SCHEMA.curie('term'),
-                   model_uri=ANALYSIS_API_SCHEMA.controlledTermValue__term, domain=None, range=Optional[str])
+slots.controlledTermValue__term = Slot(uri=BASALT_SCHEMA.term, name="controlledTermValue__term", curie=BASALT_SCHEMA.curie('term'),
+                   model_uri=BASALT_SCHEMA.controlledTermValue__term, domain=None, range=Optional[str])
 
-slots.controlledTermValue__term_id = Slot(uri=ANALYSIS_API_SCHEMA.term_id, name="controlledTermValue__term_id", curie=ANALYSIS_API_SCHEMA.curie('term_id'),
-                   model_uri=ANALYSIS_API_SCHEMA.controlledTermValue__term_id, domain=None, range=Optional[Union[str, URIorCURIE]])
+slots.controlledTermValue__term_id = Slot(uri=BASALT_SCHEMA.term_id, name="controlledTermValue__term_id", curie=BASALT_SCHEMA.curie('term_id'),
+                   model_uri=BASALT_SCHEMA.controlledTermValue__term_id, domain=None, range=Optional[Union[str, URIorCURIE]])
 
-slots.controlledTermValue__controlled_term_provider = Slot(uri=ANALYSIS_API_SCHEMA.controlled_term_provider, name="controlledTermValue__controlled_term_provider", curie=ANALYSIS_API_SCHEMA.curie('controlled_term_provider'),
-                   model_uri=ANALYSIS_API_SCHEMA.controlledTermValue__controlled_term_provider, domain=None, range=Optional[str])
+slots.controlledTermValue__controlled_term_provider = Slot(uri=BASALT_SCHEMA.controlled_term_provider, name="controlledTermValue__controlled_term_provider", curie=BASALT_SCHEMA.curie('controlled_term_provider'),
+                   model_uri=BASALT_SCHEMA.controlledTermValue__controlled_term_provider, domain=None, range=Optional[str])
 
-slots.personValue__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="personValue__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.personValue__id, domain=None, range=URIRef)
+slots.personValue__id = Slot(uri=BASALT_SCHEMA.id, name="personValue__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.personValue__id, domain=None, range=URIRef)
 
-slots.personValue__first_name = Slot(uri=ANALYSIS_API_SCHEMA.first_name, name="personValue__first_name", curie=ANALYSIS_API_SCHEMA.curie('first_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.personValue__first_name, domain=None, range=str)
+slots.personValue__first_name = Slot(uri=BASALT_SCHEMA.first_name, name="personValue__first_name", curie=BASALT_SCHEMA.curie('first_name'),
+                   model_uri=BASALT_SCHEMA.personValue__first_name, domain=None, range=str)
 
-slots.personValue__last_name = Slot(uri=ANALYSIS_API_SCHEMA.last_name, name="personValue__last_name", curie=ANALYSIS_API_SCHEMA.curie('last_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.personValue__last_name, domain=None, range=str)
+slots.personValue__last_name = Slot(uri=BASALT_SCHEMA.last_name, name="personValue__last_name", curie=BASALT_SCHEMA.curie('last_name'),
+                   model_uri=BASALT_SCHEMA.personValue__last_name, domain=None, range=str)
 
-slots.personValue__middle_initial = Slot(uri=ANALYSIS_API_SCHEMA.middle_initial, name="personValue__middle_initial", curie=ANALYSIS_API_SCHEMA.curie('middle_initial'),
-                   model_uri=ANALYSIS_API_SCHEMA.personValue__middle_initial, domain=None, range=Optional[str])
+slots.personValue__middle_initial = Slot(uri=BASALT_SCHEMA.middle_initial, name="personValue__middle_initial", curie=BASALT_SCHEMA.curie('middle_initial'),
+                   model_uri=BASALT_SCHEMA.personValue__middle_initial, domain=None, range=Optional[str])
 
-slots.personValue__orcid = Slot(uri=ANALYSIS_API_SCHEMA.orcid, name="personValue__orcid", curie=ANALYSIS_API_SCHEMA.curie('orcid'),
-                   model_uri=ANALYSIS_API_SCHEMA.personValue__orcid, domain=None, range=Optional[str])
+slots.personValue__orcid = Slot(uri=BASALT_SCHEMA.orcid, name="personValue__orcid", curie=BASALT_SCHEMA.curie('orcid'),
+                   model_uri=BASALT_SCHEMA.personValue__orcid, domain=None, range=Optional[str])
 
-slots.personValue__profile_image_url = Slot(uri=ANALYSIS_API_SCHEMA.profile_image_url, name="personValue__profile_image_url", curie=ANALYSIS_API_SCHEMA.curie('profile_image_url'),
-                   model_uri=ANALYSIS_API_SCHEMA.personValue__profile_image_url, domain=None, range=Optional[str])
+slots.personValue__profile_image_url = Slot(uri=BASALT_SCHEMA.profile_image_url, name="personValue__profile_image_url", curie=BASALT_SCHEMA.curie('profile_image_url'),
+                   model_uri=BASALT_SCHEMA.personValue__profile_image_url, domain=None, range=Optional[str])
 
-slots.personValue__websites = Slot(uri=ANALYSIS_API_SCHEMA.websites, name="personValue__websites", curie=ANALYSIS_API_SCHEMA.curie('websites'),
-                   model_uri=ANALYSIS_API_SCHEMA.personValue__websites, domain=None, range=Optional[str])
+slots.personValue__websites = Slot(uri=BASALT_SCHEMA.websites, name="personValue__websites", curie=BASALT_SCHEMA.curie('websites'),
+                   model_uri=BASALT_SCHEMA.personValue__websites, domain=None, range=Optional[str])
 
-slots.quantityValue__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="quantityValue__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.quantityValue__id, domain=None, range=URIRef)
+slots.quantityValue__id = Slot(uri=BASALT_SCHEMA.id, name="quantityValue__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.quantityValue__id, domain=None, range=URIRef)
 
-slots.quantityValue__has_value_unit = Slot(uri=ANALYSIS_API_SCHEMA.has_value_unit, name="quantityValue__has_value_unit", curie=ANALYSIS_API_SCHEMA.curie('has_value_unit'),
-                   model_uri=ANALYSIS_API_SCHEMA.quantityValue__has_value_unit, domain=None, range=Optional[str])
+slots.quantityValue__has_value_unit = Slot(uri=BASALT_SCHEMA.has_value_unit, name="quantityValue__has_value_unit", curie=BASALT_SCHEMA.curie('has_value_unit'),
+                   model_uri=BASALT_SCHEMA.quantityValue__has_value_unit, domain=None, range=Optional[str])
 
-slots.quantityValue__has_unit = Slot(uri=ANALYSIS_API_SCHEMA.has_unit, name="quantityValue__has_unit", curie=ANALYSIS_API_SCHEMA.curie('has_unit'),
-                   model_uri=ANALYSIS_API_SCHEMA.quantityValue__has_unit, domain=None, range=Optional[str])
+slots.quantityValue__has_unit = Slot(uri=BASALT_SCHEMA.has_unit, name="quantityValue__has_unit", curie=BASALT_SCHEMA.curie('has_unit'),
+                   model_uri=BASALT_SCHEMA.quantityValue__has_unit, domain=None, range=Optional[str])
 
-slots.quantityValue__has_numeric_value = Slot(uri=ANALYSIS_API_SCHEMA.has_numeric_value, name="quantityValue__has_numeric_value", curie=ANALYSIS_API_SCHEMA.curie('has_numeric_value'),
-                   model_uri=ANALYSIS_API_SCHEMA.quantityValue__has_numeric_value, domain=None, range=Optional[float])
+slots.quantityValue__has_numeric_value = Slot(uri=BASALT_SCHEMA.has_numeric_value, name="quantityValue__has_numeric_value", curie=BASALT_SCHEMA.curie('has_numeric_value'),
+                   model_uri=BASALT_SCHEMA.quantityValue__has_numeric_value, domain=None, range=Optional[float])
 
-slots.quantityValue__has_minimum_numeric_value = Slot(uri=ANALYSIS_API_SCHEMA.has_minimum_numeric_value, name="quantityValue__has_minimum_numeric_value", curie=ANALYSIS_API_SCHEMA.curie('has_minimum_numeric_value'),
-                   model_uri=ANALYSIS_API_SCHEMA.quantityValue__has_minimum_numeric_value, domain=None, range=Optional[float])
+slots.quantityValue__has_minimum_numeric_value = Slot(uri=BASALT_SCHEMA.has_minimum_numeric_value, name="quantityValue__has_minimum_numeric_value", curie=BASALT_SCHEMA.curie('has_minimum_numeric_value'),
+                   model_uri=BASALT_SCHEMA.quantityValue__has_minimum_numeric_value, domain=None, range=Optional[float])
 
-slots.quantityValue__has_maximum_numeric_value = Slot(uri=ANALYSIS_API_SCHEMA.has_maximum_numeric_value, name="quantityValue__has_maximum_numeric_value", curie=ANALYSIS_API_SCHEMA.curie('has_maximum_numeric_value'),
-                   model_uri=ANALYSIS_API_SCHEMA.quantityValue__has_maximum_numeric_value, domain=None, range=Optional[float])
+slots.quantityValue__has_maximum_numeric_value = Slot(uri=BASALT_SCHEMA.has_maximum_numeric_value, name="quantityValue__has_maximum_numeric_value", curie=BASALT_SCHEMA.curie('has_maximum_numeric_value'),
+                   model_uri=BASALT_SCHEMA.quantityValue__has_maximum_numeric_value, domain=None, range=Optional[float])
 
-slots.quantityValue__has_raw_value = Slot(uri=ANALYSIS_API_SCHEMA.has_raw_value, name="quantityValue__has_raw_value", curie=ANALYSIS_API_SCHEMA.curie('has_raw_value'),
-                   model_uri=ANALYSIS_API_SCHEMA.quantityValue__has_raw_value, domain=None, range=Optional[str])
+slots.quantityValue__has_raw_value = Slot(uri=BASALT_SCHEMA.has_raw_value, name="quantityValue__has_raw_value", curie=BASALT_SCHEMA.curie('has_raw_value'),
+                   model_uri=BASALT_SCHEMA.quantityValue__has_raw_value, domain=None, range=Optional[str])
 
-slots.conditioningValue__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="conditioningValue__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.conditioningValue__id, domain=None, range=URIRef)
+slots.conditioningValue__id = Slot(uri=BASALT_SCHEMA.id, name="conditioningValue__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.conditioningValue__id, domain=None, range=URIRef)
 
-slots.conditioningValue__source_material = Slot(uri=ANALYSIS_API_SCHEMA.source_material, name="conditioningValue__source_material", curie=ANALYSIS_API_SCHEMA.curie('source_material'),
-                   model_uri=ANALYSIS_API_SCHEMA.conditioningValue__source_material, domain=None, range=Optional[str])
+slots.conditioningValue__source_material = Slot(uri=BASALT_SCHEMA.source_material, name="conditioningValue__source_material", curie=BASALT_SCHEMA.curie('source_material'),
+                   model_uri=BASALT_SCHEMA.conditioningValue__source_material, domain=None, range=Optional[str])
 
-slots.conditioningValue__instrument = Slot(uri=ANALYSIS_API_SCHEMA.instrument, name="conditioningValue__instrument", curie=ANALYSIS_API_SCHEMA.curie('instrument'),
-                   model_uri=ANALYSIS_API_SCHEMA.conditioningValue__instrument, domain=None, range=Optional[str])
+slots.conditioningValue__instrument = Slot(uri=BASALT_SCHEMA.instrument, name="conditioningValue__instrument", curie=BASALT_SCHEMA.curie('instrument'),
+                   model_uri=BASALT_SCHEMA.conditioningValue__instrument, domain=None, range=Optional[str])
 
-slots.conditioningValue__gas = Slot(uri=ANALYSIS_API_SCHEMA.gas, name="conditioningValue__gas", curie=ANALYSIS_API_SCHEMA.curie('gas'),
-                   model_uri=ANALYSIS_API_SCHEMA.conditioningValue__gas, domain=None, range=Optional[str])
+slots.conditioningValue__gas = Slot(uri=BASALT_SCHEMA.gas, name="conditioningValue__gas", curie=BASALT_SCHEMA.curie('gas'),
+                   model_uri=BASALT_SCHEMA.conditioningValue__gas, domain=None, range=Optional[str])
 
-slots.conditioningValue__pressure = Slot(uri=ANALYSIS_API_SCHEMA.pressure, name="conditioningValue__pressure", curie=ANALYSIS_API_SCHEMA.curie('pressure'),
-                   model_uri=ANALYSIS_API_SCHEMA.conditioningValue__pressure, domain=None, range=Optional[str])
+slots.conditioningValue__pressure = Slot(uri=BASALT_SCHEMA.pressure, name="conditioningValue__pressure", curie=BASALT_SCHEMA.curie('pressure'),
+                   model_uri=BASALT_SCHEMA.conditioningValue__pressure, domain=None, range=Optional[str])
 
-slots.conditioningValue__has_raw_value = Slot(uri=ANALYSIS_API_SCHEMA.has_raw_value, name="conditioningValue__has_raw_value", curie=ANALYSIS_API_SCHEMA.curie('has_raw_value'),
-                   model_uri=ANALYSIS_API_SCHEMA.conditioningValue__has_raw_value, domain=None, range=Optional[str])
+slots.conditioningValue__has_raw_value = Slot(uri=BASALT_SCHEMA.has_raw_value, name="conditioningValue__has_raw_value", curie=BASALT_SCHEMA.curie('has_raw_value'),
+                   model_uri=BASALT_SCHEMA.conditioningValue__has_raw_value, domain=None, range=Optional[str])
 
-slots.zipDownload__id = Slot(uri=ANALYSIS_API_SCHEMA.id, name="zipDownload__id", curie=ANALYSIS_API_SCHEMA.curie('id'),
-                   model_uri=ANALYSIS_API_SCHEMA.zipDownload__id, domain=None, range=URIRef)
+slots.zipDownload__id = Slot(uri=BASALT_SCHEMA.id, name="zipDownload__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.zipDownload__id, domain=None, range=URIRef)
 
-slots.zipDownload__time = Slot(uri=ANALYSIS_API_SCHEMA.time, name="zipDownload__time", curie=ANALYSIS_API_SCHEMA.curie('time'),
-                   model_uri=ANALYSIS_API_SCHEMA.zipDownload__time, domain=None, range=Union[str, XSDDateTime])
+slots.zipDownload__time = Slot(uri=BASALT_SCHEMA.time, name="zipDownload__time", curie=BASALT_SCHEMA.curie('time'),
+                   model_uri=BASALT_SCHEMA.zipDownload__time, domain=None, range=Union[str, XSDDateTime])
 
-slots.zipDownload__user = Slot(uri=ANALYSIS_API_SCHEMA.user, name="zipDownload__user", curie=ANALYSIS_API_SCHEMA.curie('user'),
-                   model_uri=ANALYSIS_API_SCHEMA.zipDownload__user, domain=None, range=str)
+slots.zipDownload__user = Slot(uri=BASALT_SCHEMA.user, name="zipDownload__user", curie=BASALT_SCHEMA.curie('user'),
+                   model_uri=BASALT_SCHEMA.zipDownload__user, domain=None, range=str)
 
-slots.zipDownload__files = Slot(uri=ANALYSIS_API_SCHEMA.files, name="zipDownload__files", curie=ANALYSIS_API_SCHEMA.curie('files'),
-                   model_uri=ANALYSIS_API_SCHEMA.zipDownload__files, domain=None, range=int)
+slots.zipDownload__files = Slot(uri=BASALT_SCHEMA.files, name="zipDownload__files", curie=BASALT_SCHEMA.curie('files'),
+                   model_uri=BASALT_SCHEMA.zipDownload__files, domain=None, range=int)
 
-slots.zipDownload__packages = Slot(uri=ANALYSIS_API_SCHEMA.packages, name="zipDownload__packages", curie=ANALYSIS_API_SCHEMA.curie('packages'),
-                   model_uri=ANALYSIS_API_SCHEMA.zipDownload__packages, domain=None, range=Optional[str])
+slots.zipDownload__packages = Slot(uri=BASALT_SCHEMA.packages, name="zipDownload__packages", curie=BASALT_SCHEMA.curie('packages'),
+                   model_uri=BASALT_SCHEMA.zipDownload__packages, domain=None, range=Optional[str])
 
-slots.InstrumentData_description = Slot(uri=ANALYSIS_API_SCHEMA.description, name="InstrumentData_description", curie=ANALYSIS_API_SCHEMA.curie('description'),
-                   model_uri=ANALYSIS_API_SCHEMA.InstrumentData_description, domain=InstrumentData, range=str)
+slots.InstrumentData_description = Slot(uri=BASALT_SCHEMA.description, name="InstrumentData_description", curie=BASALT_SCHEMA.curie('description'),
+                   model_uri=BASALT_SCHEMA.InstrumentData_description, domain=InstrumentData, range=str)
 
-slots.DataProcessingActivity_description = Slot(uri=ANALYSIS_API_SCHEMA.description, name="DataProcessingActivity_description", curie=ANALYSIS_API_SCHEMA.curie('description'),
-                   model_uri=ANALYSIS_API_SCHEMA.DataProcessingActivity_description, domain=DataProcessingActivity, range=Optional[str])
+slots.DataProcessingActivity_description = Slot(uri=BASALT_SCHEMA.description, name="DataProcessingActivity_description", curie=BASALT_SCHEMA.curie('description'),
+                   model_uri=BASALT_SCHEMA.DataProcessingActivity_description, domain=DataProcessingActivity, range=Optional[str])
 
-slots.NucleotideSequencing_external_identifiers = Slot(uri=ANALYSIS_API_SCHEMA.external_identifiers, name="NucleotideSequencing_external_identifiers", curie=ANALYSIS_API_SCHEMA.curie('external_identifiers'),
-                   model_uri=ANALYSIS_API_SCHEMA.NucleotideSequencing_external_identifiers, domain=NucleotideSequencing, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
+slots.NucleotideSequencing_external_identifiers = Slot(uri=BASALT_SCHEMA.external_identifiers, name="NucleotideSequencing_external_identifiers", curie=BASALT_SCHEMA.curie('external_identifiers'),
+                   model_uri=BASALT_SCHEMA.NucleotideSequencing_external_identifiers, domain=NucleotideSequencing, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
 
-slots.organism_strain_identifier = Slot(uri=ANALYSIS_API_SCHEMA.strain_identifier, name="organism_strain_identifier", curie=ANALYSIS_API_SCHEMA.curie('strain_identifier'),
-                   model_uri=ANALYSIS_API_SCHEMA.organism_strain_identifier, domain=Organism, range=str)
+slots.organism_strain_identifier = Slot(uri=BASALT_SCHEMA.strain_identifier, name="organism_strain_identifier", curie=BASALT_SCHEMA.curie('strain_identifier'),
+                   model_uri=BASALT_SCHEMA.organism_strain_identifier, domain=Organism, range=str)
 
-slots.organism_organism_name = Slot(uri=ANALYSIS_API_SCHEMA.name, name="organism_organism_name", curie=ANALYSIS_API_SCHEMA.curie('name'),
-                   model_uri=ANALYSIS_API_SCHEMA.organism_organism_name, domain=Organism, range=str)
+slots.organism_organism_name = Slot(uri=BASALT_SCHEMA.name, name="organism_organism_name", curie=BASALT_SCHEMA.curie('name'),
+                   model_uri=BASALT_SCHEMA.organism_organism_name, domain=Organism, range=str)
 
-slots.organism_strain_source = Slot(uri=ANALYSIS_API_SCHEMA.strain_source, name="organism_strain_source", curie=ANALYSIS_API_SCHEMA.curie('strain_source'),
-                   model_uri=ANALYSIS_API_SCHEMA.organism_strain_source, domain=Organism, range=Optional[str])
+slots.organism_strain_source = Slot(uri=BASALT_SCHEMA.strain_source, name="organism_strain_source", curie=BASALT_SCHEMA.curie('strain_source'),
+                   model_uri=BASALT_SCHEMA.organism_strain_source, domain=Organism, range=Optional[str])
 
-slots.organism_strain_mutation = Slot(uri=ANALYSIS_API_SCHEMA.strain_mutation, name="organism_strain_mutation", curie=ANALYSIS_API_SCHEMA.curie('strain_mutation'),
-                   model_uri=ANALYSIS_API_SCHEMA.organism_strain_mutation, domain=Organism, range=Optional[str])
+slots.organism_strain_mutation = Slot(uri=BASALT_SCHEMA.strain_mutation, name="organism_strain_mutation", curie=BASALT_SCHEMA.curie('strain_mutation'),
+                   model_uri=BASALT_SCHEMA.organism_strain_mutation, domain=Organism, range=Optional[str])
 
-slots.organism_modification_method = Slot(uri=ANALYSIS_API_SCHEMA.modification_method, name="organism_modification_method", curie=ANALYSIS_API_SCHEMA.curie('modification_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.organism_modification_method, domain=Organism, range=Optional[Union[str, "ModificationMethodEnum"]])
+slots.organism_modification_method = Slot(uri=BASALT_SCHEMA.modification_method, name="organism_modification_method", curie=BASALT_SCHEMA.curie('modification_method'),
+                   model_uri=BASALT_SCHEMA.organism_modification_method, domain=Organism, range=Optional[Union[str, "ModificationMethodEnum"]])
 
-slots.organism_trophic_level = Slot(uri=ANALYSIS_API_SCHEMA.trophic_level, name="organism_trophic_level", curie=ANALYSIS_API_SCHEMA.curie('trophic_level'),
-                   model_uri=ANALYSIS_API_SCHEMA.organism_trophic_level, domain=Organism, range=Optional[Union[str, "TrophicLevelEnum"]])
+slots.organism_trophic_level = Slot(uri=BASALT_SCHEMA.trophic_level, name="organism_trophic_level", curie=BASALT_SCHEMA.curie('trophic_level'),
+                   model_uri=BASALT_SCHEMA.organism_trophic_level, domain=Organism, range=Optional[Union[str, "TrophicLevelEnum"]])
 
-slots.Site_elev = Slot(uri=ANALYSIS_API_SCHEMA.elev, name="Site_elev", curie=ANALYSIS_API_SCHEMA.curie('elev'),
-                   model_uri=ANALYSIS_API_SCHEMA.Site_elev, domain=Site, range=str,
+slots.Site_elev = Slot(uri=BASALT_SCHEMA.elev, name="Site_elev", curie=BASALT_SCHEMA.curie('elev'),
+                   model_uri=BASALT_SCHEMA.Site_elev, domain=Site, range=str,
                    pattern=re.compile(r'^\d+(\.\d+)?\s*m$'))
 
-slots.Site_geo_loc_name = Slot(uri=ANALYSIS_API_SCHEMA.geo_loc_name, name="Site_geo_loc_name", curie=ANALYSIS_API_SCHEMA.curie('geo_loc_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.Site_geo_loc_name, domain=Site, range=str,
+slots.Site_geo_loc_name = Slot(uri=BASALT_SCHEMA.geo_loc_name, name="Site_geo_loc_name", curie=BASALT_SCHEMA.curie('geo_loc_name'),
+                   model_uri=BASALT_SCHEMA.Site_geo_loc_name, domain=Site, range=str,
                    pattern=re.compile(r'^([^\s-]{12}|[^\s-]+.+[^\s-]+):\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)$'))
 
-slots.Site_growth_facil = Slot(uri=ANALYSIS_API_SCHEMA.growth_facil, name="Site_growth_facil", curie=ANALYSIS_API_SCHEMA.curie('growth_facil'),
-                   model_uri=ANALYSIS_API_SCHEMA.Site_growth_facil, domain=Site, range=Union[str, "GrowthFacilityEnum"])
+slots.Site_growth_facil = Slot(uri=BASALT_SCHEMA.growth_facil, name="Site_growth_facil", curie=BASALT_SCHEMA.curie('growth_facil'),
+                   model_uri=BASALT_SCHEMA.Site_growth_facil, domain=Site, range=Union[str, "GrowthFacilityEnum"])
 
-slots.Site_latitude = Slot(uri=ANALYSIS_API_SCHEMA.latitude, name="Site_latitude", curie=ANALYSIS_API_SCHEMA.curie('latitude'),
-                   model_uri=ANALYSIS_API_SCHEMA.Site_latitude, domain=Site, range=float)
+slots.Site_latitude = Slot(uri=BASALT_SCHEMA.latitude, name="Site_latitude", curie=BASALT_SCHEMA.curie('latitude'),
+                   model_uri=BASALT_SCHEMA.Site_latitude, domain=Site, range=float)
 
-slots.Site_longitude = Slot(uri=ANALYSIS_API_SCHEMA.longitude, name="Site_longitude", curie=ANALYSIS_API_SCHEMA.curie('longitude'),
-                   model_uri=ANALYSIS_API_SCHEMA.Site_longitude, domain=Site, range=float)
+slots.Site_longitude = Slot(uri=BASALT_SCHEMA.longitude, name="Site_longitude", curie=BASALT_SCHEMA.curie('longitude'),
+                   model_uri=BASALT_SCHEMA.Site_longitude, domain=Site, range=float)
 
-slots.AerosolArmSample_analysis_type = Slot(uri=ANALYSIS_API_SCHEMA.analysis_type, name="AerosolArmSample_analysis_type", curie=ANALYSIS_API_SCHEMA.curie('analysis_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.AerosolArmSample_analysis_type, domain=AerosolArmSample, range=str)
+slots.AerosolArmSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="AerosolArmSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
+                   model_uri=BASALT_SCHEMA.AerosolArmSample_analysis_type, domain=AerosolArmSample, range=str)
 
-slots.AerosolArmSample_carb_dioxide = Slot(uri=ANALYSIS_API_SCHEMA.carb_dioxide, name="AerosolArmSample_carb_dioxide", curie=ANALYSIS_API_SCHEMA.curie('carb_dioxide'),
-                   model_uri=ANALYSIS_API_SCHEMA.AerosolArmSample_carb_dioxide, domain=AerosolArmSample, range=Optional[str],
+slots.AerosolArmSample_carb_dioxide = Slot(uri=BASALT_SCHEMA.carb_dioxide, name="AerosolArmSample_carb_dioxide", curie=BASALT_SCHEMA.curie('carb_dioxide'),
+                   model_uri=BASALT_SCHEMA.AerosolArmSample_carb_dioxide, domain=AerosolArmSample, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.AerosolArmSample_carb_monoxide = Slot(uri=ANALYSIS_API_SCHEMA.carb_monoxide, name="AerosolArmSample_carb_monoxide", curie=ANALYSIS_API_SCHEMA.curie('carb_monoxide'),
-                   model_uri=ANALYSIS_API_SCHEMA.AerosolArmSample_carb_monoxide, domain=AerosolArmSample, range=Optional[str],
+slots.AerosolArmSample_carb_monoxide = Slot(uri=BASALT_SCHEMA.carb_monoxide, name="AerosolArmSample_carb_monoxide", curie=BASALT_SCHEMA.curie('carb_monoxide'),
+                   model_uri=BASALT_SCHEMA.AerosolArmSample_carb_monoxide, domain=AerosolArmSample, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.AerosolArmSample_size_frac_low = Slot(uri=ANALYSIS_API_SCHEMA.size_frac_low, name="AerosolArmSample_size_frac_low", curie=ANALYSIS_API_SCHEMA.curie('size_frac_low'),
-                   model_uri=ANALYSIS_API_SCHEMA.AerosolArmSample_size_frac_low, domain=AerosolArmSample, range=Optional[str],
+slots.AerosolArmSample_size_frac_low = Slot(uri=BASALT_SCHEMA.size_frac_low, name="AerosolArmSample_size_frac_low", curie=BASALT_SCHEMA.curie('size_frac_low'),
+                   model_uri=BASALT_SCHEMA.AerosolArmSample_size_frac_low, domain=AerosolArmSample, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*um$'))
 
-slots.AerosolArmSample_size_frac_up = Slot(uri=ANALYSIS_API_SCHEMA.size_frac_up, name="AerosolArmSample_size_frac_up", curie=ANALYSIS_API_SCHEMA.curie('size_frac_up'),
-                   model_uri=ANALYSIS_API_SCHEMA.AerosolArmSample_size_frac_up, domain=AerosolArmSample, range=Optional[str],
+slots.AerosolArmSample_size_frac_up = Slot(uri=BASALT_SCHEMA.size_frac_up, name="AerosolArmSample_size_frac_up", curie=BASALT_SCHEMA.curie('size_frac_up'),
+                   model_uri=BASALT_SCHEMA.AerosolArmSample_size_frac_up, domain=AerosolArmSample, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*um$'))
 
-slots.AerosolSample_analysis_type = Slot(uri=ANALYSIS_API_SCHEMA.analysis_type, name="AerosolSample_analysis_type", curie=ANALYSIS_API_SCHEMA.curie('analysis_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.AerosolSample_analysis_type, domain=AerosolSample, range=str)
+slots.AerosolSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="AerosolSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
+                   model_uri=BASALT_SCHEMA.AerosolSample_analysis_type, domain=AerosolSample, range=str)
 
-slots.AerosolSample_size_frac_low = Slot(uri=ANALYSIS_API_SCHEMA.size_frac_low, name="AerosolSample_size_frac_low", curie=ANALYSIS_API_SCHEMA.curie('size_frac_low'),
-                   model_uri=ANALYSIS_API_SCHEMA.AerosolSample_size_frac_low, domain=AerosolSample, range=Optional[str],
+slots.AerosolSample_size_frac_low = Slot(uri=BASALT_SCHEMA.size_frac_low, name="AerosolSample_size_frac_low", curie=BASALT_SCHEMA.curie('size_frac_low'),
+                   model_uri=BASALT_SCHEMA.AerosolSample_size_frac_low, domain=AerosolSample, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*um$'))
 
-slots.AerosolSample_size_frac_up = Slot(uri=ANALYSIS_API_SCHEMA.size_frac_up, name="AerosolSample_size_frac_up", curie=ANALYSIS_API_SCHEMA.curie('size_frac_up'),
-                   model_uri=ANALYSIS_API_SCHEMA.AerosolSample_size_frac_up, domain=AerosolSample, range=Optional[str],
+slots.AerosolSample_size_frac_up = Slot(uri=BASALT_SCHEMA.size_frac_up, name="AerosolSample_size_frac_up", curie=BASALT_SCHEMA.curie('size_frac_up'),
+                   model_uri=BASALT_SCHEMA.AerosolSample_size_frac_up, domain=AerosolSample, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*um$'))
 
-slots.AMP2UserSample_organism_ref = Slot(uri=ANALYSIS_API_SCHEMA.organism_ref, name="AMP2UserSample_organism_ref", curie=ANALYSIS_API_SCHEMA.curie('organism_ref'),
-                   model_uri=ANALYSIS_API_SCHEMA.AMP2UserSample_organism_ref, domain=AMP2UserSample, range=Union[str, OrganismId])
+slots.AMP2UserSample_organism_ref = Slot(uri=BASALT_SCHEMA.organism_ref, name="AMP2UserSample_organism_ref", curie=BASALT_SCHEMA.curie('organism_ref'),
+                   model_uri=BASALT_SCHEMA.AMP2UserSample_organism_ref, domain=AMP2UserSample, range=Union[str, OrganismId])
 
-slots.AMP2UserSample_storage_condition = Slot(uri=ANALYSIS_API_SCHEMA.storage_condition, name="AMP2UserSample_storage_condition", curie=ANALYSIS_API_SCHEMA.curie('storage_condition'),
-                   model_uri=ANALYSIS_API_SCHEMA.AMP2UserSample_storage_condition, domain=AMP2UserSample, range=Union[str, "StorageConditionEnum"])
+slots.AMP2UserSample_storage_condition = Slot(uri=BASALT_SCHEMA.storage_condition, name="AMP2UserSample_storage_condition", curie=BASALT_SCHEMA.curie('storage_condition'),
+                   model_uri=BASALT_SCHEMA.AMP2UserSample_storage_condition, domain=AMP2UserSample, range=Union[str, "StorageConditionEnum"])
 
-slots.AMP2UserSample_storage_temperature = Slot(uri=ANALYSIS_API_SCHEMA.storage_temperature, name="AMP2UserSample_storage_temperature", curie=ANALYSIS_API_SCHEMA.curie('storage_temperature'),
-                   model_uri=ANALYSIS_API_SCHEMA.AMP2UserSample_storage_temperature, domain=AMP2UserSample, range=Optional[str])
+slots.AMP2UserSample_storage_temperature = Slot(uri=BASALT_SCHEMA.storage_temperature, name="AMP2UserSample_storage_temperature", curie=BASALT_SCHEMA.curie('storage_temperature'),
+                   model_uri=BASALT_SCHEMA.AMP2UserSample_storage_temperature, domain=AMP2UserSample, range=Optional[str])
 
-slots.AMP2UserSample_name = Slot(uri=ANALYSIS_API_SCHEMA.name, name="AMP2UserSample_name", curie=ANALYSIS_API_SCHEMA.curie('name'),
-                   model_uri=ANALYSIS_API_SCHEMA.AMP2UserSample_name, domain=AMP2UserSample, range=str)
+slots.AMP2UserSample_name = Slot(uri=BASALT_SCHEMA.name, name="AMP2UserSample_name", curie=BASALT_SCHEMA.curie('name'),
+                   model_uri=BASALT_SCHEMA.AMP2UserSample_name, domain=AMP2UserSample, range=str)
 
-slots.AMP2UserSample_collection_date = Slot(uri=ANALYSIS_API_SCHEMA.collection_date, name="AMP2UserSample_collection_date", curie=ANALYSIS_API_SCHEMA.curie('collection_date'),
-                   model_uri=ANALYSIS_API_SCHEMA.AMP2UserSample_collection_date, domain=AMP2UserSample, range=Optional[Union[str, XSDDate]],
+slots.AMP2UserSample_collection_date = Slot(uri=BASALT_SCHEMA.collection_date, name="AMP2UserSample_collection_date", curie=BASALT_SCHEMA.curie('collection_date'),
+                   model_uri=BASALT_SCHEMA.AMP2UserSample_collection_date, domain=AMP2UserSample, range=Optional[Union[str, XSDDate]],
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.AMP2UserSample_analysis_type = Slot(uri=ANALYSIS_API_SCHEMA.analysis_type, name="AMP2UserSample_analysis_type", curie=ANALYSIS_API_SCHEMA.curie('analysis_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.AMP2UserSample_analysis_type, domain=AMP2UserSample, range=Optional[str])
+slots.AMP2UserSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="AMP2UserSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
+                   model_uri=BASALT_SCHEMA.AMP2UserSample_analysis_type, domain=AMP2UserSample, range=Optional[str])
 
-slots.CommerciallyPurchasedSample_analysis_type = Slot(uri=ANALYSIS_API_SCHEMA.analysis_type, name="CommerciallyPurchasedSample_analysis_type", curie=ANALYSIS_API_SCHEMA.curie('analysis_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.CommerciallyPurchasedSample_analysis_type, domain=CommerciallyPurchasedSample, range=str)
+slots.CommerciallyPurchasedSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="CommerciallyPurchasedSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
+                   model_uri=BASALT_SCHEMA.CommerciallyPurchasedSample_analysis_type, domain=CommerciallyPurchasedSample, range=str)
 
-slots.CommerciallyPurchasedSample_compound_name = Slot(uri=ANALYSIS_API_SCHEMA.compound_name, name="CommerciallyPurchasedSample_compound_name", curie=ANALYSIS_API_SCHEMA.curie('compound_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.CommerciallyPurchasedSample_compound_name, domain=CommerciallyPurchasedSample, range=str)
+slots.CommerciallyPurchasedSample_compound_name = Slot(uri=BASALT_SCHEMA.compound_name, name="CommerciallyPurchasedSample_compound_name", curie=BASALT_SCHEMA.curie('compound_name'),
+                   model_uri=BASALT_SCHEMA.CommerciallyPurchasedSample_compound_name, domain=CommerciallyPurchasedSample, range=str)
 
-slots.CultureEnvironmentalSample_analysis_type = Slot(uri=ANALYSIS_API_SCHEMA.analysis_type, name="CultureEnvironmentalSample_analysis_type", curie=ANALYSIS_API_SCHEMA.curie('analysis_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.CultureEnvironmentalSample_analysis_type, domain=CultureEnvironmentalSample, range=str)
+slots.CultureEnvironmentalSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="CultureEnvironmentalSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
+                   model_uri=BASALT_SCHEMA.CultureEnvironmentalSample_analysis_type, domain=CultureEnvironmentalSample, range=str)
 
-slots.CultureEnvironmentalSample_growth_medium = Slot(uri=ANALYSIS_API_SCHEMA.growth_medium, name="CultureEnvironmentalSample_growth_medium", curie=ANALYSIS_API_SCHEMA.curie('growth_medium'),
-                   model_uri=ANALYSIS_API_SCHEMA.CultureEnvironmentalSample_growth_medium, domain=CultureEnvironmentalSample, range=str)
+slots.CultureEnvironmentalSample_growth_medium = Slot(uri=BASALT_SCHEMA.growth_medium, name="CultureEnvironmentalSample_growth_medium", curie=BASALT_SCHEMA.curie('growth_medium'),
+                   model_uri=BASALT_SCHEMA.CultureEnvironmentalSample_growth_medium, domain=CultureEnvironmentalSample, range=str)
 
-slots.CultureEnvironmentalSample_host_common_name = Slot(uri=ANALYSIS_API_SCHEMA.host_common_name, name="CultureEnvironmentalSample_host_common_name", curie=ANALYSIS_API_SCHEMA.curie('host_common_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.CultureEnvironmentalSample_host_common_name, domain=CultureEnvironmentalSample, range=str)
+slots.CultureEnvironmentalSample_host_common_name = Slot(uri=BASALT_SCHEMA.host_common_name, name="CultureEnvironmentalSample_host_common_name", curie=BASALT_SCHEMA.curie('host_common_name'),
+                   model_uri=BASALT_SCHEMA.CultureEnvironmentalSample_host_common_name, domain=CultureEnvironmentalSample, range=str)
 
-slots.CultureEnvironmentalSample_host_taxid = Slot(uri=ANALYSIS_API_SCHEMA.host_taxid, name="CultureEnvironmentalSample_host_taxid", curie=ANALYSIS_API_SCHEMA.curie('host_taxid'),
-                   model_uri=ANALYSIS_API_SCHEMA.CultureEnvironmentalSample_host_taxid, domain=CultureEnvironmentalSample, range=str,
+slots.CultureEnvironmentalSample_host_taxid = Slot(uri=BASALT_SCHEMA.host_taxid, name="CultureEnvironmentalSample_host_taxid", curie=BASALT_SCHEMA.curie('host_taxid'),
+                   model_uri=BASALT_SCHEMA.CultureEnvironmentalSample_host_taxid, domain=CultureEnvironmentalSample, range=str,
                    pattern=re.compile(r'NCBITaxon:\d+'))
 
-slots.CultureEnvironmentalSample_isol_growth_condt = Slot(uri=ANALYSIS_API_SCHEMA.isol_growth_condt, name="CultureEnvironmentalSample_isol_growth_condt", curie=ANALYSIS_API_SCHEMA.curie('isol_growth_condt'),
-                   model_uri=ANALYSIS_API_SCHEMA.CultureEnvironmentalSample_isol_growth_condt, domain=CultureEnvironmentalSample, range=str)
+slots.CultureEnvironmentalSample_isol_growth_condt = Slot(uri=BASALT_SCHEMA.isol_growth_condt, name="CultureEnvironmentalSample_isol_growth_condt", curie=BASALT_SCHEMA.curie('isol_growth_condt'),
+                   model_uri=BASALT_SCHEMA.CultureEnvironmentalSample_isol_growth_condt, domain=CultureEnvironmentalSample, range=str)
 
-slots.CultureEnvironmentalSample_non_microb_biomass = Slot(uri=ANALYSIS_API_SCHEMA.non_microb_biomass, name="CultureEnvironmentalSample_non_microb_biomass", curie=ANALYSIS_API_SCHEMA.curie('non_microb_biomass'),
-                   model_uri=ANALYSIS_API_SCHEMA.CultureEnvironmentalSample_non_microb_biomass, domain=CultureEnvironmentalSample, range=Optional[str])
+slots.CultureEnvironmentalSample_non_microb_biomass = Slot(uri=BASALT_SCHEMA.non_microb_biomass, name="CultureEnvironmentalSample_non_microb_biomass", curie=BASALT_SCHEMA.curie('non_microb_biomass'),
+                   model_uri=BASALT_SCHEMA.CultureEnvironmentalSample_non_microb_biomass, domain=CultureEnvironmentalSample, range=Optional[str])
 
-slots.CultureEnvironmentalSample_start_date_inc = Slot(uri=ANALYSIS_API_SCHEMA.start_date_inc, name="CultureEnvironmentalSample_start_date_inc", curie=ANALYSIS_API_SCHEMA.curie('start_date_inc'),
-                   model_uri=ANALYSIS_API_SCHEMA.CultureEnvironmentalSample_start_date_inc, domain=CultureEnvironmentalSample, range=str,
+slots.CultureEnvironmentalSample_start_date_inc = Slot(uri=BASALT_SCHEMA.start_date_inc, name="CultureEnvironmentalSample_start_date_inc", curie=BASALT_SCHEMA.curie('start_date_inc'),
+                   model_uri=BASALT_SCHEMA.CultureEnvironmentalSample_start_date_inc, domain=CultureEnvironmentalSample, range=str,
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.FieldDeployedTerraformSample_analysis_type = Slot(uri=ANALYSIS_API_SCHEMA.analysis_type, name="FieldDeployedTerraformSample_analysis_type", curie=ANALYSIS_API_SCHEMA.curie('analysis_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.FieldDeployedTerraformSample_analysis_type, domain=FieldDeployedTerraformSample, range=str)
+slots.FieldDeployedTerraformSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="FieldDeployedTerraformSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
+                   model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_analysis_type, domain=FieldDeployedTerraformSample, range=str)
 
-slots.FieldDeployedTerraformSample_initiation_date_inoculation = Slot(uri=ANALYSIS_API_SCHEMA.initiation_date_inoculation, name="FieldDeployedTerraformSample_initiation_date_inoculation", curie=ANALYSIS_API_SCHEMA.curie('initiation_date_inoculation'),
-                   model_uri=ANALYSIS_API_SCHEMA.FieldDeployedTerraformSample_initiation_date_inoculation, domain=FieldDeployedTerraformSample, range=str,
+slots.FieldDeployedTerraformSample_initiation_date_inoculation = Slot(uri=BASALT_SCHEMA.initiation_date_inoculation, name="FieldDeployedTerraformSample_initiation_date_inoculation", curie=BASALT_SCHEMA.curie('initiation_date_inoculation'),
+                   model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_initiation_date_inoculation, domain=FieldDeployedTerraformSample, range=str,
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.FieldDeployedTerraformSample_initiation_date_plant = Slot(uri=ANALYSIS_API_SCHEMA.initiation_date_plant, name="FieldDeployedTerraformSample_initiation_date_plant", curie=ANALYSIS_API_SCHEMA.curie('initiation_date_plant'),
-                   model_uri=ANALYSIS_API_SCHEMA.FieldDeployedTerraformSample_initiation_date_plant, domain=FieldDeployedTerraformSample, range=str,
+slots.FieldDeployedTerraformSample_initiation_date_plant = Slot(uri=BASALT_SCHEMA.initiation_date_plant, name="FieldDeployedTerraformSample_initiation_date_plant", curie=BASALT_SCHEMA.curie('initiation_date_plant'),
+                   model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_initiation_date_plant, domain=FieldDeployedTerraformSample, range=str,
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.FieldDeployedTerraformSample_latitude = Slot(uri=ANALYSIS_API_SCHEMA.latitude, name="FieldDeployedTerraformSample_latitude", curie=ANALYSIS_API_SCHEMA.curie('latitude'),
-                   model_uri=ANALYSIS_API_SCHEMA.FieldDeployedTerraformSample_latitude, domain=FieldDeployedTerraformSample, range=float)
+slots.FieldDeployedTerraformSample_latitude = Slot(uri=BASALT_SCHEMA.latitude, name="FieldDeployedTerraformSample_latitude", curie=BASALT_SCHEMA.curie('latitude'),
+                   model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_latitude, domain=FieldDeployedTerraformSample, range=float)
 
-slots.FieldDeployedTerraformSample_longitude = Slot(uri=ANALYSIS_API_SCHEMA.longitude, name="FieldDeployedTerraformSample_longitude", curie=ANALYSIS_API_SCHEMA.curie('longitude'),
-                   model_uri=ANALYSIS_API_SCHEMA.FieldDeployedTerraformSample_longitude, domain=FieldDeployedTerraformSample, range=float)
+slots.FieldDeployedTerraformSample_longitude = Slot(uri=BASALT_SCHEMA.longitude, name="FieldDeployedTerraformSample_longitude", curie=BASALT_SCHEMA.curie('longitude'),
+                   model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_longitude, domain=FieldDeployedTerraformSample, range=float)
 
-slots.FieldDeployedTerraformSample_synth_env_assembly = Slot(uri=ANALYSIS_API_SCHEMA.synth_env_assembly, name="FieldDeployedTerraformSample_synth_env_assembly", curie=ANALYSIS_API_SCHEMA.curie('synth_env_assembly'),
-                   model_uri=ANALYSIS_API_SCHEMA.FieldDeployedTerraformSample_synth_env_assembly, domain=FieldDeployedTerraformSample, range=str)
+slots.FieldDeployedTerraformSample_synth_env_assembly = Slot(uri=BASALT_SCHEMA.synth_env_assembly, name="FieldDeployedTerraformSample_synth_env_assembly", curie=BASALT_SCHEMA.curie('synth_env_assembly'),
+                   model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_synth_env_assembly, domain=FieldDeployedTerraformSample, range=str)
 
-slots.FieldDeployedTerraformSample_synth_env_design = Slot(uri=ANALYSIS_API_SCHEMA.synth_env_design, name="FieldDeployedTerraformSample_synth_env_design", curie=ANALYSIS_API_SCHEMA.curie('synth_env_design'),
-                   model_uri=ANALYSIS_API_SCHEMA.FieldDeployedTerraformSample_synth_env_design, domain=FieldDeployedTerraformSample, range=Union[str, "SyntheticEnvironmentEnum"])
+slots.FieldDeployedTerraformSample_synth_env_design = Slot(uri=BASALT_SCHEMA.synth_env_design, name="FieldDeployedTerraformSample_synth_env_design", curie=BASALT_SCHEMA.curie('synth_env_design'),
+                   model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_synth_env_design, domain=FieldDeployedTerraformSample, range=Union[str, "SyntheticEnvironmentEnum"])
 
-slots.FieldDeployedTerraformSample_synth_env_design_method = Slot(uri=ANALYSIS_API_SCHEMA.synth_env_design_method, name="FieldDeployedTerraformSample_synth_env_design_method", curie=ANALYSIS_API_SCHEMA.curie('synth_env_design_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.FieldDeployedTerraformSample_synth_env_design_method, domain=FieldDeployedTerraformSample, range=str)
+slots.FieldDeployedTerraformSample_synth_env_design_method = Slot(uri=BASALT_SCHEMA.synth_env_design_method, name="FieldDeployedTerraformSample_synth_env_design_method", curie=BASALT_SCHEMA.curie('synth_env_design_method'),
+                   model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_synth_env_design_method, domain=FieldDeployedTerraformSample, range=str)
 
-slots.FieldDeployedTerraformSample_synth_env_material = Slot(uri=ANALYSIS_API_SCHEMA.synth_env_material, name="FieldDeployedTerraformSample_synth_env_material", curie=ANALYSIS_API_SCHEMA.curie('synth_env_material'),
-                   model_uri=ANALYSIS_API_SCHEMA.FieldDeployedTerraformSample_synth_env_material, domain=FieldDeployedTerraformSample, range=str)
+slots.FieldDeployedTerraformSample_synth_env_material = Slot(uri=BASALT_SCHEMA.synth_env_material, name="FieldDeployedTerraformSample_synth_env_material", curie=BASALT_SCHEMA.curie('synth_env_material'),
+                   model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_synth_env_material, domain=FieldDeployedTerraformSample, range=str)
 
-slots.FieldDeployedTerraformSample_synth_env_treatment = Slot(uri=ANALYSIS_API_SCHEMA.synth_env_treatment, name="FieldDeployedTerraformSample_synth_env_treatment", curie=ANALYSIS_API_SCHEMA.curie('synth_env_treatment'),
-                   model_uri=ANALYSIS_API_SCHEMA.FieldDeployedTerraformSample_synth_env_treatment, domain=FieldDeployedTerraformSample, range=str)
+slots.FieldDeployedTerraformSample_synth_env_treatment = Slot(uri=BASALT_SCHEMA.synth_env_treatment, name="FieldDeployedTerraformSample_synth_env_treatment", curie=BASALT_SCHEMA.curie('synth_env_treatment'),
+                   model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_synth_env_treatment, domain=FieldDeployedTerraformSample, range=str)
 
-slots.FieldDeployedTerraformSample_synth_start_date = Slot(uri=ANALYSIS_API_SCHEMA.synth_start_date, name="FieldDeployedTerraformSample_synth_start_date", curie=ANALYSIS_API_SCHEMA.curie('synth_start_date'),
-                   model_uri=ANALYSIS_API_SCHEMA.FieldDeployedTerraformSample_synth_start_date, domain=FieldDeployedTerraformSample, range=str,
+slots.FieldDeployedTerraformSample_synth_start_date = Slot(uri=BASALT_SCHEMA.synth_start_date, name="FieldDeployedTerraformSample_synth_start_date", curie=BASALT_SCHEMA.curie('synth_start_date'),
+                   model_uri=BASALT_SCHEMA.FieldDeployedTerraformSample_synth_start_date, domain=FieldDeployedTerraformSample, range=str,
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.MixedCultureSample_analysis_type = Slot(uri=ANALYSIS_API_SCHEMA.analysis_type, name="MixedCultureSample_analysis_type", curie=ANALYSIS_API_SCHEMA.curie('analysis_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.MixedCultureSample_analysis_type, domain=MixedCultureSample, range=str)
+slots.MixedCultureSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="MixedCultureSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
+                   model_uri=BASALT_SCHEMA.MixedCultureSample_analysis_type, domain=MixedCultureSample, range=str)
 
-slots.MixedCultureSample_growth_medium = Slot(uri=ANALYSIS_API_SCHEMA.growth_medium, name="MixedCultureSample_growth_medium", curie=ANALYSIS_API_SCHEMA.curie('growth_medium'),
-                   model_uri=ANALYSIS_API_SCHEMA.MixedCultureSample_growth_medium, domain=MixedCultureSample, range=str)
+slots.MixedCultureSample_growth_medium = Slot(uri=BASALT_SCHEMA.growth_medium, name="MixedCultureSample_growth_medium", curie=BASALT_SCHEMA.curie('growth_medium'),
+                   model_uri=BASALT_SCHEMA.MixedCultureSample_growth_medium, domain=MixedCultureSample, range=str)
 
-slots.MixedCultureSample_host_common_name = Slot(uri=ANALYSIS_API_SCHEMA.host_common_name, name="MixedCultureSample_host_common_name", curie=ANALYSIS_API_SCHEMA.curie('host_common_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.MixedCultureSample_host_common_name, domain=MixedCultureSample, range=str)
+slots.MixedCultureSample_host_common_name = Slot(uri=BASALT_SCHEMA.host_common_name, name="MixedCultureSample_host_common_name", curie=BASALT_SCHEMA.curie('host_common_name'),
+                   model_uri=BASALT_SCHEMA.MixedCultureSample_host_common_name, domain=MixedCultureSample, range=str)
 
-slots.MixedCultureSample_host_taxid = Slot(uri=ANALYSIS_API_SCHEMA.host_taxid, name="MixedCultureSample_host_taxid", curie=ANALYSIS_API_SCHEMA.curie('host_taxid'),
-                   model_uri=ANALYSIS_API_SCHEMA.MixedCultureSample_host_taxid, domain=MixedCultureSample, range=str,
+slots.MixedCultureSample_host_taxid = Slot(uri=BASALT_SCHEMA.host_taxid, name="MixedCultureSample_host_taxid", curie=BASALT_SCHEMA.curie('host_taxid'),
+                   model_uri=BASALT_SCHEMA.MixedCultureSample_host_taxid, domain=MixedCultureSample, range=str,
                    pattern=re.compile(r'NCBITaxon:\d+'))
 
-slots.MixedCultureSample_isol_growth_condt = Slot(uri=ANALYSIS_API_SCHEMA.isol_growth_condt, name="MixedCultureSample_isol_growth_condt", curie=ANALYSIS_API_SCHEMA.curie('isol_growth_condt'),
-                   model_uri=ANALYSIS_API_SCHEMA.MixedCultureSample_isol_growth_condt, domain=MixedCultureSample, range=str)
+slots.MixedCultureSample_isol_growth_condt = Slot(uri=BASALT_SCHEMA.isol_growth_condt, name="MixedCultureSample_isol_growth_condt", curie=BASALT_SCHEMA.curie('isol_growth_condt'),
+                   model_uri=BASALT_SCHEMA.MixedCultureSample_isol_growth_condt, domain=MixedCultureSample, range=str)
 
-slots.MixedCultureSample_start_date_inc = Slot(uri=ANALYSIS_API_SCHEMA.start_date_inc, name="MixedCultureSample_start_date_inc", curie=ANALYSIS_API_SCHEMA.curie('start_date_inc'),
-                   model_uri=ANALYSIS_API_SCHEMA.MixedCultureSample_start_date_inc, domain=MixedCultureSample, range=str,
+slots.MixedCultureSample_start_date_inc = Slot(uri=BASALT_SCHEMA.start_date_inc, name="MixedCultureSample_start_date_inc", curie=BASALT_SCHEMA.curie('start_date_inc'),
+                   model_uri=BASALT_SCHEMA.MixedCultureSample_start_date_inc, domain=MixedCultureSample, range=str,
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.MixedCultureSample_subspecf_gen_lin = Slot(uri=ANALYSIS_API_SCHEMA.subspecf_gen_lin, name="MixedCultureSample_subspecf_gen_lin", curie=ANALYSIS_API_SCHEMA.curie('subspecf_gen_lin'),
-                   model_uri=ANALYSIS_API_SCHEMA.MixedCultureSample_subspecf_gen_lin, domain=MixedCultureSample, range=Optional[str])
+slots.MixedCultureSample_subspecf_gen_lin = Slot(uri=BASALT_SCHEMA.subspecf_gen_lin, name="MixedCultureSample_subspecf_gen_lin", curie=BASALT_SCHEMA.curie('subspecf_gen_lin'),
+                   model_uri=BASALT_SCHEMA.MixedCultureSample_subspecf_gen_lin, domain=MixedCultureSample, range=Optional[str])
 
-slots.MonetSoilSample_bulk_elect_conductivity = Slot(uri=ANALYSIS_API_SCHEMA.bulk_elect_conductivity, name="MonetSoilSample_bulk_elect_conductivity", curie=ANALYSIS_API_SCHEMA.curie('bulk_elect_conductivity'),
-                   model_uri=ANALYSIS_API_SCHEMA.MonetSoilSample_bulk_elect_conductivity, domain=MonetSoilSample, range=str,
+slots.MonetSoilSample_bulk_elect_conductivity = Slot(uri=BASALT_SCHEMA.bulk_elect_conductivity, name="MonetSoilSample_bulk_elect_conductivity", curie=BASALT_SCHEMA.curie('bulk_elect_conductivity'),
+                   model_uri=BASALT_SCHEMA.MonetSoilSample_bulk_elect_conductivity, domain=MonetSoilSample, range=str,
                    pattern=re.compile(r'^\d+(\.\d+)?\s*mS/cm|did not collect|failed'))
 
-slots.MonetSoilSample_depth = Slot(uri=ANALYSIS_API_SCHEMA.depth, name="MonetSoilSample_depth", curie=ANALYSIS_API_SCHEMA.curie('depth'),
-                   model_uri=ANALYSIS_API_SCHEMA.MonetSoilSample_depth, domain=MonetSoilSample, range=str,
+slots.MonetSoilSample_depth = Slot(uri=BASALT_SCHEMA.depth, name="MonetSoilSample_depth", curie=BASALT_SCHEMA.curie('depth'),
+                   model_uri=BASALT_SCHEMA.MonetSoilSample_depth, domain=MonetSoilSample, range=str,
                    pattern=re.compile(r'^\d+(\.\d+)?-\d+(\.\d+)?\s*(m|cm)$'))
 
-slots.MonetSoilSample_latitude = Slot(uri=ANALYSIS_API_SCHEMA.latitude, name="MonetSoilSample_latitude", curie=ANALYSIS_API_SCHEMA.curie('latitude'),
-                   model_uri=ANALYSIS_API_SCHEMA.MonetSoilSample_latitude, domain=MonetSoilSample, range=float)
+slots.MonetSoilSample_latitude = Slot(uri=BASALT_SCHEMA.latitude, name="MonetSoilSample_latitude", curie=BASALT_SCHEMA.curie('latitude'),
+                   model_uri=BASALT_SCHEMA.MonetSoilSample_latitude, domain=MonetSoilSample, range=float)
 
-slots.MonetSoilSample_longitude = Slot(uri=ANALYSIS_API_SCHEMA.longitude, name="MonetSoilSample_longitude", curie=ANALYSIS_API_SCHEMA.curie('longitude'),
-                   model_uri=ANALYSIS_API_SCHEMA.MonetSoilSample_longitude, domain=MonetSoilSample, range=float)
+slots.MonetSoilSample_longitude = Slot(uri=BASALT_SCHEMA.longitude, name="MonetSoilSample_longitude", curie=BASALT_SCHEMA.curie('longitude'),
+                   model_uri=BASALT_SCHEMA.MonetSoilSample_longitude, domain=MonetSoilSample, range=float)
 
-slots.MonetSoilSample_sampling_set = Slot(uri=ANALYSIS_API_SCHEMA.sampling_set, name="MonetSoilSample_sampling_set", curie=ANALYSIS_API_SCHEMA.curie('sampling_set'),
-                   model_uri=ANALYSIS_API_SCHEMA.MonetSoilSample_sampling_set, domain=MonetSoilSample, range=int)
+slots.MonetSoilSample_sampling_set = Slot(uri=BASALT_SCHEMA.sampling_set, name="MonetSoilSample_sampling_set", curie=BASALT_SCHEMA.curie('sampling_set'),
+                   model_uri=BASALT_SCHEMA.MonetSoilSample_sampling_set, domain=MonetSoilSample, range=int)
 
-slots.MonetSoilSample_soil_sample_type = Slot(uri=ANALYSIS_API_SCHEMA.soil_sample_type, name="MonetSoilSample_soil_sample_type", curie=ANALYSIS_API_SCHEMA.curie('soil_sample_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.MonetSoilSample_soil_sample_type, domain=MonetSoilSample, range=Union[str, "SoilSampleTypeEnum"])
+slots.MonetSoilSample_soil_sample_type = Slot(uri=BASALT_SCHEMA.soil_sample_type, name="MonetSoilSample_soil_sample_type", curie=BASALT_SCHEMA.curie('soil_sample_type'),
+                   model_uri=BASALT_SCHEMA.MonetSoilSample_soil_sample_type, domain=MonetSoilSample, range=Union[str, "SoilSampleTypeEnum"])
 
-slots.MonetSoilSample_soil_type = Slot(uri=ANALYSIS_API_SCHEMA.soil_type, name="MonetSoilSample_soil_type", curie=ANALYSIS_API_SCHEMA.curie('soil_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.MonetSoilSample_soil_type, domain=MonetSoilSample, range=Union[str, "SoilTypeEnum"])
+slots.MonetSoilSample_soil_type = Slot(uri=BASALT_SCHEMA.soil_type, name="MonetSoilSample_soil_type", curie=BASALT_SCHEMA.curie('soil_type'),
+                   model_uri=BASALT_SCHEMA.MonetSoilSample_soil_type, domain=MonetSoilSample, range=Union[str, "SoilTypeEnum"])
 
-slots.MonetSoilSample_soil_type_meth = Slot(uri=ANALYSIS_API_SCHEMA.soil_type_meth, name="MonetSoilSample_soil_type_meth", curie=ANALYSIS_API_SCHEMA.curie('soil_type_meth'),
-                   model_uri=ANALYSIS_API_SCHEMA.MonetSoilSample_soil_type_meth, domain=MonetSoilSample, range=str)
+slots.MonetSoilSample_soil_type_meth = Slot(uri=BASALT_SCHEMA.soil_type_meth, name="MonetSoilSample_soil_type_meth", curie=BASALT_SCHEMA.curie('soil_type_meth'),
+                   model_uri=BASALT_SCHEMA.MonetSoilSample_soil_type_meth, domain=MonetSoilSample, range=str)
 
-slots.MonetSoilSample_temp = Slot(uri=ANALYSIS_API_SCHEMA.temp, name="MonetSoilSample_temp", curie=ANALYSIS_API_SCHEMA.curie('temp'),
-                   model_uri=ANALYSIS_API_SCHEMA.MonetSoilSample_temp, domain=MonetSoilSample, range=str,
+slots.MonetSoilSample_temp = Slot(uri=BASALT_SCHEMA.temp, name="MonetSoilSample_temp", curie=BASALT_SCHEMA.curie('temp'),
+                   model_uri=BASALT_SCHEMA.MonetSoilSample_temp, domain=MonetSoilSample, range=str,
                    pattern=re.compile(r'^-?\d+(\.\d+)?\s*C|did not collect|failed'))
 
-slots.MonetSoilSample_water_content = Slot(uri=ANALYSIS_API_SCHEMA.water_content, name="MonetSoilSample_water_content", curie=ANALYSIS_API_SCHEMA.curie('water_content'),
-                   model_uri=ANALYSIS_API_SCHEMA.MonetSoilSample_water_content, domain=MonetSoilSample, range=str,
+slots.MonetSoilSample_water_content = Slot(uri=BASALT_SCHEMA.water_content, name="MonetSoilSample_water_content", curie=BASALT_SCHEMA.curie('water_content'),
+                   model_uri=BASALT_SCHEMA.MonetSoilSample_water_content, domain=MonetSoilSample, range=str,
                    pattern=re.compile(r'^\d+(\.\d+)?\s*m3/m3|did not collect|failed'))
 
-slots.OtherUndescribedSample_analysis_type = Slot(uri=ANALYSIS_API_SCHEMA.analysis_type, name="OtherUndescribedSample_analysis_type", curie=ANALYSIS_API_SCHEMA.curie('analysis_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.OtherUndescribedSample_analysis_type, domain=OtherUndescribedSample, range=str)
+slots.OtherUndescribedSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="OtherUndescribedSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
+                   model_uri=BASALT_SCHEMA.OtherUndescribedSample_analysis_type, domain=OtherUndescribedSample, range=str)
 
-slots.OtherUndescribedSample_carb_dioxide = Slot(uri=ANALYSIS_API_SCHEMA.carb_dioxide, name="OtherUndescribedSample_carb_dioxide", curie=ANALYSIS_API_SCHEMA.curie('carb_dioxide'),
-                   model_uri=ANALYSIS_API_SCHEMA.OtherUndescribedSample_carb_dioxide, domain=OtherUndescribedSample, range=Optional[str],
+slots.OtherUndescribedSample_carb_dioxide = Slot(uri=BASALT_SCHEMA.carb_dioxide, name="OtherUndescribedSample_carb_dioxide", curie=BASALT_SCHEMA.curie('carb_dioxide'),
+                   model_uri=BASALT_SCHEMA.OtherUndescribedSample_carb_dioxide, domain=OtherUndescribedSample, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|ppm)$'))
 
-slots.OtherUndescribedSample_carb_monoxide = Slot(uri=ANALYSIS_API_SCHEMA.carb_monoxide, name="OtherUndescribedSample_carb_monoxide", curie=ANALYSIS_API_SCHEMA.curie('carb_monoxide'),
-                   model_uri=ANALYSIS_API_SCHEMA.OtherUndescribedSample_carb_monoxide, domain=OtherUndescribedSample, range=Optional[str],
+slots.OtherUndescribedSample_carb_monoxide = Slot(uri=BASALT_SCHEMA.carb_monoxide, name="OtherUndescribedSample_carb_monoxide", curie=BASALT_SCHEMA.curie('carb_monoxide'),
+                   model_uri=BASALT_SCHEMA.OtherUndescribedSample_carb_monoxide, domain=OtherUndescribedSample, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(umol/L|ppm)$'))
 
-slots.OtherUndescribedSample_latitude = Slot(uri=ANALYSIS_API_SCHEMA.latitude, name="OtherUndescribedSample_latitude", curie=ANALYSIS_API_SCHEMA.curie('latitude'),
-                   model_uri=ANALYSIS_API_SCHEMA.OtherUndescribedSample_latitude, domain=OtherUndescribedSample, range=float)
+slots.OtherUndescribedSample_latitude = Slot(uri=BASALT_SCHEMA.latitude, name="OtherUndescribedSample_latitude", curie=BASALT_SCHEMA.curie('latitude'),
+                   model_uri=BASALT_SCHEMA.OtherUndescribedSample_latitude, domain=OtherUndescribedSample, range=float)
 
-slots.OtherUndescribedSample_longitude = Slot(uri=ANALYSIS_API_SCHEMA.longitude, name="OtherUndescribedSample_longitude", curie=ANALYSIS_API_SCHEMA.curie('longitude'),
-                   model_uri=ANALYSIS_API_SCHEMA.OtherUndescribedSample_longitude, domain=OtherUndescribedSample, range=float)
+slots.OtherUndescribedSample_longitude = Slot(uri=BASALT_SCHEMA.longitude, name="OtherUndescribedSample_longitude", curie=BASALT_SCHEMA.curie('longitude'),
+                   model_uri=BASALT_SCHEMA.OtherUndescribedSample_longitude, domain=OtherUndescribedSample, range=float)
 
-slots.OtherUndescribedSample_oxygen = Slot(uri=ANALYSIS_API_SCHEMA.oxygen, name="OtherUndescribedSample_oxygen", curie=ANALYSIS_API_SCHEMA.curie('oxygen'),
-                   model_uri=ANALYSIS_API_SCHEMA.OtherUndescribedSample_oxygen, domain=OtherUndescribedSample, range=Optional[str],
+slots.OtherUndescribedSample_oxygen = Slot(uri=BASALT_SCHEMA.oxygen, name="OtherUndescribedSample_oxygen", curie=BASALT_SCHEMA.curie('oxygen'),
+                   model_uri=BASALT_SCHEMA.OtherUndescribedSample_oxygen, domain=OtherUndescribedSample, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(mg/L|ppm)$'))
 
-slots.OtherUndescribedSample_sample_type = Slot(uri=ANALYSIS_API_SCHEMA.sample_type, name="OtherUndescribedSample_sample_type", curie=ANALYSIS_API_SCHEMA.curie('sample_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.OtherUndescribedSample_sample_type, domain=OtherUndescribedSample, range=str,
+slots.OtherUndescribedSample_sample_type = Slot(uri=BASALT_SCHEMA.sample_type, name="OtherUndescribedSample_sample_type", curie=BASALT_SCHEMA.curie('sample_type'),
+                   model_uri=BASALT_SCHEMA.OtherUndescribedSample_sample_type, domain=OtherUndescribedSample, range=str,
                    pattern=re.compile(r'^_*\s*[a-zA-Z\-]+\s\[[a-zA-Z]+:\d+\]$'))
 
-slots.OtherUndescribedSample_subspecf_gen_lin = Slot(uri=ANALYSIS_API_SCHEMA.subspecf_gen_lin, name="OtherUndescribedSample_subspecf_gen_lin", curie=ANALYSIS_API_SCHEMA.curie('subspecf_gen_lin'),
-                   model_uri=ANALYSIS_API_SCHEMA.OtherUndescribedSample_subspecf_gen_lin, domain=OtherUndescribedSample, range=Optional[str])
+slots.OtherUndescribedSample_subspecf_gen_lin = Slot(uri=BASALT_SCHEMA.subspecf_gen_lin, name="OtherUndescribedSample_subspecf_gen_lin", curie=BASALT_SCHEMA.curie('subspecf_gen_lin'),
+                   model_uri=BASALT_SCHEMA.OtherUndescribedSample_subspecf_gen_lin, domain=OtherUndescribedSample, range=Optional[str])
 
-slots.PlantSample_analysis_type = Slot(uri=ANALYSIS_API_SCHEMA.analysis_type, name="PlantSample_analysis_type", curie=ANALYSIS_API_SCHEMA.curie('analysis_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.PlantSample_analysis_type, domain=PlantSample, range=str)
+slots.PlantSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="PlantSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
+                   model_uri=BASALT_SCHEMA.PlantSample_analysis_type, domain=PlantSample, range=str)
 
-slots.PlantSample_host_height = Slot(uri=ANALYSIS_API_SCHEMA.host_height, name="PlantSample_host_height", curie=ANALYSIS_API_SCHEMA.curie('host_height'),
-                   model_uri=ANALYSIS_API_SCHEMA.PlantSample_host_height, domain=PlantSample, range=Optional[str],
+slots.PlantSample_host_height = Slot(uri=BASALT_SCHEMA.host_height, name="PlantSample_host_height", curie=BASALT_SCHEMA.curie('host_height'),
+                   model_uri=BASALT_SCHEMA.PlantSample_host_height, domain=PlantSample, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(cm|mm|m)$'))
 
-slots.PlantSample_host_length = Slot(uri=ANALYSIS_API_SCHEMA.host_length, name="PlantSample_host_length", curie=ANALYSIS_API_SCHEMA.curie('host_length'),
-                   model_uri=ANALYSIS_API_SCHEMA.PlantSample_host_length, domain=PlantSample, range=Optional[str],
+slots.PlantSample_host_length = Slot(uri=BASALT_SCHEMA.host_length, name="PlantSample_host_length", curie=BASALT_SCHEMA.curie('host_length'),
+                   model_uri=BASALT_SCHEMA.PlantSample_host_length, domain=PlantSample, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(cm|mm|m)$'))
 
-slots.PlantSample_host_life_stage = Slot(uri=ANALYSIS_API_SCHEMA.host_life_stage, name="PlantSample_host_life_stage", curie=ANALYSIS_API_SCHEMA.curie('host_life_stage'),
-                   model_uri=ANALYSIS_API_SCHEMA.PlantSample_host_life_stage, domain=PlantSample, range=Optional[str])
+slots.PlantSample_host_life_stage = Slot(uri=BASALT_SCHEMA.host_life_stage, name="PlantSample_host_life_stage", curie=BASALT_SCHEMA.curie('host_life_stage'),
+                   model_uri=BASALT_SCHEMA.PlantSample_host_life_stage, domain=PlantSample, range=Optional[str])
 
-slots.PlantSample_latitude = Slot(uri=ANALYSIS_API_SCHEMA.latitude, name="PlantSample_latitude", curie=ANALYSIS_API_SCHEMA.curie('latitude'),
-                   model_uri=ANALYSIS_API_SCHEMA.PlantSample_latitude, domain=PlantSample, range=float)
+slots.PlantSample_latitude = Slot(uri=BASALT_SCHEMA.latitude, name="PlantSample_latitude", curie=BASALT_SCHEMA.curie('latitude'),
+                   model_uri=BASALT_SCHEMA.PlantSample_latitude, domain=PlantSample, range=float)
 
-slots.PlantSample_longitude = Slot(uri=ANALYSIS_API_SCHEMA.longitude, name="PlantSample_longitude", curie=ANALYSIS_API_SCHEMA.curie('longitude'),
-                   model_uri=ANALYSIS_API_SCHEMA.PlantSample_longitude, domain=PlantSample, range=float)
+slots.PlantSample_longitude = Slot(uri=BASALT_SCHEMA.longitude, name="PlantSample_longitude", curie=BASALT_SCHEMA.curie('longitude'),
+                   model_uri=BASALT_SCHEMA.PlantSample_longitude, domain=PlantSample, range=float)
 
-slots.PlantSample_non_microb_biomass = Slot(uri=ANALYSIS_API_SCHEMA.non_microb_biomass, name="PlantSample_non_microb_biomass", curie=ANALYSIS_API_SCHEMA.curie('non_microb_biomass'),
-                   model_uri=ANALYSIS_API_SCHEMA.PlantSample_non_microb_biomass, domain=PlantSample, range=Optional[str])
+slots.PlantSample_non_microb_biomass = Slot(uri=BASALT_SCHEMA.non_microb_biomass, name="PlantSample_non_microb_biomass", curie=BASALT_SCHEMA.curie('non_microb_biomass'),
+                   model_uri=BASALT_SCHEMA.PlantSample_non_microb_biomass, domain=PlantSample, range=Optional[str])
 
-slots.PlantSample_plant_common_name = Slot(uri=ANALYSIS_API_SCHEMA.plant_common_name, name="PlantSample_plant_common_name", curie=ANALYSIS_API_SCHEMA.curie('plant_common_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.PlantSample_plant_common_name, domain=PlantSample, range=str)
+slots.PlantSample_plant_common_name = Slot(uri=BASALT_SCHEMA.plant_common_name, name="PlantSample_plant_common_name", curie=BASALT_SCHEMA.curie('plant_common_name'),
+                   model_uri=BASALT_SCHEMA.PlantSample_plant_common_name, domain=PlantSample, range=str)
 
-slots.PlantSample_plant_struc = Slot(uri=ANALYSIS_API_SCHEMA.plant_struc, name="PlantSample_plant_struc", curie=ANALYSIS_API_SCHEMA.curie('plant_struc'),
-                   model_uri=ANALYSIS_API_SCHEMA.PlantSample_plant_struc, domain=PlantSample, range=Union[str, "PlantStructureEnum"])
+slots.PlantSample_plant_struc = Slot(uri=BASALT_SCHEMA.plant_struc, name="PlantSample_plant_struc", curie=BASALT_SCHEMA.curie('plant_struc'),
+                   model_uri=BASALT_SCHEMA.PlantSample_plant_struc, domain=PlantSample, range=Union[str, "PlantStructureEnum"])
 
-slots.PlantSample_plant_taxid = Slot(uri=ANALYSIS_API_SCHEMA.plant_taxid, name="PlantSample_plant_taxid", curie=ANALYSIS_API_SCHEMA.curie('plant_taxid'),
-                   model_uri=ANALYSIS_API_SCHEMA.PlantSample_plant_taxid, domain=PlantSample, range=str)
+slots.PlantSample_plant_taxid = Slot(uri=BASALT_SCHEMA.plant_taxid, name="PlantSample_plant_taxid", curie=BASALT_SCHEMA.curie('plant_taxid'),
+                   model_uri=BASALT_SCHEMA.PlantSample_plant_taxid, domain=PlantSample, range=str)
 
-slots.PureCultureSample_analysis_type = Slot(uri=ANALYSIS_API_SCHEMA.analysis_type, name="PureCultureSample_analysis_type", curie=ANALYSIS_API_SCHEMA.curie('analysis_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.PureCultureSample_analysis_type, domain=PureCultureSample, range=str)
+slots.PureCultureSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="PureCultureSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
+                   model_uri=BASALT_SCHEMA.PureCultureSample_analysis_type, domain=PureCultureSample, range=str)
 
-slots.PureCultureSample_growth_medium = Slot(uri=ANALYSIS_API_SCHEMA.growth_medium, name="PureCultureSample_growth_medium", curie=ANALYSIS_API_SCHEMA.curie('growth_medium'),
-                   model_uri=ANALYSIS_API_SCHEMA.PureCultureSample_growth_medium, domain=PureCultureSample, range=str)
+slots.PureCultureSample_growth_medium = Slot(uri=BASALT_SCHEMA.growth_medium, name="PureCultureSample_growth_medium", curie=BASALT_SCHEMA.curie('growth_medium'),
+                   model_uri=BASALT_SCHEMA.PureCultureSample_growth_medium, domain=PureCultureSample, range=str)
 
-slots.PureCultureSample_host_common_name = Slot(uri=ANALYSIS_API_SCHEMA.host_common_name, name="PureCultureSample_host_common_name", curie=ANALYSIS_API_SCHEMA.curie('host_common_name'),
-                   model_uri=ANALYSIS_API_SCHEMA.PureCultureSample_host_common_name, domain=PureCultureSample, range=str)
+slots.PureCultureSample_host_common_name = Slot(uri=BASALT_SCHEMA.host_common_name, name="PureCultureSample_host_common_name", curie=BASALT_SCHEMA.curie('host_common_name'),
+                   model_uri=BASALT_SCHEMA.PureCultureSample_host_common_name, domain=PureCultureSample, range=str)
 
-slots.PureCultureSample_host_taxid = Slot(uri=ANALYSIS_API_SCHEMA.host_taxid, name="PureCultureSample_host_taxid", curie=ANALYSIS_API_SCHEMA.curie('host_taxid'),
-                   model_uri=ANALYSIS_API_SCHEMA.PureCultureSample_host_taxid, domain=PureCultureSample, range=str,
+slots.PureCultureSample_host_taxid = Slot(uri=BASALT_SCHEMA.host_taxid, name="PureCultureSample_host_taxid", curie=BASALT_SCHEMA.curie('host_taxid'),
+                   model_uri=BASALT_SCHEMA.PureCultureSample_host_taxid, domain=PureCultureSample, range=str,
                    pattern=re.compile(r'NCBITaxon:\d+'))
 
-slots.PureCultureSample_isol_growth_condt = Slot(uri=ANALYSIS_API_SCHEMA.isol_growth_condt, name="PureCultureSample_isol_growth_condt", curie=ANALYSIS_API_SCHEMA.curie('isol_growth_condt'),
-                   model_uri=ANALYSIS_API_SCHEMA.PureCultureSample_isol_growth_condt, domain=PureCultureSample, range=str)
+slots.PureCultureSample_isol_growth_condt = Slot(uri=BASALT_SCHEMA.isol_growth_condt, name="PureCultureSample_isol_growth_condt", curie=BASALT_SCHEMA.curie('isol_growth_condt'),
+                   model_uri=BASALT_SCHEMA.PureCultureSample_isol_growth_condt, domain=PureCultureSample, range=str)
 
-slots.PureCultureSample_non_microb_biomass = Slot(uri=ANALYSIS_API_SCHEMA.non_microb_biomass, name="PureCultureSample_non_microb_biomass", curie=ANALYSIS_API_SCHEMA.curie('non_microb_biomass'),
-                   model_uri=ANALYSIS_API_SCHEMA.PureCultureSample_non_microb_biomass, domain=PureCultureSample, range=Optional[str])
+slots.PureCultureSample_non_microb_biomass = Slot(uri=BASALT_SCHEMA.non_microb_biomass, name="PureCultureSample_non_microb_biomass", curie=BASALT_SCHEMA.curie('non_microb_biomass'),
+                   model_uri=BASALT_SCHEMA.PureCultureSample_non_microb_biomass, domain=PureCultureSample, range=Optional[str])
 
-slots.PureCultureSample_start_date_inc = Slot(uri=ANALYSIS_API_SCHEMA.start_date_inc, name="PureCultureSample_start_date_inc", curie=ANALYSIS_API_SCHEMA.curie('start_date_inc'),
-                   model_uri=ANALYSIS_API_SCHEMA.PureCultureSample_start_date_inc, domain=PureCultureSample, range=str,
+slots.PureCultureSample_start_date_inc = Slot(uri=BASALT_SCHEMA.start_date_inc, name="PureCultureSample_start_date_inc", curie=BASALT_SCHEMA.curie('start_date_inc'),
+                   model_uri=BASALT_SCHEMA.PureCultureSample_start_date_inc, domain=PureCultureSample, range=str,
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.SedimentSample_analysis_type = Slot(uri=ANALYSIS_API_SCHEMA.analysis_type, name="SedimentSample_analysis_type", curie=ANALYSIS_API_SCHEMA.curie('analysis_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.SedimentSample_analysis_type, domain=SedimentSample, range=str)
+slots.SedimentSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="SedimentSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
+                   model_uri=BASALT_SCHEMA.SedimentSample_analysis_type, domain=SedimentSample, range=str)
 
-slots.SedimentSample_depth = Slot(uri=ANALYSIS_API_SCHEMA.depth, name="SedimentSample_depth", curie=ANALYSIS_API_SCHEMA.curie('depth'),
-                   model_uri=ANALYSIS_API_SCHEMA.SedimentSample_depth, domain=SedimentSample, range=str,
+slots.SedimentSample_depth = Slot(uri=BASALT_SCHEMA.depth, name="SedimentSample_depth", curie=BASALT_SCHEMA.curie('depth'),
+                   model_uri=BASALT_SCHEMA.SedimentSample_depth, domain=SedimentSample, range=str,
                    pattern=re.compile(r'^\d+(\.\d+)?-\d+(\.\d+)?\s*m$'))
 
-slots.SedimentSample_latitude = Slot(uri=ANALYSIS_API_SCHEMA.latitude, name="SedimentSample_latitude", curie=ANALYSIS_API_SCHEMA.curie('latitude'),
-                   model_uri=ANALYSIS_API_SCHEMA.SedimentSample_latitude, domain=SedimentSample, range=float)
+slots.SedimentSample_latitude = Slot(uri=BASALT_SCHEMA.latitude, name="SedimentSample_latitude", curie=BASALT_SCHEMA.curie('latitude'),
+                   model_uri=BASALT_SCHEMA.SedimentSample_latitude, domain=SedimentSample, range=float)
 
-slots.SedimentSample_longitude = Slot(uri=ANALYSIS_API_SCHEMA.longitude, name="SedimentSample_longitude", curie=ANALYSIS_API_SCHEMA.curie('longitude'),
-                   model_uri=ANALYSIS_API_SCHEMA.SedimentSample_longitude, domain=SedimentSample, range=float)
+slots.SedimentSample_longitude = Slot(uri=BASALT_SCHEMA.longitude, name="SedimentSample_longitude", curie=BASALT_SCHEMA.curie('longitude'),
+                   model_uri=BASALT_SCHEMA.SedimentSample_longitude, domain=SedimentSample, range=float)
 
-slots.SedimentSample_microbial_biomass = Slot(uri=ANALYSIS_API_SCHEMA.microbial_biomass, name="SedimentSample_microbial_biomass", curie=ANALYSIS_API_SCHEMA.curie('microbial_biomass'),
-                   model_uri=ANALYSIS_API_SCHEMA.SedimentSample_microbial_biomass, domain=SedimentSample, range=Optional[str],
+slots.SedimentSample_microbial_biomass = Slot(uri=BASALT_SCHEMA.microbial_biomass, name="SedimentSample_microbial_biomass", curie=BASALT_SCHEMA.curie('microbial_biomass'),
+                   model_uri=BASALT_SCHEMA.SedimentSample_microbial_biomass, domain=SedimentSample, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(g/kg sediment|ug/g sediment)$'))
 
-slots.SedimentSample_non_microb_biomass = Slot(uri=ANALYSIS_API_SCHEMA.non_microb_biomass, name="SedimentSample_non_microb_biomass", curie=ANALYSIS_API_SCHEMA.curie('non_microb_biomass'),
-                   model_uri=ANALYSIS_API_SCHEMA.SedimentSample_non_microb_biomass, domain=SedimentSample, range=Optional[str],
+slots.SedimentSample_non_microb_biomass = Slot(uri=BASALT_SCHEMA.non_microb_biomass, name="SedimentSample_non_microb_biomass", curie=BASALT_SCHEMA.curie('non_microb_biomass'),
+                   model_uri=BASALT_SCHEMA.SedimentSample_non_microb_biomass, domain=SedimentSample, range=Optional[str],
                    pattern=re.compile(r'^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$'))
 
-slots.SedimentSample_biotic_relationship = Slot(uri=ANALYSIS_API_SCHEMA.biotic_relationship, name="SedimentSample_biotic_relationship", curie=ANALYSIS_API_SCHEMA.curie('biotic_relationship'),
-                   model_uri=ANALYSIS_API_SCHEMA.SedimentSample_biotic_relationship, domain=SedimentSample, range=Optional[Union[str, "BioticRelationshipEnum"]])
+slots.SedimentSample_biotic_relationship = Slot(uri=BASALT_SCHEMA.biotic_relationship, name="SedimentSample_biotic_relationship", curie=BASALT_SCHEMA.curie('biotic_relationship'),
+                   model_uri=BASALT_SCHEMA.SedimentSample_biotic_relationship, domain=SedimentSample, range=Optional[Union[str, "BioticRelationshipEnum"]])
 
-slots.SoilSample_al_sat = Slot(uri=ANALYSIS_API_SCHEMA.al_sat, name="SoilSample_al_sat", curie=ANALYSIS_API_SCHEMA.curie('al_sat'),
-                   model_uri=ANALYSIS_API_SCHEMA.SoilSample_al_sat, domain=SoilSample, range=Optional[str],
+slots.SoilSample_al_sat = Slot(uri=BASALT_SCHEMA.al_sat, name="SoilSample_al_sat", curie=BASALT_SCHEMA.curie('al_sat'),
+                   model_uri=BASALT_SCHEMA.SoilSample_al_sat, domain=SoilSample, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*percent$'))
 
-slots.SoilSample_analysis_type = Slot(uri=ANALYSIS_API_SCHEMA.analysis_type, name="SoilSample_analysis_type", curie=ANALYSIS_API_SCHEMA.curie('analysis_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.SoilSample_analysis_type, domain=SoilSample, range=str)
+slots.SoilSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="SoilSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
+                   model_uri=BASALT_SCHEMA.SoilSample_analysis_type, domain=SoilSample, range=str)
 
-slots.SoilSample_depth = Slot(uri=ANALYSIS_API_SCHEMA.depth, name="SoilSample_depth", curie=ANALYSIS_API_SCHEMA.curie('depth'),
-                   model_uri=ANALYSIS_API_SCHEMA.SoilSample_depth, domain=SoilSample, range=str,
+slots.SoilSample_depth = Slot(uri=BASALT_SCHEMA.depth, name="SoilSample_depth", curie=BASALT_SCHEMA.curie('depth'),
+                   model_uri=BASALT_SCHEMA.SoilSample_depth, domain=SoilSample, range=str,
                    pattern=re.compile(r'^\d+(\.\d+)?-\d+(\.\d+)?\s*m$'))
 
-slots.SoilSample_heavy_metals = Slot(uri=ANALYSIS_API_SCHEMA.heavy_metals, name="SoilSample_heavy_metals", curie=ANALYSIS_API_SCHEMA.curie('heavy_metals'),
-                   model_uri=ANALYSIS_API_SCHEMA.SoilSample_heavy_metals, domain=SoilSample, range=Optional[str])
+slots.SoilSample_heavy_metals = Slot(uri=BASALT_SCHEMA.heavy_metals, name="SoilSample_heavy_metals", curie=BASALT_SCHEMA.curie('heavy_metals'),
+                   model_uri=BASALT_SCHEMA.SoilSample_heavy_metals, domain=SoilSample, range=Optional[str])
 
-slots.SoilSample_latitude = Slot(uri=ANALYSIS_API_SCHEMA.latitude, name="SoilSample_latitude", curie=ANALYSIS_API_SCHEMA.curie('latitude'),
-                   model_uri=ANALYSIS_API_SCHEMA.SoilSample_latitude, domain=SoilSample, range=float)
+slots.SoilSample_latitude = Slot(uri=BASALT_SCHEMA.latitude, name="SoilSample_latitude", curie=BASALT_SCHEMA.curie('latitude'),
+                   model_uri=BASALT_SCHEMA.SoilSample_latitude, domain=SoilSample, range=float)
 
-slots.SoilSample_longitude = Slot(uri=ANALYSIS_API_SCHEMA.longitude, name="SoilSample_longitude", curie=ANALYSIS_API_SCHEMA.curie('longitude'),
-                   model_uri=ANALYSIS_API_SCHEMA.SoilSample_longitude, domain=SoilSample, range=float)
+slots.SoilSample_longitude = Slot(uri=BASALT_SCHEMA.longitude, name="SoilSample_longitude", curie=BASALT_SCHEMA.curie('longitude'),
+                   model_uri=BASALT_SCHEMA.SoilSample_longitude, domain=SoilSample, range=float)
 
-slots.SoilSample_microbial_biomass = Slot(uri=ANALYSIS_API_SCHEMA.microbial_biomass, name="SoilSample_microbial_biomass", curie=ANALYSIS_API_SCHEMA.curie('microbial_biomass'),
-                   model_uri=ANALYSIS_API_SCHEMA.SoilSample_microbial_biomass, domain=SoilSample, range=Optional[str],
+slots.SoilSample_microbial_biomass = Slot(uri=BASALT_SCHEMA.microbial_biomass, name="SoilSample_microbial_biomass", curie=BASALT_SCHEMA.curie('microbial_biomass'),
+                   model_uri=BASALT_SCHEMA.SoilSample_microbial_biomass, domain=SoilSample, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*(g/kg soil|ug/g dry soil)$'))
 
-slots.SoilSample_non_microb_biomass = Slot(uri=ANALYSIS_API_SCHEMA.non_microb_biomass, name="SoilSample_non_microb_biomass", curie=ANALYSIS_API_SCHEMA.curie('non_microb_biomass'),
-                   model_uri=ANALYSIS_API_SCHEMA.SoilSample_non_microb_biomass, domain=SoilSample, range=Optional[str],
+slots.SoilSample_non_microb_biomass = Slot(uri=BASALT_SCHEMA.non_microb_biomass, name="SoilSample_non_microb_biomass", curie=BASALT_SCHEMA.curie('non_microb_biomass'),
+                   model_uri=BASALT_SCHEMA.SoilSample_non_microb_biomass, domain=SoilSample, range=Optional[str],
                    pattern=re.compile(r'^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$'))
 
-slots.SoilSample_size_frac_low = Slot(uri=ANALYSIS_API_SCHEMA.size_frac_low, name="SoilSample_size_frac_low", curie=ANALYSIS_API_SCHEMA.curie('size_frac_low'),
-                   model_uri=ANALYSIS_API_SCHEMA.SoilSample_size_frac_low, domain=SoilSample, range=Optional[str],
+slots.SoilSample_size_frac_low = Slot(uri=BASALT_SCHEMA.size_frac_low, name="SoilSample_size_frac_low", curie=BASALT_SCHEMA.curie('size_frac_low'),
+                   model_uri=BASALT_SCHEMA.SoilSample_size_frac_low, domain=SoilSample, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*um$'))
 
-slots.SoilSample_size_frac_up = Slot(uri=ANALYSIS_API_SCHEMA.size_frac_up, name="SoilSample_size_frac_up", curie=ANALYSIS_API_SCHEMA.curie('size_frac_up'),
-                   model_uri=ANALYSIS_API_SCHEMA.SoilSample_size_frac_up, domain=SoilSample, range=Optional[str],
+slots.SoilSample_size_frac_up = Slot(uri=BASALT_SCHEMA.size_frac_up, name="SoilSample_size_frac_up", curie=BASALT_SCHEMA.curie('size_frac_up'),
+                   model_uri=BASALT_SCHEMA.SoilSample_size_frac_up, domain=SoilSample, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*um$'))
 
-slots.SynthesizedMaterialSample_analysis_type = Slot(uri=ANALYSIS_API_SCHEMA.analysis_type, name="SynthesizedMaterialSample_analysis_type", curie=ANALYSIS_API_SCHEMA.curie('analysis_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.SynthesizedMaterialSample_analysis_type, domain=SynthesizedMaterialSample, range=str)
+slots.SynthesizedMaterialSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="SynthesizedMaterialSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
+                   model_uri=BASALT_SCHEMA.SynthesizedMaterialSample_analysis_type, domain=SynthesizedMaterialSample, range=str)
 
-slots.SynthesizedMaterialSample_synth_instrument = Slot(uri=ANALYSIS_API_SCHEMA.synth_instrument, name="SynthesizedMaterialSample_synth_instrument", curie=ANALYSIS_API_SCHEMA.curie('synth_instrument'),
-                   model_uri=ANALYSIS_API_SCHEMA.SynthesizedMaterialSample_synth_instrument, domain=SynthesizedMaterialSample, range=str)
+slots.SynthesizedMaterialSample_synth_instrument = Slot(uri=BASALT_SCHEMA.synth_instrument, name="SynthesizedMaterialSample_synth_instrument", curie=BASALT_SCHEMA.curie('synth_instrument'),
+                   model_uri=BASALT_SCHEMA.SynthesizedMaterialSample_synth_instrument, domain=SynthesizedMaterialSample, range=str)
 
-slots.SynthesizedMaterialSample_synth_reagents = Slot(uri=ANALYSIS_API_SCHEMA.synth_reagents, name="SynthesizedMaterialSample_synth_reagents", curie=ANALYSIS_API_SCHEMA.curie('synth_reagents'),
-                   model_uri=ANALYSIS_API_SCHEMA.SynthesizedMaterialSample_synth_reagents, domain=SynthesizedMaterialSample, range=str)
+slots.SynthesizedMaterialSample_synth_reagents = Slot(uri=BASALT_SCHEMA.synth_reagents, name="SynthesizedMaterialSample_synth_reagents", curie=BASALT_SCHEMA.curie('synth_reagents'),
+                   model_uri=BASALT_SCHEMA.SynthesizedMaterialSample_synth_reagents, domain=SynthesizedMaterialSample, range=str)
 
-slots.TerraformSample_analysis_type = Slot(uri=ANALYSIS_API_SCHEMA.analysis_type, name="TerraformSample_analysis_type", curie=ANALYSIS_API_SCHEMA.curie('analysis_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.TerraformSample_analysis_type, domain=TerraformSample, range=str)
+slots.TerraformSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="TerraformSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
+                   model_uri=BASALT_SCHEMA.TerraformSample_analysis_type, domain=TerraformSample, range=str)
 
-slots.TerraformSample_initiation_date_inoculation = Slot(uri=ANALYSIS_API_SCHEMA.initiation_date_inoculation, name="TerraformSample_initiation_date_inoculation", curie=ANALYSIS_API_SCHEMA.curie('initiation_date_inoculation'),
-                   model_uri=ANALYSIS_API_SCHEMA.TerraformSample_initiation_date_inoculation, domain=TerraformSample, range=str,
+slots.TerraformSample_initiation_date_inoculation = Slot(uri=BASALT_SCHEMA.initiation_date_inoculation, name="TerraformSample_initiation_date_inoculation", curie=BASALT_SCHEMA.curie('initiation_date_inoculation'),
+                   model_uri=BASALT_SCHEMA.TerraformSample_initiation_date_inoculation, domain=TerraformSample, range=str,
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.TerraformSample_initiation_date_plant = Slot(uri=ANALYSIS_API_SCHEMA.initiation_date_plant, name="TerraformSample_initiation_date_plant", curie=ANALYSIS_API_SCHEMA.curie('initiation_date_plant'),
-                   model_uri=ANALYSIS_API_SCHEMA.TerraformSample_initiation_date_plant, domain=TerraformSample, range=str,
+slots.TerraformSample_initiation_date_plant = Slot(uri=BASALT_SCHEMA.initiation_date_plant, name="TerraformSample_initiation_date_plant", curie=BASALT_SCHEMA.curie('initiation_date_plant'),
+                   model_uri=BASALT_SCHEMA.TerraformSample_initiation_date_plant, domain=TerraformSample, range=str,
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.TerraformSample_synth_env_assembly = Slot(uri=ANALYSIS_API_SCHEMA.synth_env_assembly, name="TerraformSample_synth_env_assembly", curie=ANALYSIS_API_SCHEMA.curie('synth_env_assembly'),
-                   model_uri=ANALYSIS_API_SCHEMA.TerraformSample_synth_env_assembly, domain=TerraformSample, range=str)
+slots.TerraformSample_synth_env_assembly = Slot(uri=BASALT_SCHEMA.synth_env_assembly, name="TerraformSample_synth_env_assembly", curie=BASALT_SCHEMA.curie('synth_env_assembly'),
+                   model_uri=BASALT_SCHEMA.TerraformSample_synth_env_assembly, domain=TerraformSample, range=str)
 
-slots.TerraformSample_synth_env_design = Slot(uri=ANALYSIS_API_SCHEMA.synth_env_design, name="TerraformSample_synth_env_design", curie=ANALYSIS_API_SCHEMA.curie('synth_env_design'),
-                   model_uri=ANALYSIS_API_SCHEMA.TerraformSample_synth_env_design, domain=TerraformSample, range=Union[str, "SyntheticEnvironmentEnum"])
+slots.TerraformSample_synth_env_design = Slot(uri=BASALT_SCHEMA.synth_env_design, name="TerraformSample_synth_env_design", curie=BASALT_SCHEMA.curie('synth_env_design'),
+                   model_uri=BASALT_SCHEMA.TerraformSample_synth_env_design, domain=TerraformSample, range=Union[str, "SyntheticEnvironmentEnum"])
 
-slots.TerraformSample_synth_env_design_method = Slot(uri=ANALYSIS_API_SCHEMA.synth_env_design_method, name="TerraformSample_synth_env_design_method", curie=ANALYSIS_API_SCHEMA.curie('synth_env_design_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.TerraformSample_synth_env_design_method, domain=TerraformSample, range=str)
+slots.TerraformSample_synth_env_design_method = Slot(uri=BASALT_SCHEMA.synth_env_design_method, name="TerraformSample_synth_env_design_method", curie=BASALT_SCHEMA.curie('synth_env_design_method'),
+                   model_uri=BASALT_SCHEMA.TerraformSample_synth_env_design_method, domain=TerraformSample, range=str)
 
-slots.TerraformSample_synth_env_material = Slot(uri=ANALYSIS_API_SCHEMA.synth_env_material, name="TerraformSample_synth_env_material", curie=ANALYSIS_API_SCHEMA.curie('synth_env_material'),
-                   model_uri=ANALYSIS_API_SCHEMA.TerraformSample_synth_env_material, domain=TerraformSample, range=str)
+slots.TerraformSample_synth_env_material = Slot(uri=BASALT_SCHEMA.synth_env_material, name="TerraformSample_synth_env_material", curie=BASALT_SCHEMA.curie('synth_env_material'),
+                   model_uri=BASALT_SCHEMA.TerraformSample_synth_env_material, domain=TerraformSample, range=str)
 
-slots.TerraformSample_synth_env_treatment = Slot(uri=ANALYSIS_API_SCHEMA.synth_env_treatment, name="TerraformSample_synth_env_treatment", curie=ANALYSIS_API_SCHEMA.curie('synth_env_treatment'),
-                   model_uri=ANALYSIS_API_SCHEMA.TerraformSample_synth_env_treatment, domain=TerraformSample, range=str)
+slots.TerraformSample_synth_env_treatment = Slot(uri=BASALT_SCHEMA.synth_env_treatment, name="TerraformSample_synth_env_treatment", curie=BASALT_SCHEMA.curie('synth_env_treatment'),
+                   model_uri=BASALT_SCHEMA.TerraformSample_synth_env_treatment, domain=TerraformSample, range=str)
 
-slots.TerraformSample_synth_start_date = Slot(uri=ANALYSIS_API_SCHEMA.synth_start_date, name="TerraformSample_synth_start_date", curie=ANALYSIS_API_SCHEMA.curie('synth_start_date'),
-                   model_uri=ANALYSIS_API_SCHEMA.TerraformSample_synth_start_date, domain=TerraformSample, range=str,
+slots.TerraformSample_synth_start_date = Slot(uri=BASALT_SCHEMA.synth_start_date, name="TerraformSample_synth_start_date", curie=BASALT_SCHEMA.curie('synth_start_date'),
+                   model_uri=BASALT_SCHEMA.TerraformSample_synth_start_date, domain=TerraformSample, range=str,
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$'))
 
-slots.WaterSample_analysis_type = Slot(uri=ANALYSIS_API_SCHEMA.analysis_type, name="WaterSample_analysis_type", curie=ANALYSIS_API_SCHEMA.curie('analysis_type'),
-                   model_uri=ANALYSIS_API_SCHEMA.WaterSample_analysis_type, domain=WaterSample, range=str)
+slots.WaterSample_analysis_type = Slot(uri=BASALT_SCHEMA.analysis_type, name="WaterSample_analysis_type", curie=BASALT_SCHEMA.curie('analysis_type'),
+                   model_uri=BASALT_SCHEMA.WaterSample_analysis_type, domain=WaterSample, range=str)
 
-slots.WaterSample_depth = Slot(uri=ANALYSIS_API_SCHEMA.depth, name="WaterSample_depth", curie=ANALYSIS_API_SCHEMA.curie('depth'),
-                   model_uri=ANALYSIS_API_SCHEMA.WaterSample_depth, domain=WaterSample, range=str,
+slots.WaterSample_depth = Slot(uri=BASALT_SCHEMA.depth, name="WaterSample_depth", curie=BASALT_SCHEMA.curie('depth'),
+                   model_uri=BASALT_SCHEMA.WaterSample_depth, domain=WaterSample, range=str,
                    pattern=re.compile(r'^\d+(\.\d+)?(-\d+(\.\d+)?)?\s*m$'))
 
-slots.WaterSample_filter_method = Slot(uri=ANALYSIS_API_SCHEMA.filter_method, name="WaterSample_filter_method", curie=ANALYSIS_API_SCHEMA.curie('filter_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.WaterSample_filter_method, domain=WaterSample, range=str)
+slots.WaterSample_filter_method = Slot(uri=BASALT_SCHEMA.filter_method, name="WaterSample_filter_method", curie=BASALT_SCHEMA.curie('filter_method'),
+                   model_uri=BASALT_SCHEMA.WaterSample_filter_method, domain=WaterSample, range=str)
 
-slots.WaterSample_latitude = Slot(uri=ANALYSIS_API_SCHEMA.latitude, name="WaterSample_latitude", curie=ANALYSIS_API_SCHEMA.curie('latitude'),
-                   model_uri=ANALYSIS_API_SCHEMA.WaterSample_latitude, domain=WaterSample, range=float)
+slots.WaterSample_latitude = Slot(uri=BASALT_SCHEMA.latitude, name="WaterSample_latitude", curie=BASALT_SCHEMA.curie('latitude'),
+                   model_uri=BASALT_SCHEMA.WaterSample_latitude, domain=WaterSample, range=float)
 
-slots.WaterSample_longitude = Slot(uri=ANALYSIS_API_SCHEMA.longitude, name="WaterSample_longitude", curie=ANALYSIS_API_SCHEMA.curie('longitude'),
-                   model_uri=ANALYSIS_API_SCHEMA.WaterSample_longitude, domain=WaterSample, range=float)
+slots.WaterSample_longitude = Slot(uri=BASALT_SCHEMA.longitude, name="WaterSample_longitude", curie=BASALT_SCHEMA.curie('longitude'),
+                   model_uri=BASALT_SCHEMA.WaterSample_longitude, domain=WaterSample, range=float)
 
-slots.WaterSample_non_microb_biomass = Slot(uri=ANALYSIS_API_SCHEMA.non_microb_biomass, name="WaterSample_non_microb_biomass", curie=ANALYSIS_API_SCHEMA.curie('non_microb_biomass'),
-                   model_uri=ANALYSIS_API_SCHEMA.WaterSample_non_microb_biomass, domain=WaterSample, range=Optional[str],
+slots.WaterSample_non_microb_biomass = Slot(uri=BASALT_SCHEMA.non_microb_biomass, name="WaterSample_non_microb_biomass", curie=BASALT_SCHEMA.curie('non_microb_biomass'),
+                   model_uri=BASALT_SCHEMA.WaterSample_non_microb_biomass, domain=WaterSample, range=Optional[str],
                    pattern=re.compile(r'^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$'))
 
-slots.WaterSample_size_frac_low = Slot(uri=ANALYSIS_API_SCHEMA.size_frac_low, name="WaterSample_size_frac_low", curie=ANALYSIS_API_SCHEMA.curie('size_frac_low'),
-                   model_uri=ANALYSIS_API_SCHEMA.WaterSample_size_frac_low, domain=WaterSample, range=str,
+slots.WaterSample_size_frac_low = Slot(uri=BASALT_SCHEMA.size_frac_low, name="WaterSample_size_frac_low", curie=BASALT_SCHEMA.curie('size_frac_low'),
+                   model_uri=BASALT_SCHEMA.WaterSample_size_frac_low, domain=WaterSample, range=str,
                    pattern=re.compile(r'^\d+(\.\d+)?\s*um$'))
 
-slots.WaterSample_size_frac_up = Slot(uri=ANALYSIS_API_SCHEMA.size_frac_up, name="WaterSample_size_frac_up", curie=ANALYSIS_API_SCHEMA.curie('size_frac_up'),
-                   model_uri=ANALYSIS_API_SCHEMA.WaterSample_size_frac_up, domain=WaterSample, range=str,
+slots.WaterSample_size_frac_up = Slot(uri=BASALT_SCHEMA.size_frac_up, name="WaterSample_size_frac_up", curie=BASALT_SCHEMA.curie('size_frac_up'),
+                   model_uri=BASALT_SCHEMA.WaterSample_size_frac_up, domain=WaterSample, range=str,
                    pattern=re.compile(r'^\d+(\.\d+)?\s*um$'))
 
-slots.ProcessedSample_replicate = Slot(uri=ANALYSIS_API_SCHEMA.replicate, name="ProcessedSample_replicate", curie=ANALYSIS_API_SCHEMA.curie('replicate'),
-                   model_uri=ANALYSIS_API_SCHEMA.ProcessedSample_replicate, domain=ProcessedSample, range=Optional[int])
+slots.ProcessedSample_replicate = Slot(uri=BASALT_SCHEMA.replicate, name="ProcessedSample_replicate", curie=BASALT_SCHEMA.curie('replicate'),
+                   model_uri=BASALT_SCHEMA.ProcessedSample_replicate, domain=ProcessedSample, range=Optional[int])
 
-slots.ProcessedSample_sampled_during = Slot(uri=ANALYSIS_API_SCHEMA.sampled_during, name="ProcessedSample_sampled_during", curie=ANALYSIS_API_SCHEMA.curie('sampled_during'),
-                   model_uri=ANALYSIS_API_SCHEMA.ProcessedSample_sampled_during, domain=ProcessedSample, range=Optional[Union[str, SampleProcessingId]])
+slots.ProcessedSample_sampled_during = Slot(uri=BASALT_SCHEMA.sampled_during, name="ProcessedSample_sampled_during", curie=BASALT_SCHEMA.curie('sampled_during'),
+                   model_uri=BASALT_SCHEMA.ProcessedSample_sampled_during, domain=ProcessedSample, range=Optional[Union[str, SampleProcessingId]])
 
-slots.CoreSection_core_section = Slot(uri=ANALYSIS_API_SCHEMA.core_section, name="CoreSection_core_section", curie=ANALYSIS_API_SCHEMA.curie('core_section'),
-                   model_uri=ANALYSIS_API_SCHEMA.CoreSection_core_section, domain=CoreSection, range=Union[str, "CoreSectionEnum"])
+slots.CoreSection_core_section = Slot(uri=BASALT_SCHEMA.core_section, name="CoreSection_core_section", curie=BASALT_SCHEMA.curie('core_section'),
+                   model_uri=BASALT_SCHEMA.CoreSection_core_section, domain=CoreSection, range=Union[str, "CoreSectionEnum"])
 
-slots.AerosolArmSamplingActivity_humidity = Slot(uri=ANALYSIS_API_SCHEMA.humidity, name="AerosolArmSamplingActivity_humidity", curie=ANALYSIS_API_SCHEMA.curie('humidity'),
-                   model_uri=ANALYSIS_API_SCHEMA.AerosolArmSamplingActivity_humidity, domain=AerosolArmSamplingActivity, range=Optional[str],
+slots.AerosolArmSamplingActivity_humidity = Slot(uri=BASALT_SCHEMA.humidity, name="AerosolArmSamplingActivity_humidity", curie=BASALT_SCHEMA.curie('humidity'),
+                   model_uri=BASALT_SCHEMA.AerosolArmSamplingActivity_humidity, domain=AerosolArmSamplingActivity, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.MonetSoilSamplingActivity_collection_time = Slot(uri=ANALYSIS_API_SCHEMA.collection_time, name="MonetSoilSamplingActivity_collection_time", curie=ANALYSIS_API_SCHEMA.curie('collection_time'),
-                   model_uri=ANALYSIS_API_SCHEMA.MonetSoilSamplingActivity_collection_time, domain=MonetSoilSamplingActivity, range=str,
+slots.MonetSoilSamplingActivity_collection_time = Slot(uri=BASALT_SCHEMA.collection_time, name="MonetSoilSamplingActivity_collection_time", curie=BASALT_SCHEMA.curie('collection_time'),
+                   model_uri=BASALT_SCHEMA.MonetSoilSamplingActivity_collection_time, domain=MonetSoilSamplingActivity, range=str,
                    pattern=re.compile(r'^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$'))
 
-slots.MonetSoilSamplingActivity_infiltration_1 = Slot(uri=ANALYSIS_API_SCHEMA.infiltration_1, name="MonetSoilSamplingActivity_infiltration_1", curie=ANALYSIS_API_SCHEMA.curie('infiltration_1'),
-                   model_uri=ANALYSIS_API_SCHEMA.MonetSoilSamplingActivity_infiltration_1, domain=MonetSoilSamplingActivity, range=str,
+slots.MonetSoilSamplingActivity_infiltration_1 = Slot(uri=BASALT_SCHEMA.infiltration_1, name="MonetSoilSamplingActivity_infiltration_1", curie=BASALT_SCHEMA.curie('infiltration_1'),
+                   model_uri=BASALT_SCHEMA.MonetSoilSamplingActivity_infiltration_1, domain=MonetSoilSamplingActivity, range=str,
                    pattern=re.compile(r'^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)$'))
 
-slots.MonetSoilSamplingActivity_infiltration_2 = Slot(uri=ANALYSIS_API_SCHEMA.infiltration_2, name="MonetSoilSamplingActivity_infiltration_2", curie=ANALYSIS_API_SCHEMA.curie('infiltration_2'),
-                   model_uri=ANALYSIS_API_SCHEMA.MonetSoilSamplingActivity_infiltration_2, domain=MonetSoilSamplingActivity, range=str,
+slots.MonetSoilSamplingActivity_infiltration_2 = Slot(uri=BASALT_SCHEMA.infiltration_2, name="MonetSoilSamplingActivity_infiltration_2", curie=BASALT_SCHEMA.curie('infiltration_2'),
+                   model_uri=BASALT_SCHEMA.MonetSoilSamplingActivity_infiltration_2, domain=MonetSoilSamplingActivity, range=str,
                    pattern=re.compile(r'^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)'))
 
-slots.MonetSoilSamplingActivity_sample_collection_dev = Slot(uri=ANALYSIS_API_SCHEMA.sample_collection_dev, name="MonetSoilSamplingActivity_sample_collection_dev", curie=ANALYSIS_API_SCHEMA.curie('sample_collection_dev'),
-                   model_uri=ANALYSIS_API_SCHEMA.MonetSoilSamplingActivity_sample_collection_dev, domain=MonetSoilSamplingActivity, range=str)
+slots.MonetSoilSamplingActivity_sample_collection_dev = Slot(uri=BASALT_SCHEMA.sample_collection_dev, name="MonetSoilSamplingActivity_sample_collection_dev", curie=BASALT_SCHEMA.curie('sample_collection_dev'),
+                   model_uri=BASALT_SCHEMA.MonetSoilSamplingActivity_sample_collection_dev, domain=MonetSoilSamplingActivity, range=str)
 
-slots.OtherUndescribedSamplingActivity_humidity = Slot(uri=ANALYSIS_API_SCHEMA.humidity, name="OtherUndescribedSamplingActivity_humidity", curie=ANALYSIS_API_SCHEMA.curie('humidity'),
-                   model_uri=ANALYSIS_API_SCHEMA.OtherUndescribedSamplingActivity_humidity, domain=OtherUndescribedSamplingActivity, range=Optional[str],
+slots.OtherUndescribedSamplingActivity_humidity = Slot(uri=BASALT_SCHEMA.humidity, name="OtherUndescribedSamplingActivity_humidity", curie=BASALT_SCHEMA.curie('humidity'),
+                   model_uri=BASALT_SCHEMA.OtherUndescribedSamplingActivity_humidity, domain=OtherUndescribedSamplingActivity, range=Optional[str],
                    pattern=re.compile(r'^\d+(\.\d+)?\s*[\w\s/]+$'))
 
-slots.WaterSamplingActivity_sample_collection_dev = Slot(uri=ANALYSIS_API_SCHEMA.sample_collection_dev, name="WaterSamplingActivity_sample_collection_dev", curie=ANALYSIS_API_SCHEMA.curie('sample_collection_dev'),
-                   model_uri=ANALYSIS_API_SCHEMA.WaterSamplingActivity_sample_collection_dev, domain=WaterSamplingActivity, range=str)
+slots.WaterSamplingActivity_sample_collection_dev = Slot(uri=BASALT_SCHEMA.sample_collection_dev, name="WaterSamplingActivity_sample_collection_dev", curie=BASALT_SCHEMA.curie('sample_collection_dev'),
+                   model_uri=BASALT_SCHEMA.WaterSamplingActivity_sample_collection_dev, domain=WaterSamplingActivity, range=str)
 
-slots.WaterSamplingActivity_sample_collection_method = Slot(uri=ANALYSIS_API_SCHEMA.sample_collection_method, name="WaterSamplingActivity_sample_collection_method", curie=ANALYSIS_API_SCHEMA.curie('sample_collection_method'),
-                   model_uri=ANALYSIS_API_SCHEMA.WaterSamplingActivity_sample_collection_method, domain=WaterSamplingActivity, range=str)
+slots.WaterSamplingActivity_sample_collection_method = Slot(uri=BASALT_SCHEMA.sample_collection_method, name="WaterSamplingActivity_sample_collection_method", curie=BASALT_SCHEMA.curie('sample_collection_method'),
+                   model_uri=BASALT_SCHEMA.WaterSamplingActivity_sample_collection_method, domain=WaterSamplingActivity, range=str)
 
-slots.Study_external_identifiers = Slot(uri=ANALYSIS_API_SCHEMA.external_identifiers, name="Study_external_identifiers", curie=ANALYSIS_API_SCHEMA.curie('external_identifiers'),
-                   model_uri=ANALYSIS_API_SCHEMA.Study_external_identifiers, domain=Study, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
+slots.Study_external_identifiers = Slot(uri=BASALT_SCHEMA.external_identifiers, name="Study_external_identifiers", curie=BASALT_SCHEMA.curie('external_identifiers'),
+                   model_uri=BASALT_SCHEMA.Study_external_identifiers, domain=Study, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])

@@ -11,7 +11,7 @@ _An activity that involves the collection of a sample. This class serves as an a
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [analysis_api_schema:SamplingActivity](https://w3id.org/MONet/analysis-api-schema/SamplingActivity)
+URI: [basalt_schema:SamplingActivity](https://EMSL-Computing.github.io/basalt-schema/SamplingActivity)
 
 
 
@@ -169,7 +169,7 @@ URI: [analysis_api_schema:SamplingActivity](https://w3id.org/MONet/analysis-api-
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -178,8 +178,8 @@ URI: [analysis_api_schema:SamplingActivity](https://w3id.org/MONet/analysis-api-
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:SamplingActivity |
-| native | analysis_api_schema:SamplingActivity |
+| self | basalt_schema:SamplingActivity |
+| native | basalt_schema:SamplingActivity |
 
 
 
@@ -203,7 +203,7 @@ todos:
   samples from one site? would need to change shipped_sample_size and storage_condt
   if so.
 - does project number go here? how do we connect Sample/SamplingActivity to a project/Study?
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 abstract: true
 slots:
 - name
@@ -216,7 +216,7 @@ slots:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -309,12 +309,12 @@ todos:
   samples from one site? would need to change shipped_sample_size and storage_condt
   if so.
 - does project number go here? how do we connect Sample/SamplingActivity to a project/Study?
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 abstract: true
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     alias: id
     owner: SamplingActivity
@@ -395,7 +395,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: SamplingActivity
@@ -425,7 +425,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: SamplingActivity
@@ -461,7 +461,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - study
     - study_id
@@ -500,7 +500,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: emsl_activity
     owner: SamplingActivity
@@ -517,7 +517,7 @@ attributes:
 
       (YYYY-MM)'''
     title: collection date
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: collection_date
     owner: SamplingActivity
@@ -530,7 +530,7 @@ attributes:
     name: shipped_sample_size
     description: Total amount of sample sent to EMSL. Must include units.
     title: shipped sample size
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: shipped_sample_size
     owner: SamplingActivity
@@ -543,7 +543,7 @@ attributes:
     name: sampled_at_site
     description: Reference to the site where the sample was collected. This is a FK
       to the Site class, which contains detailed metadata about the sampling location.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sampled_at_site
     owner: SamplingActivity

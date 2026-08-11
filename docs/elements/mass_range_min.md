@@ -9,7 +9,7 @@ _The minimum mass observable by this run (in m/z)._
 
 
 
-URI: [analysis_api_schema:mass_range_min](https://w3id.org/MONet/analysis-api-schema/mass_range_min)
+URI: [basalt_schema:mass_range_min](https://EMSL-Computing.github.io/basalt-schema/mass_range_min)
 Alias: mass_range_min
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: mass_range_min
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: mass_range_min
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:mass_range_min |
-| native | analysis_api_schema:mass_range_min |
+| self | basalt_schema:mass_range_min |
+| native | basalt_schema:mass_range_min |
 
 
 
@@ -82,7 +82,7 @@ Alias: mass_range_min
 ```yaml
 name: mass_range_min
 description: The minimum mass observable by this run (in m/z).
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: mass_range_min
 domain_of:

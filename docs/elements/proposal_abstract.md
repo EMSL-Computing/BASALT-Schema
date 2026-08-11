@@ -9,7 +9,7 @@ _The abstract submitted with the research proposal._
 
 
 
-URI: [analysis_api_schema:proposal_abstract](https://w3id.org/MONet/analysis-api-schema/proposal_abstract)
+URI: [basalt_schema:proposal_abstract](https://EMSL-Computing.github.io/basalt-schema/proposal_abstract)
 Alias: proposal_abstract
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: proposal_abstract
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: proposal_abstract
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:proposal_abstract |
-| native | analysis_api_schema:proposal_abstract |
+| self | basalt_schema:proposal_abstract |
+| native | basalt_schema:proposal_abstract |
 
 
 
@@ -89,7 +89,7 @@ Alias: proposal_abstract
 ```yaml
 name: proposal_abstract
 description: The abstract submitted with the research proposal.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: proposal_abstract
 owner: Study

@@ -14,7 +14,7 @@
 # Last Updated:  2026-03-16
 # =============================================================================
 
-id: https://w3id.org/MONet/analysis-api-schema/biomass
+id: https://EMSL-Computing.github.io/basalt-schema/biomass
 name: biomass_schema
 title: MONet Microbial Biomass Ingest Schema
 description: |-
@@ -26,7 +26,7 @@ description: |-
 license: MIT
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: biomass_schema

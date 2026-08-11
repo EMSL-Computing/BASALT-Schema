@@ -9,7 +9,7 @@ _total amount or concentration of phosphate_
 
 
 
-URI: [analysis_api_schema:tot_phosphate](https://w3id.org/MONet/analysis-api-schema/tot_phosphate)
+URI: [basalt_schema:tot_phosphate](https://EMSL-Computing.github.io/basalt-schema/tot_phosphate)
 Alias: tot_phosphate
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: tot_phosphate
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: tot_phosphate
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:tot_phosphate |
-| native | analysis_api_schema:tot_phosphate |
+| self | basalt_schema:tot_phosphate |
+| native | basalt_schema:tot_phosphate |
 
 
 
@@ -83,7 +83,7 @@ Alias: tot_phosphate
 name: tot_phosphate
 description: total amount or concentration of phosphate
 title: total phosphate
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: tot_phosphate
 domain_of:

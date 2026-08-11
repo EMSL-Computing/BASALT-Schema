@@ -9,7 +9,7 @@ _Observed genotype of the plant_
 
 
 
-URI: [analysis_api_schema:plant_genotype](https://w3id.org/MONet/analysis-api-schema/plant_genotype)
+URI: [basalt_schema:plant_genotype](https://EMSL-Computing.github.io/basalt-schema/plant_genotype)
 Alias: plant_genotype
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: plant_genotype
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: plant_genotype
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:plant_genotype |
-| native | analysis_api_schema:plant_genotype |
+| self | basalt_schema:plant_genotype |
+| native | basalt_schema:plant_genotype |
 
 
 
@@ -83,7 +83,7 @@ Alias: plant_genotype
 name: plant_genotype
 description: Observed genotype of the plant
 title: plant genotype
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: plant_genotype
 domain_of:

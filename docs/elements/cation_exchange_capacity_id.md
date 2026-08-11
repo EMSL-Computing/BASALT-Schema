@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:cation_exchange_capacity_id](https://w3id.org/MONet/analysis-api-schema/cation_exchange_capacity_id)
+URI: [basalt_schema:cation_exchange_capacity_id](https://EMSL-Computing.github.io/basalt-schema/cation_exchange_capacity_id)
 Alias: cation_exchange_capacity_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: cation_exchange_capacity_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: cation_exchange_capacity_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:cation_exchange_capacity_id |
-| native | analysis_api_schema:cation_exchange_capacity_id |
+| self | basalt_schema:cation_exchange_capacity_id |
+| native | basalt_schema:cation_exchange_capacity_id |
 
 
 
@@ -83,7 +83,7 @@ Alias: cation_exchange_capacity_id
 <details>
 ```yaml
 name: cation_exchange_capacity_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: cation_exchange_capacity_id
 owner: IonsAnalysisProduct

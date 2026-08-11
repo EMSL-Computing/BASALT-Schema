@@ -9,7 +9,7 @@ _The date the sample was received._
 
 
 
-URI: [analysis_api_schema:date_received](https://w3id.org/MONet/analysis-api-schema/date_received)
+URI: [basalt_schema:date_received](https://EMSL-Computing.github.io/basalt-schema/date_received)
 Alias: date_received
 
 <!-- no inheritance hierarchy -->
@@ -57,7 +57,7 @@ Alias: date_received
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -66,8 +66,8 @@ Alias: date_received
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:date_received |
-| native | analysis_api_schema:date_received |
+| self | basalt_schema:date_received |
+| native | basalt_schema:date_received |
 
 
 
@@ -78,7 +78,7 @@ Alias: date_received
 ```yaml
 name: date_received
 description: The date the sample was received.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - received_date
 - reception_date

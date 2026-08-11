@@ -9,7 +9,7 @@ _Physical container used for the culture (flask, tube, plate, etc.)_
 
 
 
-URI: [analysis_api_schema:container_type](https://w3id.org/MONet/analysis-api-schema/container_type)
+URI: [basalt_schema:container_type](https://EMSL-Computing.github.io/basalt-schema/container_type)
 Alias: container_type
 
 <!-- no inheritance hierarchy -->
@@ -22,12 +22,12 @@ Alias: container_type
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [StrainPurity](StrainPurity.md) | Purity check of a strain culture |  no  |
 | [PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |  no  |
-| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
 | [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
+| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
 | [StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |  no  |
 | [ContainerType](ContainerType.md) |  |  no  |
-| [StrainPurity](StrainPurity.md) | Purity check of a strain culture |  no  |
 
 
 
@@ -66,7 +66,7 @@ Alias: container_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -75,8 +75,8 @@ Alias: container_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:container_type |
-| native | analysis_api_schema:container_type |
+| self | basalt_schema:container_type |
+| native | basalt_schema:container_type |
 
 
 
@@ -87,7 +87,7 @@ Alias: container_type
 ```yaml
 name: container_type
 description: Physical container used for the culture (flask, tube, plate, etc.)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: container_type
 domain_of:

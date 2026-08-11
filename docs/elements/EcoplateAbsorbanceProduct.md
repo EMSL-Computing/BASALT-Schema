@@ -17,7 +17,7 @@ _v1 origin: plate-general.yaml EcoplateAbsorbanceProduct_
 
 
 
-URI: [analysis_api_schema:EcoplateAbsorbanceProduct](https://w3id.org/MONet/analysis-api-schema/EcoplateAbsorbanceProduct)
+URI: [basalt_schema:EcoplateAbsorbanceProduct](https://EMSL-Computing.github.io/basalt-schema/EcoplateAbsorbanceProduct)
 
 
 
@@ -106,7 +106,7 @@ URI: [analysis_api_schema:EcoplateAbsorbanceProduct](https://w3id.org/MONet/anal
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -115,8 +115,8 @@ URI: [analysis_api_schema:EcoplateAbsorbanceProduct](https://w3id.org/MONet/anal
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:EcoplateAbsorbanceProduct |
-| native | analysis_api_schema:EcoplateAbsorbanceProduct |
+| self | basalt_schema:EcoplateAbsorbanceProduct |
+| native | basalt_schema:EcoplateAbsorbanceProduct |
 
 
 
@@ -140,7 +140,7 @@ description: 'Ecoplate absorbance measurement product.
 
 
   v1 origin: plate-general.yaml EcoplateAbsorbanceProduct'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: PlateProduct
 slots:
 - plate_lot
@@ -163,13 +163,13 @@ description: 'Ecoplate absorbance measurement product.
 
 
   v1 origin: plate-general.yaml EcoplateAbsorbanceProduct'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: PlateProduct
 attributes:
   plate_lot:
     name: plate_lot
     description: Manufacturer lot number for Biolog EcoPlate QC
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: plate_lot
     owner: EcoplateAbsorbanceProduct
@@ -181,7 +181,7 @@ attributes:
     description: Mean measurement of uninoculated control wells (baseline for Ecoplate)
     todos:
     - units
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: uninoculated_mean
     owner: EcoplateAbsorbanceProduct
@@ -193,7 +193,7 @@ attributes:
     description: Average Well Color Development (AWCD) metric for Ecoplate
     todos:
     - units
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: average_well_color_development
     owner: EcoplateAbsorbanceProduct
@@ -204,7 +204,7 @@ attributes:
     name: wavelength_nm
     description: Measurement wavelength in nanometres (e.g. 590 Ecoplate, 610 AMP2
       OD)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: wavelength_nm
     owner: EcoplateAbsorbanceProduct
@@ -221,7 +221,7 @@ attributes:
       Examples: "t=0", "t=24h", "t=48h".
 
       Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivity'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: timepoint_label
     owner: EcoplateAbsorbanceProduct
@@ -235,7 +235,7 @@ attributes:
     description: Mean measurement across all sample wells (excludes blanks)
     todos:
     - units
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: plate_average
     owner: EcoplateAbsorbanceProduct
@@ -247,7 +247,7 @@ attributes:
     description: Mean measurement of uninoculated control wells
     todos:
     - units
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: blank_mean
     owner: EcoplateAbsorbanceProduct
@@ -257,7 +257,7 @@ attributes:
   cv_percent:
     name: cv_percent
     description: Coefficient of variation across technical replicates
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: cv_percent
     owner: EcoplateAbsorbanceProduct
@@ -276,7 +276,7 @@ attributes:
     todos:
     - decide how to represent in backend (normalized child table with FK to PlateSetupActivity,
       array column, or other)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: well_readings
     owner: EcoplateAbsorbanceProduct

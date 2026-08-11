@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:custodian_id](https://w3id.org/MONet/analysis-api-schema/custodian_id)
+URI: [basalt_schema:custodian_id](https://EMSL-Computing.github.io/basalt-schema/custodian_id)
 Alias: custodian_id
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: custodian_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: custodian_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:custodian_id |
-| native | analysis_api_schema:custodian_id |
+| self | basalt_schema:custodian_id |
+| native | basalt_schema:custodian_id |
 
 
 
@@ -84,7 +84,7 @@ Alias: custodian_id
 <details>
 ```yaml
 name: custodian_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: custodian_id
 owner: InstrumentCustodian

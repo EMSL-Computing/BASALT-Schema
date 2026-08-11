@@ -9,7 +9,7 @@ _percentage of volatile solids removed from the anaerobic digestor_
 
 
 
-URI: [analysis_api_schema:efficiency_percent](https://w3id.org/MONet/analysis-api-schema/efficiency_percent)
+URI: [basalt_schema:efficiency_percent](https://EMSL-Computing.github.io/basalt-schema/efficiency_percent)
 Alias: efficiency_percent
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: efficiency_percent
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -70,8 +70,8 @@ Alias: efficiency_percent
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:efficiency_percent |
-| native | analysis_api_schema:efficiency_percent |
+| self | basalt_schema:efficiency_percent |
+| native | basalt_schema:efficiency_percent |
 
 
 
@@ -83,7 +83,7 @@ Alias: efficiency_percent
 name: efficiency_percent
 description: percentage of volatile solids removed from the anaerobic digestor
 title: efficiency percent
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: efficiency_percent
 domain_of:

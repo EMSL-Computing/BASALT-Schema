@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_muscovite](https://w3id.org/MONet/analysis-api-schema/flag_muscovite)
+URI: [basalt_schema:flag_muscovite](https://EMSL-Computing.github.io/basalt-schema/flag_muscovite)
 Alias: flag_muscovite
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_muscovite
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_muscovite
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_muscovite |
-| native | analysis_api_schema:flag_muscovite |
+| self | basalt_schema:flag_muscovite |
+| native | basalt_schema:flag_muscovite |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_muscovite
 <details>
 ```yaml
 name: flag_muscovite
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_muscovite
 owner: XRDPhaseProduct

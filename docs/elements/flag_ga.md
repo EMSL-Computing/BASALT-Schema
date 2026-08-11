@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_ga](https://w3id.org/MONet/analysis-api-schema/flag_ga)
+URI: [basalt_schema:flag_ga](https://EMSL-Computing.github.io/basalt-schema/flag_ga)
 Alias: flag_ga
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_ga
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_ga
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_ga |
-| native | analysis_api_schema:flag_ga |
+| self | basalt_schema:flag_ga |
+| native | basalt_schema:flag_ga |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_ga
 <details>
 ```yaml
 name: flag_ga
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_ga
 owner: XRFElementalProduct

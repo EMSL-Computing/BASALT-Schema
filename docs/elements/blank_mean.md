@@ -9,7 +9,7 @@ _Mean measurement of uninoculated control wells_
 
 
 
-URI: [analysis_api_schema:blank_mean](https://w3id.org/MONet/analysis-api-schema/blank_mean)
+URI: [basalt_schema:blank_mean](https://EMSL-Computing.github.io/basalt-schema/blank_mean)
 Alias: blank_mean
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: blank_mean
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |  no  |
 | [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |  no  |
+| [AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |  no  |
 | [PlateProduct](PlateProduct.md) | Abstract base for plate measurement data products |  no  |
 
 
@@ -67,7 +67,7 @@ Alias: blank_mean
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -76,8 +76,8 @@ Alias: blank_mean
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:blank_mean |
-| native | analysis_api_schema:blank_mean |
+| self | basalt_schema:blank_mean |
+| native | basalt_schema:blank_mean |
 
 
 
@@ -90,7 +90,7 @@ name: blank_mean
 description: Mean measurement of uninoculated control wells
 todos:
 - units
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: blank_mean
 domain_of:

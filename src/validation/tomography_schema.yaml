@@ -6,7 +6,7 @@
 # CONTEXT and Purpose:
 # - Validation schema for TomographyProduct   pore geometry and flow properties
 #   derived from X-ray computed tomography (XCT / micro-CT) of intact soil cores
-# - Source: TomographyProduct class in src/analysis_api_schema/schema/products.yaml
+# - Source: TomographyProduct class in src/basalt_schema/schema/products.yaml
 # - NOT currently in Soil_BioChemical_properties.csv (published in separate XCT deliverable)
 # - This schema covers the API-level ingest contract for rapid validation
 #
@@ -30,7 +30,7 @@
 # Last Updated:  2026-03-16
 # =============================================================================
 
-id: https://w3id.org/MONet/analysis-api-schema/tomography
+id: https://EMSL-Computing.github.io/basalt-schema/tomography
 name: tomography_schema
 title: MONet XCT / Tomography Product Schema
 description: |-
@@ -44,7 +44,7 @@ description: |-
 license: MIT
 
 prefixes:
-  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: tomography_schema

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:ElementalAnalysisMethod](https://w3id.org/MONet/analysis-api-schema/ElementalAnalysisMethod)
+URI: [basalt_schema:ElementalAnalysisMethod](https://EMSL-Computing.github.io/basalt-schema/ElementalAnalysisMethod)
 
 
 
@@ -60,7 +60,7 @@ URI: [analysis_api_schema:ElementalAnalysisMethod](https://w3id.org/MONet/analys
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -69,8 +69,8 @@ URI: [analysis_api_schema:ElementalAnalysisMethod](https://w3id.org/MONet/analys
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ElementalAnalysisMethod |
-| native | analysis_api_schema:ElementalAnalysisMethod |
+| self | basalt_schema:ElementalAnalysisMethod |
+| native | basalt_schema:ElementalAnalysisMethod |
 
 
 
@@ -86,7 +86,7 @@ URI: [analysis_api_schema:ElementalAnalysisMethod](https://w3id.org/MONet/analys
 <details>
 ```yaml
 name: ElementalAnalysisMethod
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Method
 
 ```
@@ -97,14 +97,14 @@ is_a: Method
 <details>
 ```yaml
 name: ElementalAnalysisMethod
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Method
 attributes:
   analytic:
     name: analytic
     todos:
     - what does this mean
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: analytic
     owner: ElementalAnalysisMethod

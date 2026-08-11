@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_toc_avg](https://w3id.org/MONet/analysis-api-schema/flag_toc_avg)
+URI: [basalt_schema:flag_toc_avg](https://EMSL-Computing.github.io/basalt-schema/flag_toc_avg)
 Alias: flag_toc_avg
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: flag_toc_avg
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MAOMProduct](MAOMProduct.md) | Mineral-Associated Organic Matter (MAOM) analysis product, typically derived ... |  no  |
 | [WEOMProduct](WEOMProduct.md) | Water Extractable Organic Matter (WEOM) analysis product, typically derived v... |  no  |
+| [MAOMProduct](MAOMProduct.md) | Mineral-Associated Organic Matter (MAOM) analysis product, typically derived ... |  no  |
 
 
 
@@ -59,8 +59,8 @@ Alias: flag_toc_avg
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_toc_avg |
-| native | analysis_api_schema:flag_toc_avg |
+| self | basalt_schema:flag_toc_avg |
+| native | basalt_schema:flag_toc_avg |
 
 
 

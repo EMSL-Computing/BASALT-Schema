@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:project_status](https://w3id.org/MONet/analysis-api-schema/project_status)
+URI: [basalt_schema:project_status](https://EMSL-Computing.github.io/basalt-schema/project_status)
 Alias: project_status
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: project_status
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -72,8 +72,8 @@ Alias: project_status
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:project_status |
-| native | analysis_api_schema:project_status |
+| self | basalt_schema:project_status |
+| native | basalt_schema:project_status |
 
 
 
@@ -83,7 +83,7 @@ Alias: project_status
 <details>
 ```yaml
 name: project_status
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: project_status
 owner: Study

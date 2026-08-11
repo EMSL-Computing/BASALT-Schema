@@ -3,7 +3,7 @@
 gen_amp2_test_data.py
 
 Generate AMP2 validation test data (YAML + CSV) from real EPix1 plate readings.
-Run from the analysis-api-schema repo root:
+Run from the basalt-schema repo root:
 
     python util/gen_amp2_test_data.py
 

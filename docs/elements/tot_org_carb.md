@@ -9,7 +9,7 @@ _Total organic carbon content. Provided as gram of Carbon per kg of your sample 
 
 
 
-URI: [analysis_api_schema:tot_org_carb](https://w3id.org/MONet/analysis-api-schema/tot_org_carb)
+URI: [basalt_schema:tot_org_carb](https://EMSL-Computing.github.io/basalt-schema/tot_org_carb)
 Alias: tot_org_carb
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: tot_org_carb
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 
 
@@ -70,7 +70,7 @@ Alias: tot_org_carb
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: tot_org_carb
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:tot_org_carb |
-| native | analysis_api_schema:tot_org_carb |
+| self | basalt_schema:tot_org_carb |
+| native | basalt_schema:tot_org_carb |
 
 
 
@@ -93,7 +93,7 @@ name: tot_org_carb
 description: 'Total organic carbon content. Provided as gram of Carbon per kg of your
   sample material. (Unit: g C/kg)'
 title: total organic carbon
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: tot_org_carb
 domain_of:

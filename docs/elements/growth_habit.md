@@ -9,7 +9,7 @@ _Characteristic shape appearance or growth form of a plant species_
 
 
 
-URI: [analysis_api_schema:growth_habit](https://w3id.org/MONet/analysis-api-schema/growth_habit)
+URI: [basalt_schema:growth_habit](https://EMSL-Computing.github.io/basalt-schema/growth_habit)
 Alias: growth_habit
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: growth_habit
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: growth_habit
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -71,8 +71,8 @@ Alias: growth_habit
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:growth_habit |
-| native | analysis_api_schema:growth_habit |
+| self | basalt_schema:growth_habit |
+| native | basalt_schema:growth_habit |
 
 
 
@@ -84,7 +84,7 @@ Alias: growth_habit
 name: growth_habit
 description: Characteristic shape appearance or growth form of a plant species
 title: growth habit
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: growth_habit
 domain_of:

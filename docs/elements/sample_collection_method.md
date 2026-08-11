@@ -9,7 +9,7 @@ _The method used to collect an environmental sample. This can be a citation or d
 
 
 
-URI: [analysis_api_schema:sample_collection_method](https://w3id.org/MONet/analysis-api-schema/sample_collection_method)
+URI: [basalt_schema:sample_collection_method](https://EMSL-Computing.github.io/basalt-schema/sample_collection_method)
 Alias: sample_collection_method
 
 <!-- no inheritance hierarchy -->
@@ -23,15 +23,15 @@ Alias: sample_collection_method
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [MixedCultureSamplingActivity](MixedCultureSamplingActivity.md) | Collection of samples from a mixed culture |  no  |
-| [SoilSamplingActivity](SoilSamplingActivity.md) | Collection of soil samples from the environment |  no  |
-| [PureCultureSamplingActivity](PureCultureSamplingActivity.md) | Collection of samples from a culture containing a single organism |  no  |
-| [SedimentSamplingActivity](SedimentSamplingActivity.md) | Collection of sediment samples from the environment |  no  |
-| [WaterSamplingActivity](WaterSamplingActivity.md) | Collection of water samples |  yes  |
-| [TerraformSamplingActivity](TerraformSamplingActivity.md) | Collection of samples from a Terraform device |  no  |
-| [PlantSamplingActivity](PlantSamplingActivity.md) | Collection of samples associated with plants |  no  |
-| [CultureEnvironmentalSamplingActivity](CultureEnvironmentalSamplingActivity.md) | Collection of samples from a culture of organisms taken from the environment |  no  |
-| [FieldDeployedTerraformSamplingActivity](FieldDeployedTerraformSamplingActivity.md) | Collection of samples from a field-deployed Terraform device |  no  |
 | [OtherUndescribedSamplingActivity](OtherUndescribedSamplingActivity.md) | Collection of samples from source that does not fit into any of the other cat... |  no  |
+| [TerraformSamplingActivity](TerraformSamplingActivity.md) | Collection of samples from a Terraform device |  no  |
+| [CultureEnvironmentalSamplingActivity](CultureEnvironmentalSamplingActivity.md) | Collection of samples from a culture of organisms taken from the environment |  no  |
+| [PureCultureSamplingActivity](PureCultureSamplingActivity.md) | Collection of samples from a culture containing a single organism |  no  |
+| [SoilSamplingActivity](SoilSamplingActivity.md) | Collection of soil samples from the environment |  no  |
+| [FieldDeployedTerraformSamplingActivity](FieldDeployedTerraformSamplingActivity.md) | Collection of samples from a field-deployed Terraform device |  no  |
+| [WaterSamplingActivity](WaterSamplingActivity.md) | Collection of water samples |  yes  |
+| [SedimentSamplingActivity](SedimentSamplingActivity.md) | Collection of sediment samples from the environment |  no  |
+| [PlantSamplingActivity](PlantSamplingActivity.md) | Collection of samples associated with plants |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: sample_collection_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,8 +79,8 @@ Alias: sample_collection_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sample_collection_method |
-| native | analysis_api_schema:sample_collection_method |
+| self | basalt_schema:sample_collection_method |
+| native | basalt_schema:sample_collection_method |
 
 
 
@@ -93,7 +93,7 @@ name: sample_collection_method
 description: The method used to collect an environmental sample. This can be a citation
   or description.
 title: sample collection method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sample_collection_method
 domain_of:

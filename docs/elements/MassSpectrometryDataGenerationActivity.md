@@ -9,7 +9,7 @@ _A record of the mass spectrometry run that generates a raw data product._
 
 
 
-URI: [analysis_api_schema:MassSpectrometryDataGenerationActivity](https://w3id.org/MONet/analysis-api-schema/MassSpectrometryDataGenerationActivity)
+URI: [basalt_schema:MassSpectrometryDataGenerationActivity](https://EMSL-Computing.github.io/basalt-schema/MassSpectrometryDataGenerationActivity)
 
 
 
@@ -165,7 +165,7 @@ URI: [analysis_api_schema:MassSpectrometryDataGenerationActivity](https://w3id.o
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -174,8 +174,8 @@ URI: [analysis_api_schema:MassSpectrometryDataGenerationActivity](https://w3id.o
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:MassSpectrometryDataGenerationActivity |
-| native | analysis_api_schema:MassSpectrometryDataGenerationActivity |
+| self | basalt_schema:MassSpectrometryDataGenerationActivity |
+| native | basalt_schema:MassSpectrometryDataGenerationActivity |
 
 
 
@@ -192,7 +192,7 @@ URI: [analysis_api_schema:MassSpectrometryDataGenerationActivity](https://w3id.o
 ```yaml
 name: MassSpectrometryDataGenerationActivity
 description: A record of the mass spectrometry run that generates a raw data product.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: DataGenerationActivity
 slots:
 - uses_ms_configuration
@@ -208,14 +208,14 @@ slots:
 ```yaml
 name: MassSpectrometryDataGenerationActivity
 description: A record of the mass spectrometry run that generates a raw data product.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: DataGenerationActivity
 attributes:
   uses_ms_configuration:
     name: uses_ms_configuration
     description: Points to a record of the configuration used for the mass spectrometry
       run.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: uses_ms_configuration
     owner: MassSpectrometryDataGenerationActivity
@@ -227,7 +227,7 @@ attributes:
     name: uses_chromatography
     description: Points to a record of the chromatography used to introduce samples
       for the mass spectrometry run.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: uses_chromatography
     owner: MassSpectrometryDataGenerationActivity
@@ -237,7 +237,7 @@ attributes:
   analyte_category:
     name: analyte_category
     description: omics type for easier search, optional
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: analyte_category
     owner: MassSpectrometryDataGenerationActivity
@@ -250,7 +250,7 @@ attributes:
       Lower = earlier in series. Use when acquisition_time alone is insufficient.\n\
       \nDDL: ALTER TABLE \"DataGenerationActivity\"\n       ADD COLUMN sequence_order\
       \ INTEGER;"
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sequence_order
     owner: MassSpectrometryDataGenerationActivity
@@ -261,7 +261,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: MassSpectrometryDataGenerationActivity
@@ -291,7 +291,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: MassSpectrometryDataGenerationActivity
@@ -323,7 +323,7 @@ attributes:
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: protocol_url
     owner: MassSpectrometryDataGenerationActivity
@@ -334,7 +334,7 @@ attributes:
   protocol_version:
     name: protocol_version
     description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: protocol_version
     owner: MassSpectrometryDataGenerationActivity
@@ -344,7 +344,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     identifier: true
     alias: id
     owner: MassSpectrometryDataGenerationActivity
@@ -424,7 +424,7 @@ attributes:
     required: true
   analyte_id:
     name: analyte_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: analyte_id
     owner: MassSpectrometryDataGenerationActivity
@@ -433,7 +433,7 @@ attributes:
     range: ProcessedSample
   acquisition_start_time:
     name: acquisition_start_time
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: acquisition_start_time
     owner: MassSpectrometryDataGenerationActivity
@@ -443,7 +443,7 @@ attributes:
     required: true
   acquisition_end_time:
     name: acquisition_end_time
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: acquisition_end_time
     owner: MassSpectrometryDataGenerationActivity
@@ -453,7 +453,7 @@ attributes:
     required: true
   instrument_used:
     name: instrument_used
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: instrument_used
     owner: MassSpectrometryDataGenerationActivity
@@ -462,7 +462,7 @@ attributes:
     range: Instrument
   instrument_operator_id:
     name: instrument_operator_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: instrument_operator_id
     owner: MassSpectrometryDataGenerationActivity

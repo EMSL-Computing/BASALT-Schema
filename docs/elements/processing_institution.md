@@ -9,7 +9,7 @@ _The institution where the activity took place._
 
 
 
-URI: [analysis_api_schema:processing_institution](https://w3id.org/MONet/analysis-api-schema/processing_institution)
+URI: [basalt_schema:processing_institution](https://EMSL-Computing.github.io/basalt-schema/processing_institution)
 Alias: processing_institution
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: processing_institution
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -77,8 +77,8 @@ Alias: processing_institution
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:processing_institution |
-| native | analysis_api_schema:processing_institution |
+| self | basalt_schema:processing_institution |
+| native | basalt_schema:processing_institution |
 
 
 
@@ -89,7 +89,7 @@ Alias: processing_institution
 ```yaml
 name: processing_institution
 description: The institution where the activity took place.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: processing_institution
 owner: Activity

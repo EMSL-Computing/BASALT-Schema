@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:detection_limit](https://w3id.org/MONet/analysis-api-schema/detection_limit)
+URI: [basalt_schema:detection_limit](https://EMSL-Computing.github.io/basalt-schema/detection_limit)
 Alias: detection_limit
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: detection_limit
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -73,8 +73,8 @@ Alias: detection_limit
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:detection_limit |
-| native | analysis_api_schema:detection_limit |
+| self | basalt_schema:detection_limit |
+| native | basalt_schema:detection_limit |
 
 
 
@@ -84,7 +84,7 @@ Alias: detection_limit
 <details>
 ```yaml
 name: detection_limit
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: detection_limit
 owner: KuoMethod

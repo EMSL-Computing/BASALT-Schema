@@ -9,7 +9,7 @@ _Redox potential measured relative to a hydrogen cell indicating oxidation or re
 
 
 
-URI: [analysis_api_schema:redox_potential](https://w3id.org/MONet/analysis-api-schema/redox_potential)
+URI: [basalt_schema:redox_potential](https://EMSL-Computing.github.io/basalt-schema/redox_potential)
 Alias: redox_potential
 
 <!-- no inheritance hierarchy -->
@@ -22,11 +22,11 @@ Alias: redox_potential
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 
@@ -72,7 +72,7 @@ Alias: redox_potential
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -81,8 +81,8 @@ Alias: redox_potential
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:redox_potential |
-| native | analysis_api_schema:redox_potential |
+| self | basalt_schema:redox_potential |
+| native | basalt_schema:redox_potential |
 
 
 
@@ -95,7 +95,7 @@ name: redox_potential
 description: 'Redox potential measured relative to a hydrogen cell indicating oxidation
   or reduction potential (Unit: mV)'
 title: redox potential
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: redox_potential
 domain_of:
