@@ -54,15 +54,6 @@ BASALT uses **semantic versioning** (`MAJOR.MINOR.PATCH`) for the schema:
    Derived from **git tags** (`v0.1.0`, `v0.2.0`, …) via [uv-dynamic-versioning](https://github.com/ninoseki/uv-dynamic-versioning).  
    Installable package name: `basalt_schema`.
 
-3. **Release checklist**
-   - [ ] Bump `version` in `src/basalt_schema/schema/basalt_schema.yaml`
-   - [ ] Update the schema version badge / table in this README
-   - [ ] Regenerate project artifacts if needed (`just gen-project`)
-   - [ ] Merge to `main`
-   - [ ] Tag the release: `git tag -a v0.1.0 -m "basalt-schema 0.1.0"` and push tags
-   - [ ] Consumers pin or track the tag / package version
-
-Consumers (API, DB migrations, ingestion) should record which schema version they were built against.
 
 ## Developer Documentation
 
@@ -79,4 +70,4 @@ This material is free to use, and attribution is always appreciated. Attribution
 
 Authored by Conrad Mearns, Maia Kapur, Montana Smith, Beata Meluch, Aramy Truong, and Yuri E. Corilo at the Pacific Northwest National Laboratory, operated by Battelle for the U.S. Department of Energy.
 
-(Optional, if applicable): Please cite the following in your work: (Place Holder Zenodo)
+Please cite the following in your work: (Place Holder Zenodo)
