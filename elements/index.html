@@ -1,0 +1,4897 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://mkapur-pnnl.github.io/analysis-api-schema/elements/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../about/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Schema - analysis-api-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+
+      
+    
+<script src="../assets/pymdownx-extras/material-extra-theme-2ek1P7jT.js" type="text/javascript"></script>
+<script src="../assets/pymdownx-extras/material-extra-3rdparty-BUCF4rjN.js" type="text/javascript"></script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+      <link rel="stylesheet" href="../assets/pymdownx-extras/extra-c6ab11540a.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#monet-analysis-api-schema" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="header.title"
+  >
+    <a
+      href="https://mkapur-pnnl.github.io/analysis-api-schema/"
+      title="analysis-api-schema"
+      class="md-header__button md-logo"
+      aria-label="analysis-api-schema"
+    >
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            analysis-api-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Schema
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      <div class="md-header-nav__scheme md-header-nav__button md-source__icon md-icon">
+          <a
+            href="javascript:toggleScheme();"
+            title="Light mode"
+            class="light-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+          </a>
+          <a
+            href="javascript:toggleScheme();"
+            title="Dark mode"
+            class="dark-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+          </a>
+          <a
+            href="javascript:toggleScheme();"
+            title="System preference"
+            class="system-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.5 2c-1.79 1.15-3 3.18-3 5.5s1.21 4.35 3.03 5.5C4.46 13 2 10.54 2 7.5A5.5 5.5 0 0 1 7.5 2m11.57 1.5 1.43 1.43L4.93 20.5 3.5 19.07zm-6.18 2.43L11.41 5 9.97 6l.42-1.7L9 3.24l1.75-.12.58-1.65L12 3.1l1.73.03-1.35 1.13zm-3.3 3.61-1.16-.73-1.12.78.34-1.32-1.09-.83 1.36-.09.45-1.29.51 1.27 1.36.03-1.05.87zM19 13.5a5.5 5.5 0 0 1-5.5 5.5c-1.22 0-2.35-.4-3.26-1.07l7.69-7.69c.67.91 1.07 2.04 1.07 3.26m-4.4 6.58 2.77-1.15-.24 3.35zm4.33-2.7 1.15-2.77 2.2 2.54zm1.15-4.96-1.14-2.78 3.34.24zM9.63 18.93l2.77 1.15-2.53 2.19z"/></svg>
+          </a>
+           <a
+            href="javascript:toggleScheme();"
+            title="Unknown scheme"
+            class="unknown-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.07 11.25-.9.92C13.45 12.89 13 13.5 13 15h-2v-.5c0-1.11.45-2.11 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-2-2 2 2 0 0 0-2 2H8a4 4 0 0 1 4-4 4 4 0 0 1 4 4 3.2 3.2 0 0 1-.93 2.25M13 19h-2v-2h2M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10"/></svg>
+          </a>
+      </div>
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mkapur-pnnl/analysis-api-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="analysis-api-schema" class="md-nav__button md-logo" aria-label="analysis-api-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    analysis-api-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mkapur-pnnl/analysis-api-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subsets
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visuals
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Visuals
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://mkapur-pnnl.github.io/analysis-api-schema/files/schema-explorer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema Explorer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subsets
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+  
+  
+
+
+<h1 id="monet-analysis-api-schema">MONet Analysis API Schema</h1>
+<p>LinkML-based schema for MONet soil analysis data management and metadata enrichment.
+This schema defines the data models for samples, processed samples, site metadata,
+and enrichment providers used in the MONet Analysis API.</p>
+<p>URI: <a href="https://w3id.org/MONet/analysis-api-schema">https://w3id.org/MONet/analysis-api-schema</a></p>
+<p>Name: analysis-api-schema</p>
+<h2 id="classes">Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Activity/">Activity</a></td>
+<td>Something that happens over time and can use equipment</td>
+</tr>
+<tr>
+<td><a href="AlternativeIdentifier/">AlternativeIdentifier</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="Changelog/">Changelog</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ConditioningValue/">ConditioningValue</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="Configuration/">Configuration</a></td>
+<td>Record of configuration and/or settings for an activity</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ChromatographyConfiguration/">ChromatographyConfiguration</a></td>
+<td>Configuration and settings for a chromatography run</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MassSpectrometryConfiguration/">MassSpectrometryConfiguration</a></td>
+<td>Instrument configuration and setup for a mass spectrometry run</td>
+</tr>
+<tr>
+<td><a href="ContainerAxis/">ContainerAxis</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ContainerType/">ContainerType</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ControlledTermValue/">ControlledTermValue</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="Custodian/">Custodian</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="DataGenerationActivity/">DataGenerationActivity</a></td>
+<td>Abstract base for any data generation activity (physical to digital)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MassSpectrometryDataGenerationActivity/">MassSpectrometryDataGenerationActivity</a></td>
+<td>A record of the mass spectrometry run that generates a raw data product</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NucleotideSequencing/">NucleotideSequencing</a></td>
+<td>A lab activity in which DNA or RNA that was extracted from a sample is sequen...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PlateDataGenerationActivity/">PlateDataGenerationActivity</a></td>
+<td>Abstract base for plate measurement activities</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AMP2DataGenerationActivity/">AMP2DataGenerationActivity</a></td>
+<td>AMP2 plate measurement (OD, fluorescence, flow cytometry)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EcoplateDataGenerationActivity/">EcoplateDataGenerationActivity</a></td>
+<td>Ecoplate absorbance measurement at a single timepoint</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RespirationDataGenerationActivity/">RespirationDataGenerationActivity</a></td>
+<td>Data generation activity for soil respiration analysis</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XRayDataGenerationActivity/">XRayDataGenerationActivity</a></td>
+<td>Abstract base class for X-ray analytical methods including XRF (elemental)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XRDDataGenerationActivity/">XRDDataGenerationActivity</a></td>
+<td>X-ray Diffraction (XRD) mineralogical analysis activity</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XRFDataGenerationActivity/">XRFDataGenerationActivity</a></td>
+<td>X-ray Fluorescence (XRF) elemental analysis activity</td>
+</tr>
+<tr>
+<td><a href="DataProcessingActivity/">DataProcessingActivity</a></td>
+<td>Abstract base for any data processing activity (digital to digital)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MassSpectrometryDataProcessingActivity/">MassSpectrometryDataProcessingActivity</a></td>
+<td>Concrete mass spectrometry workflow run</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MetagenomicsDataProcessingActivity/">MetagenomicsDataProcessingActivity</a></td>
+<td>Concrete metagenomics workflow run</td>
+</tr>
+<tr>
+<td><a href="DataProduct/">DataProduct</a></td>
+<td>Abstract base class for raw or processed data accessible in S3 storage</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="InstrumentData/">InstrumentData</a></td>
+<td>An abstract parent class for raw data files generated by different kinds  of ...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MassSpectrometryInstrumentData/">MassSpectrometryInstrumentData</a></td>
+<td>Raw data files output from a mass spectrometry instrument</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NucleotideSequencingInstrumentData/">NucleotideSequencingInstrumentData</a></td>
+<td>Data generated by a nucleotide sequencing instrument (e</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProcessedData/">ProcessedData</a></td>
+<td>A data product generated by a workflow execution</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="BulkDensityProduct/">BulkDensityProduct</a></td>
+<td>Bulk density analysis product, typically derived via oven-drying and weighing...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ElementalAnalysisProduct/">ElementalAnalysisProduct</a></td>
+<td>Elemental analysis product, typically derived via combustion or similar instr...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EnzymeProduct/">EnzymeProduct</a></td>
+<td>Enzyme activity analysis product, typically derived via colorimetric assay of...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="GWCMoistureProduct/">GWCMoistureProduct</a></td>
+<td>Gravimetric water content (GWC) analysis product, typically derived via oven-...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HydraulicPropertiesProduct/">HydraulicPropertiesProduct</a></td>
+<td>Soil hydraulic parameters derived from HYPROP evaporation-experiment data</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="IonsAnalysisProduct/">IonsAnalysisProduct</a></td>
+<td>Ions analysis product, typically derived via ICP-OES or similar instrument</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MassSpectrometryDataProduct/">MassSpectrometryDataProduct</a></td>
+<td>Abstract base for all mass spectrometry data products</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MetaproteomicsProduct/">MetaproteomicsProduct</a></td>
+<td>Abstract parent class for processed metaproteomics data</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MolecularIdentificationProduct/">MolecularIdentificationProduct</a></td>
+<td>a file containing molecular formula identifications that was output from a ma...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MSImageProduct/">MSImageProduct</a></td>
+<td>one or more image(s) output from a mass spec data processing workflow (eg</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MetagenomicsProduct/">MetagenomicsProduct</a></td>
+<td>Abstract base for all metagenomics data products</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MetagenomicsAnnotationProduct/">MetagenomicsAnnotationProduct</a></td>
+<td>Top-level archive for functional annotation outputs (zip/tar stored in MinIO)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MetagenomicsBinningProduct/">MetagenomicsBinningProduct</a></td>
+<td>Top-level archive (zip/tar) for binning results stored in MinIO</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MetagenomicsGenePhylogenyProduct/">MetagenomicsGenePhylogenyProduct</a></td>
+<td>Top-level archive for gene-based phylogeny outputs (zip/tar stored in MinIO)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MicrobialBiomassProduct/">MicrobialBiomassProduct</a></td>
+<td>Microbial biomass analysis product, typically derived via chloroform fumigati...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NitrogenAnalysisProduct/">NitrogenAnalysisProduct</a></td>
+<td>Nitrogen analysis product, typically derived via colorimetric assay of soil e...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PhosphorusAnalysisProduct/">PhosphorusAnalysisProduct</a></td>
+<td>Phosphorus analysis product, typically derived via colorimetric assay of soil...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PHProduct/">PHProduct</a></td>
+<td>Soil pH analysis product, typically derived via pH meter or similar instrumen...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RespirationProduct/">RespirationProduct</a></td>
+<td>Soil respiration analysis product</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TextureProduct/">TextureProduct</a></td>
+<td>Soil texture analysis product, typically derived via hydrometer or similar in...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TomographyProduct/">TomographyProduct</a></td>
+<td>Soil tomography analysis product, typically derived via X-ray computed tomogr...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XRayDataProduct/">XRayDataProduct</a></td>
+<td>Abstract base class for X-ray analytical data products</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XRDPhaseProduct/">XRDPhaseProduct</a></td>
+<td>X-ray Diffraction (XRD) mineral phase identification and quantification data</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XRFElementalProduct/">XRFElementalProduct</a></td>
+<td>X-ray Fluorescence (XRF) elemental concentration data</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SitePhoto/">SitePhoto</a></td>
+<td>A data product representing a photo of a site, typically taken during samplin...</td>
+</tr>
+<tr>
+<td><a href="DOI/">DOI</a></td>
+<td>A digital object identifier (DOI) representing a persistent link to a digital...</td>
+</tr>
+<tr>
+<td><a href="Entity/">Entity</a></td>
+<td>Base identifiable thing</td>
+</tr>
+<tr>
+<td><a href="FunctionalAnnotationIdentifier/">FunctionalAnnotationIdentifier</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="HasIncubationConditions/">HasIncubationConditions</a></td>
+<td>Mixin for activities/setups that involve controlled incubation</td>
+</tr>
+<tr>
+<td><a href="Instrument/">Instrument</a></td>
+<td>A material entity that is designed to perform a function in a scientific</td>
+</tr>
+<tr>
+<td><a href="InstrumentAlternativeIdentifier/">InstrumentAlternativeIdentifier</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="InstrumentCustodian/">InstrumentCustodian</a></td>
+<td>A link between an instrument and a custodian (person) responsible for it</td>
+</tr>
+<tr>
+<td><a href="LabDevice/">LabDevice</a></td>
+<td>A lab device is a physical instrument or equipment used in a laboratory setti...</td>
+</tr>
+<tr>
+<td><a href="LabProcessingActivity/">LabProcessingActivity</a></td>
+<td>[NEW ABSTRACT CLASS] Higher-level abstract base for any activity that</td>
+</tr>
+<tr>
+<td><a href="MAOMProduct/">MAOMProduct</a></td>
+<td>Mineral-Associated Organic Matter (MAOM) analysis product, typically derived ...</td>
+</tr>
+<tr>
+<td><a href="MassSpectrometryStandardRun/">MassSpectrometryStandardRun</a></td>
+<td>A record of a mass spectrometry standard run with a batch of samples, which i...</td>
+</tr>
+<tr>
+<td><a href="Method/">Method</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="BulkDensityMethod/">BulkDensityMethod</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ElementalAnalysisMethod/">ElementalAnalysisMethod</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EnzymeActivityMethod/">EnzymeActivityMethod</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="GravimetricWaterContentMethod/">GravimetricWaterContentMethod</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HydraulicPropertiesMethod/">HydraulicPropertiesMethod</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="KuoMethod/">KuoMethod</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MicrobialBiomassMethod/">MicrobialBiomassMethod</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PHMethod/">PHMethod</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RespirationMethod/">RespirationMethod</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TextureMethod/">TextureMethod</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TOCTNMethod/">TOCTNMethod</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XrayComputedTomographyMethod/">XrayComputedTomographyMethod</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="MobilePhaseSegment/">MobilePhaseSegment</a></td>
+<td>A segment of the mobile phase used in chromatography during mass spectrometry</td>
+</tr>
+<tr>
+<td><a href="OntologyClass/">OntologyClass</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="Organism/">Organism</a></td>
+<td>Reference data representing a biological identity (strain, isolate,</td>
+</tr>
+<tr>
+<td><a href="PersonValue/">PersonValue</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="PlateProduct/">PlateProduct</a></td>
+<td>Abstract base for plate measurement data products</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AMP2ODProduct/">AMP2ODProduct</a></td>
+<td>AMP2 optical density measurement product</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EcoplateAbsorbanceProduct/">EcoplateAbsorbanceProduct</a></td>
+<td>Ecoplate absorbance measurement product</td>
+</tr>
+<tr>
+<td><a href="ProcessingSampleLink/">ProcessingSampleLink</a></td>
+<td>A link between a processed sample and the sample processing activity that pro...</td>
+</tr>
+<tr>
+<td><a href="ProjectParticipant/">ProjectParticipant</a></td>
+<td>A record of a person and their role on an EMSL project</td>
+</tr>
+<tr>
+<td><a href="PurchasedMaterial/">PurchasedMaterial</a></td>
+<td>[NEW ABSTRACT CLASS] Lightweight base for non-sample physical lab materials</td>
+</tr>
+<tr>
+<td><a href="QuantityValue/">QuantityValue</a></td>
+<td>A quantity value with numeric value and optional unit</td>
+</tr>
+<tr>
+<td><a href="Sample/">Sample</a></td>
+<td>A physical sample collected from an environment</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AerosolArmSample/">AerosolArmSample</a></td>
+<td>An aerosol sample collected by the ARM facility</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AerosolSample/">AerosolSample</a></td>
+<td>An aerosol sample collected from the environment</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AMP2UserSample/">AMP2UserSample</a></td>
+<td>A user-submitted microbial sample for AMP2 workflows</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CommerciallyPurchasedSample/">CommerciallyPurchasedSample</a></td>
+<td>A sample containing commercially purchased material</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CultureEnvironmentalSample/">CultureEnvironmentalSample</a></td>
+<td>A sample containing organisms cultured from an environmental sample</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EngineeredStrainSample/">EngineeredStrainSample</a></td>
+<td>A sample containing a strain of an organism that has been subjected to geneti...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="FieldDeployedTerraformSample/">FieldDeployedTerraformSample</a></td>
+<td>A sample collected from a field-deployed Terraform experiment</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MixedCultureSample/">MixedCultureSample</a></td>
+<td>A sample containing multiple cultured organisms</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MonetSoilSample/">MonetSoilSample</a></td>
+<td>A soil sample that has been collected according to the MONet soil sampling pr...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OtherUndescribedSample/">OtherUndescribedSample</a></td>
+<td>A sample that does not fit into any of the other described sample types</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PlantSample/">PlantSample</a></td>
+<td>A sample containing plant material</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProcessedSample/">ProcessedSample</a></td>
+<td>A sample that has undergone processing or analysis</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CoreSection/">CoreSection</a></td>
+<td>A section of a core sample (TOP, MID, BTM)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PureCultureSample/">PureCultureSample</a></td>
+<td>A sample of a culture containing a single organism</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SedimentSample/">SedimentSample</a></td>
+<td>A sample of sediment collected from the environment</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SoilSample/">SoilSample</a></td>
+<td>A sample of soil collected from the environment</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SynthesizedMaterialSample/">SynthesizedMaterialSample</a></td>
+<td>A sample containing synthetically generated material</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TerraformSample/">TerraformSample</a></td>
+<td>A sample collected from a Terraform experiment</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="WaterSample/">WaterSample</a></td>
+<td>A sample of water collected from the environment</td>
+</tr>
+<tr>
+<td><a href="SampleProcessing/">SampleProcessing</a></td>
+<td>Abstract base for any sample processing activity (physical to physical)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CultureGrowth/">CultureGrowth</a></td>
+<td>Abstract activity for growing cultures from samples or other cultures</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ExperimentalCulture/">ExperimentalCulture</a></td>
+<td>Growth of an experimental culture for downstream analysis</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PreCultureGrowth/">PreCultureGrowth</a></td>
+<td>Growth of a pre-culture to establish viable inoculum before</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="StockCulturePreparation/">StockCulturePreparation</a></td>
+<td>Preparation of a stock culture from user samples for long-term storage</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="StrainPurity/">StrainPurity</a></td>
+<td>Purity check of a strain culture</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MediaPreparation/">MediaPreparation</a></td>
+<td>Activity that prepares a batch of growth media</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PlateSetupActivity/">PlateSetupActivity</a></td>
+<td>Abstract base for 96-well plate setup activities</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AMP2PlateSetupActivity/">AMP2PlateSetupActivity</a></td>
+<td>AMP2-specific plate setup</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EcoplatePlateSetupActivity/">EcoplatePlateSetupActivity</a></td>
+<td>Ecoplate-specific plate setup</td>
+</tr>
+<tr>
+<td><a href="SamplingActivity/">SamplingActivity</a></td>
+<td>An activity that involves the collection of a sample</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AerosolArmSamplingActivity/">AerosolArmSamplingActivity</a></td>
+<td>A sampling activity where aerosol samples were collected by ARM</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AerosolSamplingActivity/">AerosolSamplingActivity</a></td>
+<td>A sampling activity where aerosol samples were collected</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CommerciallyPurchasedSamplingActivity/">CommerciallyPurchasedSamplingActivity</a></td>
+<td>Collection of samples that were purchased by the user</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CultureEnvironmentalSamplingActivity/">CultureEnvironmentalSamplingActivity</a></td>
+<td>Collection of samples from a culture of organisms taken from the environment</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EngineeredStrainSamplingActivity/">EngineeredStrainSamplingActivity</a></td>
+<td>Collection of samples from a culture of an engineered organism</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="FieldDeployedTerraformSamplingActivity/">FieldDeployedTerraformSamplingActivity</a></td>
+<td>Collection of samples from a field-deployed Terraform device</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MixedCultureSamplingActivity/">MixedCultureSamplingActivity</a></td>
+<td>Collection of samples from a mixed culture</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MonetSoilSamplingActivity/">MonetSoilSamplingActivity</a></td>
+<td>Collection of soil cores according to the MONet soil sampling protocol</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OtherUndescribedSamplingActivity/">OtherUndescribedSamplingActivity</a></td>
+<td>Collection of samples from source that does not fit into any of the other cat...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PlantSamplingActivity/">PlantSamplingActivity</a></td>
+<td>Collection of samples associated with plants</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PureCultureSamplingActivity/">PureCultureSamplingActivity</a></td>
+<td>Collection of samples from a culture containing a single organism</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SedimentSamplingActivity/">SedimentSamplingActivity</a></td>
+<td>Collection of sediment samples from the environment</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SoilSamplingActivity/">SoilSamplingActivity</a></td>
+<td>Collection of soil samples from the environment</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SynthesizedMaterialSamplingActivity/">SynthesizedMaterialSamplingActivity</a></td>
+<td>Collection of samples of a synthesized material</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TerraformSamplingActivity/">TerraformSamplingActivity</a></td>
+<td>Collection of samples from a Terraform device</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="WaterSamplingActivity/">WaterSamplingActivity</a></td>
+<td>Collection of water samples</td>
+</tr>
+<tr>
+<td><a href="Site/">Site</a></td>
+<td>Site-level metadata for a specific location from which a set of samples are c...</td>
+</tr>
+<tr>
+<td><a href="SoftwareControlledTermValue/">SoftwareControlledTermValue</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="Study/">Study</a></td>
+<td>A study or research project, typically associated with a proposal and a set o...</td>
+</tr>
+<tr>
+<td><a href="TextValue/">TextValue</a></td>
+<td>A text value with optional description and language</td>
+</tr>
+<tr>
+<td><a href="TimestampValue/">TimestampValue</a></td>
+<td>A timestamp value with optional description</td>
+</tr>
+<tr>
+<td><a href="WellMetadata/">WellMetadata</a></td>
+<td>Base structure for per-well metadata in plate setup</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AMP2WellMetadata/">AMP2WellMetadata</a></td>
+<td>AMP2-specific per-well metadata</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EcoplateWellMetadata/">EcoplateWellMetadata</a></td>
+<td>Ecoplate-specific per-well metadata</td>
+</tr>
+<tr>
+<td><a href="WellReading/">WellReading</a></td>
+<td>Per-well measurement data</td>
+</tr>
+<tr>
+<td><a href="WEOMProduct/">WEOMProduct</a></td>
+<td>Water Extractable Organic Matter (WEOM) analysis product, typically derived v...</td>
+</tr>
+<tr>
+<td><a href="WorkflowExecutionFunctionalAnnotation/">WorkflowExecutionFunctionalAnnotation</a></td>
+<td>A link between a workflow execution and a functional annotation identifier</td>
+</tr>
+<tr>
+<td><a href="ZipDownload/">ZipDownload</a></td>
+<td>A zip download record, capturing the details of a zip file download event</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="acquisition_end_time/">acquisition_end_time</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="acquisition_start_time/">acquisition_start_time</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="acquisition_strategy/">acquisition_strategy</a></td>
+<td>The acquisition strategy used in the mass spectrometry run</td>
+</tr>
+<tr>
+<td><a href="activity_speed_id/">activity_speed_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="activity_time_id/">activity_time_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="additional_information/">additional_information</a></td>
+<td>Additional information pertaining to these data, including SP Project ID and ...</td>
+</tr>
+<tr>
+<td><a href="aerosol_type/">aerosol_type</a></td>
+<td>The type or method of aerosol collection</td>
+</tr>
+<tr>
+<td><a href="ag_mg_per_kg/">ag_mg_per_kg</a></td>
+<td>Silver concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="agitation_speed_rpm/">agitation_speed_rpm</a></td>
+<td>Agitation/shaking speed in RPM (0 for static)</td>
+</tr>
+<tr>
+<td><a href="agrochem_addition/">agrochem_addition</a></td>
+<td>Addition of fertilizers, pesticides, etc</td>
+</tr>
+<tr>
+<td><a href="air_temp_regm/">air_temp_regm</a></td>
+<td>Information about treatment involving an exposure to varying temperatures; sh...</td>
+</tr>
+<tr>
+<td><a href="al_sat/">al_sat</a></td>
+<td>Aluminum saturation (esp</td>
+</tr>
+<tr>
+<td><a href="al_sat_meth/">al_sat_meth</a></td>
+<td>Reference or method used in determining Al saturation</td>
+</tr>
+<tr>
+<td><a href="albite_percent/">albite_percent</a></td>
+<td>Albite (NaAlSi3O8) weight percent</td>
+</tr>
+<tr>
+<td><a href="alkalinity/">alkalinity</a></td>
+<td>The ability of a solution to neutralize acids to the equivalence point of car...</td>
+</tr>
+<tr>
+<td><a href="alkalinity_method/">alkalinity_method</a></td>
+<td>Method used for alkalinity measurement</td>
+</tr>
+<tr>
+<td><a href="alkyl_diethers/">alkyl_diethers</a></td>
+<td>Concentration of alkyl diethers</td>
+</tr>
+<tr>
+<td><a href="alpha/">alpha</a></td>
+<td>Van Genuchten shape parameter alpha (1/cm)</td>
+</tr>
+<tr>
+<td><a href="alt/">alt</a></td>
+<td>Heights of objects such as airplanes, space shuttles, rockets, atmospheric ba...</td>
+</tr>
+<tr>
+<td><a href="alt_id/">alt_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="alternate_id/">alternate_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="alternate_identifier_type/">alternate_identifier_type</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="alternative_identifiers/">alternative_identifiers</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="alternative_names/">alternative_names</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="aminopept_act/">aminopept_act</a></td>
+<td>Measurement of aminopeptidase activity (Unit: mol/L/h)</td>
+</tr>
+<tr>
+<td><a href="ammonium/">ammonium</a></td>
+<td>Concentration of ammonium in the sample</td>
+</tr>
+<tr>
+<td><a href="analysis_type/">analysis_type</a></td>
+<td>The type(s) of analysis planned for this sample</td>
+</tr>
+<tr>
+<td><a href="analyte_category/">analyte_category</a></td>
+<td>omics type for easier search, optional</td>
+</tr>
+<tr>
+<td><a href="analyte_id/">analyte_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="analytic/">analytic</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ances_data/">ances_data</a></td>
+<td>Information about either pedigree or other ancestral information description</td>
+</tr>
+<tr>
+<td><a href="annotation_database/">annotation_database</a></td>
+<td>Primary annotation database used (e</td>
+</tr>
+<tr>
+<td><a href="annual_precpt/">annual_precpt</a></td>
+<td>The average of all annual precipitation values known or an estimated equivale...</td>
+</tr>
+<tr>
+<td><a href="annual_temp/">annual_temp</a></td>
+<td>Mean annual temperature (Unit: C)</td>
+</tr>
+<tr>
+<td><a href="antibiotic_regm/">antibiotic_regm</a></td>
+<td>Information about treatment involving antibiotic administration; should inclu...</td>
+</tr>
+<tr>
+<td><a href="aq/">aq</a></td>
+<td>acquisition number</td>
+</tr>
+<tr>
+<td><a href="as_mg_per_kg/">as_mg_per_kg</a></td>
+<td>Arsenic concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="associated_dois/">associated_dois</a></td>
+<td>A list of DOIs associated with this study</td>
+</tr>
+<tr>
+<td><a href="atmospheric_data/">atmospheric_data</a></td>
+<td>Measurement of atmospheric data; can include multiple data</td>
+</tr>
+<tr>
+<td><a href="average_well_color_development/">average_well_color_development</a></td>
+<td>Average Well Color Development (AWCD) metric for Ecoplate</td>
+</tr>
+<tr>
+<td><a href="axes/">axes</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ba_mg_per_kg/">ba_mg_per_kg</a></td>
+<td>Barium concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="bac_prod/">bac_prod</a></td>
+<td>Bacterial production in the water column measured by isotope uptake</td>
+</tr>
+<tr>
+<td><a href="bac_resp/">bac_resp</a></td>
+<td>Measurement of bacterial respiration in the water column</td>
+</tr>
+<tr>
+<td><a href="bacteria_carb_prod/">bacteria_carb_prod</a></td>
+<td>Measurement of bacterial carbon production</td>
+</tr>
+<tr>
+<td><a href="beta_glucosidase_ug_pnp_per_g_per_h_id/">beta_glucosidase_ug_pnp_per_g_per_h_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="biochem_oxygen_dem/">biochem_oxygen_dem</a></td>
+<td>a measure of the relative oxygen-depletion effect of a waste contaminant</td>
+</tr>
+<tr>
+<td><a href="biol_stat/">biol_stat</a></td>
+<td>The level of genome modification</td>
+</tr>
+<tr>
+<td><a href="biotic_regm/">biotic_regm</a></td>
+<td>Information about treatment(s) involving use of biotic factors such as bacter...</td>
+</tr>
+<tr>
+<td><a href="biotic_relationship/">biotic_relationship</a></td>
+<td>Description of relationship(s) between the subject organism and other organis...</td>
+</tr>
+<tr>
+<td><a href="bishomohopanol/">bishomohopanol</a></td>
+<td>Concentration of bishomohopanol</td>
+</tr>
+<tr>
+<td><a href="blank_mean/">blank_mean</a></td>
+<td>Mean measurement of uninoculated control wells</td>
+</tr>
+<tr>
+<td><a href="boron_id/">boron_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="br_mg_per_kg/">br_mg_per_kg</a></td>
+<td>Bromine concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="bromide/">bromide</a></td>
+<td>Concentration of bromide (Unit: ppm)</td>
+</tr>
+<tr>
+<td><a href="bulk_density_id/">bulk_density_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="bulk_elect_conductivity/">bulk_elect_conductivity</a></td>
+<td>Electrical conductivity is a measure of the bulk soil ability to carry electr...</td>
+</tr>
+<tr>
+<td><a href="calcium/">calcium</a></td>
+<td>Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)</td>
+</tr>
+<tr>
+<td><a href="calcium_id/">calcium_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="calibration/">calibration</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="calibration_data/">calibration_data</a></td>
+<td>Reference to the raw instrument data file used for calibration</td>
+</tr>
+<tr>
+<td><a href="calibration_standard/">calibration_standard</a></td>
+<td>The reference standard used for calibration</td>
+</tr>
+<tr>
+<td><a href="calibration_target/">calibration_target</a></td>
+<td>The measurement being calibrated</td>
+</tr>
+<tr>
+<td><a href="carb_dioxide/">carb_dioxide</a></td>
+<td>Amount of carbon dioxide measured in the air the day of sampling</td>
+</tr>
+<tr>
+<td><a href="carb_monoxide/">carb_monoxide</a></td>
+<td>Amount of carbon monoxide measured in the air the day of sampling</td>
+</tr>
+<tr>
+<td><a href="carb_nitro_ratio/">carb_nitro_ratio</a></td>
+<td>Ratio of amount or concentrations of carbon to nitrogen</td>
+</tr>
+<tr>
+<td><a href="carbon_source/">carbon_source</a></td>
+<td>Carbon source in this well (e</td>
+</tr>
+<tr>
+<td><a href="cas/">cas</a></td>
+<td>A unique numerical identifier assigned by the Chemical Abstract Service (CAS)...</td>
+</tr>
+<tr>
+<td><a href="cation_exchange_capacity_id/">cation_exchange_capacity_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="cbi/">cbi</a></td>
+<td>Confidential Business Information flag (yes/no)</td>
+</tr>
+<tr>
+<td><a href="cd_mg_per_kg/">cd_mg_per_kg</a></td>
+<td>Cadmium concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="ce_mg_per_kg/">ce_mg_per_kg</a></td>
+<td>Cerium concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="changelog/">changelog</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="check_standard_spacing/">check_standard_spacing</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="chem_administration/">chem_administration</a></td>
+<td>List of chemical compounds administered to the host or site where sampling oc...</td>
+</tr>
+<tr>
+<td><a href="chem_mutagen/">chem_mutagen</a></td>
+<td>Treatment involving use of mutagens; should include the name of mutagen, amou...</td>
+</tr>
+<tr>
+<td><a href="chem_oxygen_dem/">chem_oxygen_dem</a></td>
+<td>a measure of the relative oxygen-depletion effect of a waste contaminant</td>
+</tr>
+<tr>
+<td><a href="chloride/">chloride</a></td>
+<td>Concentration of chloride in the sample (Unit: mg/L or ppm)</td>
+</tr>
+<tr>
+<td><a href="chlorite_percent/">chlorite_percent</a></td>
+<td>Chlorite ((Mg,Fe)3(Si,Al)4O10(OH)2 (Mg,Fe)3(OH)6) weight percent</td>
+</tr>
+<tr>
+<td><a href="chlorophyll/">chlorophyll</a></td>
+<td>Concentration of chlorophyll (Unit: mg/m3 or ug/L)</td>
+</tr>
+<tr>
+<td><a href="chromatography_type/">chromatography_type</a></td>
+<td>Type of chromatography used in the method (e</td>
+</tr>
+<tr>
+<td><a href="cl_mg_per_kg/">cl_mg_per_kg</a></td>
+<td>Chlorine concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="clay_pct_id/">clay_pct_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="collaborating_institution/">collaborating_institution</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="collection_date/">collection_date</a></td>
+<td>'The date of sampling as an instance</td>
+</tr>
+<tr>
+<td><a href="collection_mode/">collection_mode</a></td>
+<td>The collection mode for the mass spectrometry data (e</td>
+</tr>
+<tr>
+<td><a href="collection_time/">collection_time</a></td>
+<td>The time of sampling as an instance (single point)</td>
+</tr>
+<tr>
+<td><a href="color_code/">color_code</a></td>
+<td>Color indicates the max altitude</td>
+</tr>
+<tr>
+<td><a href="column/">column</a></td>
+<td>The name or identifier of the chromatography column used</td>
+</tr>
+<tr>
+<td><a href="column_dimensions/">column_dimensions</a></td>
+<td>Dimensions of the chromatography column used in the process</td>
+</tr>
+<tr>
+<td><a href="column_manufacturer/">column_manufacturer</a></td>
+<td>Name of the institution that manufactured the chromatography column</td>
+</tr>
+<tr>
+<td><a href="commercial_media_catalog/">commercial_media_catalog</a></td>
+<td>Reference to commercial media catalog entry if applicable</td>
+</tr>
+<tr>
+<td><a href="component_description/">component_description</a></td>
+<td>Provide a short statement describing the function of the construct</td>
+</tr>
+<tr>
+<td><a href="component_name/">component_name</a></td>
+<td>Provide a one-to-three word name based on the component</td>
+</tr>
+<tr>
+<td><a href="compound_name/">compound_name</a></td>
+<td>The name of the purchased material</td>
+</tr>
+<tr>
+<td><a href="compression_type/">compression_type</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="concentration_ug_per_uL/">concentration_ug_per_uL</a></td>
+<td>Concentration of the substance in micrograms per microliter</td>
+</tr>
+<tr>
+<td><a href="condition_received/">condition_received</a></td>
+<td>The condition of the sample when received</td>
+</tr>
+<tr>
+<td><a href="conduc/">conduc</a></td>
+<td>Electrical conductivity of water</td>
+</tr>
+<tr>
+<td><a href="confirmed_receipt/">confirmed_receipt</a></td>
+<td>Whether receipt of the sample was confirmed</td>
+</tr>
+<tr>
+<td><a href="connected_pores/">connected_pores</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="construct_component/">construct_component</a></td>
+<td>Select the construct component type</td>
+</tr>
+<tr>
+<td><a href="container_size_id/">container_size_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="container_type/">container_type</a></td>
+<td>Physical container used for the culture (flask, tube, plate, etc</td>
+</tr>
+<tr>
+<td><a href="contains/">contains</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="contaminant_strains/">contaminant_strains</a></td>
+<td>Known or detected contaminant strains (if any)</td>
+</tr>
+<tr>
+<td><a href="controlled_term_provider/">controlled_term_provider</a></td>
+<td>name of ontology or other controlled term provider</td>
+</tr>
+<tr>
+<td><a href="copper_id/">copper_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="core_group/">core_group</a></td>
+<td>The category of soil core taken according to the MONet sampling protocol</td>
+</tr>
+<tr>
+<td><a href="core_section/">core_section</a></td>
+<td>The section of the core</td>
+</tr>
+<tr>
+<td><a href="count/">count</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="cr_mg_per_kg/">cr_mg_per_kg</a></td>
+<td>Chromium concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="creation_date/">creation_date</a></td>
+<td>Date the entity or preparation was created</td>
+</tr>
+<tr>
+<td><a href="crop_rotation/">crop_rotation</a></td>
+<td>Whether or not crop is rotated, and if yes, rotation schedule</td>
+</tr>
+<tr>
+<td><a href="cs_mg_per_kg/">cs_mg_per_kg</a></td>
+<td>Cesium concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="cu_filter/">cu_filter</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="cu_mg_per_kg/">cu_mg_per_kg</a></td>
+<td>Copper concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="cult_root_med/">cult_root_med</a></td>
+<td>Name or reference for the hydroponic or in vitro culture rooting medium; can ...</td>
+</tr>
+<tr>
+<td><a href="cur_land_use/">cur_land_use</a></td>
+<td>Present state of sample site</td>
+</tr>
+<tr>
+<td><a href="cur_vegetation/">cur_vegetation</a></td>
+<td>Vegetation classification from one or more standard classification systems, o...</td>
+</tr>
+<tr>
+<td><a href="cur_vegetation_meth/">cur_vegetation_meth</a></td>
+<td>Reference or method used in vegetation classification</td>
+</tr>
+<tr>
+<td><a href="custodian_id/">custodian_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="cv_percent/">cv_percent</a></td>
+<td>Coefficient of variation across technical replicates</td>
+</tr>
+<tr>
+<td><a href="database/">database</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="date_received/">date_received</a></td>
+<td>The date the sample was received</td>
+</tr>
+<tr>
+<td><a href="dd_ms2_resolution/">dd_ms2_resolution</a></td>
+<td>Data-dependent MS2 resolution setting used in the mass spectrometry method</td>
+</tr>
+<tr>
+<td><a href="density/">density</a></td>
+<td>Density of the sample, which is its mass per unit volume (aka volumetric mass...</td>
+</tr>
+<tr>
+<td><a href="depth/">depth</a></td>
+<td>The vertical distance below local surface</td>
+</tr>
+<tr>
+<td><a href="description/">description</a></td>
+<td>Human-readable description for the entity or activity</td>
+</tr>
+<tr>
+<td><a href="detection_limit/">detection_limit</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="detector/">detector</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="device_type/">device_type</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="diether_lipids/">diether_lipids</a></td>
+<td>Concentration of diether lipids; can include multiple types of diether lipids...</td>
+</tr>
+<tr>
+<td><a href="diss_carb_dioxide/">diss_carb_dioxide</a></td>
+<td>Concentration of dissolved carbon dioxide in the sample or liquid portion of ...</td>
+</tr>
+<tr>
+<td><a href="diss_hydrogen/">diss_hydrogen</a></td>
+<td>Concentration of dissolved hydrogens (Unit: umol/L)</td>
+</tr>
+<tr>
+<td><a href="diss_inorg_carb/">diss_inorg_carb</a></td>
+<td>Dissolved inorganic carbon concentration in the sample, typically measured af...</td>
+</tr>
+<tr>
+<td><a href="diss_inorg_nitro/">diss_inorg_nitro</a></td>
+<td>Concentration of dissolved inorganic nitrogen</td>
+</tr>
+<tr>
+<td><a href="diss_inorg_phosp/">diss_inorg_phosp</a></td>
+<td>Concentration of dissolved inorganic phosphorus in the sample</td>
+</tr>
+<tr>
+<td><a href="diss_org_carb/">diss_org_carb</a></td>
+<td>Concentration of dissolved organic carbon in the sample, liquid portion of th...</td>
+</tr>
+<tr>
+<td><a href="diss_org_nitro/">diss_org_nitro</a></td>
+<td>Dissolved organic nitrogen concentration measured as: total dissolved nitroge...</td>
+</tr>
+<tr>
+<td><a href="diss_oxygen/">diss_oxygen</a></td>
+<td>Concentration of dissolved oxygen</td>
+</tr>
+<tr>
+<td><a href="doi_category/">doi_category</a></td>
+<td>The resource type the corresponding doi resolves to</td>
+</tr>
+<tr>
+<td><a href="doi_provider/">doi_provider</a></td>
+<td>The authority, or organization, the DOI is associated with</td>
+</tr>
+<tr>
+<td><a href="doi_value/">doi_value</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="donor_organism/">donor_organism</a></td>
+<td>Provide the scientific name (genus and species) of the organism from which th...</td>
+</tr>
+<tr>
+<td><a href="down_par/">down_par</a></td>
+<td>Visible waveband radiance and irradiance measurements in the water column</td>
+</tr>
+<tr>
+<td><a href="drainage_class/">drainage_class</a></td>
+<td>Drainage classification from a standard system such as the USDA system</td>
+</tr>
+<tr>
+<td><a href="duration_min/">duration_min</a></td>
+<td>how long something took, in minutes</td>
+</tr>
+<tr>
+<td><a href="efficiency_percent/">efficiency_percent</a></td>
+<td>percentage of volatile solids removed from the anaerobic digestor</td>
+</tr>
+<tr>
+<td><a href="elev/">elev</a></td>
+<td>Elevation of the sampling site is its height above a fixed reference point, m...</td>
+</tr>
+<tr>
+<td><a href="email/">email</a></td>
+<td>A contactable email address associated with a person or institution</td>
+</tr>
+<tr>
+<td><a href="emsl_activity/">emsl_activity</a></td>
+<td>Nullable string linking a Sample or SamplingActivity to a named EMSL activity...</td>
+</tr>
+<tr>
+<td><a href="emulsions/">emulsions</a></td>
+<td>amount or concentration of substances such as paints, adhesives, mayonnaise, ...</td>
+</tr>
+<tr>
+<td><a href="encoded_traits/">encoded_traits</a></td>
+<td>Should include key traits like antibiotic resistance or xenobiotic</td>
+</tr>
+<tr>
+<td><a href="ended_at_time/">ended_at_time</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="env_broad_scale/">env_broad_scale</a></td>
+<td>'Report the major environmental system the sample or specimen came from</td>
+</tr>
+<tr>
+<td><a href="env_local_scale/">env_local_scale</a></td>
+<td>'Report the entity which are in your sample or specimens local vicinity and w...</td>
+</tr>
+<tr>
+<td><a href="env_medium/">env_medium</a></td>
+<td>'Report the environmental material immediately surrounding the sample or spec...</td>
+</tr>
+<tr>
+<td><a href="execution_resource/">execution_resource</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="experimental_factor/">experimental_factor</a></td>
+<td>Experimental factors are essentially the variable aspects of an experiment de...</td>
+</tr>
+<tr>
+<td><a href="experimental_factor_other/">experimental_factor_other</a></td>
+<td>Other details about your sample that you feel can't be accurately represented...</td>
+</tr>
+<tr>
+<td><a href="exposure_sensitivity/">exposure_sensitivity</a></td>
+<td>Sensitivity the entity has if exposed (e</td>
+</tr>
+<tr>
+<td><a href="exposure_time_per_frame/">exposure_time_per_frame</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="external_identifiers/">external_identifiers</a></td>
+<td>List of external identifiers associated with this entity or activity</td>
+</tr>
+<tr>
+<td><a href="extraction_method/">extraction_method</a></td>
+<td>If you (the user) performed an extraction preparation or processing before se...</td>
+</tr>
+<tr>
+<td><a href="extreme_event/">extreme_event</a></td>
+<td>Unusual physical events that may have affected microbial populations</td>
+</tr>
+<tr>
+<td><a href="fao_class/">fao_class</a></td>
+<td>Soil classification from the FAO World soil distribution from International S...</td>
+</tr>
+<tr>
+<td><a href="fertilizer_regm/">fertilizer_regm</a></td>
+<td>Information about treatment involving the use of fertilizers; should include ...</td>
+</tr>
+<tr>
+<td><a href="fid/">fid</a></td>
+<td>Free induction decay</td>
+</tr>
+<tr>
+<td><a href="file_curie/">file_curie</a></td>
+<td>an identifier for a file that resolves to the file's accessible location</td>
+</tr>
+<tr>
+<td><a href="file_type/">file_type</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="files/">files</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="filesize/">filesize</a></td>
+<td>Size of the file in bytes</td>
+</tr>
+<tr>
+<td><a href="filter_method/">filter_method</a></td>
+<td>Type of filter used or how the sample was filtered</td>
+</tr>
+<tr>
+<td><a href="fire/">fire</a></td>
+<td>Historical and/or physical evidence of fire</td>
+</tr>
+<tr>
+<td><a href="first_blh/">first_blh</a></td>
+<td>First boundary layer height candidate (meters) (Unit: m)</td>
+</tr>
+<tr>
+<td><a href="first_blh_quality_index/">first_blh_quality_index</a></td>
+<td>Quality index for first boundary layer height candidate (-999 if no candidate...</td>
+</tr>
+<tr>
+<td><a href="first_cbh/">first_cbh</a></td>
+<td>First cloud base (meters) or vertical visibility (meters) (-999 if no cloud b...</td>
+</tr>
+<tr>
+<td><a href="first_name/">first_name</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="fitting_model/">fitting_model</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag/">flag</a></td>
+<td>QC flag   "ok", "blank", "outlier", "contaminated"</td>
+</tr>
+<tr>
+<td><a href="flag_ag/">flag_ag</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_albite/">flag_albite</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_as/">flag_as</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_avg/">flag_avg</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_ba/">flag_ba</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_boron/">flag_boron</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_br/">flag_br</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_calcium/">flag_calcium</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_cd/">flag_cd</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_ce/">flag_ce</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_cec/">flag_cec</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_chlorite/">flag_chlorite</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_cl/">flag_cl</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_copper/">flag_copper</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_cr/">flag_cr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_cs/">flag_cs</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_cu/">flag_cu</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_ga/">flag_ga</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_gypsum/">flag_gypsum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_halite/">flag_halite</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_hornblende/">flag_hornblende</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_in/">flag_in</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_iron/">flag_iron</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_kaolinite/">flag_kaolinite</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_la/">flag_la</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_magnesium/">flag_magnesium</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_manganate/">flag_manganate</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_mbc/">flag_mbc</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_mbc_avg/">flag_mbc_avg</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_mbn/">flag_mbn</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_mbn_avg/">flag_mbn_avg</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_microcline/">flag_microcline</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_mo/">flag_mo</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_muscovite/">flag_muscovite</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_nb/">flag_nb</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_nh4n/">flag_nh4n</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_nh4n_avg/">flag_nh4n_avg</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_ni/">flag_ni</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_no3n/">flag_no3n</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_no3n_avg/">flag_no3n_avg</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_pb/">flag_pb</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_potassium/">flag_potassium</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_pyrite/">flag_pyrite</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_quartz/">flag_quartz</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_rb/">flag_rb</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_sb/">flag_sb</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_se/">flag_se</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_sn/">flag_sn</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_sodium/">flag_sodium</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_sr/">flag_sr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_sulfate/">flag_sulfate</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_th/">flag_th</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_tkn/">flag_tkn</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_tn/">flag_tn</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_tn_avg/">flag_tn_avg</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_toc/">flag_toc</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_toc_avg/">flag_toc_avg</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_total_bases/">flag_total_bases</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_total_carbon/">flag_total_carbon</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_total_nitrogen/">flag_total_nitrogen</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_total_sulfur/">flag_total_sulfur</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_u/">flag_u</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_v/">flag_v</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_xct/">flag_xct</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_y/">flag_y</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_zinc/">flag_zinc</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flag_zn/">flag_zn</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flooding/">flooding</a></td>
+<td>Historical and/or physical evidence of flooding</td>
+</tr>
+<tr>
+<td><a href="flow_rate_ul_min/">flow_rate_ul_min</a></td>
+<td>Flow rate of the mobile phase, in microliters per minute</td>
+</tr>
+<tr>
+<td><a href="flow_rate_x/">flow_rate_x</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flow_rate_y/">flow_rate_y</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="flow_rate_z/">flow_rate_z</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="fluor/">fluor</a></td>
+<td>Raw or converted fluorescence of water</td>
+</tr>
+<tr>
+<td><a href="fragmentation/">fragmentation</a></td>
+<td>fragmentation technique used in the mass spectrometry run</td>
+</tr>
+<tr>
+<td><a href="frames_recording_per_projection/">frames_recording_per_projection</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="functional_annotation_id/">functional_annotation_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="functional_identifier/">functional_identifier</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="funding_sources/">funding_sources</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="fungicide_regm/">fungicide_regm</a></td>
+<td>Information about treatment involving use of fungicides; should include the n...</td>
+</tr>
+<tr>
+<td><a href="ga_mg_per_kg/">ga_mg_per_kg</a></td>
+<td>Gallium concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="gas/">gas</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="gaseous_environment/">gaseous_environment</a></td>
+<td>Use of conditions with differing gaseous environments; should include the nam...</td>
+</tr>
+<tr>
+<td><a href="gaseous_substances/">gaseous_substances</a></td>
+<td>amount or concentration of substances such as hydrogen sulfide carbon dioxide...</td>
+</tr>
+<tr>
+<td><a href="gene_family/">gene_family</a></td>
+<td>Gene family or marker used for the phylogeny (e</td>
+</tr>
+<tr>
+<td><a href="genetic_mod/">genetic_mod</a></td>
+<td>Genetic modifications of the genome of an organism, which may occur naturally...</td>
+</tr>
+<tr>
+<td><a href="genotype_segment_category/">genotype_segment_category</a></td>
+<td>Category of genetic modification or segment</td>
+</tr>
+<tr>
+<td><a href="genotype_segment_name/">genotype_segment_name</a></td>
+<td>Provide a name that describes the genotype modification engineered</td>
+</tr>
+<tr>
+<td><a href="geo_loc_name/">geo_loc_name</a></td>
+<td>The geographical origin of the sample as defined by the country or sea name f...</td>
+</tr>
+<tr>
+<td><a href="glucosidase_act/">glucosidase_act</a></td>
+<td>Measurement of glucosidase activity (Unit: mol/L/h)</td>
+</tr>
+<tr>
+<td><a href="gravity/">gravity</a></td>
+<td>Information about treatment involving use of gravity factor to study various ...</td>
+</tr>
+<tr>
+<td><a href="growth_facil/">growth_facil</a></td>
+<td>Type of facility or location from where the sample was collected or</td>
+</tr>
+<tr>
+<td><a href="growth_habit/">growth_habit</a></td>
+<td>Characteristic shape appearance or growth form of a plant species</td>
+</tr>
+<tr>
+<td><a href="growth_hormone_regm/">growth_hormone_regm</a></td>
+<td>Information about treatment involving use of growth hormones; should include ...</td>
+</tr>
+<tr>
+<td><a href="growth_medium/">growth_medium</a></td>
+<td>Method of growth and medium/materials used</td>
+</tr>
+<tr>
+<td><a href="growth_time/">growth_time</a></td>
+<td>Total growth time for the culture</td>
+</tr>
+<tr>
+<td><a href="guid_source/">guid_source</a></td>
+<td>Source system for the sample GUID (e</td>
+</tr>
+<tr>
+<td><a href="gwc_percent_id/">gwc_percent_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="gypsum_percent/">gypsum_percent</a></td>
+<td>Gypsum (CaSO4 2H2O) weight percent</td>
+</tr>
+<tr>
+<td><a href="halite_percent/">halite_percent</a></td>
+<td>Halite (NaCl) weight percent</td>
+</tr>
+<tr>
+<td><a href="has_maximum_numeric_value/">has_maximum_numeric_value</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="has_minimum_numeric_value/">has_minimum_numeric_value</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="has_numeric_value/">has_numeric_value</a></td>
+<td>The numeric value of the quantity</td>
+</tr>
+<tr>
+<td><a href="has_participants/">has_participants</a></td>
+<td>Links to a record of a person and their roles for this study</td>
+</tr>
+<tr>
+<td><a href="has_raw_value/">has_raw_value</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="has_unit/">has_unit</a></td>
+<td>The human-readable unit name</td>
+</tr>
+<tr>
+<td><a href="has_value_unit/">has_value_unit</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="heavy_metals/">heavy_metals</a></td>
+<td>Heavy metals present and concentrations; can include multiple heavy metals an...</td>
+</tr>
+<tr>
+<td><a href="heavy_metals_meth/">heavy_metals_meth</a></td>
+<td>Reference or method used in determining heavy metals</td>
+</tr>
+<tr>
+<td><a href="herbicide_regm/">herbicide_regm</a></td>
+<td>Information about treatment involving use of herbicides; information about tr...</td>
+</tr>
+<tr>
+<td><a href="horizon_meth/">horizon_meth</a></td>
+<td>Reference or method used in determining the horizon</td>
+</tr>
+<tr>
+<td><a href="hornblende_percent/">hornblende_percent</a></td>
+<td>Hornblende (Ca,Na)2-3(Mg,Fe,Al)5(Al,Si)8O22(OH)2 weight percent</td>
+</tr>
+<tr>
+<td><a href="host_age/">host_age</a></td>
+<td>Age of host at the time of sampling; relevant scale depends on species and st...</td>
+</tr>
+<tr>
+<td><a href="host_common_name/">host_common_name</a></td>
+<td>Common name for the host organism (e</td>
+</tr>
+<tr>
+<td><a href="host_disease_stat/">host_disease_stat</a></td>
+<td>List of diseases with which the host has been diagnosed; can include multiple...</td>
+</tr>
+<tr>
+<td><a href="host_dry_mass/">host_dry_mass</a></td>
+<td>Measurement of dry mass</td>
+</tr>
+<tr>
+<td><a href="host_genotype/">host_genotype</a></td>
+<td>Observed genotype</td>
+</tr>
+<tr>
+<td><a href="host_height/">host_height</a></td>
+<td>The height of subject</td>
+</tr>
+<tr>
+<td><a href="host_infra_spec_name/">host_infra_spec_name</a></td>
+<td>Taxonomic information about the host below subspecies level</td>
+</tr>
+<tr>
+<td><a href="host_infra_spec_rank/">host_infra_spec_rank</a></td>
+<td>Taxonomic rank information about the host below subspecies level, such as var...</td>
+</tr>
+<tr>
+<td><a href="host_length/">host_length</a></td>
+<td>The length of subject</td>
+</tr>
+<tr>
+<td><a href="host_life_stage/">host_life_stage</a></td>
+<td>Description of life stage of host</td>
+</tr>
+<tr>
+<td><a href="host_phenotype/">host_phenotype</a></td>
+<td>Phenotype of human or other host</td>
+</tr>
+<tr>
+<td><a href="host_spec_range/">host_spec_range</a></td>
+<td>The range and diversity of host species that an organism is capable of infect...</td>
+</tr>
+<tr>
+<td><a href="host_symbiont/">host_symbiont</a></td>
+<td>The taxonomic name of the organism(s) found living in mutualistic, commensali...</td>
+</tr>
+<tr>
+<td><a href="host_taxid/">host_taxid</a></td>
+<td>NCBI taxon ID</td>
+</tr>
+<tr>
+<td><a href="host_tot_mass/">host_tot_mass</a></td>
+<td>Total mass of the host at collection</td>
+</tr>
+<tr>
+<td><a href="host_wet_mass/">host_wet_mass</a></td>
+<td>Measurement of wet mass</td>
+</tr>
+<tr>
+<td><a href="humidity/">humidity</a></td>
+<td>Amount of water vapor measured in the air the day of sampling</td>
+</tr>
+<tr>
+<td><a href="humidity_regm/">humidity_regm</a></td>
+<td>Information about treatment involving an exposure to varying degrees of humid...</td>
+</tr>
+<tr>
+<td><a href="iat/">iat</a></td>
+<td>Ion accumulation time setting used in the mass spectrometry method</td>
+</tr>
+<tr>
+<td><a href="id/">id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="image_voxel_size_is/">image_voxel_size_is</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="in_mg_per_kg/">in_mg_per_kg</a></td>
+<td>Indium concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="incubation_temp_c/">incubation_temp_c</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="incubation_time/">incubation_time</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="incubation_time_hours/">incubation_time_hours</a></td>
+<td>Incubation duration in hours</td>
+</tr>
+<tr>
+<td><a href="indust_eff_percent/">indust_eff_percent</a></td>
+<td>percentage of industrial effluents received by wastewater treatment plant</td>
+</tr>
+<tr>
+<td><a href="infiltration_1/">infiltration_1</a></td>
+<td>Amount of time it takes to accomplish the first infiltration activity</td>
+</tr>
+<tr>
+<td><a href="infiltration_2/">infiltration_2</a></td>
+<td>Amount of time it takes to accomplish the second infiltration activity</td>
+</tr>
+<tr>
+<td><a href="infiltration_notes/">infiltration_notes</a></td>
+<td>Provide any details, issues, or context needed to understand the infiltration...</td>
+</tr>
+<tr>
+<td><a href="initiation_date_inoculation/">initiation_date_inoculation</a></td>
+<td>The date the sample was inoculated</td>
+</tr>
+<tr>
+<td><a href="initiation_date_plant/">initiation_date_plant</a></td>
+<td>The date the plant part of the sample was initiated</td>
+</tr>
+<tr>
+<td><a href="injection/">injection</a></td>
+<td>Type of injection used in the mass spectrometry method</td>
+</tr>
+<tr>
+<td><a href="injection_volume/">injection_volume</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="injection_volume_ul/">injection_volume_ul</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="inoculum_volume_ul/">inoculum_volume_ul</a></td>
+<td>Volume of inoculum added (0 for blanks)</td>
+</tr>
+<tr>
+<td><a href="inorg_particles/">inorg_particles</a></td>
+<td>concentration of particles such as sand, grit, metal particles, ceramics, etc</td>
+</tr>
+<tr>
+<td><a href="inspection_method/">inspection_method</a></td>
+<td>Method used to inspect or verify purity (visual, sequencing, etc</td>
+</tr>
+<tr>
+<td><a href="instrument/">instrument</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="instrument_alt_id_provider/">instrument_alt_id_provider</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="instrument_id/">instrument_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="instrument_operator_id/">instrument_operator_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="instrument_parameters/">instrument_parameters</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="instrument_used/">instrument_used</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="internal_calibration/">internal_calibration</a></td>
+<td>Whether internal calibration was used</td>
+</tr>
+<tr>
+<td><a href="ionization/">ionization</a></td>
+<td>Type of ionization used in the mass spectrometry method</td>
+</tr>
+<tr>
+<td><a href="iron_id/">iron_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="isol_growth_condt/">isol_growth_condt</a></td>
+<td>Publication reference in the form of pubmed ID (PMID), digital object</td>
+</tr>
+<tr>
+<td><a href="isolation_window/">isolation_window</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="isotope_exposure/">isotope_exposure</a></td>
+<td>List isotope exposure or addition applied to your sample</td>
+</tr>
+<tr>
+<td><a href="item_number/">item_number</a></td>
+<td>The item number of the purchased material</td>
+</tr>
+<tr>
+<td><a href="kaolinite_percent/">kaolinite_percent</a></td>
+<td>Kaolinite (Al2Si2O5(OH)4) weight percent</td>
+</tr>
+<tr>
+<td><a href="la_mg_per_kg/">la_mg_per_kg</a></td>
+<td>Lanthanum concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="label_format/">label_format</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="label_text/">label_text</a></td>
+<td>The label on the stored processed sample, if applicable (e</td>
+</tr>
+<tr>
+<td><a href="language/">language</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="last_name/">last_name</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="latitude/">latitude</a></td>
+<td>Latitude coordinate of the sampling site in WSG 84 format</td>
+</tr>
+<tr>
+<td><a href="light_intensity/">light_intensity</a></td>
+<td>Measurement of light intensity</td>
+</tr>
+<tr>
+<td><a href="light_regm/">light_regm</a></td>
+<td>Information about treatment(s) involving exposure to light including both lig...</td>
+</tr>
+<tr>
+<td><a href="lims_barcode/">lims_barcode</a></td>
+<td>LIMS barcode identifier</td>
+</tr>
+<tr>
+<td><a href="lims_id/">lims_id</a></td>
+<td>An EMSL internal LIMS identifier for your sample</td>
+</tr>
+<tr>
+<td><a href="lims_protocol_instance_id/">lims_protocol_instance_id</a></td>
+<td>Reference to the L7 protocol_instance that corresponds to this sample process...</td>
+</tr>
+<tr>
+<td><a href="lims_resource_id/">lims_resource_id</a></td>
+<td>L7 resource_id for the instrument, if known</td>
+</tr>
+<tr>
+<td><a href="lims_task_instance_id/">lims_task_instance_id</a></td>
+<td>L7 task_instance_id for the activity, if known</td>
+</tr>
+<tr>
+<td><a href="link_addit_analys/">link_addit_analys</a></td>
+<td>Link to additional analysis results performed on the sample</td>
+</tr>
+<tr>
+<td><a href="link_class_info/">link_class_info</a></td>
+<td>Link to digitized soil maps or other soil classification information</td>
+</tr>
+<tr>
+<td><a href="link_climate_info/">link_climate_info</a></td>
+<td>Link to climate resource</td>
+</tr>
+<tr>
+<td><a href="local_class/">local_class</a></td>
+<td>Soil classification based on local soil classification system</td>
+</tr>
+<tr>
+<td><a href="local_class_meth/">local_class_meth</a></td>
+<td>Reference or method used in determining the local soil classification</td>
+</tr>
+<tr>
+<td><a href="location/">location</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="longitude/">longitude</a></td>
+<td>Longitude coordinate of the sampling site in WSG 84 format</td>
+</tr>
+<tr>
+<td><a href="loop_count/">loop_count</a></td>
+<td>Number of MS2 scans to be acquired between each full MS scan</td>
+</tr>
+<tr>
+<td><a href="magnesium/">magnesium</a></td>
+<td>Concentration of magnesium in the sample (Unit: umol/kg or mol/L or mg/L or p...</td>
+</tr>
+<tr>
+<td><a href="magnesium_id/">magnesium_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="maintenance/">maintenance</a></td>
+<td>Maintenance notes or directions to a maintenance log</td>
+</tr>
+<tr>
+<td><a href="manganate_id/">manganate_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="mass_analyzer_type/">mass_analyzer_type</a></td>
+<td>The type of mass analyzer present in the instrument, if applicable (e</td>
+</tr>
+<tr>
+<td><a href="mass_range_max/">mass_range_max</a></td>
+<td>The maximum mass observable by this run (in m/z)</td>
+</tr>
+<tr>
+<td><a href="mass_range_min/">mass_range_min</a></td>
+<td>The minimum mass observable by this run (in m/z)</td>
+</tr>
+<tr>
+<td><a href="mbc_avg/">mbc_avg</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="mbc_id/">mbc_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="mbn_avg/">mbn_avg</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="mbn_id/">mbn_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="md5checksum/">md5checksum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="mean_frict_vel/">mean_frict_vel</a></td>
+<td>Measurement of mean friction velocity (Unit: m/s)</td>
+</tr>
+<tr>
+<td><a href="mean_peak_frict_vel/">mean_peak_frict_vel</a></td>
+<td>Measurement of mean peak friction velocity (Unit: m/s)</td>
+</tr>
+<tr>
+<td><a href="mean_total_cpc_concentration/">mean_total_cpc_concentration</a></td>
+<td>Mean concentration obtained from Condensation Particle Counter (Unit: μm)</td>
+</tr>
+<tr>
+<td><a href="mean_total_pops_concentration/">mean_total_pops_concentration</a></td>
+<td>Mean concentration obtained from Portable Optical Particle Spectrometer (Unit...</td>
+</tr>
+<tr>
+<td><a href="measure_type/">measure_type</a></td>
+<td>Whether the measurement recorded is a single measurement, one of a set of  re...</td>
+</tr>
+<tr>
+<td><a href="measurement_type/">measurement_type</a></td>
+<td>Type of plate measurement (optical_density, fluorescence, flow_cytometry)</td>
+</tr>
+<tr>
+<td><a href="mechanical_damage/">mechanical_damage</a></td>
+<td>Information about any mechanical damage exerted on the plant; can include mul...</td>
+</tr>
+<tr>
+<td><a href="media_additions/">media_additions</a></td>
+<td>Additional components added to the media (antibiotics, inducers, etc</td>
+</tr>
+<tr>
+<td><a href="media_formulation/">media_formulation</a></td>
+<td>Formulation method of the media (manual mix, commercial, etc</td>
+</tr>
+<tr>
+<td><a href="media_recipe/">media_recipe</a></td>
+<td>Reference or description of recipe used to prepare media</td>
+</tr>
+<tr>
+<td><a href="media_ref/">media_ref</a></td>
+<td>FK reference to a prepared media processedSample used in the activity</td>
+</tr>
+<tr>
+<td><a href="media_type/">media_type</a></td>
+<td>Purpose/context of the media preparation</td>
+</tr>
+<tr>
+<td><a href="media_volume_ul/">media_volume_ul</a></td>
+<td>Volume of media added to this well (microlitres)</td>
+</tr>
+<tr>
+<td><a href="metaproteomics_analysis_category/">metaproteomics_analysis_category</a></td>
+<td>The category of metaproteomics analysis being performed, if applicable</td>
+</tr>
+<tr>
+<td><a href="methane/">methane</a></td>
+<td>Methane (gas) amount or concentration at the time of sampling</td>
+</tr>
+<tr>
+<td><a href="method/">method</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="method_development/">method_development</a></td>
+<td>If your samples are TEST sample ONLY, please provide information on what you'...</td>
+</tr>
+<tr>
+<td><a href="method_id/">method_id</a></td>
+<td>Reference to the RespirationMethod used for this run</td>
+</tr>
+<tr>
+<td><a href="method_name/">method_name</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="mg_workflow_step/">mg_workflow_step</a></td>
+<td>Metagenomics workflow step that produced this product (e</td>
+</tr>
+<tr>
+<td><a href="micro_biomass_C_meth/">micro_biomass_C_meth</a></td>
+<td>Reference or method used in determining microbial biomass</td>
+</tr>
+<tr>
+<td><a href="micro_biomass_c_meth/">micro_biomass_c_meth</a></td>
+<td>Reference or method used in determining microbial biomass</td>
+</tr>
+<tr>
+<td><a href="micro_biomass_N_meth/">micro_biomass_N_meth</a></td>
+<td>Reference or method used in determining microbial biomass nitrogen</td>
+</tr>
+<tr>
+<td><a href="micro_biomass_n_meth/">micro_biomass_n_meth</a></td>
+<td>Reference or method used in determining microbial biomass nitrogen</td>
+</tr>
+<tr>
+<td><a href="microbial_biomass/">microbial_biomass</a></td>
+<td>The part of the organic matter in the soil that constitutes living microorgan...</td>
+</tr>
+<tr>
+<td><a href="microbial_biomass_c/">microbial_biomass_c</a></td>
+<td>The part of the organic matter in the soil that constitutes living microorgan...</td>
+</tr>
+<tr>
+<td><a href="microbial_biomass_meth/">microbial_biomass_meth</a></td>
+<td>Reference or method used in determining microbial biomass</td>
+</tr>
+<tr>
+<td><a href="microbial_biomass_n/">microbial_biomass_n</a></td>
+<td>The part of the organic matter in the soil that constitutes living microorgan...</td>
+</tr>
+<tr>
+<td><a href="microcline_percent/">microcline_percent</a></td>
+<td>Microcline (KAlSi3O8) weight percent</td>
+</tr>
+<tr>
+<td><a href="middle_initial/">middle_initial</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="mineral_nutr_regm/">mineral_nutr_regm</a></td>
+<td>Information about treatment involving the use of mineral supplements; should ...</td>
+</tr>
+<tr>
+<td><a href="misc_param/">misc_param</a></td>
+<td>Any other measurement performed or parameter collected that is not listed her...</td>
+</tr>
+<tr>
+<td><a href="mo_mg_per_kg/">mo_mg_per_kg</a></td>
+<td>Molybdenum concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="mobile_phases/">mobile_phases</a></td>
+<td>Description of the mobile phases used in the chromatography method (e</td>
+</tr>
+<tr>
+<td><a href="mode/">mode</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="model/">model</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="modification_method/">modification_method</a></td>
+<td>Select the method used to insert your construct into the genome of</td>
+</tr>
+<tr>
+<td><a href="ms_raw_file_type/">ms_raw_file_type</a></td>
+<td>the filetype of the mass spectrometry instrument data</td>
+</tr>
+<tr>
+<td><a href="muscovite_percent/">muscovite_percent</a></td>
+<td>Muscovite (KAl2(AlSi3O10)(OH)2) weight percent</td>
+</tr>
+<tr>
+<td><a href="n/">n</a></td>
+<td>Van Genuchten pore-size distribution index n (dimensionless, n &gt; 1)</td>
+</tr>
+<tr>
+<td><a href="n_alkanes/">n_alkanes</a></td>
+<td>Concentration of n-alkanes; can include multiple n-alkanes (Unit: ug/mL)</td>
+</tr>
+<tr>
+<td><a href="name/">name</a></td>
+<td>Human-readable name for the entity or activity</td>
+</tr>
+<tr>
+<td><a href="nb_mg_per_kg/">nb_mg_per_kg</a></td>
+<td>Niobium concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="neon_domain/">neon_domain</a></td>
+<td>Areas where ecosystems (and the type quality and quantity of environmental re...</td>
+</tr>
+<tr>
+<td><a href="neon_plot_id/">neon_plot_id</a></td>
+<td>When sampling from a NEON site provide the plot ID from which you sampled</td>
+</tr>
+<tr>
+<td><a href="neon_site_code/">neon_site_code</a></td>
+<td>When sampling from a NEON site provide the 4 letter site code (Example: DEJU)</td>
+</tr>
+<tr>
+<td><a href="nh4_n_avg/">nh4_n_avg</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="nh4_n_id/">nh4_n_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ni_mg_per_kg/">ni_mg_per_kg</a></td>
+<td>Nickel concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="nitrate/">nitrate</a></td>
+<td>Concentration of nitrate in the sample (Unit: umol/L or mg/L or ppm)</td>
+</tr>
+<tr>
+<td><a href="nitrite/">nitrite</a></td>
+<td>Concentration of nitrite in the sample (Unit: umol/L or mg/L or ppm)</td>
+</tr>
+<tr>
+<td><a href="nitro/">nitro</a></td>
+<td>Concentration of nitrogen (total) (Unit: umol/L)</td>
+</tr>
+<tr>
+<td><a href="no3_n_avg/">no3_n_avg</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="no3_n_id/">no3_n_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="non_microb_biomass/">non_microb_biomass</a></td>
+<td>Amount of biomass; should include the name for the part of biomass measured, ...</td>
+</tr>
+<tr>
+<td><a href="non_microb_biomass_method/">non_microb_biomass_method</a></td>
+<td>Reference or method used in determining biomass</td>
+</tr>
+<tr>
+<td><a href="non_min_nutr_regm/">non_min_nutr_regm</a></td>
+<td>Information about treatment involving the exposure of plant to non-mineral nu...</td>
+</tr>
+<tr>
+<td><a href="nucleotide_sequencing_category/">nucleotide_sequencing_category</a></td>
+<td>The category of nucleotide sequencing performed (e</td>
+</tr>
+<tr>
+<td><a href="number_of_injections/">number_of_injections</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="orcid/">orcid</a></td>
+<td>ORCID identifier of the person</td>
+</tr>
+<tr>
+<td><a href="org_carb/">org_carb</a></td>
+<td>Concentration of organic carbon</td>
+</tr>
+<tr>
+<td><a href="org_matter/">org_matter</a></td>
+<td>Concentration of organic matter (Unit: mg/L)</td>
+</tr>
+<tr>
+<td><a href="org_nitro/">org_nitro</a></td>
+<td>Concentration of organic nitrogen</td>
+</tr>
+<tr>
+<td><a href="org_nitro_method/">org_nitro_method</a></td>
+<td>Method used for obtaining organic nitrogen</td>
+</tr>
+<tr>
+<td><a href="org_particles/">org_particles</a></td>
+<td>concentration of particles such as faeces, hairs, food, vomit, paper, fibers,...</td>
+</tr>
+<tr>
+<td><a href="organism_count/">organism_count</a></td>
+<td>Total cell count of any organism (or group of organisms) per gram volume or a...</td>
+</tr>
+<tr>
+<td><a href="organism_name/">organism_name</a></td>
+<td>Provide the scientific name (genus and species) of the host organism</td>
+</tr>
+<tr>
+<td><a href="organism_ref/">organism_ref</a></td>
+<td>FK reference to an organism representing the biological identity</td>
+</tr>
+<tr>
+<td><a href="other/">other</a></td>
+<td>Other/additional details about your sample that you feel can't be accurately ...</td>
+</tr>
+<tr>
+<td><a href="other_growth_facil/">other_growth_facil</a></td>
+<td>Please specify growth facility if you selected 'other'</td>
+</tr>
+<tr>
+<td><a href="other_guid_source/">other_guid_source</a></td>
+<td>Description of GUID source if guid_source = "other"</td>
+</tr>
+<tr>
+<td><a href="other_properties/">other_properties</a></td>
+<td>Other important properties of the instrument that are not captured in other f...</td>
+</tr>
+<tr>
+<td><a href="other_samp_store_temp/">other_samp_store_temp</a></td>
+<td>Please specify sample storage temperature if you selected 'other'</td>
+</tr>
+<tr>
+<td><a href="other_storage_condt/">other_storage_condt</a></td>
+<td>Please specify your storage conditions if you selected 'other' and the availa...</td>
+</tr>
+<tr>
+<td><a href="other_treatment/">other_treatment</a></td>
+<td>Many sample treatment descriptor columns are available</td>
+</tr>
+<tr>
+<td><a href="oxygen/">oxygen</a></td>
+<td>Amount of oxygen measured in the air the day of sampling</td>
+</tr>
+<tr>
+<td><a href="oxygen_relationship/">oxygen_relationship</a></td>
+<td>The relationship of the sample to oxygen, such as aerobic or anaerobic</td>
+</tr>
+<tr>
+<td><a href="packages/">packages</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="parent_workflow_id/">parent_workflow_id</a></td>
+<td>Self-referential FK to the preceding DataProcessingActivity in a chain</td>
+</tr>
+<tr>
+<td><a href="part_org_carb/">part_org_carb</a></td>
+<td>Concentration of particulate organic carbon</td>
+</tr>
+<tr>
+<td><a href="part_org_nitro/">part_org_nitro</a></td>
+<td>Concentration of particulate organic nitrogen</td>
+</tr>
+<tr>
+<td><a href="particle_class/">particle_class</a></td>
+<td>Particles are classified based on their size into six general categories: cla...</td>
+</tr>
+<tr>
+<td><a href="pathogenicity/">pathogenicity</a></td>
+<td>To what is the entity pathogenic, e</td>
+</tr>
+<tr>
+<td><a href="pb_mg_per_kg/">pb_mg_per_kg</a></td>
+<td>Lead concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="permeability_x/">permeability_x</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="permeability_y/">permeability_y</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="permeability_z/">permeability_z</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="person/">person</a></td>
+<td>The person who contributed to the study</td>
+</tr>
+<tr>
+<td><a href="person_id/">person_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="perturbation/">perturbation</a></td>
+<td>Type of perturbation, e</td>
+</tr>
+<tr>
+<td><a href="pesticide_regm/">pesticide_regm</a></td>
+<td>Information about treatment involving use of insecticides; should include the...</td>
+</tr>
+<tr>
+<td><a href="petroleum_hydrocarb/">petroleum_hydrocarb</a></td>
+<td>Concentration of petroleum hydrocarbon (Unit: umol/L)</td>
+</tr>
+<tr>
+<td><a href="ph/">ph</a></td>
+<td>pH measurement of the sample or liquid portion of sample or aqueous phase of ...</td>
+</tr>
+<tr>
+<td><a href="ph_adjustment/">ph_adjustment</a></td>
+<td>Whether the entity was pH-adjusted</td>
+</tr>
+<tr>
+<td><a href="ph_meth/">ph_meth</a></td>
+<td>Reference or method used in determining ph of the sample</td>
+</tr>
+<tr>
+<td><a href="ph_regm/">ph_regm</a></td>
+<td>Information about treatment involving exposure of plants to varying levels of...</td>
+</tr>
+<tr>
+<td><a href="ph_target/">ph_target</a></td>
+<td>Target pH value (required if ph_adjustment is true)</td>
+</tr>
+<tr>
+<td><a href="phaeopigments/">phaeopigments</a></td>
+<td>Concentration of phaeopigments; can include multiple phaeopigments separated ...</td>
+</tr>
+<tr>
+<td><a href="phenotype/">phenotype</a></td>
+<td>Provide the intedned phenotype of hte modified organism</td>
+</tr>
+<tr>
+<td><a href="phosphate/">phosphate</a></td>
+<td>Concentration of phosphate (Unit: umol/L)</td>
+</tr>
+<tr>
+<td><a href="phosphorus_avg/">phosphorus_avg</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="phosphorus_id/">phosphorus_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="phosplipid_fatt_acid/">phosplipid_fatt_acid</a></td>
+<td>Concentration of phospholipid fatty acids; can include multiple values separa...</td>
+</tr>
+<tr>
+<td><a href="photo_taken_during/">photo_taken_during</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="photochemical_exposure/">photochemical_exposure</a></td>
+<td>This term is used to describe a chemical reaction caused by absorption of ult...</td>
+</tr>
+<tr>
+<td><a href="photon_flux/">photon_flux</a></td>
+<td>Measurement of photon flux</td>
+</tr>
+<tr>
+<td><a href="plant_age/">plant_age</a></td>
+<td>Age of plant at the time of sampling</td>
+</tr>
+<tr>
+<td><a href="plant_common_name/">plant_common_name</a></td>
+<td>Common name of the plant</td>
+</tr>
+<tr>
+<td><a href="plant_disease_stat/">plant_disease_stat</a></td>
+<td>List of diseases with which the plant has been diagnosed; can include multipl...</td>
+</tr>
+<tr>
+<td><a href="plant_dry_mass/">plant_dry_mass</a></td>
+<td>Measurement of dry mass</td>
+</tr>
+<tr>
+<td><a href="plant_genotype/">plant_genotype</a></td>
+<td>Observed genotype of the plant</td>
+</tr>
+<tr>
+<td><a href="plant_growth_med/">plant_growth_med</a></td>
+<td>Specification of the media for growing the plants or tissue cultured samples ...</td>
+</tr>
+<tr>
+<td><a href="plant_product/">plant_product</a></td>
+<td>Substance produced by the plant where the sample was obtained from</td>
+</tr>
+<tr>
+<td><a href="plant_sex/">plant_sex</a></td>
+<td>Sex of the reproductive parts on the whole plant</td>
+</tr>
+<tr>
+<td><a href="plant_struc/">plant_struc</a></td>
+<td>Name of plant structure the sample was obtained from; for Plant Ontology (PO)...</td>
+</tr>
+<tr>
+<td><a href="plant_taxid/">plant_taxid</a></td>
+<td>NCBI taxon ID of the plant from <a href="https://www">https://www</a></td>
+</tr>
+<tr>
+<td><a href="plant_wet_mass/">plant_wet_mass</a></td>
+<td>Measurement of wet mass</td>
+</tr>
+<tr>
+<td><a href="plate_average/">plate_average</a></td>
+<td>Mean measurement across all sample wells (excludes blanks)</td>
+</tr>
+<tr>
+<td><a href="plate_barcode/">plate_barcode</a></td>
+<td>Physical barcode on plate (if different from UUID)</td>
+</tr>
+<tr>
+<td><a href="plate_lot/">plate_lot</a></td>
+<td>Manufacturer lot number for Biolog EcoPlate QC</td>
+</tr>
+<tr>
+<td><a href="plate_reader_model/">plate_reader_model</a></td>
+<td>Instrument model used for reading (e</td>
+</tr>
+<tr>
+<td><a href="plate_type/">plate_type</a></td>
+<td>Vendor and model of plate (e</td>
+</tr>
+<tr>
+<td><a href="polarity/">polarity</a></td>
+<td>Polarity setting used in the mass spectrometry method</td>
+</tr>
+<tr>
+<td><a href="pore_diameter_max/">pore_diameter_max</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="pore_diameter_mean/">pore_diameter_mean</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="pore_diameter_median/">pore_diameter_median</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="pore_diameter_min/">pore_diameter_min</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="pore_diameter_variance/">pore_diameter_variance</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="pore_volume_mean/">pore_volume_mean</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="porosity/">porosity</a></td>
+<td>Porosity of deposited sediment is volume of voids divided by the total volume...</td>
+</tr>
+<tr>
+<td><a href="position/">position</a></td>
+<td>Well position (e</td>
+</tr>
+<tr>
+<td><a href="potassium/">potassium</a></td>
+<td>Concentration of potassium in the sample (Unit: mg/L)</td>
+</tr>
+<tr>
+<td><a href="potassium_id/">potassium_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="pre_treatment/">pre_treatment</a></td>
+<td>the process of pre-treatment removes materials that can be easily collected f...</td>
+</tr>
+<tr>
+<td><a href="preparation_date/">preparation_date</a></td>
+<td>Date the stock culture or entity was prepared</td>
+</tr>
+<tr>
+<td><a href="pressure/">pressure</a></td>
+<td>Pressure to which the sample is subject, in atmospheres (Unit: atm)</td>
+</tr>
+<tr>
+<td><a href="pressure_control/">pressure_control</a></td>
+<td>Measurment of pressure applied to the sample during experimentation (Unit: Pa...</td>
+</tr>
+<tr>
+<td><a href="previous_land_use/">previous_land_use</a></td>
+<td>Previous land use and dates</td>
+</tr>
+<tr>
+<td><a href="previous_land_use_meth/">previous_land_use_meth</a></td>
+<td>Reference or method used in determining previous land use and dates</td>
+</tr>
+<tr>
+<td><a href="primary_prod/">primary_prod</a></td>
+<td>Measurement of primary production generally measured as isotope uptake</td>
+</tr>
+<tr>
+<td><a href="primary_treatment/">primary_treatment</a></td>
+<td>the process to produce both a generally homogeneous liquid capable of being t...</td>
+</tr>
+<tr>
+<td><a href="principal_investigator/">principal_investigator</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="priority_order/">priority_order</a></td>
+<td>Indicate the run order priority of your samples</td>
+</tr>
+<tr>
+<td><a href="processing_id/">processing_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="processing_institution/">processing_institution</a></td>
+<td>The institution where the activity took place</td>
+</tr>
+<tr>
+<td><a href="processing_steps/">processing_steps</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="produced_by_ms_run/">produced_by_ms_run</a></td>
+<td>a reference to the data generation activity that produced instrument data</td>
+</tr>
+<tr>
+<td><a href="produced_by_sequencing_activity/">produced_by_sequencing_activity</a></td>
+<td>Link back to the NucleotideSequencing activity that produced this data</td>
+</tr>
+<tr>
+<td><a href="product_name/">product_name</a></td>
+<td>Provide the name of the product used to create the synthetic material</td>
+</tr>
+<tr>
+<td><a href="production_method/">production_method</a></td>
+<td>A DOI or description of how the compound was produced, if the commercially pu...</td>
+</tr>
+<tr>
+<td><a href="profile_image_url/">profile_image_url</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="profile_position/">profile_position</a></td>
+<td>Cross-sectional position in the hillslope where sample was collected</td>
+</tr>
+<tr>
+<td><a href="project/">project</a></td>
+<td>Identifier for the user project associated with the entity or activity</td>
+</tr>
+<tr>
+<td><a href="project_end/">project_end</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="project_id/">project_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="project_start/">project_start</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="project_status/">project_status</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="propagation/">propagation</a></td>
+<td>The type of reproduction from the parent stock</td>
+</tr>
+<tr>
+<td><a href="proposal_abstract/">proposal_abstract</a></td>
+<td>The abstract submitted with the research proposal</td>
+</tr>
+<tr>
+<td><a href="protocol_link/">protocol_link</a></td>
+<td>A link to a protocol that describes the steps and parameters of the activity</td>
+</tr>
+<tr>
+<td><a href="protocol_url/">protocol_url</a></td>
+<td>URL pointing to the protocol used in the activity, if applicable</td>
+</tr>
+<tr>
+<td><a href="protocol_version/">protocol_version</a></td>
+<td>Version of the protocol used in the activity, if applicable</td>
+</tr>
+<tr>
+<td><a href="provider_name/">provider_name</a></td>
+<td>Provider class (e</td>
+</tr>
+<tr>
+<td><a href="purchased_material_type/">purchased_material_type</a></td>
+<td>Discriminator for purchasedMaterial subtype (e</td>
+</tr>
+<tr>
+<td><a href="pyrite_percent/">pyrite_percent</a></td>
+<td>Pyrite (FeS2) weight percent</td>
+</tr>
+<tr>
+<td><a href="quartz_percent/">quartz_percent</a></td>
+<td>Quartz (SiO2) weight percent</td>
+</tr>
+<tr>
+<td><a href="radiation_regm/">radiation_regm</a></td>
+<td>Information about treatment involving exposure of plant or a plant part to a ...</td>
+</tr>
+<tr>
+<td><a href="rainfall_regm/">rainfall_regm</a></td>
+<td>Information about treatment involving an exposure to a given amount of rainfa...</td>
+</tr>
+<tr>
+<td><a href="raw_fasta_url/">raw_fasta_url</a></td>
+<td>URL of raw FASTA file, if available from provider</td>
+</tr>
+<tr>
+<td><a href="rb_mg_per_kg/">rb_mg_per_kg</a></td>
+<td>Rubidium concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="reactor_type/">reactor_type</a></td>
+<td>anaerobic digesters can be designed and engineered to operate using a number ...</td>
+</tr>
+<tr>
+<td><a href="redox_potential/">redox_potential</a></td>
+<td>Redox potential measured relative to a hydrogen cell indicating oxidation or ...</td>
+</tr>
+<tr>
+<td><a href="ref_biomaterial/">ref_biomaterial</a></td>
+<td>Primary publication if isolated before genome publication; otherwise primary ...</td>
+</tr>
+<tr>
+<td><a href="renderer/">renderer</a></td>
+<td>UI renderer to use for this container type (e</td>
+</tr>
+<tr>
+<td><a href="replicate/">replicate</a></td>
+<td>The replicate number of the sample or measurement, if applicable</td>
+</tr>
+<tr>
+<td><a href="replicate_bio/">replicate_bio</a></td>
+<td>The biological replicate number of the sample, if applicable</td>
+</tr>
+<tr>
+<td><a href="replicate_group/">replicate_group</a></td>
+<td>Identifier linking technical replicates (e</td>
+</tr>
+<tr>
+<td><a href="replicate_number/">replicate_number</a></td>
+<td>The replicate number of the sample, if applicable</td>
+</tr>
+<tr>
+<td><a href="replicate_tech/">replicate_tech</a></td>
+<td>The technical replicate number of the sample or measurement, if applicable</td>
+</tr>
+<tr>
+<td><a href="resolution/">resolution</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="respiration_co2_c_ug_per_g/">respiration_co2_c_ug_per_g</a></td>
+<td>Soil respiration expressed as µg CO₂-C per gram soil</td>
+</tr>
+<tr>
+<td><a href="results_from_ms_processing/">results_from_ms_processing</a></td>
+<td>a reference to the mass spec data processing activity that produced this data...</td>
+</tr>
+<tr>
+<td><a href="roi_volume_voxel/">roi_volume_voxel</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="role/">role</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="root_cond/">root_cond</a></td>
+<td>Relevant rooting conditions such as field plot size, sowing density, containe...</td>
+</tr>
+<tr>
+<td><a href="root_med_carbon/">root_med_carbon</a></td>
+<td>Source of organic carbon in the culture rooting medium</td>
+</tr>
+<tr>
+<td><a href="root_med_macronutr/">root_med_macronutr</a></td>
+<td>Measurement of the culture rooting medium macronutrients (NP K Ca Mg S)</td>
+</tr>
+<tr>
+<td><a href="root_med_micronutr/">root_med_micronutr</a></td>
+<td>Measurement of the culture rooting medium micronutrients (Fe Mn Zn B Cu Mo)</td>
+</tr>
+<tr>
+<td><a href="root_med_ph/">root_med_ph</a></td>
+<td>pH measurement of the culture rooting medium</td>
+</tr>
+<tr>
+<td><a href="root_med_regl/">root_med_regl</a></td>
+<td>Growth regulators in the culture rooting medium such as cytokinins, auxins, g...</td>
+</tr>
+<tr>
+<td><a href="root_med_solid/">root_med_solid</a></td>
+<td>Specification of the solidifying agent in the culture rooting medium</td>
+</tr>
+<tr>
+<td><a href="root_med_suppl/">root_med_suppl</a></td>
+<td>Organic supplements of the culture rooting medium such as vitamins, amino aci...</td>
+</tr>
+<tr>
+<td><a href="rotation/">rotation</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="s3_base_url/">s3_base_url</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="s3_bucket/">s3_bucket</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="s3_key/">s3_key</a></td>
+<td>MinIO/S3 object key; required for all data products</td>
+</tr>
+<tr>
+<td><a href="salinity/">salinity</a></td>
+<td>Salinity is the total concentration of all dissolved salts in a sample</td>
+</tr>
+<tr>
+<td><a href="salinity_method/">salinity_method</a></td>
+<td>Method used to determine sample salinity</td>
+</tr>
+<tr>
+<td><a href="salt_regm/">salt_regm</a></td>
+<td>Information about treatment involving use of salts as supplement to liquid an...</td>
+</tr>
+<tr>
+<td><a href="samp_capt_status/">samp_capt_status</a></td>
+<td>Reason for the sample</td>
+</tr>
+<tr>
+<td><a href="samp_dis_stage/">samp_dis_stage</a></td>
+<td>Stage of the disease at the time of sample collection e</td>
+</tr>
+<tr>
+<td><a href="samp_store_temp/">samp_store_temp</a></td>
+<td>The temperature at which your samples should be stored upon arrival</td>
+</tr>
+<tr>
+<td><a href="sample_base_id/">sample_base_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="sample_collected/">sample_collected</a></td>
+<td>This refers to the TOTAL amount of sample collected from the experiment</td>
+</tr>
+<tr>
+<td><a href="sample_collection_dev/">sample_collection_dev</a></td>
+<td>The device used to collect an environmental sample</td>
+</tr>
+<tr>
+<td><a href="sample_collection_method/">sample_collection_method</a></td>
+<td>The method used to collect an environmental sample</td>
+</tr>
+<tr>
+<td><a href="sample_end_time/">sample_end_time</a></td>
+<td>Time of when the sample collection ends</td>
+</tr>
+<tr>
+<td><a href="sample_id/">sample_id</a></td>
+<td>Link back to the originating sample</td>
+</tr>
+<tr>
+<td><a href="sample_link/">sample_link</a></td>
+<td>'A unique identifier to assign parent-child subsample or sibling samples</td>
+</tr>
+<tr>
+<td><a href="sample_name/">sample_name</a></td>
+<td>The name or label that is present on the shipped sample</td>
+</tr>
+<tr>
+<td><a href="sample_processing/">sample_processing</a></td>
+<td>A brief description of any processing applied to the sample during or after r...</td>
+</tr>
+<tr>
+<td><a href="sample_start_time/">sample_start_time</a></td>
+<td>Time of when the sample collection starts</td>
+</tr>
+<tr>
+<td><a href="sample_type/">sample_type</a></td>
+<td>Requires a standardized ontology term to describe what your sample is</td>
+</tr>
+<tr>
+<td><a href="sample_volume/">sample_volume</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="sampled_at_site/">sampled_at_site</a></td>
+<td>Reference to the site where the sample was collected</td>
+</tr>
+<tr>
+<td><a href="sampled_during/">sampled_during</a></td>
+<td>Reference to the sampling activity during which this sample was collected</td>
+</tr>
+<tr>
+<td><a href="sampled_portion/">sampled_portion</a></td>
+<td>The portion of the original sample used in creating this processed sample (e</td>
+</tr>
+<tr>
+<td><a href="sampling_duration/">sampling_duration</a></td>
+<td>The difference between sample start and sample end time in seconds</td>
+</tr>
+<tr>
+<td><a href="sampling_set/">sampling_set</a></td>
+<td>Sampling set number for grouping related samples collected together</td>
+</tr>
+<tr>
+<td><a href="sand_pct_id/">sand_pct_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="sb_mg_per_kg/">sb_mg_per_kg</a></td>
+<td>Antimony concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="se_mg_per_kg/">se_mg_per_kg</a></td>
+<td>Selenium concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="sealing_method/">sealing_method</a></td>
+<td>How the plate is sealed (e</td>
+</tr>
+<tr>
+<td><a href="season_environment/">season_environment</a></td>
+<td>Treatment involving an exposure to a particular season (e</td>
+</tr>
+<tr>
+<td><a href="season_precpt/">season_precpt</a></td>
+<td>The average of all seasonal precipitation values known or an estimated equiva...</td>
+</tr>
+<tr>
+<td><a href="season_temp/">season_temp</a></td>
+<td>Mean seasonal temperature (Unit: C)</td>
+</tr>
+<tr>
+<td><a href="second_blh/">second_blh</a></td>
+<td>Second boundary layer height candidate (meters) (Unit: m)</td>
+</tr>
+<tr>
+<td><a href="second_blh_quality/">second_blh_quality</a></td>
+<td>Quality index for second boundary layer height candidate (-999 if no candidat...</td>
+</tr>
+<tr>
+<td><a href="second_cbh/">second_cbh</a></td>
+<td>Second cloud base (meters) or highest received signal in vertical visibility ...</td>
+</tr>
+<tr>
+<td><a href="secondary_treatment/">secondary_treatment</a></td>
+<td>the process for substantially degrading the biological content of the sewage</td>
+</tr>
+<tr>
+<td><a href="sediment_type/">sediment_type</a></td>
+<td>Information about the sediment type based on major constituents</td>
+</tr>
+<tr>
+<td><a href="segment_order/">segment_order</a></td>
+<td>The order of this segment in the overall chromatography protocol</td>
+</tr>
+<tr>
+<td><a href="sequence_order/">sequence_order</a></td>
+<td>Integer ordering within a temporal series for the same analyte</td>
+</tr>
+<tr>
+<td><a href="serial_number/">serial_number</a></td>
+<td>instrument instance specifier</td>
+</tr>
+<tr>
+<td><a href="setup_date/">setup_date</a></td>
+<td>When the plate was physically set up</td>
+</tr>
+<tr>
+<td><a href="setup_instrument/">setup_instrument</a></td>
+<td>Automated liquid handler (e</td>
+</tr>
+<tr>
+<td><a href="setup_operator_id/">setup_operator_id</a></td>
+<td>Person who set up the plate</td>
+</tr>
+<tr>
+<td><a href="sewage_type/">sewage_type</a></td>
+<td>type of wastewater treatment plant as municipial or industrial</td>
+</tr>
+<tr>
+<td><a href="shipped_sample_size/">shipped_sample_size</a></td>
+<td>Total amount of sample sent to EMSL</td>
+</tr>
+<tr>
+<td><a href="sieving/">sieving</a></td>
+<td>Collection design of pooled samples and/or sieve size and amount of sample si...</td>
+</tr>
+<tr>
+<td><a href="silicate/">silicate</a></td>
+<td>Concentration of silicate (Unit: umol/L)</td>
+</tr>
+<tr>
+<td><a href="silt_pct_id/">silt_pct_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="site_photo_type/">site_photo_type</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="size_frac_low/">size_frac_low</a></td>
+<td>Refers to the mesh/pore size used to pre-filter/pre-sort the sample</td>
+</tr>
+<tr>
+<td><a href="size_frac_up/">size_frac_up</a></td>
+<td>Refers to the mesh/pore size used to retain the sample</td>
+</tr>
+<tr>
+<td><a href="slope_aspect/">slope_aspect</a></td>
+<td>The direction a slope faces</td>
+</tr>
+<tr>
+<td><a href="slope_gradient/">slope_gradient</a></td>
+<td>Commonly called 'slope'</td>
+</tr>
+<tr>
+<td><a href="slot_capacity/">slot_capacity</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="sludge_retent_time/">sludge_retent_time</a></td>
+<td>the time activated sludge remains in reactor</td>
+</tr>
+<tr>
+<td><a href="sn_mg_per_kg/">sn_mg_per_kg</a></td>
+<td>Tin concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="sodium/">sodium</a></td>
+<td>Sodium concentration in the sample (Unit: ug/mL)</td>
+</tr>
+<tr>
+<td><a href="sodium_id/">sodium_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="software_poc/">software_poc</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="software_url/">software_url</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="software_version/">software_version</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="soil_horizon/">soil_horizon</a></td>
+<td>Specific layer in the land area which measures parallel to the soil surface a...</td>
+</tr>
+<tr>
+<td><a href="soil_sample_type/">soil_sample_type</a></td>
+<td>The specific type of soil sample (e</td>
+</tr>
+<tr>
+<td><a href="soil_texture/">soil_texture</a></td>
+<td>The relative proportion of different grain sizes of mineral particles in a so...</td>
+</tr>
+<tr>
+<td><a href="soil_type/">soil_type</a></td>
+<td>Soil series name or other lower-level classification</td>
+</tr>
+<tr>
+<td><a href="soil_type_meth/">soil_type_meth</a></td>
+<td>Reference or method used in determining soil series name or other lower-level...</td>
+</tr>
+<tr>
+<td><a href="solar_irradiance/">solar_irradiance</a></td>
+<td>Solar irradiance is the power per unit area (surface power density) received ...</td>
+</tr>
+<tr>
+<td><a href="soluble_inorg_mat/">soluble_inorg_mat</a></td>
+<td>concentration of substances such as ammonia, road-salt, sea-salt, cyanide, hy...</td>
+</tr>
+<tr>
+<td><a href="soluble_org_mat/">soluble_org_mat</a></td>
+<td>concentration of substances such as urea, fruit sugars, soluble proteins, dru...</td>
+</tr>
+<tr>
+<td><a href="soluble_react_phosp/">soluble_react_phosp</a></td>
+<td>Concentration of soluble reactive phosphorus</td>
+</tr>
+<tr>
+<td><a href="source_mat_id/">source_mat_id</a></td>
+<td>A unique identifier assigned to an original material sample collected or to a...</td>
+</tr>
+<tr>
+<td><a href="source_material/">source_material</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="specific_host/">specific_host</a></td>
+<td>If there is a host involved please provide its taxid (or environmental if not...</td>
+</tr>
+<tr>
+<td><a href="sr_mg_per_kg/">sr_mg_per_kg</a></td>
+<td>Strontium concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="standing_water_regm/">standing_water_regm</a></td>
+<td>Treatment involving an exposure to standing water during a plant's life span;...</td>
+</tr>
+<tr>
+<td><a href="start_date_inc/">start_date_inc</a></td>
+<td>Date the incubation was started</td>
+</tr>
+<tr>
+<td><a href="started_at_time/">started_at_time</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="stationary_phase/">stationary_phase</a></td>
+<td>Description of the stationary phase used in the chromatography method (e</td>
+</tr>
+<tr>
+<td><a href="step_number/">step_number</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="sterilization_method/">sterilization_method</a></td>
+<td>Method used to sterilize the entity (autoclave, filter, UV, etc</td>
+</tr>
+<tr>
+<td><a href="storage_condition/">storage_condition</a></td>
+<td>The storage condition of the sample</td>
+</tr>
+<tr>
+<td><a href="storage_condition_other/">storage_condition_other</a></td>
+<td>Free-text field for storage conditions when 'storage_condition' is 'other'</td>
+</tr>
+<tr>
+<td><a href="storage_location/">storage_location</a></td>
+<td>The physical or digital location where the processed sample is stored (e</td>
+</tr>
+<tr>
+<td><a href="storage_temperature/">storage_temperature</a></td>
+<td>Storage temperature for the sample (e</td>
+</tr>
+<tr>
+<td><a href="strain_description/">strain_description</a></td>
+<td>A brief description of the modifications that comprise this strain</td>
+</tr>
+<tr>
+<td><a href="strain_identifier/">strain_identifier</a></td>
+<td>External human-readable strain identifier (e</td>
+</tr>
+<tr>
+<td><a href="strain_mutation/">strain_mutation</a></td>
+<td>Primary genetic modification or plasmid carried (e</td>
+</tr>
+<tr>
+<td><a href="strain_name/">strain_name</a></td>
+<td>Provide a unique name to identify transformed strain lines</td>
+</tr>
+<tr>
+<td><a href="strain_ref/">strain_ref</a></td>
+<td>FK reference to a Strain purchasedMaterial used in the activity</td>
+</tr>
+<tr>
+<td><a href="strain_source/">strain_source</a></td>
+<td>Indicate the source of the strain provided (e</td>
+</tr>
+<tr>
+<td><a href="strain_type/">strain_type</a></td>
+<td>Type of strain/organism (bacterial, fungal, archaeal, etc</td>
+</tr>
+<tr>
+<td><a href="subspecf_gen_lin/">subspecf_gen_lin</a></td>
+<td>Information about the genetic distinctness of the sequenced organism below th...</td>
+</tr>
+<tr>
+<td><a href="substance/">substance</a></td>
+<td>The name of the substance used in this mobile phase segment</td>
+</tr>
+<tr>
+<td><a href="sulfate/">sulfate</a></td>
+<td>Concentration of sulfate in the sample</td>
+</tr>
+<tr>
+<td><a href="sulfate_id/">sulfate_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="sulfide/">sulfide</a></td>
+<td>Concentration of sulfide in the sample</td>
+</tr>
+<tr>
+<td><a href="summary_metrics/">summary_metrics</a></td>
+<td>Lightweight per-product summary for common queries that avoid full file downl...</td>
+</tr>
+<tr>
+<td><a href="suspend_part_matter/">suspend_part_matter</a></td>
+<td>Concentration of suspended particulate matter</td>
+</tr>
+<tr>
+<td><a href="suspend_solids/">suspend_solids</a></td>
+<td>concentration of substances including a wide variety of material such as silt...</td>
+</tr>
+<tr>
+<td><a href="synth_env_assembly/">synth_env_assembly</a></td>
+<td>Describes how the synthetic environments parts are contained and assembled</td>
+</tr>
+<tr>
+<td><a href="synth_env_design/">synth_env_design</a></td>
+<td>The design of the synthetic environment that was created for experimentation</td>
+</tr>
+<tr>
+<td><a href="synth_env_design_method/">synth_env_design_method</a></td>
+<td>A citation for how the synthetic environment was designed</td>
+</tr>
+<tr>
+<td><a href="synth_env_material/">synth_env_material</a></td>
+<td>Describes the fabrication material used to create the synthetic environment a...</td>
+</tr>
+<tr>
+<td><a href="synth_env_treatment/">synth_env_treatment</a></td>
+<td>Describes any treatments that are built into the synthetic environment</td>
+</tr>
+<tr>
+<td><a href="synth_instrument/">synth_instrument</a></td>
+<td>The instrumentation used to synthesize the material sample</td>
+</tr>
+<tr>
+<td><a href="synth_process/">synth_process</a></td>
+<td>Provide the citation or describe the method of synthesis</td>
+</tr>
+<tr>
+<td><a href="synth_reagents/">synth_reagents</a></td>
+<td>The reagents used in the material synthesis</td>
+</tr>
+<tr>
+<td><a href="synth_start_date/">synth_start_date</a></td>
+<td>Provide the date the sample was transferred to the synthetic environment</td>
+</tr>
+<tr>
+<td><a href="target_strain/">target_strain</a></td>
+<td>Target strain identifier for purity checks</td>
+</tr>
+<tr>
+<td><a href="taxonomy_id/">taxonomy_id</a></td>
+<td>NCBI taxon ID for the organism</td>
+</tr>
+<tr>
+<td><a href="technical_reps/">technical_reps</a></td>
+<td>Number of technical replicates for the sample</td>
+</tr>
+<tr>
+<td><a href="temp/">temp</a></td>
+<td>Temperature of the sample at the time of sampling</td>
+</tr>
+<tr>
+<td><a href="temperature_celsius/">temperature_celsius</a></td>
+<td>Temperature at which the method/process/activity was performed</td>
+</tr>
+<tr>
+<td><a href="temperature_exposure/">temperature_exposure</a></td>
+<td>The range of temperatures at which it is safe to store a label that has been ...</td>
+</tr>
+<tr>
+<td><a href="term/">term</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="term_id/">term_id</a></td>
+<td>pointer to an ontology class</td>
+</tr>
+<tr>
+<td><a href="tertiary_treatment/">tertiary_treatment</a></td>
+<td>the process providing a final treatment stage to raise the effluent quality b...</td>
+</tr>
+<tr>
+<td><a href="texture_meth/">texture_meth</a></td>
+<td>Reference or method used in determining soil texture</td>
+</tr>
+<tr>
+<td><a href="th_mg_per_kg/">th_mg_per_kg</a></td>
+<td>Thorium concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="theta_r/">theta_r</a></td>
+<td>Residual volumetric water content theta_r (cm3 cm)</td>
+</tr>
+<tr>
+<td><a href="theta_s/">theta_s</a></td>
+<td>Saturated volumetric water content theta_s (cm3 cm e-3)</td>
+</tr>
+<tr>
+<td><a href="third_blh/">third_blh</a></td>
+<td>Third boundary layer height candidate (meters) (Unit: m)</td>
+</tr>
+<tr>
+<td><a href="third_blh_quality/">third_blh_quality</a></td>
+<td>Quality index for third boundary layer height candidate (-999 if no candidate...</td>
+</tr>
+<tr>
+<td><a href="tidal_stage/">tidal_stage</a></td>
+<td>Stage of tide</td>
+</tr>
+<tr>
+<td><a href="tillage/">tillage</a></td>
+<td>Note method(s) used for tilling</td>
+</tr>
+<tr>
+<td><a href="time/">time</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="timepoint_label/">timepoint_label</a></td>
+<td>Human-readable timepoint label for repeated-measurement series</td>
+</tr>
+<tr>
+<td><a href="tiss_cult_growth_med/">tiss_cult_growth_med</a></td>
+<td>Description of plant tissue culture growth media used</td>
+</tr>
+<tr>
+<td><a href="title/">title</a></td>
+<td>The title of the study/proposal</td>
+</tr>
+<tr>
+<td><a href="tortuosity_x/">tortuosity_x</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="tortuosity_y/">tortuosity_y</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="tortuosity_z/">tortuosity_z</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="tot_carb/">tot_carb</a></td>
+<td>Total carbon content</td>
+</tr>
+<tr>
+<td><a href="tot_depth_water_col/">tot_depth_water_col</a></td>
+<td>Measurement of total depth of water column (Unit: m)</td>
+</tr>
+<tr>
+<td><a href="tot_diss_nitro/">tot_diss_nitro</a></td>
+<td>Total dissolved nitrogen concentration reported as nitrogen measured by: tota...</td>
+</tr>
+<tr>
+<td><a href="tot_inorg_nitro/">tot_inorg_nitro</a></td>
+<td>Total inorganic nitrogen content</td>
+</tr>
+<tr>
+<td><a href="tot_nitro/">tot_nitro</a></td>
+<td>Total nitrogen concentration of water samples calculated by: total nitrogen =...</td>
+</tr>
+<tr>
+<td><a href="tot_nitro_cont_meth/">tot_nitro_cont_meth</a></td>
+<td>Reference or method used in determining the total nitrogen</td>
+</tr>
+<tr>
+<td><a href="tot_nitro_content/">tot_nitro_content</a></td>
+<td>Total nitrogen content of the sample</td>
+</tr>
+<tr>
+<td><a href="tot_org_c_meth/">tot_org_c_meth</a></td>
+<td>Reference or method used in determining total organic carbon</td>
+</tr>
+<tr>
+<td><a href="tot_org_carb/">tot_org_carb</a></td>
+<td>Total organic carbon content</td>
+</tr>
+<tr>
+<td><a href="tot_part_carb/">tot_part_carb</a></td>
+<td>Total particulate carbon content</td>
+</tr>
+<tr>
+<td><a href="tot_phosp/">tot_phosp</a></td>
+<td>Total phosphorus concentration in the sample calculated by: total phosphorus ...</td>
+</tr>
+<tr>
+<td><a href="tot_phosphate/">tot_phosphate</a></td>
+<td>total amount or concentration of phosphate</td>
+</tr>
+<tr>
+<td><a href="total_amount_ug/">total_amount_ug</a></td>
+<td>Total amount of analyte in micrograms</td>
+</tr>
+<tr>
+<td><a href="total_bases_id/">total_bases_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="total_carbon_id/">total_carbon_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="total_kjeldahl_nitrogen_id/">total_kjeldahl_nitrogen_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="total_nitrogen_avg/">total_nitrogen_avg</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="total_nitrogen_id/">total_nitrogen_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="total_organic_carbon_avg/">total_organic_carbon_avg</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="total_organic_carbon_id/">total_organic_carbon_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="total_pore_volume/">total_pore_volume</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="total_projections_collected/">total_projections_collected</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="total_sulfur_id/">total_sulfur_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="trait/">trait</a></td>
+<td>Trait category for the organism</td>
+</tr>
+<tr>
+<td><a href="treatment/">treatment</a></td>
+<td>Experimental treatment (e</td>
+</tr>
+<tr>
+<td><a href="treatment_concentration/">treatment_concentration</a></td>
+<td>Treatment concentration with unit (e</td>
+</tr>
+<tr>
+<td><a href="treatment_type/">treatment_type</a></td>
+<td>Type of treatment applied in experimental culture growth</td>
+</tr>
+<tr>
+<td><a href="treatments/">treatments</a></td>
+<td>Per-well treatments if applicable (e</td>
+</tr>
+<tr>
+<td><a href="trophic_level/">trophic_level</a></td>
+<td>Trophic levels are the feeding position in a food chain</td>
+</tr>
+<tr>
+<td><a href="turbidity/">turbidity</a></td>
+<td>Measure of the amount of cloudiness or haziness in water caused by individual...</td>
+</tr>
+<tr>
+<td><a href="u_mg_per_kg/">u_mg_per_kg</a></td>
+<td>Uranium concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="uninoculated_mean/">uninoculated_mean</a></td>
+<td>Mean measurement of uninoculated control wells (baseline for Ecoplate)</td>
+</tr>
+<tr>
+<td><a href="user/">user</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="uses_calibration/">uses_calibration</a></td>
+<td>Reference to the raw data file from the standard which was run with a batch o...</td>
+</tr>
+<tr>
+<td><a href="uses_chromatography/">uses_chromatography</a></td>
+<td>Points to a record of the chromatography used to introduce samples for the ma...</td>
+</tr>
+<tr>
+<td><a href="uses_ms_configuration/">uses_ms_configuration</a></td>
+<td>Points to a record of the configuration used for the mass spectrometry run</td>
+</tr>
+<tr>
+<td><a href="uses_raw_ms_data/">uses_raw_ms_data</a></td>
+<td>The raw data file, output by a mass spectrometer, that was analyzed in  this ...</td>
+</tr>
+<tr>
+<td><a href="uses_sample/">uses_sample</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="v_mg_per_kg/">v_mg_per_kg</a></td>
+<td>Vanadium concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="value/">value</a></td>
+<td>Measured value (absorbance, OD, fluorescence)</td>
+</tr>
+<tr>
+<td><a href="values/">values</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="vendor/">vendor</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="version/">version</a></td>
+<td>String indicating the version of the software or protocol</td>
+</tr>
+<tr>
+<td><a href="volatile_org_comp/">volatile_org_comp</a></td>
+<td>Volatile organic compounds are organic chemicals that have a high vapour pres...</td>
+</tr>
+<tr>
+<td><a href="volume_ml/">volume_ml</a></td>
+<td>Volume of the entity in milliliters</td>
+</tr>
+<tr>
+<td><a href="volume_uL/">volume_uL</a></td>
+<td>Volume of the entity in microliters</td>
+</tr>
+<tr>
+<td><a href="voxel_size/">voxel_size</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="wastewater_type/">wastewater_type</a></td>
+<td>the origin of wastewater such as human waste rainfall storm drains etc</td>
+</tr>
+<tr>
+<td><a href="water_content/">water_content</a></td>
+<td>Water content measurement</td>
+</tr>
+<tr>
+<td><a href="water_content_meth/">water_content_meth</a></td>
+<td>Reference or method used in determining the water content of soil</td>
+</tr>
+<tr>
+<td><a href="water_current/">water_current</a></td>
+<td>Measurement of magnitude and direction of flow within a fluid</td>
+</tr>
+<tr>
+<td><a href="water_temp_regm/">water_temp_regm</a></td>
+<td>Information about treatment involving an exposure to water with varying degre...</td>
+</tr>
+<tr>
+<td><a href="watering_regm/">watering_regm</a></td>
+<td>Information about treatment involving an exposure to watering frequencies, tr...</td>
+</tr>
+<tr>
+<td><a href="wavelength/">wavelength</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="wavelength_nm/">wavelength_nm</a></td>
+<td>Measurement wavelength in nanometres (e</td>
+</tr>
+<tr>
+<td><a href="weather/">weather</a></td>
+<td>The state of the atmosphere at a given time and place with respect to variabl...</td>
+</tr>
+<tr>
+<td><a href="websites/">websites</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="well_metadata/">well_metadata</a></td>
+<td>Structured per-well metadata array</td>
+</tr>
+<tr>
+<td><a href="well_readings/">well_readings</a></td>
+<td>Structured per-well measurement data array</td>
+</tr>
+<tr>
+<td><a href="well_type/">well_type</a></td>
+<td>Role of this well   "sample", "blank", "uninoculated_control", "standard"</td>
+</tr>
+<tr>
+<td><a href="wind_direction/">wind_direction</a></td>
+<td>Direction of the wind on the day of sampling</td>
+</tr>
+<tr>
+<td><a href="wind_speed/">wind_speed</a></td>
+<td>Wind speed describes how fast the air is moving past a certain point during s...</td>
+</tr>
+<tr>
+<td><a href="within_17_oz/">within_17_oz</a></td>
+<td>Indicate if samples were collected during the local afternoon time</td>
+</tr>
+<tr>
+<td><a href="workflow_id/">workflow_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="workflow_steps/">workflow_steps</a></td>
+<td>Per-run workflow parameters</td>
+</tr>
+<tr>
+<td><a href="x_ray_power/">x_ray_power</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="y_mg_per_kg/">y_mg_per_kg</a></td>
+<td>Yttrium concentration in mg/kg</td>
+</tr>
+<tr>
+<td><a href="zinc_id/">zinc_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="zn_mg_per_kg/">zn_mg_per_kg</a></td>
+<td>Zinc concentration in mg/kg</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enumerations">Enumerations</h2>
+<table>
+<thead>
+<tr>
+<th>Enumeration</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="AerosolTypeEnum/">AerosolTypeEnum</a></td>
+<td>Types of aerosol samples</td>
+</tr>
+<tr>
+<td><a href="AlternateIdentifierType/">AlternateIdentifierType</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="AnalysisTypeEnum/">AnalysisTypeEnum</a></td>
+<td>Enumeration of common analyses performed on samples shipped to EMSL</td>
+</tr>
+<tr>
+<td><a href="AnalyteCategoryEnum/">AnalyteCategoryEnum</a></td>
+<td>bundling common terms for different omics types by biomolecule being analyzed</td>
+</tr>
+<tr>
+<td><a href="AnnotationDatabaseEnum/">AnnotationDatabaseEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="BinQuality/">BinQuality</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="BiolStatEnum/">BiolStatEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="BioticRelationshipEnum/">BioticRelationshipEnum</a></td>
+<td>Sample biotic relationships</td>
+</tr>
+<tr>
+<td><a href="CalibrationTargetEnum/">CalibrationTargetEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="CardinalDirectionEnum/">CardinalDirectionEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ChemicalEntityEnum/">ChemicalEntityEnum</a></td>
+<td>Common names or identifiers for chemical entities</td>
+</tr>
+<tr>
+<td><a href="ChromatographyCategoryEnum/">ChromatographyCategoryEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ColorCodeEnum/">ColorCodeEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ConstructComponentEnum/">ConstructComponentEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ContainerTypeEnum/">ContainerTypeEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="CoreSectionEnum/">CoreSectionEnum</a></td>
+<td>Sections of a core sample</td>
+</tr>
+<tr>
+<td><a href="DeviceTypeEnum/">DeviceTypeEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="DoiCategoryEnum/">DoiCategoryEnum</a></td>
+<td>The authority, or organization, the DOI is associated with</td>
+</tr>
+<tr>
+<td><a href="DoiProviderEnum/">DoiProviderEnum</a></td>
+<td>The authority, or organization, the DOI is associated with</td>
+</tr>
+<tr>
+<td><a href="DrainageClassEnum/">DrainageClassEnum</a></td>
+<td>Soil drainage classifications</td>
+</tr>
+<tr>
+<td><a href="EluentIntroductionEnum/">EluentIntroductionEnum</a></td>
+<td>The method used to introduce the eluent into the mass spectrometer</td>
+</tr>
+<tr>
+<td><a href="ExecutionResourceEnum/">ExecutionResourceEnum</a></td>
+<td>The computing resource or facility where the processing was executed</td>
+</tr>
+<tr>
+<td><a href="FAOClassEnum/">FAOClassEnum</a></td>
+<td>FAO soil classification system</td>
+</tr>
+<tr>
+<td><a href="FileTypeEnum/">FileTypeEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="FormulationEnum/">FormulationEnum</a></td>
+<td>Method used to formulate media</td>
+</tr>
+<tr>
+<td><a href="FragmentationEnum/">FragmentationEnum</a></td>
+<td>The fragmentation techniques used in mass spectrometry</td>
+</tr>
+<tr>
+<td><a href="GenotypeSegmentEnum/">GenotypeSegmentEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="GrowthFacilityEnum/">GrowthFacilityEnum</a></td>
+<td>Types of growth facilities</td>
+</tr>
+<tr>
+<td><a href="GrowthHabitEnum/">GrowthHabitEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="InstitutionEnum/">InstitutionEnum</a></td>
+<td>The organization that processed the sample / ran the pipeline / participated ...</td>
+</tr>
+<tr>
+<td><a href="InstrumentAltIdProviderEnum/">InstrumentAltIdProviderEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="IntendedTraitEnum/">IntendedTraitEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="IonizationSourceEnum/">IonizationSourceEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="LandUseEnum/">LandUseEnum</a></td>
+<td>Land use classifications</td>
+</tr>
+<tr>
+<td><a href="MassAnalyzerEnum/">MassAnalyzerEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="MassSpecRawFileTypeEnum/">MassSpecRawFileTypeEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="MassSpecResolutionEnum/">MassSpecResolutionEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="MassSpectrometryAcquisitionStrategyEnum/">MassSpectrometryAcquisitionStrategyEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="MassSpectrumCollectionModeEnum/">MassSpectrumCollectionModeEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="MediaTypeEnum/">MediaTypeEnum</a></td>
+<td>Purpose/context of the media preparation</td>
+</tr>
+<tr>
+<td><a href="MetagenomicsSteps/">MetagenomicsSteps</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="MetaproteomicsAnalysisCategoryEnum/">MetaproteomicsAnalysisCategoryEnum</a></td>
+<td>The category of metaproteomics analysis being performed</td>
+</tr>
+<tr>
+<td><a href="MethodNameEnum/">MethodNameEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ModelEnum/">ModelEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ModificationMethodEnum/">ModificationMethodEnum</a></td>
+<td>Methods used to introduce genetic modifications into organisms</td>
+</tr>
+<tr>
+<td><a href="MONetCoreGroupEnum/">MONetCoreGroupEnum</a></td>
+<td>Core groups when sampling according to the MONet sampling protocol</td>
+</tr>
+<tr>
+<td><a href="NEONDomainEnum/">NEONDomainEnum</a></td>
+<td>NEON ecological domains</td>
+</tr>
+<tr>
+<td><a href="NexusRoleEnum/">NexusRoleEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="NucleotideSequencingEnum/">NucleotideSequencingEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="OxygenStatusEnum/">OxygenStatusEnum</a></td>
+<td>Oxygen status of samples</td>
+</tr>
+<tr>
+<td><a href="PassFailEnum/">PassFailEnum</a></td>
+<td>Result/status for a process (e</td>
+</tr>
+<tr>
+<td><a href="PhotochemicalExposureEnum/">PhotochemicalExposureEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="PlantSexEnum/">PlantSexEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="PlantStructureEnum/">PlantStructureEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="PolarityEnum/">PolarityEnum</a></td>
+<td>The polarity mode used in the mass spectrometry analysis</td>
+</tr>
+<tr>
+<td><a href="ProcessedDataFlag/">ProcessedDataFlag</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ProductMeasureType/">ProductMeasureType</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ProfilePositionEnum/">ProfilePositionEnum</a></td>
+<td>Soil profile positions</td>
+</tr>
+<tr>
+<td><a href="ProjectStatusEnum/">ProjectStatusEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="RouteMethodEnum/">RouteMethodEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="SampleBaseType/">SampleBaseType</a></td>
+<td>Base types for sample entities</td>
+</tr>
+<tr>
+<td><a href="SamplePortionEnum/">SamplePortionEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="SampleRole/">SampleRole</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="SampleStoreTempEnum/">SampleStoreTempEnum</a></td>
+<td>Sample storage temperature conditions</td>
+</tr>
+<tr>
+<td><a href="SampleType/">SampleType</a></td>
+<td>Types of samples that can be collected</td>
+</tr>
+<tr>
+<td><a href="SamplingActivityTypeEnum/">SamplingActivityTypeEnum</a></td>
+<td>Types of sampling activities</td>
+</tr>
+<tr>
+<td><a href="SedimentTypeEnum/">SedimentTypeEnum</a></td>
+<td>Types of sediment</td>
+</tr>
+<tr>
+<td><a href="SitePhotoCategoryEnum/">SitePhotoCategoryEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="SoilHorizonEnum/">SoilHorizonEnum</a></td>
+<td>Soil horizon classifications</td>
+</tr>
+<tr>
+<td><a href="SoilSampleTypeEnum/">SoilSampleTypeEnum</a></td>
+<td>Specific types of soil samples</td>
+</tr>
+<tr>
+<td><a href="SoilTypeEnum/">SoilTypeEnum</a></td>
+<td>USDA soil taxonomy classifications</td>
+</tr>
+<tr>
+<td><a href="StationaryPhaseEnum/">StationaryPhaseEnum</a></td>
+<td>The stationary phase used in chromatography</td>
+</tr>
+<tr>
+<td><a href="SterilizationMethodEnum/">SterilizationMethodEnum</a></td>
+<td>Method used to sterilize media or other entities</td>
+</tr>
+<tr>
+<td><a href="StorageConditionEnum/">StorageConditionEnum</a></td>
+<td>Sample storage conditions</td>
+</tr>
+<tr>
+<td><a href="StrainTypeEnum/">StrainTypeEnum</a></td>
+<td>Types of microbial strains/organisms</td>
+</tr>
+<tr>
+<td><a href="SyntheticEnvironmentEnum/">SyntheticEnvironmentEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="TidalStageEnum/">TidalStageEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="TillageEnum/">TillageEnum</a></td>
+<td>Tillage methods</td>
+</tr>
+<tr>
+<td><a href="TrophicLevelEnum/">TrophicLevelEnum</a></td>
+<td>Enumeration of trophic levels for organisms</td>
+</tr>
+<tr>
+<td><a href="VendorEnum/">VendorEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="YesNoEnum/">YesNoEnum</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="types">Types</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Boolean/">Boolean</a></td>
+<td>A binary (true or false) value</td>
+</tr>
+<tr>
+<td><a href="Curie/">Curie</a></td>
+<td>a compact URI</td>
+</tr>
+<tr>
+<td><a href="Date/">Date</a></td>
+<td>a date (year, month and day) in an idealized calendar</td>
+</tr>
+<tr>
+<td><a href="DateOrDatetime/">DateOrDatetime</a></td>
+<td>Either a date or a datetime</td>
+</tr>
+<tr>
+<td><a href="Datetime/">Datetime</a></td>
+<td>The combination of a date and time</td>
+</tr>
+<tr>
+<td><a href="Decimal/">Decimal</a></td>
+<td>A real number with arbitrary precision that conforms to the xsd:decimal speci...</td>
+</tr>
+<tr>
+<td><a href="Double/">Double</a></td>
+<td>A real number that conforms to the xsd:double specification</td>
+</tr>
+<tr>
+<td><a href="Float/">Float</a></td>
+<td>A real number that conforms to the xsd:float specification</td>
+</tr>
+<tr>
+<td><a href="Integer/">Integer</a></td>
+<td>An integer</td>
+</tr>
+<tr>
+<td><a href="Jsonpath/">Jsonpath</a></td>
+<td>A string encoding a JSON Path</td>
+</tr>
+<tr>
+<td><a href="Jsonpointer/">Jsonpointer</a></td>
+<td>A string encoding a JSON Pointer</td>
+</tr>
+<tr>
+<td><a href="Ncname/">Ncname</a></td>
+<td>Prefix part of CURIE</td>
+</tr>
+<tr>
+<td><a href="Nodeidentifier/">Nodeidentifier</a></td>
+<td>A URI, CURIE or BNODE that represents a node in a model</td>
+</tr>
+<tr>
+<td><a href="Objectidentifier/">Objectidentifier</a></td>
+<td>A URI or CURIE that represents an object in the model</td>
+</tr>
+<tr>
+<td><a href="Sparqlpath/">Sparqlpath</a></td>
+<td>A string encoding a SPARQL Property Path</td>
+</tr>
+<tr>
+<td><a href="String/">String</a></td>
+<td>A character string</td>
+</tr>
+<tr>
+<td><a href="Time/">Time</a></td>
+<td>A time object represents a (local) time of day, independent of any particular...</td>
+</tr>
+<tr>
+<td><a href="TimestampTz/">TimestampTz</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="Uri/">Uri</a></td>
+<td>a complete URI</td>
+</tr>
+<tr>
+<td><a href="Uriorcurie/">Uriorcurie</a></td>
+<td>a URI or a CURIE</td>
+</tr>
+<tr>
+<td><a href="Uuid/">Uuid</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="subsets">Subsets</h2>
+<table>
+<thead>
+<tr>
+<th>Subset</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        
+
+<footer class="md-footer">
+  
+    <nav
+      class="md-footer__inner md-grid"
+      aria-label="footer.title"
+    >
+      
+        <a
+          href=".."
+          class="md-footer__link md-footer__link--prev"
+          rel="prev"
+        >
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Home
+            </div>
+          </div>
+        </a>
+      
+      
+        <a
+          href="../about/"
+          class="md-footer__link md-footer__link--next"
+          rel="next"
+        >
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              About
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        with emoji by
+        <a href="https://github.com/twitter/twemoji" target="_blank" rel="noopener">
+          Twemoji
+        </a>
+      </div>
+      
+<div class="md-social">
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link", "header.autohide", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../assets/pymdownx-extras/extra-loader-B5CKpNQx.js"></script>
+      
+    
+  </body>
+</html>
