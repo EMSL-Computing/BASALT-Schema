@@ -26,5 +26,5 @@ just gen-project
 ## Credits
 
 This material is free to use, and attribution is always appreciated.  Attribution may read as follows:
-Authored by Yuri E.Corilo, Conrad Mearns, Maia Kapur, Montana Smitth, Beata Meluch  (Staff) at the Pacific Northwest National Laboratory, operated by Battelle for the U.S. Department of Energy.
+Authored by Yuri E.Corilo, Conrad Mearns, Maia Kapur, Montana Smith, Beata Meluch  (Staff) at the Pacific Northwest National Laboratory, operated by Battelle for the U.S. Department of Energy.
 (Optional, if applicable):  Please cite the following in your work: (Place Holder Zenodo)
