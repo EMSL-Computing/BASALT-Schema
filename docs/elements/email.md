@@ -9,7 +9,7 @@ _A contactable email address associated with a person or institution._
 
 
 
-URI: [basalt_schema:email](https://w3id.org/MONet/basalt-schema/email)
+URI: [basalt_schema:email](https://EMSL-Computing.github.io/basalt-schema/email)
 Alias: email
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: email
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -82,7 +82,7 @@ Alias: email
 ```yaml
 name: email
 description: A contactable email address associated with a person or institution.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: email
 domain_of:

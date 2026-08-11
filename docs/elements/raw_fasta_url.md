@@ -9,7 +9,7 @@ _URL of raw FASTA file, if available from provider_
 
 
 
-URI: [basalt_schema:raw_fasta_url](https://w3id.org/MONet/basalt-schema/raw_fasta_url)
+URI: [basalt_schema:raw_fasta_url](https://EMSL-Computing.github.io/basalt-schema/raw_fasta_url)
 Alias: raw_fasta_url
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: raw_fasta_url
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ Alias: raw_fasta_url
 ```yaml
 name: raw_fasta_url
 description: URL of raw FASTA file, if available from provider
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: raw_fasta_url
 domain_of:

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:connected_pores](https://w3id.org/MONet/basalt-schema/connected_pores)
+URI: [basalt_schema:connected_pores](https://EMSL-Computing.github.io/basalt-schema/connected_pores)
 Alias: connected_pores
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: connected_pores
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: connected_pores
 <details>
 ```yaml
 name: connected_pores
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: connected_pores
 owner: TomographyProduct

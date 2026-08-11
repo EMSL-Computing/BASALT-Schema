@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flow_rate_x](https://w3id.org/MONet/basalt-schema/flow_rate_x)
+URI: [basalt_schema:flow_rate_x](https://EMSL-Computing.github.io/basalt-schema/flow_rate_x)
 Alias: flow_rate_x
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flow_rate_x
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flow_rate_x
 <details>
 ```yaml
 name: flow_rate_x
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flow_rate_x
 owner: TomographyProduct

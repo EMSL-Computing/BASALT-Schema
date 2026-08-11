@@ -7,7 +7,7 @@ _Soil horizon classifications_
 
 
 
-URI: [basalt_schema:SoilHorizonEnum](https://w3id.org/MONet/basalt-schema/SoilHorizonEnum)
+URI: [basalt_schema:SoilHorizonEnum](https://EMSL-Computing.github.io/basalt-schema/SoilHorizonEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -48,7 +48,7 @@ URI: [basalt_schema:SoilHorizonEnum](https://w3id.org/MONet/basalt-schema/SoilHo
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -61,7 +61,7 @@ URI: [basalt_schema:SoilHorizonEnum](https://w3id.org/MONet/basalt-schema/SoilHo
 ```yaml
 name: SoilHorizonEnum
 description: Soil horizon classifications
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   a_horizon:

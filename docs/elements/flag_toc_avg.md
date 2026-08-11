@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_toc_avg](https://w3id.org/MONet/basalt-schema/flag_toc_avg)
+URI: [basalt_schema:flag_toc_avg](https://EMSL-Computing.github.io/basalt-schema/flag_toc_avg)
 Alias: flag_toc_avg
 
 <!-- no inheritance hierarchy -->

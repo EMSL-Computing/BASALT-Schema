@@ -9,7 +9,7 @@ _Amount of oxygen measured in the air the day of sampling. (Unit: mg/L or ppm)_
 
 
 
-URI: [basalt_schema:oxygen](https://w3id.org/MONet/basalt-schema/oxygen)
+URI: [basalt_schema:oxygen](https://EMSL-Computing.github.io/basalt-schema/oxygen)
 Alias: oxygen
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: oxygen
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ name: oxygen
 description: 'Amount of oxygen measured in the air the day of sampling. (Unit: mg/L
   or ppm)'
 title: oxygen
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: oxygen
 domain_of:

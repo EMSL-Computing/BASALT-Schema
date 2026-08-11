@@ -9,7 +9,7 @@ _Information about treatment involving use of gravity factor to study various ty
 
 
 
-URI: [basalt_schema:gravity](https://w3id.org/MONet/basalt-schema/gravity)
+URI: [basalt_schema:gravity](https://EMSL-Computing.github.io/basalt-schema/gravity)
 Alias: gravity
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: gravity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -88,7 +88,7 @@ description: Information about treatment involving use of gravity factor to stud
   each treatment lasted, and the start and end time of the entire treatment; can include
   multiple treatments
 title: gravity
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: gravity
 domain_of:

@@ -9,7 +9,7 @@ _Link back to the NucleotideSequencing activity that produced this data._
 
 
 
-URI: [basalt_schema:produced_by_sequencing_activity](https://w3id.org/MONet/basalt-schema/produced_by_sequencing_activity)
+URI: [basalt_schema:produced_by_sequencing_activity](https://EMSL-Computing.github.io/basalt-schema/produced_by_sequencing_activity)
 Alias: produced_by_sequencing_activity
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: produced_by_sequencing_activity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -82,7 +82,7 @@ Alias: produced_by_sequencing_activity
 ```yaml
 name: produced_by_sequencing_activity
 description: Link back to the NucleotideSequencing activity that produced this data.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: produced_by_sequencing_activity
 domain_of:

@@ -9,7 +9,7 @@ _Source system for the sample GUID (e.g., "LIMS")._
 
 
 
-URI: [basalt_schema:guid_source](https://w3id.org/MONet/basalt-schema/guid_source)
+URI: [basalt_schema:guid_source](https://EMSL-Computing.github.io/basalt-schema/guid_source)
 Alias: guid_source
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: guid_source
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -82,7 +82,7 @@ Alias: guid_source
 ```yaml
 name: guid_source
 description: Source system for the sample GUID (e.g., "LIMS").
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: guid_source
 domain_of:

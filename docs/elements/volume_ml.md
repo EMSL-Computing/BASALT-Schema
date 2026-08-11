@@ -9,7 +9,7 @@ _Volume of the entity in milliliters_
 
 
 
-URI: [basalt_schema:volume_ml](https://w3id.org/MONet/basalt-schema/volume_ml)
+URI: [basalt_schema:volume_ml](https://EMSL-Computing.github.io/basalt-schema/volume_ml)
 Alias: volume_ml
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: volume_ml
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -82,7 +82,7 @@ Alias: volume_ml
 ```yaml
 name: volume_ml
 description: Volume of the entity in milliliters
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: volume_ml
 domain_of:

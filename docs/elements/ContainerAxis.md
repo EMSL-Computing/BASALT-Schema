@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:ContainerAxis](https://w3id.org/MONet/basalt-schema/ContainerAxis)
+URI: [basalt_schema:ContainerAxis](https://EMSL-Computing.github.io/basalt-schema/ContainerAxis)
 
 
 
@@ -67,7 +67,7 @@ URI: [basalt_schema:ContainerAxis](https://w3id.org/MONet/basalt-schema/Containe
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -95,11 +95,11 @@ URI: [basalt_schema:ContainerAxis](https://w3id.org/MONet/basalt-schema/Containe
 name: ContainerAxis
 todos:
 - I'm only including this in case we need it to sync up with L7 in some way
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   name:
     name: name
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     domain_of:
     - Activity
     - Entity
@@ -123,7 +123,7 @@ attributes:
     range: string
   values:
     name: values
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     domain_of:
     - ContainerAxis
@@ -140,11 +140,11 @@ attributes:
 name: ContainerAxis
 todos:
 - I'm only including this in case we need it to sync up with L7 in some way
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   name:
     name: name
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     alias: name
     owner: ContainerAxis
     domain_of:
@@ -170,7 +170,7 @@ attributes:
     range: string
   values:
     name: values
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: values
     owner: ContainerAxis

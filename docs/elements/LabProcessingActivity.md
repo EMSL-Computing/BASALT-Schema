@@ -29,7 +29,7 @@ _and its existing id attribute can be retained or removed (inherited)._
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [basalt_schema:LabProcessingActivity](https://w3id.org/MONet/basalt-schema/LabProcessingActivity)
+URI: [basalt_schema:LabProcessingActivity](https://EMSL-Computing.github.io/basalt-schema/LabProcessingActivity)
 
 
 
@@ -84,7 +84,7 @@ URI: [basalt_schema:LabProcessingActivity](https://w3id.org/MONet/basalt-schema/
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -117,12 +117,12 @@ description: "[NEW ABSTRACT CLASS] Higher-level abstract base for any activity t
   \ sampleProcessing branch.\n\nNOTE: In the live schema, sampleProcessing should\
   \ gain\n  is_a: labProcessingActivity\nand its existing id attribute can be retained\
   \ or removed (inherited)."
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 abstract: true
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate
     identifier: true
     domain_of:
     - Activity
@@ -201,7 +201,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the activity
-    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate
     domain_of:
     - Activity
     - Entity
@@ -226,7 +226,7 @@ attributes:
   description:
     name: description
     description: Free-text description of the activity
-    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate
     domain_of:
     - Activity
     - Entity
@@ -268,12 +268,12 @@ description: "[NEW ABSTRACT CLASS] Higher-level abstract base for any activity t
   \ sampleProcessing branch.\n\nNOTE: In the live schema, sampleProcessing should\
   \ gain\n  is_a: labProcessingActivity\nand its existing id attribute can be retained\
   \ or removed (inherited)."
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 abstract: true
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate
     identifier: true
     alias: id
     owner: LabProcessingActivity
@@ -354,7 +354,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the activity
-    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate
     alias: name
     owner: LabProcessingActivity
     domain_of:
@@ -381,7 +381,7 @@ attributes:
   description:
     name: description
     description: Free-text description of the activity
-    from_schema: https://w3id.org/MONet/basalt-schema/media-strain-culture-plate
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate
     alias: description
     owner: LabProcessingActivity
     domain_of:

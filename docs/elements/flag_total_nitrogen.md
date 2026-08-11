@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_total_nitrogen](https://w3id.org/MONet/basalt-schema/flag_total_nitrogen)
+URI: [basalt_schema:flag_total_nitrogen](https://EMSL-Computing.github.io/basalt-schema/flag_total_nitrogen)
 Alias: flag_total_nitrogen
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_total_nitrogen
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_total_nitrogen
 <details>
 ```yaml
 name: flag_total_nitrogen
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_total_nitrogen
 owner: ElementalAnalysisProduct

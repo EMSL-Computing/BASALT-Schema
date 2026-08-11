@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:incubation_time](https://w3id.org/MONet/basalt-schema/incubation_time)
+URI: [basalt_schema:incubation_time](https://EMSL-Computing.github.io/basalt-schema/incubation_time)
 Alias: incubation_time
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: incubation_time
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: incubation_time
 <details>
 ```yaml
 name: incubation_time
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: incubation_time
 owner: EnzymeActivityMethod

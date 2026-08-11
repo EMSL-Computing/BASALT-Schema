@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:id](https://w3id.org/MONet/basalt-schema/id)
+URI: [basalt_schema:id](https://EMSL-Computing.github.io/basalt-schema/id)
 Alias: id
 
 <!-- no inheritance hierarchy -->

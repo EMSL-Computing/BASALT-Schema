@@ -9,7 +9,7 @@ _A citation for how the synthetic environment was designed_
 
 
 
-URI: [basalt_schema:synth_env_design_method](https://w3id.org/MONet/basalt-schema/synth_env_design_method)
+URI: [basalt_schema:synth_env_design_method](https://EMSL-Computing.github.io/basalt-schema/synth_env_design_method)
 Alias: synth_env_design_method
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: synth_env_design_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: synth_env_design_method
 name: synth_env_design_method
 description: A citation for how the synthetic environment was designed
 title: synthetic environment design method
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: synth_env_design_method
 domain_of:

@@ -9,7 +9,7 @@ _The label on the stored processed sample, if applicable (e.g., "f01")._
 
 
 
-URI: [basalt_schema:label_text](https://w3id.org/MONet/basalt-schema/label_text)
+URI: [basalt_schema:label_text](https://EMSL-Computing.github.io/basalt-schema/label_text)
 Alias: label_text
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: label_text
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: label_text
 ```yaml
 name: label_text
 description: The label on the stored processed sample, if applicable (e.g., "f01").
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: label_text
 domain_of:

@@ -9,7 +9,7 @@ _The replicate number of the sample or measurement, if applicable._
 
 
 
-URI: [basalt_schema:replicate](https://w3id.org/MONet/basalt-schema/replicate)
+URI: [basalt_schema:replicate](https://EMSL-Computing.github.io/basalt-schema/replicate)
 Alias: replicate
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: replicate
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -94,7 +94,7 @@ name: replicate
 description: The replicate number of the sample or measurement, if applicable.
 todos:
 - reconcile replicate modelling
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: replicate
 domain_of:

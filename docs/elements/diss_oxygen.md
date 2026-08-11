@@ -9,7 +9,7 @@ _Concentration of dissolved oxygen. (Unit: umol/kg or mg/L)_
 
 
 
-URI: [basalt_schema:diss_oxygen](https://w3id.org/MONet/basalt-schema/diss_oxygen)
+URI: [basalt_schema:diss_oxygen](https://EMSL-Computing.github.io/basalt-schema/diss_oxygen)
 Alias: diss_oxygen
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: diss_oxygen
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ Alias: diss_oxygen
 name: diss_oxygen
 description: 'Concentration of dissolved oxygen. (Unit: umol/kg or mg/L)'
 title: dissolved oxygen
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: diss_oxygen
 domain_of:

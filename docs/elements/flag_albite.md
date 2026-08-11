@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_albite](https://w3id.org/MONet/basalt-schema/flag_albite)
+URI: [basalt_schema:flag_albite](https://EMSL-Computing.github.io/basalt-schema/flag_albite)
 Alias: flag_albite
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_albite
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_albite
 <details>
 ```yaml
 name: flag_albite
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_albite
 owner: XRDPhaseProduct

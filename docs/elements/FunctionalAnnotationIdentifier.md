@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:FunctionalAnnotationIdentifier](https://w3id.org/MONet/basalt-schema/FunctionalAnnotationIdentifier)
+URI: [basalt_schema:FunctionalAnnotationIdentifier](https://EMSL-Computing.github.io/basalt-schema/FunctionalAnnotationIdentifier)
 
 
 
@@ -75,7 +75,7 @@ URI: [basalt_schema:FunctionalAnnotationIdentifier](https://w3id.org/MONet/basal
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -101,11 +101,11 @@ URI: [basalt_schema:FunctionalAnnotationIdentifier](https://w3id.org/MONet/basal
 <details>
 ```yaml
 name: FunctionalAnnotationIdentifier
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     identifier: true
     domain_of:
     - Activity
@@ -183,7 +183,7 @@ attributes:
     required: true
   functional_identifier:
     name: functional_identifier
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     domain_of:
     - FunctionalAnnotationIdentifier
@@ -191,7 +191,7 @@ attributes:
     required: true
   database:
     name: database
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     domain_of:
     - FunctionalAnnotationIdentifier
@@ -206,11 +206,11 @@ attributes:
 <details>
 ```yaml
 name: FunctionalAnnotationIdentifier
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     identifier: true
     alias: id
     owner: FunctionalAnnotationIdentifier
@@ -290,7 +290,7 @@ attributes:
     required: true
   functional_identifier:
     name: functional_identifier
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: functional_identifier
     owner: FunctionalAnnotationIdentifier
@@ -300,7 +300,7 @@ attributes:
     required: true
   database:
     name: database
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: database
     owner: FunctionalAnnotationIdentifier

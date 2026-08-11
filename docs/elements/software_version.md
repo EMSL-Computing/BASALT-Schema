@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:software_version](https://w3id.org/MONet/basalt-schema/software_version)
+URI: [basalt_schema:software_version](https://EMSL-Computing.github.io/basalt-schema/software_version)
 Alias: software_version
 
 <!-- no inheritance hierarchy -->

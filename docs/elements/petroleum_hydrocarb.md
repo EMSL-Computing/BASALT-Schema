@@ -9,7 +9,7 @@ _Concentration of petroleum hydrocarbon (Unit: umol/L)_
 
 
 
-URI: [basalt_schema:petroleum_hydrocarb](https://w3id.org/MONet/basalt-schema/petroleum_hydrocarb)
+URI: [basalt_schema:petroleum_hydrocarb](https://EMSL-Computing.github.io/basalt-schema/petroleum_hydrocarb)
 Alias: petroleum_hydrocarb
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: petroleum_hydrocarb
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ Alias: petroleum_hydrocarb
 name: petroleum_hydrocarb
 description: 'Concentration of petroleum hydrocarbon (Unit: umol/L)'
 title: petroleum hydrocarbon
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: petroleum_hydrocarb
 domain_of:

@@ -9,7 +9,7 @@ _A unique numerical identifier assigned by the Chemical Abstract Service (CAS), 
 
 
 
-URI: [basalt_schema:cas](https://w3id.org/MONet/basalt-schema/cas)
+URI: [basalt_schema:cas](https://EMSL-Computing.github.io/basalt-schema/cas)
 Alias: cas
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: cas
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ description: A unique numerical identifier assigned by the Chemical Abstract Ser
   (CAS), a division of the American Chemical Society, to chemical compounds, polymers,
   biological sequences, mixtures, and alloys.
 title: CAS number
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - CAS
 rank: 1000

@@ -9,7 +9,7 @@ _Raw or converted fluorescence of water. Provide value and unit, any unit is val
 
 
 
-URI: [basalt_schema:fluor](https://w3id.org/MONet/basalt-schema/fluor)
+URI: [basalt_schema:fluor](https://EMSL-Computing.github.io/basalt-schema/fluor)
 Alias: fluor
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: fluor
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ name: fluor
 description: Raw or converted fluorescence of water. Provide value and unit, any unit
   is valid.
 title: fluorescence
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: fluor
 domain_of:

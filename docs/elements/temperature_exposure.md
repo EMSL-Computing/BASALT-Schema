@@ -9,7 +9,7 @@ _The range of temperatures at which it is safe to store a label that has been ap
 
 
 
-URI: [basalt_schema:temperature_exposure](https://w3id.org/MONet/basalt-schema/temperature_exposure)
+URI: [basalt_schema:temperature_exposure](https://EMSL-Computing.github.io/basalt-schema/temperature_exposure)
 Alias: temperature_exposure
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: temperature_exposure
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ name: temperature_exposure
 description: The range of temperatures at which it is safe to store a label that has
   been applied to a substrate. Provided by iMet
 title: temperature exposure
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: temperature_exposure
 domain_of:

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:functional_annotation_id](https://w3id.org/MONet/basalt-schema/functional_annotation_id)
+URI: [basalt_schema:functional_annotation_id](https://EMSL-Computing.github.io/basalt-schema/functional_annotation_id)
 Alias: functional_annotation_id
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: functional_annotation_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: functional_annotation_id
 <details>
 ```yaml
 name: functional_annotation_id
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: functional_annotation_id
 owner: WorkflowExecutionFunctionalAnnotation

@@ -9,7 +9,7 @@ _an identifier for a file that resolves to the file's accessible location_
 
 
 
-URI: [basalt_schema:file_curie](https://w3id.org/MONet/basalt-schema/file_curie)
+URI: [basalt_schema:file_curie](https://EMSL-Computing.github.io/basalt-schema/file_curie)
 Alias: file_curie
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: file_curie
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: file_curie
 ```yaml
 name: file_curie
 description: an identifier for a file that resolves to the file's accessible location
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: file_curie
 domain_of:

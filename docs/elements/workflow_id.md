@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:workflow_id](https://w3id.org/MONet/basalt-schema/workflow_id)
+URI: [basalt_schema:workflow_id](https://EMSL-Computing.github.io/basalt-schema/workflow_id)
 Alias: workflow_id
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: workflow_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: workflow_id
 <details>
 ```yaml
 name: workflow_id
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: workflow_id
 owner: WorkflowExecutionFunctionalAnnotation

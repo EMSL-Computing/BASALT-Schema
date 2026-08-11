@@ -9,7 +9,7 @@ _Reference to the site where the sample was collected. This is a FK to the Site 
 
 
 
-URI: [basalt_schema:sampled_at_site](https://w3id.org/MONet/basalt-schema/sampled_at_site)
+URI: [basalt_schema:sampled_at_site](https://EMSL-Computing.github.io/basalt-schema/sampled_at_site)
 Alias: sampled_at_site
 
 <!-- no inheritance hierarchy -->
@@ -77,7 +77,7 @@ Alias: sampled_at_site
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -99,7 +99,7 @@ Alias: sampled_at_site
 name: sampled_at_site
 description: Reference to the site where the sample was collected. This is a FK to
   the Site class, which contains detailed metadata about the sampling location.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sampled_at_site
 domain_of:

@@ -9,7 +9,7 @@ _Sodium concentration in the sample (Unit: ug/mL)_
 
 
 
-URI: [basalt_schema:sodium](https://w3id.org/MONet/basalt-schema/sodium)
+URI: [basalt_schema:sodium](https://EMSL-Computing.github.io/basalt-schema/sodium)
 Alias: sodium
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: sodium
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ Alias: sodium
 name: sodium
 description: 'Sodium concentration in the sample (Unit: ug/mL)'
 title: sodium
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sodium
 domain_of:

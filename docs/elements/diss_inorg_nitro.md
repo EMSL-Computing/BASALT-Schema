@@ -9,7 +9,7 @@ _Concentration of dissolved inorganic nitrogen. (Unit: ug/L or umol/L)_
 
 
 
-URI: [basalt_schema:diss_inorg_nitro](https://w3id.org/MONet/basalt-schema/diss_inorg_nitro)
+URI: [basalt_schema:diss_inorg_nitro](https://EMSL-Computing.github.io/basalt-schema/diss_inorg_nitro)
 Alias: diss_inorg_nitro
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: diss_inorg_nitro
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -91,7 +91,7 @@ Alias: diss_inorg_nitro
 name: diss_inorg_nitro
 description: 'Concentration of dissolved inorganic nitrogen. (Unit: ug/L or umol/L)'
 title: dissolved inorganic nitrogen
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: diss_inorg_nitro
 domain_of:

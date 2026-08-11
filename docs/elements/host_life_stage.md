@@ -9,7 +9,7 @@ _Description of life stage of host_
 
 
 
-URI: [basalt_schema:host_life_stage](https://w3id.org/MONet/basalt-schema/host_life_stage)
+URI: [basalt_schema:host_life_stage](https://EMSL-Computing.github.io/basalt-schema/host_life_stage)
 Alias: host_life_stage
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: host_life_stage
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -86,7 +86,7 @@ Alias: host_life_stage
 name: host_life_stage
 description: Description of life stage of host
 title: host life stage
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: host_life_stage
 domain_of:

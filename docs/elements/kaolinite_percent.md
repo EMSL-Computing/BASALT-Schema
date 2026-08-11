@@ -9,7 +9,7 @@ _Kaolinite (Al2Si2O5(OH)4) weight percent_
 
 
 
-URI: [basalt_schema:kaolinite_percent](https://w3id.org/MONet/basalt-schema/kaolinite_percent)
+URI: [basalt_schema:kaolinite_percent](https://EMSL-Computing.github.io/basalt-schema/kaolinite_percent)
 Alias: kaolinite_percent
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: kaolinite_percent
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -89,7 +89,7 @@ Alias: kaolinite_percent
 ```yaml
 name: kaolinite_percent
 description: Kaolinite (Al2Si2O5(OH)4) weight percent
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: kaolinite_percent
 owner: XRDPhaseProduct

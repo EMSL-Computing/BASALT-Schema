@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:md5checksum](https://w3id.org/MONet/basalt-schema/md5checksum)
+URI: [basalt_schema:md5checksum](https://EMSL-Computing.github.io/basalt-schema/md5checksum)
 Alias: md5checksum
 
 <!-- no inheritance hierarchy -->
@@ -85,7 +85,7 @@ Alias: md5checksum
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -105,7 +105,7 @@ Alias: md5checksum
 <details>
 ```yaml
 name: md5checksum
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: md5checksum
 domain_of:

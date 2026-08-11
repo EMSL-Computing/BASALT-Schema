@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:profile_image_url](https://w3id.org/MONet/basalt-schema/profile_image_url)
+URI: [basalt_schema:profile_image_url](https://EMSL-Computing.github.io/basalt-schema/profile_image_url)
 Alias: profile_image_url
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: profile_image_url
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: profile_image_url
 <details>
 ```yaml
 name: profile_image_url
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: profile_image_url
 owner: PersonValue

@@ -9,7 +9,7 @@ _The state of the atmosphere at a given time and place with respect to variables
 
 
 
-URI: [basalt_schema:weather](https://w3id.org/MONet/basalt-schema/weather)
+URI: [basalt_schema:weather](https://EMSL-Computing.github.io/basalt-schema/weather)
 Alias: weather
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: weather
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -87,7 +87,7 @@ name: weather
 description: The state of the atmosphere at a given time and place with respect to
   variables such as temperature, moisture, wind velocity, and barometric pressure.
 title: weather
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: weather
 domain_of:

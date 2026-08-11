@@ -9,7 +9,7 @@ _a reference to the mass spec data processing activity that produced this data p
 
 
 
-URI: [basalt_schema:results_from_ms_processing](https://w3id.org/MONet/basalt-schema/results_from_ms_processing)
+URI: [basalt_schema:results_from_ms_processing](https://EMSL-Computing.github.io/basalt-schema/results_from_ms_processing)
 Alias: results_from_ms_processing
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: results_from_ms_processing
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -86,7 +86,7 @@ Alias: results_from_ms_processing
 name: results_from_ms_processing
 description: a reference to the mass spec data processing activity that produced this
   data product
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: results_from_ms_processing
 domain_of:

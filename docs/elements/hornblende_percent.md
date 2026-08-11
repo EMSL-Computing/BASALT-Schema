@@ -9,7 +9,7 @@ _Hornblende (Ca,Na)2-3(Mg,Fe,Al)5(Al,Si)8O22(OH)2 weight percent_
 
 
 
-URI: [basalt_schema:hornblende_percent](https://w3id.org/MONet/basalt-schema/hornblende_percent)
+URI: [basalt_schema:hornblende_percent](https://EMSL-Computing.github.io/basalt-schema/hornblende_percent)
 Alias: hornblende_percent
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: hornblende_percent
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -89,7 +89,7 @@ Alias: hornblende_percent
 ```yaml
 name: hornblende_percent
 description: Hornblende (Ca,Na)2-3(Mg,Fe,Al)5(Al,Si)8O22(OH)2 weight percent
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: hornblende_percent
 owner: XRDPhaseProduct

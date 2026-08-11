@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_la](https://w3id.org/MONet/basalt-schema/flag_la)
+URI: [basalt_schema:flag_la](https://EMSL-Computing.github.io/basalt-schema/flag_la)
 Alias: flag_la
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_la
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_la
 <details>
 ```yaml
 name: flag_la
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_la
 owner: XRFElementalProduct

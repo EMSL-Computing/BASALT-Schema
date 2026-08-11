@@ -9,7 +9,7 @@ _List of chemical compounds administered to the host or site where sampling occu
 
 
 
-URI: [basalt_schema:chem_administration](https://w3id.org/MONet/basalt-schema/chem_administration)
+URI: [basalt_schema:chem_administration](https://EMSL-Computing.github.io/basalt-schema/chem_administration)
 Alias: chem_administration
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: chem_administration
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -99,7 +99,7 @@ description: List of chemical compounds administered to the host or site where s
   compounds. For chemical entities of biological interest ontology (chebi) (v 163),
   http://purl.bioontology.org/ontology/chebi
 title: chemical administration
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 exact_mappings:
 - MIXS:0000751
 rank: 1000

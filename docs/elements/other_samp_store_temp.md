@@ -9,7 +9,7 @@ _Please specify sample storage temperature if you selected 'other'_
 
 
 
-URI: [basalt_schema:other_samp_store_temp](https://w3id.org/MONet/basalt-schema/other_samp_store_temp)
+URI: [basalt_schema:other_samp_store_temp](https://EMSL-Computing.github.io/basalt-schema/other_samp_store_temp)
 Alias: other_samp_store_temp
 
 <!-- no inheritance hierarchy -->
@@ -75,7 +75,7 @@ Alias: other_samp_store_temp
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -97,7 +97,7 @@ Alias: other_samp_store_temp
 name: other_samp_store_temp
 description: Please specify sample storage temperature if you selected 'other'
 title: other sample storage temperature
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: other_samp_store_temp
 domain_of:

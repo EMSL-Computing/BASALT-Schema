@@ -9,7 +9,7 @@ _Quality index for first boundary layer height candidate (-999 if no candidate)_
 
 
 
-URI: [basalt_schema:first_blh_quality_index](https://w3id.org/MONet/basalt-schema/first_blh_quality_index)
+URI: [basalt_schema:first_blh_quality_index](https://EMSL-Computing.github.io/basalt-schema/first_blh_quality_index)
 Alias: first_blh_quality_index
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: first_blh_quality_index
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: first_blh_quality_index
 name: first_blh_quality_index
 description: Quality index for first boundary layer height candidate (-999 if no candidate)
 title: first boundary layer height quality
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: first_blh_quality_index
 domain_of:

@@ -9,7 +9,7 @@ _Type of chromatography used in the method (e.g., GC, LC)_
 
 
 
-URI: [basalt_schema:chromatography_type](https://w3id.org/MONet/basalt-schema/chromatography_type)
+URI: [basalt_schema:chromatography_type](https://EMSL-Computing.github.io/basalt-schema/chromatography_type)
 Alias: chromatography_type
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: chromatography_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: chromatography_type
 ```yaml
 name: chromatography_type
 description: Type of chromatography used in the method (e.g., GC, LC)
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: chromatography_type
 domain_of:

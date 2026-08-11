@@ -9,7 +9,7 @@ _Concentration of chlorophyll (Unit: mg/m3 or ug/L)_
 
 
 
-URI: [basalt_schema:chlorophyll](https://w3id.org/MONet/basalt-schema/chlorophyll)
+URI: [basalt_schema:chlorophyll](https://EMSL-Computing.github.io/basalt-schema/chlorophyll)
 Alias: chlorophyll
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: chlorophyll
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ Alias: chlorophyll
 name: chlorophyll
 description: 'Concentration of chlorophyll (Unit: mg/m3 or ug/L)'
 title: chlorophyll
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: chlorophyll
 domain_of:

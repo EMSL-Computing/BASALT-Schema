@@ -1,5 +1,5 @@
 ---
-id: https://w3id.org/MONet/basalt-schema/slots
+id: https://EMSL-Computing.github.io/basalt-schema/slots
 name: basalt-schema-slots
 title: Slot definitions for the BASALT Schema
 description: |-
@@ -7,11 +7,11 @@ description: |-
   maintainability and reusability.
 license: MIT
 see_also:
-  - https://MONet.github.io/basalt-schema
-  - https://github.com/mkapur-pnnl/basalt-schema
+  - https://EMSL-Computing.github.io/basalt-schema
+  - https://github.com/EMSL-Computing/basalt-schema
 
 prefixes:
-  basalt_schema: https://w3id.org/MONet/basalt-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
   MIXS: https://w3id.org/mixs/
 

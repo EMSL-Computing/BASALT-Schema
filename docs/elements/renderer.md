@@ -9,7 +9,7 @@ _UI renderer to use for this container type (e.g., defaultcontainer.js)._
 
 
 
-URI: [basalt_schema:renderer](https://w3id.org/MONet/basalt-schema/renderer)
+URI: [basalt_schema:renderer](https://EMSL-Computing.github.io/basalt-schema/renderer)
 Alias: renderer
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: renderer
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -89,7 +89,7 @@ Alias: renderer
 ```yaml
 name: renderer
 description: UI renderer to use for this container type (e.g., defaultcontainer.js).
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: renderer
 owner: ContainerType

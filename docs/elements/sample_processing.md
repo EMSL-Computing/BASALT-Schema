@@ -9,7 +9,7 @@ _A brief description of any processing applied to the sample during or after ret
 
 
 
-URI: [basalt_schema:sample_processing](https://w3id.org/MONet/basalt-schema/sample_processing)
+URI: [basalt_schema:sample_processing](https://EMSL-Computing.github.io/basalt-schema/sample_processing)
 Alias: sample_processing
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: sample_processing
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -97,7 +97,7 @@ description: A brief description of any processing applied to the sample during 
   after retrieving the sample from environment or a link to the relevant protocol(s)
   performed.
 title: sample processing
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sample_processing
 domain_of:

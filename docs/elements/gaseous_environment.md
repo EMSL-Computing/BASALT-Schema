@@ -9,7 +9,7 @@ _Use of conditions with differing gaseous environments; should include the name 
 
 
 
-URI: [basalt_schema:gaseous_environment](https://w3id.org/MONet/basalt-schema/gaseous_environment)
+URI: [basalt_schema:gaseous_environment](https://EMSL-Computing.github.io/basalt-schema/gaseous_environment)
 Alias: gaseous_environment
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: gaseous_environment
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -94,7 +94,7 @@ description: Use of conditions with differing gaseous environments; should inclu
   the name of gaseous compound, amount administered, treatment duration, interval,
   and total experimental duration; can include multiple gaseous environment regimens
 title: gaseous environment
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: gaseous_environment
 domain_of:

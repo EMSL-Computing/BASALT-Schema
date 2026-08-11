@@ -9,7 +9,7 @@ _Information about treatment involving the use of mineral supplements; should in
 
 
 
-URI: [basalt_schema:mineral_nutr_regm](https://w3id.org/MONet/basalt-schema/mineral_nutr_regm)
+URI: [basalt_schema:mineral_nutr_regm](https://EMSL-Computing.github.io/basalt-schema/mineral_nutr_regm)
 Alias: mineral_nutr_regm
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: mineral_nutr_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -90,7 +90,7 @@ description: Information about treatment involving the use of mineral supplement
   and the start and end time of the entire treatment; can include multiple mineral
   nutrient regimens
 title: mineral nutrient regimen
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: mineral_nutr_regm
 domain_of:

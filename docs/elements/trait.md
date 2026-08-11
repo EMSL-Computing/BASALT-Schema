@@ -11,7 +11,7 @@ _Example: "Bacterial Resistance", "Other"_
 
 
 
-URI: [basalt_schema:trait](https://w3id.org/MONet/basalt-schema/trait)
+URI: [basalt_schema:trait](https://EMSL-Computing.github.io/basalt-schema/trait)
 Alias: trait
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: trait
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -86,7 +86,7 @@ name: trait
 description: 'Trait category for the organism.
 
   Example: "Bacterial Resistance", "Other"'
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: trait
 domain_of:

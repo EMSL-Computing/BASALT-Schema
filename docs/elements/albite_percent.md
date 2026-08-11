@@ -9,7 +9,7 @@ _Albite (NaAlSi3O8) weight percent_
 
 
 
-URI: [basalt_schema:albite_percent](https://w3id.org/MONet/basalt-schema/albite_percent)
+URI: [basalt_schema:albite_percent](https://EMSL-Computing.github.io/basalt-schema/albite_percent)
 Alias: albite_percent
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: albite_percent
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -89,7 +89,7 @@ Alias: albite_percent
 ```yaml
 name: albite_percent
 description: Albite (NaAlSi3O8) weight percent
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: albite_percent
 owner: XRDPhaseProduct

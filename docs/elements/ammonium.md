@@ -9,7 +9,7 @@ _Concentration of ammonium in the sample. (Units: umol/L or mg/Liter or ppm)_
 
 
 
-URI: [basalt_schema:ammonium](https://w3id.org/MONet/basalt-schema/ammonium)
+URI: [basalt_schema:ammonium](https://EMSL-Computing.github.io/basalt-schema/ammonium)
 Alias: ammonium
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: ammonium
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -93,7 +93,7 @@ name: ammonium
 description: 'Concentration of ammonium in the sample. (Units: umol/L or mg/Liter
   or ppm)'
 title: ammonium
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: ammonium
 domain_of:

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:uses_sample](https://w3id.org/MONet/basalt-schema/uses_sample)
+URI: [basalt_schema:uses_sample](https://EMSL-Computing.github.io/basalt-schema/uses_sample)
 Alias: uses_sample
 
 <!-- no inheritance hierarchy -->
@@ -72,7 +72,7 @@ Alias: uses_sample
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ Alias: uses_sample
 <details>
 ```yaml
 name: uses_sample
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: uses_sample
 owner: SampleProcessing

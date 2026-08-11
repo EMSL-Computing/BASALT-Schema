@@ -9,7 +9,7 @@ _Electrical conductivity is a measure of the bulk soil ability to carry electric
 
 
 
-URI: [basalt_schema:bulk_elect_conductivity](https://w3id.org/MONet/basalt-schema/bulk_elect_conductivity)
+URI: [basalt_schema:bulk_elect_conductivity](https://EMSL-Computing.github.io/basalt-schema/bulk_elect_conductivity)
 Alias: bulk_elect_conductivity
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: bulk_elect_conductivity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -94,7 +94,7 @@ description: 'Electrical conductivity is a measure of the bulk soil ability to c
   electric current which is mostly dictated by the chemistry of and amount of soil
   water. (Unit: mS/cm)'
 title: bulk electrical conductivity
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: bulk_elect_conductivity
 domain_of:

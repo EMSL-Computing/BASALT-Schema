@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:total_organic_carbon_avg](https://w3id.org/MONet/basalt-schema/total_organic_carbon_avg)
+URI: [basalt_schema:total_organic_carbon_avg](https://EMSL-Computing.github.io/basalt-schema/total_organic_carbon_avg)
 Alias: total_organic_carbon_avg
 
 <!-- no inheritance hierarchy -->

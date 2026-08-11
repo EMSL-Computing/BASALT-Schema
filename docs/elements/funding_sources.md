@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:funding_sources](https://w3id.org/MONet/basalt-schema/funding_sources)
+URI: [basalt_schema:funding_sources](https://EMSL-Computing.github.io/basalt-schema/funding_sources)
 Alias: funding_sources
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: funding_sources
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: funding_sources
 <details>
 ```yaml
 name: funding_sources
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: funding_sources
 owner: Study

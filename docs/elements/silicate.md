@@ -9,7 +9,7 @@ _Concentration of silicate (Unit: umol/L)_
 
 
 
-URI: [basalt_schema:silicate](https://w3id.org/MONet/basalt-schema/silicate)
+URI: [basalt_schema:silicate](https://EMSL-Computing.github.io/basalt-schema/silicate)
 Alias: silicate
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: silicate
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ Alias: silicate
 name: silicate
 description: 'Concentration of silicate (Unit: umol/L)'
 title: silicate
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: silicate
 domain_of:

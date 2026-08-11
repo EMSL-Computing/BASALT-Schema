@@ -9,7 +9,7 @@ _Total mass of the host at collection. (Unit: kg or g)_
 
 
 
-URI: [basalt_schema:host_tot_mass](https://w3id.org/MONet/basalt-schema/host_tot_mass)
+URI: [basalt_schema:host_tot_mass](https://EMSL-Computing.github.io/basalt-schema/host_tot_mass)
 Alias: host_tot_mass
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: host_tot_mass
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ Alias: host_tot_mass
 name: host_tot_mass
 description: 'Total mass of the host at collection. (Unit: kg or g)'
 title: host total mass
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: host_tot_mass
 domain_of:

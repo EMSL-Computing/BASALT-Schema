@@ -9,7 +9,7 @@ _Identifier linking technical replicates (e.g. "rep1", "rep2")_
 
 
 
-URI: [basalt_schema:replicate_group](https://w3id.org/MONet/basalt-schema/replicate_group)
+URI: [basalt_schema:replicate_group](https://EMSL-Computing.github.io/basalt-schema/replicate_group)
 Alias: replicate_group
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: replicate_group
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -91,7 +91,7 @@ Alias: replicate_group
 ```yaml
 name: replicate_group
 description: Identifier linking technical replicates (e.g. "rep1", "rep2")
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: replicate_group
 owner: WellMetadata

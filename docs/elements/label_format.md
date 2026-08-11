@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:label_format](https://w3id.org/MONet/basalt-schema/label_format)
+URI: [basalt_schema:label_format](https://EMSL-Computing.github.io/basalt-schema/label_format)
 Alias: label_format
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: label_format
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: label_format
 <details>
 ```yaml
 name: label_format
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: label_format
 owner: ContainerType

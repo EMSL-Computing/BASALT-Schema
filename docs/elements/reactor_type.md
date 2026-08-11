@@ -9,7 +9,7 @@ _anaerobic digesters can be designed and engineered to operate using a number of
 
 
 
-URI: [basalt_schema:reactor_type](https://w3id.org/MONet/basalt-schema/reactor_type)
+URI: [basalt_schema:reactor_type](https://EMSL-Computing.github.io/basalt-schema/reactor_type)
 Alias: reactor_type
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: reactor_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ description: anaerobic digesters can be designed and engineered to operate using
   number of different process configurations, such as batch or continuous, mesophilic,
   high solid or low solid, and single stage or multistage
 title: reactor type
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: reactor_type
 domain_of:

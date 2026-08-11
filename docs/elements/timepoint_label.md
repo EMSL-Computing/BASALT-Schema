@@ -13,7 +13,7 @@ _Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivi
 
 
 
-URI: [basalt_schema:timepoint_label](https://w3id.org/MONet/basalt-schema/timepoint_label)
+URI: [basalt_schema:timepoint_label](https://EMSL-Computing.github.io/basalt-schema/timepoint_label)
 Alias: timepoint_label
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: timepoint_label
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -96,7 +96,7 @@ description: 'Human-readable timepoint label for repeated-measurement series.
   Examples: "t=0", "t=24h", "t=48h".
 
   Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivity'
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: timepoint_label
 domain_of:

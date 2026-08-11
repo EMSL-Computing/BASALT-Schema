@@ -9,7 +9,7 @@ _Amount of water vapor measured in the air the day of sampling. Provide value an
 
 
 
-URI: [basalt_schema:humidity](https://w3id.org/MONet/basalt-schema/humidity)
+URI: [basalt_schema:humidity](https://EMSL-Computing.github.io/basalt-schema/humidity)
 Alias: humidity
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: humidity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ name: humidity
 description: Amount of water vapor measured in the air the day of sampling. Provide
   value and unit, any unit is valid
 title: humidity
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: humidity
 domain_of:

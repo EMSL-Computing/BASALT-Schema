@@ -9,7 +9,7 @@ _concentration of substances such as urea, fruit sugars, soluble proteins, drugs
 
 
 
-URI: [basalt_schema:soluble_org_mat](https://w3id.org/MONet/basalt-schema/soluble_org_mat)
+URI: [basalt_schema:soluble_org_mat](https://EMSL-Computing.github.io/basalt-schema/soluble_org_mat)
 Alias: soluble_org_mat
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: soluble_org_mat
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ name: soluble_org_mat
 description: concentration of substances such as urea, fruit sugars, soluble proteins,
   drugs, pharmaceuticals, etc.
 title: soluble organic material
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: soluble_org_mat
 domain_of:

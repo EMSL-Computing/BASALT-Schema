@@ -9,7 +9,7 @@ _The physical or digital location where the processed sample is stored (e.g., fr
 
 
 
-URI: [basalt_schema:storage_location](https://w3id.org/MONet/basalt-schema/storage_location)
+URI: [basalt_schema:storage_location](https://EMSL-Computing.github.io/basalt-schema/storage_location)
 Alias: storage_location
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: storage_location
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: storage_location
 name: storage_location
 description: The physical or digital location where the processed sample is stored
   (e.g., freezer location, database ID).
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: storage_location
 domain_of:

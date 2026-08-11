@@ -2,7 +2,7 @@
 # Generation date: 2026-08-10T17:24:37
 # Schema: basalt-schema
 #
-# id: https://w3id.org/MONet/basalt-schema
+# id: https://EMSL-Computing.github.io/basalt-schema
 # description: LinkML-based schema for MONet soil analysis data management and metadata enrichment.
 #   This schema defines the data models for samples, processed samples, site metadata,
 #   and enrichment providers used by BASALT.
@@ -72,7 +72,7 @@ MIXS = CurieNamespace('MIXS', 'https://w3id.org/mixs/')
 MS = CurieNamespace('MS', 'http://purl.obolibrary.org/obo/MS_')
 OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
 PO = CurieNamespace('PO', 'http://purl.obolibrary.org/obo/PO_')
-BASALT_SCHEMA = CurieNamespace('basalt_schema', 'https://w3id.org/MONet/basalt-schema/')
+BASALT_SCHEMA = CurieNamespace('basalt_schema', 'https://EMSL-Computing.github.io/basalt-schema/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 ROR = CurieNamespace('ror', 'https://ror.org/')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')

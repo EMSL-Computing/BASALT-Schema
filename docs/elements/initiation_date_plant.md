@@ -9,7 +9,7 @@ _The date the plant part of the sample was initiated. This can be the date of ge
 
 
 
-URI: [basalt_schema:initiation_date_plant](https://w3id.org/MONet/basalt-schema/initiation_date_plant)
+URI: [basalt_schema:initiation_date_plant](https://EMSL-Computing.github.io/basalt-schema/initiation_date_plant)
 Alias: initiation_date_plant
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: initiation_date_plant
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -93,7 +93,7 @@ description: The date the plant part of the sample was initiated. This can be th
   date of germination or propagation. If providing a sequential initiation (propagation),
   the sample should be linked to the sample it originated from. Formatted as YYYY-MM-DD
 title: initiation date of plant
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: initiation_date_plant
 domain_of:

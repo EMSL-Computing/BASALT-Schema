@@ -9,7 +9,7 @@ _Concentration of organic matter (Unit: mg/L)_
 
 
 
-URI: [basalt_schema:org_matter](https://w3id.org/MONet/basalt-schema/org_matter)
+URI: [basalt_schema:org_matter](https://EMSL-Computing.github.io/basalt-schema/org_matter)
 Alias: org_matter
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: org_matter
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ Alias: org_matter
 name: org_matter
 description: 'Concentration of organic matter (Unit: mg/L)'
 title: organic matter
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: org_matter
 domain_of:

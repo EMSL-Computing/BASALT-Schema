@@ -9,7 +9,7 @@ _Measurement of primary production generally measured as isotope uptake. Provide
 
 
 
-URI: [basalt_schema:primary_prod](https://w3id.org/MONet/basalt-schema/primary_prod)
+URI: [basalt_schema:primary_prod](https://EMSL-Computing.github.io/basalt-schema/primary_prod)
 Alias: primary_prod
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: primary_prod
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ name: primary_prod
 description: Measurement of primary production generally measured as isotope uptake.
   Provide value and unit, any unit is valid.
 title: primary production
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: primary_prod
 domain_of:

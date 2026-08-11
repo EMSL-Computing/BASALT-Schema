@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:no3_n_avg](https://w3id.org/MONet/basalt-schema/no3_n_avg)
+URI: [basalt_schema:no3_n_avg](https://EMSL-Computing.github.io/basalt-schema/no3_n_avg)
 Alias: no3_n_avg
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: no3_n_avg
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: no3_n_avg
 <details>
 ```yaml
 name: no3_n_avg
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: no3_n_avg
 owner: NitrogenAnalysisProduct

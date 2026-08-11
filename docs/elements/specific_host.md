@@ -9,7 +9,7 @@ _If there is a host involved please provide its taxid (or environmental if not a
 
 
 
-URI: [basalt_schema:specific_host](https://w3id.org/MONet/basalt-schema/specific_host)
+URI: [basalt_schema:specific_host](https://EMSL-Computing.github.io/basalt-schema/specific_host)
 Alias: specific_host
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: specific_host
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -86,7 +86,7 @@ description: If there is a host involved please provide its taxid (or environmen
   isolated from a swipe of a bench etc) and report whether it is a laboratory or natural
   host
 title: host specific name
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: specific_host
 domain_of:

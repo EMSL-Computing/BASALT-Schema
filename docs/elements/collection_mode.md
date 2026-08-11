@@ -9,7 +9,7 @@ _The collection mode for the mass spectrometry data (e.g., profile, centroid)_
 
 
 
-URI: [basalt_schema:collection_mode](https://w3id.org/MONet/basalt-schema/collection_mode)
+URI: [basalt_schema:collection_mode](https://EMSL-Computing.github.io/basalt-schema/collection_mode)
 Alias: collection_mode
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: collection_mode
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -82,7 +82,7 @@ Alias: collection_mode
 ```yaml
 name: collection_mode
 description: The collection mode for the mass spectrometry data (e.g., profile, centroid)
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: collection_mode
 domain_of:

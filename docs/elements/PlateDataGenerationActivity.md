@@ -13,7 +13,7 @@ _Adds timepoint_label for repeated-measurement series _
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [basalt_schema:PlateDataGenerationActivity](https://w3id.org/MONet/basalt-schema/PlateDataGenerationActivity)
+URI: [basalt_schema:PlateDataGenerationActivity](https://EMSL-Computing.github.io/basalt-schema/PlateDataGenerationActivity)
 
 
 
@@ -142,7 +142,7 @@ URI: [basalt_schema:PlateDataGenerationActivity](https://w3id.org/MONet/basalt-s
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -173,7 +173,7 @@ description: 'Abstract base for plate measurement activities.
   Adds timepoint_label for repeated-measurement series '
 todos:
 - measurement_time stamp
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: DataGenerationActivity
 abstract: true
 slots:
@@ -192,7 +192,7 @@ description: 'Abstract base for plate measurement activities.
   Adds timepoint_label for repeated-measurement series '
 todos:
 - measurement_time stamp
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: DataGenerationActivity
 abstract: true
 attributes:
@@ -203,7 +203,7 @@ attributes:
       Examples: "t=0", "t=24h", "t=48h".
 
       Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivity'
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: timepoint_label
     owner: PlateDataGenerationActivity
@@ -218,7 +218,7 @@ attributes:
       Lower = earlier in series. Use when acquisition_time alone is insufficient.\n\
       \nDDL: ALTER TABLE \"DataGenerationActivity\"\n       ADD COLUMN sequence_order\
       \ INTEGER;"
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sequence_order
     owner: PlateDataGenerationActivity
@@ -229,7 +229,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: PlateDataGenerationActivity
@@ -259,7 +259,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: PlateDataGenerationActivity
@@ -291,7 +291,7 @@ attributes:
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: protocol_url
     owner: PlateDataGenerationActivity
@@ -302,7 +302,7 @@ attributes:
   protocol_version:
     name: protocol_version
     description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: protocol_version
     owner: PlateDataGenerationActivity
@@ -312,7 +312,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     identifier: true
     alias: id
     owner: PlateDataGenerationActivity
@@ -392,7 +392,7 @@ attributes:
     required: true
   analyte_id:
     name: analyte_id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: analyte_id
     owner: PlateDataGenerationActivity
@@ -401,7 +401,7 @@ attributes:
     range: ProcessedSample
   acquisition_start_time:
     name: acquisition_start_time
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: acquisition_start_time
     owner: PlateDataGenerationActivity
@@ -411,7 +411,7 @@ attributes:
     required: true
   acquisition_end_time:
     name: acquisition_end_time
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: acquisition_end_time
     owner: PlateDataGenerationActivity
@@ -421,7 +421,7 @@ attributes:
     required: true
   instrument_used:
     name: instrument_used
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: instrument_used
     owner: PlateDataGenerationActivity
@@ -430,7 +430,7 @@ attributes:
     range: Instrument
   instrument_operator_id:
     name: instrument_operator_id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: instrument_operator_id
     owner: PlateDataGenerationActivity

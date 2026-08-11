@@ -13,7 +13,7 @@ _organism/material_
 
 
 
-URI: [basalt_schema:isol_growth_condt](https://w3id.org/MONet/basalt-schema/isol_growth_condt)
+URI: [basalt_schema:isol_growth_condt](https://EMSL-Computing.github.io/basalt-schema/isol_growth_condt)
 Alias: isol_growth_condt
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: isol_growth_condt
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -97,7 +97,7 @@ description: 'Publication reference in the form of pubmed ID (PMID), digital obj
 
   organism/material'
 title: isolation and growth conditions
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: isol_growth_condt
 domain_of:

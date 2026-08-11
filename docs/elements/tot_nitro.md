@@ -9,7 +9,7 @@ _Total nitrogen concentration of water samples calculated by: total nitrogen = t
 
 
 
-URI: [basalt_schema:tot_nitro](https://w3id.org/MONet/basalt-schema/tot_nitro)
+URI: [basalt_schema:tot_nitro](https://EMSL-Computing.github.io/basalt-schema/tot_nitro)
 Alias: tot_nitro
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: tot_nitro
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -93,7 +93,7 @@ description: 'Total nitrogen concentration of water samples calculated by: total
   = total dissolved nitrogen + particulate nitrogen. Can also be measured without
   filtering reported as nitrogen. (Unit: ug/L or umol/L or mg/L)'
 title: total nitrogen
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: tot_nitro
 domain_of:

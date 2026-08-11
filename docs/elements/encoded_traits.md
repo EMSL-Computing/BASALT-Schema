@@ -11,7 +11,7 @@ _degradation phenotypes for plasmids, converting genes for phage_
 
 
 
-URI: [basalt_schema:encoded_traits](https://w3id.org/MONet/basalt-schema/encoded_traits)
+URI: [basalt_schema:encoded_traits](https://EMSL-Computing.github.io/basalt-schema/encoded_traits)
 Alias: encoded_traits
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: encoded_traits
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -93,7 +93,7 @@ description: 'Should include key traits like antibiotic resistance or xenobiotic
 
   degradation phenotypes for plasmids, converting genes for phage'
 title: encoded traits
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: encoded_traits
 domain_of:

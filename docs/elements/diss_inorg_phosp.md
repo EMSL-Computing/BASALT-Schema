@@ -9,7 +9,7 @@ _Concentration of dissolved inorganic phosphorus in the sample. Provide value an
 
 
 
-URI: [basalt_schema:diss_inorg_phosp](https://w3id.org/MONet/basalt-schema/diss_inorg_phosp)
+URI: [basalt_schema:diss_inorg_phosp](https://EMSL-Computing.github.io/basalt-schema/diss_inorg_phosp)
 Alias: diss_inorg_phosp
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: diss_inorg_phosp
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ name: diss_inorg_phosp
 description: Concentration of dissolved inorganic phosphorus in the sample. Provide
   value and unit, any unit is valid.
 title: dissolved inorganic phosphate
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: diss_inorg_phosp
 domain_of:

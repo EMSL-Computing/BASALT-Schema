@@ -9,7 +9,7 @@ _A unique identifier assigned to an original material sample collected or to any
 
 
 
-URI: [basalt_schema:source_mat_id](https://w3id.org/MONet/basalt-schema/source_mat_id)
+URI: [basalt_schema:source_mat_id](https://EMSL-Computing.github.io/basalt-schema/source_mat_id)
 Alias: source_mat_id
 
 <!-- no inheritance hierarchy -->
@@ -74,7 +74,7 @@ Alias: source_mat_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -98,7 +98,7 @@ description: A unique identifier assigned to an original material sample collect
   or to any derived sub-samples. The source material should be listed as a sample
   to inform details about parent material relationship.
 title: source material identifier
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: source_mat_id
 domain_of:

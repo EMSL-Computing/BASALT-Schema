@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:method](https://w3id.org/MONet/basalt-schema/method)
+URI: [basalt_schema:method](https://EMSL-Computing.github.io/basalt-schema/method)
 Alias: method
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: method
 name: method
 todos:
 - what does this mean
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: method
 domain_of:

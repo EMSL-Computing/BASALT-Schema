@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:TOCTNMethod](https://w3id.org/MONet/basalt-schema/TOCTNMethod)
+URI: [basalt_schema:TOCTNMethod](https://EMSL-Computing.github.io/basalt-schema/TOCTNMethod)
 
 
 
@@ -84,7 +84,7 @@ URI: [basalt_schema:TOCTNMethod](https://w3id.org/MONet/basalt-schema/TOCTNMetho
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -110,28 +110,28 @@ URI: [basalt_schema:TOCTNMethod](https://w3id.org/MONet/basalt-schema/TOCTNMetho
 <details>
 ```yaml
 name: TOC_TN_Method
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Method
 slots:
 - location
 attributes:
   column:
     name: column
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     domain_of:
     - ChromatographyConfiguration
     - TOC_TN_Method
     range: string
   mode:
     name: mode
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     domain_of:
     - MicrobialBiomassMethod
     - TOC_TN_Method
     range: string
   detector:
     name: detector
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     domain_of:
     - MicrobialBiomassMethod
     - TOC_TN_Method
@@ -139,7 +139,7 @@ attributes:
     required: true
   injection_volume:
     name: injection_volume
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     domain_of:
     - MicrobialBiomassMethod
     - TOC_TN_Method
@@ -147,7 +147,7 @@ attributes:
     required: true
   sample_volume:
     name: sample_volume
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     domain_of:
     - MicrobialBiomassMethod
     - TOC_TN_Method
@@ -155,7 +155,7 @@ attributes:
     required: true
   number_of_injections:
     name: number_of_injections
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     domain_of:
     - MicrobialBiomassMethod
     - TOC_TN_Method
@@ -163,7 +163,7 @@ attributes:
     required: true
   check_standard_spacing:
     name: check_standard_spacing
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     domain_of:
     - MicrobialBiomassMethod
     - TOC_TN_Method
@@ -177,12 +177,12 @@ attributes:
 <details>
 ```yaml
 name: TOC_TN_Method
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Method
 attributes:
   column:
     name: column
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     alias: column
     owner: TOC_TN_Method
     domain_of:
@@ -191,7 +191,7 @@ attributes:
     range: string
   mode:
     name: mode
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     alias: mode
     owner: TOC_TN_Method
     domain_of:
@@ -200,7 +200,7 @@ attributes:
     range: string
   detector:
     name: detector
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     alias: detector
     owner: TOC_TN_Method
     domain_of:
@@ -210,7 +210,7 @@ attributes:
     required: true
   injection_volume:
     name: injection_volume
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     alias: injection_volume
     owner: TOC_TN_Method
     domain_of:
@@ -220,7 +220,7 @@ attributes:
     required: true
   sample_volume:
     name: sample_volume
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     alias: sample_volume
     owner: TOC_TN_Method
     domain_of:
@@ -230,7 +230,7 @@ attributes:
     required: true
   number_of_injections:
     name: number_of_injections
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     alias: number_of_injections
     owner: TOC_TN_Method
     domain_of:
@@ -240,7 +240,7 @@ attributes:
     required: true
   check_standard_spacing:
     name: check_standard_spacing
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     alias: check_standard_spacing
     owner: TOC_TN_Method
     domain_of:
@@ -251,7 +251,7 @@ attributes:
     name: location
     todos:
     - used on many method classes. no description. what was this meant to mean?
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: location
     owner: TOC_TN_Method
@@ -272,7 +272,7 @@ attributes:
     name: analytic
     todos:
     - what does this mean
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: analytic
     owner: TOC_TN_Method

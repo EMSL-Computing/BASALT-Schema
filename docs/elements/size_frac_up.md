@@ -9,7 +9,7 @@ _Refers to the mesh/pore size used to retain the sample. Materials smaller than 
 
 
 
-URI: [basalt_schema:size_frac_up](https://w3id.org/MONet/basalt-schema/size_frac_up)
+URI: [basalt_schema:size_frac_up](https://EMSL-Computing.github.io/basalt-schema/size_frac_up)
 Alias: size_frac_up
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: size_frac_up
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -88,7 +88,7 @@ name: size_frac_up
 description: Refers to the mesh/pore size used to retain the sample. Materials smaller
   than the size threshold are excluded from the sample
 title: size fraction upper threshold
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: size_frac_up
 domain_of:

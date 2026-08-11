@@ -9,7 +9,7 @@ _The item number of the purchased material_
 
 
 
-URI: [basalt_schema:item_number](https://w3id.org/MONet/basalt-schema/item_number)
+URI: [basalt_schema:item_number](https://EMSL-Computing.github.io/basalt-schema/item_number)
 Alias: item_number
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: item_number
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ Alias: item_number
 name: item_number
 description: The item number of the purchased material
 title: item number
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: item_number
 domain_of:

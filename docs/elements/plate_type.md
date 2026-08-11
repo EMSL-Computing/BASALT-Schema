@@ -9,7 +9,7 @@ _Vendor and model of plate (e.g. "Greiner_96well_flat_bottom", "Biolog_EcoPlate"
 
 
 
-URI: [basalt_schema:plate_type](https://w3id.org/MONet/basalt-schema/plate_type)
+URI: [basalt_schema:plate_type](https://EMSL-Computing.github.io/basalt-schema/plate_type)
 Alias: plate_type
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: plate_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ Alias: plate_type
 ```yaml
 name: plate_type
 description: Vendor and model of plate (e.g. "Greiner_96well_flat_bottom", "Biolog_EcoPlate")
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: plate_type
 domain_of:

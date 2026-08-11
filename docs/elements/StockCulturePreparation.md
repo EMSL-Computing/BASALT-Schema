@@ -17,7 +17,7 @@ _Refs:   Media (growth medium), Strain_
 
 
 
-URI: [basalt_schema:StockCulturePreparation](https://w3id.org/MONet/basalt-schema/StockCulturePreparation)
+URI: [basalt_schema:StockCulturePreparation](https://EMSL-Computing.github.io/basalt-schema/StockCulturePreparation)
 
 
 
@@ -161,7 +161,7 @@ URI: [basalt_schema:StockCulturePreparation](https://w3id.org/MONet/basalt-schem
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -195,7 +195,7 @@ description: 'Preparation of a stock culture from user samples for long-term sto
   Output: processedSample(type=''stock_culture'') via processingSampleLink
 
   Refs:   Media (growth medium), Strain'
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: CultureGrowth
 slots:
 - preparation_date
@@ -216,13 +216,13 @@ description: 'Preparation of a stock culture from user samples for long-term sto
   Output: processedSample(type=''stock_culture'') via processingSampleLink
 
   Refs:   Media (growth medium), Strain'
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: CultureGrowth
 attributes:
   preparation_date:
     name: preparation_date
     description: Date the stock culture or entity was prepared
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: preparation_date
     owner: StockCulturePreparation
@@ -236,7 +236,7 @@ attributes:
       strain, isolate, engineered construct) that this sample or activity
 
       is associated with.'
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - strain_ref
     - strain_id
@@ -255,7 +255,7 @@ attributes:
       3-D structure, bioreactor, etc. followed by the formula, recipe, or components
       used to create the growth medium.
     title: growth medium
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: growth_medium
     owner: StockCulturePreparation
@@ -271,7 +271,7 @@ attributes:
   incubation_time_hours:
     name: incubation_time_hours
     description: Incubation duration in hours
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: incubation_time_hours
     owner: StockCulturePreparation
@@ -281,7 +281,7 @@ attributes:
   container_type:
     name: container_type
     description: Physical container used for the culture (flask, tube, plate, etc.)
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: container_type
     owner: StockCulturePreparation
@@ -292,7 +292,7 @@ attributes:
   temperature_celsius:
     name: temperature_celsius
     description: Temperature at which the method/process/activity was performed
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: temperature_celsius
     owner: StockCulturePreparation
@@ -303,7 +303,7 @@ attributes:
   agitation_speed_rpm:
     name: agitation_speed_rpm
     description: Agitation/shaking speed in RPM (0 for static)
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: agitation_speed_rpm
     owner: StockCulturePreparation
@@ -314,7 +314,7 @@ attributes:
     name: oxygen_relationship
     description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
     title: oxygen relationship
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     exact_mappings:
     - MIXS:0000015
     rank: 1000
@@ -337,7 +337,7 @@ attributes:
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: protocol_url
     owner: StockCulturePreparation
@@ -348,7 +348,7 @@ attributes:
   protocol_version:
     name: protocol_version
     description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: protocol_version
     owner: StockCulturePreparation
@@ -358,7 +358,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     identifier: true
     alias: id
     owner: StockCulturePreparation
@@ -438,7 +438,7 @@ attributes:
     required: true
   analysis_type:
     name: analysis_type
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     alias: analysis_type
     owner: StockCulturePreparation
     domain_of:
@@ -461,7 +461,7 @@ attributes:
     range: RouteMethodEnum
   method_name:
     name: method_name
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: method_name
     owner: StockCulturePreparation
@@ -470,7 +470,7 @@ attributes:
     range: MethodNameEnum
   processing_steps:
     name: processing_steps
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: processing_steps
     owner: StockCulturePreparation
@@ -480,7 +480,7 @@ attributes:
     required: true
   uses_sample:
     name: uses_sample
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: uses_sample
     owner: StockCulturePreparation

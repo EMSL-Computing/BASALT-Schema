@@ -15,7 +15,7 @@ _produced by an upstream MediaPreparation activity._
 
 
 
-URI: [basalt_schema:media_ref](https://w3id.org/MONet/basalt-schema/media_ref)
+URI: [basalt_schema:media_ref](https://EMSL-Computing.github.io/basalt-schema/media_ref)
 Alias: media_ref
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: media_ref
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -95,7 +95,7 @@ description: 'FK reference to a prepared media processedSample used in the activ
   (on plate setup).  Points to processedSample(type=prepared_media)
 
   produced by an upstream MediaPreparation activity.'
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: media_ref
 domain_of:

@@ -9,7 +9,7 @@ _List of external identifiers associated with this entity or activity._
 
 
 
-URI: [basalt_schema:external_identifiers](https://w3id.org/MONet/basalt-schema/external_identifiers)
+URI: [basalt_schema:external_identifiers](https://EMSL-Computing.github.io/basalt-schema/external_identifiers)
 Alias: external_identifiers
 
 <!-- no inheritance hierarchy -->
@@ -79,7 +79,7 @@ Alias: external_identifiers
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -100,7 +100,7 @@ Alias: external_identifiers
 ```yaml
 name: external_identifiers
 description: List of external identifiers associated with this entity or activity.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: external_identifiers
 domain_of:

@@ -9,7 +9,7 @@ _When the plate was physically set up_
 
 
 
-URI: [basalt_schema:setup_date](https://w3id.org/MONet/basalt-schema/setup_date)
+URI: [basalt_schema:setup_date](https://EMSL-Computing.github.io/basalt-schema/setup_date)
 Alias: setup_date
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: setup_date
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ Alias: setup_date
 ```yaml
 name: setup_date
 description: When the plate was physically set up
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: setup_date
 domain_of:

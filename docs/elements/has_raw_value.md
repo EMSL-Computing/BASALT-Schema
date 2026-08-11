@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:has_raw_value](https://w3id.org/MONet/basalt-schema/has_raw_value)
+URI: [basalt_schema:has_raw_value](https://EMSL-Computing.github.io/basalt-schema/has_raw_value)
 Alias: has_raw_value
 
 <!-- no inheritance hierarchy -->

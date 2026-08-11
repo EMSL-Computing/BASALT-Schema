@@ -9,7 +9,7 @@ _Information about either pedigree or other ancestral information description_
 
 
 
-URI: [basalt_schema:ances_data](https://w3id.org/MONet/basalt-schema/ances_data)
+URI: [basalt_schema:ances_data](https://EMSL-Computing.github.io/basalt-schema/ances_data)
 Alias: ances_data
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: ances_data
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: ances_data
 name: ances_data
 description: Information about either pedigree or other ancestral information description
 title: ancestral data
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: ances_data
 domain_of:

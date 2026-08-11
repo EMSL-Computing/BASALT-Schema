@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:site_photo_type](https://w3id.org/MONet/basalt-schema/site_photo_type)
+URI: [basalt_schema:site_photo_type](https://EMSL-Computing.github.io/basalt-schema/site_photo_type)
 Alias: site_photo_type
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: site_photo_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: site_photo_type
 <details>
 ```yaml
 name: site_photo_type
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: site_photo_type
 owner: SitePhoto

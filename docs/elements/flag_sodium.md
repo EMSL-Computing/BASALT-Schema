@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_sodium](https://w3id.org/MONet/basalt-schema/flag_sodium)
+URI: [basalt_schema:flag_sodium](https://EMSL-Computing.github.io/basalt-schema/flag_sodium)
 Alias: flag_sodium
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_sodium
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_sodium
 <details>
 ```yaml
 name: flag_sodium
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_sodium
 owner: IonsAnalysisProduct

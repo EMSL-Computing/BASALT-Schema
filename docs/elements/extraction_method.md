@@ -9,7 +9,7 @@ _If you (the user) performed an extraction preparation or processing before send
 
 
 
-URI: [basalt_schema:extraction_method](https://w3id.org/MONet/basalt-schema/extraction_method)
+URI: [basalt_schema:extraction_method](https://EMSL-Computing.github.io/basalt-schema/extraction_method)
 Alias: extraction_method
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: extraction_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -95,7 +95,7 @@ description: If you (the user) performed an extraction preparation or processing
   sending the sample to EMSL, what was it? This is only applicable when sending an
   'analytical sample'. See README for more details on types of samples.
 title: extraction method
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: extraction_method
 domain_of:

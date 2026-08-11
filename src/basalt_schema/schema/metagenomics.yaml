@@ -1,4 +1,4 @@
-id: https://w3id.org/MONet/basalt-schema/metagenomics
+id: https://EMSL-Computing.github.io/basalt-schema/metagenomics
 name: basalt-schema-metagenomics
 title: Metagenomics additions for BASALT
 description: |
@@ -20,7 +20,7 @@ description: |
 license: MIT
 
 prefixes:
-  basalt_schema: https://w3id.org/MONet/basalt-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
 default_prefix: basalt_schema
 

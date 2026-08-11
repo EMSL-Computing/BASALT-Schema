@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:total_kjeldahl_nitrogen_id](https://w3id.org/MONet/basalt-schema/total_kjeldahl_nitrogen_id)
+URI: [basalt_schema:total_kjeldahl_nitrogen_id](https://EMSL-Computing.github.io/basalt-schema/total_kjeldahl_nitrogen_id)
 Alias: total_kjeldahl_nitrogen_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: total_kjeldahl_nitrogen_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: total_kjeldahl_nitrogen_id
 <details>
 ```yaml
 name: total_kjeldahl_nitrogen_id
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: total_kjeldahl_nitrogen_id
 owner: ElementalAnalysisProduct

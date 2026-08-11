@@ -9,7 +9,7 @@ _Reference or method used in determining heavy metals_
 
 
 
-URI: [basalt_schema:heavy_metals_meth](https://w3id.org/MONet/basalt-schema/heavy_metals_meth)
+URI: [basalt_schema:heavy_metals_meth](https://EMSL-Computing.github.io/basalt-schema/heavy_metals_meth)
 Alias: heavy_metals_meth
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: heavy_metals_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: heavy_metals_meth
 name: heavy_metals_meth
 description: Reference or method used in determining heavy metals
 title: heavy metals method
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: heavy_metals_meth
 domain_of:

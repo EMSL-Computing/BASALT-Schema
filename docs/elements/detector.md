@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:detector](https://w3id.org/MONet/basalt-schema/detector)
+URI: [basalt_schema:detector](https://EMSL-Computing.github.io/basalt-schema/detector)
 Alias: detector
 
 <!-- no inheritance hierarchy -->

@@ -9,7 +9,7 @@ _Measurement of atmospheric data; can include multiple data_
 
 
 
-URI: [basalt_schema:atmospheric_data](https://w3id.org/MONet/basalt-schema/atmospheric_data)
+URI: [basalt_schema:atmospheric_data](https://EMSL-Computing.github.io/basalt-schema/atmospheric_data)
 Alias: atmospheric_data
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: atmospheric_data
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: atmospheric_data
 name: atmospheric_data
 description: Measurement of atmospheric data; can include multiple data
 title: atmospheric data
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: atmospheric_data
 domain_of:

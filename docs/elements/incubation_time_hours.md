@@ -9,7 +9,7 @@ _Incubation duration in hours_
 
 
 
-URI: [basalt_schema:incubation_time_hours](https://w3id.org/MONet/basalt-schema/incubation_time_hours)
+URI: [basalt_schema:incubation_time_hours](https://EMSL-Computing.github.io/basalt-schema/incubation_time_hours)
 Alias: incubation_time_hours
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: incubation_time_hours
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -86,7 +86,7 @@ Alias: incubation_time_hours
 ```yaml
 name: incubation_time_hours
 description: Incubation duration in hours
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: incubation_time_hours
 domain_of:

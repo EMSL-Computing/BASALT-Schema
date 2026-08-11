@@ -9,7 +9,7 @@ _Age of host at the time of sampling; relevant scale depends on species and stud
 
 
 
-URI: [basalt_schema:host_age](https://w3id.org/MONet/basalt-schema/host_age)
+URI: [basalt_schema:host_age](https://EMSL-Computing.github.io/basalt-schema/host_age)
 Alias: host_age
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: host_age
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -94,7 +94,7 @@ description: 'Age of host at the time of sampling; relevant scale depends on spe
   and study, e.g. Could be seconds for amoebae or centuries for trees. (Unit: a (year)
   or d (day) or h (hour). Do not include the additional information in ().)'
 title: host age
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: host_age
 domain_of:

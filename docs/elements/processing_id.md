@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:processing_id](https://w3id.org/MONet/basalt-schema/processing_id)
+URI: [basalt_schema:processing_id](https://EMSL-Computing.github.io/basalt-schema/processing_id)
 Alias: processing_id
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: processing_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: processing_id
 <details>
 ```yaml
 name: processing_id
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: processing_id
 owner: ProcessingSampleLink

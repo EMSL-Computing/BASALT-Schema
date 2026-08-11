@@ -9,7 +9,7 @@ _The level of genome modification._
 
 
 
-URI: [basalt_schema:biol_stat](https://w3id.org/MONet/basalt-schema/biol_stat)
+URI: [basalt_schema:biol_stat](https://EMSL-Computing.github.io/basalt-schema/biol_stat)
 Alias: biol_stat
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: biol_stat
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: biol_stat
 name: biol_stat
 description: The level of genome modification.
 title: biological status
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: biol_stat
 domain_of:

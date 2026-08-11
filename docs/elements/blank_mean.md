@@ -9,7 +9,7 @@ _Mean measurement of uninoculated control wells_
 
 
 
-URI: [basalt_schema:blank_mean](https://w3id.org/MONet/basalt-schema/blank_mean)
+URI: [basalt_schema:blank_mean](https://EMSL-Computing.github.io/basalt-schema/blank_mean)
 Alias: blank_mean
 
 <!-- no inheritance hierarchy -->
@@ -67,7 +67,7 @@ Alias: blank_mean
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -90,7 +90,7 @@ name: blank_mean
 description: Mean measurement of uninoculated control wells
 todos:
 - units
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: blank_mean
 domain_of:

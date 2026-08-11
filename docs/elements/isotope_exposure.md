@@ -9,7 +9,7 @@ _List isotope exposure or addition applied to your sample._
 
 
 
-URI: [basalt_schema:isotope_exposure](https://w3id.org/MONet/basalt-schema/isotope_exposure)
+URI: [basalt_schema:isotope_exposure](https://EMSL-Computing.github.io/basalt-schema/isotope_exposure)
 Alias: isotope_exposure
 
 <!-- no inheritance hierarchy -->
@@ -72,7 +72,7 @@ Alias: isotope_exposure
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -94,7 +94,7 @@ Alias: isotope_exposure
 name: isotope_exposure
 description: List isotope exposure or addition applied to your sample.
 title: isotope exposure
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: isotope_exposure
 domain_of:

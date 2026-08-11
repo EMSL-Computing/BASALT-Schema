@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:TextureMethod](https://w3id.org/MONet/basalt-schema/TextureMethod)
+URI: [basalt_schema:TextureMethod](https://EMSL-Computing.github.io/basalt-schema/TextureMethod)
 
 
 
@@ -66,7 +66,7 @@ URI: [basalt_schema:TextureMethod](https://w3id.org/MONet/basalt-schema/TextureM
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ URI: [basalt_schema:TextureMethod](https://w3id.org/MONet/basalt-schema/TextureM
 <details>
 ```yaml
 name: TextureMethod
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Method
 slots:
 - location
@@ -106,14 +106,14 @@ slots:
 <details>
 ```yaml
 name: TextureMethod
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Method
 attributes:
   location:
     name: location
     todos:
     - used on many method classes. no description. what was this meant to mean?
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: location
     owner: TextureMethod
@@ -134,7 +134,7 @@ attributes:
     name: method
     todos:
     - what does this mean
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: method
     owner: TextureMethod
@@ -146,7 +146,7 @@ attributes:
     name: analytic
     todos:
     - what does this mean
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: analytic
     owner: TextureMethod

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_iron](https://w3id.org/MONet/basalt-schema/flag_iron)
+URI: [basalt_schema:flag_iron](https://EMSL-Computing.github.io/basalt-schema/flag_iron)
 Alias: flag_iron
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_iron
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_iron
 <details>
 ```yaml
 name: flag_iron
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_iron
 owner: IonsAnalysisProduct

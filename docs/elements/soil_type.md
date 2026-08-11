@@ -9,7 +9,7 @@ _Soil series name or other lower-level classification_
 
 
 
-URI: [basalt_schema:soil_type](https://w3id.org/MONet/basalt-schema/soil_type)
+URI: [basalt_schema:soil_type](https://EMSL-Computing.github.io/basalt-schema/soil_type)
 Alias: soil_type
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: soil_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: soil_type
 name: soil_type
 description: Soil series name or other lower-level classification
 title: soil type
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: soil_type
 domain_of:

@@ -9,7 +9,7 @@ _The raw data file, output by a mass spectrometer, that was analyzed in  this da
 
 
 
-URI: [basalt_schema:uses_raw_ms_data](https://w3id.org/MONet/basalt-schema/uses_raw_ms_data)
+URI: [basalt_schema:uses_raw_ms_data](https://EMSL-Computing.github.io/basalt-schema/uses_raw_ms_data)
 Alias: uses_raw_ms_data
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: uses_raw_ms_data
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: uses_raw_ms_data
 name: uses_raw_ms_data
 description: The raw data file, output by a mass spectrometer, that was analyzed in  this
   data processing workflow run.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: uses_raw_ms_data
 domain_of:

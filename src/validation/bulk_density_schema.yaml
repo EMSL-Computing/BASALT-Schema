@@ -9,7 +9,7 @@
 # Last Updated:  2026-02-25
 # =============================================================================
 
-id: https://w3id.org/MONet/basalt-schema/bulk-density
+id: https://EMSL-Computing.github.io/basalt-schema/bulk-density
 name: bulk_density_schema
 title: MONet Bulk Density Ingest Schema
 description: |-
@@ -18,7 +18,7 @@ description: |-
 license: MIT
 
 prefixes:
-  basalt_schema: https://w3id.org/MONet/basalt-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: bulk_density_schema

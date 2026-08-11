@@ -9,7 +9,7 @@ _The range and diversity of host species that an organism is capable of infectin
 
 
 
-URI: [basalt_schema:host_spec_range](https://w3id.org/MONet/basalt-schema/host_spec_range)
+URI: [basalt_schema:host_spec_range](https://EMSL-Computing.github.io/basalt-schema/host_spec_range)
 Alias: host_spec_range
 
 <!-- no inheritance hierarchy -->
@@ -74,7 +74,7 @@ Alias: host_spec_range
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -97,7 +97,7 @@ name: host_spec_range
 description: The range and diversity of host species that an organism is capable of
   infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####
 title: host specificity or range
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: host_spec_range
 domain_of:

@@ -9,7 +9,7 @@ _Areas where ecosystems (and the type quality and quantity of environmental reso
 
 
 
-URI: [basalt_schema:neon_domain](https://w3id.org/MONet/basalt-schema/neon_domain)
+URI: [basalt_schema:neon_domain](https://EMSL-Computing.github.io/basalt-schema/neon_domain)
 Alias: neon_domain
 
 <!-- no inheritance hierarchy -->
@@ -51,7 +51,7 @@ Alias: neon_domain
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -79,7 +79,7 @@ description: 'Areas where ecosystems (and the type quality and quantity of envir
   Rockies/ Colorado Plateau Desert Southwest Great Basin Pacific Northwest Pacific
   Southwest Tundra Taiga Pacific Tropical'
 title: NEON domain
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: neon_domain
 range: NEONDomainEnum

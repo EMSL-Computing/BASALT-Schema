@@ -9,7 +9,7 @@ _'A unique identifier to assign parent-child subsample or sibling samples. This 
 
 
 
-URI: [basalt_schema:sample_link](https://w3id.org/MONet/basalt-schema/sample_link)
+URI: [basalt_schema:sample_link](https://EMSL-Computing.github.io/basalt-schema/sample_link)
 Alias: sample_link
 
 <!-- no inheritance hierarchy -->
@@ -78,7 +78,7 @@ Alias: sample_link
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -106,7 +106,7 @@ description: '''A unique identifier to assign parent-child subsample or sibling 
   vial and generated a new sample)'''
 todos:
 - EMSL and NMDC both need better modelling for this
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sample_link
 domain_of:

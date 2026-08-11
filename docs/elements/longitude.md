@@ -9,7 +9,7 @@ _Longitude coordinate of the sampling site in WSG 84 format._
 
 
 
-URI: [basalt_schema:longitude](https://w3id.org/MONet/basalt-schema/longitude)
+URI: [basalt_schema:longitude](https://EMSL-Computing.github.io/basalt-schema/longitude)
 Alias: longitude
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: longitude
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -94,7 +94,7 @@ Alias: longitude
 name: longitude
 description: Longitude coordinate of the sampling site in WSG 84 format.
 title: longitude
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 broad_mappings:
 - MIXS:0000009
 rank: 1000

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:total_carbon_id](https://w3id.org/MONet/basalt-schema/total_carbon_id)
+URI: [basalt_schema:total_carbon_id](https://EMSL-Computing.github.io/basalt-schema/total_carbon_id)
 Alias: total_carbon_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: total_carbon_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: total_carbon_id
 <details>
 ```yaml
 name: total_carbon_id
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: total_carbon_id
 owner: ElementalAnalysisProduct

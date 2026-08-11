@@ -13,7 +13,7 @@ _grouped components or specific function of the modification._
 
 
 
-URI: [basalt_schema:genotype_segment_name](https://w3id.org/MONet/basalt-schema/genotype_segment_name)
+URI: [basalt_schema:genotype_segment_name](https://EMSL-Computing.github.io/basalt-schema/genotype_segment_name)
 Alias: genotype_segment_name
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: genotype_segment_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -91,7 +91,7 @@ description: 'Provide a name that describes the genotype modification engineered
 
   grouped components or specific function of the modification.'
 title: genotype segment name
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: genotype_segment_name
 domain_of:

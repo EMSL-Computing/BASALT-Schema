@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:total_pore_volume](https://w3id.org/MONet/basalt-schema/total_pore_volume)
+URI: [basalt_schema:total_pore_volume](https://EMSL-Computing.github.io/basalt-schema/total_pore_volume)
 Alias: total_pore_volume
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: total_pore_volume
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: total_pore_volume
 <details>
 ```yaml
 name: total_pore_volume
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: total_pore_volume
 owner: TomographyProduct

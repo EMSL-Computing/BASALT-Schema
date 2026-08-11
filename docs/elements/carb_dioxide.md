@@ -9,7 +9,7 @@ _Amount of carbon dioxide measured in the air the day of sampling. (Unit: umol/L
 
 
 
-URI: [basalt_schema:carb_dioxide](https://w3id.org/MONet/basalt-schema/carb_dioxide)
+URI: [basalt_schema:carb_dioxide](https://EMSL-Computing.github.io/basalt-schema/carb_dioxide)
 Alias: carb_dioxide
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: carb_dioxide
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -93,7 +93,7 @@ name: carb_dioxide
 description: 'Amount of carbon dioxide measured in the air the day of sampling. (Unit:
   umol/L or ppm)'
 title: carbon dioxide
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: carb_dioxide
 domain_of:

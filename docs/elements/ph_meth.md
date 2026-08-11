@@ -9,7 +9,7 @@ _Reference or method used in determining ph of the sample_
 
 
 
-URI: [basalt_schema:ph_meth](https://w3id.org/MONet/basalt-schema/ph_meth)
+URI: [basalt_schema:ph_meth](https://EMSL-Computing.github.io/basalt-schema/ph_meth)
 Alias: ph_meth
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: ph_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -86,7 +86,7 @@ Alias: ph_meth
 name: ph_meth
 description: Reference or method used in determining ph of the sample
 title: pH method
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: ph_meth
 domain_of:

@@ -13,7 +13,7 @@ _functional annotation identifier that was used in the analysis._
 
 
 
-URI: [basalt_schema:WorkflowExecutionFunctionalAnnotation](https://w3id.org/MONet/basalt-schema/WorkflowExecutionFunctionalAnnotation)
+URI: [basalt_schema:WorkflowExecutionFunctionalAnnotation](https://EMSL-Computing.github.io/basalt-schema/WorkflowExecutionFunctionalAnnotation)
 
 
 
@@ -86,7 +86,7 @@ URI: [basalt_schema:WorkflowExecutionFunctionalAnnotation](https://w3id.org/MONe
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -117,11 +117,11 @@ description: 'A link between a workflow execution and a functional annotation id
   This class captures the relationship between a workflow execution and the
 
   functional annotation identifier that was used in the analysis.'
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   workflow_id:
     name: workflow_id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     domain_of:
     - WorkflowExecutionFunctionalAnnotation
@@ -129,7 +129,7 @@ attributes:
     required: true
   functional_annotation_id:
     name: functional_annotation_id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     domain_of:
     - WorkflowExecutionFunctionalAnnotation
@@ -137,7 +137,7 @@ attributes:
     required: true
   count:
     name: count
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     domain_of:
     - WorkflowExecutionFunctionalAnnotation
@@ -156,11 +156,11 @@ description: 'A link between a workflow execution and a functional annotation id
   This class captures the relationship between a workflow execution and the
 
   functional annotation identifier that was used in the analysis.'
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   workflow_id:
     name: workflow_id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: workflow_id
     owner: WorkflowExecutionFunctionalAnnotation
@@ -170,7 +170,7 @@ attributes:
     required: true
   functional_annotation_id:
     name: functional_annotation_id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: functional_annotation_id
     owner: WorkflowExecutionFunctionalAnnotation
@@ -180,7 +180,7 @@ attributes:
     required: true
   count:
     name: count
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: count
     owner: WorkflowExecutionFunctionalAnnotation

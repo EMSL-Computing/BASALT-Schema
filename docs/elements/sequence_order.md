@@ -17,7 +17,7 @@ _       ADD COLUMN sequence_order INTEGER;_
 
 
 
-URI: [basalt_schema:sequence_order](https://w3id.org/MONet/basalt-schema/sequence_order)
+URI: [basalt_schema:sequence_order](https://EMSL-Computing.github.io/basalt-schema/sequence_order)
 Alias: sequence_order
 
 <!-- no inheritance hierarchy -->
@@ -78,7 +78,7 @@ Alias: sequence_order
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -101,7 +101,7 @@ name: sequence_order
 description: "Integer ordering within a temporal series for the same analyte.\nLower\
   \ = earlier in series. Use when acquisition_time alone is insufficient.\n\nDDL:\
   \ ALTER TABLE \"DataGenerationActivity\"\n       ADD COLUMN sequence_order INTEGER;"
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sequence_order
 domain_of:

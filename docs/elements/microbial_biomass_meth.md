@@ -9,7 +9,7 @@ _Reference or method used in determining microbial biomass_
 
 
 
-URI: [basalt_schema:microbial_biomass_meth](https://w3id.org/MONet/basalt-schema/microbial_biomass_meth)
+URI: [basalt_schema:microbial_biomass_meth](https://EMSL-Computing.github.io/basalt-schema/microbial_biomass_meth)
 Alias: microbial_biomass_meth
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: microbial_biomass_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ Alias: microbial_biomass_meth
 name: microbial_biomass_meth
 description: Reference or method used in determining microbial biomass
 title: microbial biomass method
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: microbial_biomass_meth
 domain_of:

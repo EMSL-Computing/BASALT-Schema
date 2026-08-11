@@ -9,7 +9,7 @@ _Reference to the sampling activity during which this sample was collected. This
 
 
 
-URI: [basalt_schema:sampled_during](https://w3id.org/MONet/basalt-schema/sampled_during)
+URI: [basalt_schema:sampled_during](https://EMSL-Computing.github.io/basalt-schema/sampled_during)
 Alias: sampled_during
 
 <!-- no inheritance hierarchy -->
@@ -77,7 +77,7 @@ Alias: sampled_during
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -100,7 +100,7 @@ name: sampled_during
 description: Reference to the sampling activity during which this sample was collected.
   This is a FK to the SamplingActivity class, which contains metadata about the sampling
   event, such as date, device, method.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sampled_during
 domain_of:

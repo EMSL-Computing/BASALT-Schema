@@ -9,7 +9,7 @@ _Size of the file in bytes_
 
 
 
-URI: [basalt_schema:filesize](https://w3id.org/MONet/basalt-schema/filesize)
+URI: [basalt_schema:filesize](https://EMSL-Computing.github.io/basalt-schema/filesize)
 Alias: filesize
 
 <!-- no inheritance hierarchy -->
@@ -90,7 +90,7 @@ Alias: filesize
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -111,7 +111,7 @@ Alias: filesize
 ```yaml
 name: filesize
 description: Size of the file in bytes
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: filesize
 domain_of:

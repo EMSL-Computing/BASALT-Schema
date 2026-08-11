@@ -1,5 +1,5 @@
 ---
-id: https://w3id.org/MONet/basalt-schema/linkage_cache
+id: https://EMSL-Computing.github.io/basalt-schema/linkage_cache
 name: basalt-schema-linkage-cache
 title: BASALT Schema — Provenance Linkage Cache
 description: |-
@@ -17,7 +17,7 @@ description: |-
 license: MIT
 
 prefixes:
-  basalt_schema: https://w3id.org/MONet/basalt-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
 default_prefix: basalt_schema
 default_range: string

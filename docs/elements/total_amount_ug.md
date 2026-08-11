@@ -9,7 +9,7 @@ _Total amount of analyte in micrograms_
 
 
 
-URI: [basalt_schema:total_amount_ug](https://w3id.org/MONet/basalt-schema/total_amount_ug)
+URI: [basalt_schema:total_amount_ug](https://EMSL-Computing.github.io/basalt-schema/total_amount_ug)
 Alias: total_amount_ug
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: total_amount_ug
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: total_amount_ug
 ```yaml
 name: total_amount_ug
 description: Total amount of analyte in micrograms
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: total_amount_ug
 domain_of:

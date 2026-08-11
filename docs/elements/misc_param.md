@@ -9,7 +9,7 @@ _Any other measurement performed or parameter collected that is not listed here_
 
 
 
-URI: [basalt_schema:misc_param](https://w3id.org/MONet/basalt-schema/misc_param)
+URI: [basalt_schema:misc_param](https://EMSL-Computing.github.io/basalt-schema/misc_param)
 Alias: misc_param
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: misc_param
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -93,7 +93,7 @@ name: misc_param
 description: Any other measurement performed or parameter collected that is not listed
   here
 title: miscellaneous parameter
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: misc_param
 domain_of:

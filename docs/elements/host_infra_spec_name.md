@@ -9,7 +9,7 @@ _Taxonomic information about the host below subspecies level_
 
 
 
-URI: [basalt_schema:host_infra_spec_name](https://w3id.org/MONet/basalt-schema/host_infra_spec_name)
+URI: [basalt_schema:host_infra_spec_name](https://EMSL-Computing.github.io/basalt-schema/host_infra_spec_name)
 Alias: host_infra_spec_name
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: host_infra_spec_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: host_infra_spec_name
 name: host_infra_spec_name
 description: Taxonomic information about the host below subspecies level
 title: host infra-specific name
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: host_infra_spec_name
 domain_of:

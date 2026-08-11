@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:gas](https://w3id.org/MONet/basalt-schema/gas)
+URI: [basalt_schema:gas](https://EMSL-Computing.github.io/basalt-schema/gas)
 Alias: gas
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: gas
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: gas
 <details>
 ```yaml
 name: gas
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: gas
 owner: ConditioningValue

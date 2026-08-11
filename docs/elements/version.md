@@ -9,7 +9,7 @@ _String indicating the version of the software or protocol_
 
 
 
-URI: [basalt_schema:version](https://w3id.org/MONet/basalt-schema/version)
+URI: [basalt_schema:version](https://EMSL-Computing.github.io/basalt-schema/version)
 Alias: version
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: version
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: version
 ```yaml
 name: version
 description: String indicating the version of the software or protocol
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: version
 domain_of:

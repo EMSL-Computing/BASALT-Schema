@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:permeability_x](https://w3id.org/MONet/basalt-schema/permeability_x)
+URI: [basalt_schema:permeability_x](https://EMSL-Computing.github.io/basalt-schema/permeability_x)
 Alias: permeability_x
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: permeability_x
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: permeability_x
 <details>
 ```yaml
 name: permeability_x
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: permeability_x
 owner: TomographyProduct

@@ -9,7 +9,7 @@ _Automated liquid handler (e.g. "Hamilton_STAR") or "manual"_
 
 
 
-URI: [basalt_schema:setup_instrument](https://w3id.org/MONet/basalt-schema/setup_instrument)
+URI: [basalt_schema:setup_instrument](https://EMSL-Computing.github.io/basalt-schema/setup_instrument)
 Alias: setup_instrument
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: setup_instrument
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: setup_instrument
 ```yaml
 name: setup_instrument
 description: Automated liquid handler (e.g. "Hamilton_STAR") or "manual"
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: setup_instrument
 domain_of:

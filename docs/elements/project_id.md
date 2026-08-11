@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:project_id](https://w3id.org/MONet/basalt-schema/project_id)
+URI: [basalt_schema:project_id](https://EMSL-Computing.github.io/basalt-schema/project_id)
 Alias: project_id
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: project_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: project_id
 <details>
 ```yaml
 name: project_id
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: project_id
 owner: Study

@@ -9,7 +9,7 @@ _Describes how the synthetic environments parts are contained and assembled_
 
 
 
-URI: [basalt_schema:synth_env_assembly](https://w3id.org/MONet/basalt-schema/synth_env_assembly)
+URI: [basalt_schema:synth_env_assembly](https://EMSL-Computing.github.io/basalt-schema/synth_env_assembly)
 Alias: synth_env_assembly
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: synth_env_assembly
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: synth_env_assembly
 name: synth_env_assembly
 description: Describes how the synthetic environments parts are contained and assembled
 title: synthetic environment assembly
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: synth_env_assembly
 domain_of:

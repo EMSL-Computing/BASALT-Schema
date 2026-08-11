@@ -9,7 +9,7 @@ _the process providing a final treatment stage to raise the effluent quality bef
 
 
 
-URI: [basalt_schema:tertiary_treatment](https://w3id.org/MONet/basalt-schema/tertiary_treatment)
+URI: [basalt_schema:tertiary_treatment](https://EMSL-Computing.github.io/basalt-schema/tertiary_treatment)
 Alias: tertiary_treatment
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: tertiary_treatment
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ name: tertiary_treatment
 description: the process providing a final treatment stage to raise the effluent quality
   before it is discharged to the receiving environment
 title: tertiary treatment
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: tertiary_treatment
 domain_of:

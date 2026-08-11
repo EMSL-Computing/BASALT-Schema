@@ -9,7 +9,7 @@ _The human-readable unit name_
 
 
 
-URI: [basalt_schema:has_unit](https://w3id.org/MONet/basalt-schema/has_unit)
+URI: [basalt_schema:has_unit](https://EMSL-Computing.github.io/basalt-schema/has_unit)
 Alias: has_unit
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: has_unit
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -89,7 +89,7 @@ Alias: has_unit
 ```yaml
 name: has_unit
 description: The human-readable unit name
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: has_unit
 owner: QuantityValue

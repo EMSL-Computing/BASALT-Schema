@@ -9,7 +9,7 @@ _Other/additional details about your sample that you feel can't be accurately re
 
 
 
-URI: [basalt_schema:other](https://w3id.org/MONet/basalt-schema/other)
+URI: [basalt_schema:other](https://EMSL-Computing.github.io/basalt-schema/other)
 Alias: other
 
 <!-- no inheritance hierarchy -->
@@ -75,7 +75,7 @@ Alias: other
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -98,7 +98,7 @@ name: other
 description: Other/additional details about your sample that you feel can't be accurately
   represented in ANY of the available columns.
 title: other
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: other
 domain_of:

@@ -9,7 +9,7 @@ _Version of the protocol used in the activity, if applicable._
 
 
 
-URI: [basalt_schema:protocol_version](https://w3id.org/MONet/basalt-schema/protocol_version)
+URI: [basalt_schema:protocol_version](https://EMSL-Computing.github.io/basalt-schema/protocol_version)
 Alias: protocol_version
 
 <!-- no inheritance hierarchy -->
@@ -80,7 +80,7 @@ Alias: protocol_version
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -101,7 +101,7 @@ Alias: protocol_version
 ```yaml
 name: protocol_version
 description: Version of the protocol used in the activity, if applicable.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: protocol_version
 domain_of:

@@ -9,7 +9,7 @@ _Link back to the originating sample_
 
 
 
-URI: [basalt_schema:sample_id](https://w3id.org/MONet/basalt-schema/sample_id)
+URI: [basalt_schema:sample_id](https://EMSL-Computing.github.io/basalt-schema/sample_id)
 Alias: sample_id
 
 <!-- no inheritance hierarchy -->
@@ -86,7 +86,7 @@ Alias: sample_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -107,7 +107,7 @@ Alias: sample_id
 ```yaml
 name: sample_id
 description: Link back to the originating sample
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sample_id
 domain_of:

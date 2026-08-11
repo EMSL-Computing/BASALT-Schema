@@ -9,7 +9,7 @@ _Method used for alkalinity measurement_
 
 
 
-URI: [basalt_schema:alkalinity_method](https://w3id.org/MONet/basalt-schema/alkalinity_method)
+URI: [basalt_schema:alkalinity_method](https://EMSL-Computing.github.io/basalt-schema/alkalinity_method)
 Alias: alkalinity_method
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: alkalinity_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ Alias: alkalinity_method
 name: alkalinity_method
 description: Method used for alkalinity measurement
 title: alkalinity method
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: alkalinity_method
 domain_of:

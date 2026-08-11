@@ -9,7 +9,7 @@ _Total dissolved nitrogen concentration reported as nitrogen measured by: total 
 
 
 
-URI: [basalt_schema:tot_diss_nitro](https://w3id.org/MONet/basalt-schema/tot_diss_nitro)
+URI: [basalt_schema:tot_diss_nitro](https://EMSL-Computing.github.io/basalt-schema/tot_diss_nitro)
 Alias: tot_diss_nitro
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: tot_diss_nitro
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -93,7 +93,7 @@ description: 'Total dissolved nitrogen concentration reported as nitrogen measur
   by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen. (Unit:
   ug/L)'
 title: total dissolved nitrogen
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: tot_diss_nitro
 domain_of:

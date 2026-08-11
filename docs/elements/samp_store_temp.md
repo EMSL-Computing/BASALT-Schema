@@ -9,7 +9,7 @@ _The temperature at which your samples should be stored upon arrival. This field
 
 
 
-URI: [basalt_schema:samp_store_temp](https://w3id.org/MONet/basalt-schema/samp_store_temp)
+URI: [basalt_schema:samp_store_temp](https://EMSL-Computing.github.io/basalt-schema/samp_store_temp)
 Alias: samp_store_temp
 
 <!-- no inheritance hierarchy -->
@@ -81,7 +81,7 @@ Alias: samp_store_temp
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -105,7 +105,7 @@ description: The temperature at which your samples should be stored upon arrival
   This field is NOT multivalued. If selecting other add the `other_samp_store_temp`
   attribute to provide additional detail.
 title: sample storage temperature
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - sample_storage_temperature
 - storage_temperature

@@ -9,7 +9,7 @@ _The type(s) of analysis planned for this sample._
 
 
 
-URI: [basalt_schema:analysis_type](https://w3id.org/MONet/basalt-schema/analysis_type)
+URI: [basalt_schema:analysis_type](https://EMSL-Computing.github.io/basalt-schema/analysis_type)
 Alias: analysis_type
 
 <!-- no inheritance hierarchy -->
@@ -85,7 +85,7 @@ Alias: analysis_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -106,7 +106,7 @@ Alias: analysis_type
 ```yaml
 name: analysis_type
 description: The type(s) of analysis planned for this sample.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: analysis_type
 domain_of:

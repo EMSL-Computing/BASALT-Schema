@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:role](https://w3id.org/MONet/basalt-schema/role)
+URI: [basalt_schema:role](https://EMSL-Computing.github.io/basalt-schema/role)
 Alias: role
 
 <!-- no inheritance hierarchy -->

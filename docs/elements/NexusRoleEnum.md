@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:NexusRoleEnum](https://w3id.org/MONet/basalt-schema/NexusRoleEnum)
+URI: [basalt_schema:NexusRoleEnum](https://EMSL-Computing.github.io/basalt-schema/NexusRoleEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -42,7 +42,7 @@ URI: [basalt_schema:NexusRoleEnum](https://w3id.org/MONet/basalt-schema/NexusRol
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -56,7 +56,7 @@ URI: [basalt_schema:NexusRoleEnum](https://w3id.org/MONet/basalt-schema/NexusRol
 name: NexusRoleEnum
 todos:
 - delete this or get a real list from NEXUS
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   Principal Investigator:

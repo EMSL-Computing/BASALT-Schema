@@ -9,7 +9,7 @@ _Concentration of soluble reactive phosphorus. (Unit: umol/L or mg/L or ppm)_
 
 
 
-URI: [basalt_schema:soluble_react_phosp](https://w3id.org/MONet/basalt-schema/soluble_react_phosp)
+URI: [basalt_schema:soluble_react_phosp](https://EMSL-Computing.github.io/basalt-schema/soluble_react_phosp)
 Alias: soluble_react_phosp
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: soluble_react_phosp
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ name: soluble_react_phosp
 description: 'Concentration of soluble reactive phosphorus. (Unit: umol/L or mg/L
   or ppm)'
 title: soluble reactive phosphorus
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: soluble_react_phosp
 domain_of:

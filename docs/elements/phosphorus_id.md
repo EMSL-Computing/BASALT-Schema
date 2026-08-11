@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:phosphorus_id](https://w3id.org/MONet/basalt-schema/phosphorus_id)
+URI: [basalt_schema:phosphorus_id](https://EMSL-Computing.github.io/basalt-schema/phosphorus_id)
 Alias: phosphorus_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: phosphorus_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: phosphorus_id
 <details>
 ```yaml
 name: phosphorus_id
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: phosphorus_id
 owner: PhosphorusAnalysisProduct

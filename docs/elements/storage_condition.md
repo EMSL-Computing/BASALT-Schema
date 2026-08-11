@@ -9,7 +9,7 @@ _The storage condition of the sample. This field is NOT multivalued. If selectin
 
 
 
-URI: [basalt_schema:storage_condition](https://w3id.org/MONet/basalt-schema/storage_condition)
+URI: [basalt_schema:storage_condition](https://EMSL-Computing.github.io/basalt-schema/storage_condition)
 Alias: storage_condition
 
 <!-- no inheritance hierarchy -->
@@ -84,7 +84,7 @@ Alias: storage_condition
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -108,7 +108,7 @@ name: storage_condition
 description: The storage condition of the sample. This field is NOT multivalued. If
   selecting other add the `other_storage_condt` attribute to provide additional detail.
 title: storage condition
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - samp_store_cond
 - storage_cond

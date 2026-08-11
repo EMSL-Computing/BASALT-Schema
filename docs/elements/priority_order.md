@@ -9,7 +9,7 @@ _Indicate the run order priority of your samples_
 
 
 
-URI: [basalt_schema:priority_order](https://w3id.org/MONet/basalt-schema/priority_order)
+URI: [basalt_schema:priority_order](https://EMSL-Computing.github.io/basalt-schema/priority_order)
 Alias: priority_order
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: priority_order
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ Alias: priority_order
 name: priority_order
 description: Indicate the run order priority of your samples
 title: priority order
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: priority_order
 domain_of:

@@ -9,7 +9,7 @@ _A section of a core sample (TOP, MID, BTM)._
 
 
 
-URI: [basalt_schema:CoreSection](https://w3id.org/MONet/basalt-schema/CoreSection)
+URI: [basalt_schema:CoreSection](https://EMSL-Computing.github.io/basalt-schema/CoreSection)
 
 
 
@@ -132,7 +132,7 @@ URI: [basalt_schema:CoreSection](https://w3id.org/MONet/basalt-schema/CoreSectio
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -159,7 +159,7 @@ URI: [basalt_schema:CoreSection](https://w3id.org/MONet/basalt-schema/CoreSectio
 ```yaml
 name: CoreSection
 description: A section of a core sample (TOP, MID, BTM).
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: ProcessedSample
 slots:
 - core_section
@@ -170,7 +170,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -256,7 +256,7 @@ attributes:
 ```yaml
 name: CoreSection
 description: A section of a core sample (TOP, MID, BTM).
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: ProcessedSample
 slot_usage:
   core_section:
@@ -265,7 +265,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     alias: id
     owner: CoreSection
@@ -351,7 +351,7 @@ attributes:
     - value: TOP
     - value: MID
     - value: BTM
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: core_section
     owner: CoreSection
@@ -364,7 +364,7 @@ attributes:
     name: storage_location
     description: The physical or digital location where the processed sample is stored
       (e.g., freezer location, database ID).
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: storage_location
     owner: CoreSection
@@ -374,7 +374,7 @@ attributes:
   label_text:
     name: label_text
     description: The label on the stored processed sample, if applicable (e.g., "f01").
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: label_text
     owner: CoreSection
@@ -385,7 +385,7 @@ attributes:
     name: concentration_ug_per_uL
     description: Concentration of the substance in micrograms per microliter.
     title: concentration (ug/uL)
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: concentration_ug_per_uL
     owner: CoreSection
@@ -395,7 +395,7 @@ attributes:
   total_amount_ug:
     name: total_amount_ug
     description: Total amount of analyte in micrograms
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: total_amount_ug
     owner: CoreSection
@@ -405,7 +405,7 @@ attributes:
   volume_uL:
     name: volume_uL
     description: Volume of the entity in microliters
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: volume_uL
     owner: CoreSection
@@ -416,7 +416,7 @@ attributes:
     name: sampled_portion
     description: The portion of the original sample used in creating this processed
       sample (e.g., "interlayer", "supernatant", "pellet").
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sampled_portion
     owner: CoreSection
@@ -427,7 +427,7 @@ attributes:
     name: sampled_during
     description: A reference to the sample processing activity (generally lab work)
       that generated this processed_sample.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sampled_during
     owner: CoreSection
@@ -454,7 +454,7 @@ attributes:
     description: The TECHNICAL replicate number of the processed sample, if applicable.
     todos:
     - reconcile replicate modelling
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: replicate
     owner: CoreSection
@@ -469,7 +469,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: CoreSection
@@ -499,7 +499,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: CoreSection
@@ -538,7 +538,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: emsl_activity
     owner: CoreSection
@@ -550,7 +550,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: lims_barcode
     owner: CoreSection

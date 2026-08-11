@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_no3n](https://w3id.org/MONet/basalt-schema/flag_no3n)
+URI: [basalt_schema:flag_no3n](https://EMSL-Computing.github.io/basalt-schema/flag_no3n)
 Alias: flag_no3n
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_no3n
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_no3n
 <details>
 ```yaml
 name: flag_no3n
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_no3n
 owner: NitrogenAnalysisProduct

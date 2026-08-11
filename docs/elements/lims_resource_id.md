@@ -9,7 +9,7 @@ _L7 resource_id for the instrument, if known._
 
 
 
-URI: [basalt_schema:lims_resource_id](https://w3id.org/MONet/basalt-schema/lims_resource_id)
+URI: [basalt_schema:lims_resource_id](https://EMSL-Computing.github.io/basalt-schema/lims_resource_id)
 Alias: lims_resource_id
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: lims_resource_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -89,7 +89,7 @@ Alias: lims_resource_id
 ```yaml
 name: lims_resource_id
 description: L7 resource_id for the instrument, if known.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: lims_resource_id
 owner: Instrument

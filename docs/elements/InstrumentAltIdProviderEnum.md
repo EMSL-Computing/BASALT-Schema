@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:InstrumentAltIdProviderEnum](https://w3id.org/MONet/basalt-schema/InstrumentAltIdProviderEnum)
+URI: [basalt_schema:InstrumentAltIdProviderEnum](https://EMSL-Computing.github.io/basalt-schema/InstrumentAltIdProviderEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -37,7 +37,7 @@ URI: [basalt_schema:InstrumentAltIdProviderEnum](https://w3id.org/MONet/basalt-s
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -49,7 +49,7 @@ URI: [basalt_schema:InstrumentAltIdProviderEnum](https://w3id.org/MONet/basalt-s
 <details>
 ```yaml
 name: InstrumentAltIdProviderEnum
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   nexus:

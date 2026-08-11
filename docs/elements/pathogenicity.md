@@ -9,7 +9,7 @@ _To what is the entity pathogenic, e.g., humans, animals, plants, or specific ti
 
 
 
-URI: [basalt_schema:pathogenicity](https://w3id.org/MONet/basalt-schema/pathogenicity)
+URI: [basalt_schema:pathogenicity](https://EMSL-Computing.github.io/basalt-schema/pathogenicity)
 Alias: pathogenicity
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: pathogenicity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -88,7 +88,7 @@ name: pathogenicity
 description: To what is the entity pathogenic, e.g., humans, animals, plants, or specific
   tissues.
 title: pathogenicity
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: pathogenicity
 domain_of:

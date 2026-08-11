@@ -9,7 +9,7 @@ _Identifier for the user project associated with the entity or activity. _
 
 
 
-URI: [basalt_schema:project](https://w3id.org/MONet/basalt-schema/project)
+URI: [basalt_schema:project](https://EMSL-Computing.github.io/basalt-schema/project)
 Alias: project
 
 <!-- no inheritance hierarchy -->
@@ -135,7 +135,7 @@ Alias: project
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -160,7 +160,7 @@ title: Project
 todos:
 - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
   where emsl.project is the CURIE prefix
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - study
 - study_id

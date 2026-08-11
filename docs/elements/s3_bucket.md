@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:s3_bucket](https://w3id.org/MONet/basalt-schema/s3_bucket)
+URI: [basalt_schema:s3_bucket](https://EMSL-Computing.github.io/basalt-schema/s3_bucket)
 Alias: s3_bucket
 
 <!-- no inheritance hierarchy -->
@@ -85,7 +85,7 @@ Alias: s3_bucket
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -105,7 +105,7 @@ Alias: s3_bucket
 <details>
 ```yaml
 name: s3_bucket
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: s3_bucket
 domain_of:

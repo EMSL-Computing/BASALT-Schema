@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:compression_type](https://w3id.org/MONet/basalt-schema/compression_type)
+URI: [basalt_schema:compression_type](https://EMSL-Computing.github.io/basalt-schema/compression_type)
 Alias: compression_type
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: compression_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ Alias: compression_type
 <details>
 ```yaml
 name: compression_type
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: compression_type
 owner: InstrumentData

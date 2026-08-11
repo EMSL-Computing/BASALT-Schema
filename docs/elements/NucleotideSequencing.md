@@ -9,7 +9,7 @@ _A lab activity in which DNA or RNA that was extracted from a sample is sequence
 
 
 
-URI: [basalt_schema:NucleotideSequencing](https://w3id.org/MONet/basalt-schema/NucleotideSequencing)
+URI: [basalt_schema:NucleotideSequencing](https://EMSL-Computing.github.io/basalt-schema/NucleotideSequencing)
 
 
 
@@ -144,7 +144,7 @@ URI: [basalt_schema:NucleotideSequencing](https://w3id.org/MONet/basalt-schema/N
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -172,7 +172,7 @@ URI: [basalt_schema:NucleotideSequencing](https://w3id.org/MONet/basalt-schema/N
 name: NucleotideSequencing
 description: A lab activity in which DNA or RNA that was extracted from a sample is
   sequenced.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: DataGenerationActivity
 slots:
 - nucleotide_sequencing_category
@@ -193,7 +193,7 @@ slot_usage:
 name: NucleotideSequencing
 description: A lab activity in which DNA or RNA that was extracted from a sample is
   sequenced.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: DataGenerationActivity
 slot_usage:
   external_identifiers:
@@ -205,7 +205,7 @@ attributes:
     name: nucleotide_sequencing_category
     description: The category of nucleotide sequencing performed (e.g., amplicon,
       shotgun).
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: nucleotide_sequencing_category
     owner: NucleotideSequencing
@@ -216,7 +216,7 @@ attributes:
     name: external_identifiers
     description: List of external identifiers (e.g., GOLD sequencing project, NCBI
       BioProject) associated with this sequencing activity.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: external_identifiers
     owner: NucleotideSequencing
@@ -247,7 +247,7 @@ attributes:
       Lower = earlier in series. Use when acquisition_time alone is insufficient.\n\
       \nDDL: ALTER TABLE \"DataGenerationActivity\"\n       ADD COLUMN sequence_order\
       \ INTEGER;"
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sequence_order
     owner: NucleotideSequencing
@@ -258,7 +258,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: NucleotideSequencing
@@ -288,7 +288,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: NucleotideSequencing
@@ -320,7 +320,7 @@ attributes:
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: protocol_url
     owner: NucleotideSequencing
@@ -331,7 +331,7 @@ attributes:
   protocol_version:
     name: protocol_version
     description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: protocol_version
     owner: NucleotideSequencing
@@ -341,7 +341,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     identifier: true
     alias: id
     owner: NucleotideSequencing
@@ -421,7 +421,7 @@ attributes:
     required: true
   analyte_id:
     name: analyte_id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: analyte_id
     owner: NucleotideSequencing
@@ -430,7 +430,7 @@ attributes:
     range: ProcessedSample
   acquisition_start_time:
     name: acquisition_start_time
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: acquisition_start_time
     owner: NucleotideSequencing
@@ -440,7 +440,7 @@ attributes:
     required: true
   acquisition_end_time:
     name: acquisition_end_time
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: acquisition_end_time
     owner: NucleotideSequencing
@@ -450,7 +450,7 @@ attributes:
     required: true
   instrument_used:
     name: instrument_used
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: instrument_used
     owner: NucleotideSequencing
@@ -459,7 +459,7 @@ attributes:
     range: Instrument
   instrument_operator_id:
     name: instrument_operator_id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: instrument_operator_id
     owner: NucleotideSequencing

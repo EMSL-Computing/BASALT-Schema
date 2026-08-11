@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:method_name](https://w3id.org/MONet/basalt-schema/method_name)
+URI: [basalt_schema:method_name](https://EMSL-Computing.github.io/basalt-schema/method_name)
 Alias: method_name
 
 <!-- no inheritance hierarchy -->
@@ -72,7 +72,7 @@ Alias: method_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ Alias: method_name
 <details>
 ```yaml
 name: method_name
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: method_name
 owner: SampleProcessing

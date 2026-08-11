@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:EnzymeActivityMethod](https://w3id.org/MONet/basalt-schema/EnzymeActivityMethod)
+URI: [basalt_schema:EnzymeActivityMethod](https://EMSL-Computing.github.io/basalt-schema/EnzymeActivityMethod)
 
 
 
@@ -72,7 +72,7 @@ URI: [basalt_schema:EnzymeActivityMethod](https://w3id.org/MONet/basalt-schema/E
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -98,28 +98,28 @@ URI: [basalt_schema:EnzymeActivityMethod](https://w3id.org/MONet/basalt-schema/E
 <details>
 ```yaml
 name: EnzymeActivityMethod
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Method
 slots:
 - location
 attributes:
   incubation_temp_c:
     name: incubation_temp_c
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     rank: 1000
     domain_of:
     - EnzymeActivityMethod
     range: double
   incubation_time:
     name: incubation_time
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     rank: 1000
     domain_of:
     - EnzymeActivityMethod
     range: string
   wavelength:
     name: wavelength
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     rank: 1000
     domain_of:
     - EnzymeActivityMethod
@@ -134,12 +134,12 @@ attributes:
 <details>
 ```yaml
 name: EnzymeActivityMethod
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Method
 attributes:
   incubation_temp_c:
     name: incubation_temp_c
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     rank: 1000
     alias: incubation_temp_c
     owner: EnzymeActivityMethod
@@ -148,7 +148,7 @@ attributes:
     range: double
   incubation_time:
     name: incubation_time
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     rank: 1000
     alias: incubation_time
     owner: EnzymeActivityMethod
@@ -157,7 +157,7 @@ attributes:
     range: string
   wavelength:
     name: wavelength
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     rank: 1000
     alias: wavelength
     owner: EnzymeActivityMethod
@@ -169,7 +169,7 @@ attributes:
     name: location
     todos:
     - used on many method classes. no description. what was this meant to mean?
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: location
     owner: EnzymeActivityMethod
@@ -190,7 +190,7 @@ attributes:
     name: analytic
     todos:
     - what does this mean
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: analytic
     owner: EnzymeActivityMethod

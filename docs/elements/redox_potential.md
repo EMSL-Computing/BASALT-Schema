@@ -9,7 +9,7 @@ _Redox potential measured relative to a hydrogen cell indicating oxidation or re
 
 
 
-URI: [basalt_schema:redox_potential](https://w3id.org/MONet/basalt-schema/redox_potential)
+URI: [basalt_schema:redox_potential](https://EMSL-Computing.github.io/basalt-schema/redox_potential)
 Alias: redox_potential
 
 <!-- no inheritance hierarchy -->
@@ -72,7 +72,7 @@ Alias: redox_potential
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -95,7 +95,7 @@ name: redox_potential
 description: 'Redox potential measured relative to a hydrogen cell indicating oxidation
   or reduction potential (Unit: mV)'
 title: redox potential
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: redox_potential
 domain_of:

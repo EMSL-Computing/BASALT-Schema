@@ -9,7 +9,7 @@ _Temperature of the sample at the time of sampling. (Units: C)_
 
 
 
-URI: [basalt_schema:temp](https://w3id.org/MONet/basalt-schema/temp)
+URI: [basalt_schema:temp](https://EMSL-Computing.github.io/basalt-schema/temp)
 Alias: temp
 
 <!-- no inheritance hierarchy -->
@@ -77,7 +77,7 @@ Alias: temp
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -99,7 +99,7 @@ Alias: temp
 name: temp
 description: 'Temperature of the sample at the time of sampling. (Units: C)'
 title: temperature
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: temp
 domain_of:

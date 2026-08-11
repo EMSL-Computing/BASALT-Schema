@@ -9,7 +9,7 @@ _Reason for the sample_
 
 
 
-URI: [basalt_schema:samp_capt_status](https://w3id.org/MONet/basalt-schema/samp_capt_status)
+URI: [basalt_schema:samp_capt_status](https://EMSL-Computing.github.io/basalt-schema/samp_capt_status)
 Alias: samp_capt_status
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: samp_capt_status
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: samp_capt_status
 name: samp_capt_status
 description: Reason for the sample
 title: sample capture status
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: samp_capt_status
 domain_of:

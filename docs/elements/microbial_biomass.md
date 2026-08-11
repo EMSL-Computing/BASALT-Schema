@@ -9,7 +9,7 @@ _The part of the organic matter in the soil that constitutes living microorganis
 
 
 
-URI: [basalt_schema:microbial_biomass](https://w3id.org/MONet/basalt-schema/microbial_biomass)
+URI: [basalt_schema:microbial_biomass](https://EMSL-Computing.github.io/basalt-schema/microbial_biomass)
 Alias: microbial_biomass
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: microbial_biomass
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -87,7 +87,7 @@ description: The part of the organic matter in the soil that constitutes living 
   smaller than 5-10 micrometer. If you keep this, you would need to have correction
   factors used for conversion to the final units
 title: microbial biomass
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: microbial_biomass
 domain_of:

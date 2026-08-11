@@ -9,7 +9,7 @@ _Additional information pertaining to these data, including SP Project ID and Ta
 
 
 
-URI: [basalt_schema:additional_information](https://w3id.org/MONet/basalt-schema/additional_information)
+URI: [basalt_schema:additional_information](https://EMSL-Computing.github.io/basalt-schema/additional_information)
 Alias: additional_information
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: additional_information
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -86,7 +86,7 @@ Alias: additional_information
 name: additional_information
 description: Additional information pertaining to these data, including SP Project
   ID and Taxon OID
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: additional_information
 domain_of:

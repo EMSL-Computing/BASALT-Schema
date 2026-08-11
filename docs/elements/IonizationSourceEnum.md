@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:IonizationSourceEnum](https://w3id.org/MONet/basalt-schema/IonizationSourceEnum)
+URI: [basalt_schema:IonizationSourceEnum](https://EMSL-Computing.github.io/basalt-schema/IonizationSourceEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -40,7 +40,7 @@ URI: [basalt_schema:IonizationSourceEnum](https://w3id.org/MONet/basalt-schema/I
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -52,7 +52,7 @@ URI: [basalt_schema:IonizationSourceEnum](https://w3id.org/MONet/basalt-schema/I
 <details>
 ```yaml
 name: IonizationSourceEnum
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   electrospray_ionization:

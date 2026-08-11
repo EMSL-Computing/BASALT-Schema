@@ -9,7 +9,7 @@ _The section of the core._
 
 
 
-URI: [basalt_schema:core_section](https://w3id.org/MONet/basalt-schema/core_section)
+URI: [basalt_schema:core_section](https://EMSL-Computing.github.io/basalt-schema/core_section)
 Alias: core_section
 
 <!-- no inheritance hierarchy -->
@@ -100,7 +100,7 @@ Alias: core_section
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -126,7 +126,7 @@ examples:
 - value: TOP
 - value: MID
 - value: BTM
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: core_section
 domain_of:

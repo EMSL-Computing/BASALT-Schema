@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:detection_limit](https://w3id.org/MONet/basalt-schema/detection_limit)
+URI: [basalt_schema:detection_limit](https://EMSL-Computing.github.io/basalt-schema/detection_limit)
 Alias: detection_limit
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: detection_limit
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: detection_limit
 <details>
 ```yaml
 name: detection_limit
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: detection_limit
 owner: KuoMethod

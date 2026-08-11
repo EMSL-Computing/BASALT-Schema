@@ -9,7 +9,7 @@ _MinIO/S3 object key; required for all data products_
 
 
 
-URI: [basalt_schema:s3_key](https://w3id.org/MONet/basalt-schema/s3_key)
+URI: [basalt_schema:s3_key](https://EMSL-Computing.github.io/basalt-schema/s3_key)
 Alias: s3_key
 
 <!-- no inheritance hierarchy -->
@@ -91,7 +91,7 @@ Alias: s3_key
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -112,7 +112,7 @@ Alias: s3_key
 ```yaml
 name: s3_key
 description: MinIO/S3 object key; required for all data products
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: s3_key
 domain_of:

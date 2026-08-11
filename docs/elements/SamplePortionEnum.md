@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:SamplePortionEnum](https://w3id.org/MONet/basalt-schema/SamplePortionEnum)
+URI: [basalt_schema:SamplePortionEnum](https://EMSL-Computing.github.io/basalt-schema/SamplePortionEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -42,7 +42,7 @@ URI: [basalt_schema:SamplePortionEnum](https://w3id.org/MONet/basalt-schema/Samp
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -54,7 +54,7 @@ URI: [basalt_schema:SamplePortionEnum](https://w3id.org/MONet/basalt-schema/Samp
 <details>
 ```yaml
 name: SamplePortionEnum
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   supernatant:

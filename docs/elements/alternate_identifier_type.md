@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:alternate_identifier_type](https://w3id.org/MONet/basalt-schema/alternate_identifier_type)
+URI: [basalt_schema:alternate_identifier_type](https://EMSL-Computing.github.io/basalt-schema/alternate_identifier_type)
 Alias: alternate_identifier_type
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: alternate_identifier_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: alternate_identifier_type
 <details>
 ```yaml
 name: alternate_identifier_type
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: alternate_identifier_type
 owner: AlternativeIdentifier

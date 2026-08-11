@@ -9,7 +9,7 @@ _Total inorganic nitrogen content. (Unit: ug/L)_
 
 
 
-URI: [basalt_schema:tot_inorg_nitro](https://w3id.org/MONet/basalt-schema/tot_inorg_nitro)
+URI: [basalt_schema:tot_inorg_nitro](https://EMSL-Computing.github.io/basalt-schema/tot_inorg_nitro)
 Alias: tot_inorg_nitro
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: tot_inorg_nitro
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -91,7 +91,7 @@ Alias: tot_inorg_nitro
 name: tot_inorg_nitro
 description: 'Total inorganic nitrogen content. (Unit: ug/L)'
 title: total inorganic nitrogen
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: tot_inorg_nitro
 domain_of:

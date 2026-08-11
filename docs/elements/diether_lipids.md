@@ -9,7 +9,7 @@ _Concentration of diether lipids; can include multiple types of diether lipids (
 
 
 
-URI: [basalt_schema:diether_lipids](https://w3id.org/MONet/basalt-schema/diether_lipids)
+URI: [basalt_schema:diether_lipids](https://EMSL-Computing.github.io/basalt-schema/diether_lipids)
 Alias: diether_lipids
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: diether_lipids
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -93,7 +93,7 @@ name: diether_lipids
 description: 'Concentration of diether lipids; can include multiple types of diether
   lipids (Unit: ng/L)'
 title: diether lipids
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: diether_lipids
 domain_of:

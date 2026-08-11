@@ -9,7 +9,7 @@ _Information about the genetic distinctness of the sequenced organism below the 
 
 
 
-URI: [basalt_schema:subspecf_gen_lin](https://w3id.org/MONet/basalt-schema/subspecf_gen_lin)
+URI: [basalt_schema:subspecf_gen_lin](https://EMSL-Computing.github.io/basalt-schema/subspecf_gen_lin)
 Alias: subspecf_gen_lin
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: subspecf_gen_lin
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -95,7 +95,7 @@ description: Information about the genetic distinctness of the sequenced organis
 title: subspecific genetic lineage
 todos:
 - make this inlined/multivalued?
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: subspecf_gen_lin
 domain_of:

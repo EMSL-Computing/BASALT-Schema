@@ -9,7 +9,7 @@ _Measurement of wet mass. (Unit: kg or g)_
 
 
 
-URI: [basalt_schema:host_wet_mass](https://w3id.org/MONet/basalt-schema/host_wet_mass)
+URI: [basalt_schema:host_wet_mass](https://EMSL-Computing.github.io/basalt-schema/host_wet_mass)
 Alias: host_wet_mass
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: host_wet_mass
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ Alias: host_wet_mass
 name: host_wet_mass
 description: 'Measurement of wet mass. (Unit: kg or g)'
 title: host wet mass
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: host_wet_mass
 domain_of:

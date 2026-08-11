@@ -9,7 +9,7 @@ _The instrumentation used to synthesize the material sample._
 
 
 
-URI: [basalt_schema:synth_instrument](https://w3id.org/MONet/basalt-schema/synth_instrument)
+URI: [basalt_schema:synth_instrument](https://EMSL-Computing.github.io/basalt-schema/synth_instrument)
 Alias: synth_instrument
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: synth_instrument
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: synth_instrument
 name: synth_instrument
 description: The instrumentation used to synthesize the material sample.
 title: synthesizing instrument
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: synth_instrument
 domain_of:

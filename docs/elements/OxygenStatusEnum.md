@@ -7,7 +7,7 @@ _Oxygen status of samples_
 
 
 
-URI: [basalt_schema:OxygenStatusEnum](https://w3id.org/MONet/basalt-schema/OxygenStatusEnum)
+URI: [basalt_schema:OxygenStatusEnum](https://EMSL-Computing.github.io/basalt-schema/OxygenStatusEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -48,7 +48,7 @@ URI: [basalt_schema:OxygenStatusEnum](https://w3id.org/MONet/basalt-schema/Oxyge
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -61,7 +61,7 @@ URI: [basalt_schema:OxygenStatusEnum](https://w3id.org/MONet/basalt-schema/Oxyge
 ```yaml
 name: OxygenStatusEnum
 description: Oxygen status of samples
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   aerobic:

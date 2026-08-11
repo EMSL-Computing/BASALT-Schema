@@ -9,7 +9,7 @@ _Unusual physical events that may have affected microbial populations. Format: Y
 
 
 
-URI: [basalt_schema:extreme_event](https://w3id.org/MONet/basalt-schema/extreme_event)
+URI: [basalt_schema:extreme_event](https://EMSL-Computing.github.io/basalt-schema/extreme_event)
 Alias: extreme_event
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: extreme_event
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -91,7 +91,7 @@ name: extreme_event
 description: 'Unusual physical events that may have affected microbial populations.
   Format: YYYY-MM-DD'
 title: extreme event
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: extreme_event
 domain_of:

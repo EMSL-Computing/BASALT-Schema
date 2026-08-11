@@ -9,7 +9,7 @@ _Concentration of particulate organic carbon. Provide value and unit, any unit i
 
 
 
-URI: [basalt_schema:part_org_carb](https://w3id.org/MONet/basalt-schema/part_org_carb)
+URI: [basalt_schema:part_org_carb](https://EMSL-Computing.github.io/basalt-schema/part_org_carb)
 Alias: part_org_carb
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: part_org_carb
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -93,7 +93,7 @@ name: part_org_carb
 description: Concentration of particulate organic carbon. Provide value and unit,
   any unit is valid.
 title: particulate organic carbon
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: part_org_carb
 domain_of:

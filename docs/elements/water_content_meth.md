@@ -9,7 +9,7 @@ _Reference or method used in determining the water content of soil_
 
 
 
-URI: [basalt_schema:water_content_meth](https://w3id.org/MONet/basalt-schema/water_content_meth)
+URI: [basalt_schema:water_content_meth](https://EMSL-Computing.github.io/basalt-schema/water_content_meth)
 Alias: water_content_meth
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: water_content_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -87,7 +87,7 @@ Alias: water_content_meth
 name: water_content_meth
 description: Reference or method used in determining the water content of soil
 title: water content method
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: water_content_meth
 domain_of:

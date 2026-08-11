@@ -9,7 +9,7 @@ _Specification of the media for growing the plants or tissue cultured samples e.
 
 
 
-URI: [basalt_schema:plant_growth_med](https://w3id.org/MONet/basalt-schema/plant_growth_med)
+URI: [basalt_schema:plant_growth_med](https://EMSL-Computing.github.io/basalt-schema/plant_growth_med)
 Alias: plant_growth_med
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: plant_growth_med
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -97,7 +97,7 @@ description: Specification of the media for growing the plants or tissue culture
   name of the media followed by the PECO identifier in brackets, e.g. aeroponic plant
   growth media exposure [PECO:0001073]
 title: plant growth medium
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: plant_growth_med
 domain_of:

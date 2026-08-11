@@ -7,7 +7,7 @@ _FAO soil classification system_
 
 
 
-URI: [basalt_schema:FAOClassEnum](https://w3id.org/MONet/basalt-schema/FAOClassEnum)
+URI: [basalt_schema:FAOClassEnum](https://EMSL-Computing.github.io/basalt-schema/FAOClassEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -70,7 +70,7 @@ URI: [basalt_schema:FAOClassEnum](https://w3id.org/MONet/basalt-schema/FAOClassE
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ URI: [basalt_schema:FAOClassEnum](https://w3id.org/MONet/basalt-schema/FAOClassE
 ```yaml
 name: FAOClassEnum
 description: FAO soil classification system
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   Acrisols:

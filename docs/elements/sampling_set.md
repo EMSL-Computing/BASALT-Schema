@@ -13,7 +13,7 @@ _in the same sampling event or campaign._
 
 
 
-URI: [basalt_schema:sampling_set](https://w3id.org/MONet/basalt-schema/sampling_set)
+URI: [basalt_schema:sampling_set](https://EMSL-Computing.github.io/basalt-schema/sampling_set)
 Alias: sampling_set
 
 <!-- no inheritance hierarchy -->
@@ -95,7 +95,7 @@ Alias: sampling_set
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -121,7 +121,7 @@ description: 'Sampling set number for grouping related samples collected togethe
 
   in the same sampling event or campaign.'
 title: sampling set
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sampling_set
 domain_of:

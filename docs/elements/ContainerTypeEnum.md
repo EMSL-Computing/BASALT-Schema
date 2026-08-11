@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:ContainerTypeEnum](https://w3id.org/MONet/basalt-schema/ContainerTypeEnum)
+URI: [basalt_schema:ContainerTypeEnum](https://EMSL-Computing.github.io/basalt-schema/ContainerTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -30,7 +30,7 @@ URI: [basalt_schema:ContainerTypeEnum](https://w3id.org/MONet/basalt-schema/Cont
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -42,7 +42,7 @@ URI: [basalt_schema:ContainerTypeEnum](https://w3id.org/MONet/basalt-schema/Cont
 <details>
 ```yaml
 name: ContainerTypeEnum
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   screw_top_conical:

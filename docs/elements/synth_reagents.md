@@ -9,7 +9,7 @@ _The reagents used in the material synthesis_
 
 
 
-URI: [basalt_schema:synth_reagents](https://w3id.org/MONet/basalt-schema/synth_reagents)
+URI: [basalt_schema:synth_reagents](https://EMSL-Computing.github.io/basalt-schema/synth_reagents)
 Alias: synth_reagents
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: synth_reagents
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: synth_reagents
 name: synth_reagents
 description: The reagents used in the material synthesis
 title: synthesis reagents
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: synth_reagents
 domain_of:

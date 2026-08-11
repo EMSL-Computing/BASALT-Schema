@@ -9,7 +9,7 @@ _The average of all annual precipitation values known or an estimated equivalent
 
 
 
-URI: [basalt_schema:annual_precpt](https://w3id.org/MONet/basalt-schema/annual_precpt)
+URI: [basalt_schema:annual_precpt](https://EMSL-Computing.github.io/basalt-schema/annual_precpt)
 Alias: annual_precpt
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: annual_precpt
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -97,7 +97,7 @@ description: 'The average of all annual precipitation values known or an estimat
   equivalent value derived by such methods as regional indexes or Isohyetal maps.
   (Unit: mm)'
 title: mean annual precipitation
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - average annual precipitation
 rank: 1000

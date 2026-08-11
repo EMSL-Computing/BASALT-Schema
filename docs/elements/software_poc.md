@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:software_poc](https://w3id.org/MONet/basalt-schema/software_poc)
+URI: [basalt_schema:software_poc](https://EMSL-Computing.github.io/basalt-schema/software_poc)
 Alias: software_poc
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: software_poc
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ Alias: software_poc
 <details>
 ```yaml
 name: software_poc
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: software_poc
 owner: DataProcessingActivity

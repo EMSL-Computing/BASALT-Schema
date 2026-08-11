@@ -9,7 +9,7 @@ _Water content measurement. Provide value and unit any unit is valid_
 
 
 
-URI: [basalt_schema:water_content](https://w3id.org/MONet/basalt-schema/water_content)
+URI: [basalt_schema:water_content](https://EMSL-Computing.github.io/basalt-schema/water_content)
 Alias: water_content
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: water_content
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -95,7 +95,7 @@ Alias: water_content
 name: water_content
 description: Water content measurement. Provide value and unit any unit is valid
 title: water content
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: water_content
 domain_of:

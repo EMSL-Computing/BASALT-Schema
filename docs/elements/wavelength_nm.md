@@ -9,7 +9,7 @@ _Measurement wavelength in nanometres (e.g. 590 Ecoplate, 610 AMP2 OD)_
 
 
 
-URI: [basalt_schema:wavelength_nm](https://w3id.org/MONet/basalt-schema/wavelength_nm)
+URI: [basalt_schema:wavelength_nm](https://EMSL-Computing.github.io/basalt-schema/wavelength_nm)
 Alias: wavelength_nm
 
 <!-- no inheritance hierarchy -->
@@ -66,7 +66,7 @@ Alias: wavelength_nm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -87,7 +87,7 @@ Alias: wavelength_nm
 ```yaml
 name: wavelength_nm
 description: Measurement wavelength in nanometres (e.g. 590 Ecoplate, 610 AMP2 OD)
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: wavelength_nm
 domain_of:

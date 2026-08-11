@@ -37,7 +37,7 @@ _  - workflow_id links to DataProcessingActivity for computational processing (X
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [basalt_schema:XRayDataProduct](https://w3id.org/MONet/basalt-schema/XRayDataProduct)
+URI: [basalt_schema:XRayDataProduct](https://EMSL-Computing.github.io/basalt-schema/XRayDataProduct)
 
 
 
@@ -163,7 +163,7 @@ URI: [basalt_schema:XRayDataProduct](https://w3id.org/MONet/basalt-schema/XRayDa
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -199,7 +199,7 @@ description: "Abstract base class for X-ray analytical data products.\nInherits 
   :18, \"kaolinite_percent\":31}\n  - workflow_id is NULL for direct instrument output\
   \ (XRF typical)\n  - workflow_id links to DataProcessingActivity for computational\
   \ processing (XRD Rietveld) "
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: ProcessedData
 abstract: true
 
@@ -221,7 +221,7 @@ description: "Abstract base class for X-ray analytical data products.\nInherits 
   :18, \"kaolinite_percent\":31}\n  - workflow_id is NULL for direct instrument output\
   \ (XRF typical)\n  - workflow_id links to DataProcessingActivity for computational\
   \ processing (XRD Rietveld) "
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: ProcessedData
 abstract: true
 attributes:
@@ -235,7 +235,7 @@ attributes:
       \ retained until formal typed class exists."
     todos:
     - make this inined/multivalued?
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: summary_metrics
     owner: XRayDataProduct
@@ -246,7 +246,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: lims_barcode
     owner: XRayDataProduct
@@ -258,7 +258,7 @@ attributes:
   sample_id:
     name: sample_id
     description: Link back to the originating sample
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sample_id
     owner: XRayDataProduct
@@ -271,7 +271,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: XRayDataProduct
@@ -301,7 +301,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: XRayDataProduct
@@ -337,7 +337,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - study
     - study_id
@@ -374,7 +374,7 @@ attributes:
 
       in the same sampling event or campaign.'
     title: sampling set
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sampling_set
     owner: XRayDataProduct
@@ -390,7 +390,7 @@ attributes:
     - value: TOP
     - value: MID
     - value: BTM
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: core_section
     owner: XRayDataProduct
@@ -408,7 +408,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - samp_name
     rank: 1000
@@ -434,7 +434,7 @@ attributes:
     range: string
   s3_base_url:
     name: s3_base_url
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: s3_base_url
     owner: XRayDataProduct
@@ -443,7 +443,7 @@ attributes:
     range: string
   s3_bucket:
     name: s3_bucket
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: s3_bucket
     owner: XRayDataProduct
@@ -453,7 +453,7 @@ attributes:
   s3_key:
     name: s3_key
     description: MinIO/S3 object key; required for all data products
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: s3_key
     owner: XRayDataProduct
@@ -464,7 +464,7 @@ attributes:
   filesize:
     name: filesize
     description: Size of the file in bytes
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: filesize
     owner: XRayDataProduct
@@ -473,7 +473,7 @@ attributes:
     range: integer
   md5checksum:
     name: md5checksum
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: md5checksum
     owner: XRayDataProduct
@@ -482,7 +482,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     identifier: true
     alias: id
     owner: XRayDataProduct

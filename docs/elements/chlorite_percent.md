@@ -9,7 +9,7 @@ _Chlorite ((Mg,Fe)3(Si,Al)4O10(OH)2 (Mg,Fe)3(OH)6) weight percent_
 
 
 
-URI: [basalt_schema:chlorite_percent](https://w3id.org/MONet/basalt-schema/chlorite_percent)
+URI: [basalt_schema:chlorite_percent](https://EMSL-Computing.github.io/basalt-schema/chlorite_percent)
 Alias: chlorite_percent
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: chlorite_percent
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -89,7 +89,7 @@ Alias: chlorite_percent
 ```yaml
 name: chlorite_percent
 description: Chlorite ((Mg,Fe)3(Si,Al)4O10(OH)2 (Mg,Fe)3(OH)6) weight percent
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: chlorite_percent
 owner: XRDPhaseProduct

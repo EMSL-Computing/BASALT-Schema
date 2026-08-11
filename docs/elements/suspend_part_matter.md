@@ -9,7 +9,7 @@ _Concentration of suspended particulate matter. (Unit: mg/L)_
 
 
 
-URI: [basalt_schema:suspend_part_matter](https://w3id.org/MONet/basalt-schema/suspend_part_matter)
+URI: [basalt_schema:suspend_part_matter](https://EMSL-Computing.github.io/basalt-schema/suspend_part_matter)
 Alias: suspend_part_matter
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: suspend_part_matter
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -91,7 +91,7 @@ Alias: suspend_part_matter
 name: suspend_part_matter
 description: 'Concentration of suspended particulate matter. (Unit: mg/L)'
 title: suspended particulate matter
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: suspend_part_matter
 domain_of:

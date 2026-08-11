@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_microcline](https://w3id.org/MONet/basalt-schema/flag_microcline)
+URI: [basalt_schema:flag_microcline](https://EMSL-Computing.github.io/basalt-schema/flag_microcline)
 Alias: flag_microcline
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_microcline
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_microcline
 <details>
 ```yaml
 name: flag_microcline
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_microcline
 owner: XRDPhaseProduct

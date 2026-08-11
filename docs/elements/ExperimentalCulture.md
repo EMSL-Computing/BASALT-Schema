@@ -19,7 +19,7 @@ _Refs:   Media (growth medium), Strain_
 
 
 
-URI: [basalt_schema:ExperimentalCulture](https://w3id.org/MONet/basalt-schema/ExperimentalCulture)
+URI: [basalt_schema:ExperimentalCulture](https://EMSL-Computing.github.io/basalt-schema/ExperimentalCulture)
 
 
 
@@ -166,7 +166,7 @@ URI: [basalt_schema:ExperimentalCulture](https://w3id.org/MONet/basalt-schema/Ex
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -202,7 +202,7 @@ description: 'Growth of an experimental culture for downstream analysis.
   Output: processedSample(type=''experimental_culture'') via processingSampleLink
 
   Refs:   Media (growth medium), Strain'
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: CultureGrowth
 slots:
 - treatment_type
@@ -226,13 +226,13 @@ description: 'Growth of an experimental culture for downstream analysis.
   Output: processedSample(type=''experimental_culture'') via processingSampleLink
 
   Refs:   Media (growth medium), Strain'
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: CultureGrowth
 attributes:
   treatment_type:
     name: treatment_type
     description: Type of treatment applied in experimental culture growth
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: treatment_type
     owner: ExperimentalCulture
@@ -244,7 +244,7 @@ attributes:
     description: 'Total growth time for the culture.
 
       Required for ExperimentalCulture activities.'
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: growth_time
     owner: ExperimentalCulture
@@ -258,7 +258,7 @@ attributes:
       strain, isolate, engineered construct) that this sample or activity
 
       is associated with.'
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - strain_ref
     - strain_id
@@ -277,7 +277,7 @@ attributes:
       3-D structure, bioreactor, etc. followed by the formula, recipe, or components
       used to create the growth medium.
     title: growth medium
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: growth_medium
     owner: ExperimentalCulture
@@ -293,7 +293,7 @@ attributes:
   incubation_time_hours:
     name: incubation_time_hours
     description: Incubation duration in hours
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: incubation_time_hours
     owner: ExperimentalCulture
@@ -303,7 +303,7 @@ attributes:
   container_type:
     name: container_type
     description: Physical container used for the culture (flask, tube, plate, etc.)
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: container_type
     owner: ExperimentalCulture
@@ -314,7 +314,7 @@ attributes:
   temperature_celsius:
     name: temperature_celsius
     description: Temperature at which the method/process/activity was performed
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: temperature_celsius
     owner: ExperimentalCulture
@@ -325,7 +325,7 @@ attributes:
   agitation_speed_rpm:
     name: agitation_speed_rpm
     description: Agitation/shaking speed in RPM (0 for static)
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: agitation_speed_rpm
     owner: ExperimentalCulture
@@ -336,7 +336,7 @@ attributes:
     name: oxygen_relationship
     description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
     title: oxygen relationship
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     exact_mappings:
     - MIXS:0000015
     rank: 1000
@@ -359,7 +359,7 @@ attributes:
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: protocol_url
     owner: ExperimentalCulture
@@ -370,7 +370,7 @@ attributes:
   protocol_version:
     name: protocol_version
     description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: protocol_version
     owner: ExperimentalCulture
@@ -380,7 +380,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     identifier: true
     alias: id
     owner: ExperimentalCulture
@@ -460,7 +460,7 @@ attributes:
     required: true
   analysis_type:
     name: analysis_type
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     alias: analysis_type
     owner: ExperimentalCulture
     domain_of:
@@ -483,7 +483,7 @@ attributes:
     range: RouteMethodEnum
   method_name:
     name: method_name
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: method_name
     owner: ExperimentalCulture
@@ -492,7 +492,7 @@ attributes:
     range: MethodNameEnum
   processing_steps:
     name: processing_steps
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: processing_steps
     owner: ExperimentalCulture
@@ -502,7 +502,7 @@ attributes:
     required: true
   uses_sample:
     name: uses_sample
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: uses_sample
     owner: ExperimentalCulture

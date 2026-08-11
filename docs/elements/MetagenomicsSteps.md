@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:MetagenomicsSteps](https://w3id.org/MONet/basalt-schema/MetagenomicsSteps)
+URI: [basalt_schema:MetagenomicsSteps](https://EMSL-Computing.github.io/basalt-schema/MetagenomicsSteps)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -42,7 +42,7 @@ URI: [basalt_schema:MetagenomicsSteps](https://w3id.org/MONet/basalt-schema/Meta
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -54,7 +54,7 @@ URI: [basalt_schema:MetagenomicsSteps](https://w3id.org/MONet/basalt-schema/Meta
 <details>
 ```yaml
 name: MetagenomicsSteps
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   ReadQcAnalysis:

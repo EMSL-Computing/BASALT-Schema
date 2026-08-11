@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:AlternateIdentifierType](https://w3id.org/MONet/basalt-schema/AlternateIdentifierType)
+URI: [basalt_schema:AlternateIdentifierType](https://EMSL-Computing.github.io/basalt-schema/AlternateIdentifierType)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -36,7 +36,7 @@ URI: [basalt_schema:AlternateIdentifierType](https://w3id.org/MONet/basalt-schem
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -48,7 +48,7 @@ URI: [basalt_schema:AlternateIdentifierType](https://w3id.org/MONet/basalt-schem
 <details>
 ```yaml
 name: AlternateIdentifierType
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   instrument_alt_id:

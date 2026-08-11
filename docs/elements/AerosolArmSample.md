@@ -9,7 +9,7 @@ _An aerosol sample collected by the ARM facility._
 
 
 
-URI: [basalt_schema:AerosolArmSample](https://w3id.org/MONet/basalt-schema/AerosolArmSample)
+URI: [basalt_schema:AerosolArmSample](https://EMSL-Computing.github.io/basalt-schema/AerosolArmSample)
 
 
 
@@ -287,7 +287,7 @@ URI: [basalt_schema:AerosolArmSample](https://w3id.org/MONet/basalt-schema/Aeros
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -314,7 +314,7 @@ URI: [basalt_schema:AerosolArmSample](https://w3id.org/MONet/basalt-schema/Aeros
 ```yaml
 name: AerosolArmSample
 description: An aerosol sample collected by the ARM facility.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Sample
 slots:
 - aerosol_type
@@ -397,7 +397,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -483,7 +483,7 @@ attributes:
 ```yaml
 name: AerosolArmSample
 description: An aerosol sample collected by the ARM facility.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Sample
 slot_usage:
   analysis_type:
@@ -513,7 +513,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     alias: id
     owner: AerosolArmSample
@@ -594,7 +594,7 @@ attributes:
   aerosol_type:
     name: aerosol_type
     description: The type or method of aerosol collection
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: aerosol_type
     owner: AerosolArmSample
@@ -610,7 +610,7 @@ attributes:
       treatment was repeated, how long each treatment lasted, and the start and end
       time of the entire treatment; can include different temperature regimens
     title: air temperature regimen
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     exact_mappings:
     - MIXS:0000551
     rank: 1000
@@ -633,7 +633,7 @@ attributes:
   analysis_type:
     name: analysis_type
     description: The type(s) of analysis planned for this sample.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: analysis_type
     owner: AerosolArmSample
@@ -661,7 +661,7 @@ attributes:
     description: Amount of carbon dioxide measured in the air the day of sampling.
       Provided by ARM. Provide value and unit, any unit is valid
     title: carbon dioxide
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: carb_dioxide
     owner: AerosolArmSample
@@ -676,7 +676,7 @@ attributes:
     description: Amount of carbon monoxide measured in the air the day of sampling.
       Provided by ARM. Provide value and unit any unit is valid
     title: carbon monoxide
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: carb_monoxide
     owner: AerosolArmSample
@@ -693,7 +693,7 @@ attributes:
       include multiple compounds. For chemical entities of biological interest ontology
       (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
     title: chemical administration
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     exact_mappings:
     - MIXS:0000751
     rank: 1000
@@ -718,7 +718,7 @@ attributes:
     name: color_code
     description: Color indicates the max altitude.
     title: color code
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: color_code
     owner: AerosolArmSample
@@ -733,7 +733,7 @@ attributes:
       or a rainforest). We recommend using subclasses of EnvO''''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'''
     title: broad-scale environmental context
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: env_broad_scale
     owner: AerosolArmSample
@@ -760,7 +760,7 @@ attributes:
       spatial grain than your entry for env_broad_scale.If needed, request new terms
       on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'''
     title: local environmental context
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: env_local_scale
     owner: AerosolArmSample
@@ -786,7 +786,7 @@ attributes:
       ''''environmental material'''' (http://purl.obolibrary.org/obo/ENVO_00010483).
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'''
     title: environmental medium
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: env_medium
     owner: AerosolArmSample
@@ -814,7 +814,7 @@ attributes:
       a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO;
       for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI
     title: experimental factor
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: experimental_factor
     owner: AerosolArmSample
@@ -837,7 +837,7 @@ attributes:
     description: Other details about your sample that you feel can't be accurately
       represented in the available columns.
     title: other experimental factor
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: experimental_factor_other
     owner: AerosolArmSample
@@ -858,7 +858,7 @@ attributes:
   external_identifiers:
     name: external_identifiers
     description: List of external identifiers associated with this entity or activity.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: external_identifiers
     owner: AerosolArmSample
@@ -889,7 +889,7 @@ attributes:
       before sending the sample to EMSL, what was it? This is only applicable when
       sending an 'analytical sample'. See README for more details on types of samples.
     title: extraction method
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: extraction_method
     owner: AerosolArmSample
@@ -910,7 +910,7 @@ attributes:
     name: first_blh
     description: 'First boundary layer height candidate (meters) (Unit: m)'
     title: first boundary layer height
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: first_blh
     owner: AerosolArmSample
@@ -922,7 +922,7 @@ attributes:
     description: Quality index for first boundary layer height candidate (-999 if
       no candidate)
     title: first boundary layer height quality
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: first_blh_quality_index
     owner: AerosolArmSample
@@ -934,7 +934,7 @@ attributes:
     description: 'First cloud base (meters) or vertical visibility (meters) (-999
       if no cloud base or vertical visibility) (Unit: m)'
     title: first cloud base height
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: first_cbh
     owner: AerosolArmSample
@@ -949,7 +949,7 @@ attributes:
       lasted, and the start and end time of the entire treatment; can include multiple
       regimens
     title: humidity regimen
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: humidity_regm
     owner: AerosolArmSample
@@ -970,7 +970,7 @@ attributes:
     name: isotope_exposure
     description: List isotope exposure or addition applied to your sample.
     title: isotope exposure
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: isotope_exposure
     owner: AerosolArmSample
@@ -992,7 +992,7 @@ attributes:
     name: latitude
     description: Latitude coordinate of the sampling site in WSG 84 format.
     title: latitude
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     broad_mappings:
     - MIXS:0000009
     rank: 1000
@@ -1015,7 +1015,7 @@ attributes:
     name: longitude
     description: Longitude coordinate of the sampling site in WSG 84 format.
     title: longitude
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     broad_mappings:
     - MIXS:0000009
     rank: 1000
@@ -1039,7 +1039,7 @@ attributes:
     description: 'Mean concentration obtained from Condensation Particle Counter (Unit:
       μm)'
     title: mean total C.P.C. concentration
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: mean_total_cpc_concentration
     owner: AerosolArmSample
@@ -1051,7 +1051,7 @@ attributes:
     description: 'Mean concentration obtained from Portable Optical Particle Spectrometer
       (Unit: μm)'
     title: mean total P.O.P. concentration
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: mean_total_pops_concentration
     owner: AerosolArmSample
@@ -1063,7 +1063,7 @@ attributes:
     description: 'Methane (gas) amount or concentration at the time of sampling. (Unit:
       umol/L or ppb or ppm)'
     title: methane
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: methane
     owner: AerosolArmSample
@@ -1079,7 +1079,7 @@ attributes:
     description: If your samples are TEST sample ONLY, please provide information
       on what you're hoping this test will resolve.
     title: method development
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: method_development
     owner: AerosolArmSample
@@ -1103,7 +1103,7 @@ attributes:
     description: Any other measurement performed or parameter collected that is not
       listed here
     title: miscellaneous parameter
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: misc_param
     owner: AerosolArmSample
@@ -1124,7 +1124,7 @@ attributes:
     description: Other/additional details about your sample that you feel can't be
       accurately represented in ANY of the available columns.
     title: other
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: other
     owner: AerosolArmSample
@@ -1151,7 +1151,7 @@ attributes:
       is applied to your samples and the provided treatment terms do not satisfy please
       add it here. Multiple treatments can be entered here separated by ;
     title: other treatment
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: other_treatment
     owner: AerosolArmSample
@@ -1175,7 +1175,7 @@ attributes:
     name: other_samp_store_temp
     description: Please specify sample storage temperature if you selected 'other'
     title: other sample storage temperature
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: other_samp_store_temp
     owner: AerosolArmSample
@@ -1202,7 +1202,7 @@ attributes:
       of ultraviolet (wavelength from 100 to 400 nm), visible light (400-750 nm),
       or infrared radiation (750-2500 nm)
     title: photochemical exposure
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: photochemical_exposure
     owner: AerosolArmSample
@@ -1216,7 +1216,7 @@ attributes:
     description: 'Measurment of pressure applied to the sample during experimentation
       (Unit: Pa)'
     title: pressure control
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: pressure_control
     owner: AerosolArmSample
@@ -1230,7 +1230,7 @@ attributes:
     name: priority_order
     description: Indicate the run order priority of your samples
     title: priority order
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: priority_order
     owner: AerosolArmSample
@@ -1246,7 +1246,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - study
     - study_id
@@ -1281,7 +1281,7 @@ attributes:
       with submission schema.
     todos:
     - reconcile replicate modelling
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: replicate_number
     owner: AerosolArmSample
@@ -1307,7 +1307,7 @@ attributes:
       This field is NOT multivalued. If selecting other add the `other_samp_store_temp`
       attribute to provide additional detail.
     title: sample storage temperature
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - sample_storage_temperature
     - storage_temperature
@@ -1341,7 +1341,7 @@ attributes:
       sample was transferred to a new vial and generated a new sample)'''
     todos:
     - EMSL and NMDC both need better modelling for this
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sample_link
     owner: AerosolArmSample
@@ -1371,7 +1371,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - samp_name
     rank: 1000
@@ -1401,7 +1401,7 @@ attributes:
       or after retrieving the sample from environment or a link to the relevant protocol(s)
       performed.
     title: sample processing
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sample_processing
     owner: AerosolArmSample
@@ -1425,7 +1425,7 @@ attributes:
     description: Reference to the sampling activity during which this sample was collected.
       This is a FK to the SamplingActivity class, which contains metadata about the
       sampling event, such as date, device, method.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sampled_during
     owner: AerosolArmSample
@@ -1451,7 +1451,7 @@ attributes:
     name: second_blh
     description: 'Second boundary layer height candidate (meters) (Unit: m)'
     title: second boundary layer height
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: second_blh
     owner: AerosolArmSample
@@ -1463,7 +1463,7 @@ attributes:
     description: Quality index for second boundary layer height candidate (-999 if
       no candidate)
     title: second boundary layer height quality
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: second_blh_quality
     owner: AerosolArmSample
@@ -1475,7 +1475,7 @@ attributes:
     description: 'Second cloud base (meters) or highest received signal in vertical
       visibility (meters) (-999 if no cloud base or vertical visibility) (Unit: m)'
     title: second cloud base height
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: second_cbh
     owner: AerosolArmSample
@@ -1488,7 +1488,7 @@ attributes:
       Materials larger than the size threshold are excluded from the sample (Unit:
       um)'
     title: size fraction lower threshold
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: size_frac_low
     owner: AerosolArmSample
@@ -1505,7 +1505,7 @@ attributes:
     description: 'Refers to the mesh/pore size used to retain the sample. Materials
       smaller than the size threshold are excluded from the sample (Unit: um)'
     title: size fraction upper threshold
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: size_frac_up
     owner: AerosolArmSample
@@ -1523,7 +1523,7 @@ attributes:
       received from the Sun in the form of electromagnetic radiation in the wavelength
       range of the measuring instrument. (Unit: kW/m2/d or erg/cm2/s'
     title: solar irradiance
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: solar_irradiance
     owner: AerosolArmSample
@@ -1539,7 +1539,7 @@ attributes:
       or to any derived sub-samples. The source material should be listed as a sample
       to inform details about parent material relationship.
     title: source material identifier
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: source_mat_id
     owner: AerosolArmSample
@@ -1565,7 +1565,7 @@ attributes:
       If selecting other add the `other_storage_condt` attribute to provide additional
       detail.
     title: storage condition
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - samp_store_cond
     - storage_cond
@@ -1598,7 +1598,7 @@ attributes:
     name: storage_condition_other
     description: Free-text field for storage conditions when 'storage_condition' is
       'other'
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - other_storage_condt
     - storage_condt_other
@@ -1626,7 +1626,7 @@ attributes:
     name: technical_reps
     description: Number of technical replicates for the sample.
     title: technical replicates
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: technical_reps
     owner: AerosolArmSample
@@ -1650,7 +1650,7 @@ attributes:
     name: third_blh
     description: 'Third boundary layer height candidate (meters) (Unit: m)'
     title: third boundary layer height
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: third_blh
     owner: AerosolArmSample
@@ -1662,7 +1662,7 @@ attributes:
     description: Quality index for third boundary layer height candidate (-999 if
       no candidate)
     title: third boundary layer height quality
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: third_blh_quality
     owner: AerosolArmSample
@@ -1674,7 +1674,7 @@ attributes:
     description: Volatile organic compounds are organic chemicals that have a high
       vapour pressure at room temperature.
     title: volatile organic compounds
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: volatile_org_comp
     owner: AerosolArmSample
@@ -1686,7 +1686,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: AerosolArmSample
@@ -1716,7 +1716,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: AerosolArmSample
@@ -1755,7 +1755,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: emsl_activity
     owner: AerosolArmSample
@@ -1767,7 +1767,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: lims_barcode
     owner: AerosolArmSample

@@ -9,7 +9,7 @@ _Whether internal calibration was used_
 
 
 
-URI: [basalt_schema:internal_calibration](https://w3id.org/MONet/basalt-schema/internal_calibration)
+URI: [basalt_schema:internal_calibration](https://EMSL-Computing.github.io/basalt-schema/internal_calibration)
 Alias: internal_calibration
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: internal_calibration
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -82,7 +82,7 @@ Alias: internal_calibration
 ```yaml
 name: internal_calibration
 description: Whether internal calibration was used
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: internal_calibration
 domain_of:

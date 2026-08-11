@@ -9,7 +9,7 @@ _Amount of carbon monoxide measured in the air the day of sampling. (Unit: umol/
 
 
 
-URI: [basalt_schema:carb_monoxide](https://w3id.org/MONet/basalt-schema/carb_monoxide)
+URI: [basalt_schema:carb_monoxide](https://EMSL-Computing.github.io/basalt-schema/carb_monoxide)
 Alias: carb_monoxide
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: carb_monoxide
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -93,7 +93,7 @@ name: carb_monoxide
 description: 'Amount of carbon monoxide measured in the air the day of sampling. (Unit:
   umol/L or ppm)'
 title: carbon monoxide
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: carb_monoxide
 domain_of:

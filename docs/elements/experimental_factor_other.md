@@ -9,7 +9,7 @@ _Other details about your sample that you feel can't be accurately represented i
 
 
 
-URI: [basalt_schema:experimental_factor_other](https://w3id.org/MONet/basalt-schema/experimental_factor_other)
+URI: [basalt_schema:experimental_factor_other](https://EMSL-Computing.github.io/basalt-schema/experimental_factor_other)
 Alias: experimental_factor_other
 
 <!-- no inheritance hierarchy -->
@@ -72,7 +72,7 @@ Alias: experimental_factor_other
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -95,7 +95,7 @@ name: experimental_factor_other
 description: Other details about your sample that you feel can't be accurately represented
   in the available columns.
 title: other experimental factor
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: experimental_factor_other
 domain_of:

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:middle_initial](https://w3id.org/MONet/basalt-schema/middle_initial)
+URI: [basalt_schema:middle_initial](https://EMSL-Computing.github.io/basalt-schema/middle_initial)
 Alias: middle_initial
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: middle_initial
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: middle_initial
 <details>
 ```yaml
 name: middle_initial
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: middle_initial
 owner: PersonValue

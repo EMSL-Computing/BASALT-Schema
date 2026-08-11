@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:total_organic_carbon_id](https://w3id.org/MONet/basalt-schema/total_organic_carbon_id)
+URI: [basalt_schema:total_organic_carbon_id](https://EMSL-Computing.github.io/basalt-schema/total_organic_carbon_id)
 Alias: total_organic_carbon_id
 
 <!-- no inheritance hierarchy -->

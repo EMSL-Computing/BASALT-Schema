@@ -9,7 +9,7 @@ _Observed genotype_
 
 
 
-URI: [basalt_schema:host_genotype](https://w3id.org/MONet/basalt-schema/host_genotype)
+URI: [basalt_schema:host_genotype](https://EMSL-Computing.github.io/basalt-schema/host_genotype)
 Alias: host_genotype
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: host_genotype
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: host_genotype
 name: host_genotype
 description: Observed genotype
 title: host genotype
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: host_genotype
 domain_of:

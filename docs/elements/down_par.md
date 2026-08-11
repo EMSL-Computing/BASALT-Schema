@@ -9,7 +9,7 @@ _Visible waveband radiance and irradiance measurements in the water column. Prov
 
 
 
-URI: [basalt_schema:down_par](https://w3id.org/MONet/basalt-schema/down_par)
+URI: [basalt_schema:down_par](https://EMSL-Computing.github.io/basalt-schema/down_par)
 Alias: down_par
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: down_par
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ name: down_par
 description: Visible waveband radiance and irradiance measurements in the water column.
   Provide value and unit, any unit is valid.
 title: downward PAR
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: down_par
 domain_of:

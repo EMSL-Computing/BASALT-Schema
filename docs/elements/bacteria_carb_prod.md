@@ -9,7 +9,7 @@ _Measurement of bacterial carbon production. Provide value and unit, any unit is
 
 
 
-URI: [basalt_schema:bacteria_carb_prod](https://w3id.org/MONet/basalt-schema/bacteria_carb_prod)
+URI: [basalt_schema:bacteria_carb_prod](https://EMSL-Computing.github.io/basalt-schema/bacteria_carb_prod)
 Alias: bacteria_carb_prod
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: bacteria_carb_prod
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -93,7 +93,7 @@ name: bacteria_carb_prod
 description: Measurement of bacterial carbon production. Provide value and unit, any
   unit is valid
 title: bacterial carbon production
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: bacteria_carb_prod
 domain_of:

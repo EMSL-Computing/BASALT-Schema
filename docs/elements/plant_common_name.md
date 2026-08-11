@@ -9,7 +9,7 @@ _Common name of the plant._
 
 
 
-URI: [basalt_schema:plant_common_name](https://w3id.org/MONet/basalt-schema/plant_common_name)
+URI: [basalt_schema:plant_common_name](https://EMSL-Computing.github.io/basalt-schema/plant_common_name)
 Alias: plant_common_name
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: plant_common_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: plant_common_name
 name: plant_common_name
 description: Common name of the plant.
 title: plant common name
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: plant_common_name
 domain_of:

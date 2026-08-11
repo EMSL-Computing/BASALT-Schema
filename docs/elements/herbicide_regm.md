@@ -9,7 +9,7 @@ _Information about treatment involving use of herbicides; information about trea
 
 
 
-URI: [basalt_schema:herbicide_regm](https://w3id.org/MONet/basalt-schema/herbicide_regm)
+URI: [basalt_schema:herbicide_regm](https://EMSL-Computing.github.io/basalt-schema/herbicide_regm)
 Alias: herbicide_regm
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: herbicide_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -88,7 +88,7 @@ description: Information about treatment involving use of herbicides; informatio
   repeated, how long each treatment lasted, and the start and end time of the entire
   treatment; can include multiple regimens
 title: herbicide regimen
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: herbicide_regm
 domain_of:

@@ -9,7 +9,7 @@ _A sample collected from a Terraform experiment._
 
 
 
-URI: [basalt_schema:TerraformSample](https://w3id.org/MONet/basalt-schema/TerraformSample)
+URI: [basalt_schema:TerraformSample](https://EMSL-Computing.github.io/basalt-schema/TerraformSample)
 
 
 
@@ -371,7 +371,7 @@ URI: [basalt_schema:TerraformSample](https://w3id.org/MONet/basalt-schema/Terraf
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -398,7 +398,7 @@ URI: [basalt_schema:TerraformSample](https://w3id.org/MONet/basalt-schema/Terraf
 ```yaml
 name: TerraformSample
 description: A sample collected from a Terraform experiment.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Sample
 slots:
 - air_temp_regm
@@ -506,7 +506,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -592,7 +592,7 @@ attributes:
 ```yaml
 name: TerraformSample
 description: A sample collected from a Terraform experiment.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Sample
 slot_usage:
   analysis_type:
@@ -625,7 +625,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     alias: id
     owner: TerraformSample
@@ -710,7 +710,7 @@ attributes:
       treatment was repeated, how long each treatment lasted, and the start and end
       time of the entire treatment; can include different temperature regimens
     title: air temperature regimen
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     exact_mappings:
     - MIXS:0000551
     rank: 1000
@@ -733,7 +733,7 @@ attributes:
   analysis_type:
     name: analysis_type
     description: The type(s) of analysis planned for this sample.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: analysis_type
     owner: TerraformSample
@@ -761,7 +761,7 @@ attributes:
     description: Information about treatment(s) involving use of biotic factors such
       as bacteria, viruses, or fungi.
     title: biotic regimen
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: biotic_regm
     owner: TerraformSample
@@ -784,7 +784,7 @@ attributes:
       include multiple compounds. For chemical entities of biological interest ontology
       (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
     title: chemical administration
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     exact_mappings:
     - MIXS:0000751
     rank: 1000
@@ -812,7 +812,7 @@ attributes:
       medium, e.g. Murashige and Skoog medium. If the medium has not been formally
       published use the rooting medium descriptors.
     title: culture rooting medium
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: cult_root_med
     owner: TerraformSample
@@ -826,7 +826,7 @@ attributes:
 
       degradation phenotypes for plasmids, converting genes for phage'
     title: encoded traits
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: encoded_traits
     owner: TerraformSample
@@ -847,7 +847,7 @@ attributes:
       or a rainforest). We recommend using subclasses of EnvO''''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'''
     title: broad-scale environmental context
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: env_broad_scale
     owner: TerraformSample
@@ -874,7 +874,7 @@ attributes:
       spatial grain than your entry for env_broad_scale.If needed, request new terms
       on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'''
     title: local environmental context
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: env_local_scale
     owner: TerraformSample
@@ -900,7 +900,7 @@ attributes:
       ''''environmental material'''' (http://purl.obolibrary.org/obo/ENVO_00010483).
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'''
     title: environmental medium
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: env_medium
     owner: TerraformSample
@@ -922,7 +922,7 @@ attributes:
   external_identifiers:
     name: external_identifiers
     description: List of external identifiers associated with this entity or activity.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: external_identifiers
     owner: TerraformSample
@@ -953,7 +953,7 @@ attributes:
       the name of gaseous compound, amount administered, treatment duration, interval,
       and total experimental duration; can include multiple gaseous environment regimens
     title: gaseous environment
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: gaseous_environment
     owner: TerraformSample
@@ -976,7 +976,7 @@ attributes:
       e.g. specification of a transgene or the gene knocked-out or details of transient
       transfection
     title: genetic modifications
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: genetic_mod
     owner: TerraformSample
@@ -996,7 +996,7 @@ attributes:
       3-D structure, bioreactor, etc. followed by the formula, recipe, or components
       used to create the growth medium.
     title: growth medium
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: growth_medium
     owner: TerraformSample
@@ -1016,7 +1016,7 @@ attributes:
       a (year) or d (day) or h (hour). Do not include the additional information in
       ().)'
     title: host age
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: host_age
     owner: TerraformSample
@@ -1032,7 +1032,7 @@ attributes:
 
       For microbes, this may be identical to organism_name.'
     title: host common name
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - common_name
     rank: 1000
@@ -1051,7 +1051,7 @@ attributes:
     name: host_dry_mass
     description: 'Measurement of dry mass. (Unit: kg or g)'
     title: host dry mass
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: host_dry_mass
     owner: TerraformSample
@@ -1065,7 +1065,7 @@ attributes:
     name: host_genotype
     description: Observed genotype
     title: host genotype
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: host_genotype
     owner: TerraformSample
@@ -1077,7 +1077,7 @@ attributes:
     name: host_height
     description: 'The height of subject. (Unit: cm or mm or m)'
     title: host height
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: host_height
     owner: TerraformSample
@@ -1092,7 +1092,7 @@ attributes:
     name: host_life_stage
     description: Description of life stage of host
     title: host life stage
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: host_life_stage
     owner: TerraformSample
@@ -1107,7 +1107,7 @@ attributes:
     description: The range and diversity of host species that an organism is capable
       of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####
     title: host specificity or range
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: host_spec_range
     owner: TerraformSample
@@ -1125,7 +1125,7 @@ attributes:
     name: host_taxid
     description: NCBI taxon ID. Format with prefix NCBITaxon:####
     title: host taxonomy identifier
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - host_taxonomy_id
     - host_ncbi_taxon_id
@@ -1147,7 +1147,7 @@ attributes:
     name: host_tot_mass
     description: 'Total mass of the host at collection. (Unit: kg or g)'
     title: host total mass
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: host_tot_mass
     owner: TerraformSample
@@ -1161,7 +1161,7 @@ attributes:
     name: host_wet_mass
     description: 'Measurement of wet mass. (Unit: kg or g)'
     title: host wet mass
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: host_wet_mass
     owner: TerraformSample
@@ -1179,7 +1179,7 @@ attributes:
       lasted, and the start and end time of the entire treatment; can include multiple
       regimens
     title: humidity regimen
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: humidity_regm
     owner: TerraformSample
@@ -1202,7 +1202,7 @@ attributes:
       isolation, etc. If providing a sequential initiation, the sample should be linked
       to the sample it originated from. Formatted as YYYY-MM-DD
     title: initiation date of inoculation
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: initiation_date_inoculation
     owner: TerraformSample
@@ -1219,7 +1219,7 @@ attributes:
       (propagation), the sample should be linked to the sample it originated from.
       Formatted as YYYY-MM-DD
     title: initiation date of plant
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: initiation_date_plant
     owner: TerraformSample
@@ -1238,7 +1238,7 @@ attributes:
 
       organism/material'
     title: isolation and growth conditions
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: isol_growth_condt
     owner: TerraformSample
@@ -1255,7 +1255,7 @@ attributes:
     name: isotope_exposure
     description: List isotope exposure or addition applied to your sample.
     title: isotope exposure
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: isotope_exposure
     owner: TerraformSample
@@ -1278,7 +1278,7 @@ attributes:
     description: Information about treatment(s) involving exposure to light including
       both light intensity and quality.
     title: light regimen
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: light_regm
     owner: TerraformSample
@@ -1298,7 +1298,7 @@ attributes:
     description: If your samples are TEST sample ONLY, please provide information
       on what you're hoping this test will resolve.
     title: method development
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: method_development
     owner: TerraformSample
@@ -1325,7 +1325,7 @@ attributes:
       lasted, and the start and end time of the entire treatment; can include multiple
       mineral nutrient regimens
     title: mineral nutrient regimen
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: mineral_nutr_regm
     owner: TerraformSample
@@ -1340,7 +1340,7 @@ attributes:
     description: Any other measurement performed or parameter collected that is not
       listed here
     title: miscellaneous parameter
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: misc_param
     owner: TerraformSample
@@ -1364,7 +1364,7 @@ attributes:
       treatment was repeated, how long each treatment lasted, and the start and end
       time of the entire treatment; can include multiple non-mineral nutrient regimens
     title: non mineral nutrient regimen
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: non_min_nutr_regm
     owner: TerraformSample
@@ -1379,7 +1379,7 @@ attributes:
     description: Other/additional details about your sample that you feel can't be
       accurately represented in ANY of the available columns.
     title: other
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: other
     owner: TerraformSample
@@ -1404,7 +1404,7 @@ attributes:
     name: other_samp_store_temp
     description: Please specify sample storage temperature if you selected 'other'
     title: other sample storage temperature
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: other_samp_store_temp
     owner: TerraformSample
@@ -1430,7 +1430,7 @@ attributes:
     description: Please specify your storage conditions if you selected 'other' and
       the available values are not appropriate
     title: other storage condition
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: other_storage_condt
     owner: TerraformSample
@@ -1455,7 +1455,7 @@ attributes:
       is applied to your samples and the provided treatment terms do not satisfy please
       add it here. Multiple treatments can be entered here separated by ;
     title: other treatment
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: other_treatment
     owner: TerraformSample
@@ -1479,7 +1479,7 @@ attributes:
     name: oxygen_relationship
     description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
     title: oxygen relationship
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     exact_mappings:
     - MIXS:0000015
     rank: 1000
@@ -1508,7 +1508,7 @@ attributes:
       as the name of the media followed by the PECO identifier in brackets, e.g. aeroponic
       plant growth media exposure [PECO:0001073]
     title: plant growth medium
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: plant_growth_med
     owner: TerraformSample
@@ -1522,7 +1522,7 @@ attributes:
     name: plant_product
     description: Substance produced by the plant where the sample was obtained from
     title: plant product
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: plant_product
     owner: TerraformSample
@@ -1534,7 +1534,7 @@ attributes:
     name: plant_sex
     description: Sex of the reproductive parts on the whole plant.
     title: plant sex
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: plant_sex
     owner: TerraformSample
@@ -1550,7 +1550,7 @@ attributes:
       e.g. petiole epidermis (PO_0000051). If an individual flower is sampled the
       sex of it can be recorded here.
     title: plant structure
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: plant_struc
     owner: TerraformSample
@@ -1563,7 +1563,7 @@ attributes:
     name: pressure
     description: 'Pressure to which the sample is subject, in atmospheres (Unit: atm)'
     title: pressure
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: pressure
     owner: TerraformSample
@@ -1583,7 +1583,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - study
     - study_id
@@ -1618,7 +1618,7 @@ attributes:
       field are specific to different taxa. For phage or virus: lytic/lysogenic/temperate/obligately
       lytic. For plasmids: incompatibility group. For eukaryotes: sexual/asexual'''
     title: propagation
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: propagation
     owner: TerraformSample
@@ -1636,7 +1636,7 @@ attributes:
     description: 'Redox potential measured relative to a hydrogen cell indicating
       oxidation or reduction potential (Unit: mV)'
     title: redox potential
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: redox_potential
     owner: TerraformSample
@@ -1653,7 +1653,7 @@ attributes:
     description: Primary publication if isolated before genome publication; otherwise
       primary genome report.
     title: reference for biomaterial
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: ref_biomaterial
     owner: TerraformSample
@@ -1671,7 +1671,7 @@ attributes:
       with submission schema.
     todos:
     - reconcile replicate modelling
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: replicate_number
     owner: TerraformSample
@@ -1696,7 +1696,7 @@ attributes:
     description: Relevant rooting conditions such as field plot size, sowing density,
       container dimensions, number of plants per container.
     title: rooting conditions
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: root_cond
     owner: TerraformSample
@@ -1711,7 +1711,7 @@ attributes:
       {carbon source}, {value}{unit}. Can be multivalued, separated by ;. Preferred
       unit mg/L.
     title: rooting medium carbon
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: root_med_carbon
     owner: TerraformSample
@@ -1725,7 +1725,7 @@ attributes:
     description: Measurement of the culture rooting medium macronutrients (NP K Ca
       Mg S). Can be multivalued separated by ;. e.g. KH2PO4 170 mg/L
     title: rooting medium macronutrients
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: root_med_macronutr
     owner: TerraformSample
@@ -1739,7 +1739,7 @@ attributes:
     description: Measurement of the culture rooting medium micronutrients (Fe Mn Zn
       B Cu Mo). Can be multivalued separated by ;. e.g. H3BO3 6.2 mg/L
     title: rooting medium micronutrients
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: root_med_micronutr
     owner: TerraformSample
@@ -1756,7 +1756,7 @@ attributes:
       each treatment lasted, and the start and end time of the entire treatment; can
       include multiple salt regimens.
     title: salt regimen
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: salt_regm
     owner: TerraformSample
@@ -1776,7 +1776,7 @@ attributes:
       sample was transferred to a new vial and generated a new sample)'''
     todos:
     - EMSL and NMDC both need better modelling for this
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sample_link
     owner: TerraformSample
@@ -1806,7 +1806,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - samp_name
     rank: 1000
@@ -1836,7 +1836,7 @@ attributes:
       or after retrieving the sample from environment or a link to the relevant protocol(s)
       performed.
     title: sample processing
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sample_processing
     owner: TerraformSample
@@ -1862,7 +1862,7 @@ attributes:
       species Y. The target organism is the subject of the relationship and the other
       organism(s) is the object
     title: observed biotic relationship
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - samp_biotic_relationship
     exact_mappings:
@@ -1886,7 +1886,7 @@ attributes:
       This field is NOT multivalued. If selecting other add the `other_samp_store_temp`
       attribute to provide additional detail.
     title: sample storage temperature
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - sample_storage_temperature
     - storage_temperature
@@ -1915,7 +1915,7 @@ attributes:
     description: Reference to the sampling activity during which this sample was collected.
       This is a FK to the SamplingActivity class, which contains metadata about the
       sampling event, such as date, device, method.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sampled_during
     owner: TerraformSample
@@ -1943,7 +1943,7 @@ attributes:
       or to any derived sub-samples. The source material should be listed as a sample
       to inform details about parent material relationship.
     title: source material identifier
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: source_mat_id
     owner: TerraformSample
@@ -1969,7 +1969,7 @@ attributes:
       If selecting other add the `other_storage_condt` attribute to provide additional
       detail.
     title: storage condition
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - samp_store_cond
     - storage_cond
@@ -2002,7 +2002,7 @@ attributes:
     name: storage_condition_other
     description: Free-text field for storage conditions when 'storage_condition' is
       'other'
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - other_storage_condt
     - storage_condt_other
@@ -2031,7 +2031,7 @@ attributes:
     description: Describes how the synthetic environments parts are contained and
       assembled
     title: synthetic environment assembly
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: synth_env_assembly
     owner: TerraformSample
@@ -2044,7 +2044,7 @@ attributes:
     name: synth_env_design
     description: The design of the synthetic environment that was created for experimentation
     title: synthetic environment design
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: synth_env_design
     owner: TerraformSample
@@ -2057,7 +2057,7 @@ attributes:
     name: synth_env_design_method
     description: A citation for how the synthetic environment was designed
     title: synthetic environment design method
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: synth_env_design_method
     owner: TerraformSample
@@ -2071,7 +2071,7 @@ attributes:
     description: Describes the fabrication material used to create the synthetic environment
       and what the structure is made of
     title: synthetic environment material
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: synth_env_material
     owner: TerraformSample
@@ -2084,7 +2084,7 @@ attributes:
     name: synth_env_treatment
     description: Describes any treatments that are built into the synthetic environment
     title: synthetic environment treatment
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: synth_env_treatment
     owner: TerraformSample
@@ -2098,7 +2098,7 @@ attributes:
     description: Provide the date the sample was transferred to the synthetic environment.
       Formatted as YYYY-MM-DD
     title: synthetic environment start date
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: synth_start_date
     owner: TerraformSample
@@ -2112,7 +2112,7 @@ attributes:
     name: technical_reps
     description: Number of technical replicates for the sample.
     title: technical replicates
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: technical_reps
     owner: TerraformSample
@@ -2136,7 +2136,7 @@ attributes:
     name: temp
     description: 'Temperature of the sample at the time of sampling. (Units: C)'
     title: temperature
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: temp
     owner: TerraformSample
@@ -2157,7 +2157,7 @@ attributes:
     name: tiss_cult_growth_med
     description: Description of plant tissue culture growth media used
     title: tissue culture growth media
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: tiss_cult_growth_med
     owner: TerraformSample
@@ -2170,7 +2170,7 @@ attributes:
     name: water_content
     description: Water content measurement. Provide value and unit any unit is valid
     title: water content
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: water_content
     owner: TerraformSample
@@ -2187,7 +2187,7 @@ attributes:
     name: water_content_meth
     description: Reference or method used in determining the water content of soil
     title: water content method
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: water_content_meth
     owner: TerraformSample
@@ -2205,7 +2205,7 @@ attributes:
       each treatment lasted, and the start and end time of the entire treatment; can
       include multiple regimens
     title: watering regimen
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: watering_regm
     owner: TerraformSample
@@ -2224,7 +2224,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: TerraformSample
@@ -2254,7 +2254,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: TerraformSample
@@ -2293,7 +2293,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: emsl_activity
     owner: TerraformSample
@@ -2305,7 +2305,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: lims_barcode
     owner: TerraformSample

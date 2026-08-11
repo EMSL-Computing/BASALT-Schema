@@ -9,7 +9,7 @@ _Measurement of light intensity. Provide value and unit, any unit is valid._
 
 
 
-URI: [basalt_schema:light_intensity](https://w3id.org/MONet/basalt-schema/light_intensity)
+URI: [basalt_schema:light_intensity](https://EMSL-Computing.github.io/basalt-schema/light_intensity)
 Alias: light_intensity
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: light_intensity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -91,7 +91,7 @@ Alias: light_intensity
 name: light_intensity
 description: Measurement of light intensity. Provide value and unit, any unit is valid.
 title: light intensity
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: light_intensity
 domain_of:

@@ -9,7 +9,7 @@ _Latitude coordinate of the sampling site in WSG 84 format._
 
 
 
-URI: [basalt_schema:latitude](https://w3id.org/MONet/basalt-schema/latitude)
+URI: [basalt_schema:latitude](https://EMSL-Computing.github.io/basalt-schema/latitude)
 Alias: latitude
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: latitude
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -94,7 +94,7 @@ Alias: latitude
 name: latitude
 description: Latitude coordinate of the sampling site in WSG 84 format.
 title: latitude
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 broad_mappings:
 - MIXS:0000009
 rank: 1000

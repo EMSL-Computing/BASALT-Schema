@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:contains](https://w3id.org/MONet/basalt-schema/contains)
+URI: [basalt_schema:contains](https://EMSL-Computing.github.io/basalt-schema/contains)
 Alias: contains
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: contains
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: contains
 <details>
 ```yaml
 name: contains
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: contains
 owner: ContainerType

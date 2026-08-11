@@ -9,7 +9,7 @@ _The relative proportion of different grain sizes of mineral particles in a soil
 
 
 
-URI: [basalt_schema:soil_texture](https://w3id.org/MONet/basalt-schema/soil_texture)
+URI: [basalt_schema:soil_texture](https://EMSL-Computing.github.io/basalt-schema/soil_texture)
 Alias: soil_texture
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: soil_texture
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -93,7 +93,7 @@ description: The relative proportion of different grain sizes of mineral particl
   (50 um to 2 mm) silt (2 um to 50 um) and clay (<2 um) with optional textural name
   (e.g. sand:0.20 silt:0.25 clay:0.55 description:silty clay loam).
 title: soil texture
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: soil_texture
 domain_of:

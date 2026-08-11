@@ -19,7 +19,7 @@ Formerly `analysis-api-schema`.
 | **Package** | `basalt_schema` (Python package version follows git tags via uv-dynamic-versioning) |
 | **Docs** | https://EMSL-Computing.github.io/basalt-schema |
 | **Repository** | https://github.com/EMSL-Computing/basalt-schema |
-| **Canonical URI** | https://w3id.org/MONet/basalt-schema |
+| **Canonical URI** | https://EMSL-Computing.github.io/basalt-schema |
 
 ## Repository Structure
 

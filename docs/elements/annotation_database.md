@@ -9,7 +9,7 @@ _Primary annotation database used (e.g., IMG, KEGG)_
 
 
 
-URI: [basalt_schema:annotation_database](https://w3id.org/MONet/basalt-schema/annotation_database)
+URI: [basalt_schema:annotation_database](https://EMSL-Computing.github.io/basalt-schema/annotation_database)
 Alias: annotation_database
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: annotation_database
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -82,7 +82,7 @@ Alias: annotation_database
 ```yaml
 name: annotation_database
 description: Primary annotation database used (e.g., IMG, KEGG)
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: annotation_database
 domain_of:

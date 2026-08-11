@@ -9,7 +9,7 @@ _Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials 
 
 
 
-URI: [basalt_schema:size_frac_low](https://w3id.org/MONet/basalt-schema/size_frac_low)
+URI: [basalt_schema:size_frac_low](https://EMSL-Computing.github.io/basalt-schema/size_frac_low)
 Alias: size_frac_low
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: size_frac_low
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -88,7 +88,7 @@ name: size_frac_low
 description: Refers to the mesh/pore size used to pre-filter/pre-sort the sample.
   Materials larger than the size threshold are excluded from the sample
 title: size fraction lower threshold
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: size_frac_low
 domain_of:

@@ -9,7 +9,7 @@ _Concentration of alkyl diethers. Provide value and unit, any unit is valid_
 
 
 
-URI: [basalt_schema:alkyl_diethers](https://w3id.org/MONet/basalt-schema/alkyl_diethers)
+URI: [basalt_schema:alkyl_diethers](https://EMSL-Computing.github.io/basalt-schema/alkyl_diethers)
 Alias: alkyl_diethers
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: alkyl_diethers
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -93,7 +93,7 @@ name: alkyl_diethers
 description: Concentration of alkyl diethers. Provide value and unit, any unit is
   valid
 title: alkyl diethers
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: alkyl_diethers
 domain_of:

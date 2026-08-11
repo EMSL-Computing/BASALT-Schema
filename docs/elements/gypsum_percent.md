@@ -9,7 +9,7 @@ _Gypsum (CaSO4 2H2O) weight percent_
 
 
 
-URI: [basalt_schema:gypsum_percent](https://w3id.org/MONet/basalt-schema/gypsum_percent)
+URI: [basalt_schema:gypsum_percent](https://EMSL-Computing.github.io/basalt-schema/gypsum_percent)
 Alias: gypsum_percent
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: gypsum_percent
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -89,7 +89,7 @@ Alias: gypsum_percent
 ```yaml
 name: gypsum_percent
 description: Gypsum (CaSO4 2H2O) weight percent
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: gypsum_percent
 owner: XRDPhaseProduct

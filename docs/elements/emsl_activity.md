@@ -13,7 +13,7 @@ _predating activity tracking._
 
 
 
-URI: [basalt_schema:emsl_activity](https://w3id.org/MONet/basalt-schema/emsl_activity)
+URI: [basalt_schema:emsl_activity](https://EMSL-Computing.github.io/basalt-schema/emsl_activity)
 Alias: emsl_activity
 
 <!-- no inheritance hierarchy -->
@@ -105,7 +105,7 @@ Alias: emsl_activity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -133,7 +133,7 @@ description: 'Nullable string linking a Sample or SamplingActivity to a named EM
   predating activity tracking.'
 todos:
 - Is sampling activity where we want to capture this?
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: emsl_activity
 domain_of:

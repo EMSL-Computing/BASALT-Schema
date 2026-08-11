@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:analytic](https://w3id.org/MONet/basalt-schema/analytic)
+URI: [basalt_schema:analytic](https://EMSL-Computing.github.io/basalt-schema/analytic)
 Alias: analytic
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: analytic
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -95,7 +95,7 @@ Alias: analytic
 name: analytic
 todos:
 - what does this mean
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: analytic
 domain_of:

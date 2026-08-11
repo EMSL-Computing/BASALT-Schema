@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:GenotypeSegmentEnum](https://w3id.org/MONet/basalt-schema/GenotypeSegmentEnum)
+URI: [basalt_schema:GenotypeSegmentEnum](https://EMSL-Computing.github.io/basalt-schema/GenotypeSegmentEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -46,7 +46,7 @@ URI: [basalt_schema:GenotypeSegmentEnum](https://w3id.org/MONet/basalt-schema/Ge
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -58,7 +58,7 @@ URI: [basalt_schema:GenotypeSegmentEnum](https://w3id.org/MONet/basalt-schema/Ge
 <details>
 ```yaml
 name: GenotypeSegmentEnum
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   Empty Transformation Vector:

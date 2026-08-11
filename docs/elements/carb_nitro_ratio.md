@@ -9,7 +9,7 @@ _Ratio of amount or concentrations of carbon to nitrogen._
 
 
 
-URI: [basalt_schema:carb_nitro_ratio](https://w3id.org/MONet/basalt-schema/carb_nitro_ratio)
+URI: [basalt_schema:carb_nitro_ratio](https://EMSL-Computing.github.io/basalt-schema/carb_nitro_ratio)
 Alias: carb_nitro_ratio
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: carb_nitro_ratio
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ Alias: carb_nitro_ratio
 name: carb_nitro_ratio
 description: Ratio of amount or concentrations of carbon to nitrogen.
 title: carbon nitrogen ratio
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: carb_nitro_ratio
 domain_of:

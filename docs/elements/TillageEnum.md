@@ -7,7 +7,7 @@ _Tillage methods_
 
 
 
-URI: [basalt_schema:TillageEnum](https://w3id.org/MONet/basalt-schema/TillageEnum)
+URI: [basalt_schema:TillageEnum](https://EMSL-Computing.github.io/basalt-schema/TillageEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -49,7 +49,7 @@ URI: [basalt_schema:TillageEnum](https://w3id.org/MONet/basalt-schema/TillageEnu
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -62,7 +62,7 @@ URI: [basalt_schema:TillageEnum](https://w3id.org/MONet/basalt-schema/TillageEnu
 ```yaml
 name: TillageEnum
 description: Tillage methods
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   chisel:

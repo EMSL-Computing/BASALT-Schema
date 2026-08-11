@@ -9,7 +9,7 @@ _Gene family or marker used for the phylogeny (e.g., 16S, ITS)_
 
 
 
-URI: [basalt_schema:gene_family](https://w3id.org/MONet/basalt-schema/gene_family)
+URI: [basalt_schema:gene_family](https://EMSL-Computing.github.io/basalt-schema/gene_family)
 Alias: gene_family
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: gene_family
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -82,7 +82,7 @@ Alias: gene_family
 ```yaml
 name: gene_family
 description: Gene family or marker used for the phylogeny (e.g., 16S, ITS)
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: gene_family
 domain_of:

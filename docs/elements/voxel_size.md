@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:voxel_size](https://w3id.org/MONet/basalt-schema/voxel_size)
+URI: [basalt_schema:voxel_size](https://EMSL-Computing.github.io/basalt-schema/voxel_size)
 Alias: voxel_size
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: voxel_size
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: voxel_size
 <details>
 ```yaml
 name: voxel_size
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: voxel_size
 owner: TomographyProduct

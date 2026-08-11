@@ -9,7 +9,7 @@ _Total amount of sample sent to EMSL. Must include units._
 
 
 
-URI: [basalt_schema:shipped_sample_size](https://w3id.org/MONet/basalt-schema/shipped_sample_size)
+URI: [basalt_schema:shipped_sample_size](https://EMSL-Computing.github.io/basalt-schema/shipped_sample_size)
 Alias: shipped_sample_size
 
 <!-- no inheritance hierarchy -->
@@ -85,7 +85,7 @@ Alias: shipped_sample_size
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -107,7 +107,7 @@ Alias: shipped_sample_size
 name: shipped_sample_size
 description: Total amount of sample sent to EMSL. Must include units.
 title: shipped sample size
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: shipped_sample_size
 domain_of:

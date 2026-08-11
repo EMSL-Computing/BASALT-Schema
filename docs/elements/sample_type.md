@@ -9,7 +9,7 @@ _Requires a standardized ontology term to describe what your sample is. Please s
 
 
 
-URI: [basalt_schema:sample_type](https://w3id.org/MONet/basalt-schema/sample_type)
+URI: [basalt_schema:sample_type](https://EMSL-Computing.github.io/basalt-schema/sample_type)
 Alias: sample_type
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: sample_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -91,7 +91,7 @@ name: sample_type
 description: 'Requires a standardized ontology term to describe what your sample is.
   Please search for your sample type via Ontology Lookup Sevice at https://www.ebi.ac.uk/ols4/ '
 title: sample type
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sample_type
 domain_of:

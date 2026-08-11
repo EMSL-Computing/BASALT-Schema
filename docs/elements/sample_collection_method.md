@@ -9,7 +9,7 @@ _The method used to collect an environmental sample. This can be a citation or d
 
 
 
-URI: [basalt_schema:sample_collection_method](https://w3id.org/MONet/basalt-schema/sample_collection_method)
+URI: [basalt_schema:sample_collection_method](https://EMSL-Computing.github.io/basalt-schema/sample_collection_method)
 Alias: sample_collection_method
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: sample_collection_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -93,7 +93,7 @@ name: sample_collection_method
 description: The method used to collect an environmental sample. This can be a citation
   or description.
 title: sample collection method
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sample_collection_method
 domain_of:

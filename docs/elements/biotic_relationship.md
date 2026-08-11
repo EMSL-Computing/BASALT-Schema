@@ -9,7 +9,7 @@ _Description of relationship(s) between the subject organism and other organism(
 
 
 
-URI: [basalt_schema:biotic_relationship](https://w3id.org/MONet/basalt-schema/biotic_relationship)
+URI: [basalt_schema:biotic_relationship](https://EMSL-Computing.github.io/basalt-schema/biotic_relationship)
 Alias: biotic_relationship
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: biotic_relationship
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -99,7 +99,7 @@ description: Description of relationship(s) between the subject organism and oth
   Y. The target organism is the subject of the relationship and the other organism(s)
   is the object
 title: observed biotic relationship
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - samp_biotic_relationship
 exact_mappings:

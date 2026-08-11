@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:ChromatographyCategoryEnum](https://w3id.org/MONet/basalt-schema/ChromatographyCategoryEnum)
+URI: [basalt_schema:ChromatographyCategoryEnum](https://EMSL-Computing.github.io/basalt-schema/ChromatographyCategoryEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -38,7 +38,7 @@ URI: [basalt_schema:ChromatographyCategoryEnum](https://w3id.org/MONet/basalt-sc
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -50,7 +50,7 @@ URI: [basalt_schema:ChromatographyCategoryEnum](https://w3id.org/MONet/basalt-sc
 <details>
 ```yaml
 name: ChromatographyCategoryEnum
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   liquid_chromatography:

@@ -9,7 +9,7 @@ _LIMS barcode identifier_
 
 
 
-URI: [basalt_schema:lims_barcode](https://w3id.org/MONet/basalt-schema/lims_barcode)
+URI: [basalt_schema:lims_barcode](https://EMSL-Computing.github.io/basalt-schema/lims_barcode)
 Alias: lims_barcode
 
 <!-- no inheritance hierarchy -->
@@ -105,7 +105,7 @@ Alias: lims_barcode
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -126,7 +126,7 @@ Alias: lims_barcode
 ```yaml
 name: lims_barcode
 description: LIMS barcode identifier
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: lims_barcode
 domain_of:

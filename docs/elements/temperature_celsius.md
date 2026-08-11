@@ -9,7 +9,7 @@ _Temperature at which the method/process/activity was performed_
 
 
 
-URI: [basalt_schema:temperature_celsius](https://w3id.org/MONet/basalt-schema/temperature_celsius)
+URI: [basalt_schema:temperature_celsius](https://EMSL-Computing.github.io/basalt-schema/temperature_celsius)
 Alias: temperature_celsius
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: temperature_celsius
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -91,7 +91,7 @@ Alias: temperature_celsius
 ```yaml
 name: temperature_celsius
 description: Temperature at which the method/process/activity was performed
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: temperature_celsius
 domain_of:

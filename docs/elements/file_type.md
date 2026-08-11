@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:file_type](https://w3id.org/MONet/basalt-schema/file_type)
+URI: [basalt_schema:file_type](https://EMSL-Computing.github.io/basalt-schema/file_type)
 Alias: file_type
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: file_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ Alias: file_type
 <details>
 ```yaml
 name: file_type
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: file_type
 owner: InstrumentData

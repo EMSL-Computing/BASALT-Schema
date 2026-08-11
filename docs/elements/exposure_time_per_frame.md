@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:exposure_time_per_frame](https://w3id.org/MONet/basalt-schema/exposure_time_per_frame)
+URI: [basalt_schema:exposure_time_per_frame](https://EMSL-Computing.github.io/basalt-schema/exposure_time_per_frame)
 Alias: exposure_time_per_frame
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: exposure_time_per_frame
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: exposure_time_per_frame
 <details>
 ```yaml
 name: exposure_time_per_frame
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: exposure_time_per_frame
 owner: XrayComputedTomographyMethod

@@ -9,7 +9,7 @@ _Information about treatment involving the exposure of plant to non-mineral nutr
 
 
 
-URI: [basalt_schema:non_min_nutr_regm](https://w3id.org/MONet/basalt-schema/non_min_nutr_regm)
+URI: [basalt_schema:non_min_nutr_regm](https://EMSL-Computing.github.io/basalt-schema/non_min_nutr_regm)
 Alias: non_min_nutr_regm
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: non_min_nutr_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -90,7 +90,7 @@ description: Information about treatment involving the exposure of plant to non-
   was repeated, how long each treatment lasted, and the start and end time of the
   entire treatment; can include multiple non-mineral nutrient regimens
 title: non mineral nutrient regimen
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: non_min_nutr_regm
 domain_of:

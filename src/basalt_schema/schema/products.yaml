@@ -1,4 +1,4 @@
-id: https://w3id.org/MONet/basalt-schema/products
+id: https://EMSL-Computing.github.io/basalt-schema/products
 name: basalt-schema-products
 title: BASALT Schema - Products
 description: |-
@@ -6,7 +6,7 @@ description: |-
 license: MIT
 
 prefixes:
-  basalt_schema: https://w3id.org/MONet/basalt-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
   schema: http://schema.org/
 default_prefix: basalt_schema

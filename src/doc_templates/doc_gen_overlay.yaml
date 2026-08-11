@@ -16,7 +16,7 @@
 # Serve docs with: just serve-doc
 # =============================================================================
 
-id: https://w3id.org/MONet/basalt-schema/doc-overlay
+id: https://EMSL-Computing.github.io/basalt-schema/doc-overlay
 name: basalt-schema-doc-overlay
 title: BASALT Schema (Doc-Gen Overlay)
 description: |-
@@ -25,7 +25,7 @@ description: |-
 license: MIT
 
 prefixes:
-  basalt_schema: https://w3id.org/MONet/basalt-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
   xsd: http://www.w3.org/2001/XMLSchema#
 

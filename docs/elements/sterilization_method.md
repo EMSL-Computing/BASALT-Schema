@@ -9,7 +9,7 @@ _Method used to sterilize the entity (autoclave, filter, UV, etc.)_
 
 
 
-URI: [basalt_schema:sterilization_method](https://w3id.org/MONet/basalt-schema/sterilization_method)
+URI: [basalt_schema:sterilization_method](https://EMSL-Computing.github.io/basalt-schema/sterilization_method)
 Alias: sterilization_method
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: sterilization_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -82,7 +82,7 @@ Alias: sterilization_method
 ```yaml
 name: sterilization_method
 description: Method used to sterilize the entity (autoclave, filter, UV, etc.)
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sterilization_method
 domain_of:

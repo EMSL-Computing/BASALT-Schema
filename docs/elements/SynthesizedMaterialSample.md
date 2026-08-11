@@ -9,7 +9,7 @@ _A sample containing synthetically generated material._
 
 
 
-URI: [basalt_schema:SynthesizedMaterialSample](https://w3id.org/MONet/basalt-schema/SynthesizedMaterialSample)
+URI: [basalt_schema:SynthesizedMaterialSample](https://EMSL-Computing.github.io/basalt-schema/SynthesizedMaterialSample)
 
 
 
@@ -200,7 +200,7 @@ URI: [basalt_schema:SynthesizedMaterialSample](https://w3id.org/MONet/basalt-sch
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -227,7 +227,7 @@ URI: [basalt_schema:SynthesizedMaterialSample](https://w3id.org/MONet/basalt-sch
 ```yaml
 name: SynthesizedMaterialSample
 description: A sample containing synthetically generated material.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Sample
 slots:
 - analysis_type
@@ -272,7 +272,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -358,7 +358,7 @@ attributes:
 ```yaml
 name: SynthesizedMaterialSample
 description: A sample containing synthetically generated material.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Sample
 slot_usage:
   analysis_type:
@@ -373,7 +373,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     alias: id
     owner: SynthesizedMaterialSample
@@ -454,7 +454,7 @@ attributes:
   analysis_type:
     name: analysis_type
     description: The type(s) of analysis planned for this sample.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: analysis_type
     owner: SynthesizedMaterialSample
@@ -483,7 +483,7 @@ attributes:
       (CAS), a division of the American Chemical Society, to chemical compounds, polymers,
       biological sequences, mixtures, and alloys.
     title: CAS number
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - CAS
     rank: 1000
@@ -499,7 +499,7 @@ attributes:
     description: The name of the purchased material. A substance formed by chemical
       union of two or more elements or ingredients in definite proportion by weight.
     title: compound name
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: compound_name
     owner: SynthesizedMaterialSample
@@ -517,7 +517,7 @@ attributes:
       a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO;
       for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI
     title: experimental factor
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: experimental_factor
     owner: SynthesizedMaterialSample
@@ -540,7 +540,7 @@ attributes:
     description: Other details about your sample that you feel can't be accurately
       represented in the available columns.
     title: other experimental factor
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: experimental_factor_other
     owner: SynthesizedMaterialSample
@@ -561,7 +561,7 @@ attributes:
   external_identifiers:
     name: external_identifiers
     description: List of external identifiers associated with this entity or activity.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: external_identifiers
     owner: SynthesizedMaterialSample
@@ -593,7 +593,7 @@ attributes:
       e.g. specification of a transgene or the gene knocked-out or details of transient
       transfection
     title: genetic modifications
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: genetic_mod
     owner: SynthesizedMaterialSample
@@ -611,7 +611,7 @@ attributes:
     name: item_number
     description: The item number of the purchased material
     title: item number
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: item_number
     owner: SynthesizedMaterialSample
@@ -625,7 +625,7 @@ attributes:
     description: Other/additional details about your sample that you feel can't be
       accurately represented in ANY of the available columns.
     title: other
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: other
     owner: SynthesizedMaterialSample
@@ -650,7 +650,7 @@ attributes:
     name: other_samp_store_temp
     description: Please specify sample storage temperature if you selected 'other'
     title: other sample storage temperature
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: other_samp_store_temp
     owner: SynthesizedMaterialSample
@@ -676,7 +676,7 @@ attributes:
     description: Please specify your storage conditions if you selected 'other' and
       the available values are not appropriate
     title: other storage condition
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: other_storage_condt
     owner: SynthesizedMaterialSample
@@ -699,7 +699,7 @@ attributes:
     name: oxygen_relationship
     description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
     title: oxygen relationship
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     exact_mappings:
     - MIXS:0000015
     rank: 1000
@@ -723,7 +723,7 @@ attributes:
     name: product_name
     description: Provide the name of the product used to create the synthetic material.
     title: product name
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: product_name
     owner: SynthesizedMaterialSample
@@ -735,7 +735,7 @@ attributes:
     description: A DOI or description of how the compound was produced, if the commercially
       purchased material was altered
     title: production method
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: production_method
     owner: SynthesizedMaterialSample
@@ -751,7 +751,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - study
     - study_id
@@ -786,7 +786,7 @@ attributes:
       with submission schema.
     todos:
     - reconcile replicate modelling
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: replicate_number
     owner: SynthesizedMaterialSample
@@ -816,7 +816,7 @@ attributes:
       sample was transferred to a new vial and generated a new sample)'''
     todos:
     - EMSL and NMDC both need better modelling for this
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sample_link
     owner: SynthesizedMaterialSample
@@ -846,7 +846,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - samp_name
     rank: 1000
@@ -876,7 +876,7 @@ attributes:
       or after retrieving the sample from environment or a link to the relevant protocol(s)
       performed.
     title: sample processing
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sample_processing
     owner: SynthesizedMaterialSample
@@ -901,7 +901,7 @@ attributes:
       This field is NOT multivalued. If selecting other add the `other_samp_store_temp`
       attribute to provide additional detail.
     title: sample storage temperature
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - sample_storage_temperature
     - storage_temperature
@@ -930,7 +930,7 @@ attributes:
     description: Reference to the sampling activity during which this sample was collected.
       This is a FK to the SamplingActivity class, which contains metadata about the
       sampling event, such as date, device, method.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sampled_during
     owner: SynthesizedMaterialSample
@@ -958,7 +958,7 @@ attributes:
       or to any derived sub-samples. The source material should be listed as a sample
       to inform details about parent material relationship.
     title: source material identifier
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: source_mat_id
     owner: SynthesizedMaterialSample
@@ -984,7 +984,7 @@ attributes:
       If selecting other add the `other_storage_condt` attribute to provide additional
       detail.
     title: storage condition
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - samp_store_cond
     - storage_cond
@@ -1017,7 +1017,7 @@ attributes:
     name: storage_condition_other
     description: Free-text field for storage conditions when 'storage_condition' is
       'other'
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - other_storage_condt
     - storage_condt_other
@@ -1045,7 +1045,7 @@ attributes:
     name: synth_instrument
     description: The instrumentation used to synthesize the material sample.
     title: synthesizing instrument
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: synth_instrument
     owner: SynthesizedMaterialSample
@@ -1058,7 +1058,7 @@ attributes:
     name: synth_process
     description: Provide the citation or describe the method of synthesis.
     title: synthesis process
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: synth_process
     owner: SynthesizedMaterialSample
@@ -1070,7 +1070,7 @@ attributes:
     name: synth_reagents
     description: The reagents used in the material synthesis
     title: synthesis reagents
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: synth_reagents
     owner: SynthesizedMaterialSample
@@ -1083,7 +1083,7 @@ attributes:
     name: technical_reps
     description: Number of technical replicates for the sample.
     title: technical replicates
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: technical_reps
     owner: SynthesizedMaterialSample
@@ -1107,7 +1107,7 @@ attributes:
     name: temp
     description: 'Temperature of the sample at the time of sampling. (Units: C)'
     title: temperature
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: temp
     owner: SynthesizedMaterialSample
@@ -1127,7 +1127,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: SynthesizedMaterialSample
@@ -1157,7 +1157,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: SynthesizedMaterialSample
@@ -1196,7 +1196,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: emsl_activity
     owner: SynthesizedMaterialSample
@@ -1208,7 +1208,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: lims_barcode
     owner: SynthesizedMaterialSample

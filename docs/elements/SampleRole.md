@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:SampleRole](https://w3id.org/MONet/basalt-schema/SampleRole)
+URI: [basalt_schema:SampleRole](https://EMSL-Computing.github.io/basalt-schema/SampleRole)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -37,7 +37,7 @@ URI: [basalt_schema:SampleRole](https://w3id.org/MONet/basalt-schema/SampleRole)
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -49,7 +49,7 @@ URI: [basalt_schema:SampleRole](https://w3id.org/MONet/basalt-schema/SampleRole)
 <details>
 ```yaml
 name: SampleRole
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   input_sample:

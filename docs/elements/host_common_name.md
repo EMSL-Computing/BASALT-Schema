@@ -11,7 +11,7 @@ _For microbes, this may be identical to organism_name._
 
 
 
-URI: [basalt_schema:host_common_name](https://w3id.org/MONet/basalt-schema/host_common_name)
+URI: [basalt_schema:host_common_name](https://EMSL-Computing.github.io/basalt-schema/host_common_name)
 Alias: host_common_name
 
 <!-- no inheritance hierarchy -->
@@ -74,7 +74,7 @@ Alias: host_common_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -98,7 +98,7 @@ description: 'Common name for the host organism (e.g., "Pseudomonas putida").
 
   For microbes, this may be identical to organism_name.'
 title: host common name
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - common_name
 rank: 1000

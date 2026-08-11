@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:total_nitrogen_avg](https://w3id.org/MONet/basalt-schema/total_nitrogen_avg)
+URI: [basalt_schema:total_nitrogen_avg](https://EMSL-Computing.github.io/basalt-schema/total_nitrogen_avg)
 Alias: total_nitrogen_avg
 
 <!-- no inheritance hierarchy -->

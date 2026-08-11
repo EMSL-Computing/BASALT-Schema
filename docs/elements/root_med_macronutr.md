@@ -9,7 +9,7 @@ _Measurement of the culture rooting medium macronutrients (NP K Ca Mg S). Can be
 
 
 
-URI: [basalt_schema:root_med_macronutr](https://w3id.org/MONet/basalt-schema/root_med_macronutr)
+URI: [basalt_schema:root_med_macronutr](https://EMSL-Computing.github.io/basalt-schema/root_med_macronutr)
 Alias: root_med_macronutr
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: root_med_macronutr
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -86,7 +86,7 @@ name: root_med_macronutr
 description: Measurement of the culture rooting medium macronutrients (NP K Ca Mg
   S). Can be multivalued separated by ;. e.g. KH2PO4 170 mg/L
 title: rooting medium macronutrients
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: root_med_macronutr
 domain_of:

@@ -9,7 +9,7 @@ _Human-readable description for the entity or activity_
 
 
 
-URI: [basalt_schema:description](https://w3id.org/MONet/basalt-schema/description)
+URI: [basalt_schema:description](https://EMSL-Computing.github.io/basalt-schema/description)
 Alias: description
 
 <!-- no inheritance hierarchy -->
@@ -159,7 +159,7 @@ Alias: description
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -181,7 +181,7 @@ Alias: description
 name: description
 description: Human-readable description for the entity or activity
 title: description
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: description
 domain_of:

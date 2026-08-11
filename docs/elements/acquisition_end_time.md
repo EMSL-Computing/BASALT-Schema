@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:acquisition_end_time](https://w3id.org/MONet/basalt-schema/acquisition_end_time)
+URI: [basalt_schema:acquisition_end_time](https://EMSL-Computing.github.io/basalt-schema/acquisition_end_time)
 Alias: acquisition_end_time
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: acquisition_end_time
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -93,7 +93,7 @@ Alias: acquisition_end_time
 <details>
 ```yaml
 name: acquisition_end_time
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: acquisition_end_time
 owner: DataGenerationActivity

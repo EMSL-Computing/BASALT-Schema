@@ -74,7 +74,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'basalt_schema',
                     'samples, site metadata,\n'
                     'and enrichment providers used by BASALT.',
      'emit_prefixes': ['CHEBI', 'OBI', 'PO', 'BTO', 'MS', 'EC', 'ror'],
-     'id': 'https://w3id.org/MONet/basalt-schema',
+     'id': 'https://EMSL-Computing.github.io/basalt-schema',
      'imports': ['linkml:types',
                  'administration',
                  'enums',
@@ -92,20 +92,20 @@ linkml_meta = LinkMLMeta({'default_prefix': 'basalt_schema',
      'license': 'MIT',
      'name': 'basalt-schema',
      'prefixes': {'basalt_schema': {'prefix_prefix': 'basalt_schema',
-                                    'prefix_reference': 'https://w3id.org/MONet/basalt-schema/'},
+                                    'prefix_reference': 'https://EMSL-Computing.github.io/basalt-schema/'},
                   'linkml': {'prefix_prefix': 'linkml',
                              'prefix_reference': 'https://w3id.org/linkml/'},
                   'xsd': {'prefix_prefix': 'xsd',
                           'prefix_reference': 'http://www.w3.org/2001/XMLSchema#'}},
-     'see_also': ['https://MONet.github.io/basalt-schema',
-                  'https://github.com/mkapur-pnnl/basalt-schema'],
+     'see_also': ['https://EMSL-Computing.github.io/basalt-schema',
+                  'https://github.com/EMSL-Computing/basalt-schema'],
      'source_file': 'src/basalt_schema/schema/basalt_schema.yaml',
      'title': 'BASALT Schema',
-     'types': {'timestamp_tz': {'from_schema': 'https://w3id.org/MONet/basalt-schema',
+     'types': {'timestamp_tz': {'from_schema': 'https://EMSL-Computing.github.io/basalt-schema',
                                 'name': 'timestamp_tz',
                                 'typeof': 'datetime',
                                 'uri': 'xsd:dateTime'},
-               'uuid': {'from_schema': 'https://w3id.org/MONet/basalt-schema',
+               'uuid': {'from_schema': 'https://EMSL-Computing.github.io/basalt-schema',
                         'name': 'uuid',
                         'pattern': '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$',
                         'typeof': 'string',
@@ -1839,7 +1839,7 @@ class YesNoEnum(str, Enum):
 
 
 class Changelog(ConfiguredBaseModel):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/administration'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/administration'})
 
     version: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Changelog', 'SoftwareControlledTermValue']} })
     changelog: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Changelog']} })
@@ -1849,7 +1849,7 @@ class Configuration(ConfiguredBaseModel):
     """
     Record of configuration and/or settings for an activity.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/mass-spec'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/mass-spec'})
 
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -1970,7 +1970,7 @@ class MassSpectrometryConfiguration(Configuration):
     """
     Instrument configuration and setup for a mass spectrometry run.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/mass-spec'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/mass-spec'})
 
     injection: str = Field(default=..., description="""Type of injection used in the mass spectrometry method""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryConfiguration']} })
     ionization: IonizationSourceEnum = Field(default=..., description="""Type of ionization used in the mass spectrometry method""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryConfiguration']} })
@@ -2105,7 +2105,7 @@ class ChromatographyConfiguration(Configuration):
     """
     Configuration and settings for a chromatography run.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/mass-spec'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/mass-spec'})
 
     column: Optional[str] = Field(default=None, description="""The name or identifier of the chromatography column used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChromatographyConfiguration', 'TOC_TN_Method']} })
     column_dimensions: Optional[str] = Field(default=None, description="""Dimensions of the chromatography column used in the process.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChromatographyConfiguration']} })
@@ -2237,7 +2237,7 @@ class MobilePhaseSegment(ConfiguredBaseModel):
     """
     A segment of the mobile phase used in chromatography during mass spectrometry.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/mass-spec',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/mass-spec',
          'todos': ['inheritance? substances_used modelling']})
 
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
@@ -2339,7 +2339,7 @@ class MassSpectrometryStandardRun(ConfiguredBaseModel):
     """
     A record of a mass spectrometry standard run with a batch of samples, which is used for calibration and quality control.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/mass-spec'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/mass-spec'})
 
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -2467,7 +2467,7 @@ class HasIncubationConditions(ConfiguredBaseModel):
     temperature and agitation parameters but live in different branches
     of the sampleProcessing is_a tree.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate',
          'mixin': True})
 
     temperature_celsius: Optional[float] = Field(default=None, description="""Temperature at which the method/process/activity was performed""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChromatographyConfiguration', 'HasIncubationConditions']} })
@@ -2494,7 +2494,7 @@ class PurchasedMaterial(ConfiguredBaseModel):
     Activities reference Strain via the strain_ref FK slot.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate'})
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate'})
 
     purchased_material_type: str = Field(default=..., description="""Discriminator for purchasedMaterial subtype (e.g. 'media', 'strain')""", json_schema_extra = { "linkml_meta": {'domain_of': ['PurchasedMaterial']} })
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
@@ -2626,7 +2626,7 @@ class LabProcessingActivity(ConfiguredBaseModel):
     and its existing id attribute can be retained or removed (inherited).
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate'})
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate'})
 
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -2753,7 +2753,7 @@ class PlateProduct(ConfiguredBaseModel):
                instead of v1's is_a: dataProduct.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate',
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate',
          'todos': ['add plate_range (12 well, 96 well, etc.)?']})
 
     wavelength_nm: int = Field(default=..., description="""Measurement wavelength in nanometres (e.g. 590 Ecoplate, 610 AMP2 OD)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2DataGenerationActivity',
@@ -2781,7 +2781,7 @@ class AMP2ODProduct(PlateProduct):
 
     v1 origin: plate-general.yaml AMP2ODProduct
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate'})
 
     plate_reader_model: Optional[str] = Field(default=None, description="""Instrument model used for reading (e.g. \"BioTek Epoch2\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2ODProduct'],
          'todos': ['harmonize with existing Instrument modelling']} })
@@ -2810,7 +2810,7 @@ class EcoplateAbsorbanceProduct(PlateProduct):
 
     v1 origin: plate-general.yaml EcoplateAbsorbanceProduct
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate'})
 
     plate_lot: Optional[str] = Field(default=None, description="""Manufacturer lot number for Biolog EcoPlate QC""", json_schema_extra = { "linkml_meta": {'domain_of': ['EcoplateAbsorbanceProduct']} })
     uninoculated_mean: Optional[float] = Field(default=None, description="""Mean measurement of uninoculated control wells (baseline for Ecoplate)""", json_schema_extra = { "linkml_meta": {'domain_of': ['EcoplateAbsorbanceProduct'], 'todos': ['units']} })
@@ -2839,7 +2839,7 @@ class WellMetadata(ConfiguredBaseModel):
     PlateSetupActivity.well_metadata.
     Subclasses add type-specific fields.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate'})
 
     position: str = Field(default=..., description="""Well position (e.g. \"A01\", \"H12\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading']} })
     well_type: Optional[str] = Field(default=None, description="""Role of this well   \"sample\", \"blank\", \"uninoculated_control\", \"standard\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata']} })
@@ -2852,7 +2852,7 @@ class AMP2WellMetadata(WellMetadata):
     Minimal   media composition comes from the Media entity referenced via
     the activity's media_ref slot.  Per-well data is volumes and replicate info.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate'})
 
     media_ref: Optional[str] = Field(default=None, description="""FK to the prepared media processedSample used in this well.
 NULL -> fall back to plate-level AMP2PlateSetupActivity.media_ref.
@@ -2876,7 +2876,7 @@ class EcoplateWellMetadata(WellMetadata):
 
     v1 origin: plate-general.yaml EcoplateWellMetadata
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate'})
 
     media_volume_ul: float = Field(default=..., description="""Volume of inoculum suspension added (microlitres)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata', 'EcoplateWellMetadata']} })
     carbon_source: str = Field(default=..., description="""Carbon source in this well (e.g. \"L-malic acid\", \"glucose\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['EcoplateWellMetadata']} })
@@ -2892,7 +2892,7 @@ class WellReading(ConfiguredBaseModel):
     Per-well measurement data. NOT a standalone database table; embedded structured entries under
     PlateProduct.well_readings.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate',
          'todos': ['add optical_density_method here to flag what value means if we '
                    'have multiple OD methods (e.g. OD600 vs OD750)',
                    'units for value slot']})
@@ -2912,25 +2912,25 @@ class WellReading(ConfiguredBaseModel):
 
 class Method(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/MONet/basalt-schema/methods'})
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/methods'})
 
     analytic: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Method'], 'todos': ['what does this mean']} })
 
 
 class BulkDensityMethod(Method):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/methods'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/methods'})
 
     analytic: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Method'], 'todos': ['what does this mean']} })
 
 
 class ElementalAnalysisMethod(Method):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/methods'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/methods'})
 
     analytic: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Method'], 'todos': ['what does this mean']} })
 
 
 class EnzymeActivityMethod(Method):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/methods'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/methods'})
 
     location: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeActivityMethod',
                        'GravimetricWaterContentMethod',
@@ -2951,7 +2951,7 @@ class EnzymeActivityMethod(Method):
 
 
 class GravimetricWaterContentMethod(Method):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/methods'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/methods'})
 
     location: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeActivityMethod',
                        'GravimetricWaterContentMethod',
@@ -2969,7 +2969,7 @@ class GravimetricWaterContentMethod(Method):
 
 
 class HydraulicPropertiesMethod(Method):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/methods'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/methods'})
 
     location: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeActivityMethod',
                        'GravimetricWaterContentMethod',
@@ -2988,7 +2988,7 @@ class HydraulicPropertiesMethod(Method):
 
 
 class KuoMethod(Method):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/methods'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/methods'})
 
     location: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeActivityMethod',
                        'GravimetricWaterContentMethod',
@@ -3009,7 +3009,7 @@ class KuoMethod(Method):
 
 
 class MicrobialBiomassMethod(Method):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/methods'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/methods'})
 
     location: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeActivityMethod',
                        'GravimetricWaterContentMethod',
@@ -3033,7 +3033,7 @@ class MicrobialBiomassMethod(Method):
 
 
 class PHMethod(Method):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/methods'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/methods'})
 
     location: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeActivityMethod',
                        'GravimetricWaterContentMethod',
@@ -3052,13 +3052,13 @@ class PHMethod(Method):
 
 
 class RespirationMethod(Method):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/methods'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/methods'})
 
     analytic: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Method'], 'todos': ['what does this mean']} })
 
 
 class TOCTNMethod(Method):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/methods'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/methods'})
 
     location: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeActivityMethod',
                        'GravimetricWaterContentMethod',
@@ -3083,7 +3083,7 @@ class TOCTNMethod(Method):
 
 
 class TextureMethod(Method):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/methods'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/methods'})
 
     location: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeActivityMethod',
                        'GravimetricWaterContentMethod',
@@ -3102,7 +3102,7 @@ class TextureMethod(Method):
 
 
 class XrayComputedTomographyMethod(Method):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/methods'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/methods'})
 
     location: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeActivityMethod',
                        'GravimetricWaterContentMethod',
@@ -3144,7 +3144,7 @@ class Organism(ConfiguredBaseModel):
       - AMP2UserSample.organism_ref points here
       - CultureGrowth activities reference via organism_ref (aliased as strain_ref)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/organism',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/organism',
          'slot_usage': {'modification_method': {'description': 'Method used to '
                                                                'introduce genetic '
                                                                'modification.\n'
@@ -3418,7 +3418,7 @@ class Activity(ConfiguredBaseModel):
     """
     Something that happens over time and can use equipment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://w3id.org/MONet/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -3543,7 +3543,7 @@ class Entity(ConfiguredBaseModel):
     """
     Base identifiable thing.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://w3id.org/MONet/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -3667,7 +3667,7 @@ class DataProduct(ConfiguredBaseModel):
     processedData and future sitePhoto extend this via is_a.
     No direct database table, subclasses map to tables.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://w3id.org/MONet/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -3841,7 +3841,7 @@ class ProcessedData(DataProduct):
     A data product generated by a workflow execution.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/MONet/basalt-schema',
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema',
          'todos': ['all subclasses need a more specific upstream slot to replace '
                    'was_generated_by']})
 
@@ -4026,7 +4026,7 @@ class MassSpectrometryDataProduct(ProcessedData):
     Inherits S3/file slots from dataProduct (via processedData is_a chain).
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/MONet/basalt-schema/mass-spec'})
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/mass-spec'})
 
     results_from_ms_processing: Optional[str] = Field(default=None, description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
@@ -4208,7 +4208,7 @@ class MSImageProduct(MassSpectrometryDataProduct):
     """
     one or more image(s) output from a mass spec data processing workflow (eg. LESA, CoreMS QC plots). Should be a zip file containing all similar image outputs from one data processing workflow.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/mass-spec'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/mass-spec'})
 
     results_from_ms_processing: Optional[str] = Field(default=None, description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
@@ -4390,7 +4390,7 @@ class MolecularIdentificationProduct(MassSpectrometryDataProduct):
     """
     a file containing molecular formula identifications that was output from a mass spec data processing workflow (eg. .csv of m/z and molecular formulae, .hdf5 file).
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/mass-spec'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/mass-spec'})
 
     results_from_ms_processing: Optional[str] = Field(default=None, description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
@@ -4573,7 +4573,7 @@ class MetaproteomicsProduct(MassSpectrometryDataProduct):
     Abstract parent class for processed metaproteomics data. Details and subclasses TBD.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/MONet/basalt-schema/mass-spec'})
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/mass-spec'})
 
     results_from_ms_processing: Optional[str] = Field(default=None, description="""a reference to the mass spec data processing activity that produced this data product""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
@@ -4759,7 +4759,7 @@ class MetagenomicsProduct(ProcessedData):
     and add only their type-specific slots.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/MONet/basalt-schema/metagenomics'})
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/metagenomics'})
 
     mg_workflow_step: Optional[MetagenomicsSteps] = Field(default=None, description="""Metagenomics workflow step that produced this product (e.g., MagsAnalysis)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     sample_id: Optional[str] = Field(default=None, description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata', 'MetagenomicsProduct', 'ProcessedData']} })
@@ -4945,7 +4945,7 @@ class MetagenomicsAnnotationProduct(MetagenomicsProduct):
     Top-level archive for functional annotation outputs (zip/tar stored in MinIO).
     Inherits all MetagenomicsProduct and dataProduct slots.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/metagenomics'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/metagenomics'})
 
     annotation_database: Optional[AnnotationDatabaseEnum] = Field(default=None, description="""Primary annotation database used (e.g., IMG, KEGG)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Metagenomics_AnnotationProduct']} })
     mg_workflow_step: Optional[MetagenomicsSteps] = Field(default=None, description="""Metagenomics workflow step that produced this product (e.g., MagsAnalysis)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
@@ -5132,7 +5132,7 @@ class MetagenomicsBinningProduct(MetagenomicsProduct):
     Top-level archive (zip/tar) for binning results stored in MinIO.
     Inherits all MetagenomicsProduct and dataProduct slots.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/metagenomics'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/metagenomics'})
 
     mg_workflow_step: Optional[MetagenomicsSteps] = Field(default=None, description="""Metagenomics workflow step that produced this product (e.g., MagsAnalysis)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
     sample_id: Optional[str] = Field(default=None, description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata', 'MetagenomicsProduct', 'ProcessedData']} })
@@ -5318,7 +5318,7 @@ class MetagenomicsGenePhylogenyProduct(MetagenomicsProduct):
     Top-level archive for gene-based phylogeny outputs (zip/tar stored in MinIO).
     Inherits all MetagenomicsProduct and dataProduct slots.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/metagenomics'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/metagenomics'})
 
     gene_family: Optional[str] = Field(default=None, description="""Gene family or marker used for the phylogeny (e.g., 16S, ITS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Metagenomics_GenePhylogenyProduct']} })
     mg_workflow_step: Optional[MetagenomicsSteps] = Field(default=None, description="""Metagenomics workflow step that produced this product (e.g., MagsAnalysis)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetagenomicsProduct']} })
@@ -5505,7 +5505,7 @@ class InstrumentData(DataProduct):
     An abstract parent class for raw data files generated by different kinds  of instruments. All subclasses must have a slot pointing upstream that  specifies the analysisActivity subclass which created them.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/MONet/basalt-schema',
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema',
          'slot_usage': {'description': {'name': 'description', 'required': True}},
          'todos': ['all subclasses need a more specific upstream slot to replace '
                    'was_generated_by',
@@ -5689,7 +5689,7 @@ class MassSpectrometryInstrumentData(InstrumentData):
     """
     Raw data files output from a mass spectrometry instrument.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/mass-spec'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/mass-spec'})
 
     produced_by_ms_run: Optional[str] = Field(default=None, description="""a reference to the data generation activity that produced instrument data""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryInstrumentData']} })
     ms_raw_file_type: Optional[MassSpecRawFileTypeEnum] = Field(default=None, description="""the filetype of the mass spectrometry instrument data""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryInstrumentData']} })
@@ -5870,7 +5870,7 @@ class NucleotideSequencingInstrumentData(InstrumentData):
     """
     Data generated by a nucleotide sequencing instrument (e.g., raw FASTQ files).
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/metagenomics'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/metagenomics'})
 
     produced_by_sequencing_activity: Optional[str] = Field(default=None, description="""Link back to the NucleotideSequencing activity that produced this data.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NucleotideSequencingInstrumentData']} })
     file_curie: Optional[str] = Field(default=None, description="""an identifier for a file that resolves to the file's accessible location""", json_schema_extra = { "linkml_meta": {'domain_of': ['InstrumentData']} })
@@ -6050,7 +6050,7 @@ class SitePhoto(DataProduct):
     A data product representing a photo of a site, typically taken during sampling.
     One row per photo with metadata about the photo type and when it was taken.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     site_photo_type: Optional[SitePhotoCategoryEnum] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['SitePhoto']} })
     photo_taken_during: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['SitePhoto']} })
@@ -6226,7 +6226,7 @@ class DataGenerationActivity(ConfiguredBaseModel):
     Abstract base for any data generation activity (physical to digital). Input data should 
     be specified on workflow subclasses.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://w3id.org/MONet/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     sequence_order: Optional[int] = Field(default=None, description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
@@ -6359,7 +6359,7 @@ class MassSpectrometryDataGenerationActivity(DataGenerationActivity):
     """
     A record of the mass spectrometry run that generates a raw data product.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/mass-spec'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/mass-spec'})
 
     uses_ms_configuration: MassSpectrometryConfiguration = Field(default=..., description="""Points to a record of the configuration used for the mass spectrometry run.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataGenerationActivity']} })
     uses_chromatography: Optional[ChromatographyConfiguration] = Field(default=None, description="""Points to a record of the chromatography used to introduce samples for the mass spectrometry run.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataGenerationActivity']} })
@@ -6497,7 +6497,7 @@ class PlateDataGenerationActivity(DataGenerationActivity):
     Adds timepoint_label for repeated-measurement series 
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate',
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate',
          'todos': ['measurement_time stamp']})
 
     timepoint_label: str = Field(default=..., description="""Human-readable timepoint label for repeated-measurement series.
@@ -6640,7 +6640,7 @@ class AMP2DataGenerationActivity(PlateDataGenerationActivity):
 
     v1 origin: plate-general.yaml AMP2DataGenerationActivity
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate'})
 
     measurement_type: Optional[str] = Field(default=None, description="""Type of plate measurement (optical_density, fluorescence, flow_cytometry)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2DataGenerationActivity']} })
     wavelength_nm: int = Field(default=..., description="""Measurement wavelength in nanometres (e.g. 590 Ecoplate, 610 AMP2 OD)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2DataGenerationActivity',
@@ -6784,7 +6784,7 @@ class EcoplateDataGenerationActivity(PlateDataGenerationActivity):
 
     v1 origin: plate-general.yaml EcoplateDataGenerationActivity
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate'})
 
     wavelength_nm: int = Field(default=..., description="""Measurement wavelength in nanometres (e.g. 590 Ecoplate, 610 AMP2 OD)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2DataGenerationActivity',
                        'EcoplateDataGenerationActivity',
@@ -6923,7 +6923,7 @@ class NucleotideSequencing(DataGenerationActivity):
     """
     A lab activity in which DNA or RNA that was extracted from a sample is sequenced.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/metagenomics',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/metagenomics',
          'slot_usage': {'external_identifiers': {'description': 'List of external '
                                                                 'identifiers (e.g., '
                                                                 'GOLD sequencing '
@@ -7084,7 +7084,7 @@ class RespirationDataGenerationActivity(DataGenerationActivity):
     Data generation activity for soil respiration analysis.
     Captures CO2-C efflux measured per gram of soil.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     method_id: Optional[RespirationMethod] = Field(default=None, description="""Reference to the RespirationMethod used for this run""", json_schema_extra = { "linkml_meta": {'domain_of': ['RespirationDataGenerationActivity']} })
     sequence_order: Optional[int] = Field(default=None, description="""Integer ordering within a temporal series for the same analyte.
@@ -7220,7 +7220,7 @@ class DataProcessingActivity(ConfiguredBaseModel):
     be specified on workflow subclasses.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/MONet/basalt-schema',
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema',
          'slot_usage': {'description': {'description': 'A human-readable description '
                                                        'of the data analysis workflow. '
                                                        'May  include details such as '
@@ -7346,7 +7346,7 @@ class MassSpectrometryDataProcessingActivity(DataProcessingActivity):
     Concrete mass spectrometry workflow run. Inherits all DataProcessingActivity
     slots including used_software and version.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/mass-spec'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/mass-spec'})
 
     uses_calibration: Optional[str] = Field(default=None, description="""Reference to the raw data file from the standard which was run with a batch of samples that was used as calibration for this data processing workflow run.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProcessingActivity']} })
     uses_raw_ms_data: Optional[str] = Field(default=None, description="""The raw data file, output by a mass spectrometer, that was analyzed in  this data processing workflow run.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometryDataProcessingActivity']} })
@@ -7473,7 +7473,7 @@ class MetagenomicsDataProcessingActivity(DataProcessingActivity):
     inherited type attribute (string); expected values: 
     'metagenomics_annotation', 'metagenomics_binning', 'metagenomics_phylogeny'.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/metagenomics'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/metagenomics'})
 
     parent_workflow_id: Optional[str] = Field(default=None, description="""Self-referential FK to the preceding DataProcessingActivity in a chain.
 NULL -> first (or standalone) step.
@@ -7589,7 +7589,7 @@ Schema for allowed keys TBD per workflow type before full implementation.""", js
 
 
 class AlternativeIdentifier(ConfiguredBaseModel):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -7667,7 +7667,7 @@ class AlternativeIdentifier(ConfiguredBaseModel):
 
 
 class FunctionalAnnotationIdentifier(ConfiguredBaseModel):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -7751,7 +7751,7 @@ class Instrument(ConfiguredBaseModel):
     instance of an instrument IF identifying information is filled out, 
     otherwise, it is a generic standin for an instrument model.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -7865,7 +7865,7 @@ class Instrument(ConfiguredBaseModel):
 
 
 class OntologyClass(ConfiguredBaseModel):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -7984,7 +7984,7 @@ class OntologyClass(ConfiguredBaseModel):
 
 
 class ContainerType(ConfiguredBaseModel):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema',
          'todos': ['reconcile with enums and in media_strain_culture_plate.yaml',
                    'potentially delete along with ContainerAxis? What are these for?']})
 
@@ -8092,7 +8092,7 @@ class ContainerType(ConfiguredBaseModel):
 
 
 class ContainerAxis(ConfiguredBaseModel):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema',
          'todos': ["I'm only including this in case we need it to sync up with L7 in "
                    'some way']})
 
@@ -8119,7 +8119,7 @@ class ContainerAxis(ConfiguredBaseModel):
 
 
 class Custodian(ConfiguredBaseModel):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -8196,7 +8196,7 @@ class Custodian(ConfiguredBaseModel):
 
 
 class InstrumentAlternativeIdentifier(ConfiguredBaseModel):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -8278,7 +8278,7 @@ class LabDevice(ConfiguredBaseModel):
     """
     A lab device is a physical instrument or equipment used in a laboratory setting for conducting experiments, measurements, or analyses. It can include various types of instruments such as microscopes, spectrometers, centrifuges, and other specialized equipment. Lab devices are essential for performing scientific research and obtaining accurate data.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -8385,7 +8385,7 @@ class SampleProcessing(ConfiguredBaseModel):
     be specified on workflow subclasses.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/MONet/basalt-schema',
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema',
          'todos': ['why does this have both analysis type and method name, as enums, '
                    'just set the range to the class']})
 
@@ -8500,7 +8500,7 @@ class MediaPreparation(SampleProcessing):
         -> processedSample(type='prepared_media'); media_ref points here
         -> CultureGrowth / AMP2PlateSetupActivity.media_ref
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate',
          'todos': ['storage_condt as enum?', 'media range?']})
 
     media_type: Optional[MediaTypeEnum] = Field(default=None, description="""Purpose/context of the media preparation.
@@ -8620,7 +8620,7 @@ class CultureGrowth(SampleProcessing, HasIncubationConditions):
     Concrete subclasses: StrainPurity, StockCulturePreparation, 
     PreCultureGrowth, ExperimentalCulture.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate',
          'mixins': ['HasIncubationConditions']})
 
     organism_ref: Optional[str] = Field(default=None, description="""FK reference to an organism representing the biological identity
@@ -8754,7 +8754,7 @@ class StrainPurity(CultureGrowth):
     Output: typically no new processedSample   pass/fail QC gate.
     Refs:   Media (growth medium), Strain (target organism)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate',
          'todos': ['purity percentage']})
 
     inspection_method: Optional[str] = Field(default=None, description="""Method used to inspect or verify purity (visual, sequencing, etc.)""", json_schema_extra = { "linkml_meta": {'domain_of': ['StrainPurity']} })
@@ -8891,7 +8891,7 @@ class StockCulturePreparation(CultureGrowth):
     Output: processedSample(type='stock_culture') via processingSampleLink
     Refs:   Media (growth medium), Strain
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate'})
 
     preparation_date: Optional[date] = Field(default=None, description="""Date the stock culture or entity was prepared""", json_schema_extra = { "linkml_meta": {'domain_of': ['StockCulturePreparation']} })
     organism_ref: Optional[str] = Field(default=None, description="""FK reference to an organism representing the biological identity
@@ -9025,7 +9025,7 @@ class PreCultureGrowth(CultureGrowth):
     Output: processedSample(type='pre_culture') via processingSampleLink
     Refs:   Media (growth medium), Strain
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate',
          'todos': ['pre culture medium is missing']})
 
     organism_ref: Optional[str] = Field(default=None, description="""FK reference to an organism representing the biological identity
@@ -9159,7 +9159,7 @@ class ExperimentalCulture(CultureGrowth):
     Output: processedSample(type='experimental_culture') via processingSampleLink
     Refs:   Media (growth medium), Strain
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate'})
 
     treatment_type: Optional[str] = Field(default=None, description="""Type of treatment applied in experimental culture growth""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExperimentalCulture']} })
     growth_time: Optional[str] = Field(default=None, description="""Total growth time for the culture.
@@ -9299,7 +9299,7 @@ class PlateSetupActivity(SampleProcessing, HasIncubationConditions):
     v1 origin: plate-general.yaml PlateSetupActivity
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate',
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate',
          'mixins': ['HasIncubationConditions']})
 
     plate_type: str = Field(default=..., description="""Vendor and model of plate (e.g. \"Greiner_96well_flat_bottom\", \"Biolog_EcoPlate\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
@@ -9438,7 +9438,7 @@ class AMP2PlateSetupActivity(PlateSetupActivity):
     v2 change: media_ref directly on class (no UsesMedia mixin);
                range is processedSample (not purchasedMaterial)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate'})
 
     media_ref: Optional[str] = Field(default=None, description="""FK reference to a prepared media processedSample used in the activity.
 Maps to Montana's growth_medium (on CultureGrowth) and media_id
@@ -9575,7 +9575,7 @@ class EcoplatePlateSetupActivity(PlateSetupActivity):
 
     v1 origin: plate-general.yaml EcoplatePlateSetupActivity
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/media-strain-culture-plate'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate'})
 
     plate_type: str = Field(default=..., description="""Vendor and model of plate (e.g. \"Greiner_96well_flat_bottom\", \"Biolog_EcoPlate\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
     plate_barcode: Optional[str] = Field(default=None, description="""Physical barcode on plate (if different from UUID)""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlateSetupActivity']} })
@@ -9703,7 +9703,7 @@ class ProcessingSampleLink(ConfiguredBaseModel):
     This class captures the relationship between a processed sample and the sample processing
     activity that generated it, including the step number and role of the sample in the process.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema',
          'unique_keys': {'unique_sample_process_step': {'unique_key_name': 'unique_sample_process_step',
                                                         'unique_key_slots': ['sample_base_id',
                                                                              'processing_id',
@@ -9793,7 +9793,7 @@ class InstrumentCustodian(ConfiguredBaseModel):
     This class captures the relationship between an instrument and the person
     who is responsible for its maintenance, calibration, and proper use.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     instrument_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['InstrumentAlternativeIdentifier', 'InstrumentCustodian']} })
     custodian_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['InstrumentCustodian']} })
@@ -9805,7 +9805,7 @@ class WorkflowExecutionFunctionalAnnotation(ConfiguredBaseModel):
     This class captures the relationship between a workflow execution and the
     functional annotation identifier that was used in the analysis.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     workflow_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['WorkflowExecutionFunctionalAnnotation']} })
     functional_annotation_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['WorkflowExecutionFunctionalAnnotation']} })
@@ -9826,7 +9826,7 @@ class XRayDataGenerationActivity(DataGenerationActivity):
       - XRD may optionally link to DataProcessingActivity for Rietveld refinement
       - protocol_url should link to vendor SOP or EMSL internal protocol documentation
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://w3id.org/MONet/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     sequence_order: Optional[int] = Field(default=None, description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
@@ -9981,7 +9981,7 @@ class XRFDataGenerationActivity(XRayDataGenerationActivity):
       routemethod:
         xrf_analysis:  # Add to routemethod permissible_values
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     sequence_order: Optional[int] = Field(default=None, description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
@@ -10139,7 +10139,7 @@ class XRDDataGenerationActivity(XRayDataGenerationActivity):
       routemethod:
         xrd_analysis:  # Add to routemethod permissible_values
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     sequence_order: Optional[int] = Field(default=None, description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
@@ -10273,7 +10273,7 @@ class BulkDensityProduct(ProcessedData):
     Bulk density analysis product, typically derived via oven-drying and weighing of a known volume of soil.
     One row per sample with columns for bulk density and QC flag.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'ElementalAnalysisProduct',
@@ -10483,7 +10483,7 @@ class ElementalAnalysisProduct(ProcessedData):
     One row per sample with columns for total carbon, total nitrogen, total Kjeldahl nitrogen, and total sulfur.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'ElementalAnalysisProduct',
@@ -10690,7 +10690,7 @@ class EnzymeProduct(ProcessedData):
     Enzyme activity analysis product, typically derived via colorimetric assay of soil extracts.
     One row per sample with columns for beta-glucosidase activity and QC flag.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'ElementalAnalysisProduct',
@@ -10899,7 +10899,7 @@ class GWCMoistureProduct(ProcessedData):
     Gravimetric water content (GWC) analysis product, typically derived via oven-drying and weighing of a known mass of soil.
     One row per sample with columns for GWC and QC flag.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'ElementalAnalysisProduct',
@@ -11107,7 +11107,7 @@ class HydraulicPropertiesProduct(ProcessedData):
     """
     Soil hydraulic parameters derived from HYPROP evaporation-experiment data. One row per core section; the four attributes are the four VGM model parameters.  Proposal_ID, sampling_set, and core_section are inherited from the parent processedData record.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'ElementalAnalysisProduct',
@@ -11320,7 +11320,7 @@ class IonsAnalysisProduct(ProcessedData):
     One row per sample with columns for each ion measured.
     Individual QC flags for each ion using ProcessedDataFlag enum.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'ElementalAnalysisProduct',
@@ -11544,7 +11544,7 @@ class MAOMProduct(ConfiguredBaseModel):
     One row per sample with columns for total organic carbon and total nitrogen.
     Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED TO HClExtOMProduct
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'ElementalAnalysisProduct',
@@ -11657,7 +11657,7 @@ class MicrobialBiomassProduct(ProcessedData):
     One row per sample with columns for microbial biomass carbon and nitrogen.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'ElementalAnalysisProduct',
@@ -11872,7 +11872,7 @@ class NitrogenAnalysisProduct(ProcessedData):
     One row per sample with columns for nitrate and ammonium concentrations.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'ElementalAnalysisProduct',
@@ -12087,7 +12087,7 @@ class PhosphorusAnalysisProduct(ProcessedData):
     One row per sample with columns for phosphorus concentration.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'ElementalAnalysisProduct',
@@ -12316,7 +12316,7 @@ class RespirationProduct(ProcessedData):
     Soil respiration analysis product.
     One row per sample with columns for soil respiration and QC flag.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'ElementalAnalysisProduct',
@@ -12526,7 +12526,7 @@ class TextureProduct(ProcessedData):
     One row per sample with columns for sand, silt, and clay percentages.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'ElementalAnalysisProduct',
@@ -12737,7 +12737,7 @@ class TomographyProduct(ProcessedData):
     Soil tomography analysis product, typically derived via X-ray computed tomography (XCT) or similar instrument.
     One row per sample with columns for pore structure metrics and QC flag.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'ElementalAnalysisProduct',
@@ -12957,7 +12957,7 @@ class WEOMProduct(ConfiguredBaseModel):
     One row per sample with columns for total organic carbon and total nitrogen.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'ElementalAnalysisProduct',
@@ -13069,7 +13069,7 @@ class PHProduct(ProcessedData):
     Soil pH analysis product, typically derived via pH meter or similar instrument.
     One row per sample with columns for pH and QC flag.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'ElementalAnalysisProduct',
@@ -13295,7 +13295,7 @@ class XRayDataProduct(ProcessedData):
       - workflow_id links to DataProcessingActivity for computational processing (XRD Rietveld) 
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/MONet/basalt-schema/products'})
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/products'})
 
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
@@ -13496,7 +13496,7 @@ class XRFElementalProduct(XRayDataProduct):
       product:
         XRFElementalProduct:  # Add to product permissible_values
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'ElementalAnalysisProduct',
@@ -13785,7 +13785,7 @@ class XRDPhaseProduct(XRayDataProduct):
       product:
         XRDPhaseProduct:  # Add to product permissible_values
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/products'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/products'})
 
     measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
                        'ElementalAnalysisProduct',
@@ -14003,7 +14003,7 @@ class Site(ConfiguredBaseModel):
     """
     Site-level metadata for a specific location from which a set of samples are collected.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'elev': {'name': 'elev',
                                  'required': True,
                                  'todos': ['should this be required for all sample '
@@ -14380,7 +14380,7 @@ class Sample(ConfiguredBaseModel):
     A physical sample collected from an environment. The environment can be ecological, laboratory, or any other context where samples are collected. This class serves as an abstract class to relate subclasses of samples.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'todos': ['where should proposal ID live? probably not here? emsl_activity is '
                    'a string referencing a campaign name. but we do need to link '
                    'samples to their parent studies/projects somehow.']})
@@ -14509,7 +14509,7 @@ class AerosolArmSample(Sample):
     """
     An aerosol sample collected by the ARM facility.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'carb_dioxide': {'description': 'Amount of carbon dioxide '
                                                         'measured in the air the day '
@@ -15254,7 +15254,7 @@ class AerosolSample(Sample):
     """
     An aerosol sample collected from the environment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'size_frac_low': {'description': 'Refers to the mesh/pore size '
                                                          'used to pre-filter/pre-sort '
@@ -16015,7 +16015,7 @@ class AMP2UserSample(Sample):
       - Processed through StrainPurity → StockCulturePreparation → PreCultureGrowth → ExperimentalCulture
       - Outputs ProcessedSample instances at each stage
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'analysis_type': {'description': 'The type(s) of analysis '
                                                          'planned for this sample.',
                                           'name': 'analysis_type',
@@ -16296,7 +16296,7 @@ class CommerciallyPurchasedSample(Sample):
     """
     A sample containing commercially purchased material.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'compound_name': {'name': 'compound_name', 'required': True}}})
 
@@ -16781,7 +16781,7 @@ class CultureEnvironmentalSample(Sample):
     """
     A sample containing organisms cultured from an environmental sample.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'growth_medium': {'name': 'growth_medium', 'required': True},
                         'host_common_name': {'name': 'host_common_name',
@@ -17610,7 +17610,7 @@ class EngineeredStrainSample(Sample):
     and carries only sample-instance-specific slots.
       
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes'})
 
     organism_ref: Optional[str] = Field(default=None, description="""FK reference to an organism representing the biological identity
 strain, isolate, engineered construct) that this sample or activity
@@ -17779,7 +17779,7 @@ class FieldDeployedTerraformSample(Sample):
     """
     A sample collected from a field-deployed Terraform experiment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'initiation_date_inoculation': {'name': 'initiation_date_inoculation',
                                                         'required': True},
@@ -18834,7 +18834,7 @@ class MixedCultureSample(Sample):
     """
     A sample containing multiple cultured organisms.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'growth_medium': {'name': 'growth_medium', 'required': True},
                         'host_common_name': {'name': 'host_common_name',
@@ -19559,7 +19559,7 @@ class MonetSoilSample(Sample):
     """
     A soil sample that has been collected according to the MONet soil sampling protocol. This sample type has specific slot requirements related to the MONet soil sampling method, such as infiltration rates.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'bulk_elect_conductivity': {'description': 'Provide the bulk '
                                                                    'electrical '
                                                                    'conductivity '
@@ -20169,7 +20169,7 @@ class OtherUndescribedSample(Sample):
     """
     A sample that does not fit into any of the other described sample types.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'carb_dioxide': {'description': 'Amount of carbon dioxide '
                                                         'measured in the air the day '
@@ -22353,7 +22353,7 @@ class PlantSample(Sample):
     """
     A sample containing plant material.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'host_height': {'description': 'The height of plant. (Unit: cm '
                                                        'or mm or m)',
@@ -23257,7 +23257,7 @@ class PureCultureSample(Sample):
     """
     A sample of a culture containing a single organism.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'growth_medium': {'name': 'growth_medium', 'required': True},
                         'host_common_name': {'name': 'host_common_name',
@@ -24057,7 +24057,7 @@ class SedimentSample(Sample):
     """
     A sample of sediment collected from the environment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'biotic_relationship': {'description': 'Description of '
                                                                'relationship(s) '
@@ -25635,7 +25635,7 @@ class SoilSample(Sample):
     """
     A sample of soil collected from the environment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'al_sat': {'description': 'Aluminum saturation (esp. For '
                                                   'tropical soils) (Unit: percent)',
                                    'name': 'al_sat',
@@ -26690,7 +26690,7 @@ class SynthesizedMaterialSample(Sample):
     """
     A sample containing synthetically generated material.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'synth_instrument': {'name': 'synth_instrument',
                                              'required': True},
@@ -27162,7 +27162,7 @@ class TerraformSample(Sample):
     """
     A sample collected from a Terraform experiment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'initiation_date_inoculation': {'name': 'initiation_date_inoculation',
                                                         'required': True},
@@ -28149,7 +28149,7 @@ class WaterSample(Sample):
     """
     A sample of water collected from the environment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'depth': {'description': 'The vertical distance below local '
                                                  'surface of the water. (Units: m)',
@@ -29826,7 +29826,7 @@ class ProcessedSample(Sample):
     """
     A sample that has undergone processing or analysis. Processed Sample entities are derived from Activities. The upstream SampleProcessing that produced this ProcessedSample is referenced via sampled_during.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'replicate': {'description': 'The TECHNICAL replicate number '
                                                      'of the processed sample, if '
                                                      'applicable.',
@@ -29993,7 +29993,7 @@ class CoreSection(ProcessedSample):
     """
     A section of a core sample (TOP, MID, BTM).
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'core_section': {'name': 'core_section', 'required': True}}})
 
     core_section: CoreSectionEnum = Field(default=..., title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct', 'CoreSection'],
@@ -30152,7 +30152,7 @@ class SamplingActivity(ConfiguredBaseModel):
     An activity that involves the collection of a sample. This class serves as an abstract class to relate subclasses of sampling activities. Samples reference their parent sampling activity via the 'sampled_during' slot.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'todos': ['is this for individual samples or can it be the activity of '
                    'collecting multiple samples from one site? would need to change '
                    'shipped_sample_size and storage_condt if so.',
@@ -30333,7 +30333,7 @@ class AerosolArmSamplingActivity(SamplingActivity):
     """
     A sampling activity where aerosol samples were collected by ARM.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'humidity': {'description': 'Amount of humidity measured in '
                                                     'the air the day of sampling. '
                                                     'Provided by iMet. Provide value '
@@ -30514,7 +30514,7 @@ class AerosolSamplingActivity(SamplingActivity):
     """
     A sampling activity where aerosol samples were collected.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes'})
 
     collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -30798,7 +30798,7 @@ class CommerciallyPurchasedSamplingActivity(SamplingActivity):
     """
     Collection of samples that were purchased by the user.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes'})
 
     sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
@@ -31012,7 +31012,7 @@ class CultureEnvironmentalSamplingActivity(SamplingActivity):
     """
     Collection of samples from a culture of organisms taken from the environment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes'})
 
     collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -31261,7 +31261,7 @@ class EngineeredStrainSamplingActivity(SamplingActivity):
     """
     Collection of samples from a culture of an engineered organism.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes'})
 
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -31437,7 +31437,7 @@ class FieldDeployedTerraformSamplingActivity(SamplingActivity):
     """
     Collection of samples from a field-deployed Terraform device.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes'})
 
     collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -31674,7 +31674,7 @@ class MixedCultureSamplingActivity(SamplingActivity):
     """
     Collection of samples from a mixed culture.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes'})
 
     collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -31923,7 +31923,7 @@ class MonetSoilSamplingActivity(SamplingActivity):
     """
     Collection of soil cores according to the MONet soil sampling protocol.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'collection_time': {'name': 'collection_time',
                                             'required': True},
                         'infiltration_1': {'name': 'infiltration_1', 'required': True},
@@ -32175,7 +32175,7 @@ class OtherUndescribedSamplingActivity(SamplingActivity):
     """
     Collection of samples from source that does not fit into any of the other categories.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'humidity': {'description': 'Amount of humidity measured in '
                                                     'the air the day of sampling. '
                                                     'Provided by iMet. Provide value '
@@ -32474,7 +32474,7 @@ class PlantSamplingActivity(SamplingActivity):
     """
     Collection of samples associated with plants.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes'})
 
     collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -32727,7 +32727,7 @@ class PureCultureSamplingActivity(SamplingActivity):
     """
     Collection of samples from a culture containing a single organism.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes'})
 
     collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -32976,7 +32976,7 @@ class SedimentSamplingActivity(SamplingActivity):
     """
     Collection of sediment samples from the environment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes'})
 
     collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -33229,7 +33229,7 @@ class SoilSamplingActivity(SamplingActivity):
     """
     Collection of soil samples from the environment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'title': 'Soil Sampling Activity'})
 
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
@@ -33515,7 +33515,7 @@ class SynthesizedMaterialSamplingActivity(SamplingActivity):
     """
     Collection of samples of a synthesized material.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes'})
 
     sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
@@ -33729,7 +33729,7 @@ class TerraformSamplingActivity(SamplingActivity):
     """
     Collection of samples from a Terraform device.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes'})
 
     collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
@@ -33966,7 +33966,7 @@ class WaterSamplingActivity(SamplingActivity):
     """
     Collection of water samples.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/sample-classes',
          'slot_usage': {'sample_collection_dev': {'name': 'sample_collection_dev',
                                                   'required': True},
                         'sample_collection_method': {'name': 'sample_collection_method',
@@ -34221,7 +34221,7 @@ class Study(ConfiguredBaseModel):
     A study may have multiple participants, each with different roles, and may be associated with
     one or more campaigns. The study may also have associated DOIs and funding sources.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/study',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/study',
          'slot_usage': {'external_identifiers': {'description': 'List of project- or '
                                                                 'study-level '
                                                                 'identifiers (e.g., '
@@ -34378,7 +34378,7 @@ class ProjectParticipant(ConfiguredBaseModel):
     """
     A record of a person and their role on an EMSL project.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/study'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/study'})
 
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -34459,7 +34459,7 @@ class DOI(ConfiguredBaseModel):
     """
     A digital object identifier (DOI) representing a persistent link to a digital resource.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/study'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/study'})
 
     doi_value: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['DOI']} })
     doi_category: Optional[DoiCategoryEnum] = Field(default=None, description="""The resource type the corresponding doi resolves to""", json_schema_extra = { "linkml_meta": {'domain_of': ['DOI']} })
@@ -34470,7 +34470,7 @@ class TimestampValue(ConfiguredBaseModel):
     """
     A timestamp value with optional description. No pattern at present,
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/value-tables'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/value-tables'})
 
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MassSpectrometryStandardRun',
@@ -34578,7 +34578,7 @@ class TextValue(ConfiguredBaseModel):
     """
     A text value with optional description and language.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/value-tables'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/value-tables'})
 
     description: Optional[str] = Field(default=None, title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MassSpectrometryStandardRun',
@@ -34684,7 +34684,7 @@ class TextValue(ConfiguredBaseModel):
 
 
 class SoftwareControlledTermValue(ConfiguredBaseModel):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/value-tables'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/value-tables'})
 
     name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -34809,7 +34809,7 @@ class SoftwareControlledTermValue(ConfiguredBaseModel):
 
 
 class ControlledTermValue(ConfiguredBaseModel):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/value-tables'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/value-tables'})
 
     description: Optional[str] = Field(default=None, title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MassSpectrometryStandardRun',
@@ -34917,7 +34917,7 @@ class ControlledTermValue(ConfiguredBaseModel):
 
 
 class PersonValue(ConfiguredBaseModel):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/value-tables',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/value-tables',
          'unique_keys': {'PersonValue_email_key': {'unique_key_name': 'PersonValue_email_key',
                                                    'unique_key_slots': ['email']}}})
 
@@ -35005,7 +35005,7 @@ class QuantityValue(ConfiguredBaseModel):
     """
     A quantity value with numeric value and optional unit
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/value-tables'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/value-tables'})
 
     description: Optional[str] = Field(default=None, title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MassSpectrometryStandardRun',
@@ -35115,7 +35115,7 @@ class QuantityValue(ConfiguredBaseModel):
 
 
 class ConditioningValue(ConfiguredBaseModel):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/value-tables'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/value-tables'})
 
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -35209,7 +35209,7 @@ class ZipDownload(ConfiguredBaseModel):
     """
     A zip download record, capturing the details of a zip file download event.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/MONet/basalt-schema/zip_download'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://EMSL-Computing.github.io/basalt-schema/zip_download'})
 
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',

@@ -9,7 +9,7 @@ _Source of organic carbon in the culture rooting medium. Provide as {carbon sour
 
 
 
-URI: [basalt_schema:root_med_carbon](https://w3id.org/MONet/basalt-schema/root_med_carbon)
+URI: [basalt_schema:root_med_carbon](https://EMSL-Computing.github.io/basalt-schema/root_med_carbon)
 Alias: root_med_carbon
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: root_med_carbon
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -86,7 +86,7 @@ name: root_med_carbon
 description: Source of organic carbon in the culture rooting medium. Provide as {carbon
   source}, {value}{unit}. Can be multivalued, separated by ;. Preferred unit mg/L.
 title: rooting medium carbon
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: root_med_carbon
 domain_of:

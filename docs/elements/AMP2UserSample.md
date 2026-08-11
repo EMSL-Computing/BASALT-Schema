@@ -35,7 +35,7 @@ _  - Outputs ProcessedSample instances at each stage_
 
 
 
-URI: [basalt_schema:AMP2UserSample](https://w3id.org/MONet/basalt-schema/AMP2UserSample)
+URI: [basalt_schema:AMP2UserSample](https://EMSL-Computing.github.io/basalt-schema/AMP2UserSample)
 
 
 
@@ -166,7 +166,7 @@ URI: [basalt_schema:AMP2UserSample](https://w3id.org/MONet/basalt-schema/AMP2Use
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -200,7 +200,7 @@ description: "A user-submitted microbial sample for AMP2 workflows.\n\nReference
   \ integration:\n  - Enters workflow via SampleReceiving activity\n  - Processed\
   \ through StrainPurity → StockCulturePreparation → PreCultureGrowth → ExperimentalCulture\n\
   \  - Outputs ProcessedSample instances at each stage"
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Sample
 slots:
 - organism_ref
@@ -256,7 +256,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -349,7 +349,7 @@ description: "A user-submitted microbial sample for AMP2 workflows.\n\nReference
   \ integration:\n  - Enters workflow via SampleReceiving activity\n  - Processed\
   \ through StrainPurity → StockCulturePreparation → PreCultureGrowth → ExperimentalCulture\n\
   \  - Outputs ProcessedSample instances at each stage"
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Sample
 slot_usage:
   organism_ref:
@@ -392,7 +392,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     alias: id
     owner: AMP2UserSample
@@ -476,7 +476,7 @@ attributes:
       instantiates.
 
       Required - every AMP2UserSample must reference an organism.'
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - strain_ref
     - strain_id
@@ -493,7 +493,7 @@ attributes:
     name: collection_date
     description: The date the sample was collected or received from the user.
     title: collection date
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: collection_date
     owner: AMP2UserSample
@@ -512,7 +512,7 @@ attributes:
 
       attribute to provide additional detail.'
     title: growth facility
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: growth_facil
     owner: AMP2UserSample
@@ -529,7 +529,7 @@ attributes:
 
       organism/material'
     title: isolation and growth conditions
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: isol_growth_condt
     owner: AMP2UserSample
@@ -547,7 +547,7 @@ attributes:
     description: 'Date the incubation was started. Only relevant for incubation samples.
       Format: YYYY-MM-DD'
     title: incubation start date
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: start_date_inc
     owner: AMP2UserSample
@@ -572,7 +572,7 @@ attributes:
 
       Aliases: samp_store_cond, storage_cond, storage_condt'
     title: storage condition
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - samp_store_cond
     - storage_cond
@@ -607,7 +607,7 @@ attributes:
     description: 'Storage temperature for this sample (e.g., "-80 C").
 
       Aliases: samp_store_temp'
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: storage_temperature
     owner: AMP2UserSample
@@ -620,7 +620,7 @@ attributes:
     name: shipped_sample_size
     description: Total amount of sample sent to EMSL. Must include units.
     title: shipped sample size
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: shipped_sample_size
     owner: AMP2UserSample
@@ -632,7 +632,7 @@ attributes:
   guid_source:
     name: guid_source
     description: Source system for the sample GUID (e.g., "LIMS").
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: guid_source
     owner: AMP2UserSample
@@ -642,7 +642,7 @@ attributes:
   other_guid_source:
     name: other_guid_source
     description: Description of GUID source if guid_source = "other".
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: other_guid_source
     owner: AMP2UserSample
@@ -652,7 +652,7 @@ attributes:
   analysis_type:
     name: analysis_type
     description: The type(s) of analysis planned for this sample.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: analysis_type
     owner: AMP2UserSample
@@ -680,7 +680,7 @@ attributes:
     description: 'Confidential Business Information flag (yes/no).
 
       Indicates if the sample is subject to CBI restrictions.'
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - CBI
     rank: 1000
@@ -699,7 +699,7 @@ attributes:
       but typically unique per sample instance.
 
       Aliases: sample_name, samp_name'
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: AMP2UserSample
@@ -729,7 +729,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: AMP2UserSample
@@ -768,7 +768,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: emsl_activity
     owner: AMP2UserSample
@@ -780,7 +780,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: lims_barcode
     owner: AMP2UserSample

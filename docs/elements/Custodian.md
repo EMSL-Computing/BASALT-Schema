@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:Custodian](https://w3id.org/MONet/basalt-schema/Custodian)
+URI: [basalt_schema:Custodian](https://EMSL-Computing.github.io/basalt-schema/Custodian)
 
 
 
@@ -72,7 +72,7 @@ URI: [basalt_schema:Custodian](https://w3id.org/MONet/basalt-schema/Custodian)
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -98,11 +98,11 @@ URI: [basalt_schema:Custodian](https://w3id.org/MONet/basalt-schema/Custodian)
 <details>
 ```yaml
 name: Custodian
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     identifier: true
     domain_of:
     - Activity
@@ -180,7 +180,7 @@ attributes:
     required: true
   person_id:
     name: person_id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     domain_of:
     - Custodian
@@ -194,11 +194,11 @@ attributes:
 <details>
 ```yaml
 name: Custodian
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     identifier: true
     alias: id
     owner: Custodian
@@ -278,7 +278,7 @@ attributes:
     required: true
   person_id:
     name: person_id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: person_id
     owner: Custodian

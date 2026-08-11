@@ -9,7 +9,7 @@ _Dissolved inorganic carbon concentration in the sample, typically measured afte
 
 
 
-URI: [basalt_schema:diss_inorg_carb](https://w3id.org/MONet/basalt-schema/diss_inorg_carb)
+URI: [basalt_schema:diss_inorg_carb](https://EMSL-Computing.github.io/basalt-schema/diss_inorg_carb)
 Alias: diss_inorg_carb
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: diss_inorg_carb
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -94,7 +94,7 @@ description: 'Dissolved inorganic carbon concentration in the sample, typically 
   after filtering the sample using a 0.45 micrometer filter (Unit:  ug/L or mg/L or
   ppm)'
 title: dissolved inorganic carbon
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: diss_inorg_carb
 domain_of:

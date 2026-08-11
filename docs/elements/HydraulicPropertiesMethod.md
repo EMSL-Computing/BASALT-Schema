@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:HydraulicPropertiesMethod](https://w3id.org/MONet/basalt-schema/HydraulicPropertiesMethod)
+URI: [basalt_schema:HydraulicPropertiesMethod](https://EMSL-Computing.github.io/basalt-schema/HydraulicPropertiesMethod)
 
 
 
@@ -66,7 +66,7 @@ URI: [basalt_schema:HydraulicPropertiesMethod](https://w3id.org/MONet/basalt-sch
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,14 +92,14 @@ URI: [basalt_schema:HydraulicPropertiesMethod](https://w3id.org/MONet/basalt-sch
 <details>
 ```yaml
 name: HydraulicPropertiesMethod
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Method
 slots:
 - location
 attributes:
   fitting_model:
     name: fitting_model
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     rank: 1000
     domain_of:
     - HydraulicPropertiesMethod
@@ -114,12 +114,12 @@ attributes:
 <details>
 ```yaml
 name: HydraulicPropertiesMethod
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: Method
 attributes:
   fitting_model:
     name: fitting_model
-    from_schema: https://w3id.org/MONet/basalt-schema/methods
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/methods
     rank: 1000
     alias: fitting_model
     owner: HydraulicPropertiesMethod
@@ -131,7 +131,7 @@ attributes:
     name: location
     todos:
     - used on many method classes. no description. what was this meant to mean?
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: location
     owner: HydraulicPropertiesMethod
@@ -152,7 +152,7 @@ attributes:
     name: analytic
     todos:
     - what does this mean
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: analytic
     owner: HydraulicPropertiesMethod

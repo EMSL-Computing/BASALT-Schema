@@ -9,7 +9,7 @@ _Provider class (e.g., JGI, SeqCenter) using ontology terms where possible_
 
 
 
-URI: [basalt_schema:provider_name](https://w3id.org/MONet/basalt-schema/provider_name)
+URI: [basalt_schema:provider_name](https://EMSL-Computing.github.io/basalt-schema/provider_name)
 Alias: provider_name
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: provider_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ Alias: provider_name
 ```yaml
 name: provider_name
 description: Provider class (e.g., JGI, SeqCenter) using ontology terms where possible
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: provider_name
 domain_of:

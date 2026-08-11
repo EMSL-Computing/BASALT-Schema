@@ -9,7 +9,7 @@ _Measurment of pressure applied to the sample during experimentation (Unit: Pa)_
 
 
 
-URI: [basalt_schema:pressure_control](https://w3id.org/MONet/basalt-schema/pressure_control)
+URI: [basalt_schema:pressure_control](https://EMSL-Computing.github.io/basalt-schema/pressure_control)
 Alias: pressure_control
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: pressure_control
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -93,7 +93,7 @@ name: pressure_control
 description: 'Measurment of pressure applied to the sample during experimentation
   (Unit: Pa)'
 title: pressure control
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: pressure_control
 domain_of:

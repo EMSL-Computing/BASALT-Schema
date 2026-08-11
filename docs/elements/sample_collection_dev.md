@@ -9,7 +9,7 @@ _The device used to collect an environmental sample. Include dimensions of devic
 
 
 
-URI: [basalt_schema:sample_collection_dev](https://w3id.org/MONet/basalt-schema/sample_collection_dev)
+URI: [basalt_schema:sample_collection_dev](https://EMSL-Computing.github.io/basalt-schema/sample_collection_dev)
 Alias: sample_collection_dev
 
 <!-- no inheritance hierarchy -->
@@ -72,7 +72,7 @@ Alias: sample_collection_dev
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -95,7 +95,7 @@ name: sample_collection_dev
 description: The device used to collect an environmental sample. Include dimensions
   of device if applicable
 title: sample collection device
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sample_collection_dev
 domain_of:

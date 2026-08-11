@@ -9,7 +9,7 @@ _Heavy metals present and concentrations; can include multiple heavy metals and 
 
 
 
-URI: [basalt_schema:heavy_metals](https://w3id.org/MONet/basalt-schema/heavy_metals)
+URI: [basalt_schema:heavy_metals](https://EMSL-Computing.github.io/basalt-schema/heavy_metals)
 Alias: heavy_metals
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: heavy_metals
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ name: heavy_metals
 description: Heavy metals present and concentrations; can include multiple heavy metals
   and concentrations
 title: heavy metals
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: heavy_metals
 domain_of:

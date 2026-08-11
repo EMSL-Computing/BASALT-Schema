@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:execution_resource](https://w3id.org/MONet/basalt-schema/execution_resource)
+URI: [basalt_schema:execution_resource](https://EMSL-Computing.github.io/basalt-schema/execution_resource)
 Alias: execution_resource
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: execution_resource
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ Alias: execution_resource
 <details>
 ```yaml
 name: execution_resource
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: execution_resource
 owner: DataProcessingActivity

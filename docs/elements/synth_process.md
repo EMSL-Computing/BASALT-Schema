@@ -9,7 +9,7 @@ _Provide the citation or describe the method of synthesis._
 
 
 
-URI: [basalt_schema:synth_process](https://w3id.org/MONet/basalt-schema/synth_process)
+URI: [basalt_schema:synth_process](https://EMSL-Computing.github.io/basalt-schema/synth_process)
 Alias: synth_process
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: synth_process
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: synth_process
 name: synth_process
 description: Provide the citation or describe the method of synthesis.
 title: synthesis process
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: synth_process
 domain_of:

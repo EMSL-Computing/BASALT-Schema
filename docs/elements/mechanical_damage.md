@@ -9,7 +9,7 @@ _Information about any mechanical damage exerted on the plant; can include multi
 
 
 
-URI: [basalt_schema:mechanical_damage](https://w3id.org/MONet/basalt-schema/mechanical_damage)
+URI: [basalt_schema:mechanical_damage](https://EMSL-Computing.github.io/basalt-schema/mechanical_damage)
 Alias: mechanical_damage
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: mechanical_damage
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ name: mechanical_damage
 description: Information about any mechanical damage exerted on the plant; can include
   multiple damages and sites
 title: mechanical damage
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: mechanical_damage
 domain_of:

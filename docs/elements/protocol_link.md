@@ -9,7 +9,7 @@ _A link to a protocol that describes the steps and parameters of the activity._
 
 
 
-URI: [basalt_schema:protocol_link](https://w3id.org/MONet/basalt-schema/protocol_link)
+URI: [basalt_schema:protocol_link](https://EMSL-Computing.github.io/basalt-schema/protocol_link)
 Alias: protocol_link
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: protocol_link
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -89,7 +89,7 @@ Alias: protocol_link
 ```yaml
 name: protocol_link
 description: A link to a protocol that describes the steps and parameters of the activity.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: protocol_link
 owner: Activity

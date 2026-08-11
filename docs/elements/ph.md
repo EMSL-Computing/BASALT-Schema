@@ -9,7 +9,7 @@ _pH measurement of the sample or liquid portion of sample or aqueous phase of th
 
 
 
-URI: [basalt_schema:ph](https://w3id.org/MONet/basalt-schema/ph)
+URI: [basalt_schema:ph](https://EMSL-Computing.github.io/basalt-schema/ph)
 Alias: ph
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: ph
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -88,7 +88,7 @@ name: ph
 description: pH measurement of the sample or liquid portion of sample or aqueous phase
   of the fluid
 title: pH
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: ph
 domain_of:

@@ -9,7 +9,7 @@ _Quality index for second boundary layer height candidate (-999 if no candidate)
 
 
 
-URI: [basalt_schema:second_blh_quality](https://w3id.org/MONet/basalt-schema/second_blh_quality)
+URI: [basalt_schema:second_blh_quality](https://EMSL-Computing.github.io/basalt-schema/second_blh_quality)
 Alias: second_blh_quality
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: second_blh_quality
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ name: second_blh_quality
 description: Quality index for second boundary layer height candidate (-999 if no
   candidate)
 title: second boundary layer height quality
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: second_blh_quality
 domain_of:

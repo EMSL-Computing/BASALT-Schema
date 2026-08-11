@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_total_bases](https://w3id.org/MONet/basalt-schema/flag_total_bases)
+URI: [basalt_schema:flag_total_bases](https://EMSL-Computing.github.io/basalt-schema/flag_total_bases)
 Alias: flag_total_bases
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_total_bases
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_total_bases
 <details>
 ```yaml
 name: flag_total_bases
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_total_bases
 owner: IonsAnalysisProduct

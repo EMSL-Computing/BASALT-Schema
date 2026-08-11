@@ -9,7 +9,7 @@ _Total phosphorus concentration in the sample calculated by: total phosphorus = 
 
 
 
-URI: [basalt_schema:tot_phosp](https://w3id.org/MONet/basalt-schema/tot_phosp)
+URI: [basalt_schema:tot_phosp](https://EMSL-Computing.github.io/basalt-schema/tot_phosp)
 Alias: tot_phosp
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: tot_phosp
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ name: tot_phosp
 description: 'Total phosphorus concentration in the sample calculated by: total phosphorus
   = total dissolved phosphorus + particulate phosphorus. (Unit: ug/L or umol/L)'
 title: total phosphorus
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: tot_phosp
 domain_of:

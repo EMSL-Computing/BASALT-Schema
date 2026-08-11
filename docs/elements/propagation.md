@@ -9,7 +9,7 @@ _The type of reproduction from the parent stock. Values for this field are speci
 
 
 
-URI: [basalt_schema:propagation](https://w3id.org/MONet/basalt-schema/propagation)
+URI: [basalt_schema:propagation](https://EMSL-Computing.github.io/basalt-schema/propagation)
 Alias: propagation
 
 <!-- no inheritance hierarchy -->
@@ -67,7 +67,7 @@ Alias: propagation
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -91,7 +91,7 @@ description: 'The type of reproduction from the parent stock. Values for this fi
   are specific to different taxa. For phage or virus: lytic/lysogenic/temperate/obligately
   lytic. For plasmids: incompatibility group. For eukaryotes: sexual/asexual'''
 title: propagation
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: propagation
 domain_of:

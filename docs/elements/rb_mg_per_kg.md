@@ -9,7 +9,7 @@ _Rubidium concentration in mg/kg_
 
 
 
-URI: [basalt_schema:rb_mg_per_kg](https://w3id.org/MONet/basalt-schema/rb_mg_per_kg)
+URI: [basalt_schema:rb_mg_per_kg](https://EMSL-Computing.github.io/basalt-schema/rb_mg_per_kg)
 Alias: rb_mg_per_kg
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: rb_mg_per_kg
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -89,7 +89,7 @@ Alias: rb_mg_per_kg
 ```yaml
 name: rb_mg_per_kg
 description: Rubidium concentration in mg/kg
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: rb_mg_per_kg
 owner: XRFElementalProduct

@@ -1,5 +1,5 @@
 ---
-id: https://w3id.org/MONet/basalt-schema/sample-classes
+id: https://EMSL-Computing.github.io/basalt-schema/sample-classes
 name: basalt-schema-sample-classes
 title: BASALT Sample Class Schema
 description: |-
@@ -7,11 +7,11 @@ description: |-
   This schema defines the data models for samples, sample type subclasses, and processed samples.
 license: MIT
 see_also:
-  - https://MONet.github.io/basalt-schema
-  - https://github.com/mkapur-pnnl/basalt-schema
+  - https://EMSL-Computing.github.io/basalt-schema
+  - https://github.com/EMSL-Computing/basalt-schema
 
 prefixes:
-  basalt_schema: https://w3id.org/MONet/basalt-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
   # schema: http://schema.org/
   # qudt: http://qudt.org/schema/qudt/

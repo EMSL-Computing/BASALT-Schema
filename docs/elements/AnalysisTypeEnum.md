@@ -7,7 +7,7 @@ _Enumeration of common analyses performed on samples shipped to EMSL_
 
 
 
-URI: [basalt_schema:AnalysisTypeEnum](https://w3id.org/MONet/basalt-schema/AnalysisTypeEnum)
+URI: [basalt_schema:AnalysisTypeEnum](https://EMSL-Computing.github.io/basalt-schema/AnalysisTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -49,7 +49,7 @@ URI: [basalt_schema:AnalysisTypeEnum](https://w3id.org/MONet/basalt-schema/Analy
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -62,7 +62,7 @@ URI: [basalt_schema:AnalysisTypeEnum](https://w3id.org/MONet/basalt-schema/Analy
 ```yaml
 name: AnalysisTypeEnum
 description: Enumeration of common analyses performed on samples shipped to EMSL
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   metabolome:

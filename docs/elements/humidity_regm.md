@@ -9,7 +9,7 @@ _Information about treatment involving an exposure to varying degrees of humidit
 
 
 
-URI: [basalt_schema:humidity_regm](https://w3id.org/MONet/basalt-schema/humidity_regm)
+URI: [basalt_schema:humidity_regm](https://EMSL-Computing.github.io/basalt-schema/humidity_regm)
 Alias: humidity_regm
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: humidity_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -96,7 +96,7 @@ description: Information about treatment involving an exposure to varying degree
   how many times the treatment was repeated, how long each treatment lasted, and the
   start and end time of the entire treatment; can include multiple regimens
 title: humidity regimen
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: humidity_regm
 domain_of:

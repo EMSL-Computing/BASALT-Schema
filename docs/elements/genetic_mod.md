@@ -9,7 +9,7 @@ _Genetic modifications of the genome of an organism, which may occur naturally b
 
 
 
-URI: [basalt_schema:genetic_mod](https://w3id.org/MONet/basalt-schema/genetic_mod)
+URI: [basalt_schema:genetic_mod](https://EMSL-Computing.github.io/basalt-schema/genetic_mod)
 Alias: genetic_mod
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: genetic_mod
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ description: Genetic modifications of the genome of an organism, which may occur
   by spontaneous mutation or be introduced by some experimental means, e.g. specification
   of a transgene or the gene knocked-out or details of transient transfection
 title: genetic modifications
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: genetic_mod
 domain_of:

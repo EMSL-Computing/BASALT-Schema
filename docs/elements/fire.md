@@ -9,7 +9,7 @@ _Historical and/or physical evidence of fire. Format: YYYY-MM-DD_
 
 
 
-URI: [basalt_schema:fire](https://w3id.org/MONet/basalt-schema/fire)
+URI: [basalt_schema:fire](https://EMSL-Computing.github.io/basalt-schema/fire)
 Alias: fire
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: fire
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -90,7 +90,7 @@ Alias: fire
 name: fire
 description: 'Historical and/or physical evidence of fire. Format: YYYY-MM-DD'
 title: fire
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: fire
 domain_of:

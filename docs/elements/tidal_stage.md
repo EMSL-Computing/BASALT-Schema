@@ -9,7 +9,7 @@ _Stage of tide_
 
 
 
-URI: [basalt_schema:tidal_stage](https://w3id.org/MONet/basalt-schema/tidal_stage)
+URI: [basalt_schema:tidal_stage](https://EMSL-Computing.github.io/basalt-schema/tidal_stage)
 Alias: tidal_stage
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: tidal_stage
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ Alias: tidal_stage
 name: tidal_stage
 description: Stage of tide
 title: tidal stage
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: tidal_stage
 domain_of:

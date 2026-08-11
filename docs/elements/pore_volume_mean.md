@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:pore_volume_mean](https://w3id.org/MONet/basalt-schema/pore_volume_mean)
+URI: [basalt_schema:pore_volume_mean](https://EMSL-Computing.github.io/basalt-schema/pore_volume_mean)
 Alias: pore_volume_mean
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: pore_volume_mean
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: pore_volume_mean
 <details>
 ```yaml
 name: pore_volume_mean
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: pore_volume_mean
 owner: TomographyProduct

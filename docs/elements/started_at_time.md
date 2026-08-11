@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:started_at_time](https://w3id.org/MONet/basalt-schema/started_at_time)
+URI: [basalt_schema:started_at_time](https://EMSL-Computing.github.io/basalt-schema/started_at_time)
 Alias: started_at_time
 
 <!-- no inheritance hierarchy -->

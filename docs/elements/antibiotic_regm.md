@@ -9,7 +9,7 @@ _Information about treatment involving antibiotic administration; should include
 
 
 
-URI: [basalt_schema:antibiotic_regm](https://w3id.org/MONet/basalt-schema/antibiotic_regm)
+URI: [basalt_schema:antibiotic_regm](https://EMSL-Computing.github.io/basalt-schema/antibiotic_regm)
 Alias: antibiotic_regm
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: antibiotic_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -86,7 +86,7 @@ description: Information about treatment involving antibiotic administration; sh
   how many times the treatment was repeated, how long each treatment lasted, and the
   start and end time of the entire treatment; can include multiple antibiotic regimens
 title: antibiotic regimen
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: antibiotic_regm
 domain_of:

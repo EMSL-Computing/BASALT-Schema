@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:instrument_alt_id_provider](https://w3id.org/MONet/basalt-schema/instrument_alt_id_provider)
+URI: [basalt_schema:instrument_alt_id_provider](https://EMSL-Computing.github.io/basalt-schema/instrument_alt_id_provider)
 Alias: instrument_alt_id_provider
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: instrument_alt_id_provider
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: instrument_alt_id_provider
 <details>
 ```yaml
 name: instrument_alt_id_provider
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: instrument_alt_id_provider
 owner: InstrumentAlternativeIdentifier

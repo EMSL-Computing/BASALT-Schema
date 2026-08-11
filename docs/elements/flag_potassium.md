@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_potassium](https://w3id.org/MONet/basalt-schema/flag_potassium)
+URI: [basalt_schema:flag_potassium](https://EMSL-Computing.github.io/basalt-schema/flag_potassium)
 Alias: flag_potassium
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_potassium
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_potassium
 <details>
 ```yaml
 name: flag_potassium
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: flag_potassium
 owner: IonsAnalysisProduct

@@ -9,7 +9,7 @@ _'Report the environmental material immediately surrounding the sample or specim
 
 
 
-URI: [basalt_schema:env_medium](https://w3id.org/MONet/basalt-schema/env_medium)
+URI: [basalt_schema:env_medium](https://EMSL-Computing.github.io/basalt-schema/env_medium)
 Alias: env_medium
 
 <!-- no inheritance hierarchy -->
@@ -79,7 +79,7 @@ Alias: env_medium
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -104,7 +104,7 @@ description: '''Report the environmental material immediately surrounding the sa
   material'''' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation
   about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'''
 title: environmental medium
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: env_medium
 domain_of:

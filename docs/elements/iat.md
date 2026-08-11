@@ -9,7 +9,7 @@ _Ion accumulation time setting used in the mass spectrometry method._
 
 
 
-URI: [basalt_schema:iat](https://w3id.org/MONet/basalt-schema/iat)
+URI: [basalt_schema:iat](https://EMSL-Computing.github.io/basalt-schema/iat)
 Alias: iat
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: iat
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -82,7 +82,7 @@ Alias: iat
 ```yaml
 name: iat
 description: Ion accumulation time setting used in the mass spectrometry method.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: iat
 domain_of:

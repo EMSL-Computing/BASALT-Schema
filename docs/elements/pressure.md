@@ -9,7 +9,7 @@ _Pressure to which the sample is subject, in atmospheres (Unit: atm)_
 
 
 
-URI: [basalt_schema:pressure](https://w3id.org/MONet/basalt-schema/pressure)
+URI: [basalt_schema:pressure](https://EMSL-Computing.github.io/basalt-schema/pressure)
 Alias: pressure
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: pressure
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -95,7 +95,7 @@ Alias: pressure
 name: pressure
 description: 'Pressure to which the sample is subject, in atmospheres (Unit: atm)'
 title: pressure
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: pressure
 domain_of:

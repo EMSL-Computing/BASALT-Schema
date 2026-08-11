@@ -9,7 +9,7 @@ _Electrical conductivity of water. Provide value and unit, any unit is valid._
 
 
 
-URI: [basalt_schema:conduc](https://w3id.org/MONet/basalt-schema/conduc)
+URI: [basalt_schema:conduc](https://EMSL-Computing.github.io/basalt-schema/conduc)
 Alias: conduc
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: conduc
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ name: conduc
 description: Electrical conductivity of water. Provide value and unit, any unit is
   valid.
 title: conductivity
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: conduc
 domain_of:

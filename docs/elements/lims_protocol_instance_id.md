@@ -9,7 +9,7 @@ _Reference to the L7 protocol_instance that corresponds to this sample processin
 
 
 
-URI: [basalt_schema:lims_protocol_instance_id](https://w3id.org/MONet/basalt-schema/lims_protocol_instance_id)
+URI: [basalt_schema:lims_protocol_instance_id](https://EMSL-Computing.github.io/basalt-schema/lims_protocol_instance_id)
 Alias: lims_protocol_instance_id
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: lims_protocol_instance_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: lims_protocol_instance_id
 name: lims_protocol_instance_id
 description: Reference to the L7 protocol_instance that corresponds to this sample
   processing step, if applicable.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: lims_protocol_instance_id
 domain_of:

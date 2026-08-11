@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:instrument_used](https://w3id.org/MONet/basalt-schema/instrument_used)
+URI: [basalt_schema:instrument_used](https://EMSL-Computing.github.io/basalt-schema/instrument_used)
 Alias: instrument_used
 
 <!-- no inheritance hierarchy -->
@@ -72,7 +72,7 @@ Alias: instrument_used
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ Alias: instrument_used
 <details>
 ```yaml
 name: instrument_used
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: instrument_used
 owner: DataGenerationActivity

@@ -9,7 +9,7 @@ _Raw data files output from a mass spectrometry instrument._
 
 
 
-URI: [basalt_schema:MassSpectrometryInstrumentData](https://w3id.org/MONet/basalt-schema/MassSpectrometryInstrumentData)
+URI: [basalt_schema:MassSpectrometryInstrumentData](https://EMSL-Computing.github.io/basalt-schema/MassSpectrometryInstrumentData)
 
 
 
@@ -176,7 +176,7 @@ URI: [basalt_schema:MassSpectrometryInstrumentData](https://w3id.org/MONet/basal
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -203,7 +203,7 @@ URI: [basalt_schema:MassSpectrometryInstrumentData](https://w3id.org/MONet/basal
 ```yaml
 name: MassSpectrometryInstrumentData
 description: Raw data files output from a mass spectrometry instrument.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: InstrumentData
 slots:
 - produced_by_ms_run
@@ -219,14 +219,14 @@ slots:
 ```yaml
 name: MassSpectrometryInstrumentData
 description: Raw data files output from a mass spectrometry instrument.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: InstrumentData
 attributes:
   produced_by_ms_run:
     name: produced_by_ms_run
     description: a reference to the data generation activity that produced instrument
       data
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: produced_by_ms_run
     owner: MassSpectrometryInstrumentData
@@ -236,7 +236,7 @@ attributes:
   ms_raw_file_type:
     name: ms_raw_file_type
     description: the filetype of the mass spectrometry instrument data
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: ms_raw_file_type
     owner: MassSpectrometryInstrumentData
@@ -247,7 +247,7 @@ attributes:
     name: collection_mode
     description: The collection mode for the mass spectrometry data (e.g., profile,
       centroid)
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: collection_mode
     owner: MassSpectrometryInstrumentData
@@ -257,7 +257,7 @@ attributes:
   file_curie:
     name: file_curie
     description: an identifier for a file that resolves to the file's accessible location
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: file_curie
     owner: MassSpectrometryInstrumentData
@@ -266,7 +266,7 @@ attributes:
     range: string
   alternative_identifiers:
     name: alternative_identifiers
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: alternative_identifiers
     owner: MassSpectrometryInstrumentData
@@ -276,7 +276,7 @@ attributes:
     range: string
   compression_type:
     name: compression_type
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: compression_type
     owner: MassSpectrometryInstrumentData
@@ -285,7 +285,7 @@ attributes:
     range: string
   file_type:
     name: file_type
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: file_type
     owner: MassSpectrometryInstrumentData
@@ -294,7 +294,7 @@ attributes:
     range: FileTypeEnum
   software_version:
     name: software_version
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: software_version
     owner: MassSpectrometryInstrumentData
@@ -305,7 +305,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: MassSpectrometryInstrumentData
@@ -335,7 +335,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: MassSpectrometryInstrumentData
@@ -372,7 +372,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - study
     - study_id
@@ -409,7 +409,7 @@ attributes:
 
       in the same sampling event or campaign.'
     title: sampling set
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sampling_set
     owner: MassSpectrometryInstrumentData
@@ -425,7 +425,7 @@ attributes:
     - value: TOP
     - value: MID
     - value: BTM
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: core_section
     owner: MassSpectrometryInstrumentData
@@ -443,7 +443,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - samp_name
     rank: 1000
@@ -469,7 +469,7 @@ attributes:
     range: string
   s3_base_url:
     name: s3_base_url
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: s3_base_url
     owner: MassSpectrometryInstrumentData
@@ -478,7 +478,7 @@ attributes:
     range: string
   s3_bucket:
     name: s3_bucket
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: s3_bucket
     owner: MassSpectrometryInstrumentData
@@ -488,7 +488,7 @@ attributes:
   s3_key:
     name: s3_key
     description: MinIO/S3 object key; required for all data products
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: s3_key
     owner: MassSpectrometryInstrumentData
@@ -499,7 +499,7 @@ attributes:
   filesize:
     name: filesize
     description: Size of the file in bytes
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: filesize
     owner: MassSpectrometryInstrumentData
@@ -508,7 +508,7 @@ attributes:
     range: integer
   md5checksum:
     name: md5checksum
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: md5checksum
     owner: MassSpectrometryInstrumentData
@@ -517,7 +517,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     identifier: true
     alias: id
     owner: MassSpectrometryInstrumentData

@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:MassSpectrumCollectionModeEnum](https://w3id.org/MONet/basalt-schema/MassSpectrumCollectionModeEnum)
+URI: [basalt_schema:MassSpectrumCollectionModeEnum](https://EMSL-Computing.github.io/basalt-schema/MassSpectrumCollectionModeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -38,7 +38,7 @@ URI: [basalt_schema:MassSpectrumCollectionModeEnum](https://w3id.org/MONet/basal
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -50,7 +50,7 @@ URI: [basalt_schema:MassSpectrumCollectionModeEnum](https://w3id.org/MONet/basal
 <details>
 ```yaml
 name: MassSpectrumCollectionModeEnum
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   full_profile:

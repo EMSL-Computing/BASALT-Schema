@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:processing_steps](https://w3id.org/MONet/basalt-schema/processing_steps)
+URI: [basalt_schema:processing_steps](https://EMSL-Computing.github.io/basalt-schema/processing_steps)
 Alias: processing_steps
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: processing_steps
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -93,7 +93,7 @@ Alias: processing_steps
 <details>
 ```yaml
 name: processing_steps
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: processing_steps
 owner: SampleProcessing

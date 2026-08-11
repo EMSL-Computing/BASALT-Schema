@@ -9,7 +9,7 @@ _Description of GUID source if guid_source = "other"._
 
 
 
-URI: [basalt_schema:other_guid_source](https://w3id.org/MONet/basalt-schema/other_guid_source)
+URI: [basalt_schema:other_guid_source](https://EMSL-Computing.github.io/basalt-schema/other_guid_source)
 Alias: other_guid_source
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: other_guid_source
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -82,7 +82,7 @@ Alias: other_guid_source
 ```yaml
 name: other_guid_source
 description: Description of GUID source if guid_source = "other".
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: other_guid_source
 domain_of:

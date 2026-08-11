@@ -9,7 +9,7 @@ _The person who contributed to the study._
 
 
 
-URI: [basalt_schema:person](https://w3id.org/MONet/basalt-schema/person)
+URI: [basalt_schema:person](https://EMSL-Computing.github.io/basalt-schema/person)
 Alias: person
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: person
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -90,7 +90,7 @@ Alias: person
 ```yaml
 name: person
 description: The person who contributed to the study.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: person
 owner: ProjectParticipant

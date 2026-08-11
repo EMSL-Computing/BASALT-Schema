@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:x_ray_power](https://w3id.org/MONet/basalt-schema/x_ray_power)
+URI: [basalt_schema:x_ray_power](https://EMSL-Computing.github.io/basalt-schema/x_ray_power)
 Alias: x_ray_power
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: x_ray_power
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: x_ray_power
 <details>
 ```yaml
 name: x_ray_power
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: x_ray_power
 owner: XrayComputedTomographyMethod

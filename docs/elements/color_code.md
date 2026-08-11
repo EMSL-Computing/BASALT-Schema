@@ -9,7 +9,7 @@ _Color indicates the max altitude._
 
 
 
-URI: [basalt_schema:color_code](https://w3id.org/MONet/basalt-schema/color_code)
+URI: [basalt_schema:color_code](https://EMSL-Computing.github.io/basalt-schema/color_code)
 Alias: color_code
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: color_code
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: color_code
 name: color_code
 description: Color indicates the max altitude.
 title: color code
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: color_code
 domain_of:

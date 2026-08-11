@@ -9,7 +9,7 @@ _The specific type of soil sample (e.g. soil core, surface layer)._
 
 
 
-URI: [basalt_schema:soil_sample_type](https://w3id.org/MONet/basalt-schema/soil_sample_type)
+URI: [basalt_schema:soil_sample_type](https://EMSL-Computing.github.io/basalt-schema/soil_sample_type)
 Alias: soil_sample_type
 
 <!-- no inheritance hierarchy -->
@@ -67,7 +67,7 @@ Alias: soil_sample_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -94,7 +94,7 @@ todos:
   this come from?
 - BJM 060626 - clarified this slot and enum name from 'soil_type' but I'm still not
   sure we need it. it is populated in the current database though.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: soil_sample_type
 domain_of:

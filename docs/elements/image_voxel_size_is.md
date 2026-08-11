@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:image_voxel_size_is](https://w3id.org/MONet/basalt-schema/image_voxel_size_is)
+URI: [basalt_schema:image_voxel_size_is](https://EMSL-Computing.github.io/basalt-schema/image_voxel_size_is)
 Alias: image_voxel_size_is
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: image_voxel_size_is
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: image_voxel_size_is
 <details>
 ```yaml
 name: image_voxel_size_is
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: image_voxel_size_is
 owner: XrayComputedTomographyMethod

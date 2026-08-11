@@ -9,7 +9,7 @@ _Heights of objects such as airplanes, space shuttles, rockets, atmospheric ball
 
 
 
-URI: [basalt_schema:alt](https://w3id.org/MONet/basalt-schema/alt)
+URI: [basalt_schema:alt](https://EMSL-Computing.github.io/basalt-schema/alt)
 Alias: alt
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: alt
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -95,7 +95,7 @@ description: 'Heights of objects such as airplanes, space shuttles, rockets, atm
   surface above sea level and the sampled position in the air. For ARM this can be
   a range. (Unit: m)'
 title: altitude
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: alt
 domain_of:

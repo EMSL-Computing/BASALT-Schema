@@ -9,7 +9,7 @@ _'Report the entity which are in your sample or specimens local vicinity and whi
 
 
 
-URI: [basalt_schema:env_local_scale](https://w3id.org/MONet/basalt-schema/env_local_scale)
+URI: [basalt_schema:env_local_scale](https://EMSL-Computing.github.io/basalt-schema/env_local_scale)
 Alias: env_local_scale
 
 <!-- no inheritance hierarchy -->
@@ -79,7 +79,7 @@ Alias: env_local_scale
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -105,7 +105,7 @@ description: '''Report the entity which are in your sample or specimens local vi
   than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker
   identified here: http://www.obofoundry.org/ontology/envo.html'''
 title: local environmental context
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: env_local_scale
 domain_of:

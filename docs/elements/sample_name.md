@@ -11,7 +11,7 @@ _be a human readable name._
 
 
 
-URI: [basalt_schema:sample_name](https://w3id.org/MONet/basalt-schema/sample_name)
+URI: [basalt_schema:sample_name](https://EMSL-Computing.github.io/basalt-schema/sample_name)
 Alias: sample_name
 
 <!-- no inheritance hierarchy -->
@@ -116,7 +116,7 @@ Alias: sample_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -143,7 +143,7 @@ title: sample name
 notes:
 - This is typically an alias for the inherited 'name' slot on Sample classes. Defined
   separately for compatibility with source data files using 'sample_name' column headers.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - samp_name
 rank: 1000

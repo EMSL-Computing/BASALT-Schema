@@ -9,7 +9,7 @@ _The relationship of the sample to oxygen, such as aerobic or anaerobic._
 
 
 
-URI: [basalt_schema:oxygen_relationship](https://w3id.org/MONet/basalt-schema/oxygen_relationship)
+URI: [basalt_schema:oxygen_relationship](https://EMSL-Computing.github.io/basalt-schema/oxygen_relationship)
 Alias: oxygen_status
 
 <!-- no inheritance hierarchy -->
@@ -80,7 +80,7 @@ Alias: oxygen_status
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -103,7 +103,7 @@ Alias: oxygen_status
 name: oxygen_relationship
 description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
 title: oxygen relationship
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 exact_mappings:
 - MIXS:0000015
 rank: 1000

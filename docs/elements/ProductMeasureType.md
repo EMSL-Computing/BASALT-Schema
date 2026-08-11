@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:ProductMeasureType](https://w3id.org/MONet/basalt-schema/ProductMeasureType)
+URI: [basalt_schema:ProductMeasureType](https://EMSL-Computing.github.io/basalt-schema/ProductMeasureType)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -38,7 +38,7 @@ URI: [basalt_schema:ProductMeasureType](https://w3id.org/MONet/basalt-schema/Pro
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -50,7 +50,7 @@ URI: [basalt_schema:ProductMeasureType](https://w3id.org/MONet/basalt-schema/Pro
 <details>
 ```yaml
 name: ProductMeasureType
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   Single:

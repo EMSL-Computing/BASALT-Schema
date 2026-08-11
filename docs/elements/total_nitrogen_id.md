@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:total_nitrogen_id](https://w3id.org/MONet/basalt-schema/total_nitrogen_id)
+URI: [basalt_schema:total_nitrogen_id](https://EMSL-Computing.github.io/basalt-schema/total_nitrogen_id)
 Alias: total_nitrogen_id
 
 <!-- no inheritance hierarchy -->

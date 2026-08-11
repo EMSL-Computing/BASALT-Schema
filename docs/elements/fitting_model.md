@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:fitting_model](https://w3id.org/MONet/basalt-schema/fitting_model)
+URI: [basalt_schema:fitting_model](https://EMSL-Computing.github.io/basalt-schema/fitting_model)
 Alias: fitting_model
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: fitting_model
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: fitting_model
 <details>
 ```yaml
 name: fitting_model
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: fitting_model
 owner: HydraulicPropertiesMethod

@@ -9,7 +9,7 @@ _This refers to the TOTAL amount of sample collected from the experiment. NOT th
 
 
 
-URI: [basalt_schema:sample_collected](https://w3id.org/MONet/basalt-schema/sample_collected)
+URI: [basalt_schema:sample_collected](https://EMSL-Computing.github.io/basalt-schema/sample_collected)
 Alias: sample_collected
 
 <!-- no inheritance hierarchy -->
@@ -80,7 +80,7 @@ Alias: sample_collected
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -104,7 +104,7 @@ description: This refers to the TOTAL amount of sample collected from the experi
   NOT the amount sent to EMSL or collected for a specific analysis. Provide value
   and unit, any unit is valid
 title: sample collected
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sample_collected
 domain_of:

@@ -9,7 +9,7 @@ _Reference or method used in determining biomass_
 
 
 
-URI: [basalt_schema:non_microb_biomass_method](https://w3id.org/MONet/basalt-schema/non_microb_biomass_method)
+URI: [basalt_schema:non_microb_biomass_method](https://EMSL-Computing.github.io/basalt-schema/non_microb_biomass_method)
 Alias: non_microb_biomass_method
 
 <!-- no inheritance hierarchy -->
@@ -67,7 +67,7 @@ Alias: non_microb_biomass_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -89,7 +89,7 @@ Alias: non_microb_biomass_method
 name: non_microb_biomass_method
 description: Reference or method used in determining biomass
 title: non microbial biomass method
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: non_microb_biomass_method
 domain_of:

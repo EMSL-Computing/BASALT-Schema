@@ -9,7 +9,7 @@ _Method of growth and medium/materials used. Indicate broth, gel, 3-D structure,
 
 
 
-URI: [basalt_schema:growth_medium](https://w3id.org/MONet/basalt-schema/growth_medium)
+URI: [basalt_schema:growth_medium](https://EMSL-Computing.github.io/basalt-schema/growth_medium)
 Alias: growth_medium
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: growth_medium
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -95,7 +95,7 @@ description: Method of growth and medium/materials used. Indicate broth, gel, 3-
   structure, bioreactor, etc. followed by the formula, recipe, or components used
   to create the growth medium.
 title: growth medium
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: growth_medium
 domain_of:

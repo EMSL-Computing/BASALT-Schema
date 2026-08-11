@@ -9,7 +9,7 @@ _Method used for obtaining organic nitrogen_
 
 
 
-URI: [basalt_schema:org_nitro_method](https://w3id.org/MONet/basalt-schema/org_nitro_method)
+URI: [basalt_schema:org_nitro_method](https://EMSL-Computing.github.io/basalt-schema/org_nitro_method)
 Alias: org_nitro_method
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: org_nitro_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ Alias: org_nitro_method
 name: org_nitro_method
 description: Method used for obtaining organic nitrogen
 title: organic nitrogen method
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: org_nitro_method
 domain_of:

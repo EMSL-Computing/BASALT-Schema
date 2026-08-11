@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:total_projections_collected](https://w3id.org/MONet/basalt-schema/total_projections_collected)
+URI: [basalt_schema:total_projections_collected](https://EMSL-Computing.github.io/basalt-schema/total_projections_collected)
 Alias: total_projections_collected
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: total_projections_collected
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: total_projections_collected
 <details>
 ```yaml
 name: total_projections_collected
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: total_projections_collected
 owner: XrayComputedTomographyMethod

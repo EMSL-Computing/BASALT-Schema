@@ -9,7 +9,7 @@ _Collection of soil cores according to the MONet soil sampling protocol._
 
 
 
-URI: [basalt_schema:MonetSoilSamplingActivity](https://w3id.org/MONet/basalt-schema/MonetSoilSamplingActivity)
+URI: [basalt_schema:MonetSoilSamplingActivity](https://EMSL-Computing.github.io/basalt-schema/MonetSoilSamplingActivity)
 
 
 
@@ -113,7 +113,7 @@ URI: [basalt_schema:MonetSoilSamplingActivity](https://w3id.org/MONet/basalt-sch
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -140,7 +140,7 @@ URI: [basalt_schema:MonetSoilSamplingActivity](https://w3id.org/MONet/basalt-sch
 ```yaml
 name: MonetSoilSamplingActivity
 description: Collection of soil cores according to the MONet soil sampling protocol.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: SamplingActivity
 slots:
 - collection_time
@@ -165,7 +165,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -251,7 +251,7 @@ attributes:
 ```yaml
 name: MonetSoilSamplingActivity
 description: Collection of soil cores according to the MONet soil sampling protocol.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 is_a: SamplingActivity
 slot_usage:
   collection_time:
@@ -269,7 +269,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
     identifier: true
     alias: id
     owner: MonetSoilSamplingActivity
@@ -353,7 +353,7 @@ attributes:
       HH:MM:SS in 24-hour time format. Don''t forget the second! (Unit: hh:mm:ss or
       HH:MM:SS)'
     title: collection time
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: collection_time
     owner: MonetSoilSamplingActivity
@@ -380,7 +380,7 @@ attributes:
       time was not attempted enter ''did not collect''. Units and format of mm:ss
       required. (Example: 15:20 mm:ss)'
     title: first infiltration time
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: infiltration_1
     owner: MonetSoilSamplingActivity
@@ -397,7 +397,7 @@ attributes:
       time was not attempted enter ''did not collect''. Units and format of mm:ss
       required. (Example: 15:20 mm:ss)'
     title: second infiltration time
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: infiltration_2
     owner: MonetSoilSamplingActivity
@@ -412,7 +412,7 @@ attributes:
     description: Provide any details, issues, or context needed to understand the
       infiltration activity
     title: infiltration notes
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: infiltration_notes
     owner: MonetSoilSamplingActivity
@@ -425,7 +425,7 @@ attributes:
     description: The device used to collect an environmental sample. Include dimensions
       of device if applicable
     title: sample collection device
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sample_collection_dev
     owner: MonetSoilSamplingActivity
@@ -449,7 +449,7 @@ attributes:
     description: The state of the atmosphere at a given time and place with respect
       to variables such as temperature, moisture, wind velocity, and barometric pressure.
     title: weather
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: weather
     owner: MonetSoilSamplingActivity
@@ -462,7 +462,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: name
     owner: MonetSoilSamplingActivity
@@ -492,7 +492,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: MonetSoilSamplingActivity
@@ -528,7 +528,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     aliases:
     - study
     - study_id
@@ -567,7 +567,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: emsl_activity
     owner: MonetSoilSamplingActivity
@@ -584,7 +584,7 @@ attributes:
 
       (YYYY-MM)'''
     title: collection date
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: collection_date
     owner: MonetSoilSamplingActivity
@@ -597,7 +597,7 @@ attributes:
     name: shipped_sample_size
     description: Total amount of sample sent to EMSL. Must include units.
     title: shipped sample size
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: shipped_sample_size
     owner: MonetSoilSamplingActivity
@@ -610,7 +610,7 @@ attributes:
     name: sampled_at_site
     description: Reference to the site where the sample was collected. This is a FK
       to the Site class, which contains detailed metadata about the sampling location.
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: sampled_at_site
     owner: MonetSoilSamplingActivity

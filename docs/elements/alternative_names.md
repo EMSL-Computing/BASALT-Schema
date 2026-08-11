@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:alternative_names](https://w3id.org/MONet/basalt-schema/alternative_names)
+URI: [basalt_schema:alternative_names](https://EMSL-Computing.github.io/basalt-schema/alternative_names)
 Alias: alternative_names
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: alternative_names
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: alternative_names
 <details>
 ```yaml
 name: alternative_names
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: alternative_names
 owner: Instrument

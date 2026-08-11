@@ -9,7 +9,7 @@ _Particles are classified based on their size into six general categories: clay,
 
 
 
-URI: [basalt_schema:particle_class](https://w3id.org/MONet/basalt-schema/particle_class)
+URI: [basalt_schema:particle_class](https://EMSL-Computing.github.io/basalt-schema/particle_class)
 Alias: particle_class
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: particle_class
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -87,7 +87,7 @@ description: 'Particles are classified based on their size into six general cate
   units preceded by the name of the particle type; can include multiple values separated
   by '';''.'
 title: particle class
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: particle_class
 domain_of:

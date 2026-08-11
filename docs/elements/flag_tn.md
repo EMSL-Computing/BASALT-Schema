@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_tn](https://w3id.org/MONet/basalt-schema/flag_tn)
+URI: [basalt_schema:flag_tn](https://EMSL-Computing.github.io/basalt-schema/flag_tn)
 Alias: flag_tn
 
 <!-- no inheritance hierarchy -->

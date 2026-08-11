@@ -11,7 +11,7 @@ _Indicates if the sample is subject to CBI restrictions._
 
 
 
-URI: [basalt_schema:cbi](https://w3id.org/MONet/basalt-schema/cbi)
+URI: [basalt_schema:cbi](https://EMSL-Computing.github.io/basalt-schema/cbi)
 Alias: cbi
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: cbi
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ name: cbi
 description: 'Confidential Business Information flag (yes/no).
 
   Indicates if the sample is subject to CBI restrictions.'
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 aliases:
 - CBI
 rank: 1000

@@ -11,7 +11,7 @@ _be a range of producers._
 
 
 
-URI: [basalt_schema:trophic_level](https://w3id.org/MONet/basalt-schema/trophic_level)
+URI: [basalt_schema:trophic_level](https://EMSL-Computing.github.io/basalt-schema/trophic_level)
 Alias: trophic_level
 
 <!-- no inheritance hierarchy -->
@@ -67,7 +67,7 @@ Alias: trophic_level
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -91,7 +91,7 @@ description: 'Trophic levels are the feeding position in a food chain. Microbes 
 
   be a range of producers.'
 title: trophic level
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: trophic_level
 domain_of:

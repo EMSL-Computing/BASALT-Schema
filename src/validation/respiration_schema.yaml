@@ -12,7 +12,7 @@
 # Last Updated: 2026-04-30
 # =============================================================================
 
-id: https://w3id.org/MONet/basalt-schema/respiration
+id: https://EMSL-Computing.github.io/basalt-schema/respiration
 name: respiration_schema
 title: MONet Soil Respiration Analysis Schema
 description: |-
@@ -22,7 +22,7 @@ description: |-
 license: MIT
 
 prefixes:
-  basalt_schema: https://w3id.org/MONet/basalt-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: respiration_schema

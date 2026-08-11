@@ -9,7 +9,7 @@ _Methane (gas) amount or concentration at the time of sampling. (Unit: umol/L or
 
 
 
-URI: [basalt_schema:methane](https://w3id.org/MONet/basalt-schema/methane)
+URI: [basalt_schema:methane](https://EMSL-Computing.github.io/basalt-schema/methane)
 Alias: methane
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: methane
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -94,7 +94,7 @@ name: methane
 description: 'Methane (gas) amount or concentration at the time of sampling. (Unit:
   umol/L or ppb or ppm)'
 title: methane
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: methane
 domain_of:

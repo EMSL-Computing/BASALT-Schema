@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:files](https://w3id.org/MONet/basalt-schema/files)
+URI: [basalt_schema:files](https://EMSL-Computing.github.io/basalt-schema/files)
 Alias: files
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: files
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: files
 <details>
 ```yaml
 name: files
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: files
 owner: zipDownload

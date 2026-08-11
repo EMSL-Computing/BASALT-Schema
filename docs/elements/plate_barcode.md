@@ -9,7 +9,7 @@ _Physical barcode on plate (if different from UUID)_
 
 
 
-URI: [basalt_schema:plate_barcode](https://w3id.org/MONet/basalt-schema/plate_barcode)
+URI: [basalt_schema:plate_barcode](https://EMSL-Computing.github.io/basalt-schema/plate_barcode)
 Alias: plate_barcode
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: plate_barcode
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: plate_barcode
 ```yaml
 name: plate_barcode
 description: Physical barcode on plate (if different from UUID)
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: plate_barcode
 domain_of:

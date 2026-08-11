@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:ControlledTermValue](https://w3id.org/MONet/basalt-schema/ControlledTermValue)
+URI: [basalt_schema:ControlledTermValue](https://EMSL-Computing.github.io/basalt-schema/ControlledTermValue)
 
 
 
@@ -78,7 +78,7 @@ URI: [basalt_schema:ControlledTermValue](https://w3id.org/MONet/basalt-schema/Co
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -104,13 +104,13 @@ URI: [basalt_schema:ControlledTermValue](https://w3id.org/MONet/basalt-schema/Co
 <details>
 ```yaml
 name: ControlledTermValue
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 slots:
 - description
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
     identifier: true
     domain_of:
     - Activity
@@ -188,7 +188,7 @@ attributes:
     required: true
   has_raw_value:
     name: has_raw_value
-    from_schema: https://w3id.org/MONet/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
     domain_of:
     - TimestampValue
     - TextValue
@@ -199,7 +199,7 @@ attributes:
     range: string
   term:
     name: term
-    from_schema: https://w3id.org/MONet/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
     rank: 1000
     domain_of:
     - ControlledTermValue
@@ -207,7 +207,7 @@ attributes:
   term_id:
     name: term_id
     description: pointer to an ontology class
-    from_schema: https://w3id.org/MONet/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
     rank: 1000
     domain_of:
     - ControlledTermValue
@@ -215,7 +215,7 @@ attributes:
   controlled_term_provider:
     name: controlled_term_provider
     description: name of ontology or other controlled term provider
-    from_schema: https://w3id.org/MONet/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
     rank: 1000
     domain_of:
     - ControlledTermValue
@@ -229,11 +229,11 @@ attributes:
 <details>
 ```yaml
 name: ControlledTermValue
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
     identifier: true
     alias: id
     owner: ControlledTermValue
@@ -313,7 +313,7 @@ attributes:
     required: true
   has_raw_value:
     name: has_raw_value
-    from_schema: https://w3id.org/MONet/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
     alias: has_raw_value
     owner: ControlledTermValue
     domain_of:
@@ -326,7 +326,7 @@ attributes:
     range: string
   term:
     name: term
-    from_schema: https://w3id.org/MONet/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
     rank: 1000
     alias: term
     owner: ControlledTermValue
@@ -336,7 +336,7 @@ attributes:
   term_id:
     name: term_id
     description: pointer to an ontology class
-    from_schema: https://w3id.org/MONet/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
     rank: 1000
     alias: term_id
     owner: ControlledTermValue
@@ -346,7 +346,7 @@ attributes:
   controlled_term_provider:
     name: controlled_term_provider
     description: name of ontology or other controlled term provider
-    from_schema: https://w3id.org/MONet/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
     rank: 1000
     alias: controlled_term_provider
     owner: ControlledTermValue
@@ -357,7 +357,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: description
     owner: ControlledTermValue

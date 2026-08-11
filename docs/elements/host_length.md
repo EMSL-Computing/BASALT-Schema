@@ -9,7 +9,7 @@ _The length of subject_
 
 
 
-URI: [basalt_schema:host_length](https://w3id.org/MONet/basalt-schema/host_length)
+URI: [basalt_schema:host_length](https://EMSL-Computing.github.io/basalt-schema/host_length)
 Alias: host_length
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: host_length
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: host_length
 name: host_length
 description: The length of subject
 title: host length
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: host_length
 domain_of:

@@ -9,7 +9,7 @@ _Measurement of magnitude and direction of flow within a fluid. Provide value an
 
 
 
-URI: [basalt_schema:water_current](https://w3id.org/MONet/basalt-schema/water_current)
+URI: [basalt_schema:water_current](https://EMSL-Computing.github.io/basalt-schema/water_current)
 Alias: water_current
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: water_current
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ name: water_current
 description: Measurement of magnitude and direction of flow within a fluid. Provide
   value and unit, any unit is valid.
 title: water current
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: water_current
 domain_of:

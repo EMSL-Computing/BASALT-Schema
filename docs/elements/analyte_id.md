@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:analyte_id](https://w3id.org/MONet/basalt-schema/analyte_id)
+URI: [basalt_schema:analyte_id](https://EMSL-Computing.github.io/basalt-schema/analyte_id)
 Alias: analyte_id
 
 <!-- no inheritance hierarchy -->
@@ -72,7 +72,7 @@ Alias: analyte_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ Alias: analyte_id
 <details>
 ```yaml
 name: analyte_id
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: analyte_id
 owner: DataGenerationActivity

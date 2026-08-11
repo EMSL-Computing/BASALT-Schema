@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:check_standard_spacing](https://w3id.org/MONet/basalt-schema/check_standard_spacing)
+URI: [basalt_schema:check_standard_spacing](https://EMSL-Computing.github.io/basalt-schema/check_standard_spacing)
 Alias: check_standard_spacing
 
 <!-- no inheritance hierarchy -->

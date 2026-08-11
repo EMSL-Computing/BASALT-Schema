@@ -9,7 +9,7 @@ _URL pointing to the protocol used in the activity, if applicable._
 
 
 
-URI: [basalt_schema:protocol_url](https://w3id.org/MONet/basalt-schema/protocol_url)
+URI: [basalt_schema:protocol_url](https://EMSL-Computing.github.io/basalt-schema/protocol_url)
 Alias: protocol_url
 
 <!-- no inheritance hierarchy -->
@@ -80,7 +80,7 @@ Alias: protocol_url
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -101,7 +101,7 @@ Alias: protocol_url
 ```yaml
 name: protocol_url
 description: URL pointing to the protocol used in the activity, if applicable.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: protocol_url
 domain_of:

@@ -15,7 +15,7 @@ _typed via LinkML inlined class._
 
 
 
-URI: [basalt_schema:well_readings](https://w3id.org/MONet/basalt-schema/well_readings)
+URI: [basalt_schema:well_readings](https://EMSL-Computing.github.io/basalt-schema/well_readings)
 Alias: well_readings
 
 <!-- no inheritance hierarchy -->
@@ -74,7 +74,7 @@ Alias: well_readings
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -104,7 +104,7 @@ description: 'Structured per-well measurement data array.
 todos:
 - decide how to represent in backend (normalized child table with FK to PlateSetupActivity,
   array column, or other)
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: well_readings
 domain_of:

@@ -9,7 +9,7 @@ _Information about treatment involving exposure of plant or a plant part to a pa
 
 
 
-URI: [basalt_schema:radiation_regm](https://w3id.org/MONet/basalt-schema/radiation_regm)
+URI: [basalt_schema:radiation_regm](https://EMSL-Computing.github.io/basalt-schema/radiation_regm)
 Alias: radiation_regm
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: radiation_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -87,7 +87,7 @@ description: Information about treatment involving exposure of plant or a plant 
   was repeated, how long each treatment lasted, and the start and end time of the
   entire treatment; can include multiple radiation regimens
 title: radiation regimen
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: radiation_regm
 domain_of:

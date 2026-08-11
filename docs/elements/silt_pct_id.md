@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:silt_pct_id](https://w3id.org/MONet/basalt-schema/silt_pct_id)
+URI: [basalt_schema:silt_pct_id](https://EMSL-Computing.github.io/basalt-schema/silt_pct_id)
 Alias: silt_pct_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: silt_pct_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: silt_pct_id
 <details>
 ```yaml
 name: silt_pct_id
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: silt_pct_id
 owner: TextureProduct

@@ -9,7 +9,7 @@ _Measurement of glucosidase activity (Unit: mol/L/h)_
 
 
 
-URI: [basalt_schema:glucosidase_act](https://w3id.org/MONet/basalt-schema/glucosidase_act)
+URI: [basalt_schema:glucosidase_act](https://EMSL-Computing.github.io/basalt-schema/glucosidase_act)
 Alias: glucosidase_act
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: glucosidase_act
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -92,7 +92,7 @@ Alias: glucosidase_act
 name: glucosidase_act
 description: 'Measurement of glucosidase activity (Unit: mol/L/h)'
 title: glucosidase activity
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: glucosidase_act
 domain_of:

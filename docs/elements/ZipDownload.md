@@ -9,7 +9,7 @@ _A zip download record, capturing the details of a zip file download event._
 
 
 
-URI: [basalt_schema:ZipDownload](https://w3id.org/MONet/basalt-schema/ZipDownload)
+URI: [basalt_schema:ZipDownload](https://EMSL-Computing.github.io/basalt-schema/ZipDownload)
 
 
 
@@ -70,7 +70,7 @@ URI: [basalt_schema:ZipDownload](https://w3id.org/MONet/basalt-schema/ZipDownloa
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -97,11 +97,11 @@ URI: [basalt_schema:ZipDownload](https://w3id.org/MONet/basalt-schema/ZipDownloa
 ```yaml
 name: zipDownload
 description: A zip download record, capturing the details of a zip file download event.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema/zip_download
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/zip_download
     identifier: true
     domain_of:
     - Activity
@@ -179,7 +179,7 @@ attributes:
     required: true
   time:
     name: time
-    from_schema: https://w3id.org/MONet/basalt-schema/zip_download
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/zip_download
     rank: 1000
     domain_of:
     - zipDownload
@@ -187,7 +187,7 @@ attributes:
     required: true
   user:
     name: user
-    from_schema: https://w3id.org/MONet/basalt-schema/zip_download
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/zip_download
     rank: 1000
     domain_of:
     - zipDownload
@@ -195,7 +195,7 @@ attributes:
     required: true
   files:
     name: files
-    from_schema: https://w3id.org/MONet/basalt-schema/zip_download
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/zip_download
     rank: 1000
     domain_of:
     - zipDownload
@@ -203,7 +203,7 @@ attributes:
     required: true
   packages:
     name: packages
-    from_schema: https://w3id.org/MONet/basalt-schema/zip_download
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/zip_download
     rank: 1000
     domain_of:
     - zipDownload
@@ -218,11 +218,11 @@ attributes:
 ```yaml
 name: zipDownload
 description: A zip download record, capturing the details of a zip file download event.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema/zip_download
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/zip_download
     identifier: true
     alias: id
     owner: zipDownload
@@ -302,7 +302,7 @@ attributes:
     required: true
   time:
     name: time
-    from_schema: https://w3id.org/MONet/basalt-schema/zip_download
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/zip_download
     rank: 1000
     alias: time
     owner: zipDownload
@@ -312,7 +312,7 @@ attributes:
     required: true
   user:
     name: user
-    from_schema: https://w3id.org/MONet/basalt-schema/zip_download
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/zip_download
     rank: 1000
     alias: user
     owner: zipDownload
@@ -322,7 +322,7 @@ attributes:
     required: true
   files:
     name: files
-    from_schema: https://w3id.org/MONet/basalt-schema/zip_download
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/zip_download
     rank: 1000
     alias: files
     owner: zipDownload
@@ -332,7 +332,7 @@ attributes:
     required: true
   packages:
     name: packages
-    from_schema: https://w3id.org/MONet/basalt-schema/zip_download
+    from_schema: https://EMSL-Computing.github.io/basalt-schema/zip_download
     rank: 1000
     alias: packages
     owner: zipDownload

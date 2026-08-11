@@ -9,7 +9,7 @@ _Coefficient of variation across technical replicates_
 
 
 
-URI: [basalt_schema:cv_percent](https://w3id.org/MONet/basalt-schema/cv_percent)
+URI: [basalt_schema:cv_percent](https://EMSL-Computing.github.io/basalt-schema/cv_percent)
 Alias: cv_percent
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: cv_percent
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: cv_percent
 ```yaml
 name: cv_percent
 description: Coefficient of variation across technical replicates
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: cv_percent
 domain_of:

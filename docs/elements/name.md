@@ -9,7 +9,7 @@ _Human-readable name for the entity or activity._
 
 
 
-URI: [basalt_schema:name](https://w3id.org/MONet/basalt-schema/name)
+URI: [basalt_schema:name](https://EMSL-Computing.github.io/basalt-schema/name)
 Alias: name
 
 <!-- no inheritance hierarchy -->
@@ -154,7 +154,7 @@ Alias: name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -175,7 +175,7 @@ Alias: name
 ```yaml
 name: name
 description: Human-readable name for the entity or activity.
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: name
 domain_of:

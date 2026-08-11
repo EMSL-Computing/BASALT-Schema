@@ -9,7 +9,7 @@ _fragmentation technique used in the mass spectrometry run_
 
 
 
-URI: [basalt_schema:fragmentation](https://w3id.org/MONet/basalt-schema/fragmentation)
+URI: [basalt_schema:fragmentation](https://EMSL-Computing.github.io/basalt-schema/fragmentation)
 Alias: fragmentation
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: fragmentation
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -82,7 +82,7 @@ Alias: fragmentation
 ```yaml
 name: fragmentation
 description: fragmentation technique used in the mass spectrometry run
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: fragmentation
 domain_of:

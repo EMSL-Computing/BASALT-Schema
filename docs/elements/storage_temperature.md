@@ -9,7 +9,7 @@ _Storage temperature for the sample (e.g., "-80 C", "4 C")._
 
 
 
-URI: [basalt_schema:storage_temperature](https://w3id.org/MONet/basalt-schema/storage_temperature)
+URI: [basalt_schema:storage_temperature](https://EMSL-Computing.github.io/basalt-schema/storage_temperature)
 Alias: storage_temperature
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: storage_temperature
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: storage_temperature
 ```yaml
 name: storage_temperature
 description: Storage temperature for the sample (e.g., "-80 C", "4 C").
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: storage_temperature
 domain_of:

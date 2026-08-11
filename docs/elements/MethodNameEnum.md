@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:MethodNameEnum](https://w3id.org/MONet/basalt-schema/MethodNameEnum)
+URI: [basalt_schema:MethodNameEnum](https://EMSL-Computing.github.io/basalt-schema/MethodNameEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -37,7 +37,7 @@ URI: [basalt_schema:MethodNameEnum](https://w3id.org/MONet/basalt-schema/MethodN
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -49,7 +49,7 @@ URI: [basalt_schema:MethodNameEnum](https://w3id.org/MONet/basalt-schema/MethodN
 <details>
 ```yaml
 name: MethodNameEnum
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   MAOM:

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:vendor](https://w3id.org/MONet/basalt-schema/vendor)
+URI: [basalt_schema:vendor](https://EMSL-Computing.github.io/basalt-schema/vendor)
 Alias: vendor
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: vendor
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: vendor
 <details>
 ```yaml
 name: vendor
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: vendor
 owner: Instrument

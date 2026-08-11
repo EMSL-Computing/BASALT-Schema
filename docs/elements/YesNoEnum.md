@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:YesNoEnum](https://w3id.org/MONet/basalt-schema/YesNoEnum)
+URI: [basalt_schema:YesNoEnum](https://EMSL-Computing.github.io/basalt-schema/YesNoEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -31,7 +31,7 @@ URI: [basalt_schema:YesNoEnum](https://w3id.org/MONet/basalt-schema/YesNoEnum)
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -43,7 +43,7 @@ URI: [basalt_schema:YesNoEnum](https://w3id.org/MONet/basalt-schema/YesNoEnum)
 <details>
 ```yaml
 name: YesNoEnum
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 permissible_values:
   'True':

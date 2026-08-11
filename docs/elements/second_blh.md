@@ -9,7 +9,7 @@ _Second boundary layer height candidate (meters) (Unit: m)_
 
 
 
-URI: [basalt_schema:second_blh](https://w3id.org/MONet/basalt-schema/second_blh)
+URI: [basalt_schema:second_blh](https://EMSL-Computing.github.io/basalt-schema/second_blh)
 Alias: second_blh
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: second_blh
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: second_blh
 name: second_blh
 description: 'Second boundary layer height candidate (meters) (Unit: m)'
 title: second boundary layer height
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: second_blh
 domain_of:

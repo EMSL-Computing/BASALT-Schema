@@ -9,7 +9,7 @@ _Role of this well   "sample", "blank", "uninoculated_control", "standard"_
 
 
 
-URI: [basalt_schema:well_type](https://w3id.org/MONet/basalt-schema/well_type)
+URI: [basalt_schema:well_type](https://EMSL-Computing.github.io/basalt-schema/well_type)
 Alias: well_type
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: well_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -91,7 +91,7 @@ Alias: well_type
 ```yaml
 name: well_type
 description: Role of this well   "sample", "blank", "uninoculated_control", "standard"
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: well_type
 owner: WellMetadata

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:InstrumentAlternativeIdentifier](https://w3id.org/MONet/basalt-schema/InstrumentAlternativeIdentifier)
+URI: [basalt_schema:InstrumentAlternativeIdentifier](https://EMSL-Computing.github.io/basalt-schema/InstrumentAlternativeIdentifier)
 
 
 
@@ -89,7 +89,7 @@ URI: [basalt_schema:InstrumentAlternativeIdentifier](https://w3id.org/MONet/basa
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -115,11 +115,11 @@ URI: [basalt_schema:InstrumentAlternativeIdentifier](https://w3id.org/MONet/basa
 <details>
 ```yaml
 name: InstrumentAlternativeIdentifier
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     identifier: true
     domain_of:
     - Activity
@@ -197,21 +197,21 @@ attributes:
     required: true
   alt_id:
     name: alt_id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     domain_of:
     - InstrumentAlternativeIdentifier
     range: AlternativeIdentifier
   instrument_alt_id_provider:
     name: instrument_alt_id_provider
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     domain_of:
     - InstrumentAlternativeIdentifier
     range: InstrumentAltIdProviderEnum
   instrument_id:
     name: instrument_id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     domain_of:
     - InstrumentAlternativeIdentifier
@@ -227,11 +227,11 @@ attributes:
 <details>
 ```yaml
 name: InstrumentAlternativeIdentifier
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     identifier: true
     alias: id
     owner: InstrumentAlternativeIdentifier
@@ -311,7 +311,7 @@ attributes:
     required: true
   alt_id:
     name: alt_id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: alt_id
     owner: InstrumentAlternativeIdentifier
@@ -320,7 +320,7 @@ attributes:
     range: AlternativeIdentifier
   instrument_alt_id_provider:
     name: instrument_alt_id_provider
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: instrument_alt_id_provider
     owner: InstrumentAlternativeIdentifier
@@ -329,7 +329,7 @@ attributes:
     range: InstrumentAltIdProviderEnum
   instrument_id:
     name: instrument_id
-    from_schema: https://w3id.org/MONet/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/basalt-schema
     rank: 1000
     alias: instrument_id
     owner: InstrumentAlternativeIdentifier

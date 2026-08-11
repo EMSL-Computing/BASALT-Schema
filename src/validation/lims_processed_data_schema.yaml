@@ -20,7 +20,7 @@
 # Last Updated: 2026-02-25
 # =============================================================================
 
-id: https://w3id.org/MONet/basalt-schema/lims-processed-data
+id: https://EMSL-Computing.github.io/basalt-schema/lims-processed-data
 name: lims_processed_data_schema
 title: MONet LIMS Processed Data API Envelope Schema
 description: |-
@@ -34,7 +34,7 @@ description: |-
 license: MIT
 
 prefixes:
-  basalt_schema: https://w3id.org/MONet/basalt-schema/
+  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: lims_processed_data_schema

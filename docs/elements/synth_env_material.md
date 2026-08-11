@@ -9,7 +9,7 @@ _Describes the fabrication material used to create the synthetic environment and
 
 
 
-URI: [basalt_schema:synth_env_material](https://w3id.org/MONet/basalt-schema/synth_env_material)
+URI: [basalt_schema:synth_env_material](https://EMSL-Computing.github.io/basalt-schema/synth_env_material)
 Alias: synth_env_material
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: synth_env_material
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -85,7 +85,7 @@ name: synth_env_material
 description: Describes the fabrication material used to create the synthetic environment
   and what the structure is made of
 title: synthetic environment material
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: synth_env_material
 domain_of:

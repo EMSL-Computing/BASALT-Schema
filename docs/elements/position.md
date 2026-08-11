@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:position](https://w3id.org/MONet/basalt-schema/position)
+URI: [basalt_schema:position](https://EMSL-Computing.github.io/basalt-schema/position)
 Alias: position
 
 <!-- no inheritance hierarchy -->

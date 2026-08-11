@@ -9,7 +9,7 @@ _The name of the purchased material. A substance formed by chemical union of two
 
 
 
-URI: [basalt_schema:compound_name](https://w3id.org/MONet/basalt-schema/compound_name)
+URI: [basalt_schema:compound_name](https://EMSL-Computing.github.io/basalt-schema/compound_name)
 Alias: compound_name
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: compound_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -86,7 +86,7 @@ name: compound_name
 description: The name of the purchased material. A substance formed by chemical union
   of two or more elements or ingredients in definite proportion by weight.
 title: compound name
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: compound_name
 domain_of:

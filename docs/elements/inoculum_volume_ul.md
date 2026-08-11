@@ -9,7 +9,7 @@ _Volume of inoculum added (0 for blanks)_
 
 
 
-URI: [basalt_schema:inoculum_volume_ul](https://w3id.org/MONet/basalt-schema/inoculum_volume_ul)
+URI: [basalt_schema:inoculum_volume_ul](https://EMSL-Computing.github.io/basalt-schema/inoculum_volume_ul)
 Alias: inoculum_volume_ul
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: inoculum_volume_ul
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -90,7 +90,7 @@ Alias: inoculum_volume_ul
 ```yaml
 name: inoculum_volume_ul
 description: Volume of inoculum added (0 for blanks)
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: inoculum_volume_ul
 owner: AMP2WellMetadata

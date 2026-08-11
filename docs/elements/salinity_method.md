@@ -9,7 +9,7 @@ _Method used to determine sample salinity_
 
 
 
-URI: [basalt_schema:salinity_method](https://w3id.org/MONet/basalt-schema/salinity_method)
+URI: [basalt_schema:salinity_method](https://EMSL-Computing.github.io/basalt-schema/salinity_method)
 Alias: salinity_method
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: salinity_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -87,7 +87,7 @@ Alias: salinity_method
 name: salinity_method
 description: Method used to determine sample salinity
 title: salinity method
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: salinity_method
 domain_of:

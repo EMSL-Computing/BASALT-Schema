@@ -9,7 +9,7 @@ _Physical container used for the culture (flask, tube, plate, etc.)_
 
 
 
-URI: [basalt_schema:container_type](https://w3id.org/MONet/basalt-schema/container_type)
+URI: [basalt_schema:container_type](https://EMSL-Computing.github.io/basalt-schema/container_type)
 Alias: container_type
 
 <!-- no inheritance hierarchy -->
@@ -66,7 +66,7 @@ Alias: container_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -87,7 +87,7 @@ Alias: container_type
 ```yaml
 name: container_type
 description: Physical container used for the culture (flask, tube, plate, etc.)
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: container_type
 domain_of:

@@ -9,7 +9,7 @@ _If your samples are TEST sample ONLY, please provide information on what you're
 
 
 
-URI: [basalt_schema:method_development](https://w3id.org/MONet/basalt-schema/method_development)
+URI: [basalt_schema:method_development](https://EMSL-Computing.github.io/basalt-schema/method_development)
 Alias: method_development
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: method_development
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -96,7 +96,7 @@ name: method_development
 description: If your samples are TEST sample ONLY, please provide information on what
   you're hoping this test will resolve.
 title: method development
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: method_development
 domain_of:

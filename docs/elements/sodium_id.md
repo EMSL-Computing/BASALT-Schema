@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:sodium_id](https://w3id.org/MONet/basalt-schema/sodium_id)
+URI: [basalt_schema:sodium_id](https://EMSL-Computing.github.io/basalt-schema/sodium_id)
 Alias: sodium_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: sodium_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: sodium_id
 <details>
 ```yaml
 name: sodium_id
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: sodium_id
 owner: IonsAnalysisProduct

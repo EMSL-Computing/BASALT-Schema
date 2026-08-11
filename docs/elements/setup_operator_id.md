@@ -9,7 +9,7 @@ _Person who set up the plate_
 
 
 
-URI: [basalt_schema:setup_operator_id](https://w3id.org/MONet/basalt-schema/setup_operator_id)
+URI: [basalt_schema:setup_operator_id](https://EMSL-Computing.github.io/basalt-schema/setup_operator_id)
 Alias: setup_operator_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: setup_operator_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -84,7 +84,7 @@ Alias: setup_operator_id
 ```yaml
 name: setup_operator_id
 description: Person who set up the plate
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: setup_operator_id
 domain_of:

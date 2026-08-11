@@ -9,7 +9,7 @@ _Measure of the amount of cloudiness or haziness in water caused by individual p
 
 
 
-URI: [basalt_schema:turbidity](https://w3id.org/MONet/basalt-schema/turbidity)
+URI: [basalt_schema:turbidity](https://EMSL-Computing.github.io/basalt-schema/turbidity)
 Alias: turbidity
 
 <!-- no inheritance hierarchy -->
@@ -74,7 +74,7 @@ Alias: turbidity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -100,7 +100,7 @@ title: turbidity
 todos:
 - decide how to represent in backend (normalized child table with FK to PlateSetupActivity,
   array column, or other)
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: turbidity
 domain_of:

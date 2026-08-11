@@ -9,7 +9,7 @@ _a reference to the data generation activity that produced instrument data_
 
 
 
-URI: [basalt_schema:produced_by_ms_run](https://w3id.org/MONet/basalt-schema/produced_by_ms_run)
+URI: [basalt_schema:produced_by_ms_run](https://EMSL-Computing.github.io/basalt-schema/produced_by_ms_run)
 Alias: produced_by_ms_run
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: produced_by_ms_run
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: produced_by_ms_run
 name: produced_by_ms_run
 description: a reference to the data generation activity that produced instrument
   data
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: produced_by_ms_run
 domain_of:

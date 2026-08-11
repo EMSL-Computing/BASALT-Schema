@@ -9,7 +9,7 @@ The BASALT schema is a [LinkML](https://linkml.io)-based data model for MONet/EM
 | **Schema version** | `0.1.0` |
 | **Repository** | https://github.com/EMSL-Computing/basalt-schema |
 | **Docs** | https://EMSL-Computing.github.io/basalt-schema |
-| **Canonical URI** | https://w3id.org/MONet/basalt-schema |
+| **Canonical URI** | https://EMSL-Computing.github.io/basalt-schema |
 | **License** | MIT |
 
 Schema version is declared in the root LinkML file (`src/basalt_schema/schema/basalt_schema.yaml`) and follows semantic versioning. See the repository README for the release process.

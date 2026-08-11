@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:activity_time_id](https://w3id.org/MONet/basalt-schema/activity_time_id)
+URI: [basalt_schema:activity_time_id](https://EMSL-Computing.github.io/basalt-schema/activity_time_id)
 Alias: activity_time_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: activity_time_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/basalt-schema
+* from schema: https://EMSL-Computing.github.io/basalt-schema
 
 
 
@@ -83,7 +83,7 @@ Alias: activity_time_id
 <details>
 ```yaml
 name: activity_time_id
-from_schema: https://w3id.org/MONet/basalt-schema
+from_schema: https://EMSL-Computing.github.io/basalt-schema
 rank: 1000
 alias: activity_time_id
 owner: LabDevice
