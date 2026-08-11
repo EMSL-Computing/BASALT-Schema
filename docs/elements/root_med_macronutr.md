@@ -22,9 +22,9 @@ Alias: root_med_macronutr
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 

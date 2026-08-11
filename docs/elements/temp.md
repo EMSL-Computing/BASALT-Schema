@@ -22,16 +22,16 @@ Alias: temp
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
+| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
 | [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
-| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 
 
 

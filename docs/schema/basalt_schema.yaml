@@ -1,15 +1,18 @@
 name: basalt-schema
-description: 'LinkML-based schema for MONet soil analysis data management and metadata
-  enrichment.
+description: 'LinkML schema for MONet/EMSL scientific data across biogeochemical,
+  biological,
 
-  This schema defines the data models for samples, processed samples, site metadata,
+  and environmental domains. Defines samples, provenance, laboratory activities,
 
-  and enrichment providers used by BASALT.'
+  and analytical products as the canonical source of truth for BASALT consumers
+
+  (Analysis API, database models, and related tooling).'
 title: BASALT Schema
 see_also:
 - https://EMSL-Computing.github.io/basalt-schema
 - https://github.com/EMSL-Computing/basalt-schema
 id: https://EMSL-Computing.github.io/basalt-schema
+version: 0.1.0
 imports:
 - linkml:types
 - administration
@@ -26,7 +29,7 @@ imports:
 - value_tables
 - zip_download
 - basalt_schema
-license: MIT
+license: CC0-1.0
 prefixes:
   basalt_schema:
     prefix_prefix: basalt_schema
@@ -23168,7 +23171,7 @@ classes:
     class_uri: basalt_schema:ZipDownload
 metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
-source_file_date: '2026-08-10T17:18:23'
-source_file_size: 17006
-generation_date: '2026-08-10T17:23:43'
+source_file_date: '2026-08-11T11:07:22'
+source_file_size: 17141
+generation_date: '2026-08-11T11:07:40'
 

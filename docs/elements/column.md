@@ -22,8 +22,8 @@ Alias: column
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ChromatographyConfiguration](ChromatographyConfiguration.md) | Configuration and settings for a chromatography run |  no  |
 | [TOCTNMethod](TOCTNMethod.md) |  |  no  |
+| [ChromatographyConfiguration](ChromatographyConfiguration.md) | Configuration and settings for a chromatography run |  no  |
 
 
 

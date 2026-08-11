@@ -1,7 +1,8 @@
 # basalt-schema 
 
-LinkML-based schema for MONet soil analysis data management and metadata enrichment.
-This schema defines the data models for samples, processed samples, site metadata,
-and enrichment providers used by BASALT.
+LinkML schema for MONet/EMSL scientific data across biogeochemical, biological,
+and environmental domains. Defines samples, provenance, laboratory activities,
+and analytical products as the canonical source of truth for BASALT consumers
+(Analysis API, database models, and related tooling).
 
 URI: https://EMSL-Computing.github.io/basalt-schema

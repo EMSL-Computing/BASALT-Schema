@@ -22,10 +22,10 @@ Alias: ph_meth
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 

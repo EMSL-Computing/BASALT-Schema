@@ -22,24 +22,24 @@ Alias: external_identifiers
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
 | [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [Study](Study.md) | A study or research project, typically associated with a proposal and a set o... |  yes  |
+| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
+| [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [NucleotideSequencing](NucleotideSequencing.md) | A lab activity in which DNA or RNA that was extracted from a sample is sequen... |  yes  |
 | [EngineeredStrainSample](EngineeredStrainSample.md) | A sample containing a strain of an organism that has been subjected to geneti... |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
-| [Study](Study.md) | A study or research project, typically associated with a proposal and a set o... |  yes  |
 
 
 

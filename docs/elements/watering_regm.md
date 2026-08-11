@@ -22,16 +22,16 @@ Alias: watering_regm
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
 
 
 

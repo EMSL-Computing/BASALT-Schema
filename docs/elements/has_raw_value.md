@@ -17,11 +17,11 @@ Alias: has_raw_value
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [TextValue](TextValue.md) | A text value with optional description and language |  no  |
+| [QuantityValue](QuantityValue.md) | A quantity value with numeric value and optional unit |  no  |
 | [TimestampValue](TimestampValue.md) | A timestamp value with optional description |  no  |
 | [SoftwareControlledTermValue](SoftwareControlledTermValue.md) |  |  no  |
-| [TextValue](TextValue.md) | A text value with optional description and language |  no  |
 | [ConditioningValue](ConditioningValue.md) |  |  no  |
-| [QuantityValue](QuantityValue.md) | A quantity value with numeric value and optional unit |  no  |
 | [ControlledTermValue](ControlledTermValue.md) |  |  no  |
 
 
