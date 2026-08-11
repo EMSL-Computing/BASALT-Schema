@@ -8,7 +8,7 @@ description: |-
   and environmental domains. Defines samples, provenance, laboratory activities,
   and analytical products as the canonical source of truth for BASALT consumers
   (Analysis API, database models, and related tooling).
-license: MIT
+license: CC0-1.0
 see_also:
   - https://EMSL-Computing.github.io/basalt-schema
   - https://github.com/EMSL-Computing/basalt-schema

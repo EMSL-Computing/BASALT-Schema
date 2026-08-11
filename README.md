@@ -5,9 +5,8 @@
 [![Schema version](https://img.shields.io/badge/schema-v0.1.0-blue.svg)](src/basalt_schema/schema/basalt_schema.yaml)
 [![LinkML](https://img.shields.io/badge/LinkML-schema-blueviolet.svg)](https://linkml.io)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![License: CC0-1.0](https://img.shields.io/badge/license-CC0%201.0-lightgrey.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-informational.svg)](https://EMSL-Computing.github.io/basalt-schema)
-[![CI](https://github.com/EMSL-Computing/basalt-schema/actions/workflows/main.yaml/badge.svg)](https://github.com/EMSL-Computing/basalt-schema/actions/workflows/main.yaml)
 
 LinkML schema for MONet/EMSL scientific data across **biogeochemical**, **biological**, and **environmental** domains. Canonical source of truth for samples, provenance, laboratory activities, and analytical products used by the Analysis API and database models.
 

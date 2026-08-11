@@ -12,7 +12,7 @@ authors = [
   {name = "Conrad Mearns", email = "conrad.mearns@pnnl.gov"},
   {name = "Yuri Corilo", email = "corilo@pnnl.gov"},
 ]
-license = "MIT"
+license = "CC0-1.0"
 license-files = ["LICENSE"]
 readme = "README.md"
 requires-python = ">=3.10"
