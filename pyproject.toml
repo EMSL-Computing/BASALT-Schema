@@ -42,7 +42,8 @@ source = "uv-dynamic-versioning"
 [tool.uv-dynamic-versioning]
 vcs = "git"
 style = "pep440"
-fallback-version = "0.0.0"
+# Keep in sync with `version` in src/basalt_schema/schema/basalt_schema.yaml when untagged
+fallback-version = "0.1.0"
 
 # Ref.: https://docs.pytest.org/en/stable/reference/reference.html#configuration-options
 [tool.pytest.ini_options]
