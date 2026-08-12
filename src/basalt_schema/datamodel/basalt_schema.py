@@ -1,12 +1,13 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-10T17:24:37
+# Generation date: 2026-08-12T12:21:13
 # Schema: basalt-schema
 #
 # id: https://EMSL-Computing.github.io/basalt-schema
-# description: LinkML-based schema for MONet soil analysis data management and metadata enrichment.
-#   This schema defines the data models for samples, processed samples, site metadata,
-#   and enrichment providers used by BASALT.
-# license: MIT
+# description: LinkML schema for MONet/EMSL scientific data across biogeochemical, biological,
+#   and environmental domains. Defines samples, provenance, laboratory activities,
+#   and analytical products as the canonical source of truth for BASALT consumers
+#   (Analysis API, database models, and related tooling).
+# license: CC0-1.0
 
 import dataclasses
 import re
@@ -62,7 +63,7 @@ from linkml_runtime.linkml_model.types import Boolean, Date, Datetime, Double, F
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDate, XSDDateTime
 
 metamodel_version = "1.7.0"
-version = None
+version = "0.1.0"
 
 # Namespaces
 BTO = CurieNamespace('BTO', 'http://purl.obolibrary.org/obo/BTO_')

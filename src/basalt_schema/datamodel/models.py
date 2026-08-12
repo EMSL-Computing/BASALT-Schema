@@ -28,7 +28,7 @@ from pydantic import (
 
 
 metamodel_version = "1.7.0"
-version = "None"
+version = "0.1.0"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -66,11 +66,13 @@ class LinkMLMeta(RootModel):
 
 linkml_meta = LinkMLMeta({'default_prefix': 'basalt_schema',
      'default_range': 'string',
-     'description': 'LinkML-based schema for MONet soil analysis data management '
-                    'and metadata enrichment.\n'
-                    'This schema defines the data models for samples, processed '
-                    'samples, site metadata,\n'
-                    'and enrichment providers used by BASALT.',
+     'description': 'LinkML schema for MONet/EMSL scientific data across '
+                    'biogeochemical, biological,\n'
+                    'and environmental domains. Defines samples, provenance, '
+                    'laboratory activities,\n'
+                    'and analytical products as the canonical source of truth for '
+                    'BASALT consumers\n'
+                    '(Analysis API, database models, and related tooling).',
      'emit_prefixes': ['CHEBI', 'OBI', 'PO', 'BTO', 'MS', 'EC', 'ror'],
      'id': 'https://EMSL-Computing.github.io/basalt-schema',
      'imports': ['linkml:types',
@@ -87,7 +89,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'basalt_schema',
                  'study',
                  'value_tables',
                  'zip_download'],
-     'license': 'MIT',
+     'license': 'CC0-1.0',
      'name': 'basalt-schema',
      'prefixes': {'basalt_schema': {'prefix_prefix': 'basalt_schema',
                                     'prefix_reference': 'https://EMSL-Computing.github.io/basalt-schema/'},
@@ -3416,7 +3418,8 @@ class Activity(ConfiguredBaseModel):
     """
     Something that happens over time and can use equipment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -3541,7 +3544,8 @@ class Entity(ConfiguredBaseModel):
     """
     Base identifiable thing.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -3665,7 +3669,8 @@ class DataProduct(ConfiguredBaseModel):
     processedData and future sitePhoto extend this via is_a.
     No direct database table, subclasses map to tables.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -6224,7 +6229,8 @@ class DataGenerationActivity(ConfiguredBaseModel):
     Abstract base for any data generation activity (physical to digital). Input data should 
     be specified on workflow subclasses.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
@@ -9824,7 +9830,8 @@ class XRayDataGenerationActivity(DataGenerationActivity):
       - XRD may optionally link to DataProcessingActivity for Rietveld refinement
       - protocol_url should link to vendor SOP or EMSL internal protocol documentation
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'from_schema': 'https://EMSL-Computing.github.io/basalt-schema'})
 
     sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
 Lower = earlier in series. Use when acquisition_time alone is insufficient.
