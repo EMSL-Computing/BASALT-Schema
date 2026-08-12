@@ -529,28 +529,13 @@ Alias: analysis_type</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../StrainPurity/">StrainPurity</a></td>
-<td>Purity check of a strain culture</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../CommerciallyPurchasedSample/">CommerciallyPurchasedSample</a></td>
-<td>A sample containing commercially purchased material</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../OtherUndescribedSample/">OtherUndescribedSample</a></td>
 <td>A sample that does not fit into any of the other described sample types</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../PureCultureSample/">PureCultureSample</a></td>
-<td>A sample of a culture containing a single organism</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ExperimentalCulture/">ExperimentalCulture</a></td>
-<td>Growth of an experimental culture for downstream analysis</td>
+<td><a href="../SampleProcessing/">SampleProcessing</a></td>
+<td>Abstract base for any sample processing activity (physical to physical)</td>
 <td>no</td>
 </tr>
 <tr>
@@ -559,14 +544,14 @@ Alias: analysis_type</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SoilSample/">SoilSample</a></td>
-<td>A sample of soil collected from the environment</td>
-<td>yes</td>
+<td><a href="../PlateSetupActivity/">PlateSetupActivity</a></td>
+<td>Abstract base for 96-well plate setup activities</td>
+<td>no</td>
 </tr>
 <tr>
-<td><a href="../FieldDeployedTerraformSample/">FieldDeployedTerraformSample</a></td>
-<td>A sample collected from a field-deployed Terraform experiment</td>
-<td>yes</td>
+<td><a href="../AMP2PlateSetupActivity/">AMP2PlateSetupActivity</a></td>
+<td>AMP2-specific plate setup</td>
+<td>no</td>
 </tr>
 <tr>
 <td><a href="../AerosolSample/">AerosolSample</a></td>
@@ -574,8 +559,63 @@ Alias: analysis_type</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../AerosolArmSample/">AerosolArmSample</a></td>
-<td>An aerosol sample collected by the ARM facility</td>
+<td><a href="../SoilSample/">SoilSample</a></td>
+<td>A sample of soil collected from the environment</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../TerraformSample/">TerraformSample</a></td>
+<td>A sample collected from a Terraform experiment</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../PreCultureGrowth/">PreCultureGrowth</a></td>
+<td>Growth of a pre-culture to establish viable inoculum before</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MediaPreparation/">MediaPreparation</a></td>
+<td>Activity that prepares a batch of growth media</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../StockCulturePreparation/">StockCulturePreparation</a></td>
+<td>Preparation of a stock culture from user samples for long-term storage</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PureCultureSample/">PureCultureSample</a></td>
+<td>A sample of a culture containing a single organism</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../CommerciallyPurchasedSample/">CommerciallyPurchasedSample</a></td>
+<td>A sample containing commercially purchased material</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../StrainPurity/">StrainPurity</a></td>
+<td>Purity check of a strain culture</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ExperimentalCulture/">ExperimentalCulture</a></td>
+<td>Growth of an experimental culture for downstream analysis</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EcoplatePlateSetupActivity/">EcoplatePlateSetupActivity</a></td>
+<td>Ecoplate-specific plate setup</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../WaterSample/">WaterSample</a></td>
+<td>A sample of water collected from the environment</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../FieldDeployedTerraformSample/">FieldDeployedTerraformSample</a></td>
+<td>A sample collected from a field-deployed Terraform experiment</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -589,18 +629,13 @@ Alias: analysis_type</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../PlateSetupActivity/">PlateSetupActivity</a></td>
-<td>Abstract base for 96-well plate setup activities</td>
-<td>no</td>
+<td><a href="../AerosolArmSample/">AerosolArmSample</a></td>
+<td>An aerosol sample collected by the ARM facility</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../MixedCultureSample/">MixedCultureSample</a></td>
 <td>A sample containing multiple cultured organisms</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SynthesizedMaterialSample/">SynthesizedMaterialSample</a></td>
-<td>A sample containing synthetically generated material</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -609,44 +644,9 @@ Alias: analysis_type</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../TerraformSample/">TerraformSample</a></td>
-<td>A sample collected from a Terraform experiment</td>
+<td><a href="../SynthesizedMaterialSample/">SynthesizedMaterialSample</a></td>
+<td>A sample containing synthetically generated material</td>
 <td>yes</td>
-</tr>
-<tr>
-<td><a href="../EcoplatePlateSetupActivity/">EcoplatePlateSetupActivity</a></td>
-<td>Ecoplate-specific plate setup</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../StockCulturePreparation/">StockCulturePreparation</a></td>
-<td>Preparation of a stock culture from user samples for long-term storage</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../WaterSample/">WaterSample</a></td>
-<td>A sample of water collected from the environment</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../PreCultureGrowth/">PreCultureGrowth</a></td>
-<td>Growth of a pre-culture to establish viable inoculum before</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SampleProcessing/">SampleProcessing</a></td>
-<td>Abstract base for any sample processing activity (physical to physical)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AMP2PlateSetupActivity/">AMP2PlateSetupActivity</a></td>
-<td>AMP2-specific plate setup</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MediaPreparation/">MediaPreparation</a></td>
-<td>Activity that prepares a batch of growth media</td>
-<td>no</td>
 </tr>
 <tr>
 <td><a href="../SedimentSample/">SedimentSample</a></td>
