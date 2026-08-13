@@ -15,7 +15,7 @@ _typed via LinkML inlined class._
 
 
 
-URI: [basalt_schema:well_readings](https://EMSL-Computing.github.io/basalt-schema/well_readings)
+URI: [basalt_schema:well_readings](https://EMSL-Computing.github.io/BASALT-Schema/well_readings)
 Alias: well_readings
 
 <!-- no inheritance hierarchy -->
@@ -28,9 +28,9 @@ Alias: well_readings
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |  no  |
 | [AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |  no  |
 | [PlateProduct](PlateProduct.md) | Abstract base for plate measurement data products |  no  |
-| [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |  no  |
 
 
 
@@ -74,7 +74,7 @@ Alias: well_readings
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -104,7 +104,7 @@ description: 'Structured per-well measurement data array.
 todos:
 - decide how to represent in backend (normalized child table with FK to PlateSetupActivity,
   array column, or other)
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: well_readings
 domain_of:

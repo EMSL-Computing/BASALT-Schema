@@ -9,7 +9,7 @@ _Age of plant at the time of sampling. Must provide unit_
 
 
 
-URI: [basalt_schema:plant_age](https://EMSL-Computing.github.io/basalt-schema/plant_age)
+URI: [basalt_schema:plant_age](https://EMSL-Computing.github.io/BASALT-Schema/plant_age)
 Alias: plant_age
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: plant_age
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -90,7 +90,7 @@ Alias: plant_age
 name: plant_age
 description: Age of plant at the time of sampling. Must provide unit
 title: plant age
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: plant_age
 domain_of:

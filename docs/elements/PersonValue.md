@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:PersonValue](https://EMSL-Computing.github.io/basalt-schema/PersonValue)
+URI: [basalt_schema:PersonValue](https://EMSL-Computing.github.io/BASALT-Schema/PersonValue)
 
 
 
@@ -104,7 +104,7 @@ URI: [basalt_schema:PersonValue](https://EMSL-Computing.github.io/basalt-schema/
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -130,13 +130,13 @@ URI: [basalt_schema:PersonValue](https://EMSL-Computing.github.io/basalt-schema/
 <details>
 ```yaml
 name: PersonValue
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 slots:
 - email
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     identifier: true
     domain_of:
     - Activity
@@ -214,7 +214,7 @@ attributes:
     required: true
   first_name:
     name: first_name
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - PersonValue
@@ -222,7 +222,7 @@ attributes:
     required: true
   last_name:
     name: last_name
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - PersonValue
@@ -230,7 +230,7 @@ attributes:
     required: true
   middle_initial:
     name: middle_initial
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - PersonValue
@@ -238,21 +238,21 @@ attributes:
   orcid:
     name: orcid
     description: ORCID identifier of the person
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - PersonValue
     range: string
   profile_image_url:
     name: profile_image_url
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - PersonValue
     range: string
   websites:
     name: websites
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - PersonValue
@@ -271,11 +271,11 @@ unique_keys:
 <details>
 ```yaml
 name: PersonValue
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     identifier: true
     alias: id
     owner: PersonValue
@@ -355,7 +355,7 @@ attributes:
     required: true
   first_name:
     name: first_name
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: first_name
     owner: PersonValue
@@ -365,7 +365,7 @@ attributes:
     required: true
   last_name:
     name: last_name
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: last_name
     owner: PersonValue
@@ -375,7 +375,7 @@ attributes:
     required: true
   middle_initial:
     name: middle_initial
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: middle_initial
     owner: PersonValue
@@ -385,7 +385,7 @@ attributes:
   orcid:
     name: orcid
     description: ORCID identifier of the person
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: orcid
     owner: PersonValue
@@ -394,7 +394,7 @@ attributes:
     range: string
   profile_image_url:
     name: profile_image_url
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: profile_image_url
     owner: PersonValue
@@ -403,7 +403,7 @@ attributes:
     range: string
   websites:
     name: websites
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: websites
     owner: PersonValue
@@ -413,7 +413,7 @@ attributes:
   email:
     name: email
     description: A contactable email address associated with a person or institution.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: email
     owner: PersonValue

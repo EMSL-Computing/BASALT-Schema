@@ -9,7 +9,7 @@ _Description of plant tissue culture growth media used_
 
 
 
-URI: [basalt_schema:tiss_cult_growth_med](https://EMSL-Computing.github.io/basalt-schema/tiss_cult_growth_med)
+URI: [basalt_schema:tiss_cult_growth_med](https://EMSL-Computing.github.io/BASALT-Schema/tiss_cult_growth_med)
 Alias: tiss_cult_growth_med
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: tiss_cult_growth_med
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: tiss_cult_growth_med
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ Alias: tiss_cult_growth_med
 name: tiss_cult_growth_med
 description: Description of plant tissue culture growth media used
 title: tissue culture growth media
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: tiss_cult_growth_med
 domain_of:

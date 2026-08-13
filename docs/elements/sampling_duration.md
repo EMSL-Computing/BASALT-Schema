@@ -9,7 +9,7 @@ _The difference between sample start and sample end time in seconds. (Unit: s)_
 
 
 
-URI: [basalt_schema:sampling_duration](https://EMSL-Computing.github.io/basalt-schema/sampling_duration)
+URI: [basalt_schema:sampling_duration](https://EMSL-Computing.github.io/BASALT-Schema/sampling_duration)
 Alias: sampling_duration
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: sampling_duration
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSamplingActivity](OtherUndescribedSamplingActivity.md) | Collection of samples from source that does not fit into any of the other cat... |  no  |
 | [AerosolSamplingActivity](AerosolSamplingActivity.md) | A sampling activity where aerosol samples were collected |  no  |
+| [OtherUndescribedSamplingActivity](OtherUndescribedSamplingActivity.md) | Collection of samples from source that does not fit into any of the other cat... |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: sampling_duration
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ name: sampling_duration
 description: 'The difference between sample start and sample end time in seconds.
   (Unit: s)'
 title: sampling duration
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: sampling_duration
 domain_of:

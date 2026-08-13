@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:sand_pct_id](https://EMSL-Computing.github.io/basalt-schema/sand_pct_id)
+URI: [basalt_schema:sand_pct_id](https://EMSL-Computing.github.io/BASALT-Schema/sand_pct_id)
 Alias: sand_pct_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: sand_pct_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: sand_pct_id
 <details>
 ```yaml
 name: sand_pct_id
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: sand_pct_id
 owner: TextureProduct

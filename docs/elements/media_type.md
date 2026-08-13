@@ -11,7 +11,7 @@ _Examples: strain_purity, stock_culture, pre_culture, rich_media._
 
 
 
-URI: [basalt_schema:media_type](https://EMSL-Computing.github.io/basalt-schema/media_type)
+URI: [basalt_schema:media_type](https://EMSL-Computing.github.io/BASALT-Schema/media_type)
 Alias: media_type
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: media_type
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ name: media_type
 description: 'Purpose/context of the media preparation.
 
   Examples: strain_purity, stock_culture, pre_culture, rich_media.'
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: media_type
 domain_of:

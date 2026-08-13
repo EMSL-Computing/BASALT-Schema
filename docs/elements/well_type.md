@@ -9,7 +9,7 @@ _Role of this well   "sample", "blank", "uninoculated_control", "standard"_
 
 
 
-URI: [basalt_schema:well_type](https://EMSL-Computing.github.io/basalt-schema/well_type)
+URI: [basalt_schema:well_type](https://EMSL-Computing.github.io/BASALT-Schema/well_type)
 Alias: well_type
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: well_type
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [AMP2WellMetadata](AMP2WellMetadata.md) | AMP2-specific per-well metadata |  no  |
 | [EcoplateWellMetadata](EcoplateWellMetadata.md) | Ecoplate-specific per-well metadata |  no  |
 | [WellMetadata](WellMetadata.md) | Base structure for per-well metadata in plate setup |  no  |
-| [AMP2WellMetadata](AMP2WellMetadata.md) | AMP2-specific per-well metadata |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: well_type
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -91,7 +91,7 @@ Alias: well_type
 ```yaml
 name: well_type
 description: Role of this well   "sample", "blank", "uninoculated_control", "standard"
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: well_type
 owner: WellMetadata

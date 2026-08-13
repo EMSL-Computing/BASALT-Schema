@@ -9,7 +9,7 @@ _Total particulate carbon content. (Unit: ug/L or umol/L)_
 
 
 
-URI: [basalt_schema:tot_part_carb](https://EMSL-Computing.github.io/basalt-schema/tot_part_carb)
+URI: [basalt_schema:tot_part_carb](https://EMSL-Computing.github.io/BASALT-Schema/tot_part_carb)
 Alias: tot_part_carb
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: tot_part_carb
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: tot_part_carb
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -91,7 +91,7 @@ Alias: tot_part_carb
 name: tot_part_carb
 description: 'Total particulate carbon content. (Unit: ug/L or umol/L)'
 title: total particulate carbon
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: tot_part_carb
 domain_of:

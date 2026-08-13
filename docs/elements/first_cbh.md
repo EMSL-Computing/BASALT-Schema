@@ -9,7 +9,7 @@ _First cloud base (meters) or vertical visibility (meters) (-999 if no cloud bas
 
 
 
-URI: [basalt_schema:first_cbh](https://EMSL-Computing.github.io/basalt-schema/first_cbh)
+URI: [basalt_schema:first_cbh](https://EMSL-Computing.github.io/BASALT-Schema/first_cbh)
 Alias: first_cbh
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: first_cbh
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ name: first_cbh
 description: 'First cloud base (meters) or vertical visibility (meters) (-999 if no
   cloud base or vertical visibility) (Unit: m)'
 title: first cloud base height
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: first_cbh
 domain_of:

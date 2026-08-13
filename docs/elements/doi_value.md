@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:doi_value](https://EMSL-Computing.github.io/basalt-schema/doi_value)
+URI: [basalt_schema:doi_value](https://EMSL-Computing.github.io/BASALT-Schema/doi_value)
 Alias: doi_value
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: doi_value
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: doi_value
 <details>
 ```yaml
 name: doi_value
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: doi_value
 owner: DOI

@@ -9,7 +9,7 @@ _Measurement of mean peak friction velocity (Unit: m/s)_
 
 
 
-URI: [basalt_schema:mean_peak_frict_vel](https://EMSL-Computing.github.io/basalt-schema/mean_peak_frict_vel)
+URI: [basalt_schema:mean_peak_frict_vel](https://EMSL-Computing.github.io/BASALT-Schema/mean_peak_frict_vel)
 Alias: mean_peak_frict_vel
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: mean_peak_frict_vel
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -70,7 +70,7 @@ Alias: mean_peak_frict_vel
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: mean_peak_frict_vel
 name: mean_peak_frict_vel
 description: 'Measurement of mean peak friction velocity (Unit: m/s)'
 title: mean peak friction velocity
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: mean_peak_frict_vel
 domain_of:

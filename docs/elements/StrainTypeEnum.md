@@ -7,7 +7,7 @@ _Types of microbial strains/organisms._
 
 
 
-URI: [basalt_schema:StrainTypeEnum](https://EMSL-Computing.github.io/basalt-schema/StrainTypeEnum)
+URI: [basalt_schema:StrainTypeEnum](https://EMSL-Computing.github.io/BASALT-Schema/StrainTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -47,7 +47,7 @@ URI: [basalt_schema:StrainTypeEnum](https://EMSL-Computing.github.io/basalt-sche
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -60,7 +60,7 @@ URI: [basalt_schema:StrainTypeEnum](https://EMSL-Computing.github.io/basalt-sche
 ```yaml
 name: StrainTypeEnum
 description: Types of microbial strains/organisms.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   bacterial:

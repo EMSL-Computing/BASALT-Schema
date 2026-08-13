@@ -9,7 +9,7 @@ _Concentration of chloride in the sample (Unit: mg/L or ppm)_
 
 
 
-URI: [basalt_schema:chloride](https://EMSL-Computing.github.io/basalt-schema/chloride)
+URI: [basalt_schema:chloride](https://EMSL-Computing.github.io/BASALT-Schema/chloride)
 Alias: chloride
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: chloride
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -70,7 +70,7 @@ Alias: chloride
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: chloride
 name: chloride
 description: 'Concentration of chloride in the sample (Unit: mg/L or ppm)'
 title: chloride
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: chloride
 domain_of:

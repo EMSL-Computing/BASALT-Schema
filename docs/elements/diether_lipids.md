@@ -9,7 +9,7 @@ _Concentration of diether lipids; can include multiple types of diether lipids (
 
 
 
-URI: [basalt_schema:diether_lipids](https://EMSL-Computing.github.io/basalt-schema/diether_lipids)
+URI: [basalt_schema:diether_lipids](https://EMSL-Computing.github.io/BASALT-Schema/diether_lipids)
 Alias: diether_lipids
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: diether_lipids
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -70,7 +70,7 @@ Alias: diether_lipids
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ name: diether_lipids
 description: 'Concentration of diether lipids; can include multiple types of diether
   lipids (Unit: ng/L)'
 title: diether lipids
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: diether_lipids
 domain_of:

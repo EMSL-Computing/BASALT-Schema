@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:ProcessedDataFlag](https://EMSL-Computing.github.io/basalt-schema/ProcessedDataFlag)
+URI: [basalt_schema:ProcessedDataFlag](https://EMSL-Computing.github.io/BASALT-Schema/ProcessedDataFlag)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -108,7 +108,7 @@ URI: [basalt_schema:ProcessedDataFlag](https://EMSL-Computing.github.io/basalt-s
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -120,7 +120,7 @@ URI: [basalt_schema:ProcessedDataFlag](https://EMSL-Computing.github.io/basalt-s
 <details>
 ```yaml
 name: ProcessedDataFlag
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   Below_Detection:

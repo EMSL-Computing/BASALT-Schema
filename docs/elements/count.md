@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:count](https://EMSL-Computing.github.io/basalt-schema/count)
+URI: [basalt_schema:count](https://EMSL-Computing.github.io/BASALT-Schema/count)
 Alias: count
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: count
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: count
 <details>
 ```yaml
 name: count
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: count
 owner: WorkflowExecutionFunctionalAnnotation

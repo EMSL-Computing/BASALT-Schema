@@ -9,7 +9,7 @@ _Reference or method used in determining the total nitrogen_
 
 
 
-URI: [basalt_schema:tot_nitro_cont_meth](https://EMSL-Computing.github.io/basalt-schema/tot_nitro_cont_meth)
+URI: [basalt_schema:tot_nitro_cont_meth](https://EMSL-Computing.github.io/BASALT-Schema/tot_nitro_cont_meth)
 Alias: tot_nitro_cont_meth
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: tot_nitro_cont_meth
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: tot_nitro_cont_meth
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ Alias: tot_nitro_cont_meth
 name: tot_nitro_cont_meth
 description: Reference or method used in determining the total nitrogen
 title: total nitrogen content method
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: tot_nitro_cont_meth
 domain_of:

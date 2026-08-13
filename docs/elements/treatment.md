@@ -9,7 +9,7 @@ _Experimental treatment (e.g. "control", "nickel_1pct")_
 
 
 
-URI: [basalt_schema:treatment](https://EMSL-Computing.github.io/basalt-schema/treatment)
+URI: [basalt_schema:treatment](https://EMSL-Computing.github.io/BASALT-Schema/treatment)
 Alias: treatment
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: treatment
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: treatment
 ```yaml
 name: treatment
 description: Experimental treatment (e.g. "control", "nickel_1pct")
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: treatment
 owner: EcoplateWellMetadata

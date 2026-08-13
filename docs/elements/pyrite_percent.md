@@ -9,7 +9,7 @@ _Pyrite (FeS2) weight percent_
 
 
 
-URI: [basalt_schema:pyrite_percent](https://EMSL-Computing.github.io/basalt-schema/pyrite_percent)
+URI: [basalt_schema:pyrite_percent](https://EMSL-Computing.github.io/BASALT-Schema/pyrite_percent)
 Alias: pyrite_percent
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: pyrite_percent
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: pyrite_percent
 ```yaml
 name: pyrite_percent
 description: Pyrite (FeS2) weight percent
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: pyrite_percent
 owner: XRDPhaseProduct

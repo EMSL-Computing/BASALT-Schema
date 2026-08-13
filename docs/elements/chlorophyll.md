@@ -9,7 +9,7 @@ _Concentration of chlorophyll (Unit: mg/m3 or ug/L)_
 
 
 
-URI: [basalt_schema:chlorophyll](https://EMSL-Computing.github.io/basalt-schema/chlorophyll)
+URI: [basalt_schema:chlorophyll](https://EMSL-Computing.github.io/BASALT-Schema/chlorophyll)
 Alias: chlorophyll
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: chlorophyll
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -70,7 +70,7 @@ Alias: chlorophyll
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: chlorophyll
 name: chlorophyll
 description: 'Concentration of chlorophyll (Unit: mg/m3 or ug/L)'
 title: chlorophyll
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: chlorophyll
 domain_of:

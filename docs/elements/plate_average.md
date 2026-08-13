@@ -9,7 +9,7 @@ _Mean measurement across all sample wells (excludes blanks)_
 
 
 
-URI: [basalt_schema:plate_average](https://EMSL-Computing.github.io/basalt-schema/plate_average)
+URI: [basalt_schema:plate_average](https://EMSL-Computing.github.io/BASALT-Schema/plate_average)
 Alias: plate_average
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: plate_average
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |  no  |
 | [AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |  no  |
 | [PlateProduct](PlateProduct.md) | Abstract base for plate measurement data products |  no  |
-| [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |  no  |
 
 
 
@@ -67,7 +67,7 @@ Alias: plate_average
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -90,7 +90,7 @@ name: plate_average
 description: Mean measurement across all sample wells (excludes blanks)
 todos:
 - units
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: plate_average
 domain_of:

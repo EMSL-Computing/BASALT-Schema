@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_total_sulfur](https://EMSL-Computing.github.io/basalt-schema/flag_total_sulfur)
+URI: [basalt_schema:flag_total_sulfur](https://EMSL-Computing.github.io/BASALT-Schema/flag_total_sulfur)
 Alias: flag_total_sulfur
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_total_sulfur
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_total_sulfur
 <details>
 ```yaml
 name: flag_total_sulfur
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_total_sulfur
 owner: ElementalAnalysisProduct

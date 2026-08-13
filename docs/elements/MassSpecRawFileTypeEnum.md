@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:MassSpecRawFileTypeEnum](https://EMSL-Computing.github.io/basalt-schema/MassSpecRawFileTypeEnum)
+URI: [basalt_schema:MassSpecRawFileTypeEnum](https://EMSL-Computing.github.io/BASALT-Schema/MassSpecRawFileTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -38,7 +38,7 @@ URI: [basalt_schema:MassSpecRawFileTypeEnum](https://EMSL-Computing.github.io/ba
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -50,7 +50,7 @@ URI: [basalt_schema:MassSpecRawFileTypeEnum](https://EMSL-Computing.github.io/ba
 <details>
 ```yaml
 name: MassSpecRawFileTypeEnum
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   .d:

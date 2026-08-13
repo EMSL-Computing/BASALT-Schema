@@ -9,7 +9,7 @@ _Concentration of dissolved inorganic nitrogen. (Unit: ug/L or umol/L)_
 
 
 
-URI: [basalt_schema:diss_inorg_nitro](https://EMSL-Computing.github.io/basalt-schema/diss_inorg_nitro)
+URI: [basalt_schema:diss_inorg_nitro](https://EMSL-Computing.github.io/BASALT-Schema/diss_inorg_nitro)
 Alias: diss_inorg_nitro
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: diss_inorg_nitro
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: diss_inorg_nitro
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -91,7 +91,7 @@ Alias: diss_inorg_nitro
 name: diss_inorg_nitro
 description: 'Concentration of dissolved inorganic nitrogen. (Unit: ug/L or umol/L)'
 title: dissolved inorganic nitrogen
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: diss_inorg_nitro
 domain_of:

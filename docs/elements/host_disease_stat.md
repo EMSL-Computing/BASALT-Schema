@@ -9,7 +9,7 @@ _List of diseases with which the host has been diagnosed; can include multiple d
 
 
 
-URI: [basalt_schema:host_disease_stat](https://EMSL-Computing.github.io/basalt-schema/host_disease_stat)
+URI: [basalt_schema:host_disease_stat](https://EMSL-Computing.github.io/BASALT-Schema/host_disease_stat)
 Alias: host_disease_stat
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: host_disease_stat
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ description: List of diseases with which the host has been diagnosed; can includ
   should be chosen from the DO (Human Disease Ontology) at https://www.disease-ontology.org
   non-human host diseases are free text
 title: host disease status
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: host_disease_stat
 domain_of:

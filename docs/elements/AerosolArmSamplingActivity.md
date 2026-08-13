@@ -9,7 +9,7 @@ _A sampling activity where aerosol samples were collected by ARM._
 
 
 
-URI: [basalt_schema:AerosolArmSamplingActivity](https://EMSL-Computing.github.io/basalt-schema/AerosolArmSamplingActivity)
+URI: [basalt_schema:AerosolArmSamplingActivity](https://EMSL-Computing.github.io/BASALT-Schema/AerosolArmSamplingActivity)
 
 
 
@@ -95,7 +95,7 @@ URI: [basalt_schema:AerosolArmSamplingActivity](https://EMSL-Computing.github.io
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -122,7 +122,7 @@ URI: [basalt_schema:AerosolArmSamplingActivity](https://EMSL-Computing.github.io
 ```yaml
 name: AerosolArmSamplingActivity
 description: A sampling activity where aerosol samples were collected by ARM.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: SamplingActivity
 slot_usage:
   humidity:
@@ -132,7 +132,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -218,7 +218,7 @@ attributes:
 ```yaml
 name: AerosolArmSamplingActivity
 description: A sampling activity where aerosol samples were collected by ARM.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: SamplingActivity
 slot_usage:
   humidity:
@@ -228,7 +228,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     alias: id
     owner: AerosolArmSamplingActivity
@@ -309,7 +309,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: AerosolArmSamplingActivity
@@ -339,7 +339,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: AerosolArmSamplingActivity
@@ -375,7 +375,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     aliases:
     - study
     - study_id
@@ -414,7 +414,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: emsl_activity
     owner: AerosolArmSamplingActivity
@@ -431,7 +431,7 @@ attributes:
 
       (YYYY-MM)'''
     title: collection date
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: collection_date
     owner: AerosolArmSamplingActivity
@@ -444,7 +444,7 @@ attributes:
     name: shipped_sample_size
     description: Total amount of sample sent to EMSL. Must include units.
     title: shipped sample size
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: shipped_sample_size
     owner: AerosolArmSamplingActivity
@@ -457,7 +457,7 @@ attributes:
     name: sampled_at_site
     description: Reference to the site where the sample was collected. This is a FK
       to the Site class, which contains detailed metadata about the sampling location.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampled_at_site
     owner: AerosolArmSamplingActivity

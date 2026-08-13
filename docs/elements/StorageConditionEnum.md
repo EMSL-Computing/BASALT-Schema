@@ -7,7 +7,7 @@ _Sample storage conditions_
 
 
 
-URI: [basalt_schema:StorageConditionEnum](https://EMSL-Computing.github.io/basalt-schema/StorageConditionEnum)
+URI: [basalt_schema:StorageConditionEnum](https://EMSL-Computing.github.io/BASALT-Schema/StorageConditionEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -44,7 +44,7 @@ URI: [basalt_schema:StorageConditionEnum](https://EMSL-Computing.github.io/basal
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -57,7 +57,7 @@ URI: [basalt_schema:StorageConditionEnum](https://EMSL-Computing.github.io/basal
 ```yaml
 name: StorageConditionEnum
 description: Sample storage conditions
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   fresh:

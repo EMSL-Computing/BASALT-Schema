@@ -9,7 +9,7 @@ _Measurement of light intensity. Provide value and unit, any unit is valid._
 
 
 
-URI: [basalt_schema:light_intensity](https://EMSL-Computing.github.io/basalt-schema/light_intensity)
+URI: [basalt_schema:light_intensity](https://EMSL-Computing.github.io/BASALT-Schema/light_intensity)
 Alias: light_intensity
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: light_intensity
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: light_intensity
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -91,7 +91,7 @@ Alias: light_intensity
 name: light_intensity
 description: Measurement of light intensity. Provide value and unit, any unit is valid.
 title: light intensity
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: light_intensity
 domain_of:

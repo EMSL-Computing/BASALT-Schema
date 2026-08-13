@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:slot_capacity](https://EMSL-Computing.github.io/basalt-schema/slot_capacity)
+URI: [basalt_schema:slot_capacity](https://EMSL-Computing.github.io/BASALT-Schema/slot_capacity)
 Alias: slot_capacity
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: slot_capacity
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: slot_capacity
 <details>
 ```yaml
 name: slot_capacity
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: slot_capacity
 owner: ContainerType

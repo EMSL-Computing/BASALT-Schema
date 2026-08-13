@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:user](https://EMSL-Computing.github.io/basalt-schema/user)
+URI: [basalt_schema:user](https://EMSL-Computing.github.io/BASALT-Schema/user)
 Alias: user
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: user
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: user
 <details>
 ```yaml
 name: user
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: user
 owner: zipDownload

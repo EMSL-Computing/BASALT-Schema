@@ -1,5 +1,5 @@
 ---
-id: https://EMSL-Computing.github.io/basalt-schema/media-strain-culture-plate
+id: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
 name: basalt-schema-media-strain-culture-plate
 title: 96-Well Plate Workflows   V2 with Entities, Culture Activities, Montana Slots
 description: |-
@@ -7,7 +7,7 @@ description: |-
   with upstream culture growth activities and generalised processing hierarchy.
 
 prefixes:
-  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
+  basalt_schema: https://EMSL-Computing.github.io/BASALT-Schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: basalt_schema

@@ -9,7 +9,7 @@ _The measurement being calibrated_
 
 
 
-URI: [basalt_schema:calibration_target](https://EMSL-Computing.github.io/basalt-schema/calibration_target)
+URI: [basalt_schema:calibration_target](https://EMSL-Computing.github.io/BASALT-Schema/calibration_target)
 Alias: calibration_target
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: calibration_target
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -82,7 +82,7 @@ Alias: calibration_target
 ```yaml
 name: calibration_target
 description: The measurement being calibrated
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: calibration_target
 domain_of:

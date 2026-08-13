@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flow_rate_y](https://EMSL-Computing.github.io/basalt-schema/flow_rate_y)
+URI: [basalt_schema:flow_rate_y](https://EMSL-Computing.github.io/BASALT-Schema/flow_rate_y)
 Alias: flow_rate_y
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flow_rate_y
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flow_rate_y
 <details>
 ```yaml
 name: flow_rate_y
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: flow_rate_y
 owner: TomographyProduct

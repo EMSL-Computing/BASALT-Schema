@@ -9,7 +9,7 @@ _Information about treatment involving use of growth hormones; should include th
 
 
 
-URI: [basalt_schema:growth_hormone_regm](https://EMSL-Computing.github.io/basalt-schema/growth_hormone_regm)
+URI: [basalt_schema:growth_hormone_regm](https://EMSL-Computing.github.io/BASALT-Schema/growth_hormone_regm)
 Alias: growth_hormone_regm
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: growth_hormone_regm
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: growth_hormone_regm
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -88,7 +88,7 @@ description: Information about treatment involving use of growth hormones; shoul
   start and end time of the entire treatment; can include multiple growth hormone
   regimens
 title: growth hormone regimen
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: growth_hormone_regm
 domain_of:

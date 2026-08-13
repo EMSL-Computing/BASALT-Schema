@@ -9,7 +9,7 @@ _Measurement wavelength in nanometres (e.g. 590 Ecoplate, 610 AMP2 OD)_
 
 
 
-URI: [basalt_schema:wavelength_nm](https://EMSL-Computing.github.io/basalt-schema/wavelength_nm)
+URI: [basalt_schema:wavelength_nm](https://EMSL-Computing.github.io/BASALT-Schema/wavelength_nm)
 Alias: wavelength_nm
 
 <!-- no inheritance hierarchy -->
@@ -22,11 +22,11 @@ Alias: wavelength_nm
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |  no  |
-| [PlateProduct](PlateProduct.md) | Abstract base for plate measurement data products |  no  |
 | [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |  no  |
-| [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |  no  |
 | [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | AMP2 plate measurement (OD, fluorescence, flow cytometry) |  no  |
+| [AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |  no  |
+| [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |  no  |
+| [PlateProduct](PlateProduct.md) | Abstract base for plate measurement data products |  no  |
 
 
 
@@ -66,7 +66,7 @@ Alias: wavelength_nm
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ Alias: wavelength_nm
 ```yaml
 name: wavelength_nm
 description: Measurement wavelength in nanometres (e.g. 590 Ecoplate, 610 AMP2 OD)
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: wavelength_nm
 domain_of:

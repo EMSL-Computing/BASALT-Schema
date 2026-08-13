@@ -13,7 +13,7 @@ _Inherits S3/file slots from dataProduct (via processedData is_a chain)._
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [basalt_schema:MassSpectrometryDataProduct](https://EMSL-Computing.github.io/basalt-schema/MassSpectrometryDataProduct)
+URI: [basalt_schema:MassSpectrometryDataProduct](https://EMSL-Computing.github.io/BASALT-Schema/MassSpectrometryDataProduct)
 
 
 
@@ -154,7 +154,7 @@ URI: [basalt_schema:MassSpectrometryDataProduct](https://EMSL-Computing.github.i
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -183,7 +183,7 @@ name: MassSpectrometryDataProduct
 description: 'Abstract base for all mass spectrometry data products.
 
   Inherits S3/file slots from dataProduct (via processedData is_a chain).'
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: ProcessedData
 abstract: true
 slots:
@@ -200,7 +200,7 @@ name: MassSpectrometryDataProduct
 description: 'Abstract base for all mass spectrometry data products.
 
   Inherits S3/file slots from dataProduct (via processedData is_a chain).'
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: ProcessedData
 abstract: true
 attributes:
@@ -208,7 +208,7 @@ attributes:
     name: results_from_ms_processing
     description: a reference to the mass spec data processing activity that produced
       this data product
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: results_from_ms_processing
     owner: MassSpectrometryDataProduct
@@ -225,7 +225,7 @@ attributes:
       \ retained until formal typed class exists."
     todos:
     - make this inined/multivalued?
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: summary_metrics
     owner: MassSpectrometryDataProduct
@@ -236,7 +236,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: lims_barcode
     owner: MassSpectrometryDataProduct
@@ -248,7 +248,7 @@ attributes:
   sample_id:
     name: sample_id
     description: Link back to the originating sample
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_id
     owner: MassSpectrometryDataProduct
@@ -261,7 +261,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: MassSpectrometryDataProduct
@@ -291,7 +291,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: MassSpectrometryDataProduct
@@ -327,7 +327,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     aliases:
     - study
     - study_id
@@ -364,7 +364,7 @@ attributes:
 
       in the same sampling event or campaign.'
     title: sampling set
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampling_set
     owner: MassSpectrometryDataProduct
@@ -380,7 +380,7 @@ attributes:
     - value: TOP
     - value: MID
     - value: BTM
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: core_section
     owner: MassSpectrometryDataProduct
@@ -398,7 +398,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     aliases:
     - samp_name
     rank: 1000
@@ -424,7 +424,7 @@ attributes:
     range: string
   s3_base_url:
     name: s3_base_url
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_base_url
     owner: MassSpectrometryDataProduct
@@ -433,7 +433,7 @@ attributes:
     range: string
   s3_bucket:
     name: s3_bucket
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_bucket
     owner: MassSpectrometryDataProduct
@@ -443,7 +443,7 @@ attributes:
   s3_key:
     name: s3_key
     description: MinIO/S3 object key; required for all data products
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_key
     owner: MassSpectrometryDataProduct
@@ -454,7 +454,7 @@ attributes:
   filesize:
     name: filesize
     description: Size of the file in bytes
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: filesize
     owner: MassSpectrometryDataProduct
@@ -463,7 +463,7 @@ attributes:
     range: integer
   md5checksum:
     name: md5checksum
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: md5checksum
     owner: MassSpectrometryDataProduct
@@ -472,7 +472,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: MassSpectrometryDataProduct

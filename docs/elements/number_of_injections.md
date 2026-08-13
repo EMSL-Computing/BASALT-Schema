@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:number_of_injections](https://EMSL-Computing.github.io/basalt-schema/number_of_injections)
+URI: [basalt_schema:number_of_injections](https://EMSL-Computing.github.io/BASALT-Schema/number_of_injections)
 Alias: number_of_injections
 
 <!-- no inheritance hierarchy -->

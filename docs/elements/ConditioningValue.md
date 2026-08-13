@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:ConditioningValue](https://EMSL-Computing.github.io/basalt-schema/ConditioningValue)
+URI: [basalt_schema:ConditioningValue](https://EMSL-Computing.github.io/BASALT-Schema/ConditioningValue)
 
 
 
@@ -68,7 +68,7 @@ URI: [basalt_schema:ConditioningValue](https://EMSL-Computing.github.io/basalt-s
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -94,11 +94,11 @@ URI: [basalt_schema:ConditioningValue](https://EMSL-Computing.github.io/basalt-s
 <details>
 ```yaml
 name: ConditioningValue
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     identifier: true
     domain_of:
     - Activity
@@ -176,28 +176,28 @@ attributes:
     required: true
   source_material:
     name: source_material
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - ConditioningValue
     range: string
   instrument:
     name: instrument
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - ConditioningValue
     range: string
   gas:
     name: gas
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - ConditioningValue
     range: string
   pressure:
     name: pressure
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     domain_of:
     - FieldDeployedTerraformSample
     - OtherUndescribedSample
@@ -208,7 +208,7 @@ attributes:
     range: string
   has_raw_value:
     name: has_raw_value
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     domain_of:
     - TimestampValue
     - TextValue
@@ -226,11 +226,11 @@ attributes:
 <details>
 ```yaml
 name: ConditioningValue
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     identifier: true
     alias: id
     owner: ConditioningValue
@@ -310,7 +310,7 @@ attributes:
     required: true
   source_material:
     name: source_material
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: source_material
     owner: ConditioningValue
@@ -319,7 +319,7 @@ attributes:
     range: string
   instrument:
     name: instrument
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: instrument
     owner: ConditioningValue
@@ -328,7 +328,7 @@ attributes:
     range: string
   gas:
     name: gas
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: gas
     owner: ConditioningValue
@@ -337,7 +337,7 @@ attributes:
     range: string
   pressure:
     name: pressure
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     alias: pressure
     owner: ConditioningValue
     domain_of:
@@ -350,7 +350,7 @@ attributes:
     range: string
   has_raw_value:
     name: has_raw_value
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     alias: has_raw_value
     owner: ConditioningValue
     domain_of:

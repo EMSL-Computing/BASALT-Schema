@@ -9,7 +9,7 @@ _Metagenomics workflow step that produced this product (e.g., MagsAnalysis)_
 
 
 
-URI: [basalt_schema:mg_workflow_step](https://EMSL-Computing.github.io/basalt-schema/mg_workflow_step)
+URI: [basalt_schema:mg_workflow_step](https://EMSL-Computing.github.io/BASALT-Schema/mg_workflow_step)
 Alias: mg_workflow_step
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: mg_workflow_step
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MetagenomicsGenePhylogenyProduct](MetagenomicsGenePhylogenyProduct.md) | Top-level archive for gene-based phylogeny outputs (zip/tar stored in MinIO) |  no  |
-| [MetagenomicsProduct](MetagenomicsProduct.md) | Abstract base for all metagenomics data products |  no  |
-| [MetagenomicsBinningProduct](MetagenomicsBinningProduct.md) | Top-level archive (zip/tar) for binning results stored in MinIO |  no  |
 | [MetagenomicsAnnotationProduct](MetagenomicsAnnotationProduct.md) | Top-level archive for functional annotation outputs (zip/tar stored in MinIO) |  no  |
+| [MetagenomicsGenePhylogenyProduct](MetagenomicsGenePhylogenyProduct.md) | Top-level archive for gene-based phylogeny outputs (zip/tar stored in MinIO) |  no  |
+| [MetagenomicsBinningProduct](MetagenomicsBinningProduct.md) | Top-level archive (zip/tar) for binning results stored in MinIO |  no  |
+| [MetagenomicsProduct](MetagenomicsProduct.md) | Abstract base for all metagenomics data products |  no  |
 
 
 
@@ -64,7 +64,7 @@ Alias: mg_workflow_step
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ Alias: mg_workflow_step
 ```yaml
 name: mg_workflow_step
 description: Metagenomics workflow step that produced this product (e.g., MagsAnalysis)
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: mg_workflow_step
 domain_of:

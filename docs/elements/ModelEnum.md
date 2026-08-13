@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:ModelEnum](https://EMSL-Computing.github.io/basalt-schema/ModelEnum)
+URI: [basalt_schema:ModelEnum](https://EMSL-Computing.github.io/BASALT-Schema/ModelEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -87,7 +87,7 @@ URI: [basalt_schema:ModelEnum](https://EMSL-Computing.github.io/basalt-schema/Mo
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -99,7 +99,7 @@ URI: [basalt_schema:ModelEnum](https://EMSL-Computing.github.io/basalt-schema/Mo
 <details>
 ```yaml
 name: ModelEnum
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   exploris_21T:

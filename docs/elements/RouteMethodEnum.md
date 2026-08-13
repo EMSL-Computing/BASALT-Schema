@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:RouteMethodEnum](https://EMSL-Computing.github.io/basalt-schema/RouteMethodEnum)
+URI: [basalt_schema:RouteMethodEnum](https://EMSL-Computing.github.io/BASALT-Schema/RouteMethodEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -48,7 +48,7 @@ URI: [basalt_schema:RouteMethodEnum](https://EMSL-Computing.github.io/basalt-sch
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -60,7 +60,7 @@ URI: [basalt_schema:RouteMethodEnum](https://EMSL-Computing.github.io/basalt-sch
 <details>
 ```yaml
 name: RouteMethodEnum
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   analysis_activity:

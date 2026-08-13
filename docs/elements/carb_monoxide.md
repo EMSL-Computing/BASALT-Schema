@@ -9,7 +9,7 @@ _Amount of carbon monoxide measured in the air the day of sampling. (Unit: umol/
 
 
 
-URI: [basalt_schema:carb_monoxide](https://EMSL-Computing.github.io/basalt-schema/carb_monoxide)
+URI: [basalt_schema:carb_monoxide](https://EMSL-Computing.github.io/BASALT-Schema/carb_monoxide)
 Alias: carb_monoxide
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: carb_monoxide
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
-| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  yes  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  yes  |
+| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  yes  |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: carb_monoxide
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ name: carb_monoxide
 description: 'Amount of carbon monoxide measured in the air the day of sampling. (Unit:
   umol/L or ppm)'
 title: carbon monoxide
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: carb_monoxide
 domain_of:

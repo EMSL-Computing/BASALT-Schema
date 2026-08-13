@@ -19,7 +19,7 @@ _Refs:   Media (growth medium), Strain (target organism)_
 
 
 
-URI: [basalt_schema:StrainPurity](https://EMSL-Computing.github.io/basalt-schema/StrainPurity)
+URI: [basalt_schema:StrainPurity](https://EMSL-Computing.github.io/BASALT-Schema/StrainPurity)
 
 
 
@@ -173,7 +173,7 @@ URI: [basalt_schema:StrainPurity](https://EMSL-Computing.github.io/basalt-schema
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -211,7 +211,7 @@ description: 'Purity check of a strain culture.  Verifies that a sample contains
   Refs:   Media (growth medium), Strain (target organism)'
 todos:
 - purity percentage
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: CultureGrowth
 slots:
 - inspection_method
@@ -238,13 +238,13 @@ description: 'Purity check of a strain culture.  Verifies that a sample contains
   Refs:   Media (growth medium), Strain (target organism)'
 todos:
 - purity percentage
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: CultureGrowth
 attributes:
   inspection_method:
     name: inspection_method
     description: Method used to inspect or verify purity (visual, sequencing, etc.)
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: inspection_method
     owner: StrainPurity
@@ -256,7 +256,7 @@ attributes:
     description: Target strain identifier for purity checks
     todos:
     - should this point to the Strain class?
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: target_strain
     owner: StrainPurity
@@ -266,7 +266,7 @@ attributes:
   contaminant_strains:
     name: contaminant_strains
     description: Known or detected contaminant strains (if any)
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: contaminant_strains
     owner: StrainPurity
@@ -280,7 +280,7 @@ attributes:
       strain, isolate, engineered construct) that this sample or activity
 
       is associated with.'
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     aliases:
     - strain_ref
     - strain_id
@@ -299,7 +299,7 @@ attributes:
       3-D structure, bioreactor, etc. followed by the formula, recipe, or components
       used to create the growth medium.
     title: growth medium
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: growth_medium
     owner: StrainPurity
@@ -315,7 +315,7 @@ attributes:
   incubation_time_hours:
     name: incubation_time_hours
     description: Incubation duration in hours
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: incubation_time_hours
     owner: StrainPurity
@@ -325,7 +325,7 @@ attributes:
   container_type:
     name: container_type
     description: Physical container used for the culture (flask, tube, plate, etc.)
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: container_type
     owner: StrainPurity
@@ -336,7 +336,7 @@ attributes:
   temperature_celsius:
     name: temperature_celsius
     description: Temperature at which the method/process/activity was performed
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: temperature_celsius
     owner: StrainPurity
@@ -347,7 +347,7 @@ attributes:
   agitation_speed_rpm:
     name: agitation_speed_rpm
     description: Agitation/shaking speed in RPM (0 for static)
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: agitation_speed_rpm
     owner: StrainPurity
@@ -358,7 +358,7 @@ attributes:
     name: oxygen_relationship
     description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
     title: oxygen relationship
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     exact_mappings:
     - MIXS:0000015
     rank: 1000
@@ -381,7 +381,7 @@ attributes:
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: protocol_url
     owner: StrainPurity
@@ -392,7 +392,7 @@ attributes:
   protocol_version:
     name: protocol_version
     description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: protocol_version
     owner: StrainPurity
@@ -402,7 +402,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: StrainPurity
@@ -482,7 +482,7 @@ attributes:
     required: true
   analysis_type:
     name: analysis_type
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     alias: analysis_type
     owner: StrainPurity
     domain_of:
@@ -505,7 +505,7 @@ attributes:
     range: RouteMethodEnum
   method_name:
     name: method_name
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: method_name
     owner: StrainPurity
@@ -514,7 +514,7 @@ attributes:
     range: MethodNameEnum
   processing_steps:
     name: processing_steps
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: processing_steps
     owner: StrainPurity
@@ -524,7 +524,7 @@ attributes:
     required: true
   uses_sample:
     name: uses_sample
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: uses_sample
     owner: StrainPurity

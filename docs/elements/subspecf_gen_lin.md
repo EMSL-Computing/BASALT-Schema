@@ -9,7 +9,7 @@ _Information about the genetic distinctness of the sequenced organism below the 
 
 
 
-URI: [basalt_schema:subspecf_gen_lin](https://EMSL-Computing.github.io/basalt-schema/subspecf_gen_lin)
+URI: [basalt_schema:subspecf_gen_lin](https://EMSL-Computing.github.io/BASALT-Schema/subspecf_gen_lin)
 Alias: subspecf_gen_lin
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: subspecf_gen_lin
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  yes  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  yes  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  yes  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 
 
 
@@ -68,7 +68,7 @@ Alias: subspecf_gen_lin
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -95,7 +95,7 @@ description: Information about the genetic distinctness of the sequenced organis
 title: subspecific genetic lineage
 todos:
 - make this inlined/multivalued?
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: subspecf_gen_lin
 domain_of:

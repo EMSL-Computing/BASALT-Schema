@@ -9,7 +9,7 @@ _a reference to the mass spec data processing activity that produced this data p
 
 
 
-URI: [basalt_schema:results_from_ms_processing](https://EMSL-Computing.github.io/basalt-schema/results_from_ms_processing)
+URI: [basalt_schema:results_from_ms_processing](https://EMSL-Computing.github.io/BASALT-Schema/results_from_ms_processing)
 Alias: results_from_ms_processing
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: results_from_ms_processing
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MolecularIdentificationProduct](MolecularIdentificationProduct.md) | a file containing molecular formula identifications that was output from a ma... |  no  |
 | [MSImageProduct](MSImageProduct.md) | one or more image(s) output from a mass spec data processing workflow (eg |  no  |
-| [MetaproteomicsProduct](MetaproteomicsProduct.md) | Abstract parent class for processed metaproteomics data |  no  |
 | [MassSpectrometryDataProduct](MassSpectrometryDataProduct.md) | Abstract base for all mass spectrometry data products |  no  |
+| [MolecularIdentificationProduct](MolecularIdentificationProduct.md) | a file containing molecular formula identifications that was output from a ma... |  no  |
+| [MetaproteomicsProduct](MetaproteomicsProduct.md) | Abstract parent class for processed metaproteomics data |  no  |
 
 
 
@@ -64,7 +64,7 @@ Alias: results_from_ms_processing
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ Alias: results_from_ms_processing
 name: results_from_ms_processing
 description: a reference to the mass spec data processing activity that produced this
   data product
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: results_from_ms_processing
 domain_of:

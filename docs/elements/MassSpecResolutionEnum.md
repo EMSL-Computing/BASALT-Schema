@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:MassSpecResolutionEnum](https://EMSL-Computing.github.io/basalt-schema/MassSpecResolutionEnum)
+URI: [basalt_schema:MassSpecResolutionEnum](https://EMSL-Computing.github.io/BASALT-Schema/MassSpecResolutionEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -37,7 +37,7 @@ URI: [basalt_schema:MassSpecResolutionEnum](https://EMSL-Computing.github.io/bas
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -49,7 +49,7 @@ URI: [basalt_schema:MassSpecResolutionEnum](https://EMSL-Computing.github.io/bas
 <details>
 ```yaml
 name: MassSpecResolutionEnum
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   high:

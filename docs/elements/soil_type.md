@@ -9,7 +9,7 @@ _Soil series name or other lower-level classification_
 
 
 
-URI: [basalt_schema:soil_type](https://EMSL-Computing.github.io/basalt-schema/soil_type)
+URI: [basalt_schema:soil_type](https://EMSL-Computing.github.io/BASALT-Schema/soil_type)
 Alias: soil_type
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: soil_type
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
 
 
 
@@ -62,7 +62,7 @@ Alias: soil_type
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: soil_type
 name: soil_type
 description: Soil series name or other lower-level classification
 title: soil type
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: soil_type
 domain_of:

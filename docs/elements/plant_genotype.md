@@ -9,7 +9,7 @@ _Observed genotype of the plant_
 
 
 
-URI: [basalt_schema:plant_genotype](https://EMSL-Computing.github.io/basalt-schema/plant_genotype)
+URI: [basalt_schema:plant_genotype](https://EMSL-Computing.github.io/BASALT-Schema/plant_genotype)
 Alias: plant_genotype
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: plant_genotype
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: plant_genotype
 name: plant_genotype
 description: Observed genotype of the plant
 title: plant genotype
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: plant_genotype
 domain_of:

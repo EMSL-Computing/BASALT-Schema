@@ -9,7 +9,7 @@ _Reference or method used in determining soil texture_
 
 
 
-URI: [basalt_schema:texture_meth](https://EMSL-Computing.github.io/basalt-schema/texture_meth)
+URI: [basalt_schema:texture_meth](https://EMSL-Computing.github.io/BASALT-Schema/texture_meth)
 Alias: texture_meth
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: texture_meth
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: texture_meth
 name: texture_meth
 description: Reference or method used in determining soil texture
 title: texture method
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: texture_meth
 domain_of:

@@ -9,7 +9,7 @@ _Method used to inspect or verify purity (visual, sequencing, etc.)_
 
 
 
-URI: [basalt_schema:inspection_method](https://EMSL-Computing.github.io/basalt-schema/inspection_method)
+URI: [basalt_schema:inspection_method](https://EMSL-Computing.github.io/BASALT-Schema/inspection_method)
 Alias: inspection_method
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: inspection_method
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -82,7 +82,7 @@ Alias: inspection_method
 ```yaml
 name: inspection_method
 description: Method used to inspect or verify purity (visual, sequencing, etc.)
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: inspection_method
 domain_of:

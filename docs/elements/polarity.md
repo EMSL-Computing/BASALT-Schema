@@ -9,7 +9,7 @@ _Polarity setting used in the mass spectrometry method_
 
 
 
-URI: [basalt_schema:polarity](https://EMSL-Computing.github.io/basalt-schema/polarity)
+URI: [basalt_schema:polarity](https://EMSL-Computing.github.io/BASALT-Schema/polarity)
 Alias: polarity
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: polarity
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: polarity
 ```yaml
 name: polarity
 description: Polarity setting used in the mass spectrometry method
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: polarity
 domain_of:

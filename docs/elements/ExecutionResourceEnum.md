@@ -7,7 +7,7 @@ _The computing resource or facility where the processing was executed._
 
 
 
-URI: [basalt_schema:ExecutionResourceEnum](https://EMSL-Computing.github.io/basalt-schema/ExecutionResourceEnum)
+URI: [basalt_schema:ExecutionResourceEnum](https://EMSL-Computing.github.io/BASALT-Schema/ExecutionResourceEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -44,7 +44,7 @@ URI: [basalt_schema:ExecutionResourceEnum](https://EMSL-Computing.github.io/basa
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -57,7 +57,7 @@ URI: [basalt_schema:ExecutionResourceEnum](https://EMSL-Computing.github.io/basa
 ```yaml
 name: ExecutionResourceEnum
 description: The computing resource or facility where the processing was executed.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   nersc_cori:

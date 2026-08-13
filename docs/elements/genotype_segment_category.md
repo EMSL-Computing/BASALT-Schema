@@ -11,7 +11,7 @@ _Examples: "Gene(s) of Interest", "Gene Silencer"_
 
 
 
-URI: [basalt_schema:genotype_segment_category](https://EMSL-Computing.github.io/basalt-schema/genotype_segment_category)
+URI: [basalt_schema:genotype_segment_category](https://EMSL-Computing.github.io/BASALT-Schema/genotype_segment_category)
 Alias: genotype_segment_category
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: genotype_segment_category
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ description: 'Category of genetic modification or segment.
 
   Examples: "Gene(s) of Interest", "Gene Silencer"'
 title: genotype segment category
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: genotype_segment_category
 domain_of:

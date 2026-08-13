@@ -9,7 +9,7 @@ _Reference or method used in determining total organic carbon_
 
 
 
-URI: [basalt_schema:tot_org_c_meth](https://EMSL-Computing.github.io/basalt-schema/tot_org_c_meth)
+URI: [basalt_schema:tot_org_c_meth](https://EMSL-Computing.github.io/BASALT-Schema/tot_org_c_meth)
 Alias: tot_org_c_meth
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: tot_org_c_meth
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: tot_org_c_meth
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ Alias: tot_org_c_meth
 name: tot_org_c_meth
 description: Reference or method used in determining total organic carbon
 title: total organic carbon method
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: tot_org_c_meth
 domain_of:

@@ -9,7 +9,7 @@ _Reference to the RespirationMethod used for this run_
 
 
 
-URI: [basalt_schema:method_id](https://EMSL-Computing.github.io/basalt-schema/method_id)
+URI: [basalt_schema:method_id](https://EMSL-Computing.github.io/BASALT-Schema/method_id)
 Alias: method_id
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: method_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: method_id
 ```yaml
 name: method_id
 description: Reference to the RespirationMethod used for this run
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: method_id
 owner: RespirationDataGenerationActivity

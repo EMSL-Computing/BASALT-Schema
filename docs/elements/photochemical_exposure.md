@@ -9,7 +9,7 @@ _This term is used to describe a chemical reaction caused by absorption of ultra
 
 
 
-URI: [basalt_schema:photochemical_exposure](https://EMSL-Computing.github.io/basalt-schema/photochemical_exposure)
+URI: [basalt_schema:photochemical_exposure](https://EMSL-Computing.github.io/BASALT-Schema/photochemical_exposure)
 Alias: photochemical_exposure
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: photochemical_exposure
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
-| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: photochemical_exposure
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ description: This term is used to describe a chemical reaction caused by absorpt
   of ultraviolet (wavelength from 100 to 400 nm), visible light (400-750 nm), or infrared
   radiation (750-2500 nm)
 title: photochemical exposure
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: photochemical_exposure
 domain_of:

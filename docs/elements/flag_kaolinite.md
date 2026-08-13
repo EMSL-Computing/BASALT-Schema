@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_kaolinite](https://EMSL-Computing.github.io/basalt-schema/flag_kaolinite)
+URI: [basalt_schema:flag_kaolinite](https://EMSL-Computing.github.io/BASALT-Schema/flag_kaolinite)
 Alias: flag_kaolinite
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_kaolinite
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_kaolinite
 <details>
 ```yaml
 name: flag_kaolinite
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_kaolinite
 owner: XRDPhaseProduct

@@ -9,7 +9,7 @@ _Primary publication if isolated before genome publication; otherwise primary ge
 
 
 
-URI: [basalt_schema:ref_biomaterial](https://EMSL-Computing.github.io/basalt-schema/ref_biomaterial)
+URI: [basalt_schema:ref_biomaterial](https://EMSL-Computing.github.io/BASALT-Schema/ref_biomaterial)
 Alias: ref_biomaterial
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: ref_biomaterial
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 
@@ -66,7 +66,7 @@ Alias: ref_biomaterial
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ name: ref_biomaterial
 description: Primary publication if isolated before genome publication; otherwise
   primary genome report.
 title: reference for biomaterial
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: ref_biomaterial
 domain_of:

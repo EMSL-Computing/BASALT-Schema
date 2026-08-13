@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:location](https://EMSL-Computing.github.io/basalt-schema/location)
+URI: [basalt_schema:location](https://EMSL-Computing.github.io/BASALT-Schema/location)
 Alias: location
 
 <!-- no inheritance hierarchy -->
@@ -17,16 +17,16 @@ Alias: location
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [KuoMethod](KuoMethod.md) |  |  no  |
-| [TOCTNMethod](TOCTNMethod.md) |  |  no  |
-| [MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |  no  |
-| [EnzymeActivityMethod](EnzymeActivityMethod.md) |  |  no  |
-| [XrayComputedTomographyMethod](XrayComputedTomographyMethod.md) |  |  no  |
-| [PHMethod](PHMethod.md) |  |  no  |
-| [HydraulicPropertiesMethod](HydraulicPropertiesMethod.md) |  |  no  |
 | [GravimetricWaterContentMethod](GravimetricWaterContentMethod.md) |  |  no  |
-| [Instrument](Instrument.md) | A material entity that is designed to perform a function in a scientific  |  no  |
+| [MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |  no  |
+| [PHMethod](PHMethod.md) |  |  no  |
 | [TextureMethod](TextureMethod.md) |  |  no  |
+| [KuoMethod](KuoMethod.md) |  |  no  |
+| [HydraulicPropertiesMethod](HydraulicPropertiesMethod.md) |  |  no  |
+| [EnzymeActivityMethod](EnzymeActivityMethod.md) |  |  no  |
+| [Instrument](Instrument.md) | A material entity that is designed to perform a function in a scientific  |  no  |
+| [TOCTNMethod](TOCTNMethod.md) |  |  no  |
+| [XrayComputedTomographyMethod](XrayComputedTomographyMethod.md) |  |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: location
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: location
 name: location
 todos:
 - used on many method classes. no description. what was this meant to mean?
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: location
 domain_of:

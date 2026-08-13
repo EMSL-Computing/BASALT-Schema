@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:role](https://EMSL-Computing.github.io/basalt-schema/role)
+URI: [basalt_schema:role](https://EMSL-Computing.github.io/BASALT-Schema/role)
 Alias: role
 
 <!-- no inheritance hierarchy -->

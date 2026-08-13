@@ -7,7 +7,7 @@ _Common names or identifiers for chemical entities._
 
 
 
-URI: [basalt_schema:ChemicalEntityEnum](https://EMSL-Computing.github.io/basalt-schema/ChemicalEntityEnum)
+URI: [basalt_schema:ChemicalEntityEnum](https://EMSL-Computing.github.io/BASALT-Schema/ChemicalEntityEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -60,7 +60,7 @@ URI: [basalt_schema:ChemicalEntityEnum](https://EMSL-Computing.github.io/basalt-
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -73,7 +73,7 @@ URI: [basalt_schema:ChemicalEntityEnum](https://EMSL-Computing.github.io/basalt-
 ```yaml
 name: ChemicalEntityEnum
 description: Common names or identifiers for chemical entities.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   acetonitrile:

@@ -9,7 +9,7 @@ _Amount of oxygen measured in the air the day of sampling. (Unit: mg/L or ppm)_
 
 
 
-URI: [basalt_schema:oxygen](https://EMSL-Computing.github.io/basalt-schema/oxygen)
+URI: [basalt_schema:oxygen](https://EMSL-Computing.github.io/BASALT-Schema/oxygen)
 Alias: oxygen
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: oxygen
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  yes  |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: oxygen
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ name: oxygen
 description: 'Amount of oxygen measured in the air the day of sampling. (Unit: mg/L
   or ppm)'
 title: oxygen
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: oxygen
 domain_of:

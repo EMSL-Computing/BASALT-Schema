@@ -9,7 +9,7 @@ _Drainage classification from a standard system such as the USDA system_
 
 
 
-URI: [basalt_schema:drainage_class](https://EMSL-Computing.github.io/basalt-schema/drainage_class)
+URI: [basalt_schema:drainage_class](https://EMSL-Computing.github.io/BASALT-Schema/drainage_class)
 Alias: drainage_class
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: drainage_class
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: drainage_class
 name: drainage_class
 description: Drainage classification from a standard system such as the USDA system
 title: drainage class
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: drainage_class
 domain_of:

@@ -9,7 +9,7 @@ _Direction of the wind on the day of sampling. Collected via anemometer. Provide
 
 
 
-URI: [basalt_schema:wind_direction](https://EMSL-Computing.github.io/basalt-schema/wind_direction)
+URI: [basalt_schema:wind_direction](https://EMSL-Computing.github.io/BASALT-Schema/wind_direction)
 Alias: wind_direction
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: wind_direction
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSamplingActivity](OtherUndescribedSamplingActivity.md) | Collection of samples from source that does not fit into any of the other cat... |  no  |
 | [AerosolSamplingActivity](AerosolSamplingActivity.md) | A sampling activity where aerosol samples were collected |  no  |
+| [OtherUndescribedSamplingActivity](OtherUndescribedSamplingActivity.md) | Collection of samples from source that does not fit into any of the other cat... |  no  |
 | [SoilSamplingActivity](SoilSamplingActivity.md) | Collection of soil samples from the environment |  no  |
 
 
@@ -63,7 +63,7 @@ Alias: wind_direction
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ name: wind_direction
 description: Direction of the wind on the day of sampling. Collected via anemometer.
   Provide cardinal direction.
 title: wind direction
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: wind_direction
 domain_of:

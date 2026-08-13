@@ -13,7 +13,7 @@ _Example: "d-Cfp1 to block gene expression", "recognition sequence for guide RNA
 
 
 
-URI: [basalt_schema:component_description](https://EMSL-Computing.github.io/basalt-schema/component_description)
+URI: [basalt_schema:component_description](https://EMSL-Computing.github.io/BASALT-Schema/component_description)
 Alias: component_description
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: component_description
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ description: 'Provide a short statement describing the function of the construct
   Example: "d-Cfp1 to block gene expression", "recognition sequence for guide RNA
   processing"'
 title: construct component description
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: component_description
 domain_of:

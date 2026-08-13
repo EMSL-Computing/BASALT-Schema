@@ -9,7 +9,7 @@ _A lab device is a physical instrument or equipment used in a laboratory setting
 
 
 
-URI: [basalt_schema:LabDevice](https://EMSL-Computing.github.io/basalt-schema/LabDevice)
+URI: [basalt_schema:LabDevice](https://EMSL-Computing.github.io/BASALT-Schema/LabDevice)
 
 
 
@@ -97,7 +97,7 @@ URI: [basalt_schema:LabDevice](https://EMSL-Computing.github.io/basalt-schema/La
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -128,11 +128,11 @@ description: A lab device is a physical instrument or equipment used in a labora
   types of instruments such as microscopes, spectrometers, centrifuges, and other
   specialized equipment. Lab devices are essential for performing scientific research
   and obtaining accurate data.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     identifier: true
     domain_of:
     - Activity
@@ -210,7 +210,7 @@ attributes:
     required: true
   description:
     name: description
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     domain_of:
     - Activity
     - Entity
@@ -238,21 +238,21 @@ attributes:
     range: string
   device_type:
     name: device_type
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - LabDevice
     range: DeviceTypeEnum
   activity_time_id:
     name: activity_time_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - LabDevice
     range: QuantityValue
   activity_speed_id:
     name: activity_speed_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - LabDevice
@@ -271,11 +271,11 @@ description: A lab device is a physical instrument or equipment used in a labora
   types of instruments such as microscopes, spectrometers, centrifuges, and other
   specialized equipment. Lab devices are essential for performing scientific research
   and obtaining accurate data.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: LabDevice
@@ -355,7 +355,7 @@ attributes:
     required: true
   description:
     name: description
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     alias: description
     owner: LabDevice
     domain_of:
@@ -385,7 +385,7 @@ attributes:
     range: string
   device_type:
     name: device_type
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: device_type
     owner: LabDevice
@@ -394,7 +394,7 @@ attributes:
     range: DeviceTypeEnum
   activity_time_id:
     name: activity_time_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: activity_time_id
     owner: LabDevice
@@ -403,7 +403,7 @@ attributes:
     range: QuantityValue
   activity_speed_id:
     name: activity_speed_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: activity_speed_id
     owner: LabDevice

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:roi_volume_voxel](https://EMSL-Computing.github.io/basalt-schema/roi_volume_voxel)
+URI: [basalt_schema:roi_volume_voxel](https://EMSL-Computing.github.io/BASALT-Schema/roi_volume_voxel)
 Alias: roi_volume_voxel
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: roi_volume_voxel
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: roi_volume_voxel
 <details>
 ```yaml
 name: roi_volume_voxel
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: roi_volume_voxel
 owner: TomographyProduct

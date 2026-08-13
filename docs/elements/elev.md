@@ -9,7 +9,7 @@ _Elevation of the sampling site is its height above a fixed reference point, mos
 
 
 
-URI: [basalt_schema:elev](https://EMSL-Computing.github.io/basalt-schema/elev)
+URI: [basalt_schema:elev](https://EMSL-Computing.github.io/BASALT-Schema/elev)
 Alias: elev
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: elev
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ description: 'Elevation of the sampling site is its height above a fixed referen
   point, most commonly the mean sea level. Elevation is mainly used when referring
   to points on the earth''s surface. (Unit: m).'
 title: elevation
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: elev
 domain_of:

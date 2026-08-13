@@ -9,7 +9,7 @@ _Genetic modifications of the genome of an organism, which may occur naturally b
 
 
 
-URI: [basalt_schema:genetic_mod](https://EMSL-Computing.github.io/basalt-schema/genetic_mod)
+URI: [basalt_schema:genetic_mod](https://EMSL-Computing.github.io/BASALT-Schema/genetic_mod)
 Alias: genetic_mod
 
 <!-- no inheritance hierarchy -->
@@ -22,13 +22,13 @@ Alias: genetic_mod
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 
 
@@ -68,7 +68,7 @@ Alias: genetic_mod
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ description: Genetic modifications of the genome of an organism, which may occur
   by spontaneous mutation or be introduced by some experimental means, e.g. specification
   of a transgene or the gene knocked-out or details of transient transfection
 title: genetic modifications
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: genetic_mod
 domain_of:

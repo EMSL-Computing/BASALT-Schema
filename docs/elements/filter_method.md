@@ -9,7 +9,7 @@ _Type of filter used or how the sample was filtered_
 
 
 
-URI: [basalt_schema:filter_method](https://EMSL-Computing.github.io/basalt-schema/filter_method)
+URI: [basalt_schema:filter_method](https://EMSL-Computing.github.io/BASALT-Schema/filter_method)
 Alias: filter_method
 
 <!-- no inheritance hierarchy -->
@@ -22,11 +22,11 @@ Alias: filter_method
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  yes  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  yes  |
 
 
 
@@ -65,7 +65,7 @@ Alias: filter_method
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ Alias: filter_method
 name: filter_method
 description: Type of filter used or how the sample was filtered
 title: filter method
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: filter_method
 domain_of:

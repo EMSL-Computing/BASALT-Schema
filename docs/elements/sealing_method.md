@@ -9,7 +9,7 @@ _How the plate is sealed (e.g. "BreathEasy_membrane", "adhesive_film")_
 
 
 
-URI: [basalt_schema:sealing_method](https://EMSL-Computing.github.io/basalt-schema/sealing_method)
+URI: [basalt_schema:sealing_method](https://EMSL-Computing.github.io/BASALT-Schema/sealing_method)
 Alias: sealing_method
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: sealing_method
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
 | [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |  no  |
 | [PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |  no  |
+| [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: sealing_method
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: sealing_method
 ```yaml
 name: sealing_method
 description: How the plate is sealed (e.g. "BreathEasy_membrane", "adhesive_film")
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: sealing_method
 domain_of:

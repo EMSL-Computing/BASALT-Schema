@@ -9,7 +9,7 @@ _Reference or method used in vegetation classification_
 
 
 
-URI: [basalt_schema:cur_vegetation_meth](https://EMSL-Computing.github.io/basalt-schema/cur_vegetation_meth)
+URI: [basalt_schema:cur_vegetation_meth](https://EMSL-Computing.github.io/BASALT-Schema/cur_vegetation_meth)
 Alias: cur_vegetation_meth
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: cur_vegetation_meth
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: cur_vegetation_meth
 name: cur_vegetation_meth
 description: Reference or method used in vegetation classification
 title: current vegetation method
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: cur_vegetation_meth
 domain_of:

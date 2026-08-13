@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:GravimetricWaterContentMethod](https://EMSL-Computing.github.io/basalt-schema/GravimetricWaterContentMethod)
+URI: [basalt_schema:GravimetricWaterContentMethod](https://EMSL-Computing.github.io/BASALT-Schema/GravimetricWaterContentMethod)
 
 
 
@@ -63,7 +63,7 @@ URI: [basalt_schema:GravimetricWaterContentMethod](https://EMSL-Computing.github
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ URI: [basalt_schema:GravimetricWaterContentMethod](https://EMSL-Computing.github
 <details>
 ```yaml
 name: GravimetricWaterContentMethod
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: Method
 slots:
 - location
@@ -102,14 +102,14 @@ slots:
 <details>
 ```yaml
 name: GravimetricWaterContentMethod
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: Method
 attributes:
   location:
     name: location
     todos:
     - used on many method classes. no description. what was this meant to mean?
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: location
     owner: GravimetricWaterContentMethod
@@ -130,7 +130,7 @@ attributes:
     name: analytic
     todos:
     - what does this mean
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: analytic
     owner: GravimetricWaterContentMethod

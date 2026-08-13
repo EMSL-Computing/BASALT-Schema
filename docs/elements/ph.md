@@ -9,7 +9,7 @@ _pH measurement of the sample or liquid portion of sample or aqueous phase of th
 
 
 
-URI: [basalt_schema:ph](https://EMSL-Computing.github.io/basalt-schema/ph)
+URI: [basalt_schema:ph](https://EMSL-Computing.github.io/BASALT-Schema/ph)
 Alias: ph
 
 <!-- no inheritance hierarchy -->
@@ -22,11 +22,11 @@ Alias: ph
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PHProduct](PHProduct.md) | Soil pH analysis product, typically derived via pH meter or similar instrumen... |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 
 
 
@@ -65,7 +65,7 @@ Alias: ph
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -88,7 +88,7 @@ name: ph
 description: pH measurement of the sample or liquid portion of sample or aqueous phase
   of the fluid
 title: pH
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: ph
 domain_of:

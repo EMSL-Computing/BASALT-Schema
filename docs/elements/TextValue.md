@@ -9,7 +9,7 @@ _A text value with optional description and language._
 
 
 
-URI: [basalt_schema:TextValue](https://EMSL-Computing.github.io/basalt-schema/TextValue)
+URI: [basalt_schema:TextValue](https://EMSL-Computing.github.io/BASALT-Schema/TextValue)
 
 
 
@@ -67,7 +67,7 @@ URI: [basalt_schema:TextValue](https://EMSL-Computing.github.io/basalt-schema/Te
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -94,13 +94,13 @@ URI: [basalt_schema:TextValue](https://EMSL-Computing.github.io/basalt-schema/Te
 ```yaml
 name: TextValue
 description: A text value with optional description and language.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 slots:
 - description
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     identifier: true
     domain_of:
     - Activity
@@ -178,14 +178,14 @@ attributes:
     required: true
   language:
     name: language
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - TextValue
     range: string
   has_raw_value:
     name: has_raw_value
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     domain_of:
     - TimestampValue
     - TextValue
@@ -204,11 +204,11 @@ attributes:
 ```yaml
 name: TextValue
 description: A text value with optional description and language.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     identifier: true
     alias: id
     owner: TextValue
@@ -288,7 +288,7 @@ attributes:
     required: true
   language:
     name: language
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: language
     owner: TextValue
@@ -297,7 +297,7 @@ attributes:
     range: string
   has_raw_value:
     name: has_raw_value
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     alias: has_raw_value
     owner: TextValue
     domain_of:
@@ -312,7 +312,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: TextValue

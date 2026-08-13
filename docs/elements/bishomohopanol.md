@@ -9,7 +9,7 @@ _Concentration of bishomohopanol. (Unit: ug/L or ug/g)_
 
 
 
-URI: [basalt_schema:bishomohopanol](https://EMSL-Computing.github.io/basalt-schema/bishomohopanol)
+URI: [basalt_schema:bishomohopanol](https://EMSL-Computing.github.io/BASALT-Schema/bishomohopanol)
 Alias: bishomohopanol
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: bishomohopanol
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -70,7 +70,7 @@ Alias: bishomohopanol
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: bishomohopanol
 name: bishomohopanol
 description: 'Concentration of bishomohopanol. (Unit: ug/L or ug/g)'
 title: bishomohopanol
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: bishomohopanol
 domain_of:

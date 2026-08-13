@@ -9,7 +9,7 @@ _The order of this segment in the overall chromatography protocol._
 
 
 
-URI: [basalt_schema:segment_order](https://EMSL-Computing.github.io/basalt-schema/segment_order)
+URI: [basalt_schema:segment_order](https://EMSL-Computing.github.io/BASALT-Schema/segment_order)
 Alias: segment_order
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: segment_order
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: segment_order
 ```yaml
 name: segment_order
 description: The order of this segment in the overall chromatography protocol.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: segment_order
 owner: MobilePhaseSegment

@@ -9,7 +9,7 @@ _Whether the entity was pH-adjusted_
 
 
 
-URI: [basalt_schema:ph_adjustment](https://EMSL-Computing.github.io/basalt-schema/ph_adjustment)
+URI: [basalt_schema:ph_adjustment](https://EMSL-Computing.github.io/BASALT-Schema/ph_adjustment)
 Alias: ph_adjustment
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: ph_adjustment
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -82,7 +82,7 @@ Alias: ph_adjustment
 ```yaml
 name: ph_adjustment
 description: Whether the entity was pH-adjusted
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: ph_adjustment
 domain_of:

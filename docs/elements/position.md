@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:position](https://EMSL-Computing.github.io/basalt-schema/position)
+URI: [basalt_schema:position](https://EMSL-Computing.github.io/BASALT-Schema/position)
 Alias: position
 
 <!-- no inheritance hierarchy -->
@@ -17,10 +17,10 @@ Alias: position
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WellReading](WellReading.md) | Per-well measurement data |  no  |
+| [AMP2WellMetadata](AMP2WellMetadata.md) | AMP2-specific per-well metadata |  no  |
 | [EcoplateWellMetadata](EcoplateWellMetadata.md) | Ecoplate-specific per-well metadata |  no  |
 | [WellMetadata](WellMetadata.md) | Base structure for per-well metadata in plate setup |  no  |
-| [AMP2WellMetadata](AMP2WellMetadata.md) | AMP2-specific per-well metadata |  no  |
+| [WellReading](WellReading.md) | Per-well measurement data |  no  |
 
 
 

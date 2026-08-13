@@ -7,7 +7,7 @@ _Core groups when sampling according to the MONet sampling protocol_
 
 
 
-URI: [basalt_schema:MONetCoreGroupEnum](https://EMSL-Computing.github.io/basalt-schema/MONetCoreGroupEnum)
+URI: [basalt_schema:MONetCoreGroupEnum](https://EMSL-Computing.github.io/BASALT-Schema/MONetCoreGroupEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -46,7 +46,7 @@ URI: [basalt_schema:MONetCoreGroupEnum](https://EMSL-Computing.github.io/basalt-
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -59,7 +59,7 @@ URI: [basalt_schema:MONetCoreGroupEnum](https://EMSL-Computing.github.io/basalt-
 ```yaml
 name: MONetCoreGroupEnum
 description: Core groups when sampling according to the MONet sampling protocol
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   A:

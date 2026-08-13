@@ -9,7 +9,7 @@ _Indicate if samples were collected during the local afternoon time_
 
 
 
-URI: [basalt_schema:within_17_oz](https://EMSL-Computing.github.io/basalt-schema/within_17_oz)
+URI: [basalt_schema:within_17_oz](https://EMSL-Computing.github.io/BASALT-Schema/within_17_oz)
 Alias: within_17_oz
 
 <!-- no inheritance hierarchy -->
@@ -51,7 +51,7 @@ Alias: within_17_oz
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -73,7 +73,7 @@ Alias: within_17_oz
 name: within_17_oz
 description: Indicate if samples were collected during the local afternoon time
 title: Within 17 Oz
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: within_17_oz
 range: string

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:total_sulfur_id](https://EMSL-Computing.github.io/basalt-schema/total_sulfur_id)
+URI: [basalt_schema:total_sulfur_id](https://EMSL-Computing.github.io/BASALT-Schema/total_sulfur_id)
 Alias: total_sulfur_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: total_sulfur_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: total_sulfur_id
 <details>
 ```yaml
 name: total_sulfur_id
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: total_sulfur_id
 owner: ElementalAnalysisProduct

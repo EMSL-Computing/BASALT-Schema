@@ -9,7 +9,7 @@ _Measurement of dry mass. (Unit: kg or g)_
 
 
 
-URI: [basalt_schema:host_dry_mass](https://EMSL-Computing.github.io/basalt-schema/host_dry_mass)
+URI: [basalt_schema:host_dry_mass](https://EMSL-Computing.github.io/BASALT-Schema/host_dry_mass)
 Alias: host_dry_mass
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: host_dry_mass
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: host_dry_mass
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: host_dry_mass
 name: host_dry_mass
 description: 'Measurement of dry mass. (Unit: kg or g)'
 title: host dry mass
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: host_dry_mass
 domain_of:

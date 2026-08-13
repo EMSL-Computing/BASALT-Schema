@@ -9,7 +9,7 @@ _Measurement of the culture rooting medium micronutrients (Fe Mn Zn B Cu Mo). Ca
 
 
 
-URI: [basalt_schema:root_med_micronutr](https://EMSL-Computing.github.io/basalt-schema/root_med_micronutr)
+URI: [basalt_schema:root_med_micronutr](https://EMSL-Computing.github.io/BASALT-Schema/root_med_micronutr)
 Alias: root_med_micronutr
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: root_med_micronutr
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: root_med_micronutr
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ name: root_med_micronutr
 description: Measurement of the culture rooting medium micronutrients (Fe Mn Zn B
   Cu Mo). Can be multivalued separated by ;. e.g. H3BO3 6.2 mg/L
 title: rooting medium micronutrients
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: root_med_micronutr
 domain_of:

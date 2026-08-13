@@ -9,7 +9,7 @@ _Description of the stationary phase used in the chromatography method (e.g., co
 
 
 
-URI: [basalt_schema:stationary_phase](https://EMSL-Computing.github.io/basalt-schema/stationary_phase)
+URI: [basalt_schema:stationary_phase](https://EMSL-Computing.github.io/BASALT-Schema/stationary_phase)
 Alias: stationary_phase
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: stationary_phase
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: stationary_phase
 name: stationary_phase
 description: Description of the stationary phase used in the chromatography method
   (e.g., column type)
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: stationary_phase
 domain_of:

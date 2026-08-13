@@ -9,7 +9,7 @@ _Ratio of amount or concentrations of carbon to nitrogen._
 
 
 
-URI: [basalt_schema:carb_nitro_ratio](https://EMSL-Computing.github.io/basalt-schema/carb_nitro_ratio)
+URI: [basalt_schema:carb_nitro_ratio](https://EMSL-Computing.github.io/BASALT-Schema/carb_nitro_ratio)
 Alias: carb_nitro_ratio
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: carb_nitro_ratio
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -63,7 +63,7 @@ Alias: carb_nitro_ratio
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ Alias: carb_nitro_ratio
 name: carb_nitro_ratio
 description: Ratio of amount or concentrations of carbon to nitrogen.
 title: carbon nitrogen ratio
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: carb_nitro_ratio
 domain_of:

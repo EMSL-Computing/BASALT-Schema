@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:RespirationMethod](https://EMSL-Computing.github.io/basalt-schema/RespirationMethod)
+URI: [basalt_schema:RespirationMethod](https://EMSL-Computing.github.io/BASALT-Schema/RespirationMethod)
 
 
 
@@ -67,7 +67,7 @@ URI: [basalt_schema:RespirationMethod](https://EMSL-Computing.github.io/basalt-s
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ URI: [basalt_schema:RespirationMethod](https://EMSL-Computing.github.io/basalt-s
 <details>
 ```yaml
 name: RespirationMethod
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: Method
 
 ```
@@ -104,14 +104,14 @@ is_a: Method
 <details>
 ```yaml
 name: RespirationMethod
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: Method
 attributes:
   analytic:
     name: analytic
     todos:
     - what does this mean
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: analytic
     owner: RespirationMethod

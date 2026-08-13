@@ -13,7 +13,7 @@ _be specified on workflow subclasses._
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [basalt_schema:DataGenerationActivity](https://EMSL-Computing.github.io/basalt-schema/DataGenerationActivity)
+URI: [basalt_schema:DataGenerationActivity](https://EMSL-Computing.github.io/BASALT-Schema/DataGenerationActivity)
 
 
 
@@ -138,7 +138,7 @@ URI: [basalt_schema:DataGenerationActivity](https://EMSL-Computing.github.io/bas
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -166,7 +166,7 @@ URI: [basalt_schema:DataGenerationActivity](https://EMSL-Computing.github.io/bas
 name: DataGenerationActivity
 description: "Abstract base for any data generation activity (physical to digital).\
   \ Input data should \nbe specified on workflow subclasses."
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 abstract: true
 slots:
 - sequence_order
@@ -177,7 +177,7 @@ slots:
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     identifier: true
     domain_of:
     - Activity
@@ -255,14 +255,14 @@ attributes:
     required: true
   analyte_id:
     name: analyte_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - DataGenerationActivity
     range: ProcessedSample
   acquisition_start_time:
     name: acquisition_start_time
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - DataGenerationActivity
@@ -270,7 +270,7 @@ attributes:
     required: true
   acquisition_end_time:
     name: acquisition_end_time
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - DataGenerationActivity
@@ -278,14 +278,14 @@ attributes:
     required: true
   instrument_used:
     name: instrument_used
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - DataGenerationActivity
     range: Instrument
   instrument_operator_id:
     name: instrument_operator_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - DataGenerationActivity
@@ -301,12 +301,12 @@ attributes:
 name: DataGenerationActivity
 description: "Abstract base for any data generation activity (physical to digital).\
   \ Input data should \nbe specified on workflow subclasses."
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 abstract: true
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: DataGenerationActivity
@@ -386,7 +386,7 @@ attributes:
     required: true
   analyte_id:
     name: analyte_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: analyte_id
     owner: DataGenerationActivity
@@ -395,7 +395,7 @@ attributes:
     range: ProcessedSample
   acquisition_start_time:
     name: acquisition_start_time
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: acquisition_start_time
     owner: DataGenerationActivity
@@ -405,7 +405,7 @@ attributes:
     required: true
   acquisition_end_time:
     name: acquisition_end_time
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: acquisition_end_time
     owner: DataGenerationActivity
@@ -415,7 +415,7 @@ attributes:
     required: true
   instrument_used:
     name: instrument_used
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: instrument_used
     owner: DataGenerationActivity
@@ -424,7 +424,7 @@ attributes:
     range: Instrument
   instrument_operator_id:
     name: instrument_operator_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: instrument_operator_id
     owner: DataGenerationActivity
@@ -437,7 +437,7 @@ attributes:
       Lower = earlier in series. Use when acquisition_time alone is insufficient.\n\
       \nDDL: ALTER TABLE \"DataGenerationActivity\"\n       ADD COLUMN sequence_order\
       \ INTEGER;"
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: sequence_order
     owner: DataGenerationActivity
@@ -448,7 +448,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: DataGenerationActivity
@@ -478,7 +478,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: DataGenerationActivity
@@ -510,7 +510,7 @@ attributes:
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: protocol_url
     owner: DataGenerationActivity
@@ -521,7 +521,7 @@ attributes:
   protocol_version:
     name: protocol_version
     description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: protocol_version
     owner: DataGenerationActivity

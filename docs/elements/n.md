@@ -9,7 +9,7 @@ _Van Genuchten pore-size distribution index n (dimensionless, n > 1). Controls t
 
 
 
-URI: [basalt_schema:n](https://EMSL-Computing.github.io/basalt-schema/n)
+URI: [basalt_schema:n](https://EMSL-Computing.github.io/BASALT-Schema/n)
 Alias: n
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: n
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -90,7 +90,7 @@ Alias: n
 name: n
 description: Van Genuchten pore-size distribution index n (dimensionless, n > 1).
   Controls the slope of the water-retention curve.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: n
 owner: HydraulicPropertiesProduct

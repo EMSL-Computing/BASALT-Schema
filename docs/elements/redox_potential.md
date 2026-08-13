@@ -9,7 +9,7 @@ _Redox potential measured relative to a hydrogen cell indicating oxidation or re
 
 
 
-URI: [basalt_schema:redox_potential](https://EMSL-Computing.github.io/basalt-schema/redox_potential)
+URI: [basalt_schema:redox_potential](https://EMSL-Computing.github.io/BASALT-Schema/redox_potential)
 Alias: redox_potential
 
 <!-- no inheritance hierarchy -->
@@ -22,11 +22,11 @@ Alias: redox_potential
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -72,7 +72,7 @@ Alias: redox_potential
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -95,7 +95,7 @@ name: redox_potential
 description: 'Redox potential measured relative to a hydrogen cell indicating oxidation
   or reduction potential (Unit: mV)'
 title: redox potential
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: redox_potential
 domain_of:

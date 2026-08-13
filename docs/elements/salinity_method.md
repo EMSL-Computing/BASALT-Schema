@@ -9,7 +9,7 @@ _Method used to determine sample salinity_
 
 
 
-URI: [basalt_schema:salinity_method](https://EMSL-Computing.github.io/basalt-schema/salinity_method)
+URI: [basalt_schema:salinity_method](https://EMSL-Computing.github.io/BASALT-Schema/salinity_method)
 Alias: salinity_method
 
 <!-- no inheritance hierarchy -->
@@ -22,11 +22,11 @@ Alias: salinity_method
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 
 
 
@@ -65,7 +65,7 @@ Alias: salinity_method
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ Alias: salinity_method
 name: salinity_method
 description: Method used to determine sample salinity
 title: salinity method
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: salinity_method
 domain_of:

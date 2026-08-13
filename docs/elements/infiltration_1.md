@@ -9,7 +9,7 @@ _Amount of time it takes to accomplish the first infiltration activity. If infil
 
 
 
-URI: [basalt_schema:infiltration_1](https://EMSL-Computing.github.io/basalt-schema/infiltration_1)
+URI: [basalt_schema:infiltration_1](https://EMSL-Computing.github.io/BASALT-Schema/infiltration_1)
 Alias: infiltration_1
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: infiltration_1
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MonetSoilSamplingActivity](MonetSoilSamplingActivity.md) | Collection of soil cores according to the MONet soil sampling protocol |  yes  |
 | [SoilSamplingActivity](SoilSamplingActivity.md) | Collection of soil samples from the environment |  no  |
+| [MonetSoilSamplingActivity](MonetSoilSamplingActivity.md) | Collection of soil cores according to the MONet soil sampling protocol |  yes  |
 
 
 
@@ -69,7 +69,7 @@ Alias: infiltration_1
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -94,7 +94,7 @@ description: 'Amount of time it takes to accomplish the first infiltration activ
   time was not attempted enter ''did not collect''. Units and format of mm:ss required.
   (Example: 15:20 mm:ss)'
 title: first infiltration time
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: infiltration_1
 domain_of:

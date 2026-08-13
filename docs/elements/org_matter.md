@@ -9,7 +9,7 @@ _Concentration of organic matter (Unit: mg/L)_
 
 
 
-URI: [basalt_schema:org_matter](https://EMSL-Computing.github.io/basalt-schema/org_matter)
+URI: [basalt_schema:org_matter](https://EMSL-Computing.github.io/BASALT-Schema/org_matter)
 Alias: org_matter
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: org_matter
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -70,7 +70,7 @@ Alias: org_matter
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: org_matter
 name: org_matter
 description: 'Concentration of organic matter (Unit: mg/L)'
 title: organic matter
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: org_matter
 domain_of:

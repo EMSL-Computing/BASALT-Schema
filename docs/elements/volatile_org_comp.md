@@ -9,7 +9,7 @@ _Volatile organic compounds are organic chemicals that have a high vapour pressu
 
 
 
-URI: [basalt_schema:volatile_org_comp](https://EMSL-Computing.github.io/basalt-schema/volatile_org_comp)
+URI: [basalt_schema:volatile_org_comp](https://EMSL-Computing.github.io/BASALT-Schema/volatile_org_comp)
 Alias: volatile_org_comp
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: volatile_org_comp
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
-| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: volatile_org_comp
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ name: volatile_org_comp
 description: Volatile organic compounds are organic chemicals that have a high vapour
   pressure at room temperature.
 title: volatile organic compounds
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: volatile_org_comp
 domain_of:

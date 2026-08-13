@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:IntendedTraitEnum](https://EMSL-Computing.github.io/basalt-schema/IntendedTraitEnum)
+URI: [basalt_schema:IntendedTraitEnum](https://EMSL-Computing.github.io/BASALT-Schema/IntendedTraitEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -44,7 +44,7 @@ URI: [basalt_schema:IntendedTraitEnum](https://EMSL-Computing.github.io/basalt-s
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -56,7 +56,7 @@ URI: [basalt_schema:IntendedTraitEnum](https://EMSL-Computing.github.io/basalt-s
 <details>
 ```yaml
 name: IntendedTraitEnum
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   other:

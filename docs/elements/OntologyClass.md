@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:OntologyClass](https://EMSL-Computing.github.io/basalt-schema/OntologyClass)
+URI: [basalt_schema:OntologyClass](https://EMSL-Computing.github.io/BASALT-Schema/OntologyClass)
 
 
 
@@ -62,7 +62,7 @@ URI: [basalt_schema:OntologyClass](https://EMSL-Computing.github.io/basalt-schem
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -88,11 +88,11 @@ URI: [basalt_schema:OntologyClass](https://EMSL-Computing.github.io/basalt-schem
 <details>
 ```yaml
 name: OntologyClass
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     identifier: true
     domain_of:
     - Activity
@@ -170,7 +170,7 @@ attributes:
     required: true
   description:
     name: description
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     domain_of:
     - Activity
     - Entity
@@ -198,14 +198,14 @@ attributes:
     range: string
   alternative_identifiers:
     name: alternative_identifiers
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     domain_of:
     - InstrumentData
     - OntologyClass
     range: string
   name:
     name: name
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     domain_of:
     - Activity
     - Entity
@@ -236,11 +236,11 @@ attributes:
 <details>
 ```yaml
 name: OntologyClass
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: OntologyClass
@@ -320,7 +320,7 @@ attributes:
     required: true
   description:
     name: description
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     alias: description
     owner: OntologyClass
     domain_of:
@@ -350,7 +350,7 @@ attributes:
     range: string
   alternative_identifiers:
     name: alternative_identifiers
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     alias: alternative_identifiers
     owner: OntologyClass
     domain_of:
@@ -359,7 +359,7 @@ attributes:
     range: string
   name:
     name: name
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     alias: name
     owner: OntologyClass
     domain_of:

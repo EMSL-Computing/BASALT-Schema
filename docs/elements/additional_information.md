@@ -9,7 +9,7 @@ _Additional information pertaining to these data, including SP Project ID and Ta
 
 
 
-URI: [basalt_schema:additional_information](https://EMSL-Computing.github.io/basalt-schema/additional_information)
+URI: [basalt_schema:additional_information](https://EMSL-Computing.github.io/BASALT-Schema/additional_information)
 Alias: additional_information
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: additional_information
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MetagenomicsGenePhylogenyProduct](MetagenomicsGenePhylogenyProduct.md) | Top-level archive for gene-based phylogeny outputs (zip/tar stored in MinIO) |  no  |
-| [MetagenomicsProduct](MetagenomicsProduct.md) | Abstract base for all metagenomics data products |  no  |
-| [MetagenomicsBinningProduct](MetagenomicsBinningProduct.md) | Top-level archive (zip/tar) for binning results stored in MinIO |  no  |
 | [MetagenomicsAnnotationProduct](MetagenomicsAnnotationProduct.md) | Top-level archive for functional annotation outputs (zip/tar stored in MinIO) |  no  |
+| [MetagenomicsGenePhylogenyProduct](MetagenomicsGenePhylogenyProduct.md) | Top-level archive for gene-based phylogeny outputs (zip/tar stored in MinIO) |  no  |
+| [MetagenomicsBinningProduct](MetagenomicsBinningProduct.md) | Top-level archive (zip/tar) for binning results stored in MinIO |  no  |
+| [MetagenomicsProduct](MetagenomicsProduct.md) | Abstract base for all metagenomics data products |  no  |
 
 
 
@@ -64,7 +64,7 @@ Alias: additional_information
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ Alias: additional_information
 name: additional_information
 description: Additional information pertaining to these data, including SP Project
   ID and Taxon OID
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: additional_information
 domain_of:

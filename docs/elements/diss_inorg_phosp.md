@@ -9,7 +9,7 @@ _Concentration of dissolved inorganic phosphorus in the sample. Provide value an
 
 
 
-URI: [basalt_schema:diss_inorg_phosp](https://EMSL-Computing.github.io/basalt-schema/diss_inorg_phosp)
+URI: [basalt_schema:diss_inorg_phosp](https://EMSL-Computing.github.io/BASALT-Schema/diss_inorg_phosp)
 Alias: diss_inorg_phosp
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: diss_inorg_phosp
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: diss_inorg_phosp
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ name: diss_inorg_phosp
 description: Concentration of dissolved inorganic phosphorus in the sample. Provide
   value and unit, any unit is valid.
 title: dissolved inorganic phosphate
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: diss_inorg_phosp
 domain_of:

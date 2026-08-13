@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:permeability_z](https://EMSL-Computing.github.io/basalt-schema/permeability_z)
+URI: [basalt_schema:permeability_z](https://EMSL-Computing.github.io/BASALT-Schema/permeability_z)
 Alias: permeability_z
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: permeability_z
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: permeability_z
 <details>
 ```yaml
 name: permeability_z
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: permeability_z
 owner: TomographyProduct

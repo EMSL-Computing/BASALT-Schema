@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:SitePhotoCategoryEnum](https://EMSL-Computing.github.io/basalt-schema/SitePhotoCategoryEnum)
+URI: [basalt_schema:SitePhotoCategoryEnum](https://EMSL-Computing.github.io/BASALT-Schema/SitePhotoCategoryEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -37,7 +37,7 @@ URI: [basalt_schema:SitePhotoCategoryEnum](https://EMSL-Computing.github.io/basa
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -49,7 +49,7 @@ URI: [basalt_schema:SitePhotoCategoryEnum](https://EMSL-Computing.github.io/basa
 <details>
 ```yaml
 name: SitePhotoCategoryEnum
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   landscape:

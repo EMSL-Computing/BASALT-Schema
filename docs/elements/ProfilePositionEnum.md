@@ -7,7 +7,7 @@ _Soil profile positions_
 
 
 
-URI: [basalt_schema:ProfilePositionEnum](https://EMSL-Computing.github.io/basalt-schema/ProfilePositionEnum)
+URI: [basalt_schema:ProfilePositionEnum](https://EMSL-Computing.github.io/BASALT-Schema/ProfilePositionEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -45,7 +45,7 @@ URI: [basalt_schema:ProfilePositionEnum](https://EMSL-Computing.github.io/basalt
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -58,7 +58,7 @@ URI: [basalt_schema:ProfilePositionEnum](https://EMSL-Computing.github.io/basalt
 ```yaml
 name: ProfilePositionEnum
 description: Soil profile positions
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   backslope:

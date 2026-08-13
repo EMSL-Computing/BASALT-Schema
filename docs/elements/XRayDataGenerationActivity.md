@@ -31,7 +31,7 @@ _  - protocol_url should link to vendor SOP or EMSL internal protocol documentat
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [basalt_schema:XRayDataGenerationActivity](https://EMSL-Computing.github.io/basalt-schema/XRayDataGenerationActivity)
+URI: [basalt_schema:XRayDataGenerationActivity](https://EMSL-Computing.github.io/BASALT-Schema/XRayDataGenerationActivity)
 
 
 
@@ -153,7 +153,7 @@ URI: [basalt_schema:XRayDataGenerationActivity](https://EMSL-Computing.github.io
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -187,7 +187,7 @@ description: "Abstract base class for X-ray analytical methods including XRF (el
   \ workflow) is typical for XRF\n  - XRD may optionally link to DataProcessingActivity\
   \ for Rietveld refinement\n  - protocol_url should link to vendor SOP or EMSL internal\
   \ protocol documentation"
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: DataGenerationActivity
 abstract: true
 
@@ -207,7 +207,7 @@ description: "Abstract base class for X-ray analytical methods including XRF (el
   \ workflow) is typical for XRF\n  - XRD may optionally link to DataProcessingActivity\
   \ for Rietveld refinement\n  - protocol_url should link to vendor SOP or EMSL internal\
   \ protocol documentation"
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: DataGenerationActivity
 abstract: true
 attributes:
@@ -217,7 +217,7 @@ attributes:
       Lower = earlier in series. Use when acquisition_time alone is insufficient.\n\
       \nDDL: ALTER TABLE \"DataGenerationActivity\"\n       ADD COLUMN sequence_order\
       \ INTEGER;"
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: sequence_order
     owner: XRayDataGenerationActivity
@@ -228,7 +228,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: XRayDataGenerationActivity
@@ -258,7 +258,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: XRayDataGenerationActivity
@@ -290,7 +290,7 @@ attributes:
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: protocol_url
     owner: XRayDataGenerationActivity
@@ -301,7 +301,7 @@ attributes:
   protocol_version:
     name: protocol_version
     description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: protocol_version
     owner: XRayDataGenerationActivity
@@ -311,7 +311,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: XRayDataGenerationActivity
@@ -391,7 +391,7 @@ attributes:
     required: true
   analyte_id:
     name: analyte_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: analyte_id
     owner: XRayDataGenerationActivity
@@ -400,7 +400,7 @@ attributes:
     range: ProcessedSample
   acquisition_start_time:
     name: acquisition_start_time
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: acquisition_start_time
     owner: XRayDataGenerationActivity
@@ -410,7 +410,7 @@ attributes:
     required: true
   acquisition_end_time:
     name: acquisition_end_time
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: acquisition_end_time
     owner: XRayDataGenerationActivity
@@ -420,7 +420,7 @@ attributes:
     required: true
   instrument_used:
     name: instrument_used
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: instrument_used
     owner: XRayDataGenerationActivity
@@ -429,7 +429,7 @@ attributes:
     range: Instrument
   instrument_operator_id:
     name: instrument_operator_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: instrument_operator_id
     owner: XRayDataGenerationActivity

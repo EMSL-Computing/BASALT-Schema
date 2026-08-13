@@ -9,7 +9,7 @@ _Reference to the raw instrument data file used for calibration_
 
 
 
-URI: [basalt_schema:calibration_data](https://EMSL-Computing.github.io/basalt-schema/calibration_data)
+URI: [basalt_schema:calibration_data](https://EMSL-Computing.github.io/BASALT-Schema/calibration_data)
 Alias: calibration_data
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: calibration_data
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -82,7 +82,7 @@ Alias: calibration_data
 ```yaml
 name: calibration_data
 description: Reference to the raw instrument data file used for calibration
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: calibration_data
 domain_of:

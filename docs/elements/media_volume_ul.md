@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:media_volume_ul](https://EMSL-Computing.github.io/basalt-schema/media_volume_ul)
+URI: [basalt_schema:media_volume_ul](https://EMSL-Computing.github.io/BASALT-Schema/media_volume_ul)
 Alias: media_volume_ul
 
 <!-- no inheritance hierarchy -->

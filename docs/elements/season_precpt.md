@@ -9,7 +9,7 @@ _The average of all seasonal precipitation values known or an estimated equivale
 
 
 
-URI: [basalt_schema:season_precpt](https://EMSL-Computing.github.io/basalt-schema/season_precpt)
+URI: [basalt_schema:season_precpt](https://EMSL-Computing.github.io/BASALT-Schema/season_precpt)
 Alias: season_precpt
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: season_precpt
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -97,7 +97,7 @@ description: 'The average of all seasonal precipitation values known or an estim
   equivalent value derived by such methods as regional indexes or Isohyetal maps.
   (Unit: mm)'
 title: mean seasonal precipitation
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 aliases:
 - average seasonal precipitation
 rank: 1000

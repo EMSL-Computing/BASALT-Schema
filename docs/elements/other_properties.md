@@ -9,7 +9,7 @@ _Other important properties of the instrument that are not captured in other fie
 
 
 
-URI: [basalt_schema:other_properties](https://EMSL-Computing.github.io/basalt-schema/other_properties)
+URI: [basalt_schema:other_properties](https://EMSL-Computing.github.io/BASALT-Schema/other_properties)
 Alias: other_properties
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: other_properties
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -90,7 +90,7 @@ Alias: other_properties
 name: other_properties
 description: Other important properties of the instrument that are not captured in
   other fields.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: other_properties
 owner: Instrument

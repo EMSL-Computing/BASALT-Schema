@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_mbc_avg](https://EMSL-Computing.github.io/basalt-schema/flag_mbc_avg)
+URI: [basalt_schema:flag_mbc_avg](https://EMSL-Computing.github.io/BASALT-Schema/flag_mbc_avg)
 Alias: flag_mbc_avg
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_mbc_avg
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_mbc_avg
 <details>
 ```yaml
 name: flag_mbc_avg
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_mbc_avg
 owner: MicrobialBiomassProduct

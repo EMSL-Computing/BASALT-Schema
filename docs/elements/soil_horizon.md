@@ -9,7 +9,7 @@ _Specific layer in the land area which measures parallel to the soil surface and
 
 
 
-URI: [basalt_schema:soil_horizon](https://EMSL-Computing.github.io/basalt-schema/soil_horizon)
+URI: [basalt_schema:soil_horizon](https://EMSL-Computing.github.io/BASALT-Schema/soil_horizon)
 Alias: soil_horizon
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: soil_horizon
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ name: soil_horizon
 description: Specific layer in the land area which measures parallel to the soil surface
   and possesses physical characteristics which differ from the layers above and beneath.
 title: soil horizon
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 exact_mappings:
 - MIXS:0001082
 rank: 1000

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:ended_at_time](https://EMSL-Computing.github.io/basalt-schema/ended_at_time)
+URI: [basalt_schema:ended_at_time](https://EMSL-Computing.github.io/BASALT-Schema/ended_at_time)
 Alias: ended_at_time
 
 <!-- no inheritance hierarchy -->
@@ -17,10 +17,10 @@ Alias: ended_at_time
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
-| [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |  no  |
-| [Activity](Activity.md) | Something that happens over time and can use equipment |  no  |
 | [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
+| [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |  no  |
+| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
+| [Activity](Activity.md) | Something that happens over time and can use equipment |  no  |
 
 
 

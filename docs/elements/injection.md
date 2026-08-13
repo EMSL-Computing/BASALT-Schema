@@ -9,7 +9,7 @@ _Type of injection used in the mass spectrometry method_
 
 
 
-URI: [basalt_schema:injection](https://EMSL-Computing.github.io/basalt-schema/injection)
+URI: [basalt_schema:injection](https://EMSL-Computing.github.io/BASALT-Schema/injection)
 Alias: injection
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: injection
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: injection
 ```yaml
 name: injection
 description: Type of injection used in the mass spectrometry method
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: injection
 domain_of:

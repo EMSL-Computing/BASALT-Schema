@@ -9,7 +9,7 @@ _Electrical conductivity of water. Provide value and unit, any unit is valid._
 
 
 
-URI: [basalt_schema:conduc](https://EMSL-Computing.github.io/basalt-schema/conduc)
+URI: [basalt_schema:conduc](https://EMSL-Computing.github.io/BASALT-Schema/conduc)
 Alias: conduc
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: conduc
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: conduc
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ name: conduc
 description: Electrical conductivity of water. Provide value and unit, any unit is
   valid.
 title: conductivity
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: conduc
 domain_of:

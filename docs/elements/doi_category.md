@@ -9,7 +9,7 @@ _The resource type the corresponding doi resolves to_
 
 
 
-URI: [basalt_schema:doi_category](https://EMSL-Computing.github.io/basalt-schema/doi_category)
+URI: [basalt_schema:doi_category](https://EMSL-Computing.github.io/BASALT-Schema/doi_category)
 Alias: doi_category
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: doi_category
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: doi_category
 ```yaml
 name: doi_category
 description: The resource type the corresponding doi resolves to
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: doi_category
 owner: DOI

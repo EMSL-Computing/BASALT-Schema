@@ -9,7 +9,7 @@ _Density of the sample, which is its mass per unit volume (aka volumetric mass d
 
 
 
-URI: [basalt_schema:density](https://EMSL-Computing.github.io/basalt-schema/density)
+URI: [basalt_schema:density](https://EMSL-Computing.github.io/BASALT-Schema/density)
 Alias: density
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: density
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -70,7 +70,7 @@ Alias: density
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ name: density
 description: 'Density of the sample, which is its mass per unit volume (aka volumetric
   mass density) (Unit: g/m3 or g/cm3)'
 title: density
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: density
 domain_of:

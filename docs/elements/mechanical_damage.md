@@ -9,7 +9,7 @@ _Information about any mechanical damage exerted on the plant; can include multi
 
 
 
-URI: [basalt_schema:mechanical_damage](https://EMSL-Computing.github.io/basalt-schema/mechanical_damage)
+URI: [basalt_schema:mechanical_damage](https://EMSL-Computing.github.io/BASALT-Schema/mechanical_damage)
 Alias: mechanical_damage
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: mechanical_damage
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: mechanical_damage
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ name: mechanical_damage
 description: Information about any mechanical damage exerted on the plant; can include
   multiple damages and sites
 title: mechanical damage
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: mechanical_damage
 domain_of:

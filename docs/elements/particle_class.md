@@ -9,7 +9,7 @@ _Particles are classified based on their size into six general categories: clay,
 
 
 
-URI: [basalt_schema:particle_class](https://EMSL-Computing.github.io/basalt-schema/particle_class)
+URI: [basalt_schema:particle_class](https://EMSL-Computing.github.io/BASALT-Schema/particle_class)
 Alias: particle_class
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: particle_class
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: particle_class
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ description: 'Particles are classified based on their size into six general cate
   units preceded by the name of the particle type; can include multiple values separated
   by '';''.'
 title: particle class
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: particle_class
 domain_of:

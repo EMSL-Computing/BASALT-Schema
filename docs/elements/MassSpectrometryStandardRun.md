@@ -9,7 +9,7 @@ _A record of a mass spectrometry standard run with a batch of samples, which is 
 
 
 
-URI: [basalt_schema:MassSpectrometryStandardRun](https://EMSL-Computing.github.io/basalt-schema/MassSpectrometryStandardRun)
+URI: [basalt_schema:MassSpectrometryStandardRun](https://EMSL-Computing.github.io/BASALT-Schema/MassSpectrometryStandardRun)
 
 
 
@@ -110,7 +110,7 @@ URI: [basalt_schema:MassSpectrometryStandardRun](https://EMSL-Computing.github.i
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -138,7 +138,7 @@ URI: [basalt_schema:MassSpectrometryStandardRun](https://EMSL-Computing.github.i
 name: MassSpectrometryStandardRun
 description: A record of a mass spectrometry standard run with a batch of samples,
   which is used for calibration and quality control.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 slots:
 - name
 - description
@@ -149,7 +149,7 @@ slots:
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/mass-spec
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/mass-spec
     identifier: true
     domain_of:
     - Activity
@@ -236,11 +236,11 @@ attributes:
 name: MassSpectrometryStandardRun
 description: A record of a mass spectrometry standard run with a batch of samples,
   which is used for calibration and quality control.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/mass-spec
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/mass-spec
     identifier: true
     alias: id
     owner: MassSpectrometryStandardRun
@@ -321,7 +321,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: MassSpectrometryStandardRun
@@ -351,7 +351,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: MassSpectrometryStandardRun
@@ -383,7 +383,7 @@ attributes:
   internal_calibration:
     name: internal_calibration
     description: Whether internal calibration was used
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: internal_calibration
     owner: MassSpectrometryStandardRun
@@ -393,7 +393,7 @@ attributes:
   calibration_target:
     name: calibration_target
     description: The measurement being calibrated
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: calibration_target
     owner: MassSpectrometryStandardRun
@@ -403,7 +403,7 @@ attributes:
   calibration_standard:
     name: calibration_standard
     description: The reference standard used for calibration
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: calibration_standard
     owner: MassSpectrometryStandardRun
@@ -413,7 +413,7 @@ attributes:
   calibration_data:
     name: calibration_data
     description: Reference to the raw instrument data file used for calibration
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: calibration_data
     owner: MassSpectrometryStandardRun

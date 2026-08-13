@@ -9,7 +9,7 @@ _Concentration of magnesium in the sample (Unit: umol/kg or mol/L or mg/L or ppm
 
 
 
-URI: [basalt_schema:magnesium](https://EMSL-Computing.github.io/basalt-schema/magnesium)
+URI: [basalt_schema:magnesium](https://EMSL-Computing.github.io/BASALT-Schema/magnesium)
 Alias: magnesium
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: magnesium
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -70,7 +70,7 @@ Alias: magnesium
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ name: magnesium
 description: 'Concentration of magnesium in the sample (Unit: umol/kg or mol/L or
   mg/L or ppm)'
 title: magnesium
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: magnesium
 domain_of:

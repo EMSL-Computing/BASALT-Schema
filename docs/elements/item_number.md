@@ -9,7 +9,7 @@ _The item number of the purchased material_
 
 
 
-URI: [basalt_schema:item_number](https://EMSL-Computing.github.io/basalt-schema/item_number)
+URI: [basalt_schema:item_number](https://EMSL-Computing.github.io/BASALT-Schema/item_number)
 Alias: item_number
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: item_number
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
-| [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: item_number
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ Alias: item_number
 name: item_number
 description: The item number of the purchased material
 title: item number
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: item_number
 domain_of:

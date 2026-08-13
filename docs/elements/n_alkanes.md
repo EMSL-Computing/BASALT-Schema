@@ -9,7 +9,7 @@ _Concentration of n-alkanes; can include multiple n-alkanes (Unit: ug/mL)_
 
 
 
-URI: [basalt_schema:n_alkanes](https://EMSL-Computing.github.io/basalt-schema/n_alkanes)
+URI: [basalt_schema:n_alkanes](https://EMSL-Computing.github.io/BASALT-Schema/n_alkanes)
 Alias: n_alkanes
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: n_alkanes
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -63,7 +63,7 @@ Alias: n_alkanes
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ Alias: n_alkanes
 name: n_alkanes
 description: 'Concentration of n-alkanes; can include multiple n-alkanes (Unit: ug/mL)'
 title: n-alkanes
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: n_alkanes
 domain_of:

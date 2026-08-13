@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:total_bases_id](https://EMSL-Computing.github.io/basalt-schema/total_bases_id)
+URI: [basalt_schema:total_bases_id](https://EMSL-Computing.github.io/BASALT-Schema/total_bases_id)
 Alias: total_bases_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: total_bases_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: total_bases_id
 <details>
 ```yaml
 name: total_bases_id
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: total_bases_id
 owner: IonsAnalysisProduct

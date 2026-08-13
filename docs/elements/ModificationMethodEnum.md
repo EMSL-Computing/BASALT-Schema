@@ -7,7 +7,7 @@ _Methods used to introduce genetic modifications into organisms._
 
 
 
-URI: [basalt_schema:ModificationMethodEnum](https://EMSL-Computing.github.io/basalt-schema/ModificationMethodEnum)
+URI: [basalt_schema:ModificationMethodEnum](https://EMSL-Computing.github.io/BASALT-Schema/ModificationMethodEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -54,7 +54,7 @@ URI: [basalt_schema:ModificationMethodEnum](https://EMSL-Computing.github.io/bas
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -67,7 +67,7 @@ URI: [basalt_schema:ModificationMethodEnum](https://EMSL-Computing.github.io/bas
 ```yaml
 name: ModificationMethodEnum
 description: Methods used to introduce genetic modifications into organisms.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   electroporation:

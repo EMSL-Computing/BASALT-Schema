@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:potassium_id](https://EMSL-Computing.github.io/basalt-schema/potassium_id)
+URI: [basalt_schema:potassium_id](https://EMSL-Computing.github.io/BASALT-Schema/potassium_id)
 Alias: potassium_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: potassium_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: potassium_id
 <details>
 ```yaml
 name: potassium_id
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: potassium_id
 owner: IonsAnalysisProduct

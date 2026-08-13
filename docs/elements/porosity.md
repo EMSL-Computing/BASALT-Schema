@@ -9,7 +9,7 @@ _Porosity of deposited sediment is volume of voids divided by the total volume o
 
 
 
-URI: [basalt_schema:porosity](https://EMSL-Computing.github.io/basalt-schema/porosity)
+URI: [basalt_schema:porosity](https://EMSL-Computing.github.io/BASALT-Schema/porosity)
 Alias: porosity
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: porosity
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: porosity
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ name: porosity
 description: 'Porosity of deposited sediment is volume of voids divided by the total
   volume of sample. (Unit: percent)'
 title: porosity
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: porosity
 domain_of:

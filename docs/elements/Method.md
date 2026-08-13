@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:method](https://EMSL-Computing.github.io/basalt-schema/method)
+URI: [basalt_schema:method](https://EMSL-Computing.github.io/BASALT-Schema/method)
 Alias: method
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: method
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: method
 name: method
 todos:
 - what does this mean
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: method
 domain_of:

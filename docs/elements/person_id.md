@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:person_id](https://EMSL-Computing.github.io/basalt-schema/person_id)
+URI: [basalt_schema:person_id](https://EMSL-Computing.github.io/BASALT-Schema/person_id)
 Alias: person_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: person_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: person_id
 <details>
 ```yaml
 name: person_id
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: person_id
 owner: Custodian

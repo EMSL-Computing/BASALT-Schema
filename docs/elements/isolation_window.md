@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:isolation_window](https://EMSL-Computing.github.io/basalt-schema/isolation_window)
+URI: [basalt_schema:isolation_window](https://EMSL-Computing.github.io/BASALT-Schema/isolation_window)
 Alias: isolation_window
 
 <!-- no inheritance hierarchy -->
@@ -47,7 +47,7 @@ Alias: isolation_window
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -67,7 +67,7 @@ Alias: isolation_window
 <details>
 ```yaml
 name: isolation_window
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: isolation_window
 range: string

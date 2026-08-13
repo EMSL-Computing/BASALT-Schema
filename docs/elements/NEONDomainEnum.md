@@ -7,7 +7,7 @@ _NEON ecological domains_
 
 
 
-URI: [basalt_schema:NEONDomainEnum](https://EMSL-Computing.github.io/basalt-schema/NEONDomainEnum)
+URI: [basalt_schema:NEONDomainEnum](https://EMSL-Computing.github.io/BASALT-Schema/NEONDomainEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -61,7 +61,7 @@ URI: [basalt_schema:NEONDomainEnum](https://EMSL-Computing.github.io/basalt-sche
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -74,7 +74,7 @@ URI: [basalt_schema:NEONDomainEnum](https://EMSL-Computing.github.io/basalt-sche
 ```yaml
 name: NEONDomainEnum
 description: NEON ecological domains
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   northeast:

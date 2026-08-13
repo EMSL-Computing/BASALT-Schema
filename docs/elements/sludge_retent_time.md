@@ -9,7 +9,7 @@ _the time activated sludge remains in reactor_
 
 
 
-URI: [basalt_schema:sludge_retent_time](https://EMSL-Computing.github.io/basalt-schema/sludge_retent_time)
+URI: [basalt_schema:sludge_retent_time](https://EMSL-Computing.github.io/BASALT-Schema/sludge_retent_time)
 Alias: sludge_retent_time
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: sludge_retent_time
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: sludge_retent_time
 name: sludge_retent_time
 description: the time activated sludge remains in reactor
 title: sludge retention time
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: sludge_retent_time
 domain_of:

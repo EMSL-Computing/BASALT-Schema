@@ -9,7 +9,7 @@ _Describes any treatments that are built into the synthetic environment_
 
 
 
-URI: [basalt_schema:synth_env_treatment](https://EMSL-Computing.github.io/basalt-schema/synth_env_treatment)
+URI: [basalt_schema:synth_env_treatment](https://EMSL-Computing.github.io/BASALT-Schema/synth_env_treatment)
 Alias: synth_env_treatment
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: synth_env_treatment
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  yes  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  yes  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  yes  |
 
 
 
@@ -62,7 +62,7 @@ Alias: synth_env_treatment
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: synth_env_treatment
 name: synth_env_treatment
 description: Describes any treatments that are built into the synthetic environment
 title: synthetic environment treatment
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: synth_env_treatment
 domain_of:

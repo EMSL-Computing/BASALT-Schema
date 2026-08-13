@@ -9,7 +9,7 @@ _omics type for easier search, optional_
 
 
 
-URI: [basalt_schema:analyte_category](https://EMSL-Computing.github.io/basalt-schema/analyte_category)
+URI: [basalt_schema:analyte_category](https://EMSL-Computing.github.io/BASALT-Schema/analyte_category)
 Alias: analyte_category
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: analyte_category
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -82,7 +82,7 @@ Alias: analyte_category
 ```yaml
 name: analyte_category
 description: omics type for easier search, optional
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: analyte_category
 domain_of:

@@ -9,7 +9,7 @@ _Nickel concentration in mg/kg_
 
 
 
-URI: [basalt_schema:ni_mg_per_kg](https://EMSL-Computing.github.io/basalt-schema/ni_mg_per_kg)
+URI: [basalt_schema:ni_mg_per_kg](https://EMSL-Computing.github.io/BASALT-Schema/ni_mg_per_kg)
 Alias: ni_mg_per_kg
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: ni_mg_per_kg
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: ni_mg_per_kg
 ```yaml
 name: ni_mg_per_kg
 description: Nickel concentration in mg/kg
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: ni_mg_per_kg
 owner: XRFElementalProduct

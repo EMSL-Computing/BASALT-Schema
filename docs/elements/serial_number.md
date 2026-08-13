@@ -9,7 +9,7 @@ _instrument instance specifier_
 
 
 
-URI: [basalt_schema:serial_number](https://EMSL-Computing.github.io/basalt-schema/serial_number)
+URI: [basalt_schema:serial_number](https://EMSL-Computing.github.io/BASALT-Schema/serial_number)
 Alias: serial_number
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: serial_number
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: serial_number
 ```yaml
 name: serial_number
 description: instrument instance specifier
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: serial_number
 owner: Instrument

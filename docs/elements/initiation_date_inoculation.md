@@ -9,7 +9,7 @@ _The date the sample was inoculated. This can be the date of inoculation, isolat
 
 
 
-URI: [basalt_schema:initiation_date_inoculation](https://EMSL-Computing.github.io/basalt-schema/initiation_date_inoculation)
+URI: [basalt_schema:initiation_date_inoculation](https://EMSL-Computing.github.io/BASALT-Schema/initiation_date_inoculation)
 Alias: initiation_date_inoculation
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: initiation_date_inoculation
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  yes  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  yes  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  yes  |
 
 
 
@@ -69,7 +69,7 @@ Alias: initiation_date_inoculation
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ description: The date the sample was inoculated. This can be the date of inocula
   isolation, etc. If providing a sequential initiation, the sample should be linked
   to the sample it originated from. Formatted as YYYY-MM-DD
 title: initiation date of inoculation
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: initiation_date_inoculation
 domain_of:

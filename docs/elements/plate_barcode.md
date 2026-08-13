@@ -9,7 +9,7 @@ _Physical barcode on plate (if different from UUID)_
 
 
 
-URI: [basalt_schema:plate_barcode](https://EMSL-Computing.github.io/basalt-schema/plate_barcode)
+URI: [basalt_schema:plate_barcode](https://EMSL-Computing.github.io/BASALT-Schema/plate_barcode)
 Alias: plate_barcode
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: plate_barcode
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
 | [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |  no  |
 | [PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |  no  |
+| [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: plate_barcode
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: plate_barcode
 ```yaml
 name: plate_barcode
 description: Physical barcode on plate (if different from UUID)
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: plate_barcode
 domain_of:

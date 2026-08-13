@@ -9,7 +9,7 @@ _The technical replicate number of the sample or measurement, if applicable._
 
 
 
-URI: [basalt_schema:replicate_tech](https://EMSL-Computing.github.io/basalt-schema/replicate_tech)
+URI: [basalt_schema:replicate_tech](https://EMSL-Computing.github.io/BASALT-Schema/replicate_tech)
 Alias: replicate_tech
 
 <!-- no inheritance hierarchy -->
@@ -55,7 +55,7 @@ Alias: replicate_tech
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -78,7 +78,7 @@ name: replicate_tech
 description: The technical replicate number of the sample or measurement, if applicable.
 todos:
 - reconcile replicate modelling
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: replicate_tech
 range: integer

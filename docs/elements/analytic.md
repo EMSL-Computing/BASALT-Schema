@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:analytic](https://EMSL-Computing.github.io/basalt-schema/analytic)
+URI: [basalt_schema:analytic](https://EMSL-Computing.github.io/BASALT-Schema/analytic)
 Alias: analytic
 
 <!-- no inheritance hierarchy -->
@@ -17,19 +17,19 @@ Alias: analytic
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [GravimetricWaterContentMethod](GravimetricWaterContentMethod.md) |  |  no  |
 | [BulkDensityMethod](BulkDensityMethod.md) |  |  no  |
-| [Method](Method.md) |  |  no  |
-| [KuoMethod](KuoMethod.md) |  |  no  |
-| [RespirationMethod](RespirationMethod.md) |  |  no  |
 | [MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |  no  |
+| [PHMethod](PHMethod.md) |  |  no  |
+| [TextureMethod](TextureMethod.md) |  |  no  |
+| [KuoMethod](KuoMethod.md) |  |  no  |
+| [ElementalAnalysisMethod](ElementalAnalysisMethod.md) |  |  no  |
+| [RespirationMethod](RespirationMethod.md) |  |  no  |
+| [Method](Method.md) |  |  no  |
 | [EnzymeActivityMethod](EnzymeActivityMethod.md) |  |  no  |
+| [HydraulicPropertiesMethod](HydraulicPropertiesMethod.md) |  |  no  |
 | [TOCTNMethod](TOCTNMethod.md) |  |  no  |
 | [XrayComputedTomographyMethod](XrayComputedTomographyMethod.md) |  |  no  |
-| [PHMethod](PHMethod.md) |  |  no  |
-| [HydraulicPropertiesMethod](HydraulicPropertiesMethod.md) |  |  no  |
-| [ElementalAnalysisMethod](ElementalAnalysisMethod.md) |  |  no  |
-| [GravimetricWaterContentMethod](GravimetricWaterContentMethod.md) |  |  no  |
-| [TextureMethod](TextureMethod.md) |  |  no  |
 
 
 
@@ -73,7 +73,7 @@ Alias: analytic
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -95,7 +95,7 @@ Alias: analytic
 name: analytic
 todos:
 - what does this mean
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: analytic
 domain_of:

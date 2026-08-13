@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:has_minimum_numeric_value](https://EMSL-Computing.github.io/basalt-schema/has_minimum_numeric_value)
+URI: [basalt_schema:has_minimum_numeric_value](https://EMSL-Computing.github.io/BASALT-Schema/has_minimum_numeric_value)
 Alias: has_minimum_numeric_value
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: has_minimum_numeric_value
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: has_minimum_numeric_value
 <details>
 ```yaml
 name: has_minimum_numeric_value
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: has_minimum_numeric_value
 owner: QuantityValue

@@ -9,7 +9,7 @@ _The reagents used in the material synthesis_
 
 
 
-URI: [basalt_schema:synth_reagents](https://EMSL-Computing.github.io/basalt-schema/synth_reagents)
+URI: [basalt_schema:synth_reagents](https://EMSL-Computing.github.io/BASALT-Schema/synth_reagents)
 Alias: synth_reagents
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: synth_reagents
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  yes  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: synth_reagents
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: synth_reagents
 name: synth_reagents
 description: The reagents used in the material synthesis
 title: synthesis reagents
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: synth_reagents
 domain_of:

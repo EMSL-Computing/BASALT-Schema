@@ -9,7 +9,7 @@ _The ability of a solution to neutralize acids to the equivalence point of carbo
 
 
 
-URI: [basalt_schema:alkalinity](https://EMSL-Computing.github.io/basalt-schema/alkalinity)
+URI: [basalt_schema:alkalinity](https://EMSL-Computing.github.io/BASALT-Schema/alkalinity)
 Alias: alkalinity
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: alkalinity
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -70,7 +70,7 @@ Alias: alkalinity
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ name: alkalinity
 description: 'The ability of a solution to neutralize acids to the equivalence point
   of carbonate or bicarbonate (Unit: mg/L or meq/L)'
 title: alkalinity
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: alkalinity
 domain_of:

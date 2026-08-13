@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_ga](https://EMSL-Computing.github.io/basalt-schema/flag_ga)
+URI: [basalt_schema:flag_ga](https://EMSL-Computing.github.io/BASALT-Schema/flag_ga)
 Alias: flag_ga
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_ga
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_ga
 <details>
 ```yaml
 name: flag_ga
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_ga
 owner: XRFElementalProduct

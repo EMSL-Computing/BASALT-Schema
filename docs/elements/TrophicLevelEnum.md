@@ -7,7 +7,7 @@ _Enumeration of trophic levels for organisms._
 
 
 
-URI: [basalt_schema:TrophicLevelEnum](https://EMSL-Computing.github.io/basalt-schema/TrophicLevelEnum)
+URI: [basalt_schema:TrophicLevelEnum](https://EMSL-Computing.github.io/BASALT-Schema/TrophicLevelEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -71,7 +71,7 @@ URI: [basalt_schema:TrophicLevelEnum](https://EMSL-Computing.github.io/basalt-sc
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ URI: [basalt_schema:TrophicLevelEnum](https://EMSL-Computing.github.io/basalt-sc
 ```yaml
 name: TrophicLevelEnum
 description: Enumeration of trophic levels for organisms.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   autotroph:

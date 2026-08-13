@@ -9,7 +9,7 @@ _A sample of sediment collected from the environment._
 
 
 
-URI: [basalt_schema:SedimentSample](https://EMSL-Computing.github.io/basalt-schema/SedimentSample)
+URI: [basalt_schema:SedimentSample](https://EMSL-Computing.github.io/BASALT-Schema/SedimentSample)
 
 
 
@@ -476,7 +476,7 @@ URI: [basalt_schema:SedimentSample](https://EMSL-Computing.github.io/basalt-sche
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -503,7 +503,7 @@ URI: [basalt_schema:SedimentSample](https://EMSL-Computing.github.io/basalt-sche
 ```yaml
 name: SedimentSample
 description: A sample of sediment collected from the environment.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: Sample
 slots:
 - air_temp_regm
@@ -653,7 +653,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -739,7 +739,7 @@ attributes:
 ```yaml
 name: SedimentSample
 description: A sample of sediment collected from the environment.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: Sample
 slot_usage:
   analysis_type:
@@ -776,7 +776,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     alias: id
     owner: SedimentSample
@@ -861,7 +861,7 @@ attributes:
       treatment was repeated, how long each treatment lasted, and the start and end
       time of the entire treatment; can include different temperature regimens
     title: air temperature regimen
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     exact_mappings:
     - MIXS:0000551
     rank: 1000
@@ -886,7 +886,7 @@ attributes:
     description: 'The ability of a solution to neutralize acids to the equivalence
       point of carbonate or bicarbonate (Unit: mg/L or meq/L)'
     title: alkalinity
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: alkalinity
     owner: SedimentSample
@@ -900,7 +900,7 @@ attributes:
     name: alkalinity_method
     description: Method used for alkalinity measurement
     title: alkalinity method
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: alkalinity_method
     owner: SedimentSample
@@ -914,7 +914,7 @@ attributes:
     description: Concentration of alkyl diethers. Provide value and unit, any unit
       is valid
     title: alkyl diethers
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: alkyl_diethers
     owner: SedimentSample
@@ -928,7 +928,7 @@ attributes:
     name: aminopept_act
     description: 'Measurement of aminopeptidase activity (Unit: mol/L/h)'
     title: aminopeptidase activity
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: aminopept_act
     owner: SedimentSample
@@ -943,7 +943,7 @@ attributes:
     description: 'Concentration of ammonium in the sample. (Units: umol/L or mg/Liter
       or ppm)'
     title: ammonium
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: ammonium
     owner: SedimentSample
@@ -956,7 +956,7 @@ attributes:
   analysis_type:
     name: analysis_type
     description: The type(s) of analysis planned for this sample.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: analysis_type
     owner: SedimentSample
@@ -984,7 +984,7 @@ attributes:
     description: Measurement of bacterial carbon production. Provide value and unit,
       any unit is valid
     title: bacterial carbon production
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: bacteria_carb_prod
     owner: SedimentSample
@@ -999,7 +999,7 @@ attributes:
     description: Information about treatment(s) involving use of biotic factors such
       as bacteria, viruses, or fungi.
     title: biotic regimen
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: biotic_regm
     owner: SedimentSample
@@ -1019,7 +1019,7 @@ attributes:
     name: bishomohopanol
     description: 'Concentration of bishomohopanol. (Unit: ug/L or ug/g)'
     title: bishomohopanol
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: bishomohopanol
     owner: SedimentSample
@@ -1033,7 +1033,7 @@ attributes:
     name: bromide
     description: 'Concentration of bromide (Unit: ppm)'
     title: bromide
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: bromide
     owner: SedimentSample
@@ -1048,7 +1048,7 @@ attributes:
     description: 'Concentration of calcium in the sample (Unit: mg/L or umol/L or
       ppm)'
     title: calcium
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: calcium
     owner: SedimentSample
@@ -1062,7 +1062,7 @@ attributes:
     name: carb_nitro_ratio
     description: Ratio of amount or concentrations of carbon to nitrogen.
     title: carbon nitrogen ratio
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: carb_nitro_ratio
     owner: SedimentSample
@@ -1078,7 +1078,7 @@ attributes:
       include multiple compounds. For chemical entities of biological interest ontology
       (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
     title: chemical administration
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     exact_mappings:
     - MIXS:0000751
     rank: 1000
@@ -1103,7 +1103,7 @@ attributes:
     name: chloride
     description: 'Concentration of chloride in the sample (Unit: mg/L or ppm)'
     title: chloride
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: chloride
     owner: SedimentSample
@@ -1117,7 +1117,7 @@ attributes:
     name: chlorophyll
     description: 'Concentration of chlorophyll (Unit: mg/m3 or ug/L)'
     title: chlorophyll
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: chlorophyll
     owner: SedimentSample
@@ -1132,7 +1132,7 @@ attributes:
     description: 'Density of the sample, which is its mass per unit volume (aka volumetric
       mass density) (Unit: g/m3 or g/cm3)'
     title: density
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: density
     owner: SedimentSample
@@ -1148,7 +1148,7 @@ attributes:
       samples, depth is measured from sediment or soil surface respectively. Depth
       is required to be reported as an interval for subsurface samples. (Units: m)'
     title: depth
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: depth
     owner: SedimentSample
@@ -1167,7 +1167,7 @@ attributes:
     description: 'Concentration of diether lipids; can include multiple types of diether
       lipids (Unit: ng/L)'
     title: diether lipids
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: diether_lipids
     owner: SedimentSample
@@ -1182,7 +1182,7 @@ attributes:
     description: 'Concentration of dissolved carbon dioxide in the sample or liquid
       portion of the sample (Unit: umol/L or mg/L)'
     title: dissolved carbon dioxide
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: diss_carb_dioxide
     owner: SedimentSample
@@ -1196,7 +1196,7 @@ attributes:
     name: diss_hydrogen
     description: 'Concentration of dissolved hydrogens (Unit: umol/L)'
     title: dissolved hydrogen
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: diss_hydrogen
     owner: SedimentSample
@@ -1212,7 +1212,7 @@ attributes:
       measured after filtering the sample using a 0.45 micrometer filter (Unit:  ug/L
       or mg/L or ppm)'
     title: dissolved inorganic carbon
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: diss_inorg_carb
     owner: SedimentSample
@@ -1227,7 +1227,7 @@ attributes:
     description: 'Concentration of dissolved organic carbon in the sample, liquid
       portion of the sample, or aqueous phase of the fluid. (Unit:  umol/L or mg/L)'
     title: dissolved organic carbon
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: diss_org_carb
     owner: SedimentSample
@@ -1242,7 +1242,7 @@ attributes:
     description: 'Dissolved organic nitrogen concentration measured as: total dissolved
       nitrogen - NH4 - NO3 - NO2. Provide value and unit, any unit is valid'
     title: dissolved organic nitrogen
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: diss_org_nitro
     owner: SedimentSample
@@ -1256,7 +1256,7 @@ attributes:
     name: diss_oxygen
     description: 'Concentration of dissolved oxygen. (Unit: umol/kg or mg/L)'
     title: dissolved oxygen
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: diss_oxygen
     owner: SedimentSample
@@ -1274,7 +1274,7 @@ attributes:
       or a rainforest). We recommend using subclasses of EnvO''''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'''
     title: broad-scale environmental context
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: env_broad_scale
     owner: SedimentSample
@@ -1301,7 +1301,7 @@ attributes:
       spatial grain than your entry for env_broad_scale.If needed, request new terms
       on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'''
     title: local environmental context
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: env_local_scale
     owner: SedimentSample
@@ -1327,7 +1327,7 @@ attributes:
       ''''environmental material'''' (http://purl.obolibrary.org/obo/ENVO_00010483).
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'''
     title: environmental medium
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: env_medium
     owner: SedimentSample
@@ -1355,7 +1355,7 @@ attributes:
       a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO;
       for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI
     title: experimental factor
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: experimental_factor
     owner: SedimentSample
@@ -1378,7 +1378,7 @@ attributes:
     description: Other details about your sample that you feel can't be accurately
       represented in the available columns.
     title: other experimental factor
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: experimental_factor_other
     owner: SedimentSample
@@ -1402,7 +1402,7 @@ attributes:
       before sending the sample to EMSL, what was it? This is only applicable when
       sending an 'analytical sample'. See README for more details on types of samples.
     title: extraction method
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: extraction_method
     owner: SedimentSample
@@ -1422,7 +1422,7 @@ attributes:
   external_identifiers:
     name: external_identifiers
     description: List of external identifiers associated with this entity or activity.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: external_identifiers
     owner: SedimentSample
@@ -1453,7 +1453,7 @@ attributes:
       the name of gaseous compound, amount administered, treatment duration, interval,
       and total experimental duration; can include multiple gaseous environment regimens
     title: gaseous environment
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: gaseous_environment
     owner: SedimentSample
@@ -1473,7 +1473,7 @@ attributes:
     name: glucosidase_act
     description: 'Measurement of glucosidase activity (Unit: mol/L/h)'
     title: glucosidase activity
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: glucosidase_act
     owner: SedimentSample
@@ -1491,7 +1491,7 @@ attributes:
       lasted, and the start and end time of the entire treatment; can include multiple
       regimens
     title: humidity regimen
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: humidity_regm
     owner: SedimentSample
@@ -1512,7 +1512,7 @@ attributes:
     name: isotope_exposure
     description: List isotope exposure or addition applied to your sample.
     title: isotope exposure
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: isotope_exposure
     owner: SedimentSample
@@ -1534,7 +1534,7 @@ attributes:
     name: latitude
     description: Latitude coordinate of the sampling site in WSG 84 format.
     title: latitude
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     broad_mappings:
     - MIXS:0000009
     rank: 1000
@@ -1558,7 +1558,7 @@ attributes:
     name: longitude
     description: Longitude coordinate of the sampling site in WSG 84 format.
     title: longitude
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     broad_mappings:
     - MIXS:0000009
     rank: 1000
@@ -1583,7 +1583,7 @@ attributes:
     description: Information about treatment(s) involving exposure to light including
       both light intensity and quality.
     title: light regimen
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: light_regm
     owner: SedimentSample
@@ -1603,7 +1603,7 @@ attributes:
     description: 'Concentration of magnesium in the sample (Unit: umol/kg or mol/L
       or mg/L or ppm)'
     title: magnesium
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: magnesium
     owner: SedimentSample
@@ -1617,7 +1617,7 @@ attributes:
     name: mean_frict_vel
     description: 'Measurement of mean friction velocity (Unit: m/s)'
     title: mean friction velocity
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: mean_frict_vel
     owner: SedimentSample
@@ -1631,7 +1631,7 @@ attributes:
     name: mean_peak_frict_vel
     description: 'Measurement of mean peak friction velocity (Unit: m/s)'
     title: mean peak friction velocity
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: mean_peak_frict_vel
     owner: SedimentSample
@@ -1646,7 +1646,7 @@ attributes:
     description: 'Methane (gas) amount or concentration at the time of sampling. (Unit:
       umol/L or ppb or ppm)'
     title: methane
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: methane
     owner: SedimentSample
@@ -1662,7 +1662,7 @@ attributes:
     description: If your samples are TEST sample ONLY, please provide information
       on what you're hoping this test will resolve.
     title: method development
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: method_development
     owner: SedimentSample
@@ -1685,7 +1685,7 @@ attributes:
     name: micro_biomass_c_meth
     description: Reference or method used in determining microbial biomass
     title: microbial biomass carbon method
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: micro_biomass_c_meth
     owner: SedimentSample
@@ -1697,7 +1697,7 @@ attributes:
     name: micro_biomass_n_meth
     description: Reference or method used in determining microbial biomass nitrogen
     title: microbial biomass nitrogen method
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: micro_biomass_n_meth
     owner: SedimentSample
@@ -1712,7 +1712,7 @@ attributes:
       to have correction factors used for conversion to the final units. (Unit: g/kg
       sediment or ug/g sediment)'
     title: microbial biomass
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: microbial_biomass
     owner: SedimentSample
@@ -1729,7 +1729,7 @@ attributes:
       to have correction factors used for conversion to the final units. Provide value
       and unit, any unit is valid
     title: microbial biomass carbon
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: microbial_biomass_c
     owner: SedimentSample
@@ -1743,7 +1743,7 @@ attributes:
     name: microbial_biomass_meth
     description: Reference or method used in determining microbial biomass
     title: microbial biomass method
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: microbial_biomass_meth
     owner: SedimentSample
@@ -1759,7 +1759,7 @@ attributes:
       to have correction factors used for conversion to the final units. Provide value
       and unit, any unit is valid
     title: microbial biomass nitrogen
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: microbial_biomass_n
     owner: SedimentSample
@@ -1774,7 +1774,7 @@ attributes:
     description: Any other measurement performed or parameter collected that is not
       listed here
     title: miscellaneous parameter
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: misc_param
     owner: SedimentSample
@@ -1795,7 +1795,7 @@ attributes:
     description: 'Concentration of n-alkanes; can include multiple n-alkanes (Unit:
       ug/mL)'
     title: n-alkanes
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: n_alkanes
     owner: SedimentSample
@@ -1809,7 +1809,7 @@ attributes:
     description: 'Concentration of nitrate in the sample (Unit: umol/L or mg/L or
       ppm)'
     title: nitrate
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: nitrate
     owner: SedimentSample
@@ -1824,7 +1824,7 @@ attributes:
     description: 'Concentration of nitrite in the sample (Unit: umol/L or mg/L or
       ppm)'
     title: nitrite
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: nitrite
     owner: SedimentSample
@@ -1838,7 +1838,7 @@ attributes:
     name: nitro
     description: 'Concentration of nitrogen (total) (Unit: umol/L)'
     title: nitrogen
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: nitro
     owner: SedimentSample
@@ -1854,7 +1854,7 @@ attributes:
       part of biomass measured, e.g.insect, plant, total. Provide value and unit,
       any unit is valid. (example: insect 5mg; plant 2ug/mL)'
     title: non microbial biomass
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: non_microb_biomass
     owner: SedimentSample
@@ -1873,7 +1873,7 @@ attributes:
     name: non_microb_biomass_method
     description: Reference or method used in determining biomass
     title: non microbial biomass method
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: non_microb_biomass_method
     owner: SedimentSample
@@ -1891,7 +1891,7 @@ attributes:
     description: Concentration of organic carbon. Provide value and unit any unit
       is valid
     title: organic carbon
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: org_carb
     owner: SedimentSample
@@ -1905,7 +1905,7 @@ attributes:
     name: org_matter
     description: 'Concentration of organic matter (Unit: mg/L)'
     title: organic matter
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: org_matter
     owner: SedimentSample
@@ -1920,7 +1920,7 @@ attributes:
     description: Concentration of organic nitrogen. Provide value and unit any unit
       is valid
     title: organic nitrogen
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: org_nitro
     owner: SedimentSample
@@ -1934,7 +1934,7 @@ attributes:
     name: org_nitro_method
     description: Method used for obtaining organic nitrogen
     title: organic nitrogen method
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: org_nitro_method
     owner: SedimentSample
@@ -1948,7 +1948,7 @@ attributes:
     description: Other/additional details about your sample that you feel can't be
       accurately represented in ANY of the available columns.
     title: other
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: other
     owner: SedimentSample
@@ -1973,7 +1973,7 @@ attributes:
     name: other_samp_store_temp
     description: Please specify sample storage temperature if you selected 'other'
     title: other sample storage temperature
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: other_samp_store_temp
     owner: SedimentSample
@@ -1999,7 +1999,7 @@ attributes:
     description: Please specify your storage conditions if you selected 'other' and
       the available values are not appropriate
     title: other storage condition
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: other_storage_condt
     owner: SedimentSample
@@ -2024,7 +2024,7 @@ attributes:
       is applied to your samples and the provided treatment terms do not satisfy please
       add it here. Multiple treatments can be entered here separated by ;
     title: other treatment
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: other_treatment
     owner: SedimentSample
@@ -2048,7 +2048,7 @@ attributes:
     name: oxygen_relationship
     description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
     title: oxygen relationship
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     exact_mappings:
     - MIXS:0000015
     rank: 1000
@@ -2073,7 +2073,7 @@ attributes:
     description: Concentration of particulate organic carbon. Provide value and unit,
       any unit is valid.
     title: particulate organic carbon
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: part_org_carb
     owner: SedimentSample
@@ -2090,7 +2090,7 @@ attributes:
       with units preceded by the name of the particle type; can include multiple values
       separated by '';''.'
     title: particle class
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: particle_class
     owner: SedimentSample
@@ -2105,7 +2105,7 @@ attributes:
       was repeated, how long each perturbation lasted, and the start and end time
       of the entire perturbation period; can include multiple perturbation types
     title: perturbation
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: perturbation
     owner: SedimentSample
@@ -2119,7 +2119,7 @@ attributes:
     name: petroleum_hydrocarb
     description: 'Concentration of petroleum hydrocarbon (Unit: umol/L)'
     title: petroleum hydrocarbon
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: petroleum_hydrocarb
     owner: SedimentSample
@@ -2134,7 +2134,7 @@ attributes:
     description: pH measurement of the sample or liquid portion of sample or aqueous
       phase of the fluid
     title: pH
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: ph
     owner: SedimentSample
@@ -2149,7 +2149,7 @@ attributes:
     name: ph_meth
     description: Reference or method used in determining ph of the sample
     title: pH method
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: ph_meth
     owner: SedimentSample
@@ -2164,7 +2164,7 @@ attributes:
     description: 'Concentration of phaeopigments; can include multiple phaeopigments
       separated by a `;` (Unit: mg/cm3)'
     title: phaeopigments
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: phaeopigments
     owner: SedimentSample
@@ -2178,7 +2178,7 @@ attributes:
     name: phosphate
     description: 'Concentration of phosphate (Unit: umol/L)'
     title: phosphate
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: phosphate
     owner: SedimentSample
@@ -2194,7 +2194,7 @@ attributes:
       separated by `;`. Provide the phospholipid fatty acids followed by the measurement
       value ({phospholipid fatty acid name}{value} {unit})
     title: phospholipid fatty acid
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: phosplipid_fatt_acid
     owner: SedimentSample
@@ -2208,7 +2208,7 @@ attributes:
     description: 'Porosity of deposited sediment is volume of voids divided by the
       total volume of sample. (Unit: percent)'
     title: porosity
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: porosity
     owner: SedimentSample
@@ -2221,7 +2221,7 @@ attributes:
     name: potassium
     description: 'Concentration of potassium in the sample (Unit: mg/L)'
     title: potassium
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: potassium
     owner: SedimentSample
@@ -2235,7 +2235,7 @@ attributes:
     name: pressure
     description: 'Pressure to which the sample is subject, in atmospheres (Unit: atm)'
     title: pressure
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: pressure
     owner: SedimentSample
@@ -2255,7 +2255,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     aliases:
     - study
     - study_id
@@ -2289,7 +2289,7 @@ attributes:
     description: 'Redox potential measured relative to a hydrogen cell indicating
       oxidation or reduction potential (Unit: mV)'
     title: redox potential
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: redox_potential
     owner: SedimentSample
@@ -2307,7 +2307,7 @@ attributes:
       with submission schema.
     todos:
     - reconcile replicate modelling
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: replicate_number
     owner: SedimentSample
@@ -2336,7 +2336,7 @@ attributes:
       compare the specific conductance of the sample to a salinity standard such as
       seawater (Unit: practical salinity unit or percent)'
     title: salinity
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: salinity
     owner: SedimentSample
@@ -2352,7 +2352,7 @@ attributes:
     name: salinity_method
     description: Method used to determine sample salinity
     title: salinity method
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: salinity_method
     owner: SedimentSample
@@ -2373,7 +2373,7 @@ attributes:
       sample was transferred to a new vial and generated a new sample)'''
     todos:
     - EMSL and NMDC both need better modelling for this
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_link
     owner: SedimentSample
@@ -2403,7 +2403,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     aliases:
     - samp_name
     rank: 1000
@@ -2433,7 +2433,7 @@ attributes:
       or after retrieving the sample from environment or a link to the relevant protocol(s)
       performed.
     title: sample processing
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_processing
     owner: SedimentSample
@@ -2458,7 +2458,7 @@ attributes:
       organism(s) it is associated with. The target organism is the subject of the
       relationship and the other organism(s) is the object
     title: observed biotic relationship
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     aliases:
     - samp_biotic_relationship
     exact_mappings:
@@ -2482,7 +2482,7 @@ attributes:
       This field is NOT multivalued. If selecting other add the `other_samp_store_temp`
       attribute to provide additional detail.
     title: sample storage temperature
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     aliases:
     - sample_storage_temperature
     - storage_temperature
@@ -2511,7 +2511,7 @@ attributes:
     description: Reference to the sampling activity during which this sample was collected.
       This is a FK to the SamplingActivity class, which contains metadata about the
       sampling event, such as date, device, method.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampled_during
     owner: SedimentSample
@@ -2537,7 +2537,7 @@ attributes:
     name: sediment_type
     description: Information about the sediment type based on major constituents
     title: sediment type
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: sediment_type
     owner: SedimentSample
@@ -2549,7 +2549,7 @@ attributes:
     description: Collection design of pooled samples and/or sieve size and amount
       of sample sieved
     title: sieving
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: sieving
     owner: SedimentSample
@@ -2562,7 +2562,7 @@ attributes:
     name: silicate
     description: 'Concentration of silicate (Unit: umol/L)'
     title: silicate
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: silicate
     owner: SedimentSample
@@ -2576,7 +2576,7 @@ attributes:
     name: sodium
     description: 'Sodium concentration in the sample (Unit: ug/mL)'
     title: sodium
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: sodium
     owner: SedimentSample
@@ -2592,7 +2592,7 @@ attributes:
       or to any derived sub-samples. The source material should be listed as a sample
       to inform details about parent material relationship.
     title: source material identifier
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: source_mat_id
     owner: SedimentSample
@@ -2617,7 +2617,7 @@ attributes:
     description: 'Date the incubation was started. Only relevant for incubation samples.
       Format: YYYY-MM-DD'
     title: incubation start date
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: start_date_inc
     owner: SedimentSample
@@ -2640,7 +2640,7 @@ attributes:
       If selecting other add the `other_storage_condt` attribute to provide additional
       detail.
     title: storage condition
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     aliases:
     - samp_store_cond
     - storage_cond
@@ -2673,7 +2673,7 @@ attributes:
     name: storage_condition_other
     description: Free-text field for storage conditions when 'storage_condition' is
       'other'
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     aliases:
     - other_storage_condt
     - storage_condt_other
@@ -2702,7 +2702,7 @@ attributes:
     description: 'Concentration of sulfate in the sample. (Unit: umol/L or mg/L or
       ppm)'
     title: sulfate
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: sulfate
     owner: SedimentSample
@@ -2717,7 +2717,7 @@ attributes:
     description: 'Concentration of sulfide in the sample. (Unit: umol/L or mg/L or
       ppm)'
     title: sulfide
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: sulfide
     owner: SedimentSample
@@ -2731,7 +2731,7 @@ attributes:
     name: technical_reps
     description: Number of technical replicates for the sample.
     title: technical replicates
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: technical_reps
     owner: SedimentSample
@@ -2755,7 +2755,7 @@ attributes:
     name: temp
     description: 'Temperature of the sample at the time of sampling. (Units: C)'
     title: temperature
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: temp
     owner: SedimentSample
@@ -2776,7 +2776,7 @@ attributes:
     name: tidal_stage
     description: Stage of tide
     title: tidal stage
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: tidal_stage
     owner: SedimentSample
@@ -2789,7 +2789,7 @@ attributes:
     name: tot_carb
     description: Total carbon content. Provide value and unit, any unit is valid
     title: total carbon content
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: tot_carb
     owner: SedimentSample
@@ -2802,7 +2802,7 @@ attributes:
     name: tot_depth_water_col
     description: 'Measurement of total depth of water column (Unit: m)'
     title: total depth of water column
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: tot_depth_water_col
     owner: SedimentSample
@@ -2816,7 +2816,7 @@ attributes:
     name: tot_nitro_cont_meth
     description: Reference or method used in determining the total nitrogen
     title: total nitrogen content method
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: tot_nitro_cont_meth
     owner: SedimentSample
@@ -2830,7 +2830,7 @@ attributes:
     description: Total nitrogen content of the sample. Provide value and unit any
       unit is valid
     title: total nitrogen content
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: tot_nitro_content
     owner: SedimentSample
@@ -2844,7 +2844,7 @@ attributes:
     name: tot_org_c_meth
     description: Reference or method used in determining total organic carbon
     title: total organic carbon method
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: tot_org_c_meth
     owner: SedimentSample
@@ -2858,7 +2858,7 @@ attributes:
     description: 'Total organic carbon content. Provided as gram of Carbon per kg
       of your sample material. (Unit: g C/kg)'
     title: total organic carbon
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: tot_org_carb
     owner: SedimentSample
@@ -2876,7 +2876,7 @@ attributes:
     todos:
     - decide how to represent in backend (normalized child table with FK to PlateSetupActivity,
       array column, or other)
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: turbidity
     owner: SedimentSample
@@ -2890,7 +2890,7 @@ attributes:
     name: water_content
     description: Water content measurement. Provide value and unit any unit is valid
     title: water content
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: water_content
     owner: SedimentSample
@@ -2907,7 +2907,7 @@ attributes:
     name: water_content_meth
     description: Reference or method used in determining the water content of soil
     title: water content method
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: water_content_meth
     owner: SedimentSample
@@ -2925,7 +2925,7 @@ attributes:
       each treatment lasted, and the start and end time of the entire treatment; can
       include multiple regimens
     title: watering regimen
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: watering_regm
     owner: SedimentSample
@@ -2944,7 +2944,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: SedimentSample
@@ -2974,7 +2974,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: SedimentSample
@@ -3013,7 +3013,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: emsl_activity
     owner: SedimentSample
@@ -3025,7 +3025,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: lims_barcode
     owner: SedimentSample

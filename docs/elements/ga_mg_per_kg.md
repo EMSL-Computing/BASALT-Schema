@@ -9,7 +9,7 @@ _Gallium concentration in mg/kg_
 
 
 
-URI: [basalt_schema:ga_mg_per_kg](https://EMSL-Computing.github.io/basalt-schema/ga_mg_per_kg)
+URI: [basalt_schema:ga_mg_per_kg](https://EMSL-Computing.github.io/BASALT-Schema/ga_mg_per_kg)
 Alias: ga_mg_per_kg
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: ga_mg_per_kg
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: ga_mg_per_kg
 ```yaml
 name: ga_mg_per_kg
 description: Gallium concentration in mg/kg
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: ga_mg_per_kg
 owner: XRFElementalProduct

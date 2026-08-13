@@ -1,11 +1,11 @@
-id: https://EMSL-Computing.github.io/basalt-schema/sample-processing
+id: https://EMSL-Computing.github.io/BASALT-Schema/sample-processing
 name: basalt-schema-sample-processing
 title: Sample processing subclasses for BASALT
 description: |
   Sample processing subclasses for BASALT.
 license: MIT
 prefixes:
-  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
+  basalt_schema: https://EMSL-Computing.github.io/BASALT-Schema/
   linkml: https://w3id.org/linkml/
 default_prefix: basalt_schema
 imports:

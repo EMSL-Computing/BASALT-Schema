@@ -9,7 +9,7 @@ _The instrumentation used to synthesize the material sample._
 
 
 
-URI: [basalt_schema:synth_instrument](https://EMSL-Computing.github.io/basalt-schema/synth_instrument)
+URI: [basalt_schema:synth_instrument](https://EMSL-Computing.github.io/BASALT-Schema/synth_instrument)
 Alias: synth_instrument
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: synth_instrument
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  yes  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: synth_instrument
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: synth_instrument
 name: synth_instrument
 description: The instrumentation used to synthesize the material sample.
 title: synthesizing instrument
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: synth_instrument
 domain_of:

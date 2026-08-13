@@ -13,7 +13,7 @@ _organism/material_
 
 
 
-URI: [basalt_schema:isol_growth_condt](https://EMSL-Computing.github.io/basalt-schema/isol_growth_condt)
+URI: [basalt_schema:isol_growth_condt](https://EMSL-Computing.github.io/BASALT-Schema/isol_growth_condt)
 Alias: isol_growth_condt
 
 <!-- no inheritance hierarchy -->
@@ -26,12 +26,12 @@ Alias: isol_growth_condt
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  yes  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  yes  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  yes  |
 
 
@@ -71,7 +71,7 @@ Alias: isol_growth_condt
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -97,7 +97,7 @@ description: 'Publication reference in the form of pubmed ID (PMID), digital obj
 
   organism/material'
 title: isolation and growth conditions
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: isol_growth_condt
 domain_of:

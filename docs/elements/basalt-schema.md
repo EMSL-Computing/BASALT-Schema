@@ -5,4 +5,4 @@ and environmental domains. Defines samples, provenance, laboratory activities,
 and analytical products as the canonical source of truth for BASALT consumers
 (Analysis API, database models, and related tooling).
 
-URI: https://EMSL-Computing.github.io/basalt-schema
+URI: https://EMSL-Computing.github.io/BASALT-Schema

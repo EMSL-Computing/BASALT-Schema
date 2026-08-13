@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:custodian_id](https://EMSL-Computing.github.io/basalt-schema/custodian_id)
+URI: [basalt_schema:custodian_id](https://EMSL-Computing.github.io/BASALT-Schema/custodian_id)
 Alias: custodian_id
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: custodian_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: custodian_id
 <details>
 ```yaml
 name: custodian_id
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: custodian_id
 owner: InstrumentCustodian

@@ -9,7 +9,7 @@ _Commonly called 'slope'. The angle between ground surface and a horizontal line
 
 
 
-URI: [basalt_schema:slope_gradient](https://EMSL-Computing.github.io/basalt-schema/slope_gradient)
+URI: [basalt_schema:slope_gradient](https://EMSL-Computing.github.io/BASALT-Schema/slope_gradient)
 Alias: slope_gradient
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: slope_gradient
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ description: 'Commonly called ''slope''. The angle between ground surface and a 
   line (in percent). This is the direction that overland water would flow. This measure
   is usually taken with a hand level meter or clinometer. (Unit: percent)'
 title: slope gradient
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: slope_gradient
 domain_of:

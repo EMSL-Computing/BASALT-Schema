@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:model](https://EMSL-Computing.github.io/basalt-schema/model)
+URI: [basalt_schema:model](https://EMSL-Computing.github.io/BASALT-Schema/model)
 Alias: model
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: model
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: model
 <details>
 ```yaml
 name: model
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: model
 owner: Instrument

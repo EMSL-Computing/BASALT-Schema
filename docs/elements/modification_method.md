@@ -11,7 +11,7 @@ _your modified organism. Examples: "Electroporation", "Conjugation", "CRISPR", "
 
 
 
-URI: [basalt_schema:modification_method](https://EMSL-Computing.github.io/basalt-schema/modification_method)
+URI: [basalt_schema:modification_method](https://EMSL-Computing.github.io/BASALT-Schema/modification_method)
 Alias: modification_method
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: modification_method
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ description: 'Select the method used to insert your construct into the genome of
 
   your modified organism. Examples: "Electroporation", "Conjugation", "CRISPR", "Transduction"'
 title: modification method
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 aliases:
 - genetic_modification_method
 - transformation_method

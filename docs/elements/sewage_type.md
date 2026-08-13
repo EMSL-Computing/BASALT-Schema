@@ -9,7 +9,7 @@ _type of wastewater treatment plant as municipial or industrial_
 
 
 
-URI: [basalt_schema:sewage_type](https://EMSL-Computing.github.io/basalt-schema/sewage_type)
+URI: [basalt_schema:sewage_type](https://EMSL-Computing.github.io/BASALT-Schema/sewage_type)
 Alias: sewage_type
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: sewage_type
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: sewage_type
 name: sewage_type
 description: type of wastewater treatment plant as municipial or industrial
 title: sewage type
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: sewage_type
 domain_of:

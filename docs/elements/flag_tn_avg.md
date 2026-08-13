@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_tn_avg](https://EMSL-Computing.github.io/basalt-schema/flag_tn_avg)
+URI: [basalt_schema:flag_tn_avg](https://EMSL-Computing.github.io/BASALT-Schema/flag_tn_avg)
 Alias: flag_tn_avg
 
 <!-- no inheritance hierarchy -->

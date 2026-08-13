@@ -9,7 +9,7 @@ _Aluminum saturation (esp. For tropical soils)_
 
 
 
-URI: [basalt_schema:al_sat](https://EMSL-Computing.github.io/basalt-schema/al_sat)
+URI: [basalt_schema:al_sat](https://EMSL-Computing.github.io/BASALT-Schema/al_sat)
 Alias: al_sat
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: al_sat
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: al_sat
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: al_sat
 name: al_sat
 description: Aluminum saturation (esp. For tropical soils)
 title: aluminum saturation
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: al_sat
 domain_of:

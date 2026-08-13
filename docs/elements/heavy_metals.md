@@ -9,7 +9,7 @@ _Heavy metals present and concentrations; can include multiple heavy metals and 
 
 
 
-URI: [basalt_schema:heavy_metals](https://EMSL-Computing.github.io/basalt-schema/heavy_metals)
+URI: [basalt_schema:heavy_metals](https://EMSL-Computing.github.io/BASALT-Schema/heavy_metals)
 Alias: heavy_metals
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: heavy_metals
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: heavy_metals
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ name: heavy_metals
 description: Heavy metals present and concentrations; can include multiple heavy metals
   and concentrations
 title: heavy metals
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: heavy_metals
 domain_of:

@@ -9,7 +9,7 @@ _List of diseases with which the plant has been diagnosed; can include multiple 
 
 
 
-URI: [basalt_schema:plant_disease_stat](https://EMSL-Computing.github.io/basalt-schema/plant_disease_stat)
+URI: [basalt_schema:plant_disease_stat](https://EMSL-Computing.github.io/BASALT-Schema/plant_disease_stat)
 Alias: plant_disease_stat
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: plant_disease_stat
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ name: plant_disease_stat
 description: List of diseases with which the plant has been diagnosed; can include
   multiple diagnoses.
 title: plant disease status
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: plant_disease_stat
 domain_of:

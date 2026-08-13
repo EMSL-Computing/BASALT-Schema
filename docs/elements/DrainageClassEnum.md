@@ -7,7 +7,7 @@ _Soil drainage classifications_
 
 
 
-URI: [basalt_schema:DrainageClassEnum](https://EMSL-Computing.github.io/basalt-schema/DrainageClassEnum)
+URI: [basalt_schema:DrainageClassEnum](https://EMSL-Computing.github.io/BASALT-Schema/DrainageClassEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -46,7 +46,7 @@ URI: [basalt_schema:DrainageClassEnum](https://EMSL-Computing.github.io/basalt-s
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -59,7 +59,7 @@ URI: [basalt_schema:DrainageClassEnum](https://EMSL-Computing.github.io/basalt-s
 ```yaml
 name: DrainageClassEnum
 description: Soil drainage classifications
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   excessively_drained:

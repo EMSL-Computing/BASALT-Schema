@@ -9,7 +9,7 @@ _Type of ionization used in the mass spectrometry method_
 
 
 
-URI: [basalt_schema:ionization](https://EMSL-Computing.github.io/basalt-schema/ionization)
+URI: [basalt_schema:ionization](https://EMSL-Computing.github.io/BASALT-Schema/ionization)
 Alias: ionization
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: ionization
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: ionization
 ```yaml
 name: ionization
 description: Type of ionization used in the mass spectrometry method
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: ionization
 domain_of:

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:software_url](https://EMSL-Computing.github.io/basalt-schema/software_url)
+URI: [basalt_schema:software_url](https://EMSL-Computing.github.io/BASALT-Schema/software_url)
 Alias: software_url
 
 <!-- no inheritance hierarchy -->
@@ -17,9 +17,9 @@ Alias: software_url
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
-| [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |  no  |
 | [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
+| [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |  no  |
+| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
 
 
 
@@ -65,7 +65,7 @@ Alias: software_url
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ Alias: software_url
 <details>
 ```yaml
 name: software_url
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: software_url
 owner: DataProcessingActivity

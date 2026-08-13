@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_chlorite](https://EMSL-Computing.github.io/basalt-schema/flag_chlorite)
+URI: [basalt_schema:flag_chlorite](https://EMSL-Computing.github.io/BASALT-Schema/flag_chlorite)
 Alias: flag_chlorite
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_chlorite
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_chlorite
 <details>
 ```yaml
 name: flag_chlorite
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_chlorite
 owner: XRDPhaseProduct

@@ -9,7 +9,7 @@ _Instrument model used for reading (e.g. "BioTek Epoch2")_
 
 
 
-URI: [basalt_schema:plate_reader_model](https://EMSL-Computing.github.io/basalt-schema/plate_reader_model)
+URI: [basalt_schema:plate_reader_model](https://EMSL-Computing.github.io/BASALT-Schema/plate_reader_model)
 Alias: plate_reader_model
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: plate_reader_model
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -88,7 +88,7 @@ name: plate_reader_model
 description: Instrument model used for reading (e.g. "BioTek Epoch2")
 todos:
 - harmonize with existing Instrument modelling
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: plate_reader_model
 domain_of:

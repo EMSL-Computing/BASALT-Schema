@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:ProductMeasureType](https://EMSL-Computing.github.io/basalt-schema/ProductMeasureType)
+URI: [basalt_schema:ProductMeasureType](https://EMSL-Computing.github.io/BASALT-Schema/ProductMeasureType)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -38,7 +38,7 @@ URI: [basalt_schema:ProductMeasureType](https://EMSL-Computing.github.io/basalt-
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -50,7 +50,7 @@ URI: [basalt_schema:ProductMeasureType](https://EMSL-Computing.github.io/basalt-
 <details>
 ```yaml
 name: ProductMeasureType
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   Single:

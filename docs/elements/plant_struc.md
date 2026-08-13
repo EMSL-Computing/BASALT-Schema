@@ -9,7 +9,7 @@ _Name of plant structure the sample was obtained from; for Plant Ontology (PO) (
 
 
 
-URI: [basalt_schema:plant_struc](https://EMSL-Computing.github.io/basalt-schema/plant_struc)
+URI: [basalt_schema:plant_struc](https://EMSL-Computing.github.io/BASALT-Schema/plant_struc)
 Alias: plant_struc
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: plant_struc
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: plant_struc
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -88,7 +88,7 @@ description: Name of plant structure the sample was obtained from; for Plant Ont
   petiole epidermis (PO_0000051). If an individual flower is sampled the sex of it
   can be recorded here.
 title: plant structure
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: plant_struc
 domain_of:

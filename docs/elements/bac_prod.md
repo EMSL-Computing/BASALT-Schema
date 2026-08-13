@@ -9,7 +9,7 @@ _Bacterial production in the water column measured by isotope uptake. Provide va
 
 
 
-URI: [basalt_schema:bac_prod](https://EMSL-Computing.github.io/basalt-schema/bac_prod)
+URI: [basalt_schema:bac_prod](https://EMSL-Computing.github.io/BASALT-Schema/bac_prod)
 Alias: bac_prod
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: bac_prod
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: bac_prod
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ name: bac_prod
 description: Bacterial production in the water column measured by isotope uptake.
   Provide value and unit, any unit is valid.
 title: bacterial production
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: bac_prod
 domain_of:

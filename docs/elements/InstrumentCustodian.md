@@ -13,7 +13,7 @@ _who is responsible for its maintenance, calibration, and proper use._
 
 
 
-URI: [basalt_schema:InstrumentCustodian](https://EMSL-Computing.github.io/basalt-schema/InstrumentCustodian)
+URI: [basalt_schema:InstrumentCustodian](https://EMSL-Computing.github.io/BASALT-Schema/InstrumentCustodian)
 
 
 
@@ -83,7 +83,7 @@ URI: [basalt_schema:InstrumentCustodian](https://EMSL-Computing.github.io/basalt
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -115,11 +115,11 @@ description: 'A link between an instrument and a custodian (person) responsible 
   This class captures the relationship between an instrument and the person
 
   who is responsible for its maintenance, calibration, and proper use.'
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 attributes:
   instrument_id:
     name: instrument_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     domain_of:
     - InstrumentAlternativeIdentifier
     - InstrumentCustodian
@@ -127,7 +127,7 @@ attributes:
     required: true
   custodian_id:
     name: custodian_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - InstrumentCustodian
@@ -148,11 +148,11 @@ description: 'A link between an instrument and a custodian (person) responsible 
   This class captures the relationship between an instrument and the person
 
   who is responsible for its maintenance, calibration, and proper use.'
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 attributes:
   instrument_id:
     name: instrument_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     alias: instrument_id
     owner: InstrumentCustodian
     domain_of:
@@ -162,7 +162,7 @@ attributes:
     required: true
   custodian_id:
     name: custodian_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: custodian_id
     owner: InstrumentCustodian

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_copper](https://EMSL-Computing.github.io/basalt-schema/flag_copper)
+URI: [basalt_schema:flag_copper](https://EMSL-Computing.github.io/BASALT-Schema/flag_copper)
 Alias: flag_copper
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_copper
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_copper
 <details>
 ```yaml
 name: flag_copper
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_copper
 owner: IonsAnalysisProduct

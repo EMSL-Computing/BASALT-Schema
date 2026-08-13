@@ -9,7 +9,7 @@ _Concentration of ammonium in the sample. (Units: umol/L or mg/Liter or ppm)_
 
 
 
-URI: [basalt_schema:ammonium](https://EMSL-Computing.github.io/basalt-schema/ammonium)
+URI: [basalt_schema:ammonium](https://EMSL-Computing.github.io/BASALT-Schema/ammonium)
 Alias: ammonium
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: ammonium
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -70,7 +70,7 @@ Alias: ammonium
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ name: ammonium
 description: 'Concentration of ammonium in the sample. (Units: umol/L or mg/Liter
   or ppm)'
 title: ammonium
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: ammonium
 domain_of:

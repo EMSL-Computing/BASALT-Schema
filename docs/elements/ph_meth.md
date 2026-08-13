@@ -9,7 +9,7 @@ _Reference or method used in determining ph of the sample_
 
 
 
-URI: [basalt_schema:ph_meth](https://EMSL-Computing.github.io/basalt-schema/ph_meth)
+URI: [basalt_schema:ph_meth](https://EMSL-Computing.github.io/BASALT-Schema/ph_meth)
 Alias: ph_meth
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: ph_meth
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -64,7 +64,7 @@ Alias: ph_meth
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ Alias: ph_meth
 name: ph_meth
 description: Reference or method used in determining ph of the sample
 title: pH method
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: ph_meth
 domain_of:

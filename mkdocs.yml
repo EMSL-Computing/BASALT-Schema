@@ -65,7 +65,7 @@ watch:
 nav:
   - Home: index.md
   - BASALT Schema: elements/index.md
-  - BASALT Schema Visualizer: https://EMSL-Computing.github.io/basalt-schema/files/schema-explorer.html
+  - BASALT Schema Visualizer: https://emsl-computing.github.io/BASALT-Schema/files/schema-explorer.html
   - LAMBDA-BER Schema: https://lambda-ber.github.io/lambda-ber-schema/
   - About: about.md
 
@@ -78,8 +78,8 @@ validation:
     # trigger false positives in MkDocs validation for this docs tree.
     not_found: ignore
 
-site_url: https://EMSL-Computing.github.io/basalt-schema
-repo_url: https://github.com/EMSL-Computing/basalt-schema
+site_url: https://emsl-computing.github.io/BASALT-Schema/
+repo_url: https://github.com/EMSL-Computing/BASALT-Schema
 
 # Uncomment this block to enable use of Google Analytics.
 # Replace the property value with your own ID.

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:instrument_id](https://EMSL-Computing.github.io/basalt-schema/instrument_id)
+URI: [basalt_schema:instrument_id](https://EMSL-Computing.github.io/BASALT-Schema/instrument_id)
 Alias: instrument_id
 
 <!-- no inheritance hierarchy -->

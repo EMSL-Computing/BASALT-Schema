@@ -9,7 +9,7 @@ _Volume of the entity in microliters_
 
 
 
-URI: [basalt_schema:volume_uL](https://EMSL-Computing.github.io/basalt-schema/volume_uL)
+URI: [basalt_schema:volume_uL](https://EMSL-Computing.github.io/BASALT-Schema/volume_uL)
 Alias: volume_uL
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: volume_uL
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: volume_uL
 ```yaml
 name: volume_uL
 description: Volume of the entity in microliters
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: volume_uL
 domain_of:

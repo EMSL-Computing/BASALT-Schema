@@ -9,7 +9,7 @@ _Manufacturer lot number for Biolog EcoPlate QC_
 
 
 
-URI: [basalt_schema:plate_lot](https://EMSL-Computing.github.io/basalt-schema/plate_lot)
+URI: [basalt_schema:plate_lot](https://EMSL-Computing.github.io/BASALT-Schema/plate_lot)
 Alias: plate_lot
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: plate_lot
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -82,7 +82,7 @@ Alias: plate_lot
 ```yaml
 name: plate_lot
 description: Manufacturer lot number for Biolog EcoPlate QC
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: plate_lot
 domain_of:

@@ -9,7 +9,7 @@ _Data-dependent MS2 resolution setting used in the mass spectrometry method_
 
 
 
-URI: [basalt_schema:dd_ms2_resolution](https://EMSL-Computing.github.io/basalt-schema/dd_ms2_resolution)
+URI: [basalt_schema:dd_ms2_resolution](https://EMSL-Computing.github.io/BASALT-Schema/dd_ms2_resolution)
 Alias: dd_ms2_resolution
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: dd_ms2_resolution
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: dd_ms2_resolution
 ```yaml
 name: dd_ms2_resolution
 description: Data-dependent MS2 resolution setting used in the mass spectrometry method
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: dd_ms2_resolution
 domain_of:

@@ -9,7 +9,7 @@ _Organic supplements of the culture rooting medium such as vitamins, amino acids
 
 
 
-URI: [basalt_schema:root_med_suppl](https://EMSL-Computing.github.io/basalt-schema/root_med_suppl)
+URI: [basalt_schema:root_med_suppl](https://EMSL-Computing.github.io/BASALT-Schema/root_med_suppl)
 Alias: root_med_suppl
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: root_med_suppl
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ description: Organic supplements of the culture rooting medium such as vitamins,
   acids, organic acids, antibiotics, activated charcoal. Can be multivalued separated
   by ;. e.g. nicotinic acid 0.5 mg/L
 title: rooting medium organic supplement
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: root_med_suppl
 domain_of:

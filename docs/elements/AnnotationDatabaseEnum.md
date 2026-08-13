@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:AnnotationDatabaseEnum](https://EMSL-Computing.github.io/basalt-schema/AnnotationDatabaseEnum)
+URI: [basalt_schema:AnnotationDatabaseEnum](https://EMSL-Computing.github.io/BASALT-Schema/AnnotationDatabaseEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -39,7 +39,7 @@ URI: [basalt_schema:AnnotationDatabaseEnum](https://EMSL-Computing.github.io/bas
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -51,7 +51,7 @@ URI: [basalt_schema:AnnotationDatabaseEnum](https://EMSL-Computing.github.io/bas
 <details>
 ```yaml
 name: AnnotationDatabaseEnum
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   PFAM:

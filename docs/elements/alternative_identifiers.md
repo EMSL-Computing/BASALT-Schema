@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:alternative_identifiers](https://EMSL-Computing.github.io/basalt-schema/alternative_identifiers)
+URI: [basalt_schema:alternative_identifiers](https://EMSL-Computing.github.io/BASALT-Schema/alternative_identifiers)
 Alias: alternative_identifiers
 
 <!-- no inheritance hierarchy -->

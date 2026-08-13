@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:database](https://EMSL-Computing.github.io/basalt-schema/database)
+URI: [basalt_schema:database](https://EMSL-Computing.github.io/BASALT-Schema/database)
 Alias: database
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: database
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: database
 <details>
 ```yaml
 name: database
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: database
 owner: FunctionalAnnotationIdentifier

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:container_size_id](https://EMSL-Computing.github.io/basalt-schema/container_size_id)
+URI: [basalt_schema:container_size_id](https://EMSL-Computing.github.io/BASALT-Schema/container_size_id)
 Alias: container_size_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: container_size_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: container_size_id
 <details>
 ```yaml
 name: container_size_id
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: container_size_id
 owner: ContainerType

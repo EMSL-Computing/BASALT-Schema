@@ -11,7 +11,7 @@ _be a range of producers._
 
 
 
-URI: [basalt_schema:trophic_level](https://EMSL-Computing.github.io/basalt-schema/trophic_level)
+URI: [basalt_schema:trophic_level](https://EMSL-Computing.github.io/BASALT-Schema/trophic_level)
 Alias: trophic_level
 
 <!-- no inheritance hierarchy -->
@@ -24,11 +24,11 @@ Alias: trophic_level
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  yes  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 
 
 
@@ -67,7 +67,7 @@ Alias: trophic_level
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -91,7 +91,7 @@ description: 'Trophic levels are the feeding position in a food chain. Microbes 
 
   be a range of producers.'
 title: trophic level
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: trophic_level
 domain_of:

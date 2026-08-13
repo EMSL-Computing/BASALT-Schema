@@ -9,7 +9,7 @@ _percentage of industrial effluents received by wastewater treatment plant_
 
 
 
-URI: [basalt_schema:indust_eff_percent](https://EMSL-Computing.github.io/basalt-schema/indust_eff_percent)
+URI: [basalt_schema:indust_eff_percent](https://EMSL-Computing.github.io/BASALT-Schema/indust_eff_percent)
 Alias: indust_eff_percent
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: indust_eff_percent
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: indust_eff_percent
 name: indust_eff_percent
 description: percentage of industrial effluents received by wastewater treatment plant
 title: industrial effluent percent
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: indust_eff_percent
 domain_of:

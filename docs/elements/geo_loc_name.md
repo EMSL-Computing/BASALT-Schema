@@ -9,7 +9,7 @@ _The geographical origin of the sample as defined by the country or sea name fol
 
 
 
-URI: [basalt_schema:geo_loc_name](https://EMSL-Computing.github.io/basalt-schema/geo_loc_name)
+URI: [basalt_schema:geo_loc_name](https://EMSL-Computing.github.io/BASALT-Schema/geo_loc_name)
 Alias: geo_loc_name
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: geo_loc_name
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ description: 'The geographical origin of the sample as defined by the country or
   name followed by specific region name and site. Formatted as [Country or sea names:
   region or state, site]'
 title: geographic location name
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: geo_loc_name
 domain_of:

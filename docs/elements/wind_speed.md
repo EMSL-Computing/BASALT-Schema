@@ -9,7 +9,7 @@ _Wind speed describes how fast the air is moving past a certain point during sam
 
 
 
-URI: [basalt_schema:wind_speed](https://EMSL-Computing.github.io/basalt-schema/wind_speed)
+URI: [basalt_schema:wind_speed](https://EMSL-Computing.github.io/BASALT-Schema/wind_speed)
 Alias: wind_speed
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: wind_speed
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSamplingActivity](OtherUndescribedSamplingActivity.md) | Collection of samples from source that does not fit into any of the other cat... |  no  |
 | [AerosolSamplingActivity](AerosolSamplingActivity.md) | A sampling activity where aerosol samples were collected |  no  |
+| [OtherUndescribedSamplingActivity](OtherUndescribedSamplingActivity.md) | Collection of samples from source that does not fit into any of the other cat... |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: wind_speed
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ description: Wind speed describes how fast the air is moving past a certain poin
   during sampling time. Collected via anemometer. Provide value and unit, any unit
   is valid.
 title: wind speed
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: wind_speed
 domain_of:

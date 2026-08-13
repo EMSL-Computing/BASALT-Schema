@@ -7,7 +7,7 @@ _Types of aerosol samples_
 
 
 
-URI: [basalt_schema:AerosolTypeEnum](https://EMSL-Computing.github.io/basalt-schema/AerosolTypeEnum)
+URI: [basalt_schema:AerosolTypeEnum](https://EMSL-Computing.github.io/BASALT-Schema/AerosolTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -43,7 +43,7 @@ URI: [basalt_schema:AerosolTypeEnum](https://EMSL-Computing.github.io/basalt-sch
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -56,7 +56,7 @@ URI: [basalt_schema:AerosolTypeEnum](https://EMSL-Computing.github.io/basalt-sch
 ```yaml
 name: AerosolTypeEnum
 description: Types of aerosol samples
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   sea_salt:

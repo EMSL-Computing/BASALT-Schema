@@ -9,7 +9,7 @@ _Sodium concentration in the sample (Unit: ug/mL)_
 
 
 
-URI: [basalt_schema:sodium](https://EMSL-Computing.github.io/basalt-schema/sodium)
+URI: [basalt_schema:sodium](https://EMSL-Computing.github.io/BASALT-Schema/sodium)
 Alias: sodium
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: sodium
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -70,7 +70,7 @@ Alias: sodium
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: sodium
 name: sodium
 description: 'Sodium concentration in the sample (Unit: ug/mL)'
 title: sodium
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: sodium
 domain_of:

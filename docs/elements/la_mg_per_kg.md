@@ -9,7 +9,7 @@ _Lanthanum concentration in mg/kg_
 
 
 
-URI: [basalt_schema:la_mg_per_kg](https://EMSL-Computing.github.io/basalt-schema/la_mg_per_kg)
+URI: [basalt_schema:la_mg_per_kg](https://EMSL-Computing.github.io/BASALT-Schema/la_mg_per_kg)
 Alias: la_mg_per_kg
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: la_mg_per_kg
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: la_mg_per_kg
 ```yaml
 name: la_mg_per_kg
 description: Lanthanum concentration in mg/kg
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: la_mg_per_kg
 owner: XRFElementalProduct

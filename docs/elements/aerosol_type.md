@@ -9,7 +9,7 @@ _The type or method of aerosol collection_
 
 
 
-URI: [basalt_schema:aerosol_type](https://EMSL-Computing.github.io/basalt-schema/aerosol_type)
+URI: [basalt_schema:aerosol_type](https://EMSL-Computing.github.io/BASALT-Schema/aerosol_type)
 Alias: aerosol_type
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: aerosol_type
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 | [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: aerosol_type
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: aerosol_type
 ```yaml
 name: aerosol_type
 description: The type or method of aerosol collection
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: aerosol_type
 domain_of:

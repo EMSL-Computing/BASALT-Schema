@@ -9,7 +9,7 @@ _When the plate was physically set up_
 
 
 
-URI: [basalt_schema:setup_date](https://EMSL-Computing.github.io/basalt-schema/setup_date)
+URI: [basalt_schema:setup_date](https://EMSL-Computing.github.io/BASALT-Schema/setup_date)
 Alias: setup_date
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: setup_date
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
 | [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |  no  |
 | [PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |  no  |
+| [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
 
 
 
@@ -64,7 +64,7 @@ Alias: setup_date
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ Alias: setup_date
 ```yaml
 name: setup_date
 description: When the plate was physically set up
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: setup_date
 domain_of:

@@ -9,7 +9,7 @@ _amount or concentration of substances such as hydrogen sulfide carbon dioxide m
 
 
 
-URI: [basalt_schema:gaseous_substances](https://EMSL-Computing.github.io/basalt-schema/gaseous_substances)
+URI: [basalt_schema:gaseous_substances](https://EMSL-Computing.github.io/BASALT-Schema/gaseous_substances)
 Alias: gaseous_substances
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: gaseous_substances
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ name: gaseous_substances
 description: amount or concentration of substances such as hydrogen sulfide carbon
   dioxide methane etc.; can include multiple substances
 title: gaseous substances
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: gaseous_substances
 domain_of:

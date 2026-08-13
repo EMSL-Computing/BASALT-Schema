@@ -13,7 +13,7 @@ _Individual QC flags for each measurement using ProcessedDataFlag enum._
 
 
 
-URI: [basalt_schema:ElementalAnalysisProduct](https://EMSL-Computing.github.io/basalt-schema/ElementalAnalysisProduct)
+URI: [basalt_schema:ElementalAnalysisProduct](https://EMSL-Computing.github.io/BASALT-Schema/ElementalAnalysisProduct)
 
 
 
@@ -238,7 +238,7 @@ URI: [basalt_schema:ElementalAnalysisProduct](https://EMSL-Computing.github.io/b
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -271,21 +271,21 @@ description: 'Elemental analysis product, typically derived via combustion or si
   nitrogen, and total sulfur.
 
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: ProcessedData
 slots:
 - measure_type
 attributes:
   total_carbon_id:
     name: total_carbon_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - ElementalAnalysisProduct
     range: QuantityValue
   total_nitrogen_id:
     name: total_nitrogen_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - ElementalAnalysisProduct
@@ -294,42 +294,42 @@ attributes:
     range: QuantityValue
   total_kjeldahl_nitrogen_id:
     name: total_kjeldahl_nitrogen_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - ElementalAnalysisProduct
     range: QuantityValue
   total_sulfur_id:
     name: total_sulfur_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - ElementalAnalysisProduct
     range: QuantityValue
   flag_total_carbon:
     name: flag_total_carbon
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - ElementalAnalysisProduct
     range: ProcessedDataFlag
   flag_total_nitrogen:
     name: flag_total_nitrogen
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - ElementalAnalysisProduct
     range: ProcessedDataFlag
   flag_tkn:
     name: flag_tkn
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - ElementalAnalysisProduct
     range: ProcessedDataFlag
   flag_total_sulfur:
     name: flag_total_sulfur
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - ElementalAnalysisProduct
@@ -350,12 +350,12 @@ description: 'Elemental analysis product, typically derived via combustion or si
   nitrogen, and total sulfur.
 
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: ProcessedData
 attributes:
   total_carbon_id:
     name: total_carbon_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: total_carbon_id
     owner: ElementalAnalysisProduct
@@ -364,7 +364,7 @@ attributes:
     range: QuantityValue
   total_nitrogen_id:
     name: total_nitrogen_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: total_nitrogen_id
     owner: ElementalAnalysisProduct
@@ -375,7 +375,7 @@ attributes:
     range: QuantityValue
   total_kjeldahl_nitrogen_id:
     name: total_kjeldahl_nitrogen_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: total_kjeldahl_nitrogen_id
     owner: ElementalAnalysisProduct
@@ -384,7 +384,7 @@ attributes:
     range: QuantityValue
   total_sulfur_id:
     name: total_sulfur_id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: total_sulfur_id
     owner: ElementalAnalysisProduct
@@ -393,7 +393,7 @@ attributes:
     range: QuantityValue
   flag_total_carbon:
     name: flag_total_carbon
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_total_carbon
     owner: ElementalAnalysisProduct
@@ -402,7 +402,7 @@ attributes:
     range: ProcessedDataFlag
   flag_total_nitrogen:
     name: flag_total_nitrogen
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_total_nitrogen
     owner: ElementalAnalysisProduct
@@ -411,7 +411,7 @@ attributes:
     range: ProcessedDataFlag
   flag_tkn:
     name: flag_tkn
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_tkn
     owner: ElementalAnalysisProduct
@@ -420,7 +420,7 @@ attributes:
     range: ProcessedDataFlag
   flag_total_sulfur:
     name: flag_total_sulfur
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/products
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_total_sulfur
     owner: ElementalAnalysisProduct
@@ -431,7 +431,7 @@ attributes:
     name: measure_type
     description: Whether the measurement recorded is a single measurement, one of
       a set of  replicate measurements, or an average of several replicate measurements.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: measure_type
     owner: ElementalAnalysisProduct
@@ -464,7 +464,7 @@ attributes:
       \ retained until formal typed class exists."
     todos:
     - make this inined/multivalued?
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: summary_metrics
     owner: ElementalAnalysisProduct
@@ -475,7 +475,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: lims_barcode
     owner: ElementalAnalysisProduct
@@ -487,7 +487,7 @@ attributes:
   sample_id:
     name: sample_id
     description: Link back to the originating sample
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_id
     owner: ElementalAnalysisProduct
@@ -500,7 +500,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: ElementalAnalysisProduct
@@ -530,7 +530,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: ElementalAnalysisProduct
@@ -566,7 +566,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     aliases:
     - study
     - study_id
@@ -603,7 +603,7 @@ attributes:
 
       in the same sampling event or campaign.'
     title: sampling set
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampling_set
     owner: ElementalAnalysisProduct
@@ -619,7 +619,7 @@ attributes:
     - value: TOP
     - value: MID
     - value: BTM
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: core_section
     owner: ElementalAnalysisProduct
@@ -637,7 +637,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     aliases:
     - samp_name
     rank: 1000
@@ -663,7 +663,7 @@ attributes:
     range: string
   s3_base_url:
     name: s3_base_url
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_base_url
     owner: ElementalAnalysisProduct
@@ -672,7 +672,7 @@ attributes:
     range: string
   s3_bucket:
     name: s3_bucket
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_bucket
     owner: ElementalAnalysisProduct
@@ -682,7 +682,7 @@ attributes:
   s3_key:
     name: s3_key
     description: MinIO/S3 object key; required for all data products
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_key
     owner: ElementalAnalysisProduct
@@ -693,7 +693,7 @@ attributes:
   filesize:
     name: filesize
     description: Size of the file in bytes
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: filesize
     owner: ElementalAnalysisProduct
@@ -702,7 +702,7 @@ attributes:
     range: integer
   md5checksum:
     name: md5checksum
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: md5checksum
     owner: ElementalAnalysisProduct
@@ -711,7 +711,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: ElementalAnalysisProduct

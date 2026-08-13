@@ -9,7 +9,7 @@ _Select the construct component type._
 
 
 
-URI: [basalt_schema:construct_component](https://EMSL-Computing.github.io/basalt-schema/construct_component)
+URI: [basalt_schema:construct_component](https://EMSL-Computing.github.io/BASALT-Schema/construct_component)
 Alias: construct_component
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: construct_component
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: construct_component
 name: construct_component
 description: Select the construct component type.
 title: construct component
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: construct_component
 domain_of:

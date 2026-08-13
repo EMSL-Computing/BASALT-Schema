@@ -9,7 +9,7 @@ _Concentration of particulate organic nitrogen. (Unit: ug/L or umol/L)_
 
 
 
-URI: [basalt_schema:part_org_nitro](https://EMSL-Computing.github.io/basalt-schema/part_org_nitro)
+URI: [basalt_schema:part_org_nitro](https://EMSL-Computing.github.io/BASALT-Schema/part_org_nitro)
 Alias: part_org_nitro
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: part_org_nitro
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: part_org_nitro
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -91,7 +91,7 @@ Alias: part_org_nitro
 name: part_org_nitro
 description: 'Concentration of particulate organic nitrogen. (Unit: ug/L or umol/L)'
 title: particulate organic nitrogen
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: part_org_nitro
 domain_of:

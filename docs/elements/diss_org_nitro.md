@@ -9,7 +9,7 @@ _Dissolved organic nitrogen concentration measured as: total dissolved nitrogen 
 
 
 
-URI: [basalt_schema:diss_org_nitro](https://EMSL-Computing.github.io/basalt-schema/diss_org_nitro)
+URI: [basalt_schema:diss_org_nitro](https://EMSL-Computing.github.io/BASALT-Schema/diss_org_nitro)
 Alias: diss_org_nitro
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: diss_org_nitro
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -70,7 +70,7 @@ Alias: diss_org_nitro
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ name: diss_org_nitro
 description: 'Dissolved organic nitrogen concentration measured as: total dissolved
   nitrogen - NH4 - NO3 - NO2. Provide value and unit, any unit is valid'
 title: dissolved organic nitrogen
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: diss_org_nitro
 domain_of:

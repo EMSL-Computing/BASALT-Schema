@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:term](https://EMSL-Computing.github.io/basalt-schema/term)
+URI: [basalt_schema:term](https://EMSL-Computing.github.io/BASALT-Schema/term)
 Alias: term
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: term
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: term
 <details>
 ```yaml
 name: term
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: term
 owner: ControlledTermValue

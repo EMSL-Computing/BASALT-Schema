@@ -9,7 +9,7 @@ _Measurement of wet mass. (Unit: kg or g)_
 
 
 
-URI: [basalt_schema:plant_wet_mass](https://EMSL-Computing.github.io/basalt-schema/plant_wet_mass)
+URI: [basalt_schema:plant_wet_mass](https://EMSL-Computing.github.io/BASALT-Schema/plant_wet_mass)
 Alias: plant_wet_mass
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: plant_wet_mass
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -90,7 +90,7 @@ Alias: plant_wet_mass
 name: plant_wet_mass
 description: 'Measurement of wet mass. (Unit: kg or g)'
 title: plant wet mass
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: plant_wet_mass
 domain_of:

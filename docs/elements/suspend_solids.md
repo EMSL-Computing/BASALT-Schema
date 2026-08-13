@@ -9,7 +9,7 @@ _concentration of substances including a wide variety of material such as silt, 
 
 
 
-URI: [basalt_schema:suspend_solids](https://EMSL-Computing.github.io/basalt-schema/suspend_solids)
+URI: [basalt_schema:suspend_solids](https://EMSL-Computing.github.io/BASALT-Schema/suspend_solids)
 Alias: suspend_solids
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: suspend_solids
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ name: suspend_solids
 description: concentration of substances including a wide variety of material such
   as silt, decaying plant and animal matter, etc; can include multiple substances
 title: suspended solids
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: suspend_solids
 domain_of:

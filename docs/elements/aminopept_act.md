@@ -9,7 +9,7 @@ _Measurement of aminopeptidase activity (Unit: mol/L/h)_
 
 
 
-URI: [basalt_schema:aminopept_act](https://EMSL-Computing.github.io/basalt-schema/aminopept_act)
+URI: [basalt_schema:aminopept_act](https://EMSL-Computing.github.io/BASALT-Schema/aminopept_act)
 Alias: aminopept_act
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: aminopept_act
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -70,7 +70,7 @@ Alias: aminopept_act
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: aminopept_act
 name: aminopept_act
 description: 'Measurement of aminopeptidase activity (Unit: mol/L/h)'
 title: aminopeptidase activity
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: aminopept_act
 domain_of:

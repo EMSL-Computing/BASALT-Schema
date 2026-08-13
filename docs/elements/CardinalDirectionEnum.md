@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:CardinalDirectionEnum](https://EMSL-Computing.github.io/basalt-schema/CardinalDirectionEnum)
+URI: [basalt_schema:CardinalDirectionEnum](https://EMSL-Computing.github.io/BASALT-Schema/CardinalDirectionEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -43,7 +43,7 @@ URI: [basalt_schema:CardinalDirectionEnum](https://EMSL-Computing.github.io/basa
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -55,7 +55,7 @@ URI: [basalt_schema:CardinalDirectionEnum](https://EMSL-Computing.github.io/basa
 <details>
 ```yaml
 name: CardinalDirectionEnum
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   north:

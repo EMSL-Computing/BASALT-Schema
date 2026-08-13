@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:pore_diameter_max](https://EMSL-Computing.github.io/basalt-schema/pore_diameter_max)
+URI: [basalt_schema:pore_diameter_max](https://EMSL-Computing.github.io/BASALT-Schema/pore_diameter_max)
 Alias: pore_diameter_max
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: pore_diameter_max
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: pore_diameter_max
 <details>
 ```yaml
 name: pore_diameter_max
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: pore_diameter_max
 owner: TomographyProduct

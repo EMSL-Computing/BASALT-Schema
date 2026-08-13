@@ -9,7 +9,7 @@ _A timestamp value with optional description. No pattern at present,_
 
 
 
-URI: [basalt_schema:TimestampValue](https://EMSL-Computing.github.io/basalt-schema/TimestampValue)
+URI: [basalt_schema:TimestampValue](https://EMSL-Computing.github.io/BASALT-Schema/TimestampValue)
 
 
 
@@ -65,7 +65,7 @@ URI: [basalt_schema:TimestampValue](https://EMSL-Computing.github.io/basalt-sche
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,13 +92,13 @@ URI: [basalt_schema:TimestampValue](https://EMSL-Computing.github.io/basalt-sche
 ```yaml
 name: TimestampValue
 description: A timestamp value with optional description. No pattern at present,
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 slots:
 - description
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     identifier: true
     domain_of:
     - Activity
@@ -176,7 +176,7 @@ attributes:
     required: true
   description:
     name: description
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     domain_of:
     - Activity
     - Entity
@@ -204,7 +204,7 @@ attributes:
     range: string
   has_raw_value:
     name: has_raw_value
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - TimestampValue
@@ -224,11 +224,11 @@ attributes:
 ```yaml
 name: TimestampValue
 description: A timestamp value with optional description. No pattern at present,
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     identifier: true
     alias: id
     owner: TimestampValue
@@ -308,7 +308,7 @@ attributes:
     required: true
   description:
     name: description
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     alias: description
     owner: TimestampValue
     domain_of:
@@ -338,7 +338,7 @@ attributes:
     range: string
   has_raw_value:
     name: has_raw_value
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/value-tables
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: has_raw_value
     owner: TimestampValue

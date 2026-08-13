@@ -9,7 +9,7 @@ _Information about treatment involving the use of mineral supplements; should in
 
 
 
-URI: [basalt_schema:mineral_nutr_regm](https://EMSL-Computing.github.io/basalt-schema/mineral_nutr_regm)
+URI: [basalt_schema:mineral_nutr_regm](https://EMSL-Computing.github.io/BASALT-Schema/mineral_nutr_regm)
 Alias: mineral_nutr_regm
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: mineral_nutr_regm
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 
 
 
@@ -64,7 +64,7 @@ Alias: mineral_nutr_regm
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -90,7 +90,7 @@ description: Information about treatment involving the use of mineral supplement
   and the start and end time of the entire treatment; can include multiple mineral
   nutrient regimens
 title: mineral nutrient regimen
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: mineral_nutr_regm
 domain_of:

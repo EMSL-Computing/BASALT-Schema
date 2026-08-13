@@ -1,16 +1,16 @@
 ---
-id: https://EMSL-Computing.github.io/basalt-schema/zip_download
+id: https://EMSL-Computing.github.io/BASALT-Schema/zip_download
 name: basalt-schema-zip-download
 title: BASALT Schema - Zip Download
 description: |-
   Zip download-related classes for BASALT.
 license: MIT
 see_also:
-  - https://EMSL-Computing.github.io/basalt-schema
-  - https://github.com/EMSL-Computing/basalt-schema
+  - https://EMSL-Computing.github.io/BASALT-Schema
+  - https://github.com/EMSL-Computing/BASALT-Schema
 
 prefixes:
-  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
+  basalt_schema: https://EMSL-Computing.github.io/BASALT-Schema/
 
 default_prefix: basalt_schema
 default_range: string

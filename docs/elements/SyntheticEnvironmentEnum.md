@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:SyntheticEnvironmentEnum](https://EMSL-Computing.github.io/basalt-schema/SyntheticEnvironmentEnum)
+URI: [basalt_schema:SyntheticEnvironmentEnum](https://EMSL-Computing.github.io/BASALT-Schema/SyntheticEnvironmentEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -40,7 +40,7 @@ URI: [basalt_schema:SyntheticEnvironmentEnum](https://EMSL-Computing.github.io/b
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -52,7 +52,7 @@ URI: [basalt_schema:SyntheticEnvironmentEnum](https://EMSL-Computing.github.io/b
 <details>
 ```yaml
 name: SyntheticEnvironmentEnum
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   pore_scale_micromodels:

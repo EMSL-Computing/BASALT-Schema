@@ -9,7 +9,7 @@ _Maintenance notes or directions to a maintenance log._
 
 
 
-URI: [basalt_schema:maintenance](https://EMSL-Computing.github.io/basalt-schema/maintenance)
+URI: [basalt_schema:maintenance](https://EMSL-Computing.github.io/BASALT-Schema/maintenance)
 Alias: maintenance
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: maintenance
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: maintenance
 ```yaml
 name: maintenance
 description: Maintenance notes or directions to a maintenance log.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: maintenance
 owner: Instrument

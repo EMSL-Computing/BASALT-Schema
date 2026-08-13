@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_gypsum](https://EMSL-Computing.github.io/basalt-schema/flag_gypsum)
+URI: [basalt_schema:flag_gypsum](https://EMSL-Computing.github.io/BASALT-Schema/flag_gypsum)
 Alias: flag_gypsum
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_gypsum
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_gypsum
 <details>
 ```yaml
 name: flag_gypsum
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_gypsum
 owner: XRDPhaseProduct

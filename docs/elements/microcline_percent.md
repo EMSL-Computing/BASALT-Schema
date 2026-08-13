@@ -9,7 +9,7 @@ _Microcline (KAlSi3O8) weight percent_
 
 
 
-URI: [basalt_schema:microcline_percent](https://EMSL-Computing.github.io/basalt-schema/microcline_percent)
+URI: [basalt_schema:microcline_percent](https://EMSL-Computing.github.io/BASALT-Schema/microcline_percent)
 Alias: microcline_percent
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: microcline_percent
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: microcline_percent
 ```yaml
 name: microcline_percent
 description: Microcline (KAlSi3O8) weight percent
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: microcline_percent
 owner: XRDPhaseProduct

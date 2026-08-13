@@ -30,7 +30,7 @@
 # Last Updated:  2026-03-16
 # =============================================================================
 
-id: https://EMSL-Computing.github.io/basalt-schema/tomography
+id: https://EMSL-Computing.github.io/BASALT-Schema/tomography
 name: tomography_schema
 title: MONet XCT / Tomography Product Schema
 description: |-
@@ -44,7 +44,7 @@ description: |-
 license: MIT
 
 prefixes:
-  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
+  basalt_schema: https://EMSL-Computing.github.io/BASALT-Schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: tomography_schema

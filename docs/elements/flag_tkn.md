@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_tkn](https://EMSL-Computing.github.io/basalt-schema/flag_tkn)
+URI: [basalt_schema:flag_tkn](https://EMSL-Computing.github.io/BASALT-Schema/flag_tkn)
 Alias: flag_tkn
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_tkn
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_tkn
 <details>
 ```yaml
 name: flag_tkn
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_tkn
 owner: ElementalAnalysisProduct

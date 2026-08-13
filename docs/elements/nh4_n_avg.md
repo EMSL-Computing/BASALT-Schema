@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:nh4_n_avg](https://EMSL-Computing.github.io/basalt-schema/nh4_n_avg)
+URI: [basalt_schema:nh4_n_avg](https://EMSL-Computing.github.io/BASALT-Schema/nh4_n_avg)
 Alias: nh4_n_avg
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: nh4_n_avg
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: nh4_n_avg
 <details>
 ```yaml
 name: nh4_n_avg
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: nh4_n_avg
 owner: NitrogenAnalysisProduct

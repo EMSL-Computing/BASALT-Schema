@@ -9,7 +9,7 @@ _Time of when the sample collection starts. Required format: HH:MM:SS in 24-hour
 
 
 
-URI: [basalt_schema:sample_start_time](https://EMSL-Computing.github.io/basalt-schema/sample_start_time)
+URI: [basalt_schema:sample_start_time](https://EMSL-Computing.github.io/BASALT-Schema/sample_start_time)
 Alias: sample_start_time
 
 <!-- no inheritance hierarchy -->
@@ -58,7 +58,7 @@ Alias: sample_start_time
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -81,7 +81,7 @@ name: sample_start_time
 description: 'Time of when the sample collection starts. Required format: HH:MM:SS
   in 24-hour time format. Don''t forget the seconds! (Unit: hh:mm:ss or HH:MM:SS)'
 title: sample start time
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: sample_start_time
 range: string

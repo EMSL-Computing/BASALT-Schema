@@ -9,7 +9,7 @@ _Halite (NaCl) weight percent_
 
 
 
-URI: [basalt_schema:halite_percent](https://EMSL-Computing.github.io/basalt-schema/halite_percent)
+URI: [basalt_schema:halite_percent](https://EMSL-Computing.github.io/BASALT-Schema/halite_percent)
 Alias: halite_percent
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: halite_percent
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: halite_percent
 ```yaml
 name: halite_percent
 description: Halite (NaCl) weight percent
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: halite_percent
 owner: XRDPhaseProduct

@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:PlantSexEnum](https://EMSL-Computing.github.io/basalt-schema/PlantSexEnum)
+URI: [basalt_schema:PlantSexEnum](https://EMSL-Computing.github.io/BASALT-Schema/PlantSexEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -64,7 +64,7 @@ URI: [basalt_schema:PlantSexEnum](https://EMSL-Computing.github.io/basalt-schema
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -76,7 +76,7 @@ URI: [basalt_schema:PlantSexEnum](https://EMSL-Computing.github.io/basalt-schema
 <details>
 ```yaml
 name: PlantSexEnum
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   androdioecious:

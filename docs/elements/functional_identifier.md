@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:functional_identifier](https://EMSL-Computing.github.io/basalt-schema/functional_identifier)
+URI: [basalt_schema:functional_identifier](https://EMSL-Computing.github.io/BASALT-Schema/functional_identifier)
 Alias: functional_identifier
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: functional_identifier
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: functional_identifier
 <details>
 ```yaml
 name: functional_identifier
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: functional_identifier
 owner: FunctionalAnnotationIdentifier

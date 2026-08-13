@@ -9,7 +9,7 @@ _Mean seasonal temperature (Unit: C)_
 
 
 
-URI: [basalt_schema:season_temp](https://EMSL-Computing.github.io/basalt-schema/season_temp)
+URI: [basalt_schema:season_temp](https://EMSL-Computing.github.io/BASALT-Schema/season_temp)
 Alias: season_temp
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: season_temp
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -95,7 +95,7 @@ Alias: season_temp
 name: season_temp
 description: 'Mean seasonal temperature (Unit: C)'
 title: mean seasonal temperature
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 aliases:
 - average seasonal precipitation
 rank: 1000

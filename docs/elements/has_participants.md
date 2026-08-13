@@ -9,7 +9,7 @@ _Links to a record of a person and their roles for this study._
 
 
 
-URI: [basalt_schema:has_participants](https://EMSL-Computing.github.io/basalt-schema/has_participants)
+URI: [basalt_schema:has_participants](https://EMSL-Computing.github.io/BASALT-Schema/has_participants)
 Alias: has_participants
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: has_participants
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -90,7 +90,7 @@ Alias: has_participants
 ```yaml
 name: has_participants
 description: Links to a record of a person and their roles for this study.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: has_participants
 owner: Study

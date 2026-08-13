@@ -9,7 +9,7 @@ _Specification of the solidifying agent in the culture rooting medium._
 
 
 
-URI: [basalt_schema:root_med_solid](https://EMSL-Computing.github.io/basalt-schema/root_med_solid)
+URI: [basalt_schema:root_med_solid](https://EMSL-Computing.github.io/BASALT-Schema/root_med_solid)
 Alias: root_med_solid
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: root_med_solid
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: root_med_solid
 name: root_med_solid
 description: Specification of the solidifying agent in the culture rooting medium.
 title: rooting medium solidifier
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: root_med_solid
 domain_of:

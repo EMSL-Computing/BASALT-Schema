@@ -9,7 +9,7 @@ _Quality index for third boundary layer height candidate (-999 if no candidate)_
 
 
 
-URI: [basalt_schema:third_blh_quality](https://EMSL-Computing.github.io/basalt-schema/third_blh_quality)
+URI: [basalt_schema:third_blh_quality](https://EMSL-Computing.github.io/BASALT-Schema/third_blh_quality)
 Alias: third_blh_quality
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: third_blh_quality
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: third_blh_quality
 name: third_blh_quality
 description: Quality index for third boundary layer height candidate (-999 if no candidate)
 title: third boundary layer height quality
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: third_blh_quality
 domain_of:

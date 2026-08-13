@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:ConstructComponentEnum](https://EMSL-Computing.github.io/basalt-schema/ConstructComponentEnum)
+URI: [basalt_schema:ConstructComponentEnum](https://EMSL-Computing.github.io/BASALT-Schema/ConstructComponentEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -53,7 +53,7 @@ URI: [basalt_schema:ConstructComponentEnum](https://EMSL-Computing.github.io/bas
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -65,7 +65,7 @@ URI: [basalt_schema:ConstructComponentEnum](https://EMSL-Computing.github.io/bas
 <details>
 ```yaml
 name: ConstructComponentEnum
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   None:

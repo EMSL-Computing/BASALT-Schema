@@ -9,7 +9,7 @@ _Whether receipt of the sample was confirmed._
 
 
 
-URI: [basalt_schema:confirmed_receipt](https://EMSL-Computing.github.io/basalt-schema/confirmed_receipt)
+URI: [basalt_schema:confirmed_receipt](https://EMSL-Computing.github.io/BASALT-Schema/confirmed_receipt)
 Alias: confirmed_receipt
 
 <!-- no inheritance hierarchy -->
@@ -51,7 +51,7 @@ Alias: confirmed_receipt
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -72,7 +72,7 @@ Alias: confirmed_receipt
 ```yaml
 name: confirmed_receipt
 description: Whether receipt of the sample was confirmed.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: confirmed_receipt
 range: boolean

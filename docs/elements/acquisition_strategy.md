@@ -9,7 +9,7 @@ _The acquisition strategy used in the mass spectrometry run._
 
 
 
-URI: [basalt_schema:acquisition_strategy](https://EMSL-Computing.github.io/basalt-schema/acquisition_strategy)
+URI: [basalt_schema:acquisition_strategy](https://EMSL-Computing.github.io/BASALT-Schema/acquisition_strategy)
 Alias: acquisition_strategy
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: acquisition_strategy
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -82,7 +82,7 @@ Alias: acquisition_strategy
 ```yaml
 name: acquisition_strategy
 description: The acquisition strategy used in the mass spectrometry run.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: acquisition_strategy
 domain_of:

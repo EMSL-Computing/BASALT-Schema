@@ -9,7 +9,7 @@ _Provide the citation or describe the method of synthesis._
 
 
 
-URI: [basalt_schema:synth_process](https://EMSL-Computing.github.io/basalt-schema/synth_process)
+URI: [basalt_schema:synth_process](https://EMSL-Computing.github.io/BASALT-Schema/synth_process)
 Alias: synth_process
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: synth_process
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: synth_process
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: synth_process
 name: synth_process
 description: Provide the citation or describe the method of synthesis.
 title: synthesis process
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: synth_process
 domain_of:

@@ -9,7 +9,7 @@ _A record of a person and their role on an EMSL project._
 
 
 
-URI: [basalt_schema:ProjectParticipant](https://EMSL-Computing.github.io/basalt-schema/ProjectParticipant)
+URI: [basalt_schema:ProjectParticipant](https://EMSL-Computing.github.io/BASALT-Schema/ProjectParticipant)
 
 
 
@@ -89,7 +89,7 @@ URI: [basalt_schema:ProjectParticipant](https://EMSL-Computing.github.io/basalt-
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -116,11 +116,11 @@ URI: [basalt_schema:ProjectParticipant](https://EMSL-Computing.github.io/basalt-
 ```yaml
 name: ProjectParticipant
 description: A record of a person and their role on an EMSL project.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/study
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/study
     identifier: true
     domain_of:
     - Activity
@@ -199,7 +199,7 @@ attributes:
   role:
     name: role
     description: The role of the contributor in the study (e.g., data analysis, writing).
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/study
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/study
     domain_of:
     - ProcessingSampleLink
     - ProjectParticipant
@@ -208,7 +208,7 @@ attributes:
   person:
     name: person
     description: The person who contributed to the study.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/study
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/study
     rank: 1000
     domain_of:
     - ProjectParticipant
@@ -224,11 +224,11 @@ attributes:
 ```yaml
 name: ProjectParticipant
 description: A record of a person and their role on an EMSL project.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/study
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/study
     identifier: true
     alias: id
     owner: ProjectParticipant
@@ -309,7 +309,7 @@ attributes:
   role:
     name: role
     description: The role of the contributor in the study (e.g., data analysis, writing).
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/study
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/study
     alias: role
     owner: ProjectParticipant
     domain_of:
@@ -320,7 +320,7 @@ attributes:
   person:
     name: person
     description: The person who contributed to the study.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/study
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/study
     rank: 1000
     alias: person
     owner: ProjectParticipant

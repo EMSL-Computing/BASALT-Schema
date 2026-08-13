@@ -9,7 +9,7 @@ _Total cell count of any organism (or group of organisms) per gram volume or are
 
 
 
-URI: [basalt_schema:organism_count](https://EMSL-Computing.github.io/basalt-schema/organism_count)
+URI: [basalt_schema:organism_count](https://EMSL-Computing.github.io/BASALT-Schema/organism_count)
 Alias: organism_count
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: organism_count
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ description: 'Total cell count of any organism (or group of organisms) per gram 
   that was used for the enumeration (e.g. qPCR atp mpn etc.) should also be provided.
   (example: total prokaryotes; 3.5e7 cells per ml; qpcr)'
 title: organism count
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: organism_count
 domain_of:

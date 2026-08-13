@@ -17,7 +17,7 @@ _'metagenomics_annotation', 'metagenomics_binning', 'metagenomics_phylogeny'._
 
 
 
-URI: [basalt_schema:MetagenomicsDataProcessingActivity](https://EMSL-Computing.github.io/basalt-schema/MetagenomicsDataProcessingActivity)
+URI: [basalt_schema:MetagenomicsDataProcessingActivity](https://EMSL-Computing.github.io/BASALT-Schema/MetagenomicsDataProcessingActivity)
 
 
 
@@ -118,7 +118,7 @@ URI: [basalt_schema:MetagenomicsDataProcessingActivity](https://EMSL-Computing.g
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -149,7 +149,7 @@ description: "Concrete metagenomics workflow run. Inherits all DataProcessingAct
   \ schema TBD). Specific workflow step type is captured via the\ninherited type attribute\
   \ (string); expected values: \n'metagenomics_annotation', 'metagenomics_binning',\
   \ 'metagenomics_phylogeny'."
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: DataProcessingActivity
 
 ```
@@ -165,7 +165,7 @@ description: "Concrete metagenomics workflow run. Inherits all DataProcessingAct
   \ schema TBD). Specific workflow step type is captured via the\ninherited type attribute\
   \ (string); expected values: \n'metagenomics_annotation', 'metagenomics_binning',\
   \ 'metagenomics_phylogeny'."
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: DataProcessingActivity
 attributes:
   parent_workflow_id:
@@ -176,7 +176,7 @@ attributes:
       \ via linkage_cache.\n\nDDL: ALTER TABLE \"DataProcessingActivity\"\n      \
       \ ADD COLUMN parent_workflow_id UUID\n       REFERENCES \"DataProcessingActivity\"\
       (id);"
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: parent_workflow_id
     owner: MetagenomicsDataProcessingActivity
@@ -192,7 +192,7 @@ attributes:
       Direction: structured key-value pairs keyed by workflow type.
 
       Schema for allowed keys TBD per workflow type before full implementation.'
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: workflow_steps
     owner: MetagenomicsDataProcessingActivity
@@ -205,7 +205,7 @@ attributes:
     description: A human-readable description of the data analysis workflow. May  include
       details such as the purpose, output, and/or main steps of  the workflow.
     title: description
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: MetagenomicsDataProcessingActivity
@@ -236,7 +236,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: MetagenomicsDataProcessingActivity
@@ -316,7 +316,7 @@ attributes:
     required: true
   started_at_time:
     name: started_at_time
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     alias: started_at_time
     owner: MetagenomicsDataProcessingActivity
     domain_of:
@@ -326,7 +326,7 @@ attributes:
     required: true
   ended_at_time:
     name: ended_at_time
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     alias: ended_at_time
     owner: MetagenomicsDataProcessingActivity
     domain_of:
@@ -335,7 +335,7 @@ attributes:
     range: datetime
   software_url:
     name: software_url
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: software_url
     owner: MetagenomicsDataProcessingActivity
@@ -344,7 +344,7 @@ attributes:
     range: string
   software_version:
     name: software_version
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     alias: software_version
     owner: MetagenomicsDataProcessingActivity
     domain_of:
@@ -353,7 +353,7 @@ attributes:
     range: string
   software_poc:
     name: software_poc
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: software_poc
     owner: MetagenomicsDataProcessingActivity
@@ -362,7 +362,7 @@ attributes:
     range: string
   execution_resource:
     name: execution_resource
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: execution_resource
     owner: MetagenomicsDataProcessingActivity

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_cec](https://EMSL-Computing.github.io/basalt-schema/flag_cec)
+URI: [basalt_schema:flag_cec](https://EMSL-Computing.github.io/BASALT-Schema/flag_cec)
 Alias: flag_cec
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_cec
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_cec
 <details>
 ```yaml
 name: flag_cec
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_cec
 owner: IonsAnalysisProduct

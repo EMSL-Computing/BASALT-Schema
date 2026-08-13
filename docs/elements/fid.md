@@ -9,7 +9,7 @@ _Free induction decay_
 
 
 
-URI: [basalt_schema:fid](https://EMSL-Computing.github.io/basalt-schema/fid)
+URI: [basalt_schema:fid](https://EMSL-Computing.github.io/BASALT-Schema/fid)
 Alias: fid
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: fid
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -88,7 +88,7 @@ name: fid
 description: Free induction decay
 todos:
 - is this a setting or a result?
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: fid
 domain_of:

@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:GrowthHabitEnum](https://EMSL-Computing.github.io/basalt-schema/GrowthHabitEnum)
+URI: [basalt_schema:GrowthHabitEnum](https://EMSL-Computing.github.io/BASALT-Schema/GrowthHabitEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -39,7 +39,7 @@ URI: [basalt_schema:GrowthHabitEnum](https://EMSL-Computing.github.io/basalt-sch
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -51,7 +51,7 @@ URI: [basalt_schema:GrowthHabitEnum](https://EMSL-Computing.github.io/basalt-sch
 <details>
 ```yaml
 name: GrowthHabitEnum
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   erect:

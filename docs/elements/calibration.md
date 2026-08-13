@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:calibration](https://EMSL-Computing.github.io/basalt-schema/calibration)
+URI: [basalt_schema:calibration](https://EMSL-Computing.github.io/BASALT-Schema/calibration)
 Alias: calibration
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: calibration
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: calibration
 <details>
 ```yaml
 name: calibration
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: calibration
 owner: PH_Method

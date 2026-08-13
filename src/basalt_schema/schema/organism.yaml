@@ -1,5 +1,5 @@
 ---
-id: https://EMSL-Computing.github.io/basalt-schema/organism
+id: https://EMSL-Computing.github.io/BASALT-Schema/organism
 name: basalt-schema-organism
 title: BASALT Schema - Organism
 description: |-
@@ -7,11 +7,11 @@ description: |-
   constructs) that can be instantiated by multiple physical samples.
 license: MIT
 see_also:
-  - https://EMSL-Computing.github.io/basalt-schema
-  - https://github.com/EMSL-Computing/basalt-schema
+  - https://EMSL-Computing.github.io/BASALT-Schema
+  - https://github.com/EMSL-Computing/BASALT-Schema
 
 prefixes:
-  basalt_schema: https://EMSL-Computing.github.io/basalt-schema/
+  basalt_schema: https://EMSL-Computing.github.io/BASALT-Schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: basalt_schema

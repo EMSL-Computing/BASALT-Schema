@@ -9,7 +9,7 @@ _A sample that has undergone processing or analysis. Processed Sample entities a
 
 
 
-URI: [basalt_schema:ProcessedSample](https://EMSL-Computing.github.io/basalt-schema/ProcessedSample)
+URI: [basalt_schema:ProcessedSample](https://EMSL-Computing.github.io/BASALT-Schema/ProcessedSample)
 
 
 
@@ -143,7 +143,7 @@ URI: [basalt_schema:ProcessedSample](https://EMSL-Computing.github.io/basalt-sch
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -173,7 +173,7 @@ description: A sample that has undergone processing or analysis. Processed Sampl
   entities are derived from Activities. The upstream SampleProcessing that produced
   this ProcessedSample is referenced via sampled_during.
 title: Processed Sample
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: Sample
 slots:
 - storage_location
@@ -196,7 +196,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -285,7 +285,7 @@ description: A sample that has undergone processing or analysis. Processed Sampl
   entities are derived from Activities. The upstream SampleProcessing that produced
   this ProcessedSample is referenced via sampled_during.
 title: Processed Sample
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 is_a: Sample
 slot_usage:
   replicate:
@@ -299,7 +299,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/basalt-schema/sample-classes
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     alias: id
     owner: ProcessedSample
@@ -381,7 +381,7 @@ attributes:
     name: storage_location
     description: The physical or digital location where the processed sample is stored
       (e.g., freezer location, database ID).
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: storage_location
     owner: ProcessedSample
@@ -391,7 +391,7 @@ attributes:
   label_text:
     name: label_text
     description: The label on the stored processed sample, if applicable (e.g., "f01").
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: label_text
     owner: ProcessedSample
@@ -402,7 +402,7 @@ attributes:
     name: concentration_ug_per_uL
     description: Concentration of the substance in micrograms per microliter.
     title: concentration (ug/uL)
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: concentration_ug_per_uL
     owner: ProcessedSample
@@ -412,7 +412,7 @@ attributes:
   total_amount_ug:
     name: total_amount_ug
     description: Total amount of analyte in micrograms
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: total_amount_ug
     owner: ProcessedSample
@@ -422,7 +422,7 @@ attributes:
   volume_uL:
     name: volume_uL
     description: Volume of the entity in microliters
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: volume_uL
     owner: ProcessedSample
@@ -433,7 +433,7 @@ attributes:
     name: sampled_portion
     description: The portion of the original sample used in creating this processed
       sample (e.g., "interlayer", "supernatant", "pellet").
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampled_portion
     owner: ProcessedSample
@@ -444,7 +444,7 @@ attributes:
     name: sampled_during
     description: A reference to the sample processing activity (generally lab work)
       that generated this processed_sample.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampled_during
     owner: ProcessedSample
@@ -471,7 +471,7 @@ attributes:
     description: The TECHNICAL replicate number of the processed sample, if applicable.
     todos:
     - reconcile replicate modelling
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: replicate
     owner: ProcessedSample
@@ -486,7 +486,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: ProcessedSample
@@ -516,7 +516,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: ProcessedSample
@@ -555,7 +555,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: emsl_activity
     owner: ProcessedSample
@@ -567,7 +567,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://EMSL-Computing.github.io/basalt-schema
+    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
     rank: 1000
     alias: lims_barcode
     owner: ProcessedSample

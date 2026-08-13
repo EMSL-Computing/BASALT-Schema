@@ -9,7 +9,7 @@ _Link to additional analysis results performed on the sample_
 
 
 
-URI: [basalt_schema:link_addit_analys](https://EMSL-Computing.github.io/basalt-schema/link_addit_analys)
+URI: [basalt_schema:link_addit_analys](https://EMSL-Computing.github.io/BASALT-Schema/link_addit_analys)
 Alias: link_addit_analys
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: link_addit_analys
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: link_addit_analys
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: link_addit_analys
 name: link_addit_analys
 description: Link to additional analysis results performed on the sample
 title: link to additional analysis
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: link_addit_analys
 domain_of:

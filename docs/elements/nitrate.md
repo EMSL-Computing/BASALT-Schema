@@ -9,7 +9,7 @@ _Concentration of nitrate in the sample (Unit: umol/L or mg/L or ppm)_
 
 
 
-URI: [basalt_schema:nitrate](https://EMSL-Computing.github.io/basalt-schema/nitrate)
+URI: [basalt_schema:nitrate](https://EMSL-Computing.github.io/BASALT-Schema/nitrate)
 Alias: nitrate
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: nitrate
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -70,7 +70,7 @@ Alias: nitrate
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: nitrate
 name: nitrate
 description: 'Concentration of nitrate in the sample (Unit: umol/L or mg/L or ppm)'
 title: nitrate
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: nitrate
 domain_of:

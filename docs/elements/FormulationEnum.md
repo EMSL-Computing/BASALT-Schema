@@ -7,7 +7,7 @@ _Method used to formulate media._
 
 
 
-URI: [basalt_schema:FormulationEnum](https://EMSL-Computing.github.io/basalt-schema/FormulationEnum)
+URI: [basalt_schema:FormulationEnum](https://EMSL-Computing.github.io/BASALT-Schema/FormulationEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -47,7 +47,7 @@ URI: [basalt_schema:FormulationEnum](https://EMSL-Computing.github.io/basalt-sch
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -62,7 +62,7 @@ name: FormulationEnum
 description: Method used to formulate media.
 todos:
 - could be made generic for mixing more than just media.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   manual_mix:

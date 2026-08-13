@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:pore_diameter_min](https://EMSL-Computing.github.io/basalt-schema/pore_diameter_min)
+URI: [basalt_schema:pore_diameter_min](https://EMSL-Computing.github.io/BASALT-Schema/pore_diameter_min)
 Alias: pore_diameter_min
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: pore_diameter_min
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: pore_diameter_min
 <details>
 ```yaml
 name: pore_diameter_min
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: pore_diameter_min
 owner: TomographyProduct

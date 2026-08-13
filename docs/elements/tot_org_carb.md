@@ -9,7 +9,7 @@ _Total organic carbon content. Provided as gram of Carbon per kg of your sample 
 
 
 
-URI: [basalt_schema:tot_org_carb](https://EMSL-Computing.github.io/basalt-schema/tot_org_carb)
+URI: [basalt_schema:tot_org_carb](https://EMSL-Computing.github.io/BASALT-Schema/tot_org_carb)
 Alias: tot_org_carb
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: tot_org_carb
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: tot_org_carb
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ name: tot_org_carb
 description: 'Total organic carbon content. Provided as gram of Carbon per kg of your
   sample material. (Unit: g C/kg)'
 title: total organic carbon
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: tot_org_carb
 domain_of:

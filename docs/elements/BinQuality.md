@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:BinQuality](https://EMSL-Computing.github.io/basalt-schema/BinQuality)
+URI: [basalt_schema:BinQuality](https://EMSL-Computing.github.io/BASALT-Schema/BinQuality)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -32,7 +32,7 @@ URI: [basalt_schema:BinQuality](https://EMSL-Computing.github.io/basalt-schema/B
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -44,7 +44,7 @@ URI: [basalt_schema:BinQuality](https://EMSL-Computing.github.io/basalt-schema/B
 <details>
 ```yaml
 name: BinQuality
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   HQ:

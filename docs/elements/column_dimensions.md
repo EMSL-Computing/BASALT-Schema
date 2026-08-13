@@ -9,7 +9,7 @@ _Dimensions of the chromatography column used in the process._
 
 
 
-URI: [basalt_schema:column_dimensions](https://EMSL-Computing.github.io/basalt-schema/column_dimensions)
+URI: [basalt_schema:column_dimensions](https://EMSL-Computing.github.io/BASALT-Schema/column_dimensions)
 Alias: column_dimensions
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: column_dimensions
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -82,7 +82,7 @@ Alias: column_dimensions
 ```yaml
 name: column_dimensions
 description: Dimensions of the chromatography column used in the process.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: column_dimensions
 domain_of:

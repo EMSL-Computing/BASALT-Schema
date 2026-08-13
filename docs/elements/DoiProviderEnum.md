@@ -7,7 +7,7 @@ _The authority, or organization, the DOI is associated with_
 
 
 
-URI: [basalt_schema:DoiProviderEnum](https://EMSL-Computing.github.io/basalt-schema/DoiProviderEnum)
+URI: [basalt_schema:DoiProviderEnum](https://EMSL-Computing.github.io/BASALT-Schema/DoiProviderEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -50,7 +50,7 @@ URI: [basalt_schema:DoiProviderEnum](https://EMSL-Computing.github.io/basalt-sch
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -63,7 +63,7 @@ URI: [basalt_schema:DoiProviderEnum](https://EMSL-Computing.github.io/basalt-sch
 ```yaml
 name: DoiProviderEnum
 description: The authority, or organization, the DOI is associated with
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   emsl:

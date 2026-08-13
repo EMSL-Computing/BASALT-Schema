@@ -9,7 +9,7 @@ _Reference or method used in determining the local soil classification_
 
 
 
-URI: [basalt_schema:local_class_meth](https://EMSL-Computing.github.io/basalt-schema/local_class_meth)
+URI: [basalt_schema:local_class_meth](https://EMSL-Computing.github.io/BASALT-Schema/local_class_meth)
 Alias: local_class_meth
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: local_class_meth
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: local_class_meth
 name: local_class_meth
 description: Reference or method used in determining the local soil classification
 title: local soil classification method
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: local_class_meth
 domain_of:

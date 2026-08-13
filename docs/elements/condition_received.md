@@ -11,7 +11,7 @@ _Examples: "good", "damaged", "thawed"_
 
 
 
-URI: [basalt_schema:condition_received](https://EMSL-Computing.github.io/basalt-schema/condition_received)
+URI: [basalt_schema:condition_received](https://EMSL-Computing.github.io/BASALT-Schema/condition_received)
 Alias: condition_received
 
 <!-- no inheritance hierarchy -->
@@ -53,7 +53,7 @@ Alias: condition_received
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -76,7 +76,7 @@ name: condition_received
 description: 'The condition of the sample when received.
 
   Examples: "good", "damaged", "thawed"'
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: condition_received
 range: string

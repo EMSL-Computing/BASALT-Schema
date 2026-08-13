@@ -9,7 +9,7 @@ _Concentration of phosphate (Unit: umol/L)_
 
 
 
-URI: [basalt_schema:phosphate](https://EMSL-Computing.github.io/basalt-schema/phosphate)
+URI: [basalt_schema:phosphate](https://EMSL-Computing.github.io/BASALT-Schema/phosphate)
 Alias: phosphate
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: phosphate
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -70,7 +70,7 @@ Alias: phosphate
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: phosphate
 name: phosphate
 description: 'Concentration of phosphate (Unit: umol/L)'
 title: phosphate
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: phosphate
 domain_of:

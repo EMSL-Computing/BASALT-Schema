@@ -9,7 +9,7 @@ _Note method(s) used for tilling_
 
 
 
-URI: [basalt_schema:tillage](https://EMSL-Computing.github.io/basalt-schema/tillage)
+URI: [basalt_schema:tillage](https://EMSL-Computing.github.io/BASALT-Schema/tillage)
 Alias: tillage
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: tillage
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: tillage
 name: tillage
 description: Note method(s) used for tilling
 title: tillage
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: tillage
 domain_of:

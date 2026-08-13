@@ -9,7 +9,7 @@ _The abstract submitted with the research proposal._
 
 
 
-URI: [basalt_schema:proposal_abstract](https://EMSL-Computing.github.io/basalt-schema/proposal_abstract)
+URI: [basalt_schema:proposal_abstract](https://EMSL-Computing.github.io/BASALT-Schema/proposal_abstract)
 Alias: proposal_abstract
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: proposal_abstract
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: proposal_abstract
 ```yaml
 name: proposal_abstract
 description: The abstract submitted with the research proposal.
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: proposal_abstract
 owner: Study

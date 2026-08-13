@@ -9,7 +9,7 @@ _the process of pre-treatment removes materials that can be easily collected fro
 
 
 
-URI: [basalt_schema:pre_treatment](https://EMSL-Computing.github.io/basalt-schema/pre_treatment)
+URI: [basalt_schema:pre_treatment](https://EMSL-Computing.github.io/BASALT-Schema/pre_treatment)
 Alias: pre_treatment
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: pre_treatment
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ name: pre_treatment
 description: the process of pre-treatment removes materials that can be easily collected
   from the raw wastewater
 title: pre-treatment
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 alias: pre_treatment
 domain_of:

@@ -1,8 +1,8 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-12T12:21:13
+# Generation date: 2026-08-13T08:36:43
 # Schema: basalt-schema
 #
-# id: https://EMSL-Computing.github.io/basalt-schema
+# id: https://EMSL-Computing.github.io/BASALT-Schema
 # description: LinkML schema for MONet/EMSL scientific data across biogeochemical, biological,
 #   and environmental domains. Defines samples, provenance, laboratory activities,
 #   and analytical products as the canonical source of truth for BASALT consumers
@@ -73,7 +73,7 @@ MIXS = CurieNamespace('MIXS', 'https://w3id.org/mixs/')
 MS = CurieNamespace('MS', 'http://purl.obolibrary.org/obo/MS_')
 OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
 PO = CurieNamespace('PO', 'http://purl.obolibrary.org/obo/PO_')
-BASALT_SCHEMA = CurieNamespace('basalt_schema', 'https://EMSL-Computing.github.io/basalt-schema/')
+BASALT_SCHEMA = CurieNamespace('basalt_schema', 'https://EMSL-Computing.github.io/BASALT-Schema/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 ROR = CurieNamespace('ror', 'https://ror.org/')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')

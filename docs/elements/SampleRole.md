@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:SampleRole](https://EMSL-Computing.github.io/basalt-schema/SampleRole)
+URI: [basalt_schema:SampleRole](https://EMSL-Computing.github.io/BASALT-Schema/SampleRole)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -37,7 +37,7 @@ URI: [basalt_schema:SampleRole](https://EMSL-Computing.github.io/basalt-schema/S
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/basalt-schema
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
 
 
 
@@ -49,7 +49,7 @@ URI: [basalt_schema:SampleRole](https://EMSL-Computing.github.io/basalt-schema/S
 <details>
 ```yaml
 name: SampleRole
-from_schema: https://EMSL-Computing.github.io/basalt-schema
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   input_sample:
