@@ -208,14 +208,6 @@ classes:
         identifier: true
         range: uuid
 
-  SampleProcessingStep:
-    description: >-
-      A table for assigning SampleProcessing subclass records to a specific protocol
-      with a step number.
-    slots:
-      - step_number
-      - in_protocol
-
   ChemicalConversionProcess: 
     is_a: SampleProcessing 
     description: >-

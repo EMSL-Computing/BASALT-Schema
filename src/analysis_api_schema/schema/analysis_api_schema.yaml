@@ -419,6 +419,8 @@ classes:
           - processing_id
           - step_number
           - role
+    slots:
+      - in_protocol
 
   InstrumentCustodian:
     attributes:
