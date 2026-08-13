@@ -1,8 +1,9 @@
-id: https://w3id.org/MONet/analysis-api-schema/methods
-name: analysis-api-schema-methods
-title: MONet Analysis API - Methods
+id: https://w3id.org/MONet/analysis-api-schema/monet-data-generation-activities
+name: basalt-monet-data-generation-activities
+title: BASALT Schema - Data Generation Activities for MONet Campaigns
 description: |-
-  Method-specific subclasses of DataGenerationActivity to represent the various methods used to generate the data products available in the MONet Analysis API.
+  Method-specific subclasses of DataGenerationActivity to represent the various analysis methods used in MONet campaigns.
+  Most classes correspond to a DataProduct in products.yaml.
 license: MIT
 
 prefixes:
