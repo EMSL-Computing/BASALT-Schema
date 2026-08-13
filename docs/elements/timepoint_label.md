@@ -27,11 +27,11 @@ Alias: timepoint_label
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |  no  |
+| [PlateProduct](PlateProduct.md) | Abstract base for plate measurement data products |  no  |
+| [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |  no  |
 | [PlateDataGenerationActivity](PlateDataGenerationActivity.md) | Abstract base for plate measurement activities |  no  |
 | [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |  no  |
-| [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |  no  |
 | [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | AMP2 plate measurement (OD, fluorescence, flow cytometry) |  no  |
-| [PlateProduct](PlateProduct.md) | Abstract base for plate measurement data products |  no  |
 
 
 

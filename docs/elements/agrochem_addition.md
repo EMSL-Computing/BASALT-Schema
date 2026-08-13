@@ -22,9 +22,9 @@ Alias: agrochem_addition
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 
 
 

@@ -64,8 +64,9 @@ watch:
 
 nav:
   - Home: index.md
-  - Schema: elements/index.md
-  - Schema Visualizer: https://EMSL-Computing.github.io/basalt-schema/files/schema-explorer.html
+  - BASALT Schema: elements/index.md
+  - BASALT Schema Visualizer: https://EMSL-Computing.github.io/basalt-schema/files/schema-explorer.html
+  - LAMBDA-BER Schema: https://lambda-ber.github.io/lambda-ber-schema/
   - About: about.md
 
 exclude_docs: |

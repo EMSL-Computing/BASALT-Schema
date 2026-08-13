@@ -22,8 +22,8 @@ Alias: soil_type_meth
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 
 
 

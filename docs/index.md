@@ -98,6 +98,8 @@ Many-to-many relationships are represented via explicit association tables:
 
 - **Workflow Associations**: Links functional annotations and other outputs to workflow executions
 
+## LAMBDA-BER Schema
+This is an externally-developed schema, linked via the sidebar and with separate versioning, used for multimodal structural biology imaging data. The bridging concept between that schema and BASALT is the `study` class ([link to LAMBDA-BER.study](https://lambda-ber.github.io/lambda-ber-schema/elements/Study/), [link to BASALT.study](https://emsl-computing.github.io/BASALT-Schema/elements/Study/)).
 
 ## Contacts
 - Yuri Corilo (corilo@pnnl.gov)
