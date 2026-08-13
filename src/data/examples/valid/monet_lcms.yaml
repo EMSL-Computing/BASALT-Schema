@@ -1,0 +1,117 @@
+# Example of records representing LCMS analysis for MONet samples
+# Based on information provided in https://pnnl.sharepoint.com/sites/EMSL/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FEMSL%2FShared%20Documents%2FManagement%20%26%20Operations%2FUser%20Program%2FMONet%2FLC%2DMS%2FFinal%20MONet%20protocols
+
+- samples:
+  - id: sample_uuid
+    name: CORN_FIELD_001
+    description: Soil sample from corn field
+    emsl_activity: emsl_activity_uuid1
+    lims_barcode: 123456789
+    analysis_type: metabolome
+    depth: 0-10 cm
+    lat_lon: 40, -105.5
+
+- sample_processing_activities:
+  - id: sample_processing_uuid
+    name: sample processing placeholder
+    description: a placeholder for SampleProcessing subclass(es) that take the sample and produce processed samples, pending more modelling in other branches
+
+- processed_samples:
+  - id: processed_sample_uuid
+    name: water_extract_CORN_FIELD_001
+    description: Water extract of soil sample CORN_FIELD_001 per MONet LCMS prep protocol
+    emsl_activity: # do we want to keep this slot?
+    lims_barcode: 987654321
+    storage_location: Freezer01; ShelfA; Box1; A1
+    label_text: 65432_CORN_FIELD_001_lcms_extract
+    concentration_ug_per_uL: 1
+    total_amount_ug: 3
+    volume_uL: 3
+    sampled_portion: aqueous_layer
+    sampled_during: sample_processing_uuid
+    replicate: 1
+
+- data_generation_activities:
+  - id: datagen_hilic_pos_uuid
+    name: CORN_FIELD_001_HILIC_pos
+    description: LCMS analysis of CORN_FIELD_001, HILIC positive mode
+    version: v1.0
+    sequence_order: 1
+    analyte_id: processed_sample_uuid
+    analyte_category: metabolite
+    acquisition_start_time: 2024-09-17T14:22:00Z
+    acquisition_end_time: 2024-09-17T14:52:00Z
+    instrument_operator_id: person_uuid
+    protocol_url: https://pnnl.sharepoint.com/:w:/r/sites/EMSL/_layouts/15/Doc.aspx?sourcedoc=%7B8A6A6E1F-B8D3-44BF-805A-987F691E7271%7D&file=MONet%20LC-MS%20Instrument%20Methods.docx&action=default&mobileredirect=true
+    instrument_used: instrument_uuid
+    uses_ms_configuration: ms_config_uuid1
+    uses_chromatography: chromatography_uuid
+
+  - id: datagen_hilic_neg_uuid
+    name: CORN_FIELD_001_HILIC_neg
+    description: LCMS analysis of CORN_FIELD_001, HILIC negative mode
+    version: v1.0
+    sequence_order: 1
+    analyte_id: processed_sample_uuid
+    analyte_category: metabolite
+    acquisition_start_time: 2024-09-17T14:22:00Z
+    acquisition_end_time: 2024-09-17T14:52:00Z
+    instrument_operator_id: person_uuid
+    protocol_url: https://pnnl.sharepoint.com/:w:/r/sites/EMSL/_layouts/15/Doc.aspx?sourcedoc=%7B8A6A6E1F-B8D3-44BF-805A-987F691E7271%7D&file=MONet%20LC-MS%20Instrument%20Methods.docx&action=default&mobileredirect=true
+    instrument_used: instrument_uuid
+    uses_ms_configuration: ms_config_uuid2
+    uses_chromatography: chromatography_uuid
+
+- chromatography_configurations:
+  - id: chromatography_uuid
+    name: MONet_LCMS_HILIC
+    description: MONet standard liquid chromatography configuration for LCMS analyses
+    column: ACQUITY UPLC BEH HILIC
+    column_dimensions: 2.1 x 100 mm
+    column_manufacturer: Waters
+    chromatography_type: liquid_chromatography
+    mobile_phases: 
+    stationary_phase: BEH-HILIC
+    temperature_celsius: 50
+    duration_min: 12
+    flow_rate_ul_min: 300
+    injection_volume_ul: 3
+
+- mass_spectrometry_configurations:
+  - id: ms_config_uuid1
+    name: MONet_LCMS_HILIC_positive
+    description: Mass spectrometer configuration for MONet LCMS runs in HILIC positive mode
+    injection: LC
+    ionization: HESI
+    fragmentation: HCD
+    polarity: positive
+    resolution: high
+    dd_ms2_resolution: 15000
+    loop_count:
+    iat: 
+    fid:
+    mass_range_max: 1000
+    mass_range_min: 67
+    acquisition_strategy: data_dependent_acquisition
+    lims_protocol_instance_id: 56789
+
+  - id: ms_config_uuid2
+    name: MONet_LCMS_HILIC_negative
+    description: Mass spectrometer configuration for MONet LCMS runs in HILIC negative mode
+    injection: Direct injection
+    injection: LC
+    ionization: HESI
+    fragmentation: HCD
+    polarity: negative
+    resolution: high
+    dd_ms2_resolution: 15000
+    loop_count:
+    iat: 
+    fid:
+    mass_range_max: 1000
+    mass_range_min: 67
+    acquisition_strategy: data_dependent_acquisition
+    lims_protocol_instance_id: 12345
+
+
+
