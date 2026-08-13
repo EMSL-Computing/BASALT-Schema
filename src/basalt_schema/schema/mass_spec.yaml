@@ -170,6 +170,19 @@ classes:
         range: string
     todos: inheritance? substances_used modelling
 
+  # Multivalued slots have to be converted to a join table for relational databases
+  # ref https://linkml.io/linkml/howtos/recognize-structural-forms.html#id12
+
+  ChromatographyMobilePhaseJoin:
+    description: Join table for the multivalued slot 'mobile_phases' in ChromatographyConfiguration.
+    slots:
+      - chromatography_configuration
+      - mobile_phase_segment
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+
   # ============================================================================
   # (NEW) MassSpectrometryDataProcessingActivity
   # Concrete subclass of DataProcessingActivity (now abstract in MR1).
