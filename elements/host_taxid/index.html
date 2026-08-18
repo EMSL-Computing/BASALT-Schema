@@ -552,7 +552,7 @@
 
 <h1 id="slot-host-taxonomy-identifier-host_taxid">Slot: host taxonomy identifier (host_taxid)</h1>
 <p><em>NCBI taxon ID. Format with prefix NCBITaxon:####</em></p>
-<p>URI: <a href="https://EMSL-Computing.github.io/BASALT-Schema/host_taxid">basalt_schema:host_taxid</a>
+<p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/host_taxid">basalt_schema:host_taxid</a>
 Alias: host_taxid</p>
 <!-- no inheritance hierarchy -->
 
@@ -567,14 +567,9 @@ Alias: host_taxid</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../CultureEnvironmentalSample/">CultureEnvironmentalSample</a></td>
-<td>A sample containing organisms cultured from an environmental sample</td>
+<td><a href="../MixedCultureSample/">MixedCultureSample</a></td>
+<td>A sample containing multiple cultured organisms</td>
 <td>yes</td>
-</tr>
-<tr>
-<td><a href="../OtherUndescribedSample/">OtherUndescribedSample</a></td>
-<td>A sample that does not fit into any of the other described sample types</td>
-<td>no</td>
 </tr>
 <tr>
 <td><a href="../Organism/">Organism</a></td>
@@ -587,6 +582,11 @@ Alias: host_taxid</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../CultureEnvironmentalSample/">CultureEnvironmentalSample</a></td>
+<td>A sample containing organisms cultured from an environmental sample</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../PureCultureSample/">PureCultureSample</a></td>
 <td>A sample of a culture containing a single organism</td>
 <td>yes</td>
@@ -597,9 +597,9 @@ Alias: host_taxid</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MixedCultureSample/">MixedCultureSample</a></td>
-<td>A sample containing multiple cultured organisms</td>
-<td>yes</td>
+<td><a href="../OtherUndescribedSample/">OtherUndescribedSample</a></td>
+<td>A sample that does not fit into any of the other described sample types</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
@@ -661,7 +661,7 @@ Alias: host_taxid</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: <a href="https://EMSL-Computing.github.io/BASALT-Schema">https://EMSL-Computing.github.io/BASALT-Schema</a></li>
+<li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -687,7 +687,7 @@ Alias: host_taxid</p>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host_taxid</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NCBI taxon ID. Format with prefix NCBITaxon:####</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host taxonomy identifier</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://EMSL-Computing.github.io/BASALT-Schema</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">aliases</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host_taxonomy_id</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host_ncbi_taxon_id</span>

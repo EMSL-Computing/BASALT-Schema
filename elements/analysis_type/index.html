@@ -541,7 +541,7 @@
 
 <h1 id="slot-analysis_type">Slot: analysis_type</h1>
 <p><em>The type(s) of analysis planned for this sample.</em></p>
-<p>URI: <a href="https://EMSL-Computing.github.io/BASALT-Schema/analysis_type">basalt_schema:analysis_type</a>
+<p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/analysis_type">basalt_schema:analysis_type</a>
 Alias: analysis_type</p>
 <!-- no inheritance hierarchy -->
 
@@ -556,29 +556,9 @@ Alias: analysis_type</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ExperimentalCulture/">ExperimentalCulture</a></td>
-<td>Growth of an experimental culture for downstream analysis</td>
+<td><a href="../StockCulturePreparation/">StockCulturePreparation</a></td>
+<td>Preparation of a stock culture from user samples for long-term storage</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../PreCultureGrowth/">PreCultureGrowth</a></td>
-<td>Growth of a pre-culture to establish viable inoculum before</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EcoplatePlateSetupActivity/">EcoplatePlateSetupActivity</a></td>
-<td>Ecoplate-specific plate setup</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MixedCultureSample/">MixedCultureSample</a></td>
-<td>A sample containing multiple cultured organisms</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../AerosolSample/">AerosolSample</a></td>
-<td>An aerosol sample collected from the environment</td>
-<td>yes</td>
 </tr>
 <tr>
 <td><a href="../FieldDeployedTerraformSample/">FieldDeployedTerraformSample</a></td>
@@ -586,49 +566,9 @@ Alias: analysis_type</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../PlantSample/">PlantSample</a></td>
-<td>A sample containing plant material</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../PlateSetupActivity/">PlateSetupActivity</a></td>
-<td>Abstract base for 96-well plate setup activities</td>
+<td><a href="../PreCultureGrowth/">PreCultureGrowth</a></td>
+<td>Growth of a pre-culture to establish viable inoculum before</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../AerosolArmSample/">AerosolArmSample</a></td>
-<td>An aerosol sample collected by the ARM facility</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../OtherUndescribedSample/">OtherUndescribedSample</a></td>
-<td>A sample that does not fit into any of the other described sample types</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../StockCulturePreparation/">StockCulturePreparation</a></td>
-<td>Preparation of a stock culture from user samples for long-term storage</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TerraformSample/">TerraformSample</a></td>
-<td>A sample collected from a Terraform experiment</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../CommerciallyPurchasedSample/">CommerciallyPurchasedSample</a></td>
-<td>A sample containing commercially purchased material</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../CultureGrowth/">CultureGrowth</a></td>
-<td>Abstract activity for growing cultures from samples or other cultures</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AMP2UserSample/">AMP2UserSample</a></td>
-<td>A user-submitted microbial sample for AMP2 workflows</td>
-<td>yes</td>
 </tr>
 <tr>
 <td><a href="../CultureEnvironmentalSample/">CultureEnvironmentalSample</a></td>
@@ -636,19 +576,14 @@ Alias: analysis_type</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../SoilSample/">SoilSample</a></td>
-<td>A sample of soil collected from the environment</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../StrainPurity/">StrainPurity</a></td>
-<td>Purity check of a strain culture</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../PureCultureSample/">PureCultureSample</a></td>
 <td>A sample of a culture containing a single organism</td>
 <td>yes</td>
+</tr>
+<tr>
+<td><a href="../EcoplatePlateSetupActivity/">EcoplatePlateSetupActivity</a></td>
+<td>Ecoplate-specific plate setup</td>
+<td>no</td>
 </tr>
 <tr>
 <td><a href="../AMP2PlateSetupActivity/">AMP2PlateSetupActivity</a></td>
@@ -656,13 +591,8 @@ Alias: analysis_type</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SampleProcessing/">SampleProcessing</a></td>
-<td>Abstract base for any sample processing activity (physical to physical)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SedimentSample/">SedimentSample</a></td>
-<td>A sample of sediment collected from the environment</td>
+<td><a href="../SoilSample/">SoilSample</a></td>
+<td>A sample of soil collected from the environment</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -671,13 +601,83 @@ Alias: analysis_type</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SynthesizedMaterialSample/">SynthesizedMaterialSample</a></td>
-<td>A sample containing synthetically generated material</td>
+<td><a href="../TerraformSample/">TerraformSample</a></td>
+<td>A sample collected from a Terraform experiment</td>
 <td>yes</td>
 </tr>
 <tr>
 <td><a href="../WaterSample/">WaterSample</a></td>
 <td>A sample of water collected from the environment</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../SynthesizedMaterialSample/">SynthesizedMaterialSample</a></td>
+<td>A sample containing synthetically generated material</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../AMP2UserSample/">AMP2UserSample</a></td>
+<td>A user-submitted microbial sample for AMP2 workflows</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../StrainPurity/">StrainPurity</a></td>
+<td>Purity check of a strain culture</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CultureGrowth/">CultureGrowth</a></td>
+<td>Abstract activity for growing cultures from samples or other cultures</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SampleProcessing/">SampleProcessing</a></td>
+<td>Abstract base for any sample processing activity (physical to physical)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MixedCultureSample/">MixedCultureSample</a></td>
+<td>A sample containing multiple cultured organisms</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ExperimentalCulture/">ExperimentalCulture</a></td>
+<td>Growth of an experimental culture for downstream analysis</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PlateSetupActivity/">PlateSetupActivity</a></td>
+<td>Abstract base for 96-well plate setup activities</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AerosolSample/">AerosolSample</a></td>
+<td>An aerosol sample collected from the environment</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../SedimentSample/">SedimentSample</a></td>
+<td>A sample of sediment collected from the environment</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../CommerciallyPurchasedSample/">CommerciallyPurchasedSample</a></td>
+<td>A sample containing commercially purchased material</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../AerosolArmSample/">AerosolArmSample</a></td>
+<td>An aerosol sample collected by the ARM facility</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../PlantSample/">PlantSample</a></td>
+<td>A sample containing plant material</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../OtherUndescribedSample/">OtherUndescribedSample</a></td>
+<td>A sample that does not fit into any of the other described sample types</td>
 <td>yes</td>
 </tr>
 </tbody>
@@ -720,7 +720,7 @@ Alias: analysis_type</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: <a href="https://EMSL-Computing.github.io/BASALT-Schema">https://EMSL-Computing.github.io/BASALT-Schema</a></li>
+<li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -745,7 +745,7 @@ Alias: analysis_type</p>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">analysis_type</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The type(s) of analysis planned for this sample.</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://EMSL-Computing.github.io/BASALT-Schema</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">analysis_type</span>
 <span class="nt">domain_of</span><span class="p">:</span>

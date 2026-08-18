@@ -548,7 +548,7 @@
 <p><em>DDL: ALTER TABLE "DataProcessingActivity"</em></p>
 <p>_       ADD COLUMN parent_workflow_id UUID_</p>
 <p>_       REFERENCES "DataProcessingActivity"(id);_</p>
-<p>URI: <a href="https://EMSL-Computing.github.io/BASALT-Schema/parent_workflow_id">basalt_schema:parent_workflow_id</a>
+<p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/parent_workflow_id">basalt_schema:parent_workflow_id</a>
 Alias: parent_workflow_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -568,13 +568,13 @@ Alias: parent_workflow_id</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MetagenomicsDataProcessingActivity/">MetagenomicsDataProcessingActivity</a></td>
-<td>Concrete metagenomics workflow run</td>
+<td><a href="../DataProcessingActivity/">DataProcessingActivity</a></td>
+<td>Abstract base for any data processing activity (digital to digital)</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DataProcessingActivity/">DataProcessingActivity</a></td>
-<td>Abstract base for any data processing activity (digital to digital)</td>
+<td><a href="../MetagenomicsDataProcessingActivity/">MetagenomicsDataProcessingActivity</a></td>
+<td>Concrete metagenomics workflow run</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -617,7 +617,7 @@ Alias: parent_workflow_id</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: <a href="https://EMSL-Computing.github.io/BASALT-Schema">https://EMSL-Computing.github.io/BASALT-Schema</a></li>
+<li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -646,7 +646,7 @@ Alias: parent_workflow_id</p>
 <span class="w">  </span><span class="s">\ parent_workflow_id.\nEnables</span><span class="nv"> </span><span class="s">single-hop</span><span class="nv"> </span><span class="s">chaining</span><span class="nv"> </span><span class="s">queries;</span><span class="nv"> </span><span class="s">full</span><span class="nv"> </span><span class="s">traversal</span><span class="nv"> </span><span class="s">via</span><span class="nv"> </span><span class="s">linkage_cache.\n\</span>
 <span class="w">  </span><span class="s">\nDDL:</span><span class="nv"> </span><span class="s">ALTER</span><span class="nv"> </span><span class="s">TABLE</span><span class="nv"> </span><span class="s">\&quot;DataProcessingActivity\&quot;\n</span><span class="nv">       </span><span class="s">ADD</span><span class="nv"> </span><span class="s">COLUMN</span><span class="nv"> </span><span class="s">parent_workflow_id\</span>
 <span class="w">  </span><span class="s">\ UUID\n</span><span class="nv">       </span><span class="s">REFERENCES</span><span class="nv"> </span><span class="s">\&quot;DataProcessingActivity\&quot;(id);&quot;</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://EMSL-Computing.github.io/BASALT-Schema</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">parent_workflow_id</span>
 <span class="nt">domain_of</span><span class="p">:</span>

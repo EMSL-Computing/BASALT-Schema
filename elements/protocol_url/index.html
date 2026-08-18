@@ -541,7 +541,7 @@
 
 <h1 id="slot-protocol_url">Slot: protocol_url</h1>
 <p><em>URL pointing to the protocol used in the activity, if applicable.</em></p>
-<p>URI: <a href="https://EMSL-Computing.github.io/BASALT-Schema/protocol_url">basalt_schema:protocol_url</a>
+<p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/protocol_url">basalt_schema:protocol_url</a>
 Alias: protocol_url</p>
 <!-- no inheritance hierarchy -->
 
@@ -556,8 +556,8 @@ Alias: protocol_url</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ExperimentalCulture/">ExperimentalCulture</a></td>
-<td>Growth of an experimental culture for downstream analysis</td>
+<td><a href="../StockCulturePreparation/">StockCulturePreparation</a></td>
+<td>Preparation of a stock culture from user samples for long-term storage</td>
 <td>no</td>
 </tr>
 <tr>
@@ -566,8 +566,13 @@ Alias: protocol_url</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../EcoplateDataGenerationActivity/">EcoplateDataGenerationActivity</a></td>
-<td>Ecoplate absorbance measurement at a single timepoint</td>
+<td><a href="../PlateDataGenerationActivity/">PlateDataGenerationActivity</a></td>
+<td>Abstract base for plate measurement activities</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
+<td>A lab activity in which DNA or RNA that was extracted from a sample is sequen...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -576,13 +581,58 @@ Alias: protocol_url</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../AMP2PlateSetupActivity/">AMP2PlateSetupActivity</a></td>
+<td>AMP2-specific plate setup</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../XRDDataGenerationActivity/">XRDDataGenerationActivity</a></td>
+<td>X-ray Diffraction (XRD) mineralogical analysis activity</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../XRFDataGenerationActivity/">XRFDataGenerationActivity</a></td>
 <td>X-ray Fluorescence (XRF) elemental analysis activity</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../PlateDataGenerationActivity/">PlateDataGenerationActivity</a></td>
-<td>Abstract base for plate measurement activities</td>
+<td><a href="../MediaPreparation/">MediaPreparation</a></td>
+<td>Activity that prepares a batch of growth media</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../XRayDataGenerationActivity/">XRayDataGenerationActivity</a></td>
+<td>Abstract base class for X-ray analytical methods including XRF (elemental)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RespirationDataGenerationActivity/">RespirationDataGenerationActivity</a></td>
+<td>Data generation activity for soil respiration analysis</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MassSpectrometryDataGenerationActivity/">MassSpectrometryDataGenerationActivity</a></td>
+<td>A record of the mass spectrometry run that generates a raw data product</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../StrainPurity/">StrainPurity</a></td>
+<td>Purity check of a strain culture</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CultureGrowth/">CultureGrowth</a></td>
+<td>Abstract activity for growing cultures from samples or other cultures</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SampleProcessing/">SampleProcessing</a></td>
+<td>Abstract base for any sample processing activity (physical to physical)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ExperimentalCulture/">ExperimentalCulture</a></td>
+<td>Growth of an experimental culture for downstream analysis</td>
 <td>no</td>
 </tr>
 <tr>
@@ -596,63 +646,13 @@ Alias: protocol_url</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../XRDDataGenerationActivity/">XRDDataGenerationActivity</a></td>
-<td>X-ray Diffraction (XRD) mineralogical analysis activity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../StockCulturePreparation/">StockCulturePreparation</a></td>
-<td>Preparation of a stock culture from user samples for long-term storage</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
-<td>A lab activity in which DNA or RNA that was extracted from a sample is sequen...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../CultureGrowth/">CultureGrowth</a></td>
-<td>Abstract activity for growing cultures from samples or other cultures</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../XRayDataGenerationActivity/">XRayDataGenerationActivity</a></td>
-<td>Abstract base class for X-ray analytical methods including XRF (elemental)</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../DataGenerationActivity/">DataGenerationActivity</a></td>
 <td>Abstract base for any data generation activity (physical to digital)</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../StrainPurity/">StrainPurity</a></td>
-<td>Purity check of a strain culture</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RespirationDataGenerationActivity/">RespirationDataGenerationActivity</a></td>
-<td>Data generation activity for soil respiration analysis</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AMP2PlateSetupActivity/">AMP2PlateSetupActivity</a></td>
-<td>AMP2-specific plate setup</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SampleProcessing/">SampleProcessing</a></td>
-<td>Abstract base for any sample processing activity (physical to physical)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MassSpectrometryDataGenerationActivity/">MassSpectrometryDataGenerationActivity</a></td>
-<td>A record of the mass spectrometry run that generates a raw data product</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MediaPreparation/">MediaPreparation</a></td>
-<td>Activity that prepares a batch of growth media</td>
+<td><a href="../EcoplateDataGenerationActivity/">EcoplateDataGenerationActivity</a></td>
+<td>Ecoplate absorbance measurement at a single timepoint</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -695,7 +695,7 @@ Alias: protocol_url</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: <a href="https://EMSL-Computing.github.io/BASALT-Schema">https://EMSL-Computing.github.io/BASALT-Schema</a></li>
+<li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -720,7 +720,7 @@ Alias: protocol_url</p>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">protocol_url</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">URL pointing to the protocol used in the activity, if applicable.</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://EMSL-Computing.github.io/BASALT-Schema</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">protocol_url</span>
 <span class="nt">domain_of</span><span class="p">:</span>

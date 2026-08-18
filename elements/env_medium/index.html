@@ -541,7 +541,7 @@
 
 <h1 id="slot-environmental-medium-env_medium">Slot: environmental medium (env_medium)</h1>
 <p><em>'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (<a href="http://purl.obolibrary.org/obo/ENVO_00010483">http://purl.obolibrary.org/obo/ENVO_00010483</a>). EnvO documentation about how to use the field: <a href="https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS">https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS</a>.'</em></p>
-<p>URI: <a href="https://EMSL-Computing.github.io/BASALT-Schema/env_medium">basalt_schema:env_medium</a>
+<p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/env_medium">basalt_schema:env_medium</a>
 Alias: env_medium</p>
 <!-- no inheritance hierarchy -->
 
@@ -556,8 +556,8 @@ Alias: env_medium</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../CultureEnvironmentalSample/">CultureEnvironmentalSample</a></td>
-<td>A sample containing organisms cultured from an environmental sample</td>
+<td><a href="../MonetSoilSample/">MonetSoilSample</a></td>
+<td>A soil sample that has been collected according to the MONet soil sampling pr...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -566,18 +566,18 @@ Alias: env_medium</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../AerosolArmSample/">AerosolArmSample</a></td>
-<td>An aerosol sample collected by the ARM facility</td>
+<td><a href="../FieldDeployedTerraformSample/">FieldDeployedTerraformSample</a></td>
+<td>A sample collected from a field-deployed Terraform experiment</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../OtherUndescribedSample/">OtherUndescribedSample</a></td>
-<td>A sample that does not fit into any of the other described sample types</td>
+<td><a href="../SedimentSample/">SedimentSample</a></td>
+<td>A sample of sediment collected from the environment</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MonetSoilSample/">MonetSoilSample</a></td>
-<td>A soil sample that has been collected according to the MONet soil sampling pr...</td>
+<td><a href="../CultureEnvironmentalSample/">CultureEnvironmentalSample</a></td>
+<td>A sample containing organisms cultured from an environmental sample</td>
 <td>no</td>
 </tr>
 <tr>
@@ -586,18 +586,8 @@ Alias: env_medium</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../FieldDeployedTerraformSample/">FieldDeployedTerraformSample</a></td>
-<td>A sample collected from a field-deployed Terraform experiment</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../PureCultureSample/">PureCultureSample</a></td>
 <td>A sample of a culture containing a single organism</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PlantSample/">PlantSample</a></td>
-<td>A sample containing plant material</td>
 <td>no</td>
 </tr>
 <tr>
@@ -606,8 +596,18 @@ Alias: env_medium</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SedimentSample/">SedimentSample</a></td>
-<td>A sample of sediment collected from the environment</td>
+<td><a href="../AerosolArmSample/">AerosolArmSample</a></td>
+<td>An aerosol sample collected by the ARM facility</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PlantSample/">PlantSample</a></td>
+<td>A sample containing plant material</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OtherUndescribedSample/">OtherUndescribedSample</a></td>
+<td>A sample that does not fit into any of the other described sample types</td>
 <td>no</td>
 </tr>
 <tr>
@@ -669,7 +669,7 @@ Alias: env_medium</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: <a href="https://EMSL-Computing.github.io/BASALT-Schema">https://EMSL-Computing.github.io/BASALT-Schema</a></li>
+<li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -698,7 +698,7 @@ Alias: env_medium</p>
 <span class="w">  </span><span class="s">material</span><span class="se">&#39;&#39;&#39;&#39;</span><span class="nv"> </span><span class="s">(http://purl.obolibrary.org/obo/ENVO_00010483).</span><span class="nv"> </span><span class="s">EnvO</span><span class="nv"> </span><span class="s">documentation</span>
 <span class="w">  </span><span class="s">about</span><span class="nv"> </span><span class="s">how</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">field:</span><span class="nv"> </span><span class="s">https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.</span><span class="se">&#39;&#39;</span><span class="s">&#39;</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">environmental medium</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://EMSL-Computing.github.io/BASALT-Schema</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">env_medium</span>
 <span class="nt">domain_of</span><span class="p">:</span>

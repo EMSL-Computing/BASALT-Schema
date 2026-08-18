@@ -554,7 +554,7 @@
 <p><em>Structured per-well metadata array. Format varies by activity subclass:</em></p>
 <p>_  AMP2:     AMP2WellMetadata instances (position, volumes, replicate_group)_</p>
 <p>_  Ecoplate: EcoplateWellMetadata instances (position, carbon_source, treatment, volumes)_</p>
-<p>URI: <a href="https://EMSL-Computing.github.io/BASALT-Schema/well_metadata">basalt_schema:well_metadata</a>
+<p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/well_metadata">basalt_schema:well_metadata</a>
 Alias: well_metadata</p>
 <!-- no inheritance hierarchy -->
 
@@ -569,13 +569,13 @@ Alias: well_metadata</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../PlateSetupActivity/">PlateSetupActivity</a></td>
-<td>Abstract base for 96-well plate setup activities</td>
+<td><a href="../AMP2PlateSetupActivity/">AMP2PlateSetupActivity</a></td>
+<td>AMP2-specific plate setup</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../AMP2PlateSetupActivity/">AMP2PlateSetupActivity</a></td>
-<td>AMP2-specific plate setup</td>
+<td><a href="../PlateSetupActivity/">PlateSetupActivity</a></td>
+<td>Abstract base for 96-well plate setup activities</td>
 <td>no</td>
 </tr>
 <tr>
@@ -627,7 +627,7 @@ Alias: well_metadata</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: <a href="https://EMSL-Computing.github.io/BASALT-Schema">https://EMSL-Computing.github.io/BASALT-Schema</a></li>
+<li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -658,7 +658,7 @@ Alias: well_metadata</p>
 <span class="nt">todos</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decide how to represent in backend (normalized child table with FK to PlateSetupActivity,</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">array column, or other)</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://EMSL-Computing.github.io/BASALT-Schema</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">well_metadata</span>
 <span class="nt">domain_of</span><span class="p">:</span>

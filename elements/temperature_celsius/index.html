@@ -541,7 +541,7 @@
 
 <h1 id="slot-temperature_celsius">Slot: temperature_celsius</h1>
 <p><em>Temperature at which the method/process/activity was performed</em></p>
-<p>URI: <a href="https://EMSL-Computing.github.io/BASALT-Schema/temperature_celsius">basalt_schema:temperature_celsius</a>
+<p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/temperature_celsius">basalt_schema:temperature_celsius</a>
 Alias: temperature_celsius</p>
 <!-- no inheritance hierarchy -->
 
@@ -556,23 +556,23 @@ Alias: temperature_celsius</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../HasIncubationConditions/">HasIncubationConditions</a></td>
-<td>Mixin for activities/setups that involve controlled incubation</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../ExperimentalCulture/">ExperimentalCulture</a></td>
 <td>Growth of an experimental culture for downstream analysis</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ChromatographyConfiguration/">ChromatographyConfiguration</a></td>
-<td>Configuration and settings for a chromatography run</td>
+<td><a href="../StockCulturePreparation/">StockCulturePreparation</a></td>
+<td>Preparation of a stock culture from user samples for long-term storage</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../StockCulturePreparation/">StockCulturePreparation</a></td>
-<td>Preparation of a stock culture from user samples for long-term storage</td>
+<td><a href="../AMP2PlateSetupActivity/">AMP2PlateSetupActivity</a></td>
+<td>AMP2-specific plate setup</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PlateSetupActivity/">PlateSetupActivity</a></td>
+<td>Abstract base for 96-well plate setup activities</td>
 <td>no</td>
 </tr>
 <tr>
@@ -586,8 +586,13 @@ Alias: temperature_celsius</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../AMP2PlateSetupActivity/">AMP2PlateSetupActivity</a></td>
-<td>AMP2-specific plate setup</td>
+<td><a href="../ChromatographyConfiguration/">ChromatographyConfiguration</a></td>
+<td>Configuration and settings for a chromatography run</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CultureGrowth/">CultureGrowth</a></td>
+<td>Abstract activity for growing cultures from samples or other cultures</td>
 <td>no</td>
 </tr>
 <tr>
@@ -596,13 +601,8 @@ Alias: temperature_celsius</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../PlateSetupActivity/">PlateSetupActivity</a></td>
-<td>Abstract base for 96-well plate setup activities</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../CultureGrowth/">CultureGrowth</a></td>
-<td>Abstract activity for growing cultures from samples or other cultures</td>
+<td><a href="../HasIncubationConditions/">HasIncubationConditions</a></td>
+<td>Mixin for activities/setups that involve controlled incubation</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -645,7 +645,7 @@ Alias: temperature_celsius</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: <a href="https://EMSL-Computing.github.io/BASALT-Schema">https://EMSL-Computing.github.io/BASALT-Schema</a></li>
+<li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -670,7 +670,7 @@ Alias: temperature_celsius</p>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">temperature_celsius</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Temperature at which the method/process/activity was performed</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://EMSL-Computing.github.io/BASALT-Schema</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">temperature_celsius</span>
 <span class="nt">domain_of</span><span class="p">:</span>

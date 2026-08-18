@@ -541,7 +541,7 @@
 
 <h1 id="slot-temperature-temp">Slot: temperature (temp)</h1>
 <p><em>Temperature of the sample at the time of sampling. (Units: C)</em></p>
-<p>URI: <a href="https://EMSL-Computing.github.io/BASALT-Schema/temp">basalt_schema:temp</a>
+<p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/temp">basalt_schema:temp</a>
 Alias: temp</p>
 <!-- no inheritance hierarchy -->
 
@@ -556,18 +556,13 @@ Alias: temp</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../OtherUndescribedSample/">OtherUndescribedSample</a></td>
-<td>A sample that does not fit into any of the other described sample types</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../MonetSoilSample/">MonetSoilSample</a></td>
 <td>A soil sample that has been collected according to the MONet soil sampling pr...</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../SoilSample/">SoilSample</a></td>
-<td>A sample of soil collected from the environment</td>
+<td><a href="../SynthesizedMaterialSample/">SynthesizedMaterialSample</a></td>
+<td>A sample containing synthetically generated material</td>
 <td>no</td>
 </tr>
 <tr>
@@ -576,13 +571,13 @@ Alias: temp</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../PlantSample/">PlantSample</a></td>
-<td>A sample containing plant material</td>
+<td><a href="../SedimentSample/">SedimentSample</a></td>
+<td>A sample of sediment collected from the environment</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../TerraformSample/">TerraformSample</a></td>
-<td>A sample collected from a Terraform experiment</td>
+<td><a href="../SoilSample/">SoilSample</a></td>
+<td>A sample of soil collected from the environment</td>
 <td>no</td>
 </tr>
 <tr>
@@ -591,13 +586,18 @@ Alias: temp</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SedimentSample/">SedimentSample</a></td>
-<td>A sample of sediment collected from the environment</td>
+<td><a href="../TerraformSample/">TerraformSample</a></td>
+<td>A sample collected from a Terraform experiment</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SynthesizedMaterialSample/">SynthesizedMaterialSample</a></td>
-<td>A sample containing synthetically generated material</td>
+<td><a href="../PlantSample/">PlantSample</a></td>
+<td>A sample containing plant material</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OtherUndescribedSample/">OtherUndescribedSample</a></td>
+<td>A sample that does not fit into any of the other described sample types</td>
 <td>no</td>
 </tr>
 <tr>
@@ -659,7 +659,7 @@ Alias: temp</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: <a href="https://EMSL-Computing.github.io/BASALT-Schema">https://EMSL-Computing.github.io/BASALT-Schema</a></li>
+<li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -685,7 +685,7 @@ Alias: temp</p>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">temp</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Temperature</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">time</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">sampling.</span><span class="nv"> </span><span class="s">(Units:</span><span class="nv"> </span><span class="s">C)&#39;</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">temperature</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://EMSL-Computing.github.io/BASALT-Schema</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">temp</span>
 <span class="nt">domain_of</span><span class="p">:</span>

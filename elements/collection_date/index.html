@@ -542,7 +542,7 @@
 <h1 id="slot-collection-date-collection_date">Slot: collection date (collection_date)</h1>
 <p><em>'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month</em></p>
 <p><em>(YYYY-MM)'</em></p>
-<p>URI: <a href="https://EMSL-Computing.github.io/BASALT-Schema/collection_date">basalt_schema:collection_date</a>
+<p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/collection_date">basalt_schema:collection_date</a>
 Alias: collection_date</p>
 <!-- no inheritance hierarchy -->
 
@@ -557,6 +557,16 @@ Alias: collection_date</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../CommerciallyPurchasedSamplingActivity/">CommerciallyPurchasedSamplingActivity</a></td>
+<td>Collection of samples that were purchased by the user</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MonetSoilSamplingActivity/">MonetSoilSamplingActivity</a></td>
+<td>Collection of soil cores according to the MONet soil sampling protocol</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../AMP2UserSample/">AMP2UserSample</a></td>
 <td>A user-submitted microbial sample for AMP2 workflows</td>
 <td>yes</td>
@@ -567,8 +577,8 @@ Alias: collection_date</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SoilSamplingActivity/">SoilSamplingActivity</a></td>
-<td>Collection of soil samples from the environment</td>
+<td><a href="../SedimentSamplingActivity/">SedimentSamplingActivity</a></td>
+<td>Collection of sediment samples from the environment</td>
 <td>no</td>
 </tr>
 <tr>
@@ -577,13 +587,8 @@ Alias: collection_date</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SamplingActivity/">SamplingActivity</a></td>
-<td>An activity that involves the collection of a sample</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OtherUndescribedSamplingActivity/">OtherUndescribedSamplingActivity</a></td>
-<td>Collection of samples from source that does not fit into any of the other cat...</td>
+<td><a href="../AerosolSamplingActivity/">AerosolSamplingActivity</a></td>
+<td>A sampling activity where aerosol samples were collected</td>
 <td>no</td>
 </tr>
 <tr>
@@ -592,8 +597,8 @@ Alias: collection_date</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../WaterSamplingActivity/">WaterSamplingActivity</a></td>
-<td>Collection of water samples</td>
+<td><a href="../CultureEnvironmentalSamplingActivity/">CultureEnvironmentalSamplingActivity</a></td>
+<td>Collection of samples from a culture of organisms taken from the environment</td>
 <td>no</td>
 </tr>
 <tr>
@@ -602,28 +607,13 @@ Alias: collection_date</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../CommerciallyPurchasedSamplingActivity/">CommerciallyPurchasedSamplingActivity</a></td>
-<td>Collection of samples that were purchased by the user</td>
+<td><a href="../OtherUndescribedSamplingActivity/">OtherUndescribedSamplingActivity</a></td>
+<td>Collection of samples from source that does not fit into any of the other cat...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../AerosolSamplingActivity/">AerosolSamplingActivity</a></td>
-<td>A sampling activity where aerosol samples were collected</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AerosolArmSamplingActivity/">AerosolArmSamplingActivity</a></td>
-<td>A sampling activity where aerosol samples were collected by ARM</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../CultureEnvironmentalSamplingActivity/">CultureEnvironmentalSamplingActivity</a></td>
-<td>Collection of samples from a culture of organisms taken from the environment</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SedimentSamplingActivity/">SedimentSamplingActivity</a></td>
-<td>Collection of sediment samples from the environment</td>
+<td><a href="../SamplingActivity/">SamplingActivity</a></td>
+<td>An activity that involves the collection of a sample</td>
 <td>no</td>
 </tr>
 <tr>
@@ -632,18 +622,28 @@ Alias: collection_date</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../EngineeredStrainSamplingActivity/">EngineeredStrainSamplingActivity</a></td>
-<td>Collection of samples from a culture of an engineered organism</td>
+<td><a href="../SoilSamplingActivity/">SoilSamplingActivity</a></td>
+<td>Collection of soil samples from the environment</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MonetSoilSamplingActivity/">MonetSoilSamplingActivity</a></td>
-<td>Collection of soil cores according to the MONet soil sampling protocol</td>
+<td><a href="../AerosolArmSamplingActivity/">AerosolArmSamplingActivity</a></td>
+<td>A sampling activity where aerosol samples were collected by ARM</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../TerraformSamplingActivity/">TerraformSamplingActivity</a></td>
 <td>Collection of samples from a Terraform device</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EngineeredStrainSamplingActivity/">EngineeredStrainSamplingActivity</a></td>
+<td>Collection of samples from a culture of an engineered organism</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../WaterSamplingActivity/">WaterSamplingActivity</a></td>
+<td>Collection of water samples</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -700,7 +700,7 @@ Alias: collection_date</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: <a href="https://EMSL-Computing.github.io/BASALT-Schema">https://EMSL-Computing.github.io/BASALT-Schema</a></li>
+<li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -729,7 +729,7 @@ Alias: collection_date</p>
 
 <span class="w">  </span><span class="s">(YYYY-MM)</span><span class="se">&#39;&#39;</span><span class="s">&#39;</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">collection date</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://EMSL-Computing.github.io/BASALT-Schema</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">collection_date</span>
 <span class="nt">domain_of</span><span class="p">:</span>

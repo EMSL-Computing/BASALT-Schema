@@ -540,7 +540,7 @@
 
 
 <h1 id="slot-instrument_used">Slot: instrument_used</h1>
-<p>URI: <a href="https://EMSL-Computing.github.io/BASALT-Schema/instrument_used">basalt_schema:instrument_used</a>
+<p>URI: <a href="https://emsl-computing.github.io/BASALT-Schema/elements/instrument_used">basalt_schema:instrument_used</a>
 Alias: instrument_used</p>
 <!-- no inheritance hierarchy -->
 
@@ -555,33 +555,8 @@ Alias: instrument_used</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../XRFDataGenerationActivity/">XRFDataGenerationActivity</a></td>
-<td>X-ray Fluorescence (XRF) elemental analysis activity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../XRayDataGenerationActivity/">XRayDataGenerationActivity</a></td>
-<td>Abstract base class for X-ray analytical methods including XRF (elemental)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataGenerationActivity/">DataGenerationActivity</a></td>
-<td>Abstract base for any data generation activity (physical to digital)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PlateDataGenerationActivity/">PlateDataGenerationActivity</a></td>
-<td>Abstract base for plate measurement activities</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../AMP2DataGenerationActivity/">AMP2DataGenerationActivity</a></td>
 <td>AMP2 plate measurement (OD, fluorescence, flow cytometry)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
-<td>A lab activity in which DNA or RNA that was extracted from a sample is sequen...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -590,8 +565,23 @@ Alias: instrument_used</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../EcoplateDataGenerationActivity/">EcoplateDataGenerationActivity</a></td>
-<td>Ecoplate absorbance measurement at a single timepoint</td>
+<td><a href="../XRDDataGenerationActivity/">XRDDataGenerationActivity</a></td>
+<td>X-ray Diffraction (XRD) mineralogical analysis activity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DataGenerationActivity/">DataGenerationActivity</a></td>
+<td>Abstract base for any data generation activity (physical to digital)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../XRFDataGenerationActivity/">XRFDataGenerationActivity</a></td>
+<td>X-ray Fluorescence (XRF) elemental analysis activity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PlateDataGenerationActivity/">PlateDataGenerationActivity</a></td>
+<td>Abstract base for plate measurement activities</td>
 <td>no</td>
 </tr>
 <tr>
@@ -600,8 +590,18 @@ Alias: instrument_used</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../XRDDataGenerationActivity/">XRDDataGenerationActivity</a></td>
-<td>X-ray Diffraction (XRD) mineralogical analysis activity</td>
+<td><a href="../EcoplateDataGenerationActivity/">EcoplateDataGenerationActivity</a></td>
+<td>Ecoplate absorbance measurement at a single timepoint</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../XRayDataGenerationActivity/">XRayDataGenerationActivity</a></td>
+<td>Abstract base class for X-ray analytical methods including XRF (elemental)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
+<td>A lab activity in which DNA or RNA that was extracted from a sample is sequen...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -658,7 +658,7 @@ Alias: instrument_used</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: <a href="https://EMSL-Computing.github.io/BASALT-Schema">https://EMSL-Computing.github.io/BASALT-Schema</a></li>
+<li>from schema: <a href="https://emsl-computing.github.io/BASALT-Schema">https://emsl-computing.github.io/BASALT-Schema</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -682,7 +682,7 @@ Alias: instrument_used</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instrument_used</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://EMSL-Computing.github.io/BASALT-Schema</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://emsl-computing.github.io/BASALT-Schema</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instrument_used</span>
 <span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGenerationActivity</span>
