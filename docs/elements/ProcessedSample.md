@@ -111,7 +111,6 @@ URI: [basalt_schema:ProcessedSample](https://emsl-computing.github.io/BASALT-Sch
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [DataGenerationActivity](DataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
-| [RespirationDataGenerationActivity](RespirationDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
@@ -219,9 +218,9 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
-    - organism
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -260,6 +259,7 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -324,9 +324,9 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
-    - organism
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -365,6 +365,7 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -498,6 +499,7 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
@@ -508,6 +510,7 @@ attributes:
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -529,6 +532,7 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
@@ -538,6 +542,7 @@ attributes:
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - TimestampValue
     - TextValue

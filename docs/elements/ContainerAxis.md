@@ -108,6 +108,7 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
@@ -118,6 +119,7 @@ attributes:
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -155,6 +157,7 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
@@ -165,6 +168,7 @@ attributes:
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - SoftwareControlledTermValue
     range: string

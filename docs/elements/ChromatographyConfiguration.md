@@ -105,6 +105,7 @@ URI: [basalt_schema:ChromatographyConfiguration](https://emsl-computing.github.i
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | [uses_chromatography](uses_chromatography.md) | range | [ChromatographyConfiguration](ChromatographyConfiguration.md) |
+| [SolidPhaseExtractionProcess](SolidPhaseExtractionProcess.md) | [uses_chromatography](uses_chromatography.md) | range | [ChromatographyConfiguration](ChromatographyConfiguration.md) |
 
 
 
@@ -188,7 +189,6 @@ attributes:
     owner: ChromatographyConfiguration
     domain_of:
     - ChromatographyConfiguration
-    - TOC_TN_Method
     range: string
   column_dimensions:
     name: column_dimensions
@@ -254,6 +254,7 @@ attributes:
     domain_of:
     - ChromatographyConfiguration
     - HasIncubationConditions
+    - ChemicalConversionProcess
     range: float
   duration_min:
     name: duration_min
@@ -265,6 +266,7 @@ attributes:
     domain_of:
     - ChromatographyConfiguration
     - MobilePhaseSegment
+    - ChemicalConversionProcess
     range: float
   flow_rate_ul_min:
     name: flow_rate_ul_min
@@ -303,6 +305,7 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
@@ -313,6 +316,7 @@ attributes:
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -334,6 +338,7 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
@@ -343,6 +348,7 @@ attributes:
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - TimestampValue
     - TextValue
@@ -376,9 +382,9 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
-    - organism
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -417,6 +423,7 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - ProjectParticipant
     - TimestampValue

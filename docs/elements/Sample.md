@@ -151,6 +151,16 @@ URI: [basalt_schema:Sample](https://emsl-computing.github.io/BASALT-Schema/eleme
 | [XRayDataProduct](XRayDataProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [XRFElementalProduct](XRFElementalProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [XRDPhaseProduct](XRDPhaseProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
+| [StandardSampleProcessing](StandardSampleProcessing.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
+| [ChemicalConversionProcess](ChemicalConversionProcess.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
+| [Extraction](Extraction.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
+| [FractionationProcess](FractionationProcess.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
+| [NormalizationProcess](NormalizationProcess.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
+| [PoolingProcess](PoolingProcess.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
+| [ProteinQuantification](ProteinQuantification.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
+| [ResuspensionProcess](ResuspensionProcess.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
+| [SolidPhaseExtractionProcess](SolidPhaseExtractionProcess.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
+| [SubSamplingProcess](SubSamplingProcess.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
 
 
 
@@ -242,9 +252,9 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
-    - organism
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -283,6 +293,7 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -341,9 +352,9 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
-    - organism
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -382,6 +393,7 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -409,6 +421,7 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
@@ -419,6 +432,7 @@ attributes:
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -440,6 +454,7 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
@@ -449,6 +464,7 @@ attributes:
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - TimestampValue
     - TextValue

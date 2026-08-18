@@ -3,6 +3,13 @@
 # Slot: step_number 
 
 
+_Integer ordering within a multi-step process for the same analyte._
+
+_Lower = earlier in process._
+
+
+
+
 
 URI: [basalt_schema:step_number](https://emsl-computing.github.io/BASALT-Schema/elements/step_number)
 Alias: step_number
@@ -37,14 +44,6 @@ Alias: step_number
 
 | Property | Value |
 | --- | --- |
-| Required | Yes |
-### Slot Characteristics
-
-| Property | Value |
-| --- | --- |
-| Owner | [ProcessingSampleLink](ProcessingSampleLink.md) |
-
-
 
 
 
@@ -84,14 +83,15 @@ Alias: step_number
 <details>
 ```yaml
 name: step_number
+description: 'Integer ordering within a multi-step process for the same analyte.
+
+  Lower = earlier in process.'
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: step_number
-owner: ProcessingSampleLink
 domain_of:
 - ProcessingSampleLink
 range: integer
-required: true
 
 ```
 </details>

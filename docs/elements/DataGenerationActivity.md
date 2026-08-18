@@ -23,8 +23,6 @@ URI: [basalt_schema:DataGenerationActivity](https://emsl-computing.github.io/BAS
  classDiagram
     class DataGenerationActivity
     click DataGenerationActivity href "../DataGenerationActivity/"
-      DataGenerationActivity <|-- RespirationDataGenerationActivity
-        click RespirationDataGenerationActivity href "../RespirationDataGenerationActivity/"
       DataGenerationActivity <|-- XRayDataGenerationActivity
         click XRayDataGenerationActivity href "../XRayDataGenerationActivity/"
       DataGenerationActivity <|-- MassSpectrometryDataGenerationActivity
@@ -53,13 +51,13 @@ URI: [basalt_schema:DataGenerationActivity](https://emsl-computing.github.io/BAS
         
       DataGenerationActivity : id
         
-      DataGenerationActivity : instrument_operator_id
+      DataGenerationActivity : instrument_operator
         
           
     
         
         
-        DataGenerationActivity --> "0..1" PersonValue : instrument_operator_id
+        DataGenerationActivity --> "0..1" PersonValue : instrument_operator
         click PersonValue href "../PersonValue/"
     
 
@@ -92,7 +90,6 @@ URI: [basalt_schema:DataGenerationActivity](https://emsl-computing.github.io/BAS
 
 ## Inheritance
 * **DataGenerationActivity**
-    * [RespirationDataGenerationActivity](RespirationDataGenerationActivity.md)
     * [XRayDataGenerationActivity](XRayDataGenerationActivity.md)
     * [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md)
     * [PlateDataGenerationActivity](PlateDataGenerationActivity.md)
@@ -106,14 +103,14 @@ URI: [basalt_schema:DataGenerationActivity](https://emsl-computing.github.io/BAS
 | [sequence_order](sequence_order.md) | 0..1 <br/> [Integer](Integer.md) | Integer ordering within a temporal series for the same analyte | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | direct |
+| [analyte_id](analyte_id.md) | 0..1 <br/> [ProcessedSample](ProcessedSample.md) | FK reference to a ProcessedSample representing the substance analyzed in this... | direct |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | direct |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | direct |
+| [acquisition_start_time](acquisition_start_time.md) | 0..1 <br/> [Datetime](Datetime.md) | The time that data collection started for this activity | direct |
+| [acquisition_end_time](acquisition_end_time.md) | 0..1 <br/> [Datetime](Datetime.md) | The time that data collection ended for this activity | direct |
+| [instrument_used](instrument_used.md) | 0..1 <br/> [Instrument](Instrument.md) | Instrument used for the measurement | direct |
+| [instrument_operator](instrument_operator.md) | 0..1 <br/> [PersonValue](PersonValue.md) | User who operated the instrument | direct |
 | [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
-| [analyte_id](analyte_id.md) | 0..1 <br/> [ProcessedSample](ProcessedSample.md) |  | direct |
-| [acquisition_start_time](acquisition_start_time.md) | 1 <br/> [Datetime](Datetime.md) |  | direct |
-| [acquisition_end_time](acquisition_end_time.md) | 1 <br/> [Datetime](Datetime.md) |  | direct |
-| [instrument_used](instrument_used.md) | 0..1 <br/> [Instrument](Instrument.md) |  | direct |
-| [instrument_operator_id](instrument_operator_id.md) | 0..1 <br/> [PersonValue](PersonValue.md) |  | direct |
 
 
 
@@ -172,8 +169,13 @@ slots:
 - sequence_order
 - name
 - description
+- analyte_id
 - protocol_url
 - protocol_version
+- acquisition_start_time
+- acquisition_end_time
+- instrument_used
+- instrument_operator
 attributes:
   id:
     name: id
@@ -200,9 +202,9 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
-    - organism
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -241,6 +243,7 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -253,43 +256,6 @@ attributes:
     - zipDownload
     range: uuid
     required: true
-  analyte_id:
-    name: analyte_id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    domain_of:
-    - DataGenerationActivity
-    range: ProcessedSample
-  acquisition_start_time:
-    name: acquisition_start_time
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    domain_of:
-    - DataGenerationActivity
-    range: datetime
-    required: true
-  acquisition_end_time:
-    name: acquisition_end_time
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    domain_of:
-    - DataGenerationActivity
-    range: datetime
-    required: true
-  instrument_used:
-    name: instrument_used
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    domain_of:
-    - DataGenerationActivity
-    range: Instrument
-  instrument_operator_id:
-    name: instrument_operator_id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    domain_of:
-    - DataGenerationActivity
-    range: PersonValue
 
 ```
 </details>
@@ -331,9 +297,9 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
-    - organism
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -372,6 +338,7 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -384,53 +351,6 @@ attributes:
     - zipDownload
     range: uuid
     required: true
-  analyte_id:
-    name: analyte_id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    alias: analyte_id
-    owner: DataGenerationActivity
-    domain_of:
-    - DataGenerationActivity
-    range: ProcessedSample
-  acquisition_start_time:
-    name: acquisition_start_time
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    alias: acquisition_start_time
-    owner: DataGenerationActivity
-    domain_of:
-    - DataGenerationActivity
-    range: datetime
-    required: true
-  acquisition_end_time:
-    name: acquisition_end_time
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    alias: acquisition_end_time
-    owner: DataGenerationActivity
-    domain_of:
-    - DataGenerationActivity
-    range: datetime
-    required: true
-  instrument_used:
-    name: instrument_used
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    alias: instrument_used
-    owner: DataGenerationActivity
-    domain_of:
-    - DataGenerationActivity
-    range: Instrument
-  instrument_operator_id:
-    name: instrument_operator_id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    alias: instrument_operator_id
-    owner: DataGenerationActivity
-    domain_of:
-    - DataGenerationActivity
-    range: PersonValue
   sequence_order:
     name: sequence_order
     description: "Integer ordering within a temporal series for the same analyte.\n\
@@ -460,6 +380,7 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
@@ -470,6 +391,7 @@ attributes:
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -491,6 +413,7 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
@@ -500,6 +423,7 @@ attributes:
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - TimestampValue
     - TextValue
@@ -507,6 +431,17 @@ attributes:
     - ControlledTermValue
     - QuantityValue
     range: string
+  analyte_id:
+    name: analyte_id
+    description: FK reference to a ProcessedSample representing the substance analyzed
+      in this activity.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    rank: 1000
+    alias: analyte_id
+    owner: DataGenerationActivity
+    domain_of:
+    - DataGenerationActivity
+    range: ProcessedSample
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
@@ -517,6 +452,7 @@ attributes:
     domain_of:
     - DataGenerationActivity
     - SampleProcessing
+    - SampleProcessingProtocol
     range: string
   protocol_version:
     name: protocol_version
@@ -528,7 +464,48 @@ attributes:
     domain_of:
     - DataGenerationActivity
     - SampleProcessing
+    - SampleProcessingProtocol
     range: string
+  acquisition_start_time:
+    name: acquisition_start_time
+    description: The time that data collection started for this activity.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    rank: 1000
+    alias: acquisition_start_time
+    owner: DataGenerationActivity
+    domain_of:
+    - DataGenerationActivity
+    range: datetime
+  acquisition_end_time:
+    name: acquisition_end_time
+    description: The time that data collection ended for this activity.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    rank: 1000
+    alias: acquisition_end_time
+    owner: DataGenerationActivity
+    domain_of:
+    - DataGenerationActivity
+    range: datetime
+  instrument_used:
+    name: instrument_used
+    description: Instrument used for the measurement
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    rank: 1000
+    alias: instrument_used
+    owner: DataGenerationActivity
+    domain_of:
+    - DataGenerationActivity
+    range: Instrument
+  instrument_operator:
+    name: instrument_operator
+    description: User who operated the instrument
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    rank: 1000
+    alias: instrument_operator
+    owner: DataGenerationActivity
+    domain_of:
+    - DataGenerationActivity
+    range: PersonValue
 
 ```
 </details>

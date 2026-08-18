@@ -22,8 +22,9 @@ Alias: micro_biomass_n_meth
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 
 
 
@@ -37,7 +38,7 @@ Alias: micro_biomass_n_meth
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [SedimentSample](SedimentSample.md), [SoilSample](SoilSample.md) |
+| Domain Of | [OtherUndescribedSample](OtherUndescribedSample.md), [SedimentSample](SedimentSample.md), [SoilSample](SoilSample.md) |
 
 ### Cardinality and Requirements
 
@@ -88,6 +89,7 @@ from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: micro_biomass_n_meth
 domain_of:
+- OtherUndescribedSample
 - SedimentSample
 - SoilSample
 range: string

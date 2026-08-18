@@ -172,9 +172,9 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
-    - organism
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -213,6 +213,7 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -265,9 +266,9 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
-    - organism
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -306,6 +307,7 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -333,6 +335,7 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
@@ -343,6 +346,7 @@ attributes:
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -364,6 +368,7 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
@@ -373,6 +378,7 @@ attributes:
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - TimestampValue
     - TextValue

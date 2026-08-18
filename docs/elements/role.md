@@ -3,6 +3,11 @@
 # Slot: role 
 
 
+_The role of the contributor in the study (e.g., data analysis, writing)._
+
+
+
+
 
 URI: [basalt_schema:role](https://emsl-computing.github.io/BASALT-Schema/elements/role)
 Alias: role
@@ -17,7 +22,6 @@ Alias: role
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProcessingSampleLink](ProcessingSampleLink.md) | A link between a processed sample and the sample processing activity that pro... |  no  |
 | [ProjectParticipant](ProjectParticipant.md) | A record of a person and their role on an EMSL project |  no  |
 
 
@@ -31,13 +35,21 @@ Alias: role
 
 | Property | Value |
 | --- | --- |
-| Range | [String](String.md) |
-| Domain Of | [ProcessingSampleLink](ProcessingSampleLink.md), [ProjectParticipant](ProjectParticipant.md) |
+| Range | [NexusRoleEnum](NexusRoleEnum.md) |
+| Domain Of | [ProjectParticipant](ProjectParticipant.md) |
 
 ### Cardinality and Requirements
 
 | Property | Value |
 | --- | --- |
+| Required | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [ProjectParticipant](ProjectParticipant.md) |
+
+
 
 
 
@@ -51,6 +63,13 @@ Alias: role
 ## Identifier and Mapping Information
 
 
+
+
+
+### Schema Source
+
+
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -70,11 +89,15 @@ Alias: role
 <details>
 ```yaml
 name: role
+description: The role of the contributor in the study (e.g., data analysis, writing).
+from_schema: https://emsl-computing.github.io/BASALT-Schema
+rank: 1000
 alias: role
+owner: ProjectParticipant
 domain_of:
-- ProcessingSampleLink
 - ProjectParticipant
-range: string
+range: NexusRoleEnum
+required: true
 
 ```
 </details>

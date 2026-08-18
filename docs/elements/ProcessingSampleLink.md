@@ -25,6 +25,17 @@ URI: [basalt_schema:ProcessingSampleLink](https://emsl-computing.github.io/BASAL
     click ProcessingSampleLink href "../ProcessingSampleLink/"
       ProcessingSampleLink : id
         
+      ProcessingSampleLink : in_protocol
+        
+          
+    
+        
+        
+        ProcessingSampleLink --> "0..1" SampleProcessingProtocol : in_protocol
+        click SampleProcessingProtocol href "../SampleProcessingProtocol/"
+    
+
+        
       ProcessingSampleLink : processing_id
         
           
@@ -33,17 +44,6 @@ URI: [basalt_schema:ProcessingSampleLink](https://emsl-computing.github.io/BASAL
         
         ProcessingSampleLink --> "1" SampleProcessing : processing_id
         click SampleProcessing href "../SampleProcessing/"
-    
-
-        
-      ProcessingSampleLink : role
-        
-          
-    
-        
-        
-        ProcessingSampleLink --> "1" SampleRole : role
-        click SampleRole href "../SampleRole/"
     
 
         
@@ -72,18 +72,18 @@ URI: [basalt_schema:ProcessingSampleLink](https://emsl-computing.github.io/BASAL
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
+| [in_protocol](in_protocol.md) | 0..1 <br/> [SampleProcessingProtocol](SampleProcessingProtocol.md) | The protocol that this SampleProcessing step is part of | direct |
 | [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [sample_base_id](sample_base_id.md) | 1 <br/> [Sample](Sample.md) |  | direct |
 | [processing_id](processing_id.md) | 1 <br/> [SampleProcessing](SampleProcessing.md) |  | direct |
 | [step_number](step_number.md) | 1 <br/> [Integer](Integer.md) |  | direct |
-| [role](role.md) | 1 <br/> [SampleRole](SampleRole.md) |  | direct |
 
 ## Unique Keys
 
 
 ### unique_sample_process_step
 
-**Unique key slots:** sample_base_id, processing_id, step_number, role
+**Unique key slots:** sample_base_id, processing_id, step_number
 
 
 
@@ -143,6 +143,8 @@ description: 'A link between a processed sample and the sample processing activi
   activity that generated it, including the step number and role of the sample in
   the process.'
 from_schema: https://emsl-computing.github.io/BASALT-Schema
+slots:
+- in_protocol
 attributes:
   id:
     name: id
@@ -169,9 +171,9 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
-    - organism
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -210,6 +212,7 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -241,19 +244,9 @@ attributes:
   step_number:
     name: step_number
     from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
     domain_of:
     - ProcessingSampleLink
     range: integer
-    required: true
-  role:
-    name: role
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    domain_of:
-    - ProcessingSampleLink
-    - ProjectParticipant
-    range: SampleRole
     required: true
 unique_keys:
   unique_sample_process_step:
@@ -262,7 +255,6 @@ unique_keys:
     - sample_base_id
     - processing_id
     - step_number
-    - role
 
 ```
 </details>
@@ -308,9 +300,9 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
-    - organism
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -349,6 +341,7 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -384,24 +377,22 @@ attributes:
   step_number:
     name: step_number
     from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
     alias: step_number
     owner: ProcessingSampleLink
     domain_of:
     - ProcessingSampleLink
     range: integer
     required: true
-  role:
-    name: role
+  in_protocol:
+    name: in_protocol
+    description: The protocol that this SampleProcessing step is part of.
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: role
+    alias: in_protocol
     owner: ProcessingSampleLink
     domain_of:
     - ProcessingSampleLink
-    - ProjectParticipant
-    range: SampleRole
-    required: true
+    range: SampleProcessingProtocol
 unique_keys:
   unique_sample_process_step:
     unique_key_name: unique_sample_process_step
@@ -409,7 +400,6 @@ unique_keys:
     - sample_base_id
     - processing_id
     - step_number
-    - role
 
 ```
 </details>

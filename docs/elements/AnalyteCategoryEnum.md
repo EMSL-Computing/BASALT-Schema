@@ -28,6 +28,7 @@ URI: [basalt_schema:AnalyteCategoryEnum](https://emsl-computing.github.io/BASALT
 | Name | Description |
 | ---  | --- |
 | [analyte_category](analyte_category.md) | omics type for easier search, optional |
+| [extraction_target](extraction_target.md) | The target analyte(s) or compound class(es) for the extraction process |
 
 
 

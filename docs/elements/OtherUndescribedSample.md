@@ -263,9 +263,9 @@ URI: [basalt_schema:OtherUndescribedSample](https://emsl-computing.github.io/BAS
         
       OtherUndescribedSample : method_development
         
-      OtherUndescribedSample : micro_biomass_C_meth
+      OtherUndescribedSample : micro_biomass_c_meth
         
-      OtherUndescribedSample : micro_biomass_N_meth
+      OtherUndescribedSample : micro_biomass_n_meth
         
       OtherUndescribedSample : microbial_biomass
         
@@ -688,8 +688,8 @@ URI: [basalt_schema:OtherUndescribedSample](https://emsl-computing.github.io/BAS
 | [mechanical_damage](mechanical_damage.md) | 0..1 <br/> [String](String.md) | Information about any mechanical damage exerted on the plant; can include mul... | direct |
 | [method_development](method_development.md) | 0..1 <br/> [String](String.md) | If your samples are TEST sample ONLY, please provide information on what you'... | direct |
 | [methane](methane.md) | 0..1 <br/> [String](String.md) | Methane (gas) amount or concentration at the time of sampling | direct |
-| [micro_biomass_C_meth](micro_biomass_C_meth.md) | 0..1 <br/> [String](String.md) | Reference or method used in determining microbial biomass | direct |
-| [micro_biomass_N_meth](micro_biomass_N_meth.md) | 0..1 <br/> [String](String.md) | Reference or method used in determining microbial biomass nitrogen | direct |
+| [micro_biomass_c_meth](micro_biomass_c_meth.md) | 0..1 <br/> [String](String.md) | Reference or method used in determining microbial biomass | direct |
+| [micro_biomass_n_meth](micro_biomass_n_meth.md) | 0..1 <br/> [String](String.md) | Reference or method used in determining microbial biomass nitrogen | direct |
 | [microbial_biomass](microbial_biomass.md) | 0..1 <br/> [String](String.md) | The part of the organic matter in the soil that constitutes living microorgan... | direct |
 | [microbial_biomass_c](microbial_biomass_c.md) | 0..1 <br/> [String](String.md) | The part of the organic matter in the soil that constitutes living microorgan... | direct |
 | [microbial_biomass_n](microbial_biomass_n.md) | 0..1 <br/> [String](String.md) | The part of the organic matter in the soil that constitutes living microorgan... | direct |
@@ -971,8 +971,8 @@ slots:
 - mechanical_damage
 - method_development
 - methane
-- micro_biomass_C_meth
-- micro_biomass_N_meth
+- micro_biomass_c_meth
+- micro_biomass_n_meth
 - microbial_biomass
 - microbial_biomass_c
 - microbial_biomass_n
@@ -1151,9 +1151,9 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
-    - organism
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -1192,6 +1192,7 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -1276,9 +1277,9 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
-    - organism
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -1317,6 +1318,7 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -1473,7 +1475,6 @@ attributes:
     alias: analysis_type
     owner: OtherUndescribedSample
     domain_of:
-    - SampleProcessing
     - AerosolArmSample
     - AerosolSample
     - AMP2UserSample
@@ -2209,6 +2210,7 @@ attributes:
     - SedimentSample
     - SoilSample
     - WaterSample
+    - Extraction
     range: string
   external_identifiers:
     name: external_identifiers
@@ -2991,27 +2993,31 @@ attributes:
     - SedimentSample
     range: string
     pattern: ^\d+(\.\d+)?\s*(umol/L|ppm|ppb)$
-  micro_biomass_C_meth:
-    name: micro_biomass_C_meth
+  micro_biomass_c_meth:
+    name: micro_biomass_c_meth
     description: Reference or method used in determining microbial biomass
     title: microbial biomass carbon method
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: micro_biomass_C_meth
+    alias: micro_biomass_c_meth
     owner: OtherUndescribedSample
     domain_of:
     - OtherUndescribedSample
+    - SedimentSample
+    - SoilSample
     range: string
-  micro_biomass_N_meth:
-    name: micro_biomass_N_meth
+  micro_biomass_n_meth:
+    name: micro_biomass_n_meth
     description: Reference or method used in determining microbial biomass nitrogen
     title: microbial biomass nitrogen method
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: micro_biomass_N_meth
+    alias: micro_biomass_n_meth
     owner: OtherUndescribedSample
     domain_of:
     - OtherUndescribedSample
+    - SedimentSample
+    - SoilSample
     range: string
   microbial_biomass:
     name: microbial_biomass
@@ -5014,6 +5020,7 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
@@ -5024,6 +5031,7 @@ attributes:
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -5045,6 +5053,7 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
@@ -5054,6 +5063,7 @@ attributes:
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - TimestampValue
     - TextValue

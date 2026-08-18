@@ -42,6 +42,12 @@ URI: [basalt_schema:ChemicalEntityEnum](https://emsl-computing.github.io/BASALT-
 
 
 
+## Slots
+
+| Name | Description |
+| ---  | --- |
+| [known_as](known_as.md) | Common name or identifier for the substance |
+
 
 
 

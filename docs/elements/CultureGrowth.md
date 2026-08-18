@@ -43,18 +43,9 @@ URI: [basalt_schema:CultureGrowth](https://emsl-computing.github.io/BASALT-Schem
 
       CultureGrowth : agitation_speed_rpm
         
-      CultureGrowth : analysis_type
-        
-          
-    
-        
-        
-        CultureGrowth --> "0..1" RouteMethodEnum : analysis_type
-        click RouteMethodEnum href "../RouteMethodEnum/"
-    
-
-        
       CultureGrowth : container_type
+        
+      CultureGrowth : description
         
       CultureGrowth : growth_medium
         
@@ -62,16 +53,7 @@ URI: [basalt_schema:CultureGrowth](https://emsl-computing.github.io/BASALT-Schem
         
       CultureGrowth : incubation_time_hours
         
-      CultureGrowth : method_name
-        
-          
-    
-        
-        
-        CultureGrowth --> "0..1" MethodNameEnum : method_name
-        click MethodNameEnum href "../MethodNameEnum/"
-    
-
+      CultureGrowth : name
         
       CultureGrowth : organism_ref
         
@@ -94,8 +76,6 @@ URI: [basalt_schema:CultureGrowth](https://emsl-computing.github.io/BASALT-Schem
         click OxygenStatusEnum href "../OxygenStatusEnum/"
     
 
-        
-      CultureGrowth : processing_steps
         
       CultureGrowth : protocol_url
         
@@ -141,13 +121,12 @@ URI: [basalt_schema:CultureGrowth](https://emsl-computing.github.io/BASALT-Schem
 | [temperature_celsius](temperature_celsius.md) | 0..1 <br/> [Float](Float.md) | Temperature at which the method/process/activity was performed | [HasIncubationConditions](HasIncubationConditions.md) |
 | [agitation_speed_rpm](agitation_speed_rpm.md) | 0..1 <br/> [Integer](Integer.md) | Agitation/shaking speed in RPM (0 for static) | [HasIncubationConditions](HasIncubationConditions.md) |
 | [oxygen_relationship](oxygen_relationship.md) | 0..1 <br/> [OxygenStatusEnum](OxygenStatusEnum.md) | The relationship of the sample to oxygen, such as aerobic or anaerobic | [HasIncubationConditions](HasIncubationConditions.md) |
+| [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [SampleProcessing](SampleProcessing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [SampleProcessing](SampleProcessing.md) |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
+| [uses_sample](uses_sample.md) | 0..1 <br/> [Sample](Sample.md) | The starting sample that is being processed or analyzed | [SampleProcessing](SampleProcessing.md) |
 | [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [SampleProcessing](SampleProcessing.md) |
-| [analysis_type](analysis_type.md) | 0..1 <br/> [RouteMethodEnum](RouteMethodEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
-| [method_name](method_name.md) | 0..1 <br/> [MethodNameEnum](MethodNameEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
-| [processing_steps](processing_steps.md) | 1 <br/> [String](String.md) |  | [SampleProcessing](SampleProcessing.md) |
-| [uses_sample](uses_sample.md) | 0..1 <br/> [Sample](Sample.md) |  | [SampleProcessing](SampleProcessing.md) |
 
 
 
@@ -297,6 +276,7 @@ attributes:
     domain_of:
     - ChromatographyConfiguration
     - HasIncubationConditions
+    - ChemicalConversionProcess
     range: float
   agitation_speed_rpm:
     name: agitation_speed_rpm
@@ -332,6 +312,72 @@ attributes:
     - TerraformSample
     - WaterSample
     range: OxygenStatusEnum
+  name:
+    name: name
+    description: Human-readable name for the entity or activity.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    rank: 1000
+    alias: name
+    owner: CultureGrowth
+    domain_of:
+    - Activity
+    - Entity
+    - DataProduct
+    - DataGenerationActivity
+    - Instrument
+    - OntologyClass
+    - ContainerAxis
+    - SampleProcessing
+    - Configuration
+    - MobilePhaseSegment
+    - MassSpectrometryStandardRun
+    - PurchasedMaterial
+    - LabProcessingActivity
+    - organism
+    - Site
+    - Sample
+    - SamplingActivity
+    - SoilSamplingActivity
+    - SampleProcessingProtocol
+    - Study
+    - SoftwareControlledTermValue
+    range: string
+    required: true
+  description:
+    name: description
+    description: Human-readable description for the entity or activity
+    title: description
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    rank: 1000
+    alias: description
+    owner: CultureGrowth
+    domain_of:
+    - Activity
+    - Entity
+    - DataProduct
+    - DataGenerationActivity
+    - DataProcessingActivity
+    - OntologyClass
+    - ContainerType
+    - LabDevice
+    - SampleProcessing
+    - Configuration
+    - MassSpectrometryStandardRun
+    - PurchasedMaterial
+    - LabProcessingActivity
+    - organism
+    - Site
+    - Sample
+    - SamplingActivity
+    - SoilSamplingActivity
+    - SampleProcessingProtocol
+    - Study
+    - TimestampValue
+    - TextValue
+    - SoftwareControlledTermValue
+    - ControlledTermValue
+    - QuantityValue
+    range: string
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
@@ -342,6 +388,7 @@ attributes:
     domain_of:
     - DataGenerationActivity
     - SampleProcessing
+    - SampleProcessingProtocol
     range: string
   protocol_version:
     name: protocol_version
@@ -353,7 +400,19 @@ attributes:
     domain_of:
     - DataGenerationActivity
     - SampleProcessing
+    - SampleProcessingProtocol
     range: string
+  uses_sample:
+    name: uses_sample
+    description: The starting sample that is being processed or analyzed. This slot
+      should only be used on an Activity class.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    rank: 1000
+    alias: uses_sample
+    owner: CultureGrowth
+    domain_of:
+    - SampleProcessing
+    range: Sample
   id:
     name: id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -381,9 +440,9 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
-    - organism
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -422,6 +481,7 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -434,57 +494,6 @@ attributes:
     - zipDownload
     range: uuid
     required: true
-  analysis_type:
-    name: analysis_type
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    alias: analysis_type
-    owner: CultureGrowth
-    domain_of:
-    - SampleProcessing
-    - AerosolArmSample
-    - AerosolSample
-    - AMP2UserSample
-    - CommerciallyPurchasedSample
-    - CultureEnvironmentalSample
-    - FieldDeployedTerraformSample
-    - MixedCultureSample
-    - OtherUndescribedSample
-    - PlantSample
-    - PureCultureSample
-    - SedimentSample
-    - SoilSample
-    - SynthesizedMaterialSample
-    - TerraformSample
-    - WaterSample
-    range: RouteMethodEnum
-  method_name:
-    name: method_name
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    alias: method_name
-    owner: CultureGrowth
-    domain_of:
-    - SampleProcessing
-    range: MethodNameEnum
-  processing_steps:
-    name: processing_steps
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    alias: processing_steps
-    owner: CultureGrowth
-    domain_of:
-    - SampleProcessing
-    range: string
-    required: true
-  uses_sample:
-    name: uses_sample
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    alias: uses_sample
-    owner: CultureGrowth
-    domain_of:
-    - SampleProcessing
-    range: Sample
 
 ```
 </details>

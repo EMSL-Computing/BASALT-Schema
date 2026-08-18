@@ -22,6 +22,7 @@ Alias: uses_chromatography
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [SolidPhaseExtractionProcess](SolidPhaseExtractionProcess.md) | A solid phase extraction (SPE) step (e |  no  |
 | [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | A record of the mass spectrometry run that generates a raw data product |  no  |
 
 
@@ -36,7 +37,7 @@ Alias: uses_chromatography
 | Property | Value |
 | --- | --- |
 | Range | [ChromatographyConfiguration](ChromatographyConfiguration.md) |
-| Domain Of | [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) |
+| Domain Of | [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md), [SolidPhaseExtractionProcess](SolidPhaseExtractionProcess.md) |
 
 ### Cardinality and Requirements
 
@@ -88,6 +89,7 @@ rank: 1000
 alias: uses_chromatography
 domain_of:
 - MassSpectrometryDataGenerationActivity
+- SolidPhaseExtractionProcess
 range: ChromatographyConfiguration
 
 ```

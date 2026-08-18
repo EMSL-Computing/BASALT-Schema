@@ -67,20 +67,19 @@ URI: [basalt_schema:PersonValue](https://emsl-computing.github.io/BASALT-Schema/
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [DataGenerationActivity](DataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [RespirationDataGenerationActivity](RespirationDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
+| [DataGenerationActivity](DataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
 | [Custodian](Custodian.md) | [person_id](person_id.md) | range | [PersonValue](PersonValue.md) |
-| [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
+| [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
+| [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
+| [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
+| [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
 | [PlateSetupActivity](PlateSetupActivity.md) | [setup_operator_id](setup_operator_id.md) | range | [PersonValue](PersonValue.md) |
 | [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | [setup_operator_id](setup_operator_id.md) | range | [PersonValue](PersonValue.md) |
 | [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | [setup_operator_id](setup_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [PlateDataGenerationActivity](PlateDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [NucleotideSequencing](NucleotideSequencing.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
+| [PlateDataGenerationActivity](PlateDataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
+| [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
+| [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
+| [NucleotideSequencing](NucleotideSequencing.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
 | [Study](Study.md) | [principal_investigator](principal_investigator.md) | range | [PersonValue](PersonValue.md) |
 | [ProjectParticipant](ProjectParticipant.md) | [person](person.md) | range | [PersonValue](PersonValue.md) |
 
@@ -159,9 +158,9 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
-    - organism
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -200,6 +199,7 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -300,9 +300,9 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
-    - organism
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -341,6 +341,7 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - ProjectParticipant
     - TimestampValue

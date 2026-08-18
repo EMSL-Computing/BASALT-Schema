@@ -1,16 +1,16 @@
 
 
-# Slot: volume_ml 
+# Slot: volume_mL 
 
 
-_Volume of the entity in milliliters_
+_The volume of the portion of the substance, in milliliters._
 
 
 
 
 
-URI: [basalt_schema:volume_ml](https://emsl-computing.github.io/BASALT-Schema/elements/volume_ml)
-Alias: volume_ml
+URI: [basalt_schema:volume_mL](https://emsl-computing.github.io/BASALT-Schema/elements/volume_mL)
+Alias: volume_mL
 
 <!-- no inheritance hierarchy -->
 
@@ -22,7 +22,7 @@ Alias: volume_ml
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MediaPreparation](MediaPreparation.md) | Activity that prepares a batch of growth media |  no  |
+| [PortionOfSubstance](PortionOfSubstance.md) | A portion of a substance with specific characteristics |  no  |
 
 
 
@@ -36,12 +36,19 @@ Alias: volume_ml
 | Property | Value |
 | --- | --- |
 | Range | [Float](Float.md) |
-| Domain Of | [MediaPreparation](MediaPreparation.md) |
+| Domain Of | [PortionOfSubstance](PortionOfSubstance.md) |
 
 ### Cardinality and Requirements
 
 | Property | Value |
 | --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [PortionOfSubstance](PortionOfSubstance.md) |
+
+
 
 
 
@@ -70,8 +77,8 @@ Alias: volume_ml
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | basalt_schema:volume_ml |
-| native | basalt_schema:volume_ml |
+| self | basalt_schema:volume_mL |
+| native | basalt_schema:volume_mL |
 
 
 
@@ -80,13 +87,14 @@ Alias: volume_ml
 
 <details>
 ```yaml
-name: volume_ml
-description: Volume of the entity in milliliters
+name: volume_mL
+description: The volume of the portion of the substance, in milliliters.
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
-alias: volume_ml
+alias: volume_mL
+owner: PortionOfSubstance
 domain_of:
-- MediaPreparation
+- PortionOfSubstance
 range: float
 
 ```

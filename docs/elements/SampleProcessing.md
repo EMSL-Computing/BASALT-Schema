@@ -5,7 +5,7 @@
 
 _Abstract base for any sample processing activity (physical to physical). Input data should _
 
-_be specified on workflow subclasses._
+_be specified on workflow subclasses. Concrete protocol-specific subclasses use is_a: SampleProcessing._
 
 
 
@@ -29,32 +29,32 @@ URI: [basalt_schema:SampleProcessing](https://emsl-computing.github.io/BASALT-Sc
         click CultureGrowth href "../CultureGrowth/"
       SampleProcessing <|-- PlateSetupActivity
         click PlateSetupActivity href "../PlateSetupActivity/"
+      SampleProcessing <|-- StandardSampleProcessing
+        click StandardSampleProcessing href "../StandardSampleProcessing/"
+      SampleProcessing <|-- ChemicalConversionProcess
+        click ChemicalConversionProcess href "../ChemicalConversionProcess/"
+      SampleProcessing <|-- Extraction
+        click Extraction href "../Extraction/"
+      SampleProcessing <|-- FractionationProcess
+        click FractionationProcess href "../FractionationProcess/"
+      SampleProcessing <|-- NormalizationProcess
+        click NormalizationProcess href "../NormalizationProcess/"
+      SampleProcessing <|-- PoolingProcess
+        click PoolingProcess href "../PoolingProcess/"
+      SampleProcessing <|-- ProteinQuantification
+        click ProteinQuantification href "../ProteinQuantification/"
+      SampleProcessing <|-- ResuspensionProcess
+        click ResuspensionProcess href "../ResuspensionProcess/"
+      SampleProcessing <|-- SolidPhaseExtractionProcess
+        click SolidPhaseExtractionProcess href "../SolidPhaseExtractionProcess/"
+      SampleProcessing <|-- SubSamplingProcess
+        click SubSamplingProcess href "../SubSamplingProcess/"
       
-      SampleProcessing : analysis_type
-        
-          
-    
-        
-        
-        SampleProcessing --> "0..1" RouteMethodEnum : analysis_type
-        click RouteMethodEnum href "../RouteMethodEnum/"
-    
-
+      SampleProcessing : description
         
       SampleProcessing : id
         
-      SampleProcessing : method_name
-        
-          
-    
-        
-        
-        SampleProcessing --> "0..1" MethodNameEnum : method_name
-        click MethodNameEnum href "../MethodNameEnum/"
-    
-
-        
-      SampleProcessing : processing_steps
+      SampleProcessing : name
         
       SampleProcessing : protocol_url
         
@@ -83,19 +83,28 @@ URI: [basalt_schema:SampleProcessing](https://emsl-computing.github.io/BASALT-Sc
     * [MediaPreparation](MediaPreparation.md)
     * [CultureGrowth](CultureGrowth.md) [ [HasIncubationConditions](HasIncubationConditions.md)]
     * [PlateSetupActivity](PlateSetupActivity.md) [ [HasIncubationConditions](HasIncubationConditions.md)]
+    * [StandardSampleProcessing](StandardSampleProcessing.md)
+    * [ChemicalConversionProcess](ChemicalConversionProcess.md)
+    * [Extraction](Extraction.md)
+    * [FractionationProcess](FractionationProcess.md)
+    * [NormalizationProcess](NormalizationProcess.md)
+    * [PoolingProcess](PoolingProcess.md)
+    * [ProteinQuantification](ProteinQuantification.md)
+    * [ResuspensionProcess](ResuspensionProcess.md)
+    * [SolidPhaseExtractionProcess](SolidPhaseExtractionProcess.md)
+    * [SubSamplingProcess](SubSamplingProcess.md)
 
 
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
+| [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | direct |
+| [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | direct |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | direct |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | direct |
+| [uses_sample](uses_sample.md) | 0..1 <br/> [Sample](Sample.md) | The starting sample that is being processed or analyzed | direct |
 | [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
-| [analysis_type](analysis_type.md) | 0..1 <br/> [RouteMethodEnum](RouteMethodEnum.md) |  | direct |
-| [method_name](method_name.md) | 0..1 <br/> [MethodNameEnum](MethodNameEnum.md) |  | direct |
-| [processing_steps](processing_steps.md) | 1 <br/> [String](String.md) |  | direct |
-| [uses_sample](uses_sample.md) | 0..1 <br/> [Sample](Sample.md) |  | direct |
 
 
 
@@ -117,10 +126,6 @@ URI: [basalt_schema:SampleProcessing](https://emsl-computing.github.io/BASALT-Sc
 
 
 
-
-## TODOs
-
-* why does this have both analysis type and method name, as enums, just set the range to the class
 
 
 
@@ -160,15 +165,16 @@ URI: [basalt_schema:SampleProcessing](https://emsl-computing.github.io/BASALT-Sc
 ```yaml
 name: SampleProcessing
 description: "Abstract base for any sample processing activity (physical to physical).\
-  \ Input data should \nbe specified on workflow subclasses."
-todos:
-- why does this have both analysis type and method name, as enums, just set the range
-  to the class
+  \ Input data should \nbe specified on workflow subclasses. Concrete protocol-specific\
+  \ subclasses use is_a: SampleProcessing."
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 abstract: true
 slots:
+- name
+- description
 - protocol_url
 - protocol_version
+- uses_sample
 attributes:
   id:
     name: id
@@ -195,9 +201,9 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
-    - organism
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -236,6 +242,7 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -248,49 +255,6 @@ attributes:
     - zipDownload
     range: uuid
     required: true
-  analysis_type:
-    name: analysis_type
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    domain_of:
-    - SampleProcessing
-    - AerosolArmSample
-    - AerosolSample
-    - AMP2UserSample
-    - CommerciallyPurchasedSample
-    - CultureEnvironmentalSample
-    - FieldDeployedTerraformSample
-    - MixedCultureSample
-    - OtherUndescribedSample
-    - PlantSample
-    - PureCultureSample
-    - SedimentSample
-    - SoilSample
-    - SynthesizedMaterialSample
-    - TerraformSample
-    - WaterSample
-    range: RouteMethodEnum
-  method_name:
-    name: method_name
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    domain_of:
-    - SampleProcessing
-    range: MethodNameEnum
-  processing_steps:
-    name: processing_steps
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    domain_of:
-    - SampleProcessing
-    range: string
-    required: true
-  uses_sample:
-    name: uses_sample
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    domain_of:
-    - SampleProcessing
-    range: Sample
 
 ```
 </details>
@@ -301,10 +265,8 @@ attributes:
 ```yaml
 name: SampleProcessing
 description: "Abstract base for any sample processing activity (physical to physical).\
-  \ Input data should \nbe specified on workflow subclasses."
-todos:
-- why does this have both analysis type and method name, as enums, just set the range
-  to the class
+  \ Input data should \nbe specified on workflow subclasses. Concrete protocol-specific\
+  \ subclasses use is_a: SampleProcessing."
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 abstract: true
 attributes:
@@ -335,9 +297,9 @@ attributes:
     - MassSpectrometryStandardRun
     - PurchasedMaterial
     - LabProcessingActivity
-    - organism
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -376,6 +338,7 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
+    - SampleProcessingProtocol
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -388,57 +351,72 @@ attributes:
     - zipDownload
     range: uuid
     required: true
-  analysis_type:
-    name: analysis_type
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    alias: analysis_type
-    owner: SampleProcessing
-    domain_of:
-    - SampleProcessing
-    - AerosolArmSample
-    - AerosolSample
-    - AMP2UserSample
-    - CommerciallyPurchasedSample
-    - CultureEnvironmentalSample
-    - FieldDeployedTerraformSample
-    - MixedCultureSample
-    - OtherUndescribedSample
-    - PlantSample
-    - PureCultureSample
-    - SedimentSample
-    - SoilSample
-    - SynthesizedMaterialSample
-    - TerraformSample
-    - WaterSample
-    range: RouteMethodEnum
-  method_name:
-    name: method_name
+  name:
+    name: name
+    description: Human-readable name for the entity or activity.
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: method_name
+    alias: name
     owner: SampleProcessing
     domain_of:
+    - Activity
+    - Entity
+    - DataProduct
+    - DataGenerationActivity
+    - Instrument
+    - OntologyClass
+    - ContainerAxis
     - SampleProcessing
-    range: MethodNameEnum
-  processing_steps:
-    name: processing_steps
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    alias: processing_steps
-    owner: SampleProcessing
-    domain_of:
-    - SampleProcessing
+    - Configuration
+    - MobilePhaseSegment
+    - MassSpectrometryStandardRun
+    - PurchasedMaterial
+    - LabProcessingActivity
+    - organism
+    - Site
+    - Sample
+    - SamplingActivity
+    - SoilSamplingActivity
+    - SampleProcessingProtocol
+    - Study
+    - SoftwareControlledTermValue
     range: string
     required: true
-  uses_sample:
-    name: uses_sample
+  description:
+    name: description
+    description: Human-readable description for the entity or activity
+    title: description
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: uses_sample
+    alias: description
     owner: SampleProcessing
     domain_of:
+    - Activity
+    - Entity
+    - DataProduct
+    - DataGenerationActivity
+    - DataProcessingActivity
+    - OntologyClass
+    - ContainerType
+    - LabDevice
     - SampleProcessing
-    range: Sample
+    - Configuration
+    - MassSpectrometryStandardRun
+    - PurchasedMaterial
+    - LabProcessingActivity
+    - organism
+    - Site
+    - Sample
+    - SamplingActivity
+    - SoilSamplingActivity
+    - SampleProcessingProtocol
+    - Study
+    - TimestampValue
+    - TextValue
+    - SoftwareControlledTermValue
+    - ControlledTermValue
+    - QuantityValue
+    range: string
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
@@ -449,6 +427,7 @@ attributes:
     domain_of:
     - DataGenerationActivity
     - SampleProcessing
+    - SampleProcessingProtocol
     range: string
   protocol_version:
     name: protocol_version
@@ -460,7 +439,19 @@ attributes:
     domain_of:
     - DataGenerationActivity
     - SampleProcessing
+    - SampleProcessingProtocol
     range: string
+  uses_sample:
+    name: uses_sample
+    description: The starting sample that is being processed or analyzed. This slot
+      should only be used on an Activity class.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    rank: 1000
+    alias: uses_sample
+    owner: SampleProcessing
+    domain_of:
+    - SampleProcessing
+    range: Sample
 
 ```
 </details>
