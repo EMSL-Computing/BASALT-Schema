@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:principal_investigator](https://EMSL-Computing.github.io/BASALT-Schema/principal_investigator)
+URI: [basalt_schema:principal_investigator](https://emsl-computing.github.io/BASALT-Schema/elements/principal_investigator)
 Alias: principal_investigator
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: principal_investigator
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: principal_investigator
 <details>
 ```yaml
 name: principal_investigator
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: principal_investigator
 owner: Study

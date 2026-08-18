@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:collaborating_institution](https://EMSL-Computing.github.io/BASALT-Schema/collaborating_institution)
+URI: [basalt_schema:collaborating_institution](https://emsl-computing.github.io/BASALT-Schema/elements/collaborating_institution)
 Alias: collaborating_institution
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: collaborating_institution
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: collaborating_institution
 <details>
 ```yaml
 name: collaborating_institution
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: collaborating_institution
 owner: Study

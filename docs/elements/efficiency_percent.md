@@ -9,7 +9,7 @@ _percentage of volatile solids removed from the anaerobic digestor_
 
 
 
-URI: [basalt_schema:efficiency_percent](https://EMSL-Computing.github.io/BASALT-Schema/efficiency_percent)
+URI: [basalt_schema:efficiency_percent](https://emsl-computing.github.io/BASALT-Schema/elements/efficiency_percent)
 Alias: efficiency_percent
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: efficiency_percent
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: efficiency_percent
 name: efficiency_percent
 description: percentage of volatile solids removed from the anaerobic digestor
 title: efficiency percent
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: efficiency_percent
 domain_of:

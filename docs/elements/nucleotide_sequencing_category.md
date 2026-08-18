@@ -9,7 +9,7 @@ _The category of nucleotide sequencing performed (e.g., amplicon, shotgun)._
 
 
 
-URI: [basalt_schema:nucleotide_sequencing_category](https://EMSL-Computing.github.io/BASALT-Schema/nucleotide_sequencing_category)
+URI: [basalt_schema:nucleotide_sequencing_category](https://emsl-computing.github.io/BASALT-Schema/elements/nucleotide_sequencing_category)
 Alias: nucleotide_sequencing_category
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: nucleotide_sequencing_category
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -82,7 +82,7 @@ Alias: nucleotide_sequencing_category
 ```yaml
 name: nucleotide_sequencing_category
 description: The category of nucleotide sequencing performed (e.g., amplicon, shotgun).
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: nucleotide_sequencing_category
 domain_of:

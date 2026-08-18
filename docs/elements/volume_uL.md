@@ -9,7 +9,7 @@ _Volume of the entity in microliters_
 
 
 
-URI: [basalt_schema:volume_uL](https://EMSL-Computing.github.io/BASALT-Schema/volume_uL)
+URI: [basalt_schema:volume_uL](https://emsl-computing.github.io/BASALT-Schema/elements/volume_uL)
 Alias: volume_uL
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: volume_uL
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  no  |
 | [CoreSection](CoreSection.md) | A section of a core sample (TOP, MID, BTM) |  no  |
+| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: volume_uL
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: volume_uL
 ```yaml
 name: volume_uL
 description: Volume of the entity in microliters
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: volume_uL
 domain_of:

@@ -9,7 +9,7 @@ _Treatment concentration with unit (e.g. "1.0 pct", "10 mM")_
 
 
 
-URI: [basalt_schema:treatment_concentration](https://EMSL-Computing.github.io/BASALT-Schema/treatment_concentration)
+URI: [basalt_schema:treatment_concentration](https://emsl-computing.github.io/BASALT-Schema/elements/treatment_concentration)
 Alias: treatment_concentration
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: treatment_concentration
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: treatment_concentration
 ```yaml
 name: treatment_concentration
 description: Treatment concentration with unit (e.g. "1.0 pct", "10 mM")
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: treatment_concentration
 owner: EcoplateWellMetadata

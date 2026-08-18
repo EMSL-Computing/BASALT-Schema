@@ -9,7 +9,7 @@ _Characteristic shape appearance or growth form of a plant species_
 
 
 
-URI: [basalt_schema:growth_habit](https://EMSL-Computing.github.io/BASALT-Schema/growth_habit)
+URI: [basalt_schema:growth_habit](https://emsl-computing.github.io/BASALT-Schema/elements/growth_habit)
 Alias: growth_habit
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: growth_habit
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: growth_habit
 name: growth_habit
 description: Characteristic shape appearance or growth form of a plant species
 title: growth habit
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: growth_habit
 domain_of:

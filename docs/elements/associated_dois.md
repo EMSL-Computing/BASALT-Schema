@@ -9,7 +9,7 @@ _A list of DOIs associated with this study_
 
 
 
-URI: [basalt_schema:associated_dois](https://EMSL-Computing.github.io/BASALT-Schema/associated_dois)
+URI: [basalt_schema:associated_dois](https://emsl-computing.github.io/BASALT-Schema/elements/associated_dois)
 Alias: associated_dois
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: associated_dois
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -90,7 +90,7 @@ Alias: associated_dois
 ```yaml
 name: associated_dois
 description: A list of DOIs associated with this study
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: associated_dois
 owner: Study

@@ -9,7 +9,7 @@ _Concentration of nitrogen (total) (Unit: umol/L)_
 
 
 
-URI: [basalt_schema:nitro](https://EMSL-Computing.github.io/BASALT-Schema/nitro)
+URI: [basalt_schema:nitro](https://emsl-computing.github.io/BASALT-Schema/elements/nitro)
 Alias: nitro
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: nitro
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: nitro
 name: nitro
 description: 'Concentration of nitrogen (total) (Unit: umol/L)'
 title: nitrogen
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: nitro
 domain_of:

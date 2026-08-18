@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:sample_base_id](https://EMSL-Computing.github.io/BASALT-Schema/sample_base_id)
+URI: [basalt_schema:sample_base_id](https://emsl-computing.github.io/BASALT-Schema/elements/sample_base_id)
 Alias: sample_base_id
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: sample_base_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: sample_base_id
 <details>
 ```yaml
 name: sample_base_id
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: sample_base_id
 owner: ProcessingSampleLink

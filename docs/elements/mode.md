@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:mode](https://EMSL-Computing.github.io/BASALT-Schema/mode)
+URI: [basalt_schema:mode](https://emsl-computing.github.io/BASALT-Schema/elements/mode)
 Alias: mode
 
 <!-- no inheritance hierarchy -->

@@ -7,7 +7,7 @@ _Result/status for a process (e.g., QC outcome)._
 
 
 
-URI: [basalt_schema:PassFailEnum](https://EMSL-Computing.github.io/BASALT-Schema/PassFailEnum)
+URI: [basalt_schema:PassFailEnum](https://emsl-computing.github.io/BASALT-Schema/elements/PassFailEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -36,7 +36,7 @@ URI: [basalt_schema:PassFailEnum](https://EMSL-Computing.github.io/BASALT-Schema
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -49,7 +49,7 @@ URI: [basalt_schema:PassFailEnum](https://EMSL-Computing.github.io/BASALT-Schema
 ```yaml
 name: PassFailEnum
 description: Result/status for a process (e.g., QC outcome).
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   pass:

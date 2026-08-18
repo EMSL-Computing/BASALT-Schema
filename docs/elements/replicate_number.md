@@ -9,7 +9,7 @@ _The replicate number of the sample, if applicable. Included for compatibility w
 
 
 
-URI: [basalt_schema:replicate_number](https://EMSL-Computing.github.io/BASALT-Schema/replicate_number)
+URI: [basalt_schema:replicate_number](https://emsl-computing.github.io/BASALT-Schema/elements/replicate_number)
 Alias: replicate_number
 
 <!-- no inheritance hierarchy -->
@@ -23,18 +23,18 @@ Alias: replicate_number
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
-| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
+| [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 | [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
 | [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
-| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -78,7 +78,7 @@ Alias: replicate_number
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -102,7 +102,7 @@ description: The replicate number of the sample, if applicable. Included for com
   with submission schema.
 todos:
 - reconcile replicate modelling
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: replicate_number
 domain_of:

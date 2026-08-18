@@ -9,7 +9,7 @@ _Information about treatment involving an exposure to a given amount of rainfall
 
 
 
-URI: [basalt_schema:rainfall_regm](https://EMSL-Computing.github.io/BASALT-Schema/rainfall_regm)
+URI: [basalt_schema:rainfall_regm](https://emsl-computing.github.io/BASALT-Schema/elements/rainfall_regm)
 Alias: rainfall_regm
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: rainfall_regm
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ description: Information about treatment involving an exposure to a given amount
   how long each treatment lasted, and the start and end time of the entire treatment;
   can include multiple regimens
 title: rainfall regimen
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: rainfall_regm
 domain_of:

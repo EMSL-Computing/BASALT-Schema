@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:functional_annotation_id](https://EMSL-Computing.github.io/BASALT-Schema/functional_annotation_id)
+URI: [basalt_schema:functional_annotation_id](https://emsl-computing.github.io/BASALT-Schema/elements/functional_annotation_id)
 Alias: functional_annotation_id
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: functional_annotation_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: functional_annotation_id
 <details>
 ```yaml
 name: functional_annotation_id
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: functional_annotation_id
 owner: WorkflowExecutionFunctionalAnnotation

@@ -11,7 +11,7 @@ _Required for ExperimentalCulture activities._
 
 
 
-URI: [basalt_schema:growth_time](https://EMSL-Computing.github.io/BASALT-Schema/growth_time)
+URI: [basalt_schema:growth_time](https://emsl-computing.github.io/BASALT-Schema/elements/growth_time)
 Alias: growth_time
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: growth_time
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ name: growth_time
 description: 'Total growth time for the culture.
 
   Required for ExperimentalCulture activities.'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: growth_time
 domain_of:

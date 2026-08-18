@@ -9,7 +9,7 @@ _Reference or method used in determining Al saturation_
 
 
 
-URI: [basalt_schema:al_sat_meth](https://EMSL-Computing.github.io/BASALT-Schema/al_sat_meth)
+URI: [basalt_schema:al_sat_meth](https://emsl-computing.github.io/BASALT-Schema/elements/al_sat_meth)
 Alias: al_sat_meth
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: al_sat_meth
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: al_sat_meth
 name: al_sat_meth
 description: Reference or method used in determining Al saturation
 title: aluminum saturation method
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: al_sat_meth
 domain_of:

@@ -9,7 +9,7 @@ _Pressure to which the sample is subject, in atmospheres (Unit: atm)_
 
 
 
-URI: [basalt_schema:pressure](https://EMSL-Computing.github.io/BASALT-Schema/pressure)
+URI: [basalt_schema:pressure](https://emsl-computing.github.io/BASALT-Schema/elements/pressure)
 Alias: pressure
 
 <!-- no inheritance hierarchy -->
@@ -23,10 +23,10 @@ Alias: pressure
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [ConditioningValue](ConditioningValue.md) |  |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [ConditioningValue](ConditioningValue.md) |  |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
@@ -73,7 +73,7 @@ Alias: pressure
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -95,7 +95,7 @@ Alias: pressure
 name: pressure
 description: 'Pressure to which the sample is subject, in atmospheres (Unit: atm)'
 title: pressure
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: pressure
 domain_of:

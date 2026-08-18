@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_mbn](https://EMSL-Computing.github.io/BASALT-Schema/flag_mbn)
+URI: [basalt_schema:flag_mbn](https://emsl-computing.github.io/BASALT-Schema/elements/flag_mbn)
 Alias: flag_mbn
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_mbn
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_mbn
 <details>
 ```yaml
 name: flag_mbn
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_mbn
 owner: MicrobialBiomassProduct

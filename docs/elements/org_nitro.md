@@ -9,7 +9,7 @@ _Concentration of organic nitrogen. Provide value and unit any unit is valid_
 
 
 
-URI: [basalt_schema:org_nitro](https://EMSL-Computing.github.io/BASALT-Schema/org_nitro)
+URI: [basalt_schema:org_nitro](https://emsl-computing.github.io/BASALT-Schema/elements/org_nitro)
 Alias: org_nitro
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: org_nitro
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ name: org_nitro
 description: Concentration of organic nitrogen. Provide value and unit any unit is
   valid
 title: organic nitrogen
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: org_nitro
 domain_of:

@@ -9,7 +9,7 @@ _Automated liquid handler (e.g. "Hamilton_STAR") or "manual"_
 
 
 
-URI: [basalt_schema:setup_instrument](https://EMSL-Computing.github.io/BASALT-Schema/setup_instrument)
+URI: [basalt_schema:setup_instrument](https://emsl-computing.github.io/BASALT-Schema/elements/setup_instrument)
 Alias: setup_instrument
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: setup_instrument
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
 | [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |  no  |
 | [PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |  no  |
-| [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: setup_instrument
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: setup_instrument
 ```yaml
 name: setup_instrument
 description: Automated liquid handler (e.g. "Hamilton_STAR") or "manual"
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: setup_instrument
 domain_of:

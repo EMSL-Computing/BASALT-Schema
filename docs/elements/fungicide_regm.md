@@ -9,7 +9,7 @@ _Information about treatment involving use of fungicides; should include the nam
 
 
 
-URI: [basalt_schema:fungicide_regm](https://EMSL-Computing.github.io/BASALT-Schema/fungicide_regm)
+URI: [basalt_schema:fungicide_regm](https://emsl-computing.github.io/BASALT-Schema/elements/fungicide_regm)
 Alias: fungicide_regm
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: fungicide_regm
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ description: Information about treatment involving use of fungicides; should inc
   times the treatment was repeated, how long each treatment lasted, and the start
   and end time of the entire treatment; can include multiple fungicide regimens
 title: fungicide regimen
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: fungicide_regm
 domain_of:

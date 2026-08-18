@@ -9,7 +9,7 @@ _A sample containing plant material._
 
 
 
-URI: [basalt_schema:PlantSample](https://EMSL-Computing.github.io/BASALT-Schema/PlantSample)
+URI: [basalt_schema:PlantSample](https://emsl-computing.github.io/BASALT-Schema/elements/PlantSample)
 
 
 
@@ -383,7 +383,7 @@ URI: [basalt_schema:PlantSample](https://EMSL-Computing.github.io/BASALT-Schema/
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -410,7 +410,7 @@ URI: [basalt_schema:PlantSample](https://EMSL-Computing.github.io/BASALT-Schema/
 ```yaml
 name: PlantSample
 description: A sample containing plant material.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Sample
 slots:
 - air_temp_regm
@@ -530,7 +530,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -616,7 +616,7 @@ attributes:
 ```yaml
 name: PlantSample
 description: A sample containing plant material.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Sample
 slot_usage:
   analysis_type:
@@ -654,7 +654,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     alias: id
     owner: PlantSample
@@ -739,7 +739,7 @@ attributes:
       treatment was repeated, how long each treatment lasted, and the start and end
       time of the entire treatment; can include different temperature regimens
     title: air temperature regimen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     exact_mappings:
     - MIXS:0000551
     rank: 1000
@@ -764,7 +764,7 @@ attributes:
     description: Information about either pedigree or other ancestral information
       description
     title: ancestral data
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: ances_data
     owner: PlantSample
@@ -775,7 +775,7 @@ attributes:
   analysis_type:
     name: analysis_type
     description: The type(s) of analysis planned for this sample.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: analysis_type
     owner: PlantSample
@@ -802,7 +802,7 @@ attributes:
     name: biol_stat
     description: The level of genome modification.
     title: biological status
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: biol_stat
     owner: PlantSample
@@ -815,7 +815,7 @@ attributes:
     description: Information about treatment(s) involving use of biotic factors such
       as bacteria, viruses, or fungi.
     title: biotic regimen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: biotic_regm
     owner: PlantSample
@@ -838,7 +838,7 @@ attributes:
       include multiple compounds. For chemical entities of biological interest ontology
       (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
     title: chemical administration
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     exact_mappings:
     - MIXS:0000751
     rank: 1000
@@ -866,7 +866,7 @@ attributes:
       was repeated, how long each treatment lasted, and the start and end time of
       the entire treatment; can include multiple mutagen regimens
     title: chemical mutagen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: chem_mutagen
     owner: PlantSample
@@ -882,7 +882,7 @@ attributes:
       or a rainforest). We recommend using subclasses of EnvO''''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'''
     title: broad-scale environmental context
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: env_broad_scale
     owner: PlantSample
@@ -909,7 +909,7 @@ attributes:
       spatial grain than your entry for env_broad_scale.If needed, request new terms
       on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'''
     title: local environmental context
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: env_local_scale
     owner: PlantSample
@@ -935,7 +935,7 @@ attributes:
       ''''environmental material'''' (http://purl.obolibrary.org/obo/ENVO_00010483).
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'''
     title: environmental medium
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: env_medium
     owner: PlantSample
@@ -963,7 +963,7 @@ attributes:
       a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO;
       for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI
     title: experimental factor
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: experimental_factor
     owner: PlantSample
@@ -986,7 +986,7 @@ attributes:
     description: Other details about your sample that you feel can't be accurately
       represented in the available columns.
     title: other experimental factor
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: experimental_factor_other
     owner: PlantSample
@@ -1010,7 +1010,7 @@ attributes:
       before sending the sample to EMSL, what was it? This is only applicable when
       sending an 'analytical sample'. See README for more details on types of samples.
     title: extraction method
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: extraction_method
     owner: PlantSample
@@ -1030,7 +1030,7 @@ attributes:
   external_identifiers:
     name: external_identifiers
     description: List of external identifiers associated with this entity or activity.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: external_identifiers
     owner: PlantSample
@@ -1063,7 +1063,7 @@ attributes:
       the start and end time of the entire treatment; can include multiple fertilizer
       regimens
     title: fertilizer regimen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: fertilizer_regm
     owner: PlantSample
@@ -1078,7 +1078,7 @@ attributes:
       many times the treatment was repeated, how long each treatment lasted, and the
       start and end time of the entire treatment; can include multiple fungicide regimens
     title: fungicide regimen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: fungicide_regm
     owner: PlantSample
@@ -1092,7 +1092,7 @@ attributes:
       the name of gaseous compound, amount administered, treatment duration, interval,
       and total experimental duration; can include multiple gaseous environment regimens
     title: gaseous environment
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: gaseous_environment
     owner: PlantSample
@@ -1115,7 +1115,7 @@ attributes:
       e.g. specification of a transgene or the gene knocked-out or details of transient
       transfection
     title: genetic modifications
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: genetic_mod
     owner: PlantSample
@@ -1137,7 +1137,7 @@ attributes:
       each treatment lasted, and the start and end time of the entire treatment; can
       include multiple treatments
     title: gravity
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: gravity
     owner: PlantSample
@@ -1149,7 +1149,7 @@ attributes:
     name: growth_habit
     description: Characteristic shape appearance or growth form of a plant species
     title: growth habit
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: growth_habit
     owner: PlantSample
@@ -1165,7 +1165,7 @@ attributes:
       the start and end time of the entire treatment; can include multiple growth
       hormone regimens
     title: growth hormone regimen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: growth_hormone_regm
     owner: PlantSample
@@ -1181,7 +1181,7 @@ attributes:
       treatment was repeated, how long each treatment lasted, and the start and end
       time of the entire treatment; can include multiple regimens
     title: herbicide regimen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: herbicide_regm
     owner: PlantSample
@@ -1193,7 +1193,7 @@ attributes:
     name: host_height
     description: 'The height of plant. (Unit: cm or mm or m)'
     title: host height
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: host_height
     owner: PlantSample
@@ -1208,7 +1208,7 @@ attributes:
     name: host_length
     description: 'The length of the plant. (Unit: cm or mm or m)'
     title: host length
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: host_length
     owner: PlantSample
@@ -1221,7 +1221,7 @@ attributes:
     name: host_life_stage
     description: Description of life stage of the plant
     title: host life stage
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: host_life_stage
     owner: PlantSample
@@ -1239,7 +1239,7 @@ attributes:
       lasted, and the start and end time of the entire treatment; can include multiple
       regimens
     title: humidity regimen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: humidity_regm
     owner: PlantSample
@@ -1260,7 +1260,7 @@ attributes:
     name: isotope_exposure
     description: List isotope exposure or addition applied to your sample.
     title: isotope exposure
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: isotope_exposure
     owner: PlantSample
@@ -1282,7 +1282,7 @@ attributes:
     name: latitude
     description: Latitude coordinate of the sampling site in WSG 84 format.
     title: latitude
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     broad_mappings:
     - MIXS:0000009
     rank: 1000
@@ -1306,7 +1306,7 @@ attributes:
     name: longitude
     description: Longitude coordinate of the sampling site in WSG 84 format.
     title: longitude
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     broad_mappings:
     - MIXS:0000009
     rank: 1000
@@ -1331,7 +1331,7 @@ attributes:
     description: Information about treatment(s) involving exposure to light including
       both light intensity and quality.
     title: light regimen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: light_regm
     owner: PlantSample
@@ -1351,7 +1351,7 @@ attributes:
     description: Information about any mechanical damage exerted on the plant; can
       include multiple damages and sites
     title: mechanical damage
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: mechanical_damage
     owner: PlantSample
@@ -1364,7 +1364,7 @@ attributes:
     description: If your samples are TEST sample ONLY, please provide information
       on what you're hoping this test will resolve.
     title: method development
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: method_development
     owner: PlantSample
@@ -1391,7 +1391,7 @@ attributes:
       lasted, and the start and end time of the entire treatment; can include multiple
       mineral nutrient regimens
     title: mineral nutrient regimen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: mineral_nutr_regm
     owner: PlantSample
@@ -1406,7 +1406,7 @@ attributes:
     description: Any other measurement performed or parameter collected that is not
       listed here
     title: miscellaneous parameter
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: misc_param
     owner: PlantSample
@@ -1427,7 +1427,7 @@ attributes:
     description: 'Amount of biomass; should include the name for the part of biomass
       measured e.g.insect plant total (Unit: µm)'
     title: non microbial biomass
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: non_microb_biomass
     owner: PlantSample
@@ -1445,7 +1445,7 @@ attributes:
     name: non_microb_biomass_method
     description: Reference or method used in determining biomass
     title: non microbial biomass method
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: non_microb_biomass_method
     owner: PlantSample
@@ -1466,7 +1466,7 @@ attributes:
       treatment was repeated, how long each treatment lasted, and the start and end
       time of the entire treatment; can include multiple non-mineral nutrient regimens
     title: non mineral nutrient regimen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: non_min_nutr_regm
     owner: PlantSample
@@ -1481,7 +1481,7 @@ attributes:
     description: Other/additional details about your sample that you feel can't be
       accurately represented in ANY of the available columns.
     title: other
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: other
     owner: PlantSample
@@ -1506,7 +1506,7 @@ attributes:
     name: other_samp_store_temp
     description: Please specify sample storage temperature if you selected 'other'
     title: other sample storage temperature
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: other_samp_store_temp
     owner: PlantSample
@@ -1532,7 +1532,7 @@ attributes:
     description: Please specify your storage conditions if you selected 'other' and
       the available values are not appropriate
     title: other storage condition
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: other_storage_condt
     owner: PlantSample
@@ -1557,7 +1557,7 @@ attributes:
       is applied to your samples and the provided treatment terms do not satisfy please
       add it here. Multiple treatments can be entered here separated by ;
     title: other treatment
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: other_treatment
     owner: PlantSample
@@ -1585,7 +1585,7 @@ attributes:
       the start and end time of the entire treatment; can include multiple pesticide
       regimens
     title: pesticide regimen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: pesticide_regm
     owner: PlantSample
@@ -1600,7 +1600,7 @@ attributes:
       the treatment was repeated, how long each treatment lasted, and the start and
       end time of the entire treatment; can include multiple regimen
     title: pH regimen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: ph_regm
     owner: PlantSample
@@ -1612,7 +1612,7 @@ attributes:
     name: plant_age
     description: Age of plant at the time of sampling. Must provide unit
     title: plant age
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: plant_age
     owner: PlantSample
@@ -1624,7 +1624,7 @@ attributes:
     name: plant_common_name
     description: Common name of the plant.
     title: plant common name
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: plant_common_name
     owner: PlantSample
@@ -1637,7 +1637,7 @@ attributes:
     description: List of diseases with which the plant has been diagnosed; can include
       multiple diagnoses.
     title: plant disease status
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: plant_disease_stat
     owner: PlantSample
@@ -1648,7 +1648,7 @@ attributes:
     name: plant_dry_mass
     description: 'Measurement of dry mass. (Unit: kg or g)'
     title: plant dry mass
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: plant_dry_mass
     owner: PlantSample
@@ -1660,7 +1660,7 @@ attributes:
     name: plant_genotype
     description: Observed genotype of the plant
     title: plant genotype
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: plant_genotype
     owner: PlantSample
@@ -1676,7 +1676,7 @@ attributes:
       as the name of the media followed by the PECO identifier in brackets, e.g. aeroponic
       plant growth media exposure [PECO:0001073]
     title: plant growth medium
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: plant_growth_med
     owner: PlantSample
@@ -1690,7 +1690,7 @@ attributes:
     name: plant_sex
     description: Sex of the reproductive parts on the whole plant.
     title: plant sex
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: plant_sex
     owner: PlantSample
@@ -1706,7 +1706,7 @@ attributes:
       e.g. petiole epidermis (PO_0000051). If an individual flower is sampled the
       sex of it can be recorded here.
     title: plant structure
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: plant_struc
     owner: PlantSample
@@ -1720,7 +1720,7 @@ attributes:
     name: plant_taxid
     description: NCBI taxon ID of the plant from https://www.ncbi.nlm.nih.gov/taxonomy
     title: plant taxonomy identifier
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: plant_taxid
     owner: PlantSample
@@ -1732,7 +1732,7 @@ attributes:
     name: plant_wet_mass
     description: 'Measurement of wet mass. (Unit: kg or g)'
     title: plant wet mass
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: plant_wet_mass
     owner: PlantSample
@@ -1747,7 +1747,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - study
     - study_id
@@ -1783,7 +1783,7 @@ attributes:
       how long each treatment lasted, and the start and end time of the entire treatment;
       can include multiple regimens
     title: rainfall regimen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: rainfall_regm
     owner: PlantSample
@@ -1797,7 +1797,7 @@ attributes:
       with submission schema.
     todos:
     - reconcile replicate modelling
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: replicate_number
     owner: PlantSample
@@ -1822,7 +1822,7 @@ attributes:
     description: Relevant rooting conditions such as field plot size, sowing density,
       container dimensions, number of plants per container.
     title: rooting conditions
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: root_cond
     owner: PlantSample
@@ -1837,7 +1837,7 @@ attributes:
       {carbon source}, {value}{unit}. Can be multivalued, separated by ;. Preferred
       unit mg/L.
     title: rooting medium carbon
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: root_med_carbon
     owner: PlantSample
@@ -1851,7 +1851,7 @@ attributes:
     description: Measurement of the culture rooting medium macronutrients (NP K Ca
       Mg S). Can be multivalued separated by ;. e.g. KH2PO4 170 mg/L
     title: rooting medium macronutrients
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: root_med_macronutr
     owner: PlantSample
@@ -1865,7 +1865,7 @@ attributes:
     description: Measurement of the culture rooting medium micronutrients (Fe Mn Zn
       B Cu Mo). Can be multivalued separated by ;. e.g. H3BO3 6.2 mg/L
     title: rooting medium micronutrients
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: root_med_micronutr
     owner: PlantSample
@@ -1878,7 +1878,7 @@ attributes:
     name: root_med_ph
     description: pH measurement of the culture rooting medium.
     title: rooting medium pH
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: root_med_ph
     owner: PlantSample
@@ -1891,7 +1891,7 @@ attributes:
       auxins, gybberellins, abscisic acid. Can be multivalued separated by ;. e.g.
       Naphthaleneacetic Acid 0.5 mg/L
     title: rooting medium regulators
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: root_med_regl
     owner: PlantSample
@@ -1902,7 +1902,7 @@ attributes:
     name: root_med_solid
     description: Specification of the solidifying agent in the culture rooting medium.
     title: rooting medium solidifier
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: root_med_solid
     owner: PlantSample
@@ -1915,7 +1915,7 @@ attributes:
       amino acids, organic acids, antibiotics, activated charcoal. Can be multivalued
       separated by ;. e.g. nicotinic acid 0.5 mg/L
     title: rooting medium organic supplement
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: root_med_suppl
     owner: PlantSample
@@ -1931,7 +1931,7 @@ attributes:
       compare the specific conductance of the sample to a salinity standard such as
       seawater (Unit: practical salinity unit or percent)'
     title: salinity
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: salinity
     owner: PlantSample
@@ -1947,7 +1947,7 @@ attributes:
     name: salinity_method
     description: Method used to determine sample salinity
     title: salinity method
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: salinity_method
     owner: PlantSample
@@ -1966,7 +1966,7 @@ attributes:
       each treatment lasted, and the start and end time of the entire treatment; can
       include multiple salt regimens.
     title: salt regimen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: salt_regm
     owner: PlantSample
@@ -1986,7 +1986,7 @@ attributes:
       sample was transferred to a new vial and generated a new sample)'''
     todos:
     - EMSL and NMDC both need better modelling for this
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_link
     owner: PlantSample
@@ -2016,7 +2016,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - samp_name
     rank: 1000
@@ -2046,7 +2046,7 @@ attributes:
       or after retrieving the sample from environment or a link to the relevant protocol(s)
       performed.
     title: sample processing
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_processing
     owner: PlantSample
@@ -2071,7 +2071,7 @@ attributes:
       This field is NOT multivalued. If selecting other add the `other_samp_store_temp`
       attribute to provide additional detail.
     title: sample storage temperature
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - sample_storage_temperature
     - storage_temperature
@@ -2100,7 +2100,7 @@ attributes:
     description: Reference to the sampling activity during which this sample was collected.
       This is a FK to the SamplingActivity class, which contains metadata about the
       sampling event, such as date, device, method.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampled_during
     owner: PlantSample
@@ -2128,7 +2128,7 @@ attributes:
       or to any derived sub-samples. The source material should be listed as a sample
       to inform details about parent material relationship.
     title: source material identifier
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: source_mat_id
     owner: PlantSample
@@ -2155,7 +2155,7 @@ attributes:
       how many times the treatment was repeated, how long each treatment lasted, and
       the start and end time of the entire treatment; can include multiple regimens
     title: standing water regimen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: standing_water_regm
     owner: PlantSample
@@ -2168,7 +2168,7 @@ attributes:
     description: 'Date the incubation was started. Only relevant for incubation samples.
       Format: YYYY-MM-DD'
     title: incubation start date
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: start_date_inc
     owner: PlantSample
@@ -2191,7 +2191,7 @@ attributes:
       If selecting other add the `other_storage_condt` attribute to provide additional
       detail.
     title: storage condition
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - samp_store_cond
     - storage_cond
@@ -2224,7 +2224,7 @@ attributes:
     name: storage_condition_other
     description: Free-text field for storage conditions when 'storage_condition' is
       'other'
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - other_storage_condt
     - storage_condt_other
@@ -2252,7 +2252,7 @@ attributes:
     name: technical_reps
     description: Number of technical replicates for the sample.
     title: technical replicates
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: technical_reps
     owner: PlantSample
@@ -2276,7 +2276,7 @@ attributes:
     name: temp
     description: 'Temperature of the sample at the time of sampling. (Units: C)'
     title: temperature
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: temp
     owner: PlantSample
@@ -2300,7 +2300,7 @@ attributes:
       was repeated, how long each treatment lasted, and the start and end time of
       the entire treatment; can include multiple regimens
     title: water temperature regimen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: water_temp_regm
     owner: PlantSample
@@ -2315,7 +2315,7 @@ attributes:
       each treatment lasted, and the start and end time of the entire treatment; can
       include multiple regimens
     title: watering regimen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: watering_regm
     owner: PlantSample
@@ -2334,7 +2334,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: PlantSample
@@ -2364,7 +2364,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: PlantSample
@@ -2403,7 +2403,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: emsl_activity
     owner: PlantSample
@@ -2415,7 +2415,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: lims_barcode
     owner: PlantSample

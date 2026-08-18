@@ -9,7 +9,7 @@
 # Last Updated:  2026-03-16
 # =============================================================================
 
-id: https://EMSL-Computing.github.io/BASALT-Schema/ph
+id: https://emsl-computing.github.io/BASALT-Schema/ph
 name: ph_schema
 title: MONet pH Analysis Ingest Schema
 description: |-
@@ -18,7 +18,7 @@ description: |-
 license: MIT
 
 prefixes:
-  basalt_schema: https://EMSL-Computing.github.io/BASALT-Schema/
+  basalt_schema: https://emsl-computing.github.io/BASALT-Schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: ph_schema

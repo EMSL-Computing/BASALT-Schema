@@ -9,7 +9,7 @@ _The type of mass analyzer present in the instrument, if applicable (e.g., Orbit
 
 
 
-URI: [basalt_schema:mass_analyzer_type](https://EMSL-Computing.github.io/BASALT-Schema/mass_analyzer_type)
+URI: [basalt_schema:mass_analyzer_type](https://emsl-computing.github.io/BASALT-Schema/elements/mass_analyzer_type)
 Alias: mass_analyzer_type
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: mass_analyzer_type
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -90,7 +90,7 @@ Alias: mass_analyzer_type
 name: mass_analyzer_type
 description: The type of mass analyzer present in the instrument, if applicable (e.g.,
   Orbitrap, Time-of-Flight, Quadrupole).
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: mass_analyzer_type
 owner: Instrument

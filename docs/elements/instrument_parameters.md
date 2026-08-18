@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:instrument_parameters](https://EMSL-Computing.github.io/BASALT-Schema/instrument_parameters)
+URI: [basalt_schema:instrument_parameters](https://emsl-computing.github.io/BASALT-Schema/elements/instrument_parameters)
 Alias: instrument_parameters
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: instrument_parameters
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: instrument_parameters
 <details>
 ```yaml
 name: instrument_parameters
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: instrument_parameters
 owner: Instrument

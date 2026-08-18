@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:values](https://EMSL-Computing.github.io/BASALT-Schema/values)
+URI: [basalt_schema:values](https://emsl-computing.github.io/BASALT-Schema/elements/values)
 Alias: values
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: values
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: values
 <details>
 ```yaml
 name: values
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: values
 owner: ContainerAxis

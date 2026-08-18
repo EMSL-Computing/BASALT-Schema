@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:boron_id](https://EMSL-Computing.github.io/BASALT-Schema/boron_id)
+URI: [basalt_schema:boron_id](https://emsl-computing.github.io/BASALT-Schema/elements/boron_id)
 Alias: boron_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: boron_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: boron_id
 <details>
 ```yaml
 name: boron_id
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: boron_id
 owner: IonsAnalysisProduct

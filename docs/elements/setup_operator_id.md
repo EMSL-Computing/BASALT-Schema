@@ -9,7 +9,7 @@ _Person who set up the plate_
 
 
 
-URI: [basalt_schema:setup_operator_id](https://EMSL-Computing.github.io/BASALT-Schema/setup_operator_id)
+URI: [basalt_schema:setup_operator_id](https://emsl-computing.github.io/BASALT-Schema/elements/setup_operator_id)
 Alias: setup_operator_id
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: setup_operator_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
 | [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |  no  |
 | [PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |  no  |
-| [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: setup_operator_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: setup_operator_id
 ```yaml
 name: setup_operator_id
 description: Person who set up the plate
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: setup_operator_id
 domain_of:

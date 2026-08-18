@@ -1,4 +1,4 @@
-id: https://EMSL-Computing.github.io/BASALT-Schema/mass-spec
+id: https://emsl-computing.github.io/BASALT-Schema/mass-spec
 name: basalt-schema-mass-spec
 title: Mass spectrometry subclasses for BASALT
 description: |
@@ -27,7 +27,7 @@ description: |
 license: MIT
 
 prefixes:
-  basalt_schema: https://EMSL-Computing.github.io/BASALT-Schema/
+  basalt_schema: https://emsl-computing.github.io/BASALT-Schema/elements/
   linkml: https://w3id.org/linkml/
 default_prefix: basalt_schema
 

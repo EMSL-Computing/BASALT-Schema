@@ -9,7 +9,7 @@ _Type of perturbation, e.g. chemical administration, physical disturbance, etc.;
 
 
 
-URI: [basalt_schema:perturbation](https://EMSL-Computing.github.io/BASALT-Schema/perturbation)
+URI: [basalt_schema:perturbation](https://emsl-computing.github.io/BASALT-Schema/elements/perturbation)
 Alias: perturbation
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: perturbation
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ description: Type of perturbation, e.g. chemical administration, physical distur
   was repeated, how long each perturbation lasted, and the start and end time of the
   entire perturbation period; can include multiple perturbation types
 title: perturbation
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: perturbation
 domain_of:

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:bulk_density_id](https://EMSL-Computing.github.io/BASALT-Schema/bulk_density_id)
+URI: [basalt_schema:bulk_density_id](https://emsl-computing.github.io/BASALT-Schema/elements/bulk_density_id)
 Alias: bulk_density_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: bulk_density_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: bulk_density_id
 <details>
 ```yaml
 name: bulk_density_id
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: bulk_density_id
 owner: BulkDensityProduct

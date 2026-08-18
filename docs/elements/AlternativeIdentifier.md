@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:AlternativeIdentifier](https://EMSL-Computing.github.io/BASALT-Schema/AlternativeIdentifier)
+URI: [basalt_schema:AlternativeIdentifier](https://emsl-computing.github.io/BASALT-Schema/elements/AlternativeIdentifier)
 
 
 
@@ -75,7 +75,7 @@ URI: [basalt_schema:AlternativeIdentifier](https://EMSL-Computing.github.io/BASA
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -101,11 +101,11 @@ URI: [basalt_schema:AlternativeIdentifier](https://EMSL-Computing.github.io/BASA
 <details>
 ```yaml
 name: AlternativeIdentifier
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     domain_of:
     - Activity
@@ -183,7 +183,7 @@ attributes:
     required: true
   alternate_id:
     name: alternate_id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - AlternativeIdentifier
@@ -191,7 +191,7 @@ attributes:
     required: true
   alternate_identifier_type:
     name: alternate_identifier_type
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - AlternativeIdentifier
@@ -206,11 +206,11 @@ attributes:
 <details>
 ```yaml
 name: AlternativeIdentifier
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: AlternativeIdentifier
@@ -290,7 +290,7 @@ attributes:
     required: true
   alternate_id:
     name: alternate_id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: alternate_id
     owner: AlternativeIdentifier
@@ -300,7 +300,7 @@ attributes:
     required: true
   alternate_identifier_type:
     name: alternate_identifier_type
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: alternate_identifier_type
     owner: AlternativeIdentifier

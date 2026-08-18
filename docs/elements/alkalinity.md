@@ -9,7 +9,7 @@ _The ability of a solution to neutralize acids to the equivalence point of carbo
 
 
 
-URI: [basalt_schema:alkalinity](https://EMSL-Computing.github.io/BASALT-Schema/alkalinity)
+URI: [basalt_schema:alkalinity](https://emsl-computing.github.io/BASALT-Schema/elements/alkalinity)
 Alias: alkalinity
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: alkalinity
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ name: alkalinity
 description: 'The ability of a solution to neutralize acids to the equivalence point
   of carbonate or bicarbonate (Unit: mg/L or meq/L)'
 title: alkalinity
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: alkalinity
 domain_of:

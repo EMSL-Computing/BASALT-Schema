@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_quartz](https://EMSL-Computing.github.io/BASALT-Schema/flag_quartz)
+URI: [basalt_schema:flag_quartz](https://emsl-computing.github.io/BASALT-Schema/elements/flag_quartz)
 Alias: flag_quartz
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_quartz
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_quartz
 <details>
 ```yaml
 name: flag_quartz
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_quartz
 owner: XRDPhaseProduct

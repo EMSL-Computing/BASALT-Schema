@@ -9,7 +9,7 @@ _concentration of substances such as ammonia, road-salt, sea-salt, cyanide, hydr
 
 
 
-URI: [basalt_schema:soluble_inorg_mat](https://EMSL-Computing.github.io/BASALT-Schema/soluble_inorg_mat)
+URI: [basalt_schema:soluble_inorg_mat](https://emsl-computing.github.io/BASALT-Schema/elements/soluble_inorg_mat)
 Alias: soluble_inorg_mat
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: soluble_inorg_mat
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ name: soluble_inorg_mat
 description: concentration of substances such as ammonia, road-salt, sea-salt, cyanide,
   hydrogen sulfide, thiocyanates, thiosulfates, etc.
 title: soluble inorganic material
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: soluble_inorg_mat
 domain_of:

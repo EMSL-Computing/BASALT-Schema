@@ -9,7 +9,7 @@ _Please specify growth facility if you selected 'other'_
 
 
 
-URI: [basalt_schema:other_growth_facil](https://EMSL-Computing.github.io/BASALT-Schema/other_growth_facil)
+URI: [basalt_schema:other_growth_facil](https://emsl-computing.github.io/BASALT-Schema/elements/other_growth_facil)
 Alias: other_growth_facil
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: other_growth_facil
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: other_growth_facil
 name: other_growth_facil
 description: Please specify growth facility if you selected 'other'
 title: other growth facility
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: other_growth_facil
 domain_of:

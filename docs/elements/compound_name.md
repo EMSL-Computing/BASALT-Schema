@@ -9,7 +9,7 @@ _The name of the purchased material. A substance formed by chemical union of two
 
 
 
-URI: [basalt_schema:compound_name](https://EMSL-Computing.github.io/BASALT-Schema/compound_name)
+URI: [basalt_schema:compound_name](https://emsl-computing.github.io/BASALT-Schema/elements/compound_name)
 Alias: compound_name
 
 <!-- no inheritance hierarchy -->
@@ -23,8 +23,8 @@ Alias: compound_name
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  yes  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: compound_name
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ name: compound_name
 description: The name of the purchased material. A substance formed by chemical union
   of two or more elements or ingredients in definite proportion by weight.
 title: compound name
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: compound_name
 domain_of:

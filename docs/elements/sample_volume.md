@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:sample_volume](https://EMSL-Computing.github.io/BASALT-Schema/sample_volume)
+URI: [basalt_schema:sample_volume](https://emsl-computing.github.io/BASALT-Schema/elements/sample_volume)
 Alias: sample_volume
 
 <!-- no inheritance hierarchy -->

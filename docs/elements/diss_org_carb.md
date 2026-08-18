@@ -9,7 +9,7 @@ _Concentration of dissolved organic carbon in the sample, liquid portion of the 
 
 
 
-URI: [basalt_schema:diss_org_carb](https://EMSL-Computing.github.io/BASALT-Schema/diss_org_carb)
+URI: [basalt_schema:diss_org_carb](https://emsl-computing.github.io/BASALT-Schema/elements/diss_org_carb)
 Alias: diss_org_carb
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: diss_org_carb
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ name: diss_org_carb
 description: 'Concentration of dissolved organic carbon in the sample, liquid portion
   of the sample, or aqueous phase of the fluid. (Unit:  umol/L or mg/L)'
 title: dissolved organic carbon
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: diss_org_carb
 domain_of:

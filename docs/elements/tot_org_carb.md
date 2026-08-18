@@ -9,7 +9,7 @@ _Total organic carbon content. Provided as gram of Carbon per kg of your sample 
 
 
 
-URI: [basalt_schema:tot_org_carb](https://EMSL-Computing.github.io/BASALT-Schema/tot_org_carb)
+URI: [basalt_schema:tot_org_carb](https://emsl-computing.github.io/BASALT-Schema/elements/tot_org_carb)
 Alias: tot_org_carb
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: tot_org_carb
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ name: tot_org_carb
 description: 'Total organic carbon content. Provided as gram of Carbon per kg of your
   sample material. (Unit: g C/kg)'
 title: total organic carbon
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: tot_org_carb
 domain_of:

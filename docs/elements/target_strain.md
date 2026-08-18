@@ -9,7 +9,7 @@ _Target strain identifier for purity checks_
 
 
 
-URI: [basalt_schema:target_strain](https://EMSL-Computing.github.io/BASALT-Schema/target_strain)
+URI: [basalt_schema:target_strain](https://emsl-computing.github.io/BASALT-Schema/elements/target_strain)
 Alias: target_strain
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: target_strain
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -88,7 +88,7 @@ name: target_strain
 description: Target strain identifier for purity checks
 todos:
 - should this point to the Strain class?
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: target_strain
 domain_of:

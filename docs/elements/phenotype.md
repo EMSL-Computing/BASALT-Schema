@@ -11,7 +11,7 @@ _Example: "aprimycin resistance, gene knockdown dCas12a construct"_
 
 
 
-URI: [basalt_schema:phenotype](https://EMSL-Computing.github.io/BASALT-Schema/phenotype)
+URI: [basalt_schema:phenotype](https://emsl-computing.github.io/BASALT-Schema/elements/phenotype)
 Alias: phenotype
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: phenotype
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -88,7 +88,7 @@ description: 'Provide the intedned phenotype of hte modified organism. Observabl
 
   Example: "aprimycin resistance, gene knockdown dCas12a construct"'
 title: phenotype
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: phenotype
 domain_of:

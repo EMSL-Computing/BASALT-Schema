@@ -9,7 +9,7 @@ _Name of the institution that manufactured the chromatography column._
 
 
 
-URI: [basalt_schema:column_manufacturer](https://EMSL-Computing.github.io/BASALT-Schema/column_manufacturer)
+URI: [basalt_schema:column_manufacturer](https://emsl-computing.github.io/BASALT-Schema/elements/column_manufacturer)
 Alias: column_manufacturer
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: column_manufacturer
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -82,7 +82,7 @@ Alias: column_manufacturer
 ```yaml
 name: column_manufacturer
 description: Name of the institution that manufactured the chromatography column.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: column_manufacturer
 domain_of:

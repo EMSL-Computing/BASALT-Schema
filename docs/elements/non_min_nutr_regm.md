@@ -9,7 +9,7 @@ _Information about treatment involving the exposure of plant to non-mineral nutr
 
 
 
-URI: [basalt_schema:non_min_nutr_regm](https://EMSL-Computing.github.io/BASALT-Schema/non_min_nutr_regm)
+URI: [basalt_schema:non_min_nutr_regm](https://emsl-computing.github.io/BASALT-Schema/elements/non_min_nutr_regm)
 Alias: non_min_nutr_regm
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: non_min_nutr_regm
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 
 
 
@@ -64,7 +64,7 @@ Alias: non_min_nutr_regm
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -90,7 +90,7 @@ description: Information about treatment involving the exposure of plant to non-
   was repeated, how long each treatment lasted, and the start and end time of the
   entire treatment; can include multiple non-mineral nutrient regimens
 title: non mineral nutrient regimen
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: non_min_nutr_regm
 domain_of:

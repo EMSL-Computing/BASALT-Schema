@@ -9,7 +9,7 @@ _Information about treatment involving use of growth hormones; should include th
 
 
 
-URI: [basalt_schema:growth_hormone_regm](https://EMSL-Computing.github.io/BASALT-Schema/growth_hormone_regm)
+URI: [basalt_schema:growth_hormone_regm](https://emsl-computing.github.io/BASALT-Schema/elements/growth_hormone_regm)
 Alias: growth_hormone_regm
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: growth_hormone_regm
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -88,7 +88,7 @@ description: Information about treatment involving use of growth hormones; shoul
   start and end time of the entire treatment; can include multiple growth hormone
   regimens
 title: growth hormone regimen
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: growth_hormone_regm
 domain_of:

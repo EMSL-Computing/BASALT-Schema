@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:nh4_n_id](https://EMSL-Computing.github.io/BASALT-Schema/nh4_n_id)
+URI: [basalt_schema:nh4_n_id](https://emsl-computing.github.io/BASALT-Schema/elements/nh4_n_id)
 Alias: nh4_n_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: nh4_n_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: nh4_n_id
 <details>
 ```yaml
 name: nh4_n_id
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: nh4_n_id
 owner: NitrogenAnalysisProduct

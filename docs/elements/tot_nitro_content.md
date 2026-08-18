@@ -9,7 +9,7 @@ _Total nitrogen content of the sample. Provide value and unit any unit is valid_
 
 
 
-URI: [basalt_schema:tot_nitro_content](https://EMSL-Computing.github.io/BASALT-Schema/tot_nitro_content)
+URI: [basalt_schema:tot_nitro_content](https://emsl-computing.github.io/BASALT-Schema/elements/tot_nitro_content)
 Alias: tot_nitro_content
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: tot_nitro_content
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ name: tot_nitro_content
 description: Total nitrogen content of the sample. Provide value and unit any unit
   is valid
 title: total nitrogen content
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: tot_nitro_content
 domain_of:

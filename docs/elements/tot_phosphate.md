@@ -9,7 +9,7 @@ _total amount or concentration of phosphate_
 
 
 
-URI: [basalt_schema:tot_phosphate](https://EMSL-Computing.github.io/BASALT-Schema/tot_phosphate)
+URI: [basalt_schema:tot_phosphate](https://emsl-computing.github.io/BASALT-Schema/elements/tot_phosphate)
 Alias: tot_phosphate
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: tot_phosphate
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: tot_phosphate
 name: tot_phosphate
 description: total amount or concentration of phosphate
 title: total phosphate
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: tot_phosphate
 domain_of:

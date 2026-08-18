@@ -9,7 +9,7 @@ _Age of host at the time of sampling; relevant scale depends on species and stud
 
 
 
-URI: [basalt_schema:host_age](https://EMSL-Computing.github.io/BASALT-Schema/host_age)
+URI: [basalt_schema:host_age](https://emsl-computing.github.io/BASALT-Schema/elements/host_age)
 Alias: host_age
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: host_age
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: host_age
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -94,7 +94,7 @@ description: 'Age of host at the time of sampling; relevant scale depends on spe
   and study, e.g. Could be seconds for amoebae or centuries for trees. (Unit: a (year)
   or d (day) or h (hour). Do not include the additional information in ().)'
 title: host age
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: host_age
 domain_of:

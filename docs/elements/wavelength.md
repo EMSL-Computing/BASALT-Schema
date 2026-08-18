@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:wavelength](https://EMSL-Computing.github.io/BASALT-Schema/wavelength)
+URI: [basalt_schema:wavelength](https://emsl-computing.github.io/BASALT-Schema/elements/wavelength)
 Alias: wavelength
 
 <!-- no inheritance hierarchy -->

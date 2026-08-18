@@ -9,7 +9,7 @@ _Measurement of mean friction velocity (Unit: m/s)_
 
 
 
-URI: [basalt_schema:mean_frict_vel](https://EMSL-Computing.github.io/BASALT-Schema/mean_frict_vel)
+URI: [basalt_schema:mean_frict_vel](https://emsl-computing.github.io/BASALT-Schema/elements/mean_frict_vel)
 Alias: mean_frict_vel
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: mean_frict_vel
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: mean_frict_vel
 name: mean_frict_vel
 description: 'Measurement of mean friction velocity (Unit: m/s)'
 title: mean friction velocity
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: mean_frict_vel
 domain_of:

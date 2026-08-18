@@ -9,7 +9,7 @@ _Record of configuration and/or settings for an activity._
 
 
 
-URI: [basalt_schema:Configuration](https://EMSL-Computing.github.io/BASALT-Schema/Configuration)
+URI: [basalt_schema:Configuration](https://emsl-computing.github.io/BASALT-Schema/elements/Configuration)
 
 
 
@@ -74,7 +74,7 @@ URI: [basalt_schema:Configuration](https://EMSL-Computing.github.io/BASALT-Schem
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -101,14 +101,14 @@ URI: [basalt_schema:Configuration](https://EMSL-Computing.github.io/BASALT-Schem
 ```yaml
 name: Configuration
 description: Record of configuration and/or settings for an activity.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 slots:
 - name
 - description
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/mass-spec
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
     domain_of:
     - Activity
     - Entity
@@ -193,11 +193,11 @@ attributes:
 ```yaml
 name: Configuration
 description: Record of configuration and/or settings for an activity.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/mass-spec
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
     alias: id
     owner: Configuration
     domain_of:
@@ -277,7 +277,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: Configuration
@@ -307,7 +307,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: Configuration

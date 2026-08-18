@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag](https://EMSL-Computing.github.io/BASALT-Schema/flag)
+URI: [basalt_schema:flag](https://emsl-computing.github.io/BASALT-Schema/elements/flag)
 Alias: flag
 
 <!-- no inheritance hierarchy -->
@@ -17,14 +17,14 @@ Alias: flag
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) | Phosphorus analysis product, typically derived via colorimetric assay of soil... |  no  |
 | [GWCMoistureProduct](GWCMoistureProduct.md) | Gravimetric water content (GWC) analysis product, typically derived via oven-... |  no  |
-| [HydraulicPropertiesProduct](HydraulicPropertiesProduct.md) | Soil hydraulic parameters derived from HYPROP evaporation-experiment data |  no  |
-| [BulkDensityProduct](BulkDensityProduct.md) | Bulk density analysis product, typically derived via oven-drying and weighing... |  no  |
+| [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) | Phosphorus analysis product, typically derived via colorimetric assay of soil... |  no  |
 | [TextureProduct](TextureProduct.md) | Soil texture analysis product, typically derived via hydrometer or similar in... |  no  |
 | [EnzymeProduct](EnzymeProduct.md) | Enzyme activity analysis product, typically derived via colorimetric assay of... |  no  |
+| [HydraulicPropertiesProduct](HydraulicPropertiesProduct.md) | Soil hydraulic parameters derived from HYPROP evaporation-experiment data |  no  |
 | [PHProduct](PHProduct.md) | Soil pH analysis product, typically derived via pH meter or similar instrumen... |  no  |
 | [RespirationProduct](RespirationProduct.md) | Soil respiration analysis product |  no  |
+| [BulkDensityProduct](BulkDensityProduct.md) | Bulk density analysis product, typically derived via oven-drying and weighing... |  no  |
 | [WellReading](WellReading.md) | Per-well measurement data |  no  |
 
 

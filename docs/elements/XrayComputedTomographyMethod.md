@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:XrayComputedTomographyMethod](https://EMSL-Computing.github.io/BASALT-Schema/XrayComputedTomographyMethod)
+URI: [basalt_schema:XrayComputedTomographyMethod](https://emsl-computing.github.io/BASALT-Schema/elements/XrayComputedTomographyMethod)
 
 
 
@@ -84,7 +84,7 @@ URI: [basalt_schema:XrayComputedTomographyMethod](https://EMSL-Computing.github.
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -110,14 +110,14 @@ URI: [basalt_schema:XrayComputedTomographyMethod](https://EMSL-Computing.github.
 <details>
 ```yaml
 name: XrayComputedTomographyMethod
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Method
 slots:
 - location
 attributes:
   x_ray_power:
     name: x_ray_power
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     domain_of:
     - XrayComputedTomographyMethod
@@ -125,7 +125,7 @@ attributes:
     required: true
   cu_filter:
     name: cu_filter
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     domain_of:
     - XrayComputedTomographyMethod
@@ -133,7 +133,7 @@ attributes:
     required: true
   total_projections_collected:
     name: total_projections_collected
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     domain_of:
     - XrayComputedTomographyMethod
@@ -141,7 +141,7 @@ attributes:
     required: true
   rotation:
     name: rotation
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     domain_of:
     - XrayComputedTomographyMethod
@@ -149,7 +149,7 @@ attributes:
     required: true
   frames_recording_per_projection:
     name: frames_recording_per_projection
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     domain_of:
     - XrayComputedTomographyMethod
@@ -157,7 +157,7 @@ attributes:
     required: true
   exposure_time_per_frame:
     name: exposure_time_per_frame
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     domain_of:
     - XrayComputedTomographyMethod
@@ -165,7 +165,7 @@ attributes:
     required: true
   image_voxel_size_is:
     name: image_voxel_size_is
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     domain_of:
     - XrayComputedTomographyMethod
@@ -180,12 +180,12 @@ attributes:
 <details>
 ```yaml
 name: XrayComputedTomographyMethod
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Method
 attributes:
   x_ray_power:
     name: x_ray_power
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     alias: x_ray_power
     owner: XrayComputedTomographyMethod
@@ -195,7 +195,7 @@ attributes:
     required: true
   cu_filter:
     name: cu_filter
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     alias: cu_filter
     owner: XrayComputedTomographyMethod
@@ -205,7 +205,7 @@ attributes:
     required: true
   total_projections_collected:
     name: total_projections_collected
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     alias: total_projections_collected
     owner: XrayComputedTomographyMethod
@@ -215,7 +215,7 @@ attributes:
     required: true
   rotation:
     name: rotation
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     alias: rotation
     owner: XrayComputedTomographyMethod
@@ -225,7 +225,7 @@ attributes:
     required: true
   frames_recording_per_projection:
     name: frames_recording_per_projection
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     alias: frames_recording_per_projection
     owner: XrayComputedTomographyMethod
@@ -235,7 +235,7 @@ attributes:
     required: true
   exposure_time_per_frame:
     name: exposure_time_per_frame
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     alias: exposure_time_per_frame
     owner: XrayComputedTomographyMethod
@@ -245,7 +245,7 @@ attributes:
     required: true
   image_voxel_size_is:
     name: image_voxel_size_is
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     alias: image_voxel_size_is
     owner: XrayComputedTomographyMethod
@@ -257,7 +257,7 @@ attributes:
     name: location
     todos:
     - used on many method classes. no description. what was this meant to mean?
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: location
     owner: XrayComputedTomographyMethod
@@ -278,7 +278,7 @@ attributes:
     name: analytic
     todos:
     - what does this mean
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: analytic
     owner: XrayComputedTomographyMethod

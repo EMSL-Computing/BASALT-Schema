@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:MassAnalyzerEnum](https://EMSL-Computing.github.io/BASALT-Schema/MassAnalyzerEnum)
+URI: [basalt_schema:MassAnalyzerEnum](https://emsl-computing.github.io/BASALT-Schema/elements/MassAnalyzerEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -41,7 +41,7 @@ URI: [basalt_schema:MassAnalyzerEnum](https://EMSL-Computing.github.io/BASALT-Sc
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -53,7 +53,7 @@ URI: [basalt_schema:MassAnalyzerEnum](https://EMSL-Computing.github.io/BASALT-Sc
 <details>
 ```yaml
 name: MassAnalyzerEnum
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   quadrupole:

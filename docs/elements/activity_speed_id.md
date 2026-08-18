@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:activity_speed_id](https://EMSL-Computing.github.io/BASALT-Schema/activity_speed_id)
+URI: [basalt_schema:activity_speed_id](https://emsl-computing.github.io/BASALT-Schema/elements/activity_speed_id)
 Alias: activity_speed_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: activity_speed_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: activity_speed_id
 <details>
 ```yaml
 name: activity_speed_id
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: activity_speed_id
 owner: LabDevice

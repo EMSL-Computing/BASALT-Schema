@@ -10,7 +10,7 @@
 # Last Updated:  2026-02-25
 # =============================================================================
 
-id: https://EMSL-Computing.github.io/BASALT-Schema/enzyme
+id: https://emsl-computing.github.io/BASALT-Schema/enzyme
 name: enzyme_schema
 title: MONet Enzyme Activity Ingest Schema
 description: |-
@@ -20,7 +20,7 @@ description: |-
 license: MIT
 
 prefixes:
-  basalt_schema: https://EMSL-Computing.github.io/BASALT-Schema/
+  basalt_schema: https://emsl-computing.github.io/BASALT-Schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: enzyme_schema

@@ -9,7 +9,7 @@ _Total carbon content. Provide value and unit, any unit is valid_
 
 
 
-URI: [basalt_schema:tot_carb](https://EMSL-Computing.github.io/BASALT-Schema/tot_carb)
+URI: [basalt_schema:tot_carb](https://emsl-computing.github.io/BASALT-Schema/elements/tot_carb)
 Alias: tot_carb
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: tot_carb
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -91,7 +91,7 @@ Alias: tot_carb
 name: tot_carb
 description: Total carbon content. Provide value and unit, any unit is valid
 title: total carbon content
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: tot_carb
 domain_of:

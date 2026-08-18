@@ -9,7 +9,7 @@ _Provide a unique name to identify transformed strain lines._
 
 
 
-URI: [basalt_schema:strain_name](https://EMSL-Computing.github.io/BASALT-Schema/strain_name)
+URI: [basalt_schema:strain_name](https://emsl-computing.github.io/BASALT-Schema/elements/strain_name)
 Alias: strain_name
 
 <!-- no inheritance hierarchy -->
@@ -51,7 +51,7 @@ Alias: strain_name
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -73,7 +73,7 @@ Alias: strain_name
 name: strain_name
 description: Provide a unique name to identify transformed strain lines.
 title: strain name
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: strain_name
 range: string

@@ -9,7 +9,7 @@ _Chromium concentration in mg/kg_
 
 
 
-URI: [basalt_schema:cr_mg_per_kg](https://EMSL-Computing.github.io/BASALT-Schema/cr_mg_per_kg)
+URI: [basalt_schema:cr_mg_per_kg](https://emsl-computing.github.io/BASALT-Schema/elements/cr_mg_per_kg)
 Alias: cr_mg_per_kg
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: cr_mg_per_kg
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: cr_mg_per_kg
 ```yaml
 name: cr_mg_per_kg
 description: Chromium concentration in mg/kg
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: cr_mg_per_kg
 owner: XRFElementalProduct

@@ -13,7 +13,7 @@ _activity that generated it, including the step number and role of the sample in
 
 
 
-URI: [basalt_schema:ProcessingSampleLink](https://EMSL-Computing.github.io/BASALT-Schema/ProcessingSampleLink)
+URI: [basalt_schema:ProcessingSampleLink](https://emsl-computing.github.io/BASALT-Schema/elements/ProcessingSampleLink)
 
 
 
@@ -109,7 +109,7 @@ URI: [basalt_schema:ProcessingSampleLink](https://EMSL-Computing.github.io/BASAL
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -142,11 +142,11 @@ description: 'A link between a processed sample and the sample processing activi
 
   activity that generated it, including the step number and role of the sample in
   the process.'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     domain_of:
     - Activity
@@ -224,7 +224,7 @@ attributes:
     required: true
   sample_base_id:
     name: sample_base_id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - ProcessingSampleLink
@@ -232,7 +232,7 @@ attributes:
     required: true
   processing_id:
     name: processing_id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - ProcessingSampleLink
@@ -240,7 +240,7 @@ attributes:
     required: true
   step_number:
     name: step_number
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - ProcessingSampleLink
@@ -248,7 +248,7 @@ attributes:
     required: true
   role:
     name: role
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - ProcessingSampleLink
@@ -279,11 +279,11 @@ description: 'A link between a processed sample and the sample processing activi
 
   activity that generated it, including the step number and role of the sample in
   the process.'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: ProcessingSampleLink
@@ -363,7 +363,7 @@ attributes:
     required: true
   sample_base_id:
     name: sample_base_id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_base_id
     owner: ProcessingSampleLink
@@ -373,7 +373,7 @@ attributes:
     required: true
   processing_id:
     name: processing_id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: processing_id
     owner: ProcessingSampleLink
@@ -383,7 +383,7 @@ attributes:
     required: true
   step_number:
     name: step_number
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: step_number
     owner: ProcessingSampleLink
@@ -393,7 +393,7 @@ attributes:
     required: true
   role:
     name: role
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: role
     owner: ProcessingSampleLink

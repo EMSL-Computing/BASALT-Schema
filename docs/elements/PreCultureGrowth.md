@@ -19,7 +19,7 @@ _Refs:   Media (growth medium), Strain_
 
 
 
-URI: [basalt_schema:PreCultureGrowth](https://EMSL-Computing.github.io/BASALT-Schema/PreCultureGrowth)
+URI: [basalt_schema:PreCultureGrowth](https://emsl-computing.github.io/BASALT-Schema/elements/PreCultureGrowth)
 
 
 
@@ -164,7 +164,7 @@ URI: [basalt_schema:PreCultureGrowth](https://EMSL-Computing.github.io/BASALT-Sc
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -202,7 +202,7 @@ description: 'Growth of a pre-culture to establish viable inoculum before
   Refs:   Media (growth medium), Strain'
 todos:
 - pre culture medium is missing
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: CultureGrowth
 
 ```
@@ -225,7 +225,7 @@ description: 'Growth of a pre-culture to establish viable inoculum before
   Refs:   Media (growth medium), Strain'
 todos:
 - pre culture medium is missing
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: CultureGrowth
 attributes:
   organism_ref:
@@ -235,7 +235,7 @@ attributes:
       strain, isolate, engineered construct) that this sample or activity
 
       is associated with.'
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - strain_ref
     - strain_id
@@ -254,7 +254,7 @@ attributes:
       3-D structure, bioreactor, etc. followed by the formula, recipe, or components
       used to create the growth medium.
     title: growth medium
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: growth_medium
     owner: PreCultureGrowth
@@ -270,7 +270,7 @@ attributes:
   incubation_time_hours:
     name: incubation_time_hours
     description: Incubation duration in hours
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: incubation_time_hours
     owner: PreCultureGrowth
@@ -280,7 +280,7 @@ attributes:
   container_type:
     name: container_type
     description: Physical container used for the culture (flask, tube, plate, etc.)
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: container_type
     owner: PreCultureGrowth
@@ -291,7 +291,7 @@ attributes:
   temperature_celsius:
     name: temperature_celsius
     description: Temperature at which the method/process/activity was performed
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: temperature_celsius
     owner: PreCultureGrowth
@@ -302,7 +302,7 @@ attributes:
   agitation_speed_rpm:
     name: agitation_speed_rpm
     description: Agitation/shaking speed in RPM (0 for static)
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: agitation_speed_rpm
     owner: PreCultureGrowth
@@ -313,7 +313,7 @@ attributes:
     name: oxygen_relationship
     description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
     title: oxygen relationship
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     exact_mappings:
     - MIXS:0000015
     rank: 1000
@@ -336,7 +336,7 @@ attributes:
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: protocol_url
     owner: PreCultureGrowth
@@ -347,7 +347,7 @@ attributes:
   protocol_version:
     name: protocol_version
     description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: protocol_version
     owner: PreCultureGrowth
@@ -357,7 +357,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: PreCultureGrowth
@@ -437,7 +437,7 @@ attributes:
     required: true
   analysis_type:
     name: analysis_type
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     alias: analysis_type
     owner: PreCultureGrowth
     domain_of:
@@ -460,7 +460,7 @@ attributes:
     range: RouteMethodEnum
   method_name:
     name: method_name
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: method_name
     owner: PreCultureGrowth
@@ -469,7 +469,7 @@ attributes:
     range: MethodNameEnum
   processing_steps:
     name: processing_steps
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: processing_steps
     owner: PreCultureGrowth
@@ -479,7 +479,7 @@ attributes:
     required: true
   uses_sample:
     name: uses_sample
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: uses_sample
     owner: PreCultureGrowth

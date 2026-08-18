@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:software_poc](https://EMSL-Computing.github.io/BASALT-Schema/software_poc)
+URI: [basalt_schema:software_poc](https://emsl-computing.github.io/BASALT-Schema/elements/software_poc)
 Alias: software_poc
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: software_poc
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
 | [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |  no  |
+| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
 | [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
 
 
@@ -65,7 +65,7 @@ Alias: software_poc
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ Alias: software_poc
 <details>
 ```yaml
 name: software_poc
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: software_poc
 owner: DataProcessingActivity

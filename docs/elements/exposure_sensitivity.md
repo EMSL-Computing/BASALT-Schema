@@ -9,7 +9,7 @@ _Sensitivity the entity has if exposed (e.g. light-sensitive, oxygen-sensitive)_
 
 
 
-URI: [basalt_schema:exposure_sensitivity](https://EMSL-Computing.github.io/BASALT-Schema/exposure_sensitivity)
+URI: [basalt_schema:exposure_sensitivity](https://emsl-computing.github.io/BASALT-Schema/elements/exposure_sensitivity)
 Alias: exposure_sensitivity
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: exposure_sensitivity
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: exposure_sensitivity
 ```yaml
 name: exposure_sensitivity
 description: Sensitivity the entity has if exposed (e.g. light-sensitive, oxygen-sensitive)
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: exposure_sensitivity
 domain_of:

@@ -9,7 +9,7 @@ _NCBI taxon ID for the organism._
 
 
 
-URI: [basalt_schema:taxonomy_id](https://EMSL-Computing.github.io/BASALT-Schema/taxonomy_id)
+URI: [basalt_schema:taxonomy_id](https://emsl-computing.github.io/BASALT-Schema/elements/taxonomy_id)
 Alias: taxonomy_id
 
 <!-- no inheritance hierarchy -->
@@ -67,7 +67,7 @@ Alias: taxonomy_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -88,7 +88,7 @@ Alias: taxonomy_id
 ```yaml
 name: taxonomy_id
 description: NCBI taxon ID for the organism.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 aliases:
 - ncbi_taxon_id
 - taxon_id

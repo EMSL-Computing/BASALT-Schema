@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:ColorCodeEnum](https://EMSL-Computing.github.io/BASALT-Schema/ColorCodeEnum)
+URI: [basalt_schema:ColorCodeEnum](https://emsl-computing.github.io/BASALT-Schema/elements/ColorCodeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -45,7 +45,7 @@ URI: [basalt_schema:ColorCodeEnum](https://EMSL-Computing.github.io/BASALT-Schem
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -57,7 +57,7 @@ URI: [basalt_schema:ColorCodeEnum](https://EMSL-Computing.github.io/BASALT-Schem
 <details>
 ```yaml
 name: ColorCodeEnum
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   Red- 0-250m Profiling:

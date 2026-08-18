@@ -9,7 +9,7 @@ _A soil sample that has been collected according to the MONet soil sampling prot
 
 
 
-URI: [basalt_schema:MonetSoilSample](https://EMSL-Computing.github.io/BASALT-Schema/MonetSoilSample)
+URI: [basalt_schema:MonetSoilSample](https://emsl-computing.github.io/BASALT-Schema/elements/MonetSoilSample)
 
 
 
@@ -224,7 +224,7 @@ URI: [basalt_schema:MonetSoilSample](https://EMSL-Computing.github.io/BASALT-Sch
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -253,7 +253,7 @@ name: MonetSoilSample
 description: A soil sample that has been collected according to the MONet soil sampling
   protocol. This sample type has specific slot requirements related to the MONet soil
   sampling method, such as infiltration rates.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Sample
 slots:
 - agrochem_addition
@@ -339,7 +339,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -427,7 +427,7 @@ name: MonetSoilSample
 description: A soil sample that has been collected according to the MONet soil sampling
   protocol. This sample type has specific slot requirements related to the MONet soil
   sampling method, such as infiltration rates.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Sample
 slot_usage:
   bulk_elect_conductivity:
@@ -481,7 +481,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     alias: id
     owner: MonetSoilSample
@@ -563,7 +563,7 @@ attributes:
     name: agrochem_addition
     description: Addition of fertilizers, pesticides, etc. - amount and time of applications
     title: agrochemical additions
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: agrochem_addition
     owner: MonetSoilSample
@@ -578,7 +578,7 @@ attributes:
       ZSC bluetooth sensor. If measurement was started and unsuccessful enter ''failed''
       if measurement was not attempted enter ''did not collect''. (Unit: mS/cm)'
     title: bulk electrical conductivity
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: bulk_elect_conductivity
     owner: MonetSoilSample
@@ -596,7 +596,7 @@ attributes:
       include multiple compounds. For chemical entities of biological interest ontology
       (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
     title: chemical administration
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     exact_mappings:
     - MIXS:0000751
     rank: 1000
@@ -621,7 +621,7 @@ attributes:
     name: core_group
     description: The category of soil core taken according to the MONet sampling protocol.
     title: core group
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: core_group
     owner: MonetSoilSample
@@ -635,7 +635,7 @@ attributes:
       is required to be reported as an interval for subsurface samples. (Units: cm
       or m)'
     title: depth
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: depth
     owner: MonetSoilSample
@@ -657,7 +657,7 @@ attributes:
       or a rainforest). We recommend using subclasses of EnvO''''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'''
     title: broad-scale environmental context
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: env_broad_scale
     owner: MonetSoilSample
@@ -684,7 +684,7 @@ attributes:
       spatial grain than your entry for env_broad_scale.If needed, request new terms
       on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'''
     title: local environmental context
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: env_local_scale
     owner: MonetSoilSample
@@ -710,7 +710,7 @@ attributes:
       ''''environmental material'''' (http://purl.obolibrary.org/obo/ENVO_00010483).
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'''
     title: environmental medium
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: env_medium
     owner: MonetSoilSample
@@ -732,7 +732,7 @@ attributes:
   external_identifiers:
     name: external_identifiers
     description: List of external identifiers associated with this entity or activity.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: external_identifiers
     owner: MonetSoilSample
@@ -761,7 +761,7 @@ attributes:
     name: latitude
     description: Latitude coordinate of the sampling site in WSG 84 format.
     title: latitude
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     broad_mappings:
     - MIXS:0000009
     rank: 1000
@@ -785,7 +785,7 @@ attributes:
     name: longitude
     description: Longitude coordinate of the sampling site in WSG 84 format.
     title: longitude
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     broad_mappings:
     - MIXS:0000009
     rank: 1000
@@ -810,7 +810,7 @@ attributes:
     description: An EMSL internal LIMS identifier for your sample. This will be provided
       by the MPOC and should not be edited.
     title: LIMS ID
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: lims_id
     owner: MonetSoilSample
@@ -823,7 +823,7 @@ attributes:
     description: Any other measurement performed or parameter collected that is not
       listed here
     title: miscellaneous parameter
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: misc_param
     owner: MonetSoilSample
@@ -844,7 +844,7 @@ attributes:
     description: Other/additional details about your sample that you feel can't be
       accurately represented in ANY of the available columns.
     title: other
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: other
     owner: MonetSoilSample
@@ -869,7 +869,7 @@ attributes:
     name: other_samp_store_temp
     description: Please specify sample storage temperature if you selected 'other'
     title: other sample storage temperature
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: other_samp_store_temp
     owner: MonetSoilSample
@@ -895,7 +895,7 @@ attributes:
     description: Please specify your storage conditions if you selected 'other' and
       the available values are not appropriate
     title: other storage condition
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: other_storage_condt
     owner: MonetSoilSample
@@ -920,7 +920,7 @@ attributes:
       is applied to your samples and the provided treatment terms do not satisfy please
       add it here. Multiple treatments can be entered here separated by ;
     title: other treatment
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: other_treatment
     owner: MonetSoilSample
@@ -947,7 +947,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - study
     - study_id
@@ -986,7 +986,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - samp_name
     rank: 1000
@@ -1016,7 +1016,7 @@ attributes:
       This field is NOT multivalued. If selecting other add the `other_samp_store_temp`
       attribute to provide additional detail.
     title: sample storage temperature
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - sample_storage_temperature
     - storage_temperature
@@ -1045,7 +1045,7 @@ attributes:
     description: Reference to the sampling activity during which this sample was collected.
       This is a FK to the SamplingActivity class, which contains metadata about the
       sampling event, such as date, device, method.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampled_during
     owner: MonetSoilSample
@@ -1075,7 +1075,7 @@ attributes:
 
       in the same sampling event or campaign.'
     title: sampling set
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampling_set
     owner: MonetSoilSample
@@ -1093,7 +1093,7 @@ attributes:
       did this come from?
     - BJM 060626 - clarified this slot and enum name from 'soil_type' but I'm still
       not sure we need it. it is populated in the current database though.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: soil_sample_type
     owner: MonetSoilSample
@@ -1106,7 +1106,7 @@ attributes:
     name: soil_type
     description: Soil series name or other lower-level classification
     title: soil type
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: soil_type
     owner: MonetSoilSample
@@ -1120,7 +1120,7 @@ attributes:
     description: Reference or method used in determining soil series name or other
       lower-level classification
     title: soil type method
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: soil_type_meth
     owner: MonetSoilSample
@@ -1135,7 +1135,7 @@ attributes:
       If selecting other add the `other_storage_condt` attribute to provide additional
       detail.
     title: storage condition
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - samp_store_cond
     - storage_cond
@@ -1168,7 +1168,7 @@ attributes:
     name: storage_condition_other
     description: Free-text field for storage conditions when 'storage_condition' is
       'other'
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - other_storage_condt
     - storage_condt_other
@@ -1198,7 +1198,7 @@ attributes:
       was started and unsuccessful enter ''failed'' if measurement was not attempted
       enter ''did not collect''. (Units: C)'
     title: temperature
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: temp
     owner: MonetSoilSample
@@ -1223,7 +1223,7 @@ attributes:
       and unsuccessful enter 'failed' if measurement was not attempted enter 'did
       not collect'.
     title: water content
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: water_content
     owner: MonetSoilSample
@@ -1241,7 +1241,7 @@ attributes:
     name: water_content_meth
     description: Reference or method used in determining the water content of soil
     title: water content method
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: water_content_meth
     owner: MonetSoilSample
@@ -1259,7 +1259,7 @@ attributes:
       each treatment lasted, and the start and end time of the entire treatment; can
       include multiple regimens
     title: watering regimen
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: watering_regm
     owner: MonetSoilSample
@@ -1278,7 +1278,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: MonetSoilSample
@@ -1308,7 +1308,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: MonetSoilSample
@@ -1347,7 +1347,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: emsl_activity
     owner: MonetSoilSample
@@ -1359,7 +1359,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: lims_barcode
     owner: MonetSoilSample

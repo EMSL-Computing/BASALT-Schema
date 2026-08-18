@@ -9,7 +9,7 @@ _the process to produce both a generally homogeneous liquid capable of being tre
 
 
 
-URI: [basalt_schema:primary_treatment](https://EMSL-Computing.github.io/BASALT-Schema/primary_treatment)
+URI: [basalt_schema:primary_treatment](https://emsl-computing.github.io/BASALT-Schema/elements/primary_treatment)
 Alias: primary_treatment
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: primary_treatment
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ name: primary_treatment
 description: the process to produce both a generally homogeneous liquid capable of
   being treated biologically and a sludge that can be separately treated or processed
 title: primary treatmentz
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: primary_treatment
 domain_of:

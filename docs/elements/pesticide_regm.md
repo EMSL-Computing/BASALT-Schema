@@ -9,7 +9,7 @@ _Information about treatment involving use of insecticides; should include the n
 
 
 
-URI: [basalt_schema:pesticide_regm](https://EMSL-Computing.github.io/BASALT-Schema/pesticide_regm)
+URI: [basalt_schema:pesticide_regm](https://emsl-computing.github.io/BASALT-Schema/elements/pesticide_regm)
 Alias: pesticide_regm
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: pesticide_regm
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ description: Information about treatment involving use of insecticides; should i
   times the treatment was repeated, how long each treatment lasted, and the start
   and end time of the entire treatment; can include multiple pesticide regimens
 title: pesticide regimen
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: pesticide_regm
 domain_of:

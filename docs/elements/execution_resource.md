@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:execution_resource](https://EMSL-Computing.github.io/BASALT-Schema/execution_resource)
+URI: [basalt_schema:execution_resource](https://emsl-computing.github.io/BASALT-Schema/elements/execution_resource)
 Alias: execution_resource
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: execution_resource
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
 | [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |  no  |
+| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
 | [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
 
 
@@ -65,7 +65,7 @@ Alias: execution_resource
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ Alias: execution_resource
 <details>
 ```yaml
 name: execution_resource
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: execution_resource
 owner: DataProcessingActivity

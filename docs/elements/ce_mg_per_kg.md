@@ -9,7 +9,7 @@ _Cerium concentration in mg/kg_
 
 
 
-URI: [basalt_schema:ce_mg_per_kg](https://EMSL-Computing.github.io/BASALT-Schema/ce_mg_per_kg)
+URI: [basalt_schema:ce_mg_per_kg](https://emsl-computing.github.io/BASALT-Schema/elements/ce_mg_per_kg)
 Alias: ce_mg_per_kg
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: ce_mg_per_kg
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: ce_mg_per_kg
 ```yaml
 name: ce_mg_per_kg
 description: Cerium concentration in mg/kg
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: ce_mg_per_kg
 owner: XRFElementalProduct

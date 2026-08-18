@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_sulfate](https://EMSL-Computing.github.io/BASALT-Schema/flag_sulfate)
+URI: [basalt_schema:flag_sulfate](https://emsl-computing.github.io/BASALT-Schema/elements/flag_sulfate)
 Alias: flag_sulfate
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_sulfate
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_sulfate
 <details>
 ```yaml
 name: flag_sulfate
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_sulfate
 owner: IonsAnalysisProduct

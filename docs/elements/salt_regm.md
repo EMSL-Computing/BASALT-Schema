@@ -9,7 +9,7 @@ _Information about treatment involving use of salts as supplement to liquid and 
 
 
 
-URI: [basalt_schema:salt_regm](https://EMSL-Computing.github.io/BASALT-Schema/salt_regm)
+URI: [basalt_schema:salt_regm](https://emsl-computing.github.io/BASALT-Schema/elements/salt_regm)
 Alias: salt_regm
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: salt_regm
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 
 
 
@@ -64,7 +64,7 @@ Alias: salt_regm
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -90,7 +90,7 @@ description: Information about treatment involving use of salts as supplement to
   lasted, and the start and end time of the entire treatment; can include multiple
   salt regimens.
 title: salt regimen
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: salt_regm
 domain_of:

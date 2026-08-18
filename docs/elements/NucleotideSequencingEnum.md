@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:NucleotideSequencingEnum](https://EMSL-Computing.github.io/BASALT-Schema/NucleotideSequencingEnum)
+URI: [basalt_schema:NucleotideSequencingEnum](https://emsl-computing.github.io/BASALT-Schema/elements/NucleotideSequencingEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -38,7 +38,7 @@ URI: [basalt_schema:NucleotideSequencingEnum](https://EMSL-Computing.github.io/B
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -50,7 +50,7 @@ URI: [basalt_schema:NucleotideSequencingEnum](https://EMSL-Computing.github.io/B
 <details>
 ```yaml
 name: NucleotideSequencingEnum
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   metagenome:

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:Custodian](https://EMSL-Computing.github.io/BASALT-Schema/Custodian)
+URI: [basalt_schema:Custodian](https://emsl-computing.github.io/BASALT-Schema/elements/Custodian)
 
 
 
@@ -72,7 +72,7 @@ URI: [basalt_schema:Custodian](https://EMSL-Computing.github.io/BASALT-Schema/Cu
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -98,11 +98,11 @@ URI: [basalt_schema:Custodian](https://EMSL-Computing.github.io/BASALT-Schema/Cu
 <details>
 ```yaml
 name: Custodian
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     domain_of:
     - Activity
@@ -180,7 +180,7 @@ attributes:
     required: true
   person_id:
     name: person_id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - Custodian
@@ -194,11 +194,11 @@ attributes:
 <details>
 ```yaml
 name: Custodian
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: Custodian
@@ -278,7 +278,7 @@ attributes:
     required: true
   person_id:
     name: person_id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: person_id
     owner: Custodian

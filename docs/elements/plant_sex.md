@@ -9,7 +9,7 @@ _Sex of the reproductive parts on the whole plant._
 
 
 
-URI: [basalt_schema:plant_sex](https://EMSL-Computing.github.io/BASALT-Schema/plant_sex)
+URI: [basalt_schema:plant_sex](https://emsl-computing.github.io/BASALT-Schema/elements/plant_sex)
 Alias: plant_sex
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: plant_sex
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: plant_sex
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ Alias: plant_sex
 name: plant_sex
 description: Sex of the reproductive parts on the whole plant.
 title: plant sex
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: plant_sex
 domain_of:

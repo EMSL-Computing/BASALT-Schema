@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:magnesium_id](https://EMSL-Computing.github.io/BASALT-Schema/magnesium_id)
+URI: [basalt_schema:magnesium_id](https://emsl-computing.github.io/BASALT-Schema/elements/magnesium_id)
 Alias: magnesium_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: magnesium_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: magnesium_id
 <details>
 ```yaml
 name: magnesium_id
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: magnesium_id
 owner: IonsAnalysisProduct

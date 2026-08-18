@@ -9,7 +9,7 @@ _Incubation duration in hours_
 
 
 
-URI: [basalt_schema:incubation_time_hours](https://EMSL-Computing.github.io/BASALT-Schema/incubation_time_hours)
+URI: [basalt_schema:incubation_time_hours](https://emsl-computing.github.io/BASALT-Schema/elements/incubation_time_hours)
 Alias: incubation_time_hours
 
 <!-- no inheritance hierarchy -->
@@ -22,11 +22,11 @@ Alias: incubation_time_hours
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |  no  |
-| [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
-| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
 | [StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |  no  |
+| [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
 | [StrainPurity](StrainPurity.md) | Purity check of a strain culture |  no  |
+| [PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |  no  |
+| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
 
 
 
@@ -65,7 +65,7 @@ Alias: incubation_time_hours
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ Alias: incubation_time_hours
 ```yaml
 name: incubation_time_hours
 description: Incubation duration in hours
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: incubation_time_hours
 domain_of:

@@ -9,7 +9,7 @@ _Reference or method used in determining microbial biomass_
 
 
 
-URI: [basalt_schema:micro_biomass_c_meth](https://EMSL-Computing.github.io/BASALT-Schema/micro_biomass_c_meth)
+URI: [basalt_schema:micro_biomass_c_meth](https://emsl-computing.github.io/BASALT-Schema/elements/micro_biomass_c_meth)
 Alias: micro_biomass_c_meth
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: micro_biomass_c_meth
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: micro_biomass_c_meth
 name: micro_biomass_c_meth
 description: Reference or method used in determining microbial biomass
 title: microbial biomass carbon method
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: micro_biomass_c_meth
 domain_of:

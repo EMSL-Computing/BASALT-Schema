@@ -9,7 +9,7 @@ _Water content measurement. Provide value and unit any unit is valid_
 
 
 
-URI: [basalt_schema:water_content](https://EMSL-Computing.github.io/BASALT-Schema/water_content)
+URI: [basalt_schema:water_content](https://emsl-computing.github.io/BASALT-Schema/elements/water_content)
 Alias: water_content
 
 <!-- no inheritance hierarchy -->
@@ -24,10 +24,10 @@ Alias: water_content
 | --- | --- | --- |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 
@@ -73,7 +73,7 @@ Alias: water_content
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -95,7 +95,7 @@ Alias: water_content
 name: water_content
 description: Water content measurement. Provide value and unit any unit is valid
 title: water content
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: water_content
 domain_of:

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:alternate_id](https://EMSL-Computing.github.io/BASALT-Schema/alternate_id)
+URI: [basalt_schema:alternate_id](https://emsl-computing.github.io/BASALT-Schema/elements/alternate_id)
 Alias: alternate_id
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: alternate_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: alternate_id
 <details>
 ```yaml
 name: alternate_id
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: alternate_id
 owner: AlternativeIdentifier

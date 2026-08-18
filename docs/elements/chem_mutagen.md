@@ -9,7 +9,7 @@ _Treatment involving use of mutagens; should include the name of mutagen, amount
 
 
 
-URI: [basalt_schema:chem_mutagen](https://EMSL-Computing.github.io/BASALT-Schema/chem_mutagen)
+URI: [basalt_schema:chem_mutagen](https://emsl-computing.github.io/BASALT-Schema/elements/chem_mutagen)
 Alias: chem_mutagen
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: chem_mutagen
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ description: Treatment involving use of mutagens; should include the name of mut
   repeated, how long each treatment lasted, and the start and end time of the entire
   treatment; can include multiple mutagen regimens
 title: chemical mutagen
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: chem_mutagen
 domain_of:

@@ -9,7 +9,7 @@ _Reference or method used in determining the total nitrogen_
 
 
 
-URI: [basalt_schema:tot_nitro_cont_meth](https://EMSL-Computing.github.io/BASALT-Schema/tot_nitro_cont_meth)
+URI: [basalt_schema:tot_nitro_cont_meth](https://emsl-computing.github.io/BASALT-Schema/elements/tot_nitro_cont_meth)
 Alias: tot_nitro_cont_meth
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: tot_nitro_cont_meth
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ Alias: tot_nitro_cont_meth
 name: tot_nitro_cont_meth
 description: Reference or method used in determining the total nitrogen
 title: total nitrogen content method
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: tot_nitro_cont_meth
 domain_of:

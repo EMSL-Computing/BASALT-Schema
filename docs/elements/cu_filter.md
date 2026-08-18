@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:cu_filter](https://EMSL-Computing.github.io/BASALT-Schema/cu_filter)
+URI: [basalt_schema:cu_filter](https://emsl-computing.github.io/BASALT-Schema/elements/cu_filter)
 Alias: cu_filter
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: cu_filter
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: cu_filter
 <details>
 ```yaml
 name: cu_filter
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: cu_filter
 owner: XrayComputedTomographyMethod

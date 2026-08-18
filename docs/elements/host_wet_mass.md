@@ -9,7 +9,7 @@ _Measurement of wet mass. (Unit: kg or g)_
 
 
 
-URI: [basalt_schema:host_wet_mass](https://EMSL-Computing.github.io/BASALT-Schema/host_wet_mass)
+URI: [basalt_schema:host_wet_mass](https://emsl-computing.github.io/BASALT-Schema/elements/host_wet_mass)
 Alias: host_wet_mass
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: host_wet_mass
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: host_wet_mass
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: host_wet_mass
 name: host_wet_mass
 description: 'Measurement of wet mass. (Unit: kg or g)'
 title: host wet mass
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: host_wet_mass
 domain_of:

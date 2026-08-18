@@ -9,7 +9,7 @@ _Zinc concentration in mg/kg_
 
 
 
-URI: [basalt_schema:zn_mg_per_kg](https://EMSL-Computing.github.io/BASALT-Schema/zn_mg_per_kg)
+URI: [basalt_schema:zn_mg_per_kg](https://emsl-computing.github.io/BASALT-Schema/elements/zn_mg_per_kg)
 Alias: zn_mg_per_kg
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: zn_mg_per_kg
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: zn_mg_per_kg
 ```yaml
 name: zn_mg_per_kg
 description: Zinc concentration in mg/kg
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: zn_mg_per_kg
 owner: XRFElementalProduct

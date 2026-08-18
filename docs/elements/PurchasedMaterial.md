@@ -15,7 +15,7 @@ _Activities reference Strain via the strain_ref FK slot._
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [basalt_schema:PurchasedMaterial](https://EMSL-Computing.github.io/BASALT-Schema/PurchasedMaterial)
+URI: [basalt_schema:PurchasedMaterial](https://emsl-computing.github.io/BASALT-Schema/elements/PurchasedMaterial)
 
 
 
@@ -80,7 +80,7 @@ URI: [basalt_schema:PurchasedMaterial](https://EMSL-Computing.github.io/BASALT-S
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -111,7 +111,7 @@ description: '[NEW ABSTRACT CLASS] Lightweight base for non-sample physical lab 
   that are not instruments.  Currently Strain is the only concrete subtype.
 
   Activities reference Strain via the strain_ref FK slot.'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 abstract: true
 slots:
 - purchased_material_type
@@ -120,7 +120,7 @@ slots:
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     identifier: true
     domain_of:
     - Activity
@@ -210,12 +210,12 @@ description: '[NEW ABSTRACT CLASS] Lightweight base for non-sample physical lab 
   that are not instruments.  Currently Strain is the only concrete subtype.
 
   Activities reference Strain via the strain_ref FK slot.'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 abstract: true
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     identifier: true
     alias: id
     owner: PurchasedMaterial
@@ -296,7 +296,7 @@ attributes:
   purchased_material_type:
     name: purchased_material_type
     description: Discriminator for purchasedMaterial subtype (e.g. 'media', 'strain')
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: purchased_material_type
     owner: PurchasedMaterial
@@ -307,7 +307,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: PurchasedMaterial
@@ -337,7 +337,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: PurchasedMaterial

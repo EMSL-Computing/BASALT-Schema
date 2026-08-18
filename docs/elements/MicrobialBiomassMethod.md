@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:MicrobialBiomassMethod](https://EMSL-Computing.github.io/BASALT-Schema/MicrobialBiomassMethod)
+URI: [basalt_schema:MicrobialBiomassMethod](https://emsl-computing.github.io/BASALT-Schema/elements/MicrobialBiomassMethod)
 
 
 
@@ -81,7 +81,7 @@ URI: [basalt_schema:MicrobialBiomassMethod](https://EMSL-Computing.github.io/BAS
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -107,14 +107,14 @@ URI: [basalt_schema:MicrobialBiomassMethod](https://EMSL-Computing.github.io/BAS
 <details>
 ```yaml
 name: MicrobialBiomassMethod
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Method
 slots:
 - location
 attributes:
   detector:
     name: detector
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     domain_of:
     - MicrobialBiomassMethod
@@ -123,7 +123,7 @@ attributes:
     required: true
   mode:
     name: mode
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     domain_of:
     - MicrobialBiomassMethod
@@ -131,7 +131,7 @@ attributes:
     range: string
   injection_volume:
     name: injection_volume
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     domain_of:
     - MicrobialBiomassMethod
@@ -140,7 +140,7 @@ attributes:
     required: true
   sample_volume:
     name: sample_volume
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     domain_of:
     - MicrobialBiomassMethod
@@ -149,7 +149,7 @@ attributes:
     required: true
   number_of_injections:
     name: number_of_injections
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     domain_of:
     - MicrobialBiomassMethod
@@ -158,7 +158,7 @@ attributes:
     required: true
   check_standard_spacing:
     name: check_standard_spacing
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     domain_of:
     - MicrobialBiomassMethod
@@ -174,12 +174,12 @@ attributes:
 <details>
 ```yaml
 name: MicrobialBiomassMethod
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Method
 attributes:
   detector:
     name: detector
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     alias: detector
     owner: MicrobialBiomassMethod
@@ -190,7 +190,7 @@ attributes:
     required: true
   mode:
     name: mode
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     alias: mode
     owner: MicrobialBiomassMethod
@@ -200,7 +200,7 @@ attributes:
     range: string
   injection_volume:
     name: injection_volume
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     alias: injection_volume
     owner: MicrobialBiomassMethod
@@ -211,7 +211,7 @@ attributes:
     required: true
   sample_volume:
     name: sample_volume
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     alias: sample_volume
     owner: MicrobialBiomassMethod
@@ -222,7 +222,7 @@ attributes:
     required: true
   number_of_injections:
     name: number_of_injections
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     alias: number_of_injections
     owner: MicrobialBiomassMethod
@@ -233,7 +233,7 @@ attributes:
     required: true
   check_standard_spacing:
     name: check_standard_spacing
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     alias: check_standard_spacing
     owner: MicrobialBiomassMethod
@@ -246,7 +246,7 @@ attributes:
     name: location
     todos:
     - used on many method classes. no description. what was this meant to mean?
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: location
     owner: MicrobialBiomassMethod
@@ -267,7 +267,7 @@ attributes:
     name: analytic
     todos:
     - what does this mean
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: analytic
     owner: MicrobialBiomassMethod

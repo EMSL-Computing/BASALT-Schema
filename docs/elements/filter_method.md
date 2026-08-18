@@ -9,7 +9,7 @@ _Type of filter used or how the sample was filtered_
 
 
 
-URI: [basalt_schema:filter_method](https://EMSL-Computing.github.io/BASALT-Schema/filter_method)
+URI: [basalt_schema:filter_method](https://emsl-computing.github.io/BASALT-Schema/elements/filter_method)
 Alias: filter_method
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: filter_method
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ Alias: filter_method
 name: filter_method
 description: Type of filter used or how the sample was filtered
 title: filter method
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: filter_method
 domain_of:

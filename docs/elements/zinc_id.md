@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:zinc_id](https://EMSL-Computing.github.io/BASALT-Schema/zinc_id)
+URI: [basalt_schema:zinc_id](https://emsl-computing.github.io/BASALT-Schema/elements/zinc_id)
 Alias: zinc_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: zinc_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: zinc_id
 <details>
 ```yaml
 name: zinc_id
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: zinc_id
 owner: IonsAnalysisProduct

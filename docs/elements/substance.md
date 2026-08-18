@@ -9,7 +9,7 @@ _The name of the substance used in this mobile phase segment._
 
 
 
-URI: [basalt_schema:substance](https://EMSL-Computing.github.io/BASALT-Schema/substance)
+URI: [basalt_schema:substance](https://emsl-computing.github.io/BASALT-Schema/elements/substance)
 Alias: substance
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: substance
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: substance
 ```yaml
 name: substance
 description: The name of the substance used in this mobile phase segment.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: substance
 owner: MobilePhaseSegment

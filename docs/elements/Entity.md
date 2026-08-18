@@ -11,7 +11,7 @@ _Base identifiable thing._
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [basalt_schema:Entity](https://EMSL-Computing.github.io/BASALT-Schema/Entity)
+URI: [basalt_schema:Entity](https://emsl-computing.github.io/BASALT-Schema/elements/Entity)
 
 
 
@@ -66,7 +66,7 @@ URI: [basalt_schema:Entity](https://EMSL-Computing.github.io/BASALT-Schema/Entit
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ URI: [basalt_schema:Entity](https://EMSL-Computing.github.io/BASALT-Schema/Entit
 ```yaml
 name: Entity
 description: Base identifiable thing.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 abstract: true
 slots:
 - name
@@ -101,7 +101,7 @@ slots:
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     domain_of:
     - Activity
@@ -187,12 +187,12 @@ attributes:
 ```yaml
 name: Entity
 description: Base identifiable thing.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 abstract: true
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: Entity
@@ -273,7 +273,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: Entity
@@ -303,7 +303,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: Entity

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_pb](https://EMSL-Computing.github.io/BASALT-Schema/flag_pb)
+URI: [basalt_schema:flag_pb](https://emsl-computing.github.io/BASALT-Schema/elements/flag_pb)
 Alias: flag_pb
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_pb
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_pb
 <details>
 ```yaml
 name: flag_pb
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_pb
 owner: XRFElementalProduct

@@ -9,7 +9,7 @@ _Amount of water vapor measured in the air the day of sampling. Provide value an
 
 
 
-URI: [basalt_schema:humidity](https://EMSL-Computing.github.io/BASALT-Schema/humidity)
+URI: [basalt_schema:humidity](https://emsl-computing.github.io/BASALT-Schema/elements/humidity)
 Alias: humidity
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: humidity
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AerosolSamplingActivity](AerosolSamplingActivity.md) | A sampling activity where aerosol samples were collected |  no  |
 | [OtherUndescribedSamplingActivity](OtherUndescribedSamplingActivity.md) | Collection of samples from source that does not fit into any of the other cat... |  yes  |
+| [AerosolSamplingActivity](AerosolSamplingActivity.md) | A sampling activity where aerosol samples were collected |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: humidity
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ name: humidity
 description: Amount of water vapor measured in the air the day of sampling. Provide
   value and unit, any unit is valid
 title: humidity
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: humidity
 domain_of:

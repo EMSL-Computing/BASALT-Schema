@@ -9,7 +9,7 @@ _Collection design of pooled samples and/or sieve size and amount of sample siev
 
 
 
-URI: [basalt_schema:sieving](https://EMSL-Computing.github.io/BASALT-Schema/sieving)
+URI: [basalt_schema:sieving](https://emsl-computing.github.io/BASALT-Schema/elements/sieving)
 Alias: sieving
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: sieving
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ name: sieving
 description: Collection design of pooled samples and/or sieve size and amount of sample
   sieved
 title: sieving
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: sieving
 domain_of:

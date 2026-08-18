@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:injection_volume](https://EMSL-Computing.github.io/BASALT-Schema/injection_volume)
+URI: [basalt_schema:injection_volume](https://emsl-computing.github.io/BASALT-Schema/elements/injection_volume)
 Alias: injection_volume
 
 <!-- no inheritance hierarchy -->

@@ -7,7 +7,7 @@ _bundling common terms for different omics types by biomolecule being analyzed_
 
 
 
-URI: [basalt_schema:AnalyteCategoryEnum](https://EMSL-Computing.github.io/BASALT-Schema/AnalyteCategoryEnum)
+URI: [basalt_schema:AnalyteCategoryEnum](https://emsl-computing.github.io/BASALT-Schema/elements/AnalyteCategoryEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -47,7 +47,7 @@ URI: [basalt_schema:AnalyteCategoryEnum](https://EMSL-Computing.github.io/BASALT
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -61,7 +61,7 @@ URI: [basalt_schema:AnalyteCategoryEnum](https://EMSL-Computing.github.io/BASALT
 name: AnalyteCategoryEnum
 description: bundling common terms for different omics types by biomolecule being
   analyzed
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   dna:

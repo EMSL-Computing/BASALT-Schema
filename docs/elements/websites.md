@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:websites](https://EMSL-Computing.github.io/BASALT-Schema/websites)
+URI: [basalt_schema:websites](https://emsl-computing.github.io/BASALT-Schema/elements/websites)
 Alias: websites
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: websites
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: websites
 <details>
 ```yaml
 name: websites
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: websites
 owner: PersonValue

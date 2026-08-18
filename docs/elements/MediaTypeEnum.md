@@ -7,7 +7,7 @@ _Purpose/context of the media preparation._
 
 
 
-URI: [basalt_schema:MediaTypeEnum](https://EMSL-Computing.github.io/BASALT-Schema/MediaTypeEnum)
+URI: [basalt_schema:MediaTypeEnum](https://emsl-computing.github.io/BASALT-Schema/elements/MediaTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -45,7 +45,7 @@ URI: [basalt_schema:MediaTypeEnum](https://EMSL-Computing.github.io/BASALT-Schem
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -58,7 +58,7 @@ URI: [basalt_schema:MediaTypeEnum](https://EMSL-Computing.github.io/BASALT-Schem
 ```yaml
 name: MediaTypeEnum
 description: Purpose/context of the media preparation.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   strain_purity:

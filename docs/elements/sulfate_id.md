@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:sulfate_id](https://EMSL-Computing.github.io/BASALT-Schema/sulfate_id)
+URI: [basalt_schema:sulfate_id](https://emsl-computing.github.io/BASALT-Schema/elements/sulfate_id)
 Alias: sulfate_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: sulfate_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: sulfate_id
 <details>
 ```yaml
 name: sulfate_id
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: sulfate_id
 owner: IonsAnalysisProduct

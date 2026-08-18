@@ -9,7 +9,7 @@ _Formulation method of the media (manual mix, commercial, etc.)_
 
 
 
-URI: [basalt_schema:media_formulation](https://EMSL-Computing.github.io/BASALT-Schema/media_formulation)
+URI: [basalt_schema:media_formulation](https://emsl-computing.github.io/BASALT-Schema/elements/media_formulation)
 Alias: media_formulation
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: media_formulation
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -82,7 +82,7 @@ Alias: media_formulation
 ```yaml
 name: media_formulation
 description: Formulation method of the media (manual mix, commercial, etc.)
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: media_formulation
 domain_of:

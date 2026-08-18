@@ -9,7 +9,7 @@ _The date the sample was received._
 
 
 
-URI: [basalt_schema:date_received](https://EMSL-Computing.github.io/BASALT-Schema/date_received)
+URI: [basalt_schema:date_received](https://emsl-computing.github.io/BASALT-Schema/elements/date_received)
 Alias: date_received
 
 <!-- no inheritance hierarchy -->
@@ -57,7 +57,7 @@ Alias: date_received
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -78,7 +78,7 @@ Alias: date_received
 ```yaml
 name: date_received
 description: The date the sample was received.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 aliases:
 - received_date
 - reception_date

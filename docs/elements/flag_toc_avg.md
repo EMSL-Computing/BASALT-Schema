@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_toc_avg](https://EMSL-Computing.github.io/BASALT-Schema/flag_toc_avg)
+URI: [basalt_schema:flag_toc_avg](https://emsl-computing.github.io/BASALT-Schema/elements/flag_toc_avg)
 Alias: flag_toc_avg
 
 <!-- no inheritance hierarchy -->

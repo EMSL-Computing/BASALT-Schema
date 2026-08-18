@@ -9,7 +9,7 @@ _Measurement of photon flux. Provide value and unit, any unit is valid._
 
 
 
-URI: [basalt_schema:photon_flux](https://EMSL-Computing.github.io/BASALT-Schema/photon_flux)
+URI: [basalt_schema:photon_flux](https://emsl-computing.github.io/BASALT-Schema/elements/photon_flux)
 Alias: photon_flux
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: photon_flux
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: photon_flux
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -91,7 +91,7 @@ Alias: photon_flux
 name: photon_flux
 description: Measurement of photon flux. Provide value and unit, any unit is valid.
 title: photon flux
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: photon_flux
 domain_of:

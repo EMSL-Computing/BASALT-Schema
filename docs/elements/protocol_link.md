@@ -9,7 +9,7 @@ _A link to a protocol that describes the steps and parameters of the activity._
 
 
 
-URI: [basalt_schema:protocol_link](https://EMSL-Computing.github.io/BASALT-Schema/protocol_link)
+URI: [basalt_schema:protocol_link](https://emsl-computing.github.io/BASALT-Schema/elements/protocol_link)
 Alias: protocol_link
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: protocol_link
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: protocol_link
 ```yaml
 name: protocol_link
 description: A link to a protocol that describes the steps and parameters of the activity.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: protocol_link
 owner: Activity

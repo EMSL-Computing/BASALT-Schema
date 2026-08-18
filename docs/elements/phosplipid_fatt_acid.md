@@ -9,7 +9,7 @@ _Concentration of phospholipid fatty acids; can include multiple values separate
 
 
 
-URI: [basalt_schema:phosplipid_fatt_acid](https://EMSL-Computing.github.io/BASALT-Schema/phosplipid_fatt_acid)
+URI: [basalt_schema:phosplipid_fatt_acid](https://emsl-computing.github.io/BASALT-Schema/elements/phosplipid_fatt_acid)
 Alias: phosplipid_fatt_acid
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: phosplipid_fatt_acid
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ description: Concentration of phospholipid fatty acids; can include multiple val
   separated by `;`. Provide the phospholipid fatty acids followed by the measurement
   value ({phospholipid fatty acid name}{value} {unit})
 title: phospholipid fatty acid
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: phosplipid_fatt_acid
 domain_of:

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_total_carbon](https://EMSL-Computing.github.io/BASALT-Schema/flag_total_carbon)
+URI: [basalt_schema:flag_total_carbon](https://emsl-computing.github.io/BASALT-Schema/elements/flag_total_carbon)
 Alias: flag_total_carbon
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_total_carbon
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_total_carbon
 <details>
 ```yaml
 name: flag_total_carbon
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_total_carbon
 owner: ElementalAnalysisProduct

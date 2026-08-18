@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:pore_diameter_mean](https://EMSL-Computing.github.io/BASALT-Schema/pore_diameter_mean)
+URI: [basalt_schema:pore_diameter_mean](https://emsl-computing.github.io/BASALT-Schema/elements/pore_diameter_mean)
 Alias: pore_diameter_mean
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: pore_diameter_mean
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: pore_diameter_mean
 <details>
 ```yaml
 name: pore_diameter_mean
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: pore_diameter_mean
 owner: TomographyProduct

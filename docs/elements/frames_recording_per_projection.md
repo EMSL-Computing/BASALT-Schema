@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:frames_recording_per_projection](https://EMSL-Computing.github.io/BASALT-Schema/frames_recording_per_projection)
+URI: [basalt_schema:frames_recording_per_projection](https://emsl-computing.github.io/BASALT-Schema/elements/frames_recording_per_projection)
 Alias: frames_recording_per_projection
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: frames_recording_per_projection
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: frames_recording_per_projection
 <details>
 ```yaml
 name: frames_recording_per_projection
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: frames_recording_per_projection
 owner: XrayComputedTomographyMethod

@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:YesNoEnum](https://EMSL-Computing.github.io/BASALT-Schema/YesNoEnum)
+URI: [basalt_schema:YesNoEnum](https://emsl-computing.github.io/BASALT-Schema/elements/YesNoEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -31,7 +31,7 @@ URI: [basalt_schema:YesNoEnum](https://EMSL-Computing.github.io/BASALT-Schema/Ye
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -43,7 +43,7 @@ URI: [basalt_schema:YesNoEnum](https://EMSL-Computing.github.io/BASALT-Schema/Ye
 <details>
 ```yaml
 name: YesNoEnum
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   'True':

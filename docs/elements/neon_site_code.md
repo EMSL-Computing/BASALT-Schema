@@ -9,7 +9,7 @@ _When sampling from a NEON site provide the 4 letter site code (Example: DEJU). 
 
 
 
-URI: [basalt_schema:neon_site_code](https://EMSL-Computing.github.io/BASALT-Schema/neon_site_code)
+URI: [basalt_schema:neon_site_code](https://emsl-computing.github.io/BASALT-Schema/elements/neon_site_code)
 Alias: neon_site_code
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: neon_site_code
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -91,7 +91,7 @@ name: neon_site_code
 description: 'When sampling from a NEON site provide the 4 letter site code (Example:
   DEJU). If you do not have your NEON site use the code SITE_999.'
 title: neon site code
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: neon_site_code
 domain_of:

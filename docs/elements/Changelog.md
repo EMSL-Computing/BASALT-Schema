@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:changelog](https://EMSL-Computing.github.io/BASALT-Schema/changelog)
+URI: [basalt_schema:changelog](https://emsl-computing.github.io/BASALT-Schema/elements/changelog)
 Alias: changelog
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: changelog
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: changelog
 <details>
 ```yaml
 name: changelog
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: changelog
 owner: Changelog

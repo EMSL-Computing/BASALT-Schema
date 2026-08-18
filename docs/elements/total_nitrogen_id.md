@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:total_nitrogen_id](https://EMSL-Computing.github.io/BASALT-Schema/total_nitrogen_id)
+URI: [basalt_schema:total_nitrogen_id](https://emsl-computing.github.io/BASALT-Schema/elements/total_nitrogen_id)
 Alias: total_nitrogen_id
 
 <!-- no inheritance hierarchy -->
@@ -17,9 +17,9 @@ Alias: total_nitrogen_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ElementalAnalysisProduct](ElementalAnalysisProduct.md) | Elemental analysis product, typically derived via combustion or similar instr... |  no  |
 | [MAOMProduct](MAOMProduct.md) | Mineral-Associated Organic Matter (MAOM) analysis product, typically derived ... |  no  |
 | [WEOMProduct](WEOMProduct.md) | Water Extractable Organic Matter (WEOM) analysis product, typically derived v... |  no  |
+| [ElementalAnalysisProduct](ElementalAnalysisProduct.md) | Elemental analysis product, typically derived via combustion or similar instr... |  no  |
 
 
 

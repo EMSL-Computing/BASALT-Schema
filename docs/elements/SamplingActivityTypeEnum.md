@@ -7,7 +7,7 @@ _Types of sampling activities_
 
 
 
-URI: [basalt_schema:SamplingActivityTypeEnum](https://EMSL-Computing.github.io/BASALT-Schema/SamplingActivityTypeEnum)
+URI: [basalt_schema:SamplingActivityTypeEnum](https://emsl-computing.github.io/BASALT-Schema/elements/SamplingActivityTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -39,7 +39,7 @@ URI: [basalt_schema:SamplingActivityTypeEnum](https://EMSL-Computing.github.io/B
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -52,7 +52,7 @@ URI: [basalt_schema:SamplingActivityTypeEnum](https://EMSL-Computing.github.io/B
 ```yaml
 name: SamplingActivityTypeEnum
 description: Types of sampling activities
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   soil:

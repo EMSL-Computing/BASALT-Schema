@@ -13,7 +13,7 @@ _the activity's media_ref slot.  Per-well data is volumes and replicate info._
 
 
 
-URI: [basalt_schema:AMP2WellMetadata](https://EMSL-Computing.github.io/BASALT-Schema/AMP2WellMetadata)
+URI: [basalt_schema:AMP2WellMetadata](https://emsl-computing.github.io/BASALT-Schema/elements/AMP2WellMetadata)
 
 
 
@@ -99,7 +99,7 @@ URI: [basalt_schema:AMP2WellMetadata](https://EMSL-Computing.github.io/BASALT-Sc
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -130,7 +130,7 @@ description: 'AMP2-specific per-well metadata.
   Minimal   media composition comes from the Media entity referenced via
 
   the activity''s media_ref slot.  Per-well data is volumes and replicate info.'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: WellMetadata
 attributes:
   media_ref:
@@ -140,7 +140,7 @@ attributes:
       NULL -> fall back to plate-level AMP2PlateSetupActivity.media_ref.
 
       Non-null -> this well uses a different media batch.'
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     domain_of:
     - AMP2PlateSetupActivity
     - AMP2WellMetadata
@@ -149,7 +149,7 @@ attributes:
   media_volume_ul:
     name: media_volume_ul
     description: Volume of media added to this well (microlitres)
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     rank: 1000
     domain_of:
     - AMP2WellMetadata
@@ -159,7 +159,7 @@ attributes:
   inoculum_volume_ul:
     name: inoculum_volume_ul
     description: Volume of inoculum added (0 for blanks)
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     rank: 1000
     domain_of:
     - AMP2WellMetadata
@@ -170,7 +170,7 @@ attributes:
     description: 'Optional FK to the specific sample in this well, if wells contain
 
       different samples.  NULL if all wells use the same inoculum.'
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     domain_of:
     - ProcessedData
     - AMP2WellMetadata
@@ -181,7 +181,7 @@ attributes:
     description: 'Per-well treatments if applicable (e.g. different mineral concentrations).
 
       NULL for uniform-treatment plates.'
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     rank: 1000
     domain_of:
     - AMP2WellMetadata
@@ -201,7 +201,7 @@ description: 'AMP2-specific per-well metadata.
   Minimal   media composition comes from the Media entity referenced via
 
   the activity''s media_ref slot.  Per-well data is volumes and replicate info.'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: WellMetadata
 attributes:
   media_ref:
@@ -211,7 +211,7 @@ attributes:
       NULL -> fall back to plate-level AMP2PlateSetupActivity.media_ref.
 
       Non-null -> this well uses a different media batch.'
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     alias: media_ref
     owner: AMP2WellMetadata
     domain_of:
@@ -222,7 +222,7 @@ attributes:
   media_volume_ul:
     name: media_volume_ul
     description: Volume of media added to this well (microlitres)
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     rank: 1000
     alias: media_volume_ul
     owner: AMP2WellMetadata
@@ -234,7 +234,7 @@ attributes:
   inoculum_volume_ul:
     name: inoculum_volume_ul
     description: Volume of inoculum added (0 for blanks)
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     rank: 1000
     alias: inoculum_volume_ul
     owner: AMP2WellMetadata
@@ -247,7 +247,7 @@ attributes:
     description: 'Optional FK to the specific sample in this well, if wells contain
 
       different samples.  NULL if all wells use the same inoculum.'
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     alias: sample_id
     owner: AMP2WellMetadata
     domain_of:
@@ -260,7 +260,7 @@ attributes:
     description: 'Per-well treatments if applicable (e.g. different mineral concentrations).
 
       NULL for uniform-treatment plates.'
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     rank: 1000
     alias: treatments
     owner: AMP2WellMetadata
@@ -271,7 +271,7 @@ attributes:
   position:
     name: position
     description: Well position (e.g. "A01", "H12")
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     rank: 1000
     alias: position
     owner: AMP2WellMetadata
@@ -283,7 +283,7 @@ attributes:
   well_type:
     name: well_type
     description: Role of this well   "sample", "blank", "uninoculated_control", "standard"
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     rank: 1000
     alias: well_type
     owner: AMP2WellMetadata
@@ -293,7 +293,7 @@ attributes:
   replicate_group:
     name: replicate_group
     description: Identifier linking technical replicates (e.g. "rep1", "rep2")
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     rank: 1000
     alias: replicate_group
     owner: AMP2WellMetadata

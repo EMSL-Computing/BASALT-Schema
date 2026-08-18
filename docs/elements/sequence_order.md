@@ -17,7 +17,7 @@ _       ADD COLUMN sequence_order INTEGER;_
 
 
 
-URI: [basalt_schema:sequence_order](https://EMSL-Computing.github.io/BASALT-Schema/sequence_order)
+URI: [basalt_schema:sequence_order](https://emsl-computing.github.io/BASALT-Schema/elements/sequence_order)
 Alias: sequence_order
 
 <!-- no inheritance hierarchy -->
@@ -31,15 +31,15 @@ Alias: sequence_order
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | X-ray Diffraction (XRD) mineralogical analysis activity |  no  |
+| [PlateDataGenerationActivity](PlateDataGenerationActivity.md) | Abstract base for plate measurement activities |  no  |
+| [DataGenerationActivity](DataGenerationActivity.md) | Abstract base for any data generation activity (physical to digital) |  no  |
 | [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | Abstract base class for X-ray analytical methods including XRF (elemental) |  no  |
 | [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | AMP2 plate measurement (OD, fluorescence, flow cytometry) |  no  |
-| [NucleotideSequencing](NucleotideSequencing.md) | A lab activity in which DNA or RNA that was extracted from a sample is sequen... |  no  |
 | [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | X-ray Fluorescence (XRF) elemental analysis activity |  no  |
-| [DataGenerationActivity](DataGenerationActivity.md) | Abstract base for any data generation activity (physical to digital) |  no  |
+| [NucleotideSequencing](NucleotideSequencing.md) | A lab activity in which DNA or RNA that was extracted from a sample is sequen... |  no  |
+| [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | A record of the mass spectrometry run that generates a raw data product |  no  |
 | [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |  no  |
 | [RespirationDataGenerationActivity](RespirationDataGenerationActivity.md) | Data generation activity for soil respiration analysis |  no  |
-| [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | A record of the mass spectrometry run that generates a raw data product |  no  |
-| [PlateDataGenerationActivity](PlateDataGenerationActivity.md) | Abstract base for plate measurement activities |  no  |
 
 
 
@@ -78,7 +78,7 @@ Alias: sequence_order
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -101,7 +101,7 @@ name: sequence_order
 description: "Integer ordering within a temporal series for the same analyte.\nLower\
   \ = earlier in series. Use when acquisition_time alone is insufficient.\n\nDDL:\
   \ ALTER TABLE \"DataGenerationActivity\"\n       ADD COLUMN sequence_order INTEGER;"
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: sequence_order
 domain_of:

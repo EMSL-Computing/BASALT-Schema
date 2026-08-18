@@ -9,7 +9,7 @@ _Van Genuchten shape parameter alpha (1/cm). Controls the inverse of the air-ent
 
 
 
-URI: [basalt_schema:alpha](https://EMSL-Computing.github.io/BASALT-Schema/alpha)
+URI: [basalt_schema:alpha](https://emsl-computing.github.io/BASALT-Schema/elements/alpha)
 Alias: alpha
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: alpha
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -90,7 +90,7 @@ Alias: alpha
 name: alpha
 description: Van Genuchten shape parameter alpha (1/cm). Controls the inverse of the
   air-entry suction; typically fitted by HYPROP-FIT or similar software.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: alpha
 owner: HydraulicPropertiesProduct

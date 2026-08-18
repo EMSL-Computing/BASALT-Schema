@@ -9,7 +9,7 @@ _Name or reference for the hydroponic or in vitro culture rooting medium; can be
 
 
 
-URI: [basalt_schema:cult_root_med](https://EMSL-Computing.github.io/BASALT-Schema/cult_root_med)
+URI: [basalt_schema:cult_root_med](https://emsl-computing.github.io/BASALT-Schema/elements/cult_root_med)
 Alias: cult_root_med
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: cult_root_med
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: cult_root_med
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ description: Name or reference for the hydroponic or in vitro culture rooting me
   Murashige and Skoog medium. If the medium has not been formally published use the
   rooting medium descriptors.
 title: culture rooting medium
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: cult_root_med
 domain_of:

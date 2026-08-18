@@ -9,7 +9,7 @@ _Description of life stage of host_
 
 
 
-URI: [basalt_schema:host_life_stage](https://EMSL-Computing.github.io/BASALT-Schema/host_life_stage)
+URI: [basalt_schema:host_life_stage](https://emsl-computing.github.io/BASALT-Schema/elements/host_life_stage)
 Alias: host_life_stage
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: host_life_stage
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
 
 
 
@@ -64,7 +64,7 @@ Alias: host_life_stage
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ Alias: host_life_stage
 name: host_life_stage
 description: Description of life stage of host
 title: host life stage
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: host_life_stage
 domain_of:

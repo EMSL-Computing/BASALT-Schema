@@ -1,5 +1,5 @@
 ---
-id: https://EMSL-Computing.github.io/BASALT-Schema/slots
+id: https://emsl-computing.github.io/BASALT-Schema/slots
 name: basalt-schema-slots
 title: Slot definitions for the BASALT Schema
 description: |-
@@ -7,11 +7,11 @@ description: |-
   maintainability and reusability.
 license: MIT
 see_also:
-  - https://EMSL-Computing.github.io/BASALT-Schema
+  - https://emsl-computing.github.io/BASALT-Schema
   - https://github.com/EMSL-Computing/BASALT-Schema
 
 prefixes:
-  basalt_schema: https://EMSL-Computing.github.io/BASALT-Schema/
+  basalt_schema: https://emsl-computing.github.io/BASALT-Schema/elements/
   linkml: https://w3id.org/linkml/
   MIXS: https://w3id.org/mixs/
 

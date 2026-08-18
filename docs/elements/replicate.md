@@ -9,7 +9,7 @@ _The replicate number of the sample or measurement, if applicable._
 
 
 
-URI: [basalt_schema:replicate](https://EMSL-Computing.github.io/BASALT-Schema/replicate)
+URI: [basalt_schema:replicate](https://emsl-computing.github.io/BASALT-Schema/elements/replicate)
 Alias: replicate
 
 <!-- no inheritance hierarchy -->
@@ -22,13 +22,13 @@ Alias: replicate
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) | Nitrogen analysis product, typically derived via colorimetric assay of soil e... |  no  |
 | [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) | Phosphorus analysis product, typically derived via colorimetric assay of soil... |  no  |
-| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  yes  |
 | [CoreSection](CoreSection.md) | A section of a core sample (TOP, MID, BTM) |  no  |
+| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  yes  |
 | [MicrobialBiomassProduct](MicrobialBiomassProduct.md) | Microbial biomass analysis product, typically derived via chloroform fumigati... |  no  |
 | [WEOMProduct](WEOMProduct.md) | Water Extractable Organic Matter (WEOM) analysis product, typically derived v... |  no  |
 | [MAOMProduct](MAOMProduct.md) | Mineral-Associated Organic Matter (MAOM) analysis product, typically derived ... |  no  |
-| [NitrogenAnalysisProduct](NitrogenAnalysisProduct.md) | Nitrogen analysis product, typically derived via colorimetric assay of soil e... |  no  |
 
 
 
@@ -71,7 +71,7 @@ Alias: replicate
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -94,7 +94,7 @@ name: replicate
 description: The replicate number of the sample or measurement, if applicable.
 todos:
 - reconcile replicate modelling
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: replicate
 domain_of:

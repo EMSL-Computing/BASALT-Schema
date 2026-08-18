@@ -7,7 +7,7 @@ _The stationary phase used in chromatography._
 
 
 
-URI: [basalt_schema:StationaryPhaseEnum](https://EMSL-Computing.github.io/BASALT-Schema/StationaryPhaseEnum)
+URI: [basalt_schema:StationaryPhaseEnum](https://emsl-computing.github.io/BASALT-Schema/elements/StationaryPhaseEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -59,7 +59,7 @@ URI: [basalt_schema:StationaryPhaseEnum](https://EMSL-Computing.github.io/BASALT
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -72,7 +72,7 @@ URI: [basalt_schema:StationaryPhaseEnum](https://EMSL-Computing.github.io/BASALT
 ```yaml
 name: StationaryPhaseEnum
 description: The stationary phase used in chromatography.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   BEH-HILIC:

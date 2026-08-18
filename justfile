@@ -40,7 +40,12 @@ src := "src"
 dest := "project"
 pymodel := src / schema_name / "datamodel"
 source_schema_path := source_schema_dir / schema_name + ".yaml"
-docdir := "docs/elements"  # Directory for generated documentation
+# Directory for generated documentation. Must stay in sync with the trailing
+# path segment of the `basalt_schema` prefix declared in every
+# src/basalt_schema/schema/*.yaml module (.../BASALT-Schema/elements/):
+# element URIs are built from that prefix, so if the two disagree every
+# "URI:" link on the published site 404s.
+docdir := "docs/elements"
 distrib_schema_path := "docs/schema"  # Directory for publishing schema artifacts
 
 # ============== Project recipes ==============

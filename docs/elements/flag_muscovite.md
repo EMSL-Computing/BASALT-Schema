@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_muscovite](https://EMSL-Computing.github.io/BASALT-Schema/flag_muscovite)
+URI: [basalt_schema:flag_muscovite](https://emsl-computing.github.io/BASALT-Schema/elements/flag_muscovite)
 Alias: flag_muscovite
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_muscovite
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_muscovite
 <details>
 ```yaml
 name: flag_muscovite
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_muscovite
 owner: XRDPhaseProduct

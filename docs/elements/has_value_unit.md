@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:has_value_unit](https://EMSL-Computing.github.io/BASALT-Schema/has_value_unit)
+URI: [basalt_schema:has_value_unit](https://emsl-computing.github.io/BASALT-Schema/elements/has_value_unit)
 Alias: has_value_unit
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: has_value_unit
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: has_value_unit
 <details>
 ```yaml
 name: has_value_unit
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: has_value_unit
 owner: QuantityValue

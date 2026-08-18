@@ -9,7 +9,7 @@ _Information about treatment involving exposure of plants to varying levels of p
 
 
 
-URI: [basalt_schema:ph_regm](https://EMSL-Computing.github.io/BASALT-Schema/ph_regm)
+URI: [basalt_schema:ph_regm](https://emsl-computing.github.io/BASALT-Schema/elements/ph_regm)
 Alias: ph_regm
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: ph_regm
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ description: Information about treatment involving exposure of plants to varying
   was repeated, how long each treatment lasted, and the start and end time of the
   entire treatment; can include multiple regimen
 title: pH regimen
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: ph_regm
 domain_of:

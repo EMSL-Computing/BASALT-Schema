@@ -9,7 +9,7 @@ _Visible waveband radiance and irradiance measurements in the water column. Prov
 
 
 
-URI: [basalt_schema:down_par](https://EMSL-Computing.github.io/BASALT-Schema/down_par)
+URI: [basalt_schema:down_par](https://emsl-computing.github.io/BASALT-Schema/elements/down_par)
 Alias: down_par
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: down_par
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: down_par
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ name: down_par
 description: Visible waveband radiance and irradiance measurements in the water column.
   Provide value and unit, any unit is valid.
 title: downward PAR
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: down_par
 domain_of:

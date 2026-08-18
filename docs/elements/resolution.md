@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:resolution](https://EMSL-Computing.github.io/BASALT-Schema/resolution)
+URI: [basalt_schema:resolution](https://emsl-computing.github.io/BASALT-Schema/elements/resolution)
 Alias: resolution
 
 <!-- no inheritance hierarchy -->
@@ -57,7 +57,7 @@ Alias: resolution
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -77,7 +77,7 @@ Alias: resolution
 <details>
 ```yaml
 name: resolution
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: resolution
 domain_of:

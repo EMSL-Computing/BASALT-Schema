@@ -9,7 +9,7 @@ _L7 task_instance_id for the activity, if known._
 
 
 
-URI: [basalt_schema:lims_task_instance_id](https://EMSL-Computing.github.io/BASALT-Schema/lims_task_instance_id)
+URI: [basalt_schema:lims_task_instance_id](https://emsl-computing.github.io/BASALT-Schema/elements/lims_task_instance_id)
 Alias: lims_task_instance_id
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: lims_task_instance_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -82,7 +82,7 @@ Alias: lims_task_instance_id
 ```yaml
 name: lims_task_instance_id
 description: L7 task_instance_id for the activity, if known.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: lims_task_instance_id
 domain_of:

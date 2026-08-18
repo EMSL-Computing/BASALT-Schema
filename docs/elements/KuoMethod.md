@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:KuoMethod](https://EMSL-Computing.github.io/BASALT-Schema/KuoMethod)
+URI: [basalt_schema:KuoMethod](https://emsl-computing.github.io/BASALT-Schema/elements/KuoMethod)
 
 
 
@@ -72,7 +72,7 @@ URI: [basalt_schema:KuoMethod](https://EMSL-Computing.github.io/BASALT-Schema/Ku
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -98,7 +98,7 @@ URI: [basalt_schema:KuoMethod](https://EMSL-Computing.github.io/BASALT-Schema/Ku
 <details>
 ```yaml
 name: KuoMethod
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Method
 slots:
 - location
@@ -106,7 +106,7 @@ slots:
 attributes:
   detection_limit:
     name: detection_limit
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     domain_of:
     - KuoMethod
@@ -114,7 +114,7 @@ attributes:
     required: true
   wavelength:
     name: wavelength
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     domain_of:
     - EnzymeActivityMethod
     - KuoMethod
@@ -128,12 +128,12 @@ attributes:
 <details>
 ```yaml
 name: KuoMethod
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Method
 attributes:
   detection_limit:
     name: detection_limit
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     alias: detection_limit
     owner: KuoMethod
@@ -143,7 +143,7 @@ attributes:
     required: true
   wavelength:
     name: wavelength
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     alias: wavelength
     owner: KuoMethod
     domain_of:
@@ -154,7 +154,7 @@ attributes:
     name: location
     todos:
     - used on many method classes. no description. what was this meant to mean?
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: location
     owner: KuoMethod
@@ -175,7 +175,7 @@ attributes:
     name: method
     todos:
     - what does this mean
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: method
     owner: KuoMethod
@@ -187,7 +187,7 @@ attributes:
     name: analytic
     todos:
     - what does this mean
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: analytic
     owner: KuoMethod

@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:DeviceTypeEnum](https://EMSL-Computing.github.io/BASALT-Schema/DeviceTypeEnum)
+URI: [basalt_schema:DeviceTypeEnum](https://emsl-computing.github.io/BASALT-Schema/elements/DeviceTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -37,7 +37,7 @@ URI: [basalt_schema:DeviceTypeEnum](https://EMSL-Computing.github.io/BASALT-Sche
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -49,7 +49,7 @@ URI: [basalt_schema:DeviceTypeEnum](https://EMSL-Computing.github.io/BASALT-Sche
 <details>
 ```yaml
 name: DeviceTypeEnum
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   orbital_shaker:

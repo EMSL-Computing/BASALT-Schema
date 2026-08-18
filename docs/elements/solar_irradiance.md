@@ -9,7 +9,7 @@ _Solar irradiance is the power per unit area (surface power density) received fr
 
 
 
-URI: [basalt_schema:solar_irradiance](https://EMSL-Computing.github.io/BASALT-Schema/solar_irradiance)
+URI: [basalt_schema:solar_irradiance](https://emsl-computing.github.io/BASALT-Schema/elements/solar_irradiance)
 Alias: solar_irradiance
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: solar_irradiance
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
 | [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: solar_irradiance
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -94,7 +94,7 @@ description: 'Solar irradiance is the power per unit area (surface power density
   received from the Sun in the form of electromagnetic radiation in the wavelength
   range of the measuring instrument. (Unit: kW/m2/d or erg/cm2/s'
 title: solar irradiance
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: solar_irradiance
 domain_of:

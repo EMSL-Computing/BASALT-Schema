@@ -9,7 +9,7 @@ _The portion of the original sample used in creating this processed sample (e.g.
 
 
 
-URI: [basalt_schema:sampled_portion](https://EMSL-Computing.github.io/BASALT-Schema/sampled_portion)
+URI: [basalt_schema:sampled_portion](https://emsl-computing.github.io/BASALT-Schema/elements/sampled_portion)
 Alias: sampled_portion
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: sampled_portion
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  no  |
 | [CoreSection](CoreSection.md) | A section of a core sample (TOP, MID, BTM) |  no  |
+| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: sampled_portion
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: sampled_portion
 name: sampled_portion
 description: The portion of the original sample used in creating this processed sample
   (e.g., "interlayer", "supernatant", "pellet").
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: sampled_portion
 domain_of:

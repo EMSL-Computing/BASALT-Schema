@@ -9,7 +9,7 @@ _Description of the mobile phases used in the chromatography method (e.g., solve
 
 
 
-URI: [basalt_schema:mobile_phases](https://EMSL-Computing.github.io/BASALT-Schema/mobile_phases)
+URI: [basalt_schema:mobile_phases](https://emsl-computing.github.io/BASALT-Schema/elements/mobile_phases)
 Alias: mobile_phases
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: mobile_phases
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: mobile_phases
 name: mobile_phases
 description: Description of the mobile phases used in the chromatography method (e.g.,
   solvents, gradients)
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: mobile_phases
 domain_of:

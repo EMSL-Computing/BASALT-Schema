@@ -53,7 +53,7 @@ _    xrf_analysis:  # Add to routemethod permissible_values_
 
 
 
-URI: [basalt_schema:XRFDataGenerationActivity](https://EMSL-Computing.github.io/BASALT-Schema/XRFDataGenerationActivity)
+URI: [basalt_schema:XRFDataGenerationActivity](https://emsl-computing.github.io/BASALT-Schema/elements/XRFDataGenerationActivity)
 
 
 
@@ -167,7 +167,7 @@ URI: [basalt_schema:XRFDataGenerationActivity](https://EMSL-Computing.github.io/
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -206,7 +206,7 @@ description: "X-ray Fluorescence (XRF) elemental analysis activity.\n\nXRF measu
   \ correction method (fundamental parameters, empirical)\n  - Calibration date\n\
   \  - Operator ID\n\nRequired enum additions to enums.yaml:\n  routemethod:\n   \
   \ xrf_analysis:  # Add to routemethod permissible_values"
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: XRayDataGenerationActivity
 
 ```
@@ -230,7 +230,7 @@ description: "X-ray Fluorescence (XRF) elemental analysis activity.\n\nXRF measu
   \ correction method (fundamental parameters, empirical)\n  - Calibration date\n\
   \  - Operator ID\n\nRequired enum additions to enums.yaml:\n  routemethod:\n   \
   \ xrf_analysis:  # Add to routemethod permissible_values"
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: XRayDataGenerationActivity
 attributes:
   sequence_order:
@@ -239,7 +239,7 @@ attributes:
       Lower = earlier in series. Use when acquisition_time alone is insufficient.\n\
       \nDDL: ALTER TABLE \"DataGenerationActivity\"\n       ADD COLUMN sequence_order\
       \ INTEGER;"
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sequence_order
     owner: XRFDataGenerationActivity
@@ -250,7 +250,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: XRFDataGenerationActivity
@@ -280,7 +280,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: XRFDataGenerationActivity
@@ -312,7 +312,7 @@ attributes:
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: protocol_url
     owner: XRFDataGenerationActivity
@@ -323,7 +323,7 @@ attributes:
   protocol_version:
     name: protocol_version
     description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: protocol_version
     owner: XRFDataGenerationActivity
@@ -333,7 +333,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: XRFDataGenerationActivity
@@ -413,7 +413,7 @@ attributes:
     required: true
   analyte_id:
     name: analyte_id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: analyte_id
     owner: XRFDataGenerationActivity
@@ -422,7 +422,7 @@ attributes:
     range: ProcessedSample
   acquisition_start_time:
     name: acquisition_start_time
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: acquisition_start_time
     owner: XRFDataGenerationActivity
@@ -432,7 +432,7 @@ attributes:
     required: true
   acquisition_end_time:
     name: acquisition_end_time
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: acquisition_end_time
     owner: XRFDataGenerationActivity
@@ -442,7 +442,7 @@ attributes:
     required: true
   instrument_used:
     name: instrument_used
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: instrument_used
     owner: XRFDataGenerationActivity
@@ -451,7 +451,7 @@ attributes:
     range: Instrument
   instrument_operator_id:
     name: instrument_operator_id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: instrument_operator_id
     owner: XRFDataGenerationActivity

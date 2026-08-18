@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:rotation](https://EMSL-Computing.github.io/BASALT-Schema/rotation)
+URI: [basalt_schema:rotation](https://emsl-computing.github.io/BASALT-Schema/elements/rotation)
 Alias: rotation
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: rotation
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: rotation
 <details>
 ```yaml
 name: rotation
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: rotation
 owner: XrayComputedTomographyMethod

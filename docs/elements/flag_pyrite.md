@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_pyrite](https://EMSL-Computing.github.io/BASALT-Schema/flag_pyrite)
+URI: [basalt_schema:flag_pyrite](https://emsl-computing.github.io/BASALT-Schema/elements/flag_pyrite)
 Alias: flag_pyrite
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_pyrite
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_pyrite
 <details>
 ```yaml
 name: flag_pyrite
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_pyrite
 owner: XRDPhaseProduct

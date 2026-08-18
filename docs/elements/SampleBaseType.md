@@ -7,7 +7,7 @@ _Base types for sample entities_
 
 
 
-URI: [basalt_schema:SampleBaseType](https://EMSL-Computing.github.io/BASALT-Schema/SampleBaseType)
+URI: [basalt_schema:SampleBaseType](https://emsl-computing.github.io/BASALT-Schema/elements/SampleBaseType)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -36,7 +36,7 @@ URI: [basalt_schema:SampleBaseType](https://EMSL-Computing.github.io/BASALT-Sche
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -49,7 +49,7 @@ URI: [basalt_schema:SampleBaseType](https://EMSL-Computing.github.io/BASALT-Sche
 ```yaml
 name: SampleBaseType
 description: Base types for sample entities
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   sample:

@@ -11,7 +11,7 @@ _NULL for uniform-treatment plates._
 
 
 
-URI: [basalt_schema:treatments](https://EMSL-Computing.github.io/BASALT-Schema/treatments)
+URI: [basalt_schema:treatments](https://emsl-computing.github.io/BASALT-Schema/elements/treatments)
 Alias: treatments
 
 <!-- no inheritance hierarchy -->
@@ -71,7 +71,7 @@ Alias: treatments
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -94,7 +94,7 @@ name: treatments
 description: 'Per-well treatments if applicable (e.g. different mineral concentrations).
 
   NULL for uniform-treatment plates.'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: treatments
 owner: AMP2WellMetadata

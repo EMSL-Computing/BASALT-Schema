@@ -9,7 +9,7 @@ _Provide the scientific name (genus and species) of the host organism._
 
 
 
-URI: [basalt_schema:organism_name](https://EMSL-Computing.github.io/BASALT-Schema/organism_name)
+URI: [basalt_schema:organism_name](https://emsl-computing.github.io/BASALT-Schema/elements/organism_name)
 Alias: organism_name
 
 <!-- no inheritance hierarchy -->
@@ -67,7 +67,7 @@ Alias: organism_name
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: organism_name
 name: organism_name
 description: Provide the scientific name (genus and species) of the host organism.
 title: organism name
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 aliases:
 - scientific_name
 - species_name

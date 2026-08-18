@@ -9,7 +9,7 @@ _The title of the study/proposal._
 
 
 
-URI: [basalt_schema:title](https://EMSL-Computing.github.io/BASALT-Schema/title)
+URI: [basalt_schema:title](https://emsl-computing.github.io/BASALT-Schema/elements/title)
 Alias: title
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: title
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: title
 ```yaml
 name: title
 description: The title of the study/proposal.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: title
 owner: Study

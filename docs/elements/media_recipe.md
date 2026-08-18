@@ -11,7 +11,7 @@ _Examples: "M9 media with 1% Glucose", "rich media with 10% LB and 90% glycerol"
 
 
 
-URI: [basalt_schema:media_recipe](https://EMSL-Computing.github.io/BASALT-Schema/media_recipe)
+URI: [basalt_schema:media_recipe](https://emsl-computing.github.io/BASALT-Schema/elements/media_recipe)
 Alias: media_recipe
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: media_recipe
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ name: media_recipe
 description: 'Reference or description of recipe used to prepare media.
 
   Examples: "M9 media with 1% Glucose", "rich media with 10% LB and 90% glycerol"'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: media_recipe
 domain_of:

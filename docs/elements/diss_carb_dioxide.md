@@ -9,7 +9,7 @@ _Concentration of dissolved carbon dioxide in the sample or liquid portion of th
 
 
 
-URI: [basalt_schema:diss_carb_dioxide](https://EMSL-Computing.github.io/BASALT-Schema/diss_carb_dioxide)
+URI: [basalt_schema:diss_carb_dioxide](https://emsl-computing.github.io/BASALT-Schema/elements/diss_carb_dioxide)
 Alias: diss_carb_dioxide
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: diss_carb_dioxide
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ name: diss_carb_dioxide
 description: 'Concentration of dissolved carbon dioxide in the sample or liquid portion
   of the sample (Unit: umol/L or mg/L)'
 title: dissolved carbon dioxide
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: diss_carb_dioxide
 domain_of:

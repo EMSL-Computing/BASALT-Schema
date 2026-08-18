@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:check_standard_spacing](https://EMSL-Computing.github.io/BASALT-Schema/check_standard_spacing)
+URI: [basalt_schema:check_standard_spacing](https://emsl-computing.github.io/BASALT-Schema/elements/check_standard_spacing)
 Alias: check_standard_spacing
 
 <!-- no inheritance hierarchy -->

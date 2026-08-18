@@ -9,7 +9,7 @@ _Information about the sediment type based on major constituents_
 
 
 
-URI: [basalt_schema:sediment_type](https://EMSL-Computing.github.io/BASALT-Schema/sediment_type)
+URI: [basalt_schema:sediment_type](https://emsl-computing.github.io/BASALT-Schema/elements/sediment_type)
 Alias: sediment_type
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: sediment_type
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: sediment_type
 name: sediment_type
 description: Information about the sediment type based on major constituents
 title: sediment type
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: sediment_type
 domain_of:

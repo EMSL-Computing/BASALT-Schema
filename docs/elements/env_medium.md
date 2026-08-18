@@ -9,7 +9,7 @@ _'Report the environmental material immediately surrounding the sample or specim
 
 
 
-URI: [basalt_schema:env_medium](https://EMSL-Computing.github.io/BASALT-Schema/env_medium)
+URI: [basalt_schema:env_medium](https://emsl-computing.github.io/BASALT-Schema/elements/env_medium)
 Alias: env_medium
 
 <!-- no inheritance hierarchy -->
@@ -22,18 +22,18 @@ Alias: env_medium
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
 | [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -79,7 +79,7 @@ Alias: env_medium
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -104,7 +104,7 @@ description: '''Report the environmental material immediately surrounding the sa
   material'''' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation
   about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'''
 title: environmental medium
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: env_medium
 domain_of:

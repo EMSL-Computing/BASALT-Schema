@@ -9,7 +9,7 @@ _Mean annual temperature (Unit: C)_
 
 
 
-URI: [basalt_schema:annual_temp](https://EMSL-Computing.github.io/BASALT-Schema/annual_temp)
+URI: [basalt_schema:annual_temp](https://emsl-computing.github.io/BASALT-Schema/elements/annual_temp)
 Alias: annual_temp
 
 <!-- no inheritance hierarchy -->
@@ -73,7 +73,7 @@ Alias: annual_temp
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -95,7 +95,7 @@ Alias: annual_temp
 name: annual_temp
 description: 'Mean annual temperature (Unit: C)'
 title: mean annual temperature
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 aliases:
 - average annual temperature
 rank: 1000

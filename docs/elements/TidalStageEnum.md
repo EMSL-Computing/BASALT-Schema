@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:TidalStageEnum](https://EMSL-Computing.github.io/BASALT-Schema/TidalStageEnum)
+URI: [basalt_schema:TidalStageEnum](https://emsl-computing.github.io/BASALT-Schema/elements/TidalStageEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -39,7 +39,7 @@ URI: [basalt_schema:TidalStageEnum](https://EMSL-Computing.github.io/BASALT-Sche
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -51,7 +51,7 @@ URI: [basalt_schema:TidalStageEnum](https://EMSL-Computing.github.io/BASALT-Sche
 <details>
 ```yaml
 name: TidalStageEnum
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   low_tide:

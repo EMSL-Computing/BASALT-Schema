@@ -9,7 +9,7 @@ _Reference or method used in determining total organic carbon_
 
 
 
-URI: [basalt_schema:tot_org_c_meth](https://EMSL-Computing.github.io/BASALT-Schema/tot_org_c_meth)
+URI: [basalt_schema:tot_org_c_meth](https://emsl-computing.github.io/BASALT-Schema/elements/tot_org_c_meth)
 Alias: tot_org_c_meth
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: tot_org_c_meth
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ Alias: tot_org_c_meth
 name: tot_org_c_meth
 description: Reference or method used in determining total organic carbon
 title: total organic carbon method
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: tot_org_c_meth
 domain_of:

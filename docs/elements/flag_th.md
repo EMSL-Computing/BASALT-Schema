@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_th](https://EMSL-Computing.github.io/BASALT-Schema/flag_th)
+URI: [basalt_schema:flag_th](https://emsl-computing.github.io/BASALT-Schema/elements/flag_th)
 Alias: flag_th
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_th
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_th
 <details>
 ```yaml
 name: flag_th
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_th
 owner: XRFElementalProduct

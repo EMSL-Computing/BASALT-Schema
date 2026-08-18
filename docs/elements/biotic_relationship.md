@@ -9,7 +9,7 @@ _Description of relationship(s) between the subject organism and other organism(
 
 
 
-URI: [basalt_schema:biotic_relationship](https://EMSL-Computing.github.io/BASALT-Schema/biotic_relationship)
+URI: [basalt_schema:biotic_relationship](https://emsl-computing.github.io/BASALT-Schema/elements/biotic_relationship)
 Alias: biotic_relationship
 
 <!-- no inheritance hierarchy -->
@@ -22,14 +22,14 @@ Alias: biotic_relationship
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  yes  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  yes  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 
@@ -73,7 +73,7 @@ Alias: biotic_relationship
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -99,7 +99,7 @@ description: Description of relationship(s) between the subject organism and oth
   Y. The target organism is the subject of the relationship and the other organism(s)
   is the object
 title: observed biotic relationship
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 aliases:
 - samp_biotic_relationship
 exact_mappings:
