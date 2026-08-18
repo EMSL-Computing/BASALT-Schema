@@ -1459,11 +1459,6 @@ enums:
         is_a: organic_layer
         title: Methanol layer
 
-  SampleRole:
-    permissible_values:
-      input_sample:
-      output_sample:
-
   SampleStoreTempEnum:
     description: Sample storage temperature conditions
     permissible_values:
