@@ -29,11 +29,11 @@ imports:
   - mass_spec
   - media_strain_culture_plate
   - metagenomics
-  - methods
+  - monet_data_generation_activities
   - products
   - sample_classes
   - biological_entity
-  # - sample_processing
+  - sample_processing
   - slots
   - study
   - value_tables
