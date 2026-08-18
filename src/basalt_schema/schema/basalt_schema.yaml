@@ -45,10 +45,9 @@ imports:
   - mass_spec
   - media_strain_culture_plate
   - metagenomics
-  - methods
   - products
+  - organism
   - sample_classes
-  - biological_entity
   - sample_processing
   - slots
   - study
