@@ -9,7 +9,7 @@ _Additional information pertaining to these data, including SP Project ID and Ta
 
 
 
-URI: [basalt_schema:additional_information](https://EMSL-Computing.github.io/BASALT-Schema/additional_information)
+URI: [basalt_schema:additional_information](https://emsl-computing.github.io/BASALT-Schema/elements/additional_information)
 Alias: additional_information
 
 <!-- no inheritance hierarchy -->
@@ -23,9 +23,9 @@ Alias: additional_information
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [MetagenomicsAnnotationProduct](MetagenomicsAnnotationProduct.md) | Top-level archive for functional annotation outputs (zip/tar stored in MinIO) |  no  |
-| [MetagenomicsGenePhylogenyProduct](MetagenomicsGenePhylogenyProduct.md) | Top-level archive for gene-based phylogeny outputs (zip/tar stored in MinIO) |  no  |
 | [MetagenomicsBinningProduct](MetagenomicsBinningProduct.md) | Top-level archive (zip/tar) for binning results stored in MinIO |  no  |
 | [MetagenomicsProduct](MetagenomicsProduct.md) | Abstract base for all metagenomics data products |  no  |
+| [MetagenomicsGenePhylogenyProduct](MetagenomicsGenePhylogenyProduct.md) | Top-level archive for gene-based phylogeny outputs (zip/tar stored in MinIO) |  no  |
 
 
 
@@ -64,7 +64,7 @@ Alias: additional_information
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ Alias: additional_information
 name: additional_information
 description: Additional information pertaining to these data, including SP Project
   ID and Taxon OID
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: additional_information
 domain_of:

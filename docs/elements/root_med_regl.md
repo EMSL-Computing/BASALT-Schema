@@ -9,7 +9,7 @@ _Growth regulators in the culture rooting medium such as cytokinins, auxins, gyb
 
 
 
-URI: [basalt_schema:root_med_regl](https://EMSL-Computing.github.io/BASALT-Schema/root_med_regl)
+URI: [basalt_schema:root_med_regl](https://emsl-computing.github.io/BASALT-Schema/elements/root_med_regl)
 Alias: root_med_regl
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: root_med_regl
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ description: Growth regulators in the culture rooting medium such as cytokinins,
   gybberellins, abscisic acid. Can be multivalued separated by ;. e.g. Naphthaleneacetic
   Acid 0.5 mg/L
 title: rooting medium regulators
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: root_med_regl
 domain_of:

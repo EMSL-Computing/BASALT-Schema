@@ -9,7 +9,7 @@ _Link to climate resource_
 
 
 
-URI: [basalt_schema:link_climate_info](https://EMSL-Computing.github.io/BASALT-Schema/link_climate_info)
+URI: [basalt_schema:link_climate_info](https://emsl-computing.github.io/BASALT-Schema/elements/link_climate_info)
 Alias: link_climate_info
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: link_climate_info
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: link_climate_info
 name: link_climate_info
 description: Link to climate resource
 title: link to climate information
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: link_climate_info
 domain_of:

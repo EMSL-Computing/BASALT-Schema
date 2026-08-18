@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_toc](https://EMSL-Computing.github.io/BASALT-Schema/flag_toc)
+URI: [basalt_schema:flag_toc](https://emsl-computing.github.io/BASALT-Schema/elements/flag_toc)
 Alias: flag_toc
 
 <!-- no inheritance hierarchy -->

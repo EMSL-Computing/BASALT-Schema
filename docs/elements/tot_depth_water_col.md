@@ -9,7 +9,7 @@ _Measurement of total depth of water column (Unit: m)_
 
 
 
-URI: [basalt_schema:tot_depth_water_col](https://EMSL-Computing.github.io/BASALT-Schema/tot_depth_water_col)
+URI: [basalt_schema:tot_depth_water_col](https://emsl-computing.github.io/BASALT-Schema/elements/tot_depth_water_col)
 Alias: tot_depth_water_col
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: tot_depth_water_col
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: tot_depth_water_col
 name: tot_depth_water_col
 description: 'Measurement of total depth of water column (Unit: m)'
 title: total depth of water column
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: tot_depth_water_col
 domain_of:

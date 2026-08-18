@@ -9,7 +9,7 @@ _Measurement of magnitude and direction of flow within a fluid. Provide value an
 
 
 
-URI: [basalt_schema:water_current](https://EMSL-Computing.github.io/BASALT-Schema/water_current)
+URI: [basalt_schema:water_current](https://emsl-computing.github.io/BASALT-Schema/elements/water_current)
 Alias: water_current
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: water_current
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: water_current
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ name: water_current
 description: Measurement of magnitude and direction of flow within a fluid. Provide
   value and unit, any unit is valid.
 title: water current
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: water_current
 domain_of:

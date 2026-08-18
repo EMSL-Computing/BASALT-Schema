@@ -9,7 +9,7 @@ _The taxonomic name of the organism(s) found living in mutualistic, commensalist
 
 
 
-URI: [basalt_schema:host_symbiont](https://EMSL-Computing.github.io/BASALT-Schema/host_symbiont)
+URI: [basalt_schema:host_symbiont](https://emsl-computing.github.io/BASALT-Schema/elements/host_symbiont)
 Alias: host_symbiont
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: host_symbiont
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ name: host_symbiont
 description: The taxonomic name of the organism(s) found living in mutualistic, commensalistic,
   or parasitic symbiosis with the specific host.
 title: observed host symbionts
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: host_symbiont
 domain_of:

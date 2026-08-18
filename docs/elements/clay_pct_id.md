@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:clay_pct_id](https://EMSL-Computing.github.io/BASALT-Schema/clay_pct_id)
+URI: [basalt_schema:clay_pct_id](https://emsl-computing.github.io/BASALT-Schema/elements/clay_pct_id)
 Alias: clay_pct_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: clay_pct_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: clay_pct_id
 <details>
 ```yaml
 name: clay_pct_id
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: clay_pct_id
 owner: TextureProduct

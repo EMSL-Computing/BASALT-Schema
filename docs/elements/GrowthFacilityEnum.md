@@ -7,7 +7,7 @@ _Types of growth facilities_
 
 
 
-URI: [basalt_schema:GrowthFacilityEnum](https://EMSL-Computing.github.io/BASALT-Schema/GrowthFacilityEnum)
+URI: [basalt_schema:GrowthFacilityEnum](https://emsl-computing.github.io/BASALT-Schema/elements/GrowthFacilityEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -49,7 +49,7 @@ URI: [basalt_schema:GrowthFacilityEnum](https://EMSL-Computing.github.io/BASALT-
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -62,7 +62,7 @@ URI: [basalt_schema:GrowthFacilityEnum](https://EMSL-Computing.github.io/BASALT-
 ```yaml
 name: GrowthFacilityEnum
 description: Types of growth facilities
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   field:

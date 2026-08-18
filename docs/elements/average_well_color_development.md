@@ -9,7 +9,7 @@ _Average Well Color Development (AWCD) metric for Ecoplate_
 
 
 
-URI: [basalt_schema:average_well_color_development](https://EMSL-Computing.github.io/BASALT-Schema/average_well_color_development)
+URI: [basalt_schema:average_well_color_development](https://emsl-computing.github.io/BASALT-Schema/elements/average_well_color_development)
 Alias: average_well_color_development
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: average_well_color_development
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -88,7 +88,7 @@ name: average_well_color_development
 description: Average Well Color Development (AWCD) metric for Ecoplate
 todos:
 - units
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: average_well_color_development
 domain_of:

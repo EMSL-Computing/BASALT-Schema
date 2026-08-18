@@ -9,7 +9,7 @@ _acquisition number_
 
 
 
-URI: [basalt_schema:aq](https://EMSL-Computing.github.io/BASALT-Schema/aq)
+URI: [basalt_schema:aq](https://emsl-computing.github.io/BASALT-Schema/elements/aq)
 Alias: aq
 
 <!-- no inheritance hierarchy -->
@@ -55,7 +55,7 @@ Alias: aq
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -78,7 +78,7 @@ name: aq
 description: acquisition number
 todos:
 - what is this supposed to mean
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: aq
 range: double

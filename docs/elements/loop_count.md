@@ -9,7 +9,7 @@ _Number of MS2 scans to be acquired between each full MS scan._
 
 
 
-URI: [basalt_schema:loop_count](https://EMSL-Computing.github.io/BASALT-Schema/loop_count)
+URI: [basalt_schema:loop_count](https://emsl-computing.github.io/BASALT-Schema/elements/loop_count)
 Alias: loop_count
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: loop_count
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: loop_count
 ```yaml
 name: loop_count
 description: Number of MS2 scans to be acquired between each full MS scan.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: loop_count
 domain_of:

@@ -9,7 +9,7 @@ _name of ontology or other controlled term provider_
 
 
 
-URI: [basalt_schema:controlled_term_provider](https://EMSL-Computing.github.io/BASALT-Schema/controlled_term_provider)
+URI: [basalt_schema:controlled_term_provider](https://emsl-computing.github.io/BASALT-Schema/elements/controlled_term_provider)
 Alias: controlled_term_provider
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: controlled_term_provider
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: controlled_term_provider
 ```yaml
 name: controlled_term_provider
 description: name of ontology or other controlled term provider
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: controlled_term_provider
 owner: ControlledTermValue

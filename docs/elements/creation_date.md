@@ -9,7 +9,7 @@ _Date the entity or preparation was created_
 
 
 
-URI: [basalt_schema:creation_date](https://EMSL-Computing.github.io/BASALT-Schema/creation_date)
+URI: [basalt_schema:creation_date](https://emsl-computing.github.io/BASALT-Schema/elements/creation_date)
 Alias: creation_date
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: creation_date
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -82,7 +82,7 @@ Alias: creation_date
 ```yaml
 name: creation_date
 description: Date the entity or preparation was created
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: creation_date
 domain_of:

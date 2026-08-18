@@ -9,7 +9,7 @@ _Concentration of bromide (Unit: ppm)_
 
 
 
-URI: [basalt_schema:bromide](https://EMSL-Computing.github.io/BASALT-Schema/bromide)
+URI: [basalt_schema:bromide](https://emsl-computing.github.io/BASALT-Schema/elements/bromide)
 Alias: bromide
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: bromide
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: bromide
 name: bromide
 description: 'Concentration of bromide (Unit: ppm)'
 title: bromide
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: bromide
 domain_of:

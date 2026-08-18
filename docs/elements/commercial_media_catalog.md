@@ -11,7 +11,7 @@ _Required if media_formulation is 'commercial', otherwise null._
 
 
 
-URI: [basalt_schema:commercial_media_catalog](https://EMSL-Computing.github.io/BASALT-Schema/commercial_media_catalog)
+URI: [basalt_schema:commercial_media_catalog](https://emsl-computing.github.io/BASALT-Schema/elements/commercial_media_catalog)
 Alias: commercial_media_catalog
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: commercial_media_catalog
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ name: commercial_media_catalog
 description: 'Reference to commercial media catalog entry if applicable.
 
   Required if media_formulation is ''commercial'', otherwise null.'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: commercial_media_catalog
 domain_of:

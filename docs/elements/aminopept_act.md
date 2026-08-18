@@ -9,7 +9,7 @@ _Measurement of aminopeptidase activity (Unit: mol/L/h)_
 
 
 
-URI: [basalt_schema:aminopept_act](https://EMSL-Computing.github.io/BASALT-Schema/aminopept_act)
+URI: [basalt_schema:aminopept_act](https://emsl-computing.github.io/BASALT-Schema/elements/aminopept_act)
 Alias: aminopept_act
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: aminopept_act
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: aminopept_act
 name: aminopept_act
 description: 'Measurement of aminopeptidase activity (Unit: mol/L/h)'
 title: aminopeptidase activity
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: aminopept_act
 domain_of:

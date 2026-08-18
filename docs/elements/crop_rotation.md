@@ -9,7 +9,7 @@ _Whether or not crop is rotated, and if yes, rotation schedule_
 
 
 
-URI: [basalt_schema:crop_rotation](https://EMSL-Computing.github.io/BASALT-Schema/crop_rotation)
+URI: [basalt_schema:crop_rotation](https://emsl-computing.github.io/BASALT-Schema/elements/crop_rotation)
 Alias: crop_rotation
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: crop_rotation
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: crop_rotation
 name: crop_rotation
 description: Whether or not crop is rotated, and if yes, rotation schedule
 title: crop rotation
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: crop_rotation
 domain_of:

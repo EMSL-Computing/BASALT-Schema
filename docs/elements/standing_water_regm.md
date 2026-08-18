@@ -9,7 +9,7 @@ _Treatment involving an exposure to standing water during a plant's life span; t
 
 
 
-URI: [basalt_schema:standing_water_regm](https://EMSL-Computing.github.io/BASALT-Schema/standing_water_regm)
+URI: [basalt_schema:standing_water_regm](https://emsl-computing.github.io/BASALT-Schema/elements/standing_water_regm)
 Alias: standing_water_regm
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: standing_water_regm
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ description: Treatment involving an exposure to standing water during a plant's 
   many times the treatment was repeated, how long each treatment lasted, and the start
   and end time of the entire treatment; can include multiple regimens
 title: standing water regimen
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: standing_water_regm
 domain_of:

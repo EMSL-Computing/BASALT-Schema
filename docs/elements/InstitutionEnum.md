@@ -7,7 +7,7 @@ _The organization that processed the sample / ran the pipeline / participated in
 
 
 
-URI: [basalt_schema:InstitutionEnum](https://EMSL-Computing.github.io/BASALT-Schema/InstitutionEnum)
+URI: [basalt_schema:InstitutionEnum](https://emsl-computing.github.io/BASALT-Schema/elements/InstitutionEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -48,7 +48,7 @@ URI: [basalt_schema:InstitutionEnum](https://EMSL-Computing.github.io/BASALT-Sch
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -62,7 +62,7 @@ URI: [basalt_schema:InstitutionEnum](https://EMSL-Computing.github.io/BASALT-Sch
 name: InstitutionEnum
 description: The organization that processed the sample / ran the pipeline / participated
   in the project.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   nmdc:

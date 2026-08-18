@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:mbc_id](https://EMSL-Computing.github.io/BASALT-Schema/mbc_id)
+URI: [basalt_schema:mbc_id](https://emsl-computing.github.io/BASALT-Schema/elements/mbc_id)
 Alias: mbc_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: mbc_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: mbc_id
 <details>
 ```yaml
 name: mbc_id
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: mbc_id
 owner: MicrobialBiomassProduct

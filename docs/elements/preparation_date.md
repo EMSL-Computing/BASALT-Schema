@@ -9,7 +9,7 @@ _Date the stock culture or entity was prepared_
 
 
 
-URI: [basalt_schema:preparation_date](https://EMSL-Computing.github.io/BASALT-Schema/preparation_date)
+URI: [basalt_schema:preparation_date](https://emsl-computing.github.io/BASALT-Schema/elements/preparation_date)
 Alias: preparation_date
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: preparation_date
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -82,7 +82,7 @@ Alias: preparation_date
 ```yaml
 name: preparation_date
 description: Date the stock culture or entity was prepared
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: preparation_date
 domain_of:

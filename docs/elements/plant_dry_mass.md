@@ -9,7 +9,7 @@ _Measurement of dry mass. (Unit: kg or g)_
 
 
 
-URI: [basalt_schema:plant_dry_mass](https://EMSL-Computing.github.io/BASALT-Schema/plant_dry_mass)
+URI: [basalt_schema:plant_dry_mass](https://emsl-computing.github.io/BASALT-Schema/elements/plant_dry_mass)
 Alias: plant_dry_mass
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: plant_dry_mass
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -90,7 +90,7 @@ Alias: plant_dry_mass
 name: plant_dry_mass
 description: 'Measurement of dry mass. (Unit: kg or g)'
 title: plant dry mass
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: plant_dry_mass
 domain_of:

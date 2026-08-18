@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_mo](https://EMSL-Computing.github.io/BASALT-Schema/flag_mo)
+URI: [basalt_schema:flag_mo](https://emsl-computing.github.io/BASALT-Schema/elements/flag_mo)
 Alias: flag_mo
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_mo
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_mo
 <details>
 ```yaml
 name: flag_mo
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_mo
 owner: XRFElementalProduct

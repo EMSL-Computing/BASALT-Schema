@@ -11,7 +11,7 @@ _One row per sample with columns for pore structure metrics and QC flag._
 
 
 
-URI: [basalt_schema:TomographyProduct](https://EMSL-Computing.github.io/BASALT-Schema/TomographyProduct)
+URI: [basalt_schema:TomographyProduct](https://emsl-computing.github.io/BASALT-Schema/elements/TomographyProduct)
 
 
 
@@ -200,7 +200,7 @@ URI: [basalt_schema:TomographyProduct](https://EMSL-Computing.github.io/BASALT-S
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -230,147 +230,147 @@ description: 'Soil tomography analysis product, typically derived via X-ray comp
   tomography (XCT) or similar instrument.
 
   One row per sample with columns for pore structure metrics and QC flag.'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: ProcessedData
 slots:
 - measure_type
 attributes:
   roi_volume_voxel:
     name: roi_volume_voxel
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   voxel_size:
     name: voxel_size
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   connected_pores:
     name: connected_pores
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   pore_diameter_min:
     name: pore_diameter_min
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   pore_diameter_max:
     name: pore_diameter_max
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   pore_diameter_mean:
     name: pore_diameter_mean
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   pore_diameter_median:
     name: pore_diameter_median
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   pore_diameter_variance:
     name: pore_diameter_variance
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   pore_volume_mean:
     name: pore_volume_mean
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   total_pore_volume:
     name: total_pore_volume
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   permeability_x:
     name: permeability_x
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   flow_rate_x:
     name: flow_rate_x
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   tortuosity_x:
     name: tortuosity_x
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   permeability_y:
     name: permeability_y
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   flow_rate_y:
     name: flow_rate_y
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   tortuosity_y:
     name: tortuosity_y
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   permeability_z:
     name: permeability_z
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   flow_rate_z:
     name: flow_rate_z
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   tortuosity_z:
     name: tortuosity_z
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
     range: double
   flag_xct:
     name: flag_xct
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - TomographyProduct
@@ -388,12 +388,12 @@ description: 'Soil tomography analysis product, typically derived via X-ray comp
   tomography (XCT) or similar instrument.
 
   One row per sample with columns for pore structure metrics and QC flag.'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: ProcessedData
 attributes:
   roi_volume_voxel:
     name: roi_volume_voxel
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: roi_volume_voxel
     owner: TomographyProduct
@@ -402,7 +402,7 @@ attributes:
     range: double
   voxel_size:
     name: voxel_size
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: voxel_size
     owner: TomographyProduct
@@ -411,7 +411,7 @@ attributes:
     range: double
   connected_pores:
     name: connected_pores
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: connected_pores
     owner: TomographyProduct
@@ -420,7 +420,7 @@ attributes:
     range: double
   pore_diameter_min:
     name: pore_diameter_min
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: pore_diameter_min
     owner: TomographyProduct
@@ -429,7 +429,7 @@ attributes:
     range: double
   pore_diameter_max:
     name: pore_diameter_max
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: pore_diameter_max
     owner: TomographyProduct
@@ -438,7 +438,7 @@ attributes:
     range: double
   pore_diameter_mean:
     name: pore_diameter_mean
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: pore_diameter_mean
     owner: TomographyProduct
@@ -447,7 +447,7 @@ attributes:
     range: double
   pore_diameter_median:
     name: pore_diameter_median
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: pore_diameter_median
     owner: TomographyProduct
@@ -456,7 +456,7 @@ attributes:
     range: double
   pore_diameter_variance:
     name: pore_diameter_variance
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: pore_diameter_variance
     owner: TomographyProduct
@@ -465,7 +465,7 @@ attributes:
     range: double
   pore_volume_mean:
     name: pore_volume_mean
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: pore_volume_mean
     owner: TomographyProduct
@@ -474,7 +474,7 @@ attributes:
     range: double
   total_pore_volume:
     name: total_pore_volume
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: total_pore_volume
     owner: TomographyProduct
@@ -483,7 +483,7 @@ attributes:
     range: double
   permeability_x:
     name: permeability_x
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: permeability_x
     owner: TomographyProduct
@@ -492,7 +492,7 @@ attributes:
     range: double
   flow_rate_x:
     name: flow_rate_x
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flow_rate_x
     owner: TomographyProduct
@@ -501,7 +501,7 @@ attributes:
     range: double
   tortuosity_x:
     name: tortuosity_x
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: tortuosity_x
     owner: TomographyProduct
@@ -510,7 +510,7 @@ attributes:
     range: double
   permeability_y:
     name: permeability_y
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: permeability_y
     owner: TomographyProduct
@@ -519,7 +519,7 @@ attributes:
     range: double
   flow_rate_y:
     name: flow_rate_y
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flow_rate_y
     owner: TomographyProduct
@@ -528,7 +528,7 @@ attributes:
     range: double
   tortuosity_y:
     name: tortuosity_y
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: tortuosity_y
     owner: TomographyProduct
@@ -537,7 +537,7 @@ attributes:
     range: double
   permeability_z:
     name: permeability_z
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: permeability_z
     owner: TomographyProduct
@@ -546,7 +546,7 @@ attributes:
     range: double
   flow_rate_z:
     name: flow_rate_z
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flow_rate_z
     owner: TomographyProduct
@@ -555,7 +555,7 @@ attributes:
     range: double
   tortuosity_z:
     name: tortuosity_z
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: tortuosity_z
     owner: TomographyProduct
@@ -564,7 +564,7 @@ attributes:
     range: double
   flag_xct:
     name: flag_xct
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_xct
     owner: TomographyProduct
@@ -575,7 +575,7 @@ attributes:
     name: measure_type
     description: Whether the measurement recorded is a single measurement, one of
       a set of  replicate measurements, or an average of several replicate measurements.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: measure_type
     owner: TomographyProduct
@@ -608,7 +608,7 @@ attributes:
       \ retained until formal typed class exists."
     todos:
     - make this inined/multivalued?
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: summary_metrics
     owner: TomographyProduct
@@ -619,7 +619,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: lims_barcode
     owner: TomographyProduct
@@ -631,7 +631,7 @@ attributes:
   sample_id:
     name: sample_id
     description: Link back to the originating sample
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_id
     owner: TomographyProduct
@@ -644,7 +644,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: TomographyProduct
@@ -674,7 +674,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: TomographyProduct
@@ -710,7 +710,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - study
     - study_id
@@ -747,7 +747,7 @@ attributes:
 
       in the same sampling event or campaign.'
     title: sampling set
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampling_set
     owner: TomographyProduct
@@ -763,7 +763,7 @@ attributes:
     - value: TOP
     - value: MID
     - value: BTM
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: core_section
     owner: TomographyProduct
@@ -781,7 +781,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - samp_name
     rank: 1000
@@ -807,7 +807,7 @@ attributes:
     range: string
   s3_base_url:
     name: s3_base_url
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_base_url
     owner: TomographyProduct
@@ -816,7 +816,7 @@ attributes:
     range: string
   s3_bucket:
     name: s3_bucket
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_bucket
     owner: TomographyProduct
@@ -826,7 +826,7 @@ attributes:
   s3_key:
     name: s3_key
     description: MinIO/S3 object key; required for all data products
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_key
     owner: TomographyProduct
@@ -837,7 +837,7 @@ attributes:
   filesize:
     name: filesize
     description: Size of the file in bytes
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: filesize
     owner: TomographyProduct
@@ -846,7 +846,7 @@ attributes:
     range: integer
   md5checksum:
     name: md5checksum
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: md5checksum
     owner: TomographyProduct
@@ -855,7 +855,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: TomographyProduct

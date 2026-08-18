@@ -8,7 +8,7 @@
 # - Reference for understanding column names and units
 # - NOT used for validation (no min/max constraints included)
 # - Data levels: L2 (sample averages) or L1 (replicate-level data)
-# - This schema is derived from the BASALT Schema as the source of truth https://EMSL-Computing.github.io/BASALT-Schema
+# - This schema is derived from the BASALT Schema as the source of truth https://emsl-computing.github.io/BASALT-Schema
 # - and therefore column names are faithful to the canonical schema, not the zipdownloader as of last update
 #
 # This file should be updated when:
@@ -25,7 +25,7 @@
 # Last Updated: 2026-01-21
 # =============================================================================
 
-id: https://EMSL-Computing.github.io/BASALT-Schema/soil-biochemical-properties
+id: https://emsl-computing.github.io/BASALT-Schema/soil-biochemical-properties
 name: soil_biochemical_properties
 title: MONet Soil Biochemical Properties CSV Schema
 description: |-
@@ -35,7 +35,7 @@ description: |-
 license: MIT
 
 prefixes:
-  basalt_schema: https://EMSL-Computing.github.io/BASALT-Schema/
+  basalt_schema: https://emsl-computing.github.io/BASALT-Schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: soil_biochemical_properties

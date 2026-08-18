@@ -9,7 +9,7 @@ _Concentration of bishomohopanol. (Unit: ug/L or ug/g)_
 
 
 
-URI: [basalt_schema:bishomohopanol](https://EMSL-Computing.github.io/BASALT-Schema/bishomohopanol)
+URI: [basalt_schema:bishomohopanol](https://emsl-computing.github.io/BASALT-Schema/elements/bishomohopanol)
 Alias: bishomohopanol
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: bishomohopanol
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: bishomohopanol
 name: bishomohopanol
 description: 'Concentration of bishomohopanol. (Unit: ug/L or ug/g)'
 title: bishomohopanol
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: bishomohopanol
 domain_of:

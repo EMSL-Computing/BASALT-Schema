@@ -11,7 +11,7 @@ _PlateProduct.well_readings._
 
 
 
-URI: [basalt_schema:WellReading](https://EMSL-Computing.github.io/BASALT-Schema/WellReading)
+URI: [basalt_schema:WellReading](https://emsl-computing.github.io/BASALT-Schema/elements/WellReading)
 
 
 
@@ -80,7 +80,7 @@ URI: [basalt_schema:WellReading](https://EMSL-Computing.github.io/BASALT-Schema/
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -114,12 +114,12 @@ todos:
 - add optical_density_method here to flag what value means if we have multiple OD
   methods (e.g. OD600 vs OD750)
 - units for value slot
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   position:
     name: position
     description: Well position (e.g. "A01")
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     domain_of:
     - WellMetadata
     - WellReading
@@ -128,7 +128,7 @@ attributes:
   value:
     name: value
     description: Measured value (absorbance, OD, fluorescence)
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     rank: 1000
     domain_of:
     - WellReading
@@ -137,7 +137,7 @@ attributes:
   flag:
     name: flag
     description: QC flag   "ok", "blank", "outlier", "contaminated"
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     rank: 1000
     domain_of:
     - WellReading
@@ -167,12 +167,12 @@ todos:
 - add optical_density_method here to flag what value means if we have multiple OD
   methods (e.g. OD600 vs OD750)
 - units for value slot
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   position:
     name: position
     description: Well position (e.g. "A01")
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     alias: position
     owner: WellReading
     domain_of:
@@ -183,7 +183,7 @@ attributes:
   value:
     name: value
     description: Measured value (absorbance, OD, fluorescence)
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     rank: 1000
     alias: value
     owner: WellReading
@@ -194,7 +194,7 @@ attributes:
   flag:
     name: flag
     description: QC flag   "ok", "blank", "outlier", "contaminated"
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/media-strain-culture-plate
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     rank: 1000
     alias: flag
     owner: WellReading

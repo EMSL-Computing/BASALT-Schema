@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:method](https://EMSL-Computing.github.io/BASALT-Schema/method)
+URI: [basalt_schema:method](https://emsl-computing.github.io/BASALT-Schema/elements/method)
 Alias: method
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: method
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TextureMethod](TextureMethod.md) |  |  no  |
 | [KuoMethod](KuoMethod.md) |  |  no  |
+| [TextureMethod](TextureMethod.md) |  |  no  |
 
 
 
@@ -61,7 +61,7 @@ Alias: method
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: method
 name: method
 todos:
 - what does this mean
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: method
 domain_of:

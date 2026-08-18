@@ -7,7 +7,7 @@ _Sections of a core sample_
 
 
 
-URI: [basalt_schema:CoreSectionEnum](https://EMSL-Computing.github.io/BASALT-Schema/CoreSectionEnum)
+URI: [basalt_schema:CoreSectionEnum](https://emsl-computing.github.io/BASALT-Schema/elements/CoreSectionEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -43,7 +43,7 @@ URI: [basalt_schema:CoreSectionEnum](https://EMSL-Computing.github.io/BASALT-Sch
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -56,7 +56,7 @@ URI: [basalt_schema:CoreSectionEnum](https://EMSL-Computing.github.io/BASALT-Sch
 ```yaml
 name: CoreSectionEnum
 description: Sections of a core sample
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   TOP:

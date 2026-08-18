@@ -13,7 +13,7 @@ _be specified on workflow subclasses._
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [basalt_schema:DataProcessingActivity](https://EMSL-Computing.github.io/BASALT-Schema/DataProcessingActivity)
+URI: [basalt_schema:DataProcessingActivity](https://emsl-computing.github.io/BASALT-Schema/elements/DataProcessingActivity)
 
 
 
@@ -127,7 +127,7 @@ URI: [basalt_schema:DataProcessingActivity](https://EMSL-Computing.github.io/BAS
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -155,7 +155,7 @@ URI: [basalt_schema:DataProcessingActivity](https://EMSL-Computing.github.io/BAS
 name: DataProcessingActivity
 description: "Abstract base for any data processing activity (digital to digital).\
   \ Input data should \nbe specified on workflow subclasses."
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 abstract: true
 slots:
 - parent_workflow_id
@@ -169,7 +169,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     domain_of:
     - Activity
@@ -247,7 +247,7 @@ attributes:
     required: true
   started_at_time:
     name: started_at_time
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     domain_of:
     - Activity
     - DataProcessingActivity
@@ -255,35 +255,35 @@ attributes:
     required: true
   ended_at_time:
     name: ended_at_time
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     domain_of:
     - Activity
     - DataProcessingActivity
     range: datetime
   software_url:
     name: software_url
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - DataProcessingActivity
     range: string
   software_version:
     name: software_version
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     domain_of:
     - InstrumentData
     - DataProcessingActivity
     range: string
   software_poc:
     name: software_poc
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - DataProcessingActivity
     range: string
   execution_resource:
     name: execution_resource
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - DataProcessingActivity
@@ -299,7 +299,7 @@ attributes:
 name: DataProcessingActivity
 description: "Abstract base for any data processing activity (digital to digital).\
   \ Input data should \nbe specified on workflow subclasses."
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 abstract: true
 slot_usage:
   description:
@@ -309,7 +309,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: DataProcessingActivity
@@ -389,7 +389,7 @@ attributes:
     required: true
   started_at_time:
     name: started_at_time
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     alias: started_at_time
     owner: DataProcessingActivity
     domain_of:
@@ -399,7 +399,7 @@ attributes:
     required: true
   ended_at_time:
     name: ended_at_time
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     alias: ended_at_time
     owner: DataProcessingActivity
     domain_of:
@@ -408,7 +408,7 @@ attributes:
     range: datetime
   software_url:
     name: software_url
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: software_url
     owner: DataProcessingActivity
@@ -417,7 +417,7 @@ attributes:
     range: string
   software_version:
     name: software_version
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     alias: software_version
     owner: DataProcessingActivity
     domain_of:
@@ -426,7 +426,7 @@ attributes:
     range: string
   software_poc:
     name: software_poc
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: software_poc
     owner: DataProcessingActivity
@@ -435,7 +435,7 @@ attributes:
     range: string
   execution_resource:
     name: execution_resource
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: execution_resource
     owner: DataProcessingActivity
@@ -450,7 +450,7 @@ attributes:
       \ via linkage_cache.\n\nDDL: ALTER TABLE \"DataProcessingActivity\"\n      \
       \ ADD COLUMN parent_workflow_id UUID\n       REFERENCES \"DataProcessingActivity\"\
       (id);"
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: parent_workflow_id
     owner: DataProcessingActivity
@@ -466,7 +466,7 @@ attributes:
       Direction: structured key-value pairs keyed by workflow type.
 
       Schema for allowed keys TBD per workflow type before full implementation.'
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: workflow_steps
     owner: DataProcessingActivity
@@ -479,7 +479,7 @@ attributes:
     description: A human-readable description of the data analysis workflow. May  include
       details such as the purpose, output, and/or main steps of  the workflow.
     title: description
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: DataProcessingActivity

@@ -9,7 +9,7 @@ _NCBI taxon ID. Format with prefix NCBITaxon:####_
 
 
 
-URI: [basalt_schema:host_taxid](https://EMSL-Computing.github.io/BASALT-Schema/host_taxid)
+URI: [basalt_schema:host_taxid](https://emsl-computing.github.io/BASALT-Schema/elements/host_taxid)
 Alias: host_taxid
 
 <!-- no inheritance hierarchy -->
@@ -23,12 +23,12 @@ Alias: host_taxid
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  yes  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  yes  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  yes  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 
@@ -81,7 +81,7 @@ Alias: host_taxid
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -103,7 +103,7 @@ Alias: host_taxid
 name: host_taxid
 description: NCBI taxon ID. Format with prefix NCBITaxon:####
 title: host taxonomy identifier
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 aliases:
 - host_taxonomy_id
 - host_ncbi_taxon_id

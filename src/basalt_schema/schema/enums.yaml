@@ -1,5 +1,5 @@
 ---
-id: https://EMSL-Computing.github.io/BASALT-Schema/enums
+id: https://emsl-computing.github.io/BASALT-Schema/enums
 name: basalt-schema-enums
 title: BASALT Schema - Enumerations
 description: |-
@@ -7,7 +7,7 @@ description: |-
 license: MIT
 
 prefixes:
-  basalt_schema: https://EMSL-Computing.github.io/BASALT-Schema/
+  basalt_schema: https://emsl-computing.github.io/BASALT-Schema/elements/
   linkml: https://w3id.org/linkml/
   schema: http://schema.org/
   CHEBI: http://purl.obolibrary.org/obo/CHEBI_

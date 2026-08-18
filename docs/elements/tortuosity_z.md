@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:tortuosity_z](https://EMSL-Computing.github.io/BASALT-Schema/tortuosity_z)
+URI: [basalt_schema:tortuosity_z](https://emsl-computing.github.io/BASALT-Schema/elements/tortuosity_z)
 Alias: tortuosity_z
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: tortuosity_z
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: tortuosity_z
 <details>
 ```yaml
 name: tortuosity_z
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: tortuosity_z
 owner: TomographyProduct

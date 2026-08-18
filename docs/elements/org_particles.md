@@ -9,7 +9,7 @@ _concentration of particles such as faeces, hairs, food, vomit, paper, fibers, p
 
 
 
-URI: [basalt_schema:org_particles](https://EMSL-Computing.github.io/BASALT-Schema/org_particles)
+URI: [basalt_schema:org_particles](https://emsl-computing.github.io/BASALT-Schema/elements/org_particles)
 Alias: org_particles
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: org_particles
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ name: org_particles
 description: concentration of particles such as faeces, hairs, food, vomit, paper,
   fibers, plant material, humus etc.
 title: organic particles
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: org_particles
 domain_of:

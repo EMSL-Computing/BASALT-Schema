@@ -9,7 +9,7 @@ _Measure of the amount of cloudiness or haziness in water caused by individual p
 
 
 
-URI: [basalt_schema:turbidity](https://EMSL-Computing.github.io/BASALT-Schema/turbidity)
+URI: [basalt_schema:turbidity](https://emsl-computing.github.io/BASALT-Schema/elements/turbidity)
 Alias: turbidity
 
 <!-- no inheritance hierarchy -->
@@ -74,7 +74,7 @@ Alias: turbidity
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -100,7 +100,7 @@ title: turbidity
 todos:
 - decide how to represent in backend (normalized child table with FK to PlateSetupActivity,
   array column, or other)
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: turbidity
 domain_of:

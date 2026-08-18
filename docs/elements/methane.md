@@ -9,7 +9,7 @@ _Methane (gas) amount or concentration at the time of sampling. (Unit: umol/L or
 
 
 
-URI: [basalt_schema:methane](https://EMSL-Computing.github.io/BASALT-Schema/methane)
+URI: [basalt_schema:methane](https://emsl-computing.github.io/BASALT-Schema/elements/methane)
 Alias: methane
 
 <!-- no inheritance hierarchy -->
@@ -23,9 +23,9 @@ Alias: methane
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
 | [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -71,7 +71,7 @@ Alias: methane
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -94,7 +94,7 @@ name: methane
 description: 'Methane (gas) amount or concentration at the time of sampling. (Unit:
   umol/L or ppb or ppm)'
 title: methane
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: methane
 domain_of:

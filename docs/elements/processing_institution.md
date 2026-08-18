@@ -9,7 +9,7 @@ _The institution where the activity took place._
 
 
 
-URI: [basalt_schema:processing_institution](https://EMSL-Computing.github.io/BASALT-Schema/processing_institution)
+URI: [basalt_schema:processing_institution](https://emsl-computing.github.io/BASALT-Schema/elements/processing_institution)
 Alias: processing_institution
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: processing_institution
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: processing_institution
 ```yaml
 name: processing_institution
 description: The institution where the activity took place.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: processing_institution
 owner: Activity

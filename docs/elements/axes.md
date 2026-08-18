@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:axes](https://EMSL-Computing.github.io/BASALT-Schema/axes)
+URI: [basalt_schema:axes](https://emsl-computing.github.io/BASALT-Schema/elements/axes)
 Alias: axes
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: axes
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: axes
 <details>
 ```yaml
 name: axes
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: axes
 owner: ContainerType

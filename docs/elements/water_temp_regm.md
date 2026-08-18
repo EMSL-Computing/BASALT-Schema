@@ -9,7 +9,7 @@ _Information about treatment involving an exposure to water with varying degree 
 
 
 
-URI: [basalt_schema:water_temp_regm](https://EMSL-Computing.github.io/BASALT-Schema/water_temp_regm)
+URI: [basalt_schema:water_temp_regm](https://emsl-computing.github.io/BASALT-Schema/elements/water_temp_regm)
 Alias: water_temp_regm
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: water_temp_regm
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ description: Information about treatment involving an exposure to water with var
   was repeated, how long each treatment lasted, and the start and end time of the
   entire treatment; can include multiple regimens
 title: water temperature regimen
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: water_temp_regm
 domain_of:

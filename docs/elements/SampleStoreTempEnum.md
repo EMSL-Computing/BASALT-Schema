@@ -7,7 +7,7 @@ _Sample storage temperature conditions_
 
 
 
-URI: [basalt_schema:SampleStoreTempEnum](https://EMSL-Computing.github.io/BASALT-Schema/SampleStoreTempEnum)
+URI: [basalt_schema:SampleStoreTempEnum](https://emsl-computing.github.io/BASALT-Schema/elements/SampleStoreTempEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -45,7 +45,7 @@ URI: [basalt_schema:SampleStoreTempEnum](https://EMSL-Computing.github.io/BASALT
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -58,7 +58,7 @@ URI: [basalt_schema:SampleStoreTempEnum](https://EMSL-Computing.github.io/BASALT
 ```yaml
 name: SampleStoreTempEnum
 description: Sample storage temperature conditions
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   fresh4:

@@ -7,7 +7,7 @@ _The method used to introduce the eluent into the mass spectrometer._
 
 
 
-URI: [basalt_schema:EluentIntroductionEnum](https://EMSL-Computing.github.io/BASALT-Schema/EluentIntroductionEnum)
+URI: [basalt_schema:EluentIntroductionEnum](https://emsl-computing.github.io/BASALT-Schema/elements/EluentIntroductionEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -38,7 +38,7 @@ URI: [basalt_schema:EluentIntroductionEnum](https://EMSL-Computing.github.io/BAS
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -51,7 +51,7 @@ URI: [basalt_schema:EluentIntroductionEnum](https://EMSL-Computing.github.io/BAS
 ```yaml
 name: EluentIntroductionEnum
 description: The method used to introduce the eluent into the mass spectrometer.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   direct_infusion_syringe:

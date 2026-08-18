@@ -9,7 +9,7 @@ _Concentration of potassium in the sample (Unit: mg/L)_
 
 
 
-URI: [basalt_schema:potassium](https://EMSL-Computing.github.io/BASALT-Schema/potassium)
+URI: [basalt_schema:potassium](https://emsl-computing.github.io/BASALT-Schema/elements/potassium)
 Alias: potassium
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: potassium
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: potassium
 name: potassium
 description: 'Concentration of potassium in the sample (Unit: mg/L)'
 title: potassium
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: potassium
 domain_of:

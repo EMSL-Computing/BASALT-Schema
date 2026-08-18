@@ -9,7 +9,7 @@ _Concentration of organic carbon. Provide value and unit any unit is valid_
 
 
 
-URI: [basalt_schema:org_carb](https://EMSL-Computing.github.io/BASALT-Schema/org_carb)
+URI: [basalt_schema:org_carb](https://emsl-computing.github.io/BASALT-Schema/elements/org_carb)
 Alias: org_carb
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: org_carb
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: org_carb
 name: org_carb
 description: Concentration of organic carbon. Provide value and unit any unit is valid
 title: organic carbon
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: org_carb
 domain_of:

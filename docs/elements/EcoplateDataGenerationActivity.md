@@ -17,7 +17,7 @@ _v1 origin: plate-general.yaml EcoplateDataGenerationActivity_
 
 
 
-URI: [basalt_schema:EcoplateDataGenerationActivity](https://EMSL-Computing.github.io/BASALT-Schema/EcoplateDataGenerationActivity)
+URI: [basalt_schema:EcoplateDataGenerationActivity](https://emsl-computing.github.io/BASALT-Schema/elements/EcoplateDataGenerationActivity)
 
 
 
@@ -137,7 +137,7 @@ URI: [basalt_schema:EcoplateDataGenerationActivity](https://EMSL-Computing.githu
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -171,7 +171,7 @@ description: 'Ecoplate absorbance measurement at a single timepoint.
 
 
   v1 origin: plate-general.yaml EcoplateDataGenerationActivity'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: PlateDataGenerationActivity
 slots:
 - wavelength_nm
@@ -192,14 +192,14 @@ description: 'Ecoplate absorbance measurement at a single timepoint.
 
 
   v1 origin: plate-general.yaml EcoplateDataGenerationActivity'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: PlateDataGenerationActivity
 attributes:
   wavelength_nm:
     name: wavelength_nm
     description: Measurement wavelength in nanometres (e.g. 590 Ecoplate, 610 AMP2
       OD)
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: wavelength_nm
     owner: EcoplateDataGenerationActivity
@@ -216,7 +216,7 @@ attributes:
       Examples: "t=0", "t=24h", "t=48h".
 
       Lives on concrete analysis/product subclasses, NOT on base DataGenerationActivity'
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: timepoint_label
     owner: EcoplateDataGenerationActivity
@@ -231,7 +231,7 @@ attributes:
       Lower = earlier in series. Use when acquisition_time alone is insufficient.\n\
       \nDDL: ALTER TABLE \"DataGenerationActivity\"\n       ADD COLUMN sequence_order\
       \ INTEGER;"
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sequence_order
     owner: EcoplateDataGenerationActivity
@@ -242,7 +242,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: EcoplateDataGenerationActivity
@@ -272,7 +272,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: EcoplateDataGenerationActivity
@@ -304,7 +304,7 @@ attributes:
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: protocol_url
     owner: EcoplateDataGenerationActivity
@@ -315,7 +315,7 @@ attributes:
   protocol_version:
     name: protocol_version
     description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: protocol_version
     owner: EcoplateDataGenerationActivity
@@ -325,7 +325,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: EcoplateDataGenerationActivity
@@ -405,7 +405,7 @@ attributes:
     required: true
   analyte_id:
     name: analyte_id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: analyte_id
     owner: EcoplateDataGenerationActivity
@@ -414,7 +414,7 @@ attributes:
     range: ProcessedSample
   acquisition_start_time:
     name: acquisition_start_time
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: acquisition_start_time
     owner: EcoplateDataGenerationActivity
@@ -424,7 +424,7 @@ attributes:
     required: true
   acquisition_end_time:
     name: acquisition_end_time
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: acquisition_end_time
     owner: EcoplateDataGenerationActivity
@@ -434,7 +434,7 @@ attributes:
     required: true
   instrument_used:
     name: instrument_used
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: instrument_used
     owner: EcoplateDataGenerationActivity
@@ -443,7 +443,7 @@ attributes:
     range: Instrument
   instrument_operator_id:
     name: instrument_operator_id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: instrument_operator_id
     owner: EcoplateDataGenerationActivity

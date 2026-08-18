@@ -9,7 +9,7 @@ _String indicating the version of the software or protocol_
 
 
 
-URI: [basalt_schema:version](https://EMSL-Computing.github.io/BASALT-Schema/version)
+URI: [basalt_schema:version](https://emsl-computing.github.io/BASALT-Schema/elements/version)
 Alias: version
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: version
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Changelog](Changelog.md) |  |  no  |
 | [SoftwareControlledTermValue](SoftwareControlledTermValue.md) |  |  no  |
+| [Changelog](Changelog.md) |  |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: version
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: version
 ```yaml
 name: version
 description: String indicating the version of the software or protocol
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: version
 domain_of:

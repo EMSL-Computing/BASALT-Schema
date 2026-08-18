@@ -13,7 +13,7 @@ _Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RE
 
 
 
-URI: [basalt_schema:MAOMProduct](https://EMSL-Computing.github.io/BASALT-Schema/MAOMProduct)
+URI: [basalt_schema:MAOMProduct](https://emsl-computing.github.io/BASALT-Schema/elements/MAOMProduct)
 
 
 
@@ -164,7 +164,7 @@ URI: [basalt_schema:MAOMProduct](https://EMSL-Computing.github.io/BASALT-Schema/
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -197,14 +197,14 @@ description: 'Mineral-Associated Organic Matter (MAOM) analysis product, typical
 
   Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED
   TO HClExtOMProduct'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 slots:
 - measure_type
 - replicate
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     identifier: true
     domain_of:
     - Activity
@@ -282,7 +282,7 @@ attributes:
     required: true
   total_organic_carbon_id:
     name: total_organic_carbon_id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - MAOMProduct
@@ -290,7 +290,7 @@ attributes:
     range: QuantityValue
   total_organic_carbon_avg:
     name: total_organic_carbon_avg
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - MAOMProduct
@@ -298,7 +298,7 @@ attributes:
     range: double
   total_nitrogen_id:
     name: total_nitrogen_id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     domain_of:
     - ElementalAnalysisProduct
     - MAOMProduct
@@ -306,7 +306,7 @@ attributes:
     range: QuantityValue
   total_nitrogen_avg:
     name: total_nitrogen_avg
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - MAOMProduct
@@ -314,7 +314,7 @@ attributes:
     range: double
   flag_toc:
     name: flag_toc
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - MAOMProduct
@@ -322,7 +322,7 @@ attributes:
     range: ProcessedDataFlag
   flag_tn:
     name: flag_tn
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - MAOMProduct
@@ -330,7 +330,7 @@ attributes:
     range: ProcessedDataFlag
   flag_toc_avg:
     name: flag_toc_avg
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - MAOMProduct
@@ -338,7 +338,7 @@ attributes:
     range: ProcessedDataFlag
   flag_tn_avg:
     name: flag_tn_avg
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - MAOMProduct
@@ -360,11 +360,11 @@ description: 'Mineral-Associated Organic Matter (MAOM) analysis product, typical
 
   Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED
   TO HClExtOMProduct'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     identifier: true
     alias: id
     owner: MAOMProduct
@@ -444,7 +444,7 @@ attributes:
     required: true
   total_organic_carbon_id:
     name: total_organic_carbon_id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: total_organic_carbon_id
     owner: MAOMProduct
@@ -454,7 +454,7 @@ attributes:
     range: QuantityValue
   total_organic_carbon_avg:
     name: total_organic_carbon_avg
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: total_organic_carbon_avg
     owner: MAOMProduct
@@ -464,7 +464,7 @@ attributes:
     range: double
   total_nitrogen_id:
     name: total_nitrogen_id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     alias: total_nitrogen_id
     owner: MAOMProduct
     domain_of:
@@ -474,7 +474,7 @@ attributes:
     range: QuantityValue
   total_nitrogen_avg:
     name: total_nitrogen_avg
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: total_nitrogen_avg
     owner: MAOMProduct
@@ -484,7 +484,7 @@ attributes:
     range: double
   flag_toc:
     name: flag_toc
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_toc
     owner: MAOMProduct
@@ -494,7 +494,7 @@ attributes:
     range: ProcessedDataFlag
   flag_tn:
     name: flag_tn
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_tn
     owner: MAOMProduct
@@ -504,7 +504,7 @@ attributes:
     range: ProcessedDataFlag
   flag_toc_avg:
     name: flag_toc_avg
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_toc_avg
     owner: MAOMProduct
@@ -514,7 +514,7 @@ attributes:
     range: ProcessedDataFlag
   flag_tn_avg:
     name: flag_tn_avg
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_tn_avg
     owner: MAOMProduct
@@ -526,7 +526,7 @@ attributes:
     name: measure_type
     description: Whether the measurement recorded is a single measurement, one of
       a set of  replicate measurements, or an average of several replicate measurements.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: measure_type
     owner: MAOMProduct
@@ -554,7 +554,7 @@ attributes:
     description: The replicate number of the sample or measurement, if applicable.
     todos:
     - reconcile replicate modelling
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: replicate
     owner: MAOMProduct

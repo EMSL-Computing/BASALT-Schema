@@ -9,7 +9,7 @@ _Provide the date the sample was transferred to the synthetic environment. Forma
 
 
 
-URI: [basalt_schema:synth_start_date](https://EMSL-Computing.github.io/BASALT-Schema/synth_start_date)
+URI: [basalt_schema:synth_start_date](https://emsl-computing.github.io/BASALT-Schema/elements/synth_start_date)
 Alias: synth_start_date
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: synth_start_date
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  yes  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  yes  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  yes  |
 
 
 
@@ -69,7 +69,7 @@ Alias: synth_start_date
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ name: synth_start_date
 description: Provide the date the sample was transferred to the synthetic environment.
   Formatted as YYYY-MM-DD
 title: synthetic environment start date
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: synth_start_date
 domain_of:

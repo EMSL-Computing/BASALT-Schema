@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:SamplePortionEnum](https://EMSL-Computing.github.io/BASALT-Schema/SamplePortionEnum)
+URI: [basalt_schema:SamplePortionEnum](https://emsl-computing.github.io/BASALT-Schema/elements/SamplePortionEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -42,7 +42,7 @@ URI: [basalt_schema:SamplePortionEnum](https://EMSL-Computing.github.io/BASALT-S
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -54,7 +54,7 @@ URI: [basalt_schema:SamplePortionEnum](https://EMSL-Computing.github.io/BASALT-S
 <details>
 ```yaml
 name: SamplePortionEnum
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   supernatant:

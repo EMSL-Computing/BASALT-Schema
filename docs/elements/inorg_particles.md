@@ -9,7 +9,7 @@ _concentration of particles such as sand, grit, metal particles, ceramics, etc.;
 
 
 
-URI: [basalt_schema:inorg_particles](https://EMSL-Computing.github.io/BASALT-Schema/inorg_particles)
+URI: [basalt_schema:inorg_particles](https://emsl-computing.github.io/BASALT-Schema/elements/inorg_particles)
 Alias: inorg_particles
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: inorg_particles
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ name: inorg_particles
 description: concentration of particles such as sand, grit, metal particles, ceramics,
   etc.; can include multiple particles
 title: inorganic particles
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: inorg_particles
 domain_of:

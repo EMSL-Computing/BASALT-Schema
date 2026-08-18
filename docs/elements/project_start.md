@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:project_start](https://EMSL-Computing.github.io/BASALT-Schema/project_start)
+URI: [basalt_schema:project_start](https://emsl-computing.github.io/BASALT-Schema/elements/project_start)
 Alias: project_start
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: project_start
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: project_start
 <details>
 ```yaml
 name: project_start
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: project_start
 owner: Study

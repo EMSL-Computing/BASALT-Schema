@@ -9,7 +9,7 @@ _Reference to the raw data file from the standard which was run with a batch of 
 
 
 
-URI: [basalt_schema:uses_calibration](https://EMSL-Computing.github.io/BASALT-Schema/uses_calibration)
+URI: [basalt_schema:uses_calibration](https://emsl-computing.github.io/BASALT-Schema/elements/uses_calibration)
 Alias: uses_calibration
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: uses_calibration
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ name: uses_calibration
 description: Reference to the raw data file from the standard which was run with a
   batch of samples that was used as calibration for this data processing workflow
   run.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: uses_calibration
 domain_of:

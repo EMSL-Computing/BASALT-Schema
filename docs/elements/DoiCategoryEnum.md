@@ -7,7 +7,7 @@ _The authority, or organization, the DOI is associated with_
 
 
 
-URI: [basalt_schema:DoiCategoryEnum](https://EMSL-Computing.github.io/BASALT-Schema/DoiCategoryEnum)
+URI: [basalt_schema:DoiCategoryEnum](https://emsl-computing.github.io/BASALT-Schema/elements/DoiCategoryEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -44,7 +44,7 @@ URI: [basalt_schema:DoiCategoryEnum](https://EMSL-Computing.github.io/BASALT-Sch
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -57,7 +57,7 @@ URI: [basalt_schema:DoiCategoryEnum](https://EMSL-Computing.github.io/BASALT-Sch
 ```yaml
 name: DoiCategoryEnum
 description: The authority, or organization, the DOI is associated with
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   award_doi:

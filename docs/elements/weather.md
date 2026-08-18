@@ -9,7 +9,7 @@ _The state of the atmosphere at a given time and place with respect to variables
 
 
 
-URI: [basalt_schema:weather](https://EMSL-Computing.github.io/BASALT-Schema/weather)
+URI: [basalt_schema:weather](https://emsl-computing.github.io/BASALT-Schema/elements/weather)
 Alias: weather
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: weather
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PlantSamplingActivity](PlantSamplingActivity.md) | Collection of samples associated with plants |  no  |
 | [SedimentSamplingActivity](SedimentSamplingActivity.md) | Collection of sediment samples from the environment |  no  |
 | [SoilSamplingActivity](SoilSamplingActivity.md) | Collection of soil samples from the environment |  no  |
+| [PlantSamplingActivity](PlantSamplingActivity.md) | Collection of samples associated with plants |  no  |
 | [MonetSoilSamplingActivity](MonetSoilSamplingActivity.md) | Collection of soil cores according to the MONet soil sampling protocol |  no  |
 
 
@@ -64,7 +64,7 @@ Alias: weather
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ name: weather
 description: The state of the atmosphere at a given time and place with respect to
   variables such as temperature, moisture, wind velocity, and barometric pressure.
 title: weather
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: weather
 domain_of:

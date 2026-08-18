@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:photo_taken_during](https://EMSL-Computing.github.io/BASALT-Schema/photo_taken_during)
+URI: [basalt_schema:photo_taken_during](https://emsl-computing.github.io/BASALT-Schema/elements/photo_taken_during)
 Alias: photo_taken_during
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: photo_taken_during
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: photo_taken_during
 <details>
 ```yaml
 name: photo_taken_during
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: photo_taken_during
 owner: SitePhoto

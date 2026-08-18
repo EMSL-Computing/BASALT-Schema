@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:language](https://EMSL-Computing.github.io/BASALT-Schema/language)
+URI: [basalt_schema:language](https://emsl-computing.github.io/BASALT-Schema/elements/language)
 Alias: language
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: language
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: language
 <details>
 ```yaml
 name: language
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: language
 owner: TextValue

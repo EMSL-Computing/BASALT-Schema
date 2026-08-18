@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:CalibrationTargetEnum](https://EMSL-Computing.github.io/BASALT-Schema/CalibrationTargetEnum)
+URI: [basalt_schema:CalibrationTargetEnum](https://emsl-computing.github.io/BASALT-Schema/elements/CalibrationTargetEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -38,7 +38,7 @@ URI: [basalt_schema:CalibrationTargetEnum](https://EMSL-Computing.github.io/BASA
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -50,7 +50,7 @@ URI: [basalt_schema:CalibrationTargetEnum](https://EMSL-Computing.github.io/BASA
 <details>
 ```yaml
 name: CalibrationTargetEnum
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   mass_charge_ratio:

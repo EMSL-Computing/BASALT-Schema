@@ -9,7 +9,7 @@ _Provide any details, issues, or context needed to understand the infiltration a
 
 
 
-URI: [basalt_schema:infiltration_notes](https://EMSL-Computing.github.io/BASALT-Schema/infiltration_notes)
+URI: [basalt_schema:infiltration_notes](https://emsl-computing.github.io/BASALT-Schema/elements/infiltration_notes)
 Alias: infiltration_notes
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: infiltration_notes
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ name: infiltration_notes
 description: Provide any details, issues, or context needed to understand the infiltration
   activity
 title: infiltration notes
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: infiltration_notes
 domain_of:

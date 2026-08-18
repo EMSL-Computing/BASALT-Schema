@@ -9,7 +9,7 @@ _First boundary layer height candidate (meters) (Unit: m)_
 
 
 
-URI: [basalt_schema:first_blh](https://EMSL-Computing.github.io/BASALT-Schema/first_blh)
+URI: [basalt_schema:first_blh](https://emsl-computing.github.io/BASALT-Schema/elements/first_blh)
 Alias: first_blh
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: first_blh
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: first_blh
 name: first_blh
 description: 'First boundary layer height candidate (meters) (Unit: m)'
 title: first boundary layer height
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: first_blh
 domain_of:

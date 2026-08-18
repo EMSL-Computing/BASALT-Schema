@@ -9,7 +9,7 @@ _Link to additional analysis results performed on the sample_
 
 
 
-URI: [basalt_schema:link_addit_analys](https://EMSL-Computing.github.io/BASALT-Schema/link_addit_analys)
+URI: [basalt_schema:link_addit_analys](https://emsl-computing.github.io/BASALT-Schema/elements/link_addit_analys)
 Alias: link_addit_analys
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: link_addit_analys
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: link_addit_analys
 name: link_addit_analys
 description: Link to additional analysis results performed on the sample
 title: link to additional analysis
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: link_addit_analys
 domain_of:

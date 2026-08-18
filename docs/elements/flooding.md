@@ -9,7 +9,7 @@ _Historical and/or physical evidence of flooding. Format: YYYY-MM-DD_
 
 
 
-URI: [basalt_schema:flooding](https://EMSL-Computing.github.io/BASALT-Schema/flooding)
+URI: [basalt_schema:flooding](https://emsl-computing.github.io/BASALT-Schema/elements/flooding)
 Alias: flooding
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: flooding
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -90,7 +90,7 @@ Alias: flooding
 name: flooding
 description: 'Historical and/or physical evidence of flooding. Format: YYYY-MM-DD'
 title: flooding
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: flooding
 domain_of:

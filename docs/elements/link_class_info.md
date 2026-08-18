@@ -9,7 +9,7 @@ _Link to digitized soil maps or other soil classification information_
 
 
 
-URI: [basalt_schema:link_class_info](https://EMSL-Computing.github.io/BASALT-Schema/link_class_info)
+URI: [basalt_schema:link_class_info](https://emsl-computing.github.io/BASALT-Schema/elements/link_class_info)
 Alias: link_class_info
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: link_class_info
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: link_class_info
 name: link_class_info
 description: Link to digitized soil maps or other soil classification information
 title: link to soil classification
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: link_class_info
 domain_of:

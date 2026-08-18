@@ -9,7 +9,7 @@ _A sampling activity where aerosol samples were collected._
 
 
 
-URI: [basalt_schema:AerosolSamplingActivity](https://EMSL-Computing.github.io/BASALT-Schema/AerosolSamplingActivity)
+URI: [basalt_schema:AerosolSamplingActivity](https://emsl-computing.github.io/BASALT-Schema/elements/AerosolSamplingActivity)
 
 
 
@@ -125,7 +125,7 @@ URI: [basalt_schema:AerosolSamplingActivity](https://EMSL-Computing.github.io/BA
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -152,7 +152,7 @@ URI: [basalt_schema:AerosolSamplingActivity](https://EMSL-Computing.github.io/BA
 ```yaml
 name: AerosolSamplingActivity
 description: A sampling activity where aerosol samples were collected.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: SamplingActivity
 slots:
 - collection_time
@@ -165,7 +165,7 @@ slots:
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -251,12 +251,12 @@ attributes:
 ```yaml
 name: AerosolSamplingActivity
 description: A sampling activity where aerosol samples were collected.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: SamplingActivity
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     alias: id
     owner: AerosolSamplingActivity
@@ -340,7 +340,7 @@ attributes:
       HH:MM:SS in 24-hour time format. Don''t forget the second! (Unit: hh:mm:ss or
       HH:MM:SS)'
     title: collection time
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: collection_time
     owner: AerosolSamplingActivity
@@ -364,7 +364,7 @@ attributes:
     description: Amount of water vapor measured in the air the day of sampling. Provide
       value and unit, any unit is valid
     title: humidity
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: humidity
     owner: AerosolSamplingActivity
@@ -379,7 +379,7 @@ attributes:
       NOT the amount sent to EMSL or collected for a specific analysis. Provide value
       and unit, any unit is valid
     title: sample collected
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_collected
     owner: AerosolSamplingActivity
@@ -404,7 +404,7 @@ attributes:
     description: The device used to collect an environmental sample. Include dimensions
       of device if applicable
     title: sample collection device
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_collection_dev
     owner: AerosolSamplingActivity
@@ -427,7 +427,7 @@ attributes:
     description: 'The difference between sample start and sample end time in seconds.
       (Unit: s)'
     title: sampling duration
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampling_duration
     owner: AerosolSamplingActivity
@@ -441,7 +441,7 @@ attributes:
     description: Direction of the wind on the day of sampling. Collected via anemometer.
       Provide cardinal direction.
     title: wind direction
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: wind_direction
     owner: AerosolSamplingActivity
@@ -457,7 +457,7 @@ attributes:
       during sampling time. Collected via anemometer. Provide value and unit, any
       unit is valid.
     title: wind speed
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: wind_speed
     owner: AerosolSamplingActivity
@@ -469,7 +469,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: AerosolSamplingActivity
@@ -499,7 +499,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: AerosolSamplingActivity
@@ -535,7 +535,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - study
     - study_id
@@ -574,7 +574,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: emsl_activity
     owner: AerosolSamplingActivity
@@ -591,7 +591,7 @@ attributes:
 
       (YYYY-MM)'''
     title: collection date
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: collection_date
     owner: AerosolSamplingActivity
@@ -604,7 +604,7 @@ attributes:
     name: shipped_sample_size
     description: Total amount of sample sent to EMSL. Must include units.
     title: shipped sample size
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: shipped_sample_size
     owner: AerosolSamplingActivity
@@ -617,7 +617,7 @@ attributes:
     name: sampled_at_site
     description: Reference to the site where the sample was collected. This is a FK
       to the Site class, which contains detailed metadata about the sampling location.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampled_at_site
     owner: AerosolSamplingActivity

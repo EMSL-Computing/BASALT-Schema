@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_boron](https://EMSL-Computing.github.io/BASALT-Schema/flag_boron)
+URI: [basalt_schema:flag_boron](https://emsl-computing.github.io/BASALT-Schema/elements/flag_boron)
 Alias: flag_boron
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_boron
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_boron
 <details>
 ```yaml
 name: flag_boron
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_boron
 owner: IonsAnalysisProduct

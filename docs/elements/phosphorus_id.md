@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:phosphorus_id](https://EMSL-Computing.github.io/BASALT-Schema/phosphorus_id)
+URI: [basalt_schema:phosphorus_id](https://emsl-computing.github.io/BASALT-Schema/elements/phosphorus_id)
 Alias: phosphorus_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: phosphorus_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: phosphorus_id
 <details>
 ```yaml
 name: phosphorus_id
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: phosphorus_id
 owner: PhosphorusAnalysisProduct

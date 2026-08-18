@@ -9,7 +9,7 @@ _A DOI or description of how the compound was produced, if the commercially purc
 
 
 
-URI: [basalt_schema:production_method](https://EMSL-Computing.github.io/BASALT-Schema/production_method)
+URI: [basalt_schema:production_method](https://emsl-computing.github.io/BASALT-Schema/elements/production_method)
 Alias: production_method
 
 <!-- no inheritance hierarchy -->
@@ -23,8 +23,8 @@ Alias: production_method
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: production_method
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ name: production_method
 description: A DOI or description of how the compound was produced, if the commercially
   purchased material was altered
 title: production method
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: production_method
 domain_of:

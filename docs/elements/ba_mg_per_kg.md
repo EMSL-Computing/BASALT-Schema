@@ -9,7 +9,7 @@ _Barium concentration in mg/kg_
 
 
 
-URI: [basalt_schema:ba_mg_per_kg](https://EMSL-Computing.github.io/BASALT-Schema/ba_mg_per_kg)
+URI: [basalt_schema:ba_mg_per_kg](https://emsl-computing.github.io/BASALT-Schema/elements/ba_mg_per_kg)
 Alias: ba_mg_per_kg
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: ba_mg_per_kg
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: ba_mg_per_kg
 ```yaml
 name: ba_mg_per_kg
 description: Barium concentration in mg/kg
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: ba_mg_per_kg
 owner: XRFElementalProduct

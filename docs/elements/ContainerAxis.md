@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:ContainerAxis](https://EMSL-Computing.github.io/BASALT-Schema/ContainerAxis)
+URI: [basalt_schema:ContainerAxis](https://emsl-computing.github.io/BASALT-Schema/elements/ContainerAxis)
 
 
 
@@ -67,7 +67,7 @@ URI: [basalt_schema:ContainerAxis](https://EMSL-Computing.github.io/BASALT-Schem
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -95,11 +95,11 @@ URI: [basalt_schema:ContainerAxis](https://EMSL-Computing.github.io/BASALT-Schem
 name: ContainerAxis
 todos:
 - I'm only including this in case we need it to sync up with L7 in some way
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   name:
     name: name
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     domain_of:
     - Activity
     - Entity
@@ -123,7 +123,7 @@ attributes:
     range: string
   values:
     name: values
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - ContainerAxis
@@ -140,11 +140,11 @@ attributes:
 name: ContainerAxis
 todos:
 - I'm only including this in case we need it to sync up with L7 in some way
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   name:
     name: name
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     alias: name
     owner: ContainerAxis
     domain_of:
@@ -170,7 +170,7 @@ attributes:
     range: string
   values:
     name: values
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: values
     owner: ContainerAxis

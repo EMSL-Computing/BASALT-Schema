@@ -9,7 +9,7 @@ _Soil classification based on local soil classification system_
 
 
 
-URI: [basalt_schema:local_class](https://EMSL-Computing.github.io/BASALT-Schema/local_class)
+URI: [basalt_schema:local_class](https://emsl-computing.github.io/BASALT-Schema/elements/local_class)
 Alias: local_class
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: local_class
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: local_class
 name: local_class
 description: Soil classification based on local soil classification system
 title: local soil classification
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: local_class
 domain_of:

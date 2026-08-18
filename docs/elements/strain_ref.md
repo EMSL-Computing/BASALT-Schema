@@ -9,7 +9,7 @@ _FK reference to a Strain purchasedMaterial used in the activity_
 
 
 
-URI: [basalt_schema:strain_ref](https://EMSL-Computing.github.io/BASALT-Schema/strain_ref)
+URI: [basalt_schema:strain_ref](https://emsl-computing.github.io/BASALT-Schema/elements/strain_ref)
 Alias: strain_ref
 
 <!-- no inheritance hierarchy -->
@@ -51,7 +51,7 @@ Alias: strain_ref
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -72,7 +72,7 @@ Alias: strain_ref
 ```yaml
 name: strain_ref
 description: FK reference to a Strain purchasedMaterial used in the activity
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: strain_ref
 range: organism

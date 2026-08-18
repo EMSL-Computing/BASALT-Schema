@@ -9,7 +9,7 @@ _Muscovite (KAl2(AlSi3O10)(OH)2) weight percent_
 
 
 
-URI: [basalt_schema:muscovite_percent](https://EMSL-Computing.github.io/BASALT-Schema/muscovite_percent)
+URI: [basalt_schema:muscovite_percent](https://emsl-computing.github.io/BASALT-Schema/elements/muscovite_percent)
 Alias: muscovite_percent
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: muscovite_percent
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: muscovite_percent
 ```yaml
 name: muscovite_percent
 description: Muscovite (KAl2(AlSi3O10)(OH)2) weight percent
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: muscovite_percent
 owner: XRDPhaseProduct

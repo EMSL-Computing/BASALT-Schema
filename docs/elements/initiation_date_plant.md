@@ -9,7 +9,7 @@ _The date the plant part of the sample was initiated. This can be the date of ge
 
 
 
-URI: [basalt_schema:initiation_date_plant](https://EMSL-Computing.github.io/BASALT-Schema/initiation_date_plant)
+URI: [basalt_schema:initiation_date_plant](https://emsl-computing.github.io/BASALT-Schema/elements/initiation_date_plant)
 Alias: initiation_date_plant
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: initiation_date_plant
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  yes  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  yes  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  yes  |
 
 
 
@@ -69,7 +69,7 @@ Alias: initiation_date_plant
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ description: The date the plant part of the sample was initiated. This can be th
   date of germination or propagation. If providing a sequential initiation (propagation),
   the sample should be linked to the sample it originated from. Formatted as YYYY-MM-DD
 title: initiation date of plant
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: initiation_date_plant
 domain_of:

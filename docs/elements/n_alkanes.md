@@ -9,7 +9,7 @@ _Concentration of n-alkanes; can include multiple n-alkanes (Unit: ug/mL)_
 
 
 
-URI: [basalt_schema:n_alkanes](https://EMSL-Computing.github.io/BASALT-Schema/n_alkanes)
+URI: [basalt_schema:n_alkanes](https://emsl-computing.github.io/BASALT-Schema/elements/n_alkanes)
 Alias: n_alkanes
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: n_alkanes
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ Alias: n_alkanes
 name: n_alkanes
 description: 'Concentration of n-alkanes; can include multiple n-alkanes (Unit: ug/mL)'
 title: n-alkanes
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: n_alkanes
 domain_of:

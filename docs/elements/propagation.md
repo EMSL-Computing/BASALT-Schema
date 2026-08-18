@@ -9,7 +9,7 @@ _The type of reproduction from the parent stock. Values for this field are speci
 
 
 
-URI: [basalt_schema:propagation](https://EMSL-Computing.github.io/BASALT-Schema/propagation)
+URI: [basalt_schema:propagation](https://emsl-computing.github.io/BASALT-Schema/elements/propagation)
 Alias: propagation
 
 <!-- no inheritance hierarchy -->
@@ -23,12 +23,12 @@ Alias: propagation
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 
@@ -67,7 +67,7 @@ Alias: propagation
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -91,7 +91,7 @@ description: 'The type of reproduction from the parent stock. Values for this fi
   are specific to different taxa. For phage or virus: lytic/lysogenic/temperate/obligately
   lytic. For plasmids: incompatibility group. For eukaryotes: sexual/asexual'''
 title: propagation
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: propagation
 domain_of:

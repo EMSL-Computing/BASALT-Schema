@@ -9,7 +9,7 @@ _pH measurement of the sample or liquid portion of sample or aqueous phase of th
 
 
 
-URI: [basalt_schema:ph](https://EMSL-Computing.github.io/BASALT-Schema/ph)
+URI: [basalt_schema:ph](https://emsl-computing.github.io/BASALT-Schema/elements/ph)
 Alias: ph
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: ph
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -88,7 +88,7 @@ name: ph
 description: pH measurement of the sample or liquid portion of sample or aqueous phase
   of the fluid
 title: pH
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: ph
 domain_of:

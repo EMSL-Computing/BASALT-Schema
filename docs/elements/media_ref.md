@@ -15,7 +15,7 @@ _produced by an upstream MediaPreparation activity._
 
 
 
-URI: [basalt_schema:media_ref](https://EMSL-Computing.github.io/BASALT-Schema/media_ref)
+URI: [basalt_schema:media_ref](https://emsl-computing.github.io/BASALT-Schema/elements/media_ref)
 Alias: media_ref
 
 <!-- no inheritance hierarchy -->
@@ -28,8 +28,8 @@ Alias: media_ref
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AMP2WellMetadata](AMP2WellMetadata.md) | AMP2-specific per-well metadata |  no  |
 | [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
+| [AMP2WellMetadata](AMP2WellMetadata.md) | AMP2-specific per-well metadata |  no  |
 
 
 
@@ -68,7 +68,7 @@ Alias: media_ref
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -95,7 +95,7 @@ description: 'FK reference to a prepared media processedSample used in the activ
   (on plate setup).  Points to processedSample(type=prepared_media)
 
   produced by an upstream MediaPreparation activity.'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: media_ref
 domain_of:

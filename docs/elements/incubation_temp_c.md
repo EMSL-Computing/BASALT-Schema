@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:incubation_temp_c](https://EMSL-Computing.github.io/BASALT-Schema/incubation_temp_c)
+URI: [basalt_schema:incubation_temp_c](https://emsl-computing.github.io/BASALT-Schema/elements/incubation_temp_c)
 Alias: incubation_temp_c
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: incubation_temp_c
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: incubation_temp_c
 <details>
 ```yaml
 name: incubation_temp_c
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: incubation_temp_c
 owner: EnzymeActivityMethod

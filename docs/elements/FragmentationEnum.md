@@ -7,7 +7,7 @@ _The fragmentation techniques used in mass spectrometry._
 
 
 
-URI: [basalt_schema:FragmentationEnum](https://EMSL-Computing.github.io/BASALT-Schema/FragmentationEnum)
+URI: [basalt_schema:FragmentationEnum](https://emsl-computing.github.io/BASALT-Schema/elements/FragmentationEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -43,7 +43,7 @@ URI: [basalt_schema:FragmentationEnum](https://EMSL-Computing.github.io/BASALT-S
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -56,7 +56,7 @@ URI: [basalt_schema:FragmentationEnum](https://EMSL-Computing.github.io/BASALT-S
 ```yaml
 name: FragmentationEnum
 description: The fragmentation techniques used in mass spectrometry.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   HCD:

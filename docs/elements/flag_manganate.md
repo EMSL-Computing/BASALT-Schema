@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_manganate](https://EMSL-Computing.github.io/BASALT-Schema/flag_manganate)
+URI: [basalt_schema:flag_manganate](https://emsl-computing.github.io/BASALT-Schema/elements/flag_manganate)
 Alias: flag_manganate
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_manganate
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_manganate
 <details>
 ```yaml
 name: flag_manganate
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_manganate
 owner: IonsAnalysisProduct

@@ -11,7 +11,7 @@ _Inherits all MetagenomicsProduct and dataProduct slots._
 
 
 
-URI: [basalt_schema:MetagenomicsBinningProduct](https://EMSL-Computing.github.io/BASALT-Schema/MetagenomicsBinningProduct)
+URI: [basalt_schema:MetagenomicsBinningProduct](https://emsl-computing.github.io/BASALT-Schema/elements/MetagenomicsBinningProduct)
 
 
 
@@ -117,7 +117,7 @@ URI: [basalt_schema:MetagenomicsBinningProduct](https://EMSL-Computing.github.io
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [mg_workflow_step](mg_workflow_step.md) | 0..1 <br/> [MetagenomicsSteps](MetagenomicsSteps.md) | Metagenomics workflow step that produced this product (e | [MetagenomicsProduct](MetagenomicsProduct.md) |
-| [sample_id](sample_id.md) | 0..1 <br/> [Sample](Sample.md) | Link back to the originating sample | [ProcessedData](ProcessedData.md), [MetagenomicsProduct](MetagenomicsProduct.md) |
+| [sample_id](sample_id.md) | 0..1 <br/> [Sample](Sample.md) | Link back to the originating sample | [MetagenomicsProduct](MetagenomicsProduct.md), [ProcessedData](ProcessedData.md) |
 | [provider_name](provider_name.md) | 0..1 <br/> [ControlledTermValue](ControlledTermValue.md) | Provider class (e | [MetagenomicsProduct](MetagenomicsProduct.md) |
 | [raw_fasta_url](raw_fasta_url.md) | 0..1 <br/> [String](String.md) | URL of raw FASTA file, if available from provider | [MetagenomicsProduct](MetagenomicsProduct.md) |
 | [additional_information](additional_information.md) | 0..1 <br/> [String](String.md) | Additional information pertaining to these data, including SP Project ID and ... | [MetagenomicsProduct](MetagenomicsProduct.md) |
@@ -159,7 +159,7 @@ URI: [basalt_schema:MetagenomicsBinningProduct](https://EMSL-Computing.github.io
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -188,7 +188,7 @@ name: Metagenomics_BinningProduct
 description: 'Top-level archive (zip/tar) for binning results stored in MinIO.
 
   Inherits all MetagenomicsProduct and dataProduct slots.'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: MetagenomicsProduct
 
 ```
@@ -202,13 +202,13 @@ name: Metagenomics_BinningProduct
 description: 'Top-level archive (zip/tar) for binning results stored in MinIO.
 
   Inherits all MetagenomicsProduct and dataProduct slots.'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: MetagenomicsProduct
 attributes:
   mg_workflow_step:
     name: mg_workflow_step
     description: Metagenomics workflow step that produced this product (e.g., MagsAnalysis)
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: mg_workflow_step
     owner: Metagenomics_BinningProduct
@@ -219,7 +219,7 @@ attributes:
   sample_id:
     name: sample_id
     description: Link back to the originating sample
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_id
     owner: Metagenomics_BinningProduct
@@ -233,7 +233,7 @@ attributes:
     name: provider_name
     description: Provider class (e.g., JGI, SeqCenter) using ontology terms where
       possible
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: provider_name
     owner: Metagenomics_BinningProduct
@@ -243,7 +243,7 @@ attributes:
   raw_fasta_url:
     name: raw_fasta_url
     description: URL of raw FASTA file, if available from provider
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: raw_fasta_url
     owner: Metagenomics_BinningProduct
@@ -254,7 +254,7 @@ attributes:
     name: additional_information
     description: Additional information pertaining to these data, including SP Project
       ID and Taxon OID
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: additional_information
     owner: Metagenomics_BinningProduct
@@ -271,7 +271,7 @@ attributes:
       \ retained until formal typed class exists."
     todos:
     - make this inined/multivalued?
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: summary_metrics
     owner: Metagenomics_BinningProduct
@@ -282,7 +282,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: lims_barcode
     owner: Metagenomics_BinningProduct
@@ -294,7 +294,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: Metagenomics_BinningProduct
@@ -324,7 +324,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: Metagenomics_BinningProduct
@@ -360,7 +360,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - study
     - study_id
@@ -397,7 +397,7 @@ attributes:
 
       in the same sampling event or campaign.'
     title: sampling set
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampling_set
     owner: Metagenomics_BinningProduct
@@ -413,7 +413,7 @@ attributes:
     - value: TOP
     - value: MID
     - value: BTM
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: core_section
     owner: Metagenomics_BinningProduct
@@ -431,7 +431,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - samp_name
     rank: 1000
@@ -457,7 +457,7 @@ attributes:
     range: string
   s3_base_url:
     name: s3_base_url
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_base_url
     owner: Metagenomics_BinningProduct
@@ -466,7 +466,7 @@ attributes:
     range: string
   s3_bucket:
     name: s3_bucket
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_bucket
     owner: Metagenomics_BinningProduct
@@ -476,7 +476,7 @@ attributes:
   s3_key:
     name: s3_key
     description: MinIO/S3 object key; required for all data products
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_key
     owner: Metagenomics_BinningProduct
@@ -487,7 +487,7 @@ attributes:
   filesize:
     name: filesize
     description: Size of the file in bytes
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: filesize
     owner: Metagenomics_BinningProduct
@@ -496,7 +496,7 @@ attributes:
     range: integer
   md5checksum:
     name: md5checksum
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: md5checksum
     owner: Metagenomics_BinningProduct
@@ -505,7 +505,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: Metagenomics_BinningProduct

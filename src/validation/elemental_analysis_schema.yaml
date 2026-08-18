@@ -14,7 +14,7 @@
 # Last Updated:  2026-03-16
 # =============================================================================
 
-id: https://EMSL-Computing.github.io/BASALT-Schema/elemental-analysis
+id: https://emsl-computing.github.io/BASALT-Schema/elemental-analysis
 name: elemental_analysis_schema
 title: MONet Elemental Analysis Ingest Schema
 description: |-
@@ -25,7 +25,7 @@ description: |-
 license: MIT
 
 prefixes:
-  basalt_schema: https://EMSL-Computing.github.io/BASALT-Schema/
+  basalt_schema: https://emsl-computing.github.io/BASALT-Schema/
   linkml: https://w3id.org/linkml/
 
 default_prefix: elemental_analysis_schema

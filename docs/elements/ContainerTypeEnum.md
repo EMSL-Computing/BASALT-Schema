@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:ContainerTypeEnum](https://EMSL-Computing.github.io/BASALT-Schema/ContainerTypeEnum)
+URI: [basalt_schema:ContainerTypeEnum](https://emsl-computing.github.io/BASALT-Schema/elements/ContainerTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -30,7 +30,7 @@ URI: [basalt_schema:ContainerTypeEnum](https://EMSL-Computing.github.io/BASALT-S
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -42,7 +42,7 @@ URI: [basalt_schema:ContainerTypeEnum](https://EMSL-Computing.github.io/BASALT-S
 <details>
 ```yaml
 name: ContainerTypeEnum
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   screw_top_conical:

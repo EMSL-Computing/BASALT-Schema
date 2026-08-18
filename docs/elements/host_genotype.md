@@ -9,7 +9,7 @@ _Observed genotype_
 
 
 
-URI: [basalt_schema:host_genotype](https://EMSL-Computing.github.io/BASALT-Schema/host_genotype)
+URI: [basalt_schema:host_genotype](https://emsl-computing.github.io/BASALT-Schema/elements/host_genotype)
 Alias: host_genotype
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: host_genotype
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: host_genotype
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: host_genotype
 name: host_genotype
 description: Observed genotype
 title: host genotype
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: host_genotype
 domain_of:

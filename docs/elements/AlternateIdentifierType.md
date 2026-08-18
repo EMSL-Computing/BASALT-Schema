@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:AlternateIdentifierType](https://EMSL-Computing.github.io/BASALT-Schema/AlternateIdentifierType)
+URI: [basalt_schema:AlternateIdentifierType](https://emsl-computing.github.io/BASALT-Schema/elements/AlternateIdentifierType)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -36,7 +36,7 @@ URI: [basalt_schema:AlternateIdentifierType](https://EMSL-Computing.github.io/BA
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -48,7 +48,7 @@ URI: [basalt_schema:AlternateIdentifierType](https://EMSL-Computing.github.io/BA
 <details>
 ```yaml
 name: AlternateIdentifierType
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   instrument_alt_id:

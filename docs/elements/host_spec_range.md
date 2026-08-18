@@ -9,7 +9,7 @@ _The range and diversity of host species that an organism is capable of infectin
 
 
 
-URI: [basalt_schema:host_spec_range](https://EMSL-Computing.github.io/BASALT-Schema/host_spec_range)
+URI: [basalt_schema:host_spec_range](https://emsl-computing.github.io/BASALT-Schema/elements/host_spec_range)
 Alias: host_spec_range
 
 <!-- no inheritance hierarchy -->
@@ -23,12 +23,12 @@ Alias: host_spec_range
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 
@@ -74,7 +74,7 @@ Alias: host_spec_range
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -97,7 +97,7 @@ name: host_spec_range
 description: The range and diversity of host species that an organism is capable of
   infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####
 title: host specificity or range
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: host_spec_range
 domain_of:

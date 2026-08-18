@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:BulkDensityMethod](https://EMSL-Computing.github.io/BASALT-Schema/BulkDensityMethod)
+URI: [basalt_schema:BulkDensityMethod](https://emsl-computing.github.io/BASALT-Schema/elements/BulkDensityMethod)
 
 
 
@@ -60,7 +60,7 @@ URI: [basalt_schema:BulkDensityMethod](https://EMSL-Computing.github.io/BASALT-S
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ URI: [basalt_schema:BulkDensityMethod](https://EMSL-Computing.github.io/BASALT-S
 <details>
 ```yaml
 name: BulkDensityMethod
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Method
 
 ```
@@ -97,14 +97,14 @@ is_a: Method
 <details>
 ```yaml
 name: BulkDensityMethod
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Method
 attributes:
   analytic:
     name: analytic
     todos:
     - what does this mean
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: analytic
     owner: BulkDensityMethod

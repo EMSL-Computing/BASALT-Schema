@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:instrument](https://EMSL-Computing.github.io/BASALT-Schema/instrument)
+URI: [basalt_schema:instrument](https://emsl-computing.github.io/BASALT-Schema/elements/instrument)
 Alias: instrument
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: instrument
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: instrument
 <details>
 ```yaml
 name: instrument
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: instrument
 owner: ConditioningValue

@@ -9,7 +9,7 @@ _Type of plate measurement (optical_density, fluorescence, flow_cytometry)_
 
 
 
-URI: [basalt_schema:measurement_type](https://EMSL-Computing.github.io/BASALT-Schema/measurement_type)
+URI: [basalt_schema:measurement_type](https://emsl-computing.github.io/BASALT-Schema/elements/measurement_type)
 Alias: measurement_type
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: measurement_type
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -82,7 +82,7 @@ Alias: measurement_type
 ```yaml
 name: measurement_type
 description: Type of plate measurement (optical_density, fluorescence, flow_cytometry)
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: measurement_type
 domain_of:

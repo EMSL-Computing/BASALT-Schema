@@ -9,7 +9,7 @@ _Mean measurement of uninoculated control wells (baseline for Ecoplate)_
 
 
 
-URI: [basalt_schema:uninoculated_mean](https://EMSL-Computing.github.io/BASALT-Schema/uninoculated_mean)
+URI: [basalt_schema:uninoculated_mean](https://emsl-computing.github.io/BASALT-Schema/elements/uninoculated_mean)
 Alias: uninoculated_mean
 
 <!-- no inheritance hierarchy -->
@@ -65,7 +65,7 @@ Alias: uninoculated_mean
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -88,7 +88,7 @@ name: uninoculated_mean
 description: Mean measurement of uninoculated control wells (baseline for Ecoplate)
 todos:
 - units
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: uninoculated_mean
 domain_of:

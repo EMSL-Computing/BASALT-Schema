@@ -9,7 +9,7 @@ _The numeric value of the quantity_
 
 
 
-URI: [basalt_schema:has_numeric_value](https://EMSL-Computing.github.io/BASALT-Schema/has_numeric_value)
+URI: [basalt_schema:has_numeric_value](https://emsl-computing.github.io/BASALT-Schema/elements/has_numeric_value)
 Alias: has_numeric_value
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: has_numeric_value
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: has_numeric_value
 ```yaml
 name: has_numeric_value
 description: The numeric value of the quantity
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: has_numeric_value
 owner: QuantityValue

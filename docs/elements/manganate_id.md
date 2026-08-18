@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:manganate_id](https://EMSL-Computing.github.io/BASALT-Schema/manganate_id)
+URI: [basalt_schema:manganate_id](https://emsl-computing.github.io/BASALT-Schema/elements/manganate_id)
 Alias: manganate_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: manganate_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: manganate_id
 <details>
 ```yaml
 name: manganate_id
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: manganate_id
 owner: IonsAnalysisProduct

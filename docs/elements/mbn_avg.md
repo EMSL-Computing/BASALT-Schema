@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:mbn_avg](https://EMSL-Computing.github.io/BASALT-Schema/mbn_avg)
+URI: [basalt_schema:mbn_avg](https://emsl-computing.github.io/BASALT-Schema/elements/mbn_avg)
 Alias: mbn_avg
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: mbn_avg
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: mbn_avg
 <details>
 ```yaml
 name: mbn_avg
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: mbn_avg
 owner: MicrobialBiomassProduct

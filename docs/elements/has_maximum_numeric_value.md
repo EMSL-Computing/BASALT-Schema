@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:has_maximum_numeric_value](https://EMSL-Computing.github.io/BASALT-Schema/has_maximum_numeric_value)
+URI: [basalt_schema:has_maximum_numeric_value](https://emsl-computing.github.io/BASALT-Schema/elements/has_maximum_numeric_value)
 Alias: has_maximum_numeric_value
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: has_maximum_numeric_value
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: has_maximum_numeric_value
 <details>
 ```yaml
 name: has_maximum_numeric_value
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: has_maximum_numeric_value
 owner: QuantityValue

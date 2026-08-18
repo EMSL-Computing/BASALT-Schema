@@ -9,7 +9,7 @@ _The name or identifier of the chromatography column used._
 
 
 
-URI: [basalt_schema:column](https://EMSL-Computing.github.io/BASALT-Schema/column)
+URI: [basalt_schema:column](https://emsl-computing.github.io/BASALT-Schema/elements/column)
 Alias: column
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: column
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: column
 ```yaml
 name: column
 description: The name or identifier of the chromatography column used.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: column
 domain_of:

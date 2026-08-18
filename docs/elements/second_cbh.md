@@ -9,7 +9,7 @@ _Second cloud base (meters) or highest received signal in vertical visibility (m
 
 
 
-URI: [basalt_schema:second_cbh](https://EMSL-Computing.github.io/BASALT-Schema/second_cbh)
+URI: [basalt_schema:second_cbh](https://emsl-computing.github.io/BASALT-Schema/elements/second_cbh)
 Alias: second_cbh
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: second_cbh
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ name: second_cbh
 description: 'Second cloud base (meters) or highest received signal in vertical visibility
   (meters) (-999 if no cloud base or vertical visibility) (Unit: m)'
 title: second cloud base height
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: second_cbh
 domain_of:

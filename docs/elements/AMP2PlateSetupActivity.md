@@ -33,7 +33,7 @@ _           range is processedSample (not purchasedMaterial)_
 
 
 
-URI: [basalt_schema:AMP2PlateSetupActivity](https://EMSL-Computing.github.io/BASALT-Schema/AMP2PlateSetupActivity)
+URI: [basalt_schema:AMP2PlateSetupActivity](https://emsl-computing.github.io/BASALT-Schema/elements/AMP2PlateSetupActivity)
 
 
 
@@ -204,7 +204,7 @@ URI: [basalt_schema:AMP2PlateSetupActivity](https://EMSL-Computing.github.io/BAS
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -239,7 +239,7 @@ description: "AMP2-specific plate setup.\nmedia_ref points to the plate-level pr
   \ via media_ref\n\nv1 origin: plate-general.yaml AMP2PlateSetupActivity\nv2 change:\
   \ media_ref directly on class (no UsesMedia mixin);\n           range is processedSample\
   \ (not purchasedMaterial)"
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: PlateSetupActivity
 slots:
 - media_ref
@@ -261,7 +261,7 @@ description: "AMP2-specific plate setup.\nmedia_ref points to the plate-level pr
   \ via media_ref\n\nv1 origin: plate-general.yaml AMP2PlateSetupActivity\nv2 change:\
   \ media_ref directly on class (no UsesMedia mixin);\n           range is processedSample\
   \ (not purchasedMaterial)"
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: PlateSetupActivity
 attributes:
   media_ref:
@@ -273,7 +273,7 @@ attributes:
       (on plate setup).  Points to processedSample(type=prepared_media)
 
       produced by an upstream MediaPreparation activity.'
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: media_ref
     owner: AMP2PlateSetupActivity
@@ -285,7 +285,7 @@ attributes:
   plate_type:
     name: plate_type
     description: Vendor and model of plate (e.g. "Greiner_96well_flat_bottom", "Biolog_EcoPlate")
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: plate_type
     owner: AMP2PlateSetupActivity
@@ -296,7 +296,7 @@ attributes:
   plate_barcode:
     name: plate_barcode
     description: Physical barcode on plate (if different from UUID)
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: plate_barcode
     owner: AMP2PlateSetupActivity
@@ -306,7 +306,7 @@ attributes:
   setup_date:
     name: setup_date
     description: When the plate was physically set up
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: setup_date
     owner: AMP2PlateSetupActivity
@@ -317,7 +317,7 @@ attributes:
   setup_operator_id:
     name: setup_operator_id
     description: Person who set up the plate
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: setup_operator_id
     owner: AMP2PlateSetupActivity
@@ -327,7 +327,7 @@ attributes:
   setup_instrument:
     name: setup_instrument
     description: Automated liquid handler (e.g. "Hamilton_STAR") or "manual"
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: setup_instrument
     owner: AMP2PlateSetupActivity
@@ -337,7 +337,7 @@ attributes:
   sealing_method:
     name: sealing_method
     description: How the plate is sealed (e.g. "BreathEasy_membrane", "adhesive_film")
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sealing_method
     owner: AMP2PlateSetupActivity
@@ -353,7 +353,7 @@ attributes:
     todos:
     - decide how to represent in backend (normalized child table with FK to PlateSetupActivity,
       array column, or other)
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: well_metadata
     owner: AMP2PlateSetupActivity
@@ -366,7 +366,7 @@ attributes:
   temperature_celsius:
     name: temperature_celsius
     description: Temperature at which the method/process/activity was performed
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: temperature_celsius
     owner: AMP2PlateSetupActivity
@@ -377,7 +377,7 @@ attributes:
   agitation_speed_rpm:
     name: agitation_speed_rpm
     description: Agitation/shaking speed in RPM (0 for static)
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: agitation_speed_rpm
     owner: AMP2PlateSetupActivity
@@ -388,7 +388,7 @@ attributes:
     name: oxygen_relationship
     description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
     title: oxygen relationship
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     exact_mappings:
     - MIXS:0000015
     rank: 1000
@@ -411,7 +411,7 @@ attributes:
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: protocol_url
     owner: AMP2PlateSetupActivity
@@ -422,7 +422,7 @@ attributes:
   protocol_version:
     name: protocol_version
     description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: protocol_version
     owner: AMP2PlateSetupActivity
@@ -432,7 +432,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: AMP2PlateSetupActivity
@@ -512,7 +512,7 @@ attributes:
     required: true
   analysis_type:
     name: analysis_type
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     alias: analysis_type
     owner: AMP2PlateSetupActivity
     domain_of:
@@ -535,7 +535,7 @@ attributes:
     range: RouteMethodEnum
   method_name:
     name: method_name
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: method_name
     owner: AMP2PlateSetupActivity
@@ -544,7 +544,7 @@ attributes:
     range: MethodNameEnum
   processing_steps:
     name: processing_steps
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: processing_steps
     owner: AMP2PlateSetupActivity
@@ -554,7 +554,7 @@ attributes:
     required: true
   uses_sample:
     name: uses_sample
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: uses_sample
     owner: AMP2PlateSetupActivity

@@ -9,7 +9,7 @@ _Information about treatment involving the use of fertilizers; should include th
 
 
 
-URI: [basalt_schema:fertilizer_regm](https://EMSL-Computing.github.io/BASALT-Schema/fertilizer_regm)
+URI: [basalt_schema:fertilizer_regm](https://emsl-computing.github.io/BASALT-Schema/elements/fertilizer_regm)
 Alias: fertilizer_regm
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: fertilizer_regm
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ description: Information about treatment involving the use of fertilizers; shoul
   how many times the treatment was repeated, how long each treatment lasted, and the
   start and end time of the entire treatment; can include multiple fertilizer regimens
 title: fertilizer regimen
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: fertilizer_regm
 domain_of:

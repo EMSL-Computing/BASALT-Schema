@@ -9,7 +9,7 @@ _Source of organic carbon in the culture rooting medium. Provide as {carbon sour
 
 
 
-URI: [basalt_schema:root_med_carbon](https://EMSL-Computing.github.io/BASALT-Schema/root_med_carbon)
+URI: [basalt_schema:root_med_carbon](https://emsl-computing.github.io/BASALT-Schema/elements/root_med_carbon)
 Alias: root_med_carbon
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: root_med_carbon
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: root_med_carbon
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ name: root_med_carbon
 description: Source of organic carbon in the culture rooting medium. Provide as {carbon
   source}, {value}{unit}. Can be multivalued, separated by ;. Preferred unit mg/L.
 title: rooting medium carbon
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: root_med_carbon
 domain_of:

@@ -13,7 +13,7 @@ _be specified on workflow subclasses._
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [basalt_schema:SampleProcessing](https://EMSL-Computing.github.io/BASALT-Schema/SampleProcessing)
+URI: [basalt_schema:SampleProcessing](https://emsl-computing.github.io/BASALT-Schema/elements/SampleProcessing)
 
 
 
@@ -133,7 +133,7 @@ URI: [basalt_schema:SampleProcessing](https://EMSL-Computing.github.io/BASALT-Sc
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -164,7 +164,7 @@ description: "Abstract base for any sample processing activity (physical to phys
 todos:
 - why does this have both analysis type and method name, as enums, just set the range
   to the class
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 abstract: true
 slots:
 - protocol_url
@@ -172,7 +172,7 @@ slots:
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     domain_of:
     - Activity
@@ -250,7 +250,7 @@ attributes:
     required: true
   analysis_type:
     name: analysis_type
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     domain_of:
     - SampleProcessing
     - AerosolArmSample
@@ -271,14 +271,14 @@ attributes:
     range: RouteMethodEnum
   method_name:
     name: method_name
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - SampleProcessing
     range: MethodNameEnum
   processing_steps:
     name: processing_steps
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - SampleProcessing
@@ -286,7 +286,7 @@ attributes:
     required: true
   uses_sample:
     name: uses_sample
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - SampleProcessing
@@ -305,12 +305,12 @@ description: "Abstract base for any sample processing activity (physical to phys
 todos:
 - why does this have both analysis type and method name, as enums, just set the range
   to the class
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 abstract: true
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: SampleProcessing
@@ -390,7 +390,7 @@ attributes:
     required: true
   analysis_type:
     name: analysis_type
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     alias: analysis_type
     owner: SampleProcessing
     domain_of:
@@ -413,7 +413,7 @@ attributes:
     range: RouteMethodEnum
   method_name:
     name: method_name
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: method_name
     owner: SampleProcessing
@@ -422,7 +422,7 @@ attributes:
     range: MethodNameEnum
   processing_steps:
     name: processing_steps
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: processing_steps
     owner: SampleProcessing
@@ -432,7 +432,7 @@ attributes:
     required: true
   uses_sample:
     name: uses_sample
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: uses_sample
     owner: SampleProcessing
@@ -442,7 +442,7 @@ attributes:
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: protocol_url
     owner: SampleProcessing
@@ -453,7 +453,7 @@ attributes:
   protocol_version:
     name: protocol_version
     description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: protocol_version
     owner: SampleProcessing

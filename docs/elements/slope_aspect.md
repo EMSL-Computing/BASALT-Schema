@@ -9,7 +9,7 @@ _The direction a slope faces. While looking down a slope use a compass to record
 
 
 
-URI: [basalt_schema:slope_aspect](https://EMSL-Computing.github.io/BASALT-Schema/slope_aspect)
+URI: [basalt_schema:slope_aspect](https://emsl-computing.github.io/BASALT-Schema/elements/slope_aspect)
 Alias: slope_aspect
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: slope_aspect
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ description: 'The direction a slope faces. While looking down a slope use a comp
   provides an indication of sun and wind exposure that will influence soil temperature
   and evapotranspiration. (Unit: degrees)'
 title: slope aspect
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: slope_aspect
 domain_of:

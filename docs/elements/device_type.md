@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:device_type](https://EMSL-Computing.github.io/BASALT-Schema/device_type)
+URI: [basalt_schema:device_type](https://emsl-computing.github.io/BASALT-Schema/elements/device_type)
 Alias: device_type
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: device_type
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: device_type
 <details>
 ```yaml
 name: device_type
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: device_type
 owner: LabDevice

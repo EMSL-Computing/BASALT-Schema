@@ -9,7 +9,7 @@ _Reference or method used in determining the horizon_
 
 
 
-URI: [basalt_schema:horizon_meth](https://EMSL-Computing.github.io/BASALT-Schema/horizon_meth)
+URI: [basalt_schema:horizon_meth](https://emsl-computing.github.io/BASALT-Schema/elements/horizon_meth)
 Alias: horizon_meth
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: horizon_meth
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: horizon_meth
 name: horizon_meth
 description: Reference or method used in determining the horizon
 title: soil horizon method
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: horizon_meth
 domain_of:

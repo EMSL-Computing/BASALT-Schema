@@ -9,7 +9,7 @@ _To what is the entity pathogenic, e.g., humans, animals, plants, or specific ti
 
 
 
-URI: [basalt_schema:pathogenicity](https://EMSL-Computing.github.io/BASALT-Schema/pathogenicity)
+URI: [basalt_schema:pathogenicity](https://emsl-computing.github.io/BASALT-Schema/elements/pathogenicity)
 Alias: pathogenicity
 
 <!-- no inheritance hierarchy -->
@@ -24,8 +24,8 @@ Alias: pathogenicity
 | --- | --- | --- |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 
 
@@ -65,7 +65,7 @@ Alias: pathogenicity
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -88,7 +88,7 @@ name: pathogenicity
 description: To what is the entity pathogenic, e.g., humans, animals, plants, or specific
   tissues.
 title: pathogenicity
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: pathogenicity
 domain_of:

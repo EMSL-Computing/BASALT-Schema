@@ -9,7 +9,7 @@ _Concentration of dissolved hydrogens (Unit: umol/L)_
 
 
 
-URI: [basalt_schema:diss_hydrogen](https://EMSL-Computing.github.io/BASALT-Schema/diss_hydrogen)
+URI: [basalt_schema:diss_hydrogen](https://emsl-computing.github.io/BASALT-Schema/elements/diss_hydrogen)
 Alias: diss_hydrogen
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: diss_hydrogen
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: diss_hydrogen
 name: diss_hydrogen
 description: 'Concentration of dissolved hydrogens (Unit: umol/L)'
 title: dissolved hydrogen
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: diss_hydrogen
 domain_of:

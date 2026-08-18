@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:source_material](https://EMSL-Computing.github.io/BASALT-Schema/source_material)
+URI: [basalt_schema:source_material](https://emsl-computing.github.io/BASALT-Schema/elements/source_material)
 Alias: source_material
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: source_material
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: source_material
 <details>
 ```yaml
 name: source_material
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: source_material
 owner: ConditioningValue

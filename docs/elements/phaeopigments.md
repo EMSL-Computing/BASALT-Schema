@@ -9,7 +9,7 @@ _Concentration of phaeopigments; can include multiple phaeopigments separated by
 
 
 
-URI: [basalt_schema:phaeopigments](https://EMSL-Computing.github.io/BASALT-Schema/phaeopigments)
+URI: [basalt_schema:phaeopigments](https://emsl-computing.github.io/BASALT-Schema/elements/phaeopigments)
 Alias: phaeopigments
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: phaeopigments
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ name: phaeopigments
 description: 'Concentration of phaeopigments; can include multiple phaeopigments separated
   by a `;` (Unit: mg/cm3)'
 title: phaeopigments
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: phaeopigments
 domain_of:

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:voxel_size](https://EMSL-Computing.github.io/BASALT-Schema/voxel_size)
+URI: [basalt_schema:voxel_size](https://emsl-computing.github.io/BASALT-Schema/elements/voxel_size)
 Alias: voxel_size
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: voxel_size
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: voxel_size
 <details>
 ```yaml
 name: voxel_size
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: voxel_size
 owner: TomographyProduct

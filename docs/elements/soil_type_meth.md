@@ -9,7 +9,7 @@ _Reference or method used in determining soil series name or other lower-level c
 
 
 
-URI: [basalt_schema:soil_type_meth](https://EMSL-Computing.github.io/BASALT-Schema/soil_type_meth)
+URI: [basalt_schema:soil_type_meth](https://emsl-computing.github.io/BASALT-Schema/elements/soil_type_meth)
 Alias: soil_type_meth
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: soil_type_meth
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: soil_type_meth
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ name: soil_type_meth
 description: Reference or method used in determining soil series name or other lower-level
   classification
 title: soil type method
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: soil_type_meth
 domain_of:

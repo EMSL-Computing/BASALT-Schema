@@ -1,16 +1,16 @@
 ---
-id: https://EMSL-Computing.github.io/BASALT-Schema/study
+id: https://emsl-computing.github.io/BASALT-Schema/study
 name: basalt-schema-study
 title: BASALT Schema - Study
 description: |-
   Study-related classes for BASALT.
 license: MIT
 see_also:
-  - https://EMSL-Computing.github.io/BASALT-Schema
+  - https://emsl-computing.github.io/BASALT-Schema
   - https://github.com/EMSL-Computing/BASALT-Schema
 
 prefixes:
-  basalt_schema: https://EMSL-Computing.github.io/BASALT-Schema/
+  basalt_schema: https://emsl-computing.github.io/BASALT-Schema/elements/
 
 default_prefix: basalt_schema
 default_range: string

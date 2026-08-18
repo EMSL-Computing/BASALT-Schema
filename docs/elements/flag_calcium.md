@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_calcium](https://EMSL-Computing.github.io/BASALT-Schema/flag_calcium)
+URI: [basalt_schema:flag_calcium](https://emsl-computing.github.io/BASALT-Schema/elements/flag_calcium)
 Alias: flag_calcium
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_calcium
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_calcium
 <details>
 ```yaml
 name: flag_calcium
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_calcium
 owner: IonsAnalysisProduct

@@ -9,7 +9,7 @@ _Measurment of pressure applied to the sample during experimentation (Unit: Pa)_
 
 
 
-URI: [basalt_schema:pressure_control](https://EMSL-Computing.github.io/BASALT-Schema/pressure_control)
+URI: [basalt_schema:pressure_control](https://emsl-computing.github.io/BASALT-Schema/elements/pressure_control)
 Alias: pressure_control
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: pressure_control
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
 | [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: pressure_control
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ name: pressure_control
 description: 'Measurment of pressure applied to the sample during experimentation
   (Unit: Pa)'
 title: pressure control
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: pressure_control
 domain_of:

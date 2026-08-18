@@ -9,7 +9,7 @@ _Stage of the disease at the time of sample collection e.g. inoculation, penetra
 
 
 
-URI: [basalt_schema:samp_dis_stage](https://EMSL-Computing.github.io/BASALT-Schema/samp_dis_stage)
+URI: [basalt_schema:samp_dis_stage](https://emsl-computing.github.io/BASALT-Schema/elements/samp_dis_stage)
 Alias: samp_dis_stage
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: samp_dis_stage
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ name: samp_dis_stage
 description: Stage of the disease at the time of sample collection e.g. inoculation,
   penetration, infection, growth and reproduction, dissemination of pathogen.
 title: sample disease stage
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: samp_dis_stage
 domain_of:

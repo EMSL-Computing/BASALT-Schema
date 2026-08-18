@@ -9,7 +9,7 @@ _how long something took, in minutes_
 
 
 
-URI: [basalt_schema:duration_min](https://EMSL-Computing.github.io/BASALT-Schema/duration_min)
+URI: [basalt_schema:duration_min](https://emsl-computing.github.io/BASALT-Schema/elements/duration_min)
 Alias: duration_min
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: duration_min
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MobilePhaseSegment](MobilePhaseSegment.md) | A segment of the mobile phase used in chromatography during mass spectrometry |  no  |
 | [ChromatographyConfiguration](ChromatographyConfiguration.md) | Configuration and settings for a chromatography run |  no  |
+| [MobilePhaseSegment](MobilePhaseSegment.md) | A segment of the mobile phase used in chromatography during mass spectrometry |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: duration_min
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: duration_min
 ```yaml
 name: duration_min
 description: how long something took, in minutes
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: duration_min
 domain_of:

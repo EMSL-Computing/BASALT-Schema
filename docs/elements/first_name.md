@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:first_name](https://EMSL-Computing.github.io/BASALT-Schema/first_name)
+URI: [basalt_schema:first_name](https://emsl-computing.github.io/BASALT-Schema/elements/first_name)
 Alias: first_name
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: first_name
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: first_name
 <details>
 ```yaml
 name: first_name
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: first_name
 owner: PersonValue

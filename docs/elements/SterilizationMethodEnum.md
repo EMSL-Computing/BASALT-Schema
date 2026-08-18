@@ -7,7 +7,7 @@ _Method used to sterilize media or other entities._
 
 
 
-URI: [basalt_schema:SterilizationMethodEnum](https://EMSL-Computing.github.io/BASALT-Schema/SterilizationMethodEnum)
+URI: [basalt_schema:SterilizationMethodEnum](https://emsl-computing.github.io/BASALT-Schema/elements/SterilizationMethodEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -44,7 +44,7 @@ URI: [basalt_schema:SterilizationMethodEnum](https://EMSL-Computing.github.io/BA
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -57,7 +57,7 @@ URI: [basalt_schema:SterilizationMethodEnum](https://EMSL-Computing.github.io/BA
 ```yaml
 name: SterilizationMethodEnum
 description: Method used to sterilize media or other entities.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   autoclave:

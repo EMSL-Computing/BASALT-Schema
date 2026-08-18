@@ -1,11 +1,11 @@
-id: https://EMSL-Computing.github.io/BASALT-Schema/value-tables
+id: https://emsl-computing.github.io/BASALT-Schema/value-tables
 name: basalt-schema-value-tables
 title: BASALT Schema - Value Tables
 description: value tables
 license: MIT
 
 prefixes:
-  basalt_schema: https://EMSL-Computing.github.io/BASALT-Schema/
+  basalt_schema: https://emsl-computing.github.io/BASALT-Schema/elements/
   linkml: https://w3id.org/linkml/
   schema: http://schema.org/
 default_prefix: basalt_schema

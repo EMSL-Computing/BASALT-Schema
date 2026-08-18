@@ -9,7 +9,7 @@ _Bromine concentration in mg/kg_
 
 
 
-URI: [basalt_schema:br_mg_per_kg](https://EMSL-Computing.github.io/BASALT-Schema/br_mg_per_kg)
+URI: [basalt_schema:br_mg_per_kg](https://emsl-computing.github.io/BASALT-Schema/elements/br_mg_per_kg)
 Alias: br_mg_per_kg
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: br_mg_per_kg
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: br_mg_per_kg
 ```yaml
 name: br_mg_per_kg
 description: Bromine concentration in mg/kg
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: br_mg_per_kg
 owner: XRFElementalProduct

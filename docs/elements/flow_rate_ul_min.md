@@ -9,7 +9,7 @@ _Flow rate of the mobile phase, in microliters per minute._
 
 
 
-URI: [basalt_schema:flow_rate_ul_min](https://EMSL-Computing.github.io/BASALT-Schema/flow_rate_ul_min)
+URI: [basalt_schema:flow_rate_ul_min](https://emsl-computing.github.io/BASALT-Schema/elements/flow_rate_ul_min)
 Alias: flow_rate_ul_min
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: flow_rate_ul_min
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flow_rate_ul_min
 name: flow_rate_ul_min
 description: Flow rate of the mobile phase, in microliters per minute.
 title: flow rate (uL/min)
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: flow_rate_ul_min
 domain_of:

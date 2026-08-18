@@ -11,7 +11,7 @@ _You may enter 'synthetic' if relevant._
 
 
 
-URI: [basalt_schema:donor_organism](https://EMSL-Computing.github.io/BASALT-Schema/donor_organism)
+URI: [basalt_schema:donor_organism](https://emsl-computing.github.io/BASALT-Schema/elements/donor_organism)
 Alias: donor_organism
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: donor_organism
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ description: "Provide the scientific name (genus and species) of the organism fr
   \ which the construct component was first described or obtained. \nYou may enter\
   \ 'synthetic' if relevant."
 title: donor organism
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: donor_organism
 domain_of:

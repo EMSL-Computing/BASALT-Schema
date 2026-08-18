@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:flag_xct](https://EMSL-Computing.github.io/BASALT-Schema/flag_xct)
+URI: [basalt_schema:flag_xct](https://emsl-computing.github.io/BASALT-Schema/elements/flag_xct)
 Alias: flag_xct
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_xct
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_xct
 <details>
 ```yaml
 name: flag_xct
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_xct
 owner: TomographyProduct

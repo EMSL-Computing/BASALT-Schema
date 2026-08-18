@@ -9,7 +9,7 @@ _Carbon source in this well (e.g. "L-malic acid", "glucose")_
 
 
 
-URI: [basalt_schema:carbon_source](https://EMSL-Computing.github.io/BASALT-Schema/carbon_source)
+URI: [basalt_schema:carbon_source](https://emsl-computing.github.io/BASALT-Schema/elements/carbon_source)
 Alias: carbon_source
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: carbon_source
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -90,7 +90,7 @@ Alias: carbon_source
 ```yaml
 name: carbon_source
 description: Carbon source in this well (e.g. "L-malic acid", "glucose")
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: carbon_source
 owner: EcoplateWellMetadata

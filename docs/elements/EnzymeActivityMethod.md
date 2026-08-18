@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:EnzymeActivityMethod](https://EMSL-Computing.github.io/BASALT-Schema/EnzymeActivityMethod)
+URI: [basalt_schema:EnzymeActivityMethod](https://emsl-computing.github.io/BASALT-Schema/elements/EnzymeActivityMethod)
 
 
 
@@ -72,7 +72,7 @@ URI: [basalt_schema:EnzymeActivityMethod](https://EMSL-Computing.github.io/BASAL
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -98,28 +98,28 @@ URI: [basalt_schema:EnzymeActivityMethod](https://EMSL-Computing.github.io/BASAL
 <details>
 ```yaml
 name: EnzymeActivityMethod
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Method
 slots:
 - location
 attributes:
   incubation_temp_c:
     name: incubation_temp_c
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     domain_of:
     - EnzymeActivityMethod
     range: double
   incubation_time:
     name: incubation_time
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     domain_of:
     - EnzymeActivityMethod
     range: string
   wavelength:
     name: wavelength
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     domain_of:
     - EnzymeActivityMethod
@@ -134,12 +134,12 @@ attributes:
 <details>
 ```yaml
 name: EnzymeActivityMethod
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Method
 attributes:
   incubation_temp_c:
     name: incubation_temp_c
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     alias: incubation_temp_c
     owner: EnzymeActivityMethod
@@ -148,7 +148,7 @@ attributes:
     range: double
   incubation_time:
     name: incubation_time
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     alias: incubation_time
     owner: EnzymeActivityMethod
@@ -157,7 +157,7 @@ attributes:
     range: string
   wavelength:
     name: wavelength
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema/methods
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
     rank: 1000
     alias: wavelength
     owner: EnzymeActivityMethod
@@ -169,7 +169,7 @@ attributes:
     name: location
     todos:
     - used on many method classes. no description. what was this meant to mean?
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: location
     owner: EnzymeActivityMethod
@@ -190,7 +190,7 @@ attributes:
     name: analytic
     todos:
     - what does this mean
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: analytic
     owner: EnzymeActivityMethod

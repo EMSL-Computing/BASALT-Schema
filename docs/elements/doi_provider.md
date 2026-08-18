@@ -9,7 +9,7 @@ _The authority, or organization, the DOI is associated with._
 
 
 
-URI: [basalt_schema:doi_provider](https://EMSL-Computing.github.io/BASALT-Schema/doi_provider)
+URI: [basalt_schema:doi_provider](https://emsl-computing.github.io/BASALT-Schema/elements/doi_provider)
 Alias: doi_provider
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: doi_provider
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: doi_provider
 ```yaml
 name: doi_provider
 description: The authority, or organization, the DOI is associated with.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: doi_provider
 owner: DOI

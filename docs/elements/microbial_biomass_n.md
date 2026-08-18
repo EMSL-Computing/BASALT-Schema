@@ -9,7 +9,7 @@ _The part of the organic matter in the soil that constitutes living microorganis
 
 
 
-URI: [basalt_schema:microbial_biomass_n](https://EMSL-Computing.github.io/BASALT-Schema/microbial_biomass_n)
+URI: [basalt_schema:microbial_biomass_n](https://emsl-computing.github.io/BASALT-Schema/elements/microbial_biomass_n)
 Alias: microbial_biomass_n
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: microbial_biomass_n
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -95,7 +95,7 @@ description: The part of the organic matter in the soil that constitutes living 
   factors used for conversion to the final units. Provide value and unit, any unit
   is valid
 title: microbial biomass nitrogen
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: microbial_biomass_n
 domain_of:

@@ -9,7 +9,7 @@ _Amount of time it takes to accomplish the second infiltration activity. If infi
 
 
 
-URI: [basalt_schema:infiltration_2](https://EMSL-Computing.github.io/BASALT-Schema/infiltration_2)
+URI: [basalt_schema:infiltration_2](https://emsl-computing.github.io/BASALT-Schema/elements/infiltration_2)
 Alias: infiltration_2
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: infiltration_2
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -94,7 +94,7 @@ description: 'Amount of time it takes to accomplish the second infiltration acti
   time was not attempted enter ''did not collect''. Units and format of mm:ss required.
   (Example: 15:20 mm:ss)'
 title: second infiltration time
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: infiltration_2
 domain_of:

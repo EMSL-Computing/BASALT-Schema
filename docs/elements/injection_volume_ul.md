@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:injection_volume_ul](https://EMSL-Computing.github.io/BASALT-Schema/injection_volume_ul)
+URI: [basalt_schema:injection_volume_ul](https://emsl-computing.github.io/BASALT-Schema/elements/injection_volume_ul)
 Alias: injection_volume_ul
 
 <!-- no inheritance hierarchy -->
@@ -60,7 +60,7 @@ Alias: injection_volume_ul
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -82,7 +82,7 @@ Alias: injection_volume_ul
 name: injection_volume_ul
 todos:
 - description - not sure what this is referencing
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: injection_volume_ul
 domain_of:

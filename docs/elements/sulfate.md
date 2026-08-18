@@ -9,7 +9,7 @@ _Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)_
 
 
 
-URI: [basalt_schema:sulfate](https://EMSL-Computing.github.io/BASALT-Schema/sulfate)
+URI: [basalt_schema:sulfate](https://emsl-computing.github.io/BASALT-Schema/elements/sulfate)
 Alias: sulfate
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: sulfate
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: sulfate
 name: sulfate
 description: 'Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)'
 title: sulfate
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: sulfate
 domain_of:

@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:ProjectStatusEnum](https://EMSL-Computing.github.io/BASALT-Schema/ProjectStatusEnum)
+URI: [basalt_schema:ProjectStatusEnum](https://emsl-computing.github.io/BASALT-Schema/elements/ProjectStatusEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -41,7 +41,7 @@ URI: [basalt_schema:ProjectStatusEnum](https://EMSL-Computing.github.io/BASALT-S
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -53,7 +53,7 @@ URI: [basalt_schema:ProjectStatusEnum](https://EMSL-Computing.github.io/BASALT-S
 <details>
 ```yaml
 name: ProjectStatusEnum
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   STARTED:

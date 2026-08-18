@@ -9,7 +9,7 @@ _Points to a record of the configuration used for the mass spectrometry run._
 
 
 
-URI: [basalt_schema:uses_ms_configuration](https://EMSL-Computing.github.io/BASALT-Schema/uses_ms_configuration)
+URI: [basalt_schema:uses_ms_configuration](https://emsl-computing.github.io/BASALT-Schema/elements/uses_ms_configuration)
 Alias: uses_ms_configuration
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: uses_ms_configuration
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: uses_ms_configuration
 name: uses_ms_configuration
 description: Points to a record of the configuration used for the mass spectrometry
   run.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: uses_ms_configuration
 domain_of:

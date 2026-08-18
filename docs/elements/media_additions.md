@@ -11,7 +11,7 @@ _Examples: "100 ug/mL ampicillin", "1 mM IPTG"_
 
 
 
-URI: [basalt_schema:media_additions](https://EMSL-Computing.github.io/BASALT-Schema/media_additions)
+URI: [basalt_schema:media_additions](https://emsl-computing.github.io/BASALT-Schema/elements/media_additions)
 Alias: media_additions
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: media_additions
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ name: media_additions
 description: 'Additional components added to the media (antibiotics, inducers, etc.).
 
   Examples: "100 ug/mL ampicillin", "1 mM IPTG"'
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: media_additions
 domain_of:

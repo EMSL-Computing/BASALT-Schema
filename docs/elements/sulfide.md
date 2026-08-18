@@ -9,7 +9,7 @@ _Concentration of sulfide in the sample. (Unit: umol/L or mg/L or ppm)_
 
 
 
-URI: [basalt_schema:sulfide](https://EMSL-Computing.github.io/BASALT-Schema/sulfide)
+URI: [basalt_schema:sulfide](https://emsl-computing.github.io/BASALT-Schema/elements/sulfide)
 Alias: sulfide
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: sulfide
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: sulfide
 name: sulfide
 description: 'Concentration of sulfide in the sample. (Unit: umol/L or mg/L or ppm)'
 title: sulfide
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: sulfide
 domain_of:

@@ -9,7 +9,7 @@ _a measure of the relative oxygen-depletion effect of a waste contaminant_
 
 
 
-URI: [basalt_schema:chem_oxygen_dem](https://EMSL-Computing.github.io/BASALT-Schema/chem_oxygen_dem)
+URI: [basalt_schema:chem_oxygen_dem](https://emsl-computing.github.io/BASALT-Schema/elements/chem_oxygen_dem)
 Alias: chem_oxygen_dem
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: chem_oxygen_dem
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: chem_oxygen_dem
 name: chem_oxygen_dem
 description: a measure of the relative oxygen-depletion effect of a waste contaminant
 title: chemical oxygen demand
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: chem_oxygen_dem
 domain_of:

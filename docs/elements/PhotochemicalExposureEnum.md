@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:PhotochemicalExposureEnum](https://EMSL-Computing.github.io/BASALT-Schema/PhotochemicalExposureEnum)
+URI: [basalt_schema:PhotochemicalExposureEnum](https://emsl-computing.github.io/BASALT-Schema/elements/PhotochemicalExposureEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -38,7 +38,7 @@ URI: [basalt_schema:PhotochemicalExposureEnum](https://EMSL-Computing.github.io/
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -50,7 +50,7 @@ URI: [basalt_schema:PhotochemicalExposureEnum](https://EMSL-Computing.github.io/
 <details>
 ```yaml
 name: PhotochemicalExposureEnum
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   ultraviolet:

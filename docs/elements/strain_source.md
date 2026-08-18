@@ -11,7 +11,7 @@ _vendor and lot number if from another registered or known strain provide a refe
 
 
 
-URI: [basalt_schema:strain_source](https://EMSL-Computing.github.io/BASALT-Schema/strain_source)
+URI: [basalt_schema:strain_source](https://emsl-computing.github.io/BASALT-Schema/elements/strain_source)
 Alias: strain_source
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: strain_source
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -94,7 +94,7 @@ description: 'Indicate the source of the strain provided (e.g. "PNNL", "ATCC"). 
 
   vendor and lot number if from another registered or known strain provide a reference.'
 title: strain source
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 aliases:
 - source_institution
 - strain_origin

@@ -1,4 +1,4 @@
-id: https://EMSL-Computing.github.io/BASALT-Schema/methods
+id: https://emsl-computing.github.io/BASALT-Schema/methods
 name: basalt-schema-methods
 title: BASALT Schema - Methods
 description: |-
@@ -6,7 +6,7 @@ description: |-
 license: MIT
 
 prefixes:
-  basalt_schema: https://EMSL-Computing.github.io/BASALT-Schema/
+  basalt_schema: https://emsl-computing.github.io/BASALT-Schema/elements/
   linkml: https://w3id.org/linkml/
   schema: http://schema.org/
 default_prefix: basalt_schema

@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:beta_glucosidase_ug_pnp_per_g_per_h_id](https://EMSL-Computing.github.io/BASALT-Schema/beta_glucosidase_ug_pnp_per_g_per_h_id)
+URI: [basalt_schema:beta_glucosidase_ug_pnp_per_g_per_h_id](https://emsl-computing.github.io/BASALT-Schema/elements/beta_glucosidase_ug_pnp_per_g_per_h_id)
 Alias: beta_glucosidase_ug_pnp_per_g_per_h_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: beta_glucosidase_ug_pnp_per_g_per_h_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: beta_glucosidase_ug_pnp_per_g_per_h_id
 <details>
 ```yaml
 name: beta_glucosidase_ug_pnp_per_g_per_h_id
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: beta_glucosidase_ug_pnp_per_g_per_h_id
 owner: EnzymeProduct

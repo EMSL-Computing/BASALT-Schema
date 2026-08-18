@@ -9,7 +9,7 @@ _Taxonomic rank information about the host below subspecies level, such as varie
 
 
 
-URI: [basalt_schema:host_infra_spec_rank](https://EMSL-Computing.github.io/BASALT-Schema/host_infra_spec_rank)
+URI: [basalt_schema:host_infra_spec_rank](https://emsl-computing.github.io/BASALT-Schema/elements/host_infra_spec_rank)
 Alias: host_infra_spec_rank
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: host_infra_spec_rank
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ name: host_infra_spec_rank
 description: Taxonomic rank information about the host below subspecies level, such
   as variety, form, rank, etc.
 title: host infra-specific rank
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: host_infra_spec_rank
 domain_of:

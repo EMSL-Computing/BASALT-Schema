@@ -9,7 +9,7 @@ _Concentration of nitrite in the sample (Unit: umol/L or mg/L or ppm)_
 
 
 
-URI: [basalt_schema:nitrite](https://EMSL-Computing.github.io/BASALT-Schema/nitrite)
+URI: [basalt_schema:nitrite](https://emsl-computing.github.io/BASALT-Schema/elements/nitrite)
 Alias: nitrite
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: nitrite
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: nitrite
 name: nitrite
 description: 'Concentration of nitrite in the sample (Unit: umol/L or mg/L or ppm)'
 title: nitrite
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: nitrite
 domain_of:

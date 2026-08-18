@@ -13,7 +13,7 @@ _attribute to provide additional detail._
 
 
 
-URI: [basalt_schema:growth_facil](https://EMSL-Computing.github.io/BASALT-Schema/growth_facil)
+URI: [basalt_schema:growth_facil](https://emsl-computing.github.io/BASALT-Schema/elements/growth_facil)
 Alias: growth_facil
 
 <!-- no inheritance hierarchy -->
@@ -66,7 +66,7 @@ Alias: growth_facil
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ description: 'Type of facility or location from where the sample was collected o
 
   attribute to provide additional detail.'
 title: growth facility
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: growth_facil
 domain_of:

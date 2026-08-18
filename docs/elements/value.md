@@ -9,7 +9,7 @@ _Measured value (absorbance, OD, fluorescence)_
 
 
 
-URI: [basalt_schema:value](https://EMSL-Computing.github.io/BASALT-Schema/value)
+URI: [basalt_schema:value](https://emsl-computing.github.io/BASALT-Schema/elements/value)
 Alias: value
 
 <!-- no inheritance hierarchy -->
@@ -69,7 +69,7 @@ Alias: value
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -90,7 +90,7 @@ Alias: value
 ```yaml
 name: value
 description: Measured value (absorbance, OD, fluorescence)
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: value
 owner: WellReading

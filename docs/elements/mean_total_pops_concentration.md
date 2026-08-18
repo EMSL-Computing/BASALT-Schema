@@ -9,7 +9,7 @@ _Mean concentration obtained from Portable Optical Particle Spectrometer (Unit: 
 
 
 
-URI: [basalt_schema:mean_total_pops_concentration](https://EMSL-Computing.github.io/BASALT-Schema/mean_total_pops_concentration)
+URI: [basalt_schema:mean_total_pops_concentration](https://emsl-computing.github.io/BASALT-Schema/elements/mean_total_pops_concentration)
 Alias: mean_total_pops_concentration
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: mean_total_pops_concentration
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ name: mean_total_pops_concentration
 description: 'Mean concentration obtained from Portable Optical Particle Spectrometer
   (Unit: μm)'
 title: mean total P.O.P. concentration
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: mean_total_pops_concentration
 domain_of:

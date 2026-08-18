@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:packages](https://EMSL-Computing.github.io/BASALT-Schema/packages)
+URI: [basalt_schema:packages](https://emsl-computing.github.io/BASALT-Schema/elements/packages)
 Alias: packages
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: packages
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: packages
 <details>
 ```yaml
 name: packages
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: packages
 owner: zipDownload

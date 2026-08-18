@@ -9,7 +9,7 @@ _Concentration of soluble reactive phosphorus. (Unit: umol/L or mg/L or ppm)_
 
 
 
-URI: [basalt_schema:soluble_react_phosp](https://EMSL-Computing.github.io/BASALT-Schema/soluble_react_phosp)
+URI: [basalt_schema:soluble_react_phosp](https://emsl-computing.github.io/BASALT-Schema/elements/soluble_react_phosp)
 Alias: soluble_react_phosp
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: soluble_react_phosp
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: soluble_react_phosp
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ name: soluble_react_phosp
 description: 'Concentration of soluble reactive phosphorus. (Unit: umol/L or mg/L
   or ppm)'
 title: soluble reactive phosphorus
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: soluble_react_phosp
 domain_of:

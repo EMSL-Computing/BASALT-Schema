@@ -9,7 +9,7 @@ _Concentration of phosphate (Unit: umol/L)_
 
 
 
-URI: [basalt_schema:phosphate](https://EMSL-Computing.github.io/BASALT-Schema/phosphate)
+URI: [basalt_schema:phosphate](https://emsl-computing.github.io/BASALT-Schema/elements/phosphate)
 Alias: phosphate
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: phosphate
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: phosphate
 name: phosphate
 description: 'Concentration of phosphate (Unit: umol/L)'
 title: phosphate
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: phosphate
 domain_of:

@@ -7,7 +7,7 @@ _Types of sediment_
 
 
 
-URI: [basalt_schema:SedimentTypeEnum](https://EMSL-Computing.github.io/BASALT-Schema/SedimentTypeEnum)
+URI: [basalt_schema:SedimentTypeEnum](https://emsl-computing.github.io/BASALT-Schema/elements/SedimentTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -44,7 +44,7 @@ URI: [basalt_schema:SedimentTypeEnum](https://EMSL-Computing.github.io/BASALT-Sc
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -57,7 +57,7 @@ URI: [basalt_schema:SedimentTypeEnum](https://EMSL-Computing.github.io/BASALT-Sc
 ```yaml
 name: SedimentTypeEnum
 description: Types of sediment
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   biogenous:

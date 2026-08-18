@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:ContainerType](https://EMSL-Computing.github.io/BASALT-Schema/ContainerType)
+URI: [basalt_schema:ContainerType](https://emsl-computing.github.io/BASALT-Schema/elements/ContainerType)
 
 
 
@@ -109,7 +109,7 @@ URI: [basalt_schema:ContainerType](https://EMSL-Computing.github.io/BASALT-Schem
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -138,11 +138,11 @@ name: ContainerType
 todos:
 - reconcile with enums and in media_strain_culture_plate.yaml
 - potentially delete along with ContainerAxis? What are these for?
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     domain_of:
     - Activity
@@ -220,7 +220,7 @@ attributes:
     required: true
   description:
     name: description
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     domain_of:
     - Activity
     - Entity
@@ -248,21 +248,21 @@ attributes:
     range: string
   container_type:
     name: container_type
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     domain_of:
     - ContainerType
     - CultureGrowth
     range: ContainerTypeEnum
   container_size_id:
     name: container_size_id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - ContainerType
     range: QuantityValue
   axes:
     name: axes
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - ContainerType
@@ -270,7 +270,7 @@ attributes:
     multivalued: true
   contains:
     name: contains
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - ContainerType
@@ -278,7 +278,7 @@ attributes:
     multivalued: true
   label_format:
     name: label_format
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - ContainerType
@@ -286,14 +286,14 @@ attributes:
   renderer:
     name: renderer
     description: UI renderer to use for this container type (e.g., defaultcontainer.js).
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - ContainerType
     range: string
   slot_capacity:
     name: slot_capacity
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - ContainerType
@@ -310,11 +310,11 @@ name: ContainerType
 todos:
 - reconcile with enums and in media_strain_culture_plate.yaml
 - potentially delete along with ContainerAxis? What are these for?
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: ContainerType
@@ -394,7 +394,7 @@ attributes:
     required: true
   description:
     name: description
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     alias: description
     owner: ContainerType
     domain_of:
@@ -424,7 +424,7 @@ attributes:
     range: string
   container_type:
     name: container_type
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     alias: container_type
     owner: ContainerType
     domain_of:
@@ -433,7 +433,7 @@ attributes:
     range: ContainerTypeEnum
   container_size_id:
     name: container_size_id
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: container_size_id
     owner: ContainerType
@@ -442,7 +442,7 @@ attributes:
     range: QuantityValue
   axes:
     name: axes
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: axes
     owner: ContainerType
@@ -452,7 +452,7 @@ attributes:
     multivalued: true
   contains:
     name: contains
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: contains
     owner: ContainerType
@@ -462,7 +462,7 @@ attributes:
     multivalued: true
   label_format:
     name: label_format
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: label_format
     owner: ContainerType
@@ -472,7 +472,7 @@ attributes:
   renderer:
     name: renderer
     description: UI renderer to use for this container type (e.g., defaultcontainer.js).
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: renderer
     owner: ContainerType
@@ -481,7 +481,7 @@ attributes:
     range: string
   slot_capacity:
     name: slot_capacity
-    from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: slot_capacity
     owner: ContainerType

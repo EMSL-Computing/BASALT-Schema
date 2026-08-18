@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:step_number](https://EMSL-Computing.github.io/BASALT-Schema/step_number)
+URI: [basalt_schema:step_number](https://emsl-computing.github.io/BASALT-Schema/elements/step_number)
 Alias: step_number
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: step_number
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: step_number
 <details>
 ```yaml
 name: step_number
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: step_number
 owner: ProcessingSampleLink

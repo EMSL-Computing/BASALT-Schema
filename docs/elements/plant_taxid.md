@@ -9,7 +9,7 @@ _NCBI taxon ID of the plant from https://www.ncbi.nlm.nih.gov/taxonomy_
 
 
 
-URI: [basalt_schema:plant_taxid](https://EMSL-Computing.github.io/BASALT-Schema/plant_taxid)
+URI: [basalt_schema:plant_taxid](https://emsl-computing.github.io/BASALT-Schema/elements/plant_taxid)
 Alias: plant_taxid
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: plant_taxid
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: plant_taxid
 name: plant_taxid
 description: NCBI taxon ID of the plant from https://www.ncbi.nlm.nih.gov/taxonomy
 title: plant taxonomy identifier
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: plant_taxid
 domain_of:

@@ -9,7 +9,7 @@ _the origin of wastewater such as human waste rainfall storm drains etc._
 
 
 
-URI: [basalt_schema:wastewater_type](https://EMSL-Computing.github.io/BASALT-Schema/wastewater_type)
+URI: [basalt_schema:wastewater_type](https://emsl-computing.github.io/BASALT-Schema/elements/wastewater_type)
 Alias: wastewater_type
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: wastewater_type
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: wastewater_type
 name: wastewater_type
 description: the origin of wastewater such as human waste rainfall storm drains etc.
 title: wasterwater type
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: wastewater_type
 domain_of:

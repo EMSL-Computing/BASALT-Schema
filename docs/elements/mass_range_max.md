@@ -9,7 +9,7 @@ _The maximum mass observable by this run (in m/z)._
 
 
 
-URI: [basalt_schema:mass_range_max](https://EMSL-Computing.github.io/BASALT-Schema/mass_range_max)
+URI: [basalt_schema:mass_range_max](https://emsl-computing.github.io/BASALT-Schema/elements/mass_range_max)
 Alias: mass_range_max
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: mass_range_max
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -82,7 +82,7 @@ Alias: mass_range_max
 ```yaml
 name: mass_range_max
 description: The maximum mass observable by this run (in m/z).
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: mass_range_max
 domain_of:

@@ -7,7 +7,7 @@ _The category of metaproteomics analysis being performed._
 
 
 
-URI: [basalt_schema:MetaproteomicsAnalysisCategoryEnum](https://EMSL-Computing.github.io/BASALT-Schema/MetaproteomicsAnalysisCategoryEnum)
+URI: [basalt_schema:MetaproteomicsAnalysisCategoryEnum](https://emsl-computing.github.io/BASALT-Schema/elements/MetaproteomicsAnalysisCategoryEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -43,7 +43,7 @@ URI: [basalt_schema:MetaproteomicsAnalysisCategoryEnum](https://EMSL-Computing.g
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -56,7 +56,7 @@ URI: [basalt_schema:MetaproteomicsAnalysisCategoryEnum](https://EMSL-Computing.g
 ```yaml
 name: MetaproteomicsAnalysisCategoryEnum
 description: The category of metaproteomics analysis being performed.
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   matched_metagenome:

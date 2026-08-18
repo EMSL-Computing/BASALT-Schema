@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:phosphorus_avg](https://EMSL-Computing.github.io/BASALT-Schema/phosphorus_avg)
+URI: [basalt_schema:phosphorus_avg](https://emsl-computing.github.io/BASALT-Schema/elements/phosphorus_avg)
 Alias: phosphorus_avg
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: phosphorus_avg
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: phosphorus_avg
 <details>
 ```yaml
 name: phosphorus_avg
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: phosphorus_avg
 owner: PhosphorusAnalysisProduct

@@ -9,7 +9,7 @@ _Reference or method used in determining the water content of soil_
 
 
 
-URI: [basalt_schema:water_content_meth](https://EMSL-Computing.github.io/BASALT-Schema/water_content_meth)
+URI: [basalt_schema:water_content_meth](https://emsl-computing.github.io/BASALT-Schema/elements/water_content_meth)
 Alias: water_content_meth
 
 <!-- no inheritance hierarchy -->
@@ -24,9 +24,9 @@ Alias: water_content_meth
 | --- | --- | --- |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
 | [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 
@@ -65,7 +65,7 @@ Alias: water_content_meth
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -87,7 +87,7 @@ Alias: water_content_meth
 name: water_content_meth
 description: Reference or method used in determining the water content of soil
 title: water content method
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: water_content_meth
 domain_of:

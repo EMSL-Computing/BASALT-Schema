@@ -9,7 +9,7 @@ _Present state of sample site. This slot is NOT multivalued. Valid entries: badl
 
 
 
-URI: [basalt_schema:cur_land_use](https://EMSL-Computing.github.io/BASALT-Schema/cur_land_use)
+URI: [basalt_schema:cur_land_use](https://emsl-computing.github.io/BASALT-Schema/elements/cur_land_use)
 Alias: cur_land_use
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: cur_land_use
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ description: 'Present state of sample site. This slot is NOT multivalued. Valid 
   grains, successional shrub land, swamp, tropical, tundra, vegetable crops, vine
   crops'
 title: current land use
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: cur_land_use
 domain_of:

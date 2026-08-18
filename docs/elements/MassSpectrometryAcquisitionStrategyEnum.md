@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:MassSpectrometryAcquisitionStrategyEnum](https://EMSL-Computing.github.io/BASALT-Schema/MassSpectrometryAcquisitionStrategyEnum)
+URI: [basalt_schema:MassSpectrometryAcquisitionStrategyEnum](https://emsl-computing.github.io/BASALT-Schema/elements/MassSpectrometryAcquisitionStrategyEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -38,7 +38,7 @@ URI: [basalt_schema:MassSpectrometryAcquisitionStrategyEnum](https://EMSL-Comput
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -50,7 +50,7 @@ URI: [basalt_schema:MassSpectrometryAcquisitionStrategyEnum](https://EMSL-Comput
 <details>
 ```yaml
 name: MassSpectrometryAcquisitionStrategyEnum
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   data_independent_acquisition:

@@ -9,7 +9,7 @@ _The label on the stored processed sample, if applicable (e.g., "f01")._
 
 
 
-URI: [basalt_schema:label_text](https://EMSL-Computing.github.io/BASALT-Schema/label_text)
+URI: [basalt_schema:label_text](https://emsl-computing.github.io/BASALT-Schema/elements/label_text)
 Alias: label_text
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: label_text
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  no  |
 | [CoreSection](CoreSection.md) | A section of a core sample (TOP, MID, BTM) |  no  |
+| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: label_text
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: label_text
 ```yaml
 name: label_text
 description: The label on the stored processed sample, if applicable (e.g., "f01").
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: label_text
 domain_of:

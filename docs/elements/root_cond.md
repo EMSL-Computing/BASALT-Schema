@@ -9,7 +9,7 @@ _Relevant rooting conditions such as field plot size, sowing density, container 
 
 
 
-URI: [basalt_schema:root_cond](https://EMSL-Computing.github.io/BASALT-Schema/root_cond)
+URI: [basalt_schema:root_cond](https://emsl-computing.github.io/BASALT-Schema/elements/root_cond)
 Alias: root_cond
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: root_cond
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: root_cond
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -86,7 +86,7 @@ name: root_cond
 description: Relevant rooting conditions such as field plot size, sowing density,
   container dimensions, number of plants per container.
 title: rooting conditions
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: root_cond
 domain_of:

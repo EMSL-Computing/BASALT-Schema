@@ -9,7 +9,7 @@ _The design of the synthetic environment that was created for experimentation_
 
 
 
-URI: [basalt_schema:synth_env_design](https://EMSL-Computing.github.io/BASALT-Schema/synth_env_design)
+URI: [basalt_schema:synth_env_design](https://emsl-computing.github.io/BASALT-Schema/elements/synth_env_design)
 Alias: synth_env_design
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: synth_env_design
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  yes  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  yes  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  yes  |
 
 
 
@@ -62,7 +62,7 @@ Alias: synth_env_design
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: synth_env_design
 name: synth_env_design
 description: The design of the synthetic environment that was created for experimentation
 title: synthetic environment design
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: synth_env_design
 domain_of:

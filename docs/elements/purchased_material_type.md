@@ -9,7 +9,7 @@ _Discriminator for purchasedMaterial subtype (e.g. 'media', 'strain')_
 
 
 
-URI: [basalt_schema:purchased_material_type](https://EMSL-Computing.github.io/BASALT-Schema/purchased_material_type)
+URI: [basalt_schema:purchased_material_type](https://emsl-computing.github.io/BASALT-Schema/elements/purchased_material_type)
 Alias: purchased_material_type
 
 <!-- no inheritance hierarchy -->
@@ -62,7 +62,7 @@ Alias: purchased_material_type
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: purchased_material_type
 ```yaml
 name: purchased_material_type
 description: Discriminator for purchasedMaterial subtype (e.g. 'media', 'strain')
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: purchased_material_type
 domain_of:

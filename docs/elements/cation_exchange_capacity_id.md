@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:cation_exchange_capacity_id](https://EMSL-Computing.github.io/BASALT-Schema/cation_exchange_capacity_id)
+URI: [basalt_schema:cation_exchange_capacity_id](https://emsl-computing.github.io/BASALT-Schema/elements/cation_exchange_capacity_id)
 Alias: cation_exchange_capacity_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: cation_exchange_capacity_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: cation_exchange_capacity_id
 <details>
 ```yaml
 name: cation_exchange_capacity_id
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: cation_exchange_capacity_id
 owner: IonsAnalysisProduct

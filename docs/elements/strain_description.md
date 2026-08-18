@@ -9,7 +9,7 @@ _A brief description of the modifications that comprise this strain_
 
 
 
-URI: [basalt_schema:strain_description](https://EMSL-Computing.github.io/BASALT-Schema/strain_description)
+URI: [basalt_schema:strain_description](https://emsl-computing.github.io/BASALT-Schema/elements/strain_description)
 Alias: strain_description
 
 <!-- no inheritance hierarchy -->
@@ -67,7 +67,7 @@ Alias: strain_description
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -89,7 +89,7 @@ Alias: strain_description
 name: strain_description
 description: A brief description of the modifications that comprise this strain
 title: strain description
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 aliases:
 - strain_desc
 - strain_notes

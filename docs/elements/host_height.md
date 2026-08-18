@@ -9,7 +9,7 @@ _The height of subject. (Unit: cm or mm or m)_
 
 
 
-URI: [basalt_schema:host_height](https://EMSL-Computing.github.io/BASALT-Schema/host_height)
+URI: [basalt_schema:host_height](https://emsl-computing.github.io/BASALT-Schema/elements/host_height)
 Alias: host_height
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: host_height
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
 
 
 
@@ -71,7 +71,7 @@ Alias: host_height
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -93,7 +93,7 @@ Alias: host_height
 name: host_height
 description: 'The height of subject. (Unit: cm or mm or m)'
 title: host height
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: host_height
 domain_of:

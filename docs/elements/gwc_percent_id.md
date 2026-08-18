@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:gwc_percent_id](https://EMSL-Computing.github.io/BASALT-Schema/gwc_percent_id)
+URI: [basalt_schema:gwc_percent_id](https://emsl-computing.github.io/BASALT-Schema/elements/gwc_percent_id)
 Alias: gwc_percent_id
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: gwc_percent_id
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,7 +83,7 @@ Alias: gwc_percent_id
 <details>
 ```yaml
 name: gwc_percent_id
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: gwc_percent_id
 owner: GWCMoistureProduct

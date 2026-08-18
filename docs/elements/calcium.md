@@ -9,7 +9,7 @@ _Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)_
 
 
 
-URI: [basalt_schema:calcium](https://EMSL-Computing.github.io/BASALT-Schema/calcium)
+URI: [basalt_schema:calcium](https://emsl-computing.github.io/BASALT-Schema/elements/calcium)
 Alias: calcium
 
 <!-- no inheritance hierarchy -->
@@ -70,7 +70,7 @@ Alias: calcium
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -92,7 +92,7 @@ Alias: calcium
 name: calcium
 description: 'Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)'
 title: calcium
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: calcium
 domain_of:

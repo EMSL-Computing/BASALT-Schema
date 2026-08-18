@@ -9,7 +9,7 @@ _Soil classification from the FAO World soil distribution from International Soi
 
 
 
-URI: [basalt_schema:fao_class](https://EMSL-Computing.github.io/BASALT-Schema/fao_class)
+URI: [basalt_schema:fao_class](https://emsl-computing.github.io/BASALT-Schema/elements/fao_class)
 Alias: fao_class
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: fao_class
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -85,7 +85,7 @@ description: Soil classification from the FAO World soil distribution from Inter
   Soil Reference and Information Centre (ISRIC). The list of available soil classifications
   can be found at https://www.isric.org/explore/world-soil-distribution
 title: FAO soil taxonomy classification
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: fao_class
 domain_of:

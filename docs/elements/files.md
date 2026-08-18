@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:files](https://EMSL-Computing.github.io/BASALT-Schema/files)
+URI: [basalt_schema:files](https://emsl-computing.github.io/BASALT-Schema/elements/files)
 Alias: files
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: files
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: files
 <details>
 ```yaml
 name: files
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: files
 owner: zipDownload

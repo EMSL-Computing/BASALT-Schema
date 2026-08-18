@@ -2,7 +2,7 @@
 
 
 
-URI: [basalt_schema:MassSpectrumCollectionModeEnum](https://EMSL-Computing.github.io/BASALT-Schema/MassSpectrumCollectionModeEnum)
+URI: [basalt_schema:MassSpectrumCollectionModeEnum](https://emsl-computing.github.io/BASALT-Schema/elements/MassSpectrumCollectionModeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -38,7 +38,7 @@ URI: [basalt_schema:MassSpectrumCollectionModeEnum](https://EMSL-Computing.githu
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -50,7 +50,7 @@ URI: [basalt_schema:MassSpectrumCollectionModeEnum](https://EMSL-Computing.githu
 <details>
 ```yaml
 name: MassSpectrumCollectionModeEnum
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   full_profile:

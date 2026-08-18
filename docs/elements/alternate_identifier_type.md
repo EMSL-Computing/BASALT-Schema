@@ -4,7 +4,7 @@
 
 
 
-URI: [basalt_schema:alternate_identifier_type](https://EMSL-Computing.github.io/BASALT-Schema/alternate_identifier_type)
+URI: [basalt_schema:alternate_identifier_type](https://emsl-computing.github.io/BASALT-Schema/elements/alternate_identifier_type)
 Alias: alternate_identifier_type
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: alternate_identifier_type
 ### Schema Source
 
 
-* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -84,7 +84,7 @@ Alias: alternate_identifier_type
 <details>
 ```yaml
 name: alternate_identifier_type
-from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: alternate_identifier_type
 owner: AlternativeIdentifier
