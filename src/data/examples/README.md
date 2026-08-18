@@ -1,6 +1,6 @@
-# MONet Analysis API Schema Examples
+# BASALT Schema Examples
 
-This directory contains example YAML files demonstrating the usage of the LinkML-based MONet Analysis API schema.
+This directory contains example YAML files demonstrating the usage of the LinkML-based BASALT Schema.
 
 ## Valid Examples
 
@@ -55,7 +55,7 @@ These examples can be used to:
 After generating the LinkML models, validate examples with:
 
 ```bash
-poetry run linkml-validate --schema src/analysis_api_schema/schema/analysis_api_schema.yaml src/data/examples/valid/sample-001.yaml
+poetry run linkml-validate --schema src/basalt_schema/schema/basalt_schema.yaml src/data/examples/valid/sample-001.yaml
 ```
 
 ## Schema Generation

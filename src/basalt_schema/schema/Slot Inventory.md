@@ -1,0 +1,59 @@
+## Slot Inventory vs. Current Schema
+
+**Key:**
+- **Found** — exact slot name exists in schema
+- **Partial** — described concept exists under a different name
+- **Not Found** — no equivalent exists anywhere in the schema
+
+| Requested Slot | Status | Schema Name (if different) | Class(es) | File(s) | Notes |
+|---|---|---|---|---|---|
+| `id` | **Found** | `id` (attribute) | `DataProduct`, `ProcessedData`, `DataGenerationActivity`, `DataProcessingActivity`, `Instrument`, `SampleProcessing`, `SiteMetadata`, `Sample`, `ProcessedSample`, `SamplingActivity`, `Study`, `Configuration`, `MassSpectrometryStandardRun`, `zipDownload`, `PurchasedMaterial`, `LabProcessingActivity`, `AlternativeIdentifier`, `OntologyClass`, `LabDevice`, + others | Nearly all files | Defined as inline attribute (`identifier: true, range: uuid`) on each class, not a global slot |
+| `emsln_project_id` | **Partial** | `emsl_activity` / project / `project_id` | `SamplingActivity`, `Sample` (`emsl_activity`); `Study` (`project_id`); `DataProduct`, `Sample`, `SamplingActivity` (project) | slots.yaml, study.yaml | `emsl_activity` links to EMSL campaign name (string). project global slot (alias: project_id, study_id, proposal_id) is the LIMS project integer. Neither uses "emsln" spelling |
+| `sample_id` | **Found** | `sample_id` | `ProcessedData`, `MetagenomicsProduct` (global slot ref); `AMP2WellMetadata`, `DataProcessingActivity` (local attr) | slots.yaml, basalt_schema.yaml, metagenomics.yaml, media_strain_culture_plate.yaml | Global slot defined in slots.yaml (`range: Sample`) |
+| `run_id` | **Not Found** | — | — | — | No batch/run identifier exists; nearest is `id` on `DataGenerationActivity` or `DataProcessingActivity` |
+| `title` | **Not Found** | `name` / `proposal_title` | `Study` (`proposal_title`); all entities (`name`) | study.yaml, slots.yaml | `title:` appears only as YAML file-level metadata, never as a schema slot. `proposal_title` on `Study` is the closest human-readable title field |
+| `description` | **Found** | `description` | `DataProduct`, `DataProcessingActivity`, `Configuration`, `MassSpectrometryStandardRun`, `TimestampValue`, `TextValue`, `SoftwareControlledTermValue`, `ControlledTermValue`, `QuantityValue`, `SiteMetadata`, `Sample`, `SamplingActivity`, `SoilSamplingActivity`, `PurchasedMaterial` | slots.yaml, basalt_schema.yaml, mass_spec.yaml, value_tables.yaml, sample_classes.yaml, media_strain_culture_plate.yaml | Global slot in slots.yaml |
+| `workflow_name` | **Partial** | `name` / `method_name` | `SampleProcessing` (`method_name`); all activities (`name`) | slots.yaml, basalt_schema.yaml | No slot specifically named for workflow name; `name` is generic and `method_name` is LIMS method |
+| `workflow_version` | **Partial** | `version` / `software_version` | `DataProcessingActivity` (`software_version`, `version`)  | slots.yaml, basalt_schema.yaml | `version` is a global slot (required). `software_version` is a local attribute on `DataProcessingActivity`. Intent is ambiguous in current schema (see `todos`) |
+| `processing_level` | **Not Found** | — | — | — | No raw/processed/derived/ML classification field exists |
+| `processing_timestamp` | **Partial** | `started_at_time` / `ended_at_time` | `DataProcessingActivity` | basalt_schema.yaml | UTC datetime of workflow execution captured via `ended_at_time` (range: datetime) |
+| `processing_parameters` | **Partial** | `workflow_steps` / `processing_steps` | `DataProcessingActivity` (`workflow_steps`); `SampleProcessing` (`processing_steps`) | slots.yaml, basalt_schema.yaml | Both are `range: string` with `TODO JSONB` — key-value key parameters not yet formally typed |
+| `source_files` | **Not Found** | — | — | — | No slot tracking list of input raw files to a workflow; `MassSpectrometryInstrumentData` is the raw file class but no FK list slot exists |
+| `intermediate_artifacts` | **Not Found** | — | — | — | No concept of intermediate outputs; `parent_workflow_id` on `DataProcessingActivity` chains steps but doesn't enumerate artifacts |
+| `calibration_profile_ids` | **Partial** | `uses_calibration` | `MassSpectrometryDataProcessingActivity` | slots.yaml, mass_spec.yaml | `uses_calibration` (range: `MassSpectrometryStandardRun`) — single reference, not a list of profile IDs; no generic cross-technique calibration linkage |
+| `lineage_graph` | **Partial** | `parent_workflow_id` / `LinkageCache` | `DataProcessingActivity` (`parent_workflow_id`) | slots.yaml, linkage_cache.yaml | `parent_workflow_id` enables single-hop chaining. linkage_cache.yaml (`ancestor_id`, `descendant_id`) is a precomputed provenance table — no exportable JSON lineage graph slot |
+| `qc_level` | **Partial** | `flag` / `flag_*` | All `ProcessedData` subclasses in products.yaml | products.yaml | Per-analyte `flag` attributes (range: `ProcessedDataFlag` enum) exist. No single top-level QC classification field |
+| `qc_flags` | **Partial** | `flag_*` attributes | All `ProcessedData` subclasses (e.g., `flag_total_carbon`, `flag_sulfate`, `flag_quartz` …) | products.yaml, xrf_xrd.yaml | Per-variable flags exist as individual attributes; no aggregated list-of-flags slot |
+| `uncertainty_metrics` | **Not Found** | — | — | — | No uncertainty or error propagation field exists anywhere |
+| `calibration_timestamp` | **Partial** | (via `MassSpectrometryStandardRun`) | `MassSpectrometryStandardRun` | mass_spec.yaml | No explicit calibration timestamp slot; the `MassSpectrometryStandardRun` referenced by `uses_calibration` would need a `calibration_date` attribute added |
+| `calibration_method` | **Partial** | `calibration_target` / `calibration_standard` / `internal_calibration` | `MassSpectrometryStandardRun` | mass_spec.yaml | Mass spec only; `calibration_target` (CalibrationTargetEnum), `calibration_standard` (PurchasedMaterial), `internal_calibration` (boolean) together describe the approach; no generic cross-technique `calibration_method` slot |
+| `variables` | **Not Found** | — | — | — | No list-of-variable-entries slot; individual measured values are typed columns (e.g., `bulk_density_id`, `gwc_percent_id`) |
+| `variables.name` | **Not Found** | — | — | — | Variable columns are named by analyte (e.g., `total_carbon_id`), not stored as name/value pairs |
+| `variables.unit` | **Partial** | `QuantityValue.unit` | `QuantityValue` | value_tables.yaml | `QuantityValue` has a `unit` field; analyte slots point to `QuantityValue` instances, but no explicit `variables.unit` path |
+| `variables.datatype` | **Not Found** | — | — | — | Types are implicit in slot ranges (`float`, `double`, `integer`); no runtime datatype field |
+| `variables.description` | **Partial** | `description` (per slot) | — | slots.yaml | LinkML slot definitions carry descriptions, but these are schema-level metadata not runtime slot values |
+| `data_format` | **Partial** | `file_type` / `ms_raw_file_type` | `InstrumentData` (`file_type`); `MassSpectrometryInstrumentData` (`ms_raw_file_type`) | basalt_schema.yaml, mass_spec.yaml | Raw file formats tracked via enums. No `data_format` covering processed/cloud-native formats (Parquet, Zarr not mentioned) |
+| `storage_uri` | **Partial** | `s3_base_url` + `s3_bucket` + `s3_key` | `DataProduct` (and all subclasses via inheritance) | slots.yaml, basalt_schema.yaml | S3/MinIO path is split across three slots; no single composed `storage_uri` slot; `file_curie` on `InstrumentData` is a generic resolvable identifier |
+| `download_api` | **Partial** | `file_curie` | `InstrumentData` | slots.yaml, basalt_schema.yaml | `file_curie` ("an identifier for a file that resolves to the file's accessible location") is the closest; no explicit MADS/BASALT API endpoint slot |
+| `file_manifest` | **Partial** | `zipDownload.files` | `zipDownload` | zip_download.yaml | `zipDownload` tracks downloaded file counts; no checksum+size manifest list slot exists anywhere |
+| `instrument` | **Partial** | `instrument_used` / `Instrument` class | `DataGenerationActivity` (`instrument_used`); `ConditioningValue` (`instrument` local attr) | basalt_schema.yaml, slots.yaml, value_tables.yaml | `Instrument` is a full class with `name`, `vendor`, `model`, `instrument_parameters`. `instrument_used` is the FK attribute on `DataGenerationActivity` |
+| `technique` | **Partial** | `analyte_category` / `chromatography_type` | `DataGenerationActivity` + `MassSpectrometryDataGenerationActivity` (`analyte_category`); `ChromatographyConfiguration` (`chromatography_type`) | slots.yaml, mass_spec.yaml | `analyte_category` (AnalyteCategoryEnum) is the top-level technique classificator; no single `technique` slot |
+| `start_time` | **Partial** | `acquisition_start_time` / `sample_start_time` | `DataGenerationActivity` (`acquisition_start_time`); `SamplingActivity` (`sample_start_time`) | basalt_schema.yaml, sample_classes.yaml | No generic `start_time`; name varies by context |
+| `end_time` | **Partial** | `acquisition_end_time` / `sample_end_time` | `DataGenerationActivity` (`acquisition_end_time`); `SamplingActivity` (`sample_end_time`) | basalt_schema.yaml, sample_classes.yaml | Same pattern as `start_time` |
+| `keywords` | **Not Found** | — | — | — | No controlled vocabulary tag field exists |
+| `site` | **Partial** | `SiteMetadata` class / `geo_loc_name` / `neon_site_code` | `SamplingActivity` (`geo_loc_name`, `neon_site_code`, `neon_plot_id`) | sample_classes.yaml, slots.yaml | `SiteMetadata` is a full class (lat/lon, land use, drainage, etc.). EMSL location info is captured via `neon_site_code`, `geo_loc_name` on `SamplingActivity` |
+| `access_tier` | **Not Found** | — | — | — | No open/controlled/restricted access classification exists |
+| `license` | **Not Found** | — | — | — | Appears only as YAML document-level metadata; not a schema slot |
+| `data_use_constraints` | **Not Found** | — | — | — | No governance/constraints field exists |
+| `pi` | **Partial** | `principal_investigator` | `Study` | study.yaml | Defined as an attribute on `Study` (no range specified — likely defaulting to `string`). Slot is named `principal_investigator`, not `pi` |
+| `recommended_variables` | **Not Found** | — | — | — | No downstream/ML variable recommendation field exists |
+| `external_workflow` | **Not Found** | — | — | — | No flag or reference for workflows originating outside LIMS/AMP2 |
+| `external_sample` | **Not Found** | — | — | — | No flag for external sample provenance |
+| `sample_source` | **Partial** | `strain_source` / `geo_loc_name` | `Strain` (`strain_source` via slots.yaml); `SamplingActivity` (`geo_loc_name`) | slots.yaml, sample_classes.yaml | `strain_source` is scoped to culture/strain context (institution/collection). Geographic sample origin uses `geo_loc_name` on `SamplingActivity` |
+
+---
+
+**Summary counts:**
+- **Found (exact name):** `id`, `sample_id`, `description` — **3 slots**
+- **Partial match (different name or narrower scope):** `emsln_project_id`, `workflow_name`, `workflow_version`, `processing_timestamp`, `processing_parameters`, `calibration_profile_ids`, `lineage_graph`, `qc_level`, `qc_flags`, `calibration_timestamp`, `calibration_method`, `variables.unit`, `variables.description`, `data_format`, `storage_uri`, `download_api`, `file_manifest`, `instrument`, `technique`, `start_time`, `end_time`, `site`, `pi`, `sample_source` — **24 slots**
+- **Not Found (no equivalent):** `run_id`, `title`, `processing_level`, `source_files`, `intermediate_artifacts`, `uncertainty_metrics`, `variables`, `variables.name`, `variables.datatype`, `keywords`, `access_tier`, `license`, `data_use_constraints`, `recommended_variables`, `external_workflow`, `external_sample` — **16 slots**

@@ -1,0 +1,52 @@
+# Type: Double 
+
+
+
+
+_A real number that conforms to the xsd:double specification_
+
+
+
+URI: [xsd:double](http://www.w3.org/2001/XMLSchema#double)
+
+## Type Properties
+
+| Property | Value |
+| --- | --- |
+| Base | `float` |
+| Type URI | [xsd:double](http://www.w3.org/2001/XMLSchema#double) |
+
+
+
+
+
+
+## Notes
+
+* If you are authoring schemas in LinkML YAML, the type is referenced with the lower case "double".
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | xsd:double |
+| native | basalt_schema:double |
+| close | schema:Float |
+
+

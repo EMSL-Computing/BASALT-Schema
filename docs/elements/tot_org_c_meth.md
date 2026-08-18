@@ -1,0 +1,98 @@
+
+
+# Slot: total organic carbon method (tot_org_c_meth) 
+
+
+_Reference or method used in determining total organic carbon_
+
+
+
+
+
+URI: [basalt_schema:tot_org_c_meth](https://EMSL-Computing.github.io/BASALT-Schema/tot_org_c_meth)
+Alias: tot_org_c_meth
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+
+
+
+
+
+
+## Properties
+
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [OtherUndescribedSample](OtherUndescribedSample.md), [SedimentSample](SedimentSample.md), [SoilSample](SoilSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | basalt_schema:tot_org_c_meth |
+| native | basalt_schema:tot_org_c_meth |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: tot_org_c_meth
+description: Reference or method used in determining total organic carbon
+title: total organic carbon method
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+rank: 1000
+alias: tot_org_c_meth
+domain_of:
+- OtherUndescribedSample
+- SedimentSample
+- SoilSample
+range: string
+
+```
+</details>

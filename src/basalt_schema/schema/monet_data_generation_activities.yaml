@@ -1,0 +1,169 @@
+<<<<<<<< HEAD:src/basalt_schema/schema/monet_data_generation_activities.yaml
+id: https://w3id.org/MONet/analysis-api-schema/monet-data-generation-activities
+name: basalt-monet-data-generation-activities
+title: BASALT Schema - Data Generation Activities for MONet Campaigns
+description: |-
+  Method-specific subclasses of DataGenerationActivity to represent the various analysis methods used in MONet campaigns.
+  Most classes correspond to a DataProduct in products.yaml.
+========
+id: https://EMSL-Computing.github.io/BASALT-Schema/methods
+name: basalt-schema-methods
+title: BASALT Schema - Methods
+description: |-
+  Enumerated values used throughout the BASALT Schema
+>>>>>>>> main:src/basalt_schema/schema/methods.yaml
+license: MIT
+
+prefixes:
+  basalt_schema: https://EMSL-Computing.github.io/BASALT-Schema/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+default_prefix: basalt_schema
+
+imports:
+  - linkml:types
+  - slots
+
+classes:
+
+# Inherited from DataGenerationActivity: name, description, sequence_order, protocol_url, protocol_version,
+# id, analyte_id, acquisition_start_time, acquisition_end_time, instrument_id, instrument_operator_id
+
+# One class per DataProduct in products.yaml.
+# These were formerly all "Method" classes, never populated.
+
+  BulkDensityDataGenerationActivity:
+    is_a: DataGenerationActivity
+    slots:
+    attributes:
+
+  ElementalAnalysisDataGenerationActivity:
+    is_a: DataGenerationActivity
+    slots:
+    attributes:
+
+  EnzymeActivityDataGenerationActivity:
+    is_a: DataGenerationActivity
+    slots:
+    attributes:
+      incubation_temp_c:
+        range: double
+      incubation_time:
+        range: string
+      wavelength:
+        range: double
+
+  GravimetricWaterContentDataGenerationActivity:
+    is_a: DataGenerationActivity
+    slots:
+    attributes:
+
+  HydraulicPropertiesDataGenerationActivity:
+    is_a: DataGenerationActivity
+    slots:
+    attributes:
+      fitting_model:
+        range: string
+        required: true
+  
+  KuoDataGenerationActivity:
+    is_a: DataGenerationActivity
+    slots:
+    attributes:
+      detection_limit:
+        range: string
+        required: true
+      wavelength:
+        range: string
+
+  MicrobialBiomassDataGenerationActivity:
+    is_a: DataGenerationActivity
+    slots:
+    attributes:
+      detector:
+        range: string
+        required: true
+      mode:
+        range: string
+      injection_volume:
+        range: string
+        required: true
+      sample_volume:
+        range: string
+        required: true
+      number_of_injections:
+        range: double
+        required: true
+      check_standard_spacing:
+        range: string
+        required: true
+  
+  PH_DataGenerationActivity:
+    is_a: DataGenerationActivity
+    slots:
+    attributes:
+      calibration:
+        range: string
+        required: true
+  
+  RespirationDataGenerationActivity:
+    is_a: DataGenerationActivity
+    description: |-
+      Data generation activity for soil respiration analysis.
+      Captures CO2-C efflux measured per gram of soil.
+    slots:
+    attributes:
+  
+  TOC_TN_DataGenerationActivity:
+    is_a: DataGenerationActivity
+    slots:
+    attributes:
+      column:
+        range: string
+      mode:
+        range: string
+      detector:
+        range: string
+        required: true
+      injection_volume:
+        range: string
+        required: true
+      sample_volume:
+        range: string
+        required: true
+      number_of_injections:
+        range: double
+        required: true
+      check_standard_spacing:
+        range: string
+  
+  TextureDataGenerationActivity:
+    is_a: DataGenerationActivity
+    attributes:
+    slots:
+  
+  XrayComputedTomographyDataGenerationActivity:
+    is_a: DataGenerationActivity
+    slots:
+    attributes:
+      x_ray_power:
+        range: string
+        required: true
+      cu_filter:
+        range: string
+        required: true
+      total_projections_collected:
+        range: double
+        required: true
+      rotation:
+        range: string
+        required: true
+      frames_recording_per_projection:
+        range: double
+        required: true
+      exposure_time_per_frame:
+        range: string
+        required: true
+      image_voxel_size_is:
+        range: string
+        required: true

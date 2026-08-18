@@ -1,0 +1,104 @@
+
+
+# Slot: growth facility (growth_facil) 
+
+
+_Type of facility or location from where the sample was collected or_
+
+_grown. This field is NOT multivalued. If selecting other, add the `other_growth_facil`_
+
+_attribute to provide additional detail._
+
+
+
+
+
+URI: [basalt_schema:growth_facil](https://EMSL-Computing.github.io/BASALT-Schema/growth_facil)
+Alias: growth_facil
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [Site](Site.md) | Site-level metadata for a specific location from which a set of samples are c... |  yes  |
+| [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |  no  |
+
+
+
+
+
+
+## Properties
+
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [GrowthFacilityEnum](GrowthFacilityEnum.md) |
+| Domain Of | [Site](Site.md), [AMP2UserSample](AMP2UserSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | basalt_schema:growth_facil |
+| native | basalt_schema:growth_facil |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: growth_facil
+description: 'Type of facility or location from where the sample was collected or
+
+  grown. This field is NOT multivalued. If selecting other, add the `other_growth_facil`
+
+  attribute to provide additional detail.'
+title: growth facility
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+rank: 1000
+alias: growth_facil
+domain_of:
+- Site
+- AMP2UserSample
+range: GrowthFacilityEnum
+
+```
+</details>

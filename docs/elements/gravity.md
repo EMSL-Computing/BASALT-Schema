@@ -1,0 +1,100 @@
+
+
+# Slot: gravity (gravity) 
+
+
+_Information about treatment involving use of gravity factor to study various types of responses in presence, absence, or modified levels of gravity; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple treatments_
+
+
+
+
+
+URI: [basalt_schema:gravity](https://EMSL-Computing.github.io/BASALT-Schema/gravity)
+Alias: gravity
+
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+
+
+
+
+
+
+## Properties
+
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [OtherUndescribedSample](OtherUndescribedSample.md), [PlantSample](PlantSample.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://EMSL-Computing.github.io/BASALT-Schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | basalt_schema:gravity |
+| native | basalt_schema:gravity |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: gravity
+description: Information about treatment involving use of gravity factor to study
+  various types of responses in presence, absence, or modified levels of gravity;
+  treatment regimen including how many times the treatment was repeated, how long
+  each treatment lasted, and the start and end time of the entire treatment; can include
+  multiple treatments
+title: gravity
+from_schema: https://EMSL-Computing.github.io/BASALT-Schema
+rank: 1000
+alias: gravity
+domain_of:
+- OtherUndescribedSample
+- PlantSample
+range: string
+
+```
+</details>
