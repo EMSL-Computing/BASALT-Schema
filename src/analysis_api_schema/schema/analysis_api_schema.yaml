@@ -388,8 +388,6 @@ classes:
       id:
         identifier: true
         range: uuid
-    todos:
-      - JSONB direction change to key-value is deferred on processing_steps
 
   ProcessingSampleLink:
     attributes:
