@@ -1466,6 +1466,20 @@ enums:
         is_a: organic_layer
         title: Methanol layer
 
+  SampleRole:
+    description: >-
+      The direction in which a Sample participates in a SampleProcessing activity.
+      Recorded on ProcessingSampleLink, which is the authoritative record of what
+      each processing step consumed and produced.
+    permissible_values:
+      input_sample:
+        text: input_sample
+        description: The sample was consumed by the processing activity.
+      output_sample:
+        text: output_sample
+        description: >-
+          The sample (always a ProcessedSample) was produced by the processing activity.
+
   SampleStoreTempEnum:
     description: Sample storage temperature conditions
     permissible_values:

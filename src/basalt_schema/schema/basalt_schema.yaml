@@ -53,7 +53,7 @@ imports:
   - study
   - value_tables
   - zip_download
-  # - linkage_cache   # uncomment when linkage_cache.yaml is added
+  - linkage_cache
 
 types:
   uuid:
@@ -380,14 +380,21 @@ classes:
   SampleProcessing:
     abstract: true
     description: |-
-      Abstract base for any sample processing activity (physical to physical). Input data should 
-      be specified on workflow subclasses. Concrete protocol-specific subclasses use is_a: SampleProcessing.
+      Abstract base for any sample processing activity (physical to physical): one
+      laboratory step that consumes one or more Samples and produces one or more
+      ProcessedSamples. Concrete protocol-specific subclasses use is_a: SampleProcessing.
+
+      This class deliberately carries NO pointers to the samples it consumed or
+      produced. Those edges live exclusively in ProcessingSampleLink, which records
+      direction via its role slot. See that class for the rationale.
+
+      Protocol identity (URL, version) is likewise NOT stored here. A step points at
+      a SampleProcessingProtocol record via in_protocol, which is the single home for
+      protocol_url and protocol_version.
     slots:
       - name
       - description
-      - protocol_url
-      - protocol_version
-      - uses_sample
+      - in_protocol
     attributes:
       id:
         identifier: true
@@ -395,9 +402,27 @@ classes:
 
   ProcessingSampleLink:
     description: |-
-      A link between a processed sample and the sample processing activity that produced it.
-      This class captures the relationship between a processed sample and the sample processing
-      activity that generated it, including the step number and role of the sample in the process.
+      The authoritative record of what a SampleProcessing step consumed and produced.
+      One row is one directed edge between a Sample and a processing activity.
+
+      This class is the ONLY place sample-to-processing edges are stored. No sample
+      or activity class carries a scalar pointer to its counterpart, so there is
+      exactly one representation of the lineage graph and no way for two encodings
+      to disagree.
+
+      Direction is carried by role:
+        role = input_sample   ->  sample_base_id was consumed by processing_id
+        role = output_sample  ->  sample_base_id (a ProcessedSample) was produced by it
+
+      A minimal step is therefore two rows: one input edge and one output edge.
+      Because role is per-row rather than per-activity, fan-in and fan-out are
+      expressed natively -- a PoolingProcess is N input rows to 1 output row, and a
+      FractionationProcess is 1 input row to N output rows. Lineage is a DAG, not a
+      chain, and this table is what makes that representable.
+
+      step_number is the position of the step within its chain. It is only meaningful
+      relative to in_run, which names the chain the edge belongs to; see
+      SampleProcessingRun.
     attributes:
       id:
         identifier: true
@@ -411,14 +436,26 @@ classes:
       step_number:
         range: integer
         required: true
+      role:
+        range: SampleRole
+        required: true
+        description: >-
+          Whether sample_base_id was consumed by (input_sample) or produced by
+          (output_sample) processing_id.
     unique_keys:
       unique_sample_process_step:
         unique_key_slots:
           - sample_base_id
           - processing_id
           - step_number
+          - role
     slots:
-      - in_protocol
+      - in_run
+    comments:
+      - >-
+        Invariant not expressible in LinkML: all rows sharing a processing_id must
+        agree on in_run, since a step belongs to exactly one run. Enforce with a
+        database-level check or a validation rule.
 
   InstrumentCustodian:
     description: |-
