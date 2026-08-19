@@ -88,15 +88,15 @@ classes:
       - media range?
 
   # ============================================================================
-  # CultureGrowth   abstract sampleProcessing subclass
+  # CultureGrowth sampleProcessing subclass
   # ============================================================================
   CultureGrowth:
     is_a: SampleProcessing
+    abstract: true
     mixins:
       - HasIncubationConditions
     description: |-
       Abstract activity for growing cultures from samples or other cultures.
-      
       Concrete subclasses: StrainPurity, StockCulturePreparation, 
       PreCultureGrowth, ExperimentalCulture.
     slots:
