@@ -190,19 +190,53 @@ classes:
   StandardSampleProcessing:
     is_a: SampleProcessing
     description: >-
-      A basic non-abstract SampleProcessing subclass that links to a published standardized 
-      protocol instead of populating a record for each step. This is meant to simplify
-      modelling and data storage for well-documented standard protocols that will be 
-      used repeatedly.
+      A concrete SampleProcessing subclass for well-documented standard protocols that
+      are used repeatedly and whose internal steps are not worth modelling individually.
+      It adds no attributes of its own: everything it needs is the inherited in_protocol
+      pointer to a SampleProcessingProtocol, which carries the protocol URL and version.
+
+      This is not an escape hatch from the chained representation -- it is a chain of
+      length one. It produces the same two ProcessingSampleLink rows (one input_sample,
+      one output_sample) at step_number 1 that any other step produces, so downstream
+      queries and provenance traversal never have to branch on which of the two
+      modelling styles was used, and a protocol can be upgraded from standard to
+      fully-stepped later without migrating anything that reads it.
 
   SampleProcessingProtocol:
     description: >-
-      A grouping class representing a sample processing protocol consisting of multiple modeled steps.
+      A sample processing protocol: the recipe, not an execution of it. This is the
+      single home for protocol_url and protocol_version anywhere in sample processing;
+      no SampleProcessing subclass stores them directly. Type-level, so many runs and
+      many samples reference the same record. For "which steps actually ran together",
+      see SampleProcessingRun.
     slots:
       - name
       - description
       - protocol_url
       - protocol_version
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+
+  SampleProcessingRun:
+    description: >-
+      One concrete execution of a sample processing chain: the instance-level counterpart
+      to SampleProcessingProtocol. It is a pure grouping token, deliberately holding no
+      protocol or sample data of its own, so there is nothing here that can contradict
+      the steps or the edges.
+
+      Every ProcessingSampleLink in one chain carries the same in_run. This is what makes
+      "all steps in this chain" a single indexed query on one concrete table, and it is
+      what gives step_number something to be a position within.
+
+      A run may cover several starting samples (a PoolingProcess run) or produce several
+      final analytes (a FractionationProcess run), which is why the run rather than a
+      single "starting sample" pointer is the grouping key -- an ancestor column would be
+      ambiguous the moment anything is pooled.
+    slots:
+      - name
+      - description
     attributes:
       id:
         identifier: true

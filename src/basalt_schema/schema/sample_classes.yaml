@@ -1760,7 +1760,17 @@ classes:
   ProcessedSample:
     title: Processed Sample
     description: |-
-       A sample that has undergone processing or analysis. Processed Sample entities are derived from Activities. The upstream SampleProcessing that produced this ProcessedSample is referenced via sampled_during.
+       A sample that has undergone processing. Processed Sample entities are derived from
+       SampleProcessing activities.
+
+       This class carries no pointer to the activity that produced it. That edge is the
+       ProcessingSampleLink row with role = output_sample naming this sample, which is
+       the single representation of every sample-to-processing edge in the schema.
+
+       Note that sampled_during is deliberately NOT reused here the way it is on
+       environmental Sample subclasses. There it points at a SamplingActivity (collection
+       from an environment); the processing edge is a different relationship and lives in
+       ProcessingSampleLink only.
     is_a: Sample
     attributes:
       id:
@@ -1773,16 +1783,10 @@ classes:
       - total_amount_ug
       - volume_uL
       - sampled_portion
-      - sampled_during
       - replicate
     slot_usage:
       replicate:
         description: The TECHNICAL replicate number of the processed sample, if applicable.
-      sampled_during:
-        range: SampleProcessing
-        description: >-
-          A reference to the sample processing activity (generally lab work)
-          that generated this processed_sample.
 
   CoreSection:
     description: A section of a core sample (TOP, MID, BTM).
