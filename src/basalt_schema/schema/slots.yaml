@@ -1061,8 +1061,21 @@ slots:
     range: double
   
   in_protocol:
-    description: The protocol that this SampleProcessing step is part of.
+    description: >-
+      The SampleProcessingProtocol (the recipe) that this step follows. Type-level,
+      not instance-level: every execution of the same SOP points at the same record,
+      so this does NOT identify a particular chain. Use in_run for that. A chain may
+      mix protocols, so this is recorded per step rather than per run.
     range: SampleProcessingProtocol
+
+  in_run:
+    description: >-
+      The SampleProcessingRun (one concrete execution) that this edge belongs to.
+      All ProcessingSampleLink rows in one chain share this value, which is what makes
+      "give me every step of this chain" a single indexed query and what anchors
+      step_number. Optional: a standalone StandardSampleProcessing needs no run,
+      because its processing_id already identifies the whole group.
+    range: SampleProcessingRun
 
   incubation_time_hours:
     description: Incubation duration in hours
@@ -2881,11 +2894,6 @@ slots:
       The raw data file, output by a mass spectrometer, that was analyzed in 
       this data processing workflow run.
   
-  uses_sample:
-    range: Sample
-    description: >-
-      The starting sample that is being processed or analyzed. This slot should only be used on an Activity class.
-
   version:
     description: String indicating the version of the software or protocol
     range: string
