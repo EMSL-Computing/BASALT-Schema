@@ -1,17 +1,9 @@
-<<<<<<<< HEAD:src/basalt_schema/schema/monet_data_generation_activities.yaml
-id: https://w3id.org/MONet/analysis-api-schema/monet-data-generation-activities
+id: https://EMSL-Computing.github.io/BASALT-Schema/monet-data-generation-activities
 name: basalt-monet-data-generation-activities
 title: BASALT Schema - Data Generation Activities for MONet Campaigns
 description: |-
   Method-specific subclasses of DataGenerationActivity to represent the various analysis methods used in MONet campaigns.
   Most classes correspond to a DataProduct in products.yaml.
-========
-id: https://EMSL-Computing.github.io/BASALT-Schema/methods
-name: basalt-schema-methods
-title: BASALT Schema - Methods
-description: |-
-  Enumerated values used throughout the BASALT Schema
->>>>>>>> main:src/basalt_schema/schema/methods.yaml
 license: MIT
 
 prefixes:
