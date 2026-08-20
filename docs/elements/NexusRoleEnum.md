@@ -20,6 +20,12 @@ URI: [basalt_schema:NexusRoleEnum](https://emsl-computing.github.io/BASALT-Schem
 
 
 
+## Slots
+
+| Name | Description |
+| ---  | --- |
+| [role](role.md) | The role of the contributor in the study (e |
+
 
 
 

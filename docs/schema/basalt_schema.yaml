@@ -20,10 +20,10 @@ imports:
 - mass_spec
 - media_strain_culture_plate
 - metagenomics
-- methods
-- organism
 - products
+- organism
 - sample_classes
+- sample_processing
 - slots
 - study
 - value_tables
@@ -1549,15 +1549,6 @@ enums:
         description: A metaproteomics analysis matched to an in silico generated metagenome.
       WITHDRAWN:
         text: WITHDRAWN
-  MethodNameEnum:
-    name: MethodNameEnum
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/MethodNameEnum
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/enums
-    permissible_values:
-      MAOM:
-        text: MAOM
-      WOEM:
-        text: WOEM
   ModelEnum:
     name: ModelEnum
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ModelEnum
@@ -2298,49 +2289,6 @@ enums:
         text: ACCEPTED
       WITHDRAWN:
         text: WITHDRAWN
-  RouteMethodEnum:
-    name: RouteMethodEnum
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/RouteMethodEnum
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/enums
-    permissible_values:
-      analysis_activity:
-        text: analysis_activity
-      lcms_metabolomics_method:
-        text: lcms_metabolomics_method
-      fticr_acquisition_method:
-        text: fticr_acquisition_method
-      gravimetric_water_content_method:
-        text: gravimetric_water_content_method
-      ph_method:
-        text: ph_method
-      hydraulic_properties_method:
-        text: hydraulic_properties_method
-      microbial_biomass_method:
-        text: microbial_biomass_method
-      xray_computed_tomography_method:
-        text: xray_computed_tomography_method
-      REGEN:
-        text: REGEN
-      KUO:
-        text: KUO
-      respiration_method:
-        text: respiration_method
-      texture_method:
-        text: texture_method
-      enzyme_activity_method:
-        text: enzyme_activity_method
-      elemental_analysis_method:
-        text: elemental_analysis_method
-      toc_tn_method:
-        text: toc_tn_method
-      bulk_density_method:
-        text: bulk_density_method
-      metagenomics_method:
-        text: metagenomics_method
-      xrf_analysis:
-        text: xrf_analysis
-      xrd_analysis:
-        text: xrd_analysis
   SampleBaseType:
     name: SampleBaseType
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/SampleBaseType
@@ -2390,15 +2338,6 @@ enums:
         description: The portion of a mixture containing molecules dissolved in methanol
         is_a: organic_layer
         title: Methanol layer
-  SampleRole:
-    name: SampleRole
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/SampleRole
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/enums
-    permissible_values:
-      input_sample:
-        text: input_sample
-      output_sample:
-        text: output_sample
   SampleStoreTempEnum:
     name: SampleStoreTempEnum
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/SampleStoreTempEnum
@@ -3000,7 +2939,244 @@ enums:
         text: 'True'
       'False':
         text: 'False'
+  ChemicalConversionCategoryEnum:
+    name: ChemicalConversionCategoryEnum
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ChemicalConversionCategoryEnum
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    permissible_values:
+      addition:
+        text: addition
+      substitution:
+        text: substitution
+      acid_base:
+        text: acid_base
+      reduction_oxidation:
+        text: reduction_oxidation
+      combustion:
+        text: combustion
+      decomposition:
+        text: decomposition
+      protease_cleavage:
+        text: protease_cleavage
+        description: an enzymatic cleavage which relies on an enzyme with protease
+          activity to act on proteins and to produce polypeptides (protein fragments).
+        meaning: OBI:0600056
+  DigestionMethodEnum:
+    name: DigestionMethodEnum
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/DigestionMethodEnum
+    description: Named protein digestion methods used in sample preparation.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    permissible_values:
+      urea:
+        text: urea
+        description: Urea-based in-solution digestion.
+      s_trap:
+        text: s_trap
+        description: S-Trap-based digestion.
+      fasp:
+        text: fasp
+        description: Filter-Aided Sample Preparation (FASP) digestion.
+      other:
+        text: other
+        description: Other digestion method not otherwise specified.
+  EnrichmentTypeEnum:
+    name: EnrichmentTypeEnum
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/EnrichmentTypeEnum
+    description: Type of targeted peptide or protein enrichment performed.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    permissible_values:
+      phosphopeptide:
+        text: phosphopeptide
+        description: Enrichment of phosphopeptides.
+      acetyl_peptide:
+        text: acetyl_peptide
+        description: Enrichment of acetylated peptides.
+      ubiquitin_peptide:
+        text: ubiquitin_peptide
+        description: Enrichment of ubiquitinated peptides or diGly-modified peptides.
+      other:
+        text: other
+        description: Other enrichment type not otherwise specified.
+  ExtractionMethodEnum:
+    name: ExtractionMethodEnum
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ExtractionMethodEnum
+    description: A short name for the extraction method applied to the sample.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    permissible_values:
+      mplex:
+        text: mplex
+        description: MPLEx (Metabolite, Protein, and Lipid Extraction) protocol.
+      bead_beating:
+        text: bead_beating
+        description: Bead beating mechanical lysis and extraction.
+      tca_acetone_precipitation:
+        text: tca_acetone_precipitation
+        description: TCA/Acetone protein precipitation.
+      cell_lysis_s_trap:
+        text: cell_lysis_s_trap
+        description: Cell lysis and S-Trap extraction.
+      other:
+        text: other
+        description: Other extraction method not otherwise specified.
+  LabelingMethodEnum:
+    name: LabelingMethodEnum
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/LabelingMethodEnum
+    description: The chemical labeling strategy applied to peptides or proteins.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    permissible_values:
+      tmt:
+        text: tmt
+        description: Tandem Mass Tag (TMT) isobaric labeling.
+      itraq:
+        text: itraq
+        description: iTRAQ isobaric labeling.
+      label_free:
+        text: label_free
+        description: No chemical labeling (label-free quantification).
+      other:
+        text: other
+        description: Other labeling method not otherwise specified.
+  NormalizationMethodEnum:
+    name: NormalizationMethodEnum
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/NormalizationMethodEnum
+    description: The strategy used to normalize sample amounts or intensities.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    permissible_values:
+      equal_mass:
+        text: equal_mass
+        description: Normalization to an equal total protein mass per sample.
+      equal_volume:
+        text: equal_volume
+        description: Normalization by volume.
+      spike_in_standard:
+        text: spike_in_standard
+        description: Normalization using an internal spike-in standard.
+      other:
+        text: other
+        description: Other normalization approach not otherwise specified.
+  ProteinAssayTypeEnum:
+    name: ProteinAssayTypeEnum
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ProteinAssayTypeEnum
+    description: Type of protein quantification assay performed.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    permissible_values:
+      coomassie:
+        text: coomassie
+        description: Coomassie (Bradford-like) protein assay.
+      bca:
+        text: bca
+        description: Bicinchoninic Acid (BCA) protein assay.
+      other:
+        text: other
+        description: Other protein assay not otherwise specified.
+  SubstanceRoleEnum:
+    name: SubstanceRoleEnum
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/SubstanceRoleEnum
+    description: The role or function of the substance in the context of its use.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    permissible_values:
+      buffer:
+        text: buffer
+        description: Maintains the pH of the solution within a specific range to stabilize
+          analytes or reactions.
+        meaning: CHEBI:35225
+      acid:
+        text: acid
+        description: Donates a proton or accepts an electron pair in a chemical reaction.
+        meaning: CHEBI:37527
+      base:
+        text: base
+        description: Accepts a proton or donates an electron pair in a chemical reaction.
+        meaning: CHEBI:22695
+      ms_proteolytic_enzyme:
+        text: ms_proteolytic_enzyme
+        description: Enzyme that catalyzes the hydrolysis of proteins and is used
+          in mass spectrometry based proteomics
+        meaning: MS:1002986
+      solvent:
+        text: solvent
+        description: Dissolves the sample or reagents to facilitate reactions or extraction.
+        meaning: CHEBI:46787
+      surfactant:
+        text: surfactant
+        description: Reduces surface tension and aids in the solubilization of substances.
+        meaning: CHEBI:35195
+      derivatizing_agent:
+        text: derivatizing_agent
+        description: Chemically modifies analytes to improve detection or separation.
+      solubilizing_agent:
+        text: solubilizing_agent
 slots:
+  substances_used:
+    name: substances_used
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/substances_used
+    description: The substances used in the process.
+    todos:
+    - is it possible to have this be multivalued?
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:substances_used
+    owner: Extraction
+    domain_of:
+    - ChemicalConversionProcess
+    - Extraction
+    range: PortionOfSubstance
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  starting_mass_mg:
+    name: starting_mass_mg
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/starting_mass_mg
+    description: The mass of sample or analyte used in the first step of the process,
+      in milligrams.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:starting_mass_mg
+    owner: Extraction
+    domain_of:
+    - Extraction
+    range: float
+  final_mass_mg:
+    name: final_mass_mg
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/final_mass_mg
+    description: The mass of sample or analyte in the processedSample resulting from
+      this activity.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:final_mass_mg
+    owner: SubSamplingProcess
+    domain_of:
+    - PoolingProcess
+    - SubSamplingProcess
+    range: float
+  final_concentration_mg_per_ml:
+    name: final_concentration_mg_per_ml
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/final_concentration_mg_per_ml
+    description: The concentration of the sample or analyte in the processedSample
+      resulting from this activity, in milligrams per milliliter.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:final_concentration_mg_per_ml
+    owner: ProteinQuantification
+    domain_of:
+    - ProteinQuantification
+    range: float
+  acquisition_end_time:
+    name: acquisition_end_time
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/acquisition_end_time
+    description: The time that data collection ended for this activity.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:acquisition_end_time
+    owner: DataGenerationActivity
+    domain_of:
+    - DataGenerationActivity
+    range: datetime
+  acquisition_start_time:
+    name: acquisition_start_time
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/acquisition_start_time
+    description: The time that data collection started for this activity.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:acquisition_start_time
+    owner: DataGenerationActivity
+    domain_of:
+    - DataGenerationActivity
+    range: datetime
   acquisition_strategy:
     name: acquisition_strategy
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/acquisition_strategy
@@ -3231,18 +3407,17 @@ slots:
     domain_of:
     - MassSpectrometryDataGenerationActivity
     range: AnalyteCategoryEnum
-  analytic:
-    name: analytic
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/analytic
-    todos:
-    - what does this mean
+  analyte_id:
+    name: analyte_id
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/analyte_id
+    description: FK reference to a ProcessedSample representing the substance analyzed
+      in this activity.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:analytic
-    owner: Method
+    slot_uri: basalt_schema:analyte_id
+    owner: DataGenerationActivity
     domain_of:
-    - Method
-    range: string
-    required: true
+    - DataGenerationActivity
+    range: ProcessedSample
   ances_data:
     name: ances_data
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ances_data
@@ -4131,6 +4306,7 @@ slots:
     - DataProduct
     - DataGenerationActivity
     - DataProcessingActivity
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
@@ -4139,6 +4315,7 @@ slots:
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
+    - SampleProcessingProtocol
     - TimestampValue
     - TextValue
     - SoftwareControlledTermValue
@@ -4320,10 +4497,11 @@ slots:
     description: how long something took, in minutes
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:duration_min
-    owner: MobilePhaseSegment
+    owner: ChemicalConversionProcess
     domain_of:
     - ChromatographyConfiguration
     - MobilePhaseSegment
+    - ChemicalConversionProcess
     range: float
   efficiency_percent:
     name: efficiency_percent
@@ -5361,6 +5539,16 @@ slots:
     domain_of:
     - MassSpectrometryConfiguration
     range: double
+  in_protocol:
+    name: in_protocol
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/in_protocol
+    description: The protocol that this SampleProcessing step is part of.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:in_protocol
+    owner: ProcessingSampleLink
+    domain_of:
+    - ProcessingSampleLink
+    range: SampleProcessingProtocol
   incubation_time_hours:
     name: incubation_time_hours
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/incubation_time_hours
@@ -5503,6 +5691,26 @@ slots:
     domain_of:
     - StrainPurity
     range: string
+  instrument_operator:
+    name: instrument_operator
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/instrument_operator
+    description: User who operated the instrument
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:instrument_operator
+    owner: DataGenerationActivity
+    domain_of:
+    - DataGenerationActivity
+    range: PersonValue
+  instrument_used:
+    name: instrument_used
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/instrument_used
+    description: Instrument used for the measurement
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:instrument_used
+    owner: DataGenerationActivity
+    domain_of:
+    - DataGenerationActivity
+    range: Instrument
   internal_calibration:
     name: internal_calibration
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/internal_calibration
@@ -5687,9 +5895,13 @@ slots:
       processing step, if applicable.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:lims_protocol_instance_id
-    owner: MassSpectrometryConfiguration
+    owner: SolidPhaseExtractionProcess
     domain_of:
     - MassSpectrometryConfiguration
+    - FractionationProcess
+    - ProteinQuantification
+    - ResuspensionProcess
+    - SolidPhaseExtractionProcess
     range: integer
   lims_task_instance_id:
     name: lims_task_instance_id
@@ -5757,26 +5969,6 @@ slots:
     domain_of:
     - Site
     range: string
-  location:
-    name: location
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/location
-    todos:
-    - used on many method classes. no description. what was this meant to mean?
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:location
-    owner: XrayComputedTomographyMethod
-    domain_of:
-    - EnzymeActivityMethod
-    - GravimetricWaterContentMethod
-    - HydraulicPropertiesMethod
-    - KuoMethod
-    - MicrobialBiomassMethod
-    - PH_Method
-    - TOC_TN_Method
-    - TextureMethod
-    - XrayComputedTomographyMethod
-    range: string
-    required: true
   longitude:
     name: longitude
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/longitude
@@ -6048,18 +6240,6 @@ slots:
     - SedimentSample
     range: string
     pattern: ^\d+(\.\d+)?\s*(umol/L|ppm|ppb)$
-  method:
-    name: method
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/method
-    todos:
-    - what does this mean
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:method
-    owner: TextureMethod
-    domain_of:
-    - KuoMethod
-    - TextureMethod
-    range: string
   method_development:
     name: method_development
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/method_development
@@ -6095,17 +6275,6 @@ slots:
     - MetagenomicsProduct
     range: MetagenomicsSteps
     required: false
-  micro_biomass_C_meth:
-    name: micro_biomass_C_meth
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/micro_biomass_C_meth
-    description: Reference or method used in determining microbial biomass
-    title: microbial biomass carbon method
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:micro_biomass_C_meth
-    owner: OtherUndescribedSample
-    domain_of:
-    - OtherUndescribedSample
-    range: string
   micro_biomass_c_meth:
     name: micro_biomass_c_meth
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/micro_biomass_c_meth
@@ -6115,19 +6284,9 @@ slots:
     slot_uri: basalt_schema:micro_biomass_c_meth
     owner: SoilSample
     domain_of:
+    - OtherUndescribedSample
     - SedimentSample
     - SoilSample
-    range: string
-  micro_biomass_N_meth:
-    name: micro_biomass_N_meth
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/micro_biomass_N_meth
-    description: Reference or method used in determining microbial biomass nitrogen
-    title: microbial biomass nitrogen method
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:micro_biomass_N_meth
-    owner: OtherUndescribedSample
-    domain_of:
-    - OtherUndescribedSample
     range: string
   micro_biomass_n_meth:
     name: micro_biomass_n_meth
@@ -6138,6 +6297,7 @@ slots:
     slot_uri: basalt_schema:micro_biomass_n_meth
     owner: SoilSample
     domain_of:
+    - OtherUndescribedSample
     - SedimentSample
     - SoilSample
     range: string
@@ -6308,6 +6468,7 @@ slots:
     - Entity
     - DataProduct
     - DataGenerationActivity
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
@@ -6317,6 +6478,7 @@ slots:
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
+    - SampleProcessingProtocol
     - SoftwareControlledTermValue
     range: string
     required: true
@@ -7500,10 +7662,11 @@ slots:
     description: URL pointing to the protocol used in the activity, if applicable.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:protocol_url
-    owner: SampleProcessing
+    owner: SampleProcessingProtocol
     domain_of:
     - DataGenerationActivity
     - SampleProcessing
+    - SampleProcessingProtocol
     range: string
   protocol_version:
     name: protocol_version
@@ -7511,10 +7674,11 @@ slots:
     description: Version of the protocol used in the activity, if applicable.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:protocol_version
-    owner: SampleProcessing
+    owner: SampleProcessingProtocol
     domain_of:
     - DataGenerationActivity
     - SampleProcessing
+    - SampleProcessingProtocol
     range: string
   provider_name:
     name: provider_name
@@ -8741,6 +8905,15 @@ slots:
     domain_of:
     - ChromatographyConfiguration
     range: string
+  step_number:
+    name: step_number
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/step_number
+    description: 'Integer ordering within a multi-step process for the same analyte.
+
+      Lower = earlier in process.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:step_number
+    range: integer
   sterilization_method:
     name: sterilization_method
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sterilization_method
@@ -9205,10 +9378,11 @@ slots:
     description: Temperature at which the method/process/activity was performed
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:temperature_celsius
-    owner: HasIncubationConditions
+    owner: ChemicalConversionProcess
     domain_of:
     - ChromatographyConfiguration
     - HasIncubationConditions
+    - ChemicalConversionProcess
     range: float
   temperature_exposure:
     name: temperature_exposure
@@ -9586,9 +9760,10 @@ slots:
       for the mass spectrometry run.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:uses_chromatography
-    owner: MassSpectrometryDataGenerationActivity
+    owner: SolidPhaseExtractionProcess
     domain_of:
     - MassSpectrometryDataGenerationActivity
+    - SolidPhaseExtractionProcess
     range: ChromatographyConfiguration
     inlined: true
     inlined_as_list: true
@@ -9617,6 +9792,17 @@ slots:
     domain_of:
     - MassSpectrometryDataProcessingActivity
     range: MassSpectrometryInstrumentData
+  uses_sample:
+    name: uses_sample
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/uses_sample
+    description: The starting sample that is being processed or analyzed. This slot
+      should only be used on an Activity class.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:uses_sample
+    owner: SampleProcessing
+    domain_of:
+    - SampleProcessing
+    range: Sample
   version:
     name: version
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/version
@@ -10019,65 +10205,6 @@ slots:
     - DataGenerationActivity
     range: uuid
     required: true
-  dataGenerationActivity__analyte_id:
-    name: dataGenerationActivity__analyte_id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:analyte_id
-    alias: analyte_id
-    owner: DataGenerationActivity
-    domain_of:
-    - DataGenerationActivity
-    range: ProcessedSample
-  dataGenerationActivity__acquisition_start_time:
-    name: dataGenerationActivity__acquisition_start_time
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:acquisition_start_time
-    alias: acquisition_start_time
-    owner: DataGenerationActivity
-    domain_of:
-    - DataGenerationActivity
-    range: datetime
-    required: true
-  dataGenerationActivity__acquisition_end_time:
-    name: dataGenerationActivity__acquisition_end_time
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:acquisition_end_time
-    alias: acquisition_end_time
-    owner: DataGenerationActivity
-    domain_of:
-    - DataGenerationActivity
-    range: datetime
-    required: true
-  dataGenerationActivity__instrument_used:
-    name: dataGenerationActivity__instrument_used
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:instrument_used
-    alias: instrument_used
-    owner: DataGenerationActivity
-    domain_of:
-    - DataGenerationActivity
-    range: Instrument
-  dataGenerationActivity__instrument_operator_id:
-    name: dataGenerationActivity__instrument_operator_id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:instrument_operator_id
-    alias: instrument_operator_id
-    owner: DataGenerationActivity
-    domain_of:
-    - DataGenerationActivity
-    range: PersonValue
-  respirationDataGenerationActivity__method_id:
-    name: respirationDataGenerationActivity__method_id
-    description: Reference to the RespirationMethod used for this run
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:method_id
-    alias: method_id
-    owner: RespirationDataGenerationActivity
-    domain_of:
-    - RespirationDataGenerationActivity
-    range: RespirationMethod
-    inlined: true
-    inlined_as_list: true
   dataProcessingActivity__id:
     name: dataProcessingActivity__id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -10586,43 +10713,6 @@ slots:
     - SampleProcessing
     range: uuid
     required: true
-  sampleProcessing__analysis_type:
-    name: sampleProcessing__analysis_type
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:analysis_type
-    alias: analysis_type
-    owner: SampleProcessing
-    domain_of:
-    - SampleProcessing
-    range: RouteMethodEnum
-  sampleProcessing__method_name:
-    name: sampleProcessing__method_name
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:method_name
-    alias: method_name
-    owner: SampleProcessing
-    domain_of:
-    - SampleProcessing
-    range: MethodNameEnum
-  sampleProcessing__processing_steps:
-    name: sampleProcessing__processing_steps
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:processing_steps
-    alias: processing_steps
-    owner: SampleProcessing
-    domain_of:
-    - SampleProcessing
-    range: string
-    required: true
-  sampleProcessing__uses_sample:
-    name: sampleProcessing__uses_sample
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:uses_sample
-    alias: uses_sample
-    owner: SampleProcessing
-    domain_of:
-    - SampleProcessing
-    range: Sample
   processingSampleLink__id:
     name: processingSampleLink__id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -10663,16 +10753,6 @@ slots:
     domain_of:
     - ProcessingSampleLink
     range: integer
-    required: true
-  processingSampleLink__role:
-    name: processingSampleLink__role
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:role
-    alias: role
-    owner: ProcessingSampleLink
-    domain_of:
-    - ProcessingSampleLink
-    range: SampleRole
     required: true
   instrumentCustodian__instrument_id:
     name: instrumentCustodian__instrument_id
@@ -11005,279 +11085,6 @@ slots:
     domain_of:
     - WellReading
     range: string
-  enzymeActivityMethod__incubation_temp_c:
-    name: enzymeActivityMethod__incubation_temp_c
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:incubation_temp_c
-    alias: incubation_temp_c
-    owner: EnzymeActivityMethod
-    domain_of:
-    - EnzymeActivityMethod
-    range: double
-  enzymeActivityMethod__incubation_time:
-    name: enzymeActivityMethod__incubation_time
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:incubation_time
-    alias: incubation_time
-    owner: EnzymeActivityMethod
-    domain_of:
-    - EnzymeActivityMethod
-    range: string
-  enzymeActivityMethod__wavelength:
-    name: enzymeActivityMethod__wavelength
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:wavelength
-    alias: wavelength
-    owner: EnzymeActivityMethod
-    domain_of:
-    - EnzymeActivityMethod
-    range: double
-  hydraulicPropertiesMethod__fitting_model:
-    name: hydraulicPropertiesMethod__fitting_model
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:fitting_model
-    alias: fitting_model
-    owner: HydraulicPropertiesMethod
-    domain_of:
-    - HydraulicPropertiesMethod
-    range: string
-    required: true
-  kuoMethod__detection_limit:
-    name: kuoMethod__detection_limit
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:detection_limit
-    alias: detection_limit
-    owner: KuoMethod
-    domain_of:
-    - KuoMethod
-    range: string
-    required: true
-  kuoMethod__wavelength:
-    name: kuoMethod__wavelength
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:wavelength
-    alias: wavelength
-    owner: KuoMethod
-    domain_of:
-    - KuoMethod
-    range: string
-  microbialBiomassMethod__detector:
-    name: microbialBiomassMethod__detector
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:detector
-    alias: detector
-    owner: MicrobialBiomassMethod
-    domain_of:
-    - MicrobialBiomassMethod
-    range: string
-    required: true
-  microbialBiomassMethod__mode:
-    name: microbialBiomassMethod__mode
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:mode
-    alias: mode
-    owner: MicrobialBiomassMethod
-    domain_of:
-    - MicrobialBiomassMethod
-    range: string
-  microbialBiomassMethod__injection_volume:
-    name: microbialBiomassMethod__injection_volume
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:injection_volume
-    alias: injection_volume
-    owner: MicrobialBiomassMethod
-    domain_of:
-    - MicrobialBiomassMethod
-    range: string
-    required: true
-  microbialBiomassMethod__sample_volume:
-    name: microbialBiomassMethod__sample_volume
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:sample_volume
-    alias: sample_volume
-    owner: MicrobialBiomassMethod
-    domain_of:
-    - MicrobialBiomassMethod
-    range: string
-    required: true
-  microbialBiomassMethod__number_of_injections:
-    name: microbialBiomassMethod__number_of_injections
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:number_of_injections
-    alias: number_of_injections
-    owner: MicrobialBiomassMethod
-    domain_of:
-    - MicrobialBiomassMethod
-    range: double
-    required: true
-  microbialBiomassMethod__check_standard_spacing:
-    name: microbialBiomassMethod__check_standard_spacing
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:check_standard_spacing
-    alias: check_standard_spacing
-    owner: MicrobialBiomassMethod
-    domain_of:
-    - MicrobialBiomassMethod
-    range: string
-    required: true
-  pHMethod__calibration:
-    name: pHMethod__calibration
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:calibration
-    alias: calibration
-    owner: PH_Method
-    domain_of:
-    - PH_Method
-    range: string
-    required: true
-  tOCTNMethod__column:
-    name: tOCTNMethod__column
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:column
-    alias: column
-    owner: TOC_TN_Method
-    domain_of:
-    - TOC_TN_Method
-    range: string
-  tOCTNMethod__mode:
-    name: tOCTNMethod__mode
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:mode
-    alias: mode
-    owner: TOC_TN_Method
-    domain_of:
-    - TOC_TN_Method
-    range: string
-  tOCTNMethod__detector:
-    name: tOCTNMethod__detector
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:detector
-    alias: detector
-    owner: TOC_TN_Method
-    domain_of:
-    - TOC_TN_Method
-    range: string
-    required: true
-  tOCTNMethod__injection_volume:
-    name: tOCTNMethod__injection_volume
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:injection_volume
-    alias: injection_volume
-    owner: TOC_TN_Method
-    domain_of:
-    - TOC_TN_Method
-    range: string
-    required: true
-  tOCTNMethod__sample_volume:
-    name: tOCTNMethod__sample_volume
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:sample_volume
-    alias: sample_volume
-    owner: TOC_TN_Method
-    domain_of:
-    - TOC_TN_Method
-    range: string
-    required: true
-  tOCTNMethod__number_of_injections:
-    name: tOCTNMethod__number_of_injections
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:number_of_injections
-    alias: number_of_injections
-    owner: TOC_TN_Method
-    domain_of:
-    - TOC_TN_Method
-    range: double
-    required: true
-  tOCTNMethod__check_standard_spacing:
-    name: tOCTNMethod__check_standard_spacing
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:check_standard_spacing
-    alias: check_standard_spacing
-    owner: TOC_TN_Method
-    domain_of:
-    - TOC_TN_Method
-    range: string
-  xrayComputedTomographyMethod__x_ray_power:
-    name: xrayComputedTomographyMethod__x_ray_power
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:x_ray_power
-    alias: x_ray_power
-    owner: XrayComputedTomographyMethod
-    domain_of:
-    - XrayComputedTomographyMethod
-    range: string
-    required: true
-  xrayComputedTomographyMethod__cu_filter:
-    name: xrayComputedTomographyMethod__cu_filter
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:cu_filter
-    alias: cu_filter
-    owner: XrayComputedTomographyMethod
-    domain_of:
-    - XrayComputedTomographyMethod
-    range: string
-    required: true
-  xrayComputedTomographyMethod__total_projections_collected:
-    name: xrayComputedTomographyMethod__total_projections_collected
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:total_projections_collected
-    alias: total_projections_collected
-    owner: XrayComputedTomographyMethod
-    domain_of:
-    - XrayComputedTomographyMethod
-    range: double
-    required: true
-  xrayComputedTomographyMethod__rotation:
-    name: xrayComputedTomographyMethod__rotation
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:rotation
-    alias: rotation
-    owner: XrayComputedTomographyMethod
-    domain_of:
-    - XrayComputedTomographyMethod
-    range: string
-    required: true
-  xrayComputedTomographyMethod__frames_recording_per_projection:
-    name: xrayComputedTomographyMethod__frames_recording_per_projection
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:frames_recording_per_projection
-    alias: frames_recording_per_projection
-    owner: XrayComputedTomographyMethod
-    domain_of:
-    - XrayComputedTomographyMethod
-    range: double
-    required: true
-  xrayComputedTomographyMethod__exposure_time_per_frame:
-    name: xrayComputedTomographyMethod__exposure_time_per_frame
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:exposure_time_per_frame
-    alias: exposure_time_per_frame
-    owner: XrayComputedTomographyMethod
-    domain_of:
-    - XrayComputedTomographyMethod
-    range: string
-    required: true
-  xrayComputedTomographyMethod__image_voxel_size_is:
-    name: xrayComputedTomographyMethod__image_voxel_size_is
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    slot_uri: basalt_schema:image_voxel_size_is
-    alias: image_voxel_size_is
-    owner: XrayComputedTomographyMethod
-    domain_of:
-    - XrayComputedTomographyMethod
-    range: string
-    required: true
-  organism__id:
-    name: organism__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/organism
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: organism
-    domain_of:
-    - organism
-    range: uuid
-    required: true
   bulkDensityProduct__bulk_density_id:
     name: bulkDensityProduct__bulk_density_id
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -12985,6 +12792,17 @@ slots:
     domain_of:
     - XRDPhaseProduct
     range: ProcessedDataFlag
+  organism__id:
+    name: organism__id
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/organism
+    slot_uri: basalt_schema:id
+    identifier: true
+    alias: id
+    owner: organism
+    domain_of:
+    - organism
+    range: uuid
+    required: true
   site__id:
     name: site__id
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
@@ -13438,6 +13256,174 @@ slots:
     domain_of:
     - WaterSamplingActivity
     range: uuid
+    required: true
+  sampleProcessingProtocol__id:
+    name: sampleProcessingProtocol__id
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:id
+    identifier: true
+    alias: id
+    owner: SampleProcessingProtocol
+    domain_of:
+    - SampleProcessingProtocol
+    range: uuid
+    required: true
+  chemicalConversionProcess__chemical_conversion_category:
+    name: chemicalConversionProcess__chemical_conversion_category
+    description: The category of chemical conversion process.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:chemical_conversion_category
+    alias: chemical_conversion_category
+    owner: ChemicalConversionProcess
+    domain_of:
+    - ChemicalConversionProcess
+    range: ChemicalConversionCategoryEnum
+  chemicalConversionProcess__digestion_method:
+    name: chemicalConversionProcess__digestion_method
+    description: Named digestion method applied, when the category is protease_cleavage.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:digestion_method
+    alias: digestion_method
+    owner: ChemicalConversionProcess
+    domain_of:
+    - ChemicalConversionProcess
+    range: DigestionMethodEnum
+  chemicalConversionProcess__enrichment_type:
+    name: chemicalConversionProcess__enrichment_type
+    description: Type of enrichment performed, when this process is an enrichment
+      step.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:enrichment_type
+    alias: enrichment_type
+    owner: ChemicalConversionProcess
+    domain_of:
+    - ChemicalConversionProcess
+    range: EnrichmentTypeEnum
+  chemicalConversionProcess__labeling_method:
+    name: chemicalConversionProcess__labeling_method
+    description: Chemical labeling strategy applied in this process (e.g., TMT).
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:labeling_method
+    alias: labeling_method
+    owner: ChemicalConversionProcess
+    domain_of:
+    - ChemicalConversionProcess
+    range: LabelingMethodEnum
+  extraction__extraction_target:
+    name: extraction__extraction_target
+    description: The target analyte(s) or compound class(es) for the extraction process.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:extraction_target
+    alias: extraction_target
+    owner: Extraction
+    domain_of:
+    - Extraction
+    range: AnalyteCategoryEnum
+    multivalued: true
+  extraction__extraction_method:
+    name: extraction__extraction_method
+    description: Named extraction method applied (e.g., MPLEx, bead beating, TCA/Acetone).
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:extraction_method
+    alias: extraction_method
+    owner: Extraction
+    domain_of:
+    - Extraction
+    range: ExtractionMethodEnum
+  normalizationProcess__normalization_method:
+    name: normalizationProcess__normalization_method
+    description: The strategy used for normalization (equal mass, equal volume, etc.).
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:normalization_method
+    alias: normalization_method
+    owner: NormalizationProcess
+    domain_of:
+    - NormalizationProcess
+    range: NormalizationMethodEnum
+  normalizationProcess__target_mass_mg:
+    name: normalizationProcess__target_mass_mg
+    description: Target volume of analyte per sample after normalization,  in milligrams,
+      if appropriate. Otherwise fill out target_vol_ul.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:target_mass_mg
+    alias: target_mass_mg
+    owner: NormalizationProcess
+    domain_of:
+    - NormalizationProcess
+    range: float
+  normalizationProcess__target_vol_ul:
+    name: normalizationProcess__target_vol_ul
+    description: Target volume of analyte per sample after normalization,  in microliters,
+      if appropriate. Otherwise fill out target_mass_mg.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:target_vol_ul
+    alias: target_vol_ul
+    owner: NormalizationProcess
+    domain_of:
+    - NormalizationProcess
+    range: float
+  portionOfSubstance__known_as:
+    name: portionOfSubstance__known_as
+    description: Common name or identifier for the substance.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:known_as
+    alias: known_as
+    owner: PortionOfSubstance
+    domain_of:
+    - PortionOfSubstance
+    range: ChemicalEntityEnum
+  portionOfSubstance__substance_role:
+    name: portionOfSubstance__substance_role
+    description: The role or function of the substance in the context of its use.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:substance_role
+    alias: substance_role
+    owner: PortionOfSubstance
+    domain_of:
+    - PortionOfSubstance
+    range: SubstanceRoleEnum
+  portionOfSubstance__volume_mL:
+    name: portionOfSubstance__volume_mL
+    description: The volume of the portion of the substance, in milliliters.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:volume_mL
+    alias: volume_mL
+    owner: PortionOfSubstance
+    domain_of:
+    - PortionOfSubstance
+    range: float
+  portionOfSubstance__source_concentration_mg_per_ml:
+    name: portionOfSubstance__source_concentration_mg_per_ml
+    description: Concentration of the substance before it is added to the experiment,  in
+      milligrams per milliliter.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:source_concentration_mg_per_ml
+    alias: source_concentration_mg_per_ml
+    owner: PortionOfSubstance
+    domain_of:
+    - PortionOfSubstance
+    range: float
+  portionOfSubstance__final_concentration_mg_per_ml:
+    name: portionOfSubstance__final_concentration_mg_per_ml
+    description: Concentration of the substance in the combined tube/experimental  container
+      after everything in this step is added, in milligrams  per milliliter.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:final_concentration_mg_per_ml
+    alias: final_concentration_mg_per_ml
+    owner: PortionOfSubstance
+    domain_of:
+    - PortionOfSubstance
+    range: float
+  proteinQuantification__protein_assay_type:
+    name: proteinQuantification__protein_assay_type
+    description: The type of protein assay (Coomassie, BCA, etc.).
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:protein_assay_type
+    alias: protein_assay_type
+    owner: ProteinQuantification
+    domain_of:
+    - ProteinQuantification
+    range: ProteinAssayTypeEnum
     required: true
   study__id:
     name: study__id
@@ -14048,6 +14034,38 @@ slots:
     is_usage_slot: true
     usage_slot_name: description
     range: string
+  MassSpectrometryDataGenerationActivity_acquisition_start_time:
+    name: MassSpectrometryDataGenerationActivity_acquisition_start_time
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/acquisition_start_time
+    description: The time that data collection started for this activity.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: acquisition_start_time
+    domain: MassSpectrometryDataGenerationActivity
+    slot_uri: basalt_schema:acquisition_start_time
+    alias: acquisition_start_time
+    owner: MassSpectrometryDataGenerationActivity
+    domain_of:
+    - MassSpectrometryDataGenerationActivity
+    is_usage_slot: true
+    usage_slot_name: acquisition_start_time
+    range: datetime
+    required: true
+  MassSpectrometryDataGenerationActivity_acquisition_end_time:
+    name: MassSpectrometryDataGenerationActivity_acquisition_end_time
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/acquisition_end_time
+    description: The time that data collection ended for this activity.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: acquisition_end_time
+    domain: MassSpectrometryDataGenerationActivity
+    slot_uri: basalt_schema:acquisition_end_time
+    alias: acquisition_end_time
+    owner: MassSpectrometryDataGenerationActivity
+    domain_of:
+    - MassSpectrometryDataGenerationActivity
+    is_usage_slot: true
+    usage_slot_name: acquisition_end_time
+    range: datetime
+    required: true
   NucleotideSequencing_external_identifiers:
     name: NucleotideSequencing_external_identifiers
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/external_identifiers
@@ -16740,7 +16758,7 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/InstrumentData
     description: An abstract parent class for raw data files generated by different
       kinds  of instruments. All subclasses must have a slot pointing upstream that  specifies
-      the analysisActivity subclass which created them.
+      the DataGenerationActivity subclass which created them.
     todos:
     - all subclasses need a more specific upstream slot to replace was_generated_by
     - add subclasses for non-mass spec data
@@ -16828,64 +16846,20 @@ classes:
     - sequence_order
     - name
     - description
+    - analyte_id
     - protocol_url
     - protocol_version
+    - acquisition_start_time
+    - acquisition_end_time
+    - instrument_used
+    - instrument_operator
     - dataGenerationActivity__id
-    - dataGenerationActivity__analyte_id
-    - dataGenerationActivity__acquisition_start_time
-    - dataGenerationActivity__acquisition_end_time
-    - dataGenerationActivity__instrument_used
-    - dataGenerationActivity__instrument_operator_id
     attributes:
       id:
         name: id
         identifier: true
         range: uuid
-      analyte_id:
-        name: analyte_id
-        range: ProcessedSample
-      acquisition_start_time:
-        name: acquisition_start_time
-        range: datetime
-        required: true
-      acquisition_end_time:
-        name: acquisition_end_time
-        range: datetime
-        required: true
-      instrument_used:
-        name: instrument_used
-        range: Instrument
-      instrument_operator_id:
-        name: instrument_operator_id
-        range: PersonValue
     class_uri: basalt_schema:DataGenerationActivity
-  RespirationDataGenerationActivity:
-    name: RespirationDataGenerationActivity
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/RespirationDataGenerationActivity
-    description: 'Data generation activity for soil respiration analysis.
-
-      Captures CO2-C efflux measured per gram of soil.'
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    is_a: DataGenerationActivity
-    slots:
-    - sequence_order
-    - name
-    - description
-    - protocol_url
-    - protocol_version
-    - dataGenerationActivity__id
-    - dataGenerationActivity__analyte_id
-    - dataGenerationActivity__acquisition_start_time
-    - dataGenerationActivity__acquisition_end_time
-    - dataGenerationActivity__instrument_used
-    - dataGenerationActivity__instrument_operator_id
-    - respirationDataGenerationActivity__method_id
-    attributes:
-      method_id:
-        name: method_id
-        description: Reference to the RespirationMethod used for this run
-        range: RespirationMethod
-    class_uri: basalt_schema:RespirationDataGenerationActivity
   DataProcessingActivity:
     name: DataProcessingActivity
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/DataProcessingActivity
@@ -17216,38 +17190,22 @@ classes:
     name: SampleProcessing
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/SampleProcessing
     description: "Abstract base for any sample processing activity (physical to physical).\
-      \ Input data should \nbe specified on workflow subclasses."
-    todos:
-    - why does this have both analysis type and method name, as enums, just set the
-      range to the class
+      \ Input data should \nbe specified on workflow subclasses. Concrete protocol-specific\
+      \ subclasses use is_a: SampleProcessing."
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     abstract: true
     slots:
+    - name
+    - description
     - protocol_url
     - protocol_version
+    - uses_sample
     - sampleProcessing__id
-    - sampleProcessing__analysis_type
-    - sampleProcessing__method_name
-    - sampleProcessing__processing_steps
-    - sampleProcessing__uses_sample
     attributes:
       id:
         name: id
         identifier: true
         range: uuid
-      analysis_type:
-        name: analysis_type
-        range: RouteMethodEnum
-      method_name:
-        name: method_name
-        range: MethodNameEnum
-      processing_steps:
-        name: processing_steps
-        range: string
-        required: true
-      uses_sample:
-        name: uses_sample
-        range: Sample
     class_uri: basalt_schema:SampleProcessing
   ProcessingSampleLink:
     name: ProcessingSampleLink
@@ -17262,11 +17220,11 @@ classes:
       in the process.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
+    - in_protocol
     - processingSampleLink__id
     - processingSampleLink__sample_base_id
     - processingSampleLink__processing_id
     - processingSampleLink__step_number
-    - processingSampleLink__role
     attributes:
       id:
         name: id
@@ -17284,10 +17242,6 @@ classes:
         name: step_number
         range: integer
         required: true
-      role:
-        name: role
-        range: SampleRole
-        required: true
     class_uri: basalt_schema:ProcessingSampleLink
     unique_keys:
       unique_sample_process_step:
@@ -17296,7 +17250,6 @@ classes:
         - sample_base_id
         - processing_id
         - step_number
-        - role
   InstrumentCustodian:
     name: InstrumentCustodian
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/InstrumentCustodian
@@ -17365,14 +17318,14 @@ classes:
     - sequence_order
     - name
     - description
+    - analyte_id
     - protocol_url
     - protocol_version
+    - acquisition_start_time
+    - acquisition_end_time
+    - instrument_used
+    - instrument_operator
     - dataGenerationActivity__id
-    - dataGenerationActivity__analyte_id
-    - dataGenerationActivity__acquisition_start_time
-    - dataGenerationActivity__acquisition_end_time
-    - dataGenerationActivity__instrument_used
-    - dataGenerationActivity__instrument_operator_id
     class_uri: basalt_schema:XRayDataGenerationActivity
   XRFDataGenerationActivity:
     name: XRFDataGenerationActivity
@@ -17397,14 +17350,14 @@ classes:
     - sequence_order
     - name
     - description
+    - analyte_id
     - protocol_url
     - protocol_version
+    - acquisition_start_time
+    - acquisition_end_time
+    - instrument_used
+    - instrument_operator
     - dataGenerationActivity__id
-    - dataGenerationActivity__analyte_id
-    - dataGenerationActivity__acquisition_start_time
-    - dataGenerationActivity__acquisition_end_time
-    - dataGenerationActivity__instrument_used
-    - dataGenerationActivity__instrument_operator_id
     class_uri: basalt_schema:XRFDataGenerationActivity
   XRDDataGenerationActivity:
     name: XRDDataGenerationActivity
@@ -17429,14 +17382,14 @@ classes:
     - sequence_order
     - name
     - description
+    - analyte_id
     - protocol_url
     - protocol_version
+    - acquisition_start_time
+    - acquisition_end_time
+    - instrument_used
+    - instrument_operator
     - dataGenerationActivity__id
-    - dataGenerationActivity__analyte_id
-    - dataGenerationActivity__acquisition_start_time
-    - dataGenerationActivity__acquisition_end_time
-    - dataGenerationActivity__instrument_used
-    - dataGenerationActivity__instrument_operator_id
     class_uri: basalt_schema:XRDDataGenerationActivity
   Changelog:
     name: Changelog
@@ -17598,17 +17551,24 @@ classes:
     - sequence_order
     - name
     - description
+    - analyte_id
     - protocol_url
     - protocol_version
+    - instrument_used
+    - instrument_operator
     - dataGenerationActivity__id
-    - dataGenerationActivity__analyte_id
-    - dataGenerationActivity__acquisition_start_time
-    - dataGenerationActivity__acquisition_end_time
-    - dataGenerationActivity__instrument_used
-    - dataGenerationActivity__instrument_operator_id
     - uses_ms_configuration
     - uses_chromatography
     - analyte_category
+    - MassSpectrometryDataGenerationActivity_acquisition_start_time
+    - MassSpectrometryDataGenerationActivity_acquisition_end_time
+    slot_usage:
+      acquisition_start_time:
+        name: acquisition_start_time
+        required: true
+      acquisition_end_time:
+        name: acquisition_end_time
+        required: true
     class_uri: basalt_schema:MassSpectrometryDataGenerationActivity
   Configuration:
     name: Configuration
@@ -17831,13 +17791,12 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: SampleProcessing
     slots:
+    - name
+    - description
     - protocol_url
     - protocol_version
+    - uses_sample
     - sampleProcessing__id
-    - sampleProcessing__analysis_type
-    - sampleProcessing__method_name
-    - sampleProcessing__processing_steps
-    - sampleProcessing__uses_sample
     - media_type
     - volume_ml
     - media_recipe
@@ -17862,13 +17821,12 @@ classes:
     mixins:
     - HasIncubationConditions
     slots:
+    - name
+    - description
     - protocol_url
     - protocol_version
+    - uses_sample
     - sampleProcessing__id
-    - sampleProcessing__analysis_type
-    - sampleProcessing__method_name
-    - sampleProcessing__processing_steps
-    - sampleProcessing__uses_sample
     - organism_ref
     - growth_medium
     - incubation_time_hours
@@ -17896,13 +17854,12 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: CultureGrowth
     slots:
+    - name
+    - description
     - protocol_url
     - protocol_version
+    - uses_sample
     - sampleProcessing__id
-    - sampleProcessing__analysis_type
-    - sampleProcessing__method_name
-    - sampleProcessing__processing_steps
-    - sampleProcessing__uses_sample
     - organism_ref
     - growth_medium
     - incubation_time_hours
@@ -17928,13 +17885,12 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: CultureGrowth
     slots:
+    - name
+    - description
     - protocol_url
     - protocol_version
+    - uses_sample
     - sampleProcessing__id
-    - sampleProcessing__analysis_type
-    - sampleProcessing__method_name
-    - sampleProcessing__processing_steps
-    - sampleProcessing__uses_sample
     - organism_ref
     - growth_medium
     - incubation_time_hours
@@ -17962,13 +17918,12 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: CultureGrowth
     slots:
+    - name
+    - description
     - protocol_url
     - protocol_version
+    - uses_sample
     - sampleProcessing__id
-    - sampleProcessing__analysis_type
-    - sampleProcessing__method_name
-    - sampleProcessing__processing_steps
-    - sampleProcessing__uses_sample
     - organism_ref
     - growth_medium
     - incubation_time_hours
@@ -17993,13 +17948,12 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: CultureGrowth
     slots:
+    - name
+    - description
     - protocol_url
     - protocol_version
+    - uses_sample
     - sampleProcessing__id
-    - sampleProcessing__analysis_type
-    - sampleProcessing__method_name
-    - sampleProcessing__processing_steps
-    - sampleProcessing__uses_sample
     - organism_ref
     - growth_medium
     - incubation_time_hours
@@ -18025,13 +17979,12 @@ classes:
     mixins:
     - HasIncubationConditions
     slots:
+    - name
+    - description
     - protocol_url
     - protocol_version
+    - uses_sample
     - sampleProcessing__id
-    - sampleProcessing__analysis_type
-    - sampleProcessing__method_name
-    - sampleProcessing__processing_steps
-    - sampleProcessing__uses_sample
     - plate_type
     - plate_barcode
     - setup_date
@@ -18058,13 +18011,12 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: PlateSetupActivity
     slots:
+    - name
+    - description
     - protocol_url
     - protocol_version
+    - uses_sample
     - sampleProcessing__id
-    - sampleProcessing__analysis_type
-    - sampleProcessing__method_name
-    - sampleProcessing__processing_steps
-    - sampleProcessing__uses_sample
     - plate_type
     - plate_barcode
     - setup_date
@@ -18096,13 +18048,12 @@ classes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: PlateSetupActivity
     slots:
+    - name
+    - description
     - protocol_url
     - protocol_version
+    - uses_sample
     - sampleProcessing__id
-    - sampleProcessing__analysis_type
-    - sampleProcessing__method_name
-    - sampleProcessing__processing_steps
-    - sampleProcessing__uses_sample
     - plate_type
     - plate_barcode
     - setup_date
@@ -18129,14 +18080,14 @@ classes:
     - sequence_order
     - name
     - description
+    - analyte_id
     - protocol_url
     - protocol_version
+    - acquisition_start_time
+    - acquisition_end_time
+    - instrument_used
+    - instrument_operator
     - dataGenerationActivity__id
-    - dataGenerationActivity__analyte_id
-    - dataGenerationActivity__acquisition_start_time
-    - dataGenerationActivity__acquisition_end_time
-    - dataGenerationActivity__instrument_used
-    - dataGenerationActivity__instrument_operator_id
     - timepoint_label
     class_uri: basalt_schema:PlateDataGenerationActivity
   AMP2DataGenerationActivity:
@@ -18159,14 +18110,14 @@ classes:
     - sequence_order
     - name
     - description
+    - analyte_id
     - protocol_url
     - protocol_version
+    - acquisition_start_time
+    - acquisition_end_time
+    - instrument_used
+    - instrument_operator
     - dataGenerationActivity__id
-    - dataGenerationActivity__analyte_id
-    - dataGenerationActivity__acquisition_start_time
-    - dataGenerationActivity__acquisition_end_time
-    - dataGenerationActivity__instrument_used
-    - dataGenerationActivity__instrument_operator_id
     - timepoint_label
     - measurement_type
     - wavelength_nm
@@ -18188,14 +18139,14 @@ classes:
     - sequence_order
     - name
     - description
+    - analyte_id
     - protocol_url
     - protocol_version
+    - acquisition_start_time
+    - acquisition_end_time
+    - instrument_used
+    - instrument_operator
     - dataGenerationActivity__id
-    - dataGenerationActivity__analyte_id
-    - dataGenerationActivity__acquisition_start_time
-    - dataGenerationActivity__acquisition_end_time
-    - dataGenerationActivity__instrument_used
-    - dataGenerationActivity__instrument_operator_id
     - timepoint_label
     - wavelength_nm
     class_uri: basalt_schema:EcoplateDataGenerationActivity
@@ -18422,14 +18373,14 @@ classes:
     - sequence_order
     - name
     - description
+    - analyte_id
     - protocol_url
     - protocol_version
+    - acquisition_start_time
+    - acquisition_end_time
+    - instrument_used
+    - instrument_operator
     - dataGenerationActivity__id
-    - dataGenerationActivity__analyte_id
-    - dataGenerationActivity__acquisition_start_time
-    - dataGenerationActivity__acquisition_end_time
-    - dataGenerationActivity__instrument_used
-    - dataGenerationActivity__instrument_operator_id
     - nucleotide_sequencing_category
     - NucleotideSequencing_external_identifiers
     slot_usage:
@@ -18612,340 +18563,6 @@ classes:
     - dataProcessingActivity__software_poc
     - dataProcessingActivity__execution_resource
     class_uri: basalt_schema:MetagenomicsDataProcessingActivity
-  Method:
-    name: Method
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/Method
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    abstract: true
-    slots:
-    - analytic
-    class_uri: basalt_schema:Method
-  BulkDensityMethod:
-    name: BulkDensityMethod
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/BulkDensityMethod
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    is_a: Method
-    slots:
-    - analytic
-    class_uri: basalt_schema:BulkDensityMethod
-  ElementalAnalysisMethod:
-    name: ElementalAnalysisMethod
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ElementalAnalysisMethod
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    is_a: Method
-    slots:
-    - analytic
-    class_uri: basalt_schema:ElementalAnalysisMethod
-  EnzymeActivityMethod:
-    name: EnzymeActivityMethod
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/EnzymeActivityMethod
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    is_a: Method
-    slots:
-    - analytic
-    - location
-    - enzymeActivityMethod__incubation_temp_c
-    - enzymeActivityMethod__incubation_time
-    - enzymeActivityMethod__wavelength
-    attributes:
-      incubation_temp_c:
-        name: incubation_temp_c
-        range: double
-      incubation_time:
-        name: incubation_time
-        range: string
-      wavelength:
-        name: wavelength
-        range: double
-    class_uri: basalt_schema:EnzymeActivityMethod
-  GravimetricWaterContentMethod:
-    name: GravimetricWaterContentMethod
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/GravimetricWaterContentMethod
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    is_a: Method
-    slots:
-    - analytic
-    - location
-    class_uri: basalt_schema:GravimetricWaterContentMethod
-  HydraulicPropertiesMethod:
-    name: HydraulicPropertiesMethod
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/HydraulicPropertiesMethod
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    is_a: Method
-    slots:
-    - analytic
-    - location
-    - hydraulicPropertiesMethod__fitting_model
-    attributes:
-      fitting_model:
-        name: fitting_model
-        range: string
-        required: true
-    class_uri: basalt_schema:HydraulicPropertiesMethod
-  KuoMethod:
-    name: KuoMethod
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/KuoMethod
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    is_a: Method
-    slots:
-    - analytic
-    - location
-    - method
-    - kuoMethod__detection_limit
-    - kuoMethod__wavelength
-    attributes:
-      detection_limit:
-        name: detection_limit
-        range: string
-        required: true
-      wavelength:
-        name: wavelength
-        range: string
-    class_uri: basalt_schema:KuoMethod
-  MicrobialBiomassMethod:
-    name: MicrobialBiomassMethod
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/MicrobialBiomassMethod
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    is_a: Method
-    slots:
-    - analytic
-    - location
-    - microbialBiomassMethod__detector
-    - microbialBiomassMethod__mode
-    - microbialBiomassMethod__injection_volume
-    - microbialBiomassMethod__sample_volume
-    - microbialBiomassMethod__number_of_injections
-    - microbialBiomassMethod__check_standard_spacing
-    attributes:
-      detector:
-        name: detector
-        range: string
-        required: true
-      mode:
-        name: mode
-        range: string
-      injection_volume:
-        name: injection_volume
-        range: string
-        required: true
-      sample_volume:
-        name: sample_volume
-        range: string
-        required: true
-      number_of_injections:
-        name: number_of_injections
-        range: double
-        required: true
-      check_standard_spacing:
-        name: check_standard_spacing
-        range: string
-        required: true
-    class_uri: basalt_schema:MicrobialBiomassMethod
-  PH_Method:
-    name: PH_Method
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/PHMethod
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    is_a: Method
-    slots:
-    - analytic
-    - location
-    - pHMethod__calibration
-    attributes:
-      calibration:
-        name: calibration
-        range: string
-        required: true
-    class_uri: basalt_schema:PHMethod
-  RespirationMethod:
-    name: RespirationMethod
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/RespirationMethod
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    is_a: Method
-    slots:
-    - analytic
-    class_uri: basalt_schema:RespirationMethod
-  TOC_TN_Method:
-    name: TOC_TN_Method
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/TOCTNMethod
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    is_a: Method
-    slots:
-    - analytic
-    - location
-    - tOCTNMethod__column
-    - tOCTNMethod__mode
-    - tOCTNMethod__detector
-    - tOCTNMethod__injection_volume
-    - tOCTNMethod__sample_volume
-    - tOCTNMethod__number_of_injections
-    - tOCTNMethod__check_standard_spacing
-    attributes:
-      column:
-        name: column
-        range: string
-      mode:
-        name: mode
-        range: string
-      detector:
-        name: detector
-        range: string
-        required: true
-      injection_volume:
-        name: injection_volume
-        range: string
-        required: true
-      sample_volume:
-        name: sample_volume
-        range: string
-        required: true
-      number_of_injections:
-        name: number_of_injections
-        range: double
-        required: true
-      check_standard_spacing:
-        name: check_standard_spacing
-        range: string
-    class_uri: basalt_schema:TOCTNMethod
-  TextureMethod:
-    name: TextureMethod
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/TextureMethod
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    is_a: Method
-    slots:
-    - analytic
-    - location
-    - method
-    class_uri: basalt_schema:TextureMethod
-  XrayComputedTomographyMethod:
-    name: XrayComputedTomographyMethod
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XrayComputedTomographyMethod
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/methods
-    is_a: Method
-    slots:
-    - analytic
-    - location
-    - xrayComputedTomographyMethod__x_ray_power
-    - xrayComputedTomographyMethod__cu_filter
-    - xrayComputedTomographyMethod__total_projections_collected
-    - xrayComputedTomographyMethod__rotation
-    - xrayComputedTomographyMethod__frames_recording_per_projection
-    - xrayComputedTomographyMethod__exposure_time_per_frame
-    - xrayComputedTomographyMethod__image_voxel_size_is
-    attributes:
-      x_ray_power:
-        name: x_ray_power
-        range: string
-        required: true
-      cu_filter:
-        name: cu_filter
-        range: string
-        required: true
-      total_projections_collected:
-        name: total_projections_collected
-        range: double
-        required: true
-      rotation:
-        name: rotation
-        range: string
-        required: true
-      frames_recording_per_projection:
-        name: frames_recording_per_projection
-        range: double
-        required: true
-      exposure_time_per_frame:
-        name: exposure_time_per_frame
-        range: string
-        required: true
-      image_voxel_size_is:
-        name: image_voxel_size_is
-        range: string
-        required: true
-    class_uri: basalt_schema:XrayComputedTomographyMethod
-  organism:
-    name: organism
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/Organism
-    description: "Reference data representing a biological identity (strain, isolate,\n\
-      engineered construct, etc.) that can be instantiated by multiple\nphysical samples.\n\
-      \nREPLACES: This class replaces the former Strain class, which was modeled\n\
-      as a PurchasedMaterial subclass. That approach did not accommodate strains\n\
-      engineered in-house or received from collaborators, nor did it cleanly\nseparate\
-      \ biological identity from physical samples. Additionally, the term\n\"strain\"\
-      \ implies purity that cannot always be guaranteed; this class\nrepresents the\
-      \ *intended* or *characterized* biological identity.\n\nRelationship to samples:\n\
-      \  - One organism can have many AMP2UserSample instances\n  - AMP2UserSample.organism_ref\
-      \ points here\n  - CultureGrowth activities reference via organism_ref (aliased\
-      \ as strain_ref)"
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/organism
-    slots:
-    - organism_organism_name
-    - description
-    - organism_strain_identifier
-    - taxonomy_id
-    - host_common_name
-    - host_taxid
-    - organism_strain_source
-    - strain_type
-    - organism_modification_method
-    - strain_description
-    - organism_strain_mutation
-    - phenotype
-    - trait
-    - encoded_traits
-    - genotype_segment_category
-    - genotype_segment_name
-    - component_name
-    - construct_component
-    - donor_organism
-    - component_description
-    - organism_trophic_level
-    - pathogenicity
-    - host_spec_range
-    - propagation
-    - organism__id
-    slot_usage:
-      strain_identifier:
-        name: strain_identifier
-        description: 'Primary human-readable identifier for this organism.
-
-          Examples: "KT2440_pTE314", "PP_0055", "AG5577-pJE2165"'
-        required: true
-      name:
-        name: name
-        description: 'Human-readable name for the organism.
-
-          May be same as strain_identifier or more descriptive.'
-      organism_name:
-        name: organism_name
-        description: Scientific name of the organism (e.g., "Pseudomonas putida").
-      strain_source:
-        name: strain_source
-        description: 'Provenance of the organism. Can be an institution
-
-          (e.g., "ATCC", "PNNL"), commercial source, or derivation note
-
-          (e.g., "engineered from KT2440").'
-      strain_mutation:
-        name: strain_mutation
-        description: 'Primary genetic modification or plasmid carried (e.g., "pTE314").
-
-          For more detailed construct information, use the genotype_segment_*
-
-          and component_* slots.'
-      modification_method:
-        name: modification_method
-        description: 'Method used to introduce genetic modification.
-
-          Examples: "Electroporation", "Conjugation", "CRISPR", "Transduction"'
-      trophic_level:
-        name: trophic_level
-        required: false
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
-        required: true
-    class_uri: basalt_schema:Organism
   BulkDensityProduct:
     name: BulkDensityProduct
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/BulkDensityProduct
@@ -20256,6 +19873,91 @@ classes:
         name: flag_gypsum
         range: ProcessedDataFlag
     class_uri: basalt_schema:XRDPhaseProduct
+  organism:
+    name: organism
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/Organism
+    description: "Reference data representing a biological identity (strain, isolate,\n\
+      engineered construct, etc.) that can be instantiated by multiple\nphysical samples.\n\
+      \nREPLACES: This class replaces the former Strain class, which was modeled\n\
+      as a PurchasedMaterial subclass. That approach did not accommodate strains\n\
+      engineered in-house or received from collaborators, nor did it cleanly\nseparate\
+      \ biological identity from physical samples. Additionally, the term\n\"strain\"\
+      \ implies purity that cannot always be guaranteed; this class\nrepresents the\
+      \ *intended* or *characterized* biological identity.\n\nRelationship to samples:\n\
+      \  - One organism can have many AMP2UserSample instances\n  - AMP2UserSample.organism_ref\
+      \ points here\n  - CultureGrowth activities reference via organism_ref (aliased\
+      \ as strain_ref)"
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/organism
+    slots:
+    - organism_organism_name
+    - description
+    - organism_strain_identifier
+    - taxonomy_id
+    - host_common_name
+    - host_taxid
+    - organism_strain_source
+    - strain_type
+    - organism_modification_method
+    - strain_description
+    - organism_strain_mutation
+    - phenotype
+    - trait
+    - encoded_traits
+    - genotype_segment_category
+    - genotype_segment_name
+    - component_name
+    - construct_component
+    - donor_organism
+    - component_description
+    - organism_trophic_level
+    - pathogenicity
+    - host_spec_range
+    - propagation
+    - organism__id
+    slot_usage:
+      strain_identifier:
+        name: strain_identifier
+        description: 'Primary human-readable identifier for this organism.
+
+          Examples: "KT2440_pTE314", "PP_0055", "AG5577-pJE2165"'
+        required: true
+      name:
+        name: name
+        description: 'Human-readable name for the organism.
+
+          May be same as strain_identifier or more descriptive.'
+      organism_name:
+        name: organism_name
+        description: Scientific name of the organism (e.g., "Pseudomonas putida").
+      strain_source:
+        name: strain_source
+        description: 'Provenance of the organism. Can be an institution
+
+          (e.g., "ATCC", "PNNL"), commercial source, or derivation note
+
+          (e.g., "engineered from KT2440").'
+      strain_mutation:
+        name: strain_mutation
+        description: 'Primary genetic modification or plasmid carried (e.g., "pTE314").
+
+          For more detailed construct information, use the genotype_segment_*
+
+          and component_* slots.'
+      modification_method:
+        name: modification_method
+        description: 'Method used to introduce genetic modification.
+
+          Examples: "Electroporation", "Conjugation", "CRISPR", "Transduction"'
+      trophic_level:
+        name: trophic_level
+        required: false
+    attributes:
+      id:
+        name: id
+        identifier: true
+        range: uuid
+        required: true
+    class_uri: basalt_schema:Organism
   Site:
     name: Site
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/Site
@@ -21223,8 +20925,8 @@ classes:
     - mechanical_damage
     - method_development
     - methane
-    - micro_biomass_C_meth
-    - micro_biomass_N_meth
+    - micro_biomass_c_meth
+    - micro_biomass_n_meth
     - microbial_biomass
     - microbial_biomass_c
     - microbial_biomass_n
@@ -22789,6 +22491,290 @@ classes:
         identifier: true
         range: uuid
     class_uri: basalt_schema:WaterSamplingActivity
+  StandardSampleProcessing:
+    name: StandardSampleProcessing
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/StandardSampleProcessing
+    description: A basic non-abstract SampleProcessing subclass that links to a published
+      standardized  protocol instead of populating a record for each step. This is
+      meant to simplify modelling and data storage for well-documented standard protocols
+      that will be  used repeatedly.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    is_a: SampleProcessing
+    slots:
+    - name
+    - description
+    - protocol_url
+    - protocol_version
+    - uses_sample
+    - sampleProcessing__id
+    class_uri: basalt_schema:StandardSampleProcessing
+  SampleProcessingProtocol:
+    name: SampleProcessingProtocol
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/SampleProcessingProtocol
+    description: A grouping class representing a sample processing protocol consisting
+      of multiple modeled steps.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slots:
+    - name
+    - description
+    - protocol_url
+    - protocol_version
+    - sampleProcessingProtocol__id
+    attributes:
+      id:
+        name: id
+        identifier: true
+        range: uuid
+    class_uri: basalt_schema:SampleProcessingProtocol
+  ChemicalConversionProcess:
+    name: ChemicalConversionProcess
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ChemicalConversionProcess
+    description: A chemical conversion process used in sample preparation. A process
+      that  results in the interconversion of chemical species by a reaction to  transform
+      the reagents into products.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    is_a: SampleProcessing
+    slots:
+    - name
+    - description
+    - protocol_url
+    - protocol_version
+    - uses_sample
+    - sampleProcessing__id
+    - duration_min
+    - temperature_celsius
+    - substances_used
+    - chemicalConversionProcess__chemical_conversion_category
+    - chemicalConversionProcess__digestion_method
+    - chemicalConversionProcess__enrichment_type
+    - chemicalConversionProcess__labeling_method
+    attributes:
+      chemical_conversion_category:
+        name: chemical_conversion_category
+        description: The category of chemical conversion process.
+        range: ChemicalConversionCategoryEnum
+      digestion_method:
+        name: digestion_method
+        description: Named digestion method applied, when the category is protease_cleavage.
+        range: DigestionMethodEnum
+      enrichment_type:
+        name: enrichment_type
+        description: Type of enrichment performed, when this process is an enrichment
+          step.
+        range: EnrichmentTypeEnum
+      labeling_method:
+        name: labeling_method
+        description: Chemical labeling strategy applied in this process (e.g., TMT).
+        range: LabelingMethodEnum
+    class_uri: basalt_schema:ChemicalConversionProcess
+  Extraction:
+    name: Extraction
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/Extraction
+    description: The removal and isolation of a desired analyte from other material  in
+      a sample.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    is_a: SampleProcessing
+    slots:
+    - name
+    - description
+    - protocol_url
+    - protocol_version
+    - uses_sample
+    - sampleProcessing__id
+    - substances_used
+    - starting_mass_mg
+    - extraction__extraction_target
+    - extraction__extraction_method
+    attributes:
+      extraction_target:
+        name: extraction_target
+        description: The target analyte(s) or compound class(es) for the extraction
+          process.
+        range: AnalyteCategoryEnum
+        multivalued: true
+      extraction_method:
+        name: extraction_method
+        description: Named extraction method applied (e.g., MPLEx, bead beating, TCA/Acetone).
+        range: ExtractionMethodEnum
+    class_uri: basalt_schema:Extraction
+  FractionationProcess:
+    name: FractionationProcess
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/FractionationProcess
+    description: 'A fractionation process (e.g., off-line high pH fractionation, SCX,
+      etc.) that splits an input sample into multiple fractions for downstream LC-MS/MS.
+
+      '
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    is_a: SampleProcessing
+    slots:
+    - name
+    - description
+    - protocol_url
+    - protocol_version
+    - uses_sample
+    - sampleProcessing__id
+    - lims_protocol_instance_id
+    class_uri: basalt_schema:FractionationProcess
+  NormalizationProcess:
+    name: NormalizationProcess
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/NormalizationProcess
+    description: A process that adjusts sample amounts (e.g., protein mass or volume)
+      to a common level across samples, prior to downstream processing.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    is_a: SampleProcessing
+    slots:
+    - name
+    - description
+    - protocol_url
+    - protocol_version
+    - uses_sample
+    - sampleProcessing__id
+    - normalizationProcess__normalization_method
+    - normalizationProcess__target_mass_mg
+    - normalizationProcess__target_vol_ul
+    attributes:
+      normalization_method:
+        name: normalization_method
+        description: The strategy used for normalization (equal mass, equal volume,
+          etc.).
+        range: NormalizationMethodEnum
+      target_mass_mg:
+        name: target_mass_mg
+        description: Target volume of analyte per sample after normalization,  in
+          milligrams, if appropriate. Otherwise fill out target_vol_ul.
+        range: float
+      target_vol_ul:
+        name: target_vol_ul
+        description: Target volume of analyte per sample after normalization,  in
+          microliters, if appropriate. Otherwise fill out target_mass_mg.
+        range: float
+    class_uri: basalt_schema:NormalizationProcess
+  PoolingProcess:
+    name: PoolingProcess
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/PoolingProcess
+    description: A laboratory pooling process that physically mixes multiple input
+      samples into a single pooled processed sample for downstream analysis. Typically
+      corresponds to the L7 "Sample Pooling" / "Pooling" protocols.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    is_a: SampleProcessing
+    slots:
+    - name
+    - description
+    - protocol_url
+    - protocol_version
+    - uses_sample
+    - sampleProcessing__id
+    - final_mass_mg
+    class_uri: basalt_schema:PoolingProcess
+  PortionOfSubstance:
+    name: PortionOfSubstance
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/PortionOfSubstance
+    description: A portion of a substance with specific characteristics.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slots:
+    - portionOfSubstance__known_as
+    - portionOfSubstance__substance_role
+    - portionOfSubstance__volume_mL
+    - portionOfSubstance__source_concentration_mg_per_ml
+    - portionOfSubstance__final_concentration_mg_per_ml
+    attributes:
+      known_as:
+        name: known_as
+        description: Common name or identifier for the substance.
+        range: ChemicalEntityEnum
+      substance_role:
+        name: substance_role
+        description: The role or function of the substance in the context of its use.
+        range: SubstanceRoleEnum
+      volume_mL:
+        name: volume_mL
+        description: The volume of the portion of the substance, in milliliters.
+        range: float
+      source_concentration_mg_per_ml:
+        name: source_concentration_mg_per_ml
+        description: Concentration of the substance before it is added to the experiment,  in
+          milligrams per milliliter.
+        range: float
+      final_concentration_mg_per_ml:
+        name: final_concentration_mg_per_ml
+        description: Concentration of the substance in the combined tube/experimental  container
+          after everything in this step is added, in milligrams  per milliliter.
+        range: float
+    class_uri: basalt_schema:PortionOfSubstance
+  ProteinQuantification:
+    name: ProteinQuantification
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ProteinQuantification
+    description: A protein quantification assay (e.g., Coomassie or BCA) performed
+      on a sample to determine protein concentration prior to downstream processing.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    is_a: SampleProcessing
+    slots:
+    - name
+    - description
+    - protocol_url
+    - protocol_version
+    - uses_sample
+    - sampleProcessing__id
+    - lims_protocol_instance_id
+    - final_concentration_mg_per_ml
+    - proteinQuantification__protein_assay_type
+    attributes:
+      protein_assay_type:
+        name: protein_assay_type
+        description: The type of protein assay (Coomassie, BCA, etc.).
+        range: ProteinAssayTypeEnum
+        required: true
+    class_uri: basalt_schema:ProteinQuantification
+  ResuspensionProcess:
+    name: ResuspensionProcess
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ResuspensionProcess
+    description: Resuspension of an analyte (e.g., drying and resolubilizing peptides
+      in LC buffer).
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    is_a: SampleProcessing
+    slots:
+    - name
+    - description
+    - protocol_url
+    - protocol_version
+    - uses_sample
+    - sampleProcessing__id
+    - lims_protocol_instance_id
+    class_uri: basalt_schema:ResuspensionProcess
+  SolidPhaseExtractionProcess:
+    name: SolidPhaseExtractionProcess
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/SolidPhaseExtractionProcess
+    description: A solid phase extraction (SPE) step (e.g., C18 desalting) performed
+      as sample preparation.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    is_a: SampleProcessing
+    slots:
+    - name
+    - description
+    - protocol_url
+    - protocol_version
+    - uses_sample
+    - sampleProcessing__id
+    - lims_protocol_instance_id
+    - uses_chromatography
+    class_uri: basalt_schema:SolidPhaseExtractionProcess
+  SubSamplingProcess:
+    name: SubSamplingProcess
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/SubSamplingProcess
+    description: A laboratory subsampling process that takes a portion of an existing  sample
+      and produces a derived (processed) sample for downstream  analysis. (Separating
+      a sample aliquot from the starting material for  downstream activity.)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    is_a: SampleProcessing
+    slots:
+    - name
+    - description
+    - protocol_url
+    - protocol_version
+    - uses_sample
+    - sampleProcessing__id
+    - final_mass_mg
+    class_uri: basalt_schema:SubSamplingProcess
   Study:
     name: Study
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/Study
@@ -23171,7 +23157,7 @@ classes:
     class_uri: basalt_schema:ZipDownload
 metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
-source_file_date: '2026-08-18T10:31:49'
-source_file_size: 17150
-generation_date: '2026-08-18T10:36:16'
+source_file_date: '2026-08-18T10:55:12'
+source_file_size: 16306
+generation_date: '2026-08-18T10:58:25'
 

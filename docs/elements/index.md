@@ -32,7 +32,6 @@ Name: basalt-schema
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[PlateDataGenerationActivity](PlateDataGenerationActivity.md) | Abstract base for plate measurement activities |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | AMP2 plate measurement (OD, fluorescence, flow cytometry) |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[RespirationDataGenerationActivity](RespirationDataGenerationActivity.md) | Data generation activity for soil respiration analysis |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[XRayDataGenerationActivity](XRayDataGenerationActivity.md) | Abstract base class for X-ray analytical methods including XRF (elemental) |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[XRDDataGenerationActivity](XRDDataGenerationActivity.md) | X-ray Diffraction (XRD) mineralogical analysis activity |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[XRFDataGenerationActivity](XRFDataGenerationActivity.md) | X-ray Fluorescence (XRF) elemental analysis activity |
@@ -80,19 +79,6 @@ Name: basalt-schema
 | [LabProcessingActivity](LabProcessingActivity.md) | [NEW ABSTRACT CLASS] Higher-level abstract base for any activity that |
 | [MAOMProduct](MAOMProduct.md) | Mineral-Associated Organic Matter (MAOM) analysis product, typically derived ... |
 | [MassSpectrometryStandardRun](MassSpectrometryStandardRun.md) | A record of a mass spectrometry standard run with a batch of samples, which i... |
-| [Method](Method.md) |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[BulkDensityMethod](BulkDensityMethod.md) |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ElementalAnalysisMethod](ElementalAnalysisMethod.md) |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EnzymeActivityMethod](EnzymeActivityMethod.md) |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[GravimetricWaterContentMethod](GravimetricWaterContentMethod.md) |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[HydraulicPropertiesMethod](HydraulicPropertiesMethod.md) |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[KuoMethod](KuoMethod.md) |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[PHMethod](PHMethod.md) |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[RespirationMethod](RespirationMethod.md) |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TextureMethod](TextureMethod.md) |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TOCTNMethod](TOCTNMethod.md) |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[XrayComputedTomographyMethod](XrayComputedTomographyMethod.md) |  |
 | [MobilePhaseSegment](MobilePhaseSegment.md) | A segment of the mobile phase used in chromatography during mass spectrometry |
 | [OntologyClass](OntologyClass.md) |  |
 | [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |
@@ -100,6 +86,7 @@ Name: basalt-schema
 | [PlateProduct](PlateProduct.md) | Abstract base for plate measurement data products |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |
+| [PortionOfSubstance](PortionOfSubstance.md) | A portion of a substance with specific characteristics |
 | [ProcessingSampleLink](ProcessingSampleLink.md) | A link between a processed sample and the sample processing activity that pro... |
 | [ProjectParticipant](ProjectParticipant.md) | A record of a person and their role on an EMSL project |
 | [PurchasedMaterial](PurchasedMaterial.md) | [NEW ABSTRACT CLASS] Lightweight base for non-sample physical lab materials |
@@ -125,15 +112,26 @@ Name: basalt-schema
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[WaterSample](WaterSample.md) | A sample of water collected from the environment |
 | [SampleProcessing](SampleProcessing.md) | Abstract base for any sample processing activity (physical to physical) |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ChemicalConversionProcess](ChemicalConversionProcess.md) | A chemical conversion process used in sample preparation |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[StrainPurity](StrainPurity.md) | Purity check of a strain culture |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Extraction](Extraction.md) | The removal and isolation of a desired analyte from other material  in a samp... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FractionationProcess](FractionationProcess.md) | A fractionation process (e |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MediaPreparation](MediaPreparation.md) | Activity that prepares a batch of growth media |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[NormalizationProcess](NormalizationProcess.md) | A process that adjusts sample amounts (e |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[PoolingProcess](PoolingProcess.md) | A laboratory pooling process that physically mixes multiple input samples int... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ProteinQuantification](ProteinQuantification.md) | A protein quantification assay (e |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ResuspensionProcess](ResuspensionProcess.md) | Resuspension of an analyte (e |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SolidPhaseExtractionProcess](SolidPhaseExtractionProcess.md) | A solid phase extraction (SPE) step (e |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[StandardSampleProcessing](StandardSampleProcessing.md) | A basic non-abstract SampleProcessing subclass that links to a published stan... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SubSamplingProcess](SubSamplingProcess.md) | A laboratory subsampling process that takes a portion of an existing  sample ... |
+| [SampleProcessingProtocol](SampleProcessingProtocol.md) | A grouping class representing a sample processing protocol consisting of mult... |
 | [SamplingActivity](SamplingActivity.md) | An activity that involves the collection of a sample |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[AerosolArmSamplingActivity](AerosolArmSamplingActivity.md) | A sampling activity where aerosol samples were collected by ARM |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[AerosolSamplingActivity](AerosolSamplingActivity.md) | A sampling activity where aerosol samples were collected |
@@ -170,8 +168,8 @@ Name: basalt-schema
 
 | Slot | Description |
 | --- | --- |
-| [acquisition_end_time](acquisition_end_time.md) |  |
-| [acquisition_start_time](acquisition_start_time.md) |  |
+| [acquisition_end_time](acquisition_end_time.md) | The time that data collection ended for this activity |
+| [acquisition_start_time](acquisition_start_time.md) | The time that data collection started for this activity |
 | [acquisition_strategy](acquisition_strategy.md) | The acquisition strategy used in the mass spectrometry run |
 | [activity_speed_id](activity_speed_id.md) |  |
 | [activity_time_id](activity_time_id.md) |  |
@@ -198,8 +196,7 @@ Name: basalt-schema
 | [ammonium](ammonium.md) | Concentration of ammonium in the sample |
 | [analysis_type](analysis_type.md) | The type(s) of analysis planned for this sample |
 | [analyte_category](analyte_category.md) | omics type for easier search, optional |
-| [analyte_id](analyte_id.md) |  |
-| [analytic](analytic.md) |  |
+| [analyte_id](analyte_id.md) | FK reference to a ProcessedSample representing the substance analyzed in this... |
 | [ances_data](ances_data.md) | Information about either pedigree or other ancestral information description |
 | [annotation_database](annotation_database.md) | Primary annotation database used (e |
 | [annual_precpt](annual_precpt.md) | The average of all annual precipitation values known or an estimated equivale... |
@@ -229,7 +226,6 @@ Name: basalt-schema
 | [bulk_elect_conductivity](bulk_elect_conductivity.md) | Electrical conductivity is a measure of the bulk soil ability to carry electr... |
 | [calcium](calcium.md) | Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm) |
 | [calcium_id](calcium_id.md) |  |
-| [calibration](calibration.md) |  |
 | [calibration_data](calibration_data.md) | Reference to the raw instrument data file used for calibration |
 | [calibration_standard](calibration_standard.md) | The reference standard used for calibration |
 | [calibration_target](calibration_target.md) | The measurement being calibrated |
@@ -243,10 +239,10 @@ Name: basalt-schema
 | [cd_mg_per_kg](cd_mg_per_kg.md) | Cadmium concentration in mg/kg |
 | [ce_mg_per_kg](ce_mg_per_kg.md) | Cerium concentration in mg/kg |
 | [changelog](changelog.md) |  |
-| [check_standard_spacing](check_standard_spacing.md) |  |
 | [chem_administration](chem_administration.md) | List of chemical compounds administered to the host or site where sampling oc... |
 | [chem_mutagen](chem_mutagen.md) | Treatment involving use of mutagens; should include the name of mutagen, amou... |
 | [chem_oxygen_dem](chem_oxygen_dem.md) | a measure of the relative oxygen-depletion effect of a waste contaminant |
+| [chemical_conversion_category](chemical_conversion_category.md) | The category of chemical conversion process |
 | [chloride](chloride.md) | Concentration of chloride in the sample (Unit: mg/L or ppm) |
 | [chlorite_percent](chlorite_percent.md) | Chlorite ((Mg,Fe)3(Si,Al)4O10(OH)2 (Mg,Fe)3(OH)6) weight percent |
 | [chlorophyll](chlorophyll.md) | Concentration of chlorophyll (Unit: mg/m3 or ug/L) |
@@ -285,7 +281,6 @@ Name: basalt-schema
 | [creation_date](creation_date.md) | Date the entity or preparation was created |
 | [crop_rotation](crop_rotation.md) | Whether or not crop is rotated, and if yes, rotation schedule |
 | [cs_mg_per_kg](cs_mg_per_kg.md) | Cesium concentration in mg/kg |
-| [cu_filter](cu_filter.md) |  |
 | [cu_mg_per_kg](cu_mg_per_kg.md) | Copper concentration in mg/kg |
 | [cult_root_med](cult_root_med.md) | Name or reference for the hydroponic or in vitro culture rooting medium; can ... |
 | [cur_land_use](cur_land_use.md) | Present state of sample site |
@@ -299,10 +294,9 @@ Name: basalt-schema
 | [density](density.md) | Density of the sample, which is its mass per unit volume (aka volumetric mass... |
 | [depth](depth.md) | The vertical distance below local surface |
 | [description](description.md) | Human-readable description for the entity or activity |
-| [detection_limit](detection_limit.md) |  |
-| [detector](detector.md) |  |
 | [device_type](device_type.md) |  |
 | [diether_lipids](diether_lipids.md) | Concentration of diether lipids; can include multiple types of diether lipids... |
+| [digestion_method](digestion_method.md) | Named digestion method applied, when the category is protease_cleavage |
 | [diss_carb_dioxide](diss_carb_dioxide.md) | Concentration of dissolved carbon dioxide in the sample or liquid portion of ... |
 | [diss_hydrogen](diss_hydrogen.md) | Concentration of dissolved hydrogens (Unit: umol/L) |
 | [diss_inorg_carb](diss_inorg_carb.md) | Dissolved inorganic carbon concentration in the sample, typically measured af... |
@@ -325,6 +319,7 @@ Name: basalt-schema
 | [emulsions](emulsions.md) | amount or concentration of substances such as paints, adhesives, mayonnaise, ... |
 | [encoded_traits](encoded_traits.md) | Should include key traits like antibiotic resistance or xenobiotic |
 | [ended_at_time](ended_at_time.md) |  |
+| [enrichment_type](enrichment_type.md) | Type of enrichment performed, when this process is an enrichment step |
 | [env_broad_scale](env_broad_scale.md) | 'Report the major environmental system the sample or specimen came from |
 | [env_local_scale](env_local_scale.md) | 'Report the entity which are in your sample or specimens local vicinity and w... |
 | [env_medium](env_medium.md) | 'Report the environmental material immediately surrounding the sample or spec... |
@@ -332,9 +327,9 @@ Name: basalt-schema
 | [experimental_factor](experimental_factor.md) | Experimental factors are essentially the variable aspects of an experiment de... |
 | [experimental_factor_other](experimental_factor_other.md) | Other details about your sample that you feel can't be accurately represented... |
 | [exposure_sensitivity](exposure_sensitivity.md) | Sensitivity the entity has if exposed (e |
-| [exposure_time_per_frame](exposure_time_per_frame.md) |  |
 | [external_identifiers](external_identifiers.md) | List of external identifiers associated with this entity or activity |
 | [extraction_method](extraction_method.md) | If you (the user) performed an extraction preparation or processing before se... |
+| [extraction_target](extraction_target.md) | The target analyte(s) or compound class(es) for the extraction process |
 | [extreme_event](extreme_event.md) | Unusual physical events that may have affected microbial populations |
 | [fao_class](fao_class.md) | Soil classification from the FAO World soil distribution from International S... |
 | [fertilizer_regm](fertilizer_regm.md) | Information about treatment involving the use of fertilizers; should include ... |
@@ -344,12 +339,13 @@ Name: basalt-schema
 | [files](files.md) |  |
 | [filesize](filesize.md) | Size of the file in bytes |
 | [filter_method](filter_method.md) | Type of filter used or how the sample was filtered |
+| [final_concentration_mg_per_ml](final_concentration_mg_per_ml.md) | The concentration of the sample or analyte in the processedSample resulting f... |
+| [final_mass_mg](final_mass_mg.md) | The mass of sample or analyte in the processedSample resulting from this acti... |
 | [fire](fire.md) | Historical and/or physical evidence of fire |
 | [first_blh](first_blh.md) | First boundary layer height candidate (meters) (Unit: m) |
 | [first_blh_quality_index](first_blh_quality_index.md) | Quality index for first boundary layer height candidate (-999 if no candidate... |
 | [first_cbh](first_cbh.md) | First cloud base (meters) or vertical visibility (meters) (-999 if no cloud b... |
 | [first_name](first_name.md) |  |
-| [fitting_model](fitting_model.md) |  |
 | [flag](flag.md) | QC flag   "ok", "blank", "outlier", "contaminated" |
 | [flag_ag](flag_ag.md) |  |
 | [flag_albite](flag_albite.md) |  |
@@ -425,7 +421,6 @@ Name: basalt-schema
 | [flow_rate_z](flow_rate_z.md) |  |
 | [fluor](fluor.md) | Raw or converted fluorescence of water |
 | [fragmentation](fragmentation.md) | fragmentation technique used in the mass spectrometry run |
-| [frames_recording_per_projection](frames_recording_per_projection.md) |  |
 | [functional_annotation_id](functional_annotation_id.md) |  |
 | [functional_identifier](functional_identifier.md) |  |
 | [funding_sources](funding_sources.md) |  |
@@ -482,10 +477,8 @@ Name: basalt-schema
 | [humidity_regm](humidity_regm.md) | Information about treatment involving an exposure to varying degrees of humid... |
 | [iat](iat.md) | Ion accumulation time setting used in the mass spectrometry method |
 | [id](id.md) |  |
-| [image_voxel_size_is](image_voxel_size_is.md) |  |
 | [in_mg_per_kg](in_mg_per_kg.md) | Indium concentration in mg/kg |
-| [incubation_temp_c](incubation_temp_c.md) |  |
-| [incubation_time](incubation_time.md) |  |
+| [in_protocol](in_protocol.md) | The protocol that this SampleProcessing step is part of |
 | [incubation_time_hours](incubation_time_hours.md) | Incubation duration in hours |
 | [indust_eff_percent](indust_eff_percent.md) | percentage of industrial effluents received by wastewater treatment plant |
 | [infiltration_1](infiltration_1.md) | Amount of time it takes to accomplish the first infiltration activity |
@@ -494,7 +487,6 @@ Name: basalt-schema
 | [initiation_date_inoculation](initiation_date_inoculation.md) | The date the sample was inoculated |
 | [initiation_date_plant](initiation_date_plant.md) | The date the plant part of the sample was initiated |
 | [injection](injection.md) | Type of injection used in the mass spectrometry method |
-| [injection_volume](injection_volume.md) |  |
 | [injection_volume_ul](injection_volume_ul.md) |  |
 | [inoculum_volume_ul](inoculum_volume_ul.md) | Volume of inoculum added (0 for blanks) |
 | [inorg_particles](inorg_particles.md) | concentration of particles such as sand, grit, metal particles, ceramics, etc |
@@ -502,9 +494,9 @@ Name: basalt-schema
 | [instrument](instrument.md) |  |
 | [instrument_alt_id_provider](instrument_alt_id_provider.md) |  |
 | [instrument_id](instrument_id.md) |  |
-| [instrument_operator_id](instrument_operator_id.md) |  |
+| [instrument_operator](instrument_operator.md) | User who operated the instrument |
 | [instrument_parameters](instrument_parameters.md) |  |
-| [instrument_used](instrument_used.md) |  |
+| [instrument_used](instrument_used.md) | Instrument used for the measurement |
 | [internal_calibration](internal_calibration.md) | Whether internal calibration was used |
 | [ionization](ionization.md) | Type of ionization used in the mass spectrometry method |
 | [iron_id](iron_id.md) |  |
@@ -513,9 +505,11 @@ Name: basalt-schema
 | [isotope_exposure](isotope_exposure.md) | List isotope exposure or addition applied to your sample |
 | [item_number](item_number.md) | The item number of the purchased material |
 | [kaolinite_percent](kaolinite_percent.md) | Kaolinite (Al2Si2O5(OH)4) weight percent |
+| [known_as](known_as.md) | Common name or identifier for the substance |
 | [la_mg_per_kg](la_mg_per_kg.md) | Lanthanum concentration in mg/kg |
 | [label_format](label_format.md) |  |
 | [label_text](label_text.md) | The label on the stored processed sample, if applicable (e |
+| [labeling_method](labeling_method.md) | Chemical labeling strategy applied in this process (e |
 | [language](language.md) |  |
 | [last_name](last_name.md) |  |
 | [latitude](latitude.md) | Latitude coordinate of the sampling site in WSG 84 format |
@@ -561,14 +555,9 @@ Name: basalt-schema
 | [media_volume_ul](media_volume_ul.md) | Volume of media added to this well (microlitres) |
 | [metaproteomics_analysis_category](metaproteomics_analysis_category.md) | The category of metaproteomics analysis being performed, if applicable |
 | [methane](methane.md) | Methane (gas) amount or concentration at the time of sampling |
-| [method](method.md) |  |
 | [method_development](method_development.md) | If your samples are TEST sample ONLY, please provide information on what you'... |
-| [method_id](method_id.md) | Reference to the RespirationMethod used for this run |
-| [method_name](method_name.md) |  |
 | [mg_workflow_step](mg_workflow_step.md) | Metagenomics workflow step that produced this product (e |
-| [micro_biomass_C_meth](micro_biomass_C_meth.md) | Reference or method used in determining microbial biomass |
 | [micro_biomass_c_meth](micro_biomass_c_meth.md) | Reference or method used in determining microbial biomass |
-| [micro_biomass_N_meth](micro_biomass_N_meth.md) | Reference or method used in determining microbial biomass nitrogen |
 | [micro_biomass_n_meth](micro_biomass_n_meth.md) | Reference or method used in determining microbial biomass nitrogen |
 | [microbial_biomass](microbial_biomass.md) | The part of the organic matter in the soil that constitutes living microorgan... |
 | [microbial_biomass_c](microbial_biomass_c.md) | The part of the organic matter in the soil that constitutes living microorgan... |
@@ -580,7 +569,6 @@ Name: basalt-schema
 | [misc_param](misc_param.md) | Any other measurement performed or parameter collected that is not listed her... |
 | [mo_mg_per_kg](mo_mg_per_kg.md) | Molybdenum concentration in mg/kg |
 | [mobile_phases](mobile_phases.md) | Description of the mobile phases used in the chromatography method (e |
-| [mode](mode.md) |  |
 | [model](model.md) |  |
 | [modification_method](modification_method.md) | Select the method used to insert your construct into the genome of |
 | [ms_raw_file_type](ms_raw_file_type.md) | the filetype of the mass spectrometry instrument data |
@@ -603,8 +591,8 @@ Name: basalt-schema
 | [non_microb_biomass](non_microb_biomass.md) | Amount of biomass; should include the name for the part of biomass measured, ... |
 | [non_microb_biomass_method](non_microb_biomass_method.md) | Reference or method used in determining biomass |
 | [non_min_nutr_regm](non_min_nutr_regm.md) | Information about treatment involving the exposure of plant to non-mineral nu... |
+| [normalization_method](normalization_method.md) | The strategy used for normalization (equal mass, equal volume, etc |
 | [nucleotide_sequencing_category](nucleotide_sequencing_category.md) | The category of nucleotide sequencing performed (e |
-| [number_of_injections](number_of_injections.md) |  |
 | [orcid](orcid.md) | ORCID identifier of the person |
 | [org_carb](org_carb.md) | Concentration of organic carbon |
 | [org_matter](org_matter.md) | Concentration of organic matter (Unit: mg/L) |
@@ -691,7 +679,6 @@ Name: basalt-schema
 | [priority_order](priority_order.md) | Indicate the run order priority of your samples |
 | [processing_id](processing_id.md) |  |
 | [processing_institution](processing_institution.md) | The institution where the activity took place |
-| [processing_steps](processing_steps.md) |  |
 | [produced_by_ms_run](produced_by_ms_run.md) | a reference to the data generation activity that produced instrument data |
 | [produced_by_sequencing_activity](produced_by_sequencing_activity.md) | Link back to the NucleotideSequencing activity that produced this data |
 | [product_name](product_name.md) | Provide the name of the product used to create the synthetic material |
@@ -705,6 +692,7 @@ Name: basalt-schema
 | [project_status](project_status.md) |  |
 | [propagation](propagation.md) | The type of reproduction from the parent stock |
 | [proposal_abstract](proposal_abstract.md) | The abstract submitted with the research proposal |
+| [protein_assay_type](protein_assay_type.md) | The type of protein assay (Coomassie, BCA, etc |
 | [protocol_link](protocol_link.md) | A link to a protocol that describes the steps and parameters of the activity |
 | [protocol_url](protocol_url.md) | URL pointing to the protocol used in the activity, if applicable |
 | [protocol_version](protocol_version.md) | Version of the protocol used in the activity, if applicable |
@@ -729,7 +717,7 @@ Name: basalt-schema
 | [respiration_co2_c_ug_per_g](respiration_co2_c_ug_per_g.md) | Soil respiration expressed as µg CO₂-C per gram soil |
 | [results_from_ms_processing](results_from_ms_processing.md) | a reference to the mass spec data processing activity that produced this data... |
 | [roi_volume_voxel](roi_volume_voxel.md) |  |
-| [role](role.md) |  |
+| [role](role.md) | The role of the contributor in the study (e |
 | [root_cond](root_cond.md) | Relevant rooting conditions such as field plot size, sowing density, containe... |
 | [root_med_carbon](root_med_carbon.md) | Source of organic carbon in the culture rooting medium |
 | [root_med_macronutr](root_med_macronutr.md) | Measurement of the culture rooting medium macronutrients (NP K Ca Mg S) |
@@ -738,7 +726,6 @@ Name: basalt-schema
 | [root_med_regl](root_med_regl.md) | Growth regulators in the culture rooting medium such as cytokinins, auxins, g... |
 | [root_med_solid](root_med_solid.md) | Specification of the solidifying agent in the culture rooting medium |
 | [root_med_suppl](root_med_suppl.md) | Organic supplements of the culture rooting medium such as vitamins, amino aci... |
-| [rotation](rotation.md) |  |
 | [s3_base_url](s3_base_url.md) |  |
 | [s3_bucket](s3_bucket.md) |  |
 | [s3_key](s3_key.md) | MinIO/S3 object key; required for all data products |
@@ -759,7 +746,6 @@ Name: basalt-schema
 | [sample_processing](sample_processing.md) | A brief description of any processing applied to the sample during or after r... |
 | [sample_start_time](sample_start_time.md) | Time of when the sample collection starts |
 | [sample_type](sample_type.md) | Requires a standardized ontology term to describe what your sample is |
-| [sample_volume](sample_volume.md) |  |
 | [sampled_at_site](sampled_at_site.md) | Reference to the site where the sample was collected |
 | [sampled_during](sampled_during.md) | Reference to the sampling activity during which this sample was collected |
 | [sampled_portion](sampled_portion.md) | The portion of the original sample used in creating this processed sample (e |
@@ -810,6 +796,7 @@ Name: basalt-schema
 | [soluble_inorg_mat](soluble_inorg_mat.md) | concentration of substances such as ammonia, road-salt, sea-salt, cyanide, hy... |
 | [soluble_org_mat](soluble_org_mat.md) | concentration of substances such as urea, fruit sugars, soluble proteins, dru... |
 | [soluble_react_phosp](soluble_react_phosp.md) | Concentration of soluble reactive phosphorus |
+| [source_concentration_mg_per_ml](source_concentration_mg_per_ml.md) | Concentration of the substance before it is added to the experiment,  in mill... |
 | [source_mat_id](source_mat_id.md) | A unique identifier assigned to an original material sample collected or to a... |
 | [source_material](source_material.md) |  |
 | [specific_host](specific_host.md) | If there is a host involved please provide its taxid (or environmental if not... |
@@ -817,8 +804,9 @@ Name: basalt-schema
 | [standing_water_regm](standing_water_regm.md) | Treatment involving an exposure to standing water during a plant's life span;... |
 | [start_date_inc](start_date_inc.md) | Date the incubation was started |
 | [started_at_time](started_at_time.md) |  |
+| [starting_mass_mg](starting_mass_mg.md) | The mass of sample or analyte used in the first step of the process, in milli... |
 | [stationary_phase](stationary_phase.md) | Description of the stationary phase used in the chromatography method (e |
-| [step_number](step_number.md) |  |
+| [step_number](step_number.md) | Integer ordering within a multi-step process for the same analyte |
 | [sterilization_method](sterilization_method.md) | Method used to sterilize the entity (autoclave, filter, UV, etc |
 | [storage_condition](storage_condition.md) | The storage condition of the sample |
 | [storage_condition_other](storage_condition_other.md) | Free-text field for storage conditions when 'storage_condition' is 'other' |
@@ -833,6 +821,8 @@ Name: basalt-schema
 | [strain_type](strain_type.md) | Type of strain/organism (bacterial, fungal, archaeal, etc |
 | [subspecf_gen_lin](subspecf_gen_lin.md) | Information about the genetic distinctness of the sequenced organism below th... |
 | [substance](substance.md) | The name of the substance used in this mobile phase segment |
+| [substance_role](substance_role.md) | The role or function of the substance in the context of its use |
+| [substances_used](substances_used.md) | The substances used in the process |
 | [sulfate](sulfate.md) | Concentration of sulfate in the sample |
 | [sulfate_id](sulfate_id.md) |  |
 | [sulfide](sulfide.md) | Concentration of sulfide in the sample |
@@ -848,7 +838,9 @@ Name: basalt-schema
 | [synth_process](synth_process.md) | Provide the citation or describe the method of synthesis |
 | [synth_reagents](synth_reagents.md) | The reagents used in the material synthesis |
 | [synth_start_date](synth_start_date.md) | Provide the date the sample was transferred to the synthetic environment |
+| [target_mass_mg](target_mass_mg.md) | Target volume of analyte per sample after normalization,  in milligrams, if a... |
 | [target_strain](target_strain.md) | Target strain identifier for purity checks |
+| [target_vol_ul](target_vol_ul.md) | Target volume of analyte per sample after normalization,  in microliters, if ... |
 | [taxonomy_id](taxonomy_id.md) | NCBI taxon ID for the organism |
 | [technical_reps](technical_reps.md) | Number of technical replicates for the sample |
 | [temp](temp.md) | Temperature of the sample at the time of sampling |
@@ -893,7 +885,6 @@ Name: basalt-schema
 | [total_organic_carbon_avg](total_organic_carbon_avg.md) |  |
 | [total_organic_carbon_id](total_organic_carbon_id.md) |  |
 | [total_pore_volume](total_pore_volume.md) |  |
-| [total_projections_collected](total_projections_collected.md) |  |
 | [total_sulfur_id](total_sulfur_id.md) |  |
 | [trait](trait.md) | Trait category for the organism |
 | [treatment](treatment.md) | Experimental treatment (e |
@@ -909,7 +900,7 @@ Name: basalt-schema
 | [uses_chromatography](uses_chromatography.md) | Points to a record of the chromatography used to introduce samples for the ma... |
 | [uses_ms_configuration](uses_ms_configuration.md) | Points to a record of the configuration used for the mass spectrometry run |
 | [uses_raw_ms_data](uses_raw_ms_data.md) | The raw data file, output by a mass spectrometer, that was analyzed in  this ... |
-| [uses_sample](uses_sample.md) |  |
+| [uses_sample](uses_sample.md) | The starting sample that is being processed or analyzed |
 | [v_mg_per_kg](v_mg_per_kg.md) | Vanadium concentration in mg/kg |
 | [value](value.md) | Measured value (absorbance, OD, fluorescence) |
 | [values](values.md) |  |
@@ -917,6 +908,7 @@ Name: basalt-schema
 | [version](version.md) | String indicating the version of the software or protocol |
 | [volatile_org_comp](volatile_org_comp.md) | Volatile organic compounds are organic chemicals that have a high vapour pres... |
 | [volume_ml](volume_ml.md) | Volume of the entity in milliliters |
+| [volume_mL](volume_mL.md) | The volume of the portion of the substance, in milliliters |
 | [volume_uL](volume_uL.md) | Volume of the entity in microliters |
 | [voxel_size](voxel_size.md) |  |
 | [wastewater_type](wastewater_type.md) | the origin of wastewater such as human waste rainfall storm drains etc |
@@ -925,7 +917,6 @@ Name: basalt-schema
 | [water_current](water_current.md) | Measurement of magnitude and direction of flow within a fluid |
 | [water_temp_regm](water_temp_regm.md) | Information about treatment involving an exposure to water with varying degre... |
 | [watering_regm](watering_regm.md) | Information about treatment involving an exposure to watering frequencies, tr... |
-| [wavelength](wavelength.md) |  |
 | [wavelength_nm](wavelength_nm.md) | Measurement wavelength in nanometres (e |
 | [weather](weather.md) | The state of the atmosphere at a given time and place with respect to variabl... |
 | [websites](websites.md) |  |
@@ -937,7 +928,6 @@ Name: basalt-schema
 | [within_17_oz](within_17_oz.md) | Indicate if samples were collected during the local afternoon time |
 | [workflow_id](workflow_id.md) |  |
 | [workflow_steps](workflow_steps.md) | Per-run workflow parameters |
-| [x_ray_power](x_ray_power.md) |  |
 | [y_mg_per_kg](y_mg_per_kg.md) | Yttrium concentration in mg/kg |
 | [zinc_id](zinc_id.md) |  |
 | [zn_mg_per_kg](zn_mg_per_kg.md) | Zinc concentration in mg/kg |
@@ -957,6 +947,7 @@ Name: basalt-schema
 | [BioticRelationshipEnum](BioticRelationshipEnum.md) | Sample biotic relationships |
 | [CalibrationTargetEnum](CalibrationTargetEnum.md) |  |
 | [CardinalDirectionEnum](CardinalDirectionEnum.md) |  |
+| [ChemicalConversionCategoryEnum](ChemicalConversionCategoryEnum.md) |  |
 | [ChemicalEntityEnum](ChemicalEntityEnum.md) | Common names or identifiers for chemical entities |
 | [ChromatographyCategoryEnum](ChromatographyCategoryEnum.md) |  |
 | [ColorCodeEnum](ColorCodeEnum.md) |  |
@@ -964,11 +955,14 @@ Name: basalt-schema
 | [ContainerTypeEnum](ContainerTypeEnum.md) |  |
 | [CoreSectionEnum](CoreSectionEnum.md) | Sections of a core sample |
 | [DeviceTypeEnum](DeviceTypeEnum.md) |  |
+| [DigestionMethodEnum](DigestionMethodEnum.md) | Named protein digestion methods used in sample preparation |
 | [DoiCategoryEnum](DoiCategoryEnum.md) | The authority, or organization, the DOI is associated with |
 | [DoiProviderEnum](DoiProviderEnum.md) | The authority, or organization, the DOI is associated with |
 | [DrainageClassEnum](DrainageClassEnum.md) | Soil drainage classifications |
 | [EluentIntroductionEnum](EluentIntroductionEnum.md) | The method used to introduce the eluent into the mass spectrometer |
+| [EnrichmentTypeEnum](EnrichmentTypeEnum.md) | Type of targeted peptide or protein enrichment performed |
 | [ExecutionResourceEnum](ExecutionResourceEnum.md) | The computing resource or facility where the processing was executed |
+| [ExtractionMethodEnum](ExtractionMethodEnum.md) | A short name for the extraction method applied to the sample |
 | [FAOClassEnum](FAOClassEnum.md) | FAO soil classification system |
 | [FileTypeEnum](FileTypeEnum.md) |  |
 | [FormulationEnum](FormulationEnum.md) | Method used to formulate media |
@@ -980,6 +974,7 @@ Name: basalt-schema
 | [InstrumentAltIdProviderEnum](InstrumentAltIdProviderEnum.md) |  |
 | [IntendedTraitEnum](IntendedTraitEnum.md) |  |
 | [IonizationSourceEnum](IonizationSourceEnum.md) |  |
+| [LabelingMethodEnum](LabelingMethodEnum.md) | The chemical labeling strategy applied to peptides or proteins |
 | [LandUseEnum](LandUseEnum.md) | Land use classifications |
 | [MassAnalyzerEnum](MassAnalyzerEnum.md) |  |
 | [MassSpecRawFileTypeEnum](MassSpecRawFileTypeEnum.md) |  |
@@ -989,12 +984,12 @@ Name: basalt-schema
 | [MediaTypeEnum](MediaTypeEnum.md) | Purpose/context of the media preparation |
 | [MetagenomicsSteps](MetagenomicsSteps.md) |  |
 | [MetaproteomicsAnalysisCategoryEnum](MetaproteomicsAnalysisCategoryEnum.md) | The category of metaproteomics analysis being performed |
-| [MethodNameEnum](MethodNameEnum.md) |  |
 | [ModelEnum](ModelEnum.md) |  |
 | [ModificationMethodEnum](ModificationMethodEnum.md) | Methods used to introduce genetic modifications into organisms |
 | [MONetCoreGroupEnum](MONetCoreGroupEnum.md) | Core groups when sampling according to the MONet sampling protocol |
 | [NEONDomainEnum](NEONDomainEnum.md) | NEON ecological domains |
 | [NexusRoleEnum](NexusRoleEnum.md) |  |
+| [NormalizationMethodEnum](NormalizationMethodEnum.md) | The strategy used to normalize sample amounts or intensities |
 | [NucleotideSequencingEnum](NucleotideSequencingEnum.md) |  |
 | [OxygenStatusEnum](OxygenStatusEnum.md) | Oxygen status of samples |
 | [PassFailEnum](PassFailEnum.md) | Result/status for a process (e |
@@ -1006,10 +1001,9 @@ Name: basalt-schema
 | [ProductMeasureType](ProductMeasureType.md) |  |
 | [ProfilePositionEnum](ProfilePositionEnum.md) | Soil profile positions |
 | [ProjectStatusEnum](ProjectStatusEnum.md) |  |
-| [RouteMethodEnum](RouteMethodEnum.md) |  |
+| [ProteinAssayTypeEnum](ProteinAssayTypeEnum.md) | Type of protein quantification assay performed |
 | [SampleBaseType](SampleBaseType.md) | Base types for sample entities |
 | [SamplePortionEnum](SamplePortionEnum.md) |  |
-| [SampleRole](SampleRole.md) |  |
 | [SampleStoreTempEnum](SampleStoreTempEnum.md) | Sample storage temperature conditions |
 | [SampleType](SampleType.md) | Types of samples that can be collected |
 | [SamplingActivityTypeEnum](SamplingActivityTypeEnum.md) | Types of sampling activities |
@@ -1022,6 +1016,7 @@ Name: basalt-schema
 | [SterilizationMethodEnum](SterilizationMethodEnum.md) | Method used to sterilize media or other entities |
 | [StorageConditionEnum](StorageConditionEnum.md) | Sample storage conditions |
 | [StrainTypeEnum](StrainTypeEnum.md) | Types of microbial strains/organisms |
+| [SubstanceRoleEnum](SubstanceRoleEnum.md) | The role or function of the substance in the context of its use |
 | [SyntheticEnvironmentEnum](SyntheticEnvironmentEnum.md) |  |
 | [TidalStageEnum](TidalStageEnum.md) |  |
 | [TillageEnum](TillageEnum.md) | Tillage methods |

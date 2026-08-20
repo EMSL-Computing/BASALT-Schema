@@ -22,8 +22,9 @@ Alias: duration_min
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ChromatographyConfiguration](ChromatographyConfiguration.md) | Configuration and settings for a chromatography run |  no  |
 | [MobilePhaseSegment](MobilePhaseSegment.md) | A segment of the mobile phase used in chromatography during mass spectrometry |  no  |
+| [ChemicalConversionProcess](ChemicalConversionProcess.md) | A chemical conversion process used in sample preparation |  no  |
+| [ChromatographyConfiguration](ChromatographyConfiguration.md) | Configuration and settings for a chromatography run |  no  |
 
 
 
@@ -37,7 +38,7 @@ Alias: duration_min
 | Property | Value |
 | --- | --- |
 | Range | [Float](Float.md) |
-| Domain Of | [ChromatographyConfiguration](ChromatographyConfiguration.md), [MobilePhaseSegment](MobilePhaseSegment.md) |
+| Domain Of | [ChromatographyConfiguration](ChromatographyConfiguration.md), [MobilePhaseSegment](MobilePhaseSegment.md), [ChemicalConversionProcess](ChemicalConversionProcess.md) |
 
 ### Cardinality and Requirements
 
@@ -89,6 +90,7 @@ alias: duration_min
 domain_of:
 - ChromatographyConfiguration
 - MobilePhaseSegment
+- ChemicalConversionProcess
 range: float
 
 ```

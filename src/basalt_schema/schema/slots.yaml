@@ -27,6 +27,14 @@ slots:
   # id: is left as an attribute with range: uuid and identifier: true
   # everywhere, for now, for (some kind of database reason).
 
+  acquisition_end_time:
+    description: The time that data collection ended for this activity.
+    range: datetime
+
+  acquisition_start_time:
+    description: The time that data collection started for this activity.
+    range: datetime
+
   acquisition_strategy:
     range: MassSpectrometryAcquisitionStrategyEnum
     description: The acquisition strategy used in the mass spectrometry run.
@@ -113,11 +121,11 @@ slots:
   analyte_category:
     description: omics type for easier search, optional
     range: AnalyteCategoryEnum
-
-  analytic:
-    range: string
-    required: true
-    todos: what does this mean
+  
+  analyte_id:
+    description: |-
+      FK reference to a ProcessedSample representing the substance analyzed in this activity.
+    range: ProcessedSample
 
   ances_data:
     description: Information about either pedigree or other ancestral information description
@@ -1051,6 +1059,23 @@ slots:
   iat:
     description: Ion accumulation time setting used in the mass spectrometry method.
     range: double
+  
+  in_protocol:
+    description: >-
+      The SampleProcessingProtocol (the recipe) that this step follows. Type-level,
+      not instance-level: every execution of the same SOP points at the same record,
+      so this does NOT identify a particular chain. Use in_run for that. A chain may
+      mix protocols, so this is recorded per step rather than per run.
+    range: SampleProcessingProtocol
+
+  in_run:
+    description: >-
+      The SampleProcessingRun (one concrete execution) that this edge belongs to.
+      All ProcessingSampleLink rows in one chain share this value, which is what makes
+      "give me every step of this chain" a single indexed query and what anchors
+      step_number. Optional: a standalone StandardSampleProcessing needs no run,
+      because its processing_id already identifies the whole group.
+    range: SampleProcessingRun
 
   incubation_time_hours:
     description: Incubation duration in hours
@@ -1120,6 +1145,14 @@ slots:
   inspection_method:
     description: Method used to inspect or verify purity (visual, sequencing, etc.)
     range: string
+
+  instrument_operator:
+    description: User who operated the instrument
+    range: PersonValue
+
+  instrument_used:
+    description: Instrument used for the measurement
+    range: Instrument
 
   internal_calibration:
     description: Whether internal calibration was used
@@ -1219,11 +1252,6 @@ slots:
     description: Reference or method used in determining the local soil classification
     range: string
     title: local soil classification method
-
-  location:
-    range: string
-    required: true
-    todos: used on many method classes. no description. what was this meant to mean?
 
   longitude:
     title: longitude
@@ -1338,10 +1366,6 @@ slots:
     range: string
     title: methane
 
-  method:
-    range: string
-    todos: what does this mean
-
   method_development:
     description: If your samples are TEST sample ONLY, please provide information on
       what you're hoping this test will resolve.
@@ -1353,20 +1377,10 @@ slots:
     range: MetagenomicsSteps
     required: false
 
-  micro_biomass_C_meth:
-    description: Reference or method used in determining microbial biomass
-    range: string
-    title: microbial biomass carbon method
-
   micro_biomass_c_meth:
     description: Reference or method used in determining microbial biomass
     range: string
     title: microbial biomass carbon method
-
-  micro_biomass_N_meth:
-    description: Reference or method used in determining microbial biomass nitrogen
-    range: string
-    title: microbial biomass nitrogen method
 
   micro_biomass_n_meth:
     description: Reference or method used in determining microbial biomass nitrogen
@@ -2484,6 +2498,12 @@ slots:
   stationary_phase:
     description: Description of the stationary phase used in the chromatography method (e.g., column type)
     range: string
+  
+  step_number:
+    description: |-
+      Integer ordering within a multi-step process for the same analyte.
+      Lower = earlier in process.
+    range: integer
 
   sterilization_method:
     description: Method used to sterilize the entity (autoclave, filter, UV, etc.)
@@ -2873,7 +2893,7 @@ slots:
     description: >-
       The raw data file, output by a mass spectrometer, that was analyzed in 
       this data processing workflow run.
-
+  
   version:
     description: String indicating the version of the software or protocol
     range: string

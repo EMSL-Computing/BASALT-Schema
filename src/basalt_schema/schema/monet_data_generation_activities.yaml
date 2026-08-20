@@ -1,8 +1,9 @@
-id: https://emsl-computing.github.io/BASALT-Schema/methods
-name: basalt-schema-methods
-title: BASALT Schema - Methods
+id: https://EMSL-Computing.github.io/BASALT-Schema/monet-data-generation-activities
+name: basalt-monet-data-generation-activities
+title: BASALT Schema - Data Generation Activities for MONet Campaigns
 description: |-
-  Enumerated values used throughout the BASALT Schema
+  Method-specific subclasses of DataGenerationActivity to represent the various analysis methods used in MONet campaigns.
+  Most classes correspond to a DataProduct in products.yaml.
 license: MIT
 
 prefixes:
@@ -17,26 +18,25 @@ imports:
 
 classes:
 
-######## existing "method" classes grouped under abstract parent class
-  Method:
-    abstract: true
-    slots:
-      - analytic
+# Inherited from DataGenerationActivity: name, description, sequence_order, protocol_url, protocol_version,
+# id, analyte_id, acquisition_start_time, acquisition_end_time, instrument_id, instrument_operator_id
 
-  BulkDensityMethod:
-    is_a: Method
+# One class per DataProduct in products.yaml.
+# These were formerly all "Method" classes, never populated.
+
+  BulkDensityDataGenerationActivity:
+    is_a: DataGenerationActivity
     slots:
     attributes:
 
-  ElementalAnalysisMethod:
-    is_a: Method
+  ElementalAnalysisDataGenerationActivity:
+    is_a: DataGenerationActivity
     slots:
     attributes:
 
-  EnzymeActivityMethod:
-    is_a: Method
+  EnzymeActivityDataGenerationActivity:
+    is_a: DataGenerationActivity
     slots:
-      - location
     attributes:
       incubation_temp_c:
         range: double
@@ -45,26 +45,22 @@ classes:
       wavelength:
         range: double
 
-  GravimetricWaterContentMethod:
-    is_a: Method
+  GravimetricWaterContentDataGenerationActivity:
+    is_a: DataGenerationActivity
     slots:
-      - location
     attributes:
 
-  HydraulicPropertiesMethod:
-    is_a: Method
+  HydraulicPropertiesDataGenerationActivity:
+    is_a: DataGenerationActivity
     slots:
-      - location
     attributes:
       fitting_model:
         range: string
         required: true
   
-  KuoMethod:
-    is_a: Method
+  KuoDataGenerationActivity:
+    is_a: DataGenerationActivity
     slots:
-      - location
-      - method
     attributes:
       detection_limit:
         range: string
@@ -72,10 +68,9 @@ classes:
       wavelength:
         range: string
 
-  MicrobialBiomassMethod:
-    is_a: Method
+  MicrobialBiomassDataGenerationActivity:
+    is_a: DataGenerationActivity
     slots:
-      - location
     attributes:
       detector:
         range: string
@@ -95,24 +90,25 @@ classes:
         range: string
         required: true
   
-  PH_Method:
-    is_a: Method
+  PH_DataGenerationActivity:
+    is_a: DataGenerationActivity
     slots:
-      - location
     attributes:
       calibration:
         range: string
         required: true
   
-  RespirationMethod:
-    is_a: Method
+  RespirationDataGenerationActivity:
+    is_a: DataGenerationActivity
+    description: |-
+      Data generation activity for soil respiration analysis.
+      Captures CO2-C efflux measured per gram of soil.
     slots:
     attributes:
   
-  TOC_TN_Method:
-    is_a: Method
+  TOC_TN_DataGenerationActivity:
+    is_a: DataGenerationActivity
     slots:
-      - location
     attributes:
       column:
         range: string
@@ -133,17 +129,14 @@ classes:
       check_standard_spacing:
         range: string
   
-  TextureMethod:
-    is_a: Method
+  TextureDataGenerationActivity:
+    is_a: DataGenerationActivity
     attributes:
     slots:
-      - location
-      - method
   
-  XrayComputedTomographyMethod:
-    is_a: Method
+  XrayComputedTomographyDataGenerationActivity:
+    is_a: DataGenerationActivity
     slots:
-      - location
     attributes:
       x_ray_power:
         range: string

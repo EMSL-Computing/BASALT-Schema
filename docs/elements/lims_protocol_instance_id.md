@@ -23,6 +23,10 @@ Alias: lims_protocol_instance_id
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md) | Instrument configuration and setup for a mass spectrometry run |  no  |
+| [SolidPhaseExtractionProcess](SolidPhaseExtractionProcess.md) | A solid phase extraction (SPE) step (e |  no  |
+| [FractionationProcess](FractionationProcess.md) | A fractionation process (e |  no  |
+| [ProteinQuantification](ProteinQuantification.md) | A protein quantification assay (e |  no  |
+| [ResuspensionProcess](ResuspensionProcess.md) | Resuspension of an analyte (e |  no  |
 
 
 
@@ -36,7 +40,7 @@ Alias: lims_protocol_instance_id
 | Property | Value |
 | --- | --- |
 | Range | [Integer](Integer.md) |
-| Domain Of | [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md) |
+| Domain Of | [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md), [FractionationProcess](FractionationProcess.md), [ProteinQuantification](ProteinQuantification.md), [ResuspensionProcess](ResuspensionProcess.md), [SolidPhaseExtractionProcess](SolidPhaseExtractionProcess.md) |
 
 ### Cardinality and Requirements
 
@@ -88,6 +92,10 @@ rank: 1000
 alias: lims_protocol_instance_id
 domain_of:
 - MassSpectrometryConfiguration
+- FractionationProcess
+- ProteinQuantification
+- ResuspensionProcess
+- SolidPhaseExtractionProcess
 range: integer
 
 ```

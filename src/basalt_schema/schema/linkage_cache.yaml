@@ -8,12 +8,18 @@ description: |-
   enabling fast provenance queries without live recursive CTE traversal.
 
   Population: nightly refresh job using recursive CTE across:
-    - ProcessingSampleLink (sample -> processed sample chains)
+    - ProcessingSampleLink (sample -> processed sample chains). Hops are formed by
+      self-joining the table on processing_id: an input_sample row joined to an
+      output_sample row for the same activity yields one (ancestor, descendant) edge.
+      This is the only source of sample-processing edges; no scalar FK duplicates them.
     - DataProcessingActivity.parent_workflow_id (workflow chains)
     - DataGenerationActivity (processed sample -> workflow link)
     - ProcessedData.workflow_id (workflow -> product link)
 
-  This file is imported by basalt_schema.yaml (import added in MR2).
+  Relationship to SampleProcessingRun: the run id groups the steps of one chain and is
+  the normalized truth; this table is the query accelerator derived from it. Use in_run
+  when you want the steps themselves, and LinkageCache when you only want the endpoints
+  (which starting sample produced which final analyte) without walking the chain.
 license: MIT
 
 prefixes:
@@ -38,8 +44,12 @@ slots: # not touching these for now
     description: Class/table name of the descendant node (same vocabulary as ancestor_type)
     range: string
 
-  depth:
-    description: Number of hops between ancestor and descendant (1 = direct parent)
+  hop_depth:
+    description: >-
+      Number of hops between ancestor and descendant (1 = direct parent).
+      Named hop_depth rather than depth because slots.yaml already defines a global
+      "depth" slot (MIxS soil/sediment sampling depth, a string with a metres pattern);
+      that definition wins on import and would silently type this column as TEXT.
     range: integer
     required: true
 
@@ -56,7 +66,7 @@ classes:
   LinkageCache:
     description: |-
       Pre-computed provenance closure table.
-      Stores every (ancestor, descendant) pair across all chain types with depth.
+      Stores every (ancestor, descendant) pair across all chain types with hop_depth.
       Refreshed on a schedule; not real-time (acceptable for daily batch cadence).
 
       DDL:
@@ -66,7 +76,7 @@ classes:
           ancestor_type    VARCHAR(64),    -- 'sample' | 'processedSample' |
                                           --  'DataProcessingActivity' | 'processedData'
           descendant_type  VARCHAR(64),
-          depth            INTEGER NOT NULL,  -- 1 = direct parent
+          hop_depth        INTEGER NOT NULL,  -- 1 = direct parent
           path             TEXT,
           computed_at      TIMESTAMP DEFAULT now(),
           PRIMARY KEY (ancestor_id, descendant_id)
@@ -86,7 +96,7 @@ classes:
     slots:
       - ancestor_type    # class/table name of ancestor node
       - descendant_type  # class/table name of descendant node
-      - depth            # required; 1 = direct parent
+      - hop_depth        # required; 1 = direct parent
       - path             # optional debug chain string
       - computed_at      # refresh timestamp
     attributes:

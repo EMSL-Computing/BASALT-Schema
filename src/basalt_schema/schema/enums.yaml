@@ -871,11 +871,6 @@ enums:
         description: A metaproteomics analysis matched to an in silico generated metagenome.
       WITHDRAWN:
 
-  MethodNameEnum:
-    permissible_values:
-      MAOM:
-      WOEM:
-
   ModelEnum:
     permissible_values:
       exploris_21T:
@@ -1428,28 +1423,6 @@ enums:
       ACCEPTED:
       WITHDRAWN:
 
-  RouteMethodEnum:
-    permissible_values:
-      analysis_activity:
-      lcms_metabolomics_method:
-      fticr_acquisition_method:
-      gravimetric_water_content_method:
-      ph_method:
-      hydraulic_properties_method:
-      microbial_biomass_method:
-      xray_computed_tomography_method:
-      REGEN:
-      KUO:
-      respiration_method:
-      texture_method:
-      enzyme_activity_method:
-      elemental_analysis_method:
-      toc_tn_method:
-      bulk_density_method:
-      metagenomics_method:
-      xrf_analysis:
-      xrd_analysis:
-
   SampleBaseType:
     description: Base types for sample entities
     permissible_values:
@@ -1494,9 +1467,18 @@ enums:
         title: Methanol layer
 
   SampleRole:
+    description: >-
+      The direction in which a Sample participates in a SampleProcessing activity.
+      Recorded on ProcessingSampleLink, which is the authoritative record of what
+      each processing step consumed and produced.
     permissible_values:
       input_sample:
+        text: input_sample
+        description: The sample was consumed by the processing activity.
       output_sample:
+        text: output_sample
+        description: >-
+          The sample (always a ProcessedSample) was produced by the processing activity.
 
   SampleStoreTempEnum:
     description: Sample storage temperature conditions

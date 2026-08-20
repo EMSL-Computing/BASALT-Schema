@@ -22,7 +22,6 @@ Alias: column
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TOCTNMethod](TOCTNMethod.md) |  |  no  |
 | [ChromatographyConfiguration](ChromatographyConfiguration.md) | Configuration and settings for a chromatography run |  no  |
 
 
@@ -37,7 +36,7 @@ Alias: column
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [ChromatographyConfiguration](ChromatographyConfiguration.md), [TOCTNMethod](TOCTNMethod.md) |
+| Domain Of | [ChromatographyConfiguration](ChromatographyConfiguration.md) |
 
 ### Cardinality and Requirements
 
@@ -88,7 +87,6 @@ rank: 1000
 alias: column
 domain_of:
 - ChromatographyConfiguration
-- TOC_TN_Method
 range: string
 
 ```

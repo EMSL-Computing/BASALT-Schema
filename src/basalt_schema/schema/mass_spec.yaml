@@ -91,6 +91,11 @@ classes:
       - uses_ms_configuration # required
       - uses_chromatography # optional
       - analyte_category
+    slot_usage:
+      acquisition_start_time:
+        required: true
+      acquisition_end_time:
+        required: true
 
 
   # ============================================================================

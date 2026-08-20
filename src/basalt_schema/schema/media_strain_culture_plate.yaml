@@ -51,34 +51,6 @@ classes:
 
 
   # ============================================================================
-  # labProcessingActivity   new abstract parent of sampleProcessing
-  # ============================================================================
-  LabProcessingActivity:
-    abstract: true
-    description: |-
-      [NEW ABSTRACT CLASS] Higher-level abstract base for any activity that
-      transforms or creates physical lab materials.
-
-      sampleProcessing inherits from this via is_a.  This class provides the
-      common identity layer, allowing future extensions (e.g. non-sample
-      consuming activities) without forcing them into the sampleProcessing branch.
-
-      NOTE: In the live schema, sampleProcessing should gain
-        is_a: labProcessingActivity
-      and its existing id attribute can be retained or removed (inherited).
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-        required: true
-      name:
-        description: Human-readable name for the activity
-        range: string
-      description:
-        description: Free-text description of the activity
-        range: string
-
-  # ============================================================================
   # MediaPreparation   concrete sampleProcessing (replaces MediaCreation)
   # ============================================================================
   MediaPreparation:
@@ -116,15 +88,15 @@ classes:
       - media range?
 
   # ============================================================================
-  # CultureGrowth   abstract sampleProcessing subclass
+  # CultureGrowth sampleProcessing subclass
   # ============================================================================
   CultureGrowth:
     is_a: SampleProcessing
+    abstract: true
     mixins:
       - HasIncubationConditions
     description: |-
       Abstract activity for growing cultures from samples or other cultures.
-      
       Concrete subclasses: StrainPurity, StockCulturePreparation, 
       PreCultureGrowth, ExperimentalCulture.
     slots:
@@ -223,8 +195,6 @@ classes:
       - setup_instrument
       - sealing_method
       - well_metadata
-    # Inherited from sampleProcessing: id, analysis_type, method_name,
-    #   processing_steps, url, version
     # Inherited from HasIncubationConditions: temperature_celsius, agitation_speed_rpm,
     #   oxygen_status
 
