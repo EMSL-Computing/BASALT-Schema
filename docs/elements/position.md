@@ -18,9 +18,9 @@ Alias: position
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [WellMetadata](WellMetadata.md) | Base structure for per-well metadata in plate setup |  no  |
-| [AMP2WellMetadata](AMP2WellMetadata.md) | AMP2-specific per-well metadata |  no  |
 | [WellReading](WellReading.md) | Per-well measurement data |  no  |
 | [EcoplateWellMetadata](EcoplateWellMetadata.md) | Ecoplate-specific per-well metadata |  no  |
+| [AMP2WellMetadata](AMP2WellMetadata.md) | AMP2-specific per-well metadata |  no  |
 
 
 

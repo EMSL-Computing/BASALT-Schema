@@ -22,14 +22,14 @@ Alias: genetic_mod
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 | [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
 | [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 

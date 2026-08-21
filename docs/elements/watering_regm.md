@@ -22,16 +22,16 @@ Alias: watering_regm
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
-| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 
 
 

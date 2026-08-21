@@ -22,8 +22,8 @@ Alias: initiation_date_plant
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  yes  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  yes  |
+| [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  yes  |
 
 
 
