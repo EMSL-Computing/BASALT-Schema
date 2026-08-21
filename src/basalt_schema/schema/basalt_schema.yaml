@@ -427,9 +427,6 @@ classes:
       id:
         identifier: true
         range: uuid
-      sample_id:
-        range: Sample
-        required: true
       processing_id:
         range: SampleProcessing
         required: true
@@ -440,12 +437,12 @@ classes:
         range: SampleRole
         required: true
         description: >-
-          Whether sample_base_id was consumed by (input_sample) or produced by
+          Whether sample_id was consumed by (input_sample) or produced by
           (output_sample) processing_id.
     unique_keys:
       unique_sample_process_step:
         unique_key_slots:
-          - sample_base_id
+          - sample_id
           - processing_id
           - step_number
           - role

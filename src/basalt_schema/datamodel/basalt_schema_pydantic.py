@@ -2928,13 +2928,12 @@ class AMP2WellMetadata(WellMetadata):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate'})
 
+    sample_id: Optional[str] = Field(default=None, description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata', 'MetagenomicsProduct', 'ProcessedData']} })
     media_ref: Optional[str] = Field(default=None, description="""FK to the prepared media processedSample used in this well.
 NULL -> fall back to plate-level AMP2PlateSetupActivity.media_ref.
 Non-null -> this well uses a different media batch.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2PlateSetupActivity', 'AMP2WellMetadata']} })
     media_volume_ul: float = Field(default=..., description="""Volume of media added to this well (microlitres)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata', 'EcoplateWellMetadata']} })
     inoculum_volume_ul: float = Field(default=..., description="""Volume of inoculum added (0 for blanks)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata']} })
-    sample_id: Optional[str] = Field(default=None, description="""Optional FK to the specific sample in this well, if wells contain
-different samples.  NULL if all wells use the same inoculum.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata', 'MetagenomicsProduct', 'ProcessedData']} })
     treatments: Optional[list[str]] = Field(default=None, description="""Per-well treatments if applicable (e.g. different mineral concentrations).
 NULL for uniform-treatment plates.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata']} })
     position: str = Field(default=..., description="""Well position (e.g. \"A01\", \"H12\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading']} })
@@ -34039,8 +34038,8 @@ class ProcessingSampleLink(ConfiguredBaseModel):
     to disagree.
 
     Direction is carried by role:
-      role = input_sample   ->  sample_base_id was consumed by processing_id
-      role = output_sample  ->  sample_base_id (a ProcessedSample) was produced by it
+      role = input_sample   ->  sample_id was consumed by processing_id
+      role = output_sample  ->  sample_id (a ProcessedSample) was produced by it
 
     A minimal step is therefore two rows: one input edge and one output edge.
     Because role is per-row rather than per-activity, fan-in and fan-out are
@@ -34058,7 +34057,7 @@ class ProcessingSampleLink(ConfiguredBaseModel):
                       'validation rule.'],
          'from_schema': 'https://emsl-computing.github.io/BASALT-Schema',
          'unique_keys': {'unique_sample_process_step': {'unique_key_name': 'unique_sample_process_step',
-                                                        'unique_key_slots': ['sample_base_id',
+                                                        'unique_key_slots': ['sample_id',
                                                                              'processing_id',
                                                                              'step_number',
                                                                              'role']}}})
@@ -34136,10 +34135,9 @@ class ProcessingSampleLink(ConfiguredBaseModel):
                        'QuantityValue',
                        'ConditioningValue',
                        'zipDownload']} })
-    sample_base_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink']} })
     processing_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink']} })
     step_number: int = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink']} })
-    role: SampleRole = Field(default=..., description="""Whether sample_base_id was consumed by (input_sample) or produced by (output_sample) processing_id.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink', 'ProjectParticipant']} })
+    role: SampleRole = Field(default=..., description="""Whether sample_id was consumed by (input_sample) or produced by (output_sample) processing_id.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink', 'ProjectParticipant']} })
 
 
 class InstrumentCustodian(ConfiguredBaseModel):

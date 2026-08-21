@@ -368,6 +368,8 @@ classes:
       AMP2-specific per-well metadata.
       Minimal   media composition comes from the Media entity referenced via
       the activity's media_ref slot.  Per-well data is volumes and replicate info.
+    slots:
+      - sample_id
     attributes:
       media_ref:
         description: |-
@@ -384,11 +386,6 @@ classes:
         description: Volume of inoculum added (0 for blanks)
         range: float
         required: true
-      sample_id:
-        description: |-
-          Optional FK to the specific sample in this well, if wells contain
-          different samples.  NULL if all wells use the same inoculum.
-        range: string
         # Montana: sample_id (on WellDetails)
       treatments:
         description: |-
