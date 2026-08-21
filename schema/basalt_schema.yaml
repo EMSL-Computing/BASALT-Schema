@@ -23171,7 +23171,7 @@ classes:
     class_uri: basalt_schema:ZipDownload
 metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
-source_file_date: '2026-08-18T17:51:30'
+source_file_date: '2026-08-21T18:47:24'
 source_file_size: 17150
-generation_date: '2026-08-18T17:51:39'
+generation_date: '2026-08-21T18:47:33'
 
