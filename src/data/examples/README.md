@@ -1,6 +1,6 @@
-# MONet Analysis API Schema Examples
+# BASALT Schema Examples
 
-This directory contains example YAML files demonstrating the usage of the LinkML-based MONet Analysis API schema.
+This directory contains example YAML files demonstrating the usage of the LinkML-based BASALT Schema.
 
 ## Valid Examples
 
@@ -13,6 +13,25 @@ This directory contains example YAML files demonstrating the usage of the LinkML
 ### Complete Database Example
 
 - **`complete-database-001.yaml`** - Full database structure showing samples, processed samples, and site metadata working together
+
+### AMP2 Workflow Example
+
+- **`amp2-full-workflow-002.yaml`** - Simulated end-to-end AMP2 dataset: 15
+  `AMP2UserSample` records mapped many-to-one onto 8 `organism` records, each
+  carried through `StrainPurity` → `StockCulturePreparation` →
+  `PreCultureGrowth` → `ExperimentalCulture` → `AMP2PlateSetupActivity`, then
+  read for OD600 every 2 h for 24 h across three plates (two 96-well, one
+  384-well). Includes controls, per-well media overrides, per-well treatments,
+  and realistic read failures.
+- **`amp2-full-workflow-002/`** - The same data as one CSV per table, plus a
+  sample-identity crosswalk and the deterministic generator that produced both.
+  See that directory's `README.md`, which explains where the sample ID lives
+  relative to the organism ID and the plate well.
+
+The older `invalid/amp2-vanilla-001` and `invalid/amp2-complex-001` bundles
+predate the `organism` class (they still use `Strain`) and carry intentional
+schema violations; `amp2-full-workflow-002` supersedes them for valid-data
+ingestion testing.
 
 ## Key Features Demonstrated
 
@@ -55,7 +74,7 @@ These examples can be used to:
 After generating the LinkML models, validate examples with:
 
 ```bash
-poetry run linkml-validate --schema src/analysis_api_schema/schema/analysis_api_schema.yaml src/data/examples/valid/sample-001.yaml
+poetry run linkml-validate --schema src/basalt_schema/schema/basalt_schema.yaml src/data/examples/valid/sample-001.yaml
 ```
 
 ## Schema Generation

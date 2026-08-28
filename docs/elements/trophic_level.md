@@ -11,7 +11,7 @@ _be a range of producers._
 
 
 
-URI: [analysis_api_schema:trophic_level](https://w3id.org/MONet/analysis-api-schema/trophic_level)
+URI: [basalt_schema:trophic_level](https://emsl-computing.github.io/BASALT-Schema/elements/trophic_level)
 Alias: trophic_level
 
 <!-- no inheritance hierarchy -->
@@ -24,11 +24,11 @@ Alias: trophic_level
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  yes  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  yes  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 
 
 
@@ -42,7 +42,7 @@ Alias: trophic_level
 | Property | Value |
 | --- | --- |
 | Range | [TrophicLevelEnum](TrophicLevelEnum.md) |
-| Domain Of | [CultureEnvironmentalSample](CultureEnvironmentalSample.md), [MixedCultureSample](MixedCultureSample.md), [OtherUndescribedSample](OtherUndescribedSample.md), [PureCultureSample](PureCultureSample.md), [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md), [CultureEnvironmentalSample](CultureEnvironmentalSample.md), [MixedCultureSample](MixedCultureSample.md), [OtherUndescribedSample](OtherUndescribedSample.md), [PureCultureSample](PureCultureSample.md) |
 
 ### Cardinality and Requirements
 
@@ -67,7 +67,7 @@ Alias: trophic_level
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -76,8 +76,8 @@ Alias: trophic_level
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:trophic_level |
-| native | analysis_api_schema:trophic_level |
+| self | basalt_schema:trophic_level |
+| native | basalt_schema:trophic_level |
 
 
 
@@ -91,15 +91,15 @@ description: 'Trophic levels are the feeding position in a food chain. Microbes 
 
   be a range of producers.'
 title: trophic level
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: trophic_level
 domain_of:
+- organism
 - CultureEnvironmentalSample
 - MixedCultureSample
 - OtherUndescribedSample
 - PureCultureSample
-- biological_entity
 range: TrophicLevelEnum
 
 ```

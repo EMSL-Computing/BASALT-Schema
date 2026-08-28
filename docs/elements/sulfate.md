@@ -9,7 +9,7 @@ _Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)_
 
 
 
-URI: [analysis_api_schema:sulfate](https://w3id.org/MONet/analysis-api-schema/sulfate)
+URI: [basalt_schema:sulfate](https://emsl-computing.github.io/BASALT-Schema/elements/sulfate)
 Alias: sulfate
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: sulfate
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: sulfate
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -79,8 +79,8 @@ Alias: sulfate
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:sulfate |
-| native | analysis_api_schema:sulfate |
+| self | basalt_schema:sulfate |
+| native | basalt_schema:sulfate |
 
 
 
@@ -92,7 +92,7 @@ Alias: sulfate
 name: sulfate
 description: 'Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)'
 title: sulfate
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: sulfate
 domain_of:

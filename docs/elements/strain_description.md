@@ -9,7 +9,7 @@ _A brief description of the modifications that comprise this strain_
 
 
 
-URI: [analysis_api_schema:strain_description](https://w3id.org/MONet/analysis-api-schema/strain_description)
+URI: [basalt_schema:strain_description](https://emsl-computing.github.io/BASALT-Schema/elements/strain_description)
 Alias: strain_description
 
 <!-- no inheritance hierarchy -->
@@ -22,7 +22,7 @@ Alias: strain_description
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
 
 
 
@@ -36,7 +36,7 @@ Alias: strain_description
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -67,7 +67,7 @@ Alias: strain_description
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -76,8 +76,8 @@ Alias: strain_description
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:strain_description |
-| native | analysis_api_schema:strain_description |
+| self | basalt_schema:strain_description |
+| native | basalt_schema:strain_description |
 
 
 
@@ -89,14 +89,14 @@ Alias: strain_description
 name: strain_description
 description: A brief description of the modifications that comprise this strain
 title: strain description
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 aliases:
 - strain_desc
 - strain_notes
 rank: 1000
 alias: strain_description
 domain_of:
-- biological_entity
+- organism
 range: string
 
 ```

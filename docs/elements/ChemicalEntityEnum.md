@@ -7,7 +7,7 @@ _Common names or identifiers for chemical entities._
 
 
 
-URI: [analysis_api_schema:ChemicalEntityEnum](https://w3id.org/MONet/analysis-api-schema/ChemicalEntityEnum)
+URI: [basalt_schema:ChemicalEntityEnum](https://emsl-computing.github.io/BASALT-Schema/elements/ChemicalEntityEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -42,6 +42,12 @@ URI: [analysis_api_schema:ChemicalEntityEnum](https://w3id.org/MONet/analysis-ap
 
 
 
+## Slots
+
+| Name | Description |
+| ---  | --- |
+| [known_as](known_as.md) | Common name or identifier for the substance |
+
 
 
 
@@ -60,7 +66,7 @@ URI: [analysis_api_schema:ChemicalEntityEnum](https://w3id.org/MONet/analysis-ap
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -73,7 +79,7 @@ URI: [analysis_api_schema:ChemicalEntityEnum](https://w3id.org/MONet/analysis-ap
 ```yaml
 name: ChemicalEntityEnum
 description: Common names or identifiers for chemical entities.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   acetonitrile:

@@ -9,7 +9,7 @@ _NCBI taxon ID for the organism._
 
 
 
-URI: [analysis_api_schema:taxonomy_id](https://w3id.org/MONet/analysis-api-schema/taxonomy_id)
+URI: [basalt_schema:taxonomy_id](https://emsl-computing.github.io/BASALT-Schema/elements/taxonomy_id)
 Alias: taxonomy_id
 
 <!-- no inheritance hierarchy -->
@@ -22,7 +22,7 @@ Alias: taxonomy_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
 
 
 
@@ -36,7 +36,7 @@ Alias: taxonomy_id
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -67,7 +67,7 @@ Alias: taxonomy_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -76,8 +76,8 @@ Alias: taxonomy_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:taxonomy_id |
-| native | analysis_api_schema:taxonomy_id |
+| self | basalt_schema:taxonomy_id |
+| native | basalt_schema:taxonomy_id |
 
 
 
@@ -88,14 +88,14 @@ Alias: taxonomy_id
 ```yaml
 name: taxonomy_id
 description: NCBI taxon ID for the organism.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 aliases:
 - ncbi_taxon_id
 - taxon_id
 rank: 1000
 alias: taxonomy_id
 domain_of:
-- biological_entity
+- organism
 range: string
 
 ```

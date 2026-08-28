@@ -9,7 +9,7 @@ _Storage temperature for the sample (e.g., "-80 C", "4 C")._
 
 
 
-URI: [analysis_api_schema:storage_temperature](https://w3id.org/MONet/analysis-api-schema/storage_temperature)
+URI: [basalt_schema:storage_temperature](https://emsl-computing.github.io/BASALT-Schema/elements/storage_temperature)
 Alias: storage_temperature
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: storage_temperature
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [EngineeredStrainSample](EngineeredStrainSample.md) | A sample containing a strain of an organism that has been subjected to geneti... |  no  |
 | [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |  yes  |
 | [MediaPreparation](MediaPreparation.md) | Activity that prepares a batch of growth media |  no  |
-| [EngineeredStrainSample](EngineeredStrainSample.md) | A sample containing a strain of an organism that has been subjected to geneti... |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: storage_temperature
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -72,8 +72,8 @@ Alias: storage_temperature
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:storage_temperature |
-| native | analysis_api_schema:storage_temperature |
+| self | basalt_schema:storage_temperature |
+| native | basalt_schema:storage_temperature |
 
 
 
@@ -84,7 +84,7 @@ Alias: storage_temperature
 ```yaml
 name: storage_temperature
 description: Storage temperature for the sample (e.g., "-80 C", "4 C").
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: storage_temperature
 domain_of:

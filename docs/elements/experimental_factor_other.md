@@ -9,7 +9,7 @@ _Other details about your sample that you feel can't be accurately represented i
 
 
 
-URI: [analysis_api_schema:experimental_factor_other](https://w3id.org/MONet/analysis-api-schema/experimental_factor_other)
+URI: [basalt_schema:experimental_factor_other](https://emsl-computing.github.io/BASALT-Schema/elements/experimental_factor_other)
 Alias: experimental_factor_other
 
 <!-- no inheritance hierarchy -->
@@ -22,18 +22,18 @@ Alias: experimental_factor_other
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
-| [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
 | [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
-| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 
 
 
@@ -72,7 +72,7 @@ Alias: experimental_factor_other
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -81,8 +81,8 @@ Alias: experimental_factor_other
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:experimental_factor_other |
-| native | analysis_api_schema:experimental_factor_other |
+| self | basalt_schema:experimental_factor_other |
+| native | basalt_schema:experimental_factor_other |
 
 
 
@@ -95,7 +95,7 @@ name: experimental_factor_other
 description: Other details about your sample that you feel can't be accurately represented
   in the available columns.
 title: other experimental factor
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: experimental_factor_other
 domain_of:

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:ControlledTermValue](https://w3id.org/MONet/analysis-api-schema/ControlledTermValue)
+URI: [basalt_schema:ControlledTermValue](https://emsl-computing.github.io/BASALT-Schema/elements/ControlledTermValue)
 
 
 
@@ -78,7 +78,7 @@ URI: [analysis_api_schema:ControlledTermValue](https://w3id.org/MONet/analysis-a
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -87,8 +87,8 @@ URI: [analysis_api_schema:ControlledTermValue](https://w3id.org/MONet/analysis-a
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ControlledTermValue |
-| native | analysis_api_schema:ControlledTermValue |
+| self | basalt_schema:ControlledTermValue |
+| native | basalt_schema:ControlledTermValue |
 
 
 
@@ -104,13 +104,13 @@ URI: [analysis_api_schema:ControlledTermValue](https://w3id.org/MONet/analysis-a
 <details>
 ```yaml
 name: ControlledTermValue
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 slots:
 - description
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     identifier: true
     domain_of:
     - Activity
@@ -132,9 +132,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -173,7 +173,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -188,7 +189,7 @@ attributes:
     required: true
   has_raw_value:
     name: has_raw_value
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     domain_of:
     - TimestampValue
     - TextValue
@@ -199,7 +200,7 @@ attributes:
     range: string
   term:
     name: term
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - ControlledTermValue
@@ -207,7 +208,7 @@ attributes:
   term_id:
     name: term_id
     description: pointer to an ontology class
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - ControlledTermValue
@@ -215,7 +216,7 @@ attributes:
   controlled_term_provider:
     name: controlled_term_provider
     description: name of ontology or other controlled term provider
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - ControlledTermValue
@@ -229,11 +230,11 @@ attributes:
 <details>
 ```yaml
 name: ControlledTermValue
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     identifier: true
     alias: id
     owner: ControlledTermValue
@@ -257,9 +258,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -298,7 +299,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -313,7 +315,7 @@ attributes:
     required: true
   has_raw_value:
     name: has_raw_value
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     alias: has_raw_value
     owner: ControlledTermValue
     domain_of:
@@ -326,7 +328,7 @@ attributes:
     range: string
   term:
     name: term
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: term
     owner: ControlledTermValue
@@ -336,7 +338,7 @@ attributes:
   term_id:
     name: term_id
     description: pointer to an ontology class
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: term_id
     owner: ControlledTermValue
@@ -346,7 +348,7 @@ attributes:
   controlled_term_provider:
     name: controlled_term_provider
     description: name of ontology or other controlled term provider
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: controlled_term_provider
     owner: ControlledTermValue
@@ -357,7 +359,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: ControlledTermValue
@@ -370,15 +372,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue

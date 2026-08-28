@@ -3,8 +3,15 @@
 # Slot: step_number 
 
 
+_Integer ordering within a multi-step process for the same analyte._
 
-URI: [analysis_api_schema:step_number](https://w3id.org/MONet/analysis-api-schema/step_number)
+_Lower = earlier in process._
+
+
+
+
+
+URI: [basalt_schema:step_number](https://emsl-computing.github.io/BASALT-Schema/elements/step_number)
 Alias: step_number
 
 <!-- no inheritance hierarchy -->
@@ -17,7 +24,7 @@ Alias: step_number
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProcessingSampleLink](ProcessingSampleLink.md) | A link between a processed sample and the sample processing activity that pro... |  no  |
+| [ProcessingSampleLink](ProcessingSampleLink.md) | The authoritative record of what a SampleProcessing step consumed and produce... |  no  |
 
 
 
@@ -37,14 +44,6 @@ Alias: step_number
 
 | Property | Value |
 | --- | --- |
-| Required | Yes |
-### Slot Characteristics
-
-| Property | Value |
-| --- | --- |
-| Owner | [ProcessingSampleLink](ProcessingSampleLink.md) |
-
-
 
 
 
@@ -64,7 +63,7 @@ Alias: step_number
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -73,8 +72,8 @@ Alias: step_number
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:step_number |
-| native | analysis_api_schema:step_number |
+| self | basalt_schema:step_number |
+| native | basalt_schema:step_number |
 
 
 
@@ -84,14 +83,15 @@ Alias: step_number
 <details>
 ```yaml
 name: step_number
-from_schema: https://w3id.org/MONet/analysis-api-schema
+description: 'Integer ordering within a multi-step process for the same analyte.
+
+  Lower = earlier in process.'
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: step_number
-owner: ProcessingSampleLink
 domain_of:
 - ProcessingSampleLink
 range: integer
-required: true
 
 ```
 </details>

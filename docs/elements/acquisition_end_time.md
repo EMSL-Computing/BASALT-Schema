@@ -3,8 +3,13 @@
 # Slot: acquisition_end_time 
 
 
+_The time that data collection ended for this activity._
 
-URI: [analysis_api_schema:acquisition_end_time](https://w3id.org/MONet/analysis-api-schema/acquisition_end_time)
+
+
+
+
+URI: [basalt_schema:acquisition_end_time](https://emsl-computing.github.io/BASALT-Schema/elements/acquisition_end_time)
 Alias: acquisition_end_time
 
 <!-- no inheritance hierarchy -->
@@ -17,17 +22,16 @@ Alias: acquisition_end_time
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | X-ray Fluorescence (XRF) elemental analysis activity |  no  |
-| [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | A record of the mass spectrometry run that generates a raw data product |  no  |
-| [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | X-ray Diffraction (XRD) mineralogical analysis activity |  no  |
+| [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | A record of the mass spectrometry run that generates a raw data product |  yes  |
 | [NucleotideSequencing](NucleotideSequencing.md) | A lab activity in which DNA or RNA that was extracted from a sample is sequen... |  no  |
-| [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | Abstract base class for X-ray analytical methods including XRF (elemental), |  no  |
-| [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | AMP2 plate measurement (OD, fluorescence, flow cytometry) |  no  |
+| [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | X-ray Diffraction (XRD) mineralogical analysis activity |  no  |
 | [PlateDataGenerationActivity](PlateDataGenerationActivity.md) | Abstract base for plate measurement activities |  no  |
-| [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |  no  |
-| [RespirationDataGenerationActivity](RespirationDataGenerationActivity.md) | Data generation activity for soil respiration analysis |  no  |
-| [DataGenerationActivity](DataGenerationActivity.md) | Abstract base for any data generation activity (physical to digital) |  no  |
+| [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | Abstract base class for X-ray analytical methods including XRF (elemental), |  no  |
+| [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | X-ray Fluorescence (XRF) elemental analysis activity |  no  |
 | [XASDataGenerationActivity](XASDataGenerationActivity.md) | X-ray Absorption Spectroscopy (XAS) acquisition activity |  no  |
+| [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | AMP2 plate measurement (OD, fluorescence, flow cytometry) |  no  |
+| [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |  no  |
+| [DataGenerationActivity](DataGenerationActivity.md) | Abstract base for any data generation activity (physical to digital) |  no  |
 
 
 
@@ -47,14 +51,6 @@ Alias: acquisition_end_time
 
 | Property | Value |
 | --- | --- |
-| Required | Yes |
-### Slot Characteristics
-
-| Property | Value |
-| --- | --- |
-| Owner | [DataGenerationActivity](DataGenerationActivity.md) |
-
-
 
 
 
@@ -74,7 +70,7 @@ Alias: acquisition_end_time
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,8 +79,8 @@ Alias: acquisition_end_time
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:acquisition_end_time |
-| native | analysis_api_schema:acquisition_end_time |
+| self | basalt_schema:acquisition_end_time |
+| native | basalt_schema:acquisition_end_time |
 
 
 
@@ -94,14 +90,13 @@ Alias: acquisition_end_time
 <details>
 ```yaml
 name: acquisition_end_time
-from_schema: https://w3id.org/MONet/analysis-api-schema
+description: The time that data collection ended for this activity.
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: acquisition_end_time
-owner: DataGenerationActivity
 domain_of:
 - DataGenerationActivity
 range: datetime
-required: true
 
 ```
 </details>

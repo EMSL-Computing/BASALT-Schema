@@ -9,7 +9,7 @@ _The name of the substance used in this mobile phase segment._
 
 
 
-URI: [analysis_api_schema:substance](https://w3id.org/MONet/analysis-api-schema/substance)
+URI: [basalt_schema:substance](https://emsl-computing.github.io/BASALT-Schema/elements/substance)
 Alias: substance
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: substance
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -77,8 +77,8 @@ Alias: substance
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:substance |
-| native | analysis_api_schema:substance |
+| self | basalt_schema:substance |
+| native | basalt_schema:substance |
 
 
 
@@ -89,7 +89,7 @@ Alias: substance
 ```yaml
 name: substance
 description: The name of the substance used in this mobile phase segment.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: substance
 owner: MobilePhaseSegment

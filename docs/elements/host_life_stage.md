@@ -9,7 +9,7 @@ _Description of life stage of host_
 
 
 
-URI: [analysis_api_schema:host_life_stage](https://w3id.org/MONet/analysis-api-schema/host_life_stage)
+URI: [basalt_schema:host_life_stage](https://emsl-computing.github.io/BASALT-Schema/elements/host_life_stage)
 Alias: host_life_stage
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: host_life_stage
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
 
 
 
@@ -64,7 +64,7 @@ Alias: host_life_stage
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -73,8 +73,8 @@ Alias: host_life_stage
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:host_life_stage |
-| native | analysis_api_schema:host_life_stage |
+| self | basalt_schema:host_life_stage |
+| native | basalt_schema:host_life_stage |
 
 
 
@@ -86,7 +86,7 @@ Alias: host_life_stage
 name: host_life_stage
 description: Description of life stage of host
 title: host life stage
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: host_life_stage
 domain_of:

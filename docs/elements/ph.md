@@ -9,7 +9,7 @@ _pH measurement of the sample or liquid portion of sample or aqueous phase of th
 
 
 
-URI: [analysis_api_schema:ph](https://w3id.org/MONet/analysis-api-schema/ph)
+URI: [basalt_schema:ph](https://emsl-computing.github.io/BASALT-Schema/elements/ph)
 Alias: ph
 
 <!-- no inheritance hierarchy -->
@@ -22,11 +22,11 @@ Alias: ph
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PHProduct](PHProduct.md) | Soil pH analysis product, typically derived via pH meter or similar instrumen... |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [PHProduct](PHProduct.md) | Soil pH analysis product, typically derived via pH meter or similar instrumen... |  no  |
 
 
 
@@ -65,7 +65,7 @@ Alias: ph
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -74,8 +74,8 @@ Alias: ph
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ph |
-| native | analysis_api_schema:ph |
+| self | basalt_schema:ph |
+| native | basalt_schema:ph |
 
 
 
@@ -88,7 +88,7 @@ name: ph
 description: pH measurement of the sample or liquid portion of sample or aqueous phase
   of the fluid
 title: pH
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: ph
 domain_of:

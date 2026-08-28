@@ -9,7 +9,7 @@ _Concentration of phosphate (Unit: umol/L)_
 
 
 
-URI: [analysis_api_schema:phosphate](https://w3id.org/MONet/analysis-api-schema/phosphate)
+URI: [basalt_schema:phosphate](https://emsl-computing.github.io/BASALT-Schema/elements/phosphate)
 Alias: phosphate
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: phosphate
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: phosphate
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -79,8 +79,8 @@ Alias: phosphate
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:phosphate |
-| native | analysis_api_schema:phosphate |
+| self | basalt_schema:phosphate |
+| native | basalt_schema:phosphate |
 
 
 
@@ -92,7 +92,7 @@ Alias: phosphate
 name: phosphate
 description: 'Concentration of phosphate (Unit: umol/L)'
 title: phosphate
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: phosphate
 domain_of:

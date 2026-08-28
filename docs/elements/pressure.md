@@ -9,7 +9,7 @@ _Pressure to which the sample is subject, in atmospheres (Unit: atm)_
 
 
 
-URI: [analysis_api_schema:pressure](https://w3id.org/MONet/analysis-api-schema/pressure)
+URI: [basalt_schema:pressure](https://emsl-computing.github.io/BASALT-Schema/elements/pressure)
 Alias: pressure
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: pressure
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [ConditioningValue](ConditioningValue.md) |  |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [ConditioningValue](ConditioningValue.md) |  |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
@@ -73,7 +73,7 @@ Alias: pressure
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -82,8 +82,8 @@ Alias: pressure
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:pressure |
-| native | analysis_api_schema:pressure |
+| self | basalt_schema:pressure |
+| native | basalt_schema:pressure |
 
 
 
@@ -95,7 +95,7 @@ Alias: pressure
 name: pressure
 description: 'Pressure to which the sample is subject, in atmospheres (Unit: atm)'
 title: pressure
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: pressure
 domain_of:

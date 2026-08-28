@@ -9,7 +9,7 @@ _Description of the stationary phase used in the chromatography method (e.g., co
 
 
 
-URI: [analysis_api_schema:stationary_phase](https://w3id.org/MONet/analysis-api-schema/stationary_phase)
+URI: [basalt_schema:stationary_phase](https://emsl-computing.github.io/BASALT-Schema/elements/stationary_phase)
 Alias: stationary_phase
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: stationary_phase
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -70,8 +70,8 @@ Alias: stationary_phase
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:stationary_phase |
-| native | analysis_api_schema:stationary_phase |
+| self | basalt_schema:stationary_phase |
+| native | basalt_schema:stationary_phase |
 
 
 
@@ -83,7 +83,7 @@ Alias: stationary_phase
 name: stationary_phase
 description: Description of the stationary phase used in the chromatography method
   (e.g., column type)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: stationary_phase
 domain_of:

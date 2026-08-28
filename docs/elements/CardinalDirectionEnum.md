@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:CardinalDirectionEnum](https://w3id.org/MONet/analysis-api-schema/CardinalDirectionEnum)
+URI: [basalt_schema:CardinalDirectionEnum](https://emsl-computing.github.io/BASALT-Schema/elements/CardinalDirectionEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -43,7 +43,7 @@ URI: [analysis_api_schema:CardinalDirectionEnum](https://w3id.org/MONet/analysis
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -55,7 +55,7 @@ URI: [analysis_api_schema:CardinalDirectionEnum](https://w3id.org/MONet/analysis
 <details>
 ```yaml
 name: CardinalDirectionEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   north:

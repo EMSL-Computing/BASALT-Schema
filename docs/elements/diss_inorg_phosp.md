@@ -9,7 +9,7 @@ _Concentration of dissolved inorganic phosphorus in the sample. Provide value an
 
 
 
-URI: [analysis_api_schema:diss_inorg_phosp](https://w3id.org/MONet/analysis-api-schema/diss_inorg_phosp)
+URI: [basalt_schema:diss_inorg_phosp](https://emsl-computing.github.io/BASALT-Schema/elements/diss_inorg_phosp)
 Alias: diss_inorg_phosp
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: diss_inorg_phosp
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: diss_inorg_phosp
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -78,8 +78,8 @@ Alias: diss_inorg_phosp
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:diss_inorg_phosp |
-| native | analysis_api_schema:diss_inorg_phosp |
+| self | basalt_schema:diss_inorg_phosp |
+| native | basalt_schema:diss_inorg_phosp |
 
 
 
@@ -92,7 +92,7 @@ name: diss_inorg_phosp
 description: Concentration of dissolved inorganic phosphorus in the sample. Provide
   value and unit, any unit is valid.
 title: dissolved inorganic phosphate
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: diss_inorg_phosp
 domain_of:

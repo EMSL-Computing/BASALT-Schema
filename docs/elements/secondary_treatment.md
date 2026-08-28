@@ -9,7 +9,7 @@ _the process for substantially degrading the biological content of the sewage_
 
 
 
-URI: [analysis_api_schema:secondary_treatment](https://w3id.org/MONet/analysis-api-schema/secondary_treatment)
+URI: [basalt_schema:secondary_treatment](https://emsl-computing.github.io/BASALT-Schema/elements/secondary_treatment)
 Alias: secondary_treatment
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: secondary_treatment
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -70,8 +70,8 @@ Alias: secondary_treatment
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:secondary_treatment |
-| native | analysis_api_schema:secondary_treatment |
+| self | basalt_schema:secondary_treatment |
+| native | basalt_schema:secondary_treatment |
 
 
 
@@ -84,7 +84,7 @@ name: secondary_treatment
 description: the process for substantially degrading the biological content of the
   sewage
 title: secondary treatment
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: secondary_treatment
 domain_of:

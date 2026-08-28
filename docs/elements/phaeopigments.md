@@ -9,7 +9,7 @@ _Concentration of phaeopigments; can include multiple phaeopigments separated by
 
 
 
-URI: [analysis_api_schema:phaeopigments](https://w3id.org/MONet/analysis-api-schema/phaeopigments)
+URI: [basalt_schema:phaeopigments](https://emsl-computing.github.io/BASALT-Schema/elements/phaeopigments)
 Alias: phaeopigments
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: phaeopigments
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: phaeopigments
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -79,8 +79,8 @@ Alias: phaeopigments
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:phaeopigments |
-| native | analysis_api_schema:phaeopigments |
+| self | basalt_schema:phaeopigments |
+| native | basalt_schema:phaeopigments |
 
 
 
@@ -93,7 +93,7 @@ name: phaeopigments
 description: 'Concentration of phaeopigments; can include multiple phaeopigments separated
   by a `;` (Unit: mg/cm3)'
 title: phaeopigments
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: phaeopigments
 domain_of:

@@ -9,7 +9,7 @@ _A record of a person and their role on an EMSL project._
 
 
 
-URI: [analysis_api_schema:ProjectParticipant](https://w3id.org/MONet/analysis-api-schema/ProjectParticipant)
+URI: [basalt_schema:ProjectParticipant](https://emsl-computing.github.io/BASALT-Schema/elements/ProjectParticipant)
 
 
 
@@ -89,7 +89,7 @@ URI: [analysis_api_schema:ProjectParticipant](https://w3id.org/MONet/analysis-ap
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -98,8 +98,8 @@ URI: [analysis_api_schema:ProjectParticipant](https://w3id.org/MONet/analysis-ap
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ProjectParticipant |
-| native | analysis_api_schema:ProjectParticipant |
+| self | basalt_schema:ProjectParticipant |
+| native | basalt_schema:ProjectParticipant |
 
 
 
@@ -116,11 +116,11 @@ URI: [analysis_api_schema:ProjectParticipant](https://w3id.org/MONet/analysis-ap
 ```yaml
 name: ProjectParticipant
 description: A record of a person and their role on an EMSL project.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     identifier: true
     domain_of:
     - Activity
@@ -142,9 +142,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -183,7 +183,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -199,7 +200,7 @@ attributes:
   role:
     name: role
     description: The role of the contributor in the study (e.g., data analysis, writing).
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     domain_of:
     - ProcessingSampleLink
     - ProjectParticipant
@@ -208,7 +209,7 @@ attributes:
   person:
     name: person
     description: The person who contributed to the study.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     domain_of:
     - ProjectParticipant
@@ -224,11 +225,11 @@ attributes:
 ```yaml
 name: ProjectParticipant
 description: A record of a person and their role on an EMSL project.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     identifier: true
     alias: id
     owner: ProjectParticipant
@@ -252,9 +253,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -293,7 +294,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -309,7 +311,7 @@ attributes:
   role:
     name: role
     description: The role of the contributor in the study (e.g., data analysis, writing).
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     alias: role
     owner: ProjectParticipant
     domain_of:
@@ -320,7 +322,7 @@ attributes:
   person:
     name: person
     description: The person who contributed to the study.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     alias: person
     owner: ProjectParticipant

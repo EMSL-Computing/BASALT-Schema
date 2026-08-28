@@ -11,7 +11,7 @@ _Individual QC flags for each measurement using ProcessedDataFlag enum._
 
 
 
-URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analysis-api-schema/NitrogenAnalysisProduct)
+URI: [basalt_schema:NitrogenAnalysisProduct](https://emsl-computing.github.io/BASALT-Schema/elements/NitrogenAnalysisProduct)
 
 
 
@@ -221,7 +221,7 @@ URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analys
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -230,8 +230,8 @@ URI: [analysis_api_schema:NitrogenAnalysisProduct](https://w3id.org/MONet/analys
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:NitrogenAnalysisProduct |
-| native | analysis_api_schema:NitrogenAnalysisProduct |
+| self | basalt_schema:NitrogenAnalysisProduct |
+| native | basalt_schema:NitrogenAnalysisProduct |
 
 
 
@@ -251,7 +251,7 @@ description: 'Nitrogen analysis product, typically derived via colorimetric assa
   of soil extracts.
 
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: ProcessedData
 slots:
 - measure_type
@@ -259,56 +259,56 @@ slots:
 attributes:
   no3_n_id:
     name: no3_n_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - NitrogenAnalysisProduct
     range: QuantityValue
   no3_n_avg:
     name: no3_n_avg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - NitrogenAnalysisProduct
     range: double
   nh4_n_id:
     name: nh4_n_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - NitrogenAnalysisProduct
     range: QuantityValue
   nh4_n_avg:
     name: nh4_n_avg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - NitrogenAnalysisProduct
     range: double
   flag_no3n:
     name: flag_no3n
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - NitrogenAnalysisProduct
     range: ProcessedDataFlag
   flag_nh4n:
     name: flag_nh4n
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - NitrogenAnalysisProduct
     range: ProcessedDataFlag
   flag_no3n_avg:
     name: flag_no3n_avg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - NitrogenAnalysisProduct
     range: ProcessedDataFlag
   flag_nh4n_avg:
     name: flag_nh4n_avg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - NitrogenAnalysisProduct
@@ -326,12 +326,12 @@ description: 'Nitrogen analysis product, typically derived via colorimetric assa
   of soil extracts.
 
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: ProcessedData
 attributes:
   no3_n_id:
     name: no3_n_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: no3_n_id
     owner: NitrogenAnalysisProduct
@@ -340,7 +340,7 @@ attributes:
     range: QuantityValue
   no3_n_avg:
     name: no3_n_avg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: no3_n_avg
     owner: NitrogenAnalysisProduct
@@ -349,7 +349,7 @@ attributes:
     range: double
   nh4_n_id:
     name: nh4_n_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: nh4_n_id
     owner: NitrogenAnalysisProduct
@@ -358,7 +358,7 @@ attributes:
     range: QuantityValue
   nh4_n_avg:
     name: nh4_n_avg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: nh4_n_avg
     owner: NitrogenAnalysisProduct
@@ -367,7 +367,7 @@ attributes:
     range: double
   flag_no3n:
     name: flag_no3n
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_no3n
     owner: NitrogenAnalysisProduct
@@ -376,7 +376,7 @@ attributes:
     range: ProcessedDataFlag
   flag_nh4n:
     name: flag_nh4n
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_nh4n
     owner: NitrogenAnalysisProduct
@@ -385,7 +385,7 @@ attributes:
     range: ProcessedDataFlag
   flag_no3n_avg:
     name: flag_no3n_avg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_no3n_avg
     owner: NitrogenAnalysisProduct
@@ -394,7 +394,7 @@ attributes:
     range: ProcessedDataFlag
   flag_nh4n_avg:
     name: flag_nh4n_avg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_nh4n_avg
     owner: NitrogenAnalysisProduct
@@ -405,7 +405,7 @@ attributes:
     name: measure_type
     description: Whether the measurement recorded is a single measurement, one of
       a set of  replicate measurements, or an average of several replicate measurements.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: measure_type
     owner: NitrogenAnalysisProduct
@@ -434,7 +434,7 @@ attributes:
     description: The replicate number of the sample or measurement, if applicable.
     todos:
     - reconcile replicate modelling
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: replicate
     owner: NitrogenAnalysisProduct
@@ -456,7 +456,7 @@ attributes:
       \ retained until formal typed class exists."
     todos:
     - make this inined/multivalued?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: summary_metrics
     owner: NitrogenAnalysisProduct
@@ -467,7 +467,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: lims_barcode
     owner: NitrogenAnalysisProduct
@@ -479,12 +479,13 @@ attributes:
   sample_id:
     name: sample_id
     description: Link back to the originating sample
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_id
     owner: NitrogenAnalysisProduct
     domain_of:
     - ProcessedData
+    - ProcessingSampleLink
     - AMP2WellMetadata
     - MetagenomicsProduct
     range: Sample
@@ -492,7 +493,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: NitrogenAnalysisProduct
@@ -504,16 +505,18 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -522,7 +525,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: NitrogenAnalysisProduct
@@ -535,15 +538,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -558,7 +563,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - study
     - study_id
@@ -595,7 +600,7 @@ attributes:
 
       in the same sampling event or campaign.'
     title: sampling set
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampling_set
     owner: NitrogenAnalysisProduct
@@ -611,7 +616,7 @@ attributes:
     - value: TOP
     - value: MID
     - value: BTM
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: core_section
     owner: NitrogenAnalysisProduct
@@ -629,7 +634,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - samp_name
     rank: 1000
@@ -655,7 +660,7 @@ attributes:
     range: string
   s3_base_url:
     name: s3_base_url
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_base_url
     owner: NitrogenAnalysisProduct
@@ -664,7 +669,7 @@ attributes:
     range: string
   s3_bucket:
     name: s3_bucket
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_bucket
     owner: NitrogenAnalysisProduct
@@ -674,7 +679,7 @@ attributes:
   s3_key:
     name: s3_key
     description: MinIO/S3 object key; required for all data products
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_key
     owner: NitrogenAnalysisProduct
@@ -685,7 +690,7 @@ attributes:
   filesize:
     name: filesize
     description: Size of the file in bytes
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: filesize
     owner: NitrogenAnalysisProduct
@@ -694,7 +699,7 @@ attributes:
     range: integer
   md5checksum:
     name: md5checksum
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: md5checksum
     owner: NitrogenAnalysisProduct
@@ -703,7 +708,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: NitrogenAnalysisProduct
@@ -727,9 +732,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -768,7 +773,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue

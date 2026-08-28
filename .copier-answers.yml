@@ -4,13 +4,13 @@ _src_path: gh:linkml/linkml-project-copier
 add_example: false
 copyright_year: '2026'
 email: maia.kapur@pnnl.gov
-existing_license_file: ''
+existing_license_file: 'LICENSE'
 full_name: Maia Kapur
 gh_action_docs_preview: true
 gh_action_pypi: false
 github_org: mkapur-pnnl
 license: MIT
 project_description: Data schema for analysis database at EMSL (PNNL).
-project_name: analysis-api-schema
-project_slug: analysis_api_schema
+project_name: basalt-schema
+project_slug: basalt_schema
 

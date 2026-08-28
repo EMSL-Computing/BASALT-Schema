@@ -9,7 +9,7 @@ _URL pointing to the protocol used in the activity, if applicable._
 
 
 
-URI: [analysis_api_schema:protocol_url](https://w3id.org/MONet/analysis-api-schema/protocol_url)
+URI: [basalt_schema:protocol_url](https://emsl-computing.github.io/BASALT-Schema/elements/protocol_url)
 Alias: protocol_url
 
 <!-- no inheritance hierarchy -->
@@ -22,27 +22,17 @@ Alias: protocol_url
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | X-ray Fluorescence (XRF) elemental analysis activity |  no  |
-| [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
-| [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | Abstract base class for X-ray analytical methods including XRF (elemental), |  no  |
-| [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | AMP2 plate measurement (OD, fluorescence, flow cytometry) |  no  |
-| [PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |  no  |
 | [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | A record of the mass spectrometry run that generates a raw data product |  no  |
-| [DataGenerationActivity](DataGenerationActivity.md) | Abstract base for any data generation activity (physical to digital) |  no  |
 | [NucleotideSequencing](NucleotideSequencing.md) | A lab activity in which DNA or RNA that was extracted from a sample is sequen... |  no  |
-| [StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |  no  |
-| [RespirationDataGenerationActivity](RespirationDataGenerationActivity.md) | Data generation activity for soil respiration analysis |  no  |
-| [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
-| [SampleProcessing](SampleProcessing.md) | Abstract base for any sample processing activity (physical to physical) |  no  |
-| [MediaPreparation](MediaPreparation.md) | Activity that prepares a batch of growth media |  no  |
 | [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | X-ray Diffraction (XRD) mineralogical analysis activity |  no  |
 | [PlateDataGenerationActivity](PlateDataGenerationActivity.md) | Abstract base for plate measurement activities |  no  |
-| [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |  no  |
-| [StrainPurity](StrainPurity.md) | Purity check of a strain culture |  no  |
+| [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | Abstract base class for X-ray analytical methods including XRF (elemental), |  no  |
+| [SampleProcessingProtocol](SampleProcessingProtocol.md) | A sample processing protocol: the recipe, not an execution of it |  no  |
+| [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | X-ray Fluorescence (XRF) elemental analysis activity |  no  |
 | [XASDataGenerationActivity](XASDataGenerationActivity.md) | X-ray Absorption Spectroscopy (XAS) acquisition activity |  no  |
-| [PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |  no  |
-| [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |  no  |
-| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
+| [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | AMP2 plate measurement (OD, fluorescence, flow cytometry) |  no  |
+| [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |  no  |
+| [DataGenerationActivity](DataGenerationActivity.md) | Abstract base for any data generation activity (physical to digital) |  no  |
 
 
 
@@ -56,7 +46,7 @@ Alias: protocol_url
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [DataGenerationActivity](DataGenerationActivity.md), [SampleProcessing](SampleProcessing.md) |
+| Domain Of | [DataGenerationActivity](DataGenerationActivity.md), [SampleProcessingProtocol](SampleProcessingProtocol.md) |
 
 ### Cardinality and Requirements
 
@@ -81,7 +71,7 @@ Alias: protocol_url
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -90,8 +80,8 @@ Alias: protocol_url
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:protocol_url |
-| native | analysis_api_schema:protocol_url |
+| self | basalt_schema:protocol_url |
+| native | basalt_schema:protocol_url |
 
 
 
@@ -102,12 +92,12 @@ Alias: protocol_url
 ```yaml
 name: protocol_url
 description: URL pointing to the protocol used in the activity, if applicable.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: protocol_url
 domain_of:
 - DataGenerationActivity
-- SampleProcessing
+- SampleProcessingProtocol
 range: string
 
 ```

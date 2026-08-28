@@ -1,0 +1,137 @@
+id: https://emsl-computing.github.io/BASALT-Schema/value-tables
+name: basalt-schema-value-tables
+title: BASALT Schema - Value Tables
+description: value tables
+license: MIT
+
+prefixes:
+  basalt_schema: https://emsl-computing.github.io/BASALT-Schema/elements/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+default_prefix: basalt_schema
+
+imports:
+  - linkml:types
+  - slots
+
+classes:
+  TimestampValue:
+    description: |-
+      A timestamp value with optional description. No pattern at present,
+    slots:
+      - description
+    attributes:
+      id:
+        identifier: true
+        range: string
+      description:
+        range: string
+      has_raw_value:
+        range: string
+
+  TextValue:
+    description: |-
+      A text value with optional description and language.
+    slots:
+      - description
+    attributes:
+      id:
+        identifier: true
+        range: string
+      language:
+        range: string
+      has_raw_value:
+        range: string
+
+  SoftwareControlledTermValue:
+    slots:
+      - name
+      - description
+      - version
+    attributes:
+      id:
+        identifier: true
+        range: string
+      has_raw_value:
+        range: string
+
+  ControlledTermValue:
+    slots:
+      - description
+    attributes:
+      id:
+        identifier: true
+        range: string
+      has_raw_value:
+        range: string
+      term:
+        range: string
+      term_id:
+        description: pointer to an ontology class
+        range: uriorcurie
+      controlled_term_provider:
+        description: name of ontology or other controlled term provider
+        range: string
+
+  PersonValue:
+    slots:
+      - email
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      first_name:
+        range: string
+        required: true
+      last_name:
+        range: string
+        required: true
+      middle_initial:
+        range: string
+      orcid:
+        range: string
+        description: ORCID identifier of the person
+      profile_image_url:
+        range: string
+      websites:
+        range: string # TODO ARRAY
+    unique_keys:
+      PersonValue_email_key:
+        unique_key_slots:
+          - email
+
+  QuantityValue:
+    slots:
+      - description
+    description: A quantity value with numeric value and optional unit
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      has_value_unit:
+      has_unit:
+        description: The human-readable unit name
+      has_numeric_value:
+        description: The numeric value of the quantity
+        range: double
+      has_minimum_numeric_value:
+        range: double
+      has_maximum_numeric_value:
+        range: double
+      has_raw_value:
+
+  ConditioningValue:
+    attributes:
+      id:
+        identifier: true
+        range: string
+      source_material:
+        range: string
+      instrument:
+        range: string
+      gas:
+        range: string
+      pressure:
+        range: string
+      has_raw_value:
+        range: string

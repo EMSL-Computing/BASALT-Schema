@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:BiolStatEnum](https://w3id.org/MONet/analysis-api-schema/BiolStatEnum)
+URI: [basalt_schema:BiolStatEnum](https://emsl-computing.github.io/BASALT-Schema/elements/BiolStatEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -43,7 +43,7 @@ URI: [analysis_api_schema:BiolStatEnum](https://w3id.org/MONet/analysis-api-sche
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -55,7 +55,7 @@ URI: [analysis_api_schema:BiolStatEnum](https://w3id.org/MONet/analysis-api-sche
 <details>
 ```yaml
 name: BiolStatEnum
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   wild:

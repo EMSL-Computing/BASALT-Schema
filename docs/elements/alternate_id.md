@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:alternate_id](https://w3id.org/MONet/analysis-api-schema/alternate_id)
+URI: [basalt_schema:alternate_id](https://emsl-computing.github.io/BASALT-Schema/elements/alternate_id)
 Alias: alternate_id
 
 <!-- no inheritance hierarchy -->
@@ -64,7 +64,7 @@ Alias: alternate_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -73,8 +73,8 @@ Alias: alternate_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:alternate_id |
-| native | analysis_api_schema:alternate_id |
+| self | basalt_schema:alternate_id |
+| native | basalt_schema:alternate_id |
 
 
 
@@ -84,7 +84,7 @@ Alias: alternate_id
 <details>
 ```yaml
 name: alternate_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: alternate_id
 owner: AlternativeIdentifier

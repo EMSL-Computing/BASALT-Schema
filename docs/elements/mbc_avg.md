@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:mbc_avg](https://w3id.org/MONet/analysis-api-schema/mbc_avg)
+URI: [basalt_schema:mbc_avg](https://emsl-computing.github.io/BASALT-Schema/elements/mbc_avg)
 Alias: mbc_avg
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: mbc_avg
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -72,8 +72,8 @@ Alias: mbc_avg
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:mbc_avg |
-| native | analysis_api_schema:mbc_avg |
+| self | basalt_schema:mbc_avg |
+| native | basalt_schema:mbc_avg |
 
 
 
@@ -83,7 +83,7 @@ Alias: mbc_avg
 <details>
 ```yaml
 name: mbc_avg
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: mbc_avg
 owner: MicrobialBiomassProduct

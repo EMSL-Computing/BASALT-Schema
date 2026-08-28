@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:role](https://w3id.org/MONet/analysis-api-schema/role)
+URI: [basalt_schema:role](https://emsl-computing.github.io/BASALT-Schema/elements/role)
 Alias: role
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: role
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProcessingSampleLink](ProcessingSampleLink.md) | A link between a processed sample and the sample processing activity that pro... |  no  |
 | [ProjectParticipant](ProjectParticipant.md) | A record of a person and their role on an EMSL project |  no  |
+| [ProcessingSampleLink](ProcessingSampleLink.md) | The authoritative record of what a SampleProcessing step consumed and produce... |  no  |
 
 
 
@@ -59,8 +59,8 @@ Alias: role
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:role |
-| native | analysis_api_schema:role |
+| self | basalt_schema:role |
+| native | basalt_schema:role |
 
 
 

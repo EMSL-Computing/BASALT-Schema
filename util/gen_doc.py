@@ -1,7 +1,7 @@
 """
 util/gen_doc.py
 ===============
-Custom gen-doc entry point for analysis-api-schema.
+Custom gen-doc entry point for basalt-schema.
 
 Why this exists
 ---------------
@@ -41,7 +41,7 @@ from linkml.generators.docgen import DocGenerator, customize_environment
 # ---------------------------------------------------------------------------
 # Defaults (relative to repo root)
 # ---------------------------------------------------------------------------
-DEFAULT_SCHEMA = "src/analysis_api_schema/schema/analysis_api_schema.yaml"
+DEFAULT_SCHEMA = "src/basalt_schema/schema/basalt_schema.yaml"
 DEFAULT_OUT_DIR = "docs/elements/"
 CUSTOM_TEMPLATES = "src/doc_templates/"
 

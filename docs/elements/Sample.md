@@ -11,7 +11,7 @@ _A physical sample collected from an environment. The environment can be ecologi
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [analysis_api_schema:Sample](https://w3id.org/MONet/analysis-api-schema/Sample)
+URI: [basalt_schema:Sample](https://emsl-computing.github.io/BASALT-Schema/elements/Sample)
 
 
 
@@ -116,21 +116,11 @@ URI: [analysis_api_schema:Sample](https://w3id.org/MONet/analysis-api-schema/Sam
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [ProcessedData](ProcessedData.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
-| [SampleProcessing](SampleProcessing.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [ProcessingSampleLink](ProcessingSampleLink.md) | [sample_base_id](sample_base_id.md) | range | [Sample](Sample.md) |
+| [ProcessingSampleLink](ProcessingSampleLink.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [MassSpectrometryDataProduct](MassSpectrometryDataProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [MSImageProduct](MSImageProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [MolecularIdentificationProduct](MolecularIdentificationProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [MetaproteomicsProduct](MetaproteomicsProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
-| [MediaPreparation](MediaPreparation.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [CultureGrowth](CultureGrowth.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [StrainPurity](StrainPurity.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [StockCulturePreparation](StockCulturePreparation.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [PreCultureGrowth](PreCultureGrowth.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [ExperimentalCulture](ExperimentalCulture.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [PlateSetupActivity](PlateSetupActivity.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
 | [MetagenomicsProduct](MetagenomicsProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [MetagenomicsAnnotationProduct](MetagenomicsAnnotationProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [MetagenomicsBinningProduct](MetagenomicsBinningProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
@@ -177,7 +167,7 @@ URI: [analysis_api_schema:Sample](https://w3id.org/MONet/analysis-api-schema/Sam
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -186,8 +176,8 @@ URI: [analysis_api_schema:Sample](https://w3id.org/MONet/analysis-api-schema/Sam
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:Sample |
-| native | analysis_api_schema:Sample |
+| self | basalt_schema:Sample |
+| native | basalt_schema:Sample |
 
 
 
@@ -210,7 +200,7 @@ todos:
 - where should proposal ID live? probably not here? emsl_activity is a string referencing
   a campaign name. but we do need to link samples to their parent studies/projects
   somehow.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 abstract: true
 slots:
 - name
@@ -220,7 +210,7 @@ slots:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -242,9 +232,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -283,7 +273,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -312,12 +303,12 @@ todos:
 - where should proposal ID live? probably not here? emsl_activity is a string referencing
   a campaign name. but we do need to link samples to their parent studies/projects
   somehow.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 abstract: true
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     alias: id
     owner: Sample
@@ -341,9 +332,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -382,7 +373,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -398,7 +390,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: Sample
@@ -410,16 +402,18 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -428,7 +422,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: Sample
@@ -441,15 +435,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -467,7 +463,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: emsl_activity
     owner: Sample
@@ -479,7 +475,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: lims_barcode
     owner: Sample

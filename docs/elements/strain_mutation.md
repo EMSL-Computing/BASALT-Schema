@@ -11,7 +11,7 @@ _For complex constructs, use genotype_segment_* and component_* slots._
 
 
 
-URI: [analysis_api_schema:strain_mutation](https://w3id.org/MONet/analysis-api-schema/strain_mutation)
+URI: [basalt_schema:strain_mutation](https://emsl-computing.github.io/BASALT-Schema/elements/strain_mutation)
 Alias: strain_mutation
 
 <!-- no inheritance hierarchy -->
@@ -24,7 +24,7 @@ Alias: strain_mutation
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  yes  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  yes  |
 
 
 
@@ -38,7 +38,7 @@ Alias: strain_mutation
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -63,7 +63,7 @@ Alias: strain_mutation
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -72,8 +72,8 @@ Alias: strain_mutation
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:strain_mutation |
-| native | analysis_api_schema:strain_mutation |
+| self | basalt_schema:strain_mutation |
+| native | basalt_schema:strain_mutation |
 
 
 
@@ -86,11 +86,11 @@ name: strain_mutation
 description: 'Primary genetic modification or plasmid carried (e.g., "pTE314").
 
   For complex constructs, use genotype_segment_* and component_* slots.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: strain_mutation
 domain_of:
-- biological_entity
+- organism
 range: string
 
 ```

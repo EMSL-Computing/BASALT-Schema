@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:software_poc](https://w3id.org/MONet/analysis-api-schema/software_poc)
+URI: [basalt_schema:software_poc](https://emsl-computing.github.io/BASALT-Schema/elements/software_poc)
 Alias: software_poc
 
 <!-- no inheritance hierarchy -->
@@ -17,10 +17,10 @@ Alias: software_poc
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
 | [XASLCFDataProcessingActivity](XASLCFDataProcessingActivity.md) | Athena or Larch Linear Combination Fitting (LCF) processing activity for |  no  |
 | [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |  no  |
 | [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
-| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
 
 
 
@@ -66,7 +66,7 @@ Alias: software_poc
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -75,8 +75,8 @@ Alias: software_poc
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:software_poc |
-| native | analysis_api_schema:software_poc |
+| self | basalt_schema:software_poc |
+| native | basalt_schema:software_poc |
 
 
 
@@ -86,7 +86,7 @@ Alias: software_poc
 <details>
 ```yaml
 name: software_poc
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: software_poc
 owner: DataProcessingActivity

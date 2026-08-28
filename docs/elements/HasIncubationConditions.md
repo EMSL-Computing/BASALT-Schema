@@ -15,7 +15,7 @@ _of the sampleProcessing is_a tree._
 
 
 
-URI: [analysis_api_schema:HasIncubationConditions](https://w3id.org/MONet/analysis-api-schema/HasIncubationConditions)
+URI: [basalt_schema:HasIncubationConditions](https://emsl-computing.github.io/BASALT-Schema/elements/HasIncubationConditions)
 
 
 
@@ -99,7 +99,7 @@ URI: [analysis_api_schema:HasIncubationConditions](https://w3id.org/MONet/analys
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -108,8 +108,8 @@ URI: [analysis_api_schema:HasIncubationConditions](https://w3id.org/MONet/analys
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:HasIncubationConditions |
-| native | analysis_api_schema:HasIncubationConditions |
+| self | basalt_schema:HasIncubationConditions |
+| native | basalt_schema:HasIncubationConditions |
 
 
 
@@ -132,7 +132,7 @@ description: 'Mixin for activities/setups that involve controlled incubation.
   temperature and agitation parameters but live in different branches
 
   of the sampleProcessing is_a tree.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 mixin: true
 slots:
 - temperature_celsius
@@ -154,24 +154,25 @@ description: 'Mixin for activities/setups that involve controlled incubation.
   temperature and agitation parameters but live in different branches
 
   of the sampleProcessing is_a tree.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 mixin: true
 attributes:
   temperature_celsius:
     name: temperature_celsius
     description: Temperature at which the method/process/activity was performed
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: temperature_celsius
     owner: HasIncubationConditions
     domain_of:
     - ChromatographyConfiguration
     - HasIncubationConditions
+    - ChemicalConversionProcess
     range: float
   agitation_speed_rpm:
     name: agitation_speed_rpm
     description: Agitation/shaking speed in RPM (0 for static)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: agitation_speed_rpm
     owner: HasIncubationConditions
@@ -182,7 +183,7 @@ attributes:
     name: oxygen_relationship
     description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
     title: oxygen relationship
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     exact_mappings:
     - MIXS:0000015
     rank: 1000

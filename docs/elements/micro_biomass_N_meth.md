@@ -9,7 +9,7 @@ _Reference or method used in determining microbial biomass nitrogen_
 
 
 
-URI: [analysis_api_schema:micro_biomass_n_meth](https://w3id.org/MONet/analysis-api-schema/micro_biomass_n_meth)
+URI: [basalt_schema:micro_biomass_n_meth](https://emsl-computing.github.io/BASALT-Schema/elements/micro_biomass_n_meth)
 Alias: micro_biomass_n_meth
 
 <!-- no inheritance hierarchy -->
@@ -23,6 +23,7 @@ Alias: micro_biomass_n_meth
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 
 
@@ -37,7 +38,7 @@ Alias: micro_biomass_n_meth
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [SedimentSample](SedimentSample.md), [SoilSample](SoilSample.md) |
+| Domain Of | [OtherUndescribedSample](OtherUndescribedSample.md), [SedimentSample](SedimentSample.md), [SoilSample](SoilSample.md) |
 
 ### Cardinality and Requirements
 
@@ -62,7 +63,7 @@ Alias: micro_biomass_n_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -71,8 +72,8 @@ Alias: micro_biomass_n_meth
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:micro_biomass_n_meth |
-| native | analysis_api_schema:micro_biomass_n_meth |
+| self | basalt_schema:micro_biomass_n_meth |
+| native | basalt_schema:micro_biomass_n_meth |
 
 
 
@@ -84,10 +85,11 @@ Alias: micro_biomass_n_meth
 name: micro_biomass_n_meth
 description: Reference or method used in determining microbial biomass nitrogen
 title: microbial biomass nitrogen method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: micro_biomass_n_meth
 domain_of:
+- OtherUndescribedSample
 - SedimentSample
 - SoilSample
 range: string

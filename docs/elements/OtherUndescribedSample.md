@@ -9,7 +9,7 @@ _A sample that does not fit into any of the other described sample types._
 
 
 
-URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysis-api-schema/OtherUndescribedSample)
+URI: [basalt_schema:OtherUndescribedSample](https://emsl-computing.github.io/BASALT-Schema/elements/OtherUndescribedSample)
 
 
 
@@ -263,9 +263,9 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
         
       OtherUndescribedSample : method_development
         
-      OtherUndescribedSample : micro_biomass_C_meth
+      OtherUndescribedSample : micro_biomass_c_meth
         
-      OtherUndescribedSample : micro_biomass_N_meth
+      OtherUndescribedSample : micro_biomass_n_meth
         
       OtherUndescribedSample : microbial_biomass
         
@@ -688,8 +688,8 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
 | [mechanical_damage](mechanical_damage.md) | 0..1 <br/> [String](String.md) | Information about any mechanical damage exerted on the plant; can include mul... | direct |
 | [method_development](method_development.md) | 0..1 <br/> [String](String.md) | If your samples are TEST sample ONLY, please provide information on what you'... | direct |
 | [methane](methane.md) | 0..1 <br/> [String](String.md) | Methane (gas) amount or concentration at the time of sampling | direct |
-| [micro_biomass_C_meth](micro_biomass_C_meth.md) | 0..1 <br/> [String](String.md) | Reference or method used in determining microbial biomass | direct |
-| [micro_biomass_N_meth](micro_biomass_N_meth.md) | 0..1 <br/> [String](String.md) | Reference or method used in determining microbial biomass nitrogen | direct |
+| [micro_biomass_c_meth](micro_biomass_c_meth.md) | 0..1 <br/> [String](String.md) | Reference or method used in determining microbial biomass | direct |
+| [micro_biomass_n_meth](micro_biomass_n_meth.md) | 0..1 <br/> [String](String.md) | Reference or method used in determining microbial biomass nitrogen | direct |
 | [microbial_biomass](microbial_biomass.md) | 0..1 <br/> [String](String.md) | The part of the organic matter in the soil that constitutes living microorgan... | direct |
 | [microbial_biomass_c](microbial_biomass_c.md) | 0..1 <br/> [String](String.md) | The part of the organic matter in the soil that constitutes living microorgan... | direct |
 | [microbial_biomass_n](microbial_biomass_n.md) | 0..1 <br/> [String](String.md) | The part of the organic matter in the soil that constitutes living microorgan... | direct |
@@ -839,7 +839,7 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -848,8 +848,8 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:OtherUndescribedSample |
-| native | analysis_api_schema:OtherUndescribedSample |
+| self | basalt_schema:OtherUndescribedSample |
+| native | basalt_schema:OtherUndescribedSample |
 
 
 
@@ -866,7 +866,7 @@ URI: [analysis_api_schema:OtherUndescribedSample](https://w3id.org/MONet/analysi
 ```yaml
 name: OtherUndescribedSample
 description: A sample that does not fit into any of the other described sample types.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Sample
 slots:
 - agrochem_addition
@@ -971,8 +971,8 @@ slots:
 - mechanical_damage
 - method_development
 - methane
-- micro_biomass_C_meth
-- micro_biomass_N_meth
+- micro_biomass_c_meth
+- micro_biomass_n_meth
 - microbial_biomass
 - microbial_biomass_c
 - microbial_biomass_n
@@ -1128,7 +1128,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -1150,9 +1150,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -1191,7 +1191,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -1214,7 +1215,7 @@ attributes:
 ```yaml
 name: OtherUndescribedSample
 description: A sample that does not fit into any of the other described sample types.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Sample
 slot_usage:
   analysis_type:
@@ -1251,7 +1252,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     alias: id
     owner: OtherUndescribedSample
@@ -1275,9 +1276,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -1316,7 +1317,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -1333,7 +1335,7 @@ attributes:
     name: agrochem_addition
     description: Addition of fertilizers, pesticides, etc. - amount and time of applications
     title: agrochemical additions
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: agrochem_addition
     owner: OtherUndescribedSample
@@ -1349,7 +1351,7 @@ attributes:
       treatment was repeated, how long each treatment lasted, and the start and end
       time of the entire treatment; can include different temperature regimens
     title: air temperature regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     exact_mappings:
     - MIXS:0000551
     rank: 1000
@@ -1373,7 +1375,7 @@ attributes:
     name: al_sat
     description: Aluminum saturation (esp. For tropical soils)
     title: aluminum saturation
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: al_sat
     owner: OtherUndescribedSample
@@ -1385,7 +1387,7 @@ attributes:
     name: al_sat_meth
     description: Reference or method used in determining Al saturation
     title: aluminum saturation method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: al_sat_meth
     owner: OtherUndescribedSample
@@ -1398,7 +1400,7 @@ attributes:
     description: 'The ability of a solution to neutralize acids to the equivalence
       point of carbonate or bicarbonate (Unit: mg/L or meq/L)'
     title: alkalinity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: alkalinity
     owner: OtherUndescribedSample
@@ -1412,7 +1414,7 @@ attributes:
     name: alkalinity_method
     description: Method used for alkalinity measurement
     title: alkalinity method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: alkalinity_method
     owner: OtherUndescribedSample
@@ -1426,7 +1428,7 @@ attributes:
     description: Concentration of alkyl diethers. Provide value and unit, any unit
       is valid
     title: alkyl diethers
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: alkyl_diethers
     owner: OtherUndescribedSample
@@ -1440,7 +1442,7 @@ attributes:
     name: aminopept_act
     description: 'Measurement of aminopeptidase activity (Unit: mol/L/h)'
     title: aminopeptidase activity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: aminopept_act
     owner: OtherUndescribedSample
@@ -1455,7 +1457,7 @@ attributes:
     description: 'Concentration of ammonium in the sample. (Units: umol/L or mg/Liter
       or ppm)'
     title: ammonium
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: ammonium
     owner: OtherUndescribedSample
@@ -1468,12 +1470,11 @@ attributes:
   analysis_type:
     name: analysis_type
     description: The type(s) of analysis planned for this sample.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: analysis_type
     owner: OtherUndescribedSample
     domain_of:
-    - SampleProcessing
     - AerosolArmSample
     - AerosolSample
     - AMP2UserSample
@@ -1496,7 +1497,7 @@ attributes:
     description: Information about either pedigree or other ancestral information
       description
     title: ancestral data
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: ances_data
     owner: OtherUndescribedSample
@@ -1512,7 +1513,7 @@ attributes:
       lasted, and the start and end time of the entire treatment; can include multiple
       antibiotic regimens
     title: antibiotic regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: antibiotic_regm
     owner: OtherUndescribedSample
@@ -1524,7 +1525,7 @@ attributes:
     description: Bacterial production in the water column measured by isotope uptake.
       Provide value and unit, any unit is valid.
     title: bacterial production
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: bac_prod
     owner: OtherUndescribedSample
@@ -1538,7 +1539,7 @@ attributes:
     description: Measurement of bacterial respiration in the water column. Provide
       value and unit,any unit is valid.
     title: bacterial respiration
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: bac_resp
     owner: OtherUndescribedSample
@@ -1552,7 +1553,7 @@ attributes:
     description: Measurement of bacterial carbon production. Provide value and unit,
       any unit is valid
     title: bacterial carbon production
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: bacteria_carb_prod
     owner: OtherUndescribedSample
@@ -1566,7 +1567,7 @@ attributes:
     name: biochem_oxygen_dem
     description: a measure of the relative oxygen-depletion effect of a waste contaminant
     title: biochemical oxygen demand
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: biochem_oxygen_dem
     owner: OtherUndescribedSample
@@ -1577,7 +1578,7 @@ attributes:
     name: biol_stat
     description: The level of genome modification.
     title: biological status
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: biol_stat
     owner: OtherUndescribedSample
@@ -1590,7 +1591,7 @@ attributes:
     description: Information about treatment(s) involving use of biotic factors such
       as bacteria, viruses, or fungi.
     title: biotic regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: biotic_regm
     owner: OtherUndescribedSample
@@ -1610,7 +1611,7 @@ attributes:
     name: bishomohopanol
     description: 'Concentration of bishomohopanol. (Unit: ug/L or ug/g)'
     title: bishomohopanol
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: bishomohopanol
     owner: OtherUndescribedSample
@@ -1624,7 +1625,7 @@ attributes:
     name: bromide
     description: 'Concentration of bromide (Unit: ppm)'
     title: bromide
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: bromide
     owner: OtherUndescribedSample
@@ -1640,7 +1641,7 @@ attributes:
       carry electric current which is mostly dictated by the chemistry of and amount
       of soil water. (Unit: mS/cm)'
     title: bulk electrical conductivity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: bulk_elect_conductivity
     owner: OtherUndescribedSample
@@ -1655,7 +1656,7 @@ attributes:
     description: 'Concentration of calcium in the sample (Unit: mg/L or umol/L or
       ppm)'
     title: calcium
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: calcium
     owner: OtherUndescribedSample
@@ -1670,7 +1671,7 @@ attributes:
     description: Amount of carbon dioxide measured in the air the day of sampling.
       Provided by ARM
     title: carbon dioxide
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: carb_dioxide
     owner: OtherUndescribedSample
@@ -1685,7 +1686,7 @@ attributes:
     description: Amount of carbon monoxide measured in the air the day of sampling.
       Provided by ARM
     title: carbon monoxide
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: carb_monoxide
     owner: OtherUndescribedSample
@@ -1699,7 +1700,7 @@ attributes:
     name: carb_nitro_ratio
     description: Ratio of amount or concentrations of carbon to nitrogen.
     title: carbon nitrogen ratio
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: carb_nitro_ratio
     owner: OtherUndescribedSample
@@ -1714,7 +1715,7 @@ attributes:
       (CAS), a division of the American Chemical Society, to chemical compounds, polymers,
       biological sequences, mixtures, and alloys.
     title: CAS number
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - CAS
     rank: 1000
@@ -1732,7 +1733,7 @@ attributes:
       include multiple compounds. For chemical entities of biological interest ontology
       (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
     title: chemical administration
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     exact_mappings:
     - MIXS:0000751
     rank: 1000
@@ -1760,7 +1761,7 @@ attributes:
       was repeated, how long each treatment lasted, and the start and end time of
       the entire treatment; can include multiple mutagen regimens
     title: chemical mutagen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: chem_mutagen
     owner: OtherUndescribedSample
@@ -1772,7 +1773,7 @@ attributes:
     name: chem_oxygen_dem
     description: a measure of the relative oxygen-depletion effect of a waste contaminant
     title: chemical oxygen demand
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: chem_oxygen_dem
     owner: OtherUndescribedSample
@@ -1783,7 +1784,7 @@ attributes:
     name: chloride
     description: 'Concentration of chloride in the sample (Unit: mg/L or ppm)'
     title: chloride
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: chloride
     owner: OtherUndescribedSample
@@ -1797,7 +1798,7 @@ attributes:
     name: chlorophyll
     description: 'Concentration of chlorophyll (Unit: mg/m3 or ug/L)'
     title: chlorophyll
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: chlorophyll
     owner: OtherUndescribedSample
@@ -1812,7 +1813,7 @@ attributes:
     description: The name of the purchased material. A substance formed by chemical
       union of two or more elements or ingredients in definite proportion by weight.
     title: compound name
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: compound_name
     owner: OtherUndescribedSample
@@ -1826,7 +1827,7 @@ attributes:
     description: Electrical conductivity of water. Provide value and unit, any unit
       is valid.
     title: conductivity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: conduc
     owner: OtherUndescribedSample
@@ -1840,7 +1841,7 @@ attributes:
     description: 'Density of the sample, which is its mass per unit volume (aka volumetric
       mass density) (Unit: g/m3 or g/cm3)'
     title: density
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: density
     owner: OtherUndescribedSample
@@ -1856,7 +1857,7 @@ attributes:
       samples, depth is measured from sediment or soil surface respectively. Depth
       is required to be reported as an interval for subsurface samples. (Units: m)'
     title: depth
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: depth
     owner: OtherUndescribedSample
@@ -1874,7 +1875,7 @@ attributes:
     description: 'Concentration of diether lipids; can include multiple types of diether
       lipids (Unit: ng/L)'
     title: diether lipids
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: diether_lipids
     owner: OtherUndescribedSample
@@ -1889,7 +1890,7 @@ attributes:
     description: 'Concentration of dissolved carbon dioxide in the sample or liquid
       portion of the sample (Unit: umol/L or mg/L)'
     title: dissolved carbon dioxide
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: diss_carb_dioxide
     owner: OtherUndescribedSample
@@ -1903,7 +1904,7 @@ attributes:
     name: diss_hydrogen
     description: 'Concentration of dissolved hydrogens (Unit: umol/L)'
     title: dissolved hydrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: diss_hydrogen
     owner: OtherUndescribedSample
@@ -1919,7 +1920,7 @@ attributes:
       measured after filtering the sample using a 0.45 micrometer filter (Unit:  ug/L
       or mg/L or ppm)'
     title: dissolved inorganic carbon
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: diss_inorg_carb
     owner: OtherUndescribedSample
@@ -1933,7 +1934,7 @@ attributes:
     name: diss_inorg_nitro
     description: 'Concentration of dissolved inorganic nitrogen. (Unit: ug/L or umol/L)'
     title: dissolved inorganic nitrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: diss_inorg_nitro
     owner: OtherUndescribedSample
@@ -1947,7 +1948,7 @@ attributes:
     description: Concentration of dissolved inorganic phosphorus in the sample. Provide
       value and unit, any unit is valid.
     title: dissolved inorganic phosphate
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: diss_inorg_phosp
     owner: OtherUndescribedSample
@@ -1961,7 +1962,7 @@ attributes:
     description: 'Concentration of dissolved organic carbon in the sample, liquid
       portion of the sample, or aqueous phase of the fluid. (Unit:  umol/L or mg/L)'
     title: dissolved organic carbon
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: diss_org_carb
     owner: OtherUndescribedSample
@@ -1976,7 +1977,7 @@ attributes:
     description: 'Dissolved organic nitrogen concentration measured as: total dissolved
       nitrogen - NH4 - NO3 - NO2. Provide value and unit, any unit is valid'
     title: dissolved organic nitrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: diss_org_nitro
     owner: OtherUndescribedSample
@@ -1990,7 +1991,7 @@ attributes:
     name: diss_oxygen
     description: 'Concentration of dissolved oxygen. (Unit: umol/kg or mg/L)'
     title: dissolved oxygen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: diss_oxygen
     owner: OtherUndescribedSample
@@ -2005,7 +2006,7 @@ attributes:
     description: Visible waveband radiance and irradiance measurements in the water
       column. Provide value and unit, any unit is valid.
     title: downward PAR
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: down_par
     owner: OtherUndescribedSample
@@ -2018,7 +2019,7 @@ attributes:
     name: efficiency_percent
     description: percentage of volatile solids removed from the anaerobic digestor
     title: efficiency percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: efficiency_percent
     owner: OtherUndescribedSample
@@ -2031,7 +2032,7 @@ attributes:
       mayonnaise, hair colorants, emulsified oils, etc.; can include multiple emulsion
       types
     title: emulsions
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: emulsions
     owner: OtherUndescribedSample
@@ -2044,18 +2045,18 @@ attributes:
 
       degradation phenotypes for plasmids, converting genes for phage'
     title: encoded traits
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: encoded_traits
     owner: OtherUndescribedSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
   env_broad_scale:
     name: env_broad_scale
@@ -2065,7 +2066,7 @@ attributes:
       or a rainforest). We recommend using subclasses of EnvO''''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'''
     title: broad-scale environmental context
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: env_broad_scale
     owner: OtherUndescribedSample
@@ -2092,7 +2093,7 @@ attributes:
       spatial grain than your entry for env_broad_scale.If needed, request new terms
       on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'''
     title: local environmental context
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: env_local_scale
     owner: OtherUndescribedSample
@@ -2118,7 +2119,7 @@ attributes:
       ''''environmental material'''' (http://purl.obolibrary.org/obo/ENVO_00010483).
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'''
     title: environmental medium
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: env_medium
     owner: OtherUndescribedSample
@@ -2146,7 +2147,7 @@ attributes:
       a browser of EFO (v 2.95) terms please see http://purl.bioontology.org/ontology/EFO;
       for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI
     title: experimental factor
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: experimental_factor
     owner: OtherUndescribedSample
@@ -2169,7 +2170,7 @@ attributes:
     description: Other details about your sample that you feel can't be accurately
       represented in the available columns.
     title: other experimental factor
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: experimental_factor_other
     owner: OtherUndescribedSample
@@ -2193,7 +2194,7 @@ attributes:
       before sending the sample to EMSL, what was it? This is only applicable when
       sending an 'analytical sample'. See README for more details on types of samples.
     title: extraction method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: extraction_method
     owner: OtherUndescribedSample
@@ -2209,11 +2210,12 @@ attributes:
     - SedimentSample
     - SoilSample
     - WaterSample
+    - Extraction
     range: string
   external_identifiers:
     name: external_identifiers
     description: List of external identifiers associated with this entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: external_identifiers
     owner: OtherUndescribedSample
@@ -2246,7 +2248,7 @@ attributes:
       the start and end time of the entire treatment; can include multiple fertilizer
       regimens
     title: fertilizer regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: fertilizer_regm
     owner: OtherUndescribedSample
@@ -2258,7 +2260,7 @@ attributes:
     name: filter_method
     description: Type of filter used or how the sample was filtered
     title: filter method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: filter_method
     owner: OtherUndescribedSample
@@ -2274,7 +2276,7 @@ attributes:
     description: Raw or converted fluorescence of water. Provide value and unit, any
       unit is valid.
     title: fluorescence
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: fluor
     owner: OtherUndescribedSample
@@ -2290,7 +2292,7 @@ attributes:
       many times the treatment was repeated, how long each treatment lasted, and the
       start and end time of the entire treatment; can include multiple fungicide regimens
     title: fungicide regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: fungicide_regm
     owner: OtherUndescribedSample
@@ -2304,7 +2306,7 @@ attributes:
       the name of gaseous compound, amount administered, treatment duration, interval,
       and total experimental duration; can include multiple gaseous environment regimens
     title: gaseous environment
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: gaseous_environment
     owner: OtherUndescribedSample
@@ -2325,7 +2327,7 @@ attributes:
     description: amount or concentration of substances such as hydrogen sulfide carbon
       dioxide methane etc.; can include multiple substances
     title: gaseous substances
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: gaseous_substances
     owner: OtherUndescribedSample
@@ -2339,7 +2341,7 @@ attributes:
       e.g. specification of a transgene or the gene knocked-out or details of transient
       transfection
     title: genetic modifications
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: genetic_mod
     owner: OtherUndescribedSample
@@ -2357,7 +2359,7 @@ attributes:
     name: glucosidase_act
     description: 'Measurement of glucosidase activity (Unit: mol/L/h)'
     title: glucosidase activity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: glucosidase_act
     owner: OtherUndescribedSample
@@ -2375,7 +2377,7 @@ attributes:
       each treatment lasted, and the start and end time of the entire treatment; can
       include multiple treatments
     title: gravity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: gravity
     owner: OtherUndescribedSample
@@ -2387,7 +2389,7 @@ attributes:
     name: growth_habit
     description: Characteristic shape appearance or growth form of a plant species
     title: growth habit
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: growth_habit
     owner: OtherUndescribedSample
@@ -2403,7 +2405,7 @@ attributes:
       the start and end time of the entire treatment; can include multiple growth
       hormone regimens
     title: growth hormone regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: growth_hormone_regm
     owner: OtherUndescribedSample
@@ -2417,7 +2419,7 @@ attributes:
       3-D structure, bioreactor, etc. followed by the formula, recipe, or components
       used to create the growth medium.
     title: growth medium
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: growth_medium
     owner: OtherUndescribedSample
@@ -2435,7 +2437,7 @@ attributes:
     description: Heavy metals present and concentrations; can include multiple heavy
       metals and concentrations
     title: heavy metals
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: heavy_metals
     owner: OtherUndescribedSample
@@ -2447,7 +2449,7 @@ attributes:
     name: heavy_metals_meth
     description: Reference or method used in determining heavy metals
     title: heavy metals method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: heavy_metals_meth
     owner: OtherUndescribedSample
@@ -2463,7 +2465,7 @@ attributes:
       treatment was repeated, how long each treatment lasted, and the start and end
       time of the entire treatment; can include multiple regimens
     title: herbicide regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: herbicide_regm
     owner: OtherUndescribedSample
@@ -2478,7 +2480,7 @@ attributes:
       a (year) or d (day) or h (hour). Do not include the additional information in
       ().)'
     title: host age
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: host_age
     owner: OtherUndescribedSample
@@ -2494,20 +2496,20 @@ attributes:
 
       For microbes, this may be identical to organism_name.'
     title: host common name
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - common_name
     rank: 1000
     alias: host_common_name
     owner: OtherUndescribedSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
   host_disease_stat:
     name: host_disease_stat
@@ -2516,7 +2518,7 @@ attributes:
       should be chosen from the DO (Human Disease Ontology) at https://www.disease-ontology.org
       non-human host diseases are free text
     title: host disease status
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: host_disease_stat
     owner: OtherUndescribedSample
@@ -2527,7 +2529,7 @@ attributes:
     name: host_dry_mass
     description: 'Measurement of dry mass. (Unit: kg or g)'
     title: host dry mass
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: host_dry_mass
     owner: OtherUndescribedSample
@@ -2541,7 +2543,7 @@ attributes:
     name: host_height
     description: 'The height of subject. (Unit: cm or mm or m)'
     title: host height
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: host_height
     owner: OtherUndescribedSample
@@ -2556,7 +2558,7 @@ attributes:
     name: host_infra_spec_name
     description: Taxonomic information about the host below subspecies level
     title: host infra-specific name
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: host_infra_spec_name
     owner: OtherUndescribedSample
@@ -2568,7 +2570,7 @@ attributes:
     description: Taxonomic rank information about the host below subspecies level,
       such as variety, form, rank, etc.
     title: host infra-specific rank
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: host_infra_spec_rank
     owner: OtherUndescribedSample
@@ -2579,7 +2581,7 @@ attributes:
     name: host_length
     description: The length of subject
     title: host length
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: host_length
     owner: OtherUndescribedSample
@@ -2591,7 +2593,7 @@ attributes:
     name: host_life_stage
     description: Description of life stage of host
     title: host life stage
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: host_life_stage
     owner: OtherUndescribedSample
@@ -2607,7 +2609,7 @@ attributes:
       (pato) (v 2018-03-27) terms please see http://purl.bioontology.org/ontology/pato.
       For Human Phenotype Ontology (HP) (v 2018-06-13) please see http://purl.bioontology.org/ontology/HP
     title: host phenotype
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: host_phenotype
     owner: OtherUndescribedSample
@@ -2619,18 +2621,18 @@ attributes:
     description: The range and diversity of host species that an organism is capable
       of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####
     title: host specificity or range
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: host_spec_range
     owner: OtherUndescribedSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
     pattern: NCBITaxon:\d+
   host_symbiont:
@@ -2638,7 +2640,7 @@ attributes:
     description: The taxonomic name of the organism(s) found living in mutualistic,
       commensalistic, or parasitic symbiosis with the specific host.
     title: observed host symbionts
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: host_symbiont
     owner: OtherUndescribedSample
@@ -2649,7 +2651,7 @@ attributes:
     name: host_taxid
     description: NCBI taxon ID. Format with prefix NCBITaxon:####
     title: host taxonomy identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - host_taxonomy_id
     - host_ncbi_taxon_id
@@ -2658,20 +2660,20 @@ attributes:
     alias: host_taxid
     owner: OtherUndescribedSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
     pattern: NCBITaxon:\d+
   host_tot_mass:
     name: host_tot_mass
     description: 'Total mass of the host at collection. (Unit: kg or g)'
     title: host total mass
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: host_tot_mass
     owner: OtherUndescribedSample
@@ -2685,7 +2687,7 @@ attributes:
     name: host_wet_mass
     description: 'Measurement of wet mass. (Unit: kg or g)'
     title: host wet mass
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: host_wet_mass
     owner: OtherUndescribedSample
@@ -2703,7 +2705,7 @@ attributes:
       lasted, and the start and end time of the entire treatment; can include multiple
       regimens
     title: humidity regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: humidity_regm
     owner: OtherUndescribedSample
@@ -2725,7 +2727,7 @@ attributes:
     description: percentage of industrial effluents received by wastewater treatment
       plant
     title: industrial effluent percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: indust_eff_percent
     owner: OtherUndescribedSample
@@ -2737,7 +2739,7 @@ attributes:
     description: concentration of particles such as sand, grit, metal particles, ceramics,
       etc.; can include multiple particles
     title: inorganic particles
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: inorg_particles
     owner: OtherUndescribedSample
@@ -2753,7 +2755,7 @@ attributes:
 
       organism/material'
     title: isolation and growth conditions
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: isol_growth_condt
     owner: OtherUndescribedSample
@@ -2770,7 +2772,7 @@ attributes:
     name: isotope_exposure
     description: List isotope exposure or addition applied to your sample.
     title: isotope exposure
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: isotope_exposure
     owner: OtherUndescribedSample
@@ -2792,7 +2794,7 @@ attributes:
     name: item_number
     description: The item number of the purchased material
     title: item number
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: item_number
     owner: OtherUndescribedSample
@@ -2805,7 +2807,7 @@ attributes:
     name: latitude
     description: Latitude coordinate of the sampling site in WSG 84 format.
     title: latitude
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     broad_mappings:
     - MIXS:0000009
     rank: 1000
@@ -2829,7 +2831,7 @@ attributes:
     name: longitude
     description: Longitude coordinate of the sampling site in WSG 84 format.
     title: longitude
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     broad_mappings:
     - MIXS:0000009
     rank: 1000
@@ -2854,7 +2856,7 @@ attributes:
     description: Measurement of light intensity. Provide value and unit, any unit
       is valid.
     title: light intensity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: light_intensity
     owner: OtherUndescribedSample
@@ -2868,7 +2870,7 @@ attributes:
     description: Information about treatment(s) involving exposure to light including
       both light intensity and quality.
     title: light regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: light_regm
     owner: OtherUndescribedSample
@@ -2887,7 +2889,7 @@ attributes:
     name: link_addit_analys
     description: Link to additional analysis results performed on the sample
     title: link to additional analysis
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: link_addit_analys
     owner: OtherUndescribedSample
@@ -2900,7 +2902,7 @@ attributes:
     description: 'Concentration of magnesium in the sample (Unit: umol/kg or mol/L
       or mg/L or ppm)'
     title: magnesium
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: magnesium
     owner: OtherUndescribedSample
@@ -2914,7 +2916,7 @@ attributes:
     name: mean_frict_vel
     description: 'Measurement of mean friction velocity (Unit: m/s)'
     title: mean friction velocity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: mean_frict_vel
     owner: OtherUndescribedSample
@@ -2928,7 +2930,7 @@ attributes:
     name: mean_peak_frict_vel
     description: 'Measurement of mean peak friction velocity (Unit: m/s)'
     title: mean peak friction velocity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: mean_peak_frict_vel
     owner: OtherUndescribedSample
@@ -2943,7 +2945,7 @@ attributes:
     description: Information about any mechanical damage exerted on the plant; can
       include multiple damages and sites
     title: mechanical damage
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: mechanical_damage
     owner: OtherUndescribedSample
@@ -2956,7 +2958,7 @@ attributes:
     description: If your samples are TEST sample ONLY, please provide information
       on what you're hoping this test will resolve.
     title: method development
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: method_development
     owner: OtherUndescribedSample
@@ -2980,7 +2982,7 @@ attributes:
     description: 'Methane (gas) amount or concentration at the time of sampling. (Unit:
       umol/L or ppb or ppm)'
     title: methane
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: methane
     owner: OtherUndescribedSample
@@ -2991,27 +2993,31 @@ attributes:
     - SedimentSample
     range: string
     pattern: ^\d+(\.\d+)?\s*(umol/L|ppm|ppb)$
-  micro_biomass_C_meth:
-    name: micro_biomass_C_meth
+  micro_biomass_c_meth:
+    name: micro_biomass_c_meth
     description: Reference or method used in determining microbial biomass
     title: microbial biomass carbon method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: micro_biomass_C_meth
+    alias: micro_biomass_c_meth
     owner: OtherUndescribedSample
     domain_of:
     - OtherUndescribedSample
+    - SedimentSample
+    - SoilSample
     range: string
-  micro_biomass_N_meth:
-    name: micro_biomass_N_meth
+  micro_biomass_n_meth:
+    name: micro_biomass_n_meth
     description: Reference or method used in determining microbial biomass nitrogen
     title: microbial biomass nitrogen method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: micro_biomass_N_meth
+    alias: micro_biomass_n_meth
     owner: OtherUndescribedSample
     domain_of:
     - OtherUndescribedSample
+    - SedimentSample
+    - SoilSample
     range: string
   microbial_biomass:
     name: microbial_biomass
@@ -3019,7 +3025,7 @@ attributes:
       microorganisms smaller than 5-10 micrometer. If you keep this, you would need
       to have correction factors used for conversion to the final units
     title: microbial biomass
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: microbial_biomass
     owner: OtherUndescribedSample
@@ -3035,7 +3041,7 @@ attributes:
       to have correction factors used for conversion to the final units. Provide value
       and unit, any unit is valid
     title: microbial biomass carbon
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: microbial_biomass_c
     owner: OtherUndescribedSample
@@ -3052,7 +3058,7 @@ attributes:
       to have correction factors used for conversion to the final units. Provide value
       and unit, any unit is valid
     title: microbial biomass nitrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: microbial_biomass_n
     owner: OtherUndescribedSample
@@ -3066,7 +3072,7 @@ attributes:
     name: microbial_biomass_meth
     description: Reference or method used in determining microbial biomass
     title: microbial biomass method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: microbial_biomass_meth
     owner: OtherUndescribedSample
@@ -3083,7 +3089,7 @@ attributes:
       lasted, and the start and end time of the entire treatment; can include multiple
       mineral nutrient regimens
     title: mineral nutrient regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: mineral_nutr_regm
     owner: OtherUndescribedSample
@@ -3098,7 +3104,7 @@ attributes:
     description: Any other measurement performed or parameter collected that is not
       listed here
     title: miscellaneous parameter
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: misc_param
     owner: OtherUndescribedSample
@@ -3119,7 +3125,7 @@ attributes:
     description: 'Concentration of n-alkanes; can include multiple n-alkanes (Unit:
       ug/mL)'
     title: n-alkanes
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: n_alkanes
     owner: OtherUndescribedSample
@@ -3133,7 +3139,7 @@ attributes:
     description: 'Concentration of nitrate in the sample (Unit: umol/L or mg/L or
       ppm)'
     title: nitrate
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: nitrate
     owner: OtherUndescribedSample
@@ -3148,7 +3154,7 @@ attributes:
     description: 'Concentration of nitrite in the sample (Unit: umol/L or mg/L or
       ppm)'
     title: nitrite
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: nitrite
     owner: OtherUndescribedSample
@@ -3162,7 +3168,7 @@ attributes:
     name: nitro
     description: 'Concentration of nitrogen (total) (Unit: umol/L)'
     title: nitrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: nitro
     owner: OtherUndescribedSample
@@ -3178,7 +3184,7 @@ attributes:
       measured, e.g.insect, plant, total. Can include multiple measurements separated
       by ;
     title: non microbial biomass
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: non_microb_biomass
     owner: OtherUndescribedSample
@@ -3196,7 +3202,7 @@ attributes:
     name: non_microb_biomass_method
     description: Reference or method used in determining biomass
     title: non microbial biomass method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: non_microb_biomass_method
     owner: OtherUndescribedSample
@@ -3217,7 +3223,7 @@ attributes:
       treatment was repeated, how long each treatment lasted, and the start and end
       time of the entire treatment; can include multiple non-mineral nutrient regimens
     title: non mineral nutrient regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: non_min_nutr_regm
     owner: OtherUndescribedSample
@@ -3232,7 +3238,7 @@ attributes:
     description: Concentration of organic carbon. Provide value and unit any unit
       is valid
     title: organic carbon
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: org_carb
     owner: OtherUndescribedSample
@@ -3246,7 +3252,7 @@ attributes:
     name: org_matter
     description: 'Concentration of organic matter (Unit: mg/L)'
     title: organic matter
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: org_matter
     owner: OtherUndescribedSample
@@ -3261,7 +3267,7 @@ attributes:
     description: Concentration of organic nitrogen. Provide value and unit any unit
       is valid
     title: organic nitrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: org_nitro
     owner: OtherUndescribedSample
@@ -3275,7 +3281,7 @@ attributes:
     name: org_nitro_method
     description: Method used for obtaining organic nitrogen
     title: organic nitrogen method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: org_nitro_method
     owner: OtherUndescribedSample
@@ -3289,7 +3295,7 @@ attributes:
     description: concentration of particles such as faeces, hairs, food, vomit, paper,
       fibers, plant material, humus etc.
     title: organic particles
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: org_particles
     owner: OtherUndescribedSample
@@ -3303,7 +3309,7 @@ attributes:
       The method that was used for the enumeration (e.g. qPCR atp mpn etc.) should
       also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)'
     title: organism count
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: organism_count
     owner: OtherUndescribedSample
@@ -3315,7 +3321,7 @@ attributes:
     description: Other/additional details about your sample that you feel can't be
       accurately represented in ANY of the available columns.
     title: other
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: other
     owner: OtherUndescribedSample
@@ -3340,7 +3346,7 @@ attributes:
     name: other_samp_store_temp
     description: Please specify sample storage temperature if you selected 'other'
     title: other sample storage temperature
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: other_samp_store_temp
     owner: OtherUndescribedSample
@@ -3367,7 +3373,7 @@ attributes:
       is applied to your samples and the provided treatment terms do not satisfy please
       add it here. Multiple treatments can be entered here separated by ;
     title: other treatment
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: other_treatment
     owner: OtherUndescribedSample
@@ -3392,7 +3398,7 @@ attributes:
     description: Amount of oxygen measured in the air the day of sampling. Provided
       by ARM
     title: oxygen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: oxygen
     owner: OtherUndescribedSample
@@ -3405,7 +3411,7 @@ attributes:
     name: oxygen_relationship
     description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
     title: oxygen relationship
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     exact_mappings:
     - MIXS:0000015
     rank: 1000
@@ -3430,7 +3436,7 @@ attributes:
     description: Concentration of particulate organic carbon. Provide value and unit,
       any unit is valid.
     title: particulate organic carbon
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: part_org_carb
     owner: OtherUndescribedSample
@@ -3444,7 +3450,7 @@ attributes:
     name: part_org_nitro
     description: 'Concentration of particulate organic nitrogen. (Unit: ug/L or umol/L)'
     title: particulate organic nitrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: part_org_nitro
     owner: OtherUndescribedSample
@@ -3460,7 +3466,7 @@ attributes:
       with units preceded by the name of the particle type; can include multiple values
       separated by '';''.'
     title: particle class
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: particle_class
     owner: OtherUndescribedSample
@@ -3473,16 +3479,16 @@ attributes:
     description: To what is the entity pathogenic, e.g., humans, animals, plants,
       or specific tissues.
     title: pathogenicity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: pathogenicity
     owner: OtherUndescribedSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
-    - biological_entity
     range: string
   perturbation:
     name: perturbation
@@ -3491,7 +3497,7 @@ attributes:
       was repeated, how long each perturbation lasted, and the start and end time
       of the entire perturbation period; can include multiple perturbation types
     title: perturbation
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: perturbation
     owner: OtherUndescribedSample
@@ -3509,7 +3515,7 @@ attributes:
       the start and end time of the entire treatment; can include multiple pesticide
       regimens
     title: pesticide regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: pesticide_regm
     owner: OtherUndescribedSample
@@ -3521,7 +3527,7 @@ attributes:
     name: petroleum_hydrocarb
     description: 'Concentration of petroleum hydrocarbon (Unit: umol/L)'
     title: petroleum hydrocarbon
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: petroleum_hydrocarb
     owner: OtherUndescribedSample
@@ -3536,7 +3542,7 @@ attributes:
     description: pH measurement of the sample or liquid portion of sample or aqueous
       phase of the fluid
     title: pH
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: ph
     owner: OtherUndescribedSample
@@ -3551,7 +3557,7 @@ attributes:
     name: ph_meth
     description: Reference or method used in determining ph of the sample
     title: pH method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: ph_meth
     owner: OtherUndescribedSample
@@ -3568,7 +3574,7 @@ attributes:
       the treatment was repeated, how long each treatment lasted, and the start and
       end time of the entire treatment; can include multiple regimen
     title: pH regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: ph_regm
     owner: OtherUndescribedSample
@@ -3581,7 +3587,7 @@ attributes:
     description: 'Concentration of phaeopigments; can include multiple phaeopigments
       separated by a `;` (Unit: mg/cm3)'
     title: phaeopigments
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: phaeopigments
     owner: OtherUndescribedSample
@@ -3595,7 +3601,7 @@ attributes:
     name: phosphate
     description: 'Concentration of phosphate (Unit: umol/L)'
     title: phosphate
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: phosphate
     owner: OtherUndescribedSample
@@ -3611,7 +3617,7 @@ attributes:
       separated by `;`. Provide the phospholipid fatty acids followed by the measurement
       value ({phospholipid fatty acid name}{value} {unit})
     title: phospholipid fatty acid
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: phosplipid_fatt_acid
     owner: OtherUndescribedSample
@@ -3626,7 +3632,7 @@ attributes:
       of ultraviolet (wavelength from 100 to 400 nm), visible light (400-750 nm),
       or infrared radiation (750-2500 nm)
     title: photochemical exposure
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: photochemical_exposure
     owner: OtherUndescribedSample
@@ -3639,7 +3645,7 @@ attributes:
     name: photon_flux
     description: Measurement of photon flux. Provide value and unit, any unit is valid.
     title: photon flux
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: photon_flux
     owner: OtherUndescribedSample
@@ -3653,7 +3659,7 @@ attributes:
     description: 'Porosity of deposited sediment is volume of voids divided by the
       total volume of sample. (Unit: percent)'
     title: porosity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: porosity
     owner: OtherUndescribedSample
@@ -3666,7 +3672,7 @@ attributes:
     name: potassium
     description: 'Concentration of potassium in the sample (Unit: mg/L)'
     title: potassium
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: potassium
     owner: OtherUndescribedSample
@@ -3681,7 +3687,7 @@ attributes:
     description: the process of pre-treatment removes materials that can be easily
       collected from the raw wastewater
     title: pre-treatment
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: pre_treatment
     owner: OtherUndescribedSample
@@ -3692,7 +3698,7 @@ attributes:
     name: pressure
     description: 'Pressure to which the sample is subject, in atmospheres (Unit: atm)'
     title: pressure
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: pressure
     owner: OtherUndescribedSample
@@ -3710,7 +3716,7 @@ attributes:
     description: 'Measurment of pressure applied to the sample during experimentation
       (Unit: Pa)'
     title: pressure control
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: pressure_control
     owner: OtherUndescribedSample
@@ -3725,7 +3731,7 @@ attributes:
     description: Measurement of primary production generally measured as isotope uptake.
       Provide value and unit, any unit is valid.
     title: primary production
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: primary_prod
     owner: OtherUndescribedSample
@@ -3740,7 +3746,7 @@ attributes:
       of being treated biologically and a sludge that can be separately treated or
       processed
     title: primary treatmentz
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: primary_treatment
     owner: OtherUndescribedSample
@@ -3751,7 +3757,7 @@ attributes:
     name: priority_order
     description: Indicate the run order priority of your samples
     title: priority order
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: priority_order
     owner: OtherUndescribedSample
@@ -3765,7 +3771,7 @@ attributes:
     description: A DOI or description of how the compound was produced, if the commercially
       purchased material was altered
     title: production method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: production_method
     owner: OtherUndescribedSample
@@ -3781,7 +3787,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - study
     - study_id
@@ -3816,18 +3822,18 @@ attributes:
       field are specific to different taxa. For phage or virus: lytic/lysogenic/temperate/obligately
       lytic. For plasmids: incompatibility group. For eukaryotes: sexual/asexual'''
     title: propagation
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: propagation
     owner: OtherUndescribedSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - FieldDeployedTerraformSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
     - TerraformSample
-    - biological_entity
     range: string
   radiation_regm:
     name: radiation_regm
@@ -3837,7 +3843,7 @@ attributes:
       was repeated, how long each treatment lasted, and the start and end time of
       the entire treatment; can include multiple radiation regimens
     title: radiation regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: radiation_regm
     owner: OtherUndescribedSample
@@ -3851,7 +3857,7 @@ attributes:
       how long each treatment lasted, and the start and end time of the entire treatment;
       can include multiple regimens
     title: rainfall regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: rainfall_regm
     owner: OtherUndescribedSample
@@ -3865,7 +3871,7 @@ attributes:
       a number of different process configurations, such as batch or continuous, mesophilic,
       high solid or low solid, and single stage or multistage
     title: reactor type
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: reactor_type
     owner: OtherUndescribedSample
@@ -3877,7 +3883,7 @@ attributes:
     description: 'Redox potential measured relative to a hydrogen cell indicating
       oxidation or reduction potential (Unit: mV)'
     title: redox potential
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: redox_potential
     owner: OtherUndescribedSample
@@ -3894,7 +3900,7 @@ attributes:
     description: Primary publication if isolated before genome publication; otherwise
       primary genome report.
     title: reference for biomaterial
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: ref_biomaterial
     owner: OtherUndescribedSample
@@ -3912,7 +3918,7 @@ attributes:
       with submission schema.
     todos:
     - reconcile replicate modelling
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: replicate_number
     owner: OtherUndescribedSample
@@ -3941,7 +3947,7 @@ attributes:
       compare the specific conductance of the sample to a salinity standard such as
       seawater (Unit: practical salinity unit or percent)'
     title: salinity
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: salinity
     owner: OtherUndescribedSample
@@ -3957,7 +3963,7 @@ attributes:
     name: salinity_method
     description: Method used to determine sample salinity
     title: salinity method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: salinity_method
     owner: OtherUndescribedSample
@@ -3976,7 +3982,7 @@ attributes:
       each treatment lasted, and the start and end time of the entire treatment; can
       include multiple salt regimens.
     title: salt regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: salt_regm
     owner: OtherUndescribedSample
@@ -3993,7 +3999,7 @@ attributes:
       species Y. The target organism is the subject of the relationship and the other
       organism(s) is the object
     title: observed biotic relationship
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - samp_biotic_relationship
     exact_mappings:
@@ -4015,7 +4021,7 @@ attributes:
     name: samp_capt_status
     description: Reason for the sample
     title: sample capture status
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: samp_capt_status
     owner: OtherUndescribedSample
@@ -4027,7 +4033,7 @@ attributes:
     description: Stage of the disease at the time of sample collection e.g. inoculation,
       penetration, infection, growth and reproduction, dissemination of pathogen.
     title: sample disease stage
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: samp_dis_stage
     owner: OtherUndescribedSample
@@ -4040,7 +4046,7 @@ attributes:
       This field is NOT multivalued. If selecting other add the `other_samp_store_temp`
       attribute to provide additional detail.
     title: sample storage temperature
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - sample_storage_temperature
     - storage_temperature
@@ -4074,7 +4080,7 @@ attributes:
       sample was transferred to a new vial and generated a new sample)'''
     todos:
     - EMSL and NMDC both need better modelling for this
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_link
     owner: OtherUndescribedSample
@@ -4104,7 +4110,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - samp_name
     rank: 1000
@@ -4134,7 +4140,7 @@ attributes:
       or after retrieving the sample from environment or a link to the relevant protocol(s)
       performed.
     title: sample processing
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_processing
     owner: OtherUndescribedSample
@@ -4158,7 +4164,7 @@ attributes:
     description: 'Requires a standardized ontology term to describe what your sample
       is. Please search for your sample type via Ontology Lookup Sevice at https://www.ebi.ac.uk/ols4/ '
     title: sample type
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_type
     owner: OtherUndescribedSample
@@ -4172,7 +4178,7 @@ attributes:
     description: Reference to the sampling activity during which this sample was collected.
       This is a FK to the SamplingActivity class, which contains metadata about the
       sampling event, such as date, device, method.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampled_during
     owner: OtherUndescribedSample
@@ -4192,7 +4198,6 @@ attributes:
     - SynthesizedMaterialSample
     - TerraformSample
     - WaterSample
-    - ProcessedSample
     range: SamplingActivity
   season_environment:
     name: season_environment
@@ -4201,7 +4206,7 @@ attributes:
       was repeated how long each treatment lasted and the start and end time of the
       entire treatment
     title: season environment
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: season_environment
     owner: OtherUndescribedSample
@@ -4213,7 +4218,7 @@ attributes:
     description: the process for substantially degrading the biological content of
       the sewage
     title: secondary treatment
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: secondary_treatment
     owner: OtherUndescribedSample
@@ -4224,7 +4229,7 @@ attributes:
     name: sewage_type
     description: type of wastewater treatment plant as municipial or industrial
     title: sewage type
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sewage_type
     owner: OtherUndescribedSample
@@ -4236,7 +4241,7 @@ attributes:
     description: Collection design of pooled samples and/or sieve size and amount
       of sample sieved
     title: sieving
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sieving
     owner: OtherUndescribedSample
@@ -4249,7 +4254,7 @@ attributes:
     name: silicate
     description: 'Concentration of silicate (Unit: umol/L)'
     title: silicate
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: silicate
     owner: OtherUndescribedSample
@@ -4264,7 +4269,7 @@ attributes:
     description: Refers to the mesh/pore size used to pre-filter/pre-sort the sample.
       Materials larger than the size threshold are excluded from the sample
     title: size fraction lower threshold
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: size_frac_low
     owner: OtherUndescribedSample
@@ -4280,7 +4285,7 @@ attributes:
     description: Refers to the mesh/pore size used to retain the sample. Materials
       smaller than the size threshold are excluded from the sample
     title: size fraction upper threshold
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: size_frac_up
     owner: OtherUndescribedSample
@@ -4295,7 +4300,7 @@ attributes:
     name: sludge_retent_time
     description: the time activated sludge remains in reactor
     title: sludge retention time
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sludge_retent_time
     owner: OtherUndescribedSample
@@ -4306,7 +4311,7 @@ attributes:
     name: sodium
     description: 'Sodium concentration in the sample (Unit: ug/mL)'
     title: sodium
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sodium
     owner: OtherUndescribedSample
@@ -4322,7 +4327,7 @@ attributes:
       received from the Sun in the form of electromagnetic radiation in the wavelength
       range of the measuring instrument. (Unit: kW/m2/d or erg/cm2/s'
     title: solar irradiance
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: solar_irradiance
     owner: OtherUndescribedSample
@@ -4337,7 +4342,7 @@ attributes:
     description: concentration of substances such as ammonia, road-salt, sea-salt,
       cyanide, hydrogen sulfide, thiocyanates, thiosulfates, etc.
     title: soluble inorganic material
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: soluble_inorg_mat
     owner: OtherUndescribedSample
@@ -4349,7 +4354,7 @@ attributes:
     description: concentration of substances such as urea, fruit sugars, soluble proteins,
       drugs, pharmaceuticals, etc.
     title: soluble organic material
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: soluble_org_mat
     owner: OtherUndescribedSample
@@ -4361,7 +4366,7 @@ attributes:
     description: 'Concentration of soluble reactive phosphorus. (Unit: umol/L or mg/L
       or ppm)'
     title: soluble reactive phosphorus
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: soluble_react_phosp
     owner: OtherUndescribedSample
@@ -4376,7 +4381,7 @@ attributes:
       or to any derived sub-samples. The source material should be listed as a sample
       to inform details about parent material relationship.
     title: source material identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: source_mat_id
     owner: OtherUndescribedSample
@@ -4403,7 +4408,7 @@ attributes:
       how many times the treatment was repeated, how long each treatment lasted, and
       the start and end time of the entire treatment; can include multiple regimens
     title: standing water regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: standing_water_regm
     owner: OtherUndescribedSample
@@ -4416,7 +4421,7 @@ attributes:
     description: 'Date the incubation was started. Only relevant for incubation samples.
       Format: YYYY-MM-DD'
     title: incubation start date
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: start_date_inc
     owner: OtherUndescribedSample
@@ -4439,7 +4444,7 @@ attributes:
       If selecting other add the `other_storage_condt` attribute to provide additional
       detail.
     title: storage condition
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - samp_store_cond
     - storage_cond
@@ -4472,7 +4477,7 @@ attributes:
     name: storage_condition_other
     description: Free-text field for storage conditions when 'storage_condition' is
       'other'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - other_storage_condt
     - storage_condt_other
@@ -4506,7 +4511,7 @@ attributes:
     title: subspecific genetic lineage
     todos:
     - make this inlined/multivalued?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: subspecf_gen_lin
     owner: OtherUndescribedSample
@@ -4521,7 +4526,7 @@ attributes:
     description: 'Concentration of sulfate in the sample. (Unit: umol/L or mg/L or
       ppm)'
     title: sulfate
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sulfate
     owner: OtherUndescribedSample
@@ -4536,7 +4541,7 @@ attributes:
     description: 'Concentration of sulfide in the sample. (Unit: umol/L or mg/L or
       ppm)'
     title: sulfide
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sulfide
     owner: OtherUndescribedSample
@@ -4550,7 +4555,7 @@ attributes:
     name: suspend_part_matter
     description: 'Concentration of suspended particulate matter. (Unit: mg/L)'
     title: suspended particulate matter
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: suspend_part_matter
     owner: OtherUndescribedSample
@@ -4564,7 +4569,7 @@ attributes:
     description: concentration of substances including a wide variety of material
       such as silt, decaying plant and animal matter, etc; can include multiple substances
     title: suspended solids
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: suspend_solids
     owner: OtherUndescribedSample
@@ -4575,7 +4580,7 @@ attributes:
     name: synth_instrument
     description: The instrumentation used to synthesize the material sample.
     title: synthesizing instrument
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: synth_instrument
     owner: OtherUndescribedSample
@@ -4587,7 +4592,7 @@ attributes:
     name: synth_process
     description: Provide the citation or describe the method of synthesis.
     title: synthesis process
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: synth_process
     owner: OtherUndescribedSample
@@ -4599,7 +4604,7 @@ attributes:
     name: synth_reagents
     description: The reagents used in the material synthesis
     title: synthesis reagents
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: synth_reagents
     owner: OtherUndescribedSample
@@ -4611,7 +4616,7 @@ attributes:
     name: technical_reps
     description: Number of technical replicates for the sample.
     title: technical replicates
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: technical_reps
     owner: OtherUndescribedSample
@@ -4635,7 +4640,7 @@ attributes:
     name: temp
     description: 'Temperature of the sample at the time of sampling. (Units: C)'
     title: temperature
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: temp
     owner: OtherUndescribedSample
@@ -4657,7 +4662,7 @@ attributes:
     description: The range of temperatures at which it is safe to store a label that
       has been applied to a substrate. Provided by iMet
     title: temperature exposure
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: temperature_exposure
     owner: OtherUndescribedSample
@@ -4670,7 +4675,7 @@ attributes:
     description: the process providing a final treatment stage to raise the effluent
       quality before it is discharged to the receiving environment
     title: tertiary treatment
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: tertiary_treatment
     owner: OtherUndescribedSample
@@ -4681,7 +4686,7 @@ attributes:
     name: tidal_stage
     description: Stage of tide
     title: tidal stage
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: tidal_stage
     owner: OtherUndescribedSample
@@ -4694,7 +4699,7 @@ attributes:
     name: tiss_cult_growth_med
     description: Description of plant tissue culture growth media used
     title: tissue culture growth media
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: tiss_cult_growth_med
     owner: OtherUndescribedSample
@@ -4707,7 +4712,7 @@ attributes:
     name: tot_carb
     description: Total carbon content. Provide value and unit, any unit is valid
     title: total carbon content
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: tot_carb
     owner: OtherUndescribedSample
@@ -4720,7 +4725,7 @@ attributes:
     name: tot_depth_water_col
     description: 'Measurement of total depth of water column (Unit: m)'
     title: total depth of water column
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: tot_depth_water_col
     owner: OtherUndescribedSample
@@ -4736,7 +4741,7 @@ attributes:
       by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen. (Unit:
       ug/L)'
     title: total dissolved nitrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: tot_diss_nitro
     owner: OtherUndescribedSample
@@ -4749,7 +4754,7 @@ attributes:
     name: tot_inorg_nitro
     description: 'Total inorganic nitrogen content. (Unit: ug/L)'
     title: total inorganic nitrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: tot_inorg_nitro
     owner: OtherUndescribedSample
@@ -4764,7 +4769,7 @@ attributes:
       nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured
       without filtering reported as nitrogen. (Unit: ug/L or umol/L or mg/L)'
     title: total nitrogen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: tot_nitro
     owner: OtherUndescribedSample
@@ -4777,7 +4782,7 @@ attributes:
     name: tot_nitro_cont_meth
     description: Reference or method used in determining the total nitrogen
     title: total nitrogen content method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: tot_nitro_cont_meth
     owner: OtherUndescribedSample
@@ -4791,7 +4796,7 @@ attributes:
     description: Total nitrogen content of the sample. Provide value and unit any
       unit is valid
     title: total nitrogen content
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: tot_nitro_content
     owner: OtherUndescribedSample
@@ -4805,7 +4810,7 @@ attributes:
     name: tot_org_c_meth
     description: Reference or method used in determining total organic carbon
     title: total organic carbon method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: tot_org_c_meth
     owner: OtherUndescribedSample
@@ -4819,7 +4824,7 @@ attributes:
     description: 'Total organic carbon content. Provided as gram of Carbon per kg
       of your sample material. (Unit: g C/kg)'
     title: total organic carbon
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: tot_org_carb
     owner: OtherUndescribedSample
@@ -4833,7 +4838,7 @@ attributes:
     name: tot_part_carb
     description: 'Total particulate carbon content. (Unit: ug/L or umol/L)'
     title: total particulate carbon
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: tot_part_carb
     owner: OtherUndescribedSample
@@ -4848,7 +4853,7 @@ attributes:
       phosphorus = total dissolved phosphorus + particulate phosphorus. (Unit: ug/L
       or umol/L)'
     title: total phosphorus
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: tot_phosp
     owner: OtherUndescribedSample
@@ -4861,7 +4866,7 @@ attributes:
     name: tot_phosphate
     description: total amount or concentration of phosphate
     title: total phosphate
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: tot_phosphate
     owner: OtherUndescribedSample
@@ -4875,16 +4880,16 @@ attributes:
 
       be a range of producers.'
     title: trophic level
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: trophic_level
     owner: OtherUndescribedSample
     domain_of:
+    - organism
     - CultureEnvironmentalSample
     - MixedCultureSample
     - OtherUndescribedSample
     - PureCultureSample
-    - biological_entity
     range: TrophicLevelEnum
   turbidity:
     name: turbidity
@@ -4894,7 +4899,7 @@ attributes:
     todos:
     - decide how to represent in backend (normalized child table with FK to PlateSetupActivity,
       array column, or other)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: turbidity
     owner: OtherUndescribedSample
@@ -4909,7 +4914,7 @@ attributes:
     description: Volatile organic compounds are organic chemicals that have a high
       vapour pressure at room temperature.
     title: volatile organic compounds
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: volatile_org_comp
     owner: OtherUndescribedSample
@@ -4923,7 +4928,7 @@ attributes:
     description: the origin of wastewater such as human waste rainfall storm drains
       etc.
     title: wasterwater type
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: wastewater_type
     owner: OtherUndescribedSample
@@ -4934,7 +4939,7 @@ attributes:
     name: water_content
     description: Water content measurement. Provide value and unit any unit is valid
     title: water content
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: water_content
     owner: OtherUndescribedSample
@@ -4952,7 +4957,7 @@ attributes:
     description: Measurement of magnitude and direction of flow within a fluid. Provide
       value and unit, any unit is valid.
     title: water current
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: water_current
     owner: OtherUndescribedSample
@@ -4968,7 +4973,7 @@ attributes:
       was repeated, how long each treatment lasted, and the start and end time of
       the entire treatment; can include multiple regimens
     title: water temperature regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: water_temp_regm
     owner: OtherUndescribedSample
@@ -4983,7 +4988,7 @@ attributes:
       each treatment lasted, and the start and end time of the entire treatment; can
       include multiple regimens
     title: watering regimen
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: watering_regm
     owner: OtherUndescribedSample
@@ -5002,7 +5007,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: OtherUndescribedSample
@@ -5014,16 +5019,18 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -5032,7 +5039,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: OtherUndescribedSample
@@ -5045,15 +5052,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -5071,7 +5080,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: emsl_activity
     owner: OtherUndescribedSample
@@ -5083,7 +5092,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: lims_barcode
     owner: OtherUndescribedSample

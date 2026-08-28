@@ -3,7 +3,7 @@
 # Slot: trait 
 
 
-_Trait category for the biological entity._
+_Trait category for the organism._
 
 _Example: "Bacterial Resistance", "Other"_
 
@@ -11,7 +11,7 @@ _Example: "Bacterial Resistance", "Other"_
 
 
 
-URI: [analysis_api_schema:trait](https://w3id.org/MONet/analysis-api-schema/trait)
+URI: [basalt_schema:trait](https://emsl-computing.github.io/BASALT-Schema/elements/trait)
 Alias: trait
 
 <!-- no inheritance hierarchy -->
@@ -24,7 +24,7 @@ Alias: trait
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
 
 
 
@@ -38,7 +38,7 @@ Alias: trait
 | Property | Value |
 | --- | --- |
 | Range | [IntendedTraitEnum](IntendedTraitEnum.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -63,7 +63,7 @@ Alias: trait
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -72,8 +72,8 @@ Alias: trait
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:trait |
-| native | analysis_api_schema:trait |
+| self | basalt_schema:trait |
+| native | basalt_schema:trait |
 
 
 
@@ -83,14 +83,14 @@ Alias: trait
 <details>
 ```yaml
 name: trait
-description: 'Trait category for the biological entity.
+description: 'Trait category for the organism.
 
   Example: "Bacterial Resistance", "Other"'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: trait
 domain_of:
-- biological_entity
+- organism
 range: IntendedTraitEnum
 
 ```

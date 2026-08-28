@@ -9,7 +9,7 @@ _Total amount of analyte in micrograms_
 
 
 
-URI: [analysis_api_schema:total_amount_ug](https://w3id.org/MONet/analysis-api-schema/total_amount_ug)
+URI: [basalt_schema:total_amount_ug](https://emsl-computing.github.io/BASALT-Schema/elements/total_amount_ug)
 Alias: total_amount_ug
 
 <!-- no inheritance hierarchy -->
@@ -22,7 +22,7 @@ Alias: total_amount_ug
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  no  |
+| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing |  no  |
 | [CoreSection](CoreSection.md) | A section of a core sample (TOP, MID, BTM) |  no  |
 
 
@@ -62,7 +62,7 @@ Alias: total_amount_ug
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -71,8 +71,8 @@ Alias: total_amount_ug
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:total_amount_ug |
-| native | analysis_api_schema:total_amount_ug |
+| self | basalt_schema:total_amount_ug |
+| native | basalt_schema:total_amount_ug |
 
 
 
@@ -83,7 +83,7 @@ Alias: total_amount_ug
 ```yaml
 name: total_amount_ug
 description: Total amount of analyte in micrograms
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: total_amount_ug
 domain_of:

@@ -18,7 +18,7 @@ from pathlib import Path
 from linkml_runtime import SchemaView
 
 ROOT = Path(__file__).resolve().parent.parent
-SCHEMA = ROOT / "src/analysis_api_schema/schema/analysis_api_schema.yaml"
+SCHEMA = ROOT / "src/basalt_schema/schema/basalt_schema.yaml"
 HTML = ROOT / "visuals/schema-explorer.html"
 MARKER = '<script id="model" type="application/json">'
 
@@ -42,7 +42,7 @@ def build_model():
 
     def stage_of(name):                      # process-flow lane
         a = anc_set(name)
-        if name == "biological_entity": return "bioentity"
+        if name == "organism": return "organism"
         if "DataProduct" in a or "PlateProduct" in a or name in ("MAOMProduct", "WEOMProduct"): return "products"
         if "DataProcessingActivity" in a: return "dataproc"
         if "DataGenerationActivity" in a: return "datagen"

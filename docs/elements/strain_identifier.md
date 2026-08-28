@@ -11,7 +11,7 @@ _NOT the database UUID   that is the Strain.id attribute._
 
 
 
-URI: [analysis_api_schema:strain_identifier](https://w3id.org/MONet/analysis-api-schema/strain_identifier)
+URI: [basalt_schema:strain_identifier](https://emsl-computing.github.io/BASALT-Schema/elements/strain_identifier)
 Alias: strain_identifier
 
 <!-- no inheritance hierarchy -->
@@ -24,7 +24,7 @@ Alias: strain_identifier
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  yes  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  yes  |
 
 
 
@@ -38,7 +38,7 @@ Alias: strain_identifier
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -70,7 +70,7 @@ Alias: strain_identifier
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -79,8 +79,8 @@ Alias: strain_identifier
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:strain_identifier |
-| native | analysis_api_schema:strain_identifier |
+| self | basalt_schema:strain_identifier |
+| native | basalt_schema:strain_identifier |
 
 
 
@@ -93,14 +93,14 @@ name: strain_identifier
 description: 'External human-readable strain identifier (e.g. "KT2440_pTE314").
 
   NOT the database UUID   that is the Strain.id attribute.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 aliases:
 - strain_id
 - strain_name
 rank: 1000
 alias: strain_identifier
 domain_of:
-- biological_entity
+- organism
 range: string
 required: true
 

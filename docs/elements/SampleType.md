@@ -7,7 +7,7 @@ _Types of samples that can be collected_
 
 
 
-URI: [analysis_api_schema:SampleType](https://w3id.org/MONet/analysis-api-schema/SampleType)
+URI: [basalt_schema:SampleType](https://emsl-computing.github.io/BASALT-Schema/elements/SampleType)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -36,7 +36,7 @@ URI: [analysis_api_schema:SampleType](https://w3id.org/MONet/analysis-api-schema
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -49,7 +49,7 @@ URI: [analysis_api_schema:SampleType](https://w3id.org/MONet/analysis-api-schema
 ```yaml
 name: SampleType
 description: Types of samples that can be collected
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   soil_sample:

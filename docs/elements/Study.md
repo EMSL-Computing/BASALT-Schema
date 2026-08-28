@@ -13,7 +13,7 @@ _one or more campaigns. The study may also have associated DOIs and funding sour
 
 
 
-URI: [analysis_api_schema:Study](https://w3id.org/MONet/analysis-api-schema/Study)
+URI: [basalt_schema:Study](https://emsl-computing.github.io/BASALT-Schema/elements/Study)
 
 
 
@@ -149,7 +149,7 @@ URI: [analysis_api_schema:Study](https://w3id.org/MONet/analysis-api-schema/Stud
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -158,8 +158,8 @@ URI: [analysis_api_schema:Study](https://w3id.org/MONet/analysis-api-schema/Stud
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:Study |
-| native | analysis_api_schema:Study |
+| self | basalt_schema:Study |
+| native | basalt_schema:Study |
 
 
 
@@ -182,7 +182,7 @@ description: 'A study or research project, typically associated with a proposal 
   with
 
   one or more campaigns. The study may also have associated DOIs and funding sources.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 slots:
 - external_identifiers
 slot_usage:
@@ -193,7 +193,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     identifier: true
     domain_of:
     - Activity
@@ -215,9 +215,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -256,7 +256,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -271,7 +272,7 @@ attributes:
     required: true
   project_id:
     name: project_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     domain_of:
     - Study
@@ -280,7 +281,7 @@ attributes:
   title:
     name: title
     description: The title of the study/proposal.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     domain_of:
     - Study
@@ -288,7 +289,7 @@ attributes:
   name:
     name: name
     description: Short name or code for the study.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     domain_of:
     - Activity
     - Entity
@@ -297,16 +298,18 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -314,7 +317,7 @@ attributes:
   proposal_abstract:
     name: proposal_abstract
     description: The abstract submitted with the research proposal.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     domain_of:
     - Study
@@ -322,7 +325,7 @@ attributes:
   description:
     name: description
     description: study objectives and scope
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     domain_of:
     - Activity
     - Entity
@@ -332,15 +335,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -351,7 +356,7 @@ attributes:
   has_participants:
     name: has_participants
     description: Links to a record of a person and their roles for this study.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     domain_of:
     - Study
@@ -359,7 +364,7 @@ attributes:
     multivalued: true
   principal_investigator:
     name: principal_investigator
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     domain_of:
     - Study
@@ -367,28 +372,28 @@ attributes:
     required: true
   collaborating_institution:
     name: collaborating_institution
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     domain_of:
     - Study
     range: string
   project_status:
     name: project_status
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     domain_of:
     - Study
     range: ProjectStatusEnum
   project_start:
     name: project_start
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     domain_of:
     - Study
     range: datetime
   project_end:
     name: project_end
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     domain_of:
     - Study
@@ -396,7 +401,7 @@ attributes:
   associated_dois:
     name: associated_dois
     description: A list of DOIs associated with this study
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     domain_of:
     - Study
@@ -404,7 +409,7 @@ attributes:
     multivalued: true
   funding_sources:
     name: funding_sources
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     domain_of:
     - Study
@@ -426,7 +431,7 @@ description: 'A study or research project, typically associated with a proposal 
   with
 
   one or more campaigns. The study may also have associated DOIs and funding sources.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 slot_usage:
   external_identifiers:
     name: external_identifiers
@@ -435,7 +440,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     identifier: true
     alias: id
     owner: Study
@@ -459,9 +464,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -500,7 +505,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -515,7 +521,7 @@ attributes:
     required: true
   project_id:
     name: project_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     alias: project_id
     owner: Study
@@ -526,7 +532,7 @@ attributes:
   title:
     name: title
     description: The title of the study/proposal.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     alias: title
     owner: Study
@@ -536,7 +542,7 @@ attributes:
   name:
     name: name
     description: Short name or code for the study.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     alias: name
     owner: Study
     domain_of:
@@ -547,16 +553,18 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -564,7 +572,7 @@ attributes:
   proposal_abstract:
     name: proposal_abstract
     description: The abstract submitted with the research proposal.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     alias: proposal_abstract
     owner: Study
@@ -574,7 +582,7 @@ attributes:
   description:
     name: description
     description: study objectives and scope
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     alias: description
     owner: Study
     domain_of:
@@ -586,15 +594,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -605,7 +615,7 @@ attributes:
   has_participants:
     name: has_participants
     description: Links to a record of a person and their roles for this study.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     alias: has_participants
     owner: Study
@@ -615,7 +625,7 @@ attributes:
     multivalued: true
   principal_investigator:
     name: principal_investigator
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     alias: principal_investigator
     owner: Study
@@ -625,7 +635,7 @@ attributes:
     required: true
   collaborating_institution:
     name: collaborating_institution
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     alias: collaborating_institution
     owner: Study
@@ -634,7 +644,7 @@ attributes:
     range: string
   project_status:
     name: project_status
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     alias: project_status
     owner: Study
@@ -643,7 +653,7 @@ attributes:
     range: ProjectStatusEnum
   project_start:
     name: project_start
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     alias: project_start
     owner: Study
@@ -652,7 +662,7 @@ attributes:
     range: datetime
   project_end:
     name: project_end
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     alias: project_end
     owner: Study
@@ -662,7 +672,7 @@ attributes:
   associated_dois:
     name: associated_dois
     description: A list of DOIs associated with this study
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     alias: associated_dois
     owner: Study
@@ -672,7 +682,7 @@ attributes:
     multivalued: true
   funding_sources:
     name: funding_sources
-    from_schema: https://w3id.org/MONet/analysis-api-schema/study
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/study
     rank: 1000
     alias: funding_sources
     owner: Study
@@ -684,7 +694,7 @@ attributes:
     name: external_identifiers
     description: List of project- or study-level identifiers (e.g., GOLD study ID)
       representing this project.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: external_identifiers
     owner: Study

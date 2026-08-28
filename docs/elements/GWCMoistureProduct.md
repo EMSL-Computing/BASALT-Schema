@@ -9,7 +9,7 @@ _Gravimetric water content (GWC) analysis product, typically derived via oven-dr
 
 
 
-URI: [analysis_api_schema:GWCMoistureProduct](https://w3id.org/MONet/analysis-api-schema/GWCMoistureProduct)
+URI: [basalt_schema:GWCMoistureProduct](https://emsl-computing.github.io/BASALT-Schema/elements/GWCMoistureProduct)
 
 
 
@@ -162,7 +162,7 @@ URI: [analysis_api_schema:GWCMoistureProduct](https://w3id.org/MONet/analysis-ap
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -171,8 +171,8 @@ URI: [analysis_api_schema:GWCMoistureProduct](https://w3id.org/MONet/analysis-ap
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:GWCMoistureProduct |
-| native | analysis_api_schema:GWCMoistureProduct |
+| self | basalt_schema:GWCMoistureProduct |
+| native | basalt_schema:GWCMoistureProduct |
 
 
 
@@ -190,21 +190,21 @@ URI: [analysis_api_schema:GWCMoistureProduct](https://w3id.org/MONet/analysis-ap
 name: GWCMoistureProduct
 description: Gravimetric water content (GWC) analysis product, typically derived via
   oven-drying and weighing of a known mass of soil.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: ProcessedData
 slots:
 - measure_type
 attributes:
   gwc_percent_id:
     name: gwc_percent_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - GWCMoistureProduct
     range: QuantityValue
   flag:
     name: flag
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     domain_of:
     - WellReading
     - BulkDensityProduct
@@ -227,12 +227,12 @@ attributes:
 name: GWCMoistureProduct
 description: Gravimetric water content (GWC) analysis product, typically derived via
   oven-drying and weighing of a known mass of soil.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: ProcessedData
 attributes:
   gwc_percent_id:
     name: gwc_percent_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: gwc_percent_id
     owner: GWCMoistureProduct
@@ -241,7 +241,7 @@ attributes:
     range: QuantityValue
   flag:
     name: flag
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     alias: flag
     owner: GWCMoistureProduct
     domain_of:
@@ -259,7 +259,7 @@ attributes:
     name: measure_type
     description: Whether the measurement recorded is a single measurement, one of
       a set of  replicate measurements, or an average of several replicate measurements.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: measure_type
     owner: GWCMoistureProduct
@@ -293,7 +293,7 @@ attributes:
       \ retained until formal typed class exists."
     todos:
     - make this inined/multivalued?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: summary_metrics
     owner: GWCMoistureProduct
@@ -304,7 +304,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: lims_barcode
     owner: GWCMoistureProduct
@@ -316,12 +316,13 @@ attributes:
   sample_id:
     name: sample_id
     description: Link back to the originating sample
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_id
     owner: GWCMoistureProduct
     domain_of:
     - ProcessedData
+    - ProcessingSampleLink
     - AMP2WellMetadata
     - MetagenomicsProduct
     range: Sample
@@ -329,7 +330,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: GWCMoistureProduct
@@ -341,16 +342,18 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -359,7 +362,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: GWCMoistureProduct
@@ -372,15 +375,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -395,7 +400,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - study
     - study_id
@@ -432,7 +437,7 @@ attributes:
 
       in the same sampling event or campaign.'
     title: sampling set
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampling_set
     owner: GWCMoistureProduct
@@ -448,7 +453,7 @@ attributes:
     - value: TOP
     - value: MID
     - value: BTM
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: core_section
     owner: GWCMoistureProduct
@@ -466,7 +471,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - samp_name
     rank: 1000
@@ -492,7 +497,7 @@ attributes:
     range: string
   s3_base_url:
     name: s3_base_url
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_base_url
     owner: GWCMoistureProduct
@@ -501,7 +506,7 @@ attributes:
     range: string
   s3_bucket:
     name: s3_bucket
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_bucket
     owner: GWCMoistureProduct
@@ -511,7 +516,7 @@ attributes:
   s3_key:
     name: s3_key
     description: MinIO/S3 object key; required for all data products
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_key
     owner: GWCMoistureProduct
@@ -522,7 +527,7 @@ attributes:
   filesize:
     name: filesize
     description: Size of the file in bytes
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: filesize
     owner: GWCMoistureProduct
@@ -531,7 +536,7 @@ attributes:
     range: integer
   md5checksum:
     name: md5checksum
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: md5checksum
     owner: GWCMoistureProduct
@@ -540,7 +545,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: GWCMoistureProduct
@@ -564,9 +569,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -605,7 +610,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue

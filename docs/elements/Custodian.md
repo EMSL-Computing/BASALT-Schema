@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:Custodian](https://w3id.org/MONet/analysis-api-schema/Custodian)
+URI: [basalt_schema:Custodian](https://emsl-computing.github.io/BASALT-Schema/elements/Custodian)
 
 
 
@@ -72,7 +72,7 @@ URI: [analysis_api_schema:Custodian](https://w3id.org/MONet/analysis-api-schema/
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -81,8 +81,8 @@ URI: [analysis_api_schema:Custodian](https://w3id.org/MONet/analysis-api-schema/
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:Custodian |
-| native | analysis_api_schema:Custodian |
+| self | basalt_schema:Custodian |
+| native | basalt_schema:Custodian |
 
 
 
@@ -98,11 +98,11 @@ URI: [analysis_api_schema:Custodian](https://w3id.org/MONet/analysis-api-schema/
 <details>
 ```yaml
 name: Custodian
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     domain_of:
     - Activity
@@ -124,9 +124,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -165,7 +165,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -180,7 +181,7 @@ attributes:
     required: true
   person_id:
     name: person_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - Custodian
@@ -194,11 +195,11 @@ attributes:
 <details>
 ```yaml
 name: Custodian
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: Custodian
@@ -222,9 +223,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -263,7 +264,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -278,7 +280,7 @@ attributes:
     required: true
   person_id:
     name: person_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: person_id
     owner: Custodian

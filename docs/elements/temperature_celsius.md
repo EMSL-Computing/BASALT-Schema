@@ -9,7 +9,7 @@ _Temperature at which the method/process/activity was performed_
 
 
 
-URI: [analysis_api_schema:temperature_celsius](https://w3id.org/MONet/analysis-api-schema/temperature_celsius)
+URI: [basalt_schema:temperature_celsius](https://emsl-computing.github.io/BASALT-Schema/elements/temperature_celsius)
 Alias: temperature_celsius
 
 <!-- no inheritance hierarchy -->
@@ -22,16 +22,17 @@ Alias: temperature_celsius
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [HasIncubationConditions](HasIncubationConditions.md) | Mixin for activities/setups that involve controlled incubation |  no  |
-| [ChromatographyConfiguration](ChromatographyConfiguration.md) | Configuration and settings for a chromatography run |  no  |
-| [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
-| [PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |  no  |
-| [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |  no  |
 | [StrainPurity](StrainPurity.md) | Purity check of a strain culture |  no  |
-| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
+| [HasIncubationConditions](HasIncubationConditions.md) | Mixin for activities/setups that involve controlled incubation |  no  |
+| [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
 | [PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |  no  |
-| [StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |  no  |
 | [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
+| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
+| [PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |  no  |
+| [StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |  no  |
+| [ChemicalConversionProcess](ChemicalConversionProcess.md) | A chemical conversion process used in sample preparation |  no  |
+| [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |  no  |
+| [ChromatographyConfiguration](ChromatographyConfiguration.md) | Configuration and settings for a chromatography run |  no  |
 
 
 
@@ -45,7 +46,7 @@ Alias: temperature_celsius
 | Property | Value |
 | --- | --- |
 | Range | [Float](Float.md) |
-| Domain Of | [ChromatographyConfiguration](ChromatographyConfiguration.md), [HasIncubationConditions](HasIncubationConditions.md) |
+| Domain Of | [ChromatographyConfiguration](ChromatographyConfiguration.md), [HasIncubationConditions](HasIncubationConditions.md), [ChemicalConversionProcess](ChemicalConversionProcess.md) |
 
 ### Cardinality and Requirements
 
@@ -70,7 +71,7 @@ Alias: temperature_celsius
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -79,8 +80,8 @@ Alias: temperature_celsius
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:temperature_celsius |
-| native | analysis_api_schema:temperature_celsius |
+| self | basalt_schema:temperature_celsius |
+| native | basalt_schema:temperature_celsius |
 
 
 
@@ -91,12 +92,13 @@ Alias: temperature_celsius
 ```yaml
 name: temperature_celsius
 description: Temperature at which the method/process/activity was performed
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: temperature_celsius
 domain_of:
 - ChromatographyConfiguration
 - HasIncubationConditions
+- ChemicalConversionProcess
 range: float
 
 ```

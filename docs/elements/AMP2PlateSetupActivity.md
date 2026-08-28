@@ -33,7 +33,7 @@ _           range is processedSample (not purchasedMaterial)_
 
 
 
-URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysis-api-schema/AMP2PlateSetupActivity)
+URI: [basalt_schema:AMP2PlateSetupActivity](https://emsl-computing.github.io/BASALT-Schema/elements/AMP2PlateSetupActivity)
 
 
 
@@ -48,18 +48,20 @@ URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysi
       
       AMP2PlateSetupActivity : agitation_speed_rpm
         
-      AMP2PlateSetupActivity : analysis_type
+      AMP2PlateSetupActivity : description
+        
+      AMP2PlateSetupActivity : id
+        
+      AMP2PlateSetupActivity : in_protocol
         
           
     
         
         
-        AMP2PlateSetupActivity --> "0..1" RouteMethodEnum : analysis_type
-        click RouteMethodEnum href "../RouteMethodEnum/"
+        AMP2PlateSetupActivity --> "0..1" SampleProcessingProtocol : in_protocol
+        click SampleProcessingProtocol href "../SampleProcessingProtocol/"
     
 
-        
-      AMP2PlateSetupActivity : id
         
       AMP2PlateSetupActivity : media_ref
         
@@ -72,16 +74,7 @@ URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysi
     
 
         
-      AMP2PlateSetupActivity : method_name
-        
-          
-    
-        
-        
-        AMP2PlateSetupActivity --> "0..1" MethodNameEnum : method_name
-        click MethodNameEnum href "../MethodNameEnum/"
-    
-
+      AMP2PlateSetupActivity : name
         
       AMP2PlateSetupActivity : oxygen_relationship
         
@@ -97,12 +90,6 @@ URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysi
       AMP2PlateSetupActivity : plate_barcode
         
       AMP2PlateSetupActivity : plate_type
-        
-      AMP2PlateSetupActivity : processing_steps
-        
-      AMP2PlateSetupActivity : protocol_url
-        
-      AMP2PlateSetupActivity : protocol_version
         
       AMP2PlateSetupActivity : sealing_method
         
@@ -122,17 +109,6 @@ URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysi
 
         
       AMP2PlateSetupActivity : temperature_celsius
-        
-      AMP2PlateSetupActivity : uses_sample
-        
-          
-    
-        
-        
-        AMP2PlateSetupActivity --> "0..1" Sample : uses_sample
-        click Sample href "../Sample/"
-    
-
         
       AMP2PlateSetupActivity : well_metadata
         
@@ -173,13 +149,10 @@ URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysi
 | [temperature_celsius](temperature_celsius.md) | 0..1 <br/> [Float](Float.md) | Temperature at which the method/process/activity was performed | [HasIncubationConditions](HasIncubationConditions.md) |
 | [agitation_speed_rpm](agitation_speed_rpm.md) | 0..1 <br/> [Integer](Integer.md) | Agitation/shaking speed in RPM (0 for static) | [HasIncubationConditions](HasIncubationConditions.md) |
 | [oxygen_relationship](oxygen_relationship.md) | 0..1 <br/> [OxygenStatusEnum](OxygenStatusEnum.md) | The relationship of the sample to oxygen, such as aerobic or anaerobic | [HasIncubationConditions](HasIncubationConditions.md) |
-| [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
-| [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
+| [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [SampleProcessing](SampleProcessing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [SampleProcessing](SampleProcessing.md) |
+| [in_protocol](in_protocol.md) | 0..1 <br/> [SampleProcessingProtocol](SampleProcessingProtocol.md) | The SampleProcessingProtocol (the recipe) that this step follows | [SampleProcessing](SampleProcessing.md) |
 | [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [SampleProcessing](SampleProcessing.md) |
-| [analysis_type](analysis_type.md) | 0..1 <br/> [RouteMethodEnum](RouteMethodEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
-| [method_name](method_name.md) | 0..1 <br/> [MethodNameEnum](MethodNameEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
-| [processing_steps](processing_steps.md) | 1 <br/> [String](String.md) |  | [SampleProcessing](SampleProcessing.md) |
-| [uses_sample](uses_sample.md) | 0..1 <br/> [Sample](Sample.md) |  | [SampleProcessing](SampleProcessing.md) |
 
 
 
@@ -204,7 +177,7 @@ URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysi
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -213,8 +186,8 @@ URI: [analysis_api_schema:AMP2PlateSetupActivity](https://w3id.org/MONet/analysi
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:AMP2PlateSetupActivity |
-| native | analysis_api_schema:AMP2PlateSetupActivity |
+| self | basalt_schema:AMP2PlateSetupActivity |
+| native | basalt_schema:AMP2PlateSetupActivity |
 
 
 
@@ -239,7 +212,7 @@ description: "AMP2-specific plate setup.\nmedia_ref points to the plate-level pr
   \ via media_ref\n\nv1 origin: plate-general.yaml AMP2PlateSetupActivity\nv2 change:\
   \ media_ref directly on class (no UsesMedia mixin);\n           range is processedSample\
   \ (not purchasedMaterial)"
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: PlateSetupActivity
 slots:
 - media_ref
@@ -261,7 +234,7 @@ description: "AMP2-specific plate setup.\nmedia_ref points to the plate-level pr
   \ via media_ref\n\nv1 origin: plate-general.yaml AMP2PlateSetupActivity\nv2 change:\
   \ media_ref directly on class (no UsesMedia mixin);\n           range is processedSample\
   \ (not purchasedMaterial)"
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: PlateSetupActivity
 attributes:
   media_ref:
@@ -273,7 +246,7 @@ attributes:
       (on plate setup).  Points to processedSample(type=prepared_media)
 
       produced by an upstream MediaPreparation activity.'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: media_ref
     owner: AMP2PlateSetupActivity
@@ -285,7 +258,7 @@ attributes:
   plate_type:
     name: plate_type
     description: Vendor and model of plate (e.g. "Greiner_96well_flat_bottom", "Biolog_EcoPlate")
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: plate_type
     owner: AMP2PlateSetupActivity
@@ -296,7 +269,7 @@ attributes:
   plate_barcode:
     name: plate_barcode
     description: Physical barcode on plate (if different from UUID)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: plate_barcode
     owner: AMP2PlateSetupActivity
@@ -306,7 +279,7 @@ attributes:
   setup_date:
     name: setup_date
     description: When the plate was physically set up
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: setup_date
     owner: AMP2PlateSetupActivity
@@ -317,7 +290,7 @@ attributes:
   setup_operator_id:
     name: setup_operator_id
     description: Person who set up the plate
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: setup_operator_id
     owner: AMP2PlateSetupActivity
@@ -327,7 +300,7 @@ attributes:
   setup_instrument:
     name: setup_instrument
     description: Automated liquid handler (e.g. "Hamilton_STAR") or "manual"
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: setup_instrument
     owner: AMP2PlateSetupActivity
@@ -337,7 +310,7 @@ attributes:
   sealing_method:
     name: sealing_method
     description: How the plate is sealed (e.g. "BreathEasy_membrane", "adhesive_film")
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sealing_method
     owner: AMP2PlateSetupActivity
@@ -353,7 +326,7 @@ attributes:
     todos:
     - decide how to represent in backend (normalized child table with FK to PlateSetupActivity,
       array column, or other)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: well_metadata
     owner: AMP2PlateSetupActivity
@@ -366,18 +339,19 @@ attributes:
   temperature_celsius:
     name: temperature_celsius
     description: Temperature at which the method/process/activity was performed
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: temperature_celsius
     owner: AMP2PlateSetupActivity
     domain_of:
     - ChromatographyConfiguration
     - HasIncubationConditions
+    - ChemicalConversionProcess
     range: float
   agitation_speed_rpm:
     name: agitation_speed_rpm
     description: Agitation/shaking speed in RPM (0 for static)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: agitation_speed_rpm
     owner: AMP2PlateSetupActivity
@@ -388,7 +362,7 @@ attributes:
     name: oxygen_relationship
     description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
     title: oxygen relationship
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     exact_mappings:
     - MIXS:0000015
     rank: 1000
@@ -408,31 +382,88 @@ attributes:
     - TerraformSample
     - WaterSample
     range: OxygenStatusEnum
-  protocol_url:
-    name: protocol_url
-    description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+  name:
+    name: name
+    description: Human-readable name for the entity or activity.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: protocol_url
+    alias: name
     owner: AMP2PlateSetupActivity
     domain_of:
+    - Activity
+    - Entity
+    - DataProduct
     - DataGenerationActivity
+    - Instrument
+    - OntologyClass
+    - ContainerAxis
     - SampleProcessing
+    - Configuration
+    - MobilePhaseSegment
+    - MassSpectrometryStandardRun
+    - PurchasedMaterial
+    - organism
+    - Site
+    - Sample
+    - SamplingActivity
+    - SoilSamplingActivity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
+    - Study
+    - SoftwareControlledTermValue
     range: string
-  protocol_version:
-    name: protocol_version
-    description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    required: true
+  description:
+    name: description
+    description: Human-readable description for the entity or activity
+    title: description
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: protocol_version
+    alias: description
     owner: AMP2PlateSetupActivity
     domain_of:
+    - Activity
+    - Entity
+    - DataProduct
     - DataGenerationActivity
+    - DataProcessingActivity
+    - OntologyClass
+    - ContainerType
+    - LabDevice
     - SampleProcessing
+    - Configuration
+    - MassSpectrometryStandardRun
+    - PurchasedMaterial
+    - organism
+    - Site
+    - Sample
+    - SamplingActivity
+    - SoilSamplingActivity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
+    - Study
+    - TimestampValue
+    - TextValue
+    - SoftwareControlledTermValue
+    - ControlledTermValue
+    - QuantityValue
     range: string
+  in_protocol:
+    name: in_protocol
+    description: 'The SampleProcessingProtocol (the recipe) that this step follows.
+      Type-level, not instance-level: every execution of the same SOP points at the
+      same record, so this does NOT identify a particular chain. Use in_run for that.
+      A chain may mix protocols, so this is recorded per step rather than per run.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    rank: 1000
+    alias: in_protocol
+    owner: AMP2PlateSetupActivity
+    domain_of:
+    - SampleProcessing
+    range: SampleProcessingProtocol
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: AMP2PlateSetupActivity
@@ -456,9 +487,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -497,7 +528,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -510,57 +542,6 @@ attributes:
     - zipDownload
     range: uuid
     required: true
-  analysis_type:
-    name: analysis_type
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    alias: analysis_type
-    owner: AMP2PlateSetupActivity
-    domain_of:
-    - SampleProcessing
-    - AerosolArmSample
-    - AerosolSample
-    - AMP2UserSample
-    - CommerciallyPurchasedSample
-    - CultureEnvironmentalSample
-    - FieldDeployedTerraformSample
-    - MixedCultureSample
-    - OtherUndescribedSample
-    - PlantSample
-    - PureCultureSample
-    - SedimentSample
-    - SoilSample
-    - SynthesizedMaterialSample
-    - TerraformSample
-    - WaterSample
-    range: RouteMethodEnum
-  method_name:
-    name: method_name
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: method_name
-    owner: AMP2PlateSetupActivity
-    domain_of:
-    - SampleProcessing
-    range: MethodNameEnum
-  processing_steps:
-    name: processing_steps
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: processing_steps
-    owner: AMP2PlateSetupActivity
-    domain_of:
-    - SampleProcessing
-    range: string
-    required: true
-  uses_sample:
-    name: uses_sample
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: uses_sample
-    owner: AMP2PlateSetupActivity
-    domain_of:
-    - SampleProcessing
-    range: Sample
 
 ```
 </details>

@@ -9,7 +9,7 @@ _Reference or method used in determining previous land use and dates_
 
 
 
-URI: [analysis_api_schema:previous_land_use_meth](https://w3id.org/MONet/analysis-api-schema/previous_land_use_meth)
+URI: [basalt_schema:previous_land_use_meth](https://emsl-computing.github.io/BASALT-Schema/elements/previous_land_use_meth)
 Alias: previous_land_use_meth
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: previous_land_use_meth
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -70,8 +70,8 @@ Alias: previous_land_use_meth
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:previous_land_use_meth |
-| native | analysis_api_schema:previous_land_use_meth |
+| self | basalt_schema:previous_land_use_meth |
+| native | basalt_schema:previous_land_use_meth |
 
 
 
@@ -83,7 +83,7 @@ Alias: previous_land_use_meth
 name: previous_land_use_meth
 description: Reference or method used in determining previous land use and dates
 title: previous land use method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: previous_land_use_meth
 domain_of:

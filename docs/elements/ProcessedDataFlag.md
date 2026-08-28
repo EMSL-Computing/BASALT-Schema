@@ -2,7 +2,7 @@
 
 
 
-URI: [analysis_api_schema:ProcessedDataFlag](https://w3id.org/MONet/analysis-api-schema/ProcessedDataFlag)
+URI: [basalt_schema:ProcessedDataFlag](https://emsl-computing.github.io/BASALT-Schema/elements/ProcessedDataFlag)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -108,7 +108,7 @@ URI: [analysis_api_schema:ProcessedDataFlag](https://w3id.org/MONet/analysis-api
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -120,7 +120,7 @@ URI: [analysis_api_schema:ProcessedDataFlag](https://w3id.org/MONet/analysis-api
 <details>
 ```yaml
 name: ProcessedDataFlag
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   Below_Detection:

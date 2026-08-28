@@ -7,7 +7,7 @@ _bundling common terms for different omics types by biomolecule being analyzed_
 
 
 
-URI: [analysis_api_schema:AnalyteCategoryEnum](https://w3id.org/MONet/analysis-api-schema/AnalyteCategoryEnum)
+URI: [basalt_schema:AnalyteCategoryEnum](https://emsl-computing.github.io/BASALT-Schema/elements/AnalyteCategoryEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -28,6 +28,7 @@ URI: [analysis_api_schema:AnalyteCategoryEnum](https://w3id.org/MONet/analysis-a
 | Name | Description |
 | ---  | --- |
 | [analyte_category](analyte_category.md) | omics type for easier search, optional |
+| [extraction_target](extraction_target.md) | The target analyte(s) or compound class(es) for the extraction process |
 
 
 
@@ -47,7 +48,7 @@ URI: [analysis_api_schema:AnalyteCategoryEnum](https://w3id.org/MONet/analysis-a
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -61,7 +62,7 @@ URI: [analysis_api_schema:AnalyteCategoryEnum](https://w3id.org/MONet/analysis-a
 name: AnalyteCategoryEnum
 description: bundling common terms for different omics types by biomolecule being
   analyzed
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   dna:

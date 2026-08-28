@@ -9,7 +9,7 @@ _Raw or converted fluorescence of water. Provide value and unit, any unit is val
 
 
 
-URI: [analysis_api_schema:fluor](https://w3id.org/MONet/analysis-api-schema/fluor)
+URI: [basalt_schema:fluor](https://emsl-computing.github.io/BASALT-Schema/elements/fluor)
 Alias: fluor
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: fluor
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: fluor
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -78,8 +78,8 @@ Alias: fluor
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:fluor |
-| native | analysis_api_schema:fluor |
+| self | basalt_schema:fluor |
+| native | basalt_schema:fluor |
 
 
 
@@ -92,7 +92,7 @@ name: fluor
 description: Raw or converted fluorescence of water. Provide value and unit, any unit
   is valid.
 title: fluorescence
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: fluor
 domain_of:

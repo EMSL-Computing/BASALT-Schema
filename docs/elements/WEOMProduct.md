@@ -11,7 +11,7 @@ _Individual QC flags for each measurement using ProcessedDataFlag enum._
 
 
 
-URI: [analysis_api_schema:WEOMProduct](https://w3id.org/MONet/analysis-api-schema/WEOMProduct)
+URI: [basalt_schema:WEOMProduct](https://emsl-computing.github.io/BASALT-Schema/elements/WEOMProduct)
 
 
 
@@ -162,7 +162,7 @@ URI: [analysis_api_schema:WEOMProduct](https://w3id.org/MONet/analysis-api-schem
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -171,8 +171,8 @@ URI: [analysis_api_schema:WEOMProduct](https://w3id.org/MONet/analysis-api-schem
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:WEOMProduct |
-| native | analysis_api_schema:WEOMProduct |
+| self | basalt_schema:WEOMProduct |
+| native | basalt_schema:WEOMProduct |
 
 
 
@@ -192,14 +192,14 @@ description: 'Water Extractable Organic Matter (WEOM) analysis product, typicall
   derived via Shimadzu TOC-L or similar instrument.
 
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 slots:
 - measure_type
 - replicate
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     identifier: true
     domain_of:
     - Activity
@@ -221,9 +221,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -262,7 +262,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -277,21 +278,21 @@ attributes:
     required: true
   total_organic_carbon_id:
     name: total_organic_carbon_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     domain_of:
     - MAOMProduct
     - WEOMProduct
     range: QuantityValue
   total_organic_carbon_avg:
     name: total_organic_carbon_avg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     domain_of:
     - MAOMProduct
     - WEOMProduct
     range: double
   total_nitrogen_id:
     name: total_nitrogen_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     domain_of:
     - ElementalAnalysisProduct
     - MAOMProduct
@@ -299,35 +300,35 @@ attributes:
     range: QuantityValue
   total_nitrogen_avg:
     name: total_nitrogen_avg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     domain_of:
     - MAOMProduct
     - WEOMProduct
     range: double
   flag_toc:
     name: flag_toc
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     domain_of:
     - MAOMProduct
     - WEOMProduct
     range: ProcessedDataFlag
   flag_tn:
     name: flag_tn
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     domain_of:
     - MAOMProduct
     - WEOMProduct
     range: ProcessedDataFlag
   flag_toc_avg:
     name: flag_toc_avg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     domain_of:
     - MAOMProduct
     - WEOMProduct
     range: ProcessedDataFlag
   flag_tn_avg:
     name: flag_tn_avg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     domain_of:
     - MAOMProduct
     - WEOMProduct
@@ -345,11 +346,11 @@ description: 'Water Extractable Organic Matter (WEOM) analysis product, typicall
   derived via Shimadzu TOC-L or similar instrument.
 
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     identifier: true
     alias: id
     owner: WEOMProduct
@@ -373,9 +374,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -414,7 +415,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -429,7 +431,7 @@ attributes:
     required: true
   total_organic_carbon_id:
     name: total_organic_carbon_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     alias: total_organic_carbon_id
     owner: WEOMProduct
     domain_of:
@@ -438,7 +440,7 @@ attributes:
     range: QuantityValue
   total_organic_carbon_avg:
     name: total_organic_carbon_avg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     alias: total_organic_carbon_avg
     owner: WEOMProduct
     domain_of:
@@ -447,7 +449,7 @@ attributes:
     range: double
   total_nitrogen_id:
     name: total_nitrogen_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     alias: total_nitrogen_id
     owner: WEOMProduct
     domain_of:
@@ -457,7 +459,7 @@ attributes:
     range: QuantityValue
   total_nitrogen_avg:
     name: total_nitrogen_avg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     alias: total_nitrogen_avg
     owner: WEOMProduct
     domain_of:
@@ -466,7 +468,7 @@ attributes:
     range: double
   flag_toc:
     name: flag_toc
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     alias: flag_toc
     owner: WEOMProduct
     domain_of:
@@ -475,7 +477,7 @@ attributes:
     range: ProcessedDataFlag
   flag_tn:
     name: flag_tn
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     alias: flag_tn
     owner: WEOMProduct
     domain_of:
@@ -484,7 +486,7 @@ attributes:
     range: ProcessedDataFlag
   flag_toc_avg:
     name: flag_toc_avg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     alias: flag_toc_avg
     owner: WEOMProduct
     domain_of:
@@ -493,7 +495,7 @@ attributes:
     range: ProcessedDataFlag
   flag_tn_avg:
     name: flag_tn_avg
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     alias: flag_tn_avg
     owner: WEOMProduct
     domain_of:
@@ -504,7 +506,7 @@ attributes:
     name: measure_type
     description: Whether the measurement recorded is a single measurement, one of
       a set of  replicate measurements, or an average of several replicate measurements.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: measure_type
     owner: WEOMProduct
@@ -533,7 +535,7 @@ attributes:
     description: The replicate number of the sample or measurement, if applicable.
     todos:
     - reconcile replicate modelling
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: replicate
     owner: WEOMProduct

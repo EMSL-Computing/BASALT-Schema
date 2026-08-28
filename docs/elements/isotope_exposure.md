@@ -9,7 +9,7 @@ _List isotope exposure or addition applied to your sample._
 
 
 
-URI: [analysis_api_schema:isotope_exposure](https://w3id.org/MONet/analysis-api-schema/isotope_exposure)
+URI: [basalt_schema:isotope_exposure](https://emsl-computing.github.io/BASALT-Schema/elements/isotope_exposure)
 Alias: isotope_exposure
 
 <!-- no inheritance hierarchy -->
@@ -22,18 +22,18 @@ Alias: isotope_exposure
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 
 
 
@@ -72,7 +72,7 @@ Alias: isotope_exposure
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -81,8 +81,8 @@ Alias: isotope_exposure
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:isotope_exposure |
-| native | analysis_api_schema:isotope_exposure |
+| self | basalt_schema:isotope_exposure |
+| native | basalt_schema:isotope_exposure |
 
 
 
@@ -94,7 +94,7 @@ Alias: isotope_exposure
 name: isotope_exposure
 description: List isotope exposure or addition applied to your sample.
 title: isotope exposure
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: isotope_exposure
 domain_of:

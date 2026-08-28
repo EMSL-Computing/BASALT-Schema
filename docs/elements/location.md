@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:location](https://w3id.org/MONet/analysis-api-schema/location)
+URI: [basalt_schema:location](https://emsl-computing.github.io/BASALT-Schema/elements/location)
 Alias: location
 
 <!-- no inheritance hierarchy -->
@@ -17,16 +17,7 @@ Alias: location
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TOCTNMethod](TOCTNMethod.md) |  |  no  |
-| [MicrobialBiomassMethod](MicrobialBiomassMethod.md) |  |  no  |
-| [HydraulicPropertiesMethod](HydraulicPropertiesMethod.md) |  |  no  |
-| [PHMethod](PHMethod.md) |  |  no  |
-| [XrayComputedTomographyMethod](XrayComputedTomographyMethod.md) |  |  no  |
-| [KuoMethod](KuoMethod.md) |  |  no  |
-| [EnzymeActivityMethod](EnzymeActivityMethod.md) |  |  no  |
 | [Instrument](Instrument.md) | A material entity that is designed to perform a function in a scientific  |  no  |
-| [GravimetricWaterContentMethod](GravimetricWaterContentMethod.md) |  |  no  |
-| [TextureMethod](TextureMethod.md) |  |  no  |
 
 
 
@@ -40,13 +31,17 @@ Alias: location
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [Instrument](Instrument.md), [EnzymeActivityMethod](EnzymeActivityMethod.md), [GravimetricWaterContentMethod](GravimetricWaterContentMethod.md), [HydraulicPropertiesMethod](HydraulicPropertiesMethod.md), [KuoMethod](KuoMethod.md), [MicrobialBiomassMethod](MicrobialBiomassMethod.md), [PHMethod](PHMethod.md), [TOCTNMethod](TOCTNMethod.md), [TextureMethod](TextureMethod.md), [XrayComputedTomographyMethod](XrayComputedTomographyMethod.md) |
+| Domain Of | [Instrument](Instrument.md) |
 
 ### Cardinality and Requirements
 
 | Property | Value |
 | --- | --- |
-| Required | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| Owner | [Instrument](Instrument.md) |
 
 
 
@@ -55,9 +50,7 @@ Alias: location
 
 
 
-## TODOs
 
-* used on many method classes. no description. what was this meant to mean?
 
 
 
@@ -70,7 +63,7 @@ Alias: location
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -79,8 +72,8 @@ Alias: location
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:location |
-| native | analysis_api_schema:location |
+| self | basalt_schema:location |
+| native | basalt_schema:location |
 
 
 
@@ -90,24 +83,13 @@ Alias: location
 <details>
 ```yaml
 name: location
-todos:
-- used on many method classes. no description. what was this meant to mean?
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: location
+owner: Instrument
 domain_of:
 - Instrument
-- EnzymeActivityMethod
-- GravimetricWaterContentMethod
-- HydraulicPropertiesMethod
-- KuoMethod
-- MicrobialBiomassMethod
-- PH_Method
-- TOC_TN_Method
-- TextureMethod
-- XrayComputedTomographyMethod
 range: string
-required: true
 
 ```
 </details>

@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:InstrumentAlternativeIdentifier](https://w3id.org/MONet/analysis-api-schema/InstrumentAlternativeIdentifier)
+URI: [basalt_schema:InstrumentAlternativeIdentifier](https://emsl-computing.github.io/BASALT-Schema/elements/InstrumentAlternativeIdentifier)
 
 
 
@@ -89,7 +89,7 @@ URI: [analysis_api_schema:InstrumentAlternativeIdentifier](https://w3id.org/MONe
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -98,8 +98,8 @@ URI: [analysis_api_schema:InstrumentAlternativeIdentifier](https://w3id.org/MONe
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:InstrumentAlternativeIdentifier |
-| native | analysis_api_schema:InstrumentAlternativeIdentifier |
+| self | basalt_schema:InstrumentAlternativeIdentifier |
+| native | basalt_schema:InstrumentAlternativeIdentifier |
 
 
 
@@ -115,11 +115,11 @@ URI: [analysis_api_schema:InstrumentAlternativeIdentifier](https://w3id.org/MONe
 <details>
 ```yaml
 name: InstrumentAlternativeIdentifier
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     domain_of:
     - Activity
@@ -141,9 +141,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -182,7 +182,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -197,21 +198,21 @@ attributes:
     required: true
   alt_id:
     name: alt_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - InstrumentAlternativeIdentifier
     range: AlternativeIdentifier
   instrument_alt_id_provider:
     name: instrument_alt_id_provider
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - InstrumentAlternativeIdentifier
     range: InstrumentAltIdProviderEnum
   instrument_id:
     name: instrument_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - InstrumentAlternativeIdentifier
@@ -227,11 +228,11 @@ attributes:
 <details>
 ```yaml
 name: InstrumentAlternativeIdentifier
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: InstrumentAlternativeIdentifier
@@ -255,9 +256,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -296,7 +297,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -311,7 +313,7 @@ attributes:
     required: true
   alt_id:
     name: alt_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: alt_id
     owner: InstrumentAlternativeIdentifier
@@ -320,7 +322,7 @@ attributes:
     range: AlternativeIdentifier
   instrument_alt_id_provider:
     name: instrument_alt_id_provider
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: instrument_alt_id_provider
     owner: InstrumentAlternativeIdentifier
@@ -329,7 +331,7 @@ attributes:
     range: InstrumentAltIdProviderEnum
   instrument_id:
     name: instrument_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: instrument_id
     owner: InstrumentAlternativeIdentifier

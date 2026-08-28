@@ -9,7 +9,7 @@ _Date the stock culture or entity was prepared_
 
 
 
-URI: [analysis_api_schema:preparation_date](https://w3id.org/MONet/analysis-api-schema/preparation_date)
+URI: [basalt_schema:preparation_date](https://emsl-computing.github.io/BASALT-Schema/elements/preparation_date)
 Alias: preparation_date
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: preparation_date
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -70,8 +70,8 @@ Alias: preparation_date
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:preparation_date |
-| native | analysis_api_schema:preparation_date |
+| self | basalt_schema:preparation_date |
+| native | basalt_schema:preparation_date |
 
 
 
@@ -82,7 +82,7 @@ Alias: preparation_date
 ```yaml
 name: preparation_date
 description: Date the stock culture or entity was prepared
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: preparation_date
 domain_of:

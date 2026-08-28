@@ -19,7 +19,7 @@ _Refs:   Media (growth medium), Strain_
 
 
 
-URI: [analysis_api_schema:PreCultureGrowth](https://w3id.org/MONet/analysis-api-schema/PreCultureGrowth)
+URI: [basalt_schema:PreCultureGrowth](https://emsl-computing.github.io/BASALT-Schema/elements/PreCultureGrowth)
 
 
 
@@ -34,44 +34,37 @@ URI: [analysis_api_schema:PreCultureGrowth](https://w3id.org/MONet/analysis-api-
       
       PreCultureGrowth : agitation_speed_rpm
         
-      PreCultureGrowth : analysis_type
-        
-          
-    
-        
-        
-        PreCultureGrowth --> "0..1" RouteMethodEnum : analysis_type
-        click RouteMethodEnum href "../RouteMethodEnum/"
-    
-
-        
-      PreCultureGrowth : biological_entity_ref
-        
-          
-    
-        
-        
-        PreCultureGrowth --> "0..1" BiologicalEntity : biological_entity_ref
-        click BiologicalEntity href "../BiologicalEntity/"
-    
-
-        
       PreCultureGrowth : container_type
+        
+      PreCultureGrowth : description
         
       PreCultureGrowth : growth_medium
         
       PreCultureGrowth : id
         
-      PreCultureGrowth : incubation_time_hours
-        
-      PreCultureGrowth : method_name
+      PreCultureGrowth : in_protocol
         
           
     
         
         
-        PreCultureGrowth --> "0..1" MethodNameEnum : method_name
-        click MethodNameEnum href "../MethodNameEnum/"
+        PreCultureGrowth --> "0..1" SampleProcessingProtocol : in_protocol
+        click SampleProcessingProtocol href "../SampleProcessingProtocol/"
+    
+
+        
+      PreCultureGrowth : incubation_time_hours
+        
+      PreCultureGrowth : name
+        
+      PreCultureGrowth : organism_ref
+        
+          
+    
+        
+        
+        PreCultureGrowth --> "0..1" Organism : organism_ref
+        click Organism href "../Organism/"
     
 
         
@@ -86,24 +79,7 @@ URI: [analysis_api_schema:PreCultureGrowth](https://w3id.org/MONet/analysis-api-
     
 
         
-      PreCultureGrowth : processing_steps
-        
-      PreCultureGrowth : protocol_url
-        
-      PreCultureGrowth : protocol_version
-        
       PreCultureGrowth : temperature_celsius
-        
-      PreCultureGrowth : uses_sample
-        
-          
-    
-        
-        
-        PreCultureGrowth --> "0..1" Sample : uses_sample
-        click Sample href "../Sample/"
-    
-
         
       
 ```
@@ -122,20 +98,17 @@ URI: [analysis_api_schema:PreCultureGrowth](https://w3id.org/MONet/analysis-api-
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [biological_entity_ref](biological_entity_ref.md) | 0..1 <br/> [BiologicalEntity](BiologicalEntity.md) | FK reference to a biological_entity representing the biological identity | [CultureGrowth](CultureGrowth.md) |
+| [organism_ref](organism_ref.md) | 0..1 <br/> [Organism](Organism.md) | FK reference to an organism representing the biological identity | [CultureGrowth](CultureGrowth.md) |
 | [growth_medium](growth_medium.md) | 0..1 <br/> [String](String.md) | Method of growth and medium/materials used | [CultureGrowth](CultureGrowth.md) |
 | [incubation_time_hours](incubation_time_hours.md) | 0..1 <br/> [Float](Float.md) | Incubation duration in hours | [CultureGrowth](CultureGrowth.md) |
 | [container_type](container_type.md) | 0..1 <br/> [String](String.md) | Physical container used for the culture (flask, tube, plate, etc | [CultureGrowth](CultureGrowth.md) |
 | [temperature_celsius](temperature_celsius.md) | 0..1 <br/> [Float](Float.md) | Temperature at which the method/process/activity was performed | [HasIncubationConditions](HasIncubationConditions.md) |
 | [agitation_speed_rpm](agitation_speed_rpm.md) | 0..1 <br/> [Integer](Integer.md) | Agitation/shaking speed in RPM (0 for static) | [HasIncubationConditions](HasIncubationConditions.md) |
 | [oxygen_relationship](oxygen_relationship.md) | 0..1 <br/> [OxygenStatusEnum](OxygenStatusEnum.md) | The relationship of the sample to oxygen, such as aerobic or anaerobic | [HasIncubationConditions](HasIncubationConditions.md) |
-| [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
-| [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
+| [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [SampleProcessing](SampleProcessing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [SampleProcessing](SampleProcessing.md) |
+| [in_protocol](in_protocol.md) | 0..1 <br/> [SampleProcessingProtocol](SampleProcessingProtocol.md) | The SampleProcessingProtocol (the recipe) that this step follows | [SampleProcessing](SampleProcessing.md) |
 | [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [SampleProcessing](SampleProcessing.md) |
-| [analysis_type](analysis_type.md) | 0..1 <br/> [RouteMethodEnum](RouteMethodEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
-| [method_name](method_name.md) | 0..1 <br/> [MethodNameEnum](MethodNameEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
-| [processing_steps](processing_steps.md) | 1 <br/> [String](String.md) |  | [SampleProcessing](SampleProcessing.md) |
-| [uses_sample](uses_sample.md) | 0..1 <br/> [Sample](Sample.md) |  | [SampleProcessing](SampleProcessing.md) |
 
 
 
@@ -164,7 +137,7 @@ URI: [analysis_api_schema:PreCultureGrowth](https://w3id.org/MONet/analysis-api-
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -173,8 +146,8 @@ URI: [analysis_api_schema:PreCultureGrowth](https://w3id.org/MONet/analysis-api-
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:PreCultureGrowth |
-| native | analysis_api_schema:PreCultureGrowth |
+| self | basalt_schema:PreCultureGrowth |
+| native | basalt_schema:PreCultureGrowth |
 
 
 
@@ -202,7 +175,7 @@ description: 'Growth of a pre-culture to establish viable inoculum before
   Refs:   Media (growth medium), Strain'
 todos:
 - pre culture medium is missing
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: CultureGrowth
 
 ```
@@ -225,29 +198,28 @@ description: 'Growth of a pre-culture to establish viable inoculum before
   Refs:   Media (growth medium), Strain'
 todos:
 - pre culture medium is missing
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: CultureGrowth
 attributes:
-  biological_entity_ref:
-    name: biological_entity_ref
-    description: 'FK reference to a biological_entity representing the biological
-      identity
+  organism_ref:
+    name: organism_ref
+    description: 'FK reference to an organism representing the biological identity
 
       strain, isolate, engineered construct) that this sample or activity
 
       is associated with.'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - strain_ref
     - strain_id
     rank: 1000
-    alias: biological_entity_ref
+    alias: organism_ref
     owner: PreCultureGrowth
     domain_of:
     - CultureGrowth
     - AMP2UserSample
     - EngineeredStrainSample
-    range: biological_entity
+    range: organism
     required: false
   growth_medium:
     name: growth_medium
@@ -255,7 +227,7 @@ attributes:
       3-D structure, bioreactor, etc. followed by the formula, recipe, or components
       used to create the growth medium.
     title: growth medium
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: growth_medium
     owner: PreCultureGrowth
@@ -271,7 +243,7 @@ attributes:
   incubation_time_hours:
     name: incubation_time_hours
     description: Incubation duration in hours
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: incubation_time_hours
     owner: PreCultureGrowth
@@ -281,7 +253,7 @@ attributes:
   container_type:
     name: container_type
     description: Physical container used for the culture (flask, tube, plate, etc.)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: container_type
     owner: PreCultureGrowth
@@ -292,18 +264,19 @@ attributes:
   temperature_celsius:
     name: temperature_celsius
     description: Temperature at which the method/process/activity was performed
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: temperature_celsius
     owner: PreCultureGrowth
     domain_of:
     - ChromatographyConfiguration
     - HasIncubationConditions
+    - ChemicalConversionProcess
     range: float
   agitation_speed_rpm:
     name: agitation_speed_rpm
     description: Agitation/shaking speed in RPM (0 for static)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: agitation_speed_rpm
     owner: PreCultureGrowth
@@ -314,7 +287,7 @@ attributes:
     name: oxygen_relationship
     description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
     title: oxygen relationship
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     exact_mappings:
     - MIXS:0000015
     rank: 1000
@@ -334,31 +307,88 @@ attributes:
     - TerraformSample
     - WaterSample
     range: OxygenStatusEnum
-  protocol_url:
-    name: protocol_url
-    description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+  name:
+    name: name
+    description: Human-readable name for the entity or activity.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: protocol_url
+    alias: name
     owner: PreCultureGrowth
     domain_of:
+    - Activity
+    - Entity
+    - DataProduct
     - DataGenerationActivity
+    - Instrument
+    - OntologyClass
+    - ContainerAxis
     - SampleProcessing
+    - Configuration
+    - MobilePhaseSegment
+    - MassSpectrometryStandardRun
+    - PurchasedMaterial
+    - organism
+    - Site
+    - Sample
+    - SamplingActivity
+    - SoilSamplingActivity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
+    - Study
+    - SoftwareControlledTermValue
     range: string
-  protocol_version:
-    name: protocol_version
-    description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    required: true
+  description:
+    name: description
+    description: Human-readable description for the entity or activity
+    title: description
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: protocol_version
+    alias: description
     owner: PreCultureGrowth
     domain_of:
+    - Activity
+    - Entity
+    - DataProduct
     - DataGenerationActivity
+    - DataProcessingActivity
+    - OntologyClass
+    - ContainerType
+    - LabDevice
     - SampleProcessing
+    - Configuration
+    - MassSpectrometryStandardRun
+    - PurchasedMaterial
+    - organism
+    - Site
+    - Sample
+    - SamplingActivity
+    - SoilSamplingActivity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
+    - Study
+    - TimestampValue
+    - TextValue
+    - SoftwareControlledTermValue
+    - ControlledTermValue
+    - QuantityValue
     range: string
+  in_protocol:
+    name: in_protocol
+    description: 'The SampleProcessingProtocol (the recipe) that this step follows.
+      Type-level, not instance-level: every execution of the same SOP points at the
+      same record, so this does NOT identify a particular chain. Use in_run for that.
+      A chain may mix protocols, so this is recorded per step rather than per run.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    rank: 1000
+    alias: in_protocol
+    owner: PreCultureGrowth
+    domain_of:
+    - SampleProcessing
+    range: SampleProcessingProtocol
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: PreCultureGrowth
@@ -382,9 +412,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -423,7 +453,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -436,57 +467,6 @@ attributes:
     - zipDownload
     range: uuid
     required: true
-  analysis_type:
-    name: analysis_type
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    alias: analysis_type
-    owner: PreCultureGrowth
-    domain_of:
-    - SampleProcessing
-    - AerosolArmSample
-    - AerosolSample
-    - AMP2UserSample
-    - CommerciallyPurchasedSample
-    - CultureEnvironmentalSample
-    - FieldDeployedTerraformSample
-    - MixedCultureSample
-    - OtherUndescribedSample
-    - PlantSample
-    - PureCultureSample
-    - SedimentSample
-    - SoilSample
-    - SynthesizedMaterialSample
-    - TerraformSample
-    - WaterSample
-    range: RouteMethodEnum
-  method_name:
-    name: method_name
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: method_name
-    owner: PreCultureGrowth
-    domain_of:
-    - SampleProcessing
-    range: MethodNameEnum
-  processing_steps:
-    name: processing_steps
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: processing_steps
-    owner: PreCultureGrowth
-    domain_of:
-    - SampleProcessing
-    range: string
-    required: true
-  uses_sample:
-    name: uses_sample
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: uses_sample
-    owner: PreCultureGrowth
-    domain_of:
-    - SampleProcessing
-    range: Sample
 
 ```
 </details>

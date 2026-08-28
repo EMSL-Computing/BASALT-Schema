@@ -9,7 +9,7 @@ _Type of strain/organism (bacterial, fungal, archaeal, etc.)_
 
 
 
-URI: [analysis_api_schema:strain_type](https://w3id.org/MONet/analysis-api-schema/strain_type)
+URI: [basalt_schema:strain_type](https://emsl-computing.github.io/BASALT-Schema/elements/strain_type)
 Alias: strain_type
 
 <!-- no inheritance hierarchy -->
@@ -22,7 +22,7 @@ Alias: strain_type
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
 
 
 
@@ -36,7 +36,7 @@ Alias: strain_type
 | Property | Value |
 | --- | --- |
 | Range | [StrainTypeEnum](StrainTypeEnum.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -66,7 +66,7 @@ Alias: strain_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -75,8 +75,8 @@ Alias: strain_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:strain_type |
-| native | analysis_api_schema:strain_type |
+| self | basalt_schema:strain_type |
+| native | basalt_schema:strain_type |
 
 
 
@@ -87,13 +87,13 @@ Alias: strain_type
 ```yaml
 name: strain_type
 description: Type of strain/organism (bacterial, fungal, archaeal, etc.)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 aliases:
 - organism_type
 rank: 1000
 alias: strain_type
 domain_of:
-- biological_entity
+- organism
 range: StrainTypeEnum
 
 ```

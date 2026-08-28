@@ -9,7 +9,7 @@ _Motor position value at scan start_
 
 
 
-URI: [analysis_api_schema:position](https://w3id.org/MONet/analysis-api-schema/position)
+URI: [basalt_schema:position](https://emsl-computing.github.io/BASALT-Schema/elements/position)
 Alias: position
 
 <!-- no inheritance hierarchy -->
@@ -22,11 +22,11 @@ Alias: position
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WellMetadata](WellMetadata.md) | Base structure for per-well metadata in plate setup |  no  |
+| [AMP2WellMetadata](AMP2WellMetadata.md) | AMP2-specific per-well metadata |  no  |
 | [WellReading](WellReading.md) | Per-well measurement data |  no  |
 | [EcoplateWellMetadata](EcoplateWellMetadata.md) | Ecoplate-specific per-well metadata |  no  |
 | [XASMotorPosition](XASMotorPosition.md) | Motor position recorded at the start of an XAS sweep |  no  |
-| [AMP2WellMetadata](AMP2WellMetadata.md) | AMP2-specific per-well metadata |  no  |
+| [WellMetadata](WellMetadata.md) | Base structure for per-well metadata in plate setup |  no  |
 
 
 
@@ -65,7 +65,7 @@ Alias: position
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -74,8 +74,8 @@ Alias: position
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:position |
-| native | analysis_api_schema:position |
+| self | basalt_schema:position |
+| native | basalt_schema:position |
 
 
 
@@ -86,7 +86,7 @@ Alias: position
 ```yaml
 name: position
 description: Motor position value at scan start
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: position
 domain_of:

@@ -9,7 +9,7 @@ _Historical and/or physical evidence of flooding. Format: YYYY-MM-DD_
 
 
 
-URI: [analysis_api_schema:flooding](https://w3id.org/MONet/analysis-api-schema/flooding)
+URI: [basalt_schema:flooding](https://emsl-computing.github.io/BASALT-Schema/elements/flooding)
 Alias: flooding
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: flooding
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -77,8 +77,8 @@ Alias: flooding
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flooding |
-| native | analysis_api_schema:flooding |
+| self | basalt_schema:flooding |
+| native | basalt_schema:flooding |
 
 
 
@@ -90,7 +90,7 @@ Alias: flooding
 name: flooding
 description: 'Historical and/or physical evidence of flooding. Format: YYYY-MM-DD'
 title: flooding
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: flooding
 domain_of:

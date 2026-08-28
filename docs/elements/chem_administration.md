@@ -9,7 +9,7 @@ _List of chemical compounds administered to the host or site where sampling occu
 
 
 
-URI: [analysis_api_schema:chem_administration](https://w3id.org/MONet/analysis-api-schema/chem_administration)
+URI: [basalt_schema:chem_administration](https://emsl-computing.github.io/BASALT-Schema/elements/chem_administration)
 Alias: chem_administration
 
 <!-- no inheritance hierarchy -->
@@ -22,19 +22,19 @@ Alias: chem_administration
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
-| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
 | [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  no  |
-| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
+| [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 
 
 
@@ -73,7 +73,7 @@ Alias: chem_administration
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -82,8 +82,8 @@ Alias: chem_administration
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:chem_administration |
-| native | analysis_api_schema:chem_administration |
+| self | basalt_schema:chem_administration |
+| native | basalt_schema:chem_administration |
 | exact | MIXS:0000751 |
 
 
@@ -99,7 +99,7 @@ description: List of chemical compounds administered to the host or site where s
   compounds. For chemical entities of biological interest ontology (chebi) (v 163),
   http://purl.bioontology.org/ontology/chebi
 title: chemical administration
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 exact_mappings:
 - MIXS:0000751
 rank: 1000

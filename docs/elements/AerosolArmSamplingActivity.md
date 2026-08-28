@@ -9,7 +9,7 @@ _A sampling activity where aerosol samples were collected by ARM._
 
 
 
-URI: [analysis_api_schema:AerosolArmSamplingActivity](https://w3id.org/MONet/analysis-api-schema/AerosolArmSamplingActivity)
+URI: [basalt_schema:AerosolArmSamplingActivity](https://emsl-computing.github.io/BASALT-Schema/elements/AerosolArmSamplingActivity)
 
 
 
@@ -95,7 +95,7 @@ URI: [analysis_api_schema:AerosolArmSamplingActivity](https://w3id.org/MONet/ana
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -104,8 +104,8 @@ URI: [analysis_api_schema:AerosolArmSamplingActivity](https://w3id.org/MONet/ana
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:AerosolArmSamplingActivity |
-| native | analysis_api_schema:AerosolArmSamplingActivity |
+| self | basalt_schema:AerosolArmSamplingActivity |
+| native | basalt_schema:AerosolArmSamplingActivity |
 
 
 
@@ -122,7 +122,7 @@ URI: [analysis_api_schema:AerosolArmSamplingActivity](https://w3id.org/MONet/ana
 ```yaml
 name: AerosolArmSamplingActivity
 description: A sampling activity where aerosol samples were collected by ARM.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: SamplingActivity
 slot_usage:
   humidity:
@@ -132,7 +132,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -154,9 +154,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -195,7 +195,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -218,7 +219,7 @@ attributes:
 ```yaml
 name: AerosolArmSamplingActivity
 description: A sampling activity where aerosol samples were collected by ARM.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: SamplingActivity
 slot_usage:
   humidity:
@@ -228,7 +229,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     alias: id
     owner: AerosolArmSamplingActivity
@@ -252,9 +253,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -293,7 +294,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -309,7 +311,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: AerosolArmSamplingActivity
@@ -321,16 +323,18 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -339,7 +343,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: AerosolArmSamplingActivity
@@ -352,15 +356,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -375,7 +381,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - study
     - study_id
@@ -414,7 +420,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: emsl_activity
     owner: AerosolArmSamplingActivity
@@ -431,7 +437,7 @@ attributes:
 
       (YYYY-MM)'''
     title: collection date
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: collection_date
     owner: AerosolArmSamplingActivity
@@ -444,7 +450,7 @@ attributes:
     name: shipped_sample_size
     description: Total amount of sample sent to EMSL. Must include units.
     title: shipped sample size
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: shipped_sample_size
     owner: AerosolArmSamplingActivity
@@ -457,7 +463,7 @@ attributes:
     name: sampled_at_site
     description: Reference to the site where the sample was collected. This is a FK
       to the Site class, which contains detailed metadata about the sampling location.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampled_at_site
     owner: AerosolArmSamplingActivity

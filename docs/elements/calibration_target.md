@@ -9,7 +9,7 @@ _The measurement being calibrated_
 
 
 
-URI: [analysis_api_schema:calibration_target](https://w3id.org/MONet/analysis-api-schema/calibration_target)
+URI: [basalt_schema:calibration_target](https://emsl-computing.github.io/BASALT-Schema/elements/calibration_target)
 Alias: calibration_target
 
 <!-- no inheritance hierarchy -->
@@ -61,7 +61,7 @@ Alias: calibration_target
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -70,8 +70,8 @@ Alias: calibration_target
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:calibration_target |
-| native | analysis_api_schema:calibration_target |
+| self | basalt_schema:calibration_target |
+| native | basalt_schema:calibration_target |
 
 
 
@@ -82,7 +82,7 @@ Alias: calibration_target
 ```yaml
 name: calibration_target
 description: The measurement being calibrated
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: calibration_target
 domain_of:

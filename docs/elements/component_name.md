@@ -11,7 +11,7 @@ _acronym provide the full component name in the component description._
 
 
 
-URI: [analysis_api_schema:component_name](https://w3id.org/MONet/analysis-api-schema/component_name)
+URI: [basalt_schema:component_name](https://emsl-computing.github.io/BASALT-Schema/elements/component_name)
 Alias: component_name
 
 <!-- no inheritance hierarchy -->
@@ -24,7 +24,7 @@ Alias: component_name
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
 
 
 
@@ -38,7 +38,7 @@ Alias: component_name
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -63,7 +63,7 @@ Alias: component_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -72,8 +72,8 @@ Alias: component_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:component_name |
-| native | analysis_api_schema:component_name |
+| self | basalt_schema:component_name |
+| native | basalt_schema:component_name |
 
 
 
@@ -87,11 +87,11 @@ description: 'Provide a one-to-three word name based on the component. If using 
 
   acronym provide the full component name in the component description.'
 title: construct component name
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: component_name
 domain_of:
-- biological_entity
+- organism
 range: string
 
 ```

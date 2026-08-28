@@ -7,7 +7,7 @@ _The authority, or organization, the DOI is associated with_
 
 
 
-URI: [analysis_api_schema:DoiProviderEnum](https://w3id.org/MONet/analysis-api-schema/DoiProviderEnum)
+URI: [basalt_schema:DoiProviderEnum](https://emsl-computing.github.io/BASALT-Schema/elements/DoiProviderEnum)
 
 ## Permissible Values
 | Value | Meaning | Description | Additional Info |
@@ -50,7 +50,7 @@ URI: [analysis_api_schema:DoiProviderEnum](https://w3id.org/MONet/analysis-api-s
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -63,7 +63,7 @@ URI: [analysis_api_schema:DoiProviderEnum](https://w3id.org/MONet/analysis-api-s
 ```yaml
 name: DoiProviderEnum
 description: The authority, or organization, the DOI is associated with
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   emsl:

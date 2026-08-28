@@ -7,17 +7,17 @@ _A user-submitted microbial sample for AMP2 workflows._
 
 __
 
-_References a biological_entity for identity (the "what") and carries_
+_References an organism for identity (the "what") and carries_
 
 _physical/logistical metadata for the specific sample instance (the "this tube")._
 
 __
 
-_Relationship to biological_entity:_
+_Relationship to organism:_
 
-_  - Many AMP2UserSample instances can reference one biological_entity_
+_  - Many AMP2UserSample instances can reference one organism_
 
-_  - biological_entity_ref is the FK (required)_
+_  - organism_ref is the FK (required)_
 
 _  - Example: 1000 samples of strain KT2440_pTE314_
 
@@ -35,7 +35,7 @@ _  - Outputs ProcessedSample instances at each stage_
 
 
 
-URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-schema/AMP2UserSample)
+URI: [basalt_schema:AMP2UserSample](https://emsl-computing.github.io/BASALT-Schema/elements/AMP2UserSample)
 
 
 
@@ -49,17 +49,6 @@ URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-sc
         click Sample href "../Sample/"
       
       AMP2UserSample : analysis_type
-        
-      AMP2UserSample : biological_entity_ref
-        
-          
-    
-        
-        
-        AMP2UserSample --> "1" BiologicalEntity : biological_entity_ref
-        click BiologicalEntity href "../BiologicalEntity/"
-    
-
         
       AMP2UserSample : cbi
         
@@ -89,6 +78,17 @@ URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-sc
       AMP2UserSample : lims_barcode
         
       AMP2UserSample : name
+        
+      AMP2UserSample : organism_ref
+        
+          
+    
+        
+        
+        AMP2UserSample --> "1" Organism : organism_ref
+        click Organism href "../Organism/"
+    
+
         
       AMP2UserSample : other_guid_source
         
@@ -125,7 +125,7 @@ URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-sc
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [biological_entity_ref](biological_entity_ref.md) | 1 <br/> [BiologicalEntity](BiologicalEntity.md) | FK to biological_entity representing the biological identity this sample inst... | direct |
+| [organism_ref](organism_ref.md) | 1 <br/> [Organism](Organism.md) | FK to organism representing the biological identity this sample instantiates | direct |
 | [collection_date](collection_date.md) | 0..1 <br/> [Date](Date.md) | The date the sample was collected or received from the user | direct |
 | [growth_facil](growth_facil.md) | 0..1 <br/> [GrowthFacilityEnum](GrowthFacilityEnum.md) | Type of facility or location from where the sample was collected or | direct |
 | [isol_growth_condt](isol_growth_condt.md) | 0..1 <br/> [String](String.md) | Publication reference in the form of pubmed ID (PMID), digital object | direct |
@@ -166,7 +166,7 @@ URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-sc
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -175,8 +175,8 @@ URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-sc
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:AMP2UserSample |
-| native | analysis_api_schema:AMP2UserSample |
+| self | basalt_schema:AMP2UserSample |
+| native | basalt_schema:AMP2UserSample |
 
 
 
@@ -193,17 +193,17 @@ URI: [analysis_api_schema:AMP2UserSample](https://w3id.org/MONet/analysis-api-sc
 ```yaml
 name: AMP2UserSample
 description: "A user-submitted microbial sample for AMP2 workflows.\n\nReferences\
-  \ a biological_entity for identity (the \"what\") and carries\nphysical/logistical\
-  \ metadata for the specific sample instance (the \"this tube\").\n\nRelationship\
-  \ to biological_entity:\n  - Many AMP2UserSample instances can reference one biological_entity\n\
-  \  - biological_entity_ref is the FK (required)\n  - Example: 1000 samples of strain\
-  \ KT2440_pTE314\n\nWorkflow integration:\n  - Enters workflow via SampleReceiving\
-  \ activity\n  - Processed through StrainPurity → StockCulturePreparation → PreCultureGrowth\
-  \ → ExperimentalCulture\n  - Outputs ProcessedSample instances at each stage"
-from_schema: https://w3id.org/MONet/analysis-api-schema
+  \ an organism for identity (the \"what\") and carries\nphysical/logistical metadata\
+  \ for the specific sample instance (the \"this tube\").\n\nRelationship to organism:\n\
+  \  - Many AMP2UserSample instances can reference one organism\n  - organism_ref\
+  \ is the FK (required)\n  - Example: 1000 samples of strain KT2440_pTE314\n\nWorkflow\
+  \ integration:\n  - Enters workflow via SampleReceiving activity\n  - Processed\
+  \ through StrainPurity → StockCulturePreparation → PreCultureGrowth → ExperimentalCulture\n\
+  \  - Outputs ProcessedSample instances at each stage"
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Sample
 slots:
-- biological_entity_ref
+- organism_ref
 - collection_date
 - growth_facil
 - isol_growth_condt
@@ -216,12 +216,12 @@ slots:
 - analysis_type
 - cbi
 slot_usage:
-  biological_entity_ref:
-    name: biological_entity_ref
-    description: 'FK to biological_entity representing the biological identity this
-      sample instantiates.
+  organism_ref:
+    name: organism_ref
+    description: 'FK to organism representing the biological identity this sample
+      instantiates.
 
-      Required - every AMP2UserSample must reference a biological_entity.'
+      Required - every AMP2UserSample must reference an organism.'
     required: true
   storage_condition:
     name: storage_condition
@@ -240,7 +240,7 @@ slot_usage:
     name: name
     description: 'Sample identifier/name (e.g., "PP_0055").
 
-      May match strain_identifier on biological_entity for 1:1 cases,
+      May match strain_identifier on organism for 1:1 cases,
 
       but typically unique per sample instance.
 
@@ -256,7 +256,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -278,9 +278,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -319,7 +319,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -342,22 +343,22 @@ attributes:
 ```yaml
 name: AMP2UserSample
 description: "A user-submitted microbial sample for AMP2 workflows.\n\nReferences\
-  \ a biological_entity for identity (the \"what\") and carries\nphysical/logistical\
-  \ metadata for the specific sample instance (the \"this tube\").\n\nRelationship\
-  \ to biological_entity:\n  - Many AMP2UserSample instances can reference one biological_entity\n\
-  \  - biological_entity_ref is the FK (required)\n  - Example: 1000 samples of strain\
-  \ KT2440_pTE314\n\nWorkflow integration:\n  - Enters workflow via SampleReceiving\
-  \ activity\n  - Processed through StrainPurity → StockCulturePreparation → PreCultureGrowth\
-  \ → ExperimentalCulture\n  - Outputs ProcessedSample instances at each stage"
-from_schema: https://w3id.org/MONet/analysis-api-schema
+  \ an organism for identity (the \"what\") and carries\nphysical/logistical metadata\
+  \ for the specific sample instance (the \"this tube\").\n\nRelationship to organism:\n\
+  \  - Many AMP2UserSample instances can reference one organism\n  - organism_ref\
+  \ is the FK (required)\n  - Example: 1000 samples of strain KT2440_pTE314\n\nWorkflow\
+  \ integration:\n  - Enters workflow via SampleReceiving activity\n  - Processed\
+  \ through StrainPurity → StockCulturePreparation → PreCultureGrowth → ExperimentalCulture\n\
+  \  - Outputs ProcessedSample instances at each stage"
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Sample
 slot_usage:
-  biological_entity_ref:
-    name: biological_entity_ref
-    description: 'FK to biological_entity representing the biological identity this
-      sample instantiates.
+  organism_ref:
+    name: organism_ref
+    description: 'FK to organism representing the biological identity this sample
+      instantiates.
 
-      Required - every AMP2UserSample must reference a biological_entity.'
+      Required - every AMP2UserSample must reference an organism.'
     required: true
   storage_condition:
     name: storage_condition
@@ -376,7 +377,7 @@ slot_usage:
     name: name
     description: 'Sample identifier/name (e.g., "PP_0055").
 
-      May match strain_identifier on biological_entity for 1:1 cases,
+      May match strain_identifier on organism for 1:1 cases,
 
       but typically unique per sample instance.
 
@@ -392,7 +393,7 @@ slot_usage:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     alias: id
     owner: AMP2UserSample
@@ -416,9 +417,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -457,7 +458,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -470,30 +472,30 @@ attributes:
     - zipDownload
     range: uuid
     required: true
-  biological_entity_ref:
-    name: biological_entity_ref
-    description: 'FK to biological_entity representing the biological identity this
-      sample instantiates.
+  organism_ref:
+    name: organism_ref
+    description: 'FK to organism representing the biological identity this sample
+      instantiates.
 
-      Required - every AMP2UserSample must reference a biological_entity.'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+      Required - every AMP2UserSample must reference an organism.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - strain_ref
     - strain_id
     rank: 1000
-    alias: biological_entity_ref
+    alias: organism_ref
     owner: AMP2UserSample
     domain_of:
     - CultureGrowth
     - AMP2UserSample
     - EngineeredStrainSample
-    range: biological_entity
+    range: organism
     required: true
   collection_date:
     name: collection_date
     description: The date the sample was collected or received from the user.
     title: collection date
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: collection_date
     owner: AMP2UserSample
@@ -512,7 +514,7 @@ attributes:
 
       attribute to provide additional detail.'
     title: growth facility
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: growth_facil
     owner: AMP2UserSample
@@ -529,7 +531,7 @@ attributes:
 
       organism/material'
     title: isolation and growth conditions
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: isol_growth_condt
     owner: AMP2UserSample
@@ -547,7 +549,7 @@ attributes:
     description: 'Date the incubation was started. Only relevant for incubation samples.
       Format: YYYY-MM-DD'
     title: incubation start date
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: start_date_inc
     owner: AMP2UserSample
@@ -572,7 +574,7 @@ attributes:
 
       Aliases: samp_store_cond, storage_cond, storage_condt'
     title: storage condition
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - samp_store_cond
     - storage_cond
@@ -607,7 +609,7 @@ attributes:
     description: 'Storage temperature for this sample (e.g., "-80 C").
 
       Aliases: samp_store_temp'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: storage_temperature
     owner: AMP2UserSample
@@ -620,7 +622,7 @@ attributes:
     name: shipped_sample_size
     description: Total amount of sample sent to EMSL. Must include units.
     title: shipped sample size
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: shipped_sample_size
     owner: AMP2UserSample
@@ -632,7 +634,7 @@ attributes:
   guid_source:
     name: guid_source
     description: Source system for the sample GUID (e.g., "LIMS").
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: guid_source
     owner: AMP2UserSample
@@ -642,7 +644,7 @@ attributes:
   other_guid_source:
     name: other_guid_source
     description: Description of GUID source if guid_source = "other".
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: other_guid_source
     owner: AMP2UserSample
@@ -652,12 +654,11 @@ attributes:
   analysis_type:
     name: analysis_type
     description: The type(s) of analysis planned for this sample.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: analysis_type
     owner: AMP2UserSample
     domain_of:
-    - SampleProcessing
     - AerosolArmSample
     - AerosolSample
     - AMP2UserSample
@@ -680,7 +681,7 @@ attributes:
     description: 'Confidential Business Information flag (yes/no).
 
       Indicates if the sample is subject to CBI restrictions.'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - CBI
     rank: 1000
@@ -694,12 +695,12 @@ attributes:
     name: name
     description: 'Sample identifier/name (e.g., "PP_0055").
 
-      May match strain_identifier on biological_entity for 1:1 cases,
+      May match strain_identifier on organism for 1:1 cases,
 
       but typically unique per sample instance.
 
       Aliases: sample_name, samp_name'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: AMP2UserSample
@@ -711,16 +712,18 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -729,7 +732,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: AMP2UserSample
@@ -742,15 +745,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -768,7 +773,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: emsl_activity
     owner: AMP2UserSample
@@ -780,7 +785,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: lims_barcode
     owner: AMP2UserSample

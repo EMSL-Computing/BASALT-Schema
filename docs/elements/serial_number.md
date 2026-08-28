@@ -9,7 +9,7 @@ _instrument instance specifier_
 
 
 
-URI: [analysis_api_schema:serial_number](https://w3id.org/MONet/analysis-api-schema/serial_number)
+URI: [basalt_schema:serial_number](https://emsl-computing.github.io/BASALT-Schema/elements/serial_number)
 Alias: serial_number
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: serial_number
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -77,8 +77,8 @@ Alias: serial_number
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:serial_number |
-| native | analysis_api_schema:serial_number |
+| self | basalt_schema:serial_number |
+| native | basalt_schema:serial_number |
 
 
 
@@ -89,7 +89,7 @@ Alias: serial_number
 ```yaml
 name: serial_number
 description: instrument instance specifier
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: serial_number
 owner: Instrument

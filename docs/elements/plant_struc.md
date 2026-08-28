@@ -9,7 +9,7 @@ _Name of plant structure the sample was obtained from; for Plant Ontology (PO) (
 
 
 
-URI: [analysis_api_schema:plant_struc](https://w3id.org/MONet/analysis-api-schema/plant_struc)
+URI: [basalt_schema:plant_struc](https://emsl-computing.github.io/BASALT-Schema/elements/plant_struc)
 Alias: plant_struc
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: plant_struc
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
-| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
 
 
 
@@ -63,7 +63,7 @@ Alias: plant_struc
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -72,8 +72,8 @@ Alias: plant_struc
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:plant_struc |
-| native | analysis_api_schema:plant_struc |
+| self | basalt_schema:plant_struc |
+| native | basalt_schema:plant_struc |
 
 
 
@@ -88,7 +88,7 @@ description: Name of plant structure the sample was obtained from; for Plant Ont
   petiole epidermis (PO_0000051). If an individual flower is sampled the sex of it
   can be recorded here.
 title: plant structure
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: plant_struc
 domain_of:

@@ -18,7 +18,7 @@ wheels = [
 ]
 
 [[package]]
-name = "analysis-api-schema"
+name = "basalt-schema"
 source = { editable = "." }
 dependencies = [
     { name = "linkml-runtime" },

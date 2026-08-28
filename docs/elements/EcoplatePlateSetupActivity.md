@@ -23,7 +23,7 @@ _v1 origin: plate-general.yaml EcoplatePlateSetupActivity_
 
 
 
-URI: [analysis_api_schema:EcoplatePlateSetupActivity](https://w3id.org/MONet/analysis-api-schema/EcoplatePlateSetupActivity)
+URI: [basalt_schema:EcoplatePlateSetupActivity](https://emsl-computing.github.io/BASALT-Schema/elements/EcoplatePlateSetupActivity)
 
 
 
@@ -38,29 +38,22 @@ URI: [analysis_api_schema:EcoplatePlateSetupActivity](https://w3id.org/MONet/ana
       
       EcoplatePlateSetupActivity : agitation_speed_rpm
         
-      EcoplatePlateSetupActivity : analysis_type
-        
-          
-    
-        
-        
-        EcoplatePlateSetupActivity --> "0..1" RouteMethodEnum : analysis_type
-        click RouteMethodEnum href "../RouteMethodEnum/"
-    
-
+      EcoplatePlateSetupActivity : description
         
       EcoplatePlateSetupActivity : id
         
-      EcoplatePlateSetupActivity : method_name
+      EcoplatePlateSetupActivity : in_protocol
         
           
     
         
         
-        EcoplatePlateSetupActivity --> "0..1" MethodNameEnum : method_name
-        click MethodNameEnum href "../MethodNameEnum/"
+        EcoplatePlateSetupActivity --> "0..1" SampleProcessingProtocol : in_protocol
+        click SampleProcessingProtocol href "../SampleProcessingProtocol/"
     
 
+        
+      EcoplatePlateSetupActivity : name
         
       EcoplatePlateSetupActivity : oxygen_relationship
         
@@ -76,12 +69,6 @@ URI: [analysis_api_schema:EcoplatePlateSetupActivity](https://w3id.org/MONet/ana
       EcoplatePlateSetupActivity : plate_barcode
         
       EcoplatePlateSetupActivity : plate_type
-        
-      EcoplatePlateSetupActivity : processing_steps
-        
-      EcoplatePlateSetupActivity : protocol_url
-        
-      EcoplatePlateSetupActivity : protocol_version
         
       EcoplatePlateSetupActivity : sealing_method
         
@@ -101,17 +88,6 @@ URI: [analysis_api_schema:EcoplatePlateSetupActivity](https://w3id.org/MONet/ana
 
         
       EcoplatePlateSetupActivity : temperature_celsius
-        
-      EcoplatePlateSetupActivity : uses_sample
-        
-          
-    
-        
-        
-        EcoplatePlateSetupActivity --> "0..1" Sample : uses_sample
-        click Sample href "../Sample/"
-    
-
         
       EcoplatePlateSetupActivity : well_metadata
         
@@ -151,13 +127,10 @@ URI: [analysis_api_schema:EcoplatePlateSetupActivity](https://w3id.org/MONet/ana
 | [temperature_celsius](temperature_celsius.md) | 0..1 <br/> [Float](Float.md) | Temperature at which the method/process/activity was performed | [HasIncubationConditions](HasIncubationConditions.md) |
 | [agitation_speed_rpm](agitation_speed_rpm.md) | 0..1 <br/> [Integer](Integer.md) | Agitation/shaking speed in RPM (0 for static) | [HasIncubationConditions](HasIncubationConditions.md) |
 | [oxygen_relationship](oxygen_relationship.md) | 0..1 <br/> [OxygenStatusEnum](OxygenStatusEnum.md) | The relationship of the sample to oxygen, such as aerobic or anaerobic | [HasIncubationConditions](HasIncubationConditions.md) |
-| [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
-| [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
+| [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [SampleProcessing](SampleProcessing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [SampleProcessing](SampleProcessing.md) |
+| [in_protocol](in_protocol.md) | 0..1 <br/> [SampleProcessingProtocol](SampleProcessingProtocol.md) | The SampleProcessingProtocol (the recipe) that this step follows | [SampleProcessing](SampleProcessing.md) |
 | [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [SampleProcessing](SampleProcessing.md) |
-| [analysis_type](analysis_type.md) | 0..1 <br/> [RouteMethodEnum](RouteMethodEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
-| [method_name](method_name.md) | 0..1 <br/> [MethodNameEnum](MethodNameEnum.md) |  | [SampleProcessing](SampleProcessing.md) |
-| [processing_steps](processing_steps.md) | 1 <br/> [String](String.md) |  | [SampleProcessing](SampleProcessing.md) |
-| [uses_sample](uses_sample.md) | 0..1 <br/> [Sample](Sample.md) |  | [SampleProcessing](SampleProcessing.md) |
 
 
 
@@ -182,7 +155,7 @@ URI: [analysis_api_schema:EcoplatePlateSetupActivity](https://w3id.org/MONet/ana
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -191,8 +164,8 @@ URI: [analysis_api_schema:EcoplatePlateSetupActivity](https://w3id.org/MONet/ana
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:EcoplatePlateSetupActivity |
-| native | analysis_api_schema:EcoplatePlateSetupActivity |
+| self | basalt_schema:EcoplatePlateSetupActivity |
+| native | basalt_schema:EcoplatePlateSetupActivity |
 
 
 
@@ -221,7 +194,7 @@ description: 'Ecoplate-specific plate setup.
 
 
   v1 origin: plate-general.yaml EcoplatePlateSetupActivity'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: PlateSetupActivity
 
 ```
@@ -245,13 +218,13 @@ description: 'Ecoplate-specific plate setup.
 
 
   v1 origin: plate-general.yaml EcoplatePlateSetupActivity'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: PlateSetupActivity
 attributes:
   plate_type:
     name: plate_type
     description: Vendor and model of plate (e.g. "Greiner_96well_flat_bottom", "Biolog_EcoPlate")
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: plate_type
     owner: EcoplatePlateSetupActivity
@@ -262,7 +235,7 @@ attributes:
   plate_barcode:
     name: plate_barcode
     description: Physical barcode on plate (if different from UUID)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: plate_barcode
     owner: EcoplatePlateSetupActivity
@@ -272,7 +245,7 @@ attributes:
   setup_date:
     name: setup_date
     description: When the plate was physically set up
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: setup_date
     owner: EcoplatePlateSetupActivity
@@ -283,7 +256,7 @@ attributes:
   setup_operator_id:
     name: setup_operator_id
     description: Person who set up the plate
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: setup_operator_id
     owner: EcoplatePlateSetupActivity
@@ -293,7 +266,7 @@ attributes:
   setup_instrument:
     name: setup_instrument
     description: Automated liquid handler (e.g. "Hamilton_STAR") or "manual"
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: setup_instrument
     owner: EcoplatePlateSetupActivity
@@ -303,7 +276,7 @@ attributes:
   sealing_method:
     name: sealing_method
     description: How the plate is sealed (e.g. "BreathEasy_membrane", "adhesive_film")
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sealing_method
     owner: EcoplatePlateSetupActivity
@@ -319,7 +292,7 @@ attributes:
     todos:
     - decide how to represent in backend (normalized child table with FK to PlateSetupActivity,
       array column, or other)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: well_metadata
     owner: EcoplatePlateSetupActivity
@@ -332,18 +305,19 @@ attributes:
   temperature_celsius:
     name: temperature_celsius
     description: Temperature at which the method/process/activity was performed
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: temperature_celsius
     owner: EcoplatePlateSetupActivity
     domain_of:
     - ChromatographyConfiguration
     - HasIncubationConditions
+    - ChemicalConversionProcess
     range: float
   agitation_speed_rpm:
     name: agitation_speed_rpm
     description: Agitation/shaking speed in RPM (0 for static)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: agitation_speed_rpm
     owner: EcoplatePlateSetupActivity
@@ -354,7 +328,7 @@ attributes:
     name: oxygen_relationship
     description: The relationship of the sample to oxygen, such as aerobic or anaerobic.
     title: oxygen relationship
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     exact_mappings:
     - MIXS:0000015
     rank: 1000
@@ -374,31 +348,88 @@ attributes:
     - TerraformSample
     - WaterSample
     range: OxygenStatusEnum
-  protocol_url:
-    name: protocol_url
-    description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+  name:
+    name: name
+    description: Human-readable name for the entity or activity.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: protocol_url
+    alias: name
     owner: EcoplatePlateSetupActivity
     domain_of:
+    - Activity
+    - Entity
+    - DataProduct
     - DataGenerationActivity
+    - Instrument
+    - OntologyClass
+    - ContainerAxis
     - SampleProcessing
+    - Configuration
+    - MobilePhaseSegment
+    - MassSpectrometryStandardRun
+    - PurchasedMaterial
+    - organism
+    - Site
+    - Sample
+    - SamplingActivity
+    - SoilSamplingActivity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
+    - Study
+    - SoftwareControlledTermValue
     range: string
-  protocol_version:
-    name: protocol_version
-    description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    required: true
+  description:
+    name: description
+    description: Human-readable description for the entity or activity
+    title: description
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: protocol_version
+    alias: description
     owner: EcoplatePlateSetupActivity
     domain_of:
+    - Activity
+    - Entity
+    - DataProduct
     - DataGenerationActivity
+    - DataProcessingActivity
+    - OntologyClass
+    - ContainerType
+    - LabDevice
     - SampleProcessing
+    - Configuration
+    - MassSpectrometryStandardRun
+    - PurchasedMaterial
+    - organism
+    - Site
+    - Sample
+    - SamplingActivity
+    - SoilSamplingActivity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
+    - Study
+    - TimestampValue
+    - TextValue
+    - SoftwareControlledTermValue
+    - ControlledTermValue
+    - QuantityValue
     range: string
+  in_protocol:
+    name: in_protocol
+    description: 'The SampleProcessingProtocol (the recipe) that this step follows.
+      Type-level, not instance-level: every execution of the same SOP points at the
+      same record, so this does NOT identify a particular chain. Use in_run for that.
+      A chain may mix protocols, so this is recorded per step rather than per run.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    rank: 1000
+    alias: in_protocol
+    owner: EcoplatePlateSetupActivity
+    domain_of:
+    - SampleProcessing
+    range: SampleProcessingProtocol
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: EcoplatePlateSetupActivity
@@ -422,9 +453,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -463,7 +494,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -476,57 +508,6 @@ attributes:
     - zipDownload
     range: uuid
     required: true
-  analysis_type:
-    name: analysis_type
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    alias: analysis_type
-    owner: EcoplatePlateSetupActivity
-    domain_of:
-    - SampleProcessing
-    - AerosolArmSample
-    - AerosolSample
-    - AMP2UserSample
-    - CommerciallyPurchasedSample
-    - CultureEnvironmentalSample
-    - FieldDeployedTerraformSample
-    - MixedCultureSample
-    - OtherUndescribedSample
-    - PlantSample
-    - PureCultureSample
-    - SedimentSample
-    - SoilSample
-    - SynthesizedMaterialSample
-    - TerraformSample
-    - WaterSample
-    range: RouteMethodEnum
-  method_name:
-    name: method_name
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: method_name
-    owner: EcoplatePlateSetupActivity
-    domain_of:
-    - SampleProcessing
-    range: MethodNameEnum
-  processing_steps:
-    name: processing_steps
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: processing_steps
-    owner: EcoplatePlateSetupActivity
-    domain_of:
-    - SampleProcessing
-    range: string
-    required: true
-  uses_sample:
-    name: uses_sample
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: uses_sample
-    owner: EcoplatePlateSetupActivity
-    domain_of:
-    - SampleProcessing
-    range: Sample
 
 ```
 </details>

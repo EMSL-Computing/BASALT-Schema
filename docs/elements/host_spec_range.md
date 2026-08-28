@@ -9,7 +9,7 @@ _The range and diversity of host species that an organism is capable of infectin
 
 
 
-URI: [analysis_api_schema:host_spec_range](https://w3id.org/MONet/analysis-api-schema/host_spec_range)
+URI: [basalt_schema:host_spec_range](https://emsl-computing.github.io/BASALT-Schema/elements/host_spec_range)
 Alias: host_spec_range
 
 <!-- no inheritance hierarchy -->
@@ -22,13 +22,13 @@ Alias: host_spec_range
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
 
 
 
@@ -42,7 +42,7 @@ Alias: host_spec_range
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [CultureEnvironmentalSample](CultureEnvironmentalSample.md), [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md), [MixedCultureSample](MixedCultureSample.md), [OtherUndescribedSample](OtherUndescribedSample.md), [PureCultureSample](PureCultureSample.md), [TerraformSample](TerraformSample.md), [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md), [CultureEnvironmentalSample](CultureEnvironmentalSample.md), [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md), [MixedCultureSample](MixedCultureSample.md), [OtherUndescribedSample](OtherUndescribedSample.md), [PureCultureSample](PureCultureSample.md), [TerraformSample](TerraformSample.md) |
 
 ### Cardinality and Requirements
 
@@ -74,7 +74,7 @@ Alias: host_spec_range
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,8 +83,8 @@ Alias: host_spec_range
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:host_spec_range |
-| native | analysis_api_schema:host_spec_range |
+| self | basalt_schema:host_spec_range |
+| native | basalt_schema:host_spec_range |
 
 
 
@@ -97,17 +97,17 @@ name: host_spec_range
 description: The range and diversity of host species that an organism is capable of
   infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####
 title: host specificity or range
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: host_spec_range
 domain_of:
+- organism
 - CultureEnvironmentalSample
 - FieldDeployedTerraformSample
 - MixedCultureSample
 - OtherUndescribedSample
 - PureCultureSample
 - TerraformSample
-- biological_entity
 range: string
 pattern: NCBITaxon:\d+
 

@@ -9,7 +9,7 @@ _Amount of biomass; should include the name for the part of biomass measured, e.
 
 
 
-URI: [analysis_api_schema:non_microb_biomass](https://w3id.org/MONet/analysis-api-schema/non_microb_biomass)
+URI: [basalt_schema:non_microb_biomass](https://emsl-computing.github.io/BASALT-Schema/elements/non_microb_biomass)
 Alias: non_microb_biomass
 
 <!-- no inheritance hierarchy -->
@@ -22,14 +22,14 @@ Alias: non_microb_biomass
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  yes  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  yes  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  yes  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  yes  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  yes  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  yes  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  yes  |
 
 
 
@@ -68,7 +68,7 @@ Alias: non_microb_biomass
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -77,8 +77,8 @@ Alias: non_microb_biomass
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:non_microb_biomass |
-| native | analysis_api_schema:non_microb_biomass |
+| self | basalt_schema:non_microb_biomass |
+| native | basalt_schema:non_microb_biomass |
 
 
 
@@ -91,7 +91,7 @@ name: non_microb_biomass
 description: Amount of biomass; should include the name for the part of biomass measured,
   e.g.insect, plant, total. Can include multiple measurements separated by ;
 title: non microbial biomass
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: non_microb_biomass
 domain_of:

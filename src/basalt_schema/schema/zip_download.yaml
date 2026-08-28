@@ -1,0 +1,40 @@
+---
+id: https://emsl-computing.github.io/BASALT-Schema/zip_download
+name: basalt-schema-zip-download
+title: BASALT Schema - Zip Download
+description: |-
+  Zip download-related classes for BASALT.
+license: MIT
+see_also:
+  - https://emsl-computing.github.io/BASALT-Schema
+  - https://github.com/EMSL-Computing/BASALT-Schema
+
+prefixes:
+  basalt_schema: https://emsl-computing.github.io/BASALT-Schema/elements/
+
+default_prefix: basalt_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+classes:
+
+  zipDownload:
+    description: |-
+      A zip download record, capturing the details of a zip file download event.
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      time:
+        range: datetime
+        required: true
+      user:
+        range: string
+        required: true
+      files:
+        range: integer
+        required: true
+      packages:
+        range: string

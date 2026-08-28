@@ -9,7 +9,7 @@ _Measurement of light intensity. Provide value and unit, any unit is valid._
 
 
 
-URI: [analysis_api_schema:light_intensity](https://w3id.org/MONet/analysis-api-schema/light_intensity)
+URI: [basalt_schema:light_intensity](https://emsl-computing.github.io/BASALT-Schema/elements/light_intensity)
 Alias: light_intensity
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: light_intensity
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: light_intensity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -78,8 +78,8 @@ Alias: light_intensity
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:light_intensity |
-| native | analysis_api_schema:light_intensity |
+| self | basalt_schema:light_intensity |
+| native | basalt_schema:light_intensity |
 
 
 
@@ -91,7 +91,7 @@ Alias: light_intensity
 name: light_intensity
 description: Measurement of light intensity. Provide value and unit, any unit is valid.
 title: light intensity
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: light_intensity
 domain_of:

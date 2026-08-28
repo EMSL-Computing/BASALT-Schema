@@ -9,7 +9,7 @@ _Dissolved inorganic carbon concentration in the sample, typically measured afte
 
 
 
-URI: [analysis_api_schema:diss_inorg_carb](https://w3id.org/MONet/analysis-api-schema/diss_inorg_carb)
+URI: [basalt_schema:diss_inorg_carb](https://emsl-computing.github.io/BASALT-Schema/elements/diss_inorg_carb)
 Alias: diss_inorg_carb
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: diss_inorg_carb
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: diss_inorg_carb
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -79,8 +79,8 @@ Alias: diss_inorg_carb
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:diss_inorg_carb |
-| native | analysis_api_schema:diss_inorg_carb |
+| self | basalt_schema:diss_inorg_carb |
+| native | basalt_schema:diss_inorg_carb |
 
 
 
@@ -94,7 +94,7 @@ description: 'Dissolved inorganic carbon concentration in the sample, typically 
   after filtering the sample using a 0.45 micrometer filter (Unit:  ug/L or mg/L or
   ppm)'
 title: dissolved inorganic carbon
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: diss_inorg_carb
 domain_of:

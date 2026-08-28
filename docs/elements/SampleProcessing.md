@@ -3,9 +3,27 @@
 # Class: SampleProcessing 
 
 
-_Abstract base for any sample processing activity (physical to physical). Input data should _
+_Abstract base for any sample processing activity (physical to physical): one_
 
-_be specified on workflow subclasses._
+_laboratory step that consumes one or more Samples and produces one or more_
+
+_ProcessedSamples. Concrete protocol-specific subclasses use is_a: SampleProcessing._
+
+__
+
+_This class deliberately carries NO pointers to the samples it consumed or_
+
+_produced. Those edges live exclusively in ProcessingSampleLink, which records_
+
+_direction via its role slot. See that class for the rationale._
+
+__
+
+_Protocol identity (URL, version) is likewise NOT stored here. A step points at_
+
+_a SampleProcessingProtocol record via in_protocol, which is the single home for_
+
+_protocol_url and protocol_version._
 
 
 
@@ -13,7 +31,7 @@ _be specified on workflow subclasses._
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [analysis_api_schema:SampleProcessing](https://w3id.org/MONet/analysis-api-schema/SampleProcessing)
+URI: [basalt_schema:SampleProcessing](https://emsl-computing.github.io/BASALT-Schema/elements/SampleProcessing)
 
 
 
@@ -29,47 +47,43 @@ URI: [analysis_api_schema:SampleProcessing](https://w3id.org/MONet/analysis-api-
         click CultureGrowth href "../CultureGrowth/"
       SampleProcessing <|-- PlateSetupActivity
         click PlateSetupActivity href "../PlateSetupActivity/"
+      SampleProcessing <|-- StandardSampleProcessing
+        click StandardSampleProcessing href "../StandardSampleProcessing/"
+      SampleProcessing <|-- ChemicalConversionProcess
+        click ChemicalConversionProcess href "../ChemicalConversionProcess/"
+      SampleProcessing <|-- Extraction
+        click Extraction href "../Extraction/"
+      SampleProcessing <|-- FractionationProcess
+        click FractionationProcess href "../FractionationProcess/"
+      SampleProcessing <|-- NormalizationProcess
+        click NormalizationProcess href "../NormalizationProcess/"
+      SampleProcessing <|-- PoolingProcess
+        click PoolingProcess href "../PoolingProcess/"
+      SampleProcessing <|-- ProteinQuantification
+        click ProteinQuantification href "../ProteinQuantification/"
+      SampleProcessing <|-- ResuspensionProcess
+        click ResuspensionProcess href "../ResuspensionProcess/"
+      SampleProcessing <|-- SolidPhaseExtractionProcess
+        click SolidPhaseExtractionProcess href "../SolidPhaseExtractionProcess/"
+      SampleProcessing <|-- SubSamplingProcess
+        click SubSamplingProcess href "../SubSamplingProcess/"
       
-      SampleProcessing : analysis_type
-        
-          
-    
-        
-        
-        SampleProcessing --> "0..1" RouteMethodEnum : analysis_type
-        click RouteMethodEnum href "../RouteMethodEnum/"
-    
-
+      SampleProcessing : description
         
       SampleProcessing : id
         
-      SampleProcessing : method_name
+      SampleProcessing : in_protocol
         
           
     
         
         
-        SampleProcessing --> "0..1" MethodNameEnum : method_name
-        click MethodNameEnum href "../MethodNameEnum/"
+        SampleProcessing --> "0..1" SampleProcessingProtocol : in_protocol
+        click SampleProcessingProtocol href "../SampleProcessingProtocol/"
     
 
         
-      SampleProcessing : processing_steps
-        
-      SampleProcessing : protocol_url
-        
-      SampleProcessing : protocol_version
-        
-      SampleProcessing : uses_sample
-        
-          
-    
-        
-        
-        SampleProcessing --> "0..1" Sample : uses_sample
-        click Sample href "../Sample/"
-    
-
+      SampleProcessing : name
         
       
 ```
@@ -83,19 +97,26 @@ URI: [analysis_api_schema:SampleProcessing](https://w3id.org/MONet/analysis-api-
     * [MediaPreparation](MediaPreparation.md)
     * [CultureGrowth](CultureGrowth.md) [ [HasIncubationConditions](HasIncubationConditions.md)]
     * [PlateSetupActivity](PlateSetupActivity.md) [ [HasIncubationConditions](HasIncubationConditions.md)]
+    * [StandardSampleProcessing](StandardSampleProcessing.md)
+    * [ChemicalConversionProcess](ChemicalConversionProcess.md)
+    * [Extraction](Extraction.md)
+    * [FractionationProcess](FractionationProcess.md)
+    * [NormalizationProcess](NormalizationProcess.md)
+    * [PoolingProcess](PoolingProcess.md)
+    * [ProteinQuantification](ProteinQuantification.md)
+    * [ResuspensionProcess](ResuspensionProcess.md)
+    * [SolidPhaseExtractionProcess](SolidPhaseExtractionProcess.md)
+    * [SubSamplingProcess](SubSamplingProcess.md)
 
 
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | direct |
-| [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | direct |
+| [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | direct |
+| [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | direct |
+| [in_protocol](in_protocol.md) | 0..1 <br/> [SampleProcessingProtocol](SampleProcessingProtocol.md) | The SampleProcessingProtocol (the recipe) that this step follows | direct |
 | [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
-| [analysis_type](analysis_type.md) | 0..1 <br/> [RouteMethodEnum](RouteMethodEnum.md) |  | direct |
-| [method_name](method_name.md) | 0..1 <br/> [MethodNameEnum](MethodNameEnum.md) |  | direct |
-| [processing_steps](processing_steps.md) | 1 <br/> [String](String.md) |  | direct |
-| [uses_sample](uses_sample.md) | 0..1 <br/> [Sample](Sample.md) |  | direct |
 
 
 
@@ -106,8 +127,6 @@ URI: [analysis_api_schema:SampleProcessing](https://w3id.org/MONet/analysis-api-
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [ProcessingSampleLink](ProcessingSampleLink.md) | [processing_id](processing_id.md) | range | [SampleProcessing](SampleProcessing.md) |
-| [ProcessedSample](ProcessedSample.md) | [sampled_during](sampled_during.md) | range | [SampleProcessing](SampleProcessing.md) |
-| [CoreSection](CoreSection.md) | [sampled_during](sampled_during.md) | range | [SampleProcessing](SampleProcessing.md) |
 
 
 
@@ -117,10 +136,6 @@ URI: [analysis_api_schema:SampleProcessing](https://w3id.org/MONet/analysis-api-
 
 
 
-
-## TODOs
-
-* why does this have both analysis type and method name, as enums, just set the range to the class
 
 
 
@@ -133,7 +148,7 @@ URI: [analysis_api_schema:SampleProcessing](https://w3id.org/MONet/analysis-api-
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -142,8 +157,8 @@ URI: [analysis_api_schema:SampleProcessing](https://w3id.org/MONet/analysis-api-
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:SampleProcessing |
-| native | analysis_api_schema:SampleProcessing |
+| self | basalt_schema:SampleProcessing |
+| native | basalt_schema:SampleProcessing |
 
 
 
@@ -159,20 +174,36 @@ URI: [analysis_api_schema:SampleProcessing](https://w3id.org/MONet/analysis-api-
 <details>
 ```yaml
 name: SampleProcessing
-description: "Abstract base for any sample processing activity (physical to physical).\
-  \ Input data should \nbe specified on workflow subclasses."
-todos:
-- why does this have both analysis type and method name, as enums, just set the range
-  to the class
-from_schema: https://w3id.org/MONet/analysis-api-schema
+description: 'Abstract base for any sample processing activity (physical to physical):
+  one
+
+  laboratory step that consumes one or more Samples and produces one or more
+
+  ProcessedSamples. Concrete protocol-specific subclasses use is_a: SampleProcessing.
+
+
+  This class deliberately carries NO pointers to the samples it consumed or
+
+  produced. Those edges live exclusively in ProcessingSampleLink, which records
+
+  direction via its role slot. See that class for the rationale.
+
+
+  Protocol identity (URL, version) is likewise NOT stored here. A step points at
+
+  a SampleProcessingProtocol record via in_protocol, which is the single home for
+
+  protocol_url and protocol_version.'
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 abstract: true
 slots:
-- protocol_url
-- protocol_version
+- name
+- description
+- in_protocol
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     domain_of:
     - Activity
@@ -194,9 +225,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -235,7 +266,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -248,49 +280,6 @@ attributes:
     - zipDownload
     range: uuid
     required: true
-  analysis_type:
-    name: analysis_type
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    domain_of:
-    - SampleProcessing
-    - AerosolArmSample
-    - AerosolSample
-    - AMP2UserSample
-    - CommerciallyPurchasedSample
-    - CultureEnvironmentalSample
-    - FieldDeployedTerraformSample
-    - MixedCultureSample
-    - OtherUndescribedSample
-    - PlantSample
-    - PureCultureSample
-    - SedimentSample
-    - SoilSample
-    - SynthesizedMaterialSample
-    - TerraformSample
-    - WaterSample
-    range: RouteMethodEnum
-  method_name:
-    name: method_name
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    domain_of:
-    - SampleProcessing
-    range: MethodNameEnum
-  processing_steps:
-    name: processing_steps
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    domain_of:
-    - SampleProcessing
-    range: string
-    required: true
-  uses_sample:
-    name: uses_sample
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    domain_of:
-    - SampleProcessing
-    range: Sample
 
 ```
 </details>
@@ -300,17 +289,32 @@ attributes:
 <details>
 ```yaml
 name: SampleProcessing
-description: "Abstract base for any sample processing activity (physical to physical).\
-  \ Input data should \nbe specified on workflow subclasses."
-todos:
-- why does this have both analysis type and method name, as enums, just set the range
-  to the class
-from_schema: https://w3id.org/MONet/analysis-api-schema
+description: 'Abstract base for any sample processing activity (physical to physical):
+  one
+
+  laboratory step that consumes one or more Samples and produces one or more
+
+  ProcessedSamples. Concrete protocol-specific subclasses use is_a: SampleProcessing.
+
+
+  This class deliberately carries NO pointers to the samples it consumed or
+
+  produced. Those edges live exclusively in ProcessingSampleLink, which records
+
+  direction via its role slot. See that class for the rationale.
+
+
+  Protocol identity (URL, version) is likewise NOT stored here. A step points at
+
+  a SampleProcessingProtocol record via in_protocol, which is the single home for
+
+  protocol_url and protocol_version.'
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 abstract: true
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: SampleProcessing
@@ -334,9 +338,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -375,7 +379,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -388,79 +393,85 @@ attributes:
     - zipDownload
     range: uuid
     required: true
-  analysis_type:
-    name: analysis_type
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    alias: analysis_type
-    owner: SampleProcessing
-    domain_of:
-    - SampleProcessing
-    - AerosolArmSample
-    - AerosolSample
-    - AMP2UserSample
-    - CommerciallyPurchasedSample
-    - CultureEnvironmentalSample
-    - FieldDeployedTerraformSample
-    - MixedCultureSample
-    - OtherUndescribedSample
-    - PlantSample
-    - PureCultureSample
-    - SedimentSample
-    - SoilSample
-    - SynthesizedMaterialSample
-    - TerraformSample
-    - WaterSample
-    range: RouteMethodEnum
-  method_name:
-    name: method_name
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+  name:
+    name: name
+    description: Human-readable name for the entity or activity.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: method_name
+    alias: name
     owner: SampleProcessing
     domain_of:
+    - Activity
+    - Entity
+    - DataProduct
+    - DataGenerationActivity
+    - Instrument
+    - OntologyClass
+    - ContainerAxis
     - SampleProcessing
-    range: MethodNameEnum
-  processing_steps:
-    name: processing_steps
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: processing_steps
-    owner: SampleProcessing
-    domain_of:
-    - SampleProcessing
+    - Configuration
+    - MobilePhaseSegment
+    - MassSpectrometryStandardRun
+    - PurchasedMaterial
+    - organism
+    - Site
+    - Sample
+    - SamplingActivity
+    - SoilSamplingActivity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
+    - Study
+    - SoftwareControlledTermValue
     range: string
     required: true
-  uses_sample:
-    name: uses_sample
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+  description:
+    name: description
+    description: Human-readable description for the entity or activity
+    title: description
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: uses_sample
+    alias: description
     owner: SampleProcessing
     domain_of:
-    - SampleProcessing
-    range: Sample
-  protocol_url:
-    name: protocol_url
-    description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: protocol_url
-    owner: SampleProcessing
-    domain_of:
+    - Activity
+    - Entity
+    - DataProduct
     - DataGenerationActivity
+    - DataProcessingActivity
+    - OntologyClass
+    - ContainerType
+    - LabDevice
     - SampleProcessing
+    - Configuration
+    - MassSpectrometryStandardRun
+    - PurchasedMaterial
+    - organism
+    - Site
+    - Sample
+    - SamplingActivity
+    - SoilSamplingActivity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
+    - Study
+    - TimestampValue
+    - TextValue
+    - SoftwareControlledTermValue
+    - ControlledTermValue
+    - QuantityValue
     range: string
-  protocol_version:
-    name: protocol_version
-    description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+  in_protocol:
+    name: in_protocol
+    description: 'The SampleProcessingProtocol (the recipe) that this step follows.
+      Type-level, not instance-level: every execution of the same SOP points at the
+      same record, so this does NOT identify a particular chain. Use in_run for that.
+      A chain may mix protocols, so this is recorded per step rather than per run.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: protocol_version
+    alias: in_protocol
     owner: SampleProcessing
     domain_of:
-    - DataGenerationActivity
     - SampleProcessing
-    range: string
+    range: SampleProcessingProtocol
 
 ```
 </details>

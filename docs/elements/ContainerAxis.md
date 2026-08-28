@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:ContainerAxis](https://w3id.org/MONet/analysis-api-schema/ContainerAxis)
+URI: [basalt_schema:ContainerAxis](https://emsl-computing.github.io/BASALT-Schema/elements/ContainerAxis)
 
 
 
@@ -67,7 +67,7 @@ URI: [analysis_api_schema:ContainerAxis](https://w3id.org/MONet/analysis-api-sch
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -76,8 +76,8 @@ URI: [analysis_api_schema:ContainerAxis](https://w3id.org/MONet/analysis-api-sch
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ContainerAxis |
-| native | analysis_api_schema:ContainerAxis |
+| self | basalt_schema:ContainerAxis |
+| native | basalt_schema:ContainerAxis |
 
 
 
@@ -95,11 +95,11 @@ URI: [analysis_api_schema:ContainerAxis](https://w3id.org/MONet/analysis-api-sch
 name: ContainerAxis
 todos:
 - I'm only including this in case we need it to sync up with L7 in some way
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   name:
     name: name
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     domain_of:
     - Activity
     - Entity
@@ -108,22 +108,24 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
   values:
     name: values
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - ContainerAxis
@@ -140,11 +142,11 @@ attributes:
 name: ContainerAxis
 todos:
 - I'm only including this in case we need it to sync up with L7 in some way
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   name:
     name: name
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     alias: name
     owner: ContainerAxis
     domain_of:
@@ -155,22 +157,24 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
   values:
     name: values
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: values
     owner: ContainerAxis

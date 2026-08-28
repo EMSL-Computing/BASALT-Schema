@@ -9,7 +9,7 @@ _Measurement of magnitude and direction of flow within a fluid. Provide value an
 
 
 
-URI: [analysis_api_schema:water_current](https://w3id.org/MONet/analysis-api-schema/water_current)
+URI: [basalt_schema:water_current](https://emsl-computing.github.io/BASALT-Schema/elements/water_current)
 Alias: water_current
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: water_current
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: water_current
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -78,8 +78,8 @@ Alias: water_current
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:water_current |
-| native | analysis_api_schema:water_current |
+| self | basalt_schema:water_current |
+| native | basalt_schema:water_current |
 
 
 
@@ -92,7 +92,7 @@ name: water_current
 description: Measurement of magnitude and direction of flow within a fluid. Provide
   value and unit, any unit is valid.
 title: water current
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: water_current
 domain_of:

@@ -9,7 +9,7 @@ _Addition of fertilizers, pesticides, etc. - amount and time of applications_
 
 
 
-URI: [analysis_api_schema:agrochem_addition](https://w3id.org/MONet/analysis-api-schema/agrochem_addition)
+URI: [basalt_schema:agrochem_addition](https://emsl-computing.github.io/BASALT-Schema/elements/agrochem_addition)
 Alias: agrochem_addition
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: agrochem_addition
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -72,8 +72,8 @@ Alias: agrochem_addition
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:agrochem_addition |
-| native | analysis_api_schema:agrochem_addition |
+| self | basalt_schema:agrochem_addition |
+| native | basalt_schema:agrochem_addition |
 
 
 
@@ -85,7 +85,7 @@ Alias: agrochem_addition
 name: agrochem_addition
 description: Addition of fertilizers, pesticides, etc. - amount and time of applications
 title: agrochemical additions
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: agrochem_addition
 domain_of:

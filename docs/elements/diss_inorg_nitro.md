@@ -9,7 +9,7 @@ _Concentration of dissolved inorganic nitrogen. (Unit: ug/L or umol/L)_
 
 
 
-URI: [analysis_api_schema:diss_inorg_nitro](https://w3id.org/MONet/analysis-api-schema/diss_inorg_nitro)
+URI: [basalt_schema:diss_inorg_nitro](https://emsl-computing.github.io/BASALT-Schema/elements/diss_inorg_nitro)
 Alias: diss_inorg_nitro
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: diss_inorg_nitro
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: diss_inorg_nitro
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -78,8 +78,8 @@ Alias: diss_inorg_nitro
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:diss_inorg_nitro |
-| native | analysis_api_schema:diss_inorg_nitro |
+| self | basalt_schema:diss_inorg_nitro |
+| native | basalt_schema:diss_inorg_nitro |
 
 
 
@@ -91,7 +91,7 @@ Alias: diss_inorg_nitro
 name: diss_inorg_nitro
 description: 'Concentration of dissolved inorganic nitrogen. (Unit: ug/L or umol/L)'
 title: dissolved inorganic nitrogen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: diss_inorg_nitro
 domain_of:

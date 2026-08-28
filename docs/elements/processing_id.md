@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:processing_id](https://w3id.org/MONet/analysis-api-schema/processing_id)
+URI: [basalt_schema:processing_id](https://emsl-computing.github.io/BASALT-Schema/elements/processing_id)
 Alias: processing_id
 
 <!-- no inheritance hierarchy -->
@@ -17,7 +17,7 @@ Alias: processing_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProcessingSampleLink](ProcessingSampleLink.md) | A link between a processed sample and the sample processing activity that pro... |  no  |
+| [ProcessingSampleLink](ProcessingSampleLink.md) | The authoritative record of what a SampleProcessing step consumed and produce... |  no  |
 
 
 
@@ -64,7 +64,7 @@ Alias: processing_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -73,8 +73,8 @@ Alias: processing_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:processing_id |
-| native | analysis_api_schema:processing_id |
+| self | basalt_schema:processing_id |
+| native | basalt_schema:processing_id |
 
 
 
@@ -84,7 +84,7 @@ Alias: processing_id
 <details>
 ```yaml
 name: processing_id
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: processing_id
 owner: ProcessingSampleLink

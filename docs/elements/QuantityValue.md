@@ -9,7 +9,7 @@ _A quantity value with numeric value and optional unit_
 
 
 
-URI: [analysis_api_schema:QuantityValue](https://w3id.org/MONet/analysis-api-schema/QuantityValue)
+URI: [basalt_schema:QuantityValue](https://emsl-computing.github.io/BASALT-Schema/elements/QuantityValue)
 
 
 
@@ -119,7 +119,7 @@ URI: [analysis_api_schema:QuantityValue](https://w3id.org/MONet/analysis-api-sch
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -128,8 +128,8 @@ URI: [analysis_api_schema:QuantityValue](https://w3id.org/MONet/analysis-api-sch
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:QuantityValue |
-| native | analysis_api_schema:QuantityValue |
+| self | basalt_schema:QuantityValue |
+| native | basalt_schema:QuantityValue |
 
 
 
@@ -146,13 +146,13 @@ URI: [analysis_api_schema:QuantityValue](https://w3id.org/MONet/analysis-api-sch
 ```yaml
 name: QuantityValue
 description: A quantity value with numeric value and optional unit
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 slots:
 - description
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     identifier: true
     domain_of:
     - Activity
@@ -174,9 +174,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -215,7 +215,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -230,42 +231,42 @@ attributes:
     required: true
   has_value_unit:
     name: has_value_unit
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - QuantityValue
   has_unit:
     name: has_unit
     description: The human-readable unit name
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - QuantityValue
   has_numeric_value:
     name: has_numeric_value
     description: The numeric value of the quantity
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - QuantityValue
     range: double
   has_minimum_numeric_value:
     name: has_minimum_numeric_value
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - QuantityValue
     range: double
   has_maximum_numeric_value:
     name: has_maximum_numeric_value
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - QuantityValue
     range: double
   has_raw_value:
     name: has_raw_value
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     domain_of:
     - TimestampValue
     - TextValue
@@ -283,11 +284,11 @@ attributes:
 ```yaml
 name: QuantityValue
 description: A quantity value with numeric value and optional unit
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     identifier: true
     alias: id
     owner: QuantityValue
@@ -311,9 +312,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -352,7 +353,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -367,7 +369,7 @@ attributes:
     required: true
   has_value_unit:
     name: has_value_unit
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: has_value_unit
     owner: QuantityValue
@@ -377,7 +379,7 @@ attributes:
   has_unit:
     name: has_unit
     description: The human-readable unit name
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: has_unit
     owner: QuantityValue
@@ -387,7 +389,7 @@ attributes:
   has_numeric_value:
     name: has_numeric_value
     description: The numeric value of the quantity
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: has_numeric_value
     owner: QuantityValue
@@ -396,7 +398,7 @@ attributes:
     range: double
   has_minimum_numeric_value:
     name: has_minimum_numeric_value
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: has_minimum_numeric_value
     owner: QuantityValue
@@ -405,7 +407,7 @@ attributes:
     range: double
   has_maximum_numeric_value:
     name: has_maximum_numeric_value
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: has_maximum_numeric_value
     owner: QuantityValue
@@ -414,7 +416,7 @@ attributes:
     range: double
   has_raw_value:
     name: has_raw_value
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     alias: has_raw_value
     owner: QuantityValue
     domain_of:
@@ -429,7 +431,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: QuantityValue
@@ -442,15 +444,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue

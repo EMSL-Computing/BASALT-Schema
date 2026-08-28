@@ -3,8 +3,13 @@
 # Slot: instrument_used 
 
 
+_Instrument used for the measurement_
 
-URI: [analysis_api_schema:instrument_used](https://w3id.org/MONet/analysis-api-schema/instrument_used)
+
+
+
+
+URI: [basalt_schema:instrument_used](https://emsl-computing.github.io/BASALT-Schema/elements/instrument_used)
 Alias: instrument_used
 
 <!-- no inheritance hierarchy -->
@@ -17,17 +22,16 @@ Alias: instrument_used
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | X-ray Fluorescence (XRF) elemental analysis activity |  no  |
 | [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | A record of the mass spectrometry run that generates a raw data product |  no  |
-| [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | X-ray Diffraction (XRD) mineralogical analysis activity |  no  |
 | [NucleotideSequencing](NucleotideSequencing.md) | A lab activity in which DNA or RNA that was extracted from a sample is sequen... |  no  |
-| [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | Abstract base class for X-ray analytical methods including XRF (elemental), |  no  |
-| [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | AMP2 plate measurement (OD, fluorescence, flow cytometry) |  no  |
+| [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | X-ray Diffraction (XRD) mineralogical analysis activity |  no  |
 | [PlateDataGenerationActivity](PlateDataGenerationActivity.md) | Abstract base for plate measurement activities |  no  |
-| [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |  no  |
-| [RespirationDataGenerationActivity](RespirationDataGenerationActivity.md) | Data generation activity for soil respiration analysis |  no  |
-| [DataGenerationActivity](DataGenerationActivity.md) | Abstract base for any data generation activity (physical to digital) |  no  |
+| [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | Abstract base class for X-ray analytical methods including XRF (elemental), |  no  |
+| [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | X-ray Fluorescence (XRF) elemental analysis activity |  no  |
 | [XASDataGenerationActivity](XASDataGenerationActivity.md) | X-ray Absorption Spectroscopy (XAS) acquisition activity |  no  |
+| [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | AMP2 plate measurement (OD, fluorescence, flow cytometry) |  no  |
+| [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |  no  |
+| [DataGenerationActivity](DataGenerationActivity.md) | Abstract base for any data generation activity (physical to digital) |  no  |
 
 
 
@@ -47,13 +51,6 @@ Alias: instrument_used
 
 | Property | Value |
 | --- | --- |
-### Slot Characteristics
-
-| Property | Value |
-| --- | --- |
-| Owner | [DataGenerationActivity](DataGenerationActivity.md) |
-
-
 
 
 
@@ -73,7 +70,7 @@ Alias: instrument_used
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -82,8 +79,8 @@ Alias: instrument_used
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:instrument_used |
-| native | analysis_api_schema:instrument_used |
+| self | basalt_schema:instrument_used |
+| native | basalt_schema:instrument_used |
 
 
 
@@ -93,10 +90,10 @@ Alias: instrument_used
 <details>
 ```yaml
 name: instrument_used
-from_schema: https://w3id.org/MONet/analysis-api-schema
+description: Instrument used for the measurement
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: instrument_used
-owner: DataGenerationActivity
 domain_of:
 - DataGenerationActivity
 range: Instrument

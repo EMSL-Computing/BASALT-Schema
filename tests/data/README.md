@@ -1,4 +1,4 @@
-# Example data for analysis_api_schema
+# Example data for basalt_schema
 
 This folder contains example data for testing and demonstrating the datamodel`
 sorted in subfolders:

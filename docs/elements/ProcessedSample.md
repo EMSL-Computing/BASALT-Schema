@@ -3,13 +3,33 @@
 # Class: Processed Sample (ProcessedSample) 
 
 
-_A sample that has undergone processing or analysis. Processed Sample entities are derived from Activities. The upstream SampleProcessing that produced this ProcessedSample is referenced via sampled_during._
+_A sample that has undergone processing. Processed Sample entities are derived from_
+
+_SampleProcessing activities._
+
+__
+
+_This class carries no pointer to the activity that produced it. That edge is the_
+
+_ProcessingSampleLink row with role = output_sample naming this sample, which is_
+
+_the single representation of every sample-to-processing edge in the schema._
+
+__
+
+_Note that sampled_during is deliberately NOT reused here the way it is on_
+
+_environmental Sample subclasses. There it points at a SamplingActivity (collection_
+
+_from an environment); the processing edge is a different relationship and lives in_
+
+_ProcessingSampleLink only._
 
 
 
 
 
-URI: [analysis_api_schema:ProcessedSample](https://w3id.org/MONet/analysis-api-schema/ProcessedSample)
+URI: [basalt_schema:ProcessedSample](https://emsl-computing.github.io/BASALT-Schema/elements/ProcessedSample)
 
 
 
@@ -42,17 +62,6 @@ URI: [analysis_api_schema:ProcessedSample](https://w3id.org/MONet/analysis-api-s
       ProcessedSample : name
         
       ProcessedSample : replicate
-        
-      ProcessedSample : sampled_during
-        
-          
-    
-        
-        
-        ProcessedSample --> "0..1" SampleProcessing : sampled_during
-        click SampleProcessing href "../SampleProcessing/"
-    
-
         
       ProcessedSample : sampled_portion
         
@@ -94,7 +103,6 @@ URI: [analysis_api_schema:ProcessedSample](https://w3id.org/MONet/analysis-api-s
 | [total_amount_ug](total_amount_ug.md) | 0..1 <br/> [Float](Float.md) | Total amount of analyte in micrograms | direct |
 | [volume_uL](volume_uL.md) | 0..1 <br/> [Float](Float.md) | Volume of the entity in microliters | direct |
 | [sampled_portion](sampled_portion.md) | 0..1 <br/> [SamplePortionEnum](SamplePortionEnum.md) | The portion of the original sample used in creating this processed sample (e | direct |
-| [sampled_during](sampled_during.md) | 0..1 <br/> [SampleProcessing](SampleProcessing.md) | A reference to the sample processing activity (generally lab work) that gener... | direct |
 | [replicate](replicate.md) | 0..1 <br/> [Integer](Integer.md) | The TECHNICAL replicate number of the processed sample, if applicable | direct |
 | [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [Sample](Sample.md) |
@@ -111,7 +119,6 @@ URI: [analysis_api_schema:ProcessedSample](https://w3id.org/MONet/analysis-api-s
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [DataGenerationActivity](DataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
-| [RespirationDataGenerationActivity](RespirationDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
@@ -144,7 +151,7 @@ URI: [analysis_api_schema:ProcessedSample](https://w3id.org/MONet/analysis-api-s
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -153,8 +160,8 @@ URI: [analysis_api_schema:ProcessedSample](https://w3id.org/MONet/analysis-api-s
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ProcessedSample |
-| native | analysis_api_schema:ProcessedSample |
+| self | basalt_schema:ProcessedSample |
+| native | basalt_schema:ProcessedSample |
 
 
 
@@ -170,11 +177,29 @@ URI: [analysis_api_schema:ProcessedSample](https://w3id.org/MONet/analysis-api-s
 <details>
 ```yaml
 name: ProcessedSample
-description: A sample that has undergone processing or analysis. Processed Sample
-  entities are derived from Activities. The upstream SampleProcessing that produced
-  this ProcessedSample is referenced via sampled_during.
+description: 'A sample that has undergone processing. Processed Sample entities are
+  derived from
+
+  SampleProcessing activities.
+
+
+  This class carries no pointer to the activity that produced it. That edge is the
+
+  ProcessingSampleLink row with role = output_sample naming this sample, which is
+
+  the single representation of every sample-to-processing edge in the schema.
+
+
+  Note that sampled_during is deliberately NOT reused here the way it is on
+
+  environmental Sample subclasses. There it points at a SamplingActivity (collection
+
+  from an environment); the processing edge is a different relationship and lives
+  in
+
+  ProcessingSampleLink only.'
 title: Processed Sample
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Sample
 slots:
 - storage_location
@@ -183,21 +208,15 @@ slots:
 - total_amount_ug
 - volume_uL
 - sampled_portion
-- sampled_during
 - replicate
 slot_usage:
   replicate:
     name: replicate
     description: The TECHNICAL replicate number of the processed sample, if applicable.
-  sampled_during:
-    name: sampled_during
-    description: A reference to the sample processing activity (generally lab work)
-      that generated this processed_sample.
-    range: SampleProcessing
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -219,9 +238,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -260,7 +279,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -282,25 +302,38 @@ attributes:
 <details>
 ```yaml
 name: ProcessedSample
-description: A sample that has undergone processing or analysis. Processed Sample
-  entities are derived from Activities. The upstream SampleProcessing that produced
-  this ProcessedSample is referenced via sampled_during.
+description: 'A sample that has undergone processing. Processed Sample entities are
+  derived from
+
+  SampleProcessing activities.
+
+
+  This class carries no pointer to the activity that produced it. That edge is the
+
+  ProcessingSampleLink row with role = output_sample naming this sample, which is
+
+  the single representation of every sample-to-processing edge in the schema.
+
+
+  Note that sampled_during is deliberately NOT reused here the way it is on
+
+  environmental Sample subclasses. There it points at a SamplingActivity (collection
+
+  from an environment); the processing edge is a different relationship and lives
+  in
+
+  ProcessingSampleLink only.'
 title: Processed Sample
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Sample
 slot_usage:
   replicate:
     name: replicate
     description: The TECHNICAL replicate number of the processed sample, if applicable.
-  sampled_during:
-    name: sampled_during
-    description: A reference to the sample processing activity (generally lab work)
-      that generated this processed_sample.
-    range: SampleProcessing
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     alias: id
     owner: ProcessedSample
@@ -324,9 +357,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -365,7 +398,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -382,7 +416,7 @@ attributes:
     name: storage_location
     description: The physical or digital location where the processed sample is stored
       (e.g., freezer location, database ID).
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: storage_location
     owner: ProcessedSample
@@ -392,7 +426,7 @@ attributes:
   label_text:
     name: label_text
     description: The label on the stored processed sample, if applicable (e.g., "f01").
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: label_text
     owner: ProcessedSample
@@ -403,7 +437,7 @@ attributes:
     name: concentration_ug_per_uL
     description: Concentration of the substance in micrograms per microliter.
     title: concentration (ug/uL)
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: concentration_ug_per_uL
     owner: ProcessedSample
@@ -413,7 +447,7 @@ attributes:
   total_amount_ug:
     name: total_amount_ug
     description: Total amount of analyte in micrograms
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: total_amount_ug
     owner: ProcessedSample
@@ -423,7 +457,7 @@ attributes:
   volume_uL:
     name: volume_uL
     description: Volume of the entity in microliters
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: volume_uL
     owner: ProcessedSample
@@ -434,45 +468,19 @@ attributes:
     name: sampled_portion
     description: The portion of the original sample used in creating this processed
       sample (e.g., "interlayer", "supernatant", "pellet").
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampled_portion
     owner: ProcessedSample
     domain_of:
     - ProcessedSample
     range: SamplePortionEnum
-  sampled_during:
-    name: sampled_during
-    description: A reference to the sample processing activity (generally lab work)
-      that generated this processed_sample.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: sampled_during
-    owner: ProcessedSample
-    domain_of:
-    - AerosolArmSample
-    - AerosolSample
-    - CommerciallyPurchasedSample
-    - CultureEnvironmentalSample
-    - FieldDeployedTerraformSample
-    - MixedCultureSample
-    - MonetSoilSample
-    - OtherUndescribedSample
-    - PlantSample
-    - PureCultureSample
-    - SedimentSample
-    - SoilSample
-    - SynthesizedMaterialSample
-    - TerraformSample
-    - WaterSample
-    - ProcessedSample
-    range: SampleProcessing
   replicate:
     name: replicate
     description: The TECHNICAL replicate number of the processed sample, if applicable.
     todos:
     - reconcile replicate modelling
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: replicate
     owner: ProcessedSample
@@ -487,7 +495,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: ProcessedSample
@@ -499,16 +507,18 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -517,7 +527,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: ProcessedSample
@@ -530,15 +540,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -556,7 +568,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: emsl_activity
     owner: ProcessedSample
@@ -568,7 +580,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: lims_barcode
     owner: ProcessedSample

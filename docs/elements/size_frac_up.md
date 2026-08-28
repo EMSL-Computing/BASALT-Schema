@@ -9,7 +9,7 @@ _Refers to the mesh/pore size used to retain the sample. Materials smaller than 
 
 
 
-URI: [analysis_api_schema:size_frac_up](https://w3id.org/MONet/analysis-api-schema/size_frac_up)
+URI: [basalt_schema:size_frac_up](https://emsl-computing.github.io/BASALT-Schema/elements/size_frac_up)
 Alias: size_frac_up
 
 <!-- no inheritance hierarchy -->
@@ -22,11 +22,11 @@ Alias: size_frac_up
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  yes  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
 | [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  yes  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  yes  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  yes  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  yes  |
 
 
 
@@ -65,7 +65,7 @@ Alias: size_frac_up
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -74,8 +74,8 @@ Alias: size_frac_up
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:size_frac_up |
-| native | analysis_api_schema:size_frac_up |
+| self | basalt_schema:size_frac_up |
+| native | basalt_schema:size_frac_up |
 
 
 
@@ -88,7 +88,7 @@ name: size_frac_up
 description: Refers to the mesh/pore size used to retain the sample. Materials smaller
   than the size threshold are excluded from the sample
 title: size fraction upper threshold
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: size_frac_up
 domain_of:

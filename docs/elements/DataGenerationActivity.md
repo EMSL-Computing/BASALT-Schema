@@ -13,7 +13,7 @@ _be specified on workflow subclasses._
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [analysis_api_schema:DataGenerationActivity](https://w3id.org/MONet/analysis-api-schema/DataGenerationActivity)
+URI: [basalt_schema:DataGenerationActivity](https://emsl-computing.github.io/BASALT-Schema/elements/DataGenerationActivity)
 
 
 
@@ -23,8 +23,6 @@ URI: [analysis_api_schema:DataGenerationActivity](https://w3id.org/MONet/analysi
  classDiagram
     class DataGenerationActivity
     click DataGenerationActivity href "../DataGenerationActivity/"
-      DataGenerationActivity <|-- RespirationDataGenerationActivity
-        click RespirationDataGenerationActivity href "../RespirationDataGenerationActivity/"
       DataGenerationActivity <|-- XRayDataGenerationActivity
         click XRayDataGenerationActivity href "../XRayDataGenerationActivity/"
       DataGenerationActivity <|-- MassSpectrometryDataGenerationActivity
@@ -53,13 +51,13 @@ URI: [analysis_api_schema:DataGenerationActivity](https://w3id.org/MONet/analysi
         
       DataGenerationActivity : id
         
-      DataGenerationActivity : instrument_operator_id
+      DataGenerationActivity : instrument_operator
         
           
     
         
         
-        DataGenerationActivity --> "0..1" PersonValue : instrument_operator_id
+        DataGenerationActivity --> "0..1" PersonValue : instrument_operator
         click PersonValue href "../PersonValue/"
     
 
@@ -92,7 +90,6 @@ URI: [analysis_api_schema:DataGenerationActivity](https://w3id.org/MONet/analysi
 
 ## Inheritance
 * **DataGenerationActivity**
-    * [RespirationDataGenerationActivity](RespirationDataGenerationActivity.md)
     * [XRayDataGenerationActivity](XRayDataGenerationActivity.md)
     * [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md)
     * [PlateDataGenerationActivity](PlateDataGenerationActivity.md)
@@ -106,14 +103,14 @@ URI: [analysis_api_schema:DataGenerationActivity](https://w3id.org/MONet/analysi
 | [sequence_order](sequence_order.md) | 0..1 <br/> [Integer](Integer.md) | Integer ordering within a temporal series for the same analyte | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | direct |
+| [analyte_id](analyte_id.md) | 0..1 <br/> [ProcessedSample](ProcessedSample.md) | FK reference to a ProcessedSample representing the substance analyzed in this... | direct |
 | [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | direct |
 | [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | direct |
+| [acquisition_start_time](acquisition_start_time.md) | 0..1 <br/> [Datetime](Datetime.md) | The time that data collection started for this activity | direct |
+| [acquisition_end_time](acquisition_end_time.md) | 0..1 <br/> [Datetime](Datetime.md) | The time that data collection ended for this activity | direct |
+| [instrument_used](instrument_used.md) | 0..1 <br/> [Instrument](Instrument.md) | Instrument used for the measurement | direct |
+| [instrument_operator](instrument_operator.md) | 0..1 <br/> [PersonValue](PersonValue.md) | User who operated the instrument | direct |
 | [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
-| [analyte_id](analyte_id.md) | 0..1 <br/> [ProcessedSample](ProcessedSample.md) |  | direct |
-| [acquisition_start_time](acquisition_start_time.md) | 1 <br/> [Datetime](Datetime.md) |  | direct |
-| [acquisition_end_time](acquisition_end_time.md) | 1 <br/> [Datetime](Datetime.md) |  | direct |
-| [instrument_used](instrument_used.md) | 0..1 <br/> [Instrument](Instrument.md) |  | direct |
-| [instrument_operator_id](instrument_operator_id.md) | 0..1 <br/> [PersonValue](PersonValue.md) |  | direct |
 
 
 
@@ -138,7 +135,7 @@ URI: [analysis_api_schema:DataGenerationActivity](https://w3id.org/MONet/analysi
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -147,8 +144,8 @@ URI: [analysis_api_schema:DataGenerationActivity](https://w3id.org/MONet/analysi
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:DataGenerationActivity |
-| native | analysis_api_schema:DataGenerationActivity |
+| self | basalt_schema:DataGenerationActivity |
+| native | basalt_schema:DataGenerationActivity |
 
 
 
@@ -166,18 +163,23 @@ URI: [analysis_api_schema:DataGenerationActivity](https://w3id.org/MONet/analysi
 name: DataGenerationActivity
 description: "Abstract base for any data generation activity (physical to digital).\
   \ Input data should \nbe specified on workflow subclasses."
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 abstract: true
 slots:
 - sequence_order
 - name
 - description
+- analyte_id
 - protocol_url
 - protocol_version
+- acquisition_start_time
+- acquisition_end_time
+- instrument_used
+- instrument_operator
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     domain_of:
     - Activity
@@ -199,9 +201,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -240,7 +242,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -253,43 +256,6 @@ attributes:
     - zipDownload
     range: uuid
     required: true
-  analyte_id:
-    name: analyte_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    domain_of:
-    - DataGenerationActivity
-    range: ProcessedSample
-  acquisition_start_time:
-    name: acquisition_start_time
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    domain_of:
-    - DataGenerationActivity
-    range: datetime
-    required: true
-  acquisition_end_time:
-    name: acquisition_end_time
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    domain_of:
-    - DataGenerationActivity
-    range: datetime
-    required: true
-  instrument_used:
-    name: instrument_used
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    domain_of:
-    - DataGenerationActivity
-    range: Instrument
-  instrument_operator_id:
-    name: instrument_operator_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    domain_of:
-    - DataGenerationActivity
-    range: PersonValue
 
 ```
 </details>
@@ -301,12 +267,12 @@ attributes:
 name: DataGenerationActivity
 description: "Abstract base for any data generation activity (physical to digital).\
   \ Input data should \nbe specified on workflow subclasses."
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 abstract: true
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: DataGenerationActivity
@@ -330,9 +296,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -371,7 +337,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -384,60 +351,13 @@ attributes:
     - zipDownload
     range: uuid
     required: true
-  analyte_id:
-    name: analyte_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: analyte_id
-    owner: DataGenerationActivity
-    domain_of:
-    - DataGenerationActivity
-    range: ProcessedSample
-  acquisition_start_time:
-    name: acquisition_start_time
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: acquisition_start_time
-    owner: DataGenerationActivity
-    domain_of:
-    - DataGenerationActivity
-    range: datetime
-    required: true
-  acquisition_end_time:
-    name: acquisition_end_time
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: acquisition_end_time
-    owner: DataGenerationActivity
-    domain_of:
-    - DataGenerationActivity
-    range: datetime
-    required: true
-  instrument_used:
-    name: instrument_used
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: instrument_used
-    owner: DataGenerationActivity
-    domain_of:
-    - DataGenerationActivity
-    range: Instrument
-  instrument_operator_id:
-    name: instrument_operator_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
-    rank: 1000
-    alias: instrument_operator_id
-    owner: DataGenerationActivity
-    domain_of:
-    - DataGenerationActivity
-    range: PersonValue
   sequence_order:
     name: sequence_order
     description: "Integer ordering within a temporal series for the same analyte.\n\
       Lower = earlier in series. Use when acquisition_time alone is insufficient.\n\
       \nDDL: ALTER TABLE \"DataGenerationActivity\"\n       ADD COLUMN sequence_order\
       \ INTEGER;"
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sequence_order
     owner: DataGenerationActivity
@@ -448,7 +368,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: DataGenerationActivity
@@ -460,16 +380,18 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -478,7 +400,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: DataGenerationActivity
@@ -491,15 +413,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -507,28 +431,79 @@ attributes:
     - ControlledTermValue
     - QuantityValue
     range: string
+  analyte_id:
+    name: analyte_id
+    description: FK reference to a ProcessedSample representing the substance analyzed
+      in this activity.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    rank: 1000
+    alias: analyte_id
+    owner: DataGenerationActivity
+    domain_of:
+    - DataGenerationActivity
+    range: ProcessedSample
   protocol_url:
     name: protocol_url
     description: URL pointing to the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: protocol_url
     owner: DataGenerationActivity
     domain_of:
     - DataGenerationActivity
-    - SampleProcessing
+    - SampleProcessingProtocol
     range: string
   protocol_version:
     name: protocol_version
     description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: protocol_version
     owner: DataGenerationActivity
     domain_of:
     - DataGenerationActivity
-    - SampleProcessing
+    - SampleProcessingProtocol
     range: string
+  acquisition_start_time:
+    name: acquisition_start_time
+    description: The time that data collection started for this activity.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    rank: 1000
+    alias: acquisition_start_time
+    owner: DataGenerationActivity
+    domain_of:
+    - DataGenerationActivity
+    range: datetime
+  acquisition_end_time:
+    name: acquisition_end_time
+    description: The time that data collection ended for this activity.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    rank: 1000
+    alias: acquisition_end_time
+    owner: DataGenerationActivity
+    domain_of:
+    - DataGenerationActivity
+    range: datetime
+  instrument_used:
+    name: instrument_used
+    description: Instrument used for the measurement
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    rank: 1000
+    alias: instrument_used
+    owner: DataGenerationActivity
+    domain_of:
+    - DataGenerationActivity
+    range: Instrument
+  instrument_operator:
+    name: instrument_operator
+    description: User who operated the instrument
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    rank: 1000
+    alias: instrument_operator
+    owner: DataGenerationActivity
+    domain_of:
+    - DataGenerationActivity
+    range: PersonValue
 
 ```
 </details>

@@ -9,7 +9,7 @@ _Concentration of suspended particulate matter. (Unit: mg/L)_
 
 
 
-URI: [analysis_api_schema:suspend_part_matter](https://w3id.org/MONet/analysis-api-schema/suspend_part_matter)
+URI: [basalt_schema:suspend_part_matter](https://emsl-computing.github.io/BASALT-Schema/elements/suspend_part_matter)
 Alias: suspend_part_matter
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: suspend_part_matter
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: suspend_part_matter
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -78,8 +78,8 @@ Alias: suspend_part_matter
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:suspend_part_matter |
-| native | analysis_api_schema:suspend_part_matter |
+| self | basalt_schema:suspend_part_matter |
+| native | basalt_schema:suspend_part_matter |
 
 
 
@@ -91,7 +91,7 @@ Alias: suspend_part_matter
 name: suspend_part_matter
 description: 'Concentration of suspended particulate matter. (Unit: mg/L)'
 title: suspended particulate matter
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: suspend_part_matter
 domain_of:

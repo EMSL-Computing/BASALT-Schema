@@ -9,7 +9,7 @@ _Collection of samples associated with plants._
 
 
 
-URI: [analysis_api_schema:PlantSamplingActivity](https://w3id.org/MONet/analysis-api-schema/PlantSamplingActivity)
+URI: [basalt_schema:PlantSamplingActivity](https://emsl-computing.github.io/BASALT-Schema/elements/PlantSamplingActivity)
 
 
 
@@ -110,7 +110,7 @@ URI: [analysis_api_schema:PlantSamplingActivity](https://w3id.org/MONet/analysis
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -119,8 +119,8 @@ URI: [analysis_api_schema:PlantSamplingActivity](https://w3id.org/MONet/analysis
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:PlantSamplingActivity |
-| native | analysis_api_schema:PlantSamplingActivity |
+| self | basalt_schema:PlantSamplingActivity |
+| native | basalt_schema:PlantSamplingActivity |
 
 
 
@@ -137,7 +137,7 @@ URI: [analysis_api_schema:PlantSamplingActivity](https://w3id.org/MONet/analysis
 ```yaml
 name: PlantSamplingActivity
 description: Collection of samples associated with plants.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: SamplingActivity
 slots:
 - collection_time
@@ -148,7 +148,7 @@ slots:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -170,9 +170,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -211,7 +211,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -234,12 +235,12 @@ attributes:
 ```yaml
 name: PlantSamplingActivity
 description: Collection of samples associated with plants.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: SamplingActivity
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     alias: id
     owner: PlantSamplingActivity
@@ -263,9 +264,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -304,7 +305,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -323,7 +325,7 @@ attributes:
       HH:MM:SS in 24-hour time format. Don''t forget the second! (Unit: hh:mm:ss or
       HH:MM:SS)'
     title: collection time
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: collection_time
     owner: PlantSamplingActivity
@@ -348,7 +350,7 @@ attributes:
       NOT the amount sent to EMSL or collected for a specific analysis. Provide value
       and unit, any unit is valid
     title: sample collected
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_collected
     owner: PlantSamplingActivity
@@ -373,7 +375,7 @@ attributes:
     description: The device used to collect an environmental sample. Include dimensions
       of device if applicable
     title: sample collection device
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_collection_dev
     owner: PlantSamplingActivity
@@ -396,7 +398,7 @@ attributes:
     description: The method used to collect an environmental sample. This can be a
       citation or description.
     title: sample collection method
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_collection_method
     owner: PlantSamplingActivity
@@ -417,7 +419,7 @@ attributes:
     description: The state of the atmosphere at a given time and place with respect
       to variables such as temperature, moisture, wind velocity, and barometric pressure.
     title: weather
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: weather
     owner: PlantSamplingActivity
@@ -430,7 +432,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: PlantSamplingActivity
@@ -442,16 +444,18 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -460,7 +464,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: PlantSamplingActivity
@@ -473,15 +477,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -496,7 +502,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - study
     - study_id
@@ -535,7 +541,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: emsl_activity
     owner: PlantSamplingActivity
@@ -552,7 +558,7 @@ attributes:
 
       (YYYY-MM)'''
     title: collection date
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: collection_date
     owner: PlantSamplingActivity
@@ -565,7 +571,7 @@ attributes:
     name: shipped_sample_size
     description: Total amount of sample sent to EMSL. Must include units.
     title: shipped sample size
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: shipped_sample_size
     owner: PlantSamplingActivity
@@ -578,7 +584,7 @@ attributes:
     name: sampled_at_site
     description: Reference to the site where the sample was collected. This is a FK
       to the Site class, which contains detailed metadata about the sampling location.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampled_at_site
     owner: PlantSamplingActivity

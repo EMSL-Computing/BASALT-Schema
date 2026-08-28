@@ -9,7 +9,7 @@ _Temperature of the sample at the time of sampling. (Units: C)_
 
 
 
-URI: [analysis_api_schema:temp](https://w3id.org/MONet/analysis-api-schema/temp)
+URI: [basalt_schema:temp](https://emsl-computing.github.io/BASALT-Schema/elements/temp)
 Alias: temp
 
 <!-- no inheritance hierarchy -->
@@ -22,16 +22,16 @@ Alias: temp
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
+| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [MonetSoilSample](MonetSoilSample.md) | A soil sample that has been collected according to the MONet soil sampling pr... |  yes  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [CommerciallyPurchasedSample](CommerciallyPurchasedSample.md) | A sample containing commercially purchased material |  no  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [SynthesizedMaterialSample](SynthesizedMaterialSample.md) | A sample containing synthetically generated material |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 
 
 
@@ -77,7 +77,7 @@ Alias: temp
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -86,8 +86,8 @@ Alias: temp
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:temp |
-| native | analysis_api_schema:temp |
+| self | basalt_schema:temp |
+| native | basalt_schema:temp |
 
 
 
@@ -99,7 +99,7 @@ Alias: temp
 name: temp
 description: 'Temperature of the sample at the time of sampling. (Units: C)'
 title: temperature
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: temp
 domain_of:

@@ -9,7 +9,7 @@ _Concentration of organic carbon. Provide value and unit any unit is valid_
 
 
 
-URI: [analysis_api_schema:org_carb](https://w3id.org/MONet/analysis-api-schema/org_carb)
+URI: [basalt_schema:org_carb](https://emsl-computing.github.io/BASALT-Schema/elements/org_carb)
 Alias: org_carb
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: org_carb
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: org_carb
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -79,8 +79,8 @@ Alias: org_carb
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:org_carb |
-| native | analysis_api_schema:org_carb |
+| self | basalt_schema:org_carb |
+| native | basalt_schema:org_carb |
 
 
 
@@ -92,7 +92,7 @@ Alias: org_carb
 name: org_carb
 description: Concentration of organic carbon. Provide value and unit any unit is valid
 title: organic carbon
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: org_carb
 domain_of:

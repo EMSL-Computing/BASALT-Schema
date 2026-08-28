@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:pore_diameter_mean](https://w3id.org/MONet/analysis-api-schema/pore_diameter_mean)
+URI: [basalt_schema:pore_diameter_mean](https://emsl-computing.github.io/BASALT-Schema/elements/pore_diameter_mean)
 Alias: pore_diameter_mean
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: pore_diameter_mean
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -72,8 +72,8 @@ Alias: pore_diameter_mean
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:pore_diameter_mean |
-| native | analysis_api_schema:pore_diameter_mean |
+| self | basalt_schema:pore_diameter_mean |
+| native | basalt_schema:pore_diameter_mean |
 
 
 
@@ -83,7 +83,7 @@ Alias: pore_diameter_mean
 <details>
 ```yaml
 name: pore_diameter_mean
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: pore_diameter_mean
 owner: TomographyProduct

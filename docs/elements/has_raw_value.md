@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:has_raw_value](https://w3id.org/MONet/analysis-api-schema/has_raw_value)
+URI: [basalt_schema:has_raw_value](https://emsl-computing.github.io/BASALT-Schema/elements/has_raw_value)
 Alias: has_raw_value
 
 <!-- no inheritance hierarchy -->
@@ -17,11 +17,11 @@ Alias: has_raw_value
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TimestampValue](TimestampValue.md) | A timestamp value with optional description |  no  |
-| [QuantityValue](QuantityValue.md) | A quantity value with numeric value and optional unit |  no  |
-| [ConditioningValue](ConditioningValue.md) |  |  no  |
 | [SoftwareControlledTermValue](SoftwareControlledTermValue.md) |  |  no  |
+| [ConditioningValue](ConditioningValue.md) |  |  no  |
+| [TimestampValue](TimestampValue.md) | A timestamp value with optional description |  no  |
 | [TextValue](TextValue.md) | A text value with optional description and language |  no  |
+| [QuantityValue](QuantityValue.md) | A quantity value with numeric value and optional unit |  no  |
 | [ControlledTermValue](ControlledTermValue.md) |  |  no  |
 
 
@@ -63,8 +63,8 @@ Alias: has_raw_value
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:has_raw_value |
-| native | analysis_api_schema:has_raw_value |
+| self | basalt_schema:has_raw_value |
+| native | basalt_schema:has_raw_value |
 
 
 

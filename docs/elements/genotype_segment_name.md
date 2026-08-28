@@ -13,7 +13,7 @@ _grouped components or specific function of the modification._
 
 
 
-URI: [analysis_api_schema:genotype_segment_name](https://w3id.org/MONet/analysis-api-schema/genotype_segment_name)
+URI: [basalt_schema:genotype_segment_name](https://emsl-computing.github.io/BASALT-Schema/elements/genotype_segment_name)
 Alias: genotype_segment_name
 
 <!-- no inheritance hierarchy -->
@@ -26,7 +26,7 @@ Alias: genotype_segment_name
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
 
 
 
@@ -40,7 +40,7 @@ Alias: genotype_segment_name
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -65,7 +65,7 @@ Alias: genotype_segment_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -74,8 +74,8 @@ Alias: genotype_segment_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:genotype_segment_name |
-| native | analysis_api_schema:genotype_segment_name |
+| self | basalt_schema:genotype_segment_name |
+| native | basalt_schema:genotype_segment_name |
 
 
 
@@ -91,11 +91,11 @@ description: 'Provide a name that describes the genotype modification engineered
 
   grouped components or specific function of the modification.'
 title: genotype segment name
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: genotype_segment_name
 domain_of:
-- biological_entity
+- organism
 range: string
 
 ```

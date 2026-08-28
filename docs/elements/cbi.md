@@ -11,7 +11,7 @@ _Indicates if the sample is subject to CBI restrictions._
 
 
 
-URI: [analysis_api_schema:cbi](https://w3id.org/MONet/analysis-api-schema/cbi)
+URI: [basalt_schema:cbi](https://emsl-computing.github.io/BASALT-Schema/elements/cbi)
 Alias: cbi
 
 <!-- no inheritance hierarchy -->
@@ -24,8 +24,8 @@ Alias: cbi
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |  no  |
 | [EngineeredStrainSample](EngineeredStrainSample.md) | A sample containing a strain of an organism that has been subjected to geneti... |  no  |
+| [AMP2UserSample](AMP2UserSample.md) | A user-submitted microbial sample for AMP2 workflows |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: cbi
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -78,8 +78,8 @@ Alias: cbi
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:cbi |
-| native | analysis_api_schema:cbi |
+| self | basalt_schema:cbi |
+| native | basalt_schema:cbi |
 
 
 
@@ -92,7 +92,7 @@ name: cbi
 description: 'Confidential Business Information flag (yes/no).
 
   Indicates if the sample is subject to CBI restrictions.'
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 aliases:
 - CBI
 rank: 1000

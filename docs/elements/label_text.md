@@ -9,7 +9,7 @@ _The label on the stored processed sample, if applicable (e.g., "f01")._
 
 
 
-URI: [analysis_api_schema:label_text](https://w3id.org/MONet/analysis-api-schema/label_text)
+URI: [basalt_schema:label_text](https://emsl-computing.github.io/BASALT-Schema/elements/label_text)
 Alias: label_text
 
 <!-- no inheritance hierarchy -->
@@ -22,7 +22,7 @@ Alias: label_text
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  no  |
+| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing |  no  |
 | [CoreSection](CoreSection.md) | A section of a core sample (TOP, MID, BTM) |  no  |
 
 
@@ -62,7 +62,7 @@ Alias: label_text
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -71,8 +71,8 @@ Alias: label_text
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:label_text |
-| native | analysis_api_schema:label_text |
+| self | basalt_schema:label_text |
+| native | basalt_schema:label_text |
 
 
 
@@ -83,7 +83,7 @@ Alias: label_text
 ```yaml
 name: label_text
 description: The label on the stored processed sample, if applicable (e.g., "f01").
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: label_text
 domain_of:

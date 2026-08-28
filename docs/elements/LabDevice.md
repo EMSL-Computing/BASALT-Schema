@@ -9,7 +9,7 @@ _A lab device is a physical instrument or equipment used in a laboratory setting
 
 
 
-URI: [analysis_api_schema:LabDevice](https://w3id.org/MONet/analysis-api-schema/LabDevice)
+URI: [basalt_schema:LabDevice](https://emsl-computing.github.io/BASALT-Schema/elements/LabDevice)
 
 
 
@@ -97,7 +97,7 @@ URI: [analysis_api_schema:LabDevice](https://w3id.org/MONet/analysis-api-schema/
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -106,8 +106,8 @@ URI: [analysis_api_schema:LabDevice](https://w3id.org/MONet/analysis-api-schema/
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:LabDevice |
-| native | analysis_api_schema:LabDevice |
+| self | basalt_schema:LabDevice |
+| native | basalt_schema:LabDevice |
 
 
 
@@ -128,11 +128,11 @@ description: A lab device is a physical instrument or equipment used in a labora
   types of instruments such as microscopes, spectrometers, centrifuges, and other
   specialized equipment. Lab devices are essential for performing scientific research
   and obtaining accurate data.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     domain_of:
     - Activity
@@ -154,9 +154,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -195,7 +195,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -210,7 +211,7 @@ attributes:
     required: true
   description:
     name: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     domain_of:
     - Activity
     - Entity
@@ -220,15 +221,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -238,21 +241,21 @@ attributes:
     range: string
   device_type:
     name: device_type
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - LabDevice
     range: DeviceTypeEnum
   activity_time_id:
     name: activity_time_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - LabDevice
     range: QuantityValue
   activity_speed_id:
     name: activity_speed_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     domain_of:
     - LabDevice
@@ -271,11 +274,11 @@ description: A lab device is a physical instrument or equipment used in a labora
   types of instruments such as microscopes, spectrometers, centrifuges, and other
   specialized equipment. Lab devices are essential for performing scientific research
   and obtaining accurate data.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: LabDevice
@@ -299,9 +302,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -340,7 +343,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -355,7 +359,7 @@ attributes:
     required: true
   description:
     name: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     alias: description
     owner: LabDevice
     domain_of:
@@ -367,15 +371,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -385,7 +391,7 @@ attributes:
     range: string
   device_type:
     name: device_type
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: device_type
     owner: LabDevice
@@ -394,7 +400,7 @@ attributes:
     range: DeviceTypeEnum
   activity_time_id:
     name: activity_time_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: activity_time_id
     owner: LabDevice
@@ -403,7 +409,7 @@ attributes:
     range: QuantityValue
   activity_speed_id:
     name: activity_speed_id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: activity_speed_id
     owner: LabDevice

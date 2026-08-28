@@ -9,7 +9,7 @@ _Select the construct component type._
 
 
 
-URI: [analysis_api_schema:construct_component](https://w3id.org/MONet/analysis-api-schema/construct_component)
+URI: [basalt_schema:construct_component](https://emsl-computing.github.io/BASALT-Schema/elements/construct_component)
 Alias: construct_component
 
 <!-- no inheritance hierarchy -->
@@ -22,7 +22,7 @@ Alias: construct_component
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
 
 
 
@@ -36,7 +36,7 @@ Alias: construct_component
 | Property | Value |
 | --- | --- |
 | Range | [ConstructComponentEnum](ConstructComponentEnum.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -61,7 +61,7 @@ Alias: construct_component
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -70,8 +70,8 @@ Alias: construct_component
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:construct_component |
-| native | analysis_api_schema:construct_component |
+| self | basalt_schema:construct_component |
+| native | basalt_schema:construct_component |
 
 
 
@@ -83,11 +83,11 @@ Alias: construct_component
 name: construct_component
 description: Select the construct component type.
 title: construct component
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: construct_component
 domain_of:
-- biological_entity
+- organism
 range: ConstructComponentEnum
 
 ```

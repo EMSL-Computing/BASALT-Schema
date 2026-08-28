@@ -9,7 +9,7 @@ _Bacterial production in the water column measured by isotope uptake. Provide va
 
 
 
-URI: [analysis_api_schema:bac_prod](https://w3id.org/MONet/analysis-api-schema/bac_prod)
+URI: [basalt_schema:bac_prod](https://emsl-computing.github.io/BASALT-Schema/elements/bac_prod)
 Alias: bac_prod
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: bac_prod
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: bac_prod
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -78,8 +78,8 @@ Alias: bac_prod
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:bac_prod |
-| native | analysis_api_schema:bac_prod |
+| self | basalt_schema:bac_prod |
+| native | basalt_schema:bac_prod |
 
 
 
@@ -92,7 +92,7 @@ name: bac_prod
 description: Bacterial production in the water column measured by isotope uptake.
   Provide value and unit, any unit is valid.
 title: bacterial production
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: bac_prod
 domain_of:

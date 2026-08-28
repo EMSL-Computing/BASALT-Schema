@@ -9,7 +9,7 @@ _This term is used to describe a chemical reaction caused by absorption of ultra
 
 
 
-URI: [analysis_api_schema:photochemical_exposure](https://w3id.org/MONet/analysis-api-schema/photochemical_exposure)
+URI: [basalt_schema:photochemical_exposure](https://emsl-computing.github.io/BASALT-Schema/elements/photochemical_exposure)
 Alias: photochemical_exposure
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: photochemical_exposure
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: photochemical_exposure
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -72,8 +72,8 @@ Alias: photochemical_exposure
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:photochemical_exposure |
-| native | analysis_api_schema:photochemical_exposure |
+| self | basalt_schema:photochemical_exposure |
+| native | basalt_schema:photochemical_exposure |
 
 
 
@@ -87,7 +87,7 @@ description: This term is used to describe a chemical reaction caused by absorpt
   of ultraviolet (wavelength from 100 to 400 nm), visible light (400-750 nm), or infrared
   radiation (750-2500 nm)
 title: photochemical exposure
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: photochemical_exposure
 domain_of:

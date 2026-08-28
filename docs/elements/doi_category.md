@@ -9,7 +9,7 @@ _The resource type the corresponding doi resolves to_
 
 
 
-URI: [analysis_api_schema:doi_category](https://w3id.org/MONet/analysis-api-schema/doi_category)
+URI: [basalt_schema:doi_category](https://emsl-computing.github.io/BASALT-Schema/elements/doi_category)
 Alias: doi_category
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: doi_category
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -77,8 +77,8 @@ Alias: doi_category
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:doi_category |
-| native | analysis_api_schema:doi_category |
+| self | basalt_schema:doi_category |
+| native | basalt_schema:doi_category |
 
 
 
@@ -89,7 +89,7 @@ Alias: doi_category
 ```yaml
 name: doi_category
 description: The resource type the corresponding doi resolves to
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: doi_category
 owner: DOI

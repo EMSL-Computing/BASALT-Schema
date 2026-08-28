@@ -9,7 +9,7 @@ _Soil hydraulic parameters derived from HYPROP evaporation-experiment data. The 
 
 
 
-URI: [analysis_api_schema:HydraulicPropertiesProduct](https://w3id.org/MONet/analysis-api-schema/HydraulicPropertiesProduct)
+URI: [basalt_schema:HydraulicPropertiesProduct](https://emsl-computing.github.io/BASALT-Schema/elements/HydraulicPropertiesProduct)
 
 
 
@@ -162,7 +162,7 @@ URI: [analysis_api_schema:HydraulicPropertiesProduct](https://w3id.org/MONet/ana
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -171,8 +171,8 @@ URI: [analysis_api_schema:HydraulicPropertiesProduct](https://w3id.org/MONet/ana
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:HydraulicPropertiesProduct |
-| native | analysis_api_schema:HydraulicPropertiesProduct |
+| self | basalt_schema:HydraulicPropertiesProduct |
+| native | basalt_schema:HydraulicPropertiesProduct |
 
 
 
@@ -191,7 +191,7 @@ name: HydraulicPropertiesProduct
 description: Soil hydraulic parameters derived from HYPROP evaporation-experiment
   data. The four attributes are the four VGM model parameters.  Proposal_ID, sampling_set,
   and core_section are inherited from the parent processedData record.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: ProcessedData
 slots:
 - measure_type
@@ -200,7 +200,7 @@ attributes:
     name: alpha
     description: Van Genuchten shape parameter alpha (1/cm). Controls the inverse
       of the air-entry suction; typically fitted by HYPROP-FIT or similar software.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - HydraulicPropertiesProduct
@@ -209,7 +209,7 @@ attributes:
     name: n
     description: Van Genuchten pore-size distribution index n (dimensionless, n >
       1). Controls the slope of the water-retention curve.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - HydraulicPropertiesProduct
@@ -218,7 +218,7 @@ attributes:
     name: theta_r
     description: Residual volumetric water content theta_r (cm3 cm). The water content
       at which liquid conductivity approaches zero.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - HydraulicPropertiesProduct
@@ -227,7 +227,7 @@ attributes:
     name: theta_s
     description: Saturated volumetric water content theta_s (cm3 cm e-3). Approximates
       total porosity under saturated conditions.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - HydraulicPropertiesProduct
@@ -235,7 +235,7 @@ attributes:
   flag:
     name: flag
     description: QC flag for the entire VGM fit (e.g. missing sample, failed QC).
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     domain_of:
     - WellReading
     - BulkDensityProduct
@@ -259,14 +259,14 @@ name: HydraulicPropertiesProduct
 description: Soil hydraulic parameters derived from HYPROP evaporation-experiment
   data. The four attributes are the four VGM model parameters.  Proposal_ID, sampling_set,
   and core_section are inherited from the parent processedData record.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: ProcessedData
 attributes:
   alpha:
     name: alpha
     description: Van Genuchten shape parameter alpha (1/cm). Controls the inverse
       of the air-entry suction; typically fitted by HYPROP-FIT or similar software.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: alpha
     owner: HydraulicPropertiesProduct
@@ -277,7 +277,7 @@ attributes:
     name: n
     description: Van Genuchten pore-size distribution index n (dimensionless, n >
       1). Controls the slope of the water-retention curve.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: n
     owner: HydraulicPropertiesProduct
@@ -288,7 +288,7 @@ attributes:
     name: theta_r
     description: Residual volumetric water content theta_r (cm3 cm). The water content
       at which liquid conductivity approaches zero.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: theta_r
     owner: HydraulicPropertiesProduct
@@ -299,7 +299,7 @@ attributes:
     name: theta_s
     description: Saturated volumetric water content theta_s (cm3 cm e-3). Approximates
       total porosity under saturated conditions.
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: theta_s
     owner: HydraulicPropertiesProduct
@@ -309,7 +309,7 @@ attributes:
   flag:
     name: flag
     description: QC flag for the entire VGM fit (e.g. missing sample, failed QC).
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     alias: flag
     owner: HydraulicPropertiesProduct
     domain_of:
@@ -327,7 +327,7 @@ attributes:
     name: measure_type
     description: Whether the measurement recorded is a single measurement, one of
       a set of  replicate measurements, or an average of several replicate measurements.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: measure_type
     owner: HydraulicPropertiesProduct
@@ -361,7 +361,7 @@ attributes:
       \ retained until formal typed class exists."
     todos:
     - make this inined/multivalued?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: summary_metrics
     owner: HydraulicPropertiesProduct
@@ -372,7 +372,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: lims_barcode
     owner: HydraulicPropertiesProduct
@@ -384,12 +384,13 @@ attributes:
   sample_id:
     name: sample_id
     description: Link back to the originating sample
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_id
     owner: HydraulicPropertiesProduct
     domain_of:
     - ProcessedData
+    - ProcessingSampleLink
     - AMP2WellMetadata
     - MetagenomicsProduct
     range: Sample
@@ -397,7 +398,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: HydraulicPropertiesProduct
@@ -409,16 +410,18 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -427,7 +430,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: HydraulicPropertiesProduct
@@ -440,15 +443,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -463,7 +468,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - study
     - study_id
@@ -500,7 +505,7 @@ attributes:
 
       in the same sampling event or campaign.'
     title: sampling set
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampling_set
     owner: HydraulicPropertiesProduct
@@ -516,7 +521,7 @@ attributes:
     - value: TOP
     - value: MID
     - value: BTM
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: core_section
     owner: HydraulicPropertiesProduct
@@ -534,7 +539,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - samp_name
     rank: 1000
@@ -560,7 +565,7 @@ attributes:
     range: string
   s3_base_url:
     name: s3_base_url
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_base_url
     owner: HydraulicPropertiesProduct
@@ -569,7 +574,7 @@ attributes:
     range: string
   s3_bucket:
     name: s3_bucket
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_bucket
     owner: HydraulicPropertiesProduct
@@ -579,7 +584,7 @@ attributes:
   s3_key:
     name: s3_key
     description: MinIO/S3 object key; required for all data products
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_key
     owner: HydraulicPropertiesProduct
@@ -590,7 +595,7 @@ attributes:
   filesize:
     name: filesize
     description: Size of the file in bytes
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: filesize
     owner: HydraulicPropertiesProduct
@@ -599,7 +604,7 @@ attributes:
     range: integer
   md5checksum:
     name: md5checksum
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: md5checksum
     owner: HydraulicPropertiesProduct
@@ -608,7 +613,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: HydraulicPropertiesProduct
@@ -632,9 +637,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -673,7 +678,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue

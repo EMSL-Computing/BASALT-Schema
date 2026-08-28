@@ -9,7 +9,7 @@ _Concentration of bishomohopanol. (Unit: ug/L or ug/g)_
 
 
 
-URI: [analysis_api_schema:bishomohopanol](https://w3id.org/MONet/analysis-api-schema/bishomohopanol)
+URI: [basalt_schema:bishomohopanol](https://emsl-computing.github.io/BASALT-Schema/elements/bishomohopanol)
 Alias: bishomohopanol
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: bishomohopanol
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 
 
 
@@ -70,7 +70,7 @@ Alias: bishomohopanol
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -79,8 +79,8 @@ Alias: bishomohopanol
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:bishomohopanol |
-| native | analysis_api_schema:bishomohopanol |
+| self | basalt_schema:bishomohopanol |
+| native | basalt_schema:bishomohopanol |
 
 
 
@@ -92,7 +92,7 @@ Alias: bishomohopanol
 name: bishomohopanol
 description: 'Concentration of bishomohopanol. (Unit: ug/L or ug/g)'
 title: bishomohopanol
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: bishomohopanol
 domain_of:

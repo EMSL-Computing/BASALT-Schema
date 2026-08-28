@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:PersonValue](https://w3id.org/MONet/analysis-api-schema/PersonValue)
+URI: [basalt_schema:PersonValue](https://emsl-computing.github.io/BASALT-Schema/elements/PersonValue)
 
 
 
@@ -67,21 +67,20 @@ URI: [analysis_api_schema:PersonValue](https://w3id.org/MONet/analysis-api-schem
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [DataGenerationActivity](DataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [RespirationDataGenerationActivity](RespirationDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
+| [DataGenerationActivity](DataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
 | [Custodian](Custodian.md) | [person_id](person_id.md) | range | [PersonValue](PersonValue.md) |
-| [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [XASDataGenerationActivity](XASDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
+| [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
+| [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
+| [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
+| [XASDataGenerationActivity](XASDataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
+| [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
 | [PlateSetupActivity](PlateSetupActivity.md) | [setup_operator_id](setup_operator_id.md) | range | [PersonValue](PersonValue.md) |
 | [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | [setup_operator_id](setup_operator_id.md) | range | [PersonValue](PersonValue.md) |
 | [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | [setup_operator_id](setup_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [PlateDataGenerationActivity](PlateDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
-| [NucleotideSequencing](NucleotideSequencing.md) | [instrument_operator_id](instrument_operator_id.md) | range | [PersonValue](PersonValue.md) |
+| [PlateDataGenerationActivity](PlateDataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
+| [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
+| [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
+| [NucleotideSequencing](NucleotideSequencing.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
 | [Study](Study.md) | [principal_investigator](principal_investigator.md) | range | [PersonValue](PersonValue.md) |
 | [ProjectParticipant](ProjectParticipant.md) | [person](person.md) | range | [PersonValue](PersonValue.md) |
 
@@ -105,7 +104,7 @@ URI: [analysis_api_schema:PersonValue](https://w3id.org/MONet/analysis-api-schem
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -114,8 +113,8 @@ URI: [analysis_api_schema:PersonValue](https://w3id.org/MONet/analysis-api-schem
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:PersonValue |
-| native | analysis_api_schema:PersonValue |
+| self | basalt_schema:PersonValue |
+| native | basalt_schema:PersonValue |
 
 
 
@@ -131,13 +130,13 @@ URI: [analysis_api_schema:PersonValue](https://w3id.org/MONet/analysis-api-schem
 <details>
 ```yaml
 name: PersonValue
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 slots:
 - email
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     identifier: true
     domain_of:
     - Activity
@@ -159,9 +158,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -200,7 +199,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -215,7 +215,7 @@ attributes:
     required: true
   first_name:
     name: first_name
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - PersonValue
@@ -223,7 +223,7 @@ attributes:
     required: true
   last_name:
     name: last_name
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - PersonValue
@@ -231,7 +231,7 @@ attributes:
     required: true
   middle_initial:
     name: middle_initial
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - PersonValue
@@ -239,21 +239,21 @@ attributes:
   orcid:
     name: orcid
     description: ORCID identifier of the person
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - PersonValue
     range: string
   profile_image_url:
     name: profile_image_url
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - PersonValue
     range: string
   websites:
     name: websites
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - PersonValue
@@ -272,11 +272,11 @@ unique_keys:
 <details>
 ```yaml
 name: PersonValue
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     identifier: true
     alias: id
     owner: PersonValue
@@ -300,9 +300,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -341,7 +341,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -356,7 +357,7 @@ attributes:
     required: true
   first_name:
     name: first_name
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: first_name
     owner: PersonValue
@@ -366,7 +367,7 @@ attributes:
     required: true
   last_name:
     name: last_name
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: last_name
     owner: PersonValue
@@ -376,7 +377,7 @@ attributes:
     required: true
   middle_initial:
     name: middle_initial
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: middle_initial
     owner: PersonValue
@@ -386,7 +387,7 @@ attributes:
   orcid:
     name: orcid
     description: ORCID identifier of the person
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: orcid
     owner: PersonValue
@@ -395,7 +396,7 @@ attributes:
     range: string
   profile_image_url:
     name: profile_image_url
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: profile_image_url
     owner: PersonValue
@@ -404,7 +405,7 @@ attributes:
     range: string
   websites:
     name: websites
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: websites
     owner: PersonValue
@@ -414,7 +415,7 @@ attributes:
   email:
     name: email
     description: A contactable email address associated with a person or institution.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: email
     owner: PersonValue

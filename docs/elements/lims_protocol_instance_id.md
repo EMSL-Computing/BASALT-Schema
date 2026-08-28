@@ -9,7 +9,7 @@ _Reference to the L7 protocol_instance that corresponds to this sample processin
 
 
 
-URI: [analysis_api_schema:lims_protocol_instance_id](https://w3id.org/MONet/analysis-api-schema/lims_protocol_instance_id)
+URI: [basalt_schema:lims_protocol_instance_id](https://emsl-computing.github.io/BASALT-Schema/elements/lims_protocol_instance_id)
 Alias: lims_protocol_instance_id
 
 <!-- no inheritance hierarchy -->
@@ -22,7 +22,11 @@ Alias: lims_protocol_instance_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [FractionationProcess](FractionationProcess.md) | A fractionation process (e |  no  |
 | [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md) | Instrument configuration and setup for a mass spectrometry run |  no  |
+| [ProteinQuantification](ProteinQuantification.md) | A protein quantification assay (e |  no  |
+| [SolidPhaseExtractionProcess](SolidPhaseExtractionProcess.md) | A solid phase extraction (SPE) step (e |  no  |
+| [ResuspensionProcess](ResuspensionProcess.md) | Resuspension of an analyte (e |  no  |
 
 
 
@@ -36,7 +40,7 @@ Alias: lims_protocol_instance_id
 | Property | Value |
 | --- | --- |
 | Range | [Integer](Integer.md) |
-| Domain Of | [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md) |
+| Domain Of | [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md), [FractionationProcess](FractionationProcess.md), [ProteinQuantification](ProteinQuantification.md), [ResuspensionProcess](ResuspensionProcess.md), [SolidPhaseExtractionProcess](SolidPhaseExtractionProcess.md) |
 
 ### Cardinality and Requirements
 
@@ -61,7 +65,7 @@ Alias: lims_protocol_instance_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -70,8 +74,8 @@ Alias: lims_protocol_instance_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:lims_protocol_instance_id |
-| native | analysis_api_schema:lims_protocol_instance_id |
+| self | basalt_schema:lims_protocol_instance_id |
+| native | basalt_schema:lims_protocol_instance_id |
 
 
 
@@ -83,11 +87,15 @@ Alias: lims_protocol_instance_id
 name: lims_protocol_instance_id
 description: Reference to the L7 protocol_instance that corresponds to this sample
   processing step, if applicable.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: lims_protocol_instance_id
 domain_of:
 - MassSpectrometryConfiguration
+- FractionationProcess
+- ProteinQuantification
+- ResuspensionProcess
+- SolidPhaseExtractionProcess
 range: integer
 
 ```

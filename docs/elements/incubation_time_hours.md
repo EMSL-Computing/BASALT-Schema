@@ -9,7 +9,7 @@ _Incubation duration in hours_
 
 
 
-URI: [analysis_api_schema:incubation_time_hours](https://w3id.org/MONet/analysis-api-schema/incubation_time_hours)
+URI: [basalt_schema:incubation_time_hours](https://emsl-computing.github.io/BASALT-Schema/elements/incubation_time_hours)
 Alias: incubation_time_hours
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: incubation_time_hours
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
-| [PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |  no  |
 | [StrainPurity](StrainPurity.md) | Purity check of a strain culture |  no  |
+| [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
 | [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
+| [PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |  no  |
 | [StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |  no  |
 
 
@@ -65,7 +65,7 @@ Alias: incubation_time_hours
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -74,8 +74,8 @@ Alias: incubation_time_hours
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:incubation_time_hours |
-| native | analysis_api_schema:incubation_time_hours |
+| self | basalt_schema:incubation_time_hours |
+| native | basalt_schema:incubation_time_hours |
 
 
 
@@ -86,7 +86,7 @@ Alias: incubation_time_hours
 ```yaml
 name: incubation_time_hours
 description: Incubation duration in hours
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: incubation_time_hours
 domain_of:

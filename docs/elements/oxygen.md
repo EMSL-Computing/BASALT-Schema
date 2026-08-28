@@ -9,7 +9,7 @@ _Amount of oxygen measured in the air the day of sampling. (Unit: mg/L or ppm)_
 
 
 
-URI: [analysis_api_schema:oxygen](https://w3id.org/MONet/analysis-api-schema/oxygen)
+URI: [basalt_schema:oxygen](https://emsl-computing.github.io/BASALT-Schema/elements/oxygen)
 Alias: oxygen
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: oxygen
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  yes  |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: oxygen
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -78,8 +78,8 @@ Alias: oxygen
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:oxygen |
-| native | analysis_api_schema:oxygen |
+| self | basalt_schema:oxygen |
+| native | basalt_schema:oxygen |
 
 
 
@@ -92,7 +92,7 @@ name: oxygen
 description: 'Amount of oxygen measured in the air the day of sampling. (Unit: mg/L
   or ppm)'
 title: oxygen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: oxygen
 domain_of:

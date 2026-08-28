@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_kaolinite](https://w3id.org/MONet/analysis-api-schema/flag_kaolinite)
+URI: [basalt_schema:flag_kaolinite](https://emsl-computing.github.io/BASALT-Schema/elements/flag_kaolinite)
 Alias: flag_kaolinite
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_kaolinite
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_kaolinite
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_kaolinite |
-| native | analysis_api_schema:flag_kaolinite |
+| self | basalt_schema:flag_kaolinite |
+| native | basalt_schema:flag_kaolinite |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_kaolinite
 <details>
 ```yaml
 name: flag_kaolinite
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_kaolinite
 owner: XRDPhaseProduct

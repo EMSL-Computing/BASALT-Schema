@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:slot_capacity](https://w3id.org/MONet/analysis-api-schema/slot_capacity)
+URI: [basalt_schema:slot_capacity](https://emsl-computing.github.io/BASALT-Schema/elements/slot_capacity)
 Alias: slot_capacity
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: slot_capacity
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -72,8 +72,8 @@ Alias: slot_capacity
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:slot_capacity |
-| native | analysis_api_schema:slot_capacity |
+| self | basalt_schema:slot_capacity |
+| native | basalt_schema:slot_capacity |
 
 
 
@@ -83,7 +83,7 @@ Alias: slot_capacity
 <details>
 ```yaml
 name: slot_capacity
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: slot_capacity
 owner: ContainerType

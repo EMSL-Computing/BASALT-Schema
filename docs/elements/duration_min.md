@@ -9,7 +9,7 @@ _how long something took, in minutes_
 
 
 
-URI: [analysis_api_schema:duration_min](https://w3id.org/MONet/analysis-api-schema/duration_min)
+URI: [basalt_schema:duration_min](https://emsl-computing.github.io/BASALT-Schema/elements/duration_min)
 Alias: duration_min
 
 <!-- no inheritance hierarchy -->
@@ -23,6 +23,7 @@ Alias: duration_min
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [MobilePhaseSegment](MobilePhaseSegment.md) | A segment of the mobile phase used in chromatography during mass spectrometry |  no  |
+| [ChemicalConversionProcess](ChemicalConversionProcess.md) | A chemical conversion process used in sample preparation |  no  |
 | [ChromatographyConfiguration](ChromatographyConfiguration.md) | Configuration and settings for a chromatography run |  no  |
 
 
@@ -37,7 +38,7 @@ Alias: duration_min
 | Property | Value |
 | --- | --- |
 | Range | [Float](Float.md) |
-| Domain Of | [ChromatographyConfiguration](ChromatographyConfiguration.md), [MobilePhaseSegment](MobilePhaseSegment.md) |
+| Domain Of | [ChromatographyConfiguration](ChromatographyConfiguration.md), [MobilePhaseSegment](MobilePhaseSegment.md), [ChemicalConversionProcess](ChemicalConversionProcess.md) |
 
 ### Cardinality and Requirements
 
@@ -62,7 +63,7 @@ Alias: duration_min
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -71,8 +72,8 @@ Alias: duration_min
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:duration_min |
-| native | analysis_api_schema:duration_min |
+| self | basalt_schema:duration_min |
+| native | basalt_schema:duration_min |
 
 
 
@@ -83,12 +84,13 @@ Alias: duration_min
 ```yaml
 name: duration_min
 description: how long something took, in minutes
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: duration_min
 domain_of:
 - ChromatographyConfiguration
 - MobilePhaseSegment
+- ChemicalConversionProcess
 range: float
 
 ```

@@ -9,7 +9,7 @@ _Provide the scientific name (genus and species) of the host organism._
 
 
 
-URI: [analysis_api_schema:organism_name](https://w3id.org/MONet/analysis-api-schema/organism_name)
+URI: [basalt_schema:organism_name](https://emsl-computing.github.io/BASALT-Schema/elements/organism_name)
 Alias: organism_name
 
 <!-- no inheritance hierarchy -->
@@ -22,7 +22,7 @@ Alias: organism_name
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  yes  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  yes  |
 
 
 
@@ -36,7 +36,7 @@ Alias: organism_name
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -67,7 +67,7 @@ Alias: organism_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -76,8 +76,8 @@ Alias: organism_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:organism_name |
-| native | analysis_api_schema:organism_name |
+| self | basalt_schema:organism_name |
+| native | basalt_schema:organism_name |
 
 
 
@@ -89,14 +89,14 @@ Alias: organism_name
 name: organism_name
 description: Provide the scientific name (genus and species) of the host organism.
 title: organism name
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 aliases:
 - scientific_name
 - species_name
 rank: 1000
 alias: organism_name
 domain_of:
-- biological_entity
+- organism
 range: string
 
 ```

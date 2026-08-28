@@ -13,7 +13,7 @@ _Example: "d-Cfp1 to block gene expression", "recognition sequence for guide RNA
 
 
 
-URI: [analysis_api_schema:component_description](https://w3id.org/MONet/analysis-api-schema/component_description)
+URI: [basalt_schema:component_description](https://emsl-computing.github.io/BASALT-Schema/elements/component_description)
 Alias: component_description
 
 <!-- no inheritance hierarchy -->
@@ -26,7 +26,7 @@ Alias: component_description
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
 
 
 
@@ -40,7 +40,7 @@ Alias: component_description
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -65,7 +65,7 @@ Alias: component_description
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -74,8 +74,8 @@ Alias: component_description
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:component_description |
-| native | analysis_api_schema:component_description |
+| self | basalt_schema:component_description |
+| native | basalt_schema:component_description |
 
 
 
@@ -92,11 +92,11 @@ description: 'Provide a short statement describing the function of the construct
   Example: "d-Cfp1 to block gene expression", "recognition sequence for guide RNA
   processing"'
 title: construct component description
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: component_description
 domain_of:
-- biological_entity
+- organism
 range: string
 
 ```

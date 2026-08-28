@@ -7,7 +7,7 @@ _A sample containing a strain of an organism that has been subjected to genetic 
 
 __
 
-_This class references a biological_entity for strain identity information (organism_name,_
+_This class references an organism for strain identity information (organism_name,_
 
 _strain_source, modification_method, genotype_segment_*, component_*, phenotype, trait, etc.)_
 
@@ -19,7 +19,7 @@ _  _
 
 
 
-URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysis-api-schema/EngineeredStrainSample)
+URI: [basalt_schema:EngineeredStrainSample](https://emsl-computing.github.io/BASALT-Schema/elements/EngineeredStrainSample)
 
 
 
@@ -32,17 +32,6 @@ URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysi
       Sample <|-- EngineeredStrainSample
         click Sample href "../Sample/"
       
-      EngineeredStrainSample : biological_entity_ref
-        
-          
-    
-        
-        
-        EngineeredStrainSample --> "0..1" BiologicalEntity : biological_entity_ref
-        click BiologicalEntity href "../BiologicalEntity/"
-    
-
-        
       EngineeredStrainSample : cbi
         
       EngineeredStrainSample : description
@@ -56,6 +45,17 @@ URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysi
       EngineeredStrainSample : lims_barcode
         
       EngineeredStrainSample : name
+        
+      EngineeredStrainSample : organism_ref
+        
+          
+    
+        
+        
+        EngineeredStrainSample --> "0..1" Organism : organism_ref
+        click Organism href "../Organism/"
+    
+
         
       EngineeredStrainSample : storage_condition
         
@@ -77,7 +77,7 @@ URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysi
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [biological_entity_ref](biological_entity_ref.md) | 0..1 <br/> [BiologicalEntity](BiologicalEntity.md) | FK reference to a biological_entity representing the biological identity | direct |
+| [organism_ref](organism_ref.md) | 0..1 <br/> [Organism](Organism.md) | FK reference to an organism representing the biological identity | direct |
 | [cbi](cbi.md) | 1 <br/> [String](String.md) | Controlled Biological Information flag (yes/no) | direct |
 | [storage_condition](storage_condition.md) | 1 <br/> [String](String.md) | Storage condition for this sample (frozen, fresh, etc | direct |
 | [storage_temperature](storage_temperature.md) | 0..1 <br/> [String](String.md) | Storage temperature for this sample (e | direct |
@@ -114,7 +114,7 @@ URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysi
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -123,8 +123,8 @@ URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysi
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:EngineeredStrainSample |
-| native | analysis_api_schema:EngineeredStrainSample |
+| self | basalt_schema:EngineeredStrainSample |
+| native | basalt_schema:EngineeredStrainSample |
 
 
 
@@ -141,14 +141,14 @@ URI: [analysis_api_schema:EngineeredStrainSample](https://w3id.org/MONet/analysi
 ```yaml
 name: EngineeredStrainSample
 description: "A sample containing a strain of an organism that has been subjected\
-  \ to genetic engineering.\n\nThis class references a biological_entity for strain\
-  \ identity information (organism_name,\nstrain_source, modification_method, genotype_segment_*,\
+  \ to genetic engineering.\n\nThis class references an organism for strain identity\
+  \ information (organism_name,\nstrain_source, modification_method, genotype_segment_*,\
   \ component_*, phenotype, trait, etc.)\nand carries only sample-instance-specific\
   \ slots.\n  "
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Sample
 slots:
-- biological_entity_ref
+- organism_ref
 - cbi
 - storage_condition
 - storage_temperature
@@ -156,7 +156,7 @@ slots:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     domain_of:
     - Activity
@@ -178,9 +178,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -219,7 +219,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -235,7 +236,7 @@ attributes:
   cbi:
     name: cbi
     description: Controlled Biological Information flag (yes/no).
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     domain_of:
     - AMP2UserSample
     - EngineeredStrainSample
@@ -245,7 +246,7 @@ attributes:
     description: 'Storage condition for this sample (frozen, fresh, etc.).
 
       Aliases: samp_store_cond, storage_cond, storage_condt'
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     domain_of:
     - AerosolArmSample
     - AerosolSample
@@ -270,7 +271,7 @@ attributes:
     description: 'Storage temperature for this sample (e.g., "-80 C").
 
       Aliases: samp_store_temp'
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     domain_of:
     - MediaPreparation
     - AMP2UserSample
@@ -285,16 +286,16 @@ attributes:
 ```yaml
 name: EngineeredStrainSample
 description: "A sample containing a strain of an organism that has been subjected\
-  \ to genetic engineering.\n\nThis class references a biological_entity for strain\
-  \ identity information (organism_name,\nstrain_source, modification_method, genotype_segment_*,\
+  \ to genetic engineering.\n\nThis class references an organism for strain identity\
+  \ information (organism_name,\nstrain_source, modification_method, genotype_segment_*,\
   \ component_*, phenotype, trait, etc.)\nand carries only sample-instance-specific\
   \ slots.\n  "
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Sample
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     identifier: true
     alias: id
     owner: EngineeredStrainSample
@@ -318,9 +319,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -359,7 +360,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -375,7 +377,7 @@ attributes:
   cbi:
     name: cbi
     description: Controlled Biological Information flag (yes/no).
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     alias: cbi
     owner: EngineeredStrainSample
     domain_of:
@@ -388,7 +390,7 @@ attributes:
     description: 'Storage condition for this sample (frozen, fresh, etc.).
 
       Aliases: samp_store_cond, storage_cond, storage_condt'
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     alias: storage_condition
     owner: EngineeredStrainSample
     domain_of:
@@ -416,7 +418,7 @@ attributes:
     description: 'Storage temperature for this sample (e.g., "-80 C").
 
       Aliases: samp_store_temp'
-    from_schema: https://w3id.org/MONet/analysis-api-schema/sample-classes
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     alias: storage_temperature
     owner: EngineeredStrainSample
     domain_of:
@@ -424,31 +426,30 @@ attributes:
     - AMP2UserSample
     - EngineeredStrainSample
     range: string
-  biological_entity_ref:
-    name: biological_entity_ref
-    description: 'FK reference to a biological_entity representing the biological
-      identity
+  organism_ref:
+    name: organism_ref
+    description: 'FK reference to an organism representing the biological identity
 
       strain, isolate, engineered construct) that this sample or activity
 
       is associated with.'
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - strain_ref
     - strain_id
     rank: 1000
-    alias: biological_entity_ref
+    alias: organism_ref
     owner: EngineeredStrainSample
     domain_of:
     - CultureGrowth
     - AMP2UserSample
     - EngineeredStrainSample
-    range: biological_entity
+    range: organism
     required: false
   external_identifiers:
     name: external_identifiers
     description: List of external identifiers associated with this entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: external_identifiers
     owner: EngineeredStrainSample
@@ -476,7 +477,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: EngineeredStrainSample
@@ -488,16 +489,18 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -506,7 +509,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: EngineeredStrainSample
@@ -519,15 +522,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -545,7 +550,7 @@ attributes:
       predating activity tracking.'
     todos:
     - Is sampling activity where we want to capture this?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: emsl_activity
     owner: EngineeredStrainSample
@@ -557,7 +562,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: lims_barcode
     owner: EngineeredStrainSample

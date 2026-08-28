@@ -9,7 +9,7 @@ _A record of a mass spectrometry standard run with a batch of samples, which is 
 
 
 
-URI: [analysis_api_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/analysis-api-schema/MassSpectrometryStandardRun)
+URI: [basalt_schema:MassSpectrometryStandardRun](https://emsl-computing.github.io/BASALT-Schema/elements/MassSpectrometryStandardRun)
 
 
 
@@ -110,7 +110,7 @@ URI: [analysis_api_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/an
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -119,8 +119,8 @@ URI: [analysis_api_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/an
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:MassSpectrometryStandardRun |
-| native | analysis_api_schema:MassSpectrometryStandardRun |
+| self | basalt_schema:MassSpectrometryStandardRun |
+| native | basalt_schema:MassSpectrometryStandardRun |
 
 
 
@@ -138,7 +138,7 @@ URI: [analysis_api_schema:MassSpectrometryStandardRun](https://w3id.org/MONet/an
 name: MassSpectrometryStandardRun
 description: A record of a mass spectrometry standard run with a batch of samples,
   which is used for calibration and quality control.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 slots:
 - name
 - description
@@ -149,7 +149,7 @@ slots:
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/mass-spec
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
     identifier: true
     domain_of:
     - Activity
@@ -171,9 +171,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -212,7 +212,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -236,11 +237,11 @@ attributes:
 name: MassSpectrometryStandardRun
 description: A record of a mass spectrometry standard run with a batch of samples,
   which is used for calibration and quality control.
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/mass-spec
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/mass-spec
     identifier: true
     alias: id
     owner: MassSpectrometryStandardRun
@@ -264,9 +265,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -305,7 +306,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -321,7 +323,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: MassSpectrometryStandardRun
@@ -333,16 +335,18 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -351,7 +355,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: MassSpectrometryStandardRun
@@ -364,15 +368,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -383,7 +389,7 @@ attributes:
   internal_calibration:
     name: internal_calibration
     description: Whether internal calibration was used
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: internal_calibration
     owner: MassSpectrometryStandardRun
@@ -393,7 +399,7 @@ attributes:
   calibration_target:
     name: calibration_target
     description: The measurement being calibrated
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: calibration_target
     owner: MassSpectrometryStandardRun
@@ -403,7 +409,7 @@ attributes:
   calibration_standard:
     name: calibration_standard
     description: The reference standard used for calibration
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: calibration_standard
     owner: MassSpectrometryStandardRun
@@ -413,7 +419,7 @@ attributes:
   calibration_data:
     name: calibration_data
     description: Reference to the raw instrument data file used for calibration
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: calibration_data
     owner: MassSpectrometryStandardRun

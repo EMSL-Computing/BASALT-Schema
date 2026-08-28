@@ -71,7 +71,7 @@ _    XRDPhaseProduct:  # Add to product permissible_values_
 
 
 
-URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-schema/XRDPhaseProduct)
+URI: [basalt_schema:XRDPhaseProduct](https://emsl-computing.github.io/BASALT-Schema/elements/XRDPhaseProduct)
 
 
 
@@ -351,7 +351,7 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -360,8 +360,8 @@ URI: [analysis_api_schema:XRDPhaseProduct](https://w3id.org/MONet/analysis-api-s
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:XRDPhaseProduct |
-| native | analysis_api_schema:XRDPhaseProduct |
+| self | basalt_schema:XRDPhaseProduct |
+| native | basalt_schema:XRDPhaseProduct |
 
 
 
@@ -394,7 +394,7 @@ description: "X-ray Diffraction (XRD) mineral phase identification and quantific
   \ processes with\n  HighScore Plus, GSAS-II, or FullProf ->\n  XRDPhaseProduct (typed\
   \ processing reference points to refinement activity)\n     \nRequired enum additions\
   \ to enums.yaml:\n  product:\n    XRDPhaseProduct:  # Add to product permissible_values"
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: XRayDataProduct
 slots:
 - measure_type
@@ -402,7 +402,7 @@ attributes:
   quartz_percent:
     name: quartz_percent
     description: Quartz (SiO2) weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
@@ -410,7 +410,7 @@ attributes:
   albite_percent:
     name: albite_percent
     description: Albite (NaAlSi3O8) weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
@@ -418,7 +418,7 @@ attributes:
   microcline_percent:
     name: microcline_percent
     description: Microcline (KAlSi3O8) weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
@@ -426,7 +426,7 @@ attributes:
   muscovite_percent:
     name: muscovite_percent
     description: Muscovite (KAl2(AlSi3O10)(OH)2) weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
@@ -434,7 +434,7 @@ attributes:
   kaolinite_percent:
     name: kaolinite_percent
     description: Kaolinite (Al2Si2O5(OH)4) weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
@@ -442,7 +442,7 @@ attributes:
   chlorite_percent:
     name: chlorite_percent
     description: Chlorite ((Mg,Fe)3(Si,Al)4O10(OH)2 (Mg,Fe)3(OH)6) weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
@@ -450,7 +450,7 @@ attributes:
   hornblende_percent:
     name: hornblende_percent
     description: Hornblende (Ca,Na)2-3(Mg,Fe,Al)5(Al,Si)8O22(OH)2 weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
@@ -458,7 +458,7 @@ attributes:
   pyrite_percent:
     name: pyrite_percent
     description: Pyrite (FeS2) weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
@@ -466,7 +466,7 @@ attributes:
   halite_percent:
     name: halite_percent
     description: Halite (NaCl) weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
@@ -474,77 +474,77 @@ attributes:
   gypsum_percent:
     name: gypsum_percent
     description: Gypsum (CaSO4 2H2O) weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
     range: float
   flag_quartz:
     name: flag_quartz
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
     range: ProcessedDataFlag
   flag_albite:
     name: flag_albite
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
     range: ProcessedDataFlag
   flag_microcline:
     name: flag_microcline
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
     range: ProcessedDataFlag
   flag_muscovite:
     name: flag_muscovite
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
     range: ProcessedDataFlag
   flag_kaolinite:
     name: flag_kaolinite
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
     range: ProcessedDataFlag
   flag_chlorite:
     name: flag_chlorite
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
     range: ProcessedDataFlag
   flag_hornblende:
     name: flag_hornblende
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
     range: ProcessedDataFlag
   flag_pyrite:
     name: flag_pyrite
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
     range: ProcessedDataFlag
   flag_halite:
     name: flag_halite
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
     range: ProcessedDataFlag
   flag_gypsum:
     name: flag_gypsum
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     domain_of:
     - XRDPhaseProduct
@@ -575,13 +575,13 @@ description: "X-ray Diffraction (XRD) mineral phase identification and quantific
   \ processes with\n  HighScore Plus, GSAS-II, or FullProf ->\n  XRDPhaseProduct (typed\
   \ processing reference points to refinement activity)\n     \nRequired enum additions\
   \ to enums.yaml:\n  product:\n    XRDPhaseProduct:  # Add to product permissible_values"
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: XRayDataProduct
 attributes:
   quartz_percent:
     name: quartz_percent
     description: Quartz (SiO2) weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: quartz_percent
     owner: XRDPhaseProduct
@@ -591,7 +591,7 @@ attributes:
   albite_percent:
     name: albite_percent
     description: Albite (NaAlSi3O8) weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: albite_percent
     owner: XRDPhaseProduct
@@ -601,7 +601,7 @@ attributes:
   microcline_percent:
     name: microcline_percent
     description: Microcline (KAlSi3O8) weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: microcline_percent
     owner: XRDPhaseProduct
@@ -611,7 +611,7 @@ attributes:
   muscovite_percent:
     name: muscovite_percent
     description: Muscovite (KAl2(AlSi3O10)(OH)2) weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: muscovite_percent
     owner: XRDPhaseProduct
@@ -621,7 +621,7 @@ attributes:
   kaolinite_percent:
     name: kaolinite_percent
     description: Kaolinite (Al2Si2O5(OH)4) weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: kaolinite_percent
     owner: XRDPhaseProduct
@@ -631,7 +631,7 @@ attributes:
   chlorite_percent:
     name: chlorite_percent
     description: Chlorite ((Mg,Fe)3(Si,Al)4O10(OH)2 (Mg,Fe)3(OH)6) weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: chlorite_percent
     owner: XRDPhaseProduct
@@ -641,7 +641,7 @@ attributes:
   hornblende_percent:
     name: hornblende_percent
     description: Hornblende (Ca,Na)2-3(Mg,Fe,Al)5(Al,Si)8O22(OH)2 weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: hornblende_percent
     owner: XRDPhaseProduct
@@ -651,7 +651,7 @@ attributes:
   pyrite_percent:
     name: pyrite_percent
     description: Pyrite (FeS2) weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: pyrite_percent
     owner: XRDPhaseProduct
@@ -661,7 +661,7 @@ attributes:
   halite_percent:
     name: halite_percent
     description: Halite (NaCl) weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: halite_percent
     owner: XRDPhaseProduct
@@ -671,7 +671,7 @@ attributes:
   gypsum_percent:
     name: gypsum_percent
     description: Gypsum (CaSO4 2H2O) weight percent
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: gypsum_percent
     owner: XRDPhaseProduct
@@ -680,7 +680,7 @@ attributes:
     range: float
   flag_quartz:
     name: flag_quartz
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_quartz
     owner: XRDPhaseProduct
@@ -689,7 +689,7 @@ attributes:
     range: ProcessedDataFlag
   flag_albite:
     name: flag_albite
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_albite
     owner: XRDPhaseProduct
@@ -698,7 +698,7 @@ attributes:
     range: ProcessedDataFlag
   flag_microcline:
     name: flag_microcline
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_microcline
     owner: XRDPhaseProduct
@@ -707,7 +707,7 @@ attributes:
     range: ProcessedDataFlag
   flag_muscovite:
     name: flag_muscovite
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_muscovite
     owner: XRDPhaseProduct
@@ -716,7 +716,7 @@ attributes:
     range: ProcessedDataFlag
   flag_kaolinite:
     name: flag_kaolinite
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_kaolinite
     owner: XRDPhaseProduct
@@ -725,7 +725,7 @@ attributes:
     range: ProcessedDataFlag
   flag_chlorite:
     name: flag_chlorite
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_chlorite
     owner: XRDPhaseProduct
@@ -734,7 +734,7 @@ attributes:
     range: ProcessedDataFlag
   flag_hornblende:
     name: flag_hornblende
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_hornblende
     owner: XRDPhaseProduct
@@ -743,7 +743,7 @@ attributes:
     range: ProcessedDataFlag
   flag_pyrite:
     name: flag_pyrite
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_pyrite
     owner: XRDPhaseProduct
@@ -752,7 +752,7 @@ attributes:
     range: ProcessedDataFlag
   flag_halite:
     name: flag_halite
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_halite
     owner: XRDPhaseProduct
@@ -761,7 +761,7 @@ attributes:
     range: ProcessedDataFlag
   flag_gypsum:
     name: flag_gypsum
-    from_schema: https://w3id.org/MONet/analysis-api-schema/products
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     rank: 1000
     alias: flag_gypsum
     owner: XRDPhaseProduct
@@ -772,7 +772,7 @@ attributes:
     name: measure_type
     description: Whether the measurement recorded is a single measurement, one of
       a set of  replicate measurements, or an average of several replicate measurements.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: measure_type
     owner: XRDPhaseProduct
@@ -806,7 +806,7 @@ attributes:
       \ retained until formal typed class exists."
     todos:
     - make this inined/multivalued?
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: summary_metrics
     owner: XRDPhaseProduct
@@ -817,7 +817,7 @@ attributes:
   lims_barcode:
     name: lims_barcode
     description: LIMS barcode identifier
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: lims_barcode
     owner: XRDPhaseProduct
@@ -829,12 +829,13 @@ attributes:
   sample_id:
     name: sample_id
     description: Link back to the originating sample
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sample_id
     owner: XRDPhaseProduct
     domain_of:
     - ProcessedData
+    - ProcessingSampleLink
     - AMP2WellMetadata
     - MetagenomicsProduct
     range: Sample
@@ -842,7 +843,7 @@ attributes:
   name:
     name: name
     description: Human-readable name for the entity or activity.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: name
     owner: XRDPhaseProduct
@@ -854,16 +855,18 @@ attributes:
     - Instrument
     - OntologyClass
     - ContainerAxis
+    - SampleProcessing
     - Configuration
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -872,7 +875,7 @@ attributes:
     name: description
     description: Human-readable description for the entity or activity
     title: description
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: description
     owner: XRDPhaseProduct
@@ -885,15 +888,17 @@ attributes:
     - OntologyClass
     - ContainerType
     - LabDevice
+    - SampleProcessing
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
+    - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -908,7 +913,7 @@ attributes:
     todos:
     - should this be an ID? CURIE can use the one NMDC has https://bioregistry.io/reference/emsl.project:60141
       where emsl.project is the CURIE prefix
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - study
     - study_id
@@ -945,7 +950,7 @@ attributes:
 
       in the same sampling event or campaign.'
     title: sampling set
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: sampling_set
     owner: XRDPhaseProduct
@@ -961,7 +966,7 @@ attributes:
     - value: TOP
     - value: MID
     - value: BTM
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: core_section
     owner: XRDPhaseProduct
@@ -979,7 +984,7 @@ attributes:
     - This is typically an alias for the inherited 'name' slot on Sample classes.
       Defined separately for compatibility with source data files using 'sample_name'
       column headers.
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     aliases:
     - samp_name
     rank: 1000
@@ -1005,7 +1010,7 @@ attributes:
     range: string
   s3_base_url:
     name: s3_base_url
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_base_url
     owner: XRDPhaseProduct
@@ -1014,7 +1019,7 @@ attributes:
     range: string
   s3_bucket:
     name: s3_bucket
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_bucket
     owner: XRDPhaseProduct
@@ -1024,7 +1029,7 @@ attributes:
   s3_key:
     name: s3_key
     description: MinIO/S3 object key; required for all data products
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: s3_key
     owner: XRDPhaseProduct
@@ -1035,7 +1040,7 @@ attributes:
   filesize:
     name: filesize
     description: Size of the file in bytes
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: filesize
     owner: XRDPhaseProduct
@@ -1044,7 +1049,7 @@ attributes:
     range: integer
   md5checksum:
     name: md5checksum
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
     alias: md5checksum
     owner: XRDPhaseProduct
@@ -1053,7 +1058,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
     identifier: true
     alias: id
     owner: XRDPhaseProduct
@@ -1077,9 +1082,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -1118,7 +1123,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue

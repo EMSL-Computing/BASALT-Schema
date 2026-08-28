@@ -9,7 +9,7 @@ _Volume of the entity in microliters_
 
 
 
-URI: [analysis_api_schema:volume_uL](https://w3id.org/MONet/analysis-api-schema/volume_uL)
+URI: [basalt_schema:volume_uL](https://emsl-computing.github.io/BASALT-Schema/elements/volume_uL)
 Alias: volume_uL
 
 <!-- no inheritance hierarchy -->
@@ -22,7 +22,7 @@ Alias: volume_uL
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  no  |
+| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing |  no  |
 | [CoreSection](CoreSection.md) | A section of a core sample (TOP, MID, BTM) |  no  |
 
 
@@ -62,7 +62,7 @@ Alias: volume_uL
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -71,8 +71,8 @@ Alias: volume_uL
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:volume_uL |
-| native | analysis_api_schema:volume_uL |
+| self | basalt_schema:volume_uL |
+| native | basalt_schema:volume_uL |
 
 
 
@@ -83,7 +83,7 @@ Alias: volume_uL
 ```yaml
 name: volume_uL
 description: Volume of the entity in microliters
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: volume_uL
 domain_of:

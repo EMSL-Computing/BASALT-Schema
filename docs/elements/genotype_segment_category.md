@@ -11,7 +11,7 @@ _Examples: "Gene(s) of Interest", "Gene Silencer"_
 
 
 
-URI: [analysis_api_schema:genotype_segment_category](https://w3id.org/MONet/analysis-api-schema/genotype_segment_category)
+URI: [basalt_schema:genotype_segment_category](https://emsl-computing.github.io/BASALT-Schema/elements/genotype_segment_category)
 Alias: genotype_segment_category
 
 <!-- no inheritance hierarchy -->
@@ -24,7 +24,7 @@ Alias: genotype_segment_category
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiologicalEntity](BiologicalEntity.md) | Reference data representing a biological identity (strain, isolate, |  no  |
+| [Organism](Organism.md) | Reference data representing a biological identity (strain, isolate, |  no  |
 
 
 
@@ -38,7 +38,7 @@ Alias: genotype_segment_category
 | Property | Value |
 | --- | --- |
 | Range | [GenotypeSegmentEnum](GenotypeSegmentEnum.md) |
-| Domain Of | [BiologicalEntity](BiologicalEntity.md) |
+| Domain Of | [Organism](Organism.md) |
 
 ### Cardinality and Requirements
 
@@ -63,7 +63,7 @@ Alias: genotype_segment_category
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -72,8 +72,8 @@ Alias: genotype_segment_category
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:genotype_segment_category |
-| native | analysis_api_schema:genotype_segment_category |
+| self | basalt_schema:genotype_segment_category |
+| native | basalt_schema:genotype_segment_category |
 
 
 
@@ -87,11 +87,11 @@ description: 'Category of genetic modification or segment.
 
   Examples: "Gene(s) of Interest", "Gene Silencer"'
 title: genotype segment category
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: genotype_segment_category
 domain_of:
-- biological_entity
+- organism
 range: GenotypeSegmentEnum
 
 ```

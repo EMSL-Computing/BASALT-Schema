@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:flag_y](https://w3id.org/MONet/analysis-api-schema/flag_y)
+URI: [basalt_schema:flag_y](https://emsl-computing.github.io/BASALT-Schema/elements/flag_y)
 Alias: flag_y
 
 <!-- no inheritance hierarchy -->
@@ -63,7 +63,7 @@ Alias: flag_y
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -72,8 +72,8 @@ Alias: flag_y
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:flag_y |
-| native | analysis_api_schema:flag_y |
+| self | basalt_schema:flag_y |
+| native | basalt_schema:flag_y |
 
 
 
@@ -83,7 +83,7 @@ Alias: flag_y
 <details>
 ```yaml
 name: flag_y
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: flag_y
 owner: XRFElementalProduct

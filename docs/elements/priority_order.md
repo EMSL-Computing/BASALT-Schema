@@ -9,7 +9,7 @@ _Indicate the run order priority of your samples_
 
 
 
-URI: [analysis_api_schema:priority_order](https://w3id.org/MONet/analysis-api-schema/priority_order)
+URI: [basalt_schema:priority_order](https://emsl-computing.github.io/BASALT-Schema/elements/priority_order)
 Alias: priority_order
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: priority_order
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
 
 
 
@@ -63,7 +63,7 @@ Alias: priority_order
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -72,8 +72,8 @@ Alias: priority_order
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:priority_order |
-| native | analysis_api_schema:priority_order |
+| self | basalt_schema:priority_order |
+| native | basalt_schema:priority_order |
 
 
 
@@ -85,7 +85,7 @@ Alias: priority_order
 name: priority_order
 description: Indicate the run order priority of your samples
 title: priority order
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: priority_order
 domain_of:

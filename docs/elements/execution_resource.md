@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:execution_resource](https://w3id.org/MONet/analysis-api-schema/execution_resource)
+URI: [basalt_schema:execution_resource](https://emsl-computing.github.io/BASALT-Schema/elements/execution_resource)
 Alias: execution_resource
 
 <!-- no inheritance hierarchy -->
@@ -17,10 +17,10 @@ Alias: execution_resource
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
 | [XASLCFDataProcessingActivity](XASLCFDataProcessingActivity.md) | Athena or Larch Linear Combination Fitting (LCF) processing activity for |  no  |
 | [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |  no  |
 | [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
-| [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
 
 
 
@@ -66,7 +66,7 @@ Alias: execution_resource
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -75,8 +75,8 @@ Alias: execution_resource
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:execution_resource |
-| native | analysis_api_schema:execution_resource |
+| self | basalt_schema:execution_resource |
+| native | basalt_schema:execution_resource |
 
 
 
@@ -86,7 +86,7 @@ Alias: execution_resource
 <details>
 ```yaml
 name: execution_resource
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: execution_resource
 owner: DataProcessingActivity

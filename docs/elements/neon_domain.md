@@ -9,7 +9,7 @@ _Areas where ecosystems (and the type quality and quantity of environmental reso
 
 
 
-URI: [analysis_api_schema:neon_domain](https://w3id.org/MONet/analysis-api-schema/neon_domain)
+URI: [basalt_schema:neon_domain](https://emsl-computing.github.io/BASALT-Schema/elements/neon_domain)
 Alias: neon_domain
 
 <!-- no inheritance hierarchy -->
@@ -51,7 +51,7 @@ Alias: neon_domain
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -60,8 +60,8 @@ Alias: neon_domain
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:neon_domain |
-| native | analysis_api_schema:neon_domain |
+| self | basalt_schema:neon_domain |
+| native | basalt_schema:neon_domain |
 
 
 
@@ -79,7 +79,7 @@ description: 'Areas where ecosystems (and the type quality and quantity of envir
   Rockies/ Colorado Plateau Desert Southwest Great Basin Pacific Northwest Pacific
   Southwest Tundra Taiga Pacific Tropical'
 title: NEON domain
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: neon_domain
 range: NEONDomainEnum

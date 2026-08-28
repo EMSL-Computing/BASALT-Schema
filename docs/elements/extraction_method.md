@@ -9,7 +9,7 @@ _If you (the user) performed an extraction preparation or processing before send
 
 
 
-URI: [analysis_api_schema:extraction_method](https://w3id.org/MONet/analysis-api-schema/extraction_method)
+URI: [basalt_schema:extraction_method](https://emsl-computing.github.io/BASALT-Schema/elements/extraction_method)
 Alias: extraction_method
 
 <!-- no inheritance hierarchy -->
@@ -22,17 +22,18 @@ Alias: extraction_method
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [Extraction](Extraction.md) | The removal and isolation of a desired analyte from other material  in a samp... |  no  |
+| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 | [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [WaterSample](WaterSample.md) | A sample of water collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
-| [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
-| [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) | Phosphorus analysis product, typically derived via colorimetric assay of soil... |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
+| [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md) | Phosphorus analysis product, typically derived via colorimetric assay of soil... |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 
 
 
@@ -46,7 +47,7 @@ Alias: extraction_method
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md), [AerosolArmSample](AerosolArmSample.md), [AerosolSample](AerosolSample.md), [CultureEnvironmentalSample](CultureEnvironmentalSample.md), [MixedCultureSample](MixedCultureSample.md), [OtherUndescribedSample](OtherUndescribedSample.md), [PlantSample](PlantSample.md), [PureCultureSample](PureCultureSample.md), [SedimentSample](SedimentSample.md), [SoilSample](SoilSample.md), [WaterSample](WaterSample.md) |
+| Domain Of | [PhosphorusAnalysisProduct](PhosphorusAnalysisProduct.md), [AerosolArmSample](AerosolArmSample.md), [AerosolSample](AerosolSample.md), [CultureEnvironmentalSample](CultureEnvironmentalSample.md), [MixedCultureSample](MixedCultureSample.md), [OtherUndescribedSample](OtherUndescribedSample.md), [PlantSample](PlantSample.md), [PureCultureSample](PureCultureSample.md), [SedimentSample](SedimentSample.md), [SoilSample](SoilSample.md), [WaterSample](WaterSample.md), [Extraction](Extraction.md) |
 
 ### Cardinality and Requirements
 
@@ -71,7 +72,7 @@ Alias: extraction_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -80,8 +81,8 @@ Alias: extraction_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:extraction_method |
-| native | analysis_api_schema:extraction_method |
+| self | basalt_schema:extraction_method |
+| native | basalt_schema:extraction_method |
 
 
 
@@ -95,7 +96,7 @@ description: If you (the user) performed an extraction preparation or processing
   sending the sample to EMSL, what was it? This is only applicable when sending an
   'analytical sample'. See README for more details on types of samples.
 title: extraction method
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: extraction_method
 domain_of:
@@ -110,6 +111,7 @@ domain_of:
 - SedimentSample
 - SoilSample
 - WaterSample
+- Extraction
 range: string
 
 ```

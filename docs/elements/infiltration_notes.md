@@ -9,7 +9,7 @@ _Provide any details, issues, or context needed to understand the infiltration a
 
 
 
-URI: [analysis_api_schema:infiltration_notes](https://w3id.org/MONet/analysis-api-schema/infiltration_notes)
+URI: [basalt_schema:infiltration_notes](https://emsl-computing.github.io/BASALT-Schema/elements/infiltration_notes)
 Alias: infiltration_notes
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: infiltration_notes
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MonetSoilSamplingActivity](MonetSoilSamplingActivity.md) | Collection of soil cores according to the MONet soil sampling protocol |  no  |
 | [SoilSamplingActivity](SoilSamplingActivity.md) | Collection of soil samples from the environment |  no  |
+| [MonetSoilSamplingActivity](MonetSoilSamplingActivity.md) | Collection of soil cores according to the MONet soil sampling protocol |  no  |
 
 
 
@@ -62,7 +62,7 @@ Alias: infiltration_notes
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -71,8 +71,8 @@ Alias: infiltration_notes
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:infiltration_notes |
-| native | analysis_api_schema:infiltration_notes |
+| self | basalt_schema:infiltration_notes |
+| native | basalt_schema:infiltration_notes |
 
 
 
@@ -85,7 +85,7 @@ name: infiltration_notes
 description: Provide any details, issues, or context needed to understand the infiltration
   activity
 title: infiltration notes
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: infiltration_notes
 domain_of:

@@ -7,7 +7,7 @@ _Sample storage temperature conditions_
 
 
 
-URI: [analysis_api_schema:SampleStoreTempEnum](https://w3id.org/MONet/analysis-api-schema/SampleStoreTempEnum)
+URI: [basalt_schema:SampleStoreTempEnum](https://emsl-computing.github.io/BASALT-Schema/elements/SampleStoreTempEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -45,7 +45,7 @@ URI: [analysis_api_schema:SampleStoreTempEnum](https://w3id.org/MONet/analysis-a
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -58,7 +58,7 @@ URI: [analysis_api_schema:SampleStoreTempEnum](https://w3id.org/MONet/analysis-a
 ```yaml
 name: SampleStoreTempEnum
 description: Sample storage temperature conditions
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 permissible_values:
   fresh4:

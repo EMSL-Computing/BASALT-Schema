@@ -9,7 +9,7 @@ _Information about treatment involving an exposure to varying degrees of humidit
 
 
 
-URI: [analysis_api_schema:humidity_regm](https://w3id.org/MONet/analysis-api-schema/humidity_regm)
+URI: [basalt_schema:humidity_regm](https://emsl-computing.github.io/BASALT-Schema/elements/humidity_regm)
 Alias: humidity_regm
 
 <!-- no inheritance hierarchy -->
@@ -22,17 +22,17 @@ Alias: humidity_regm
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
-| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
-| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 | [AerosolSample](AerosolSample.md) | An aerosol sample collected from the environment |  no  |
+| [AerosolArmSample](AerosolArmSample.md) | An aerosol sample collected by the ARM facility |  no  |
+| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [OtherUndescribedSample](OtherUndescribedSample.md) | A sample that does not fit into any of the other described sample types |  no  |
 | [CultureEnvironmentalSample](CultureEnvironmentalSample.md) | A sample containing organisms cultured from an environmental sample |  no  |
-| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
-| [SoilSample](SoilSample.md) | A sample of soil collected from the environment |  no  |
 | [MixedCultureSample](MixedCultureSample.md) | A sample containing multiple cultured organisms |  no  |
+| [SedimentSample](SedimentSample.md) | A sample of sediment collected from the environment |  no  |
 | [TerraformSample](TerraformSample.md) | A sample collected from a Terraform experiment |  no  |
 | [FieldDeployedTerraformSample](FieldDeployedTerraformSample.md) | A sample collected from a field-deployed Terraform experiment |  no  |
+| [PureCultureSample](PureCultureSample.md) | A sample of a culture containing a single organism |  no  |
+| [PlantSample](PlantSample.md) | A sample containing plant material |  no  |
 
 
 
@@ -71,7 +71,7 @@ Alias: humidity_regm
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -80,8 +80,8 @@ Alias: humidity_regm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:humidity_regm |
-| native | analysis_api_schema:humidity_regm |
+| self | basalt_schema:humidity_regm |
+| native | basalt_schema:humidity_regm |
 
 
 
@@ -96,7 +96,7 @@ description: Information about treatment involving an exposure to varying degree
   how many times the treatment was repeated, how long each treatment lasted, and the
   start and end time of the entire treatment; can include multiple regimens
 title: humidity regimen
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: humidity_regm
 domain_of:

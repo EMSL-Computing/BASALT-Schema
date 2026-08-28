@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:ended_at_time](https://w3id.org/MONet/analysis-api-schema/ended_at_time)
+URI: [basalt_schema:ended_at_time](https://emsl-computing.github.io/BASALT-Schema/elements/ended_at_time)
 Alias: ended_at_time
 
 <!-- no inheritance hierarchy -->
@@ -17,11 +17,11 @@ Alias: ended_at_time
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
 | [DataProcessingActivity](DataProcessingActivity.md) | Abstract base for any data processing activity (digital to digital) |  no  |
+| [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |  no  |
+| [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | Concrete metagenomics workflow run |  no  |
 | [Activity](Activity.md) | Something that happens over time and can use equipment |  no  |
 | [XASLCFDataProcessingActivity](XASLCFDataProcessingActivity.md) | Athena or Larch Linear Combination Fitting (LCF) processing activity for |  no  |
-| [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | Concrete mass spectrometry workflow run |  no  |
 
 
 
@@ -62,8 +62,8 @@ Alias: ended_at_time
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ended_at_time |
-| native | analysis_api_schema:ended_at_time |
+| self | basalt_schema:ended_at_time |
+| native | basalt_schema:ended_at_time |
 
 
 

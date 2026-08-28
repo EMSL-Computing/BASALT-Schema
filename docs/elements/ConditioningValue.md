@@ -4,7 +4,7 @@
 
 
 
-URI: [analysis_api_schema:ConditioningValue](https://w3id.org/MONet/analysis-api-schema/ConditioningValue)
+URI: [basalt_schema:ConditioningValue](https://emsl-computing.github.io/BASALT-Schema/elements/ConditioningValue)
 
 
 
@@ -68,7 +68,7 @@ URI: [analysis_api_schema:ConditioningValue](https://w3id.org/MONet/analysis-api
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -77,8 +77,8 @@ URI: [analysis_api_schema:ConditioningValue](https://w3id.org/MONet/analysis-api
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:ConditioningValue |
-| native | analysis_api_schema:ConditioningValue |
+| self | basalt_schema:ConditioningValue |
+| native | basalt_schema:ConditioningValue |
 
 
 
@@ -94,11 +94,11 @@ URI: [analysis_api_schema:ConditioningValue](https://w3id.org/MONet/analysis-api
 <details>
 ```yaml
 name: ConditioningValue
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     identifier: true
     domain_of:
     - Activity
@@ -120,9 +120,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -161,7 +161,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -176,28 +177,28 @@ attributes:
     required: true
   source_material:
     name: source_material
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - ConditioningValue
     range: string
   instrument:
     name: instrument
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - ConditioningValue
     range: string
   gas:
     name: gas
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     domain_of:
     - ConditioningValue
     range: string
   pressure:
     name: pressure
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     domain_of:
     - FieldDeployedTerraformSample
     - OtherUndescribedSample
@@ -208,7 +209,7 @@ attributes:
     range: string
   has_raw_value:
     name: has_raw_value
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     domain_of:
     - TimestampValue
     - TextValue
@@ -226,11 +227,11 @@ attributes:
 <details>
 ```yaml
 name: ConditioningValue
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
   id:
     name: id
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     identifier: true
     alias: id
     owner: ConditioningValue
@@ -254,9 +255,9 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
+    - organism
     - Site
     - Sample
     - AerosolArmSample
@@ -295,7 +296,8 @@ attributes:
     - SynthesizedMaterialSamplingActivity
     - TerraformSamplingActivity
     - WaterSamplingActivity
-    - biological_entity
+    - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -310,7 +312,7 @@ attributes:
     required: true
   source_material:
     name: source_material
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: source_material
     owner: ConditioningValue
@@ -319,7 +321,7 @@ attributes:
     range: string
   instrument:
     name: instrument
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: instrument
     owner: ConditioningValue
@@ -328,7 +330,7 @@ attributes:
     range: string
   gas:
     name: gas
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     rank: 1000
     alias: gas
     owner: ConditioningValue
@@ -337,7 +339,7 @@ attributes:
     range: string
   pressure:
     name: pressure
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     alias: pressure
     owner: ConditioningValue
     domain_of:
@@ -350,7 +352,7 @@ attributes:
     range: string
   has_raw_value:
     name: has_raw_value
-    from_schema: https://w3id.org/MONet/analysis-api-schema/value-tables
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/value-tables
     alias: has_raw_value
     owner: ConditioningValue
     domain_of:

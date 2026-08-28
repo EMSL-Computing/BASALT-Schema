@@ -1,6 +1,6 @@
 # Visuals
 
-Standalone, self-contained visual explainers for the MONet Analysis API schema.
+Standalone, self-contained visual explainers for the BASALT Schema.
 Each file is a single HTML page with all CSS/JS inlined — no build step, no server,
 no external dependencies. Open directly in any browser (`file://` works).
 
@@ -13,8 +13,8 @@ extracted directly from the LinkML schema with `SchemaView` (see
 (range, pattern, required, description) are the real thing, not hand-transcribed.
 
 Layout is a left-to-right process flow — **Sampling → Samples → Sample processing →
-Data generation → Data processing → Data products** — with `biological_entity` shown
-as a satellite linked in by `biological_entity_ref`/`strain_ref`, and supporting lanes
+Data generation → Data processing → Data products** — with `organism` shown
+as a satellite linked in by `organism_ref`/`strain_ref`, and supporting lanes
 (Methods, Value tables, Reference/embedded) below. Colour encodes the inheritance
 family / process stage. Within each column, classes nest by `is_a` (dashed border =
 abstract base, solid = concrete).
@@ -64,7 +64,7 @@ gen-viz:
 
 An animated walkthrough of how one **AMP2 96-well plate submission** travels through
 the API, from the web uploader to stored, queryable records. Built around the classes
-in [`media_strain_culture_plate.yaml`](../src/analysis_api_schema/schema/media_strain_culture_plate.yaml)
+in [`media_strain_culture_plate.yaml`](../src/basalt_schema/schema/media_strain_culture_plate.yaml)
 and grounded in the worked example under
 [`src/data/examples`](../src/data/examples) (two strains, two media batches, 96 wells,
 five OD₆₀₀ timepoints).
@@ -79,7 +79,7 @@ scrubber. Light/dark theme aware.
 2. **Parse** — each file/column maps onto a LinkML class and slot.
 3. **Validate** — `linkml-validate` enforces enums, required fields, foreign keys,
    patterns and unique keys (the example carries six seeded violations).
-4. **Identity** — strain rows become `biological_entity` records.
+4. **Identity** — strain rows become `organism` records.
 5. **Lab lifecycle** — the `SampleProcessing` chain (MediaPreparation → cultures),
    each activity emitting a `ProcessedSample`.
 6. **Plate setup** — `AMP2PlateSetupActivity` / `AMP2WellMetadata` lay out the 96 wells.

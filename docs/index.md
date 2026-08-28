@@ -1,7 +1,6 @@
-# About
-# NAME PLACEHOLDER Schema
+# BASALT Schema
 
-**NAME PLACEHOLDER schema** is a comprehensive schema for representing multimodal environmental and microbiological analysis data, including soil characterization and high-throughput microbial culture workflows. It supports diverse experimental techniques including mass spectrometry, metagenomics sequencing, X-ray fluorescence/diffraction, and 96-well plate-based growth assays. It is a production model in ongoing development to support the open, user-driven science the [Environmental Molecular Sciences Laboratory](https://www.emsl.pnnl.gov/) (EMSL).
+**BASALT** (Broad Analytical Schema for Samples and Laboratory Techniques) is a comprehensive schema for representing multimodal environmental and microbiological analysis data, including soil characterization and high-throughput microbial culture workflows. It supports diverse experimental techniques including mass spectrometry, metagenomics sequencing, X-ray fluorescence/diffraction, and 96-well plate-based growth assays. It is a production model in ongoing development to support the open, user-driven science the [Environmental Molecular Sciences Laboratory](https://www.emsl.pnnl.gov/) (EMSL).
 
 **NOTE:** This schema is under active development and integrates metadata standards from multiple collaborating institutions (EMSL, GLBRC, NMDC, and more). Some areas are marked with TODOs for future refinement.
 
@@ -19,7 +18,7 @@ All entities are stored in flat collections linked to studies:
 
 - **Samples**: Physical specimens submitted for analysis (soil, aerosol, user-submitted microbial cultures). Each sample includes collection metadata, storage conditions, and analysis type specifications.
 
-- **Biological Entities**: Reference data representing biological identities (strains, isolates, engineered constructs) that can be instantiated by multiple physical samples. This separates the "what" (strain identity) from the "this tube" (physical sample).
+- **Organisms**: Reference data representing biological identities (strains, isolates, engineered constructs) that can be instantiated by multiple physical samples. This separates the "what" (strain identity) from the "this tube" (physical sample).
 
 - **Processed Samples**: Samples that have undergone laboratory processing—subsampling, extraction, digestion, or culture growth. These form chains linking back to original samples.
 
@@ -99,6 +98,8 @@ Many-to-many relationships are represented via explicit association tables:
 
 - **Workflow Associations**: Links functional annotations and other outputs to workflow executions
 
+## LAMBDA-BER Schema
+This is an externally-developed schema, linked via the sidebar and with separate versioning, used for multimodal structural biology imaging data. The bridging concept between that schema and BASALT is the `study` class ([link to LAMBDA-BER.study](https://lambda-ber.github.io/lambda-ber-schema/elements/Study/), [link to BASALT.study](https://emsl-computing.github.io/BASALT-Schema/elements/Study/)).
 
 ## Contacts
 - Yuri Corilo (corilo@pnnl.gov)

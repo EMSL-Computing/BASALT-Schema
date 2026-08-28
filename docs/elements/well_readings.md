@@ -15,7 +15,7 @@ _typed via LinkML inlined class._
 
 
 
-URI: [analysis_api_schema:well_readings](https://w3id.org/MONet/analysis-api-schema/well_readings)
+URI: [basalt_schema:well_readings](https://emsl-computing.github.io/BASALT-Schema/elements/well_readings)
 Alias: well_readings
 
 <!-- no inheritance hierarchy -->
@@ -29,8 +29,8 @@ Alias: well_readings
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [PlateProduct](PlateProduct.md) | Abstract base for plate measurement data products |  no  |
-| [AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |  no  |
 | [EcoplateAbsorbanceProduct](EcoplateAbsorbanceProduct.md) | Ecoplate absorbance measurement product |  no  |
+| [AMP2ODProduct](AMP2ODProduct.md) | AMP2 optical density measurement product |  no  |
 
 
 
@@ -74,7 +74,7 @@ Alias: well_readings
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -83,8 +83,8 @@ Alias: well_readings
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:well_readings |
-| native | analysis_api_schema:well_readings |
+| self | basalt_schema:well_readings |
+| native | basalt_schema:well_readings |
 
 
 
@@ -104,7 +104,7 @@ description: 'Structured per-well measurement data array.
 todos:
 - decide how to represent in backend (normalized child table with FK to PlateSetupActivity,
   array column, or other)
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: well_readings
 domain_of:

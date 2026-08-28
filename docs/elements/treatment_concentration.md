@@ -9,7 +9,7 @@ _Treatment concentration with unit (e.g. "1.0 pct", "10 mM")_
 
 
 
-URI: [analysis_api_schema:treatment_concentration](https://w3id.org/MONet/analysis-api-schema/treatment_concentration)
+URI: [basalt_schema:treatment_concentration](https://emsl-computing.github.io/BASALT-Schema/elements/treatment_concentration)
 Alias: treatment_concentration
 
 <!-- no inheritance hierarchy -->
@@ -68,7 +68,7 @@ Alias: treatment_concentration
 ### Schema Source
 
 
-* from schema: https://w3id.org/MONet/analysis-api-schema
+* from schema: https://emsl-computing.github.io/BASALT-Schema
 
 
 
@@ -77,8 +77,8 @@ Alias: treatment_concentration
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | analysis_api_schema:treatment_concentration |
-| native | analysis_api_schema:treatment_concentration |
+| self | basalt_schema:treatment_concentration |
+| native | basalt_schema:treatment_concentration |
 
 
 
@@ -89,7 +89,7 @@ Alias: treatment_concentration
 ```yaml
 name: treatment_concentration
 description: Treatment concentration with unit (e.g. "1.0 pct", "10 mM")
-from_schema: https://w3id.org/MONet/analysis-api-schema
+from_schema: https://emsl-computing.github.io/BASALT-Schema
 rank: 1000
 alias: treatment_concentration
 owner: EcoplateWellMetadata
