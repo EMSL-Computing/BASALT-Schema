@@ -109,6 +109,9 @@ for c in materialized.classes:
                     val = materialized.classes[c].attributes[s].annotations[a].value
                     materialized.classes[c].attributes[s][f'{prop}'] = val
 
+# Remove internal only slots
+internal_only_slots = ["lims_barcode", "emsl_activity"]
+
 # Dump to file so JSONschema generator works better
 materialized_schema_path = Path("./src/analysis_api_schema/schema/temp_compiled_sample_classes.materialized.yaml")
 YAMLDumper().dump(materialized, materialized_schema_path)
