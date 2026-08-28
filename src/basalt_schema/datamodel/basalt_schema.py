@@ -1435,6 +1435,8 @@ class ProcessingSampleLink(YAMLRoot):
     Direction is carried by role:
     role = input_sample   ->  sample_id was consumed by processing_id
     role = output_sample  ->  sample_id (a ProcessedSample) was produced by it
+    role = input_sample   ->  sample_id was consumed by processing_id
+    role = output_sample  ->  sample_id (a ProcessedSample) was produced by it
 
     A minimal step is therefore two rows: one input edge and one output edge.
     Because role is per-row rather than per-activity, fan-in and fan-out are
@@ -3248,8 +3250,8 @@ class AMP2WellMetadata(WellMetadata):
     position: str = None
     media_volume_ul: float = None
     inoculum_volume_ul: float = None
+    sample_id: Optional[Union[str, SampleId]] = None
     media_ref: Optional[Union[str, ProcessedSampleId]] = None
-    sample_id: Optional[str] = None
     treatments: Optional[Union[str, list[str]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -3263,11 +3265,11 @@ class AMP2WellMetadata(WellMetadata):
         if not isinstance(self.inoculum_volume_ul, float):
             self.inoculum_volume_ul = float(self.inoculum_volume_ul)
 
+        if self.sample_id is not None and not isinstance(self.sample_id, SampleId):
+            self.sample_id = SampleId(self.sample_id)
+
         if self.media_ref is not None and not isinstance(self.media_ref, ProcessedSampleId):
             self.media_ref = ProcessedSampleId(self.media_ref)
-
-        if self.sample_id is not None and not isinstance(self.sample_id, str):
-            self.sample_id = str(self.sample_id)
 
         if not isinstance(self.treatments, list):
             self.treatments = [self.treatments] if self.treatments is not None else []
@@ -17297,9 +17299,6 @@ slots.aMP2WellMetadata__media_volume_ul = Slot(uri=BASALT_SCHEMA.media_volume_ul
 
 slots.aMP2WellMetadata__inoculum_volume_ul = Slot(uri=BASALT_SCHEMA.inoculum_volume_ul, name="aMP2WellMetadata__inoculum_volume_ul", curie=BASALT_SCHEMA.curie('inoculum_volume_ul'),
                    model_uri=BASALT_SCHEMA.aMP2WellMetadata__inoculum_volume_ul, domain=None, range=float)
-
-slots.aMP2WellMetadata__sample_id = Slot(uri=BASALT_SCHEMA.sample_id, name="aMP2WellMetadata__sample_id", curie=BASALT_SCHEMA.curie('sample_id'),
-                   model_uri=BASALT_SCHEMA.aMP2WellMetadata__sample_id, domain=None, range=Optional[str])
 
 slots.aMP2WellMetadata__treatments = Slot(uri=BASALT_SCHEMA.treatments, name="aMP2WellMetadata__treatments", curie=BASALT_SCHEMA.curie('treatments'),
                    model_uri=BASALT_SCHEMA.aMP2WellMetadata__treatments, domain=None, range=Optional[Union[str, list[str]]])

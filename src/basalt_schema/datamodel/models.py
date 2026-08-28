@@ -2961,6 +2961,7 @@ class AMP2WellMetadata(WellMetadata):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate'})
 
+    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata', 'MetagenomicsProduct', 'ProcessedData']} })
     media_ref: Optional[str] = Field(default=None, alias="media_ref", description="""FK to the prepared media processedSample used in this well.
 NULL -> fall back to plate-level AMP2PlateSetupActivity.media_ref.
 Non-null -> this well uses a different media batch.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2PlateSetupActivity', 'AMP2WellMetadata']} })
@@ -34719,6 +34720,8 @@ class ProcessingSampleLink(ConfiguredBaseModel):
     Direction is carried by role:
       role = input_sample   ->  sample_id was consumed by processing_id
       role = output_sample  ->  sample_id (a ProcessedSample) was produced by it
+      role = input_sample   ->  sample_id was consumed by processing_id
+      role = output_sample  ->  sample_id (a ProcessedSample) was produced by it
 
     A minimal step is therefore two rows: one input edge and one output edge.
     Because role is per-row rather than per-activity, fan-in and fan-out are
@@ -34736,6 +34739,7 @@ class ProcessingSampleLink(ConfiguredBaseModel):
                       'validation rule.'],
          'from_schema': 'https://emsl-computing.github.io/BASALT-Schema',
          'unique_keys': {'unique_sample_process_step': {'unique_key_name': 'unique_sample_process_step',
+                                                        'unique_key_slots': ['sample_id',
                                                         'unique_key_slots': ['sample_id',
                                                                              'processing_id',
                                                                              'step_number',
@@ -34820,6 +34824,7 @@ class ProcessingSampleLink(ConfiguredBaseModel):
                        'ProcessingSampleLink']} })
     processing_id: str = Field(default=..., alias="processing_id", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink']} })
     step_number: int = Field(default=..., alias="step_number", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink']} })
+    role: SampleRole = Field(default=..., alias="role", description="""Whether sample_id was consumed by (input_sample) or produced by (output_sample) processing_id.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink', 'ProjectParticipant']} })
     role: SampleRole = Field(default=..., alias="role", description="""Whether sample_id was consumed by (input_sample) or produced by (output_sample) processing_id.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessingSampleLink', 'ProjectParticipant']} })
 
 

@@ -413,6 +413,8 @@ to disagree.
 Direction is carried by role:
   role = input_sample   ->  sample_id was consumed by processing_id
   role = output_sample  ->  sample_id (a ProcessedSample) was produced by it
+  role = input_sample   ->  sample_id was consumed by processing_id
+  role = output_sample  ->  sample_id (a ProcessedSample) was produced by it
 
 A minimal step is therefore two rows: one input edge and one output edge.
 Because role is per-row rather than per-activity, fan-in and fan-out are
@@ -437,6 +439,7 @@ SampleProcessingRun.
     
     # Unique constraints
     __table_args__ = (
+        UniqueConstraint('sample_id', 'processing_id', 'step_number', 'role'),
         UniqueConstraint('sample_id', 'processing_id', 'step_number', 'role'),
     )
     
@@ -2852,10 +2855,10 @@ the activity's media_ref slot.  Per-well data is volumes and replicate info.
     __tablename__ = 'AMP2WellMetadata'
 
     id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    sample_id = Column(UUID(), ForeignKey('Sample.id'))
     media_ref = Column(UUID(), ForeignKey('ProcessedSample.id'))
     media_volume_ul = Column(Float(), nullable=False )
     inoculum_volume_ul = Column(Float(), nullable=False )
-    sample_id = Column(Text())
     position = Column(Text(), nullable=False )
     well_type = Column(Text())
     replicate_group = Column(Text())
@@ -2869,7 +2872,7 @@ the activity's media_ref slot.  Per-well data is volumes and replicate info.
     
 
     def __repr__(self):
-        return f"AMP2WellMetadata(id={self.id},media_ref={self.media_ref},media_volume_ul={self.media_volume_ul},inoculum_volume_ul={self.inoculum_volume_ul},sample_id={self.sample_id},position={self.position},well_type={self.well_type},replicate_group={self.replicate_group},)"
+        return f"AMP2WellMetadata(id={self.id},sample_id={self.sample_id},media_ref={self.media_ref},media_volume_ul={self.media_volume_ul},inoculum_volume_ul={self.inoculum_volume_ul},position={self.position},well_type={self.well_type},replicate_group={self.replicate_group},)"
 
 
 

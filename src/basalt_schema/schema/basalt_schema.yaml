@@ -427,9 +427,6 @@ classes:
       id:
         identifier: true
         range: uuid
-      sample_id:
-        range: Sample
-        required: true
       processing_id:
         range: SampleProcessing
         required: true
