@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-21T09:16:07
+# Generation date: 2026-08-28T08:00:47
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -177,6 +177,14 @@ class XRFDataGenerationActivityId(XRayDataGenerationActivityId):
 
 
 class XRDDataGenerationActivityId(XRayDataGenerationActivityId):
+    pass
+
+
+class XASDataGenerationActivityId(XRayDataGenerationActivityId):
+    pass
+
+
+class XASLCFDataProcessingActivityId(DataProcessingActivityId):
     pass
 
 
@@ -369,6 +377,14 @@ class XRFElementalProductId(XRayDataProductId):
 
 
 class XRDPhaseProductId(XRayDataProductId):
+    pass
+
+
+class XASInstrumentDataId(InstrumentDataId):
+    pass
+
+
+class XASLCFProductId(XRayDataProductId):
     pass
 
 
@@ -855,7 +871,7 @@ class InstrumentData(DataProduct):
 class SitePhoto(DataProduct):
     """
     A data product representing a photo of a site, typically taken during sampling.
-    One row per photo with metadata about the photo type and when it was taken.
+    Carries metadata about the photo type and when it was taken.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -1539,9 +1555,10 @@ class WorkflowExecutionFunctionalAnnotation(YAMLRoot):
 @dataclass(repr=False)
 class XRayDataGenerationActivity(DataGenerationActivity):
     """
-    Abstract base class for X-ray analytical methods including XRF (elemental)
-    and XRD (mineralogical) analysis. Inherits acquisition_time, instrument_id,
-    protocol_url, analyte_id, and other core metadata from DataGenerationActivity.
+    Abstract base class for X-ray analytical methods including XRF (elemental),
+    XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits
+    acquisition_start_time, acquisition_end_time, instrument_used, protocol_url,
+    analyte_id, and other core metadata from DataGenerationActivity.
 
     Concrete subclasses define method-specific measurement parameters.
     Future X-ray methods (e.g., XCT) can extend this class.
@@ -1549,6 +1566,8 @@ class XRayDataGenerationActivity(DataGenerationActivity):
     Shared patterns:
     - Direct instrument output (no computational workflow) is typical for XRF
     - XRD may optionally link to DataProcessingActivity for Rietveld refinement
+    - XAS acquires raw sweep files as XASInstrumentData, which are later fitted
+    by an XASLCFDataProcessingActivity to yield an XASLCFProduct
     - protocol_url should link to vendor SOP or EMSL internal protocol documentation
     """
     _inherited_slots: ClassVar[list[str]] = []
@@ -1570,7 +1589,7 @@ class XRFDataGenerationActivity(XRayDataGenerationActivity):
     from a sample bombarded with high-energy X-rays. Typical output: concentrations
     of 10-30 elements per sample (Ni, Pb, As, Cr, Fe, Ca, K, etc.).
 
-    Data product: XRFElementalProduct (one row per element per sample)
+    Data product: XRFElementalProduct
 
     Workflow pattern: Direct instrument output (no computational processing step)
     processedSample -> XRFDataGenerationActivity -> XRFElementalProduct (workflow_id = NULL)
@@ -1615,7 +1634,7 @@ class XRDDataGenerationActivity(XRayDataGenerationActivity):
     XRD identifies crystalline mineral phases by measuring diffraction patterns.
     Output: mineral phase names and quantitative abundances (weight %).
 
-    Data product: XRDPhaseProduct (one row per mineral phase per sample)
+    Data product: XRDPhaseProduct
 
     Workflow patterns:
     1. Direct/semi-quantitative:
@@ -1652,6 +1671,301 @@ class XRDDataGenerationActivity(XRayDataGenerationActivity):
             self.MissingRequiredField("id")
         if not isinstance(self.id, XRDDataGenerationActivityId):
             self.id = XRDDataGenerationActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class XASDataGenerationActivity(XRayDataGenerationActivity):
+    """
+    X-ray Absorption Spectroscopy (XAS) acquisition activity.
+    Represents one beamline measurement session for a sample.
+
+    Unlike XRF and XRD, acquisition does not yield a product directly: each
+    sweep is captured as XASInstrumentData, and an XASLCFDataProcessingActivity
+    fits those sweeps to produce an XASLCFProduct.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XASDataGenerationActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XASDataGenerationActivity"
+    class_name: ClassVar[str] = "XASDataGenerationActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XASDataGenerationActivity
+
+    id: Union[str, XASDataGenerationActivityId] = None
+    name: str = None
+    facility: Optional[str] = None
+    beamline: Optional[str] = None
+    ring_energy_gev: Optional[float] = None
+    ring_current_ma: Optional[float] = None
+    insertion_device: Optional[str] = None
+    element: Optional[str] = None
+    edge: Optional[str] = None
+    reference_material: Optional[str] = None
+    xas_sample_type: Optional[str] = None
+    sample_format: Optional[str] = None
+    sample_holder: Optional[str] = None
+    sample_temperature_k: Optional[float] = None
+    sample_orientation_deg: Optional[float] = None
+    sample_detector_distance_mm: Optional[float] = None
+    sample_doi: Optional[str] = None
+    crystal: Optional[str] = None
+    crystal_cut: Optional[str] = None
+    crystal_detune_pct: Optional[float] = None
+    mono_angle_deg: Optional[float] = None
+    mono_2nd_xtal_mm: Optional[float] = None
+    mono_energy_motor_ev: Optional[float] = None
+    mono_energy_encoder_ev: Optional[float] = None
+    mirror_angle_mrad: Optional[float] = None
+    m0_coating: Optional[str] = None
+    m0_cutoff_kev: Optional[float] = None
+    m1_coating: Optional[str] = None
+    inhutch_mirror_coating: Optional[str] = None
+    inhutch_mirror_cutoff_kev: Optional[float] = None
+    slit_size_h_um: Optional[float] = None
+    slit_size_v_um: Optional[float] = None
+    slit_center_h: Optional[float] = None
+    slit_center_v: Optional[float] = None
+    beam_attenuation_um: Optional[float] = None
+    beam_attenuation_material: Optional[str] = None
+    fy_electronics: Optional[str] = None
+    fy_channel_num: Optional[int] = None
+    fy_element: Optional[str] = None
+    fy_transition: Optional[str] = None
+    user_comment: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, XASDataGenerationActivityId):
+            self.id = XASDataGenerationActivityId(self.id)
+
+        if self.facility is not None and not isinstance(self.facility, str):
+            self.facility = str(self.facility)
+
+        if self.beamline is not None and not isinstance(self.beamline, str):
+            self.beamline = str(self.beamline)
+
+        if self.ring_energy_gev is not None and not isinstance(self.ring_energy_gev, float):
+            self.ring_energy_gev = float(self.ring_energy_gev)
+
+        if self.ring_current_ma is not None and not isinstance(self.ring_current_ma, float):
+            self.ring_current_ma = float(self.ring_current_ma)
+
+        if self.insertion_device is not None and not isinstance(self.insertion_device, str):
+            self.insertion_device = str(self.insertion_device)
+
+        if self.element is not None and not isinstance(self.element, str):
+            self.element = str(self.element)
+
+        if self.edge is not None and not isinstance(self.edge, str):
+            self.edge = str(self.edge)
+
+        if self.reference_material is not None and not isinstance(self.reference_material, str):
+            self.reference_material = str(self.reference_material)
+
+        if self.xas_sample_type is not None and not isinstance(self.xas_sample_type, str):
+            self.xas_sample_type = str(self.xas_sample_type)
+
+        if self.sample_format is not None and not isinstance(self.sample_format, str):
+            self.sample_format = str(self.sample_format)
+
+        if self.sample_holder is not None and not isinstance(self.sample_holder, str):
+            self.sample_holder = str(self.sample_holder)
+
+        if self.sample_temperature_k is not None and not isinstance(self.sample_temperature_k, float):
+            self.sample_temperature_k = float(self.sample_temperature_k)
+
+        if self.sample_orientation_deg is not None and not isinstance(self.sample_orientation_deg, float):
+            self.sample_orientation_deg = float(self.sample_orientation_deg)
+
+        if self.sample_detector_distance_mm is not None and not isinstance(self.sample_detector_distance_mm, float):
+            self.sample_detector_distance_mm = float(self.sample_detector_distance_mm)
+
+        if self.sample_doi is not None and not isinstance(self.sample_doi, str):
+            self.sample_doi = str(self.sample_doi)
+
+        if self.crystal is not None and not isinstance(self.crystal, str):
+            self.crystal = str(self.crystal)
+
+        if self.crystal_cut is not None and not isinstance(self.crystal_cut, str):
+            self.crystal_cut = str(self.crystal_cut)
+
+        if self.crystal_detune_pct is not None and not isinstance(self.crystal_detune_pct, float):
+            self.crystal_detune_pct = float(self.crystal_detune_pct)
+
+        if self.mono_angle_deg is not None and not isinstance(self.mono_angle_deg, float):
+            self.mono_angle_deg = float(self.mono_angle_deg)
+
+        if self.mono_2nd_xtal_mm is not None and not isinstance(self.mono_2nd_xtal_mm, float):
+            self.mono_2nd_xtal_mm = float(self.mono_2nd_xtal_mm)
+
+        if self.mono_energy_motor_ev is not None and not isinstance(self.mono_energy_motor_ev, float):
+            self.mono_energy_motor_ev = float(self.mono_energy_motor_ev)
+
+        if self.mono_energy_encoder_ev is not None and not isinstance(self.mono_energy_encoder_ev, float):
+            self.mono_energy_encoder_ev = float(self.mono_energy_encoder_ev)
+
+        if self.mirror_angle_mrad is not None and not isinstance(self.mirror_angle_mrad, float):
+            self.mirror_angle_mrad = float(self.mirror_angle_mrad)
+
+        if self.m0_coating is not None and not isinstance(self.m0_coating, str):
+            self.m0_coating = str(self.m0_coating)
+
+        if self.m0_cutoff_kev is not None and not isinstance(self.m0_cutoff_kev, float):
+            self.m0_cutoff_kev = float(self.m0_cutoff_kev)
+
+        if self.m1_coating is not None and not isinstance(self.m1_coating, str):
+            self.m1_coating = str(self.m1_coating)
+
+        if self.inhutch_mirror_coating is not None and not isinstance(self.inhutch_mirror_coating, str):
+            self.inhutch_mirror_coating = str(self.inhutch_mirror_coating)
+
+        if self.inhutch_mirror_cutoff_kev is not None and not isinstance(self.inhutch_mirror_cutoff_kev, float):
+            self.inhutch_mirror_cutoff_kev = float(self.inhutch_mirror_cutoff_kev)
+
+        if self.slit_size_h_um is not None and not isinstance(self.slit_size_h_um, float):
+            self.slit_size_h_um = float(self.slit_size_h_um)
+
+        if self.slit_size_v_um is not None and not isinstance(self.slit_size_v_um, float):
+            self.slit_size_v_um = float(self.slit_size_v_um)
+
+        if self.slit_center_h is not None and not isinstance(self.slit_center_h, float):
+            self.slit_center_h = float(self.slit_center_h)
+
+        if self.slit_center_v is not None and not isinstance(self.slit_center_v, float):
+            self.slit_center_v = float(self.slit_center_v)
+
+        if self.beam_attenuation_um is not None and not isinstance(self.beam_attenuation_um, float):
+            self.beam_attenuation_um = float(self.beam_attenuation_um)
+
+        if self.beam_attenuation_material is not None and not isinstance(self.beam_attenuation_material, str):
+            self.beam_attenuation_material = str(self.beam_attenuation_material)
+
+        if self.fy_electronics is not None and not isinstance(self.fy_electronics, str):
+            self.fy_electronics = str(self.fy_electronics)
+
+        if self.fy_channel_num is not None and not isinstance(self.fy_channel_num, int):
+            self.fy_channel_num = int(self.fy_channel_num)
+
+        if self.fy_element is not None and not isinstance(self.fy_element, str):
+            self.fy_element = str(self.fy_element)
+
+        if self.fy_transition is not None and not isinstance(self.fy_transition, str):
+            self.fy_transition = str(self.fy_transition)
+
+        if self.user_comment is not None and not isinstance(self.user_comment, str):
+            self.user_comment = str(self.user_comment)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class XASLCFDataProcessingActivity(DataProcessingActivity):
+    """
+    Athena or Larch Linear Combination Fitting (LCF) processing activity for
+    XAS data. One instance represents a single .lcf fit run.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XASLCFDataProcessingActivity"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XASLCFDataProcessingActivity"
+    class_name: ClassVar[str] = "XASLCFDataProcessingActivity"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XASLCFDataProcessingActivity
+
+    id: Union[str, XASLCFDataProcessingActivityId] = None
+    started_at_time: Union[str, XSDDateTime] = None
+    uses_xas_raw_data: Optional[Union[Union[str, XASInstrumentDataId], list[Union[str, XASInstrumentDataId]]]] = empty_list()
+    xas_filename: Optional[str] = None
+    lcf_type: Optional[Union[str, "XASLCFType"]] = None
+    run_label: Optional[str] = None
+    fit_label: Optional[str] = None
+    analysis_code: Optional[str] = None
+    sample_nor_file: Optional[str] = None
+    fit_range_min: Optional[float] = None
+    fit_range_max: Optional[float] = None
+    fit_range_unit: Optional[str] = None
+    n_data_points: Optional[int] = None
+    n_variables: Optional[int] = None
+    n_standards: Optional[int] = None
+    weights_sum_to_1: Optional[str] = None
+    weights_bounded: Optional[str] = None
+    e0_shift_used: Optional[str] = None
+    noise_added: Optional[float] = None
+    r_factor: Optional[float] = None
+    chi_square: Optional[float] = None
+    reduced_chi_square: Optional[float] = None
+    weights_sum: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, XASLCFDataProcessingActivityId):
+            self.id = XASLCFDataProcessingActivityId(self.id)
+
+        if not isinstance(self.uses_xas_raw_data, list):
+            self.uses_xas_raw_data = [self.uses_xas_raw_data] if self.uses_xas_raw_data is not None else []
+        self.uses_xas_raw_data = [v if isinstance(v, XASInstrumentDataId) else XASInstrumentDataId(v) for v in self.uses_xas_raw_data]
+
+        if self.xas_filename is not None and not isinstance(self.xas_filename, str):
+            self.xas_filename = str(self.xas_filename)
+
+        if self.lcf_type is not None and not isinstance(self.lcf_type, XASLCFType):
+            self.lcf_type = XASLCFType(self.lcf_type)
+
+        if self.run_label is not None and not isinstance(self.run_label, str):
+            self.run_label = str(self.run_label)
+
+        if self.fit_label is not None and not isinstance(self.fit_label, str):
+            self.fit_label = str(self.fit_label)
+
+        if self.analysis_code is not None and not isinstance(self.analysis_code, str):
+            self.analysis_code = str(self.analysis_code)
+
+        if self.sample_nor_file is not None and not isinstance(self.sample_nor_file, str):
+            self.sample_nor_file = str(self.sample_nor_file)
+
+        if self.fit_range_min is not None and not isinstance(self.fit_range_min, float):
+            self.fit_range_min = float(self.fit_range_min)
+
+        if self.fit_range_max is not None and not isinstance(self.fit_range_max, float):
+            self.fit_range_max = float(self.fit_range_max)
+
+        if self.fit_range_unit is not None and not isinstance(self.fit_range_unit, str):
+            self.fit_range_unit = str(self.fit_range_unit)
+
+        if self.n_data_points is not None and not isinstance(self.n_data_points, int):
+            self.n_data_points = int(self.n_data_points)
+
+        if self.n_variables is not None and not isinstance(self.n_variables, int):
+            self.n_variables = int(self.n_variables)
+
+        if self.n_standards is not None and not isinstance(self.n_standards, int):
+            self.n_standards = int(self.n_standards)
+
+        if self.weights_sum_to_1 is not None and not isinstance(self.weights_sum_to_1, str):
+            self.weights_sum_to_1 = str(self.weights_sum_to_1)
+
+        if self.weights_bounded is not None and not isinstance(self.weights_bounded, str):
+            self.weights_bounded = str(self.weights_bounded)
+
+        if self.e0_shift_used is not None and not isinstance(self.e0_shift_used, str):
+            self.e0_shift_used = str(self.e0_shift_used)
+
+        if self.noise_added is not None and not isinstance(self.noise_added, float):
+            self.noise_added = float(self.noise_added)
+
+        if self.r_factor is not None and not isinstance(self.r_factor, float):
+            self.r_factor = float(self.r_factor)
+
+        if self.chi_square is not None and not isinstance(self.chi_square, float):
+            self.chi_square = float(self.chi_square)
+
+        if self.reduced_chi_square is not None and not isinstance(self.reduced_chi_square, float):
+            self.reduced_chi_square = float(self.reduced_chi_square)
+
+        if self.weights_sum is not None and not isinstance(self.weights_sum, float):
+            self.weights_sum = float(self.weights_sum)
 
         super().__post_init__(**kwargs)
 
@@ -2821,7 +3135,6 @@ class PlateProduct(YAMLRoot):
 class AMP2ODProduct(PlateProduct):
     """
     AMP2 optical density measurement product.
-    One row per plate × timepoint.
     processedData.type = 'amp2_od'
 
     v1 origin: plate-general.yaml AMP2ODProduct
@@ -2848,7 +3161,6 @@ class AMP2ODProduct(PlateProduct):
 class EcoplateAbsorbanceProduct(PlateProduct):
     """
     Ecoplate absorbance measurement product.
-    One row per plate × timepoint.
     processedData.type = 'ecoplate_absorbance'
 
     v1 origin: plate-general.yaml EcoplateAbsorbanceProduct
@@ -3258,7 +3570,6 @@ class MetagenomicsDataProcessingActivity(DataProcessingActivity):
 class BulkDensityProduct(ProcessedData):
     """
     Bulk density analysis product, typically derived via oven-drying and weighing of a known volume of soil.
-    One row per sample with columns for bulk density and QC flag.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -3296,7 +3607,6 @@ class BulkDensityProduct(ProcessedData):
 class ElementalAnalysisProduct(ProcessedData):
     """
     Elemental analysis product, typically derived via combustion or similar instrument.
-    One row per sample with columns for total carbon, total nitrogen, total Kjeldahl nitrogen, and total sulfur.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     _inherited_slots: ClassVar[list[str]] = []
@@ -3359,7 +3669,6 @@ class ElementalAnalysisProduct(ProcessedData):
 class EnzymeProduct(ProcessedData):
     """
     Enzyme activity analysis product, typically derived via colorimetric assay of soil extracts.
-    One row per sample with columns for beta-glucosidase activity and QC flag.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -3398,7 +3707,6 @@ class GWCMoistureProduct(ProcessedData):
     """
     Gravimetric water content (GWC) analysis product, typically derived via oven-drying and weighing of a known mass
     of soil.
-    One row per sample with columns for GWC and QC flag.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -3435,9 +3743,8 @@ class GWCMoistureProduct(ProcessedData):
 @dataclass(repr=False)
 class HydraulicPropertiesProduct(ProcessedData):
     """
-    Soil hydraulic parameters derived from HYPROP evaporation-experiment data. One row per core section; the four
-    attributes are the four VGM model parameters. Proposal_ID, sampling_set, and core_section are inherited from the
-    parent processedData record.
+    Soil hydraulic parameters derived from HYPROP evaporation-experiment data. The four attributes are the four VGM
+    model parameters. Proposal_ID, sampling_set, and core_section are inherited from the parent processedData record.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -3487,7 +3794,6 @@ class HydraulicPropertiesProduct(ProcessedData):
 class IonsAnalysisProduct(ProcessedData):
     """
     Ions analysis product, typically derived via ICP-OES or similar instrument.
-    One row per sample with columns for each ion measured.
     Individual QC flags for each ion using ProcessedDataFlag enum.
     """
     _inherited_slots: ClassVar[list[str]] = []
@@ -3615,7 +3921,6 @@ class MAOMProduct(YAMLRoot):
     """
     Mineral-Associated Organic Matter (MAOM) analysis product, typically derived via HCl extraction and TOC/TN
     measurement.
-    One row per sample with columns for total organic carbon and total nitrogen.
     Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED TO HClExtOMProduct
     """
     _inherited_slots: ClassVar[list[str]] = []
@@ -3681,7 +3986,6 @@ class MicrobialBiomassProduct(ProcessedData):
     """
     Microbial biomass analysis product, typically derived via chloroform fumigation-extraction (CFE) or similar
     instrument.
-    One row per sample with columns for microbial biomass carbon and nitrogen.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     _inherited_slots: ClassVar[list[str]] = []
@@ -3748,7 +4052,6 @@ class MicrobialBiomassProduct(ProcessedData):
 class NitrogenAnalysisProduct(ProcessedData):
     """
     Nitrogen analysis product, typically derived via colorimetric assay of soil extracts.
-    One row per sample with columns for nitrate and ammonium concentrations.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     _inherited_slots: ClassVar[list[str]] = []
@@ -3815,7 +4118,6 @@ class NitrogenAnalysisProduct(ProcessedData):
 class PhosphorusAnalysisProduct(ProcessedData):
     """
     Phosphorus analysis product, typically derived via colorimetric assay of soil extracts.
-    One row per sample with columns for phosphorus concentration.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     _inherited_slots: ClassVar[list[str]] = []
@@ -3870,7 +4172,6 @@ class PhosphorusAnalysisProduct(ProcessedData):
 class RespirationProduct(ProcessedData):
     """
     Soil respiration analysis product.
-    One row per sample with columns for soil respiration and QC flag.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -3908,7 +4209,6 @@ class RespirationProduct(ProcessedData):
 class TextureProduct(ProcessedData):
     """
     Soil texture analysis product, typically derived via hydrometer or similar instrument.
-    One row per sample with columns for sand, silt, and clay percentages.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     _inherited_slots: ClassVar[list[str]] = []
@@ -3955,7 +4255,6 @@ class TextureProduct(ProcessedData):
 class TomographyProduct(ProcessedData):
     """
     Soil tomography analysis product, typically derived via X-ray computed tomography (XCT) or similar instrument.
-    One row per sample with columns for pore structure metrics and QC flag.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -4066,7 +4365,6 @@ class WEOMProduct(YAMLRoot):
     """
     Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar
     instrument.
-    One row per sample with columns for total organic carbon and total nitrogen.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     _inherited_slots: ClassVar[list[str]] = []
@@ -4131,7 +4429,6 @@ class WEOMProduct(YAMLRoot):
 class PHProduct(ProcessedData):
     """
     Soil pH analysis product, typically derived via pH meter or similar instrument.
-    One row per sample with columns for pH and QC flag.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -4172,16 +4469,19 @@ class XRayDataProduct(ProcessedData):
     Inherits S3 storage metadata and sample linkage from dataProduct via ProcessedData.
 
     Concrete subclasses:
-    - XRFElementalProduct: elemental concentrations (one row per sample)
-    - XRDPhaseProduct: mineral phases (one row per sample)
+    - XRFElementalProduct: elemental concentrations
+    - XRDPhaseProduct: mineral phases
+    - XASLCFProduct: linear combination fitting results
 
     Common patterns:
-    - s3_key points to raw spectrum/diffractogram file in MinIO
+    - s3_key points to the raw or processed X-ray data file in MinIO
     - summary_metrics provides lightweight queryable summaries:
     XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
     XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
-    - workflow_id is NULL for direct instrument output (XRF typical)
-    - workflow_id links to DataProcessingActivity for computational processing (XRD Rietveld)
+    XAS: {"r_factor":0.000975, "lcf_type":"XANES", "n_standards":3}
+    - direct outputs may not have a processing link (XRF typical)
+    - computational outputs should use a typed processing reference slot
+    (XRD Rietveld refinement, XAS LCF fitting)
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -4198,7 +4498,6 @@ class XRayDataProduct(ProcessedData):
 class XRFElementalProduct(XRayDataProduct):
     """
     X-ray Fluorescence (XRF) elemental concentration data.
-    One row per sample with columns for each element measured.
 
     Follows the wide-format pattern established by IonsAnalysisProduct.
     Element concentrations in mg/kg (parts per million dry weight basis) as float values.
@@ -4207,7 +4506,7 @@ class XRFElementalProduct(XRayDataProduct):
     Relationship to core tables:
     - id: FK -> processedData.id (1:1 linkage)
     - processedData.type = 'XRFElementalProduct'
-    - processedData.workflow_id = NULL (direct acquisition; no computational WEA)
+    - direct acquisition; no computational processing link required
     - processedData.summary_metrics = {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, ...}
     - processedData.s3_key = path to raw spectrum or calibrated CSV in MinIO
 
@@ -4463,7 +4762,6 @@ class XRFElementalProduct(XRayDataProduct):
 class XRDPhaseProduct(XRayDataProduct):
     """
     X-ray Diffraction (XRD) mineral phase identification and quantification data.
-    One row per sample with columns for each mineral phase identified.
 
     Follows the wide-format pattern with individual weight percent columns.
     Individual QC flags for each mineral using ProcessedDataFlag enum.
@@ -4471,8 +4769,7 @@ class XRDPhaseProduct(XRayDataProduct):
     Relationship to core tables:
     - id: FK -> processedData.id (1:1 linkage)
     - processedData.type = 'XRDPhaseProduct'
-    - processedData.workflow_id -> DataProcessingActivity if Rietveld refinement
-    is computational; NULL if manual/semi-quantitative
+    - optional typed processing reference when Rietveld refinement is used
     - processedData.summary_metrics = {"quartz_percent":42, "albite_percent":18, ...}
     - processedData.s3_key = diffractogram .xy, .xrdml, or .raw file in MinIO
 
@@ -4491,11 +4788,7 @@ class XRDPhaseProduct(XRayDataProduct):
     XRDDataGenerationActivity acquires raw diffractogram ->
     DataProcessingActivity (type='xrd_rietveld_refinement') processes with
     HighScore Plus, GSAS-II, or FullProf ->
-    XRDPhaseProduct (workflow_id points to refinement WEA)
-
-    workflow_steps JSONB example:
-    {"software": "HighScore_Plus", "version": "5.1", "method": "Rietveld",
-    "r_factor": 0.042, "gof": 1.8, "amorphous_content_pct": 12}
+    XRDPhaseProduct (typed processing reference points to refinement activity)
 
     Required enum additions to enums.yaml:
     product:
@@ -4601,6 +4894,546 @@ class XRDPhaseProduct(XRayDataProduct):
 
         if self.flag_gypsum is not None and not isinstance(self.flag_gypsum, ProcessedDataFlag):
             self.flag_gypsum = ProcessedDataFlag(self.flag_gypsum)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class XASInstrumentData(InstrumentData):
+    """
+    Raw XAS sweep file (.0001, .0002, ...) produced at acquisition time.
+    Stores file pointer metadata and key per-sweep scan header fields.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XASInstrumentData"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XASInstrumentData"
+    class_name: ClassVar[str] = "XASInstrumentData"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XASInstrumentData
+
+    id: Union[str, XASInstrumentDataId] = None
+    name: str = None
+    s3_key: str = None
+    description: str = None
+    produced_by_xas_run: Optional[Union[str, XASDataGenerationActivityId]] = None
+    sweep_number: Optional[int] = None
+    scan_datetime: Optional[Union[str, XSDDateTime]] = None
+    scan_time_sec: Optional[int] = None
+    scan_subtype: Optional[Union[str, "XASScanSubtype"]] = None
+    positioner: Optional[str] = None
+    e0_ev: Optional[float] = None
+    n_points: Optional[int] = None
+    n_data_rows: Optional[int] = None
+    x_first: Optional[float] = None
+    x_last: Optional[float] = None
+    scan_bounds: Optional[str] = None
+    scan_steps: Optional[str] = None
+    integration_times: Optional[str] = None
+    kwgt: Optional[float] = None
+    fy_element: Optional[str] = None
+    fy_transition: Optional[str] = None
+    amplifiers: Optional[Union[Union[dict, "XASAmplifier"], list[Union[dict, "XASAmplifier"]]]] = empty_list()
+    motors: Optional[Union[Union[dict, "XASMotorPosition"], list[Union[dict, "XASMotorPosition"]]]] = empty_list()
+    signal_columns: Optional[Union[Union[dict, "XASSignalColumn"], list[Union[dict, "XASSignalColumn"]]]] = empty_list()
+    data_rows: Optional[Union[Union[dict, "XASDataRow"], list[Union[dict, "XASDataRow"]]]] = empty_list()
+    ion_chambers: Optional[Union[Union[dict, "XASIonChamber"], list[Union[dict, "XASIonChamber"]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, XASInstrumentDataId):
+            self.id = XASInstrumentDataId(self.id)
+
+        if self.produced_by_xas_run is not None and not isinstance(self.produced_by_xas_run, XASDataGenerationActivityId):
+            self.produced_by_xas_run = XASDataGenerationActivityId(self.produced_by_xas_run)
+
+        if self.sweep_number is not None and not isinstance(self.sweep_number, int):
+            self.sweep_number = int(self.sweep_number)
+
+        if self.scan_datetime is not None and not isinstance(self.scan_datetime, XSDDateTime):
+            self.scan_datetime = XSDDateTime(self.scan_datetime)
+
+        if self.scan_time_sec is not None and not isinstance(self.scan_time_sec, int):
+            self.scan_time_sec = int(self.scan_time_sec)
+
+        if self.scan_subtype is not None and not isinstance(self.scan_subtype, XASScanSubtype):
+            self.scan_subtype = XASScanSubtype(self.scan_subtype)
+
+        if self.positioner is not None and not isinstance(self.positioner, str):
+            self.positioner = str(self.positioner)
+
+        if self.e0_ev is not None and not isinstance(self.e0_ev, float):
+            self.e0_ev = float(self.e0_ev)
+
+        if self.n_points is not None and not isinstance(self.n_points, int):
+            self.n_points = int(self.n_points)
+
+        if self.n_data_rows is not None and not isinstance(self.n_data_rows, int):
+            self.n_data_rows = int(self.n_data_rows)
+
+        if self.x_first is not None and not isinstance(self.x_first, float):
+            self.x_first = float(self.x_first)
+
+        if self.x_last is not None and not isinstance(self.x_last, float):
+            self.x_last = float(self.x_last)
+
+        if self.scan_bounds is not None and not isinstance(self.scan_bounds, str):
+            self.scan_bounds = str(self.scan_bounds)
+
+        if self.scan_steps is not None and not isinstance(self.scan_steps, str):
+            self.scan_steps = str(self.scan_steps)
+
+        if self.integration_times is not None and not isinstance(self.integration_times, str):
+            self.integration_times = str(self.integration_times)
+
+        if self.kwgt is not None and not isinstance(self.kwgt, float):
+            self.kwgt = float(self.kwgt)
+
+        if self.fy_element is not None and not isinstance(self.fy_element, str):
+            self.fy_element = str(self.fy_element)
+
+        if self.fy_transition is not None and not isinstance(self.fy_transition, str):
+            self.fy_transition = str(self.fy_transition)
+
+        self._normalize_inlined_as_list(slot_name="amplifiers", slot_type=XASAmplifier, key_name="amp_index", keyed=False)
+
+        self._normalize_inlined_as_list(slot_name="motors", slot_type=XASMotorPosition, key_name="motor_index", keyed=False)
+
+        self._normalize_inlined_as_list(slot_name="signal_columns", slot_type=XASSignalColumn, key_name="col_index", keyed=False)
+
+        self._normalize_inlined_as_list(slot_name="data_rows", slot_type=XASDataRow, key_name="row_num", keyed=False)
+
+        self._normalize_inlined_as_list(slot_name="ion_chambers", slot_type=XASIonChamber, key_name="chamber_index", keyed=False)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class XASAmplifier(YAMLRoot):
+    """
+    Amplifier sensitivity entry for one signal channel in an XAS sweep.
+    Corresponds to one row in LAM_XAS_AMPS (Amplifier_Gain_N / Analog_In_Offset_N).
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XASAmplifier"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XASAmplifier"
+    class_name: ClassVar[str] = "XASAmplifier"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XASAmplifier
+
+    amp_index: int = None
+    signal_name: Optional[str] = None
+    gain: Optional[float] = None
+    gain_unit: Optional[str] = None
+    voltage_start: Optional[float] = None
+    voltage_end: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.amp_index):
+            self.MissingRequiredField("amp_index")
+        if not isinstance(self.amp_index, int):
+            self.amp_index = int(self.amp_index)
+
+        if self.signal_name is not None and not isinstance(self.signal_name, str):
+            self.signal_name = str(self.signal_name)
+
+        if self.gain is not None and not isinstance(self.gain, float):
+            self.gain = float(self.gain)
+
+        if self.gain_unit is not None and not isinstance(self.gain_unit, str):
+            self.gain_unit = str(self.gain_unit)
+
+        if self.voltage_start is not None and not isinstance(self.voltage_start, float):
+            self.voltage_start = float(self.voltage_start)
+
+        if self.voltage_end is not None and not isinstance(self.voltage_end, float):
+            self.voltage_end = float(self.voltage_end)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class XASMotorPosition(YAMLRoot):
+    """
+    Motor position recorded at the start of an XAS sweep.
+    Corresponds to one row in LAM_XAS_MOTS (Motor_N_Pos header fields).
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XASMotorPosition"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XASMotorPosition"
+    class_name: ClassVar[str] = "XASMotorPosition"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XASMotorPosition
+
+    motor_index: int = None
+    motor_name: Optional[str] = None
+    pv: Optional[str] = None
+    position: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.motor_index):
+            self.MissingRequiredField("motor_index")
+        if not isinstance(self.motor_index, int):
+            self.motor_index = int(self.motor_index)
+
+        if self.motor_name is not None and not isinstance(self.motor_name, str):
+            self.motor_name = str(self.motor_name)
+
+        if self.pv is not None and not isinstance(self.pv, str):
+            self.pv = str(self.pv)
+
+        if self.position is not None and not isinstance(self.position, float):
+            self.position = float(self.position)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class XASSignalColumn(YAMLRoot):
+    """
+    Detector signal name / EPICS PV pair for one data column in an XAS sweep.
+    Corresponds to one row in LAM_XAS_COLS (Analog_In_Signal_Type_N).
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XASSignalColumn"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XASSignalColumn"
+    class_name: ClassVar[str] = "XASSignalColumn"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XASSignalColumn
+
+    col_index: int = None
+    col_name: Optional[str] = None
+    pv: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.col_index):
+            self.MissingRequiredField("col_index")
+        if not isinstance(self.col_index, int):
+            self.col_index = int(self.col_index)
+
+        if self.col_name is not None and not isinstance(self.col_name, str):
+            self.col_name = str(self.col_name)
+
+        if self.pv is not None and not isinstance(self.pv, str):
+            self.pv = str(self.pv)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class XASDataRow(YAMLRoot):
+    """
+    One data point from an XAS sweep scan.
+    row_val holds the representative fluorescence or transmission value at
+    each energy step (e.g. FeKa_Sum count, or I0 if FY detector absent).
+    Corresponds to one row in LAM_XAS_DROWS.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XASDataRow"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XASDataRow"
+    class_name: ClassVar[str] = "XASDataRow"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XASDataRow
+
+    row_num: int = None
+    row_val: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.row_num):
+            self.MissingRequiredField("row_num")
+        if not isinstance(self.row_num, int):
+            self.row_num = int(self.row_num)
+
+        if self.row_val is not None and not isinstance(self.row_val, float):
+            self.row_val = float(self.row_val)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class XASIonChamber(YAMLRoot):
+    """
+    Ion chamber gas mixture component for one chamber in an XAS sweep.
+    Parsed from the user comment (e.g. 'i0 = 30%N2, 70%He. It and Iref = N2').
+    Corresponds to one row in LAM_XAS_ICS.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XASIonChamber"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XASIonChamber"
+    class_name: ClassVar[str] = "XASIonChamber"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XASIonChamber
+
+    chamber_index: int = None
+    gas_index: int = None
+    gas_name: Optional[str] = None
+    chamber_length_mm: Optional[float] = None
+    pressure_bar: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.chamber_index):
+            self.MissingRequiredField("chamber_index")
+        if not isinstance(self.chamber_index, int):
+            self.chamber_index = int(self.chamber_index)
+
+        if self._is_empty(self.gas_index):
+            self.MissingRequiredField("gas_index")
+        if not isinstance(self.gas_index, int):
+            self.gas_index = int(self.gas_index)
+
+        if self.gas_name is not None and not isinstance(self.gas_name, str):
+            self.gas_name = str(self.gas_name)
+
+        if self.chamber_length_mm is not None and not isinstance(self.chamber_length_mm, float):
+            self.chamber_length_mm = float(self.chamber_length_mm)
+
+        if self.pressure_bar is not None and not isinstance(self.pressure_bar, float):
+            self.pressure_bar = float(self.pressure_bar)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class XASLCFProduct(XRayDataProduct):
+    """
+    XAS Linear Combination Fitting (LCF) processed result.
+    One instance per .lcf file and linked to an XASLCFDataProcessingActivity
+    through a typed processing slot.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XASLCFProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XASLCFProduct"
+    class_name: ClassVar[str] = "XASLCFProduct"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XASLCFProduct
+
+    id: Union[str, XASLCFProductId] = None
+    name: str = None
+    s3_key: str = None
+    measure_type: Optional[Union[str, "ProductMeasureType"]] = None
+    results_from_xas_processing: Optional[Union[str, XASLCFDataProcessingActivityId]] = None
+    xas_filename: Optional[str] = None
+    lcf_type: Optional[Union[str, "XASLCFType"]] = None
+    run_label: Optional[str] = None
+    fit_label: Optional[str] = None
+    analysis_code: Optional[str] = None
+    sample_nor_file: Optional[str] = None
+    fit_range_min: Optional[float] = None
+    fit_range_max: Optional[float] = None
+    fit_range_unit: Optional[str] = None
+    n_data_points: Optional[int] = None
+    n_variables: Optional[int] = None
+    n_standards: Optional[int] = None
+    weights_sum_to_1: Optional[str] = None
+    weights_bounded: Optional[str] = None
+    e0_shift_used: Optional[str] = None
+    noise_added: Optional[float] = None
+    r_factor: Optional[float] = None
+    chi_square: Optional[float] = None
+    reduced_chi_square: Optional[float] = None
+    weights_sum: Optional[float] = None
+    standards: Optional[Union[Union[dict, "XASLCFStandard"], list[Union[dict, "XASLCFStandard"]]]] = empty_list()
+    species_proportions: Optional[Union[Union[dict, "XASLCFSpeciesProportion"], list[Union[dict, "XASLCFSpeciesProportion"]]]] = empty_list()
+    lcf_data_rows: Optional[Union[Union[dict, "XASLCFDataRow"], list[Union[dict, "XASLCFDataRow"]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, XASLCFProductId):
+            self.id = XASLCFProductId(self.id)
+
+        if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
+            self.measure_type = ProductMeasureType(self.measure_type)
+
+        if self.results_from_xas_processing is not None and not isinstance(self.results_from_xas_processing, XASLCFDataProcessingActivityId):
+            self.results_from_xas_processing = XASLCFDataProcessingActivityId(self.results_from_xas_processing)
+
+        if self.xas_filename is not None and not isinstance(self.xas_filename, str):
+            self.xas_filename = str(self.xas_filename)
+
+        if self.lcf_type is not None and not isinstance(self.lcf_type, XASLCFType):
+            self.lcf_type = XASLCFType(self.lcf_type)
+
+        if self.run_label is not None and not isinstance(self.run_label, str):
+            self.run_label = str(self.run_label)
+
+        if self.fit_label is not None and not isinstance(self.fit_label, str):
+            self.fit_label = str(self.fit_label)
+
+        if self.analysis_code is not None and not isinstance(self.analysis_code, str):
+            self.analysis_code = str(self.analysis_code)
+
+        if self.sample_nor_file is not None and not isinstance(self.sample_nor_file, str):
+            self.sample_nor_file = str(self.sample_nor_file)
+
+        if self.fit_range_min is not None and not isinstance(self.fit_range_min, float):
+            self.fit_range_min = float(self.fit_range_min)
+
+        if self.fit_range_max is not None and not isinstance(self.fit_range_max, float):
+            self.fit_range_max = float(self.fit_range_max)
+
+        if self.fit_range_unit is not None and not isinstance(self.fit_range_unit, str):
+            self.fit_range_unit = str(self.fit_range_unit)
+
+        if self.n_data_points is not None and not isinstance(self.n_data_points, int):
+            self.n_data_points = int(self.n_data_points)
+
+        if self.n_variables is not None and not isinstance(self.n_variables, int):
+            self.n_variables = int(self.n_variables)
+
+        if self.n_standards is not None and not isinstance(self.n_standards, int):
+            self.n_standards = int(self.n_standards)
+
+        if self.weights_sum_to_1 is not None and not isinstance(self.weights_sum_to_1, str):
+            self.weights_sum_to_1 = str(self.weights_sum_to_1)
+
+        if self.weights_bounded is not None and not isinstance(self.weights_bounded, str):
+            self.weights_bounded = str(self.weights_bounded)
+
+        if self.e0_shift_used is not None and not isinstance(self.e0_shift_used, str):
+            self.e0_shift_used = str(self.e0_shift_used)
+
+        if self.noise_added is not None and not isinstance(self.noise_added, float):
+            self.noise_added = float(self.noise_added)
+
+        if self.r_factor is not None and not isinstance(self.r_factor, float):
+            self.r_factor = float(self.r_factor)
+
+        if self.chi_square is not None and not isinstance(self.chi_square, float):
+            self.chi_square = float(self.chi_square)
+
+        if self.reduced_chi_square is not None and not isinstance(self.reduced_chi_square, float):
+            self.reduced_chi_square = float(self.reduced_chi_square)
+
+        if self.weights_sum is not None and not isinstance(self.weights_sum, float):
+            self.weights_sum = float(self.weights_sum)
+
+        self._normalize_inlined_as_list(slot_name="standards", slot_type=XASLCFStandard, key_name="std_index", keyed=False)
+
+        self._normalize_inlined_as_list(slot_name="species_proportions", slot_type=XASLCFSpeciesProportion, key_name="species_name", keyed=False)
+
+        self._normalize_inlined_as_list(slot_name="lcf_data_rows", slot_type=XASLCFDataRow, key_name="row_num", keyed=False)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class XASLCFStandard(YAMLRoot):
+    """
+    One reference standard (spectral component) used in an LCF fit.
+    The fitted weight represents this standard's fractional contribution
+    to the measured sample spectrum.
+    Corresponds to one row in LAM_XAS_LCF_STDS.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XASLCFStandard"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XASLCFStandard"
+    class_name: ClassVar[str] = "XASLCFStandard"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XASLCFStandard
+
+    std_index: int = None
+    std_name: str = None
+    weight: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.std_index):
+            self.MissingRequiredField("std_index")
+        if not isinstance(self.std_index, int):
+            self.std_index = int(self.std_index)
+
+        if self._is_empty(self.std_name):
+            self.MissingRequiredField("std_name")
+        if not isinstance(self.std_name, str):
+            self.std_name = str(self.std_name)
+
+        if self.weight is not None and not isinstance(self.weight, float):
+            self.weight = float(self.weight)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class XASLCFSpeciesProportion(YAMLRoot):
+    """
+    Derived species proportion reported in the LC XANES analysis section.
+    For Fe XAS these are typically Fe(II) and Fe(III) proportions; the
+    generalised design supports any element or oxidation state.
+
+    Proportions are derived by summing weights of standards associated with
+    each oxidation state, as reported by Athena or Larch:
+    'Fe(III) proportion in sample: 0.44 (+/-0.05)'
+
+    Corresponds to one row in LAM_XAS_LCF_PROPS.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XASLCFSpeciesProportion"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XASLCFSpeciesProportion"
+    class_name: ClassVar[str] = "XASLCFSpeciesProportion"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XASLCFSpeciesProportion
+
+    species_name: str = None
+    proportion: float = None
+    uncertainty: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.species_name):
+            self.MissingRequiredField("species_name")
+        if not isinstance(self.species_name, str):
+            self.species_name = str(self.species_name)
+
+        if self._is_empty(self.proportion):
+            self.MissingRequiredField("proportion")
+        if not isinstance(self.proportion, float):
+            self.proportion = float(self.proportion)
+
+        if self.uncertainty is not None and not isinstance(self.uncertainty, float):
+            self.uncertainty = float(self.uncertainty)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class XASLCFDataRow(YAMLRoot):
+    """
+    One point from the LCF fit output, enabling reconstruction and plotting
+    of the measured spectrum, fitted curve, and residual without accessing
+    the raw .lcf file.
+    Corresponds to one row in LAM_XAS_LCF_DROWS.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["XASLCFDataRow"]
+    class_class_curie: ClassVar[str] = "basalt_schema:XASLCFDataRow"
+    class_name: ClassVar[str] = "XASLCFDataRow"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.XASLCFDataRow
+
+    row_num: int = None
+    x_val: float = None
+    data_val: Optional[float] = None
+    fit_val: Optional[float] = None
+    residual: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.row_num):
+            self.MissingRequiredField("row_num")
+        if not isinstance(self.row_num, int):
+            self.row_num = int(self.row_num)
+
+        if self._is_empty(self.x_val):
+            self.MissingRequiredField("x_val")
+        if not isinstance(self.x_val, float):
+            self.x_val = float(self.x_val)
+
+        if self.data_val is not None and not isinstance(self.data_val, float):
+            self.data_val = float(self.data_val)
+
+        if self.fit_val is not None and not isinstance(self.fit_val, float):
+            self.fit_val = float(self.fit_val)
+
+        if self.residual is not None and not isinstance(self.residual, float):
+            self.residual = float(self.residual)
 
         super().__post_init__(**kwargs)
 
@@ -12464,6 +13297,8 @@ class FileTypeEnum(EnumDefinitionImpl):
     SMART_Annotation_GFF = PermissibleValue(text="SMART_Annotation_GFF")
     Pfam_Annotation_GFF = PermissibleValue(text="Pfam_Annotation_GFF")
     Direct_Infusion_FT_ICR_MS_Raw_Data = PermissibleValue(text="Direct_Infusion_FT_ICR_MS_Raw_Data")
+    XAS_Raw_Sweep_File = PermissibleValue(text="XAS_Raw_Sweep_File")
+    XAS_LCF_Output = PermissibleValue(text="XAS_LCF_Output")
 
     _defn = EnumDefinition(
         name="FileTypeEnum",
@@ -13009,6 +13844,8 @@ class ModelEnum(EnumDefinitionImpl):
     toc_lcsh = PermissibleValue(text="toc_lcsh")
     sr_1 = PermissibleValue(text="sr_1")
     xth320 = PermissibleValue(text="xth320")
+    aps_20bm = PermissibleValue(text="aps_20bm")
+    xmap12b = PermissibleValue(text="xmap12b")
 
     _defn = EnumDefinition(
         name="ModelEnum",
@@ -14029,9 +14866,45 @@ class VendorEnum(EnumDefinitionImpl):
     kuo = PermissibleValue(text="kuo")
     rigaku = PermissibleValue(text="rigaku")
     panalytical = PermissibleValue(text="panalytical")
+    aps_anl = PermissibleValue(text="aps_anl")
 
     _defn = EnumDefinition(
         name="VendorEnum",
+    )
+
+class XASLCFType(EnumDefinitionImpl):
+    """
+    LCF analysis subtype
+    """
+    XANES = PermissibleValue(
+        text="XANES",
+        description="Normalised mu(E) vs energy fit")
+    EXAFS = PermissibleValue(
+        text="EXAFS",
+        description="chi(k) vs k fit")
+
+    _defn = EnumDefinition(
+        name="XASLCFType",
+        description="LCF analysis subtype",
+    )
+
+class XASScanSubtype(EnumDefinitionImpl):
+    """
+    XAS scan subtype detected from primary positioner column
+    """
+    energy = PermissibleValue(
+        text="energy",
+        description="Energy scan; primary positioner is mono energy")
+    motor = PermissibleValue(
+        text="motor",
+        description="Motor scan; primary positioner is a physical motor")
+    unknown = PermissibleValue(
+        text="unknown",
+        description="Scan subtype could not be determined from file header")
+
+    _defn = EnumDefinition(
+        name="XASScanSubtype",
+        description="XAS scan subtype detected from primary positioner column",
     )
 
 class YesNoEnum(EnumDefinitionImpl):
@@ -15465,6 +16338,321 @@ slots.sediment_type = Slot(uri=BASALT_SCHEMA.sediment_type, name="sediment_type"
 slots.sequence_order = Slot(uri=BASALT_SCHEMA.sequence_order, name="sequence_order", curie=BASALT_SCHEMA.curie('sequence_order'),
                    model_uri=BASALT_SCHEMA.sequence_order, domain=None, range=Optional[int])
 
+slots.facility = Slot(uri=BASALT_SCHEMA.facility, name="facility", curie=BASALT_SCHEMA.curie('facility'),
+                   model_uri=BASALT_SCHEMA.facility, domain=None, range=Optional[str])
+
+slots.beamline = Slot(uri=BASALT_SCHEMA.beamline, name="beamline", curie=BASALT_SCHEMA.curie('beamline'),
+                   model_uri=BASALT_SCHEMA.beamline, domain=None, range=Optional[str])
+
+slots.ring_energy_gev = Slot(uri=BASALT_SCHEMA.ring_energy_gev, name="ring_energy_gev", curie=BASALT_SCHEMA.curie('ring_energy_gev'),
+                   model_uri=BASALT_SCHEMA.ring_energy_gev, domain=None, range=Optional[float])
+
+slots.ring_current_ma = Slot(uri=BASALT_SCHEMA.ring_current_ma, name="ring_current_ma", curie=BASALT_SCHEMA.curie('ring_current_ma'),
+                   model_uri=BASALT_SCHEMA.ring_current_ma, domain=None, range=Optional[float])
+
+slots.insertion_device = Slot(uri=BASALT_SCHEMA.insertion_device, name="insertion_device", curie=BASALT_SCHEMA.curie('insertion_device'),
+                   model_uri=BASALT_SCHEMA.insertion_device, domain=None, range=Optional[str])
+
+slots.element = Slot(uri=BASALT_SCHEMA.element, name="element", curie=BASALT_SCHEMA.curie('element'),
+                   model_uri=BASALT_SCHEMA.element, domain=None, range=Optional[str])
+
+slots.edge = Slot(uri=BASALT_SCHEMA.edge, name="edge", curie=BASALT_SCHEMA.curie('edge'),
+                   model_uri=BASALT_SCHEMA.edge, domain=None, range=Optional[str])
+
+slots.reference_material = Slot(uri=BASALT_SCHEMA.reference_material, name="reference_material", curie=BASALT_SCHEMA.curie('reference_material'),
+                   model_uri=BASALT_SCHEMA.reference_material, domain=None, range=Optional[str])
+
+slots.xas_sample_type = Slot(uri=BASALT_SCHEMA.xas_sample_type, name="xas_sample_type", curie=BASALT_SCHEMA.curie('xas_sample_type'),
+                   model_uri=BASALT_SCHEMA.xas_sample_type, domain=None, range=Optional[str])
+
+slots.sample_format = Slot(uri=BASALT_SCHEMA.sample_format, name="sample_format", curie=BASALT_SCHEMA.curie('sample_format'),
+                   model_uri=BASALT_SCHEMA.sample_format, domain=None, range=Optional[str])
+
+slots.sample_holder = Slot(uri=BASALT_SCHEMA.sample_holder, name="sample_holder", curie=BASALT_SCHEMA.curie('sample_holder'),
+                   model_uri=BASALT_SCHEMA.sample_holder, domain=None, range=Optional[str])
+
+slots.sample_temperature_k = Slot(uri=BASALT_SCHEMA.sample_temperature_k, name="sample_temperature_k", curie=BASALT_SCHEMA.curie('sample_temperature_k'),
+                   model_uri=BASALT_SCHEMA.sample_temperature_k, domain=None, range=Optional[float])
+
+slots.sample_orientation_deg = Slot(uri=BASALT_SCHEMA.sample_orientation_deg, name="sample_orientation_deg", curie=BASALT_SCHEMA.curie('sample_orientation_deg'),
+                   model_uri=BASALT_SCHEMA.sample_orientation_deg, domain=None, range=Optional[float])
+
+slots.sample_detector_distance_mm = Slot(uri=BASALT_SCHEMA.sample_detector_distance_mm, name="sample_detector_distance_mm", curie=BASALT_SCHEMA.curie('sample_detector_distance_mm'),
+                   model_uri=BASALT_SCHEMA.sample_detector_distance_mm, domain=None, range=Optional[float])
+
+slots.sample_doi = Slot(uri=BASALT_SCHEMA.sample_doi, name="sample_doi", curie=BASALT_SCHEMA.curie('sample_doi'),
+                   model_uri=BASALT_SCHEMA.sample_doi, domain=None, range=Optional[str])
+
+slots.crystal = Slot(uri=BASALT_SCHEMA.crystal, name="crystal", curie=BASALT_SCHEMA.curie('crystal'),
+                   model_uri=BASALT_SCHEMA.crystal, domain=None, range=Optional[str])
+
+slots.crystal_cut = Slot(uri=BASALT_SCHEMA.crystal_cut, name="crystal_cut", curie=BASALT_SCHEMA.curie('crystal_cut'),
+                   model_uri=BASALT_SCHEMA.crystal_cut, domain=None, range=Optional[str])
+
+slots.crystal_detune_pct = Slot(uri=BASALT_SCHEMA.crystal_detune_pct, name="crystal_detune_pct", curie=BASALT_SCHEMA.curie('crystal_detune_pct'),
+                   model_uri=BASALT_SCHEMA.crystal_detune_pct, domain=None, range=Optional[float])
+
+slots.mono_angle_deg = Slot(uri=BASALT_SCHEMA.mono_angle_deg, name="mono_angle_deg", curie=BASALT_SCHEMA.curie('mono_angle_deg'),
+                   model_uri=BASALT_SCHEMA.mono_angle_deg, domain=None, range=Optional[float])
+
+slots.mono_2nd_xtal_mm = Slot(uri=BASALT_SCHEMA.mono_2nd_xtal_mm, name="mono_2nd_xtal_mm", curie=BASALT_SCHEMA.curie('mono_2nd_xtal_mm'),
+                   model_uri=BASALT_SCHEMA.mono_2nd_xtal_mm, domain=None, range=Optional[float])
+
+slots.mono_energy_motor_ev = Slot(uri=BASALT_SCHEMA.mono_energy_motor_ev, name="mono_energy_motor_ev", curie=BASALT_SCHEMA.curie('mono_energy_motor_ev'),
+                   model_uri=BASALT_SCHEMA.mono_energy_motor_ev, domain=None, range=Optional[float])
+
+slots.mono_energy_encoder_ev = Slot(uri=BASALT_SCHEMA.mono_energy_encoder_ev, name="mono_energy_encoder_ev", curie=BASALT_SCHEMA.curie('mono_energy_encoder_ev'),
+                   model_uri=BASALT_SCHEMA.mono_energy_encoder_ev, domain=None, range=Optional[float])
+
+slots.mirror_angle_mrad = Slot(uri=BASALT_SCHEMA.mirror_angle_mrad, name="mirror_angle_mrad", curie=BASALT_SCHEMA.curie('mirror_angle_mrad'),
+                   model_uri=BASALT_SCHEMA.mirror_angle_mrad, domain=None, range=Optional[float])
+
+slots.m0_coating = Slot(uri=BASALT_SCHEMA.m0_coating, name="m0_coating", curie=BASALT_SCHEMA.curie('m0_coating'),
+                   model_uri=BASALT_SCHEMA.m0_coating, domain=None, range=Optional[str])
+
+slots.m0_cutoff_kev = Slot(uri=BASALT_SCHEMA.m0_cutoff_kev, name="m0_cutoff_kev", curie=BASALT_SCHEMA.curie('m0_cutoff_kev'),
+                   model_uri=BASALT_SCHEMA.m0_cutoff_kev, domain=None, range=Optional[float])
+
+slots.m1_coating = Slot(uri=BASALT_SCHEMA.m1_coating, name="m1_coating", curie=BASALT_SCHEMA.curie('m1_coating'),
+                   model_uri=BASALT_SCHEMA.m1_coating, domain=None, range=Optional[str])
+
+slots.inhutch_mirror_coating = Slot(uri=BASALT_SCHEMA.inhutch_mirror_coating, name="inhutch_mirror_coating", curie=BASALT_SCHEMA.curie('inhutch_mirror_coating'),
+                   model_uri=BASALT_SCHEMA.inhutch_mirror_coating, domain=None, range=Optional[str])
+
+slots.inhutch_mirror_cutoff_kev = Slot(uri=BASALT_SCHEMA.inhutch_mirror_cutoff_kev, name="inhutch_mirror_cutoff_kev", curie=BASALT_SCHEMA.curie('inhutch_mirror_cutoff_kev'),
+                   model_uri=BASALT_SCHEMA.inhutch_mirror_cutoff_kev, domain=None, range=Optional[float])
+
+slots.slit_size_h_um = Slot(uri=BASALT_SCHEMA.slit_size_h_um, name="slit_size_h_um", curie=BASALT_SCHEMA.curie('slit_size_h_um'),
+                   model_uri=BASALT_SCHEMA.slit_size_h_um, domain=None, range=Optional[float])
+
+slots.slit_size_v_um = Slot(uri=BASALT_SCHEMA.slit_size_v_um, name="slit_size_v_um", curie=BASALT_SCHEMA.curie('slit_size_v_um'),
+                   model_uri=BASALT_SCHEMA.slit_size_v_um, domain=None, range=Optional[float])
+
+slots.slit_center_h = Slot(uri=BASALT_SCHEMA.slit_center_h, name="slit_center_h", curie=BASALT_SCHEMA.curie('slit_center_h'),
+                   model_uri=BASALT_SCHEMA.slit_center_h, domain=None, range=Optional[float])
+
+slots.slit_center_v = Slot(uri=BASALT_SCHEMA.slit_center_v, name="slit_center_v", curie=BASALT_SCHEMA.curie('slit_center_v'),
+                   model_uri=BASALT_SCHEMA.slit_center_v, domain=None, range=Optional[float])
+
+slots.beam_attenuation_um = Slot(uri=BASALT_SCHEMA.beam_attenuation_um, name="beam_attenuation_um", curie=BASALT_SCHEMA.curie('beam_attenuation_um'),
+                   model_uri=BASALT_SCHEMA.beam_attenuation_um, domain=None, range=Optional[float])
+
+slots.beam_attenuation_material = Slot(uri=BASALT_SCHEMA.beam_attenuation_material, name="beam_attenuation_material", curie=BASALT_SCHEMA.curie('beam_attenuation_material'),
+                   model_uri=BASALT_SCHEMA.beam_attenuation_material, domain=None, range=Optional[str])
+
+slots.sweep_number = Slot(uri=BASALT_SCHEMA.sweep_number, name="sweep_number", curie=BASALT_SCHEMA.curie('sweep_number'),
+                   model_uri=BASALT_SCHEMA.sweep_number, domain=None, range=Optional[int])
+
+slots.scan_subtype = Slot(uri=BASALT_SCHEMA.scan_subtype, name="scan_subtype", curie=BASALT_SCHEMA.curie('scan_subtype'),
+                   model_uri=BASALT_SCHEMA.scan_subtype, domain=None, range=Optional[Union[str, "XASScanSubtype"]])
+
+slots.positioner = Slot(uri=BASALT_SCHEMA.positioner, name="positioner", curie=BASALT_SCHEMA.curie('positioner'),
+                   model_uri=BASALT_SCHEMA.positioner, domain=None, range=Optional[str])
+
+slots.e0_ev = Slot(uri=BASALT_SCHEMA.e0_ev, name="e0_ev", curie=BASALT_SCHEMA.curie('e0_ev'),
+                   model_uri=BASALT_SCHEMA.e0_ev, domain=None, range=Optional[float])
+
+slots.n_points = Slot(uri=BASALT_SCHEMA.n_points, name="n_points", curie=BASALT_SCHEMA.curie('n_points'),
+                   model_uri=BASALT_SCHEMA.n_points, domain=None, range=Optional[int])
+
+slots.n_data_rows = Slot(uri=BASALT_SCHEMA.n_data_rows, name="n_data_rows", curie=BASALT_SCHEMA.curie('n_data_rows'),
+                   model_uri=BASALT_SCHEMA.n_data_rows, domain=None, range=Optional[int])
+
+slots.x_first = Slot(uri=BASALT_SCHEMA.x_first, name="x_first", curie=BASALT_SCHEMA.curie('x_first'),
+                   model_uri=BASALT_SCHEMA.x_first, domain=None, range=Optional[float])
+
+slots.x_last = Slot(uri=BASALT_SCHEMA.x_last, name="x_last", curie=BASALT_SCHEMA.curie('x_last'),
+                   model_uri=BASALT_SCHEMA.x_last, domain=None, range=Optional[float])
+
+slots.scan_bounds = Slot(uri=BASALT_SCHEMA.scan_bounds, name="scan_bounds", curie=BASALT_SCHEMA.curie('scan_bounds'),
+                   model_uri=BASALT_SCHEMA.scan_bounds, domain=None, range=Optional[str])
+
+slots.scan_steps = Slot(uri=BASALT_SCHEMA.scan_steps, name="scan_steps", curie=BASALT_SCHEMA.curie('scan_steps'),
+                   model_uri=BASALT_SCHEMA.scan_steps, domain=None, range=Optional[str])
+
+slots.integration_times = Slot(uri=BASALT_SCHEMA.integration_times, name="integration_times", curie=BASALT_SCHEMA.curie('integration_times'),
+                   model_uri=BASALT_SCHEMA.integration_times, domain=None, range=Optional[str])
+
+slots.kwgt = Slot(uri=BASALT_SCHEMA.kwgt, name="kwgt", curie=BASALT_SCHEMA.curie('kwgt'),
+                   model_uri=BASALT_SCHEMA.kwgt, domain=None, range=Optional[float])
+
+slots.scan_time_sec = Slot(uri=BASALT_SCHEMA.scan_time_sec, name="scan_time_sec", curie=BASALT_SCHEMA.curie('scan_time_sec'),
+                   model_uri=BASALT_SCHEMA.scan_time_sec, domain=None, range=Optional[int])
+
+slots.scan_datetime = Slot(uri=BASALT_SCHEMA.scan_datetime, name="scan_datetime", curie=BASALT_SCHEMA.curie('scan_datetime'),
+                   model_uri=BASALT_SCHEMA.scan_datetime, domain=None, range=Optional[Union[str, XSDDateTime]])
+
+slots.fy_electronics = Slot(uri=BASALT_SCHEMA.fy_electronics, name="fy_electronics", curie=BASALT_SCHEMA.curie('fy_electronics'),
+                   model_uri=BASALT_SCHEMA.fy_electronics, domain=None, range=Optional[str])
+
+slots.fy_channel_num = Slot(uri=BASALT_SCHEMA.fy_channel_num, name="fy_channel_num", curie=BASALT_SCHEMA.curie('fy_channel_num'),
+                   model_uri=BASALT_SCHEMA.fy_channel_num, domain=None, range=Optional[int])
+
+slots.fy_element = Slot(uri=BASALT_SCHEMA.fy_element, name="fy_element", curie=BASALT_SCHEMA.curie('fy_element'),
+                   model_uri=BASALT_SCHEMA.fy_element, domain=None, range=Optional[str])
+
+slots.fy_transition = Slot(uri=BASALT_SCHEMA.fy_transition, name="fy_transition", curie=BASALT_SCHEMA.curie('fy_transition'),
+                   model_uri=BASALT_SCHEMA.fy_transition, domain=None, range=Optional[str])
+
+slots.user_comment = Slot(uri=BASALT_SCHEMA.user_comment, name="user_comment", curie=BASALT_SCHEMA.curie('user_comment'),
+                   model_uri=BASALT_SCHEMA.user_comment, domain=None, range=Optional[str])
+
+slots.amp_index = Slot(uri=BASALT_SCHEMA.amp_index, name="amp_index", curie=BASALT_SCHEMA.curie('amp_index'),
+                   model_uri=BASALT_SCHEMA.amp_index, domain=None, range=Optional[int])
+
+slots.signal_name = Slot(uri=BASALT_SCHEMA.signal_name, name="signal_name", curie=BASALT_SCHEMA.curie('signal_name'),
+                   model_uri=BASALT_SCHEMA.signal_name, domain=None, range=Optional[str])
+
+slots.gain = Slot(uri=BASALT_SCHEMA.gain, name="gain", curie=BASALT_SCHEMA.curie('gain'),
+                   model_uri=BASALT_SCHEMA.gain, domain=None, range=Optional[float])
+
+slots.gain_unit = Slot(uri=BASALT_SCHEMA.gain_unit, name="gain_unit", curie=BASALT_SCHEMA.curie('gain_unit'),
+                   model_uri=BASALT_SCHEMA.gain_unit, domain=None, range=Optional[str])
+
+slots.voltage_start = Slot(uri=BASALT_SCHEMA.voltage_start, name="voltage_start", curie=BASALT_SCHEMA.curie('voltage_start'),
+                   model_uri=BASALT_SCHEMA.voltage_start, domain=None, range=Optional[float])
+
+slots.voltage_end = Slot(uri=BASALT_SCHEMA.voltage_end, name="voltage_end", curie=BASALT_SCHEMA.curie('voltage_end'),
+                   model_uri=BASALT_SCHEMA.voltage_end, domain=None, range=Optional[float])
+
+slots.motor_index = Slot(uri=BASALT_SCHEMA.motor_index, name="motor_index", curie=BASALT_SCHEMA.curie('motor_index'),
+                   model_uri=BASALT_SCHEMA.motor_index, domain=None, range=Optional[int])
+
+slots.motor_name = Slot(uri=BASALT_SCHEMA.motor_name, name="motor_name", curie=BASALT_SCHEMA.curie('motor_name'),
+                   model_uri=BASALT_SCHEMA.motor_name, domain=None, range=Optional[str])
+
+slots.pv = Slot(uri=BASALT_SCHEMA.pv, name="pv", curie=BASALT_SCHEMA.curie('pv'),
+                   model_uri=BASALT_SCHEMA.pv, domain=None, range=Optional[str])
+
+slots.position = Slot(uri=BASALT_SCHEMA.position, name="position", curie=BASALT_SCHEMA.curie('position'),
+                   model_uri=BASALT_SCHEMA.position, domain=None, range=Optional[float])
+
+slots.col_index = Slot(uri=BASALT_SCHEMA.col_index, name="col_index", curie=BASALT_SCHEMA.curie('col_index'),
+                   model_uri=BASALT_SCHEMA.col_index, domain=None, range=Optional[int])
+
+slots.col_name = Slot(uri=BASALT_SCHEMA.col_name, name="col_name", curie=BASALT_SCHEMA.curie('col_name'),
+                   model_uri=BASALT_SCHEMA.col_name, domain=None, range=Optional[str])
+
+slots.row_num = Slot(uri=BASALT_SCHEMA.row_num, name="row_num", curie=BASALT_SCHEMA.curie('row_num'),
+                   model_uri=BASALT_SCHEMA.row_num, domain=None, range=Optional[int])
+
+slots.row_val = Slot(uri=BASALT_SCHEMA.row_val, name="row_val", curie=BASALT_SCHEMA.curie('row_val'),
+                   model_uri=BASALT_SCHEMA.row_val, domain=None, range=Optional[float])
+
+slots.chamber_index = Slot(uri=BASALT_SCHEMA.chamber_index, name="chamber_index", curie=BASALT_SCHEMA.curie('chamber_index'),
+                   model_uri=BASALT_SCHEMA.chamber_index, domain=None, range=Optional[int])
+
+slots.gas_index = Slot(uri=BASALT_SCHEMA.gas_index, name="gas_index", curie=BASALT_SCHEMA.curie('gas_index'),
+                   model_uri=BASALT_SCHEMA.gas_index, domain=None, range=Optional[int])
+
+slots.gas_name = Slot(uri=BASALT_SCHEMA.gas_name, name="gas_name", curie=BASALT_SCHEMA.curie('gas_name'),
+                   model_uri=BASALT_SCHEMA.gas_name, domain=None, range=Optional[str])
+
+slots.chamber_length_mm = Slot(uri=BASALT_SCHEMA.chamber_length_mm, name="chamber_length_mm", curie=BASALT_SCHEMA.curie('chamber_length_mm'),
+                   model_uri=BASALT_SCHEMA.chamber_length_mm, domain=None, range=Optional[float])
+
+slots.pressure_bar = Slot(uri=BASALT_SCHEMA.pressure_bar, name="pressure_bar", curie=BASALT_SCHEMA.curie('pressure_bar'),
+                   model_uri=BASALT_SCHEMA.pressure_bar, domain=None, range=Optional[float])
+
+slots.xas_filename = Slot(uri=BASALT_SCHEMA.xas_filename, name="xas_filename", curie=BASALT_SCHEMA.curie('xas_filename'),
+                   model_uri=BASALT_SCHEMA.xas_filename, domain=None, range=Optional[str])
+
+slots.lcf_type = Slot(uri=BASALT_SCHEMA.lcf_type, name="lcf_type", curie=BASALT_SCHEMA.curie('lcf_type'),
+                   model_uri=BASALT_SCHEMA.lcf_type, domain=None, range=Optional[Union[str, "XASLCFType"]])
+
+slots.run_label = Slot(uri=BASALT_SCHEMA.run_label, name="run_label", curie=BASALT_SCHEMA.curie('run_label'),
+                   model_uri=BASALT_SCHEMA.run_label, domain=None, range=Optional[str])
+
+slots.fit_label = Slot(uri=BASALT_SCHEMA.fit_label, name="fit_label", curie=BASALT_SCHEMA.curie('fit_label'),
+                   model_uri=BASALT_SCHEMA.fit_label, domain=None, range=Optional[str])
+
+slots.analysis_code = Slot(uri=BASALT_SCHEMA.analysis_code, name="analysis_code", curie=BASALT_SCHEMA.curie('analysis_code'),
+                   model_uri=BASALT_SCHEMA.analysis_code, domain=None, range=Optional[str])
+
+slots.sample_nor_file = Slot(uri=BASALT_SCHEMA.sample_nor_file, name="sample_nor_file", curie=BASALT_SCHEMA.curie('sample_nor_file'),
+                   model_uri=BASALT_SCHEMA.sample_nor_file, domain=None, range=Optional[str])
+
+slots.fit_range_min = Slot(uri=BASALT_SCHEMA.fit_range_min, name="fit_range_min", curie=BASALT_SCHEMA.curie('fit_range_min'),
+                   model_uri=BASALT_SCHEMA.fit_range_min, domain=None, range=Optional[float])
+
+slots.fit_range_max = Slot(uri=BASALT_SCHEMA.fit_range_max, name="fit_range_max", curie=BASALT_SCHEMA.curie('fit_range_max'),
+                   model_uri=BASALT_SCHEMA.fit_range_max, domain=None, range=Optional[float])
+
+slots.fit_range_unit = Slot(uri=BASALT_SCHEMA.fit_range_unit, name="fit_range_unit", curie=BASALT_SCHEMA.curie('fit_range_unit'),
+                   model_uri=BASALT_SCHEMA.fit_range_unit, domain=None, range=Optional[str])
+
+slots.n_data_points = Slot(uri=BASALT_SCHEMA.n_data_points, name="n_data_points", curie=BASALT_SCHEMA.curie('n_data_points'),
+                   model_uri=BASALT_SCHEMA.n_data_points, domain=None, range=Optional[int])
+
+slots.n_variables = Slot(uri=BASALT_SCHEMA.n_variables, name="n_variables", curie=BASALT_SCHEMA.curie('n_variables'),
+                   model_uri=BASALT_SCHEMA.n_variables, domain=None, range=Optional[int])
+
+slots.n_standards = Slot(uri=BASALT_SCHEMA.n_standards, name="n_standards", curie=BASALT_SCHEMA.curie('n_standards'),
+                   model_uri=BASALT_SCHEMA.n_standards, domain=None, range=Optional[int])
+
+slots.weights_sum_to_1 = Slot(uri=BASALT_SCHEMA.weights_sum_to_1, name="weights_sum_to_1", curie=BASALT_SCHEMA.curie('weights_sum_to_1'),
+                   model_uri=BASALT_SCHEMA.weights_sum_to_1, domain=None, range=Optional[str])
+
+slots.weights_bounded = Slot(uri=BASALT_SCHEMA.weights_bounded, name="weights_bounded", curie=BASALT_SCHEMA.curie('weights_bounded'),
+                   model_uri=BASALT_SCHEMA.weights_bounded, domain=None, range=Optional[str])
+
+slots.e0_shift_used = Slot(uri=BASALT_SCHEMA.e0_shift_used, name="e0_shift_used", curie=BASALT_SCHEMA.curie('e0_shift_used'),
+                   model_uri=BASALT_SCHEMA.e0_shift_used, domain=None, range=Optional[str])
+
+slots.noise_added = Slot(uri=BASALT_SCHEMA.noise_added, name="noise_added", curie=BASALT_SCHEMA.curie('noise_added'),
+                   model_uri=BASALT_SCHEMA.noise_added, domain=None, range=Optional[float])
+
+slots.r_factor = Slot(uri=BASALT_SCHEMA.r_factor, name="r_factor", curie=BASALT_SCHEMA.curie('r_factor'),
+                   model_uri=BASALT_SCHEMA.r_factor, domain=None, range=Optional[float])
+
+slots.chi_square = Slot(uri=BASALT_SCHEMA.chi_square, name="chi_square", curie=BASALT_SCHEMA.curie('chi_square'),
+                   model_uri=BASALT_SCHEMA.chi_square, domain=None, range=Optional[float])
+
+slots.reduced_chi_square = Slot(uri=BASALT_SCHEMA.reduced_chi_square, name="reduced_chi_square", curie=BASALT_SCHEMA.curie('reduced_chi_square'),
+                   model_uri=BASALT_SCHEMA.reduced_chi_square, domain=None, range=Optional[float])
+
+slots.weights_sum = Slot(uri=BASALT_SCHEMA.weights_sum, name="weights_sum", curie=BASALT_SCHEMA.curie('weights_sum'),
+                   model_uri=BASALT_SCHEMA.weights_sum, domain=None, range=Optional[float])
+
+slots.std_index = Slot(uri=BASALT_SCHEMA.std_index, name="std_index", curie=BASALT_SCHEMA.curie('std_index'),
+                   model_uri=BASALT_SCHEMA.std_index, domain=None, range=Optional[int])
+
+slots.std_name = Slot(uri=BASALT_SCHEMA.std_name, name="std_name", curie=BASALT_SCHEMA.curie('std_name'),
+                   model_uri=BASALT_SCHEMA.std_name, domain=None, range=Optional[str])
+
+slots.weight = Slot(uri=BASALT_SCHEMA.weight, name="weight", curie=BASALT_SCHEMA.curie('weight'),
+                   model_uri=BASALT_SCHEMA.weight, domain=None, range=Optional[float])
+
+slots.species_name = Slot(uri=BASALT_SCHEMA.species_name, name="species_name", curie=BASALT_SCHEMA.curie('species_name'),
+                   model_uri=BASALT_SCHEMA.species_name, domain=None, range=Optional[str])
+
+slots.proportion = Slot(uri=BASALT_SCHEMA.proportion, name="proportion", curie=BASALT_SCHEMA.curie('proportion'),
+                   model_uri=BASALT_SCHEMA.proportion, domain=None, range=Optional[float])
+
+slots.uncertainty = Slot(uri=BASALT_SCHEMA.uncertainty, name="uncertainty", curie=BASALT_SCHEMA.curie('uncertainty'),
+                   model_uri=BASALT_SCHEMA.uncertainty, domain=None, range=Optional[float])
+
+slots.x_val = Slot(uri=BASALT_SCHEMA.x_val, name="x_val", curie=BASALT_SCHEMA.curie('x_val'),
+                   model_uri=BASALT_SCHEMA.x_val, domain=None, range=Optional[float])
+
+slots.data_val = Slot(uri=BASALT_SCHEMA.data_val, name="data_val", curie=BASALT_SCHEMA.curie('data_val'),
+                   model_uri=BASALT_SCHEMA.data_val, domain=None, range=Optional[float])
+
+slots.fit_val = Slot(uri=BASALT_SCHEMA.fit_val, name="fit_val", curie=BASALT_SCHEMA.curie('fit_val'),
+                   model_uri=BASALT_SCHEMA.fit_val, domain=None, range=Optional[float])
+
+slots.residual = Slot(uri=BASALT_SCHEMA.residual, name="residual", curie=BASALT_SCHEMA.curie('residual'),
+                   model_uri=BASALT_SCHEMA.residual, domain=None, range=Optional[float])
+
+slots.produced_by_xas_run = Slot(uri=BASALT_SCHEMA.produced_by_xas_run, name="produced_by_xas_run", curie=BASALT_SCHEMA.curie('produced_by_xas_run'),
+                   model_uri=BASALT_SCHEMA.produced_by_xas_run, domain=None, range=Optional[Union[str, XASDataGenerationActivityId]])
+
+slots.uses_xas_raw_data = Slot(uri=BASALT_SCHEMA.uses_xas_raw_data, name="uses_xas_raw_data", curie=BASALT_SCHEMA.curie('uses_xas_raw_data'),
+                   model_uri=BASALT_SCHEMA.uses_xas_raw_data, domain=None, range=Optional[Union[Union[str, XASInstrumentDataId], list[Union[str, XASInstrumentDataId]]]])
+
+slots.results_from_xas_processing = Slot(uri=BASALT_SCHEMA.results_from_xas_processing, name="results_from_xas_processing", curie=BASALT_SCHEMA.curie('results_from_xas_processing'),
+                   model_uri=BASALT_SCHEMA.results_from_xas_processing, domain=None, range=Optional[Union[str, XASLCFDataProcessingActivityId]])
+
 slots.setup_date = Slot(uri=BASALT_SCHEMA.setup_date, name="setup_date", curie=BASALT_SCHEMA.curie('setup_date'),
                    model_uri=BASALT_SCHEMA.setup_date, domain=None, range=Union[str, XSDDateTime])
 
@@ -16677,6 +17865,30 @@ slots.xRDPhaseProduct__flag_halite = Slot(uri=BASALT_SCHEMA.flag_halite, name="x
 slots.xRDPhaseProduct__flag_gypsum = Slot(uri=BASALT_SCHEMA.flag_gypsum, name="xRDPhaseProduct__flag_gypsum", curie=BASALT_SCHEMA.curie('flag_gypsum'),
                    model_uri=BASALT_SCHEMA.xRDPhaseProduct__flag_gypsum, domain=None, range=Optional[Union[str, "ProcessedDataFlag"]])
 
+slots.xASInstrumentData__amplifiers = Slot(uri=BASALT_SCHEMA.amplifiers, name="xASInstrumentData__amplifiers", curie=BASALT_SCHEMA.curie('amplifiers'),
+                   model_uri=BASALT_SCHEMA.xASInstrumentData__amplifiers, domain=None, range=Optional[Union[Union[dict, XASAmplifier], list[Union[dict, XASAmplifier]]]])
+
+slots.xASInstrumentData__motors = Slot(uri=BASALT_SCHEMA.motors, name="xASInstrumentData__motors", curie=BASALT_SCHEMA.curie('motors'),
+                   model_uri=BASALT_SCHEMA.xASInstrumentData__motors, domain=None, range=Optional[Union[Union[dict, XASMotorPosition], list[Union[dict, XASMotorPosition]]]])
+
+slots.xASInstrumentData__signal_columns = Slot(uri=BASALT_SCHEMA.signal_columns, name="xASInstrumentData__signal_columns", curie=BASALT_SCHEMA.curie('signal_columns'),
+                   model_uri=BASALT_SCHEMA.xASInstrumentData__signal_columns, domain=None, range=Optional[Union[Union[dict, XASSignalColumn], list[Union[dict, XASSignalColumn]]]])
+
+slots.xASInstrumentData__data_rows = Slot(uri=BASALT_SCHEMA.data_rows, name="xASInstrumentData__data_rows", curie=BASALT_SCHEMA.curie('data_rows'),
+                   model_uri=BASALT_SCHEMA.xASInstrumentData__data_rows, domain=None, range=Optional[Union[Union[dict, XASDataRow], list[Union[dict, XASDataRow]]]])
+
+slots.xASInstrumentData__ion_chambers = Slot(uri=BASALT_SCHEMA.ion_chambers, name="xASInstrumentData__ion_chambers", curie=BASALT_SCHEMA.curie('ion_chambers'),
+                   model_uri=BASALT_SCHEMA.xASInstrumentData__ion_chambers, domain=None, range=Optional[Union[Union[dict, XASIonChamber], list[Union[dict, XASIonChamber]]]])
+
+slots.xASLCFProduct__standards = Slot(uri=BASALT_SCHEMA.standards, name="xASLCFProduct__standards", curie=BASALT_SCHEMA.curie('standards'),
+                   model_uri=BASALT_SCHEMA.xASLCFProduct__standards, domain=None, range=Optional[Union[Union[dict, XASLCFStandard], list[Union[dict, XASLCFStandard]]]])
+
+slots.xASLCFProduct__species_proportions = Slot(uri=BASALT_SCHEMA.species_proportions, name="xASLCFProduct__species_proportions", curie=BASALT_SCHEMA.curie('species_proportions'),
+                   model_uri=BASALT_SCHEMA.xASLCFProduct__species_proportions, domain=None, range=Optional[Union[Union[dict, XASLCFSpeciesProportion], list[Union[dict, XASLCFSpeciesProportion]]]])
+
+slots.xASLCFProduct__lcf_data_rows = Slot(uri=BASALT_SCHEMA.lcf_data_rows, name="xASLCFProduct__lcf_data_rows", curie=BASALT_SCHEMA.curie('lcf_data_rows'),
+                   model_uri=BASALT_SCHEMA.xASLCFProduct__lcf_data_rows, domain=None, range=Optional[Union[Union[dict, XASLCFDataRow], list[Union[dict, XASLCFDataRow]]]])
+
 slots.organism__id = Slot(uri=BASALT_SCHEMA.id, name="organism__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.organism__id, domain=None, range=URIRef)
 
@@ -17048,6 +18260,42 @@ slots.MassSpectrometryDataGenerationActivity_acquisition_end_time = Slot(uri=BAS
 
 slots.NucleotideSequencing_external_identifiers = Slot(uri=BASALT_SCHEMA.external_identifiers, name="NucleotideSequencing_external_identifiers", curie=BASALT_SCHEMA.curie('external_identifiers'),
                    model_uri=BASALT_SCHEMA.NucleotideSequencing_external_identifiers, domain=NucleotideSequencing, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
+
+slots.XASAmplifier_amp_index = Slot(uri=BASALT_SCHEMA.amp_index, name="XASAmplifier_amp_index", curie=BASALT_SCHEMA.curie('amp_index'),
+                   model_uri=BASALT_SCHEMA.XASAmplifier_amp_index, domain=XASAmplifier, range=int)
+
+slots.XASMotorPosition_motor_index = Slot(uri=BASALT_SCHEMA.motor_index, name="XASMotorPosition_motor_index", curie=BASALT_SCHEMA.curie('motor_index'),
+                   model_uri=BASALT_SCHEMA.XASMotorPosition_motor_index, domain=XASMotorPosition, range=int)
+
+slots.XASSignalColumn_col_index = Slot(uri=BASALT_SCHEMA.col_index, name="XASSignalColumn_col_index", curie=BASALT_SCHEMA.curie('col_index'),
+                   model_uri=BASALT_SCHEMA.XASSignalColumn_col_index, domain=XASSignalColumn, range=int)
+
+slots.XASDataRow_row_num = Slot(uri=BASALT_SCHEMA.row_num, name="XASDataRow_row_num", curie=BASALT_SCHEMA.curie('row_num'),
+                   model_uri=BASALT_SCHEMA.XASDataRow_row_num, domain=XASDataRow, range=int)
+
+slots.XASIonChamber_chamber_index = Slot(uri=BASALT_SCHEMA.chamber_index, name="XASIonChamber_chamber_index", curie=BASALT_SCHEMA.curie('chamber_index'),
+                   model_uri=BASALT_SCHEMA.XASIonChamber_chamber_index, domain=XASIonChamber, range=int)
+
+slots.XASIonChamber_gas_index = Slot(uri=BASALT_SCHEMA.gas_index, name="XASIonChamber_gas_index", curie=BASALT_SCHEMA.curie('gas_index'),
+                   model_uri=BASALT_SCHEMA.XASIonChamber_gas_index, domain=XASIonChamber, range=int)
+
+slots.XASLCFStandard_std_index = Slot(uri=BASALT_SCHEMA.std_index, name="XASLCFStandard_std_index", curie=BASALT_SCHEMA.curie('std_index'),
+                   model_uri=BASALT_SCHEMA.XASLCFStandard_std_index, domain=XASLCFStandard, range=int)
+
+slots.XASLCFStandard_std_name = Slot(uri=BASALT_SCHEMA.std_name, name="XASLCFStandard_std_name", curie=BASALT_SCHEMA.curie('std_name'),
+                   model_uri=BASALT_SCHEMA.XASLCFStandard_std_name, domain=XASLCFStandard, range=str)
+
+slots.XASLCFSpeciesProportion_species_name = Slot(uri=BASALT_SCHEMA.species_name, name="XASLCFSpeciesProportion_species_name", curie=BASALT_SCHEMA.curie('species_name'),
+                   model_uri=BASALT_SCHEMA.XASLCFSpeciesProportion_species_name, domain=XASLCFSpeciesProportion, range=str)
+
+slots.XASLCFSpeciesProportion_proportion = Slot(uri=BASALT_SCHEMA.proportion, name="XASLCFSpeciesProportion_proportion", curie=BASALT_SCHEMA.curie('proportion'),
+                   model_uri=BASALT_SCHEMA.XASLCFSpeciesProportion_proportion, domain=XASLCFSpeciesProportion, range=float)
+
+slots.XASLCFDataRow_row_num = Slot(uri=BASALT_SCHEMA.row_num, name="XASLCFDataRow_row_num", curie=BASALT_SCHEMA.curie('row_num'),
+                   model_uri=BASALT_SCHEMA.XASLCFDataRow_row_num, domain=XASLCFDataRow, range=int)
+
+slots.XASLCFDataRow_x_val = Slot(uri=BASALT_SCHEMA.x_val, name="XASLCFDataRow_x_val", curie=BASALT_SCHEMA.curie('x_val'),
+                   model_uri=BASALT_SCHEMA.XASLCFDataRow_x_val, domain=XASLCFDataRow, range=float)
 
 slots.organism_strain_identifier = Slot(uri=BASALT_SCHEMA.strain_identifier, name="organism_strain_identifier", curie=BASALT_SCHEMA.curie('strain_identifier'),
                    model_uri=BASALT_SCHEMA.organism_strain_identifier, domain=Organism, range=str)

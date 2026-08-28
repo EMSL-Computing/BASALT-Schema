@@ -116,21 +116,11 @@ URI: [basalt_schema:Sample](https://emsl-computing.github.io/BASALT-Schema/eleme
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [ProcessedData](ProcessedData.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
-| [SampleProcessing](SampleProcessing.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [ProcessingSampleLink](ProcessingSampleLink.md) | [sample_base_id](sample_base_id.md) | range | [Sample](Sample.md) |
+| [ProcessingSampleLink](ProcessingSampleLink.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [MassSpectrometryDataProduct](MassSpectrometryDataProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [MSImageProduct](MSImageProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [MolecularIdentificationProduct](MolecularIdentificationProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [MetaproteomicsProduct](MetaproteomicsProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
-| [MediaPreparation](MediaPreparation.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [CultureGrowth](CultureGrowth.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [StrainPurity](StrainPurity.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [StockCulturePreparation](StockCulturePreparation.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [PreCultureGrowth](PreCultureGrowth.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [ExperimentalCulture](ExperimentalCulture.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [PlateSetupActivity](PlateSetupActivity.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
 | [MetagenomicsProduct](MetagenomicsProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [MetagenomicsAnnotationProduct](MetagenomicsAnnotationProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [MetagenomicsBinningProduct](MetagenomicsBinningProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
@@ -151,16 +141,7 @@ URI: [basalt_schema:Sample](https://emsl-computing.github.io/BASALT-Schema/eleme
 | [XRayDataProduct](XRayDataProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [XRFElementalProduct](XRFElementalProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [XRDPhaseProduct](XRDPhaseProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
-| [StandardSampleProcessing](StandardSampleProcessing.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [ChemicalConversionProcess](ChemicalConversionProcess.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [Extraction](Extraction.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [FractionationProcess](FractionationProcess.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [NormalizationProcess](NormalizationProcess.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [PoolingProcess](PoolingProcess.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [ProteinQuantification](ProteinQuantification.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [ResuspensionProcess](ResuspensionProcess.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [SolidPhaseExtractionProcess](SolidPhaseExtractionProcess.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
-| [SubSamplingProcess](SubSamplingProcess.md) | [uses_sample](uses_sample.md) | range | [Sample](Sample.md) |
+| [XASLCFProduct](XASLCFProduct.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 
 
 
@@ -251,7 +232,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -294,6 +274,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -351,7 +332,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -394,6 +374,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -426,13 +407,13 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -458,13 +439,13 @@ attributes:
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue

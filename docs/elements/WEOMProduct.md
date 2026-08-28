@@ -5,8 +5,6 @@
 
 _Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar instrument._
 
-_One row per sample with columns for total organic carbon and total nitrogen._
-
 _Individual QC flags for each measurement using ProcessedDataFlag enum._
 
 
@@ -193,8 +191,6 @@ name: WEOMProduct
 description: 'Water Extractable Organic Matter (WEOM) analysis product, typically
   derived via Shimadzu TOC-L or similar instrument.
 
-  One row per sample with columns for total organic carbon and total nitrogen.
-
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 slots:
@@ -225,7 +221,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -268,6 +263,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -349,8 +345,6 @@ name: WEOMProduct
 description: 'Water Extractable Organic Matter (WEOM) analysis product, typically
   derived via Shimadzu TOC-L or similar instrument.
 
-  One row per sample with columns for total organic carbon and total nitrogen.
-
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 attributes:
@@ -380,7 +374,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -423,6 +416,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -534,6 +528,7 @@ attributes:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   replicate:
     name: replicate

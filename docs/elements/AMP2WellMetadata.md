@@ -173,6 +173,7 @@ attributes:
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     domain_of:
     - ProcessedData
+    - ProcessingSampleLink
     - AMP2WellMetadata
     - MetagenomicsProduct
     range: string
@@ -252,6 +253,7 @@ attributes:
     owner: AMP2WellMetadata
     domain_of:
     - ProcessedData
+    - ProcessingSampleLink
     - AMP2WellMetadata
     - MetagenomicsProduct
     range: string
@@ -272,12 +274,12 @@ attributes:
     name: position
     description: Well position (e.g. "A01", "H12")
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
-    rank: 1000
     alias: position
     owner: AMP2WellMetadata
     domain_of:
     - WellMetadata
     - WellReading
+    - XASMotorPosition
     range: string
     required: true
   well_type:

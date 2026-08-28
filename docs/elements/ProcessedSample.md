@@ -3,7 +3,27 @@
 # Class: Processed Sample (ProcessedSample) 
 
 
-_A sample that has undergone processing or analysis. Processed Sample entities are derived from Activities. The upstream SampleProcessing that produced this ProcessedSample is referenced via sampled_during._
+_A sample that has undergone processing. Processed Sample entities are derived from_
+
+_SampleProcessing activities._
+
+__
+
+_This class carries no pointer to the activity that produced it. That edge is the_
+
+_ProcessingSampleLink row with role = output_sample naming this sample, which is_
+
+_the single representation of every sample-to-processing edge in the schema._
+
+__
+
+_Note that sampled_during is deliberately NOT reused here the way it is on_
+
+_environmental Sample subclasses. There it points at a SamplingActivity (collection_
+
+_from an environment); the processing edge is a different relationship and lives in_
+
+_ProcessingSampleLink only._
 
 
 
@@ -42,17 +62,6 @@ URI: [basalt_schema:ProcessedSample](https://emsl-computing.github.io/BASALT-Sch
       ProcessedSample : name
         
       ProcessedSample : replicate
-        
-      ProcessedSample : sampled_during
-        
-          
-    
-        
-        
-        ProcessedSample --> "0..1" SampleProcessing : sampled_during
-        click SampleProcessing href "../SampleProcessing/"
-    
-
         
       ProcessedSample : sampled_portion
         
@@ -94,7 +103,6 @@ URI: [basalt_schema:ProcessedSample](https://emsl-computing.github.io/BASALT-Sch
 | [total_amount_ug](total_amount_ug.md) | 0..1 <br/> [Float](Float.md) | Total amount of analyte in micrograms | direct |
 | [volume_uL](volume_uL.md) | 0..1 <br/> [Float](Float.md) | Volume of the entity in microliters | direct |
 | [sampled_portion](sampled_portion.md) | 0..1 <br/> [SamplePortionEnum](SamplePortionEnum.md) | The portion of the original sample used in creating this processed sample (e | direct |
-| [sampled_during](sampled_during.md) | 0..1 <br/> [SampleProcessing](SampleProcessing.md) | A reference to the sample processing activity (generally lab work) that gener... | direct |
 | [replicate](replicate.md) | 0..1 <br/> [Integer](Integer.md) | The TECHNICAL replicate number of the processed sample, if applicable | direct |
 | [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [Sample](Sample.md) |
@@ -114,6 +122,7 @@ URI: [basalt_schema:ProcessedSample](https://emsl-computing.github.io/BASALT-Sch
 | [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
+| [XASDataGenerationActivity](XASDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | [media_ref](media_ref.md) | range | [ProcessedSample](ProcessedSample.md) |
 | [PlateDataGenerationActivity](PlateDataGenerationActivity.md) | [analyte_id](analyte_id.md) | range | [ProcessedSample](ProcessedSample.md) |
@@ -168,9 +177,27 @@ URI: [basalt_schema:ProcessedSample](https://emsl-computing.github.io/BASALT-Sch
 <details>
 ```yaml
 name: ProcessedSample
-description: A sample that has undergone processing or analysis. Processed Sample
-  entities are derived from Activities. The upstream SampleProcessing that produced
-  this ProcessedSample is referenced via sampled_during.
+description: 'A sample that has undergone processing. Processed Sample entities are
+  derived from
+
+  SampleProcessing activities.
+
+
+  This class carries no pointer to the activity that produced it. That edge is the
+
+  ProcessingSampleLink row with role = output_sample naming this sample, which is
+
+  the single representation of every sample-to-processing edge in the schema.
+
+
+  Note that sampled_during is deliberately NOT reused here the way it is on
+
+  environmental Sample subclasses. There it points at a SamplingActivity (collection
+
+  from an environment); the processing edge is a different relationship and lives
+  in
+
+  ProcessingSampleLink only.'
 title: Processed Sample
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Sample
@@ -181,17 +208,11 @@ slots:
 - total_amount_ug
 - volume_uL
 - sampled_portion
-- sampled_during
 - replicate
 slot_usage:
   replicate:
     name: replicate
     description: The TECHNICAL replicate number of the processed sample, if applicable.
-  sampled_during:
-    name: sampled_during
-    description: A reference to the sample processing activity (generally lab work)
-      that generated this processed_sample.
-    range: SampleProcessing
 attributes:
   id:
     name: id
@@ -217,7 +238,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -260,6 +280,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -281,9 +302,27 @@ attributes:
 <details>
 ```yaml
 name: ProcessedSample
-description: A sample that has undergone processing or analysis. Processed Sample
-  entities are derived from Activities. The upstream SampleProcessing that produced
-  this ProcessedSample is referenced via sampled_during.
+description: 'A sample that has undergone processing. Processed Sample entities are
+  derived from
+
+  SampleProcessing activities.
+
+
+  This class carries no pointer to the activity that produced it. That edge is the
+
+  ProcessingSampleLink row with role = output_sample naming this sample, which is
+
+  the single representation of every sample-to-processing edge in the schema.
+
+
+  Note that sampled_during is deliberately NOT reused here the way it is on
+
+  environmental Sample subclasses. There it points at a SamplingActivity (collection
+
+  from an environment); the processing edge is a different relationship and lives
+  in
+
+  ProcessingSampleLink only.'
 title: Processed Sample
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: Sample
@@ -291,11 +330,6 @@ slot_usage:
   replicate:
     name: replicate
     description: The TECHNICAL replicate number of the processed sample, if applicable.
-  sampled_during:
-    name: sampled_during
-    description: A reference to the sample processing activity (generally lab work)
-      that generated this processed_sample.
-    range: SampleProcessing
 attributes:
   id:
     name: id
@@ -323,7 +357,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -366,6 +399,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -441,32 +475,6 @@ attributes:
     domain_of:
     - ProcessedSample
     range: SamplePortionEnum
-  sampled_during:
-    name: sampled_during
-    description: A reference to the sample processing activity (generally lab work)
-      that generated this processed_sample.
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    alias: sampled_during
-    owner: ProcessedSample
-    domain_of:
-    - AerosolArmSample
-    - AerosolSample
-    - CommerciallyPurchasedSample
-    - CultureEnvironmentalSample
-    - FieldDeployedTerraformSample
-    - MixedCultureSample
-    - MonetSoilSample
-    - OtherUndescribedSample
-    - PlantSample
-    - PureCultureSample
-    - SedimentSample
-    - SoilSample
-    - SynthesizedMaterialSample
-    - TerraformSample
-    - WaterSample
-    - ProcessedSample
-    range: SampleProcessing
   replicate:
     name: replicate
     description: The TECHNICAL replicate number of the processed sample, if applicable.
@@ -504,13 +512,13 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -536,13 +544,13 @@ attributes:
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue

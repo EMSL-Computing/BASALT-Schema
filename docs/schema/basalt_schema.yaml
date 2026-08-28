@@ -28,6 +28,7 @@ imports:
 - study
 - value_tables
 - zip_download
+- linkage_cache
 - basalt_schema
 license: CC0-1.0
 prefixes:
@@ -1089,6 +1090,10 @@ enums:
         text: Pfam_Annotation_GFF
       Direct_Infusion_FT_ICR_MS_Raw_Data:
         text: Direct_Infusion_FT_ICR_MS_Raw_Data
+      XAS_Raw_Sweep_File:
+        text: XAS_Raw_Sweep_File
+      XAS_LCF_Output:
+        text: XAS_LCF_Output
   FormulationEnum:
     name: FormulationEnum
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/FormulationEnum
@@ -1851,6 +1856,10 @@ enums:
         text: sr_1
       xth320:
         text: xth320
+      aps_20bm:
+        text: aps_20bm
+      xmap12b:
+        text: xmap12b
   ModificationMethodEnum:
     name: ModificationMethodEnum
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ModificationMethodEnum
@@ -2338,6 +2347,21 @@ enums:
         description: The portion of a mixture containing molecules dissolved in methanol
         is_a: organic_layer
         title: Methanol layer
+  SampleRole:
+    name: SampleRole
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/SampleRole
+    description: The direction in which a Sample participates in a SampleProcessing
+      activity. Recorded on ProcessingSampleLink, which is the authoritative record
+      of what each processing step consumed and produced.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/enums
+    permissible_values:
+      input_sample:
+        text: input_sample
+        description: The sample was consumed by the processing activity.
+      output_sample:
+        text: output_sample
+        description: The sample (always a ProcessedSample) was produced by the processing
+          activity.
   SampleStoreTempEnum:
     name: SampleStoreTempEnum
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/SampleStoreTempEnum
@@ -2930,6 +2954,35 @@ enums:
         text: rigaku
       panalytical:
         text: panalytical
+      aps_anl:
+        text: aps_anl
+  XASLCFType:
+    name: XASLCFType
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XASLCFType
+    description: LCF analysis subtype
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/enums
+    permissible_values:
+      XANES:
+        text: XANES
+        description: Normalised mu(E) vs energy fit
+      EXAFS:
+        text: EXAFS
+        description: chi(k) vs k fit
+  XASScanSubtype:
+    name: XASScanSubtype
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XASScanSubtype
+    description: XAS scan subtype detected from primary positioner column
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/enums
+    permissible_values:
+      energy:
+        text: energy
+        description: Energy scan; primary positioner is mono energy
+      motor:
+        text: motor
+        description: Motor scan; primary positioner is a physical motor
+      unknown:
+        text: unknown
+        description: Scan subtype could not be determined from file header
   YesNoEnum:
     name: YesNoEnum
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/YesNoEnum
@@ -4316,6 +4369,7 @@ slots:
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - TimestampValue
     - TextValue
     - SoftwareControlledTermValue
@@ -5542,13 +5596,30 @@ slots:
   in_protocol:
     name: in_protocol
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/in_protocol
-    description: The protocol that this SampleProcessing step is part of.
+    description: 'The SampleProcessingProtocol (the recipe) that this step follows.
+      Type-level, not instance-level: every execution of the same SOP points at the
+      same record, so this does NOT identify a particular chain. Use in_run for that.
+      A chain may mix protocols, so this is recorded per step rather than per run.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:in_protocol
+    owner: SampleProcessing
+    domain_of:
+    - SampleProcessing
+    range: SampleProcessingProtocol
+  in_run:
+    name: in_run
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/in_run
+    description: 'The SampleProcessingRun (one concrete execution) that this edge
+      belongs to. All ProcessingSampleLink rows in one chain share this value, which
+      is what makes "give me every step of this chain" a single indexed query and
+      what anchors step_number. Optional: a standalone StandardSampleProcessing needs
+      no run, because its processing_id already identifies the whole group.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:in_run
     owner: ProcessingSampleLink
     domain_of:
     - ProcessingSampleLink
-    range: SampleProcessingProtocol
+    range: SampleProcessingRun
   incubation_time_hours:
     name: incubation_time_hours
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/incubation_time_hours
@@ -6106,7 +6177,7 @@ slots:
       a set of  replicate measurements, or an average of several replicate measurements.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:measure_type
-    owner: XRDPhaseProduct
+    owner: XASLCFProduct
     domain_of:
     - BulkDensityProduct
     - ElementalAnalysisProduct
@@ -6125,6 +6196,7 @@ slots:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   measurement_type:
     name: measurement_type
@@ -6479,6 +6551,7 @@ slots:
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - SoftwareControlledTermValue
     range: string
     required: true
@@ -7665,7 +7738,6 @@ slots:
     owner: SampleProcessingProtocol
     domain_of:
     - DataGenerationActivity
-    - SampleProcessing
     - SampleProcessingProtocol
     range: string
   protocol_version:
@@ -7677,7 +7749,6 @@ slots:
     owner: SampleProcessingProtocol
     domain_of:
     - DataGenerationActivity
-    - SampleProcessing
     - SampleProcessingProtocol
     range: string
   provider_name:
@@ -8335,7 +8406,7 @@ slots:
       sampling event, such as date, device, method.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
     slot_uri: basalt_schema:sampled_during
-    owner: ProcessedSample
+    owner: WaterSample
     domain_of:
     - AerosolArmSample
     - AerosolSample
@@ -8352,7 +8423,6 @@ slots:
     - SynthesizedMaterialSample
     - TerraformSample
     - WaterSample
-    - ProcessedSample
     range: SamplingActivity
   sampled_portion:
     name: sampled_portion
@@ -8521,6 +8591,1084 @@ slots:
     - DataGenerationActivity
     range: integer
     required: false
+  facility:
+    name: facility
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/facility
+    description: Synchrotron facility name (e.g. APS, SSRL, NSLS-II)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:facility
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: string
+  beamline:
+    name: beamline
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/beamline
+    description: Beamline identifier (e.g. 20-BM, 20-ID)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:beamline
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: string
+  ring_energy_gev:
+    name: ring_energy_gev
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ring_energy_gev
+    description: Storage ring energy in GeV
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:ring_energy_gev
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: float
+  ring_current_ma:
+    name: ring_current_ma
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ring_current_ma
+    description: Storage ring current in mA at scan start
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:ring_current_ma
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: float
+  insertion_device:
+    name: insertion_device
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/insertion_device
+    description: Insertion device description (wiggler, undulator, bending magnet)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:insertion_device
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: string
+  element:
+    name: element
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/element
+    description: Target element (e.g. Fe, Mn, Cu)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:element
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: string
+  edge:
+    name: edge
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/edge
+    description: Absorption edge measured (e.g. K, L1, L3)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:edge
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: string
+  reference_material:
+    name: reference_material
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/reference_material
+    description: Reference standard material name
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:reference_material
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: string
+  xas_sample_type:
+    name: xas_sample_type
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/xas_sample_type
+    description: Sample type descriptor (e.g. powder, solution, thin_film)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:xas_sample_type
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: string
+  sample_format:
+    name: sample_format
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sample_format
+    description: Physical sample format (e.g. pellet, paste)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:sample_format
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: string
+  sample_holder:
+    name: sample_holder
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sample_holder
+    description: Holder/position identifier (e.g. 1002_1)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:sample_holder
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: string
+  sample_temperature_k:
+    name: sample_temperature_k
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sample_temperature_k
+    description: Sample temperature in Kelvin
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:sample_temperature_k
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: float
+  sample_orientation_deg:
+    name: sample_orientation_deg
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sample_orientation_deg
+    description: Sample orientation angle in degrees
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:sample_orientation_deg
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: float
+  sample_detector_distance_mm:
+    name: sample_detector_distance_mm
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sample_detector_distance_mm
+    description: Sample-to-detector distance in mm
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:sample_detector_distance_mm
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: float
+  sample_doi:
+    name: sample_doi
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sample_doi
+    description: DOI or persistent identifier for the sample
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:sample_doi
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: string
+  crystal:
+    name: crystal
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/crystal
+    description: Monochromator crystal material (e.g. Si)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:crystal
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: string
+  crystal_cut:
+    name: crystal_cut
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/crystal_cut
+    description: Crystal reflection (e.g. 111, 311)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:crystal_cut
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: string
+  crystal_detune_pct:
+    name: crystal_detune_pct
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/crystal_detune_pct
+    description: Crystal detuning percentage for harmonic rejection
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:crystal_detune_pct
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: float
+  mono_angle_deg:
+    name: mono_angle_deg
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/mono_angle_deg
+    description: Monochromator Bragg angle in degrees (Crystal_Phi)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:mono_angle_deg
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: float
+  mono_2nd_xtal_mm:
+    name: mono_2nd_xtal_mm
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/mono_2nd_xtal_mm
+    description: Second crystal gap position in mm (Crystal_Gap)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:mono_2nd_xtal_mm
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: float
+  mono_energy_motor_ev:
+    name: mono_energy_motor_ev
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/mono_energy_motor_ev
+    description: Monochromator energy from motor encoder in eV
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:mono_energy_motor_ev
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: float
+  mono_energy_encoder_ev:
+    name: mono_energy_encoder_ev
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/mono_energy_encoder_ev
+    description: Monochromator energy from independent encoder in eV
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:mono_energy_encoder_ev
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: float
+  mirror_angle_mrad:
+    name: mirror_angle_mrad
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/mirror_angle_mrad
+    description: M0 mirror angle in mrad
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:mirror_angle_mrad
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: float
+  m0_coating:
+    name: m0_coating
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/m0_coating
+    description: M0 mirror coating material (e.g. Rh, Pt)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:m0_coating
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: string
+  m0_cutoff_kev:
+    name: m0_cutoff_kev
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/m0_cutoff_kev
+    description: M0 mirror X-ray cutoff energy in keV
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:m0_cutoff_kev
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: float
+  m1_coating:
+    name: m1_coating
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/m1_coating
+    description: M1 mirror coating material
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:m1_coating
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: string
+  inhutch_mirror_coating:
+    name: inhutch_mirror_coating
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/inhutch_mirror_coating
+    description: In-hutch focusing mirror coating material
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:inhutch_mirror_coating
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: string
+  inhutch_mirror_cutoff_kev:
+    name: inhutch_mirror_cutoff_kev
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/inhutch_mirror_cutoff_kev
+    description: In-hutch mirror cutoff energy in keV
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:inhutch_mirror_cutoff_kev
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: float
+  slit_size_h_um:
+    name: slit_size_h_um
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/slit_size_h_um
+    description: Horizontal slit size in microns
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:slit_size_h_um
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: float
+  slit_size_v_um:
+    name: slit_size_v_um
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/slit_size_v_um
+    description: Vertical slit size in microns
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:slit_size_v_um
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: float
+  slit_center_h:
+    name: slit_center_h
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/slit_center_h
+    description: Horizontal slit center position (mm)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:slit_center_h
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: float
+  slit_center_v:
+    name: slit_center_v
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/slit_center_v
+    description: Vertical slit center position (mm)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:slit_center_v
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: float
+  beam_attenuation_um:
+    name: beam_attenuation_um
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/beam_attenuation_um
+    description: Attenuator thickness in microns
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:beam_attenuation_um
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: float
+  beam_attenuation_material:
+    name: beam_attenuation_material
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/beam_attenuation_material
+    description: Attenuator material (e.g. Al)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:beam_attenuation_material
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: string
+  sweep_number:
+    name: sweep_number
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sweep_number
+    description: 1-based sweep index within the measurement session
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:sweep_number
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: integer
+  scan_subtype:
+    name: scan_subtype
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/scan_subtype
+    description: Scan type, energy (XAS) or motor (alignment)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:scan_subtype
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: XASScanSubtype
+  positioner:
+    name: positioner
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/positioner
+    description: Primary positioner name (e.g. Mono Energy)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:positioner
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: string
+  e0_ev:
+    name: e0_ev
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/e0_ev
+    description: Absorption edge energy E0 in eV
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:e0_ev
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: float
+  n_points:
+    name: n_points
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/n_points
+    description: Number of scan points
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:n_points
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: integer
+  n_data_rows:
+    name: n_data_rows
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/n_data_rows
+    description: Number of data rows in the file
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:n_data_rows
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: integer
+  x_first:
+    name: x_first
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/x_first
+    description: First positioner value in the scan (eV or mm)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:x_first
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: float
+  x_last:
+    name: x_last
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/x_last
+    description: Last positioner value in the scan (eV or mm)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:x_last
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: float
+  scan_bounds:
+    name: scan_bounds
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/scan_bounds
+    description: Scan boundary string as written in file header
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:scan_bounds
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: string
+  scan_steps:
+    name: scan_steps
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/scan_steps
+    description: Step sizes string as written in file header
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:scan_steps
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: string
+  integration_times:
+    name: integration_times
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/integration_times
+    description: Integration times string as written in file header
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:integration_times
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: string
+  kwgt:
+    name: kwgt
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/kwgt
+    description: k-weighting exponent used in EXAFS region
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:kwgt
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: float
+  scan_time_sec:
+    name: scan_time_sec
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/scan_time_sec
+    description: Total scan duration in seconds
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:scan_time_sec
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: integer
+  scan_datetime:
+    name: scan_datetime
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/scan_datetime
+    description: Date and time at scan start
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:scan_datetime
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: datetime
+  fy_electronics:
+    name: fy_electronics
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/fy_electronics
+    description: Fluorescence detector electronics model (e.g. XMAP12B)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:fy_electronics
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: string
+  fy_channel_num:
+    name: fy_channel_num
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/fy_channel_num
+    description: Number of active fluorescence detector channels
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:fy_channel_num
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: integer
+  fy_element:
+    name: fy_element
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/fy_element
+    description: Target element detected by fluorescence detector (e.g. Fe)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:fy_element
+    owner: XASInstrumentData
+    domain_of:
+    - XASDataGenerationActivity
+    - XASInstrumentData
+    range: string
+  fy_transition:
+    name: fy_transition
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/fy_transition
+    description: X-ray transition detected (e.g. Ka, Kb)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:fy_transition
+    owner: XASInstrumentData
+    domain_of:
+    - XASDataGenerationActivity
+    - XASInstrumentData
+    range: string
+  user_comment:
+    name: user_comment
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/user_comment
+    description: Free-text user comment from scan header
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:user_comment
+    owner: XASDataGenerationActivity
+    domain_of:
+    - XASDataGenerationActivity
+    range: string
+  amp_index:
+    name: amp_index
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/amp_index
+    description: 1-based amplifier index (aligns with Amplifier_Gain_N)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:amp_index
+    owner: XASAmplifier
+    domain_of:
+    - XASAmplifier
+    range: integer
+  signal_name:
+    name: signal_name
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/signal_name
+    description: Signal channel name (e.g. I0, It, Iref)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:signal_name
+    owner: XASAmplifier
+    domain_of:
+    - XASAmplifier
+    range: string
+  gain:
+    name: gain
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/gain
+    description: Amplifier gain value
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:gain
+    owner: XASAmplifier
+    domain_of:
+    - XASAmplifier
+    range: float
+  gain_unit:
+    name: gain_unit
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/gain_unit
+    description: Gain unit as written in file (e.g. nA/V, pA/V)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:gain_unit
+    owner: XASAmplifier
+    domain_of:
+    - XASAmplifier
+    range: string
+  voltage_start:
+    name: voltage_start
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/voltage_start
+    description: Analog input voltage at scan start (V)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:voltage_start
+    owner: XASAmplifier
+    domain_of:
+    - XASAmplifier
+    range: float
+  voltage_end:
+    name: voltage_end
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/voltage_end
+    description: Analog input voltage at scan end (V)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:voltage_end
+    owner: XASAmplifier
+    domain_of:
+    - XASAmplifier
+    range: float
+  motor_index:
+    name: motor_index
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/motor_index
+    description: 1-based motor index (aligns with Motor_N_Pos)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:motor_index
+    owner: XASMotorPosition
+    domain_of:
+    - XASMotorPosition
+    range: integer
+  motor_name:
+    name: motor_name
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/motor_name
+    description: Motor name (e.g. Disp_V_polycold)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:motor_name
+    owner: XASMotorPosition
+    domain_of:
+    - XASMotorPosition
+    range: string
+  pv:
+    name: pv
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/pv
+    description: EPICS process variable name (e.g. 20bm:m28)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:pv
+    owner: XASSignalColumn
+    domain_of:
+    - XASMotorPosition
+    - XASSignalColumn
+    range: string
+  position:
+    name: position
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/position
+    description: Motor position value at scan start
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:position
+    owner: XASMotorPosition
+    domain_of:
+    - XASMotorPosition
+    range: float
+  col_index:
+    name: col_index
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/col_index
+    description: 1-based column index (aligns with Analog_In_Signal_Type_N)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:col_index
+    owner: XASSignalColumn
+    domain_of:
+    - XASSignalColumn
+    range: integer
+  col_name:
+    name: col_name
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/col_name
+    description: Detector column name (e.g. XMAP12B:FeKa_Sum)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:col_name
+    owner: XASSignalColumn
+    domain_of:
+    - XASSignalColumn
+    range: string
+  row_num:
+    name: row_num
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/row_num
+    description: 1-based row index within the sweep file
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:row_num
+    owner: XASLCFDataRow
+    domain_of:
+    - XASDataRow
+    - XASLCFDataRow
+    range: integer
+  row_val:
+    name: row_val
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/row_val
+    description: Representative value at this scan point
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:row_val
+    owner: XASDataRow
+    domain_of:
+    - XASDataRow
+    range: float
+  chamber_index:
+    name: chamber_index
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/chamber_index
+    description: Ion chamber index (1=I0, 2=It, 3=Iref)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:chamber_index
+    owner: XASIonChamber
+    domain_of:
+    - XASIonChamber
+    range: integer
+  gas_index:
+    name: gas_index
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/gas_index
+    description: 1-based gas component index within the chamber mixture
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:gas_index
+    owner: XASIonChamber
+    domain_of:
+    - XASIonChamber
+    range: integer
+  gas_name:
+    name: gas_name
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/gas_name
+    description: Fill gas name (e.g. Nitrogen, Helium, Argon)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:gas_name
+    owner: XASIonChamber
+    domain_of:
+    - XASIonChamber
+    range: string
+  chamber_length_mm:
+    name: chamber_length_mm
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/chamber_length_mm
+    description: Physical ion chamber length in mm
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:chamber_length_mm
+    owner: XASIonChamber
+    domain_of:
+    - XASIonChamber
+    range: float
+  pressure_bar:
+    name: pressure_bar
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/pressure_bar
+    description: Gas fill pressure in bar
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:pressure_bar
+    owner: XASIonChamber
+    domain_of:
+    - XASIonChamber
+    range: float
+  xas_filename:
+    name: xas_filename
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/xas_filename
+    description: Measurement filename stem linking LCF results to source XAS data
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:xas_filename
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: string
+  lcf_type:
+    name: lcf_type
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/lcf_type
+    description: LCF analysis subtype, XANES or EXAFS
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:lcf_type
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: XASLCFType
+  run_label:
+    name: run_label
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/run_label
+    description: Analysis run variant label extracted from filename
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:run_label
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: string
+  fit_label:
+    name: fit_label
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/fit_label
+    description: Iteration label for EXAFS fits extracted from filename
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:fit_label
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: string
+  analysis_code:
+    name: analysis_code
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/analysis_code
+    description: Athena or Larch internal code from the .lcf filename
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:analysis_code
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: string
+  sample_nor_file:
+    name: sample_nor_file
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sample_nor_file
+    description: Normalised spectrum filename recorded in the LCF header
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:sample_nor_file
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: string
+  fit_range_min:
+    name: fit_range_min
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/fit_range_min
+    description: Lower bound of fit range (eV for XANES, A^-1 for EXAFS)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:fit_range_min
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: float
+  fit_range_max:
+    name: fit_range_max
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/fit_range_max
+    description: Upper bound of fit range (eV for XANES, A^-1 for EXAFS)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:fit_range_max
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: float
+  fit_range_unit:
+    name: fit_range_unit
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/fit_range_unit
+    description: Unit of fit range (eV for XANES, A^-1 for EXAFS)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:fit_range_unit
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: string
+  n_data_points:
+    name: n_data_points
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/n_data_points
+    description: Number of data points included in the fit
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:n_data_points
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: integer
+  n_variables:
+    name: n_variables
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/n_variables
+    description: Number of free variables in the fit
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:n_variables
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: integer
+  n_standards:
+    name: n_standards
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/n_standards
+    description: Number of reference standards used in the linear combination
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:n_standards
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: integer
+  weights_sum_to_1:
+    name: weights_sum_to_1
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/weights_sum_to_1
+    description: Whether component weights were constrained to sum to 1.0
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:weights_sum_to_1
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: string
+  weights_bounded:
+    name: weights_bounded
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/weights_bounded
+    description: Whether component weights were bounded between 0 and 1
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:weights_bounded
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: string
+  e0_shift_used:
+    name: e0_shift_used
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/e0_shift_used
+    description: Whether an overall E0 energy shift was applied
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:e0_shift_used
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: string
+  noise_added:
+    name: noise_added
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/noise_added
+    description: Statistical noise added to data before fitting (0 if none)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:noise_added
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: float
+  r_factor:
+    name: r_factor
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/r_factor
+    description: R-factor goodness-of-fit statistic
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:r_factor
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: float
+  chi_square:
+    name: chi_square
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/chi_square
+    description: Chi-square statistic from the LCF fit
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:chi_square
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: float
+  reduced_chi_square:
+    name: reduced_chi_square
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/reduced_chi_square
+    description: Reduced chi-square statistic
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:reduced_chi_square
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: float
+  weights_sum:
+    name: weights_sum
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/weights_sum
+    description: Actual sum of fitted component weights
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:weights_sum
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFDataProcessingActivity
+    - XASLCFProduct
+    range: float
+  std_index:
+    name: std_index
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/std_index
+    description: 1-based index of the reference standard in the fit
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:std_index
+    owner: XASLCFStandard
+    domain_of:
+    - XASLCFStandard
+    range: integer
+  std_name:
+    name: std_name
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/std_name
+    description: Reference standard name as written in the Athena or Larch project
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:std_name
+    owner: XASLCFStandard
+    domain_of:
+    - XASLCFStandard
+    range: string
+  weight:
+    name: weight
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/weight
+    description: Fitted weight (fraction) for this standard component
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:weight
+    owner: XASLCFStandard
+    domain_of:
+    - XASLCFStandard
+    range: float
+  species_name:
+    name: species_name
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/species_name
+    description: Chemical species or oxidation state name from the LCF report
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:species_name
+    owner: XASLCFSpeciesProportion
+    domain_of:
+    - XASLCFSpeciesProportion
+    range: string
+  proportion:
+    name: proportion
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/proportion
+    description: Species proportion in sample (fraction 0-1)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:proportion
+    owner: XASLCFSpeciesProportion
+    domain_of:
+    - XASLCFSpeciesProportion
+    range: float
+  uncertainty:
+    name: uncertainty
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/uncertainty
+    description: Uncertainty on the species proportion (fraction)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:uncertainty
+    owner: XASLCFSpeciesProportion
+    domain_of:
+    - XASLCFSpeciesProportion
+    range: float
+  x_val:
+    name: x_val
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/x_val
+    description: Positioner value at this data point (energy in eV or k in A^-1)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:x_val
+    owner: XASLCFDataRow
+    domain_of:
+    - XASLCFDataRow
+    range: float
+  data_val:
+    name: data_val
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/data_val
+    description: Measured normalised spectrum value at this point
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:data_val
+    owner: XASLCFDataRow
+    domain_of:
+    - XASLCFDataRow
+    range: float
+  fit_val:
+    name: fit_val
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/fit_val
+    description: LCF fitted curve value at this point
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:fit_val
+    owner: XASLCFDataRow
+    domain_of:
+    - XASLCFDataRow
+    range: float
+  residual:
+    name: residual
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/residual
+    description: Fit residual at this point (data_val - fit_val)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:residual
+    owner: XASLCFDataRow
+    domain_of:
+    - XASLCFDataRow
+    range: float
+  produced_by_xas_run:
+    name: produced_by_xas_run
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/produced_by_xas_run
+    description: Reference to the XAS data generation activity that produced this
+      raw file
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:produced_by_xas_run
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: XASDataGenerationActivity
+  uses_xas_raw_data:
+    name: uses_xas_raw_data
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/uses_xas_raw_data
+    description: Raw XAS instrument data inputs consumed by this LCF processing activity
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:uses_xas_raw_data
+    owner: XASLCFDataProcessingActivity
+    domain_of:
+    - XASLCFDataProcessingActivity
+    range: XASInstrumentData
+    multivalued: true
+    inlined: false
+  results_from_xas_processing:
+    name: results_from_xas_processing
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/results_from_xas_processing
+    description: Reference to the XAS LCF processing activity that produced this processed
+      product
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    slot_uri: basalt_schema:results_from_xas_processing
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFProduct
+    range: XASLCFDataProcessingActivity
   setup_date:
     name: setup_date
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/setup_date
@@ -9792,17 +10940,6 @@ slots:
     domain_of:
     - MassSpectrometryDataProcessingActivity
     range: MassSpectrometryInstrumentData
-  uses_sample:
-    name: uses_sample
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/uses_sample
-    description: The starting sample that is being processed or analyzed. This slot
-      should only be used on an Activity class.
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    slot_uri: basalt_schema:uses_sample
-    owner: SampleProcessing
-    domain_of:
-    - SampleProcessing
-    range: Sample
   version:
     name: version
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/version
@@ -10068,6 +11205,61 @@ slots:
     - DataProcessingActivity
     range: string
     required: false
+  ancestor_type:
+    name: ancestor_type
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ancestor_type
+    description: "Class/table name of the ancestor node.\nExpected values: 'sample'\
+      \ | 'processedSample' |\n                 'DataProcessingActivity' | 'processedData'"
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/linkage_cache
+    slot_uri: basalt_schema:ancestor_type
+    owner: LinkageCache
+    domain_of:
+    - LinkageCache
+    range: string
+  descendant_type:
+    name: descendant_type
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/descendant_type
+    description: Class/table name of the descendant node (same vocabulary as ancestor_type)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/linkage_cache
+    slot_uri: basalt_schema:descendant_type
+    owner: LinkageCache
+    domain_of:
+    - LinkageCache
+    range: string
+  hop_depth:
+    name: hop_depth
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/hop_depth
+    description: Number of hops between ancestor and descendant (1 = direct parent).
+      Named hop_depth rather than depth because slots.yaml already defines a global
+      "depth" slot (MIxS soil/sediment sampling depth, a string with a metres pattern);
+      that definition wins on import and would silently type this column as TEXT.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/linkage_cache
+    slot_uri: basalt_schema:hop_depth
+    owner: LinkageCache
+    domain_of:
+    - LinkageCache
+    range: integer
+    required: true
+  path:
+    name: path
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/path
+    description: Optional debug string representing the full chain (e.g., 'WEA1->WEA2->WEA3')
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/linkage_cache
+    slot_uri: basalt_schema:path
+    owner: LinkageCache
+    domain_of:
+    - LinkageCache
+    range: string
+  computed_at:
+    name: computed_at
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/computed_at
+    description: Timestamp when this row was last computed by the refresh job
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/linkage_cache
+    slot_uri: basalt_schema:computed_at
+    owner: LinkageCache
+    domain_of:
+    - LinkageCache
+    range: datetime
   activity__id:
     name: activity__id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -10724,11 +11916,11 @@ slots:
     - ProcessingSampleLink
     range: uuid
     required: true
-  processingSampleLink__sample_base_id:
-    name: processingSampleLink__sample_base_id
+  processingSampleLink__sample_id:
+    name: processingSampleLink__sample_id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
-    slot_uri: basalt_schema:sample_base_id
-    alias: sample_base_id
+    slot_uri: basalt_schema:sample_id
+    alias: sample_id
     owner: ProcessingSampleLink
     domain_of:
     - ProcessingSampleLink
@@ -10753,6 +11945,18 @@ slots:
     domain_of:
     - ProcessingSampleLink
     range: integer
+    required: true
+  processingSampleLink__role:
+    name: processingSampleLink__role
+    description: Whether sample_id was consumed by (input_sample) or produced by (output_sample)
+      processing_id.
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    slot_uri: basalt_schema:role
+    alias: role
+    owner: ProcessingSampleLink
+    domain_of:
+    - ProcessingSampleLink
+    range: SampleRole
     required: true
   instrumentCustodian__instrument_id:
     name: instrumentCustodian__instrument_id
@@ -10887,37 +12091,6 @@ slots:
     - PurchasedMaterial
     range: uuid
     required: true
-  labProcessingActivity__id:
-    name: labProcessingActivity__id
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
-    slot_uri: basalt_schema:id
-    identifier: true
-    alias: id
-    owner: LabProcessingActivity
-    domain_of:
-    - LabProcessingActivity
-    range: uuid
-    required: true
-  labProcessingActivity__name:
-    name: labProcessingActivity__name
-    description: Human-readable name for the activity
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
-    slot_uri: basalt_schema:name
-    alias: name
-    owner: LabProcessingActivity
-    domain_of:
-    - LabProcessingActivity
-    range: string
-  labProcessingActivity__description:
-    name: labProcessingActivity__description
-    description: Free-text description of the activity
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
-    slot_uri: basalt_schema:description
-    alias: description
-    owner: LabProcessingActivity
-    domain_of:
-    - LabProcessingActivity
-    range: string
   wellMetadata__position:
     name: wellMetadata__position
     description: Well position (e.g. "A01", "H12")
@@ -12792,6 +13965,110 @@ slots:
     domain_of:
     - XRDPhaseProduct
     range: ProcessedDataFlag
+  xASInstrumentData__amplifiers:
+    name: xASInstrumentData__amplifiers
+    description: Amplifier sensitivity entries (one per signal channel)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    slot_uri: basalt_schema:amplifiers
+    alias: amplifiers
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: XASAmplifier
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  xASInstrumentData__motors:
+    name: xASInstrumentData__motors
+    description: Motor positions recorded at scan start
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    slot_uri: basalt_schema:motors
+    alias: motors
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: XASMotorPosition
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  xASInstrumentData__signal_columns:
+    name: xASInstrumentData__signal_columns
+    description: Detector signal name / EPICS PV pairs
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    slot_uri: basalt_schema:signal_columns
+    alias: signal_columns
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: XASSignalColumn
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  xASInstrumentData__data_rows:
+    name: xASInstrumentData__data_rows
+    description: Per-energy-point representative fluorescence or transmission values
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    slot_uri: basalt_schema:data_rows
+    alias: data_rows
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: XASDataRow
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  xASInstrumentData__ion_chambers:
+    name: xASInstrumentData__ion_chambers
+    description: Ion chamber gas mixture components parsed from user comment
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    slot_uri: basalt_schema:ion_chambers
+    alias: ion_chambers
+    owner: XASInstrumentData
+    domain_of:
+    - XASInstrumentData
+    range: XASIonChamber
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  xASLCFProduct__standards:
+    name: xASLCFProduct__standards
+    description: Reference standards used in the linear combination fit
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    slot_uri: basalt_schema:standards
+    alias: standards
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFProduct
+    range: XASLCFStandard
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  xASLCFProduct__species_proportions:
+    name: xASLCFProduct__species_proportions
+    description: Derived species proportion results (XANES only)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    slot_uri: basalt_schema:species_proportions
+    alias: species_proportions
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFProduct
+    range: XASLCFSpeciesProportion
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  xASLCFProduct__lcf_data_rows:
+    name: xASLCFProduct__lcf_data_rows
+    description: Per-point fit curve data for plotting
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    slot_uri: basalt_schema:lcf_data_rows
+    alias: lcf_data_rows
+    owner: XASLCFProduct
+    domain_of:
+    - XASLCFProduct
+    range: XASLCFDataRow
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   organism__id:
     name: organism__id
     from_schema: https://emsl-computing.github.io/BASALT-Schema/organism
@@ -13266,6 +14543,17 @@ slots:
     owner: SampleProcessingProtocol
     domain_of:
     - SampleProcessingProtocol
+    range: uuid
+    required: true
+  sampleProcessingRun__id:
+    name: sampleProcessingRun__id
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slot_uri: basalt_schema:id
+    identifier: true
+    alias: id
+    owner: SampleProcessingRun
+    domain_of:
+    - SampleProcessingRun
     range: uuid
     required: true
   chemicalConversionProcess__chemical_conversion_category:
@@ -14000,6 +15288,26 @@ slots:
     domain_of:
     - zipDownload
     range: string
+  linkageCache__ancestor_id:
+    name: linkageCache__ancestor_id
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/linkage_cache
+    slot_uri: basalt_schema:ancestor_id
+    alias: ancestor_id
+    owner: LinkageCache
+    domain_of:
+    - LinkageCache
+    range: uuid
+    required: true
+  linkageCache__descendant_id:
+    name: linkageCache__descendant_id
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/linkage_cache
+    slot_uri: basalt_schema:descendant_id
+    alias: descendant_id
+    owner: LinkageCache
+    domain_of:
+    - LinkageCache
+    range: uuid
+    required: true
   InstrumentData_description:
     name: InstrumentData_description
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/description
@@ -14083,6 +15391,198 @@ slots:
     usage_slot_name: external_identifiers
     range: uriorcurie
     multivalued: true
+  XASAmplifier_amp_index:
+    name: XASAmplifier_amp_index
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/amp_index
+    description: 1-based amplifier index (aligns with Amplifier_Gain_N)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: amp_index
+    domain: XASAmplifier
+    slot_uri: basalt_schema:amp_index
+    alias: amp_index
+    owner: XASAmplifier
+    domain_of:
+    - XASAmplifier
+    is_usage_slot: true
+    usage_slot_name: amp_index
+    range: integer
+    required: true
+  XASMotorPosition_motor_index:
+    name: XASMotorPosition_motor_index
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/motor_index
+    description: 1-based motor index (aligns with Motor_N_Pos)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: motor_index
+    domain: XASMotorPosition
+    slot_uri: basalt_schema:motor_index
+    alias: motor_index
+    owner: XASMotorPosition
+    domain_of:
+    - XASMotorPosition
+    is_usage_slot: true
+    usage_slot_name: motor_index
+    range: integer
+    required: true
+  XASSignalColumn_col_index:
+    name: XASSignalColumn_col_index
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/col_index
+    description: 1-based column index (aligns with Analog_In_Signal_Type_N)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: col_index
+    domain: XASSignalColumn
+    slot_uri: basalt_schema:col_index
+    alias: col_index
+    owner: XASSignalColumn
+    domain_of:
+    - XASSignalColumn
+    is_usage_slot: true
+    usage_slot_name: col_index
+    range: integer
+    required: true
+  XASDataRow_row_num:
+    name: XASDataRow_row_num
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/row_num
+    description: 1-based row index within the sweep file
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: row_num
+    domain: XASDataRow
+    slot_uri: basalt_schema:row_num
+    alias: row_num
+    owner: XASDataRow
+    domain_of:
+    - XASDataRow
+    is_usage_slot: true
+    usage_slot_name: row_num
+    range: integer
+    required: true
+  XASIonChamber_chamber_index:
+    name: XASIonChamber_chamber_index
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/chamber_index
+    description: Ion chamber index (1=I0, 2=It, 3=Iref)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: chamber_index
+    domain: XASIonChamber
+    slot_uri: basalt_schema:chamber_index
+    alias: chamber_index
+    owner: XASIonChamber
+    domain_of:
+    - XASIonChamber
+    is_usage_slot: true
+    usage_slot_name: chamber_index
+    range: integer
+    required: true
+  XASIonChamber_gas_index:
+    name: XASIonChamber_gas_index
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/gas_index
+    description: 1-based gas component index within the chamber mixture
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: gas_index
+    domain: XASIonChamber
+    slot_uri: basalt_schema:gas_index
+    alias: gas_index
+    owner: XASIonChamber
+    domain_of:
+    - XASIonChamber
+    is_usage_slot: true
+    usage_slot_name: gas_index
+    range: integer
+    required: true
+  XASLCFStandard_std_index:
+    name: XASLCFStandard_std_index
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/std_index
+    description: 1-based index of the reference standard in the fit
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: std_index
+    domain: XASLCFStandard
+    slot_uri: basalt_schema:std_index
+    alias: std_index
+    owner: XASLCFStandard
+    domain_of:
+    - XASLCFStandard
+    is_usage_slot: true
+    usage_slot_name: std_index
+    range: integer
+    required: true
+  XASLCFStandard_std_name:
+    name: XASLCFStandard_std_name
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/std_name
+    description: Reference standard name as written in the Athena or Larch project
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: std_name
+    domain: XASLCFStandard
+    slot_uri: basalt_schema:std_name
+    alias: std_name
+    owner: XASLCFStandard
+    domain_of:
+    - XASLCFStandard
+    is_usage_slot: true
+    usage_slot_name: std_name
+    range: string
+    required: true
+  XASLCFSpeciesProportion_species_name:
+    name: XASLCFSpeciesProportion_species_name
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/species_name
+    description: Chemical species or oxidation state name from the LCF report
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: species_name
+    domain: XASLCFSpeciesProportion
+    slot_uri: basalt_schema:species_name
+    alias: species_name
+    owner: XASLCFSpeciesProportion
+    domain_of:
+    - XASLCFSpeciesProportion
+    is_usage_slot: true
+    usage_slot_name: species_name
+    range: string
+    required: true
+  XASLCFSpeciesProportion_proportion:
+    name: XASLCFSpeciesProportion_proportion
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/proportion
+    description: Species proportion in sample (fraction 0-1)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: proportion
+    domain: XASLCFSpeciesProportion
+    slot_uri: basalt_schema:proportion
+    alias: proportion
+    owner: XASLCFSpeciesProportion
+    domain_of:
+    - XASLCFSpeciesProportion
+    is_usage_slot: true
+    usage_slot_name: proportion
+    range: float
+    required: true
+  XASLCFDataRow_row_num:
+    name: XASLCFDataRow_row_num
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/row_num
+    description: 1-based row index within the sweep file
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: row_num
+    domain: XASLCFDataRow
+    slot_uri: basalt_schema:row_num
+    alias: row_num
+    owner: XASLCFDataRow
+    domain_of:
+    - XASLCFDataRow
+    is_usage_slot: true
+    usage_slot_name: row_num
+    range: integer
+    required: true
+  XASLCFDataRow_x_val:
+    name: XASLCFDataRow_x_val
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/x_val
+    description: Positioner value at this data point (energy in eV or k in A^-1)
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
+    is_a: x_val
+    domain: XASLCFDataRow
+    slot_uri: basalt_schema:x_val
+    alias: x_val
+    owner: XASLCFDataRow
+    domain_of:
+    - XASLCFDataRow
+    is_usage_slot: true
+    usage_slot_name: x_val
+    range: float
+    required: true
   organism_strain_identifier:
     name: organism_strain_identifier
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/strain_identifier
@@ -16437,22 +17937,6 @@ slots:
     is_usage_slot: true
     usage_slot_name: replicate
     range: integer
-  ProcessedSample_sampled_during:
-    name: ProcessedSample_sampled_during
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/sampled_during
-    description: A reference to the sample processing activity (generally lab work)
-      that generated this processed_sample.
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/slots
-    is_a: sampled_during
-    domain: ProcessedSample
-    slot_uri: basalt_schema:sampled_during
-    alias: sampled_during
-    owner: ProcessedSample
-    domain_of:
-    - ProcessedSample
-    is_usage_slot: true
-    usage_slot_name: sampled_during
-    range: SampleProcessing
   CoreSection_core_section:
     name: CoreSection_core_section
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/core_section
@@ -16809,7 +18293,7 @@ classes:
     description: 'A data product representing a photo of a site, typically taken during
       sampling.
 
-      One row per photo with metadata about the photo type and when it was taken.'
+      Carries metadata about the photo type and when it was taken.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     is_a: DataProduct
     slots:
@@ -17189,17 +18673,34 @@ classes:
   SampleProcessing:
     name: SampleProcessing
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/SampleProcessing
-    description: "Abstract base for any sample processing activity (physical to physical).\
-      \ Input data should \nbe specified on workflow subclasses. Concrete protocol-specific\
-      \ subclasses use is_a: SampleProcessing."
+    description: 'Abstract base for any sample processing activity (physical to physical):
+      one
+
+      laboratory step that consumes one or more Samples and produces one or more
+
+      ProcessedSamples. Concrete protocol-specific subclasses use is_a: SampleProcessing.
+
+
+      This class deliberately carries NO pointers to the samples it consumed or
+
+      produced. Those edges live exclusively in ProcessingSampleLink, which records
+
+      direction via its role slot. See that class for the rationale.
+
+
+      Protocol identity (URL, version) is likewise NOT stored here. A step points
+      at
+
+      a SampleProcessingProtocol record via in_protocol, which is the single home
+      for
+
+      protocol_url and protocol_version.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     abstract: true
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     attributes:
       id:
@@ -17210,28 +18711,40 @@ classes:
   ProcessingSampleLink:
     name: ProcessingSampleLink
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ProcessingSampleLink
-    description: 'A link between a processed sample and the sample processing activity
-      that produced it.
-
-      This class captures the relationship between a processed sample and the sample
-      processing
-
-      activity that generated it, including the step number and role of the sample
-      in the process.'
+    description: "The authoritative record of what a SampleProcessing step consumed\
+      \ and produced.\nOne row is one directed edge between a Sample and a processing\
+      \ activity.\n\nThis class is the ONLY place sample-to-processing edges are stored.\
+      \ No sample\nor activity class carries a scalar pointer to its counterpart,\
+      \ so there is\nexactly one representation of the lineage graph and no way for\
+      \ two encodings\nto disagree.\n\nDirection is carried by role:\n  role = input_sample\
+      \   ->  sample_id was consumed by processing_id\n  role = output_sample  ->\
+      \  sample_id (a ProcessedSample) was produced by it\n\nA minimal step is therefore\
+      \ two rows: one input edge and one output edge.\nBecause role is per-row rather\
+      \ than per-activity, fan-in and fan-out are\nexpressed natively -- a PoolingProcess\
+      \ is N input rows to 1 output row, and a\nFractionationProcess is 1 input row\
+      \ to N output rows. Lineage is a DAG, not a\nchain, and this table is what makes\
+      \ that representable.\n\nstep_number is the position of the step within its\
+      \ chain. It is only meaningful\nrelative to in_run, which names the chain the\
+      \ edge belongs to; see\nSampleProcessingRun."
+    comments:
+    - 'Invariant not expressible in LinkML: all rows sharing a processing_id must
+      agree on in_run, since a step belongs to exactly one run. Enforce with a database-level
+      check or a validation rule.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     slots:
-    - in_protocol
+    - in_run
     - processingSampleLink__id
-    - processingSampleLink__sample_base_id
+    - processingSampleLink__sample_id
     - processingSampleLink__processing_id
     - processingSampleLink__step_number
+    - processingSampleLink__role
     attributes:
       id:
         name: id
         identifier: true
         range: uuid
-      sample_base_id:
-        name: sample_base_id
+      sample_id:
+        name: sample_id
         range: Sample
         required: true
       processing_id:
@@ -17242,14 +18755,21 @@ classes:
         name: step_number
         range: integer
         required: true
+      role:
+        name: role
+        description: Whether sample_id was consumed by (input_sample) or produced
+          by (output_sample) processing_id.
+        range: SampleRole
+        required: true
     class_uri: basalt_schema:ProcessingSampleLink
     unique_keys:
       unique_sample_process_step:
         unique_key_name: unique_sample_process_step
         unique_key_slots:
-        - sample_base_id
+        - sample_id
         - processing_id
         - step_number
+        - role
   InstrumentCustodian:
     name: InstrumentCustodian
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/InstrumentCustodian
@@ -17303,14 +18823,17 @@ classes:
   XRayDataGenerationActivity:
     name: XRayDataGenerationActivity
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XRayDataGenerationActivity
-    description: "Abstract base class for X-ray analytical methods including XRF (elemental)\n\
-      and XRD (mineralogical) analysis. Inherits acquisition_time, instrument_id,\n\
-      protocol_url, analyte_id, and other core metadata from DataGenerationActivity.\n\
-      \nConcrete subclasses define method-specific measurement parameters.\nFuture\
-      \ X-ray methods (e.g., XCT) can extend this class.\n\nShared patterns:\n  -\
-      \ Direct instrument output (no computational workflow) is typical for XRF\n\
-      \  - XRD may optionally link to DataProcessingActivity for Rietveld refinement\n\
-      \  - protocol_url should link to vendor SOP or EMSL internal protocol documentation"
+    description: "Abstract base class for X-ray analytical methods including XRF (elemental),\n\
+      XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits\n\
+      acquisition_start_time, acquisition_end_time, instrument_used, protocol_url,\n\
+      analyte_id, and other core metadata from DataGenerationActivity.\n\nConcrete\
+      \ subclasses define method-specific measurement parameters.\nFuture X-ray methods\
+      \ (e.g., XCT) can extend this class.\n\nShared patterns:\n  - Direct instrument\
+      \ output (no computational workflow) is typical for XRF\n  - XRD may optionally\
+      \ link to DataProcessingActivity for Rietveld refinement\n  - XAS acquires raw\
+      \ sweep files as XASInstrumentData, which are later fitted\n    by an XASLCFDataProcessingActivity\
+      \ to yield an XASLCFProduct\n  - protocol_url should link to vendor SOP or EMSL\
+      \ internal protocol documentation"
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     is_a: DataGenerationActivity
     abstract: true
@@ -17334,16 +18857,15 @@ classes:
       \ elemental composition by detecting characteristic X-ray emissions\nfrom a\
       \ sample bombarded with high-energy X-rays. Typical output: concentrations\n\
       of 10-30 elements per sample (Ni, Pb, As, Cr, Fe, Ca, K, etc.).\n\nData product:\
-      \ XRFElementalProduct (one row per element per sample)\n\nWorkflow pattern:\
-      \ Direct instrument output (no computational processing step)\n  processedSample\
-      \ -> XRFDataGenerationActivity -> XRFElementalProduct (workflow_id = NULL)\n\
-      \nProtocol information: Stored externally; link via protocol_url attribute.\n\
-      Example protocol parameters (stored in external SOP or DataProcessingActivity\n\
-      if computational correction is needed):\n  - Beam voltage (kV), beam current\
-      \ (mA)\n  - Measurement duration (seconds)\n  - Matrix correction method (fundamental\
-      \ parameters, empirical)\n  - Calibration date\n  - Operator ID\n\nRequired\
-      \ enum additions to enums.yaml:\n  routemethod:\n    xrf_analysis:  # Add to\
-      \ routemethod permissible_values"
+      \ XRFElementalProduct\n\nWorkflow pattern: Direct instrument output (no computational\
+      \ processing step)\n  processedSample -> XRFDataGenerationActivity -> XRFElementalProduct\
+      \ (workflow_id = NULL)\n\nProtocol information: Stored externally; link via\
+      \ protocol_url attribute.\nExample protocol parameters (stored in external SOP\
+      \ or DataProcessingActivity\nif computational correction is needed):\n  - Beam\
+      \ voltage (kV), beam current (mA)\n  - Measurement duration (seconds)\n  - Matrix\
+      \ correction method (fundamental parameters, empirical)\n  - Calibration date\n\
+      \  - Operator ID\n\nRequired enum additions to enums.yaml:\n  routemethod:\n\
+      \    xrf_analysis:  # Add to routemethod permissible_values"
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     is_a: XRayDataGenerationActivity
     slots:
@@ -17365,10 +18887,10 @@ classes:
     description: "X-ray Diffraction (XRD) mineralogical analysis activity.\n\nXRD\
       \ identifies crystalline mineral phases by measuring diffraction patterns.\n\
       Output: mineral phase names and quantitative abundances (weight %).\n\nData\
-      \ product: XRDPhaseProduct (one row per mineral phase per sample)\n\nWorkflow\
-      \ patterns:\n  1. Direct/semi-quantitative: \n       processedSample -> XRDDataGenerationActivity\
-      \ -> XRDPhaseProduct (workflow_id = NULL)\n  2. With Rietveld refinement (computational):\n\
-      \       processedSample -> XRDDataGenerationActivity -> \n       DataProcessingActivity(type='xrd_rietveld_refinement')\
+      \ product: XRDPhaseProduct\n\nWorkflow patterns:\n  1. Direct/semi-quantitative:\
+      \ \n       processedSample -> XRDDataGenerationActivity -> XRDPhaseProduct (workflow_id\
+      \ = NULL)\n  2. With Rietveld refinement (computational):\n       processedSample\
+      \ -> XRDDataGenerationActivity -> \n       DataProcessingActivity(type='xrd_rietveld_refinement')\
       \ -> \n       XRDPhaseProduct (workflow_id = refinement WEA)\n\nProtocol information:\
       \ Stored externally; link via protocol_url attribute.\nExample protocol parameters\
       \ (stored in external SOP or DataProcessingActivity):\n  - Diffractometer geometry\
@@ -17391,6 +18913,115 @@ classes:
     - instrument_operator
     - dataGenerationActivity__id
     class_uri: basalt_schema:XRDDataGenerationActivity
+  XASDataGenerationActivity:
+    name: XASDataGenerationActivity
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XASDataGenerationActivity
+    description: 'X-ray Absorption Spectroscopy (XAS) acquisition activity.
+
+      Represents one beamline measurement session for a sample.
+
+
+      Unlike XRF and XRD, acquisition does not yield a product directly: each
+
+      sweep is captured as XASInstrumentData, and an XASLCFDataProcessingActivity
+
+      fits those sweeps to produce an XASLCFProduct.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    is_a: XRayDataGenerationActivity
+    slots:
+    - sequence_order
+    - name
+    - description
+    - analyte_id
+    - protocol_url
+    - protocol_version
+    - acquisition_start_time
+    - acquisition_end_time
+    - instrument_used
+    - instrument_operator
+    - dataGenerationActivity__id
+    - facility
+    - beamline
+    - ring_energy_gev
+    - ring_current_ma
+    - insertion_device
+    - element
+    - edge
+    - reference_material
+    - xas_sample_type
+    - sample_format
+    - sample_holder
+    - sample_temperature_k
+    - sample_orientation_deg
+    - sample_detector_distance_mm
+    - sample_doi
+    - crystal
+    - crystal_cut
+    - crystal_detune_pct
+    - mono_angle_deg
+    - mono_2nd_xtal_mm
+    - mono_energy_motor_ev
+    - mono_energy_encoder_ev
+    - mirror_angle_mrad
+    - m0_coating
+    - m0_cutoff_kev
+    - m1_coating
+    - inhutch_mirror_coating
+    - inhutch_mirror_cutoff_kev
+    - slit_size_h_um
+    - slit_size_v_um
+    - slit_center_h
+    - slit_center_v
+    - beam_attenuation_um
+    - beam_attenuation_material
+    - fy_electronics
+    - fy_channel_num
+    - fy_element
+    - fy_transition
+    - user_comment
+    class_uri: basalt_schema:XASDataGenerationActivity
+  XASLCFDataProcessingActivity:
+    name: XASLCFDataProcessingActivity
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XASLCFDataProcessingActivity
+    description: 'Athena or Larch Linear Combination Fitting (LCF) processing activity
+      for
+
+      XAS data. One instance represents a single .lcf fit run.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema
+    is_a: DataProcessingActivity
+    slots:
+    - parent_workflow_id
+    - workflow_steps
+    - DataProcessingActivity_description
+    - dataProcessingActivity__id
+    - dataProcessingActivity__started_at_time
+    - dataProcessingActivity__ended_at_time
+    - dataProcessingActivity__software_url
+    - dataProcessingActivity__software_version
+    - dataProcessingActivity__software_poc
+    - dataProcessingActivity__execution_resource
+    - uses_xas_raw_data
+    - xas_filename
+    - lcf_type
+    - run_label
+    - fit_label
+    - analysis_code
+    - sample_nor_file
+    - fit_range_min
+    - fit_range_max
+    - fit_range_unit
+    - n_data_points
+    - n_variables
+    - n_standards
+    - weights_sum_to_1
+    - weights_bounded
+    - e0_shift_used
+    - noise_added
+    - r_factor
+    - chi_square
+    - reduced_chi_square
+    - weights_sum
+    class_uri: basalt_schema:XASLCFDataProcessingActivity
   Changelog:
     name: Changelog
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/Changelog
@@ -17742,37 +19373,6 @@ classes:
         range: uuid
         required: true
     class_uri: basalt_schema:PurchasedMaterial
-  LabProcessingActivity:
-    name: LabProcessingActivity
-    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/LabProcessingActivity
-    description: "[NEW ABSTRACT CLASS] Higher-level abstract base for any activity\
-      \ that\ntransforms or creates physical lab materials.\n\nsampleProcessing inherits\
-      \ from this via is_a.  This class provides the\ncommon identity layer, allowing\
-      \ future extensions (e.g. non-sample\nconsuming activities) without forcing\
-      \ them into the sampleProcessing branch.\n\nNOTE: In the live schema, sampleProcessing\
-      \ should gain\n  is_a: labProcessingActivity\nand its existing id attribute\
-      \ can be retained or removed (inherited)."
-    from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
-    abstract: true
-    slots:
-    - labProcessingActivity__id
-    - labProcessingActivity__name
-    - labProcessingActivity__description
-    attributes:
-      id:
-        name: id
-        identifier: true
-        range: uuid
-        required: true
-      name:
-        name: name
-        description: Human-readable name for the activity
-        range: string
-      description:
-        name: description
-        description: Free-text description of the activity
-        range: string
-    class_uri: basalt_schema:LabProcessingActivity
   MediaPreparation:
     name: MediaPreparation
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/MediaPreparation
@@ -17793,9 +19393,7 @@ classes:
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     - media_type
     - volume_ml
@@ -17814,18 +19412,17 @@ classes:
     name: CultureGrowth
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/CultureGrowth
     description: "Abstract activity for growing cultures from samples or other cultures.\n\
-      \nConcrete subclasses: StrainPurity, StockCulturePreparation, \nPreCultureGrowth,\
+      Concrete subclasses: StrainPurity, StockCulturePreparation, \nPreCultureGrowth,\
       \ ExperimentalCulture."
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: SampleProcessing
+    abstract: true
     mixins:
     - HasIncubationConditions
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     - organism_ref
     - growth_medium
@@ -17856,9 +19453,7 @@ classes:
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     - organism_ref
     - growth_medium
@@ -17887,9 +19482,7 @@ classes:
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     - organism_ref
     - growth_medium
@@ -17920,9 +19513,7 @@ classes:
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     - organism_ref
     - growth_medium
@@ -17950,9 +19541,7 @@ classes:
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     - organism_ref
     - growth_medium
@@ -17981,9 +19570,7 @@ classes:
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     - plate_type
     - plate_barcode
@@ -18013,9 +19600,7 @@ classes:
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     - plate_type
     - plate_barcode
@@ -18050,9 +19635,7 @@ classes:
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     - plate_type
     - plate_barcode
@@ -18172,9 +19755,12 @@ classes:
   AMP2ODProduct:
     name: AMP2ODProduct
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/AMP2ODProduct
-    description: "AMP2 optical density measurement product.\nOne row per plate \xD7\
-      \ timepoint.\nprocessedData.type = 'amp2_od'\n\nv1 origin: plate-general.yaml\
-      \ AMP2ODProduct"
+    description: 'AMP2 optical density measurement product.
+
+      processedData.type = ''amp2_od''
+
+
+      v1 origin: plate-general.yaml AMP2ODProduct'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: PlateProduct
     slots:
@@ -18189,9 +19775,12 @@ classes:
   EcoplateAbsorbanceProduct:
     name: EcoplateAbsorbanceProduct
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/EcoplateAbsorbanceProduct
-    description: "Ecoplate absorbance measurement product.\nOne row per plate \xD7\
-      \ timepoint.\nprocessedData.type = 'ecoplate_absorbance'\n\nv1 origin: plate-general.yaml\
-      \ EcoplateAbsorbanceProduct"
+    description: 'Ecoplate absorbance measurement product.
+
+      processedData.type = ''ecoplate_absorbance''
+
+
+      v1 origin: plate-general.yaml EcoplateAbsorbanceProduct'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate
     is_a: PlateProduct
     slots:
@@ -18566,10 +20155,8 @@ classes:
   BulkDensityProduct:
     name: BulkDensityProduct
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/BulkDensityProduct
-    description: 'Bulk density analysis product, typically derived via oven-drying
+    description: Bulk density analysis product, typically derived via oven-drying
       and weighing of a known volume of soil.
-
-      One row per sample with columns for bulk density and QC flag.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
@@ -18604,9 +20191,6 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ElementalAnalysisProduct
     description: 'Elemental analysis product, typically derived via combustion or
       similar instrument.
-
-      One row per sample with columns for total carbon, total nitrogen, total Kjeldahl
-      nitrogen, and total sulfur.
 
       Individual QC flags for each measurement using ProcessedDataFlag enum.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -18665,10 +20249,8 @@ classes:
   EnzymeProduct:
     name: EnzymeProduct
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/EnzymeProduct
-    description: 'Enzyme activity analysis product, typically derived via colorimetric
+    description: Enzyme activity analysis product, typically derived via colorimetric
       assay of soil extracts.
-
-      One row per sample with columns for beta-glucosidase activity and QC flag.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
@@ -18701,10 +20283,8 @@ classes:
   GWCMoistureProduct:
     name: GWCMoistureProduct
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/GWCMoistureProduct
-    description: 'Gravimetric water content (GWC) analysis product, typically derived
+    description: Gravimetric water content (GWC) analysis product, typically derived
       via oven-drying and weighing of a known mass of soil.
-
-      One row per sample with columns for GWC and QC flag.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
@@ -18738,8 +20318,8 @@ classes:
     name: HydraulicPropertiesProduct
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/HydraulicPropertiesProduct
     description: Soil hydraulic parameters derived from HYPROP evaporation-experiment
-      data. One row per core section; the four attributes are the four VGM model parameters.  Proposal_ID,
-      sampling_set, and core_section are inherited from the parent processedData record.
+      data. The four attributes are the four VGM model parameters.  Proposal_ID, sampling_set,
+      and core_section are inherited from the parent processedData record.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
@@ -18795,8 +20375,6 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/IonsAnalysisProduct
     description: 'Ions analysis product, typically derived via ICP-OES or similar
       instrument.
-
-      One row per sample with columns for each ion measured.
 
       Individual QC flags for each ion using ProcessedDataFlag enum.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -18922,8 +20500,6 @@ classes:
     description: 'Mineral-Associated Organic Matter (MAOM) analysis product, typically
       derived via HCl extraction and TOC/TN measurement.
 
-      One row per sample with columns for total organic carbon and total nitrogen.
-
       Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE
       RENAMED TO HClExtOMProduct'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -18974,8 +20550,6 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/MicrobialBiomassProduct
     description: 'Microbial biomass analysis product, typically derived via chloroform
       fumigation-extraction (CFE) or similar instrument.
-
-      One row per sample with columns for microbial biomass carbon and nitrogen.
 
       Individual QC flags for each measurement using ProcessedDataFlag enum.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -19038,8 +20612,6 @@ classes:
     description: 'Nitrogen analysis product, typically derived via colorimetric assay
       of soil extracts.
 
-      One row per sample with columns for nitrate and ammonium concentrations.
-
       Individual QC flags for each measurement using ProcessedDataFlag enum.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
@@ -19101,8 +20673,6 @@ classes:
     description: 'Phosphorus analysis product, typically derived via colorimetric
       assay of soil extracts.
 
-      One row per sample with columns for phosphorus concentration.
-
       Individual QC flags for each measurement using ProcessedDataFlag enum.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
@@ -19149,9 +20719,7 @@ classes:
   RespirationProduct:
     name: RespirationProduct
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/RespirationProduct
-    description: 'Soil respiration analysis product.
-
-      One row per sample with columns for soil respiration and QC flag.'
+    description: Soil respiration analysis product.
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
@@ -19187,8 +20755,6 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/TextureProduct
     description: 'Soil texture analysis product, typically derived via hydrometer
       or similar instrument.
-
-      One row per sample with columns for sand, silt, and clay percentages.
 
       Individual QC flags for each measurement using ProcessedDataFlag enum.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
@@ -19231,10 +20797,8 @@ classes:
   TomographyProduct:
     name: TomographyProduct
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/TomographyProduct
-    description: 'Soil tomography analysis product, typically derived via X-ray computed
+    description: Soil tomography analysis product, typically derived via X-ray computed
       tomography (XCT) or similar instrument.
-
-      One row per sample with columns for pore structure metrics and QC flag.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
@@ -19342,8 +20906,6 @@ classes:
     description: 'Water Extractable Organic Matter (WEOM) analysis product, typically
       derived via Shimadzu TOC-L or similar instrument.
 
-      One row per sample with columns for total organic carbon and total nitrogen.
-
       Individual QC flags for each measurement using ProcessedDataFlag enum.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     slots:
@@ -19391,10 +20953,8 @@ classes:
   pHProduct:
     name: pHProduct
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/PHProduct
-    description: 'Soil pH analysis product, typically derived via pH meter or similar
+    description: Soil pH analysis product, typically derived via pH meter or similar
       instrument.
-
-      One row per sample with columns for pH and QC flag.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     slots:
@@ -19429,14 +20989,16 @@ classes:
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XRayDataProduct
     description: "Abstract base class for X-ray analytical data products.\nInherits\
       \ S3 storage metadata and sample linkage from dataProduct via ProcessedData.\n\
-      \nConcrete subclasses:\n  - XRFElementalProduct: elemental concentrations (one\
-      \ row per sample)\n  - XRDPhaseProduct: mineral phases (one row per sample)\n\
-      \nCommon patterns:\n  - s3_key points to raw spectrum/diffractogram file in\
-      \ MinIO\n  - summary_metrics provides lightweight queryable summaries:\n   \
-      \   XRF: {\"Ni_mg_kg\":45.3, \"Pb_mg_kg\":8.2, \"As_mg_kg\":12.1}\n      XRD:\
-      \ {\"quartz_percent\":42, \"albite_percent\":18, \"kaolinite_percent\":31}\n\
-      \  - workflow_id is NULL for direct instrument output (XRF typical)\n  - workflow_id\
-      \ links to DataProcessingActivity for computational processing (XRD Rietveld) "
+      \nConcrete subclasses:\n  - XRFElementalProduct: elemental concentrations\n\
+      \  - XRDPhaseProduct: mineral phases\n  - XASLCFProduct: linear combination\
+      \ fitting results\n\nCommon patterns:\n  - s3_key points to the raw or processed\
+      \ X-ray data file in MinIO\n  - summary_metrics provides lightweight queryable\
+      \ summaries:\n      XRF: {\"Ni_mg_kg\":45.3, \"Pb_mg_kg\":8.2, \"As_mg_kg\"\
+      :12.1}\n      XRD: {\"quartz_percent\":42, \"albite_percent\":18, \"kaolinite_percent\"\
+      :31}\n      XAS: {\"r_factor\":0.000975, \"lcf_type\":\"XANES\", \"n_standards\"\
+      :3}\n  - direct outputs may not have a processing link (XRF typical)\n  - computational\
+      \ outputs should use a typed processing reference slot\n    (XRD Rietveld refinement,\
+      \ XAS LCF fitting)"
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: ProcessedData
     abstract: true
@@ -19460,19 +21022,18 @@ classes:
   XRFElementalProduct:
     name: XRFElementalProduct
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XRFElementalProduct
-    description: "X-ray Fluorescence (XRF) elemental concentration data.\nOne row\
-      \ per sample with columns for each element measured.\n\nFollows the wide-format\
-      \ pattern established by IonsAnalysisProduct.\nElement concentrations in mg/kg\
-      \ (parts per million dry weight basis) as float values.\nIndividual QC flags\
-      \ for each element using ProcessedDataFlag enum.\n\nRelationship to core tables:\n\
-      \  - id: FK -> processedData.id (1:1 linkage)\n  - processedData.type = 'XRFElementalProduct'\n\
-      \  - processedData.workflow_id = NULL (direct acquisition; no computational\
-      \ WEA)\n  - processedData.summary_metrics = {\"Ni_mg_kg\":45.3, \"Pb_mg_kg\"\
-      :8.2, ...}\n  - processedData.s3_key = path to raw spectrum or calibrated CSV\
-      \ in MinIO\n\nStandard XRF element panel (27 elements):\n  Trace metals: Cl,\
-      \ V, Cr, Ni, Cu, Zn, Ga, As, Se, Br, Rb, Sr, Y, Nb, Mo,\n                Ag,\
-      \ Cd, In, Sn, Sb, Cs, Ba, La, Ce, Pb, Th, U\n\nRequired enum additions to enums.yaml:\n\
-      \  product:\n    XRFElementalProduct:  # Add to product permissible_values"
+    description: "X-ray Fluorescence (XRF) elemental concentration data.\n\nFollows\
+      \ the wide-format pattern established by IonsAnalysisProduct.\nElement concentrations\
+      \ in mg/kg (parts per million dry weight basis) as float values.\nIndividual\
+      \ QC flags for each element using ProcessedDataFlag enum.\n\nRelationship to\
+      \ core tables:\n  - id: FK -> processedData.id (1:1 linkage)\n  - processedData.type\
+      \ = 'XRFElementalProduct'\n  - direct acquisition; no computational processing\
+      \ link required\n  - processedData.summary_metrics = {\"Ni_mg_kg\":45.3, \"\
+      Pb_mg_kg\":8.2, ...}\n  - processedData.s3_key = path to raw spectrum or calibrated\
+      \ CSV in MinIO\n\nStandard XRF element panel (27 elements):\n  Trace metals:\
+      \ Cl, V, Cr, Ni, Cu, Zn, Ga, As, Se, Br, Rb, Sr, Y, Nb, Mo,\n              \
+      \  Ag, Cd, In, Sn, Sb, Cs, Ba, La, Ce, Pb, Th, U\n\nRequired enum additions\
+      \ to enums.yaml:\n  product:\n    XRFElementalProduct:  # Add to product permissible_values"
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: XRayDataProduct
     slots:
@@ -19741,27 +21302,23 @@ classes:
     name: XRDPhaseProduct
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XRDPhaseProduct
     description: "X-ray Diffraction (XRD) mineral phase identification and quantification\
-      \ data.\nOne row per sample with columns for each mineral phase identified.\n\
-      \nFollows the wide-format pattern with individual weight percent columns.\n\
+      \ data.\n\nFollows the wide-format pattern with individual weight percent columns.\n\
       Individual QC flags for each mineral using ProcessedDataFlag enum.\n\nRelationship\
       \ to core tables:\n  - id: FK -> processedData.id (1:1 linkage)\n  - processedData.type\
-      \ = 'XRDPhaseProduct'\n  - processedData.workflow_id -> DataProcessingActivity\
-      \ if Rietveld refinement\n    is computational; NULL if manual/semi-quantitative\n\
-      \  - processedData.summary_metrics = {\"quartz_percent\":42, \"albite_percent\"\
-      :18, ...}\n  - processedData.s3_key = diffractogram .xy, .xrdml, or .raw file\
-      \ in MinIO\n\nStandard soil mineral panel (10 major phases):\n  Primary minerals:\
-      \ quartz, albite, microcline\n  Phyllosilicates: muscovite, kaolinite, chlorite\n\
-      \  Amphiboles: hornblende\n  Sulfides and evaporites: pyrite, halite, gypsum\n\
-      \nQuantification methods:\n  - Rietveld refinement (computational, most accurate)\n\
-      \  - Reference intensity ratio (RIR) method\n  - Semi-quantitative (manual,\
-      \ less precise)\n\nComputational processing workflow (if applicable):\n  XRDDataGenerationActivity\
-      \ acquires raw diffractogram ->\n  DataProcessingActivity (type='xrd_rietveld_refinement')\
-      \ processes with\n  HighScore Plus, GSAS-II, or FullProf ->\n  XRDPhaseProduct\
-      \ (workflow_id points to refinement WEA)\n  \n  workflow_steps JSONB example:\n\
-      \    {\"software\": \"HighScore_Plus\", \"version\": \"5.1\", \"method\": \"\
-      Rietveld\",\n     \"r_factor\": 0.042, \"gof\": 1.8, \"amorphous_content_pct\"\
-      : 12}\n\nRequired enum additions to enums.yaml:\n  product:\n    XRDPhaseProduct:\
-      \  # Add to product permissible_values"
+      \ = 'XRDPhaseProduct'\n  - optional typed processing reference when Rietveld\
+      \ refinement is used\n  - processedData.summary_metrics = {\"quartz_percent\"\
+      :42, \"albite_percent\":18, ...}\n  - processedData.s3_key = diffractogram .xy,\
+      \ .xrdml, or .raw file in MinIO\n\nStandard soil mineral panel (10 major phases):\n\
+      \  Primary minerals: quartz, albite, microcline\n  Phyllosilicates: muscovite,\
+      \ kaolinite, chlorite\n  Amphiboles: hornblende\n  Sulfides and evaporites:\
+      \ pyrite, halite, gypsum\n\nQuantification methods:\n  - Rietveld refinement\
+      \ (computational, most accurate)\n  - Reference intensity ratio (RIR) method\n\
+      \  - Semi-quantitative (manual, less precise)\n\nComputational processing workflow\
+      \ (if applicable):\n  XRDDataGenerationActivity acquires raw diffractogram ->\n\
+      \  DataProcessingActivity (type='xrd_rietveld_refinement') processes with\n\
+      \  HighScore Plus, GSAS-II, or FullProf ->\n  XRDPhaseProduct (typed processing\
+      \ reference points to refinement activity)\n     \nRequired enum additions to\
+      \ enums.yaml:\n  product:\n    XRDPhaseProduct:  # Add to product permissible_values"
     from_schema: https://emsl-computing.github.io/BASALT-Schema/products
     is_a: XRayDataProduct
     slots:
@@ -19873,6 +21430,323 @@ classes:
         name: flag_gypsum
         range: ProcessedDataFlag
     class_uri: basalt_schema:XRDPhaseProduct
+  XASInstrumentData:
+    name: XASInstrumentData
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XASInstrumentData
+    description: 'Raw XAS sweep file (.0001, .0002, ...) produced at acquisition time.
+
+      Stores file pointer metadata and key per-sweep scan header fields.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    is_a: InstrumentData
+    slots:
+    - name
+    - project
+    - sampling_set
+    - core_section
+    - sample_name
+    - s3_base_url
+    - s3_bucket
+    - s3_key
+    - filesize
+    - md5checksum
+    - dataProduct__id
+    - file_curie
+    - instrumentData__alternative_identifiers
+    - instrumentData__compression_type
+    - instrumentData__file_type
+    - instrumentData__software_version
+    - InstrumentData_description
+    - produced_by_xas_run
+    - sweep_number
+    - scan_datetime
+    - scan_time_sec
+    - scan_subtype
+    - positioner
+    - e0_ev
+    - n_points
+    - n_data_rows
+    - x_first
+    - x_last
+    - scan_bounds
+    - scan_steps
+    - integration_times
+    - kwgt
+    - fy_element
+    - fy_transition
+    - xASInstrumentData__amplifiers
+    - xASInstrumentData__motors
+    - xASInstrumentData__signal_columns
+    - xASInstrumentData__data_rows
+    - xASInstrumentData__ion_chambers
+    attributes:
+      amplifiers:
+        name: amplifiers
+        description: Amplifier sensitivity entries (one per signal channel)
+        range: XASAmplifier
+        multivalued: true
+        inlined_as_list: true
+      motors:
+        name: motors
+        description: Motor positions recorded at scan start
+        range: XASMotorPosition
+        multivalued: true
+        inlined_as_list: true
+      signal_columns:
+        name: signal_columns
+        description: Detector signal name / EPICS PV pairs
+        range: XASSignalColumn
+        multivalued: true
+        inlined_as_list: true
+      data_rows:
+        name: data_rows
+        description: Per-energy-point representative fluorescence or transmission
+          values
+        range: XASDataRow
+        multivalued: true
+        inlined_as_list: true
+      ion_chambers:
+        name: ion_chambers
+        description: Ion chamber gas mixture components parsed from user comment
+        range: XASIonChamber
+        multivalued: true
+        inlined_as_list: true
+    class_uri: basalt_schema:XASInstrumentData
+  XASAmplifier:
+    name: XASAmplifier
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XASAmplifier
+    description: 'Amplifier sensitivity entry for one signal channel in an XAS sweep.
+
+      Corresponds to one row in LAM_XAS_AMPS (Amplifier_Gain_N / Analog_In_Offset_N).'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    slots:
+    - XASAmplifier_amp_index
+    - signal_name
+    - gain
+    - gain_unit
+    - voltage_start
+    - voltage_end
+    slot_usage:
+      amp_index:
+        name: amp_index
+        required: true
+    class_uri: basalt_schema:XASAmplifier
+  XASMotorPosition:
+    name: XASMotorPosition
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XASMotorPosition
+    description: 'Motor position recorded at the start of an XAS sweep.
+
+      Corresponds to one row in LAM_XAS_MOTS (Motor_N_Pos header fields).'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    slots:
+    - XASMotorPosition_motor_index
+    - motor_name
+    - pv
+    - position
+    slot_usage:
+      motor_index:
+        name: motor_index
+        required: true
+    class_uri: basalt_schema:XASMotorPosition
+  XASSignalColumn:
+    name: XASSignalColumn
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XASSignalColumn
+    description: 'Detector signal name / EPICS PV pair for one data column in an XAS
+      sweep.
+
+      Corresponds to one row in LAM_XAS_COLS (Analog_In_Signal_Type_N).'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    slots:
+    - XASSignalColumn_col_index
+    - col_name
+    - pv
+    slot_usage:
+      col_index:
+        name: col_index
+        required: true
+    class_uri: basalt_schema:XASSignalColumn
+  XASDataRow:
+    name: XASDataRow
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XASDataRow
+    description: 'One data point from an XAS sweep scan.
+
+      row_val holds the representative fluorescence or transmission value at
+
+      each energy step (e.g. FeKa_Sum count, or I0 if FY detector absent).
+
+      Corresponds to one row in LAM_XAS_DROWS.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    slots:
+    - XASDataRow_row_num
+    - row_val
+    slot_usage:
+      row_num:
+        name: row_num
+        required: true
+    class_uri: basalt_schema:XASDataRow
+  XASIonChamber:
+    name: XASIonChamber
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XASIonChamber
+    description: 'Ion chamber gas mixture component for one chamber in an XAS sweep.
+
+      Parsed from the user comment (e.g. ''i0 = 30%N2, 70%He. It and Iref = N2'').
+
+      Corresponds to one row in LAM_XAS_ICS.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    slots:
+    - XASIonChamber_chamber_index
+    - XASIonChamber_gas_index
+    - gas_name
+    - chamber_length_mm
+    - pressure_bar
+    slot_usage:
+      chamber_index:
+        name: chamber_index
+        required: true
+      gas_index:
+        name: gas_index
+        required: true
+    class_uri: basalt_schema:XASIonChamber
+  XASLCFProduct:
+    name: XASLCFProduct
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XASLCFProduct
+    description: 'XAS Linear Combination Fitting (LCF) processed result.
+
+      One instance per .lcf file and linked to an XASLCFDataProcessingActivity
+
+      through a typed processing slot.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    is_a: XRayDataProduct
+    slots:
+    - name
+    - description
+    - project
+    - sampling_set
+    - core_section
+    - sample_name
+    - s3_base_url
+    - s3_bucket
+    - s3_key
+    - filesize
+    - md5checksum
+    - dataProduct__id
+    - summary_metrics
+    - lims_barcode
+    - sample_id
+    - measure_type
+    - results_from_xas_processing
+    - xas_filename
+    - lcf_type
+    - run_label
+    - fit_label
+    - analysis_code
+    - sample_nor_file
+    - fit_range_min
+    - fit_range_max
+    - fit_range_unit
+    - n_data_points
+    - n_variables
+    - n_standards
+    - weights_sum_to_1
+    - weights_bounded
+    - e0_shift_used
+    - noise_added
+    - r_factor
+    - chi_square
+    - reduced_chi_square
+    - weights_sum
+    - xASLCFProduct__standards
+    - xASLCFProduct__species_proportions
+    - xASLCFProduct__lcf_data_rows
+    attributes:
+      standards:
+        name: standards
+        description: Reference standards used in the linear combination fit
+        range: XASLCFStandard
+        multivalued: true
+        inlined_as_list: true
+      species_proportions:
+        name: species_proportions
+        description: Derived species proportion results (XANES only)
+        range: XASLCFSpeciesProportion
+        multivalued: true
+        inlined_as_list: true
+      lcf_data_rows:
+        name: lcf_data_rows
+        description: Per-point fit curve data for plotting
+        range: XASLCFDataRow
+        multivalued: true
+        inlined_as_list: true
+    class_uri: basalt_schema:XASLCFProduct
+  XASLCFStandard:
+    name: XASLCFStandard
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XASLCFStandard
+    description: 'One reference standard (spectral component) used in an LCF fit.
+
+      The fitted weight represents this standard''s fractional contribution
+
+      to the measured sample spectrum.
+
+      Corresponds to one row in LAM_XAS_LCF_STDS.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    slots:
+    - XASLCFStandard_std_index
+    - XASLCFStandard_std_name
+    - weight
+    slot_usage:
+      std_index:
+        name: std_index
+        required: true
+      std_name:
+        name: std_name
+        required: true
+    class_uri: basalt_schema:XASLCFStandard
+  XASLCFSpeciesProportion:
+    name: XASLCFSpeciesProportion
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XASLCFSpeciesProportion
+    description: "Derived species proportion reported in the LC XANES analysis section.\n\
+      For Fe XAS these are typically Fe(II) and Fe(III) proportions; the\ngeneralised\
+      \ design supports any element or oxidation state.\n\nProportions are derived\
+      \ by summing weights of standards associated with\neach oxidation state, as\
+      \ reported by Athena or Larch:\n  'Fe(III) proportion in sample: 0.44 (+/-0.05)'\n\
+      \nCorresponds to one row in LAM_XAS_LCF_PROPS."
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    slots:
+    - XASLCFSpeciesProportion_species_name
+    - XASLCFSpeciesProportion_proportion
+    - uncertainty
+    slot_usage:
+      species_name:
+        name: species_name
+        required: true
+      proportion:
+        name: proportion
+        required: true
+    class_uri: basalt_schema:XASLCFSpeciesProportion
+  XASLCFDataRow:
+    name: XASLCFDataRow
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/XASLCFDataRow
+    description: 'One point from the LCF fit output, enabling reconstruction and plotting
+
+      of the measured spectrum, fitted curve, and residual without accessing
+
+      the raw .lcf file.
+
+      Corresponds to one row in LAM_XAS_LCF_DROWS.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/products
+    slots:
+    - XASLCFDataRow_row_num
+    - XASLCFDataRow_x_val
+    - data_val
+    - fit_val
+    - residual
+    slot_usage:
+      row_num:
+        name: row_num
+        required: true
+      x_val:
+        name: x_val
+        required: true
+    class_uri: basalt_schema:XASLCFDataRow
   organism:
     name: organism
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/Organism
@@ -21960,9 +23834,29 @@ classes:
   ProcessedSample:
     name: ProcessedSample
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ProcessedSample
-    description: A sample that has undergone processing or analysis. Processed Sample
-      entities are derived from Activities. The upstream SampleProcessing that produced
-      this ProcessedSample is referenced via sampled_during.
+    description: 'A sample that has undergone processing. Processed Sample entities
+      are derived from
+
+      SampleProcessing activities.
+
+
+      This class carries no pointer to the activity that produced it. That edge is
+      the
+
+      ProcessingSampleLink row with role = output_sample naming this sample, which
+      is
+
+      the single representation of every sample-to-processing edge in the schema.
+
+
+      Note that sampled_during is deliberately NOT reused here the way it is on
+
+      environmental Sample subclasses. There it points at a SamplingActivity (collection
+
+      from an environment); the processing edge is a different relationship and lives
+      in
+
+      ProcessingSampleLink only.'
     title: Processed Sample
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-classes
     is_a: Sample
@@ -21977,18 +23871,12 @@ classes:
     - total_amount_ug
     - volume_uL
     - sampled_portion
-    - ProcessedSample_sampled_during
     - ProcessedSample_replicate
     - processedSample__id
     slot_usage:
       replicate:
         name: replicate
         description: The TECHNICAL replicate number of the processed sample, if applicable.
-      sampled_during:
-        name: sampled_during
-        description: A reference to the sample processing activity (generally lab
-          work) that generated this processed_sample.
-        range: SampleProcessing
     attributes:
       id:
         name: id
@@ -22012,7 +23900,6 @@ classes:
     - total_amount_ug
     - volume_uL
     - sampled_portion
-    - ProcessedSample_sampled_during
     - ProcessedSample_replicate
     - CoreSection_core_section
     - coreSection__id
@@ -22494,25 +24381,34 @@ classes:
   StandardSampleProcessing:
     name: StandardSampleProcessing
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/StandardSampleProcessing
-    description: A basic non-abstract SampleProcessing subclass that links to a published
-      standardized  protocol instead of populating a record for each step. This is
-      meant to simplify modelling and data storage for well-documented standard protocols
-      that will be  used repeatedly.
+    description: 'A concrete SampleProcessing subclass for well-documented standard
+      protocols that are used repeatedly and whose internal steps are not worth modelling
+      individually. It adds no attributes of its own: everything it needs is the inherited
+      in_protocol pointer to a SampleProcessingProtocol, which carries the protocol
+      URL and version.
+
+      This is not an escape hatch from the chained representation -- it is a chain
+      of length one. It produces the same two ProcessingSampleLink rows (one input_sample,
+      one output_sample) at step_number 1 that any other step produces, so downstream
+      queries and provenance traversal never have to branch on which of the two modelling
+      styles was used, and a protocol can be upgraded from standard to fully-stepped
+      later without migrating anything that reads it.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
     is_a: SampleProcessing
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     class_uri: basalt_schema:StandardSampleProcessing
   SampleProcessingProtocol:
     name: SampleProcessingProtocol
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/SampleProcessingProtocol
-    description: A grouping class representing a sample processing protocol consisting
-      of multiple modeled steps.
+    description: 'A sample processing protocol: the recipe, not an execution of it.
+      This is the single home for protocol_url and protocol_version anywhere in sample
+      processing; no SampleProcessing subclass stores them directly. Type-level, so
+      many runs and many samples reference the same record. For "which steps actually
+      ran together", see SampleProcessingRun.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
     slots:
     - name
@@ -22526,6 +24422,33 @@ classes:
         identifier: true
         range: uuid
     class_uri: basalt_schema:SampleProcessingProtocol
+  SampleProcessingRun:
+    name: SampleProcessingRun
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/SampleProcessingRun
+    description: 'One concrete execution of a sample processing chain: the instance-level
+      counterpart to SampleProcessingProtocol. It is a pure grouping token, deliberately
+      holding no protocol or sample data of its own, so there is nothing here that
+      can contradict the steps or the edges.
+
+      Every ProcessingSampleLink in one chain carries the same in_run. This is what
+      makes "all steps in this chain" a single indexed query on one concrete table,
+      and it is what gives step_number something to be a position within.
+
+      A run may cover several starting samples (a PoolingProcess run) or produce several
+      final analytes (a FractionationProcess run), which is why the run rather than
+      a single "starting sample" pointer is the grouping key -- an ancestor column
+      would be ambiguous the moment anything is pooled.'
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/sample-processing
+    slots:
+    - name
+    - description
+    - sampleProcessingRun__id
+    attributes:
+      id:
+        name: id
+        identifier: true
+        range: uuid
+    class_uri: basalt_schema:SampleProcessingRun
   ChemicalConversionProcess:
     name: ChemicalConversionProcess
     definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/ChemicalConversionProcess
@@ -22537,9 +24460,7 @@ classes:
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     - duration_min
     - temperature_celsius
@@ -22577,9 +24498,7 @@ classes:
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     - substances_used
     - starting_mass_mg
@@ -22609,9 +24528,7 @@ classes:
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     - lims_protocol_instance_id
     class_uri: basalt_schema:FractionationProcess
@@ -22625,9 +24542,7 @@ classes:
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     - normalizationProcess__normalization_method
     - normalizationProcess__target_mass_mg
@@ -22660,9 +24575,7 @@ classes:
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     - final_mass_mg
     class_uri: basalt_schema:PoolingProcess
@@ -22711,9 +24624,7 @@ classes:
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     - lims_protocol_instance_id
     - final_concentration_mg_per_ml
@@ -22735,9 +24646,7 @@ classes:
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     - lims_protocol_instance_id
     class_uri: basalt_schema:ResuspensionProcess
@@ -22751,9 +24660,7 @@ classes:
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     - lims_protocol_instance_id
     - uses_chromatography
@@ -22769,9 +24676,7 @@ classes:
     slots:
     - name
     - description
-    - protocol_url
-    - protocol_version
-    - uses_sample
+    - in_protocol
     - sampleProcessing__id
     - final_mass_mg
     class_uri: basalt_schema:SubSamplingProcess
@@ -23155,9 +25060,52 @@ classes:
         name: packages
         range: string
     class_uri: basalt_schema:ZipDownload
+  LinkageCache:
+    name: LinkageCache
+    definition_uri: https://emsl-computing.github.io/BASALT-Schema/elements/LinkageCache
+    description: "Pre-computed provenance closure table.\nStores every (ancestor,\
+      \ descendant) pair across all chain types with hop_depth.\nRefreshed on a schedule;\
+      \ not real-time (acceptable for daily batch cadence).\n\nDDL:\n  CREATE TABLE\
+      \ linkage_cache (\n    ancestor_id      UUID NOT NULL,\n    descendant_id  \
+      \  UUID NOT NULL,\n    ancestor_type    VARCHAR(64),    -- 'sample' | 'processedSample'\
+      \ |\n                                    --  'DataProcessingActivity' | 'processedData'\n\
+      \    descendant_type  VARCHAR(64),\n    hop_depth        INTEGER NOT NULL, \
+      \ -- 1 = direct parent\n    path             TEXT,\n    computed_at      TIMESTAMP\
+      \ DEFAULT now(),\n    PRIMARY KEY (ancestor_id, descendant_id)\n  );\n  CREATE\
+      \ INDEX ON linkage_cache (descendant_id);  -- reverse lookup\n\nExample \u2014\
+      \ all products from sample S1:\n  SELECT pd.*\n  FROM linkage_cache lc\n  JOIN\
+      \ \"processedData\" pd ON pd.id = lc.descendant_id\n  WHERE lc.ancestor_id =\
+      \ 'S1-uuid'\n    AND lc.descendant_type = 'processedData';\n\nNOTE: ancestor_id\
+      \ + descendant_id form a composite PK in the DDL.\nLinkML does not natively\
+      \ express composite PKs; a unique_key is defined\nbelow as the closest equivalent."
+    from_schema: https://emsl-computing.github.io/BASALT-Schema/linkage_cache
+    slots:
+    - ancestor_type
+    - descendant_type
+    - hop_depth
+    - path
+    - computed_at
+    - linkageCache__ancestor_id
+    - linkageCache__descendant_id
+    attributes:
+      ancestor_id:
+        name: ancestor_id
+        range: uuid
+        required: true
+      descendant_id:
+        name: descendant_id
+        range: uuid
+        required: true
+    class_uri: basalt_schema:LinkageCache
+    unique_keys:
+      unique_ancestor_descendant:
+        unique_key_name: unique_ancestor_descendant
+        unique_key_slots:
+        - ancestor_id
+        - descendant_id
 metamodel_version: 1.7.0
 source_file: basalt_schema.yaml
-source_file_date: '2026-08-18T10:55:12'
-source_file_size: 16306
-generation_date: '2026-08-18T10:58:25'
+source_file_date: '2026-08-28T07:46:38'
+source_file_size: 20245
+generation_date: '2026-08-28T07:47:18'
 

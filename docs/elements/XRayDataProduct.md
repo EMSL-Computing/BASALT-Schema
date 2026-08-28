@@ -11,15 +11,17 @@ __
 
 _Concrete subclasses:_
 
-_  - XRFElementalProduct: elemental concentrations (one row per sample)_
+_  - XRFElementalProduct: elemental concentrations_
 
-_  - XRDPhaseProduct: mineral phases (one row per sample)_
+_  - XRDPhaseProduct: mineral phases_
+
+_  - XASLCFProduct: linear combination fitting results_
 
 __
 
 _Common patterns:_
 
-_  - s3_key points to raw spectrum/diffractogram file in MinIO_
+_  - s3_key points to the raw or processed X-ray data file in MinIO_
 
 _  - summary_metrics provides lightweight queryable summaries:_
 
@@ -27,9 +29,13 @@ _      XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}_
 
 _      XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}_
 
-_  - workflow_id is NULL for direct instrument output (XRF typical)_
+_      XAS: {"r_factor":0.000975, "lcf_type":"XANES", "n_standards":3}_
 
-_  - workflow_id links to DataProcessingActivity for computational processing (XRD Rietveld) _
+_  - direct outputs may not have a processing link (XRF typical)_
+
+_  - computational outputs should use a typed processing reference slot_
+
+_    (XRD Rietveld refinement, XAS LCF fitting)_
 
 
 
@@ -55,6 +61,8 @@ URI: [basalt_schema:XRayDataProduct](https://emsl-computing.github.io/BASALT-Sch
         click XRFElementalProduct href "../XRFElementalProduct/"
       XRayDataProduct <|-- XRDPhaseProduct
         click XRDPhaseProduct href "../XRDPhaseProduct/"
+      XRayDataProduct <|-- XASLCFProduct
+        click XASLCFProduct href "../XASLCFProduct/"
       
 
       XRayDataProduct : core_section
@@ -118,6 +126,7 @@ URI: [basalt_schema:XRayDataProduct](https://emsl-computing.github.io/BASALT-Sch
         * **XRayDataProduct**
             * [XRFElementalProduct](XRFElementalProduct.md)
             * [XRDPhaseProduct](XRDPhaseProduct.md)
+            * [XASLCFProduct](XASLCFProduct.md)
 
 
 ## Slots
@@ -191,14 +200,15 @@ URI: [basalt_schema:XRayDataProduct](https://emsl-computing.github.io/BASALT-Sch
 name: XRayDataProduct
 description: "Abstract base class for X-ray analytical data products.\nInherits S3\
   \ storage metadata and sample linkage from dataProduct via ProcessedData.\n\nConcrete\
-  \ subclasses:\n  - XRFElementalProduct: elemental concentrations (one row per sample)\n\
-  \  - XRDPhaseProduct: mineral phases (one row per sample)\n\nCommon patterns:\n\
-  \  - s3_key points to raw spectrum/diffractogram file in MinIO\n  - summary_metrics\
-  \ provides lightweight queryable summaries:\n      XRF: {\"Ni_mg_kg\":45.3, \"Pb_mg_kg\"\
-  :8.2, \"As_mg_kg\":12.1}\n      XRD: {\"quartz_percent\":42, \"albite_percent\"\
-  :18, \"kaolinite_percent\":31}\n  - workflow_id is NULL for direct instrument output\
-  \ (XRF typical)\n  - workflow_id links to DataProcessingActivity for computational\
-  \ processing (XRD Rietveld) "
+  \ subclasses:\n  - XRFElementalProduct: elemental concentrations\n  - XRDPhaseProduct:\
+  \ mineral phases\n  - XASLCFProduct: linear combination fitting results\n\nCommon\
+  \ patterns:\n  - s3_key points to the raw or processed X-ray data file in MinIO\n\
+  \  - summary_metrics provides lightweight queryable summaries:\n      XRF: {\"Ni_mg_kg\"\
+  :45.3, \"Pb_mg_kg\":8.2, \"As_mg_kg\":12.1}\n      XRD: {\"quartz_percent\":42,\
+  \ \"albite_percent\":18, \"kaolinite_percent\":31}\n      XAS: {\"r_factor\":0.000975,\
+  \ \"lcf_type\":\"XANES\", \"n_standards\":3}\n  - direct outputs may not have a\
+  \ processing link (XRF typical)\n  - computational outputs should use a typed processing\
+  \ reference slot\n    (XRD Rietveld refinement, XAS LCF fitting)"
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: ProcessedData
 abstract: true
@@ -213,14 +223,15 @@ abstract: true
 name: XRayDataProduct
 description: "Abstract base class for X-ray analytical data products.\nInherits S3\
   \ storage metadata and sample linkage from dataProduct via ProcessedData.\n\nConcrete\
-  \ subclasses:\n  - XRFElementalProduct: elemental concentrations (one row per sample)\n\
-  \  - XRDPhaseProduct: mineral phases (one row per sample)\n\nCommon patterns:\n\
-  \  - s3_key points to raw spectrum/diffractogram file in MinIO\n  - summary_metrics\
-  \ provides lightweight queryable summaries:\n      XRF: {\"Ni_mg_kg\":45.3, \"Pb_mg_kg\"\
-  :8.2, \"As_mg_kg\":12.1}\n      XRD: {\"quartz_percent\":42, \"albite_percent\"\
-  :18, \"kaolinite_percent\":31}\n  - workflow_id is NULL for direct instrument output\
-  \ (XRF typical)\n  - workflow_id links to DataProcessingActivity for computational\
-  \ processing (XRD Rietveld) "
+  \ subclasses:\n  - XRFElementalProduct: elemental concentrations\n  - XRDPhaseProduct:\
+  \ mineral phases\n  - XASLCFProduct: linear combination fitting results\n\nCommon\
+  \ patterns:\n  - s3_key points to the raw or processed X-ray data file in MinIO\n\
+  \  - summary_metrics provides lightweight queryable summaries:\n      XRF: {\"Ni_mg_kg\"\
+  :45.3, \"Pb_mg_kg\":8.2, \"As_mg_kg\":12.1}\n      XRD: {\"quartz_percent\":42,\
+  \ \"albite_percent\":18, \"kaolinite_percent\":31}\n      XAS: {\"r_factor\":0.000975,\
+  \ \"lcf_type\":\"XANES\", \"n_standards\":3}\n  - direct outputs may not have a\
+  \ processing link (XRF typical)\n  - computational outputs should use a typed processing\
+  \ reference slot\n    (XRD Rietveld refinement, XAS LCF fitting)"
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: ProcessedData
 abstract: true
@@ -264,6 +275,7 @@ attributes:
     owner: XRayDataProduct
     domain_of:
     - ProcessedData
+    - ProcessingSampleLink
     - AMP2WellMetadata
     - MetagenomicsProduct
     range: Sample
@@ -288,13 +300,13 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -320,13 +332,13 @@ attributes:
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -510,7 +522,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -553,6 +564,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue

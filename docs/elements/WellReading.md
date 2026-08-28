@@ -123,6 +123,7 @@ attributes:
     domain_of:
     - WellMetadata
     - WellReading
+    - XASMotorPosition
     range: string
     required: true
   value:
@@ -178,6 +179,7 @@ attributes:
     domain_of:
     - WellMetadata
     - WellReading
+    - XASMotorPosition
     range: string
     required: true
   value:

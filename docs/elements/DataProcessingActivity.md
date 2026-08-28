@@ -23,6 +23,8 @@ URI: [basalt_schema:DataProcessingActivity](https://emsl-computing.github.io/BAS
  classDiagram
     class DataProcessingActivity
     click DataProcessingActivity href "../DataProcessingActivity/"
+      DataProcessingActivity <|-- XASLCFDataProcessingActivity
+        click XASLCFDataProcessingActivity href "../XASLCFDataProcessingActivity/"
       DataProcessingActivity <|-- MassSpectrometryDataProcessingActivity
         click MassSpectrometryDataProcessingActivity href "../MassSpectrometryDataProcessingActivity/"
       DataProcessingActivity <|-- MetagenomicsDataProcessingActivity
@@ -75,6 +77,7 @@ URI: [basalt_schema:DataProcessingActivity](https://emsl-computing.github.io/BAS
 
 ## Inheritance
 * **DataProcessingActivity**
+    * [XASLCFDataProcessingActivity](XASLCFDataProcessingActivity.md)
     * [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md)
     * [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md)
 
@@ -104,6 +107,7 @@ URI: [basalt_schema:DataProcessingActivity](https://emsl-computing.github.io/BAS
 | ---  | --- | --- | --- |
 | [DataProcessingActivity](DataProcessingActivity.md) | [parent_workflow_id](parent_workflow_id.md) | range | [DataProcessingActivity](DataProcessingActivity.md) |
 | [WorkflowExecutionFunctionalAnnotation](WorkflowExecutionFunctionalAnnotation.md) | [workflow_id](workflow_id.md) | range | [DataProcessingActivity](DataProcessingActivity.md) |
+| [XASLCFDataProcessingActivity](XASLCFDataProcessingActivity.md) | [parent_workflow_id](parent_workflow_id.md) | range | [DataProcessingActivity](DataProcessingActivity.md) |
 | [MassSpectrometryDataProcessingActivity](MassSpectrometryDataProcessingActivity.md) | [parent_workflow_id](parent_workflow_id.md) | range | [DataProcessingActivity](DataProcessingActivity.md) |
 | [MetagenomicsDataProcessingActivity](MetagenomicsDataProcessingActivity.md) | [parent_workflow_id](parent_workflow_id.md) | range | [DataProcessingActivity](DataProcessingActivity.md) |
 
@@ -191,7 +195,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -234,6 +237,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -334,7 +338,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -377,6 +380,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -498,13 +502,13 @@ attributes:
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue

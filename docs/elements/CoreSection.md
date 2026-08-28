@@ -49,17 +49,6 @@ URI: [basalt_schema:CoreSection](https://emsl-computing.github.io/BASALT-Schema/
         
       CoreSection : replicate
         
-      CoreSection : sampled_during
-        
-          
-    
-        
-        
-        CoreSection --> "0..1" SampleProcessing : sampled_during
-        click SampleProcessing href "../SampleProcessing/"
-    
-
-        
       CoreSection : sampled_portion
         
           
@@ -102,7 +91,6 @@ URI: [basalt_schema:CoreSection](https://emsl-computing.github.io/BASALT-Schema/
 | [total_amount_ug](total_amount_ug.md) | 0..1 <br/> [Float](Float.md) | Total amount of analyte in micrograms | [ProcessedSample](ProcessedSample.md) |
 | [volume_uL](volume_uL.md) | 0..1 <br/> [Float](Float.md) | Volume of the entity in microliters | [ProcessedSample](ProcessedSample.md) |
 | [sampled_portion](sampled_portion.md) | 0..1 <br/> [SamplePortionEnum](SamplePortionEnum.md) | The portion of the original sample used in creating this processed sample (e | [ProcessedSample](ProcessedSample.md) |
-| [sampled_during](sampled_during.md) | 0..1 <br/> [SampleProcessing](SampleProcessing.md) | A reference to the sample processing activity (generally lab work) that gener... | [ProcessedSample](ProcessedSample.md) |
 | [replicate](replicate.md) | 0..1 <br/> [Integer](Integer.md) | The TECHNICAL replicate number of the processed sample, if applicable | [ProcessedSample](ProcessedSample.md) |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [Sample](Sample.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [Sample](Sample.md) |
@@ -192,7 +180,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -235,6 +222,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -290,7 +278,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -333,6 +320,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -425,32 +413,6 @@ attributes:
     domain_of:
     - ProcessedSample
     range: SamplePortionEnum
-  sampled_during:
-    name: sampled_during
-    description: A reference to the sample processing activity (generally lab work)
-      that generated this processed_sample.
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    alias: sampled_during
-    owner: CoreSection
-    domain_of:
-    - AerosolArmSample
-    - AerosolSample
-    - CommerciallyPurchasedSample
-    - CultureEnvironmentalSample
-    - FieldDeployedTerraformSample
-    - MixedCultureSample
-    - MonetSoilSample
-    - OtherUndescribedSample
-    - PlantSample
-    - PureCultureSample
-    - SedimentSample
-    - SoilSample
-    - SynthesizedMaterialSample
-    - TerraformSample
-    - WaterSample
-    - ProcessedSample
-    range: SampleProcessing
   replicate:
     name: replicate
     description: The TECHNICAL replicate number of the processed sample, if applicable.
@@ -488,13 +450,13 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -520,13 +482,13 @@ attributes:
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue

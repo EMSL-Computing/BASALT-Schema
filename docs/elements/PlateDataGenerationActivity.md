@@ -246,13 +246,13 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -278,13 +278,13 @@ attributes:
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -312,7 +312,6 @@ attributes:
     owner: PlateDataGenerationActivity
     domain_of:
     - DataGenerationActivity
-    - SampleProcessing
     - SampleProcessingProtocol
     range: string
   protocol_version:
@@ -324,7 +323,6 @@ attributes:
     owner: PlateDataGenerationActivity
     domain_of:
     - DataGenerationActivity
-    - SampleProcessing
     - SampleProcessingProtocol
     range: string
   acquisition_start_time:
@@ -393,7 +391,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -436,6 +433,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue

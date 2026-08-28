@@ -14,7 +14,7 @@ description: |-
       This is the only source of sample-processing edges; no scalar FK duplicates them.
     - DataProcessingActivity.parent_workflow_id (workflow chains)
     - DataGenerationActivity (processed sample -> workflow link)
-    - ProcessedData.workflow_id (workflow -> product link)
+    - Typed product/activity reference slots (workflow -> product links)
 
   Relationship to SampleProcessingRun: the run id groups the steps of one chain and is
   the normalized truth; this table is the query accelerator derived from it. Use in_run

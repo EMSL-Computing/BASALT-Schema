@@ -5,8 +5,6 @@
 
 _Gravimetric water content (GWC) analysis product, typically derived via oven-drying and weighing of a known mass of soil._
 
-_One row per sample with columns for GWC and QC flag._
-
 
 
 
@@ -190,10 +188,8 @@ URI: [basalt_schema:GWCMoistureProduct](https://emsl-computing.github.io/BASALT-
 <details>
 ```yaml
 name: GWCMoistureProduct
-description: 'Gravimetric water content (GWC) analysis product, typically derived
-  via oven-drying and weighing of a known mass of soil.
-
-  One row per sample with columns for GWC and QC flag.'
+description: Gravimetric water content (GWC) analysis product, typically derived via
+  oven-drying and weighing of a known mass of soil.
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: ProcessedData
 slots:
@@ -229,10 +225,8 @@ attributes:
 <details>
 ```yaml
 name: GWCMoistureProduct
-description: 'Gravimetric water content (GWC) analysis product, typically derived
-  via oven-drying and weighing of a known mass of soil.
-
-  One row per sample with columns for GWC and QC flag.'
+description: Gravimetric water content (GWC) analysis product, typically derived via
+  oven-drying and weighing of a known mass of soil.
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: ProcessedData
 attributes:
@@ -287,6 +281,7 @@ attributes:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   summary_metrics:
     name: summary_metrics
@@ -327,6 +322,7 @@ attributes:
     owner: GWCMoistureProduct
     domain_of:
     - ProcessedData
+    - ProcessingSampleLink
     - AMP2WellMetadata
     - MetagenomicsProduct
     range: Sample
@@ -351,13 +347,13 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -383,13 +379,13 @@ attributes:
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -573,7 +569,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -616,6 +611,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue

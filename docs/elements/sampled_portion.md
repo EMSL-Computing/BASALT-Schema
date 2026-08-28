@@ -22,7 +22,7 @@ Alias: sampled_portion
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing or analysis |  no  |
+| [ProcessedSample](ProcessedSample.md) | A sample that has undergone processing |  no  |
 | [CoreSection](CoreSection.md) | A section of a core sample (TOP, MID, BTM) |  no  |
 
 

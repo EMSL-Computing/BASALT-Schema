@@ -22,10 +22,10 @@ Alias: lims_protocol_instance_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md) | Instrument configuration and setup for a mass spectrometry run |  no  |
-| [SolidPhaseExtractionProcess](SolidPhaseExtractionProcess.md) | A solid phase extraction (SPE) step (e |  no  |
 | [FractionationProcess](FractionationProcess.md) | A fractionation process (e |  no  |
+| [MassSpectrometryConfiguration](MassSpectrometryConfiguration.md) | Instrument configuration and setup for a mass spectrometry run |  no  |
 | [ProteinQuantification](ProteinQuantification.md) | A protein quantification assay (e |  no  |
+| [SolidPhaseExtractionProcess](SolidPhaseExtractionProcess.md) | A solid phase extraction (SPE) step (e |  no  |
 | [ResuspensionProcess](ResuspensionProcess.md) | Resuspension of an analyte (e |  no  |
 
 

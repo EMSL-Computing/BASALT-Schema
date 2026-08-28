@@ -3,11 +3,13 @@
 # Class: XRayDataGenerationActivity 
 
 
-_Abstract base class for X-ray analytical methods including XRF (elemental)_
+_Abstract base class for X-ray analytical methods including XRF (elemental),_
 
-_and XRD (mineralogical) analysis. Inherits acquisition_time, instrument_id,_
+_XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits_
 
-_protocol_url, analyte_id, and other core metadata from DataGenerationActivity._
+_acquisition_start_time, acquisition_end_time, instrument_used, protocol_url,_
+
+_analyte_id, and other core metadata from DataGenerationActivity._
 
 __
 
@@ -22,6 +24,10 @@ _Shared patterns:_
 _  - Direct instrument output (no computational workflow) is typical for XRF_
 
 _  - XRD may optionally link to DataProcessingActivity for Rietveld refinement_
+
+_  - XAS acquires raw sweep files as XASInstrumentData, which are later fitted_
+
+_    by an XASLCFDataProcessingActivity to yield an XASLCFProduct_
 
 _  - protocol_url should link to vendor SOP or EMSL internal protocol documentation_
 
@@ -49,6 +55,8 @@ URI: [basalt_schema:XRayDataGenerationActivity](https://emsl-computing.github.io
         click XRFDataGenerationActivity href "../XRFDataGenerationActivity/"
       XRayDataGenerationActivity <|-- XRDDataGenerationActivity
         click XRDDataGenerationActivity href "../XRDDataGenerationActivity/"
+      XRayDataGenerationActivity <|-- XASDataGenerationActivity
+        click XASDataGenerationActivity href "../XASDataGenerationActivity/"
       
 
       XRayDataGenerationActivity : acquisition_end_time
@@ -112,6 +120,7 @@ URI: [basalt_schema:XRayDataGenerationActivity](https://emsl-computing.github.io
     * **XRayDataGenerationActivity**
         * [XRFDataGenerationActivity](XRFDataGenerationActivity.md)
         * [XRDDataGenerationActivity](XRDDataGenerationActivity.md)
+        * [XASDataGenerationActivity](XASDataGenerationActivity.md)
 
 
 ## Slots
@@ -179,14 +188,16 @@ URI: [basalt_schema:XRayDataGenerationActivity](https://emsl-computing.github.io
 <details>
 ```yaml
 name: XRayDataGenerationActivity
-description: "Abstract base class for X-ray analytical methods including XRF (elemental)\n\
-  and XRD (mineralogical) analysis. Inherits acquisition_time, instrument_id,\nprotocol_url,\
-  \ analyte_id, and other core metadata from DataGenerationActivity.\n\nConcrete subclasses\
-  \ define method-specific measurement parameters.\nFuture X-ray methods (e.g., XCT)\
-  \ can extend this class.\n\nShared patterns:\n  - Direct instrument output (no computational\
-  \ workflow) is typical for XRF\n  - XRD may optionally link to DataProcessingActivity\
-  \ for Rietveld refinement\n  - protocol_url should link to vendor SOP or EMSL internal\
-  \ protocol documentation"
+description: "Abstract base class for X-ray analytical methods including XRF (elemental),\n\
+  XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits\nacquisition_start_time,\
+  \ acquisition_end_time, instrument_used, protocol_url,\nanalyte_id, and other core\
+  \ metadata from DataGenerationActivity.\n\nConcrete subclasses define method-specific\
+  \ measurement parameters.\nFuture X-ray methods (e.g., XCT) can extend this class.\n\
+  \nShared patterns:\n  - Direct instrument output (no computational workflow) is\
+  \ typical for XRF\n  - XRD may optionally link to DataProcessingActivity for Rietveld\
+  \ refinement\n  - XAS acquires raw sweep files as XASInstrumentData, which are later\
+  \ fitted\n    by an XASLCFDataProcessingActivity to yield an XASLCFProduct\n  -\
+  \ protocol_url should link to vendor SOP or EMSL internal protocol documentation"
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: DataGenerationActivity
 abstract: true
@@ -199,14 +210,16 @@ abstract: true
 <details>
 ```yaml
 name: XRayDataGenerationActivity
-description: "Abstract base class for X-ray analytical methods including XRF (elemental)\n\
-  and XRD (mineralogical) analysis. Inherits acquisition_time, instrument_id,\nprotocol_url,\
-  \ analyte_id, and other core metadata from DataGenerationActivity.\n\nConcrete subclasses\
-  \ define method-specific measurement parameters.\nFuture X-ray methods (e.g., XCT)\
-  \ can extend this class.\n\nShared patterns:\n  - Direct instrument output (no computational\
-  \ workflow) is typical for XRF\n  - XRD may optionally link to DataProcessingActivity\
-  \ for Rietveld refinement\n  - protocol_url should link to vendor SOP or EMSL internal\
-  \ protocol documentation"
+description: "Abstract base class for X-ray analytical methods including XRF (elemental),\n\
+  XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits\nacquisition_start_time,\
+  \ acquisition_end_time, instrument_used, protocol_url,\nanalyte_id, and other core\
+  \ metadata from DataGenerationActivity.\n\nConcrete subclasses define method-specific\
+  \ measurement parameters.\nFuture X-ray methods (e.g., XCT) can extend this class.\n\
+  \nShared patterns:\n  - Direct instrument output (no computational workflow) is\
+  \ typical for XRF\n  - XRD may optionally link to DataProcessingActivity for Rietveld\
+  \ refinement\n  - XAS acquires raw sweep files as XASInstrumentData, which are later\
+  \ fitted\n    by an XASLCFDataProcessingActivity to yield an XASLCFProduct\n  -\
+  \ protocol_url should link to vendor SOP or EMSL internal protocol documentation"
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: DataGenerationActivity
 abstract: true
@@ -245,13 +258,13 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -277,13 +290,13 @@ attributes:
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -311,7 +324,6 @@ attributes:
     owner: XRayDataGenerationActivity
     domain_of:
     - DataGenerationActivity
-    - SampleProcessing
     - SampleProcessingProtocol
     range: string
   protocol_version:
@@ -323,7 +335,6 @@ attributes:
     owner: XRayDataGenerationActivity
     domain_of:
     - DataGenerationActivity
-    - SampleProcessing
     - SampleProcessingProtocol
     range: string
   acquisition_start_time:
@@ -392,7 +403,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -435,6 +445,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue

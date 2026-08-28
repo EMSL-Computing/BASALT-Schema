@@ -13,7 +13,7 @@ _Output: mineral phase names and quantitative abundances (weight %)._
 
 __
 
-_Data product: XRDPhaseProduct (one row per mineral phase per sample)_
+_Data product: XRDPhaseProduct_
 
 __
 
@@ -201,18 +201,18 @@ URI: [basalt_schema:XRDDataGenerationActivity](https://emsl-computing.github.io/
 name: XRDDataGenerationActivity
 description: "X-ray Diffraction (XRD) mineralogical analysis activity.\n\nXRD identifies\
   \ crystalline mineral phases by measuring diffraction patterns.\nOutput: mineral\
-  \ phase names and quantitative abundances (weight %).\n\nData product: XRDPhaseProduct\
-  \ (one row per mineral phase per sample)\n\nWorkflow patterns:\n  1. Direct/semi-quantitative:\
-  \ \n       processedSample -> XRDDataGenerationActivity -> XRDPhaseProduct (workflow_id\
-  \ = NULL)\n  2. With Rietveld refinement (computational):\n       processedSample\
-  \ -> XRDDataGenerationActivity -> \n       DataProcessingActivity(type='xrd_rietveld_refinement')\
-  \ -> \n       XRDPhaseProduct (workflow_id = refinement WEA)\n\nProtocol information:\
-  \ Stored externally; link via protocol_url attribute.\nExample protocol parameters\
-  \ (stored in external SOP or DataProcessingActivity):\n  - Diffractometer geometry\
-  \ (Bragg-Brentano, Debye-Scherrer)\n  - X-ray tube type (Cu, Co, Mo)\n  - Scan range\
-  \ (2-theta degrees), step size\n  - Refinement software (HighScore Plus, GSAS-II,\
-  \ FullProf)\n  - R-factor, GOF (goodness of fit)\n\nRequired enum additions to enums.yaml:\n\
-  \  routemethod:\n    xrd_analysis:  # Add to routemethod permissible_values"
+  \ phase names and quantitative abundances (weight %).\n\nData product: XRDPhaseProduct\n\
+  \nWorkflow patterns:\n  1. Direct/semi-quantitative: \n       processedSample ->\
+  \ XRDDataGenerationActivity -> XRDPhaseProduct (workflow_id = NULL)\n  2. With Rietveld\
+  \ refinement (computational):\n       processedSample -> XRDDataGenerationActivity\
+  \ -> \n       DataProcessingActivity(type='xrd_rietveld_refinement') -> \n     \
+  \  XRDPhaseProduct (workflow_id = refinement WEA)\n\nProtocol information: Stored\
+  \ externally; link via protocol_url attribute.\nExample protocol parameters (stored\
+  \ in external SOP or DataProcessingActivity):\n  - Diffractometer geometry (Bragg-Brentano,\
+  \ Debye-Scherrer)\n  - X-ray tube type (Cu, Co, Mo)\n  - Scan range (2-theta degrees),\
+  \ step size\n  - Refinement software (HighScore Plus, GSAS-II, FullProf)\n  - R-factor,\
+  \ GOF (goodness of fit)\n\nRequired enum additions to enums.yaml:\n  routemethod:\n\
+  \    xrd_analysis:  # Add to routemethod permissible_values"
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: XRayDataGenerationActivity
 
@@ -226,18 +226,18 @@ is_a: XRayDataGenerationActivity
 name: XRDDataGenerationActivity
 description: "X-ray Diffraction (XRD) mineralogical analysis activity.\n\nXRD identifies\
   \ crystalline mineral phases by measuring diffraction patterns.\nOutput: mineral\
-  \ phase names and quantitative abundances (weight %).\n\nData product: XRDPhaseProduct\
-  \ (one row per mineral phase per sample)\n\nWorkflow patterns:\n  1. Direct/semi-quantitative:\
-  \ \n       processedSample -> XRDDataGenerationActivity -> XRDPhaseProduct (workflow_id\
-  \ = NULL)\n  2. With Rietveld refinement (computational):\n       processedSample\
-  \ -> XRDDataGenerationActivity -> \n       DataProcessingActivity(type='xrd_rietveld_refinement')\
-  \ -> \n       XRDPhaseProduct (workflow_id = refinement WEA)\n\nProtocol information:\
-  \ Stored externally; link via protocol_url attribute.\nExample protocol parameters\
-  \ (stored in external SOP or DataProcessingActivity):\n  - Diffractometer geometry\
-  \ (Bragg-Brentano, Debye-Scherrer)\n  - X-ray tube type (Cu, Co, Mo)\n  - Scan range\
-  \ (2-theta degrees), step size\n  - Refinement software (HighScore Plus, GSAS-II,\
-  \ FullProf)\n  - R-factor, GOF (goodness of fit)\n\nRequired enum additions to enums.yaml:\n\
-  \  routemethod:\n    xrd_analysis:  # Add to routemethod permissible_values"
+  \ phase names and quantitative abundances (weight %).\n\nData product: XRDPhaseProduct\n\
+  \nWorkflow patterns:\n  1. Direct/semi-quantitative: \n       processedSample ->\
+  \ XRDDataGenerationActivity -> XRDPhaseProduct (workflow_id = NULL)\n  2. With Rietveld\
+  \ refinement (computational):\n       processedSample -> XRDDataGenerationActivity\
+  \ -> \n       DataProcessingActivity(type='xrd_rietveld_refinement') -> \n     \
+  \  XRDPhaseProduct (workflow_id = refinement WEA)\n\nProtocol information: Stored\
+  \ externally; link via protocol_url attribute.\nExample protocol parameters (stored\
+  \ in external SOP or DataProcessingActivity):\n  - Diffractometer geometry (Bragg-Brentano,\
+  \ Debye-Scherrer)\n  - X-ray tube type (Cu, Co, Mo)\n  - Scan range (2-theta degrees),\
+  \ step size\n  - Refinement software (HighScore Plus, GSAS-II, FullProf)\n  - R-factor,\
+  \ GOF (goodness of fit)\n\nRequired enum additions to enums.yaml:\n  routemethod:\n\
+  \    xrd_analysis:  # Add to routemethod permissible_values"
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: XRayDataGenerationActivity
 attributes:
@@ -275,13 +275,13 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -307,13 +307,13 @@ attributes:
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -341,7 +341,6 @@ attributes:
     owner: XRDDataGenerationActivity
     domain_of:
     - DataGenerationActivity
-    - SampleProcessing
     - SampleProcessingProtocol
     range: string
   protocol_version:
@@ -353,7 +352,6 @@ attributes:
     owner: XRDDataGenerationActivity
     domain_of:
     - DataGenerationActivity
-    - SampleProcessing
     - SampleProcessingProtocol
     range: string
   acquisition_start_time:
@@ -422,7 +420,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -465,6 +462,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue

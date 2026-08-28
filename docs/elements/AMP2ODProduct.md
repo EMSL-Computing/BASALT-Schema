@@ -5,8 +5,6 @@
 
 _AMP2 optical density measurement product._
 
-_One row per plate × timepoint._
-
 _processedData.type = 'amp2_od'_
 
 __
@@ -128,8 +126,6 @@ URI: [basalt_schema:AMP2ODProduct](https://emsl-computing.github.io/BASALT-Schem
 name: AMP2ODProduct
 description: 'AMP2 optical density measurement product.
 
-  One row per plate × timepoint.
-
   processedData.type = ''amp2_od''
 
 
@@ -148,8 +144,6 @@ slots:
 ```yaml
 name: AMP2ODProduct
 description: 'AMP2 optical density measurement product.
-
-  One row per plate × timepoint.
 
   processedData.type = ''amp2_od''
 

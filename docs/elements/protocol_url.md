@@ -22,36 +22,17 @@ Alias: protocol_url
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PlateDataGenerationActivity](PlateDataGenerationActivity.md) | Abstract base for plate measurement activities |  no  |
-| [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | X-ray Fluorescence (XRF) elemental analysis activity |  no  |
-| [PoolingProcess](PoolingProcess.md) | A laboratory pooling process that physically mixes multiple input samples int... |  no  |
-| [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |  no  |
-| [StrainPurity](StrainPurity.md) | Purity check of a strain culture |  no  |
-| [ProteinQuantification](ProteinQuantification.md) | A protein quantification assay (e |  no  |
-| [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | Abstract base class for X-ray analytical methods including XRF (elemental) |  no  |
-| [MediaPreparation](MediaPreparation.md) | Activity that prepares a batch of growth media |  no  |
-| [StockCulturePreparation](StockCulturePreparation.md) | Preparation of a stock culture from user samples for long-term storage |  no  |
-| [PreCultureGrowth](PreCultureGrowth.md) | Growth of a pre-culture to establish viable inoculum before |  no  |
-| [StandardSampleProcessing](StandardSampleProcessing.md) | A basic non-abstract SampleProcessing subclass that links to a published stan... |  no  |
-| [SubSamplingProcess](SubSamplingProcess.md) | A laboratory subsampling process that takes a portion of an existing  sample ... |  no  |
-| [FractionationProcess](FractionationProcess.md) | A fractionation process (e |  no  |
-| [ChemicalConversionProcess](ChemicalConversionProcess.md) | A chemical conversion process used in sample preparation |  no  |
-| [EcoplatePlateSetupActivity](EcoplatePlateSetupActivity.md) | Ecoplate-specific plate setup |  no  |
-| [Extraction](Extraction.md) | The removal and isolation of a desired analyte from other material  in a samp... |  no  |
-| [DataGenerationActivity](DataGenerationActivity.md) | Abstract base for any data generation activity (physical to digital) |  no  |
-| [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | AMP2-specific plate setup |  no  |
+| [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | A record of the mass spectrometry run that generates a raw data product |  no  |
 | [NucleotideSequencing](NucleotideSequencing.md) | A lab activity in which DNA or RNA that was extracted from a sample is sequen... |  no  |
 | [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | X-ray Diffraction (XRD) mineralogical analysis activity |  no  |
-| [NormalizationProcess](NormalizationProcess.md) | A process that adjusts sample amounts (e |  no  |
+| [PlateDataGenerationActivity](PlateDataGenerationActivity.md) | Abstract base for plate measurement activities |  no  |
+| [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | Abstract base class for X-ray analytical methods including XRF (elemental), |  no  |
+| [SampleProcessingProtocol](SampleProcessingProtocol.md) | A sample processing protocol: the recipe, not an execution of it |  no  |
+| [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | X-ray Fluorescence (XRF) elemental analysis activity |  no  |
+| [XASDataGenerationActivity](XASDataGenerationActivity.md) | X-ray Absorption Spectroscopy (XAS) acquisition activity |  no  |
 | [AMP2DataGenerationActivity](AMP2DataGenerationActivity.md) | AMP2 plate measurement (OD, fluorescence, flow cytometry) |  no  |
-| [ResuspensionProcess](ResuspensionProcess.md) | Resuspension of an analyte (e |  no  |
-| [SampleProcessingProtocol](SampleProcessingProtocol.md) | A grouping class representing a sample processing protocol consisting of mult... |  no  |
-| [SampleProcessing](SampleProcessing.md) | Abstract base for any sample processing activity (physical to physical) |  no  |
-| [CultureGrowth](CultureGrowth.md) | Abstract activity for growing cultures from samples or other cultures |  no  |
-| [PlateSetupActivity](PlateSetupActivity.md) | Abstract base for 96-well plate setup activities |  no  |
-| [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | A record of the mass spectrometry run that generates a raw data product |  no  |
-| [SolidPhaseExtractionProcess](SolidPhaseExtractionProcess.md) | A solid phase extraction (SPE) step (e |  no  |
-| [ExperimentalCulture](ExperimentalCulture.md) | Growth of an experimental culture for downstream analysis |  no  |
+| [EcoplateDataGenerationActivity](EcoplateDataGenerationActivity.md) | Ecoplate absorbance measurement at a single timepoint |  no  |
+| [DataGenerationActivity](DataGenerationActivity.md) | Abstract base for any data generation activity (physical to digital) |  no  |
 
 
 
@@ -65,7 +46,7 @@ Alias: protocol_url
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [DataGenerationActivity](DataGenerationActivity.md), [SampleProcessing](SampleProcessing.md), [SampleProcessingProtocol](SampleProcessingProtocol.md) |
+| Domain Of | [DataGenerationActivity](DataGenerationActivity.md), [SampleProcessingProtocol](SampleProcessingProtocol.md) |
 
 ### Cardinality and Requirements
 
@@ -116,7 +97,6 @@ rank: 1000
 alias: protocol_url
 domain_of:
 - DataGenerationActivity
-- SampleProcessing
 - SampleProcessingProtocol
 range: string
 

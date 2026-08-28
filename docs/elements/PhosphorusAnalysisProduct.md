@@ -5,8 +5,6 @@
 
 _Phosphorus analysis product, typically derived via colorimetric assay of soil extracts._
 
-_One row per sample with columns for phosphorus concentration._
-
 _Individual QC flags for each measurement using ProcessedDataFlag enum._
 
 
@@ -216,8 +214,6 @@ name: PhosphorusAnalysisProduct
 description: 'Phosphorus analysis product, typically derived via colorimetric assay
   of soil extracts.
 
-  One row per sample with columns for phosphorus concentration.
-
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: ProcessedData
@@ -288,8 +284,6 @@ attributes:
 name: PhosphorusAnalysisProduct
 description: 'Phosphorus analysis product, typically derived via colorimetric assay
   of soil extracts.
-
-  One row per sample with columns for phosphorus concentration.
 
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -383,6 +377,7 @@ attributes:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   replicate:
     name: replicate
@@ -440,6 +435,7 @@ attributes:
     owner: PhosphorusAnalysisProduct
     domain_of:
     - ProcessedData
+    - ProcessingSampleLink
     - AMP2WellMetadata
     - MetagenomicsProduct
     range: Sample
@@ -464,13 +460,13 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -496,13 +492,13 @@ attributes:
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -686,7 +682,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -729,6 +724,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue

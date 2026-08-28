@@ -5,8 +5,6 @@
 
 _Microbial biomass analysis product, typically derived via chloroform fumigation-extraction (CFE) or similar instrument._
 
-_One row per sample with columns for microbial biomass carbon and nitrogen._
-
 _Individual QC flags for each measurement using ProcessedDataFlag enum._
 
 
@@ -252,8 +250,6 @@ name: MicrobialBiomassProduct
 description: 'Microbial biomass analysis product, typically derived via chloroform
   fumigation-extraction (CFE) or similar instrument.
 
-  One row per sample with columns for microbial biomass carbon and nitrogen.
-
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: ProcessedData
@@ -328,8 +324,6 @@ attributes:
 name: MicrobialBiomassProduct
 description: 'Microbial biomass analysis product, typically derived via chloroform
   fumigation-extraction (CFE) or similar instrument.
-
-  One row per sample with columns for microbial biomass carbon and nitrogen.
 
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -433,6 +427,7 @@ attributes:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   replicate:
     name: replicate
@@ -490,6 +485,7 @@ attributes:
     owner: MicrobialBiomassProduct
     domain_of:
     - ProcessedData
+    - ProcessingSampleLink
     - AMP2WellMetadata
     - MetagenomicsProduct
     range: Sample
@@ -514,13 +510,13 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -546,13 +542,13 @@ attributes:
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -736,7 +732,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -779,6 +774,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue

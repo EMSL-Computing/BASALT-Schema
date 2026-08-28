@@ -72,6 +72,7 @@ URI: [basalt_schema:PersonValue](https://emsl-computing.github.io/BASALT-Schema/
 | [XRayDataGenerationActivity](XRayDataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
 | [XRFDataGenerationActivity](XRFDataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
 | [XRDDataGenerationActivity](XRDDataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
+| [XASDataGenerationActivity](XASDataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
 | [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | [instrument_operator](instrument_operator.md) | range | [PersonValue](PersonValue.md) |
 | [PlateSetupActivity](PlateSetupActivity.md) | [setup_operator_id](setup_operator_id.md) | range | [PersonValue](PersonValue.md) |
 | [AMP2PlateSetupActivity](AMP2PlateSetupActivity.md) | [setup_operator_id](setup_operator_id.md) | range | [PersonValue](PersonValue.md) |
@@ -157,7 +158,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -200,6 +200,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -299,7 +300,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -342,6 +342,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue

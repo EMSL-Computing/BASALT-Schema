@@ -5,8 +5,6 @@
 
 _Elemental analysis product, typically derived via combustion or similar instrument._
 
-_One row per sample with columns for total carbon, total nitrogen, total Kjeldahl nitrogen, and total sulfur._
-
 _Individual QC flags for each measurement using ProcessedDataFlag enum._
 
 
@@ -267,9 +265,6 @@ name: ElementalAnalysisProduct
 description: 'Elemental analysis product, typically derived via combustion or similar
   instrument.
 
-  One row per sample with columns for total carbon, total nitrogen, total Kjeldahl
-  nitrogen, and total sulfur.
-
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: ProcessedData
@@ -345,9 +340,6 @@ attributes:
 name: ElementalAnalysisProduct
 description: 'Elemental analysis product, typically derived via combustion or similar
   instrument.
-
-  One row per sample with columns for total carbon, total nitrogen, total Kjeldahl
-  nitrogen, and total sulfur.
 
   Individual QC flags for each measurement using ProcessedDataFlag enum.'
 from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -453,6 +445,7 @@ attributes:
     - pHProduct
     - XRFElementalProduct
     - XRDPhaseProduct
+    - XASLCFProduct
     range: ProductMeasureType
   summary_metrics:
     name: summary_metrics
@@ -493,6 +486,7 @@ attributes:
     owner: ElementalAnalysisProduct
     domain_of:
     - ProcessedData
+    - ProcessingSampleLink
     - AMP2WellMetadata
     - MetagenomicsProduct
     range: Sample
@@ -517,13 +511,13 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -549,13 +543,13 @@ attributes:
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -739,7 +733,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -782,6 +775,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue

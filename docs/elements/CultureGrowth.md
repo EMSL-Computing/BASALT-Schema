@@ -5,14 +5,14 @@
 
 _Abstract activity for growing cultures from samples or other cultures._
 
-__
-
 _Concrete subclasses: StrainPurity, StockCulturePreparation, _
 
 _PreCultureGrowth, ExperimentalCulture._
 
 
 
+
+* __NOTE__: this is an abstract class and should not be instantiated directly
 
 
 URI: [basalt_schema:CultureGrowth](https://emsl-computing.github.io/BASALT-Schema/elements/CultureGrowth)
@@ -51,6 +51,17 @@ URI: [basalt_schema:CultureGrowth](https://emsl-computing.github.io/BASALT-Schem
         
       CultureGrowth : id
         
+      CultureGrowth : in_protocol
+        
+          
+    
+        
+        
+        CultureGrowth --> "0..1" SampleProcessingProtocol : in_protocol
+        click SampleProcessingProtocol href "../SampleProcessingProtocol/"
+    
+
+        
       CultureGrowth : incubation_time_hours
         
       CultureGrowth : name
@@ -77,22 +88,7 @@ URI: [basalt_schema:CultureGrowth](https://emsl-computing.github.io/BASALT-Schem
     
 
         
-      CultureGrowth : protocol_url
-        
-      CultureGrowth : protocol_version
-        
       CultureGrowth : temperature_celsius
-        
-      CultureGrowth : uses_sample
-        
-          
-    
-        
-        
-        CultureGrowth --> "0..1" Sample : uses_sample
-        click Sample href "../Sample/"
-    
-
         
       
 ```
@@ -123,9 +119,7 @@ URI: [basalt_schema:CultureGrowth](https://emsl-computing.github.io/BASALT-Schem
 | [oxygen_relationship](oxygen_relationship.md) | 0..1 <br/> [OxygenStatusEnum](OxygenStatusEnum.md) | The relationship of the sample to oxygen, such as aerobic or anaerobic | [HasIncubationConditions](HasIncubationConditions.md) |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [SampleProcessing](SampleProcessing.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [SampleProcessing](SampleProcessing.md) |
-| [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
-| [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
-| [uses_sample](uses_sample.md) | 0..1 <br/> [Sample](Sample.md) | The starting sample that is being processed or analyzed | [SampleProcessing](SampleProcessing.md) |
+| [in_protocol](in_protocol.md) | 0..1 <br/> [SampleProcessingProtocol](SampleProcessingProtocol.md) | The SampleProcessingProtocol (the recipe) that this step follows | [SampleProcessing](SampleProcessing.md) |
 | [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [SampleProcessing](SampleProcessing.md) |
 
 
@@ -178,10 +172,11 @@ URI: [basalt_schema:CultureGrowth](https://emsl-computing.github.io/BASALT-Schem
 ```yaml
 name: CultureGrowth
 description: "Abstract activity for growing cultures from samples or other cultures.\n\
-  \nConcrete subclasses: StrainPurity, StockCulturePreparation, \nPreCultureGrowth,\
+  Concrete subclasses: StrainPurity, StockCulturePreparation, \nPreCultureGrowth,\
   \ ExperimentalCulture."
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: SampleProcessing
+abstract: true
 mixins:
 - HasIncubationConditions
 slots:
@@ -199,10 +194,11 @@ slots:
 ```yaml
 name: CultureGrowth
 description: "Abstract activity for growing cultures from samples or other cultures.\n\
-  \nConcrete subclasses: StrainPurity, StockCulturePreparation, \nPreCultureGrowth,\
+  Concrete subclasses: StrainPurity, StockCulturePreparation, \nPreCultureGrowth,\
   \ ExperimentalCulture."
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: SampleProcessing
+abstract: true
 mixins:
 - HasIncubationConditions
 attributes:
@@ -332,13 +328,13 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -364,13 +360,13 @@ attributes:
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -378,41 +374,19 @@ attributes:
     - ControlledTermValue
     - QuantityValue
     range: string
-  protocol_url:
-    name: protocol_url
-    description: URL pointing to the protocol used in the activity, if applicable.
+  in_protocol:
+    name: in_protocol
+    description: 'The SampleProcessingProtocol (the recipe) that this step follows.
+      Type-level, not instance-level: every execution of the same SOP points at the
+      same record, so this does NOT identify a particular chain. Use in_run for that.
+      A chain may mix protocols, so this is recorded per step rather than per run.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: protocol_url
-    owner: CultureGrowth
-    domain_of:
-    - DataGenerationActivity
-    - SampleProcessing
-    - SampleProcessingProtocol
-    range: string
-  protocol_version:
-    name: protocol_version
-    description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    alias: protocol_version
-    owner: CultureGrowth
-    domain_of:
-    - DataGenerationActivity
-    - SampleProcessing
-    - SampleProcessingProtocol
-    range: string
-  uses_sample:
-    name: uses_sample
-    description: The starting sample that is being processed or analyzed. This slot
-      should only be used on an Activity class.
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    alias: uses_sample
+    alias: in_protocol
     owner: CultureGrowth
     domain_of:
     - SampleProcessing
-    range: Sample
+    range: SampleProcessingProtocol
   id:
     name: id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -439,7 +413,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -482,6 +455,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue

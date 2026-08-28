@@ -3,6 +3,11 @@
 # Slot: position 
 
 
+_Motor position value at scan start_
+
+
+
+
 
 URI: [basalt_schema:position](https://emsl-computing.github.io/BASALT-Schema/elements/position)
 Alias: position
@@ -18,9 +23,10 @@ Alias: position
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [AMP2WellMetadata](AMP2WellMetadata.md) | AMP2-specific per-well metadata |  no  |
-| [WellMetadata](WellMetadata.md) | Base structure for per-well metadata in plate setup |  no  |
-| [EcoplateWellMetadata](EcoplateWellMetadata.md) | Ecoplate-specific per-well metadata |  no  |
 | [WellReading](WellReading.md) | Per-well measurement data |  no  |
+| [EcoplateWellMetadata](EcoplateWellMetadata.md) | Ecoplate-specific per-well metadata |  no  |
+| [XASMotorPosition](XASMotorPosition.md) | Motor position recorded at the start of an XAS sweep |  no  |
+| [WellMetadata](WellMetadata.md) | Base structure for per-well metadata in plate setup |  no  |
 
 
 
@@ -33,8 +39,8 @@ Alias: position
 
 | Property | Value |
 | --- | --- |
-| Range | [String](String.md) |
-| Domain Of | [WellMetadata](WellMetadata.md), [WellReading](WellReading.md) |
+| Range | [Float](Float.md) |
+| Domain Of | [WellMetadata](WellMetadata.md), [WellReading](WellReading.md), [XASMotorPosition](XASMotorPosition.md) |
 
 ### Cardinality and Requirements
 
@@ -56,6 +62,13 @@ Alias: position
 
 
 
+### Schema Source
+
+
+* from schema: https://emsl-computing.github.io/BASALT-Schema
+
+
+
 
 ## Mappings
 
@@ -72,11 +85,15 @@ Alias: position
 <details>
 ```yaml
 name: position
+description: Motor position value at scan start
+from_schema: https://emsl-computing.github.io/BASALT-Schema
+rank: 1000
 alias: position
 domain_of:
 - WellMetadata
 - WellReading
-range: string
+- XASMotorPosition
+range: float
 
 ```
 </details>

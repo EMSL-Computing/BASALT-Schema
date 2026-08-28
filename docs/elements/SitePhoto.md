@@ -5,7 +5,7 @@
 
 _A data product representing a photo of a site, typically taken during sampling._
 
-_One row per photo with metadata about the photo type and when it was taken._
+_Carries metadata about the photo type and when it was taken._
 
 
 
@@ -162,7 +162,7 @@ name: SitePhoto
 description: 'A data product representing a photo of a site, typically taken during
   sampling.
 
-  One row per photo with metadata about the photo type and when it was taken.'
+  Carries metadata about the photo type and when it was taken.'
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: DataProduct
 attributes:
@@ -192,7 +192,7 @@ name: SitePhoto
 description: 'A data product representing a photo of a site, typically taken during
   sampling.
 
-  One row per photo with metadata about the photo type and when it was taken.'
+  Carries metadata about the photo type and when it was taken.'
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: DataProduct
 attributes:
@@ -234,13 +234,13 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -266,13 +266,13 @@ attributes:
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -456,7 +456,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -499,6 +498,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue

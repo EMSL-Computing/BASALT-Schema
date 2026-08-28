@@ -2326,6 +2326,428 @@ slots:
     range: integer
     required: false
 
+  facility:
+    description: Synchrotron facility name (e.g. APS, SSRL, NSLS-II)
+    range: string
+
+  beamline:
+    description: Beamline identifier (e.g. 20-BM, 20-ID)
+    range: string
+
+  ring_energy_gev:
+    description: Storage ring energy in GeV
+    range: float
+
+  ring_current_ma:
+    description: Storage ring current in mA at scan start
+    range: float
+
+  insertion_device:
+    description: Insertion device description (wiggler, undulator, bending magnet)
+    range: string
+
+  element:
+    description: Target element (e.g. Fe, Mn, Cu)
+    range: string
+
+  edge:
+    description: Absorption edge measured (e.g. K, L1, L3)
+    range: string
+
+  reference_material:
+    description: Reference standard material name
+    range: string
+
+  xas_sample_type:
+    description: Sample type descriptor (e.g. powder, solution, thin_film)
+    range: string
+
+  sample_format:
+    description: Physical sample format (e.g. pellet, paste)
+    range: string
+
+  sample_holder:
+    description: Holder/position identifier (e.g. 1002_1)
+    range: string
+
+  sample_temperature_k:
+    description: Sample temperature in Kelvin
+    range: float
+
+  sample_orientation_deg:
+    description: Sample orientation angle in degrees
+    range: float
+
+  sample_detector_distance_mm:
+    description: Sample-to-detector distance in mm
+    range: float
+
+  sample_doi:
+    description: DOI or persistent identifier for the sample
+    range: string
+
+  crystal:
+    description: Monochromator crystal material (e.g. Si)
+    range: string
+
+  crystal_cut:
+    description: Crystal reflection (e.g. 111, 311)
+    range: string
+
+  crystal_detune_pct:
+    description: Crystal detuning percentage for harmonic rejection
+    range: float
+
+  mono_angle_deg:
+    description: Monochromator Bragg angle in degrees (Crystal_Phi)
+    range: float
+
+  mono_2nd_xtal_mm:
+    description: Second crystal gap position in mm (Crystal_Gap)
+    range: float
+
+  mono_energy_motor_ev:
+    description: Monochromator energy from motor encoder in eV
+    range: float
+
+  mono_energy_encoder_ev:
+    description: Monochromator energy from independent encoder in eV
+    range: float
+
+  mirror_angle_mrad:
+    description: M0 mirror angle in mrad
+    range: float
+
+  m0_coating:
+    description: M0 mirror coating material (e.g. Rh, Pt)
+    range: string
+
+  m0_cutoff_kev:
+    description: M0 mirror X-ray cutoff energy in keV
+    range: float
+
+  m1_coating:
+    description: M1 mirror coating material
+    range: string
+
+  inhutch_mirror_coating:
+    description: In-hutch focusing mirror coating material
+    range: string
+
+  inhutch_mirror_cutoff_kev:
+    description: In-hutch mirror cutoff energy in keV
+    range: float
+
+  slit_size_h_um:
+    description: Horizontal slit size in microns
+    range: float
+
+  slit_size_v_um:
+    description: Vertical slit size in microns
+    range: float
+
+  slit_center_h:
+    description: Horizontal slit center position (mm)
+    range: float
+
+  slit_center_v:
+    description: Vertical slit center position (mm)
+    range: float
+
+  beam_attenuation_um:
+    description: Attenuator thickness in microns
+    range: float
+
+  beam_attenuation_material:
+    description: Attenuator material (e.g. Al)
+    range: string
+
+  sweep_number:
+    description: 1-based sweep index within the measurement session
+    range: integer
+
+  scan_subtype:
+    description: Scan type, energy (XAS) or motor (alignment)
+    range: XASScanSubtype
+
+  positioner:
+    description: Primary positioner name (e.g. Mono Energy)
+    range: string
+
+  e0_ev:
+    description: Absorption edge energy E0 in eV
+    range: float
+
+  n_points:
+    description: Number of scan points
+    range: integer
+
+  n_data_rows:
+    description: Number of data rows in the file
+    range: integer
+
+  x_first:
+    description: First positioner value in the scan (eV or mm)
+    range: float
+
+  x_last:
+    description: Last positioner value in the scan (eV or mm)
+    range: float
+
+  scan_bounds:
+    description: Scan boundary string as written in file header
+    range: string
+
+  scan_steps:
+    description: Step sizes string as written in file header
+    range: string
+
+  integration_times:
+    description: Integration times string as written in file header
+    range: string
+
+  kwgt:
+    description: k-weighting exponent used in EXAFS region
+    range: float
+
+  scan_time_sec:
+    description: Total scan duration in seconds
+    range: integer
+
+  scan_datetime:
+    description: Date and time at scan start
+    range: datetime
+
+  fy_electronics:
+    description: Fluorescence detector electronics model (e.g. XMAP12B)
+    range: string
+
+  fy_channel_num:
+    description: Number of active fluorescence detector channels
+    range: integer
+
+  fy_element:
+    description: Target element detected by fluorescence detector (e.g. Fe)
+    range: string
+
+  fy_transition:
+    description: X-ray transition detected (e.g. Ka, Kb)
+    range: string
+
+  user_comment:
+    description: Free-text user comment from scan header
+    range: string
+
+  amp_index:
+    description: 1-based amplifier index (aligns with Amplifier_Gain_N)
+    range: integer
+
+  signal_name:
+    description: Signal channel name (e.g. I0, It, Iref)
+    range: string
+
+  gain:
+    description: Amplifier gain value
+    range: float
+
+  gain_unit:
+    description: Gain unit as written in file (e.g. nA/V, pA/V)
+    range: string
+
+  voltage_start:
+    description: Analog input voltage at scan start (V)
+    range: float
+
+  voltage_end:
+    description: Analog input voltage at scan end (V)
+    range: float
+
+  motor_index:
+    description: 1-based motor index (aligns with Motor_N_Pos)
+    range: integer
+
+  motor_name:
+    description: Motor name (e.g. Disp_V_polycold)
+    range: string
+
+  pv:
+    description: EPICS process variable name (e.g. 20bm:m28)
+    range: string
+
+  position:
+    description: Motor position value at scan start
+    range: float
+
+  col_index:
+    description: 1-based column index (aligns with Analog_In_Signal_Type_N)
+    range: integer
+
+  col_name:
+    description: Detector column name (e.g. XMAP12B:FeKa_Sum)
+    range: string
+
+  row_num:
+    description: 1-based row index within the sweep file
+    range: integer
+
+  row_val:
+    description: Representative value at this scan point
+    range: float
+
+  chamber_index:
+    description: Ion chamber index (1=I0, 2=It, 3=Iref)
+    range: integer
+
+  gas_index:
+    description: 1-based gas component index within the chamber mixture
+    range: integer
+
+  gas_name:
+    description: Fill gas name (e.g. Nitrogen, Helium, Argon)
+    range: string
+
+  chamber_length_mm:
+    description: Physical ion chamber length in mm
+    range: float
+
+  pressure_bar:
+    description: Gas fill pressure in bar
+    range: float
+
+  xas_filename:
+    description: Measurement filename stem linking LCF results to source XAS data
+    range: string
+
+  lcf_type:
+    description: LCF analysis subtype, XANES or EXAFS
+    range: XASLCFType
+
+  run_label:
+    description: Analysis run variant label extracted from filename
+    range: string
+
+  fit_label:
+    description: Iteration label for EXAFS fits extracted from filename
+    range: string
+
+  analysis_code:
+    description: Athena or Larch internal code from the .lcf filename
+    range: string
+
+  sample_nor_file:
+    description: Normalised spectrum filename recorded in the LCF header
+    range: string
+
+  fit_range_min:
+    description: Lower bound of fit range (eV for XANES, A^-1 for EXAFS)
+    range: float
+
+  fit_range_max:
+    description: Upper bound of fit range (eV for XANES, A^-1 for EXAFS)
+    range: float
+
+  fit_range_unit:
+    description: Unit of fit range (eV for XANES, A^-1 for EXAFS)
+    range: string
+
+  n_data_points:
+    description: Number of data points included in the fit
+    range: integer
+
+  n_variables:
+    description: Number of free variables in the fit
+    range: integer
+
+  n_standards:
+    description: Number of reference standards used in the linear combination
+    range: integer
+
+  weights_sum_to_1:
+    description: Whether component weights were constrained to sum to 1.0
+    range: string
+
+  weights_bounded:
+    description: Whether component weights were bounded between 0 and 1
+    range: string
+
+  e0_shift_used:
+    description: Whether an overall E0 energy shift was applied
+    range: string
+
+  noise_added:
+    description: Statistical noise added to data before fitting (0 if none)
+    range: float
+
+  r_factor:
+    description: R-factor goodness-of-fit statistic
+    range: float
+
+  chi_square:
+    description: Chi-square statistic from the LCF fit
+    range: float
+
+  reduced_chi_square:
+    description: Reduced chi-square statistic
+    range: float
+
+  weights_sum:
+    description: Actual sum of fitted component weights
+    range: float
+
+  std_index:
+    description: 1-based index of the reference standard in the fit
+    range: integer
+
+  std_name:
+    description: Reference standard name as written in the Athena or Larch project
+    range: string
+
+  weight:
+    description: Fitted weight (fraction) for this standard component
+    range: float
+
+  species_name:
+    description: Chemical species or oxidation state name from the LCF report
+    range: string
+
+  proportion:
+    description: Species proportion in sample (fraction 0-1)
+    range: float
+
+  uncertainty:
+    description: Uncertainty on the species proportion (fraction)
+    range: float
+
+  x_val:
+    description: Positioner value at this data point (energy in eV or k in A^-1)
+    range: float
+
+  data_val:
+    description: Measured normalised spectrum value at this point
+    range: float
+
+  fit_val:
+    description: LCF fitted curve value at this point
+    range: float
+
+  residual:
+    description: Fit residual at this point (data_val - fit_val)
+    range: float
+
+  produced_by_xas_run:
+    description: Reference to the XAS data generation activity that produced this raw file
+    range: XASDataGenerationActivity
+
+  uses_xas_raw_data:
+    description: Raw XAS instrument data inputs consumed by this LCF processing activity
+    range: XASInstrumentData
+    multivalued: true
+    inlined: false
+
+  results_from_xas_processing:
+    description: Reference to the XAS LCF processing activity that produced this processed product
+    range: XASLCFDataProcessingActivity
+
   setup_date:
     description: When the plate was physically set up
     range: datetime

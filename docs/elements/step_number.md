@@ -24,7 +24,7 @@ Alias: step_number
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProcessingSampleLink](ProcessingSampleLink.md) | A link between a processed sample and the sample processing activity that pro... |  no  |
+| [ProcessingSampleLink](ProcessingSampleLink.md) | The authoritative record of what a SampleProcessing step consumed and produce... |  no  |
 
 
 

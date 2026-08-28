@@ -58,6 +58,17 @@ URI: [basalt_schema:MediaPreparation](https://emsl-computing.github.io/BASALT-Sc
         
       MediaPreparation : id
         
+      MediaPreparation : in_protocol
+        
+          
+    
+        
+        
+        MediaPreparation --> "0..1" SampleProcessingProtocol : in_protocol
+        click SampleProcessingProtocol href "../SampleProcessingProtocol/"
+    
+
+        
       MediaPreparation : media_additions
         
       MediaPreparation : media_formulation
@@ -90,10 +101,6 @@ URI: [basalt_schema:MediaPreparation](https://emsl-computing.github.io/BASALT-Sc
         
       MediaPreparation : ph_target
         
-      MediaPreparation : protocol_url
-        
-      MediaPreparation : protocol_version
-        
       MediaPreparation : sterilization_method
         
           
@@ -106,17 +113,6 @@ URI: [basalt_schema:MediaPreparation](https://emsl-computing.github.io/BASALT-Sc
 
         
       MediaPreparation : storage_temperature
-        
-      MediaPreparation : uses_sample
-        
-          
-    
-        
-        
-        MediaPreparation --> "0..1" Sample : uses_sample
-        click Sample href "../Sample/"
-    
-
         
       MediaPreparation : volume_ml
         
@@ -150,9 +146,7 @@ URI: [basalt_schema:MediaPreparation](https://emsl-computing.github.io/BASALT-Sc
 | [creation_date](creation_date.md) | 0..1 <br/> [Date](Date.md) | Date the entity or preparation was created | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | [SampleProcessing](SampleProcessing.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | [SampleProcessing](SampleProcessing.md) |
-| [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
-| [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | [SampleProcessing](SampleProcessing.md) |
-| [uses_sample](uses_sample.md) | 0..1 <br/> [Sample](Sample.md) | The starting sample that is being processed or analyzed | [SampleProcessing](SampleProcessing.md) |
+| [in_protocol](in_protocol.md) | 0..1 <br/> [SampleProcessingProtocol](SampleProcessingProtocol.md) | The SampleProcessingProtocol (the recipe) that this step follows | [SampleProcessing](SampleProcessing.md) |
 | [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | [SampleProcessing](SampleProcessing.md) |
 
 
@@ -414,13 +408,13 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -446,13 +440,13 @@ attributes:
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -460,41 +454,19 @@ attributes:
     - ControlledTermValue
     - QuantityValue
     range: string
-  protocol_url:
-    name: protocol_url
-    description: URL pointing to the protocol used in the activity, if applicable.
+  in_protocol:
+    name: in_protocol
+    description: 'The SampleProcessingProtocol (the recipe) that this step follows.
+      Type-level, not instance-level: every execution of the same SOP points at the
+      same record, so this does NOT identify a particular chain. Use in_run for that.
+      A chain may mix protocols, so this is recorded per step rather than per run.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: protocol_url
-    owner: MediaPreparation
-    domain_of:
-    - DataGenerationActivity
-    - SampleProcessing
-    - SampleProcessingProtocol
-    range: string
-  protocol_version:
-    name: protocol_version
-    description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    alias: protocol_version
-    owner: MediaPreparation
-    domain_of:
-    - DataGenerationActivity
-    - SampleProcessing
-    - SampleProcessingProtocol
-    range: string
-  uses_sample:
-    name: uses_sample
-    description: The starting sample that is being processed or analyzed. This slot
-      should only be used on an Activity class.
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    alias: uses_sample
+    alias: in_protocol
     owner: MediaPreparation
     domain_of:
     - SampleProcessing
-    range: Sample
+    range: SampleProcessingProtocol
   id:
     name: id
     from_schema: https://emsl-computing.github.io/BASALT-Schema
@@ -521,7 +493,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -564,6 +535,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue

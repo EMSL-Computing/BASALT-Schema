@@ -21,6 +21,7 @@ URI: [basalt_schema:VendorEnum](https://emsl-computing.github.io/BASALT-Schema/e
 | kuo | None |  |
 | rigaku | None |  |
 | panalytical | None |  |
+| aps_anl | None |  |
 
 
 
@@ -92,6 +93,8 @@ permissible_values:
     text: rigaku
   panalytical:
     text: panalytical
+  aps_anl:
+    text: aps_anl
 
 ```
 </details>

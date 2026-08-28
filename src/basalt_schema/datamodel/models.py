@@ -515,6 +515,8 @@ class FileTypeEnum(str, Enum):
     SMART_Annotation_GFF = "SMART_Annotation_GFF"
     Pfam_Annotation_GFF = "Pfam_Annotation_GFF"
     Direct_Infusion_FT_ICR_MS_Raw_Data = "Direct_Infusion_FT_ICR_MS_Raw_Data"
+    XAS_Raw_Sweep_File = "XAS_Raw_Sweep_File"
+    XAS_LCF_Output = "XAS_LCF_Output"
 
 
 class FormulationEnum(str, Enum):
@@ -952,6 +954,8 @@ class ModelEnum(str, Enum):
     toc_lcsh = "toc_lcsh"
     sr_1 = "sr_1"
     xth320 = "xth320"
+    aps_20bm = "aps_20bm"
+    xmap12b = "xmap12b"
 
 
 class ModificationMethodEnum(str, Enum):
@@ -1813,6 +1817,39 @@ class VendorEnum(str, Enum):
     kuo = "kuo"
     rigaku = "rigaku"
     panalytical = "panalytical"
+    aps_anl = "aps_anl"
+
+
+class XASLCFType(str, Enum):
+    """
+    LCF analysis subtype
+    """
+    XANES = "XANES"
+    """
+    Normalised mu(E) vs energy fit
+    """
+    EXAFS = "EXAFS"
+    """
+    chi(k) vs k fit
+    """
+
+
+class XASScanSubtype(str, Enum):
+    """
+    XAS scan subtype detected from primary positioner column
+    """
+    energy = "energy"
+    """
+    Energy scan; primary positioner is mono energy
+    """
+    motor = "motor"
+    """
+    Motor scan; primary positioner is a physical motor
+    """
+    unknown = "unknown"
+    """
+    Scan subtype could not be determined from file header
+    """
 
 
 class YesNoEnum(str, Enum):
@@ -2848,7 +2885,6 @@ typed via LinkML inlined class.""", json_schema_extra = { "linkml_meta": {'domai
 class AMP2ODProduct(PlateProduct):
     """
     AMP2 optical density measurement product.
-    One row per plate × timepoint.
     processedData.type = 'amp2_od'
 
     v1 origin: plate-general.yaml AMP2ODProduct
@@ -2877,7 +2913,6 @@ typed via LinkML inlined class.""", json_schema_extra = { "linkml_meta": {'domai
 class EcoplateAbsorbanceProduct(PlateProduct):
     """
     Ecoplate absorbance measurement product.
-    One row per plate × timepoint.
     processedData.type = 'ecoplate_absorbance'
 
     v1 origin: plate-general.yaml EcoplateAbsorbanceProduct
@@ -2913,7 +2948,7 @@ class WellMetadata(ConfiguredBaseModel):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/media-strain-culture-plate'})
 
-    position: str = Field(default=..., alias="position", description="""Well position (e.g. \"A01\", \"H12\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading']} })
+    position: str = Field(default=..., alias="position", description="""Well position (e.g. \"A01\", \"H12\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading', 'XASMotorPosition']} })
     well_type: Optional[str] = Field(default=None, alias="well_type", description="""Role of this well   \"sample\", \"blank\", \"uninoculated_control\", \"standard\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata']} })
     replicate_group: Optional[str] = Field(default=None, alias="replicate_group", description="""Identifier linking technical replicates (e.g. \"rep1\", \"rep2\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata']} })
 
@@ -2934,7 +2969,7 @@ Non-null -> this well uses a different media batch.""", json_schema_extra = { "l
     inoculum_volume_ul: float = Field(default=..., alias="inoculum_volume_ul", description="""Volume of inoculum added (0 for blanks)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata']} })
     treatments: Optional[list[str]] = Field(default=None, alias="treatments", description="""Per-well treatments if applicable (e.g. different mineral concentrations).
 NULL for uniform-treatment plates.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata']} })
-    position: str = Field(default=..., alias="position", description="""Well position (e.g. \"A01\", \"H12\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading']} })
+    position: str = Field(default=..., alias="position", description="""Well position (e.g. \"A01\", \"H12\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading', 'XASMotorPosition']} })
     well_type: Optional[str] = Field(default=None, alias="well_type", description="""Role of this well   \"sample\", \"blank\", \"uninoculated_control\", \"standard\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata']} })
     replicate_group: Optional[str] = Field(default=None, alias="replicate_group", description="""Identifier linking technical replicates (e.g. \"rep1\", \"rep2\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata']} })
 
@@ -2953,7 +2988,7 @@ class EcoplateWellMetadata(WellMetadata):
     carbon_source: str = Field(default=..., alias="carbon_source", description="""Carbon source in this well (e.g. \"L-malic acid\", \"glucose\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['EcoplateWellMetadata']} })
     treatment: Optional[str] = Field(default=None, alias="treatment", description="""Experimental treatment (e.g. \"control\", \"nickel_1pct\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['EcoplateWellMetadata']} })
     treatment_concentration: Optional[str] = Field(default=None, alias="treatment_concentration", description="""Treatment concentration with unit (e.g. \"1.0 pct\", \"10 mM\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['EcoplateWellMetadata']} })
-    position: str = Field(default=..., alias="position", description="""Well position (e.g. \"A01\", \"H12\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading']} })
+    position: str = Field(default=..., alias="position", description="""Well position (e.g. \"A01\", \"H12\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading', 'XASMotorPosition']} })
     well_type: Optional[str] = Field(default=None, alias="well_type", description="""Role of this well   \"sample\", \"blank\", \"uninoculated_control\", \"standard\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata']} })
     replicate_group: Optional[str] = Field(default=None, alias="replicate_group", description="""Identifier linking technical replicates (e.g. \"rep1\", \"rep2\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata']} })
 
@@ -2968,7 +3003,7 @@ class WellReading(ConfiguredBaseModel):
                    'have multiple OD methods (e.g. OD600 vs OD750)',
                    'units for value slot']})
 
-    position: str = Field(default=..., alias="position", description="""Well position (e.g. \"A01\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading']} })
+    position: str = Field(default=..., alias="position", description="""Well position (e.g. \"A01\")""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading', 'XASMotorPosition']} })
     value: float = Field(default=..., alias="value", description="""Measured value (absorbance, OD, fluorescence)""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading']} })
     flag: Optional[str] = Field(default=None, alias="flag", description="""QC flag   \"ok\", \"blank\", \"outlier\", \"contaminated\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
                        'BulkDensityProduct',
@@ -2984,7 +3019,6 @@ class WellReading(ConfiguredBaseModel):
 class MAOMProduct(ConfiguredBaseModel):
     """
     Mineral-Associated Organic Matter (MAOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
-    One row per sample with columns for total organic carbon and total nitrogen.
     Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED TO HClExtOMProduct
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
@@ -3005,7 +3039,8 @@ class MAOMProduct(ConfiguredBaseModel):
                        'WEOMProduct',
                        'pHProduct',
                        'XRFElementalProduct',
-                       'XRDPhaseProduct']} })
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
     replicate: Optional[int] = Field(default=None, alias="replicate", description="""The replicate number of the sample or measurement, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MAOMProduct',
                        'MicrobialBiomassProduct',
                        'NitrogenAnalysisProduct',
@@ -3098,7 +3133,6 @@ class MAOMProduct(ConfiguredBaseModel):
 class WEOMProduct(ConfiguredBaseModel):
     """
     Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar instrument.
-    One row per sample with columns for total organic carbon and total nitrogen.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
@@ -3119,7 +3153,8 @@ class WEOMProduct(ConfiguredBaseModel):
                        'WEOMProduct',
                        'pHProduct',
                        'XRFElementalProduct',
-                       'XRDPhaseProduct']} })
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
     replicate: Optional[int] = Field(default=None, alias="replicate", description="""The replicate number of the sample or measurement, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MAOMProduct',
                        'MicrobialBiomassProduct',
                        'NitrogenAnalysisProduct',
@@ -3207,6 +3242,135 @@ class WEOMProduct(ConfiguredBaseModel):
     flag_tn: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_tn", json_schema_extra = { "linkml_meta": {'domain_of': ['MAOMProduct', 'WEOMProduct']} })
     flag_toc_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_toc_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['MAOMProduct', 'WEOMProduct']} })
     flag_tn_avg: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_tn_avg", json_schema_extra = { "linkml_meta": {'domain_of': ['MAOMProduct', 'WEOMProduct']} })
+
+
+class XASAmplifier(ConfiguredBaseModel):
+    """
+    Amplifier sensitivity entry for one signal channel in an XAS sweep.
+    Corresponds to one row in LAM_XAS_AMPS (Amplifier_Gain_N / Analog_In_Offset_N).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products',
+         'slot_usage': {'amp_index': {'name': 'amp_index', 'required': True}}})
+
+    amp_index: int = Field(default=..., alias="amp_index", description="""1-based amplifier index (aligns with Amplifier_Gain_N)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASAmplifier']} })
+    signal_name: Optional[str] = Field(default=None, alias="signal_name", description="""Signal channel name (e.g. I0, It, Iref)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASAmplifier']} })
+    gain: Optional[float] = Field(default=None, alias="gain", description="""Amplifier gain value""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASAmplifier']} })
+    gain_unit: Optional[str] = Field(default=None, alias="gain_unit", description="""Gain unit as written in file (e.g. nA/V, pA/V)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASAmplifier']} })
+    voltage_start: Optional[float] = Field(default=None, alias="voltage_start", description="""Analog input voltage at scan start (V)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASAmplifier']} })
+    voltage_end: Optional[float] = Field(default=None, alias="voltage_end", description="""Analog input voltage at scan end (V)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASAmplifier']} })
+
+
+class XASMotorPosition(ConfiguredBaseModel):
+    """
+    Motor position recorded at the start of an XAS sweep.
+    Corresponds to one row in LAM_XAS_MOTS (Motor_N_Pos header fields).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products',
+         'slot_usage': {'motor_index': {'name': 'motor_index', 'required': True}}})
+
+    motor_index: int = Field(default=..., alias="motor_index", description="""1-based motor index (aligns with Motor_N_Pos)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASMotorPosition']} })
+    motor_name: Optional[str] = Field(default=None, alias="motor_name", description="""Motor name (e.g. Disp_V_polycold)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASMotorPosition']} })
+    pv: Optional[str] = Field(default=None, alias="pv", description="""EPICS process variable name (e.g. 20bm:m28)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASMotorPosition', 'XASSignalColumn']} })
+    position: Optional[float] = Field(default=None, alias="position", description="""Motor position value at scan start""", json_schema_extra = { "linkml_meta": {'domain_of': ['WellMetadata', 'WellReading', 'XASMotorPosition']} })
+
+
+class XASSignalColumn(ConfiguredBaseModel):
+    """
+    Detector signal name / EPICS PV pair for one data column in an XAS sweep.
+    Corresponds to one row in LAM_XAS_COLS (Analog_In_Signal_Type_N).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products',
+         'slot_usage': {'col_index': {'name': 'col_index', 'required': True}}})
+
+    col_index: int = Field(default=..., alias="col_index", description="""1-based column index (aligns with Analog_In_Signal_Type_N)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASSignalColumn']} })
+    col_name: Optional[str] = Field(default=None, alias="col_name", description="""Detector column name (e.g. XMAP12B:FeKa_Sum)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASSignalColumn']} })
+    pv: Optional[str] = Field(default=None, alias="pv", description="""EPICS process variable name (e.g. 20bm:m28)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASMotorPosition', 'XASSignalColumn']} })
+
+
+class XASDataRow(ConfiguredBaseModel):
+    """
+    One data point from an XAS sweep scan.
+    row_val holds the representative fluorescence or transmission value at
+    each energy step (e.g. FeKa_Sum count, or I0 if FY detector absent).
+    Corresponds to one row in LAM_XAS_DROWS.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products',
+         'slot_usage': {'row_num': {'name': 'row_num', 'required': True}}})
+
+    row_num: int = Field(default=..., alias="row_num", description="""1-based row index within the sweep file""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataRow', 'XASLCFDataRow']} })
+    row_val: Optional[float] = Field(default=None, alias="row_val", description="""Representative value at this scan point""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataRow']} })
+
+
+class XASIonChamber(ConfiguredBaseModel):
+    """
+    Ion chamber gas mixture component for one chamber in an XAS sweep.
+    Parsed from the user comment (e.g. 'i0 = 30%N2, 70%He. It and Iref = N2').
+    Corresponds to one row in LAM_XAS_ICS.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products',
+         'slot_usage': {'chamber_index': {'name': 'chamber_index', 'required': True},
+                        'gas_index': {'name': 'gas_index', 'required': True}}})
+
+    chamber_index: int = Field(default=..., alias="chamber_index", description="""Ion chamber index (1=I0, 2=It, 3=Iref)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASIonChamber']} })
+    gas_index: int = Field(default=..., alias="gas_index", description="""1-based gas component index within the chamber mixture""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASIonChamber']} })
+    gas_name: Optional[str] = Field(default=None, alias="gas_name", description="""Fill gas name (e.g. Nitrogen, Helium, Argon)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASIonChamber']} })
+    chamber_length_mm: Optional[float] = Field(default=None, alias="chamber_length_mm", description="""Physical ion chamber length in mm""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASIonChamber']} })
+    pressure_bar: Optional[float] = Field(default=None, alias="pressure_bar", description="""Gas fill pressure in bar""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASIonChamber']} })
+
+
+class XASLCFStandard(ConfiguredBaseModel):
+    """
+    One reference standard (spectral component) used in an LCF fit.
+    The fitted weight represents this standard's fractional contribution
+    to the measured sample spectrum.
+    Corresponds to one row in LAM_XAS_LCF_STDS.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products',
+         'slot_usage': {'std_index': {'name': 'std_index', 'required': True},
+                        'std_name': {'name': 'std_name', 'required': True}}})
+
+    std_index: int = Field(default=..., alias="std_index", description="""1-based index of the reference standard in the fit""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFStandard']} })
+    std_name: str = Field(default=..., alias="std_name", description="""Reference standard name as written in the Athena or Larch project""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFStandard']} })
+    weight: Optional[float] = Field(default=None, alias="weight", description="""Fitted weight (fraction) for this standard component""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFStandard']} })
+
+
+class XASLCFSpeciesProportion(ConfiguredBaseModel):
+    """
+    Derived species proportion reported in the LC XANES analysis section.
+    For Fe XAS these are typically Fe(II) and Fe(III) proportions; the
+    generalised design supports any element or oxidation state.
+
+    Proportions are derived by summing weights of standards associated with
+    each oxidation state, as reported by Athena or Larch:
+      'Fe(III) proportion in sample: 0.44 (+/-0.05)'
+
+    Corresponds to one row in LAM_XAS_LCF_PROPS.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products',
+         'slot_usage': {'proportion': {'name': 'proportion', 'required': True},
+                        'species_name': {'name': 'species_name', 'required': True}}})
+
+    species_name: str = Field(default=..., alias="species_name", description="""Chemical species or oxidation state name from the LCF report""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFSpeciesProportion']} })
+    proportion: float = Field(default=..., alias="proportion", description="""Species proportion in sample (fraction 0-1)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFSpeciesProportion']} })
+    uncertainty: Optional[float] = Field(default=None, alias="uncertainty", description="""Uncertainty on the species proportion (fraction)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFSpeciesProportion']} })
+
+
+class XASLCFDataRow(ConfiguredBaseModel):
+    """
+    One point from the LCF fit output, enabling reconstruction and plotting
+    of the measured spectrum, fitted curve, and residual without accessing
+    the raw .lcf file.
+    Corresponds to one row in LAM_XAS_LCF_DROWS.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products',
+         'slot_usage': {'row_num': {'name': 'row_num', 'required': True},
+                        'x_val': {'name': 'x_val', 'required': True}}})
+
+    row_num: int = Field(default=..., alias="row_num", description="""1-based row index within the sweep file""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataRow', 'XASLCFDataRow']} })
+    x_val: float = Field(default=..., alias="x_val", description="""Positioner value at this data point (energy in eV or k in A^-1)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFDataRow']} })
+    data_val: Optional[float] = Field(default=None, alias="data_val", description="""Measured normalised spectrum value at this point""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFDataRow']} })
+    fit_val: Optional[float] = Field(default=None, alias="fit_val", description="""LCF fitted curve value at this point""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFDataRow']} })
+    residual: Optional[float] = Field(default=None, alias="residual", description="""Fit residual at this point (data_val - fit_val)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFDataRow']} })
 
 
 class Organism(ConfiguredBaseModel):
@@ -26011,7 +26175,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class BulkDensityProduct(ProcessedData):
     """
     Bulk density analysis product, typically derived via oven-drying and weighing of a known volume of soil.
-    One row per sample with columns for bulk density and QC flag.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
@@ -26031,7 +26194,8 @@ class BulkDensityProduct(ProcessedData):
                        'WEOMProduct',
                        'pHProduct',
                        'XRFElementalProduct',
-                       'XRDPhaseProduct']} })
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
     bulk_density_id: Optional[str] = Field(default=None, alias="bulk_density_id", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct']} })
     flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
                        'BulkDensityProduct',
@@ -26225,7 +26389,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class ElementalAnalysisProduct(ProcessedData):
     """
     Elemental analysis product, typically derived via combustion or similar instrument.
-    One row per sample with columns for total carbon, total nitrogen, total Kjeldahl nitrogen, and total sulfur.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
@@ -26246,7 +26409,8 @@ class ElementalAnalysisProduct(ProcessedData):
                        'WEOMProduct',
                        'pHProduct',
                        'XRFElementalProduct',
-                       'XRDPhaseProduct']} })
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
     total_carbon_id: Optional[str] = Field(default=None, alias="total_carbon_id", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
     total_nitrogen_id: Optional[str] = Field(default=None, alias="total_nitrogen_id", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct', 'MAOMProduct', 'WEOMProduct']} })
     total_kjeldahl_nitrogen_id: Optional[str] = Field(default=None, alias="total_kjeldahl_nitrogen_id", json_schema_extra = { "linkml_meta": {'domain_of': ['ElementalAnalysisProduct']} })
@@ -26438,7 +26602,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class EnzymeProduct(ProcessedData):
     """
     Enzyme activity analysis product, typically derived via colorimetric assay of soil extracts.
-    One row per sample with columns for beta-glucosidase activity and QC flag.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
@@ -26458,7 +26621,8 @@ class EnzymeProduct(ProcessedData):
                        'WEOMProduct',
                        'pHProduct',
                        'XRFElementalProduct',
-                       'XRDPhaseProduct']} })
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
     beta_glucosidase_ug_pnp_per_g_per_h_id: Optional[str] = Field(default=None, alias="beta_glucosidase_ug_pnp_per_g_per_h_id", json_schema_extra = { "linkml_meta": {'domain_of': ['EnzymeProduct']} })
     flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
                        'BulkDensityProduct',
@@ -26652,7 +26816,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class GWCMoistureProduct(ProcessedData):
     """
     Gravimetric water content (GWC) analysis product, typically derived via oven-drying and weighing of a known mass of soil.
-    One row per sample with columns for GWC and QC flag.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
@@ -26672,7 +26835,8 @@ class GWCMoistureProduct(ProcessedData):
                        'WEOMProduct',
                        'pHProduct',
                        'XRFElementalProduct',
-                       'XRDPhaseProduct']} })
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
     gwc_percent_id: Optional[str] = Field(default=None, alias="gwc_percent_id", json_schema_extra = { "linkml_meta": {'domain_of': ['GWCMoistureProduct']} })
     flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
                        'BulkDensityProduct',
@@ -26865,7 +27029,7 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 
 class HydraulicPropertiesProduct(ProcessedData):
     """
-    Soil hydraulic parameters derived from HYPROP evaporation-experiment data. One row per core section; the four attributes are the four VGM model parameters.  Proposal_ID, sampling_set, and core_section are inherited from the parent processedData record.
+    Soil hydraulic parameters derived from HYPROP evaporation-experiment data. The four attributes are the four VGM model parameters.  Proposal_ID, sampling_set, and core_section are inherited from the parent processedData record.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
@@ -26885,7 +27049,8 @@ class HydraulicPropertiesProduct(ProcessedData):
                        'WEOMProduct',
                        'pHProduct',
                        'XRFElementalProduct',
-                       'XRDPhaseProduct']} })
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
     alpha: Optional[float] = Field(default=None, alias="alpha", description="""Van Genuchten shape parameter alpha (1/cm). Controls the inverse of the air-entry suction; typically fitted by HYPROP-FIT or similar software.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct']} })
     n: Optional[float] = Field(default=None, alias="n", description="""Van Genuchten pore-size distribution index n (dimensionless, n > 1). Controls the slope of the water-retention curve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct']} })
     theta_r: Optional[float] = Field(default=None, alias="theta_r", description="""Residual volumetric water content theta_r (cm3 cm). The water content at which liquid conductivity approaches zero.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HydraulicPropertiesProduct']} })
@@ -27082,7 +27247,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class IonsAnalysisProduct(ProcessedData):
     """
     Ions analysis product, typically derived via ICP-OES or similar instrument.
-    One row per sample with columns for each ion measured.
     Individual QC flags for each ion using ProcessedDataFlag enum.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
@@ -27103,7 +27267,8 @@ class IonsAnalysisProduct(ProcessedData):
                        'WEOMProduct',
                        'pHProduct',
                        'XRFElementalProduct',
-                       'XRDPhaseProduct']} })
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
     sulfate_id: Optional[str] = Field(default=None, alias="sulfate_id", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
     boron_id: Optional[str] = Field(default=None, alias="boron_id", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
     zinc_id: Optional[str] = Field(default=None, alias="zinc_id", json_schema_extra = { "linkml_meta": {'domain_of': ['IonsAnalysisProduct']} })
@@ -27311,7 +27476,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class MicrobialBiomassProduct(ProcessedData):
     """
     Microbial biomass analysis product, typically derived via chloroform fumigation-extraction (CFE) or similar instrument.
-    One row per sample with columns for microbial biomass carbon and nitrogen.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
@@ -27332,7 +27496,8 @@ class MicrobialBiomassProduct(ProcessedData):
                        'WEOMProduct',
                        'pHProduct',
                        'XRFElementalProduct',
-                       'XRDPhaseProduct']} })
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
     replicate: Optional[int] = Field(default=None, alias="replicate", description="""The replicate number of the sample or measurement, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MAOMProduct',
                        'MicrobialBiomassProduct',
                        'NitrogenAnalysisProduct',
@@ -27531,7 +27696,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class NitrogenAnalysisProduct(ProcessedData):
     """
     Nitrogen analysis product, typically derived via colorimetric assay of soil extracts.
-    One row per sample with columns for nitrate and ammonium concentrations.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
@@ -27552,7 +27716,8 @@ class NitrogenAnalysisProduct(ProcessedData):
                        'WEOMProduct',
                        'pHProduct',
                        'XRFElementalProduct',
-                       'XRDPhaseProduct']} })
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
     replicate: Optional[int] = Field(default=None, alias="replicate", description="""The replicate number of the sample or measurement, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MAOMProduct',
                        'MicrobialBiomassProduct',
                        'NitrogenAnalysisProduct',
@@ -27751,7 +27916,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class PhosphorusAnalysisProduct(ProcessedData):
     """
     Phosphorus analysis product, typically derived via colorimetric assay of soil extracts.
-    One row per sample with columns for phosphorus concentration.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
@@ -27772,7 +27936,8 @@ class PhosphorusAnalysisProduct(ProcessedData):
                        'WEOMProduct',
                        'pHProduct',
                        'XRFElementalProduct',
-                       'XRDPhaseProduct']} })
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
     replicate: Optional[int] = Field(default=None, alias="replicate", description="""The replicate number of the sample or measurement, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MAOMProduct',
                        'MicrobialBiomassProduct',
                        'NitrogenAnalysisProduct',
@@ -27987,7 +28152,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class RespirationProduct(ProcessedData):
     """
     Soil respiration analysis product.
-    One row per sample with columns for soil respiration and QC flag.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
@@ -28007,7 +28171,8 @@ class RespirationProduct(ProcessedData):
                        'WEOMProduct',
                        'pHProduct',
                        'XRFElementalProduct',
-                       'XRDPhaseProduct']} })
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
     respiration_co2_c_ug_per_g: Optional[float] = Field(default=None, alias="respiration_co2_c_ug_per_g", description="""Soil respiration expressed as µg CO₂-C per gram soil""", json_schema_extra = { "linkml_meta": {'domain_of': ['RespirationProduct']} })
     flag: Optional[ProcessedDataFlag] = Field(default=None, alias="flag", json_schema_extra = { "linkml_meta": {'domain_of': ['WellReading',
                        'BulkDensityProduct',
@@ -28201,7 +28366,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class TextureProduct(ProcessedData):
     """
     Soil texture analysis product, typically derived via hydrometer or similar instrument.
-    One row per sample with columns for sand, silt, and clay percentages.
     Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
@@ -28222,7 +28386,8 @@ class TextureProduct(ProcessedData):
                        'WEOMProduct',
                        'pHProduct',
                        'XRFElementalProduct',
-                       'XRDPhaseProduct']} })
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
     sand_pct_id: Optional[str] = Field(default=None, alias="sand_pct_id", json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
     silt_pct_id: Optional[str] = Field(default=None, alias="silt_pct_id", json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
     clay_pct_id: Optional[str] = Field(default=None, alias="clay_pct_id", json_schema_extra = { "linkml_meta": {'domain_of': ['TextureProduct']} })
@@ -28418,7 +28583,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class TomographyProduct(ProcessedData):
     """
     Soil tomography analysis product, typically derived via X-ray computed tomography (XCT) or similar instrument.
-    One row per sample with columns for pore structure metrics and QC flag.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
@@ -28438,7 +28602,8 @@ class TomographyProduct(ProcessedData):
                        'WEOMProduct',
                        'pHProduct',
                        'XRFElementalProduct',
-                       'XRDPhaseProduct']} })
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
     roi_volume_voxel: Optional[float] = Field(default=None, alias="roi_volume_voxel", json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
     voxel_size: Optional[float] = Field(default=None, alias="voxel_size", json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
     connected_pores: Optional[float] = Field(default=None, alias="connected_pores", json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
@@ -28642,7 +28807,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class PHProduct(ProcessedData):
     """
     Soil pH analysis product, typically derived via pH meter or similar instrument.
-    One row per sample with columns for pH and QC flag.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
@@ -28662,7 +28826,8 @@ class PHProduct(ProcessedData):
                        'WEOMProduct',
                        'pHProduct',
                        'XRFElementalProduct',
-                       'XRDPhaseProduct']} })
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
     ph: Optional[float] = Field(default=None, alias="ph", json_schema_extra = { "linkml_meta": {'domain_of': ['pHProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
@@ -28863,16 +29028,19 @@ class XRayDataProduct(ProcessedData):
     Inherits S3 storage metadata and sample linkage from dataProduct via ProcessedData.
 
     Concrete subclasses:
-      - XRFElementalProduct: elemental concentrations (one row per sample)
-      - XRDPhaseProduct: mineral phases (one row per sample)
+      - XRFElementalProduct: elemental concentrations
+      - XRDPhaseProduct: mineral phases
+      - XASLCFProduct: linear combination fitting results
 
     Common patterns:
-      - s3_key points to raw spectrum/diffractogram file in MinIO
+      - s3_key points to the raw or processed X-ray data file in MinIO
       - summary_metrics provides lightweight queryable summaries:
           XRF: {\"Ni_mg_kg\":45.3, \"Pb_mg_kg\":8.2, \"As_mg_kg\":12.1}
           XRD: {\"quartz_percent\":42, \"albite_percent\":18, \"kaolinite_percent\":31}
-      - workflow_id is NULL for direct instrument output (XRF typical)
-      - workflow_id links to DataProcessingActivity for computational processing (XRD Rietveld) 
+          XAS: {\"r_factor\":0.000975, \"lcf_type\":\"XANES\", \"n_standards\":3}
+      - direct outputs may not have a processing link (XRF typical)
+      - computational outputs should use a typed processing reference slot
+        (XRD Rietveld refinement, XAS LCF fitting)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
          'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
@@ -29060,7 +29228,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class XRFElementalProduct(XRayDataProduct):
     """
     X-ray Fluorescence (XRF) elemental concentration data.
-    One row per sample with columns for each element measured.
 
     Follows the wide-format pattern established by IonsAnalysisProduct.
     Element concentrations in mg/kg (parts per million dry weight basis) as float values.
@@ -29069,7 +29236,7 @@ class XRFElementalProduct(XRayDataProduct):
     Relationship to core tables:
       - id: FK -> processedData.id (1:1 linkage)
       - processedData.type = 'XRFElementalProduct'
-      - processedData.workflow_id = NULL (direct acquisition; no computational WEA)
+      - direct acquisition; no computational processing link required
       - processedData.summary_metrics = {\"Ni_mg_kg\":45.3, \"Pb_mg_kg\":8.2, ...}
       - processedData.s3_key = path to raw spectrum or calibrated CSV in MinIO
 
@@ -29099,7 +29266,8 @@ class XRFElementalProduct(XRayDataProduct):
                        'WEOMProduct',
                        'pHProduct',
                        'XRFElementalProduct',
-                       'XRDPhaseProduct']} })
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
     cl_mg_per_kg: Optional[float] = Field(default=None, alias="cl_mg_per_kg", description="""Chlorine concentration in mg/kg""", json_schema_extra = { "linkml_meta": {'domain_of': ['XRFElementalProduct']} })
     v_mg_per_kg: Optional[float] = Field(default=None, alias="v_mg_per_kg", description="""Vanadium concentration in mg/kg""", json_schema_extra = { "linkml_meta": {'domain_of': ['XRFElementalProduct']} })
     cr_mg_per_kg: Optional[float] = Field(default=None, alias="cr_mg_per_kg", description="""Chromium concentration in mg/kg""", json_schema_extra = { "linkml_meta": {'domain_of': ['XRFElementalProduct']} })
@@ -29337,7 +29505,6 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
 class XRDPhaseProduct(XRayDataProduct):
     """
     X-ray Diffraction (XRD) mineral phase identification and quantification data.
-    One row per sample with columns for each mineral phase identified.
 
     Follows the wide-format pattern with individual weight percent columns.
     Individual QC flags for each mineral using ProcessedDataFlag enum.
@@ -29345,8 +29512,7 @@ class XRDPhaseProduct(XRayDataProduct):
     Relationship to core tables:
       - id: FK -> processedData.id (1:1 linkage)
       - processedData.type = 'XRDPhaseProduct'
-      - processedData.workflow_id -> DataProcessingActivity if Rietveld refinement
-        is computational; NULL if manual/semi-quantitative
+      - optional typed processing reference when Rietveld refinement is used
       - processedData.summary_metrics = {\"quartz_percent\":42, \"albite_percent\":18, ...}
       - processedData.s3_key = diffractogram .xy, .xrdml, or .raw file in MinIO
 
@@ -29365,12 +29531,8 @@ class XRDPhaseProduct(XRayDataProduct):
       XRDDataGenerationActivity acquires raw diffractogram ->
       DataProcessingActivity (type='xrd_rietveld_refinement') processes with
       HighScore Plus, GSAS-II, or FullProf ->
-      XRDPhaseProduct (workflow_id points to refinement WEA)
-      
-      workflow_steps JSONB example:
-        {\"software\": \"HighScore_Plus\", \"version\": \"5.1\", \"method\": \"Rietveld\",
-         \"r_factor\": 0.042, \"gof\": 1.8, \"amorphous_content_pct\": 12}
-
+      XRDPhaseProduct (typed processing reference points to refinement activity)
+         
     Required enum additions to enums.yaml:
       product:
         XRDPhaseProduct:  # Add to product permissible_values
@@ -29393,7 +29555,8 @@ class XRDPhaseProduct(XRayDataProduct):
                        'WEOMProduct',
                        'pHProduct',
                        'XRFElementalProduct',
-                       'XRDPhaseProduct']} })
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
     quartz_percent: Optional[float] = Field(default=None, alias="quartz_percent", description="""Quartz (SiO2) weight percent""", json_schema_extra = { "linkml_meta": {'domain_of': ['XRDPhaseProduct']} })
     albite_percent: Optional[float] = Field(default=None, alias="albite_percent", description="""Albite (NaAlSi3O8) weight percent""", json_schema_extra = { "linkml_meta": {'domain_of': ['XRDPhaseProduct']} })
     microcline_percent: Optional[float] = Field(default=None, alias="microcline_percent", description="""Microcline (KAlSi3O8) weight percent""", json_schema_extra = { "linkml_meta": {'domain_of': ['XRDPhaseProduct']} })
@@ -29414,6 +29577,236 @@ class XRDPhaseProduct(XRayDataProduct):
     flag_pyrite: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_pyrite", json_schema_extra = { "linkml_meta": {'domain_of': ['XRDPhaseProduct']} })
     flag_halite: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_halite", json_schema_extra = { "linkml_meta": {'domain_of': ['XRDPhaseProduct']} })
     flag_gypsum: Optional[ProcessedDataFlag] = Field(default=None, alias="flag_gypsum", json_schema_extra = { "linkml_meta": {'domain_of': ['XRDPhaseProduct']} })
+    summary_metrics: Optional[str] = Field(default=None, alias="summary_metrics", description="""Lightweight per-product summary for common queries that avoid full file download.
+Direction: structured key-value pairs; per-type schemas TBD:
+  ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
+  xrf:       per-element concentration results + QC flag
+  lcms:      feature count, identification count, MSI-2 fraction
+Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
+    lims_barcode: Optional[str] = Field(default=None, alias="lims_barcode", description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
+    sample_id: Optional[str] = Field(default=None, alias="sample_id", description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata', 'MetagenomicsProduct', 'ProcessedData']} })
+    name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerAxis',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'SoftwareControlledTermValue']} })
+    description: Optional[str] = Field(default=None, alias="description", title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'OntologyClass',
+                       'ContainerType',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'QuantityValue']} })
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'SamplingActivity',
+                       'DataProduct'],
+         'todos': ['should this be an ID? CURIE can use the one NMDC has '
+                   'https://bioregistry.io/reference/emsl.project:60141 where '
+                   'emsl.project is the CURIE prefix']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
+This is a user-defined sequential integer that can be used to link samples collected
+in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
+         'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
+    sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
+be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_name'],
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'DataProduct'],
+         'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
+                   'classes. Defined separately for compatibility with source data '
+                   "files using 'sample_name' column headers."]} })
+    s3_base_url: Optional[str] = Field(default=None, alias="s3_base_url", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_bucket: Optional[str] = Field(default=None, alias="s3_bucket", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_key: str = Field(default=..., alias="s3_key", description="""MinIO/S3 object key; required for all data products""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    filesize: Optional[int] = Field(default=None, alias="filesize", description="""Size of the file in bytes""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    md5checksum: Optional[str] = Field(default=None, alias="md5checksum", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    id: str = Field(default=..., alias="id", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'MAOMProduct',
+                       'WEOMProduct',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'AerosolArmSample',
+                       'AerosolSample',
+                       'AMP2UserSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'EngineeredStrainSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'ProcessedSample',
+                       'CoreSection',
+                       'SamplingActivity',
+                       'AerosolArmSamplingActivity',
+                       'AerosolSamplingActivity',
+                       'CommerciallyPurchasedSamplingActivity',
+                       'CultureEnvironmentalSamplingActivity',
+                       'EngineeredStrainSamplingActivity',
+                       'FieldDeployedTerraformSamplingActivity',
+                       'MixedCultureSamplingActivity',
+                       'MonetSoilSamplingActivity',
+                       'OtherUndescribedSamplingActivity',
+                       'PlantSamplingActivity',
+                       'PureCultureSamplingActivity',
+                       'SedimentSamplingActivity',
+                       'SoilSamplingActivity',
+                       'SynthesizedMaterialSamplingActivity',
+                       'TerraformSamplingActivity',
+                       'WaterSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'ProjectParticipant',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'PersonValue',
+                       'QuantityValue',
+                       'ConditioningValue',
+                       'zipDownload']} })
+
+
+class XASLCFProduct(XRayDataProduct):
+    """
+    XAS Linear Combination Fitting (LCF) processed result.
+    One instance per .lcf file and linked to an XASLCFDataProcessingActivity
+    through a typed processing slot.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
+
+    measure_type: Optional[ProductMeasureType] = Field(default=None, alias="measure_type", description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'ElementalAnalysisProduct',
+                       'EnzymeProduct',
+                       'GWCMoistureProduct',
+                       'HydraulicPropertiesProduct',
+                       'IonsAnalysisProduct',
+                       'MAOMProduct',
+                       'MicrobialBiomassProduct',
+                       'NitrogenAnalysisProduct',
+                       'PhosphorusAnalysisProduct',
+                       'RespirationProduct',
+                       'TextureProduct',
+                       'TomographyProduct',
+                       'WEOMProduct',
+                       'pHProduct',
+                       'XRFElementalProduct',
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
+    results_from_xas_processing: Optional[str] = Field(default=None, alias="results_from_xas_processing", description="""Reference to the XAS LCF processing activity that produced this processed product""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct']} })
+    xas_filename: Optional[str] = Field(default=None, alias="xas_filename", description="""Measurement filename stem linking LCF results to source XAS data""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    lcf_type: Optional[XASLCFType] = Field(default=None, alias="lcf_type", description="""LCF analysis subtype, XANES or EXAFS""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    run_label: Optional[str] = Field(default=None, alias="run_label", description="""Analysis run variant label extracted from filename""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    fit_label: Optional[str] = Field(default=None, alias="fit_label", description="""Iteration label for EXAFS fits extracted from filename""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    analysis_code: Optional[str] = Field(default=None, alias="analysis_code", description="""Athena or Larch internal code from the .lcf filename""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    sample_nor_file: Optional[str] = Field(default=None, alias="sample_nor_file", description="""Normalised spectrum filename recorded in the LCF header""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    fit_range_min: Optional[float] = Field(default=None, alias="fit_range_min", description="""Lower bound of fit range (eV for XANES, A^-1 for EXAFS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    fit_range_max: Optional[float] = Field(default=None, alias="fit_range_max", description="""Upper bound of fit range (eV for XANES, A^-1 for EXAFS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    fit_range_unit: Optional[str] = Field(default=None, alias="fit_range_unit", description="""Unit of fit range (eV for XANES, A^-1 for EXAFS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    n_data_points: Optional[int] = Field(default=None, alias="n_data_points", description="""Number of data points included in the fit""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    n_variables: Optional[int] = Field(default=None, alias="n_variables", description="""Number of free variables in the fit""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    n_standards: Optional[int] = Field(default=None, alias="n_standards", description="""Number of reference standards used in the linear combination""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    weights_sum_to_1: Optional[str] = Field(default=None, alias="weights_sum_to_1", description="""Whether component weights were constrained to sum to 1.0""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    weights_bounded: Optional[str] = Field(default=None, alias="weights_bounded", description="""Whether component weights were bounded between 0 and 1""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    e0_shift_used: Optional[str] = Field(default=None, alias="e0_shift_used", description="""Whether an overall E0 energy shift was applied""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    noise_added: Optional[float] = Field(default=None, alias="noise_added", description="""Statistical noise added to data before fitting (0 if none)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    r_factor: Optional[float] = Field(default=None, alias="r_factor", description="""R-factor goodness-of-fit statistic""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    chi_square: Optional[float] = Field(default=None, alias="chi_square", description="""Chi-square statistic from the LCF fit""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    reduced_chi_square: Optional[float] = Field(default=None, alias="reduced_chi_square", description="""Reduced chi-square statistic""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    weights_sum: Optional[float] = Field(default=None, alias="weights_sum", description="""Actual sum of fitted component weights""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    standards: Optional[list[XASLCFStandard]] = Field(default=None, alias="standards", description="""Reference standards used in the linear combination fit""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct']} })
+    species_proportions: Optional[list[XASLCFSpeciesProportion]] = Field(default=None, alias="species_proportions", description="""Derived species proportion results (XANES only)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct']} })
+    lcf_data_rows: Optional[list[XASLCFDataRow]] = Field(default=None, alias="lcf_data_rows", description="""Per-point fit curve data for plotting""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct']} })
     summary_metrics: Optional[str] = Field(default=None, alias="summary_metrics", description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -30154,10 +30547,216 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'zipDownload']} })
 
 
+class XASInstrumentData(InstrumentData):
+    """
+    Raw XAS sweep file (.0001, .0002, ...) produced at acquisition time.
+    Stores file pointer metadata and key per-sweep scan header fields.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
+
+    produced_by_xas_run: Optional[str] = Field(default=None, alias="produced_by_xas_run", description="""Reference to the XAS data generation activity that produced this raw file""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    sweep_number: Optional[int] = Field(default=None, alias="sweep_number", description="""1-based sweep index within the measurement session""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    scan_datetime: Optional[datetime ] = Field(default=None, alias="scan_datetime", description="""Date and time at scan start""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    scan_time_sec: Optional[int] = Field(default=None, alias="scan_time_sec", description="""Total scan duration in seconds""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    scan_subtype: Optional[XASScanSubtype] = Field(default=None, alias="scan_subtype", description="""Scan type, energy (XAS) or motor (alignment)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    positioner: Optional[str] = Field(default=None, alias="positioner", description="""Primary positioner name (e.g. Mono Energy)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    e0_ev: Optional[float] = Field(default=None, alias="e0_ev", description="""Absorption edge energy E0 in eV""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    n_points: Optional[int] = Field(default=None, alias="n_points", description="""Number of scan points""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    n_data_rows: Optional[int] = Field(default=None, alias="n_data_rows", description="""Number of data rows in the file""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    x_first: Optional[float] = Field(default=None, alias="x_first", description="""First positioner value in the scan (eV or mm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    x_last: Optional[float] = Field(default=None, alias="x_last", description="""Last positioner value in the scan (eV or mm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    scan_bounds: Optional[str] = Field(default=None, alias="scan_bounds", description="""Scan boundary string as written in file header""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    scan_steps: Optional[str] = Field(default=None, alias="scan_steps", description="""Step sizes string as written in file header""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    integration_times: Optional[str] = Field(default=None, alias="integration_times", description="""Integration times string as written in file header""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    kwgt: Optional[float] = Field(default=None, alias="kwgt", description="""k-weighting exponent used in EXAFS region""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    fy_element: Optional[str] = Field(default=None, alias="fy_element", description="""Target element detected by fluorescence detector (e.g. Fe)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData', 'XASDataGenerationActivity']} })
+    fy_transition: Optional[str] = Field(default=None, alias="fy_transition", description="""X-ray transition detected (e.g. Ka, Kb)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData', 'XASDataGenerationActivity']} })
+    amplifiers: Optional[list[XASAmplifier]] = Field(default=None, alias="amplifiers", description="""Amplifier sensitivity entries (one per signal channel)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    motors: Optional[list[XASMotorPosition]] = Field(default=None, alias="motors", description="""Motor positions recorded at scan start""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    signal_columns: Optional[list[XASSignalColumn]] = Field(default=None, alias="signal_columns", description="""Detector signal name / EPICS PV pairs""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    data_rows: Optional[list[XASDataRow]] = Field(default=None, alias="data_rows", description="""Per-energy-point representative fluorescence or transmission values""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    ion_chambers: Optional[list[XASIonChamber]] = Field(default=None, alias="ion_chambers", description="""Ion chamber gas mixture components parsed from user comment""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData']} })
+    file_curie: Optional[str] = Field(default=None, alias="file_curie", description="""an identifier for a file that resolves to the file's accessible location""", json_schema_extra = { "linkml_meta": {'domain_of': ['InstrumentData']} })
+    alternative_identifiers: Optional[str] = Field(default=None, alias="alternative_identifiers", json_schema_extra = { "linkml_meta": {'domain_of': ['InstrumentData', 'OntologyClass']} })
+    compression_type: Optional[str] = Field(default=None, alias="compression_type", json_schema_extra = { "linkml_meta": {'domain_of': ['InstrumentData']} })
+    file_type: Optional[FileTypeEnum] = Field(default=None, alias="file_type", json_schema_extra = { "linkml_meta": {'domain_of': ['InstrumentData']} })
+    software_version: Optional[str] = Field(default=None, alias="software_version", json_schema_extra = { "linkml_meta": {'domain_of': ['InstrumentData', 'DataProcessingActivity']} })
+    name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerAxis',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'SoftwareControlledTermValue']} })
+    description: str = Field(default=..., alias="description", title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'OntologyClass',
+                       'ContainerType',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'QuantityValue']} })
+    project: Optional[int] = Field(default=None, alias="project", title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'SamplingActivity',
+                       'DataProduct'],
+         'todos': ['should this be an ID? CURIE can use the one NMDC has '
+                   'https://bioregistry.io/reference/emsl.project:60141 where '
+                   'emsl.project is the CURIE prefix']} })
+    sampling_set: Optional[int] = Field(default=None, alias="sampling_set", title="sampling set", description="""Sampling set number for grouping related samples collected together.
+This is a user-defined sequential integer that can be used to link samples collected
+in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    core_section: Optional[CoreSectionEnum] = Field(default=None, alias="core_section", title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
+         'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
+    sample_name: Optional[str] = Field(default=None, alias="sample_name", title="sample name", description="""The name or label that is present on the shipped sample. This should
+be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_name'],
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'DataProduct'],
+         'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
+                   'classes. Defined separately for compatibility with source data '
+                   "files using 'sample_name' column headers."]} })
+    s3_base_url: Optional[str] = Field(default=None, alias="s3_base_url", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_bucket: Optional[str] = Field(default=None, alias="s3_bucket", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_key: str = Field(default=..., alias="s3_key", description="""MinIO/S3 object key; required for all data products""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    filesize: Optional[int] = Field(default=None, alias="filesize", description="""Size of the file in bytes""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    md5checksum: Optional[str] = Field(default=None, alias="md5checksum", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    id: str = Field(default=..., alias="id", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'MAOMProduct',
+                       'WEOMProduct',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'AerosolArmSample',
+                       'AerosolSample',
+                       'AMP2UserSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'EngineeredStrainSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'ProcessedSample',
+                       'CoreSection',
+                       'SamplingActivity',
+                       'AerosolArmSamplingActivity',
+                       'AerosolSamplingActivity',
+                       'CommerciallyPurchasedSamplingActivity',
+                       'CultureEnvironmentalSamplingActivity',
+                       'EngineeredStrainSamplingActivity',
+                       'FieldDeployedTerraformSamplingActivity',
+                       'MixedCultureSamplingActivity',
+                       'MonetSoilSamplingActivity',
+                       'OtherUndescribedSamplingActivity',
+                       'PlantSamplingActivity',
+                       'PureCultureSamplingActivity',
+                       'SedimentSamplingActivity',
+                       'SoilSamplingActivity',
+                       'SynthesizedMaterialSamplingActivity',
+                       'TerraformSamplingActivity',
+                       'WaterSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'ProjectParticipant',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'PersonValue',
+                       'QuantityValue',
+                       'ConditioningValue',
+                       'zipDownload']} })
+
+
 class SitePhoto(DataProduct):
     """
     A data product representing a photo of a site, typically taken during sampling.
-    One row per photo with metadata about the photo type and when it was taken.
+    Carries metadata about the photo type and when it was taken.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema'})
 
@@ -34165,9 +34764,10 @@ class WorkflowExecutionFunctionalAnnotation(ConfiguredBaseModel):
 
 class XRayDataGenerationActivity(DataGenerationActivity):
     """
-    Abstract base class for X-ray analytical methods including XRF (elemental)
-    and XRD (mineralogical) analysis. Inherits acquisition_time, instrument_id,
-    protocol_url, analyte_id, and other core metadata from DataGenerationActivity.
+    Abstract base class for X-ray analytical methods including XRF (elemental),
+    XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits
+    acquisition_start_time, acquisition_end_time, instrument_used, protocol_url,
+    analyte_id, and other core metadata from DataGenerationActivity.
 
     Concrete subclasses define method-specific measurement parameters.
     Future X-ray methods (e.g., XCT) can extend this class.
@@ -34175,6 +34775,8 @@ class XRayDataGenerationActivity(DataGenerationActivity):
     Shared patterns:
       - Direct instrument output (no computational workflow) is typical for XRF
       - XRD may optionally link to DataProcessingActivity for Rietveld refinement
+      - XAS acquires raw sweep files as XASInstrumentData, which are later fitted
+        by an XASLCFDataProcessingActivity to yield an XASLCFProduct
       - protocol_url should link to vendor SOP or EMSL internal protocol documentation
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
@@ -34320,7 +34922,7 @@ class XRFDataGenerationActivity(XRayDataGenerationActivity):
     from a sample bombarded with high-energy X-rays. Typical output: concentrations
     of 10-30 elements per sample (Ni, Pb, As, Cr, Fe, Ca, K, etc.).
 
-    Data product: XRFElementalProduct (one row per element per sample)
+    Data product: XRFElementalProduct
 
     Workflow pattern: Direct instrument output (no computational processing step)
       processedSample -> XRFDataGenerationActivity -> XRFElementalProduct (workflow_id = NULL)
@@ -34479,7 +35081,7 @@ class XRDDataGenerationActivity(XRayDataGenerationActivity):
     XRD identifies crystalline mineral phases by measuring diffraction patterns.
     Output: mineral phase names and quantitative abundances (weight %).
 
-    Data product: XRDPhaseProduct (one row per mineral phase per sample)
+    Data product: XRDPhaseProduct
 
     Workflow patterns:
       1. Direct/semi-quantitative: 
@@ -34633,6 +35235,332 @@ DDL: ALTER TABLE \"DataGenerationActivity\"
                        'QuantityValue',
                        'ConditioningValue',
                        'zipDownload']} })
+
+
+class XASDataGenerationActivity(XRayDataGenerationActivity):
+    """
+    X-ray Absorption Spectroscopy (XAS) acquisition activity.
+    Represents one beamline measurement session for a sample.
+
+    Unlike XRF and XRD, acquisition does not yield a product directly: each
+    sweep is captured as XASInstrumentData, and an XASLCFDataProcessingActivity
+    fits those sweeps to produce an XASLCFProduct.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema'})
+
+    facility: Optional[str] = Field(default=None, alias="facility", description="""Synchrotron facility name (e.g. APS, SSRL, NSLS-II)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    beamline: Optional[str] = Field(default=None, alias="beamline", description="""Beamline identifier (e.g. 20-BM, 20-ID)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    ring_energy_gev: Optional[float] = Field(default=None, alias="ring_energy_gev", description="""Storage ring energy in GeV""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    ring_current_ma: Optional[float] = Field(default=None, alias="ring_current_ma", description="""Storage ring current in mA at scan start""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    insertion_device: Optional[str] = Field(default=None, alias="insertion_device", description="""Insertion device description (wiggler, undulator, bending magnet)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    element: Optional[str] = Field(default=None, alias="element", description="""Target element (e.g. Fe, Mn, Cu)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    edge: Optional[str] = Field(default=None, alias="edge", description="""Absorption edge measured (e.g. K, L1, L3)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    reference_material: Optional[str] = Field(default=None, alias="reference_material", description="""Reference standard material name""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    xas_sample_type: Optional[str] = Field(default=None, alias="xas_sample_type", description="""Sample type descriptor (e.g. powder, solution, thin_film)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    sample_format: Optional[str] = Field(default=None, alias="sample_format", description="""Physical sample format (e.g. pellet, paste)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    sample_holder: Optional[str] = Field(default=None, alias="sample_holder", description="""Holder/position identifier (e.g. 1002_1)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    sample_temperature_k: Optional[float] = Field(default=None, alias="sample_temperature_k", description="""Sample temperature in Kelvin""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    sample_orientation_deg: Optional[float] = Field(default=None, alias="sample_orientation_deg", description="""Sample orientation angle in degrees""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    sample_detector_distance_mm: Optional[float] = Field(default=None, alias="sample_detector_distance_mm", description="""Sample-to-detector distance in mm""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    sample_doi: Optional[str] = Field(default=None, alias="sample_doi", description="""DOI or persistent identifier for the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    crystal: Optional[str] = Field(default=None, alias="crystal", description="""Monochromator crystal material (e.g. Si)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    crystal_cut: Optional[str] = Field(default=None, alias="crystal_cut", description="""Crystal reflection (e.g. 111, 311)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    crystal_detune_pct: Optional[float] = Field(default=None, alias="crystal_detune_pct", description="""Crystal detuning percentage for harmonic rejection""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    mono_angle_deg: Optional[float] = Field(default=None, alias="mono_angle_deg", description="""Monochromator Bragg angle in degrees (Crystal_Phi)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    mono_2nd_xtal_mm: Optional[float] = Field(default=None, alias="mono_2nd_xtal_mm", description="""Second crystal gap position in mm (Crystal_Gap)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    mono_energy_motor_ev: Optional[float] = Field(default=None, alias="mono_energy_motor_ev", description="""Monochromator energy from motor encoder in eV""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    mono_energy_encoder_ev: Optional[float] = Field(default=None, alias="mono_energy_encoder_ev", description="""Monochromator energy from independent encoder in eV""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    mirror_angle_mrad: Optional[float] = Field(default=None, alias="mirror_angle_mrad", description="""M0 mirror angle in mrad""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    m0_coating: Optional[str] = Field(default=None, alias="m0_coating", description="""M0 mirror coating material (e.g. Rh, Pt)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    m0_cutoff_kev: Optional[float] = Field(default=None, alias="m0_cutoff_kev", description="""M0 mirror X-ray cutoff energy in keV""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    m1_coating: Optional[str] = Field(default=None, alias="m1_coating", description="""M1 mirror coating material""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    inhutch_mirror_coating: Optional[str] = Field(default=None, alias="inhutch_mirror_coating", description="""In-hutch focusing mirror coating material""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    inhutch_mirror_cutoff_kev: Optional[float] = Field(default=None, alias="inhutch_mirror_cutoff_kev", description="""In-hutch mirror cutoff energy in keV""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    slit_size_h_um: Optional[float] = Field(default=None, alias="slit_size_h_um", description="""Horizontal slit size in microns""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    slit_size_v_um: Optional[float] = Field(default=None, alias="slit_size_v_um", description="""Vertical slit size in microns""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    slit_center_h: Optional[float] = Field(default=None, alias="slit_center_h", description="""Horizontal slit center position (mm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    slit_center_v: Optional[float] = Field(default=None, alias="slit_center_v", description="""Vertical slit center position (mm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    beam_attenuation_um: Optional[float] = Field(default=None, alias="beam_attenuation_um", description="""Attenuator thickness in microns""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    beam_attenuation_material: Optional[str] = Field(default=None, alias="beam_attenuation_material", description="""Attenuator material (e.g. Al)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    fy_electronics: Optional[str] = Field(default=None, alias="fy_electronics", description="""Fluorescence detector electronics model (e.g. XMAP12B)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    fy_channel_num: Optional[int] = Field(default=None, alias="fy_channel_num", description="""Number of active fluorescence detector channels""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    fy_element: Optional[str] = Field(default=None, alias="fy_element", description="""Target element detected by fluorescence detector (e.g. Fe)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData', 'XASDataGenerationActivity']} })
+    fy_transition: Optional[str] = Field(default=None, alias="fy_transition", description="""X-ray transition detected (e.g. Ka, Kb)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASInstrumentData', 'XASDataGenerationActivity']} })
+    user_comment: Optional[str] = Field(default=None, alias="user_comment", description="""Free-text user comment from scan header""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASDataGenerationActivity']} })
+    sequence_order: Optional[int] = Field(default=None, alias="sequence_order", description="""Integer ordering within a temporal series for the same analyte.
+Lower = earlier in series. Use when acquisition_time alone is insufficient.
+
+DDL: ALTER TABLE \"DataGenerationActivity\"
+       ADD COLUMN sequence_order INTEGER;""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    name: str = Field(default=..., alias="name", description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerAxis',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'SoftwareControlledTermValue']} })
+    description: Optional[str] = Field(default=None, alias="description", title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'OntologyClass',
+                       'ContainerType',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'QuantityValue']} })
+    analyte_id: Optional[str] = Field(default=None, alias="analyte_id", description="""FK reference to a ProcessedSample representing the substance analyzed in this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    protocol_url: Optional[str] = Field(default=None, alias="protocol_url", description="""URL pointing to the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
+    protocol_version: Optional[str] = Field(default=None, alias="protocol_version", description="""Version of the protocol used in the activity, if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity', 'SampleProcessingProtocol']} })
+    acquisition_start_time: Optional[datetime ] = Field(default=None, alias="acquisition_start_time", description="""The time that data collection started for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    acquisition_end_time: Optional[datetime ] = Field(default=None, alias="acquisition_end_time", description="""The time that data collection ended for this activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    instrument_used: Optional[str] = Field(default=None, alias="instrument_used", description="""Instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    instrument_operator: Optional[str] = Field(default=None, alias="instrument_operator", description="""User who operated the instrument""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGenerationActivity']} })
+    id: str = Field(default=..., alias="id", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'MAOMProduct',
+                       'WEOMProduct',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'AerosolArmSample',
+                       'AerosolSample',
+                       'AMP2UserSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'EngineeredStrainSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'ProcessedSample',
+                       'CoreSection',
+                       'SamplingActivity',
+                       'AerosolArmSamplingActivity',
+                       'AerosolSamplingActivity',
+                       'CommerciallyPurchasedSamplingActivity',
+                       'CultureEnvironmentalSamplingActivity',
+                       'EngineeredStrainSamplingActivity',
+                       'FieldDeployedTerraformSamplingActivity',
+                       'MixedCultureSamplingActivity',
+                       'MonetSoilSamplingActivity',
+                       'OtherUndescribedSamplingActivity',
+                       'PlantSamplingActivity',
+                       'PureCultureSamplingActivity',
+                       'SedimentSamplingActivity',
+                       'SoilSamplingActivity',
+                       'SynthesizedMaterialSamplingActivity',
+                       'TerraformSamplingActivity',
+                       'WaterSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'ProjectParticipant',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'PersonValue',
+                       'QuantityValue',
+                       'ConditioningValue',
+                       'zipDownload']} })
+
+
+class XASLCFDataProcessingActivity(DataProcessingActivity):
+    """
+    Athena or Larch Linear Combination Fitting (LCF) processing activity for
+    XAS data. One instance represents a single .lcf fit run.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema'})
+
+    uses_xas_raw_data: Optional[list[str]] = Field(default=None, alias="uses_xas_raw_data", description="""Raw XAS instrument data inputs consumed by this LCF processing activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFDataProcessingActivity']} })
+    xas_filename: Optional[str] = Field(default=None, alias="xas_filename", description="""Measurement filename stem linking LCF results to source XAS data""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    lcf_type: Optional[XASLCFType] = Field(default=None, alias="lcf_type", description="""LCF analysis subtype, XANES or EXAFS""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    run_label: Optional[str] = Field(default=None, alias="run_label", description="""Analysis run variant label extracted from filename""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    fit_label: Optional[str] = Field(default=None, alias="fit_label", description="""Iteration label for EXAFS fits extracted from filename""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    analysis_code: Optional[str] = Field(default=None, alias="analysis_code", description="""Athena or Larch internal code from the .lcf filename""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    sample_nor_file: Optional[str] = Field(default=None, alias="sample_nor_file", description="""Normalised spectrum filename recorded in the LCF header""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    fit_range_min: Optional[float] = Field(default=None, alias="fit_range_min", description="""Lower bound of fit range (eV for XANES, A^-1 for EXAFS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    fit_range_max: Optional[float] = Field(default=None, alias="fit_range_max", description="""Upper bound of fit range (eV for XANES, A^-1 for EXAFS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    fit_range_unit: Optional[str] = Field(default=None, alias="fit_range_unit", description="""Unit of fit range (eV for XANES, A^-1 for EXAFS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    n_data_points: Optional[int] = Field(default=None, alias="n_data_points", description="""Number of data points included in the fit""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    n_variables: Optional[int] = Field(default=None, alias="n_variables", description="""Number of free variables in the fit""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    n_standards: Optional[int] = Field(default=None, alias="n_standards", description="""Number of reference standards used in the linear combination""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    weights_sum_to_1: Optional[str] = Field(default=None, alias="weights_sum_to_1", description="""Whether component weights were constrained to sum to 1.0""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    weights_bounded: Optional[str] = Field(default=None, alias="weights_bounded", description="""Whether component weights were bounded between 0 and 1""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    e0_shift_used: Optional[str] = Field(default=None, alias="e0_shift_used", description="""Whether an overall E0 energy shift was applied""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    noise_added: Optional[float] = Field(default=None, alias="noise_added", description="""Statistical noise added to data before fitting (0 if none)""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    r_factor: Optional[float] = Field(default=None, alias="r_factor", description="""R-factor goodness-of-fit statistic""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    chi_square: Optional[float] = Field(default=None, alias="chi_square", description="""Chi-square statistic from the LCF fit""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    reduced_chi_square: Optional[float] = Field(default=None, alias="reduced_chi_square", description="""Reduced chi-square statistic""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    weights_sum: Optional[float] = Field(default=None, alias="weights_sum", description="""Actual sum of fitted component weights""", json_schema_extra = { "linkml_meta": {'domain_of': ['XASLCFProduct', 'XASLCFDataProcessingActivity']} })
+    parent_workflow_id: Optional[str] = Field(default=None, alias="parent_workflow_id", description="""Self-referential FK to the preceding DataProcessingActivity in a chain.
+NULL -> first (or standalone) step.
+Non-null -> this execution directly follows parent_workflow_id.
+Enables single-hop chaining queries; full traversal via linkage_cache.
+
+DDL: ALTER TABLE \"DataProcessingActivity\"
+       ADD COLUMN parent_workflow_id UUID
+       REFERENCES \"DataProcessingActivity\"(id);""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
+    workflow_steps: Optional[str] = Field(default=None, alias="workflow_steps", description="""Per-run workflow parameters. Previously annotated TODO JSONB in schema.
+Direction: structured key-value pairs keyed by workflow type.
+Schema for allowed keys TBD per workflow type before full implementation.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
+    description: Optional[str] = Field(default=None, alias="description", title="description", description="""A human-readable description of the data analysis workflow. May  include details such as the purpose, output, and/or main steps of  the workflow.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'OntologyClass',
+                       'ContainerType',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'QuantityValue']} })
+    id: str = Field(default=..., alias="id", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'MAOMProduct',
+                       'WEOMProduct',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'AerosolArmSample',
+                       'AerosolSample',
+                       'AMP2UserSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'EngineeredStrainSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'ProcessedSample',
+                       'CoreSection',
+                       'SamplingActivity',
+                       'AerosolArmSamplingActivity',
+                       'AerosolSamplingActivity',
+                       'CommerciallyPurchasedSamplingActivity',
+                       'CultureEnvironmentalSamplingActivity',
+                       'EngineeredStrainSamplingActivity',
+                       'FieldDeployedTerraformSamplingActivity',
+                       'MixedCultureSamplingActivity',
+                       'MonetSoilSamplingActivity',
+                       'OtherUndescribedSamplingActivity',
+                       'PlantSamplingActivity',
+                       'PureCultureSamplingActivity',
+                       'SedimentSamplingActivity',
+                       'SoilSamplingActivity',
+                       'SynthesizedMaterialSamplingActivity',
+                       'TerraformSamplingActivity',
+                       'WaterSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'ProjectParticipant',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'PersonValue',
+                       'QuantityValue',
+                       'ConditioningValue',
+                       'zipDownload']} })
+    started_at_time: datetime  = Field(default=..., alias="started_at_time", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'DataProcessingActivity']} })
+    ended_at_time: Optional[datetime ] = Field(default=None, alias="ended_at_time", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'DataProcessingActivity']} })
+    software_url: Optional[str] = Field(default=None, alias="software_url", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
+    software_version: Optional[str] = Field(default=None, alias="software_version", json_schema_extra = { "linkml_meta": {'domain_of': ['InstrumentData', 'DataProcessingActivity']} })
+    software_poc: Optional[str] = Field(default=None, alias="software_poc", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
+    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, alias="execution_resource", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProcessingActivity']} })
 
 
 class StandardSampleProcessing(SampleProcessing):
@@ -37398,6 +38326,14 @@ EcoplateWellMetadata.model_rebuild()
 WellReading.model_rebuild()
 MAOMProduct.model_rebuild()
 WEOMProduct.model_rebuild()
+XASAmplifier.model_rebuild()
+XASMotorPosition.model_rebuild()
+XASSignalColumn.model_rebuild()
+XASDataRow.model_rebuild()
+XASIonChamber.model_rebuild()
+XASLCFStandard.model_rebuild()
+XASLCFSpeciesProportion.model_rebuild()
+XASLCFDataRow.model_rebuild()
 Organism.model_rebuild()
 Site.model_rebuild()
 Sample.model_rebuild()
@@ -37465,9 +38401,11 @@ PHProduct.model_rebuild()
 XRayDataProduct.model_rebuild()
 XRFElementalProduct.model_rebuild()
 XRDPhaseProduct.model_rebuild()
+XASLCFProduct.model_rebuild()
 InstrumentData.model_rebuild()
 MassSpectrometryInstrumentData.model_rebuild()
 NucleotideSequencingInstrumentData.model_rebuild()
+XASInstrumentData.model_rebuild()
 SitePhoto.model_rebuild()
 DataGenerationActivity.model_rebuild()
 MassSpectrometryDataGenerationActivity.model_rebuild()
@@ -37503,6 +38441,8 @@ WorkflowExecutionFunctionalAnnotation.model_rebuild()
 XRayDataGenerationActivity.model_rebuild()
 XRFDataGenerationActivity.model_rebuild()
 XRDDataGenerationActivity.model_rebuild()
+XASDataGenerationActivity.model_rebuild()
+XASLCFDataProcessingActivity.model_rebuild()
 StandardSampleProcessing.model_rebuild()
 SampleProcessingProtocol.model_rebuild()
 SampleProcessingRun.model_rebuild()

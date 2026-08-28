@@ -200,8 +200,8 @@ otherwise, it is a generic standin for an instrument model.
 
     id = Column(UUID(), primary_key=True, nullable=False )
     name = Column(Text(), nullable=False )
-    vendor = Column(Enum('waters', 'agilent', 'bruker', 'thermo_fisher', 'perkin_elmer', 'scientific_industries', 'illumina', 'nikon', 'fia_lab', 'shimadzu', 'regen_ag_lab', 'kuo', 'rigaku', 'panalytical', name='VendorEnum'))
-    model = Column(Enum('exploris_21T', 'exploris_240', 'exploris_480', 'ltq_orbitrap_velos', 'orbitrap_fusion_lumos', 'orbitrap_eclipse_tribid', 'orbitrap_q_exactive', 'orbitrap_iqx_tribrid', 'orbitrap_exploris_120', 'solarix_7T', 'solarix_12T', 'solarix_15T', 'agilent_8890A', 'agilent_7980A', 'vortex_genie_2', 'novaseq', 'novaseq_6000', 'novaseq_x', 'hiseq', 'hiseq_1000', 'hiseq_1500', 'hiseq_2000', 'hiseq_2500', 'hiseq_3000', 'hiseq_4000', 'hiseq_x_ten', 'miniseq', 'miseq', 'nextseq_1000', 'nextseq', 'nextseq_500', 'nextseq_550', 'gridion', 'minion', 'promethion', 'rs_II', 'sequel', 'sequel_II', 'revio', 'scimax', 'ed_400_with_rs_422', 'mettler_toledo_30029066', 'mettler_toledo_30266628', 'ums_hyprop2_020210', 'fialyzer_1000', 'fialyzer_1001', 'fialyzer_1002', 'orbitrap_q_exactive_plus', 'toc_5000A', 'toc_lcsh', 'sr_1', 'xth320', name='ModelEnum'))
+    vendor = Column(Enum('waters', 'agilent', 'bruker', 'thermo_fisher', 'perkin_elmer', 'scientific_industries', 'illumina', 'nikon', 'fia_lab', 'shimadzu', 'regen_ag_lab', 'kuo', 'rigaku', 'panalytical', 'aps_anl', name='VendorEnum'))
+    model = Column(Enum('exploris_21T', 'exploris_240', 'exploris_480', 'ltq_orbitrap_velos', 'orbitrap_fusion_lumos', 'orbitrap_eclipse_tribid', 'orbitrap_q_exactive', 'orbitrap_iqx_tribrid', 'orbitrap_exploris_120', 'solarix_7T', 'solarix_12T', 'solarix_15T', 'agilent_8890A', 'agilent_7980A', 'vortex_genie_2', 'novaseq', 'novaseq_6000', 'novaseq_x', 'hiseq', 'hiseq_1000', 'hiseq_1500', 'hiseq_2000', 'hiseq_2500', 'hiseq_3000', 'hiseq_4000', 'hiseq_x_ten', 'miniseq', 'miseq', 'nextseq_1000', 'nextseq', 'nextseq_500', 'nextseq_550', 'gridion', 'minion', 'promethion', 'rs_II', 'sequel', 'sequel_II', 'revio', 'scimax', 'ed_400_with_rs_422', 'mettler_toledo_30029066', 'mettler_toledo_30266628', 'ums_hyprop2_020210', 'fialyzer_1000', 'fialyzer_1001', 'fialyzer_1002', 'orbitrap_q_exactive_plus', 'toc_5000A', 'toc_lcsh', 'sr_1', 'xth320', 'aps_20bm', 'xmap12b', name='ModelEnum'))
     serial_number = Column(Text())
     lims_resource_id = Column(Integer())
     location = Column(Text())
@@ -724,7 +724,6 @@ PlateProduct.well_readings.
 class MAOMProduct(Base):
     """
     Mineral-Associated Organic Matter (MAOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
-One row per sample with columns for total organic carbon and total nitrogen.
 Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED TO HClExtOMProduct
     """
     __tablename__ = 'MAOMProduct'
@@ -755,7 +754,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE REN
 class WEOMProduct(Base):
     """
     Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar instrument.
-One row per sample with columns for total organic carbon and total nitrogen.
 Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     __tablename__ = 'WEOMProduct'
@@ -777,6 +775,219 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 
     def __repr__(self):
         return f"WEOMProduct(measure_type={self.measure_type},replicate={self.replicate},id={self.id},total_organic_carbon_id={self.total_organic_carbon_id},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_id={self.total_nitrogen_id},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},)"
+
+
+
+    
+
+
+class XASAmplifier(Base):
+    """
+    Amplifier sensitivity entry for one signal channel in an XAS sweep.
+Corresponds to one row in LAM_XAS_AMPS (Amplifier_Gain_N / Analog_In_Offset_N).
+    """
+    __tablename__ = 'XASAmplifier'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    amp_index = Column(Integer(), nullable=False )
+    signal_name = Column(Text())
+    gain = Column(Float())
+    gain_unit = Column(Text())
+    voltage_start = Column(Float())
+    voltage_end = Column(Float())
+    XASInstrumentData_id = Column(UUID(), ForeignKey('XASInstrumentData.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"XASAmplifier(id={self.id},amp_index={self.amp_index},signal_name={self.signal_name},gain={self.gain},gain_unit={self.gain_unit},voltage_start={self.voltage_start},voltage_end={self.voltage_end},XASInstrumentData_id={self.XASInstrumentData_id},)"
+
+
+
+    
+
+
+class XASMotorPosition(Base):
+    """
+    Motor position recorded at the start of an XAS sweep.
+Corresponds to one row in LAM_XAS_MOTS (Motor_N_Pos header fields).
+    """
+    __tablename__ = 'XASMotorPosition'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    motor_index = Column(Integer(), nullable=False )
+    motor_name = Column(Text())
+    pv = Column(Text())
+    position = Column(Float())
+    XASInstrumentData_id = Column(UUID(), ForeignKey('XASInstrumentData.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"XASMotorPosition(id={self.id},motor_index={self.motor_index},motor_name={self.motor_name},pv={self.pv},position={self.position},XASInstrumentData_id={self.XASInstrumentData_id},)"
+
+
+
+    
+
+
+class XASSignalColumn(Base):
+    """
+    Detector signal name / EPICS PV pair for one data column in an XAS sweep.
+Corresponds to one row in LAM_XAS_COLS (Analog_In_Signal_Type_N).
+    """
+    __tablename__ = 'XASSignalColumn'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    col_index = Column(Integer(), nullable=False )
+    col_name = Column(Text())
+    pv = Column(Text())
+    XASInstrumentData_id = Column(UUID(), ForeignKey('XASInstrumentData.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"XASSignalColumn(id={self.id},col_index={self.col_index},col_name={self.col_name},pv={self.pv},XASInstrumentData_id={self.XASInstrumentData_id},)"
+
+
+
+    
+
+
+class XASDataRow(Base):
+    """
+    One data point from an XAS sweep scan.
+row_val holds the representative fluorescence or transmission value at
+each energy step (e.g. FeKa_Sum count, or I0 if FY detector absent).
+Corresponds to one row in LAM_XAS_DROWS.
+    """
+    __tablename__ = 'XASDataRow'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    row_num = Column(Integer(), nullable=False )
+    row_val = Column(Float())
+    XASInstrumentData_id = Column(UUID(), ForeignKey('XASInstrumentData.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"XASDataRow(id={self.id},row_num={self.row_num},row_val={self.row_val},XASInstrumentData_id={self.XASInstrumentData_id},)"
+
+
+
+    
+
+
+class XASIonChamber(Base):
+    """
+    Ion chamber gas mixture component for one chamber in an XAS sweep.
+Parsed from the user comment (e.g. 'i0 = 30%N2, 70%He. It and Iref = N2').
+Corresponds to one row in LAM_XAS_ICS.
+    """
+    __tablename__ = 'XASIonChamber'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    chamber_index = Column(Integer(), nullable=False )
+    gas_index = Column(Integer(), nullable=False )
+    gas_name = Column(Text())
+    chamber_length_mm = Column(Float())
+    pressure_bar = Column(Float())
+    XASInstrumentData_id = Column(UUID(), ForeignKey('XASInstrumentData.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"XASIonChamber(id={self.id},chamber_index={self.chamber_index},gas_index={self.gas_index},gas_name={self.gas_name},chamber_length_mm={self.chamber_length_mm},pressure_bar={self.pressure_bar},XASInstrumentData_id={self.XASInstrumentData_id},)"
+
+
+
+    
+
+
+class XASLCFStandard(Base):
+    """
+    One reference standard (spectral component) used in an LCF fit.
+The fitted weight represents this standard's fractional contribution
+to the measured sample spectrum.
+Corresponds to one row in LAM_XAS_LCF_STDS.
+    """
+    __tablename__ = 'XASLCFStandard'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    std_index = Column(Integer(), nullable=False )
+    std_name = Column(Text(), nullable=False )
+    weight = Column(Float())
+    XASLCFProduct_id = Column(UUID(), ForeignKey('XASLCFProduct.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"XASLCFStandard(id={self.id},std_index={self.std_index},std_name={self.std_name},weight={self.weight},XASLCFProduct_id={self.XASLCFProduct_id},)"
+
+
+
+    
+
+
+class XASLCFSpeciesProportion(Base):
+    """
+    Derived species proportion reported in the LC XANES analysis section.
+For Fe XAS these are typically Fe(II) and Fe(III) proportions; the
+generalised design supports any element or oxidation state.
+
+Proportions are derived by summing weights of standards associated with
+each oxidation state, as reported by Athena or Larch:
+  'Fe(III) proportion in sample: 0.44 (+/-0.05)'
+
+Corresponds to one row in LAM_XAS_LCF_PROPS.
+    """
+    __tablename__ = 'XASLCFSpeciesProportion'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    species_name = Column(Text(), nullable=False )
+    proportion = Column(Float(), nullable=False )
+    uncertainty = Column(Float())
+    XASLCFProduct_id = Column(UUID(), ForeignKey('XASLCFProduct.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"XASLCFSpeciesProportion(id={self.id},species_name={self.species_name},proportion={self.proportion},uncertainty={self.uncertainty},XASLCFProduct_id={self.XASLCFProduct_id},)"
+
+
+
+    
+
+
+class XASLCFDataRow(Base):
+    """
+    One point from the LCF fit output, enabling reconstruction and plotting
+of the measured spectrum, fitted curve, and residual without accessing
+the raw .lcf file.
+Corresponds to one row in LAM_XAS_LCF_DROWS.
+    """
+    __tablename__ = 'XASLCFDataRow'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
+    row_num = Column(Integer(), nullable=False )
+    x_val = Column(Float(), nullable=False )
+    data_val = Column(Float())
+    fit_val = Column(Float())
+    residual = Column(Float())
+    XASLCFProduct_id = Column(UUID(), ForeignKey('XASLCFProduct.id'))
+    
+
+    
+
+    def __repr__(self):
+        return f"XASLCFDataRow(id={self.id},row_num={self.row_num},x_val={self.x_val},data_val={self.data_val},fit_val={self.fit_val},residual={self.residual},XASLCFProduct_id={self.XASLCFProduct_id},)"
 
 
 
@@ -1417,6 +1628,26 @@ class ContainerAxis_values(Base):
     
 
 
+class XASLCFDataProcessingActivity_uses_xas_raw_data(Base):
+    """
+    
+    """
+    __tablename__ = 'XASLCFDataProcessingActivity_uses_xas_raw_data'
+
+    XASLCFDataProcessingActivity_id = Column(UUID(), ForeignKey('XASLCFDataProcessingActivity.id'), primary_key=True)
+    uses_xas_raw_data_id = Column(UUID(), ForeignKey('XASInstrumentData.id'), primary_key=True)
+    
+
+    
+
+    def __repr__(self):
+        return f"XASLCFDataProcessingActivity_uses_xas_raw_data(XASLCFDataProcessingActivity_id={self.XASLCFDataProcessingActivity_id},uses_xas_raw_data_id={self.uses_xas_raw_data_id},)"
+
+
+
+    
+
+
 class ChromatographyConfiguration_mobile_phases(Base):
     """
     
@@ -2024,7 +2255,7 @@ class InstrumentData(DataProduct):
     file_curie = Column(Text())
     alternative_identifiers = Column(Text())
     compression_type = Column(Text())
-    file_type = Column(Enum('FT_ICR_MS_Analysis_Results', 'GC_MS_Metabolomics_Results', 'Metaproteomics_Workflow_Statistics', 'Protein_Report', 'Peptide_Report', 'Unfiltered_Metaproteomics_Results', 'Read_Count_and_RPKM', 'QC_non_rRNA_R2', 'QC_non_rRNA_R1', 'Metagenome_Bins', 'CheckM_Statistics', 'GOTTCHA2_Krona_Plot', 'Kraken2_Krona_Plot', 'Centrifuge_Krona_Plot', 'Kraken2_Classification_Report', 'Kraken2_Taxonomic_Classification', 'Centrifuge_Classification_Report', 'Centrifuge_Taxonomic_Classification', 'Structural_Annotation_GFF', 'Functional_Annotation_GFF', 'Annotation_Amino_Acid_FASTA', 'Annotation_Enzyme_Commission', 'Annotation_KEGG_Orthology', 'Assembly_Coverage_BAM', 'Assembly_AGP', 'Assembly_Scaffolds', 'Assembly_Contigs', 'Assembly_Coverage_Stats', 'Filtered_Sequencing_Reads', 'QC_Statistics', 'TIGRFam_Annotation_GFF', 'Clusters_of_Orthologous_Groups_COG_Annotation_GFF', 'CATH_FunFams_Functional_Families_Annotation_GFF', 'SUPERFam_Annotation_GFF', 'SMART_Annotation_GFF', 'Pfam_Annotation_GFF', 'Direct_Infusion_FT_ICR_MS_Raw_Data', name='FileTypeEnum'))
+    file_type = Column(Enum('FT_ICR_MS_Analysis_Results', 'GC_MS_Metabolomics_Results', 'Metaproteomics_Workflow_Statistics', 'Protein_Report', 'Peptide_Report', 'Unfiltered_Metaproteomics_Results', 'Read_Count_and_RPKM', 'QC_non_rRNA_R2', 'QC_non_rRNA_R1', 'Metagenome_Bins', 'CheckM_Statistics', 'GOTTCHA2_Krona_Plot', 'Kraken2_Krona_Plot', 'Centrifuge_Krona_Plot', 'Kraken2_Classification_Report', 'Kraken2_Taxonomic_Classification', 'Centrifuge_Classification_Report', 'Centrifuge_Taxonomic_Classification', 'Structural_Annotation_GFF', 'Functional_Annotation_GFF', 'Annotation_Amino_Acid_FASTA', 'Annotation_Enzyme_Commission', 'Annotation_KEGG_Orthology', 'Assembly_Coverage_BAM', 'Assembly_AGP', 'Assembly_Scaffolds', 'Assembly_Contigs', 'Assembly_Coverage_Stats', 'Filtered_Sequencing_Reads', 'QC_Statistics', 'TIGRFam_Annotation_GFF', 'Clusters_of_Orthologous_Groups_COG_Annotation_GFF', 'CATH_FunFams_Functional_Families_Annotation_GFF', 'SUPERFam_Annotation_GFF', 'SMART_Annotation_GFF', 'Pfam_Annotation_GFF', 'Direct_Infusion_FT_ICR_MS_Raw_Data', 'XAS_Raw_Sweep_File', 'XAS_LCF_Output', name='FileTypeEnum'))
     software_version = Column(Text())
     name = Column(Text(), nullable=False )
     description = Column(Text(), nullable=False )
@@ -2058,7 +2289,7 @@ class InstrumentData(DataProduct):
 class SitePhoto(DataProduct):
     """
     A data product representing a photo of a site, typically taken during sampling.
-One row per photo with metadata about the photo type and when it was taken.
+Carries metadata about the photo type and when it was taken.
     """
     __tablename__ = 'SitePhoto'
 
@@ -2095,9 +2326,10 @@ One row per photo with metadata about the photo type and when it was taken.
 
 class XRayDataGenerationActivity(DataGenerationActivity):
     """
-    Abstract base class for X-ray analytical methods including XRF (elemental)
-and XRD (mineralogical) analysis. Inherits acquisition_time, instrument_id,
-protocol_url, analyte_id, and other core metadata from DataGenerationActivity.
+    Abstract base class for X-ray analytical methods including XRF (elemental),
+XRD (mineralogical), and XAS (absorption spectroscopy) analysis. Inherits
+acquisition_start_time, acquisition_end_time, instrument_used, protocol_url,
+analyte_id, and other core metadata from DataGenerationActivity.
 
 Concrete subclasses define method-specific measurement parameters.
 Future X-ray methods (e.g., XCT) can extend this class.
@@ -2105,6 +2337,8 @@ Future X-ray methods (e.g., XCT) can extend this class.
 Shared patterns:
   - Direct instrument output (no computational workflow) is typical for XRF
   - XRD may optionally link to DataProcessingActivity for Rietveld refinement
+  - XAS acquires raw sweep files as XASInstrumentData, which are later fitted
+    by an XASLCFDataProcessingActivity to yield an XASLCFProduct
   - protocol_url should link to vendor SOP or EMSL internal protocol documentation
     """
     __tablename__ = 'XRayDataGenerationActivity'
@@ -2126,6 +2360,64 @@ Shared patterns:
 
     def __repr__(self):
         return f"XRayDataGenerationActivity(sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class XASLCFDataProcessingActivity(DataProcessingActivity):
+    """
+    Athena or Larch Linear Combination Fitting (LCF) processing activity for
+XAS data. One instance represents a single .lcf fit run.
+    """
+    __tablename__ = 'XASLCFDataProcessingActivity'
+
+    xas_filename = Column(Text())
+    lcf_type = Column(Enum('XANES', 'EXAFS', name='XASLCFType'))
+    run_label = Column(Text())
+    fit_label = Column(Text())
+    analysis_code = Column(Text())
+    sample_nor_file = Column(Text())
+    fit_range_min = Column(Float())
+    fit_range_max = Column(Float())
+    fit_range_unit = Column(Text())
+    n_data_points = Column(Integer())
+    n_variables = Column(Integer())
+    n_standards = Column(Integer())
+    weights_sum_to_1 = Column(Text())
+    weights_bounded = Column(Text())
+    e0_shift_used = Column(Text())
+    noise_added = Column(Float())
+    r_factor = Column(Float())
+    chi_square = Column(Float())
+    reduced_chi_square = Column(Float())
+    weights_sum = Column(Float())
+    parent_workflow_id = Column(UUID(), ForeignKey('DataProcessingActivity.id'))
+    workflow_steps = Column(Text())
+    description = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    started_at_time = Column(DateTime(), nullable=False )
+    ended_at_time = Column(DateTime())
+    software_url = Column(Text())
+    software_version = Column(Text())
+    software_poc = Column(Text())
+    execution_resource = Column(Enum('nersc_cori', 'nersc_perlmutter', 'emsl_rzr', 'emsl_tahoma', name='ExecutionResourceEnum'))
+    
+    
+    # ManyToMany
+    uses_xas_raw_data = relationship( "XASInstrumentData", secondary="XASLCFDataProcessingActivity_uses_xas_raw_data")
+    
+
+    
+
+    def __repr__(self):
+        return f"XASLCFDataProcessingActivity(xas_filename={self.xas_filename},lcf_type={self.lcf_type},run_label={self.run_label},fit_label={self.fit_label},analysis_code={self.analysis_code},sample_nor_file={self.sample_nor_file},fit_range_min={self.fit_range_min},fit_range_max={self.fit_range_max},fit_range_unit={self.fit_range_unit},n_data_points={self.n_data_points},n_variables={self.n_variables},n_standards={self.n_standards},weights_sum_to_1={self.weights_sum_to_1},weights_bounded={self.weights_bounded},e0_shift_used={self.e0_shift_used},noise_added={self.noise_added},r_factor={self.r_factor},chi_square={self.chi_square},reduced_chi_square={self.reduced_chi_square},weights_sum={self.weights_sum},parent_workflow_id={self.parent_workflow_id},workflow_steps={self.workflow_steps},description={self.description},id={self.id},started_at_time={self.started_at_time},ended_at_time={self.ended_at_time},software_url={self.software_url},software_version={self.software_version},software_poc={self.software_poc},execution_resource={self.execution_resource},)"
 
 
 
@@ -2477,7 +2769,6 @@ Adds timepoint_label for repeated-measurement series
 class AMP2ODProduct(PlateProduct):
     """
     AMP2 optical density measurement product.
-One row per plate × timepoint.
 processedData.type = 'amp2_od'
 
 v1 origin: plate-general.yaml AMP2ODProduct
@@ -2515,7 +2806,6 @@ v1 origin: plate-general.yaml AMP2ODProduct
 class EcoplateAbsorbanceProduct(PlateProduct):
     """
     Ecoplate absorbance measurement product.
-One row per plate × timepoint.
 processedData.type = 'ecoplate_absorbance'
 
 v1 origin: plate-general.yaml EcoplateAbsorbanceProduct
@@ -5285,7 +5575,7 @@ XRF measures elemental composition by detecting characteristic X-ray emissions
 from a sample bombarded with high-energy X-rays. Typical output: concentrations
 of 10-30 elements per sample (Ni, Pb, As, Cr, Fe, Ca, K, etc.).
 
-Data product: XRFElementalProduct (one row per element per sample)
+Data product: XRFElementalProduct
 
 Workflow pattern: Direct instrument output (no computational processing step)
   processedSample -> XRFDataGenerationActivity -> XRFElementalProduct (workflow_id = NULL)
@@ -5340,7 +5630,7 @@ class XRDDataGenerationActivity(XRayDataGenerationActivity):
 XRD identifies crystalline mineral phases by measuring diffraction patterns.
 Output: mineral phase names and quantitative abundances (weight %).
 
-Data product: XRDPhaseProduct (one row per mineral phase per sample)
+Data product: XRDPhaseProduct
 
 Workflow patterns:
   1. Direct/semi-quantitative: 
@@ -5392,6 +5682,84 @@ Required enum additions to enums.yaml:
     
 
 
+class XASDataGenerationActivity(XRayDataGenerationActivity):
+    """
+    X-ray Absorption Spectroscopy (XAS) acquisition activity.
+Represents one beamline measurement session for a sample.
+
+Unlike XRF and XRD, acquisition does not yield a product directly: each
+sweep is captured as XASInstrumentData, and an XASLCFDataProcessingActivity
+fits those sweeps to produce an XASLCFProduct.
+    """
+    __tablename__ = 'XASDataGenerationActivity'
+
+    facility = Column(Text())
+    beamline = Column(Text())
+    ring_energy_gev = Column(Float())
+    ring_current_ma = Column(Float())
+    insertion_device = Column(Text())
+    element = Column(Text())
+    edge = Column(Text())
+    reference_material = Column(Text())
+    xas_sample_type = Column(Text())
+    sample_format = Column(Text())
+    sample_holder = Column(Text())
+    sample_temperature_k = Column(Float())
+    sample_orientation_deg = Column(Float())
+    sample_detector_distance_mm = Column(Float())
+    sample_doi = Column(Text())
+    crystal = Column(Text())
+    crystal_cut = Column(Text())
+    crystal_detune_pct = Column(Float())
+    mono_angle_deg = Column(Float())
+    mono_2nd_xtal_mm = Column(Float())
+    mono_energy_motor_ev = Column(Float())
+    mono_energy_encoder_ev = Column(Float())
+    mirror_angle_mrad = Column(Float())
+    m0_coating = Column(Text())
+    m0_cutoff_kev = Column(Float())
+    m1_coating = Column(Text())
+    inhutch_mirror_coating = Column(Text())
+    inhutch_mirror_cutoff_kev = Column(Float())
+    slit_size_h_um = Column(Float())
+    slit_size_v_um = Column(Float())
+    slit_center_h = Column(Float())
+    slit_center_v = Column(Float())
+    beam_attenuation_um = Column(Float())
+    beam_attenuation_material = Column(Text())
+    fy_electronics = Column(Text())
+    fy_channel_num = Column(Integer())
+    fy_element = Column(Text())
+    fy_transition = Column(Text())
+    user_comment = Column(Text())
+    sequence_order = Column(Integer())
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    analyte_id = Column(UUID(), ForeignKey('ProcessedSample.id'))
+    protocol_url = Column(Text())
+    protocol_version = Column(Text())
+    acquisition_start_time = Column(DateTime())
+    acquisition_end_time = Column(DateTime())
+    instrument_used = Column(UUID(), ForeignKey('Instrument.id'))
+    instrument_operator = Column(UUID(), ForeignKey('PersonValue.id'))
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"XASDataGenerationActivity(facility={self.facility},beamline={self.beamline},ring_energy_gev={self.ring_energy_gev},ring_current_ma={self.ring_current_ma},insertion_device={self.insertion_device},element={self.element},edge={self.edge},reference_material={self.reference_material},xas_sample_type={self.xas_sample_type},sample_format={self.sample_format},sample_holder={self.sample_holder},sample_temperature_k={self.sample_temperature_k},sample_orientation_deg={self.sample_orientation_deg},sample_detector_distance_mm={self.sample_detector_distance_mm},sample_doi={self.sample_doi},crystal={self.crystal},crystal_cut={self.crystal_cut},crystal_detune_pct={self.crystal_detune_pct},mono_angle_deg={self.mono_angle_deg},mono_2nd_xtal_mm={self.mono_2nd_xtal_mm},mono_energy_motor_ev={self.mono_energy_motor_ev},mono_energy_encoder_ev={self.mono_energy_encoder_ev},mirror_angle_mrad={self.mirror_angle_mrad},m0_coating={self.m0_coating},m0_cutoff_kev={self.m0_cutoff_kev},m1_coating={self.m1_coating},inhutch_mirror_coating={self.inhutch_mirror_coating},inhutch_mirror_cutoff_kev={self.inhutch_mirror_cutoff_kev},slit_size_h_um={self.slit_size_h_um},slit_size_v_um={self.slit_size_v_um},slit_center_h={self.slit_center_h},slit_center_v={self.slit_center_v},beam_attenuation_um={self.beam_attenuation_um},beam_attenuation_material={self.beam_attenuation_material},fy_electronics={self.fy_electronics},fy_channel_num={self.fy_channel_num},fy_element={self.fy_element},fy_transition={self.fy_transition},user_comment={self.user_comment},sequence_order={self.sequence_order},name={self.name},description={self.description},analyte_id={self.analyte_id},protocol_url={self.protocol_url},protocol_version={self.protocol_version},acquisition_start_time={self.acquisition_start_time},acquisition_end_time={self.acquisition_end_time},instrument_used={self.instrument_used},instrument_operator={self.instrument_operator},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
 class MassSpectrometryInstrumentData(InstrumentData):
     """
     Raw data files output from a mass spectrometry instrument.
@@ -5404,7 +5772,7 @@ class MassSpectrometryInstrumentData(InstrumentData):
     file_curie = Column(Text())
     alternative_identifiers = Column(Text())
     compression_type = Column(Text())
-    file_type = Column(Enum('FT_ICR_MS_Analysis_Results', 'GC_MS_Metabolomics_Results', 'Metaproteomics_Workflow_Statistics', 'Protein_Report', 'Peptide_Report', 'Unfiltered_Metaproteomics_Results', 'Read_Count_and_RPKM', 'QC_non_rRNA_R2', 'QC_non_rRNA_R1', 'Metagenome_Bins', 'CheckM_Statistics', 'GOTTCHA2_Krona_Plot', 'Kraken2_Krona_Plot', 'Centrifuge_Krona_Plot', 'Kraken2_Classification_Report', 'Kraken2_Taxonomic_Classification', 'Centrifuge_Classification_Report', 'Centrifuge_Taxonomic_Classification', 'Structural_Annotation_GFF', 'Functional_Annotation_GFF', 'Annotation_Amino_Acid_FASTA', 'Annotation_Enzyme_Commission', 'Annotation_KEGG_Orthology', 'Assembly_Coverage_BAM', 'Assembly_AGP', 'Assembly_Scaffolds', 'Assembly_Contigs', 'Assembly_Coverage_Stats', 'Filtered_Sequencing_Reads', 'QC_Statistics', 'TIGRFam_Annotation_GFF', 'Clusters_of_Orthologous_Groups_COG_Annotation_GFF', 'CATH_FunFams_Functional_Families_Annotation_GFF', 'SUPERFam_Annotation_GFF', 'SMART_Annotation_GFF', 'Pfam_Annotation_GFF', 'Direct_Infusion_FT_ICR_MS_Raw_Data', name='FileTypeEnum'))
+    file_type = Column(Enum('FT_ICR_MS_Analysis_Results', 'GC_MS_Metabolomics_Results', 'Metaproteomics_Workflow_Statistics', 'Protein_Report', 'Peptide_Report', 'Unfiltered_Metaproteomics_Results', 'Read_Count_and_RPKM', 'QC_non_rRNA_R2', 'QC_non_rRNA_R1', 'Metagenome_Bins', 'CheckM_Statistics', 'GOTTCHA2_Krona_Plot', 'Kraken2_Krona_Plot', 'Centrifuge_Krona_Plot', 'Kraken2_Classification_Report', 'Kraken2_Taxonomic_Classification', 'Centrifuge_Classification_Report', 'Centrifuge_Taxonomic_Classification', 'Structural_Annotation_GFF', 'Functional_Annotation_GFF', 'Annotation_Amino_Acid_FASTA', 'Annotation_Enzyme_Commission', 'Annotation_KEGG_Orthology', 'Assembly_Coverage_BAM', 'Assembly_AGP', 'Assembly_Scaffolds', 'Assembly_Contigs', 'Assembly_Coverage_Stats', 'Filtered_Sequencing_Reads', 'QC_Statistics', 'TIGRFam_Annotation_GFF', 'Clusters_of_Orthologous_Groups_COG_Annotation_GFF', 'CATH_FunFams_Functional_Families_Annotation_GFF', 'SUPERFam_Annotation_GFF', 'SMART_Annotation_GFF', 'Pfam_Annotation_GFF', 'Direct_Infusion_FT_ICR_MS_Raw_Data', 'XAS_Raw_Sweep_File', 'XAS_LCF_Output', name='FileTypeEnum'))
     software_version = Column(Text())
     name = Column(Text(), nullable=False )
     description = Column(Text(), nullable=False )
@@ -5829,7 +6197,7 @@ class NucleotideSequencingInstrumentData(InstrumentData):
     file_curie = Column(Text())
     alternative_identifiers = Column(Text())
     compression_type = Column(Text())
-    file_type = Column(Enum('FT_ICR_MS_Analysis_Results', 'GC_MS_Metabolomics_Results', 'Metaproteomics_Workflow_Statistics', 'Protein_Report', 'Peptide_Report', 'Unfiltered_Metaproteomics_Results', 'Read_Count_and_RPKM', 'QC_non_rRNA_R2', 'QC_non_rRNA_R1', 'Metagenome_Bins', 'CheckM_Statistics', 'GOTTCHA2_Krona_Plot', 'Kraken2_Krona_Plot', 'Centrifuge_Krona_Plot', 'Kraken2_Classification_Report', 'Kraken2_Taxonomic_Classification', 'Centrifuge_Classification_Report', 'Centrifuge_Taxonomic_Classification', 'Structural_Annotation_GFF', 'Functional_Annotation_GFF', 'Annotation_Amino_Acid_FASTA', 'Annotation_Enzyme_Commission', 'Annotation_KEGG_Orthology', 'Assembly_Coverage_BAM', 'Assembly_AGP', 'Assembly_Scaffolds', 'Assembly_Contigs', 'Assembly_Coverage_Stats', 'Filtered_Sequencing_Reads', 'QC_Statistics', 'TIGRFam_Annotation_GFF', 'Clusters_of_Orthologous_Groups_COG_Annotation_GFF', 'CATH_FunFams_Functional_Families_Annotation_GFF', 'SUPERFam_Annotation_GFF', 'SMART_Annotation_GFF', 'Pfam_Annotation_GFF', 'Direct_Infusion_FT_ICR_MS_Raw_Data', name='FileTypeEnum'))
+    file_type = Column(Enum('FT_ICR_MS_Analysis_Results', 'GC_MS_Metabolomics_Results', 'Metaproteomics_Workflow_Statistics', 'Protein_Report', 'Peptide_Report', 'Unfiltered_Metaproteomics_Results', 'Read_Count_and_RPKM', 'QC_non_rRNA_R2', 'QC_non_rRNA_R1', 'Metagenome_Bins', 'CheckM_Statistics', 'GOTTCHA2_Krona_Plot', 'Kraken2_Krona_Plot', 'Centrifuge_Krona_Plot', 'Kraken2_Classification_Report', 'Kraken2_Taxonomic_Classification', 'Centrifuge_Classification_Report', 'Centrifuge_Taxonomic_Classification', 'Structural_Annotation_GFF', 'Functional_Annotation_GFF', 'Annotation_Amino_Acid_FASTA', 'Annotation_Enzyme_Commission', 'Annotation_KEGG_Orthology', 'Assembly_Coverage_BAM', 'Assembly_AGP', 'Assembly_Scaffolds', 'Assembly_Contigs', 'Assembly_Coverage_Stats', 'Filtered_Sequencing_Reads', 'QC_Statistics', 'TIGRFam_Annotation_GFF', 'Clusters_of_Orthologous_Groups_COG_Annotation_GFF', 'CATH_FunFams_Functional_Families_Annotation_GFF', 'SUPERFam_Annotation_GFF', 'SMART_Annotation_GFF', 'Pfam_Annotation_GFF', 'Direct_Infusion_FT_ICR_MS_Raw_Data', 'XAS_Raw_Sweep_File', 'XAS_LCF_Output', name='FileTypeEnum'))
     software_version = Column(Text())
     name = Column(Text(), nullable=False )
     description = Column(Text(), nullable=False )
@@ -5908,7 +6276,6 @@ and add only their type-specific slots.
 class BulkDensityProduct(ProcessedData):
     """
     Bulk density analysis product, typically derived via oven-drying and weighing of a known volume of soil.
-One row per sample with columns for bulk density and QC flag.
     """
     __tablename__ = 'BulkDensityProduct'
 
@@ -5950,7 +6317,6 @@ One row per sample with columns for bulk density and QC flag.
 class ElementalAnalysisProduct(ProcessedData):
     """
     Elemental analysis product, typically derived via combustion or similar instrument.
-One row per sample with columns for total carbon, total nitrogen, total Kjeldahl nitrogen, and total sulfur.
 Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     __tablename__ = 'ElementalAnalysisProduct'
@@ -5999,7 +6365,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 class EnzymeProduct(ProcessedData):
     """
     Enzyme activity analysis product, typically derived via colorimetric assay of soil extracts.
-One row per sample with columns for beta-glucosidase activity and QC flag.
     """
     __tablename__ = 'EnzymeProduct'
 
@@ -6041,7 +6406,6 @@ One row per sample with columns for beta-glucosidase activity and QC flag.
 class GWCMoistureProduct(ProcessedData):
     """
     Gravimetric water content (GWC) analysis product, typically derived via oven-drying and weighing of a known mass of soil.
-One row per sample with columns for GWC and QC flag.
     """
     __tablename__ = 'GWCMoistureProduct'
 
@@ -6082,7 +6446,7 @@ One row per sample with columns for GWC and QC flag.
 
 class HydraulicPropertiesProduct(ProcessedData):
     """
-    Soil hydraulic parameters derived from HYPROP evaporation-experiment data. One row per core section; the four attributes are the four VGM model parameters.  Proposal_ID, sampling_set, and core_section are inherited from the parent processedData record.
+    Soil hydraulic parameters derived from HYPROP evaporation-experiment data. The four attributes are the four VGM model parameters.  Proposal_ID, sampling_set, and core_section are inherited from the parent processedData record.
     """
     __tablename__ = 'HydraulicPropertiesProduct'
 
@@ -6127,7 +6491,6 @@ class HydraulicPropertiesProduct(ProcessedData):
 class IonsAnalysisProduct(ProcessedData):
     """
     Ions analysis product, typically derived via ICP-OES or similar instrument.
-One row per sample with columns for each ion measured.
 Individual QC flags for each ion using ProcessedDataFlag enum.
     """
     __tablename__ = 'IonsAnalysisProduct'
@@ -6192,7 +6555,6 @@ Individual QC flags for each ion using ProcessedDataFlag enum.
 class MicrobialBiomassProduct(ProcessedData):
     """
     Microbial biomass analysis product, typically derived via chloroform fumigation-extraction (CFE) or similar instrument.
-One row per sample with columns for microbial biomass carbon and nitrogen.
 Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     __tablename__ = 'MicrobialBiomassProduct'
@@ -6242,7 +6604,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 class NitrogenAnalysisProduct(ProcessedData):
     """
     Nitrogen analysis product, typically derived via colorimetric assay of soil extracts.
-One row per sample with columns for nitrate and ammonium concentrations.
 Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     __tablename__ = 'NitrogenAnalysisProduct'
@@ -6292,7 +6653,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 class PhosphorusAnalysisProduct(ProcessedData):
     """
     Phosphorus analysis product, typically derived via colorimetric assay of soil extracts.
-One row per sample with columns for phosphorus concentration.
 Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     __tablename__ = 'PhosphorusAnalysisProduct'
@@ -6339,7 +6699,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 class RespirationProduct(ProcessedData):
     """
     Soil respiration analysis product.
-One row per sample with columns for soil respiration and QC flag.
     """
     __tablename__ = 'RespirationProduct'
 
@@ -6381,7 +6740,6 @@ One row per sample with columns for soil respiration and QC flag.
 class TextureProduct(ProcessedData):
     """
     Soil texture analysis product, typically derived via hydrometer or similar instrument.
-One row per sample with columns for sand, silt, and clay percentages.
 Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     __tablename__ = 'TextureProduct'
@@ -6426,7 +6784,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
 class TomographyProduct(ProcessedData):
     """
     Soil tomography analysis product, typically derived via X-ray computed tomography (XCT) or similar instrument.
-One row per sample with columns for pore structure metrics and QC flag.
     """
     __tablename__ = 'TomographyProduct'
 
@@ -6486,7 +6843,6 @@ One row per sample with columns for pore structure metrics and QC flag.
 class PHProduct(ProcessedData):
     """
     Soil pH analysis product, typically derived via pH meter or similar instrument.
-One row per sample with columns for pH and QC flag.
     """
     __tablename__ = 'pHProduct'
 
@@ -6531,16 +6887,19 @@ class XRayDataProduct(ProcessedData):
 Inherits S3 storage metadata and sample linkage from dataProduct via ProcessedData.
 
 Concrete subclasses:
-  - XRFElementalProduct: elemental concentrations (one row per sample)
-  - XRDPhaseProduct: mineral phases (one row per sample)
+  - XRFElementalProduct: elemental concentrations
+  - XRDPhaseProduct: mineral phases
+  - XASLCFProduct: linear combination fitting results
 
 Common patterns:
-  - s3_key points to raw spectrum/diffractogram file in MinIO
+  - s3_key points to the raw or processed X-ray data file in MinIO
   - summary_metrics provides lightweight queryable summaries:
       XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
       XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
-  - workflow_id is NULL for direct instrument output (XRF typical)
-  - workflow_id links to DataProcessingActivity for computational processing (XRD Rietveld) 
+      XAS: {"r_factor":0.000975, "lcf_type":"XANES", "n_standards":3}
+  - direct outputs may not have a processing link (XRF typical)
+  - computational outputs should use a typed processing reference slot
+    (XRD Rietveld refinement, XAS LCF fitting)
     """
     __tablename__ = 'XRayDataProduct'
 
@@ -6565,6 +6924,84 @@ Common patterns:
 
     def __repr__(self):
         return f"XRayDataProduct(summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class XASInstrumentData(InstrumentData):
+    """
+    Raw XAS sweep file (.0001, .0002, ...) produced at acquisition time.
+Stores file pointer metadata and key per-sweep scan header fields.
+    """
+    __tablename__ = 'XASInstrumentData'
+
+    produced_by_xas_run = Column(UUID(), ForeignKey('XASDataGenerationActivity.id'))
+    sweep_number = Column(Integer())
+    scan_datetime = Column(DateTime())
+    scan_time_sec = Column(Integer())
+    scan_subtype = Column(Enum('energy', 'motor', 'unknown', name='XASScanSubtype'))
+    positioner = Column(Text())
+    e0_ev = Column(Float())
+    n_points = Column(Integer())
+    n_data_rows = Column(Integer())
+    x_first = Column(Float())
+    x_last = Column(Float())
+    scan_bounds = Column(Text())
+    scan_steps = Column(Text())
+    integration_times = Column(Text())
+    kwgt = Column(Float())
+    fy_element = Column(Text())
+    fy_transition = Column(Text())
+    file_curie = Column(Text())
+    alternative_identifiers = Column(Text())
+    compression_type = Column(Text())
+    file_type = Column(Enum('FT_ICR_MS_Analysis_Results', 'GC_MS_Metabolomics_Results', 'Metaproteomics_Workflow_Statistics', 'Protein_Report', 'Peptide_Report', 'Unfiltered_Metaproteomics_Results', 'Read_Count_and_RPKM', 'QC_non_rRNA_R2', 'QC_non_rRNA_R1', 'Metagenome_Bins', 'CheckM_Statistics', 'GOTTCHA2_Krona_Plot', 'Kraken2_Krona_Plot', 'Centrifuge_Krona_Plot', 'Kraken2_Classification_Report', 'Kraken2_Taxonomic_Classification', 'Centrifuge_Classification_Report', 'Centrifuge_Taxonomic_Classification', 'Structural_Annotation_GFF', 'Functional_Annotation_GFF', 'Annotation_Amino_Acid_FASTA', 'Annotation_Enzyme_Commission', 'Annotation_KEGG_Orthology', 'Assembly_Coverage_BAM', 'Assembly_AGP', 'Assembly_Scaffolds', 'Assembly_Contigs', 'Assembly_Coverage_Stats', 'Filtered_Sequencing_Reads', 'QC_Statistics', 'TIGRFam_Annotation_GFF', 'Clusters_of_Orthologous_Groups_COG_Annotation_GFF', 'CATH_FunFams_Functional_Families_Annotation_GFF', 'SUPERFam_Annotation_GFF', 'SMART_Annotation_GFF', 'Pfam_Annotation_GFF', 'Direct_Infusion_FT_ICR_MS_Raw_Data', 'XAS_Raw_Sweep_File', 'XAS_LCF_Output', name='FileTypeEnum'))
+    software_version = Column(Text())
+    name = Column(Text(), nullable=False )
+    description = Column(Text(), nullable=False )
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASInstrumentData', source_slot='amplifiers', mapping_type=None, target_class='XASAmplifier', target_slot='XASInstrumentData_id', join_class=None, uses_join_table=None, multivalued=False)
+    amplifiers = relationship( "XASAmplifier", foreign_keys="[XASAmplifier.XASInstrumentData_id]")
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASInstrumentData', source_slot='motors', mapping_type=None, target_class='XASMotorPosition', target_slot='XASInstrumentData_id', join_class=None, uses_join_table=None, multivalued=False)
+    motors = relationship( "XASMotorPosition", foreign_keys="[XASMotorPosition.XASInstrumentData_id]")
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASInstrumentData', source_slot='signal_columns', mapping_type=None, target_class='XASSignalColumn', target_slot='XASInstrumentData_id', join_class=None, uses_join_table=None, multivalued=False)
+    signal_columns = relationship( "XASSignalColumn", foreign_keys="[XASSignalColumn.XASInstrumentData_id]")
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASInstrumentData', source_slot='data_rows', mapping_type=None, target_class='XASDataRow', target_slot='XASInstrumentData_id', join_class=None, uses_join_table=None, multivalued=False)
+    data_rows = relationship( "XASDataRow", foreign_keys="[XASDataRow.XASInstrumentData_id]")
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASInstrumentData', source_slot='ion_chambers', mapping_type=None, target_class='XASIonChamber', target_slot='XASInstrumentData_id', join_class=None, uses_join_table=None, multivalued=False)
+    ion_chambers = relationship( "XASIonChamber", foreign_keys="[XASIonChamber.XASInstrumentData_id]")
+    
+
+    
+
+    def __repr__(self):
+        return f"XASInstrumentData(produced_by_xas_run={self.produced_by_xas_run},sweep_number={self.sweep_number},scan_datetime={self.scan_datetime},scan_time_sec={self.scan_time_sec},scan_subtype={self.scan_subtype},positioner={self.positioner},e0_ev={self.e0_ev},n_points={self.n_points},n_data_rows={self.n_data_rows},x_first={self.x_first},x_last={self.x_last},scan_bounds={self.scan_bounds},scan_steps={self.scan_steps},integration_times={self.integration_times},kwgt={self.kwgt},fy_element={self.fy_element},fy_transition={self.fy_transition},file_curie={self.file_curie},alternative_identifiers={self.alternative_identifiers},compression_type={self.compression_type},file_type={self.file_type},software_version={self.software_version},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
 
 
 
@@ -6863,7 +7300,6 @@ Inherits all MetagenomicsProduct and dataProduct slots.
 class XRFElementalProduct(XRayDataProduct):
     """
     X-ray Fluorescence (XRF) elemental concentration data.
-One row per sample with columns for each element measured.
 
 Follows the wide-format pattern established by IonsAnalysisProduct.
 Element concentrations in mg/kg (parts per million dry weight basis) as float values.
@@ -6872,7 +7308,7 @@ Individual QC flags for each element using ProcessedDataFlag enum.
 Relationship to core tables:
   - id: FK -> processedData.id (1:1 linkage)
   - processedData.type = 'XRFElementalProduct'
-  - processedData.workflow_id = NULL (direct acquisition; no computational WEA)
+  - direct acquisition; no computational processing link required
   - processedData.summary_metrics = {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, ...}
   - processedData.s3_key = path to raw spectrum or calibrated CSV in MinIO
 
@@ -6976,7 +7412,6 @@ Required enum additions to enums.yaml:
 class XRDPhaseProduct(XRayDataProduct):
     """
     X-ray Diffraction (XRD) mineral phase identification and quantification data.
-One row per sample with columns for each mineral phase identified.
 
 Follows the wide-format pattern with individual weight percent columns.
 Individual QC flags for each mineral using ProcessedDataFlag enum.
@@ -6984,8 +7419,7 @@ Individual QC flags for each mineral using ProcessedDataFlag enum.
 Relationship to core tables:
   - id: FK -> processedData.id (1:1 linkage)
   - processedData.type = 'XRDPhaseProduct'
-  - processedData.workflow_id -> DataProcessingActivity if Rietveld refinement
-    is computational; NULL if manual/semi-quantitative
+  - optional typed processing reference when Rietveld refinement is used
   - processedData.summary_metrics = {"quartz_percent":42, "albite_percent":18, ...}
   - processedData.s3_key = diffractogram .xy, .xrdml, or .raw file in MinIO
 
@@ -7004,12 +7438,8 @@ Computational processing workflow (if applicable):
   XRDDataGenerationActivity acquires raw diffractogram ->
   DataProcessingActivity (type='xrd_rietveld_refinement') processes with
   HighScore Plus, GSAS-II, or FullProf ->
-  XRDPhaseProduct (workflow_id points to refinement WEA)
-  
-  workflow_steps JSONB example:
-    {"software": "HighScore_Plus", "version": "5.1", "method": "Rietveld",
-     "r_factor": 0.042, "gof": 1.8, "amorphous_content_pct": 12}
-
+  XRDPhaseProduct (typed processing reference points to refinement activity)
+     
 Required enum additions to enums.yaml:
   product:
     XRDPhaseProduct:  # Add to product permissible_values
@@ -7058,6 +7488,80 @@ Required enum additions to enums.yaml:
 
     def __repr__(self):
         return f"XRDPhaseProduct(measure_type={self.measure_type},quartz_percent={self.quartz_percent},albite_percent={self.albite_percent},microcline_percent={self.microcline_percent},muscovite_percent={self.muscovite_percent},kaolinite_percent={self.kaolinite_percent},chlorite_percent={self.chlorite_percent},hornblende_percent={self.hornblende_percent},pyrite_percent={self.pyrite_percent},halite_percent={self.halite_percent},gypsum_percent={self.gypsum_percent},flag_quartz={self.flag_quartz},flag_albite={self.flag_albite},flag_microcline={self.flag_microcline},flag_muscovite={self.flag_muscovite},flag_kaolinite={self.flag_kaolinite},flag_chlorite={self.flag_chlorite},flag_hornblende={self.flag_hornblende},flag_pyrite={self.flag_pyrite},flag_halite={self.flag_halite},flag_gypsum={self.flag_gypsum},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class XASLCFProduct(XRayDataProduct):
+    """
+    XAS Linear Combination Fitting (LCF) processed result.
+One instance per .lcf file and linked to an XASLCFDataProcessingActivity
+through a typed processing slot.
+    """
+    __tablename__ = 'XASLCFProduct'
+
+    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
+    results_from_xas_processing = Column(UUID(), ForeignKey('XASLCFDataProcessingActivity.id'))
+    xas_filename = Column(Text())
+    lcf_type = Column(Enum('XANES', 'EXAFS', name='XASLCFType'))
+    run_label = Column(Text())
+    fit_label = Column(Text())
+    analysis_code = Column(Text())
+    sample_nor_file = Column(Text())
+    fit_range_min = Column(Float())
+    fit_range_max = Column(Float())
+    fit_range_unit = Column(Text())
+    n_data_points = Column(Integer())
+    n_variables = Column(Integer())
+    n_standards = Column(Integer())
+    weights_sum_to_1 = Column(Text())
+    weights_bounded = Column(Text())
+    e0_shift_used = Column(Text())
+    noise_added = Column(Float())
+    r_factor = Column(Float())
+    chi_square = Column(Float())
+    reduced_chi_square = Column(Float())
+    weights_sum = Column(Float())
+    summary_metrics = Column(Text())
+    lims_barcode = Column(Text())
+    sample_id = Column(UUID(), ForeignKey('Sample.id'))
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASLCFProduct', source_slot='standards', mapping_type=None, target_class='XASLCFStandard', target_slot='XASLCFProduct_id', join_class=None, uses_join_table=None, multivalued=False)
+    standards = relationship( "XASLCFStandard", foreign_keys="[XASLCFStandard.XASLCFProduct_id]")
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASLCFProduct', source_slot='species_proportions', mapping_type=None, target_class='XASLCFSpeciesProportion', target_slot='XASLCFProduct_id', join_class=None, uses_join_table=None, multivalued=False)
+    species_proportions = relationship( "XASLCFSpeciesProportion", foreign_keys="[XASLCFSpeciesProportion.XASLCFProduct_id]")
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='XASLCFProduct', source_slot='lcf_data_rows', mapping_type=None, target_class='XASLCFDataRow', target_slot='XASLCFProduct_id', join_class=None, uses_join_table=None, multivalued=False)
+    lcf_data_rows = relationship( "XASLCFDataRow", foreign_keys="[XASLCFDataRow.XASLCFProduct_id]")
+    
+
+    
+
+    def __repr__(self):
+        return f"XASLCFProduct(measure_type={self.measure_type},results_from_xas_processing={self.results_from_xas_processing},xas_filename={self.xas_filename},lcf_type={self.lcf_type},run_label={self.run_label},fit_label={self.fit_label},analysis_code={self.analysis_code},sample_nor_file={self.sample_nor_file},fit_range_min={self.fit_range_min},fit_range_max={self.fit_range_max},fit_range_unit={self.fit_range_unit},n_data_points={self.n_data_points},n_variables={self.n_variables},n_standards={self.n_standards},weights_sum_to_1={self.weights_sum_to_1},weights_bounded={self.weights_bounded},e0_shift_used={self.e0_shift_used},noise_added={self.noise_added},r_factor={self.r_factor},chi_square={self.chi_square},reduced_chi_square={self.reduced_chi_square},weights_sum={self.weights_sum},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
 
 
 

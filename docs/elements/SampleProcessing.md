@@ -3,9 +3,27 @@
 # Class: SampleProcessing 
 
 
-_Abstract base for any sample processing activity (physical to physical). Input data should _
+_Abstract base for any sample processing activity (physical to physical): one_
 
-_be specified on workflow subclasses. Concrete protocol-specific subclasses use is_a: SampleProcessing._
+_laboratory step that consumes one or more Samples and produces one or more_
+
+_ProcessedSamples. Concrete protocol-specific subclasses use is_a: SampleProcessing._
+
+__
+
+_This class deliberately carries NO pointers to the samples it consumed or_
+
+_produced. Those edges live exclusively in ProcessingSampleLink, which records_
+
+_direction via its role slot. See that class for the rationale._
+
+__
+
+_Protocol identity (URL, version) is likewise NOT stored here. A step points at_
+
+_a SampleProcessingProtocol record via in_protocol, which is the single home for_
+
+_protocol_url and protocol_version._
 
 
 
@@ -54,22 +72,18 @@ URI: [basalt_schema:SampleProcessing](https://emsl-computing.github.io/BASALT-Sc
         
       SampleProcessing : id
         
-      SampleProcessing : name
-        
-      SampleProcessing : protocol_url
-        
-      SampleProcessing : protocol_version
-        
-      SampleProcessing : uses_sample
+      SampleProcessing : in_protocol
         
           
     
         
         
-        SampleProcessing --> "0..1" Sample : uses_sample
-        click Sample href "../Sample/"
+        SampleProcessing --> "0..1" SampleProcessingProtocol : in_protocol
+        click SampleProcessingProtocol href "../SampleProcessingProtocol/"
     
 
+        
+      SampleProcessing : name
         
       
 ```
@@ -101,9 +115,7 @@ URI: [basalt_schema:SampleProcessing](https://emsl-computing.github.io/BASALT-Sc
 | ---  | --- | --- | --- |
 | [name](name.md) | 1 <br/> [String](String.md) | Human-readable name for the entity or activity | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | Human-readable description for the entity or activity | direct |
-| [protocol_url](protocol_url.md) | 0..1 <br/> [String](String.md) | URL pointing to the protocol used in the activity, if applicable | direct |
-| [protocol_version](protocol_version.md) | 0..1 <br/> [String](String.md) | Version of the protocol used in the activity, if applicable | direct |
-| [uses_sample](uses_sample.md) | 0..1 <br/> [Sample](Sample.md) | The starting sample that is being processed or analyzed | direct |
+| [in_protocol](in_protocol.md) | 0..1 <br/> [SampleProcessingProtocol](SampleProcessingProtocol.md) | The SampleProcessingProtocol (the recipe) that this step follows | direct |
 | [id](id.md) | 1 <br/> [Uuid](Uuid.md) |  | direct |
 
 
@@ -115,8 +127,6 @@ URI: [basalt_schema:SampleProcessing](https://emsl-computing.github.io/BASALT-Sc
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [ProcessingSampleLink](ProcessingSampleLink.md) | [processing_id](processing_id.md) | range | [SampleProcessing](SampleProcessing.md) |
-| [ProcessedSample](ProcessedSample.md) | [sampled_during](sampled_during.md) | range | [SampleProcessing](SampleProcessing.md) |
-| [CoreSection](CoreSection.md) | [sampled_during](sampled_during.md) | range | [SampleProcessing](SampleProcessing.md) |
 
 
 
@@ -164,17 +174,32 @@ URI: [basalt_schema:SampleProcessing](https://emsl-computing.github.io/BASALT-Sc
 <details>
 ```yaml
 name: SampleProcessing
-description: "Abstract base for any sample processing activity (physical to physical).\
-  \ Input data should \nbe specified on workflow subclasses. Concrete protocol-specific\
-  \ subclasses use is_a: SampleProcessing."
+description: 'Abstract base for any sample processing activity (physical to physical):
+  one
+
+  laboratory step that consumes one or more Samples and produces one or more
+
+  ProcessedSamples. Concrete protocol-specific subclasses use is_a: SampleProcessing.
+
+
+  This class deliberately carries NO pointers to the samples it consumed or
+
+  produced. Those edges live exclusively in ProcessingSampleLink, which records
+
+  direction via its role slot. See that class for the rationale.
+
+
+  Protocol identity (URL, version) is likewise NOT stored here. A step points at
+
+  a SampleProcessingProtocol record via in_protocol, which is the single home for
+
+  protocol_url and protocol_version.'
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 abstract: true
 slots:
 - name
 - description
-- protocol_url
-- protocol_version
-- uses_sample
+- in_protocol
 attributes:
   id:
     name: id
@@ -200,7 +225,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -243,6 +267,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -264,9 +289,26 @@ attributes:
 <details>
 ```yaml
 name: SampleProcessing
-description: "Abstract base for any sample processing activity (physical to physical).\
-  \ Input data should \nbe specified on workflow subclasses. Concrete protocol-specific\
-  \ subclasses use is_a: SampleProcessing."
+description: 'Abstract base for any sample processing activity (physical to physical):
+  one
+
+  laboratory step that consumes one or more Samples and produces one or more
+
+  ProcessedSamples. Concrete protocol-specific subclasses use is_a: SampleProcessing.
+
+
+  This class deliberately carries NO pointers to the samples it consumed or
+
+  produced. Those edges live exclusively in ProcessingSampleLink, which records
+
+  direction via its role slot. See that class for the rationale.
+
+
+  Protocol identity (URL, version) is likewise NOT stored here. A step points at
+
+  a SampleProcessingProtocol record via in_protocol, which is the single home for
+
+  protocol_url and protocol_version.'
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 abstract: true
 attributes:
@@ -296,7 +338,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -339,6 +380,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
@@ -371,13 +413,13 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -403,13 +445,13 @@ attributes:
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -417,41 +459,19 @@ attributes:
     - ControlledTermValue
     - QuantityValue
     range: string
-  protocol_url:
-    name: protocol_url
-    description: URL pointing to the protocol used in the activity, if applicable.
+  in_protocol:
+    name: in_protocol
+    description: 'The SampleProcessingProtocol (the recipe) that this step follows.
+      Type-level, not instance-level: every execution of the same SOP points at the
+      same record, so this does NOT identify a particular chain. Use in_run for that.
+      A chain may mix protocols, so this is recorded per step rather than per run.'
     from_schema: https://emsl-computing.github.io/BASALT-Schema
     rank: 1000
-    alias: protocol_url
-    owner: SampleProcessing
-    domain_of:
-    - DataGenerationActivity
-    - SampleProcessing
-    - SampleProcessingProtocol
-    range: string
-  protocol_version:
-    name: protocol_version
-    description: Version of the protocol used in the activity, if applicable.
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    alias: protocol_version
-    owner: SampleProcessing
-    domain_of:
-    - DataGenerationActivity
-    - SampleProcessing
-    - SampleProcessingProtocol
-    range: string
-  uses_sample:
-    name: uses_sample
-    description: The starting sample that is being processed or analyzed. This slot
-      should only be used on an Activity class.
-    from_schema: https://emsl-computing.github.io/BASALT-Schema
-    rank: 1000
-    alias: uses_sample
+    alias: in_protocol
     owner: SampleProcessing
     domain_of:
     - SampleProcessing
-    range: Sample
+    range: SampleProcessingProtocol
 
 ```
 </details>

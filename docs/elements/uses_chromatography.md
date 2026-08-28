@@ -22,8 +22,8 @@ Alias: uses_chromatography
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SolidPhaseExtractionProcess](SolidPhaseExtractionProcess.md) | A solid phase extraction (SPE) step (e |  no  |
 | [MassSpectrometryDataGenerationActivity](MassSpectrometryDataGenerationActivity.md) | A record of the mass spectrometry run that generates a raw data product |  no  |
+| [SolidPhaseExtractionProcess](SolidPhaseExtractionProcess.md) | A solid phase extraction (SPE) step (e |  no  |
 
 
 

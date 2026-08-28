@@ -15,7 +15,7 @@ _of 10-30 elements per sample (Ni, Pb, As, Cr, Fe, Ca, K, etc.)._
 
 __
 
-_Data product: XRFElementalProduct (one row per element per sample)_
+_Data product: XRFElementalProduct_
 
 __
 
@@ -196,16 +196,15 @@ name: XRFDataGenerationActivity
 description: "X-ray Fluorescence (XRF) elemental analysis activity.\n\nXRF measures\
   \ elemental composition by detecting characteristic X-ray emissions\nfrom a sample\
   \ bombarded with high-energy X-rays. Typical output: concentrations\nof 10-30 elements\
-  \ per sample (Ni, Pb, As, Cr, Fe, Ca, K, etc.).\n\nData product: XRFElementalProduct\
-  \ (one row per element per sample)\n\nWorkflow pattern: Direct instrument output\
-  \ (no computational processing step)\n  processedSample -> XRFDataGenerationActivity\
-  \ -> XRFElementalProduct (workflow_id = NULL)\n\nProtocol information: Stored externally;\
-  \ link via protocol_url attribute.\nExample protocol parameters (stored in external\
-  \ SOP or DataProcessingActivity\nif computational correction is needed):\n  - Beam\
-  \ voltage (kV), beam current (mA)\n  - Measurement duration (seconds)\n  - Matrix\
-  \ correction method (fundamental parameters, empirical)\n  - Calibration date\n\
-  \  - Operator ID\n\nRequired enum additions to enums.yaml:\n  routemethod:\n   \
-  \ xrf_analysis:  # Add to routemethod permissible_values"
+  \ per sample (Ni, Pb, As, Cr, Fe, Ca, K, etc.).\n\nData product: XRFElementalProduct\n\
+  \nWorkflow pattern: Direct instrument output (no computational processing step)\n\
+  \  processedSample -> XRFDataGenerationActivity -> XRFElementalProduct (workflow_id\
+  \ = NULL)\n\nProtocol information: Stored externally; link via protocol_url attribute.\n\
+  Example protocol parameters (stored in external SOP or DataProcessingActivity\n\
+  if computational correction is needed):\n  - Beam voltage (kV), beam current (mA)\n\
+  \  - Measurement duration (seconds)\n  - Matrix correction method (fundamental parameters,\
+  \ empirical)\n  - Calibration date\n  - Operator ID\n\nRequired enum additions to\
+  \ enums.yaml:\n  routemethod:\n    xrf_analysis:  # Add to routemethod permissible_values"
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: XRayDataGenerationActivity
 
@@ -220,16 +219,15 @@ name: XRFDataGenerationActivity
 description: "X-ray Fluorescence (XRF) elemental analysis activity.\n\nXRF measures\
   \ elemental composition by detecting characteristic X-ray emissions\nfrom a sample\
   \ bombarded with high-energy X-rays. Typical output: concentrations\nof 10-30 elements\
-  \ per sample (Ni, Pb, As, Cr, Fe, Ca, K, etc.).\n\nData product: XRFElementalProduct\
-  \ (one row per element per sample)\n\nWorkflow pattern: Direct instrument output\
-  \ (no computational processing step)\n  processedSample -> XRFDataGenerationActivity\
-  \ -> XRFElementalProduct (workflow_id = NULL)\n\nProtocol information: Stored externally;\
-  \ link via protocol_url attribute.\nExample protocol parameters (stored in external\
-  \ SOP or DataProcessingActivity\nif computational correction is needed):\n  - Beam\
-  \ voltage (kV), beam current (mA)\n  - Measurement duration (seconds)\n  - Matrix\
-  \ correction method (fundamental parameters, empirical)\n  - Calibration date\n\
-  \  - Operator ID\n\nRequired enum additions to enums.yaml:\n  routemethod:\n   \
-  \ xrf_analysis:  # Add to routemethod permissible_values"
+  \ per sample (Ni, Pb, As, Cr, Fe, Ca, K, etc.).\n\nData product: XRFElementalProduct\n\
+  \nWorkflow pattern: Direct instrument output (no computational processing step)\n\
+  \  processedSample -> XRFDataGenerationActivity -> XRFElementalProduct (workflow_id\
+  \ = NULL)\n\nProtocol information: Stored externally; link via protocol_url attribute.\n\
+  Example protocol parameters (stored in external SOP or DataProcessingActivity\n\
+  if computational correction is needed):\n  - Beam voltage (kV), beam current (mA)\n\
+  \  - Measurement duration (seconds)\n  - Matrix correction method (fundamental parameters,\
+  \ empirical)\n  - Calibration date\n  - Operator ID\n\nRequired enum additions to\
+  \ enums.yaml:\n  routemethod:\n    xrf_analysis:  # Add to routemethod permissible_values"
 from_schema: https://emsl-computing.github.io/BASALT-Schema
 is_a: XRayDataGenerationActivity
 attributes:
@@ -267,13 +265,13 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - SoftwareControlledTermValue
     range: string
@@ -299,13 +297,13 @@ attributes:
     - Configuration
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - organism
     - Site
     - Sample
     - SamplingActivity
     - SoilSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - TimestampValue
     - TextValue
@@ -333,7 +331,6 @@ attributes:
     owner: XRFDataGenerationActivity
     domain_of:
     - DataGenerationActivity
-    - SampleProcessing
     - SampleProcessingProtocol
     range: string
   protocol_version:
@@ -345,7 +342,6 @@ attributes:
     owner: XRFDataGenerationActivity
     domain_of:
     - DataGenerationActivity
-    - SampleProcessing
     - SampleProcessingProtocol
     range: string
   acquisition_start_time:
@@ -414,7 +410,6 @@ attributes:
     - MobilePhaseSegment
     - MassSpectrometryStandardRun
     - PurchasedMaterial
-    - LabProcessingActivity
     - MAOMProduct
     - WEOMProduct
     - organism
@@ -457,6 +452,7 @@ attributes:
     - TerraformSamplingActivity
     - WaterSamplingActivity
     - SampleProcessingProtocol
+    - SampleProcessingRun
     - Study
     - ProjectParticipant
     - TimestampValue
