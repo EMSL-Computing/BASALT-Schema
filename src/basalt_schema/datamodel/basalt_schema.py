@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-28T07:46:49
+# Generation date: 2026-08-28T08:00:47
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -1435,8 +1435,6 @@ class ProcessingSampleLink(YAMLRoot):
     Direction is carried by role:
     role = input_sample   ->  sample_id was consumed by processing_id
     role = output_sample  ->  sample_id (a ProcessedSample) was produced by it
-    role = input_sample   ->  sample_id was consumed by processing_id
-    role = output_sample  ->  sample_id (a ProcessedSample) was produced by it
 
     A minimal step is therefore two rows: one input edge and one output edge.
     Because role is per-row rather than per-activity, fan-in and fan-out are
@@ -1456,7 +1454,6 @@ class ProcessingSampleLink(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.ProcessingSampleLink
 
     id: Union[str, ProcessingSampleLinkId] = None
-    sample_id: Union[str, SampleId] = None
     processing_id: Union[str, SampleProcessingId] = None
     step_number: int = None
     role: Union[str, "SampleRole"] = None
@@ -1467,11 +1464,6 @@ class ProcessingSampleLink(YAMLRoot):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ProcessingSampleLinkId):
             self.id = ProcessingSampleLinkId(self.id)
-
-        if self._is_empty(self.sample_id):
-            self.MissingRequiredField("sample_id")
-        if not isinstance(self.sample_id, SampleId):
-            self.sample_id = SampleId(self.sample_id)
 
         if self._is_empty(self.processing_id):
             self.MissingRequiredField("processing_id")
@@ -17230,9 +17222,6 @@ slots.sampleProcessing__id = Slot(uri=BASALT_SCHEMA.id, name="sampleProcessing__
 
 slots.processingSampleLink__id = Slot(uri=BASALT_SCHEMA.id, name="processingSampleLink__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.processingSampleLink__id, domain=None, range=URIRef)
-
-slots.processingSampleLink__sample_id = Slot(uri=BASALT_SCHEMA.sample_id, name="processingSampleLink__sample_id", curie=BASALT_SCHEMA.curie('sample_id'),
-                   model_uri=BASALT_SCHEMA.processingSampleLink__sample_id, domain=None, range=Union[str, SampleId])
 
 slots.processingSampleLink__processing_id = Slot(uri=BASALT_SCHEMA.processing_id, name="processingSampleLink__processing_id", curie=BASALT_SCHEMA.curie('processing_id'),
                    model_uri=BASALT_SCHEMA.processingSampleLink__processing_id, domain=None, range=Union[str, SampleProcessingId])
