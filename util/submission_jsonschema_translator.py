@@ -109,16 +109,42 @@ for c in materialized.classes:
                     val = materialized.classes[c].attributes[s].annotations[a].value
                     materialized.classes[c].attributes[s][f'{prop}'] = val
 
+        # also give all the slots on classes titles
+        if not materialized.classes[c].attributes[s].title:
+            materialized.classes[c].attributes[s].title = s.replace("_", " ").title()
+
 # Remove internal only slots
 internal_only_slots = ["lims_barcode", "emsl_activity"]
 
 # Dump to file so JSONschema generator works better
-materialized_schema_path = Path("./src/analysis_api_schema/schema/temp_compiled_sample_classes.materialized.yaml")
+materialized_schema_path = Path("./src/analysis_api_schema/schema/temp_compiled_sample_classes_materialized.yaml")
 YAMLDumper().dump(materialized, materialized_schema_path)
 
 generator = JsonSchemaGenerator(materialized, include_null=False)
+# ^this has titles
 json_schema = generator.serialize()
+
+# now the titles are gone
+# Write out temp json schema dump for debugging
+with open("./src/submission_schema/temp_json_schema.json", "w") as f:
+    f.write(json_schema)
+
 json_schema = json.loads(json_schema)
+
+# Reinject property titles from materialized attributes
+slot_title_lookup = {}
+for cname, cobj in materialized.classes.items():
+    slot_title_lookup[cname] = {}
+    for sname, sobj in (cobj.attributes or {}).items():
+        slot_title_lookup[cname][sname] = sobj.title or sname.replace("_", " ").title()
+
+for cname, cdef in json_schema.get("$defs", {}).items():
+    props = cdef.get("properties", {})
+    for sname, pschema in props.items():
+        if "title" not in pschema:
+            pschema["title"] = slot_title_lookup.get(cname, {}).get(
+                sname, sname.replace("_", " ").title()
+            )
 
 # Look in each $defs - class - properties - (slot name) - $ref for a reference to an enum.
 # Replace "$ref": "#/$defs/xx" with "enum": [contents of xx enum]
@@ -134,9 +160,7 @@ for d in json_schema_cleaned["$defs"]:
                     json_schema_cleaned["$defs"][d]["properties"][p].pop("$ref")
                     json_schema_cleaned["$defs"][d]["properties"][p]["enum"] = enum_values
 
-# # Write out temp json schema dump for debugging
-# with open("./src/submission_schema/temp_json_schema.json", "w") as f:
-#     json.dump(json_schema_cleaned, f, indent=2)
+
 
 # Break out each submission class from $defs into its own json schema file
 for sample_type in SAMPLE_TYPES:
@@ -165,11 +189,11 @@ for sample_type in SAMPLE_TYPES:
         json.dump(submission_schema, f, indent=2)
 
 # Delete temp files created above
-temp_files = [
-    "./src/analysis_api_schema/schema/temp_compiled_sample_classes.yaml",
-    "./src/analysis_api_schema/schema/temp_compiled_sample_classes.materialized.yaml",
-    "./src/submission_schema/temp_json_schema.json"
-]
-for temp_file in temp_files:
-    if Path(temp_file).exists():
-        Path(temp_file).unlink()
+# temp_files = [
+#     "./src/analysis_api_schema/schema/temp_compiled_sample_classes.yaml",
+#     "./src/analysis_api_schema/schema/temp_compiled_sample_classes_materialized.yaml",
+#     "./src/submission_schema/temp_json_schema.json"
+# ]
+# for temp_file in temp_files:
+#     if Path(temp_file).exists():
+#         Path(temp_file).unlink()
