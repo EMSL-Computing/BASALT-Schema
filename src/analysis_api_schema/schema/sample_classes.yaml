@@ -107,6 +107,8 @@ classes:
         range: uuid
     description: An aerosol sample collected by the ARM facility.
     is_a: Sample
+    annotations:
+      submission_version: 1.2.1
     slots:
       - aerosol_type
       - air_temp_regm
@@ -192,6 +194,8 @@ classes:
         range: uuid
     description: An aerosol sample collected from the environment.
     is_a: Sample
+    annotations:
+      submission_version: 1.4.1
     slots:
       - aerosol_type
       - air_temp_regm
@@ -342,6 +346,8 @@ classes:
         range: uuid
     description: A sample containing commercially purchased material.
     is_a: Sample
+    annotations:
+      submission_version: 1.1.3
     slots:
       - analysis_type
       - cas
@@ -382,6 +388,8 @@ classes:
         range: uuid
     description: A sample containing organisms cultured from an environmental sample.
     is_a: Sample
+    annotations:
+      submission_version: 1.1.1
     slots:
       - air_temp_regm
       - analysis_type
@@ -460,6 +468,8 @@ classes:
       and carries only sample-instance-specific slots.
         
     is_a: Sample
+    annotations:
+      submission_version: 1.0.0
 
     slots:
       # Reference to biological identity (required)
@@ -497,6 +507,8 @@ classes:
         range: uuid
     description: A sample collected from a field-deployed Terraform experiment.
     is_a: Sample
+    annotations:
+      submission_version: 1.2.1
     slots:
       - air_temp_regm
       - analysis_type
@@ -607,6 +619,8 @@ classes:
         range: uuid
     description: A sample containing multiple cultured organisms.
     is_a: Sample
+    annotations:
+      submission_version: 1.1.1
     slots:
       - air_temp_regm
       - analysis_type
@@ -677,6 +691,8 @@ classes:
   MonetSoilSample:
     description: A soil sample that has been collected according to the MONet soil sampling protocol. This sample type has specific slot requirements related to the MONet soil sampling method, such as infiltration rates.
     is_a: Sample
+    annotations:
+      submission_version: 2.1.1
     attributes:
       id:
         identifier: true
@@ -764,6 +780,8 @@ classes:
         range: uuid
     description: A sample that does not fit into any of the other described sample types.
     is_a: Sample
+    annotations:
+      submission_version: 1.1.1
     slots:
       - agrochem_addition
       - air_temp_regm
@@ -1021,6 +1039,8 @@ classes:
         range: uuid
     description: A sample containing plant material.
     is_a: Sample
+    annotations:
+      submission_version: 1.2.1
     slots:
       - air_temp_regm
       - ances_data
@@ -1135,6 +1155,8 @@ classes:
         range: uuid
     description: A sample of a culture containing a single organism.
     is_a: Sample
+    annotations:
+      submission_version: 1.2.1
     slots:
       - air_temp_regm
       - analysis_type
@@ -1206,6 +1228,8 @@ classes:
   SedimentSample:
     description: A sample of sediment collected from the environment.
     is_a: Sample
+    annotations:
+      submission_version: 1.2.1
     attributes:
       id:
         identifier: true
@@ -1355,6 +1379,8 @@ classes:
   SoilSample:
     description: A sample of soil collected from the environment.
     is_a: Sample
+    annotations:
+      submission_version: 1.3.1
     attributes:
       id:
         identifier: true
@@ -1484,6 +1510,8 @@ classes:
   SynthesizedMaterialSample:
     description: A sample containing synthetically generated material.
     is_a: Sample
+    annotations:
+      submission_version: 1.1.1
     attributes:
       id:
         identifier: true
@@ -1529,6 +1557,8 @@ classes:
   TerraformSample:
     description: A sample collected from a Terraform experiment.
     is_a: Sample
+    annotations:
+      submission_version: 1.2.1
     attributes:
       id:
         identifier: true
@@ -1631,6 +1661,8 @@ classes:
   WaterSample:
     description: A sample of water collected from the environment.
     is_a: Sample
+    annotations:
+      submission_version: 1.1.1
     attributes:
       id:
         identifier: true
