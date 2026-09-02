@@ -282,7 +282,23 @@ classes:
       extraction_method:
         range: ExtractionMethodEnum
         description: Named extraction method applied (e.g., MPLEx, bead beating, TCA/Acetone).
-      
+
+  FiltrationProcess:
+    is_a: SampleProcessing
+    description: >-
+      The process of segregation of phases; e.g. the separation of suspended
+      solids from a liquid or gas, usually by forcing a carrier gas or liquid through
+      a porous medium.
+    slots:
+      - conditionings
+      - container_size
+      - filter_material
+      - filter_pore_size
+      - filtration_category
+      - is_pressurized
+      - separation_method
+      - volume_ml
+
   FractionationProcess:
     is_a: SampleProcessing
     description: >
