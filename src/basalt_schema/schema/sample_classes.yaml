@@ -107,6 +107,8 @@ classes:
         range: uuid
     description: An aerosol sample collected by the ARM facility.
     is_a: Sample
+    annotations:
+      submission_version: 1.2.1
     slots:
       - aerosol_type
       - air_temp_regm
@@ -166,20 +168,24 @@ classes:
       carb_dioxide:
         description: Amount of carbon dioxide measured in the air the day of sampling.
           Provided by ARM. Provide value and unit, any unit is valid
-        pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
       carb_monoxide:
         description: Amount of carbon monoxide measured in the air the day of sampling.
           Provided by ARM. Provide value and unit any unit is valid
-        pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
       size_frac_low:
         description: 'Refers to the mesh/pore size used to pre-filter/pre-sort the sample.
           Materials larger than the size threshold are excluded from the sample (Unit:
           um)'
-        pattern: ^\d+(\.\d+)?\s*um$
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?\s*um$
       size_frac_up:
         description: 'Refers to the mesh/pore size used to retain the sample. Materials
           smaller than the size threshold are excluded from the sample (Unit: um)'
-        pattern: ^\d+(\.\d+)?\s*um$
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?\s*um$
 
   AerosolSample:
     attributes:
@@ -188,6 +194,8 @@ classes:
         range: uuid
     description: An aerosol sample collected from the environment.
     is_a: Sample
+    annotations:
+      submission_version: 1.4.1
     slots:
       - aerosol_type
       - air_temp_regm
@@ -240,11 +248,13 @@ classes:
         description: 'Refers to the mesh/pore size used to pre-filter/pre-sort the sample.
           Materials larger than the size threshold are excluded from the sample (Unit:
           um)'
-        pattern: ^\d+(\.\d+)?\s*um$
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?\s*um$
       size_frac_up:
         description: 'Refers to the mesh/pore size used to retain the sample. Materials
           smaller than the size threshold are excluded from the sample (Unit: um)'
-        pattern: ^\d+(\.\d+)?\s*um$
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?\s*um$
 
   AMP2UserSample:
     description: |-
@@ -336,6 +346,8 @@ classes:
         range: uuid
     description: A sample containing commercially purchased material.
     is_a: Sample
+    annotations:
+      submission_version: 1.1.3
     slots:
       - analysis_type
       - cas
@@ -376,6 +388,8 @@ classes:
         range: uuid
     description: A sample containing organisms cultured from an environmental sample.
     is_a: Sample
+    annotations:
+      submission_version: 1.1.1
     slots:
       - air_temp_regm
       - analysis_type
@@ -454,6 +468,8 @@ classes:
       and carries only sample-instance-specific slots.
         
     is_a: Sample
+    annotations:
+      submission_version: 1.0.0
 
     slots:
       # Reference to biological identity (required)
@@ -491,6 +507,8 @@ classes:
         range: uuid
     description: A sample collected from a field-deployed Terraform experiment.
     is_a: Sample
+    annotations:
+      submission_version: 1.2.1
     slots:
       - air_temp_regm
       - analysis_type
@@ -601,6 +619,8 @@ classes:
         range: uuid
     description: A sample containing multiple cultured organisms.
     is_a: Sample
+    annotations:
+      submission_version: 1.1.1
     slots:
       - air_temp_regm
       - analysis_type
@@ -671,6 +691,8 @@ classes:
   MonetSoilSample:
     description: A soil sample that has been collected according to the MONet soil sampling protocol. This sample type has specific slot requirements related to the MONet soil sampling method, such as infiltration rates.
     is_a: Sample
+    annotations:
+      submission_version: 2.1.1
     attributes:
       id:
         identifier: true
@@ -712,14 +734,16 @@ classes:
         description: 'Provide the bulk electrical conductivity readout from the Teros
           ZSC bluetooth sensor. If measurement was started and unsuccessful enter ''failed''
           if measurement was not attempted enter ''did not collect''. (Unit: mS/cm)'
-        pattern: ^\d+(\.\d+)?\s*mS/cm|did not collect|failed
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?\s*mS/cm|did not collect|failed
         required: true
       depth:
         description: 'The vertical distance below local surface. For sediment or soil
           samples, depth is measured from sediment or soil surface respectively. Depth
           is required to be reported as an interval for subsurface samples. (Units:
           cm or m)'
-        pattern: ^\d+(\.\d+)?-\d+(\.\d+)?\s*(m|cm)$
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?-\d+(\.\d+)?\s*(m|cm)$
         required: true
       latitude:
         required: true
@@ -737,14 +761,16 @@ classes:
         description: 'Temperature of the sample at the time of sampling. If measurement
           was started and unsuccessful enter ''failed'' if measurement was not attempted
           enter ''did not collect''. (Units: C)'
-        pattern: ^-?\d+(\.\d+)?\s*C|did not collect|failed
+        annotations:
+          submission_pattern: ^-?\d+(\.\d+)?\s*C|did not collect|failed
         required: true
       water_content:
         description: Water content measurement. This will be a readout from the Teros
           ZSC bluetooth sensor and requires a unit of 'm3/m3'. If measurement was started
           and unsuccessful enter 'failed' if measurement was not attempted enter 'did
           not collect'.
-        pattern: ^\d+(\.\d+)?\s*m3/m3|did not collect|failed
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?\s*m3/m3|did not collect|failed
         required: true
 
   OtherUndescribedSample:
@@ -754,6 +780,8 @@ classes:
         range: uuid
     description: A sample that does not fit into any of the other described sample types.
     is_a: Sample
+    annotations:
+      submission_version: 1.1.1
     slots:
       - agrochem_addition
       - air_temp_regm
@@ -1011,6 +1039,8 @@ classes:
         range: uuid
     description: A sample containing plant material.
     is_a: Sample
+    annotations:
+      submission_version: 1.2.1
     slots:
       - air_temp_regm
       - ances_data
@@ -1100,7 +1130,8 @@ classes:
         description: 'The height of plant. (Unit: cm or mm or m)'
       host_length:
         description: 'The length of the plant. (Unit: cm or mm or m)'
-        pattern: ^\d+(\.\d+)?\s*(cm|mm|m)$
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?\s*(cm|mm|m)$
       host_life_stage:
         description: Description of life stage of the plant
       latitude:
@@ -1124,6 +1155,8 @@ classes:
         range: uuid
     description: A sample of a culture containing a single organism.
     is_a: Sample
+    annotations:
+      submission_version: 1.2.1
     slots:
       - air_temp_regm
       - analysis_type
@@ -1195,6 +1228,8 @@ classes:
   SedimentSample:
     description: A sample of sediment collected from the environment.
     is_a: Sample
+    annotations:
+      submission_version: 1.2.1
     attributes:
       id:
         identifier: true
@@ -1317,7 +1352,8 @@ classes:
         required: true
       depth:
         required: true
-        pattern: ^\d+(\.\d+)?-\d+(\.\d+)?\s*m$
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?-\d+(\.\d+)?\s*m$
       latitude:
         required: true
       longitude:
@@ -1327,12 +1363,14 @@ classes:
           microorganisms smaller than 5-10 micrometer. If you keep this you would need
           to have correction factors used for conversion to the final units. (Unit:
           g/kg sediment or ug/g sediment)'
-        pattern: ^\d+(\.\d+)?\s*(g/kg sediment|ug/g sediment)$
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?\s*(g/kg sediment|ug/g sediment)$
       non_microb_biomass:
         description: 'Amount of non-microbial biomass measured. Include the name for
           the part of biomass measured, e.g.insect, plant, total. Provide value and unit,
           any unit is valid. (example: insect 5mg; plant 2ug/mL)'
-        pattern: ^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$
+        annotations:
+          submission_pattern: ^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$
       biotic_relationship:
         description: Description of relationship(s) between the subject organism and
           other organism(s) it is associated with. The target organism is the subject
@@ -1341,6 +1379,8 @@ classes:
   SoilSample:
     description: A sample of soil collected from the environment.
     is_a: Sample
+    annotations:
+      submission_version: 1.3.1
     attributes:
       id:
         identifier: true
@@ -1426,12 +1466,14 @@ classes:
     slot_usage:
       al_sat:
         description: 'Aluminum saturation (esp. For tropical soils) (Unit: percent)'
-        pattern: ^\d+(\.\d+)?\s*percent$
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?\s*percent$
       analysis_type:
         required: true
       depth:
         required: true
-        pattern: ^\d+(\.\d+)?-\d+(\.\d+)?\s*m$
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?-\d+(\.\d+)?\s*m$
       heavy_metals:
         description: 'Heavy metals present in the sample and the concentration of the
           metal. For multiple heavy metals and concentrations, separate them by `|`.
@@ -1445,25 +1487,31 @@ classes:
           microorganisms smaller than 5-10 micrometer. If you keep this you would need
           to have correction factors used for conversion to the final units. (Unit:
           g/kg soil or ug/g dry soil)'
-        pattern: ^\d+(\.\d+)?\s*(g/kg soil|ug/g dry soil)$
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?\s*(g/kg soil|ug/g dry soil)$
       non_microb_biomass:
         description: 'Amount of non-microbial biomass measured. Include the name for
           the part of biomass measured, e.g. insect, plant, total. Provide value and unit,
           any unit is valid. (example: insect 5mg; plant 2ug/mL)'
-        pattern: ^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$
+        annotations:
+          submission_pattern: ^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$
       size_frac_low:
         description: 'Refers to the mesh/pore size used to retain the sample. Materials
           smaller than the size threshold are excluded from the sample. (Unit: um)'
-        pattern: ^\d+(\.\d+)?\s*um$
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?\s*um$
       size_frac_up:
         description: 'Refers to the mesh/pore size used to pre-filter/pre-sort the sample.
           Materials larger than the size threshold are excluded from the sample. (Unit:
           um)'
-        pattern: ^\d+(\.\d+)?\s*um$
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?\s*um$
 
   SynthesizedMaterialSample:
     description: A sample containing synthetically generated material.
     is_a: Sample
+    annotations:
+      submission_version: 1.1.1
     attributes:
       id:
         identifier: true
@@ -1509,6 +1557,8 @@ classes:
   TerraformSample:
     description: A sample collected from a Terraform experiment.
     is_a: Sample
+    annotations:
+      submission_version: 1.2.1
     attributes:
       id:
         identifier: true
@@ -1611,6 +1661,8 @@ classes:
   WaterSample:
     description: A sample of water collected from the environment.
     is_a: Sample
+    annotations:
+      submission_version: 1.1.1
     attributes:
       id:
         identifier: true
@@ -1744,17 +1796,20 @@ classes:
         description: 'Amount of non-microbial biomass measured. Include the name for
           the part of biomass measured, e.g. insect, plant, total. Provide value and unit,
           any unit is valid. (example: insect 5mg; plant 2ug/mL)'
-        pattern: ^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$
+        annotations:
+          submission_pattern: ^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$
       size_frac_low:
         description: 'Refers to the mesh/pore size used to retain the sample. Materials
           smaller than the size threshold are excluded from the sample (Unit: um)'
-        pattern: ^\d+(\.\d+)?\s*um$
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?\s*um$
         required: true
       size_frac_up:
         description: 'Refers to the mesh/pore size used to pre-filter/pre-sort the sample.
           Materials larger than the size threshold are excluded from the sample (Unit:
           um)'
-        pattern: ^\d+(\.\d+)?\s*um$
+        annotations:
+          submission_pattern: ^\d+(\.\d+)?\s*um$
         required: true
 
   ProcessedSample:
