@@ -1418,6 +1418,10 @@ slots:
   metaproteomics_analysis_category:
     range: MetaproteomicsAnalysisCategoryEnum
     description: The category of metaproteomics analysis being performed, if applicable.
+  
+  metaproteomics_result_type:
+    range: MetaproteomicsResultTypeEnum
+    description: The type of metaproteomics results file.
 
   methane:
     description: 'Methane (gas) amount or concentration at the time of sampling. (Unit:
