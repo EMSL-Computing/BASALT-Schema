@@ -416,13 +416,6 @@ slots:
       Examples: "good", "damaged", "thawed"
     range: string
 
-  conditioning:
-    range: string
-    description: Preliminary treatment of either phase with a suitable solution of
-      the other phase (in the absence of main extractable solute(s)) so that when
-      the subsequent equilibration is carried out changes in the (volume) phase ratio
-      or in the concentrations of other components are minimized.
-
   conduc:
     description: Electrical conductivity of water. Provide value and unit, any unit is valid.
     pattern: ^\d+(\.\d+)?\s*[\w\s/]+$
@@ -445,7 +438,7 @@ slots:
     range: float
 
   container_type:
-    description: Physical container used for the culture (flask, tube, plate, etc.)
+    description: Physical container used for the culture or sample (flask, tube, plate, etc.)
     range: string
 
   contaminant_strains:
@@ -777,10 +770,6 @@ slots:
   filter_pore_size_um:
     description: The pore size of the filter used in the filtration process, in micrometers.
     range: float
-
-  filtration_category:
-    description: The category of filtration process performed (e.g., sterile filtration, clarification).
-    range: string
 
   fire:
     description: 'Historical and/or physical evidence of fire. Format: YYYY-MM-DD'

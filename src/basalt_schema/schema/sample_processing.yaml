@@ -181,6 +181,10 @@ slots:
     range: float
     description: The mass of sample or analyte in the processedSample resulting from this activity.
 
+  final_vol_ml:
+    range: float
+    description: The volume of sample resulting from this activity, in milliliters.
+
   final_concentration_mg_per_ml:
     range: float
     description: The concentration of the sample or analyte in the processedSample resulting from this activity, in milligrams per milliliter.
@@ -290,14 +294,16 @@ classes:
       solids from a liquid or gas, usually by forcing a carrier gas or liquid through
       a porous medium.
     slots:
-      - conditionings
-      - container_size
+      - container_size_ml
+      - container_type
       - filter_material
-      - filter_pore_size
-      - filtration_category
+      - filter_pore_size_um
       - is_pressurized
       - separation_method
       - volume_ml
+    slot_usage:
+      volume_ml:
+        description: The volume of the sample that was filtered, in milliliters.
 
   FractionationProcess:
     is_a: SampleProcessing
@@ -335,9 +341,12 @@ classes:
       Typically corresponds to the L7 "Sample Pooling" / "Pooling" protocols.
     slots:
       - final_mass_mg
+      - final_vol_ml
 
   PortionOfSubstance:
     description: A portion of a substance with specific characteristics.
+    slots:
+      - volume_ml
     attributes:
       known_as:
         range: ChemicalEntityEnum
@@ -345,9 +354,6 @@ classes:
       substance_role:
         range: SubstanceRoleEnum
         description: The role or function of the substance in the context of its use.
-      volume_mL:
-        range: float
-        description: The volume of the portion of the substance, in milliliters.
       source_concentration_mg_per_ml:
         range: float
         description: >-
@@ -380,6 +386,8 @@ classes:
       Resuspension of an analyte (e.g., drying and resolubilizing peptides in LC buffer).
     slots:
       - lims_protocol_instance_id
+      - final_vol_ml
+      - substances_used
 
   SolidPhaseExtractionProcess:
     is_a: SampleProcessing
@@ -389,7 +397,7 @@ classes:
       - lims_protocol_instance_id
       - uses_chromatography
       
-  SubSamplingProcess:
+  SubsamplingProcess:
     is_a: SampleProcessing
     description: >-
       A laboratory subsampling process that takes a portion of an existing 
@@ -398,3 +406,5 @@ classes:
       downstream activity.)
     slots:
       - final_mass_mg
+      - final_vol_ml
+
