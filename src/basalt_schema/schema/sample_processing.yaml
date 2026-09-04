@@ -11,30 +11,7 @@ default_prefix: basalt_schema
 imports:
   - linkml:types
   - basalt_schema
-
-slots:
-  
-  substances_used:
-    range: PortionOfSubstance
-    multivalued: true
-    description: The substances used in the process.
-    todos: is it possible to have this be multivalued?
-  
-  starting_mass_mg:
-    range: float
-    description: The mass of sample or analyte used in the first step of the process, in milligrams.
-  
-  final_mass_mg:
-    range: float
-    description: The mass of sample or analyte in the processedSample resulting from this activity.
-
-  final_vol_ml:
-    range: float
-    description: The volume of sample resulting from this activity, in milliliters.
-
-  final_concentration_mg_per_ml:
-    range: float
-    description: The concentration of the sample or analyte in the processedSample resulting from this activity, in milligrams per milliliter.
+  - slots
 
 classes:
 

@@ -771,6 +771,18 @@ slots:
     description: The pore size of the filter used in the filtration process, in micrometers.
     range: float
 
+  final_concentration_mg_per_ml:
+    range: float
+    description: The concentration of the sample or analyte in the processedSample resulting from this activity, in milligrams per milliliter.
+
+  final_mass_mg:
+    range: float
+    description: The mass of sample or analyte in the processedSample resulting from this activity.
+
+  final_vol_ml:
+    range: float
+    description: The volume of sample resulting from this activity, in milliliters.
+
   fire:
     description: 'Historical and/or physical evidence of fire. Format: YYYY-MM-DD'
     pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$
@@ -2937,6 +2949,10 @@ slots:
     range: string
     title: incubation start date
 
+  starting_mass_mg:
+    range: float
+    description: The mass of sample or analyte used in the first step of the process, in milligrams.
+
   stationary_phase:
     description: Description of the stationary phase used in the chromatography method (e.g., column type)
     range: string
@@ -3040,6 +3056,12 @@ slots:
     title: subspecific genetic lineage
     todos: 
       - make this inlined/multivalued?
+
+  substances_used:
+    range: PortionOfSubstance
+    multivalued: true
+    description: The substances used in the process.
+    todos: is it possible to have this be multivalued?
 
   sulfate:
     description: 'Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)'
