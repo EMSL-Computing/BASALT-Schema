@@ -1781,7 +1781,7 @@ classes:
       - label_text
       - concentration_ug_per_uL
       - total_amount_ug
-      - volume_uL
+      - volume_ul
       - sampled_portion
       - replicate
     slot_usage:

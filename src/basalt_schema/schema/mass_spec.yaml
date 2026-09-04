@@ -188,8 +188,6 @@ classes:
   MobilePhaseSubstance:
     description: A representation of a single chemical and its concentration used in a mobile phase in a chromatography protocol.
     slots:
-      - substance
-      - concentration
       - volume_ul
     attributes:
       id:
@@ -197,6 +195,9 @@ classes:
         range: uuid
       in_mobile_phase:
         range: MobilePhase
+      substance:
+        range: ChemicalEntityEnum
+        description: The chemical substance used in the mobile phase.
       concentration:
         description: Concentration of the chemical, string for now because LC protocols specify this using three different units at the same time and I don't want to make a slot for all of them.
         range: string

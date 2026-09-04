@@ -3371,7 +3371,7 @@ slots:
     description: Volume of the entity in milliliters
     range: float
 
-  volume_uL:
+  volume_ul:
     range: float
     description: Volume of the entity in microliters
 
