@@ -12,6 +12,7 @@ imports:
   - linkml:types
   - basalt_schema
   - slots
+  - enums
 
 classes:
 
@@ -136,6 +137,7 @@ classes:
       an input sample into multiple fractions for downstream LC-MS/MS.
     slots:
       - lims_protocol_instance_id
+      - uses_chromatography
       
   NormalizationProcess:
     is_a: SampleProcessing
@@ -167,11 +169,29 @@ classes:
       - final_mass_mg
       - final_vol_ml
 
-  PortionOfSubstance:
-    description: A portion of a substance with specific characteristics.
+  SubstancesUsedLink:
+    description: >-
+      A link between a SampleProcessing activity and a PortionOfSubstance that was used in it.
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      sample_processing_substance:
+        range: SampleProcessingSubstance
+        description: A substance that was used in the SampleProcessing activity.
+
+  SampleProcessingSubstance:
+    description: >-
+      A portion of a substance with specific characteristics, as used in a 
+      SampleProcessing activity. Multiple substances may be used in a single 
+      SampleProcessing activity, and the same substance may be used in multiple 
+      SampleProcessing activities.
     slots:
       - volume_ml
     attributes:
+      id:
+        identifier: true
+        range: uuid
       known_as:
         range: ChemicalEntityEnum
         description: Common name or identifier for the substance.

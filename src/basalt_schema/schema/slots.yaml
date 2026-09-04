@@ -3058,10 +3058,8 @@ slots:
       - make this inlined/multivalued?
 
   substances_used:
-    range: PortionOfSubstance
-    multivalued: true
-    description: The substances used in the process.
-    todos: is it possible to have this be multivalued?
+    range: SubstancesUsedLink
+    description: A reference to substances used in a SampleProcessing activity.
 
   sulfate:
     description: 'Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)'
@@ -3344,7 +3342,7 @@ slots:
     range: MassSpectrometryStandardRun
 
   uses_chromatography:
-    description: Points to a record of the chromatography used to introduce samples for the mass spectrometry run.
+    description: Points to a record of the chromatography configuration used to separate analytes.
     range: ChromatographyConfiguration
 
   uses_ms_configuration:
