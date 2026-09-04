@@ -750,3 +750,219 @@
     mass_range_min: 67
     acquisition_strategy: data_dependent_acquisition
     lims_protocol_instance_id: 12345
+
+- instrument_data:
+  - id: instrument_data_hilic_pos_1_uuid
+    name: 65432_1_EX_TOP_HILIC_pos_raw
+    description: Raw mass spectrometry data file from LCMS analysis of 65432_1_EX_TOP, HILIC positive mode.
+    project:
+    sampling_set: 1
+    core_section: TOP
+    sample_name: 65432_1_EX_TOP
+    s3_base_url:
+    s3_bucket: monet-lcms-raw
+    s3_key: 65432_1_EX/TOP/65432_1_EX_TOP_HILIC_pos.raw
+    filesize: 524288000
+    md5checksum: 9e2a1c7d4f6b8a3e0c5d7f1b2a4e6c8d
+    file_curie: s3:monet-lcms-raw/65432_1_EX/TOP/65432_1_EX_TOP_HILIC_pos.raw
+    alternative_identifiers:
+    compression_type:
+    file_type:
+    software_version:
+    produced_by_ms_run: datagen_hilic_pos_1_uuid
+    ms_raw_file_type: .raw
+    collection_mode: centroid
+
+  - id: instrument_data_hilic_neg_1_uuid
+    name: 65432_1_EX_TOP_HILIC_neg_raw
+    description: Raw mass spectrometry data file from LCMS analysis of 65432_1_EX_TOP, HILIC negative mode.
+    project:
+    sampling_set: 1
+    core_section: TOP
+    sample_name: 65432_1_EX_TOP
+    s3_base_url:
+    s3_bucket: monet-lcms-raw
+    s3_key: 65432_1_EX/TOP/65432_1_EX_TOP_HILIC_neg.raw
+    filesize: 518920192
+    md5checksum: 3b7f0e9a2d5c8b1f4e6a9c0d2b5f8a1e
+    file_curie: s3:monet-lcms-raw/65432_1_EX/TOP/65432_1_EX_TOP_HILIC_neg.raw
+    alternative_identifiers:
+    compression_type:
+    file_type:
+    software_version:
+    produced_by_ms_run: datagen_hilic_neg_1_uuid
+    ms_raw_file_type: .raw
+    collection_mode: centroid
+
+  - id: instrument_data_hilic_pos_2_uuid
+    name: 65432_1_EX_BTM_HILIC_pos_raw
+    description: Raw mass spectrometry data file from LCMS analysis of 65432_1_EX_BTM, HILIC positive mode.
+    project:
+    sampling_set: 1
+    core_section: BTM
+    sample_name: 65432_1_EX_BTM
+    s3_base_url:
+    s3_bucket: monet-lcms-raw
+    s3_key: 65432_1_EX/BTM/65432_1_EX_BTM_HILIC_pos.raw
+    filesize: 531628032
+    md5checksum: 7c4a1f8e3b6d9a0c2e5f7b1a4d6c8e0b
+    file_curie: s3:monet-lcms-raw/65432_1_EX/BTM/65432_1_EX_BTM_HILIC_pos.raw
+    alternative_identifiers:
+    compression_type:
+    file_type:
+    software_version:
+    produced_by_ms_run: datagen_hilic_pos_2_uuid
+    ms_raw_file_type: .raw
+    collection_mode: centroid
+
+  - id: instrument_data_hilic_neg_2_uuid
+    name: 65432_1_EX_BTM_HILIC_neg_raw
+    description: Raw mass spectrometry data file from LCMS analysis of 65432_1_EX_BTM, HILIC negative mode.
+    project:
+    sampling_set: 1
+    core_section: BTM
+    sample_name: 65432_1_EX_BTM
+    s3_base_url:
+    s3_bucket: monet-lcms-raw
+    s3_key: 65432_1_EX/BTM/65432_1_EX_BTM_HILIC_neg.raw
+    filesize: 509082624
+    md5checksum: 1d6b9e2a5c8f0b3d6a9c1e4f7b0d2a5c
+    file_curie: s3:monet-lcms-raw/65432_1_EX/BTM/65432_1_EX_BTM_HILIC_neg.raw
+    alternative_identifiers:
+    compression_type:
+    file_type:
+    software_version:
+    produced_by_ms_run: datagen_hilic_neg_2_uuid
+    ms_raw_file_type: .raw
+    collection_mode: centroid
+
+- data_processing_activities:
+  - id: ms_dataproc_hilic_pos_1_uuid
+    description: CoreMS LC metab workflow applied to 65432_1_EX_TOP_HILIC_pos raw data.
+    started_at_time: 2024-09-18T09:00:00Z
+    ended_at_time: 2024-09-18T09:15:00Z
+    software_url: https://github.com/EMSL-Computing/CoreMS
+    software_version: 2.0.0
+    software_poc:
+    execution_resource: emsl_tahoma
+    parent_workflow_id:
+    workflow_steps:
+    uses_calibration:
+    uses_raw_ms_data: instrument_data_hilic_pos_1_uuid
+    lims_task_instance_id:
+    metaproteomics_analysis_category:
+
+  - id: ms_dataproc_hilic_neg_1_uuid
+    description: CoreMS LC metab workflow applied to 65432_1_EX_TOP_HILIC_neg raw data.
+    started_at_time: 2024-09-18T09:15:00Z
+    ended_at_time: 2024-09-18T09:30:00Z
+    software_url: https://github.com/EMSL-Computing/CoreMS
+    software_version: 2.0.0
+    software_poc:
+    execution_resource: emsl_tahoma
+    parent_workflow_id:
+    workflow_steps:
+    uses_calibration:
+    uses_raw_ms_data: instrument_data_hilic_neg_1_uuid
+    lims_task_instance_id:
+    metaproteomics_analysis_category:
+
+  - id: ms_dataproc_hilic_pos_2_uuid
+    description: CoreMS LC metab workflow applied to 65432_1_EX_BTM_HILIC_pos raw data.
+    started_at_time: 2024-09-18T09:30:00Z
+    ended_at_time: 2024-09-18T09:45:00Z
+    software_url: https://github.com/EMSL-Computing/CoreMS
+    software_version: 2.0.0
+    software_poc:
+    execution_resource: emsl_tahoma
+    parent_workflow_id:
+    workflow_steps:
+    uses_calibration:
+    uses_raw_ms_data: instrument_data_hilic_pos_2_uuid
+    lims_task_instance_id:
+    metaproteomics_analysis_category:
+
+  - id: ms_dataproc_hilic_neg_2_uuid
+    description: CoreMS LC metab workflow applied to 65432_1_EX_BTM_HILIC_neg raw data.
+    started_at_time: 2024-09-18T09:45:00Z
+    ended_at_time: 2024-09-18T10:00:00Z
+    software_url: https://github.com/EMSL-Computing/CoreMS
+    software_version: 2.0.0
+    software_poc:
+    execution_resource: emsl_tahoma
+    parent_workflow_id:
+    workflow_steps:
+    uses_calibration:
+    uses_raw_ms_data: instrument_data_hilic_neg_2_uuid
+    lims_task_instance_id:
+    metaproteomics_analysis_category:
+
+- processed_data:
+  - id: molid_hilic_pos_1_uuid
+    name: 65432_1_EX_TOP_HILIC_pos_molecular_ids
+    description: Molecular formula identifications from LCMS analysis of 65432_1_EX_TOP, HILIC positive mode.
+    project:
+    sampling_set:
+    core_section: TOP
+    sample_name: 65432_1_EX
+    s3_base_url:
+    s3_bucket: monet-lcms-processed
+    s3_key: 65432_1_EX/TOP/65432_1_EX_TOP_HILIC_pos_identifications.csv
+    filesize: 2097152
+    md5checksum: 4f8a1d6b9e2c5a0d3f6b9c1e4a7d0b2f
+    summary_metrics:
+    lims_barcode:
+    sample_id: sample_name
+    results_from_ms_processing: ms_dataproc_hilic_pos_1_uuid
+
+  - id: molid_hilic_neg_1_uuid
+    name: 65432_1_EX_TOP_HILIC_neg_molecular_ids
+    description: Molecular formula identifications from LCMS analysis of 65432_1_EX_TOP, HILIC negative mode.
+    project:
+    sampling_set:
+    core_section: TOP
+    sample_name: 65432_1_EX
+    s3_base_url:
+    s3_bucket: monet-lcms-processed
+    s3_key: 65432_1_EX/TOP/65432_1_EX_TOP_HILIC_neg_identifications.csv
+    filesize: 1966080
+    md5checksum: 6a0c3e8b1d4f7a2c5e8b0d3f6a9c2e5b
+    summary_metrics:
+    lims_barcode:
+    sample_id: 65432_1_EX
+    results_from_ms_processing: ms_dataproc_hilic_neg_1_uuid
+
+  - id: molid_hilic_pos_2_uuid
+    name: 65432_1_EX_BTM_HILIC_pos_molecular_ids
+    description: Molecular formula identifications from LCMS analysis of 65432_1_EX_BTM, HILIC positive mode.
+    project:
+    sampling_set:
+    core_section: BTM
+    sample_name: 65432_1_EX
+    s3_base_url:
+    s3_bucket: monet-lcms-processed
+    s3_key: 65432_1_EX/BTM/65432_1_EX_BTM_HILIC_pos_identifications.csv
+    filesize: 2129920
+    md5checksum: 8c2e5b0d3f6a9c2e5b8d1f4a7c0e3b6d
+    summary_metrics:
+    lims_barcode:
+    sample_id: 65432_1_EX
+    results_from_ms_processing: ms_dataproc_hilic_pos_2_uuid
+
+  - id: molid_hilic_neg_2_uuid
+    name: 65432_1_EX_BTM_HILIC_neg_molecular_ids
+    description: Molecular formula identifications from LCMS analysis of 65432_1_EX_BTM, HILIC negative mode.
+    project:
+    sampling_set:
+    core_section: BTM
+    sample_name: 65432_1_EX
+    s3_base_url:
+    s3_bucket: monet-lcms-processed
+    s3_key: 65432_1_EX/BTM/65432_1_EX_BTM_HILIC_neg_identifications.csv
+    filesize: 1949696
+    md5checksum: 0e3b6d9c2f5a8b1e4d7a0c3f6b9e2c5a
+    summary_metrics:
+    lims_barcode:
+    sample_id: 65432_1_EX
+    results_from_ms_processing: ms_dataproc_hilic_neg_2_uuid
+
