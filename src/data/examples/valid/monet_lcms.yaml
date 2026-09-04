@@ -541,12 +541,179 @@
     column_dimensions: 2.1 x 100 mm
     column_manufacturer: Waters
     chromatography_type: liquid_chromatography
-    mobile_phases: 
     stationary_phase: BEH-HILIC
     temperature_celsius: 50
     duration_min: 12
     flow_rate_ul_min: 300
     injection_volume_ul: 3
+
+- mobile_phase_segments:
+  - id: mobile_phase_segment_1A_uuid
+    duration_min: 6
+    mobile_phase_substance: mobile_phase_A_uuid
+    mobile_phase_percentage: 5
+    flow_rate_ul_min:
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 1
+
+  - id: mobile_phase_segment_1B_uuid
+    name:
+    duration_min: 6
+    mobile_phase_substance: mobile_phase_B_uuid
+    mobile_phase_percentage: 95
+    flow_rate_ul_min:
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 1
+
+  - id: mobile_phase_segment_2A_uuid
+    name:
+    duration_min: 1
+    mobile_phase_substance: mobile_phase_A_uuid
+    mobile_phase_percentage: 63
+    flow_rate_ul_min:
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 2
+
+  - id: mobile_phase_segment_2B_uuid
+    name:
+    duration_min: 1
+    mobile_phase_substance: mobile_phase_B_uuid
+    mobile_phase_percentage: 37
+    flow_rate_ul_min:
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 2
+
+  - id: mobile_phase_segment_3A_uuid
+    name:
+    duration_min: 0.1
+    mobile_phase_substance: mobile_phase_A_uuid
+    mobile_phase_percentage: 63
+    flow_rate_ul_min:
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 3
+
+  - id: mobile_phase_segment_3B_uuid
+    name:
+    duration_min: 0.1
+    mobile_phase_substance: mobile_phase_B_uuid
+    mobile_phase_percentage: 37
+    flow_rate_ul_min:
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 3
+
+  - id: mobile_phase_segment_4A_uuid
+    name:
+    duration_min: 0.1
+    mobile_phase_substance: mobile_phase_A_uuid
+    mobile_phase_percentage: 5
+    flow_rate_ul_min: 500
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 4
+
+  - id: mobile_phase_segment_4B_uuid
+    name:
+    duration_min: 0.1
+    mobile_phase_substance: mobile_phase_B_uuid
+    mobile_phase_percentage: 95
+    flow_rate_ul_min: 500
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 4
+
+  - id: mobile_phase_segment_5A_uuid
+    name:
+    duration_min: 2.3
+    mobile_phase_substance: mobile_phase_A_uuid
+    mobile_phase_percentage: 5
+    flow_rate_ul_min: 500
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 5
+
+  - id: mobile_phase_segment_5B_uuid
+    name:
+    duration_min: 2.3
+    mobile_phase_substance: mobile_phase_B_uuid
+    mobile_phase_percentage: 95
+    flow_rate_ul_min: 500
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 5
+
+  - id: mobile_phase_segment_6A_uuid
+    name:
+    duration_min: 0.2
+    mobile_phase_substance: mobile_phase_A_uuid
+    mobile_phase_percentage: 5
+    flow_rate_ul_min: 300
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 6
+
+  - id: mobile_phase_segment_6B_uuid
+    name:
+    duration_min: 0.2
+    mobile_phase_substance: mobile_phase_B_uuid
+    mobile_phase_percentage: 95
+    flow_rate_ul_min: 300
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 6
+
+  - id: mobile_phase_segment_7A_uuid
+    name:
+    duration_min: 2.3
+    mobile_phase_substance: mobile_phase_A_uuid
+    mobile_phase_percentage: 5
+    flow_rate_ul_min: 300
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 7
+
+  - id: mobile_phase_segment_7B_uuid
+    name:
+    duration_min: 2.3
+    mobile_phase_substance: mobile_phase_B_uuid
+    mobile_phase_percentage: 95
+    flow_rate_ul_min: 300
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 7
+
+
+- mobile_phases:
+  - id: mobile_phase_A_uuid
+  - id: mobile_phase_B_uuid
+
+- mobile_phase_substances:
+  - id: substance_in_mobile_phase_A_1_uuid
+    substance: acetonitrile
+    concentration: 5
+    in_mobile_phase: mobile_phase_A_uuid
+
+  - id: substance_in_mobile_phase_A_2_uuid
+    substance: ammonium acetate
+    concentration: 10 mM
+    volume_ul:
+    in_mobile_phase: mobile_phase_A_uuid
+    
+  - id: substance_in_mobile_phase_A_3_uuid
+    substance: ammonium hydroxide
+    concentration: 0.05
+    volume_ul:
+    in_mobile_phase: mobile_phase_A_uuid
+
+  - id: substance_in_mobile_phase_A_4_uuid
+    substance: water
+    concentration: 95
+    volume_ul:
+    in_mobile_phase: mobile_phase_A_uuid
+
+  - id: substance_in_mobile_phase_B_1_uuid
+    substance: acetonitrile
+    concentration:
+    volume_ul:
+    in_mobile_phase: mobile_phase_B_uuid
+
+  - id: substance_in_mobile_phase_B_2_uuid
+    substance: ammonium hydroxide
+    concentration: 0.05
+    volume_ul:
+    in_mobile_phase: mobile_phase_B_uuid
+
 
 - mass_spectrometry_configurations:
   - id: ms_config_uuid1
@@ -583,6 +750,3 @@
     mass_range_min: 67
     acquisition_strategy: data_dependent_acquisition
     lims_protocol_instance_id: 12345
-
-
-
