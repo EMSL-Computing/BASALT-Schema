@@ -165,6 +165,26 @@ enums:
       north_west:
         aliases: ["north west"]
 
+  ChemicalConversionCategoryEnum:
+    permissible_values:
+      addition:
+        text: addition
+      substitution:
+        text: substitution
+      acid_base:
+        text: acid_base
+      reduction_oxidation:
+        text: reduction_oxidation
+      combustion:
+        text: combustion
+      decomposition:
+        text: decomposition
+      protease_cleavage:
+        text: protease_cleavage
+        description: an enzymatic cleavage which relies on an enzyme with protease activity
+          to act on proteins and to produce polypeptides (protein fragments).
+        meaning: OBI:0600056
+
   ChemicalEntityEnum:
     description: Common names or identifiers for chemical entities.
     permissible_values:
@@ -350,6 +370,22 @@ enums:
       orbital_shaker:
       thermomixer:
 
+  DigestionMethodEnum:
+    description: Named protein digestion methods used in sample preparation.
+    permissible_values:
+      urea:
+        text: urea
+        description: Urea-based in-solution digestion.
+      s_trap:
+        text: s_trap
+        description: S-Trap-based digestion.
+      fasp:
+        text: fasp
+        description: Filter-Aided Sample Preparation (FASP) digestion.
+      other:
+        text: other
+        description: Other digestion method not otherwise specified.
+
   DoiCategoryEnum:
     description: The authority, or organization, the DOI is associated with
     permissible_values:
@@ -460,6 +496,22 @@ enums:
       direct_infusion_autosampler:
         description: Direct infusion using an autosampler
 
+  EnrichmentTypeEnum:
+    description: Type of targeted peptide or protein enrichment performed.
+    permissible_values:
+      phosphopeptide:
+        text: phosphopeptide
+        description: Enrichment of phosphopeptides.
+      acetyl_peptide:
+        text: acetyl_peptide
+        description: Enrichment of acetylated peptides.
+      ubiquitin_peptide:
+        text: ubiquitin_peptide
+        description: Enrichment of ubiquitinated peptides or diGly-modified peptides.
+      other:
+        text: other
+        description: Other enrichment type not otherwise specified.
+
   ExecutionResourceEnum:
     description: The computing resource or facility where the processing was executed.
     permissible_values:
@@ -475,6 +527,25 @@ enums:
       emsl_tahoma:
         description: Environmental Molecular Sciences Laboratory Tahoma cluster
         aliases: [Tahoma]
+
+  ExtractionMethodEnum:
+    description: A short name for the extraction method applied to the sample.
+    permissible_values:
+      mplex:
+        text: mplex
+        description: MPLEx (Metabolite, Protein, and Lipid Extraction) protocol.
+      bead_beating:
+        text: bead_beating
+        description: Bead beating mechanical lysis and extraction.
+      tca_acetone_precipitation:
+        text: tca_acetone_precipitation
+        description: TCA/Acetone protein precipitation.
+      cell_lysis_s_trap:
+        text: cell_lysis_s_trap
+        description: Cell lysis and S-Trap extraction.
+      other:
+        text: other
+        description: Other extraction method not otherwise specified.
 
   FAOClassEnum:
     description: FAO soil classification system
@@ -688,6 +759,22 @@ enums:
         text: electron_ionization
         aliases:
         - EI
+
+  LabelingMethodEnum:
+    description: The chemical labeling strategy applied to peptides or proteins.
+    permissible_values:
+      tmt:
+        text: tmt
+        description: Tandem Mass Tag (TMT) isobaric labeling.
+      itraq:
+        text: itraq
+        description: iTRAQ isobaric labeling.
+      label_free:
+        text: label_free
+        description: No chemical labeling (label-free quantification).
+      other:
+        text: other
+        description: Other labeling method not otherwise specified.
 
   LandUseEnum:
     description: Land use classifications
@@ -1261,6 +1348,22 @@ enums:
     todos:
       - delete this or get a real list from NEXUS
 
+  NormalizationMethodEnum:
+    description: The strategy used to normalize sample amounts or intensities.
+    permissible_values:
+      equal_mass:
+        text: equal_mass
+        description: Normalization to an equal total protein mass per sample.
+      equal_volume:
+        text: equal_volume
+        description: Normalization by volume.
+      spike_in_standard:
+        text: spike_in_standard
+        description: Normalization using an internal spike-in standard.
+      other:
+        text: other
+        description: Other normalization approach not otherwise specified.
+
   NucleotideSequencingEnum:
     permissible_values:
       metagenome:
@@ -1426,6 +1529,19 @@ enums:
       EXTENDED:
       ACCEPTED:
       WITHDRAWN:
+
+  ProteinAssayTypeEnum:
+    description: Type of protein quantification assay performed.
+    permissible_values:
+      coomassie:
+        text: coomassie
+        description: Coomassie (Bradford-like) protein assay.
+      bca:
+        text: bca
+        description: Bicinchoninic Acid (BCA) protein assay.
+      other:
+        text: other
+        description: Other protein assay not otherwise specified.
 
   SampleBaseType:
     description: Base types for sample entities
@@ -1759,6 +1875,41 @@ enums:
         description: Protist strain
       other:
         description: Other organism type
+
+  SubstanceRoleEnum:
+    description: The role or function of the substance in the context of its use.
+    permissible_values:
+      buffer:
+        text: buffer
+        description: Maintains the pH of the solution within a specific range to stabilize
+          analytes or reactions.
+        meaning: CHEBI:35225
+      acid:
+        text: acid
+        description: Donates a proton or accepts an electron pair in a chemical reaction.
+        meaning: CHEBI:37527
+      base:
+        text: base
+        description: Accepts a proton or donates an electron pair in a chemical reaction.
+        meaning: CHEBI:22695
+      ms_proteolytic_enzyme:
+        text: ms_proteolytic_enzyme
+        description: Enzyme that catalyzes the hydrolysis of proteins and is used in mass
+          spectrometry based proteomics
+        meaning: MS:1002986
+      solvent:
+        text: solvent
+        description: Dissolves the sample or reagents to facilitate reactions or extraction.
+        meaning: CHEBI:46787
+      surfactant:
+        text: surfactant
+        description: Reduces surface tension and aids in the solubilization of substances.
+        meaning: CHEBI:35195
+      derivatizing_agent:
+        text: derivatizing_agent
+        description: Chemically modifies analytes to improve detection or separation.
+      solubilizing_agent:
+        text: solubilizing_agent
 
   SyntheticEnvironmentEnum:
     permissible_values:
