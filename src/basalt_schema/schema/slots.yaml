@@ -1449,10 +1449,9 @@ slots:
     range: string
     title: miscellaneous parameter
 
-  mobile_phases:
-    description: Description of the mobile phases used in the chromatography method (e.g., solvents, gradients)
-    range: MobilePhaseSegment
-    multivalued: true
+  mobile_phase:
+    description: Description of a mobile phase used in a chromatography method (e.g., solvents, gradients)
+    range: MobilePhase
 
   modification_method:
     description: |-

@@ -146,42 +146,60 @@ classes:
       - column_dimensions
       - column_manufacturer
       - chromatography_type
-      - mobile_phases
       - stationary_phase
       - temperature_celsius
       - duration_min
       - flow_rate_ul_min
       - injection_volume_ul
 
-  MobilePhaseSegment: #maps to NMDC MobilePhaseSegment array
-    description: A segment of the mobile phase used in chromatography during mass spectrometry.
-    slots:
-      - name
-      - duration_min
-    attributes:
-      id:
-        identifier: true
-        range: uuid
-      segment_order:
-        range: integer
-        description: The order of this segment in the overall chromatography protocol.
-      substance:
-        description: The name of the substance used in this mobile phase segment. 
-        range: string
-    todos: inheritance? substances_used modelling
-
   # Multivalued slots have to be converted to a join table for relational databases
   # ref https://linkml.io/linkml/howtos/recognize-structural-forms.html#id12
 
-  ChromatographyMobilePhaseJoin:
-    description: Join table for the multivalued slot 'mobile_phases' in ChromatographyConfiguration.
+  # A chromatography configuration can have multiple mobile phase segments
+  # Mobile phase segments are composed of multiple mobile phases at different concentrations
+  # A mobile phase segment has a duration
+  # A mobile phase may contain multiple chemicals
+
+  MobilePhaseSegment:
+    description: A segment of the mobile phase sequence used in a chromatographic separation.
     slots:
-      - chromatography_configuration
-      - mobile_phase_segment
+      - duration_min
+      - mobile_phase
+      - flow_rate_ul_min
+      - step_number
     attributes:
       id:
         identifier: true
         range: uuid
+      mobile_phase_percentage:
+        description: The proportion of the mobile phase segment in the overall mobile phase sequence, expressed as a percentage.
+        range: float
+      used_in_chromatography_config:
+        description: The chromatography configuration in which this mobile phase segment is used.
+        range: ChromatographyConfiguration
+    
+  MobilePhase:
+    description: Link between a set of substances used in a mobile phase, and the use of that mobile phase in a sequence of flow segments.
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+
+  MobilePhaseSubstance:
+    description: A representation of a single chemical and its concentration used in a mobile phase in a chromatography protocol.
+    slots:
+      - substance
+      - concentration
+      - volume_ul
+    attributes:
+      id:
+        identifier: true
+        range: uuid
+      in_mobile_phase:
+        range: MobilePhase
+      concentration:
+        description: Concentration of the chemical, string for now because LC protocols specify this using three different units at the same time and I don't want to make a slot for all of them.
+        range: string
 
   # ============================================================================
   # (NEW) MassSpectrometryDataProcessingActivity
