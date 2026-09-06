@@ -57,7 +57,7 @@ enums:
       - unknown
 
   AnalyteCategoryEnum:
-    description: bundling common terms for different omics types by biomolecule being analyzed
+    description: Bundling terms for common analytes
     permissible_values:
       dna:
         aliases:
@@ -94,6 +94,9 @@ enums:
       natural_organic_matter:
         aliases:
         - NOM
+      cmm:
+        aliases:
+        - critical minerals and materials
       unknown:
 
   AnnotationDatabaseEnum:
@@ -210,6 +213,13 @@ enums:
         comments:
         - A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan,
           leucine, tyrosine, and phenylalanine.
+      DTPA:
+        text: DTPA
+        aliases: 
+        - diethylenetriaminepentaacetic acid
+        meaning: CHEBI:35739
+        comments:
+        - A chelating agent used in extracting micronutrients from soil, full name diethylenetriaminepentaacetic acid.
       ethanol:
         text: ethanol
         meaning: CHEBI:16236

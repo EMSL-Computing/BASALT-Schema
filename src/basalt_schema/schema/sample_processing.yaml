@@ -81,6 +81,9 @@ enums:
       cell_lysis_s_trap:
         text: cell_lysis_s_trap
         description: Cell lysis and S-Trap extraction.
+      DTPA:
+        text: DTPA
+        description: Diethylenetriaminepentaacetic acid (DTPA) extraction method.
       other:
         text: other
         description: Other extraction method not otherwise specified.
@@ -265,6 +268,12 @@ classes:
       labeling_method:
         range: LabelingMethodEnum
         description: Chemical labeling strategy applied in this process (e.g., TMT).
+  
+  CMMDigestion:
+    is_a: SampleProcessing
+    description: >-
+      A microwave digestion process used in ICP-MS sample preparation for identification of trace elements.
+    todos: more details from Tom
 
   Extraction:
     is_a: SampleProcessing 
