@@ -698,6 +698,10 @@ enums:
         text: electron_ionization
         aliases:
         - EI
+      plasma_ionization:
+        text: plasma_ionization
+        aliases:
+        - PI
 
   LandUseEnum:
     description: Land use classifications
@@ -956,6 +960,14 @@ enums:
         aliases:
         - 7980A GC-MS
         - Agilent GC MS
+      agilent_7500:
+        text: agilent_7500
+        aliases:
+          - Agilent 7500 Series
+      thermo_element_xr:
+        text: thermo_element_xr
+        aliases:
+          - Thermo Element XR
       vortex_genie_2:
         text: vortex_genie_2
         aliases:
