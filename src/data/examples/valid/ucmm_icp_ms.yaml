@@ -1,0 +1,372 @@
+# Example of records representing an ICP-MS workflow for critical minerals
+# and materials (CMM) analysis of soil samples. (UCMM campaign)
+#
+# One starting soil sample is split into two subsamples: one goes through
+# microwave digestion (total recoverable elements), the other goes through
+# DTPA extraction (plant-available elements). Both resulting solutions are run
+# on the same ICP-MS instrument/configuration and processed independently,
+# producing one CMMDigestionProduct and one CMMExtractionProduct.
+
+- samples:
+  - id: sample_uuid
+    name: 65432_1_EX
+    description: Soil sample from corn field
+    emsl_activity: emsl_activity_uuid1
+    lims_barcode: 123456789
+    analysis_type: cmm
+    depth: 0-10 cm
+    lat_lon: 40, -105.5
+
+- sample_processing_activities:
+  - id: subsampling_digestion_uuid
+    name: 65432_1_EX_cmm_digestion_subsampling
+    description: Subsampling soil from 65432_1_EX for microwave acid digestion prior to ICP-MS analysis of total recoverable elements.
+    in_protocol: sample_processing_protocol_1_uuid
+    final_mass_mg: 250
+
+  - id: subsampling_extraction_uuid
+    name: 65432_1_EX_cmm_extraction_subsampling
+    description: Subsampling soil from 65432_1_EX for DTPA extraction prior to ICP-MS analysis of plant-available elements.
+    in_protocol: sample_processing_protocol_2_uuid
+    final_mass_mg: 2000
+
+  - id: cmm_digestion_uuid
+    name: 65432_1_EX_cmm_digestion
+    description: Microwave-assisted acid digestion of the 65432_1_EX soil subsample for total recoverable trace element analysis by ICP-MS.
+    in_protocol: sample_processing_protocol_1_uuid
+
+  - id: cmm_extraction_uuid
+    name: 65432_1_EX_cmm_dtpa_extraction
+    description: DTPA extraction of the 65432_1_EX soil subsample for plant-available trace element analysis by ICP-MS.
+    substances_used:
+      - known_as: DTPA
+        substance_role: solvent
+        volume_mL: 20
+      - known_as: water
+        substance_role: solvent
+        volume_mL: 5
+    starting_mass_mg: 2000 # soil mass subsampled above
+    extraction_target:
+      - cmm
+    extraction_method: DTPA
+    in_protocol: sample_processing_protocol_2_uuid
+
+- sample_processing_grouping:
+  - id: sample_processing_protocol_1_uuid
+    name: MONet CMM ICP-MS digestion protocol
+    description: MONet CMM ICP-MS digestion protocol
+    protocol_url: email_from_tom.com
+    protocol_version: 1.0.0
+
+  - id: sample_processing_protocol_2_uuid
+    name: MONet CMM ICP-MS extraction protocol
+    description: MONet CMM ICP-MS extraction protocol
+    protocol_url: email_from_tom.com
+    protocol_version: 1.0.0
+
+  - id: sample_processing_run_1_uuid
+    name: MONet CMM ICP-MS digestion prep
+    description: CMM ICP-MS digestion prep for 65432_1_EX soil sample
+
+  - id: sample_processing_run_2_uuid
+    name: MONet CMM ICP-MS extraction prep
+    description: CMM ICP-MS extraction prep for 65432_1_EX soil sample
+
+  - id: processing_sample_link_uuid_1
+    processing_id: subsampling_digestion_uuid
+    step_number: 1
+    role: input_sample
+    sample_id: sample_uuid
+    in_run: sample_processing_run_1_uuid
+
+  - id: processing_sample_link_uuid_2
+    processing_id: subsampling_digestion_uuid
+    step_number: 1
+    role: output_sample
+    sample_id: processed_sample_1_uuid
+    in_run: sample_processing_run_1_uuid
+
+  - id: processing_sample_link_uuid_3
+    processing_id: subsampling_extraction_uuid
+    step_number: 1
+    role: input_sample
+    sample_id: sample_uuid
+    in_run: sample_processing_run_2_uuid
+
+  - id: processing_sample_link_uuid_4
+    processing_id: subsampling_extraction_uuid
+    step_number: 1
+    role: output_sample
+    sample_id: processed_sample_2_uuid
+    in_run: sample_processing_run_2_uuid
+
+  - id: processing_sample_link_uuid_5
+    processing_id: cmm_digestion_uuid
+    step_number: 2
+    role: input_sample
+    sample_id: processed_sample_1_uuid
+    in_run: sample_processing_run_1_uuid
+
+  - id: processing_sample_link_uuid_6
+    processing_id: cmm_digestion_uuid
+    step_number: 2
+    role: output_sample
+    sample_id: processed_sample_3_uuid
+    in_run: sample_processing_run_1_uuid
+
+  - id: processing_sample_link_uuid_7
+    processing_id: cmm_extraction_uuid
+    step_number: 2
+    role: input_sample
+    sample_id: processed_sample_2_uuid
+    in_run: sample_processing_run_2_uuid
+
+  - id: processing_sample_link_uuid_8
+    processing_id: cmm_extraction_uuid
+    step_number: 2
+    role: output_sample
+    sample_id: processed_sample_4_uuid
+    in_run: sample_processing_run_2_uuid
+
+- processed_samples:
+  - id: processed_sample_1_uuid
+    name: 65432_1_EX_cmm_digestion_subsample
+    description: Soil subsample of 65432_1_EX set aside for microwave acid digestion.
+    emsl_activity:
+    lims_barcode:
+    storage_location:
+    label_text:
+    concentration_ug_per_uL:
+    total_amount_ug: 250000
+    volume_uL:
+    sampled_portion:
+    replicate:
+
+  - id: processed_sample_2_uuid
+    name: 65432_1_EX_cmm_extraction_subsample
+    description: Soil subsample of 65432_1_EX set aside for DTPA extraction.
+    emsl_activity:
+    lims_barcode:
+    storage_location:
+    label_text:
+    concentration_ug_per_uL:
+    total_amount_ug: 2000000
+    volume_uL:
+    sampled_portion:
+    replicate:
+
+  - id: processed_sample_3_uuid
+    name: 65432_1_EX_cmm_digestate
+    description: Microwave digestate of 65432_1_EX
+    emsl_activity:
+    lims_barcode:
+    storage_location: freezer01; rack01; box02; A1
+    label_text: 65432_1_EX_CMM_DIGEST_ICPMS
+    concentration_ug_per_uL:
+    total_amount_ug:
+    volume_uL: 50000
+    sampled_portion: 
+    replicate:
+
+  - id: processed_sample_4_uuid
+    name: 65432_1_EX_cmm_dtpa_extract
+    description: DTPA extract of 65432_1_EX
+    emsl_activity:
+    lims_barcode:
+    storage_location: freezer01; rack01; box02; A2
+    label_text: 65432_1_EX_CMM_DTPA_ICPMS
+    concentration_ug_per_uL:
+    total_amount_ug:
+    volume_uL: 20000
+    sampled_portion: supernatant
+    replicate:
+
+- data_generation_activities:
+  - id: datagen_digestion_icpms_uuid
+    name: 65432_1_EX_cmm_digestion_ICPMS
+    description: ICP-MS analysis of the 65432_1_EX acid digestate for total recoverable elements.
+    version: v1.0
+    sequence_order: 1
+    analyte_id: processed_sample_3_uuid
+    analyte_category: cmm
+    acquisition_start_time: 2024-09-17T10:00:00Z
+    acquisition_end_time: 2024-09-17T10:12:00Z
+    instrument_operator: person_uuid
+    protocol_url: email_from_tom.com
+    instrument_used: instrument_uuid
+    uses_ms_configuration: icp_ms_config_uuid
+
+  - id: datagen_extraction_icpms_uuid
+    name: 65432_1_EX_cmm_dtpa_extract_ICPMS
+    description: ICP-MS analysis of the 65432_1_EX DTPA extract for plant-available elements.
+    version: v1.0
+    sequence_order: 2
+    analyte_id: processed_sample_4_uuid
+    analyte_category: cmm
+    acquisition_start_time: 2024-09-17T10:20:00Z
+    acquisition_end_time: 2024-09-17T10:32:00Z
+    instrument_operator: person_uuid
+    protocol_url: email_from_tom.com
+    instrument_used: instrument_uuid
+    uses_ms_configuration: icp_ms_config_uuid
+
+- mass_spectrometry_configurations:
+  - id: icp_ms_config_uuid
+    name: MONet_ICPMS_quadrupole_standard
+    description: Quadrupole ICP-MS configuration used for MONet CMM digestate and DTPA extract runs.
+    injection: nebulizer
+    ionization: plasma_ionization
+    fragmentation:
+    polarity: positive # accurate: ICP-MS detects positively ionized atoms
+    resolution: low # accurate: quadrupole ICP-MS operates at unit mass resolution
+    dd_ms2_resolution: 
+    loop_count: 
+    iat: 
+    fid:
+    mass_range_max: 
+    mass_range_min: 
+    acquisition_strategy: full_scan_only
+    lims_protocol_instance_id: 34567
+
+- instrument_data:
+  - id: instrument_data_digestion_uuid
+    name: 65432_1_EX_digestion_ICPMS_raw
+    description: Raw ICP-MS data file from analysis of the 65432_1_EX digestate.
+    project:
+    sampling_set: 1
+    core_section:
+    sample_name: 65432_1_EX
+    s3_base_url:
+    s3_bucket: monet-icpms-raw
+    s3_key: 65432_1_EX/65432_1_EX_cmm_digestion_ICPMS.d
+    filesize: 10485760
+    md5checksum: a1b2c3d4e5f60718293a4b5c6d7e8f90
+    file_curie: s3:monet-icpms-raw/65432_1_EX/65432_1_EX_cmm_digestion_ICPMS.d
+    alternative_identifiers:
+    compression_type:
+    file_type:
+    software_version:
+    produced_by_ms_run: datagen_digestion_icpms_uuid
+    ms_raw_file_type: .raw
+    collection_mode: full_profile
+
+  - id: instrument_data_extraction_uuid
+    name: 65432_1_EX_extract_ICPMS_raw
+    description: Raw ICP-MS data file from analysis of the 65432_1_EX DTPA extract.
+    project:
+    sampling_set: 1
+    core_section:
+    sample_name: 65432_1_EX
+    s3_base_url:
+    s3_bucket: monet-icpms-raw
+    s3_key: 65432_1_EX/65432_1_EX_cmm_dtpa_extract_ICPMS.d
+    filesize: 10223616
+    md5checksum: 0b1c2d3e4f5061728394a5b6c7d8e9f0
+    file_curie: s3:monet-icpms-raw/65432_1_EX/65432_1_EX_cmm_dtpa_extract_ICPMS.d
+    alternative_identifiers:
+    compression_type:
+    file_type:
+    software_version:
+    produced_by_ms_run: datagen_extraction_icpms_uuid
+    ms_raw_file_type: .raw
+    collection_mode: full_profile
+
+- data_processing_activities:
+  - id: ms_dataproc_digestion_uuid
+    description: Instrument software quantitation workflow applied to 65432_1_EX_cmm_digestion_ICPMS raw data, using an external multi-element calibration curve.
+    started_at_time: 2024-09-18T09:00:00Z
+    ended_at_time: 2024-09-18T09:10:00Z
+    software_url:
+    software_version: 4.3
+    software_poc:
+    execution_resource: emsl_tahoma
+    parent_workflow_id:
+    workflow_steps:
+    uses_calibration:
+    uses_raw_ms_data: instrument_data_digestion_uuid
+    lims_task_instance_id:
+    metaproteomics_analysis_category:
+
+  - id: ms_dataproc_extraction_uuid
+    description: Instrument software quantitation workflow applied to 65432_1_EX_cmm_dtpa_extract_ICPMS raw data, using an external multi-element calibration curve.
+    started_at_time: 2024-09-18T09:10:00Z
+    ended_at_time: 2024-09-18T09:20:00Z
+    software_url:
+    software_version: 4.3
+    software_poc:
+    execution_resource: emsl_tahoma
+    parent_workflow_id:
+    workflow_steps:
+    uses_calibration:
+    uses_raw_ms_data: instrument_data_extraction_uuid
+    lims_task_instance_id:
+    metaproteomics_analysis_category:
+
+- processed_data:
+  - id: cmm_digestion_product_uuid
+    name: 65432_1_EX_cmm_digestion_product
+    description: Total recoverable elemental concentrations from ICP-MS analysis of the 65432_1_EX acid digestate.
+    project:
+    sampling_set: 1
+    core_section:
+    sample_name: 65432_1_EX
+    s3_base_url:
+    s3_bucket:
+    s3_key:
+    filesize:
+    md5checksum:
+    summary_metrics:
+    lims_barcode:
+    sample_id: sample_uuid
+    results_from_ms_processing: ms_dataproc_digestion_uuid
+    measure_type: Single
+    Al_ug_per_g: 45200
+    Ca_ug_per_g: 8300
+    Fe_ug_per_g: 31500
+    K_ug_per_g: 14800
+    Mg_ug_per_g: 6100
+    Mn_ug_per_g: 640
+    Zn_ug_per_g: 78
+    Cu_ug_per_g: 22
+    flag_Al:
+    flag_Ca:
+    flag_Fe:
+    flag_K:
+    flag_Mg:
+    flag_Mn:
+    flag_Zn:
+    flag_Cu:
+
+  - id: cmm_extraction_product_uuid
+    name: 65432_1_EX_cmm_extraction_product
+    description: DTPA-extractable (plant-available) elemental concentrations from ICP-MS analysis of the 65432_1_EX DTPA extract.
+    project:
+    sampling_set: 1
+    core_section:
+    sample_name: 65432_1_EX
+    s3_base_url:
+    s3_bucket:
+    s3_key:
+    filesize:
+    md5checksum:
+    summary_metrics:
+    lims_barcode:
+    sample_id: sample_uuid
+    results_from_ms_processing: ms_dataproc_extraction_uuid
+    measure_type: Single
+    Al_ug_per_g: 8.5
+    Ca_ug_per_g: 1180
+    Fe_ug_per_g: 44.6
+    K_ug_per_g: 92
+    Mg_ug_per_g: 205
+    Mn_ug_per_g: 11.8
+    Zn_ug_per_g: 3.1
+    Cu_ug_per_g: 1.7
+    flag_Al:
+    flag_Ca:
+    flag_Fe:
+    flag_K:
+    flag_Mg:
+    flag_Mn:
+    flag_Zn:
+    flag_Cu:
