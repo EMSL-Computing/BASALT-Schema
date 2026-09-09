@@ -16,17 +16,19 @@
 # - Renamed to XCT for consistency.
 #
 # Attribute groupings for readability:
-#   ROI geometry          roi_volume_voxel, voxel_size, connected_pores
-#   Pore diameter stats   pore_diameter_min/max/mean/median/variance
-#   Pore volume           pore_volume_mean, total_pore_volume
-#   Flow (x/y/z axes)    permeability, flow_rate, tortuosity per axis
+#   ROI geometry          roi_x_voxel, roi_y_voxel, roi_z_voxel, voxel_size_mm_per_voxel
+#   Porosity              porosity_percent, connected_pores_fraction, pore_connectivity_percent
+#   Pore diameter stats   pore_equivalent_diameter_min/max/mean/median/variance
+#   Pore volume           pore_volume_min/max/mean/median/variance
+#   Pore area             pore_area_min/max/mean/median/variance
+#   Flow (x/y/z axes)     permeability, flow_rate, tortuosity per axis
 #
 # Relationship to broader schema:
-# - analysis_type key in LIMSProcessedData envelope: "xct" (to be confirmed)
+# - analysis_type key in LIMSProcessedData envelope: "xct"
 # - xray_computed_tomography_method exists in routemethod enum (enums.yaml)
 # - Proposal_ID, sampling_set, core_section inherited from LIMSProcessedData envelope
 #
-# Last Updated:  2026-03-16
+# Last Updated:  2026-09-09
 # =============================================================================
 
 id: https://emsl-computing.github.io/BASALT-Schema/xct
@@ -36,7 +38,7 @@ description: |-
   Validation schema for XCTProduct   pore geometry statistics and
   computed flow properties derived from X-ray computed tomography (micro-CT)
   of intact soil cores.
-  
+
   Pore metrics are computed from image segmentation of the 3D volume.
   Flow properties (permeability, tortuosity) are computed via lattice-Boltzmann
   or similar simulation on the segmented pore network.
@@ -79,7 +81,7 @@ classes:
     description: |-
       Pore geometry and computed flow properties from XCT analysis of a soil core section.
       One record per core section.
-      
+
       Proposal_ID, sampling_set, and core_section are inherited from the
       LIMSProcessedData envelope (see lims_processed_data_schema.yaml).
     slots:
@@ -95,26 +97,53 @@ classes:
       # ROI Geometry
       # -----------------------------------------------------------------------
 
-      roi_volume_voxel:
+      roi_x_voxel:
         description: |-
-          Total volume of the region of interest (ROI) in voxels.
-          The ROI is the sub-volume of the full scan used for pore analysis.
-          TODO: confirm voxel count unit vs. physical volume unit with instrument team.
+          Number of voxels in X direction of the region of interest (ROI).
+          Previously roi_volume_voxel.
         range: double
         required: false
 
-      voxel_size:
+      roi_y_voxel:
         description: |-
-          Physical size of a single voxel (micrometer).
+          Number of voxels in Y direction of the region of interest (ROI).
+        range: double
+        required: false
+
+      roi_z_voxel:
+        description: |-
+          Number of voxels in Z direction of the region of interest (ROI).
+        range: double
+        required: false
+
+      voxel_size_mm_per_voxel:
+        description: |-
+          Linear dimension of a single voxel (mm/voxel).
           Sets the spatial resolution of all subsequent measurements.
-          TODO: confirm unit (micrometer assumed).
+          Previously voxel_size.
         range: double
         required: false
 
-      connected_pores:
+      # -----------------------------------------------------------------------
+      # Porosity
+      # -----------------------------------------------------------------------
+
+      porosity_percent:
         description: |-
-          Number of connected (percolating) pore bodies identified in the ROI.
-          Connectivity is determined by the pore network extraction algorithm.
+          Percentage of total pore volume to the total volume of the ROI (%).
+          Previously total_pore_volume.
+        range: double
+        required: false
+
+      connected_pores_fraction:
+        description: |-
+          Fraction of connected pore volume out of total volume (unitless).
+        range: double
+        required: false
+
+      pore_connectivity_percent:
+        description: |-
+          Percentage of connected pore volume to all pore volume (%).
         range: double
         required: false
 
@@ -122,38 +151,38 @@ classes:
       # Pore Diameter Statistics
       # -----------------------------------------------------------------------
 
-      pore_diameter_min:
+      pore_equivalent_diameter_min_mm:
         description: |-
-          Minimum pore diameter in the segmented pore network (micrometer).
-          TODO: confirm unit.
+          Minimum equivalent pore diameter in the segmented pore network (mm).
+          Previously pore_diameter_min.
         range: double
         required: false
 
-      pore_diameter_max:
+      pore_equivalent_diameter_max_mm:
         description: |-
-          Maximum pore diameter in the segmented pore network (micrometer).
-          TODO: confirm unit.
+          Maximum equivalent pore diameter in the segmented pore network (mm).
+          Previously pore_diameter_max.
         range: double
         required: false
 
-      pore_diameter_mean:
+      pore_equivalent_diameter_mean_mm:
         description: |-
-          Mean pore diameter across all segmented pores (micrometer).
-          TODO: confirm unit.
+          Mean equivalent pore diameter across all segmented pores (mm).
+          Previously pore_diameter_mean.
         range: double
         required: false
 
-      pore_diameter_median:
+      pore_equivalent_diameter_median_mm:
         description: |-
-          Median pore diameter across all segmented pores (micrometer).
-          TODO: confirm unit.
+          Median equivalent pore diameter across all segmented pores (mm).
+          Previously pore_diameter_median.
         range: double
         required: false
 
-      pore_diameter_variance:
+      pore_equivalent_diameter_variance_mm2:
         description: |-
-          Variance of pore diameter across all segmented pores (micrometer²).
-          TODO: confirm unit.
+          Variance of equivalent pore diameter across all segmented pores (mm^2).
+          Previously pore_diameter_variance.
         range: double
         required: false
 
@@ -161,18 +190,68 @@ classes:
       # Pore Volume
       # -----------------------------------------------------------------------
 
-      pore_volume_mean:
+      pore_volume_min_mm3:
         description: |-
-          Mean pore body volume across all segmented pores (voxels or micrometer³).
-          TODO: confirm unit.
+          Minimum volume of pores (mm^3).
         range: double
         required: false
 
-      total_pore_volume:
+      pore_volume_max_mm3:
         description: |-
-          Total pore volume in the ROI (voxels or micrometer³).
-          Equivalent to porosity x ROI volume.
-          TODO: confirm unit.
+          Maximum volume of pores (mm^3).
+        range: double
+        required: false
+
+      pore_volume_mean_mm3:
+        description: |-
+          Mean volume of pores (mm^3).
+          Previously pore_volume_mean.
+        range: double
+        required: false
+
+      pore_volume_median_mm3:
+        description: |-
+          Median volume of pores (mm^3).
+        range: double
+        required: false
+
+      pore_volume_variance_mm6:
+        description: |-
+          Variance of volume of pores (mm^6).
+        range: double
+        required: false
+
+      # -----------------------------------------------------------------------
+      # Pore Area
+      # -----------------------------------------------------------------------
+
+      pore_area_min_mm2:
+        description: |-
+          Minimum area of pores (mm^2).
+        range: double
+        required: false
+
+      pore_area_max_mm2:
+        description: |-
+          Maximum area of pores (mm^2).
+        range: double
+        required: false
+
+      pore_area_mean_mm2:
+        description: |-
+          Mean area of pores (mm^2).
+        range: double
+        required: false
+
+      pore_area_median_mm2:
+        description: |-
+          Median area of pores (mm^2).
+        range: double
+        required: false
+
+      pore_area_variance_mm4:
+        description: |-
+          Variance of area of pores (mm^4).
         range: double
         required: false
 
@@ -180,26 +259,23 @@ classes:
       # Flow Properties   X axis
       # -----------------------------------------------------------------------
 
-      permeability_x:
+      permeability_x_um2:
         description: |-
-          Computed permeability in the X direction (mD or m^2).
-          Derived from lattice-Boltzmann or similar flow simulation.
-          TODO: confirm unit with instrument/simulation team.
+          Absolute permeability from pore network model in X direction (um^2).
+          Previously permeability_x.
         range: double
         required: false
 
-      flow_rate_x:
+      flow_rate_x_mm3_per_sec:
         description: |-
-          Simulated flow rate in the X direction.
-          TODO: confirm unit.
+          Total flow rate from pore network model in X direction (mm^3/s).
+          Previously flow_rate_x.
         range: double
         required: false
 
       tortuosity_x:
         description: |-
-          Pore network tortuosity in the X direction (dimensionless).
-          Ratio of actual flow path length to straight-line distance.
-          Minimum value: 1.0
+          Tortuosity from pore network model in X direction (unitless).
         range: double
         required: false
 
@@ -207,23 +283,23 @@ classes:
       # Flow Properties   Y axis
       # -----------------------------------------------------------------------
 
-      permeability_y:
+      permeability_y_um2:
         description: |-
-          Computed permeability in the Y direction.
-          TODO: confirm unit.
+          Absolute permeability from pore network model in Y direction (um^2).
+          Previously permeability_y.
         range: double
         required: false
 
-      flow_rate_y:
+      flow_rate_y_mm3_per_sec:
         description: |-
-          Simulated flow rate in the Y direction.
-          TODO: confirm unit.
+          Total flow rate from pore network model in Y direction (mm^3/s).
+          Previously flow_rate_y.
         range: double
         required: false
 
       tortuosity_y:
         description: |-
-          Pore network tortuosity in the Y direction (dimensionless).
+          Tortuosity from pore network model in Y direction (unitless).
         range: double
         required: false
 
@@ -231,23 +307,23 @@ classes:
       # Flow Properties   Z axis
       # -----------------------------------------------------------------------
 
-      permeability_z:
+      permeability_z_um2:
         description: |-
-          Computed permeability in the Z direction (typically vertical in core).
-          TODO: confirm unit.
+          Absolute permeability from pore network model in Z direction (um^2).
+          Previously permeability_z.
         range: double
         required: false
 
-      flow_rate_z:
+      flow_rate_z_mm3_per_sec:
         description: |-
-          Simulated flow rate in the Z direction.
-          TODO: confirm unit.
+          Total flow rate from pore network model in Z direction (mm^3/s).
+          Previously flow_rate_z.
         range: double
         required: false
 
       tortuosity_z:
         description: |-
-          Pore network tortuosity in the Z direction (dimensionless).
+          Tortuosity from pore network model in Z direction (unitless).
         range: double
         required: false
 
