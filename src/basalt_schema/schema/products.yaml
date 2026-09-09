@@ -301,9 +301,9 @@ classes:
       flag:
         range: ProcessedDataFlag
 
-  TomographyProduct:
+  XCTProduct:
     description: |-
-      Soil tomography analysis product, typically derived via X-ray computed tomography (XCT) or similar instrument.
+      X-ray computed tomography (XCT) analysis product for pore geometry and flow properties of intact soil cores.
     is_a: ProcessedData
     slots:
       - measure_type
