@@ -433,6 +433,9 @@ classes:
       step_number:
         range: integer
         required: true
+      sample_id:
+        range: Sample
+        required: true
       role:
         range: SampleRole
         required: true

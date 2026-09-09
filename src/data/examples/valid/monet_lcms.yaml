@@ -1,0 +1,968 @@
+# Example of records representing LCMS analysis for MONet samples
+# Based on information provided in https://pnnl.sharepoint.com/sites/EMSL/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FEMSL%2FShared%20Documents%2FManagement%20%26%20Operations%2FUser%20Program%2FMONet%2FLC%2DMS%2FFinal%20MONet%20protocols
+
+- samples:
+  - id: sample_uuid
+    name: 65432_1_EX
+    description: Soil sample from corn field
+    emsl_activity: emsl_activity_uuid1
+    lims_barcode: 123456789
+    analysis_type: metabolome
+    depth: 0-10 cm
+    lat_lon: 40, -105.5
+
+- sample_processing_activities:
+  - id: subsampling_process_1_uuid
+    name: 65432_1_EX_TOP_soil_subsampling
+    description: Subsampling soil from the top part of core 65432_1_EX for LCMS analysis.
+    in_protocol: sample_processing_protocol_uuid
+    final_mass_mg: 6000
+
+  - id: subsampling_process_2_uuid
+    name: 65432_1_EX_BTM_soil_subsampling
+    description: Subsampling soil from the bottom part of core 65432_1_EX for LCMS analysis.
+    in_protocol: sample_processing_protocol_uuid
+    final_mass_mg: 6000
+
+  - id: extraction_1_uuid
+    name: 65432_1_EX_TOP_lcms_extraction
+    description: Extraction of metabolites from 65432_1_EX_TOP for LCMS analysis.
+    substances_used: 
+      - known_as: water
+        substance_role: solvent
+        volume_ml: 6
+      - known_as: methanol
+        substance_role: solvent
+        volume_ml: 24
+    starting_mass_mg: 6000 # soil mass subsampled above
+    extraction_target: metabolite
+    extraction_method: other
+    in_protocol: sample_processing_protocol_uuid
+
+  - id: extraction_2_uuid
+    name: 65432_1_EX_BTM_lcms_extraction
+    description: Extraction of metabolites from 65432_1_EX_BTM for LCMS analysis.
+    substances_used: 
+      - known_as: water
+        substance_role: solvent
+        volume_ml: 6
+      - known_as: methanol
+        substance_role: solvent
+        volume_ml: 24
+    starting_mass_mg: 6000 # soil mass subsampled above
+    extraction_target: metabolite
+    extraction_method: other
+    in_protocol: sample_processing_protocol_uuid
+
+  - id: filtration_process_1_uuid
+    name: 65432_1_EX_TOP_filter_extract
+    description: Filtration of H2O/MeOH extracted metabolites from 65432_1_EX_TOP
+    container_size_ml: 
+    container_type: tube
+    filter_material: polyethersulfone
+    filter_pore_size_um: 0.45
+    is_pressurized: true
+    separation_method: syringe filtration
+    volume_ml: 30
+    in_protocol: sample_processing_protocol_uuid
+
+  - id: filtration_process_2_uuid
+    name: 65432_1_EX_BTM_filter_extract
+    description: Filtration of H2O/MeOH extracted metabolites from 65432_1_EX_BTM
+    container_size_ml: 
+    container_type: tube
+    filter_material: polyethersulfone
+    filter_pore_size_um: 0.45
+    is_pressurized: true
+    separation_method: syringe filtration
+    volume_ml: 30
+    in_protocol: sample_processing_protocol_uuid
+
+  - id: subsampling_process_3_uuid
+    name: 65432_1_EX_TOP_extract_subsampling
+    description: Subsampling of H2O/MeOH extracted metabolites from 65432_1_EX_TOP
+    in_protocol: sample_processing_protocol_uuid
+    final_mass_mg:
+    final_vol_ml: 15
+
+  - id: subsampling_process_4_uuid
+    name: 65432_1_EX_BTM_extract_subsampling
+    description: Subsampling of H2O/MeOH extracted metabolites from 65432_1_EX_BTM
+    in_protocol: sample_processing_protocol_uuid
+    final_mass_mg:
+    final_vol_ml: 15
+
+  - id: resuspension_process_1_uuid
+    name: 65432_1_EX_TOP_resusp
+    description: Resuspension of 65432_1_TOP extracts for LCMS analysis.
+    in_protocol: sample_processing_protocol_uuid
+    final_mass_mg:
+    final_vol_ml: 0.1
+
+  - id: resuspension_process_2_uuid
+    name: 65432_1_EX_BTM_resusp
+    description: Resuspension of 65432_1_BTM extracts for LCMS analysis.
+    in_protocol: sample_processing_protocol_uuid
+    final_mass_mg:
+    final_vol_ml: 0.1
+    substances_used:
+      - known_as: water
+        substance_role: solvent
+        volume_ml: 0.1
+
+  - id: filtration_process_3_uuid
+    name: 65432_1_EX_TOP_resusp_filter
+    description: Filtration of resuspended 65432_1_TOP extracts before instrument loading.
+    container_size_ml: 
+    container_type: 96-well filter plate
+    filter_material: PTFE
+    filter_pore_size_um: 0.2
+    is_pressurized: true
+    separation_method: plate vacuum
+    volume_ml: 0.1
+    in_protocol: sample_processing_protocol_uuid
+
+  - id: filtration_process_4_uuid
+    name: 65432_1_EX_BTM_resusp_filter
+    description: Filtration of resuspended 65432_1_BTM extracts before instrument loading.
+    container_size_ml: 
+    container_type: 96-well filter plate
+    filter_material: PTFE
+    filter_pore_size_um: 0.2
+    is_pressurized: true
+    separation_method: plate vacuum
+    volume_ml: 0.1
+    in_protocol: sample_processing_protocol_uuid
+
+- sample_processing_grouping:
+  - id: sample_processing_protocol_uuid
+    name: MONet LCMS prep protocol
+    description: MONet LCMS prep protocol for soil samples
+    protocol_url: https://pnnl.sharepoint.com/:w:/s/EMSL/IQC3cnHVH-HFTYbDbMLXmcq2AQGlV-NsKcGE74osOi21crM?e=QKUDA0
+    protocol_version: 1.0.0
+
+  - id: sample_processing_run_uuid
+    name: MONet LCMS prep protocol run 1
+    description: MONet LCMS prep protocol run 1 for sample 65432_1_EX
+
+  - id: processing_sample_link_uuid_1
+    processing_id: subsampling_process_1_uuid
+    step_number: 1
+    role: input_sample
+    sample_id: sample_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_2
+    processing_id: subsampling_process_1_uuid
+    step_number: 1
+    role: output_sample
+    sample_id: processed_sample_1_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_3
+    processing_id: subsampling_process_2_uuid
+    step_number: 1
+    role: input_sample
+    sample_id: sample_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_4
+    processing_id: subsampling_process_2_uuid
+    step_number: 1
+    role: output_sample
+    sample_id: processed_sample_2_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_5
+    processing_id: extraction_1_uuid
+    step_number: 2
+    role: input_sample
+    sample_id: processed_sample_1_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_6
+    processing_id: extraction_1_uuid
+    step_number: 2
+    role: output_sample
+    sample_id: processed_sample_3_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_7
+    processing_id: extraction_2_uuid
+    step_number: 2
+    role: input_sample
+    sample_id: processed_sample_2_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_8
+    processing_id: extraction_2_uuid
+    step_number: 2
+    role: output_sample
+    sample_id: processed_sample_4_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_9
+    processing_id: filtration_process_1_uuid
+    step_number: 3
+    role: input_sample
+    sample_id: processed_sample_3_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_10
+    processing_id: filtration_process_1_uuid
+    step_number: 3
+    role: output_sample
+    sample_id: processed_sample_5_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_11
+    processing_id: filtration_process_2_uuid
+    step_number: 3
+    role: input_sample
+    sample_id: processed_sample_4_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_12
+    processing_id: filtration_process_2_uuid
+    step_number: 3
+    role: output_sample
+    sample_id: processed_sample_6_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_13
+    processing_id: subsampling_process_3_uuid
+    step_number: 4
+    role: input_sample
+    sample_id: processed_sample_5_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_14
+    processing_id: subsampling_process_3_uuid
+    step_number: 4
+    role: output_sample
+    sample_id: processed_sample_7_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_15
+    processing_id: subsampling_process_4_uuid
+    step_number: 4
+    role: input_sample
+    sample_id: processed_sample_6_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_16
+    processing_id: subsampling_process_4_uuid
+    step_number: 4
+    role: output_sample
+    sample_id: processed_sample_8_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_17
+    processing_id: resuspension_process_1_uuid
+    step_number: 5
+    role: input_sample
+    sample_id: processed_sample_7_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_18
+    processing_id: resuspension_process_1_uuid
+    step_number: 5
+    role: output_sample
+    sample_id: processed_sample_9_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_19
+    processing_id: resuspension_process_2_uuid
+    step_number: 5
+    role: input_sample
+    sample_id: processed_sample_8_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_20
+    processing_id: resuspension_process_2_uuid
+    step_number: 5
+    role: output_sample
+    sample_id: processed_sample_10_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_21
+    processing_id: filtration_process_3_uuid
+    step_number: 6
+    role: input_sample
+    sample_id: processed_sample_9_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_22
+    processing_id: filtration_process_3_uuid
+    step_number: 6
+    role: output_sample
+    sample_id: processed_sample_11_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_23
+    processing_id: filtration_process_4_uuid
+    step_number: 6
+    role: input_sample
+    sample_id: processed_sample_10_uuid
+    in_run: sample_processing_run_uuid
+
+  - id: processing_sample_link_uuid_24
+    processing_id: filtration_process_4_uuid
+    step_number: 6
+    role: output_sample
+    sample_id: processed_sample_12_uuid
+    in_run: sample_processing_run_uuid
+
+
+- processed_samples:
+  - id: processed_sample_1_uuid
+    name: 65432_1_TOP_soil_subsample
+    description: Subsample of soil from the top of 65432_1_EX
+    emsl_activity:
+    lims_barcode:
+    storage_location:
+    label_text:
+    concentration_ug_per_uL:
+    total_amount_ug: 6000000
+    volume_uL:
+    sampled_portion:
+    replicate:
+
+  - id: processed_sample_2_uuid
+    name: 65432_1_BTM_soil_subsample
+    description: Subsample of soil from the bottom of 65432_1_EX
+    emsl_activity:
+    lims_barcode:
+    storage_location:
+    label_text:
+    concentration_ug_per_uL:
+    total_amount_ug: 6000000
+    volume_uL:
+    sampled_portion:
+    replicate:
+
+  - id: processed_sample_3_uuid
+    name: 65432_1_EX_TOP_lcms_extract
+    description: Extracted metabolites from 65432_1_EX_TOP
+    emsl_activity:
+    lims_barcode:
+    storage_location:
+    label_text:
+    concentration_ug_per_uL:
+    total_amount_ug:
+    volume_uL: 30000
+    sampled_portion: methanol_layer
+    replicate:
+
+  - id: processed_sample_4_uuid
+    name: 65432_1_EX_BTM_lcms_extract
+    description: Extracted metabolites from 65432_1_EX_BTM
+    emsl_activity:
+    lims_barcode:
+    storage_location:
+    label_text:
+    concentration_ug_per_uL:
+    total_amount_ug:
+    volume_uL: 30000
+    sampled_portion: methanol_layer
+    replicate:
+
+  - id: processed_sample_5_uuid
+    name: 65432_1_EX_TOP_filtered_extract
+    description: Filtered H2O/MeOH extract from 65432_1_EX_TOP
+    emsl_activity:
+    lims_barcode:
+    storage_location: 
+    label_text:
+    concentration_ug_per_uL:
+    total_amount_ug:
+    volume_uL: 30000
+    sampled_portion: methanol_layer
+    replicate:
+
+  - id: processed_sample_6_uuid
+    name: 65432_1_EX_BTM_filtered_extract
+    description: Filtered H2O/MeOH extract from 65432_1_EX_BTM
+    emsl_activity:
+    lims_barcode:
+    storage_location:
+    label_text:
+    concentration_ug_per_uL:
+    total_amount_ug:
+    volume_uL: 30000
+    sampled_portion: methanol_layer
+    replicate:
+
+  - id: processed_sample_7_uuid
+    name: 65432_1_EX_TOP_extract_subsample
+    description: Subsample of H2O/MeOH extracted metabolites from 65432_1_EX_TOP
+    emsl_activity:
+    lims_barcode:
+    storage_location:
+    label_text:
+    concentration_ug_per_uL:
+    total_amount_ug:
+    volume_uL: 15000
+    sampled_portion: methanol_layer
+    replicate:
+
+  - id: processed_sample_8_uuid
+    name: 65432_1_EX_BTM_extract_subsample
+    description: Subsample of H2O/MeOH extracted metabolites from 65432_1_EX_BTM
+    emsl_activity:
+    lims_barcode:
+    storage_location:
+    label_text:
+    concentration_ug_per_uL:
+    total_amount_ug:
+    volume_uL: 15000
+    sampled_portion: methanol_layer
+    replicate:
+
+  - id: processed_sample_9_uuid
+    name: 65432_1_EX_TOP_resuspended_extract
+    description: Resuspended extract of 65432_1_EX_TOP for LCMS analysis
+    emsl_activity:
+    lims_barcode:
+    storage_location: freezer01; rack01; box01; A1
+    label_text:
+    concentration_ug_per_uL:
+    total_amount_ug:
+    volume_uL: 100
+    sampled_portion: methanol_layer
+    replicate:
+
+  - id: processed_sample_10_uuid
+    name: 65432_1_EX_BTM_resuspended_extract
+    description: Resuspended extract of 65432_1_EX_BTM for LCMS analysis
+    emsl_activity:
+    lims_barcode:
+    storage_location: freezer01; rack01; box01; A2
+    label_text:
+    concentration_ug_per_uL:
+    total_amount_ug:
+    volume_uL: 100
+    sampled_portion: methanol_layer
+    replicate:
+
+  - id: processed_sample_11_uuid
+    name: 65432_1_EX_TOP_resusp_filtered
+    description: Filtered resuspended extract of 65432_1_EX_TOP, for loading onto LCMS instrument
+    emsl_activity:
+    lims_barcode:
+    storage_location:
+    label_text: 65432_1_EX_TOP_LCMS
+    concentration_ug_per_uL:
+    total_amount_ug:
+    volume_uL: 200
+    sampled_portion: methanol_layer
+    replicate:
+
+  - id: processed_sample_12_uuid
+    name: 65432_1_EX_BTM_resusp_filtered
+    description: Filtered resuspended extract of 65432_1_EX_BTM, for loading onto LCMS instrument
+    emsl_activity:
+    lims_barcode:
+    storage_location:
+    label_text: 65432_1_EX_BTM_LCMS
+    concentration_ug_per_uL:
+    total_amount_ug:
+    volume_uL: 200
+    sampled_portion: methanol_layer
+    replicate:
+
+
+- data_generation_activities:
+  - id: datagen_hilic_pos_1_uuid
+    name: 65432_1_EX_TOP_HILIC_pos
+    description: LCMS analysis of 65432_1_EX_TOP, HILIC positive mode
+    version: v1.0
+    sequence_order: 1
+    analyte_id: processed_sample_11_uuid
+    analyte_category: metabolite
+    acquisition_start_time: 2024-09-17T14:22:00Z
+    acquisition_end_time: 2024-09-17T14:52:00Z
+    instrument_operator_id: person_uuid
+    protocol_url: https://pnnl.sharepoint.com/:w:/r/sites/EMSL/_layouts/15/Doc.aspx?sourcedoc=%7B8A6A6E1F-B8D3-44BF-805A-987F691E7271%7D&file=MONet%20LC-MS%20Instrument%20Methods.docx&action=default&mobileredirect=true
+    instrument_used: instrument_uuid
+    uses_ms_configuration: ms_config_uuid1
+    uses_chromatography: chromatography_uuid
+
+  - id: datagen_hilic_neg_1_uuid
+    name: 65432_1_EX_TOP_HILIC_neg
+    description: LCMS analysis of 65432_1_EX_TOP, HILIC negative mode
+    version: v1.0
+    sequence_order: 1
+    analyte_id: processed_sample_11_uuid
+    analyte_category: metabolite
+    acquisition_start_time: 2024-09-17T14:22:00Z
+    acquisition_end_time: 2024-09-17T14:52:00Z
+    instrument_operator_id: person_uuid
+    protocol_url: https://pnnl.sharepoint.com/:w:/r/sites/EMSL/_layouts/15/Doc.aspx?sourcedoc=%7B8A6A6E1F-B8D3-44BF-805A-987F691E7271%7D&file=MONet%20LC-MS%20Instrument%20Methods.docx&action=default&mobileredirect=true
+    instrument_used: instrument_uuid
+    uses_ms_configuration: ms_config_uuid2
+    uses_chromatography: chromatography_uuid
+
+  - id: datagen_hilic_pos_2_uuid
+    name: 65432_1_EX_BTM_HILIC_pos
+    description: LCMS analysis of 65432_1_EX_BTM, HILIC positive mode
+    version: v1.0
+    sequence_order: 1
+    analyte_id: processed_sample_12_uuid
+    analyte_category: metabolite
+    acquisition_start_time: 2024-09-17T14:22:00Z
+    acquisition_end_time: 2024-09-17T14:52:00Z
+    instrument_operator_id: person_uuid
+    protocol_url: https://pnnl.sharepoint.com/:w:/r/sites/EMSL/_layouts/15/Doc.aspx?sourcedoc=%7B8A6A6E1F-B8D3-44BF-805A-987F691E7271%7D&file=MONet%20LC-MS%20Instrument%20Methods.docx&action=default&mobileredirect=true
+    instrument_used: instrument_uuid
+    uses_ms_configuration: ms_config_uuid1
+    uses_chromatography: chromatography_uuid
+
+  - id: datagen_hilic_neg_2_uuid
+    name: 65432_1_EX_BTM_HILIC_neg
+    description: LCMS analysis of 65432_1_EX_BTM, HILIC negative mode
+    version: v1.0
+    sequence_order: 1
+    analyte_id: processed_sample_12_uuid
+    analyte_category: metabolite
+    acquisition_start_time: 2024-09-17T14:22:00Z
+    acquisition_end_time: 2024-09-17T14:52:00Z
+    instrument_operator_id: person_uuid
+    protocol_url: https://pnnl.sharepoint.com/:w:/r/sites/EMSL/_layouts/15/Doc.aspx?sourcedoc=%7B8A6A6E1F-B8D3-44BF-805A-987F691E7271%7D&file=MONet%20LC-MS%20Instrument%20Methods.docx&action=default&mobileredirect=true
+    instrument_used: instrument_uuid
+    uses_ms_configuration: ms_config_uuid2
+    uses_chromatography: chromatography_uuid
+
+- chromatography_configurations:
+  - id: chromatography_uuid
+    name: MONet_LCMS_HILIC
+    description: MONet standard liquid chromatography configuration for LCMS analyses
+    column: ACQUITY UPLC BEH HILIC
+    column_dimensions: 2.1 x 100 mm
+    column_manufacturer: Waters
+    chromatography_type: liquid_chromatography
+    stationary_phase: BEH-HILIC
+    temperature_celsius: 50
+    duration_min: 12
+    flow_rate_ul_min: 300
+    injection_volume_ul: 3
+
+- mobile_phase_segments:
+  - id: mobile_phase_segment_1A_uuid
+    duration_min: 6
+    mobile_phase_substance: mobile_phase_A_uuid
+    mobile_phase_percentage: 5
+    flow_rate_ul_min:
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 1
+
+  - id: mobile_phase_segment_1B_uuid
+    name:
+    duration_min: 6
+    mobile_phase_substance: mobile_phase_B_uuid
+    mobile_phase_percentage: 95
+    flow_rate_ul_min:
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 1
+
+  - id: mobile_phase_segment_2A_uuid
+    name:
+    duration_min: 1
+    mobile_phase_substance: mobile_phase_A_uuid
+    mobile_phase_percentage: 63
+    flow_rate_ul_min:
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 2
+
+  - id: mobile_phase_segment_2B_uuid
+    name:
+    duration_min: 1
+    mobile_phase_substance: mobile_phase_B_uuid
+    mobile_phase_percentage: 37
+    flow_rate_ul_min:
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 2
+
+  - id: mobile_phase_segment_3A_uuid
+    name:
+    duration_min: 0.1
+    mobile_phase_substance: mobile_phase_A_uuid
+    mobile_phase_percentage: 63
+    flow_rate_ul_min:
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 3
+
+  - id: mobile_phase_segment_3B_uuid
+    name:
+    duration_min: 0.1
+    mobile_phase_substance: mobile_phase_B_uuid
+    mobile_phase_percentage: 37
+    flow_rate_ul_min:
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 3
+
+  - id: mobile_phase_segment_4A_uuid
+    name:
+    duration_min: 0.1
+    mobile_phase_substance: mobile_phase_A_uuid
+    mobile_phase_percentage: 5
+    flow_rate_ul_min: 500
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 4
+
+  - id: mobile_phase_segment_4B_uuid
+    name:
+    duration_min: 0.1
+    mobile_phase_substance: mobile_phase_B_uuid
+    mobile_phase_percentage: 95
+    flow_rate_ul_min: 500
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 4
+
+  - id: mobile_phase_segment_5A_uuid
+    name:
+    duration_min: 2.3
+    mobile_phase_substance: mobile_phase_A_uuid
+    mobile_phase_percentage: 5
+    flow_rate_ul_min: 500
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 5
+
+  - id: mobile_phase_segment_5B_uuid
+    name:
+    duration_min: 2.3
+    mobile_phase_substance: mobile_phase_B_uuid
+    mobile_phase_percentage: 95
+    flow_rate_ul_min: 500
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 5
+
+  - id: mobile_phase_segment_6A_uuid
+    name:
+    duration_min: 0.2
+    mobile_phase_substance: mobile_phase_A_uuid
+    mobile_phase_percentage: 5
+    flow_rate_ul_min: 300
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 6
+
+  - id: mobile_phase_segment_6B_uuid
+    name:
+    duration_min: 0.2
+    mobile_phase_substance: mobile_phase_B_uuid
+    mobile_phase_percentage: 95
+    flow_rate_ul_min: 300
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 6
+
+  - id: mobile_phase_segment_7A_uuid
+    name:
+    duration_min: 2.3
+    mobile_phase_substance: mobile_phase_A_uuid
+    mobile_phase_percentage: 5
+    flow_rate_ul_min: 300
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 7
+
+  - id: mobile_phase_segment_7B_uuid
+    name:
+    duration_min: 2.3
+    mobile_phase_substance: mobile_phase_B_uuid
+    mobile_phase_percentage: 95
+    flow_rate_ul_min: 300
+    used_in_chromatography_config: chromatography_uuid
+    step_number: 7
+
+
+- mobile_phases:
+  - id: mobile_phase_A_uuid
+  - id: mobile_phase_B_uuid
+
+- mobile_phase_substances:
+  - id: substance_in_mobile_phase_A_1_uuid
+    substance: acetonitrile
+    concentration: 5
+    in_mobile_phase: mobile_phase_A_uuid
+
+  - id: substance_in_mobile_phase_A_2_uuid
+    substance: ammonium acetate
+    concentration: 10 mM
+    volume_ul:
+    in_mobile_phase: mobile_phase_A_uuid
+    
+  - id: substance_in_mobile_phase_A_3_uuid
+    substance: ammonium hydroxide
+    concentration: 0.05
+    volume_ul:
+    in_mobile_phase: mobile_phase_A_uuid
+
+  - id: substance_in_mobile_phase_A_4_uuid
+    substance: water
+    concentration: 95
+    volume_ul:
+    in_mobile_phase: mobile_phase_A_uuid
+
+  - id: substance_in_mobile_phase_B_1_uuid
+    substance: acetonitrile
+    concentration:
+    volume_ul:
+    in_mobile_phase: mobile_phase_B_uuid
+
+  - id: substance_in_mobile_phase_B_2_uuid
+    substance: ammonium hydroxide
+    concentration: 0.05
+    volume_ul:
+    in_mobile_phase: mobile_phase_B_uuid
+
+
+- mass_spectrometry_configurations:
+  - id: ms_config_uuid1
+    name: MONet_LCMS_HILIC_positive
+    description: Mass spectrometer configuration for MONet LCMS runs in HILIC positive mode
+    injection: LC
+    ionization: HESI
+    fragmentation: HCD
+    polarity: positive
+    resolution: high
+    dd_ms2_resolution: 15000
+    loop_count:
+    iat: 
+    fid:
+    mass_range_max: 1000
+    mass_range_min: 67
+    acquisition_strategy: data_dependent_acquisition
+    lims_protocol_instance_id: 56789
+
+  - id: ms_config_uuid2
+    name: MONet_LCMS_HILIC_negative
+    description: Mass spectrometer configuration for MONet LCMS runs in HILIC negative mode
+    injection: Direct injection
+    injection: LC
+    ionization: HESI
+    fragmentation: HCD
+    polarity: negative
+    resolution: high
+    dd_ms2_resolution: 15000
+    loop_count:
+    iat: 
+    fid:
+    mass_range_max: 1000
+    mass_range_min: 67
+    acquisition_strategy: data_dependent_acquisition
+    lims_protocol_instance_id: 12345
+
+- instrument_data:
+  - id: instrument_data_hilic_pos_1_uuid
+    name: 65432_1_EX_TOP_HILIC_pos_raw
+    description: Raw mass spectrometry data file from LCMS analysis of 65432_1_EX_TOP, HILIC positive mode.
+    project:
+    sampling_set: 1
+    core_section: TOP
+    sample_name: 65432_1_EX_TOP
+    s3_base_url:
+    s3_bucket: monet-lcms-raw
+    s3_key: 65432_1_EX/TOP/65432_1_EX_TOP_HILIC_pos.raw
+    filesize: 524288000
+    md5checksum: 9e2a1c7d4f6b8a3e0c5d7f1b2a4e6c8d
+    file_curie: s3:monet-lcms-raw/65432_1_EX/TOP/65432_1_EX_TOP_HILIC_pos.raw
+    alternative_identifiers:
+    compression_type:
+    file_type:
+    software_version:
+    produced_by_ms_run: datagen_hilic_pos_1_uuid
+    ms_raw_file_type: .raw
+    collection_mode: centroid
+
+  - id: instrument_data_hilic_neg_1_uuid
+    name: 65432_1_EX_TOP_HILIC_neg_raw
+    description: Raw mass spectrometry data file from LCMS analysis of 65432_1_EX_TOP, HILIC negative mode.
+    project:
+    sampling_set: 1
+    core_section: TOP
+    sample_name: 65432_1_EX_TOP
+    s3_base_url:
+    s3_bucket: monet-lcms-raw
+    s3_key: 65432_1_EX/TOP/65432_1_EX_TOP_HILIC_neg.raw
+    filesize: 518920192
+    md5checksum: 3b7f0e9a2d5c8b1f4e6a9c0d2b5f8a1e
+    file_curie: s3:monet-lcms-raw/65432_1_EX/TOP/65432_1_EX_TOP_HILIC_neg.raw
+    alternative_identifiers:
+    compression_type:
+    file_type:
+    software_version:
+    produced_by_ms_run: datagen_hilic_neg_1_uuid
+    ms_raw_file_type: .raw
+    collection_mode: centroid
+
+  - id: instrument_data_hilic_pos_2_uuid
+    name: 65432_1_EX_BTM_HILIC_pos_raw
+    description: Raw mass spectrometry data file from LCMS analysis of 65432_1_EX_BTM, HILIC positive mode.
+    project:
+    sampling_set: 1
+    core_section: BTM
+    sample_name: 65432_1_EX_BTM
+    s3_base_url:
+    s3_bucket: monet-lcms-raw
+    s3_key: 65432_1_EX/BTM/65432_1_EX_BTM_HILIC_pos.raw
+    filesize: 531628032
+    md5checksum: 7c4a1f8e3b6d9a0c2e5f7b1a4d6c8e0b
+    file_curie: s3:monet-lcms-raw/65432_1_EX/BTM/65432_1_EX_BTM_HILIC_pos.raw
+    alternative_identifiers:
+    compression_type:
+    file_type:
+    software_version:
+    produced_by_ms_run: datagen_hilic_pos_2_uuid
+    ms_raw_file_type: .raw
+    collection_mode: centroid
+
+  - id: instrument_data_hilic_neg_2_uuid
+    name: 65432_1_EX_BTM_HILIC_neg_raw
+    description: Raw mass spectrometry data file from LCMS analysis of 65432_1_EX_BTM, HILIC negative mode.
+    project:
+    sampling_set: 1
+    core_section: BTM
+    sample_name: 65432_1_EX_BTM
+    s3_base_url:
+    s3_bucket: monet-lcms-raw
+    s3_key: 65432_1_EX/BTM/65432_1_EX_BTM_HILIC_neg.raw
+    filesize: 509082624
+    md5checksum: 1d6b9e2a5c8f0b3d6a9c1e4f7b0d2a5c
+    file_curie: s3:monet-lcms-raw/65432_1_EX/BTM/65432_1_EX_BTM_HILIC_neg.raw
+    alternative_identifiers:
+    compression_type:
+    file_type:
+    software_version:
+    produced_by_ms_run: datagen_hilic_neg_2_uuid
+    ms_raw_file_type: .raw
+    collection_mode: centroid
+
+- data_processing_activities:
+  - id: ms_dataproc_hilic_pos_1_uuid
+    description: CoreMS LC metab workflow applied to 65432_1_EX_TOP_HILIC_pos raw data.
+    started_at_time: 2024-09-18T09:00:00Z
+    ended_at_time: 2024-09-18T09:15:00Z
+    software_url: https://github.com/EMSL-Computing/CoreMS
+    software_version: 2.0.0
+    software_poc:
+    execution_resource: emsl_tahoma
+    parent_workflow_id:
+    workflow_steps:
+    uses_calibration:
+    uses_raw_ms_data: instrument_data_hilic_pos_1_uuid
+    lims_task_instance_id:
+    metaproteomics_analysis_category:
+
+  - id: ms_dataproc_hilic_neg_1_uuid
+    description: CoreMS LC metab workflow applied to 65432_1_EX_TOP_HILIC_neg raw data.
+    started_at_time: 2024-09-18T09:15:00Z
+    ended_at_time: 2024-09-18T09:30:00Z
+    software_url: https://github.com/EMSL-Computing/CoreMS
+    software_version: 2.0.0
+    software_poc:
+    execution_resource: emsl_tahoma
+    parent_workflow_id:
+    workflow_steps:
+    uses_calibration:
+    uses_raw_ms_data: instrument_data_hilic_neg_1_uuid
+    lims_task_instance_id:
+    metaproteomics_analysis_category:
+
+  - id: ms_dataproc_hilic_pos_2_uuid
+    description: CoreMS LC metab workflow applied to 65432_1_EX_BTM_HILIC_pos raw data.
+    started_at_time: 2024-09-18T09:30:00Z
+    ended_at_time: 2024-09-18T09:45:00Z
+    software_url: https://github.com/EMSL-Computing/CoreMS
+    software_version: 2.0.0
+    software_poc:
+    execution_resource: emsl_tahoma
+    parent_workflow_id:
+    workflow_steps:
+    uses_calibration:
+    uses_raw_ms_data: instrument_data_hilic_pos_2_uuid
+    lims_task_instance_id:
+    metaproteomics_analysis_category:
+
+  - id: ms_dataproc_hilic_neg_2_uuid
+    description: CoreMS LC metab workflow applied to 65432_1_EX_BTM_HILIC_neg raw data.
+    started_at_time: 2024-09-18T09:45:00Z
+    ended_at_time: 2024-09-18T10:00:00Z
+    software_url: https://github.com/EMSL-Computing/CoreMS
+    software_version: 2.0.0
+    software_poc:
+    execution_resource: emsl_tahoma
+    parent_workflow_id:
+    workflow_steps:
+    uses_calibration:
+    uses_raw_ms_data: instrument_data_hilic_neg_2_uuid
+    lims_task_instance_id:
+    metaproteomics_analysis_category:
+
+- processed_data:
+  - id: molid_hilic_pos_1_uuid
+    name: 65432_1_EX_TOP_HILIC_pos_molecular_ids
+    description: Molecular formula identifications from LCMS analysis of 65432_1_EX_TOP, HILIC positive mode.
+    project:
+    sampling_set:
+    core_section: TOP
+    sample_name: 65432_1_EX
+    s3_base_url:
+    s3_bucket: monet-lcms-processed
+    s3_key: 65432_1_EX/TOP/65432_1_EX_TOP_HILIC_pos_identifications.csv
+    filesize: 2097152
+    md5checksum: 4f8a1d6b9e2c5a0d3f6b9c1e4a7d0b2f
+    summary_metrics:
+    lims_barcode:
+    sample_id: sample_name
+    results_from_ms_processing: ms_dataproc_hilic_pos_1_uuid
+
+  - id: molid_hilic_neg_1_uuid
+    name: 65432_1_EX_TOP_HILIC_neg_molecular_ids
+    description: Molecular formula identifications from LCMS analysis of 65432_1_EX_TOP, HILIC negative mode.
+    project:
+    sampling_set:
+    core_section: TOP
+    sample_name: 65432_1_EX
+    s3_base_url:
+    s3_bucket: monet-lcms-processed
+    s3_key: 65432_1_EX/TOP/65432_1_EX_TOP_HILIC_neg_identifications.csv
+    filesize: 1966080
+    md5checksum: 6a0c3e8b1d4f7a2c5e8b0d3f6a9c2e5b
+    summary_metrics:
+    lims_barcode:
+    sample_id: 65432_1_EX
+    results_from_ms_processing: ms_dataproc_hilic_neg_1_uuid
+
+  - id: molid_hilic_pos_2_uuid
+    name: 65432_1_EX_BTM_HILIC_pos_molecular_ids
+    description: Molecular formula identifications from LCMS analysis of 65432_1_EX_BTM, HILIC positive mode.
+    project:
+    sampling_set:
+    core_section: BTM
+    sample_name: 65432_1_EX
+    s3_base_url:
+    s3_bucket: monet-lcms-processed
+    s3_key: 65432_1_EX/BTM/65432_1_EX_BTM_HILIC_pos_identifications.csv
+    filesize: 2129920
+    md5checksum: 8c2e5b0d3f6a9c2e5b8d1f4a7c0e3b6d
+    summary_metrics:
+    lims_barcode:
+    sample_id: 65432_1_EX
+    results_from_ms_processing: ms_dataproc_hilic_pos_2_uuid
+
+  - id: molid_hilic_neg_2_uuid
+    name: 65432_1_EX_BTM_HILIC_neg_molecular_ids
+    description: Molecular formula identifications from LCMS analysis of 65432_1_EX_BTM, HILIC negative mode.
+    project:
+    sampling_set:
+    core_section: BTM
+    sample_name: 65432_1_EX
+    s3_base_url:
+    s3_bucket: monet-lcms-processed
+    s3_key: 65432_1_EX/BTM/65432_1_EX_BTM_HILIC_neg_identifications.csv
+    filesize: 1949696
+    md5checksum: 0e3b6d9c2f5a8b1e4d7a0c3f6b9e2c5a
+    summary_metrics:
+    lims_barcode:
+    sample_id: 65432_1_EX
+    results_from_ms_processing: ms_dataproc_hilic_neg_2_uuid
+
