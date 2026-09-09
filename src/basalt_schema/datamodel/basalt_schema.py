@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-28T08:00:47
+# Generation date: (not recorded - see git history)
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
