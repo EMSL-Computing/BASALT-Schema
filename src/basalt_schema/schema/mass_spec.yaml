@@ -76,9 +76,11 @@ classes:
     slots:
   
   MetaproteomicsProduct:
-    abstract: true
     is_a: MassSpectrometryDataProduct
-    description: Abstract parent class for processed metaproteomics data. Details and subclasses TBD.
+    description: A tabular data file containing peptide-level, protein-level, or aggregation results.
+    slots:
+      - metaproteomics_result_type
+
 
   # ============================================================================
   # (NEW) MassSpectrometryDataGenerationActivity
