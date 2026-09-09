@@ -85,8 +85,8 @@ classes:
       chemical_conversion_category:
         range: ChemicalConversionCategoryEnum
         description: The category of chemical conversion process.
-      digestion_method:
-        range: DigestionMethodEnum
+      protein_digestion_method:
+        range: ProteinDigestionMethodEnum
         description: Named digestion method applied, when the category is protease_cleavage.
       enrichment_type:
         range: EnrichmentTypeEnum
@@ -94,12 +94,6 @@ classes:
       labeling_method:
         range: LabelingMethodEnum
         description: Chemical labeling strategy applied in this process (e.g., TMT).
-
-  CMMDigestion:
-    is_a: SampleProcessing
-    description: >-
-      A microwave digestion process used in ICP-MS sample preparation for identification of trace elements.
-    todos: more details from Tom
 
   Extraction:
     is_a: SampleProcessing 

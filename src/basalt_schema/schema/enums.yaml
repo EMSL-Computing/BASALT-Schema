@@ -187,6 +187,11 @@ enums:
         description: an enzymatic cleavage which relies on an enzyme with protease activity
           to act on proteins and to produce polypeptides (protein fragments).
         meaning: OBI:0600056
+      microwave_digestion:
+        text: microwave_digestion
+        description: a digestion process that uses microwave energy to heat
+          the sample and reagents to accelerate the digestion of the sample.
+        meaning: CHMO:0001496
 
   ChemicalEntityEnum:
     description: Common names or identifiers for chemical entities.
@@ -380,7 +385,7 @@ enums:
       orbital_shaker:
       thermomixer:
 
-  DigestionMethodEnum:
+  ProteinDigestionMethodEnum:
     description: Named protein digestion methods used in sample preparation.
     permissible_values:
       urea:
