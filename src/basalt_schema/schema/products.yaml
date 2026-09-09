@@ -301,55 +301,6 @@ classes:
       flag:
         range: ProcessedDataFlag
 
-  XCTProduct:
-    description: |-
-      X-ray computed tomography (XCT) analysis product for pore geometry and flow properties of intact soil cores.
-    is_a: ProcessedData
-    slots:
-      - measure_type
-    attributes:
-      roi_volume_voxel:
-        range: double
-      voxel_size:
-        range: double
-      connected_pores:
-        range: double
-      pore_diameter_min:
-        range: double
-      pore_diameter_max:
-        range: double
-      pore_diameter_mean:
-        range: double
-      pore_diameter_median:
-        range: double
-      pore_diameter_variance:
-        range: double
-      pore_volume_mean:
-        range: double
-      total_pore_volume:
-        range: double
-      permeability_x:
-        range: double
-      flow_rate_x:
-        range: double
-      tortuosity_x:
-        range: double
-      permeability_y:
-        range: double
-      flow_rate_y:
-        range: double
-      tortuosity_y:
-        range: double
-      permeability_z:
-        range: double
-      flow_rate_z:
-        range: double
-      tortuosity_z:
-        range: double
-      flag_xct:
-        # range: ProcessedDataFlag
-        range: string
-
   WEOMProduct:
     description: |-
       Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar instrument.
@@ -398,6 +349,7 @@ classes:
       Inherits S3 storage metadata and sample linkage from dataProduct via ProcessedData.
 
       Concrete subclasses:
+        - XCTProduct: pore geometry and flow properties (X-ray computed tomography)
         - XRFElementalProduct: elemental concentrations
         - XRDPhaseProduct: mineral phases
         - XASLCFProduct: linear combination fitting results
@@ -405,12 +357,66 @@ classes:
       Common patterns:
         - s3_key points to the raw or processed X-ray data file in MinIO
         - summary_metrics provides lightweight queryable summaries:
+            XCT: {"connected_pores":1842, "total_pore_volume":3.2e6, "tortuosity_z":1.47}
             XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
             XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
             XAS: {"r_factor":0.000975, "lcf_type":"XANES", "n_standards":3}
         - direct outputs may not have a processing link (XRF typical)
         - computational outputs should use a typed processing reference slot
           (XRD Rietveld refinement, XAS LCF fitting)
+
+
+  # ---------------------------------------------------------------------------
+  # XCTProduct   X-ray Computed Tomography Pore/Flow Data
+  # ---------------------------------------------------------------------------
+  XCTProduct:
+    is_a: XRayDataProduct
+    description: |-
+      X-ray computed tomography (XCT) analysis product for pore geometry and flow properties of intact soil cores.
+    slots:
+      - measure_type
+    attributes:
+      roi_volume_voxel:
+        range: double
+      voxel_size:
+        range: double
+      connected_pores:
+        range: double
+      pore_diameter_min:
+        range: double
+      pore_diameter_max:
+        range: double
+      pore_diameter_mean:
+        range: double
+      pore_diameter_median:
+        range: double
+      pore_diameter_variance:
+        range: double
+      pore_volume_mean:
+        range: double
+      total_pore_volume:
+        range: double
+      permeability_x:
+        range: double
+      flow_rate_x:
+        range: double
+      tortuosity_x:
+        range: double
+      permeability_y:
+        range: double
+      flow_rate_y:
+        range: double
+      tortuosity_y:
+        range: double
+      permeability_z:
+        range: double
+      flow_rate_z:
+        range: double
+      tortuosity_z:
+        range: double
+      flag_xct:
+        # range: ProcessedDataFlag
+        range: string
 
 
   # ---------------------------------------------------------------------------
