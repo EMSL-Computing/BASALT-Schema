@@ -872,6 +872,16 @@ enums:
       in_silico_metagenome:
         description: A metaproteomics analysis matched to an in silico generated metagenome.
       WITHDRAWN:
+  
+  MetaproteomicsResultTypeEnum:
+    description: The type of metaproteomics results file.
+    permissible_values:
+      peptide_level:
+        description: A tabular data file containing peptide-level results.
+      protein_level:
+        description: A tabular data file containing protein-level results.
+      aggregation:
+        description: A tabular data file containing aggregated results.
 
   ModelEnum:
     permissible_values:
