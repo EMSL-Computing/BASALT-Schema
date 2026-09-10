@@ -15,6 +15,7 @@ default_prefix: basalt_schema
 imports:
   - linkml:types
   - slots
+  - enums
 
 classes:
 
@@ -358,14 +359,83 @@ classes:
         range: string
 
   # ============================================================================
+  # WellReagentAddition   per-well, per-reagent structured record
+  # ============================================================================
+  WellReagentAddition:
+    description: |-
+      One reagent addition to one well. Captures the compound identity, its role
+      in the experiment, dispensed volume, and both the requested and achieved
+      concentrations. NOT a standalone database table; embedded structured entries
+      under AMP2WellMetadata.reagent_additions.
+
+      For reagents dispensed at plate setup time, addition_time is null.
+      For mid-experiment perturbations (e.g. inducer added at hour 23 of a 24h
+      time-series), addition_time records when the addition occurred.
+
+      Borrows compound and substance_role from SampleProcessingSubstance /
+      PortionOfSubstance; adds requested-vs-actual concentration split and
+      addition_time for the inducer scenario.
+    attributes:
+      compound:
+        range: ChemicalEntityEnum
+        required: true
+        description: |-
+          Identity of the reagent added.
+          Uses the shared ChemicalEntityEnum (same enum as
+          SampleProcessingSubstance.known_as / PortionOfSubstance.known_as).
+        aliases:
+          - known_as
+      substance_role:
+        range: SubstanceRoleEnum
+        required: true
+        description: |-
+          Role of this reagent in the experiment (nutrient, normalizer, inducer, etc.).
+          Uses the shared SubstanceRoleEnum.
+      volume_ul:
+        range: float
+        required: true
+        description: Volume of this reagent dispensed into the well, in microlitres.
+      stock_concentration:
+        range: float
+        description: |-
+          Concentration of the stock solution from which this reagent was drawn.
+          Units given by concentration_unit.
+      requested_concentration:
+        range: float
+        description: |-
+          Target final concentration of this reagent in the well, as specified
+          by the experimental design or ART system.
+          Units given by concentration_unit.
+      actual_concentration:
+        range: float
+        description: |-
+          Achieved final concentration of this reagent in the well after
+          dispensing. May differ from requested_concentration due to
+          volume rounding or pipetting constraints.
+          Units given by concentration_unit.
+      concentration_unit:
+        range: string
+        description: |-
+          Unit for stock_concentration, requested_concentration, and
+          actual_concentration (e.g. "g/L", "mM").
+      addition_time:
+        range: string
+        description: |-
+          When this reagent was added, relative to the start of the
+          measurement series (e.g. "t=23h"). Null for reagents dispensed
+          at plate setup time; populated for mid-experiment additions
+          such as inducers.
+
+  # ============================================================================
   # AMP2WellMetadata   AMP2-specific embedded type
   # ============================================================================
   AMP2WellMetadata:
     is_a: WellMetadata
     description: |-
       AMP2-specific per-well metadata.
-      Minimal   media composition comes from the Media entity referenced via
-      the activity's media_ref slot.  Per-well data is volumes and replicate info.
+      Media composition comes from the Media entity referenced via the activity's
+      media_ref slot.  Per-well reagent additions (nutrients, normalizers, inducers)
+      are captured as structured WellReagentAddition entries in reagent_additions.
     slots:
       - sample_id
     attributes:
@@ -384,14 +454,15 @@ classes:
         description: Volume of inoculum added (0 for blanks)
         range: float
         required: true
-        # Montana: sample_id (on WellDetails)
-      treatments:
+      reagent_additions:
         description: |-
-          Per-well treatments if applicable (e.g. different mineral concentrations).
-          NULL for uniform-treatment plates.
-        range: string
+          Per-well reagent additions beyond the base media. Each entry is a
+          WellReagentAddition capturing one compound, its role, dispensed
+          volume, and concentrations. Replaces the former free-text
+          treatments slot.
+        range: WellReagentAddition
         multivalued: true
-        # Montana: treatments (on WellDetails)
+        inlined_as_list: true
 
   # ============================================================================
   # EcoplateWellMetadata   Ecoplate-specific embedded type
