@@ -206,6 +206,11 @@ enums:
       ammonium_bicarbonate:
         text: ammonium_bicarbonate
         meaning: CHEBI:184335
+      ammonium_sulfate:
+        text: ammonium_sulfate
+        meaning: CHEBI:62946
+        comments:
+        - (NH4)2SO4; common nitrogen source in microbial growth experiments.
       amitriptyline:
         text: amitriptyline
         meaning: CHEBI:2666
@@ -230,9 +235,21 @@ enums:
         comments:
         - A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan,
           leucine, tyrosine, and phenylalanine.
+      deionized_water:
+        text: deionized_water
+        meaning: CHEBI:15377
+        comments:
+        - Deionized water used as a volume normalizer or diluent.
+          Distinct from the general "water" entry to mark its specific role
+          in automated dispensing workflows.
       ethanol:
         text: ethanol
         meaning: CHEBI:16236
+      ferric_chloride:
+        text: ferric_chloride
+        meaning: CHEBI:30808
+        comments:
+        - FeCl3; iron source in microbial growth experiments.
       formic_acid:
         text: formic_acid
         meaning: CHEBI:30751
@@ -256,6 +273,12 @@ enums:
       isopropyl_alcohol:
         text: isopropyl_alcohol
         meaning: CHEBI:17824
+      iptg:
+        text: iptg
+        meaning: CHEBI:61448
+        comments:
+        - Isopropyl beta-D-1-thiogalactopyranoside; commonly used inducer of
+          lac operon expression in bacterial systems.
       Lys-C:
         text: Lys-C
         meaning: MS:1001309
@@ -1920,6 +1943,18 @@ enums:
         description: Chemically modifies analytes to improve detection or separation.
       solubilizing_agent:
         text: solubilizing_agent
+      nutrient:
+        text: nutrient
+        description: A compound added as an experimental nutrient variable (e.g. nitrogen
+          or iron source at a controlled concentration).
+      normalizer:
+        text: normalizer
+        description: An inert diluent (e.g. DI water) added to bring the well to a
+          target total volume without changing the experimental chemistry.
+      inducer:
+        text: inducer
+        description: A compound added mid-experiment to trigger gene expression or a
+          biological response (e.g. IPTG, arabinose).
 
   SyntheticEnvironmentEnum:
     permissible_values:
