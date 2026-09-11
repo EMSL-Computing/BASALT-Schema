@@ -320,6 +320,11 @@ slots:
     aliases:
       - CBI
 
+  channel_number:
+    description: The index of the detector channel within the instrument run.
+    range: integer
+    title: channel number
+
   chem_administration:
     title: chemical administration
     description: List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
@@ -1557,6 +1562,12 @@ slots:
     range: string
     required: true
 
+  negative_absorbance_margin_au:
+    description: 'Allowed margin below zero absorbance before a reading is flagged
+      as invalid, used to account for detector noise/baseline drift. (Unit: AU)'
+    range: float
+    title: negative absorbance margin
+
   neon_domain:
     description: 'Areas where ecosystems (and the type quality and quantity of environmental
       resources) are generally similar. A map of these regions can be found at https://www.neonscience.org/field-sites/about-field-sites.
@@ -2171,6 +2182,11 @@ slots:
     range: MassSpecResolutionEnum
     required: true
 
+  resolution_nm:
+    description: 'Spectral resolution of the detector. (Unit: nm)'
+    range: float
+    title: resolution
+
   results_from_ms_processing:
     description: a reference to the mass spec data processing activity that produced this data product
     range: MassSpectrometryDataProcessingActivity
@@ -2375,6 +2391,11 @@ slots:
       submission_pattern: ^\d+(\.\d+)?\s*s$
     range: string
     title: sampling duration
+
+  sampling_rate_hz:
+    description: 'Rate at which data points are acquired during the run. (Unit: Hz)'
+    range: float
+    title: sampling rate
 
   sampling_set:
     title: sampling set
@@ -3479,6 +3500,28 @@ slots:
     description: >-
       The raw data file, output by a mass spectrometer, that was analyzed in 
       this data processing workflow run.
+
+  uses_raw_ri_data:
+    range: InstrumentData
+    description: >-
+      The raw data file, output by a RI detector, that was analyzed in
+      this data processing workflow run.
+    todos: replace range with a RI-specific InstrumentData subclass once defined
+
+  uses_raw_uv_data:
+    range: InstrumentData
+    description: >-
+      The raw data file, output by a UV-Vis detector, that was analyzed in
+      this data processing workflow run.
+    todos: replace range with a UV-Vis-specific InstrumentData subclass once defined
+
+  uv_datagen_run:
+    description: Reference to the UV-Vis data generation activity that this channel configuration belongs to.
+    range: UVDataGenerationActivity
+
+  uv_detector_type:
+    description: Type of UV detector used in the chromatography method
+    range: UVDetectorEnum
   
   version:
     description: String indicating the version of the software or protocol
@@ -3545,6 +3588,16 @@ slots:
     description: Measurement wavelength in nanometres (e.g. 590 Ecoplate, 610 AMP2 OD)
     range: integer
     required: true
+
+  wavelength_nm_max:
+    description: 'Maximum wavelength of the detection range. (Unit: nm)'
+    range: float
+    title: maximum wavelength
+
+  wavelength_nm_min:
+    description: 'Minimum wavelength of the detection range. (Unit: nm)'
+    range: float
+    title: minimum wavelength
 
   weather:
     description: The state of the atmosphere at a given time and place with respect

@@ -639,3 +639,54 @@ classes:
       - chi_square
       - reduced_chi_square
       - weights_sum
+
+  RIDataGenerationActivity:
+    is_a: DataGenerationActivity
+    description: |-
+      Refractive Index (RI) measurement activity.
+      Represents one measurement session for a sample using a RI detector.
+
+    slots:
+      - wavelength_nm
+      - temperature_celsius
+      - calibration_standard
+      - uses_chromatography
+
+  UVDataGenerationActivity:
+    is_a: DataGenerationActivity
+    description: |-
+      Ultraviolet-visible (UV-Vis) spectroscopy acquisition activity.
+      Represents one measurement session for a sample using UV-Vis spectroscopy.
+    slots:
+      - uv_detector_type
+      - wavelength_nm_max
+      - wavelength_nm_min
+      - resolution_nm
+      - sampling_rate_hz
+      - negative_absorbance_margin_au
+      - uses_chromatography
+
+  UVChannelConfig:
+    is_a: Configuration
+    description: Configuration for a single UV-Vis detector channel.
+    slots:
+      - uv_datagen_run
+      - channel_number
+      - wavelength_nm
+      - resolution_nm
+  
+  UVDataProcessingActivity:
+    is_a: DataProcessingActivity
+    description: |-
+      Data processing for UV-Vis spectroscopy data. Represents processing of raw data for one UV-Vis sample.
+    slots:
+      - uses_raw_uv_data
+      - uses_calibration
+  
+  RIDataProcessingActivity:
+    is_a: DataProcessingActivity
+    description: |-
+      Data processing for Refractive Index (RI) data. Represents processing of raw data for one RI sample.
+    slots:
+      - uses_raw_ri_data
+      - uses_calibration
