@@ -3590,12 +3590,12 @@ slots:
     required: true
 
   wavelength_nm_max:
-    description: 'Maximum wavelength of the detection range. (Unit: nm)'
+    description: Maximum wavelength of the detection range, in nanometers
     range: float
     title: maximum wavelength
 
   wavelength_nm_min:
-    description: 'Minimum wavelength of the detection range. (Unit: nm)'
+    description: Minimum wavelength of the detection range, in nanometers
     range: float
     title: minimum wavelength
 
