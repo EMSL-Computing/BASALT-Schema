@@ -10,7 +10,7 @@
 - samples:
   - id: sample_uuid
     name: 65432_1_EX
-    description: Soil sample from corn field
+    description: frozen bulk soil sample associated with plant 1 for RhizoField project 65432
     emsl_activity: emsl_activity_uuid1
     lims_barcode: 123456789
     analysis_type: cmm
@@ -33,10 +33,7 @@
   - id: digestion_uuid
     name: 65432_1_EX_cmm_digestion
     description: Microwave digestion of the 65432_1_EX soil subsample for total recoverable trace element analysis by ICP-MS.
-    substances_used:
-      - known_as: nitric_acid
-        substance_role: solvent
-        volume_mL: 6
+    substances_used: substance_link_uuid_1
     chemical_conversion_category: microwave_digestion
     protein_digestion_method:
     enrichment_type:
@@ -60,6 +57,40 @@
       - cmm
     extraction_method: DTPA
     in_protocol: sample_processing_protocol_2_uuid
+
+- substances_used:
+  - id: substance_link_uuid_1
+    sample_processing_substance: nitric_acid_6mL_uuid
+    sample_processing_id: digestion_uuid
+
+  - id: substance_link_uuid_2
+    sample_processing_substance: DTPA_20mL_uuid
+    sample_processing_id: cmm_extraction_uuid
+  
+  - id: substance_link_uuid_3
+    sample_processing_substance: water_5mL_uuid
+    sample_processing_id: cmm_extraction_uuid
+
+  - id: nitric_acid_6mL_uuid
+    known_as: nitric_acid
+    substance_role: acid
+    volume_ml: 6
+    source_concentration_mg_per_mL:
+    final_concentration_mg_per_mL:
+  
+  - id: DTPA_20mL_uuid
+    known_as: DTPA
+    substance_role: solvent
+    volume_ml: 20
+    source_concentration_mg_per_mL:
+    final_concentration_mg_per_mL:
+
+  - id: water_5mL_uuid
+    known_as: water
+    substance_role: solvent
+    volume_ml: 5
+    source_concentration_mg_per_mL:
+    final_concentration_mg_per_mL:
 
 - sample_processing_grouping:
   - id: sample_processing_protocol_1_uuid

@@ -179,6 +179,9 @@ classes:
       sample_processing_substance:
         range: SampleProcessingSubstance
         description: A substance that was used in the SampleProcessing activity.
+      sample_processing_id:
+        range: SampleProcessing
+        description: The SampleProcessing activity in which the substance was used.
 
   SampleProcessingSubstance:
     description: >-
