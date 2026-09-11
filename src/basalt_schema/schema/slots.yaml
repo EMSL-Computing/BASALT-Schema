@@ -272,7 +272,7 @@ slots:
 
   calibration_data:
     description: Reference to the raw instrument data file used for calibration
-    range: MassSpectrometryInstrumentData
+    range: InstrumentData
 
   calibration_standard:
     description: The reference standard used for calibration
@@ -3463,7 +3463,7 @@ slots:
   uses_calibration:
     description: >- 
       Reference to the raw data file from the standard which was run with a batch of samples that was used as calibration for this data processing workflow run.
-    range: MassSpectrometryStandardRun
+    range: StandardRun
 
   uses_chromatography:
     description: Points to a record of the chromatography configuration used to separate analytes.
