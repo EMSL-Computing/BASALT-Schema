@@ -3037,9 +3037,9 @@ class MAOMProduct(ConfiguredBaseModel):
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
                        'TextureProduct',
-                       'TomographyProduct',
                        'WEOMProduct',
                        'pHProduct',
+                       'XCTProduct',
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
@@ -3151,9 +3151,9 @@ class WEOMProduct(ConfiguredBaseModel):
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
                        'TextureProduct',
-                       'TomographyProduct',
                        'WEOMProduct',
                        'pHProduct',
+                       'XCTProduct',
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
@@ -3500,6 +3500,8 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'PureCultureSample',
                        'TerraformSample']} })
     host_taxid: Optional[str] = Field(default=None, title="host taxonomy identifier", description="""NCBI taxon ID. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'aliases': ['host_taxonomy_id', 'host_ncbi_taxon_id', 'host_taxa_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': 'NCBITaxon:\\d+'}},
          'domain_of': ['organism',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -3554,7 +3556,9 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'MixedCultureSample',
                        'OtherUndescribedSample',
                        'PureCultureSample']} })
-    host_spec_range: Optional[str] = Field(default=None, title="host specificity or range", description="""The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'domain_of': ['organism',
+    host_spec_range: Optional[str] = Field(default=None, title="host specificity or range", description="""The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': 'NCBITaxon:\\d+'}},
+         'domain_of': ['organism',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -3641,32 +3645,6 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'ConditioningValue',
                        'zipDownload']} })
 
-    @field_validator('host_taxid')
-    def pattern_host_taxid(cls, v):
-        pattern=re.compile(r"NCBITaxon:\d+")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_taxid format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_taxid format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_spec_range')
-    def pattern_host_spec_range(cls, v):
-        pattern=re.compile(r"NCBITaxon:\d+")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_spec_range format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_spec_range format: {v}"
-            raise ValueError(err_msg)
-        return v
-
 
 class Site(ConfiguredBaseModel):
     """
@@ -3732,23 +3710,41 @@ class Site(ConfiguredBaseModel):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    alt: Optional[str] = Field(default=None, title="altitude", description="""Heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air. For ARM this can be a range. (Unit: m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
-    annual_precpt: Optional[str] = Field(default=None, title="mean annual precipitation", description="""The average of all annual precipitation values known or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)""", json_schema_extra = { "linkml_meta": {'aliases': ['average annual precipitation'], 'domain_of': ['Site']} })
-    annual_temp: Optional[str] = Field(default=None, title="mean annual temperature", description="""Mean annual temperature (Unit: C)""", json_schema_extra = { "linkml_meta": {'aliases': ['average annual temperature'], 'domain_of': ['Site']} })
+    alt: Optional[str] = Field(default=None, title="altitude", description="""Heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air. For ARM this can be a range. (Unit: m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?m(?:-\\d+(\\.\\d+)?m)?$'}},
+         'domain_of': ['Site']} })
+    annual_precpt: Optional[str] = Field(default=None, title="mean annual precipitation", description="""The average of all annual precipitation values known or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)""", json_schema_extra = { "linkml_meta": {'aliases': ['average annual precipitation'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mm$'}},
+         'domain_of': ['Site']} })
+    annual_temp: Optional[str] = Field(default=None, title="mean annual temperature", description="""Mean annual temperature (Unit: C)""", json_schema_extra = { "linkml_meta": {'aliases': ['average annual temperature'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+         'domain_of': ['Site']} })
     atmospheric_data: Optional[str] = Field(default=None, title="atmospheric data", description="""Measurement of atmospheric data; can include multiple data""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
     crop_rotation: Optional[str] = Field(default=None, title="crop rotation", description="""Whether or not crop is rotated, and if yes, rotation schedule""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
     cur_land_use: Optional[LandUseEnum] = Field(default=None, title="current land use", description="""Present state of sample site. This slot is NOT multivalued. Valid entries: badlands, cities, conifers, crop trees, farmstead, gravel, hardwoods, hayland, horticultural plants, industrial areas, intermixed, marshlands, meadows, mines, quarries, mudflats, oil waste, pastureland, permanent snow or ice, rainforest, rangeland, roads, railroads, rock, row crops, saline seeps, salt flats, sand, shrub crops, shrub land, small grains, successional shrub land, swamp, tropical, tundra, vegetable crops, vine crops""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
     cur_vegetation: Optional[str] = Field(default=None, title="current vegetation", description="""Vegetation classification from one or more standard classification systems, or agricultural crop""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
     cur_vegetation_meth: Optional[str] = Field(default=None, title="current vegetation method", description="""Reference or method used in vegetation classification""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
     drainage_class: Optional[DrainageClassEnum] = Field(default=None, title="drainage class", description="""Drainage classification from a standard system such as the USDA system""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
-    elev: str = Field(default=..., title="elevation", description="""Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface. (Unit: m).""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site'],
+    elev: str = Field(default=..., title="elevation", description="""Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface. (Unit: m).""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*m$'}},
+         'domain_of': ['Site'],
          'todos': ['should this be required for all sample types though? probably '
                    'not.']} })
-    extreme_event: Optional[str] = Field(default=None, title="extreme event", description="""Unusual physical events that may have affected microbial populations. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
+    extreme_event: Optional[str] = Field(default=None, title="extreme event", description="""Unusual physical events that may have affected microbial populations. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['Site']} })
     fao_class: Optional[FAOClassEnum] = Field(default=None, title="FAO soil taxonomy classification", description="""Soil classification from the FAO World soil distribution from International Soil Reference and Information Centre (ISRIC). The list of available soil classifications can be found at https://www.isric.org/explore/world-soil-distribution""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
-    fire: Optional[str] = Field(default=None, title="fire", description="""Historical and/or physical evidence of fire. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
-    flooding: Optional[str] = Field(default=None, title="flooding", description="""Historical and/or physical evidence of flooding. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
-    geo_loc_name: str = Field(default=..., title="geographic location name", description="""The geographical origin of the sample as defined by the country or sea name followed by specific region name and site. Formatted as [Country or sea names: region or state, site]""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
+    fire: Optional[str] = Field(default=None, title="fire", description="""Historical and/or physical evidence of fire. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['Site']} })
+    flooding: Optional[str] = Field(default=None, title="flooding", description="""Historical and/or physical evidence of flooding. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['Site']} })
+    geo_loc_name: str = Field(default=..., title="geographic location name", description="""The geographical origin of the sample as defined by the country or sea name followed by specific region name and site. Formatted as [Country or sea names: region or state, site]""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^([^\\s-]{12}|[^\\s-]+.+[^\\s-]+):\\s?([^\\s-]{12}|[^\\s-]+.+[^\\s-]+)\\s?([^\\s-]{12}|[^\\s-]+.+[^\\s-]+)$'}},
+         'domain_of': ['Site']} })
     growth_facil: GrowthFacilityEnum = Field(default=..., title="growth facility", description="""Type of facility or location from where the sample was collected or
 grown. This field is NOT multivalued. If selecting other, add the `other_growth_facil`
 attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site', 'AMP2UserSample']} })
@@ -3780,18 +3776,32 @@ attribute to provide additional detail.""", json_schema_extra = { "linkml_meta":
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    neon_site_code: Optional[str] = Field(default=None, title="neon site code", description="""When sampling from a NEON site provide the 4 letter site code (Example: DEJU). If you do not have your NEON site use the code SITE_999.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
-    neon_plot_id: Optional[str] = Field(default=None, title="neon plot identifier", description="""When sampling from a NEON site provide the plot ID from which you sampled. This includes the 4 letter site code followed by the 3 digit ID (Example: DEJU_048). If you do not have your NEON site use the code SITE_999.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site'],
+    neon_site_code: Optional[str] = Field(default=None, title="neon site code", description="""When sampling from a NEON site provide the 4 letter site code (Example: DEJU). If you do not have your NEON site use the code SITE_999.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[A-Z]{4}$'}},
+         'domain_of': ['Site']} })
+    neon_plot_id: Optional[str] = Field(default=None, title="neon plot identifier", description="""When sampling from a NEON site provide the plot ID from which you sampled. This includes the 4 letter site code followed by the 3 digit ID (Example: DEJU_048). If you do not have your NEON site use the code SITE_999.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[A-Z]{4}_\\d{3}$'}},
+         'domain_of': ['Site'],
          'todos': ['subport mapping - this is submitted as ABCD_123 but we want to '
                    'store it as neon_site_code and neon_plot_id separately']} })
     other_growth_facil: Optional[str] = Field(default=None, title="other growth facility", description="""Please specify growth facility if you selected 'other'""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
     previous_land_use: Optional[str] = Field(default=None, title="previous land use", description="""Previous land use and dates""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
     previous_land_use_meth: Optional[str] = Field(default=None, title="previous land use method", description="""Reference or method used in determining previous land use and dates""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
     profile_position: Optional[ProfilePositionEnum] = Field(default=None, title="profile position", description="""Cross-sectional position in the hillslope where sample was collected. Sample area position in relation to surrounding areas""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
-    season_precpt: Optional[str] = Field(default=None, title="mean seasonal precipitation", description="""The average of all seasonal precipitation values known or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)""", json_schema_extra = { "linkml_meta": {'aliases': ['average seasonal precipitation'], 'domain_of': ['Site']} })
-    season_temp: Optional[str] = Field(default=None, title="mean seasonal temperature", description="""Mean seasonal temperature (Unit: C)""", json_schema_extra = { "linkml_meta": {'aliases': ['average seasonal precipitation'], 'domain_of': ['Site']} })
-    slope_aspect: Optional[str] = Field(default=None, title="slope aspect", description="""The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (degrees); e.g. 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration. (Unit: degrees)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
-    slope_gradient: Optional[str] = Field(default=None, title="slope gradient", description="""Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer. (Unit: percent)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
+    season_precpt: Optional[str] = Field(default=None, title="mean seasonal precipitation", description="""The average of all seasonal precipitation values known or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. (Unit: mm)""", json_schema_extra = { "linkml_meta": {'aliases': ['average seasonal precipitation'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mm$'}},
+         'domain_of': ['Site']} })
+    season_temp: Optional[str] = Field(default=None, title="mean seasonal temperature", description="""Mean seasonal temperature (Unit: C)""", json_schema_extra = { "linkml_meta": {'aliases': ['average seasonal precipitation'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+         'domain_of': ['Site']} })
+    slope_aspect: Optional[str] = Field(default=None, title="slope aspect", description="""The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (degrees); e.g. 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration. (Unit: degrees)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*degrees$'}},
+         'domain_of': ['Site']} })
+    slope_gradient: Optional[str] = Field(default=None, title="slope gradient", description="""Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer. (Unit: percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*percent$'}},
+         'domain_of': ['Site']} })
     tillage: Optional[TillageEnum] = Field(default=None, title="tillage", description="""Note method(s) used for tilling""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site']} })
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -3865,188 +3875,6 @@ attribute to provide additional detail.""", json_schema_extra = { "linkml_meta":
                        'QuantityValue',
                        'ConditioningValue',
                        'zipDownload']} })
-
-    @field_validator('alt')
-    def pattern_alt(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?m(?:-\d+(\.\d+)?m)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alt format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alt format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('annual_precpt')
-    def pattern_annual_precpt(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mm$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid annual_precpt format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid annual_precpt format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('annual_temp')
-    def pattern_annual_temp(cls, v):
-        pattern=re.compile(r"^-?\d+(\.\d+)?\s*C$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid annual_temp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid annual_temp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('elev')
-    def pattern_elev(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*m$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid elev format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid elev format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('extreme_event')
-    def pattern_extreme_event(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid extreme_event format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid extreme_event format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('fire')
-    def pattern_fire(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid fire format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid fire format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('flooding')
-    def pattern_flooding(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid flooding format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid flooding format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('geo_loc_name')
-    def pattern_geo_loc_name(cls, v):
-        pattern=re.compile(r"^([^\s-]{12}|[^\s-]+.+[^\s-]+):\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)\s?([^\s-]{12}|[^\s-]+.+[^\s-]+)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid geo_loc_name format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid geo_loc_name format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('neon_site_code')
-    def pattern_neon_site_code(cls, v):
-        pattern=re.compile(r"^[A-Z]{4}$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid neon_site_code format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid neon_site_code format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('neon_plot_id')
-    def pattern_neon_plot_id(cls, v):
-        pattern=re.compile(r"^[A-Z]{4}_\d{3}$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid neon_plot_id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid neon_plot_id format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('season_precpt')
-    def pattern_season_precpt(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mm$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid season_precpt format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid season_precpt format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('season_temp')
-    def pattern_season_temp(cls, v):
-        pattern=re.compile(r"^-?\d+(\.\d+)?\s*C$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid season_temp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid season_temp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('slope_aspect')
-    def pattern_slope_aspect(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*degrees$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid slope_aspect format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid slope_aspect format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('slope_gradient')
-    def pattern_slope_gradient(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*percent$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid slope_gradient format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid slope_gradient format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class Sample(ConfiguredBaseModel):
@@ -4188,37 +4016,43 @@ class AerosolArmSample(Sample):
     """
     An aerosol sample collected by the ARM facility.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'submission_version': {'tag': 'submission_version',
+                                                'value': '1.2.1'}},
+         'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
-                        'carb_dioxide': {'description': 'Amount of carbon dioxide '
+                        'carb_dioxide': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+                                         'description': 'Amount of carbon dioxide '
                                                         'measured in the air the day '
                                                         'of sampling. Provided by ARM. '
                                                         'Provide value and unit, any '
                                                         'unit is valid',
-                                         'name': 'carb_dioxide',
-                                         'pattern': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'},
-                        'carb_monoxide': {'description': 'Amount of carbon monoxide '
+                                         'name': 'carb_dioxide'},
+                        'carb_monoxide': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                                 'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+                                          'description': 'Amount of carbon monoxide '
                                                          'measured in the air the day '
                                                          'of sampling. Provided by '
                                                          'ARM. Provide value and unit '
                                                          'any unit is valid',
-                                          'name': 'carb_monoxide',
-                                          'pattern': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'},
-                        'size_frac_low': {'description': 'Refers to the mesh/pore size '
+                                          'name': 'carb_monoxide'},
+                        'size_frac_low': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                                 'value': '^\\d+(\\.\\d+)?\\s*um$'}},
+                                          'description': 'Refers to the mesh/pore size '
                                                          'used to pre-filter/pre-sort '
                                                          'the sample. Materials larger '
                                                          'than the size threshold are '
                                                          'excluded from the sample '
                                                          '(Unit: um)',
-                                          'name': 'size_frac_low',
-                                          'pattern': '^\\d+(\\.\\d+)?\\s*um$'},
-                        'size_frac_up': {'description': 'Refers to the mesh/pore size '
+                                          'name': 'size_frac_low'},
+                        'size_frac_up': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                                'value': '^\\d+(\\.\\d+)?\\s*um$'}},
+                                         'description': 'Refers to the mesh/pore size '
                                                         'used to retain the sample. '
                                                         'Materials smaller than the '
                                                         'size threshold are excluded '
                                                         'from the sample (Unit: um)',
-                                         'name': 'size_frac_up',
-                                         'pattern': '^\\d+(\\.\\d+)?\\s*um$'}}})
+                                         'name': 'size_frac_up'}}})
 
     aerosol_type: AerosolTypeEnum = Field(default=..., description="""The type or method of aerosol collection""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample']} })
     air_temp_regm: Optional[str] = Field(default=None, title="air temperature regimen", description="""Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
@@ -4249,8 +4083,12 @@ class AerosolArmSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    carb_dioxide: Optional[str] = Field(default=None, title="carbon dioxide", description="""Amount of carbon dioxide measured in the air the day of sampling. Provided by ARM. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
-    carb_monoxide: Optional[str] = Field(default=None, title="carbon monoxide", description="""Amount of carbon monoxide measured in the air the day of sampling. Provided by ARM. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
+    carb_dioxide: Optional[str] = Field(default=None, title="carbon dioxide", description="""Amount of carbon dioxide measured in the air the day of sampling. Provided by ARM. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
+    carb_monoxide: Optional[str] = Field(default=None, title="carbon monoxide", description="""Amount of carbon monoxide measured in the air the day of sampling. Provided by ARM. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
     chem_administration: Optional[str] = Field(default=None, title="chemical administration", description="""List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -4266,7 +4104,9 @@ class AerosolArmSample(Sample):
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000751']} })
     color_code: Optional[ColorCodeEnum] = Field(default=None, title="color code", description="""Color indicates the max altitude.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -4278,7 +4118,9 @@ class AerosolArmSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -4290,7 +4132,9 @@ class AerosolArmSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -4408,7 +4252,9 @@ class AerosolArmSample(Sample):
                        'WaterSample']} })
     mean_total_cpc_concentration: Optional[float] = Field(default=None, title="mean total C.P.C. concentration", description="""Mean concentration obtained from Condensation Particle Counter (Unit: μm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample']} })
     mean_total_pops_concentration: Optional[float] = Field(default=None, title="mean total P.O.P. concentration", description="""Mean concentration obtained from Portable Optical Particle Spectrometer (Unit: μm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample']} })
-    methane: Optional[str] = Field(default=None, title="methane", description="""Methane (gas) amount or concentration at the time of sampling. (Unit: umol/L or ppb or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    methane: Optional[str] = Field(default=None, title="methane", description="""Methane (gas) amount or concentration at the time of sampling. (Unit: umol/L or ppb or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|ppm|ppb)$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'OtherUndescribedSample',
                        'SedimentSample']} })
@@ -4480,7 +4326,9 @@ class AerosolArmSample(Sample):
                        'TerraformSample',
                        'WaterSample']} })
     photochemical_exposure: Optional[PhotochemicalExposureEnum] = Field(default=None, title="photochemical exposure", description="""This term is used to describe a chemical reaction caused by absorption of ultraviolet (wavelength from 100 to 400 nm), visible light (400-750 nm), or infrared radiation (750-2500 nm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
-    pressure_control: Optional[str] = Field(default=None, title="pressure control", description="""Measurment of pressure applied to the sample during experimentation (Unit: Pa)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
+    pressure_control: Optional[str] = Field(default=None, title="pressure control", description="""Measurment of pressure applied to the sample during experimentation (Unit: Pa)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*Pa$'}},
+         'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
     priority_order: Optional[float] = Field(default=None, title="priority order", description="""Indicate the run order priority of your samples""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
     project: Optional[int] = Field(default=None, title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
          'domain_of': ['AerosolArmSample',
@@ -4601,17 +4449,23 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
     second_blh: Optional[float] = Field(default=None, title="second boundary layer height", description="""Second boundary layer height candidate (meters) (Unit: m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample']} })
     second_blh_quality: Optional[str] = Field(default=None, title="second boundary layer height quality", description="""Quality index for second boundary layer height candidate (-999 if no candidate)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample']} })
     second_cbh: Optional[float] = Field(default=None, title="second cloud base height", description="""Second cloud base (meters) or highest received signal in vertical visibility (meters) (-999 if no cloud base or vertical visibility) (Unit: m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample']} })
-    size_frac_low: Optional[str] = Field(default=None, title="size fraction lower threshold", description="""Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample (Unit: um)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    size_frac_low: Optional[str] = Field(default=None, title="size fraction lower threshold", description="""Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample (Unit: um)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*um$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'OtherUndescribedSample',
                        'SoilSample',
                        'WaterSample']} })
-    size_frac_up: Optional[str] = Field(default=None, title="size fraction upper threshold", description="""Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample (Unit: um)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    size_frac_up: Optional[str] = Field(default=None, title="size fraction upper threshold", description="""Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample (Unit: um)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*um$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'OtherUndescribedSample',
                        'SoilSample',
                        'WaterSample']} })
-    solar_irradiance: Optional[str] = Field(default=None, title="solar irradiance", description="""Solar irradiance is the power per unit area (surface power density) received from the Sun in the form of electromagnetic radiation in the wavelength range of the measuring instrument. (Unit: kW/m2/d or erg/cm2/s""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
+    solar_irradiance: Optional[str] = Field(default=None, title="solar irradiance", description="""Solar irradiance is the power per unit area (surface power density) received from the Sun in the form of electromagnetic radiation in the wavelength range of the measuring instrument. (Unit: kW/m2/d or erg/cm2/s""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(kW/m2/d|erg/cm2/s)$'}},
+         'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
     source_mat_id: Optional[str] = Field(default=None, title="source material identifier", description="""A unique identifier assigned to an original material sample collected or to any derived sub-samples. The source material should be listed as a sample to inform details about parent material relationship.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -4802,158 +4656,32 @@ predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_o
          'todos': ['Is sampling activity where we want to capture this?']} })
     lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
 
-    @field_validator('carb_dioxide')
-    def pattern_carb_dioxide(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid carb_dioxide format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid carb_dioxide format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('carb_monoxide')
-    def pattern_carb_monoxide(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid carb_monoxide format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid carb_monoxide format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_broad_scale')
-    def pattern_env_broad_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_broad_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_broad_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_local_scale')
-    def pattern_env_local_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_local_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_local_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_medium')
-    def pattern_env_medium(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_medium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_medium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('methane')
-    def pattern_methane(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|ppm|ppb)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid methane format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid methane format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('pressure_control')
-    def pattern_pressure_control(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*Pa$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid pressure_control format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid pressure_control format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('size_frac_low')
-    def pattern_size_frac_low(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*um$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid size_frac_low format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid size_frac_low format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('size_frac_up')
-    def pattern_size_frac_up(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*um$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid size_frac_up format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid size_frac_up format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('solar_irradiance')
-    def pattern_solar_irradiance(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(kW/m2/d|erg/cm2/s)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid solar_irradiance format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid solar_irradiance format: {v}"
-            raise ValueError(err_msg)
-        return v
-
 
 class AerosolSample(Sample):
     """
     An aerosol sample collected from the environment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'submission_version': {'tag': 'submission_version',
+                                                'value': '1.4.1'}},
+         'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
-                        'size_frac_low': {'description': 'Refers to the mesh/pore size '
+                        'size_frac_low': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                                 'value': '^\\d+(\\.\\d+)?\\s*um$'}},
+                                          'description': 'Refers to the mesh/pore size '
                                                          'used to pre-filter/pre-sort '
                                                          'the sample. Materials larger '
                                                          'than the size threshold are '
                                                          'excluded from the sample '
                                                          '(Unit: um)',
-                                          'name': 'size_frac_low',
-                                          'pattern': '^\\d+(\\.\\d+)?\\s*um$'},
-                        'size_frac_up': {'description': 'Refers to the mesh/pore size '
+                                          'name': 'size_frac_low'},
+                        'size_frac_up': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                                'value': '^\\d+(\\.\\d+)?\\s*um$'}},
+                                         'description': 'Refers to the mesh/pore size '
                                                         'used to retain the sample. '
                                                         'Materials smaller than the '
                                                         'size threshold are excluded '
                                                         'from the sample (Unit: um)',
-                                         'name': 'size_frac_up',
-                                         'pattern': '^\\d+(\\.\\d+)?\\s*um$'}}})
+                                         'name': 'size_frac_up'}}})
 
     aerosol_type: AerosolTypeEnum = Field(default=..., description="""The type or method of aerosol collection""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample']} })
     air_temp_regm: Optional[str] = Field(default=None, title="air temperature regimen", description="""Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
@@ -4984,8 +4712,12 @@ class AerosolSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    carb_dioxide: Optional[str] = Field(default=None, title="carbon dioxide", description="""Amount of carbon dioxide measured in the air the day of sampling. (Unit: umol/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
-    carb_monoxide: Optional[str] = Field(default=None, title="carbon monoxide", description="""Amount of carbon monoxide measured in the air the day of sampling. (Unit: umol/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
+    carb_dioxide: Optional[str] = Field(default=None, title="carbon dioxide", description="""Amount of carbon dioxide measured in the air the day of sampling. (Unit: umol/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|ppm)$'}},
+         'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
+    carb_monoxide: Optional[str] = Field(default=None, title="carbon monoxide", description="""Amount of carbon monoxide measured in the air the day of sampling. (Unit: umol/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|ppm)$'}},
+         'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
     chem_administration: Optional[str] = Field(default=None, title="chemical administration", description="""List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -5000,7 +4732,9 @@ class AerosolSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000751']} })
-    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -5012,7 +4746,9 @@ class AerosolSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -5024,7 +4760,9 @@ class AerosolSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -5137,7 +4875,9 @@ class AerosolSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    methane: Optional[str] = Field(default=None, title="methane", description="""Methane (gas) amount or concentration at the time of sampling. (Unit: umol/L or ppb or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    methane: Optional[str] = Field(default=None, title="methane", description="""Methane (gas) amount or concentration at the time of sampling. (Unit: umol/L or ppb or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|ppm|ppb)$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'OtherUndescribedSample',
                        'SedimentSample']} })
@@ -5221,9 +4961,13 @@ class AerosolSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    oxygen: Optional[str] = Field(default=None, title="oxygen", description="""Amount of oxygen measured in the air the day of sampling. (Unit: mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample', 'OtherUndescribedSample']} })
+    oxygen: Optional[str] = Field(default=None, title="oxygen", description="""Amount of oxygen measured in the air the day of sampling. (Unit: mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg/L|ppm)$'}},
+         'domain_of': ['AerosolSample', 'OtherUndescribedSample']} })
     photochemical_exposure: Optional[PhotochemicalExposureEnum] = Field(default=None, title="photochemical exposure", description="""This term is used to describe a chemical reaction caused by absorption of ultraviolet (wavelength from 100 to 400 nm), visible light (400-750 nm), or infrared radiation (750-2500 nm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
-    pressure_control: Optional[str] = Field(default=None, title="pressure control", description="""Measurment of pressure applied to the sample during experimentation (Unit: Pa)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
+    pressure_control: Optional[str] = Field(default=None, title="pressure control", description="""Measurment of pressure applied to the sample during experimentation (Unit: Pa)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*Pa$'}},
+         'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
     priority_order: Optional[float] = Field(default=None, title="priority order", description="""Indicate the run order priority of your samples""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
     project: Optional[int] = Field(default=None, title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
          'domain_of': ['AerosolArmSample',
@@ -5341,17 +5085,23 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    size_frac_low: Optional[str] = Field(default=None, title="size fraction lower threshold", description="""Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample (Unit: um)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    size_frac_low: Optional[str] = Field(default=None, title="size fraction lower threshold", description="""Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample (Unit: um)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*um$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'OtherUndescribedSample',
                        'SoilSample',
                        'WaterSample']} })
-    size_frac_up: Optional[str] = Field(default=None, title="size fraction upper threshold", description="""Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample (Unit: um)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    size_frac_up: Optional[str] = Field(default=None, title="size fraction upper threshold", description="""Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample (Unit: um)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*um$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'OtherUndescribedSample',
                        'SoilSample',
                        'WaterSample']} })
-    solar_irradiance: Optional[str] = Field(default=None, title="solar irradiance", description="""Solar irradiance is the power per unit area (surface power density) received from the Sun in the form of electromagnetic radiation in the wavelength range of the measuring instrument. (Unit: kW/m2/d or erg/cm2/s""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
+    solar_irradiance: Optional[str] = Field(default=None, title="solar irradiance", description="""Solar irradiance is the power per unit area (surface power density) received from the Sun in the form of electromagnetic radiation in the wavelength range of the measuring instrument. (Unit: kW/m2/d or erg/cm2/s""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(kW/m2/d|erg/cm2/s)$'}},
+         'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
     source_mat_id: Optional[str] = Field(default=None, title="source material identifier", description="""A unique identifier assigned to an original material sample collected or to any derived sub-samples. The source material should be listed as a sample to inform details about parent material relationship.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -5541,149 +5291,6 @@ predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_o
          'todos': ['Is sampling activity where we want to capture this?']} })
     lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
 
-    @field_validator('carb_dioxide')
-    def pattern_carb_dioxide(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid carb_dioxide format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid carb_dioxide format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('carb_monoxide')
-    def pattern_carb_monoxide(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid carb_monoxide format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid carb_monoxide format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_broad_scale')
-    def pattern_env_broad_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_broad_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_broad_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_local_scale')
-    def pattern_env_local_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_local_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_local_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_medium')
-    def pattern_env_medium(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_medium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_medium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('methane')
-    def pattern_methane(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|ppm|ppb)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid methane format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid methane format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('oxygen')
-    def pattern_oxygen(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid oxygen format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid oxygen format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('pressure_control')
-    def pattern_pressure_control(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*Pa$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid pressure_control format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid pressure_control format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('size_frac_low')
-    def pattern_size_frac_low(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*um$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid size_frac_low format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid size_frac_low format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('size_frac_up')
-    def pattern_size_frac_up(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*um$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid size_frac_up format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid size_frac_up format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('solar_irradiance')
-    def pattern_solar_irradiance(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(kW/m2/d|erg/cm2/s)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid solar_irradiance format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid solar_irradiance format: {v}"
-            raise ValueError(err_msg)
-        return v
-
 
 class AMP2UserSample(Sample):
     """
@@ -5750,7 +5357,9 @@ class AMP2UserSample(Sample):
     organism_ref: str = Field(default=..., description="""FK to organism representing the biological identity this sample instantiates.
 Required - every AMP2UserSample must reference an organism.""", json_schema_extra = { "linkml_meta": {'aliases': ['strain_ref', 'strain_id'],
          'domain_of': ['CultureGrowth', 'AMP2UserSample', 'EngineeredStrainSample']} })
-    collection_date: Optional[date] = Field(default=None, title="collection date", description="""The date the sample was collected or received from the user.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    collection_date: Optional[date] = Field(default=None, title="collection date", description="""The date the sample was collected or received from the user.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     growth_facil: Optional[GrowthFacilityEnum] = Field(default=None, title="growth facility", description="""Type of facility or location from where the sample was collected or
 grown. This field is NOT multivalued. If selecting other, add the `other_growth_facil`
 attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Site', 'AMP2UserSample']} })
@@ -5763,7 +5372,9 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    start_date_inc: Optional[str] = Field(default=None, title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample',
+    start_date_inc: Optional[str] = Field(default=None, title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -5796,7 +5407,9 @@ Aliases: samp_store_cond, storage_cond, storage_condt""", json_schema_extra = { 
          'exact_mappings': ['MIXS:0000327']} })
     storage_temperature: Optional[str] = Field(default=None, description="""Storage temperature for this sample (e.g., \"-80 C\").
 Aliases: samp_store_temp""", json_schema_extra = { "linkml_meta": {'domain_of': ['MediaPreparation', 'AMP2UserSample', 'EngineeredStrainSample']} })
-    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     guid_source: Optional[str] = Field(default=None, description="""Source system for the sample GUID (e.g., \"LIMS\").""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample']} })
     other_guid_source: Optional[str] = Field(default=None, description="""Description of GUID source if guid_source = \"other\".""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample']} })
     analysis_type: Optional[str] = Field(default=None, description="""The type(s) of analysis planned for this sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
@@ -5943,51 +5556,14 @@ predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_o
          'todos': ['Is sampling activity where we want to capture this?']} })
     lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
 
-    @field_validator('collection_date')
-    def pattern_collection_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('start_date_inc')
-    def pattern_start_date_inc(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid start_date_inc format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid start_date_inc format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('shipped_sample_size')
-    def pattern_shipped_sample_size(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid shipped_sample_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid shipped_sample_size format: {v}"
-            raise ValueError(err_msg)
-        return v
-
 
 class CommerciallyPurchasedSample(Sample):
     """
     A sample containing commercially purchased material.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'submission_version': {'tag': 'submission_version',
+                                                'value': '1.1.3'}},
+         'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'compound_name': {'name': 'compound_name', 'required': True}}})
 
@@ -6323,7 +5899,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: Optional[str] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    temp: Optional[str] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+         'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
@@ -6457,25 +6035,14 @@ predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_o
          'todos': ['Is sampling activity where we want to capture this?']} })
     lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
 
-    @field_validator('temp')
-    def pattern_temp(cls, v):
-        pattern=re.compile(r"^-?\d+(\.\d+)?\s*C$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid temp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid temp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
 
 class CultureEnvironmentalSample(Sample):
     """
     A sample containing organisms cultured from an environmental sample.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'submission_version': {'tag': 'submission_version',
+                                                'value': '1.1.1'}},
+         'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'growth_medium': {'name': 'growth_medium', 'required': True},
                         'host_common_name': {'name': 'host_common_name',
@@ -6551,7 +6118,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -6563,7 +6132,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -6575,7 +6146,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -6680,7 +6253,9 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    host_spec_range: Optional[str] = Field(default=None, title="host specificity or range", description="""The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'domain_of': ['organism',
+    host_spec_range: Optional[str] = Field(default=None, title="host specificity or range", description="""The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': 'NCBITaxon:\\d+'}},
+         'domain_of': ['organism',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -6688,6 +6263,8 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'PureCultureSample',
                        'TerraformSample']} })
     host_taxid: str = Field(default=..., title="host taxonomy identifier", description="""NCBI taxon ID. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'aliases': ['host_taxonomy_id', 'host_ncbi_taxon_id', 'host_taxa_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': 'NCBITaxon:\\d+'}},
          'domain_of': ['organism',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -7016,7 +6593,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    start_date_inc: str = Field(default=..., title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample',
+    start_date_inc: str = Field(default=..., title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -7220,84 +6799,6 @@ predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_o
          'todos': ['Is sampling activity where we want to capture this?']} })
     lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
 
-    @field_validator('env_broad_scale')
-    def pattern_env_broad_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_broad_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_broad_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_local_scale')
-    def pattern_env_local_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_local_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_local_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_medium')
-    def pattern_env_medium(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_medium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_medium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_spec_range')
-    def pattern_host_spec_range(cls, v):
-        pattern=re.compile(r"NCBITaxon:\d+")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_spec_range format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_spec_range format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_taxid')
-    def pattern_host_taxid(cls, v):
-        pattern=re.compile(r"NCBITaxon:\d+")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_taxid format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_taxid format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('start_date_inc')
-    def pattern_start_date_inc(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid start_date_inc format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid start_date_inc format: {v}"
-            raise ValueError(err_msg)
-        return v
-
 
 class EngineeredStrainSample(Sample):
     """
@@ -7308,7 +6809,9 @@ class EngineeredStrainSample(Sample):
     and carries only sample-instance-specific slots.
       
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'submission_version': {'tag': 'submission_version',
+                                                'value': '1.0.0'}},
+         'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
     organism_ref: Optional[str] = Field(default=None, description="""FK reference to an organism representing the biological identity
 strain, isolate, engineered construct) that this sample or activity
@@ -7482,7 +6985,9 @@ class FieldDeployedTerraformSample(Sample):
     """
     A sample collected from a field-deployed Terraform experiment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'submission_version': {'tag': 'submission_version',
+                                                'value': '1.2.1'}},
+         'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'initiation_date_inoculation': {'name': 'initiation_date_inoculation',
                                                         'required': True},
@@ -7556,7 +7061,9 @@ class FieldDeployedTerraformSample(Sample):
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000751']} })
     cult_root_med: Optional[str] = Field(default=None, title="culture rooting medium", description="""Name or reference for the hydroponic or in vitro culture rooting medium; can be the name of a commonly used medium or reference to a specific medium, e.g. Murashige and Skoog medium. If the medium has not been formally published use the rooting medium descriptors.""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
-    depth: Optional[str] = Field(default=None, title="depth", description="""The vertical distance below local surface. For sediment or soil samples, depth is measured from sediment or soil surface respectively. Depth is required to be reported as an interval for subsurface samples. (Units: m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    depth: Optional[str] = Field(default=None, title="depth", description="""The vertical distance below local surface. For sediment or soil samples, depth is measured from sediment or soil surface respectively. Depth is required to be reported as an interval for subsurface samples. (Units: m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?(-\\d+(\\.\\d+)?)?\\s*m$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
@@ -7570,7 +7077,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -7582,7 +7091,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -7594,7 +7105,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -7649,7 +7162,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    host_age: Optional[str] = Field(default=None, title="host age", description="""Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees. (Unit: a (year) or d (day) or h (hour). Do not include the additional information in ().)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    host_age: Optional[str] = Field(default=None, title="host age", description="""Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees. (Unit: a (year) or d (day) or h (hour). Do not include the additional information in ().)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(a|d|h)$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
     host_common_name: Optional[str] = Field(default=None, title="host common name", description="""Common name for the host organism (e.g., \"Pseudomonas putida\").
@@ -7661,11 +7176,15 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    host_dry_mass: Optional[str] = Field(default=None, title="host dry mass", description="""Measurement of dry mass. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    host_dry_mass: Optional[str] = Field(default=None, title="host dry mass", description="""Measurement of dry mass. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(kg|g)$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
     host_genotype: Optional[str] = Field(default=None, title="host genotype", description="""Observed genotype""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
-    host_height: Optional[str] = Field(default=None, title="host height", description="""The height of subject. (Unit: cm or mm or m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    host_height: Optional[str] = Field(default=None, title="host height", description="""The height of subject. (Unit: cm or mm or m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(cm|mm|m)$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'PlantSample',
                        'TerraformSample']} })
@@ -7673,14 +7192,8 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'OtherUndescribedSample',
                        'PlantSample',
                        'TerraformSample']} })
-    host_spec_range: Optional[str] = Field(default=None, title="host specificity or range", description="""The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'domain_of': ['organism',
-                       'CultureEnvironmentalSample',
-                       'FieldDeployedTerraformSample',
-                       'MixedCultureSample',
-                       'OtherUndescribedSample',
-                       'PureCultureSample',
-                       'TerraformSample']} })
-    host_taxid: Optional[str] = Field(default=None, title="host taxonomy identifier", description="""NCBI taxon ID. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'aliases': ['host_taxonomy_id', 'host_ncbi_taxon_id', 'host_taxa_id'],
+    host_spec_range: Optional[str] = Field(default=None, title="host specificity or range", description="""The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': 'NCBITaxon:\\d+'}},
          'domain_of': ['organism',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -7688,10 +7201,24 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    host_tot_mass: Optional[str] = Field(default=None, title="host total mass", description="""Total mass of the host at collection. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    host_taxid: Optional[str] = Field(default=None, title="host taxonomy identifier", description="""NCBI taxon ID. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'aliases': ['host_taxonomy_id', 'host_ncbi_taxon_id', 'host_taxa_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': 'NCBITaxon:\\d+'}},
+         'domain_of': ['organism',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'OtherUndescribedSample',
+                       'PureCultureSample',
+                       'TerraformSample']} })
+    host_tot_mass: Optional[str] = Field(default=None, title="host total mass", description="""Total mass of the host at collection. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(kg|g)$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
-    host_wet_mass: Optional[str] = Field(default=None, title="host wet mass", description="""Measurement of wet mass. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    host_wet_mass: Optional[str] = Field(default=None, title="host wet mass", description="""Measurement of wet mass. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(kg|g)$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
     humidity_regm: Optional[str] = Field(default=None, title="humidity regimen", description="""Information about treatment involving an exposure to varying degrees of humidity; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
@@ -7705,8 +7232,12 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'SedimentSample',
                        'SoilSample',
                        'TerraformSample']} })
-    initiation_date_inoculation: str = Field(default=..., title="initiation date of inoculation", description="""The date the sample was inoculated. This can be the date of inoculation, isolation, etc. If providing a sequential initiation, the sample should be linked to the sample it originated from. Formatted as YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
-    initiation_date_plant: str = Field(default=..., title="initiation date of plant", description="""The date the plant part of the sample was initiated. This can be the date of germination or propagation. If providing a sequential initiation (propagation), the sample should be linked to the sample it originated from. Formatted as YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
+    initiation_date_inoculation: str = Field(default=..., title="initiation date of inoculation", description="""The date the sample was inoculated. This can be the date of inoculation, isolation, etc. If providing a sequential initiation, the sample should be linked to the sample it originated from. Formatted as YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
+    initiation_date_plant: str = Field(default=..., title="initiation date of plant", description="""The date the plant part of the sample was initiated. This can be the date of germination or propagation. If providing a sequential initiation (propagation), the sample should be linked to the sample it originated from. Formatted as YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
     isol_growth_condt: Optional[str] = Field(default=None, title="isolation and growth conditions", description="""Publication reference in the form of pubmed ID (PMID), digital object
 identifier (DOI), or URL for isolation and growth condition specifications of the
 organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample',
@@ -7862,7 +7393,9 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'TerraformSample',
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000015']} })
-    plant_growth_med: Optional[str] = Field(default=None, title="plant growth medium", description="""Specification of the media for growing the plants or tissue cultured samples e.g. soil, aeroponic, hydroponic, in vitro, solid culture medium, in vitro, liquid culture medium. Value is required to be a subclass from the PECO ontology (http://purl.bioontology.org/ontology/PECO). The value should be formatted as the name of the media followed by the PECO identifier in brackets, e.g. aeroponic plant growth media exposure [PECO:0001073]""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    plant_growth_med: Optional[str] = Field(default=None, title="plant growth medium", description="""Specification of the media for growing the plants or tissue cultured samples e.g. soil, aeroponic, hydroponic, in vitro, solid culture medium, in vitro, liquid culture medium. Value is required to be a subclass from the PECO ontology (http://purl.bioontology.org/ontology/PECO). The value should be formatted as the name of the media followed by the PECO identifier in brackets, e.g. aeroponic plant growth media exposure [PECO:0001073]""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[PECO:\\d+\\]$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'PlantSample',
                        'TerraformSample']} })
     plant_product: Optional[str] = Field(default=None, title="plant product", description="""Substance produced by the plant where the sample was obtained from""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
@@ -7872,7 +7405,9 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
     plant_struc: Optional[PlantStructureEnum] = Field(default=None, title="plant structure", description="""Name of plant structure the sample was obtained from; for Plant Ontology (PO) (v releases/2017-12-14) terms see http://purl.bioontology.org/ontology/PO e.g. petiole epidermis (PO_0000051). If an individual flower is sampled the sex of it can be recorded here.""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
                        'PlantSample',
                        'TerraformSample']} })
-    pressure: Optional[str] = Field(default=None, title="pressure", description="""Pressure to which the sample is subject, in atmospheres (Unit: atm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    pressure: Optional[str] = Field(default=None, title="pressure", description="""Pressure to which the sample is subject, in atmospheres (Unit: atm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*atm$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'TerraformSample',
@@ -7906,7 +7441,9 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    redox_potential: Optional[str] = Field(default=None, title="redox potential", description="""Redox potential measured relative to a hydrogen cell indicating oxidation or reduction potential (Unit: mV)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    redox_potential: Optional[str] = Field(default=None, title="redox potential", description="""Redox potential measured relative to a hydrogen cell indicating oxidation or reduction potential (Unit: mV)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mV$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'TerraformSample',
@@ -8052,7 +7589,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    start_date_inc: Optional[str] = Field(default=None, title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample',
+    start_date_inc: Optional[str] = Field(default=None, title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -8102,7 +7641,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
     synth_env_design_method: str = Field(default=..., title="synthetic environment design method", description="""A citation for how the synthetic environment was designed""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
     synth_env_material: str = Field(default=..., title="synthetic environment material", description="""Describes the fabrication material used to create the synthetic environment and what the structure is made of""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
     synth_env_treatment: str = Field(default=..., title="synthetic environment treatment", description="""Describes any treatments that are built into the synthetic environment""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
-    synth_start_date: str = Field(default=..., title="synthetic environment start date", description="""Provide the date the sample was transferred to the synthetic environment. Formatted as YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
+    synth_start_date: str = Field(default=..., title="synthetic environment start date", description="""Provide the date the sample was transferred to the synthetic environment. Formatted as YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
     technical_reps: Optional[int] = Field(default=None, title="technical replicates", description="""Number of technical replicates for the sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -8117,7 +7658,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: Optional[str] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    temp: Optional[str] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+         'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
@@ -8130,7 +7673,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
     tiss_cult_growth_med: Optional[str] = Field(default=None, title="tissue culture growth media", description="""Description of plant tissue culture growth media used""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
-    water_content: Optional[str] = Field(default=None, title="water content", description="""Water content measurement. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    water_content: Optional[str] = Field(default=None, title="water content", description="""Water content measurement. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
@@ -8275,272 +7820,14 @@ predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_o
          'todos': ['Is sampling activity where we want to capture this?']} })
     lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
 
-    @field_validator('depth')
-    def pattern_depth(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?(-\d+(\.\d+)?)?\s*m$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid depth format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid depth format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_broad_scale')
-    def pattern_env_broad_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_broad_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_broad_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_local_scale')
-    def pattern_env_local_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_local_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_local_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_medium')
-    def pattern_env_medium(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_medium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_medium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_age')
-    def pattern_host_age(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(a|d|h)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_age format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_age format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_dry_mass')
-    def pattern_host_dry_mass(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(kg|g)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_dry_mass format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_dry_mass format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_height')
-    def pattern_host_height(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(cm|mm|m)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_height format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_height format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_spec_range')
-    def pattern_host_spec_range(cls, v):
-        pattern=re.compile(r"NCBITaxon:\d+")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_spec_range format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_spec_range format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_taxid')
-    def pattern_host_taxid(cls, v):
-        pattern=re.compile(r"NCBITaxon:\d+")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_taxid format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_taxid format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_tot_mass')
-    def pattern_host_tot_mass(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(kg|g)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_tot_mass format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_tot_mass format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_wet_mass')
-    def pattern_host_wet_mass(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(kg|g)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_wet_mass format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_wet_mass format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('initiation_date_inoculation')
-    def pattern_initiation_date_inoculation(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid initiation_date_inoculation format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid initiation_date_inoculation format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('initiation_date_plant')
-    def pattern_initiation_date_plant(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid initiation_date_plant format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid initiation_date_plant format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('plant_growth_med')
-    def pattern_plant_growth_med(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[PECO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid plant_growth_med format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid plant_growth_med format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('pressure')
-    def pattern_pressure(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*atm$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid pressure format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid pressure format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('redox_potential')
-    def pattern_redox_potential(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mV$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid redox_potential format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid redox_potential format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('start_date_inc')
-    def pattern_start_date_inc(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid start_date_inc format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid start_date_inc format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('synth_start_date')
-    def pattern_synth_start_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid synth_start_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid synth_start_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('temp')
-    def pattern_temp(cls, v):
-        pattern=re.compile(r"^-?\d+(\.\d+)?\s*C$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid temp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid temp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('water_content')
-    def pattern_water_content(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid water_content format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid water_content format: {v}"
-            raise ValueError(err_msg)
-        return v
-
 
 class MixedCultureSample(Sample):
     """
     A sample containing multiple cultured organisms.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'submission_version': {'tag': 'submission_version',
+                                                'value': '1.1.1'}},
+         'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'growth_medium': {'name': 'growth_medium', 'required': True},
                         'host_common_name': {'name': 'host_common_name',
@@ -8715,7 +8002,9 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    host_spec_range: Optional[str] = Field(default=None, title="host specificity or range", description="""The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'domain_of': ['organism',
+    host_spec_range: Optional[str] = Field(default=None, title="host specificity or range", description="""The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': 'NCBITaxon:\\d+'}},
+         'domain_of': ['organism',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -8723,6 +8012,8 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'PureCultureSample',
                        'TerraformSample']} })
     host_taxid: str = Field(default=..., title="host taxonomy identifier", description="""NCBI taxon ID. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'aliases': ['host_taxonomy_id', 'host_ncbi_taxon_id', 'host_taxa_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': 'NCBITaxon:\\d+'}},
          'domain_of': ['organism',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -9021,7 +8312,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'TerraformSample',
                        'WaterSample']} })
     specific_host: Optional[str] = Field(default=None, title="host specific name", description="""If there is a host involved please provide its taxid (or environmental if not actually isolated from the dead or alive host - i.e. a pathogen could be isolated from a swipe of a bench etc) and report whether it is a laboratory or natural host""", json_schema_extra = { "linkml_meta": {'domain_of': ['MixedCultureSample']} })
-    start_date_inc: str = Field(default=..., title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample',
+    start_date_inc: str = Field(default=..., title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -9225,52 +8518,19 @@ predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_o
          'todos': ['Is sampling activity where we want to capture this?']} })
     lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
 
-    @field_validator('host_spec_range')
-    def pattern_host_spec_range(cls, v):
-        pattern=re.compile(r"NCBITaxon:\d+")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_spec_range format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_spec_range format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_taxid')
-    def pattern_host_taxid(cls, v):
-        pattern=re.compile(r"NCBITaxon:\d+")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_taxid format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_taxid format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('start_date_inc')
-    def pattern_start_date_inc(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid start_date_inc format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid start_date_inc format: {v}"
-            raise ValueError(err_msg)
-        return v
-
 
 class MonetSoilSample(Sample):
     """
     A soil sample that has been collected according to the MONet soil sampling protocol. This sample type has specific slot requirements related to the MONet soil sampling method, such as infiltration rates.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
-         'slot_usage': {'bulk_elect_conductivity': {'description': 'Provide the bulk '
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'submission_version': {'tag': 'submission_version',
+                                                'value': '2.1.1'}},
+         'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
+         'slot_usage': {'bulk_elect_conductivity': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                                           'value': '^\\d+(\\.\\d+)?\\s*mS/cm|did '
+                                                                                                    'not '
+                                                                                                    'collect|failed'}},
+                                                    'description': 'Provide the bulk '
                                                                    'electrical '
                                                                    'conductivity '
                                                                    'readout from the '
@@ -9286,10 +8546,10 @@ class MonetSoilSample(Sample):
                                                                    "collect'. (Unit: "
                                                                    'mS/cm)',
                                                     'name': 'bulk_elect_conductivity',
-                                                    'pattern': '^\\d+(\\.\\d+)?\\s*mS/cm|did '
-                                                               'not collect|failed',
                                                     'required': True},
-                        'depth': {'description': 'The vertical distance below local '
+                        'depth': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                         'value': '^\\d+(\\.\\d+)?-\\d+(\\.\\d+)?\\s*(m|cm)$'}},
+                                  'description': 'The vertical distance below local '
                                                  'surface. For sediment or soil '
                                                  'samples, depth is measured from '
                                                  'sediment or soil surface '
@@ -9297,7 +8557,6 @@ class MonetSoilSample(Sample):
                                                  'be reported as an interval for '
                                                  'subsurface samples. (Units: cm or m)',
                                   'name': 'depth',
-                                  'pattern': '^\\d+(\\.\\d+)?-\\d+(\\.\\d+)?\\s*(m|cm)$',
                                   'required': True},
                         'latitude': {'name': 'latitude', 'required': True},
                         'longitude': {'name': 'longitude', 'required': True},
@@ -9306,17 +8565,23 @@ class MonetSoilSample(Sample):
                                              'required': True},
                         'soil_type': {'name': 'soil_type', 'required': True},
                         'soil_type_meth': {'name': 'soil_type_meth', 'required': True},
-                        'temp': {'description': 'Temperature of the sample at the time '
+                        'temp': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                        'value': '^-?\\d+(\\.\\d+)?\\s*C|did '
+                                                                                 'not '
+                                                                                 'collect|failed'}},
+                                 'description': 'Temperature of the sample at the time '
                                                 'of sampling. If measurement was '
                                                 'started and unsuccessful enter '
                                                 "'failed' if measurement was not "
                                                 "attempted enter 'did not collect'. "
                                                 '(Units: C)',
                                  'name': 'temp',
-                                 'pattern': '^-?\\d+(\\.\\d+)?\\s*C|did not '
-                                            'collect|failed',
                                  'required': True},
-                        'water_content': {'description': 'Water content measurement. '
+                        'water_content': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                                 'value': '^\\d+(\\.\\d+)?\\s*m3/m3|did '
+                                                                                          'not '
+                                                                                          'collect|failed'}},
+                                          'description': 'Water content measurement. '
                                                          'This will be a readout from '
                                                          'the Teros ZSC bluetooth '
                                                          'sensor and requires a unit '
@@ -9327,12 +8592,13 @@ class MonetSoilSample(Sample):
                                                          "attempted enter 'did not "
                                                          "collect'.",
                                           'name': 'water_content',
-                                          'pattern': '^\\d+(\\.\\d+)?\\s*m3/m3|did not '
-                                                     'collect|failed',
                                           'required': True}}})
 
     agrochem_addition: Optional[str] = Field(default=None, title="agrochemical additions", description="""Addition of fertilizers, pesticides, etc. - amount and time of applications""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'OtherUndescribedSample', 'SoilSample']} })
-    bulk_elect_conductivity: str = Field(default=..., title="bulk electrical conductivity", description="""Provide the bulk electrical conductivity readout from the Teros ZSC bluetooth sensor. If measurement was started and unsuccessful enter 'failed' if measurement was not attempted enter 'did not collect'. (Unit: mS/cm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'OtherUndescribedSample', 'SoilSample']} })
+    bulk_elect_conductivity: str = Field(default=..., title="bulk electrical conductivity", description="""Provide the bulk electrical conductivity readout from the Teros ZSC bluetooth sensor. If measurement was started and unsuccessful enter 'failed' if measurement was not attempted enter 'did not collect'. (Unit: mS/cm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mS/cm|did '
+                                                         'not collect|failed'}},
+         'domain_of': ['MonetSoilSample', 'OtherUndescribedSample', 'SoilSample']} })
     chem_administration: Optional[str] = Field(default=None, title="chemical administration", description="""List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -9348,13 +8614,17 @@ class MonetSoilSample(Sample):
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000751']} })
     core_group: Optional[MONetCoreGroupEnum] = Field(default=None, title="core group", description="""The category of soil core taken according to the MONet sampling protocol.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample']} })
-    depth: str = Field(default=..., title="depth", description="""The vertical distance below local surface. For sediment or soil samples, depth is measured from sediment or soil surface respectively. Depth is required to be reported as an interval for subsurface samples. (Units: cm or m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    depth: str = Field(default=..., title="depth", description="""The vertical distance below local surface. For sediment or soil samples, depth is measured from sediment or soil surface respectively. Depth is required to be reported as an interval for subsurface samples. (Units: cm or m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?-\\d+(\\.\\d+)?\\s*(m|cm)$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -9366,7 +8636,9 @@ class MonetSoilSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -9378,7 +8650,9 @@ class MonetSoilSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -9432,7 +8706,9 @@ class MonetSoilSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    lims_id: Optional[str] = Field(default=None, title="LIMS ID", description="""An EMSL internal LIMS identifier for your sample. This will be provided by the MPOC and should not be edited.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample']} })
+    lims_id: Optional[str] = Field(default=None, title="LIMS ID", description="""An EMSL internal LIMS identifier for your sample. This will be provided by the MPOC and should not be edited.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^INGEST_SAMPLE_\\d{9}$'}},
+         'domain_of': ['MonetSoilSample']} })
     misc_param: Optional[str] = Field(default=None, title="miscellaneous parameter", description="""Any other measurement performed or parameter collected that is not listed here""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'FieldDeployedTerraformSample',
@@ -9619,7 +8895,10 @@ in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta":
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: str = Field(default=..., title="temperature", description="""Temperature of the sample at the time of sampling. If measurement was started and unsuccessful enter 'failed' if measurement was not attempted enter 'did not collect'. (Units: C)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    temp: str = Field(default=..., title="temperature", description="""Temperature of the sample at the time of sampling. If measurement was started and unsuccessful enter 'failed' if measurement was not attempted enter 'did not collect'. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^-?\\d+(\\.\\d+)?\\s*C|did '
+                                                         'not collect|failed'}},
+         'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
@@ -9629,7 +8908,10 @@ in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta":
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    water_content: str = Field(default=..., title="water content", description="""Water content measurement. This will be a readout from the Teros ZSC bluetooth sensor and requires a unit of 'm3/m3'. If measurement was started and unsuccessful enter 'failed' if measurement was not attempted enter 'did not collect'.""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    water_content: str = Field(default=..., title="water content", description="""Water content measurement. This will be a readout from the Teros ZSC bluetooth sensor and requires a unit of 'm3/m3'. If measurement was started and unsuccessful enter 'failed' if measurement was not attempted enter 'did not collect'.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*m3/m3|did '
+                                                         'not collect|failed'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
@@ -9774,116 +9056,14 @@ predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_o
          'todos': ['Is sampling activity where we want to capture this?']} })
     lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
 
-    @field_validator('bulk_elect_conductivity')
-    def pattern_bulk_elect_conductivity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mS/cm|did not collect|failed")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid bulk_elect_conductivity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid bulk_elect_conductivity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('depth')
-    def pattern_depth(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?-\d+(\.\d+)?\s*(m|cm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid depth format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid depth format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_broad_scale')
-    def pattern_env_broad_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_broad_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_broad_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_local_scale')
-    def pattern_env_local_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_local_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_local_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_medium')
-    def pattern_env_medium(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_medium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_medium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('lims_id')
-    def pattern_lims_id(cls, v):
-        pattern=re.compile(r"^INGEST_SAMPLE_\d{9}$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid lims_id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid lims_id format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('temp')
-    def pattern_temp(cls, v):
-        pattern=re.compile(r"^-?\d+(\.\d+)?\s*C|did not collect|failed")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid temp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid temp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('water_content')
-    def pattern_water_content(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*m3/m3|did not collect|failed")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid water_content format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid water_content format: {v}"
-            raise ValueError(err_msg)
-        return v
-
 
 class OtherUndescribedSample(Sample):
     """
     A sample that does not fit into any of the other described sample types.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'submission_version': {'tag': 'submission_version',
+                                                'value': '1.1.1'}},
+         'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'carb_dioxide': {'description': 'Amount of carbon dioxide '
                                                         'measured in the air the day '
@@ -9934,11 +9114,19 @@ class OtherUndescribedSample(Sample):
          'exact_mappings': ['MIXS:0000551']} })
     al_sat: Optional[str] = Field(default=None, title="aluminum saturation", description="""Aluminum saturation (esp. For tropical soils)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SoilSample']} })
     al_sat_meth: Optional[str] = Field(default=None, title="aluminum saturation method", description="""Reference or method used in determining Al saturation""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SoilSample']} })
-    alkalinity: Optional[str] = Field(default=None, title="alkalinity", description="""The ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate (Unit: mg/L or meq/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    alkalinity: Optional[str] = Field(default=None, title="alkalinity", description="""The ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate (Unit: mg/L or meq/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg|meq)/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     alkalinity_method: Optional[str] = Field(default=None, title="alkalinity method", description="""Method used for alkalinity measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    alkyl_diethers: Optional[str] = Field(default=None, title="alkyl diethers", description="""Concentration of alkyl diethers. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    aminopept_act: Optional[str] = Field(default=None, title="aminopeptidase activity", description="""Measurement of aminopeptidase activity (Unit: mol/L/h)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    ammonium: Optional[str] = Field(default=None, title="ammonium", description="""Concentration of ammonium in the sample. (Units: umol/L or mg/Liter or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    alkyl_diethers: Optional[str] = Field(default=None, title="alkyl diethers", description="""Concentration of alkyl diethers. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    aminopept_act: Optional[str] = Field(default=None, title="aminopeptidase activity", description="""Measurement of aminopeptidase activity (Unit: mol/L/h)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mol/L/h$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    ammonium: Optional[str] = Field(default=None, title="ammonium", description="""Concentration of ammonium in the sample. (Units: umol/L or mg/Liter or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     analysis_type: str = Field(default=..., description="""The type(s) of analysis planned for this sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'AMP2UserSample',
@@ -9956,9 +9144,15 @@ class OtherUndescribedSample(Sample):
                        'WaterSample']} })
     ances_data: Optional[str] = Field(default=None, title="ancestral data", description="""Information about either pedigree or other ancestral information description""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
     antibiotic_regm: Optional[str] = Field(default=None, title="antibiotic regimen", description="""Information about treatment involving antibiotic administration; should include the name of antibiotic, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple antibiotic regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
-    bac_prod: Optional[str] = Field(default=None, title="bacterial production", description="""Bacterial production in the water column measured by isotope uptake. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    bac_resp: Optional[str] = Field(default=None, title="bacterial respiration", description="""Measurement of bacterial respiration in the water column. Provide value and unit,any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    bacteria_carb_prod: Optional[str] = Field(default=None, title="bacterial carbon production", description="""Measurement of bacterial carbon production. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    bac_prod: Optional[str] = Field(default=None, title="bacterial production", description="""Bacterial production in the water column measured by isotope uptake. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    bac_resp: Optional[str] = Field(default=None, title="bacterial respiration", description="""Measurement of bacterial respiration in the water column. Provide value and unit,any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    bacteria_carb_prod: Optional[str] = Field(default=None, title="bacterial carbon production", description="""Measurement of bacterial carbon production. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     biochem_oxygen_dem: Optional[str] = Field(default=None, title="biochemical oxygen demand", description="""a measure of the relative oxygen-depletion effect of a waste contaminant""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
     biol_stat: Optional[BiolStatEnum] = Field(default=None, title="biological status", description="""The level of genome modification.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
     biotic_regm: Optional[str] = Field(default=None, title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors such as bacteria, viruses, or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
@@ -9971,12 +9165,24 @@ class OtherUndescribedSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    bishomohopanol: Optional[str] = Field(default=None, title="bishomohopanol", description="""Concentration of bishomohopanol. (Unit: ug/L or ug/g)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    bromide: Optional[str] = Field(default=None, title="bromide", description="""Concentration of bromide (Unit: ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    bulk_elect_conductivity: Optional[str] = Field(default=None, title="bulk electrical conductivity", description="""Electrical conductivity is a measure of the bulk soil ability to carry electric current which is mostly dictated by the chemistry of and amount of soil water. (Unit: mS/cm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'OtherUndescribedSample', 'SoilSample']} })
-    calcium: Optional[str] = Field(default=None, title="calcium", description="""Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    carb_dioxide: Optional[str] = Field(default=None, title="carbon dioxide", description="""Amount of carbon dioxide measured in the air the day of sampling. Provided by ARM""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
-    carb_monoxide: Optional[str] = Field(default=None, title="carbon monoxide", description="""Amount of carbon monoxide measured in the air the day of sampling. Provided by ARM""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
+    bishomohopanol: Optional[str] = Field(default=None, title="bishomohopanol", description="""Concentration of bishomohopanol. (Unit: ug/L or ug/g)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(ug/L|ug/g)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    bromide: Optional[str] = Field(default=None, title="bromide", description="""Concentration of bromide (Unit: ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*ppm$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    bulk_elect_conductivity: Optional[str] = Field(default=None, title="bulk electrical conductivity", description="""Electrical conductivity is a measure of the bulk soil ability to carry electric current which is mostly dictated by the chemistry of and amount of soil water. (Unit: mS/cm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mS/cm$'}},
+         'domain_of': ['MonetSoilSample', 'OtherUndescribedSample', 'SoilSample']} })
+    calcium: Optional[str] = Field(default=None, title="calcium", description="""Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg/L|umol/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    carb_dioxide: Optional[str] = Field(default=None, title="carbon dioxide", description="""Amount of carbon dioxide measured in the air the day of sampling. Provided by ARM""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|ppm)$'}},
+         'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
+    carb_monoxide: Optional[str] = Field(default=None, title="carbon monoxide", description="""Amount of carbon monoxide measured in the air the day of sampling. Provided by ARM""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|ppm)$'}},
+         'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
     carb_nitro_ratio: Optional[str] = Field(default=None, title="carbon nitrogen ratio", description="""Ratio of amount or concentrations of carbon to nitrogen.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     cas: Optional[str] = Field(default=None, title="CAS number", description="""A unique numerical identifier assigned by the Chemical Abstract Service (CAS), a division of the American Chemical Society, to chemical compounds, polymers, biological sequences, mixtures, and alloys.""", json_schema_extra = { "linkml_meta": {'aliases': ['CAS'],
          'domain_of': ['CommerciallyPurchasedSample',
@@ -9998,29 +9204,59 @@ class OtherUndescribedSample(Sample):
          'exact_mappings': ['MIXS:0000751']} })
     chem_mutagen: Optional[str] = Field(default=None, title="chemical mutagen", description="""Treatment involving use of mutagens; should include the name of mutagen, amount administered, treatment regimen, including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mutagen regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
     chem_oxygen_dem: Optional[str] = Field(default=None, title="chemical oxygen demand", description="""a measure of the relative oxygen-depletion effect of a waste contaminant""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
-    chloride: Optional[str] = Field(default=None, title="chloride", description="""Concentration of chloride in the sample (Unit: mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    chlorophyll: Optional[str] = Field(default=None, title="chlorophyll", description="""Concentration of chlorophyll (Unit: mg/m3 or ug/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    chloride: Optional[str] = Field(default=None, title="chloride", description="""Concentration of chloride in the sample (Unit: mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    chlorophyll: Optional[str] = Field(default=None, title="chlorophyll", description="""Concentration of chlorophyll (Unit: mg/m3 or ug/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg/m3|ug/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     compound_name: Optional[str] = Field(default=None, title="compound name", description="""The name of the purchased material. A substance formed by chemical union of two or more elements or ingredients in definite proportion by weight.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
                        'OtherUndescribedSample',
                        'SynthesizedMaterialSample']} })
-    conduc: Optional[str] = Field(default=None, title="conductivity", description="""Electrical conductivity of water. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    density: Optional[str] = Field(default=None, title="density", description="""Density of the sample, which is its mass per unit volume (aka volumetric mass density) (Unit: g/m3 or g/cm3)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    depth: Optional[str] = Field(default=None, title="depth", description="""The vertical distance below local surface. For sediment or soil samples, depth is measured from sediment or soil surface respectively. Depth is required to be reported as an interval for subsurface samples. (Units: m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    conduc: Optional[str] = Field(default=None, title="conductivity", description="""Electrical conductivity of water. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    density: Optional[str] = Field(default=None, title="density", description="""Density of the sample, which is its mass per unit volume (aka volumetric mass density) (Unit: g/m3 or g/cm3)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(g/m3|g/cm3)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    depth: Optional[str] = Field(default=None, title="depth", description="""The vertical distance below local surface. For sediment or soil samples, depth is measured from sediment or soil surface respectively. Depth is required to be reported as an interval for subsurface samples. (Units: m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?(-\\d+(\\.\\d+)?)?\\s*m$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    diether_lipids: Optional[str] = Field(default=None, title="diether lipids", description="""Concentration of diether lipids; can include multiple types of diether lipids (Unit: ng/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    diss_carb_dioxide: Optional[str] = Field(default=None, title="dissolved carbon dioxide", description="""Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample (Unit: umol/L or mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    diss_hydrogen: Optional[str] = Field(default=None, title="dissolved hydrogen", description="""Concentration of dissolved hydrogens (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    diss_inorg_carb: Optional[str] = Field(default=None, title="dissolved inorganic carbon", description="""Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter (Unit:  ug/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    diss_inorg_nitro: Optional[str] = Field(default=None, title="dissolved inorganic nitrogen", description="""Concentration of dissolved inorganic nitrogen. (Unit: ug/L or umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    diss_inorg_phosp: Optional[str] = Field(default=None, title="dissolved inorganic phosphate", description="""Concentration of dissolved inorganic phosphorus in the sample. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    diss_org_carb: Optional[str] = Field(default=None, title="dissolved organic carbon", description="""Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid. (Unit:  umol/L or mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    diss_org_nitro: Optional[str] = Field(default=None, title="dissolved organic nitrogen", description="""Dissolved organic nitrogen concentration measured as: total dissolved nitrogen - NH4 - NO3 - NO2. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    diss_oxygen: Optional[str] = Field(default=None, title="dissolved oxygen", description="""Concentration of dissolved oxygen. (Unit: umol/kg or mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    down_par: Optional[str] = Field(default=None, title="downward PAR", description="""Visible waveband radiance and irradiance measurements in the water column. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    diether_lipids: Optional[str] = Field(default=None, title="diether lipids", description="""Concentration of diether lipids; can include multiple types of diether lipids (Unit: ng/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*ng/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    diss_carb_dioxide: Optional[str] = Field(default=None, title="dissolved carbon dioxide", description="""Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample (Unit: umol/L or mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol|mg)/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    diss_hydrogen: Optional[str] = Field(default=None, title="dissolved hydrogen", description="""Concentration of dissolved hydrogens (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*umol/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    diss_inorg_carb: Optional[str] = Field(default=None, title="dissolved inorganic carbon", description="""Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter (Unit:  ug/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(ug/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    diss_inorg_nitro: Optional[str] = Field(default=None, title="dissolved inorganic nitrogen", description="""Concentration of dissolved inorganic nitrogen. (Unit: ug/L or umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|ug/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    diss_inorg_phosp: Optional[str] = Field(default=None, title="dissolved inorganic phosphate", description="""Concentration of dissolved inorganic phosphorus in the sample. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    diss_org_carb: Optional[str] = Field(default=None, title="dissolved organic carbon", description="""Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid. (Unit:  umol/L or mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    diss_org_nitro: Optional[str] = Field(default=None, title="dissolved organic nitrogen", description="""Dissolved organic nitrogen concentration measured as: total dissolved nitrogen - NH4 - NO3 - NO2. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    diss_oxygen: Optional[str] = Field(default=None, title="dissolved oxygen", description="""Concentration of dissolved oxygen. (Unit: umol/kg or mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/kg|mg/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    down_par: Optional[str] = Field(default=None, title="downward PAR", description="""Visible waveband radiance and irradiance measurements in the water column. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     efficiency_percent: Optional[str] = Field(default=None, title="efficiency percent", description="""percentage of volatile solids removed from the anaerobic digestor""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
     emulsions: Optional[str] = Field(default=None, title="emulsions", description="""amount or concentration of substances such as paints, adhesives, mayonnaise, hair colorants, emulsified oils, etc.; can include multiple emulsion types""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
     encoded_traits: Optional[str] = Field(default=None, title="encoded traits", description="""Should include key traits like antibiotic resistance or xenobiotic
@@ -10031,7 +9267,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -10043,7 +9281,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -10055,7 +9295,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -10127,7 +9369,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'PureCultureSample',
                        'SoilSample',
                        'WaterSample']} })
-    fluor: Optional[str] = Field(default=None, title="fluorescence", description="""Raw or converted fluorescence of water. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    fluor: Optional[str] = Field(default=None, title="fluorescence", description="""Raw or converted fluorescence of water. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     fungicide_regm: Optional[str] = Field(default=None, title="fungicide regimen", description="""Information about treatment involving use of fungicides; should include the name of fungicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fungicide regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
     gaseous_environment: Optional[str] = Field(default=None, title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval, and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -10148,7 +9392,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'PureCultureSample',
                        'SynthesizedMaterialSample',
                        'TerraformSample']} })
-    glucosidase_act: Optional[str] = Field(default=None, title="glucosidase activity", description="""Measurement of glucosidase activity (Unit: mol/L/h)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    glucosidase_act: Optional[str] = Field(default=None, title="glucosidase activity", description="""Measurement of glucosidase activity (Unit: mol/L/h)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mol/L/h$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     gravity: Optional[str] = Field(default=None, title="gravity", description="""Information about treatment involving use of gravity factor to study various types of responses in presence, absence, or modified levels of gravity; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple treatments""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
     growth_habit: Optional[GrowthHabitEnum] = Field(default=None, title="growth habit", description="""Characteristic shape appearance or growth form of a plant species""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
     growth_hormone_regm: Optional[str] = Field(default=None, title="growth hormone regimen", description="""Information about treatment involving use of growth hormones; should include the name of growth hormone, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple growth hormone regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
@@ -10162,7 +9408,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
     heavy_metals: Optional[str] = Field(default=None, title="heavy metals", description="""Heavy metals present and concentrations; can include multiple heavy metals and concentrations""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SoilSample']} })
     heavy_metals_meth: Optional[str] = Field(default=None, title="heavy metals method", description="""Reference or method used in determining heavy metals""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SoilSample']} })
     herbicide_regm: Optional[str] = Field(default=None, title="herbicide regimen", description="""Information about treatment involving use of herbicides; information about treatment involving use of growth hormones; should include the name of herbicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
-    host_age: Optional[str] = Field(default=None, title="host age", description="""Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees. (Unit: a (year) or d (day) or h (hour). Do not include the additional information in ().)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    host_age: Optional[str] = Field(default=None, title="host age", description="""Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees. (Unit: a (year) or d (day) or h (hour). Do not include the additional information in ().)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(a|d|h)$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
     host_common_name: Optional[str] = Field(default=None, title="host common name", description="""Common name for the host organism (e.g., \"Pseudomonas putida\").
@@ -10175,10 +9423,14 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'PureCultureSample',
                        'TerraformSample']} })
     host_disease_stat: Optional[str] = Field(default=None, title="host disease status", description="""List of diseases with which the host has been diagnosed; can include multiple diagnoses. The value of the field depends on host; for humans the terms should be chosen from the DO (Human Disease Ontology) at https://www.disease-ontology.org non-human host diseases are free text""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
-    host_dry_mass: Optional[str] = Field(default=None, title="host dry mass", description="""Measurement of dry mass. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    host_dry_mass: Optional[str] = Field(default=None, title="host dry mass", description="""Measurement of dry mass. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(kg|g)$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
-    host_height: Optional[str] = Field(default=None, title="host height", description="""The height of subject. (Unit: cm or mm or m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    host_height: Optional[str] = Field(default=None, title="host height", description="""The height of subject. (Unit: cm or mm or m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(cm|mm|m)$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'PlantSample',
                        'TerraformSample']} })
@@ -10190,7 +9442,9 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'PlantSample',
                        'TerraformSample']} })
     host_phenotype: Optional[str] = Field(default=None, title="host phenotype", description="""Phenotype of human or other host. For phenotypic quality ontology (pato) (v 2018-03-27) terms please see http://purl.bioontology.org/ontology/pato. For Human Phenotype Ontology (HP) (v 2018-06-13) please see http://purl.bioontology.org/ontology/HP""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
-    host_spec_range: Optional[str] = Field(default=None, title="host specificity or range", description="""The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'domain_of': ['organism',
+    host_spec_range: Optional[str] = Field(default=None, title="host specificity or range", description="""The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': 'NCBITaxon:\\d+'}},
+         'domain_of': ['organism',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -10199,6 +9453,8 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'TerraformSample']} })
     host_symbiont: Optional[str] = Field(default=None, title="observed host symbionts", description="""The taxonomic name of the organism(s) found living in mutualistic, commensalistic, or parasitic symbiosis with the specific host.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
     host_taxid: Optional[str] = Field(default=None, title="host taxonomy identifier", description="""NCBI taxon ID. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'aliases': ['host_taxonomy_id', 'host_ncbi_taxon_id', 'host_taxa_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': 'NCBITaxon:\\d+'}},
          'domain_of': ['organism',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -10206,10 +9462,14 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    host_tot_mass: Optional[str] = Field(default=None, title="host total mass", description="""Total mass of the host at collection. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    host_tot_mass: Optional[str] = Field(default=None, title="host total mass", description="""Total mass of the host at collection. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(kg|g)$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
-    host_wet_mass: Optional[str] = Field(default=None, title="host wet mass", description="""Measurement of wet mass. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    host_wet_mass: Optional[str] = Field(default=None, title="host wet mass", description="""Measurement of wet mass. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(kg|g)$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
     humidity_regm: Optional[str] = Field(default=None, title="humidity regimen", description="""Information about treatment involving an exposure to varying degrees of humidity; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
@@ -10273,7 +9533,9 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    light_intensity: Optional[str] = Field(default=None, title="light intensity", description="""Measurement of light intensity. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    light_intensity: Optional[str] = Field(default=None, title="light intensity", description="""Measurement of light intensity. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     light_regm: Optional[str] = Field(default=None, title="light regimen", description="""Information about treatment(s) involving exposure to light including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -10284,9 +9546,15 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SoilSample',
                        'TerraformSample']} })
     link_addit_analys: Optional[str] = Field(default=None, title="link to additional analysis", description="""Link to additional analysis results performed on the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SoilSample']} })
-    magnesium: Optional[str] = Field(default=None, title="magnesium", description="""Concentration of magnesium in the sample (Unit: umol/kg or mol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    mean_frict_vel: Optional[str] = Field(default=None, title="mean friction velocity", description="""Measurement of mean friction velocity (Unit: m/s)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    mean_peak_frict_vel: Optional[str] = Field(default=None, title="mean peak friction velocity", description="""Measurement of mean peak friction velocity (Unit: m/s)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    magnesium: Optional[str] = Field(default=None, title="magnesium", description="""Concentration of magnesium in the sample (Unit: umol/kg or mol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/kg|mol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    mean_frict_vel: Optional[str] = Field(default=None, title="mean friction velocity", description="""Measurement of mean friction velocity (Unit: m/s)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*m/s$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    mean_peak_frict_vel: Optional[str] = Field(default=None, title="mean peak friction velocity", description="""Measurement of mean peak friction velocity (Unit: m/s)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*m/s$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     mechanical_damage: Optional[str] = Field(default=None, title="mechanical damage", description="""Information about any mechanical damage exerted on the plant; can include multiple damages and sites""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
     method_development: Optional[str] = Field(default=None, title="method development", description="""If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
@@ -10301,15 +9569,21 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    methane: Optional[str] = Field(default=None, title="methane", description="""Methane (gas) amount or concentration at the time of sampling. (Unit: umol/L or ppb or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    methane: Optional[str] = Field(default=None, title="methane", description="""Methane (gas) amount or concentration at the time of sampling. (Unit: umol/L or ppb or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|ppm|ppb)$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'OtherUndescribedSample',
                        'SedimentSample']} })
     micro_biomass_c_meth: Optional[str] = Field(default=None, title="microbial biomass carbon method", description="""Reference or method used in determining microbial biomass""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
     micro_biomass_n_meth: Optional[str] = Field(default=None, title="microbial biomass nitrogen method", description="""Reference or method used in determining microbial biomass nitrogen""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
     microbial_biomass: Optional[str] = Field(default=None, title="microbial biomass", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    microbial_biomass_c: Optional[str] = Field(default=None, title="microbial biomass carbon", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    microbial_biomass_n: Optional[str] = Field(default=None, title="microbial biomass nitrogen", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
+    microbial_biomass_c: Optional[str] = Field(default=None, title="microbial biomass carbon", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
+    microbial_biomass_n: Optional[str] = Field(default=None, title="microbial biomass nitrogen", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
     microbial_biomass_meth: Optional[str] = Field(default=None, title="microbial biomass method", description="""Reference or method used in determining microbial biomass""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
     mineral_nutr_regm: Optional[str] = Field(default=None, title="mineral nutrient regimen", description="""Information about treatment involving the use of mineral supplements; should include the name of mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mineral nutrient regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
@@ -10326,9 +9600,15 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'TerraformSample',
                        'WaterSample']} })
     n_alkanes: Optional[str] = Field(default=None, title="n-alkanes", description="""Concentration of n-alkanes; can include multiple n-alkanes (Unit: ug/mL)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    nitrate: Optional[str] = Field(default=None, title="nitrate", description="""Concentration of nitrate in the sample (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    nitrite: Optional[str] = Field(default=None, title="nitrite", description="""Concentration of nitrite in the sample (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    nitro: Optional[str] = Field(default=None, title="nitrogen", description="""Concentration of nitrogen (total) (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    nitrate: Optional[str] = Field(default=None, title="nitrate", description="""Concentration of nitrate in the sample (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    nitrite: Optional[str] = Field(default=None, title="nitrite", description="""Concentration of nitrite in the sample (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    nitro: Optional[str] = Field(default=None, title="nitrogen", description="""Concentration of nitrogen (total) (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*umol/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     non_microb_biomass: Optional[str] = Field(default=None, title="non microbial biomass", description="""Amount of biomass; should include the name for the part of biomass measured, e.g.insect, plant, total. Can include multiple measurements separated by ;""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
@@ -10348,9 +9628,15 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'OtherUndescribedSample',
                        'PlantSample',
                        'TerraformSample']} })
-    org_carb: Optional[str] = Field(default=None, title="organic carbon", description="""Concentration of organic carbon. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    org_matter: Optional[str] = Field(default=None, title="organic matter", description="""Concentration of organic matter (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    org_nitro: Optional[str] = Field(default=None, title="organic nitrogen", description="""Concentration of organic nitrogen. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    org_carb: Optional[str] = Field(default=None, title="organic carbon", description="""Concentration of organic carbon. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    org_matter: Optional[str] = Field(default=None, title="organic matter", description="""Concentration of organic matter (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mg/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    org_nitro: Optional[str] = Field(default=None, title="organic nitrogen", description="""Concentration of organic nitrogen. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     org_nitro_method: Optional[str] = Field(default=None, title="organic nitrogen method", description="""Method used for obtaining organic nitrogen""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     org_particles: Optional[str] = Field(default=None, title="organic particles", description="""concentration of particles such as faeces, hairs, food, vomit, paper, fibers, plant material, humus etc.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
     organism_count: Optional[str] = Field(default=None, title="organism count", description="""Total cell count of any organism (or group of organisms) per gram volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR atp mpn etc.) should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
@@ -10398,7 +9684,9 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    oxygen: Optional[str] = Field(default=None, title="oxygen", description="""Amount of oxygen measured in the air the day of sampling. Provided by ARM""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSample', 'OtherUndescribedSample']} })
+    oxygen: Optional[str] = Field(default=None, title="oxygen", description="""Amount of oxygen measured in the air the day of sampling. Provided by ARM""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg/L|ppm)$'}},
+         'domain_of': ['AerosolSample', 'OtherUndescribedSample']} })
     oxygen_status: Optional[OxygenStatusEnum] = Field(default=None, title="oxygen relationship", description="""The relationship of the sample to oxygen, such as aerobic or anaerobic.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasIncubationConditions',
                        'CommerciallyPurchasedSample',
                        'CultureEnvironmentalSample',
@@ -10412,8 +9700,12 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'TerraformSample',
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000015']} })
-    part_org_carb: Optional[str] = Field(default=None, title="particulate organic carbon", description="""Concentration of particulate organic carbon. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    part_org_nitro: Optional[str] = Field(default=None, title="particulate organic nitrogen", description="""Concentration of particulate organic nitrogen. (Unit: ug/L or umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    part_org_carb: Optional[str] = Field(default=None, title="particulate organic carbon", description="""Concentration of particulate organic carbon. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    part_org_nitro: Optional[str] = Field(default=None, title="particulate organic nitrogen", description="""Concentration of particulate organic nitrogen. (Unit: ug/L or umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|ug/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     particle_class: Optional[str] = Field(default=None, title="particle class", description="""Particles are classified based on their size into six general categories: clay, silt, sand, gravel, cobbles, and boulders. Include amount of particle with units preceded by the name of the particle type; can include multiple values separated by ';'.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample']} })
     pathogenicity: Optional[str] = Field(default=None, title="pathogenicity", description="""To what is the entity pathogenic, e.g., humans, animals, plants, or specific tissues.""", json_schema_extra = { "linkml_meta": {'domain_of': ['organism',
                        'CultureEnvironmentalSample',
@@ -10425,7 +9717,9 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SoilSample',
                        'WaterSample']} })
     pesticide_regm: Optional[str] = Field(default=None, title="pesticide regimen", description="""Information about treatment involving use of insecticides; should include the name of pesticide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple pesticide regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
-    petroleum_hydrocarb: Optional[str] = Field(default=None, title="petroleum hydrocarbon", description="""Concentration of petroleum hydrocarbon (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    petroleum_hydrocarb: Optional[str] = Field(default=None, title="petroleum hydrocarbon", description="""Concentration of petroleum hydrocarbon (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*umol/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     ph: Optional[float] = Field(default=None, title="pH", description="""pH measurement of the sample or liquid portion of sample or aqueous phase of the fluid""", json_schema_extra = { "linkml_meta": {'domain_of': ['pHProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
@@ -10436,22 +9730,38 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'SoilSample',
                        'WaterSample']} })
     ph_regm: Optional[str] = Field(default=None, title="pH regimen", description="""Information about treatment involving exposure of plants to varying levels of pH of the growth media, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimen""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
-    phaeopigments: Optional[str] = Field(default=None, title="phaeopigments", description="""Concentration of phaeopigments; can include multiple phaeopigments separated by a `;` (Unit: mg/cm3)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    phosphate: Optional[str] = Field(default=None, title="phosphate", description="""Concentration of phosphate (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    phaeopigments: Optional[str] = Field(default=None, title="phaeopigments", description="""Concentration of phaeopigments; can include multiple phaeopigments separated by a `;` (Unit: mg/cm3)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mg/cm3(;\\s*\\d+(\\.\\d+)?\\s*mg/cm3)*$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    phosphate: Optional[str] = Field(default=None, title="phosphate", description="""Concentration of phosphate (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*umol/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     phosplipid_fatt_acid: Optional[str] = Field(default=None, title="phospholipid fatty acid", description="""Concentration of phospholipid fatty acids; can include multiple values separated by `;`. Provide the phospholipid fatty acids followed by the measurement value ({phospholipid fatty acid name}{value} {unit})""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     photochemical_exposure: Optional[PhotochemicalExposureEnum] = Field(default=None, title="photochemical exposure", description="""This term is used to describe a chemical reaction caused by absorption of ultraviolet (wavelength from 100 to 400 nm), visible light (400-750 nm), or infrared radiation (750-2500 nm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
-    photon_flux: Optional[str] = Field(default=None, title="photon flux", description="""Measurement of photon flux. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    porosity: Optional[str] = Field(default=None, title="porosity", description="""Porosity of deposited sediment is volume of voids divided by the total volume of sample. (Unit: percent)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample']} })
-    potassium: Optional[str] = Field(default=None, title="potassium", description="""Concentration of potassium in the sample (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    photon_flux: Optional[str] = Field(default=None, title="photon flux", description="""Measurement of photon flux. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    porosity: Optional[str] = Field(default=None, title="porosity", description="""Porosity of deposited sediment is volume of voids divided by the total volume of sample. (Unit: percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*percent$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample']} })
+    potassium: Optional[str] = Field(default=None, title="potassium", description="""Concentration of potassium in the sample (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     pre_treatment: Optional[str] = Field(default=None, title="pre-treatment", description="""the process of pre-treatment removes materials that can be easily collected from the raw wastewater""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
-    pressure: Optional[str] = Field(default=None, title="pressure", description="""Pressure to which the sample is subject, in atmospheres (Unit: atm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    pressure: Optional[str] = Field(default=None, title="pressure", description="""Pressure to which the sample is subject, in atmospheres (Unit: atm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*atm$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'TerraformSample',
                        'WaterSample',
                        'ConditioningValue']} })
-    pressure_control: Optional[str] = Field(default=None, title="pressure control", description="""Measurment of pressure applied to the sample during experimentation (Unit: Pa)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
-    primary_prod: Optional[str] = Field(default=None, title="primary production", description="""Measurement of primary production generally measured as isotope uptake. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    pressure_control: Optional[str] = Field(default=None, title="pressure control", description="""Measurment of pressure applied to the sample during experimentation (Unit: Pa)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*Pa$'}},
+         'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
+    primary_prod: Optional[str] = Field(default=None, title="primary production", description="""Measurement of primary production generally measured as isotope uptake. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     primary_treatment: Optional[str] = Field(default=None, title="primary treatmentz", description="""the process to produce both a generally homogeneous liquid capable of being treated biologically and a sludge that can be separately treated or processed""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
     priority_order: Optional[float] = Field(default=None, title="priority order", description="""Indicate the run order priority of your samples""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
     production_method: Optional[str] = Field(default=None, title="production method", description="""A DOI or description of how the compound was produced, if the commercially purchased material was altered""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
@@ -10488,7 +9798,9 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
     radiation_regm: Optional[str] = Field(default=None, title="radiation regimen", description="""Information about treatment involving exposure of plant or a plant part to a particular radiation regimen; should include the radiation type, amount or intensity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple radiation regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
     rainfall_regm: Optional[str] = Field(default=None, title="rainfall regimen", description="""Information about treatment involving an exposure to a given amount of rainfall, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
     reactor_type: Optional[str] = Field(default=None, title="reactor type", description="""anaerobic digesters can be designed and engineered to operate using a number of different process configurations, such as batch or continuous, mesophilic, high solid or low solid, and single stage or multistage""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
-    redox_potential: Optional[str] = Field(default=None, title="redox potential", description="""Redox potential measured relative to a hydrogen cell indicating oxidation or reduction potential (Unit: mV)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    redox_potential: Optional[str] = Field(default=None, title="redox potential", description="""Redox potential measured relative to a hydrogen cell indicating oxidation or reduction potential (Unit: mV)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mV$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'TerraformSample',
@@ -10514,7 +9826,10 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'TerraformSample',
                        'WaterSample'],
          'todos': ['reconcile replicate modelling']} })
-    salinity: Optional[str] = Field(default=None, title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
+    salinity: Optional[str] = Field(default=None, title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(practical '
+                                                         'salinity unit|percent)$'}},
+         'domain_of': ['OtherUndescribedSample',
                        'PlantSample',
                        'SedimentSample',
                        'SoilSample',
@@ -10605,7 +9920,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SoilSample',
                        'SynthesizedMaterialSample',
                        'TerraformSample']} })
-    sample_type: str = Field(default=..., title="sample type", description="""Requires a standardized ontology term to describe what your sample is. Please search for your sample type via Ontology Lookup Sevice at https://www.ebi.ac.uk/ols4/ """, json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
+    sample_type: str = Field(default=..., title="sample type", description="""Requires a standardized ontology term to describe what your sample is. Please search for your sample type via Ontology Lookup Sevice at https://www.ebi.ac.uk/ols4/ """, json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\-]+\\s\\[[a-zA-Z]+:\\d+\\]$'}},
+         'domain_of': ['OtherUndescribedSample']} })
     sampled_during: Optional[str] = Field(default=None, description="""Reference to the sampling activity during which this sample was collected. This is a FK to the SamplingActivity class, which contains metadata about the sampling event, such as date, device, method.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -10625,7 +9942,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
     secondary_treatment: Optional[str] = Field(default=None, title="secondary treatment", description="""the process for substantially degrading the biological content of the sewage""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
     sewage_type: Optional[str] = Field(default=None, title="sewage type", description="""type of wastewater treatment plant as municipial or industrial""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
     sieving: Optional[str] = Field(default=None, title="sieving", description="""Collection design of pooled samples and/or sieve size and amount of sample sieved""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    silicate: Optional[str] = Field(default=None, title="silicate", description="""Concentration of silicate (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    silicate: Optional[str] = Field(default=None, title="silicate", description="""Concentration of silicate (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*umol/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     size_frac_low: Optional[str] = Field(default=None, title="size fraction lower threshold", description="""Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'OtherUndescribedSample',
@@ -10637,11 +9956,17 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SoilSample',
                        'WaterSample']} })
     sludge_retent_time: Optional[str] = Field(default=None, title="sludge retention time", description="""the time activated sludge remains in reactor""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
-    sodium: Optional[str] = Field(default=None, title="sodium", description="""Sodium concentration in the sample (Unit: ug/mL)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    solar_irradiance: Optional[str] = Field(default=None, title="solar irradiance", description="""Solar irradiance is the power per unit area (surface power density) received from the Sun in the form of electromagnetic radiation in the wavelength range of the measuring instrument. (Unit: kW/m2/d or erg/cm2/s""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
+    sodium: Optional[str] = Field(default=None, title="sodium", description="""Sodium concentration in the sample (Unit: ug/mL)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*ug/mL$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    solar_irradiance: Optional[str] = Field(default=None, title="solar irradiance", description="""Solar irradiance is the power per unit area (surface power density) received from the Sun in the form of electromagnetic radiation in the wavelength range of the measuring instrument. (Unit: kW/m2/d or erg/cm2/s""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(kW/m2/d|erg/cm2/s)$'}},
+         'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
     soluble_inorg_mat: Optional[str] = Field(default=None, title="soluble inorganic material", description="""concentration of substances such as ammonia, road-salt, sea-salt, cyanide, hydrogen sulfide, thiocyanates, thiosulfates, etc.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
     soluble_org_mat: Optional[str] = Field(default=None, title="soluble organic material", description="""concentration of substances such as urea, fruit sugars, soluble proteins, drugs, pharmaceuticals, etc.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
-    soluble_react_phosp: Optional[str] = Field(default=None, title="soluble reactive phosphorus", description="""Concentration of soluble reactive phosphorus. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    soluble_react_phosp: Optional[str] = Field(default=None, title="soluble reactive phosphorus", description="""Concentration of soluble reactive phosphorus. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     source_mat_id: Optional[str] = Field(default=None, title="source material identifier", description="""A unique identifier assigned to an original material sample collected or to any derived sub-samples. The source material should be listed as a sample to inform details about parent material relationship.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -10657,7 +9982,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'TerraformSample',
                        'WaterSample']} })
     standing_water_regm: Optional[str] = Field(default=None, title="standing water regimen", description="""Treatment involving an exposure to standing water during a plant's life span; types can be flood water or standing water, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
-    start_date_inc: Optional[str] = Field(default=None, title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample',
+    start_date_inc: Optional[str] = Field(default=None, title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -10707,9 +10034,15 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'OtherUndescribedSample',
                        'PureCultureSample'],
          'todos': ['make this inlined/multivalued?']} })
-    sulfate: Optional[str] = Field(default=None, title="sulfate", description="""Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    sulfide: Optional[str] = Field(default=None, title="sulfide", description="""Concentration of sulfide in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    suspend_part_matter: Optional[str] = Field(default=None, title="suspended particulate matter", description="""Concentration of suspended particulate matter. (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    sulfate: Optional[str] = Field(default=None, title="sulfate", description="""Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    sulfide: Optional[str] = Field(default=None, title="sulfide", description="""Concentration of sulfide in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    suspend_part_matter: Optional[str] = Field(default=None, title="suspended particulate matter", description="""Concentration of suspended particulate matter. (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     suspend_solids: Optional[str] = Field(default=None, title="suspended solids", description="""concentration of substances including a wide variety of material such as silt, decaying plant and animal matter, etc; can include multiple substances""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
     synth_instrument: Optional[str] = Field(default=None, title="synthesizing instrument", description="""The instrumentation used to synthesize the material sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SynthesizedMaterialSample']} })
     synth_process: Optional[str] = Field(default=None, title="synthesis process", description="""Provide the citation or describe the method of synthesis.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SynthesizedMaterialSample']} })
@@ -10728,7 +10061,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: Optional[str] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    temp: Optional[str] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+         'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
@@ -10744,17 +10079,35 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
     tiss_cult_growth_med: Optional[str] = Field(default=None, title="tissue culture growth media", description="""Description of plant tissue culture growth media used""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
-    tot_carb: Optional[str] = Field(default=None, title="total carbon content", description="""Total carbon content. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample']} })
-    tot_depth_water_col: Optional[str] = Field(default=None, title="total depth of water column", description="""Measurement of total depth of water column (Unit: m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    tot_diss_nitro: Optional[str] = Field(default=None, title="total dissolved nitrogen", description="""Total dissolved nitrogen concentration reported as nitrogen measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen. (Unit: ug/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    tot_inorg_nitro: Optional[str] = Field(default=None, title="total inorganic nitrogen", description="""Total inorganic nitrogen content. (Unit: ug/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    tot_nitro: Optional[str] = Field(default=None, title="total nitrogen", description="""Total nitrogen concentration of water samples calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering reported as nitrogen. (Unit: ug/L or umol/L or mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    tot_carb: Optional[str] = Field(default=None, title="total carbon content", description="""Total carbon content. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample']} })
+    tot_depth_water_col: Optional[str] = Field(default=None, title="total depth of water column", description="""Measurement of total depth of water column (Unit: m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*m$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    tot_diss_nitro: Optional[str] = Field(default=None, title="total dissolved nitrogen", description="""Total dissolved nitrogen concentration reported as nitrogen measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen. (Unit: ug/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(ug/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    tot_inorg_nitro: Optional[str] = Field(default=None, title="total inorganic nitrogen", description="""Total inorganic nitrogen content. (Unit: ug/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(ug/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    tot_nitro: Optional[str] = Field(default=None, title="total nitrogen", description="""Total nitrogen concentration of water samples calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering reported as nitrogen. (Unit: ug/L or umol/L or mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(ug/L|umol/L|mg/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     tot_nitro_cont_meth: Optional[str] = Field(default=None, title="total nitrogen content method", description="""Reference or method used in determining the total nitrogen""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    tot_nitro_content: Optional[str] = Field(default=None, title="total nitrogen content", description="""Total nitrogen content of the sample. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
+    tot_nitro_content: Optional[str] = Field(default=None, title="total nitrogen content", description="""Total nitrogen content of the sample. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
     tot_org_c_meth: Optional[str] = Field(default=None, title="total organic carbon method", description="""Reference or method used in determining total organic carbon""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    tot_org_carb: Optional[str] = Field(default=None, title="total organic carbon", description="""Total organic carbon content. Provided as gram of Carbon per kg of your sample material. (Unit: g C/kg)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    tot_part_carb: Optional[str] = Field(default=None, title="total particulate carbon", description="""Total particulate carbon content. (Unit: ug/L or umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    tot_phosp: Optional[str] = Field(default=None, title="total phosphorus", description="""Total phosphorus concentration in the sample calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus. (Unit: ug/L or umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    tot_org_carb: Optional[str] = Field(default=None, title="total organic carbon", description="""Total organic carbon content. Provided as gram of Carbon per kg of your sample material. (Unit: g C/kg)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*g C/kg$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
+    tot_part_carb: Optional[str] = Field(default=None, title="total particulate carbon", description="""Total particulate carbon content. (Unit: ug/L or umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(ug/L|umol/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    tot_phosp: Optional[str] = Field(default=None, title="total phosphorus", description="""Total phosphorus concentration in the sample calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus. (Unit: ug/L or umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(ug/L|umol/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     tot_phosphate: Optional[str] = Field(default=None, title="total phosphate", description="""total amount or concentration of phosphate""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
     trophic_level: Optional[TrophicLevelEnum] = Field(default=None, title="trophic level", description="""Trophic levels are the feeding position in a food chain. Microbes can
 be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': ['organism',
@@ -10762,18 +10115,24 @@ be a range of producers.""", json_schema_extra = { "linkml_meta": {'domain_of': 
                        'MixedCultureSample',
                        'OtherUndescribedSample',
                        'PureCultureSample']} })
-    turbidity: Optional[str] = Field(default=None, title="turbidity", description="""Measure of the amount of cloudiness or haziness in water caused by individual particles. Provide value and unit any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample'],
+    turbidity: Optional[str] = Field(default=None, title="turbidity", description="""Measure of the amount of cloudiness or haziness in water caused by individual particles. Provide value and unit any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample'],
          'todos': ['decide how to represent in backend (normalized child table with FK '
                    'to PlateSetupActivity, array column, or other)']} })
     volatile_org_comp: Optional[str] = Field(default=None, title="volatile organic compounds", description="""Volatile organic compounds are organic chemicals that have a high vapour pressure at room temperature.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample', 'AerosolSample', 'OtherUndescribedSample']} })
     wastewater_type: Optional[str] = Field(default=None, title="wasterwater type", description="""the origin of wastewater such as human waste rainfall storm drains etc.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample']} })
-    water_content: Optional[str] = Field(default=None, title="water content", description="""Water content measurement. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    water_content: Optional[str] = Field(default=None, title="water content", description="""Water content measurement. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'TerraformSample']} })
-    water_current: Optional[str] = Field(default=None, title="water current", description="""Measurement of magnitude and direction of flow within a fluid. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    water_current: Optional[str] = Field(default=None, title="water current", description="""Measurement of magnitude and direction of flow within a fluid. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     water_temp_regm: Optional[str] = Field(default=None, title="water temperature regimen", description="""Information about treatment involving an exposure to water with varying degree of temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
     watering_regm: Optional[str] = Field(default=None, title="watering regimen", description="""Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -10909,1177 +10268,23 @@ predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_o
          'todos': ['Is sampling activity where we want to capture this?']} })
     lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
 
-    @field_validator('alkalinity')
-    def pattern_alkalinity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg|meq)/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alkalinity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alkalinity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('alkyl_diethers')
-    def pattern_alkyl_diethers(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alkyl_diethers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alkyl_diethers format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('aminopept_act')
-    def pattern_aminopept_act(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mol/L/h$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid aminopept_act format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid aminopept_act format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('ammonium')
-    def pattern_ammonium(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid ammonium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid ammonium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('bac_prod')
-    def pattern_bac_prod(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid bac_prod format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid bac_prod format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('bac_resp')
-    def pattern_bac_resp(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid bac_resp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid bac_resp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('bacteria_carb_prod')
-    def pattern_bacteria_carb_prod(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid bacteria_carb_prod format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid bacteria_carb_prod format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('bishomohopanol')
-    def pattern_bishomohopanol(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(ug/L|ug/g)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid bishomohopanol format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid bishomohopanol format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('bromide')
-    def pattern_bromide(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*ppm$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid bromide format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid bromide format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('bulk_elect_conductivity')
-    def pattern_bulk_elect_conductivity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mS/cm$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid bulk_elect_conductivity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid bulk_elect_conductivity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('calcium')
-    def pattern_calcium(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg/L|umol/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid calcium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid calcium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('carb_dioxide')
-    def pattern_carb_dioxide(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid carb_dioxide format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid carb_dioxide format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('carb_monoxide')
-    def pattern_carb_monoxide(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid carb_monoxide format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid carb_monoxide format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('chloride')
-    def pattern_chloride(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid chloride format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid chloride format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('chlorophyll')
-    def pattern_chlorophyll(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg/m3|ug/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid chlorophyll format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid chlorophyll format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('conduc')
-    def pattern_conduc(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid conduc format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid conduc format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('density')
-    def pattern_density(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(g/m3|g/cm3)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid density format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid density format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('depth')
-    def pattern_depth(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?(-\d+(\.\d+)?)?\s*m$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid depth format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid depth format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diether_lipids')
-    def pattern_diether_lipids(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*ng/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diether_lipids format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diether_lipids format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_carb_dioxide')
-    def pattern_diss_carb_dioxide(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol|mg)/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_carb_dioxide format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_carb_dioxide format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_hydrogen')
-    def pattern_diss_hydrogen(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*umol/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_hydrogen format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_hydrogen format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_inorg_carb')
-    def pattern_diss_inorg_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(ug/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_inorg_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_inorg_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_inorg_nitro')
-    def pattern_diss_inorg_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|ug/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_inorg_nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_inorg_nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_inorg_phosp')
-    def pattern_diss_inorg_phosp(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_inorg_phosp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_inorg_phosp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_org_carb')
-    def pattern_diss_org_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_org_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_org_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_org_nitro')
-    def pattern_diss_org_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_org_nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_org_nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_oxygen')
-    def pattern_diss_oxygen(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/kg|mg/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_oxygen format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_oxygen format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('down_par')
-    def pattern_down_par(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid down_par format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid down_par format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_broad_scale')
-    def pattern_env_broad_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_broad_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_broad_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_local_scale')
-    def pattern_env_local_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_local_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_local_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_medium')
-    def pattern_env_medium(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_medium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_medium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('fluor')
-    def pattern_fluor(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid fluor format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid fluor format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('glucosidase_act')
-    def pattern_glucosidase_act(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mol/L/h$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid glucosidase_act format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid glucosidase_act format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_age')
-    def pattern_host_age(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(a|d|h)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_age format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_age format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_dry_mass')
-    def pattern_host_dry_mass(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(kg|g)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_dry_mass format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_dry_mass format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_height')
-    def pattern_host_height(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(cm|mm|m)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_height format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_height format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_spec_range')
-    def pattern_host_spec_range(cls, v):
-        pattern=re.compile(r"NCBITaxon:\d+")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_spec_range format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_spec_range format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_taxid')
-    def pattern_host_taxid(cls, v):
-        pattern=re.compile(r"NCBITaxon:\d+")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_taxid format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_taxid format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_tot_mass')
-    def pattern_host_tot_mass(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(kg|g)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_tot_mass format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_tot_mass format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_wet_mass')
-    def pattern_host_wet_mass(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(kg|g)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_wet_mass format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_wet_mass format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('light_intensity')
-    def pattern_light_intensity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid light_intensity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid light_intensity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('magnesium')
-    def pattern_magnesium(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/kg|mol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid magnesium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid magnesium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('mean_frict_vel')
-    def pattern_mean_frict_vel(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*m/s$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid mean_frict_vel format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid mean_frict_vel format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('mean_peak_frict_vel')
-    def pattern_mean_peak_frict_vel(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*m/s$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid mean_peak_frict_vel format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid mean_peak_frict_vel format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('methane')
-    def pattern_methane(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|ppm|ppb)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid methane format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid methane format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('microbial_biomass_c')
-    def pattern_microbial_biomass_c(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid microbial_biomass_c format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid microbial_biomass_c format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('microbial_biomass_n')
-    def pattern_microbial_biomass_n(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid microbial_biomass_n format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid microbial_biomass_n format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('nitrate')
-    def pattern_nitrate(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid nitrate format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid nitrate format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('nitrite')
-    def pattern_nitrite(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid nitrite format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid nitrite format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('nitro')
-    def pattern_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*umol/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('org_carb')
-    def pattern_org_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid org_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid org_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('org_matter')
-    def pattern_org_matter(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mg/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid org_matter format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid org_matter format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('org_nitro')
-    def pattern_org_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid org_nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid org_nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('oxygen')
-    def pattern_oxygen(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid oxygen format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid oxygen format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('part_org_carb')
-    def pattern_part_org_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid part_org_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid part_org_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('part_org_nitro')
-    def pattern_part_org_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|ug/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid part_org_nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid part_org_nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('petroleum_hydrocarb')
-    def pattern_petroleum_hydrocarb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*umol/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid petroleum_hydrocarb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid petroleum_hydrocarb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('phaeopigments')
-    def pattern_phaeopigments(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mg/cm3(;\s*\d+(\.\d+)?\s*mg/cm3)*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid phaeopigments format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid phaeopigments format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('phosphate')
-    def pattern_phosphate(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*umol/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid phosphate format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid phosphate format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('photon_flux')
-    def pattern_photon_flux(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid photon_flux format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid photon_flux format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('porosity')
-    def pattern_porosity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*percent$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid porosity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid porosity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('potassium')
-    def pattern_potassium(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid potassium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid potassium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('pressure')
-    def pattern_pressure(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*atm$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid pressure format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid pressure format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('pressure_control')
-    def pattern_pressure_control(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*Pa$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid pressure_control format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid pressure_control format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('primary_prod')
-    def pattern_primary_prod(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid primary_prod format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid primary_prod format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('redox_potential')
-    def pattern_redox_potential(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mV$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid redox_potential format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid redox_potential format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('salinity')
-    def pattern_salinity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(practical salinity unit|percent)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid salinity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid salinity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sample_type')
-    def pattern_sample_type(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\-]+\s\[[a-zA-Z]+:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sample_type format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sample_type format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('silicate')
-    def pattern_silicate(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*umol/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid silicate format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid silicate format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sodium')
-    def pattern_sodium(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*ug/mL$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sodium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sodium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('solar_irradiance')
-    def pattern_solar_irradiance(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(kW/m2/d|erg/cm2/s)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid solar_irradiance format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid solar_irradiance format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('soluble_react_phosp')
-    def pattern_soluble_react_phosp(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid soluble_react_phosp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid soluble_react_phosp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('start_date_inc')
-    def pattern_start_date_inc(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid start_date_inc format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid start_date_inc format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sulfate')
-    def pattern_sulfate(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sulfate format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sulfate format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sulfide')
-    def pattern_sulfide(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sulfide format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sulfide format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('suspend_part_matter')
-    def pattern_suspend_part_matter(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid suspend_part_matter format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid suspend_part_matter format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('temp')
-    def pattern_temp(cls, v):
-        pattern=re.compile(r"^-?\d+(\.\d+)?\s*C$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid temp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid temp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_carb')
-    def pattern_tot_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_depth_water_col')
-    def pattern_tot_depth_water_col(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*m$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_depth_water_col format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_depth_water_col format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_diss_nitro')
-    def pattern_tot_diss_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(ug/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_diss_nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_diss_nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_inorg_nitro')
-    def pattern_tot_inorg_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(ug/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_inorg_nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_inorg_nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_nitro')
-    def pattern_tot_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(ug/L|umol/L|mg/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_nitro_content')
-    def pattern_tot_nitro_content(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_nitro_content format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_nitro_content format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_org_carb')
-    def pattern_tot_org_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*g C/kg$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_org_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_org_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_part_carb')
-    def pattern_tot_part_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(ug/L|umol/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_part_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_part_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_phosp')
-    def pattern_tot_phosp(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(ug/L|umol/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_phosp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_phosp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('turbidity')
-    def pattern_turbidity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid turbidity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid turbidity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('water_content')
-    def pattern_water_content(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid water_content format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid water_content format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('water_current')
-    def pattern_water_current(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid water_current format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid water_current format: {v}"
-            raise ValueError(err_msg)
-        return v
-
 
 class PlantSample(Sample):
     """
     A sample containing plant material.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'submission_version': {'tag': 'submission_version',
+                                                'value': '1.2.1'}},
+         'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'host_height': {'description': 'The height of plant. (Unit: cm '
                                                        'or mm or m)',
                                         'name': 'host_height'},
-                        'host_length': {'description': 'The length of the plant. '
+                        'host_length': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                               'value': '^\\d+(\\.\\d+)?\\s*(cm|mm|m)$'}},
+                                        'description': 'The length of the plant. '
                                                        '(Unit: cm or mm or m)',
-                                        'name': 'host_length',
-                                        'pattern': '^\\d+(\\.\\d+)?\\s*(cm|mm|m)$'},
+                                        'name': 'host_length'},
                         'host_life_stage': {'description': 'Description of life stage '
                                                            'of the plant',
                                             'name': 'host_life_stage'},
@@ -12151,7 +10356,9 @@ class PlantSample(Sample):
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000751']} })
     chem_mutagen: Optional[str] = Field(default=None, title="chemical mutagen", description="""Treatment involving use of mutagens; should include the name of mutagen, amount administered, treatment regimen, including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mutagen regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -12163,7 +10370,9 @@ class PlantSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -12175,7 +10384,9 @@ class PlantSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -12265,11 +10476,15 @@ class PlantSample(Sample):
     growth_habit: Optional[GrowthHabitEnum] = Field(default=None, title="growth habit", description="""Characteristic shape appearance or growth form of a plant species""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
     growth_hormone_regm: Optional[str] = Field(default=None, title="growth hormone regimen", description="""Information about treatment involving use of growth hormones; should include the name of growth hormone, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple growth hormone regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
     herbicide_regm: Optional[str] = Field(default=None, title="herbicide regimen", description="""Information about treatment involving use of herbicides; information about treatment involving use of growth hormones; should include the name of herbicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
-    host_height: Optional[str] = Field(default=None, title="host height", description="""The height of plant. (Unit: cm or mm or m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    host_height: Optional[str] = Field(default=None, title="host height", description="""The height of plant. (Unit: cm or mm or m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(cm|mm|m)$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'PlantSample',
                        'TerraformSample']} })
-    host_length: Optional[str] = Field(default=None, title="host length", description="""The length of the plant. (Unit: cm or mm or m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
+    host_length: Optional[str] = Field(default=None, title="host length", description="""The length of the plant. (Unit: cm or mm or m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(cm|mm|m)$'}},
+         'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
     host_life_stage: Optional[str] = Field(default=None, title="host life stage", description="""Description of life stage of the plant""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'PlantSample',
@@ -12436,12 +10651,18 @@ class PlantSample(Sample):
                        'WaterSample']} })
     pesticide_regm: Optional[str] = Field(default=None, title="pesticide regimen", description="""Information about treatment involving use of insecticides; should include the name of pesticide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple pesticide regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
     ph_regm: Optional[str] = Field(default=None, title="pH regimen", description="""Information about treatment involving exposure of plants to varying levels of pH of the growth media, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimen""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
-    plant_age: Optional[str] = Field(default=None, title="plant age", description="""Age of plant at the time of sampling. Must provide unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlantSample']} })
+    plant_age: Optional[str] = Field(default=None, title="plant age", description="""Age of plant at the time of sampling. Must provide unit""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*\\w+$'}},
+         'domain_of': ['PlantSample']} })
     plant_common_name: str = Field(default=..., title="plant common name", description="""Common name of the plant.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlantSample']} })
     plant_disease_stat: Optional[str] = Field(default=None, title="plant disease status", description="""List of diseases with which the plant has been diagnosed; can include multiple diagnoses.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlantSample']} })
-    plant_dry_mass: Optional[str] = Field(default=None, title="plant dry mass", description="""Measurement of dry mass. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlantSample']} })
+    plant_dry_mass: Optional[str] = Field(default=None, title="plant dry mass", description="""Measurement of dry mass. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(kg|g)$'}},
+         'domain_of': ['PlantSample']} })
     plant_genotype: Optional[str] = Field(default=None, title="plant genotype", description="""Observed genotype of the plant""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlantSample']} })
-    plant_growth_med: Optional[str] = Field(default=None, title="plant growth medium", description="""Specification of the media for growing the plants or tissue cultured samples e.g. soil, aeroponic, hydroponic, in vitro, solid culture medium, in vitro, liquid culture medium. Value is required to be a subclass from the PECO ontology (http://purl.bioontology.org/ontology/PECO). The value should be formatted as the name of the media followed by the PECO identifier in brackets, e.g. aeroponic plant growth media exposure [PECO:0001073]""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    plant_growth_med: Optional[str] = Field(default=None, title="plant growth medium", description="""Specification of the media for growing the plants or tissue cultured samples e.g. soil, aeroponic, hydroponic, in vitro, solid culture medium, in vitro, liquid culture medium. Value is required to be a subclass from the PECO ontology (http://purl.bioontology.org/ontology/PECO). The value should be formatted as the name of the media followed by the PECO identifier in brackets, e.g. aeroponic plant growth media exposure [PECO:0001073]""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[PECO:\\d+\\]$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'PlantSample',
                        'TerraformSample']} })
     plant_sex: Optional[PlantSexEnum] = Field(default=None, title="plant sex", description="""Sex of the reproductive parts on the whole plant.""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
@@ -12451,7 +10672,9 @@ class PlantSample(Sample):
                        'PlantSample',
                        'TerraformSample']} })
     plant_taxid: str = Field(default=..., title="plant taxonomy identifier", description="""NCBI taxon ID of the plant from https://www.ncbi.nlm.nih.gov/taxonomy""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlantSample']} })
-    plant_wet_mass: Optional[str] = Field(default=None, title="plant wet mass", description="""Measurement of wet mass. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlantSample']} })
+    plant_wet_mass: Optional[str] = Field(default=None, title="plant wet mass", description="""Measurement of wet mass. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(kg|g)$'}},
+         'domain_of': ['PlantSample']} })
     project: Optional[int] = Field(default=None, title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
@@ -12505,7 +10728,10 @@ class PlantSample(Sample):
     root_med_regl: Optional[str] = Field(default=None, title="rooting medium regulators", description="""Growth regulators in the culture rooting medium such as cytokinins, auxins, gybberellins, abscisic acid. Can be multivalued separated by ;. e.g. Naphthaleneacetic Acid 0.5 mg/L""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlantSample']} })
     root_med_solid: Optional[str] = Field(default=None, title="rooting medium solidifier", description="""Specification of the solidifying agent in the culture rooting medium.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlantSample']} })
     root_med_suppl: Optional[str] = Field(default=None, title="rooting medium organic supplement", description="""Organic supplements of the culture rooting medium such as vitamins, amino acids, organic acids, antibiotics, activated charcoal. Can be multivalued separated by ;. e.g. nicotinic acid 0.5 mg/L""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlantSample']} })
-    salinity: Optional[str] = Field(default=None, title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
+    salinity: Optional[str] = Field(default=None, title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(practical '
+                                                         'salinity unit|percent)$'}},
+         'domain_of': ['OtherUndescribedSample',
                        'PlantSample',
                        'SedimentSample',
                        'SoilSample',
@@ -12614,7 +10840,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'TerraformSample',
                        'WaterSample']} })
     standing_water_regm: Optional[str] = Field(default=None, title="standing water regimen", description="""Treatment involving an exposure to standing water during a plant's life span; types can be flood water or standing water, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'PlantSample']} })
-    start_date_inc: Optional[str] = Field(default=None, title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample',
+    start_date_inc: Optional[str] = Field(default=None, title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -12673,7 +10901,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: Optional[str] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    temp: Optional[str] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+         'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
@@ -12818,168 +11048,14 @@ predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_o
          'todos': ['Is sampling activity where we want to capture this?']} })
     lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
 
-    @field_validator('env_broad_scale')
-    def pattern_env_broad_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_broad_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_broad_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_local_scale')
-    def pattern_env_local_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_local_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_local_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_medium')
-    def pattern_env_medium(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_medium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_medium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_height')
-    def pattern_host_height(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(cm|mm|m)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_height format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_height format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_length')
-    def pattern_host_length(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(cm|mm|m)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_length format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_length format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('plant_age')
-    def pattern_plant_age(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*\w+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid plant_age format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid plant_age format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('plant_dry_mass')
-    def pattern_plant_dry_mass(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(kg|g)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid plant_dry_mass format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid plant_dry_mass format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('plant_growth_med')
-    def pattern_plant_growth_med(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[PECO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid plant_growth_med format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid plant_growth_med format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('plant_wet_mass')
-    def pattern_plant_wet_mass(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(kg|g)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid plant_wet_mass format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid plant_wet_mass format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('salinity')
-    def pattern_salinity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(practical salinity unit|percent)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid salinity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid salinity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('start_date_inc')
-    def pattern_start_date_inc(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid start_date_inc format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid start_date_inc format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('temp')
-    def pattern_temp(cls, v):
-        pattern=re.compile(r"^-?\d+(\.\d+)?\s*C$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid temp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid temp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
 
 class PureCultureSample(Sample):
     """
     A sample of a culture containing a single organism.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'submission_version': {'tag': 'submission_version',
+                                                'value': '1.2.1'}},
+         'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'growth_medium': {'name': 'growth_medium', 'required': True},
                         'host_common_name': {'name': 'host_common_name',
@@ -13055,7 +11131,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -13067,7 +11145,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -13079,7 +11159,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -13184,7 +11266,9 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    host_spec_range: Optional[str] = Field(default=None, title="host specificity or range", description="""The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'domain_of': ['organism',
+    host_spec_range: Optional[str] = Field(default=None, title="host specificity or range", description="""The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': 'NCBITaxon:\\d+'}},
+         'domain_of': ['organism',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -13192,6 +11276,8 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'PureCultureSample',
                        'TerraformSample']} })
     host_taxid: str = Field(default=..., title="host taxonomy identifier", description="""NCBI taxon ID. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'aliases': ['host_taxonomy_id', 'host_ncbi_taxon_id', 'host_taxa_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': 'NCBITaxon:\\d+'}},
          'domain_of': ['organism',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -13496,7 +11582,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    start_date_inc: str = Field(default=..., title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample',
+    start_date_inc: str = Field(default=..., title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -13700,90 +11788,14 @@ predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_o
          'todos': ['Is sampling activity where we want to capture this?']} })
     lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
 
-    @field_validator('env_broad_scale')
-    def pattern_env_broad_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_broad_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_broad_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_local_scale')
-    def pattern_env_local_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_local_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_local_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_medium')
-    def pattern_env_medium(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_medium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_medium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_spec_range')
-    def pattern_host_spec_range(cls, v):
-        pattern=re.compile(r"NCBITaxon:\d+")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_spec_range format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_spec_range format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_taxid')
-    def pattern_host_taxid(cls, v):
-        pattern=re.compile(r"NCBITaxon:\d+")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_taxid format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_taxid format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('start_date_inc')
-    def pattern_start_date_inc(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid start_date_inc format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid start_date_inc format: {v}"
-            raise ValueError(err_msg)
-        return v
-
 
 class SedimentSample(Sample):
     """
     A sample of sediment collected from the environment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'submission_version': {'tag': 'submission_version',
+                                                'value': '1.2.1'}},
+         'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'biotic_relationship': {'description': 'Description of '
                                                                'relationship(s) '
@@ -13797,12 +11809,17 @@ class SedimentSample(Sample):
                                                                'other organism(s) is '
                                                                'the object',
                                                 'name': 'biotic_relationship'},
-                        'depth': {'name': 'depth',
-                                  'pattern': '^\\d+(\\.\\d+)?-\\d+(\\.\\d+)?\\s*m$',
+                        'depth': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                         'value': '^\\d+(\\.\\d+)?-\\d+(\\.\\d+)?\\s*m$'}},
+                                  'name': 'depth',
                                   'required': True},
                         'latitude': {'name': 'latitude', 'required': True},
                         'longitude': {'name': 'longitude', 'required': True},
-                        'microbial_biomass': {'description': 'The part of the organic '
+                        'microbial_biomass': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                                     'value': '^\\d+(\\.\\d+)?\\s*(g/kg '
+                                                                                              'sediment|ug/g '
+                                                                                              'sediment)$'}},
+                                              'description': 'The part of the organic '
                                                              'matter in the soil that '
                                                              'constitutes living '
                                                              'microorganisms smaller '
@@ -13814,10 +11831,10 @@ class SedimentSample(Sample):
                                                              'units. (Unit: g/kg '
                                                              'sediment or ug/g '
                                                              'sediment)',
-                                              'name': 'microbial_biomass',
-                                              'pattern': '^\\d+(\\.\\d+)?\\s*(g/kg '
-                                                         'sediment|ug/g sediment)$'},
-                        'non_microb_biomass': {'description': 'Amount of non-microbial '
+                                              'name': 'microbial_biomass'},
+                        'non_microb_biomass': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                                      'value': '^(\\S+\\s+\\d+\\s*\\S+)(;\\s*\\S+\\s+\\d+\\s*\\S+)*$'}},
+                                               'description': 'Amount of non-microbial '
                                                               'biomass measured. '
                                                               'Include the name for '
                                                               'the part of biomass '
@@ -13827,8 +11844,7 @@ class SedimentSample(Sample):
                                                               'unit is valid. '
                                                               '(example: insect 5mg; '
                                                               'plant 2ug/mL)',
-                                               'name': 'non_microb_biomass',
-                                               'pattern': '^(\\S+\\s+\\d+\\s*\\S+)(;\\s*\\S+\\s+\\d+\\s*\\S+)*$'}}})
+                                               'name': 'non_microb_biomass'}}})
 
     air_temp_regm: Optional[str] = Field(default=None, title="air temperature regimen", description="""Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
@@ -13843,11 +11859,19 @@ class SedimentSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000551']} })
-    alkalinity: Optional[str] = Field(default=None, title="alkalinity", description="""The ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate (Unit: mg/L or meq/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    alkalinity: Optional[str] = Field(default=None, title="alkalinity", description="""The ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate (Unit: mg/L or meq/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg|meq)/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     alkalinity_method: Optional[str] = Field(default=None, title="alkalinity method", description="""Method used for alkalinity measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    alkyl_diethers: Optional[str] = Field(default=None, title="alkyl diethers", description="""Concentration of alkyl diethers. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    aminopept_act: Optional[str] = Field(default=None, title="aminopeptidase activity", description="""Measurement of aminopeptidase activity (Unit: mol/L/h)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    ammonium: Optional[str] = Field(default=None, title="ammonium", description="""Concentration of ammonium in the sample. (Units: umol/L or mg/Liter or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    alkyl_diethers: Optional[str] = Field(default=None, title="alkyl diethers", description="""Concentration of alkyl diethers. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    aminopept_act: Optional[str] = Field(default=None, title="aminopeptidase activity", description="""Measurement of aminopeptidase activity (Unit: mol/L/h)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mol/L/h$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    ammonium: Optional[str] = Field(default=None, title="ammonium", description="""Concentration of ammonium in the sample. (Units: umol/L or mg/Liter or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     analysis_type: str = Field(default=..., description="""The type(s) of analysis planned for this sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'AMP2UserSample',
@@ -13863,7 +11887,9 @@ class SedimentSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    bacteria_carb_prod: Optional[str] = Field(default=None, title="bacterial carbon production", description="""Measurement of bacterial carbon production. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    bacteria_carb_prod: Optional[str] = Field(default=None, title="bacterial carbon production", description="""Measurement of bacterial carbon production. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     biotic_regm: Optional[str] = Field(default=None, title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors such as bacteria, viruses, or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -13874,9 +11900,15 @@ class SedimentSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    bishomohopanol: Optional[str] = Field(default=None, title="bishomohopanol", description="""Concentration of bishomohopanol. (Unit: ug/L or ug/g)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    bromide: Optional[str] = Field(default=None, title="bromide", description="""Concentration of bromide (Unit: ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    calcium: Optional[str] = Field(default=None, title="calcium", description="""Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    bishomohopanol: Optional[str] = Field(default=None, title="bishomohopanol", description="""Concentration of bishomohopanol. (Unit: ug/L or ug/g)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(ug/L|ug/g)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    bromide: Optional[str] = Field(default=None, title="bromide", description="""Concentration of bromide (Unit: ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*ppm$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    calcium: Optional[str] = Field(default=None, title="calcium", description="""Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg/L|umol/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     carb_nitro_ratio: Optional[str] = Field(default=None, title="carbon nitrogen ratio", description="""Ratio of amount or concentrations of carbon to nitrogen.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     chem_administration: Optional[str] = Field(default=None, title="chemical administration", description="""List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
@@ -13892,23 +11924,47 @@ class SedimentSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000751']} })
-    chloride: Optional[str] = Field(default=None, title="chloride", description="""Concentration of chloride in the sample (Unit: mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    chlorophyll: Optional[str] = Field(default=None, title="chlorophyll", description="""Concentration of chlorophyll (Unit: mg/m3 or ug/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    density: Optional[str] = Field(default=None, title="density", description="""Density of the sample, which is its mass per unit volume (aka volumetric mass density) (Unit: g/m3 or g/cm3)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    depth: str = Field(default=..., title="depth", description="""The vertical distance below local surface. For sediment or soil samples, depth is measured from sediment or soil surface respectively. Depth is required to be reported as an interval for subsurface samples. (Units: m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    chloride: Optional[str] = Field(default=None, title="chloride", description="""Concentration of chloride in the sample (Unit: mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    chlorophyll: Optional[str] = Field(default=None, title="chlorophyll", description="""Concentration of chlorophyll (Unit: mg/m3 or ug/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg/m3|ug/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    density: Optional[str] = Field(default=None, title="density", description="""Density of the sample, which is its mass per unit volume (aka volumetric mass density) (Unit: g/m3 or g/cm3)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(g/m3|g/cm3)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    depth: str = Field(default=..., title="depth", description="""The vertical distance below local surface. For sediment or soil samples, depth is measured from sediment or soil surface respectively. Depth is required to be reported as an interval for subsurface samples. (Units: m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?-\\d+(\\.\\d+)?\\s*m$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    diether_lipids: Optional[str] = Field(default=None, title="diether lipids", description="""Concentration of diether lipids; can include multiple types of diether lipids (Unit: ng/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    diss_carb_dioxide: Optional[str] = Field(default=None, title="dissolved carbon dioxide", description="""Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample (Unit: umol/L or mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    diss_hydrogen: Optional[str] = Field(default=None, title="dissolved hydrogen", description="""Concentration of dissolved hydrogens (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    diss_inorg_carb: Optional[str] = Field(default=None, title="dissolved inorganic carbon", description="""Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter (Unit:  ug/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    diss_org_carb: Optional[str] = Field(default=None, title="dissolved organic carbon", description="""Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid. (Unit:  umol/L or mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    diss_org_nitro: Optional[str] = Field(default=None, title="dissolved organic nitrogen", description="""Dissolved organic nitrogen concentration measured as: total dissolved nitrogen - NH4 - NO3 - NO2. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    diss_oxygen: Optional[str] = Field(default=None, title="dissolved oxygen", description="""Concentration of dissolved oxygen. (Unit: umol/kg or mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    diether_lipids: Optional[str] = Field(default=None, title="diether lipids", description="""Concentration of diether lipids; can include multiple types of diether lipids (Unit: ng/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*ng/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    diss_carb_dioxide: Optional[str] = Field(default=None, title="dissolved carbon dioxide", description="""Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample (Unit: umol/L or mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol|mg)/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    diss_hydrogen: Optional[str] = Field(default=None, title="dissolved hydrogen", description="""Concentration of dissolved hydrogens (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*umol/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    diss_inorg_carb: Optional[str] = Field(default=None, title="dissolved inorganic carbon", description="""Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter (Unit:  ug/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(ug/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    diss_org_carb: Optional[str] = Field(default=None, title="dissolved organic carbon", description="""Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid. (Unit:  umol/L or mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    diss_org_nitro: Optional[str] = Field(default=None, title="dissolved organic nitrogen", description="""Dissolved organic nitrogen concentration measured as: total dissolved nitrogen - NH4 - NO3 - NO2. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    diss_oxygen: Optional[str] = Field(default=None, title="dissolved oxygen", description="""Concentration of dissolved oxygen. (Unit: umol/kg or mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/kg|mg/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -13920,7 +11976,9 @@ class SedimentSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -13932,7 +11990,9 @@ class SedimentSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -14008,7 +12068,9 @@ class SedimentSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    glucosidase_act: Optional[str] = Field(default=None, title="glucosidase activity", description="""Measurement of glucosidase activity (Unit: mol/L/h)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    glucosidase_act: Optional[str] = Field(default=None, title="glucosidase activity", description="""Measurement of glucosidase activity (Unit: mol/L/h)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mol/L/h$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     humidity_regm: Optional[str] = Field(default=None, title="humidity regimen", description="""Information about treatment involving an exposure to varying degrees of humidity; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -14065,10 +12127,18 @@ class SedimentSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'TerraformSample']} })
-    magnesium: Optional[str] = Field(default=None, title="magnesium", description="""Concentration of magnesium in the sample (Unit: umol/kg or mol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    mean_frict_vel: Optional[str] = Field(default=None, title="mean friction velocity", description="""Measurement of mean friction velocity (Unit: m/s)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    mean_peak_frict_vel: Optional[str] = Field(default=None, title="mean peak friction velocity", description="""Measurement of mean peak friction velocity (Unit: m/s)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    methane: Optional[str] = Field(default=None, title="methane", description="""Methane (gas) amount or concentration at the time of sampling. (Unit: umol/L or ppb or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    magnesium: Optional[str] = Field(default=None, title="magnesium", description="""Concentration of magnesium in the sample (Unit: umol/kg or mol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/kg|mol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    mean_frict_vel: Optional[str] = Field(default=None, title="mean friction velocity", description="""Measurement of mean friction velocity (Unit: m/s)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*m/s$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    mean_peak_frict_vel: Optional[str] = Field(default=None, title="mean peak friction velocity", description="""Measurement of mean peak friction velocity (Unit: m/s)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*m/s$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    methane: Optional[str] = Field(default=None, title="methane", description="""Methane (gas) amount or concentration at the time of sampling. (Unit: umol/L or ppb or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|ppm|ppb)$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'OtherUndescribedSample',
                        'SedimentSample']} })
@@ -14087,10 +12157,17 @@ class SedimentSample(Sample):
                        'WaterSample']} })
     micro_biomass_c_meth: Optional[str] = Field(default=None, title="microbial biomass carbon method", description="""Reference or method used in determining microbial biomass""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
     micro_biomass_n_meth: Optional[str] = Field(default=None, title="microbial biomass nitrogen method", description="""Reference or method used in determining microbial biomass nitrogen""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    microbial_biomass: Optional[str] = Field(default=None, title="microbial biomass", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this you would need to have correction factors used for conversion to the final units. (Unit: g/kg sediment or ug/g sediment)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    microbial_biomass_c: Optional[str] = Field(default=None, title="microbial biomass carbon", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
+    microbial_biomass: Optional[str] = Field(default=None, title="microbial biomass", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this you would need to have correction factors used for conversion to the final units. (Unit: g/kg sediment or ug/g sediment)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(g/kg '
+                                                         'sediment|ug/g sediment)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
+    microbial_biomass_c: Optional[str] = Field(default=None, title="microbial biomass carbon", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
     microbial_biomass_meth: Optional[str] = Field(default=None, title="microbial biomass method", description="""Reference or method used in determining microbial biomass""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    microbial_biomass_n: Optional[str] = Field(default=None, title="microbial biomass nitrogen", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
+    microbial_biomass_n: Optional[str] = Field(default=None, title="microbial biomass nitrogen", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
     misc_param: Optional[str] = Field(default=None, title="miscellaneous parameter", description="""Any other measurement performed or parameter collected that is not listed here""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'FieldDeployedTerraformSample',
@@ -14102,10 +12179,18 @@ class SedimentSample(Sample):
                        'TerraformSample',
                        'WaterSample']} })
     n_alkanes: Optional[str] = Field(default=None, title="n-alkanes", description="""Concentration of n-alkanes; can include multiple n-alkanes (Unit: ug/mL)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    nitrate: Optional[str] = Field(default=None, title="nitrate", description="""Concentration of nitrate in the sample (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    nitrite: Optional[str] = Field(default=None, title="nitrite", description="""Concentration of nitrite in the sample (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    nitro: Optional[str] = Field(default=None, title="nitrogen", description="""Concentration of nitrogen (total) (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    non_microb_biomass: Optional[str] = Field(default=None, title="non microbial biomass", description="""Amount of non-microbial biomass measured. Include the name for the part of biomass measured, e.g.insect, plant, total. Provide value and unit, any unit is valid. (example: insect 5mg; plant 2ug/mL)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    nitrate: Optional[str] = Field(default=None, title="nitrate", description="""Concentration of nitrate in the sample (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    nitrite: Optional[str] = Field(default=None, title="nitrite", description="""Concentration of nitrite in the sample (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    nitro: Optional[str] = Field(default=None, title="nitrogen", description="""Concentration of nitrogen (total) (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*umol/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    non_microb_biomass: Optional[str] = Field(default=None, title="non microbial biomass", description="""Amount of non-microbial biomass measured. Include the name for the part of biomass measured, e.g.insect, plant, total. Provide value and unit, any unit is valid. (example: insect 5mg; plant 2ug/mL)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(\\S+\\s+\\d+\\s*\\S+)(;\\s*\\S+\\s+\\d+\\s*\\S+)*$'}},
+         'domain_of': ['CultureEnvironmentalSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
                        'PlantSample',
@@ -14120,9 +12205,15 @@ class SedimentSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    org_carb: Optional[str] = Field(default=None, title="organic carbon", description="""Concentration of organic carbon. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    org_matter: Optional[str] = Field(default=None, title="organic matter", description="""Concentration of organic matter (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    org_nitro: Optional[str] = Field(default=None, title="organic nitrogen", description="""Concentration of organic nitrogen. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    org_carb: Optional[str] = Field(default=None, title="organic carbon", description="""Concentration of organic carbon. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    org_matter: Optional[str] = Field(default=None, title="organic matter", description="""Concentration of organic matter (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mg/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    org_nitro: Optional[str] = Field(default=None, title="organic nitrogen", description="""Concentration of organic nitrogen. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     org_nitro_method: Optional[str] = Field(default=None, title="organic nitrogen method", description="""Method used for obtaining organic nitrogen""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     other: Optional[str] = Field(default=None, title="other", description="""Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
@@ -14194,13 +12285,17 @@ class SedimentSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000015']} })
-    part_org_carb: Optional[str] = Field(default=None, title="particulate organic carbon", description="""Concentration of particulate organic carbon. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    part_org_carb: Optional[str] = Field(default=None, title="particulate organic carbon", description="""Concentration of particulate organic carbon. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     particle_class: Optional[str] = Field(default=None, title="particle class", description="""Particles are classified based on their size into six general categories: clay, silt, sand, gravel, cobbles, and boulders. Include amount of particle with units preceded by the name of the particle type; can include multiple values separated by ';'.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample']} })
     perturbation: Optional[str] = Field(default=None, title="perturbation", description="""Type of perturbation, e.g. chemical administration, physical disturbance, etc.; coupled with perturbation regimen, including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    petroleum_hydrocarb: Optional[str] = Field(default=None, title="petroleum hydrocarbon", description="""Concentration of petroleum hydrocarbon (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    petroleum_hydrocarb: Optional[str] = Field(default=None, title="petroleum hydrocarbon", description="""Concentration of petroleum hydrocarbon (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*umol/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     ph: Optional[float] = Field(default=None, title="pH", description="""pH measurement of the sample or liquid portion of sample or aqueous phase of the fluid""", json_schema_extra = { "linkml_meta": {'domain_of': ['pHProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
@@ -14210,12 +12305,22 @@ class SedimentSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    phaeopigments: Optional[str] = Field(default=None, title="phaeopigments", description="""Concentration of phaeopigments; can include multiple phaeopigments separated by a `;` (Unit: mg/cm3)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    phosphate: Optional[str] = Field(default=None, title="phosphate", description="""Concentration of phosphate (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    phaeopigments: Optional[str] = Field(default=None, title="phaeopigments", description="""Concentration of phaeopigments; can include multiple phaeopigments separated by a `;` (Unit: mg/cm3)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mg/cm3(;\\s*\\d+(\\.\\d+)?\\s*mg/cm3)*$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    phosphate: Optional[str] = Field(default=None, title="phosphate", description="""Concentration of phosphate (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*umol/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     phosplipid_fatt_acid: Optional[str] = Field(default=None, title="phospholipid fatty acid", description="""Concentration of phospholipid fatty acids; can include multiple values separated by `;`. Provide the phospholipid fatty acids followed by the measurement value ({phospholipid fatty acid name}{value} {unit})""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    porosity: Optional[str] = Field(default=None, title="porosity", description="""Porosity of deposited sediment is volume of voids divided by the total volume of sample. (Unit: percent)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample']} })
-    potassium: Optional[str] = Field(default=None, title="potassium", description="""Concentration of potassium in the sample (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    pressure: Optional[str] = Field(default=None, title="pressure", description="""Pressure to which the sample is subject, in atmospheres (Unit: atm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    porosity: Optional[str] = Field(default=None, title="porosity", description="""Porosity of deposited sediment is volume of voids divided by the total volume of sample. (Unit: percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*percent$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample']} })
+    potassium: Optional[str] = Field(default=None, title="potassium", description="""Concentration of potassium in the sample (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    pressure: Optional[str] = Field(default=None, title="pressure", description="""Pressure to which the sample is subject, in atmospheres (Unit: atm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*atm$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'TerraformSample',
@@ -14242,7 +12347,9 @@ class SedimentSample(Sample):
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    redox_potential: Optional[str] = Field(default=None, title="redox potential", description="""Redox potential measured relative to a hydrogen cell indicating oxidation or reduction potential (Unit: mV)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    redox_potential: Optional[str] = Field(default=None, title="redox potential", description="""Redox potential measured relative to a hydrogen cell indicating oxidation or reduction potential (Unit: mV)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mV$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'TerraformSample',
@@ -14262,7 +12369,10 @@ class SedimentSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'todos': ['reconcile replicate modelling']} })
-    salinity: Optional[str] = Field(default=None, title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
+    salinity: Optional[str] = Field(default=None, title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(practical '
+                                                         'salinity unit|percent)$'}},
+         'domain_of': ['OtherUndescribedSample',
                        'PlantSample',
                        'SedimentSample',
                        'SoilSample',
@@ -14364,8 +12474,12 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'WaterSample']} })
     sediment_type: Optional[SedimentTypeEnum] = Field(default=None, title="sediment type", description="""Information about the sediment type based on major constituents""", json_schema_extra = { "linkml_meta": {'domain_of': ['SedimentSample']} })
     sieving: Optional[str] = Field(default=None, title="sieving", description="""Collection design of pooled samples and/or sieve size and amount of sample sieved""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    silicate: Optional[str] = Field(default=None, title="silicate", description="""Concentration of silicate (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    sodium: Optional[str] = Field(default=None, title="sodium", description="""Sodium concentration in the sample (Unit: ug/mL)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    silicate: Optional[str] = Field(default=None, title="silicate", description="""Concentration of silicate (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*umol/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    sodium: Optional[str] = Field(default=None, title="sodium", description="""Sodium concentration in the sample (Unit: ug/mL)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*ug/mL$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     source_mat_id: Optional[str] = Field(default=None, title="source material identifier", description="""A unique identifier assigned to an original material sample collected or to any derived sub-samples. The source material should be listed as a sample to inform details about parent material relationship.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -14380,7 +12494,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    start_date_inc: Optional[str] = Field(default=None, title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample',
+    start_date_inc: Optional[str] = Field(default=None, title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -14425,8 +12541,12 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    sulfate: Optional[str] = Field(default=None, title="sulfate", description="""Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    sulfide: Optional[str] = Field(default=None, title="sulfide", description="""Concentration of sulfide in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    sulfate: Optional[str] = Field(default=None, title="sulfate", description="""Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    sulfide: Optional[str] = Field(default=None, title="sulfide", description="""Concentration of sulfide in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     technical_reps: Optional[int] = Field(default=None, title="technical replicates", description="""Number of technical replicates for the sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -14441,7 +12561,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: Optional[str] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    temp: Optional[str] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+         'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
@@ -14452,16 +12574,28 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'TerraformSample',
                        'WaterSample']} })
     tidal_stage: Optional[TidalStageEnum] = Field(default=None, title="tidal stage", description="""Stage of tide""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    tot_carb: Optional[str] = Field(default=None, title="total carbon content", description="""Total carbon content. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample']} })
-    tot_depth_water_col: Optional[str] = Field(default=None, title="total depth of water column", description="""Measurement of total depth of water column (Unit: m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    tot_carb: Optional[str] = Field(default=None, title="total carbon content", description="""Total carbon content. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample']} })
+    tot_depth_water_col: Optional[str] = Field(default=None, title="total depth of water column", description="""Measurement of total depth of water column (Unit: m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*m$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     tot_nitro_cont_meth: Optional[str] = Field(default=None, title="total nitrogen content method", description="""Reference or method used in determining the total nitrogen""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    tot_nitro_content: Optional[str] = Field(default=None, title="total nitrogen content", description="""Total nitrogen content of the sample. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
+    tot_nitro_content: Optional[str] = Field(default=None, title="total nitrogen content", description="""Total nitrogen content of the sample. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
     tot_org_c_meth: Optional[str] = Field(default=None, title="total organic carbon method", description="""Reference or method used in determining total organic carbon""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    tot_org_carb: Optional[str] = Field(default=None, title="total organic carbon", description="""Total organic carbon content. Provided as gram of Carbon per kg of your sample material. (Unit: g C/kg)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    turbidity: Optional[str] = Field(default=None, title="turbidity", description="""Measure of the amount of cloudiness or haziness in water caused by individual particles. Provide value and unit any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample'],
+    tot_org_carb: Optional[str] = Field(default=None, title="total organic carbon", description="""Total organic carbon content. Provided as gram of Carbon per kg of your sample material. (Unit: g C/kg)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*g C/kg$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
+    turbidity: Optional[str] = Field(default=None, title="turbidity", description="""Measure of the amount of cloudiness or haziness in water caused by individual particles. Provide value and unit any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample'],
          'todos': ['decide how to represent in backend (normalized child table with FK '
                    'to PlateSetupActivity, array column, or other)']} })
-    water_content: Optional[str] = Field(default=None, title="water content", description="""Water content measurement. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    water_content: Optional[str] = Field(default=None, title="water content", description="""Water content measurement. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
@@ -14606,773 +12740,23 @@ predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_o
          'todos': ['Is sampling activity where we want to capture this?']} })
     lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
 
-    @field_validator('alkalinity')
-    def pattern_alkalinity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg|meq)/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alkalinity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alkalinity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('alkyl_diethers')
-    def pattern_alkyl_diethers(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alkyl_diethers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alkyl_diethers format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('aminopept_act')
-    def pattern_aminopept_act(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mol/L/h$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid aminopept_act format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid aminopept_act format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('ammonium')
-    def pattern_ammonium(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid ammonium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid ammonium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('bacteria_carb_prod')
-    def pattern_bacteria_carb_prod(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid bacteria_carb_prod format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid bacteria_carb_prod format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('bishomohopanol')
-    def pattern_bishomohopanol(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(ug/L|ug/g)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid bishomohopanol format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid bishomohopanol format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('bromide')
-    def pattern_bromide(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*ppm$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid bromide format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid bromide format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('calcium')
-    def pattern_calcium(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg/L|umol/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid calcium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid calcium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('chloride')
-    def pattern_chloride(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid chloride format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid chloride format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('chlorophyll')
-    def pattern_chlorophyll(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg/m3|ug/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid chlorophyll format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid chlorophyll format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('density')
-    def pattern_density(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(g/m3|g/cm3)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid density format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid density format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('depth')
-    def pattern_depth(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?-\d+(\.\d+)?\s*m$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid depth format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid depth format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diether_lipids')
-    def pattern_diether_lipids(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*ng/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diether_lipids format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diether_lipids format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_carb_dioxide')
-    def pattern_diss_carb_dioxide(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol|mg)/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_carb_dioxide format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_carb_dioxide format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_hydrogen')
-    def pattern_diss_hydrogen(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*umol/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_hydrogen format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_hydrogen format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_inorg_carb')
-    def pattern_diss_inorg_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(ug/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_inorg_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_inorg_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_org_carb')
-    def pattern_diss_org_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_org_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_org_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_org_nitro')
-    def pattern_diss_org_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_org_nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_org_nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_oxygen')
-    def pattern_diss_oxygen(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/kg|mg/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_oxygen format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_oxygen format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_broad_scale')
-    def pattern_env_broad_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_broad_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_broad_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_local_scale')
-    def pattern_env_local_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_local_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_local_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_medium')
-    def pattern_env_medium(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_medium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_medium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('glucosidase_act')
-    def pattern_glucosidase_act(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mol/L/h$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid glucosidase_act format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid glucosidase_act format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('magnesium')
-    def pattern_magnesium(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/kg|mol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid magnesium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid magnesium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('mean_frict_vel')
-    def pattern_mean_frict_vel(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*m/s$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid mean_frict_vel format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid mean_frict_vel format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('mean_peak_frict_vel')
-    def pattern_mean_peak_frict_vel(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*m/s$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid mean_peak_frict_vel format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid mean_peak_frict_vel format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('methane')
-    def pattern_methane(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|ppm|ppb)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid methane format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid methane format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('microbial_biomass')
-    def pattern_microbial_biomass(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(g/kg sediment|ug/g sediment)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid microbial_biomass format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid microbial_biomass format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('microbial_biomass_c')
-    def pattern_microbial_biomass_c(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid microbial_biomass_c format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid microbial_biomass_c format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('microbial_biomass_n')
-    def pattern_microbial_biomass_n(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid microbial_biomass_n format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid microbial_biomass_n format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('nitrate')
-    def pattern_nitrate(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid nitrate format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid nitrate format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('nitrite')
-    def pattern_nitrite(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid nitrite format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid nitrite format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('nitro')
-    def pattern_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*umol/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('non_microb_biomass')
-    def pattern_non_microb_biomass(cls, v):
-        pattern=re.compile(r"^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid non_microb_biomass format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid non_microb_biomass format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('org_carb')
-    def pattern_org_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid org_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid org_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('org_matter')
-    def pattern_org_matter(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mg/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid org_matter format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid org_matter format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('org_nitro')
-    def pattern_org_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid org_nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid org_nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('part_org_carb')
-    def pattern_part_org_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid part_org_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid part_org_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('petroleum_hydrocarb')
-    def pattern_petroleum_hydrocarb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*umol/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid petroleum_hydrocarb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid petroleum_hydrocarb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('phaeopigments')
-    def pattern_phaeopigments(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mg/cm3(;\s*\d+(\.\d+)?\s*mg/cm3)*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid phaeopigments format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid phaeopigments format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('phosphate')
-    def pattern_phosphate(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*umol/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid phosphate format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid phosphate format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('porosity')
-    def pattern_porosity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*percent$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid porosity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid porosity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('potassium')
-    def pattern_potassium(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid potassium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid potassium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('pressure')
-    def pattern_pressure(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*atm$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid pressure format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid pressure format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('redox_potential')
-    def pattern_redox_potential(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mV$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid redox_potential format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid redox_potential format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('salinity')
-    def pattern_salinity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(practical salinity unit|percent)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid salinity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid salinity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('silicate')
-    def pattern_silicate(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*umol/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid silicate format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid silicate format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sodium')
-    def pattern_sodium(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*ug/mL$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sodium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sodium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('start_date_inc')
-    def pattern_start_date_inc(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid start_date_inc format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid start_date_inc format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sulfate')
-    def pattern_sulfate(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sulfate format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sulfate format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sulfide')
-    def pattern_sulfide(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sulfide format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sulfide format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('temp')
-    def pattern_temp(cls, v):
-        pattern=re.compile(r"^-?\d+(\.\d+)?\s*C$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid temp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid temp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_carb')
-    def pattern_tot_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_depth_water_col')
-    def pattern_tot_depth_water_col(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*m$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_depth_water_col format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_depth_water_col format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_nitro_content')
-    def pattern_tot_nitro_content(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_nitro_content format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_nitro_content format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_org_carb')
-    def pattern_tot_org_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*g C/kg$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_org_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_org_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('turbidity')
-    def pattern_turbidity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid turbidity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid turbidity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('water_content')
-    def pattern_water_content(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid water_content format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid water_content format: {v}"
-            raise ValueError(err_msg)
-        return v
-
 
 class SoilSample(Sample):
     """
     A sample of soil collected from the environment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
-         'slot_usage': {'al_sat': {'description': 'Aluminum saturation (esp. For '
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'submission_version': {'tag': 'submission_version',
+                                                'value': '1.3.1'}},
+         'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
+         'slot_usage': {'al_sat': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                          'value': '^\\d+(\\.\\d+)?\\s*percent$'}},
+                                   'description': 'Aluminum saturation (esp. For '
                                                   'tropical soils) (Unit: percent)',
-                                   'name': 'al_sat',
-                                   'pattern': '^\\d+(\\.\\d+)?\\s*percent$'},
+                                   'name': 'al_sat'},
                         'analysis_type': {'name': 'analysis_type', 'required': True},
-                        'depth': {'name': 'depth',
-                                  'pattern': '^\\d+(\\.\\d+)?-\\d+(\\.\\d+)?\\s*m$',
+                        'depth': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                         'value': '^\\d+(\\.\\d+)?-\\d+(\\.\\d+)?\\s*m$'}},
+                                  'name': 'depth',
                                   'required': True},
                         'heavy_metals': {'description': 'Heavy metals present in the '
                                                         'sample and the concentration '
@@ -15386,7 +12770,12 @@ class SoilSample(Sample):
                                          'name': 'heavy_metals'},
                         'latitude': {'name': 'latitude', 'required': True},
                         'longitude': {'name': 'longitude', 'required': True},
-                        'microbial_biomass': {'description': 'The part of the organic '
+                        'microbial_biomass': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                                     'value': '^\\d+(\\.\\d+)?\\s*(g/kg '
+                                                                                              'soil|ug/g '
+                                                                                              'dry '
+                                                                                              'soil)$'}},
+                                              'description': 'The part of the organic '
                                                              'matter in the soil that '
                                                              'constitutes living '
                                                              'microorganisms smaller '
@@ -15397,10 +12786,10 @@ class SoilSample(Sample):
                                                              'conversion to the final '
                                                              'units. (Unit: g/kg soil '
                                                              'or ug/g dry soil)',
-                                              'name': 'microbial_biomass',
-                                              'pattern': '^\\d+(\\.\\d+)?\\s*(g/kg '
-                                                         'soil|ug/g dry soil)$'},
-                        'non_microb_biomass': {'description': 'Amount of non-microbial '
+                                              'name': 'microbial_biomass'},
+                        'non_microb_biomass': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                                      'value': '^(\\S+\\s+\\d+\\s*\\S+)(;\\s*\\S+\\s+\\d+\\s*\\S+)*$'}},
+                                               'description': 'Amount of non-microbial '
                                                               'biomass measured. '
                                                               'Include the name for '
                                                               'the part of biomass '
@@ -15410,23 +12799,24 @@ class SoilSample(Sample):
                                                               'unit is valid. '
                                                               '(example: insect 5mg; '
                                                               'plant 2ug/mL)',
-                                               'name': 'non_microb_biomass',
-                                               'pattern': '^(\\S+\\s+\\d+\\s*\\S+)(;\\s*\\S+\\s+\\d+\\s*\\S+)*$'},
-                        'size_frac_low': {'description': 'Refers to the mesh/pore size '
+                                               'name': 'non_microb_biomass'},
+                        'size_frac_low': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                                 'value': '^\\d+(\\.\\d+)?\\s*um$'}},
+                                          'description': 'Refers to the mesh/pore size '
                                                          'used to retain the sample. '
                                                          'Materials smaller than the '
                                                          'size threshold are excluded '
                                                          'from the sample. (Unit: um)',
-                                          'name': 'size_frac_low',
-                                          'pattern': '^\\d+(\\.\\d+)?\\s*um$'},
-                        'size_frac_up': {'description': 'Refers to the mesh/pore size '
+                                          'name': 'size_frac_low'},
+                        'size_frac_up': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                                'value': '^\\d+(\\.\\d+)?\\s*um$'}},
+                                         'description': 'Refers to the mesh/pore size '
                                                         'used to pre-filter/pre-sort '
                                                         'the sample. Materials larger '
                                                         'than the size threshold are '
                                                         'excluded from the sample. '
                                                         '(Unit: um)',
-                                         'name': 'size_frac_up',
-                                         'pattern': '^\\d+(\\.\\d+)?\\s*um$'}}})
+                                         'name': 'size_frac_up'}}})
 
     agrochem_addition: Optional[str] = Field(default=None, title="agrochemical additions", description="""Addition of fertilizers, pesticides, etc. - amount and time of applications""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'OtherUndescribedSample', 'SoilSample']} })
     air_temp_regm: Optional[str] = Field(default=None, title="air temperature regimen", description="""Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
@@ -15442,7 +12832,9 @@ class SoilSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000551']} })
-    al_sat: Optional[str] = Field(default=None, title="aluminum saturation", description="""Aluminum saturation (esp. For tropical soils) (Unit: percent)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SoilSample']} })
+    al_sat: Optional[str] = Field(default=None, title="aluminum saturation", description="""Aluminum saturation (esp. For tropical soils) (Unit: percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*percent$'}},
+         'domain_of': ['OtherUndescribedSample', 'SoilSample']} })
     al_sat_meth: Optional[str] = Field(default=None, title="aluminum saturation method", description="""Reference or method used in determining Al saturation""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SoilSample']} })
     analysis_type: str = Field(default=..., description="""The type(s) of analysis planned for this sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
@@ -15469,7 +12861,9 @@ class SoilSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    bulk_elect_conductivity: Optional[str] = Field(default=None, title="bulk electrical conductivity", description="""Electrical conductivity is a measure of the bulk soil ability to carry electric current which is mostly dictated by the chemistry of and amount of soil water. (Unit: mS/cm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'OtherUndescribedSample', 'SoilSample']} })
+    bulk_elect_conductivity: Optional[str] = Field(default=None, title="bulk electrical conductivity", description="""Electrical conductivity is a measure of the bulk soil ability to carry electric current which is mostly dictated by the chemistry of and amount of soil water. (Unit: mS/cm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mS/cm$'}},
+         'domain_of': ['MonetSoilSample', 'OtherUndescribedSample', 'SoilSample']} })
     chem_administration: Optional[str] = Field(default=None, title="chemical administration", description="""List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -15484,13 +12878,17 @@ class SoilSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000751']} })
-    depth: str = Field(default=..., title="depth", description="""The vertical distance below local surface. For sediment or soil samples, depth is measured from sediment or soil surface respectively. Depth is required to be reported as an interval for subsurface samples. (Units: m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    depth: str = Field(default=..., title="depth", description="""The vertical distance below local surface. For sediment or soil samples, depth is measured from sediment or soil surface respectively. Depth is required to be reported as an interval for subsurface samples. (Units: m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?-\\d+(\\.\\d+)?\\s*m$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -15502,7 +12900,9 @@ class SoilSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -15514,7 +12914,9 @@ class SoilSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -15670,10 +13072,17 @@ class SoilSample(Sample):
                        'WaterSample']} })
     micro_biomass_c_meth: Optional[str] = Field(default=None, title="microbial biomass carbon method", description="""Reference or method used in determining microbial biomass""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
     micro_biomass_n_meth: Optional[str] = Field(default=None, title="microbial biomass nitrogen method", description="""Reference or method used in determining microbial biomass nitrogen""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    microbial_biomass: Optional[str] = Field(default=None, title="microbial biomass", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this you would need to have correction factors used for conversion to the final units. (Unit: g/kg soil or ug/g dry soil)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    microbial_biomass_c: Optional[str] = Field(default=None, title="microbial biomass carbon", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
+    microbial_biomass: Optional[str] = Field(default=None, title="microbial biomass", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this you would need to have correction factors used for conversion to the final units. (Unit: g/kg soil or ug/g dry soil)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(g/kg '
+                                                         'soil|ug/g dry soil)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
+    microbial_biomass_c: Optional[str] = Field(default=None, title="microbial biomass carbon", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
     microbial_biomass_meth: Optional[str] = Field(default=None, title="microbial biomass method", description="""Reference or method used in determining microbial biomass""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    microbial_biomass_n: Optional[str] = Field(default=None, title="microbial biomass nitrogen", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
+    microbial_biomass_n: Optional[str] = Field(default=None, title="microbial biomass nitrogen", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
     misc_param: Optional[str] = Field(default=None, title="miscellaneous parameter", description="""Any other measurement performed or parameter collected that is not listed here""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'FieldDeployedTerraformSample',
@@ -15684,7 +13093,9 @@ class SoilSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    non_microb_biomass: Optional[str] = Field(default=None, title="non microbial biomass", description="""Amount of non-microbial biomass measured. Include the name for the part of biomass measured, e.g. insect, plant, total. Provide value and unit, any unit is valid. (example: insect 5mg; plant 2ug/mL)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    non_microb_biomass: Optional[str] = Field(default=None, title="non microbial biomass", description="""Amount of non-microbial biomass measured. Include the name for the part of biomass measured, e.g. insect, plant, total. Provide value and unit, any unit is valid. (example: insect 5mg; plant 2ug/mL)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(\\S+\\s+\\d+\\s*\\S+)(;\\s*\\S+\\s+\\d+\\s*\\S+)*$'}},
+         'domain_of': ['CultureEnvironmentalSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
                        'PlantSample',
@@ -15818,7 +13229,10 @@ class SoilSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'todos': ['reconcile replicate modelling']} })
-    salinity: Optional[str] = Field(default=None, title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
+    salinity: Optional[str] = Field(default=None, title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(practical '
+                                                         'salinity unit|percent)$'}},
+         'domain_of': ['OtherUndescribedSample',
                        'PlantSample',
                        'SedimentSample',
                        'SoilSample',
@@ -15919,12 +13333,16 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'TerraformSample',
                        'WaterSample']} })
     sieving: Optional[str] = Field(default=None, title="sieving", description="""Collection design of pooled samples and/or sieve size and amount of sample sieved""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    size_frac_low: Optional[str] = Field(default=None, title="size fraction lower threshold", description="""Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample. (Unit: um)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    size_frac_low: Optional[str] = Field(default=None, title="size fraction lower threshold", description="""Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample. (Unit: um)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*um$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'OtherUndescribedSample',
                        'SoilSample',
                        'WaterSample']} })
-    size_frac_up: Optional[str] = Field(default=None, title="size fraction upper threshold", description="""Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample. (Unit: um)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    size_frac_up: Optional[str] = Field(default=None, title="size fraction upper threshold", description="""Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample. (Unit: um)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*um$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'OtherUndescribedSample',
                        'SoilSample',
@@ -15936,7 +13354,10 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                    "BJM 060626 - clarified this slot and enum name from 'soil_type' "
                    "but I'm still not sure we need it. it is populated in the current "
                    'database though.']} })
-    soil_texture: Optional[str] = Field(default=None, title="soil texture", description="""The relative proportion of different grain sizes of mineral particles in a soil as described using a standard system; express as decimal percent sand (50 um to 2 mm) silt (2 um to 50 um) and clay (<2 um) with optional textural name (e.g. sand:0.20 silt:0.25 clay:0.55 description:silty clay loam).""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilSample']} })
+    soil_texture: Optional[str] = Field(default=None, title="soil texture", description="""The relative proportion of different grain sizes of mineral particles in a soil as described using a standard system; express as decimal percent sand (50 um to 2 mm) silt (2 um to 50 um) and clay (<2 um) with optional textural name (e.g. sand:0.20 silt:0.25 clay:0.55 description:silty clay loam).""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(\\w+:0\\.\\d+ '
+                                                         ')*description:[A-Za-z ]+$'}},
+         'domain_of': ['SoilSample']} })
     soil_type: Optional[SoilTypeEnum] = Field(default=None, title="soil type", description="""Soil series name or other lower-level classification""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'SoilSample']} })
     soil_type_meth: Optional[str] = Field(default=None, title="soil type method", description="""Reference or method used in determining soil series name or other lower-level classification""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'SoilSample']} })
     source_mat_id: Optional[str] = Field(default=None, title="source material identifier", description="""A unique identifier assigned to an original material sample collected or to any derived sub-samples. The source material should be listed as a sample to inform details about parent material relationship.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
@@ -15953,7 +13374,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    start_date_inc: Optional[str] = Field(default=None, title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample',
+    start_date_inc: Optional[str] = Field(default=None, title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -16012,7 +13435,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: Optional[str] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    temp: Optional[str] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+         'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
@@ -16024,10 +13449,16 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'WaterSample']} })
     texture_meth: Optional[str] = Field(default=None, title="texture method", description="""Reference or method used in determining soil texture""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilSample']} })
     tot_nitro_cont_meth: Optional[str] = Field(default=None, title="total nitrogen content method", description="""Reference or method used in determining the total nitrogen""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    tot_nitro_content: Optional[str] = Field(default=None, title="total nitrogen content", description="""Total nitrogen content of the sample. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
+    tot_nitro_content: Optional[str] = Field(default=None, title="total nitrogen content", description="""Total nitrogen content of the sample. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
     tot_org_c_meth: Optional[str] = Field(default=None, title="total organic carbon method", description="""Reference or method used in determining total organic carbon""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    tot_org_carb: Optional[str] = Field(default=None, title="total organic carbon", description="""Total organic carbon content. Provided as gram of Carbon per kg of your sample material. (Unit: g C/kg)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
-    water_content: Optional[str] = Field(default=None, title="water content", description="""Water content measurement. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    tot_org_carb: Optional[str] = Field(default=None, title="total organic carbon", description="""Total organic carbon content. Provided as gram of Carbon per kg of your sample material. (Unit: g C/kg)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*g C/kg$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'SoilSample']} })
+    water_content: Optional[str] = Field(default=None, title="water content", description="""Water content measurement. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
@@ -16172,259 +13603,14 @@ predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_o
          'todos': ['Is sampling activity where we want to capture this?']} })
     lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
 
-    @field_validator('al_sat')
-    def pattern_al_sat(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*percent$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid al_sat format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid al_sat format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('bulk_elect_conductivity')
-    def pattern_bulk_elect_conductivity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mS/cm$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid bulk_elect_conductivity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid bulk_elect_conductivity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('depth')
-    def pattern_depth(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?-\d+(\.\d+)?\s*m$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid depth format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid depth format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_broad_scale')
-    def pattern_env_broad_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_broad_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_broad_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_local_scale')
-    def pattern_env_local_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_local_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_local_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_medium')
-    def pattern_env_medium(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_medium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_medium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('microbial_biomass')
-    def pattern_microbial_biomass(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(g/kg soil|ug/g dry soil)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid microbial_biomass format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid microbial_biomass format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('microbial_biomass_c')
-    def pattern_microbial_biomass_c(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid microbial_biomass_c format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid microbial_biomass_c format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('microbial_biomass_n')
-    def pattern_microbial_biomass_n(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid microbial_biomass_n format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid microbial_biomass_n format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('non_microb_biomass')
-    def pattern_non_microb_biomass(cls, v):
-        pattern=re.compile(r"^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid non_microb_biomass format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid non_microb_biomass format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('salinity')
-    def pattern_salinity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(practical salinity unit|percent)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid salinity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid salinity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('size_frac_low')
-    def pattern_size_frac_low(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*um$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid size_frac_low format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid size_frac_low format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('size_frac_up')
-    def pattern_size_frac_up(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*um$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid size_frac_up format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid size_frac_up format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('soil_texture')
-    def pattern_soil_texture(cls, v):
-        pattern=re.compile(r"^(\w+:0\.\d+ )*description:[A-Za-z ]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid soil_texture format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid soil_texture format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('start_date_inc')
-    def pattern_start_date_inc(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid start_date_inc format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid start_date_inc format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('temp')
-    def pattern_temp(cls, v):
-        pattern=re.compile(r"^-?\d+(\.\d+)?\s*C$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid temp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid temp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_nitro_content')
-    def pattern_tot_nitro_content(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_nitro_content format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_nitro_content format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_org_carb')
-    def pattern_tot_org_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*g C/kg$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_org_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_org_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('water_content')
-    def pattern_water_content(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid water_content format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid water_content format: {v}"
-            raise ValueError(err_msg)
-        return v
-
 
 class SynthesizedMaterialSample(Sample):
     """
     A sample containing synthetically generated material.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'submission_version': {'tag': 'submission_version',
+                                                'value': '1.1.1'}},
+         'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'synth_instrument': {'name': 'synth_instrument',
                                              'required': True},
@@ -16747,7 +13933,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: Optional[str] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    temp: Optional[str] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+         'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
@@ -16881,25 +14069,14 @@ predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_o
          'todos': ['Is sampling activity where we want to capture this?']} })
     lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
 
-    @field_validator('temp')
-    def pattern_temp(cls, v):
-        pattern=re.compile(r"^-?\d+(\.\d+)?\s*C$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid temp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid temp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
 
 class TerraformSample(Sample):
     """
     A sample collected from a Terraform experiment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'submission_version': {'tag': 'submission_version',
+                                                'value': '1.2.1'}},
+         'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'initiation_date_inoculation': {'name': 'initiation_date_inoculation',
                                                         'required': True},
@@ -16979,7 +14156,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -16991,7 +14170,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -17003,7 +14184,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -17058,7 +14241,9 @@ degradation phenotypes for plasmids, converting genes for phage""", json_schema_
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    host_age: Optional[str] = Field(default=None, title="host age", description="""Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees. (Unit: a (year) or d (day) or h (hour). Do not include the additional information in ().)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    host_age: Optional[str] = Field(default=None, title="host age", description="""Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees. (Unit: a (year) or d (day) or h (hour). Do not include the additional information in ().)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(a|d|h)$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
     host_common_name: Optional[str] = Field(default=None, title="host common name", description="""Common name for the host organism (e.g., \"Pseudomonas putida\").
@@ -17070,11 +14255,15 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    host_dry_mass: Optional[str] = Field(default=None, title="host dry mass", description="""Measurement of dry mass. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    host_dry_mass: Optional[str] = Field(default=None, title="host dry mass", description="""Measurement of dry mass. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(kg|g)$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
     host_genotype: Optional[str] = Field(default=None, title="host genotype", description="""Observed genotype""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
-    host_height: Optional[str] = Field(default=None, title="host height", description="""The height of subject. (Unit: cm or mm or m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    host_height: Optional[str] = Field(default=None, title="host height", description="""The height of subject. (Unit: cm or mm or m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(cm|mm|m)$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'PlantSample',
                        'TerraformSample']} })
@@ -17082,14 +14271,8 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'OtherUndescribedSample',
                        'PlantSample',
                        'TerraformSample']} })
-    host_spec_range: Optional[str] = Field(default=None, title="host specificity or range", description="""The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'domain_of': ['organism',
-                       'CultureEnvironmentalSample',
-                       'FieldDeployedTerraformSample',
-                       'MixedCultureSample',
-                       'OtherUndescribedSample',
-                       'PureCultureSample',
-                       'TerraformSample']} })
-    host_taxid: Optional[str] = Field(default=None, title="host taxonomy identifier", description="""NCBI taxon ID. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'aliases': ['host_taxonomy_id', 'host_ncbi_taxon_id', 'host_taxa_id'],
+    host_spec_range: Optional[str] = Field(default=None, title="host specificity or range", description="""The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': 'NCBITaxon:\\d+'}},
          'domain_of': ['organism',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -17097,10 +14280,24 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    host_tot_mass: Optional[str] = Field(default=None, title="host total mass", description="""Total mass of the host at collection. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    host_taxid: Optional[str] = Field(default=None, title="host taxonomy identifier", description="""NCBI taxon ID. Format with prefix NCBITaxon:####""", json_schema_extra = { "linkml_meta": {'aliases': ['host_taxonomy_id', 'host_ncbi_taxon_id', 'host_taxa_id'],
+         'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': 'NCBITaxon:\\d+'}},
+         'domain_of': ['organism',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'OtherUndescribedSample',
+                       'PureCultureSample',
+                       'TerraformSample']} })
+    host_tot_mass: Optional[str] = Field(default=None, title="host total mass", description="""Total mass of the host at collection. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(kg|g)$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
-    host_wet_mass: Optional[str] = Field(default=None, title="host wet mass", description="""Measurement of wet mass. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    host_wet_mass: Optional[str] = Field(default=None, title="host wet mass", description="""Measurement of wet mass. (Unit: kg or g)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(kg|g)$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
     humidity_regm: Optional[str] = Field(default=None, title="humidity regimen", description="""Information about treatment involving an exposure to varying degrees of humidity; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
@@ -17114,8 +14311,12 @@ For microbes, this may be identical to organism_name.""", json_schema_extra = { 
                        'SedimentSample',
                        'SoilSample',
                        'TerraformSample']} })
-    initiation_date_inoculation: str = Field(default=..., title="initiation date of inoculation", description="""The date the sample was inoculated. This can be the date of inoculation, isolation, etc. If providing a sequential initiation, the sample should be linked to the sample it originated from. Formatted as YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
-    initiation_date_plant: str = Field(default=..., title="initiation date of plant", description="""The date the plant part of the sample was initiated. This can be the date of germination or propagation. If providing a sequential initiation (propagation), the sample should be linked to the sample it originated from. Formatted as YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
+    initiation_date_inoculation: str = Field(default=..., title="initiation date of inoculation", description="""The date the sample was inoculated. This can be the date of inoculation, isolation, etc. If providing a sequential initiation, the sample should be linked to the sample it originated from. Formatted as YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
+    initiation_date_plant: str = Field(default=..., title="initiation date of plant", description="""The date the plant part of the sample was initiated. This can be the date of germination or propagation. If providing a sequential initiation (propagation), the sample should be linked to the sample it originated from. Formatted as YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
     isol_growth_condt: Optional[str] = Field(default=None, title="isolation and growth conditions", description="""Publication reference in the form of pubmed ID (PMID), digital object
 identifier (DOI), or URL for isolation and growth condition specifications of the
 organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample',
@@ -17247,7 +14448,9 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'TerraformSample',
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000015']} })
-    plant_growth_med: Optional[str] = Field(default=None, title="plant growth medium", description="""Specification of the media for growing the plants or tissue cultured samples e.g. soil, aeroponic, hydroponic, in vitro, solid culture medium, in vitro, liquid culture medium. Value is required to be a subclass from the PECO ontology (http://purl.bioontology.org/ontology/PECO). The value should be formatted as the name of the media followed by the PECO identifier in brackets, e.g. aeroponic plant growth media exposure [PECO:0001073]""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    plant_growth_med: Optional[str] = Field(default=None, title="plant growth medium", description="""Specification of the media for growing the plants or tissue cultured samples e.g. soil, aeroponic, hydroponic, in vitro, solid culture medium, in vitro, liquid culture medium. Value is required to be a subclass from the PECO ontology (http://purl.bioontology.org/ontology/PECO). The value should be formatted as the name of the media followed by the PECO identifier in brackets, e.g. aeroponic plant growth media exposure [PECO:0001073]""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[PECO:\\d+\\]$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'PlantSample',
                        'TerraformSample']} })
     plant_product: Optional[str] = Field(default=None, title="plant product", description="""Substance produced by the plant where the sample was obtained from""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
@@ -17257,7 +14460,9 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
     plant_struc: Optional[PlantStructureEnum] = Field(default=None, title="plant structure", description="""Name of plant structure the sample was obtained from; for Plant Ontology (PO) (v releases/2017-12-14) terms see http://purl.bioontology.org/ontology/PO e.g. petiole epidermis (PO_0000051). If an individual flower is sampled the sex of it can be recorded here.""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
                        'PlantSample',
                        'TerraformSample']} })
-    pressure: Optional[str] = Field(default=None, title="pressure", description="""Pressure to which the sample is subject, in atmospheres (Unit: atm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    pressure: Optional[str] = Field(default=None, title="pressure", description="""Pressure to which the sample is subject, in atmospheres (Unit: atm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*atm$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'TerraformSample',
@@ -17291,7 +14496,9 @@ organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2U
                        'OtherUndescribedSample',
                        'PureCultureSample',
                        'TerraformSample']} })
-    redox_potential: Optional[str] = Field(default=None, title="redox potential", description="""Redox potential measured relative to a hydrogen cell indicating oxidation or reduction potential (Unit: mV)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    redox_potential: Optional[str] = Field(default=None, title="redox potential", description="""Redox potential measured relative to a hydrogen cell indicating oxidation or reduction potential (Unit: mV)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mV$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'TerraformSample',
@@ -17477,7 +14684,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
     synth_env_design_method: str = Field(default=..., title="synthetic environment design method", description="""A citation for how the synthetic environment was designed""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
     synth_env_material: str = Field(default=..., title="synthetic environment material", description="""Describes the fabrication material used to create the synthetic environment and what the structure is made of""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
     synth_env_treatment: str = Field(default=..., title="synthetic environment treatment", description="""Describes any treatments that are built into the synthetic environment""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
-    synth_start_date: str = Field(default=..., title="synthetic environment start date", description="""Provide the date the sample was transferred to the synthetic environment. Formatted as YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
+    synth_start_date: str = Field(default=..., title="synthetic environment start date", description="""Provide the date the sample was transferred to the synthetic environment. Formatted as YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['FieldDeployedTerraformSample', 'TerraformSample']} })
     technical_reps: Optional[int] = Field(default=None, title="technical replicates", description="""Number of technical replicates for the sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -17492,7 +14701,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: Optional[str] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    temp: Optional[str] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+         'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
@@ -17505,7 +14716,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
     tiss_cult_growth_med: Optional[str] = Field(default=None, title="tissue culture growth media", description="""Description of plant tissue culture growth media used""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'TerraformSample']} })
-    water_content: Optional[str] = Field(default=None, title="water content", description="""Water content measurement. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    water_content: Optional[str] = Field(default=None, title="water content", description="""Water content measurement. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
@@ -17650,246 +14863,14 @@ predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_o
          'todos': ['Is sampling activity where we want to capture this?']} })
     lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
 
-    @field_validator('env_broad_scale')
-    def pattern_env_broad_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_broad_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_broad_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_local_scale')
-    def pattern_env_local_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_local_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_local_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_medium')
-    def pattern_env_medium(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_medium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_medium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_age')
-    def pattern_host_age(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(a|d|h)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_age format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_age format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_dry_mass')
-    def pattern_host_dry_mass(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(kg|g)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_dry_mass format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_dry_mass format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_height')
-    def pattern_host_height(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(cm|mm|m)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_height format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_height format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_spec_range')
-    def pattern_host_spec_range(cls, v):
-        pattern=re.compile(r"NCBITaxon:\d+")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_spec_range format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_spec_range format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_taxid')
-    def pattern_host_taxid(cls, v):
-        pattern=re.compile(r"NCBITaxon:\d+")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_taxid format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_taxid format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_tot_mass')
-    def pattern_host_tot_mass(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(kg|g)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_tot_mass format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_tot_mass format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_wet_mass')
-    def pattern_host_wet_mass(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(kg|g)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_wet_mass format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_wet_mass format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('initiation_date_inoculation')
-    def pattern_initiation_date_inoculation(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid initiation_date_inoculation format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid initiation_date_inoculation format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('initiation_date_plant')
-    def pattern_initiation_date_plant(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid initiation_date_plant format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid initiation_date_plant format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('plant_growth_med')
-    def pattern_plant_growth_med(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[PECO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid plant_growth_med format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid plant_growth_med format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('pressure')
-    def pattern_pressure(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*atm$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid pressure format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid pressure format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('redox_potential')
-    def pattern_redox_potential(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mV$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid redox_potential format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid redox_potential format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('synth_start_date')
-    def pattern_synth_start_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid synth_start_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid synth_start_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('temp')
-    def pattern_temp(cls, v):
-        pattern=re.compile(r"^-?\d+(\.\d+)?\s*C$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid temp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid temp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('water_content')
-    def pattern_water_content(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid water_content format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid water_content format: {v}"
-            raise ValueError(err_msg)
-        return v
-
 
 class WaterSample(Sample):
     """
     A sample of water collected from the environment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'submission_version': {'tag': 'submission_version',
+                                                'value': '1.1.1'}},
+         'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes',
          'slot_usage': {'analysis_type': {'name': 'analysis_type', 'required': True},
                         'depth': {'description': 'The vertical distance below local '
                                                  'surface of the water. (Units: m)',
@@ -17898,7 +14879,9 @@ class WaterSample(Sample):
                         'filter_method': {'name': 'filter_method', 'required': True},
                         'latitude': {'name': 'latitude', 'required': True},
                         'longitude': {'name': 'longitude', 'required': True},
-                        'non_microb_biomass': {'description': 'Amount of non-microbial '
+                        'non_microb_biomass': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                                      'value': '^(\\S+\\s+\\d+\\s*\\S+)(;\\s*\\S+\\s+\\d+\\s*\\S+)*$'}},
+                                               'description': 'Amount of non-microbial '
                                                               'biomass measured. '
                                                               'Include the name for '
                                                               'the part of biomass '
@@ -17908,24 +14891,25 @@ class WaterSample(Sample):
                                                               'unit is valid. '
                                                               '(example: insect 5mg; '
                                                               'plant 2ug/mL)',
-                                               'name': 'non_microb_biomass',
-                                               'pattern': '^(\\S+\\s+\\d+\\s*\\S+)(;\\s*\\S+\\s+\\d+\\s*\\S+)*$'},
-                        'size_frac_low': {'description': 'Refers to the mesh/pore size '
+                                               'name': 'non_microb_biomass'},
+                        'size_frac_low': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                                 'value': '^\\d+(\\.\\d+)?\\s*um$'}},
+                                          'description': 'Refers to the mesh/pore size '
                                                          'used to retain the sample. '
                                                          'Materials smaller than the '
                                                          'size threshold are excluded '
                                                          'from the sample (Unit: um)',
                                           'name': 'size_frac_low',
-                                          'pattern': '^\\d+(\\.\\d+)?\\s*um$',
                                           'required': True},
-                        'size_frac_up': {'description': 'Refers to the mesh/pore size '
+                        'size_frac_up': {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                                                'value': '^\\d+(\\.\\d+)?\\s*um$'}},
+                                         'description': 'Refers to the mesh/pore size '
                                                         'used to pre-filter/pre-sort '
                                                         'the sample. Materials larger '
                                                         'than the size threshold are '
                                                         'excluded from the sample '
                                                         '(Unit: um)',
                                          'name': 'size_frac_up',
-                                         'pattern': '^\\d+(\\.\\d+)?\\s*um$',
                                          'required': True}}})
 
     air_temp_regm: Optional[str] = Field(default=None, title="air temperature regimen", description="""Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
@@ -17941,11 +14925,19 @@ class WaterSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000551']} })
-    alkalinity: Optional[str] = Field(default=None, title="alkalinity", description="""The ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate (Unit: mg/L or meq/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    alkalinity: Optional[str] = Field(default=None, title="alkalinity", description="""The ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate (Unit: mg/L or meq/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg|meq)/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     alkalinity_method: Optional[str] = Field(default=None, title="alkalinity method", description="""Method used for alkalinity measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    alkyl_diethers: Optional[str] = Field(default=None, title="alkyl diethers", description="""Concentration of alkyl diethers. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    aminopept_act: Optional[str] = Field(default=None, title="aminopeptidase activity", description="""Measurement of aminopeptidase activity (Unit: mol/L/h)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    ammonium: Optional[str] = Field(default=None, title="ammonium", description="""Concentration of ammonium in the sample. (Units: umol/L or mg/Liter or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    alkyl_diethers: Optional[str] = Field(default=None, title="alkyl diethers", description="""Concentration of alkyl diethers. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    aminopept_act: Optional[str] = Field(default=None, title="aminopeptidase activity", description="""Measurement of aminopeptidase activity (Unit: mol/L/h)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mol/L/h$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    ammonium: Optional[str] = Field(default=None, title="ammonium", description="""Concentration of ammonium in the sample. (Units: umol/L or mg/Liter or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     analysis_type: str = Field(default=..., description="""The type(s) of analysis planned for this sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'AMP2UserSample',
@@ -17961,9 +14953,15 @@ class WaterSample(Sample):
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    bac_prod: Optional[str] = Field(default=None, title="bacterial production", description="""Bacterial production in the water column measured by isotope uptake. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    bac_resp: Optional[str] = Field(default=None, title="bacterial respiration", description="""Measurement of bacterial respiration in the water column. Provide value and unit,any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    bacteria_carb_prod: Optional[str] = Field(default=None, title="bacterial carbon production", description="""Measurement of bacterial carbon production. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    bac_prod: Optional[str] = Field(default=None, title="bacterial production", description="""Bacterial production in the water column measured by isotope uptake. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    bac_resp: Optional[str] = Field(default=None, title="bacterial respiration", description="""Measurement of bacterial respiration in the water column. Provide value and unit,any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    bacteria_carb_prod: Optional[str] = Field(default=None, title="bacterial carbon production", description="""Measurement of bacterial carbon production. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     biotic_regm: Optional[str] = Field(default=None, title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors such as bacteria, viruses, or fungi.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -17974,9 +14972,15 @@ class WaterSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    bishomohopanol: Optional[str] = Field(default=None, title="bishomohopanol", description="""Concentration of bishomohopanol. (Unit: ug/L or ug/g)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    bromide: Optional[str] = Field(default=None, title="bromide", description="""Concentration of bromide (Unit: ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    calcium: Optional[str] = Field(default=None, title="calcium", description="""Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    bishomohopanol: Optional[str] = Field(default=None, title="bishomohopanol", description="""Concentration of bishomohopanol. (Unit: ug/L or ug/g)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(ug/L|ug/g)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    bromide: Optional[str] = Field(default=None, title="bromide", description="""Concentration of bromide (Unit: ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*ppm$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    calcium: Optional[str] = Field(default=None, title="calcium", description="""Concentration of calcium in the sample (Unit: mg/L or umol/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg/L|umol/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     carb_nitro_ratio: Optional[str] = Field(default=None, title="carbon nitrogen ratio", description="""Ratio of amount or concentrations of carbon to nitrogen.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     chem_administration: Optional[str] = Field(default=None, title="chemical administration", description="""List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
@@ -17992,27 +14996,59 @@ class WaterSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000751']} })
-    chloride: Optional[str] = Field(default=None, title="chloride", description="""Concentration of chloride in the sample (Unit: mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    chlorophyll: Optional[str] = Field(default=None, title="chlorophyll", description="""Concentration of chlorophyll (Unit: mg/m3 or ug/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    conduc: Optional[str] = Field(default=None, title="conductivity", description="""Electrical conductivity of water. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    density: Optional[str] = Field(default=None, title="density", description="""Density of the sample, which is its mass per unit volume (aka volumetric mass density) (Unit: g/m3 or g/cm3)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    depth: str = Field(default=..., title="depth", description="""The vertical distance below local surface of the water. (Units: m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    chloride: Optional[str] = Field(default=None, title="chloride", description="""Concentration of chloride in the sample (Unit: mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    chlorophyll: Optional[str] = Field(default=None, title="chlorophyll", description="""Concentration of chlorophyll (Unit: mg/m3 or ug/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg/m3|ug/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    conduc: Optional[str] = Field(default=None, title="conductivity", description="""Electrical conductivity of water. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    density: Optional[str] = Field(default=None, title="density", description="""Density of the sample, which is its mass per unit volume (aka volumetric mass density) (Unit: g/m3 or g/cm3)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(g/m3|g/cm3)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    depth: str = Field(default=..., title="depth", description="""The vertical distance below local surface of the water. (Units: m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?(-\\d+(\\.\\d+)?)?\\s*m$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    diether_lipids: Optional[str] = Field(default=None, title="diether lipids", description="""Concentration of diether lipids; can include multiple types of diether lipids (Unit: ng/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    diss_carb_dioxide: Optional[str] = Field(default=None, title="dissolved carbon dioxide", description="""Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample (Unit: umol/L or mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    diss_hydrogen: Optional[str] = Field(default=None, title="dissolved hydrogen", description="""Concentration of dissolved hydrogens (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    diss_inorg_carb: Optional[str] = Field(default=None, title="dissolved inorganic carbon", description="""Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter (Unit:  ug/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    diss_inorg_nitro: Optional[str] = Field(default=None, title="dissolved inorganic nitrogen", description="""Concentration of dissolved inorganic nitrogen. (Unit: ug/L or umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    diss_inorg_phosp: Optional[str] = Field(default=None, title="dissolved inorganic phosphate", description="""Concentration of dissolved inorganic phosphorus in the sample. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    diss_org_carb: Optional[str] = Field(default=None, title="dissolved organic carbon", description="""Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid. (Unit:  umol/L or mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    diss_org_nitro: Optional[str] = Field(default=None, title="dissolved organic nitrogen", description="""Dissolved organic nitrogen concentration measured as: total dissolved nitrogen - NH4 - NO3 - NO2. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    diss_oxygen: Optional[str] = Field(default=None, title="dissolved oxygen", description="""Concentration of dissolved oxygen. (Unit: umol/kg or mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    down_par: Optional[str] = Field(default=None, title="downward PAR", description="""Visible waveband radiance and irradiance measurements in the water column. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    diether_lipids: Optional[str] = Field(default=None, title="diether lipids", description="""Concentration of diether lipids; can include multiple types of diether lipids (Unit: ng/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*ng/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    diss_carb_dioxide: Optional[str] = Field(default=None, title="dissolved carbon dioxide", description="""Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample (Unit: umol/L or mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol|mg)/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    diss_hydrogen: Optional[str] = Field(default=None, title="dissolved hydrogen", description="""Concentration of dissolved hydrogens (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*umol/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    diss_inorg_carb: Optional[str] = Field(default=None, title="dissolved inorganic carbon", description="""Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter (Unit:  ug/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(ug/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    diss_inorg_nitro: Optional[str] = Field(default=None, title="dissolved inorganic nitrogen", description="""Concentration of dissolved inorganic nitrogen. (Unit: ug/L or umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|ug/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    diss_inorg_phosp: Optional[str] = Field(default=None, title="dissolved inorganic phosphate", description="""Concentration of dissolved inorganic phosphorus in the sample. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    diss_org_carb: Optional[str] = Field(default=None, title="dissolved organic carbon", description="""Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid. (Unit:  umol/L or mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    diss_org_nitro: Optional[str] = Field(default=None, title="dissolved organic nitrogen", description="""Dissolved organic nitrogen concentration measured as: total dissolved nitrogen - NH4 - NO3 - NO2. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    diss_oxygen: Optional[str] = Field(default=None, title="dissolved oxygen", description="""Concentration of dissolved oxygen. (Unit: umol/kg or mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/kg|mg/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    down_par: Optional[str] = Field(default=None, title="downward PAR", description="""Visible waveband radiance and irradiance measurements in the water column. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    env_broad_scale: Optional[str] = Field(default=None, title="broad-scale environmental context", description="""'Report the major environmental system the sample or specimen came from. The system identified should have a coarse spatial grain to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -18024,7 +15060,9 @@ class WaterSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_local_scale: Optional[str] = Field(default=None, title="local environmental context", description="""'Report the entity which are in your sample or specimens local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale.If needed, request new terms on the ENVO tracker identified here: http://www.obofoundry.org/ontology/envo.html'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -18036,7 +15074,9 @@ class WaterSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    env_medium: Optional[str] = Field(default=None, title="environmental medium", description="""'Report the environmental material immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^_*\\s*[a-zA-Z\\s]+\\[ENVO:\\d+\\]$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
@@ -18107,7 +15147,9 @@ class WaterSample(Sample):
                        'PureCultureSample',
                        'SoilSample',
                        'WaterSample']} })
-    fluor: Optional[str] = Field(default=None, title="fluorescence", description="""Raw or converted fluorescence of water. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    fluor: Optional[str] = Field(default=None, title="fluorescence", description="""Raw or converted fluorescence of water. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     gaseous_environment: Optional[str] = Field(default=None, title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval, and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -18118,7 +15160,9 @@ class WaterSample(Sample):
                        'SoilSample',
                        'TerraformSample',
                        'WaterSample']} })
-    glucosidase_act: Optional[str] = Field(default=None, title="glucosidase activity", description="""Measurement of glucosidase activity (Unit: mol/L/h)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    glucosidase_act: Optional[str] = Field(default=None, title="glucosidase activity", description="""Measurement of glucosidase activity (Unit: mol/L/h)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mol/L/h$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     isotope_exposure: Optional[str] = Field(default=None, title="isotope exposure", description="""List isotope exposure or addition applied to your sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CultureEnvironmentalSample',
@@ -18155,10 +15199,18 @@ class WaterSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    light_intensity: Optional[str] = Field(default=None, title="light intensity", description="""Measurement of light intensity. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    magnesium: Optional[str] = Field(default=None, title="magnesium", description="""Concentration of magnesium in the sample (Unit: umol/kg or mol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    mean_frict_vel: Optional[str] = Field(default=None, title="mean friction velocity", description="""Measurement of mean friction velocity (Unit: m/s)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    mean_peak_frict_vel: Optional[str] = Field(default=None, title="mean peak friction velocity", description="""Measurement of mean peak friction velocity (Unit: m/s)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    light_intensity: Optional[str] = Field(default=None, title="light intensity", description="""Measurement of light intensity. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    magnesium: Optional[str] = Field(default=None, title="magnesium", description="""Concentration of magnesium in the sample (Unit: umol/kg or mol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/kg|mol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    mean_frict_vel: Optional[str] = Field(default=None, title="mean friction velocity", description="""Measurement of mean friction velocity (Unit: m/s)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*m/s$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    mean_peak_frict_vel: Optional[str] = Field(default=None, title="mean peak friction velocity", description="""Measurement of mean peak friction velocity (Unit: m/s)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*m/s$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     method_development: Optional[str] = Field(default=None, title="method development", description="""If your samples are TEST sample ONLY, please provide information on what you're hoping this test will resolve.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -18183,10 +15235,18 @@ class WaterSample(Sample):
                        'TerraformSample',
                        'WaterSample']} })
     n_alkanes: Optional[str] = Field(default=None, title="n-alkanes", description="""Concentration of n-alkanes; can include multiple n-alkanes (Unit: ug/mL)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    nitrate: Optional[str] = Field(default=None, title="nitrate", description="""Concentration of nitrate in the sample (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    nitrite: Optional[str] = Field(default=None, title="nitrite", description="""Concentration of nitrite in the sample (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    nitro: Optional[str] = Field(default=None, title="nitrogen", description="""Concentration of nitrogen (total) (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    non_microb_biomass: Optional[str] = Field(default=None, title="non microbial biomass", description="""Amount of non-microbial biomass measured. Include the name for the part of biomass measured, e.g. insect, plant, total. Provide value and unit, any unit is valid. (example: insect 5mg; plant 2ug/mL)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CultureEnvironmentalSample',
+    nitrate: Optional[str] = Field(default=None, title="nitrate", description="""Concentration of nitrate in the sample (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    nitrite: Optional[str] = Field(default=None, title="nitrite", description="""Concentration of nitrite in the sample (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    nitro: Optional[str] = Field(default=None, title="nitrogen", description="""Concentration of nitrogen (total) (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*umol/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    non_microb_biomass: Optional[str] = Field(default=None, title="non microbial biomass", description="""Amount of non-microbial biomass measured. Include the name for the part of biomass measured, e.g. insect, plant, total. Provide value and unit, any unit is valid. (example: insect 5mg; plant 2ug/mL)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(\\S+\\s+\\d+\\s*\\S+)(;\\s*\\S+\\s+\\d+\\s*\\S+)*$'}},
+         'domain_of': ['CultureEnvironmentalSample',
                        'MixedCultureSample',
                        'OtherUndescribedSample',
                        'PlantSample',
@@ -18201,9 +15261,15 @@ class WaterSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    org_carb: Optional[str] = Field(default=None, title="organic carbon", description="""Concentration of organic carbon. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    org_matter: Optional[str] = Field(default=None, title="organic matter", description="""Concentration of organic matter (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    org_nitro: Optional[str] = Field(default=None, title="organic nitrogen", description="""Concentration of organic nitrogen. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    org_carb: Optional[str] = Field(default=None, title="organic carbon", description="""Concentration of organic carbon. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    org_matter: Optional[str] = Field(default=None, title="organic matter", description="""Concentration of organic matter (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mg/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    org_nitro: Optional[str] = Field(default=None, title="organic nitrogen", description="""Concentration of organic nitrogen. Provide value and unit any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     org_nitro_method: Optional[str] = Field(default=None, title="organic nitrogen method", description="""Method used for obtaining organic nitrogen""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     other: Optional[str] = Field(default=None, title="other", description="""Other/additional details about your sample that you feel can't be accurately represented in ANY of the available columns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
@@ -18275,13 +15341,19 @@ class WaterSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'exact_mappings': ['MIXS:0000015']} })
-    part_org_carb: Optional[str] = Field(default=None, title="particulate organic carbon", description="""Concentration of particulate organic carbon. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    part_org_nitro: Optional[str] = Field(default=None, title="particulate organic nitrogen", description="""Concentration of particulate organic nitrogen. (Unit: ug/L or umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    part_org_carb: Optional[str] = Field(default=None, title="particulate organic carbon", description="""Concentration of particulate organic carbon. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    part_org_nitro: Optional[str] = Field(default=None, title="particulate organic nitrogen", description="""Concentration of particulate organic nitrogen. (Unit: ug/L or umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|ug/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     perturbation: Optional[str] = Field(default=None, title="perturbation", description="""Type of perturbation, e.g. chemical administration, physical disturbance, etc.; coupled with perturbation regimen, including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    petroleum_hydrocarb: Optional[str] = Field(default=None, title="petroleum hydrocarbon", description="""Concentration of petroleum hydrocarbon (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    petroleum_hydrocarb: Optional[str] = Field(default=None, title="petroleum hydrocarbon", description="""Concentration of petroleum hydrocarbon (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*umol/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     ph: Optional[float] = Field(default=None, title="pH", description="""pH measurement of the sample or liquid portion of sample or aqueous phase of the fluid""", json_schema_extra = { "linkml_meta": {'domain_of': ['pHProduct',
                        'OtherUndescribedSample',
                        'SedimentSample',
@@ -18291,18 +15363,30 @@ class WaterSample(Sample):
                        'SedimentSample',
                        'SoilSample',
                        'WaterSample']} })
-    phaeopigments: Optional[str] = Field(default=None, title="phaeopigments", description="""Concentration of phaeopigments; can include multiple phaeopigments separated by a `;` (Unit: mg/cm3)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    phosphate: Optional[str] = Field(default=None, title="phosphate", description="""Concentration of phosphate (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    phaeopigments: Optional[str] = Field(default=None, title="phaeopigments", description="""Concentration of phaeopigments; can include multiple phaeopigments separated by a `;` (Unit: mg/cm3)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mg/cm3(;\\s*\\d+(\\.\\d+)?\\s*mg/cm3)*$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    phosphate: Optional[str] = Field(default=None, title="phosphate", description="""Concentration of phosphate (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*umol/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     phosplipid_fatt_acid: Optional[str] = Field(default=None, title="phospholipid fatty acid", description="""Concentration of phospholipid fatty acids; can include multiple values separated by `;`. Provide the phospholipid fatty acids followed by the measurement value ({phospholipid fatty acid name}{value} {unit})""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    photon_flux: Optional[str] = Field(default=None, title="photon flux", description="""Measurement of photon flux. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    potassium: Optional[str] = Field(default=None, title="potassium", description="""Concentration of potassium in the sample (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    pressure: Optional[str] = Field(default=None, title="pressure", description="""Pressure to which the sample is subject, in atmospheres (Unit: atm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    photon_flux: Optional[str] = Field(default=None, title="photon flux", description="""Measurement of photon flux. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    potassium: Optional[str] = Field(default=None, title="potassium", description="""Concentration of potassium in the sample (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    pressure: Optional[str] = Field(default=None, title="pressure", description="""Pressure to which the sample is subject, in atmospheres (Unit: atm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*atm$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'TerraformSample',
                        'WaterSample',
                        'ConditioningValue']} })
-    primary_prod: Optional[str] = Field(default=None, title="primary production", description="""Measurement of primary production generally measured as isotope uptake. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    primary_prod: Optional[str] = Field(default=None, title="primary production", description="""Measurement of primary production generally measured as isotope uptake. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     project: Optional[int] = Field(default=None, title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
@@ -18324,7 +15408,9 @@ class WaterSample(Sample):
          'todos': ['should this be an ID? CURIE can use the one NMDC has '
                    'https://bioregistry.io/reference/emsl.project:60141 where '
                    'emsl.project is the CURIE prefix']} })
-    redox_potential: Optional[str] = Field(default=None, title="redox potential", description="""Redox potential measured relative to a hydrogen cell indicating oxidation or reduction potential (Unit: mV)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldDeployedTerraformSample',
+    redox_potential: Optional[str] = Field(default=None, title="redox potential", description="""Redox potential measured relative to a hydrogen cell indicating oxidation or reduction potential (Unit: mV)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*mV$'}},
+         'domain_of': ['FieldDeployedTerraformSample',
                        'OtherUndescribedSample',
                        'SedimentSample',
                        'TerraformSample',
@@ -18344,7 +15430,10 @@ class WaterSample(Sample):
                        'TerraformSample',
                        'WaterSample'],
          'todos': ['reconcile replicate modelling']} })
-    salinity: Optional[str] = Field(default=None, title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample',
+    salinity: Optional[str] = Field(default=None, title="salinity", description="""Salinity is the total concentration of all dissolved salts in a sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater (Unit: practical salinity unit or percent)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(practical '
+                                                         'salinity unit|percent)$'}},
+         'domain_of': ['OtherUndescribedSample',
                        'PlantSample',
                        'SedimentSample',
                        'SoilSample',
@@ -18405,19 +15494,29 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    silicate: Optional[str] = Field(default=None, title="silicate", description="""Concentration of silicate (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    size_frac_low: str = Field(default=..., title="size fraction lower threshold", description="""Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample (Unit: um)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    silicate: Optional[str] = Field(default=None, title="silicate", description="""Concentration of silicate (Unit: umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*umol/L$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    size_frac_low: str = Field(default=..., title="size fraction lower threshold", description="""Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample (Unit: um)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*um$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'OtherUndescribedSample',
                        'SoilSample',
                        'WaterSample']} })
-    size_frac_up: str = Field(default=..., title="size fraction upper threshold", description="""Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample (Unit: um)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
+    size_frac_up: str = Field(default=..., title="size fraction upper threshold", description="""Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample (Unit: um)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*um$'}},
+         'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'OtherUndescribedSample',
                        'SoilSample',
                        'WaterSample']} })
-    sodium: Optional[str] = Field(default=None, title="sodium", description="""Sodium concentration in the sample (Unit: ug/mL)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    soluble_react_phosp: Optional[str] = Field(default=None, title="soluble reactive phosphorus", description="""Concentration of soluble reactive phosphorus. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    sodium: Optional[str] = Field(default=None, title="sodium", description="""Sodium concentration in the sample (Unit: ug/mL)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*ug/mL$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    soluble_react_phosp: Optional[str] = Field(default=None, title="soluble reactive phosphorus", description="""Concentration of soluble reactive phosphorus. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     source_mat_id: Optional[str] = Field(default=None, title="source material identifier", description="""A unique identifier assigned to an original material sample collected or to any derived sub-samples. The source material should be listed as a sample to inform details about parent material relationship.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -18432,7 +15531,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    start_date_inc: Optional[str] = Field(default=None, title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample',
+    start_date_inc: Optional[str] = Field(default=None, title="incubation start date", description="""Date the incubation was started. Only relevant for incubation samples. Format: YYYY-MM-DD""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample',
                        'CultureEnvironmentalSample',
                        'FieldDeployedTerraformSample',
                        'MixedCultureSample',
@@ -18477,8 +15578,12 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    sulfate: Optional[str] = Field(default=None, title="sulfate", description="""Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    sulfide: Optional[str] = Field(default=None, title="sulfide", description="""Concentration of sulfide in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    sulfate: Optional[str] = Field(default=None, title="sulfate", description="""Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    sulfide: Optional[str] = Field(default=None, title="sulfide", description="""Concentration of sulfide in the sample. (Unit: umol/L or mg/L or ppm)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(umol/L|mg/L|ppm)$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
     samp_store_temp: Optional[SampleStoreTempEnum] = Field(default=None, title="sample storage temperature", description="""The temperature at which your samples should be stored upon arrival. This field is NOT multivalued. If selecting other add the `other_samp_store_temp` attribute to provide additional detail.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample_storage_temperature', 'storage_temperature'],
          'domain_of': ['AerosolArmSample',
                        'AerosolSample',
@@ -18495,7 +15600,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    suspend_part_matter: Optional[str] = Field(default=None, title="suspended particulate matter", description="""Concentration of suspended particulate matter. (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    suspend_part_matter: Optional[str] = Field(default=None, title="suspended particulate matter", description="""Concentration of suspended particulate matter. (Unit: mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(mg/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     technical_reps: Optional[int] = Field(default=None, title="technical replicates", description="""Number of technical replicates for the sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolArmSample',
                        'AerosolSample',
                        'CommerciallyPurchasedSample',
@@ -18510,7 +15617,9 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'SynthesizedMaterialSample',
                        'TerraformSample',
                        'WaterSample']} })
-    temp: Optional[str] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommerciallyPurchasedSample',
+    temp: Optional[str] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling. (Units: C)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^-?\\d+(\\.\\d+)?\\s*C$'}},
+         'domain_of': ['CommerciallyPurchasedSample',
                        'FieldDeployedTerraformSample',
                        'MonetSoilSample',
                        'OtherUndescribedSample',
@@ -18521,16 +15630,32 @@ be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': [
                        'TerraformSample',
                        'WaterSample']} })
     tidal_stage: Optional[TidalStageEnum] = Field(default=None, title="tidal stage", description="""Stage of tide""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    tot_depth_water_col: Optional[str] = Field(default=None, title="total depth of water column", description="""Measurement of total depth of water column (Unit: m)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
-    tot_diss_nitro: Optional[str] = Field(default=None, title="total dissolved nitrogen", description="""Total dissolved nitrogen concentration reported as nitrogen measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen. (Unit: ug/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    tot_inorg_nitro: Optional[str] = Field(default=None, title="total inorganic nitrogen", description="""Total inorganic nitrogen content. (Unit: ug/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    tot_nitro: Optional[str] = Field(default=None, title="total nitrogen", description="""Total nitrogen concentration of water samples calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering reported as nitrogen. (Unit: ug/L or umol/L or mg/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    tot_part_carb: Optional[str] = Field(default=None, title="total particulate carbon", description="""Total particulate carbon content. (Unit: ug/L or umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    tot_phosp: Optional[str] = Field(default=None, title="total phosphorus", description="""Total phosphorus concentration in the sample calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus. (Unit: ug/L or umol/L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
-    turbidity: Optional[str] = Field(default=None, title="turbidity", description="""Measure of the amount of cloudiness or haziness in water caused by individual particles. Provide value and unit any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample'],
+    tot_depth_water_col: Optional[str] = Field(default=None, title="total depth of water column", description="""Measurement of total depth of water column (Unit: m)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*m$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample']} })
+    tot_diss_nitro: Optional[str] = Field(default=None, title="total dissolved nitrogen", description="""Total dissolved nitrogen concentration reported as nitrogen measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen. (Unit: ug/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(ug/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    tot_inorg_nitro: Optional[str] = Field(default=None, title="total inorganic nitrogen", description="""Total inorganic nitrogen content. (Unit: ug/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(ug/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    tot_nitro: Optional[str] = Field(default=None, title="total nitrogen", description="""Total nitrogen concentration of water samples calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering reported as nitrogen. (Unit: ug/L or umol/L or mg/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(ug/L|umol/L|mg/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    tot_part_carb: Optional[str] = Field(default=None, title="total particulate carbon", description="""Total particulate carbon content. (Unit: ug/L or umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(ug/L|umol/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    tot_phosp: Optional[str] = Field(default=None, title="total phosphorus", description="""Total phosphorus concentration in the sample calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus. (Unit: ug/L or umol/L)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*(ug/L|umol/L)$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    turbidity: Optional[str] = Field(default=None, title="turbidity", description="""Measure of the amount of cloudiness or haziness in water caused by individual particles. Provide value and unit any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'SedimentSample', 'WaterSample'],
          'todos': ['decide how to represent in backend (normalized child table with FK '
                    'to PlateSetupActivity, array column, or other)']} })
-    water_current: Optional[str] = Field(default=None, title="water current", description="""Measurement of magnitude and direction of flow within a fluid. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
+    water_current: Optional[str] = Field(default=None, title="water current", description="""Measurement of magnitude and direction of flow within a fluid. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['OtherUndescribedSample', 'WaterSample']} })
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MassSpectrometryStandardRun',
@@ -18654,916 +15779,6 @@ campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
     lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-
-    @field_validator('alkalinity')
-    def pattern_alkalinity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg|meq)/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alkalinity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alkalinity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('alkyl_diethers')
-    def pattern_alkyl_diethers(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alkyl_diethers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alkyl_diethers format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('aminopept_act')
-    def pattern_aminopept_act(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mol/L/h$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid aminopept_act format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid aminopept_act format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('ammonium')
-    def pattern_ammonium(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid ammonium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid ammonium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('bac_prod')
-    def pattern_bac_prod(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid bac_prod format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid bac_prod format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('bac_resp')
-    def pattern_bac_resp(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid bac_resp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid bac_resp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('bacteria_carb_prod')
-    def pattern_bacteria_carb_prod(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid bacteria_carb_prod format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid bacteria_carb_prod format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('bishomohopanol')
-    def pattern_bishomohopanol(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(ug/L|ug/g)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid bishomohopanol format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid bishomohopanol format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('bromide')
-    def pattern_bromide(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*ppm$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid bromide format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid bromide format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('calcium')
-    def pattern_calcium(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg/L|umol/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid calcium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid calcium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('chloride')
-    def pattern_chloride(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid chloride format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid chloride format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('chlorophyll')
-    def pattern_chlorophyll(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg/m3|ug/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid chlorophyll format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid chlorophyll format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('conduc')
-    def pattern_conduc(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid conduc format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid conduc format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('density')
-    def pattern_density(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(g/m3|g/cm3)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid density format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid density format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('depth')
-    def pattern_depth(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?(-\d+(\.\d+)?)?\s*m$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid depth format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid depth format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diether_lipids')
-    def pattern_diether_lipids(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*ng/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diether_lipids format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diether_lipids format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_carb_dioxide')
-    def pattern_diss_carb_dioxide(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol|mg)/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_carb_dioxide format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_carb_dioxide format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_hydrogen')
-    def pattern_diss_hydrogen(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*umol/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_hydrogen format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_hydrogen format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_inorg_carb')
-    def pattern_diss_inorg_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(ug/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_inorg_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_inorg_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_inorg_nitro')
-    def pattern_diss_inorg_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|ug/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_inorg_nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_inorg_nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_inorg_phosp')
-    def pattern_diss_inorg_phosp(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_inorg_phosp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_inorg_phosp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_org_carb')
-    def pattern_diss_org_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_org_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_org_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_org_nitro')
-    def pattern_diss_org_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_org_nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_org_nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('diss_oxygen')
-    def pattern_diss_oxygen(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/kg|mg/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid diss_oxygen format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid diss_oxygen format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('down_par')
-    def pattern_down_par(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid down_par format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid down_par format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_broad_scale')
-    def pattern_env_broad_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_broad_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_broad_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_local_scale')
-    def pattern_env_local_scale(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_local_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_local_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_medium')
-    def pattern_env_medium(cls, v):
-        pattern=re.compile(r"^_*\s*[a-zA-Z\s]+\[ENVO:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_medium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_medium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('fluor')
-    def pattern_fluor(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid fluor format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid fluor format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('glucosidase_act')
-    def pattern_glucosidase_act(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mol/L/h$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid glucosidase_act format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid glucosidase_act format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('light_intensity')
-    def pattern_light_intensity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid light_intensity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid light_intensity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('magnesium')
-    def pattern_magnesium(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/kg|mol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid magnesium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid magnesium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('mean_frict_vel')
-    def pattern_mean_frict_vel(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*m/s$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid mean_frict_vel format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid mean_frict_vel format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('mean_peak_frict_vel')
-    def pattern_mean_peak_frict_vel(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*m/s$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid mean_peak_frict_vel format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid mean_peak_frict_vel format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('nitrate')
-    def pattern_nitrate(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid nitrate format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid nitrate format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('nitrite')
-    def pattern_nitrite(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid nitrite format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid nitrite format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('nitro')
-    def pattern_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*umol/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('non_microb_biomass')
-    def pattern_non_microb_biomass(cls, v):
-        pattern=re.compile(r"^(\S+\s+\d+\s*\S+)(;\s*\S+\s+\d+\s*\S+)*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid non_microb_biomass format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid non_microb_biomass format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('org_carb')
-    def pattern_org_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid org_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid org_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('org_matter')
-    def pattern_org_matter(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mg/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid org_matter format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid org_matter format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('org_nitro')
-    def pattern_org_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid org_nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid org_nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('part_org_carb')
-    def pattern_part_org_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid part_org_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid part_org_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('part_org_nitro')
-    def pattern_part_org_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|ug/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid part_org_nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid part_org_nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('petroleum_hydrocarb')
-    def pattern_petroleum_hydrocarb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*umol/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid petroleum_hydrocarb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid petroleum_hydrocarb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('phaeopigments')
-    def pattern_phaeopigments(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mg/cm3(;\s*\d+(\.\d+)?\s*mg/cm3)*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid phaeopigments format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid phaeopigments format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('phosphate')
-    def pattern_phosphate(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*umol/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid phosphate format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid phosphate format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('photon_flux')
-    def pattern_photon_flux(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid photon_flux format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid photon_flux format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('potassium')
-    def pattern_potassium(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid potassium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid potassium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('pressure')
-    def pattern_pressure(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*atm$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid pressure format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid pressure format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('primary_prod')
-    def pattern_primary_prod(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid primary_prod format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid primary_prod format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('redox_potential')
-    def pattern_redox_potential(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*mV$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid redox_potential format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid redox_potential format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('salinity')
-    def pattern_salinity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(practical salinity unit|percent)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid salinity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid salinity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('silicate')
-    def pattern_silicate(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*umol/L$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid silicate format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid silicate format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('size_frac_low')
-    def pattern_size_frac_low(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*um$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid size_frac_low format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid size_frac_low format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('size_frac_up')
-    def pattern_size_frac_up(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*um$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid size_frac_up format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid size_frac_up format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sodium')
-    def pattern_sodium(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*ug/mL$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sodium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sodium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('soluble_react_phosp')
-    def pattern_soluble_react_phosp(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid soluble_react_phosp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid soluble_react_phosp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('start_date_inc')
-    def pattern_start_date_inc(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid start_date_inc format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid start_date_inc format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sulfate')
-    def pattern_sulfate(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sulfate format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sulfate format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sulfide')
-    def pattern_sulfide(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(umol/L|mg/L|ppm)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sulfide format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sulfide format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('suspend_part_matter')
-    def pattern_suspend_part_matter(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(mg/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid suspend_part_matter format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid suspend_part_matter format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('temp')
-    def pattern_temp(cls, v):
-        pattern=re.compile(r"^-?\d+(\.\d+)?\s*C$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid temp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid temp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_depth_water_col')
-    def pattern_tot_depth_water_col(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*m$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_depth_water_col format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_depth_water_col format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_diss_nitro')
-    def pattern_tot_diss_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(ug/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_diss_nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_diss_nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_inorg_nitro')
-    def pattern_tot_inorg_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(ug/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_inorg_nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_inorg_nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_nitro')
-    def pattern_tot_nitro(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(ug/L|umol/L|mg/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_nitro format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_nitro format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_part_carb')
-    def pattern_tot_part_carb(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(ug/L|umol/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_part_carb format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_part_carb format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('tot_phosp')
-    def pattern_tot_phosp(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*(ug/L|umol/L)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid tot_phosp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid tot_phosp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('turbidity')
-    def pattern_turbidity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid turbidity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid turbidity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('water_current')
-    def pattern_water_current(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid water_current format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid water_current format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class ProcessedSample(Sample):
@@ -19956,8 +16171,12 @@ campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
     collection_date: Optional[date] = Field(default=None, title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
@@ -20031,32 +16250,6 @@ predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_o
                        'QuantityValue',
                        'ConditioningValue',
                        'zipDownload']} })
-
-    @field_validator('collection_date')
-    def pattern_collection_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('shipped_sample_size')
-    def pattern_shipped_sample_size(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid shipped_sample_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid shipped_sample_size format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class AerosolArmSamplingActivity(SamplingActivity):
@@ -20214,35 +16407,13 @@ campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
     collection_date: Optional[date] = Field(default=None, title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
-
-    @field_validator('collection_date')
-    def pattern_collection_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('shipped_sample_size')
-    def pattern_shipped_sample_size(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid shipped_sample_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid shipped_sample_size format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class AerosolSamplingActivity(SamplingActivity):
@@ -20251,7 +16422,9 @@ class AerosolSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
@@ -20263,8 +16436,12 @@ class AerosolSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    humidity: Optional[str] = Field(default=None, title="humidity", description="""Amount of water vapor measured in the air the day of sampling. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity', 'OtherUndescribedSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    humidity: Optional[str] = Field(default=None, title="humidity", description="""Amount of water vapor measured in the air the day of sampling. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolSamplingActivity', 'OtherUndescribedSamplingActivity']} })
+    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -20289,11 +16466,15 @@ class AerosolSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'SynthesizedMaterialSamplingActivity',
                        'WaterSamplingActivity']} })
-    sampling_duration: Optional[str] = Field(default=None, title="sampling duration", description="""The difference between sample start and sample end time in seconds. (Unit: s)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity', 'OtherUndescribedSamplingActivity']} })
+    sampling_duration: Optional[str] = Field(default=None, title="sampling duration", description="""The difference between sample start and sample end time in seconds. (Unit: s)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*s$'}},
+         'domain_of': ['AerosolSamplingActivity', 'OtherUndescribedSamplingActivity']} })
     wind_direction: Optional[CardinalDirectionEnum] = Field(default=None, title="wind direction", description="""Direction of the wind on the day of sampling. Collected via anemometer. Provide cardinal direction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
                        'OtherUndescribedSamplingActivity',
                        'SoilSamplingActivity']} })
-    wind_speed: Optional[str] = Field(default=None, title="wind speed", description="""Wind speed describes how fast the air is moving past a certain point during sampling time. Collected via anemometer. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity', 'OtherUndescribedSamplingActivity']} })
+    wind_speed: Optional[str] = Field(default=None, title="wind speed", description="""Wind speed describes how fast the air is moving past a certain point during sampling time. Collected via anemometer. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolSamplingActivity', 'OtherUndescribedSamplingActivity']} })
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MassSpectrometryStandardRun',
@@ -20438,100 +16619,13 @@ campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
     collection_date: Optional[date] = Field(default=None, title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
-
-    @field_validator('collection_time')
-    def pattern_collection_time(cls, v):
-        pattern=re.compile(r"^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_time format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('humidity')
-    def pattern_humidity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid humidity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid humidity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sample_collected')
-    def pattern_sample_collected(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sample_collected format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sample_collected format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sampling_duration')
-    def pattern_sampling_duration(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*s$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sampling_duration format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sampling_duration format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('wind_speed')
-    def pattern_wind_speed(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid wind_speed format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid wind_speed format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('collection_date')
-    def pattern_collection_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('shipped_sample_size')
-    def pattern_shipped_sample_size(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid shipped_sample_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid shipped_sample_size format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class CommerciallyPurchasedSamplingActivity(SamplingActivity):
@@ -20540,7 +16634,9 @@ class CommerciallyPurchasedSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -20709,48 +16805,13 @@ campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
     collection_date: Optional[date] = Field(default=None, title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
-
-    @field_validator('sample_collected')
-    def pattern_sample_collected(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sample_collected format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sample_collected format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('collection_date')
-    def pattern_collection_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('shipped_sample_size')
-    def pattern_shipped_sample_size(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid shipped_sample_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid shipped_sample_size format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class CultureEnvironmentalSamplingActivity(SamplingActivity):
@@ -20759,7 +16820,9 @@ class CultureEnvironmentalSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
@@ -20771,7 +16834,9 @@ class CultureEnvironmentalSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -20950,61 +17015,13 @@ campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
     collection_date: Optional[date] = Field(default=None, title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
-
-    @field_validator('collection_time')
-    def pattern_collection_time(cls, v):
-        pattern=re.compile(r"^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_time format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sample_collected')
-    def pattern_sample_collected(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sample_collected format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sample_collected format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('collection_date')
-    def pattern_collection_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('shipped_sample_size')
-    def pattern_shipped_sample_size(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid shipped_sample_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid shipped_sample_size format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class EngineeredStrainSamplingActivity(SamplingActivity):
@@ -21157,35 +17174,13 @@ campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
     collection_date: Optional[date] = Field(default=None, title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
-
-    @field_validator('collection_date')
-    def pattern_collection_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('shipped_sample_size')
-    def pattern_shipped_sample_size(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid shipped_sample_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid shipped_sample_size format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class FieldDeployedTerraformSamplingActivity(SamplingActivity):
@@ -21194,7 +17189,9 @@ class FieldDeployedTerraformSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
@@ -21206,7 +17203,9 @@ class FieldDeployedTerraformSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -21373,61 +17372,13 @@ campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
     collection_date: Optional[date] = Field(default=None, title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
-
-    @field_validator('collection_time')
-    def pattern_collection_time(cls, v):
-        pattern=re.compile(r"^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_time format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sample_collected')
-    def pattern_sample_collected(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sample_collected format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sample_collected format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('collection_date')
-    def pattern_collection_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('shipped_sample_size')
-    def pattern_shipped_sample_size(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid shipped_sample_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid shipped_sample_size format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class MixedCultureSamplingActivity(SamplingActivity):
@@ -21436,7 +17387,9 @@ class MixedCultureSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
@@ -21448,7 +17401,9 @@ class MixedCultureSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -21627,61 +17582,13 @@ campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
     collection_date: Optional[date] = Field(default=None, title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
-
-    @field_validator('collection_time')
-    def pattern_collection_time(cls, v):
-        pattern=re.compile(r"^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_time format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sample_collected')
-    def pattern_sample_collected(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sample_collected format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sample_collected format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('collection_date')
-    def pattern_collection_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('shipped_sample_size')
-    def pattern_shipped_sample_size(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid shipped_sample_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid shipped_sample_size format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class MonetSoilSamplingActivity(SamplingActivity):
@@ -21696,7 +17603,9 @@ class MonetSoilSamplingActivity(SamplingActivity):
                         'sample_collection_dev': {'name': 'sample_collection_dev',
                                                   'required': True}}})
 
-    collection_time: str = Field(default=..., title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    collection_time: str = Field(default=..., title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
@@ -21708,8 +17617,14 @@ class MonetSoilSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    infiltration_1: str = Field(default=..., title="first infiltration time", description="""Amount of time it takes to accomplish the first infiltration activity. If infiltration time was started and unsuccessful enter 'failed' if infiltration time was not attempted enter 'did not collect'. Units and format of mm:ss required. (Example: 15:20 mm:ss)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSamplingActivity', 'SoilSamplingActivity']} })
-    infiltration_2: str = Field(default=..., title="second infiltration time", description="""Amount of time it takes to accomplish the second infiltration activity. If infiltration time was started and unsuccessful enter 'failed' if infiltration time was not attempted enter 'did not collect'. Units and format of mm:ss required. (Example: 15:20 mm:ss)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSamplingActivity', 'SoilSamplingActivity']} })
+    infiltration_1: str = Field(default=..., title="first infiltration time", description="""Amount of time it takes to accomplish the first infiltration activity. If infiltration time was started and unsuccessful enter 'failed' if infiltration time was not attempted enter 'did not collect'. Units and format of mm:ss required. (Example: 15:20 mm:ss)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^((0[0-9]|[1-5][0-9]):([0-5][0-9])\\smm:ss|did '
+                                                         'not collect|failed)$'}},
+         'domain_of': ['MonetSoilSamplingActivity', 'SoilSamplingActivity']} })
+    infiltration_2: str = Field(default=..., title="second infiltration time", description="""Amount of time it takes to accomplish the second infiltration activity. If infiltration time was started and unsuccessful enter 'failed' if infiltration time was not attempted enter 'did not collect'. Units and format of mm:ss required. (Example: 15:20 mm:ss)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^((0[0-9]|[1-5][0-9]):([0-5][0-9])\\smm:ss|did '
+                                                         'not collect|failed)'}},
+         'domain_of': ['MonetSoilSamplingActivity', 'SoilSamplingActivity']} })
     infiltration_notes: Optional[str] = Field(default=None, title="infiltration notes", description="""Provide any details, issues, or context needed to understand the infiltration activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSamplingActivity', 'SoilSamplingActivity']} })
     sample_collection_dev: str = Field(default=..., title="sample collection device", description="""The device used to collect an environmental sample. Include dimensions of device if applicable""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
@@ -21871,74 +17786,13 @@ campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
     collection_date: Optional[date] = Field(default=None, title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
-
-    @field_validator('collection_time')
-    def pattern_collection_time(cls, v):
-        pattern=re.compile(r"^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_time format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('infiltration_1')
-    def pattern_infiltration_1(cls, v):
-        pattern=re.compile(r"^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid infiltration_1 format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid infiltration_1 format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('infiltration_2')
-    def pattern_infiltration_2(cls, v):
-        pattern=re.compile(r"^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid infiltration_2 format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid infiltration_2 format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('collection_date')
-    def pattern_collection_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('shipped_sample_size')
-    def pattern_shipped_sample_size(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid shipped_sample_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid shipped_sample_size format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class OtherUndescribedSamplingActivity(SamplingActivity):
@@ -21952,7 +17806,9 @@ class OtherUndescribedSamplingActivity(SamplingActivity):
                                                     'and unit, any unit is valid',
                                      'name': 'humidity'}}})
 
-    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
@@ -21964,8 +17820,12 @@ class OtherUndescribedSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    humidity: Optional[str] = Field(default=None, title="humidity", description="""Amount of humidity measured in the air the day of sampling. Provided by iMet. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity', 'OtherUndescribedSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    humidity: Optional[str] = Field(default=None, title="humidity", description="""Amount of humidity measured in the air the day of sampling. Provided by iMet. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolSamplingActivity', 'OtherUndescribedSamplingActivity']} })
+    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -22000,11 +17860,15 @@ class OtherUndescribedSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sampling_duration: Optional[str] = Field(default=None, title="sampling duration", description="""The difference between sample start and sample end time in seconds. (Unit: s)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity', 'OtherUndescribedSamplingActivity']} })
+    sampling_duration: Optional[str] = Field(default=None, title="sampling duration", description="""The difference between sample start and sample end time in seconds. (Unit: s)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*s$'}},
+         'domain_of': ['AerosolSamplingActivity', 'OtherUndescribedSamplingActivity']} })
     wind_direction: Optional[CardinalDirectionEnum] = Field(default=None, title="wind direction", description="""Direction of the wind on the day of sampling. Collected via anemometer. Provide cardinal direction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
                        'OtherUndescribedSamplingActivity',
                        'SoilSamplingActivity']} })
-    wind_speed: Optional[str] = Field(default=None, title="wind speed", description="""Wind speed describes how fast the air is moving past a certain point during sampling time. Collected via anemometer. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity', 'OtherUndescribedSamplingActivity']} })
+    wind_speed: Optional[str] = Field(default=None, title="wind speed", description="""Wind speed describes how fast the air is moving past a certain point during sampling time. Collected via anemometer. Provide value and unit, any unit is valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolSamplingActivity', 'OtherUndescribedSamplingActivity']} })
     id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
                        'MobilePhaseSegment',
                        'MassSpectrometryStandardRun',
@@ -22149,100 +18013,13 @@ campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
     collection_date: Optional[date] = Field(default=None, title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
-
-    @field_validator('collection_time')
-    def pattern_collection_time(cls, v):
-        pattern=re.compile(r"^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_time format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('humidity')
-    def pattern_humidity(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid humidity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid humidity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sample_collected')
-    def pattern_sample_collected(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sample_collected format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sample_collected format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sampling_duration')
-    def pattern_sampling_duration(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*s$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sampling_duration format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sampling_duration format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('wind_speed')
-    def pattern_wind_speed(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid wind_speed format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid wind_speed format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('collection_date')
-    def pattern_collection_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('shipped_sample_size')
-    def pattern_shipped_sample_size(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid shipped_sample_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid shipped_sample_size format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class PlantSamplingActivity(SamplingActivity):
@@ -22251,7 +18028,9 @@ class PlantSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
@@ -22263,7 +18042,9 @@ class PlantSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -22446,61 +18227,13 @@ campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
     collection_date: Optional[date] = Field(default=None, title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
-
-    @field_validator('collection_time')
-    def pattern_collection_time(cls, v):
-        pattern=re.compile(r"^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_time format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sample_collected')
-    def pattern_sample_collected(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sample_collected format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sample_collected format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('collection_date')
-    def pattern_collection_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('shipped_sample_size')
-    def pattern_shipped_sample_size(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid shipped_sample_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid shipped_sample_size format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class PureCultureSamplingActivity(SamplingActivity):
@@ -22509,7 +18242,9 @@ class PureCultureSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
@@ -22521,7 +18256,9 @@ class PureCultureSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -22700,61 +18437,13 @@ campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
     collection_date: Optional[date] = Field(default=None, title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
-
-    @field_validator('collection_time')
-    def pattern_collection_time(cls, v):
-        pattern=re.compile(r"^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_time format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sample_collected')
-    def pattern_sample_collected(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sample_collected format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sample_collected format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('collection_date')
-    def pattern_collection_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('shipped_sample_size')
-    def pattern_shipped_sample_size(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid shipped_sample_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid shipped_sample_size format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class SedimentSamplingActivity(SamplingActivity):
@@ -22763,7 +18452,9 @@ class SedimentSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
@@ -22775,7 +18466,9 @@ class SedimentSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -22958,61 +18651,13 @@ campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
     collection_date: Optional[date] = Field(default=None, title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
-
-    @field_validator('collection_time')
-    def pattern_collection_time(cls, v):
-        pattern=re.compile(r"^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_time format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sample_collected')
-    def pattern_sample_collected(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sample_collected format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sample_collected format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('collection_date')
-    def pattern_collection_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('shipped_sample_size')
-    def pattern_shipped_sample_size(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid shipped_sample_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid shipped_sample_size format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class SoilSamplingActivity(SamplingActivity):
@@ -23068,7 +18713,9 @@ class SoilSamplingActivity(SamplingActivity):
                        'SoftwareControlledTermValue',
                        'ControlledTermValue',
                        'QuantityValue']} })
-    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
@@ -23080,10 +18727,18 @@ class SoilSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    infiltration_1: Optional[str] = Field(default=None, title="first infiltration time", description="""Amount of time it takes to accomplish the first infiltration activity. If infiltration time was started and unsuccessful enter 'failed' if infiltration time was not attempted enter 'did not collect'. Units and format of mm:ss required. (Example: 15:20 mm:ss)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSamplingActivity', 'SoilSamplingActivity']} })
-    infiltration_2: Optional[str] = Field(default=None, title="second infiltration time", description="""Amount of time it takes to accomplish the second infiltration activity. If infiltration time was started and unsuccessful enter 'failed' if infiltration time was not attempted enter 'did not collect'. Units and format of mm:ss required. (Example: 15:20 mm:ss)""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSamplingActivity', 'SoilSamplingActivity']} })
+    infiltration_1: Optional[str] = Field(default=None, title="first infiltration time", description="""Amount of time it takes to accomplish the first infiltration activity. If infiltration time was started and unsuccessful enter 'failed' if infiltration time was not attempted enter 'did not collect'. Units and format of mm:ss required. (Example: 15:20 mm:ss)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^((0[0-9]|[1-5][0-9]):([0-5][0-9])\\smm:ss|did '
+                                                         'not collect|failed)$'}},
+         'domain_of': ['MonetSoilSamplingActivity', 'SoilSamplingActivity']} })
+    infiltration_2: Optional[str] = Field(default=None, title="second infiltration time", description="""Amount of time it takes to accomplish the second infiltration activity. If infiltration time was started and unsuccessful enter 'failed' if infiltration time was not attempted enter 'did not collect'. Units and format of mm:ss required. (Example: 15:20 mm:ss)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^((0[0-9]|[1-5][0-9]):([0-5][0-9])\\smm:ss|did '
+                                                         'not collect|failed)'}},
+         'domain_of': ['MonetSoilSamplingActivity', 'SoilSamplingActivity']} })
     infiltration_notes: Optional[str] = Field(default=None, title="infiltration notes", description="""Provide any details, issues, or context needed to understand the infiltration activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSamplingActivity', 'SoilSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -23223,87 +18878,13 @@ campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
     collection_date: Optional[date] = Field(default=None, title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
-
-    @field_validator('collection_time')
-    def pattern_collection_time(cls, v):
-        pattern=re.compile(r"^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_time format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('infiltration_1')
-    def pattern_infiltration_1(cls, v):
-        pattern=re.compile(r"^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid infiltration_1 format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid infiltration_1 format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('infiltration_2')
-    def pattern_infiltration_2(cls, v):
-        pattern=re.compile(r"^((0[0-9]|[1-5][0-9]):([0-5][0-9])\smm:ss|did not collect|failed)")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid infiltration_2 format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid infiltration_2 format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sample_collected')
-    def pattern_sample_collected(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sample_collected format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sample_collected format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('collection_date')
-    def pattern_collection_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('shipped_sample_size')
-    def pattern_shipped_sample_size(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid shipped_sample_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid shipped_sample_size format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class SynthesizedMaterialSamplingActivity(SamplingActivity):
@@ -23312,7 +18893,9 @@ class SynthesizedMaterialSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -23481,48 +19064,13 @@ campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
     collection_date: Optional[date] = Field(default=None, title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
-
-    @field_validator('sample_collected')
-    def pattern_sample_collected(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sample_collected format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sample_collected format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('collection_date')
-    def pattern_collection_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('shipped_sample_size')
-    def pattern_shipped_sample_size(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid shipped_sample_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid shipped_sample_size format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class TerraformSamplingActivity(SamplingActivity):
@@ -23531,7 +19079,9 @@ class TerraformSamplingActivity(SamplingActivity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/sample-classes'})
 
-    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
@@ -23543,7 +19093,9 @@ class TerraformSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -23710,61 +19262,13 @@ campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
     collection_date: Optional[date] = Field(default=None, title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
-
-    @field_validator('collection_time')
-    def pattern_collection_time(cls, v):
-        pattern=re.compile(r"^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_time format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sample_collected')
-    def pattern_sample_collected(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sample_collected format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sample_collected format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('collection_date')
-    def pattern_collection_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('shipped_sample_size')
-    def pattern_shipped_sample_size(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid shipped_sample_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid shipped_sample_size format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class WaterSamplingActivity(SamplingActivity):
@@ -23777,7 +19281,9 @@ class WaterSamplingActivity(SamplingActivity):
                         'sample_collection_method': {'name': 'sample_collection_method',
                                                      'required': True}}})
 
-    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    collection_time: Optional[str] = Field(default=None, title="collection time", description="""The time of sampling as an instance (single point). Required format: HH:MM:SS in 24-hour time format. Don't forget the second! (Unit: hh:mm:ss or HH:MM:SS)""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\s*(hh:mm:ss|HH:MM:SS)$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
                        'MixedCultureSamplingActivity',
@@ -23789,7 +19295,9 @@ class WaterSamplingActivity(SamplingActivity):
                        'SoilSamplingActivity',
                        'TerraformSamplingActivity',
                        'WaterSamplingActivity']} })
-    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'domain_of': ['AerosolSamplingActivity',
+    sample_collected: Optional[str] = Field(default=None, title="sample collected", description="""This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to EMSL or collected for a specific analysis. Provide value and unit, any unit is valid""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AerosolSamplingActivity',
                        'CommerciallyPurchasedSamplingActivity',
                        'CultureEnvironmentalSamplingActivity',
                        'FieldDeployedTerraformSamplingActivity',
@@ -23968,61 +19476,13 @@ campaign (e.g., 'AMP2', 'MONet_FY26'). Optional for historical records
 predating activity tracking.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'SamplingActivity'],
          'todos': ['Is sampling activity where we want to capture this?']} })
     collection_date: Optional[date] = Field(default=None, title="collection date", description="""'The date of sampling as an instance. Format: YYYY-MM-DD. Also valid if entire collection date is unknown is just year (YYYY) or just year and month
-(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
-    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+(YYYY-MM)'""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
+    shipped_sample_size: Optional[str] = Field(default=None, title="shipped sample size", description="""Total amount of sample sent to EMSL. Must include units.""", json_schema_extra = { "linkml_meta": {'annotations': {'submission_pattern': {'tag': 'submission_pattern',
+                                                'value': '^\\d+(\\.\\d+)?\\s*[\\w\\s/]+$'}},
+         'domain_of': ['AMP2UserSample', 'SamplingActivity']} })
     sampled_at_site: Optional[str] = Field(default=None, description="""Reference to the site where the sample was collected. This is a FK to the Site class, which contains detailed metadata about the sampling location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SamplingActivity']} })
-
-    @field_validator('collection_time')
-    def pattern_collection_time(cls, v):
-        pattern=re.compile(r"^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\s*(hh:mm:ss|HH:MM:SS)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_time format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sample_collected')
-    def pattern_sample_collected(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sample_collected format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sample_collected format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('collection_date')
-    def pattern_collection_date(cls, v):
-        pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collection_date format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collection_date format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('shipped_sample_size')
-    def pattern_shipped_sample_size(cls, v):
-        pattern=re.compile(r"^\d+(\.\d+)?\s*[\w\s/]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid shipped_sample_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid shipped_sample_size format: {v}"
-            raise ValueError(err_msg)
-        return v
 
 
 class Activity(ConfiguredBaseModel):
@@ -26192,9 +21652,9 @@ class BulkDensityProduct(ProcessedData):
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
                        'TextureProduct',
-                       'TomographyProduct',
                        'WEOMProduct',
                        'pHProduct',
+                       'XCTProduct',
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
@@ -26407,9 +21867,9 @@ class ElementalAnalysisProduct(ProcessedData):
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
                        'TextureProduct',
-                       'TomographyProduct',
                        'WEOMProduct',
                        'pHProduct',
+                       'XCTProduct',
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
@@ -26619,9 +22079,9 @@ class EnzymeProduct(ProcessedData):
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
                        'TextureProduct',
-                       'TomographyProduct',
                        'WEOMProduct',
                        'pHProduct',
+                       'XCTProduct',
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
@@ -26833,9 +22293,9 @@ class GWCMoistureProduct(ProcessedData):
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
                        'TextureProduct',
-                       'TomographyProduct',
                        'WEOMProduct',
                        'pHProduct',
+                       'XCTProduct',
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
@@ -27047,9 +22507,9 @@ class HydraulicPropertiesProduct(ProcessedData):
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
                        'TextureProduct',
-                       'TomographyProduct',
                        'WEOMProduct',
                        'pHProduct',
+                       'XCTProduct',
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
@@ -27265,9 +22725,9 @@ class IonsAnalysisProduct(ProcessedData):
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
                        'TextureProduct',
-                       'TomographyProduct',
                        'WEOMProduct',
                        'pHProduct',
+                       'XCTProduct',
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
@@ -27494,9 +22954,9 @@ class MicrobialBiomassProduct(ProcessedData):
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
                        'TextureProduct',
-                       'TomographyProduct',
                        'WEOMProduct',
                        'pHProduct',
+                       'XCTProduct',
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
@@ -27714,9 +23174,9 @@ class NitrogenAnalysisProduct(ProcessedData):
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
                        'TextureProduct',
-                       'TomographyProduct',
                        'WEOMProduct',
                        'pHProduct',
+                       'XCTProduct',
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
@@ -27934,9 +23394,9 @@ class PhosphorusAnalysisProduct(ProcessedData):
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
                        'TextureProduct',
-                       'TomographyProduct',
                        'WEOMProduct',
                        'pHProduct',
+                       'XCTProduct',
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
@@ -28169,9 +23629,9 @@ class RespirationProduct(ProcessedData):
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
                        'TextureProduct',
-                       'TomographyProduct',
                        'WEOMProduct',
                        'pHProduct',
+                       'XCTProduct',
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
@@ -28384,9 +23844,9 @@ class TextureProduct(ProcessedData):
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
                        'TextureProduct',
-                       'TomographyProduct',
                        'WEOMProduct',
                        'pHProduct',
+                       'XCTProduct',
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
@@ -28402,230 +23862,6 @@ class TextureProduct(ProcessedData):
                        'RespirationProduct',
                        'TextureProduct',
                        'pHProduct']} })
-    summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
-Direction: structured key-value pairs; per-type schemas TBD:
-  ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
-  xrf:       per-element concentration results + QC flag
-  lcms:      feature count, identification count, MSI-2 fraction
-Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
-    lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
-    sample_id: Optional[str] = Field(default=None, description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata', 'MetagenomicsProduct', 'ProcessedData']} })
-    name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
-                       'MobilePhaseSegment',
-                       'MassSpectrometryStandardRun',
-                       'PurchasedMaterial',
-                       'organism',
-                       'Site',
-                       'Sample',
-                       'SamplingActivity',
-                       'SoilSamplingActivity',
-                       'Activity',
-                       'Entity',
-                       'DataProduct',
-                       'DataGenerationActivity',
-                       'Instrument',
-                       'OntologyClass',
-                       'ContainerAxis',
-                       'SampleProcessing',
-                       'SampleProcessingProtocol',
-                       'SampleProcessingRun',
-                       'Study',
-                       'SoftwareControlledTermValue']} })
-    description: Optional[str] = Field(default=None, title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
-                       'MassSpectrometryStandardRun',
-                       'PurchasedMaterial',
-                       'organism',
-                       'Site',
-                       'Sample',
-                       'SamplingActivity',
-                       'SoilSamplingActivity',
-                       'Activity',
-                       'Entity',
-                       'DataProduct',
-                       'DataGenerationActivity',
-                       'DataProcessingActivity',
-                       'OntologyClass',
-                       'ContainerType',
-                       'LabDevice',
-                       'SampleProcessing',
-                       'SampleProcessingProtocol',
-                       'SampleProcessingRun',
-                       'Study',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
-                       'QuantityValue']} })
-    project: Optional[int] = Field(default=None, title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
-         'domain_of': ['AerosolArmSample',
-                       'AerosolSample',
-                       'CommerciallyPurchasedSample',
-                       'CultureEnvironmentalSample',
-                       'FieldDeployedTerraformSample',
-                       'MixedCultureSample',
-                       'MonetSoilSample',
-                       'OtherUndescribedSample',
-                       'PlantSample',
-                       'PureCultureSample',
-                       'SedimentSample',
-                       'SoilSample',
-                       'SynthesizedMaterialSample',
-                       'TerraformSample',
-                       'WaterSample',
-                       'SamplingActivity',
-                       'DataProduct'],
-         'todos': ['should this be an ID? CURIE can use the one NMDC has '
-                   'https://bioregistry.io/reference/emsl.project:60141 where '
-                   'emsl.project is the CURIE prefix']} })
-    sampling_set: Optional[int] = Field(default=None, title="sampling set", description="""Sampling set number for grouping related samples collected together.
-This is a user-defined sequential integer that can be used to link samples collected
-in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
-    core_section: Optional[CoreSectionEnum] = Field(default=None, title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
-         'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
-    sample_name: Optional[str] = Field(default=None, title="sample name", description="""The name or label that is present on the shipped sample. This should
-be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_name'],
-         'domain_of': ['AerosolArmSample',
-                       'AerosolSample',
-                       'CommerciallyPurchasedSample',
-                       'CultureEnvironmentalSample',
-                       'FieldDeployedTerraformSample',
-                       'MixedCultureSample',
-                       'MonetSoilSample',
-                       'OtherUndescribedSample',
-                       'PlantSample',
-                       'PureCultureSample',
-                       'SedimentSample',
-                       'SoilSample',
-                       'SynthesizedMaterialSample',
-                       'TerraformSample',
-                       'WaterSample',
-                       'DataProduct'],
-         'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
-                   'classes. Defined separately for compatibility with source data '
-                   "files using 'sample_name' column headers."]} })
-    s3_base_url: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
-    s3_bucket: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
-    s3_key: str = Field(default=..., description="""MinIO/S3 object key; required for all data products""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
-    filesize: Optional[int] = Field(default=None, description="""Size of the file in bytes""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
-    md5checksum: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
-    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
-                       'MobilePhaseSegment',
-                       'MassSpectrometryStandardRun',
-                       'PurchasedMaterial',
-                       'MAOMProduct',
-                       'WEOMProduct',
-                       'organism',
-                       'Site',
-                       'Sample',
-                       'AerosolArmSample',
-                       'AerosolSample',
-                       'AMP2UserSample',
-                       'CommerciallyPurchasedSample',
-                       'CultureEnvironmentalSample',
-                       'EngineeredStrainSample',
-                       'FieldDeployedTerraformSample',
-                       'MixedCultureSample',
-                       'MonetSoilSample',
-                       'OtherUndescribedSample',
-                       'PlantSample',
-                       'PureCultureSample',
-                       'SedimentSample',
-                       'SoilSample',
-                       'SynthesizedMaterialSample',
-                       'TerraformSample',
-                       'WaterSample',
-                       'ProcessedSample',
-                       'CoreSection',
-                       'SamplingActivity',
-                       'AerosolArmSamplingActivity',
-                       'AerosolSamplingActivity',
-                       'CommerciallyPurchasedSamplingActivity',
-                       'CultureEnvironmentalSamplingActivity',
-                       'EngineeredStrainSamplingActivity',
-                       'FieldDeployedTerraformSamplingActivity',
-                       'MixedCultureSamplingActivity',
-                       'MonetSoilSamplingActivity',
-                       'OtherUndescribedSamplingActivity',
-                       'PlantSamplingActivity',
-                       'PureCultureSamplingActivity',
-                       'SedimentSamplingActivity',
-                       'SoilSamplingActivity',
-                       'SynthesizedMaterialSamplingActivity',
-                       'TerraformSamplingActivity',
-                       'WaterSamplingActivity',
-                       'Activity',
-                       'Entity',
-                       'DataProduct',
-                       'DataGenerationActivity',
-                       'DataProcessingActivity',
-                       'AlternativeIdentifier',
-                       'FunctionalAnnotationIdentifier',
-                       'Instrument',
-                       'OntologyClass',
-                       'ContainerType',
-                       'Custodian',
-                       'InstrumentAlternativeIdentifier',
-                       'LabDevice',
-                       'SampleProcessing',
-                       'ProcessingSampleLink',
-                       'SampleProcessingProtocol',
-                       'SampleProcessingRun',
-                       'Study',
-                       'ProjectParticipant',
-                       'TimestampValue',
-                       'TextValue',
-                       'SoftwareControlledTermValue',
-                       'ControlledTermValue',
-                       'PersonValue',
-                       'QuantityValue',
-                       'ConditioningValue',
-                       'zipDownload']} })
-
-
-class TomographyProduct(ProcessedData):
-    """
-    Soil tomography analysis product, typically derived via X-ray computed tomography (XCT) or similar instrument.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
-
-    measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
-                       'ElementalAnalysisProduct',
-                       'EnzymeProduct',
-                       'GWCMoistureProduct',
-                       'HydraulicPropertiesProduct',
-                       'IonsAnalysisProduct',
-                       'MAOMProduct',
-                       'MicrobialBiomassProduct',
-                       'NitrogenAnalysisProduct',
-                       'PhosphorusAnalysisProduct',
-                       'RespirationProduct',
-                       'TextureProduct',
-                       'TomographyProduct',
-                       'WEOMProduct',
-                       'pHProduct',
-                       'XRFElementalProduct',
-                       'XRDPhaseProduct',
-                       'XASLCFProduct']} })
-    roi_volume_voxel: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    voxel_size: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    connected_pores: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    pore_diameter_min: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    pore_diameter_max: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    pore_diameter_mean: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    pore_diameter_median: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    pore_diameter_variance: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    pore_volume_mean: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    total_pore_volume: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    permeability_x: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    flow_rate_x: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    tortuosity_x: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    permeability_y: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    flow_rate_y: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    tortuosity_y: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    permeability_z: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    flow_rate_z: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    tortuosity_z: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
-    flag_xct: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['TomographyProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -28824,9 +24060,9 @@ class PHProduct(ProcessedData):
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
                        'TextureProduct',
-                       'TomographyProduct',
                        'WEOMProduct',
                        'pHProduct',
+                       'XCTProduct',
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
@@ -29030,6 +24266,7 @@ class XRayDataProduct(ProcessedData):
     Inherits S3 storage metadata and sample linkage from dataProduct via ProcessedData.
 
     Concrete subclasses:
+      - XCTProduct: pore geometry and flow properties (X-ray computed tomography)
       - XRFElementalProduct: elemental concentrations
       - XRDPhaseProduct: mineral phases
       - XASLCFProduct: linear combination fitting results
@@ -29037,6 +24274,7 @@ class XRayDataProduct(ProcessedData):
     Common patterns:
       - s3_key points to the raw or processed X-ray data file in MinIO
       - summary_metrics provides lightweight queryable summaries:
+          XCT: {\"connected_pores\":1842, \"total_pore_volume\":3.2e6, \"tortuosity_z\":1.47}
           XRF: {\"Ni_mg_kg\":45.3, \"Pb_mg_kg\":8.2, \"As_mg_kg\":12.1}
           XRD: {\"quartz_percent\":42, \"albite_percent\":18, \"kaolinite_percent\":31}
           XAS: {\"r_factor\":0.000975, \"lcf_type\":\"XANES\", \"n_standards\":3}
@@ -29047,6 +24285,242 @@ class XRayDataProduct(ProcessedData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
          'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
 
+    summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
+Direction: structured key-value pairs; per-type schemas TBD:
+  ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
+  xrf:       per-element concentration results + QC flag
+  lcms:      feature count, identification count, MSI-2 fraction
+Interim DB storage: JSONB column retained until formal typed class exists.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedData'], 'todos': ['make this inined/multivalued?']} })
+    lims_barcode: Optional[str] = Field(default=None, description="""LIMS barcode identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sample', 'ProcessedData']} })
+    sample_id: Optional[str] = Field(default=None, description="""Link back to the originating sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['AMP2WellMetadata', 'MetagenomicsProduct', 'ProcessedData']} })
+    name: str = Field(default=..., description="""Human-readable name for the entity or activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerAxis',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'SoftwareControlledTermValue']} })
+    description: Optional[str] = Field(default=None, title="description", description="""Human-readable description for the entity or activity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'SamplingActivity',
+                       'SoilSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'OntologyClass',
+                       'ContainerType',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'QuantityValue']} })
+    project: Optional[int] = Field(default=None, title="Project", description="""Identifier for the user project associated with the entity or activity. """, json_schema_extra = { "linkml_meta": {'aliases': ['study', 'study_id', 'project_id', 'proposal', 'proposal_id'],
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'SamplingActivity',
+                       'DataProduct'],
+         'todos': ['should this be an ID? CURIE can use the one NMDC has '
+                   'https://bioregistry.io/reference/emsl.project:60141 where '
+                   'emsl.project is the CURIE prefix']} })
+    sampling_set: Optional[int] = Field(default=None, title="sampling set", description="""Sampling set number for grouping related samples collected together.
+This is a user-defined sequential integer that can be used to link samples collected
+in the same sampling event or campaign.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonetSoilSample', 'DataProduct']} })
+    core_section: Optional[CoreSectionEnum] = Field(default=None, title="core section", description="""The section of the core.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CoreSection', 'DataProduct'],
+         'examples': [{'value': 'TOP'}, {'value': 'MID'}, {'value': 'BTM'}]} })
+    sample_name: Optional[str] = Field(default=None, title="sample name", description="""The name or label that is present on the shipped sample. This should
+be a human readable name.""", json_schema_extra = { "linkml_meta": {'aliases': ['samp_name'],
+         'domain_of': ['AerosolArmSample',
+                       'AerosolSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'DataProduct'],
+         'notes': ["This is typically an alias for the inherited 'name' slot on Sample "
+                   'classes. Defined separately for compatibility with source data '
+                   "files using 'sample_name' column headers."]} })
+    s3_base_url: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_bucket: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    s3_key: str = Field(default=..., description="""MinIO/S3 object key; required for all data products""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    filesize: Optional[int] = Field(default=None, description="""Size of the file in bytes""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    md5checksum: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['DataProduct']} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration',
+                       'MobilePhaseSegment',
+                       'MassSpectrometryStandardRun',
+                       'PurchasedMaterial',
+                       'MAOMProduct',
+                       'WEOMProduct',
+                       'organism',
+                       'Site',
+                       'Sample',
+                       'AerosolArmSample',
+                       'AerosolSample',
+                       'AMP2UserSample',
+                       'CommerciallyPurchasedSample',
+                       'CultureEnvironmentalSample',
+                       'EngineeredStrainSample',
+                       'FieldDeployedTerraformSample',
+                       'MixedCultureSample',
+                       'MonetSoilSample',
+                       'OtherUndescribedSample',
+                       'PlantSample',
+                       'PureCultureSample',
+                       'SedimentSample',
+                       'SoilSample',
+                       'SynthesizedMaterialSample',
+                       'TerraformSample',
+                       'WaterSample',
+                       'ProcessedSample',
+                       'CoreSection',
+                       'SamplingActivity',
+                       'AerosolArmSamplingActivity',
+                       'AerosolSamplingActivity',
+                       'CommerciallyPurchasedSamplingActivity',
+                       'CultureEnvironmentalSamplingActivity',
+                       'EngineeredStrainSamplingActivity',
+                       'FieldDeployedTerraformSamplingActivity',
+                       'MixedCultureSamplingActivity',
+                       'MonetSoilSamplingActivity',
+                       'OtherUndescribedSamplingActivity',
+                       'PlantSamplingActivity',
+                       'PureCultureSamplingActivity',
+                       'SedimentSamplingActivity',
+                       'SoilSamplingActivity',
+                       'SynthesizedMaterialSamplingActivity',
+                       'TerraformSamplingActivity',
+                       'WaterSamplingActivity',
+                       'Activity',
+                       'Entity',
+                       'DataProduct',
+                       'DataGenerationActivity',
+                       'DataProcessingActivity',
+                       'AlternativeIdentifier',
+                       'FunctionalAnnotationIdentifier',
+                       'Instrument',
+                       'OntologyClass',
+                       'ContainerType',
+                       'Custodian',
+                       'InstrumentAlternativeIdentifier',
+                       'LabDevice',
+                       'SampleProcessing',
+                       'ProcessingSampleLink',
+                       'SampleProcessingProtocol',
+                       'SampleProcessingRun',
+                       'Study',
+                       'ProjectParticipant',
+                       'TimestampValue',
+                       'TextValue',
+                       'SoftwareControlledTermValue',
+                       'ControlledTermValue',
+                       'PersonValue',
+                       'QuantityValue',
+                       'ConditioningValue',
+                       'zipDownload']} })
+
+
+class XCTProduct(XRayDataProduct):
+    """
+    X-ray computed tomography (XCT) analysis product for pore geometry and flow properties of intact soil cores.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://emsl-computing.github.io/BASALT-Schema/products'})
+
+    measure_type: Optional[ProductMeasureType] = Field(default=None, description="""Whether the measurement recorded is a single measurement, one of a set of  replicate measurements, or an average of several replicate measurements.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BulkDensityProduct',
+                       'ElementalAnalysisProduct',
+                       'EnzymeProduct',
+                       'GWCMoistureProduct',
+                       'HydraulicPropertiesProduct',
+                       'IonsAnalysisProduct',
+                       'MAOMProduct',
+                       'MicrobialBiomassProduct',
+                       'NitrogenAnalysisProduct',
+                       'PhosphorusAnalysisProduct',
+                       'RespirationProduct',
+                       'TextureProduct',
+                       'WEOMProduct',
+                       'pHProduct',
+                       'XCTProduct',
+                       'XRFElementalProduct',
+                       'XRDPhaseProduct',
+                       'XASLCFProduct']} })
+    roi_x_voxel: Optional[float] = Field(default=None, description="""Number of voxels in X direction of ROI. Previously roi_volume_voxel.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    roi_y_voxel: Optional[float] = Field(default=None, description="""Number of voxels in Y direction of ROI.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    roi_z_voxel: Optional[float] = Field(default=None, description="""Number of voxels in Z direction of ROI.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    voxel_size_mm_per_voxel: Optional[float] = Field(default=None, description="""Linear dimension of a voxel (mm/voxel). Previously voxel_size.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    porosity_percent: Optional[float] = Field(default=None, description="""Percentage of total pore volume to total volume of ROI (%). Previously total_pore_volume.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    connected_pores_fraction: Optional[float] = Field(default=None, description="""Fraction of connected pore volume out of total volume (unitless).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    pore_connectivity_percent: Optional[float] = Field(default=None, description="""Percentage of connected pore volume to all pore volume (%).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    pore_equivalent_diameter_min_mm: Optional[float] = Field(default=None, description="""Minimum equivalent pore diameter (mm). Previously pore_diameter_min.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    pore_equivalent_diameter_max_mm: Optional[float] = Field(default=None, description="""Maximum equivalent pore diameter (mm). Previously pore_diameter_max.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    pore_equivalent_diameter_mean_mm: Optional[float] = Field(default=None, description="""Mean equivalent pore diameter (mm). Previously pore_diameter_mean.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    pore_equivalent_diameter_median_mm: Optional[float] = Field(default=None, description="""Median equivalent pore diameter (mm). Previously pore_diameter_median.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    pore_equivalent_diameter_variance_mm2: Optional[float] = Field(default=None, description="""Variance of equivalent pore diameter (mm^2). Previously pore_diameter_variance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    pore_volume_min_mm3: Optional[float] = Field(default=None, description="""Minimum volume of pores (mm^3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    pore_volume_max_mm3: Optional[float] = Field(default=None, description="""Maximum volume of pores (mm^3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    pore_volume_mean_mm3: Optional[float] = Field(default=None, description="""Mean volume of pores (mm^3). Previously pore_volume_mean.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    pore_volume_median_mm3: Optional[float] = Field(default=None, description="""Median volume of pores (mm^3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    pore_volume_variance_mm6: Optional[float] = Field(default=None, description="""Variance of volume of pores (mm^6).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    pore_area_min_mm2: Optional[float] = Field(default=None, description="""Minimum area of pores (mm^2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    pore_area_max_mm2: Optional[float] = Field(default=None, description="""Maximum area of pores (mm^2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    pore_area_mean_mm2: Optional[float] = Field(default=None, description="""Mean area of pores (mm^2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    pore_area_median_mm2: Optional[float] = Field(default=None, description="""Median area of pores (mm^2).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    pore_area_variance_mm4: Optional[float] = Field(default=None, description="""Variance of area of pores (mm^4).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    permeability_x_um2: Optional[float] = Field(default=None, description="""Absolute permeability from pore network model in X direction (um^2). Previously permeability_x.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    flow_rate_x_mm3_per_sec: Optional[float] = Field(default=None, description="""Total flow rate from pore network model in X direction (mm^3/s). Previously flow_rate_x.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    tortuosity_x: Optional[float] = Field(default=None, description="""Tortuosity from pore network model in X direction (unitless).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    permeability_y_um2: Optional[float] = Field(default=None, description="""Absolute permeability from pore network model in Y direction (um^2). Previously permeability_y.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    flow_rate_y_mm3_per_sec: Optional[float] = Field(default=None, description="""Total flow rate from pore network model in Y direction (mm^3/s). Previously flow_rate_y.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    tortuosity_y: Optional[float] = Field(default=None, description="""Tortuosity from pore network model in Y direction (unitless).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    permeability_z_um2: Optional[float] = Field(default=None, description="""Absolute permeability from pore network model in Z direction (um^2). Previously permeability_z.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    flow_rate_z_mm3_per_sec: Optional[float] = Field(default=None, description="""Total flow rate from pore network model in Z direction (mm^3/s). Previously flow_rate_z.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    tortuosity_z: Optional[float] = Field(default=None, description="""Tortuosity from pore network model in Z direction (unitless).""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
+    flag_xct: Optional[str] = Field(default=None, description="""Data quality flag for the XCT analysis.""", json_schema_extra = { "linkml_meta": {'domain_of': ['XCTProduct']} })
     summary_metrics: Optional[str] = Field(default=None, description="""Lightweight per-product summary for common queries that avoid full file download.
 Direction: structured key-value pairs; per-type schemas TBD:
   ecoplate:  well-level absorbance summaries (position, timepoint, absorbance)
@@ -29264,9 +24738,9 @@ class XRFElementalProduct(XRayDataProduct):
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
                        'TextureProduct',
-                       'TomographyProduct',
                        'WEOMProduct',
                        'pHProduct',
+                       'XCTProduct',
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
@@ -29553,9 +25027,9 @@ class XRDPhaseProduct(XRayDataProduct):
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
                        'TextureProduct',
-                       'TomographyProduct',
                        'WEOMProduct',
                        'pHProduct',
+                       'XCTProduct',
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
@@ -29779,9 +25253,9 @@ class XASLCFProduct(XRayDataProduct):
                        'PhosphorusAnalysisProduct',
                        'RespirationProduct',
                        'TextureProduct',
-                       'TomographyProduct',
                        'WEOMProduct',
                        'pHProduct',
+                       'XCTProduct',
                        'XRFElementalProduct',
                        'XRDPhaseProduct',
                        'XASLCFProduct']} })
@@ -38398,9 +33872,9 @@ NitrogenAnalysisProduct.model_rebuild()
 PhosphorusAnalysisProduct.model_rebuild()
 RespirationProduct.model_rebuild()
 TextureProduct.model_rebuild()
-TomographyProduct.model_rebuild()
 PHProduct.model_rebuild()
 XRayDataProduct.model_rebuild()
+XCTProduct.model_rebuild()
 XRFElementalProduct.model_rebuild()
 XRDPhaseProduct.model_rebuild()
 XASLCFProduct.model_rebuild()

@@ -6781,65 +6781,6 @@ Individual QC flags for each measurement using ProcessedDataFlag enum.
     
 
 
-class TomographyProduct(ProcessedData):
-    """
-    Soil tomography analysis product, typically derived via X-ray computed tomography (XCT) or similar instrument.
-    """
-    __tablename__ = 'TomographyProduct'
-
-    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
-    roi_volume_voxel = Column(Float())
-    voxel_size = Column(Float())
-    connected_pores = Column(Float())
-    pore_diameter_min = Column(Float())
-    pore_diameter_max = Column(Float())
-    pore_diameter_mean = Column(Float())
-    pore_diameter_median = Column(Float())
-    pore_diameter_variance = Column(Float())
-    pore_volume_mean = Column(Float())
-    total_pore_volume = Column(Float())
-    permeability_x = Column(Float())
-    flow_rate_x = Column(Float())
-    tortuosity_x = Column(Float())
-    permeability_y = Column(Float())
-    flow_rate_y = Column(Float())
-    tortuosity_y = Column(Float())
-    permeability_z = Column(Float())
-    flow_rate_z = Column(Float())
-    tortuosity_z = Column(Float())
-    flag_xct = Column(Text())
-    summary_metrics = Column(Text())
-    lims_barcode = Column(Text())
-    sample_id = Column(UUID(), ForeignKey('Sample.id'))
-    name = Column(Text(), nullable=False )
-    description = Column(Text())
-    project = Column(Integer())
-    sampling_set = Column(Integer())
-    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
-    sample_name = Column(Text())
-    s3_base_url = Column(Text())
-    s3_bucket = Column(Text())
-    s3_key = Column(Text(), nullable=False )
-    filesize = Column(Integer())
-    md5checksum = Column(Text())
-    id = Column(UUID(), primary_key=True, nullable=False )
-    
-
-    
-
-    def __repr__(self):
-        return f"TomographyProduct(measure_type={self.measure_type},roi_volume_voxel={self.roi_volume_voxel},voxel_size={self.voxel_size},connected_pores={self.connected_pores},pore_diameter_min={self.pore_diameter_min},pore_diameter_max={self.pore_diameter_max},pore_diameter_mean={self.pore_diameter_mean},pore_diameter_median={self.pore_diameter_median},pore_diameter_variance={self.pore_diameter_variance},pore_volume_mean={self.pore_volume_mean},total_pore_volume={self.total_pore_volume},permeability_x={self.permeability_x},flow_rate_x={self.flow_rate_x},tortuosity_x={self.tortuosity_x},permeability_y={self.permeability_y},flow_rate_y={self.flow_rate_y},tortuosity_y={self.tortuosity_y},permeability_z={self.permeability_z},flow_rate_z={self.flow_rate_z},tortuosity_z={self.tortuosity_z},flag_xct={self.flag_xct},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
-
-
-
-    
-    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
-    __mapper_args__ = {
-        'concrete': True
-    }
-    
-
-
 class PHProduct(ProcessedData):
     """
     Soil pH analysis product, typically derived via pH meter or similar instrument.
@@ -6887,6 +6828,7 @@ class XRayDataProduct(ProcessedData):
 Inherits S3 storage metadata and sample linkage from dataProduct via ProcessedData.
 
 Concrete subclasses:
+  - XCTProduct: pore geometry and flow properties (X-ray computed tomography)
   - XRFElementalProduct: elemental concentrations
   - XRDPhaseProduct: mineral phases
   - XASLCFProduct: linear combination fitting results
@@ -6894,6 +6836,7 @@ Concrete subclasses:
 Common patterns:
   - s3_key points to the raw or processed X-ray data file in MinIO
   - summary_metrics provides lightweight queryable summaries:
+      XCT: {"connected_pores":1842, "total_pore_volume":3.2e6, "tortuosity_z":1.47}
       XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
       XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
       XAS: {"r_factor":0.000975, "lcf_type":"XANES", "n_standards":3}
@@ -7286,6 +7229,77 @@ Inherits all MetagenomicsProduct and dataProduct slots.
 
     def __repr__(self):
         return f"Metagenomics_GenePhylogenyProduct(gene_family={self.gene_family},mg_workflow_step={self.mg_workflow_step},sample_id={self.sample_id},provider_name={self.provider_name},raw_fasta_url={self.raw_fasta_url},additional_information={self.additional_information},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
+
+
+
+    
+    # Using concrete inheritance: see https://docs.sqlalchemy.org/en/14/orm/inheritance.html
+    __mapper_args__ = {
+        'concrete': True
+    }
+    
+
+
+class XCTProduct(XRayDataProduct):
+    """
+    X-ray computed tomography (XCT) analysis product for pore geometry and flow properties of intact soil cores.
+    """
+    __tablename__ = 'XCTProduct'
+
+    measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
+    roi_x_voxel = Column(Float())
+    roi_y_voxel = Column(Float())
+    roi_z_voxel = Column(Float())
+    voxel_size_mm_per_voxel = Column(Float())
+    porosity_percent = Column(Float())
+    connected_pores_fraction = Column(Float())
+    pore_connectivity_percent = Column(Float())
+    pore_equivalent_diameter_min_mm = Column(Float())
+    pore_equivalent_diameter_max_mm = Column(Float())
+    pore_equivalent_diameter_mean_mm = Column(Float())
+    pore_equivalent_diameter_median_mm = Column(Float())
+    pore_equivalent_diameter_variance_mm2 = Column(Float())
+    pore_volume_min_mm3 = Column(Float())
+    pore_volume_max_mm3 = Column(Float())
+    pore_volume_mean_mm3 = Column(Float())
+    pore_volume_median_mm3 = Column(Float())
+    pore_volume_variance_mm6 = Column(Float())
+    pore_area_min_mm2 = Column(Float())
+    pore_area_max_mm2 = Column(Float())
+    pore_area_mean_mm2 = Column(Float())
+    pore_area_median_mm2 = Column(Float())
+    pore_area_variance_mm4 = Column(Float())
+    permeability_x_um2 = Column(Float())
+    flow_rate_x_mm3_per_sec = Column(Float())
+    tortuosity_x = Column(Float())
+    permeability_y_um2 = Column(Float())
+    flow_rate_y_mm3_per_sec = Column(Float())
+    tortuosity_y = Column(Float())
+    permeability_z_um2 = Column(Float())
+    flow_rate_z_mm3_per_sec = Column(Float())
+    tortuosity_z = Column(Float())
+    flag_xct = Column(Text())
+    summary_metrics = Column(Text())
+    lims_barcode = Column(Text())
+    sample_id = Column(UUID(), ForeignKey('Sample.id'))
+    name = Column(Text(), nullable=False )
+    description = Column(Text())
+    project = Column(Integer())
+    sampling_set = Column(Integer())
+    core_section = Column(Enum('TOP', 'BTM', 'MID', name='CoreSectionEnum'))
+    sample_name = Column(Text())
+    s3_base_url = Column(Text())
+    s3_bucket = Column(Text())
+    s3_key = Column(Text(), nullable=False )
+    filesize = Column(Integer())
+    md5checksum = Column(Text())
+    id = Column(UUID(), primary_key=True, nullable=False )
+    
+
+    
+
+    def __repr__(self):
+        return f"XCTProduct(measure_type={self.measure_type},roi_x_voxel={self.roi_x_voxel},roi_y_voxel={self.roi_y_voxel},roi_z_voxel={self.roi_z_voxel},voxel_size_mm_per_voxel={self.voxel_size_mm_per_voxel},porosity_percent={self.porosity_percent},connected_pores_fraction={self.connected_pores_fraction},pore_connectivity_percent={self.pore_connectivity_percent},pore_equivalent_diameter_min_mm={self.pore_equivalent_diameter_min_mm},pore_equivalent_diameter_max_mm={self.pore_equivalent_diameter_max_mm},pore_equivalent_diameter_mean_mm={self.pore_equivalent_diameter_mean_mm},pore_equivalent_diameter_median_mm={self.pore_equivalent_diameter_median_mm},pore_equivalent_diameter_variance_mm2={self.pore_equivalent_diameter_variance_mm2},pore_volume_min_mm3={self.pore_volume_min_mm3},pore_volume_max_mm3={self.pore_volume_max_mm3},pore_volume_mean_mm3={self.pore_volume_mean_mm3},pore_volume_median_mm3={self.pore_volume_median_mm3},pore_volume_variance_mm6={self.pore_volume_variance_mm6},pore_area_min_mm2={self.pore_area_min_mm2},pore_area_max_mm2={self.pore_area_max_mm2},pore_area_mean_mm2={self.pore_area_mean_mm2},pore_area_median_mm2={self.pore_area_median_mm2},pore_area_variance_mm4={self.pore_area_variance_mm4},permeability_x_um2={self.permeability_x_um2},flow_rate_x_mm3_per_sec={self.flow_rate_x_mm3_per_sec},tortuosity_x={self.tortuosity_x},permeability_y_um2={self.permeability_y_um2},flow_rate_y_mm3_per_sec={self.flow_rate_y_mm3_per_sec},tortuosity_y={self.tortuosity_y},permeability_z_um2={self.permeability_z_um2},flow_rate_z_mm3_per_sec={self.flow_rate_z_mm3_per_sec},tortuosity_z={self.tortuosity_z},flag_xct={self.flag_xct},summary_metrics={self.summary_metrics},lims_barcode={self.lims_barcode},sample_id={self.sample_id},name={self.name},description={self.description},project={self.project},sampling_set={self.sampling_set},core_section={self.core_section},sample_name={self.sample_name},s3_base_url={self.s3_base_url},s3_bucket={self.s3_bucket},s3_key={self.s3_key},filesize={self.filesize},md5checksum={self.md5checksum},id={self.id},)"
 
 
 
