@@ -57,9 +57,35 @@ processed_samples:
     sample_base_type: "processed_sample"
     processed_sample_type: "amp2_96well_plate"
 
+sample_processing_protocols:
+  - id: "urn:amp2:protocol:media-prep-v1"
+    name: "AMP2 media preparation SOP"
+    description: "Standard operating procedure for AMP2 growth media preparation"
+    protocol_url: "https://protocols.io/view/amp2-media-preparation-v1"
+    protocol_version: "1.0"
+
+  - id: "urn:amp2:protocol:preculture-v1"
+    name: "AMP2 pre-culture growth SOP"
+    description: "Standard operating procedure for pre-culture inoculation and growth"
+    protocol_url: "https://protocols.io/view/amp2-preculture-v1"
+    protocol_version: "1.0"
+
+  - id: "urn:amp2:protocol:experimental-culture-v1"
+    name: "AMP2 experimental culture SOP"
+    description: "Standard operating procedure for experimental culture growth"
+    protocol_url: "https://protocols.io/view/amp2-experimental-culture-v1"
+    protocol_version: "1.0"
+
+  - id: "urn:amp2:protocol:plate-setup-v1"
+    name: "AMP2 96-well plate setup SOP"
+    description: "Standard operating procedure for AMP2 96-well plate inoculation and setup"
+    protocol_url: "https://protocols.io/view/amp2-plate-setup-v1"
+    protocol_version: "1.0"
+
 media_preparations:
   - id: "urn:amp2:act:media-prep-M9-002"
     name: "M9 + 1% glucose preparation (complex)"
+    in_protocol: "urn:amp2:protocol:media-prep-v1"
     media_type: "pre_culture"
     volume_ml: 500.0
     media_recipe: "M9 minimal salts with 1% glucose (w/v)"
@@ -72,6 +98,7 @@ media_preparations:
 
   - id: "urn:amp2:act:media-prep-LB-001"
     name: "LB broth preparation"
+    in_protocol: "urn:amp2:protocol:media-prep-v1"
     media_type: "experimental_batch"   # [C1] "experimental_batch" not in MediaTypeEnum
     volume_ml: 300.0
     media_recipe: "Lysogeny broth: 10g/L tryptone, 5g/L yeast extract, 10g/L NaCl"
@@ -86,6 +113,7 @@ culture_growth_activities:
   - id: "urn:amp2:act:complex-kt2440-preculture"
     activity_type: "PreCultureGrowth"
     name: "KT2440 pre-culture (complex)"
+    in_protocol: "urn:amp2:protocol:preculture-v1"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
     media_ref: "urn:amp2:ps:M9-glucose-batch-002"
     incubation_time_hours: 12.0
@@ -99,6 +127,7 @@ culture_growth_activities:
   - id: "urn:amp2:act:complex-kt2440-experimental"
     activity_type: "ExperimentalCulture"
     name: "KT2440 experimental culture — nickel stress 0.5 mM"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
     media_ref: "urn:amp2:ps:M9-glucose-batch-002"
     incubation_time_hours: 4.0
@@ -114,6 +143,7 @@ culture_growth_activities:
   - id: "urn:amp2:act:complex-bl21-experimental"
     activity_type: "ExperimentalCulture"
     name: "BL21-DE3 experimental culture — nickel stress 0.5 mM"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     strain_ref: "urn:amp2:strain:BL21-DE3"
     media_ref: "urn:amp2:ps:NONEXISTENT-MEDIA-999"   # [C2] broken FK — ID does not exist
     incubation_time_hours: 4.0

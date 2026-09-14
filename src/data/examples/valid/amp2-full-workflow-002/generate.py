@@ -385,6 +385,52 @@ for i, (sname, org_id, rep) in enumerate(SAMPLE_SPEC, start=1):
 SAMPLE_BY_ID = {s["id"]: s for s in SAMPLES}
 
 # ---------------------------------------------------------------------------
+# SampleProcessingProtocol records (type-level recipes, not executions)
+# ---------------------------------------------------------------------------
+
+PROTOCOLS = [
+    {"id": "urn:amp2:protocol:media-prep-v1",
+     "name": "AMP2 media preparation SOP",
+     "description": "Standard operating procedure for AMP2 growth media preparation",
+     "protocol_url": "https://protocols.io/view/amp2-media-preparation-v1",
+     "protocol_version": "1.0"},
+    {"id": "urn:amp2:protocol:strain-purity-v1",
+     "name": "AMP2 strain purity check SOP",
+     "description": "Standard operating procedure for strain purity verification",
+     "protocol_url": "https://protocols.io/view/amp2-strain-purity-v1",
+     "protocol_version": "1.0"},
+    {"id": "urn:amp2:protocol:stock-culture-v1",
+     "name": "AMP2 stock culture preparation SOP",
+     "description": "Standard operating procedure for glycerol stock preparation",
+     "protocol_url": "https://protocols.io/view/amp2-stock-culture-v1",
+     "protocol_version": "1.0"},
+    {"id": "urn:amp2:protocol:preculture-v1",
+     "name": "AMP2 pre-culture growth SOP",
+     "description": "Standard operating procedure for pre-culture inoculation and growth",
+     "protocol_url": "https://protocols.io/view/amp2-preculture-v1",
+     "protocol_version": "1.0"},
+    {"id": "urn:amp2:protocol:experimental-culture-v1",
+     "name": "AMP2 experimental culture SOP",
+     "description": "Standard operating procedure for experimental culture growth",
+     "protocol_url": "https://protocols.io/view/amp2-experimental-culture-v1",
+     "protocol_version": "1.0"},
+    {"id": "urn:amp2:protocol:plate-setup-v1",
+     "name": "AMP2 96-well plate setup SOP",
+     "description": "Standard operating procedure for AMP2 96-well plate inoculation and setup",
+     "protocol_url": "https://protocols.io/view/amp2-plate-setup-v1",
+     "protocol_version": "1.0"},
+]
+
+PROTOCOL_FOR_ACTIVITY_TYPE = {
+    "MediaPreparation": "urn:amp2:protocol:media-prep-v1",
+    "StrainPurity": "urn:amp2:protocol:strain-purity-v1",
+    "StockCulturePreparation": "urn:amp2:protocol:stock-culture-v1",
+    "PreCultureGrowth": "urn:amp2:protocol:preculture-v1",
+    "ExperimentalCulture": "urn:amp2:protocol:experimental-culture-v1",
+    "AMP2PlateSetupActivity": "urn:amp2:protocol:plate-setup-v1",
+}
+
+# ---------------------------------------------------------------------------
 # Media preparations -> prepared_media ProcessedSamples
 # ---------------------------------------------------------------------------
 
@@ -604,6 +650,7 @@ for s in SAMPLES:
     culture_activities.append({
         "id": purity_id,
         "activity_type": "StrainPurity",
+        "in_protocol": PROTOCOL_FOR_ACTIVITY_TYPE["StrainPurity"],
         "name": "%s strain purity check" % sname,
         "description": ("First streak showed mixed colony morphology; sample "
                         "was re-streaked from the original vial and passed on "
@@ -639,6 +686,7 @@ for s in SAMPLES:
     culture_activities.append({
         "id": stock_id,
         "activity_type": "StockCulturePreparation",
+        "in_protocol": PROTOCOL_FOR_ACTIVITY_TYPE["StockCulturePreparation"],
         "name": "%s glycerol stock preparation" % sname,
         "description": "Overnight culture mixed 1:1 with cryostock medium and "
                        "banked at -80 C.",
@@ -677,6 +725,7 @@ for s in SAMPLES:
     culture_activities.append({
         "id": pre_id,
         "activity_type": "PreCultureGrowth",
+        "in_protocol": PROTOCOL_FOR_ACTIVITY_TYPE["PreCultureGrowth"],
         "name": "%s pre-culture" % sname,
         "description": "Stock scraped into pre-culture medium to establish "
                        "viable inoculum.",
@@ -719,6 +768,7 @@ for s in SAMPLES:
     culture_activities.append({
         "id": exp_id,
         "activity_type": "ExperimentalCulture",
+        "in_protocol": PROTOCOL_FOR_ACTIVITY_TYPE["ExperimentalCulture"],
         "name": "%s experimental culture" % sname,
         "description": "Terminal culture step; back-diluted to OD600 0.05 and "
                        "grown to mid-exponential before plating.",
@@ -1453,6 +1503,20 @@ for s in SAMPLES:
         first = False
     A("")
 
+# --- sample processing protocols ------------------------------------------
+A("# ---------------------------------------------------------------------------")
+A("# sample_processing_protocols  (class: SampleProcessingProtocol)")
+A("#   Type-level recipe records. Activities reference these via in_protocol.")
+A("# ---------------------------------------------------------------------------")
+A("sample_processing_protocols:")
+for p in PROTOCOLS:
+    A("  - id: %s" % q(p["id"]))
+    A("    name: %s" % q(p["name"]))
+    A("    description: %s" % q(p["description"]))
+    A("    protocol_url: %s" % q(p["protocol_url"]))
+    A("    protocol_version: %s" % q(p["protocol_version"]))
+    A("")
+
 # --- media ----------------------------------------------------------------
 A("# ---------------------------------------------------------------------------")
 A("# media_preparations  (class: MediaPreparation, is_a SampleProcessing)")
@@ -1462,6 +1526,7 @@ A("# ---------------------------------------------------------------------------
 A("media_preparations:")
 for m in MEDIA:
     A("  - id: %s" % q(m["act_id"]))
+    A("    in_protocol: %s" % q(PROTOCOL_FOR_ACTIVITY_TYPE["MediaPreparation"]))
     A("    name: %s" % q(m["name"]))
     A("    media_type: %s" % q(m["media_type"]))
     A("    volume_ml: %s" % q(m["volume_ml"]))
@@ -1486,7 +1551,7 @@ A("#   Four per user sample. Inputs/outputs live in processing_sample_links.")
 A("#   StrainPurity is a QC gate and produces no processed sample.")
 A("# ---------------------------------------------------------------------------")
 A("culture_growth_activities:")
-CULT_FIELDS = ["id", "activity_type", "name", "description", "organism_ref",
+CULT_FIELDS = ["id", "activity_type", "in_protocol", "name", "description", "organism_ref",
                "media_ref", "growth_medium", "incubation_time_hours",
                "temperature_celsius", "agitation_speed_rpm",
                "oxygen_saturation_pct", "container_type", "processing_steps",
@@ -1530,6 +1595,7 @@ A("plate_setup_activities:")
 for plate in plate_setups:
     A("  - id: %s" % q(plate["activity_id"]))
     A("    activity_type: \"AMP2PlateSetupActivity\"")
+    A("    in_protocol: %s" % q(PROTOCOL_FOR_ACTIVITY_TYPE["AMP2PlateSetupActivity"]))
     A("    name: %s" % q("%s plate setup" % plate["barcode"]))
     A("    description: %s" % q(plate["description"]))
     A("    plate_type: %s" % q(plate["plate_type"]))
@@ -1695,11 +1761,12 @@ write_csv("02_amp2_user_samples.csv", SAMPLE_FIELDS,
 
 # 03 media -----------------------------------------------------------------
 write_csv("03_media_preparations.csv", [
-    "id", "name", "media_type", "volume_ml", "media_recipe",
+    "id", "in_protocol", "name", "media_type", "volume_ml", "media_recipe",
     "media_formulation", "commercial_media_catalog", "sterilization_method",
     "ph_adjustment", "ph_target", "exposure_sensitivity", "media_additions",
     "storage_temperature", "creation_date", "output_processed_sample_id"],
-    [[m["act_id"], m["name"], m["media_type"], m["volume_ml"],
+    [[m["act_id"], PROTOCOL_FOR_ACTIVITY_TYPE["MediaPreparation"],
+      m["name"], m["media_type"], m["volume_ml"],
       m["media_recipe"], m["media_formulation"],
       m["commercial_media_catalog"], m["sterilization_method"],
       m["ph_adjustment"], m["ph_target"], joinlist(m["exposure_sensitivity"]),
