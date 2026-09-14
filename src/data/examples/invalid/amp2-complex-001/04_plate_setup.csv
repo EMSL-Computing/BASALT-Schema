@@ -1,2 +1,2 @@
-id,activity_type,plate_type,plate_barcode,setup_date,setup_operator_id,setup_instrument,sealing_method,cycle_id,media_ref,input_sample_id,output_sample_id,violation_note
-urn:amp2:act:plate-setup-complex-001,AMP2PlateSetupActivity,Greiner_96well_flat_bottom,EPix1-complex,2026-03-24T15:30:00,kapu336,manual,BreathEasy_membrane,1,,urn:amp2:ps:KT2440-exp-output-complex,urn:amp2:ps:EPix1-complex-plate-001,No plate-level media_ref (per-well overrides used)
+id,activity_type,in_protocol,plate_type,plate_barcode,setup_date,setup_operator_id,setup_instrument,sealing_method,cycle_id,media_ref,input_sample_id,output_sample_id,violation_note
+urn:amp2:act:plate-setup-complex-001,AMP2PlateSetupActivity,urn:amp2:protocol:plate-setup-v1,Greiner_96well_flat_bottom,EPix1-complex,2026-03-24T15:30:00,kapu336,manual,BreathEasy_membrane,1,,urn:amp2:ps:KT2440-exp-output-complex,urn:amp2:ps:EPix1-complex-plate-001,No plate-level media_ref (per-well overrides used)

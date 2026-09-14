@@ -1,5 +1,5 @@
 # Auto generated from basalt_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-14T09:21:36
+# Generation date: 2026-09-14T14:45:16
 # Schema: basalt-schema
 #
 # id: https://emsl-computing.github.io/BASALT-Schema
@@ -217,6 +217,14 @@ class MassSpectrometryDataGenerationActivityId(DataGenerationActivityId):
 
 
 class MobilePhaseSegmentId(Uuid):
+    pass
+
+
+class MobilePhaseId(Uuid):
+    pass
+
+
+class MobilePhaseSubstanceId(Uuid):
     pass
 
 
@@ -564,6 +572,10 @@ class ExtractionId(SampleProcessingId):
     pass
 
 
+class FiltrationProcessId(SampleProcessingId):
+    pass
+
+
 class FractionationProcessId(SampleProcessingId):
     pass
 
@@ -573,6 +585,14 @@ class NormalizationProcessId(SampleProcessingId):
 
 
 class PoolingProcessId(SampleProcessingId):
+    pass
+
+
+class SubstancesUsedLinkId(Uuid):
+    pass
+
+
+class SampleProcessingSubstanceId(Uuid):
     pass
 
 
@@ -588,7 +608,7 @@ class SolidPhaseExtractionProcessId(SampleProcessingId):
     pass
 
 
-class SubSamplingProcessId(SampleProcessingId):
+class SubsamplingProcessId(SampleProcessingId):
     pass
 
 
@@ -1456,6 +1476,7 @@ class ProcessingSampleLink(YAMLRoot):
     id: Union[str, ProcessingSampleLinkId] = None
     processing_id: Union[str, SampleProcessingId] = None
     step_number: int = None
+    sample_id: Union[str, SampleId] = None
     role: Union[str, "SampleRole"] = None
     in_run: Optional[Union[str, SampleProcessingRunId]] = None
 
@@ -1474,6 +1495,11 @@ class ProcessingSampleLink(YAMLRoot):
             self.MissingRequiredField("step_number")
         if not isinstance(self.step_number, int):
             self.step_number = int(self.step_number)
+
+        if self._is_empty(self.sample_id):
+            self.MissingRequiredField("sample_id")
+        if not isinstance(self.sample_id, SampleId):
+            self.sample_id = SampleId(self.sample_id)
 
         if self._is_empty(self.role):
             self.MissingRequiredField("role")
@@ -2114,7 +2140,7 @@ class MolecularIdentificationProduct(MassSpectrometryDataProduct):
 @dataclass(repr=False)
 class MetaproteomicsProduct(MassSpectrometryDataProduct):
     """
-    Abstract parent class for processed metaproteomics data. Details and subclasses TBD.
+    A tabular data file containing peptide-level, protein-level, or aggregation results.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -2126,6 +2152,19 @@ class MetaproteomicsProduct(MassSpectrometryDataProduct):
     id: Union[str, MetaproteomicsProductId] = None
     name: str = None
     s3_key: str = None
+    metaproteomics_result_type: Optional[Union[str, "MetaproteomicsResultTypeEnum"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MetaproteomicsProductId):
+            self.id = MetaproteomicsProductId(self.id)
+
+        if self.metaproteomics_result_type is not None and not isinstance(self.metaproteomics_result_type, MetaproteomicsResultTypeEnum):
+            self.metaproteomics_result_type = MetaproteomicsResultTypeEnum(self.metaproteomics_result_type)
+
+        super().__post_init__(**kwargs)
+
 
 @dataclass(repr=False)
 class MassSpectrometryDataGenerationActivity(DataGenerationActivity):
@@ -2311,7 +2350,6 @@ class ChromatographyConfiguration(Configuration):
     column: Optional[str] = None
     column_dimensions: Optional[str] = None
     column_manufacturer: Optional[str] = None
-    mobile_phases: Optional[Union[Union[str, MobilePhaseSegmentId], list[Union[str, MobilePhaseSegmentId]]]] = empty_list()
     stationary_phase: Optional[str] = None
     temperature_celsius: Optional[float] = None
     duration_min: Optional[float] = None
@@ -2332,10 +2370,6 @@ class ChromatographyConfiguration(Configuration):
 
         if self.column_manufacturer is not None and not isinstance(self.column_manufacturer, str):
             self.column_manufacturer = str(self.column_manufacturer)
-
-        if not isinstance(self.mobile_phases, list):
-            self.mobile_phases = [self.mobile_phases] if self.mobile_phases is not None else []
-        self.mobile_phases = [v if isinstance(v, MobilePhaseSegmentId) else MobilePhaseSegmentId(v) for v in self.mobile_phases]
 
         if self.stationary_phase is not None and not isinstance(self.stationary_phase, str):
             self.stationary_phase = str(self.stationary_phase)
@@ -2358,7 +2392,7 @@ class ChromatographyConfiguration(Configuration):
 @dataclass(repr=False)
 class MobilePhaseSegment(YAMLRoot):
     """
-    A segment of the mobile phase used in chromatography during mass spectrometry.
+    A segment of the mobile phase sequence used in a chromatographic separation.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -2368,10 +2402,12 @@ class MobilePhaseSegment(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MobilePhaseSegment
 
     id: Union[str, MobilePhaseSegmentId] = None
-    name: str = None
     duration_min: Optional[float] = None
-    segment_order: Optional[int] = None
-    substance: Optional[str] = None
+    mobile_phase: Optional[Union[str, MobilePhaseId]] = None
+    flow_rate_ul_min: Optional[float] = None
+    step_number: Optional[int] = None
+    mobile_phase_percentage: Optional[float] = None
+    used_in_chromatography_config: Optional[Union[dict, ChromatographyConfiguration]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -2379,19 +2415,86 @@ class MobilePhaseSegment(YAMLRoot):
         if not isinstance(self.id, MobilePhaseSegmentId):
             self.id = MobilePhaseSegmentId(self.id)
 
-        if self._is_empty(self.name):
-            self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
-
         if self.duration_min is not None and not isinstance(self.duration_min, float):
             self.duration_min = float(self.duration_min)
 
-        if self.segment_order is not None and not isinstance(self.segment_order, int):
-            self.segment_order = int(self.segment_order)
+        if self.mobile_phase is not None and not isinstance(self.mobile_phase, MobilePhaseId):
+            self.mobile_phase = MobilePhaseId(self.mobile_phase)
 
-        if self.substance is not None and not isinstance(self.substance, str):
-            self.substance = str(self.substance)
+        if self.flow_rate_ul_min is not None and not isinstance(self.flow_rate_ul_min, float):
+            self.flow_rate_ul_min = float(self.flow_rate_ul_min)
+
+        if self.step_number is not None and not isinstance(self.step_number, int):
+            self.step_number = int(self.step_number)
+
+        if self.mobile_phase_percentage is not None and not isinstance(self.mobile_phase_percentage, float):
+            self.mobile_phase_percentage = float(self.mobile_phase_percentage)
+
+        if self.used_in_chromatography_config is not None and not isinstance(self.used_in_chromatography_config, ChromatographyConfiguration):
+            self.used_in_chromatography_config = ChromatographyConfiguration(**as_dict(self.used_in_chromatography_config))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MobilePhase(YAMLRoot):
+    """
+    Link between a set of substances used in a mobile phase, and the use of that mobile phase in a sequence of flow
+    segments.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MobilePhase"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MobilePhase"
+    class_name: ClassVar[str] = "MobilePhase"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MobilePhase
+
+    id: Union[str, MobilePhaseId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MobilePhaseId):
+            self.id = MobilePhaseId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MobilePhaseSubstance(YAMLRoot):
+    """
+    A representation of a single chemical and its concentration used in a mobile phase in a chromatography protocol.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MobilePhaseSubstance"]
+    class_class_curie: ClassVar[str] = "basalt_schema:MobilePhaseSubstance"
+    class_name: ClassVar[str] = "MobilePhaseSubstance"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MobilePhaseSubstance
+
+    id: Union[str, MobilePhaseSubstanceId] = None
+    volume_ul: Optional[float] = None
+    in_mobile_phase: Optional[Union[str, MobilePhaseId]] = None
+    substance: Optional[Union[str, "ChemicalEntityEnum"]] = None
+    concentration: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MobilePhaseSubstanceId):
+            self.id = MobilePhaseSubstanceId(self.id)
+
+        if self.volume_ul is not None and not isinstance(self.volume_ul, float):
+            self.volume_ul = float(self.volume_ul)
+
+        if self.in_mobile_phase is not None and not isinstance(self.in_mobile_phase, MobilePhaseId):
+            self.in_mobile_phase = MobilePhaseId(self.in_mobile_phase)
+
+        if self.substance is not None and not isinstance(self.substance, ChemicalEntityEnum):
+            self.substance = ChemicalEntityEnum(self.substance)
+
+        if self.concentration is not None and not isinstance(self.concentration, str):
+            self.concentration = str(self.concentration)
 
         super().__post_init__(**kwargs)
 
@@ -2504,7 +2607,7 @@ class HasIncubationConditions(YAMLRoot):
 
     temperature_celsius: Optional[float] = None
     agitation_speed_rpm: Optional[int] = None
-    oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
+    oxygen_saturation_pct: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.temperature_celsius is not None and not isinstance(self.temperature_celsius, float):
@@ -2513,8 +2616,8 @@ class HasIncubationConditions(YAMLRoot):
         if self.agitation_speed_rpm is not None and not isinstance(self.agitation_speed_rpm, int):
             self.agitation_speed_rpm = int(self.agitation_speed_rpm)
 
-        if self.oxygen_status is not None and not isinstance(self.oxygen_status, OxygenStatusEnum):
-            self.oxygen_status = OxygenStatusEnum(self.oxygen_status)
+        if self.oxygen_saturation_pct is not None and not isinstance(self.oxygen_saturation_pct, float):
+            self.oxygen_saturation_pct = float(self.oxygen_saturation_pct)
 
         super().__post_init__(**kwargs)
 
@@ -2669,7 +2772,7 @@ class CultureGrowth(SampleProcessing):
     container_type: Optional[str] = None
     temperature_celsius: Optional[float] = None
     agitation_speed_rpm: Optional[int] = None
-    oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
+    oxygen_saturation_pct: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.organism_ref is not None and not isinstance(self.organism_ref, OrganismId):
@@ -2690,8 +2793,8 @@ class CultureGrowth(SampleProcessing):
         if self.agitation_speed_rpm is not None and not isinstance(self.agitation_speed_rpm, int):
             self.agitation_speed_rpm = int(self.agitation_speed_rpm)
 
-        if self.oxygen_status is not None and not isinstance(self.oxygen_status, OxygenStatusEnum):
-            self.oxygen_status = OxygenStatusEnum(self.oxygen_status)
+        if self.oxygen_saturation_pct is not None and not isinstance(self.oxygen_saturation_pct, float):
+            self.oxygen_saturation_pct = float(self.oxygen_saturation_pct)
 
         super().__post_init__(**kwargs)
 
@@ -2866,7 +2969,7 @@ class PlateSetupActivity(SampleProcessing):
     well_metadata: Optional[Union[Union[dict, "WellMetadata"], list[Union[dict, "WellMetadata"]]]] = empty_list()
     temperature_celsius: Optional[float] = None
     agitation_speed_rpm: Optional[int] = None
-    oxygen_status: Optional[Union[str, "OxygenStatusEnum"]] = None
+    oxygen_saturation_pct: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.plate_type):
@@ -2899,8 +3002,8 @@ class PlateSetupActivity(SampleProcessing):
         if self.agitation_speed_rpm is not None and not isinstance(self.agitation_speed_rpm, int):
             self.agitation_speed_rpm = int(self.agitation_speed_rpm)
 
-        if self.oxygen_status is not None and not isinstance(self.oxygen_status, OxygenStatusEnum):
-            self.oxygen_status = OxygenStatusEnum(self.oxygen_status)
+        if self.oxygen_saturation_pct is not None and not isinstance(self.oxygen_saturation_pct, float):
+            self.oxygen_saturation_pct = float(self.oxygen_saturation_pct)
 
         super().__post_init__(**kwargs)
 
@@ -2934,6 +3037,7 @@ class AMP2PlateSetupActivity(PlateSetupActivity):
     plate_type: str = None
     setup_date: Union[str, XSDDateTime] = None
     media_ref: Optional[Union[str, ProcessedSampleId]] = None
+    cycle_id: Optional[int] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -2943,6 +3047,9 @@ class AMP2PlateSetupActivity(PlateSetupActivity):
 
         if self.media_ref is not None and not isinstance(self.media_ref, ProcessedSampleId):
             self.media_ref = ProcessedSampleId(self.media_ref)
+
+        if self.cycle_id is not None and not isinstance(self.cycle_id, int):
+            self.cycle_id = int(self.cycle_id)
 
         super().__post_init__(**kwargs)
 
@@ -3226,11 +3333,78 @@ class WellMetadata(YAMLRoot):
 
 
 @dataclass(repr=False)
+class WellReagentAddition(YAMLRoot):
+    """
+    One reagent addition to one well. Captures the compound identity, its role
+    in the experiment, dispensed volume, and both the requested and achieved
+    concentrations. NOT a standalone database table; embedded structured entries
+    under AMP2WellMetadata.reagent_additions.
+
+    For reagents dispensed at plate setup time, addition_time is null.
+    For mid-experiment perturbations (e.g. inducer added at hour 23 of a 24h
+    time-series), addition_time records when the addition occurred.
+
+    Borrows compound and substance_role from SampleProcessingSubstance /
+    PortionOfSubstance; adds requested-vs-actual concentration split and
+    addition_time for the inducer scenario.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["WellReagentAddition"]
+    class_class_curie: ClassVar[str] = "basalt_schema:WellReagentAddition"
+    class_name: ClassVar[str] = "WellReagentAddition"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.WellReagentAddition
+
+    compound: Union[str, "ChemicalEntityEnum"] = None
+    substance_role: Union[str, "SubstanceRoleEnum"] = None
+    volume_ul: float = None
+    stock_concentration: Optional[float] = None
+    requested_concentration: Optional[float] = None
+    actual_concentration: Optional[float] = None
+    concentration_unit: Optional[str] = None
+    addition_time: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.compound):
+            self.MissingRequiredField("compound")
+        if not isinstance(self.compound, ChemicalEntityEnum):
+            self.compound = ChemicalEntityEnum(self.compound)
+
+        if self._is_empty(self.substance_role):
+            self.MissingRequiredField("substance_role")
+        if not isinstance(self.substance_role, SubstanceRoleEnum):
+            self.substance_role = SubstanceRoleEnum(self.substance_role)
+
+        if self._is_empty(self.volume_ul):
+            self.MissingRequiredField("volume_ul")
+        if not isinstance(self.volume_ul, float):
+            self.volume_ul = float(self.volume_ul)
+
+        if self.stock_concentration is not None and not isinstance(self.stock_concentration, float):
+            self.stock_concentration = float(self.stock_concentration)
+
+        if self.requested_concentration is not None and not isinstance(self.requested_concentration, float):
+            self.requested_concentration = float(self.requested_concentration)
+
+        if self.actual_concentration is not None and not isinstance(self.actual_concentration, float):
+            self.actual_concentration = float(self.actual_concentration)
+
+        if self.concentration_unit is not None and not isinstance(self.concentration_unit, str):
+            self.concentration_unit = str(self.concentration_unit)
+
+        if self.addition_time is not None and not isinstance(self.addition_time, str):
+            self.addition_time = str(self.addition_time)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class AMP2WellMetadata(WellMetadata):
     """
     AMP2-specific per-well metadata.
-    Minimal   media composition comes from the Media entity referenced via
-    the activity's media_ref slot.  Per-well data is volumes and replicate info.
+    Media composition comes from the Media entity referenced via the activity's
+    media_ref slot.  Per-well reagent additions (nutrients, normalizers, inducers)
+    are captured as structured WellReagentAddition entries in reagent_additions.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -3244,7 +3418,7 @@ class AMP2WellMetadata(WellMetadata):
     inoculum_volume_ul: float = None
     sample_id: Optional[Union[str, SampleId]] = None
     media_ref: Optional[Union[str, ProcessedSampleId]] = None
-    treatments: Optional[Union[str, list[str]]] = empty_list()
+    reagent_additions: Optional[Union[Union[dict, WellReagentAddition], list[Union[dict, WellReagentAddition]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.media_volume_ul):
@@ -3263,9 +3437,7 @@ class AMP2WellMetadata(WellMetadata):
         if self.media_ref is not None and not isinstance(self.media_ref, ProcessedSampleId):
             self.media_ref = ProcessedSampleId(self.media_ref)
 
-        if not isinstance(self.treatments, list):
-            self.treatments = [self.treatments] if self.treatments is not None else []
-        self.treatments = [v if isinstance(v, str) else str(v) for v in self.treatments]
+        self._normalize_inlined_as_list(slot_name="reagent_additions", slot_type=WellReagentAddition, key_name="compound", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -10914,7 +11086,7 @@ class ProcessedSample(Sample):
     label_text: Optional[str] = None
     concentration_ug_per_uL: Optional[float] = None
     total_amount_ug: Optional[float] = None
-    volume_uL: Optional[float] = None
+    volume_ul: Optional[float] = None
     sampled_portion: Optional[Union[str, "SamplePortionEnum"]] = None
     replicate: Optional[int] = None
 
@@ -10936,8 +11108,8 @@ class ProcessedSample(Sample):
         if self.total_amount_ug is not None and not isinstance(self.total_amount_ug, float):
             self.total_amount_ug = float(self.total_amount_ug)
 
-        if self.volume_uL is not None and not isinstance(self.volume_uL, float):
-            self.volume_uL = float(self.volume_uL)
+        if self.volume_ul is not None and not isinstance(self.volume_ul, float):
+            self.volume_ul = float(self.volume_ul)
 
         if self.sampled_portion is not None and not isinstance(self.sampled_portion, SamplePortionEnum):
             self.sampled_portion = SamplePortionEnum(self.sampled_portion)
@@ -11836,7 +12008,7 @@ class ChemicalConversionProcess(SampleProcessing):
     name: str = None
     duration_min: Optional[float] = None
     temperature_celsius: Optional[float] = None
-    substances_used: Optional[Union[Union[dict, "PortionOfSubstance"], list[Union[dict, "PortionOfSubstance"]]]] = empty_list()
+    substances_used: Optional[Union[str, SubstancesUsedLinkId]] = None
     chemical_conversion_category: Optional[Union[str, "ChemicalConversionCategoryEnum"]] = None
     digestion_method: Optional[Union[str, "DigestionMethodEnum"]] = None
     enrichment_type: Optional[Union[str, "EnrichmentTypeEnum"]] = None
@@ -11854,9 +12026,8 @@ class ChemicalConversionProcess(SampleProcessing):
         if self.temperature_celsius is not None and not isinstance(self.temperature_celsius, float):
             self.temperature_celsius = float(self.temperature_celsius)
 
-        if not isinstance(self.substances_used, list):
-            self.substances_used = [self.substances_used] if self.substances_used is not None else []
-        self.substances_used = [v if isinstance(v, PortionOfSubstance) else PortionOfSubstance(**as_dict(v)) for v in self.substances_used]
+        if self.substances_used is not None and not isinstance(self.substances_used, SubstancesUsedLinkId):
+            self.substances_used = SubstancesUsedLinkId(self.substances_used)
 
         if self.chemical_conversion_category is not None and not isinstance(self.chemical_conversion_category, ChemicalConversionCategoryEnum):
             self.chemical_conversion_category = ChemicalConversionCategoryEnum(self.chemical_conversion_category)
@@ -11887,7 +12058,7 @@ class Extraction(SampleProcessing):
 
     id: Union[str, ExtractionId] = None
     name: str = None
-    substances_used: Optional[Union[Union[dict, "PortionOfSubstance"], list[Union[dict, "PortionOfSubstance"]]]] = empty_list()
+    substances_used: Optional[Union[str, SubstancesUsedLinkId]] = None
     starting_mass_mg: Optional[float] = None
     extraction_target: Optional[Union[Union[str, "AnalyteCategoryEnum"], list[Union[str, "AnalyteCategoryEnum"]]]] = empty_list()
     extraction_method: Optional[Union[str, "ExtractionMethodEnum"]] = None
@@ -11898,9 +12069,8 @@ class Extraction(SampleProcessing):
         if not isinstance(self.id, ExtractionId):
             self.id = ExtractionId(self.id)
 
-        if not isinstance(self.substances_used, list):
-            self.substances_used = [self.substances_used] if self.substances_used is not None else []
-        self.substances_used = [v if isinstance(v, PortionOfSubstance) else PortionOfSubstance(**as_dict(v)) for v in self.substances_used]
+        if self.substances_used is not None and not isinstance(self.substances_used, SubstancesUsedLinkId):
+            self.substances_used = SubstancesUsedLinkId(self.substances_used)
 
         if self.starting_mass_mg is not None and not isinstance(self.starting_mass_mg, float):
             self.starting_mass_mg = float(self.starting_mass_mg)
@@ -11911,6 +12081,59 @@ class Extraction(SampleProcessing):
 
         if self.extraction_method is not None and not isinstance(self.extraction_method, ExtractionMethodEnum):
             self.extraction_method = ExtractionMethodEnum(self.extraction_method)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class FiltrationProcess(SampleProcessing):
+    """
+    The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by
+    forcing a carrier gas or liquid through a porous medium.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["FiltrationProcess"]
+    class_class_curie: ClassVar[str] = "basalt_schema:FiltrationProcess"
+    class_name: ClassVar[str] = "FiltrationProcess"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.FiltrationProcess
+
+    id: Union[str, FiltrationProcessId] = None
+    name: str = None
+    container_size_ml: Optional[float] = None
+    container_type: Optional[str] = None
+    filter_material: Optional[str] = None
+    filter_pore_size_um: Optional[float] = None
+    is_pressurized: Optional[Union[bool, Bool]] = None
+    separation_method: Optional[str] = None
+    volume_ml: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, FiltrationProcessId):
+            self.id = FiltrationProcessId(self.id)
+
+        if self.container_size_ml is not None and not isinstance(self.container_size_ml, float):
+            self.container_size_ml = float(self.container_size_ml)
+
+        if self.container_type is not None and not isinstance(self.container_type, str):
+            self.container_type = str(self.container_type)
+
+        if self.filter_material is not None and not isinstance(self.filter_material, str):
+            self.filter_material = str(self.filter_material)
+
+        if self.filter_pore_size_um is not None and not isinstance(self.filter_pore_size_um, float):
+            self.filter_pore_size_um = float(self.filter_pore_size_um)
+
+        if self.is_pressurized is not None and not isinstance(self.is_pressurized, Bool):
+            self.is_pressurized = Bool(self.is_pressurized)
+
+        if self.separation_method is not None and not isinstance(self.separation_method, str):
+            self.separation_method = str(self.separation_method)
+
+        if self.volume_ml is not None and not isinstance(self.volume_ml, float):
+            self.volume_ml = float(self.volume_ml)
 
         super().__post_init__(**kwargs)
 
@@ -11931,6 +12154,7 @@ class FractionationProcess(SampleProcessing):
     id: Union[str, FractionationProcessId] = None
     name: str = None
     lims_protocol_instance_id: Optional[int] = None
+    uses_chromatography: Optional[Union[dict, ChromatographyConfiguration]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -11940,6 +12164,9 @@ class FractionationProcess(SampleProcessing):
 
         if self.lims_protocol_instance_id is not None and not isinstance(self.lims_protocol_instance_id, int):
             self.lims_protocol_instance_id = int(self.lims_protocol_instance_id)
+
+        if self.uses_chromatography is not None and not isinstance(self.uses_chromatography, ChromatographyConfiguration):
+            self.uses_chromatography = ChromatographyConfiguration(**as_dict(self.uses_chromatography))
 
         super().__post_init__(**kwargs)
 
@@ -11997,6 +12224,7 @@ class PoolingProcess(SampleProcessing):
     id: Union[str, PoolingProcessId] = None
     name: str = None
     final_mass_mg: Optional[float] = None
+    final_vol_ml: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -12007,36 +12235,74 @@ class PoolingProcess(SampleProcessing):
         if self.final_mass_mg is not None and not isinstance(self.final_mass_mg, float):
             self.final_mass_mg = float(self.final_mass_mg)
 
+        if self.final_vol_ml is not None and not isinstance(self.final_vol_ml, float):
+            self.final_vol_ml = float(self.final_vol_ml)
+
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class PortionOfSubstance(YAMLRoot):
+class SubstancesUsedLink(YAMLRoot):
     """
-    A portion of a substance with specific characteristics.
+    A link between a SampleProcessing activity and a PortionOfSubstance that was used in it.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["PortionOfSubstance"]
-    class_class_curie: ClassVar[str] = "basalt_schema:PortionOfSubstance"
-    class_name: ClassVar[str] = "PortionOfSubstance"
-    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.PortionOfSubstance
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SubstancesUsedLink"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SubstancesUsedLink"
+    class_name: ClassVar[str] = "SubstancesUsedLink"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SubstancesUsedLink
 
+    id: Union[str, SubstancesUsedLinkId] = None
+    sample_processing_substance: Optional[Union[str, SampleProcessingSubstanceId]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SubstancesUsedLinkId):
+            self.id = SubstancesUsedLinkId(self.id)
+
+        if self.sample_processing_substance is not None and not isinstance(self.sample_processing_substance, SampleProcessingSubstanceId):
+            self.sample_processing_substance = SampleProcessingSubstanceId(self.sample_processing_substance)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SampleProcessingSubstance(YAMLRoot):
+    """
+    A portion of a substance with specific characteristics, as used in a SampleProcessing activity. Multiple
+    substances may be used in a single SampleProcessing activity, and the same substance may be used in multiple
+    SampleProcessing activities.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SampleProcessingSubstance"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SampleProcessingSubstance"
+    class_name: ClassVar[str] = "SampleProcessingSubstance"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SampleProcessingSubstance
+
+    id: Union[str, SampleProcessingSubstanceId] = None
+    volume_ml: Optional[float] = None
     known_as: Optional[Union[str, "ChemicalEntityEnum"]] = None
     substance_role: Optional[Union[str, "SubstanceRoleEnum"]] = None
-    volume_mL: Optional[float] = None
     source_concentration_mg_per_ml: Optional[float] = None
     final_concentration_mg_per_ml: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SampleProcessingSubstanceId):
+            self.id = SampleProcessingSubstanceId(self.id)
+
+        if self.volume_ml is not None and not isinstance(self.volume_ml, float):
+            self.volume_ml = float(self.volume_ml)
+
         if self.known_as is not None and not isinstance(self.known_as, ChemicalEntityEnum):
             self.known_as = ChemicalEntityEnum(self.known_as)
 
         if self.substance_role is not None and not isinstance(self.substance_role, SubstanceRoleEnum):
             self.substance_role = SubstanceRoleEnum(self.substance_role)
-
-        if self.volume_mL is not None and not isinstance(self.volume_mL, float):
-            self.volume_mL = float(self.volume_mL)
 
         if self.source_concentration_mg_per_ml is not None and not isinstance(self.source_concentration_mg_per_ml, float):
             self.source_concentration_mg_per_ml = float(self.source_concentration_mg_per_ml)
@@ -12101,6 +12367,8 @@ class ResuspensionProcess(SampleProcessing):
     id: Union[str, ResuspensionProcessId] = None
     name: str = None
     lims_protocol_instance_id: Optional[int] = None
+    final_vol_ml: Optional[float] = None
+    substances_used: Optional[Union[str, SubstancesUsedLinkId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -12110,6 +12378,12 @@ class ResuspensionProcess(SampleProcessing):
 
         if self.lims_protocol_instance_id is not None and not isinstance(self.lims_protocol_instance_id, int):
             self.lims_protocol_instance_id = int(self.lims_protocol_instance_id)
+
+        if self.final_vol_ml is not None and not isinstance(self.final_vol_ml, float):
+            self.final_vol_ml = float(self.final_vol_ml)
+
+        if self.substances_used is not None and not isinstance(self.substances_used, SubstancesUsedLinkId):
+            self.substances_used = SubstancesUsedLinkId(self.substances_used)
 
         super().__post_init__(**kwargs)
 
@@ -12147,30 +12421,34 @@ class SolidPhaseExtractionProcess(SampleProcessing):
 
 
 @dataclass(repr=False)
-class SubSamplingProcess(SampleProcessing):
+class SubsamplingProcess(SampleProcessing):
     """
     A laboratory subsampling process that takes a portion of an existing sample and produces a derived (processed)
     sample for downstream analysis. (Separating a sample aliquot from the starting material for downstream activity.)
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SubSamplingProcess"]
-    class_class_curie: ClassVar[str] = "basalt_schema:SubSamplingProcess"
-    class_name: ClassVar[str] = "SubSamplingProcess"
-    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SubSamplingProcess
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["SubsamplingProcess"]
+    class_class_curie: ClassVar[str] = "basalt_schema:SubsamplingProcess"
+    class_name: ClassVar[str] = "SubsamplingProcess"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.SubsamplingProcess
 
-    id: Union[str, SubSamplingProcessId] = None
+    id: Union[str, SubsamplingProcessId] = None
     name: str = None
     final_mass_mg: Optional[float] = None
+    final_vol_ml: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, SubSamplingProcessId):
-            self.id = SubSamplingProcessId(self.id)
+        if not isinstance(self.id, SubsamplingProcessId):
+            self.id = SubsamplingProcessId(self.id)
 
         if self.final_mass_mg is not None and not isinstance(self.final_mass_mg, float):
             self.final_mass_mg = float(self.final_mass_mg)
+
+        if self.final_vol_ml is not None and not isinstance(self.final_vol_ml, float):
+            self.final_vol_ml = float(self.final_vol_ml)
 
         super().__post_init__(**kwargs)
 
@@ -12916,6 +13194,23 @@ class CardinalDirectionEnum(EnumDefinitionImpl):
         name="CardinalDirectionEnum",
     )
 
+class ChemicalConversionCategoryEnum(EnumDefinitionImpl):
+
+    addition = PermissibleValue(text="addition")
+    substitution = PermissibleValue(text="substitution")
+    acid_base = PermissibleValue(text="acid_base")
+    reduction_oxidation = PermissibleValue(text="reduction_oxidation")
+    combustion = PermissibleValue(text="combustion")
+    decomposition = PermissibleValue(text="decomposition")
+    protease_cleavage = PermissibleValue(
+        text="protease_cleavage",
+        description="""an enzymatic cleavage which relies on an enzyme with protease activity to act on proteins and to produce polypeptides (protein fragments).""",
+        meaning=OBI["0600056"])
+
+    _defn = EnumDefinition(
+        name="ChemicalConversionCategoryEnum",
+    )
+
 class ChemicalEntityEnum(EnumDefinitionImpl):
     """
     Common names or identifiers for chemical entities.
@@ -12935,6 +13230,9 @@ class ChemicalEntityEnum(EnumDefinitionImpl):
     ammonium_bicarbonate = PermissibleValue(
         text="ammonium_bicarbonate",
         meaning=CHEBI["184335"])
+    ammonium_sulfate = PermissibleValue(
+        text="ammonium_sulfate",
+        meaning=CHEBI["62946"])
     amitriptyline = PermissibleValue(
         text="amitriptyline",
         meaning=CHEBI["2666"])
@@ -12944,9 +13242,15 @@ class ChemicalEntityEnum(EnumDefinitionImpl):
     chymotrypsin = PermissibleValue(
         text="chymotrypsin",
         meaning=MS["1001306"])
+    deionized_water = PermissibleValue(
+        text="deionized_water",
+        meaning=CHEBI["15377"])
     ethanol = PermissibleValue(
         text="ethanol",
         meaning=CHEBI["16236"])
+    ferric_chloride = PermissibleValue(
+        text="ferric_chloride",
+        meaning=CHEBI["30808"])
     formic_acid = PermissibleValue(
         text="formic_acid",
         meaning=CHEBI["30751"])
@@ -12959,6 +13263,9 @@ class ChemicalEntityEnum(EnumDefinitionImpl):
     isopropyl_alcohol = PermissibleValue(
         text="isopropyl_alcohol",
         meaning=CHEBI["17824"])
+    iptg = PermissibleValue(
+        text="iptg",
+        meaning=CHEBI["61448"])
     methanol = PermissibleValue(
         text="methanol",
         meaning=CHEBI["17790"])
@@ -13127,6 +13434,28 @@ class DeviceTypeEnum(EnumDefinitionImpl):
         name="DeviceTypeEnum",
     )
 
+class DigestionMethodEnum(EnumDefinitionImpl):
+    """
+    Named protein digestion methods used in sample preparation.
+    """
+    urea = PermissibleValue(
+        text="urea",
+        description="Urea-based in-solution digestion.")
+    s_trap = PermissibleValue(
+        text="s_trap",
+        description="S-Trap-based digestion.")
+    fasp = PermissibleValue(
+        text="fasp",
+        description="Filter-Aided Sample Preparation (FASP) digestion.")
+    other = PermissibleValue(
+        text="other",
+        description="Other digestion method not otherwise specified.")
+
+    _defn = EnumDefinition(
+        name="DigestionMethodEnum",
+        description="Named protein digestion methods used in sample preparation.",
+    )
+
 class DoiCategoryEnum(EnumDefinitionImpl):
     """
     The authority, or organization, the DOI is associated with
@@ -13246,6 +13575,28 @@ class EluentIntroductionEnum(EnumDefinitionImpl):
         description="The method used to introduce the eluent into the mass spectrometer.",
     )
 
+class EnrichmentTypeEnum(EnumDefinitionImpl):
+    """
+    Type of targeted peptide or protein enrichment performed.
+    """
+    phosphopeptide = PermissibleValue(
+        text="phosphopeptide",
+        description="Enrichment of phosphopeptides.")
+    acetyl_peptide = PermissibleValue(
+        text="acetyl_peptide",
+        description="Enrichment of acetylated peptides.")
+    ubiquitin_peptide = PermissibleValue(
+        text="ubiquitin_peptide",
+        description="Enrichment of ubiquitinated peptides or diGly-modified peptides.")
+    other = PermissibleValue(
+        text="other",
+        description="Other enrichment type not otherwise specified.")
+
+    _defn = EnumDefinition(
+        name="EnrichmentTypeEnum",
+        description="Type of targeted peptide or protein enrichment performed.",
+    )
+
 class ExecutionResourceEnum(EnumDefinitionImpl):
     """
     The computing resource or facility where the processing was executed.
@@ -13266,6 +13617,31 @@ class ExecutionResourceEnum(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="ExecutionResourceEnum",
         description="The computing resource or facility where the processing was executed.",
+    )
+
+class ExtractionMethodEnum(EnumDefinitionImpl):
+    """
+    A short name for the extraction method applied to the sample.
+    """
+    mplex = PermissibleValue(
+        text="mplex",
+        description="MPLEx (Metabolite, Protein, and Lipid Extraction) protocol.")
+    bead_beating = PermissibleValue(
+        text="bead_beating",
+        description="Bead beating mechanical lysis and extraction.")
+    tca_acetone_precipitation = PermissibleValue(
+        text="tca_acetone_precipitation",
+        description="TCA/Acetone protein precipitation.")
+    cell_lysis_s_trap = PermissibleValue(
+        text="cell_lysis_s_trap",
+        description="Cell lysis and S-Trap extraction.")
+    other = PermissibleValue(
+        text="other",
+        description="Other extraction method not otherwise specified.")
+
+    _defn = EnumDefinition(
+        name="ExtractionMethodEnum",
+        description="A short name for the extraction method applied to the sample.",
     )
 
 class FAOClassEnum(EnumDefinitionImpl):
@@ -13564,6 +13940,28 @@ class IonizationSourceEnum(EnumDefinitionImpl):
         name="IonizationSourceEnum",
     )
 
+class LabelingMethodEnum(EnumDefinitionImpl):
+    """
+    The chemical labeling strategy applied to peptides or proteins.
+    """
+    tmt = PermissibleValue(
+        text="tmt",
+        description="Tandem Mass Tag (TMT) isobaric labeling.")
+    itraq = PermissibleValue(
+        text="itraq",
+        description="iTRAQ isobaric labeling.")
+    label_free = PermissibleValue(
+        text="label_free",
+        description="No chemical labeling (label-free quantification).")
+    other = PermissibleValue(
+        text="other",
+        description="Other labeling method not otherwise specified.")
+
+    _defn = EnumDefinition(
+        name="LabelingMethodEnum",
+        description="The chemical labeling strategy applied to peptides or proteins.",
+    )
+
 class LandUseEnum(EnumDefinitionImpl):
     """
     Land use classifications
@@ -13800,6 +14198,25 @@ class MetaproteomicsAnalysisCategoryEnum(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="MetaproteomicsAnalysisCategoryEnum",
         description="The category of metaproteomics analysis being performed.",
+    )
+
+class MetaproteomicsResultTypeEnum(EnumDefinitionImpl):
+    """
+    The type of metaproteomics results file.
+    """
+    peptide_level = PermissibleValue(
+        text="peptide_level",
+        description="A tabular data file containing peptide-level results.")
+    protein_level = PermissibleValue(
+        text="protein_level",
+        description="A tabular data file containing protein-level results.")
+    aggregation = PermissibleValue(
+        text="aggregation",
+        description="A tabular data file containing aggregated results.")
+
+    _defn = EnumDefinition(
+        name="MetaproteomicsResultTypeEnum",
+        description="The type of metaproteomics results file.",
     )
 
 class ModelEnum(EnumDefinitionImpl):
@@ -14070,6 +14487,28 @@ class NexusRoleEnum(EnumDefinitionImpl):
         setattr(cls, "Science POC",
             PermissibleValue(text="Science POC"))
 
+class NormalizationMethodEnum(EnumDefinitionImpl):
+    """
+    The strategy used to normalize sample amounts or intensities.
+    """
+    equal_mass = PermissibleValue(
+        text="equal_mass",
+        description="Normalization to an equal total protein mass per sample.")
+    equal_volume = PermissibleValue(
+        text="equal_volume",
+        description="Normalization by volume.")
+    spike_in_standard = PermissibleValue(
+        text="spike_in_standard",
+        description="Normalization using an internal spike-in standard.")
+    other = PermissibleValue(
+        text="other",
+        description="Other normalization approach not otherwise specified.")
+
+    _defn = EnumDefinition(
+        name="NormalizationMethodEnum",
+        description="The strategy used to normalize sample amounts or intensities.",
+    )
+
 class NucleotideSequencingEnum(EnumDefinitionImpl):
 
     metagenome = PermissibleValue(
@@ -14300,6 +14739,25 @@ class ProjectStatusEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="ProjectStatusEnum",
+    )
+
+class ProteinAssayTypeEnum(EnumDefinitionImpl):
+    """
+    Type of protein quantification assay performed.
+    """
+    coomassie = PermissibleValue(
+        text="coomassie",
+        description="Coomassie (Bradford-like) protein assay.")
+    bca = PermissibleValue(
+        text="bca",
+        description="Bicinchoninic Acid (BCA) protein assay.")
+    other = PermissibleValue(
+        text="other",
+        description="Other protein assay not otherwise specified.")
+
+    _defn = EnumDefinition(
+        name="ProteinAssayTypeEnum",
+        description="Type of protein quantification assay performed.",
     )
 
 class SampleBaseType(EnumDefinitionImpl):
@@ -14727,6 +15185,53 @@ class StrainTypeEnum(EnumDefinitionImpl):
         description="Types of microbial strains/organisms.",
     )
 
+class SubstanceRoleEnum(EnumDefinitionImpl):
+    """
+    The role or function of the substance in the context of its use.
+    """
+    buffer = PermissibleValue(
+        text="buffer",
+        description="Maintains the pH of the solution within a specific range to stabilize analytes or reactions.",
+        meaning=CHEBI["35225"])
+    acid = PermissibleValue(
+        text="acid",
+        description="Donates a proton or accepts an electron pair in a chemical reaction.",
+        meaning=CHEBI["37527"])
+    base = PermissibleValue(
+        text="base",
+        description="Accepts a proton or donates an electron pair in a chemical reaction.",
+        meaning=CHEBI["22695"])
+    ms_proteolytic_enzyme = PermissibleValue(
+        text="ms_proteolytic_enzyme",
+        description="""Enzyme that catalyzes the hydrolysis of proteins and is used in mass spectrometry based proteomics""",
+        meaning=MS["1002986"])
+    solvent = PermissibleValue(
+        text="solvent",
+        description="Dissolves the sample or reagents to facilitate reactions or extraction.",
+        meaning=CHEBI["46787"])
+    surfactant = PermissibleValue(
+        text="surfactant",
+        description="Reduces surface tension and aids in the solubilization of substances.",
+        meaning=CHEBI["35195"])
+    derivatizing_agent = PermissibleValue(
+        text="derivatizing_agent",
+        description="Chemically modifies analytes to improve detection or separation.")
+    solubilizing_agent = PermissibleValue(text="solubilizing_agent")
+    nutrient = PermissibleValue(
+        text="nutrient",
+        description="""A compound added as an experimental nutrient variable (e.g. nitrogen or iron source at a controlled concentration).""")
+    normalizer = PermissibleValue(
+        text="normalizer",
+        description="""An inert diluent (e.g. DI water) added to bring the well to a target total volume without changing the experimental chemistry.""")
+    inducer = PermissibleValue(
+        text="inducer",
+        description="""A compound added mid-experiment to trigger gene expression or a biological response (e.g. IPTG, arabinose).""")
+
+    _defn = EnumDefinition(
+        name="SubstanceRoleEnum",
+        description="The role or function of the substance in the context of its use.",
+    )
+
 class SyntheticEnvironmentEnum(EnumDefinitionImpl):
 
     pore_scale_micromodels = PermissibleValue(
@@ -14970,208 +15475,9 @@ class YesNoEnum(EnumDefinitionImpl):
         setattr(cls, "False",
             PermissibleValue(text="False"))
 
-class ChemicalConversionCategoryEnum(EnumDefinitionImpl):
-
-    addition = PermissibleValue(text="addition")
-    substitution = PermissibleValue(text="substitution")
-    acid_base = PermissibleValue(text="acid_base")
-    reduction_oxidation = PermissibleValue(text="reduction_oxidation")
-    combustion = PermissibleValue(text="combustion")
-    decomposition = PermissibleValue(text="decomposition")
-    protease_cleavage = PermissibleValue(
-        text="protease_cleavage",
-        description="""an enzymatic cleavage which relies on an enzyme with protease activity to act on proteins and to produce polypeptides (protein fragments).""",
-        meaning=OBI["0600056"])
-
-    _defn = EnumDefinition(
-        name="ChemicalConversionCategoryEnum",
-    )
-
-class DigestionMethodEnum(EnumDefinitionImpl):
-    """
-    Named protein digestion methods used in sample preparation.
-    """
-    urea = PermissibleValue(
-        text="urea",
-        description="Urea-based in-solution digestion.")
-    s_trap = PermissibleValue(
-        text="s_trap",
-        description="S-Trap-based digestion.")
-    fasp = PermissibleValue(
-        text="fasp",
-        description="Filter-Aided Sample Preparation (FASP) digestion.")
-    other = PermissibleValue(
-        text="other",
-        description="Other digestion method not otherwise specified.")
-
-    _defn = EnumDefinition(
-        name="DigestionMethodEnum",
-        description="Named protein digestion methods used in sample preparation.",
-    )
-
-class EnrichmentTypeEnum(EnumDefinitionImpl):
-    """
-    Type of targeted peptide or protein enrichment performed.
-    """
-    phosphopeptide = PermissibleValue(
-        text="phosphopeptide",
-        description="Enrichment of phosphopeptides.")
-    acetyl_peptide = PermissibleValue(
-        text="acetyl_peptide",
-        description="Enrichment of acetylated peptides.")
-    ubiquitin_peptide = PermissibleValue(
-        text="ubiquitin_peptide",
-        description="Enrichment of ubiquitinated peptides or diGly-modified peptides.")
-    other = PermissibleValue(
-        text="other",
-        description="Other enrichment type not otherwise specified.")
-
-    _defn = EnumDefinition(
-        name="EnrichmentTypeEnum",
-        description="Type of targeted peptide or protein enrichment performed.",
-    )
-
-class ExtractionMethodEnum(EnumDefinitionImpl):
-    """
-    A short name for the extraction method applied to the sample.
-    """
-    mplex = PermissibleValue(
-        text="mplex",
-        description="MPLEx (Metabolite, Protein, and Lipid Extraction) protocol.")
-    bead_beating = PermissibleValue(
-        text="bead_beating",
-        description="Bead beating mechanical lysis and extraction.")
-    tca_acetone_precipitation = PermissibleValue(
-        text="tca_acetone_precipitation",
-        description="TCA/Acetone protein precipitation.")
-    cell_lysis_s_trap = PermissibleValue(
-        text="cell_lysis_s_trap",
-        description="Cell lysis and S-Trap extraction.")
-    other = PermissibleValue(
-        text="other",
-        description="Other extraction method not otherwise specified.")
-
-    _defn = EnumDefinition(
-        name="ExtractionMethodEnum",
-        description="A short name for the extraction method applied to the sample.",
-    )
-
-class LabelingMethodEnum(EnumDefinitionImpl):
-    """
-    The chemical labeling strategy applied to peptides or proteins.
-    """
-    tmt = PermissibleValue(
-        text="tmt",
-        description="Tandem Mass Tag (TMT) isobaric labeling.")
-    itraq = PermissibleValue(
-        text="itraq",
-        description="iTRAQ isobaric labeling.")
-    label_free = PermissibleValue(
-        text="label_free",
-        description="No chemical labeling (label-free quantification).")
-    other = PermissibleValue(
-        text="other",
-        description="Other labeling method not otherwise specified.")
-
-    _defn = EnumDefinition(
-        name="LabelingMethodEnum",
-        description="The chemical labeling strategy applied to peptides or proteins.",
-    )
-
-class NormalizationMethodEnum(EnumDefinitionImpl):
-    """
-    The strategy used to normalize sample amounts or intensities.
-    """
-    equal_mass = PermissibleValue(
-        text="equal_mass",
-        description="Normalization to an equal total protein mass per sample.")
-    equal_volume = PermissibleValue(
-        text="equal_volume",
-        description="Normalization by volume.")
-    spike_in_standard = PermissibleValue(
-        text="spike_in_standard",
-        description="Normalization using an internal spike-in standard.")
-    other = PermissibleValue(
-        text="other",
-        description="Other normalization approach not otherwise specified.")
-
-    _defn = EnumDefinition(
-        name="NormalizationMethodEnum",
-        description="The strategy used to normalize sample amounts or intensities.",
-    )
-
-class ProteinAssayTypeEnum(EnumDefinitionImpl):
-    """
-    Type of protein quantification assay performed.
-    """
-    coomassie = PermissibleValue(
-        text="coomassie",
-        description="Coomassie (Bradford-like) protein assay.")
-    bca = PermissibleValue(
-        text="bca",
-        description="Bicinchoninic Acid (BCA) protein assay.")
-    other = PermissibleValue(
-        text="other",
-        description="Other protein assay not otherwise specified.")
-
-    _defn = EnumDefinition(
-        name="ProteinAssayTypeEnum",
-        description="Type of protein quantification assay performed.",
-    )
-
-class SubstanceRoleEnum(EnumDefinitionImpl):
-    """
-    The role or function of the substance in the context of its use.
-    """
-    buffer = PermissibleValue(
-        text="buffer",
-        description="Maintains the pH of the solution within a specific range to stabilize analytes or reactions.",
-        meaning=CHEBI["35225"])
-    acid = PermissibleValue(
-        text="acid",
-        description="Donates a proton or accepts an electron pair in a chemical reaction.",
-        meaning=CHEBI["37527"])
-    base = PermissibleValue(
-        text="base",
-        description="Accepts a proton or donates an electron pair in a chemical reaction.",
-        meaning=CHEBI["22695"])
-    ms_proteolytic_enzyme = PermissibleValue(
-        text="ms_proteolytic_enzyme",
-        description="""Enzyme that catalyzes the hydrolysis of proteins and is used in mass spectrometry based proteomics""",
-        meaning=MS["1002986"])
-    solvent = PermissibleValue(
-        text="solvent",
-        description="Dissolves the sample or reagents to facilitate reactions or extraction.",
-        meaning=CHEBI["46787"])
-    surfactant = PermissibleValue(
-        text="surfactant",
-        description="Reduces surface tension and aids in the solubilization of substances.",
-        meaning=CHEBI["35195"])
-    derivatizing_agent = PermissibleValue(
-        text="derivatizing_agent",
-        description="Chemically modifies analytes to improve detection or separation.")
-    solubilizing_agent = PermissibleValue(text="solubilizing_agent")
-
-    _defn = EnumDefinition(
-        name="SubstanceRoleEnum",
-        description="The role or function of the substance in the context of its use.",
-    )
-
 # Slots
 class slots:
     pass
-
-slots.substances_used = Slot(uri=BASALT_SCHEMA.substances_used, name="substances_used", curie=BASALT_SCHEMA.curie('substances_used'),
-                   model_uri=BASALT_SCHEMA.substances_used, domain=None, range=Optional[Union[Union[dict, PortionOfSubstance], list[Union[dict, PortionOfSubstance]]]])
-
-slots.starting_mass_mg = Slot(uri=BASALT_SCHEMA.starting_mass_mg, name="starting_mass_mg", curie=BASALT_SCHEMA.curie('starting_mass_mg'),
-                   model_uri=BASALT_SCHEMA.starting_mass_mg, domain=None, range=Optional[float])
-
-slots.final_mass_mg = Slot(uri=BASALT_SCHEMA.final_mass_mg, name="final_mass_mg", curie=BASALT_SCHEMA.curie('final_mass_mg'),
-                   model_uri=BASALT_SCHEMA.final_mass_mg, domain=None, range=Optional[float])
-
-slots.final_concentration_mg_per_ml = Slot(uri=BASALT_SCHEMA.final_concentration_mg_per_ml, name="final_concentration_mg_per_ml", curie=BASALT_SCHEMA.curie('final_concentration_mg_per_ml'),
-                   model_uri=BASALT_SCHEMA.final_concentration_mg_per_ml, domain=None, range=Optional[float])
 
 slots.acquisition_end_time = Slot(uri=BASALT_SCHEMA.acquisition_end_time, name="acquisition_end_time", curie=BASALT_SCHEMA.curie('acquisition_end_time'),
                    model_uri=BASALT_SCHEMA.acquisition_end_time, domain=None, range=Optional[Union[str, XSDDateTime]])
@@ -15380,6 +15686,9 @@ slots.confirmed_receipt = Slot(uri=BASALT_SCHEMA.confirmed_receipt, name="confir
 slots.construct_component = Slot(uri=BASALT_SCHEMA.construct_component, name="construct_component", curie=BASALT_SCHEMA.curie('construct_component'),
                    model_uri=BASALT_SCHEMA.construct_component, domain=None, range=Optional[Union[str, "ConstructComponentEnum"]])
 
+slots.container_size_ml = Slot(uri=BASALT_SCHEMA.container_size_ml, name="container_size_ml", curie=BASALT_SCHEMA.curie('container_size_ml'),
+                   model_uri=BASALT_SCHEMA.container_size_ml, domain=None, range=Optional[float])
+
 slots.container_type = Slot(uri=BASALT_SCHEMA.container_type, name="container_type", curie=BASALT_SCHEMA.curie('container_type'),
                    model_uri=BASALT_SCHEMA.container_type, domain=None, range=Optional[str])
 
@@ -15412,6 +15721,9 @@ slots.cur_vegetation_meth = Slot(uri=BASALT_SCHEMA.cur_vegetation_meth, name="cu
 
 slots.cv_percent = Slot(uri=BASALT_SCHEMA.cv_percent, name="cv_percent", curie=BASALT_SCHEMA.curie('cv_percent'),
                    model_uri=BASALT_SCHEMA.cv_percent, domain=None, range=Optional[float])
+
+slots.cycle_id = Slot(uri=BASALT_SCHEMA.cycle_id, name="cycle_id", curie=BASALT_SCHEMA.curie('cycle_id'),
+                   model_uri=BASALT_SCHEMA.cycle_id, domain=None, range=Optional[int])
 
 slots.date_received = Slot(uri=BASALT_SCHEMA.date_received, name="date_received", curie=BASALT_SCHEMA.curie('date_received'),
                    model_uri=BASALT_SCHEMA.date_received, domain=None, range=Optional[Union[str, XSDDate]])
@@ -15527,8 +15839,23 @@ slots.file_curie = Slot(uri=BASALT_SCHEMA.file_curie, name="file_curie", curie=B
 slots.filesize = Slot(uri=BASALT_SCHEMA.filesize, name="filesize", curie=BASALT_SCHEMA.curie('filesize'),
                    model_uri=BASALT_SCHEMA.filesize, domain=None, range=Optional[int])
 
+slots.filter_material = Slot(uri=BASALT_SCHEMA.filter_material, name="filter_material", curie=BASALT_SCHEMA.curie('filter_material'),
+                   model_uri=BASALT_SCHEMA.filter_material, domain=None, range=Optional[str])
+
 slots.filter_method = Slot(uri=BASALT_SCHEMA.filter_method, name="filter_method", curie=BASALT_SCHEMA.curie('filter_method'),
                    model_uri=BASALT_SCHEMA.filter_method, domain=None, range=Optional[str])
+
+slots.filter_pore_size_um = Slot(uri=BASALT_SCHEMA.filter_pore_size_um, name="filter_pore_size_um", curie=BASALT_SCHEMA.curie('filter_pore_size_um'),
+                   model_uri=BASALT_SCHEMA.filter_pore_size_um, domain=None, range=Optional[float])
+
+slots.final_concentration_mg_per_ml = Slot(uri=BASALT_SCHEMA.final_concentration_mg_per_ml, name="final_concentration_mg_per_ml", curie=BASALT_SCHEMA.curie('final_concentration_mg_per_ml'),
+                   model_uri=BASALT_SCHEMA.final_concentration_mg_per_ml, domain=None, range=Optional[float])
+
+slots.final_mass_mg = Slot(uri=BASALT_SCHEMA.final_mass_mg, name="final_mass_mg", curie=BASALT_SCHEMA.curie('final_mass_mg'),
+                   model_uri=BASALT_SCHEMA.final_mass_mg, domain=None, range=Optional[float])
+
+slots.final_vol_ml = Slot(uri=BASALT_SCHEMA.final_vol_ml, name="final_vol_ml", curie=BASALT_SCHEMA.curie('final_vol_ml'),
+                   model_uri=BASALT_SCHEMA.final_vol_ml, domain=None, range=Optional[float])
 
 slots.fire = Slot(uri=BASALT_SCHEMA.fire, name="fire", curie=BASALT_SCHEMA.curie('fire'),
                    model_uri=BASALT_SCHEMA.fire, domain=None, range=Optional[str])
@@ -15722,6 +16049,9 @@ slots.internal_calibration = Slot(uri=BASALT_SCHEMA.internal_calibration, name="
 slots.ionization = Slot(uri=BASALT_SCHEMA.ionization, name="ionization", curie=BASALT_SCHEMA.curie('ionization'),
                    model_uri=BASALT_SCHEMA.ionization, domain=None, range=Union[str, "IonizationSourceEnum"])
 
+slots.is_pressurized = Slot(uri=BASALT_SCHEMA.is_pressurized, name="is_pressurized", curie=BASALT_SCHEMA.curie('is_pressurized'),
+                   model_uri=BASALT_SCHEMA.is_pressurized, domain=None, range=Optional[Union[bool, Bool]])
+
 slots.isol_growth_condt = Slot(uri=BASALT_SCHEMA.isol_growth_condt, name="isol_growth_condt", curie=BASALT_SCHEMA.curie('isol_growth_condt'),
                    model_uri=BASALT_SCHEMA.isol_growth_condt, domain=None, range=Optional[str])
 
@@ -15830,6 +16160,9 @@ slots.media_type = Slot(uri=BASALT_SCHEMA.media_type, name="media_type", curie=B
 slots.metaproteomics_analysis_category = Slot(uri=BASALT_SCHEMA.metaproteomics_analysis_category, name="metaproteomics_analysis_category", curie=BASALT_SCHEMA.curie('metaproteomics_analysis_category'),
                    model_uri=BASALT_SCHEMA.metaproteomics_analysis_category, domain=None, range=Optional[Union[str, "MetaproteomicsAnalysisCategoryEnum"]])
 
+slots.metaproteomics_result_type = Slot(uri=BASALT_SCHEMA.metaproteomics_result_type, name="metaproteomics_result_type", curie=BASALT_SCHEMA.curie('metaproteomics_result_type'),
+                   model_uri=BASALT_SCHEMA.metaproteomics_result_type, domain=None, range=Optional[Union[str, "MetaproteomicsResultTypeEnum"]])
+
 slots.methane = Slot(uri=BASALT_SCHEMA.methane, name="methane", curie=BASALT_SCHEMA.curie('methane'),
                    model_uri=BASALT_SCHEMA.methane, domain=None, range=Optional[str])
 
@@ -15863,8 +16196,8 @@ slots.mineral_nutr_regm = Slot(uri=BASALT_SCHEMA.mineral_nutr_regm, name="minera
 slots.misc_param = Slot(uri=BASALT_SCHEMA.misc_param, name="misc_param", curie=BASALT_SCHEMA.curie('misc_param'),
                    model_uri=BASALT_SCHEMA.misc_param, domain=None, range=Optional[str])
 
-slots.mobile_phases = Slot(uri=BASALT_SCHEMA.mobile_phases, name="mobile_phases", curie=BASALT_SCHEMA.curie('mobile_phases'),
-                   model_uri=BASALT_SCHEMA.mobile_phases, domain=None, range=Optional[Union[Union[str, MobilePhaseSegmentId], list[Union[str, MobilePhaseSegmentId]]]])
+slots.mobile_phase = Slot(uri=BASALT_SCHEMA.mobile_phase, name="mobile_phase", curie=BASALT_SCHEMA.curie('mobile_phase'),
+                   model_uri=BASALT_SCHEMA.mobile_phase, domain=None, range=Optional[Union[str, MobilePhaseId]])
 
 slots.modification_method = Slot(uri=BASALT_SCHEMA.modification_method, name="modification_method", curie=BASALT_SCHEMA.curie('modification_method'),
                    model_uri=BASALT_SCHEMA.modification_method, domain=None, range=Optional[Union[str, "ModificationMethodEnum"]])
@@ -15955,6 +16288,9 @@ slots.oxygen = Slot(uri=BASALT_SCHEMA.oxygen, name="oxygen", curie=BASALT_SCHEMA
 
 slots.oxygen_relationship = Slot(uri=BASALT_SCHEMA.oxygen_status, name="oxygen_relationship", curie=BASALT_SCHEMA.curie('oxygen_status'),
                    model_uri=BASALT_SCHEMA.oxygen_relationship, domain=None, range=Optional[Union[str, "OxygenStatusEnum"]])
+
+slots.oxygen_saturation_pct = Slot(uri=BASALT_SCHEMA.oxygen_saturation_pct, name="oxygen_saturation_pct", curie=BASALT_SCHEMA.curie('oxygen_saturation_pct'),
+                   model_uri=BASALT_SCHEMA.oxygen_saturation_pct, domain=None, range=Optional[float])
 
 slots.parent_workflow_id = Slot(uri=BASALT_SCHEMA.parent_workflow_id, name="parent_workflow_id", curie=BASALT_SCHEMA.curie('parent_workflow_id'),
                    model_uri=BASALT_SCHEMA.parent_workflow_id, domain=None, range=Optional[Union[str, DataProcessingActivityId]])
@@ -16288,6 +16624,9 @@ slots.secondary_treatment = Slot(uri=BASALT_SCHEMA.secondary_treatment, name="se
 
 slots.sediment_type = Slot(uri=BASALT_SCHEMA.sediment_type, name="sediment_type", curie=BASALT_SCHEMA.curie('sediment_type'),
                    model_uri=BASALT_SCHEMA.sediment_type, domain=None, range=Optional[Union[str, "SedimentTypeEnum"]])
+
+slots.separation_method = Slot(uri=BASALT_SCHEMA.separation_method, name="separation_method", curie=BASALT_SCHEMA.curie('separation_method'),
+                   model_uri=BASALT_SCHEMA.separation_method, domain=None, range=Optional[str])
 
 slots.sequence_order = Slot(uri=BASALT_SCHEMA.sequence_order, name="sequence_order", curie=BASALT_SCHEMA.curie('sequence_order'),
                    model_uri=BASALT_SCHEMA.sequence_order, domain=None, range=Optional[int])
@@ -16685,6 +17024,9 @@ slots.standing_water_regm = Slot(uri=BASALT_SCHEMA.standing_water_regm, name="st
 slots.start_date_inc = Slot(uri=BASALT_SCHEMA.start_date_inc, name="start_date_inc", curie=BASALT_SCHEMA.curie('start_date_inc'),
                    model_uri=BASALT_SCHEMA.start_date_inc, domain=None, range=Optional[str])
 
+slots.starting_mass_mg = Slot(uri=BASALT_SCHEMA.starting_mass_mg, name="starting_mass_mg", curie=BASALT_SCHEMA.curie('starting_mass_mg'),
+                   model_uri=BASALT_SCHEMA.starting_mass_mg, domain=None, range=Optional[float])
+
 slots.stationary_phase = Slot(uri=BASALT_SCHEMA.stationary_phase, name="stationary_phase", curie=BASALT_SCHEMA.curie('stationary_phase'),
                    model_uri=BASALT_SCHEMA.stationary_phase, domain=None, range=Optional[str])
 
@@ -16729,6 +17071,9 @@ slots.strain_type = Slot(uri=BASALT_SCHEMA.strain_type, name="strain_type", curi
 
 slots.subspecf_gen_lin = Slot(uri=BASALT_SCHEMA.subspecf_gen_lin, name="subspecf_gen_lin", curie=BASALT_SCHEMA.curie('subspecf_gen_lin'),
                    model_uri=BASALT_SCHEMA.subspecf_gen_lin, domain=None, range=Optional[str])
+
+slots.substances_used = Slot(uri=BASALT_SCHEMA.substances_used, name="substances_used", curie=BASALT_SCHEMA.curie('substances_used'),
+                   model_uri=BASALT_SCHEMA.substances_used, domain=None, range=Optional[Union[str, SubstancesUsedLinkId]])
 
 slots.sulfate = Slot(uri=BASALT_SCHEMA.sulfate, name="sulfate", curie=BASALT_SCHEMA.curie('sulfate'),
                    model_uri=BASALT_SCHEMA.sulfate, domain=None, range=Optional[str])
@@ -16889,8 +17234,8 @@ slots.volatile_org_comp = Slot(uri=BASALT_SCHEMA.volatile_org_comp, name="volati
 slots.volume_ml = Slot(uri=BASALT_SCHEMA.volume_ml, name="volume_ml", curie=BASALT_SCHEMA.curie('volume_ml'),
                    model_uri=BASALT_SCHEMA.volume_ml, domain=None, range=Optional[float])
 
-slots.volume_uL = Slot(uri=BASALT_SCHEMA.volume_uL, name="volume_uL", curie=BASALT_SCHEMA.curie('volume_uL'),
-                   model_uri=BASALT_SCHEMA.volume_uL, domain=None, range=Optional[float])
+slots.volume_ul = Slot(uri=BASALT_SCHEMA.volume_ul, name="volume_ul", curie=BASALT_SCHEMA.curie('volume_ul'),
+                   model_uri=BASALT_SCHEMA.volume_ul, domain=None, range=Optional[float])
 
 slots.wastewater_type = Slot(uri=BASALT_SCHEMA.wastewater_type, name="wastewater_type", curie=BASALT_SCHEMA.curie('wastewater_type'),
                    model_uri=BASALT_SCHEMA.wastewater_type, domain=None, range=Optional[str])
@@ -17156,6 +17501,9 @@ slots.processingSampleLink__processing_id = Slot(uri=BASALT_SCHEMA.processing_id
 slots.processingSampleLink__step_number = Slot(uri=BASALT_SCHEMA.step_number, name="processingSampleLink__step_number", curie=BASALT_SCHEMA.curie('step_number'),
                    model_uri=BASALT_SCHEMA.processingSampleLink__step_number, domain=None, range=int)
 
+slots.processingSampleLink__sample_id = Slot(uri=BASALT_SCHEMA.sample_id, name="processingSampleLink__sample_id", curie=BASALT_SCHEMA.curie('sample_id'),
+                   model_uri=BASALT_SCHEMA.processingSampleLink__sample_id, domain=None, range=Union[str, SampleId])
+
 slots.processingSampleLink__role = Slot(uri=BASALT_SCHEMA.role, name="processingSampleLink__role", curie=BASALT_SCHEMA.curie('role'),
                    model_uri=BASALT_SCHEMA.processingSampleLink__role, domain=None, range=Union[str, "SampleRole"])
 
@@ -17186,11 +17534,26 @@ slots.configuration__id = Slot(uri=BASALT_SCHEMA.id, name="configuration__id", c
 slots.mobilePhaseSegment__id = Slot(uri=BASALT_SCHEMA.id, name="mobilePhaseSegment__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.mobilePhaseSegment__id, domain=None, range=URIRef)
 
-slots.mobilePhaseSegment__segment_order = Slot(uri=BASALT_SCHEMA.segment_order, name="mobilePhaseSegment__segment_order", curie=BASALT_SCHEMA.curie('segment_order'),
-                   model_uri=BASALT_SCHEMA.mobilePhaseSegment__segment_order, domain=None, range=Optional[int])
+slots.mobilePhaseSegment__mobile_phase_percentage = Slot(uri=BASALT_SCHEMA.mobile_phase_percentage, name="mobilePhaseSegment__mobile_phase_percentage", curie=BASALT_SCHEMA.curie('mobile_phase_percentage'),
+                   model_uri=BASALT_SCHEMA.mobilePhaseSegment__mobile_phase_percentage, domain=None, range=Optional[float])
 
-slots.mobilePhaseSegment__substance = Slot(uri=BASALT_SCHEMA.substance, name="mobilePhaseSegment__substance", curie=BASALT_SCHEMA.curie('substance'),
-                   model_uri=BASALT_SCHEMA.mobilePhaseSegment__substance, domain=None, range=Optional[str])
+slots.mobilePhaseSegment__used_in_chromatography_config = Slot(uri=BASALT_SCHEMA.used_in_chromatography_config, name="mobilePhaseSegment__used_in_chromatography_config", curie=BASALT_SCHEMA.curie('used_in_chromatography_config'),
+                   model_uri=BASALT_SCHEMA.mobilePhaseSegment__used_in_chromatography_config, domain=None, range=Optional[Union[dict, ChromatographyConfiguration]])
+
+slots.mobilePhase__id = Slot(uri=BASALT_SCHEMA.id, name="mobilePhase__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.mobilePhase__id, domain=None, range=URIRef)
+
+slots.mobilePhaseSubstance__id = Slot(uri=BASALT_SCHEMA.id, name="mobilePhaseSubstance__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.mobilePhaseSubstance__id, domain=None, range=URIRef)
+
+slots.mobilePhaseSubstance__in_mobile_phase = Slot(uri=BASALT_SCHEMA.in_mobile_phase, name="mobilePhaseSubstance__in_mobile_phase", curie=BASALT_SCHEMA.curie('in_mobile_phase'),
+                   model_uri=BASALT_SCHEMA.mobilePhaseSubstance__in_mobile_phase, domain=None, range=Optional[Union[str, MobilePhaseId]])
+
+slots.mobilePhaseSubstance__substance = Slot(uri=BASALT_SCHEMA.substance, name="mobilePhaseSubstance__substance", curie=BASALT_SCHEMA.curie('substance'),
+                   model_uri=BASALT_SCHEMA.mobilePhaseSubstance__substance, domain=None, range=Optional[Union[str, "ChemicalEntityEnum"]])
+
+slots.mobilePhaseSubstance__concentration = Slot(uri=BASALT_SCHEMA.concentration, name="mobilePhaseSubstance__concentration", curie=BASALT_SCHEMA.curie('concentration'),
+                   model_uri=BASALT_SCHEMA.mobilePhaseSubstance__concentration, domain=None, range=Optional[str])
 
 slots.massSpectrometryStandardRun__id = Slot(uri=BASALT_SCHEMA.id, name="massSpectrometryStandardRun__id", curie=BASALT_SCHEMA.curie('id'),
                    model_uri=BASALT_SCHEMA.massSpectrometryStandardRun__id, domain=None, range=URIRef)
@@ -17207,6 +17570,30 @@ slots.wellMetadata__well_type = Slot(uri=BASALT_SCHEMA.well_type, name="wellMeta
 slots.wellMetadata__replicate_group = Slot(uri=BASALT_SCHEMA.replicate_group, name="wellMetadata__replicate_group", curie=BASALT_SCHEMA.curie('replicate_group'),
                    model_uri=BASALT_SCHEMA.wellMetadata__replicate_group, domain=None, range=Optional[str])
 
+slots.wellReagentAddition__compound = Slot(uri=BASALT_SCHEMA.compound, name="wellReagentAddition__compound", curie=BASALT_SCHEMA.curie('compound'),
+                   model_uri=BASALT_SCHEMA.wellReagentAddition__compound, domain=None, range=Union[str, "ChemicalEntityEnum"])
+
+slots.wellReagentAddition__substance_role = Slot(uri=BASALT_SCHEMA.substance_role, name="wellReagentAddition__substance_role", curie=BASALT_SCHEMA.curie('substance_role'),
+                   model_uri=BASALT_SCHEMA.wellReagentAddition__substance_role, domain=None, range=Union[str, "SubstanceRoleEnum"])
+
+slots.wellReagentAddition__volume_ul = Slot(uri=BASALT_SCHEMA.volume_ul, name="wellReagentAddition__volume_ul", curie=BASALT_SCHEMA.curie('volume_ul'),
+                   model_uri=BASALT_SCHEMA.wellReagentAddition__volume_ul, domain=None, range=float)
+
+slots.wellReagentAddition__stock_concentration = Slot(uri=BASALT_SCHEMA.stock_concentration, name="wellReagentAddition__stock_concentration", curie=BASALT_SCHEMA.curie('stock_concentration'),
+                   model_uri=BASALT_SCHEMA.wellReagentAddition__stock_concentration, domain=None, range=Optional[float])
+
+slots.wellReagentAddition__requested_concentration = Slot(uri=BASALT_SCHEMA.requested_concentration, name="wellReagentAddition__requested_concentration", curie=BASALT_SCHEMA.curie('requested_concentration'),
+                   model_uri=BASALT_SCHEMA.wellReagentAddition__requested_concentration, domain=None, range=Optional[float])
+
+slots.wellReagentAddition__actual_concentration = Slot(uri=BASALT_SCHEMA.actual_concentration, name="wellReagentAddition__actual_concentration", curie=BASALT_SCHEMA.curie('actual_concentration'),
+                   model_uri=BASALT_SCHEMA.wellReagentAddition__actual_concentration, domain=None, range=Optional[float])
+
+slots.wellReagentAddition__concentration_unit = Slot(uri=BASALT_SCHEMA.concentration_unit, name="wellReagentAddition__concentration_unit", curie=BASALT_SCHEMA.curie('concentration_unit'),
+                   model_uri=BASALT_SCHEMA.wellReagentAddition__concentration_unit, domain=None, range=Optional[str])
+
+slots.wellReagentAddition__addition_time = Slot(uri=BASALT_SCHEMA.addition_time, name="wellReagentAddition__addition_time", curie=BASALT_SCHEMA.curie('addition_time'),
+                   model_uri=BASALT_SCHEMA.wellReagentAddition__addition_time, domain=None, range=Optional[str])
+
 slots.aMP2WellMetadata__media_ref = Slot(uri=BASALT_SCHEMA.media_ref, name="aMP2WellMetadata__media_ref", curie=BASALT_SCHEMA.curie('media_ref'),
                    model_uri=BASALT_SCHEMA.aMP2WellMetadata__media_ref, domain=None, range=Optional[Union[str, ProcessedSampleId]])
 
@@ -17216,8 +17603,8 @@ slots.aMP2WellMetadata__media_volume_ul = Slot(uri=BASALT_SCHEMA.media_volume_ul
 slots.aMP2WellMetadata__inoculum_volume_ul = Slot(uri=BASALT_SCHEMA.inoculum_volume_ul, name="aMP2WellMetadata__inoculum_volume_ul", curie=BASALT_SCHEMA.curie('inoculum_volume_ul'),
                    model_uri=BASALT_SCHEMA.aMP2WellMetadata__inoculum_volume_ul, domain=None, range=float)
 
-slots.aMP2WellMetadata__treatments = Slot(uri=BASALT_SCHEMA.treatments, name="aMP2WellMetadata__treatments", curie=BASALT_SCHEMA.curie('treatments'),
-                   model_uri=BASALT_SCHEMA.aMP2WellMetadata__treatments, domain=None, range=Optional[Union[str, list[str]]])
+slots.aMP2WellMetadata__reagent_additions = Slot(uri=BASALT_SCHEMA.reagent_additions, name="aMP2WellMetadata__reagent_additions", curie=BASALT_SCHEMA.curie('reagent_additions'),
+                   model_uri=BASALT_SCHEMA.aMP2WellMetadata__reagent_additions, domain=None, range=Optional[Union[Union[dict, WellReagentAddition], list[Union[dict, WellReagentAddition]]]])
 
 slots.ecoplateWellMetadata__media_volume_ul = Slot(uri=BASALT_SCHEMA.media_volume_ul, name="ecoplateWellMetadata__media_volume_ul", curie=BASALT_SCHEMA.curie('media_volume_ul'),
                    model_uri=BASALT_SCHEMA.ecoplateWellMetadata__media_volume_ul, domain=None, range=float)
@@ -18011,20 +18398,26 @@ slots.normalizationProcess__target_mass_mg = Slot(uri=BASALT_SCHEMA.target_mass_
 slots.normalizationProcess__target_vol_ul = Slot(uri=BASALT_SCHEMA.target_vol_ul, name="normalizationProcess__target_vol_ul", curie=BASALT_SCHEMA.curie('target_vol_ul'),
                    model_uri=BASALT_SCHEMA.normalizationProcess__target_vol_ul, domain=None, range=Optional[float])
 
-slots.portionOfSubstance__known_as = Slot(uri=BASALT_SCHEMA.known_as, name="portionOfSubstance__known_as", curie=BASALT_SCHEMA.curie('known_as'),
-                   model_uri=BASALT_SCHEMA.portionOfSubstance__known_as, domain=None, range=Optional[Union[str, "ChemicalEntityEnum"]])
+slots.substancesUsedLink__id = Slot(uri=BASALT_SCHEMA.id, name="substancesUsedLink__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.substancesUsedLink__id, domain=None, range=URIRef)
 
-slots.portionOfSubstance__substance_role = Slot(uri=BASALT_SCHEMA.substance_role, name="portionOfSubstance__substance_role", curie=BASALT_SCHEMA.curie('substance_role'),
-                   model_uri=BASALT_SCHEMA.portionOfSubstance__substance_role, domain=None, range=Optional[Union[str, "SubstanceRoleEnum"]])
+slots.substancesUsedLink__sample_processing_substance = Slot(uri=BASALT_SCHEMA.sample_processing_substance, name="substancesUsedLink__sample_processing_substance", curie=BASALT_SCHEMA.curie('sample_processing_substance'),
+                   model_uri=BASALT_SCHEMA.substancesUsedLink__sample_processing_substance, domain=None, range=Optional[Union[str, SampleProcessingSubstanceId]])
 
-slots.portionOfSubstance__volume_mL = Slot(uri=BASALT_SCHEMA.volume_mL, name="portionOfSubstance__volume_mL", curie=BASALT_SCHEMA.curie('volume_mL'),
-                   model_uri=BASALT_SCHEMA.portionOfSubstance__volume_mL, domain=None, range=Optional[float])
+slots.sampleProcessingSubstance__id = Slot(uri=BASALT_SCHEMA.id, name="sampleProcessingSubstance__id", curie=BASALT_SCHEMA.curie('id'),
+                   model_uri=BASALT_SCHEMA.sampleProcessingSubstance__id, domain=None, range=URIRef)
 
-slots.portionOfSubstance__source_concentration_mg_per_ml = Slot(uri=BASALT_SCHEMA.source_concentration_mg_per_ml, name="portionOfSubstance__source_concentration_mg_per_ml", curie=BASALT_SCHEMA.curie('source_concentration_mg_per_ml'),
-                   model_uri=BASALT_SCHEMA.portionOfSubstance__source_concentration_mg_per_ml, domain=None, range=Optional[float])
+slots.sampleProcessingSubstance__known_as = Slot(uri=BASALT_SCHEMA.known_as, name="sampleProcessingSubstance__known_as", curie=BASALT_SCHEMA.curie('known_as'),
+                   model_uri=BASALT_SCHEMA.sampleProcessingSubstance__known_as, domain=None, range=Optional[Union[str, "ChemicalEntityEnum"]])
 
-slots.portionOfSubstance__final_concentration_mg_per_ml = Slot(uri=BASALT_SCHEMA.final_concentration_mg_per_ml, name="portionOfSubstance__final_concentration_mg_per_ml", curie=BASALT_SCHEMA.curie('final_concentration_mg_per_ml'),
-                   model_uri=BASALT_SCHEMA.portionOfSubstance__final_concentration_mg_per_ml, domain=None, range=Optional[float])
+slots.sampleProcessingSubstance__substance_role = Slot(uri=BASALT_SCHEMA.substance_role, name="sampleProcessingSubstance__substance_role", curie=BASALT_SCHEMA.curie('substance_role'),
+                   model_uri=BASALT_SCHEMA.sampleProcessingSubstance__substance_role, domain=None, range=Optional[Union[str, "SubstanceRoleEnum"]])
+
+slots.sampleProcessingSubstance__source_concentration_mg_per_ml = Slot(uri=BASALT_SCHEMA.source_concentration_mg_per_ml, name="sampleProcessingSubstance__source_concentration_mg_per_ml", curie=BASALT_SCHEMA.curie('source_concentration_mg_per_ml'),
+                   model_uri=BASALT_SCHEMA.sampleProcessingSubstance__source_concentration_mg_per_ml, domain=None, range=Optional[float])
+
+slots.sampleProcessingSubstance__final_concentration_mg_per_ml = Slot(uri=BASALT_SCHEMA.final_concentration_mg_per_ml, name="sampleProcessingSubstance__final_concentration_mg_per_ml", curie=BASALT_SCHEMA.curie('final_concentration_mg_per_ml'),
+                   model_uri=BASALT_SCHEMA.sampleProcessingSubstance__final_concentration_mg_per_ml, domain=None, range=Optional[float])
 
 slots.proteinQuantification__protein_assay_type = Slot(uri=BASALT_SCHEMA.protein_assay_type, name="proteinQuantification__protein_assay_type", curie=BASALT_SCHEMA.curie('protein_assay_type'),
                    model_uri=BASALT_SCHEMA.proteinQuantification__protein_assay_type, domain=None, range=Union[str, "ProteinAssayTypeEnum"])
@@ -18661,6 +19054,9 @@ slots.WaterSamplingActivity_sample_collection_dev = Slot(uri=BASALT_SCHEMA.sampl
 
 slots.WaterSamplingActivity_sample_collection_method = Slot(uri=BASALT_SCHEMA.sample_collection_method, name="WaterSamplingActivity_sample_collection_method", curie=BASALT_SCHEMA.curie('sample_collection_method'),
                    model_uri=BASALT_SCHEMA.WaterSamplingActivity_sample_collection_method, domain=WaterSamplingActivity, range=str)
+
+slots.FiltrationProcess_volume_ml = Slot(uri=BASALT_SCHEMA.volume_ml, name="FiltrationProcess_volume_ml", curie=BASALT_SCHEMA.curie('volume_ml'),
+                   model_uri=BASALT_SCHEMA.FiltrationProcess_volume_ml, domain=FiltrationProcess, range=Optional[float])
 
 slots.Study_external_identifiers = Slot(uri=BASALT_SCHEMA.external_identifiers, name="Study_external_identifiers", curie=BASALT_SCHEMA.curie('external_identifiers'),
                    model_uri=BASALT_SCHEMA.Study_external_identifiers, domain=Study, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
