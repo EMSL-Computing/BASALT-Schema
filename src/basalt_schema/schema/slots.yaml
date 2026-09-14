@@ -1743,6 +1743,13 @@ slots:
       - MIXS:0000015
     alias: oxygen_status
 
+  oxygen_saturation_pct:
+    title: oxygen saturation percent
+    description: >-
+      Percent saturation of oxygen in the incubation atmosphere (0–100).
+      For example, ambient air is approximately 20.9%.
+    range: float
+
   parent_workflow_id:
     description: |-
       Self-referential FK to the preceding DataProcessingActivity in a chain.

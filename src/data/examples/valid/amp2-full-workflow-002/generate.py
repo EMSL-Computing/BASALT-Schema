@@ -617,7 +617,7 @@ for s in SAMPLES:
         "incubation_time_hours": 48.0 if fungal else 24.0,
         "temperature_celsius": temp,
         "agitation_speed_rpm": None,
-        "oxygen_relationship": "aerobic",
+        "oxygen_saturation_pct": 20.9,
         "container_type": "petri_dish",
         "inspection_method": "visual colony morphology + 16S colony PCR"
                              if not fungal else
@@ -648,7 +648,7 @@ for s in SAMPLES:
         "incubation_time_hours": 24.0 if fungal else 16.0,
         "temperature_celsius": temp,
         "agitation_speed_rpm": 200,
-        "oxygen_relationship": "aerobic",
+        "oxygen_saturation_pct": 20.9,
         "container_type": "culture_tube",
         "inspection_method": None,
         "target_strain": None,
@@ -686,7 +686,7 @@ for s in SAMPLES:
         "incubation_time_hours": 18.0 if fungal else 12.0,
         "temperature_celsius": temp,
         "agitation_speed_rpm": 200,
-        "oxygen_relationship": "aerobic",
+        "oxygen_saturation_pct": 20.9,
         "container_type": "baffled_flask",
         "inspection_method": None,
         "target_strain": None,
@@ -728,7 +728,7 @@ for s in SAMPLES:
         "incubation_time_hours": 6.0 if fungal else 4.0,
         "temperature_celsius": temp,
         "agitation_speed_rpm": 220,
-        "oxygen_relationship": "aerobic",
+        "oxygen_saturation_pct": 20.9,
         "container_type": "baffled_flask",
         "inspection_method": None,
         "target_strain": None,
@@ -852,7 +852,7 @@ PLATES.append({
     "default_media": "LB",
     "temperature_celsius": 30.0,
     "agitation_speed_rpm": 180,
-    "oxygen_relationship": "aerobic",
+    "oxygen_saturation_pct": 20.9,
     "instrument": "urn:amp2:instrument:plate-reader-001",
     "reader_model": "BioTek Epoch2",
     "read_operator": "urn:amp2:person:elga519",
@@ -921,7 +921,7 @@ PLATES.append({
     "default_media": "LBVAN",
     "temperature_celsius": 30.0,
     "agitation_speed_rpm": 180,
-    "oxygen_relationship": "aerobic",
+    "oxygen_saturation_pct": 20.9,
     "instrument": "urn:amp2:instrument:plate-reader-001",
     "reader_model": "BioTek Epoch2",
     "read_operator": "urn:amp2:person:elga519",
@@ -998,7 +998,7 @@ PLATES.append({
     "default_media": "LB",
     "temperature_celsius": 28.0,
     "agitation_speed_rpm": 150,
-    "oxygen_relationship": "aerobic",
+    "oxygen_saturation_pct": 20.9,
     "instrument": "urn:amp2:instrument:plate-reader-002",
     "reader_model": "Tecan Spark 10M",
     "read_operator": "urn:amp2:person:kapu336",
@@ -1348,8 +1348,8 @@ A("#     strain_identifier, genotype_segment_*, component_*, trait,")
 A("#     phenotype, trophic_level, pathogenicity, propagation.")
 A("#   * StrainPurity is a pass/fail QC gate and emits no processed sample,")
 A("#     per media_strain_culture_plate.yaml.")
-A("#   * oxygen_relationship is the canonical slot name (oxygen_status is an")
-A("#     alias).")
+A("#   * oxygen_saturation_pct replaces the former oxygen_relationship enum")
+A("#     with a float (percent O2 saturation).")
 A("#")
 A("# Deliberate data conditions (all schema-valid; none are schema violations)")
 A("#   * AMP2-0013 fails its first purity streak (contaminant_strains set),")
@@ -1486,7 +1486,7 @@ A("culture_growth_activities:")
 CULT_FIELDS = ["id", "activity_type", "name", "description", "organism_ref",
                "media_ref", "growth_medium", "incubation_time_hours",
                "temperature_celsius", "agitation_speed_rpm",
-               "oxygen_relationship", "container_type", "processing_steps",
+               "oxygen_saturation_pct", "container_type", "processing_steps",
                "inspection_method", "target_strain", "contaminant_strains",
                "preparation_date", "treatment_type", "growth_time"]
 for a in culture_activities:
@@ -1539,7 +1539,7 @@ for plate in plate_setups:
     A("    sealing_method: %s" % q(plate["sealing_method"]))
     A("    temperature_celsius: %s" % q(plate["temperature_celsius"]))
     A("    agitation_speed_rpm: %s" % q(plate["agitation_speed_rpm"]))
-    A("    oxygen_relationship: %s" % q(plate["oxygen_relationship"]))
+    A("    oxygen_saturation_pct: %s" % plate["oxygen_saturation_pct"])
     A("    processing_steps: %s"
       % q("dispense media; dispense inoculum; seal; load reader"))
     A("    media_ref: %s" % q(MEDIA_BY_KEY[plate["default_media"]]["ps_id"]))
@@ -1721,13 +1721,13 @@ write_csv("06_plate_setup_activities.csv", [
     "id", "activity_type", "name", "plate_type", "plate_barcode",
     "plate_format", "well_count", "setup_date", "setup_operator_id",
     "setup_instrument", "sealing_method", "temperature_celsius",
-    "agitation_speed_rpm", "oxygen_relationship", "media_ref",
+    "agitation_speed_rpm", "oxygen_saturation_pct", "media_ref",
     "output_plate_processed_sample_id", "description"],
     [[p["activity_id"], "AMP2PlateSetupActivity",
       "%s plate setup" % p["barcode"], p["plate_type"], p["barcode"],
       p["plate_format"], p["well_count"], p["setup_date"], p["operator"],
       p["setup_instrument"], p["sealing_method"], p["temperature_celsius"],
-      p["agitation_speed_rpm"], p["oxygen_relationship"],
+      p["agitation_speed_rpm"], p["oxygen_saturation_pct"],
       MEDIA_BY_KEY[p["default_media"]]["ps_id"], p["plate_ps_id"],
       p["description"]] for p in plate_setups])
 
@@ -1945,12 +1945,13 @@ Flag tallies across all {n_read} readings: {flagtally}.
   `phenotype`, `trophic_level`, `pathogenicity` and `propagation`. Values for
   the CRISPRi strains follow `CRISPRi_Pp_11strains.csv` from the AMP2 Data
   Model Campaign folder.
-* `oxygen_relationship` is the canonical slot name; `oxygen_status` is an alias.
+* `oxygen_saturation_pct` is a float (percent O2 saturation in the incubation
+  atmosphere, e.g. 20.9 for ambient air).
 * Enum-ranged fields use permissible values from `enums.yaml`
   (`StrainTypeEnum`, `ModificationMethodEnum`, `IntendedTraitEnum`,
   `TrophicLevelEnum`, `GenotypeSegmentEnum`, `ConstructComponentEnum`,
   `MediaTypeEnum`, `FormulationEnum`, `StorageConditionEnum`,
-  `GrowthFacilityEnum`, `OxygenStatusEnum`, `SampleRole`).
+  `GrowthFacilityEnum`, `SampleRole`).
 * Multivalued slots are pipe-delimited (`|`) in CSV and real YAML lists in the
   YAML document.
 """.format(

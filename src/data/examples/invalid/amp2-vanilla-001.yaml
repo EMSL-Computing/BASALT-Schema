@@ -76,7 +76,7 @@ culture_growth_activities:
     incubation_time_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_status: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "tube"
     inspection_method: "visual"
     target_strain: "KT2440_pTE314"
@@ -91,7 +91,7 @@ culture_growth_activities:
     incubation_time_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_status: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "flask"
     preparation_date: "2026-03-21"
     input_sample_id: "urn:amp2:ps:KT2440-purity-output-001"
@@ -105,7 +105,7 @@ culture_growth_activities:
     incubation_time_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_status: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "flask"
     input_sample_id: "urn:amp2:ps:KT2440-stock-output-001"
     output_sample_id: "urn:amp2:ps:KT2440-preculture-output-001"
@@ -118,7 +118,7 @@ culture_growth_activities:
     incubation_time_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_status: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "flask"
     treatment_type: "none"
     growth_time: "4 hours"
