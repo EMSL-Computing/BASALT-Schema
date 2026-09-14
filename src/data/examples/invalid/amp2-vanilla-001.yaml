@@ -135,6 +135,7 @@ plate_setup_activities:
     setup_operator_id: "kapu336"
     setup_instrument: "manual"
     sealing_method: "BreathEasy_membrane"
+    cycle_id: 1
     media_ref: "urn:amp2:ps:M9-glucose-batch-001"
     input_sample_id: "urn:amp2:ps:KT2440-experimental-output-001"
     output_sample_id: "urn:amp2:ps:EPix1-plate-001"

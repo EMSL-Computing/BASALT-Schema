@@ -2546,6 +2546,7 @@ plate_setup_activities:
     setup_operator_id: "urn:amp2:person:kapu336"
     setup_instrument: "manual"
     sealing_method: "BreathEasy_membrane"
+    cycle_id: 1
     temperature_celsius: 30.0
     agitation_speed_rpm: 180
     oxygen_saturation_pct: 20.9
@@ -2662,6 +2663,7 @@ plate_setup_activities:
     setup_operator_id: "urn:amp2:person:navi204"
     setup_instrument: "Hamilton_Microlab_STAR"
     sealing_method: "BreathEasy_membrane"
+    cycle_id: 1
     temperature_celsius: 30.0
     agitation_speed_rpm: 180
     oxygen_saturation_pct: 20.9
@@ -2778,6 +2780,7 @@ plate_setup_activities:
     setup_operator_id: "urn:amp2:person:navi204"
     setup_instrument: "Hamilton_Microlab_STAR"
     sealing_method: "optically_clear_adhesive_film"
+    cycle_id: 1
     temperature_celsius: 28.0
     agitation_speed_rpm: 150
     oxygen_saturation_pct: 20.9

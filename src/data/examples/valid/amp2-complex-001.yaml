@@ -136,6 +136,7 @@ plate_setup_activities:
     setup_operator_id: "kapu336"
     setup_instrument: "manual"
     sealing_method: "BreathEasy_membrane"
+    cycle_id: 1
     # No plate-level media_ref — per-well overrides used instead
     input_sample_id: "urn:amp2:ps:KT2440-exp-output-complex"
     output_sample_id: "urn:amp2:ps:EPix1-complex-plate-001"

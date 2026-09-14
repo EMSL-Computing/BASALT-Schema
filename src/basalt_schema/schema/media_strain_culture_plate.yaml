@@ -220,6 +220,7 @@ classes:
                  range is processedSample (not purchasedMaterial)
     slots:
       - media_ref
+      - cycle_id
     # well_metadata array contains AMP2WellMetadata instances
     # AMP2WellMetadata.media_ref provides per-well override (same processedSample range)
 

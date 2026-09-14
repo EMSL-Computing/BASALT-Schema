@@ -849,6 +849,7 @@ PLATES.append({
     "operator": "urn:amp2:person:kapu336",
     "setup_instrument": "manual",
     "sealing_method": "BreathEasy_membrane",
+    "cycle_id": 1,
     "default_media": "LB",
     "temperature_celsius": 30.0,
     "agitation_speed_rpm": 180,
@@ -918,6 +919,7 @@ PLATES.append({
     "operator": "urn:amp2:person:navi204",
     "setup_instrument": "Hamilton_Microlab_STAR",
     "sealing_method": "BreathEasy_membrane",
+    "cycle_id": 1,
     "default_media": "LBVAN",
     "temperature_celsius": 30.0,
     "agitation_speed_rpm": 180,
@@ -995,6 +997,7 @@ PLATES.append({
     "operator": "urn:amp2:person:navi204",
     "setup_instrument": "Hamilton_Microlab_STAR",
     "sealing_method": "optically_clear_adhesive_film",
+    "cycle_id": 1,
     "default_media": "LB",
     "temperature_celsius": 28.0,
     "agitation_speed_rpm": 150,
@@ -1537,6 +1540,7 @@ for plate in plate_setups:
     A("    setup_operator_id: %s" % q(plate["operator"]))
     A("    setup_instrument: %s" % q(plate["setup_instrument"]))
     A("    sealing_method: %s" % q(plate["sealing_method"]))
+    A("    cycle_id: %d" % plate["cycle_id"])
     A("    temperature_celsius: %s" % q(plate["temperature_celsius"]))
     A("    agitation_speed_rpm: %s" % q(plate["agitation_speed_rpm"]))
     A("    oxygen_saturation_pct: %s" % plate["oxygen_saturation_pct"])
@@ -1720,13 +1724,14 @@ write_csv("05_processed_samples.csv", [
 write_csv("06_plate_setup_activities.csv", [
     "id", "activity_type", "name", "plate_type", "plate_barcode",
     "plate_format", "well_count", "setup_date", "setup_operator_id",
-    "setup_instrument", "sealing_method", "temperature_celsius",
+    "setup_instrument", "sealing_method", "cycle_id", "temperature_celsius",
     "agitation_speed_rpm", "oxygen_saturation_pct", "media_ref",
     "output_plate_processed_sample_id", "description"],
     [[p["activity_id"], "AMP2PlateSetupActivity",
       "%s plate setup" % p["barcode"], p["plate_type"], p["barcode"],
       p["plate_format"], p["well_count"], p["setup_date"], p["operator"],
-      p["setup_instrument"], p["sealing_method"], p["temperature_celsius"],
+      p["setup_instrument"], p["sealing_method"], p["cycle_id"],
+      p["temperature_celsius"],
       p["agitation_speed_rpm"], p["oxygen_saturation_pct"],
       MEDIA_BY_KEY[p["default_media"]]["ps_id"], p["plate_ps_id"],
       p["description"]] for p in plate_setups])
