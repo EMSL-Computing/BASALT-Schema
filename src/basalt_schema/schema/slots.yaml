@@ -453,8 +453,13 @@ slots:
     range: ConstructComponentEnum
     title: construct component
 
+  container_size_ml:
+    description: The volume of the container an analyte is stored in or an activity
+      takes place in, in milliliters.
+    range: float
+
   container_type:
-    description: Physical container used for the culture (flask, tube, plate, etc.)
+    description: Physical container used for the culture or sample (flask, tube, plate, etc.)
     range: string
 
   contaminant_strains:
@@ -791,10 +796,30 @@ slots:
     description: Size of the file in bytes
     range: integer
 
+  filter_material:
+    description: The porous material on which solid particles present in the fluid which flows through it are largely caught and retained.
+    range: string
+
   filter_method:
     description: Type of filter used or how the sample was filtered
     range: string
     title: filter method
+
+  filter_pore_size_um:
+    description: The pore size of the filter used in the filtration process, in micrometers.
+    range: float
+
+  final_concentration_mg_per_ml:
+    range: float
+    description: The concentration of the sample or analyte in the processedSample resulting from this activity, in milligrams per milliliter.
+
+  final_mass_mg:
+    range: float
+    description: The mass of sample or analyte in the processedSample resulting from this activity.
+
+  final_vol_ml:
+    range: float
+    description: The volume of sample resulting from this activity, in milliliters.
 
   fire:
     description: 'Historical and/or physical evidence of fire. Format: YYYY-MM-DD'
@@ -1217,7 +1242,11 @@ slots:
     description: Type of ionization used in the mass spectrometry method
     range: IonizationSourceEnum
     required: true
-  
+
+  is_pressurized:
+    description: Whether or not pressure was applied to a thing or process.
+    range: boolean
+
   isol_growth_condt:
     description: |-
       Publication reference in the form of pubmed ID (PMID), digital object
@@ -1418,6 +1447,10 @@ slots:
   metaproteomics_analysis_category:
     range: MetaproteomicsAnalysisCategoryEnum
     description: The category of metaproteomics analysis being performed, if applicable.
+  
+  metaproteomics_result_type:
+    range: MetaproteomicsResultTypeEnum
+    description: The type of metaproteomics results file.
 
   methane:
     description: 'Methane (gas) amount or concentration at the time of sampling. (Unit:
@@ -1495,10 +1528,9 @@ slots:
     range: string
     title: miscellaneous parameter
 
-  mobile_phases:
-    description: Description of the mobile phases used in the chromatography method (e.g., solvents, gradients)
-    range: MobilePhaseSegment
-    multivalued: true
+  mobile_phase:
+    description: Description of a mobile phase used in a chromatography method (e.g., solvents, gradients)
+    range: MobilePhase
 
   modification_method:
     description: |-
@@ -2412,6 +2444,10 @@ slots:
     range: SedimentTypeEnum
     title: sediment type
 
+  separation_method:
+    description: The method used to separate phases during the filtration process (e.g., vacuum filtration, centrifugal filtration, syringe).
+    range: string
+
   sequence_order:
     description: |-
       Integer ordering within a temporal series for the same analyte.
@@ -3022,6 +3058,10 @@ slots:
     range: string
     title: incubation start date
 
+  starting_mass_mg:
+    range: float
+    description: The mass of sample or analyte used in the first step of the process, in milligrams.
+
   stationary_phase:
     description: Description of the stationary phase used in the chromatography method (e.g., column type)
     range: string
@@ -3125,6 +3165,10 @@ slots:
     title: subspecific genetic lineage
     todos: 
       - make this inlined/multivalued?
+
+  substances_used:
+    range: SubstancesUsedLink
+    description: A reference to substances used in a SampleProcessing activity.
 
   sulfate:
     description: 'Concentration of sulfate in the sample. (Unit: umol/L or mg/L or ppm)'
@@ -3422,7 +3466,7 @@ slots:
     range: MassSpectrometryStandardRun
 
   uses_chromatography:
-    description: Points to a record of the chromatography used to introduce samples for the mass spectrometry run.
+    description: Points to a record of the chromatography configuration used to separate analytes.
     range: ChromatographyConfiguration
 
   uses_ms_configuration:
@@ -3451,7 +3495,7 @@ slots:
     description: Volume of the entity in milliliters
     range: float
 
-  volume_uL:
+  volume_ul:
     range: float
     description: Volume of the entity in microliters
 
