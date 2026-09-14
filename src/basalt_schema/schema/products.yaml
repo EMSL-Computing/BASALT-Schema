@@ -301,55 +301,6 @@ classes:
       flag:
         range: ProcessedDataFlag
 
-  TomographyProduct:
-    description: |-
-      Soil tomography analysis product, typically derived via X-ray computed tomography (XCT) or similar instrument.
-    is_a: ProcessedData
-    slots:
-      - measure_type
-    attributes:
-      roi_volume_voxel:
-        range: double
-      voxel_size:
-        range: double
-      connected_pores:
-        range: double
-      pore_diameter_min:
-        range: double
-      pore_diameter_max:
-        range: double
-      pore_diameter_mean:
-        range: double
-      pore_diameter_median:
-        range: double
-      pore_diameter_variance:
-        range: double
-      pore_volume_mean:
-        range: double
-      total_pore_volume:
-        range: double
-      permeability_x:
-        range: double
-      flow_rate_x:
-        range: double
-      tortuosity_x:
-        range: double
-      permeability_y:
-        range: double
-      flow_rate_y:
-        range: double
-      tortuosity_y:
-        range: double
-      permeability_z:
-        range: double
-      flow_rate_z:
-        range: double
-      tortuosity_z:
-        range: double
-      flag_xct:
-        # range: ProcessedDataFlag
-        range: string
-
   WEOMProduct:
     description: |-
       Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar instrument.
@@ -398,6 +349,7 @@ classes:
       Inherits S3 storage metadata and sample linkage from dataProduct via ProcessedData.
 
       Concrete subclasses:
+        - XCTProduct: pore geometry and flow properties (X-ray computed tomography)
         - XRFElementalProduct: elemental concentrations
         - XRDPhaseProduct: mineral phases
         - XASLCFProduct: linear combination fitting results
@@ -405,12 +357,121 @@ classes:
       Common patterns:
         - s3_key points to the raw or processed X-ray data file in MinIO
         - summary_metrics provides lightweight queryable summaries:
+            XCT: {"connected_pores":1842, "total_pore_volume":3.2e6, "tortuosity_z":1.47}
             XRF: {"Ni_mg_kg":45.3, "Pb_mg_kg":8.2, "As_mg_kg":12.1}
             XRD: {"quartz_percent":42, "albite_percent":18, "kaolinite_percent":31}
             XAS: {"r_factor":0.000975, "lcf_type":"XANES", "n_standards":3}
         - direct outputs may not have a processing link (XRF typical)
         - computational outputs should use a typed processing reference slot
           (XRD Rietveld refinement, XAS LCF fitting)
+
+
+  # ---------------------------------------------------------------------------
+  # XCTProduct   X-ray Computed Tomography Pore/Flow Data
+  # ---------------------------------------------------------------------------
+  XCTProduct:
+    is_a: XRayDataProduct
+    description: |-
+      X-ray computed tomography (XCT) analysis product for pore geometry and flow properties of intact soil cores.
+    slots:
+      - measure_type
+    attributes:
+      roi_x_voxel:
+        description: Number of voxels in X direction of ROI. Previously roi_volume_voxel.
+        range: double
+      roi_y_voxel:
+        description: Number of voxels in Y direction of ROI.
+        range: double
+      roi_z_voxel:
+        description: Number of voxels in Z direction of ROI.
+        range: double
+      voxel_size_mm_per_voxel:
+        description: Linear dimension of a voxel (mm/voxel). Previously voxel_size.
+        range: double
+      porosity_percent:
+        description: Percentage of total pore volume to total volume of ROI (%). Previously total_pore_volume.
+        range: double
+      connected_pores_fraction:
+        description: Fraction of connected pore volume out of total volume (unitless).
+        range: double
+      pore_connectivity_percent:
+        description: Percentage of connected pore volume to all pore volume (%).
+        range: double
+      pore_equivalent_diameter_min_mm:
+        description: Minimum equivalent pore diameter (mm). Previously pore_diameter_min.
+        range: double
+      pore_equivalent_diameter_max_mm:
+        description: Maximum equivalent pore diameter (mm). Previously pore_diameter_max.
+        range: double
+      pore_equivalent_diameter_mean_mm:
+        description: Mean equivalent pore diameter (mm). Previously pore_diameter_mean.
+        range: double
+      pore_equivalent_diameter_median_mm:
+        description: Median equivalent pore diameter (mm). Previously pore_diameter_median.
+        range: double
+      pore_equivalent_diameter_variance_mm2:
+        description: Variance of equivalent pore diameter (mm^2). Previously pore_diameter_variance.
+        range: double
+      pore_volume_min_mm3:
+        description: Minimum volume of pores (mm^3).
+        range: double
+      pore_volume_max_mm3:
+        description: Maximum volume of pores (mm^3).
+        range: double
+      pore_volume_mean_mm3:
+        description: Mean volume of pores (mm^3). Previously pore_volume_mean.
+        range: double
+      pore_volume_median_mm3:
+        description: Median volume of pores (mm^3).
+        range: double
+      pore_volume_variance_mm6:
+        description: Variance of volume of pores (mm^6).
+        range: double
+      pore_area_min_mm2:
+        description: Minimum area of pores (mm^2).
+        range: double
+      pore_area_max_mm2:
+        description: Maximum area of pores (mm^2).
+        range: double
+      pore_area_mean_mm2:
+        description: Mean area of pores (mm^2).
+        range: double
+      pore_area_median_mm2:
+        description: Median area of pores (mm^2).
+        range: double
+      pore_area_variance_mm4:
+        description: Variance of area of pores (mm^4).
+        range: double
+      permeability_x_um2:
+        description: Absolute permeability from pore network model in X direction (um^2). Previously permeability_x.
+        range: double
+      flow_rate_x_mm3_per_sec:
+        description: Total flow rate from pore network model in X direction (mm^3/s). Previously flow_rate_x.
+        range: double
+      tortuosity_x:
+        description: Tortuosity from pore network model in X direction (unitless).
+        range: double
+      permeability_y_um2:
+        description: Absolute permeability from pore network model in Y direction (um^2). Previously permeability_y.
+        range: double
+      flow_rate_y_mm3_per_sec:
+        description: Total flow rate from pore network model in Y direction (mm^3/s). Previously flow_rate_y.
+        range: double
+      tortuosity_y:
+        description: Tortuosity from pore network model in Y direction (unitless).
+        range: double
+      permeability_z_um2:
+        description: Absolute permeability from pore network model in Z direction (um^2). Previously permeability_z.
+        range: double
+      flow_rate_z_mm3_per_sec:
+        description: Total flow rate from pore network model in Z direction (mm^3/s). Previously flow_rate_z.
+        range: double
+      tortuosity_z:
+        description: Tortuosity from pore network model in Z direction (unitless).
+        range: double
+      flag_xct:
+        description: Data quality flag for the XCT analysis.
+        range: string
 
 
   # ---------------------------------------------------------------------------
