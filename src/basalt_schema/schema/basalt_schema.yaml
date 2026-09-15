@@ -655,8 +655,8 @@ classes:
   UVDataGenerationActivity:
     is_a: DataGenerationActivity
     description: |-
-      Ultraviolet-visible (UV-Vis) spectroscopy acquisition activity.
-      Represents one measurement session for a sample using UV-Vis spectroscopy.
+      Ultraviolet spectroscopy acquisition activity.
+      Represents one measurement session for a sample using UV spectroscopy.
     slots:
       - uv_detector_type
       - wavelength_nm_max

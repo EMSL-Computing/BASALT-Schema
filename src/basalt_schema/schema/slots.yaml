@@ -425,7 +425,7 @@ slots:
     title: construct component name
 
   compound_name:
-    description: The name of the purchased material. A substance formed by chemical
+    description: The common name of the material. A substance formed by chemical
       union of two or more elements or ingredients in definite proportion by weight.
     range: string
     title: compound name
@@ -849,6 +849,10 @@ slots:
       no cloud base or vertical visibility) (Unit: m)'
     range: float
     title: first cloud base height
+
+  flag:
+    description: A flag indicating the QC status of the data.
+    range: ProcessedDataFlag
 
   flooding:
     description: 'Historical and/or physical evidence of flooding. Format: YYYY-MM-DD'
@@ -1796,6 +1800,18 @@ slots:
     range: string
     title: pathogenicity
 
+  peak_area:
+    description: The area under the peak in a chromatogram or mass spectrum, which is proportional to the amount of analyte present.
+    range: float
+  
+  peak_percent_area:
+    description: The percentage of the total area that a specific peak represents in a chromatogram or mass spectrum.
+    range: float
+
+  peak_height:
+    description: The height of the peak in a chromatogram or mass spectrum, which can be used to assess the concentration of the analyte.
+    range: float
+
   perturbation:
     description: Type of perturbation, e.g. chemical administration, physical disturbance,
       etc.; coupled with perturbation regimen, including how many times the perturbation
@@ -2062,6 +2078,10 @@ slots:
     description: Link back to the NucleotideSequencing activity that produced this data.
     range: NucleotideSequencing
 
+  produced_by_uv_run:
+    description: a reference to the data generation activity that produced this measurement.
+    range: UVDataGenerationActivity
+
   product_name:
     description: Provide the name of the product used to create the synthetic material.
     range: string
@@ -2190,6 +2210,10 @@ slots:
   results_from_ms_processing:
     description: a reference to the mass spec data processing activity that produced this data product
     range: MassSpectrometryDataProcessingActivity
+
+  retention_time_min:
+    description: Retention time of the analyte in the chromatography method, in minutes.
+    range: float
 
   root_cond:
     description: Relevant rooting conditions such as field plot size, sowing density,
@@ -3605,6 +3629,10 @@ slots:
     range: string
     title: weather
 
+  weight_percent:
+    description: Weight percent of the entity in the sample
+    range: float
+
   well_metadata:
     description: |-
       Structured per-well metadata array. Format varies by activity subclass:
@@ -3627,7 +3655,6 @@ slots:
     inlined_as_list: true
     todos:
       - decide how to represent in backend (normalized child table with FK to PlateSetupActivity, array column, or other)
-
 
   wind_direction:
     description: Direction of the wind on the day of sampling. Collected via anemometer.
