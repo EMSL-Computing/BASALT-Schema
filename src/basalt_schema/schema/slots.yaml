@@ -3514,7 +3514,7 @@ slots:
   uses_calibration:
     description: >- 
       Reference to the raw data file from the standard which was run with a batch of samples that was used as calibration for this data processing workflow run.
-    range: StandardRun
+    range: CalibrationStandardRun
 
   uses_chromatography:
     description: Points to a record of the chromatography configuration used to separate analytes.
