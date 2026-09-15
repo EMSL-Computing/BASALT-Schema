@@ -427,7 +427,7 @@ slots:
   compound_name:
     description: The common name of the material. A substance formed by chemical
       union of two or more elements or ingredients in definite proportion by weight.
-    range: string
+    range: ChemicalEntityEnum
     title: compound name
 
   concentration_ug_per_uL:
@@ -1567,8 +1567,10 @@ slots:
     required: true
 
   negative_absorbance_margin_au:
-    description: 'Allowed margin below zero absorbance before a reading is flagged
-      as invalid, used to account for detector noise/baseline drift. (Unit: AU)'
+    description: |-
+      Spectrophotometer setting defining the allowed margin below zero 
+      absorbance before a reading is considered invalid, set to manage detector
+      noise/baseline drift, given in absorbance units.
     range: float
     title: negative absorbance margin
 
@@ -2207,7 +2209,7 @@ slots:
     required: true
 
   resolution_nm:
-    description: 'Spectral resolution of the detector. (Unit: nm)'
+    description: Spectral resolution of the detector, in nanometers.
     range: float
     title: resolution
 
@@ -2421,7 +2423,7 @@ slots:
     title: sampling duration
 
   sampling_rate_hz:
-    description: 'Rate at which data points are acquired during the run. (Unit: Hz)'
+    description: Rate at which data points are acquired during the run, in Hertz.
     range: float
     title: sampling rate
 
