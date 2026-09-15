@@ -651,6 +651,7 @@ classes:
       - temperature_celsius
       - calibration_standard
       - uses_chromatography
+      - uses_calibration
 
   UVDataGenerationActivity:
     is_a: DataGenerationActivity
@@ -665,6 +666,7 @@ classes:
       - sampling_rate_hz
       - negative_absorbance_margin_au
       - uses_chromatography
+      - uses_calibration
 
   UVChannelConfig:
     is_a: Configuration
@@ -674,19 +676,3 @@ classes:
       - channel_number
       - wavelength_nm
       - resolution_nm
-  
-  UVDataProcessingActivity:
-    is_a: DataProcessingActivity
-    description: |-
-      Data processing for UV-Vis spectroscopy data. Represents processing of raw data for one UV-Vis sample.
-    slots:
-      - uses_raw_uv_data
-      - uses_calibration
-  
-  RIDataProcessingActivity:
-    is_a: DataProcessingActivity
-    description: |-
-      Data processing for Refractive Index (RI) data. Represents processing of raw data for one RI sample.
-    slots:
-      - uses_raw_ri_data
-      - uses_calibration

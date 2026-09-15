@@ -2078,6 +2078,10 @@ slots:
     description: Link back to the NucleotideSequencing activity that produced this data.
     range: NucleotideSequencing
 
+  produced_by_ri_run:
+    description: a reference to the data generation activity that produced this measurement.
+    range: RIDataGenerationActivity
+
   produced_by_uv_run:
     description: a reference to the data generation activity that produced this measurement.
     range: UVDataGenerationActivity
