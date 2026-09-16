@@ -2,7 +2,7 @@ id: https://emsl-computing.github.io/BASALT-Schema/products
 name: basalt-schema-products
 title: BASALT Schema - Products
 description: |-
-  Enumerated values used throughout the BASALT Schema
+  Data products generated from lab analyses and data processing workflows.
 license: MIT
 
 prefixes:
@@ -972,3 +972,33 @@ classes:
         required: true
       x_val:
         required: true
+
+  UVSpectroscopyProduct:
+    is_a: ProcessedData
+    description: |-
+      A compound and its measurements resulting from a 
+      UVDataGenerationActivity.One UVDataGenerationActivity may have many 
+      "products" representing all compounds detected in the sample.
+    slots:
+      - produced_by_uv_run
+      - compound_name
+      - retention_time_min
+      - peak_area
+      - peak_percent_area
+      - peak_height
+      - weight_percent
+      - concentration_ug_per_ul
+      - flag
+
+  RIProduct:
+    is_a: ProcessedData
+    description: |-
+      A compound and its measurements resulting from a 
+      RIDataGenerationActivity.One RIDataGenerationActivity may have many 
+      "products" representing all compounds detected in the sample.
+    slots:
+      - produced_by_ri_run
+      - compound_name
+      - weight_percent
+      - concentration_ug_per_ul
+      - flag

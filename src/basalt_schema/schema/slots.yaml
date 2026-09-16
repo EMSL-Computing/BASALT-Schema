@@ -272,7 +272,7 @@ slots:
 
   calibration_data:
     description: Reference to the raw instrument data file used for calibration
-    range: MassSpectrometryInstrumentData
+    range: InstrumentData
 
   calibration_standard:
     description: The reference standard used for calibration
@@ -319,6 +319,11 @@ slots:
     range: boolean
     aliases:
       - CBI
+
+  channel_number:
+    description: The index of the detector channel within the instrument run.
+    range: integer
+    title: channel number
 
   chem_administration:
     title: chemical administration
@@ -420,9 +425,9 @@ slots:
     title: construct component name
 
   compound_name:
-    description: The name of the purchased material. A substance formed by chemical
+    description: The common name of the material. A substance formed by chemical
       union of two or more elements or ingredients in definite proportion by weight.
-    range: string
+    range: ChemicalEntityEnum
     title: compound name
 
   concentration_ug_per_uL:
@@ -844,6 +849,10 @@ slots:
       no cloud base or vertical visibility) (Unit: m)'
     range: float
     title: first cloud base height
+
+  flag:
+    description: A flag indicating the QC status of the data.
+    range: ProcessedDataFlag
 
   flooding:
     description: 'Historical and/or physical evidence of flooding. Format: YYYY-MM-DD'
@@ -1557,6 +1566,14 @@ slots:
     range: string
     required: true
 
+  negative_absorbance_margin_au:
+    description: |-
+      Spectrophotometer setting defining the allowed margin below zero 
+      absorbance before a reading is considered invalid, set to manage detector
+      noise/baseline drift, given in absorbance units.
+    range: float
+    title: negative absorbance margin
+
   neon_domain:
     description: 'Areas where ecosystems (and the type quality and quantity of environmental
       resources) are generally similar. A map of these regions can be found at https://www.neonscience.org/field-sites/about-field-sites.
@@ -1784,6 +1801,18 @@ slots:
       To what is the entity pathogenic, e.g., humans, animals, plants, or specific tissues.
     range: string
     title: pathogenicity
+
+  peak_area:
+    description: The area under the peak in a chromatogram or mass spectrum, which is proportional to the amount of analyte present.
+    range: float
+  
+  peak_percent_area:
+    description: The percentage of the total area that a specific peak represents in a chromatogram or mass spectrum.
+    range: float
+
+  peak_height:
+    description: The height of the peak in a chromatogram or mass spectrum, which can be used to assess the concentration of the analyte.
+    range: float
 
   perturbation:
     description: Type of perturbation, e.g. chemical administration, physical disturbance,
@@ -2051,6 +2080,14 @@ slots:
     description: Link back to the NucleotideSequencing activity that produced this data.
     range: NucleotideSequencing
 
+  produced_by_ri_run:
+    description: a reference to the data generation activity that produced this measurement.
+    range: RIDataGenerationActivity
+
+  produced_by_uv_run:
+    description: a reference to the data generation activity that produced this measurement.
+    range: UVDataGenerationActivity
+
   product_name:
     description: Provide the name of the product used to create the synthetic material.
     range: string
@@ -2171,9 +2208,18 @@ slots:
     range: MassSpecResolutionEnum
     required: true
 
+  resolution_nm:
+    description: Spectral resolution of the detector, in nanometers.
+    range: float
+    title: resolution
+
   results_from_ms_processing:
     description: a reference to the mass spec data processing activity that produced this data product
     range: MassSpectrometryDataProcessingActivity
+
+  retention_time_min:
+    description: Retention time of the analyte in the chromatography method, in minutes.
+    range: float
 
   root_cond:
     description: Relevant rooting conditions such as field plot size, sowing density,
@@ -2375,6 +2421,11 @@ slots:
       submission_pattern: ^\d+(\.\d+)?\s*s$
     range: string
     title: sampling duration
+
+  sampling_rate_hz:
+    description: Rate at which data points are acquired during the run, in Hertz.
+    range: float
+    title: sampling rate
 
   sampling_set:
     title: sampling set
@@ -3463,7 +3514,7 @@ slots:
   uses_calibration:
     description: >- 
       Reference to the raw data file from the standard which was run with a batch of samples that was used as calibration for this data processing workflow run.
-    range: MassSpectrometryStandardRun
+    range: CalibrationStandardRun
 
   uses_chromatography:
     description: Points to a record of the chromatography configuration used to separate analytes.
@@ -3479,6 +3530,28 @@ slots:
     description: >-
       The raw data file, output by a mass spectrometer, that was analyzed in 
       this data processing workflow run.
+
+  uses_raw_ri_data:
+    range: InstrumentData
+    description: >-
+      The raw data file, output by a RI detector, that was analyzed in
+      this data processing workflow run.
+    todos: replace range with a RI-specific InstrumentData subclass once defined
+
+  uses_raw_uv_data:
+    range: InstrumentData
+    description: >-
+      The raw data file, output by a UV-Vis detector, that was analyzed in
+      this data processing workflow run.
+    todos: replace range with a UV-Vis-specific InstrumentData subclass once defined
+
+  uv_datagen_run:
+    description: Reference to the UV-Vis data generation activity that this channel configuration belongs to.
+    range: UVDataGenerationActivity
+
+  uv_detector_type:
+    description: Type of UV detector used in the chromatography method
+    range: UVDetectorEnum
   
   version:
     description: String indicating the version of the software or protocol
@@ -3546,11 +3619,25 @@ slots:
     range: integer
     required: true
 
+  wavelength_nm_max:
+    description: Maximum wavelength of the detection range, in nanometers
+    range: float
+    title: maximum wavelength
+
+  wavelength_nm_min:
+    description: Minimum wavelength of the detection range, in nanometers
+    range: float
+    title: minimum wavelength
+
   weather:
     description: The state of the atmosphere at a given time and place with respect
       to variables such as temperature, moisture, wind velocity, and barometric pressure.
     range: string
     title: weather
+
+  weight_percent:
+    description: Weight percent of the entity in the sample
+    range: float
 
   well_metadata:
     description: |-
@@ -3574,7 +3661,6 @@ slots:
     inlined_as_list: true
     todos:
       - decide how to represent in backend (normalized child table with FK to PlateSetupActivity, array column, or other)
-
 
   wind_direction:
     description: Direction of the wind on the day of sampling. Collected via anemometer.

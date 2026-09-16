@@ -147,6 +147,8 @@ enums:
         - RT
       retention_index:
         text: retention_index
+      refractive_index:
+        text: refractive_index
         aliases:
         - RI
 
@@ -339,6 +341,10 @@ enums:
         text: solid_phase_extraction
         aliases:
         - SPE
+      high_performance_liquid_chromatography:
+        text: high_performance_liquid_chromatography
+        aliases:
+        - HPLC
 
   ColorCodeEnum:
     permissible_values:
@@ -2073,6 +2079,19 @@ enums:
         description: Organism using light and inorganic electron donors
       phototroph:
         description: Organism using light as energy source
+
+  UVDetectorEnum:
+    description: UV detector types used in chromatography.
+    permissible_values:
+      photodiode_array:
+        text: photodiode_array
+        description: Diode Array Detector (DAD)
+      variable_wavelength:
+        text: variable_wavelength
+        description: Variable Wavelength Detector
+      fixed_wavelength:
+        text: fixed_wavelength
+        description: Fixed Wavelength Detector
 
   VendorEnum:
     permissible_values:

@@ -639,3 +639,40 @@ classes:
       - chi_square
       - reduced_chi_square
       - weights_sum
+
+  RIDataGenerationActivity:
+    is_a: DataGenerationActivity
+    description: |-
+      Refractive Index (RI) measurement activity.
+      Represents one measurement session for a sample using a RI detector.
+
+    slots:
+      - wavelength_nm
+      - temperature_celsius
+      - calibration_standard
+      - uses_chromatography
+      - uses_calibration
+
+  UVDataGenerationActivity:
+    is_a: DataGenerationActivity
+    description: |-
+      Ultraviolet spectroscopy acquisition activity.
+      Represents one measurement session for a sample using UV spectroscopy.
+    slots:
+      - uv_detector_type
+      - wavelength_nm_max
+      - wavelength_nm_min
+      - resolution_nm
+      - sampling_rate_hz
+      - negative_absorbance_margin_au
+      - uses_chromatography
+      - uses_calibration
+
+  UVChannelConfig:
+    is_a: Configuration
+    description: Configuration for a single UV-Vis detector channel.
+    slots:
+      - uv_datagen_run
+      - channel_number
+      - wavelength_nm
+      - resolution_nm
