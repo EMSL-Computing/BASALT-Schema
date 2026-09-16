@@ -51,9 +51,47 @@ processed_samples:
     sample_base_type: "processed_sample"
     processed_sample_type: "amp2_96well_plate"
 
+sample_processing_protocols:
+  - id: "urn:amp2:protocol:media-prep-v1"
+    name: "AMP2 media preparation SOP"
+    description: "Standard operating procedure for AMP2 growth media preparation"
+    protocol_url: "https://protocols.io/view/amp2-media-preparation-v1"
+    protocol_version: "1.0"
+
+  - id: "urn:amp2:protocol:strain-purity-v1"
+    name: "AMP2 strain purity check SOP"
+    description: "Standard operating procedure for strain purity verification"
+    protocol_url: "https://protocols.io/view/amp2-strain-purity-v1"
+    protocol_version: "1.0"
+
+  - id: "urn:amp2:protocol:stock-culture-v1"
+    name: "AMP2 stock culture preparation SOP"
+    description: "Standard operating procedure for glycerol stock preparation"
+    protocol_url: "https://protocols.io/view/amp2-stock-culture-v1"
+    protocol_version: "1.0"
+
+  - id: "urn:amp2:protocol:preculture-v1"
+    name: "AMP2 pre-culture growth SOP"
+    description: "Standard operating procedure for pre-culture inoculation and growth"
+    protocol_url: "https://protocols.io/view/amp2-preculture-v1"
+    protocol_version: "1.0"
+
+  - id: "urn:amp2:protocol:experimental-culture-v1"
+    name: "AMP2 experimental culture SOP"
+    description: "Standard operating procedure for experimental culture growth"
+    protocol_url: "https://protocols.io/view/amp2-experimental-culture-v1"
+    protocol_version: "1.0"
+
+  - id: "urn:amp2:protocol:plate-setup-v1"
+    name: "AMP2 96-well plate setup SOP"
+    description: "Standard operating procedure for AMP2 96-well plate inoculation and setup"
+    protocol_url: "https://protocols.io/view/amp2-plate-setup-v1"
+    protocol_version: "1.0"
+
 media_preparations:
   - id: "urn:amp2:act:media-prep-M9-001"
     name: "M9 + 1% glucose preparation"
+    in_protocol: "urn:amp2:protocol:media-prep-v1"
     media_type: "pre_culture"
     volume_ml: 500.0
     media_recipe: "M9 minimal salts with 1% glucose (w/v)"
@@ -70,13 +108,14 @@ media_preparations:
 culture_growth_activities:
   - id: "urn:amp2:act:strain-purity-001"
     activity_type: "StrainPurity"
+    in_protocol: "urn:amp2:protocol:strain-purity-v1"
     name: "KT2440 pTE314 strain purity check"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
     media_ref: "urn:amp2:ps:M9-glucose-batch-001"
     incubation_time_hours: 24.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_status: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "tube"
     inspection_method: "visual"
     target_strain: "KT2440_pTE314"
@@ -85,13 +124,14 @@ culture_growth_activities:
 
   - id: "urn:amp2:act:stock-culture-001"
     activity_type: "StockCulturePreparation"
+    in_protocol: "urn:amp2:protocol:stock-culture-v1"
     name: "KT2440 pTE314 stock culture preparation"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
     media_ref: "urn:amp2:ps:M9-glucose-batch-001"
     incubation_time_hours: 16.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_status: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "flask"
     preparation_date: "2026-03-21"
     input_sample_id: "urn:amp2:ps:KT2440-purity-output-001"
@@ -99,26 +139,28 @@ culture_growth_activities:
 
   - id: "urn:amp2:act:preculture-001"
     activity_type: "PreCultureGrowth"
+    in_protocol: "urn:amp2:protocol:preculture-v1"
     name: "KT2440 pTE314 pre-culture"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
     media_ref: "urn:amp2:ps:M9-glucose-batch-001"
     incubation_time_hours: 12.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_status: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "flask"
     input_sample_id: "urn:amp2:ps:KT2440-stock-output-001"
     output_sample_id: "urn:amp2:ps:KT2440-preculture-output-001"
 
   - id: "urn:amp2:act:experimental-culture-001"
     activity_type: "ExperimentalCulture"
+    in_protocol: "urn:amp2:protocol:experimental-culture-v1"
     name: "KT2440 pTE314 experimental culture — no treatment"
     strain_ref: "urn:amp2:strain:KT2440-pTE314"
     media_ref: "urn:amp2:ps:M9-glucose-batch-001"
     incubation_time_hours: 4.0
     temperature_celsius: 30.0
     agitation_speed_rpm: 200
-    oxygen_status: "aerobic"
+    oxygen_saturation_pct: 20.9
     container_type: "flask"
     treatment_type: "none"
     growth_time: "4 hours"
@@ -128,6 +170,7 @@ culture_growth_activities:
 plate_setup_activities:
   - id: "urn:amp2:act:plate-setup-EPix1-001"
     activity_type: "AMP2PlateSetupActivity"
+    in_protocol: "urn:amp2:protocol:plate-setup-v1"
     name: "EPix1 AMP2 plate setup"
     plate_type: "Greiner_96well_flat_bottom"
     plate_barcode: "EPix1"
@@ -135,6 +178,7 @@ plate_setup_activities:
     setup_operator_id: "kapu336"
     setup_instrument: "manual"
     sealing_method: "BreathEasy_membrane"
+    cycle_id: 1
     media_ref: "urn:amp2:ps:M9-glucose-batch-001"
     input_sample_id: "urn:amp2:ps:KT2440-experimental-output-001"
     output_sample_id: "urn:amp2:ps:EPix1-plate-001"

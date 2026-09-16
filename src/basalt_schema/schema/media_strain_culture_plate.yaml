@@ -29,7 +29,7 @@ classes:
     slots:
       - temperature_celsius
       - agitation_speed_rpm
-      - oxygen_relationship
+      - oxygen_saturation_pct
 
   # ============================================================================
   # purchasedMaterial   abstract base
@@ -197,7 +197,7 @@ classes:
       - sealing_method
       - well_metadata
     # Inherited from HasIncubationConditions: temperature_celsius, agitation_speed_rpm,
-    #   oxygen_status
+    #   oxygen_saturation_pct
 
   # ============================================================================
   # AMP2PlateSetupActivity   concrete PlateSetupActivity
@@ -220,6 +220,7 @@ classes:
                  range is processedSample (not purchasedMaterial)
     slots:
       - media_ref
+      - cycle_id
     # well_metadata array contains AMP2WellMetadata instances
     # AMP2WellMetadata.media_ref provides per-well override (same processedSample range)
 

@@ -527,6 +527,14 @@ slots:
     description: Coefficient of variation across technical replicates
     range: float
 
+  cycle_id:
+    title: DBTL cycle number
+    description: >-
+      Integer identifying the Design-Build-Test-Learn iteration this plate
+      belongs to. Together with the originating sample_id it uniquely
+      identifies an experiment design across repeated cycles.
+    range: integer
+
   date_received:
     description: |-
       The date the sample was received.
@@ -1759,6 +1767,13 @@ slots:
     exact_mappings:
       - MIXS:0000015
     alias: oxygen_status
+
+  oxygen_saturation_pct:
+    title: oxygen saturation percent
+    description: >-
+      Percent saturation of oxygen in the incubation atmosphere (0–100).
+      For example, ambient air is approximately 20.9%.
+    range: float
 
   parent_workflow_id:
     description: |-
