@@ -172,16 +172,15 @@ classes:
         range: ProcessedDataFlag
 
   HClExtOMProduct:
+    is_a: ProcessedData
     description: |-
       Mineral-Associated Organic Matter (HClExtOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
       Individual QC flags for each measurement using ProcessedDataFlag enum.
     slots:
       - measure_type
       - replicate
+      - produced_by_toctn_run
     attributes:
-      id:
-        identifier: true
-        range: ProcessedData
       total_organic_carbon_id:
         range: QuantityValue
       total_organic_carbon_avg:
@@ -302,16 +301,15 @@ classes:
         range: ProcessedDataFlag
 
   WEOMProduct:
+    is_a: ProcessedData
     description: |-
       Water Extractable Organic Matter (WEOM) analysis product, typically derived via Shimadzu TOC-L or similar instrument.
       Individual QC flags for each measurement using ProcessedDataFlag enum.
     slots:
       - measure_type
       - replicate
+      - produced_by_toctn_run
     attributes:
-      id:
-        identifier: true
-        range: ProcessedData
       total_organic_carbon_id:
         range: QuantityValue
       total_organic_carbon_avg:

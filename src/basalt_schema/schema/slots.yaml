@@ -2103,6 +2103,10 @@ slots:
     description: a reference to the data generation activity that produced this measurement.
     range: UVDataGenerationActivity
 
+  produced_by_toctn_run:
+    description: a reference to the TOC/TN data generation activity that produced this measurement.
+    range: TOC_TN_DataGenerationActivity
+
   product_name:
     description: Provide the name of the product used to create the synthetic material.
     range: string
