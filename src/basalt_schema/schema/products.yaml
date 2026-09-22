@@ -171,10 +171,10 @@ classes:
       flag_cec:
         range: ProcessedDataFlag
 
-  MAOMProduct:
+  HClExtOMProduct:
     description: |-
-      Mineral-Associated Organic Matter (MAOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
-      Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED TO HClExtOMProduct
+      Mineral-Associated Organic Matter (HClExtOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
+      Individual QC flags for each measurement using ProcessedDataFlag enum.
     slots:
       - measure_type
       - replicate

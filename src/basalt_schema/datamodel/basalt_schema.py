@@ -340,7 +340,7 @@ class IonsAnalysisProductId(ProcessedDataId):
     pass
 
 
-class MAOMProductId(ProcessedDataId):
+class HClExtOMProductId(ProcessedDataId):
     pass
 
 
@@ -4089,20 +4089,20 @@ class IonsAnalysisProduct(ProcessedData):
 
 
 @dataclass(repr=False)
-class MAOMProduct(YAMLRoot):
+class HClExtOMProduct(YAMLRoot):
     """
-    Mineral-Associated Organic Matter (MAOM) analysis product, typically derived via HCl extraction and TOC/TN
+    Mineral-Associated Organic Matter (HClExtOM) analysis product, typically derived via HCl extraction and TOC/TN
     measurement.
-    Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED TO HClExtOMProduct
+    Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["MAOMProduct"]
-    class_class_curie: ClassVar[str] = "basalt_schema:MAOMProduct"
-    class_name: ClassVar[str] = "MAOMProduct"
-    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.MAOMProduct
+    class_class_uri: ClassVar[URIRef] = BASALT_SCHEMA["HClExtOMProduct"]
+    class_class_curie: ClassVar[str] = "basalt_schema:HClExtOMProduct"
+    class_name: ClassVar[str] = "HClExtOMProduct"
+    class_model_uri: ClassVar[URIRef] = BASALT_SCHEMA.HClExtOMProduct
 
-    id: Union[str, MAOMProductId] = None
+    id: Union[str, HClExtOMProductId] = None
     measure_type: Optional[Union[str, "ProductMeasureType"]] = None
     replicate: Optional[int] = None
     total_organic_carbon_id: Optional[Union[str, QuantityValueId]] = None
@@ -4117,8 +4117,8 @@ class MAOMProduct(YAMLRoot):
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, MAOMProductId):
-            self.id = MAOMProductId(self.id)
+        if not isinstance(self.id, HClExtOMProductId):
+            self.id = HClExtOMProductId(self.id)
 
         if self.measure_type is not None and not isinstance(self.measure_type, ProductMeasureType):
             self.measure_type = ProductMeasureType(self.measure_type)

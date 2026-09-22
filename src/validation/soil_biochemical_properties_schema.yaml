@@ -66,7 +66,7 @@ classes:
       Replicate:
         description: |-
           Replicate number for the sample (L1 data only).
-          For analyses with technical replicates (biomass, nitrogen, phosphorus, WEOM, MAOM, GWC),
+          For analyses with technical replicates (biomass, nitrogen, phosphorus, WEOM, HClExtOM (formerly MAOM), GWC),
           this indicates which replicate measurement this row represents.
           Only present when l1_checked=True flag is set during download.
         range: integer
@@ -292,7 +292,7 @@ classes:
       HClExtOM_TOC_mg_per_kg:
         description: |-
           Mineral Associated Organic Matter - Total Organic Carbon in mg/kg.
-          Source: MAOMProduct.total_organic_carbon_id from canonical schema.
+          Source: HClExtOMProduct.total_organic_carbon_id from canonical schema.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -301,7 +301,7 @@ classes:
       HClExtOM_TN_mg_per_kg:
         description: |-
           Mineral Associated Organic Matter - Total Nitrogen in mg/kg.
-          Source: MAOMProduct.total_nitrogen_id from canonical schema.
+          Source: HClExtOMProduct.total_nitrogen_id from canonical schema.
           L2 data: average across replicates
           L1 data: individual replicate values
         range: double
@@ -405,7 +405,7 @@ classes:
       flag_HClExtOM_TN:  # Renamed from flag_MAOM_TN to match HClExtOM naming
         description: |-
           Quality flag for Mineral Associated Organic Matter - Total Nitrogen measurement.
-          Source: MAOMProduct.flag_tn from canonical schema.
+          Source: HClExtOMProduct.flag_tn from canonical schema.
           Note: MAOM renamed to HClExtOM in schema to match analytical method.
         range: string
         required: false
@@ -413,7 +413,7 @@ classes:
       flag_HClExtOM_TOC:  # Renamed from flag_MAOM_TOC to match HClExtOM naming
         description: |-
           Quality flag for Mineral Associated Organic Matter - Total Organic Carbon measurement.
-          Source: MAOMProduct.flag_toc from canonical schema.
+          Source: HClExtOMProduct.flag_toc from canonical schema.
           Note: MAOM renamed to HClExtOM in schema to match analytical method.
         range: string
         required: false

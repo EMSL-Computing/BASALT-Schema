@@ -806,12 +806,12 @@ PlateProduct.well_readings.
     
 
 
-class MAOMProduct(Base):
+class HClExtOMProduct(Base):
     """
-    Mineral-Associated Organic Matter (MAOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
-Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE RENAMED TO HClExtOMProduct
+    Mineral-Associated Organic Matter (HClExtOM) analysis product, typically derived via HCl extraction and TOC/TN measurement.
+Individual QC flags for each measurement using ProcessedDataFlag enum.
     """
-    __tablename__ = 'MAOMProduct'
+    __tablename__ = 'HClExtOMProduct'
 
     measure_type = Column(Enum('Single', 'Replicate', 'Average', name='ProductMeasureType'))
     replicate = Column(Integer())
@@ -829,7 +829,7 @@ Individual QC flags for each measurement using ProcessedDataFlag enum. TO BE REN
     
 
     def __repr__(self):
-        return f"MAOMProduct(measure_type={self.measure_type},replicate={self.replicate},id={self.id},total_organic_carbon_id={self.total_organic_carbon_id},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_id={self.total_nitrogen_id},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},)"
+        return f"HClExtOMProduct(measure_type={self.measure_type},replicate={self.replicate},id={self.id},total_organic_carbon_id={self.total_organic_carbon_id},total_organic_carbon_avg={self.total_organic_carbon_avg},total_nitrogen_id={self.total_nitrogen_id},total_nitrogen_avg={self.total_nitrogen_avg},flag_toc={self.flag_toc},flag_tn={self.flag_tn},flag_toc_avg={self.flag_toc_avg},flag_tn_avg={self.flag_tn_avg},)"
 
 
 
