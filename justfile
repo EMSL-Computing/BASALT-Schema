@@ -123,7 +123,14 @@ test: _test-schema _test-python _test-examples
 # Run linting
 [group('model development')]
 lint:
-  uv run linkml-lint {{source_schema_dir}}
+  # Lint the merged root schema (with imports resolved) rather than the raw
+  # source directory. Linting the directory runs linkml-lint on each module
+  # standalone, so modules that subclass base classes defined in the root
+  # (e.g. is_a: SampleProcessing / DataGenerationActivity) fail to resolve
+  # them because they cannot import the root without a cycle.
+  # --ignore-warnings: still fail on errors, but do not fail solely on the
+  # recommended-style warnings (missing descriptions, naming conventions).
+  uv run linkml-lint --ignore-warnings {{source_schema_path}}
 
 # Generate md documentation for the schema and add artifacts
 [group('model development')]
