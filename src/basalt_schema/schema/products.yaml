@@ -987,7 +987,7 @@ classes:
       - peak_percent_area
       - peak_height
       - weight_percent
-      - concentration_ug_per_ul
+      - concentration_ug_per_uL
       - flag
 
   RIProduct:
@@ -1000,5 +1000,5 @@ classes:
       - produced_by_ri_run
       - compound_name
       - weight_percent
-      - concentration_ug_per_ul
+      - concentration_ug_per_uL
       - flag
