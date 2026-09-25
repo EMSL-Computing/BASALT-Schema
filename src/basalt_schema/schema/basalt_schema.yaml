@@ -2,7 +2,7 @@
 id: https://emsl-computing.github.io/BASALT-Schema
 name: basalt-schema
 title: BASALT Schema
-version: 0.1.0
+version: 0.2.0
 description: |-
   LinkML schema for MONet/EMSL scientific data across biogeochemical, biological,
   and environmental domains. Defines samples, provenance, laboratory activities,

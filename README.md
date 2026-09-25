@@ -2,7 +2,7 @@
 
 **Broad Analytical Schema for Samples and Laboratory Techniques**
 
-[![Schema version](https://img.shields.io/badge/schema-v0.1.0-blue.svg)](src/basalt_schema/schema/basalt_schema.yaml)
+[![Schema version](https://img.shields.io/badge/schema-v0.2.0-blue.svg)](src/basalt_schema/schema/basalt_schema.yaml)
 [![LinkML](https://img.shields.io/badge/LinkML-schema-blueviolet.svg)](https://linkml.io)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org)
 [![License: CC0-1.0](https://img.shields.io/badge/license-CC0%201.0-lightgrey.svg)](LICENSE)
@@ -15,7 +15,7 @@ Formerly `analysis-api-schema`.
 
 | | |
 | --- | --- |
-| **Schema version** | `0.1.0` (see `version` in [`basalt_schema.yaml`](src/basalt_schema/schema/basalt_schema.yaml)) |
+| **Schema version** | `0.2.0` (see `version` in [`basalt_schema.yaml`](src/basalt_schema/schema/basalt_schema.yaml)) |
 | **Package** | `basalt_schema` (Python package version follows git tags via uv-dynamic-versioning) |
 | **Docs** | https://emsl-computing.github.io/BASALT-Schema |
 | **Repository** | https://github.com/EMSL-Computing/BASALT-Schema |
@@ -48,7 +48,7 @@ BASALT uses **semantic versioning** (`MAJOR.MINOR.PATCH`) for the schema:
    Set in the root schema file:
    ```yaml
    # src/basalt_schema/schema/basalt_schema.yaml
-   version: 0.1.0
+   version: 0.2.0
    ```
 
 2. **Python package version**  
